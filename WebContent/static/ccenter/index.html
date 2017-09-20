@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运营商管理-管理首页</title>
+    <link href="../../ccenter/themes/default/common.css" rel="stylesheet">
+    <link href="../../common/themes/default/iconfont.css" rel="stylesheet">
+    <link href="../../common/themes/default/iCheck/custom.css" rel="stylesheet">
+    <link href="../../common/themes/default/chosen/chosen.css" rel="stylesheet">
+    <link href="../../common/themes/default/bootstrap/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../common/themes/default/dist/bootstrapSwitch.css" rel="stylesheet">
+    <link href="../../common/themes/default/skin/skin-ccenter.css" rel="stylesheet">
+    <link href="../../common/themes/default/banner/elastislide.css" rel="stylesheet"/>
+    <link href="../../common/themes/default/blueimp/css/blueimp-gallery.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="top clearfix">
+        <div class="pull-left m-r-md">
+            <a href="javascript:void(0)"><span class="m-l-sm m-r-sm fs18">GameBox</span>
+            <span class="line">|</span>
+                <span href="javascript:void(0)" class="m-l-sm fs16">运营中心</span></a>
+        </div>
+        
+        <ul class="nav navbar-nav navbar-left">
+                    <li class="active"> <a href="index.html" aria-expanded="false"><i class="fa fa-coffee"></i> 首页 </a> 
+                    </li>
+                    <li> <a href="serve/main.html" aria-expanded="false" nav-target="topFrame"><i class="fa fa-server"></i> 服务 </a> 
+                    </li>
+                    <li> <a href="site/main.html" aria-expanded="false" nav-target="topFrame"><i class="fa fa-gamepad"></i> 站点 </a> 
+                    </li>
+                    <li> <a href="operators/main.html" aria-expanded="false" nav-target="topFrame"><i class="fa fa-credit-card"></i> 运营 </a> 
+                    </li>
+                    <li> <a href="statistics/main.html" aria-expanded="false" nav-target="topFrame"><i class="fa fa-pie-chart"></i> 报表 </a> 
+                    </li>
+                    <li> <a href="system/main.html" aria-expanded="false" nav-target="topFrame"><i class="fa fa-cogs"></i> 系统 </a> 
+                    </li>
+                    
+                </ul>
+                
+        <div class="pull-right">
+            <ul class="tips">
+            <li class="clock top-time"><a href="../../icon/clock-o" data-toggle="dropdown" class="clock-icon-show top-time-ico" aria-expanded="false"><i class="icon iconfont"></i></a>
+                    <span class="clock-show top-time-number">当前时区：GMT +8 2015-03-24  15:02:57</span>
+                </li>
+               <a class="nav-menu-switch" href="javascript:void(0)">
+                        <em class="fa fa-cog"></em>
+                    </a>
+                <li class="infos show-info">
+                    <a href="javascript:void(0)" class="locate" data-toggle="dropdown" aria-expanded="true">
+                        <i class="icon-logins iconfont"></i>
+                    </a>
+                    <ul class="information nav-shadow">
+                        <!--<li class="infos-img clearfix">
+                            <a data-toggle="dropdown" aria-expanded="false">
+                                <img alt="image" class="img-circle" src="../../mcenter/images/profile_small.jpg"><span class="acc-name-2">李诚诚诚诚诚诚</span></a>
+                        </li>-->
+                        <li><a href="javascript:void(0)"><i class="fa fa-user m-r-sm"></i>个人资料</a></li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-file-o m-r-sm"></i>操作日志</a></li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-key m-r-sm"></i>修改登录密码</a></li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-umbrella m-r-sm"></i>修改安全密码</a></li>
+                        <li class="off"><a href="javascript:void(0)">退出 <i class="fa fa-power-off"></i></a></li>
+                    </ul>
+                </li>
+                
+                <li class="informations">
+                    <a href="javascript:void(0)" class="locate" data-toggle="dropdown">
+                        <i class="icon iconfont"></i><span class="label label-green">3</span>
+                    </a>
+                    <dl class="infos_list nav-shadow">
+                        <dt>系统消息</dt>
+                        <dd class="infos-load">
+                            <img src="../../mcenter/images/022b.gif">
+                        </dd>
+                        <dd class="infos-none"><i class="fa fa-exclamation-circle"></i>暂无消息</dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">【热门活动】
+                                云市场重磅出击，全场低至6折！建站系统、代理服务器维护。</a><span>2015-05-13</span></div>
+                        </dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">【热门活动】
+                                云市场重磅出击，全场低至6折！建站系统、代理服务器维护。</a><span>2015-05-13</span></div>
+                        </dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">【热门活动】
+                                云市场重磅出击，全场低至6折！建站系统、代理服务器维护。</a><span>2015-05-13</span></div>
+                        </dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">【热门活动】
+                                云市场重磅出击，全场低至6折！建站系统、代理服务器维护。</a><span>2015-05-13</span></div>
+                        </dd>
+                        <dd class="more"><a href="javascript:void(0)">查看更多消息>></a></dd>
+                    </dl>
+                </li>
+                <li class="tasks">
+                    <a href="javascript:void(0)" class="locate" data-toggle="dropdown" aria-expanded="false"><i class="icon iconfont"></i><span class="label label-orange">6</span></a>
+                    <dl class="infos_list tasks_list nav-shadow">
+                        <dt>任务提醒</dt>
+                        <dd class="infos-load">
+                            <img src="../../mcenter/images/022b.gif">
+                        </dd>
+                        <dd class="infos-none"><i class="fa fa-exclamation-circle"></i>暂无任务</dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">您有<i class="co-tomato">2条</i>取款申请</a><span>4分钟前</span></div>
+                            <div class="co-gray9 clearfix"><span class="tip">账号已无法接收入款</span><a href="javascript:void(0)" class="co-blue">马上解冻</a></div>
+                        </dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">您有<i class="co-tomato">5个</i>代理申请处理</a><span>36分钟前</span></div>
+                        </dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">您有<i class="co-tomato">2条</i>存款审批</a><span>4分钟前</span></div>
+                        </dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">您有<i class="co-tomato">5个</i>代理申请处理</a><span>1小时前</span></div>
+                        </dd>
+                        <dd class="more"><a href="javascript:void(0)">查看更多消息&gt;&gt;</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="topFrame">
+        <nav class="navbar-default navbar-static-side shadow" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="active"> <a href="proxy/main.html" nav-target="mainFrame"><em class="fa fa-male"></em> <span class="nav-label">内容审核</span></a></li>
+                    <li><a href="proxy/role.html" nav-target="mainFrame"><em class="fa fa-list"></em> <span class="nav-label">优惠审核</span></a></li>
+                    <li><a href="proxy/message.html" nav-target="mainFrame"><em class="fa fa-users"></em> <span class="nav-label">开站</span></a></li>
+                    <li><a href="javascript:void(0)" data-toggle="modal" data-target="#add-plus"><em class="fa fa-plus-square"></em> <span class="nav-label">新增菜单</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div id="page-wrapper" class="dashbard-1">
+            <div id="mainFrame">
+                <div class="row">
+                    <div class="position-wrap clearfix">
+                        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+                        <span>运营商管理</span><span>/</span><span>首页</span>
+                        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+                    </div>
+                    
+    
+    
+   
+   
+   
+   
+        <div class="white-bg indicators clearfix m-l m-r m-b shadow">
+                        <div class="manage_tit"><b class="m-l-md">当前数据</b><span class="co-grayc2 m-l">更新时间：2015-02-13 16:33:21</span>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 m-b-none p-x">
+                            <div class="indicators-item blue al-center clearfix">
+                                
+
+                                <div class="bold-fs16 p-t-xs co-gray6">新增玩家<span class="tip-fs14 m-l-xs">(今日)</span></div>
+                                <div class="fs34 p-xxs al-center">1,936,499</div>
+<div class="info-x co-gray6">新增存款玩家: 121</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 m-b-none p-x">
+                            <div class="indicators-item blue al-center clearfix">
+                                
+
+                                <div class="bold-fs16 p-t-xs co-gray6">存款金额<span class="tip-fs14 m-l-xs">(今日)</span></div>
+                                <div class="fs34 p-xxs al-center">1,936,499</div>
+<div class="info-x co-gray6">新增玩家存款金额: 121</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 m-b-none p-x">
+                            <div class="indicators-item blue al-center clearfix">
+                                
+
+                                <div class="bold-fs16 p-t-xs co-gray6">当前在线玩家</div>
+                                <div class="fs34 p-xxs al-center">1,936,499</div>
+                      <div class="info-x co-gray6">今日累计活跃玩家: 121</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 m-b-none p-x">
+                            <div class="indicators-item blue al-center clearfix">
+                                
+
+                                <div class="bold-fs16 p-t-xs co-gray6">取款金额<span class="tip-fs14 m-l-xs">(今日)</span> </div>
+                                <div class="fs34 p-xxs al-center">1,936,499</div>
+<div class="info-x co-gray6">总取款玩家: 121</div>
+                            </div>
+                        </div>
+                    </div>
+        
+        <div class="clearfix approval-wrap m-b">
+                        <div class="col-lg-4 m-t-xs">
+                            <div class="white-bg clearfix shadow">
+  <div class="icon p-xs col-xs-2 pull-left al-center"><i class="icon iconfont fs42"></i></div>
+                              
+<div class="fs24 line-hi78 col-xs-5 pull-left al-center p-x">总资产<span class="tip-fs14 m-l-xs">(约)</span></div><div class="fs24 line-hi78 col-xs-5 pull-left al-center co-blue f-arial">1,936,499</div>  
+                                
+                            </div>
+                        </div>
+
+<div class="col-lg-4 m-t-xs">
+                            <div class="white-bg clearfix shadow">
+  <div class="icon p-xs col-xs-2 pull-left al-center"><i class="icon iconfont fs42"></i></div>
+                              
+<div class="fs24 line-hi78 col-xs-5 pull-left al-center p-x">钱包余额</div><div class="fs24 line-hi78 col-xs-5 pull-left al-center co-blue f-arial">1,936,499</div>  
+                                
+                            </div>
+                        </div>
+
+<div class="col-lg-4 m-t-xs">
+                            <div class="white-bg clearfix shadow">
+  <div class="icon p-xs col-xs-2 pull-left al-center"><i class="icon iconfont fs42"></i></div>
+                              
+<div class="fs24 line-hi78 col-xs-5 pull-left al-center p-x" ><div>访客数(uv)<span class="tip-fs14 m-l-xs">(今日uv)</span></div></div><div class="fs24 line-hi78 col-xs-5 pull-left al-center co-blue f-arial">1,936,499</div>  
+                                
+                            </div>
+                        </div>
+                       
+                        
+                    </div>
+                    
+                    <div class="clearfix approval-wrap">
+                        <div class="col-lg-6 m-t-xs">
+                            <div class="white-bg shadow">
+                                <div class="manage_tit"><b class="m-l-md">待处理事项</b></div>
+                                <ul class="approval-list p-b-sm">
+                                    <li class="clearfix">
+                                        <a href="javascript:void(0)">您当前有 <span class="co-blue">3条</span> 取款审批待处理</a>
+                                        
+                                    </li>
+                                    <li class="clearfix">
+                                        <a href="javascript:void(0)">您今日有 <span class="co-blue">4个</span> 收款账户进入橙色预警  <span class="m-l co-grayc2" title="冻结风险：中 请关注账户动态冻结风险">冻结风险：中 请关注账户动态</span></a>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a href="javascript:void(0)"> 您当前有 <span class="co-blue">1封</span> 月结账单未查看</a>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a href="javascript:void(0)">您当前有 <span class="co-blue">7封</span> 下月消费预计账单未查看</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <!--<div class="col-lg-3 m-t-xs">
+                            <div class="white-bg">
+                                <div class="manage_tit"><b class="m-l-md">子账号操作审批</b></div>
+                                <ul class="approval-list p-b-sm">
+                                    <li class="clearfix">
+                                        <a href="javascript:void(0)">代理注册审批</a>
+                                        <span class="label">100个</span>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a href="javascript:void(0)">充值审批</a>
+                                        <span class="label none">0条</span>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a href="javascript:void(0)">提现审批</a>
+                                        <span class="label none">0条</span>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a href="javascript:void(0)">留言审批</a>
+                                        <span class="label">66条</span>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a href="javascript:void(0)">账单处理</a>
+                                        <span class="label">16条</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>-->
+                        <div class="col-lg-6 m-t-xs">
+                            <div class="white-bg clearfix shadow">
+                                <div class="manage_tit"><b class="m-l-md">昨日数据</b><span tabindex="0" class=" help-popover m-l-sm" role="button" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="与过去30天里最高一天（24H)的值进行对比！" data-original-title="" title=""><i class="fa fa-question-circle"></i></span><a href="javascript:void(0)"
+                                                                                         class="pull-right m-r">查看更多数据</a>
+                                </div>
+                                <ul class="recentData-list">
+                                    <li>
+                                        <div class="clearfix m-b-xs">
+                                            累计活跃玩家：
+                                            <span class="pull-right">1,986人</span>
+                                        </div>
+                                        <div class="progress">
+                                            <div style="width: 45%" aria-valuemax="100" aria-valuemin="0"
+                                                 aria-valuenow="35" role="progressbar"
+                                                 class="progress-bar progress-bar-blue">
+                                                <span class="sr-only">35% Complete (success)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="clearfix m-b-xs">
+                                            累计交易单量：
+                                            <span class="pull-right">199,986注</span>
+                                        </div>
+                                        <div class="progress">
+                                            <div style="width: 75%" aria-valuemax="100" aria-valuemin="0"
+                                                 aria-valuenow="35" role="progressbar"
+                                                 class="progress-bar progress-bar-green">
+                                                <span class="sr-only">35% Complete (success)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="clearfix m-b-xs">
+                                            公司入款到账时间：
+                                            <span class="pull-right">223笔/9分28秒每笔</span>
+                                        </div>
+                                        <div class="progress">
+                                            <div style="width: 60%" aria-valuemax="100" aria-valuemin="0"
+                                                 aria-valuenow="35" role="progressbar"
+                                                 class="progress-bar progress-bar-red">
+                                                <span class="sr-only">35% Complete (success)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="clearfix m-b-xs">
+                                            玩家取款到账时间：
+                                            <span class="pull-right">223笔/9分28秒每笔</span>
+                                        </div>
+                                        <div class="progress">
+                                            <div style="width: 100%" aria-valuemax="100" aria-valuemin="0"
+                                                 aria-valuenow="35" role="progressbar"
+                                                 class="progress-bar progress-bar-orange">
+                                                <span class="sr-only">35% Complete (success)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="clearfix m-b-xs">
+                                            累计派彩CNY：
+                                            <span class="pull-right">￥1,2323,2236,22</span>
+                                        </div>
+                                        <div class="progress">
+                                            <div style="width: 35%" aria-valuemax="100" aria-valuemin="0"
+                                                 aria-valuenow="35" role="progressbar"
+                                                 class="progress-bar progress-bar-steelBlue">
+                                                <span class="sr-only">35% Complete (success)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="white-bg indicators clearfix m operationsOverview overview shadow">
+                        <div class="manage_tit m-b-xs"><b class="m-l-md">运营概况</b><a href="javascript:void(0)" class="pull-right m-r">查看更多数据</a></div>
+                        <div class="table-responsive">
+                            <table class="table" aria-describedby="editable_info">
+                                <tr>
+                                    <td>
+                                        <div class="filter-wrap m-t-xs m-xs clearfix">
+                                            <a href="javascript:void(0)" class="pull-left m-r"><i class="fa fa-arrow-left m-r-sm"></i>前一天</a>
+                                            <div class="input-group pull-left">
+                                               <span class="input-group-addon bg-gray"><i class="fa fa-calendar"></i></span>
+                                                <input type="text" class="form-control" placeholder="2015-07-26" disabled>
+                                                
+                                            </div>
+                                            <a href="javascript:void(0)" class="pull-left m-l">后一天<i class="fa fa-arrow-right m-l-sm"></i></a>
+                                        </div>
+                                        <ul class="type-tab-wrap clearfix">
+                                            <li>
+                                                <h3>新增玩家</h3>
+                                                <b>---</b>
+                                                <div class="clearfix">
+                                                    <span class="al-right">新增玩家存款：</span>
+                                                    <span class="blue al-left"><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="---">---</div></span>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <span class="al-right">较上一日：</span>
+                                                    <span class="orange al-left ratio-a"><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="---">---</div></span>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <span class="al-right">较上周同期：</span>
+                                                    <span class="green al-left ratio-a"><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="---">---</div></span>
+                                                </div>
+                                            </li>
+                                            <li class=" col-xs-2">
+                                                <h3>新增代理</h3>
+                                                <b>---</b>                                                
+                                                <div class="clearfix">
+                                                    <span class="al-right">较上一日：</span>
+                                                    <span class="orange al-left ratio-a"><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="---">---</div></span>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <span class="al-right">较上周同期：</span>
+                                                    <span class="green al-left ratio-a"><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="---">---</div></span>
+                                                </div>
+                                            </li>
+                                            <li class="current">
+                                                <h3>存款金额</h3>
+                                                <b>1118</b>
+                                                <div class="clearfix">
+                                                    <span class="al-right">存款玩家：</span>
+                                                    <span class="blue al-left"><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="999,999.00">999,999.00</div></span>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <span class="al-right">较上一日：</span>
+                                                    <span class="green al-left ratio-a"><div class="pull-left line-hi35"><i class="fa fa-level-up"></i></div><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="999,999.00%">999,999.00</div></span>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <span class="al-right">较上周同期：</span>
+                                                    <span class="co-red al-left ratio-a"><div class="pull-left line-hi35"><i class="fa fa-level-down"></i></div><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="999,999.000.999.999.999%">999,999.00</div></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <h3>取款金额</h3>
+                                                <b>---</b>
+                                                <div class="clearfix">
+                                                    <span class="al-right">取款玩家：</span>
+                                                    <span class="blue al-left"><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="---">---</div></span>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <span class="al-right">较上一日：</span>
+                                                    <span class="orange al-left ratio-a"><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="---">---</div></span>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <span class="al-right">较上周同期：</span>
+                                                    <span class="green al-left ratio-a"><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="---">---</div></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <h3>有效交易量</h3>
+                                                <b>---</b>
+                                                <div class="clearfix">
+                                                    <span class="al-right">交易玩家：</span>
+                                                    <span class="blue al-left"><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="---">---</div></span>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <span class="al-right">较上一日：</span>
+                                                    <span class="orange al-left ratio-a"><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="---">---</div></span>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <span class="al-right">较上周同期：</span>
+                                                    <span class="green al-left ratio-a"><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="---">---</div></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <h3>交易盈亏</h3>
+                                                <b>---</b>
+                                                <div class="clearfix">
+                                                    <span class="al-right">较上一日：</span>
+                                                    <span class="orange al-left ratio-a"><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="---">---</div></span>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <span class="al-right">较上周同期：</span>
+                                                    <span class="green al-left ratio-a"><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="---">---</div></span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="m-xs"><div id="container11" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="white-bg indicators clearfix m operationsOverview overview shadow">
+                        <div class="manage_tit m-b-xs"><b class="m-l-md">游戏概况</b><a href="javascript:void(0)" class="pull-right m-r">查看更多数据</a></div>
+                        <div class="table-responsive">
+                            <table class="table" aria-describedby="editable_info">
+                                <tr>
+                                    <td>
+                                        <div class="filter-wrap m-t-xs m-xs clearfix" style="min-width: 1080px;">
+                                            <a href="javascript:void(0)" class="pull-left m-r"><i class="fa fa-arrow-left m-r-sm"></i>前一天</a>
+                                            <div class="input-group pull-left">
+                                               <span class="input-group-addon bg-gray"><i class="fa fa-calendar"></i></span>
+                                                <input type="text" class="form-control" placeholder="2015-07-26" disabled="">
+                                                
+                                            </div>
+                                            <a href="javascript:void(0)" class="pull-left m-l">后一天<i class="fa fa-arrow-right m-l-sm"></i></a>
+                                        </div>
+                                        <div class="game-data-wrap clearfix">
+                                            <div class="game-data-con" id="accordion">
+                                                <dl class="panel">
+                                                    <dt data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="clearfix">
+                                                        <h3>角色扮演</h3>
+                                                        交易单量：<span class="blue">23</span>
+                                                        有效交易：<span>23,223,00</span>
+                                                        交易盈亏：<span class="green"><i class="fa fa-level-up"></i> 23,223,00</span>
+                                                        参与玩家：<span class="blue">200</span>
+                                                    </dt>
+                                                    <dd id="collapseOne" class="panel-collapse collapse in">
+                                                        <ul class="clearfix p-sm">
+                                                            <li>
+                                                                <div class="pull-left">
+                                                                    <img src="images/game.jpg" alt="">
+                                                                    <span class="tit">四川麻将</sapn>
+                                                                </div>
+                                                                <div class="pull-left">
+                                                                    <div>交易单量：<span><a href="javascript:void(0)">23</a></span></div>
+                                                                    <div>有效交易：<span>23,223,00</span></div>
+                                                                    <div>交易盈亏：<span class="co-green"><i class="fa fa-level-up"></i> 23,223,00</span></div>
+                                                                    <div>交易玩家：<span><a href="javascript:void(0)">222人</a></span></div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="pull-left">
+                                                                    <img src="images/game.jpg" alt="">
+                                                                    <span class="tit">四川麻将</sapn>
+                                                                </div>
+                                                                <div class="pull-left">
+                                                                    <div>交易单量：<span><a href="javascript:void(0)">23</a></span></div>
+                                                                    <div>有效交易：<span>23,223,00</span></div>
+                                                                    <div>交易盈亏：<span class="co-red"><i class="fa fa-level-down"></i> 23,223,00</span></div>
+                                                                    <div>交易玩家：<span><a href="javascript:void(0)">222人</a></span></div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="pull-left">
+                                                                    <img src="images/game.jpg" alt="">
+                                                                    <span class="tit">四川麻将</sapn>
+                                                                </div>
+                                                                <div class="pull-left">
+                                                                    <div>交易单量：<span><a href="javascript:void(0)">12</a></span></div>
+                                                                    <div>有效交易：<span>344,00</span></div>
+                                                                    <div>交易盈亏：<span class="co-red"><i class="fa fa-level-down"></i> 223,00</span></div>
+                                                                    <div>交易玩家：<span><a href="javascript:void(0)">22人</a></span></div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="pull-left">
+                                                                    <img src="images/game.jpg" alt="">
+                                                                    <span class="tit">四川麻将</sapn>
+                                                                </div>
+                                                                <div class="pull-left">
+                                                                    <div>交易单量：<span><a href="javascript:void(0)">23</a></span></div>
+                                                                    <div>有效交易：<span>23,223,00</span></div>
+                                                                    <div>交易盈亏：<span class="co-red"><i class="fa fa-level-down"></i> 23,223,00</span></div>
+                                                                    <div>交易玩家：<span><a href="javascript:void(0)">222人</a></span></div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="pull-left">
+                                                                    <img src="images/game.jpg" alt="">
+                                                                    <span class="tit">四川麻将</sapn>
+                                                                </div>
+                                                                <div class="pull-left">
+                                                                    <div>交易单量：<span><a href="javascript:void(0)">12</a></span></div>
+                                                                    <div>有效交易：<span>344,00</span></div>
+                                                                    <div>交易盈亏：<span class="co-red"><i class="fa fa-level-down"></i> 223,00</span></div>
+                                                                    <div>交易玩家：<span><a href="javascript:void(0)">22人</a></span></div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="pull-left">
+                                                                    <img src="images/game.jpg" alt="">
+                                                                    <span class="tit">四川麻将</sapn>
+                                                                </div>
+                                                                <div class="pull-left">
+                                                                    <div>交易单量：<span><a href="javascript:void(0)">23</a></span></div>
+                                                                    <div>有效交易：<span>23,223,00</span></div>
+                                                                    <div>交易盈亏：<span class="co-green"><i class="fa fa-level-up"></i> 23,223,00</span></div>
+                                                                    <div>交易玩家：<span><a href="javascript:void(0)">222人</a></span></div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </dd>
+                                                </dl>
+                                                <dl class="panel">
+                                                    <dt data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="clearfix collapsed">
+                                                        <h3>体育竞技</h3>
+                                                        交易单量：<span class="blue">23</span>
+                                                        有效交易：<span>23,223,00</span>
+                                                        交易盈亏：<span class="red"><i class="fa fa-level-down"></i> 23,223,00</span>
+                                                        参与玩家：<span class="blue">200</span>
+                                                    </dt>
+                                                    <dd id="collapseTwo" class="panel-collapse collapse">
+                                                        <ul class="clearfix p-sm">
+                                                            <li>
+                                                                <div class="pull-left">
+                                                                    <img src="images/game.jpg" alt="">
+                                                                    <span class="tit">四川麻将</sapn>
+                                                                </div>
+                                                                <div class="pull-left">
+                                                                    <div>交易单量：<span class="co-blue">23</span></div>
+                                                                    <div>有效交易：<span class="co-blue">23,223,00</span></div>
+                                                                    <div>交易盈亏：<span class="co-blue">23,223,00</span></div>
+                                                                    <div>交易玩家：<span class="co-blue">222人</span></div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="pull-left">
+                                                                    <img src="images/game.jpg" alt="">
+                                                                    <span class="tit">四川麻将</sapn>
+                                                                </div>
+                                                                <div class="pull-left">
+                                                                    <div>交易单量：<span class="co-blue">23</span></div>
+                                                                    <div>有效交易：<span class="co-blue">23,223,00</span></div>
+                                                                    <div>交易盈亏：<span class="co-blue">23,223,00</span></div>
+                                                                    <div>交易玩家：<span class="co-blue">222人</span></div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="pull-left">
+                                                                    <img src="images/game.jpg" alt="">
+                                                                    <span class="tit">四川麻将</sapn>
+                                                                </div>
+                                                                <div class="pull-left">
+                                                                    <div>交易单量：<span class="co-blue">23</span></div>
+                                                                    <div>有效交易：<span class="co-blue">23,223,00</span></div>
+                                                                    <div>交易盈亏：<span class="co-blue">23,223,00</span></div>
+                                                                    <div>交易玩家：<span class="co-blue">222人</span></div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </dd>
+                                                </dl>
+                                                <dl class="panel">
+                                                    <dt data-toggle="collapse" data-parent="#accordion" href="#collapseThere"  class="clearfix collapsed">
+                                                        <h3>电子游艺</h3>
+                                                        交易单量：<span class="blue">23</span>
+                                                        有效交易：<span>23,223,00</span>
+                                                        交易盈亏：<span class="green"><i class="fa fa-level-up"></i> 23,223,00</span>
+                                                        参与玩家：<span class="blue">200</span>
+                                                    </dt>
+                                                    <dd id="collapseThere" class="panel-collapse collapse">
+                                                        <ul class="clearfix p-sm">
+                                                            <li>
+                                                                <div class="pull-left">
+                                                                    <img src="images/game.jpg" alt="">
+                                                                    <span class="tit">四川麻将</sapn>
+                                                                </div>
+                                                                <div class="pull-left">
+                                                                    <div>交易单量：<span class="co-blue">23</span></div>
+                                                                    <div>有效交易：<span class="co-blue">23,223,00</span></div>
+                                                                    <div>交易盈亏：<span class="co-blue">23,223,00</span></div>
+                                                                    <div>交易玩家：<span class="co-blue">222人</span></div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="pull-left">
+                                                                    <img src="images/game.jpg" alt="">
+                                                                    <span class="tit">四川麻将</sapn>
+                                                                </div>
+                                                                <div class="pull-left">
+                                                                    <div>交易单量：<span class="co-blue">23</span></div>
+                                                                    <div>有效交易：<span class="co-blue">23,223,00</span></div>
+                                                                    <div>交易盈亏：<span class="co-blue">23,223,00</span></div>
+                                                                    <div>交易玩家：<span class="co-blue">222人</span></div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </dd>
+                                                </dl>
+                                                <dl class="panel">
+                                                    <dt data-toggle="collapse" data-parent="#accordion" href="#collapseFour"  class="clearfix collapsed">
+                                                        <h3>彩票概率</h3>
+                                                        交易单量：<span class="blue">23</span>
+                                                        有效交易：<span>23,223,00</span>
+                                                        交易盈亏：<span class="green"><i class="fa fa-level-up"></i> 23,223,00</span>
+                                                        参与玩家：<span class="blue">200</span>
+                                                    </dt>
+                                                    <dd id="collapseFour" class="panel-collapse collapse" >
+                                                        <ul class="clearfix p-sm">
+                                                            <li>
+                                                                <div class="pull-left">
+                                                                    <img src="images/game.jpg" alt="">
+                                                                    <span class="tit">四川麻将</sapn>
+                                                                </div>
+                                                                <div class="pull-left">
+                                                                    <div>交易单量：<span class="co-blue">23</span></div>
+                                                                    <div>有效交易：<span class="co-blue">23,223,00</span></div>
+                                                                    <div>交易盈亏：<span class="co-blue">23,223,00</span></div>
+                                                                    <div>交易玩家：<span class="co-blue">222人</span></div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="pull-left">
+                                                                    <img src="images/game.jpg" alt="">
+                                                                    <span class="tit">四川麻将</sapn>
+                                                                </div>
+                                                                <div class="pull-left">
+                                                                    <div>交易单量：<span class="co-blue">23</span></div>
+                                                                    <div>有效交易：<span class="co-blue">23,223,00</span></div>
+                                                                    <div>交易盈亏：<span class="co-blue">23,223,00</span></div>
+                                                                    <div>交易玩家：<span class="co-blue">222人</span></div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                            <div class="game-data-img">
+                                                <div id="container" style="min-width: 210px; height: 300px; max-width: 600px; margin: 0 auto"></div>
+                                                
+                                                <div id="container22" style="min-width: 210px; height: 300px; margin: 0 auto"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="clearfix approval-wrap">
+                        <div class="col-lg-6 m-b-md">
+                            <div class="white-bg shadow">
+                                <div class="manage_tit clearfix">
+                                    <b class="m-l-md">进行中的活动</b>
+
+                                    <div class="pull-right m-r">
+                                        总活动：<span class="label blue m-r">10</span>
+                                        进行中：<span class="label green">5</span>
+                                    </div>
+                                </div>
+                                <div class="m clearfix">
+                                    <table class="table m-b-lg">
+                                        <tr class="bg-gray">
+                                            <th>活动名称</th>
+                                            <th>起止时间</th>
+                                            <th>参与人数</th>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="javascript:void(0)">首存送50%彩金</a></td>
+                                            <td>2015-03-17 至 2015-06-22</td>
+                                            <td>100人</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="javascript:void(0)">首存送50%彩金</a></td>
+                                            <td>2015-03-17 至 2015-06-22</td>
+                                            <td>100人</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="javascript:void(0)">首存送50%彩金</a></td>
+                                            <td>2015-03-17 至 2015-06-22</td>
+                                            <td>100人</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="javascript:void(0)">首存送50%彩金</a></td>
+                                            <td>2015-03-17 至 2015-06-22</td>
+                                            <td>100人</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="javascript:void(0)">首存送50%彩金</a></td>
+                                            <td>2015-03-17 至 2015-06-22</td>
+                                            <td>100人</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 m-b-md">
+                            <div class="white-bg clearfix shadow">
+                                <div class="manage_tit"><b class="m-l-md">站点信息</b></div>
+                                <dl class="m site-list-wrap">
+                                    <dt>站点额度：<span class="co-red3">9,999,999.00</span>（授信/额度保障）</dt>
+                                    <dd>
+                                        <ul class="col-sm-6 p-x">
+                                            <li>
+                                                <b><em class="fa fa-envelope m-r-sm"></em>邮件接口</b><span class="m-l-xs co-grayc2">启用1个</span><span class="m-l-xs co-grayc2">停用2个</span>
+                                                <div class="pull-right">
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown"
+                                                            class="btn btn-warning dropdown-toggle btn-xs">3个
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <b><em class="fa fa-globe m-r-sm"></em>语言版本</b>
+                                                <div class="pull-right">
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown"
+                                                            class="btn btn-warning dropdown-toggle btn-xs">3个<span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu lang">
+                                                            <li><a href="javascript:void(0)">中文版</a></li>
+                                                            <li><a href="javascript:void(0)">英文版</a></li>
+                                                            <li><a href="javascript:void(0)">繁体版</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <b><em class="fa fa-credit-card m-r-sm"></em>在线支付</b>
+                                                <div class="pull-right">
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown"
+                                                            class="btn btn-warning dropdown-toggle btn-xs">2个
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <b><em class="fa fa-gamepad m-r-sm"></em>接入游戏</b>
+                                                <div class="pull-right">
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown"
+                                                            class="btn btn-warning dropdown-toggle btn-xs">10款
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <b><em class="fa fa-users m-r-sm"></em>子账号</b>
+                                                <div class="pull-right">
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown"
+                                                            class="btn btn-warning dropdown-toggle btn-xs">3个
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <ul class="col-sm-6 p-x">
+                                            <li>
+                                                <b><em class="fa fa-comment m-r-sm"></em>短信接口</b>
+                                                <div class="pull-right">
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown"
+                                                            class="btn btn-warning dropdown-toggle btn-xs">2个
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <b><em class="fa fa-cny m-r-sm"></em>支持货币</b>
+                                                <div class="pull-right">
+                                                       <div class="btn-group dropup">
+                                                        <button class="btn btn-warning dropdown-toggle btn-xs btn-xxxs help-popover" data-toggle="dropdown">5种<span class="caret"></span>
+                                                        </button>
+                                                         <ul class="dropdown-menu dropdown-menu-right">
+                                                            <table class='table table-bordered table-condensed m-b-none'>
+                                <tbody>
+                                  <tr>
+                                    <td class='bg-tbcolor'>货币</td>
+                                    <td class='co-gray6'>与CNY汇率</td>
+                                  </tr>
+                                  <tr>
+                                    <td class='bg-tbcolor'>人民币CNY（默认）</td>
+                                    <td class='co-gray6'>100</td>
+                                  </tr>
+                                  <tr>
+                                    <td class='bg-tbcolor'>美元USD</td>
+                                    <td class='co-gray6'>322</td>
+                                  </tr>
+                                  <tr>
+                                    <td class='bg-tbcolor'>日元JPY</td>
+                                    <td class='co-gray6'>1222</td>
+                                  </tr>
+                                  <tr>
+                                    <td class='bg-tbcolor'>欧元EUR</td>
+                                    <td class='co-gray6'>455</td>
+                                  </tr>
+                                  <tr>
+                                    <td class='bg-tbcolor'>英镑GBP</td>
+                                    <td class='co-gray6'>455</td>
+                                  </tr>
+                                  
+                                </tbody>
+                            </table>
+                                                           </ul></div>
+                                                        
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <b><em class="fa fa-newspaper-o m-r-sm"></em>收款账号</b>
+                                                <div class="pull-right">
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown"
+                                                            class="btn btn-warning dropdown-toggle btn-xs">3个
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <b><em class="fa fa-th-large m-r-sm"></em>接入应用</b>
+                                                <div class="pull-right">
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown"
+                                                            class="btn btn-warning dropdown-toggle btn-xs">4个
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <b><em class="fa fa-tachometer m-r-sm"></em>当前版本</b>
+                                                <div class="pull-right">
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown"
+                                                            class="btn btn-warning dropdown-toggle btn-xs">4.8.5.55326
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+         
+         <div class="col-lg-12 m-t">
+            <div class="wrapper white-bg shadow">
+              <div class="sys_tab_wrap clearfix m-b-sm">
+                <div class="m-sm">
+                <b class="fs16">弹窗</b>
+                </div>
+            </div>
+               
+               
+
+                    
+                        <div class="p-sm">      
+                          <button type="button" class="btn btn-filter help-popover" tabindex="0" role="button" data-container="body" data-toggle="popover"  data-placement="top"  data-content="用于接入第三方流量统计平台" data-template="<div class='popover success' role='tooltip'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div></div>">提示成功</button> 
+                          <button type="button" class="btn btn-filter help-popover" tabindex="0" role="button" data-container="body" data-toggle="popover"  data-placement="top"  data-content="用于接入第三方流量统计平台" data-template="<div class='popover danger' role='tooltip'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div></div>">提示失败</button>  
+                          <button type="button" class="btn btn-filter help-popover" tabindex="0" role="button" data-container="body" data-toggle="popover"  data-placement="top"  data-content="用于接入第三方流量统计平台" data-template="<div class='popover warning' role='tooltip'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div></div>">提示警告</button>  
+                          <button type="button" class="btn btn-filter help-popover" tabindex="0" role="button" data-container="body" data-toggle="popover"  data-placement="top"  data-content="用于接入第三方流量统计平台" data-template="<div class='popover info' role='tooltip'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div></div>">提示信息</button>   
+                               
+                </div>            
+                  
+        </div>
+        
+    </div>  
+                    
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+          <div class="pull-right"> <div class="btn-group dropup">
+        <button type="button" class="btn btn-outline btn-filter dropdown-toggle language-btn m-sm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../mcenter/images/language/england.png" class="m-r-xs">English <span class="caret m-l-xs"></span></button>
+        
+        <ul class="dropdown-menu dropdown-menu-right m-sm m-b-none">
+          <li><a href="javascript:void(0)"><img src="../../common/images/language/simplified-chinese.png" class="m-r-xs">简体中文</a></li>
+          <li><a href="javascript:void(0)"><img src="../../common/images/language/traditional-chinese.png" class="m-r-xs">繁体中文</a></li>
+          <li><a href="javascript:void(0)"><img src="../../common/images/language/1.png" class="m-r-xs">ภาษาไทย</a></li>
+          <li><a href="javascript:void(0)"><img src="../../common/images/language/2.png" class="m-r-xs">Malaysia</a></li>
+        </ul>
+      </div></div>
+            <div class="a-copy clearfix"> <div class="pull-left"><a href="javascript:void(0)">联系客服</a><span class="dividing-line m-r-xs m-l-xs">|</span><a href="javascript:void(0)"  data-toggle="modal" data-target="#competencePwd">意见反馈</a></div><span class="m-l-sm pull-left">Copyright © 2015  gamebox 版权所有</span> <span class="htm-5-logo" type= "button" data-toggle="tooltip" data-placement="top" title="我们项目使用html5规范开发，可提供您在所有设备上更加好的体验。"></span></div>
+        </div>
+    </div>
+    <!--意见反馈-->
+<!--意见反馈-->
+<div class="modal inmodal" id="competencePwd" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content animated bounceInRight family">
+<div class="modal-header">
+<span class="filter">意见反馈</span>
+<button type="button" class="close" data-dismiss="modal">
+<span aria-hidden="true">&times;</span>
+<span class="sr-only">关闭</span>
+</button>
+</div>
+<div class="modal-body">
+<div class="form-group clearfix m-t-sm m-b-sm col-xs-12">
+
+<div class="p-x">
+<div class="line-hi34 m-b-xs">
+<div class="pull-left ft-bold m-b-xs">
+意见反馈：此信息将发送至技术支援方 <span><img src="../../ccenter/images/dawoo-logo.png"  style="height: 23px;"></span>
+</div>
+</div>
+<textarea class="form-control" placeholder="如果您使用本系统的过程中，遇到问题，欢迎随时反馈。"></textarea>
+<dd class="m-t-xs m-b-xs pull-left">
+<span class="co-yellow">
+    <i class="fa fa-exclamation-circle"></i>
+</span>
+业务方面的问题请直接联系客服处理</dd>
+<dd class="m-t-xs co-grayc2 pull-right">还可输入400个字符</dd>
+</div>
+
+
+</div>
+<div class="form-group clearfix m-b-sm col-xs-12">
+<div class=" p-x">
+<div class="input-group date">
+<span class="input-group-addon abroder-no ft-bold">验证码：</span>
+<input type="text" class="form-control" placeholder="请输入验证码">
+<span class="input-group-addon abroder-no p-x">
+    <img src="images//ico.jpg" class="pull-left m-l" />
+</span>
+<span class="input-group-addon abroder-no">
+    <a href="javascript:void(0)" class="co-gray6">
+        <i class="fa fa-refresh"></i>
+    </a>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-filter" data-toggle="modal" data-dismiss="modal" data-target="#competenceError">提交</button>
+<!--                <button type="button" class="btn btn-primary-hide">取消</button>
+-->
+</div>
+</div>
+</div>
+</div>
+<div class="support-btn">
+	<a href="javascript:void(0)" data-toggle="modal" data-target="#competencePwd"></a>
+</div>
+    <!--弹窗实例-->
+    <div class="modal inmodal in" id="edit" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">弹窗实例</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                
+                
+                
+                
+                <div class="no-content_wrap">
+                                        <i class="fa fa-exclamation-circle"></i> 暂无内容
+                                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增快捷菜单-->
+<div class="modal inmodal" id="add-plus" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight unstyled family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增快捷菜单</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+          <div class="condition-wraper m-b-sm clearfix">
+            <strong>新增快捷菜单</strong>
+            <a href="javascript:void(0)" class="pull-right co-blue3">恢复默认</a>
+          </div>
+          <div class="condition-wraper m-b-sm clearfix">
+            <span class="co-red3"><i class="fa fa-times-circle"></i>&nbsp;&nbsp;操作无效，最多可添加20个快键方式</span>
+          </div>
+          <div class="add-players">
+            <dl class="add-shortcut-menu clearfix">
+              <dt>角色管理</dt>
+              <dd>
+                <a href="javascript:void(0)" class="selected">玩家列表<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">层级设置<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)" class="selected">玩家等级<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)" class="selected">代理管理<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)" class="selected">代理体系<i class="fa fa-check"></i></a>
+              </dd>
+            </dl>
+            <dl class="add-shortcut-menu clearfix">
+              <dt>交易管理</dt>
+              <dd>
+                <a href="javascript:void(0)">玩家列表<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">层级设置<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)" class="selected">玩家等级<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)" class="selected">代理管理<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">代理体系<i class="fa fa-check"></i></a>
+              </dd>
+            </dl>
+            <dl class="add-shortcut-menu clearfix">
+              <dt>内容管理</dt>
+              <dd>
+                <a href="javascript:void(0)">玩家列表<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">层级设置<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">玩家等级<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">代理管理<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">代理体系<i class="fa fa-check"></i></a>
+              </dd>
+            </dl>
+            <dl class="add-shortcut-menu clearfix">
+              <dt>内容管理</dt>
+              <dd>
+                <a href="javascript:void(0)">玩家列表<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">层级设置<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">玩家等级<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">代理管理<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">代理体系<i class="fa fa-check"></i></a>
+              </dd>
+            </dl>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" data-dismiss="modal" class="btn btn-outline btn-filter">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+
+<!-- Mainly scripts -->
+<script src="../../common/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../common/js/bootstrap/bootstrap.min.js"></script>
+<!-- metisMenu 手风琴控件 -->
+<script src="../../common/js/jquery/plugins/jquery.metisMenu/jquery.metisMenu.js"></script>
+<!-- Chosen 选择下拉控件-->
+<script src="../../common/js/jquery/plugins/jquery.chosen/jquery.chosen.js"></script>
+<!-- JSKnob 原型图表控件-->
+<script src="../../common/js/jquery/plugins/jquery.knob/jquery.knob.js"></script>
+<!-- NouSlider 滑动模块控件-->
+<script src="../../common/js/jquery/plugins/jquery.nouislider/jquery.nouislider.min.js"></script>
+<!-- iCheck 单选复选控件-->
+<script src="../../common/js/iCheck/icheck.min.js"></script>
+<!-- 左侧菜单响应控件 -->
+<script src="../../common/js/inspinia/inspinia.js"></script>
+<!--switch 开关按钮控件-->
+<script src="../../common/js/dist/bootstrap-switch.js"></script>
+<!--主题切换控件-->
+<script src="../../common/js/modernizr.custom/modernizr.custom.17475.js"></script>
+<!--主题图片滚动插件-->
+<script src="../../common/js/jquery/plugins/jquery.elastislide/jquery.elastislide.js"></script>
+<!--toastr提示弹窗插件-->
+<script src="../../common/js/toastr/toastr.min.js"></script>
+<script src="../../common/js/jquery/plugins/fileinput/fileinput.js"></script>
+<script src="app.js"></script>
+
+<script>
+  $(document).ready(function () {
+       
+        //chosen 下拉选择框
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': {allow_single_deselect: true},
+            '.chosen-select-no-single': {disable_search_threshold: 10},
+            '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+            '.chosen-select-width': {width: "95%"}
+        };
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+     
+        
+        });
+        //列表选中
+        $('input').on('ifChecked', function(event){
+           $(this).parents('tr').addClass('open');
+           $('.function-menu-show').show();
+        });
+        
+      
+        //列表不选中
+        $('input').on('ifUnchecked', function(event){
+           $(this).parents('tr').removeClass('open');
+           $('.function-menu-show').hide();
+        });
+        
+        //icheck 单选、复选
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+        
+        //Switch 切换开关
+        $("[name='my-checkbox']").bootstrapSwitch();
+        
+        //tool tips 提示弹窗
+        $('.help-popover').popover();
+       
+        
+        //显示隐藏模块--更多数据
+        $(".more-data").mousedown(function () {
+            $(this).parent().toggleClass("show-data");
+        });
+
+        //快捷菜单滑动
+        $("ul>li.menu").mouseover(function () {
+            $(this).addClass("shut");
+        });
+        $("ul>li.menu").mouseleave(function () {
+            $(this).removeClass("shut");
+        });
+        
+        //主题菜单滑动
+        $("ul>li.themes").mouseover(function () {
+            $(this).addClass("shut");
+        });
+        $("ul>li.themes").mouseleave(function () {
+            $(this).removeClass("shut");
+        });
+        
+        /*快捷菜单按钮效果*/
+        $("ul.home-wrap dd").mouseover(function () {
+            $(this).addClass("shut");
+        });
+        $("ul.home-wrap dd").mouseleave(function () {
+            $(this).removeClass("shut");
+        });
+
+        $("ul.logo-wrap dd").mouseover(function () {
+            $(this).addClass("shut");
+        });
+        $("ul.logo-wrap dd").mouseleave(function () {
+            $(this).removeClass("shut");
+        });
+      
+
+        //themes快捷菜单冒泡阻止
+        $("ul>li.menu").click(function (event) {
+            $("ul>li.menu.shut").toggleClass("open");
+            $(document).one("click", function (event) {
+                $("ul>li.menu").removeClass("open");
+            });
+            $("dl.menu-item").slideToggle(200);
+            $(document).one("click", function (event) {
+                $("dl.menu-item").hide();
+            });
+            event.stopPropagation();
+        });
+        $("dl.menu-item").click(function (event) {
+            event.stopPropagation();
+        });
+
+        //显示隐藏模块-主题
+        $("ul>li.themes").click(function () {
+            $("ul>li.themes").addClass("open");
+            $(".themes_list").slideToggle();
+        });
+        $(".pack_up").click(function () {
+            $("ul>li.themes").removeClass("open");
+            $(".themes_list").slideToggle();
+        });
+
+        //显示隐藏模块-小屏幕账号、站点下拉
+        $("ul>li.adown").click(function () {
+            $("ul>li.adown").toggleClass("open");
+            $(".adown_list").slideToggle();
+        });
+        //tooltip 提示弹窗
+        $('[data-toggle="tooltip"]').tooltip();
+      
+        //显示隐藏模块-顶部菜单
+        $(".nav-menu-switch").click(function () {
+            $(".top>ul.nav.navbar-nav").toggleClass("open");
+            $(document).one("click", function (event) {
+	              $(".top>ul.nav.navbar-nav").removeClass("open"); 
+	     });
+            event.stopPropagation();
+        })
+        
+        //圆形图表插件
+        $(".dial").knob();
+        
+        //stint
+        $(".stint").click(function () {
+            $(this).toggleClass("open");
+        });
+        
+        //筛选条件选择效果
+        $(".condition li").click(function () {
+            $(this).parent().children().removeClass("click");
+            $(this).addClass("click");
+        });
+        $(".condition li").mouseover(function () {
+            $(this).addClass("hover");
+        });
+        $(".condition li").mouseleave(function () {
+            $(this).removeClass("hover");
+        });
+       
+        //新增左侧菜单-选中/取消 效果
+        $(".add-shortcut-menu dd a").click(function () {
+            $(this).toggleClass("selected");
+        });
+
+        //添加标签-选中/取消 效果
+        $(".compile-li-tag a").click(function () {
+            $(this).toggleClass("selected");
+        });
+
+        //显示隐藏模块-添加标签
+        $(".compile-add").click(function () {
+            $(".compile-li-tag").toggleClass("open");
+        });
+
+        //鼠标效果显示隐藏-详细列表-总资产
+        $(".assets-wrap").mouseover(function () {
+            $(this).children(".tbsj").show();
+        });
+        $(".assets-wrap").mouseleave(function () {
+            $(this).children(".tbsj").hide();
+        });
+        
+        //鼠标效果显示隐藏-详细列表-总资产-刷新按钮
+        $("dl.funds-wrap dd").mouseover(function () {
+            $(this).children("a.refresh").show();
+        });
+        $("dl.funds-wrap dd").mouseleave(function () {
+            $(this).children("a.refresh").hide();
+        });
+        //asdf
+        $("#file-0").fileinput({
+            'allowedFileExtensions' : ['jpg', 'png','gif'],
+        });
+</script>
+
+<script>
+//表格内下拉菜单    
+$(document).ready(function(){
+      $("th.inline").click(function () {
+      $(this).find(".chosen-drop").css({top:$(this).parent().offset().top-$("body").scrollTop()+28});
+      $(this).find(".chosen-drop").css({left:$(this).find(".chosen-container").offset().left});
+    });
+});
+</script>
+
+ <script>
+    
+    //饼状图
+    $(function () {
+     $(document).ready(function () {
+
+        // Build the chart
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: '玩家占比'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: "玩家占比",
+                colorByPoint: true,
+                data: [{
+                    name: "QQ游戏",
+                    y: 56.33
+                }, {
+                    name: "联众游戏",
+                    y: 24.03,
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: "爱丽游戏",
+                    y: 10.38
+                }, {
+                    name: "500万游戏",
+                    y: 4.77
+                }]
+            }]
+        });
+    });
+});
+   //走势图
+   $(function () {
+    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=usdeur.json&callback=?', function (data) {
+
+        $('#container11').highcharts({
+            chart: {
+                zoomType: 'x'
+            },
+            title: {
+                text: '最近30天日均新增玩家数：2352652'
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                        ' ' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: 'Exchange rate'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+
+            series: [{
+                type: 'area',
+                name: '存款金额',
+                data: data
+            }]
+        });
+    });
+});
+    //柱状图
+    $(function () {
+    $('#container22').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: '盈亏对比'
+        },
+        xAxis: {
+            categories: ['QQ游戏']
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: '游戏1',
+            data: [5]
+        }, {
+            name: '游戏2',
+            data: [2]
+        }, {
+            name: '游戏3',
+            data: [-3]
+        }, {
+            name: '游戏4',
+            data: [3]
+        }]
+    });
+});
+    
+    </script>
+<!-- ChartJS-->
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="grid-light.js"></script>
+
+</html>

@@ -1,0 +1,695 @@
+/**
+ * Created with JetBrains PhpStorm.
+ * User: taoqili
+ * Date: 2012-06-12
+ * Time: 午後5:02
+ * To change this template use File | Settings | File Templates.
+ */
+UE.I18N['ja-jp'] = {
+    'labelMap':{
+        'anchor':'アンカー', 'undo':'やり直し', 'redo':'再度実行', 'bold':'太字', 'indent':'インデント', 'snapscreen':'画面をスナップ',
+        'italic':'斜体', 'underline':'アンダーライン', 'strikethrough':'削除線', 'subscript':'下付き','fontborder':'フォントボーダー',
+        'superscript':'上付き', 'formatmatch':'形式一致', 'source':'ソース', 'blockquote':'引用をブロック',
+        'pasteplain':'テキスト貼り付けモード', 'selectall':'全部選択', 'print':'印刷', 'preview':'プレビュー',
+        'horizontal':'分割線', 'removeformat':'形式を削除', 'time':'時間', 'date':'日付',
+        'unlink':'リンクをキャンセル', 'insertrow':'行を前に挿入', 'insertcol':'列を前に挿入', 'mergeright':'右側に結合', 'mergedown':'下側に結合',
+        'deleterow':'行を削除', 'deletecol':'列を削除', 'splittorows':'行を分割',
+        'splittocols':'列を分割', 'splittocells':'セルを分割','deletecaption':'キャプションを削除','inserttitle':'タイトルを挿入',
+        'mergecells':'複数のセルを結合', 'deletetable':'テーブルを削除', 'cleardoc':'文書をクリア','insertparagraphbeforetable':"テーブルの前に行を挿入",'insertcode':'言語コードを挿入',
+        'fontfamily':'フォント', 'fontsize':'フォントサイズ', 'paragraph':'段落形式', 'simpleupload':'単一イメージをアップロード', 'insertimage':'複数イメージを挿入','edittable':'テーブルを編集','edittd':'セル属性を編集元格属性', 'link':'ハイパーリンク',
+        'emotion':'表情', 'spechars':'特殊記号', 'searchreplace':'置換対象を検索', 'map':'Baiduマップ', 'gmap':'Googleマップ',
+        'insertvideo':'ビデオ', 'help':'ヘルプ', 'justifyleft':'左に揃える', 'justifyright':'右に揃える', 'justifycenter':'中央に揃える',
+        'justifyjustify':'両端揃え', 'forecolor':'フォント色', 'backcolor':'背景色', 'insertorderedlist':'順序リストを挿入',
+        'insertunorderedlist':'リスト無し', 'fullscreen':'フルスクリーン', 'directionalityltr':'左から右に入力', 'directionalityrtl':'右から左に入力',
+        'rowspacingtop':'段落前距離', 'rowspacingbottom':'段落後距離',  'pagebreak':'ページ区切り', 'insertframe':'フレームを挿入', 'imagenone':'イメージ無し',
+        'imageleft':'左にフロート', 'imageright':'右にフロート', 'attachment':'添付ファイル', 'imagecenter':'中心', 'wordimage':'イメージを回転',
+        'lineheight':'行間距離','edittip' :'提示を編集','customstyle':'カスタム定義タイトル', 'autotypeset':'自動レイアウト',
+        'webapp':'百度アプリ','touppercase':'大文字', 'tolowercase':'小文字','background':'バックグラウンド','template':'テンプレート','scrawl':'スクロール',
+        'music':'音楽','inserttable':'テーブルを挿入','drafts': 'ドラフトボックスから読込む', 'charts': '図表'
+    },
+    'insertorderedlist':{
+        'num':'1,2,3...',
+        'num1':'1),2),3)...',
+        'num2':'(1),(2),(3)...',
+        'cn':'一,二,三....',
+        'cn1':'一),二),三)....',
+        'cn2':'(一),(二),(三)....',
+        'decimal':'1,2,3...',
+        'lower-alpha':'a,b,c...',
+        'lower-roman':'i,ii,iii...',
+        'upper-alpha':'A,B,C...',
+        'upper-roman':'I,II,III...'
+    },
+    'insertunorderedlist':{
+        'circle':'○ 大きな丸',
+        'disc':'● 小さな黒丸',
+        'square':'■ 小さな四角 ',
+        'dash' :'— 破線',
+        'dot':' 。小さな丸'
+    },
+    'paragraph':{'p':'段落', 'h1':'タイトル 1', 'h2':'タイトル 2', 'h3':'タイトル 3', 'h4':'タイトル 4', 'h5':'タイトル 5', 'h6':'タイトル 6'},
+    'fontfamily':{
+        'songti':'宋体',
+        'SimSun': 'FangSong',
+        'FangSong_GB2312': 'FangSong_GB2312',
+        'NSimSun':'NSimSun',
+        'kaiti':'KaiTi',
+        'heiti':'HeiTi',
+        'lishu':'LiSu',
+        'yahei':'Microsoft ·YaHei',
+        'andaleMono':'Andale Mono',
+        'arial': 'Arial',
+        'arialBlack':'Arial Black',
+        'comicSansMs':'Comic Sans MS',
+        'impact':'Impact',
+        'timesNewRoman':'Times New Roman',
+        'YouYuan':'SimSun',
+        'STHeiti':'STHeiti',
+        'STXihei':'STHeiti Ligjht (ST XiHei)',
+        'STKaiti':'STKaiti',
+        'STSong':'STSong',
+        'STZhongsong':'STZhongsong',
+        'STFangsong':'STFangsong',
+        'FZShuTi':'FZShuti',
+        'FZYaoti':'FZYaoti',
+        'STCaiyun':'STCaiyun',
+        'STHupo':'STHupo',
+        'STLiti':'STLiti',
+        'STXingkai':'STXingkai',
+        'STXinwei':'STXinwei',
+        'Apple LiGothic Medium':'Apple LiGothic Medium',
+        'Apple LiSung Light':'Apple LiSung Light',
+        'MingLiU':'MigLiU',
+        'PMingLiU':'PMingLiU'
+    },
+    'customstyle':{
+        'tc':'中央にタイトル',
+        'tl':'左にタイトル',
+        'im':'ハイライト',
+        'hi':'強くハイライト'
+    },
+    'autoupload': {
+        'exceedSizeError': 'ドキュメントの大きさが制限を超過しています',
+        'exceedTypeError': 'ドキュメント形式が許可されません',
+        'jsonEncodeError': 'サーバーが形式エラーを返しました',
+        'loading':"現在アップロードしています･･･",
+        'loadError':"アップロードのエラーです",
+        'errorLoadConfig': 'バックエンド設定項目が正常に読込めませんでした。アップロードプラグインが正常に使用できません！'
+    },
+    'simpleupload':{
+        'exceedSizeError': 'ドキュメントの大きさが制限を超過しています',
+        'exceedTypeError': 'ドキュメント形式が許可されません',
+        'jsonEncodeError': 'サーバーが形式エラーを返しました',
+        'loading':"現在アップロードしています･･･",
+        'loadError':"アップロードのエラーです",
+        'errorLoadConfig': 'バックエンド設定項目が正常に読込めませんでした。アップロードプラグインが正常に使用できません！'
+    },
+    'elementPathTip':"エレメントのパス",
+    'wordCountTip':"字数の統計",
+    'wordCountMsg':'現在入力済み{#count}個の文字列です。後{#leave}個の文字を入力できます。',
+    'wordOverFlowMsg':'<span style="color:red;">文字の数が最大許可値を超えています。サーバーが保存を拒否しました！</span>',
+    'ok':"確認",
+    'cancel':"キャンセル",
+    'closeDialog':"ダイアログボックスを閉じる",
+    'tableDrag':"テーブルの並べ替えにはuiUtils.jsドキュメントに読込みが必要です！",
+    'autofloatMsg':"工具ツールコラムのフロートはエディターUIに依存します。先に必要なUIドキュメントを導入してください！",
+    'loadconfigError': '取得した後、設定項目の請求でエラーが発生しました。アップロード機能が正常に使用できなくなります！',
+    'loadconfigFormatError': 'この後、設定項目に戻る時にエラーが発生しました。アップロード機能が正常に使用できなくなります！！',
+    'loadconfigHttpError': '請求した後、設定項目でhttpエラーが発生しました。アップロード機能が正常に使用できなくなります！',
+    'snapScreen_plugin':{
+        'browserMsg':"IEブラウザーのみをサポート！",
+        'callBackErrorMsg':"サーバーがデータにエラーがあることを返しました。設定項目をチェックした後、再試行してください。",
+        'uploadErrorMsg':"スクリーンショットのアップロードに失敗しました。サーバーターミナル環境をチェックしてください！"
+    },
+    'insertcode':{
+        'as3':'ActionScript 3',
+        'bash':'Bash/Shell',
+        'cpp':'C/C++',
+        'css':'CSS',
+        'cf':'ColdFusion',
+        'c#':'C#',
+        'delphi':'Delphi',
+        'diff':'Diff',
+        'erlang':'Erlang',
+        'groovy':'Groovy',
+        'html':'HTML',
+        'java':'Java',
+        'jfx':'JavaFX',
+        'js':'JavaScript',
+        'pl':'Perl',
+        'php':'PHP',
+        'plain':'書式なし',
+        'ps':'PowerShell',
+        'python':'Python',
+        'ruby':'Ruby',
+        'scala':'Scala',
+        'sql':'SQL',
+        'vb':'Visual Basic',
+        'xml':'XML'
+    },
+    'confirmClear':"この文章をクリアしてもよろしいですか？",
+    'contextMenu':{
+        'delete':"削除",
+        'selectall':"全て選択",
+        'deletecode':"コードを削除",
+        'cleardoc':"文書をクリア",
+        'confirmclear':"この文章をクリアしてもよろしいですか？",
+        'unlink':"ハイパーリンクを削除",
+        'paragraph':"段落の形式",
+        'edittable':"テーブルの属性",
+        'aligntd':"セルの整列方法",
+        'aligntable':'テーブルの整列方法',
+        'tableleft':'左にフロート',
+        'tablecenter':'中央に表示',
+        'tableright':'右にフロート',
+        'edittd':"セルの属性",
+        'setbordervisible':'テーブルのボーダーの表示を設定',
+        'justifyleft':'左に整列',
+        'justifyright':'右に整列',
+        'justifycenter':'中央に整列',
+        'justifyjustify':'両端に整列',
+        'table':"テーブル",
+        'inserttable':'テーブルを挿入',
+        'deletetable':"テーブルを削除",
+        'insertparagraphbefore':"段落前に挿入",
+        'insertparagraphafter':"段落後に挿入",
+        'deleterow':"この行を削除",
+        'deletecol':"この行の前を削除",
+        'insertrow':"行の前に挿入",
+        'insertcol':"行の左に挿入",
+        'insertrownext':"行の後ろに挿入",
+        'insertcolnext':"行の右に挿入",
+        'insertcaption':'テーブルに名称を挿入',
+        'deletecaption':'テーブルの名称を削除',
+        'inserttitle':'テーブルにタイトル行を挿入',
+        'deletetitle':'テーブルのタイトル行を削除',
+        'inserttitlecol':'テーブルにタイトル列を挿入',
+        'deletetitlecol':'テーブルのタイトル列を削除',
+        'averageDiseRow':'各行を平均に配置',
+        'averageDisCol':'各列を平均に配置',
+        'mergeright':"右に向かって結合",
+        'mergeleft':"左に向かって結合",
+        'mergedown':"下に向かって結合",
+        'mergecells':"セルを結合",
+        'splittocells':"セルを完全に分割",
+        'splittocols':"列に分割",
+        'splittorows':"行に分割",
+        'tablesort':'テーブルの並え替え',
+        'enablesort':'テーブルの並べ替え変更可能を設定',
+        'disablesort':'テーブルの並え替え可能をキャンセル',
+        'reversecurrent':'現在の順序を逆にする',
+        'orderbyasc':'ASCII文字列昇順を適用',
+        'reversebyasc':'ASCII文字列降順を適用',
+        'orderbynum':'数値の大小の昇順を適用',
+        'reversebynum':'数値の大小の降順を適用',
+        'borderbk':'フレームのシェード',
+        'setcolor':'テーブル区切り行の色の変更',
+        'unsetcolor':'テーブル区切り行の色の変更をキャンセル',
+        'setbackground':'エリアのバックグラウンド区切り行を選択',
+        'unsetbackground':'選択したエリアのバックグラウンドをキャンセル',
+        'redandblue':'赤と青の交互',
+        'threecolorgradient':'3色で変化',
+        'copy':"コピー[Ctrl + c]",
+        'copymsg': "ブラウザーはサポートしません。[Ctrl + c]を使用してください'",
+        'paste':"貼付け[Ctrl + v]",
+        'pastemsg': "ブラウザーはサポートしません。[Ctrl + v]を使用してください"
+    },
+    'copymsg': "ブラウザーはサポートしません。[Ctrl + c]を使用してください",
+    'pastemsg': "ブラウザーはサポートしません。[Ctrl + v]を使用してください",
+    'anthorMsg':"リンク",
+    'clearColor':'色をクリア',
+    'standardColor':'標準色',
+    'themeColor':'トピックの色',
+    'property':'属性',
+    'default':'デフォルト',
+    'modify':'修正',
+    'justifyleft':'左に整列',
+    'justifyright':'右に整列',
+    'justifycenter':'中央に配置',
+    'justify':'デフォルト',
+    'clear':'クリア',
+    'anchorMsg':'アンカー',
+    'delete':'削除',
+    'clickToUpload':"クリックして、アップロード",
+    'unset':'まだ言語ドキュメントを設定していません',
+    't_row':'行',
+    't_col':'列',
+    'more':'その他の項目',
+    'pasteOpt':'選択した項目を貼付け',
+    'pasteSourceFormat':"元の型式を保持",
+    'tagFormat':'ラベルのみを保持',
+    'pasteTextFormat':'本文のみを保持',
+    'autoTypeSet':{
+        'mergeLine':"空白の行を結合",
+        'delLine':"空白の行をクリア",
+        'removeFormat':"形式をクリア",
+        'indent':"上部の行をインデント",
+        'alignment':"整列方法",
+        'imageFloat':"イメージのフロート",
+        'removeFontsize':"フォントサイズをクリア",
+        'removeFontFamily':"フォントをクリア",
+        'removeHtml':"冗長なHTMLコードをクリア",
+        'pasteFilter':"フィルターを貼り付け",
+        'run':"実行",
+        'symbol':'シンボルを変換',
+        'bdc2sb':'全角を半角に変換',
+        'tobdc':'半角半を全角に変換'
+    },
+
+    'background':{
+        'static':{
+            'lang_background_normal':'バックグラウンドを設定',
+            'lang_background_local':'オンラインイメージ',
+            'lang_background_set':'オプション',
+            'lang_background_none':'バックグラウンド色無し',
+            'lang_background_colored':'バックグラウンド色有り',
+            'lang_background_color':'色の設定',
+            'lang_background_netimg':'ネットワークイメージ',
+            'lang_background_align':"整列方法",
+            'lang_background_position':'正確に定位',
+            'repeatType':{'options':["中央", "横向き重なり", "縦向き重なり", "タイル","カスタム定義"]}
+
+        },
+        'noUploadImage':"当前現在まだ何もイメージをアップロードしていません！",
+        'toggleSelect':"单击1回クリックすると、選択済み対象の状態を切り替えられます\n元のイメージのサイズ："
+    },
+    //===============対話文字列i18N=======================
+    'insertimage':{
+        'static':{
+            'lang_tab_remote':"イメージを挿入", //ノード数
+            'lang_tab_upload':"ローカルでアップロード",
+            'lang_tab_online':"オンライン管理",
+            'lang_tab_search':"イメージ検索",
+            'lang_input_url':"ア ド レ ス",
+            'lang_input_size':"サ イ ズ：",
+            'lang_input_width':"幅",
+            'lang_input_height':"高さ",
+            'lang_input_border':"ボーダー： ",
+            'lang_input_vhspace':"マージン： ",
+            'lang_input_title':"説明： ",
+            'lang_input_align':'イメージのフロート方法：',
+            'lang_imgLoading':"　イメージを読み込み中･･･",
+            'lang_start_upload':"アップロードを開始",
+            'lock':{'title':"幅と高さの比率をロック"}, //属性
+            'searchType':{'title':"イメージカテゴリ", 'options':["ニュース", "ウォールペーパー", "表情", "自画像・アバター"]}, //選択するオプション
+            'searchTxt':{'value':"検索するキーワードを入力してください"},
+            'searchBtn':{'value':"百度で検索"},
+            'searchReset':{'value':"検索をクリアしてください"},
+            'noneAlign':{'title':'フロート無し'},
+            'leftAlign':{'title':'左にフロート'},
+            'rightAlign':{'title':'右にフロート'},
+            'centerAlign':{'title':'中央の1行を独占'}
+        },
+        'uploadSelectFile':'クリックして、イメージを選択',
+        'uploadAddFile':'追加を続行',
+        'uploadStart':'アップロードを開始',
+        'uploadPause':'アップロードを停止',
+        'uploadContinue':'アップロードを続行',
+        'uploadRetry':'アップロードを再試行',
+        'uploadDelete':'削除',
+        'uploadTurnLeft':'左に回転',
+        'uploadTurnRight':'右に回転',
+        'uploadPreview':'プレビュー中',
+        'uploadNoPreview':'プレビューできません',
+        'updateStatusReady': '選択した_枚のイメージ、合計_KBです。',
+        'updateStatusConfirm': '_枚のイメージのアップロードが正常に完了、_枚のイメージがアップロードに失敗',
+        'updateStatusFinish': '合計_枚（_KB）、_枚のアップロードが正常に完了',
+        'updateStatusError': '，_枚がアップロードに失敗。',
+        'errorNotSupport': 'WebUploaderはご使用のブラウザーをサポートしません！お客様はIEブラウザーを使用しています。flashプレーヤーをアップグレードしてください。',
+        'errorLoadConfig': 'バックエンド設定項目が正常に読込めませんでした。アップロードプラグインが正常に使用できません！',
+        'errorExceedSize':'ドキュメントの大きさが超過しています',
+        'errorFileType':'ドキュメント形式が許可されません',
+        'errorInterrupt':'ドキュメントの転送が中断されました',
+        'errorUploadRetry':'アップロードに失敗しました。再度試行してください',
+        'errorHttp':'httpリクエストエラーです',
+        'errorServerUpload':'サーバーがエラーを返しました',
+        'remoteLockError':"幅が不正確です。この比率にはできません",
+        'numError':"正確な長さと幅の値を入力してください！例：123，400",
+        'imageUrlError':"許可されないイメージ形式またはイメージエリアです！",
+        'imageLoadError':"イメージの読込に失敗しました！リンク先アドレスまたはネットワークの状態を確認してください！",
+        'searchRemind':"検索するキーワードを入力してください",
+        'searchLoading':"　イメージを読込み中です。お待ちください･･･",
+        'searchRetry':" :( ，申し訳ございません。イメージが見つかりません！再度試行してください！"
+    },
+    'attachment':{
+        'static':{
+            'lang_tab_upload': 'ドキュメントをアップロード',
+            'lang_tab_online': 'オンラインの貼付ドキュメント',
+            'lang_start_upload':"アップロードを開始",
+            'lang_drop_remind':"ここにドキュメントをドラッグすることができます。1回に最大で100個のドキュメントを選択可能です"
+        },
+        'uploadSelectFile':'クリックして、ドキュメントを選択',
+        'uploadAddFile':'追加を続行',
+        'uploadStart':'アップロードを開始',
+        'uploadPause':'アップロードを停止',
+        'uploadContinue':'アップロードを続行',
+        'uploadRetry':'アップロードを再試行',
+        'uploadDelete':'削除',
+        'uploadTurnLeft':'左に回転',
+        'uploadTurnRight':'右に回転',
+        'uploadPreview':'プレビュー中',
+        'updateStatusReady': '_個のドキュメントを選択、合計_KB。',
+        'updateStatusConfirm': '_個のドキュメントのアップロードが正常に完了、_個のドキュメントのアップロードに失敗',
+        'updateStatusFinish': '合計_個（_KB）、_個が正常にアップロード',
+        'updateStatusError': '，_枚がアップロードに失敗。',
+        'errorNotSupport': 'WebUploaderはご使用のブラウザーをサポートしません！お客様はIEブラウザーを使用しています。flashプレーヤーをアップグレードしてください。',
+        'errorLoadConfig': 'バックエンド設定項目が正常に読込めませんでした。アップロードプラグインが正常に使用できません！',
+        'errorExceedSize':'ドキュメントの大きさが超過しています',
+        'errorFileType':'ドキュメント形式が許可されません',
+        'errorInterrupt':'ドキュメントの転送が中断されました',
+        'errorUploadRetry':'アップロードに失敗しました。再度試行してください',
+        'errorHttp':'httpリクエストエラーです',
+        'errorServerUpload':'サーバーがエラーを返しました'
+    },
+    'insertvideo':{
+        'static':{
+            'lang_tab_insertV':"ビデオを挿入",
+            'lang_tab_searchV':"ビデオを検索",
+            'lang_tab_uploadV':"ビデオをアップロード",
+            'lang_video_url':"ビデオアドレス",
+            'lang_video_size':"ビデオのサイズ",
+            'lang_videoW':"幅",
+            'lang_videoH':"高さ",
+            'lang_alignment':"整列方法",
+            'videoSearchTxt':{'value':"検索するキーワードを入力してください！"},
+        'videoType':{'options':["全部", "ホット", "エンターテイメント", "お笑い", "スポーツ", "科学技術", "総合芸能"]},
+        'videoSearchBtn':{'value':"百度で検索"},
+        'videoSearchReset':{'value':"結果をクリアしてください"},
+
+        'lang_input_fileStatus':' 現在ドキュメントをアップロードしていません',
+        'startUpload':{'style':"背景:url(アップロード.png) 繰返しなし;"},
+
+        'lang_upload_size':"ビデオのサイズ",
+        'lang_upload_width':"幅",
+        'lang_upload_height':"高さ",
+        'lang_upload_alignment':"整列方法",
+        'lang_format_advice':"mp4形式の使用をお勧めします。"
+
+    },
+    'numError':"正確な数値メールを入力してください。例： 123、400",
+    'floatLeft':"左にフロート",
+    'floatRight':"右にフロート",
+    '"default"':"デフォルト",
+    'block':"1行を独占",
+    'urlError':"入力したビデオアドレスのエラーです。チェックした後、再試行してください！",
+    'loading':" &nbsp;ビデオを読込中です。お待ちください･･･",
+    'clickToSelect':"クリックして、選択",
+    'goToSource':'ソースのビデオに移動',
+    'noVideo':" &nbsp; &nbsp;申し訳ございません。対応するビデオが見つかりません。再試行してください！",
+
+    'browseFiles':'ドキュメントをブラウズ',
+    'uploadSuccess':'アップロードが正常に完了しました！',
+    'delSuccessFile':'正常に完了したリストから削除',
+    'delFailSaveFile':'ドキュメントの移動に失敗しました',
+    'statusPrompt':' 個のドキュメントをアップロード済みです！',
+    'flashVersionError':'現在のFlashバージョンが古すぎます。新しいFlashPlayerに更新した後、再試行してください！',
+    'flashLoadingError':'Flashの読込に失敗しました！パスまたはネットワーク状態をチェックしてください！',
+    'fileUploadReady':'アップロードを待機中･･･',
+    'delUploadQueue':'アップロードを正常に完了したリストから削除',
+    'limitPrompt1':'単一回の選択項目は超過できません',
+    'limitPrompt2':'個のドキュメント！新しく選択してください！',
+    'delFailFile':'ドキュメントの移動に失敗しました',
+    'fileSizeLimit':'ドキュメントの大きさが制限を超過しています',
+    'emptyFile':'空白のドキュメントはアップロードできません！',
+    'fileTypeError':'ドキュメントの形式は許可されません！',
+    'unknownError':'不明なエラーです！',
+    'fileUploading':'アップロード中です。お待ちください…',
+    'cancelUpload':'アップロードをキャンセル',
+    'netError':'ネットワークエラーです',
+    'failUpload':'アップロードに失敗しました！',
+    'serverIOError':'サーバーIOエラーです！',
+    'noAuthority':'アクセス権限がありません',
+    'fileNumLimit':'アップロード個数の制限',
+    'failCheck':'検証に失敗しました。今回のアップロードがスキップされました！',
+    'fileCanceling':'キャンセル中です。お待ちください…',
+    'stopUploading':'アップロードは停止済みです…',
+
+    'uploadSelectFile':'クリックして、ドキュメントを選択',
+    'uploadAddFile':'追加を続行',
+    'uploadStart':'アップロードを開始',
+    'uploadPause':'アップロードを停止',
+    'uploadContinue':'アップロードを続行',
+    'uploadRetry':'アップロードを再試行',
+    'uploadDelete':'削除',
+    'uploadTurnLeft':'左に回転',
+    'uploadTurnRight':'右に回転',
+    'uploadPreview':'プレビュー中',
+    'updateStatusReady': '_個のドキュメントを選択、合計_KB。',
+    'updateStatusConfirm': '_個のアップロードが正常に完了、_個が失敗しました',
+    'updateStatusFinish': '合計_個（_KB）、_個が正常にアップロード',
+    'updateStatusError': '，_枚がアップロードに失敗。',
+    'errorNotSupport': 'WebUploaderはご使用のブラウザーをサポートしません！お客様はIEブラウザーを使用しています。flashプレーヤーをアップグレードしてください。',
+    'errorLoadConfig': 'バックエンド設定項目が正常に読込めませんでした。アップロードプラグインが正常に使用できません！',
+    'errorExceedSize':'ドキュメントの大きさが超過しています',
+    'errorFileType':'ドキュメント形式が許可されません',
+    'errorInterrupt':'ドキュメントの転送が中断されました',
+    'errorUploadRetry':'アップロードに失敗しました。再度試行してください',
+    'errorHttp':'httpリクエストエラーです',
+    'errorServerUpload':'サーバーがエラーを返しました'
+},
+'webapp':{
+    'tip1':"本機能は百度APPが提供するものであり、この画面で確認できるように、先に各サイトマスターに百度APP Keyを申請してください”！",
+        'tip2':"申请申請が正常に完了した後、ueditor.config.js内に取得したappkeyが配置されるようになります！ ",
+        'applyFor':"ここをクリックして、申請",
+        'anthorApi':"百度API"
+},
+'template':{
+    'static':{
+        'lang_template_bkcolor':'バックグラウンドの色',
+            'lang_template_clear' : '元の内容を保持',
+            'lang_template_select' : 'テンプレートを選択'
+    },
+    'blank':"空白のドキュメント",
+        'blog':"ブログ文章",
+        'resume':"個人の履歴書",
+        'richText':"イメージと文書の混在",
+        'sciPapers':"科学技術論文"
+
+
+},
+'scrawl':{
+    'static':{
+        'lang_input_previousStep':"1つ前に戻る",
+            'lang_input_nextsStep':"1つ次に進む",
+            'lang_input_clear':'クリア',
+            'lang_input_addPic':'バックグラウンドを追加',
+            'lang_input_ScalePic':'バックグラウンドをスケーリング',
+            'lang_input_removePic':'バックグラウンドを削除',
+            'J_imgTxt':{title:'バックグラウンドイメージを追加'}
+    },
+    'noScarwl':"未まだ作成していません。白紙の1枚です~",
+        'scrawlUpLoading':"アップロード中です。お待ちください~",
+        'continueBtn':"続行",
+        'imageError':"申し訳ございません。図面の読取に失敗しました！",
+        'backgroundUploading':'バックグラウンドイメージをアップロード中です。お待ちください。'
+},
+'music':{
+    'static':{
+        'lang_input_tips':"アーチスト/曲/アルバムを入力し、お気に入りの音楽を検索します！",
+            'J_searchBtn':{value:'曲の検索'}
+    },
+    'emptyTxt':'未関連する音楽の検索結果がまだありません。キーワードの1個を変更し、再度試してください。',
+        'chapter':'曲',
+        'singer':'アーチスト',
+        'special':'アルバム',
+        'listenTest':'試聴'
+},
+'anchor':{
+    'static':{
+        'lang_input_anchorName':'アンカーの名称：'
+    }
+},
+'charts':{
+    'static':{
+        'lang_data_source':'データソース：',
+            'lang_chart_format': '表図表形式：',
+            'lang_data_align': 'データ整列方法',
+            'lang_chart_align_same': '数据源データソース及び図表のX軸とY軸が一致',
+            'lang_chart_align_reverse': '数据源データソース及び図表のX軸とY軸が不一致',
+            'lang_chart_title': '図表タイトル',
+            'lang_chart_main_title': 'メインタイトル：',
+            'lang_chart_sub_title': 'サブタイトル：',
+            'lang_chart_x_title': 'X軸タイトル：',
+            'lang_chart_y_title': 'Y軸タイトル：',
+            'lang_chart_tip': '通知文字',
+            'lang_cahrt_tip_prefix': '通知文字の接頭辞',
+            'lang_cahrt_tip_description': 'パイチャートのみが有効です。パイチャート内でマウスカーソルを移動し、対応するブロック上に移動した時、ダイアログボックス内にその文字の接頭辞が表示されます',
+            'lang_chart_data_unit': 'データ表示単位',
+            'lang_chart_data_unit_title': '表示単位：',
+            'lang_chart_data_unit_description': '個別データポイント上に、次のようにデータ単位が表示されます。温度単位 ℃',
+            'lang_chart_type': '図表タイプ：',
+            'lang_prev_btn': '上の1個',
+            'lang_next_btn': '下の1個'
+    }
+},
+'emotion':{
+    'static':{
+        'lang_input_choice':'セレクション',
+            'lang_input_Tuzki':'TUSKI',
+            'lang_input_BOBO':'BOBO',
+            'lang_input_lvdouwa':'緑豆蛙LEON',
+            'lang_input_babyCat':'子猫',
+            'lang_input_bubble':'泡泡',
+            'lang_input_youa':'有啊'
+    }
+},
+'gmap':{
+    'static':{
+        'lang_input_address':'アドレス',
+            'lang_input_search':'検索',
+            'address':{value:"北京"}
+    },
+    searchError:'このアドレスには定位できません！'
+},
+'help':{
+    'static':{
+        'lang_input_about':'UEditorバージョン情報',
+            'lang_input_shortcuts':'クイックキー',
+            'lang_input_introduction':'UEditorは百度ウェブのフロントエンド部門開発の役に立つウェブエディターで、軽量で、カスタマイズ可能ですが、ユーザーのエクスペリエンスフィードバックに注意してください。BSD規約に準拠する限り、自由な使用及びコード修正が許可されます。',
+            'lang_Txt_shortcuts':'クイックキー',
+            'lang_Txt_func':'機能',
+            'lang_Txt_bold':'選択した字を太字に設定',
+            'lang_Txt_copy':'選択した内容をコピー',
+            'lang_Txt_cut':'選択した内容を切り取り',
+            'lang_Txt_Paste':'貼り付け',
+            'lang_Txt_undo':'前の操作を再度実行',
+            'lang_Txt_redo':'前の操作をキャンセル',
+            'lang_Txt_italic':'選択した字を斜体にする',
+            'lang_Txt_underline':'選択した字に下線を付ける',
+            'lang_Txt_selectAll':'選択した全部',
+            'lang_Txt_visualEnter':'Shift+Enter',
+            'lang_Txt_fullscreen':'全画面'
+    }
+},
+'insertframe':{
+    'static':{
+        'lang_input_address':'アドレス：',
+            'lang_input_width':'幅：',
+            'lang_input_height':'高さ：',
+            'lang_input_isScroll':'スクロールを許可：',
+            'lang_input_frameborder':'フレームボーダーを表示：',
+            'lang_input_alignMode':'整列方法：',
+            'align':{title:"整列方法", options:["デフォルト", "左に整列", "右に整列", "中央に整列"]}
+    },
+    'enterAddress':'アドレスを入力してください！'
+},
+'link':{
+    'static':{
+        'lang_input_text':'文本内容：',
+            'lang_input_url':'リンクアドレス：',
+            'lang_input_title':'タイトル：',
+            'lang_input_target':'新規ウィンドウで開くかの有無：'
+    },
+    'validLink':'選択した1個のリンクが有効である場合にのみサポートされます',
+        'httpPrompt':'入力するハイパーリンクにはhttpなどのプロトコル名称が含まれないようにします。デフォルトで入力したものにhttp://接頭辞が追加されます'
+},
+'map':{
+    'static':{
+        lang_city:"市町村区",
+            lang_address:"住所",
+            city:{value:"北京"},
+        lang_search:"検索",
+            lang_dynamicmap:"アクティブマップを挿入"
+    },
+    cityMsg:"市町村区を選択してください",
+        errorMsg:"申し訳ございません。この場所が見つかりません！"
+},
+'searchreplace':{
+    'static':{
+        lang_tab_search:"検索",
+            lang_tab_replace:"入れ替える",
+            lang_search1:"検索",
+            lang_search2:"検索",
+            lang_replace:"入れ替える",
+            lang_searchReg:'正規表現での表記をサポートします。前後にスラッシュの表示は正規表現式です。例： “/表現式/”',
+            lang_searchReg1:'正規表現での表記をサポートします。前後にスラッシュの表示は正規表現式です。例： “/表現式/”',
+            lang_case_sensitive1:"大文字小文字を区別",
+            lang_case_sensitive2:"大文字小文字を区別",
+            nextFindBtn:{value:"次の1個"},
+        preFindBtn:{value:"前の1個"},
+        nextReplaceBtn:{value:"次の1個"},
+        preReplaceBtn:{value:"前の1個"},
+        repalceBtn:{value:"置換"},
+        repalceAllBtn:{value:"全部置換"}
+    },
+    getEnd:"文章の最後まで検索済みです！",
+    getStart:"文章の最初まで検索済みです！",
+    countMsg:"全部で{#count}か所を置換済みです！"
+},
+'snapscreen':{
+    'static':{
+        lang_showMsg:"スクリーンショット機能は先にUEditorスクリーンショットプラグインをインストールする必要があります！",
+            lang_download:"ここをクリックして、ダウンロード",
+            lang_step1:"第1手順、UEditorスクリーンショットプラグインをダウンロードし、インストールを実行します。",
+            lang_step2:"第2手順、プラグインをインストールした後、直ぐに使用できますが、有効にならない場合、ブラウザーを再起動した後、再試行してください！"
+    }
+},
+'spechars':{
+    'static':{},
+    tsfh:"特殊記号",
+        lmsz:"英文字",
+        szfh:"数字",
+        rwfh:"日文文字",
+        xlzm:"ギリシア文字",
+        ewzm:"キリル文字",
+        pyzm:"発音記号",
+        yyyb:"英語発音記号",
+        zyzf:"その他"
+},
+'edittable':{
+    'static':{
+        'lang_tableStyle':'テーブルタイプ',
+            'lang_insertCaption':'テーブル名称行を追加',
+            'lang_insertTitle':'テーブルのタイトル行を追加',
+            'lang_insertTitleCol':'テーブルのタイトル列を追加',
+            'lang_orderbycontent':"テーブル内容並え替え可能を使用",
+            'lang_tableSize':'テーブルサイズを自動調整',
+            'lang_autoSizeContent':'テーブル文字自動対応を適用',
+            'lang_autoSizePage':'ページ幅に合わせて自動対応を適用',
+            'lang_example':'サンプル',
+            'lang_borderStyle':'テーブルボーダー',
+            'lang_color':'色:'/*,
+         'lang_tableWH':'票の幅と高さ',
+         'lang_width':'幅',
+         'lang_height':'高さ'*/
+    },
+    captionName:'テーブル名称',
+        titleName:'タイトル',
+        cellsName:'内容',
+        errorMsg:'結合したセルがある場合、並べ替えできません'
+},
+'edittip':{
+    'static':{
+        lang_delRow:'行全体を削除',
+            lang_delCol:'列全体を削除'
+    }
+},
+'edittd':{
+    'static':{
+        lang_tdBkColor:'バックグラウンドの色：',
+            lang_tdBkWidth:'セルの幅：',
+            lang_tdBkHeight:'セルの高さ：'
+    }
+},
+'formula':{
+    'static':{
+    }
+},
+'wordimage':{
+    'static':{
+        lang_resave:"転送の手順",
+            uploadBtn:{src:"upload.png",alt:"アップロード"},
+        clipboard:{style:"バックグラウンド: url(copy.png) -153px -1px 繰り返し無し;"},
+        lang_step:"1. 上部のコピーボタンをクリックすると、コピーしたアドレスがクリップボードに追加されます。2. 追加するイメージのボタンをクリックして、ポップアップするダイアログウィンドウ内に[Ctrl+V]を使用し、アドレスを貼り付けます。3. クリックして、開いた後、イメージアップロード手順を選択します。"
+    },
+    'fileType':"イメージ",
+        'flashError':"FLASHの初期化に失敗しました。FLASHプラグインが正しくインストールされているかチェックしてください！",
+        'netError':"ネットワーク接続のエラーです。再度試行してください！",
+        'copySuccess':"イメージアドレスは複製済みです！",
+        'flashI18n':{} //デフォルトの中国文を空白にしたままにする
+},
+    'autosave': {
+    'saving':'保存中･･･',
+        'success':'ローカルへの保存が正常に完了しました'
+    }
+};

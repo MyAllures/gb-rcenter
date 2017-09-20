@@ -1,0 +1,170 @@
+
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>内容管理</span>
+        <span>/</span><span>公司入款账户</span>
+        <a href="javascript:void(0)" nav-target="mainFrame" class="m-l-sm btn btn-outline btn-default btn-xs co-gray6 return-btn"><em class="fa fa-caret-left"></em>返回</a>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow clearfix">
+            <div class="present_wrap"><b>添加账户-设置账户信息</b></div>
+            <form action="" class="m-t">
+                <div class="form-group line-hi34 clearfix">
+                    <label class="ft-bold col-sm-3 al-right">代号 : </label>
+                    <div class="col-sm-5">A001</div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">账户名称 : </label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <input type="text" class="form-control">
+                          <span class="input-group-addon bdn">&nbsp;&nbsp;<span class="co-red">*</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">账户类型 : </label>
+                    <div class="col-sm-5">
+                        <select class="chosen-select-no-single" data-placeholder="银行账户">
+                            <option value="">银行账户</option>
+                            <option value="">第三方账户</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">账号 : </label>
+                    <div class="col-sm-5"><input type="text" class="form-control" ></div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">姓名 : </label>
+                    <div class="col-sm-5"><input type="text" class="form-control" ></div>
+                </div>
+                
+                <div class="form-group clearfix line-hi34">
+                    <label class="ft-bold col-sm-3 al-right">银行 : </label>
+                    <div class="col-sm-5">
+                        <div selectdiv="paging.pageSize" class="btn-group" initprompt="10条" callback="query">                    <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default">
+                       <span class="pay-bank icbc"></span>
+                    </button>
+                    
+                </div>
+                    </div>
+                </div>
+                
+                <div class="line-hi34 col-sm-12 bg-gray m-b">
+                    <label class="ft-bold col-sm-3 al-right line-hi34"></label>
+                    <span class="co-yellow m-r-sm m-l-sm"><i class="fa fa-exclamation-circle"></i></span>
+                    未检测出所属银行和卡种，请检测卡号是否正确填写！您也可以直接填写“银行”，或选择搜索结果！
+                </div>
+                
+                
+                
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">银行 : </label>
+                    <div class="col-sm-5"><span class="pull-down-a"><input type="text" class="form-control" placeholder="中国">
+                                   <ul class="gbsug shadow "><li>中国银行</li><li>中国工商银行</li><li>中国农业银行</li>
+                                   <li>中国建设银行</li><li>中国招商银行</li></ul></span></div>
+                </div>
+                
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">账户类型 : </label>
+                    <div class="col-sm-5">
+                        <select class="chosen-select-no-single" data-placeholder="第三方账户">
+                            <option value="">第三方账户</option>
+                            <option value="">银行账户</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group clearfix m-b">
+                                    <label class="col-sm-3 al-right line-hi34 ft-bold">存款渠道 : </label>
+                                    <div class="input-group col-sm-5">
+                                        <div class="input-group-btn">
+                                           
+                                                <div selectdiv="paging.pageSize" class="btn-group" initprompt="10条" callback="query">                    <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default" data-toggle="dropdown" aria-expanded="false">
+                        <span prompt="prompt">支付宝</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="max-height: 1298px; min-width: 55px; overflow-y: scroll; overflow-x: visible;">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">环迅</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20">支付宝</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30">财付通</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="50">快钱</a>
+                        </li>
+                    </ul>
+                </div>
+                                        </div>
+                                        <input type="email" placeholder="支付宝" class="form-control" required="" aria-required="true">
+                                    </div>
+                                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">账号 : </label>
+                    <div class="col-sm-5"><input type="text" class="form-control" ></div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">姓名 : </label>
+                    <div class="col-sm-5"><input type="text" class="form-control" ></div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">停用金额CNY : </label>
+                    <div class="col-sm-5"><input type="text" class="form-control" ></div>
+                </div>
+                <div class="line-hi34 col-sm-12 bg-gray m-b">
+                    <label class="ft-bold col-sm-3 al-right line-hi34"></label>
+                    <span class="co-yellow m-r-sm m-l-sm"><i class="fa fa-exclamation-circle"></i></span>
+                    勾选前请先确认站好是否已开通该货币业务，否则玩家将无法完成存款
+                </div>
+                <div class="form-group clearfix line-hi34">
+                    <label class="ft-bold col-sm-3 al-right">支持货币 : </label>
+                    <div class="col-sm-5">
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks" checked> 人民币</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks" checked> 美元</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks"> 英镑</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks"> 欧元</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks"> 法郎</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks"> 澳元</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks"> 俄卢</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks"> 日元</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks"> 港币</label>
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34">
+                    <label class="ft-bold col-sm-3 al-right">使用层级 : </label>
+                    <div class="col-sm-5">
+                        <div><label class="m-r-sm"><input type="checkbox" class="i-checks" checked> 全部层级</label><span class="m-l co-grayc2">勾选后，后续新增的层级同样适用！</span></div>
+                        <div><label class="m-r-sm"><input type="checkbox" class="i-checks" checked> 默认层级</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks" checked> VIP用户</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks"> 活跃用户</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks"> 新用户</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks"> 老用户</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks"> 僵尸用户</label></div>
+                    </div>
+                </div>
+                <hr class="m-t-sm m-b">
+                <div class="operate-btn">
+                    <button class="btn btn-filter btn-lg">提交</button>
+                    <button class="btn btn-outline btn-filter btn-lg m-r">取消</button>
+                </div>
+            </form>            
+        </div>
+    </div>
+</div>
+<script>
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+    });
+</script>
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>

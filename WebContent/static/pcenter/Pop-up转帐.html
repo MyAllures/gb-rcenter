@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+     <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+<!--弹窗 --> 
+ <script>
+jQuery(document).ready(function($) {
+	$('.theme-login').click(function(){
+		$('.theme-pop-mask').fadeIn(100);
+		$('.theme-pop').slideDown(200);
+	})
+	$('.theme-poptitle .close').click(function(){
+		$('.theme-pop-mask').fadeOut(100);
+		$('.theme-pop').slideUp(200);
+	})
+
+})
+</script>
+</head>
+<body style="background:#5a5a5a;">
+  
+  
+   <!-- //* 弹窗--> 
+  <div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<h3 class="popalign"><i class="tipbig fail"></i>当前没有可以回收的平台余额</h3>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+  
+  
+  
+  
+ <!-- //* 弹窗1 --> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>回收资金</h1>
+</div>
+<div class="theme-popcon">
+<div class="text"></div>
+<p>回收所有的游戏&nbsp;&nbsp;<button data-toggle="button" class="btn btn-gray middle-big" type="button">全部回收</button></form>
+</p>
+<div  class="poptable">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>QQ游戏 </td>
+    <td>349.00</td>
+    <td><a href="#">回收资金</a></td>
+  </tr>
+  <tr>
+     <td>联众游戏</td>
+    <td>349.00</td>
+    <td><a href="#">回收资金</a></td>
+  </tr>
+  <tr>
+    <td>百度游戏</td>
+    <td>349.00</td>
+    <td><a href="#">回收资金</a></td>
+  </tr>
+  <tr>
+    <td>百度游戏 </td>
+    <td>349.00</td>
+    <td><a href="#">回收资金</a></td>
+  </tr>
+    <tr>
+    <td>金山游戏</td>
+    <td>349.00</td>
+    <td><a href="#">回收资金</a></td>
+  </tr>
+</table>
+</div>
+ </div>
+</div>
+<div class="theme-pop-mask" style="position:static"></div>
+
+ <!-- //* 弹窗2--> 
+
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<h2>
+确认将所有游戏里的游戏资金<span class="orange">全部回收</span>至钱包吗？
+</h2>
+<div class="text">
+</div>
+<form class="popbutton">
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">确认</button>
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">取消</button>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+ <!-- //* 弹窗3--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<h2>
+确认将<span class="orange">QQ游戏</span>的资金回收至钱包吗？
+</h2>
+<div class="text">
+</div>
+<form class="popbutton"><button data-toggle="button" class="btn btn-blue middle-big" type="button">确认</button>
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">取消</button>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static"></div>
+
+
+
+
+</body>
+</html>

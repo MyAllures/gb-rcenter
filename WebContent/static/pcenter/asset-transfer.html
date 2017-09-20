@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/bootstrap.css">
+  <!-- 提示弹出框 --> 
+<script type="text/javascript">
+var environment = {
+	userVo : '',
+	role : '',
+	userId : '',
+	basePath : '',
+	userCash : '',
+	globalPath : '/',
+	userActiveTime : '',
+	yoolibaoWhiteListStatus : '',
+	yoolibaoOpenStatus : '',
+	cerrencyOpenTime : "2015/9/10"//new Date()
+};
+</script>
+ <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+<script src="../../common/js/pcenterJS/global-1.1.0.min.js" type="text/javascript"></script>  
+<script src="../../common/js/bootstrap/bootstrap.min.js"></script>
+
+<!-- 进度百分比 --> 
+<script src="../../common/js/jquery/plugins/jquery.chosen/jquery.chosen.js"></script> 
+<script src="../../common/js/jquery/jquery.js"></script> 
+<script src="../../common/js/pcenterJS/ion.js"></script> 
+<script type="text/javascript" src="../../common/js/pcenterJS/popwin.js"></script>
+<!--项部下拉弹出 --> 
+<script type="text/javascript" src="../../common/js/pcenterJS/head.js"></script>
+<!--tooltips --> 
+<script type="text/javascript" src="../../common/js/pcenterJS/tooltips.js"></script>
+</head>
+<body>
+<!-- //* Top -->
+
+<div class="top-wrap">
+        <div class="top">
+               <!--顶部右边-->
+                   <div class="top-right">
+                   
+                   
+               <div class="member">
+               <label class="login-text"><input type="text" id="" placeholder="用户名" class="input t-text"><a href="retrieve-log-in.html">忘记</a></label>
+               <label class="login-text"><input type="password" id="" placeholder="密码 " class="input t-password"><a href="retrieve-log-in.html">忘记</a></label>
+               <button type="button" class="btn btn-filter loing-btn">登录</button>
+            <label class="line-after"><span class="new"><i class="new-ico select"></i><a href="#">新消息</a></span></label>
+               </div>  
+            </div>
+             <!--顶部左边-->
+            <div class="top-left">
+                <div class="select-lang">
+                  <p><span class="flag cn"></span>简体中文</p>
+                    <ul>
+                        <li><a href="#" rel="cn"><span class="flag cn"></span>简体中文</a> 
+                        </li>
+                        <li><a href="#" rel="hk"><span class="flag hk"></span>繁体中文</a> 
+                        </li>
+                        <li><a href="#" rel="en"><span class="flag en"></span>English</a> 
+                        </li>
+                        <li><a href="#" rel="th"><span class="flag th"></span>ไทย</a> 
+                        </li>
+                        <li><a href="#" rel="vn"><span class="flag vn"></span>Tiếng Việt</a> 
+                        </li>
+                        <li><a href="#" rel="kr"><span class="flag kr"></span>한국어</a> 
+                        </li>
+                        <li><a href="#" rel="jp"><span class="flag jp"></span>日本語</a> 
+                        </li>
+                        <li><a href="#" rel="id"><span class="flag id"></span>Indonesia</a> 
+                        </li>
+                        <li><a href="#" rel="kh"><span class="flag kh"></span>Khmer</a> 
+                        </li>
+                    </ul>
+              </div>
+             <label class="time line-after">GMT +8 2015-03-24  15:02:57</label>
+            </div>
+      
+        </div>
+    </div>
+    
+ <!--banner-->
+<div class="banner"><div class="logo"></div><div class="right"></div>
+</div>   
+    <div class="wrapper">
+  <!--left-->  
+  <div class="sidebar">
+  <div class="sidebar-item">
+  <h2>下午好，<span class="orange name">PCKmenr</span></h2>
+  <div class="safe">
+  <ul>
+  <li><a href="javascript:;" class="ToolTips ToolTipCol" data-html="ture" data-text="您已完成实名认证<br><a href='#'>查看</a>"><span class="safeico realname-select"></span></a>
+   </li>
+  <li><a href="javascript:;" class="ToolTips ToolTipCol" data-html="ture" data-text="您已完成银行卡绑定<br><a href='#'>修改</a>"><span class="safeico bank-select"></span></a></li>
+  <li><a href="javascript:;" class="ToolTips ToolTipCol" data-html="ture" data-text="您尚未完成邮箱绑定<br><a href='#'>立即绑定</a>"><span class="safeico email"></span></a></li>
+  <li><a href="javascript:;" class="ToolTips ToolTipCol" data-html="ture" data-text="您尚未完成手机绑定<br><a href='#'>立即绑定</a>"><span class="safeico phone"></span></a></li>
+</ul>
+</div>
+<div class="auth-total">
+<div class="auth-rate">
+        <div class="progress" style="width:50%"></div>
+    </div>
+<div class="auth-level">安全等级：<span class="green">中</span><a href="#" target="_blank">&nbsp;[提升]</a></div>
+</div>
+</div>
+  <!--左边菜单栏-->  
+<div class="sidebar-nav">
+<dl><dt><a href="index.html"><i class="navico home"></i>玩家首页</a></dt></dl>
+<dl>
+<dt class="select"><a href="asset-transfer.html"><i class="navico capital-select"></i>资金管理</a></dt>
+<dd class="select"><a href="asset-transfer.html"><i class="navico arrow-select"></i>转帐</a></dd>
+<dd><a href="asset-deposit.html"><i class="navico arrow"></i>存款</a></dd>
+<dd><a href="asset-withdraw.html"><i class="navico arrow"></i>取款</a></dd>
+<dd><a href="asset-history.html"><i class="navico arrow"></i>资金记录</a></dd>
+<span class="beeline"></span></dl>
+<dl><dt><a href="gamerecord.html"><i class="navico gamerecord"></i>交易记录</a></dt></dl>
+<dl><dt><a href="sale.html"><i class="navico sale"></i>优惠活动</a></dt></dl>
+<dl><dt><a href="infonotice.html"><i class="navico info"></i>消息公告
+</a><i class="ci-count"><a href="#">2</a></i></dt></dl>
+<dl><dt><a href="account.html"><i class="navico accout"></i>帐号管理</a></dt></dl>
+<dl><dt><a href="recommended.html"><i class="navico recommend"></i>推荐好友</a></dt></dl>
+</div>
+</div>
+
+  <!--right-->  
+<div class="main-wrap">
+<div class="notice"><div class="notice-left"><em class="path"></em></div>
+<div class="path-right"><a href="#">玩家首页</a><span class="arrow">></span><a href="#">资金管理</a><span class="arrow">></span>转帐</div>
+</div>
+  <!--资产-->  
+  <form id="transferForm" class="location"  method="post" >
+<div class="account">
+<div class="property">
+<div class="property-left">
+总资产(RMB)
+<em class="total-money">92,879,000.00</em><i class="ico-ask refresh"></i>同步时间：2015-06-30 15:02:57</div>
+<div class="moneyhide">余额隐藏<i class="ico-ask show"></i></div>
+</div>
+<div class="balance">
+<div class="wallet">
+<dl>
+<dt>钱包余额<i class="ico-ask refresh"></i></dt>
+<dd class="orange wallet-money">67,245,000.00<i class="arr-right"></i><i class="arr-left"></i></dd>
+<p class="btntotal"></p>
+<button data-toggle="button" class="btn btn-gray btn-middle" type="button">一键回收</button>
+</dl>
+</div>
+<div class="balance-right pull-left">
+<div class="game onmouse" type= "button" data-toggle="tooltip" data-placement="bottom" title="联众游戏 大冒险小精灵 120231202312023.00">
+<i class="ico-ask refresh"></i>
+<p class="game-left"><input  value="22" class="dial m-r-sm jdt" data-fgcolor="#2772ee" data-width="52" data-height="52" type="text"  data-thickness=".2"></p>
+<p class="game-right"><span class="title"><a href="#">联众游戏大冒险小精灵</a></span><span class="blue">120231202312023.00</span></p>
+</div>
+<div class="game onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+<i class="ico-ask refresh"></i>
+<p class="game-left"><input  value="88" class="dial m-r-sm jdt" data-fgcolor="#18b160" data-width="52" data-height="52" type="text" data-thickness=".2"></p>
+<p class="game-right"><span class="title"><a href="#">联众游戏</a></span><span class="green">12023.00</span></p>
+</div>
+<div class="game" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+<i class="ico-ask refresh"></i>
+<p class="game-left"><input  value="35" class="dial m-r-sm jdt" data-fgcolor="#f88311" data-width="52" data-height="52" type="text" data-thickness=".2"></p>
+
+<p class="game-right">
+<i class="hs-ico arr-up"></i><span class="title"><a href="#">联众游戏</a></span><span class="orange">12023.00</span></p>
+</div>
+<div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+<i class="ico-ask refresh"></i>
+<p class="game-left"><input  value="0" class="dial m-r-sm jdt" data-fgcolor="#f88311" data-width="52" data-height="52" type="text" data-thickness=".2"></p>
+<p class="game-right"><span class="title"><a href="#">联众游戏</a></span><span>12023.00</span></p>
+</div>
+<div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+<i class="ico-ask refresh"></i>
+<p class="game-left"><input  value="0" class="dial m-r-sm jdt" data-fgcolor="#f88311" data-width="52" data-height="52" type="text" data-thickness=".2"></p>
+<p class="game-right"><span class="title"><a href="#">联众游戏</a></span><span>12023.00</span></p>
+</div>
+<div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+<i class="ico-ask refresh"></i>
+<p class="game-left"><input  value="0" class="dial m-r-sm jdt" data-fgcolor="#f88311" data-width="52" data-height="52" type="text" data-thickness=".2"></p>
+<p class="game-right"><span class="title"><a href="#">联众游戏</a></span><span>12023.00</span></p>
+</div>
+<div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+<i class="ico-ask refresh"></i>
+<p class="game-left"><input  value="0" class="dial m-r-sm jdt" data-fgcolor="#f88311" data-width="52" data-height="52" type="text" data-thickness=".2"></p>
+<p class="game-right"><span class="title"><a href="#">联众游戏</a></span><span>12023.00</span></p>
+</div>
+<div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+<i class="ico-ask refresh"></i>
+<p class="game-left"><input  value="0" class="dial m-r-sm jdt" data-fgcolor="#f88311" data-width="52" data-height="52" type="text" data-thickness=".2"></p>
+<p class="game-right"><span class="title"><a href="#">联众游戏</a></span><span>12023.00</span></p>
+</div>
+<div class="game" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+<i class="ico-ask refresh"></i>
+<p class="game-left"><input  value="35" class="dial m-r-sm jdt" data-fgcolor="#18b160" data-width="52" data-height="52" type="text" data-thickness=".2"></p>
+<p class="game-right"><i class="hs-ico arr-down"></i><span class="title"><a href="#">联众游戏</a></span><span class="green">12023.00</span></p>
+</div>
+<div class="game">
+<p class="game-left addgame"></p>
+<p class="text"><a href="#">更多游戏</a></p>
+</div>
+</div>
+</div>
+</div>
+
+ <!--转帐-->  
+ <div class="asset">
+
+ <div class="control-group">
+ <label class="control-label" for="inputEmail">转出：</label>
+  <div class="controls ">
+<select class="selectwidth m-bigr">
+<option>----请选择----</option>
+ <option>我的钱包</option>
+  <option>QQ游戏</option>
+ <option>联众游戏</option>
+   </select>
+   <span class="tips green"><i class="mark successsmall"></i></span>
+   </div>
+  </div>
+  <div class="control-group">
+ <label class="control-label" for="inputEmail">转入：</label>
+  <div class="controls">
+<select class="selectwidth m-bigr">
+  <option>----请选择----</option>
+  <option>我的钱包</option>
+  <option>QQ游戏</option>
+  <option>联众游戏</option>
+  </select>
+  <span class="tips orange"><i class="mark plaintsmall"></i>请选择转入账号</span>
+   </div>
+  </div>
+  <div class="s-d-exchange">
+   <span class="b-tr"></span>
+    <span class="btn-exchange change"></span>
+    <span class="b-rb"></span>
+     </div>  
+ <div class="control-group">
+ <label class="control-label" for="inputEmail">金额：</label>
+  <div class="controls">
+<input type="text" id="" placeholder=""  class="input input-money">元
+   </div>
+  </div>
+
+ <div><button data-toggle="button" class="btn-blue btn large-big lar-l" id="btn-submit">确定转账</button></div>
+ 
+</div>
+</form>
+<div class="asset">
+
+ 
+  
+    
+ 
+
+ <button type="button" class="btn btn-filter btn-lg real-time-btn"><span class="hd">资金操作提示弹窗</span></button>
+ <button type="button" class="btn btn-filter btn-lg " data-toggle="modal" data-target="#notice-list-1">提示弹窗1</button>
+ <button type="button" class="btn btn-filter btn-lg " data-toggle="modal" data-target="#notice-list-2">提示弹窗2</button>
+
+</div>
+
+
+</div>
+
+</div>
+<!-- 右边客服服务-->
+<div id="moquu_wxin" class="moquu_wxin"><a href="javascript:void(0)">玩家游戏<div class="moquu_wxinh"></div></a></div>
+<div id="moquu_wshare" class="moquu_wshare"><a href="javascript:void(0)">玩家游戏<div class="moquu_wshareh"></div></a></div>
+<div id="moquu_wmaps"><a href="#">玩家游戏</a></div>
+
+
+
+
+<div class="real-time-inform">
+    <div class="clearfix"><span class="unfold open"><i class="fa fa-angle-double-up m-r-xs pull-left"></i><a href="javascript:void(0)" class="unfold-z">收起</a><a href="javascript:void(0)" class="unfold-s">展开</a></span></div>   
+ 
+ <div class="max-ccc">
+   <div class="inform-success clearfix shadow">
+    <div class="btn-close"><a href="javascript:void(0)" class="">×</a></div>
+     <div class="in-details">
+     <span class="hint-text">10:09:23 新增 <b>CNY 300.00</b> 存款申请订单，请审核！</span>
+     <span class="hint-time al-right">2015-03-23</span>
+     </div>
+ </div>
+  <div class="inform-warning clearfix shadow">
+    <div class="btn-close"><a href="javascript:void(0)" class="">×</a></div>
+     <div class="in-details">
+     <span class="hint-text">10:09:23 新增 <b>CNY 300.00</b> 取款申请订单，请审核！</span>
+     <span class="hint-time al-right">2015-03-23</span>
+     </div>
+ </div> 
+  <div class="inform-warning clearfix shadow">
+    <div class="btn-close"><a href="javascript:void(0)" class="">×</a></div>
+     <div class="in-details">
+     <span class="hint-text">10:09:23 新增 <b>CNY 300.00</b> 取款申请订单，请审核！</span>
+     <span class="hint-time al-right">2015-03-23</span>
+     </div>
+ </div>
+  <div class="inform-success clearfix shadow">
+    <div class="btn-close"><a href="javascript:void(0)" class="">×</a></div>
+     <div class="in-details">
+     <span class="hint-text">10:09:23 新增 <b>CNY 300.00</b> 存款申请订单，请审核！</span>
+     <span class="hint-time al-right">2015-03-23</span>
+     </div>
+ </div>
+  <div class="inform-success clearfix shadow">
+    <div class="btn-close"><a href="javascript:void(0)" class="">×</a></div>
+     <div class="in-details">
+     <span class="hint-text">10:09:23 新增 <b>CNY 300,000,000.00</b> 存款申请订单，请审核！</span>
+     <span class="hint-time al-right">2015-03-23</span>
+     </div>
+ </div>
+  <div class="inform-success clearfix shadow">
+    <div class="btn-close"><a href="javascript:void(0)" class="">×</a></div>
+     <div class="in-details">
+     <span class="hint-text">10:09:23 新增 <b>CNY 300.00</b> 存款申请订单，请审核！</span>
+     <span class="hint-time al-right">2015-03-23</span>
+     </div>
+ </div>
+ <div class="inform-success clearfix shadow">
+    <div class="btn-close"><a href="javascript:void(0)" class="">×</a></div>
+     <div class="in-details">
+     <span class="hint-text">10:09:23 新增 <b>CNY 300.00</b> 存款申请订单，请审核！</span>
+     <span class="hint-time al-right">2015-03-23</span>
+     </div>
+ </div> 
+ </div>
+</div>
+
+<div class="modal inmodal in" id="notice-list-1" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">系统消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="withdraw-not">
+<h1><i class="tipbig fail"></i></h1>
+<div class="tiptext">
+<p>冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因</p>
+
+
+</div>
+</div>
+                
+</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">好的</button>
+                <button type="button" class="btn btn-outline btn-filter">联系客服</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal inmodal in" id="notice-list-2" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">系统消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="withdraw-not">
+<h1><i class="tipbig fail"></i></h1>
+<div class="tiptext">
+<p>冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因冻结原因</p>
+
+
+</div>
+</div>
+                
+</div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-outline btn-filter">重置安全密码</button>
+            <button type="button" class="btn btn-filter">取消</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- //* 语言版本切换 #select-lang* -->
+   <script type="text/javascript">
+        $(function() {
+         
+            $(".select-lang p").click(function() {
+                var ul = $(".select-lang ul");
+                if (ul.css("display") == "none") {
+                    ul.slideDown("fast");
+                } else {
+                    ul.slideUp("fast");
+                }
+            });
+
+            $(".select-lang ul li a").click(function() {
+                var txt = $(this).text();
+                var value = $(this).attr("rel");
+                $(".select-lang p").html("<span class='flag " + value + "'></span>" + txt);
+                $(".select-lang ul").hide();
+            });
+         
+        });
+      
+    </script>
+   
+   <script>
+        //资金操作提示弹窗-显示隐藏
+      $(".real-time-btn").click(function (){
+        $(".real-time-inform").toggleClass("open");
+        $(".real-time-inform").slideToggle();  
+      });
+      //资金操作提示弹窗-展开收起
+      $(".unfold").click(function (){
+        $(".max-ccc").children().first().nextAll().slideToggle(300);
+          $(this).toggleClass("open");
+      });
+      //资金操作提示弹窗-删除提示
+      $(".btn-close>a").click(function (){
+        $(this).parents(".clearfix").next().show();
+        $(this).parents(".clearfix").remove();
+      });	
+	
+	</script>
+   
+    <!--进度百分比-->   
+  <script>
+        $(document).ready(function(){
+            var $image = $(".image-crop > img")
+            $($image).cropper({
+                aspectRatio: 1.618,
+                preview: ".img-preview",
+                done: function(data) {
+                    // Output the result data for cropping image.
+                }
+            });
+
+            var $inputImage = $("#inputImage");
+            if (window.FileReader) {
+                $inputImage.change(function() {
+                    var fileReader = new FileReader(),
+                            files = this.files,
+                            file;
+
+                    if (!files.length) {
+                        return;
+                    }
+
+                    file = files[0];
+
+                    if (/^image\/\w+$/.test(file.type)) {
+                        fileReader.readAsDataURL(file);
+                        fileReader.onload = function () {
+                            $inputImage.val("");
+                            $image.cropper("reset", true).cropper("replace", this.result);
+                        };
+                    } else {
+                        showMessage("Please choose an image file.");
+                    }
+                });
+            } else {
+                $inputImage.addClass("hide");
+            }
+
+            $("#download").click(function() {
+                window.open($image.cropper("getDataURL"));
+            });
+
+            $("#zoomIn").click(function() {
+                $image.cropper("zoom", 0.1);
+            });
+
+            $("#zoomOut").click(function() {
+                $image.cropper("zoom", -0.1);
+            });
+
+            $("#rotateLeft").click(function() {
+                $image.cropper("rotate", 45);
+            });
+
+            $("#rotateRight").click(function() {
+                $image.cropper("rotate", -45);
+            });
+
+            $("#setDrag").click(function() {
+                $image.cropper("setDragMode", "crop");
+            });
+
+            $('#data_1 .input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
+
+            $('#data_2 .input-group.date').datepicker({
+                startView: 1,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_3 .input-group.date').datepicker({
+                startView: 2,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_4 .input-group.date').datepicker({
+                minViewMode: 1,
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            $('#data_5 .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            var elem = document.querySelector('.js-switch');
+            var switchery = new Switchery(elem, { color: '#1AB394' });
+
+            var elem_2 = document.querySelector('.js-switch_2');
+            var switchery_2 = new Switchery(elem_2, { color: '#ED5565' });
+
+            var elem_3 = document.querySelector('.js-switch_3');
+            var switchery_3 = new Switchery(elem_3, { color: '#1AB394' });
+
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+
+            $('.demo1').colorpicker();
+
+            var divStyle = $('.back-change')[0].style;
+            $('#demo_apidemo').colorpicker({
+                color: divStyle.backgroundColor
+            }).on('changeColor', function(ev) {
+                        divStyle.backgroundColor = ev.color.toHex();
+                    });
+
+
+        });
+        var config = {
+                '.chosen-select'           : {},
+                '.chosen-select-deselect'  : {allow_single_deselect:true},
+                '.chosen-select-no-single' : {disable_search_threshold:10},
+                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+                '.chosen-select-width'     : {width:"95%"}
+            }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+
+        $("#ionrange_1").ionRangeSlider({
+            min: 0,
+            max: 5000,
+            type: 'double',
+            prefix: "&yen;",
+            maxPostfix: "+",
+            prettify: false,
+            hasGrid: true
+        });
+
+        $("#ionrange_2").ionRangeSlider({
+            min: 0,
+            max: 10,
+            type: 'single',
+            step: 0.1,
+            postfix: " 克",
+            prettify: false,
+            hasGrid: true
+        });
+
+        $("#ionrange_3").ionRangeSlider({
+            min: -50,
+            max: 50,
+            from: 0,
+            postfix: "°",
+            prettify: false,
+            hasGrid: true
+        });
+
+        $("#ionrange_4").ionRangeSlider({
+            values: [
+                "1月", "2月", "3月",
+                "4月", "5月", "6月",
+                "7月", "8月", "9月",
+                "10月", "11月", "12月"
+            ],
+            type: 'single',
+            hasGrid: true
+        });
+
+        $("#ionrange_5").ionRangeSlider({
+            min: 10000,
+            max: 100000,
+            step: 100,
+            postfix: " km",
+            from: 55000,
+            hideMinMax: true,
+            hideFromTo: false
+        });
+
+        $(".dial").knob();
+
+        $("#basic_slider").noUiSlider({
+            start: 40,
+            behaviour: 'tap',
+            connect: 'upper',
+            range: {
+                'min':  20,
+                'max':  80
+            }
+        });
+
+        $("#range_slider").noUiSlider({
+            start: [ 40, 60 ],
+            behaviour: 'drag',
+            connect: true,
+            range: {
+                'min':  20,
+                'max':  80
+            }
+        });
+
+        $("#drag-fixed").noUiSlider({
+            start: [ 40, 60 ],
+            behaviour: 'drag-fixed',
+            connect: true,
+            range: {
+                'min':  20,
+                'max':  80
+            }
+        });
+    </script>
+    <script>
+        //显示隐藏模块--更多数据
+        $(".info-down-btn").click(function (event) {
+            $(this).find(".info-pull-down").slideToggle(200);
+            $(document).one("click", function (event) {
+	              $(".info-pull-down").slideUp(200); 
+	     });
+            event.stopPropagation();
+        });
+        //显示隐藏刷新按钮
+       $(".game").mouseenter(function() {
+          $(this).find(".ico-ask").show()
+          $(this).find(".hs-ico").hide()
+       });
+        $(".game").mouseleave(function() {
+          $(this).find(".ico-ask").hide()
+          $(this).find(".hs-ico").show()
+       });
+        //tooltip 提示弹窗
+        $('[data-toggle="tooltip"]').tooltip();
+    </script>
+</body>
+</html>

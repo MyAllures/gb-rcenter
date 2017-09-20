@@ -1,0 +1,206 @@
+
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>总代理管理</span>
+        <span>/</span><span>占成统计</span>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper shadow">
+            <div class="sys_tab_wrap gray-bg clearfix">
+                <div class="clearfix m-sm">
+                    <b>统计结果</b>
+                    <a href="distributor/commission-account.html" nav-target="mainFrame" class="m-l-sm">查看未出账占成</a>
+                    <div class="form-group clearfix pull-right content-width-limit-400 m-b-none">
+                    <div class="input-group clearfix">
+                        <span class="input-group-addon abroder-no gray-bg"><b>期数：</b></span>
+                        <div class="pull-left white-bg">
+                            <select class="chosen-select-no-single">
+                                <option value="">2015年</option>
+                                <option value="">2014年</option>
+                            </select>
+                        </div>
+                        <div class="pull-left white-bg m-l">
+                            <select class="chosen-select-no-single">
+                                <option value="">8月</option>
+                                <option value="">7月</option>
+                            </select>
+                        </div>
+                        <div class="pull-left white-bg m-l">
+                            <select class="chosen-select-no-single">
+                                <option value="">01期(08-01~08-01)</option>
+                                <option value="">02期(09-01~09-01)</option>
+                            </select>
+                        </div>                       
+                    </div>
+                </div>
+                </div>
+            </div>            
+            <div class="dataTables_wrapper" role="grid">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable m-b-none" aria-describedby="editable_info">
+                        <thead>
+                            <tr role="row" class="bg-gray">
+                                <th>代理数</th>
+                                <th>总有效交易量</th>
+                                <th>损益</th>
+                                <th>返水</th>
+                                <th>优惠</th>
+                                <th>手续费</th>
+                                <th>返佣</th>
+                                <th>分摊总费用<span tabindex="0" class="m-l-sm help-popover" role="button" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title=""><i class="fa fa-question-circle"></i></span></th>
+                                <th>应收占成<span tabindex="0" class="m-l-sm help-popover" role="button" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title=""><i class="fa fa-question-circle"></i></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="javascript:void(0)">7</a></td>
+                                <td>98,726.00</td>
+                                <td>98,465.26</td>
+                                <td>678.00</td>
+                                <td>8,526.00</td>
+                                <td>26.00</td>
+                                <td>156.00</td>
+                                <td>795.00</td>
+                                <td><a href="javascript:void(0)">3265.00</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="clearfix p-xxs line-hi34 border-t-1"><a href="distributor/commission-detail.html" nav-target="mainFrame" class="pull-right">查看详细记录</a><span class="co-yellow m-r-sm"><i class="fa fa-exclamation-circle"></i></span>以上为已结算数据</div>
+                </div>
+            </div>          
+        </div>
+    </div>    
+    <div class="col-lg-12 m-t">
+        <div class="wrapper clearfix shadow">
+            <div class="sys_tab_wrap clearfix">
+                <div class="m-sm"><b>游戏占成图表</b><span class="co-yellow m-l m-r-sm"><i class="fa fa-exclamation-circle"></i></span>以下图表仅展示未扣除分摊费用前的占成金额</div>
+            </div>
+            <div class="panel-body">
+                <div class="dataTables_wrapper" role="grid">                      
+                   <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>                     
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+<script>
+    $(function () {
+    // Create the chart
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ' '
+        },
+        xAxis: {
+            type: 'category'
+        },
+        yAxis: {
+            title: {
+                text: '占成金额'
+            }
+
+        },
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:.1f}'
+                }
+            }
+        },
+
+        tooltip: {
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b><br/>'
+        },
+
+        series: [{
+            name: "金额",
+            colorByPoint: true,
+            data: [{
+                name: "游戏API1",
+                y: 156.33,
+                drilldown: "游戏API1"
+            }, {
+                name: "游戏API2",
+                y: 124.03,
+                drilldown: "游戏API2"
+            }, {
+                name: "游戏API3",
+                y: 310.38,
+                drilldown: "游戏API3"
+            }, {
+                name: "游戏API4",
+                y: 214.77,
+                drilldown: "游戏API4"
+            }, {
+                name: "游戏API5",
+                y: 132.91,
+                drilldown: "游戏API5"
+            }, {
+                name: "游戏API6",
+                y: 10.2,
+                drilldown: null
+            },{
+                name: "游戏API7",
+                y: 156.33,
+                drilldown: "游戏API7"
+            }, {
+                name: "游戏API8",
+                y: 124.03,
+                drilldown: "游戏API8"
+            }, {
+                name: "游戏API9",
+                y: 110.38,
+                drilldown: "游戏API9"
+            }, {
+                name: "游戏API10",
+                y: 114.77,
+                drilldown: "游戏API10"
+            }, {
+                name: "游戏API11",
+                y: 0.91,
+                drilldown: "游戏API11"
+            }, {
+                name: "其他",
+                y: 10.2,
+                drilldown: null
+            }]
+        }],
+    });
+});
+</script>
+<script>
+    $(".btn-advanced-down").click(function () {
+            $(".advanced-options").toggleClass("show");
+            $(this).parent().toggleClass("show");
+        });
+ var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': {allow_single_deselect: true},
+        '.chosen-select-no-single': {disable_search_threshold: 10},
+        '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+        '.chosen-select-width': {width: "95%"}
+    };
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+    
+    $("#file-0").fileinput({
+        'allowedFileExtensions' : ['jpg', 'png','gif'],
+    });
+    
+</script>
+<script src="../../common/js/ueditor/third-party/highcharts/highcharts.js"></script>
+<script src="../../common/js/ueditor/third-party/highcharts/modules/exporting.js"></script>
+<script src="../../common/js/ueditor/third-party/highcharts/modules/drilldown.js"></script>

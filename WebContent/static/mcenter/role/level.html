@@ -1,0 +1,290 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>角色管理</span>
+        <span>/</span><span>层级设置</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow">
+            <!--筛选条件-->
+            <div class="filter-wraper clearfix p-xs">
+                <button type="button" class="btn btn-info btn-addon" data-toggle="modal" data-target="#addLevel"><i class="fa fa-plus"></i><span class="hd">新增</span></button>
+                <button type="button" class="btn btn-primary-hide"><i class="fa fa-refresh"></i><span class="hd">刷新</span></button>
+                <!--                    <button type="button" class="btn btn-danger-hide"><i class="fa fa-trash-o"></i><span class="hd">删除</span></button>-->
+            </div>
+            <!--表格内容-->
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable" id="editable" aria-describedby="editable_info">
+                        <thead>
+                            <tr role="row" class="bg-gray">
+                                <th>ID</th>
+                                <th>层级名称</th>
+                                <th>玩家数</th>
+                                <th>公司入款限额</th>
+                                <th>单次取款限额</th>
+                                <th>存款手续费</th>
+                                <th>存款手续费
+                                    <br>收取方式</th>
+                                <th>取款手续费</th>
+                                <th>取款手续费
+                                    <br>收取方式</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr class="bd-none">
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="caution">
+                                <td>A0001</td>
+                                <td><a href="role/level_detail.html" nav-target="mainFrame">默认层级</a>
+                                    <div class="co-red3">需先设置完存款和取款后，该层级才可对玩家使用！</div>
+                                </td>
+                                <td>100</td>
+                                <td>1~100</td>
+                                <td>1~100</td>
+                                <td>50</td>
+                                <td>24小时内
+                                    <div class="co-grayc2">免3次</div>
+                                </td>
+                                <td>50</td>
+                                <td>24小时内
+                                    <div class="co-grayc2">免3次</div>
+                                </td>
+                                <td>
+                                    <a href="role/rechargeLimit.html" class="co-blue">存款</a><span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="role/withdrawLimit.html" class="co-blue">取款</a><span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)" class="co-blue" data-toggle="modal" data-target="#edit">编辑</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="role/level_detail.html" class="co-blue" nav-target="mainFrame">详细</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>A0002</td>
+                                <td><a href="role/level_detail.html" nav-target="mainFrame">A层级</a><span href="javascript:void(0)" class="ico-lock co-red3"><i class="fa fa-warning"></i></span></td>
+                                <td>100</td>
+                                <td>1~100</td>
+                                <td>1~100</td>
+                                <td>2%</td>
+                                <td>未免费</td>
+                                <td>2%</td>
+                                <td>未免费</td>
+                                <td>
+                                    <a href="role/rechargeLimit.html" class="co-blue">存款</a><span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="withdrawLimit.html" class="co-blue">取款</a><span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="role/withdrawLimit.html" class="co-blue">取款</a><span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)" class="co-blue" data-toggle="modal" data-target="#edit">编辑</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="role/level_detail.html" class="co-blue" nav-target="mainFrame">详细</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)" class="co-blue">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>A0003</td>
+                                <td><a href="role/level_detail.html" nav-target="mainFrame">B层级</a></td>
+                                <td>100</td>
+                                <td>1~100</td>
+                                <td>1~100</td>
+                                <td class="co-red3">-50</td>
+                                <td>24小时内
+                                    <div class="co-grayc2">免3次</div>
+                                </td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>
+                                    <a href="role/rechargeLimit.html" class="co-blue">存款</a><span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="role/withdrawLimit.html" class="co-blue">取款</a><span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)" class="co-blue" data-toggle="modal" data-target="#edit">编辑</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="role/level_detail.html" class="co-blue" nav-target="mainFrame">详细</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>A0004</td>
+                                <td><a href="role/level_detail.html" nav-target="mainFrame">C层级</a></td>
+                                <td>100</td>
+                                <td>1~100</td>
+                                <td>1~100</td>
+                                <td class="co-red3">-2%</td>
+                                <td>48小时内
+                                    <div class="co-grayc2">免5次</div>
+                                </td>
+                                <td>50</td>
+                                <td>24小时内
+                                    <div class="co-grayc2">免3次</div>
+                                </td>
+                                <td>
+                                    <a href="role/rechargeLimit.html" class="co-blue">存款</a><span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="role/withdrawLimit.html" class="co-blue">取款</a><span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)" class="co-blue" data-toggle="modal" data-target="#edit">编辑</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="role/level_detail.html" class="co-blue" nav-target="mainFrame">详细</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>A0005</td>
+                                <td><a href="role/level_detail.html" nav-target="mainFrame">D层级</a></td>
+                                <td>100</td>
+                                <td>1~100</td>
+                                <td>1~100</td>
+                                <td>无</td>
+                                <td>无</td>
+                                <td>2%</td>
+                                <td>未免费</td>
+                                <td>
+                                    <a href="role/rechargeLimit.html" class="co-blue">存款</a><span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="role/withdrawLimit.html" class="co-blue">取款</a><span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)" class="co-blue" data-toggle="modal" data-target="#edit">编辑</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="role/level_detail.html" class="co-blue" nav-target="mainFrame">详细</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row bdtop3">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left">
+                            <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                                <option value=""></option>
+                                <option>每页20条</option>
+                                <option>每页30条</option>
+                                <option>每页40条</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                                <form class="form-inline">
+                                    <label class="m-l-sm">共10页</label>
+                                    <label class="m-l">第
+                                        <input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                                    <button class="btn btn-sm m-l-sm">跳转</button>
+                                </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增层级弹窗-->
+<div class="modal inmodal" id="addLevel" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增层级</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <form role="form" id="form" novalidate="novalidate">
+                <div class="modal-body">
+                    <div class="form-group clearfix m-b-sm line-hi34">
+                        <label class="col-xs-3 al-right">代号</label>
+                        <div class="col-xs-9">A0001</div>
+                    </div>
+                    <div class="form-group clearfix m-b-xxs">
+                        <label class="col-xs-3 al-right line-hi34">层级名称</label>
+                        <div class="col-xs-9 input-group">
+                            <input type="text" placeholder="" class="form-control m-b">
+                            <span class="input-group-addon bdn"><span class="co-red3 m-l-sm">*</span></span>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix m-b-xs line-hi34">
+                        <label class="col-xs-3 al-right">危险标记</label>
+                        <div class="col-xs-9">
+                            <input type="checkbox" class="i-checks">标记
+                        </div>
+                    </div>
+                    <div class="form-group clearfix m-b-xxs">
+                        <label class="col-xs-3 al-right line-hi34">备注</label>
+                        <div class="col-xs-9">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary-hide">提交</button>
+                    <button type="button" class="btn btn-filter">提交并设置存款</button>
+                </div>
+        </div>
+        </form>
+    </div>
+</div>
+<!--编辑弹窗-->
+<div class="modal inmodal" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;编辑</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <form role="form" id="form" novalidate="novalidate">
+                <div class="modal-body">
+                    <!--                  <div class="add-players">-->
+                    <div class="form-group clearfix m-b-sm">
+                        <label class="col-xs-3 al-right line-hi34">代号</label>
+                        <div class="col-xs-9">A0001</div>
+                    </div>
+                    <div class="form-group clearfix m-b-xxs">
+                        <label class="col-xs-3 al-right line-hi34">层级名称</label>
+                        <div class="col-xs-9">
+                            <input type="text" placeholder="" class="form-control m-b">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix m-b-xs line-hi34">
+                        <label class="col-xs-3 al-right">危险标记</label>
+                        <div class="col-xs-9">
+                            <input type="checkbox" class="i-checks">标记
+                        </div>
+                    </div>
+                    <div class="form-group clearfix m-b-xxs">
+                        <label class="col-xs-3 al-right line-hi34">备注</label>
+                        <div class="col-xs-9">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary-hide">提交</button>
+                    <button type="button" class="btn btn-filter">提交并设置支付</button>
+                </div>
+        </div>
+        </form>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': {
+            allow_single_deselect: true
+        },
+        '.chosen-select-no-single': {
+            disable_search_threshold: 10
+        },
+        '.chosen-select-no-results': {
+            no_results_text: 'Oops, nothing found!'
+        },
+        '.chosen-select-width': {
+            width: "95%"
+        }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+});
+</script>

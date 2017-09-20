@@ -1,0 +1,118 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>总代理管理</span><span>/</span><span>代理管理</span>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper shadow">
+            <!--筛选条件-->
+            <div class="filter-wraper gray-bg clearfix">
+                <a href="distributor/added_player.html" nav-target="mainFrame" type="button" class="btn btn-outline btn-filter pull-left m-r-sm"><i class="fa fa-plus"></i><span class="hd">&nbsp;&nbsp;新增</span></a>
+                <div class="search-wrapper btn-group pull-right m-r-n-xs">
+                    <div class="input-group">
+                        
+                        <input type="text" class="form-control" placeholder="代理账号">
+                        <span class="input-group-btn"> <button type="button" class="btn btn-filter"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button></span>
+                    </div>
+                </div>
+            </div>
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable m-b-none" aria-describedby="editable_info">
+                        <thead>
+                            <tr role="row" class="bg-gray">
+                                <th>注册渠道</th>
+                                <th>代理账号</th>
+                                <th>发展玩家总数</th>
+                                <th class="sorting">注册时间</th>
+                                <th>最后登录时间</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="gradeA odd tab-detail">
+                                <td>前端注册</td>
+                                <td>d2223vip</td>
+                                <td><a href="distributor/player-list.html"  nav-target="mainFrame">100</a></td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td><span class="label label-success">正常</span></td>
+                            </tr>
+                            <tr class="gradeA odd tab-detail">
+                                <td>后台添加</td>
+                                <td>d2223vip</td>
+                                <td><a href="distributor/player-list.html"  nav-target="mainFrame">100</a></td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td><span class="label label-success">正常</span></td>
+                            </tr>
+                            <tr class="gradeA odd tab-detail">
+                                <td>前端注册</td>
+                                <td>d2223vip</td>
+                                <td><a href="distributor/player-list.html"  nav-target="mainFrame">100</a></td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td><span class="label label-success">正常</span></td>
+                            </tr>
+                            <tr class="gradeA odd tab-detail">
+                                <td>后台添加</td>
+                                <td>d2223vip</td>
+                                <td><a href="distributor/player-list.html"  nav-target="mainFrame">100</a></td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td><span class="label label-success">正常</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row bdtop3 gray-bg">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left white-bg">
+                          <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>每页20条</option>
+                            <option>每页30条</option>
+                            <option>每页40条</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                                <form class="form-inline">
+                                    <label class="m-l-sm">共10页</label>
+                                    <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                                    <button class="btn btn-sm m-l-sm">跳转</button>
+                                </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': {allow_single_deselect: true},
+            '.chosen-select-no-single': {disable_search_threshold: 10},
+            '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+            '.chosen-select-width': {width: "95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>

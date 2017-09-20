@@ -1,0 +1,91 @@
+/*彩票号码样式*/
+.cpq-cqssc{
+	position:relative;
+	display:inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    color: #fff;
+    text-align: center;
+    font-weight: 100;
+    line-height: 20px;
+    border-radius: 50%;
+    background-color: #e93030;
+}
+/*六合彩三色波*/
+/*红波*/
+.cpq-num[num="1"],
+.cpq-num[num="2"],
+.cpq-num[num="7"],
+.cpq-num[num="8"],
+.cpq-num[num="01"],
+.cpq-num[num="02"],
+.cpq-num[num="07"],
+.cpq-num[num="08"],
+.cpq-num[num="12"],
+.cpq-num[num="13"],
+.cpq-num[num="18"],
+.cpq-num[num="19"],
+.cpq-num[num="23"],
+.cpq-num[num="24"],
+.cpq-num[num="29"],
+.cpq-num[num="30"],
+.cpq-num[num="34"],
+.cpq-num[num="35"],
+.cpq-num[num="40"],
+.cpq-num[num="45"],
+.cpq-num[num="46"]{
+  background-color: #e93030;
+}
+/*绿波*/
+.cpq-num[num="5"],
+.cpq-num[num="6"],
+.cpq-num[num="05"],
+.cpq-num[num="06"],
+.cpq-num[num="11"],
+.cpq-num[num="16"],
+.cpq-num[num="17"],
+.cpq-num[num="21"],
+.cpq-num[num="22"],
+.cpq-num[num="27"],
+.cpq-num[num="28"],
+.cpq-num[num="32"],
+.cpq-num[num="33"],
+.cpq-num[num="38"],
+.cpq-num[num="39"],
+.cpq-num[num="43"],
+.cpq-num[num="44"],
+.cpq-num[num="49"]{
+  background-color: #5ce21a;
+}
+/*蓝波*/
+.cpq-num[num="3"],
+.cpq-num[num="4"],
+.cpq-num[num="9"],
+.cpq-num[num="03"],
+.cpq-num[num="04"],
+.cpq-num[num="09"],
+.cpq-num[num="10"],
+.cpq-num[num="14"],
+.cpq-num[num="15"],
+.cpq-num[num="20"],
+.cpq-num[num="25"],
+.cpq-num[num="26"],
+.cpq-num[num="31"],
+.cpq-num[num="36"],
+.cpq-num[num="37"],
+.cpq-num[num="41"],
+.cpq-num[num="42"],
+.cpq-num[num="47"],
+.cpq-num[num="48"]{
+  background-color: #2b9bd0;
+}
+
+/*开奖记录期数/时间样式调整*/
+@media (max-width:350px) {
+.draw-list-a .mui-media-body.draw-list-right span.mui-pull-right{
+	position: absolute;
+    font-size: 10px;
+    right: 5px;
+}
+}

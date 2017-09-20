@@ -1,0 +1,482 @@
+/*===============================================
+ *
+ * Public Module Style 常用公共页面组件样式
+ *
+ ================================================= *
+
+/*===============================================
+ * Part-01
+ * 银行 & 第三方支付
+ * Author: Steven
+ * Update by 2017-02-12
+================================================*/
+.pay-bank,.pay-third{width:125px;display:inline-block;height:30px;vertical-align:middle;background:url(../images/pay-bank.png) left top no-repeat;}
+.pay-bank.sm,.pay-third.sm{width:70px;display:inline-block;height:30px;vertical-align:middle;background:url(../images/pay-bank-x.png) left top no-repeat;}
+.pay-third{background:url(../images/pay-third.png) left top no-repeat;}
+.pay-third.sm{background:url(../images/pay-third-x.png) left top no-repeat;}
+/* 银行 */
+.pay-bank.else{background-position: 0 0;}/* 其他 */
+.pay-bank.select{background-position: 0 -30px;}/* 请选择银行*/
+.pay-bank.icbc{background-position:0 -60px;}/* 01 中国工商银行 */
+.pay-bank.cmb{background-position:0 -90px;}/* 02 招商银行 */
+.pay-bank.ccb{background-position:0 -120px;}/* 03 中国建设银行 */
+.pay-bank.abc{background-position:0 -150px;}/* 04 中国农业银行 */
+.pay-bank.boc{background-position:0 -180px;}/* 05 中国银行 */
+.pay-bank.cmbc{background-position:0 -210px;}/* 06 中国民生银行 */
+.pay-bank.ceb{background-position:0 -240px;}/* 07 中国光大银行 */
+.pay-bank.comm{background-position:0 -270px;}/* 08 交通银行 */
+.pay-bank.spdb{background-position:0 -300px;}/* 09 浦发银行 */
+.pay-bank.spabank{background-position:0 -330px;}/* 10 平安银行 */
+.pay-bank.cib{background-position:0 -360px;}/* 11 兴业银行 */
+.pay-bank.bjbank{background-position:0 -390px;}/* 12 北京银行 */
+.pay-bank.citic{background-position:0 -420px;}/* 13 中信银行 */
+.pay-bank.gdb{background-position:0 -450px;}/* 14 广发银行 */
+.pay-bank.psbc{background-position:0 -480px;}/* 15 中国邮政储蓄银行 */
+.pay-bank.jsbank{background-position:0 -510px;}/* 16 江苏银行 */
+.pay-bank.hxbank{background-position:0 -540px;}/* 17 华夏银行 */
+.pay-bank.shbank{background-position:0 -570px;}/* 18 上海银行 */
+.pay-bank.bohaib{background-position:0 -600px;}/* 19 渤海银行 */
+.pay-bank.hkbea{background-position:0 -630px;}/* 20 东亚银行 */
+.pay-bank.nbbank{background-position:0 -660px;}/* 21 宁波银行 */
+.pay-bank.czbank{background-position:0 -690px;}/* 22 浙商银行 */
+.pay-bank.hzcb{background-position:0 -720px;}/* 23 杭州银行 */
+.pay-bank.gcb{background-position:0 -750px;}/* 24 广州银行 */
+.pay-bank.fjnx{background-position:0 -780px;}/* 25 福建农商银行 */
+.pay-bank.hangseng{background-position:0 -810px;}/* 26 恒生银行 */
+.pay-bank.tzb{background-position:0 -840px;}/* 27 台州银行 */
+/* 第三方支付 */
+.pay-third.else{background-position: 0 -0;}/* 其他 */
+.pay-third.select{background-position: 0 -30px;}/* 请选择 */
+.pay-third.alipay,
+.pay-third.mobao_zfb,
+.pay-third.rfupay_zfb,
+.pay-third.tonghui_zfb,
+.pay-third.jinanpay_zfb,
+.pay-third.allscore-s_zfb,
+.pay-third.xinbei_zfb,
+.pay-third.ybpay_zfb,
+.pay-third.qianwangpay_zfb,
+.pay-third.xunhuibaopay_zfb,
+.pay-third.yinbang_zfb,
+.pay-third.xunfutong_zfb,
+.pay-third.xunfutong_zfbWap,
+.pay-third.rongepay_zfb,
+.pay-third.lefu_zfb,
+.pay-third.anfu_zfb,
+.pay-third.hfb_zfb,
+.pay-third.helibao_zfb,
+.pay-third.funpay_zfb,
+.pay-third.okpay_zfb,
+.pay-third.allscore_zfb,
+.pay-third.sfoo_zfb,
+.pay-third.xunbao_zfb,
+.pay-third.ynn_zfb,
+.pay-third.jiupay_zfb,
+.pay-third.xtc_zfb,
+.pay-third.miaofu_zfb,
+.pay-third.yifubao_zfb,
+.pay-third.lexinfu_zfb,
+.pay-third.amx_zfb,
+.pay-third.zhangzhifu_zfb,
+.pay-third.renxinfu_zfb,
+.pay-third.duodebao_zfb,
+.pay-third.tianchuang_zfb,
+.pay-third.hebao_zfb,
+.pay-third.dinpay_zfb,
+.pay-third.xjt_zfb,
+.pay-third.rzfpay_zfb,
+.pay-third.duoduo_zfb,
+.pay-third.bifu_zfb,
+.pay-third.xinmobao_zfb,
+.pay-third.qianyou_zfb,
+.pay-third.juhe_zfb,
+.pay-third.wuwuwu_zfb,
+.pay-third.xuntongbao_zfb,
+.pay-third.duobaopay_zfb,
+.pay-third.woozf_zfb,
+.pay-third.baijie_zfb,
+.pay-third.caimao_zfb,
+.pay-third.zbpay_zfb,
+.pay-third.yunfux_zfb,
+.pay-third.baolifu_zfb,
+.pay-third.leefu_zfb,
+.pay-third.yuanqi_zfb,
+.pay-third.ak47pay_zfb,
+.pay-third.youbei_zfb,
+.pay-third.yishou_zfb,
+.pay-third.kuaifu_zfb,
+.pay-third.likefu_zfb,
+.pay-third.suhuibao_zfb,
+.pay-third.huakun_zfb,
+.pay-third.yunan_zfb,
+.pay-third.baifutong_zfb,
+.pay-third.scanpay_zfb,
+.pay-third.haiou_zfb,
+.pay-third.bft_zfb,
+.pay-third.xinzf_zfb,
+.pay-third.zhitongbao_zfb,
+.pay-third.xingheyi_zfb,
+.pay-third.litong_zfb,
+.pay-third.goldenpay_zfb,
+.pay-third.caifubao_zfb,
+.pay-third.changcheng_zfb,
+.pay-third.zaixianbao_zfb,
+.pay-third.dudu_zfb,
+.pay-third.shuidi_zfb,
+.pay-third.rujin_zfb,
+.pay-third.wangfutong_zfb,
+.pay-third.guanglian_zfb,
+.pay-third.yby_zfb,
+.pay-third.xinmafu_zfb,
+.pay-third.huiju_zfb,
+.pay-third.yuanfu_zfb,
+.pay-third.qqfu_zfb,
+.pay-third.huitong_zfb,
+.pay-third.jiefuda_zfb,
+.pay-third.ufu_zfb,
+.pay-third.hengtong_zfb{background-position: 0 -60px;}/* 01 支付宝 & 魔宝-支付宝 & 通汇-支付宝 & 金安付-支付宝 & 商银信-扫码支付-支付宝*/
+.pay-third.wechatpay,
+.pay-third.dinpay_wx,
+.pay-third.mobao_wx,
+.pay-third.jiupay_wx,
+.pay-third.rfupay_wx,
+.pay-third.tonghui_wx,
+.pay-third.jinanpay_wx,
+.pay-third.allscore-s_wx,
+.pay-third.funpay_wx,
+.pay-third.heepay_wx,
+.pay-third.allscore_wx,
+.pay-third.ybpay_wx,
+.pay-third.qianwangpay_wx,
+.pay-third.xunhuibaopay_wx,
+.pay-third.yinbang_wx,
+.pay-third.sfoo_wx,
+.pay-third.xinbei_wx,
+.pay-third.okpay_wx,
+.pay-third.xunfutong_wx,
+.pay-third.rongepay_wx,
+.pay-third.helibao_wx,
+.pay-third.anfu_wx,
+.pay-third.hfb_wx,
+.pay-third.xunbao_wx,
+.pay-third.ynn_wx,
+.pay-third.lefu_wx,
+.pay-third.xtc_wx,
+.pay-third.miaofu_wx,
+.pay-third.yifubao_wx,
+.pay-third.lexinfu_wx,
+.pay-third.weixin_wx,
+.pay-third.amx_wx,
+.pay-third.zhangzhifu_wx,
+.pay-third.renxinfu_wx,
+.pay-third.duodebao_wx,
+.pay-third.tianchuang_wx,
+.pay-third.hebao_wx,
+.pay-third.xjt_wx,
+.pay-third.rzfpay_wx,
+.pay-third.duoduo_wx,
+.pay-third.bifu_wx,
+.pay-third.xinmobao_wx,
+.pay-third.qianyou_wx,
+.pay-third.juhe_wx,
+.pay-third.wuwuwu_wx,
+.pay-third.xuntongbao_wx,
+.pay-third.duobaopay_wx,
+.pay-third.woozf_wx,
+.pay-third.baijie_wx,
+.pay-third.caimao_wx,
+.pay-third.zbpay_wx,
+.pay-third.yunfux_wx,
+.pay-third.baolifu_wx,
+.pay-third.leefu_wx,
+.pay-third.yuanqi_wx,
+.pay-third.ak47pay_wx,
+.pay-third.youbei_wx,
+.pay-third.yishou_wx,
+.pay-third.kuaifu_wx,
+.pay-third.jyb_wx,
+.pay-third.likefu_wx,
+.pay-third.suhuibao_wx,
+.pay-third.huakun_wx,
+.pay-third.yunan_wx,
+.pay-third.baifutong_wx,
+.pay-third.scanpay_wx,
+.pay-third.haiou_wx,
+.pay-third.bft_wx,
+.pay-third.xinzf_wx,
+.pay-third.zhitongbao_wx,
+.pay-third.xingheyi_wx,
+.pay-third.litong_wx,
+.pay-third.goldenpay_wx,
+.pay-third.caifubao_wx,
+.pay-third.changcheng_wx,
+.pay-third.zaixianbao_wx,
+.pay-third.dudu_wx,
+.pay-third.shuidi_wx,
+.pay-third.wangfutong_wx,
+.pay-third.guanglian_wx,
+.pay-third.yby_wx,
+.pay-third.xinmafu_wx,
+.pay-third.huiju_wx,
+.pay-third.yuanfu_wx,
+.pay-third.qqfu_wx,
+.pay-third.huitong_wx,
+.pay-third.jiefuda_wx,
+.pay-third.ufu_wx,
+.pay-third.hengtong_wx{background-position: 0 -90px;}/* 02 微信 & 智付-微信 &  魔宝-微信 & 久付-微信 & 锐付-微信 & 通汇-微信 & 金安付-微信 &商银信-扫码支付-微信*/
+.pay-third.tenpay {background-position: 0 -120px;}/* 03 财付通 */
+.pay-third.unionpay{background-position: 0 -150px;}/* 04 银联在线 */
+.pay-third.chinaums{background-position: 0 -180px;}/* 05 银联商务 */
+.pay-third.bill99{background-position: 0 -210px;}/* 06 快钱 */
+.pay-third.chinapnr{background-position: 0 -240px;}/* 07 汇付天下 */
+.pay-third.yeepay{background-position: 0 -270px;}/* 08 易宝支付 */
+.pay-third.baofoo{background-position: 0 -300px;}/* 09 宝付 */
+.pay-third.ips,
+.pay-third.ips-3,
+.pay-third.ips-7{background-position: 0 -330px;}/* 10 环迅支付 */
+.pay-third.gopay{background-position: 0 -360px;}/* 11 国付宝 */
+.pay-third.allinpay {background-position: 0 -390px;}/* 12 通联支付 */
+.pay-third.lakala{background-position: 0 -420px;}/* 13 拉卡拉 */
+.pay-third.paypal{background-position: 0 -450px;}/* 14 PayPal */
+.pay-third.reapal{background-position: 0 -480px;}/* 15 融宝 */
+.pay-third.bbpay,
+.pay-third.bbpay-old,
+.pay-third.bbpay-new{ background-position: 0 -510px;}/* 16 币币支付 */
+.pay-third.dinpay{background-position: 0 -540px;}/*17 智付 */
+.pay-third.ecpss {background-position: 0 -570px;}/* 19 汇潮支付 */
+.pay-third.kjt{background-position: 0 -600px;}/* 20 快捷通 */
+.pay-third.mobao{background-position: 0 -630px;}/* 21 摩宝 */
+.pay-third.jiupay{background-position: 0 -660px;}/* 22 久付支付 */
+.pay-third.rfupay{background-position: 0 -690px;}/* 23 锐付支付 */
+.pay-third.tonghui{background-position: 0 -720px;}/* 24 通汇卡 */
+.pay-third.bitcoin{background-position: 0 -781px;}/* 25 比特币 */
+.pay-third.qqwallet,
+.pay-third.hdpay_qq,
+.pay-third.youbei_qq,
+.pay-third.yuanfu_qq,
+.pay-third.huiju_qq,
+.pay-third.okpay_qq,
+.pay-third.xinmafu_qq,
+.pay-third.qingyifu_qq,
+.pay-third.guanglian_qq,
+.pay-third.wangfutong_qq,
+.pay-third.shunbao_qq,
+.pay-third.sfoo_qq,
+.pay-third.zaixianbao_qq,
+.pay-third.changcheng_qq,
+.pay-third.caifubao_qq,
+.pay-third.goldenpay_qq,
+.pay-third.litong_qq,
+.pay-third.xingheyi_qq,
+.pay-third.zhitongbao_qq,
+.pay-third.xinzf_qq,
+.pay-third.bft_qq,
+.pay-third.juhe_qq,
+.pay-third.haiou_qq,
+.pay-third.rfupay_qq,
+.pay-third.xinbei_qq,
+.pay-third.xuntongbao_qq,
+.pay-third.puxun_qq,
+.pay-third.ak47pay_qq,
+.pay-third.scanpay_qq,
+.pay-third.baifutong_qq,
+.pay-third.yunan_qq,
+.pay-third.huakun_qq,
+.pay-third.suhuibao_qq,
+.pay-third.likefu_qq,
+.pay-third.caimao_qq,
+.pay-third.xunbao_qq,
+.pay-third.renxinfu_qq,
+.pay-third.duodebao_qq,
+.pay-third.duoduo_qq,
+.pay-third.xunjietong_qq,
+.pay-third.yinbang_qq,
+.pay-third.qianyou_qq,
+.pay-third.dinpay_qq,
+.pay-third.amx_qq,
+.pay-third.yishou_qq,
+.pay-third.gaotong_qq,
+.pay-third.zhih_qq{background-position: 0 -818px;}/* 25 QQ钱包 */
+.pay-third.zhihpay{background-position: 0 -859px;}/* 26 智汇付 */
+.pay-third.upay{background-position: 0 -896px;}/* 27 优贝支付 */
+
+/*===============================================
+ * Part-02
+ * 注单详细游戏项图标
+ * Author: Steven
+ * Update by 2017-02-12
+================================================*/
+@font-face {
+font-family: 'game-result';
+src:url('../fonts/game-result/game-result.eot');
+src:url('../fonts/game-result/game-result.eot#iefix') format('embedded-opentype'),
+  url('../fonts/game-result/game-result.ttf') format('truetype'),
+  url('../fonts/game-result/game-result.woff') format('woff'),
+  url('../fonts/game-result/game-result.svg#game-result') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+.gr,.gr-2x,.gr-3x,.gr-4x,.gr-5x{color:#333;font-family:'game-result'!important;speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+.gr-2x{font-size: 2em;}
+.gr-3x{font-size: 3em;}
+.gr-4x{font-size: 4em;}
+.gr-5x{font-size: 5em;}
+
+.gr-ft-w:before{content:"\e900";}
+.gr-ft-b:before{content:"\e901";color:#fa1e1e;}
+
+.gr-dice-1:before,.gr-di-1:before{content:"\e902";color:#fa1e1e;}
+.gr-dice-2:before,.gr-di-2:before{content:"\e903";}
+.gr-dice-3:before,.gr-di-3:before{content:"\e904";}
+.gr-dice-4:before,.gr-di-4:before{content:"\e905";color:#fa1e1e;}
+.gr-dice-5:before,.gr-di-5:before{content:"\e906";}
+.gr-dice-6:before,.gr-di-6:before{content:"\e907";}
+
+.gr-mj-c1:before{content:"\e908";}
+.gr-mj-c2:before{content:"\e909";}
+.gr-mj-c3:before{content:"\e90a";}
+.gr-mj-c4:before{content:"\e90b";}
+.gr-mj-c5:before{content:"\e90c";}
+.gr-mj-c6:before{content:"\e90d";}
+.gr-mj-c7:before{content:"\e90e";}
+.gr-mj-c8:before{content:"\e90f";}
+.gr-mj-c9:before{content:"\e910";}
+.gr-mj-wd:before{content:"\e911";}
+
+.gr-club-a:before,.gr-club-1:before,.gr-c-1:before{content:"\e912";}
+.gr-club-2:before,.gr-c-2:before{content:"\e913";}
+.gr-club-3:before,.gr-c-3:before{content:"\e914";}
+.gr-club-4:before,.gr-c-4:before{content:"\e915";}
+.gr-club-5:before,.gr-c-5:before{content:"\e916";}
+.gr-club-6:before,.gr-c-6:before{content:"\e917";}
+.gr-club-7:before,.gr-c-7:before{content:"\e918";}
+.gr-club-8:before,.gr-c-8:before{content:"\e919";}
+.gr-club-9:before,.gr-c-9:before{content:"\e91a";}
+.gr-club-10:before,.gr-c-10:before{content:"\e91b";}
+.gr-club-j:before,.gr-club-11:before,.gr-c-11:before{content:"\e91c";}
+.gr-club-q:before,.gr-club-12:before,.gr-c-12:before{content:"\e91d";}
+.gr-club-k:before,.gr-club-13:before,.gr-c-13:before{content:"\e91e";}
+
+.gr-diamond-a:before,.gr-diamond-1:before,.gr-d-1:before{content:"\e91f";color:#fa1e1e;}
+.gr-diamond-2:before,.gr-d-2:before{content:"\e920";color:#fa1e1e;}
+.gr-diamond-3:before,.gr-d-3:before{content:"\e921";color:#fa1e1e;}
+.gr-diamond-4:before,.gr-d-4:before{content:"\e922";color:#fa1e1e;}
+.gr-diamond-5:before,.gr-d-5:before{content:"\e923";color:#fa1e1e;}
+.gr-diamond-6:before,.gr-d-6:before{content:"\e924";color:#fa1e1e;}
+.gr-diamond-7:before,.gr-d-7:before{content:"\e925";color:#fa1e1e;}
+.gr-diamond-8:before,.gr-d-8:before{content:"\e926";color:#fa1e1e;}
+.gr-diamond-9:before,.gr-d-9:before{content:"\e927";color:#fa1e1e;}
+.gr-diamond-10:before,.gr-d-10:before{content:"\e928";color:#fa1e1e;}
+.gr-diamond-j:before,.gr-diamond-11:before,.gr-d-11:before{content:"\e929";color:#fa1e1e;}
+.gr-diamond-q:before,.gr-diamond-12:before,.gr-d-12:before{content:"\e92a";color:#fa1e1e;}
+.gr-diamond-k:before,.gr-diamond-13:before,.gr-d-13:before{content:"\e92b";color:#fa1e1e;}
+
+.gr-heart-a:before,.gr-heart-1:before,.gr-h-1:before{content:"\e92c";color:#fa1e1e;}
+.gr-heart-2:before,.gr-h-2:before{content:"\e92d";color:#fa1e1e;}
+.gr-heart-3:before,.gr-h-3:before{content:"\e92e";color:#fa1e1e;}
+.gr-heart-4:before,.gr-h-4:before{content:"\e92f";color:#fa1e1e;}
+.gr-heart-5:before,.gr-h-5:before{content:"\e930";color:#fa1e1e;}
+.gr-heart-6:before,.gr-h-6:before{content:"\e931";color:#fa1e1e;}
+.gr-heart-7:before,.gr-h-7:before{content:"\e932";color:#fa1e1e;}
+.gr-heart-8:before,.gr-h-8:before{content:"\e933";color:#fa1e1e;}
+.gr-heart-9:before,.gr-h-9:before{content:"\e934";color:#fa1e1e;}
+.gr-heart-10:before,.gr-h-10:before{content:"\e935";color:#fa1e1e;}
+.gr-heart-j:before,.gr-heart-11:before,.gr-h-11:before{content:"\e936";color:#fa1e1e;}
+.gr-heart-q:before,.gr-heart-12:before,.gr-h-12:before{content:"\e937";color:#fa1e1e;}
+.gr-heart-k:before,.gr-heart-13:before,.gr-h-13:before{content:"\e938";color:#fa1e1e;}
+
+.gr-spade-a:before,.gr-spade-1:before,.gr-s-1:before{content:"\e939";}
+.gr-spade-2:before,.gr-s-2:before{content:"\e93a";}
+.gr-spade-3:before,.gr-s-3:before{content:"\e93b";}
+.gr-spade-4:before,.gr-s-4:before{content:"\e93c";}
+.gr-spade-5:before,.gr-s-5:before{content:"\e93d";}
+.gr-spade-6:before,.gr-s-6:before{content:"\e93e";}
+.gr-spade-7:before,.gr-s-7:before{content:"\e93f";}
+.gr-spade-8:before,.gr-s-8:before{content:"\e940";}
+.gr-spade-9:before,.gr-s-9:before{content:"\e941";}
+.gr-spade-10:before,.gr-s-10:before{content:"\e942";}
+.gr-spade-j:before,.gr-spade-11:before,.gr-s-11:before{content:"\e943";}
+.gr-spade-q:before,.gr-spade-12:before,.gr-s-12:before{content:"\e944";}
+.gr-spade-k:before,.gr-spade-13:before,.gr-s-13:before{content:"\e945";}
+
+.gr-roulette-0:before{content:"\e946";color:#28963c;}
+.gr-roulette-1:before{content:"\e947";color:#fa1e1e;}
+.gr-roulette-2:before{content:"\e948";}
+.gr-roulette-3:before{content:"\e949";color:#fa1e1e;}
+.gr-roulette-4:before{content:"\e94a";}
+.gr-roulette-5:before{content:"\e94b";color:#fa1e1e;}
+.gr-roulette-6:before{content:"\e94c";}
+.gr-roulette-7:before{content:"\e94d";color:#fa1e1e;}
+.gr-roulette-8:before{content:"\e94e";}
+.gr-roulette-9:before{content:"\e94f";color:#fa1e1e;}
+.gr-roulette-10:before{content:"\e950";}
+.gr-roulette-11:before{content:"\e951";}
+.gr-roulette-12:before{content:"\e952";color:#fa1e1e;}
+.gr-roulette-13:before{content:"\e953";}
+.gr-roulette-14:before{content:"\e954";color:#fa1e1e;}
+.gr-roulette-15:before{content:"\e955";}
+.gr-roulette-16:before{content:"\e956";color:#fa1e1e;}
+.gr-roulette-17:before{content:"\e957";}
+.gr-roulette-18:before{content:"\e958";color:#fa1e1e;}
+.gr-roulette-19:before{content:"\e959";color:#fa1e1e;}
+.gr-roulette-20:before{content:"\e95a";}
+.gr-roulette-21:before{content:"\e95b";color:#fa1e1e;}
+.gr-roulette-22:before{content:"\e95c";}
+.gr-roulette-23:before{content:"\e95d";color:#fa1e1e;}
+.gr-roulette-24:before{content:"\e95e";}
+.gr-roulette-25:before{content:"\e95f";color:#fa1e1e;}
+.gr-roulette-26:before{content:"\e960";}
+.gr-roulette-27:before{content:"\e961";color:#fa1e1e;}
+.gr-roulette-28:before{content:"\e962";}
+.gr-roulette-29:before{content:"\e963";}
+.gr-roulette-30:before{content:"\e964";color:#fa1e1e;}
+.gr-roulette-31:before{content:"\e965";}
+.gr-roulette-32:before{content:"\e966";color:#fa1e1e;}
+.gr-roulette-33:before{content:"\e967";}
+.gr-roulette-34:before{content:"\e968";color:#fa1e1e;}
+.gr-roulette-35:before{content:"\e969";}
+.gr-roulette-36:before{content:"\e96a";color:#fa1e1e;}
+
+/* 游戏下拉样式 */
+.type-search {
+  display: none;
+  position: absolute;
+  background: #fff;
+  left: 0;
+  z-index: 999;
+  min-width: 600px;
+  width: 100%;
+  padding: 15px;
+  box-shadow: 0 3px 10px rgb(181, 181, 181);
+  border: 1px solid #b4b7bb;
+  margin-top: -1px;
+}
+
+.type-search:before {
+  position: absolute;
+  content: '';
+  width: 12px;
+  height: 12px;
+  left: 316px;
+  top: -7px;
+  background: #fff;
+  border-top: 1px solid #b4b7bb;
+  border-left: 1px solid #b4b7bb;
+  transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+/*搜索按钮样式*/
+.template-menu{margin-top: 10px;border-top: 1px dotted #b4b7bb;padding-top: 10px;}
+/*.template-menu .show-demand-b:focus{background:none; border-color: #b4b7bb;color: #404649;}*/
+.mediate-search-btn{ position: absolute;width:16%;left: 38%;z-index: 888;}
+
+/*查询列表重置按钮样式*/
+.reset-condition-button {
+  right: 37%;
+  position: absolute;
+  z-index: 888;
+}

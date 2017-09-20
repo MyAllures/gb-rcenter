@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+  <!-- 提示弹出框 --> 
+<script type="text/javascript">
+var environment = {
+	userVo : '',
+	role : '',
+	userId : '',
+	basePath : '',
+	userCash : '',
+	globalPath : '/',
+	userActiveTime : '',
+	yoolibaoWhiteListStatus : '',
+	yoolibaoOpenStatus : '',
+	cerrencyOpenTime : "2015/9/10"//new Date()
+};
+</script>
+ <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+<script src="../../common/js/pcenterJS/global-1.1.0.min.js" type="text/javascript"></script>  
+
+<!--项部下拉弹出 --> 
+<script type="text/javascript" src="../../common/js/pcenterJS/head.js"></script>
+  <title>玩家中心首页</title>
+</head>
+<body>
+<!-- //* Top -->
+
+<div class="top-wrap">
+        <div class="top">
+               <!--顶部右边-->
+                   <div class="top-right">
+               <div class="member">
+            您好，<div id="site-nav">  
+			<ul>  
+               <li>
+				  <div class="menu">
+					  <a class="menu-hd" href="#"> <span class="orange">PCKmenr</span><b></b></a> 
+					  <div class="menu-bd box">
+                         <div class="global-account-head"><a href="#" class="global-account-img">
+                          <img src="images/face.png" width="39" height="39"  alt="我的头像" /> </a>
+    <p class="global-account-name" title="name">下午好，陈先生</p><a href="account.html">账户设置</a><span class="global-top-seperator">|</span><a href="gamerecord.html">交易记录</a>
+  </div>
+  
+  <div class="global-account-money">
+   钱包余额：<span class="show"><a href="#" >显示余额</a></span>
+   <p class="dottline space"></p>
+    <div class="total"> <a href="asset-transfer.html">转帐</a> <span class="global-top-seperator">|</span>
+      <a href="asset-deposit.html">存款</a><span class="global-top-seperator">|</span>
+      <a href="asset-withdraw.html">取款</a>
+    </div>
+     </div>
+      </div>
+    </div>
+			  </li>
+               </ul>
+               </div>
+       [退出] <label class="line-after"><span class="new"><i class="new-ico select"></i><a href="#">新消息</a></span></label>
+               </div>  
+            </div>
+             <!--顶部左边-->
+            <div class="top-left">
+                <div class="select-lang">
+                  <p><span class="flag cn"></span>简体中文</p>
+                    <ul>
+                        <li><a href="#" rel="cn"><span class="flag cn"></span>简体中文</a> 
+                        </li>
+                        <li><a href="#" rel="hk"><span class="flag hk"></span>繁体中文</a> 
+                        </li>
+                        <li><a href="#" rel="en"><span class="flag en"></span>English</a> 
+                        </li>
+                        <li><a href="#" rel="th"><span class="flag th"></span>ไทย</a> 
+                        </li>
+                        <li><a href="#" rel="vn"><span class="flag vn"></span>Tiếng Việt</a> 
+                        </li>
+                        <li><a href="#" rel="kr"><span class="flag kr"></span>한국어</a> 
+                        </li>
+                        <li><a href="#" rel="jp"><span class="flag jp"></span>日本語</a> 
+                        </li>
+                        <li><a href="#" rel="id"><span class="flag id"></span>Indonesia</a> 
+                        </li>
+                        <li><a href="#" rel="kh"><span class="flag kh"></span>Khmer</a> 
+                        </li>
+                    </ul>
+              </div>
+             <label class="time line-after">GMT +8 2015-03-24  15:02:57</label>
+            </div>
+      
+        </div>
+    </div>
+    
+ <!--banner-->
+<div class="banner"><div class="logo"></div><div class="right"></div>
+</div>   
+    <div class="wrapper">
+  <!--left-->  
+  <div class="sidebar">
+  
+  <!--左边菜单栏-->  
+<div class="sidebar-nav">
+      <dl>
+        <dt>
+          <a href="index.html">
+            <i class="navico home"></i>
+            钱包转账
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="deposit-region.html">
+            <i class="navico capital"></i>
+            存款专区
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="withdraw.html">
+            <i class="navico capital"></i>
+            取款专区
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="asset-history.html">
+            <i class="navico capital"></i>
+            资金记录
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="gamerecord.html">
+            <i class="navico gamerecord"></i>
+            投注记录
+          </a>
+        </dt>
+      </dl><dl><dt><a href="sale1.html"><i class="navico sale"></i> 优惠记录</a></dt></dl>
+      <dl>
+        <dt>
+          <a href="infonotice.html">
+            <i class="navico info"></i>
+            消息公告
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="account.html">
+            <i class="navico accout"></i>
+            个人资料
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt class="select">
+          <a href="recommended.html">
+            <i class="navico recommend-select"></i>
+            推荐好友
+          </a>
+        </dt>
+      </dl>
+    </div>
+</div>
+
+  <!--right-->  
+<div class="main-wrap">
+<div class="notice"><div class="notice-left"><em class="path"></em></div>
+<div class="path-right"><a href="index.html">玩家首页</a><span class="arrow">></span>推荐好友</div>
+</div>
+<div class="tabmenu">
+  <ul class="tab">
+    <li><a href="recommended.html" class="current">推荐好友</a></li>
+   <li><a href="recommended-record.html">推荐记录</a></li>
+   </ul>
+</div>
+<!--推荐好友-->
+<div class="recode">你的专属推荐码：<i class="blue fontlarge">blr5x</i>
+<span class="respace">你已推荐好友：<i class="green fontlarge">38</i></span>
+<span class="respace">你已获得<i class="orange fontlarge">&nbsp;20.00&nbsp;</i>推荐奖励</span>
+</div>
+
+<!--邀请方式-->
+<div class="invite-way">
+<div class="titleline"><h2>邀请方式</h2></div>
+<div class="invite-box">
+
+<h3>这是你的专属邀请码，复制以下文字通过QQ等方式发送给好友</h3>
+<div class="invite-copy">
+<div class="invite-copyleft">
+<textarea class="textarea" placeholder="">http://www.baidu.com?/=bl5rx </textarea>
+<p class="gray">Ctrl+c或鼠标右健选择复制</p>
+</div>
+<div class="invite-button">
+<button data-toggle="button" class="btn-blue btn large-big lar-l" id="btn-submit">复制</button>
+</div>
+</div>
+<div class="invite-copy">
+<div class="invite-copyleft">
+<textarea class="textarea" placeholder="">注册游戏并绑定手机，我们都能获得5元红包奖励，快点行动吧!</textarea>
+<p class="gray">Ctrl+c或鼠标右健选择复制</p>
+</div>
+<div class="invite-button">
+<button data-toggle="button" class="btn-blue btn large-big lar-l" id="btn-submit">复制</button>
+</div>
+</div>
+</div>
+</div>
+
+<!--推荐奖励-->
+<div class="invite-total">
+<div class="titleline"><h2>推荐奖励</h2></div>
+<div class="invite-con"><i class="relink bonus"></i>推荐好友成功注册并存款<span class="orange">满500元</span>，双方各获<span class="orange">10元</span>奖励。</div>
+</div>
+
+<!--推荐红利-->
+<div class="invite-total">
+<div class="titleline"><h2>推荐红利</h2></div>
+<div class="recommended-bonus">
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<th>推荐玩家数量</th>
+<th>推荐红利比例<i class="ico-ask ask"></i></th>
+</tr>
+  <tr>
+    <td>2以上</td>
+    <td><span class="orange">0.03%</span></td>
+  </tr>
+  <tr>
+   <td>5以上</td>
+   <td><span class="orange">0.03%</span></td>
+  </tr>
+</table>
+</div>
+</div>
+
+<!--活动规则-->
+<div class="invite-total">
+<div class="titleline"><h2>活动规则</h2></div>
+<div class="active-rule">
+<ul>
+<li>新用户通过您的邀请链接进行注册、绑定手机后，将立即获得5元红包。您将在第二天获得5元红包。</li>
+<li>新用户的手机号码必须是在平安游戏使用过的。</li>
+<li>新用户的手机号码所在地须是平安游戏覆盖城市。</li>
+<li>同一手机号码只在第一次被绑定时赠送红包。每部手机仅限第一次注册时有效。</li>
+<li>如对本活动规则有疑问请联系平安游戏客服。</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- 右边客服服务-->
+<div id="moquu_wxin" class="moquu_wxin"><a href="javascript:void(0)">玩家游戏<div class="moquu_wxinh"></div></a></div>
+<div id="moquu_wshare" class="moquu_wshare"><a href="javascript:void(0)">玩家游戏<div class="moquu_wshareh"></div></a></div>
+<div id="moquu_wmaps"><a href="#">玩家游戏</a></div>
+
+
+<!-- //* 语言版本切换 #select-lang* -->
+   <script type="text/javascript">
+        $(function() {
+         
+            $(".select-lang p").click(function() {
+                var ul = $(".select-lang ul");
+                if (ul.css("display") == "none") {
+                    ul.slideDown("fast");
+                } else {
+                    ul.slideUp("fast");
+                }
+            });
+
+            $(".select-lang ul li a").click(function() {
+                var txt = $(this).text();
+                var value = $(this).attr("rel");
+                $(".select-lang p").html("<span class='flag " + value + "'></span>" + txt);
+                $(".select-lang ul").hide();
+            });
+         
+        });
+      
+    </script>
+   
+   
+   
+ 
+</body>
+</html>

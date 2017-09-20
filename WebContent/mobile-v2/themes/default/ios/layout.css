@@ -1,0 +1,57 @@
+body { background: #fff; line-height: 0.64rem; }
+
+ul, ol, dl { font-family: inherit; font-size: 16px; line-height: 0.68267rem; list-style-position: outside; margin-bottom: 0.8rem; }
+
+.iosinstruction_box { height: 4.266666666666667rem; background: #242222; }
+
+.orbit-slide-number { display: none; }
+
+.orbit-timer { display: none; }
+
+.center_align { text-align: center; }
+
+.button { background-color: #000; border: 1px solid #252525; font-size: 14px; width: 3.413333333333333rem; height: 1.333333333333333rem; padding: 0; line-height: 1.333333333333333rem; text-align: center; margin: 0; }
+
+.margintop1 { margin-top: 0.4266666666666667rem; }
+
+.column, .columns { position: relative; padding-left: 0.4rem; padding-right: 0.4rem; float: left; }
+
+.marginbottom1 { margin-bottom: 1rem; }
+
+.orbit-container .orbit-slides-container > * .orbit-caption { background-color: transparent; font-size: 16px; }
+
+.orbit-number { color: #666; font-size: 32px; height: 1.36rem; line-height: 1.36rem; }
+
+button:hover, button:focus, .button:hover, .button:focus { background-color: #999; }
+
+.orbit-bullets { display: block !important; }
+
+.orbit-container .orbit-slides-container > * .orbit-caption { bottom: 0.8rem; }
+
+.orbit-text { font-size: 16px; }
+
+.orbit-bullets li { width: 0.24rem; height: 0.24rem; }
+
+.orbit-container .orbit-slides-container > * .orbit-caption { padding: 0.26667rem 0.37333rem; }
+
+.com-name { position: absolute; top: 8.53333rem; left: 0; right: 0; text-align: center; font-size: 0.4rem; font-weight: bold; color: #000; width: 6.4rem; margin: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.com-name.small { top: 6rem; font-size: 0.21333rem; width: 3.2rem; }
+
+.com-name2 { position: absolute; top: 8.45333rem; left: 0; right: 0; text-align: center; font-size: 0.37333rem; color: #4c99f9; width: 6.4rem; margin: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.com-name2.small { top: 5.099502487562189rem; font-size: 0.1492537313432836rem; width: 3.2rem; }
+
+.par-1 { position: relative; height: 12.53333rem; }
+.par-1 .logo-big { position: absolute; top: 1.12rem; text-align: center; right: 0; left: 0; height: 0.8rem; }
+.par-1 .logo-big img { height: 100%; }
+.par-1 .logo-small { position: absolute; top: 4.285714285714286rem; left: 2.128571428571429rem; height: 0.5018571428571429rem; width: 2.93333rem; text-align: left; }
+.par-1 .logo-small img { height: 100%; vertical-align: top; }
+
+.sli1 .app-icon-big { position: absolute; top: 5.57333rem; left: 5.57333rem; width: 1.86667rem; border-radius: 0.16rem; }
+.sli1 .app-icon-small { position: absolute; top: 8.74667rem; left: 3.68rem; width: 0.72rem; border-radius: 0.10667rem; }
+.sli1 .txt1 { position: absolute; top: 0; left: 0; }
+
+.sli2 .app-icon-small { position: absolute; top: 8.24rem; left: 3.70667rem; width: 0.66667rem; border-radius: 0.13333rem; }
+
+/*# sourceMappingURL=layout.css.map */

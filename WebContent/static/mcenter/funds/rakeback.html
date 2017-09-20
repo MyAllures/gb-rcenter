@@ -1,0 +1,172 @@
+
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>资金管理</span>
+        <span>/</span><span>返水结算</span>
+<!--        <a href="javascript:void(0)" nav-target="mainFrame" class="m-l-sm btn btn-outline btn-default btn-xs co-gray6 return-btn"><em class="fa fa-caret-left"></em>返回</a>-->
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow clearfix">
+            <div class="filter-wraper clearfix p-xs line-hi34">
+                <a href="funds/rakeback-record.html" nav-target="mainFrame" class="btn btn-primary-hide">未出账单返水记录</a>
+                <a href="operators/rakeback.html" nav-target="mainFrame" class="pull-right">返水方案设置</a>
+            </div>
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover dataTable" aria-describedby="editable_info">
+                    <thead>
+                        <tr role="row" class="bg-gray">
+                            <th>结算名称</th>
+                            <th>返水周期</th>
+                            <th>待发放/已发放/拒绝</th>
+                            <th>应付返水</th>
+                            <th>实付返水</th>
+                            <th class="inline">
+                                <select class="chosen-select-no-single">
+                                    <option>已发放</option>
+                                    <option>部分发放</option>
+                                    <option>全部已发放</option>
+                                </select>
+                            </th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tab-detail">
+                            <td>2015年08月04期</td>
+                            <td>2015/08/04 ~ 2015/08/04</td>
+                            <td><span class="co-blue">79</span>/0/0</td>
+                            <td>39,467.57</td>
+                            <td>39,467.57</td>
+                            <td><span class="label label-orange">待发放</span></td>
+                            <td>
+                                <a href="funds/rakeback-detail.html" nav-target="mainFrame">详细</a>
+                                <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                <a href="funds/rakeback-clearing.html" nav-target="mainFrame">结算</a>
+                            </td>
+                        </tr>
+                        <tr class="tab-detail">
+                            <td>2015年08月04期</td>
+                            <td>2015/08/04 ~ 2015/08/04</td>
+                            <td><span class="co-blue">79</span>/0/0</td>
+                            <td>39,467.57</td>
+                            <td>39,467.57</td>
+                            <td><span class="label label-success">部分已发放</span></td>
+                            <td>
+                                <a href="funds/rakeback-detail.html" nav-target="mainFrame">详细</a>
+                                <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                <a href="funds/rakeback-clearing.html" nav-target="mainFrame">结算</a>
+                            </td>
+                        </tr>
+                        <tr class="tab-detail">
+                            <td>2015年08月04期</td>
+                            <td>2015/08/04 ~ 2015/08/04</td>
+                            <td><span class="co-blue">79</span>/0/0</td>
+                            <td>39,467.57</td>
+                            <td>39,467.57</td>
+                            <td><span class="label">全部已发放</span></td>
+                            <td>
+                                <a href="funds/rakeback-detail.html" nav-target="mainFrame">详细</a>
+                            </td>
+                        </tr>
+                        <tr class="tab-detail">
+                            <td>2015年08月04期</td>
+                            <td>2015/08/04 ~ 2015/08/04</td>
+                            <td><span class="co-blue">79</span>/0/0</td>
+                            <td>39,467.57</td>
+                            <td>39,467.57</td>
+                            <td><span class="label label-orange">待发放</span></td>
+                            <td>
+                                <a href="funds/rakeback-detail.html" nav-target="mainFrame">详细</a>
+                            </td>
+                        </tr>
+                        <tr class="tab-detail">
+                            <td>2015年08月04期</td>
+                            <td>2015/08/04 ~ 2015/08/04</td>
+                            <td><span class="co-blue">79</span>/0/0</td>
+                            <td>39,467.57</td>
+                            <td>39,467.57</td>
+                            <td><span class="label label-success">部分已发放</span></td>
+                            <td>
+                                <a href="funds/rakeback-detail.html" nav-target="mainFrame">详细</a>
+                            </td>
+                        </tr>
+                        <tr class="tab-detail">
+                            <td>2015年08月04期</td>
+                            <td>2015/08/04 ~ 2015/08/04</td>
+                            <td><span class="co-blue">79</span>/0/0</td>
+                            <td>39,467.57</td>
+                            <td>39,467.57</td>
+                            <td><span class="label">全部已发放</span></td>
+                            <td>
+                                <a href="funds/rakeback-detail.html" nav-target="mainFrame">详细</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row bdtop3">
+                <div class="col-sm-3 col-xs-6">
+                    <div class="pull-left">
+                        <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>每页20条</option>
+                            <option>每页30条</option>
+                            <option>每页40条</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-9 col-xs-6">
+                    <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                        <div class="pull-right pages show-hide-1095 page-skip">
+                            <form class="form-inline">
+                                <label class="m-l-sm">共10页</label>
+                                <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                                <button class="btn btn-sm m-l-sm">跳转</button>
+                            </form>
+                        </div>
+                        <ul class="pagination pull-right">
+                            <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                            <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                            <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                            <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                            <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                            <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                            <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                            <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                        </ul>
+                    </div>
+                </div>
+                </div></div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': {allow_single_deselect: true},
+            '.chosen-select-no-single': {disable_search_threshold: 10},
+            '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+            '.chosen-select-width': {width: "95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>
+<script src="../../../common/js/flot/jquery.flot.tooltip.min.js"></script>
+<script>
+    $('.help-popover').popover()
+</script>
+<script>
+   
+    $("#file-0").fileinput({
+        'allowedFileExtensions' : ['jpg', 'png','gif'],
+    });
+</script>

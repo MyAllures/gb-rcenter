@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>会员中心</title>
+    <link rel="stylesheet" type="text/css" href="../ssc/themes/default/member/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../ssc/themes/default/member/css/hpn-common.css">
+    <link rel="stylesheet" type="text/css" href="../ssc/themes/default/member/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../ssc/themes/default/member/css/global.css">
+    <script>
+        <!--
+        window.onerror=function(){return true;}
+        // -->
+    </script>
+    <script>
+    <!--
+    // 屏蔽JS错误
+//    window.onerror = function(){return true;}
+    // -->
+</script>
+<script src="../ssc/themes/default/js/mobile-detect.min.js"></script></head>
+<body><div class="help_r_main">
+    <div class="eveb_content">
+        <div class="eveb_transfer_box mb20 clearfix" style="overflow: visible;">
+            <div class="center_wallet fl rel">
+                <span>账户总余额</span>
+                <p class="money"><strong id="wallet" class="money">0.000</strong>元</p>
+                <div class="abs Res" onclick="refreshMoney()"><i class="icon resIcon"></i></div>
+            </div>
+            <ul class="wallet_list wallet_list2 fl">
+                <li><span>可提款总额</span>
+                    <p id="wallet_1" class="money">0.000</p></li>
+                <!--<li class="rel">
+                    <a href="#" class="color-df3c31">资金归集</a>
+                    <p><i class="icon tipIcon"></i></p>
+                    <div class="tipBox abs">
+                        <span class="caret abs"></span>
+                        可将各个平台零钱全部转入中心钱包，方便取款
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+        <form name="withdrawForm" novalidate="novalidate" onsubmit="return false;">
+            <ul class="eveb_form management_bank">
+                <div class="mb10 color-888"><font color="#999999">您还未绑定银行卡 请绑定银行卡，</font><a href="javascript:void(0)" onclick="parent.getPage('zhsz/yhkgl')" style="color:#ff7800">点击前往&gt;&gt;</a></div>
+                    </ul>
+            <ul class="eveb_form eveb_withdraw">
+                <li>
+                    <span>提款金额：</span>
+                    <input id="money" name="money" name="text" type="text" placeholder="请输入转账金额" style="border: 2px solid #f49c42;background: #faf9f9;height: 28px; padding-left:5px">
+                    <label for="money" class="error"></label>
+                </li>
+            </ul>
+            <div class="eveb_form_submit">
+                <input type="submit" id="btnSubmit" value="提交" class="button_medium button_1">
+                <input type="reset" value="重置" class="ml_10 button_medium button_3">
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="../ssc/themes/default/js/jquery.min.js"></script>
+<script type="text/javascript" src="../ssc/themes/default/member/framework/jquery.validate.min.js"></script>
+<script type="text/javascript" src="../ssc/themes/default/member/laydate/laydate.js"></script>
+<script type="text/javascript" src="../ssc/themes/default/member/js/validate.js"></script>
+<script type="text/javascript" src="../ssc/themes/default/member/js/global.js"></script>
+<script type="text/javascript" src="../ssc/themes/default/member/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="../ssc/themes/default/member/js/jquery.md5.js"></script>
+<script type="text/javascript" src="../ssc/themes/default/js/global.js"></script>
+<script type="text/javascript" src="../ssc/themes/default/layer/layer.js"></script>
+<script type="text/javascript" src="../ssc/themes/default/js/jquery.nicescroll.js"></script>
+<script type="text/javascript" src="../ssc/themes/default/member/js/clipboard.min.js"></script>
+<script src="../ssc/themes/default/js/dateFormat.js"></script>
+<script src="../ssc/themes/default/js/template.js"></script>
+<script src="../ssc/themes/default/js/jquery.cookie.js"></script><!--自定义封装函数-->
+<script src="../ssc/themes/default/js/jquery.md5.js"></script><!--自定义封装函数--><script>
+    $(function() {
+        parent.hideLoading();
+    });
+</script><script>
+    $(function () {
+        $(".errhide").addClass('hide');
+        $("#money").keyup(function () {
+            var obj = this;
+            obj.value = obj.value.replace(/[^\d.]/g, "");
+            obj.value = obj.value.replace(/^\./g, "");
+            obj.value = obj.value.replace(/^0/g, "");
+            obj.value = obj.value.replace(/\.{2,}/g, ".");
+            //确保只有一次小数点出现
+            obj.value = obj.value.replace(".", "#").replace(/\./g, "").replace("#", ".");
+            //确保小数点后是两位数字
+            if (obj.value.indexOf(".") > 0 && obj.value.indexOf(".") + 4 <= obj.value.length) {
+                obj.value = obj.value.substr(0, obj.value.indexOf(".") + 3);
+            }
+            $("#money").val(obj.value);
+
+            //提示非法金额输入
+            var maxMoney=$(".wallet_list .money").text();
+            var inmoney=$(".suminp").val();
+            if(parseInt(inmoney) > parseInt(maxMoney)){
+                $(".errhide").removeClass('hide');
+                $(".errhide").html("* 最大提款金额" + maxMoney + "元").show();
+                $(".eveb_form_submit input").removeClass('button_1');
+                $(".eveb_form_submit input").attr("disabled", true);
+            }else{
+                $(".errhide").removeClass('hide');
+                $(".errhide").html('');
+                $(".eveb_form_submit input").addClass('button_1');
+                $(".eveb_form_submit input").attr("disabled", false);
+            }
+
+        });
+
+        $("form[name='withdrawForm'] input[name='money']").change(function () {
+
+        });
+
+        $("form[name='withdrawForm']").validate({
+            rules: {
+                money: {required: true}
+                , id: {required: true}
+            }
+            , messages: {
+                money: {required: "* 请输入金额，"}
+                , id: {required: "* 请选择的银行卡"}
+            }
+            , submitHandler: function (form) {
+                var options = {
+                    url: "/member/submitWithdraw.json",
+                    success: function(json) { //提交后的回调函数
+                        if (json.result == 1) {
+                            alert("提交成功");
+                            refreshMoney();
+                        } else {
+                            alert("提交失败：" + json.description);
+                        }
+                        parent.hideLoading();
+                    },
+                    type: 'post',               //默认是form的method（get or post），如果申明，则会覆盖
+                    dataType: 'json',           //html(默认), xml, script, json...接受服务端返回的类型
+                    timeout: 3000               //限制请求的时间，当请求大于3秒后，跳出请求
+                };
+                parent.showLoading();
+                $(form).ajaxSubmit(options);
+
+            }
+        });
+        $("form[name='withdrawForm']").valid();
+    });
+
+
+    function setDefault(id) {
+        /*ajaxRequest({
+            url: "/member/ajaxSetDefault.json",
+            data: {
+                id: id
+            },
+            beforeSend: function() {
+                parent.showLoading();
+            },
+            success: function(json) {
+                parent.hideLoading();
+                if (json.result == 1) {
+                    location.reload();
+                } else {
+                    Tools.toast("操作失败：" + json.description);
+                }
+            }
+        });*/
+    }
+
+    function ajaxDel(id) {
+        /*if (confirm("确认删除")) {
+            ajaxRequest({
+                url: "/member/ajaxDelUserBank.json",
+                data: {
+                    id: id
+                },
+                beforeSend: function() {
+                    parent.showLoading();
+                },
+                success: function(json) {
+                    parent.hideLoading();
+                    if (json.result == 1) {
+                        Tools.toast("删除成功");
+                        location.reload();
+                    } else {
+                        Tools.toast("删除失败：" + json.description);
+                    }
+                }
+            });
+        }*/
+    }
+
+    function refreshMoney() {
+       /* ajaxRequest({
+            url: "/member/updateUserInfo.json",
+            beforeSend: function () {
+                $(".eveb_transfer_box .money").html("刷新中");
+            },
+            success: function (json) {
+                if (json.result != 1) {
+                    reutnr;
+                }
+                $(".money").html(json.balance);
+            }
+        });*/
+    }
+</script>
+</body>
+</html>

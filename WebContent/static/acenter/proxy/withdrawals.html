@@ -1,0 +1,87 @@
+
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>代理管理</span>
+        <span>/</span><span>资金账户</span>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper shadow">
+            <div class="form-group clearfix m-t line-hi34">
+                <label class="ft-bold col-sm-3 al-right">佣金余额：</label>
+                <div class="col-sm-5 line-hi34"><b class="co-yellow">00.00</b></div>
+            </div>
+            <div class="form-group clearfix line-hi34">
+                <label class="ft-bold col-sm-3 al-right line-hi34">取款金额：</label>
+                <div class="col-sm-5 input-group">
+                    <input type="text" class="form-control" placeholder="100~10,000￥">
+                    <span class="input-group-addon bdn"><span class="co-yellow m-l-sm">单次取款不得小于100</span></span>
+                </div>
+            </div>
+            <div class="form-group clearfix line-hi34">
+                <label class="ft-bold col-sm-3 al-right">收款账号：</label>
+                <div class="col-sm-5 line-hi34">
+                    <input type="radio" class="i-checks" name="bank">
+                    <img src="images//icbc.png">
+                    <span class="m-l-sm">尾号：3165</span>
+                    <b class="m-l-sm">张*大</b>
+                </div>
+            </div>
+            <div class="operate-btn">
+                <button class="btn btn-filter btn-lg m-r" data-toggle="modal" data-target="#success">申请取款</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--申请取款-->
+<div class="modal inmodal" id="success" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="applicationTips clearfix line-hi34">
+                    <span class="ico col-xs-3 al-right co-green"><i class="fa fa-check-circle-o"></i></span>
+                    <div class="col-xs-8 p-x">
+                        <h3 class="co-green">提交成功</h3>
+                        <span>到账后会用站内信通知您，请注意查收！</span>
+                    </div>
+                </div>
+                <div class="applicationTips clearfix line-hi34">
+                    <span class="ico col-xs-3 al-right co-yellow"><i class="fa fa-exclamation-circle"></i></span>
+                    <div class="col-xs-8 p-x">
+                        <h3 class="co-yellow">操作失败！</h3>
+                        <span>网络异常 错误代码A087</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#question1">下一步</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(".btn-advanced-down").click(function () {
+            $(".advanced-options").slideToggle("10");
+            $(this).parent().toggleClass("show");
+        });
+ var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': {allow_single_deselect: true},
+        '.chosen-select-no-single': {disable_search_threshold: 10},
+        '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+        '.chosen-select-width': {width: "95%"}
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+    
+    $("#file-0").fileinput({
+        'allowedFileExtensions' : ['jpg', 'png','gif'],
+    });
+    
+    $('.help-popover').popover()
+</script>

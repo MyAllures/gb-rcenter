@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>会员中心</title>
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/hpn-common.css">
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/global.css">
+    <script>
+        <!--
+        window.onerror=function(){return true;}
+        // -->
+    </script>
+    <script>
+    <!--
+    // 屏蔽JS错误
+//    window.onerror = function(){return true;}
+    // -->
+</script>
+<script src="../../ssc/themes/default/js/mobile-detect.min.js"></script></head>
+<body><div class="help_r_main">
+<div class="eveb_content">
+    <!-- 账户设置 -->
+    <div class="eveb_nav_sub">
+        <ul class="clearfix">
+            <li><a href="javascript:void(0)" onclick="parent.getPage('zhsz/grzl')">个人资料</a></li>
+            <li class="on"><a href="javascript:void(0)" onclick="parent.getPage('zhsz/dlmm')">登录密码</a></li>
+            <li><a href="javascript:void(0)" onclick="parent.getPage('zhsz/yhkgl')">银行卡管理</a></li>
+            <li><a href="javascript:void(0)" onclick="parent.getPage('zhsz/aqxx')">安全信息</a></li>
+        </ul>
+    </div>
+    <form name="resetPasswordForm" novalidate="novalidate" onsubmit="return false;">
+        <ul class="eveb_form eveb_setting_form">
+            <li>
+                <span>原密码：</span>
+                <input name="oldPassword" id="oldPassword" type="password" size="20" class="passwinp">
+                <label class="error" for="oldPassword">* 请填写您的原始登录密码</label>
+            </li>
+            <li>
+                <span>新密码：</span>
+                <input name="newPassword" id="newpassword" type="password" size="20" class="passwinp">
+                <label class="error" for="newpassword">* 6~18位字母数字组合</label>
+            </li>
+            <li>
+                <span>确认密码：</span>
+                <input name="confirmPassword" id="confirmPassword" type="password" size="20" class="passwinp">
+                <label class="error" for="confirmPassword"></label>
+            </li>
+        </ul>
+        <div class="eveb_form_submit">
+            <input type="submit" value="确认修改" class="button_medium button_1">
+            <input type="reset" value="重置" class="ml_10 button_medium button_3">
+        </div>
+    </form>
+</div>
+</div>
+<script type="text/javascript" src="../../ssc/themes/default/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/framework/jquery.validate.min.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/laydate/laydate.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/validate.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/global.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/jquery.md5.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/js/global.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/layer/layer.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/js/jquery.nicescroll.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/clipboard.min.js"></script>
+<script src="../../ssc/themes/default/js/dateFormat.js"></script>
+<script src="../../ssc/themes/default/js/template.js"></script>
+<script src="../../ssc/themes/default/js/jquery.cookie.js"></script><!--自定义封装函数-->
+<script src="../../ssc/themes/default/js/jquery.md5.js"></script><!--自定义封装函数--><script>
+    $(function() {
+        parent.hideLoading();
+    });
+</script><script>
+    $("form[name='resetPasswordForm']").validate({
+        rules:{
+            oldPassword:{required:true}
+            ,newPassword:{
+                required:true,
+                minlength: 5
+            }
+            ,confirmPassword:{
+                required:true,
+                minlength: 5,
+                equalTo: "#newpassword"
+            }
+        }
+        ,messages:{
+            oldPassword:{required:"* 请填写您的原始登录密码"}
+            ,newPassword:{
+                required:"* 6~18位字母数字组合",
+                minlength: "密码长度不能小于 5 个字母"
+            }
+            ,confirmPassword:{
+                required:"* 请再次填写新密码",
+                minlength: "密码长度不能小于 5 个字母",
+                equalTo: "两次密码输入不一致"
+            }
+        }
+        ,submitHandler:function(form){
+            var options = {
+                url: "/member/zhsz/ajaxResetPassword.json",
+                success: showResponse,      //提交后的回调函数
+                clearForm: true,            //成功提交后，清除所有表单元素的值
+                type: 'post',               //默认是form的method（get or post），如果申明，则会覆盖
+                dataType: 'json',           //html(默认), xml, script, json...接受服务端返回的类型
+                timeout: 3000               //限制请求的时间，当请求大于3秒后，跳出请求
+            }
+            $("input[name='oldPassword']").val($.md5($("input[name='oldPassword']").val()));
+            $("input[name='newPassword']").val($.md5($("input[name='newPassword']").val()));
+            $("input[name='confirmPassword']").val($.md5($("input[name='confirmPassword']").val()));
+            $(form).ajaxSubmit(options);
+        }
+    })
+    function showResponse(json, statusText){
+        if (json.result == 1) {
+            alert("修改成功");
+        } else {
+            alert("修改失败：" + json.description);
+        }
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玩家管理-管理首页</title>
+    <link href="../../common/themes/default/switchery/switchery.css" rel="stylesheet">
+    <link href="../../mcenter/themes/default/common.css" rel="stylesheet">
+    <link href="../../common/themes/default/iconfont.css" rel="stylesheet">
+    <link href="../../common/themes/default/iCheck/custom.css" rel="stylesheet">
+    <link href="../../common/themes/default/chosen/chosen.css" rel="stylesheet">
+    <link href="../../common/themes/default/bootstrap/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../acenter/themes/default/login.css" rel="stylesheet">
+	
+</head>
+<body class="login">
+	
+	    <div id="preview">
+	     <div id="preview-container">          
+	        <div class="login-logo">GameBox<span class="fs24 m-l-sm">总代中心</span></div>
+	           <div class="login-bl">
+	              <form class="" role="form" action="login-step2.html">
+	                   <div class="clearfix">
+	                   <span class="fs24 m-b-sm pull-left">登录</span>
+	                   <span class="pull-right line-hi34">
+	                   <a href="login-retrieve-password.html">忘记密码</a>
+	                   </span>
+	                   </div>
+                <div class="form-group">
+                   <div class="ico-left"><em class="fa fa-user"></em></div>
+                   <input type="email" class="form-control" placeholder="用户名" required="">
+                </div>
+                <div class="form-group">
+                   <div class="ico-left"><em class="fa fa-unlock-alt"></em></div>
+                   <input type="password" class="form-control" placeholder="密码" required="">
+                </div>
+                <!--<div class="form-group clearfix">                         
+                     <div class="input-group date">
+                            <span class="input-group-addon abroder-no"><b>提问：</b></span>
+                             <select data-placeholder="请选择提问问题" class="chosen-select-no-single">
+                                 <option value=""></option>
+                                 <option>你的出生地是哪里？</option>
+                                 <option>你爸爸的名称是什么？</option>
+                                 <option>你妈妈的名称是什么？</option>
+                                 <option>你宠物叫什么名字？</option>
+                              </select>
+                                    
+                    </div>
+                </div>-->
+                <!--<div class="form-group clearfix ">                         
+                    <div class="input-group date">
+                            <span class="input-group-addon abroder-no"><b>回答：</b></span>
+                            <input type="text" class="form-control" placeholder="您的生日是什么时间" value="">
+                    </div>
+                 </div>-->
+                 <div class="form-group clearfix ">                         
+                    <div class="input-group date">
+                            <span class="input-group-addon abroder-no"><b>验证：</b></span>
+                            <input type="text" class="form-control" placeholder="请输入验证码" value="">
+                            <span class="verify-img"><img src="../../mcenter/images/securitycode/1.jpg"></span>
+                            <span class="input-group-addon abroder-no"><a href="javascript:void(0)">换一张</a></span>
+                                    
+                     </div>
+                </div>
+      
+                <div class="login-btn-1"><button type="submit" class="btn btn-filter full-width btn-lg btn-block">立即登录</button></div>
+          </form>
+            </div>
+            <div class="login-footer"><a href="javascript:void(0)">意见反馈</a><span class="m-l-sm">Copyright © 2015  gamebox 版权所有</span>
+                     <div class="btn-group dropup">
+        <button type="button" class="btn btn-outline btn-filter dropdown-toggle language-btn m-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../mcenter/images/language/england.png" class="m-r-xs">English <span class="caret m-l-xs"></span></button>
+        
+        <ul class="dropdown-menu dropdown-menu-right m-sm m-b-none">
+          <li><a href="javascript:void(0)"><img src="../../common/images/language/simplified-chinese.png" class="m-r-xs">简体中文</a></li>
+          <li><a href="javascript:void(0)"><img src="../../common/images/language/traditional-chinese.png" class="m-r-xs">繁体中文</a></li>
+          <li><a href="javascript:void(0)"><img src="../../common/images/language/1.png" class="m-r-xs">ภาษาไทย</a></li>
+          <li><a href="javascript:void(0)"><img src="../../common/images/language/2.png" class="m-r-xs">Malaysia</a></li>
+        </ul>
+      </div>
+                    
+                    </div>	  
+                     
+            </div>
+            
+	</div>
+   
+	
+	<!-- Mainly scripts -->
+    <script src="../../common/js/jquery/jquery-2.1.1.js"></script>
+    <script src="../../common/js/bootstrap/bootstrap.min.js"></script>
+	<!-- Chosen 选择下拉控件-->
+<script src="../../common/js/jquery/plugins/jquery.chosen/jquery.chosen.js"></script>
+	<script>
+	    
+  $(document).ready(function () {
+       
+        //chosen 下拉选择框
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': {allow_single_deselect: true},
+            '.chosen-select-no-single': {disable_search_threshold: 10},
+            '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+            '.chosen-select-width': {width: "95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+        });
+	</script>
+</body>
+</html>

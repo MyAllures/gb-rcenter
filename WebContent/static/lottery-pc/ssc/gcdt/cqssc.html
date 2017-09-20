@@ -1,0 +1,910 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <link rel="stylesheet" href="../themes/default/css/cabel-v1.css?v=20170206" type="text/css">
+    <link rel="stylesheet" href="../themes/default/css/style.css?v=20170216" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../themes/default/css/animate.min.css?v=20170206" type="text/css"><!--CSS3动画-->
+    <link rel="stylesheet" href="../themes/default/css/lottery.css?v=20170206" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../themes/default/css/liMarquee.css?v=20170206" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../themes/default/css/global.css?v=1490614185409" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../themes/default/css/other.css?v=20170309" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../themes/default/css/gfwf.css?v=20170309" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../themes/default/css/jRange/jquery.range.css?v=20170402" type="text/css">	
+    <script src="../themes/default/js/FancyZoom.js" language="JavaScript" type="text/javascript"></script>
+    <script src="../themes/default/js/FancyZoomHTML.js" language="JavaScript" type="text/javascript"></script>
+    <script>
+    
+    // 屏蔽JS错误
+//    window.onerror = function(){return true;}
+    // 
+</script>
+<script src="../themes/default/js/mobile-detect.min.js"></script><style>
+        a:hover{
+            color: red;
+
+        }
+        a:active{
+            color:deepskyblue;
+        }
+    </style>
+    <script>
+
+        var CONFIG = {
+            BASEURL: "./",
+            RESURL:"../themes/default/"
+        };
+    
+    </script>
+<style>
+        a:hover{
+            color: red;
+
+        }
+        a:active{
+            color:deepskyblue;
+        }
+    </style>
+    <style>
+
+        .reResulttBg{background: #fa6200;} 
+        .process .layout .monty ul li,.process .layout .list_tems .date:after,.list ul li .slide p.acti,.headmemberbg{background: #fa6200;}
+        .process .layout .list_tems .date span, .process .layout .list_tems .date h3,.eveb_amount span,.color-e77c3c,.eveb_setting_table a,.xieyiCss{color: #fa6200!important;}
+        .eveb_sub_nav_type a:hover, .eveb_sub_nav_type li.on a:link, .eveb_sub_nav_type li.on a:visited{color: #fa6200!important;font-weight: 700;border-bottom-color: #e1e1e1;background: #f8f8f8;}
+        .list ul li .slide p:hover,.letterbtn-bg{background: #fa6200!important;color: white;}
+        .list h3 a{background: #fa6200;border-bottom: 3px solid #a92309; height: 47px; line-height: 47px;}
+        .help_l_menu li .t.sli{border-left: 5px solid #fa6200;}
+        .withdraw-bg-input{border: 2px solid #fa6200!important;}
+        .clearBet_template .l span i{background: #fa6200 url(/static/public//img/tm-mdl-icon.png) no-repeat!important; border-radius: 50%;background-position: 0 41%!important;}
+
+
+
+        .eveb_nav_sub .on,.button_1, .button_1:link, .button_1:visited,.alert_col h5,.onlineService,.layui-layer-popup .layui-layer-title,.xzqd,.game_name .box2_stage p span i.acti,.Betting,.Single,.list_ject ul li .Result p a.acti,.list_ject ul li .Result p a.acti:hover,.top{background:#fa6200!important}
+        .eveb_nav_sub .on a,.bankInfo .name,.help_l_menu .title p .sum,.help_r_main .light,.game_name .box2_stage p span i,.game_name .box1_name  p i,.Account p a.red{color:#fa6200!important}
+        .eveb_nav_sub .on,.game_name .box2_stage p span{border:1px solid #fa6200!important;}
+        .eveb_nav_sub .on,.game_name .box2_stage p span i.acti{color:#fff!important;}
+        .eveb_nav_sub .on a{border-top:1px #fa6200 solid!important;}
+        .eveb_nav_sub ul{border-bottom:1px #fa6200 solid!important;}
+        #apptop{background: #fa6200}
+        .alert_col div::-webkit-scrollbar-thumb {background-color: #fa6200!important;}
+    </style>
+<style>
+
+
+        .head div h5,.Betting .tabs ul li,.top .nav h1{background:#f87c2d!important}
+        .jf_box .url a,.eveb_form label.error,.eveb_transfer_box .center_wallet .money,.eveb_transfer_box .wallet_list li p{color:#f87c2d!important}
+        .Betting .tabs ul li.acti{background:#fff!important}
+        .button_1, .button_1:link, .button_1:visited{border:1px solid #f87c2d!important;}
+    </style>    
+</head>
+<body><script>if (window.top === window.self) {window.location.href = "/";}</script>
+<div id="gameContent">
+    <div class="game_name">
+        <div class="wid1">
+            <div class="box1_name">
+                <h2>重庆时时彩</h2>
+                <p>Lottery results</p>
+                <p class="p1">第<i id="number">201703271190</i>期</p>
+                <div class="select">
+                    <img src="../themes/default/img/ico48.png" alt="">
+                    <select name="" id="selectCount">
+    <option data-file="../themes/default/sounds/sound_1.mp3">铃声一</option>
+    <option data-file="../themes/default/sounds/sound_2.mp3">铃声二</option>
+    <option data-file="../themes/default/sounds/sound_3.mp3">铃声三</option>
+    <option data-file="../themes/default/sounds/sound_4.mp3">铃声四</option>
+    <option data-file="../themes/default/sounds/sound_5.mp3">铃声五</option>
+</select>
+</div>
+            </div>
+            <div class="box2_stage rebox2_stage">
+                <p><span><i class="acti">近一期</i><i>近五期</i></span><font id="lastNumber">重庆时时彩第<var>201703271199</var>期</font></p>
+                <div class="number pt10" id="lastOpenCode" style="display: block;"><span>5</span><span>9</span><span>5</span><span>8</span><span>7</span></div>
+                <div class="number" id="lastOpenCodeList">
+<ul><li>
+        <p>第201703271201期</p>
+        
+            <p style="margin-left:5px">开奖中</p>
+        
+    </li><li>
+        <p>第201703271200期</p>
+        
+            
+                <i>7</i>
+            
+                <i>3</i>
+            
+                <i>0</i>
+            
+                <i>2</i>
+            
+                <i>0</i>
+            
+        
+    </li><li>
+        <p>第201703271199期</p>
+        
+            
+                <i>8</i>
+            
+                <i>6</i>
+            
+                <i>1</i>
+            
+                <i>6</i>
+            
+                <i>2</i>
+            
+        
+    </li><li>
+        <p>第201703271198期</p>
+        
+            
+                <i>7</i>
+            
+                <i>5</i>
+            
+                <i>6</i>
+            
+                <i>0</i>
+            
+                <i>5</i>
+            
+        
+    </li><li>
+        <p>第201703271197期</p>
+        
+            
+                <i>9</i>
+            
+                <i>2</i>
+            
+                <i>2</i>
+            
+                <i>0</i>
+            
+                <i>0</i>
+            
+        
+    </li></ul>
+                </div>
+            </div>
+            <div class="box3_timer">
+                <p id="tip">已开盘，欢迎投注。距离开奖还有:</p>
+                <div class="timer_wrap" id="leftTime">
+                    <ol class="s">
+                        <span class="sp1">0</span>
+                        <span class="sp2">0</span>
+                    </ol>
+                    <ol class="f">
+                        <span class="sp1">0</span>
+                        <span class="sp2">0</span>
+                    </ol>
+                    <ol class="m">
+                        <span class="sp1">0</span>
+                        <span class="sp2">0</span>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="Single wid1">
+        <div class="layout at">
+            <div class="Playmethod">
+                <ul>
+                	<li class="gf-li">
+                        <b>官方玩法</b>
+                        <p class="guanfang respan gf-cgwf" data-name="gfwf">
+                            <span class="acti"><a href="javascript:void(0)" data-url="gfwf-cqssc-5x">五星</a></span>
+                            <span><a href="javascript:void(0)" data-url="gfwf-cqssc-4x">四星</a></span>
+                            <span><a href="javascript:void(0)" data-url="gfwf-cqssc-h3">后三</a></span>
+                            <span><a href="javascript:void(0)" data-url="gfwf-cqssc-q3">前三</a></span>
+                            <span><a href="javascript:void(0)" data-url="gfwf-cqssc-q2">前二</a></span>
+                            <span><a href="javascript:void(0)" data-url="gfwf-cqssc-dwd">定位胆</a></span>
+                            <span><a href="javascript:void(0)" data-url="gfwf-cqssc-budw">不定位</a></span>
+                            <span><a href="javascript:void(0)" data-url="gfwf-cqssc-dxds">大小单双</a></span>
+                            <span><a href="javascript:void(0)" data-url="gfwf-cqssc-rx2">任选二</a></span>
+                            <span><a href="javascript:void(0)" data-url="gfwf-cqssc-rx3">任选三</a></span>
+                            <span><a href="javascript:void(0)" data-url="gfwf-cqssc-rx4">任选四</a></span>
+                        </p>
+                    </li>
+                    <li>
+                        <b class="acti">快钱玩法</b>
+                        <p class="kuaiqian">
+                            <style>.Single .layout .Playmethod ul li p.kuaiqian span {
+                                width: 61px;
+                            }</style>
+                            <span class="acti"><a href="javascript:void(0)" data-url="cqssc-sm">双面</a></span>
+                            <span><a href="javascript:void(0)" data-url="cqssc-szp">数字盘</a></span>
+                            <span><a href="javascript:void(0)" data-url="cqssc-yzdw_wdw">一字定位</a></span>
+                            <span><a href="javascript:void(0)" data-url="cqssc-ezdw">二字定位</a></span>
+                            <span><a href="javascript:void(0)" data-url="cqssc-szdw">三字定位</a></span>
+                            <span><a href="javascript:void(0)" data-url="cqssc-yzzh_q5">一字组合</a></span>
+                            <span><a href="javascript:void(0)" data-url="cqssc-ezzh_q3">二字组合</a></span>
+                            <span><a href="javascript:void(0)" data-url="cqssc-ezhs">二字和数</a></span>
+                            <span><a href="javascript:void(0)" data-url="cqssc-zxs_q3">组选三</a></span>
+                            <span><a href="javascript:void(0)" data-url="cqssc-zxl_q3">组选六</a></span>
+                            <span><a href="javascript:void(0)" data-url="cqssc-kd_q3">跨度</a></span>
+                            <span><a href="javascript:void(0)" data-url="cqssc-lh">龙虎</a></span>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="subContent"></div>
+            <i class="it0 left_it0"><img src="../themes/default/img/ico46.png" alt=""></i>
+            <i class="it1 right_it1"><img src="../themes/default/img/ico46.png" alt=""></i>
+        </div>
+    </div><!--Single-->
+    <div class="Detailedlist Single wid1">
+
+        <div class="layout at">
+            <h1 class="at">投注清单</h1>
+            <div class="boxt at reboxt">
+                <div class="left">
+                    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <tbody id="zhudanList">
+                            <tr class="noRecord"><td>暂无投注项</td></tr>
+                        </tbody>
+                    </table>
+                </div><!--left-->
+                <div class="right">
+                    <ul>
+                        <li><a class="suiji1" href="javascript:void(0)" onclick="getSuiji(1)">随机一注</a></li>
+                        <li><a class="suiji5" href="javascript:void(0)" onclick="getSuiji(5)">随机五注</a></li>
+                        <li class="clearLiZhudanbtn" sp="0"><a id="zhbtn" class="wdzhli" href="javascript:void(0)" onclick="renderZhuihao(null, this)"><span class="imgZh"></span>我要追号</a></li>
+                        <li><a href="javascript:void(0)" onclick="clearZhudan()"><img src="../themes/default/img/ico52.png" alt="">清空注单</a></li>
+                    </ul>
+                    <p id="zongtouInfo">总投 <span>0</span> 注，<span>0</span> 倍，共 <span>0</span> 元。</p>
+                    <a href="javascript:void(0)" class="ok" onclick="buyBtn()"><img src="../themes/default/img/ico54.png" alt="">确认投注</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="Betting wid1 reBetting" id="zhInfo">
+    <div class="tabs">
+        <ul>
+            <li class="hy-info acti" data-opertype="tbzh">同倍追号</li>
+            <li class="hy-info" data-opertype="fbzh">翻倍追号</li>
+        </ul>
+    </div>
+    <div class="list_wrap_zh wdtz-list-rewith tbzh">
+
+    </div>
+    <div class="list_wrap_zh wdtz-list-rewith fbzh">
+
+    </div>
+</div>
+    <div class="Betting wid1" id="bottomInfo">
+    <div class="tabs">
+        <ul>
+            <li class="hy-info" data-opertype="wdtz">我的投注</li>
+            <li class="hy-info" data-opertype="wdzj">我的中奖</li>
+            <li class="hy-info" data-opertype="kjhm">今日开奖号码</li>
+            <li class="hy-info" data-opertype="jjsm">奖金计算说明</li>
+
+        </ul>
+    </div>
+    <div class="list_wrap wdtz-list-rewith wdtz"></div>
+    <div class="list_wrap wdtz-list-rewith wdzj"></div>
+    <div class="list_wrap kjhm"></div>
+    <div class="list_wrap jjsm"></div>
+</div>
+
+
+
+
+
+</div>
+<script type="text/javascript" src="../themes/default/js/jquery.min.js?v=2017"></script><!--jQuery库-->
+<script type="text/javascript" src="../themes/default/js/scrollanim.min.js?v=2017"></script> <!--"动画库"-->
+<script src="../themes/default/js/type.js?v=2017"></script><!--自定义封装函数-->
+<script src="../themes/default/js/global.js?v=20170321"></script><!--自定义封装函数-->
+<script src="../themes/default/js/jquery.cookie.js?v=2017"></script><!--自定义封装函数-->
+<script src="../themes/default/js/jquery.md5.js?v=2017"></script><!--自定义封装函数-->
+<script src="../themes/default/layer/layer.js?v=2017"></script>
+<script src="../themes/default/js/jquery.nicescroll.js?v=2017"></script>
+<script src="../themes/default/js/dateFormat.js?v=2017"></script>
+<script src="../themes/default/js/template.js?v=2017"></script>
+<script src="../themes/default/js/swfobject/swfobject.js?v=2017"></script>
+<script src="../themes/default/js/jquery.liMarquee.js?v=2017"></script>
+<script src="../themes/default/js/placeholders.jquery.min.js?v=2017"></script>
+<script src="../themes/default/js/jRange/jquery.range-min.js?v=2017"></script>
+<script>
+    // 闪烁
+    var blinkColorArr = "#fa6200|#0f3f94".split("|");
+    $(".blink").each(function() {
+        var obj = $(this);
+        setInterval(function() {
+            var tmpColor = blinkColorArr[parseInt(Math.random() * blinkColorArr.length)];
+            $(obj).css("color", tmpColor);
+        },200);
+    });
+
+
+
+    $(function() {
+        // 底部信息调用
+        function ajaxGetDbxx() {
+            ajaxRequest({
+                url: CONFIG.BASEURL + "ajaxGetWebInfo.json",
+                success: function (json) {
+                    if (json.result != 1) {
+                        return;
+                    }
+                    $(".webDbxx").html(json.webDbxx);
+                }
+            });
+        }
+
+        if ($(".webDbxx").length > 0) {
+            ajaxGetDbxx();
+        }
+    });
+
+
+</script>
+<script src="../themes/default/js/ssc/gcdt/gfwf.js?v=20170825"></script>
+<script src="../themes/default/js/ssc/gcdt/ssc.js?v=201703222129"></script>
+
+<div class="alert_log two2">
+    <div class="alert_log_col">
+        <h5>欢迎您登录<i>×</i></h5>
+        <form onsubmit="registerLogin();return false;">
+            <div>
+                <h4><span><img src="../themes/default/img/l1.png" /></span></h4>
+                <p><input type="text" id="registerLoginAccount" placeholder="请输入您的账号" /></p>
+            </div>
+            <div>
+                <h4><span><img src="../themes/default/img/l2.png" /></span></h4>
+                <p><input type="password" id="registerLoginPassword" placeholder="密码" /></p>
+            </div>
+            <div>
+                <h4><span><img src="../themes/default/img/l2.png" /></span></h4>
+                <p><input type="text" id="registerLoginYzm" placeholder="验证码" onfocus="refreshYzm(document.getElementById('registerYzmImg2'))" /><img id="registerYzmImg2" onclick="refreshYzm(this)" src="../themes/default/img/yzm-4.jpg" /></p>
+            </div>
+            <h3><input type="checkbox" /><a href="#">记住密码</a><span><a href=":80/?u=https://chat7.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=763215&configID=54563&jid=1035408947" target="_blank">忘记密码？</a></span></h3>
+            <h6><input type="submit" class="sub"  value="登录"/></h6>
+        </form>
+    </div>
+</div>
+<div type="text/html" id="soundContainer" style="display:none;"></div>
+<script type="text/html" id="wdtzTemplate">
+    <ul>
+        <li class="not">
+            <span>游戏种类</span>
+            <span>期号</span>
+            <span>玩法</span>
+            <span>投注号码</span>
+            <span>投注额</span>
+            <span>奖金</span>
+            <span>状态</span>
+        </li>
+        {{each list as value index}}
+        {{if index % 2 == 0}}
+        <li class="odd">
+            {{else}}
+        <li>
+            {{/if}}
+            <span>{{value.playGroupName}}</span>
+            <span>{{value.number}}</span>
+            <span>{{value.playName}}</span>
+            <span>{{value.content}}</span>
+            <span>{{value.totalMoney}}</span>
+            <span>{{value.jiangjin}}</span>
+            {{if value.status == 0}}
+            <span>等待开奖</span>
+            {{else if value.status == 1}}
+            {{if value.zjMoney > 0}}
+            <span>已中奖</span>
+            {{else}}
+            <span>未中奖</span>
+            {{/if}}
+            {{else if value.status == 2}}
+            <span>已撤单</span>
+            {{/if}}
+        </li>
+        {{/each}}
+        <li style="width:100%;text-align:center;"><a href="javascript:void(0)" onclick="parent.openHyzx('lsjl/tzjl')">查看更多</a></li>
+    </ul>
+</script>
+<script>
+    function openHyzx(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        if (typeof $.cookie("uid") == 'undefined' || typeof $.cookie("token") == 'undefined') {
+            alert("请先登录");
+            if ($("#loginAccount1").length > 0) {
+                $("#loginAccount1").focus();
+                return;
+            }
+            window.location.href = "/main.html";
+            return;
+        }
+        var subUrl = "";
+        if (module) {
+            subUrl = "#" + CONFIG.BASEURL + module;
+        }
+        windowOpen(CONFIG.BASEURL + 'member/index.html' + subUrl, '会员中心', 1250, 834);
+    }
+    </script>
+<script src="../themes/default/js/ssc/gcdt/gfwf.js?v=20170823"></script>
+<script type="text/html" id="template_jRange">
+    <div class="add_spot">
+        <div class="left releft">
+            <div class="sopt_wrap">
+                <div class="slide_sp dxds-i">
+                    奖金/返点
+                    <div class="cl-1003">
+                        <div class="cl-1004">
+                            <input type="hidden" class="slider-input"/>
+                        </div>
+                    </div>
+                    <i><var class="jiangjin-change" id="jiangjin-change">0</var><var>&nbsp;/&nbsp;</var><var class="fandian-bfb" id="fandian-bfb">0%</var></i>
+                </div>
+                <div class="reduce">
+                    <a class="fl">-</a>
+                    <input
+                            data-beishu="1"
+                            type="text"
+                            value="1"
+                            id="inputBeishu"
+                            onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                            onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"
+                    >
+                    <a class="fr">+</a>
+                    <span>倍</span>
+                </div>
+                <div class="down">
+                    <input type="text" value="2" id="inputMoney" data-money="2" disabled="disabled">
+                    <span></span>
+                    <div class="down_menu">
+                        <i>2</i>
+                        <i>5</i>
+                        <i>10</i>
+                        <i>20</i>
+                    </div>
+                </div>
+                <div class="down redown-gfwf selectMode_gfwf" style="">
+                    <input type="text" value="元" id="inputMoneyStr" disabled="disabled">
+                    <span></span>
+                    <div class="down_menu down_menu_str">
+                        <i>元</i>
+                        <i>角</i>
+                        <i>分</i>
+                    </div>
+                </div>
+            </div>
+            <p class="p1">
+                您选择了 <i class="i0">0</i> 注，<i class="i1 i_beishu">1</i> 倍，返还 <i class="i1 i_fanD">0</i> 元，共投注 <i class="i1 i_money">0</i>&nbsp;元。
+            </p>
+        </div>
+        <div class="rigth">
+            <a href="javascript:void(0)" onclick="tjzd()"><img src="../themes/default/img/ico65.png" alt="">添加注单</a>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tbzhTemplate">
+    <div class="headZh">
+        <span class="headZh-zhqs">追号期数：</span>
+        <select id="lt_zh_qishu">
+            <option value="">请选择</option>
+            <option value="5">第5期</option>
+            <option value="10">第10期</option>
+            <option value="15">第15期</option>
+            <option value="20">第20期</option>
+            <option value="25">第25期</option>
+            <option value="50">全部</option>
+        </select>
+        &nbsp;&nbsp;总期数：
+        &nbsp;<span class="qishu zhredtxt zhqishutxt">10</span>&nbsp;&nbsp;期
+        &nbsp;&nbsp;追号总金额: <span class="money zhredtxt zhzjetxt">50</span> 元
+        &nbsp;&nbsp;追号计划: 起始倍数&nbsp;
+        <span class="startBeiShu zhredtxt">
+            <input name="startBeiShuZh" id="startBeiShuZh" value="1" size="3"
+                   onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                   onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"
+            />
+        </span>
+        追号期数
+        <span class="endzhqiShu zhredtxt">
+            <input name="lt_trace_count_input" id="lt_trace_count_input" value="10" size="3" disabled="disabled"/>
+        </span>
+    </div>
+    <div class="content_heigth">
+        <ul class="ulzh" id="tbLiList">
+            {{each listContent}}
+            <li class="list-li" style="display:none;">
+                <input type="checkbox" class="oneCheckbox"/>
+                <span class="content_qs">{{$value.zhqishu}}</span>
+                <span class="nosel">
+                  <input type="text" name="lt_trace_times_20170718066" value="{{$value.zhbeishu}}"/>
+                  倍
+                </span>
+                <span class="content_money">{{$value.totelMoney}}</span>
+                <span class="content_time_kj">{{$value.zhkjshijian}}</span>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</script>
+
+<script src="../themes/default/js/ssc/gcdt/gfwf.js?v=20170823"></script>
+
+<script type="text/html" id="template_jRange">
+    <div class="add_spot">
+        <div class="left releft">
+            <div class="sopt_wrap">
+                <div class="slide_sp dxds-i">
+                    奖金/返点
+                    <div class="cl-1003">
+                        <div class="cl-1004">
+                            <input type="hidden" class="slider-input"/>
+                        </div>
+                    </div>
+                    <i><var class="jiangjin-change" id="jiangjin-change">0</var><var>&nbsp;/&nbsp;</var><var class="fandian-bfb" id="fandian-bfb">0%</var></i>
+                </div>
+                <div class="reduce">
+                    <a class="fl">-</a>
+                    <input
+                            data-beishu="1"
+                            type="text"
+                            value="1"
+                            id="inputBeishu"
+                            onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                            onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"
+                    >
+                    <a class="fr">+</a>
+                    <span>倍</span>
+                </div>
+                <div class="down">
+                    <input type="text" value="2" id="inputMoney" data-money="2" disabled="disabled">
+                    <span></span>
+                    <div class="down_menu">
+                        <i>2</i>
+                        <i>5</i>
+                        <i>10</i>
+                        <i>20</i>
+                    </div>
+                </div>
+                <div class="down redown-gfwf selectMode_gfwf" style="">
+                    <input type="text" value="元" id="inputMoneyStr" disabled="disabled">
+                    <span></span>
+                    <div class="down_menu down_menu_str">
+                        <i>元</i>
+                        <i>角</i>
+                        <i>分</i>
+                    </div>
+                </div>
+            </div>
+            <p class="p1">
+                您选择了 <i class="i0">0</i> 注，<i class="i1 i_beishu">1</i> 倍，返还 <i class="i1 i_fanD">0</i> 元，共投注 <i class="i1 i_money">0</i>&nbsp;元。
+            </p>
+        </div>
+        <div class="rigth">
+            <a href="javascript:void(0)" onclick="tjzd()"><img src="/static/public/img/ico65.png" alt="">添加注单</a>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="tbzhTemplate">
+    <div class="headZh">
+        <span class="headZh-zhqs">追号期数：</span>
+        <select id="lt_zh_qishu">
+            <option value="">请选择</option>
+            <option value="5">第5期</option>
+            <option value="10">第10期</option>
+            <option value="15">第15期</option>
+            <option value="20">第20期</option>
+            <option value="25">第25期</option>
+            <option value="50">全部</option>
+        </select>
+        &nbsp;&nbsp;总期数：
+        &nbsp;<span class="qishu zhredtxt zhqishutxt">10</span>&nbsp;&nbsp;期
+        &nbsp;&nbsp;追号总金额: <span class="money zhredtxt zhzjetxt">50</span> 元
+        &nbsp;&nbsp;追号计划: 起始倍数&nbsp;
+        <span class="startBeiShu zhredtxt">
+            <input name="startBeiShuZh" id="startBeiShuZh" value="1" size="3"
+                   onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                   onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"
+            />
+        </span>
+        追号期数
+        <span class="endzhqiShu zhredtxt">
+            <input name="lt_trace_count_input" id="lt_trace_count_input" value="10" size="3" disabled="disabled"/>
+        </span>
+    </div>
+    <div class="content_heigth">
+        <ul class="ulzh" id="tbLiList">
+            {{each listContent}}
+            <li class="list-li" style="display:none;">
+                <input type="checkbox" class="oneCheckbox"/>
+                <span class="content_qs">{{$value.zhqishu}}</span>
+                <span class="nosel">
+                  <input type="text" name="lt_trace_times_20170718066" value="{{$value.zhbeishu}}"/>
+                  倍
+                </span>
+                <span class="content_money">{{$value.totelMoney}}</span>
+                <span class="content_time_kj">{{$value.zhkjshijian}}</span>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</script>
+
+<script type="text/html" id="fbzhTemplate">
+    <div class="headZh">
+        <span class="headZh-zhqs">追号期数：</span>
+        <select id="rt_zh_qishu">
+            <option value="">请选择</option>
+            <option value="5">第5期</option>
+            <option value="10">第10期</option>
+            <option value="15">第15期</option>
+            <option value="20">第20期</option>
+            <option value="25">第25期</option>
+            <option value="50">全部</option>
+        </select>
+        &nbsp;&nbsp;总期数：
+        &nbsp;<span class="qishu zhredtxt zhqishutxt">10</span>&nbsp;&nbsp;期
+        &nbsp;&nbsp;追号总金额： <span class="money zhredtxt zhfbzjetxt">50</span> 元
+        &nbsp;&nbsp;追号计划： 隔&nbsp;
+        <span class="startBeiShu zhredtxt">
+                    <input name="rt_trace_diff" id="rt_trace_diff" value="1" size="3"
+                           onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                           onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"
+                    />
+        </span>期&nbsp;&nbsp;
+        倍&nbsp;ⅹ
+        <span class="zhqiShu zhredtxt">
+                    <input name="rt_trace_times_diff" id="rt_trace_times_diff" value="2" size="3"
+                           onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                           onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"
+                    />
+        </span>
+        追号期数
+        <span class="zhqiShu zhredtxt">
+                    <input name="lt_trace_count_input" id="rt_trace_count_input" value="10" size="3" disabled="disabled"/>
+        </span>
+    </div>
+    <div class="content_heigth reConHei">
+        <ul class="ulzh" id="fbLiList">
+            {{each listContent}}
+            <li class="list-li" style="display:none;">
+                <input type="checkbox" class="oneCheckbox oneFbzhCheckbox" />
+                <span class="content_qs">{{$value.zhqishu}}</span>
+                <span class="nosel">
+                  <input type="text" name="lt_trace_times_20170718066" value="{{$value.zhbeishu}}"/>
+                  倍
+                </span>
+                <span class="content_money">{{$value.totelMoney}}</span>
+                <span class="content_time_kj">{{$value.zhkjshijian}}</span>
+            </li>
+            {{/each}}
+
+        </ul>
+    </div>
+</script><script>
+    // 全局彩种ID
+    var playGroupId = 1;
+    var playId = null;
+    // 全局官方玩法赔率
+    
+    var gfwfPlJson = {"result":1,"sscPlayPlList":[{"maxFdBl":13.000,"minPl":85000.000,"playPl":98000.000,"playPlId":14207},{"maxFdBl":13.000,"minPl":85000.000,"playPl":98000.000,"playPlId":14208},{"maxFdBl":13.000,"minPl":8500.000,"playPl":9800.000,"playPlId":14209},{"maxFdBl":13.000,"minPl":8500.000,"playPl":9800.000,"playPlId":14210},{"maxFdBl":13.000,"minPl":850.000,"playPl":980.000,"playPlId":14221},{"maxFdBl":13.000,"minPl":850.000,"playPl":980.000,"playPlId":14220},{"maxFdBl":13.000,"minPl":8.500,"playPl":9.800,"playPlId":14217},{"maxFdBl":13.000,"minPl":85.000,"playPl":98.000,"playPlId":14218},{"maxFdBl":13.000,"minPl":850.000,"playPl":980.000,"playPlId":14219},{"maxFdBl":13.000,"minPl":850.000,"playPl":980.000,"playPlId":14216},{"maxFdBl":13.000,"minPl":850.000,"playPl":980.000,"playPlId":14215},{"maxFdBl":13.000,"minPl":283.333,"playPl":326.666,"playPlId":14214},{"maxFdBl":13.000,"minPl":283.333,"playPl":326.666,"playPlId":14213},{"maxFdBl":13.000,"minPl":141.667,"playPl":163.333,"playPlId":14212},{"maxFdBl":13.000,"minPl":141.667,"playPl":163.333,"playPlId":14211},{"maxFdBl":13.000,"minPl":141.667,"playPl":163.333,"playPlId":14231},{"maxFdBl":13.000,"minPl":283.333,"playPl":326.666,"playPlId":14232},{"maxFdBl":13.000,"minPl":141.667,"playPl":163.333,"playPlId":14229},{"maxFdBl":13.000,"minPl":283.333,"playPl":326.666,"playPlId":14230},{"maxFdBl":13.000,"minPl":141.667,"playPl":163.333,"playPlId":14227},{"maxFdBl":13.000,"minPl":283.333,"playPl":326.666,"playPlId":14228},{"maxFdBl":13.000,"minPl":8.500,"playPl":9.800,"playPlId":14226},{"maxFdBl":13.000,"minPl":3.148,"playPl":3.629,"playPlId":14223},{"maxFdBl":13.000,"minPl":14.167,"playPl":16.334,"playPlId":14224},{"maxFdBl":13.000,"minPl":85.000,"playPl":98.000,"playPlId":14225},{"maxFdBl":13.000,"minPl":850.000,"playPl":980.000,"playPlId":14222},{"maxFdBl":13.000,"minPl":850.000,"playPl":980.000,"playPlId":14233},{"maxFdBl":13.000,"minPl":850.000,"playPl":980.000,"playPlId":14234},{"maxFdBl":13.000,"minPl":85.000,"playPl":98.000,"playPlId":14235},{"maxFdBl":13.000,"minPl":8.500,"playPl":9.800,"playPlId":14236},{"maxFdBl":13.000,"minPl":850.000,"playPl":980.000,"playPlId":14237},{"maxFdBl":13.000,"minPl":850.000,"playPl":980.000,"playPlId":14238},{"maxFdBl":13.000,"minPl":283.333,"playPl":326.666,"playPlId":14239},{"maxFdBl":13.000,"minPl":283.333,"playPl":326.666,"playPlId":14240},{"maxFdBl":13.000,"minPl":141.667,"playPl":163.333,"playPlId":14241},{"maxFdBl":13.000,"minPl":141.667,"playPl":163.333,"playPlId":14242},{"maxFdBl":13.000,"minPl":283.333,"playPl":326.666,"playPlId":14243},{"maxFdBl":13.000,"minPl":141.667,"playPl":163.333,"playPlId":14244},{"maxFdBl":13.000,"minPl":283.333,"playPl":326.666,"playPlId":14245},{"maxFdBl":13.000,"minPl":141.667,"playPl":163.333,"playPlId":14246},{"maxFdBl":13.000,"minPl":283.333,"playPl":326.666,"playPlId":14247},{"maxFdBl":13.000,"minPl":141.667,"playPl":163.333,"playPlId":14248},{"maxFdBl":13.000,"minPl":8.500,"playPl":9.800,"playPlId":14249},{"maxFdBl":13.000,"minPl":85.000,"playPl":98.000,"playPlId":14250},{"maxFdBl":13.000,"minPl":14.167,"playPl":16.334,"playPlId":14251},{"maxFdBl":13.000,"minPl":3.148,"playPl":3.629,"playPlId":14252},{"maxFdBl":13.000,"minPl":85.000,"playPl":98.000,"playPlId":14253},{"maxFdBl":13.000,"minPl":85.000,"playPl":98.000,"playPlId":14254},{"maxFdBl":13.000,"minPl":85.000,"playPl":98.000,"playPlId":14255},{"maxFdBl":13.000,"minPl":85.000,"playPl":98.000,"playPlId":14256},{"maxFdBl":13.000,"minPl":42.500,"playPl":49.000,"playPlId":14257},{"maxFdBl":13.000,"minPl":42.500,"playPl":49.000,"playPlId":14258},{"maxFdBl":13.000,"minPl":42.500,"playPl":49.000,"playPlId":14259},{"maxFdBl":13.000,"minPl":42.500,"playPl":49.000,"playPlId":14260},{"maxFdBl":13.000,"minPl":8.500,"playPl":9.800,"playPlId":14261},{"maxFdBl":13.000,"minPl":3.136,"playPl":3.616,"playPlId":14262},{"maxFdBl":13.000,"minPl":15.740,"playPl":18.147,"playPlId":14263},{"maxFdBl":13.000,"minPl":3.136,"playPl":3.616,"playPlId":14264},{"maxFdBl":13.000,"minPl":15.740,"playPl":18.147,"playPlId":14265},{"maxFdBl":13.000,"minPl":2.471,"playPl":2.849,"playPlId":14266},{"maxFdBl":13.000,"minPl":8.726,"playPl":10.061,"playPlId":14267},{"maxFdBl":13.000,"minPl":2.471,"playPl":2.849,"playPlId":14268},{"maxFdBl":13.000,"minPl":8.726,"playPl":10.061,"playPlId":14269},{"maxFdBl":13.000,"minPl":2.075,"playPl":2.392,"playPlId":14270},{"maxFdBl":13.000,"minPl":5.794,"playPl":6.680,"playPlId":14271},{"maxFdBl":13.000,"minPl":19.540,"playPl":22.528,"playPlId":14272},{"maxFdBl":13.000,"minPl":3.400,"playPl":3.920,"playPlId":14273},{"maxFdBl":13.000,"minPl":3.400,"playPl":3.920,"playPlId":14274},{"maxFdBl":13.000,"minPl":6.800,"playPl":7.840,"playPlId":14275},{"maxFdBl":13.000,"minPl":6.800,"playPl":7.840,"playPlId":14276},{"maxFdBl":13.000,"minPl":85.000,"playPl":98.000,"playPlId":14277},{"maxFdBl":13.000,"minPl":85.000,"playPl":98.000,"playPlId":14278},{"maxFdBl":13.000,"minPl":85.000,"playPl":98.000,"playPlId":14279},{"maxFdBl":13.000,"minPl":42.500,"playPl":49.000,"playPlId":14280},{"maxFdBl":13.000,"minPl":42.500,"playPl":49.000,"playPlId":14281},{"maxFdBl":13.000,"minPl":42.500,"playPl":49.000,"playPlId":14282},{"maxFdBl":13.000,"minPl":850.000,"playPl":980.000,"playPlId":14283},{"maxFdBl":13.000,"minPl":850.000,"playPl":980.000,"playPlId":14284},{"maxFdBl":13.000,"minPl":850.000,"playPl":980.000,"playPlId":14285},{"maxFdBl":13.000,"minPl":283.333,"playPl":326.666,"playPlId":14286},{"maxFdBl":13.000,"minPl":283.333,"playPl":326.666,"playPlId":14287},{"maxFdBl":13.000,"minPl":141.667,"playPl":163.333,"playPlId":14288},{"maxFdBl":13.000,"minPl":141.667,"playPl":163.333,"playPlId":14289},{"maxFdBl":13.000,"minPl":283.333,"playPl":326.666,"playPlId":14290},{"maxFdBl":13.000,"minPl":141.667,"playPl":163.333,"playPlId":14291},{"maxFdBl":13.000,"minPl":283.333,"playPl":326.666,"playPlId":14292},{"maxFdBl":13.000,"minPl":141.667,"playPl":163.333,"playPlId":14293},{"maxFdBl":13.000,"minPl":8500.000,"playPl":9800.000,"playPlId":14294},{"maxFdBl":13.000,"minPl":8500.000,"playPl":9800.000,"playPlId":14295},{"maxFdBl":13.000,"minPl":354.166,"playPl":408.332,"playPlId":14296},{"maxFdBl":13.000,"minPl":708.333,"playPl":816.666,"playPlId":14297},{"maxFdBl":13.000,"minPl":1416.666,"playPl":1633.332,"playPlId":14298},{"maxFdBl":13.000,"minPl":2125.000,"playPl":2450.000,"playPlId":14299}]};
+    
+
+    // 全局开奖时间列表
+    
+    var zhuihaoSscOpenTimeList = [{"endBetTime":1504060260000,"number":"20170830027","openTime":1504060200000},{"endBetTime":1504060860000,"number":"20170830028","openTime":1504060800000},{"endBetTime":1504061460000,"number":"20170830029","openTime":1504061400000},{"endBetTime":1504062060000,"number":"20170830030","openTime":1504062000000},{"endBetTime":1504062660000,"number":"20170830031","openTime":1504062600000},{"endBetTime":1504063260000,"number":"20170830032","openTime":1504063200000},{"endBetTime":1504063860000,"number":"20170830033","openTime":1504063800000},{"endBetTime":1504064460000,"number":"20170830034","openTime":1504064400000},{"endBetTime":1504065060000,"number":"20170830035","openTime":1504065000000},{"endBetTime":1504065660000,"number":"20170830036","openTime":1504065600000},{"endBetTime":1504066260000,"number":"20170830037","openTime":1504066200000},{"endBetTime":1504066860000,"number":"20170830038","openTime":1504066800000},{"endBetTime":1504067460000,"number":"20170830039","openTime":1504067400000},{"endBetTime":1504068060000,"number":"20170830040","openTime":1504068000000},{"endBetTime":1504068660000,"number":"20170830041","openTime":1504068600000},{"endBetTime":1504069260000,"number":"20170830042","openTime":1504069200000},{"endBetTime":1504069860000,"number":"20170830043","openTime":1504069800000},{"endBetTime":1504070460000,"number":"20170830044","openTime":1504070400000},{"endBetTime":1504071060000,"number":"20170830045","openTime":1504071000000},{"endBetTime":1504071660000,"number":"20170830046","openTime":1504071600000},{"endBetTime":1504072260000,"number":"20170830047","openTime":1504072200000},{"endBetTime":1504072860000,"number":"20170830048","openTime":1504072800000},{"endBetTime":1504073460000,"number":"20170830049","openTime":1504073400000},{"endBetTime":1504074060000,"number":"20170830050","openTime":1504074000000},{"endBetTime":1504074660000,"number":"20170830051","openTime":1504074600000},{"endBetTime":1504075260000,"number":"20170830052","openTime":1504075200000},{"endBetTime":1504075860000,"number":"20170830053","openTime":1504075800000},{"endBetTime":1504076460000,"number":"20170830054","openTime":1504076400000},{"endBetTime":1504077060000,"number":"20170830055","openTime":1504077000000},{"endBetTime":1504077660000,"number":"20170830056","openTime":1504077600000},{"endBetTime":1504078260000,"number":"20170830057","openTime":1504078200000},{"endBetTime":1504078860000,"number":"20170830058","openTime":1504078800000},{"endBetTime":1504079460000,"number":"20170830059","openTime":1504079400000},{"endBetTime":1504080060000,"number":"20170830060","openTime":1504080000000},{"endBetTime":1504080660000,"number":"20170830061","openTime":1504080600000},{"endBetTime":1504081260000,"number":"20170830062","openTime":1504081200000},{"endBetTime":1504081860000,"number":"20170830063","openTime":1504081800000},{"endBetTime":1504082460000,"number":"20170830064","openTime":1504082400000},{"endBetTime":1504083060000,"number":"20170830065","openTime":1504083000000},{"endBetTime":1504083660000,"number":"20170830066","openTime":1504083600000},{"endBetTime":1504084260000,"number":"20170830067","openTime":1504084200000},{"endBetTime":1504084860000,"number":"20170830068","openTime":1504084800000},{"endBetTime":1504085460000,"number":"20170830069","openTime":1504085400000},{"endBetTime":1504086060000,"number":"20170830070","openTime":1504086000000},{"endBetTime":1504086660000,"number":"20170830071","openTime":1504086600000},{"endBetTime":1504087260000,"number":"20170830072","openTime":1504087200000},{"endBetTime":1504087860000,"number":"20170830073","openTime":1504087800000},{"endBetTime":1504088460000,"number":"20170830074","openTime":1504088400000},{"endBetTime":1504089060000,"number":"20170830075","openTime":1504089000000},{"endBetTime":1504089660000,"number":"20170830076","openTime":1504089600000},{"endBetTime":1504090260000,"number":"20170830077","openTime":1504090200000},{"endBetTime":1504090860000,"number":"20170830078","openTime":1504090800000},{"endBetTime":1504091460000,"number":"20170830079","openTime":1504091400000},{"endBetTime":1504092060000,"number":"20170830080","openTime":1504092000000},{"endBetTime":1504092660000,"number":"20170830081","openTime":1504092600000},{"endBetTime":1504093260000,"number":"20170830082","openTime":1504093200000},{"endBetTime":1504093860000,"number":"20170830083","openTime":1504093800000},{"endBetTime":1504094460000,"number":"20170830084","openTime":1504094400000},{"endBetTime":1504095060000,"number":"20170830085","openTime":1504095000000},{"endBetTime":1504095660000,"number":"20170830086","openTime":1504095600000},{"endBetTime":1504096260000,"number":"20170830087","openTime":1504096200000},{"endBetTime":1504096860000,"number":"20170830088","openTime":1504096800000},{"endBetTime":1504097460000,"number":"20170830089","openTime":1504097400000},{"endBetTime":1504098060000,"number":"20170830090","openTime":1504098000000},{"endBetTime":1504098660000,"number":"20170830091","openTime":1504098600000},{"endBetTime":1504099260000,"number":"20170830092","openTime":1504099200000},{"endBetTime":1504099860000,"number":"20170830093","openTime":1504099800000},{"endBetTime":1504100460000,"number":"20170830094","openTime":1504100400000},{"endBetTime":1504101060000,"number":"20170830095","openTime":1504101000000},{"endBetTime":1504101660000,"number":"20170830096","openTime":1504101600000},{"endBetTime":1504101960000,"number":"20170830097","openTime":1504101900000},{"endBetTime":1504102260000,"number":"20170830098","openTime":1504102200000},{"endBetTime":1504102560000,"number":"20170830099","openTime":1504102500000},{"endBetTime":1504102860000,"number":"20170830100","openTime":1504102800000},{"endBetTime":1504103160000,"number":"20170830101","openTime":1504103100000},{"endBetTime":1504103460000,"number":"20170830102","openTime":1504103400000},{"endBetTime":1504103760000,"number":"20170830103","openTime":1504103700000},{"endBetTime":1504104060000,"number":"20170830104","openTime":1504104000000},{"endBetTime":1504104360000,"number":"20170830105","openTime":1504104300000},{"endBetTime":1504104660000,"number":"20170830106","openTime":1504104600000},{"endBetTime":1504104960000,"number":"20170830107","openTime":1504104900000},{"endBetTime":1504105260000,"number":"20170830108","openTime":1504105200000},{"endBetTime":1504105560000,"number":"20170830109","openTime":1504105500000},{"endBetTime":1504105860000,"number":"20170830110","openTime":1504105800000},{"endBetTime":1504106160000,"number":"20170830111","openTime":1504106100000},{"endBetTime":1504106460000,"number":"20170830112","openTime":1504106400000},{"endBetTime":1504106760000,"number":"20170830113","openTime":1504106700000},{"endBetTime":1504107060000,"number":"20170830114","openTime":1504107000000},{"endBetTime":1504107360000,"number":"20170830115","openTime":1504107300000},{"endBetTime":1504107660000,"number":"20170830116","openTime":1504107600000},{"endBetTime":1504107960000,"number":"20170830117","openTime":1504107900000},{"endBetTime":1504108260000,"number":"20170830118","openTime":1504108200000},{"endBetTime":1504108560000,"number":"20170830119","openTime":1504108500000},{"endBetTime":1504108860000,"number":"20170830120","openTime":1504108800000},{"endBetTime":1504109160000,"number":"20170831001","openTime":1504109100000},{"endBetTime":1504109460000,"number":"20170831002","openTime":1504109400000},{"endBetTime":1504109760000,"number":"20170831003","openTime":1504109700000},{"endBetTime":1504110060000,"number":"20170831004","openTime":1504110000000},{"endBetTime":1504110360000,"number":"20170831005","openTime":1504110300000},{"endBetTime":1504110660000,"number":"20170831006","openTime":1504110600000}];
+    </script>
+<script>
+    function removeThisItem(obj) {
+        $(obj).parent().parent().trigger("mouseout");
+        $(obj).parent().parent().remove();
+        calcAll();
+        bindYuxuan();
+        if ($("#zhudanList .re_touzhu_tem").length <= 0) {
+            $("#zhudanList").html('<tr class="noRecord"><td>暂无投注项</td></tr>');
+            //清除追号模板
+            var flag = $(".clearLiZhudanbtn").attr('sp');
+            if(flag == 1){
+                zhTempletHideOrShow();
+            }
+        } else{
+            var optionVal = parseInt($('#lt_zh_qishu').val());
+            selectedCheckboxtbzh(optionVal);
+        }
+
+
+    }
+    // 随机号码
+    function randomNumber() {
+        var arr = [];
+        var tmpStr = '';
+        for (var i = 0; i < 5; ++i) {
+            tmpStr += '<span>' + (Math.floor(Math.random() * 10)) + '</span>';
+        }
+        $("#lastOpenCode").html(tmpStr);
+    }
+
+    // 渲染上期开奖模板
+    function renderLastOpenCode(openCodeArr) {
+        var tmpStr = '';
+        $.each(openCodeArr, function(index, value) {
+            tmpStr += '<span>' + value + '</span>';
+        });
+        $("#lastOpenCode").html(tmpStr);
+    }
+</script>
+<!-- 开奖历史模板 -->
+<script type="text/html" id="template_openDataHistory">
+    <li>
+        <p>第{{number}}期</p>
+        {{if list.length == 0}}
+        <p style="margin-left:5px">开奖中</p>
+        {{else}}
+        {{each list as value}}
+        <i>{{value}}</i>
+        {{/each}}
+        {{/if}}
+    </li>
+</script>
+
+<script type="text/html" id="template_touzhu">
+    <tr
+            data-show_content="{{showContent}}"
+            data-show_play_name="{{showPlayName}}"
+            data-bet_content="{{betContent}}"
+            data-bet_per_money="{{betPerMoney}}"
+            data-bet_zhushu="{{betZhushu}}"
+            data-bet_total_money="{{betTotalMoney}}"
+            data-bet_mode="{{betMode}}"
+            data-bet_play_group_id="{{betPlayGroupId}}"
+            data-bet_beishu="{{betBeishu}}"
+            data-bet_fandian="{{betFandian}}"
+            data-bet_play_pl="{{betPlayPl}}"
+            data-bet_play_id="{{betPlayId}}"
+            data-bet_play_pl_id="{{betPlayPlId}}"
+            class="re_touzhu_tem"
+    >
+        <td class="span_1">
+            [{{showPlayName}}]
+            <br />
+            {{showContent}}
+        </td>
+        <td class="span_2">
+            {{if betMode == 1}}
+            元
+            {{else if betMode == 2}}
+            角
+            {{else if betMode == 3}}
+            分
+            {{/if}}
+        </td>
+        <td class="span_3">
+            {{betZhushu}}注
+        </td>
+        <td class="span_4">
+            {{betPerMoney}}
+        </td>
+        <td class="span_5">
+            {{betPlayPl}}/{{betFandian}}%
+        </td>
+        <td class="span_6" title="删除">
+            <a href="javascript:void(0)" onclick="removeThisItem(this)"><img src="../themes/default/img/ico53.png" alt=""></a>
+        </td>
+    </tr>
+</script>
+<script>
+</script>
+<script>
+    function addYuxuan(betForm) {
+        $("#zhudanList .noRecord").remove();
+        var html = template("template_touzhu", betForm);
+        $("#zhudanList").append(html);
+        bindYuxuan();
+    }
+
+    function addContent(){
+        var strHtml = '';
+        $(".Detailedlist .layout .boxt .left table tbody tr.re_touzhu_tem").each(function(){
+            var modelStr = '';
+            var playName = $(this).data('show_play_name');
+            var model = $(this).data('bet_mode');
+            var betContent = $(this).data('bet_content');
+            var showContent = $(this).data("show_content");
+            var zhushu = $(this).data('bet_zhushu');
+            var perMoney = $(this).data('bet_per_money');
+            var beishu = $(this).data('bet_beishu');
+            var totalMoney = $(this).data('bet_total_money');
+
+            if(model == 1){
+                modelStr = '元';
+            } else if(model == 2){
+                modelStr = '角';
+            } else if(model == 3){
+                modelStr = '分';
+            }
+
+            var newStr = '<tr>' +
+                    '<td>' + playName + '</td>' +
+                    '<td>' + showContent + '</td>' +
+                    '<td>' + zhushu + '</td>' +
+                    '<td>' + perMoney + '</td>' +
+                    '<td>' + modelStr + '</td>' +
+                    '<td>' + beishu + '</td>' +
+                    '<td>' + totalMoney + '</td>' +
+                    '</tr>';
+            strHtml += newStr;
+        });
+        return strHtml;
+    }
+
+    function bindYuxuan() {
+        unbindYuxuan();
+        $(".Detailedlist .layout .boxt .left table tbody tr.re_touzhu_tem").hover(
+            function() {
+                $("#moreZhudan").remove();
+                var width = $(this).width() / 2;
+                var top = $(this).offset().top - 150;
+                var left = $(this).offset().left + $(this).width() / 2 * 1 / 3;
+                var html = template("template_moreZhudan", {
+                    top: top,
+                    left: left,
+                    showPlayName: $(this).data("show_play_name"),
+                    showContent: $(this).data("show_content"),
+                    showMode: $(this).data("bet_mode"),
+                    showFandian: $(this).data("bet_fandian"),
+                    showPlayPl: $(this).data("bet_play_pl"),
+                    betPerMoney: $(this).data("bet_per_money"),
+                    betTotalMoney: $(this).data("bet_total_money"),
+                    betZhushu: $(this).data("bet_zhushu"),
+                    bet_beishu: $(this).data("bet_beishu")
+                });
+                $("body").append(html);
+            }, function() {
+                $("#moreZhudan").remove();
+            }
+        );
+    }
+
+    function unbindYuxuan() {
+        $(".Detailedlist .layout .boxt .left table tbody tr.re_touzhu_tem").unbind('mouseenter').unbind('mouseleave');
+    }
+</script>
+<script type="text/html" id="template_moreZhudan">
+    <div id="moreZhudan" class="moreZhudan" style="top:{{top}}px;left:{{left}}px">
+        <div class="box">
+            <div class="line">
+                <span>玩法：[{{showPlayName}}]</span>
+            </div>
+            <div class="line">
+                <span>号码：{{showContent}}</span>
+            </div>
+            <div class="line">
+                <span>模式：{{if showMode == 1}}元{{else if showMode == 2}}角{{else if showMode == 3}}分{{/if}}模式, 奖金&nbsp;{{showPlayPl}}, 返点&nbsp;{{showFandian}}%</span>
+            </div>
+            <div class="line">
+                <span>包含&nbsp;{{betZhushu}}&nbsp;注，每注金额&nbsp;{{betPerMoney}}&nbsp;
+                {{if showMode == 1}}
+                元
+                {{else if showMode == 2}}
+                角
+                {{else if showMode == 3}}
+                分
+                {{/if}}
+                ，{{bet_beishu}}倍
+                </span>
+            </div>
+            <div class="line">
+                <span>共计&nbsp;{{betTotalMoney}}&nbsp;元</span>
+            </div>
+        </div>
+    </div>
+</script>
+</body>
+</html>

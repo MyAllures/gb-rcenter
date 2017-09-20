@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+     <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+<!--弹窗 --> 
+ <script>
+jQuery(document).ready(function($) {
+	$('.theme-login').click(function(){
+		$('.theme-pop-mask').fadeIn(100);
+		$('.theme-pop').slideDown(200);
+	})
+	$('.theme-poptitle .close').click(function(){
+		$('.theme-pop-mask').fadeOut(100);
+		$('.theme-pop').slideUp(200);
+	})
+
+})
+</script>
+</head>
+<body style="background:#5a5a5a;">
+  
+ <!-- //* 弹窗1 --> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>订单已提交</h1>
+</div>
+<div class="theme-popcon">
+<h2>正在与第三方对接，请尽快完成支付！
+</h2>
+<p class="popalign"><span class="gray">有效时间：</span><span class="orangebig">19:23</span></p>
+<div class="text">
+<p>1.成功付款后，将会自动到账，并消息提醒</p>
+<p>2.长时间无反应，请<i class="service call"></i><a href="#">联系客服</a></p>
+</div>
+ </div>
+</div>
+<div class="theme-pop-mask" style="position:static"></div>
+
+ <!-- //* 弹窗2--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>订单已提交</h1>
+</div>
+<div class="theme-popcon">
+<h3 class="popalign"><i class="tipbig fail"></i>订单超时</h3>
+<div class="text">
+<p>非常抱歉，由于长时间没检测到您的存款</p>
+<p>已将本订单暂时处理为“超时”订单，稍后会再次检测</p>
+</div>
+<form class="popbutton">
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">再存一次</button>
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">联系客服</button>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+ <!-- //* 弹窗3--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>订单已提交</h1>
+</div>
+<div class="theme-popcon">
+<h3 class="popalign"><i class="tipbig success"></i>成功存款57元</h3>
+<div class="text">
+<p>当前钱包余额360.47元</p>
+</div>
+<form class="popbutton">
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">确认</button>
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">查看资金记录</button>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+ <!-- //* 弹窗4--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>订单已提交</h1>
+</div>
+<div class="theme-popcon">
+<h3 class="popalign"><i class="tipbig fail"></i>存款失败</h3>
+<div class="text">
+<p>失败原因：</p>
+<p>由于您未在有效时间内完成付款，本次订单已关闭！</p>
+</div>
+<form class="popbutton">
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">再存一次</button>
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">联系客服</button>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+<nav class="navbar-default navbar-static-side shadow" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="active"><a href="serve/main.html" nav-target="topFrame"><em class="iconfont icon-huodongguanli"></em> <span class="nav-label">内容审核</span></a></li>
+            <li><a href="serve/mass-send.html" nav-target="mainFrame"><em class="iconfont icon-xinxiqunfa"></em> <span class="nav-label">模板管理</span></a></li>
+            <li><a href="serve/system-notice.html" nav-target="mainFrame"><em class="iconfont icon-xiaoxigonggao"></em> <span class="nav-label">系统公告</span></a></li>
+            
+        </ul>
+    </div>
+</nav>
+<div id="page-wrapper" class="gray-bg dashbard-1">
+    <div id="mainFrame">
+        <div class="row">
+            <div class="position-wrap clearfix">
+                <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+                <span>服务</span><span>/</span><span>内容审核</span>
+                <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+            </div>
+            <div class="col-lg-12 m-b">
+                <div class="wrapper white-bg shadow">
+                    <!--筛选条件-->
+                    <div class="filter-wraper clearfix p-xs border-b-1">
+                        <a href="serve/audit-memo.html" nav-target="mainFrame" class="btn btn-outline btn-filter pull-left m-r-sm">审核记录</a>
+                        
+                        
+                    </div>
+                    <!--表格内容-->
+                    <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                        <div class="table-responsive">
+                           <div class="line-hi34 col-sm-12">
+                <span class="co-yellow"><i class="fa fa-exclamation-circle"></i></span>
+                 以下内容需要您审核后才会在站点显示！
+            </div>
+                            <table class="table table-striped table-hover dataTable" aria-describedby="editable_info">
+                                <thead class="bg-gray">
+                                    <tr role="row">
+                                        <th>序号</th>
+                                        <th>站点名称</th>
+                                        <th>站点类型</th>
+                                        <th>站长</th>
+                                        <th>待审核</th>
+                                        <th>最新提交时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="gradeA">
+                                        <td>1</td>
+																																					   <td><img src="images//zgq.jpg"><span class="m-l-xs">平安游戏</span></td>
+                                        <td>直营</td>
+                                        <td><a href="javascript:void(0)">sherry</a></td>
+                                        <td class="co-red3">12</td>
+                                        <td>2015-06-11 12:30</td>
+                                        <td>
+                                            <a href="serve/content-audit-logo.html" nav-target="mainFrame">审核</a>
+                                        </td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>2</td>
+                                         <td><img src="images//zgq.jpg"><span class="m-l-xs">平安游戏</span></td>
+                                        <td>直营</td>
+                                        <td><a href="javascript:void(0)">sherry</a></td>
+                                        <td class="co-red3">12</td>
+                                        <td>2015-06-11 12:30</td>
+                                        <td>
+                                            <a href="serve/content-audit-logo.html" nav-target="mainFrame">审核</a>
+                                        </td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>3</td>
+                                         <td><img src="images//zgq.jpg"><span class="m-l-xs">平安游戏</span></td>
+                                        <td>直营</td>
+                                        <td><a href="javascript:void(0)">sherry</a></td>
+                                        <td class="co-red3">12</td>
+                                        <td>2015-06-11 12:30</td>
+                                        <td>
+                                            <a href="serve/content-audit-logo.html" nav-target="mainFrame">审核</a>
+                                        </td>
+                                    </tr>
+                                    <tr class="gradeA">
+                                        <td>4</td>
+                                         <td><img src="images//zgq.jpg"><span class="m-l-xs">平安游戏</span></td>
+                                        <td>直营</td>
+                                        <td><a href="javascript:void(0)">sherry</a></td>
+                                        <td class="co-red3">12</td>
+                                        <td>2015-06-11 12:30</td>
+                                        <td>
+                                            <a href="serve/content-audit-logo.html" nav-target="mainFrame">审核</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row bdtop3">
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="pull-left">
+                                    <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                                        <option value=""></option>
+                                        <option>每页20条</option>
+                                        <option>每页30条</option>
+                                        <option>每页40条</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-9 col-xs-6">
+                                <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                                    <div class="pull-right pages show-hide-1095 page-skip">
+                                        <form class="form-inline">
+                                            <label class="m-l-sm">共10页</label>
+                                            <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                                            <button class="btn btn-sm m-l-sm">跳转</button>
+                                        </form>
+                                    </div>
+                                    <ul class="pagination pull-right">
+                                        <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                        <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                        <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                        <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                        <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                        <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                        <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                        <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-12 m-t">
+            <div class="wrapper white-bg shadow">
+              <div class="sys_tab_wrap clearfix m-b-sm">
+                <div class="m-sm">
+                <b class="fs16">弹窗</b>
+                </div>
+            </div>
+               
+               
+
+                    
+                        <div class="p-sm">      
+                          <button type="button" class="btn btn-filter btn-lg" data-toggle="modal" data-target="#shcg"><span class="hd">审核成功</span></button>  
+                          <button type="button" class="btn btn-filter btn-lg" data-toggle="modal" data-target="#shsb"><span class="hd">审核失败</span></button>  
+                               
+                </div>            
+                  
+        </div>
+        
+    </div>
+            
+            
+            
+        </div>
+    </div>
+</div>
+<!--审核失败-->
+<div class="modal inmodal in" id="shsb" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+               
+               <dd class="m-t m-b line-hi34">您上传的logo<span class="co-orange ft-bold">审核失败</span>，将不会再站点展示，一下为审核失败的原因，您可调整后再重新上传。</dd>
+               
+               <div class="gray-chunk clearfix">
+																<dd class="form-group clearfix"><b>logo名称：</b><a href="javascript:void(0)">中秋DOODLE</a></dd>
+                <dd class="form-group clearfix"><b>提交时间：</b>2015-09-23 10:22:22</dd>
+																<dd class="form-group clearfix"><b>失败原因：</b>本次上传的logo与默认logo非一个系列，且与站点名称没有关联性！</dd></div>
+                
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<!--审核成功-->
+<div class="modal inmodal in" id="shcg" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+               
+               <dd class="m-t m-b line-hi34">您编辑的文案<span class="co-green ft-bold">审核成功</span>，将会在站点正常展示！</dd>
+               
+               <div class="gray-chunk clearfix">
+                <dd class="form-group clearfix"><b>文案名称：</b><a href="javascript:void(0)">关于我们</a></dd>
+                <dd class="form-group clearfix"><b>提交时间：</b>2015-09-23 10:22:22</dd>
+																<!--<dd class="form-group clearfix"><b>失败原因：</b>本次上传的logo与默认logo非一个系列，且与站点名称没有关联性！</dd></div>-->
+                
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 左侧菜单响应控件 -->
+<script src="../../common/js/inspinia/inspinia.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+    //表格内下拉菜单    
+$(document).ready(function(){
+      $("th.inline").click(function () {
+      $(this).find(".chosen-drop").css({top:$(this).parent().offset().top-$("body").scrollTop()+28});
+      $(this).find(".chosen-drop").css({left:$(this).find(".chosen-container").offset().left});
+    });
+});
+</script>

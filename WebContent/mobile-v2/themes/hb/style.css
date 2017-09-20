@@ -1,0 +1,59 @@
+#container{width:492px;height:602px;position: absolute;top: 50%;left: 50%; overflow: hidden;margin-left: -246px;margin-top: -301px;display: block;}
+.inputClass{font-size: 16px;position: absolute;outline: none;background: rgba(0,0,0,0);border: none;text-align: left;}
+/*.divClass{width: 100%;height: 100%;position: absolute;top: 0;left: 0;display: none;}*/
+.ab{position: absolute}
+.btnFont{font-size: 0;}
+.divBg{background-color: rgba(0,0,0,0);z-index: 1111;background-repeat: no-repeat;background-size: auto 100%;background-position: center}
+/*#containerOut{width:100%;height:100%;position: absolute;background-color: rgba(0,0,0,.5);top: 0;left: 0;z-index: 1111;}*/
+#lotteryPage{background-image: url(images/lottery.png);display: block;}
+#lotteryPageBtn_0{width: 42px;height: 42px;top: 81px;left: 335px; background: none; border: none;}
+#lotteryPageBtn_1{width: 109px;height: 115px;top: 215px;left: 142px; background: none; border: none;}
+#lotteryPageBtn_2{width: 123px;height: 51px;top: 380px;left: 185px; background: none; border: none;}
+#noAwardPageBtn_0,#haveAwardPageBtn_0{width: 42px;height: 42px;top: 148px;left: 335px; background: none; border: none;}
+#awardname{width: 60%;left: 20%;text-align: center;top: 232px;color: #ac4723;font-weight: 600;font-size: 30px;}
+#noAwardPageBtn_1,#haveAwardPageBtn_2{width: 123px;height: 51px;top: 427px;left: 138px; background: none; border: none;}
+#rewardPageBtn_0{width: 123px;height: 51px;top: 380px;left: 185px; background: none; border: none;}
+#hitPage{z-index: 999;background-image: url(images/noChance.png);}
+#haveAwardPage{z-index: 1111;background-image: url(images/haveAward.png);}
+#rewardPage{z-index: 1111;background-image: url(images/reward.png);}
+#noAwardPage{z-index: 1111;background-image: url(images/noAward.png);}
+#explainPage{z-index: 1111;background-image: url(images/gameInfo.png);}
+#explainPageBtn_0{width: 123px;height: 51px;top: 476px;left: 185px; background: none; border: none;}
+#explainContent{width: 277px;height: 222px;top: 256px;left: 108px;overflow-y: auto;font-size: 20px;word-break: break-all;color: #ac4723;}
+#ramain-count {font-size: 22px;padding: 0 5px;color: gold}
+#next_lottery_time {font-size: 22px;padding: 0 5px;color: gold}
+.t-10 {top: -10px!important;}
+
+.divClass {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+
+    _top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+
+}
+
+
+#containerOut {
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    left:0;
+    top:0;/*FF IE7*/
+    filter:alpha(opacity=90);/*IE*/
+    opacity:0.95;/*FF*/
+    z-index: 1111;
+
+    position:fixed!important;/*FF IE7*/
+    position:absolute;/*IE6*/
+
+    _top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+
+}

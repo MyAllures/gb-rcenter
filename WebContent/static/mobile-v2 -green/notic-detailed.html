@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/style.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui-icon-extra.css" />
+</head>
+
+
+<body class="gb-theme mine-page">
+    <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable" style="overflow:visible;">
+        <!-- 主页面容器 -->
+        <div class="mui-inner-wrap">
+            <header class="mui-bar mui-bar-nav">
+                <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+                <h1 class="mui-title">消息详情</h1>
+            </header>
+            <div class="mui-content" style="overflow:visible;">
+                <div class="mui-scroll gb-fund-step">
+                    <div class="mui-content-padded gb-content notice-datail">
+                        <p>公告标题威尼斯人注册于菲律宾马尼拉，持有菲律宾政府卡格扬经济特区 First Cagayan leisure and Resort Corporation颁发的体育博彩与线上赌场执照，接受菲律宾政府和卡格扬经济特区CEZA授权和监管，我们一切博彩营业行为皆遵从菲律宾政府博彩条约。在竞争日益激烈的网络博彩市场中，我们不断地求新求变，寻找最新的创意，秉持最好的服务。向客户提供高品质的服务、先进的产品、丰富的娱乐体验，是我们威尼斯人永恒的宗旨。</p>
+                        <p>我们思您所想，提供高标准全方位的个人隐私保密措施以及高强度的资金安全体系。玩家网上支付和所有银行交易将由国际金融机构通过高标准的安全和机密的网络端口（SSL 128 bit encryption Standard）中进行。进入玩家帐户数据也必须有玩家唯一的登录ID和密码，确保客户的资金安全有保障。同时也采用最先进的加密措施来保证玩家的游戏安全，7×24小时的后台检测和监控，确保我们可以提供一个完全公正和安全的网络游戏空间。客户在本平台的所有活动均严格保密，我们绝不会向第三方（包括相关单位）透露客户数据。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-row">
+                <div class="titme-list">
+                    <span><i></i>2016-12-31  00:00:00</span>
+                    <span class="name">中国人民银行</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/mui.min.js"></script>
+<script src="js/zepto.min.js"></script>
+<script>
+//主体内容滚动条
+mui('.mui-scroll-wrapper').scroll();
+//data-href
+mui("body").on("tap", "[data-href]", function() {
+    var _href = $(this).data('href')
+    mui.openWindow({
+        url: _href,
+        id: _href,
+        extras: {},
+        createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+        show: {
+            autoShow: true, //页面loaded事件发生后自动显示，默认为true
+        },
+        waiting: {
+            autoShow: true, //自动显示等待框，默认为true
+            title: '正在加载...', //等待对话框上显示的提示内容
+
+        }
+    })
+})
+</script>
+
+</html>

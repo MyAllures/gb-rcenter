@@ -1,0 +1,106 @@
+
+        <div class="row">
+            <div class="position-wrap clearfix">
+                <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+                <span>服务</span><span>/</span><span>内容审核</span>
+                <a href="javascript:void(0)" class="m-l-sm btn btn-outline btn-default btn-xs co-gray6 return-btn"><em class="fa fa-caret-left"></em>返回</a>
+                <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+            </div>
+            <div class="col-lg-12 m-b">
+        <div class="wrapper">
+           <ul class="clearfix sys_tab_wrap b-none">
+                    <li class="active"><a href="serve/content-audit-logo.html" nav-target="mainFrame">LOGO<span class="badge badge-orange m-l-sm">4</span></a></li>
+                    <li><a href="serve/content-audit-text.html" nav-target="mainFrame">文案<span class="badge badge-orange m-l-sm">4</span></a></li>
+                    <li><a href="serve/content-audit-sale.html" nav-target="mainFrame">优惠<span class="badge badge-orange m-l-sm">4</span></a></li>
+                </ul>
+            <div class="wrapper shadow  white-bg" role="grid">
+                <div class="filter-wraper fw-none-b clearfix">
+                            <b class="fs16">logo审核</b>
+                    </div>
+               
+                   <div class="m-sm">
+                   <div class="clearfix m-b-sm">
+                     <dd class="pull-left p-xs text-oflow-m60">
+                       <b>站点：</b>
+                       <span class="m-l-xs"><a href="javascript:void(0)">麦加游戏</a></span>
+                     </dd>
+                     <dd class="pull-left p-xs text-oflow-m60">
+                       <b>提交时间:</b>
+                       <span class="m-l-xs">2015-06-17 08:23:12</span>
+                     </dd>
+                     <dd class="pull-left p-xs text-oflow-m60">
+                       <b>变更人:</b>
+                       <span class="m-l-xs">站长 <a href="javascript:void(0)">demovip</a></span>
+                     </dd>
+                     <dd class="pull-left p-xs text-oflow-m60">
+                       <b>使用时间:</b>
+                       <span class="m-l-xs">2015-06-19 16:32:42 ~ 2015-07-19 16:32:42</span>
+                     </dd>
+                   </div>
+                   <div class="gray-chunk clearfix">
+                   
+                   
+                   
+                   <div class="clearfix pull-left m-sm change-logo">
+                   
+                   <dd class="change-logo-title"><span><b>默认logo:</b></span> <span>腾讯游戏</span></dd>
+               <dd><img src="../../../ccenter/images/logo-p1.jpg"></dd>
+                   </div>
+            
+                   <div class="clearfix pull-left m-sm change-logo">
+                   
+                   <dd class="change-logo-title"><span><b>更换logo:</b></span> <span>SNAIL</span></dd>
+               <dd><img src="../../../ccenter/images/logo-p3.jpg"></dd>
+                   </div>
+            
+            
+            
+            
+            
+
+           
+            </div>
+                   
+                   
+                   
+                   
+                   </div>
+                
+                <div class="operate-btn  al-center">
+                 <button class="btn btn-filter btn-lg" data-toggle="modal" data-target="#reviewSuccess">审核通过</button>
+                  <button class="btn btn-outline btn-filter btn-lg" data-toggle="modal" data-target="#shsb">审核失败</button>
+                   <a href="javascript:void(0)" class="btn btn-filter btn-lg pull-right">下一条</a>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+<!-- 左侧菜单响应控件 -->
+<script src="../../common/js/inspinia/inspinia.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+    //表格内下拉菜单    
+$(document).ready(function(){
+      $("th.inline").click(function () {
+      $(this).find(".chosen-drop").css({top:$(this).parent().offset().top-$("body").scrollTop()+28});
+      $(this).find(".chosen-drop").css({left:$(this).find(".chosen-container").offset().left});
+    });
+});
+</script>

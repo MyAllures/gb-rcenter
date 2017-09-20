@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玩家管理-角色管理</title>
+    <link href="../../../mcenter/themes/default/common.css" rel="stylesheet">
+    <link href="../../../common/themes/default/style.css" rel="stylesheet">
+    <link href="../../../common/themes/default/iconfont.css" rel="stylesheet" >
+    <link href="../../../common/themes/default/dist/bootstrapSwitch.css" rel="stylesheet">
+    <link href="../../../common/themes/default/switchery/switchery.css" rel="stylesheet" >
+    <link href="../../../common/themes/default/iCheck/custom.css" rel="stylesheet">
+    <link href="../../../common/themes/default/nouslider/jquery.nouislider.css" rel="stylesheet">
+    <link href="../../../common/themes/default/chosen/chosen.css" rel="stylesheet" >
+    <link href="../../../common/themes/default/banner/elastislide.css" rel="stylesheet" />
+    <link href="../../../common/themes/default/content.css" rel="stylesheet">
+</head>
+<body>
+<div id="wrapper">
+    <div class="row">
+        <div class="position-wrap clearfix">
+            <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+            <span>角色管理</span>
+            <span>/</span><span>层级管理</span>
+        	<a href="javascript:void(0)" nav-target="mainFrame" class="m-l-sm btn btn-outline btn-default btn-xs co-gray6 return-btn"><em class="fa fa-caret-left"></em>返回</a>
+            <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+        </div>
+        <div class="col-lg-12">
+            <div class="wrapper white-bg">
+                <ul class="artificial-tab clearfix">
+                    <li><a href="rechargeLimit.html"><span class="no">1</span><span class="con">添加账号</span></a></li>
+                    <li><a class="current" href="../funds/funds2.html"><span class="no">2</span><span class="con">参数设置</span></a></li>
+                </ul>
+                <div class="rechargeCon">
+                    <div class="line-hi34 col-sm-12 bg-gray m-b m-t">
+                        <label class="ft-bold col-sm-3 al-right line-hi34"></label>
+                        <span class="co-yellow m-r-sm m-l-sm"><i class="fa fa-exclamation-circle"></i></span>
+                        以下涉及金额的项目，其他货币将根据您设置的主货币自动进行额度转换
+                    </div>
+                    <hr class="m-t-sm m-b-sm">
+                </div>
+                <div class="clearfix m-b limit_title_wrap">
+                    <h3 class="limit_title cur">公司入款单笔上下限</h3>
+                    <div class="m-t line-hi25 m-l-sm pull-left">线上支付单笔上下限在<a href="../content/company-account.html">线上支付账户</a>里设置</div>
+                </div>
+                <div class="clearfix m-t m-b fzcs">
+                    <b class="pull-left col-sm-3 al-right line-hi34">上限金额CNY</b>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="clearfix m-t m-b fzcs">
+                    <b class="pull-left col-sm-3 al-right line-hi34">下限金额CNY</b>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+<!--
+                <div class="table-responsive bdnone">            
+                  <table class="table bordernone m-t-sm" style="table-layout:fixed;">
+                    <tr>
+                        <th class="content-width-limit-140">上限金额CNY</th>
+                        <th class="content-width-limit-140">下限金额CNY</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control input-sm" /></td>
+                        <td><input type="text" class="form-control input-sm" /></td>
+                        <td></td>
+                    </tr>
+                  </table>
+                </div>
+-->
+                <hr class="m-t-xs">
+                <div class="clearfix m-b limit_title_wrap">
+                   <h3 class="limit_title">返还玩家单笔存款手续费</h3>
+                   <h3 class="limit_title cur"><i class="fa fa-check-square-o m-r-sm"></i>玩家单笔存款手续费</h3>
+                </div>
+                <div class="clearfix m-t m-b fzcs">
+                    <b class="pull-left col-sm-3 al-right line-hi34">收取手续费</b>
+                    <div class="col-sm-5">
+                        <input type="checkbox" name="my-checkbox" data-size="mini" checked>
+                    </div>
+                </div>
+                <div class="clearfix m-t m-b fzcs">
+                    <b class="pull-left col-sm-3 al-right line-hi34">时限/小时</b>
+                    <div class="col-sm-5 input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-addon"><i class="fa fa-question-circle"></i></span>
+                    </div>
+                </div>
+                <div class="clearfix m-t m-b fzcs">
+                    <b class="pull-left col-sm-3 al-right line-hi34">免手续费次数</b>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="clearfix m-t m-b fzcs">
+                    <b class="pull-left col-sm-3 al-right line-hi34">手续费上限金额CNY</b>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">按比例收费</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <span class="input-group-addon"><input type="radio" class="i-checks" name="sf" checked></span>
+                          <input type="text" class="form-control" placeholder="%">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">固定收费</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <span class="input-group-addon"><input type="radio" class="i-checks" name="sf" checked></span>
+                          <input type="text" class="form-control">
+                          <span class="input-group-addon bdn">&nbsp;≤100</span>
+                        </div>
+                    </div>
+                </div>
+<!--
+                <div class="clearfix m-t m-b fzcs">
+                    <b class="pull-left col-sm-3 al-right line-hi34">收费比例/金额</b>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+-->
+<!--                <div class="table-responsive bdnone">            -->
+<!--
+                  <table class="table bordernone m-t-sm" style="table-layout:fixed;">
+                    <tr>
+                        <th class="content-width-limit-140">收取手续费</th>
+                        <th class="content-width-limit-140">时限/小时？</th>
+                        <th class="content-width-limit-140">免手续费次数</th>
+                        <th class="content-width-limit-140">手续费上限金额CNY</th>
+                        <th class="content-width-limit-140">收费方式</th>
+                        <th class="content-width-limit-140">收费比例/金额</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="my-checkbox" data-size="mini" checked></td>
+                        <td><input type="text" class="form-control input-sm" /></td>
+                        <td><input type="text" class="form-control input-sm" /></td>
+                        <td><input type="text" class="form-control input-sm" /></td>
+                        <td class="select-sm">
+                            <select class="chosen-select-no-single" data-placeholder="按比例收费">
+                                <option>按比例收费</option>
+                                <option>固定收费</option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="form-control input-sm" placeholder="%" /></td>
+                        <td></td>
+                    </tr>
+                  </table>
+-->
+                </div>
+                <hr class="m-t-xs">
+                <div class="clearfix m-b limit_title_wrap">
+                   <h3 class="limit_title cur"><i class="fa fa-check-square-o m-r-sm"></i>返还玩家单笔存款手续费</h3>
+                    <h3 class="limit_title">玩家单笔存款手续费</h3>
+                </div>
+                
+                <div class="clearfix m-t m-b fzcs">
+                    <b class="pull-left col-sm-3 al-right line-hi34">返还手续费</b>
+                    <div class="col-sm-5">
+                        <input type="checkbox" name="my-checkbox" data-size="mini" checked>
+                    </div>
+                </div>
+                <div class="clearfix m-t m-b fzcs">
+                    <b class="pull-left col-sm-3 al-right line-hi34">满存金额CNY</b>
+                    <div class="col-sm-5 input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-addon"><i class="fa fa-question-circle"></i></span>
+                    </div>
+                </div>
+                <div class="clearfix m-t m-b fzcs">
+                    <b class="pull-left col-sm-3 al-right line-hi34">时限/小时</b>
+                    <div class="col-sm-5 input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-addon"><i class="fa fa-question-circle"></i></span>
+                    </div>
+                </div>
+                <div class="clearfix m-t m-b fzcs">
+                    <b class="pull-left col-sm-3 al-right line-hi34">返手续费次数</b>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="clearfix m-t m-b fzcs">
+                    <b class="pull-left col-sm-3 al-right line-hi34">返手续费上限金额CNY</b>
+                    <div class="col-sm-5 input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-addon"><i class="fa fa-question-circle"></i></span>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">按比例收费</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <span class="input-group-addon"><input type="radio" class="i-checks" name="sf" checked></span>
+                          <input type="text" class="form-control" placeholder="%">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">固定收费</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <span class="input-group-addon"><input type="radio" class="i-checks" name="sf" checked></span>
+                          <input type="text" class="form-control">
+                          <span class="input-group-addon bdn">&nbsp;≤100</span>
+                        </div>
+                    </div>
+                </div>
+<!--
+                <div class="clearfix m-t m-b fzcs">
+                    <b class="pull-left col-sm-3 al-right line-hi34">收费比例/金额</b>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+-->
+<!--
+                <div class="table-responsive bdnone">
+                  <table class="table bordernone m-t-sm" style="table-layout:fixed;">
+                    <tr>
+                        <th class="content-width-limit-140">返还手续费</th>
+                        <th class="content-width-limit-140 tooltip-demo">
+                            满存金额CNY <a data-container="body" data-toggle="popover" data-placement="right" data-content="这里是提示内容" class="co-gray6"><i class="fa fa-question-circle"></i></a>
+                        </th>
+                        <th class="content-width-limit-140">返手续费上限金额CNY？</th>
+                        <th class="content-width-limit-140">时限/小时？</th>
+                        <th class="content-width-limit-140">返手续费次数</th>
+                        <th class="content-width-limit-140">返还方式</th>
+                        <th class="content-width-limit-140">返还比例/金额</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="my-checkbox" data-size="mini" checked></td>
+                        <td><input type="text" class="form-control input-sm" /></td>
+                        <td><input type="text" class="form-control input-sm" /></td>
+                        <td><input type="text" class="form-control input-sm" /></td>
+                        <td><input type="text" class="form-control input-sm" /></td>
+                        <td class="select-sm">
+                            <select class="chosen-select-no-single" data-placeholder="按比例收费">
+                                <option>按比例收费</option>
+                                <option>固定收费</option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="form-control input-sm" placeholder="%" /></td>
+                        <td></td>
+                    </tr>
+                  </table>
+                </div>
+-->
+                <div class="operate-btn">
+                    <button class="btn btn-outline btn-filter btn-lg">提交</button>
+                    <button class="btn btn-filter btn-lg m-l-sm">提交并设置取款</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Mainly scripts -->
+<script src="../../../common/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../../common/js/bootstrap/bootstrap.min.js"></script>
+<script src="../../../common/js/jquery/plugins/jquery.metisMenu/jquery.metisMenu.js"></script>
+<!-- Chosen -->
+<script src="../../../common/js/jquery/plugins/jquery.chosen/jquery.chosen.js"></script>
+<!-- JSKnob -->
+<script src="../../../common/js/jquery/plugins/jquery.knob/jquery.knob.js"></script>
+<!-- NouSlider -->
+<script src="../../../common/js/jquery/plugins/jquery.nouislider/jquery.nouislider.min.js"></script>
+<!-- Peity -->
+<script src="../../../common/js/jquery/plugins/jquery.peity/jquery.peity.min.js"></script>
+<!-- GITTER -->
+<script src="../../../common/js/jquery/plugins/jquery.gritter/jquery.gritter.min.js"></script>
+<!-- Switchery -->
+<script src="../../../common/js/switchery/switchery.js"></script>
+<!-- Sparkline -->
+<script src="../../../common/js/jquery/plugins/jquery.sparkline/jquery.sparkline.min.js"></script>
+<!-- ChartJS-->
+<script src="../../../common/js/chartJs/Chart.min.js"></script>
+<!-- Toastr -->
+<script src="../../../common/js/toastr/toastr.min.js"></script>
+<!-- iCheck -->
+<script src="../../../common/js/iCheck/icheck.min.js"></script>
+<!-- Custom and plugin javascript -->
+<script src="../../../common/js/inspinia/inspinia.js"></script>
+<!--tips-->
+<script src="../../../common/js/flot/jquery.flot.tooltip.min.js"></script>
+<!--switch-->
+<script src="../../../common/js/dist/bootstrap-switch.js"></script>
+
+<script src="../../../common/js/modernizr.custom/modernizr.custom.17475.js"></script>
+
+<script src="../../../common/js/jquery/plugins/jquery.elastislide/jquery.elastislide.js"></script>
+
+<script src="../app.js"></script>
+<!-- End SlidesJS Required -->
+<script>
+    $(document).ready(function () {
+        $("iframe",window.top.document).height($(document.body).height());
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+    $(document).ready(function(){
+        $(".more-data").mousedown(function(){
+            $(this).parent().toggleClass("show-data");
+        })
+        $(".dial").knob();
+    });
+</script>
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>
+</body>
+</html>

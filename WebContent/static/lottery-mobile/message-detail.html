@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="../../lottery-mobile/themes/mui.min.css" rel="stylesheet"/>
+    <link href="../../lottery-mobile/themes/style.css" rel="stylesheet"/>
+    <link href="../../lottery-mobile/themes/skin/orange/style.css" rel="stylesheet"/>
+    		<!--App自定义的css-->
+	<link href="../../lottery-mobile/themes/mui.picker.min.css" rel="stylesheet" />
+    </head>
+<body class="orange-skin">
+	    <header class="mui-bar mui-bar-top mui-bar-nav ">
+	    	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    	<h1 class="mui-title">站内信</h1>
+	    	<div class="mui-pull-right bar-top-l-h">
+	    		<a href="index.html" class="top-bar-btn n-broder mui-action-menu iconfont icon-home"></a>
+	        </div>
+	    </header>
+	    <div class="mui-scroll-wrapper middle-content middle-content-bat">
+			<div class="mui-scroll">
+				<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+		        <li class="mui-table-view-cell">
+		            <div class="mui-table">
+		                <div class="mes-d-text">尊敬的客户您好，我司将从今日下午19点开始进行过临时维护，维护时间1小时，现已经维护完成，给你造成的不变，请您多多谅解呢，谢谢！</div>
+		                <div class="mui-text-right">
+		                    <span class="mui-h5">发布时间：2017-05-09 20:16:33</span>
+		                </div>
+		            </div>
+		        </li>
+		    </ul>
+            </div>
+	    </div>
+	<script src="js/mui.min.js"></script>
+	<script src="../../lottery-mobile/js/mui/mui.picker.min.js"></script>
+<script>
+	        mui.init();
+			var autoShow = true;
+			var aniShow = "pop-in";
+			var menu = null,
+				showMenu = false;
+			var isInTransition = false;
+			var _self;
+            //页面点击事件
+			mui('body').on('tap', 'a', function() {
+				var id = this.getAttribute("data-wid");
+				if(!id) {
+					id = this.getAttribute('href');
+				}
+				var href = this.getAttribute('href');
+
+				//非plus环境，直接走href跳转
+				if(!mui.os.plus){
+					location.href = href;
+					return;
+				}
+
+				var titleType = this.getAttribute("data-title-type");
+
+				var webview_style = {
+					popGesture: "close"
+				}
+				var extras = {};
+				if(titleType == "native") {
+					
+				} else if(href && ~href.indexOf('.html')) {
+                    var webview = plus.webview.create(this.href,id,webview_style,extras);
+					webview.addEventListener("titleUpdate",function () {
+						setTimeout(function () {
+							webview.show(aniShow,250);
+						},100);
+					});
+				}
+			});
+</script>
+		
+</body>
+
+    
+</html>

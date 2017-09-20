@@ -1,0 +1,366 @@
+
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>内容管理</span>
+        <span>/</span><span>收款账户</span>
+        <a href="javascript:void(0)" nav-target="mainFrame" class="m-l-sm btn btn-outline btn-default btn-xs co-gray6 return-btn"><em class="fa fa-caret-left"></em>返回</a>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow clearfix">
+            <div class="present_wrap m-b-lg"><b>预警设置</b></div>
+            <div class="form-group clearfix">
+                <label class="ft-bold col-sm-3 al-right line-hi34">安全范围：</label>
+                <div class="col-sm-5">
+                    <div class="input-group date">
+                        <span class="input-group-addon bg-gray">0% 至</span>
+                        <input type="text" class="form-control" placeholder="60">
+                        <span class="input-group-addon">%</span>
+                        <span class="input-group-addon adjust">
+                            <a href="javascript:void(0)" class="adjust up"><i class="fa fa-angle-up"></i></a>
+                            <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="ft-bold col-sm-3 al-right line-hi34">橙色预警：</label>
+                <div class="col-sm-5">
+                    <div class="input-group date">
+                        <span class="input-group-addon bg-gray">61% 至</span>
+                        <input type="text" class="form-control" placeholder="90">
+                        <span class="input-group-addon">%</span>
+                        <span class="input-group-addon adjust">
+                            <a href="javascript:void(0)" class="adjust up"><i class="fa fa-angle-up"></i></a>
+                            <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
+                        </span>
+                    </div>
+                    <div class="input-group date m-t-sm">
+                        <span class="input-group-addon bg-gray">提醒</span>
+                        <input type="text" class="form-control" placeholder="75">
+                        <span class="input-group-addon">%</span>
+                        <span class="input-group-addon adjust">
+                            <a href="javascript:void(0)" class="adjust up"><i class="fa fa-angle-up"></i></a>
+                            <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="ft-bold col-sm-3 al-right line-hi34">红色预警：</label>
+                <div class="col-sm-5">
+                    <div class="input-group date disabled">
+<!--                            <span class="input-group-addon bg-gray">60% 至</span>-->
+                        <input type="text" class="form-control" value="91% 至 99%" placeholder="" disabled>
+                        <span class="input-group-addon adjust">
+                            <a href="javascript:void(0)" class="adjust up"><i class="fa fa-angle-up"></i></a>
+                            <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
+                        </span>
+                    </div>
+                    <div class="input-group date m-t-sm">
+                        <span class="input-group-addon bg-gray">提醒</span>
+                        <input type="text" class="form-control" placeholder="93">
+                        <span class="input-group-addon">%</span>
+                        <span class="input-group-addon adjust">
+                            <a href="javascript:void(0)" class="adjust up"><i class="fa fa-angle-up"></i></a>
+                            <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="ft-bold col-sm-3 al-right"><span class="co-orange">橙色</span>预警提示方式：</label>
+                <div class="col-sm-5">
+                    <label><input type="radio" class="i-checks" name="fs1" checked>任务栏</label> 
+                    <label><input type="radio" class="i-checks" name="fs1">任务栏并弹窗</label>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="ft-bold col-sm-3 al-right"><span class="co-red3">红色</span>预警提示方式：</label>
+                <div class="col-sm-5">
+                    <label><input type="radio" class="i-checks" name="fs2" checked>任务栏</label> 
+                    <label><input type="radio" class="i-checks" name="fs2">任务栏并弹窗</label>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="ft-bold col-sm-3 al-right"><span class="co-black">账户冻结</span>提醒方式：</label>
+                <div class="col-sm-5">
+                    <label><input type="radio" class="i-checks" name="fs3" checked>任务栏</label> 
+                    <label><input type="radio" class="i-checks" name="fs3">任务栏并弹窗</label>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="ft-bold col-sm-3 al-right"><span class="co-blue">账户异常</span>提醒方式：</label>
+                <div class="col-sm-5">
+                    <label><input type="radio" class="i-checks" name="fs4" checked>任务栏</label> 
+                    <label><input type="radio" class="i-checks" name="fs4">任务栏并弹窗</label>
+                    <a href="javascript:void(0)" class="m-l-sm" data-toggle="modal" data-target="#upload">修改</a>
+                </div>
+            </div>
+
+            <div class="form-group clearfix line-hi34">
+                <label class="ft-bold col-sm-3 al-right">层级账户不足提醒方式：</label>
+                <div class="col-sm-5">
+                    <label><input type="checkbox" class="i-checks" checked>弹窗</label>
+                    <div class="m-l-lg" style="display: inline-block;">
+                    <span>不足个数：</span>
+                    <span>2</span>
+                    <a href="#" class="m-l-sm">修改</a>
+                    <span tabindex="0" class=" help-popover m-l-sm" role="button" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="玩家只可绑定已开通国家的银行卡" data-original-title="" title=""><i class="fa fa-question-circle"></i></span>
+                    </div>
+                </div>
+            </div> 
+            <div class="form-group clearfix line-hi34">
+                <label class="ft-bold col-sm-3 al-right">层级账户不足提醒方式：</label>
+                <div class="col-sm-5">
+                    <label><input type="checkbox" class="i-checks" checked>弹窗</label>
+                    <div class="m-l-lg" style="display: inline-block;">
+                    <span>不足个数：</span>
+                    <input type="text" class="form-control" style=" display: inline-block;
+    width: auto;">
+                    <span class="m-l-sm">建议2个</span>
+                    </div>
+                </div>
+            </div>            
+            
+            <div class="form-group clearfix line-hi34">
+                <label class="ft-bold col-sm-3 al-right">账户入款清零时间/天：</label>
+                <div class="col-sm-5 input-group">
+                    <span>2</span>
+                    <a href="#" class="m-l-sm">修改</a>
+                    <span tabindex="0" class=" help-popover m-l-sm" role="button" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="玩家只可绑定已开通国家的银行卡" data-original-title="" title=""><i class="fa fa-question-circle"></i></span>
+                </div>
+            </div>
+            <div class="form-group clearfix line-hi34">
+                <label class="ft-bold col-sm-3 al-right">账户入款清零时间/天：</label>
+                <div class="col-sm-5 input-group">
+                    <input type="text" class="form-control">
+                    <span class="input-group-addon bdn">&nbsp;&nbsp;建议1天</span>
+                </div>
+            </div>
+<!--
+            <div class="form-group clearfix line-hi34">
+                <label class="ft-bold col-sm-3 al-right">不足个数：</label>
+                <div class="col-sm-5">
+                    <span class="co-red3">2</span>
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#gsxg">修改</a>
+                    <span tabindex="0" class="help-popover" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top" data-content="当某层级状态为“使用中”的收款账户不足设置的值时，系统将进行弹窗提醒！建议设置为“2”"><i class="fa fa-question-circle"></i></span>
+                </div>
+            </div>
+            <div class="form-group clearfix line-hi34">
+                <label class="ft-bold col-sm-3 al-right">账户入款清零时间/天：</label>
+                <div class="col-sm-5">
+                    <span class="co-red3">1</span>
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#qlsj">修改</a>
+                    <span tabindex="0" class="help-popover" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top" data-content="如设置为1，则系统每天将对账户的存款次数和金额进行清零，清零后停用账户恢复使用；建议设置为“1”"><i class="fa fa-question-circle"></i></span>
+                </div>
+            </div>
+-->
+            <div class="operate-btn">
+                <button class="btn btn-filter btn-lg m-r">应用</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 m-t">
+        <div class="wrapper white-bg shadow clearfix">
+            <div class="present_wrap m-b"><b>预警记录</b></div>
+<!--
+            <div class="clearfix m-b limit_title_wrap">
+                <h3 class="limit_title cur">预警记录</h3>
+            </div>
+-->
+            <div class="clearfix">
+                <div class="col-xs-5">
+                    <div class="pull-left">
+                        <select class="chosen-select-no-single" data-placeholder="选择记录">
+                            <option value=""></option>
+                            <option value="1">今天</option>
+                            <option value="2">昨天</option>
+                            <option value="3">前天</option>
+                            <option value="4">本周</option>
+                            <option value="5">上周</option>
+                            <option value="6">本月</option>
+                            <option value="7">上月</option>
+                            <option value="8">近30天</option>
+                            <option value="9">近7天</option>
+                        </select>
+                    </div>
+                </div>
+<!--
+                <div class="col-xs-7">
+                    <div class="input-daterange input-group pull-right" id="datepicker">
+                      <input type="text" class="form-control" name="start" value="2014-05-14"/>
+                      <span class="input-group-addon">到</span>
+                      <input type="text" class="form-control" name="end" value="2014-05-22" />
+                    </div>
+                </div>
+-->
+            </div>
+            <hr class="m-t m-b-sm">
+            <ul class="warningRecord-wrap m-b">
+                <li class="warningRecord-list">
+                    <div class="warningRecord-addon"><span class="label label-filter">账户冻结</span></div>
+                    <div class="warningRecord-square"><div class="con">北京时间：2015-04-14 20:32:04 账户往鼻子专用159**94 今日累计入款金额离停用金额值已小于单笔存款下限，已被临时冻结！</div></div>
+                    <div class="warningRecord-addon">2015-04-14 20:32:05</div>
+                </li>
+                <li class="warningRecord-list">
+                    <div class="warningRecord-addon"><span class="label label-filter">账户冻结</span></div>
+                    <div class="warningRecord-square"><div class="con">北京时间：2015-04-14 20:32:04 账户往鼻子专用159**94 今日累计入款金额离停用金额值已小于单笔存款下限，已被临时冻结！</div></div>
+                    <div class="warningRecord-addon">2015-04-14 20:32:05</div>
+                </li>
+                <li class="warningRecord-list">
+                    <div class="warningRecord-addon"><span class="label label-filter">账户冻结</span></div>
+                    <div class="warningRecord-square"><div class="con">北京时间：2015-04-14 20:32:04 账户往鼻子专用159**94 今日累计入款金额离停用金额值已小于单笔存款下限，已被临时冻结！</div></div>
+                    <div class="warningRecord-addon">2015-04-14 20:32:05</div>
+                </li>
+                <li class="warningRecord-list">
+                    <div class="warningRecord-addon"><span class="label label-filter">账户冻结</span></div>
+                    <div class="warningRecord-square"><div class="con">北京时间：2015-04-14 20:32:04 账户往鼻子专用159**94 今日累计入款金额离停用金额值已小于单笔存款下限，已被临时冻结！</div></div>
+                    <div class="warningRecord-addon">2015-04-14 20:32:05</div>
+                </li>
+            </ul>
+            <div class="row bdtop3 p-b-xs">
+                <div class="col-sm-3 col-xs-6">
+                    <div class="pull-left">
+                      <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                        <option value=""></option>
+                        <option>每页20条</option>
+                        <option>每页30条</option>
+                        <option>每页40条</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="col-sm-9 col-xs-6">
+                    <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                        <div class="pull-right pages show-hide-1095 page-skip">
+                        <form class="form-inline">
+                          <label class="m-l-sm">共10页</label>
+                          <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                          <button class="btn btn-sm m-l-sm">跳转</button>
+                        </form>
+                        </div>
+                        <ul class="pagination pull-right">
+                            <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                            <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                            <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                            <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                            <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                            <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                            <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                            <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--层级账户不足个数修改-->
+<div class="modal inmodal" id="gsxg" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter">层级账户不足个数修改</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group clearfix m-b-xxs">
+                    <label class="col-xs-3  al-right line-hi34">不足个数：</label>
+                    <div class="col-xs-8 p-x">
+                        <input type="text" placeholder="1-10" class="form-control">
+                        <div class="line-hi25">建议2个</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary-hide">继续关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--账户异常参数修改-->
+<div class="modal inmodal" id="upload" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter">账户异常参数修改</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <input type="checkbox" class="i-checks">
+                    情况一：<span class="co-orange">X</span>小时内<span class="co-orange">X</span>个玩家对某收款账户失败达到<span class="co-orange">X</span>次时进行提醒
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-3  al-right line-hi34">时间：</label>
+                    <div class="col-xs-8 p-x">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-3  al-right line-hi34">玩家个数：</label>
+                    <div class="col-xs-8 p-x">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-3  al-right line-hi34">失败次数：</label>
+                    <div class="col-xs-8 p-x">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" class="i-checks">
+                    情况一：<span class="co-orange">X</span>小时内次某收款账号没有存款成功的订单时提醒
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-3  al-right line-hi34">时间：</label>
+                    <div class="col-xs-8 p-x">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-primary-hide">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--账户入款清零时间-->
+<div class="modal inmodal" id="qlsj" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter">账户入款清零时间</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group clearfix m-b-xxs">
+                    <label class="col-xs-3  al-right line-hi34">清零天数：</label>
+                    <div class="col-xs-8 p-x">
+                        <input type="text" placeholder="1-7" class="form-control">
+                        <div class="line-hi25">建议1天</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary-hide">继续关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>
+<script src="../../../common/js/flot/jquery.flot.tooltip.min.js"></script>
+<script>
+    $('.help-popover').popover()
+</script>
+<script>
+   
+    $("#file-0").fileinput({
+        'allowedFileExtensions' : ['jpg', 'png','gif'],
+    });
+</script>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/blue/ued/style.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui-icon-extra.css" />
+</head>
+
+<body class="gb-theme mine-page no-backdrop">
+    <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+        <!-- 主页面容器 -->
+        <div class="mui-inner-wrap">
+            <header class="mui-bar mui-bar-nav">
+                <a class="mui-action-back mui-icon mui-icon mui-icon-left-nav mui-pull-left"></a>
+                <h1 class="mui-title" data-href="mine-my-promo-records.html">优惠记录</h1>
+                <a class="mui-action-back mui-icon mui-icon mui-pull-right icon-gift"><i></i></a>
+            </header>
+            <div class="mui-content mui-scroll-wrapper">
+                <div class="mui-scroll">
+                    <div class="mui-row">
+                        <div class="gb-headtabs">
+                            <div id="segmentedControl" class="mui-segmented-control">
+                                <a class="mui-control-item mui-active"><i></i>进行中活动</a>
+                                <a class="mui-control-item"><i></i>活动历史</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mui-row">
+                        <div class="gb-panel">
+                            <div class="gb-select">
+                                <div class="gb-imgs">
+                                    <div class="hd">
+                                        <div class="gb-select">
+                                            <a href="#popover">活动类别
+                                                <i class="mui-icon mui-icon-arrowdown"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ct">
+                                        <ul>
+                                            <li>
+                                                <a href=""><img src="../../mobile-v2/images/img-sale1.jpg" alt=""></a>
+                                            </li>
+                                            <li>
+                                                <a href=""><img src="../../mobile-v2/images/img-sale2.jpg" alt=""></a>
+                                            </li>
+                                            <li>
+                                                <a href=""><img src="../../mobile-v2/images/img-sale3.jpg" alt=""></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-off-canvas-backdrop"></div>
+        </div>
+    </div>
+</body>
+
+<script src="../../mobile-v2/js/mui/mui.js"></script>
+<script src="../../mobile-v2/js/zepto/zepto.min.js"></script>
+<script src="../../mobile-v2/js/common/main.js"></script>
+
+<div id="popover" class="mui-popover mui-popover-action mui-popover-bottom gb-popover">
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell">
+            <a href="#">网银存款</a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a href="#">柜员机现金存款</a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a href="#">柜员机转账</a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a href="#">银行柜台存款</a>
+        </li>
+    </ul>
+</div>
+
+
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Perfect Lottery</title>
+    <link href="../../lottery-mobile/themes/mui.min.css" rel="stylesheet"/>
+    <link href="../../lottery-mobile/themes/style.css" rel="stylesheet"/>
+    <link href="../../lottery-mobile/themes/skin/orange/style.css" rel="stylesheet"/>
+    <!--App自定义的css-->
+	<link href="../../lottery-mobile/themes/mui.picker.min.css" rel="stylesheet" />
+    </head>
+<body class="orange-skin">
+	<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+		<aside id="offCanvasSideRight" class="mui-off-canvas-right diy-screen-aside">
+			<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+				<div class="mui-input-group">
+					<div class="mui-input-row diy-screen-title">
+						<span>自定义</span>
+					</div>
+					<div class="mui-input-row">
+						<label>开奖时间:</label>
+						<input id="demo1" class="result" type="text" value="2017-05-29 09:36" readonly>
+					</div>
+					<div class="mui-input-row">
+						<label>结束时间:</label>
+						<input id="demo2" class="result" type="text" value="2017-05-29 09:37" readonly>
+					</div>
+					<div class="mui-input-row">
+						<label>彩种类型:</label>
+						<input id="showUserPicker" class="result" type="text" value="重庆时时彩" readonly>
+					</div>
+					<div class="mui-input-row">
+						<label>状态:</label>
+						<input id="showUserPicker1" class="result" type="text" value="未中奖" readonly>
+					</div>
+					</div>
+				<div class="p-1r">
+				    <button type="button" class="mui-btn mui-btn-danger mui-btn-block">筛选</button>
+				</div>
+			</div>
+		</aside>
+		<div class="mui-inner-wrap">
+	    <header class="mui-bar mui-bar-top mui-bar-nav">
+	    	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    	<h1 class="mui-title">投注记录</h1>
+	    	<div class="mui-pull-right bar-top-l-h">
+	    		<a href="index.html" class="top-bar-btn n-broder mui-action-menu iconfont icon-home"></a>
+	        </div>
+	    </header>
+	    <nav class="mui-bar mui-bar-tab tab-wv-bar">
+			<a id="defaultTab" class="mui-tab-item mui-active" href="tab-webview-bet-today.html">
+				<span class="mui-tab-label">今日</span>
+			</a>
+			<a class="mui-tab-item" href="tab-webview-bet-ytd.html">
+				<span class="mui-tab-label">昨日</span>
+			</a>
+			<a class="mui-tab-item" href="tab-webview-bet-month.html">
+				<span class="mui-tab-label">本月</span>
+			</a>
+			<a class="mui-tab-item diy-tab-btn" href="#offCanvasSideRight">
+				<span class="mui-tab-label">自定义</span>
+			</a>
+		</nav>
+		<div class="mui-bar mui-bar-tab bet-bottom">
+			<div class="bet-bottom-statistics">
+			 当前小计<span>856</span>元，总计<span>856</span>元，当前盈亏<span>125.565</span>元，总盈亏<span>125.565</span>元
+		    </div>
+		</div>
+		<div class="mui-off-canvas-backdrop"></div>
+		</div>
+	</div>	
+	<script src="../../lottery-mobile/js/mui/mui.min.js"></script>
+	<script src="../../lottery-mobile/js/mui/mui.pullToRefresh.js"></script>
+	<script src="../../lottery-mobile/js/mui/mui.pullToRefresh.material.js"></script>
+	<script src="../../lottery-mobile/js/mui/mui.picker.min.js"></script>
+	<script src="../../lottery-mobile/js/mui/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+			 //mui初始化
+			mui.init();
+			var subpages = ['tab-webview-bet-today.html', 'tab-webview-bet-ytd.html', 'tab-webview-bet-month.html'];
+			var subpage_style = {
+				top: '115px',
+				bottom: '51px'
+			};
+			var aniShow = "pop-in";
+			
+			 //创建子页面，首个选项卡页面显示，其它均隐藏；
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				for (var i = 0; i < 4; i++) {
+					var temp = {};
+					var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
+					if (i > 0) {
+						sub.hide();
+					}else{
+						temp[subpages[i]] = "true";
+						mui.extend(aniShow,temp);
+					}
+					self.append(sub);
+				}
+			});
+			 //当前激活选项
+			var activeTab = subpages[0];
+			var title = document.getElementById("title");
+			 //选项卡点击事件
+			mui('.mui-bar-tab').on('tap', 'a', function(e) {
+				var targetTab = this.getAttribute('href');
+				if (targetTab == activeTab) {
+					return;
+				}
+				//更换标题
+//				title.innerHTML = this.querySelector('.mui-tab-label').innerHTML;
+				//显示目标选项卡
+				//若为iOS平台或非首次显示，则直接显示
+				if(mui.os.ios||aniShow[targetTab]){
+					plus.webview.show(targetTab);
+				}else{
+					//否则，使用fade-in动画，且保存变量
+					var temp = {};
+					temp[targetTab] = "true";
+					mui.extend(aniShow,temp);
+					plus.webview.show(targetTab,"pop-in",300);
+				}
+				//隐藏当前;
+				plus.webview.hide(activeTab);
+				//更改当前活跃的选项卡
+				activeTab = targetTab;
+			});
+			 //自定义事件，模拟点击“首页选项卡”
+			document.addEventListener('gohome', function() {
+				var defaultTab = document.getElementById("defaultTab");
+				//模拟首页点击
+				mui.trigger(defaultTab, 'tap');
+				//切换选项卡高亮
+				var current = document.querySelector(".mui-bar-tab>.mui-tab-item.mui-active");
+				if (defaultTab !== current) {
+					current.classList.remove('mui-active');
+					defaultTab.classList.add('mui-active');
+				}
+			});
+			(function($) {
+				$.init();
+				var btns1 = $('#demo1');
+				var btns2 = $('#demo2');
+				btns1.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var result = $('.result')[0];
+						var optionsJson = this.getAttribute('data-options') || '{}';
+						var options = JSON.parse(optionsJson);
+						var id = this.getAttribute('id');
+						var picker = new $.DtPicker(options);
+						picker.show(function(rs) {
+							
+							result.value = rs.text;
+							
+							picker.dispose();
+						});
+					}, false);
+				});
+				btns2.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var result = $('.result')[1];
+						var optionsJson = this.getAttribute('data-options') || '{}';
+						var options = JSON.parse(optionsJson);
+						var id = this.getAttribute('id');
+						var picker = new $.DtPicker(options);
+						picker.show(function(rs) {
+							
+							result.value = rs.text;
+							
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui);
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+					//普通示例
+					var userPicker = new $.PopPicker();
+					userPicker.setData([{
+						text: '重庆时时彩'
+					}, {
+						text: '香港六合彩'
+					}, {
+						text: '北京PK拾'
+					},{
+						text: '天津时时彩'
+					},{
+						text: '新疆时时彩'
+					},{
+						text: '江苏快3'
+					}
+					]);
+					var showUserPickerButton = doc.getElementById('showUserPicker');
+					showUserPickerButton.addEventListener('tap', function(event) {
+						userPicker.show(function(items) {
+							showUserPickerButton.value = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false)
+				});
+			})(mui, document);
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+					//普通示例
+					var userPicker = new $.PopPicker();
+					userPicker.setData([{
+						text: '任意'
+					}, {
+						text: '未结算'
+					}, {
+						text: '已中奖'
+					},{
+						text: '未中奖'
+					}
+					]);
+					var showUserPickerButton = doc.getElementById('showUserPicker1');
+					showUserPickerButton.addEventListener('tap', function(event) {
+						userPicker.show(function(items) {
+							showUserPickerButton.value = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false)
+				});
+			})(mui, document);
+
+		</script>
+		
+</body>
+
+    
+</html>

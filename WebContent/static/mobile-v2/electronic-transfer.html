@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui-icon-extra.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/default/style.css" />
+</head>
+
+<body class="gb-theme index e-transfer">
+	<!--头部-->
+    <header class="mui-bar mui-bar-nav">
+        <div class="mui-pull-left">
+        	<a href="index.html"><span class="mui-icon mui-icon-back"></span></a>           
+        </div>
+        <div class="mui-pull-right">
+           <a href="electronic-game-page.html" class="btn-allgame">全部游戏</a>
+        </div>
+    </header>
+
+    <!--滚动区域-->
+    <div class="mui-content mui-scroll-wrapper mui-fullscreen">
+        <div class="mui-scroll">
+            <div class="gb-fullpage">
+      			<!-- banner -->
+      			<div class="e-banner">
+      				<img src="../../mobile-v2/images/electronic-transfer-banner.png" width="100%" alt="">
+      			</div>
+      			<!-- 游戏项 -->
+      			<div class="game-item">
+      				<div class="mui-row">
+						<div class="mui-pull-left">
+							<span class="icon-hobby-1-3">
+								<!--<img src="../../mobile-v2/images/api/round/1-3.png" width="100%" alt="">-->
+								<span class="api-icon api-icon-1-7"></span>
+							</span>
+						</div>
+						<div class="mui-pull-left game-detail">
+							<h1>澳门威尼斯人</h1>
+							<div class="g-money">
+								<div class="login-status">
+								   <span class="rmb-c">RMB</span>200.25 <span class="icon-refresh"></span>
+								</div>
+								<div class="unlogin-status mui-hide">
+									<a href="login">登陆查看余额</a>
+								</div>
+							</div>
+						</div>      					
+      				</div>
+
+      			</div>
+      			<!-- 操作按钮组 -->
+      			<div class="e-btn-group">
+      				<div class="mui-row">
+      					<div class="mui-col-xs-4">
+      						<div class="e-btn btn-in"></div>
+      						<div class="txt">额度转入</div>
+      					</div>
+      					<div class="mui-col-xs-4">
+      						<a href="electronic-game-page.html">
+	      						<div class="e-btn btn-start-game"></div>
+	      						<div class="txt">开始游戏</div>      							
+      						</a>
+
+      					</div>
+      					<div class="mui-col-xs-4">
+      						<div class="e-btn btn-out"></div>
+      						<div class="txt">额度转出</div>
+      					</div>
+      				</div>
+      			</div>
+      			<!-- 游戏描述 -->
+      			<div class="game-description">
+      				<p>澳门威尼斯人深受客户喜爱，亚洲最大盘房一起研发，足球1.95超高水，体育项目最低返水0.38%，最低投注额只需5元，即可玩转每月最新最全热门，万场赛事，让您体验最强滚球平台！篮球额外返水0.22%，网球、排球、F1赛车、金融投注、多种特殊项目！手机投注，操作简单，支持多种在线存款方式，方便查询所有赛果，让您随时随地享受最便捷玩转体育！</p>
+      			</div>
+            </div>           
+    </div>
+
+</div>
+
+</body>
+<script src="../../mobile-v2/js/mui/mui.js"></script>
+<script src="../../mobile-v2/js/jquery/jquery-2.1.1.js"></script>
+<script type="text/javascript">
+	/*内容区域滚动*/
+	mui('.mui-content.mui-scroll-wrapper').scroll({
+		 scrollY: true, //是否竖向滚动
+		 scrollX: false, //是否横向滚动
+		 startX: 0, //初始化时滚动至x
+		 startY: 0, //初始化时滚动至y
+		 indicators: false, //是否显示滚动条
+		 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+		 bounce: true //是否启用回弹
+	});
+	/*金额转入弹窗*/
+	$('.btn-in').click(function(){
+		mui.prompt("","¥",'转入金额',['确认','取消'],null,'div');
+		$('.mui-popup').addClass('money-window');	
+	});
+	/*金额转出弹窗*/
+	$('.btn-out').click(function(){
+		mui.prompt("","¥",'转出金额',['确认','取消'],null,'div');
+		$('.mui-popup').addClass('money-window');		
+	});
+
+</script>
+
+
+
+</html>

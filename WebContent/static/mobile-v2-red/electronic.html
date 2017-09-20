@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/red/bbin/style.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui-icon-extra.css" />
+</head>
+
+<body class="gb-theme">
+    <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+        <!-- 主页面容器 -->
+        <div class="mui-inner-wrap">
+            <header class="mui-bar mui-bar-nav">
+                <div class="mui-pull-left">
+                    <div class="logo"><img src="../../mobile-v2/images/logo.png" alt=""></div>
+                </div>
+                <div class="mui-pull-right">
+                    <div class="user">
+                       <a href="" class="btn mui-btn mui-btn-outlined" data-href="login.html">登录</a>
+                        <a href="" class="btn mui-btn mui-btn-outlined" data-href="register.html">注册</a>
+                    </div>
+                </div>
+            </header>
+            <!--底部-->
+            <nav class="mui-bar mui-bar-tab">
+                <a class="mui-tab-item" data-href="live.html">
+                    <span class="mui-icon icon1"></span>
+                    <span class="mui-tab-label">首页</span>
+                </a>
+                <a class="mui-tab-item" data-href="mine-deposit.html">
+                    <span class="mui-icon icon2"></span>
+                    <span class="mui-tab-label">存款</span>
+                </a>
+                <a class="mui-tab-item" data-href="mine-exchange.html">
+                    <span class="mui-icon icon3"></span>
+                    <span class="mui-tab-label">转帐</span>
+                </a>
+                <a class="mui-tab-item">
+                    <span class="mui-icon icon4"></span>
+                    <span class="mui-tab-label">客服</span>
+                </a>
+                <a class="mui-tab-item" data="mine-mine.html">
+                    <span class="mui-icon icon5"></span>
+                    <span class="mui-tab-label" data-href="mine-mine.html">我的</span>
+                </a>
+            </nav>
+            <div class="mui-content mui-scroll-wrapper" id="has-searchbox">
+                <div class="mui-scroll">
+                    <div class="mui-row">
+                        <div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted gb-homemenu"><i></i>
+                            <div id="menu-slider" class="mui-slider" >
+                                <div class="mui-slider-group">
+                                    <div class="mui-slider-item">
+                                        <a class="mui-control-item ico1" data-href="live.html">
+                                            真人
+                                        </a>
+                                        <a class="mui-control-item ico2" data-href="electronic.html">
+                                            电子
+                                        </a>
+                                        <a class="mui-control-item ico3" data-href="lottery.html">
+                                            彩票
+                                        </a>
+                                        <a class="mui-control-item ico4" data-href="sports.html">
+                                            体育
+                                        </a>
+                                        <a class="mui-control-item ico5">
+                                            优惠
+                                        </a>
+                                    </div>
+                                    <div class="mui-slider-item">
+                                        <a class="mui-control-item ico6" data-href="about.html">
+                                            代理
+                                        </a>
+                                        <a class="mui-control-item ico7" data-href="about.html">
+                                            关于
+                                        </a>
+                                        <a class="mui-control-item ico8" data-href="about.html">
+                                            条款
+                                        </a>
+                                        <a class="mui-control-item ico9" >
+                                            电脑版
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mui-row">
+                        <div class="gb-banner"><a href="" class="mui-icon mui-icon-closeempty"></a>
+                            <div class="ct">
+                                <div id="slider" class="mui-slider" >
+                                    <div class="mui-slider-group mui-slider-loop">
+                                        <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+                                        <div class="mui-slider-item mui-slider-item-duplicate">
+                                            <a href=""><img src="../../mobile-v2/images/lottery-ban1.jpg" alt=""></a>
+                                        </div>
+                                        <!-- 第一张 -->
+                                        <div class="mui-slider-item">
+                                            <a href=""><img src="../../mobile-v2/images/lottery-ban1.jpg" alt=""></a>
+                                        </div>
+                                        <!-- 第二张 -->
+                                        <div class="mui-slider-item">
+                                            <a href=""><img src="../../mobile-v2/images/lottery-ban1.jpg" alt=""></a>
+                                        </div>
+                                        <!-- 第三张 -->
+                                        <div class="mui-slider-item">
+                                            <a href=""><img src="../../mobile-v2/images/lottery-ban1.jpg" alt=""></a>
+                                        </div>
+                                        <!-- 第四张 -->
+                                        <div class="mui-slider-item">
+                                            <a href=""><img src="../../mobile-v2/images/lottery-ban1.jpg" alt=""></a>
+                                        </div>
+                                        <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+                                        <div class="mui-slider-item mui-slider-item-duplicate">
+                                            <a href=""><img src="../../mobile-v2/images/lottery-ban1.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="mui-slider-indicator">
+                                        <div class="mui-indicator mui-active"></div>
+                                        <div class="mui-indicator"></div>
+                                        <div class="mui-indicator"></div>
+                                        <div class="mui-indicator"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mui-row">
+                        <div class="gb-notice">
+                            <button type="button" class="mui-pull-left mui-btn mui-btn-danger mui-btn-outlined">
+                                公告
+                            </button>
+                            <ul class="mui-list-unstyled gb-notice-list">
+                                <li>
+                                    <marquee behavior="scroll" scrollamount="2" direction="left">
+                                        <p>
+                                            <a href="">尊敬的用户您好！本站于20161206进行升级！</a>
+                                        </p>
+                                    </marquee>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mui-row">
+                        <div class="electronic-srch"><a href=""></a>
+                            <input type="text" placeholder="输入游戏名">
+                        </div>
+                    </div>
+                    <div class="mui-row">
+                        <div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted electronic-type"><i></i>
+                            <div id="type-slider" class="mui-slider" >
+                                <div class="mui-slider-group">
+                                    <div class="mui-slider-item">
+                                        <a href="#elec1" class="mui-control-item mui-active">
+                                            <img src="../../mobile-v2/images/api/api-casino-3.png" alt="">
+                                            真人
+                                        </a>
+                                        <a href="#elec2" class="mui-control-item">
+                                            <img src="../../mobile-v2/images/api/api-casino-9.png" alt="">
+                                            AG电子
+                                        </a>
+                                        <a href="#elec3" class="mui-control-item">
+                                            <img src="../../mobile-v2/images/api/api-casino-6.png" alt="">
+                                            PT电子
+                                        </a>
+                                    </div>
+                                    <div class="mui-slider-item">
+                                        <a href="#elec4" class="mui-control-item">
+                                            <img src="../../mobile-v2/images/api/api-casino-3.png" alt="">
+                                            真人
+                                        </a>
+                                        <a href="#elec5" class="mui-control-item">
+                                            <img src="../../mobile-v2/images/api/api-casino-9.png" alt="">
+                                            AG电子
+                                        </a>
+                                        <a href="#elec6" class="mui-control-item">
+                                            <img src="../../mobile-v2/images/api/api-casino-6.png" alt="">
+                                            PT电子
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="elec1" class="mui-control-content mui-active">
+                        <div class="mui-row">
+                            <div class="electronic-list">
+                                <div class="mui-row">
+                                    <div class="mui-col-xs-3">
+                                        <a target="_blank" data-href="404.html" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item1.png" alt=""></p>
+                                            <p>大标题超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item2.png" alt=""></p>
+                                            <p>一行五个字</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item3.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item4.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item5.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item6.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item7.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item8.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item1.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item2.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item3.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item4.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item5.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item6.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item7.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item8.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="elec2" class="mui-control-content mui-active">
+                        <div class="mui-row">
+                            <div class="electronic-list">
+                                <div class="mui-row">
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item1.png" alt=""></p>
+                                            <p>2超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item2.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item3.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item4.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item5.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item6.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item7.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item8.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item1.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item2.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item3.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item4.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item5.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item6.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item7.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                    <div class="mui-col-xs-3">
+                                        <a href="" class="item">
+                                            <p><img src="../../mobile-v2/images/electronic-item8.png" alt=""></p>
+                                            <p>超级男孩</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="elec3" class="mui-control-content mui-active">
+                    </div>
+                    <div id="elec4" class="mui-control-content mui-active">
+                    </div>
+                    <div id="elec5" class="mui-control-content mui-active">
+                    </div>
+                    <div id="elec6" class="mui-control-content mui-active">
+                    </div>
+                </div>
+            </div>
+            <div class="mui-off-canvas-backdrop"></div>
+        </div>
+    </div>
+</body>
+<script src="../../mobile-v2/js/mui/mui.js"></script>
+<script src="../../mobile-v2/js/zepto/zepto.min.js"></script>
+<script src="../../mobile-v2/js/common/main.js"></script>
+<div class="masker trans masker-notice-box"></div>
+<div class="gb-notice-box">
+    <div class="hd"><p>公告</p></div>
+    <div class="ct">
+        <div id="slider" class="mui-slider" >
+            <div class="mui-slider-group mui-slider-loop">
+                <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                    <p>3尊敬的用记你好，由于建设行银行年度系统维护，于2016-11-02至2016-11-05之间，暂停一切建设网银交易服务，不便之处敬请谅解！</p>
+                </div>
+                <!-- 第一张 -->
+                <div class="mui-slider-item">
+                    <p>1尊敬的用记你好，由于建设行银行年度系统维护，于2016-11-02至2016-11-05之间，暂停一切建设网银交易服务，不便之处敬请谅解！</p>
+                </div>
+                <!-- 第二张 -->
+                <div class="mui-slider-item">
+                    <p>2尊敬的用记你好，由于建设行银行年度系统维护，于2016-11-02至2016-11-05之间，暂停一切建设网银交易服务，不便之处敬请谅解！</p>
+                </div>
+                <!-- 第三张 -->
+                <div class="mui-slider-item">
+                    <p>3尊敬的用记你好，由于建设行银行年度系统维护，于2016-11-02至2016-11-05之间，暂停一切建设网银交易服务，不便之处敬请谅解！</p>
+                </div>
+                <!-- 第四张 -->
+                <div class="mui-slider-item">
+                    <p>4尊敬的用记你好，由于建设行银行年度系统维护，于2016-11-02至2016-11-05之间，暂停一切建设网银交易服务，不便之处敬请谅解！</p>
+                </div>
+                <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                    <p>1尊敬的用记你好，由于建设行银行年度系统维护，于2016-11-02至2016-11-05之间，暂停一切建设网银交易服务，不便之处敬请谅解！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</html>

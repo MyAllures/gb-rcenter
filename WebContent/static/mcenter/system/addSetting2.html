@@ -1,0 +1,149 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>系统设置</span><span>/</span><span>站点参数</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow">
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                <ul class="clearfix sys_tab_wrap">
+                    <li><a href="system/setting.html" nav-target="mainFrame">基本设置</a></li>
+                    <li class="active"><a href="system/setting2.html" nav-target="mainFrame">注册设置</a></li>
+                    <li><a href="system/setting3.html" nav-target="mainFrame">客服参数</a></li>
+                    <li><a href="system/setting4.html" nav-target="mainFrame">站点开关</a></li>
+                    <li><a href="system/setting5.html" nav-target="mainFrame">验证码设置</a></li>
+                </ul>
+                <h3 class="bg-gray system_site_title m-b-md">新增注册项</h3>
+                <form action="">
+                    <div class="form-group clearfix">
+                        <label class="ft-bold col-sm-3 al-right line-hi34">注册项名称<span class="m-l-xs"><i class="fa fa-question-circle"></i></span>：</label>
+                        <div class="col-sm-5">
+                            <div class="input-group date m-b-sm">
+                                <span class="input-group-addon">简体中文</span>
+                                <input type="text" class="form-control">
+                                <span class="input-group-addon bdn"><span class="co-yellow m-l-sm">*</span></span>
+                            </div>
+                            <div class="input-group date m-b-sm">
+                                <span class="input-group-addon">繁体中文</span>
+                                <input type="text" class="form-control">
+                                <span class="input-group-addon bdn"><span class="co-yellow m-l-sm">*</span></span>
+                            </div>
+                            <div class="input-group date m-b-sm">
+                                <span class="input-group-addon">英文</span>
+                                <input type="text" class="form-control">
+                                <span class="input-group-addon bdn"><span class="co-yellow m-l-sm">*</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="ft-bold col-sm-3 al-right line-hi34">表单类型<span class="m-l-xs"><i class="fa fa-question-circle"></i></span>：</label>
+                        <div class="col-sm-5">
+                            <select class="chosen-select-no-single" data-placeholder="文本">
+                                <option value=""></option>
+                                <option value="1">文本1</option>
+                                <option value="2">文本2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="ft-bold col-sm-3 al-right line-hi34">字符限制：</label>
+                        <div class="col-sm-5">
+                            <div class="input-group col-xs-9 p-x" id="datepicker">
+                                <div class="input-group m-r-sm" id="datepicker">
+                                    <input type="text" class="form-control" name="start" placeholder="1">
+                                    <span class="input-group-addon adjust">
+                                        <a href="javascript:void(0)" class="adjust up"><i class="fa fa-angle-up"></i></a>
+                                        <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
+                                    </span>
+                                </div>
+                                <span class="input-group-addon bdn">至</span>
+                                <div class="input-group m-l-sm" id="datepicker">
+                                    <input type="text" class="form-control" name="end" placeholder="255">
+                                    <span class="input-group-addon adjust">
+                                        <a href="javascript:void(0)" class="adjust up"><i class="fa fa-angle-up"></i></a>
+                                        <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="ft-bold col-sm-3 al-right line-hi34">表单类型：</label>
+                        <div class="col-sm-5">
+                            <select class="chosen-select-no-single" data-placeholder="单选">
+                                <option value=""></option>
+                                <option value="1">单选</option>
+                                <option value="2">多选</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="ft-bold col-sm-3 al-right line-hi34"></label>
+                        <div class="col-sm-5">
+                            <ul class="middle-img-list">
+                                <li>
+                                    <div class="tit">选项1<a href="javascript:void(0)" class="co-gray"><i class="fa fa-times"></i></a></div>
+                                    <div class="input-group date m-b-sm">
+                                        <span class="input-group-addon">简体中文</span>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="input-group date m-b-sm">
+                                        <span class="input-group-addon">繁体中文</span>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="input-group date m-b-sm">
+                                        <span class="input-group-addon">英文</span>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tit">选项2<a href="javascript:void(0)" class="co-gray"><i class="fa fa-times"></i></a></div>
+                                    <div class="input-group date m-b-sm">
+                                        <span class="input-group-addon">简体中文</span>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="input-group date m-b-sm">
+                                        <span class="input-group-addon">繁体中文</span>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="input-group date m-b-sm">
+                                        <span class="input-group-addon">英文</span>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </li>
+                                <li><a href="javascript:void(0)">+ 新增表单类型</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix line-hi34">
+                        <label class="ft-bold col-sm-3 al-right">必填：</label>
+                        <div class="col-sm-5">
+                            <label class="m-r-sm"><input type="radio" class="i-checks"> 是</label>
+                            <label class="m-r-sm"><input type="radio" class="i-checks"> 否</label>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix line-hi34">
+                        <label class="ft-bold col-sm-3 al-right">设为注册项：</label>
+                        <div class="col-sm-5">
+                            <label class="m-r-sm"><input type="radio" class="i-checks"> 是</label>
+                            <label class="m-r-sm"><input type="radio" class="i-checks"> 否</label>
+                            <span class="m-l-xs"><i class="fa fa-question-circle"></i></span>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix line-hi34">
+                        <label class="ft-bold col-sm-3 al-right">添加到搜索：</label>
+                        <div class="col-sm-5">
+                            <label class="m-r-sm"><input type="radio" class="i-checks"> 是</label>
+                            <label class="m-r-sm"><input type="radio" class="i-checks"> 否</label>
+                            <span class="m-l-xs"><i class="fa fa-question-circle"></i></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>

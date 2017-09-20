@@ -1,0 +1,419 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>系统设置</span><span>/</span><span>注册参数</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow">
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                <ul class="clearfix sys_tab_wrap">
+                    <li><a href="system/setting2.html" nav-target="mainFrame">玩家注册设置</a></li>
+                    <li class="active"><a href="system/setting2-1.html" nav-target="mainFrame">代理注册设置</a></li>
+                </ul>
+                <div class="filter-wraper clearfix p-xs line-hi34">
+                    <!-- <a type="button" href="system/setting2.html" nav-target="mainFrame" class="btn btn-primary-hide">玩家注册</a>
+                    <a type="button" href="system/setting2-1.html" nav-target="mainFrame" class="btn btn-filter">代理注册</a> -->
+                    <button type="button" class="btn btn-outline btn-filter pull-right"data-toggle="modal" data-target="#verify"><i class="fa fa-gear"></i> 玩家注册设置</buttom>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable" aria-describedby="editable_info">
+                        <thead>
+                            <tr class="bg-gray">
+                                <th class="co-yellow">可拖拽排序</th>
+                                <th>注册项目名称</th>
+                                <th>是否必填</th>
+                                <th>设为注册项</th>
+                                <th>是否启用</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>注册码<!--<span tabindex="0" class=" help-popover m-l-sm" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="HTC0023"><i class="fa fa-question-circle"></i></span>--></td>
+                                <td>默认必填</td>
+                                <td>默认注册项</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>用户名<!--<span tabindex="0" class=" help-popover m-l-sm" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="后缀@zh"><i class="fa fa-question-circle"></i></span>--></td>
+                                <td>默认必填</td>
+                                <td>默认注册项</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>登录密码</td>
+                                <td>默认必填</td>
+                                <td>默认注册项</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>时区</td>
+                                <td>默认必填</td>
+                                <td>默认注册项</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>验证码</td>
+                                <td>默认必填</td>
+                                <td>默认注册项</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>手机号</td>
+                                <td class="co-green">是</td>
+                                <td class="co-green">是 <span class="co-grayc2">(注册时验证)</span></td>
+                                <td></td>
+                               
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>邮箱</td>
+                                <td>否</td>
+                                <td class="co-green">是 <span class="co-grayc2">(注册时验证)</span></td>
+                                <td></td>
+                               
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>主语言<!--<span tabindex="0" class=" help-popover m-l-sm" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="玩家在接收消息或公告时将以玩家设置的主语言版本来展示"><i class="fa fa-question-circle"></i></span>--></td>
+                                <td class="co-green">是</td>
+                                <td class="co-green">是</td>
+                                <td></td>
+                                
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>主货币<!--<span tabindex="0" class=" help-popover m-l-sm" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="玩家钱包余额将以主货币的货币兑换率来展示，方便玩家查看。如玩家将主货币设置为人民币，设美元与人民币的兑换率为1：6.8，则玩家存款1美元时，钱包展示6.8."><i class="fa fa-question-circle"></i></span>--></td>
+                                <td class="co-green">是</td>
+                                <td class="co-green">是</td>
+                                <td></td>
+                                
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>国家地区</td>
+                                <td class="co-green">是</td>
+                                <td>否</td>
+                                <td></td>
+                                
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>支付密码</td>
+                                <td class="co-green">是</td>
+                                <td class="co-green">是</td>
+                                <td></td>
+                                
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>真实姓名<span tabindex="0" class=" help-popover m-l-sm" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="真实姓名用于绑定银行卡，设定后玩家不可自行修改"><i class="fa fa-question-circle"></i></span></td>
+                                <td class="co-green">是</td>
+                                <td class="co-green">是</td>
+                                <td></td>
+                                
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>安全问题</td>
+                                <td class="co-green">是</td>
+                                <td>否</td>
+                                <td></td>
+                                
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>推广资源</td>
+                                <td class="co-green">是</td>
+                                <td>否</td>
+                                <td></td>
+                                
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>昵称</td>
+                                <td class="co-green">是</td>
+                                <td class="co-green">是</td>
+                                <td><span  title="点击应用后才能生效"><input type="checkbox" name="my-checkbox" data-size="mini" checked></span></td>
+                                
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>性别</td>
+                                <td class="co-green">是</td>
+                                <td class="co-green">是</td>
+                                <td><span  title="点击应用后才能生效"><input type="checkbox" name="my-checkbox" data-size="mini" checked></span></td>
+                                
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>生日</td>
+                                <td class="co-green">是</td>
+                                <td class="co-green">是</td>
+                                <td><span  title="点击应用后才能生效"><input type="checkbox" name="my-checkbox" data-size="mini" checked></span></td>
+                                
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>星座</td>
+                                <td>否</td>
+                                <td class="co-green">是</td>
+                                <td><span  title="点击应用后才能生效"><input type="checkbox" name="my-checkbox" data-size="mini" checked></span></td>
+                                
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>SKYPE</td>
+                                <td class="co-green">是</td>
+                                <td class="co-green">是</td>
+                                <td><span  title="点击应用后才能生效"><input type="checkbox" name="my-checkbox" data-size="mini" checked></span></td>
+                               
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>MSN</td>
+                                <td class="co-green">是</td>
+                                <td class="co-green">是</td>
+                                <td><span  title="点击应用后才能生效"><input type="checkbox" name="my-checkbox" data-size="mini" checked></span></td>
+                                
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>QQ</td>
+                                <td class="co-green">是</td>
+                                <td class="co-green">是</td>
+                                <td><span  title="点击应用后才能生效"><input type="checkbox" name="my-checkbox" data-size="mini" checked></span></td>
+                                
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-arrows"></i></td>
+                                <td>服务条款</td>
+                                <td class="co-green">是</td>
+                                <td class="co-green">是</td>
+                                
+                                <td>
+                                    <a href="system/setting2Edit.html" nav-target="mainFrame">编辑</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--<div class="bdtop3"></div>-->
+<!--                    <button class="btn btn-sm m-l-sm"><i class="fa fa-plus"></i> 新增注册项</button>-->
+                    <!--<a href="addSetting2.html" class="btn btn-sm m-l-sm bg-gray" nav-target="mainFrame"><i class="fa fa-plus"></i> 新增注册项</a>-->
+                </div>
+            </div>
+            <div class="operate-btn">
+                   <a href="javascript:void(0)" class="btn btn-filter btn-lg">应用</a>
+                </div>
+        </div>
+        
+    </div>
+    
+</div>
+
+<!--玩家注册限制-->
+<div class="modal inmodal" id="zcxz" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">玩家注册限制</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group clearfix m-b-xxs">
+                    <label>同一 IP 注册间隔限制(小时):</label>
+                   <div class="input-group date m-b">
+                        <input type="text" class="form-control" placeholder="12">
+                        <span class="input-group-addon bg-gray">小时</span>
+                        <span class="input-group-addon adjust">
+                            <a href="javascript:void(0)" class="adjust up"><i class="fa fa-angle-up"></i></a>
+                            <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group clearfix m-b-xxs">
+                    <label>同一 IP 在 24 小时允许注册的最大次数:</label>
+                    <div class="input-group date m-b">
+                        <input type="text" class="form-control" placeholder="12">
+                        <span class="input-group-addon bg-gray">次</span>
+                        <span class="input-group-addon adjust">
+                            <a href="javascript:void(0)" class="adjust up"><i class="fa fa-angle-up"></i></a>
+                            <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group clearfix m-b-xxs">
+                    <label>注册地址mod值:</label>
+                    <div class="input-group date">
+                        <input type="text" class="form-control">
+                        <span tabindex="0" class=" help-popover input-group-addon" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="设置站点注册地址 mod 值，默认为“register”，修改名称有利于防止注册机恶意注册；"><i class="fa fa-question-circle"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-primary-hide">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--验证消息-->
+<div class="modal inmodal" id="delete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-bell"></i>&nbsp;&nbsp;消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">                
+                <div class="del verify"><i class="fa fa-exclamation-circle"></i>删除该注册项，将一并删除玩家已填写的该字段数据！</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-primary-hide">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--删除消息-->
+<div class="modal inmodal" id="verify" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-gear"></i>&nbsp;&nbsp;玩家注册设置</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body"> 
+              <div class=" ">
+               <div class="panel blank-panel p-b-sm">
+                <div class="">
+                  <div class="panel-options">
+                    <ul class="nav nav-tabs p-l-sm p-r-sm">
+                      <li class="active"><a data-toggle="tab" href="../#tab-1" aria-expanded="true">设为必填</a></li>
+                      <li class=""><a data-toggle="tab" href="../#tab-2" aria-expanded="false">设为注册项</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 手机号</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 邮箱</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 昵称</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 性别</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 生日</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 主语言</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 主货币</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 国家地区</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 真实姓名</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 安全问题</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> skype</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> MSN</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> QQ</label>
+                        </div>
+                        <div id="tab-2" class="tab-pane">
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks"> 手机号</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks"> 邮箱</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 昵称</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 性别</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 生日</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 主语言</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks" checked=""> 主货币</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks"> 国家地区</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks"> 真实姓名</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks"> 安全问题</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks"> skype</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks"> MSN</label>
+                          <label class="m-r-sm"><input type="checkbox" class="i-checks"> QQ</label>
+                        </div>                        
+                    </div>
+                </div>
+              </div>                                                                                                        
+                  <div class="panel blank-panel p-b-sm"> 
+                      <div class="">
+                  <div class="panel-options">
+                    <ul class="nav nav-tabs p-l-sm p-r-sm">
+                      <span class="co-blue"><h3>手机邮箱验证</h3></span>
+                    </ul>
+                  </div>
+                </div>
+                   <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">                                      
+                 <div class="form-group clearfix line-hi34 m-b-none">
+                    <label class="form_lab_block line-hi34 m-r-sm"><b>手机验证 : </b></label>
+                    <div class="col-sm-8">
+                        <label class="m-r-sm"><input type="checkbox" name="my-checkbox" data-size="mini" checked></label>
+                        <label class="m-r-sm"><input type="radio" class="i-checks" name="yz"> 注册时验证</label><span tabindex="0" class=" help-popover" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="在注册页面验证后才可成功注册"><i class="fa fa-question-circle"></i></span>
+                        <label class="m-r-sm m-l-xs"><input type="radio" class="i-checks" checked="" name="yz"> 注册后验证</label><span tabindex="0" class=" help-popover" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="注册成功后在玩家中心验证"><i class="fa fa-question-circle"></i></span>
+                    </div>
+                 </div>
+                 <div class="form-group clearfix line-hi34 m-b-none">
+                    <label class="form_lab_block line-hi34 m-r-sm"><b>邮箱验证 : </b></label>
+                    <div class="col-sm-8">
+                        <label class="m-r-sm"><input type="checkbox" name="my-checkbox" data-size="mini" checked></label>
+                        <label class="m-r-sm"><input type="radio" class="i-checks" name="yz1"> 注册时验证</label>
+                        <label class="m-r-sm"><input type="radio" class="i-checks" checked="" name="yz1"> 注册后验证</label>
+                    </div>
+                </div>
+                </div></div></div></div>
+                  <div class="panel blank-panel p-b-sm">
+                      <div class="">
+                  <div class="panel-options">
+                    <ul class="nav nav-tabs p-l-sm p-r-sm">
+                      <span class="co-blue"><h3>注册限制</h3></span>
+                    </ul>
+                  </div>
+                </div>
+                   <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                <div class="form-group clearfix m-b-xxs">
+                    <label>同一 IP 注册间隔限制(小时):</label>
+                   <div class="input-group date m-b">
+                        <input type="text" class="form-control" placeholder="12">
+                        <span class="input-group-addon bg-gray">小时</span>
+                        <span class="input-group-addon adjust">
+                            <a href="javascript:void(0)" class="adjust up"><i class="fa fa-angle-up"></i></a>
+                            <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group clearfix m-b-xxs">
+                    <label>同一 IP 在 24 小时允许注册的最大次数:</label>
+                    <div class="input-group date m-b">
+                        <input type="text" class="form-control" placeholder="12">
+                        <span class="input-group-addon bg-gray">次</span>
+                        <span class="input-group-addon adjust">
+                            <a href="javascript:void(0)" class="adjust up"><i class="fa fa-angle-up"></i></a>
+                            <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group clearfix m-b-xxs">
+                    <label>注册地址mod值:</label>
+                    <div class="input-group date">
+                        <input type="text" class="form-control">
+                        <span tabindex="0" class=" help-popover input-group-addon" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="设置站点注册地址 mod 值，默认为“register”，修改名称有利于防止注册机恶意注册；"><i class="fa fa-question-circle"></i></span>
+                    </div>
+                            </div></div></div></div>
+                  </div></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-primary-hide">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>
+<script>
+    $('.help-popover').popover()
+</script>

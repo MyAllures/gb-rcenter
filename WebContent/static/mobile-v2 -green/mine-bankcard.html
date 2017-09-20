@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/style.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui-icon-extra.css" />
+</head>
+
+<body class="gb-theme mine-page">
+    <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+        <!-- 主页面容器 -->
+        <div class="mui-inner-wrap">
+            <header class="mui-bar mui-bar-nav">
+                <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+                <h1 class="mui-title">银行卡</h1>
+            </header>
+            <div class="mui-content mui-scroll-wrapper">
+                <div class="mui-scroll">
+                    <div class="mui-row">
+                        <div class="mui-input-group mine-form">
+                            <div class="mui-input-row">
+                                <label for="">真实姓名<br>
+                                    <small>银行卡户名与真实姓名一致才能取款成功</small>
+                                </label>
+                                <div class="ct">
+                                    <p class="mui-text-right text-gray">黄*二</p>
+                                </div>
+                            </div>
+                            <div class="mui-input-row"><label for="">银行</label>
+                                <div class="ct">
+                                    <div class="gb-select">
+                                        <a href="">请选择银行<i class="mui-icon mui-icon-arrowdown"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mui-input-row"><label for="">卡号</label>
+                                <div class="ct">
+                                    <input type="text" placeholder="请输入卡号">
+                                </div>
+                            </div>
+                            <div class="mui-input-row">
+                                <label for="">开户银行<br>
+                                    <small>选择“其他”银行时必填</small>
+                                </label>
+                                <div class="ct">
+                                    <input type="text" placeholder="如：河北唐山建设银行">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mui-row">
+                        <div class="gb-form-foot">
+                            <a href="" class="mui-btn mui-btn-primary submit">绑定</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../mobile-v2/js/mui/mui.js"></script>
+<script src="../../mobile-v2/js/zepto/zepto.min.js"></script>
+<script src="../../mobile-v2/js/common/main.js"></script>
+
+<style>
+    .gb-bindcard-box{
+        display: none;
+    }
+</style>
+<script>
+    mui('.gb-bindcard-box').on('tap', '.close', function() {
+      $('.masker, .gb-bindcard-box').hide();
+      return false;
+    });
+</script>
+
+
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+     <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+<!--弹窗 --> 
+ <script>
+jQuery(document).ready(function($) {
+	$('.theme-login').click(function(){
+		$('.theme-pop-mask').fadeIn(100);
+		$('.theme-pop').slideDown(200);
+	})
+	$('.theme-poptitle .close').click(function(){
+		$('.theme-pop-mask').fadeOut(100);
+		$('.theme-pop').slideUp(200);
+	})
+
+})
+</script>
+</head>
+<body style="background:#5a5a5a;">
+  
+ <!-- //* 弹窗1 -->
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<h3 class="popalign"><i class="tipbig fail"></i>您今日已达到取款次数上限，明天再来吧！</h3>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+<!-- //* 弹窗2-->
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<h2 class="popalign">正在努力计算中…</h2>
+<div class="text">
+<p>计算本次取款是否达到稽核条件</p>
+</div>
+<form class="popbutton"><button data-toggle="button" class="btn btn-blue middle-big" type="button">取消计算</button>
+<button data-toggle="button" class="btn btn-gray btn-auto" type="button">关闭弹窗，计算完后通知我</button></form>
+<p class="popgray">取款订单提交时间：2015-01-23 16:32:24</p>
+
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+<!-- //* 弹窗3-->
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<h3 class="popalign"><i class="tipbig cry"></i>ㄒoㄒ~人家算不出来了啦！</h3>
+<p>我已经拜托财务姐姐帮忙手动核算了，会很快算完哟！</p>
+<div class="text">
+<p class="orange">算完后：</p>
+<p><span class="bold">1.通过稽核：</span>直接审核通过；</p>
+<p><span class="bold">2.未通过稽核：</span>会弹窗通知结果，你可以选择是否要继续取款哦！</p>
+</div>
+<form class="popbutton"><button data-toggle="button" class="btn btn-blue middle-big" type="button">那就等等吧</button>
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">查看资金记录</button></form>
+<p class="popgray">取款订单提交时间：2015-01-23 16:32:24</p>
+
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+<!-- //* 弹窗4-->
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close"></a>
+<h1>稽核结果</h1>
+</div>
+<div class="theme-popcon">
+<div  class="poptable">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="45%" class="popalignr">本次取款稽核：</td>
+    <td width="55%"><span class="orange">未通过</span></td>
+  </tr>
+  <tr>
+     <td  class="popalignr">扣除行政费：</td>
+    <td><span class="orange">349.00</span></td>
+  </tr>
+  <tr>
+    <td  class="popalignr">扣除优惠：</td>
+    <td><span class="orange">349.00</span></td>
+  </tr>
+  <tr>
+    <td  class="popalignr">手续费：</td>
+    <td><span class="orange">免手续费</span></td>
+  </tr>
+    <tr>
+    <td  class="popalignr">申请取款金额：</td>
+    <td><span class="orange">300</span></td>
+  </tr>
+      <tr>
+    <td  class="popalignr">最终可取款：</td>
+    <td><span class="orange fontmiddle">450</span></td>
+  </tr>
+</table>
+</div>
+<form class="popbutton"><button data-toggle="button" class="btn btn-blue middle-big" type="button">继续取款</button>
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">放弃取款</button></form>
+<p class="popgray">取款订单提交时间：2015-01-23 16:32:24</p>
+</div>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+ <!-- //* 弹窗5--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<h3 class="popalign"><i class="tipbig success"></i>稽核通过，订单提交成功！</h3>
+<div class="text">
+<p>预计将在XX分钟内处理完毕，各银行的到账时间会有微小差异，请注意查收！
+</p>
+<p>今日取款剩余<span class="orange">3次</span></p>
+</div>
+<form class="popbutton">
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">好的</button>
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">查看资金记录</button>
+</form>
+<p class="popgray">取款订单提交时间：2015-01-23 16:32:24</p>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+ <!-- //* 弹窗6--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<h3 class="popalign"><i class="tipbig success"></i>提交成功</h3>
+<div class="text">
+<p>到账后会用站内信通知您，请注意查收！</p>
+</div>
+<form class="popbutton">
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">好的</button>
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">查看资金记录</button>
+</form>
+<p class="popgray">取款订单提交时间：2015-01-23 16:32:24</p>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+</body>
+</html>

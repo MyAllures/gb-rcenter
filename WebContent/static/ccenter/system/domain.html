@@ -1,0 +1,953 @@
+
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>系统设置</span><span>/</span><span>平台参数</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+       <ul class="clearfix sys_tab_wrap b-none">
+                            <li><a href="system/main.html" nav-target="topFrame">基础设置</a></li>
+                            <li><a href="system/setting3.html" nav-target="mainFrame">客服参数</a></li>
+                            <li class="active"><a href="system/domain.html" nav-target="mainFrame">域名管理</a></li>
+                            <li><a href="system/audit.html" nav-target="mainFrame">访问限制</a></li>
+                            <li><a href="system/setting5.html" nav-target="mainFrame">偏好设置</a></li>
+                        </ul>
+        <div class="wrapper white-bg shadow">
+           
+            <div class="sys_tab_wrap p-xs"><b class="fs16">平台服务器地址：</b><span class="fs13">196.168.1.1</span> 
+            </div>
+            <!--筛选条件-->
+            <div class="filter-wraper clearfix p-xs border-b-1">
+                <button type="button" class="btn btn-outline btn-filter" data-toggle="modal" data-target="#add-domain"><i class="fa fa-plus"></i><span class="hd">&nbsp;&nbsp;新增</span></button>
+
+                <div class="search-wrapper btn-group pull-right m-r-n-xs">
+                    <div class="input-group">
+                        
+                        <input type="text" class="form-control" placeholder="域名">
+                        <span class="input-group-btn"> <button type="button" class="btn btn-filter"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button></span>
+                    </div>
+                </div>
+            </div>
+            <!--表格内容-->
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable" aria-describedby="editable_info">
+                        <thead>
+                          <tr role="row" class="bg-gray">
+                            <th>名称</th>
+                            <th>绑定域名</th>
+                            <th>绑定</th>
+                            <th>状态</th>
+                            <th>是否启用</th>
+                            <th>操作</th>
+                          </tr>
+                          <tr class="bd-none">
+                            <th colspan="6"><div class="select-records"><i class="fa fa-exclamation-circle"></i>您当前选中了全部的3条记录，<a href="javascript:void(0)">点此取消选定</a>全部记录</div></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="gradeA odd">
+                            <td>运营商管理中心地址</td>
+                            <td>gamebox/zh.com<span class="m-l co-grayc2">默认</span></td>
+                            <td>完成</td>
+                            <td><span class="label label-green">已启用</span></td>
+                            <td>---</td>
+                            <td>
+                                <a href="javascript:void(0)" data-toggle="modal" data-target="#12111">编辑</a>
+                            </td>
+                          </tr>
+                          <tr class="gradeA odd">
+                            <td>普通管理中心域名</td>
+                            <td>gamebox/zh.com</td>
+                            <td>完成</td>
+                            <td><span class="label label-green">已启用</span></td>
+                            <td>---</td>
+                            <td>
+                                <a href="javascript:void(0)" data-toggle="modal" data-target="#12222">编辑</a>
+                            </td>
+                          </tr>
+                          <tr class="gradeA odd">
+                            <td>备用域名</td>
+                            <td>gamebox/zh.com</td>
+                            <td>完成</td>
+                            <td><span class="label label-green">已启用</span></td>
+                            <td>---</td>
+                            <td>
+                                <a href="javascript:void(0)" data-toggle="modal" data-target="#12222">编辑</a>
+                            </td>
+                          </tr>
+                          <tr class="gradeA odd">
+                            <td>备用域名</td>
+                            <td>gamebox/zh.com</td>
+                            <td class="co-red3">失败</td>
+                            <td>---</td>
+                            <td><input type="checkbox" name="my-checkbox" data-size="mini" checked></td>
+                            <td>
+                                <a href="javascript:void(0)">删除</a>
+                            </td>
+                          </tr>
+                          <tr class="gradeA odd">
+                            <td>备用域名</td>
+                            <td>gamebox/zh.com</td>
+                            <td>绑定中</td>
+                            <td>---</td>
+                            <td><input type="checkbox" name="my-checkbox" data-size="mini" checked></td>
+                            <td>
+                                <a href="javascript:void(0)">删除</a>
+                            </td>
+                          </tr>
+                          <tr class="gradeA odd">
+                            <td>备用域名</td>
+                            <td>gamebox/zh.com</td>
+                            <td>解绑中</td>
+                            <td>---</td>
+                            <td>---</td>
+                            <td>
+                                <a href="javascript:void(0)">取消</a>
+                            </td>
+                          </tr>
+                          <tr class="gradeA odd">
+                            <td>备用域名</td>
+                            <td>gamebox/zh.com</td>
+                            <td>完成</td>
+                            <td><span class="label label-green">已启用</span></td>
+                            <td><input type="checkbox" name="my-checkbox" data-size="mini" checked></td>
+                            <td>
+                                <a href="javascript:void(0)"  data-toggle="modal" data-target="#12444">编辑</a>
+                                <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                <a href="javascript:void(0)" data-toggle="modal" data-target="#jiebang">解绑</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row bdtop3">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left">
+                          <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>每页20条</option>
+                            <option>每页30条</option>
+                            <option>每页40条</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                            <form class="form-inline">
+                              <label class="m-l-sm">共10页</label>
+                              <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                              <button class="btn btn-sm m-l-sm">跳转</button>
+                            </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col-lg-12 m-t">
+        <div class="wrapper white-bg shadow">
+           
+            <div class="sys_tab_wrap p-xs"><b class="fs16">弹窗</b></div>
+            <!--筛选条件-->
+            <div class="filter-wraper clearfix">
+                <button type="button" class="btn btn-outline btn-filter" data-toggle="modal" data-target="#sus111">添加管理中心地址</button>
+                <!--<button type="button" class="btn btn-outline btn-filter" data-toggle="modal" data-target="#sus222">请添加站点主域名</button>-->
+                
+
+                
+            </div>
+            <!--表格内容-->
+            
+        </div>
+    </div>
+    
+    
+</div>
+<!--新增域名-->
+<div class="modal inmodal" id="add-domain" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right line-hi34">名称：</label>
+                    <div class="col-xs-5"><input type="text" class="form-control"></div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right line-hi34">指向域名地址：</label>
+                    <div class="col-xs-5">
+                      <select class="chosen-select-no-single">
+                          <option value="1">请选择</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right line-hi34">线路域名：</label>
+                    <div class="col-xs-9">
+                    	<input type="text" class="form-control m-b-xs" />
+                        <div class="co-grayc2">域名不需要添加“http://",也不要以"/"结尾，例如：gamebox.zh.com</div>
+                    </div>
+                </div>
+                <div class="form-group clearfix m-t-sm">
+                    <label class="col-xs-3 al-right">使用层级：</label>
+                    <div class="col-xs-9">
+                        <label class="m-r-sm"><input type="radio" class="i-checks" name="cj">部分层级</label>
+                        <label class="m-r-sm"><input type="radio" class="i-checks" name="cj">全部层级（含访客）</label><br>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">默认层级</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">层级1</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">层级2</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">层级3</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">层级4</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">层级5</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#sus">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal inmodal" id="jiebang" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="al-center co-blue">确认解除绑定吗？</h3>
+                <div class="line-hi25">解除绑定后，玩家将无法用该线路访问</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#sus">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal inmodal" id="sus" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="al-center co-blue">操作成功</h3>
+                <div class="line-hi25">正在排队等待系统处理，大概需要3小时，处理完后将站内信通知您，请注意查收！</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">好的</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--提示提示-->
+<div class="modal inmodal" id="sus111" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="al-center co-orange"><i class="fa fa-exclamation-circle"></i> 请添加管理中心地址！</h3>
+                <div class="line-hi25">当您的前管理中心正在使用临时地址（有效期至X月X日），<span class="co-orange">超过有效期后临时地址将无法访问</span>，请及时添加！</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#addTypeddd">去添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--提示提示-->
+<div class="modal inmodal" id="sus222" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="al-center co-orange"><i class="fa fa-exclamation-circle"></i> 请添加站点主域名！</h3>
+                <div class="line-hi25">您的站点当前正在使用临时域名（有效期至X月X日），<span class="co-orange">超过有效期后该地址将无法访问</span>，请及时添加！</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#addTypeccc">去添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--提示提示-->
+<div class="modal inmodal" id="sus33a" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <h4 class=" co-blue"> 您体系下的总代，管理中心登录地址获取办法如下：</h3>
+                <div class="line-hi25">在您添加的任意指向域名为“主页”，且绑定完成，处于“已启用”状态的域名后添加“/general”即可！</div>
+                <div class="line-hi25">如：gamebox.com/general</div>
+            </div>
+            <div class="modal-footer">
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--权限密码-->
+<div class="modal inmodal" id="del" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-list"></i>&nbsp;&nbsp;权限密码</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+            	<div class="del"><i class="fa fa-question-circle del"></i>有线路正在使用中，确认删除吗?</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#competenceError">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--类型选项管理-->
+<div class="modal inmodal" id="type" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;类型选项管理</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable m-b-sm" aria-describedby="editable_info">
+                        <thead>
+                          <tr role="row" class="bg-gray">
+                            <th>项目名称</th>
+                            <th>指向域名地址</th>
+                            <th>操作</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="gradeA">
+                            <td>主页</td>
+                            <td>212.136.136.22</td>
+                            <td>
+                                <a href="javascript:void(0)" data-toggle="modal" data-target="#editType">编辑</a>
+                                <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                <a href="javascript:void(0)">删除</a>
+                            </td>
+                          </tr>
+                          <tr class="gradeA">
+                            <td>资讯</td>
+                            <td>212.136.136.22</td>
+                            <td>
+                                <a href="javascript:void(0)" data-toggle="modal" data-target="#editType">编辑</a>
+                                <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                <a href="javascript:void(0)">删除</a>
+                            </td>
+                          </tr>
+                          <tr class="gradeA">
+                            <td>线路检测</td>
+                            <td>212.136.136.22</td>
+                            <td>
+                                <a href="javascript:void(0)" data-toggle="modal" data-target="#editType">编辑</a>
+                                <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                <a href="javascript:void(0)">删除</a>
+                            </td>
+                          </tr>
+                          <tr class="gradeA">
+                            <td>自定义新增项目</td>
+                            <td>212.136.136.22</td>
+                            <td>
+                                <a href="javascript:void(0)" data-toggle="modal" data-target="#editType">编辑</a>
+                                <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                <a href="javascript:void(0)">删除</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row bdtop3 clearfix">
+                    <div class="pull-left"><a href="javascript:void(0)" data-toggle="modal" data-target="#addType">新增类型</a></div>
+<!--
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left">
+                          <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>每页20条</option>
+                            <option>每页30条</option>
+                            <option>每页40条</option>
+                          </select>
+                        </div>
+                    </div>
+-->
+<!--                    <div class="col-sm-9 col-xs-6">-->
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                            <form class="form-inline">
+                              <label class="m-l-sm">共10页</label>
+                              <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                              <button class="btn btn-sm m-l-sm">跳转</button>
+                            </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>                                
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                            </ul>
+                        </div>
+<!--                    </div>-->
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增类型-->
+<div class="modal inmodal" id="addType" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增类型</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="dashed">
+                    <div class="form-group clearfix">
+                        <label class="col-xs-3 al-right line-hi34">项目名称：</label>
+                        <div class="col-xs-9">
+                            <div class="input-group date">
+                                <input type="text" class="form-control" placeholder="主页">
+                                <span class="input-group-addon bdn co-red3">&nbsp;&nbsp;<span class="co-red3">*</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="col-xs-3 al-right line-hi34">指向域名地址：</label>
+                        <div class="col-xs-9">
+                            <div class="input-group date">
+                              <select class="chosen-select-no-single">
+                                  <option value="1">请选择</option>
+                              </select>
+                                <span class="input-group-addon bdn co-red3">&nbsp;&nbsp;<span class="co-red3">*</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--添加站点主域名和站长管理中心地址-->
+<div class="modal inmodal" id="addTypeddd" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter">新增域名</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+               
+              
+                
+                
+                
+                
+                
+                
+                
+                
+                  
+                  <div class="form-group clearfix">
+                    <label class="col-xs-3 line-hi34 al-right">名称：</label>
+                    <div class="col-xs-5"><input type="text" class="form-control"></div>
+                </div>
+                
+                
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right line-hi34">管理中心域名：</label>
+                    <div class="col-xs-9">
+                    	<input type="text" class="form-control m-b-xs">
+                        <div class="co-grayc2">域名不需要添加“http://",也不要以"/"结尾，例如：gamebox.zh.com</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增站点域名-->
+<div class="modal inmodal" id="addTypeccc" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter">新增域名</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+               
+               
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 line-hi34 al-right">名称：</label>
+                    <div class="col-xs-5"><input type="text" class="form-control"></div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">指向域名：</label>
+                    <div class="col-xs-5">主页</div>
+                </div>
+                
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right line-hi34">线路域名：</label>
+                    <div class="col-xs-9">
+                    	<input type="text" class="form-control m-b-xs">
+                        <div class="co-grayc2">域名不需要添加“http://",也不要以"/"结尾，例如：gamebox.zh.com</div>
+                    </div>
+                </div>
+                
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">使用层级：</label>
+                    <div class="col-xs-5">全部层级（含访客）</div>
+                </div>
+                
+                
+                  
+                  
+                
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--编辑域名1-->
+<div class="modal inmodal" id="12111" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter">编辑域名</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+               
+               
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 line-hi34 al-right">名称：</label>
+                    <div class="col-xs-5"><input type="text" class="form-control"></div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">管理中心域名：</label>
+                    <div class="col-xs-8 p-x">gamebox.com<span class="co-grayc2 m-l">也用于您的子账号登录管理中心</span></div>
+                </div>
+                
+                <!--<div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">线路域名：</label>
+                    <div class="col-xs-9 p-x">
+                    	gamebox.com
+                    </div>
+                </div>-->
+                
+                <!--<div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">默认域名：</label>
+                    <div class="col-xs-5">已是默认域名</div>
+                </div>-->
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--编辑域名2-->
+<div class="modal inmodal" id="12222" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter">编辑域名</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+               
+               
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 line-hi34 al-right">名称：</label>
+                    <div class="col-xs-5 p-x"><input type="text" class="form-control"></div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">线路域名：</label>
+                    <div class="col-xs-8 p-x">gamebox.com<span class="co-grayc2 m-l">也用于您的子账号登录管理中心</span></div>
+                </div>
+                
+                <!--<div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">线路域名：</label>
+                    <div class="col-xs-9">
+                    	gamebox.com
+                    </div>
+                </div>-->
+                
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">默认域名：</label>
+                    <div class="col-xs-5 p-x"><input type="checkbox" class="i-checks"> 将本域名设为默认域名</div>
+                </div>
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--编辑域名3-->
+<div class="modal inmodal" id="12333" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter">编辑域名</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+               
+               
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 line-hi34 al-right">名称：</label>
+                    <div class="col-xs-5"><input type="text" class="form-control"></div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">指向域名：</label>
+                    <div class="col-xs-5">主页</div>
+                </div>
+                
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">线路域名：</label>
+                    <div class="col-xs-9">
+                    	gamebox.com
+                    </div>
+                </div>
+                
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">使用层级：</label>
+                    <div class="col-xs-5"> 全部层级（含访客）</div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">默认域名：</label>
+                    <div class="col-xs-5">已是默认域名</div>
+                </div>
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--编辑域名4-->
+<div class="modal inmodal" id="12444" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter">编辑域名</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+               
+               
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 line-hi34 al-right">名称：</label>
+                    <div class="col-xs-5"><input type="text" class="form-control"></div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">指向域名：</label>
+                    <div class="col-xs-5"><select class="chosen-select-no-single">
+                           <option value="1">主页</option>
+                            <option value="2">资讯页</option>
+                            <option value="3">线路检测</option>
+                        </select></div>
+                </div>
+                
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">线路域名：</label>
+                    <div class="col-xs-9">
+                    	gamebox.com
+                    </div>
+                </div>
+                
+                <div class="form-group clearfix m-t-sm">
+                    <label class="col-xs-3 al-right">使用层级：</label>
+                    <div class="col-xs-9">
+                        <label class="m-r-sm"><input type="radio" class="i-checks" name="cj">部分层级</label>
+                        <label class="m-r-sm"><input type="radio" class="i-checks" name="cj">全部层级（含访客）</label><br>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">默认层级</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">层级1</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">层级2</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">层级3</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">层级4</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">层级5</label>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-3 al-right">默认域名：</label>
+                    <div class="col-xs-5"><input type="checkbox" class="i-checks"> 将本域名设为默认域名</div>
+                </div>
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--编辑-->
+<div class="modal inmodal" id="editType" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;编辑类型</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="dashed">
+                    <div class="form-group clearfix">
+                        <label class="col-xs-3 al-right line-hi34">项目名称：</label>
+                        <div class="col-xs-9">
+                            <div class="input-group date">
+                                <input type="text" class="form-control" placeholder="主页">
+                                <span class="input-group-addon bdn co-red3">&nbsp;&nbsp;<span class="co-red3">*</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="col-xs-3 al-right line-hi34">指向域名地址：</label>
+                        <div class="col-xs-9">
+                            <div class="input-group date">
+                              <select class="chosen-select-no-single">
+                                  <option value="1">请选择</option>
+                              </select>
+                                <span class="input-group-addon bdn co-red3">&nbsp;&nbsp;<span class="co-red3">*</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--前端展示-->
+<div class="modal inmodal" id="set" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;前端展示</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="line-hi34 m-t-sm m-b-sm">
+                    <span class="m-r-sm">启用线路展示页面</span>
+                    <input type="checkbox" name="my-checkbox" data-size="mini" checked>
+                    <span class="m-l-sm"><i class="fa fa-question-circle"></i></span>
+                </div>
+                <div class="line-hi34 bg-gray m-b p-l-sm">
+                    <span class="co-yellow m-r-sm"><i class="fa fa-exclamation-circle"></i></span>可拖动域名在该层级下进行排序
+                </div>
+                <div class="domain_title_wrap">
+                    <a href="javascript:void(0)">默认域名<i></i></a>
+                    <div class="pull-right">
+                        <label><input type="checkbox" class="i-checks" checked>展示域名</label>
+                        <a href="javascrip:void(0)"><i class="fa fa-question-circle"></i></a>
+                    </div>
+                </div>
+                <div class="dd clearfix" id="nestable">
+                  <dl class="domain_list_warp">
+                    <dd class="clearfix">
+                        <label class="pull-left domain_handel"><b class="m-r-sm">1</b>gamebox/zh.com</label>
+                        <span class="pull-right btn-switch"><input type="checkbox" class="i-checks" checked ></span>
+                    </dd>
+                    <dd class="clearfix">
+                        <label class="pull-left domain_handel"><b class="m-r-sm">2</b>gamebox/zh.com</label>
+                        <span class="pull-right btn-switch"><input type="checkbox" class="i-checks" checked ></span>
+                    </dd>
+                    <dd class="clearfix">
+                        <label class="pull-left domain_handel"><b class="m-r-sm">3</b>gamebox/zh.com</label>
+                        <span class="pull-right btn-switch"><input type="checkbox" class="i-checks" checked ></span>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="domain_title_wrap">
+                    <a href="javascript:void(0)">活跃用户<i></i></a>
+                    <div class="pull-right">
+                        <label><input type="checkbox" class="i-checks" checked>展示域名</label>
+<!--                        <a href="javascrip:void(0)"><i class="fa fa-question-circle"></i></a>-->
+                    </div>
+                </div>
+                <div class="dd clearfix" id="nestable">
+                  <dl class="domain_list_warp">
+                      <div class="no-content_wrap">
+                          <i class="fa fa-exclamation-circle"></i> 暂无内容
+                      </div>
+                  </dl>
+                </div>
+                <div class="domain_title_wrap">
+                    <a href="javascript:void(0)">潜在用户<i></i></a>
+                    <div class="pull-right">
+                        <label><input type="checkbox" class="i-checks" checked>展示域名</label>
+<!--                        <a href="javascrip:void(0)"><i class="fa fa-question-circle"></i></a>-->
+                    </div>
+                </div>
+                <div class="dd clearfix" id="nestable">
+                  <dl class="domain_list_warp">
+                      <div class="no-content_wrap">
+                          <i class="fa fa-exclamation-circle"></i> 暂无内容
+                      </div>
+                  </dl>
+                </div>
+                <div class="domain_title_wrap">
+                    <a href="javascript:void(0)">新用户<i></i></a>
+                    <div class="pull-right">
+                        <label><input type="checkbox" class="i-checks" checked>展示域名</label>
+<!--                        <a href="javascrip:void(0)"><i class="fa fa-question-circle"></i></a>-->
+                    </div>
+                </div>
+                <div class="dd clearfix" id="nestable">
+                  <dl class="domain_list_warp">
+                      <div class="no-content_wrap">
+                          <i class="fa fa-exclamation-circle"></i> 暂无内容
+                      </div>
+                  </dl>
+                </div>
+                <div class="domain_title_wrap">
+                    <a href="javascript:void(0)">老用户<i></i></a>
+                    <div class="pull-right">
+                        <label><input type="checkbox" class="i-checks" checked>展示域名</label>
+<!--                        <a href="javascrip:void(0)"><i class="fa fa-question-circle"></i></a>-->
+                    </div>
+                </div>
+                <div class="dd clearfix" id="nestable">
+                  <dl class="domain_list_warp">
+                      <div class="no-content_wrap">
+                          <i class="fa fa-exclamation-circle"></i> 暂无内容
+                      </div>
+                  </dl>
+                </div>
+                <div class="domain_title_wrap">
+                    <a href="javascript:void(0)">僵尸用户<i></i></a>
+                    <div class="pull-right">
+                        <label><input type="checkbox" class="i-checks" checked>展示域名</label>
+                        <a href="javascrip:void(0)"><i class="fa fa-question-circle"></i></a>
+                    </div>
+                </div>
+                <div class="dd clearfix" id="nestable">
+                  <dl class="domain_list_warp">
+                      <div class="no-content_wrap">
+                          <i class="fa fa-exclamation-circle"></i> 暂无内容
+                      </div>
+                  </dl>
+                </div>
+                <div class="domain_title_wrap">
+                    <a href="javascript:void(0)">未分层用户<i></i></a>
+                    <div class="pull-right">
+                        <label><input type="checkbox" class="i-checks" checked>展示域名</label>
+<!--                        <a href="javascrip:void(0)"><i class="fa fa-question-circle"></i></a>-->
+                    </div>
+                </div>
+                <div class="dd clearfix" id="nestable">
+                  <dl class="domain_list_warp">
+                      <div class="no-content_wrap">
+                          <i class="fa fa-exclamation-circle"></i> 暂无内容
+                      </div>
+                  </dl>
+                </div>
+<!--            <div class="operate-btn"><button class="btn btn-filter btn-lg m-l">保存</button></div>-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': {allow_single_deselect: true},
+            '.chosen-select-no-single': {disable_search_threshold: 10},
+            '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+            '.chosen-select-width': {width: "95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>

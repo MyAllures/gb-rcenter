@@ -1,0 +1,941 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <link rel="stylesheet" href="../../ssc/themes/default/css/cabel-v1.css?v=20170206" type="text/css">
+    <link rel="stylesheet" href="../../ssc/themes/default/css/style.css?v=20170216" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../../ssc/themes/default/css/animate.min.css?v=20170206" type="text/css"><!--CSS3动画-->
+    <link rel="stylesheet" href="../../ssc/themes/default/css/lottery.css?v=20170206" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../../ssc/themes/default/css/liMarquee.css?v=20170206" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../../ssc/themes/default/css/global.css?v=1490773604893" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../../ssc/themes/default/css/other.css?v=20170309" type="text/css"><!--页面CSS-->
+    <script src="../../ssc/themes/default/js/FancyZoom.js" language="JavaScript" type="text/javascript"></script>
+    <script src="../../ssc/themes/default/js/FancyZoomHTML.js" language="JavaScript" type="text/javascript"></script>
+    <script>
+    <!--
+    // 屏蔽JS错误
+//    window.onerror = function(){return true;}
+    // -->
+</script>
+<script src="../../ssc/themes/default/js/mobile-detect.min.js"></script><style>
+        a:hover{
+            color: red;
+
+        }
+        a:active{
+            color:deepskyblue;
+        }
+    </style>
+    <script>
+        var CONFIG = {
+            BASEURL: "./",    // 根路径
+            RESURL: "../../ssc/themes/default/"         // 资源路径
+        };
+    </script>
+</head>
+<body>
+<div class="type_top" style="z-index:100">
+    <div class="wid1">
+        <div class="left fl">
+            <div class="left_div">你好，欢迎来到彩票网!
+                <a href="../../login.html" class="log">请登录</a>
+                        <span>
+                            <a href="../../register.html" class="a1 blink">免费注册</a>
+                            <!--<a href="javascript:void(0)" class="par">合作账号登录<i class="ico-d"></i></a>-->
+                            <a href="javascript:void(0)" onclick="shiwan()">免费试玩</a>
+                        </span>
+                    </div>
+        </div>
+        <div class="right fr">
+            <ul>
+                <li class="li0"><a href="../../index.html">首页</a></li>
+                <li class="li0"><a href="https://chat7.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=763215&configID=54563&jid=1035408947" style="color:#d84600" target="_blank" class="blink">在线客服</a></li>
+                <li class="l"><a href="javascript:void(0)"><b>购买彩票</b><i class="ico-d"></i></a>
+                    <div class="pay">
+                        <div class="pay_list">
+                            <h4>高频：</h4>
+                            <p>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/ffssc')">分分时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/efssc')">两分时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/sfssc')">三分时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/wfssc')">五分时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/cqssc')">重庆时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/tjssc')">天津时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/xjssc')">新疆时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/pk10')">北京PK10</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/xyft')">幸运飞艇</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/kl8')">北京快乐8</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/klsf')">快乐十分</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/xync')">幸运农场</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/xy28')">幸运28</a></span>
+                            </p>
+                        </div>
+                        <div class="pay_list">
+                            <h4>低频：</h4>
+                            <p>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/fc3d')">福彩3D</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/pl3')">体彩排列3</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/lhc')">香港六合彩</a></span>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="../../help/index.html">帮助</a></li>
+                <li class="l"><a href="javascript:void(0)"><b>网站导航</b><i class="ico-d"></i></a>
+                    <div class="link">
+                        <h5>
+                            <a href="../../ssc/main.html" target="_blank">购买彩票</a>
+                            <a href="" target="_blank">手机购彩</a>
+                            <a href="../../help/index.html">规则说明</a>
+                        </h5>
+                        <h4>
+                            <strong>彩票工具</strong>
+                            <p><a href="" target="_blank">手机客户端</a> <a href="../../ssc/main.html?module=zstIndex" target="_blank">走势查询</a> <a href="javascript:void(0)" onclick="getPage('lsjl/tzjl')">中奖查询</a></p>
+                        </h4>
+                        <h5 class="last">
+                            <a href="javascript:void(0)" onclick="openHyzx()">会员中心</a>
+                            <a href="javascript:void(0)" onclick="openHyzx('jfmx/hylb')">推广赚钱</a>
+                            <a href="../../yhhd.html">优惠活动</a>
+                        </h5>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    function getPage(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        if (typeof $.cookie("uid") == 'undefined' || typeof $.cookie("token") == 'undefined') {
+            alert("请先登录");
+            if ($("#loginAccount1").length > 0) {
+                $("#loginAccount1").focus();
+                return;
+            }
+            window.location.href = "../../index.html";
+            return;
+        }
+        windowOpen('../../member/main.html?module=' + module, '会员中心', 1250, 834);
+    }
+    function login2() {
+        var loginAccount = $.trim($("#loginAccount2").val());
+        var loginPassword = $.trim($("#loginPassword2").val());
+        var yzm = $.trim($("#loginYzm2").val());
+
+        if (!loginAccount) {
+            alert("请输入账号");
+            return;
+        }
+        if (!loginPassword) {
+            alert("请输入密码");
+            return;
+        }
+        if (!yzm) {
+            alert("请输入验证码");
+            return;
+        }
+
+        /*ajaxRequest({
+            url: "../../member/ajaxLogin.json",
+            data: {
+                yzm: yzm,
+                account: loginAccount,
+                password: $.md5(loginPassword)
+            },
+            beforeSend: function() {
+                showLoading();
+            },
+            success: function(json) {
+                if (json.result == 1) {
+                    $.cookie("uid", json.userId, {path: "/"});
+                    $.cookie("token", json.token, {path: "/"});
+                    hideLoading();
+                    location.reload();
+                } else {
+                    refreshYzm(document.getElementById('yzmImg2'));
+                    alert("登录失败：" + json.description);
+                    hideLoading();
+                }
+            }
+        });*/
+    }
+    function shiwan() {
+        /*ajaxRequest({
+            url: "../../shiwan.json",
+            beforeSend: function() {
+                showLoading();
+                $.cookie("uid", '', {path: "/", expires: -1});
+                $.cookie("token", '', {path: "/", expires: -1});
+            },
+            success: function(json) {
+                if (json.result == 1) {
+                    $.cookie("uid", json.userId, {path: "/"});
+                    $.cookie("token", json.token, {path: "/"});
+                    hideLoading();
+                    alert("游客盘口只供试玩，与正式会员盘口无关");
+                    location.reload();
+                } else {
+                    refreshYzm(document.getElementById('yzmImg2'));
+                    alert("登录失败：" + json.description);
+                    hideLoading();
+                }
+            }
+        });*/
+    }
+    function sigout() {
+       /* ajaxRequest({
+            url: "../../member/ajaxSigout.json",
+            beforeSend: function() {
+                showLoading();
+            },
+            success: function(json) {
+                $.cookie("uid", '', {path: "/", expires: -1});
+                $.cookie("token", '', {path: "/", expires: -1});
+                hideLoading();
+                location.reload();
+            }
+        });*/
+    }
+</script><div class="men_list">
+    <div class="wid1">
+        <div class="logo">
+            <img src="../../ssc/themes/default/img/logo1.png" alt="">
+        </div>
+        <div class="nav_list">
+    <ul>
+        <li>
+            <a href="../../index.html">
+                <img src="../../ssc/themes/default/img/ico33.png" alt="首页">
+                <p>首页 </p>
+            </a>
+        </li>
+        <li>
+            <a href="../../ssc/main.html" target="_blank">
+                <img src="../../ssc/themes/default/img/ico34.png" alt="购彩大厅">
+                <p>购彩大厅</p>
+            </a>
+        </li>
+        <li>
+            <a href="../../kjjg.html">
+                <img src="../../ssc/themes/default/img/ico35.png" alt="">
+                <p>开奖结果</p>
+            </a>
+        </li>
+        <li>
+            <a href="../../ssc/main.html?module=zstIndex" target="_blank">
+                <img src="../../ssc/themes/default/img/ico36.png" alt="">
+                <p>走势图表</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" onclick="openHyzx('jfmx/hylb')">
+                <img src="../../ssc/themes/default/img/ico37.png" alt="">
+                <p>代理合作</p>
+            </a>
+        </li>
+        <li>
+            <a href="../../yhhd.html">
+                <img src="../../ssc/themes/default/img/ico38.png" alt="">
+                <p>优惠活动</p>
+            </a>
+        </li>
+        <li>
+            <a href="" target="_blank">
+                <img src="../../ssc/themes/default/img/ico39.png" alt="">
+                <p>手机购彩</p>
+            </a>
+        </li>
+    </ul>
+</div>
+</div>
+</div>
+
+<div class="main wi">
+    <div class="list">
+    <h5><span style="cursor:pointer;" onclick="getHelp(null, '../../help/main.html')">帮助中心</span></h5>
+    <ul>
+        <li class="li1 sli">
+            <h4>彩种介绍<img src="../../ssc/themes/default/img/bt.png" /></h4>
+            <div class="slide" style="display:block;">
+                <p class=""><a href="../../help/rule/cqssc.html">重庆时时彩</a></p>
+                <p class=""><a href="../../help/rule/tjssc.html">天津时时彩</a></p>
+                <p class=""><a href="../../help/rule/xjssc.html">新疆时时彩</a></p>
+                <p class=""><a href="../../help/rule/pl3.html">体彩排列3</a></p>
+                <p class=""><a href="../../help/rule/fc3d.html">福彩3D</a></p>
+                <p class="acti"><a href="../../help/rule/lhc.html">香港六合彩</a></p>
+                <p class=""><a href="../../help/rule/xy28.html">幸运28</a></p>
+                <p class=""><a href="../../help/rule/bjkl8.html">北京快乐8</a></p>
+                <p class=""><a href="../../help/rule/bjpk10.html">北京PK10</a></p>
+                <p class=""><a href="../../help/rule/cqxync.html">重庆幸运农场</a></p>
+                <p class=""><a href="../../help/rule/gd10.html">广东快乐十分</a></p>
+                <p class=""><a href="../../help/rule/xyft.html">幸运飞艇</a></p>
+                <p class=""><a href="../../help/rule/ffssc.html">分分时时彩</a></p>
+                <p class=""><a href="../../help/rule/efssc.html">两分时时彩</a></p>
+                <p class=""><a href="../../help/rule/sfssc.html">三分时时彩</a></p>
+                <p class=""><a href="../../help/rule/wfssc.html">五分时时彩</a></p>
+            </div>
+        </li>
+        <li class="li1  zhinan">
+            <h4>新手指南<img src="../../ssc/themes/default/img/bt.png" /></h4>
+            <div class="slide" style="">
+                <p class="acti"><a href="../../help/question/zc.html">注册</a></p>
+                <p class=""><a href="../../help/question/cz.html">充值</a></p>
+                <p class=""><a href="../../help/question/tk.html">提款</a></p>
+                </div>
+        </li>
+        <li class="li1  gongneng">
+            <h4>特色功能<img src="../../ssc/themes/default/img/bt.png" /></h4>
+            <div class="slide" style="">
+                <p class="acti"><a href="../../help/rule/Extension.html">推广赚钱</a></p>
+                <p class=""><a href="" target="_blank">手机购彩</a></p>
+            </div>
+        </li>
+        <li class="li1  wenti">
+            <h4>常见问题<img src="../../ssc/themes/default/img/bt.png" /></h4>
+            <div class="slide" style="">
+                <p class="acti"><a href="../../help/question/aq.html">安全保障</a></p>
+                <p class=""><a href="../../help/question/mima.html">热门问题</a></p>
+            </div>
+        </li>
+    </ul>
+    <h3>
+        <a href="" target="_blank">联系客服</a>
+    </h3>
+</div><div class="rt">
+        <div class="type1">
+    <div class="pict">
+        <img src="../../ssc/themes/default/img/ico202.png" alt="">
+    </div>
+    <div class="step">
+        <ul>
+            <li><a href="../../register.html"><img src="../../ssc/themes/default/img/ico203.png" alt="">免费注册</a></li>
+            <li><a href="javascript:void(0)" onclick="openHyzx('zhcz/yhzz')"><img src="../../ssc/themes/default/img/ico204.png" alt="">账户充值</a></li>
+            <li><a href="javascript:void(0)" onclick="openGcdt()"><img src="../../ssc/themes/default/img/ico205.png" alt="">购买彩票</a></li>
+            <li><img src="../../ssc/themes/default/img/ico206.png" alt="">中大奖</li>
+            <li><a href="javascript:void(0)" onclick="openHyzx('withdraw')"><img src="../../ssc/themes/default/img/ico207.png" alt="">提款</a></li>
+        </ul>
+        <div class="bor_box">
+            <p><span></span></p>
+            <p><span></span></p>
+            <p><span></span></p>
+            <p><span></span></p>
+            <p><span></span></p>
+        </div>
+    </div>
+</div><!--五步--><div class="fix_ico">
+    <ul>
+        <li>
+            <a href="javascript:void(0)" onclick="openHyzx('zhsz/grzl')">
+                <div class="pict">
+                    <i><img src="../../ssc/themes/default/img/ico208.png" alt=""></i>
+                </div>
+                <div class="text">
+                    <p>修改资料</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" onclick="openHyzx()">
+                <div class="pict">
+                    <i><img src="../../ssc/themes/default/img/ico209.png" alt=""></i>
+                </div>
+                <div class="text">
+                    <p>会员中心</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" onclick="openHyzx('zhsz/dlmm')">
+                <div class="pict">
+                    <i><img src="../../ssc/themes/default/img/ico210.png" alt=""></i>
+                </div>
+                <div class="text">
+                    <p>修改密码</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="../../register.html" class="a0">
+                <div class="pict">
+                    <i><img src="../../ssc/themes/default/img/ico211.png" alt=""></i>
+                </div>
+                <div class="text">
+                    <p>免费注册</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="https://chat7.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=763215&configID=54563&jid=1035408947" target="_blank">
+                <div class="pict">
+                    <i><img src="../../ssc/themes/default/img/ico212.png" alt=""></i>
+                </div>
+                <div class="text">
+                    <p>在线客服</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="pict">
+                    <i><img src="../../ssc/themes/default/img/ico213.png" alt=""></i>
+                </div>
+                <div class="text">
+                    <p>返回顶部</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="help_list">
+            <div class="lis">
+                <h5>香港六合彩</h5>
+                <ul>
+                    <li class="sli">常规玩法</li>
+                    <li>下注声明</li>
+                </ul>
+            </div>
+            <div class="help_col show">
+                <h5><strong>六合彩规则说明</strong></h5>
+                <p><strong>1、</strong>以下所有投注皆含本金。</p>
+                <p><strong>2、特别号码盘势规则说明</strong><br>
+                    香港六合彩公司当期开出的最后一码为特别号或特码。<br>特码　单　码：假设投注号码为开奖号码之特别号，视为中奖，其余情形视为不中奖。<br>
+                    特码　大　小：开出之特码大于或等于25为特码大， 小于或等于24为特码小，开出49为和。<br>
+                    特码　单　双：特码为双数叫特双，如8、16；特码为单数叫特单，如21、35，开出49为和。<br>
+                    特码和数大小：以特码个位和十位数字之和来判断胜负，和数大于或等于7为大，小于或等于6为小，开出49号为和。<br>
+                    特码和数单双：以特码个位和十位数字之和来判断单双，如01，12，32为和单，02，11，33为和双，开出49号为和。<br>
+                    特码尾数大小：以特别号尾数若0尾~4尾为小、5尾~9尾为大；如01、32、44为特尾小；如05、18、19为特尾大，开出49号为和<br>
+                    特码　半　特：以特别号大小与特别号单双游戏为一个投注组合；当期特别号开出符合投注组合，即视为中奖；若当期特码开出49号，则视为和局；其余情形视为不中奖</p>
+                <p><strong>3、两面：</strong>指大、小；单、双。</p>
+                <p><strong>4、</strong>每期六合彩开奖球数共七粒(包括特码)。</p>
+                <p><strong>5、正码：</strong>香港六合彩公司当期开出之前6个号码叫正码。每一个号码为一投注组合，假如投注号码为开奖号码之 正码，视为中奖，其馀情形视为不中奖。</p>
+                <p><strong>6、正码1-6盘势规则说明</strong><br>
+                    香港六合彩公司当期开出之前6个号码叫正码。第一时间出来的叫正码1，依次为正码2、正码3…… 正码6(并不以号码大小排序)。<br>
+                    大　　小： 以指定出现正码的位置与号码大于或等于25为大，小于或等于24为小，开出49为和。<br>
+                    单　　双： 以指定出现正码的位置与号码为单数或双数下注，开出49为和。<br>
+                    和数大小： 以指定出现正码的位置与号码个位和十位数字总和来判断胜负，和数大于或等于7为大，小于或等于6为小，开出49号为和。<br>
+                    和数单双： 以指定出现正码的位置与号码个位和十位数字总和来判断单双，开出49号为和。<br>
+                    色　　波： 以指定出现正码的位置的球色下注，开奖之球色与下注之颜色相同时，视为中奖，其余情形视为不中奖。<br>
+                    尾数大小：以指定出现正码的位置与号码尾数大小下注，若0尾~4尾为小、5尾~9尾为大。如01、32、44为正尾小；如05、18、19为正尾大，开出49号为和</p>
+                <p><strong>7、正码特 ： </strong>正码特是指 正1特、正2特、正3特、正4特、正5特、正6特：其下注的正码特号与现场摇珠开出之正码其开奖顺序及开奖号码相同，视为中奖， 如现场摇珠第一个正码开奖为49号，下注第一个正码特为49则视为中奖，其它号码视为不中奖。</p>
+                <p><strong>8、总和单双 ： </strong>所有七个开奖号码的分数总和是单数叫(总分单)，如分数总和是115、183；分数总和是双数叫(总 分双)，如分数总和是108、162。假如投注组合符合中奖结果，视为中奖，其馀情形视为不中奖 。</p>
+                <p><strong>9、总和大小 ： </strong>所有七个开奖号码的分数总和大于或等于175为总分大；分数总和小于或等于174为总分小。 如开奖号码为02、08、17、28、39、46、25，分数总和是165，则总分小。假如投注组合符合 中奖结果，视为中奖，其馀情形视为不中奖。</p>
+                <p><strong>10、连码 ：</strong></p>
+                <p></p><table>
+                <tbody><tr>
+                    <td width="4%" valign="top" bgcolor="#FFE3CA" align="center">
+                        1·
+                    </td>
+                    <td width="96%" bgcolor="#FFF7F0">
+                        <span class="style2">四中一： </span>所投注的每四个号码为一组合，若四个号码中有一个号码是开奖号码之正码，视为中奖，其余情形视为不中奖。如06、07、08、09四个有一个号码是开奖号码之正码，视为中奖。
+                    </td>
+                </tr>
+                <tr>
+                    <td width="4%" valign="top" bgcolor="#FFE3CA" align="center">
+                        2·
+                    </td>
+                    <td width="96%" bgcolor="#FFF7F0">
+                        <span class="style2">三中二： </span>所投注的每三个号码为一组合，若其中2个是开奖号码中的正码，即为三中二，视为中奖；   若3个都是开奖号码中的正码，即为三中二之中三，其馀情形视为不中奖，如06、07、08   为一组合，开奖号码中有06、07两个正码，没有08，即为三中二，按三中二赔付；如开奖   号码中有06、07、08三个正码，即为三中二之中三，按中三赔付；如出现1个或没有，视 为不中奖 。
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" bgcolor="#FCF7CB" align="center">
+                        3·
+                    </td>
+                    <td bgcolor="#FDFBE3">
+                        <span class="style2">三全中：</span>
+                        所投注的每三个号码为一组合，若三个号码都是开奖号码之正码，视为中奖，其馀情形视为   不中奖。如06、07、08三个都是开奖号码之正码，视为中奖，如两个正码加上一个特别号 码视为不中奖 。
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" bgcolor="#FFE3CA" align="center">
+                        4·
+                    </td>
+                    <td bgcolor="#FFF7F0">
+                        <span class="style2">二全中：</span>
+                        所投注的每二个号码为一组合，二个号码都是开奖号码之正码，视为中奖，其馀情形视为不 中奖（含一个正码加一个特别号码之情形）。
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" bgcolor="#FCF7CB" align="center">
+                        5·
+                    </td>
+                    <td bgcolor="#FDFBE3">
+                        <span class="style2">二中特：</span>
+                        所投注的每二个号码为一组合，二个号码都是开奖号码之正码，叫二中特之中二；若其中一 个是正码，一个是特别号码，叫二中特之中特；其馀情形视为不中奖 。
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" bgcolor="#FFE3CA" align="center">
+                        6·
+                    </td>
+                    <td bgcolor="#FFF7F0">
+                        <span class="style2">特串：</span>
+                        所投注的每二个号码为一组合，其中一个是正码，一个是特别号码，视为中奖，其馀情形视为 不中奖（含二个号码都是正码之情形） 。
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" bgcolor="#FCF7CB" align="center">
+                        7.
+                    </td>
+                    <td bgcolor="#FFF7F0">
+                        依照二全中·二中特·特串 此3种玩法规则,来进行‘生肖对碰’或‘尾数对碰’<br>
+                        例一：<br>
+                        选择‘二全中’,之后进行‘生肖对碰’选择马(03，15，27，39)以及羊 (02，14，26，38)<br>
+                        则会产生20组号码组合：<br>
+                        [03,02] [03,14] [03,26] [03,38]<br>
+                        [15,02] [15,14] [15,26] [15,38]<br>
+                        [27,02] [27,14] [27,26] [27,38]<br>
+                        [39,02] [39,14] [39,26] [39,38]<br>
+                        例二：<br>
+                        选择‘二中特’,之后进行‘尾数对碰’选择0(10，20，30，40)以及5(5，15，25，35，45)<br>
+                        则会产生20组号码组合：<br>
+                        [10,5] [10,15] [10,25] [10,35] [10,45]<br>
+                        [20,5] [20,15] [20,25] [20,35] [20,45]<br>
+                        [30,5] [30,15] [30,25] [30,35] [30,45]<br>
+                        [40,5] [40,15] [40,25] [40,35] [40,45]
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" bgcolor="#FCF7CB" align="center">
+                        8.
+                    </td>
+                    <td>
+                        肖串尾数:选择一主肖，可扥0-9尾的球．
+                        以三全中的肖串尾数为例：
+                        选择【兔】当主肖(号码06,18,30,42)并且扥8尾数．因为8尾数中的18已在主肖中出现，将不重复组合．
+                        故兔主肖扥8尾数共可组合出24种组合(二个尾数号码+一个主肖号码的组合)．
+                    </td>
+                </tr>
+            </tbody></table><p></p>
+                <p><strong>11、正码过关 ： </strong>游戏规则同正码1-6盘势，但须同时投注多项结果，串联成投注组合，只要单期所开出之开奖结果符合您所选定之串联结果，即视为中奖，若其中一项结果不中，则视为不中奖；若其中一项结果为和，其余结果都中奖的情形，也视为中奖；和的项目赔率以一计算</p>
+                <p><strong>12、生肖色波 ：</strong>分为生肖与色波两种玩法</p>
+                <p></p><table>
+                <tbody><tr>
+                    <td width="4%" valign="top" bgcolor="#FFE3CA" align="center">
+                        1
+                    </td>
+                    <td width="96%" bgcolor="#FFF7F0">
+                        <span class="style2">生肖： </span><br>
+                        生肖顺序为 鼠 &gt;牛 &gt;虎 &gt;兔 &gt;龙 &gt;蛇 &gt;马   &gt;羊 &gt;猴 &gt;鸡 &gt;狗 &gt;猪<br>
+                        如今年是<span class="sxn">鸡</span>年，就以<span class="sxn">鸡</span>为开始，依顺序将49个号码分为12个生肖(如下)，再以生肖下注。<br>
+                        <span class="sxpaixu">鸡&nbsp;01 , 13 , 25 , 37 , 49<br>狗&nbsp;12 , 24 , 36 , 48<br>猪&nbsp;11 , 23 , 35 , 47<br>鼠&nbsp;10 , 22 , 34 , 46<br>牛&nbsp;09 , 21 , 33 , 45<br>虎&nbsp;08 , 20 , 32 , 44<br>兔&nbsp;07 , 19 , 31 , 43<br>龙&nbsp;06 , 18 , 30 , 42<br>蛇&nbsp;05 , 17 , 29 , 41<br>马&nbsp;04 , 16 , 28 , 40<br>羊&nbsp;03 , 15 , 27 , 39<br>猴&nbsp;02 , 14 , 26 , 38<br></span>
+                        若当期特别号，落在下注生肖范围内，视为中奖 。
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" bgcolor="#FCF7CB" align="center">
+                        2·
+                    </td>
+                    <td bgcolor="#FDFBE3">
+                        <span class="style2">色波：</span>
+                        以特别号的球色下注，开奖的球色与下注的颜色相同，视为中奖，球色号码分布如下:<br>
+                        <span class="style1">01 </span>
+                        <span class="style8">11 21 </span>
+                        <span class="style9">31 41</span><br>
+                        <span class="style1">02</span>
+                        <span class="style1">12</span>
+                        <span class="style8">22 32</span>
+                        <span class="style9">42</span><br>
+                        <span class="style9">03</span>
+                        <span class="style1">13 23</span>
+                        <span class="style8">33 43</span><br>
+                        <span class="style9">04 14</span>
+                        <span class="style1">24 34</span>
+                        <span class="style7">44</span><br>
+                        <span class="style8">05</span>
+                        <span class="style9">15 25</span>
+                        <span class="style1">35 45</span><br>
+                        <span class="style8">06 16 </span>
+                        <span class="style9">26 36</span>
+                        <span class="style1">46</span><br>
+                        <span class="style1">07</span>
+                        <span class="style8">17 27</span>
+                        <span class="style9">37 47</span><br>
+                        <span class="style1">08 18</span>
+                        <span class="style8">28 38</span>
+                        <span class="style9">48</span><br>
+                        <span class="style9">09</span>
+                        <span class="style1">19 29</span>
+                        <span class="style8">39 49 </span><br>
+                        <span class="style9">10 20</span>
+                        <span class="style1">30 40</span>
+                    </td>
+                </tr>
+            </tbody></table><p>
+                </p><p><strong>13、一肖 ：</strong></p>
+                <p></p><table>
+                <tbody><tr>
+                    <td width="4%" valign="top" bgcolor="#FFE3CA" align="center">
+                        1·
+                    </td>
+                    <td width="96%" bgcolor="#FFF7F0">
+                        <span class="style2">一肖：</span>
+                        将生肖依序排列，例如今年是<span class="sxn">鸡</span>年，就以<span class="sxn">鸡</span>为开始，依顺序将49个号码分为12个生肖(如下)，再以生肖下注。<br>
+                        <span class="sxpaixu">鸡&nbsp;01 , 13 , 25 , 37 , 49<br>狗&nbsp;12 , 24 , 36 , 48<br>猪&nbsp;11 , 23 , 35 , 47<br>鼠&nbsp;10 , 22 , 34 , 46<br>牛&nbsp;09 , 21 , 33 , 45<br>虎&nbsp;08 , 20 , 32 , 44<br>兔&nbsp;07 , 19 , 31 , 43<br>龙&nbsp;06 , 18 , 30 , 42<br>蛇&nbsp;05 , 17 , 29 , 41<br>马&nbsp;04 , 16 , 28 , 40<br>羊&nbsp;03 , 15 , 27 , 39<br>猴&nbsp;02 , 14 , 26 , 38<br></span>
+                        只要当期号码(所有正码与最后开出的特码)，落在下注生肖范围内，则视为中奖。<span style="color:red;font-weight:bold">(请注意：49亦算输赢，不为和)</span>。
+                    </td>
+                </tr>
+            </tbody></table><p></p>
+                <p><strong>14、合肖 ：</strong>
+                    选1~11生肖(排列如同生肖)为一组合，并选择开奖号码的特码是否在此组合内，若选择是"中"(可选择2~11个生肖)且开奖号码的特码亦在此组合内，即视为中奖；若选择否"不中"(可选择1~10个生肖),<span style="color:red;font-weight:bold">系统会将选择不中的组合改为中的组合；</span>若当期特码开出49号，则所有组合皆视为和局</p>
+                <p><strong>15、半波 ：</strong>以特码色波和特单，特双，特大，特小为一个投注组合，当期特码开出符合投注组合，即视为中奖； 若当期特码开出49号，则视为和局；其馀情形视为不中奖。</p>
+                <p><strong>16、正肖 ：</strong>依据开出的所有正码为主。若当期6个正码，只要有1个落在下注生肖范围内，视为中奖。如超过1个正码落在下注生肖范围内 ，派彩将倍增！
+                    如：下注＄100.-正肖蛇赔率1.88<br>
+                    6个正码开出01，派彩为＄88.-<br>
+                    6个正码开出01，13，派彩为＄176.-<br>
+                    6个正码开出01，13，25，派彩为＄264.-<br>
+                    6个正码开出01，13，25，37，派彩为＄352.-<br>
+                    6个正码开出01，13，25，37，49，派彩为＄440.-<span style="color:red;font-weight:bold">(请注意：49亦算输赢，不为和)</span></p>
+                <p><strong>17、特码尾数 ：</strong>指特别号所属尾数的号码<br>
+                    "1"尾 ：01，11，21，31，41<br>
+                    "2"尾 ：02，12，22，32，42<br>
+                    "3"尾 ：03，13，23，33，43<br>
+                    "4"尾 ：04，14，24，34，44<br>
+                    "5"尾 ：05，15，25，35，45<br>
+                    "6"尾 ：06，16，26，36，46<br>
+                    "7"尾 ：07，17，27，37，47<br>
+                    "8"尾 ：08，18，28，38，48<br>
+                    "9"尾 ：09，19，29，39，49<br>
+                    "0"尾 ：10，20，30，40<br>
+                    例如 ：开奖结果特别号码是21则 "1"尾为中奖，其他尾数都不中奖</p>
+                <p><strong>18、**正特尾数  ：</strong> **只要当期号码(所有正码及开出来的特码)，含所属尾数的一个或多个号码，但派彩只派一次，即不论同尾数号码出现一个或多个号码都只派彩一次。<br>
+                    "1"尾：01.11.21.31.41 "2"尾：02.12.22.32.42 "3"尾：03.13.23.33.43<br>
+                    "4"尾：04.14.24.34.44 "5"尾：05.15.25.35.45 "6"尾：06.16.26.36.46<br>
+                    "7"尾：07.17.27.37.47 "8"尾：08.18.28.38.48 "9"尾：09.19.29.39.49<br>
+                    "0"尾：10.20.30.40<br>
+                    例如 ：开奖结果正码是11、31、42、44、35、32特别号码是 21 则"1"尾"2"尾"4"尾"5"尾都为中奖，其他尾数都不中奖。</p>
+                <p><strong>19、连肖 ：</strong>挑选2~6生肖(排列如同生肖)为一个组合，当期号码(所有正码与最后开出的特码)坐落于投注时所勾选之生肖组合所属号码内，所勾选之生肖皆至少有中一个号码，则视为中奖，其余情视为不中奖<span style="color:red">(请注意49亦算输赢，不为和)</span>例如：如果当期号码为19、24、12、34、40、39.特码：49，所勾选三个生肖(称为三肖碰)，若所有生肖的所属号码内至少一个出现于当期号码，则视为中奖。</p>
+                <p><strong>20、连尾 ：</strong>挑选2〜6个尾数为一组合，当期号码（所有正码与最后出的特码）坐落于投注时所勾选之尾数组合所属号码内，则视为中奖，其余情形视为不中奖<span style="color:red">(请注意49亦算输赢，不为和)</span><br>
+                    举例1：下注2尾碰，勾选0,1，当期七个号码若0尾及1尾皆有开出，视为中奖<br>
+                    举例2：下注2尾碰，勾选0,1,2三种尾数，会出现三种组合（组合一：0,1）（组合二：0,2）（组合三：1,2），当期七个号码若开出其中一种组合所选的两个尾数，视为中奖。</p>
+                <p><strong>21、自选不中奖 ：</strong> 挑选5~12个号码为一个组合，当期号码(所有正码与最后开出的特码)皆没有坐落于投注时所挑选之号码组合内，则视为中奖，若是有任何一个当期号码开在所挑选的号码组合情形视为不中奖。<br>
+                    例如当期号码为19,24,17,34,40,39,特别号49，所挑选5个号码(称为五不中)，若所挑选的号码内皆沒有坐落于当期号码，则为中奖</p>
+            </div>
+            <div class="help_col">
+                <h5><strong>六合彩下注声明</strong></h5>
+                <p><strong>1、</strong>客户一经在本公司开户或投注，即被视为已接受这些规则。</p>
+                <p><strong>2、</strong>如果客户怀疑自己的资料被盗用，应立即通知本公司，并更改个人详细资料，且之前所使用的使用者名称及密码将全部无效。</p>
+                <p><strong>3、</strong>客户有责任确保自己的帐户及登入资料的保密性。在本网站上以个人的使用者名称及密码进行的任何网上投注将被视为有效。</p>
+                <p><strong>4、</strong>为了避免出现争议，请务必在下注之后检查“ 下注状况 ”。</p>
+                <p><strong>5、</strong>开奖后接受的投注，将被视为无效。</p>
+                <p><strong>6、</strong>任何的投诉必须在开奖之前提出，本公司将不会受理任何开奖之后的投诉。</p>
+                <p><strong>7、</strong>公布赔率时出现的任何打字错误或非故意人为失误，本公司将保留改正错误和按正确赔率结算注单的权力。</p>
+                <p><strong>8、</strong>公布之所有赔率为浮动赔率，派彩时的赔率将以本公司确认投注时之赔率为准。</p>
+                <p><strong>9、</strong>如本公司察觉客户投注状况异常时，有权即时中止客户投注；在本公司中止下注前，客户之所有投注仍属有效，不得要求取消或延迟交收，以及不得有任何异议。</p>
+                <p><strong>10、</strong>如因在本网站投注触犯当地法律，本公司概不负责。</p>
+                <p><strong>11、</strong>『六合彩』当次确认下注时间与上次确认下注时间10秒钟内：出现同群组且内容相同2笔以上之注单，本公司只承认一笔有效注单，其余一律注销。<br>(举例1：十秒内出现快速下注特别号01,02,03同群组同内容的注单两组以上,本公司只保留一组有效,其余将注销)<br>(举例2：十秒内出现快速下注特别号01,02,03 和快速下注特别号01,02,因群组号码不同,则认定两组皆为有效注单)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tail at">
+    <ul>
+        <li>
+            <div class="slide" style="">
+                <h2><img src="../../ssc/themes/default/img/ico42.png" alt="">新手入门</h2>
+            <p>
+                <span class=""><a href="../../help/question/zc.html">关于注册</a></span>
+                <span class=""><a href="../../help/question/cz.html">关于充值</a></span>
+                <span class=""><a href="../../help/question/tk.html">关于提款</a></span>
+                <span class=""><a href="../../help/index.html">彩种介绍</a></span>
+                </p>
+            </div>
+        </li>
+        <li>
+
+            <div class="slide" style="">
+                <h2><img src="../../ssc/themes/default/img/ico43.png" alt="">充值投注</h2>
+            <p>
+                <span class=""><a href="../../help/question/cz.html">充值介绍</a></span>
+                <span class=""><a href="../../help/question/cz_1.html">网银充值</a></span>
+                <span class=""><a href="../../help/question/cz_2.html">支付宝</a></span>
+                <span class=""><a href="../../help/question/cz_3.html">微信支付</a></span>
+
+                </p>
+            </div>
+        </li>
+        <li>
+            <div class="slide" style="">
+            <h2><img src="../../ssc/themes/default/img/ico44.png" alt="">兑奖提款</h2>
+            <p>
+                <span class=""><a href="../../help/question/tk_9.html">提款未成功</a></span>
+                <span class=""><a href="../../help/question/tk_6.html">是否收手续费</a></span>
+                <span class=""><a href="../../help/question/tk_5.html">如何提款</a></span>
+                <span class=""><a href="../../help/question/tk_10.html">中奖查询</a></span>
+                </p>
+            </div>
+        </li>
+        <li style="border-right: none;">
+            <h2><img src="../../ssc/themes/default/img/ico45.png" alt="">特色服务</h2>
+            <p>
+                <span class=""><a href="../../help/rule/Extension.html">推广赚钱</a></span>
+                <span class=""><a href="" target="_blank">在线客服</a></span>
+                <span class=""><a href="">代理QQ</a></span>
+            </p>
+        </li>
+    </ul>
+</div><div class="record wid1">
+    <p>彩票网 客服QQ：<a class="qqstyle" href="">8888</a></p>
+    <p style="font-family:arial;">
+        2009 -
+        <script>
+        var date = new Date;
+        var year=date.getFullYear();
+        document.write(year);
+    </script>&nbsp;&nbsp;&copy;彩票网</p><p class="mt30"><span>&nbsp;&nbsp; 郑重提示：彩票有风险，投注需谨慎</span> 不向未满18周岁的青少年出售彩票</p>
+    <p></p>
+    <div class="comp">
+        <ul>
+            <li><img src="../../ssc/themes/default/img/img1.jpg" alt=""></li>
+            <li><img src="../../ssc/themes/default/img/img2.jpg" alt=""></li>
+            <li><img src="../../ssc/themes/default/img/img3.jpg" alt=""></li>
+            <li><img src="../../ssc/themes/default/img/img4.jpg" alt=""></li>
+            <li><img src="../../ssc/themes/default/img/img5.jpg" alt=""></li>
+            <li><img src="../../ssc/themes/default/img/img6.jpg" alt=""></li>
+            <li><img src="../../ssc/themes/default/img/img7.jpg" alt=""></li>
+            <li><img src="../../ssc/themes/default/img/img8.jpg" alt=""></li>
+        </ul>
+    </div>
+</div><script type="text/javascript" src="../../ssc/themes/default/js/jquery.min.js?v=2017"></script><!--jQuery库-->
+<script type="text/javascript" src="../../ssc/themes/default/js/scrollanim.min.js?v=2017"></script> <!--"动画库"-->
+<script src="../../ssc/themes/default/js/type.js?v=2017"></script><!--自定义封装函数-->
+<script src="../../ssc/themes/default/js/global.js?v=20170321"></script><!--自定义封装函数-->
+<script src="../../ssc/themes/default/js/jquery.cookie.js?v=2017"></script><!--自定义封装函数-->
+<script src="../../ssc/themes/default/js/jquery.md5.js?v=2017"></script><!--自定义封装函数-->
+<script src="../../ssc/themes/default/layer/layer.js?v=2017"></script>
+<script src="../../ssc/themes/default/js/jquery.nicescroll.js?v=2017"></script>
+<script src="../../ssc/themes/default/js/dateFormat.js?v=2017"></script>
+<script src="../../ssc/themes/default/js/template.js?v=2017"></script>
+<script src="../../ssc/themes/default/js/swfobject/swfobject.js?v=2017"></script>
+<script src="../../ssc/themes/default/js/jquery.liMarquee.js?v=2017"></script>
+<script src="../../ssc/themes/default/js/placeholders.jquery.min.js?v=2017"></script>
+<script>
+    // 闪烁
+    var blinkColorArr = "#fa6200|#0f3f94".split("|");
+    $(".blink").each(function() {
+        var obj = $(this);
+        setInterval(function() {
+            var tmpColor = blinkColorArr[parseInt(Math.random() * blinkColorArr.length)];
+            $(obj).css("color", tmpColor);
+        },200);
+    });
+</script><script>
+    function openHyzx(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        if (typeof $.cookie("uid") == 'undefined' || typeof $.cookie("token") == 'undefined') {
+            alert("请先登录");
+            if ($("#loginAccount1").length > 0) {
+                $("#loginAccount1").focus();
+                return;
+            }
+            window.location.href = "../../index.html";
+            return;
+        }
+        windowOpen('../../member/main.html?module=' + module, '会员中心', 1250, 834);
+    }
+
+    function openGcdt(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        windowOpenBlank('../../ssc/main.html?module=' + module);
+        
+    }
+
+    function openZstIndex(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        windowOpenBlank('../../ssc/main.html?module=' + module);
+        
+    }
+    function refreshYzm(obj) {
+        var src = $(obj).attr("src");
+        var params = getRequest(src);
+
+        src = "/code/yzm?timestamp=" + (new Date()).getTime();
+        $.each(params, function(index, value) {
+            src += '&' + value.key + '=' + value.value;
+        });
+        $(obj).attr("src", src);
+    }
+
+    function showLoading() {
+        layer.load(2, {
+            shade: [0.1,'#000'] //0.1透明度的白色背景
+        })
+    }
+    function hideLoading() {
+        layer.closeAll();
+    }
+</script><script>
+    function openGcdt(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        windowOpenBlank('../../ssc/main.html?module=' + module);
+        
+    }
+    function openHyzx(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        if (typeof $.cookie("uid") == 'undefined' || typeof $.cookie("token") == 'undefined') {
+            alert("请先登录");
+            if ($("#loginAccount1").length > 0) {
+                $("#loginAccount1").focus();
+                return;
+            }
+            window.location.href = "../../index.html";
+            return;
+        }
+        windowOpen('../../member/main.html?module=' + module, '会员中心', 1250, 834);
+    }
+    $(function () {
+        fade(".banner .bann ul li", ".banner .four_men ul li", 30000, "", "");
+    });
+
+</script>
+<script>
+    function abc(mainDiv) {
+        var i = $(mainDiv + " ol.m span.sp2").text();
+        i--;
+        if (i == -1) {
+            i = 9;
+            $(mainDiv + " ol.m span.sp2").text(i);
+
+            var te = $(mainDiv + " ol.m span.sp1").text() - 1;
+            if (te < 0) {
+                if ($(mainDiv + " ol.f span.sp2").text() == 0) {
+                    $(mainDiv + " ol.f span.sp2").text(9);
+
+                    if ($(mainDiv + " ol.f span.sp1").text() == 0) { //分
+
+                        $(mainDiv + " ol.f span.sp1").text(6);
+
+                        if ($(mainDiv + " ol.s span.sp2").text() == 0) {
+                            $(mainDiv + " ol.s span.sp2").text(9);
+                            $(mainDiv + " ol.s span.sp1").text($(mainDiv + " ol.s span.sp1").text() - 1);
+
+                        } else {
+                            $(mainDiv + " ol.s span.sp2").text($(mainDiv + " ol.s span.sp2").text() - 1);
+                        }
+                    }
+                    $(mainDiv + " ol.f span.sp1").text($(mainDiv + " ol.f span.sp1").text() - 1);
+
+                } else {
+
+                    $(mainDiv + " ol.f span.sp2").text($(mainDiv + " ol.f span.sp2").text() - 1)//分钟
+                }
+                te = 5;
+            }
+            $(mainDiv + " ol.m span.sp1").text(te)
+        }
+
+        $(mainDiv + " ol.m span.sp2").text(i)
+    }
+
+    $(function () {
+        $(".rt .type1 .step .bor_box p ,.rt .type1 .step ul li").hover(function(){
+            var index=$(this).index()+1;
+            $(this).addClass("acti").siblings().removeClass("acti");
+            $(".rt .type1 .step .bor_box p").removeClass("acti");
+            $(".rt .type1 .step .bor_box p:lt("+index+")").addClass("acti");
+        },function(){
+            $(".rt .type1 .step .bor_box p").removeClass("acti");
+        })
+        slide_nav(".men_list .left_layout h1",".boxtlayoutshow","acti");
+        numadd(".main_layout .right_layotu .left_wrap .Bettingbag .num_bett .val_add .reduce a", ".main_layout .right_layotu .left_wrap .Bettingbag .num_bett .val_add .reduce a.fl", ".main_layout .right_layotu .left_wrap .Bettingbag .num_bett .val_add .reduce a.fr")
+        tabs_cg(".Newest .tabs_cg ul li:lt(11)", ".Newest .layout .Analysis", "hover", "acti", "", "");//下面
+        tabs_cg(".main_layout .right_layotu .left_wrap .tabs_cg ul li", ".main_layout .right_layotu .left_wrap .Bettingbag .num_bett", "hover", "acti", "", "");
+        two_scroll(".main_layout .right_layotu .left_wrap .scroll_pic ul li", "", "", ".main_layout .right_layotu .left_wrap .scroll_pic p i", "");
+
+        $(".Newest .Analysis .box3 .timer_wrap").each(function (index, element) {
+            $(this).attr("index", "ti" + index);
+            $(this).addClass("ti" + index);
+        });
+
+        setInterval(function () {
+            $(".Newest .Analysis .box3 .timer_wrap").each(function (index, element) {
+                //console.log();
+                abc('".Newest .Analysis .box3 ".' + $(this).attr("index") + '"');
+            });
+
+        }, 1000);
+
+//        $('.list ul li').attr('sl', '1');
+        $('.list ul li.li1 h4').click(function () {
+            var clickStatus = $(this).parent('li').attr('sl');
+            if(typeof clickStatus == 'undefined'){
+                $('.list ul li').removeClass('sli');
+                $(this).parent('li').addClass('sli');
+                $('.list ul li .slide').slideUp(300);
+                $(this).parent('li').find('div').slideDown(300);
+                $(this).parent('li').attr('sl', '0');
+            }else if (clickStatus == 1) {
+                $('.list ul li').removeClass('sli');
+                $(this).parent('li').addClass('sli');
+                $('.list ul li .slide').slideUp(300);
+                $(this).parent('li').find('div').slideDown(300);
+                $('.list ul li').attr('sl', '1');
+                $(this).parent('li').attr('sl', '0');
+            } else if (clickStatus == 0) {
+                $('.list ul li').removeClass('sli');
+                $(this).parent('li').removeClass('sli');
+                $(this).parent('li').find('div').slideUp();
+                $(this).parent('li').attr('sl', '1');
+            }
+        });
+
+        var c = $('.rt').height();
+        $('.main .list').css('height', c - 2);
+        slide_nav(".men_list .left_layout h1",".boxtlayoutshow","acti");
+        //$('.list ul li.li1 h4').parent('li').siblings().attr('sl', '1');
+        $('.list ul li.li1 h4').parent('li').eq(0).attr('sl', '0');
+        $('.help_list .lis ul li').click(function(){
+            var w=$(this).index();
+            $(this).addClass('sli').siblings().removeClass('sli');
+            $('.help_list .help_col').eq(w).addClass('show').siblings().removeClass('show');
+        })
+    });
+
+    function slide_nav(obj,class_name,iname){
+        $(obj).parent().hover(function(){
+            $(obj).find("i").removeClass(iname);
+            $(obj).parent().find(class_name).slideUp();
+            $(this).parent().find(class_name).slideDown();
+            $(this).find('i').addClass(iname);
+            $(obj).attr('open',"0");
+            $(this).attr('open',"1");
+        },function(){
+            //console.log(1);
+            $(obj).parent().find(class_name).slideUp();
+            $(obj).find('i').removeClass(iname);
+            $(obj).attr('open',"0");
+        })
+    }
+    function openHyzx(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        if (typeof $.cookie("uid") == 'undefined' || typeof $.cookie("token") == 'undefined') {
+            alert("请先登录");
+            if ($("#loginAccount1").length > 0) {
+                $("#loginAccount1").focus();
+                return;
+            }
+            window.location.href = "../../index.html";
+            return;
+        }
+        windowOpen('../../member/main.html?module=' + module, '会员中心', 1250, 834);
+    }
+</script></body>
+</html>

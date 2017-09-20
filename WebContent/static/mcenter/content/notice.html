@@ -1,0 +1,164 @@
+
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>内容管理</span><span>/</span><span>公告栏管理</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow">
+            <!--筛选条件-->
+            <div class="filter-wraper clearfix p-xs">
+                <button type="button" class="btn btn-info btn-addon" data-toggle="modal" data-target="#addnotice"><i class="fa fa-plus"></i><span class="hd">新增</span></button>
+                <button type="button" class="btn btn-danger-hide"><i class="fa fa-trash-o"></i><span class="hd">删除</span></button>
+                <div class="search-wrapper btn-group pull-right m-r-n-xs">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <div>
+                              <select data-placeholder="域名" class="chosen-select-no-single" tabindex="9">
+                                <option value=""></option>
+                                <option>列表1</option>
+                                <option>列表2</option>
+                                <option>列表3</option>
+                                <option>列表4</option>
+                              </select>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn"> <button type="button" class="btn btn-filter"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button></span>
+                    </div>
+                </div>
+            </div>
+            <!--表格内容-->
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable" aria-describedby="editable_info">
+                        <thead>
+                          <tr role="row" class="bg-gray">
+                            <th><input type="checkbox" class="i-checks"></th>
+                            <th>标题</th>
+                            <th class="sorting">发送时间</th>
+                            <th>操作</th>
+                          </tr>
+<!--
+                          <tr class="bd-none">
+                            <th colspan="5"><div class="select-records"><i class="fa fa-exclamation-circle"></i>您当前选中了全部的3条记录，<a href="javascript:void(0)">点此取消选定</a>全部记录</div></th>
+                          </tr>
+-->
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><input type="checkbox" class="i-checks"></td>
+                            <td><span class="table-t-title">五一特惠存款满100送100，充多送多。</span></td>
+                            <td>2015-04-18 16:32:42</td>
+                            <td><a href="javascript:void(0)">编辑</a></td>
+                          </tr>
+                           <tr>
+                            <td><input type="checkbox" class="i-checks"></td>
+                            <td><span class="table-t-title">感恩节消费满500返还5%，满1000返还10%，更多优惠查</span></td>
+                            <td><span class="co-grayc2">将于</span>2015-04-18 16:32:42<span class="co-grayc2">发送</span></td>
+                            <td><a href="javascript:void(0)">编辑</a></td>
+                          </tr>
+                          <tr>
+                            <td><input type="checkbox" class="i-checks"></td>
+                            <td><span class="table-t-title">五一特惠存款满100送100，充多送多。</span></td>
+                            <td>2015-04-18 16:32:42</td>
+                            <td><a href="javascript:void(0)">编辑</a></td>
+                          </tr>
+                           <tr>
+                            <td><input type="checkbox" class="i-checks"></td>
+                            <td><span class="table-t-title">感恩节消费满500返还5%，满1000返还10%，更多优惠查</span></td>
+                            <td>2015-04-18 16:32:42</td>
+                            <td><a href="javascript:void(0)">编辑</a></td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row bdtop3">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left">
+                          <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>每页20条</option>
+                            <option>每页30条</option>
+                            <option>每页40条</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                            <form class="form-inline">
+                              <label class="m-l-sm">共10页</label>
+                              <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                              <button class="btn btn-sm m-l-sm">跳转</button>
+                            </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增公告栏管理-->
+<div class="modal inmodal" id="addnotice" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-comments-o"></i>&nbsp;&nbsp;发送公告</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="clearfix save lgg-version">
+                    <a href="javasrcipt:void(0)" class="current">简体中文<span>未编辑</span></a>
+                    <a href="javasrcipt:void(0)">English<span>已编辑</span></a>
+                    <a href="javasrcipt:void(0)">繁体中文<span>已编辑</span></a>
+                    <span class="more"><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i></a></span>
+                </div>
+                <div class="hfsj-wrap">
+                <div class="form-group">
+                  <div class="clearfix">
+                    <label>标题</label>
+                    <div class="pull-right inline">
+                      <select class="lgg-sys chosen-select-no-single">
+                        <option>复制语系</option>
+                        <option>复制语系</option>
+                      </select>
+                    </div>
+                  </div>
+                  <input type="text" placeholder="" class="form-control m-b">
+                </div>
+                <div class="form-group"><label>信息内容</label><textarea class="form-control m-b"></textarea></div>
+                <div class="clearfix form-group m-b-xxs">
+                  <div class="dsfb"><label><input type="checkbox" class="i-checks"></label>定时发送</div>
+                  <div class="dsfb-data">
+                    <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                      <input type="text" class="form-control" value="2015-05-01 16:51:01 至 2015-05-04 10:20:20">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">下一步</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+    });
+</script>

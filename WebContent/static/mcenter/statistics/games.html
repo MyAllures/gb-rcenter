@@ -1,0 +1,526 @@
+
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>统计报表</span>
+        <span>/</span><span>投注记录</span>
+<!--        <a href="javascript:void(0)" nav-target="mainFrame" class="m-l-sm btn btn-outline btn-default btn-xs co-gray6 return-btn"><em class="fa fa-caret-left"></em>返回</a>-->
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow clearfix">
+        <ul class="clearfix sys_tab_wrap">
+                                <li class="active"><a href="statistics/games.html" nav-target="mainFrame">全部</a></li>
+                                <li><a href="statistics/games2.html" nav-target="mainFrame">真人</a></li>
+                                <li><a href="statistics/games3.html" nav-target="mainFrame">电子</a></li>
+                                <li><a href="statistics/games4.html" nav-target="mainFrame">体育</a></li>
+                                <li><a href="statistics/games5.html" nav-target="mainFrame">彩票</a></li>
+                            </ul>
+            
+            <div class="m-t-md">
+                <div class="m-b-xs clearfix">
+           <div class="col-sm-10 clearfix" style="padding-left: 0;">
+           
+           <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                    <div class="input-group">
+                        <span class="bg-gray input-group-addon bdn">
+                            <select class="chosen-select-no-single" data-placeholder="玩家">
+                                <option value=""></option>
+                                <option value="">玩家</option>
+                                <option value="">代理</option>
+                                <option value="">总代</option>
+                            </select>
+                        </span>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+                 <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group date">
+                            <span class="input-group-addon bg-gray">注单号</span>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    
+                     <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group">
+                            <span class="input-group-addon bg-gray">游戏类型</span>
+                            <span class=" input-group-addon bdn right-btn-down">
+                            <div class="btn-group table-desc-right-t-dropdown" initprompt="10条" callback="query">
+                            <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default right-radius type-search-btn">
+                        <span prompt="prompt">请选择</span>
+                        <span class="caret-a pull-right"></span>
+                    </button>
+                   
+                </div>
+                        </span>
+                        </div>
+                        <div class="type-search type-search-game">
+                <div class="search-top-menu">
+                    <button class="btn btn-filter btn-xs">全选</button>
+                    <button class="btn btn-outline btn-filter btn-xs">清空</button>
+                    <span style="margin-right: 10px;vertical-align: top;line-height: 20px;">|</span>
+                   <button class="btn btn-outline btn-filter btn-xs">角色扮演</button>
+                   <button class="btn btn-outline btn-filter btn-xs">体育竞技</button>
+                   <button class="btn btn-outline btn-filter btn-xs">休闲电子</button>
+                    </div>
+                   
+                <div class="m-t">
+                    <table class="table table-bordered m-b-xxs">
+                       
+                       <tbody><tr>
+                            <td class="bg-gray al-left"><label><input type="checkbox" class="i-checks"><span class="m-l-xs"><b>QQ游戏</b></span></label></td>
+                            <td class="al-left">
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">BBIN</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">视讯</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">体育</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">彩票</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">几率</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">3D</span></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bg-gray al-left"><label><input type="checkbox" class="i-checks"><span class="m-l-xs"><b>联众游戏</b></span></label></td>
+                            <td class="al-left">
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">BBIN</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">视讯</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">体育</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">彩票</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">几率</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">3D</span></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bg-gray al-left"><label><input type="checkbox" class="i-checks"><span class="m-l-xs"><b>盛大游戏</b></span></label></td>
+                            <td class="al-left">
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">BBIN</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">视讯</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">体育</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">彩票</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">几率</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">3D</span></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bg-gray al-left"><label><input type="checkbox" class="i-checks"><span class="m-l-xs"><b>网易游戏</b></span></label></td>
+                            <td class="al-left">
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">BBIN</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">视讯</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">体育</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">彩票</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">几率</span></label>
+                                <label class="m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">3D</span></label>
+                            </td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+                    </div>
+
+                    <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group date time-select-a">
+                            <span class="input-group-addon bg-gray">投注时间</span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-20 12:30:21">
+                            <span class="input-group-addon time-select-t">~</span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-22 12:30:21">
+                            <span class="input-group-addon time-select-btn"><a type="button" class="btn btn-filter btn-outline">快选</a></span>
+                        </div>
+                    </div>
+                     <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group date time-select-a">
+                            <span class="input-group-addon bg-gray">派彩时间</span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-20 12:30:21">
+                            <span class="input-group-addon time-select-t">~</span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-22 12:30:21">
+                            <span class="input-group-addon time-select-btn"><a type="button" class="btn btn-filter btn-outline">快选</a></span>
+                        </div>
+                    </div> 
+
+
+
+                    <div class="show-demand-a">
+                    
+                       <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group time-select-a">
+                            <span class="input-group-addon bg-gray">投注额</span>
+                            <span class="input-group-addon time-select-ico">起</span>
+                            <input type="text" class="form-control" placeholder="">
+                            <span class="input-group-addon time-select-t">~</span>
+                            <span class="input-group-addon time-select-ico">止</span>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                       </div>
+                       <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group time-select-a">
+                            <span class="input-group-addon bg-gray">有效投注额</span>
+                            <span class="input-group-addon time-select-ico">起</span>
+                            <input type="text" class="form-control" placeholder="">
+                            <span class="input-group-addon time-select-t">~</span>
+                            <span class="input-group-addon time-select-ico">止</span>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                       </div>
+                       <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group time-select-a">
+                            <span class="input-group-addon bg-gray">派彩金额</span>
+                            <span class="input-group-addon time-select-ico">起</span>
+                            <input type="text" class="form-control" placeholder="">
+                            <span class="input-group-addon time-select-t">~</span>
+                            <span class="input-group-addon time-select-ico">止</span>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                       </div>
+
+
+
+
+
+
+
+
+                    <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm h-line-a">
+                        <div class="input-group">
+                            <span class="input-group-addon bg-gray">派彩结果</span>
+                            <span class=" input-group-addon bdn  right-btn-down">
+                            <div class="btn-group table-desc-right-t-dropdown">
+                      <ul role="menu">
+                        <li role="presentation">
+                            <span><input type="radio" name="b1"> 全部</span>
+                        </li>
+                        <li role="presentation">
+                            <span><input type="radio" name="b1"> 赢</span>
+                        </li>
+                        <li role="presentation">
+                            <span><input type="radio" name="b1"> 亏</span>
+                        </li>
+                        <li role="presentation">
+                            <span><input type="radio" name="b1"> 和</span>
+                        </li>
+                    </ul>
+                </div>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm h-line-a">
+                        <div class="input-group">
+                            <span class="input-group-addon bg-gray">来源终端</span>
+                            <span class=" input-group-addon bdn  right-btn-down">
+                            <div class="btn-group table-desc-right-t-dropdown">
+                      <ul role="menu">
+                        <li role="presentation">
+                            <span><input type="radio" name="a1"> 全部</span>
+                        </li>
+                        <li role="presentation">
+                            <span><input type="radio" name="a1"> pc端</span>
+                        </li>
+                        <li role="presentation">
+                            <span><input type="radio" name="a1"> 手机端</span>
+                        </li>
+                    </ul>
+                </div>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm h-line-a">
+                        <div class="input-group">
+                            <span class="input-group-addon bg-gray">交易状态</span>
+                            <span class=" input-group-addon bdn  right-btn-down">
+                            <div class="btn-group table-desc-right-t-dropdown">
+                      <ul role="menu">
+                        <li role="presentation">
+                            <span><input type="radio" name="b1"> 全部</span>
+                        <li role="presentation">
+                            <span><input type="radio" name="b1"> 已结算</span>
+                        </li>
+                        <li role="presentation">
+                            <span><input type="radio" name="b1"> 未结算</span>
+                        </li>
+                        <li role="presentation">
+                            <span><input type="radio" name="b1"> 订单取消</span>
+                        </li>
+                    </ul>
+                </div>
+                        </span>
+                        </div>
+                    </div>
+                    </div>  
+
+                    </div>
+                    <div class="col-sm-12 clearfix template-menu">
+                         <button type="button" class="btn btn-filter btn-outline pull-right  show-demand-b"><i class="fa fa-chevron-down"></i> 高级搜索</button>
+                        
+                        <button type="button" class="btn btn-filter mediate-search-btn"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button>
+                        
+                        
+
+                        <div class="input-group-btn pull-left"> 
+                          <div class="input-group">
+                          <button type="button" class="btn btn-filter btn-outline pull-right radius-right-none">保存</button>
+                        <span class="bg-gray input-group-addon bdn">
+                            <div class="btn-group table-desc-right-t-dropdown"  callback="query">
+                            <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default right-radius" data-toggle="dropdown" aria-expanded="false">
+                        <a href="javascript:void(0)" class="del-template"><span class="fa fa-times"></span></a>
+                        <span prompt="prompt">请选择模板</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a href="javascript:void(0)" class="del-template"><span class="fa fa-times"></span></a><a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10" class="text-template">模板1</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="javascript:void(0)" class="del-template"><span class="fa fa-times"></span></a><a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10" class="text-template">模板1</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="javascript:void(0)" class="del-template"><span class="fa fa-times"></span></a><a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10" class="text-template">模板1</a>
+                        </li>
+                    </ul>
+                </div>
+                        </span>
+                    </div>
+                    </div>
+                        </div>
+
+
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 m-t">
+        <div class="wrapper white-bg shadow">
+            <div class="sys_tab_wrap clearfix">
+                <div class="m-sm">
+                    <b>已选：</b><span class="co-yellow">全部游戏</span>
+                    <div class="pull-right m-t-n-xxs">
+                        <button class="btn btn-outline btn-filter m-r-sm btn-total">统计数据</button>
+                        <button class="btn btn-primary-hide">导出数据</button>
+                    </div>
+                </div>
+            </div>
+            <div class="p-sm con-total">
+                <b>总计：</b>1笔
+                <b class="m-l">有效交易量：</b>2815.00
+                <b class="m-l">派彩：</b><span class="co-red3">-2815.00</span>
+                <b class="m-l">彩池奖金：</b><span class="co-blue">1815.00</span>
+                <b class="m-l">小费：</b><a href="statistics/games3.html" nav-target="mainFrame">215.00</a>
+            </div>            
+            <div class="dataTables_wrapper" role="grid">               
+               <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable m-b-none" aria-describedby="editable_info">
+                        <thead>
+                            <tr role="row" class="bg-gray">
+                                <th>玩家账号</th>
+                                <th>注单号</th>
+                                <th>游戏名称</th>
+                                <th>投注时间</th>
+                                 <th class="sorting">投注额</th>
+                                <th class="sorting">有效投注额</th>
+                                <th class="sorting">派彩</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tab-detail">
+                                <td class="co-blue">ACC_B1</td>
+                                <td><a href="#">5645489464</a></td>
+                                <td>AIP名称<br>API下某游戏名称</td>
+                                <td>2015-08-06 04:22:15</td>
+                                
+                                <td>21,922.00</td>
+                                <td>21,922.00</td>
+                                <td class="co-red3">-2.85</td>
+                                <td><span class="label label-success">已结算</span></td>
+                                <td><a href="statistics/games-detail.html" nav-target="mainFrame">详细</a></td>
+                            </tr>
+                            <tr class="tab-detail">
+                                <td class="co-blue">ACC_B1</td>
+                                <td><a href="#">5645489464</a></td>
+                                <td>QQ游戏龙虎斗</td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td>21,922.00</td>
+                                <td>21,922.00</td>
+                                <td class="co-green">+3.00</td>
+                                <td><span class="label label-success">已结算</span></td>
+                                <td><a href="statistics/games-detail.html" nav-target="mainFrame">详细</a></td>
+                            </tr>
+                            <tr class="tab-detail">
+                                <td class="co-blue">ACC_B1</td>
+                                <td><a href="#">5645489464</a></td>
+                                <td>QQ游戏龙虎斗</td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td>21,922.00</td>
+                                <td>21,922.00</td>
+                                <td>--</td>
+                                <td><span class="label label-orange">未结算</span></td>
+                                <td><a href="statistics/games-detail.html" nav-target="mainFrame">详细</a></td>
+                            </tr>
+                            <tr class="tab-detail">
+                                <td class="co-blue">ACC_B1</td>
+                                <td><a href="#">5645489464</a></td>
+                                <td>QQ游戏龙虎斗</td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td>21,922.00</td>
+                                <td>21,922.00</td>
+                                <td>--</td>
+                                <td><span class="label label-danger">订单取消</span></td>
+                                <td><a href="statistics/games-detail.html" nav-target="mainFrame">详细</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row bdtop3">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left">
+                          <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>每页20条</option>
+                            <option>每页30条</option>
+                            <option>每页40条</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                            <form class="form-inline">
+                              <label class="m-l-sm">共10页</label>
+                              <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                              <button class="btn btn-sm m-l-sm">跳转</button>
+                            </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--选择游戏类型-->
+<div class="modal inmodal" id="game" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">选择游戏类型</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <button class="btn btn-filter btn-xs">全选</button>
+                    <button class="btn btn-outline btn-filter btn-xs m-l-xs m-r">清空</button>
+                    <button class="btn btn-outline btn-filter btn-xs">QQ游戏</button>
+                   <button class="btn btn-outline btn-filter btn-xs">联众游戏</button>
+                   <button class="btn btn-outline btn-filter btn-xs">盛大游戏</button>
+                   <button class="btn btn-outline btn-filter btn-xs">网易游戏</button>
+                   <span class="dividing-line m-r-xs m-l-xs">|</span>
+                   <button class="btn btn-outline btn-filter btn-xs">角色扮演</button>
+                   <button class="btn btn-outline btn-filter btn-xs">体育竞技</button>
+                   <button class="btn btn-outline btn-filter btn-xs">休闲电子</button>
+                </div>
+                <div class="table-responsive m-t">
+                    <table class="table table-bordered m-b-xxs">
+                        <tr>
+                            <td class="bg-gray al-left"><label><input type="checkbox" class="i-checks"><span class="m-l-xs"><b>QQ游戏</b></span></label></td>
+                            <td class="al-left">
+                                <label class="fwn m-r-sm"><span class="m-r-xs">BBIN</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">视讯</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">体育</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">彩票</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">几率</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">3D</span></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bg-gray al-left"><label><input type="checkbox" class="i-checks"><span class="m-l-xs"><b>联众游戏</b></span></label></td>
+                            <td class="al-left">
+                                <label class="fwn m-r-sm"><span class="m-r-xs">BBIN</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">视讯</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">体育</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">彩票</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">几率</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">3D</span></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bg-gray al-left"><label><input type="checkbox" class="i-checks"><span class="m-l-xs"><b>盛大游戏</b></span></label></td>
+                            <td class="al-left">
+                                <label class="fwn m-r-sm"><span class="m-r-xs">BBIN</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">视讯</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">体育</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">彩票</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">几率</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">3D</span></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bg-gray al-left"><label><input type="checkbox" class="i-checks"><span class="m-l-xs"><b>网易游戏</b></span></label></td>
+                            <td class="al-left">
+                                <label class="fwn m-r-sm"><span class="m-r-xs">BBIN</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">视讯</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">体育</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">彩票</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">几率</span></label>
+                                <label class="fwn m-r-sm"><span class="m-r-xs">3D</span></label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确定</button>
+                <button type="button" class="btn btn-primary-hide">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+ $(".show-demand-b").click(function(){
+      $(this).toggleClass("open")
+      $(".show-demand-a").toggle()
+    });
+$(".type-search-btn").click(function(){
+      $(this).toggleClass("open")
+      $(".type-search").toggle()
+    });
+    $(".btn-total").click(function(){
+        $(".con-total").slideToggle();
+    });
+    $(".btn-advanced-down").click(function () {
+            $(".advanced-options").slideToggle("10");
+            $(this).parent().toggleClass("show");
+        });
+ var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': {allow_single_deselect: true},
+        '.chosen-select-no-single': {disable_search_threshold: 10},
+        '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+        '.chosen-select-width': {width: "95%"}
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+    
+    $("#file-0").fileinput({
+        'allowedFileExtensions' : ['jpg', 'png','gif'],
+    });
+    
+    $('.help-popover').popover();
+   
+
+</script>

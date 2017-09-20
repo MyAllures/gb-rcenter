@@ -1,0 +1,154 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>经营分析</span>
+        <span>/</span><span>游戏趋势</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    
+    <div class="col-lg-12">
+        <div class="white-bg indicators clearfix  operationsOverview overview shadow">
+                       <div class="sys_tab_wrap clearfix">
+                        <div class=" clearfix m-sm"><b>四川麻将</b>
+                       
+                        <div class="pull-right col-xs-4 m-r-n">
+                           
+                                <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" class="form-control" value="2014-03-04">
+                                                  </div>
+                        </div></div>
+                    </div>
+                        <div class="table-responsive">
+                            <table class="table" aria-describedby="editable_info">
+                                <tr>
+                                    <td>
+                                        <ul class="type-tab-wrap clearfix profile-list">
+                                            <li style="width: 25%;">
+                                                <h3>新增玩家数</h3>
+                                                <b>100.00</b>
+                                               
+                                                <div class="clearfix">
+                                                    <span class="al-right">较前日：</span>
+                                                   <span class="co-red al-left ratio-a"><div class="pull-left line-hi35"><i class="fa fa-level-down"></i></div><div class="shengl" type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="999,999.000.999.999.999%">999,999.00</div></span>
+                                                </div>
+                                            </li>
+                                            <li style="width: 25%;">
+                                                <h3>交易单量</h3>
+                                                <b>100.00</b>                                                
+                                                <div class="clearfix">
+                                                    <span class="al-right">较前日：</span>
+                                                    <span class="co-red al-left ratio-a"><div class="pull-left line-hi35"><i class="fa fa-level-down"></i></div><div class="shengl" type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="999,999.000.999.999.999%">999,999.00</div></span>
+                                                </div>
+                                            </li>
+                                            <li class="current" style="width: 25%;">
+                                                <h3>有效交易量</h3>
+                                                <b>1118</b>
+                                                <div class="clearfix">
+                                                    <span class="al-right">较前日：</span>
+                                                    <span class="green al-left ratio-a"><div class="pull-left line-hi35"><i class="fa fa-level-up"></i></div><div class="shengl" type= "button" data-toggle="tooltip" data-placement="top" title="999,999.00%">99.2</div></span>
+                                                </div>
+                                               
+                                            </li>
+                                            <li style="width: 25%;">
+                                                <h3>交易盈亏</h3>
+                                                <b>100.00</b>
+                                                <div class="clearfix">
+                                                    <span class="al-right">较前日：</span>
+                                                    <span class="co-red al-left ratio-a"><div class="pull-left line-hi35"><i class="fa fa-level-down"></i></div><div class="shengl" type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="999,999.000.999.999.999%">999,999.00</div></span>
+                                                </div>
+                                            </li>
+                                            
+                                            
+                                            
+                                        </ul>
+                                        <div class="m-t">
+                                        <div id="containergame2-2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                                </div>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </div>
+                        
+                    </div>
+
+                    </div>
+                    
+</div>
+</div>
+
+<script>
+//走势图
+   $(function () {
+    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=usdeur.json&callback=?', function (data) {
+
+        $('#containergame2-2').highcharts({
+            chart: {
+                zoomType: 'x'
+            },
+            title: {
+                text: ''
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                        ' ' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                }
+            },
+            legend: {
+                enabled: false
+            },
+             credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+
+            series: [{
+                type: 'area',
+                name: '存款金额',
+                data: data
+            }]
+        });
+    });
+});
+
+$(".btn-total").click(function(){
+        $(".con-total").slideToggle();
+    });
+</script>
+

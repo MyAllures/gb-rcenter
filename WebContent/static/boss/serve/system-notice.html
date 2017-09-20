@@ -1,0 +1,137 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>服务</span><span>/</span><span>系统公告</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12 m-b">
+        <div class="wrapper white-bg shadow">
+            <!--筛选条件-->
+            <div class="filter-wraper clearfix p-xs border-b-1">
+                <a href="serve/mass-history.html" nav-target="mainFrame"
+                   class="btn btn-outline btn-filter pull-right m-r-sm">历史记录</a>
+            </div>
+            <!--表格内容-->
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+
+
+                <ul class="artificial-tab clearfix bg-gray">
+                    <li class="col-sm-3"></li>
+                    <li class="m-l-lg"><a href="javascript:void(0)" class="p-r-sm"><span class="con">Englist 未编辑</span></a>
+                    </li>
+                    <li><a class="current" href="javascript:void(0)"><span class="con">简体中文 编辑中</span></a></li>
+                    <li><a href="javascript:void(0)"><span class="con">繁體中文 未編輯</span></a></li>
+                    <li class="pull-right m-t-md">
+                        <div class="btn-group">
+                            <button data-toggle="dropdown" class="btn btn-link dropdown-toggle fzyx">
+                                复制语系&nbsp;&nbsp;<span class="caret"></span></button>
+                            <ul class="dropdown-menu pull-right">
+                                <li class="temp"><a href="javascript:void(0)" class="co-gray">复制语系</a></li>
+                                <li class="temp"><a href="javascript:void(0)" class="co-gray">复制语系</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+
+                <div class="clearfix m-l-lg m-t-md line-hi34">
+                    <label class="ft-bold col-sm-3 al-right">标题：</label>
+
+                    <div class="col-sm-5"><input type="text" class="form-control p-r-70" placeholder="这里输入标题"><p class="character">0/100</p>
+                    </div>
+                </div>
+
+
+                <div class="clearfix m-l-lg m-t-md line-hi34">
+                    <label class="ft-bold col-sm-3 al-right">内容：</label>
+
+                    <div class="col-sm-5"><textarea class="form-control p-b-30" placeholder="这里输入内容"></textarea><p class="character">0/2000</p>
+                    </div>
+                </div>
+
+                <div class="clearfix m-l-lg m-t-md line-hi34">
+                    <label class="ft-bold col-sm-3 al-right">公告类型：</label>
+
+                    <div class="col-sm-8 line-hi34">
+                        <label><input type="radio" class="i-checks" value="1" name="b"> 系统公告</label>
+                        <label><input type="radio" class="i-checks" value="1" name="b"> 游戏公告</label>
+                        <label><input type="radio" class="i-checks" value="1" name="b"> 运营公告</label>
+                        <label><input type="radio" class="i-checks" value="1" name="b"> 平台公告</label>
+                        <span class="m-l co-grayc2">对所有人展示</span>
+                        <span class="m-l co-grayc2">仅对运营商，站长，总代，代理展示</span>
+                    </div>
+                </div>
+                <div class="clearfix m-l-lg m-t-sm line-hi34">
+                    <label class="ft-bold col-sm-3 al-right">API：</label>
+
+                    <div class="col-sm-8 line-hi34">
+                        <div class="form-group clearfix pull-left content-width-limit-250 ">
+                            <select class="chosen-select-no-single">                        
+                                <option value="">请选择</option>
+                                <option value="">API1</option>
+                                <option value="">API2</option>
+                                <option value="">API3</option>
+                            </select>
+                   </div>
+                    </div>
+                </div>
+                <div class="clearfix m-l-lg m-t-sm line-hi34">
+                    <label class="ft-bold col-sm-3 al-right">发布方式：</label>
+
+                    <div class="col-sm-8 line-hi34">
+                        <label><input type="radio" class="i-checks" value="1" name="a"> 仅展示</label>
+                        <label><input type="radio" class="i-checks" value="1" name="a"> 展示并弹窗</label>
+                        <span class="m-l co-grayc2">发布后除展示外，还将立即在页面居中的位置弹窗提醒；</span>
+                    </div>
+                </div>
+                <div class="clearfix m-l-lg m-t-md line-hi34">
+                    <label class="ft-bold col-sm-3 al-right"><input type="checkbox" class="i-checks" value="1">
+                        定时发布：</label>
+
+                    <div class="col-sm-8 line-hi34">
+                        <div class="form-group clearfix pull-left content-width-limit-400">
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input type="text" class="form-control" value="最近7天(2013-10-11~2013-10-11)">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="operate-btn ">
+                <a href="serve/system-notice-preview.html" nav-target="mainFrame"
+                   class="btn btn-filter btn-lg ">预览并发布</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 左侧菜单响应控件 -->
+<script src="../../common/js/inspinia/inspinia.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': {allow_single_deselect: true},
+            '.chosen-select-no-single': {disable_search_threshold: 10},
+            '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+            '.chosen-select-width': {width: "95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+    //表格内下拉菜单    
+    $(document).ready(function () {
+        $("th.inline").click(function () {
+            $(this).find(".chosen-drop").css({top: $(this).parent().offset().top - $("body").scrollTop() + 28});
+            $(this).find(".chosen-drop").css({left: $(this).find(".chosen-container").offset().left});
+        });
+    });
+</script>

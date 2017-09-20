@@ -1,0 +1,27 @@
+/*
+ * 日文
+ updated:2017-08-02
+ * */
+@media (max-width:1483px){
+.top{position:fixed;overflow:hidden;top:0;z-index:1002;}
+.top .top-account-menu{top:13px;width:100%;}
+.top-navigation .navbar{top:63px;}
+#page-wrapper{margin:125px 0 56px 200px;}
+body.mini-navbar #page-wrapper{margin:125px 0 0 60px;}
+.navbar-default.navbar-static-side{top:125px;}
+}
+.filter-wraper .search-wrapper{width: 640px;}
+@media (max-width: 994px){
+    .filter-wraper .search-wrapper{width: 100%;}
+}
+/* 新增域名弹窗宽度修改 */
+.addAddress_modal .modal-content{width: 900px;}
+
+.open-dialog-900-jp .modal-dialog{
+    min-width: 800px;
+    width: 1000px;
+}
+.addAddress_modal .modal{width: 900px;}
+/* 地区访问限制宽度修改 */
+.area_limit_width{    width: 640px !important;}
+.jp_distance{padding-left: 40px !important;}

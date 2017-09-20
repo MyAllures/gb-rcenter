@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玩家管理-资金管理</title>
+    <link href="../../../mcenter/themes/default/common.css" rel="stylesheet">
+    <link href="../../../common/themes/default/style.css" rel="stylesheet">
+    <link href="../../../common/themes/default/iconfont.css" rel="stylesheet" >
+    <link href="../../../common/themes/default/iCheck/custom.css" rel="stylesheet">
+    <link href="../../../common/themes/default/switchery/switchery.css" rel="stylesheet">
+    <link href="../../../common/themes/default/nouslider/jquery.nouislider.css" rel="stylesheet">
+    <link href="../../../common/themes/default/banner/elastislide.css" rel="stylesheet" />
+    <link href="../../../common/themes/default/content.css" rel="stylesheet">
+    <link href="../../../common/themes/default/chosen/chosen.css" rel="stylesheet" >
+</head>
+<body>
+<div id="mainFrame">
+    <div class="row">
+        <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>资金管理</span>
+<!--        <span>/</span><span>人工存提</span>-->
+        <span>/</span><span>输入金额量</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+        </div>
+        <div class="col-lg-12">
+            <div class="wrapper white-bg shadow">
+                <ul class="artificial-tab clearfix">
+                    <li class="col-sm-3 col-xs-12 p-x"><a href="javascript:void(0)"><span class="no">1</span><span class="con">存提选择</span></a></li>
+                    <li class="col-sm-3 col-xs-12 p-x"><a class="current" href="javascript:void(0)"><span class="no">2</span><span class="con">输入金额数量</span></a></li>
+                    <li class="col-sm-3 col-xs-12 p-x"><a href="javascript:void(0)"><span class="no">3</span><span class="con">确认金额数量</span></a></li>
+                    <li class="col-sm-3 col-xs-12 p-x"><a href="javascript:void(0)"><span class="no">4</span><span class="con">存提完成</span></a></li>
+                </ul>
+                <div class="fundsContext p-b-lg">
+                    <div class="form-group  clearfix">
+                     <label class="col-sm-3 al-right line-hi34 ft-bold">玩家账号：</label>
+                     <div class="col-sm-5">
+                        <a data-toggle="dropdown" class=" dropdown-toggle account-pull-down" aria-expanded="true"><span class="hd">demovd &nbsp;&nbsp;</span>
+                        <span class="caret hd"></span>
+                        </a>
+                        <ul class="dropdown-menu wid-size">
+                            <table class="table table-bordered table-condensed m-b-none">
+                                <tbody>
+                                  <tr>
+                                    <td class="bg-tbcolor">钱包余额</td>
+                                    <td class="co-gray6">200.00</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="bg-tbcolor">代理体系</td>
+                                    <td class="co-gray6">jack66 &gt; ddrfs</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="bg-tbcolor">所属层级</td>
+                                    <td class="co-gray6">A层级</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="bg-tbcolor">真实姓名</td>
+                                    <td class="co-gray6">张向东</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="bg-tbcolor">国际地区</td>
+                                    <td class="co-gray6">中国-香港</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="bg-tbcolor">注册时间</td>
+                                    <td class="co-gray6">2009-03-13 12:00:03</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="bg-tbcolor">账号状态</td>
+                                    <td class="co-gray6">正常</td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </ul>
+                    </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="col-sm-3 al-right line-hi34 ft-bold">取款项目：</label>
+                        <div class="col-sm-5">
+                            <label class="line-hi34">手动负数回充</label>                        
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="col-sm-3 al-right line-hi34 ft-bold">负数余额归零：</label>
+                        <div class="col-sm-5">
+                            <label class="line-hi34 co-red">有</label>
+                            <span class=" bdn"><a href="javascript:void(0)"   data-toggle="modal" data-target="#funds2-4" class="m-l-sm">查看归零游戏</a></span>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="col-sm-3 al-right line-hi34 ft-bold">归零金额：</label>
+                        <div class="col-sm-5">
+                            <label class="line-hi34">-209.98</label>                        
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="col-sm-3 al-right line-hi34 ft-bold">剩余回充金额：</label>
+                        <div class="col-sm-5">
+                            <label class="line-hi34">-209.98</label>
+                            <span class=" bdn"><a href="javascript:void(0)"  data-toggle="modal" data-target="#funds2-2"  class="m-l-sm">查看回充记录</a></span>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="col-sm-3 al-right line-hi34 ft-bold">钱包余额：</label>
+                        <div class="col-sm-5">
+                            <label class="line-hi34">209.98</label>
+                            <span class=" bdn"><a href="javascript:void(0)" class="m-l-sm">查看总资产</a></span>
+                            <label class="line-hi34"> <b> 总资产：</b>3523.00</label>
+                            <span class=" bdn"><a href="javascript:void(0)"   data-toggle="modal" data-target="#funds3-2" class="m-l-sm">查看各游戏余额</a></span>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="col-sm-3 al-right line-hi34 ft-bold">取款货币：</label>
+                        <div class="col-sm-5">
+                            <label class="line-hi34">CNY人民币</label>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="ft-bold col-sm-3 al-right line-hi34">存款金额：</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control">
+                            <input type="text" class="form-control  m-t-sm" placeholder="输入备注">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix m-b-none">
+                        <label class="ft-bold col-sm-3 al-right line-hi34">下次存款继续提醒：</label>
+                        <div class="col-sm-5">
+                            <input type="checkbox" class="i-checks">提醒 
+                        </div>
+                    </div>                
+                    <div class="form-group clearfix">
+                        <label class="ft-bold col-sm-3 al-right line-hi34">展示给玩家的取款原因：</label>
+                        <div class="col-sm-5">
+                            <div class="input-group date">
+                                <select data-placeholder="选择原因" class="chosen-select-no-single" tabindex="9">
+                                    <option value=""></option>
+                                    <option>原因1</option>
+                                    <option>原因2</option>
+                                    <option>原因3</option>
+                                    <option>原因4</option>
+                                </select>
+                                <span class="input-group-addon bdn"><a href="../system/mass-send2.html" nav-target="mainFrame" class="m-l-sm">管理</a></span>
+                            </div>
+                            <input type="text" class="form-control  m-t-sm" placeholder="原因内容">
+                        </div>
+                    </div>
+                </div>                
+                <div class="operate-btn">
+                 <a href="funds3-7.html" class="btn btn-filter btn-lg" >上一步</a>
+                 <a href="funds3-7.html" class="btn btn-filter btn-lg" >下一步</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--查看回充记录-->
+<div class="modal inmodal" id="funds2-2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">查看回充记录</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">            	
+            	<div class="form-group over clearfix m-b-n-xs">
+                  <table class="table table-striped table-bordered table-hover dataTable" aria-describedby="editable_info">
+                        <thead>
+                          <tr>
+                            <th>交易号</th>
+                            <th>回充金额CNY</th>
+                            <th>操作人</th>
+                            <th>回充时间</th>
+                            <th>状态</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>14314148509</td>
+                            <td>100.00</td>
+                            <td>爱迪达</td>
+                            <td>2015-03-24 15:09:09</td>
+                            <td>
+                              <span class="label label-green">成功</span>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>14314148509</td>
+                            <td>100.00</td>
+                            <td>爱迪达</td>
+                            <td>2015-03-24 15:09:09</td>
+                            <td>
+                              <span class="label">失败</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>14314148509</td>
+                            <td>100.00</td>
+                            <td>爱迪达</td>
+                            <td>2015-03-24 15:09:09</td>
+                            <td>
+                              <span class="label label-green">成功</span>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>14314148509</td>
+                            <td>100.00</td>
+                            <td>爱迪达</td>
+                            <td>2015-03-24 15:09:09</td>
+                            <td>
+                              <span class="label">失败</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                  <div class="modal-footer  m-r-n m-b-n">
+                        <ul class="pagination pull-right">                                    
+                            <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)"><i class="fa fa-chevron-left"></i></a></li>
+                            <li class="paginate_button active" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                            <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                            <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                            <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                            <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)"><i class="fa fa-ellipsis-h"></i></a></li>
+                            <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--查看游戏余额-->
+<div class="modal inmodal" id="funds3-2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">查看游戏余额</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+            	<div class="form-group over clearfix m-b-n-xs">
+                  <table class="table table-striped table-bordered table-hover dataTable" aria-describedby="editable_info">
+                        <thead>
+                          <tr>
+                            <th>游戏名称</th>
+                            <th>余额</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                              <td><a href="javascript:void(0)">QQ游戏</a></td>
+                            <td>100.00</td>
+                          </tr>
+                          <tr>
+                             <td><a href="javascript:void(0)">腾讯游戏</a></td>
+                            <td>100.00</td>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                  <div class="modal-footer  m-r-n m-b-n">
+                    <ul class="pagination pull-right">
+
+                        <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)"><i class="fa fa-chevron-left"></i></a></li>
+                        <li class="paginate_button active" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                        <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                        <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                        <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                        <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)"><i class="fa fa-ellipsis-h"></i></a></li>
+                        <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i></a></li>
+                    </ul>
+                </div>
+                </div>                
+            </div>            
+        </div>
+    </div>
+    
+    <!--查看回充记录-->
+<div class="modal inmodal" id="funds2-4" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">查看回充记录</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">            	
+            	<div class="form-group over clearfix m-b-n-xs">
+                  <table class="table table-striped table-bordered table-hover dataTable" aria-describedby="editable_info">
+                        <thead>
+                          <tr>
+                            <th>交易号</th>
+                            <th>归零金额CNY</th>
+                            <th>归零API</th>
+                            <th>归零时间</th>
+                            <th>操作人</th>
+                            <th>状态</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>14314148509</td>
+                            <td>100.00</td>
+                            <td><a href="javascript:void(0)">腾讯游戏</a></td>
+                            <td>2015-03-24 15:09:09</td>
+                            <td>爱迪达</td>
+                            <td>
+                              <span class="label label-green">成功</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>14314148509</td>
+                            <td>100.00</td>
+                            <td><a href="javascript:void(0)">腾讯游戏</a></td>
+                            <td>2015-03-24 15:09:09</td>
+                            <td>爱迪达</td>
+                            <td>
+                              <span class="label">失败</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>14314148509</td>
+                            <td>100.00</td>
+                            <td><a href="javascript:void(0)">腾讯游戏</a></td>
+                            <td>2015-03-24 15:09:09</td>
+                            <td>爱迪达</td>
+                            <td>
+                              <span class="label label-green">成功</span>
+                            </td>
+                          </tr>
+                          <tr>
+                             <td>14314148509</td>
+                            <td>100.00</td>
+                            <td><a href="javascript:void(0)">腾讯游戏</a></td>
+                            <td>2015-03-24 15:09:09</td>
+                            <td>爱迪达</td>
+                            <td>
+                              <span class="label">失败</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                  <div class="modal-footer  m-r-n m-b-n">
+                    <ul class="pagination pull-right">                                    
+                        <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)"><i class="fa fa-chevron-left"></i></a></li>
+                        <li class="paginate_button active" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                        <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                        <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                        <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                        <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)"><i class="fa fa-ellipsis-h"></i></a></li>
+                        <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i></a></li>
+                    </ul>
+                </div>
+                </div>                
+            </div>            
+        </div>
+    </div>
+<!-- Mainly scripts -->
+<script src="../../../common/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../../common/js/bootstrap/bootstrap.min.js"></script>
+<script src="../../../common/js/jquery/plugins/jquery.metisMenu/jquery.metisMenu.js"></script>
+<!-- Chosen -->
+<script src="../../../common/js/jquery/plugins/jquery.chosen/jquery.chosen.js"></script>
+<!-- JSKnob -->
+<script src="../../../common/js/jquery/plugins/jquery.knob/jquery.knob.js"></script>
+<!-- NouSlider -->
+<script src="../../../common/js/jquery/plugins/jquery.nouislider/jquery.nouislider.min.js"></script>
+<!-- Peity -->
+<script src="../../../common/js/jquery/plugins/jquery.peity/jquery.peity.min.js"></script>
+<!-- GITTER -->
+<script src="../../../common/js/jquery/plugins/jquery.gritter/jquery.gritter.min.js"></script>
+<!-- Switchery -->
+<script src="../../../common/js/switchery/switchery.js"></script>
+<!-- Sparkline -->
+<script src="../../../common/js/jquery/plugins/jquery.sparkline/jquery.sparkline.min.js"></script>
+<!-- ChartJS-->
+<script src="../../../common/js/chartJs/Chart.min.js"></script>
+<!-- Toastr -->
+<script src="../../../common/js/toastr/toastr.min.js"></script>
+<!-- iCheck -->
+<script src="../../../common/js/iCheck/icheck.min.js"></script>
+<!-- Custom and plugin javascript -->
+<script src="../../../common/js/inspinia/inspinia.js"></script>
+
+<script src="../../../common/js/modernizr.custom/modernizr.custom.17475.js"></script>
+
+<script src="../../../common/js/jquery/plugins/jquery.elastislide/jquery.elastislide.js"></script>
+<script src="../../../common/js/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+<!-- Mainly scripts -->
+<!-- Mainly scripts -->
+<script src="../app.js"></script>
+
+
+<!-- End SlidesJS Required -->
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+    $(document).ready(function(){
+        $(".more-data").mousedown(function(){
+            $(this).parent().toggleClass("show-data");
+        })
+
+        /*增加快捷菜单滑动-有改动*/
+
+        $("ul>li.menu").mouseover(function(){
+            $(this).addClass("shut");
+        })
+        $("ul>li.menu").mouseleave(function(){
+            $(this).removeClass("shut");
+        })
+
+        /*快捷菜单按钮效果-有改动*/
+        $("ul.home-wrap dd").mouseover(function(){
+            $(this).addClass("shut");
+        })
+        $("ul.home-wrap dd").mouseleave(function(){
+            $(this).removeClass("shut");
+        })
+
+        //themes快捷菜单冒泡阻止
+        $("ul>li.themes").click(function(){
+            $("ul>li.themes").addClass("open");
+            $(".themes_list").slideToggle();
+        })
+        
+        $("ul>li.menu").click(function(){
+            $("ul>li.menu.shut").toggleClass("open");
+            $(document).one("click", function () {
+            $("ul>li.menu").removeClass("open");
+            });
+           $("dl.menu-item").slideToggle(200);
+            $(document).one("click", function () {
+            $("dl.menu-item").hide();
+            });
+            event.stopPropagation();
+        })
+        $("dl.menu-item").click(function (event) {
+        event.stopPropagation();
+        });
+        
+
+      
+        $(".pack_up").click(function(){
+            $("ul>li.themes").removeClass("open");
+            $(".themes_list").slideToggle();
+        })
+
+        //themes
+        $("ul>li.adown").click(function(){
+            $("ul>li.adown").toggleClass("open");
+            $(".adown_list").slideToggle();
+        })
+
+        /*透明度滑块*/
+        $("#basic_slider").noUiSlider({
+            start: 40,
+            behaviour: 'tap',
+            connect: 'upper',
+            range: {
+                'min':  20,
+                'max':  80
+            }
+        });
+        //表格详情查看、关闭
+        $(".view").mousedown(function(){
+            $(this).parent("td").parent("tr").next(".bg-color").toggle();
+        });
+		$(".dial").knob();
+		//切换开关
+		/*var elem = document.querySelector('.js-switch');
+		var switchery = new Switchery(elem, { color: '#2095f2' });*/
+		//stint
+		$(".stint").click(function(){
+			$(this).toggleClass("open");
+		});
+		//condition
+		$(".condition li").click(function(){
+			$(this).parent().children().removeClass("click");
+			$(this).addClass("click");
+		});
+		$(".condition li").mouseover(function(){
+			$(this).children(".edit").show();
+		});
+		$(".condition li").mouseleave(function(){
+			$(this).children(".edit").hide();
+		});
+		//condition-wraper
+		$(".condition-wraper .add").click(function(){
+			$(this).hide();
+			$(".condition-options-wraper.sx").slideToggle();
+			$(".cancel-create").show();
+		});
+		$(".condition-wraper .cancel-create").click(function(){
+			$(this).hide();
+			$(".condition-options-wraper.sx").slideToggle();
+			$(".add").show();
+		});
+        //add-shortcut-menu
+		$(".add-shortcut-menu dd a").click(function() {
+            $(this).toggleClass("selected");
+   });
+       
+    });
+</script>
+
+</body>
+</html>

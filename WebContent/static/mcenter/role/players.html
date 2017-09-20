@@ -1,0 +1,1044 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>角色管理</span><span>/</span><span>玩家管理</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow">
+            <!--筛选条件-->
+
+
+            <div class="m-t-md">
+                <div class="m-b-xs clearfix">
+                    <div class="col-sm-10 clearfix" style="padding-left: 0;">
+
+                        <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                            <div class="input-group">
+                        <span class="bg-gray input-group-addon bdn">
+                            <select class="chosen-select-no-single" data-placeholder="玩家">
+                                <option value=""></option>
+                                <option value="">玩家</option>
+                                <option value="">代理</option>
+                                <option value="">总代</option>
+                            </select>
+                        </span>
+                                <input type="text" class="form-control" placeholder="多个账号，用半角逗号隔开">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix pull-left col-md-6 col-sm-12 m-b-sm padding-r-none-sm">
+                            <div class="input-group date time-select-a">
+                                <span class="input-group-addon bg-gray">注册时间</span>
+                                <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                                <input type="text" class="form-control" placeholder="2016-09-20 12:30:21">
+                                <span class="input-group-addon time-select-t">~</span>
+                                <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                                <input type="text" class="form-control" placeholder="2016-09-22 12:30:21">
+                                <span class="input-group-addon time-select-btn"><a type="button"
+                                                                                   class="btn btn-filter btn-outline">快选</a></span>
+                            </div>
+                        </div>
+                        <!--<div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                               <div class="input-group date">
+                                   <span class="input-group-addon bg-gray">注单号</span>
+                                   <input type="text" class="form-control" placeholder="">
+                               </div>
+                           </div>-->
+                        <div class="form-group clearfix pull-left col-md-6 col-sm-12 m-b-sm padding-r-none-sm">
+                            <div class="input-group time-select-a">
+                            <span class="bg-gray input-group-addon bdn">
+                            <select class="chosen-select-no-single" data-placeholder="钱包余额">
+                                <option value=""></option>
+                                <option value="">钱包余额</option>
+                                <option value="">总资产</option>
+                                <option value="">存款总额</option>
+                                <option value="">取款总额</option>
+                                <option value="">返水总额</option>
+                                <option value="">优惠总额</option>
+                                <option value="">总盈亏</option>
+                            </select>
+                        </span>
+                                <span class="input-group-addon border-right-none">起</span>
+                                <input type="text" class="form-control  border-left-none" placeholder="">
+                                <span class="input-group-addon time-select-t">~</span>
+                                <span class="input-group-addon border-right-none">止</span>
+                                <input type="text" class="form-control  border-left-none" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                            <div class="input-group">
+                                <span class="input-group-addon bg-gray">层级</span>
+                            <span class=" input-group-addon bdn right-btn-down">
+                            <div class="btn-group table-desc-right-t-dropdown" initprompt="10条" callback="query">
+                                <input type="hidden" name="paging.pageSize" value="">
+                                <button type="button" class="btn btn btn-default right-radius type-search-btn">
+                                    <span prompt="prompt">已选12项</span>
+                                    <span class="caret-a pull-right"></span>
+                                </button>
+
+                            </div>
+                        </span>
+                            </div>
+                            <div class="type-search">
+
+                                <div class="">
+                                    <table class="table table-bordered m-b-xxs">
+                                        <tbody style="border-top: 0!important;padding: 0;">
+
+                                        <tr>
+                                            <td class="al-left">
+                                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span
+                                                        class="m-l-xs">层级1</span></label>
+                                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span
+                                                        class="m-l-xs">层级1</span></label>
+                                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span
+                                                        class="m-l-xs">层级1</span></label>
+                                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span
+                                                        class="m-l-xs">层级1</span></label>
+                                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span
+                                                        class="m-l-xs">层级1</span></label>
+                                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span
+                                                        class="m-l-xs">层级1</span></label>
+                                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span
+                                                        class="m-l-xs">层级1</span></label>
+                                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span
+                                                        class="m-l-xs">层级1</span></label>
+                                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span
+                                                        class="m-l-xs">层级1</span></label>
+                                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"> <span
+                                                        class="m-r-xs">层级1</span></label>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--<div class="form-group clearfix pull-left col-md-6 col-sm-12 m-b-sm padding-r-none-sm">
+                           <div class="input-group date time-select-a">
+                               <span class="input-group-addon bg-gray">派彩时间</span>
+                               <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                               <input type="text" class="form-control" placeholder="2016-09-20 12:30:21">
+                               <span class="input-group-addon time-select-t">~</span>
+                               <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                               <input type="text" class="form-control" placeholder="2016-09-22 12:30:21">
+                               <span class="input-group-addon time-select-btn"><a type="button" class="btn btn-filter btn-outline">快选</a></span>
+                           </div>
+                       </div> -->
+
+
+                        <div class="show-demand-a">
+
+                            <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                                <div class="input-group">
+                                    <span class="input-group-addon bg-gray">返水方案</span>
+                            <span class=" input-group-addon bdn  right-btn-down">
+                            <div class="btn-group table-desc-right-t-dropdown" initprompt="10条" callback="query">
+                                <input type="hidden" name="paging.pageSize" value="">
+                                <button type="button" class="btn btn btn-default right-radius" data-toggle="dropdown"
+                                        aria-expanded="false">
+                                    <span prompt="prompt">全部</span>
+                                    <span class="caret-a pull-right"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">全部</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20">pc端</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30">手机端</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </span>
+                                </div>
+                            </div>
+                            <div class="form-group clearfix pull-left col-md-6 col-sm-12 m-b-sm padding-r-none-sm">
+                                <div class="input-group date time-select-a">
+                                    <span class="input-group-addon bg-gray">最后登录</span>
+                                    <span class="input-group-addon time-select-ico"><i
+                                            class="fa fa-calendar"></i></span>
+                                    <input type="text" class="form-control" placeholder="2016-09-20 12:30:21">
+                                    <span class="input-group-addon time-select-t">~</span>
+                                    <span class="input-group-addon time-select-ico"><i
+                                            class="fa fa-calendar"></i></span>
+                                    <input type="text" class="form-control" placeholder="2016-09-22 12:30:21">
+                                    <span class="input-group-addon time-select-btn"><a type="button"
+                                                                                       class="btn btn-filter btn-outline">快选</a></span>
+                                </div>
+                            </div>
+                            <!--<div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                                   <div class="input-group date">
+                                       <span class="input-group-addon bg-gray">注单号</span>
+                                       <input type="text" class="form-control" placeholder="">
+                                   </div>
+                               </div>-->
+                            <div class="form-group clearfix pull-left col-md-6 col-sm-12 m-b-sm padding-r-none-sm">
+                                <div class="input-group time-select-a">
+                                    <span class="input-group-addon bg-gray">存款总额</span>
+                                    <span class="input-group-addon border-right-none">起</span>
+                                    <input type="text" class="form-control border-left-none" placeholder="">
+                                    <span class="input-group-addon time-select-t">~</span>
+                                    <span class="input-group-addon border-right-none">止</span>
+                                    <input type="text" class="form-control border-left-none" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                                <div class="input-group">
+                                    <span class="input-group-addon bg-gray">标签</span>
+                            <span class=" input-group-addon bdn  right-btn-down">
+                            <div class="btn-group table-desc-right-t-dropdown" initprompt="10条" callback="query">
+                                <input type="hidden" name="paging.pageSize" value="">
+                                <button type="button" class="btn btn btn-default right-radius" data-toggle="dropdown"
+                                        aria-expanded="false">
+                                    <span prompt="prompt">请选择</span>
+                                    <span class="caret-a pull-right"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"
+                                    style="max-height: 1298px; min-width: 55px; overflow-y: scroll; overflow-x: visible;">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10"><input
+                                                type="checkbox" class="i-checks"> 标签</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20"><input
+                                                type="checkbox" class="i-checks"> 标签一</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30"><input
+                                                type="checkbox" class="i-checks"> 标签二</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="50"><input
+                                                type="checkbox" class="i-checks"> 标签三</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                                <div class="input-group">
+                        <span class="bg-gray input-group-addon bdn">
+                            <select class="chosen-select-no-single" data-placeholder="真实姓名">
+                                <option value=""></option>
+                                <option value="">真实姓名</option>
+                                <option value="">备注</option>
+                                <option value="">银行卡</option>
+                                <option value="">推广码</option>
+                                <option value="">手机/邮箱</option>
+                                <option value="">QQ/微信</option>
+                            </select>
+                        </span>
+                                    <input type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                                <div class="input-group date">
+                                    <span class="input-group-addon bg-gray">注册URL</span>
+                                    <input type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix pull-left col-md-6 col-sm-12 m-b-sm padding-r-none-sm">
+                                <div class="input-group time-select-a">
+                                    <span class="input-group-addon bg-gray">取款总额</span>
+                                    <span class="input-group-addon border-right-none">起</span>
+                                    <input type="text" class="form-control border-left-none" placeholder="">
+                                    <span class="input-group-addon time-select-t">~</span>
+                                    <span class="input-group-addon border-right-none">止</span>
+                                    <input type="text" class="form-control border-left-none" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                                <div class="input-group time-select-a right-ico">
+                                    <span class="input-group-addon bg-gray">未登录超过</span>
+                                    <span class="input-group-addon time-select-ico">天</span>
+                                    <input type="text" class="form-control" placeholder="">
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                                <div class="input-group date">
+                                    <span class="input-group-addon bg-gray">登录IP</span>
+                                    <input type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                                <div class="input-group date">
+                                    <span class="input-group-addon bg-gray">注册IP</span>
+                                    <input type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix pull-left col-md-6 col-sm-12 m-b-sm padding-r-none-sm h-line-a">
+                                <div class="input-group">
+                                    <span class="input-group-addon bg-gray">来源终端</span>
+                            <span class=" input-group-addon bdn  right-btn-down">
+                            <div class="btn-group table-desc-right-t-dropdown">
+                                <ul role="menu">
+                                    <li role="presentation">
+                                        <span><input type="radio" name="a1"> 全部</span>
+                                    </li>
+                                    <li role="presentation">
+                                        <span><input type="radio" name="a1"> pc端</span>
+                                    </li>
+                                    <li role="presentation">
+                                        <span><input type="radio" name="a1"> 手机端</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </span>
+                                </div>
+                            </div>
+                            <div class="form-group clearfix pull-left col-md-6 col-sm-12 m-b-sm padding-r-none-sm">
+                                <div class="input-group time-select-a">
+                            <span class="bg-gray input-group-addon bdn">
+                            <select class="chosen-select-no-single" data-placeholder="总盈亏">
+                                <option value=""></option>
+                                <option value="">总盈亏</option>
+                                <option value="">返水总额</option>
+                                <option value="">优惠总额</option>
+                            </select>
+                        </span>
+                                    <span class="input-group-addon border-right-none">起</span>
+                                    <input type="text" class="form-control border-left-none" placeholder="">
+                                    <span class="input-group-addon time-select-t">~</span>
+                                    <span class="input-group-addon border-right-none">止</span>
+                                    <input type="text" class="form-control border-left-none" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-2 clearfix">
+                        <div class="pull-right">
+                            <a href="role/added_player.html" nav-target="mainFrame" type="button"
+                               class="btn btn-info btn-addon"><i class="fa fa-plus"></i><span class="hd">新增</span></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 clearfix template-menu m-b-xs">
+                        <button type="button" class="btn btn-filter btn-outline pull-right  show-demand-b"><i
+                                class="fa fa-chevron-down"></i> 高级搜索
+                        </button>
+
+                        <button type="button" class="btn btn-filter mediate-search-btn"><i
+                                class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button>
+
+                        <div class="input-group-btn pull-left">
+                            <div class="input-group">
+                                <button type="button" class="btn btn-filter btn-outline pull-right radius-right-none">
+                                    保存
+                                </button>
+                        <span class="bg-gray input-group-addon bdn">
+                            <div class="btn-group table-desc-right-t-dropdown" callback="query">
+                                <input type="hidden" name="paging.pageSize" value="">
+                                <button type="button" class="btn btn btn-default right-radius" data-toggle="dropdown"
+                                        aria-expanded="false">
+                                    <a href="javascript:void(0)" class="del-template"><span class="fa fa-times"></span></a>
+                                    <span prompt="prompt">请选择模板</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <a href="javascript:void(0)" class="del-template"><span
+                                                class="fa fa-times"></span></a><a role="menuitem" tabindex="-1"
+                                                                                  href="javascript:void(0)" key="10"
+                                                                                  class="text-template">模板1</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="javascript:void(0)" class="del-template"><span
+                                                class="fa fa-times"></span></a><a role="menuitem" tabindex="-1"
+                                                                                  href="javascript:void(0)" key="10"
+                                                                                  class="text-template">模板1</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="javascript:void(0)" class="del-template"><span
+                                                class="fa fa-times"></span></a><a role="menuitem" tabindex="-1"
+                                                                                  href="javascript:void(0)" key="10"
+                                                                                  class="text-template">模板1</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <!--表格内容-->
+            <dl class="clearfix filter-conditions p-xxs p-b-xs m-b-none gray-bg">
+                <dt>当前筛选条件（<a href="javascript:void(0)">清除</a>）</dt>
+                <dd>玩家等级包含：普通玩家<a href="javascript:void(0)">×</a></dd>
+                <dd>用户名包含：CC<a href="javascript:void(0)">×</a></dd>
+                <dd>用户名包含：CC<a href="javascript:void(0)">×</a></dd>
+            </dl>
+
+
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable" aria-describedby="editable_info">
+                        <thead>
+                        <tr role="row" class="bg-gray">
+                            <th><label><input type="checkbox" value="state" class="i-checks"><label
+                                    for="checkbox3"></label></label></th>
+                            <th>账号</th>
+                            <th>真实姓名</th>
+                            <th>所属代理</th>
+                            <th class="sorting">注册时间</th>
+                            <th>层级</th>
+                            <!-- <th class="inline">
+                                  <div>
+                                      <select data-placeholder="层级" class="chosen-select-no-single" tabindex="9">
+                                        <option value=""></option>
+                                        <option>A层级</option>
+                                        <option>B层级</option>
+                                        <option>C层级</option>
+                                        <option>D层级</option>
+                                      </select>
+                                  </div>
+                            </th> -->
+                            <th class="sorting">钱包余额</th>
+                            <th class="inline">
+                                <div>
+                                    <select data-placeholder="正常" class="chosen-select-no-single" tabindex="9">
+                                        <option value=""></option>
+                                        <option>正常</option>
+                                        <option>账号停用</option>
+                                        <option>账号冻结</option>
+                                        <option>余额冻结</option>
+                                    </select>
+                                </div>
+                            </th>
+                            <th>操作</th>
+                        </tr>
+                        <tr class="bd-none">
+                            <th colspan="10">
+                                <div class="select-records"><i class="fa fa-exclamation-circle co-orange"></i>您当前选中了全部的3条记录，<a
+                                        href="javascript:void(0)">点此取消选定</a>全部记录
+                                </div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="tab-detail">
+                            <td><label><input type="checkbox" value="child1" class="i-checks icheckbox_aacc"><label
+                                    for="checkbox3"></label></label></td>
+                            <td>
+                                <div class="al-cleft">
+                                    <a href="role/new_detail.html" nav-target="mainFrame">demovip</a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flash"></i></a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flag"></i></a>
+                                    <a href="javascript:void(0)"  type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="后台新增玩家" class="ico-lock"><i class="fa icon-houtaixinzengwanjia iconfont"></i></a>
+                                </div>
+                            </td>
+                            <td>罗大佑</td>
+                            <td><a href="javascript:void(0)">bluslee</a></td>
+                            <td class="co-yellow">2015-08-12</td>
+                            <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">C层级</span></a>
+                            </td>
+                            <td class="money">￥ 451<i></i></td>
+                            <td><a data-toggle="modal" data-target="#withdrawal-audit" class="co-blue"><span
+                                    class="label label-success">正常</span></a></td>
+
+                            <td>
+                                <a href="role/redact_player.html" nav-target="mainFrame">编辑</a><!--
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a> -->
+                            </td>
+                        </tr>
+
+                        <tr class="tab-detail">
+                            <td><label><input type="checkbox" value="child2" class="i-checks"><label
+                                    for="checkbox3"></label></label></td>
+                            <td>
+                                <div class="al-cleft">
+                                    <a href="role/new_detail.html" nav-target="mainFrame">demovip</a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flash"></i></a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flag"></i></a>
+                                    <a href="javascript:void(0)"  type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="后台新增玩家" class="ico-lock"><i class="fa icon-houtaixinzengwanjia iconfont"></i></a>
+                                </div>
+                            </td>
+                            <td>张大千</td>
+                            <td><a href="javascript:void(0)">bluslee</a></td>
+                            <td>2015-08-12</td>
+                            <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">C层级</span></a>
+                            </td>
+                            <td class="money">￥ 120<i></i></td>
+
+                            <td><a data-toggle="modal" data-target="#withdrawal-audit" class="co-blue"><span
+                                    class="label label-warning">余额冻结</span></a></td>
+                            <td>
+                                <a href="role/redact_player.html" nav-target="mainFrame">编辑</a><!--
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a> -->
+                            </td>
+                        </tr>
+                        <tr class="tab-detail">
+                            <td><label><input type="checkbox" value="child4" class="i-checks"><label
+                                    for="checkbox3"></label></label></td>
+                            <td>
+                                <div class="al-cleft">
+                                    <a href="role/new_detail.html" nav-target="mainFrame">demovip</a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flash"></i></a>
+                                    <a href="javascript:void(0)"  type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="后台新增玩家" class="ico-lock"><i class="fa icon-houtaixinzengwanjia iconfont"></i></a>
+                                </div>
+                            </td>
+                            <td>齐白石</td>
+                            <td><a href="javascript:void(0)">bluslee</a></td>
+                            <td>2015-08-12</td>
+                            <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">C层级</span></a>
+                            </td>
+                            <td class="money">￥ 320<i>.5</i></td>
+
+                            <td><a data-toggle="modal" data-target="#withdrawal-audit" class="co-blue"><span
+                                    class="label label-info">账号冻结</span></a></td>
+                            <td>
+                                <a href="role/redact_player.html" nav-target="mainFrame">编辑</a><!--
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a> -->
+                            </td>
+                        </tr>
+                        <tr class="tab-detail">
+                            <td><label><input type="checkbox" value="child5" class="i-checks"><label
+                                    for="checkbox3"></label></label></td>
+                            <td>
+                                <div class="al-cleft"><a href="role/new_detail.html" nav-target="mainFrame">demovip</a>
+                                </div>
+                            </td>
+                            <td>张嘉倪</td>
+                            <td><a href="javascript:void(0)">bluslee</a></td>
+                            <td>2015-08-12</td>
+                            <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">C层级</span></a>
+                            </td>
+                            <td class="money">￥ 450<i>.21</i></td>
+
+                            <td><a data-toggle="modal" data-target="#withdrawal-audit" class="co-blue"><span
+                                    class="label label-danger">账号停用</span></a></td>
+                            <td>
+                                <a href="role/redact_player.html" nav-target="mainFrame">编辑</a><!--
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a> -->
+                            </td>
+                        </tr>
+                        <tr class="tab-detail">
+                            <td><label><input type="checkbox" value="child6" class="i-checks"><label
+                                    for="checkbox3"></label></label></td>
+                            <td>
+                                <div class="al-cleft">
+                                    <a href="role/new_detail.html" nav-target="mainFrame">demovip</a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flag"></i></a>
+                                </div>
+                            </td>
+                            <td>大仲马</td>
+                            <td><a href="javascript:void(0)">bluslee</a></td>
+                            <td>2015-08-12</td>
+                            <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">C层级</span></a>
+                            </td>
+                            <td class="money">￥ 451<i></i></td>
+
+                            <td><a data-toggle="modal" data-target="#" class="co-blue"><span
+                                    class="label label-success">正常</span></a></td>
+                            <td>
+                                <a href="role/redact_player.html" nav-target="mainFrame">编辑</a><!--
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a> -->
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="row bdtop3">
+                    <div class="col-sm-3 col-xs-6">
+
+                        <div class="pull-left">
+                            <div class="btn-group dropup">
+                                <button type="button" class="right-radius btn btn-default" data-toggle="dropdown"
+                                        aria-expanded="false">
+                                    <span prompt="prompt">每页10条</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">每页20条</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20">每页30条</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30">每页40条</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="50">每页50条</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                                <form class="form-inline">
+                                    <label class="m-l-sm">共10页</label>
+                                    <label class="m-l">第<input type="text"
+                                                               class="m-l-xs m-r-xs min form-control input-sm"/>页</label>
+                                    <button class="btn btn-sm m-l-sm">跳转</button>
+                                </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable"
+                                    tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0"
+                                    id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0">
+                                    <a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a
+                                        href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a
+                                        href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a
+                                        href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0"
+                                    id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a
+                                        href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-12 m-t">
+        <div class="wrapper white-bg shadow">
+            <!--筛选条件-->
+            <div class="filter-wraper clearfix p-xs">
+
+
+                <!--  <button type="button" class="btn btn-warning-hide" data-toggle="modal" data-target="#filter"><i class="fa fa-filter"></i><span class="hd">筛选</span></button> -->
+                <button type="button" class="btn btn-primary-hide" data-toggle="modal" data-target="#sign-out"><i
+                        class="fa fa-sign-out"></i><span class="hd">导出</span></button>
+                <div class="btn-group m-r-sm m-b-xs">
+                    <button data-toggle="dropdown" class="btn btn-filter btn-outline dropdown-toggle"><i
+                            class="fa fa-list"></i><span class="hd">&nbsp;&nbsp;层级</span>&nbsp;&nbsp;<span
+                            class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <div class="label-menu-o">
+                            <li><label><input type="radio" class="i-checks" name="a">A类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">B类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">C类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">D类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">E类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">F类型</label></li>
+                        </div>
+                        <li class="divider"></li>
+                        <li class="m-b-sm bt m-t-xs">
+                            <button type="button" class="btn btn-filter btn-sm m-r-sm">确认</button>
+                            <a href="role/level.html" class="fil" nav-target="mainFrame">管理</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn-group m-r-sm m-b-xs">
+                    <button data-toggle="dropdown" class="btn btn-filter btn-outline dropdown-toggle"><i
+                            class="fa fa-tags"></i><span class="hd">&nbsp;&nbsp;标签</span>&nbsp;&nbsp;<span
+                            class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <div class="label-menu-o">
+                            <li><label><input type="radio" class="i-checks" name="a">A标签</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">B标签</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">C标签</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">D标签</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">E标签</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">F标签</label></li>
+                        </div>
+                    </ul>
+                </div>
+                <button type="button" class="btn btn-primary-hide" data-toggle="modal" data-target="#sign-out"><i
+                        class="fa fa-comments-o"></i><span class="hd">信息群发</span></button>
+                <button type="button" class="btn btn-primary-hide" data-toggle="modal" data-target="#sign-out"><i
+                        class="fa fa-eraser"></i><span class="hd">清除联系</span></button>
+                <a href="funds/funds.html" nav-target="mainFrame" type="button" class="btn btn-primary-hide"
+                   data-toggle="modal" data-target="#sign-out"><i class="fa iconfont icon-shoudongcunti"></i><span
+                        class="hd">人工存入</span></a>
+
+                <div class="pull-right">
+                    <a href="role/added_player.html" nav-target="mainFrame" type="button"
+                       class="btn btn-info btn-addon"><i class="fa fa-plus"></i><span class="hd">新增</span></a>
+                </div>
+            </div>
+
+
+            <!--表格内容-->
+            <dl class="clearfix filter-conditions p-xxs p-b-xs m-b-none gray-bg">
+                <dt>当前筛选条件（<a href="javascript:void(0)">清除</a>）</dt>
+                <dd>玩家等级包含：普通玩家<a href="javascript:void(0)">×</a></dd>
+                <dd>用户名包含：CC<a href="javascript:void(0)">×</a></dd>
+                <dd>用户名包含：CC<a href="javascript:void(0)">×</a></dd>
+            </dl>
+
+
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable" aria-describedby="editable_info">
+                        <thead>
+                        <tr role="row" class="bg-gray">
+                            <th><label><input type="checkbox" value="state" class="i-checks"><label
+                                    for="checkbox3"></label></label></th>
+                            <th>账号</th>
+                            <th>真实姓名</th>
+                            <th>所属代理</th>
+                            <th class="sorting">注册时间</th>
+                            <th>层级</th>
+                            <!-- <th class="inline">
+                                  <div>
+                                      <select data-placeholder="层级" class="chosen-select-no-single" tabindex="9">
+                                        <option value=""></option>
+                                        <option>A层级</option>
+                                        <option>B层级</option>
+                                        <option>C层级</option>
+                                        <option>D层级</option>
+                                      </select>
+                                  </div>
+                            </th> -->
+                            <th class="sorting">钱包余额</th>
+                            <th class="inline">
+                                <div>
+                                    <select data-placeholder="正常" class="chosen-select-no-single" tabindex="9">
+                                        <option value=""></option>
+                                        <option>正常</option>
+                                        <option>账号停用</option>
+                                        <option>账号冻结</option>
+                                        <option>余额冻结</option>
+                                    </select>
+                                </div>
+                            </th>
+                            <th>操作</th>
+                        </tr>
+                        <tr class="bd-none">
+                            <th colspan="10">
+                                <div class="select-records"><i class="fa fa-exclamation-circle co-orange"></i>您当前选中了全部的3条记录，<a
+                                        href="javascript:void(0)">点此取消选定</a>全部记录
+                                </div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="tab-detail">
+                            <td><label><input type="checkbox" value="child1" class="i-checks icheckbox_aacc"><label
+                                    for="checkbox3"></label></label></td>
+                            <td>
+                                <div class="al-cleft">
+                                    <a href="role/new_detail.html" nav-target="mainFrame">demovip</a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flash"></i></a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flag"></i></a>
+                                    <a href="javascript:void(0)" class="ico-lock co-red3"><i class="fa fa-warning"></i></a>
+                                </div>
+                            </td>
+                            <td>罗大佑</td>
+                            <td><a href="javascript:void(0)">bluslee</a></td>
+                            <td class="co-yellow">2015-08-12</td>
+                            <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">C层级</span></a>
+                            </td>
+                            <td class="money">￥ 451<i></i></td>
+                            <td><a data-toggle="modal" data-target="#withdrawal-audit" class="co-blue"><span
+                                    class="label label-success">正常</span></a></td>
+
+                            <td>
+                                <a href="role/redact_player.html" nav-target="mainFrame">编辑</a><!--
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a> -->
+                            </td>
+                        </tr>
+
+                        <tr class="tab-detail">
+                            <td><label><input type="checkbox" value="child2" class="i-checks"><label
+                                    for="checkbox3"></label></label></td>
+                            <td>
+                                <div class="al-cleft">
+                                    <a href="role/new_detail.html" nav-target="mainFrame">demovip</a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flash"></i></a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flag"></i></a>
+                                </div>
+                            </td>
+                            <td>张大千</td>
+                            <td><a href="javascript:void(0)">bluslee</a></td>
+                            <td>2015-08-12</td>
+                            <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">C层级</span></a>
+                            </td>
+                            <td class="money">￥ 120<i></i></td>
+
+                            <td><a data-toggle="modal" data-target="#withdrawal-audit" class="co-blue"><span
+                                    class="label label-warning">余额冻结</span></a></td>
+                            <td>
+                                <a href="role/redact_player.html" nav-target="mainFrame">编辑</a><!--
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a> -->
+                            </td>
+                        </tr>
+                        <tr class="tab-detail">
+                            <td><label><input type="checkbox" value="child4" class="i-checks"><label
+                                    for="checkbox3"></label></label></td>
+                            <td>
+                                <div class="al-cleft">
+                                    <a href="role/new_detail.html" nav-target="mainFrame">demovip</a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flash"></i></a>
+                                </div>
+                            </td>
+                            <td>齐白石</td>
+                            <td><a href="javascript:void(0)">bluslee</a></td>
+                            <td>2015-08-12</td>
+                            <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">C层级</span></a>
+                            </td>
+                            <td class="money">￥ 320<i>.5</i></td>
+
+                            <td><a data-toggle="modal" data-target="#withdrawal-audit" class="co-blue"><span
+                                    class="label label-info">账号冻结</span></a></td>
+                            <td>
+                                <a href="role/redact_player.html" nav-target="mainFrame">编辑</a><!--
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a> -->
+                            </td>
+                        </tr>
+                        <tr class="tab-detail">
+                            <td><label><input type="checkbox" value="child5" class="i-checks"><label
+                                    for="checkbox3"></label></label></td>
+                            <td>
+                                <div class="al-cleft"><a href="role/new_detail.html" nav-target="mainFrame">demovip</a>
+                                </div>
+                            </td>
+                            <td>张嘉倪</td>
+                            <td><a href="javascript:void(0)">bluslee</a></td>
+                            <td>2015-08-12</td>
+                            <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">C层级</span></a>
+                            </td>
+                            <td class="money">￥ 450<i>.21</i></td>
+
+                            <td><a data-toggle="modal" data-target="#withdrawal-audit" class="co-blue"><span
+                                    class="label label-danger">账号停用</span></a></td>
+                            <td>
+                                <a href="role/redact_player.html" nav-target="mainFrame">编辑</a><!--
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a> -->
+                            </td>
+                        </tr>
+                        <tr class="tab-detail">
+                            <td><label><input type="checkbox" value="child6" class="i-checks"><label
+                                    for="checkbox3"></label></label></td>
+                            <td>
+                                <div class="al-cleft">
+                                    <a href="role/new_detail.html" nav-target="mainFrame">demovip</a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flag"></i></a>
+                                </div>
+                            </td>
+                            <td>大仲马</td>
+                            <td><a href="javascript:void(0)">bluslee</a></td>
+                            <td>2015-08-12</td>
+                            <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">C层级</span></a>
+                            </td>
+                            <td class="money">￥ 451<i></i></td>
+
+                            <td><a data-toggle="modal" data-target="#" class="co-blue"><span
+                                    class="label label-success">正常</span></a></td>
+                            <td>
+                                <a href="role/redact_player.html" nav-target="mainFrame">编辑</a><!--
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a> -->
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="row bdtop3">
+                    <div class="col-sm-3 col-xs-6">
+
+                        <div class="pull-left">
+                            <div class="btn-group dropup">
+                                <button type="button" class="right-radius btn btn-default" data-toggle="dropdown"
+                                        aria-expanded="false">
+                                    <span prompt="prompt">每页10条</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">每页20条</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20">每页30条</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30">每页40条</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="50">每页50条</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                                <form class="form-inline">
+                                    <label class="m-l-sm">共10页</label>
+                                    <label class="m-l">第<input type="text"
+                                                               class="m-l-xs m-r-xs min form-control input-sm"/>页</label>
+                                    <button class="btn btn-sm m-l-sm">跳转</button>
+                                </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable"
+                                    tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0"
+                                    id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0">
+                                    <a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a
+                                        href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a
+                                        href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a
+                                        href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0"
+                                    id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a
+                                        href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //condition-wraper
+    $(".condition-wraper .add").click(function () {
+        $(this).hide();
+        $(".condition-options-wraper.sx").slideToggle();
+        $(".cancel-create").show();
+    });
+    $(".condition-wraper .cancel-create").click(function () {
+        $(this).hide();
+        $(".condition-options-wraper.sx").slideToggle();
+        $(".add").show();
+    });
+    //显示隐藏模块--更多数据
+    $(".more-data").click(function (event) {
+        $(this).parent().addClass("show-data");
+        $("body").one("click", function (event) {
+            $(".more-data").parent().removeClass("show-data");
+        });
+        event.stopPropagation();
+    })
+    $(".more-data-wrapper").click(function (event) {
+        event.stopPropagation(); //阻止事件向上冒泡
+    });
+    //列表选中
+    $('input').on('ifChecked', function (event) {
+        $(this).parents('tr').addClass('open');
+        $('.function-menu-show').show();
+    });
+
+    //列表不选中
+    $('input').on('ifUnchecked', function (event) {
+        $(this).parents('tr').removeClass('open');
+        $('.function-menu-show').hide();
+    });
+
+    /*站点结构*/
+    $(".site-structure-btn").click(function (event) {
+        $(this).parent().toggleClass("open");
+        $(document).one("click", function (event) {
+            $(".site-structure-btn").parent().removeClass("open");
+        });
+        event.stopPropagation();
+    })
+    $(".site-structure").click(function (event) {
+        event.stopPropagation(); //阻止事件向上冒泡
+    });
+
+    $(".dropdown-menu-stop").click(function (event) {
+        event.stopPropagation(); //阻止事件向上冒泡
+    });
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+    $('.help-popover').popover()
+
+    $(".show-demand-b").click(function () {
+        $(this).toggleClass("open")
+        $(".show-demand-a").toggle()
+    })
+    $(".type-search-btn").click(function () {
+        $(this).toggleClass("open")
+        $(".type-search").toggle()
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': {
+                allow_single_deselect: true
+            },
+            '.chosen-select-no-single': {
+                disable_search_threshold: 10
+            },
+            '.chosen-select-no-results': {
+                no_results_text: 'Oops, nothing found!'
+            },
+            '.chosen-select-width': {
+                width: "95%"
+            }
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': {
+                allow_single_deselect: true
+            },
+            '.chosen-select-no-single': {
+                disable_search_threshold: 10
+            },
+            '.chosen-select-no-results': {
+                no_results_text: 'Oops, nothing found!'
+            },
+            '.chosen-select-width': {
+                width: "95%"
+            }
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>

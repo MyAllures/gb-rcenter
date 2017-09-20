@@ -1,0 +1,223 @@
+
+    <div class="row">
+        <!-- 面包屑 开始 -->
+        <div class="position-wrap clearfix">
+            <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+            <span>角色管理</span>
+            <span>/</span><span>代理管理</span>
+            <a href="javascript:void(0)" nav-target="mainFrame" class="m-l-sm btn btn-outline btn-default btn-xs co-gray6 return-btn"><em class="fa fa-caret-left"></em>返回</a>
+        </div>
+        <!-- 面包屑 结束 -->
+        <div class="col-lg-12">
+            <div class="wrapper white-bg shadow">
+               <div class="present_wrap"><b>新增总代—预览</b></div>
+                <div class="clearfix m-t-sm">
+                <!--表格内容 开始-->
+                <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                    <!-- 表格 开始 -->
+                    <div class="p-md">
+                    <div class="m-b fw-none-b clearfix">
+                    <b class="fs16">基本资料</b>
+                </div>
+                    <div class="gray-chunk clearfix">
+                        <div class="form-group clearfix line-hi34 m-b-sm">
+                            <label class="col-sm-3 al-right ft-bold"><span class="co-red m-r-sm">*</span>账号 :</label>
+                            <div class="col-sm-5">dsfasd</div>
+                        </div>
+                        
+                        
+                        <div class="form-group clearfix line-hi34 m-b-sm">
+                            <label class="col-sm-3 al-right ft-bold"><span class="co-red m-r-sm">*</span>预设返佣方案 :</label>
+                            <div class="col-sm-5">
+                                普通代理（默认方案）
+                               
+                            </div>
+                        </div>
+                        <div class="form-group clearfix line-hi34 m-b-sm">
+                            <label class="col-sm-3 al-right  ft-bold"><span class="co-red m-r-sm">*</span>预设返水方案 :</label>
+                            <div class="col-sm-5">
+                                方案1
+                            </div>
+                        </div>
+                        <div class="form-group clearfix line-hi34 m-b-sm">
+                            <label class="col-sm-3 al-right ft-bold"><span class="co-red m-r-sm">*</span>预设限额方案 :</label>
+                            <div class="col-sm-5">
+                                方案1
+                            </div>
+                        </div>
+                        <div class="form-group clearfix line-hi34 m-b-sm">
+                            <label class="col-sm-3 al-right ft-bold">国家地区 :</label>
+                            <div class="clearfix col-sm-6">
+                                中国-福建-厦门
+                              </div>
+                        </div>
+                        <div class="form-group clearfix line-hi34 m-b-sm">
+                            <label class="col-sm-3 al-right ft-bold"><span class="co-red m-r-sm">*</span>时区 :</label>
+                            <div class="col-sm-3">东八区
+                            </div>
+                        </div>
+                        <div class="form-group clearfix line-hi34 m-b-sm">
+                            <label class="col-sm-3 al-right ft-bold"><span class="co-red m-r-sm">*</span> 真实姓名 :</label>
+                            <div class="col-sm-5">的萨芬</div>
+                        </div>
+                        <div class="form-group clearfix line-hi34 m-b-sm">
+                            <label class="col-sm-3 al-right ft-bold"><span class="co-red m-r-sm">*</span> 主货币 :</label>
+                            <div class="col-sm-3">                                
+                                人民币CNY
+                            </div>
+                        </div>
+                        <div class="form-group clearfix line-hi34 m-b-sm">
+                            <label class="col-sm-3 al-right ft-bold"> 主语言 :</label>
+                            <div class="col-sm-3">
+                                   简体中文
+                            </div>
+                        </div>
+                       
+                        
+                    </div>
+                    <!-- 表格 结束 -->
+                    
+                    </div>
+                </div>
+                <!--表格内容 结束-->
+            </div>
+            <div class="operate-btn">
+               <a class="btn btn-filter btn-outline btn-lg" href="role/added_role.html" nav-target="mainFrame">上一步</a>
+               <a href="role/added-finish.html" class="btn btn-filter btn-lg" nav-target="mainFrame">提交</a>
+            </div>
+        </div>
+    </div>
+<div class="modal inmodal bs-example-modal-lg" id="audit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content animated bounceInRight unstyled family">
+        <div class="modal-header">
+          <span class="filter">修改占成</span>
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="clearfix">
+                <div class="form-group clearfix m-b-sm col-xs-6 p-x">
+                    <label class="form_lab_block line-hi34 m-r-sm"><b>总代理账号 : </b></label>
+                    <div class="col-xs-6 p-x line-hi34">
+                        <a href="javascript:void(0)">sherry</a>
+                    </div>
+                </div>
+                <div class="form-group clearfix m-b-sm col-xs-4 p-x pull-right">
+                    <div class="input-group date">
+                        <input type="text" class="form-control" placeholder="90">
+                        <span class="input-group-addon">%</span>
+                        <span class="input-group-btn"> <button type="button" class="btn btn-filter"><span class="hd">批量设置</span></button></span>
+                    </div>
+                </div>
+            </div> 
+            <table class="table table-striped table-bordered table-hover dataTable m-b-none" aria-describedby="editable_info">
+                <thead>
+                  <tr>
+                    <th class="bg-gray" style="width: 35%">占成项目</th>
+                    <th class="bg-gray">占成数</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>API1</th>
+                        <td>
+                            <div class="form-group clearfix m-b-xxs col-xs-3 p-x line-hi34">
+                                <b> 二级分类1</b>
+                            </div>
+                            <div class="form-group clearfix m-b-xxs col-xs-3 p-x line-hi34">
+                                <label class="al-right"><span class="co-red m-r-sm"></span>自身 :</label>
+                                <span class="co-red"> 90%</span>
+                            </div>
+                            <div class="form-group clearfix m-b-xxs col-xs-6 p-x">
+                                <div class="input-group date">
+                                    <span class="input-group-addon bg-gray"><b>总代 :</b></span>
+                                    <input type="text" class="form-control" placeholder="10">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">API2</th>
+                        <td>
+                            <div class="form-group clearfix m-b-xxs col-xs-3 p-x line-hi34">
+                                <b> 二级分类1</b>
+                            </div>
+                            <div class="form-group clearfix m-b-xxs col-xs-3 p-x line-hi34">
+                                <label class="al-right"><span class="co-red m-r-sm"></span>自身 :</label>
+                                <span class="co-red"> 90%</span>
+                            </div>
+                            <div class="form-group clearfix m-b-xxs col-xs-6 p-x">
+                                <div class="input-group date">
+                                    <span class="input-group-addon bg-gray"><b>总代 :</b></span>
+                                    <input type="text" class="form-control" placeholder="10">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group clearfix m-b-xxs col-xs-3 p-x line-hi34">
+                                <b> 二级分类2</b>
+                            </div>
+                            <div class="form-group clearfix m-b-xxs col-xs-3 p-x line-hi34">
+                                <label class="al-right"><span class="co-red m-r-sm"></span>自身 :</label>
+                                <span class="co-red"> 90%</span>
+                            </div>
+                            <div class="form-group clearfix m-b-xxs col-xs-6 p-x">
+                                <div class="input-group date">
+                                    <span class="input-group-addon bg-gray"><b>总代 :</b></span>
+                                    <input type="text" class="form-control" placeholder="10">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>API3</th>
+                        <td>
+                            <div class="form-group clearfix m-b-xxs col-xs-3 p-x line-hi34">
+                                <b> 二级分类3</b>
+                            </div>
+                            <div class="form-group clearfix m-b-xxs col-xs-3 p-x line-hi34">
+                                <label class="al-right"><span class="co-red m-r-sm"></span>自身 :</label>
+                                <span class="co-red"> 90%</span>
+                            </div>
+                            <div class="form-group clearfix m-b-xxs col-xs-6 p-x">
+                                <div class="input-group date">
+                                    <span class="input-group-addon bg-gray"><b>总代 :</b></span>
+                                    <input type="text" class="form-control" placeholder="10">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-filter">确定</button>
+          <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': {allow_single_deselect: true},
+            '.chosen-select-no-single': {disable_search_threshold: 10},
+            '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+            '.chosen-select-width': {width: "95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>
+<script>
+    $('.help-popover').popover()
+</script>

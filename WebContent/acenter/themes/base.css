@@ -1,0 +1,9 @@
+div.chart {
+    height: 400px;
+    /*background: url(../images/loading.gif) no-repeat center;*/
+}
+td.money i{
+    font-style: normal;
+    font-size: 11px;
+    color: #aaa;
+}

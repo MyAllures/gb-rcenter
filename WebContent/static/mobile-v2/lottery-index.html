@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Perfect Lottery</title>
+    <link href="../../lottery-mobile/themes/mui.min.css" rel="stylesheet"/>
+    <link href="../../mobile-v2/themes/common.css" rel="stylesheet"/>
+    <link href="../../mobile-v2/lottery/themes/default/style.css" rel="stylesheet"/>
+    </head>
+<body class="mui-fullscreen orange-skin">
+	<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+		<aside id="offCanvasSide" class="mui-off-canvas-left">
+			<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+				<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted lottery-kind-list">
+					<li class="mui-table-view-cell">
+						<a href="ssc-cq.html">
+							<i class="lottery-ico lottery-ico-cqssc"></i>
+							<span class="lottery-name">重庆时时彩</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="lhc.html">
+							<i class="lottery-ico lottery-ico-hklhc"></i>
+							<span class="lottery-name">香港六合彩</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="bjpks.html">
+							<i class="lottery-ico lottery-ico-bjpk10"></i>
+							<span class="lottery-name">北京PK拾</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="sfssc.html">
+							<i class="lottery-ico lottery-ico-sfssc"></i>
+							<span class="lottery-name">三分时时彩</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="tjssc.html">
+							<i class="lottery-ico lottery-ico-tjssc"></i>
+							<span class="lottery-name">天津时时彩</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="xjssc.html">
+							<i class="lottery-ico lottery-ico-xjssc"></i>
+							<span class="lottery-name">新疆时时彩</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="js-k3.html">
+							<i class="lottery-ico lottery-ico-jsk3"></i>
+							<span class="lottery-name">江苏快3</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="js-k3.html">
+							<i class="lottery-ico lottery-ico-gxks"></i>
+							<span class="lottery-name">广西快3</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			</div>
+		</aside>
+		<aside id="offCanvasSideRight" class="mui-off-canvas-right">
+			<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+				<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted aside-right-menu">
+					<li class="mui-table-view-cell mui-media">
+					    <a href="#" class="">
+					    	<span class="mui-badge mui-badge-primary mui-icon mui-icon-refreshempty"></span>
+						    <img class="mui-media-object mui-pull-left" src="../../lottery-mobile/themes/skin/orange/images/member.png">
+						    <div class="mui-media-body">ppaad12312<p class="mui-ellipsis">余额：<font class="col-red">189.00</font>元</p></div>
+					    </a>
+				    </li>
+					<li class="mui-table-view-cell">
+						<a href="index.html" class="right-menu">
+							<span class="iconfont icon-home"></span>
+							<span>首页</span>
+						</a>
+					</li>
+					<!--<li class="mui-table-view-cell">
+						<a href="deposit.html" class="right-menu">
+							<span class="iconfont icon-chongzhitikuan"></span>
+							<span>充值提款</span>
+						</a>
+					</li>-->
+					<li class="mui-table-view-cell">
+						<a href="bet-record-main.html" class="right-menu">
+							<span class="iconfont icon-touzhujilu"></span>
+							<span>投注记录</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="draw-record-main.html" class="right-menu">
+							<span class="iconfont icon-kaijiangjilu"></span>
+							<span>开奖记录</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="index.html" class="right-menu">
+							<span class="iconfont icon-goucaidating"></span>
+							<span>购彩大厅</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="right-menu" href="member-center.html">
+							<span class="iconfont icon-huiyuanzhongxin"></span>
+							<span>会员中心</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="right-menu" href="message.html">
+							<span class="iconfont icon-xinxizhongxin"></span>
+							<span>信息中心</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="right-menu">
+							<span class="iconfont icon-zaixiankefu"></span>
+							<span>在线客服</span>
+						</a>
+					</li>
+				</ul>
+				<div class="p-1r">
+				    <button type="button" class="mui-btn mui-btn-danger mui-btn-block">退出登录</button>
+				</div>
+			</div>
+		</aside>
+		<div class="mui-inner-wrap">
+	    <header class="mui-bar mui-bar-top mui-bar-nav ">
+	    	<span class="mui-pull-left home-logo"><img src="../../lottery-mobile/images/logo.png"></span>
+	    	<div class="mui-pull-right">
+                <div class="user _rightUnLogin">
+                    <a class="btn mui-btn mui-btn-outlined btn-login">登录</a>
+                    <a class="btn mui-btn mui-btn-outlined btn-register" data-href="/signUp/index.html">注册</a>
+                    <a class="btn mui-btn mui-btn-outlined btn-try">试玩</a>
+                </div>
+                <div class="user mui-hide _rightLogin">
+                    <a class="btn mui-btn mui-btn-outlined p-r-0">欢迎！</a>
+                    <a class="btn mui-btn mui-btn-outlined p-l-0" data-skip="/mine/index.html" data-target="4" data-os="pc">null</a>
+                    <span class="index-action-menu mui-action-menu"></span>
+                </div>
+            </div>
+	    </header>
+	    <div id="offCanvasContentScroll" class="mui-scroll-wrapper middle-content">
+				<div class="mui-scroll">
+					<div id="slider" class="mui-slider" >
+			<div class="mui-slider-group mui-slider-loop">
+				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="../../lottery-mobile/images/slider/muwu.jpg">
+					</a>
+				</div>
+				<!-- 第一张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="../../lottery-mobile/images/slider/muwu.jpg">
+					</a>
+				</div>
+				<!-- 第二张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="../../lottery-mobile/images/slider/muwu.jpg">
+					</a>
+				</div>
+				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="../../lottery-mobile/images/slider/muwu.jpg">
+					</a>
+				</div>
+			</div>
+			<div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+			</div>
+		</div>
+					<div class="gb-notice gb-anno">
+    <a type="button" class="mui-pull-left notice-icon"><i class="iconfont icon-gonggao"></i></a>
+    <ul class="mui-list-unstyled gb-anno-list">
+        <li>
+            <marquee behavior="scroll" scrollamount="5" direction="left">
+                <p>
+                    <a data-idx="0">AABB</a>
+                    </p>
+            </marquee>
+        </li>
+    </ul>
+</div>
+                    <ul class="mui-table-view mui-grid-view diy-grid-9">
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="#">
+		            <span class="home-f-ico ico-service"></span>
+		            <span class="lottery-title">在线客服</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="#">
+	    		    <span class="home-f-ico ico-service-2"></span>
+		            <span class="lottery-title">会员中心</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="#">
+		            <span class="home-f-ico ico-service-3"></span>
+		            <span class="lottery-title">开奖结果</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="#">
+		            <span class="home-f-ico ico-service-5"></span>
+		            <span class="lottery-title">优惠活动</span>
+	    			</a>
+	    		</li>
+	    	</ul>
+                    <div class="content-title home-title"><h4>热门彩种</h4><a href="gcdt.html" class="mui-pull-right home-more-btn">更多<span class="mui-icon mui-icon-more-filled"></span></a></div>
+					<ul class="mui-table-view mui-grid-view diy-grid-9">
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="ssc-cq.html">
+		            <span class="lottery-ico lottery-ico-cqssc"></span>
+		            <span class="lottery-title">重庆时时彩</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="lhc.html">
+	    		    <span class="lottery-ico lottery-ico-hklhc"></span>
+		            <span class="lottery-title">香港六合彩</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="bjpks.html">
+		            <span class="lottery-ico lottery-ico-bjpk10"></span>
+		            <span class="lottery-title">北京PK拾</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="sfssc.html">
+		            <span class="lottery-ico lottery-ico-sfssc"></span>
+		            <span class="lottery-title">三分时时彩</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="#">
+		            <span class="lottery-ico lottery-ico-tjssc"></span>
+		            <span class="lottery-title">天津时时彩</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="#">
+		            <span class="lottery-ico lottery-ico-xjssc"></span>
+		            <span class="lottery-title">新疆时时彩</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="js-k3.html">
+		            <span class="lottery-ico lottery-ico-jsk3"></span>
+		            <span class="lottery-title">江苏快3</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="js-k3.html">
+		            <span class="lottery-ico lottery-ico-gxk3"></span>
+		            <span class="lottery-title">广西快3</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="js-k3.html">
+		            <span class="lottery-ico lottery-ico-bjkl8"></span>
+		            <span class="lottery-title">北京快乐8</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="js-k3.html">
+		            <span class="lottery-ico lottery-ico-cqxync"></span>
+		            <span class="lottery-title">重庆幸运农场</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="js-k3.html">
+		            <span class="lottery-ico lottery-ico-gdkl10"></span>
+		            <span class="lottery-title">广东快乐10分</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="js-k3.html">
+		            <span class="lottery-ico lottery-ico-xy28"></span>
+		            <span class="lottery-title">幸运28</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="js-k3.html">
+		            <span class="lottery-ico lottery-ico-jsk3"></span>
+		            <span class="lottery-title">江苏快3</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="js-k3.html">
+		            <span class="lottery-ico lottery-ico-hbk3"></span>
+		            <span class="lottery-title">湖北快3</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="js-k3.html">
+		            <span class="lottery-ico lottery-ico-gxk3"></span>
+		            <span class="lottery-title">广西快3</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="js-k3.html">
+		            <span class="lottery-ico lottery-ico-ahk3"></span>
+		            <span class="lottery-title">安徽快3</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="js-k3.html">
+		            <span class="lottery-ico lottery-ico-fc3d"></span>
+		            <span class="lottery-title">福彩3D</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="js-k3.html">
+		            <span class="lottery-ico lottery-ico-tcpl3"></span>
+		            <span class="lottery-title">体彩排列3</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="js-k3.html">
+		            <span class="lottery-ico lottery-ico-wfssc"></span>
+		            <span class="lottery-title">五分时时彩</span>
+	    			</a>
+	    		</li>
+	    		<li class="diy-table-view-cell mui-col-xs-3">
+	    			<a href="js-k3.html">
+		            <span class="lottery-ico lottery-ico-more"></span>
+		            <span class="lottery-title">更多</span>
+	    			</a>
+	    		</li>
+	    	</ul>
+	    	<div class="content-title home-title"><h4>热门开奖</h4><a href="draw-record-main.html" class="mui-pull-right home-more-btn">更多<span class="mui-icon mui-icon-more-filled"></span></a></div>
+	    	<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right draw-list-a">
+						    <img class="mui-media-object draw-list-img" src="../../lottery-mobile/images/lottery_ico/cqssc.png">
+						    <div class="mui-media-body draw-list-right">
+						    	<div class="item-title-row">
+						    	    <span class="title">重庆时时彩</span>
+						    	    <span class="mui-pull-right"><font class="col-blue">20170502077期</font>&nbsp;17-05-02 18:50</span>
+						    	</div>
+						    	<p class="mui-ellipsis">
+						    		<span class="inline-list-2"><i class="lottery-ball">0</i><i class="lottery-ball">1</i><i class="lottery-ball">0</i><i class="lottery-ball">2</i><i class="lottery-ball">6</i></span>
+						    	    <span class="inline-list-2"><i class="lottery-block">9</i><i class="lottery-block">单</i><i class="lottery-block">小</i><i class="lottery-block">虎</i></span>
+						    	</p>
+
+						    </div>
+					    </a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right draw-list-a">
+						    <img class="mui-media-object draw-list-img" src="../../lottery-mobile/images/lottery_ico/bjpk10.png">
+						    <div class="mui-media-body draw-list-right">
+						    	<div class="item-title-row">
+						    		<span class="title">北京PK拾</span>
+						    	    <span class="mui-pull-right"><font class="col-blue">20170502077期</font>&nbsp;17-05-02 18:50</span>
+						    	</div>
+						    	<p class="mui-ellipsis">
+						    		<span class="inline-list-2"><i class="lottery-ball pks-num" num="1">1</i><i class="lottery-ball pks-num" num="3">3</i><i class="lottery-ball pks-num" num="4">4</i><i class="lottery-ball pks-num" num="5">5</i><i class="lottery-ball pks-num" num="6">6</i><i class="lottery-ball pks-num" num="9">9</i><i class="lottery-ball pks-num" num="2">2</i><i class="lottery-ball pks-num" num="8">8</i><i class="lottery-ball pks-num" num="10">10</i><i class="lottery-ball pks-num" num="7">7</i></span>
+						    	</p>
+
+						    </div>
+					    </a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right draw-list-a">
+						    <img class="mui-media-object draw-list-img" src="../../lottery-mobile/images/lottery_ico/sfssc.png">
+						    <div class="mui-media-body draw-list-right">
+						    	<div class="item-title-row">
+						    	    <span class="title">三分时时彩</span>
+						    	    <span class="mui-pull-right"><font class="col-blue">20170502077期</font>&nbsp;17-05-02 18:50</span>
+						    	</div>
+						    	<p class="mui-ellipsis">
+						    		<span class="inline-list-2"><i class="lottery-ball">0</i><i class="lottery-ball">1</i><i class="lottery-ball">0</i><i class="lottery-ball">2</i><i class="lottery-ball">6</i></span>
+						    	    <span class="inline-list-2"><i class="lottery-block">9</i><i class="lottery-block">单</i><i class="lottery-block">小</i><i class="lottery-block">虎</i></span>
+						    	</p>
+
+						    </div>
+					    </a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right draw-list-a">
+						    <img class="mui-media-object draw-list-img" src="../../lottery-mobile/images/lottery_ico/bjkl8.png">
+						    <div class="mui-media-body draw-list-right">
+						    	<div class="item-title-row">
+						    	    <span class="title">北京快乐8</span>
+						    	    <span class="mui-pull-right"><font class="col-blue">20170502077期</font>&nbsp;17-05-02 18:50</span>
+						    	</div>
+						    	<p class="mui-ellipsis">
+						    		<span class="inline-list-kl8">
+                                        <i class="lottery-ball">10</i><i class="lottery-ball">03</i><i class="lottery-ball">11</i><i class="lottery-ball">16</i><i class="lottery-ball">18</i><i class="lottery-ball">05</i><i class="lottery-ball">09</i><i class="lottery-ball">17</i><i class="lottery-ball">10</i><i class="lottery-ball">03</i><i class="lottery-ball">11</i><i class="lottery-ball">16</i><i class="lottery-ball">18</i><i class="lottery-ball">05</i><i class="lottery-ball">09</i><i class="lottery-ball">17</i><i class="lottery-ball">05</i><i class="lottery-ball">09</i><i class="lottery-ball">13</i><i class="lottery-ball">27</i>
+                                    </span>
+						    	</p>
+
+						    </div>
+					    </a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right draw-list-a">
+						    <img class="mui-media-object draw-list-img" src="../../lottery-mobile/images/lottery_ico/xy28.png">
+						    <div class="mui-media-body draw-list-right">
+						    	<div class="item-title-row">
+						    	    <span class="title">幸运28</span>
+						    	    <span class="mui-pull-right"><font class="col-blue">20170502077期</font>&nbsp;17-05-02 18:50</span>
+						    	</div>
+						    	<p class="mui-ellipsis">
+						    		<span class="inline-list-2"><i class="lottery-ball">0</i><i class="lottery-ball">1</i><i class="lottery-ball">0</i></span>
+						    	</p>
+                            </div>
+					    </a>
+					</li>
+				</ul>
+            <div class="pcAndMobile">
+                <a href="javascript:void(0)">手机版</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="javascript:void(0)">电脑版</a>
+            </div>
+            <div class="row copyright">
+                 <span>Copyright&nbsp;©&nbsp;2009-2017&nbsp;天天彩票 版权所有</span>
+            </div>
+			</div>
+			
+	    </div>
+		<nav class="mui-bar mui-bar-buttom mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="draw-record-main.html">
+				<span class="mui-icon bar-buttom-icon iconfont icon-shouye"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item"  href="#">
+				<span class="mui-icon bar-buttom-icon iconfont icon-kaijiang"></span>
+                <span class="mui-tab-label">开奖结果</span>
+			</a>
+			<a class="mui-tab-item" href="#">
+                <span class="mui-icon bar-buttom-icon iconfont icon-dating"></span>
+                <span class="mui-tab-label">购彩大厅</span>
+			</a>
+			<a class="mui-tab-item" href="#">
+                <span class="mui-icon bar-buttom-icon iconfont icon-touzhu"></span>
+                <span class="mui-tab-label">投注记录</span>
+			</a>
+			<a class="mui-tab-item" href="member-center.html">
+                <span class="mui-icon bar-buttom-icon iconfont icon-wode"></span>
+                <span class="mui-tab-label">会员中心</span>
+			</a>
+		</nav>
+		<div class="mui-off-canvas-backdrop"></div>
+		</div>
+	</div>
+	<script src="../../lottery-mobile/js/mui/mui.min.js"></script>
+    <script>
+    	    mui.init();
+			var autoShow = true;
+			var aniShow = "pop-in";
+			var menu = null,
+				showMenu = false;
+			var isInTransition = false;
+			var _self;
+			//禁用侧滑手势
+			 document.querySelector('.mui-inner-wrap').addEventListener('drag',function (e) {
+            e.stopPropagation()
+            });
+            document.querySelector('#offCanvasSide').addEventListener('drag',function (e) {
+            e.stopPropagation()
+            });
+            document.querySelector('#offCanvasSideRight').addEventListener('drag',function (e) {
+            e.stopPropagation()
+            });
+            
+			/*内容区域滚动*/
+	        mui('.mui-scroll-wrapper.middle-content').scroll({
+		        scrollY: true, //是否竖向滚动
+		        scrollX: false, //是否横向滚动
+		        startX: 0, //初始化时滚动至x
+		        startY: 0, //初始化时滚动至y
+		        indicators: false, //是否显示滚动条
+		        deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+		        bounce: false //是否启用回弹
+	        });
+	        /*滚动菜单*/
+			mui('.ssc-parent-menu').scroll({
+		        scrollY: false, //是否竖向滚动
+		        scrollX: true, //是否横向滚动
+		        startX: 0, //初始化时滚动至x
+		        startY: 0, //初始化时滚动至y
+		        indicators: false, //是否显示滚动条
+		        deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+		        bounce: false //是否启用回弹
+	        });
+	        //页面点击事件
+			mui('body').on('tap', 'a', function() {
+				var id = this.getAttribute("data-wid");
+				if(!id) {
+					id = this.getAttribute('href');
+				}
+				var href = this.getAttribute('href');
+
+				//非plus环境，直接走href跳转
+				if(!mui.os.plus){
+					location.href = href;
+					return;
+				}
+
+				var titleType = this.getAttribute("data-title-type");
+
+				var webview_style = {
+					popGesture: "close"
+				}
+				var extras = {};
+				if(titleType == "native") {
+					mui.openWindowWithTitle({
+						url:href,
+						id:id,
+						styles:webview_style,
+						show:{
+							event:"loaded",
+							extras:extras
+						}
+					});
+				} else if(href && ~href.indexOf('.html')) {
+                    var webview = plus.webview.create(this.href,id,webview_style,extras);
+					webview.addEventListener("titleUpdate",function () {
+						setTimeout(function () {
+							webview.show(aniShow,250);
+						},100);
+					});
+				}
+			});
+			//初始化，并预加载webview模式的选项卡			
+			function preload() {
+
+				var menu_style = {
+					left: "-70%",
+					width: '70%',
+					popGesture: "none",
+					render:"always"
+			    };
+			}
+			mui.plusReady(function() {
+				//读取本地存储，检查是否为首次启动
+			var showGuide = plus.storage.getItem("lauchFlag");
+			plus.screen.lockOrientation("portrait-primary");
+				if(showGuide) {
+					//有值，说明已经显示过了，无需显示；
+					//关闭splash页面；
+					plus.navigator.closeSplashscreen();
+					plus.navigator.setFullscreen(false);
+					//预加载
+ 					preload();
+				} else {
+					//显示启动导航
+					mui.openWindow({
+						id: 'guide',
+						url: 'guide.html',
+						styles: {
+							popGesture: "none"
+						},
+						show: {
+							aniShow: 'none'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+					//延迟的原因：优先打开启动导航页面，避免资源争夺
+					setTimeout(function() {
+						//预加载
+						preload();
+					}, 200);
+				}
+				});
+				var slider = mui("#slider");
+                    slider.slider({
+                        interval: 2000//自动轮播周期，若为0则不自动播放，默认为0；
+                    });
+				
+</script>
+</body>
+
+    
+</html>

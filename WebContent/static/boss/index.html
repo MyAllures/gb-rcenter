@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>总控中心-管理首页</title>
+    <link href="../../boss/themes/default/common.css" rel="stylesheet">
+    <link href="../../common/themes/default/iconfont.css" rel="stylesheet">
+    <link href="../../common/themes/default/iCheck/custom.css" rel="stylesheet">
+    <link href="../../common/themes/default/chosen/chosen.css" rel="stylesheet">
+    <link href="../../common/themes/default/bootstrap/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../common/themes/default/dist/bootstrapSwitch.css" rel="stylesheet">
+    <link href="../../common/themes/default/skin/skin-boss.css" rel="stylesheet">
+    <link href="../../common/themes/default/banner/elastislide.css" rel="stylesheet" />
+    <link href="../../common/themes/default/blueimp/css/blueimp-gallery.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="top clearfix">
+        <div class="pull-left logo-m-l">
+            <a href="javascript:void(0)"><span class="m-l-sm m-r-sm fs18">GameBox</span>
+            <span class="line">|</span>
+                <span href="javascript:void(0)" class="m-l-sm fs16">总控中心</span></a>
+        </div>
+        <ul class="nav navbar-nav navbar-left">
+            <li class="active"> <a href="index.html" aria-expanded="false"><i class="fa fa-coffee"></i> 服务 </a>
+            </li>
+            <li> <a href="site/main.html" aria-expanded="false" nav-target="topFrame"><i class="fa fa-gamepad"></i> 平台 </a>
+            </li>
+            <li> <a href="statistics/main.html" aria-expanded="false" nav-target="topFrame"><i class="fa fa-pie-chart"></i> 报表 </a>
+            </li>
+            <li> <a href="operators/main.html" aria-expanded="false" nav-target="topFrame"><i class="fa fa-credit-card"></i> 运维 </a>
+            </li>
+            <li> <a href="system/main.html" aria-expanded="false" nav-target="topFrame"><i class="fa fa-cogs"></i> 系统 </a>
+            </li>
+            <li> <a href="lottery/main.html" aria-expanded="false" nav-target="topFrame"><!-- <i class="fa fa-cogs"></i> --> 彩票 </a>
+            </li>
+        </ul>
+        <div class="pull-right">
+            <ul class="tips">
+            <li class="clock top-time"><a href="../../icon/clock-o" data-toggle="dropdown" class="clock-icon-show top-time-ico" aria-expanded="false"><i class="icon iconfont"></i></a>
+                    <span class="clock-show top-time-number">当前时区：GMT +8 2015-03-24  15:02:57</span>
+                </li>
+                <a class="nav-menu-switch" href="javascript:void(0)">
+                    <em class="fa fa-cog"></em>
+                </a>
+                <li class="infos show-info">
+                    <a data-toggle="dropdown">
+                        你好，李诚诚<i class="fa fa-angle-down"></i></a>
+                    <ul class="information nav-shadow  animated animated-short flipInX">
+                        <li class="infos-img clearfix">
+                            <a data-toggle="dropdown" aria-expanded="false">
+                                <img alt="image" class="img-circle" src="../../mcenter/images/profile_small.jpg"><span class="acc-name-2">李诚诚诚诚诚诚</span></a>
+                        </li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-user m-r-sm"></i>个人资料</a></li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-file-excel-o m-r-sm"></i>操作日志</a></li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-key m-r-sm"></i>更改密码</a></li>
+                        <li class="off"><a href="javascript:void(0)">退出 <i class="fa fa-power-off"></i></a></li>
+                    </ul>
+                </li>
+                <li class="informations">
+                    <a href="javascript:void(0)" class="locate" data-toggle="dropdown">
+                        <i class="icon iconfont"></i><span class="label label-green">3</span>
+                    </a>
+                    <dl class="infos_list nav-shadow">
+                        <dt>系统消息</dt>
+                        <dd class="infos-load">
+                            <img src="../../mcenter/images/022b.gif">
+                        </dd>
+                        <dd class="infos-none"><i class="fa fa-exclamation-circle"></i>暂无消息</dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">【热门活动】
+                                云市场重磅出击，全场低至6折！建站系统、代理服务器维护。</a><span>2015-05-13</span></div>
+                        </dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">【热门活动】
+                                云市场重磅出击，全场低至6折！建站系统、代理服务器维护。</a><span>2015-05-13</span></div>
+                        </dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">【热门活动】
+                                云市场重磅出击，全场低至6折！建站系统、代理服务器维护。</a><span>2015-05-13</span></div>
+                        </dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">【热门活动】
+                                云市场重磅出击，全场低至6折！建站系统、代理服务器维护。</a><span>2015-05-13</span></div>
+                        </dd>
+                        <dd class="more"><a href="javascript:void(0)">查看更多消息>></a></dd>
+                    </dl>
+                </li>
+                <li class="tasks">
+                    <a href="javascript:void(0)" class="locate" data-toggle="dropdown" aria-expanded="false"><i class="icon iconfont"></i><span class="label label-orange">6</span></a>
+                    <dl class="infos_list tasks_list nav-shadow">
+                        <dt>任务提醒</dt>
+                        <dd class="infos-load">
+                            <img src="../../mcenter/images/022b.gif">
+                        </dd>
+                        <dd class="infos-none"><i class="fa fa-exclamation-circle"></i>暂无任务</dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">您有<i class="co-tomato">2条</i>取款申请</a><span>4分钟前</span></div>
+                            <div class="co-gray9 clearfix"><span class="tip">账号已无法接收入款</span><a href="javascript:void(0)" class="co-blue">马上解冻</a></div>
+                        </dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">您有<i class="co-tomato">5个</i>代理申请处理</a><span>36分钟前</span></div>
+                        </dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">您有<i class="co-tomato">2条</i>存款审批</a><span>4分钟前</span></div>
+                        </dd>
+                        <dd>
+                            <div class="clearfix"><a href="javascript:void(0)">您有<i class="co-tomato">5个</i>代理申请处理</a><span>1小时前</span></div>
+                        </dd>
+                        <dd class="more"><a href="javascript:void(0)">查看更多消息&gt;&gt;</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="topFrame">
+        <nav class="navbar-default navbar-static-side shadow" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="active"><a href="index.html" aria-expanded="false"><em class="iconfont icon-huodongguanli"></em> <span class="nav-label">域名审核</span></a></li>
+                    <li><a href="serve/template-manage.html" nav-target="mainFrame"><em class="iconfont icon-xinxiqunfa"></em> <span class="nav-label">模板管理</span></a></li>
+                    <li><a href="serve/system-notice.html" nav-target="mainFrame"><em class="iconfont icon-xiaoxigonggao"></em> <span class="nav-label">系统公告</span></a></li>
+                    <li><a href="serve/api-manage.html" nav-target="mainFrame"><em class="iconfont icon-xinxiqunfa"></em> <span class="nav-label">API管理</span></a></li>
+                    <li><a href="serve/pay-connector.html" nav-target="mainFrame"><em class="iconfont icon-xinxiqunfa"></em> <span class="nav-label">支付接口</span></a></li>
+                    <li><a href="serve/sports-recommond.html" nav-target="mainFrame"><em class="iconfont icon-xinxiqunfa"></em> <span class="nav-label">体育推荐</span></a></li>
+                    <li><a href="serve/newbie-guide.html" nav-target="mainFrame"><em class="iconfont icon-xinxiqunfa"></em> <span class="nav-label">新手引导</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div id="mainFrame">
+                <div class="row">
+                    <div class="position-wrap clearfix">
+                        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+                        <span>服务</span><span>/</span><span>域名审核</span>
+                        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+                    </div>
+                    <div class="col-lg-12 m-b">
+                        <div class="wrapper white-bg shadow">
+                            <!--筛选条件-->
+                            <div class="filter-wraper clearfix p-xs border-b-1">
+                                <div class="form-group clearfix pull-left content-width-limit-400 m-b-xs m-b-none">
+                                    <div class="input-group date">
+                                        <span class="input-group-addon abroder-no"><b>提交时间：</b></span>
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input type="text" class="form-control" value="最近7天(2013-10-11~2013-10-11)">
+                                    </div>
+                                </div>
+                                <div class="search-wrapper btn-group pull-right">
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <div>
+                                                <select data-placeholder="站点名称" class="chosen-select-no-single">
+                                                    <option value=""></option>
+                                                    <option>站点名称</option>
+                                                    <option>站长账号</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="">
+                                        <span class="input-group-btn"> <button type="button" class="btn btn-filter"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--表格内容-->
+                            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover dataTable" aria-describedby="editable_info">
+                                        <thead>
+                                            <tr class="bg-gray">
+                                                <th>序号</th>
+                                                <th class="inline">
+                                                    <select class="chosen-select-no-single" data-placeholder="全部">
+                                                        <option value=""></option>
+                                                        <option value="1">全部</option>
+                                                        <option value="2">运营商域名</option>
+                                                        <option value="3">站点域名</option>
+                                                        <option value="4">代理域名</option>
+                                                    </select>
+                                                </th>
+                                                <th>平台/站点名称</th>
+                                                <th>提交人</th>
+                                                <th>域名</th>
+                                                <th>请求操作</th>
+                                                <th>提交时间</th>
+                                                <th class="inline">
+                                                    <select class="chosen-select-no-single" data-placeholder="全部">
+                                                        <option value=""></option>
+                                                        <option value="1">全部</option>
+                                                        <option value="2">待审核</option>
+                                                        <option value="3">通过</option>
+                                                        <option value="4">失败</option>
+                                                    </select>
+                                                </th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>联众游戏中心</td>
+                                                <td><a href="javascript:void(0)">平安游戏</a></td>
+                                                <td>pook</td>
+                                                <td>gamebox.com</td>
+                                                <td>绑定域名</td>
+                                                <td>2015-06-11 12:30</td>
+                                                <td><span class="label label-success">通过</span></td>
+                                                <td>
+                                                    ---
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>联众游戏中心</td>
+                                                <td><a href="javascript:void(0)">平安游戏</a></td>
+                                                <td>pook</td>
+                                                <td>gamebox.com</td>
+                                                <td><span class="co-red">解绑域名</span></td>
+                                                <td>2015-06-11 12:30</td>
+                                                <td><span class="label label-danger">失败</span></td>
+                                                <td>
+                                                    ---
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>联众游戏中心</td>
+                                                <td><a href="javascript:void(0)">平安游戏</a></td>
+                                                <td>子账号pook</td>
+                                                <td>gamebox.com</td>
+                                                <td>绑定域名</td>
+                                                <td>2015-06-11 12:30</td>
+                                                <td><span class="label label-success">通过</span></td>
+                                                <td>
+                                                    ---
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>联众游戏中心</td>
+                                                <td><a href="javascript:void(0)">平安游戏</a></td>
+                                                <td>pook</td>
+                                                <td>gamebox.com</td>
+                                                <td>绑定域名</td>
+                                                <td>2015-06-11 12:30</td>
+                                                <td><span class="label label-danger">失败</span></td>
+                                                <td>
+                                                    ---
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>联众游戏中心</td>
+                                                <td><a href="javascript:void(0)">平安游戏</a></td>
+                                                <td>子账号pook</td>
+                                                <td>gamebox.com</td>
+                                                <td>绑定域名</td>
+                                                <td>2015-06-11 12:30</td>
+                                                <td><span class="label label-warning">处理中</span></td>
+                                                <td>
+                                                    <a href="javascript:void(0)">通过</a>
+                                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#zhdj2">失败</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>联众游戏中心</td>
+                                                <td><a href="javascript:void(0)">平安游戏</a></td>
+                                                <td>子账号pook</td>
+                                                <td>gamebox.com</td>
+                                                <td>绑定域名</td>
+                                                <td>2015-06-11 12:30</td>
+                                                <td><span class="label label-warning">待处理</span></td>
+                                                <td>
+                                                    <a href="javascript:void(0)">开始处理</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row bdtop3">
+                                    <div class="col-sm-3 col-xs-6">
+                                        <div class="pull-left">
+                                            <select data-placeholder="每页10条" class="chosen-select-no-single">
+                                                <option value=""></option>
+                                                <option>每页20条</option>
+                                                <option>每页30条</option>
+                                                <option>每页40条</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-9 col-xs-6">
+                                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                                            <div class="pull-right pages show-hide-1095 page-skip">
+                                                <form class="form-inline">
+                                                    <label class="m-l-sm">共10页</label>
+                                                    <label class="m-l">第
+                                                        <input type="text" class="m-l-xs m-r-xs min form-control input-sm">页</label>
+                                                    <button class="btn btn-sm m-l-sm">跳转</button>
+                                                </form>
+                                            </div>
+                                            <ul class="pagination pull-right">
+                                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 左侧菜单响应控件 -->
+        <div class="footer">
+            <div class="pull-right">
+                <div class="btn-group dropup">
+                    <button type="button" class="btn btn-outline btn-filter dropdown-toggle language-btn m-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../mcenter/images/language/england.png" class="m-r-xs">English <span class="caret m-l-xs"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right m-sm m-b-none">
+                        <li>
+                            <a href="javascript:void(0)"><img src="../../common/images/language/simplified-chinese.png" class="m-r-xs">简体中文</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../../common/images/language/traditional-chinese.png" class="m-r-xs">繁体中文</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../../common/images/language/1.png" class="m-r-xs">ภาษาไทย</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../../common/images/language/2.png" class="m-r-xs">Malaysia</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="a-copy clearfix">
+                <div class="pull-left"><a href="javascript:void(0)">联系客服</a><span class="dividing-line m-r-xs m-l-xs">|</span><a href="javascript:void(0)" data-toggle="modal" data-target="#competencePwd">意见反馈</a></div><span class="m-l-sm pull-left">Copyright © 2015  gamebox 版权所有</span> <span class="htm-5-logo" type="button" data-toggle="tooltip" data-placement="top" title="我们项目使用html5规范开发，可提供您在所有设备上更加好的体验。"></span></div>
+        </div>
+    </div>
+    <!--意见反馈-->
+    <div class="modal inmodal" id="competencePwd" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight family">
+                <div class="modal-header">
+                    <span class="filter">意见反馈</span>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group clearfix m-b-sm col-xs-12">
+                        <label class="col-xs-3 al-right line-hi34"><span class="co-red m-r-sm">*</span>反馈内容：</label>
+                        <div class="col-xs-8 p-x">
+                            <div class="line-hi34 m-b-xs">
+                                <span class="co-yellow"><i class="fa fa-exclamation-circle"></i></span> 业务方面的问题请直接联系客服处理
+                            </div>
+                            <textarea class="form-control" placeholder="如果您在使用平台的过程中遇到问题，或者有任何的意见或建议，欢迎随时向我们反馈。"></textarea>
+                            <dd class="m-t-xs co-grayc2">还可输入400个字符</dd>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix m-b-sm col-xs-12">
+                        <label class="col-xs-3 al-right line-hi34">验证码：</label>
+                        <div class="col-xs-8 p-x">
+                            <div class="input-group date">
+                                <input type="text" class="form-control" placeholder="请输入验证码">
+                                <span class="input-group-addon abroder-no p-x"><img src="images//ico.jpg" class="pull-left m-l" /></span>
+                                <span class="input-group-addon abroder-no"> <a href="javascript:void(0)" class="co-gray6"><i class="fa fa-refresh"></i></a></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-filter" data-toggle="modal" data-dismiss="modal" data-target="#competenceError">提交</button>
+                    <!--                <button type="button" class="btn btn-outline btn-filter">取消</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--弹窗实例-->
+    <div class="modal inmodal in" id="edit" tabindex="-1" role="dialog" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight family">
+                <div class="modal-header">
+                    <span class="filter">弹窗实例</span>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+                </div>
+                <div class="modal-body">
+                    <div class="no-content_wrap">
+                        <i class="fa fa-exclamation-circle"></i> 暂无内容
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-filter">确认</button>
+                    <button type="button" class="btn btn-outline btn-filter">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--失败-->
+    <div class="modal inmodal in" id="zhdj2" tabindex="-1" role="dialog" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight unstyled family">
+                <div class="modal-header">
+                    <span class="filter">消息</span>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group clearfix line-hi34 m-b-sm">
+                        <label class="col-sm-3 al-right ">失败原因 : </label>
+                        <div class="col-sm-8 p-x">
+                            <textarea class="form-control" placeholder="这里输入内容"></textarea>
+                            <p class="character-1">0/2000</p>
+                            <span class="co-grayc2">
+                        <i class="fa fa-exclamation-circle co-orange"></i>                        
+                    非必填，填写后失败原因将会展示给提交人！</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline btn-filter" data-toggle="modal" data-target="#zhdj" data-dismiss="modal">提交</button>
+                    <button type="button" class="btn btn-filter">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--新增快捷菜单-->
+    <div class="modal inmodal" id="add-plus" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight unstyled family">
+                <div class="modal-header">
+                    <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增快捷菜单</span>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+                </div>
+                <div class="modal-body">
+                    <div class="condition-wraper m-b-sm clearfix">
+                        <strong>新增快捷菜单</strong>
+                        <a href="javascript:void(0)" class="pull-right co-blue3">恢复默认</a>
+                    </div>
+                    <div class="condition-wraper m-b-sm clearfix">
+                        <span class="co-red3"><i class="fa fa-times-circle"></i>&nbsp;&nbsp;操作无效，最多可添加20个快键方式</span>
+                    </div>
+                    <div class="add-players">
+                        <dl class="add-shortcut-menu clearfix">
+                            <dt>角色管理</dt>
+                            <dd>
+                                <a href="javascript:void(0)" class="selected">玩家列表<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)">层级设置<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)" class="selected">玩家等级<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)" class="selected">代理管理<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)" class="selected">代理体系<i class="fa fa-check"></i></a>
+                            </dd>
+                        </dl>
+                        <dl class="add-shortcut-menu clearfix">
+                            <dt>交易管理</dt>
+                            <dd>
+                                <a href="javascript:void(0)">玩家列表<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)">层级设置<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)" class="selected">玩家等级<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)" class="selected">代理管理<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)">代理体系<i class="fa fa-check"></i></a>
+                            </dd>
+                        </dl>
+                        <dl class="add-shortcut-menu clearfix">
+                            <dt>内容管理</dt>
+                            <dd>
+                                <a href="javascript:void(0)">玩家列表<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)">层级设置<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)">玩家等级<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)">代理管理<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)">代理体系<i class="fa fa-check"></i></a>
+                            </dd>
+                        </dl>
+                        <dl class="add-shortcut-menu clearfix">
+                            <dt>内容管理</dt>
+                            <dd>
+                                <a href="javascript:void(0)">玩家列表<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)">层级设置<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)">玩家等级<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)">代理管理<i class="fa fa-check"></i></a>
+                                <a href="javascript:void(0)">代理体系<i class="fa fa-check"></i></a>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-filter">确认</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-outline btn-filter">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Mainly scripts -->
+<script src="../../common/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../common/js/bootstrap/bootstrap.min.js"></script>
+<!-- metisMenu 手风琴控件 -->
+<script src="../../common/js/jquery/plugins/jquery.metisMenu/jquery.metisMenu.js"></script>
+<!-- Chosen 选择下拉控件-->
+<script src="../../common/js/jquery/plugins/jquery.chosen/jquery.chosen.js"></script>
+<!-- JSKnob 原型图表控件-->
+<script src="../../common/js/jquery/plugins/jquery.knob/jquery.knob.js"></script>
+<!-- NouSlider 滑动模块控件-->
+<script src="../../common/js/jquery/plugins/jquery.nouislider/jquery.nouislider.min.js"></script>
+<!-- iCheck 单选复选控件-->
+<script src="../../common/js/iCheck/icheck.min.js"></script>
+<!-- 左侧菜单响应控件 -->
+<script src="../../common/js/inspinia/inspinia.js"></script>
+<!--switch 开关按钮控件-->
+<script src="../../common/js/dist/bootstrap-switch.js"></script>
+<!--主题切换控件-->
+<script src="../../common/js/modernizr.custom/modernizr.custom.17475.js"></script>
+<!--主题图片滚动插件-->
+<script src="../../common/js/jquery/plugins/jquery.elastislide/jquery.elastislide.js"></script>
+<!--toastr提示弹窗插件-->
+<script src="../../common/js/toastr/toastr.min.js"></script>
+<script src="../../common/js/jquery/plugins/fileinput/fileinput.js"></script>
+<script src="app.js"></script>
+<script>
+$(document).ready(function() {
+
+    //chosen 下拉选择框
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': {
+            allow_single_deselect: true
+        },
+        '.chosen-select-no-single': {
+            disable_search_threshold: 10
+        },
+        '.chosen-select-no-results': {
+            no_results_text: 'Oops, nothing found!'
+        },
+        '.chosen-select-width': {
+            width: "95%"
+        }
+    };
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+
+
+});
+//列表选中
+$('input').on('ifChecked', function(event) {
+    $(this).parents('tr').addClass('open');
+    $('.function-menu-show').show();
+});
+
+
+//列表不选中
+$('input').on('ifUnchecked', function(event) {
+    $(this).parents('tr').removeClass('open');
+    $('.function-menu-show').hide();
+});
+
+//icheck 单选、复选
+$('.i-checks').iCheck({
+    checkboxClass: 'icheckbox_square-green',
+    radioClass: 'iradio_square-green',
+});
+
+//Switch 切换开关
+$("[name='my-checkbox']").bootstrapSwitch();
+
+//tool tips 提示弹窗
+$('.help-popover').popover();
+
+
+//显示隐藏模块--更多数据
+$(".more-data").mousedown(function() {
+    $(this).parent().toggleClass("show-data");
+});
+
+//快捷菜单滑动
+$("ul>li.menu").mouseover(function() {
+    $(this).addClass("shut");
+});
+$("ul>li.menu").mouseleave(function() {
+    $(this).removeClass("shut");
+});
+
+//主题菜单滑动
+$("ul>li.themes").mouseover(function() {
+    $(this).addClass("shut");
+});
+$("ul>li.themes").mouseleave(function() {
+    $(this).removeClass("shut");
+});
+
+/*快捷菜单按钮效果*/
+$("ul.home-wrap dd").mouseover(function() {
+    $(this).addClass("shut");
+});
+$("ul.home-wrap dd").mouseleave(function() {
+    $(this).removeClass("shut");
+});
+
+$("ul.logo-wrap dd").mouseover(function() {
+    $(this).addClass("shut");
+});
+$("ul.logo-wrap dd").mouseleave(function() {
+    $(this).removeClass("shut");
+});
+
+
+//themes快捷菜单冒泡阻止
+$("ul>li.menu").click(function(event) {
+    $("ul>li.menu.shut").toggleClass("open");
+    $(document).one("click", function(event) {
+        $("ul>li.menu").removeClass("open");
+    });
+    $("dl.menu-item").slideToggle(200);
+    $(document).one("click", function(event) {
+        $("dl.menu-item").hide();
+    });
+    event.stopPropagation();
+});
+$("dl.menu-item").click(function(event) {
+    event.stopPropagation();
+});
+
+//显示隐藏模块-主题
+$("ul>li.themes").click(function() {
+    $("ul>li.themes").addClass("open");
+    $(".themes_list").slideToggle();
+});
+$(".pack_up").click(function() {
+    $("ul>li.themes").removeClass("open");
+    $(".themes_list").slideToggle();
+});
+
+//显示隐藏模块-小屏幕账号、站点下拉
+$("ul>li.adown").click(function() {
+    $("ul>li.adown").toggleClass("open");
+    $(".adown_list").slideToggle();
+});
+//tooltip 提示弹窗
+$('[data-toggle="tooltip"]').tooltip();
+
+//显示隐藏模块-顶部菜单
+$(".nav-menu-switch").click(function() {
+    $(".top>ul.nav.navbar-nav").toggleClass("open");
+    $(document).one("click", function(event) {
+        $(".top>ul.nav.navbar-nav").removeClass("open");
+    });
+    event.stopPropagation();
+})
+
+//圆形图表插件
+$(".dial").knob();
+
+//stint
+$(".stint").click(function() {
+    $(this).toggleClass("open");
+});
+
+//筛选条件选择效果
+$(".condition li").click(function() {
+    $(this).parent().children().removeClass("click");
+    $(this).addClass("click");
+});
+$(".condition li").mouseover(function() {
+    $(this).addClass("hover");
+});
+$(".condition li").mouseleave(function() {
+    $(this).removeClass("hover");
+});
+
+//新增左侧菜单-选中/取消 效果
+$(".add-shortcut-menu dd a").click(function() {
+    $(this).toggleClass("selected");
+});
+
+//添加标签-选中/取消 效果
+$(".compile-li-tag a").click(function() {
+    $(this).toggleClass("selected");
+});
+
+//显示隐藏模块-添加标签
+$(".compile-add").click(function() {
+    $(".compile-li-tag").toggleClass("open");
+});
+
+//鼠标效果显示隐藏-详细列表-总资产
+$(".assets-wrap").mouseover(function() {
+    $(this).children(".tbsj").show();
+});
+$(".assets-wrap").mouseleave(function() {
+    $(this).children(".tbsj").hide();
+});
+
+//鼠标效果显示隐藏-详细列表-总资产-刷新按钮
+$("dl.funds-wrap dd").mouseover(function() {
+    $(this).children("a.refresh").show();
+});
+$("dl.funds-wrap dd").mouseleave(function() {
+    $(this).children("a.refresh").hide();
+});
+//asdf
+$("#file-0").fileinput({
+    'allowedFileExtensions': ['jpg', 'png', 'gif'],
+});
+</script>
+<script>
+//表格内下拉菜单    
+$(document).ready(function() {
+    $("th.inline").click(function() {
+        $(this).find(".chosen-drop").css({
+            top: $(this).parent().offset().top - $("body").scrollTop() + 28
+        });
+        $(this).find(".chosen-drop").css({
+            left: $(this).find(".chosen-container").offset().left
+        });
+    });
+});
+</script>
+<script>
+//饼状图
+$(function() {
+    $(document).ready(function() {
+
+        // Build the chart
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: '玩家占比'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: "玩家占比",
+                colorByPoint: true,
+                data: [{
+                    name: "QQ游戏",
+                    y: 56.33
+                }, {
+                    name: "联众游戏",
+                    y: 24.03,
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: "爱丽游戏",
+                    y: 10.38
+                }, {
+                    name: "500万游戏",
+                    y: 4.77
+                }]
+            }]
+        });
+    });
+});
+//走势图
+$(function() {
+    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=usdeur.json&callback=?', function(data) {
+
+        $('#container11').highcharts({
+            chart: {
+                zoomType: 'x'
+            },
+            title: {
+                text: '最近30天日均新增玩家数：2352652'
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                    ' ' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: 'Exchange rate'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+
+            series: [{
+                type: 'area',
+                name: '存款金额',
+                data: data
+            }]
+        });
+    });
+});
+//柱状图
+$(function() {
+    $('#container22').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: '盈亏对比'
+        },
+        xAxis: {
+            categories: ['QQ游戏']
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: '游戏1',
+            data: [5]
+        }, {
+            name: '游戏2',
+            data: [2]
+        }, {
+            name: '游戏3',
+            data: [-3]
+        }, {
+            name: '游戏4',
+            data: [3]
+        }]
+    });
+});
+</script>
+<!-- ChartJS-->
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="grid-light.js"></script>
+
+</html>

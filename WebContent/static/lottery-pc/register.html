@@ -1,0 +1,606 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <link rel="stylesheet" href="./ssc/themes/default/css/cabel-v1.css?v=20170206" type="text/css">
+    <link rel="stylesheet" href="./ssc/themes/default/css/style.css?v=20170216" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="./ssc/themes/default/css/animate.min.css?v=20170206" type="text/css"><!--CSS3动画-->
+    <link rel="stylesheet" href="./ssc/themes/default/css/lottery.css?v=20170206" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="./ssc/themes/default/css/liMarquee.css?v=20170206" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="./ssc/themes/default/css/global.css?v=1490772423349" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="./ssc/themes/default/css/other.css?v=20170309" type="text/css"><!--页面CSS-->
+    <script src="./ssc/themes/default/js/FancyZoom.js" language="JavaScript" type="text/javascript"></script>
+    <script src="./ssc/themes/default/js/FancyZoomHTML.js" language="JavaScript" type="text/javascript"></script>
+    <script>
+    <!--
+    // 屏蔽JS错误
+//    window.onerror = function(){return true;}
+    // -->
+</script>
+<script src="./ssc/themes/default/js/mobile-detect.min.js"></script><style>
+        a:hover{
+            color: red;
+
+        }
+        a:active{
+            color:deepskyblue;
+        }
+    </style>
+    <script>
+        var CONFIG = {
+            BASEURL: "./",    // 根路径
+            RESURL: "./ssc/themes/default/"         // 资源路径
+        };
+    </script>
+</head>
+<body>
+<div class="type_top" style="z-index:100">
+    <div class="wid1">
+        <div class="left fl">
+            <div class="left_div">你好，欢迎来到彩票网!
+                <a href="./login.html" class="log">请登录</a>
+                        <span>
+                            <a href="./register.html" class="a1 blink">免费注册</a>
+                            <!--<a href="javascript:void(0)" class="par">合作账号登录<i class="ico-d"></i></a>-->
+                            <a href="javascript:void(0)" onclick="shiwan()">免费试玩</a>
+                        </span>
+                    </div>
+        </div>
+        <div class="right fr">
+            <ul>
+                <li class="li0"><a href="./index.html">首页</a></li>
+                <li class="li0"><a href="https://chat7.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=763215&configID=54563&jid=1035408947" style="color:#d84600" target="_blank" class="blink">在线客服</a></li>
+                <li class="l"><a href="javascript:void(0)"><b>购买彩票</b><i class="ico-d"></i></a>
+                    <div class="pay">
+                        <div class="pay_list">
+                            <h4>高频：</h4>
+                            <p>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/ffssc')">分分时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/efssc')">两分时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/sfssc')">三分时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/wfssc')">五分时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/cqssc')">重庆时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/tjssc')">天津时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/xjssc')">新疆时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/pk10')">北京PK10</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/xyft')">幸运飞艇</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/kl8')">北京快乐8</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/klsf')">快乐十分</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/xync')">幸运农场</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/xy28')">幸运28</a></span>
+                            </p>
+                        </div>
+                        <div class="pay_list">
+                            <h4>低频：</h4>
+                            <p>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/fc3d')">福彩3D</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/pl3')">体彩排列3</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/lhc')">香港六合彩</a></span>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li><a href=".//help/index.html">帮助</a></li>
+                <li class="l"><a href="javascript:void(0)"><b>网站导航</b><i class="ico-d"></i></a>
+                    <div class="link">
+                        <h5>
+                            <a href="./ssc/main.html" target="_blank">购买彩票</a>
+                            <a href="" target="_blank">手机购彩</a>
+                            <a href=".//help/index.html">规则说明</a>
+                        </h5>
+                        <h4>
+                            <strong>彩票工具</strong>
+                            <p><a href="" target="_blank">手机客户端</a> <a href="./ssc/main.html?module=zstIndex" target="_blank">走势查询</a> <a href="javascript:void(0)" onclick="getPage('lsjl/tzjl')">中奖查询</a></p>
+                        </h4>
+                        <h5 class="last">
+                            <a href="javascript:void(0)" onclick="openHyzx()">会员中心</a>
+                            <a href="javascript:void(0)" onclick="openHyzx('jfmx/hylb')">推广赚钱</a>
+                            <a href="./yhhd.html">优惠活动</a>
+                        </h5>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    function getPage(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        if (typeof $.cookie("uid") == 'undefined' || typeof $.cookie("token") == 'undefined') {
+            alert("请先登录");
+            if ($("#loginAccount1").length > 0) {
+                $("#loginAccount1").focus();
+                return;
+            }
+            window.location.href = "./index.html";
+            return;
+        }
+        windowOpen('./member/main.html?module=' + module, '会员中心', 1250, 834);
+    }
+    function login2() {
+        var loginAccount = $.trim($("#loginAccount2").val());
+        var loginPassword = $.trim($("#loginPassword2").val());
+        var yzm = $.trim($("#loginYzm2").val());
+
+        if (!loginAccount) {
+            alert("请输入账号");
+            return;
+        }
+        if (!loginPassword) {
+            alert("请输入密码");
+            return;
+        }
+        if (!yzm) {
+            alert("请输入验证码");
+            return;
+        }
+
+        /*ajaxRequest({
+            url: "./member/ajaxLogin.json",
+            data: {
+                yzm: yzm,
+                account: loginAccount,
+                password: $.md5(loginPassword)
+            },
+            beforeSend: function() {
+                showLoading();
+            },
+            success: function(json) {
+                if (json.result == 1) {
+                    $.cookie("uid", json.userId, {path: "/"});
+                    $.cookie("token", json.token, {path: "/"});
+                    hideLoading();
+                    location.reload();
+                } else {
+                    refreshYzm(document.getElementById('yzmImg2'));
+                    alert("登录失败：" + json.description);
+                    hideLoading();
+                }
+            }
+        });*/
+    }
+    function shiwan() {
+        /*ajaxRequest({
+            url: "./shiwan.json",
+            beforeSend: function() {
+                showLoading();
+                $.cookie("uid", '', {path: "/", expires: -1});
+                $.cookie("token", '', {path: "/", expires: -1});
+            },
+            success: function(json) {
+                if (json.result == 1) {
+                    $.cookie("uid", json.userId, {path: "/"});
+                    $.cookie("token", json.token, {path: "/"});
+                    hideLoading();
+                    alert("游客盘口只供试玩，与正式会员盘口无关");
+                    location.reload();
+                } else {
+                    refreshYzm(document.getElementById('yzmImg2'));
+                    alert("登录失败：" + json.description);
+                    hideLoading();
+                }
+            }
+        });*/
+    }
+    function sigout() {
+        /*ajaxRequest({
+            url: "./member/ajaxSigout.json",
+            beforeSend: function() {
+                showLoading();
+            },
+            success: function(json) {
+                $.cookie("uid", '', {path: "/", expires: -1});
+                $.cookie("token", '', {path: "/", expires: -1});
+                hideLoading();
+                location.reload();
+            }
+        });*/
+    }
+</script><div class="img"><a href="./index.html"><img src="./ssc/themes/default/img/logo1.png" alt=""></a></div>
+<img src="./ssc/themes/default/img/bj.jpg" class="back" alt="" width="100%">
+<div class="regedit">
+
+    <div class="reg_col">
+        <div class="reg_list">
+            <ul>
+                <li class="sli">
+                    <h5>1</h5>
+                    <p>填写信息</p>
+                </li>
+                <li>
+                    <h5>2</h5>
+                    <p>注册成功</p>
+                </li>
+                <li>
+                    <h5>3</h5>
+                    <p>充值购彩</p>
+                </li>
+            </ul>
+        </div>
+        <div class="reg">
+            <div class="reg_le">
+                <form onsubmit="ajaxRegister();return false;">
+                    <div>
+                        <h4><span><img src="./ssc/themes/default/img/r1.png" /></span></h4>
+                        <p><input id="registerAccount" type="text" placeholder="请输入您的用户名"/></p>
+                    </div>
+                    <div>
+                        <h4><span><img src="./ssc/themes/default/img/r2.png" /></span></h4>
+                        <p><input id="registerPassword" type="password" placeholder="请输入密码"/></p>
+                    </div>
+                    <div>
+                        <h4><span><img src="./ssc/themes/default/img/r1.png" /></span></h4>
+                        <p><input id="registerName" type="text" placeholder="请输入您的姓名"/></p>
+                    </div>
+                    <div>
+                        <h4><span><img src="./ssc/themes/default/img/r3.png" /></span></h4>
+                        <p><input id="registerYzm" class="short" type="text" placeholder="请输入验证码" onfocus="refreshYzm(document.getElementById('registerYzmImg1'))" /><img id="registerYzmImg1" onclick="refreshYzm(this)" width="65" height="30" src="./ssc/themes/default/img/yzm.jpg" /></p>
+                    </div>
+                    <div class="no">
+                        <h3><input type="submit"  value="立即注册"/><br><span>注册即表示同意<a href="javascript:void(0)" onclick="showKhxy()">《彩票服务使用协议》</a></span></h3>
+                    </div>
+                </form>
+            </div>
+            <div class="reg_rt">
+                <h5>已有账号，<span>直接登录</span></h5>
+                <h3>注册帮助</h3>
+                <ul>
+                    <li>
+                        <h6>1</h6>
+                        <p><a href=".//help/question/zc.html" target="_blank">新手操作指南</a></p>
+                    </li>
+                    <li>
+                        <h6>2</h6>
+                        <p><a href=".//help/question/mima.html" target="_blank">手机注册时提示手机号码已被绑定怎么办?</a></p>
+                    </li>
+                    <li>
+                        <h6>3</h6>
+                        <p><a href="#">注册时昵称显示“已经被注册”如何处理?</a></p>
+                    </li>
+                    <li>
+                        <h6>4</h6>
+                        <p><a href="#">注册时提示"你所使用的IP地址异常",该怎么办?</a></p>
+                    </li>
+                    <li class="no">
+                        <h6></h6>
+                        <p><a href=".//help/index.html" target="_blank">更多帮助》</a></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert_log two2">
+    <div class="alert_log_col">
+        <h5>欢迎您登录<i>×</i></h5>
+        <form onsubmit="registerLogin();return false;">
+            <div>
+                <h4><span><img src="./ssc/themes/default/img/l1.png" /></span></h4>
+                <p><input type="text" id="registerLoginAccount" placeholder="请输入您的账号" /></p>
+            </div>
+            <div>
+                <h4><span><img src="./ssc/themes/default/img/l2.png" /></span></h4>
+                <p><input type="password" id="registerLoginPassword" placeholder="密码" /></p>
+            </div>
+            <div>
+                <h4><span><img src="./ssc/themes/default/img/l2.png" /></span></h4>
+                <p><input type="text" id="registerLoginYzm" placeholder="验证码" onfocus="refreshYzm(document.getElementById('registerYzmImg2'))" /><img id="registerYzmImg2" width="113" height="43" onclick="refreshYzm(this)" src="./ssc/themes/default/img/yzm.jpg" /></p>
+            </div>
+            <h3><input type="checkbox" /><a href="#">记住密码</a><span><a href="https://chat7.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=763215&configID=54563&jid=1035408947" target="_blank">忘记密码？</a></span></h3>
+            <h6><input type="submit" class="sub"  value="登录"/></h6>
+        </form>
+    </div>
+</div>
+
+<div class="copy">
+    <p style="font-family:arial;">
+        2009 -
+        <script>
+        var date = new Date;
+        var year=date.getFullYear();
+        document.write(year);
+    </script>&nbsp;&nbsp;&copy;彩票网</p>&nbsp;&nbsp;
+</div>
+
+<script type="text/html" id="template_khxy">
+<p style="text-indent: 2em; text-align: left;">1、彩票网只接受合法年龄的客户申请。同时我们保留要求客户提供其年龄证明的权利。</p><p style="text-indent: 2em; text-align: left;">2、在彩票网进行注册时所提供的全部信息必须在各个方面都是准确和完整的。</p><p style="text-indent: 2em; text-align: left;">3、在开户后进行一次有效存款，恭喜您成为彩票网有效会员！</p><p style="text-indent: 2em; text-align: left;">4、存款免手续费，开户最低存款金额1人民币，最高单次存款金额100万人民币。</p><p style="text-indent: 2em; text-align: left;">5、成为彩票网有效会员后，客户有责任以在线客服、电子邮件、在彩票网网站上联系我们，随时向本公司提供最新的个人资料。</p><p style="text-indent: 2em; text-align: left;">7、无论是个人或是团体，如有任何威胁、滥用彩票网优惠的行为，彩票网保留杈利取消、收回由优惠产生的红利，并保留权利追讨最高50%手续费。</p><p style="text-indent: 2em; text-align: left;">9、客户一经注册开户，将被视为接受所有颁布在彩票网网站上的规则与条例。</p></script>
+
+<script type="text/javascript" src="./ssc/themes/default/js/jquery.min.js?v=2017"></script><!--jQuery库-->
+<script type="text/javascript" src="./ssc/themes/default/js/scrollanim.min.js?v=2017"></script> <!--"动画库"-->
+<script src="./ssc/themes/default/js/type.js?v=2017"></script><!--自定义封装函数-->
+<script src="./ssc/themes/default/js/global.js?v=20170321"></script><!--自定义封装函数-->
+<script src="./ssc/themes/default/js/jquery.cookie.js?v=2017"></script><!--自定义封装函数-->
+<script src="./ssc/themes/default/js/jquery.md5.js?v=2017"></script><!--自定义封装函数-->
+<script src="./ssc/themes/default/layer/layer.js?v=2017"></script>
+<script src="./ssc/themes/default/js/jquery.nicescroll.js?v=2017"></script>
+<script src="./ssc/themes/default/js/dateFormat.js?v=2017"></script>
+<script src="./ssc/themes/default/js/template.js?v=2017"></script>
+<script src="./ssc/themes/default/js/swfobject/swfobject.js?v=2017"></script>
+<script src="./ssc/themes/default/js/jquery.liMarquee.js?v=2017"></script>
+<script src="./ssc/themes/default/js/placeholders.jquery.min.js?v=2017"></script>
+<script>
+    // 闪烁
+    var blinkColorArr = "#fa6200|#0f3f94".split("|");
+    $(".blink").each(function() {
+        var obj = $(this);
+        setInterval(function() {
+            var tmpColor = blinkColorArr[parseInt(Math.random() * blinkColorArr.length)];
+            $(obj).css("color", tmpColor);
+        },200);
+    });
+</script><script>
+    function openHyzx(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        if (typeof $.cookie("uid") == 'undefined' || typeof $.cookie("token") == 'undefined') {
+            alert("请先登录");
+            if ($("#loginAccount1").length > 0) {
+                $("#loginAccount1").focus();
+                return;
+            }
+            window.location.href = "./main.html";
+            return;
+        }
+        windowOpen('./member/main.html?module=' + module, '会员中心', 1250, 834);
+    }
+
+    function openGcdt(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        windowOpenBlank('./ssc/main.html?module=' + module);
+        
+    }
+
+    function openZstIndex(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        windowOpenBlank('./ssc/main.html?module=' + module);
+        
+    }
+    function refreshYzm(obj) {
+        var src = $(obj).attr("src");
+        var params = getRequest(src);
+
+        src = "./code/yzm?timestamp=" + (new Date()).getTime();
+        $.each(params, function(index, value) {
+            src += '&' + value.key + '=' + value.value;
+        });
+        $(obj).attr("src", src);
+    }
+
+    function showLoading() {
+        layer.load(2, {
+            shade: [0.1,'#000'] //0.1透明度的白色背景
+        })
+    }
+    function hideLoading() {
+        layer.closeAll();
+    }
+</script><script>
+    function showKhxy() {
+        //自定页
+        layer.open({
+            type: 1,
+            skin: 'layui-layer-popup', //样式类名
+            closeBtn: 2, //显示关闭按钮
+            anim: 2,
+            title: '开户协议',
+            shadeClose: true, //开启遮罩关闭
+            content: $("#template_khxy").html()
+        });
+    }
+    function registerLogin() {
+        var loginAccount = $.trim($("#registerLoginAccount").val());
+        var loginPassword = $.trim($("#registerLoginPassword").val());
+        var yzm = $.trim($("#registerLoginYzm").val());
+
+        if (!loginAccount) {
+            alert("请输入账号");
+            return;
+        }
+        if (!loginPassword) {
+            alert("请输入密码");
+            return;
+        }
+        if (!yzm) {
+            alert("请输入验证码");
+            return;
+        }
+
+        /*ajaxRequest({
+            url: "./member/ajaxLogin.json",
+            data: {
+                yzm: yzm,
+                account: loginAccount,
+                password: $.md5(loginPassword)
+            },
+            beforeSend: function() {
+                showLoading();
+            },
+            success: function(json) {
+                if (json.result == 1) {
+                    $.cookie("uid", json.userId, {path: "/"});
+                    $.cookie("token", json.token, {path: "/"});
+                    window.location.href = "./main.html";
+                } else {
+                    refreshYzm(document.getElementById('registerYzmImg2'));
+                    Tools.toast("登录失败：" + json.description);
+                }
+                hideLoading();
+            }
+        });*/
+    }
+    function ajaxRegister() {
+        var account = $.trim($("#registerAccount").val());
+        var password = $.trim($("#registerPassword").val());
+        var name = $.trim($("#registerName").val());
+        var yzm = $.trim($("#registerYzm").val());
+
+        if (!account) {
+            Tools.toast("请输入账号");
+            return;
+        }
+
+        if (!account.match(/^[a-zA-Z][0-9a-zA-Z]{5,11}$/)) {
+            alert("请输入以字母开头的6-12位字母、数字组成的账号");
+            return;
+        }
+
+        if (!password) {
+            Tools.toast("请输入密码");
+            return;
+        }
+
+        if (!password.match(/^[0-9a-zA-Z]{6,12}$/)) {
+            alert("请输入6-12位字母、数字的密码");
+            return;
+        }
+
+        if (!name) {
+            Tools.toast("请输入姓名");
+            return;
+        }
+
+        if (!name.match(/^[\u4e00-\u9fa5]+$/)) {
+            alert("姓名只能是汉字");
+            return;
+        }
+        var numLen = $("#registerName").val().length;
+        if(numLen < 2){
+            alert("姓名两位以上");
+            return;
+        }
+
+        if (!yzm) {
+            Tools.toast("请输入验证码");
+            return;
+        }
+
+        /*ajaxRequest({
+            url: "./member/ajaxRegister.json",
+            beforeSend: function() {
+                showLoading();
+            },
+            data: {
+                account: account,
+                password: $.md5(password),
+                name: name,
+                yzm: yzm,
+                agentId: $.cookie("agentId")
+            },
+            success: function(json) {
+                hideLoading();
+                if (json.result == 1) {
+                    Tools.toast("注册成功");
+                    $.cookie("uid", json.userId, {path: "/"});
+                    $.cookie("token", json.token, {path: "/"});
+                    window.location.href = "./main.html";
+                } else if (json.result == -6) {
+                    Tools.toast("注册成功，请登录");
+                    window.location.href = "./main.html";
+                } else {
+                    if (json.result == -941) {
+                        $.cookie("agentId", '', {path: "/", expires: -1});
+                    }
+                    Tools.toast("注册失败：" + json.description);
+                    refreshYzm(document.getElementById('registerYzmImg1'));
+                }
+            }
+        });*/
+    }
+    function showLoading() {
+        layer.load(2, {
+            shade: [0.1,'#000'] //0.1透明度的白色背景
+        })
+    }
+    function hideLoading() {
+        layer.closeAll();
+    }
+    function refreshYzm(obj) {
+        var src = $(obj).attr("src");
+        var params = getRequest(src);
+
+        src = "./code/yzm?timestamp=" + (new Date()).getTime();
+        $.each(params, function(index, value) {
+            src += '&' + value.key + '=' + value.value;
+        });
+        console.log(src);
+        $(obj).attr("src", src);
+    }
+    $(window).resize(function(){
+        ate();
+    });
+
+    $(function() {
+        ate();
+        $(".alert_log_col h5 i").click(function(){
+            $(".two2").fadeOut();
+        });
+        autobox(".Customerservice",1,1180,0);
+        tabs_cg(".Resultt .latyout .tabs_ce ul li","","hover","acti","","");
+        click_addname(".Resultt .latyout .wrap_select a","acti","click");
+        $('.reg_rt h5 span').click(function(){
+            $('.two2').fadeIn();
+        })
+    });
+
+    function ate(){
+        var hei=$(window).height();
+        $(".back").css("height",hei-27+"px");
+    }
+
+    function login1() {
+        var loginAccount = $.trim($("#loginAccount1").val());
+        var loginPassword = $.trim($("#loginPassword1").val());
+        var yzm = $.trim($("#loginYzm1").val());
+
+        if (!loginAccount) {
+            alert("请输入账号");
+            return;
+        }
+        if (!loginPassword) {
+            alert("请输入密码");
+            return;
+        }
+        if (!yzm) {
+            alert("请输入验证码");
+            return;
+        }
+
+        /*ajaxRequest({
+            url: "./member/ajaxLogin.json",
+            data: {
+                yzm: yzm,
+                account: loginAccount,
+                password: $.md5(loginPassword)
+            },
+            beforeSend: function() {
+                layer.load(2, {
+                    shade: [0.1,'#000'] //0.1透明度的白色背景
+                })
+            },
+            success: function(json) {
+                layer.closeAll();
+                if (json.result == 1) {
+                    $.cookie("uid", json.userId, {path: "/"});
+                    $.cookie("token", json.token, {path: "/"});
+                    location.reload();
+                } else {
+                    refreshYzm(document.getElementById('yzmImg1'));
+                    alert("登录失败：" + json.description);
+                }
+            }
+        });*/
+    }
+</script>
+</body>
+</html>

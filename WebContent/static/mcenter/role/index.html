@@ -1,0 +1,2412 @@
+<nav class="navbar-default navbar-static-side shadow" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="active"> <a href="role/players.html" nav-target="mainFrame"><em class="fa fa-male"></em> <span class="nav-label">玩家管理</span></a></li>
+            <li><a href="role/level.html" nav-target="mainFrame"><em class="fa fa-list"></em> <span class="nav-label">层级设置</span></a></li>
+            <li><a href="role/role.html"  nav-target="mainFrame"><em class="fa fa-users"></em> <span class="nav-label">代理管理</span></a></li>
+            <li><a href="role/genera_agency.html"  nav-target="mainFrame"><em class="fa fa-users"></em> <span class="nav-label">总代管理</span></a></li>
+            <li><a href="role/line_players.html"  nav-target="mainFrame"><em class="fa fa-sitemap"></em> <span class="nav-label">在线玩家</span></a></li>
+        </ul>
+    </div>
+</nav>
+<div id="page-wrapper" class="gray-bg dashbard-1">
+    <div id="mainFrame">
+    <div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>角色管理</span><span>/</span><span>玩家管理</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow">
+            <!--筛选条件-->
+            <div class="filter-wraper clearfix">
+                <button type="button" class="btn btn-info btn-addon" data-toggle="modal" data-target="#plus"><i class="fa fa-plus"></i><span class="hd">新增</span></button>
+                <button type="button" class="btn btn-primary-hide"><i class="fa fa-refresh"></i><span class="hd">刷新</span></button>
+                <button type="button" class="btn btn-warning-hide" data-toggle="modal" data-target="#filter"><i class="fa fa-filter"></i><span class="hd">筛选</span></button>
+                <!--<button type="button" class="btn btn-primary-hide" data-toggle="modal" data-target="#unlock"><i class="fa fa-unlock-alt"></i><span class="hd">&nbsp;&nbsp;限制</span></button>-->
+                <div class="function-menu-show">
+                <button type="button" class="btn btn-primary-hide" data-toggle="modal" data-target="#sign-out"><i class="fa fa-sign-out"></i><span class="hd">&nbsp;&nbsp;导出</span></button>
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-filter btn-outline dropdown-toggle"><i class="fa fa-list"></i><span class="hd">&nbsp;&nbsp;层级</span>&nbsp;&nbsp;<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <div class="label-menu-o">
+                            <li><label><input type="radio" class="i-checks" name="a">A类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">B类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">C类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">D类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">E类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">F类型</label></li>
+                        </div>
+                        <li class="divider"></li>
+                        <li class="m-b-sm bt m-t-xs">
+                            <button type="button" class="btn btn-filter btn-sm m-r-sm">确认</button>
+                            <a href="level.html" class="fil" nav-target="mainFrame">管理</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-filter btn-outline dropdown-toggle"><i class="fa fa-tags"></i><span class="hd">&nbsp;&nbsp;标签</span>&nbsp;&nbsp;<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+
+                       <div class="input-group label-search">
+                          <input type="text" placeholder="A层级" class="form-control">
+                          <span class="input-group-addon">×</span>
+                          <span class="input-group-addon"><a href="javascript:void(0)">搜索</a></span>
+                       </div>
+
+                        <div class="label-menu-o">
+                        <li><label><input type="checkbox" class="i-checks" value="1">优质客户</label></li>
+                        <li><label><input type="checkbox" class="i-checks">主动客户</label></li>
+                        <li><label><input type="checkbox" class="i-checks">熟悉客户</label></li>
+                        <li><label><input type="checkbox" class="i-checks">优质客户</label></li>
+                        <li><label><input type="checkbox" class="i-checks">主动客户</label></li>
+                        <li><label><input type="checkbox" class="i-checks">熟悉客户</label></li>
+                        <li><label><input type="checkbox" class="i-checks">优质客户</label></li>
+                        <li><label><input type="checkbox" class="i-checks">主动客户</label></li>
+                        <li><label><input type="checkbox" class="i-checks">熟悉客户</label></li>
+                        <li><label><input type="checkbox" class="i-checks">优质客户</label></li>
+                        <li><label><input type="checkbox" class="i-checks">主动客户</label></li>
+                        <li><label><input type="checkbox" class="i-checks">熟悉客户</label></li>
+                        <li><label><input type="checkbox" class="i-checks">优质客户</label></li>
+                        <li><label><input type="checkbox" class="i-checks">主动客户</label></li>
+                        <li><label><input type="checkbox" class="i-checks">熟悉客户</label></li>
+                        </div>
+                        <li class="divider m-t-none"></li>
+                        <li class="m-b-sm bt m-t-xs">
+                            <button type="button" class="btn btn-filter btn-sm m-r-sm">确认</button>
+                            <a href="javascript:void(0)" class="fil"  data-toggle="modal" data-target="#editTag">管理</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-filter btn-outline dropdown-toggle"><span class="hd">更多&nbsp;&nbsp;</span>
+                    <span class="hd-show"><i class="fa fa-ellipsis-h"></i></span>
+                    <span class="caret hd"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0)" data-toggle="modal" data-target="#comments"><i class="fa fa-comments-o"></i>信息群发</a></li>
+                        <li><a href="javascript:void(0)" data-toggle="modal" data-target="#clear"><i class="fa fa-eraser"></i>清除联系</a></li>
+<!--                            <li><a href="javascript:void(0)" data-toggle="modal" data-target="#pwd"><i class="fa fa-key"></i>密码重置</a></li>-->
+                        <li><a href="javascript:void(0)"><i class="fa fa-gamepad"></i>限额设置</a></li>
+                    </ul>
+                </div>
+                </div>
+                <div class="search-wrapper btn-group pull-right m-r-n-xs">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <div>
+                              <select data-placeholder="用户名" class="chosen-select-no-single" tabindex="9">
+                                <option value=""></option>
+                                <option>列表1</option>
+                                <option>列表2</option>
+                                <option>列表3</option>
+                                <option>列表4</option>
+                              </select>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn"> <button type="button" class="btn btn-filter"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button></span>
+                    </div>
+                </div>
+            </div>
+            <hr class=" m-b-xs m-t-sm" />
+            <!--表格内容-->
+            <dl class="clearfix filter-conditions m-b-sm">
+              <dt>当前筛选条件（<a href="javascript:void(0)">清除</a>）</dt>
+              <dd>玩家等级包含：普通玩家<a href="javascript:void(0)">×</a></dd>
+              <dd>用户名包含：CC<a href="javascript:void(0)">×</a></dd>
+              <dd>用户名包含：CC<a href="javascript:void(0)">×</a></dd>
+            </dl>
+            <hr class="m-b-xs m-t-xs" />
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                <div class="row p-l-sm p-r-sm">
+                    <div class="col-6 form-inline pull-left m-b-xs m-l-sm">
+                       <div>
+                          <select data-placeholder="默认列表" class="chosen-select-no-single input-sm" tabindex="9">
+                            <option value=""></option>
+                            <option>默认列表</option>
+                            <option>列表1</option>
+                            <option>列表2</option>
+                            <option>新列表</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-6 more-wrapper m-b-none clearfix pull-right">
+                        <a href="javascript:void(0)" class="pull-right more-data"><img src="../../mcenter/images/icon_data.gif" />&nbsp;&nbsp;更多数据</a>
+                        <div class="col-sm-12 more-data-wrapper">
+                          <div class="clearfix">
+                            <div class="pull-left zszd">
+                                <div class="zszd-title">
+                                <span>展示字段</span>
+                                <a href="javascript:void(0)">恢复默认设置</a></div>
+                                <ul class="clearfix">
+                                    <li><label><input type="checkbox" class="i-checks" /> 展现量</label></li>
+                                    <li><label><input type="checkbox" class="i-checks" /> 点击量</label></li>
+                                    <li><label><input type="checkbox" class="i-checks" /> 平均点击话费</label></li>
+                                    <li><label><input type="checkbox" class="i-checks" /> 千次展现话费</label></li>
+                                    <li><label><input type="checkbox" class="i-checks" /> 间接成交金额</label></li>
+                                    <li><label><input type="checkbox" class="i-checks" checked /> 花费</label></li>
+                                    <li><label><input type="checkbox" class="i-checks" /> 点击率</label></li>
+                                    <li><label><input type="checkbox" class="i-checks" /> 直接成交金额</label></li>
+                                    <li><label><input type="checkbox" class="i-checks" /> 直接成交笔数</label></li>
+                                    <li><label><input type="checkbox" class="i-checks" /> 收藏宝贝数</label></li>
+                                    <li><label><input type="checkbox" class="i-checks" /> 总成交金额</label></li>
+                                    <li><label><input type="checkbox" class="i-checks" /> 点击转化率</label></li>
+                                    <li><label><input type="checkbox" class="i-checks" /> 收藏店铺数</label></li>
+                                    <li><label><input type="checkbox" class="i-checks" /> 总成交笔数</label></li>
+                                    <li><label><input type="checkbox" class="i-checks" /> 总收藏数</label></li>
+                                </ul>
+                              </div>
+                              <div class="pull-left">
+                                <label class="font-noraml zs_list_title">默认列表&nbsp;&nbsp;</label>
+                                <ul class="zs_list">
+                                  <li><a href="javascript:void(0)" class="co-orange">玩家账号</a></li>
+                                  <li><a class="default" href="javascript:void(0)">状态</a></li>
+                                  <li><a class="default" href="javascript:void(0)">操作</a></li>
+                                  <li><a href="javascript:void(0)">邮箱</a></li>
+                                  <li><a href="javascript:void(0)">手机</a></li>
+                                  <li><a href="javascript:void(0)">层级</a></li>
+                                </ul>
+                              </div>
+                              <div class="pull-left">
+                                <label class="font-noraml zs_list_title">新列表&nbsp;&nbsp;<i class="fa fa-trash-o"></i></label>
+                                <ul class="zs_list">
+                                  <li><a href="javascript:void(0)" class="co-orange">玩家账号</a></li>
+                                  <li><a class="default" href="javascript:void(0)">状态</a></li>
+                                  <li><a class="default" href="javascript:void(0)">操作</a></li>
+                                  <li><a href="javascript:void(0)">邮箱</a></li>
+                                  <li><a href="javascript:void(0)">手机</a></li>
+                                  <li><a href="javascript:void(0)">层级</a></li>
+                                </ul>
+                              </div>
+                              <div class="pull-left">
+                                <label class="font-noraml zs_list_title"><input type="text" class="form-control input-sm" value="新列表" /></label>
+                                <ul class="zs_list">
+                                  <li><a href="javascript:void(0)" class="co-orange">玩家账号</a></li>
+                                  <li><a class="default" href="javascript:void(0)">状态</a></li>
+                                  <li><a class="default" href="javascript:void(0)">操作</a></li>
+                                  <li><a href="javascript:void(0)">邮箱</a></li>
+                                  <li><a href="javascript:void(0)">手机</a></li>
+                                  <li><a href="javascript:void(0)">层级</a></li>
+                                </ul>
+                              </div>
+                          </div>
+                            <div class="clearfix complete">
+                                <button type="button" class="btn btn-filter">完成设置</button>
+                                <div class="pull-right">
+                                  <a href="javascript:void(0)" class="co-orange m-r">可拖拽排序</a>
+                                  <button type="button" class="btn add-list"><i class="fa fa-plus"></i>&nbsp;&nbsp;添加新列表</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable m-b-none" aria-describedby="editable_info">
+                        <thead>
+                        <tr role="row" class="bg-gray">
+                            <th><label><input type="checkbox" value="state" class="i-checks"></label></th>
+                            <th>账号</th>
+                            <th class="sorting">所属体系</th>
+                            <th class="sorting">注册时间</th>
+                            <th class="sorting_asc">钱包余额</th>
+                            <th class="inline">
+                              <div>
+                                  <select data-placeholder="层级" class="chosen-select-no-single" tabindex="9">
+                                    <option value=""></option>
+                                    <option>A层级</option>
+                                    <option>B层级</option>
+                                    <option>C层级</option>
+                                    <option>D层级</option>
+                                  </select>
+                              </div>
+                            </th>
+                            <th class="inline">
+                              <div>
+                                  <select data-placeholder="状态" class="chosen-select-no-single" tabindex="9">
+                                    <option value=""></option>
+                                    <option>正常</option>
+                                    <option>账号停用</option>
+                                    <option>账号冻结</option>
+                                    <option>余额冻结</option>
+                                  </select>
+                              </div>
+                            </th>
+                            <th>操作</th>
+                        </tr>
+                        <tr class="bd-none">
+                          <th colspan="10"><div class="select-records"><i class="fa fa-exclamation-circle"></i>您当前选中了全部的3条记录，<a href="javascript:void(0)">点此取消选定</a>全部记录</div></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="tab-detail">
+                            <td><label><input type="checkbox" value="child1" class="i-checks"></label></td>
+                            <td>
+                                <div class="al-cleft">
+                                    <img src="images//zgq.jpg" /> <a href="javascript:void(0)">demovip</a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flash"></i></a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flag"></i></a>
+                                    <a href="javascript:void(0)" class="ico-lock co-red3"><i class="fa fa-warning"></i></a>
+                                </div>
+                            </td>
+                            <td><a href="javascript:void(0)">demo</a>><a href="javascript:void(0)">demo2</a></td>
+                            <td class="co-yellow">2015-08-12 14:25:33</td>
+                            <td class="co-tomato">999</td>
+                            <td>B层级</td>
+
+                            <td><span class="label label-danger">账号停用</span></td>
+                            <td>
+                              <a href="javascript:void(0)" data-toggle="modal" data-target="#edit">编辑</a>
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a>
+                            </td>
+                        </tr>
+
+                        <tr class=" tab-detail">
+                            <td><label><input type="checkbox" value="child2" class="i-checks"></label></td>
+                            <td>
+                                <div class="al-cleft">
+                                    <img src="images//gq.jpg" /> <a href="javascript:void(0)">demovip</a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flash"></i></a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flag"></i></a>
+                                </div>
+                            </td>
+                            <td><a href="javascript:void(0)">demo</a>><a href="javascript:void(0)">demo2</a></td>
+                            <td>2009-03-12 14:25:33</td>
+                            <td class="co-tomato">300</td>
+                            <td>B层级</td>
+
+                            <td><span class="label label-success">正常</span></td>
+                            <td>
+                              <a href="javascript:void(0)" data-toggle="modal" data-target="#edit">编辑</a>
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a>
+                            </td>
+                        </tr>
+                        <tr class="tab-detail">
+                            <td><label><input type="checkbox" value="child4" class="i-checks"></label></td>
+                            <td>
+                                <div class="al-cleft">
+                                    <img src="images//cgq.jpg" /> <a href="javascript:void(0)">demovip</a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flash"></i></a>
+                                </div>
+                            </td>
+                            <td><a href="javascript:void(0)">demo</a>><a href="javascript:void(0)">demo2</a></td>
+                            <td>2009-03-12 14:25:33</td>
+                            <td class="co-tomato">563</td>
+                            <td>B层级</td>
+
+                            <td><span class="label label-warning">余额冻结</span></td>
+                            <td>
+                              <a href="javascript:void(0)" data-toggle="modal" data-target="#edit">编辑</a>
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a>
+                            </td>
+                        </tr>
+                        <tr class=" tab-detail">
+                            <td><label><input type="checkbox" value="child5" class="i-checks"></label></td>
+                            <td>
+                                <div class="al-cleft"><img src="images//zgq.jpg" /> <a href="javascript:void(0)">demovip</a></div>
+                            </td>
+                            <td><a href="javascript:void(0)">demo</a>><a href="javascript:void(0)">demo2</a></td>
+                            <td>2009-03-12 14:25:33</td>
+                            <td class="co-tomato">2656</td>
+                            <td>B层级</td>
+
+                            <td><span class="label label-info">账号冻结</span></td>
+                            <td>
+                              <a href="javascript:void(0)" data-toggle="modal" data-target="#edit">编辑</a>
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a>
+                            </td>
+                        </tr>
+                        <tr class=" tab-detail">
+                            <td><label><input type="checkbox" value="child6" class="i-checks"></label></td>
+                            <td>
+                                <div class="al-cleft">
+                                    <img src="images//gq.jpg" /> <a href="javascript:void(0)">demovip</a>
+                                    <a href="javascript:void(0)" class="ico-lock"><i class="fa fa-flag"></i></a>
+                                </div>
+                            </td>
+                            <td><a href="javascript:void(0)">demo</a>><a href="javascript:void(0)">demo2</a></td>
+                            <td>2009-03-12 14:25:33</td>
+                            <td class="co-tomato">-</td>
+                            <td>B层级</td>
+
+                            <td><span class="label label-danger">账号停用</span></td>
+                            <td>
+                              <a href="javascript:void(0)" data-toggle="modal" data-target="#edit">编辑</a>
+                              <span class="dividing-line m-r-xs m-l-xs">|</span>
+                              <a href="role/new_detail.html" nav-target="mainFrame">详细</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable m-b-none" aria-describedby="editable_info">
+                        <thead>
+                            <tr role="row" class="bg-gray">
+                                <th><label><input type="checkbox" value="state" class="i-checks"></label></th>
+                                <th class="sorting">账号</th>
+                                <th class="sorting">所属体系</th>
+                                <th class="sorting">注册时间</th>
+                                <th class="sorting_asc">钱包余额</th>
+                                <th class="sorting">层级</th>
+                                <th class="inline"><!--引擎版本-->
+                                  <div>
+                                      <select data-placeholder="状态" class="chosen-select-no-single" tabindex="9">
+                                        <option value=""></option>
+                                        <option>正常</option>
+                                        <option>账号停用</option>
+                                        <option>账号冻结</option>
+                                        <option>余额冻结</option>
+                                      </select>
+                                  </div>
+                                </th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                         <tbody>
+                            <tr>
+                                <td colspan="8" class="no-content_wrap">
+                                    <div>
+                                        <i class="fa fa-exclamation-circle"></i> 暂无内容
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row bdtop3">
+                    <div class="col-sm-3 col-xs-6">
+
+                        <div class="pull-left">
+                          <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>每页20条</option>
+                            <option>每页30条</option>
+                            <option>每页40条</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                            <form class="form-inline">
+                              <label class="m-l-sm">共10页</label>
+                              <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                              <button class="btn btn-sm m-l-sm">跳转</button>
+                            </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--新增快捷菜单弹窗-->
+<div class="modal inmodal" id="add-plus" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight unstyled family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增快捷菜单</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+          <div class="condition-wraper m-b-sm clearfix">
+            <strong>新增快捷菜单</strong>
+            <a href="javascript:void(0)" class="pull-right co-blue3">恢复默认</a>
+          </div>
+          <div class="condition-wraper m-b-sm clearfix">
+            <span class="co-red3"><i class="fa fa-times-circle"></i>&nbsp;&nbsp;操作无效，最多可添加20个快键方式</span>
+          </div>
+          <div class="add-players">
+            <dl class="add-shortcut-menu clearfix">
+              <dt>角色管理</dt>
+              <dd>
+                <a href="javascript:void(0)">玩家列表<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">层级设置<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">玩家等级<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">代理管理<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">代理体系<i class="fa fa-check"></i></a>
+              </dd>
+            </dl>
+            <dl class="add-shortcut-menu clearfix">
+              <dt>交易管理</dt>
+              <dd>
+                <a href="javascript:void(0)">玩家列表<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">层级设置<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">玩家等级<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">代理管理<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">代理体系<i class="fa fa-check"></i></a>
+              </dd>
+            </dl>
+            <dl class="add-shortcut-menu clearfix">
+              <dt>内容管理</dt>
+              <dd>
+                <a href="javascript:void(0)">玩家列表<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">层级设置<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">玩家等级<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">代理管理<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">代理体系<i class="fa fa-check"></i></a>
+              </dd>
+            </dl>
+            <dl class="add-shortcut-menu clearfix">
+              <dt>内容管理</dt>
+              <dd>
+                <a href="javascript:void(0)">玩家列表<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">层级设置<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">玩家等级<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">代理管理<i class="fa fa-check"></i></a>
+                <a href="javascript:void(0)">代理体系<i class="fa fa-check"></i></a>
+              </dd>
+            </dl>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" data-dismiss="modal" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--新增玩家弹窗-->
+<div class="modal inmodal fade" id="plus" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated unstyled family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <form role="form" id="form" novalidate>
+            <div class="modal-body">
+              <div class="add-players">
+                <div class="form-group clearfix m-b-xxs">
+                    <label class="col-xs-3  al-right line-hi34"><span class="co-red m-r-sm">*</span>账号 : </label>
+                    <div class="col-xs-8 p-x"><input type="text" placeholder="" class="form-control m-b"></div>
+                </div>
+                <div class="form-group clearfix m-b-xxs">
+                    <label class="col-xs-3  al-right line-hi34"><span class="co-red m-r-sm">*</span>密码 : </label>
+                    <div class="col-xs-8 p-x"><input type="text" placeholder="" class="form-control m-b"></div>
+                </div>
+                <div class="form-group clearfix m-b-xxs">
+                    <label class="col-xs-3  al-right line-hi34"><span class="co-red m-r-sm">*</span>确认密码 : </label>
+                    <div class="col-xs-8 p-x"><input type="text" placeholder="" class="form-control m-b"></div>
+                </div>
+                <div class="form-group clearfix m-b-sm">
+                    <label class="col-xs-3  al-right line-hi34"><span class="co-red m-r-sm">*</span>层级 : </label>
+                    <div class="col-xs-8 p-x">
+                      <select data-placeholder="A层级" class="chosen-select-no-single" tabindex="9">
+                        <option value=""></option>
+                        <option>A层级</option>
+                        <option>B层级</option>
+                        <option>C层级</option>
+                        <option>D层级</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="form-group clearfix m-b-xxs">
+                  <label class="col-xs-3 al-right line-hi34">手机 : </label>
+                  <div class="input-group m-b col-xs-8 p-x ">
+                    <div class="input-group-btn">
+                        <div>
+                          <select data-placeholder="+213" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>+86</option>
+                            <option>+109</option>
+                            <option>+201</option>
+                          </select>
+                        </div>
+                    </div>
+                    <input type="email" placeholder="" class="form-control" required aria-required="true">
+                  </div>
+                </div>
+                <div class="form-group clearfix m-b-xxs">
+                    <label class="col-xs-3 al-right line-hi34">邮箱 : </label>
+                    <div class="col-xs-8 p-x"><input type="text" placeholder="接受注册成功通知" class="form-control m-b"></div>
+                </div>
+                <div class="form-group clearfix m-b-xxs">
+                    <label class="col-xs-3 al-right line-hi34">真实姓名 : </label>
+                    <div class="col-xs-8 p-x"><input type="text" placeholder="玩家的真实姓名" class="form-control m-b"></div>
+                </div>
+                <div class="form-group clearfix m-b-sm">
+                  <label class="col-xs-3 al-right line-hi34">性别 : </label>
+                  <div class="col-xs-8 p-x">
+                      <select data-placeholder="男"  class="chosen-select-no-single">
+                        <option value=""></option>
+                        <option>男</option>
+                        <option>女</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="form-group clearfix m-b-xxs">
+                    <label class="col-xs-3 al-right line-hi34">生日 : </label>
+                    <div class="form-group col-xs-8 p-x" id="data_3">
+                      <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input type="text" class="form-control" value="2013-10-11">
+                      </div>
+                    </div>
+                </div>
+
+                <div class="form-group clearfix m-b-sm">
+                    <label class="col-xs-3 al-right line-hi34">星座 : </label>
+                    <div class="col-xs-8 p-x"><input type="text" placeholder="自动生成" disabled class="form-control"></div>
+                </div>
+
+                <div class="form-group m-r-n clearfix m-b-sm">
+                    <label class="col-xs-3 al-right line-hi34">国家地区 : </label>
+                      <div class="clearfix m-l-n col-xs-8 p-x">
+                        <div class="col-xs-4">
+                            <div>
+                              <select data-placeholder="国家" class="chosen-select-no-single" tabindex="9">
+                                <option value=""></option>
+                                <option>中国</option>
+                                <option>美国</option>
+                                <option>马来西亚</option>
+                                <option>泰国</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 p-x">
+                            <div>
+                              <select data-placeholder="省份" class="chosen-select-no-single" tabindex="9">
+                                <option value=""></option>
+                                <option>福建</option>
+                                <option>广东</option>
+                                <option>湖南</option>
+                                <option>广西</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div>
+                              <select data-placeholder="城市" class="chosen-select-no-single" tabindex="9">
+                                <option value=""></option>
+                                <option>厦门</option>
+                                <option>上海</option>
+                                <option>北京</option>
+                                <option>广州</option>
+                              </select>
+                            </div>
+                        </div>
+                      </div>
+                 </div>
+                 <div class="form-group clearfix m-b-sm">
+                    <label class="col-xs-3 al-right line-hi34">返水优惠方案 : </label>
+                    <div class="col-xs-8 p-x">
+                        <div class="input-group date">
+                            <select data-placeholder="无返水优惠" class="chosen-select-no-single" tabindex="9">
+                                <option value=""></option>
+                                <option>无返水优惠</option>
+                            </select>
+                          <span class="input-group-addon bdn"><button type="button" class="btn btn-filter m-l-sm">套用上层</button></span>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="form-group clearfix m-b-xxs">
+                     <label class="col-xs-3 al-right line-hi34">QQ : </label>
+                     <div class="col-xs-8 p-x"><input type="text" placeholder="" class="form-control m-b"></div>
+                 </div>
+                 <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">备注 : </label>
+              <div class="col-xs-8 p-x">
+                <textarea class="form-control"></textarea>
+              </div>
+            </div>
+
+              </div>
+
+            </div>
+           <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" data-dismiss="modal" class="btn btn-primary-hide">取消</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+<!--筛选弹窗-->
+<div class="modal inmodal fade" id="filter" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated unstyled family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-filter"></i>&nbsp;&nbsp;筛选</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="condition-wraper m-b-sm">
+                <span>筛选条件</span>
+                <a href="javascript:void(0)" class="add pull-right">创建新的筛选模板</a>
+                <a href="javascript:void(0)" class="cancel-create pull-right">取消创建</a>
+            </div>
+            <div class="condition-options-wraper sx" style="display:none">
+                <div class="clearfix">
+                    <span class="con-title">筛选条件：</span>
+                    <div class="wjcj">
+                      <select class="chosen-select-no-single">
+                        <option>注册时间</option>
+                      </select>
+                    </div>
+                    <div class="wjcj">
+                      <select class="chosen-select-no-single">
+                        <option>等于</option>
+                      </select>
+                    </div>
+                    <div class="wjcj">
+                            <input type="text" class="form-control" />
+                    </div>
+                    <a href="javascript:void(0)" class="recover"><i class="fa fa-trash-o"></i></a>
+                </div>
+                <div class="clearfix">
+                    <span class="con-title">筛选条件：</span>
+                    <div class="wjcj">
+                      <select class="chosen-select-no-single">
+                        <option>注册时间</option>
+                      </select>
+                    </div>
+                    <div class="wjcj">
+                      <select class="chosen-select-no-single">
+                        <option>等于</option>
+                      </select>
+                    </div>
+                    <div class="wjcj">
+                       <input type="text" class="form-control" />
+                    </div>
+                    <a href="javascript:void(0)" class="recover"><i class="fa fa-trash-o"></i></a>
+                </div>
+                <div class="clearfix">
+                    <a href="javascript:void(0)" class="co-blue">+新增筛选条件</a>
+                    <span class="zd"><i class="fa fa-warning"></i>最多添加5个过滤条件</span>
+                </div>
+                <div class="clearfix save">
+                    <label class="mc">
+                        <input type="checkbox" class="i-checks"><span class="co-blue m-r">保存筛选条件</span>名称：<input type="text" value="小于等于100" class="form-control" />
+                    </label>
+                </div>
+                <div class="clearfix">
+                    <button type="button" class="btn btn-filter">确认</button>
+                    <button type="button" class="btn btn-primary-hide">取消</button>
+                </div>
+            </div>
+            <ul class=" condition condition-scroll">
+                <li class=" col-xs-12">
+                    （临时）优质客户
+                    <div class="edit">
+                        <a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+                        <a href="javascript:void(0)"><i class="fa fa-trash-o"></i></a>
+                    </div>
+                </li>
+                <li class=" col-xs-12">展现量大于等于200
+                    <div class="edit">
+                        <a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+                        <a href="javascript:void(0)"><i class="fa fa-trash-o"></i></a>
+                    </div>
+                </li>
+                <li class=" col-xs-12">展现量小于等于700
+                    <div class="edit">
+                        <a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+                        <a href="javascript:void(0)"><i class="fa fa-trash-o"></i></a>
+                    </div>
+                </li>
+                <li class=" col-xs-12">优质客户
+                    <div class="edit">
+                        <a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+                        <a href="javascript:void(0)"><i class="fa fa-trash-o"></i></a>
+                    </div>
+                </li>
+                <li class=" col-xs-12">展现量大于等于200
+                    <div class="edit">
+                        <a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+                        <a href="javascript:void(0)"><i class="fa fa-trash-o"></i></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">筛选</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--层级选择弹窗-->
+<div class="modal inmodal" id="cjlist" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-list"></i>&nbsp;&nbsp;层级选择</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="m-b-xs">正在操作<span class="co-tomato">2条</span>数据</div>
+            <div class="m-b-sm">小提示：批量修改保存后将影响所有已选中的项目，请提交前认真核实!</div>
+            <table class="table table-bordered">
+                <thead>
+                <th>选择</th>
+                <th>类型</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><label><div class="icheckbox_square-blue" style="position: relative;"><input type="checkbox" class="i-checks" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div></label></td>
+                    <td>A层级</td>
+                </tr>
+                <tr>
+                    <td><label><div class="icheckbox_square-blue" style="position: relative;"><input type="checkbox" class="i-checks" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div></label></td>
+                    <td>B层级</td>
+                </tr>
+                <tr>
+                    <td><label><div class="icheckbox_square-blue" style="position: relative;"><input type="checkbox" class="i-checks" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div></label></td>
+                    <td>C层级</td>
+                </tr>
+                <tr>
+                    <td><label><div class="icheckbox_square-blue" style="position: relative;"><input type="checkbox" class="i-checks" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div></label></td>
+                    <td>D层级</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="m-b-n-xs clearfix">
+                <a href="javascript:void(0)" class="pull-right">层级管理</a>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--清除联系方式弹窗-->
+<div class="modal inmodal" id="clear" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-list"></i>&nbsp;&nbsp;清除联系方式</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="tip">
+              <ul>
+                <li>1. 清除联系方式后将无法恢复</li>
+                <li>2. 只能通过站内信向玩家发送消息</li>
+              </ul>
+              <i class="fa fa-exclamation-circle"></i>
+            </div>
+            <div class="m-b-sm">当前已选中<span class="co-yellow">68</span>个玩家，其中<span class="co-yellow">34</span>个未导出过，建议先导出这部分数据进行备份</div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#sign-out">先导出</button>
+            <button type="button" class="btn btn-primary-hide" data-toggle="modal" data-target="#qingc">直接清除</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--正在清除联系方式-->
+<div class="modal inmodal" id="qingc" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-list"></i>&nbsp;&nbsp;清除联系方式</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="m-b-md">正在清除<span class="co-yellow">68</span>个玩家的联系方式，请勾选您要清除的项</div>
+            <div class="form-group bg-gray">
+              <label><input type="checkbox" class="i-checks"> 手机号码</label>
+              <label><input type="checkbox" class="i-checks"> 电子邮箱</label>
+              <label><input type="checkbox" class="i-checks"> Skyep</label>
+              <label><input type="checkbox" class="i-checks"> QQ</label>
+              <label><input type="checkbox" class="i-checks"> MSN</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--导出数据弹窗-->
+<div class="modal inmodal fade " id="sign-out" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated unstyled family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;导出</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="condition-wraper m-b-sm clearfix">
+                <a href="export-history.html" class="pull-right">查看导出历史</a>
+            </div>
+            <div class="clearfix sx-wrap">
+              <span>当前筛选条件：</span>
+              <div class="sx-data">
+                <span class="gjz">玩家等级包含:普通玩家</span>
+                <span class="gjz">用户名包含:CC</span>
+                <span class="gjz">用户名包含:CC</span>
+              </div>
+            </div>
+
+
+            <div class="clearfix  col-sm-4 sx-radio">
+              <span class="sx">导出玩家选择：</span>
+              <div class="sx-data">
+                <div class="">
+                  <label><input type="radio" class="i-checks"  name="a"></label> 手动勾选<span class="co-orange">2</span>条数据
+                </div>
+                <div class="">
+                  <label><input type="radio" class="i-checks" name="a"></label> 导出筛选所有玩家
+                </div>
+              </div>
+            </div>
+            <div class="clearfix col-sm-6 sx-radio">
+              <span class="sx">导出格式：</span>
+              <div class="sx-data">
+                <div class="">
+                  <label><input type="radio" class="i-checks"  name="b"></label> csv-逗号分隔的文本文件
+                </div>
+                <div class="">
+                  <label><input type="radio" class="i-checks" name="b"></label> txt-制表符分隔的文本文件
+                </div>
+                <div class="">
+                  <label><input type="radio" class="i-checks" name="b"></label> xls-Excel文件
+                </div>
+              </div>
+                </div>
+            <div class="clearfix sx-wrap">
+              <span>导出文件名称：</span>
+              <div><input type="text" class="form-control input-sm" /></div>
+            </div>
+            <div class="clearfix sx-wrap">
+              <span>加密密码：</span>
+              <div><input type="password" class="form-control input-sm" /></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#sign">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal inmodal" id="sign" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;导出</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="clearfix sx-wrap scing">
+              <span class="sx"><i class="fa fa-check-circle co-blue"></i></span>
+              <div class="sx-data">
+                <h1>导出文件正在生成中</h1>
+                <span>请到<a href="export-history.html" class="co-blue3">已导出文件列表</a>中下载。</span>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">关闭</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--新增标签弹窗-->
+<div class="modal inmodal" id="editTag" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content  animated unstyled family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-tags"></i>&nbsp;&nbsp;标签管理</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="clearfix m-b"><a href="javascript:void(0)" data-toggle="modal" data-target="#addTag" class="co-blue">添加标签</a></div>
+            <div class="col-xs-12">
+               <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>标签</th>
+                        <th>描述</th>
+                        <th>玩家数量</th>
+                        <th>操作</th>
+                   </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>优质客户</td>
+                        <td>优质客户</td>
+                        <td>11</td>
+                        <td><a href="javascript:void(0)" class="m-r-sm">重命名</a><a href="javascript:void(0)">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td>优质客户</td>
+                        <td>优质客户</td>
+                        <td>11</td>
+                        <td><a href="javascript:void(0)" class="m-r-sm">重命名</a><a href="javascript:void(0)">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td>优质客户</td>
+                        <td>优质客户</td>
+                        <td>11</td>
+                        <td><a href="javascript:void(0)" class="m-r-sm">重命名</a><a href="javascript:void(0)">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td>优质客户</td>
+                        <td>优质客户</td>
+                        <td>11</td>
+                        <td><a href="javascript:void(0)" class="m-r-sm">重命名</a><a href="javascript:void(0)">删除</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--资金查看更多-->
+<div class="modal inmodal" id="moreFunds" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-tags"></i>&nbsp;&nbsp;查看更多</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group over clearfix m-b-n-xs">
+              <table class="table table-striped table-bordered table-hover dataTable" aria-describedby="editable_info">
+                                        <thead>
+                                          <tr>
+                                            <th>交易号</th>
+                                            <th>创建时间</th>
+                                            <th>
+                                              资金类型
+                                            </th>
+
+
+
+                                            <th>金额</th>
+                                            <th>
+                                              状态
+                                            </th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>20150327DHBWMC86</td>
+                                            <td>2015.03.27 16:51:01</td>
+                                            <td><div>存款RMB</div>
+                                                <span class="co-grayd">建设银行 张向东 尾号3501</span>
+                                            </td>
+                                            <td class="co-green">+500</td>
+                                            <td class="co-red">失败</td>
+                                          </tr>
+                                          <tr>
+                                            <td>20150327DHBWMC86</td>
+                                            <td>2015.03.27 16:51:01</td>
+                                            <td><div>存款RMB</div>
+                                                <span class="co-grayd">建设银行 张向东 尾号3501</span>
+                                            </td>
+                                            <td class="co-green">+500</td>
+                                            <td>待处理</td>
+                                          </tr>
+                                          <tr>
+                                            <td>20150327DHBWMC86</td>
+                                            <td>2015.03.27 16:51:01</td>
+                                            <td><div>存款RMB</div>
+                                                <span class="co-grayd">建设银行 张向东 尾号3501</span>
+                                            </td>
+                                            <td class="co-red">-500</td>
+                                            <td class="co-green">成功</td>
+                                          </tr>
+                                          <tr>
+                                            <td>20150327DHBWMC86</td>
+                                            <td>2015.03.27 16:51:01</td>
+                                            <td><div>存款RMB</div>
+                                                <span class="co-grayd">建设银行 张向东 尾号3501</span>
+                                            </td>
+                                            <td class="co-red">-500</td>
+                                            <td class="co-red">失败</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+              </div>
+              <div class="modal-footer  m-r-n m-b-n">
+            <ul class="pagination pull-right">
+
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)"><i class="fa fa-chevron-left"></i></a></li>
+                                <li class="paginate_button active" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+
+<li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)"><i class="fa fa-ellipsis-h"></i></a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i></a></li>
+
+                            </ul>
+        </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!--交易查看更多-->
+<div class="modal inmodal" id="moredeal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-tags"></i>&nbsp;&nbsp;查看更多</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group over clearfix m-b-n-xs">
+              <table class="table table-striped table-bordered table-hover dataTable" aria-describedby="editable_info">
+                                        <thead>
+                                          <tr>
+                                            <th>产品</th>
+                                            <th>笔数</th>
+                                            <th>有效/交易量</th>
+                                            <th>游戏盈亏</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td><a href="javascript:void(0)">QQ游戏</a></td>
+                                            <td>30</td>
+                                            <td><span class="co-blue">200.00</span> / 775.00</td>
+                                            <td class="co-green">+500</td>
+                                          </tr>
+                                          <tr>
+                                            <td><a href="javascript:void(0)">QQ游戏</a></td>
+                                            <td>30</td>
+                                            <td><span class="co-blue">200.00</span> / 775.00</td>
+                                            <td class="co-red">-500</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+              </div>
+              <div class="modal-footer  m-r-n m-b-n">
+            <ul class="pagination pull-right">
+
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)"><i class="fa fa-chevron-left"></i></a></li>
+                                <li class="paginate_button active" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+
+<li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)"><i class="fa fa-ellipsis-h"></i></a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i></a></li>
+
+                            </ul>
+        </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!--咨询查看更多-->
+<div class="modal inmodal" id="morerconsult" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-tags"></i>&nbsp;&nbsp;查看更多</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group over clearfix m-b-n-xs">
+              <table class="table table-striped table-bordered table-hover dataTable" aria-describedby="editable_info">
+                                        <thead>
+                                          <tr>
+                                            <th>类型</th>
+                                            <th>标题</th>
+                                            <th>内容</th>
+                                            <th>时间</th>
+                                            <th>操作</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>资金服务</td>
+                                            <td>QA和QC各是什么意思</td>
+                                            <td>QA和QC各是什么意思？QA和QC各是什么意思?QA和QC各是什么...</td>
+                                            <td>2015-03-24 15:09:09</td>
+                                            <td>
+                                              <a href="javascript:void(0)" data-toggle="modal" data-target="#new">&nbsp;&nbsp;查看</a>
+                                              <a href="javascript:void(0)">&nbsp;&nbsp;删除</a>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>资金服务</td>
+                                            <td>QA和QC各是什么意思</td>
+                                            <td>QA和QC各是什么意思？QA和QC各是什么意思?QA和QC各是什么...</td>
+                                            <td>2015-03-24 15:09:09</td>
+                                            <td>
+                                              <a href="javascript:void(0)" data-toggle="modal" data-target="#new">&nbsp;&nbsp;查看</a>
+                                              <a href="javascript:void(0)">&nbsp;&nbsp;删除</a>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>资金服务</td>
+                                            <td>QA和QC各是什么意思</td>
+                                            <td>QA和QC各是什么意思？QA和QC各是什么意思?QA和QC各是什么...</td>
+                                            <td>2015-03-24 15:09:09</td>
+                                            <td>
+                                              <a href="javascript:void(0)" data-toggle="modal" data-target="#new">&nbsp;&nbsp;查看</a>
+                                              <a href="javascript:void(0)">&nbsp;&nbsp;删除</a>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>资金服务</td>
+                                            <td>QA和QC各是什么意思</td>
+                                            <td>QA和QC各是什么意思？QA和QC各是什么意思?QA和QC各是什么...</td>
+                                            <td>2015-03-24 15:09:09</td>
+                                            <td>
+                                              <a href="javascript:void(0)" data-toggle="modal" data-target="#new">&nbsp;&nbsp;查看</a>
+                                              <a href="javascript:void(0)">&nbsp;&nbsp;删除</a>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+              </div>
+              <div class="modal-footer  m-r-n m-b-n">
+            <ul class="pagination pull-right">
+
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)"><i class="fa fa-chevron-left"></i></a></li>
+                                <li class="paginate_button active" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+
+<li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)"><i class="fa fa-ellipsis-h"></i></a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i></a></li>
+
+                            </ul>
+        </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!--备注查看更多-->
+<div class="modal inmodal" id="moreremark" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-tags"></i>&nbsp;&nbsp;查看更多</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group over clearfix m-b-n-xs">
+              <table class="table table-striped table-bordered table-hover dataTable" aria-describedby="editable_info">
+                                        <thead>
+                                          <tr>
+                                            <th>备注时间</th>
+                                            <th>备注来源</th>
+                                            <th>备注内容</th>
+                                            <th>操作者</th>
+                                            <th>操作</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>2015-03-24</td>
+                                            <td>来源</td>
+                                            <td>优质客户备注内容优质客户备注内容</td>
+                                            <td>王大发</td>
+                                            <td>
+                                              <a href="javascript:void(0)"  data-toggle="modal" data-target="#compileremark">&nbsp;&nbsp;编辑</a>
+                                              <a href="javascript:void(0)">&nbsp;&nbsp;删除</a>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>2015-03-24</td>
+                                            <td>来源</td>
+                                            <td>优质客户备注内容优质客户备注内容</td>
+                                            <td>王大发</td>
+                                            <td>
+                                              <a href="javascript:void(0)"  data-toggle="modal" data-target="#compileremark">&nbsp;&nbsp;编辑</a>
+                                              <a href="javascript:void(0)" >&nbsp;&nbsp;删除</a>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>2015-03-24</td>
+                                            <td>来源</td>
+                                            <td>优质客户备注内容优质客户备注内容</td>
+                                            <td>王大发</td>
+                                            <td>
+                                              <a href="javascript:void(0)"  data-toggle="modal" data-target="#compileremark">&nbsp;&nbsp;编辑</a>
+                                              <a href="javascript:void(0)">&nbsp;&nbsp;删除</a>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>2015-03-24</td>
+                                            <td>来源</td>
+                                            <td>优质客户备注内容优质客户备注内容</td>
+                                            <td>王大发</td>
+                                            <td>
+                                              <a href="javascript:void(0)"  data-toggle="modal" data-target="#compileremark">&nbsp;&nbsp;编辑</a>
+                                              <a href="javascript:void(0)">&nbsp;&nbsp;删除</a>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+              </div>
+              <div class="modal-footer  m-r-n m-b-n">
+            <ul class="pagination pull-right">
+
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)"><i class="fa fa-chevron-left"></i></a></li>
+                                <li class="paginate_button active" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+
+<li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)"><i class="fa fa-ellipsis-h"></i></a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i></a></li>
+
+                            </ul>
+        </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!--日志查看更多-->
+<div class="modal inmodal" id="morelog" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-tags"></i>&nbsp;&nbsp;查看更多</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group over clearfix m-b-n-xs">
+              <table class="table table-striped table-bordered table-hover dataTable" aria-describedby="editable_info">
+                                        <thead>
+                                          <tr>
+                                            <th>操作时间</th>
+                                            <th >
+                                              角色
+                                            </th>
+                                            <th>
+                                              操作
+                                            </th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>2015-03-24 15:09:09</td>
+                                            <td>总代理_along</td>
+                                            <td><span class="co-red">新增</span> <span class="co-gray9">玩家账号：</span>kdjh8877</td>
+                                          </tr>
+                                          <tr>
+                                            <td>2015-03-24 15:09:09</td>
+                                            <td>总代理_along</td>
+                                            <td><span class="co-orange">登录成功</span> <span class="co-gray9">IP：110.86.61.191</span>kdjh8877 <span class="co-gray9">系统：</span>Windows7 <span class="co-gray9">浏览器：</span>Firefox</td>
+                                          </tr>
+                                          <tr>
+                                            <td>2015-03-24 15:09:09</td>
+                                            <td>总代理_along</td>
+                                            <td><span class="co-blue">修改</span> 头像</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+              </div>
+              <div class="modal-footer  m-r-n m-b-n">
+            <ul class="pagination pull-right">
+
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)"><i class="fa fa-chevron-left"></i></a></li>
+                                <li class="paginate_button active" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+
+<li class="paginate_button" aria-controls="editable" tabindex="0"><a href="javascript:void(0)"><i class="fa fa-ellipsis-h"></i></a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i></a></li>
+
+                            </ul>
+        </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!--添加备注-->
+<div class="modal inmodal" id="addremark" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;添加备注</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group over clearfix">
+              <label class="col-xs-3 al-right line-hi34">备注类型：</label>
+              <div class="col-xs-9">
+                <input type="tel" class="form-control">
+              </div>
+            </div>
+            <div class="form-group over clearfix">
+              <label class="col-xs-3 al-right line-hi34">备注内容：</label>
+              <div class="col-xs-9">
+                <textarea class="form-control"></textarea>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--编辑备注-->
+<div class="modal inmodal" id="compileremark" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-pencil"></i>&nbsp;&nbsp;编辑备注</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group over clearfix">
+              <label class="col-xs-3 al-right line-hi34">备注类型：</label>
+              <div class="input-group m-b col-xs-9">
+                <input type="tel" placeholder="备注1" class="form-control">
+              </div>
+            </div>
+            <div class="form-group over clearfix">
+              <label class="col-xs-3 al-right line-hi34">备注内容：</label>
+              <div class="input-group m-b col-xs-9">
+                <textarea class="form-control" placeholder="优质客户备注内容优质客户备注内容"></textarea>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--信息群发弹窗-->
+<div class="modal inmodal" id="comments" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight unstyled family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-comments-o"></i>&nbsp;&nbsp;信息群发-发邮件</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <button type="button" class="btn-qfdx" data-toggle="modal" data-target="#mail" data-dismiss="modal"><i class="fa fa-comment-o"></i>群发邮件</button>
+            <button type="button" class="btn-qfdx" data-toggle="modal" data-target="#mail" data-dismiss="modal"><i class="fa fa-envelope-o"></i>群发站内信</button>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal inmodal" id="mail" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight unstyled family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-comments-o"></i>&nbsp;&nbsp;信息群发-发邮件</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <label>收件人</label>
+              <ul class="clearfix input">
+                <li>张三<a href="javascript:void(0)">×</a></li>
+                <li>李四<a href="javascript:void(0)">×</a></li>
+                <li class="none">请选择收件人</li>
+              </ul>
+            </div>
+            <div class="no-mail">
+                <div>以下3位会员由于没有填写邮箱，将无法收到信息。</div>
+                <span>张三</span>
+                <span>李四</span>
+                <span>王五</span>
+                <a href="javasrcipt:void(0)" class="co-red">清除</a>
+            </div>
+            <div class="no-mail">
+                <div>以下3位玩家所在的层级由于没有设置邮件接口/短信接口，将无法收到信息。</div>
+                <span>张三</span>
+                <span>李四</span>
+                <span>王五</span>
+                <a href="javasrcipt:void(0)" class="co-red">清除</a>
+            </div>
+            <div class="clearfix save lgg-version">
+                <a href="javasrcipt:void(0)" class="current">简体中文<span>未编辑</span></a>
+                <a href="javasrcipt:void(0)">English<span>已编辑</span></a>
+                <a href="javasrcipt:void(0)">繁体中文<span>已编辑</span></a>
+                <span class="more"><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i></a></span>
+                <div class="pull-right">
+<!--
+                    <select class="lgg-sys chosen-select-no-single" data-placeholder="选择模板">
+                        <option value="1">模板1</option>
+                        <option value="2">模板2</option>
+                    </select>
+-->
+                  <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-filter btn-outline dropdown-toggle">模板&nbsp;&nbsp;<span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-right">
+                        <div class="label-menu-o">
+                            <li class="temp"><a href="javascript:void(0)" class="co-gray">模板1</a></li>
+                            <li class="temp"><a href="javascript:void(0)" class="co-gray">模板2</a></li>
+                        </div>
+                        <li class="divider m-t-none"></li>
+                        <li class="m-b-sm bt m-t-xs">
+                            <button type="button" class="btn btn-filter btn-sm btn-xs">管理</button>
+                        </li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+            <div class="hfsj-wrap">
+            <div class="form-group">
+                <label>标题</label>
+                <div class="pull-right inline bg-gray">
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-link dropdown-toggle fzyx">复制语系&nbsp;&nbsp;<span class="caret"></span></button>
+                        <ul class="dropdown-menu pull-right">
+                            <li class="temp"><a href="javascript:void(0)" class="co-gray">复制语系</a></li>
+                            <li class="temp"><a href="javascript:void(0)" class="co-gray">复制语系</a></li>
+                        </ul>
+                    </div>
+                </div>
+              </div>
+              <input type="text" placeholder="" class="form-control m-b">
+               <div class="form-group"><label>信息内容</label><textarea class="form-control m-b"></textarea></div>
+            <div class="variable_wrap">
+                变量标签：
+                <a href="javascript:void(0)" class="variable">用户名 <{$uname}></a>
+                <a href="javascript:void(0)" class="variable">密码 <{$upwd}></a>
+                <a href="javascript:void(0)" class="more">查看更多 <i class="fa fa-angle-double-right"></i></a>
+            </div>
+            <div class="clearfix form-group m-b-xxs">
+              <div class="dsfb"><label><input type="checkbox" class="i-checks">定时发送</label></div>
+              <div class="dsfb-data">
+                <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                  <input type="text" class="form-control" value="2015-05-01 16:51:01 至 2015-05-04 10:20:20">
+                </div>
+              </div>
+            </div>
+            </div>
+
+          </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">下一步</button>
+            <button type="button" class="btn btn-primary-hide">上一步</button>
+            <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#mailspreview" data-dismiss="modal">预览并发送</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--信息群发预览弹窗-->
+<div class="modal inmodal" id="mailspreview" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight unstyled family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-comments-o"></i>&nbsp;&nbsp;信息群发-发邮件</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <label>收件人</label>
+              <ul class="clearfix input">
+                <li>张三<a href="javascript:void(0)">×</a></li>
+                <li>李四<a href="javascript:void(0)">×</a></li>
+              </ul>
+            </div>
+
+
+            <div class="clearfix save lgg-version">
+                <a href="javasrcipt:void(0)" class="current">简体中文<span>未编辑</span></a>
+                <a href="javasrcipt:void(0)">English<span>已编辑</span></a>
+                <a href="javasrcipt:void(0)">繁体中文<span>已编辑</span></a>
+                <span class="more"><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i></a></span>
+                <div class="pull-right">
+
+
+                </div>
+            </div>
+            <div class="hfsj-wrap m-t-sm hfsj-wrap-con">
+                <label>中文标题</label>
+
+
+               <div class="form-group m-t-xs">您当前选中了全部的3条记录，点此取消选定全部记录您当前选中了全部的3条记录，点此取消选定全部记录。您当前选中了全部的3条记录，点此取消选定全部记录您当前选中了全部的3条记录，点此取消选定全部记录。</div>
+
+
+            </div>
+
+          </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确定</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--重置密码弹窗-->
+<div class="modal inmodal" id="pwd" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight unstyled family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-key"></i>&nbsp;&nbsp;密码重置</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <button type="button" class="btn-qfdx" data-toggle="modal" data-target="#pwd-con"><i class="fa fa-envelope-o"></i>发送邮箱重置密码链接</button>
+            <button type="button" class="btn-qfdx" data-toggle="modal" data-target="#pwd-con"><i class="fa fa-comment-o"></i>发送短信重置密码</button>
+            <button type="button" class="btn-qfdx" data-toggle="modal" data-target="#pwd-con"><i class="fa fa-retweet"></i>手动重置密码</button>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal inmodal" id="pwd-con" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-key"></i>&nbsp;&nbsp;密码重置</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <!--<div class="m-b-xs">正在操作<span class="co-tomato">2条</span>数据</div>-->
+            <div class="m-b-sm">玩家账号：<span class="co-blue">alongg8777</span></div>
+            <div class="condition-options-wraper">
+                <div class="form-group">
+                    <label>新密码</label>
+                    <input type="password" placeholder="" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>重置新密码</label>
+                    <input type="password" placeholder="" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label><input type="checkbox" class="i-checks"></label>发送邮件通知玩家，玩家邮箱地址为：demovip@demovip.com
+                </div>
+                <div class="form-group">
+                    <label><input type="checkbox" class="i-checks"></label>发送短信通知玩家，玩家手机为：1379948476662
+                </div>
+                <!--<button type="button" class="btn btn-xs btn-white">发送</button>-->
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--咨询查看弹窗-->
+<div class="modal inmodal" id="new" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-comment-o"></i>&nbsp;&nbsp;咨询内容</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body ">
+           <div class="add-players">
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td style="width:13%">账户</td>
+                    <td class="al-left">jack456</td>
+                </tr>
+                <tr>
+                    <td>时间</td>
+                    <td class="al-left">2015-05-06 09:25:22</td>
+                </tr>
+                <tr>
+                    <td>标题</td>
+                    <td class="al-left">QA和QC各是什么意思?</td>
+                </tr>
+                <tr>
+                    <td>内容</td>
+                    <td class="al-left">QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="hfsj-wrap p-t-sm">
+                <div class="m-t-n-md m-b-xs pull-right m-r-n-sm "><button type="button" class="close"><span aria-hidden="true" title="删除">×</span></button></div>
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td style="width:15%">回复时间</td>
+                        <td class="al-left">2015-05-06 09:25:22</td>
+                    </tr>
+                    <tr>
+                        <td>回复标题</td>
+                        <td class="al-left">QA和QC各是什么意思?</td>
+                    </tr>
+                    <tr>
+                        <td>回复内容</td>
+                        <td class="al-left">QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么意思?QA和QC各是什么？</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="zxhf-warp">
+                <form role="form">
+
+
+                    <div class="form-group">
+                        <label>回复内容</label>
+                        <textarea class="form-control m-b"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="m-r-xs btn btn-filter" data-toggle="modal" data-target="#plus-detail">回复</button>
+                        <button type="button" class="btn btn-primary-hide">取消</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal inmodal" id="addTag" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-tags"></i>&nbsp;&nbsp;标签管理</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group over clearfix">
+              <label class="col-xs-3 al-right">标签名：</label>
+              <div class="col-xs-9">
+                <input type="tel" class="form-control">
+              </div>
+            </div>
+            <div class="form-group over clearfix">
+              <label class="col-xs-3 al-right">标签描述：</label>
+              <div class="col-xs-9">
+                <textarea class="form-control"></textarea>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--编辑弹窗-->
+<div class="modal inmodal" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight unstyled family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;编辑</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+          <div class="add-players">
+            <div class="form-group clearfix m-b-sm line-hi34">
+                <label class="col-xs-3 al-right">玩家账号 : </label>
+                <div class="col-xs-9">
+                  <span class="co-blue">pcpcpaaa</span>
+                </div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right">所属体系 : </label>
+                <div class="col-xs-9"><span class="co-blue">jack66</span></div>
+            </div>
+            <div class="form-group clearfix m-b-xxs">
+                <label class="col-xs-3 al-right line-hi34">真实姓名 : </label>
+                <div class="col-xs-9"><input type="text" placeholder="" class="form-control m-b"></div>
+            </div>
+            <div class="form-group clearfix m-b-xxs">
+                <label class="col-xs-3 al-right line-hi34">昵称 : </label>
+                <div class="col-xs-9"><input type="text" placeholder="" class="form-control m-b"></div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right line-hi34">性别 : </label>
+                <div class="col-xs-9">
+                  <select data-placeholder="请选择您的性别"  class="chosen-select-no-single" tabindex="9">
+                    <option value=""></option>
+                    <option>男</option>
+                    <option>女</option>
+                  </select>
+                </div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">生日 : </label>
+              <div class="clearfix col-xs-9">
+                  <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                     <input type="text" class="form-control" value="2014-03-04">
+                  </div>
+              </div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right line-hi34">层级 : </label>
+                <div class="col-xs-9">
+                  <select data-placeholder="A层级" class="chosen-select-no-single" tabindex="9">
+                    <option value=""></option>
+                    <option>B层级</option>
+                    <option>C层级</option>
+                    <option>D层级</option>
+                    <option>E层级</option>
+                  </select>
+                </div>
+            </div>
+            <div class="form-group clearfix m-b-xxs">
+                <label class="col-xs-3 al-right line-hi34">手机 : </label>
+                <div class="input-group m-b col-xs-9">
+                    <div class="input-group-btn">
+                      <select data-placeholder="+213" class="chosen-select-no-single" tabindex="9">
+                        <option value=""></option>
+                        <option>+86</option>
+                        <option>+109</option>
+                        <option>+201</option>
+                      </select>
+                    </div>
+                    <input type="text" class="form-control" placeholder="请输入您的手机号码">
+                </div>
+            </div>
+            <div class="form-group clearfix m-b-xxs">
+                <label class="col-xs-3 al-right line-hi34">邮箱 : </label>
+                <div class="col-xs-9"><input type="text" placeholder="请输入您的邮箱地址" class="form-control m-b"></div>
+            </div>
+            <div class="form-group m-r-n clearfix m-b-sm">
+                <label class="col-xs-3 al-right line-hi34">地区 : </label>
+                  <div class="clearfix m-l-n col-xs-9">
+                    <div class="col-md-6">
+                        <div>
+                          <select data-placeholder="默认列表" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>中国</option>
+                            <option>美国</option>
+                            <option>马来西亚</option>
+                            <option>泰国</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-x">
+                        <div>
+                          <select data-placeholder="默认列表" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>厦门</option>
+                            <option>上海</option>
+                            <option>北京</option>
+                            <option>广州</option>
+                          </select>
+                        </div>
+                    </div>
+                  </div>
+             </div>
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right line-hi34">主货币 : </label>
+                <div class="col-xs-9"><input type="text" placeholder="美元" disabled="" class="form-control"></div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right line-hi34">返水优惠方案 : </label>
+                <div class="col-xs-9">
+                    <div class="input-group date">
+                        <select data-placeholder="无返水优惠" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>无返水优惠</option>
+                        </select>
+                      <span class="input-group-addon bdn"><button type="button" class="btn btn-filter m-l-sm">套用上层</button></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group status clearfix m-b-sm">
+                <label class="col-xs-3 al-right">账号状态 : </label>
+                <div class="col-xs-9">正常</div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right">钱包余额 : </label>
+                <div class="col-xs-9">00.00</div>
+            </div>
+            <div class="form-group clearfix m-b-xxs">
+                <label class="col-xs-3 al-right line-hi34">QQ : </label>
+                <div class="col-xs-9"><input type="text" placeholder="" class="form-control m-b"></div>
+            </div>
+            <div class="form-group clearfix">
+              <label class="col-xs-3 al-right">标签 : </label>
+              <div class="col-xs-9">
+                  <span>大客户</span>
+                  <span> 金牌玩家</span>
+                  <a href="javascript:void(0)" class="compile-add">+ 添加</a>
+              </div>
+            </div>
+            <div class="li-tag compile-li-tag clearfix m-t-n-xs m-l-n-xs">
+              <a href="javascript:void(0)">金牌会员<i class="fa fa-check"></i></a>
+              <a href="javascript:void(0)">金牌会员<i class="fa fa-check"></i></a>
+              <a href="javascript:void(0)">金牌会员<i class="fa fa-check"></i></a>
+              <a href="javascript:void(0)">超级金牌会员<i class="fa fa-check"></i></a>
+              <a href="javascript:void(0)">金牌会员<i class="fa fa-check"></i></a>
+              <a href="javascript:void(0)">金牌会员<i class="fa fa-check"></i></a>
+              <a href="javascript:void(0)">金牌会员<i class="fa fa-check"></i></a>
+              <a href="javascript:void(0)">超级金牌会员<i class="fa fa-check"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--标签选择弹窗-->
+<div class="modal inmodal" id="tag" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-tags"></i>&nbsp;&nbsp;标签选择</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="add-tag clearfix">
+                <div class="input-group">
+                    <input type="text" class="form-control input-sm">
+                    <span class="input-group-btn"> <button type="button" class="btn btn-filter"><i class="fa fa-search"></i></button></span>
+                </div>
+            </div>
+            <div class="li-tag clearfix">
+              <a href="javascript:void(0)">金牌会员<i class="fa fa-check"></i></a>
+              <a href="javascript:void(0)">金牌会员<i class="fa fa-check"></i></a>
+              <a href="javascript:void(0)">金牌会员<i class="fa fa-check"></i></a>
+              <a href="javascript:void(0)">超级金牌会员<i class="fa fa-check"></i></a>
+              <a href="javascript:void(0)">金牌会员<i class="fa fa-check"></i></a>
+              <a href="javascript:void(0)">金牌会员<i class="fa fa-check"></i></a>
+              <a href="javascript:void(0)">金牌会员<i class="fa fa-check"></i></a>
+              <a href="javascript:void(0)">超级金牌会员<i class="fa fa-check"></i></a>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--发送重置密码邮件-->
+<div class="modal inmodal" id="czmm" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-key"></i>&nbsp;&nbsp;密码重置</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+          <!--玩家已登录提示语-->
+          <div class="m-t m-b"><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;玩家<span class="co-yellow">大小大</span>正处于登录状态，确认要发送重置登录密码链接？</div>
+          <!--玩家未登录提示语-->
+<!--              <div class="m-t m-b"><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;确认向玩家<span class="co-yellow">大小大</span>发送重置登录密码链接吗</div>-->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--余额冻结弹窗-->
+<div class="modal inmodal" id="yuedj" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;余额冻结</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right">在线状态：</label>
+                <div class="col-xs-9">在线</div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right">余额冻结：</label>
+                <div class="col-xs-9"><input type="checkbox" name="my-checkbox" data-size="mini" checked></div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">冻结时间：</label>
+              <div class="col-xs-9">
+                 <div>
+                  <select data-placeholder="永久" class="chosen-select-no-single" tabindex="9">
+                    <option value="">永久</option>
+                    <option>A层级</option>
+                    <option>B层级</option>
+                    <option>C层级</option>
+                    <option>D层级</option>
+                  </select>
+                </div>
+                <span class="help-block m-b-none"><i class="fa fa-times-circle co-red3"></i> 请选择冻结时间</span>
+              </div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">冻结原因：</label>
+              <div class="col-xs-9">
+<!--
+                  <select data-placeholder="请选择冻结原因" class="chosen-select-no-single" tabindex="9">
+                    <option value=""></option>
+                    <option>A层级</option>
+                    <option>B层级</option>
+                    <option>C层级</option>
+                    <option>D层级</option>
+                  </select>
+-->
+                  <div class="input-group date">
+                    <select data-placeholder="请选择冻结原因" class="chosen-select-no-single" tabindex="9">
+                        <option value=""></option>
+                        <option>原因1</option>
+                        <option>原因2</option>
+                        <option>原因3</option>
+                        <option>原因4</option>
+                    </select>
+                    <span class="input-group-addon bdn"><a href="../system/mass-send2.html" nav-target="mainFrame" class="m-l-sm">管理</a></span>
+                </div>
+                <span class="help-block m-b-none"><i class="fa fa-times-circle co-red3"></i> 请选择冻结原因</span>
+                <textarea class="form-control m-t-xs"></textarea>
+              </div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">备注：</label>
+              <div class="col-xs-9">
+                <textarea class="form-control"></textarea>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#yuedjyl">预览并提交</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--余额冻结预览-->
+<div class="modal inmodal" id="yuedjyl" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-key"></i>&nbsp;&nbsp;余额冻结</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group clearfix">冻结账号：acecdafd</div>
+            <div class="form-group clearfix">冻结时间：永久</div>
+            <div class="form-group clearfix">冻结原因：展示站长设置的冻结原因标题及管理按钮；未设置冻结原因时，下拉窗显示"暂未设置原因，请点击管理按钮去添加"</div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary-hide">上一步</button>
+            <button type="button" class="btn btn-filter">提交</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--余额已冻结-->
+<div class="modal inmodal" id="yuedjed" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-key"></i>&nbsp;&nbsp;余额冻结</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right">在线状态：</label>
+                <div class="col-xs-9">在线</div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right">余额冻结：</label>
+                <div class="col-xs-9"><input type="checkbox" name="my-checkbox" data-size="mini" checked></div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">冻结时间：</label>
+              <div class="col-xs-9">
+                  <select data-placeholder="永久" class="chosen-select-no-single" tabindex="9" disabled>
+                    <option value="">永久</option>
+                    <option>A层级</option>
+                    <option>B层级</option>
+                    <option>C层级</option>
+                    <option>D层级</option>
+                  </select>
+              </div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">冻结原因：</label>
+              <div class="col-xs-9">
+                  <select data-placeholder="输入密码的次数超过5次" class="chosen-select-no-single" tabindex="9" disabled>
+                    <option value=""></option>
+                    <option>输入密码的次数超过5次</option>
+                  </select>
+              </div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">备注：</label>
+              <div class="col-xs-9">
+                <textarea class="form-control" disabled>展示站长设置的冻结原因标题及管理按钮；未设置冻结原因时，下拉窗显示“暂未设置原因，请点击管理按钮去添加</textarea>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-xs-3 al-right">操作人：</label>
+                <div class="col-xs-9">龙大大 2015.6.13 3:23:36</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--账号冻结弹窗-->
+<div class="modal inmodal fade" id="unlock" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content  animated unstyled family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;账号冻结</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group clearfix m-b-sm col-xs-12">
+                <label class="col-xs-3 al-right">在线状态：</label>
+                <div class="col-xs-8 p-x">在线</div>
+            </div>
+            <div class="form-group clearfix m-b-sm col-xs-12">
+                <label class="col-xs-3 al-right">账号冻结：</label>
+                <div class="col-xs-8 p-x">
+                    <input type="checkbox" name="my-checkbox" data-size="mini" checked>
+                </div>
+            </div>
+            <div class="form-group clearfix m-b-sm col-xs-12">
+              <label class="col-xs-3 al-right line-hi34">冻结时间：</label>
+              <div class="col-xs-8 p-x">
+                 <div>
+                  <select data-placeholder="永久" class="chosen-select-no-single" tabindex="9">
+                    <option value="">永久</option>
+                    <option>A层级</option>
+                    <option>B层级</option>
+                    <option>C层级</option>
+                    <option>D层级</option>
+                  </select>
+                </div>
+                <span class="help-block m-b-none"><i class="fa fa-times-circle co-red3"></i> 请选择冻结时间</span>
+              </div>
+            </div>
+            <div class="form-group clearfix m-b-sm col-xs-12">
+              <label class="col-xs-3 al-right line-hi34">冻结原因：</label>
+              <div class="col-xs-8 p-x">
+<!--
+                  <select data-placeholder="请选择冻结原因" class="chosen-select-no-single" tabindex="9">
+                    <option value=""></option>
+                    <option>A层级</option>
+                    <option>B层级</option>
+                    <option>C层级</option>
+                    <option>D层级</option>
+                  </select>
+-->
+                  <div class="input-group date">
+                    <select data-placeholder="请选择冻结原因" class="chosen-select-no-single" tabindex="9">
+                        <option value=""></option>
+                        <option>原因1</option>
+                        <option>原因2</option>
+                        <option>原因3</option>
+                        <option>原因4</option>
+                      </select>
+                    <span class="input-group-addon bdn"><a href="../system/mass-send2.html" nav-target="mainFrame" class="m-l-sm">管理</a></span>
+                </div>
+                <span class="help-block m-b-none"><i class="fa fa-times-circle co-red3"></i> 请选择冻结原因</span>
+                <textarea class="form-control m-t-xs"></textarea>
+              </div>
+            </div>
+            <div class="form-group clearfix m-b-sm col-xs-12">
+              <label class="col-xs-3 al-right">备注：</label>
+              <div class="col-xs-8 p-x">
+                <textarea class="form-control"></textarea>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#zhdjyl">预览并提交</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--账号冻结预览-->
+<div class="modal inmodal" id="zhdjyl" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-key"></i>&nbsp;&nbsp;账号冻结</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group clearfix">冻结账号：acecdafd</div>
+            <div class="form-group clearfix">冻结时间：永久</div>
+            <div class="form-group clearfix">冻结原因：展示站长设置的冻结原因标题及管理按钮；未设置冻结原因时，下拉窗显示"暂未设置原因，请点击管理按钮去添加"</div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary-hide">上一步</button>
+            <button type="button" class="btn btn-filter">确认</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--账号已冻结-->
+<div class="modal inmodal" id="unlocked" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-key"></i>&nbsp;&nbsp;账号冻结</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right">在线状态：</label>
+                <div class="col-xs-9">在线</div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right">账号冻结：</label>
+                <div class="col-xs-9"><input type="checkbox" name="my-checkbox" data-size="mini" checked></div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">冻结时间：</label>
+              <div class="col-xs-9">
+                  <select data-placeholder="永久" class="chosen-select-no-single" tabindex="9" disabled>
+                    <option value="">永久</option>
+                    <option>A层级</option>
+                    <option>B层级</option>
+                    <option>C层级</option>
+                    <option>D层级</option>
+                  </select>
+              </div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">冻结原因：</label>
+              <div class="col-xs-9">
+                  <select data-placeholder="输入密码的次数超过5次" class="chosen-select-no-single" tabindex="9" disabled>
+                    <option value=""></option>
+                    <option>输入密码的次数超过5次</option>
+                  </select>
+              </div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">备注：</label>
+              <div class="col-xs-9">
+                <textarea class="form-control" disabled>展示站长设置的冻结原因标题及管理按钮；未设置冻结原因时，下拉窗显示“暂未设置原因，请点击管理按钮去添加</textarea>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-xs-3 al-right">操作人：</label>
+                <div class="col-xs-9">龙大大 2015.6.13 3:23:36</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--强制踢出弹窗-->
+<div class="modal inmodal" id="kick" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;强制踢出</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right">玩家账号：</label>
+                <div class="col-xs-9 co-blue3">asdfa</div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right">在线状态：</label>
+                <div class="col-xs-9">在线</div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">踢出原因：</label>
+              <div class="col-xs-9">
+<!--
+                  <select data-placeholder="请选择踢出原因" class="chosen-select-no-single" tabindex="9">
+                    <option value=""></option>
+                    <option>原因2</option>
+                  </select>
+-->
+                  <div class="input-group date">
+                    <select data-placeholder="请选择踢出原因" class="chosen-select-no-single" tabindex="9">
+                        <option value=""></option>
+                        <option>原因1</option>
+                        <option>原因2</option>
+                        <option>原因3</option>
+                        <option>原因4</option>
+                    </select>
+                    <span class="input-group-addon bdn"><a href="../system/mass-send2.html" nav-target="mainFrame" data-dismiss="modal" class="m-l-sm">管理</a></span>
+                </div>
+                  <span class="help-block m-b-none"><i class="fa fa-times-circle co-red3"></i> 请选择踢出原因</span>
+                  <textarea class="form-control m-t-xs"></textarea>
+              </div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">备注：</label>
+              <div class="col-xs-9">
+                <textarea class="form-control"></textarea>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#kickView">预览并提交</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--强制踢出预览-->
+<div class="modal inmodal" id="kickView" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-key"></i>&nbsp;&nbsp;强制踢出</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group clearfix">踢出账号：asdfa</div>
+            <div class="form-group clearfix">踢出原因：展示站长设置的冻结原因标题及管理按钮；未设置冻结原因时，下拉窗显示"暂未设置原因，请点击管理按钮去添加"</div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary-hide">上一步</button>
+            <button type="button" class="btn btn-filter">确认</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--已强制踢出弹窗-->
+<div class="modal inmodal" id="kicked" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-key"></i>&nbsp;&nbsp;强制踢出</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right">玩家账号：</label>
+                <div class="col-xs-9 co-blue3">asdfe</div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+                <label class="col-xs-3 al-right">在线状态：</label>
+                <div class="col-xs-9">在线</div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">踢出原因：</label>
+              <div class="col-xs-9">
+                  <select data-placeholder="输入密码的次数超过5次" class="chosen-select-no-single" tabindex="9" disabled>
+                    <option value=""></option>
+                    <option>输入密码的次数超过5次</option>
+                  </select>
+              </div>
+            </div>
+            <div class="form-group clearfix m-b-sm">
+              <label class="col-xs-3 al-right line-hi34">备注：</label>
+              <div class="col-xs-9">
+                <textarea class="form-control" disabled>展示站长设置的冻结原因标题及管理按钮；未设置冻结原因时，下拉窗显示“暂未设置原因，请点击管理按钮去添加</textarea>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-xs-3 al-right">操作人：</label>
+                <div class="col-xs-9">龙大大 2015.6.13 3:23:36</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--权限密码-->
+<div class="modal inmodal" id="competencePwd" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-list"></i>&nbsp;&nbsp;权限密码</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group clearfix">
+              您正在进行XX操作，请输入权限密码
+            </div>
+            <div class="form-group over clearfix">
+              <label class="col-xs-3 al-right">输入密码：</label>
+              <div class="col-xs-9">
+                <input type="tel" class="form-control" />
+              </div>
+            </div>
+            <div class="form-group over clearfix">
+              <label class="col-xs-3 al-right">输入验证码：</label>
+              <div class="col-xs-9">
+                <div class="col-sm-6 p-x"><input type="text" class="form-control" /></div>
+                <img src="images//ico.jpg" class="pull-left m-l" />
+                <a href="javascript:void(0)" class="co-gray6 m-l"><i class="fa fa-refresh"></i></a>
+                  <span class="help-block m-b-none"><i class="fa fa-times-circle co-red3"></i> 密码错误，您还可以尝试<span class="co-red3">2</span>次</span>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#competenceError">确认</button>
+<!--                <button type="button" class="btn btn-primary-hide">取消</button>-->
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal inmodal" id="competenceError" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight family">
+        <div class="modal-header">
+            <span class="filter"><i class="fa fa-list"></i>&nbsp;&nbsp;消息</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="clearfix sx-wrap scing">
+              <span class="sx"><i class="fa fa-times-circle co-red3"></i></span>
+              <div class="sx-data">
+                <h1>密码错误已达上限</h1>
+                <span>被暂时冻结<span class="co-red">3:59:59</span>，可重置密码后再操作</span><br>
+                <a href="javascript:void(0)" class="co-blue3">联系客服</a>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">重置密码</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>

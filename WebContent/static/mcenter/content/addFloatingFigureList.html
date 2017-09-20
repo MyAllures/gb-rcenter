@@ -1,0 +1,303 @@
+
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>内容管理</span>
+        <span>/</span><span>浮动图管理</span>
+        <a href="javascript:void(0)" nav-target="mainFrame" class="m-l-sm btn btn-outline btn-default btn-xs co-gray6 return-btn"><em class="fa fa-caret-left"></em>返回</a>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow clearfix">
+            <div class="present_wrap"><b>新增浮动图</b></div>
+            <form action="" class="m-t">
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">图片标题：</label>
+                    <div class="col-sm-5"><input type="text" class="form-control"></div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">适用语系：</label>
+                    <div class="col-sm-5">                        
+                        <div class="input-group date">
+                            <div selectdiv="paging.pageSize" class="btn-group" initprompt="10条" callback="query">                    <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default" data-toggle="dropdown" aria-expanded="false">
+                        <span prompt="prompt">简体中文</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">简体中文</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20">繁体中文</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30">English</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                            <span tabindex="0" class="input-group-addon help-popover" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top" data-content="选择后，该浮动图将向使用该语系的玩家展示."><i class="fa fa-question-circle"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right">浮层位置：</label>
+                    <div class="col-sm-5">
+                        <label><input type="radio" class="i-checks" name="wz" checked>左侧</label>
+                        <label><input type="radio" class="i-checks" name="wz">右侧</label>
+<!--
+                        <div class="m-b-sm">顶边距<span class="m-l-sm co-grayc2">浮动图边距离浏览器顶部的位置</span></div>
+                        <div><input type="text" class="form-control" placeholder="px"></div>
+                        <div class="m-b-sm">侧边距<span class="m-l-sm co-grayc2">浮动图边距离浏览器左侧或右侧的距离</span></div>
+                        <div><input type="text" class="form-control" placeholder="px"></div>
+-->
+                        <div class="input-group date tooltip-demo">
+                          <span class="input-group-addon bg-gray">顶边距 px</span>
+                          <input type="text" class="form-control">
+                          <span tabindex="0" class="input-group-addon help-popover" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="浮动图边距离浏览器顶部的位置"><i class="fa fa-question-circle"></i></span>
+                        </div>
+                        <div class="input-group date m-t-xs">
+                          <span class="input-group-addon bg-gray">侧边距 px</span>
+                          <input type="text" class="form-control">
+                          <span tabindex="0" class="input-group-addon help-popover" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="浮动图边距离浏览器左侧或右侧的距离"><i class="fa fa-question-circle"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">页面交互效果：</label>
+                    <div class="col-sm-5">
+                        <div selectdiv="paging.pageSize" class="btn-group" initprompt="10条" callback="query">                    <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default" data-toggle="dropdown" aria-expanded="false">
+                        <span prompt="prompt">浮动图片随着页面滚动而滚动</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">浮动图片随着页面滚动而滚动</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20">图标固定在网页指定位置</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30">网页滚动图片依然显示在固定位置</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                    </div>
+                </div>
+                
+<!--                适用模板风格-->
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right">显示方式：</label>
+                    <div class="col-sm-8">
+                        <label><input type="radio" class="i-checks" name="mb">使用模板</label>
+                        <label><input type="radio" class="i-checks" name="mb" checked>自定义模板</label>
+                        
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right">鼠标划入效果：</label>
+                    <div class="col-sm-5"><input type="checkbox" name="my-checkbox" data-size="mini" checked></div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right">隐藏关闭按钮：</label>
+                    <div class="col-sm-5"><input type="checkbox" name="my-checkbox" data-size="mini" checked></div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">中部图片链接</label>
+                    <div class="col-sm-5">
+                        <ul class="middle-img-list">
+                            <li>
+                                <div class="tit">图片1<a href="javascript:void(0)" class="co-gray"><i class="fa fa-times"></i></a></div>
+                                <div class="input-group date m-b-sm">
+                                   <span class="input-group-addon abroder-no"><b>正常效果</b></span>
+                                    <span class="input-group-addon">上传图片...</span>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="input-group date m-b-sm">
+                                   <span class="input-group-addon abroder-no"><b>鼠标划入效果</b></span>
+                                    <span class="input-group-addon">上传图片...</span>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="input-group" style="width:100%;">
+                              
+                              
+                              <div class="input-group-btn">
+                                           
+                                                <div selectdiv="paging.pageSize" class="btn-group" initprompt="10条" callback="query">                    <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default" data-toggle="dropdown" aria-expanded="false">
+                        <span prompt="prompt">链接地址</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">链接地址</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20">在线客服</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                                        </div>
+                              
+                              
+                              
+                              <span class="input-group-addon">http://</span>
+                              <input type="text" class="form-control">
+<!--                              <span class="input-group-btn"> <button type="button" class="btn btn-filter"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button></span>-->
+                          </div>
+                            </li>
+                            <li>
+                                <div class="tit">图片2<a href="javascript:void(0)" class="co-gray"><i class="fa fa-times"></i></a></div>
+                                <div class="input-group date m-b-sm">
+                                   <span class="input-group-addon abroder-no"><b>正常效果</b></span>
+                                    <span class="input-group-addon">上传图片...</span>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="input-group date m-b-sm">
+                                   <span class="input-group-addon abroder-no"><b>鼠标划入效果</b></span>
+                                    <span class="input-group-addon">上传图片...</span>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="input-group" style="width:100%;">
+                              <div class="input-group-btn">
+                                           
+                                                <div selectdiv="paging.pageSize" class="btn-group" initprompt="10条" callback="query">                    <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default" data-toggle="dropdown" aria-expanded="false">
+                        <span prompt="prompt">在线客服</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">链接地址</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20">在线客服</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                                        </div>
+                              <div selectdiv="paging.pageSize" class="btn-group" initprompt="10条" callback="query">                    <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default" data-toggle="dropdown" aria-expanded="false">
+                        <span prompt="prompt">客服1</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">客服1</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20">客服2</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30">客服3</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="50">客服4</a>
+                        </li>
+                    </ul>
+                </div>
+                          </div>
+                            </li>
+                            <li><a href="javascript:void(0)">+ 新增项目</a></li>
+                        </ul>
+                    </div>
+                </div>
+<!--
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right">列表图片链接</label>
+                    <div class="col-sm-5">
+                        <ul class="img-link-list">
+                            <li class="list">
+                                <div class="input-group m-b-sm col-xs-10 m-l-n">
+                                  <span class="input-group-addon online-service"><img src="images/kef.jpg">在线客服</span>
+                                  <input type="text" class="form-control">
+                                </div>
+                                <div class="input-group" style="width:100%;">
+                                  <div class="input-group-btn">
+                                      <div class="bg-gray clearfix">
+                                          <select data-placeholder="链接地址" class="chosen-select-no-single" tabindex="9">
+                                              <option>链接地址</option>
+                                              <option>在线客服</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                                  <span class="input-group-addon">http://</span>
+                                  <input type="text" class="form-control">
+                                </div>
+                                <a href="javascript:void(0)" class="clo"><img src="images/cle.png"></a>
+                            </li>
+                            <li class="list">
+                                  <div class="input-group m-b-sm col-xs-10 m-l-n">
+                                      <span class="input-group-addon online-service"><img src="images/kef.jpg">在线客服</span>
+                                      <input type="text" class="form-control">
+                                  </div>
+                                  <div class="input-group" style="width:100%;">
+                                      <div class="input-group-btn">
+                                          <div class="bg-gray clearfix">
+                                              <select data-placeholder="在线客服" class="chosen-select-no-single" tabindex="9">
+                                                  <option>在线客服</option>
+                                                  <option>链接地址</option>
+                                              </select>
+                                          </div>
+                                      </div>
+                                      <select data-placeholder="客服1" class="chosen-select-no-single" tabindex="9">
+                                          <option>客服1</option>
+                                          <option>客服2</option>
+                                      </select>
+                                  </div>
+                                <a href="javascript:void(0)" class="clo"><img src="images/cle.png"></a>
+                            </li>
+                            <li><a href="javascript:void(0)">+ 新增项目</a></li>
+                        </ul>
+                    </div>
+                </div>
+-->
+               
+               
+               <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right">预览：</label>
+                    <div class="col-sm-8">
+                        
+                        
+                        <div>
+                            <ul class="tempstyle clearfix">
+                                <li>
+                                    <img src="images//list-y.png">
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+               
+               
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right">显示页面</label>
+                    <div class="col-sm-5">
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks" checked> 首页</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks" checked> 文案页</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks" checked> 游戏页</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks" checked> 维护页</label>
+                    </div>
+                </div>
+                
+                
+                
+                
+<!--                <hr class="m-t-sm m-b">-->
+                <div class="operate-btn">
+                    <button class="btn btn-filter btn-lg m-r">预览并发送</button>
+                    <button class="btn btn-outline btn-filter btn-lg">取消</button>
+                </div>
+            </form>            
+        </div>
+    </div>
+</div>
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>

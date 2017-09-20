@@ -1,0 +1,374 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>系统设置</span><span>/</span><span>平台参数</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    
+    
+    <div class="col-lg-12 m-b">
+        <div class="wrapper white-bg shadow clearfix">
+            <div class="clearfix">
+                    
+                    
+                 <form action="">
+                
+                
+                <div class="clearfix m-lg p-t-xs p-l-sm p-r-sm">
+                    <span class="co-orange fs36 line-hi25 pull-left m-r-sm">
+                        <i class="fa fa-exclamation-circle m-t-n-sm"></i>                        
+                    </span>
+                    <div class="line-hi25 pull-left m-b-sm">
+
+开启该功能后，仅添加的并处于正常状态的IP可访问管理中心，请谨慎操作！
+</div>
+                </div>
+                <div class="operate-btn">
+                   <a href="javascript:void(0)" class="btn btn-filter btn-lg">好的</a>
+                </div>
+            </form>  
+                    
+                    
+                    
+                
+            </div>
+            
+            
+        </div>
+    </div>
+    
+    
+    
+    <div class="col-lg-12">
+       
+        <div class="wrapper white-bg shadow">
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                
+                <div class="filter-wraper clearfix p-xs border-b-1">
+                    <button type="button" class="btn btn-outline btn-filter" data-toggle="modal" data-target="#addIP"><i class="fa fa-plus"></i><span class="hd">&nbsp;&nbsp;新增限制</span></button>
+                    <button type="button" class="btn btn-outline btn-filter"><i class="fa fa-trash-o"></i><span class="hd">&nbsp;&nbsp;删除</span></button>
+                    <button class="btn btn-outline btn-filter" data-toggle="modal" data-target="#shez"><i class="fa fa-gear"></i><span class="hd">&nbsp;&nbsp;设置</span></button>
+                    <div class="col-sm-4 p-x btn-group pull-right m-r-n-xs">
+                        <div class="input-group">
+                            <input type="text" placeholder="限制IP" class="form-control">
+                            <span class="input-group-btn"> <button type="button" class="btn btn-filter"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable" aria-describedby="editable_info">
+                        <thead>
+                            <tr class="bg-gray">
+                                <th><input type="checkbox" class="i-checks"></th>
+                                <th>开始IP</th>
+                                <th>结束IP</th>
+                                <th>限制时间</th>                                
+                                <th>截止时间</th>                                
+                                <th>创建时间</th>                                
+                                <th class="inline">
+                                    <select class="chosen-select-no-single" data-placeholder="全部状态" >
+                                        <option value=""></option>
+                                        <option value="1">正常</option>
+                                        <option value="2">停用</option>
+                                        <option value="3">全部状态</option>
+                                    </select>
+                                </th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" class="i-checks"></td>
+                                <td>192.168.1.1</td>
+                                <td>192.168.1.1</td>
+                                <td>2009-03-12 16:42:02</td>
+                                <td>2009-03-12 16:42:02</td>
+                                <td>2009-03-12 16:42:02</td>
+                                <td><span class="label label-success">使用中</span></td>
+                                <td>
+                                    <a href="javascript:void(0)">编辑</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="i-checks"></td>
+                                <td>192.168.1.1</td>
+                                <td>192.168.1.1</td>
+                                <td>2009-03-12 16:42:02</td>
+                                <td>2009-03-12 16:42:02</td>
+                                <td>2009-03-12 16:42:02</td>
+                                <td><span class="label label-danger">已过期</span></td>
+                                <td>
+                                    <a href="javascript:void(0)">编辑</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="i-checks"></td>
+                                <td>192.168.1.1</td>
+                                <td>192.168.1.1</td>
+                                <td>2009-03-12 16:42:02</td>
+                                <td>2009-03-12 16:42:02</td>
+                                <td>2009-03-12 16:42:02</td>
+                                <td><span class="label label-success">使用中</span></td>
+                                <td>
+                                    <a href="javascript:void(0)">编辑</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="i-checks"></td>
+                                <td>192.168.1.1</td>
+                                <td>192.168.1.1</td>
+                                <td>2009-03-12 16:42:02</td>
+                                <td>2009-03-12 16:42:02</td>
+                                <td>2009-03-12 16:42:02</td>
+                                <td><span class="label label-danger">已过期</span></td>
+                                <td>
+                                    <a href="javascript:void(0)">编辑</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row bdtop3">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left">
+                          <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>每页20条</option>
+                            <option>每页30条</option>
+                            <option>每页40条</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                            <form class="form-inline">
+                              <label class="m-l-sm">共10页</label>
+                              <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                              <button class="btn btn-sm m-l-sm">跳转</button>
+                            </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增限制地区-->
+<div class="modal inmodal" id="addkfcs" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增限制地区</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group clearfix line-hi34">
+                    <label class="col-xs-3 al-right">国家：</label>
+                    <div class="col-xs-8 p-x">
+                       
+                        <div class="col-xs-3 p-x">
+                            <select data-placeholder="亚洲"  class="chosen-select-no-single">
+                            <option value=""></option>
+                             <option>亚洲</option>
+                             <option>欧洲</option>
+                             <option>美洲</option>
+                             <option>大洋洲</option>
+                             <option>非洲</option>
+                             <option>南极洲</option>
+                          </select>
+                        </div>
+                        <div class="col-xs-3 p-x">
+                            <select data-placeholder="中国"  class="chosen-select-no-single">
+                            <option value=""></option>
+                             <option>美国</option>
+                             <option>英国</option>
+                             <option>加拿大</option>
+                             <option>澳大利亚</option>
+                             </select>
+                        </div>
+                        <div class="col-xs-3 p-x">
+                            <select data-placeholder="福建"  class="chosen-select-no-single">
+                            <option value=""></option>
+                             <option>北京</option>
+                             <option>上海</option>
+                             <option>福建</option>
+                             <option>广东</option>
+                             <option>浙江</option>
+                             </select>
+                        </div>
+                        <div class="col-xs-3">   
+                            <select data-placeholder="厦门"  class="chosen-select-no-single">
+                            <option value=""></option>
+                             <option>厦门</option>
+                             <option>福州</option>
+                             <option>泉州</option>  
+                             </select>               
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34">
+                    <label class="col-xs-3 al-right">限制时间：</label>
+                    <div class="col-xs-8 p-x">
+                        <div class="input-group date">
+                            <input type="text" class="form-control" placeholder="2015-06-12">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <span class="input-group-addon bdn"><span class="m-l-xs">截止：2015-08-17 12:00</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34">
+                    <label class="col-xs-3 al-right">备注：</label>
+                    <div class="col-xs-8 p-x"><textarea class="form-control"></textarea></div>
+                </div>
+                <div class="clearfix m-b bg-gray p-t-xs">
+                    <span class="co-orange fs36 line-hi25 col-xs-1 al-right">
+                        <i class="fa fa-exclamation-circle m-t-n-sm"></i>                        
+                    </span>
+                    <div class="line-hi25 pull-left col-xs-11 m-b-sm">超过限制时间后，系统将自动解除该地区访问限制，您可重新设置时间！</div>
+                </div>                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--新增IP地址-->
+<div class="modal inmodal in" id="addIP" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增IP地址</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                 <div class="clearfix m-b bg-gray p-t-xs">
+                    <span class="co-orange fs36 line-hi25 col-xs-1 al-right">
+                        <i class="fa fa-exclamation-circle m-t-n-sm"></i>                        
+                    </span>
+                    <div class="pull-left col-xs-11 m-b-sm">
+                        <div class="co-red3">只有当用户处于本列表中的 IP 地址时才可以访问站点管理中心，列表以外的地址访问将无法访问，但仍可访问站点前端玩家界面。</div>
+                        限制IP段请填写开始IP及结束IP，限制单个IP直接在开始IP地址输入框填写即可；                        
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-sm">
+                    <label class="col-xs-3 al-right">开始IP地址：</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-sm">
+                    <label class="col-xs-3 al-right">结束IP地址：</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-sm">
+                    <label class="col-xs-3 al-right">允许时间：</label>
+                    <div class="col-xs-8">
+                        <div class="input-group date">
+                            <select data-placeholder="其他" class="chosen-select-no-single" tabindex="-1" >
+                            <option value=""></option>
+                            <option>永久</option>
+                            <option>7天</option>
+                            <option>15天</option>
+                            <option>一个月</option>
+                            <option>三个月</option>
+                          </select>
+                            <span class="input-group-addon bdn"><span class="m-l-xs">截止：2015-08-17 12:00</span></span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-sm">
+                    <label class="col-xs-3 al-right">备注：</label>
+                    <div class="col-xs-8">
+                        <textarea class="form-control"></textarea>
+                    </div>
+                </div>
+                 <div class="clearfix m-b bg-gray p-t-xs">
+                    <span class="co-orange fs36 line-hi25 col-xs-1 al-right">
+                        <i class="fa fa-exclamation-circle m-t-n-sm"></i>                        
+                    </span>
+                    <div class="line-hi25 pull-left col-xs-11 m-b-sm">超过限制时间后，系统将自动解除该IP访问限制！</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--允许访问-->
+<div class="modal inmodal" id="allow" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增IP地址</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="clearfix m-b bg-gray p-t-xs">
+                    <span class="co-orange fs36 line-hi25 col-xs-1 al-right m-r-sm">
+                        <i class="fa fa-exclamation-circle"></i>                        
+                    </span>
+                    <div class="line-hi34 m-b-sm">开启该功能后，仅添加的并处于正常状态的IP可访问站点前端，请谨慎操作！</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+<!--                <button type="button" class="btn btn-filter">好的</button>-->
+            <a href="system/audit3.html" class="btn btn-filter" nav-target="mainFrame">好的</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--设置-->
+<div class="modal inmodal" id="shez" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">设置</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="clearfix line-hi34 m-b-sm">
+                    <label class="ft-bold">启用：</label>
+                    <input type="checkbox" name="my-checkbox" data-size="mini">
+                </div>
+                <div class="clearfix m-b bg-gray p-t-xs">
+                    <span class="co-orange fs36 line-hi25 col-xs-1 al-right m-r-sm">
+                        <i class="fa fa-exclamation-circle"></i>                        
+                    </span>
+                    <div class="line-hi34 m-b-sm">关闭该功能后，所有IP均可正常访问管理中心！</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">好的</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+	 $("th.inline").click(function () {
+      $(this).find(".chosen-drop").css({top:$(this).parent().offset().top-$("body").scrollTop()+28});
+      $(this).find(".chosen-drop").css({left:$(this).find(".chosen-container").offset().left});
+    });
+	       
+</script>

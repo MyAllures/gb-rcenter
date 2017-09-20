@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Perfect Lottery</title>
+    <link href="../../lottery-mobile/themes/mui.min.css" rel="stylesheet"/>
+    <link href="../../lottery-mobile/themes/style.css" rel="stylesheet"/>
+    </head>
+<body class="orange-skin">
+	    <header class="mui-bar mui-bar-top mui-bar-nav member-head">
+	    	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    	<h1 class="mui-title">会员中心</h1>
+	    	<div class="mui-pull-right bar-top-l-h">
+	    		<a href="index.html" class="top-bar-btn n-broder mui-action-menu iconfont icon-home"></a>
+	        </div>
+	        <div class="member-head-info">
+	            <div class="">
+	            	<span class="mui-pull-right">普通会员</span>
+	            	<span class="member-head-img"><img src="../../lottery-mobile/themes/skin/orange/images/member.png"></span>
+	            	<span class="member-head-name">ASD12354  下午好！</span>
+	            </div>
+				<div class="member-head-sum"><span>余额：<span id="balance">0.00</span>元</span><span class="mui-pull-right"><a href="deposit.html">充值</a><a href="draw-money.html">提款</a></span></div>
+			</div>
+	    </header>
+	    <div class="mui-scroll-wrapper middle-content member-list middle-content-bat">
+			<div class="mui-scroll">
+				<div class="content-title"></div>
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell">
+				    	<a class="mui-navigate-right" href="member-detail.html"><i class="iconfont icon-huiyuanzhongxin mc-icon mc-icon-blue"></i>个人资料</a>
+				    </li>
+				    <li class="mui-table-view-cell">
+				    	<a class="mui-navigate-right" href="member-bankcard.html"><i class="iconfont icon-yinhangqia mc-icon mc-icon-green"></i>银行卡管理<span class="pad-8-15 right-tips">添加，修改，删除银行卡</span></a>
+				    </li>
+				    <li class="mui-table-view-cell">
+				    	<a class="mui-navigate-right" href="member-password.html"><i class="iconfont icon-mima mc-icon mc-icon-red"></i>登录密码<span class="pad-8-15 right-tips">修改登录密码</span></a>
+				    </li>
+				</ul>
+				<div class="content-title"></div>
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell">
+				    	<a class="mui-navigate-right" href="recharge-record-main.html"><i class="iconfont icon-chongzhijilu mc-icon mc-icon-yellow"></i>充值记录</a>
+				    </li>
+				    <li class="mui-table-view-cell">
+				    	<a class="mui-navigate-right" href="#"><i class="iconfont icon-tixianjilu mc-icon mc-icon-cyan"></i>提现记录</a>
+				    </li>
+				    <li class="mui-table-view-cell">
+				    	<a class="mui-navigate-right" href="money-record-main.html"><i class="iconfont icon-zijinjilu mc-icon mc-icon-orange"></i>资金记录</a>
+				    </li>
+				    <li class="mui-table-view-cell">
+				    	<a class="mui-navigate-right" href="bet-record-main.html"><i class="iconfont icon-touzhujilu mc-icon mc-icon-purple"></i>投注记录</a>
+				    </li>
+				</ul>
+				<div class="content-title"></div>
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell">
+				    	<a class="mui-navigate-right" href="message.html"><i class="iconfont icon-xinxizhongxin mc-icon mc-icon-bluish"></i>站内信</a>
+				    </li>
+				    <li class="mui-table-view-cell">
+				    	<a class="mui-navigate-right" href="notice.html"><i class="iconfont icon-gonggao mc-icon mc-icon-blue"></i>公告</a>
+				    </li>
+				    <li class="mui-table-view-cell">
+				    	<a class="mui-navigate-right" href="#"><i class="iconfont icon-zaixiankefu mc-icon mc-icon-green"></i>联系我们</a>
+				    </li>
+				</ul>
+				<div class="p-1r">
+				    <button type="button" class="mui-btn mui-btn-danger mui-btn-block">退出登录</button>
+				</div>
+			</div>
+        </div>
+	<script src="../../lottery-mobile/js/mui/mui.min.js"></script>
+<script>
+	        mui.init();
+			var autoShow = true;
+			var aniShow = "pop-in";
+			var menu = null,
+				showMenu = false;
+			var isInTransition = false;
+			var _self;
+			/*内容区域滚动*/
+	        mui('.mui-scroll-wrapper.middle-content').scroll({
+		        scrollY: true, //是否竖向滚动
+		        scrollX: false, //是否横向滚动
+		        startX: 0, //初始化时滚动至x
+		        startY: 0, //初始化时滚动至y
+		        indicators: false, //是否显示滚动条
+		        deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+		        bounce: false //是否启用回弹
+	        });
+			//页面点击事件
+			mui('body').on('tap', 'a', function() {
+				var id = this.getAttribute("data-wid");
+				if(!id) {
+					id = this.getAttribute('href');
+				}
+				var href = this.getAttribute('href');
+
+				//非plus环境，直接走href跳转
+				if(!mui.os.plus){
+					location.href = href;
+					return;
+				}
+
+				var titleType = this.getAttribute("data-title-type");
+
+				var webview_style = {
+					popGesture: "close"
+				}
+				var extras = {};
+				if(titleType == "native") {
+					
+				} else if(href && ~href.indexOf('.html')) {
+                    var webview = plus.webview.create(this.href,id,webview_style,extras);
+					webview.addEventListener("titleUpdate",function () {
+						setTimeout(function () {
+							webview.show(aniShow,250);
+						},100);
+					});
+				}
+				
+			});
+</script>
+		
+</body>
+
+    
+</html>

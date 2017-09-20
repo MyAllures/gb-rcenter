@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui.picker.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui-icon-extra.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/default/style.css" />
+</head>
+
+<body class="gb-theme index register">
+    <!--头部-->
+    <header class="mui-bar mui-bar-nav">
+        <div class="mui-pull-left">
+            <a href="index.html"><span class="mui-icon mui-icon-back"></span></a>           
+        </div>
+        <div class="mui-text-center reg-tit">注册</div>
+    </header>
+
+    <!--滚动区域-->
+    <div class="mui-content mui-scroll-wrapper mui-fullscreen">
+        <div class="mui-scroll">
+            <div class="gb-fullpage">
+                <div class="form-wrap">
+                    <div class="mui-text-center form-hea">
+                        <img src="../../mobile-v2/images/reg-title.png" width="60%" alt="">
+                    </div>
+                    <form class="mui-input-group">
+                        <div class="mui-input-row">
+                            <label>输入用户名</label>
+                        <input type="text" class="mui-input-clear" placeholder="输入8-20位字母数字组合">
+                        </div>
+                        <div class="mui-input-row">
+                            <label>输入密码</label>
+                            <input type="password" class="mui-input-password" placeholder="输入8-20位字母数字组合">
+                        </div>
+                        <div class="mui-input-row">
+                            <label>输入确认密码</label>
+                            <input type="password" class="mui-input-password" placeholder="输入8-20位字母数字组合">
+                        </div>
+                        <div class="mui-input-row">
+                            <label>输入真实姓名</label>
+                        <input type="text" class="mui-input-clear" placeholder="输入与银行卡相同姓名">
+                        </div>
+                        <div class="mui-input-row">
+                            <label>输入取款密码</label>
+                            <input type="password" class="mui-input-password" placeholder="输入6位数字密码">
+                        </div>
+                        <div class="mui-input-row">
+                            <label>主语言</label>
+                            <!-- <select name="" id="">
+                            
+                                <option value="">请选择语言</option>
+                                <option value="">汉语</option>
+                                <option value="">英语</option>
+                                <option value="">法语</option>
+                            </select> -->
+                            <button type="button" id="language-select" class=" mui-btn-block" style="padding: 10px; margin: 0; font-size: 12px; background: transparent; border: 1px solid #999;">默认</button>
+                            <span class="mui-icon mui-icon-arrowdown"></span>
+                        </div>
+                        <div class="mui-input-row">
+                            <label>安全问题</label>
+                            <select name="" id="">
+
+                                <option value="">请选择问题</option>
+                                <option value="">汉语</option>
+                                <option value="">英语</option>
+                                <option value="">法语</option>
+                            </select>
+                            <span class="mui-icon mui-icon-arrowdown"></span>
+                        </div>
+                        <div class="mui-input-row">
+                            <label>请输入回答</label>
+                        <input type="text" class="mui-input-clear" placeholder="请输入安全问题正确答案">
+                        </div>
+                        <div class="mui-input-row y-code">
+                            <label>请输入验证码</label>
+                            <input type="text" class="mui-input-clear" placeholder="请输入验证码">
+                        </div>
+                        <div class="mui-input-row mui-checkbox">
+                          <label>我已满合法博彩年龄，同意各项开户条约</label>
+                          <input name="checkbox1" value="Item 1" type="checkbox" checked>
+                        </div>
+                        <div class="mui-button-row">
+                            <button type="button" class="mui-btn mui-btn-primary mui-btn-block btn-submit" >确认</button>
+                        </div>
+                    </form>                    
+                </div>
+
+            </div>           
+    </div>
+
+</div>
+
+</body>
+<script src="../../mobile-v2/js/mui/mui.min.js"></script>
+<script src="../../mobile-v2/js/mui/mui.picker.js"></script>
+<script src="../../mobile-v2/js/mui/mui.poppicker.js"></script>
+<script src="../../mobile-v2/js/jquery/jquery-2.1.1.js"></script>
+<script type="text/javascript">
+    /*内容区域滚动*/
+    mui('.mui-content.mui-scroll-wrapper').scroll({
+         scrollY: true, //是否竖向滚动
+         scrollX: false, //是否横向滚动
+         startX: 0, //初始化时滚动至x
+         startY: 0, //初始化时滚动至y
+         indicators: false, //是否显示滚动条
+         deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+         bounce: true //是否启用回弹
+    });
+    var picker1 = new mui.PopPicker(); 
+     picker1.setData([{value:'zz',text:'智子'}]); 
+     $("#language-select").click(function( ){
+         picker1.show(function(selectedItem){
+            $('#language-select').text(selectedItem[0].text);            
+            picker1.hide();
+         });        
+     })
+
+</script>
+
+
+
+</html>

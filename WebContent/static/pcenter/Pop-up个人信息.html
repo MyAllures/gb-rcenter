@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+     <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+
+<!--弹窗 --> 
+ <script>
+jQuery(document).ready(function($) {
+	$('.theme-login').click(function(){
+		$('.theme-pop-mask').fadeIn(100);
+		$('.theme-pop').slideDown(200);
+	})
+	$('.theme-poptitle .close').click(function(){
+		$('.theme-pop-mask').fadeOut(100);
+		$('.theme-pop').slideUp(200);
+	})
+
+})
+</script>
+</head>
+<body style="background:#5a5a5a;">
+
+
+
+<!-- //* 弹窗5请再次确认，一旦设置，不可修改--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<form>
+<h3 class="popalign"><i class="tipbig fail"></i>请再次确认，一旦设置，不可修改！</h3>
+
+<div class="text">
+
+
+<div class="control-group">
+ <label class="control-label label-big" for="inputEmail">确认真实姓名：</label>
+  <div class="controls">
+<input type="text"  class="input" placeholder="" value="">
+   </div>
+  </div>
+<div class="control-group">
+ <label class="control-label label-big" for="inputEmail">确认主时区：
+</label>
+  <div class="controls">
+<select>
+  <option>东八区</option>
+  </select>
+   </div>
+  </div>
+  
+  <div class="control-group">
+ <label class="control-label label-big" for="inputEmail">
+
+确认主货币：
+</label>
+  <div class="controls">
+  <select>
+  <option>CNY人民币</option>
+  </select>
+   </div>
+  </div>
+</div>
+<div  class="popbutton">
+  <button data-toggle="button" class="btn btn-blue middle-big" type="button">确认</button>
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">取消</button>
+</div>
+</form>
+</div>
+</div>
+
+<div class="theme-pop-mask" style="position:static;"></div>
+
+
+ 
+</body>
+</html>

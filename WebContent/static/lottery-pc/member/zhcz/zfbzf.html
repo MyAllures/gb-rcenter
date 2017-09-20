@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>会员中心</title>
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/hpn-common.css">
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/global.css">
+    <script>
+        <!--
+        window.onerror=function(){return true;}
+        // -->
+    </script>
+    <script>
+    <!--
+    // 屏蔽JS错误
+//    window.onerror = function(){return true;}
+    // -->
+</script>
+<script src="../../ssc/themes/default/js/mobile-detect.min.js"></script></head>
+<body><div class="eveb_content">
+    <div class="eveb_nav_sub">
+        <ul class="clearfix">
+            <li><a href="javascript:void(0)" onclick="parent.getPage('zhcz/yhzz')">银行转账</a></li>
+            <li><a href="javascript:void(0)" onclick="parent.getPage('zhcz/zxzf')">在线支付</a></li><li class="on"><a href="javascript:void(0)" onclick="parent.getPage('zhcz/zfbzf')">支付宝支付</a></li><li><a href="javascript:void(0)" onclick="parent.getPage('zhcz/wxzf')">微信支付</a></li></ul>
+    </div>
+    <div class="eveb_content">
+        <form name="zfbzfForm" novalidate="novalidate" onsubmit="return false;">
+            <ul class="eveb_form">
+                <li>
+                    <span style="height:50px;line-height:50px;">支付渠道：</span>
+                    <div class="eveb_form_box eveb_bank_list">
+                        <label>
+                                <input data-payurl="pay.mgh459.top" type="radio" data-description="支付宝扫一扫，扫描二维码支付" data-minmoney="1.00" data-maxmoney="5000.00" name="payOnlineId" value="16">
+                                <em class=""><img src="../../ssc/themes/default/images/58.jpg" width="50" height="50" alt=""></em>
+                            </label>
+                        <label>
+                                <input data-payurl="pay.treg277.cn" type="radio" data-description="支付扫一扫，支持1-3000元" data-minmoney="1.00" data-maxmoney="3000.00" name="payOnlineId" value="37">
+                                <em class=""><img src="../../ssc/themes/default/images/87.jpg" width="50" height="50" alt=""></em>
+                            </label>
+                        </div>
+                    </li>
+                <li>
+                    <span>充值金额：</span>
+                    <input type="text" size="5" name="money" class="suminp" id="money">
+                    <label for="money" class="error" id="moneyError" style="display:inline-block;">* 请输入金额</label>
+                </li>
+                <li id="zfsm">
+                    <span>支付说明：</span>
+                    <div class="bankInfo">
+                        <div class="name">
+
+                        </div>
+                        <p>支付遇见问题？<a href="" target="_blank">&lt;&lt;点击联系在线客服&gt;&gt;</a></p>
+                    </div>
+                </li>
+            </ul>
+            <div class="eveb_form_submit">
+                <input type="submit" value="提交" class="button_medium button_1">
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="../../ssc/themes/default/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/framework/jquery.validate.min.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/laydate/laydate.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/validate.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/global.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/jquery.md5.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/js/global.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/layer/layer.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/js/jquery.nicescroll.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/clipboard.min.js"></script>
+<script src="../../ssc/themes/default/js/dateFormat.js"></script>
+<script src="../../ssc/themes/default/js/template.js"></script>
+<script src="../../ssc/themes/default/js/jquery.cookie.js"></script><!--自定义封装函数-->
+<script src="../../ssc/themes/default/js/jquery.md5.js"></script><!--自定义封装函数--><script>
+    $(function() {
+        parent.hideLoading();
+    });
+</script><script>
+    $(function () {
+        $("#money").keyup(function() {
+            var minMoney = parseFloat($("form[name='zfbzfForm'] input[name='payOnlineId']:checked").data("minmoney"));
+            var maxMoney = parseFloat($("form[name='zfbzfForm'] input[name='payOnlineId']:checked").data("maxmoney"));
+
+            var money = parseFloat($("#money").val());
+            if (money < minMoney || money > maxMoney) {
+                $("#moneyError").html("* 最小充值金额" + minMoney + "元，最大充值金额" + maxMoney + "元").show();
+            } else {
+                $("#moneyError").hide();
+            }
+        });
+        $("form[name='zfbzfForm'] input[name='payOnlineId']").change(function() {
+            var str = '';
+
+            var val = $("form[name='zfbzfForm'] input[name='payOnlineId']:checked").val();
+            if (val != '') {
+                str = $("form[name='zfbzfForm'] input[name='payOnlineId']:checked").data("description");
+                $("#zfsm").show();
+            } else {
+//                $("#zfsm").hide();
+            }
+            $("#zfsm .bankInfo .name").html(str);
+
+            var minMoney = parseFloat($("form[name='zfbzfForm'] input[name='payOnlineId']:checked").data("minmoney"));
+            var maxMoney = parseFloat($("form[name='zfbzfForm'] input[name='payOnlineId']:checked").data("maxmoney"));
+            $("#moneyError").html("* 最小充值金额" + minMoney + "元，最大充值金额" + maxMoney + "元").show();
+        });
+        $("form[name='zfbzfForm'] input[name='payOnlineId']").eq(0).attr("checked", 'checked').prop("checked", "checked");
+        $("#zfsm .bankInfo .name").html($("form[name='zfbzfForm'] input[name='payOnlineId']:checked").data("description"));
+        $("#money").keyup(function () {
+            var obj = this;
+            obj.value = obj.value.replace(/[^\d.]/g, "");
+            obj.value = obj.value.replace(/^\./g, "");
+            obj.value = obj.value.replace(/^0/g, "");
+            obj.value = obj.value.replace(/\.{2,}/g, ".");
+            //确保只有一次小数点出现
+            obj.value = obj.value.replace(".", "#").replace(/\./g, "").replace("#", ".");
+            //确保小数点后是两位数字
+            if (obj.value.indexOf(".") > 0 && obj.value.indexOf(".") + 4 <= obj.value.length) {
+                obj.value = obj.value.substr(0, obj.value.indexOf(".") + 3);
+            }
+            $("#money").val(obj.value);
+        });
+
+        $("form[name='zfbzfForm']").submit(function() {
+            var minMoney = parseFloat($("form[name='zfbzfForm'] input[name='payOnlineId']:checked").data("minmoney"));
+            var maxMoney = parseFloat($("form[name='zfbzfForm'] input[name='payOnlineId']:checked").data("maxmoney"));
+            var payurl = $("form[name='zfbzfForm'] input[name='payOnlineId']:checked").data("payurl");
+
+            var money = parseFloat($("#money").val());
+            if (isNaN(money) || money < minMoney || money > maxMoney) {
+                $("#moneyError").html("* 最小充值金额" + minMoney + "元，最大充值金额" + maxMoney + "元").show();
+                return;
+            }
+
+
+            $("#submitForm input[name='money']").val($("#money").val());
+            $("#submitForm input[name='payOnlineId']").val($("#payOnlineId").val());
+
+        });
+        $("#moneyError").html("* 请输入金额").show();
+    });
+</script>
+</body>
+</html>

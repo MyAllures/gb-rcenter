@@ -1,0 +1,495 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>服务</span><span>/</span><span>体育推荐</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12 m-b">
+        <div class="wrapper white-bg shadow">
+            <!--筛选条件-->
+            <div class="filter-wraper clearfix p-xs border-b-1">
+                <button type="button" class="btn btn-outline btn-filter" data-toggle="modal" data-target="#addEvent"><i class="fa fa-plus"></i><span class="hd">&nbsp;&nbsp;新增赛事</span></button>
+                <button type="button" class="btn btn-outline btn-filter" data-toggle="modal" data-target="#teamManage"><i class="fa fa-copy"></i><span class="hd">&nbsp;&nbsp;球队管理</span></button>
+                <div class="search-wrapper btn-group pull-right">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <div>
+                                <select data-placeholder="联赛名称" class="chosen-select-no-single">
+                                    <option value=""></option>
+                                    <option>主队名称</option>
+                                    <option>客队名称</option>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" placeholder="">
+                        <span class="input-group-btn"> <button type="button" class="btn btn-filter"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!--表格内容-->
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable" aria-describedby="editable_info">
+                        <thead>
+                            <tr class="bg-gray">
+                                <th class="inline">
+                                    <select class="chosen-select-no-single" data-placeholder="全部状态">
+                                        <option value=""></option>
+                                        <option value="1">未开始</option>
+                                        <option value="2">进行中</option>
+                                        <option value="3">已结束</option>
+                                    </select>
+                                </th>
+                                <th>所在时区</th>
+                                <th>比赛开始时间</th>
+                                <th class="inline">                                    
+                                    <select class="chosen-select-no-single" data-placeholder="比赛类型">
+                                        <option value=""></option>
+                                        <option value="1">友谊赛</option>
+                                        <option value="2">友谊赛</option>
+                                        <option value="3">友谊赛</option>
+                                    </select>
+                                </th>
+                                <th>主队</th>
+                                <th>主队赔率</th>
+                                <th>让球</th>
+                                <th>客队</th>
+                                <th>客队赔率</th>
+                                <th>马上投注</th>
+                                <th>展示时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="label label-warning">未开始</span></td>
+                                <td>GTM +8</td>
+                                <td>08：00</td>
+                                <td>美国NBA</td>
+                                <td><img src="images/d9b63182.jpg">俄克拉荷马城雷霆</td>
+                                <td>0.87</td>
+                                <td>-6.5</td>
+                                <td><img src="images/u370.jpg">萨克拉门托国王队</td>
+                                <td>0.92</td>
+                                <td>API1-游戏A</td>
+                                <td>2015/06/12 12:00:00至2015/06/12 12:00:00</td>
+                                <td><a href="javascript:void(0)">编辑</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="label label-success">进行中</span></td>
+                                <td>GTM +8</td>
+                                <td>08：00</td>
+                                <td>美国NBA</td>
+                                <td><img src="images/u370.jpg">休斯敦火箭队</td>
+                                <td>0.87</td>
+                                <td>+6.5</td>
+                                <td><img src="images/d9b63182.jpg">萨克拉门托国王队</td>
+                                <td>0.92</td>
+                                <td>API1-游戏A</td>
+                                <td>2015/06/12 12:00:00至2015/06/12 12:00:00</td>
+                                <td><a href="javascript:void(0)">编辑</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="label label-danger">已结束</span></td>
+                                <td>GTM +8</td>
+                                <td>08：00</td>
+                                <td>美国NBA</td>
+                                <td><img src="images/d9b63182.jpg">俄克拉荷马城雷霆</td>
+                                <td>0.87</td>
+                                <td>-0.0/0.5</td>
+                                <td><img src="images/u370.jpg">萨克拉门托国王队</td>
+                                <td>0.92</td>
+                                <td>API1-游戏A</td>
+                                <td>2015/06/12 12:00:00至2015/06/12 12:00:00</td>
+                                <td>
+                                    <a href="javascript:void(0)">编辑</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)">删除</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row bdtop3">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left">
+                            <select data-placeholder="每页10条" class="chosen-select-no-single">
+                                <option value=""></option>
+                                <option>每页20条</option>
+                                <option>每页30条</option>
+                                <option>每页40条</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                                <form class="form-inline">
+                                    <label class="m-l-sm">共10页</label>
+                                    <label class="m-l">第
+                                        <input type="text" class="m-l-xs m-r-xs min form-control input-sm">页</label>
+                                    <button class="btn btn-sm m-l-sm">跳转</button>
+                                </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 新增赛事 -->
+<div class="modal inmodal" id="addEvent" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">新增赛事</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group clearfix line-hi34 m-b">
+                    <label class="col-xs-3 al-right">所在时区：</label>
+                    <div class="col-xs-8 p-x">
+                        <select class="chosen-select-no-single" data-placeholder="东八区">
+                            <option value=""></option>
+                            <option value="">东八区</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b">
+                    <label class="col-xs-3 al-right">比赛开始时间：</label>
+                    <div class="col-xs-8 p-x">
+                        <select class="chosen-select-no-single" data-placeholder="2015/6/12 12:00:00">
+                            <option value=""></option>
+                            <option value="">2015/6/12 12:00:00</option>
+                            <option value="">2015/6/12 12:00:00</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b">
+                    <label class="col-xs-3 al-right">比赛类型：</label>
+                    <div class="col-xs-8 p-x">
+                        <select data-placeholder="联赛名称" class="chosen-select-no-single pull-left">
+                            <option value=""></option>
+                            <option>友谊赛</option>
+                            <option>友谊赛</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b">
+                    <label class="col-xs-3 al-right">主队：</label>
+                    <div class="col-xs-8 p-x">
+                        <div class="col-sm-6 p-x">
+                            <select data-placeholder="英超" class="chosen-select-no-single pull-left">
+                                <option value=""></option>
+                                <option>意冠</option>
+                                <option>日职联</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <select data-placeholder="俄克拉荷马城雷霆" class="chosen-select-no-single pull-left">
+                                <option value=""></option>
+                                <option>俄克拉荷马城雷霆</option>
+                                <option>萨克拉门托国王队</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b">
+                    <label class="col-xs-3 al-right">客队：</label>
+                    <div class="col-xs-8 p-x">
+                        <div class="col-sm-6 p-x">
+                            <select data-placeholder="英超" class="chosen-select-no-single pull-left">
+                                <option value=""></option>
+                                <option>意冠</option>
+                                <option>日职联</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <select data-placeholder="俄克拉荷马城雷霆" class="chosen-select-no-single pull-left">
+                                <option value=""></option>
+                                <option>俄克拉荷马城雷霆</option>
+                                <option>萨克拉门托国王队</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                    <label class="col-xs-3 al-right">设置赔率：</label>
+                    <div class="col-xs-8 p-x">
+                        <span class="col-sm-4 p-x"><input type="text" class="form-control m-b" placeholder="主队赔率"></span>
+                        <span class="col-sm-4"><input type="text" class="form-control m-b" placeholder="让球"></span>
+                        <span class="col-sm-4 p-x"><input type="text" class="form-control m-b" placeholder="客队赔率"></span>
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b">
+                    <label class="col-xs-3 al-right">马上投注：</label>
+                    <div class="col-xs-8 p-x">
+                        <div class="col-sm-6 p-x">
+                            <select data-placeholder="API1" class="chosen-select-no-single pull-left">
+                                <option value=""></option>
+                                <option>API1</option>
+                                <option>API2</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <select data-placeholder="游戏A" class="chosen-select-no-single pull-left">
+                                <option value=""></option>
+                                <option>游戏A</option>
+                                <option>游戏B</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                    <label class="col-xs-3 al-right">展示时间：</label>
+                    <div class="col-xs-8 p-x input-group">
+                        <input type="text" class="form-control" value="2015/6/12 12:00:00 ">
+                        <span class="input-group-addon bdn">&nbsp;至&nbsp;</span>
+                        <input type="text" class="form-control" value="2015/6/12 12:00:00 ">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 球队管理 -->
+<div class="modal inmodal" id="teamManage" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">球队管理</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="clearfix p-xs"><a href="javascript:void(0)" data-toggle="modal" data-target="#addTeam" class="pull-right">新增球队</a></div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable m-b-none">
+                        <tr>
+                            <th>球队名称</th>
+                            <th>球队logo</th>
+                            <th>操作</th>
+                        </tr>
+                        <tr>
+                            <td>俄克拉荷马城雷霆</td>
+                            <td><img src="images/u193.jpg"></td>
+                            <td>
+                                <a href="javascript:void(0)">编辑</a>
+                                <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                <a href="javascript:void(0)">删除</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>萨克拉门托国王队</td>
+                            <td><img src="images/u193.jpg"></td>
+                            <td>
+                                <a href="javascript:void(0)">编辑</a>
+                                <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                <a href="javascript:void(0)">删除</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 新增球队 -->
+<div class="modal inmodal" id="addTeam" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">新增球队</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                    <label class="col-xs-3 al-right">球队名称：</label>
+                    <div class="col-xs-8 p-x">
+                        <div class="input-group m-b-sm">
+                            <span class="input-group-addon">英文</span>
+                            <input type="text" class="form-control" />
+                        </div>
+                        <div class="input-group m-b-sm">
+                            <span class="input-group-addon">中文简体</span>
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-xs">
+                    <label class="col-xs-3 al-right">球队分类：</label>
+                    <div class="col-xs-8 p-x input-group">
+                        <select class="chosen-select-no-single">
+                            <option value="1">英超</option>
+                            <option value="2">意甲</option>
+                            <option value="3">德乙</option>
+                        </select>
+                        
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b">
+                    <label class="col-xs-3 al-right">球队logo：</label>
+                    <div class="col-xs-8 p-x">
+                        <div class="input-group">
+                            <a href="javascript:void(0)" class="btn btn-outline btn-filter"><i class="fa fa-inbox"></i>&nbsp;&nbsp;上传本地图片</a>
+                            <span class="input-group-addon bdn">请上传1M以内，Png格式的logo</span>
+                        </div>
+                        <div class="lod">
+                            <span class="uploadImg">正在上传图片...</span><img src="images//lod.gif" alt="上传中...">
+                        </div>
+                        <div class="upImg">
+                            <img class="logo" src="images//def.png">
+                            <a href="javascript:void(0)"><img src="images//cle.png"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-filter">提交</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<!-- 球队分类管理 -->
+<div class="modal inmodal in" id="teamType" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">球队分类管理</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">         
+                <div class="line-hi34 input-group date m-b-sm">
+                    <input type="text" value="英超" class="form-control">
+                    <span class="input-group-addon"><i class="fa fa-minus"></i></span>
+                </div>
+                <div class="line-hi34 input-group date m-b-sm">
+                    <input type="text" value="意甲" class="form-control">
+                    <span class="input-group-addon"><i class="fa fa-minus"></i></span>
+                </div>
+                <div class="line-hi34 input-group date m-b-sm">
+                    <input type="text" value="英冠" class="form-control">
+                    <span class="input-group-addon"><i class="fa fa-minus"></i></span>
+                </div>
+                <div class="line-hi34 input-group date m-b-sm">
+                    <input type="text" value="意乙" class="form-control">
+                    <span class="input-group-addon"><i class="fa fa-minus"></i></span>
+                </div>
+                <div><a href="javascript:void(0)"><i class="fa fa-plus"></i> 新增球队分类</a></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="modal inmodal" id="teamType" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">球队分类管理</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li class="p-xs">
+                        <div class="tit bg-gray p-xs clearfix m-b-sm"><a href="javascript:void(0)" class="co-gray pull-right"><i class="fa fa-times"></i></a></div>
+                        <div class="input-group date m-b-sm">
+                            <span class="input-group-addon">英文</span>
+                            <input type="text" class="form-control" value="Premier League">
+                        </div>
+                        <div class="input-group date m-b-sm">
+                            <span class="input-group-addon">中文简体</span>
+                            <input type="text" class="form-control" value="英超">
+                        </div>
+                        <div class="input-group date">
+                            <span class="input-group-addon">中文繁體</span>
+                            <input type="text" class="form-control" value="英超">
+                        </div>
+                    </li>
+                    <li class="p-xs">
+                        <div class="tit bg-gray p-xs clearfix m-b-sm"><a href="javascript:void(0)" class="co-gray pull-right"><i class="fa fa-times"></i></a></div>
+                        <div class="input-group date m-b-sm">
+                            <span class="input-group-addon">英文</span>
+                            <input type="text" class="form-control" value="Premier League">
+                        </div>
+                        <div class="input-group date m-b-sm">
+                            <span class="input-group-addon">中文简体</span>
+                            <input type="text" class="form-control" value="英超">
+                        </div>
+                        <div class="input-group date">
+                            <span class="input-group-addon">中文繁體</span>
+                            <input type="text" class="form-control" value="英超">
+                        </div>
+                    </li>
+                    <li class="p-l-sm"><a href="javascript:void(0)">+ 新增项目</a></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- 左侧菜单响应控件 -->
+<script src="../../common/js/inspinia/inspinia.js"></script>
+<script>
+$(document).ready(function() {
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+    });
+
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': {
+            allow_single_deselect: true
+        },
+        '.chosen-select-no-single': {
+            disable_search_threshold: 10
+        },
+        '.chosen-select-no-results': {
+            no_results_text: 'Oops, nothing found!'
+        },
+        '.chosen-select-width': {
+            width: "95%"
+        }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+});
+//表格内下拉菜单
+$(document).ready(function() {
+    $("th.inline").click(function() {
+        $(this).find(".chosen-drop").css({
+            top: $(this).parent().offset().top - $("body").scrollTop() + 28
+        });
+        $(this).find(".chosen-drop").css({
+            left: $(this).find(".chosen-container").offset().left
+        });
+    });
+});
+</script>
+<script>
+$("[name='my-checkbox']").bootstrapSwitch(); //switch
+</script>

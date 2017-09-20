@@ -1,0 +1,247 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>运营管理</span><span>/</span><span>返水设置</span>
+        
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow">
+           <div class="filter-wraper clearfix p-xs">
+<!--                    <button type="button" class="btn btn-info btn-addon"><i class="fa fa-plus"></i><span class="hd">&nbsp;&nbsp;新增返水</span></button>-->
+                    <a href="operators/addRakeback.html" nav-target="mainFrame" type="button" class="btn btn-info btn-addon pull-left m-r-sm"><i class="fa fa-plus"></i><span class="hd">新增返水</span></a>
+                    <button type="button" class="btn btn-primary-hide" data-toggle="modal" data-target="#edit"><i class="fa fa-gear"></i><span class="hd">&nbsp;&nbsp;结算周期</span></button>
+                    
+                    <div class="search-wrapper btn-group pull-right m-r-n-xs">
+                        <div class="input-group">
+<!--
+                            <div class="input-group-btn">
+                                <div>
+                                  <select data-placeholder="姓名" class="chosen-select-no-single" tabindex="9">
+                                    <option value=""></option>
+                                    <option>列表1</option>
+                                    <option>列表2</option>
+                                    <option>列表3</option>
+                                    <option>列表4</option>
+                                  </select>
+                                </div>
+                            </div>
+-->
+                            <input type="text" class="form-control" placeholder="方案名称">
+                            <span class="input-group-btn"> <button type="button" class="btn btn-filter"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button></span>
+                        </div>
+                    </div>
+                </div>
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable" aria-describedby="editable_info">
+                        <thead>
+                            <tr class="bg-gray">
+                                <th>方案名称</th>
+                                <th>创建时间</th>
+                                <th>使用代理</th>
+                                <th>使用玩家</th>
+                                <th>状态</th>
+                                <th>是否启用</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>一般玩家</td>
+                                <td>2015-06-12 16:42:02</td>
+                                <td class="co-blue">10</td>
+                                <td class="co-blue">10</td>
+                                <td>已启用</td>
+                                <td><input type="checkbox" name="my-checkbox" data-size="mini" checked=""></td>
+                                <td>
+                                    <a href="javascript:void(0)">编辑</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="operators/rakebackSet-detail.html" nav-target="mainFrame">详细</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>高级玩家</td>
+                                <td>2015-06-12 16:42:02</td>
+                                <td class="co-blue">10</td>
+                                <td class="co-blue">10</td>
+                                <td class="co-red">已停用</td>
+                                <td><input type="checkbox" name="my-checkbox" data-size="mini" checked=""></td>
+                                <td>
+                                    <a href="javascript:void(0)">编辑</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="operators/rakebackSet-detail.html" nav-target="mainFrame">详细</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>VIP玩家</td>
+                                <td>2015-06-12 16:42:02</td>
+                                <td class="co-blue">10</td>
+                                <td class="co-blue">10</td>
+                                <td class="co-red">已停用</td>
+                                <td><input type="checkbox" name="my-checkbox" data-size="mini" checked=""></td>
+                                <td>
+                                    <a href="javascript:void(0)">编辑</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="operators/rakebackSet-detail.html" nav-target="mainFrame">详细</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>一般玩家</td>
+                                <td>2015-06-12 16:42:02</td>
+                                <td class="co-blue">10</td>
+                                <td class="co-blue">10</td>
+                                <td class="co-red">已停用</td>
+                                <td><input type="checkbox" name="my-checkbox" data-size="mini" checked=""></td>
+                                <td>
+                                    <a href="javascript:void(0)">编辑</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="operators/rakebackSet-detail.html" nav-target="mainFrame">详细</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)">删除</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row bdtop3">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left">
+                          <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>每页20条</option>
+                            <option>每页30条</option>
+                            <option>每页40条</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                            <form class="form-inline">
+                              <label class="m-l-sm">共10页</label>
+                              <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                              <button class="btn btn-sm m-l-sm">跳转</button>
+                            </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--编辑返水结算周期-->
+<div class="modal inmodal" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">返水结算周期设置</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="m-b">设置每个月结算次数，系统根据结算次数平均分配结算日期，最后一次结算均为当月的最后一天</div>
+                <b>返水周期：</b>
+                <hr class="m-t-xs m-b-sm">
+                <div class="settlement">
+                    <span class="m-r-sm">月结算次数</span>
+                    <a href="javascript:void(0)">1次</a>
+                    <a href="javascript:void(0)" class="cur">2次</a>
+                    <a href="javascript:void(0)">3次</a>
+                    <a href="javascript:void(0)">4次</a>
+                    <a href="javascript:void(0)">天天返</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover dataTable m-b-sm" aria-describedby="editable_info">
+                        <tr class="bg-gray">
+                            <th colspan="7">2015年8月</th>
+                        </tr>
+                        <tr class="bg-color">
+                            <td class="co-grayc2">26</td>
+                            <td class="co-grayc2">27</td>
+                            <td class="co-grayc2">28</td>
+                            <td class="co-grayc2">29</td>
+                            <td class="co-grayc2">30</td>
+                            <td class="co-grayc2">31</td>
+                            <td>1</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td class="current">12</td>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td>16</td>
+                            <td>17</td>
+                            <td>18</td>
+                            <td>19</td>
+                            <td>20</td>
+                            <td>21</td>
+                            <td>22</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td>23</td>
+                            <td>24</td>
+                            <td>24</td>
+                            <td>26</td>
+                            <td>27</td>
+                            <td>28</td>
+                            <td>29</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td>30</td>
+                            <td>31</td>
+                            <td class="co-grayc2">1</td>
+                            <td class="co-grayc2">2</td>
+                            <td class="co-grayc2">3</td>
+                            <td class="co-grayc2">4</td>
+                            <td class="co-grayc2">5</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="m-t-xs">
+                    <label>本月的结算日期为：</label>
+                    <span>15日、 31日</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-primary-hide">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>

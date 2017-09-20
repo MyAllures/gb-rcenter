@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>会员中心</title>
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/hpn-common.css">
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/global.css">
+    <script>
+        <!--
+        window.onerror=function(){return true;}
+        // -->
+    </script>
+    <script>
+    <!--
+    // 屏蔽JS错误
+//    window.onerror = function(){return true;}
+    // -->
+</script>
+<script src="../../ssc/themes/default/js/mobile-detect.min.js"></script></head>
+<body><div class="help_r_main">
+    <div class="eveb_content">
+        <div class="jf_box">
+    <p class="fl">您好，fuckegg！您当前账户余额为：<span>0.000</span>元  </p>
+    <a href="javascript:void(0)" onclick="parent.getPage('zhcz/yhzz')" class="fl c1">充值</a>
+    <a href="javascript:void(0)" onclick="parent.getPage('withdraw')" class="fl c2">提款</a>
+    <p class="fl url">推广链接：http://wan.net/?p=10104<a href="javascript:void(0)" id="copyTglj" data-tglj="http://wan.net/?p=10104">复制链接</a></p>
+</div><div class="eveb_nav_sub">
+    <ul class="clearfix">
+        <li class=""><a href="javascript:void(0)" onclick="parent.getPage('jfmx/hylb')">会员列表</a></li>
+        <li class=""><a href="javascript:void(0)" onclick="parent.getPage('jfmx/tjhy')">添加会员</a></li>
+        <li class=""><a href="javascript:void(0)" onclick="parent.getPage('jfmx/cwbb')">财务报表</a></li>
+        <li class=""><a href="javascript:void(0)" onclick="parent.getPage('jfmx/tdls')">团队流水</a></li>
+        <li class="on"><a href="javascript:void(0)" onclick="parent.getPage('jfmx/tdbb')">团队报表</a></li>
+        <li class=""><a href="javascript:void(0)" onclick="parent.getPage('jfmx/tdtz')">团队投注</a></li>
+        <li class=""><a href="javascript:void(0)" onclick="parent.getPage('jfmx/yjjl')">佣金记录</a></li>
+    </ul>
+</div><h2>
+            <div class="eveb_search eveb_search_h2">
+                <input type="hidden" name="pageIndex"/>
+                会员账号：
+                <input type="text" class="suminp" name="account">
+                统计时间：
+                <input name="starttime" id="starttime" type="text" size="11" class="suminp"
+                       onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})"
+                       value="2017-03-29 00:00"> -
+                <input name="endtime" id="endtime" type="text" size="11" class="suminp"
+                       onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})"
+                       value="2017-03-30 00:00">
+                <a href="javascript:void(0)" class="button_small button_1" onclick="shaixuan()">筛选</a>
+                <a href="javascript:void(0)" class="button_small button_4" onclick="searchday(1)">今日</a>
+                <a href="javascript:void(0)" class="button_small button_4" onclick="searchday(3)">3天</a>
+                <a href="javascript:void(0)" class="button_small button_4" onclick="searchday(7)">本周</a>
+            </div>
+        </h2>
+        <table class="eveb_box eveb_table" id="dataTable">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>用户</th>
+                <th>充值</th>
+                <th>提现</th>
+                <th>派奖</th>
+                <th>活动</th>
+                <th>返水</th>
+                <th>盈利</th>
+                <th>佣金</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div class="eveb_page fr">
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../ssc/themes/default/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/framework/jquery.validate.min.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/laydate/laydate.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/validate.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/global.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/jquery.md5.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/js/global.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/layer/layer.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/js/jquery.nicescroll.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/clipboard.min.js"></script>
+<script src="../../ssc/themes/default/js/dateFormat.js"></script>
+<script src="../../ssc/themes/default/js/template.js"></script>
+<script src="../../ssc/themes/default/js/jquery.cookie.js"></script><!--自定义封装函数-->
+<script src="../../ssc/themes/default/js/jquery.md5.js"></script><!--自定义封装函数--><script>
+    $(function() {
+        parent.hideLoading();
+    });
+</script><script>
+    $(function() {
+        var clipboard = new Clipboard('#copyTglj', {
+            text: function() {
+                return $('#copyTglj').data("tglj");
+            }
+        });
+        clipboard.on('success', function(e) {
+            alert("复制成功");
+        });
+        clipboard.on('error', function(e) {
+            alert("浏览器粘贴板不支持复制，请手动复制。")
+        });
+    });
+</script><script>
+    $(function () {
+        getData();
+    });
+    function goPage(pageIndex) {
+        $("input[name='pageIndex']").val(pageIndex);
+        getData();
+    }
+    function shaixuan() {
+        $("input[name='pageIndex']").val(1);
+        getData();
+    }
+
+    function getData() {
+        /*ajaxRequest({
+            url: "/agent/ajaxGetUserReport.json",
+            data: {
+                pageIndex: $("input[name='pageIndex']").val(),
+                startTime: $("input[name='starttime']").val(),
+                endTime: $("input[name='endtime']").val(),
+                pageSize: "6",
+                account: $("input[name='account']").val()
+            },
+            beforeSend: function () {
+                $("#dataTable tbody").html('<tr><td colspan="5" styl="text-align:center;"><img src="../../ssc/themes/default/img/base_loading.gif"/></td></tr>');
+                $(".eveb_page").html('');
+            },
+            success: function (json) {
+                if (json.result != 1) {
+                    return;
+                }
+                if (json.agentUserReportList.length == 0) {
+                    $("#dataTable tbody").html('<tr><td colspan="5" styl="text-align:center;">暂无数据</td></tr>');
+                    return;
+                }
+                $("input[name='pageIndex']").val(json.pageNum);
+
+                // 数据
+                var str = ''
+                $.each(json.agentUserReportList, function (index, value) {
+                    var currentPageNum = (json.pageNum - 1) * json.pageSize + 1;
+                    str += '<tr>';
+                    str += '<td>' + (parseInt(index) + 1) + '</td>';
+                    str += '<td>' + value.account + '</td>';
+                    str += '<td>' + value.totalDepositMoney + '</td>';
+                    str += '<td>' + value.totalWithdrawMoney + '</td>';
+                    str += '<td>' + value.totalGameProfitMoney + '</td>';
+                    str += '<td>' + value.totalActivityMoney + '</td>';
+                    str += '<td>' + value.totalSscFanshuiMoney + '</td>';
+                    str += '<td>' + add(add(value.totalGameProfitMoney, value.totalActivityMoney), value.totalSscFanshuiMoney) + '</td>';
+                    str += '<td>' + value.totalYjMoney + '</td>';
+                    str += '</tr>';
+                });
+                $("#dataTable tbody").html(str);
+
+//
+                // 分页
+                str = '';
+                str += '<span style="margin:0 3px;float:left;width:auto;padding:0 5px;height:25px;line-height:25px;">总共' + (Math.ceil(json.total / json.pageSize)) + '页，' + json.total + '条，当前第' + json.pageNum + '页</span>';
+                if (json.hasPreviousPage) {
+                    str += '<a href="javascript:void(0)" onclick="goPage(' + (json.prePage) + ')" style="margin:0 3px;float:left;width:auto;padding:0 5px;">上一页</a>';
+                } else {
+                    str += '<a href="javascript:void(0)" style="margin:0 3px;float:left;width:auto;padding:0 5px;">上一页</a>';
+                }
+                str += '<span style="margin:0 3px;float:left;width:auto;padding:0 5px;height:25px;line-height:25px;">跳转到</span>';
+                str += '<input type="text" id="pageNum" style="margin:0 3px;float:left;border:1px solid #eee;width:30px;line-height:25px;height:25px;" value="' + json.pageNum + '" />';
+                str += '<button onclick="goPage(document.getElementById(\'pageNum\').value)" type="text" style="margin:0 3px;float:left;border:1px solid #eee;width:30px;line-height:25px;height:25px;background:#fa6200;padding:0 5px;width:auto;color:#fff;font-size:14px;" value="0">确定</button>';
+                if (json.hasNextPage) {
+                    str += '<a href="javascript:void(0)" onclick="goPage(' + (json.nextPage) + ')" style="margin:0 3px;float:left;width:auto;padding:0 5px;">下一页</a>';
+                } else {
+                    str += '<a href="javascript:void(0)" style="margin:0 3px;float:left;width:auto;padding:0 5px;">下一页</a>';
+                }
+                $(".eveb_page").html(str);
+            }
+        });*/
+    }
+</script>
+</body>
+</html>

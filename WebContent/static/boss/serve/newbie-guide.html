@@ -1,0 +1,233 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>服务</span><span>/</span><span>新手引导</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12 m-b">
+        <div class="wrapper white-bg shadow">
+            <!--筛选条件-->
+            <div class="filter-wraper clearfix p-xs border-b-1">
+                <a type="button" class="btn btn-outline btn-filter pull-left" href="serve/newbie-guide-add.html" nav-target="mainFrame"><i class="fa fa-plus"></i><span class="hd">&nbsp;&nbsp;新增问题</span></a>
+                <button type="button" class="btn btn-outline btn-filter" data-toggle="modal" data-target="#teamManage"><i class="fa fa-copy"></i><span class="hd">&nbsp;&nbsp;分类管理</span></button>
+                <div class="select-records pull-right  line-hi34"><i class="fa fa-exclamation-circle"></i> 展开后，拖拽问题可排序！</div>
+            </div>
+            <!--表格内容-->
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable" aria-describedby="editable_info">
+                        <thead class="bg-gray">
+                        <tr role="row">
+                            <th>一级分类</th>
+                            <th>二级分类</th>
+                            <th>问题个数</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="gradeA odd">
+                                <th>存款帮助</th>
+                                
+                                <td>线上支付</td>
+                                <td><a href="javascript:void(0)" class="over">0项<i></i></a></td>
+                                <td>
+                                    <a href="serve/newbie-guide-detail.html" nav-target="mainFrame" class="disabled">详细</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)" class="disabled">编辑</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#sus111">删除</a>
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                        
+                        
+                        <tbody>
+                            <tr class="gradeA odd">
+                                <th>存款帮助</th>
+                                
+                                <td>线上支付</td>
+                                <td><a href="javascript:void(0)" class="over">2项<i></i></a></td>
+                                <td>
+                                    <a href="serve/newbie-guide-detail.html" nav-target="mainFrame" class="disabled">详细</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)" class="disabled">编辑</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#sus111">删除</a>
+                                </td>
+                                                                   
+                            </tr>
+                        </tbody>
+                        <tbody class="ng-hide" style="display: none;">
+                            <tr class="gradeA ng-scope">
+                                <td colspan="3"><span class="guide-title">什么事线上支付？怎么用？</span></td>
+                                <td>
+                                    <a href="serve/newbie-guide-detail.html" nav-target="mainFrame">详细</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)">编辑</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#sus111">删除</a>
+                                </td>
+                            </tr>
+                            <tr class="gradeA ng-scope">
+                                <td colspan="3"><span class="guide-title">什么事线上支付？怎么用？</span></td>
+                                <td>
+                                    <a href="serve/newbie-guide-detail.html" nav-target="mainFrame">详细</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)">编辑</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#sus111">删除</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row bdtop3">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left">
+                            <select data-placeholder="每页10条" class="chosen-select-no-single">
+                                <option value=""></option>
+                                <option>每页20条</option>
+                                <option>每页30条</option>
+                                <option>每页40条</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                                <form class="form-inline">
+                                    <label class="m-l-sm">共10页</label>
+                                    <label class="m-l">第
+                                        <input type="text" class="m-l-xs m-r-xs min form-control input-sm">页</label>
+                                    <button class="btn btn-sm m-l-sm">跳转</button>
+                                </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 分类管理 -->
+<div class="modal inmodal" id="teamManage" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter">分类管理</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                
+                <div class="line-hi34 bg-gray m-b p-l-sm">
+                    <span class="co-yellow m-r-sm"><i class="fa fa-exclamation-circle"></i></span>拖拽可排序！
+                </div>
+                
+                <div class="dd" id="nestable2">            
+                <ol class="dd-list">
+                <li class="dd-item" data-id="14">
+                    <div class="dd-handle list-title"><i></i> 存款帮助</div>
+                </li>
+                <li class="dd-item" data-id="15">
+                    <div class="dd-handle list-title"><i></i> 取款帮助</div>
+                    <ol class="dd-list">
+                        <li class="dd-item" data-id="16"><div class="dd-handle">线上支付</div></li>
+                        <li class="dd-item" data-id="17"><div class="dd-handle">公司入款</div></li>
+                        <li class="dd-item" data-id="18"><div class="dd-handle">第三方支付</div></li>
+                    </ol>
+                </li>
+            </ol>
+        </div>  
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 球队分类管理 -->
+<div class="modal inmodal" id="sus111" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="al-center">确认删除吗？</h3>
+                <div class="m-sm al-center">删除后，该二级分类下的问题也将同步删除！</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline btn-filter" >继续删除</button>
+                <button type="button" class="btn btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 左侧菜单响应控件 -->
+<script src="../../common/js/inspinia/inspinia.js"></script>
+<script>
+$(document).ready(function() {
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+    });
+
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': {
+            allow_single_deselect: true
+        },
+        '.chosen-select-no-single': {
+            disable_search_threshold: 10
+        },
+        '.chosen-select-no-results': {
+            no_results_text: 'Oops, nothing found!'
+        },
+        '.chosen-select-width': {
+            width: "95%"
+        }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+});
+//表格内下拉菜单
+$(document).ready(function() {
+    $("th.inline").click(function() {
+        $(this).find(".chosen-drop").css({
+            top: $(this).parent().offset().top - $("body").scrollTop() + 28
+        });
+        $(this).find(".chosen-drop").css({
+            left: $(this).find(".chosen-container").offset().left
+        });
+    });
+});
+</script>
+<script>
+$("[name='my-checkbox']").bootstrapSwitch(); //switch
+$(".over").mousedown(function(){
+            $(this).parent("td").parent("tr").parent("tbody").next("tbody.ng-hide").toggle();
+            $(this).toggleClass("open");
+        });
+
+</script>

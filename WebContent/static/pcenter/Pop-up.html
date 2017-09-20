@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+     <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+
+<!--弹窗 --> 
+ <script>
+jQuery(document).ready(function($) {
+	$('.theme-login').click(function(){
+		$('.theme-pop-mask').fadeIn(100);
+		$('.theme-pop').slideDown(200);
+	})
+	$('.theme-poptitle .close').click(function(){
+		$('.theme-pop-mask').fadeOut(100);
+		$('.theme-pop').slideUp(200);
+	})
+
+})
+</script>
+</head>
+<body style="background:#5a5a5a;">
+ <!-- //* 弹窗1输入验证码--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+ <h1>请输入验证码</h1>
+</div>
+<div class="theme-popcon">
+<form>
+  <div class="text">
+<div class="control-group">
+<div class="controls">
+<input type="text"  class="input" placeholder="" value="">
+<img src="images/code.png" width="80" height="27">
+</div>   <span class="red tips"><i class="mark wrongsmall"></i>输入错误，请重新输入</span>
+
+  </div>
+</div>
+
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+  
+ 
+ <!-- //* 弹窗3--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<h3 class="popalign"><i class="tipbig fail"></i>用户名或密码错误，您还可以尝试2次</h3>
+<div class="text">
+</div>
+<form class="popbutton"><button data-toggle="button" class="btn btn-blue middle-big" type="button">确认</button>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+ 
+   
+   <!-- //* 弹窗2--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<h3 class="popalign"><i class="tipbig fail"></i>密码输错已达上限</h3>
+<div class="text">
+<p>被暂时冻结3小时，可重置密码后再操作</p>
+<p><i class="service call"></i><a href="#">联系客服</a>&nbsp;&nbsp;<span class="gray">冻结时间：2015.08.09 03:32:43</span>
+</p>
+</div>
+<form class="popbutton"><button data-toggle="button" class="btn btn-blue middle-big" type="button">重置密码</button>
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">取消</button></form>
+</div>
+</div>
+<div class="theme-pop-mask"  style="position:static;"></div>
+  
+ <!-- //* 弹窗1 --> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<h2>您输入的订单号可能已过期或输入错误</h2>
+<div class="text"></div>
+<form class="popbutton"><button data-toggle="button" class="btn btn-blue middle-big" type="button">重新输入</button>
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">关闭</button></form>
+ </div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+
+ <!-- //* 弹窗4填写真实姓名--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+  <h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<form>
+  <div class="text">
+<div class="control-group">
+ <label class="control-label  control-labelbig" for="inputEmail">交易号/订单号：</label>
+<div class="controls"><input type="text"  class="input" placeholder="" value=""></div>
+  </div>
+</div>
+<div  class="popbutton">
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">提交</button>
+</div>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+
+
+
+ <!-- //* 弹窗4填写真实姓名--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+  <h1>填写真实姓名</h1>
+</div>
+<div class="theme-popcon">
+<form>
+  <div class="text">
+<div class="control-group">
+ <label class="control-label" for="inputEmail">真实姓名：</label>
+<div class="controls"><input type="text"  class="input" placeholder="" value=""></div>
+  </div>
+  
+<p class="gray fontsmall">&nbsp;&nbsp;真实姓名用于匹配收款账号，填写后不可修改，请慎重填写！</p></div>
+<div  class="popbutton">
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">下一步</button>
+</div>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+
+<!-- //* 弹窗5确认填写真实姓名--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<h1>填写安全密码</h1>
+</div>
+<div class="theme-popcon">
+<form>
+  <div class="text">
+<h2>请再次确认您的真实姓名，一旦确认将无法修改！</h2>
+</div>
+
+<div class="control-group">
+ <label class="control-label label-big" for="inputEmail">真实姓名：</label>
+  <div class="controls">
+<input type="text"  class="input" placeholder="" value="">
+   </div>
+  </div>
+  <p class="gray fontsmall">请设置安全密码！在相关操作时需要输入，用于提高您账户的安全性！</p>
+<div class="control-group">
+ <label class="control-label label-big" for="inputEmail">新密码：</label>
+  <div class="controls">
+<input type="text"  class="input" placeholder="" value="6位0~9纯数字">
+   </div>
+  </div>
+  
+  <div class="control-group">
+ <label class="control-label label-big" for="inputEmail">确认密码：</label>
+  <div class="controls">
+<input type="password"  class="input" placeholder="" value="123456">
+     <p class="red lar-l"><i class="mark wrongsmall"></i>请勿于登录密码相同</p>
+   </div>
+  </div>
+
+<div  class="popbutton">
+  <button data-toggle="button" class="btn btn-gray middle-big" type="button">返回上一步</button>
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">提交</button>
+</div>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+
+<!-- //* 弹窗5确认填写真实姓名--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>填写真实姓名</h1>
+</div>
+<div class="theme-popcon">
+<form>
+  <div class="text">
+</div>
+
+<div class="control-group">
+ <label class="control-label label-big" for="inputEmail">真实姓名：</label>
+  <div class="controls">
+<input type="text"  class="input" placeholder="" value="">
+
+   </div>
+   <p class="gray fontsmall">&nbsp;&nbsp;真实姓名用于匹配收款账号，填写后不可修改，请慎重填写！</p>
+  </div>
+<div  class="popbutton">
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">下一步</button>
+</div>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+
+
+<!-- //* 弹窗5确认填写真实姓名--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<form>
+  <div class="text">
+<h3><i class="tipbig fail"></i>请再次确认您的真实姓名，一旦确认将无法修改！</h3>
+</div>
+
+<div class="control-group">
+ <label class="control-label label-big" for="inputEmail">真实姓名：</label>
+  <div class="controls">
+<input type="text"  class="input" placeholder="" value="">
+   </div>
+  </div>
+<div  class="popbutton">
+  <button data-toggle="button" class="btn btn-gray middle-big" type="button">返回上一步</button>
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">提交</button>
+</div>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+
+
+
+
+<!-- //* 弹窗6设置收款银行卡--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<h1>添加银行卡</h1>
+</div>
+<div class="theme-popcon">
+<form>
+  <div class="text">
+</div>
+
+<div class="control-group">
+ <label class="control-label" for="inputEmail">真实姓名：</label>
+  <div class="controls">
+<input type="text"  class="input" placeholder="" value="张*大">
+<p class="tipsgray fontsmall">银行卡姓名与真实姓名一致才能取款成功</p>
+
+   </div>
+  </div>
+  <div class="control-group">
+ <label class="control-label" for="inputEmail">银行卡号：</label>
+  <div class="controls">
+   <select name="select" class="selectwidth">
+      <option>62566899554453332</option>
+      <option>62566899554453332</option>
+      <option>62566899554453332</option>
+    </select>
+<p class="tipsgray fontsmall">输入卡号后会自动识别银行和卡种</p>
+   </div>
+  </div>
+  
+  
+  <div class="control-group">
+ <label class="control-label" for="inputEmail">银行：</label>
+  <div class="controls">
+   <select name="select" class="selectwidth">
+      <option>中国工商银行</option>
+      <option>中国建设银行</option>
+    </select>
+   </div>
+  </div>  
+  
+  
+    <div class="control-group">
+ <label class="control-label" for="inputEmail">开户行：</label>
+  <div class="controls">
+<input type="text"  class="input" placeholder="" value="">
+<p class="tipsgray fontsmall">如：河北唐山建设银行</p>
+
+   </div>
+  </div>
+     <div class="control-group">
+ <label class="control-label" for="inputEmail">安全密码：</label>
+  <div class="controls">
+<input type="password"  class="input" placeholder="" value="">
+   </div>
+  </div>
+  
+<div  class="popbutton">
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">重置</button>
+
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">确认</button>
+</div>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+
+
+<!-- //* 弹窗9游戏帐户余额--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<h2>游戏帐户余额不足（当前：0元)</h2>
+<form>
+  <div class="text">
+</div>
+
+<div class="control-group">
+ <label class="control-label" for="inputEmail">钱包余额：</label>
+  <div class="controls">
+<span class="m-t orange">0.00</span><span class="m-l godeposit"><a href="asset-deposit.html" target="_blank">去存款</a></span>
+   </div>
+  </div>
+  
+  <div class="control-group">
+ <label class="control-label" for="inputEmail">转入金额：</label>
+  <div class="controls">
+<input type="text"  class="input" placeholder="" value="0.00">
+
+   </div>
+  </div>
+  
+<div  class="popbutton">
+<button data-toggle="button" class="btn btn-blue btn-large" type="button">自动转帐进入游戏</button>
+<button data-toggle="button" class="btn btn-gray btn-large" type="button">忽略提醒进入游戏</button>
+</div>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+
+ <!-- //* 弹窗7支付密码-->
+<div class="theme-pop-mask" style="position:static;"></div>
+ <!-- //* 弹窗8设置主语言--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<h1>设置主语言</h1>
+</div>
+<div class="theme-popcon">
+<h2>请设置您的主语言，用于接收站内信等通知！</h2>
+<form>
+  <div class="text">
+</div>
+
+<div class="control-group">
+ <label class="control-label" for="inputEmail">您的主语言：</label>
+  <div class="controls">
+   </select><select name="select" class="selectwidth">
+      <option>简体中文</option>
+      <option>英文</option>
+    </select>
+   </div>
+  </div>
+  
+<div  class="popbutton">
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">确认</button>
+</div>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+
+
+ <!-- //* 弹窗3--> 
+<div class="theme-pop" style="position:static;margin:20px 0 0 300px">
+<div class="theme-poptitle">
+<a href="javascript:;" title="关闭" class="close">×</a>
+<h1>消息</h1>
+</div>
+<div class="theme-popcon">
+<h3 class="popalign"><i class="tipbig fail"></i>
+操作遇上麻烦？请使用其他方式验证。</h3>
+<div class="text">
+</div>
+<form class="popbutton"><button data-toggle="button" class="btn btn-blue middle-big" type="button">好的</button>
+</form>
+</div>
+</div>
+<div class="theme-pop-mask" style="position:static;"></div>
+ 
+</body>
+</html>

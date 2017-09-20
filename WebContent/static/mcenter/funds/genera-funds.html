@@ -1,0 +1,152 @@
+
+    <div class="row">
+        <div class="position-wrap clearfix">
+            <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+            <span>资金管理</span>
+<!--            <span>/</span><span>人工存提</span>-->
+            <span>/</span><span>手动存取</span>            
+            </div>
+        <div class="col-lg-12">
+        <div class="white-bg shadow">
+           <ul class="clearfix sys_tab_wrap">
+                            <li><a href="funds/funds.html" nav-target="mainFrame">人工存入</a></li>
+                            <li class="active"><a href="funds/genera-funds.html" nav-target="mainFrame">人工取出</a></li>
+                        </ul>
+                        
+            
+            <!--表格内容-->
+            <div class="panel-body p-sm">
+                <table class="table no-border table-desc-list">
+                    <tbody>
+                        
+                        <tr>
+                            <th scope="row" class="text-right">玩家账号：</th>
+                            <td>
+                            <input type="text" class="form-control" placeholder="26" style="width:25%;">
+                            
+                            </td>
+                        </tr>
+                         <tr>
+                            <th scope="row" class="text-right">钱包余额：</th>
+                            
+                            <td class="money"><span class="fs16">￥ 24,000<i>.00</i></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-right">存款金额：</th>
+                            <td>
+                            <input type="text" class="form-control" placeholder="26" style="width:25%;">
+                            </td>
+                        </tr>
+                         <tr>
+                            <th scope="row" class="text-right">类型：</th>
+                            <td>
+                            <div class="table-desc-right-t" style="width:25%;">
+                            <div class="btn-group table-desc-right-t-dropdown" initprompt="10条" callback="query">
+                            <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default" data-toggle="dropdown" aria-expanded="false">
+                        <span prompt="prompt">派彩</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="max-height: 1298px; min-width: 55px; overflow-y: scroll; overflow-x: visible;">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">10条</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20">20条20条20条20条20条20条20条20条20条</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30">30条</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="50">50条</a>
+                        </li>
+                    </ul>
+                </div>
+                <span class="right-flo co-grayc2">该笔资金记录不对玩家展示</span>
+                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-right">稽核：</th>
+                            <td>
+                            <div class="line-hi34 min-w">
+                            <label><input type="checkbox" class="" value="1" name="jih"><label for="checkbox3"></label>清除稽核点</label>
+                            <span tabindex="0" class=" help-popover" role="button" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-html="true" data-content="清除稽核点后，玩家取款时，将不会继续稽核本次取款之前的存款或优惠。" data-original-title="" title=""><i class="fa fa-question-circle"></i></span>
+                            </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-right" style="vertical-align: top;">备注：</th>
+                            <td>
+                                <textarea class="form-control width-response" rows="4"></textarea>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <div class="btn-groups text-left">
+                                    <button class="btn btn-filter p-x-lg m-r-md">确定</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<script type="text/javascript">
+function login() {
+    var portals = document.getElementsByName("project");
+    for(var i = 0; i < portals.length; i++) {
+        if(portals[i].checked) {
+            if(portals[i].value === "select1") {
+                location.href = "funds/funds2-1.html";
+            }
+            else if(portals[i].value === "select2") {
+                location.href = "funds/funds2-2.html";
+            }
+			else if(portals[i].value === "select3") {
+                location.href = "funds/funds2-3.html";
+            }
+			else if(portals[i].value === "select4") {
+                location.href = "funds/funds2-4.html";
+            }
+			else if(portals[i].value === "select5") {
+                location.href = "funds/funds2-5.html";
+            }
+			else if(portals[i].value === "select6") {
+                location.href = "funds/funds2-6.html";
+            }
+			else if(portals[i].value === "select7") {
+                location.href = "funds/funds2-7.html";
+            }
+			else if(portals[i].value === "select8") {
+                location.href = "funds/funds2-8.html";
+            }
+        }
+    }
+}
+</script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>

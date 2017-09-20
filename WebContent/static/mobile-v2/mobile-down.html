@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Perfect Lottery</title>
+    <link href="../../lottery-mobile/themes/mui.min.css" rel="stylesheet"/>
+    <link href="../../lottery-mobile/themes/style.css" rel="stylesheet"/>
+    <style>
+    	body{background: #fff;}
+    	.middle-content{background: #fff;bottom: 0;}
+    	.tit-center{text-align: center;font-size: 0.8rem;padding-bottom: 1rem; color: #df3a29;}
+    	.tit-tips{text-align: center;color: #afafaf;}
+    	.mui-btn{border-radius: 1.5rem;margin-bottom: 1rem;padding: 0.4rem 0;}
+    	.mui-btn-primary{border: 1px solid #24c1e4; color: #24c1e4!important;font-weight: 600;}
+    	.mui-btn-success{border: 1px solid #32c186; color: #32c186!important;font-weight: 600;}
+    	.mui-btn-primary:active{background: #24c1e4!important; color: #fff!important;border: 1px solid #24c1e4!important; }
+    	.mui-btn-success:active{background: #32c186!important; color: #fff!important;border: 1px solid #32c186!important; }
+    	.mobile-ico{width: 25px;height: 29px;display: inline-block;margin-right:8px; vertical-align: middle;background-image: url(../../lottery-mobile/images/down-mobil-ico.png);}
+        .mobile-ico.ico-app{background-position: 0 0; transition: all .3s;}
+        .mobile-ico.ico-and{background-position: 25px 0; transition: all .3s;}
+        .mui-btn-primary:active .mobile-ico.ico-app{background-position: 0 -29px;}
+        .mui-btn-success:active .mobile-ico.ico-and{background-position: 25px -29px;}
+        .p1{text-align: center;margin-bottom: 10px;}
+    </style>
+    </head>
+<body>
+	    <header class="mui-bar mui-bar-top mui-bar-nav">
+	    	<span class="home-logo logo-center"><img src="../../lottery-mobile/images/logo.png"></span>
+	    </header>
+	    <div class="mui-scroll-wrapper middle-content">
+			<div class="mui-scroll">
+				<div class="p-1r">
+					<h4 class="tit-center">下载APP 随时随地 想赚就赚</h4>
+				    <button type="button" class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined"><i class="mobile-ico ico-app"></i> IOS下载</button>
+				    <button type="button" class="mui-btn mui-btn-success mui-btn-block mui-btn-outlined"><i class="mobile-ico ico-and"></i> Android 下载</button>
+				    <div class="p1"><img src="../../lottery-mobile/images/p1.png" width="60%"></div>
+				    <button type="button" class="mui-btn mui-btn-danger mui-btn-block">继续访问</button>
+                    <div class="tit-tips">温馨提示：手机网页版直接点击链接按钮访问</div>
+				</div>
+            </div>
+        </div>
+		<script src="../../lottery-mobile/js/mui/mui.min.js"></script>
+	<script src="../../lottery-mobile/js/mui/mui.pullToRefresh.js"></script>
+	<script src="../../lottery-mobile/js/mui/mui.pullToRefresh.material.js"></script>
+    <script type="text/javascript" charset="utf-8">
+			 //mui初始化
+			mui.init();
+		
+		</script>
+		
+</body>
+
+    
+</html>

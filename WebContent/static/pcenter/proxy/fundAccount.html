@@ -1,0 +1,161 @@
+
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>代理管理</span>
+        <span>/</span><span>资金账户</span>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper shadow">
+            <div class="present_wrap gray-bg">
+                <b>资金记录</b>
+                <div class="input-group content-width-limit-250 m-t-xs pull-right">
+                    <input type="text" class="form-control" placeholder="最近7天(2013-10-11 ~ 2013-10-11)">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                </div>
+            </div>
+            <div class="p-sm">
+                佣金余额<span tabindex="0" class="m-l-sm help-popover" role="button" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title=""><i class="fa fa-question-circle"></i></span>：<span class="fs24">1809.00</span>
+            </div>            
+            <div class="dataTables_wrapper" role="grid">               
+               <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable m-b-none" aria-describedby="editable_info">
+                        <thead>
+                            <tr role="row" class="bg-gray">
+                                <th>交易号</th>
+                                <th>创建时间</th>
+                                <th class="inline">
+                                    <select class="chosen-select-no-single" data-placeholder="全部类型">
+                                        <option value="">佣金收入</option>
+                                        <option value="">佣金提现</option>
+                                    </select>
+                                </th>
+                                <th>金额</th>
+                                <th>账户余额</th>
+                                <th class="inline">
+                                    <select class="chosen-select-no-single" data-placeholder="全部状态">
+                                        <option value="">待处理</option>
+                                        <option value="">处理中</option>
+                                        <option value="">失败</option>
+                                        <option value="">成功</option>
+                                    </select>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>7ee22334444</td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td>佣金收入2015年08月01期返佣</td>
+                                <td class="co-green">+500.00</td>
+                                <td>500.00</td>
+                                <td><span class="label label-success">成功</span></td>
+                            </tr>
+                            <tr>
+                                <td>7ee22334444</td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td>佣金收入2015年08月01期返佣</td>
+                                <td class="co-red3">-200.00</td>
+                                <td>500.00</td>
+                                <td><span class="label label-danger">失败</span></td>
+                            </tr>
+                            <tr>
+                                <td>7ee22334444</td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td>佣金收入2015年08月01期返佣</td>
+                                <td class="co-green">+500.00</td>
+                                <td>500.00</td>
+                                <td><span class="label label-info">待处理</span></td>
+                            </tr>
+                            <tr>
+                                <td>7ee22334444</td>
+                                <td>2015-08-06 04:22:15</td>
+                                <td>佣金收入2015年08月01期返佣</td>
+                                <td class="co-red3">-200.00</td>
+                                <td>500.00</td>
+                                <td><span class="label label-orange">处理中</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row bdtop3 gray-bg">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left white-bg">
+                          <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>每页20条</option>
+                            <option>每页30条</option>
+                            <option>每页40条</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                            <form class="form-inline">
+                              <label class="m-l-sm">共10页</label>
+                              <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                              <button class="btn btn-sm m-l-sm">跳转</button>
+                            </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(".btn-total").click(function(){
+        $(".con-total").slideToggle();
+    });
+    $(".btn-advanced-down").click(function () {
+            $(".advanced-options").slideToggle("10");
+            $(this).parent().toggleClass("show");
+        });
+ var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': {allow_single_deselect: true},
+        '.chosen-select-no-single': {disable_search_threshold: 10},
+        '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+        '.chosen-select-width': {width: "95%"}
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+    
+    $("#file-0").fileinput({
+        'allowedFileExtensions' : ['jpg', 'png','gif'],
+    });
+    
+    $('.help-popover').popover()
+</script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>

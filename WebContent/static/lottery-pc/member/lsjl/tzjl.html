@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>会员中心</title>
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/hpn-common.css">
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../../ssc/themes/default/member/css/global.css">
+    <script>
+        <!--
+        window.onerror=function(){return true;}
+        // -->
+    </script>
+    <script>
+    <!--
+    // 屏蔽JS错误
+//    window.onerror = function(){return true;}
+    // -->
+</script>
+<script src="../../ssc/themes/default/js/mobile-detect.min.js"></script></head>
+<body><div class="help_r_main">
+    <div class="eveb_content">
+        <div class="eveb_nav_sub">
+            <ul class="clearfix">
+                <li><a href="javascript:void(0)" onclick="parent.getPage('lsjl/ckjl')">充值记录</a></li>
+                <li><a href="javascript:void(0)" onclick="parent.getPage('lsjl/tkjl')">提现记录</a></li>
+                <li><a href="javascript:void(0)" onclick="parent.getPage('lsjl/zjjl')">资金记录</a></li>
+                <li class="on"><a href="javascript:void(0)" onclick="parent.getPage('lsjl/tzjl')">投注记录</a></li>
+                </ul>
+        </div>
+        <h2>
+            <div class="eveb_search eveb_search_h2">
+                <input type="hidden" name="pageIndex" value="1"/>
+                彩种：
+                <select name="playGroupId" id="playGroupId">
+                    <option value="">所有</option>
+                </select>
+                玩法：
+                <select name="playId" id="playId">
+                </select>
+                状态：
+                <select name="status" id="status">
+                    <option value="">所有</option>
+                    <option value="0">未结算</option>
+                    <option value="1">已结算</option>
+                </select>
+                　起止时间：
+                <input name="starttime" id="starttime"
+                       value="2017-03-29 00:00"
+                       type="text" size="11" class="suminp"
+                       onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})"> -
+                <input name="endtime"
+                       id="endtime" type="text"
+                       size="11"
+                       value="2017-03-30 00:00"
+                       class="suminp"
+                       onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})">
+                <a href="javascript:void(0)" class="button_small button_1" onclick="shaixuan()">筛选</a>
+                <a href="javascript:void(0)" class="button_small button_4" onclick="searchday(1)">今日</a>
+                <a href="javascript:void(0)" class="button_small button_4" onclick="searchday(3)">3天</a>
+                <a href="javascript:void(0)" class="button_small button_4" onclick="searchday(7)">本周</a>
+            </div>
+        </h2>
+        <table class="eveb_box eveb_table" id="dataTable">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>注单号</th>
+                <th>时间</th>
+                <th>彩种</th>
+                <th>玩法</th>
+                <th>赔率</th>
+                <th>期号</th>
+                <th>投注内容</th>
+                <th>注数</th>
+                <th>投注金额</th>
+                <th>中奖金额</th>
+                <th>盈亏</th>
+                <th>状态</th>
+                <th>详细</th>
+            </tr>
+            </thead>
+            <tbody>
+            	<tr>
+            		<td>314654651</td>
+            		<td>dd546646</td>
+            		<td>2017-01-22 23:32:11</td>
+            		<td>重庆时时彩</td>
+            		<td>龙虎</td>
+            		<td>1.93</td>
+            		<td>879898</td>
+            		<td>2323</td>
+            		<td>3</td>
+            		<td>123.00</td>
+            		<td>22</td>
+            		<td>赢</td>
+            		<td>已中奖</td>
+            		<td><a href="#">查看详细</a></td>
+            	</tr>
+            </tbody>
+        </table>
+        <div class="eveb_amount fl">当前小计<span id="pageMoney">0</span>元，总计<span id="totalMoney">0</span>元，当前盈亏<span id="pageWinOrLoseMoney">0</span>元，总盈亏<span id="totalWinOrLoseMoney">0</span>元</div>
+        <div class="eveb_page fr">
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../ssc/themes/default/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/framework/jquery.validate.min.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/laydate/laydate.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/validate.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/global.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/jquery.md5.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/js/global.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/layer/layer.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/js/jquery.nicescroll.js"></script>
+<script type="text/javascript" src="../../ssc/themes/default/member/js/clipboard.min.js"></script>
+<script src="../../ssc/themes/default/js/dateFormat.js"></script>
+<script src="../../ssc/themes/default/js/template.js"></script>
+<script src="../../ssc/themes/default/js/jquery.cookie.js"></script><!--自定义封装函数-->
+<script src="../../ssc/themes/default/js/jquery.md5.js"></script><!--自定义封装函数--><script>
+    $(function() {
+        parent.hideLoading();
+    });
+</script><script>
+    var sscPlayGroupList = [];
+    var selectOptionData = {"result":1,"sscPlayGroupList":[{"id":1,"name":"重庆时时彩"},{"id":2,"name":"天津时时彩"},{"id":3,"name":"新疆时时彩"},{"id":4,"name":"体彩排列3"},{"id":5,"name":"福彩3D"},{"id":6,"name":"六合彩"},{"id":7,"name":"幸运28"},{"id":8,"name":"北京快乐8"},{"id":9,"name":"北京PK10"},{"id":10,"name":"重庆幸运农场"},{"id":11,"name":"广东快乐十分"},{"id":12,"name":"双色球"},{"id":13,"name":"三分时时彩"},{"id":14,"name":"幸运飞艇"},{"id":15,"name":"分分时时彩"},{"id":16,"name":"二分时时彩"},{"id":17,"name":"五分时时彩"}],"sscPlayList":[{"id":204,"name":"特码","playGroupId":6},{"id":205,"name":"正码","playGroupId":6},{"id":206,"name":"正特码","playGroupId":6},{"id":207,"name":"正码1-6","playGroupId":6},{"id":208,"name":"连码","playGroupId":6},{"id":209,"name":"半波","playGroupId":6},{"id":210,"name":"一肖/尾数","playGroupId":6},{"id":211,"name":"特肖","playGroupId":6},{"id":212,"name":"合肖","playGroupId":6},{"id":213,"name":"连肖","playGroupId":6},{"id":214,"name":"尾数连","playGroupId":6},{"id":215,"name":"全不中","playGroupId":6},{"id":216,"name":"双面","playGroupId":1},{"id":217,"name":"数字盘","playGroupId":1},{"id":218,"name":"一字定位","playGroupId":1},{"id":219,"name":"二字定位","playGroupId":1},{"id":220,"name":"三字定位","playGroupId":1},{"id":221,"name":"一字组合","playGroupId":1},{"id":222,"name":"二字组合","playGroupId":1},{"id":223,"name":"二字和数","playGroupId":1},{"id":224,"name":"组选三","playGroupId":1},{"id":225,"name":"组选六","playGroupId":1},{"id":226,"name":"跨度","playGroupId":1},{"id":227,"name":"龙虎","playGroupId":1},{"id":228,"name":"双面","playGroupId":2},{"id":229,"name":"数字盘","playGroupId":2},{"id":230,"name":"一字定位","playGroupId":2},{"id":231,"name":"二字定位","playGroupId":2},{"id":232,"name":"三字定位","playGroupId":2},{"id":233,"name":"一字组合","playGroupId":2},{"id":234,"name":"二字组合","playGroupId":2},{"id":235,"name":"二字和数","playGroupId":2},{"id":236,"name":"组选三","playGroupId":2},{"id":237,"name":"组选六","playGroupId":2},{"id":238,"name":"跨度","playGroupId":2},{"id":239,"name":"龙虎","playGroupId":2},{"id":240,"name":"双面","playGroupId":3},{"id":241,"name":"数字盘","playGroupId":3},{"id":242,"name":"一字定位","playGroupId":3},{"id":243,"name":"二字定位","playGroupId":3},{"id":244,"name":"三字定位","playGroupId":3},{"id":245,"name":"一字组合","playGroupId":3},{"id":246,"name":"二字组合","playGroupId":3},{"id":247,"name":"二字和数","playGroupId":3},{"id":248,"name":"组选三","playGroupId":3},{"id":249,"name":"组选六","playGroupId":3},{"id":250,"name":"跨度","playGroupId":3},{"id":251,"name":"龙虎","playGroupId":3},{"id":252,"name":"定位","playGroupId":5},{"id":253,"name":"组合","playGroupId":5},{"id":254,"name":"和数","playGroupId":5},{"id":255,"name":"组选三","playGroupId":5},{"id":256,"name":"组选六","playGroupId":5},{"id":257,"name":"跨度","playGroupId":5},{"id":258,"name":"双面","playGroupId":9},{"id":259,"name":"数字盘","playGroupId":9},{"id":260,"name":"冠军","playGroupId":9},{"id":261,"name":"亚军","playGroupId":9},{"id":262,"name":"季军","playGroupId":9},{"id":263,"name":"第四名","playGroupId":9},{"id":264,"name":"第五名","playGroupId":9},{"id":265,"name":"第六名","playGroupId":9},{"id":266,"name":"第七名","playGroupId":9},{"id":267,"name":"第八名","playGroupId":9},{"id":268,"name":"第九名","playGroupId":9},{"id":269,"name":"第十名","playGroupId":9},{"id":270,"name":"冠亚和","playGroupId":9},{"id":271,"name":"选5","playGroupId":8},{"id":272,"name":"选4","playGroupId":8},{"id":273,"name":"选3","playGroupId":8},{"id":274,"name":"选2","playGroupId":8},{"id":275,"name":"选1","playGroupId":8},{"id":276,"name":"其他","playGroupId":8},{"id":277,"name":"双面","playGroupId":11},{"id":278,"name":"第一球","playGroupId":11},{"id":279,"name":"第二球","playGroupId":11},{"id":280,"name":"第三球","playGroupId":11},{"id":281,"name":"第四球","playGroupId":11},{"id":282,"name":"第五球","playGroupId":11},{"id":283,"name":"第六球","playGroupId":11},{"id":284,"name":"第七球","playGroupId":11},{"id":285,"name":"第八球","playGroupId":11},{"id":286,"name":"龙虎","playGroupId":11},{"id":287,"name":"定位","playGroupId":4},{"id":288,"name":"组合","playGroupId":4},{"id":289,"name":"和数","playGroupId":4},{"id":290,"name":"组选三","playGroupId":4},{"id":291,"name":"组选六","playGroupId":4},{"id":292,"name":"跨度","playGroupId":4},{"id":293,"name":"和值","playGroupId":7},{"id":294,"name":"双面","playGroupId":10},{"id":295,"name":"第一球","playGroupId":10},{"id":296,"name":"第二球","playGroupId":10},{"id":297,"name":"第三球","playGroupId":10},{"id":298,"name":"第四球","playGroupId":10},{"id":299,"name":"第五球","playGroupId":10},{"id":300,"name":"第六球","playGroupId":10},{"id":301,"name":"第七球","playGroupId":10},{"id":302,"name":"第八球","playGroupId":10},{"id":303,"name":"龙虎","playGroupId":10},{"id":304,"name":"单式","playGroupId":12},{"id":305,"name":"幸运选号","playGroupId":12},{"id":306,"name":"胆拖","playGroupId":12},{"id":318,"name":"双面","playGroupId":14},{"id":319,"name":"冠亚和","playGroupId":14},{"id":330,"name":"排名1~10","playGroupId":14},{"id":331,"name":"二字组合","playGroupId":13},{"id":332,"name":"双面","playGroupId":13},{"id":333,"name":"一字定位","playGroupId":13},{"id":334,"name":"三字定位","playGroupId":13},{"id":335,"name":"组选六","playGroupId":13},{"id":336,"name":"龙虎","playGroupId":13},{"id":337,"name":"数字盘","playGroupId":13},{"id":338,"name":"二字和数","playGroupId":13},{"id":339,"name":"一字组合","playGroupId":13},{"id":340,"name":"二字定位","playGroupId":13},{"id":341,"name":"组选三","playGroupId":13},{"id":342,"name":"跨度","playGroupId":13},{"id":379,"name":"组选六","playGroupId":15},{"id":380,"name":"数字盘","playGroupId":15},{"id":381,"name":"三字定位","playGroupId":15},{"id":382,"name":"二字和数","playGroupId":15},{"id":383,"name":"一字定位","playGroupId":15},{"id":384,"name":"二字组合","playGroupId":15},{"id":385,"name":"跨度","playGroupId":15},{"id":386,"name":"组选三","playGroupId":15},{"id":387,"name":"一字组合","playGroupId":15},{"id":388,"name":"二字定位","playGroupId":15},{"id":389,"name":"双面","playGroupId":15},{"id":390,"name":"龙虎","playGroupId":15},{"id":391,"name":"组选六","playGroupId":16},{"id":392,"name":"数字盘","playGroupId":16},{"id":393,"name":"三字定位","playGroupId":16},{"id":394,"name":"二字和数","playGroupId":16},{"id":395,"name":"一字定位","playGroupId":16},{"id":396,"name":"二字组合","playGroupId":16},{"id":397,"name":"跨度","playGroupId":16},{"id":398,"name":"组选三","playGroupId":16},{"id":399,"name":"一字组合","playGroupId":16},{"id":400,"name":"二字定位","playGroupId":16},{"id":401,"name":"双面","playGroupId":16},{"id":402,"name":"龙虎","playGroupId":16},{"id":403,"name":"组选六","playGroupId":17},{"id":404,"name":"数字盘","playGroupId":17},{"id":405,"name":"三字定位","playGroupId":17},{"id":406,"name":"二字和数","playGroupId":17},{"id":407,"name":"一字定位","playGroupId":17},{"id":408,"name":"二字组合","playGroupId":17},{"id":409,"name":"跨度","playGroupId":17},{"id":410,"name":"组选三","playGroupId":17},{"id":411,"name":"一字组合","playGroupId":17},{"id":412,"name":"二字定位","playGroupId":17},{"id":413,"name":"双面","playGroupId":17},{"id":414,"name":"龙虎","playGroupId":17}]};
+
+    function getPlayGroupName(playGroupId) {
+        for (var i = 0; i < selectOptionData.sscPlayGroupList.length; ++i) {
+            if (playGroupId == selectOptionData.sscPlayGroupList[i].id) {
+                return selectOptionData.sscPlayGroupList[i].name;
+            }
+        }
+        return '';
+    }
+
+    function getPlayName(playId) {
+        for (var i = 0; i < selectOptionData.sscPlayList.length; ++i) {
+            if (playId == selectOptionData.sscPlayList[i].id) {
+                return selectOptionData.sscPlayList[i].name;
+            }
+        }
+        return '';
+    }
+
+    $(function () {
+        $.each(selectOptionData.sscPlayGroupList, function (index, value) {
+            sscPlayGroupList[value.id] = {
+                id: value.id,
+                name: value.name,
+                sscPlayList: []
+            };
+        });
+
+        $.each(selectOptionData.sscPlayList, function (index, value) {
+            sscPlayGroupList[value.playGroupId].sscPlayList.push({
+                id: value.id,
+                name: value.name
+            });
+        });
+
+        var str = '<option value="">所有</option>';
+        $.each(sscPlayGroupList, function (index, value) {
+            if (typeof value != 'undefined') {
+                str += '<option value="' + value.id + '">' + value.name + '</option>';
+            }
+        });
+        $("#playGroupId").html(str);
+        $("#playId").html('<option value="">所有</option>');
+
+        //选中下拉框时触发事件
+        $("#playGroupId").change(function () {
+            var value = $(this).val();
+            if (value == '') {
+                $("#playId").html('<option value="">所有</option>');
+                return;
+            }
+
+            var str = '<option value="">所有</option>';
+            $.each(sscPlayGroupList[value].sscPlayList, function (index, value) {
+                str += '<option value="' + value.id + '">' + value.name + '</option>';
+            });
+            $("#playId").html(str);
+        });
+//        generateLabel($("#status").val());
+        getTzjlData();
+    });
+
+    function goPage(pageIndex) {
+        $("input[name='pageIndex']").val(pageIndex);
+        getTzjlData();
+    }
+    function shaixuan() {
+        $("input[name='pageIndex']").val(1);
+        getTzjlData();
+    }
+    function getCaizhong() {
+
+    }
+    function generateLabel(sgpid) {
+        if (sgpid != '') {
+            /*$.post("/member/getSscPlayGroup.json", {}, function (json) {
+                var optionStr = '<option value="">所有</option>';
+                $.each(json.sscPlayList, function (index, value) {
+                    if (value.playGroupId == sgpid) {
+                        optionStr += '<option value="' + index + '">' + value.name + '</option>';
+                    }
+                });
+                $("#selectStr").html(optionStr);
+            }, "json");*/
+        } else {
+            $("#selectStr").html('<option value="">所有</option>');
+        }
+    }
+
+
+    function getTzjlData() {
+        /*ajaxRequest({
+            url: "/member/ajaxGetTzjl.json",
+            data: {
+                pageIndex: $("input[name='pageIndex']").val(),
+                startTime: $("input[name='starttime']").val(),
+                endTime: $("input[name='endtime']").val(),
+                pageSize: "6",
+                playGroupId: $("select[name='playGroupId']").val(),
+                playId: $("select[name='playId']").val(),
+                status: $("select[name='status']").val()
+            },
+            beforeSend: function () {
+                $("#dataTable tbody").html('<tr><td colspan="13" styl="text-align:center;"><img src="../../ssc/themes/default/img/base_loading.gif"/></td></tr>');
+                $("#pageMoney").html(0);
+                $("#totalMoney").html(0);
+                $("#pageWinOrLoseMoney").html(0);
+                $("#totalWinOrLoseMoney").html(0);
+
+                $(".eveb_page").html('');
+            },
+            success: function (json) {
+                if (json.result != 1) {
+                    return;
+                }
+
+                if (json.sscBetsList.length == 0) {
+                    $("#dataTable tbody").html('<tr><td colspan="13" styl="text-align:center;">暂无数据</td></tr>');
+                    return;
+                }
+
+                $("input[name='pageIndex']").val(json.pageNum);
+
+                // 数据
+                var str = '';
+                $.each(json.sscBetsList, function (index, value) {
+                    var currentPageNum = (json.pageNum - 1) * json.pageSize;
+                    str += '<tr>';
+                    str += '<td>' + (index + currentPageNum + 1) + '</td>';
+                    str += '<td>' + value.orderNumber + '</td>';
+                    str += '<td>' + Tools.formatDate(value.createTime) + '</td>';
+                    str += '<td>' + getPlayGroupName(value.playGroupId) + '</td>';
+                    str += '<td>' + getPlayName(value.playId) + '</td>';
+                    str += '<td>' + value.playPl + '</td>';
+                    str += '<td>' + value.number + '</td>';
+                    str += '<td>' + value.content + '</td>';
+                    str += '<td>' + value.zhushu + '</td>';
+                    str += '<td>' + value.totalMoney + '</td>';
+                    str += '<td>' + value.zjMoney + '</td>';
+                    str += '<td>';
+                    if (value.status == 1) {
+                        var tmp = parseFloat(value.winOrLose);
+                        if (tmp > 0) {
+                            str += '<font style="color:green">+' + tmp + '</font>'
+                        } else if (tmp < 0) {
+                            str += '<font style="color:red">' + tmp + '</font>'
+                        } else {
+                            str += '<font>' + tmp + '</font>'
+                        }
+                    } else {
+                        str += '0';
+                    }
+                    str += '</td>';
+                    str += '<td>';
+                    if (value.status == 0) {
+                        str += '未结算';
+                    } else if (value.status == 1) {
+                        str += '已结算';
+                    } else if (value.status == 2) {
+                        str += '已撤单';
+                    }
+                    str += '</td>';
+                    str += '</tr>';
+                });
+                $("#dataTable tbody").html(str);
+                // 分页
+                str = '';
+                str += '<span style="margin:0 3px;float:left;width:auto;padding:0 5px;height:25px;line-height:25px;">总共' + (Math.ceil(json.total / json.pageSize)) + '页，' + json.total + '条，当前第' + json.pageNum + '页</span>';
+                if (json.hasPreviousPage) {
+                    str += '<a href="javascript:void(0)" onclick="goPage(' + (json.prePage) + ')" style="margin:0 3px;float:left;width:auto;padding:0 5px;">上一页</a>';
+                } else {
+                    str += '<a href="javascript:void(0)" style="margin:0 3px;float:left;width:auto;padding:0 5px;">上一页</a>';
+                }
+                str += '<span style="margin:0 3px;float:left;width:auto;padding:0 5px;height:25px;line-height:25px;">跳转到</span>';
+                str += '<input type="text" id="pageNum" style="margin:0 3px;float:left;border:1px solid #eee;width:30px;line-height:25px;height:25px;" value="' + json.pageNum + '" />';
+                str += '<button onclick="goPage(document.getElementById(\'pageNum\').value)" type="text" style="margin:0 3px;float:left;border:1px solid #eee;width:30px;line-height:25px;height:25px;background:#fa6200;padding:0 5px;width:auto;color:#fff;font-size:14px;" value="0">确定</button>';
+                if (json.hasNextPage) {
+                    str += '<a href="javascript:void(0)" onclick="goPage(' + (json.nextPage) + ')" style="margin:0 3px;float:left;width:auto;padding:0 5px;">下一页</a>';
+                } else {
+                    str += '<a href="javascript:void(0)" style="margin:0 3px;float:left;width:auto;padding:0 5px;">下一页</a>';
+                }
+                $(".eveb_page").html(str);
+
+                $("#pageMoney").html(json.pageMoney);
+                $("#totalMoney").html(json.totalMoney);
+                $("#pageWinOrLoseMoney").html(json.pageWinOrLoseMoney);
+                $("#totalWinOrLoseMoney").html(json.totalWinOrLoseMoney);
+            }
+
+        });*/
+
+    }
+</script>

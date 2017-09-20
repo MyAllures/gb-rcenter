@@ -1,0 +1,55 @@
+body,p,h1,h2,h3,h4,h5,li,span,i,ul,img,a,strong,input,button,textarea{margin:0;padding:0; }
+body{font-family:"microsoft yahei";font-size:14px;line-height: 1;}
+li{list-style-type:none;float:left;}
+a{text-decoration:none;outline:none;color: #000;display: inline-block;}
+img{border:none;vertical-align:middle;}
+i,var{font-style:normal;}
+button{font-family:"microsoft yahei";outline:none;cursor: pointer;}
+iframe{border: none;}
+input,select,textarea{outline:none;font-family:"microsoft yahei";}
+textarea{resize:none;overflow-y:auto;}
+.at{margin:0 auto;}
+.fl{float: left;}
+.fr{float: right;}
+.hide{display: none;}
+
+
+.wid{width:1024px;margin:0 auto;}
+
+.top{width:100%;height: 90px;background: #fa6200;}
+.top .logo{float: left;}
+.top .menu{float: right;}
+.top .menu ul{}
+.top .menu ul li{width:138px;font-size: 18px;line-height: 90px;background: #e55a00;text-align: center;}
+.top .menu ul li a{color: #fff;display: block;}
+.top .menu ul li.acti{background: #fafafa;}
+.top .menu ul li.acti a{color: #e55a00;}
+
+.banner{height: 700px;position: relative; background:url(images/img0.jpg);overflow: hidden;}
+.banner .wid{position: relative;z-index: 1;}
+.banner .text{float: left;margin-top: 186px;display: table;}
+.banner .text img{}
+.banner .text p{ text-shadow: 2px 1px 1px rgba(57,57,57,0.8);margin-top: 45px;color: #fff;font-size: 22px;line-height:1.6;}
+.banner .text .boxsea{width: 442px;height: 69px;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;overflow: hidden;margin-top:54px;}
+.banner .text .boxsea input{width: 335px;height: 69px;float: left;border: none;font-size:30px;color: #c15d1d;text-align: center;}
+.banner .text .boxsea a{height: 69px;width: 107px;float: right;background: #fa6200 url(images/ico7.png) center no-repeat;}
+.banner .rig_pic{margin-top: 102px;float: right;display: table;}
+.banner .list_ico{display: table;margin-top:105px;float: left;margin-left: 115px;}
+.banner .list_ico ul li{width: 73px;text-align: center;margin: 0 10px;margin-right:30px;}
+.banner .list_ico ul li .pict{display: table;height: 69px;width: 100%;}
+.banner .list_ico ul li .pict i{vertical-align: middle;display: table-cell;}
+.banner .list_ico ul li p{color: #fff;font-size: 17px;font-weight: bold;margin-top: 8px;}
+.banner .float{position: absolute;left: 0;width: 100%;text-align: center;}
+.banner .float img{position: relative;left: -125px;transition:0.3s;}
+.bot_copy{height: 109px;background: #0e0c1b;border-top: 1px solid rgba(255, 255, 255, 0.1);}
+.bot_copy p{line-height: 109px;font-size: 18px;color: #333333;text-align: center; text-transform:uppercase; color: rgba(255, 255, 255, 0.5);}
+
+.banner .banner-mask {
+    background: url(images/slider_mask.png) no-repeat center bottom;
+    height: 84px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 9;
+}

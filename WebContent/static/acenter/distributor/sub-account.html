@@ -1,0 +1,204 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>账号管理</span><span>/</span><span>子账号</span>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper shadow">
+            <!--筛选条件-->
+            <div class="filter-wraper gray-bg clearfix">
+                <button type="button" class="btn btn-outline btn-filter"><i class="fa fa-plus"></i><span class="hd">&nbsp;&nbsp;新增</span></button>                
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-filter btn-outline dropdown-toggle"><i class="fa fa-list"></i><span class="hd">&nbsp;&nbsp;角色</span>&nbsp;&nbsp;<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <div class="label-menu-o">
+                            <li><label><input type="radio" class="i-checks" name="a">A类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">B类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">C类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">D类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">E类型</label></li>
+                            <li><label><input type="radio" class="i-checks" name="a">F类型</label></li>
+                        </div>
+                        <li class="divider"></li>
+                        <li class="m-b-sm bt m-t-xs">                            
+                            <button type="button" class="btn btn-filter btn-sm m-r-sm">确认</button>
+                            <a href="role/level.html" class="fil" nav-target="mainFrame">管理</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="distributor/rolePurview.html" nav-target="mainFrame" type="button" class="btn btn-outline btn-filter pull-left m-r-sm"><i class="fa fa-gear"></i><span class="hd">&nbsp;&nbsp;角色设置</span></a>
+                <button type="button" class="btn btn-outline btn-filter"><i class="fa fa-trash-o"></i><span class="hd">&nbsp;&nbsp;删除</span></button>
+                <div class="search-wrapper btn-group pull-right m-r-n-xs">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="账号">
+                        <span class="input-group-btn"> <button type="button" class="btn btn-filter"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button></span>
+                    </div>
+                </div>
+            </div>
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable m-b-none" aria-describedby="editable_info">
+                        <thead>
+                            <tr role="row" class="bg-gray">
+                                <th><input type="checkbox" class="i-checks"></th>
+                                <th>ID</th>
+                                <th>账号</th>
+                                <th>昵称</th>
+                                <th>角色</th>
+                                <th>创建时间</th>
+                                <th class="inline">
+                                    <select class="chosen-select-no-single" data-placeholder="全部">
+                                        <option value=""></option>
+                                        <option value="">正常</option>
+                                        <option value="">停用</option>
+                                        <option value="">正常</option>
+                                        <option value="">停用</option>
+                                        <option value="">正常</option>
+                                        <option value="">停用</option>
+                                        <option value="">正常</option>
+                                        <option value="">停用</option>
+                                        <option value="">正常</option>
+                                        <option value="">停用</option>
+                                        <option value="">正常</option>
+                                        <option value="">停用</option>
+                                    </select>
+                                </th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="gradeA odd tab-detail">
+                                <td><input type="checkbox" class="i-checks"></td>
+                                <td>1</td>
+                                <td>admn</td>
+                                <td>卡特.单宁</td>
+                                <td>系统管理员</td>
+                                <td>2015-06-12 16:42:02</td>
+                                <td><span class="label label-success">正常</span></td>
+                                <td>
+                                    <a href="javascript:void(0)">编辑</a>
+                                </td>
+                            </tr>
+                            <tr class="gradeA odd tab-detail">
+                                <td><input type="checkbox" class="i-checks"></td>
+                                <td>2</td>
+                                <td>admn</td>
+                                <td>卡特.单宁</td>
+                                <td>系统管理员</td>
+                                <td>2015-06-12 16:42:02</td>
+                                <td><span class="label label-danger">停用</span></td>
+                                <td>
+                                    <a href="javascript:void(0)">权限</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)">编辑</a>
+                                </td>
+                            </tr>
+                            <tr class="gradeA odd tab-detail">
+                                <td><input type="checkbox" class="i-checks"></td>
+                                <td>3</td>
+                                <td>admn</td>
+                                <td>卡特.单宁</td>
+                                <td>系统管理员</td>
+                                <td>2015-06-12 16:42:02</td>
+                                <td><span class="label label-success">正常</span></td>
+                                <td>
+                                    <a href="javascript:void(0)">编辑</a>
+                                </td>
+                            </tr>
+                            <tr class="gradeA odd tab-detail">
+                                <td><input type="checkbox" class="i-checks"></td>
+                                <td>4</td>
+                                <td>admn</td>
+                                <td>卡特.单宁</td>
+                                <td>系统管理员</td>
+                                <td>2015-06-12 16:42:02</td>
+                                <td><span class="label label-danger">停用</span></td>
+                                <td>
+                                    <a href="javascript:void(0)">权限</a>
+                                    <span class="dividing-line m-r-xs m-l-xs">|</span>
+                                    <a href="javascript:void(0)">编辑</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row bdtop3 gray-bg">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left white-bg">
+                          <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>每页20条</option>
+                            <option>每页30条</option>
+                            <option>每页40条</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                                <form class="form-inline">
+                                    <label class="m-l-sm">共10页</label>
+                                    <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                                    <button class="btn btn-sm m-l-sm">跳转</button>
+                                </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:100},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+        //列表选中
+        $('input').on('ifChecked', function(event){
+           $(this).parents('tr').addClass('open');
+           $('.function-menu-show').show();
+        });
+        
+        //列表不选中
+        $('input').on('ifUnchecked', function(event){
+           $(this).parents('tr').removeClass('open');
+           $('.function-menu-show').hide();
+        });
+    });
+    
+</script>
+
+<script>
+//表格内下拉菜单    
+$(document).ready(function(){
+      $("th.inline").click(function () {
+      $(this).find(".chosen-drop").css({top:$(this).parent().offset().top-$("body").scrollTop()+28});
+      $(this).find(".chosen-drop").css({left:$(this).find(".chosen-container").offset().left});
+    });
+});
+</script>

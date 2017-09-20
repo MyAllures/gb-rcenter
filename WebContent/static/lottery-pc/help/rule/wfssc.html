@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <link rel="stylesheet" href="../../ssc/themes/default/css/cabel-v1.css?v=20170206" type="text/css">
+    <link rel="stylesheet" href="../../ssc/themes/default/css/style.css?v=20170216" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../../ssc/themes/default/css/animate.min.css?v=20170206" type="text/css"><!--CSS3动画-->
+    <link rel="stylesheet" href="../../ssc/themes/default/css/lottery.css?v=20170206" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../../ssc/themes/default/css/liMarquee.css?v=20170206" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../../ssc/themes/default/css/global.css?v=1490773604893" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../../ssc/themes/default/css/other.css?v=20170309" type="text/css"><!--页面CSS-->
+    <script src="../../ssc/themes/default/js/FancyZoom.js" language="JavaScript" type="text/javascript"></script>
+    <script src="../../ssc/themes/default/js/FancyZoomHTML.js" language="JavaScript" type="text/javascript"></script>
+    <script>
+    <!--
+    // 屏蔽JS错误
+//    window.onerror = function(){return true;}
+    // -->
+</script>
+<script src="../../ssc/themes/default/js/mobile-detect.min.js"></script><style>
+        a:hover{
+            color: red;
+
+        }
+        a:active{
+            color:deepskyblue;
+        }
+    </style>
+    <script>
+        var CONFIG = {
+            BASEURL: "./",    // 根路径
+            RESURL: "../../ssc/themes/default/"         // 资源路径
+        };
+    </script>
+</head>
+<body>
+<div class="type_top" style="z-index:100">
+    <div class="wid1">
+        <div class="left fl">
+            <div class="left_div">你好，欢迎来到彩票网!
+                <a href="../../login.html" class="log">请登录</a>
+                        <span>
+                            <a href="../../register.html" class="a1 blink">免费注册</a>
+                            <!--<a href="javascript:void(0)" class="par">合作账号登录<i class="ico-d"></i></a>-->
+                            <a href="javascript:void(0)" onclick="shiwan()">免费试玩</a>
+                        </span>
+                    </div>
+        </div>
+        <div class="right fr">
+            <ul>
+                <li class="li0"><a href="../../index.html">首页</a></li>
+                <li class="li0"><a href="https://chat7.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=763215&configID=54563&jid=1035408947" style="color:#d84600" target="_blank" class="blink">在线客服</a></li>
+                <li class="l"><a href="javascript:void(0)"><b>购买彩票</b><i class="ico-d"></i></a>
+                    <div class="pay">
+                        <div class="pay_list">
+                            <h4>高频：</h4>
+                            <p>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/ffssc')">分分时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/efssc')">两分时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/sfssc')">三分时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/wfssc')">五分时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/cqssc')">重庆时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/tjssc')">天津时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/xjssc')">新疆时时彩</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/pk10')">北京PK10</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/xyft')">幸运飞艇</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/kl8')">北京快乐8</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/klsf')">快乐十分</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/xync')">幸运农场</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/xy28')">幸运28</a></span>
+                            </p>
+                        </div>
+                        <div class="pay_list">
+                            <h4>低频：</h4>
+                            <p>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/fc3d')">福彩3D</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/pl3')">体彩排列3</a></span>
+                                <span><a href="javascript:void(0)" onclick="openGcdt('gcdt/lhc')">香港六合彩</a></span>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="../../help/index.html">帮助</a></li>
+                <li class="l"><a href="javascript:void(0)"><b>网站导航</b><i class="ico-d"></i></a>
+                    <div class="link">
+                        <h5>
+                            <a href="../../ssc/main.html" target="_blank">购买彩票</a>
+                            <a href="" target="_blank">手机购彩</a>
+                            <a href="../../help/index.html">规则说明</a>
+                        </h5>
+                        <h4>
+                            <strong>彩票工具</strong>
+                            <p><a href="" target="_blank">手机客户端</a> <a href="../../ssc/main.html?module=zstIndex" target="_blank">走势查询</a> <a href="javascript:void(0)" onclick="getPage('lsjl/tzjl')">中奖查询</a></p>
+                        </h4>
+                        <h5 class="last">
+                            <a href="javascript:void(0)" onclick="openHyzx()">会员中心</a>
+                            <a href="javascript:void(0)" onclick="openHyzx('jfmx/hylb')">推广赚钱</a>
+                            <a href="../../yhhd.html">优惠活动</a>
+                        </h5>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    function getPage(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        if (typeof $.cookie("uid") == 'undefined' || typeof $.cookie("token") == 'undefined') {
+            alert("请先登录");
+            if ($("#loginAccount1").length > 0) {
+                $("#loginAccount1").focus();
+                return;
+            }
+            window.location.href = "../../index.html";
+            return;
+        }
+        windowOpen('../../member/main.html?module=' + module, '会员中心', 1250, 834);
+    }
+    function login2() {
+        var loginAccount = $.trim($("#loginAccount2").val());
+        var loginPassword = $.trim($("#loginPassword2").val());
+        var yzm = $.trim($("#loginYzm2").val());
+
+        if (!loginAccount) {
+            alert("请输入账号");
+            return;
+        }
+        if (!loginPassword) {
+            alert("请输入密码");
+            return;
+        }
+        if (!yzm) {
+            alert("请输入验证码");
+            return;
+        }
+
+        /*ajaxRequest({
+            url: "../../member/ajaxLogin.json",
+            data: {
+                yzm: yzm,
+                account: loginAccount,
+                password: $.md5(loginPassword)
+            },
+            beforeSend: function() {
+                showLoading();
+            },
+            success: function(json) {
+                if (json.result == 1) {
+                    $.cookie("uid", json.userId, {path: "/"});
+                    $.cookie("token", json.token, {path: "/"});
+                    hideLoading();
+                    location.reload();
+                } else {
+                    refreshYzm(document.getElementById('yzmImg2'));
+                    alert("登录失败：" + json.description);
+                    hideLoading();
+                }
+            }
+        });*/
+    }
+    function shiwan() {
+        /*ajaxRequest({
+            url: "../../shiwan.json",
+            beforeSend: function() {
+                showLoading();
+                $.cookie("uid", '', {path: "/", expires: -1});
+                $.cookie("token", '', {path: "/", expires: -1});
+            },
+            success: function(json) {
+                if (json.result == 1) {
+                    $.cookie("uid", json.userId, {path: "/"});
+                    $.cookie("token", json.token, {path: "/"});
+                    hideLoading();
+                    alert("游客盘口只供试玩，与正式会员盘口无关");
+                    location.reload();
+                } else {
+                    refreshYzm(document.getElementById('yzmImg2'));
+                    alert("登录失败：" + json.description);
+                    hideLoading();
+                }
+            }
+        });*/
+    }
+    function sigout() {
+       /* ajaxRequest({
+            url: "../../member/ajaxSigout.json",
+            beforeSend: function() {
+                showLoading();
+            },
+            success: function(json) {
+                $.cookie("uid", '', {path: "/", expires: -1});
+                $.cookie("token", '', {path: "/", expires: -1});
+                hideLoading();
+                location.reload();
+            }
+        });*/
+    }
+</script><div class="men_list">
+    <div class="wid1">
+        <div class="logo">
+            <img src="../../ssc/themes/default/img/logo1.png" alt="">
+        </div>
+        <div class="nav_list">
+    <ul>
+        <li>
+            <a href="../../index.html">
+                <img src="../../ssc/themes/default/img/ico33.png" alt="首页">
+                <p>首页 </p>
+            </a>
+        </li>
+        <li>
+            <a href="../../ssc/main.html" target="_blank">
+                <img src="../../ssc/themes/default/img/ico34.png" alt="购彩大厅">
+                <p>购彩大厅</p>
+            </a>
+        </li>
+        <li>
+            <a href="../../kjjg.html">
+                <img src="../../ssc/themes/default/img/ico35.png" alt="">
+                <p>开奖结果</p>
+            </a>
+        </li>
+        <li>
+            <a href="../../ssc/main.html?module=zstIndex" target="_blank">
+                <img src="../../ssc/themes/default/img/ico36.png" alt="">
+                <p>走势图表</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" onclick="openHyzx('jfmx/hylb')">
+                <img src="../../ssc/themes/default/img/ico37.png" alt="">
+                <p>代理合作</p>
+            </a>
+        </li>
+        <li>
+            <a href="../../yhhd.html">
+                <img src="../../ssc/themes/default/img/ico38.png" alt="">
+                <p>优惠活动</p>
+            </a>
+        </li>
+        <li>
+            <a href="" target="_blank">
+                <img src="../../ssc/themes/default/img/ico39.png" alt="">
+                <p>手机购彩</p>
+            </a>
+        </li>
+    </ul>
+</div>
+</div>
+</div>
+
+<div class="main wi">
+    <div class="list">
+    <h5><span style="cursor:pointer;" onclick="getHelp(null, '../../help/main.html')">帮助中心</span></h5>
+    <ul>
+        <li class="li1 sli">
+            <h4>彩种介绍<img src="../../ssc/themes/default/img/bt.png" /></h4>
+            <div class="slide" style="display:block;">
+                <p class=""><a href="../../help/rule/cqssc.html">重庆时时彩</a></p>
+                <p class=""><a href="../../help/rule/tjssc.html">天津时时彩</a></p>
+                <p class=""><a href="../../help/rule/xjssc.html">新疆时时彩</a></p>
+                <p class=""><a href="../../help/rule/pl3.html">体彩排列3</a></p>
+                <p class=""><a href="../../help/rule/fc3d.html">福彩3D</a></p>
+                <p class=""><a href="../../help/rule/lhc.html">香港六合彩</a></p>
+                <p class=""><a href="../../help/rule/xy28.html">幸运28</a></p>
+                <p class=""><a href="../../help/rule/bjkl8.html">北京快乐8</a></p>
+                <p class=""><a href="../../help/rule/bjpk10.html">北京PK10</a></p>
+                <p class=""><a href="../../help/rule/cqxync.html">重庆幸运农场</a></p>
+                <p class=""><a href="../../help/rule/gd10.html">广东快乐十分</a></p>
+                <p class=""><a href="../../help/rule/xyft.html">幸运飞艇</a></p>
+                <p class=""><a href="../../help/rule/ffssc.html">分分时时彩</a></p>
+                <p class=""><a href="../../help/rule/efssc.html">两分时时彩</a></p>
+                <p class=""><a href="../../help/rule/sfssc.html">三分时时彩</a></p>
+                <p class="acti"><a href="../../help/rule/wfssc.html">五分时时彩</a></p>
+            </div>
+        </li>
+        <li class="li1  zhinan">
+            <h4>新手指南<img src="../../ssc/themes/default/img/bt.png" /></h4>
+            <div class="slide" style="">
+                <p class="acti"><a href="../../help/question/zc.html">注册</a></p>
+                <p class=""><a href="../../help/question/cz.html">充值</a></p>
+                <p class=""><a href="../../help/question/tk.html">提款</a></p>
+                </div>
+        </li>
+        <li class="li1  gongneng">
+            <h4>特色功能<img src="../../ssc/themes/default/img/bt.png" /></h4>
+            <div class="slide" style="">
+                <p class="acti"><a href="../../help/rule/Extension.html">推广赚钱</a></p>
+                <p class=""><a href="" target="_blank">手机购彩</a></p>
+            </div>
+        </li>
+        <li class="li1  wenti">
+            <h4>常见问题<img src="../../ssc/themes/default/img/bt.png" /></h4>
+            <div class="slide" style="">
+                <p class="acti"><a href="../../help/question/aq.html">安全保障</a></p>
+                <p class=""><a href="../../help/question/mima.html">热门问题</a></p>
+            </div>
+        </li>
+    </ul>
+    <h3>
+        <a href="" target="_blank">联系客服</a>
+    </h3>
+</div><div class="rt">
+        <div class="type1">
+    <div class="pict">
+        <img src="../../ssc/themes/default/img/ico202.png" alt="">
+    </div>
+    <div class="step">
+        <ul>
+            <li><a href="../../register.html"><img src="../../ssc/themes/default/img/ico203.png" alt="">免费注册</a></li>
+            <li><a href="javascript:void(0)" onclick="openHyzx('zhcz/yhzz')"><img src="../../ssc/themes/default/img/ico204.png" alt="">账户充值</a></li>
+            <li><a href="javascript:void(0)" onclick="openGcdt()"><img src="../../ssc/themes/default/img/ico205.png" alt="">购买彩票</a></li>
+            <li><img src="../../ssc/themes/default/img/ico206.png" alt="">中大奖</li>
+            <li><a href="javascript:void(0)" onclick="openHyzx('withdraw')"><img src="../../ssc/themes/default/img/ico207.png" alt="">提款</a></li>
+        </ul>
+        <div class="bor_box">
+            <p><span></span></p>
+            <p><span></span></p>
+            <p><span></span></p>
+            <p><span></span></p>
+            <p><span></span></p>
+        </div>
+    </div>
+</div><!--五步--><div class="fix_ico">
+    <ul>
+        <li>
+            <a href="javascript:void(0)" onclick="openHyzx('zhsz/grzl')">
+                <div class="pict">
+                    <i><img src="../../ssc/themes/default/img/ico208.png" alt=""></i>
+                </div>
+                <div class="text">
+                    <p>修改资料</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" onclick="openHyzx()">
+                <div class="pict">
+                    <i><img src="../../ssc/themes/default/img/ico209.png" alt=""></i>
+                </div>
+                <div class="text">
+                    <p>会员中心</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" onclick="openHyzx('zhsz/dlmm')">
+                <div class="pict">
+                    <i><img src="../../ssc/themes/default/img/ico210.png" alt=""></i>
+                </div>
+                <div class="text">
+                    <p>修改密码</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="../../register.html" class="a0">
+                <div class="pict">
+                    <i><img src="../../ssc/themes/default/img/ico211.png" alt=""></i>
+                </div>
+                <div class="text">
+                    <p>免费注册</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="https://chat7.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=763215&configID=54563&jid=1035408947" target="_blank">
+                <div class="pict">
+                    <i><img src="../../ssc/themes/default/img/ico212.png" alt=""></i>
+                </div>
+                <div class="text">
+                    <p>在线客服</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="pict">
+                    <i><img src="../../ssc/themes/default/img/ico213.png" alt=""></i>
+                </div>
+                <div class="text">
+                    <p>返回顶部</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="help_list">
+            <div class="lis">
+                <h5>五分时时彩</h5>
+                <ul>
+                    <li class="sli">常规玩法</li>
+                    <li>官方玩法</li>
+                    <li>游戏说明</li>
+                </ul>
+            </div>
+            <div class="help_col show">
+                <h5><strong>【双面玩法】</strong></h5>
+                <p><strong>◎双面&gt;&gt;大小玩法说明</strong><br>
+                    开奖结果万位、千位、百位、十位或个位数字为5、6、7、8、9时为“大”，若为0、1、2、3、4时为“小”，当投注位数大小与开奖结果的位数大小相符时，即为中奖。<br>
+                    ※举例：投注者购买百位小，当期开奖结果如为20352（3为小），则视为中奖。</p>
+                <p><strong>◎双面&gt;&gt;单双玩法说明</strong><br>
+                    开奖结果万位、千位、百位、十位或个位数字为1、3、5、7、9时为“单”，若为0、2、4、6、8时为“双”，当投注位数单双与开奖结果的位数单双相符时，即为中奖。 <br>
+                    ※举例：投注者购买百位单，当期开奖结果如为20130（1为单），则视为中奖。</p>
+                <p><strong>◎双面&gt;&gt;质合玩法说明</strong><br>
+                    开奖结果万位、千位、百位、十位或个位数字为1、2、3、5、7时为“质数”，若为0、4、6、8、9时为“合数”，当投注位数质合与开奖结果的位数质合相符时，即为中奖。 <br>
+                    ※举例：投注者购买个位质，当期开奖结果如为20957（7为质），则视为中奖。</p>
+                <p><strong>◎双面&gt;&gt;总和大小 玩法说明</strong><br>
+                    开奖结果所有号码总和的为23、24、25、26、27、28、29、30、31、32、33、34、35、36、37、38、39、40、41、42、43、44、45时为“大”， 若为0、1、2、3、4、5、6、7、8、9、10、11、12、13、14、15、16、17、18、19、20、21、22时为“小”，当投注和数大小与开奖结果的和数大小相符时，即为中奖。 <br>
+                    ※举例：投注者购买"总大"，当期开奖结果如为20976（万2+千0+百9+十7+个6=24为大），则视为中奖。</p>
+                <p><strong>◎双面&gt;&gt;龙虎和 玩法说明</strong><br>
+                    龙虎和是以开奖结果的万位和个位作为基准，取万为龙，个为虎的数字进行大小比对的一种玩法；<br>
+                    当投注龙/虎时，开奖结果为和局，那么押注龙/虎视为不中奖；<br>
+                    当投注"和"时，开奖结果为龙/虎，投注“和”视为不中奖；<br>
+                    举例：开奖结果为：2,1,3,5,1 万为龙、个为虎：结果 龙(2）大于虎（1），即为开龙；如结果一样大，即为开和局！</p>
+                <p><strong>◎双面&gt;&gt;总和单双 玩法说明</strong><br>
+                    开奖结果总和的个位数为1、3、5、7、9时为“单”，若为0、2、4、6、8时为“双”，当投注总单双与开奖结果的总单双相符时，即为中奖。<br>
+                    ※举例：投注者购买总单，当期开奖结果如为20290（百2+十9+个0=11为单），则视为中奖。</p>
+
+                <hr>
+                <h5><strong>【数字盘玩法】</strong></h5>
+                <p>于万千百十个任选一位，自0~9任选1个号进行投注，当开奖结果与所选的定位与号码相同且顺序一致时，即为中奖。</p>
+
+                <hr>
+                <h5><strong>【一字定位玩法】</strong></h5>
+                <p><strong>◎万定位</strong>：取万位为基准，自0~9、大小、单双、质合任选1个号进行投注，当开奖结果与所选号码相同时，即为中奖。<br>
+                    <strong>◎千定位</strong>：取千位为基准，自0~9、大小、单双、质合任选1个号进行投注，当开奖结果与所选号码相同时，即为中奖。<br>
+                    <strong>◎百定位</strong>：取百位为基准，自0~9、大小、单双、质合任选1个号进行投注，当开奖结果与所选号码相同时，即为中奖。<br>
+                    <strong>◎十定位</strong>：取十位为基准，自0~9、大小、单双、质合任选1个号进行投注，当开奖结果与所选号码相同时，即为中奖。<br>
+                    <strong>◎个定位</strong>：取个位为基准，自0~9、大小、单双、质合任选1个号进行投注，当开奖结果与所选号码相同时，即为中奖。<br>
+                    关于大小：5、6、7、8、9为“大”，若为0、1、2、3、4时为“小”。<br>
+                    关于单双：1、3、5、7、9时为“单”，若为0、2、4、6、8时为“双”。<br>
+                    关于质合：1、2、3、5、7时为“质数”，若为0、4、6、8、9时为“合数”。</p>
+
+                <hr>
+                <h5><strong>【二字定位玩法】</strong></h5>
+                <p>于万千百十个任选二位，自0~9任选2个号进行投注，当开奖结果与所选号码相同且顺序一致时，即为中奖。</p>
+
+                <hr>
+                <h5><strong>【三字定位玩法】</strong></h5>
+                <p>于万千百十个任选三位，自0~9任选3个号进行投注，当开奖结果与所选号码相同且顺序一致时，即为中奖。</p>
+
+                <hr>
+                <h5><strong>【一字组合玩法】</strong></h5>
+                <p><strong>◎全五一字组合</strong>：0~9任选1个号进行投注，当开奖结果[万位、千位、百位、十位、个位]任一数与所选的号码相同时，即为中奖。同个号码出现多次时只计一次中奖<br>
+                    ※举例：下注一字【5号】＄100，一字賠率2.404<br>
+                    五颗球开出9，5，8，3，5 派彩为＄240.4<br>
+                    <strong>◎前三</strong>：0~9任选1个号进行投注，当开奖结果[万位、千位、百位]任一数与所选的号码相同时，即为中奖。<br>
+                    <strong>◎中三</strong>：0~9任选1个号进行投注，当开奖结果[千位、百位、十位]任一数与所选的号码相同时，即为中奖。<br>
+                    <strong>◎后三</strong>：0~9任选1个号进行投注，当开奖结果[百位、十位、个位]任一数与所选的号码相同时，即为中奖。</p>
+
+                <hr>
+                <h5><strong>【二字组合玩法】</strong></h5>
+                <p>于前三、中三、后三0~9任选2个号进行投注，当开奖结果任二数与所选的号码相同时，即为中奖。<br>
+                    ※举例：投注者购买后三二字组合，选择2个相同号码如为11，当期开奖结果如为xx11x、xx1x1、xxx11、皆视为中奖。（x=0~9任一数）<br>
+                    ※举例：投注者购买后三二字组合，选择2个不同号码如为12，当期开奖结果如为xx12x、xx1x2、xx21x、xx2x1、xxx12、xxx21皆视为中奖。（x=0~9任一数）</p>
+
+                <hr>
+                <h5><strong>【二字和数玩法】</strong></h5>
+                <p>开奖结果万千位、万百位、万十位、万个位、千百位、千十位、千个位、百十位、百个位、十个位数字总和的个位数为1、3、5、7、9时为“单”，若为0、2、4、6、8时为“双”，当投注和数单双与开奖结果的和数单双相符时，即为中奖。<br>
+                    ※举例：投注者购买百十和数单，当期开奖结果如为20290（百2+十9+个0=11为单），则视为中奖。</p>
+
+                <hr>
+                <h5><strong>【组选三玩法】</strong></h5>
+                <p><strong>◎前三</strong>：会员可以挑选5~10个号码，当开奖结果[万位、千位、百位]中有且只有两个号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2、3、4、5)，则只要开奖结果[万位、千位、百位]中，有出现1、2、3、4、5中的任何两个号码，且其中有一个号码重复则中奖。<br>
+                    ※例如：112、344，若是开出豹子则不算中奖。<br>
+                    ※备注："豹子"为三字同号，例如：111、222<br>
+                    <strong>◎中三</strong>：会员可以挑选5~10个号码，当开奖结果[千位、百位、十位]中有且只有两个号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2、3、4、5)，则只要开奖结果[千位、百位、十位]中，有出现1、2、3、4、5中的任何两个号码，且其中有一个号码重复则中奖。<br>
+                    ※例如：112、344，若是开出豹子则不算中奖。<br>
+                    ※备注："豹子"为三字同号，例如：111、222<br>
+                    <strong>◎后三</strong>：会员可以挑选5~10个号码，当开奖结果[百位、十位、个位]中有且只有两个号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2、3、4、5)，则只要开奖结果[百位、十位、个位]中，有出现1、2、3、4、5中的任何两个号码，且其中有一个号码重复则中奖。<br>
+                    ※例如：112、344，若是开出豹子则不算中奖。<br>
+                    ※备注："豹子"为三字同号，例如：111、222</p>
+
+                <hr>
+                <h5><strong>【组选六玩法】</strong></h5>
+                <p><strong>◎前三</strong>：会员可以挑选4~8个号码，当开奖结果[万位、千位、百位]都出现在所下注的号码中且没有任何号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率，中奖赔率以所选号码中的最小赔率计算派彩。<br>
+                    ※例如：如果是选择(1、2、3、4)，则开奖结果[万位、千位、百位]为123、124、134、234都中奖，其他都是不中奖。例如：112、133、145、444等都是不中奖。<br>
+                    <strong>◎中三</strong>：会员可以挑选4~8个号码，当开奖结果[千位、百位、十位]都出现在所下注的号码中且没有任何号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率，中奖赔率以所选号码中的最小赔率计算派彩。<br>
+                    ※例如：如果是选择(1、2、3、4)，则开奖结果[千位、百位、十位]为123、124、134、234都中奖，其他都是不中奖。例如：112、133、145、444等都是不中奖。<br>
+                    <strong>◎后三</strong>：会员可以挑选4~8个号码，当开奖结果[百位、十位、个位]都出现在所下注的号码中且没有任何号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率，中奖赔率以所选号码中的最小赔率计算派彩。 </p>
+
+                <hr>
+                <h5><strong>【跨度玩法】</strong></h5>
+                <p><strong>◎前三</strong>：以开奖结果[万位、千位、百位]的最大差距（跨度），作为中奖依据。会员可以选择0~9的任一跨度。<br>
+                    ※举例：开奖结果为3、4、8、7、6。中奖的跨度为5。（最大号码8减最小号码3=5）。<br>
+                    <strong>◎中三</strong>：以开奖结果[千位、百位、十位]的最大差距（跨度），作为中奖依据。会员可以选择0~9的任一跨度。<br>
+                    ※举例：开奖结果为3、4、8、7、6。中奖的跨度为4。（最大号码8减最小号码4=4）。<br>
+                    <strong>◎后三</strong>：以开奖结果[百位、十位、个位]的最大差距（跨度），作为中奖依据。会员可以选择0~9的任一跨度。<br>
+                    ※举例：开奖结果为3、4、8、7、6。中奖的跨度为2。（最大号码8减最小号码6=2）。</p>
+
+                <hr>
+                <h5><strong>【龙虎玩法】</strong></h5>
+                <p>龙虎游戏规则：龙虎是以开奖结果的五个数字作为基准，取任意位置（万、千、百、十、个）的数字进行组合大小比对的一种玩法；<br>
+                    当投注龙/虎时，开奖结果为和局，那么押注龙/虎视为不中奖；<br>
+                    当投注"和"时，开奖结果为龙/虎，投注“和”视为不中奖；<br>
+                    举例：开奖结果为：2,1,3,5,2 万为龙、千为龙虎时：结果 龙(2）大于虎（1），即为开龙；如万为龙，个为虎时，结果一样大，即为开和局！<br>
+                    说明：龙1 VS 虎2 即为万为龙，千为虎；龙2 VS 虎4 即为千为龙，十为虎；</p>
+            </div>
+            <div class="help_col">
+                <h5>筹备中</h5>
+            </div>
+            <div class="help_col">
+                <p><strong>一、玩法类型及承销</strong><br>
+                    五分时时彩是一种在线即开型彩票玩法，属于基诺型彩票，由本站管理中心负责承销。</p>
+                <p><strong>二、开奖</strong><br>
+                    本站五分时时彩游戏每天进行288期，北京时间（GMT+8）每天00:00起每隔5分钟开奖一次。本公司五分时时彩具体游戏规则请参考彩种介绍。<br>
+                    如果用户投注成功后，若因销售终端故障、通讯线路故障和投注站信用额度受限等原因造成当期无法开奖的，应退还购买者投注金额。</p>
+                <p><strong>三、兑奖</strong><br>
+                    一旦用户中奖，系统将自动返还中奖金额。可继续投注或提款，永无弃奖。 </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tail at">
+    <ul>
+        <li>
+            <div class="slide" style="">
+                <h2><img src="../../ssc/themes/default/img/ico42.png" alt="">新手入门</h2>
+            <p>
+                <span class=""><a href="../../help/question/zc.html">关于注册</a></span>
+                <span class=""><a href="../../help/question/cz.html">关于充值</a></span>
+                <span class=""><a href="../../help/question/tk.html">关于提款</a></span>
+                <span class=""><a href="../../help/index.html">彩种介绍</a></span>
+                </p>
+            </div>
+        </li>
+        <li>
+
+            <div class="slide" style="">
+                <h2><img src="../../ssc/themes/default/img/ico43.png" alt="">充值投注</h2>
+            <p>
+                <span class=""><a href="../../help/question/cz.html">充值介绍</a></span>
+                <span class=""><a href="../../help/question/cz_1.html">网银充值</a></span>
+                <span class=""><a href="../../help/question/cz_2.html">支付宝</a></span>
+                <span class=""><a href="../../help/question/cz_3.html">微信支付</a></span>
+
+                </p>
+            </div>
+        </li>
+        <li>
+            <div class="slide" style="">
+            <h2><img src="../../ssc/themes/default/img/ico44.png" alt="">兑奖提款</h2>
+            <p>
+                <span class=""><a href="../../help/question/tk_9.html">提款未成功</a></span>
+                <span class=""><a href="../../help/question/tk_6.html">是否收手续费</a></span>
+                <span class=""><a href="../../help/question/tk_5.html">如何提款</a></span>
+                <span class=""><a href="../../help/question/tk_10.html">中奖查询</a></span>
+                </p>
+            </div>
+        </li>
+        <li style="border-right: none;">
+            <h2><img src="../../ssc/themes/default/img/ico45.png" alt="">特色服务</h2>
+            <p>
+                <span class=""><a href="../../help/rule/Extension.html">推广赚钱</a></span>
+                <span class=""><a href="" target="_blank">在线客服</a></span>
+                <span class=""><a href="">代理QQ</a></span>
+            </p>
+        </li>
+    </ul>
+</div><div class="record wid1">
+    <p>彩票网 客服QQ：<a class="qqstyle" href="">8888</a></p>
+    <p style="font-family:arial;">
+        2009 -
+        <script>
+        var date = new Date;
+        var year=date.getFullYear();
+        document.write(year);
+    </script>&nbsp;&nbsp;&copy;彩票网</p><p class="mt30"><span>&nbsp;&nbsp; 郑重提示：彩票有风险，投注需谨慎</span> 不向未满18周岁的青少年出售彩票</p>
+    <p></p>
+    <div class="comp">
+        <ul>
+            <li><img src="../../ssc/themes/default/img/img1.jpg" alt=""></li>
+            <li><img src="../../ssc/themes/default/img/img2.jpg" alt=""></li>
+            <li><img src="../../ssc/themes/default/img/img3.jpg" alt=""></li>
+            <li><img src="../../ssc/themes/default/img/img4.jpg" alt=""></li>
+            <li><img src="../../ssc/themes/default/img/img5.jpg" alt=""></li>
+            <li><img src="../../ssc/themes/default/img/img6.jpg" alt=""></li>
+            <li><img src="../../ssc/themes/default/img/img7.jpg" alt=""></li>
+            <li><img src="../../ssc/themes/default/img/img8.jpg" alt=""></li>
+        </ul>
+    </div>
+</div><script type="text/javascript" src="../../ssc/themes/default/js/jquery.min.js?v=2017"></script><!--jQuery库-->
+<script type="text/javascript" src="../../ssc/themes/default/js/scrollanim.min.js?v=2017"></script> <!--"动画库"-->
+<script src="../../ssc/themes/default/js/type.js?v=2017"></script><!--自定义封装函数-->
+<script src="../../ssc/themes/default/js/global.js?v=20170321"></script><!--自定义封装函数-->
+<script src="../../ssc/themes/default/js/jquery.cookie.js?v=2017"></script><!--自定义封装函数-->
+<script src="../../ssc/themes/default/js/jquery.md5.js?v=2017"></script><!--自定义封装函数-->
+<script src="../../ssc/themes/default/layer/layer.js?v=2017"></script>
+<script src="../../ssc/themes/default/js/jquery.nicescroll.js?v=2017"></script>
+<script src="../../ssc/themes/default/js/dateFormat.js?v=2017"></script>
+<script src="../../ssc/themes/default/js/template.js?v=2017"></script>
+<script src="../../ssc/themes/default/js/swfobject/swfobject.js?v=2017"></script>
+<script src="../../ssc/themes/default/js/jquery.liMarquee.js?v=2017"></script>
+<script src="../../ssc/themes/default/js/placeholders.jquery.min.js?v=2017"></script>
+<script>
+    // 闪烁
+    var blinkColorArr = "#fa6200|#0f3f94".split("|");
+    $(".blink").each(function() {
+        var obj = $(this);
+        setInterval(function() {
+            var tmpColor = blinkColorArr[parseInt(Math.random() * blinkColorArr.length)];
+            $(obj).css("color", tmpColor);
+        },200);
+    });
+</script><script>
+    function openHyzx(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        if (typeof $.cookie("uid") == 'undefined' || typeof $.cookie("token") == 'undefined') {
+            alert("请先登录");
+            if ($("#loginAccount1").length > 0) {
+                $("#loginAccount1").focus();
+                return;
+            }
+            window.location.href = "../../index.html";
+            return;
+        }
+        windowOpen('../../member/main.html?module=' + module, '会员中心', 1250, 834);
+    }
+
+    function openGcdt(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        windowOpenBlank('../../ssc/main.html?module=' + module);
+        
+    }
+
+    function openZstIndex(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        windowOpenBlank('../../ssc/main.html?module=' + module);
+        
+    }
+    function refreshYzm(obj) {
+        var src = $(obj).attr("src");
+        var params = getRequest(src);
+
+        src = "/code/yzm?timestamp=" + (new Date()).getTime();
+        $.each(params, function(index, value) {
+            src += '&' + value.key + '=' + value.value;
+        });
+        $(obj).attr("src", src);
+    }
+
+    function showLoading() {
+        layer.load(2, {
+            shade: [0.1,'#000'] //0.1透明度的白色背景
+        })
+    }
+    function hideLoading() {
+        layer.closeAll();
+    }
+</script><script>
+    function openGcdt(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        windowOpenBlank('../../ssc/main.html?module=' + module);
+        
+    }
+    function openHyzx(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        if (typeof $.cookie("uid") == 'undefined' || typeof $.cookie("token") == 'undefined') {
+            alert("请先登录");
+            if ($("#loginAccount1").length > 0) {
+                $("#loginAccount1").focus();
+                return;
+            }
+            window.location.href = "../../index.html";
+            return;
+        }
+        windowOpen('../../member/main.html?module=' + module, '会员中心', 1250, 834);
+    }
+    $(function () {
+        fade(".banner .bann ul li", ".banner .four_men ul li", 30000, "", "");
+    });
+
+</script>
+<script>
+    function abc(mainDiv) {
+        var i = $(mainDiv + " ol.m span.sp2").text();
+        i--;
+        if (i == -1) {
+            i = 9;
+            $(mainDiv + " ol.m span.sp2").text(i);
+
+            var te = $(mainDiv + " ol.m span.sp1").text() - 1;
+            if (te < 0) {
+                if ($(mainDiv + " ol.f span.sp2").text() == 0) {
+                    $(mainDiv + " ol.f span.sp2").text(9);
+
+                    if ($(mainDiv + " ol.f span.sp1").text() == 0) { //分
+
+                        $(mainDiv + " ol.f span.sp1").text(6);
+
+                        if ($(mainDiv + " ol.s span.sp2").text() == 0) {
+                            $(mainDiv + " ol.s span.sp2").text(9);
+                            $(mainDiv + " ol.s span.sp1").text($(mainDiv + " ol.s span.sp1").text() - 1);
+
+                        } else {
+                            $(mainDiv + " ol.s span.sp2").text($(mainDiv + " ol.s span.sp2").text() - 1);
+                        }
+                    }
+                    $(mainDiv + " ol.f span.sp1").text($(mainDiv + " ol.f span.sp1").text() - 1);
+
+                } else {
+
+                    $(mainDiv + " ol.f span.sp2").text($(mainDiv + " ol.f span.sp2").text() - 1)//分钟
+                }
+                te = 5;
+            }
+            $(mainDiv + " ol.m span.sp1").text(te)
+        }
+
+        $(mainDiv + " ol.m span.sp2").text(i)
+    }
+
+    $(function () {
+        $(".rt .type1 .step .bor_box p ,.rt .type1 .step ul li").hover(function(){
+            var index=$(this).index()+1;
+            $(this).addClass("acti").siblings().removeClass("acti");
+            $(".rt .type1 .step .bor_box p").removeClass("acti");
+            $(".rt .type1 .step .bor_box p:lt("+index+")").addClass("acti");
+        },function(){
+            $(".rt .type1 .step .bor_box p").removeClass("acti");
+        })
+        slide_nav(".men_list .left_layout h1",".boxtlayoutshow","acti");
+        numadd(".main_layout .right_layotu .left_wrap .Bettingbag .num_bett .val_add .reduce a", ".main_layout .right_layotu .left_wrap .Bettingbag .num_bett .val_add .reduce a.fl", ".main_layout .right_layotu .left_wrap .Bettingbag .num_bett .val_add .reduce a.fr")
+        tabs_cg(".Newest .tabs_cg ul li:lt(11)", ".Newest .layout .Analysis", "hover", "acti", "", "");//下面
+        tabs_cg(".main_layout .right_layotu .left_wrap .tabs_cg ul li", ".main_layout .right_layotu .left_wrap .Bettingbag .num_bett", "hover", "acti", "", "");
+        two_scroll(".main_layout .right_layotu .left_wrap .scroll_pic ul li", "", "", ".main_layout .right_layotu .left_wrap .scroll_pic p i", "");
+
+        $(".Newest .Analysis .box3 .timer_wrap").each(function (index, element) {
+            $(this).attr("index", "ti" + index);
+            $(this).addClass("ti" + index);
+        });
+
+        setInterval(function () {
+            $(".Newest .Analysis .box3 .timer_wrap").each(function (index, element) {
+                //console.log();
+                abc('".Newest .Analysis .box3 ".' + $(this).attr("index") + '"');
+            });
+
+        }, 1000);
+
+//        $('.list ul li').attr('sl', '1');
+        $('.list ul li.li1 h4').click(function () {
+            var clickStatus = $(this).parent('li').attr('sl');
+            if(typeof clickStatus == 'undefined'){
+                $('.list ul li').removeClass('sli');
+                $(this).parent('li').addClass('sli');
+                $('.list ul li .slide').slideUp(300);
+                $(this).parent('li').find('div').slideDown(300);
+                $(this).parent('li').attr('sl', '0');
+            }else if (clickStatus == 1) {
+                $('.list ul li').removeClass('sli');
+                $(this).parent('li').addClass('sli');
+                $('.list ul li .slide').slideUp(300);
+                $(this).parent('li').find('div').slideDown(300);
+                $('.list ul li').attr('sl', '1');
+                $(this).parent('li').attr('sl', '0');
+            } else if (clickStatus == 0) {
+                $('.list ul li').removeClass('sli');
+                $(this).parent('li').removeClass('sli');
+                $(this).parent('li').find('div').slideUp();
+                $(this).parent('li').attr('sl', '1');
+            }
+        });
+
+        var c = $('.rt').height();
+        $('.main .list').css('height', c - 2);
+        slide_nav(".men_list .left_layout h1",".boxtlayoutshow","acti");
+        //$('.list ul li.li1 h4').parent('li').siblings().attr('sl', '1');
+        $('.list ul li.li1 h4').parent('li').eq(0).attr('sl', '0');
+        $('.help_list .lis ul li').click(function(){
+            var w=$(this).index();
+            $(this).addClass('sli').siblings().removeClass('sli');
+            $('.help_list .help_col').eq(w).addClass('show').siblings().removeClass('show');
+        })
+    });
+
+    function slide_nav(obj,class_name,iname){
+        $(obj).parent().hover(function(){
+            $(obj).find("i").removeClass(iname);
+            $(obj).parent().find(class_name).slideUp();
+            $(this).parent().find(class_name).slideDown();
+            $(this).find('i').addClass(iname);
+            $(obj).attr('open',"0");
+            $(this).attr('open',"1");
+        },function(){
+            //console.log(1);
+            $(obj).parent().find(class_name).slideUp();
+            $(obj).find('i').removeClass(iname);
+            $(obj).attr('open',"0");
+        })
+    }
+    function openHyzx(module) {
+        if (typeof module == 'undefined') {
+            module = '';
+        }
+        if (typeof $.cookie("uid") == 'undefined' || typeof $.cookie("token") == 'undefined') {
+            alert("请先登录");
+            if ($("#loginAccount1").length > 0) {
+                $("#loginAccount1").focus();
+                return;
+            }
+            window.location.href = "../../index.html";
+            return;
+        }
+        windowOpen('../../member/main.html?module=' + module, '会员中心', 1250, 834);
+    }
+</script></body>
+</html>

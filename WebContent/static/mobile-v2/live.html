@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Dawoo</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../mobile-v2/themes/mui.css" />
+		<link rel="stylesheet" href="../../mobile-v2/themes/commonV3.css" />
+		<link rel="stylesheet" href="../../mobile-v2/themes/mui-icon-extra.css" />
+		<link rel="stylesheet" href="../../mobile-v2/themes/v3_white/style.css" />
+	</head>
+
+	<body class="gb-theme index">
+		<!-- 侧滑导航根容器 -->
+		<div class="index-canvas mui-off-canvas-wrap mui-draggable">
+			<!-- 菜单容器 -->
+			<aside class="mui-off-canvas-left">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="c-l-header">
+							<span class="icon-personal"><img src="../../mobile-v2/themes/images/icon-person.png" width="100%" alt=""></span>
+							<!-- 登录状态 -->
+							<div class="login-status">
+								<p class="h-text">EVEN_999</p>
+								<a href="#" class="h-btn">个人中心</a>
+							</div>
+							<!-- 未登录状态 -->
+							<div class="unlogin-status mui-hide">
+								<p class="h-text">欢迎光临，请先登录</p>
+								<a href="#" class="h-btn">用户登录</a>
+							</div>
+						</div>
+						<div class="c-nav">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell active">
+									<a href="#"><span class="icon-canvas ic-index"></span>首页</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="#"><span class="icon-canvas ic-promo"></span>优惠活动</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="#"><span class="icon-canvas ic-download"></span>下载客户端</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="#"><span class="icon-canvas ic-deposit"></span>账户存款</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="#"><span class="icon-canvas ic-change"></span>额度转换</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="#"><span class="icon-canvas ic-problem"></span>常见问题</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="#"><span class="icon-canvas ic-online"></span>在线客服</a>
+								</li>
+							</ul>
+						</div>
+						<div class="c-bottom">
+							<a href="#" class="btn-logout">退出登录</a>
+						</div>
+					</div>
+				</div>
+			</aside>
+			<!-- 主页面容器 -->
+			<div class="mui-inner-wrap">
+				<!--头部-->
+				<header class="mui-bar mui-bar-nav">
+					<div class="mui-pull-left">
+						<span class="index-action-menu mui-action-menu"></span>
+						<div class="logo"><img src="../../mobile-v2/images/logo.png" alt=""></div>
+					</div>
+					<div class="mui-pull-right">
+						<div class="user" style="display: none;">
+							<a href="" class="btn mui-btn btn-login" data-href="login.html">登录</a>
+							<a href="" class="btn mui-btn btn-register" data-href="register.html">注册</a>
+						</div>
+						<!--登录状态-->
+						<div class="menu _userAsset" id="mui-asset">
+							<a>
+								<p id="bar-username">ja****ky</p>
+								<p>
+									<span class="bar-asset mui-pull-right" style="padding-right: 0; color: #ffffff"><span class="icon-wallet"></span>￥1,000.00</span>
+								</p>
+							</a>
+							<div class="ex" style="height: 574px;">
+								<table>
+									<tbody>
+										<tr>
+											<td>总资产</td>
+											<td><span class="bar-asset" style="padding-right: 0; color: #ffffff">￥1,000.00</span></td>
+										</tr>
+									</tbody>
+								</table>
+								<hr>
+								<table>
+									<tbody>
+										<tr>
+											<td>钱包</td>
+											<td class="bar-wallet">￥1,000.00</td>
+										</tr>
+									</tbody>
+								</table>
+								<hr>
+								<div class="mui-scroll-wrapper mui-assets" data-scroll="5" style="height: 407px;">
+									<div class="mui-scroll" style="transform: translate3d(0px, 0px, 0px) translateZ(0px);">
+										<table id="api-balance">
+											<tbody>
+												<tr>
+													<td>DS贵宾厅1</td>
+													<td class="_money" id="_api_1">￥0</td>
+												</tr>
+												<tr>
+													<td>KG彩票11</td>
+													<td class="_money" id="_api_2">￥0</td>
+												</tr>
+												<tr>
+													<td>MG</td>
+													<td class="_money" id="_api_3">￥0</td>
+												</tr>
+												<tr>
+													<td>IM体育</td>
+													<td class="_money" id="_api_4">￥0</td>
+												</tr>
+												<tr>
+													<td>GD豪华厅1</td>
+													<td class="_money" id="_api_5">￥0</td>
+												</tr>
+												<tr>
+													<td>PT电子11</td>
+													<td class="_money" id="_api_6">￥0</td>
+												</tr>
+												<tr>
+													<td>OG东方厅1</td>
+													<td class="_money" id="_api_7">￥0</td>
+												</tr>
+												<tr>
+													<td>AG</td>
+													<td class="_money" id="_api_9">￥0</td>
+												</tr>
+												<tr>
+													<td>BBIN游戏大厅</td>
+													<td class="_money" id="_api_10"><span class="text-red" style="font-size: 10px;">游戏维护中</span></td>
+												</tr>
+												<tr>
+													<td>皇冠体育11</td>
+													<td class="_money" id="_api_12">￥0</td>
+												</tr>
+												<tr>
+													<td>HABA电子11</td>
+													<td class="_money" id="_api_15">￥0</td>
+												</tr>
+												<tr>
+													<td>EBET1</td>
+													<td class="_money" id="_api_16">￥0</td>
+												</tr>
+												<tr>
+													<td>SA</td>
+													<td class="_money" id="_api_17">￥0</td>
+												</tr>
+												<tr>
+													<td>沙巴体育</td>
+													<td class="_money" id="_api_19">￥0</td>
+												</tr>
+												<tr>
+													<td>BSG电子</td>
+													<td class="_money" id="_api_20">￥0</td>
+												</tr>
+												<tr>
+													<td>完美彩票</td>
+													<td class="_money" id="_api_22">￥0</td>
+												</tr>
+												<tr>
+													<td>欧普斯真人</td>
+													<td class="_money" id="_api_24">￥0</td>
+												</tr>
+												<tr>
+													<td>DT电子</td>
+													<td class="_money" id="_api_27">￥0</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="mui-scrollbar mui-scrollbar-vertical">
+										<div class="mui-scrollbar-indicator" style="transition-duration: 0ms; display: none; height: 8px; transform: translate3d(0px, -8px, 0px) translateZ(0px);"></div>
+									</div>
+								</div>
+								<div class="ct">
+									<p>
+										<a class="go btn-recovery">一键回收</a>
+									</p>
+									<p>
+										<a class="go btn-deposit" data-url="/wallet/deposit/index.html">存款</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</header>
+				<section class="site-address">易记域名：www.1136.mb.com </section>
+				<!--滚动区域-->
+				<div class="index-content mui-content mui-scroll-wrapper mui-fullscreen">
+					<div class="mui-scroll">
+						<div class="gb-fullpage">
+							<!--banner轮播-->
+							<div class="mui-row">
+								<div class="gb-banner">
+									<div class="ct">
+										<div id="slider" class="mui-slider">
+											<div class="mui-slider-group mui-slider-loop">
+												<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+												<div class="mui-slider-item mui-slider-item-duplicate">
+													<a href=""><img src="../../mobile-v2/images/ban-01.jpg" alt=""></a>
+												</div>
+												<!-- 第一张 -->
+												<div class="mui-slider-item">
+													<a href=""><img src="../../mobile-v2/images/ban-01.jpg" alt=""></a>
+												</div>
+												<!-- 第二张 -->
+												<div class="mui-slider-item">
+													<a href=""><img src="../../mobile-v2/images/ban-01.jpg" alt=""></a>
+												</div>
+												<!-- 第三张 -->
+												<div class="mui-slider-item">
+													<a href=""><img src="../../mobile-v2/images/ban-01.jpg" alt=""></a>
+												</div>
+												<!-- 第四张 -->
+												<div class="mui-slider-item">
+													<a href=""><img src="../../mobile-v2/images/ban-01.jpg" alt=""></a>
+												</div>
+												<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+												<div class="mui-slider-item mui-slider-item-duplicate">
+													<a href=""><img src="../../mobile-v2/images/ban-01.jpg" alt=""></a>
+												</div>
+											</div>
+											<div class="mui-slider-indicator">
+												<div class="mui-indicator mui-active"></div>
+												<div class="mui-indicator"></div>
+												<div class="mui-indicator"></div>
+												<div class="mui-indicator"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--公告-->
+							<div class="mui-row">
+								<div class="gb-notice">
+									<button type="button" class="mui-pull-left mui-btn mui-btn-danger mui-btn-outlined">
+                            公告
+                        </button>
+									<ul class="mui-list-unstyled gb-notice-list">
+										<li>
+											<marquee behavior="scroll" scrollamount="2" direction="left">
+												<p>
+													<a href="">1尊敬的用户您好！本站于20161206进行升级！</a>
+													<a href="">2尊敬的用户您好！本站于20161206进行升级！</a>
+												</p>
+											</marquee>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!--滑动菜单-->
+							<div class="mui-row">
+								<div class="gb-homemenu mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+									<span class="shadow-left"></span><span class="shadow-right"></span>
+									<div class="mui-scroll">
+										<a class="mui-control-item ico10" data-href="index.html">
+											<span>首页</span>
+										</a>
+										<a class="mui-control-item ico1  mui-active" data-href="live.html">
+											<span>真人</span>
+										</a>
+										<a class="mui-control-item ico2" data-href="electronic-transfer.html">
+											<span>电子</span>
+										</a>
+										<a class="mui-control-item ico3" data-href="lottery.html">
+											<span>彩票</span>
+										</a>
+										<a class="mui-control-item ico4" data-href="sports.html">
+											<span>体育</span>
+										</a>
+										<a class="mui-control-item ico5">
+											<span>优惠</span>
+										</a>
+										<a class="mui-control-item ico6" data-href="about.html">
+											<span>代理</span>
+										</a>
+										<a class="mui-control-item ico7" data-href="about.html">
+											<span>关于</span>
+										</a>
+										<a class="mui-control-item ico8" data-href="about.html">
+											<span>条款</span>
+										</a>
+										<a class="mui-control-item ico9">
+											<span>电脑版</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<!--真人列表-->
+							<div class="live-list">
+								<div class="mui-row">
+									<div class="mui-col-xs-6 mui-col-sm-3">
+										<a class="item _api" data-api-type-id="1" data-api-id="3" data-status="normal" data-id="30455" data-game-code="1183" data-game-id="0">
+											<img src="../../mobile-v2/images/api/api-live-3.png">
+											<div class="ct">
+												<p>
+													<span>
+					MG</span>
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="mui-col-xs-6 mui-col-sm-3">
+										<a class="item _api" data-api-type-id="1" data-api-id="10" data-status="maintain" data-id="" data-game-code="" data-game-id="0">
+											<img src="../../mobile-v2/images/api/api-live-10.png">
+											<div class="ct">
+												<p>
+													<span>
+					BBIN游戏大厅</span>
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="mui-col-xs-6 mui-col-sm-3">
+										<a class="item _api" data-api-type-id="1" data-api-id="9" data-status="normal" data-id="" data-game-code="" data-game-id="0">
+											<img src="../../mobile-v2/images/api/api-live-9.png">
+											<div class="ct">
+												<p>
+													<span>
+					AG</span>
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="mui-col-xs-6 mui-col-sm-3">
+										<a class="item _api" data-api-type-id="1" data-api-id="7" data-status="normal" data-id="" data-game-code="" data-game-id="0">
+											<img src="../../mobile-v2/images/api/api-live-7.png">
+											<div class="ct">
+												<p>
+													<span>
+					OG东方厅1</span>
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="mui-col-xs-6 mui-col-sm-3">
+										<a class="item _api" data-api-type-id="1" data-api-id="5" data-status="normal" data-id="" data-game-code="" data-game-id="0">
+											<img src="../../mobile-v2/images/api/api-live-5.png">
+											<div class="ct">
+												<p>
+													<span>
+					GD豪华厅1</span>
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="mui-col-xs-6 mui-col-sm-3">
+										<a class="item _api" data-api-type-id="1" data-api-id="1" data-status="normal" data-id="" data-game-code="" data-game-id="0">
+											<img src="../../mobile-v2/images/api/api-live-1.png">
+											<div class="ct">
+												<p>
+													<span>
+					DS贵宾厅1</span>
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="mui-col-xs-6 mui-col-sm-3">
+										<a class="item _api" data-api-type-id="1" data-api-id="16" data-status="normal" data-id="" data-game-code="" data-game-id="0">
+											<img src="../../mobile-v2/images/api/api-live-16.png">
+											<div class="ct">
+												<p>
+													<span>
+					EBET1</span>
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="mui-col-xs-6 mui-col-sm-3">
+										<a class="item _api" data-api-type-id="1" data-api-id="17" data-status="normal" data-id="" data-game-code="" data-game-id="0">
+											<img src="../../mobile-v2/images/api/api-live-17.png">
+											<div class="ct">
+												<p>
+													<span>
+					SA</span>
+												</p>
+											</div>
+										</a>
+									</div>
+									<div class="mui-col-xs-6 mui-col-sm-3">
+										<a class="item _api"  data-status="normal" data-id="" data-game-code="" data-game-id="0">
+											<img src="../../mobile-v2/images/api/api-live-comming.png">
+											<div class="ct">
+												<p>
+													<span>敬请期待</span>
+												</p>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+							<!--底部导航-->
+							<div class="mui-row bottom-nav">
+								<ul class="mui-list-inline">
+									<li>
+										<a href="#">代理加盟</a>
+									</li>
+									<li>
+										<a href="#">关于我们</a>
+									</li>
+									<li>
+										<a href="#">注册条款</a>
+									</li>
+									<li>
+										<a href="#">电脑版</a>
+									</li>
+									<li>
+										<a href="#">客户端下载</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+				<!--底部-->
+				<nav class="mui-bar mui-bar-tab">
+					<a class="mui-tab-item" data-href="live.html">
+						<span class="mui-icon icon1"></span>
+						<span class="mui-tab-label">首页</span>
+					</a>
+					<a class="mui-tab-item" data-href="mine-deposit.html">
+						<span class="mui-icon icon2"></span>
+						<span class="mui-tab-label">存款</span>
+					</a>
+					<a class="mui-tab-item" data-href="mine-exchange.html">
+						<span class="mui-icon icon3"></span>
+						<span class="mui-tab-label">转帐</span>
+					</a>
+					<a class="mui-tab-item">
+						<span class="mui-icon icon4"></span>
+						<span class="mui-tab-label">客服</span>
+					</a>
+					<a class="mui-tab-item" data="mine-mine.html">
+						<span class="mui-icon icon5"></span>
+						<span class="mui-tab-label" data-href="mine-mine.html">我的</span>
+					</a>
+				</nav>
+			</div>
+		</div>
+		<!--加载层-->
+		<div class="load-wrap" style="display: none;">
+			<div class="load-bar">
+				<p>请耐心等待，加载完后让您浏览速度更快！</p>
+				<div id="load-bar-1" class="mui-progressbar mui-progressbar-infinite">
+					<span></span>
+				</div>
+			</div>
+			<div class="load-bar-middle">
+				<a href="index.html" class="btn-back">访问主页</a>
+			</div>
+			<div class="load-bar-bottom">
+				<img src="../../mobile-v2/images/logo.png" width="110" />
+				<div class="copy-right">
+					Copyright © 2004-2017 WYNN MACAU ALL RIGHT Reserved.
+				</div>
+				<div class="tech-support">
+					技术支持：<span class="icon-tech-support"></span>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script src="../../mobile-v2/js/mui/mui.js"></script>
+	<script src="../../mobile-v2/js/jquery/jquery-2.1.1.js"></script>
+	<script type="text/javascript">
+		/*内容区域滚动*/
+		mui('.mui-content.mui-scroll-wrapper').scroll({
+			scrollY: true, //是否竖向滚动
+			scrollX: false, //是否横向滚动
+			startX: 0, //初始化时滚动至x
+			startY: 0, //初始化时滚动至y
+			indicators: false, //是否显示滚动条
+			deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+			bounce: true //是否启用回弹
+		});
+		/*滚动菜单*/
+		mui('.a').scroll({
+			scrollY: false, //是否竖向滚动
+			scrollX: true, //是否横向滚动
+			startX: 0, //初始化时滚动至x
+			startY: 0, //初始化时滚动至y
+			indicators: false, //是否显示滚动条
+			deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+			bounce: true //是否启用回弹
+		});
+		/*侧滑菜单滚动*/
+		mui('.index-canvas aside .mui-scroll-wrapper').scroll({
+			scrollY: true, //是否竖向滚动
+			scrollX: false, //是否横向滚动
+			startX: 0, //初始化时滚动至x
+			startY: 0, //初始化时滚动至y
+			indicators: false, //是否显示滚动条
+			deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+			bounce: true //是否启用回弹
+		});
+		mui(document.body).on('tap', '.index-action-menu', function() {
+			mui('.mui-off-canvas-wrap').offCanvas('show');
+		});
+		/*加载条*/
+		mui("#load-bar-1").progressbar().show();
+	</script>
+
+</html>

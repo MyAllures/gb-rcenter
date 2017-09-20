@@ -1,0 +1,26 @@
+{
+	"index.html": {
+		"resources": [
+			"bjpks.html"
+		],
+		"refer": [
+			"bjpks.html"
+		]
+	},
+	"lhc.html": {
+		"resources": [
+			"ssc-cq.html"
+		],
+		"refer": [
+			"ssc-cq.html"
+		]
+	},
+	"bjpks.html": {
+		"resources": [
+			"lhc.html"
+		],
+		"refer": [
+			"lhc.html"
+		]
+	}
+}

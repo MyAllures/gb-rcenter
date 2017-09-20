@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="renderer" content="webkit">
+  <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+  <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+  <link rel="stylesheet" href="../../pcenter/themes/default/bootstrap.css">
+  <!-- 提示弹出框 by steven -->
+  <script type="text/javascript">
+var environment = {
+  userVo : '',
+  role : '',
+  userId : '',
+  basePath : '',
+  userCash : '',
+  globalPath : '/',
+  userActiveTime : '',
+  yoolibaoWhiteListStatus : '',
+  yoolibaoOpenStatus : '',
+  cerrencyOpenTime : "2015/9/10"//new Date()
+};
+</script>
+
+  <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+  <!-- 进度百分比 -->
+  <script src="../../common/js/jquery/plugins/jquery.chosen/jquery.chosen.js"></script>
+  <script src="../../common/js/jquery/plugins/jquery.knob/jquery.knob.js"></script>
+  <script src="../../common/js/pcenterJS/ion.js"></script>
+  <!--项部下拉弹出 -->
+  <script type="text/javascript" src="../../common/js/pcenterJS/head.js"></script>
+  <!--tooltips -->
+  <script type="text/javascript" src="../../common/js/pcenterJS/tooltips.js"></script>
+  <script src="../../common/js/bootstrap/bootstrap.min.js"></script>
+  <script src="../../common/js/jquery/plugins/poster/poster.js"></script>
+  <!--弹窗 -->
+  <script>
+jQuery(document).ready(function($) {
+  $('.theme-login').click(function(){
+    $('.theme-pop-mask').fadeIn(100);
+    $('.theme-pop').slideDown(200);
+  })
+  $('.theme-poptitle .close').click(function(){
+    $('.theme-pop-mask').fadeOut(100);
+    $('.theme-pop').slideUp(200);
+  })
+    onInitScrollPic();
+});
+function onInitScrollPic(){
+    //图片列表切换 #poster
+    var promotions = $(".poster-wrap");
+    if(!promotions||promotions.length==0){
+        return;
+    }
+    var scrollPic_01 = new ScrollPic();
+    scrollPic_01.scrollContId = "poster"; //内容容器ID
+    scrollPic_01.arrLeftId = "prev"; //左箭头ID
+    scrollPic_01.arrRightId = "next"; //右箭头ID
+    scrollPic_01.frameWidth = 882; //显示框宽度
+    scrollPic_01.pageWidth = 294; //翻页宽度
+    scrollPic_01.speed = 20; //移动速度(单位毫秒，越小越快)
+    scrollPic_01.space = 20; //每次移动像素(单位px，越大越快)
+    scrollPic_01.autoPlay = true; //自动播放
+    scrollPic_01.autoPlayTime = 2; //自动播放间隔时间(秒)
+    scrollPic_01.initialize(); //初始化
+}
+</script>
+  <title>玩家中心首页</title>
+</head>
+<body>
+  <!-- //* 弹窗 -->
+  <div class="theme-pop">
+    <!-- //* 弹窗标题 -->
+    <div class="theme-poptitle">
+      <a href="javascript:;" title="关闭" class="close">×</a>
+      <h1>消息</h1>
+    </div>
+
+    <!-- //* 弹窗内容 -->
+    <div class="theme-popcon">
+      <h2>欢迎登录，你可以申领优惠了哟！</h2>
+      <div class="text">
+        <p>注册优惠活动：</p>
+        <p>2015年2月起，凡注册成功的新玩家，一律赠送彩金500元！</p>
+      </div>
+      <form class="popbutton">
+        <button data-toggle="button" class="btn btn-blue middle-big" type="button">马上申请</button>
+        <button data-toggle="button" class="btn btn-gray middle-big" type="button">更多优惠</button>
+      </form>
+    </div>
+  </div>
+  <div class="theme-pop-mask"></div>
+
+  <!-- //* Top -->
+
+  <div class="top-wrap">
+    <div class="top-top">
+      <!--顶部右边-->
+      <div class="top-right">
+        <div class="member">
+          您好，
+          <div id="site-nav">
+            <ul>
+              <li>
+                <div class="menu">
+                  <a class="menu-hd" href="#">
+                    <span class="orange">PCKmenr</span> <b></b>
+                  </a>
+                  <div class="menu-bd box">
+                    <div class="global-account-head">
+                      <a href="#" class="global-account-img">
+                        <img src="images/face.png" width="39" height="39"  alt="我的头像" />
+                      </a>
+                      <p class="global-account-name" title="name">下午好，陈先生</p>
+                      <a href="account.html">账户设置</a>
+                      <span class="global-top-seperator">|</span>
+                      <a href="gamerecord.html">交易记录</a>
+                    </div>
+
+                    <div class="global-account-money">
+                      钱包余额：
+                      <a href="#" class="show-remaining btn btn-filter btn-xs real-time-btn show-remaining">显示余额</a>
+                      <span class="hide-astrict"> <em class="total-money astrict">92,879,000.00</em> <i class="ico-ask refresh"></i> <i class="ico-ask showsmall refresh"></i>
+                      </span>
+
+                      <p class="dottline space"></p>
+                      <div class="total">
+                        <a href="asset-transfer.html">转帐</a>
+                        <span class="global-top-seperator">|</span>
+                        <a href="asset-deposit.html">存款</a>
+                        <span class="global-top-seperator">|</span>
+                        <a href="asset-withdraw.html">取款</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          [退出]
+          <label class="line-after info-down-btn">
+            <span class="new">
+              <i class="new-ico select"></i>
+              <a href="#">新消息</a>
+              <i class="ci-count menutwo" style="
+"><a href="#">2</a></i> 
+            </span>
+
+            <div class="info-pull-down">
+              <ul>
+                <li>
+                  <dl class="info-down-title">
+                    <dd class="title">系统信息</dd>
+                  </dl>
+                  <dl class="info-down-content">
+                    <dd>尊敬的用户，您好！因国泰安康（000367）基金于2015年3月20、23日定期支付，期间暂停该基金赎回交易，请知晓。</dd>
+                  </dl>
+                </li>
+                <li>
+                  <dl class="info-down-title">
+                    <dd class="title">系统信息</dd>
+                  </dl>
+                  <dl class="info-down-content">
+                    <dd>尊敬的用户，您好！因国泰安康（000367）基金于2015年3月20、23日定期支付，期间暂停该基金赎回交易，请知晓。</dd>
+                    <dd class="time">2015-03-24 15:02:57</dd>
+                  </dl>
+                </li>
+                <li>
+                  <dl class="info-down-title">
+                    <dd class="title">存款成功</dd>
+                    <dd>中国农行-尾号0065</dd>
+                    <dd>金额500.00元</dd>
+                  </dl>
+                  <dl class="info-down-content">
+                    <dd class="progress-top">
+                      <span class="p-left">
+                        <div class="progress-sub active">
+                          <div class="progress-sub-left active">
+                            <ul>
+                              <li>提交存款订单</li>
+                              <li>2015-03-24 15:02:57</li>
+                            </ul>
+                          </div>
+                          <div class="progress-sub-right active">
+                            <ul>
+                              <li>存款成功到账</li>
+                              <li>2015-03-26 15:02:57</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </span>
+                      <span class="p-right">
+                        <span>如未到账 请联系客服</span>
+                      </span>
+                    </dd>
+                  </dl>
+                </li>
+                <li>
+                  <dl class="info-down-title">
+                    <dd class="title">取款失败</dd>
+                    <dd>中国农行-尾号0065</dd>
+                    <dd>金额500.00元</dd>
+                  </dl>
+                  <dl class="info-down-content">
+                    <dd class="progress-top">
+                      <span class="p-left">
+                        <div class="progress-sub">
+                          <div class="progress-sub-left active">
+                            <ul>
+                              <li>提交取款申请</li>
+                              <li>2015-03-24 15:02:57</li>
+                            </ul>
+                          </div>
+                          <div class="progress-sub-right">
+                            <ul>
+                              <li>取款申请被拒绝</li>
+                              <li>2015-03-26 15:02:57</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </span>
+
+                    </dd>
+                  </dl>
+                </li>
+                <li>
+                  <dl class="info-down-title">
+                    <dd class="title">优惠申请成功</dd>
+                  </dl>
+                  <dl class="info-down-content">
+                    <dd>
+                      恭喜您！您申请的
+                      <a href="#">老虎机超级救援金</a>
+                      （活动名称）优惠活动，管理员已于2015-03-24 15:02:57手动操作审核成功！优惠金额
+                      <a href="#">123.00</a>
+                      ，已发放至您的账户，请注意查收！
+                    </dd>
+                    <dd class="time">2015-03-24 15:02:57</dd>
+                  </dl>
+                </li>
+              </ul>
+              <div class="clearfix">
+                <a href="javascript:void(0)" class="pull-right">查看更多消息&gt;&gt;</a>
+              </div>
+
+              <ul>
+                <li>
+                  <dl class="info-down-title info-down-none">
+                    <dd class="title">暂无消息</dd>
+                  </dl>
+
+                </li>
+              </ul>
+              <div class="clearfix">
+                <a href="javascript:void(0)" class="pull-right">查看历史消息&gt;&gt;</a>
+              </div>
+
+            </div>
+
+          </label>
+
+        </div>
+      </div>
+      <!--顶部左边-->
+      <div class="top-left">
+        <div class="select-lang">
+          <p>
+            <span class="flag cn"></span>
+            简体中文
+          </p>
+          <ul>
+            <li>
+              <a href="#" rel="cn">
+                <span class="flag cn"></span>
+                简体中文
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="hk">
+                <span class="flag hk"></span>
+                繁体中文
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="en">
+                <span class="flag en"></span>
+                English
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="th">
+                <span class="flag th"></span>
+                ไทย
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="vn">
+                <span class="flag vn"></span>
+                Tiếng Việt
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="kr">
+                <span class="flag kr"></span>
+                한국어
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="jp">
+                <span class="flag jp"></span>
+                日本語
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="id">
+                <span class="flag id"></span>
+                Indonesia
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="kh">
+                <span class="flag kh"></span>
+                Khmer
+              </a>
+            </li>
+          </ul>
+        </div>
+        <label class="time line-after">GMT +8 2015-03-24  15:02:57</label>
+      </div>
+
+    </div>
+  </div>
+
+  <!--banner-->
+  <div class="banner">
+    <div class="logo"></div>
+    <div class="right"></div>
+  </div>
+  <div class="wrapper">
+    <!--left-->
+    <div class="sidebar">
+      <!-- <div class="sidebar-item">
+      <h2>
+        下午好，
+        <span class="orange name">PCKmenr</span>
+      </h2>
+      <div class="safe">
+        <ul>
+          <li>
+            <a href="javascript:;" class="ToolTips ToolTipCol" data-text="您已完成实名认证&lt;br&gt;&lt;a href='#'&gt;查看&lt;/a&gt;">
+              <span class="safeico realname-select"></span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;" class="ToolTips ToolTipCol" data-text="您已完成银行卡绑定&lt;br&gt;&lt;a href='#'&gt;修改&lt;/a&gt;">
+              <span class="safeico bank-select"></span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;" class="ToolTips ToolTipCol" data-text="您尚未完成邮箱绑定&lt;br&gt;&lt;a href='#'&gt;立即绑定&lt;/a&gt;">
+              <span class="safeico email"></span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;" class="ToolTips ToolTipCol" data-text="您尚未完成手机绑定&lt;br&gt;&lt;a href='#'&gt;立即绑定&lt;/a&gt;">
+              <span class="safeico phone"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="auth-total">
+        <div class="auth-rate">
+          <div class="progress" style="width:50%"></div>
+        </div>
+        <div class="auth-level">
+          安全等级：
+          <span class="green">中</span>
+          <a href="#" target="_blank">&nbsp;[提升]</a>
+        </div>
+      </div>
+    </div>
+    -->
+    <!--左边菜单栏-->
+    <div class="sidebar-nav">
+      <dl>
+        <dt class="select">
+          <a href="index.html">
+            <i class="navico home select"></i>
+            钱包转账
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="deposit-region.html">
+            <i class="navico deposit"></i>
+            存款专区
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="withdraw.html">
+            <i class="navico withdraw"></i>
+            取款专区
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="asset-history.html">
+            <i class="navico capital"></i>
+            资金记录
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="gamerecord.html">
+            <i class="navico gamerecord"></i>
+            投注记录
+          </a>
+        </dt>
+      </dl><dl><dt><a href="sale1.html"><i class="navico sale"></i> 优惠记录</a></dt></dl>
+      <dl>
+        <dt>
+          <a href="infonotice.html">
+            <i class="navico info"></i>
+            消息公告
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="account.html">
+            <i class="navico accout"></i>
+            个人资料
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="recommended.html">
+            <i class="navico recommend"></i>
+            推荐好友
+          </a>
+        </dt>
+      </dl>
+    </div>
+  </div>
+  <!--right-->
+  <div class="main-wrap">
+    <div class="notice">
+      <div class="notice-left"> <em class="title ico"></em>
+      </div>
+      <div id="notice-con" onMouseOver="iScrollAmount=0" onMouseOut="iScrollAmount=1">
+        <p>
+          <a href="#">尊敬的用户，您好！因国泰安康（00379）基金于2015年3月20、23日定期支付。</a>
+          <em class="title new"></em>
+        </p>
+        <p>
+          <a href="#">中秋佳节，祝玩家们节日快乐!</a>
+        </p>
+        <p>
+          <a href="#">尊敬的用户，您好！因国泰安康（00379）基金于2015年3月20、23日定期支付。</a>
+        </p>
+        <p>
+          <a href="#">中秋佳节，祝玩家们节日快乐!</a>
+        </p>
+        <p>
+          <a href="#">尊敬的用户，您好！因国泰安康（00379）基金于2015年3月20、23日定期支付。</a>
+        </p>
+        <p>
+          <a href="#">中秋佳节，祝玩家们节日快乐!</a>
+        </p>
+      </div>
+    </div>
+    <div class="account s2">
+      <div class="loading-a">
+        <div class="spiner-example">
+          <img src="images/loading-1.gif"></div>
+      </div>
+
+      <div class="property">
+        <div class="property-left">
+          总资产(RMB)
+          <em class="total-money">92,879,000.00</em>
+          <i class="ico-ask refresh"></i>
+       <!--   同步时间：2015-06-30 15:02:57-->
+        </div>
+        <div class="moneyhide" style="display: none;">
+          余额隐藏
+          <i class="ico-ask show"></i>
+        </div>  
+      <button data-toggle="button" class="btn btn-gray btn-big btn-edzh" type="button">切换至手动额度转换</button>      
+      <button data-toggle="button" class="btn btn-blue btn-big btn-money-back" type="button"><i class="btn-money-back-white"></i> 资金回收</button>
+      </div>
+      <div>
+        <div class="balance">
+          <div class="wallet">
+            <dl>
+              <dt>
+                钱包余额
+                <i class="ico-ask refresh" style="display: none;"></i>
+              </dt>
+              <dd class="orange wallet-money">67,245,000.00</dd>
+              <p class="btntotal" style="display: none;"></p>
+
+              <button data-toggle="button" class="btn btn-big btn-gray" type="button" style="display: none;">存款</button>
+              <button data-toggle="button" class="btn btn-big btn-gray" type="button" style="display: none;">取款</button>
+              <dd class="co-gray hint-1">
+                取款处理中
+                <span class="orange">100.000.000.00</span>
+                <i class="ico-ask ask" type="button" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="若取款失败，这笔钱将返回您的钱包余额；"></i>
+              </dd>
+              <dd class="co-gray hint-2">
+                转账处理中
+                <span class="orange">20000</span>
+                <i class="ico-ask ask" type="button" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="若转账失败，这笔钱将返回您的钱包余额；"></i>
+              </dd>
+            </dl>
+          </div>
+          <style>
+  .api-logo-box{background: url(images/api-logo-bg.png); width: 52px; height: 52px; display: block;}
+  .game:hover .api-logo-box{background: url(images/api-logo-hover.png);}
+  .api-logo-box.active, .game:hover .active{background: url(images/api-logo-active.png);}
+</style>
+          <div class="balance-right pull-left">
+            <div class="game onmouse"  type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+              <i class="ico-ask refresh"></i>
+              	<i class="btn-money-back-blue"></i>
+              <p class="game-left api-logo-box active">
+                <i class="api-logo-1"></i></p>
+              <p class="game-right">
+                <span class="title">
+                  <a href="#">AG百乐厅</a>
+                </span>
+                <span class="blue">12023.00</span>
+              </p>
+            </div>
+            <div class="game onmouse" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+              <i class="ico-ask refresh"></i>
+              	<i class="btn-money-back-blue"></i>
+              <p class="game-left api-logo-box">
+                <i class="api-logo-2"></i></p>
+              <p class="game-right">
+                <span class="title">
+                  <a href="#">联众游戏</a>
+                </span>
+                <span class="green">12023.00</span>
+              </p>
+            </div>
+            <div class="game onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+              <i class="ico-ask refresh"></i>
+              	<i class="btn-money-back-blue"></i>
+              <p class="game-left api-logo-box">
+                <i class="api-logo-3"></i></p>
+              <p class="game-right">
+                <span class="title">
+                  <a href="#">联众游戏</a>
+                </span>
+                <span class="orange">12023.00</span>
+              </p>
+            </div>
+            <div class="game onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+              <i class="ico-ask refresh"></i>
+              	<i class="btn-money-back-blue"></i>
+              <p class="game-left api-logo-box">
+                <i class="api-logo-4"></i></p>
+              <p class="game-right">
+                <span class="title">
+                  <a href="#">联众游戏</a>
+                </span>
+                <span>12023.00</span>
+              </p>
+            </div>
+            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+              <i class="ico-ask refresh"></i>
+              	<i class="btn-money-back-blue"></i>
+              <p class="game-left api-logo-box">
+                <i class="api-logo-11"></i></p>
+              <p class="game-right">
+                <span class="title">
+                  <a href="#">联众游戏</a>
+                </span>
+                <span class="co-gray">12023.00</span>
+                <span class="maintain-in co-gray">维护中</span>
+              </p>
+            </div>
+            <div class="game  onmousestop"  title="游戏信息">
+              <a href="javascript:void(0)" class="title-ref" title="afsdsadfasdf">
+                <i class="ico-ask refresh"></i>
+              	<i class="btn-money-back-blue"></i>
+              </a>
+              <p class="game-left api-logo-box">
+                <i class="api-logo-12"></i></p>
+              <p class="game-right">
+                <span class="title">
+                  <a href="#">联众游戏</a>
+                </span>
+                <span class="co-gray" title="游戏信息">数据异常</span>
+              </p>
+            </div>
+            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+              <i class="ico-ask refresh"></i>
+              	<i class="btn-money-back-blue"></i>
+              <p class="game-left api-logo-box">
+                <i class="api-logo-5"></i></p>
+              <p class="game-right">
+                <span class="title">
+                  <a href="#">游戏维护中</a>
+                </span>
+                <span class="blue">---</span>
+              </p>
+            </div>
+            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+              <i class="ico-ask refresh"></i>
+              	<i class="btn-money-back-blue"></i>
+              <p class="game-left api-logo-box">
+                <i class="api-logo-6"></i></p>
+              <p class="game-right">
+                <span class="title">
+                  <a href="#">游戏维护中</a>
+                </span>
+                <span class="blue">---</span>
+              </p>
+            </div>
+            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+              <i class="ico-ask refresh"></i>
+              	<i class="btn-money-back-blue"></i>
+              <p class="game-left api-logo-box">
+                <i class="api-logo-7"></i></p>
+              <p class="game-right">
+                <span class="title">
+                  <a href="#">游戏维护中</a>
+                </span>
+                <span class="blue">---</span>
+              </p>
+            </div>
+            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+              <i class="ico-ask refresh"></i>
+              	<i class="btn-money-back-blue"></i>
+              <p class="game-left api-logo-box">
+                <i class="api-logo-8"></i></p>
+              <p class="game-right">
+                <span class="title">
+                  <a href="#">游戏维护中</a>
+                </span>
+                <span class="blue">---</span>
+              </p>
+            </div>
+            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+              <i class="ico-ask refresh"></i>
+              	<i class="btn-money-back-blue"></i>
+              <p class="game-left api-logo-box">
+                <i class="api-logo-9"></i></p>
+              <p class="game-right">
+                <span class="title">
+                  <a href="#">游戏维护中</a>
+                </span>
+                <span class="blue">---</span>
+              </p>
+            </div>
+            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+              <i class="ico-ask refresh"></i>
+              	<i class="btn-money-back-blue"></i>
+              <p class="game-left api-logo-box">
+                <i class="api-logo-1"></i></p>
+              <p class="game-right">
+                <span class="title">
+                  <a href="#">游戏维护中</a>
+                </span>
+                <span class="blue">---</span>
+              </p>
+            </div>
+            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+              <i class="ico-ask refresh"></i>
+              	<i class="btn-money-back-blue"></i>
+              <p class="game-left api-logo-box">
+                <i class="api-logo-2"></i></p>
+              <p class="game-right">
+                <span class="title">
+                  <a href="#">游戏维护中</a>
+                </span>
+                <span class="blue">---</span>
+              </p>
+            </div>
+            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
+              <i class="ico-ask refresh"></i>
+              	<i class="btn-money-back-blue"></i>
+              <p class="game-left api-logo-box">
+                <i class="api-logo-3"></i></p>
+              <p class="game-right">
+                <span class="title">
+                  <a href="#">游戏维护中</a>
+                </span>
+                <span class="blue">---</span>
+              </p>
+            </div>
+            <div class="game" style="display: none;">
+              <p class="game-left addgame"></p>
+              <p class="text">
+                <a href="#">更多游戏</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+<div class="clearfix" style="display: none;">
+    <div class="asset left-asset">
+
+      <div class="control-group">
+        <label class="control-label" for="inputEmail">转出：</label>
+        <div class="controls ">
+          <select class="selectwidth m-bigr">
+            <option>----请选择----</option>
+            <option>我的钱包</option>
+            <option>QQ游戏</option>
+            <option>联众游戏</option>
+          </select>
+          <span class="tips green">
+            <i class="mark successsmall"></i>
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputEmail">转入：</label>
+        <div class="controls">
+          <select class="selectwidth m-bigr">
+            <option>----请选择----</option>
+            <option>我的钱包</option>
+            <option>QQ游戏</option>
+            <option>联众游戏</option>
+          </select>
+          <span class="tips orange">
+            <i class="mark plaintsmall"></i>
+            请选择转入账号
+          </span>
+        </div>
+      </div>
+      <div class="s-d-exchange">
+        <span class="b-tr"></span>
+        <span class="btn-exchange change"></span>
+        <span class="b-rb"></span>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputEmail">金额：</label>
+        <div class="controls">
+          <input type="text" id="" placeholder="" class="input input-money">元</div>
+      </div>
+
+      <div>
+        <button data-toggle="button" class="btn-blue btn large-big lar-l" id="btn-submit">确定转账</button>
+      </div>
+
+    </div>
+    <div class="asset right-asset clearfix">
+    <div class="clearfix game-n-w"><a href="#" class="game-nav"><img src="images/game-imgbbin.png"><em>波音真人</em></a><a href="#" class="game-nav"><img src="images/game-imgmg.png"><em>MG老虎机</em></a><a href="#" class="game-nav"><img src="images/game-imgim.png"><em>IM体育</em></a><a href="#" class="game-nav"><img src="images/game-imgag.png"><em>AG真人</em></a><a href="#" class="game-nav"><img src="images/game-imgdawoo.png"><em>真人现场厅</em></a><a href="#" class="game-nav"><img src="images/game-imgpt.png"><em>PT老虎机</em></a></div>
+
+    </div>
+    </div>
+
+    <div class="poster-wrap">
+      <ul class="poster" id="poster">
+        <li>
+          <a href="#" target="_blank">
+            <img src="http://192.168.0.88:93/fserver/files/carousel/10076/1463370988195.jpg_0x0.jpg"></a>
+          <span class="desc">
+            <a href="#">这是个链接</a>
+          </span>
+        </li>
+        <li>
+          <a href="#" target="_blank">
+            <img src="http://192.168.0.88:93/fserver/files/carousel/10094/1463379073819.jpg_0x0.jpg"></a>
+          <span class="desc">
+            <a href="#">MG--MG彩票广告位</a>
+          </span>
+        </li>
+        <li>
+          <a href="#" target="_blank">
+            <img src="http://192.168.0.88:93/fserver/files/carousel/10095/1463379095611.jpg_0x0.jpg"></a>
+          <span class="desc">
+            <a href="#">PT-电子游艺--四图横向滚动效果（可自动可手动）,此效果兼容所有主流浏览器</a>
+          </span>
+        </li>
+        <li>
+          <a href="#" target="_blank">
+            <img src="http://192.168.0.88:93/fserver/files/carousel/10077/1463370978943.jpg_0x0.jpg"></a>
+          <span class="desc">
+            <a href="#">IM--IM广告位</a>
+          </span>
+        </li>
+      </ul>
+      <ul class="slide">
+        <li class="prev" id="prev">
+          <a href="javascript:void(0);" title="上翻">上翻</a>
+        </li>
+        <li class="next" id="next">
+          <a href="javascript:void(0);" title="下翻">下翻</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="asset">
+
+      <button type="button" class="btn btn-filter btn-lg real-time-btn loading-btn">Loading</button>
+
+    </div>
+
+    <!--游戏公告-->
+    <div class="gamenotice">
+      <div class="gamenotice-title">
+        <h1>游戏公告</h1>
+        <span class="more">
+          <a href="gamenotice.html">更多></a>
+        </span>
+      </div>
+      <div class="gamenotice-box">
+        <dl>
+          <dd class="clearfix">
+            <div class="item">
+              <h2 class="orange">
+                <a href="#">QQ游戏</a>
+              </h2>
+              <p>
+                由于3月17日1：00运营商网络维护，届时可能会导致部分游戏出现登录异常，或道具丢失的情况。如出现此情况，请大家稍后再尝试登录。
+                <span class="date">
+                  <i class="clock"></i>
+                  2015-08-30
+                </span>
+              </p>
+            </div>
+          </dd>
+          <p class="dottline"></p>
+          <dd class="gameback clearfix">
+            <div class="item">
+              <h2 class="orange">
+                <a href="#">联众游戏</a>
+              </h2>
+              <p>
+                由于3月17日1：00运营商网络维护，届时可能会导致部分游戏出现登录异常，或道具丢失的情况。如出现此情况，请大家稍后再尝试登录。
+                <span class="date">
+                  <i class="clock"></i>
+                  2015-08-30
+                </span>
+              </p>
+            </div>
+          </dd>
+          <p class="dottline"></p>
+          <dd class="clearfix">
+            <div class="item">
+              <h2 class="orange">
+                <a href="#">QQ游戏</a>
+              </h2>
+              <p>
+                由于3月17日1：00运营商网络维护，届时可能会导致部分游戏出现登录异常，或道具丢失的情况。如出现此情况，请大家稍后再尝试登录。
+                <span class="date">
+                  <i class="clock"></i>
+                  2015-08-30
+                </span>
+              </p>
+            </div>
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <!--优惠活动-->
+    <div class="saleactive">
+      <div class="saleactive-title">
+        <h1>优惠活动</h1>
+        <span class="more">
+          <a href="sale.html">更多></a>
+        </span>
+      </div>
+      <div class="item">
+        <ul>
+          <li>
+            <span class="item-img">
+              <a href="#">
+                <img src="images/sale.jpg"/>
+              </a>
+            </span>
+            <h4>
+              <i class="item-title-ico goryorange">分类一</i>
+              <a href="#" class="act-title-c">象旗蓝钻专属</a>
+            </h4>
+          </li>
+          <li>
+            <span class="item-img">
+              <a href="#">
+                <img src="images/sale.jpg" />
+              </a>
+            </span>
+            <h4>
+              <i class="item-title-ico gorylightgreen">分类一</i>
+              <a href="#" class="act-title-c">象旗蓝钻专属</a>
+            </h4>
+          </li>
+          <li>
+            <span class="item-img">
+              <a href="#">
+                <img src="images/sale.jpg"/>
+              </a>
+            </span>
+            <h4>
+              <i class="item-title-ico goryred">分类一</i>
+              <a href="#" class="act-title-c">象旗蓝钻专属</a>
+            </h4>
+          </li>
+          <li>
+            <span class="item-img">
+              <a href="#">
+                <img src="images/sale.jpg"/>
+              </a>
+            </span>
+            <h4>
+              <i class="item-title-ico gorylightblue">分类一</i>
+              <a href="#" class="act-title-c">象旗蓝钻专属</a>
+            </h4>
+          </li>
+          <li>
+            <span class="item-img">
+              <a href="#">
+                <img src="images/sale.jpg"/>
+              </a>
+            </span>
+            <h4>
+              <i class="item-title-ico gorygreen">分类一</i>
+              <a href="#" class="act-title-c">象旗蓝钻专属</a>
+            </h4>
+          </li>
+          <li>
+            <span class="item-img">
+              <a href="#">
+                <img src="images/sale.jpg"/>
+              </a>
+            </span>
+            <h4>
+              <i class="item-title-ico goryblue">分类一</i>
+              <a href="#" class="act-title-c">象旗蓝钻专属</a>
+            </h4>
+          </li>
+          <li>
+            <span class="item-img">
+              <a href="#">
+                <img src="images/sale.jpg"/>
+              </a>
+            </span>
+            <h4>
+              <i class="item-title-ico gorylightgray">分类一</i>
+              <a href="#" class="act-title-c">象旗蓝钻专属象旗蓝钻专属象旗蓝钻专属象旗蓝钻专属象旗蓝钻专属</a>
+            </h4>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+    <div class="asset">
+
+      <button type="button" class="btn btn-filter btn-lg real-time-btn" data-toggle="modal" data-target="#notice-list-1">时区弹窗</button>
+      <button type="button" class="btn btn-filter btn-lg real-time-btn" data-toggle="modal" data-target="#xitgg">公告弹窗</button>
+
+    </div>
+    <div class="col-lg-12 m-t">
+      <div class="wrapper white-bg shadow">
+        <div class="sys_tab_wrap clearfix m-b-sm">
+          <div class="m-sm"> <b class="fs16">弹窗</b>
+          </div>
+        </div>
+
+        <div class="p-sm">
+          <button type="button" class="btn btn-filter help-popover" tabindex="0" role="button" data-container="body" data-toggle="popover"  data-placement="top"  data-content="用于接入第三方流量统计平台" data-template="<div class='popover success' role='tooltip'>
+            <div class='arrow'></div>
+            <h3 class='popover-title'></h3>
+            <div class='popover-content'></div>
+          </div>
+          ">提示成功
+        </button>
+        <button type="button" class="btn btn-filter help-popover" tabindex="0" role="button" data-container="body" data-toggle="popover"  data-placement="top"  data-content="用于接入第三方流量统计平台" data-template="<div class='popover danger' role='tooltip'>
+          <div class='arrow'></div>
+          <h3 class='popover-title'></h3>
+          <div class='popover-content'></div>
+        </div>
+        ">提示失败
+      </button>
+      <button type="button" class="btn btn-filter help-popover" tabindex="0" role="button" data-container="body" data-toggle="popover"  data-placement="top"  data-content="用于接入第三方流量统计平台" data-template="<div class='popover warning' role='tooltip'>
+        <div class='arrow'></div>
+        <h3 class='popover-title'></h3>
+        <div class='popover-content'></div>
+      </div>
+      ">提示警告
+    </button>
+    <button type="button" class="btn btn-filter help-popover" tabindex="0" role="button" data-container="body" data-toggle="popover"  data-placement="top"  data-content="用于接入第三方流量统计平台" data-template="<div class='popover info' role='tooltip'>
+      <div class='arrow'></div>
+      <h3 class='popover-title'></h3>
+      <div class='popover-content'></div>
+    </div>
+    ">提示信息
+  </button>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<!-- 右边客服服务-->
+<div id="moquu_wxin" class="moquu_wxin">
+<a href="javascript:void(0)">
+玩家游戏
+<div class="moquu_wxinh"></div>
+</a>
+</div>
+<div id="moquu_wshare" class="moquu_wshare">
+<a href="javascript:void(0)">
+玩家游戏
+<div class="moquu_wshareh"></div>
+</a>
+</div>
+<div id="moquu_wmaps">
+<a href="#">玩家游戏</a>
+</div>
+
+<div class="modal inmodal in" id="notice-list-1" tabindex="-1" role="dialog" aria-hidden="false">
+<div class="modal-dialog">
+<div class="modal-content animated bounceInRight family">
+<div class="modal-header">
+<span class="filter">账户验证</span>
+<button type="button" class="close" data-dismiss="modal">
+  <span aria-hidden="true">×</span>
+  <span class="sr-only">关闭</span>
+</button>
+</div>
+<div class="modal-body">
+<h3 class="m-sm al-center">请设置您的时区！</h3>
+
+<div class="form-group clearfix line-hi34 m-b-xxs">
+  <label class="col-xs-3 al-right">您的时区：</label>
+  <div class="col-xs-8 p-x">
+    <select class="selectwidth m-bigr">
+      <option>东八区</option>
+      <option>东九区</option>
+    </select>
+
+    <div class="co-grayc2">GMT +8 2015-03-24  15:02:57</div>
+  </div>
+</div>
+<div class="clearfix m-b bg-gray p-t-xs">
+  <div class="line-hi25 p-sm">
+    您的系统信息将以该时区显示！
+    <span class="co-orange">一旦设置，不可修改！</span>
+  </div>
+</div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-filter">使用该时区</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal inmodal in" id="xitgg" tabindex="-1" role="dialog" aria-hidden="false">
+<div class="modal-dialog">
+<div class="modal-content animated bounceInRight family">
+<div class="modal-header">
+<span class="filter">公告</span>
+<button type="button" class="close" data-dismiss="modal">
+  <span aria-hidden="true">×</span>
+  <span class="sr-only">关闭</span>
+</button>
+</div>
+<div class="modal-body">
+<dl class="popup-notice-list">
+  <dd class="pnl-title">
+    <span class="title">公告标题</span>
+    <span class="time">2016-03-13</span>
+  </dd>
+  <dd class="pnl-content">
+    <p>尊敬的E路发会员：</p>
+    <p>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好，为了400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！
+    </p>
+  </dd>
+</dl>
+<dl class="popup-notice-list">
+  <dd class="pnl-title">
+    <span class="title">公告标题</span>
+    <span class="time">2016-03-13</span>
+  </dd>
+  <dd class="pnl-content">
+    <p>尊敬的E路发会员：</p>
+    <p>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好，为了400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！
+    </p>
+  </dd>
+</dl>
+<dl class="popup-notice-list">
+  <dd class="pnl-title">
+    <span class="title">公告标题</span>
+    <span class="time">2016-03-13</span>
+  </dd>
+  <dd class="pnl-content">
+    <p>尊敬的E路发会员：</p>
+    <p>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好，为了400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！
+    </p>
+  </dd>
+</dl>
+</div>
+<div class="modal-footer">
+<div class="row ">
+
+  <ul class="pagination pull-right">
+
+    <li aria-controls="editable" class="paginate_button previous disabled">
+      <a name="paging.firstPageNumber" href="javascript:void(0);">首页</a>
+    </li>
+    <li aria-controls="editable" class="paginate_button previous disabled">
+      <a name="paging.prePage" href="javascript:void(0);">上一页</a>
+    </li>
+    <li class="paginate_button disabled">
+      <a name="paging.Page" href="javascript:void(0)" data-page="0">1</a>
+    </li>
+    <li class="paginate_button disabled">
+      <a name="paging.Page" href="javascript:void(0)" data-page="0">2</a>
+    </li>
+    <li class="paginate_button disabled">
+      <a name="paging.Page" href="javascript:void(0)" data-page="0">3</a>
+    </li>
+    <li aria-controls="editable" class="paginate_button next disabled">
+      <a name="paging.nextPage" href="javascript:void(0);">下一页</a>
+    </li>
+    <li aria-controls="editable" class="paginate_button next disabled">
+      <a name="paging.lastPageNumber" href="javascript:void(0);">尾页</a>
+    </li>
+  </ul>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<!-- //* 公告滚动* -->
+<script>
+var oMarquee = document.getElementById("notice-con"); //滚动对象
+var iLineHeight = 30; //单行高度，像素
+var iLineCount = 6; //实际行数
+var iScrollAmount =2; //每次滚动高度，像素
+function run() {
+oMarquee.scrollTop += iScrollAmount;
+if ( oMarquee.scrollTop == iLineCount * iLineHeight )
+oMarquee.scrollTop = 0;
+if ( oMarquee.scrollTop % iLineHeight == 0 ) {
+window.setTimeout( "run()", 3000 );
+} else {
+window.setTimeout( "run()", 50 );
+}
+}
+oMarquee.innerHTML += oMarquee.innerHTML;
+window.setTimeout( "run()",3000 );
+$('.help-popover').popover()
+</script>
+<!-- //* 语言版本切换 #select-lang* -->
+<script type="text/javascript">
+        $(function() {
+         
+            $(".select-lang p").click(function() {
+                var ul = $(".select-lang ul");
+                if (ul.css("display") == "none") {
+                    ul.slideDown("fast");
+                } else {
+                    ul.slideUp("fast");
+                }
+            });
+
+            $(".select-lang ul li a").click(function() {
+                var txt = $(this).text();
+                var value = $(this).attr("rel");
+                $(".select-lang p").html("<span class='flag " + value + "'></span>" + txt);
+                $(".select-lang ul").hide();
+            });
+         
+        });
+      
+    </script>
+
+<!--进度百分比-->
+<script>
+        $(document).ready(function(){
+            var $image = $(".image-crop > img")
+            $($image).cropper({
+                aspectRatio: 1.618,
+                preview: ".img-preview",
+                done: function(data) {
+                    // Output the result data for cropping image.
+                }
+            });
+
+            var $inputImage = $("#inputImage");
+            if (window.FileReader) {
+                $inputImage.change(function() {
+                    var fileReader = new FileReader(),
+                            files = this.files,
+                            file;
+
+                    if (!files.length) {
+                        return;
+                    }
+
+                    file = files[0];
+
+                    if (/^image\/\w+$/.test(file.type)) {
+                        fileReader.readAsDataURL(file);
+                        fileReader.onload = function () {
+                            $inputImage.val("");
+                            $image.cropper("reset", true).cropper("replace", this.result);
+                        };
+                    } else {
+                        showMessage("Please choose an image file.");
+                    }
+                });
+            } else {
+                $inputImage.addClass("hide");
+            }
+
+            $("#download").click(function() {
+                window.open($image.cropper("getDataURL"));
+            });
+
+            $("#zoomIn").click(function() {
+                $image.cropper("zoom", 0.1);
+            });
+
+            $("#zoomOut").click(function() {
+                $image.cropper("zoom", -0.1);
+            });
+
+            $("#rotateLeft").click(function() {
+                $image.cropper("rotate", 45);
+            });
+
+            $("#rotateRight").click(function() {
+                $image.cropper("rotate", -45);
+            });
+
+            $("#setDrag").click(function() {
+                $image.cropper("setDragMode", "crop");
+            });
+
+            $('#data_1 .input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
+
+            $('#data_2 .input-group.date').datepicker({
+                startView: 1,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_3 .input-group.date').datepicker({
+                startView: 2,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_4 .input-group.date').datepicker({
+                minViewMode: 1,
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            $('#data_5 .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            var elem = document.querySelector('.js-switch');
+            var switchery = new Switchery(elem, { color: '#1AB394' });
+
+            var elem_2 = document.querySelector('.js-switch_2');
+            var switchery_2 = new Switchery(elem_2, { color: '#ED5565' });
+
+            var elem_3 = document.querySelector('.js-switch_3');
+            var switchery_3 = new Switchery(elem_3, { color: '#1AB394' });
+
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+
+            $('.demo1').colorpicker();
+
+            var divStyle = $('.back-change')[0].style;
+            $('#demo_apidemo').colorpicker({
+                color: divStyle.backgroundColor
+            }).on('changeColor', function(ev) {
+                        divStyle.backgroundColor = ev.color.toHex();
+                    });
+
+
+        });
+        var config = {
+                '.chosen-select'           : {},
+                '.chosen-select-deselect'  : {allow_single_deselect:true},
+                '.chosen-select-no-single' : {disable_search_threshold:10},
+                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+                '.chosen-select-width'     : {width:"95%"}
+            }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+
+        $("#ionrange_1").ionRangeSlider({
+            min: 0,
+            max: 5000,
+            type: 'double',
+            prefix: "&yen;",
+            maxPostfix: "+",
+            prettify: false,
+            hasGrid: true
+        });
+
+        $("#ionrange_2").ionRangeSlider({
+            min: 0,
+            max: 10,
+            type: 'single',
+            step: 0.1,
+            postfix: " 克",
+            prettify: false,
+            hasGrid: true
+        });
+
+        $("#ionrange_3").ionRangeSlider({
+            min: -50,
+            max: 50,
+            from: 0,
+            postfix: "°",
+            prettify: false,
+            hasGrid: true
+        });
+
+        $("#ionrange_4").ionRangeSlider({
+            values: [
+                "1月", "2月", "3月",
+                "4月", "5月", "6月",
+                "7月", "8月", "9月",
+                "10月", "11月", "12月"
+            ],
+            type: 'single',
+            hasGrid: true
+        });
+
+        $("#ionrange_5").ionRangeSlider({
+            min: 10000,
+            max: 100000,
+            step: 100,
+            postfix: " km",
+            from: 55000,
+            hideMinMax: true,
+            hideFromTo: false
+        });
+
+        $(".dial").knob();
+
+        $("#basic_slider").noUiSlider({
+            start: 40,
+            behaviour: 'tap',
+            connect: 'upper',
+            range: {
+                'min':  20,
+                'max':  80
+            }
+        });
+
+        $("#range_slider").noUiSlider({
+            start: [ 40, 60 ],
+            behaviour: 'drag',
+            connect: true,
+            range: {
+                'min':  20,
+                'max':  80
+            }
+        });
+
+        $("#drag-fixed").noUiSlider({
+            start: [ 40, 60 ],
+            behaviour: 'drag-fixed',
+            connect: true,
+            range: {
+                'min':  20,
+                'max':  80
+            }
+        });
+      
+      
+            
+    </script>
+<script>
+        //显示隐藏模块--更多数据
+        $(".info-down-btn").click(function (event) {
+            $(this).find(".info-pull-down").slideToggle(200);
+            $(document).one("click", function (event) {
+                $(".info-pull-down").slideUp(200); 
+       });
+            event.stopPropagation();
+        });
+        //显示隐藏刷新按钮
+       $(".game").mouseenter(function() {
+        //  $(this).find(".ico-ask").show()
+        	$(this).find(".btn-money-back-blue").show();
+       });
+        $(".game").mouseleave(function() {
+        //  $(this).find(".ico-ask").hide()
+        	$(this).find(".btn-money-back-blue").hide();
+       });
+        //tooltip 提示弹窗
+        $('[data-toggle="tooltip"]').tooltip();
+          
+          
+          
+          $(".show-remaining").click(function (){
+            $(this).parent(".global-account-money").addClass("open")
+          });  
+            $(".hide-astrict>.showsmall").click(function (){
+            $(this).parents(".global-account-money").removeClass("open")
+          }); 
+          $(".loading-btn").click(function (){
+            $(".loading-a").fadeToggle(200);
+          });
+    </script>
+
+</body>
+</html>

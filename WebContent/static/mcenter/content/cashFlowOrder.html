@@ -1,0 +1,101 @@
+
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>内容管理</span>
+        <span>/</span><span>收款账户</span>
+        <a href="javascript:void(0)" nav-target="mainFrame" class="m-l-sm btn btn-outline btn-default btn-xs co-gray6 return-btn"><em class="fa fa-caret-left"></em>返回</a>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow clearfix">
+            <div class="present_wrap"><b>金流顺序</b></div>            
+            <div class="select-level clearfix">
+                <a href="javascript:void(0)" class="current">VIP用户</a>
+                <a href="javascript:void(0)" class="disabled">活跃用户</a>
+                <a href="javascript:void(0)">潜在用户</a>
+                <a href="javascript:void(0)">新用户</a>
+                <a href="javascript:void(0)">冻结用户</a>
+                <a href="javascript:void(0)">老用户</a>
+                <a href="javascript:void(0)">僵尸用户</a>
+                <a href="javascript:void(0)">未分层用户</a>
+<!--
+                <label class="ft-bold col-sm-3 al-right line-hi34">选择层级：</label>
+                <div class="col-sm-5">
+                    <select class="chosen-select-no-single" data-placeholder="VIP用户">
+                        <option value=""></option>
+                        <option value="1">VIP用户</option>
+                    </select>
+                </div>
+-->
+            </div>
+            <div class="form-group clearfix m-l-md">
+                <label class="ft-bold pull-left m-r-sm m-t-xs">轮流入款：</label>
+                <div class="pull-left">
+                    <input type="checkbox" name="my-checkbox" data-size="mini" checked>
+                    <span class="m-l m-r"><i class="fa fa-question-circle"></i></span>
+                    <b class="co-yellow">强烈建议开启</b>
+                    <label class="m-l-sm"><input type="radio" class="i-checks" name="lunl">按手动排序轮流</label>
+                    <label class="m-l-sm"><input type="radio" class="i-checks" name="lunl">系统自动轮流</label>
+                </div>
+            </div>
+            <div class="line-hi34 col-sm-12 bg-gray m-b">
+                <span class="co-yellow m-r-sm"><i class="fa fa-exclamation-circle"></i></span>
+                可拖动账号在该支付方式下进行排序；使用时，系统将自动跳过已停用和被冻结账户；重新开启或解冻后，可继续按设置的顺序使用！
+            </div>            
+            <div class="clearfix m-b limit_title_wrap">
+                <h3 class="limit_title cur">线上支付</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover dataTable m-b-sm">
+                    <tbody>
+                        <tr>
+                            <td><i class="fa fa-arrows"></i></td>
+                            <td><span class="pay-third alipay"></span></td>
+                            <td>1</td>
+                            <td class="co-yellow">王胖子专用</td>
+                            <td>sherry</td>
+                            <td>停用金额：200,0000</td>
+                            <td><span class="label label-success">使用中</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-arrows"></i></td>
+                            <td><span class="pay-third wechatpay"></span></td>
+                            <td>2</td>
+                            <td class="co-yellow">王胖子专用</td>
+                            <td>sherry</td>
+                            <td>停用金额：200,0000</td>
+                            <td><span class="label label-danger">已停用</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-arrows"></i></td>
+                            <td><span class="pay-third ips"></span></td>
+                            <td>2</td>
+                            <td class="co-yellow">王胖子专用</td>
+                            <td>sherry</td>
+                            <td>停用金额：200,0000</td>
+                            <td><span class="label label-info">被冻结</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-arrows"></i></td>
+                            <td><span class="pay-third allinpay"></span></td>
+                            <td>2</td>
+                            <td class="co-yellow">王胖子专用</td>
+                            <td>sherry</td>
+                            <td>停用金额：200,0000</td>
+                            <td><span class="label label-info">被冻结</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+<!--            <hr class="m-t m-b">-->
+            <div class="operate-btn">
+                <button class="btn btn-filter btn-lg">保存</button>
+                <button class="btn btn-outline btn-filter btn-lg m-r">应用</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>

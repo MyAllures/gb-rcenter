@@ -1,0 +1,109 @@
+
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>代理管理</span><span>/</span><span>消息公告</span>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow">
+            <ul class="clearfix sys_tab_wrap">
+                <li><a href="proxy/message.html" nav-target="mainFrame">系统消息<span class="badge badge-blue m-l-sm">4</span></a></li>
+                <li><a href="proxy/message2.html" nav-target="mainFrame">系统公告<span class="badge badge-blue m-l-sm">4</span></a></li>
+                <li class="proxy"><a href="distributor/message3.html" nav-target="mainFrame">游戏公告<span class="badge badge-blue m-l-sm">4</span></a></li>
+               
+            </ul>
+            <div class="filter-wraper clearfix border-b-1">
+                <div class="input-group content-width-limit-30 pull-left">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="text" class="form-control" value="最近7天(2013-10-11~2013-10-11)">
+                </div>
+                <div class="input-group content-width-limit-8 pull-left m-l m-r">
+                    <select class="chosen-select-no-single" data-placeholder="请选择">
+                        <option value=""></option>
+                        <option value="">所有游戏</option>
+                        <option value="">API1</option>
+                        <option value="">API2</option>
+                        <option value="">API3</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-outline btn-filter">筛选</button>
+            </div>
+            <!--列表-->
+            <ul class="game-announcement-list warningRecord-wrap">
+                <li class="clearfix warningRecord-list">
+                    
+                    <div class="con warningRecord-square">
+                        <span class="co-orange">QQ游戏</span>
+                        <p>由于3月17日1：00运营商网络维护，届时可能会导致部分游戏出现登录异常，或道具丢失的情况。如出现此情况，请大家稍后再尝试登录。<span class="co-gray pull-right">2015-07-07 16:49:27</span></p>
+                    </div>
+                </li>
+                <li class="clearfix warningRecord-list">
+                    
+                    <div class="con warningRecord-square">
+                        <span class="co-orange">QQ游戏</span>
+                        <p>由于3月17日1：00运营商网络维护，届时可能会导致部分游戏出现登录异常，或道具丢失的情况。如出现此情况，请大家稍后再尝试登录。<span class="co-gray pull-right">2015-07-07 16:49:27</span></p>
+                    </div>
+                </li>
+                <li class="clearfix warningRecord-list">
+                    
+                    <div class="con warningRecord-square">
+                        <span class="co-orange">QQ游戏</span>
+                        <p>由于3月17日1：00运营商网络维护，届时可能会导致部分游戏出现登录异常，或道具丢失的情况。如出现此情况，请大家稍后再尝试登录。<span class="co-gray pull-right">2015-07-07 16:49:27</span></p>
+                    </div>
+                </li>
+            </ul>
+            <div class="row bdtop3 p-b-xs">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left">
+                            <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                                <option value=""></option>
+                                <option>每页20条</option>
+                                <option>每页30条</option>
+                                <option>每页40条</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                                <form class="form-inline">
+                                    <label class="m-l-sm">共10页</label>
+                                    <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                                    <button class="btn btn-sm m-l-sm">跳转</button>
+                                </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>

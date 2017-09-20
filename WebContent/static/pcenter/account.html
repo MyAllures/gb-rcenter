@@ -1,0 +1,2119 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+   	<link rel="stylesheet" type="text/css" href="../../pcenter/themes/default/lang/zh_CN.css"/>
+    <link rel="stylesheet" href="../../pcenter/themes/default/bootstrap.css">
+    <!-- 提示弹出框 -->
+    <script type="text/javascript">
+    var environment = {
+        userVo: '',
+        role: '',
+        userId: '',
+        basePath: '',
+        userCash: '',
+        globalPath: '/',
+        userActiveTime: '',
+        yoolibaoWhiteListStatus: '',
+        yoolibaoOpenStatus: '',
+        cerrencyOpenTime: "2015/9/10" //new Date()
+    };
+    </script>
+    <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+    <script src="../../common/js/pcenterJS/global-1.1.0.min.js" type="text/javascript"></script>
+    <script src="../../common/js/bootstrap/bootstrap.min.js"></script>
+    <!--项部下拉弹出 -->
+    <script type="text/javascript" src="../../common/js/pcenterJS/head.js"></script>
+    <title>玩家中心首页</title>
+</head>
+
+<body>
+    <!-- //* Top -->
+    <div class="top-wrap">
+        <div class="top">
+            <!--顶部右边-->
+            <div class="top-right">
+                <div class="member">
+                    您好，
+                    <div id="site-nav">
+                        <ul>
+                            <li>
+                                <div class="menu">
+                                    <a class="menu-hd" href="#">
+                                        <span class="orange">PCKmenr</span> <b></b>
+                                    </a>
+                                    <div class="menu-bd box">
+                                        <div class="global-account-head">
+                                            <a href="#" class="global-account-img">
+                                                <img src="images/face.png" width="39" height="39" alt="我的头像" />
+                                            </a>
+                                            <p class="global-account-name" title="name">下午好，陈先生</p>
+                                            <a href="account.html">账户设置</a>
+                                            <span class="global-top-seperator">|</span>
+                                            <a href="gamerecord.html">交易记录</a>
+                                        </div>
+                                        <div class="global-account-money">
+                                            钱包余额：
+                                            <span class="show">
+                        <a href="#" >显示余额</a>
+                      </span>
+                                            <p class="dottline space"></p>
+                                            <div class="total">
+                                                <a href="asset-transfer.html">转帐</a>
+                                                <span class="global-top-seperator">|</span>
+                                                <a href="asset-deposit.html">存款</a>
+                                                <span class="global-top-seperator">|</span>
+                                                <a href="asset-withdraw.html">取款</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    [退出]
+                    <label class="line-after">
+                        <span class="new"> <i class="new-ico select"></i>
+              <a href="#">新消息</a>
+            </span>
+                    </label>
+                </div>
+            </div>
+            <!--顶部左边-->
+            <div class="top-left">
+                <div class="select-lang">
+                    <p>
+                        <span class="flag cn"></span> 简体中文
+                    </p>
+                    <ul>
+                        <li>
+                            <a href="#" rel="cn">
+                                <span class="flag cn"></span> 简体中文
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="hk">
+                                <span class="flag hk"></span> 繁体中文
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="en">
+                                <span class="flag en"></span> English
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="th">
+                                <span class="flag th"></span> ไทย
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="vn">
+                                <span class="flag vn"></span> Tiếng Việt
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="kr">
+                                <span class="flag kr"></span> 한국어
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="jp">
+                                <span class="flag jp"></span> 日本語
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="id">
+                                <span class="flag id"></span> Indonesia
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="kh">
+                                <span class="flag kh"></span> Khmer
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <label class="time line-after">GMT +8 2015-03-24 15:02:57</label>
+            </div>
+        </div>
+    </div>
+    <!--banner-->
+    <div class="banner">
+        <div class="logo"></div>
+        <div class="right"></div>
+    </div>
+    <div class="wrapper">
+        <!--left-->
+        <div class="sidebar">
+            <!--左边菜单栏-->
+            <div class="sidebar-nav">
+                <dl>
+                    <dt>
+                        <a href="index.html"> <i class="navico home"></i> 钱包转账
+                        </a>
+                    </dt>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="asset-transfer.html">
+                            <i class="navico capital"></i> 存款专区
+                        </a>
+                    </dt>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="asset-transfer.html">
+                            <i class="navico capital"></i> 取款专区
+                        </a>
+                    </dt>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="asset-transfer.html">
+                            <i class="navico capital"></i> 资金记录
+                        </a>
+                    </dt>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="gamerecord.html">
+                            <i class="navico gamerecord"></i> 投注记录
+                        </a>
+                    </dt>
+                </dl>
+                <dl>
+                    <dt><a href="sale1.html"><i class="navico sale"></i> 优惠记录</a></dt>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="infonotice.html">
+                            <i class="navico info"></i> 消息公告
+                        </a>
+                    </dt>
+                </dl>
+                <dl>
+                    <dt class="select">
+                        <a href="account.html">
+                            <i class="navico accout-select"></i> 个人资料
+                        </a>
+                        </dd>
+                        <!--  <dd class="select">
+           <a href="account.html">
+             <i class="navico arrow-select"></i>
+             帐号设置
+           </a>
+         </dd>
+         <dd>
+           <a href="account-information.html">
+             <i class="navico arrow"></i>
+             个人信息
+           </a>
+         </dd>
+         <dd>
+           <a href="account-log.html">
+             <i class="navico arrow"></i>
+             登录日志
+           </a>
+         </dd>
+         <span class="beeline"></span> -->
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="recommended.html">
+                            <i class="navico recommend"></i> 推荐好友
+                        </a>
+                    </dt>
+                </dl>
+            </div>
+        </div>
+        <!--right-->
+        <div class="main-wrap">
+            <div class="notice">
+                <div class="notice-left"> <em class="path"></em>
+                </div>
+                <div class="path-right">
+                    <a href="index.html">玩家首页</a>
+                    <span class="arrow">></span>
+                    <a href="infonotice.html">个人资料</a>
+                </div>
+            </div>
+            <!--帐号设置-->
+            <div class="user-info">
+                <div class="user-info-left  portrait">
+                    <a href="account-information-edit.html" data-toggle="modal" data-target="#edit">点击修改头像</a>
+                    <p class="edit-bg">
+                        <img src="images/facebig.png" width="85" height="85"></p>
+                </div>
+                <div class="user-info-right">
+                    <p class="gray">
+                        下午好 <span class="orange">PCKmenr</span>， &nbsp;&nbsp;再忙也要起来走一走
+                    </p>
+                    <p>
+                        <span class="spacewidth">
+              <i class="gray">主货币：</i>
+              CNY人民币
+            </span>
+                    </p>
+                    <p>
+                        <span class="spacewidth">
+            <i class="gray">上次登录时间：</i>
+          2015-03-24 15:02:57
+          </span>
+                    </p>
+                    <!-- <p>
+            <span class="spacewidth">
+              <i class="gray">主货币：</i>
+              CNY人民币
+            </span>
+            <i class="gray">主时区</i>
+            ：(GMT+8)北京、香港
+        </p>
+        <p>
+          <span class="spacewidth">
+            <i class="gray">注册时间：</i>
+            2015-03-24 15:02:57
+          </span>
+          <i class="gray">上次登录时间：</i>
+          2015-03-24 15:02:57
+        </p> -->
+                </div>
+                <div class="user-btn-right">
+                    <button type="button" class="btn  btn-outline btn-filter" data-toggle="modal" data-target="#notice-list-1">修改登录密码</button>
+                    <button type="button" class="btn  btn-outline btn-filter" data-toggle="modal" data-target="#notice-list-2">修改安全密码</button>
+                </div>
+            </div>
+            <div class="rgeechar">
+                <div class="title">
+                    <span class="tips"><i class="mark plaintsmall"></i>完善个人资料能提升账户安全，<em class="orange">设置后只能联系客服修改</em>，请谨慎填写!</span></div>
+            </div>
+            <div class="account-list account-info-warp">
+                <div class="left-ico-message">
+                    <span class="account-info-title">账户安全<img src="images/safety-b.png"></span>
+                    <div class=" control-grouptwo">
+                        <label class="control-left" for="inputEmail">手机号码：</label>
+                        <div class="controls">
+                            <div class="country">
+                                <div class="select-country guj-select">
+                                    <p class="select-arr"><span class="flag id"></span>
+                                    </p>
+                                    <ul style="display: none;">
+                                        <li>
+                                            <a href="javascript:void(0)" rel="cn">
+                                                <span class="flag-img">
+                                <img src="../../pcenter/images/p-cn.jpg"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" rel="hk">
+                                                <span class="flag-img">
+                                <img src="../../pcenter/images/p-hk.jpg"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" rel="en">
+                                                <span class="flag-img">
+                                <img src="../../pcenter/images/p-en.jpg"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" rel="th">
+                                                <span class="flag-img">
+                                <img src="../../pcenter/images/p-th.jpg"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" rel="vn">
+                                                <span class="flag-img">
+                                <img src="../../pcenter/images/p-vn.jpg"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" rel="kr">
+                                                <span class="flag-img">
+                                <img src="../../pcenter/images/p-kr.jpg"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" rel="jp">
+                                                <span class="flag-img">
+                                <img src="../../pcenter/images/p-jp.jpg"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" rel="id">
+                                                <span class="flag-img">
+                                <img src="../../pcenter/images/p-id.jpg"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" rel="kh">
+                                                <span class="flag-img">
+                                <img src="../../pcenter/images/p-kh.jpg"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <input type="text" class="countryinput" placeholder="" value="+86">
+                            </div>
+                            <div class="clear">
+                                <input type="text" id="" placeholder="" class="input-code">
+                                <button class="btn  btn-outline btn-filter" type="button">免费获取验证码</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-grouptwo  clearfix">
+                        <label class="control-left" for="inputEmail">邮箱：</label>
+                        <div class="controls">
+                            <span class="sop-down">
+                    <input type="email" id="" placeholder="" class="input">
+                    <ul class="sop-down-a hide">
+                      <li>@qq.com</li>
+                      <li>@qq.com</li>
+                    </ul>
+                  </span>
+                        </div>
+                        <div class="clear">
+                            <input type="text" id="" placeholder="" class="input-code">
+                            <button class="btn  btn-outline btn-filter" type="button">92秒后重新发送短信</button>
+                        </div>
+                    </div>
+                    <div class="control-grouptwo">
+                        <label class="control-left" for="inputEmail">安全问题：</label>
+                        <div class="controls">
+                            <select name="select" class="selectwidth">
+                                <option>请选择</option>
+                                <option>我爷爷的姓名是？</option>
+                                <option>我奶奶的姓名是？</option>
+                                <option>我外公的姓名是？</option>
+                                <option>我外婆的姓名是？</option>
+                                <option>我爸爸的名字是？</option>
+                                <option>我妈妈的生日是？</option>
+                                <option>我哥哥的名字是？</option>
+                                <option>我姐姐的名字是？</option>
+                                <option>我弟弟的名字是？</option>
+                                <option>我妹妹的名字是？</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-grouptwo">
+                        <label class="control-left" for="inputEmail">答案：</label>
+                        <div class="controls">
+                            <input type="text" id="" placeholder="" class="input">
+                        </div>
+                    </div>
+                    <div class="control-grouptwo">
+                        <label class="control-left" for="inputEmail">当前使用：</label>
+                        <div class="controls">
+                            <i class="pay-bank bank-other"></i>【于*水】 6333 7689 4627&nbsp;&nbsp;省城</div>
+                    </div>
+                    <div class=" control-group">
+                            <label class="control-label" for="inputEmail">收款账户：</label>
+                            <div class="controls">
+                                <span class="radio"><input name="bankcode" type="radio"></span>银行卡
+                                <span class="radio m-l"><input name="bankcode" type="radio"></span>比特币钱包
+                            </div>
+                    </div>
+                    <div class=" control-group">
+                            <label class="control-label"></label>
+                            <div class="controls">您当前尚未设置银行卡！ <a href="#">立即新增</a></div>
+                    </div>
+                    <div class=" control-group">
+                            <label class="control-label"></label>
+                            <div class="controls">您当前尚未设置比特币钱包！ <a href="#">立即新增</a></div>
+                    </div>
+                    <div class=" control-group">
+                            <label class="control-label"></label>
+                            <div class="controls">
+                            	<div class="hintbank"><i class="pay-bank ccb"></i> 尾号:3156<span>欧*光</span></div>
+                            </label>
+                            </div>
+                    </div>
+                    <div class=" control-group">
+                            <label class="control-label"></label>
+                            <div class="controls">
+                            	<div class="hintbank" style="width: 420px"><i class="pay-third bitcoin"></i> d54d4f5ds4asdf4asdf245d4adf <a href="#" data-toggle="modal" data-target="#notice-list-1">修改</a></div>
+                            </label>
+                            </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="left-ico-message">
+                    <span class="account-info-title">个人信息<img src="images/info-b.png"></span>
+                    <form>
+                        <div class="control-group">
+                            <label class="control-label" for="inputEmail">真实姓名：</label>
+                            <div class="controls">
+                                <input type="text" class="input" placeholder="">
+                                <span class="orange tips line-hi30"><i class="mark plaintsmall"></i>一旦设置，不可修改</span>
+                            </div>
+                        </div>
+                        <div class=" control-group clearfix">
+                            <label class="control-label" for="inputEmail">主语言：</label>
+                            <div class="controls">
+                                <span class="input-group pull-left">
+<select class="chosen-select-no-single">
+  <option>简体中文</option>
+     </select></span>
+                                <span class="orange tips line-hi30"><i class="mark plaintsmall"></i>一旦设置，不可修改</span>
+                            </div>
+                        </div>
+                        <div class=" control-group clearfix">
+                            <label class="control-label" for="inputEmail">国家地区：</label>
+                            <div class="controls">
+                                <span class="input-group pull-left"><select class="chosen-select-no-single">
+  <option>国家</option>
+  <option>中国</option>
+  <option>美国</option>
+  </select></span>
+                                <span class="input-group pull-left m-l-xs"><select class="chosen-select-no-single">
+  <option>地区</option>
+  <option>福建</option>
+  <option>广东</option>
+  </select></span>
+                                <span class="input-group pull-left m-l-xs"><select class="chosen-select-no-single">
+  <option>城市</option>
+  <option>厦门</option>
+  <option>福州</option>
+  </select></span>
+                            </div>
+                        </div>
+                        <!--  <div class=" control-group clearfix">
+<label class="control-label" for="inputEmail">时区：</label>
+<div class="controls">
+<span class="input-group pull-left">
+<select class="chosen-select-no-single">
+ <option>东八区</option>
+    </select></span>
+</div>
+ </div>
+-->
+                        <!--  <div class=" control-group clearfix">
+<label class="control-label" for="inputEmail">主货币：</label>
+<div class="controls"><span class="input-group pull-left">
+<select class="chosen-select-no-single">
+ <option>CNY人民币</option>
+    </select> </span>
+<span class="orange tips line-hi30"><i class="mark plaintsmall"></i>一旦设置，不可修改</span></div>
+ </div> -->
+                        <div class=" control-group">
+                            <label class="control-label" for="inputEmail">呢称：</label>
+                            <div class="controls">
+                                <input type="text" class="input" placeholder="" value="shey">
+                            </div>
+                        </div>
+                        <div class=" control-group">
+                            <label class="control-label" for="inputEmail">性别：</label>
+                            <div class="controls">
+                                <span class="radio"><input name="bankcode"  type="radio"></span>男
+                                <span class="radio m-l"><input name="bankcode"  type="radio"></span>女
+                                <span class="radio m-l"><input name="bankcode"  type="radio"></span>其他
+                            </div>
+                        </div>
+                        <div class=" control-group">
+                            <label class="control-label" for="inputEmail">生日：</label>
+                            <div class="controls">
+                                <div class="input-group daterangepickers" style="">
+                                    <i class="input-group-addon glyphicon glyphicon-calendar fa fa-calendar" style="display: table-cell;top:0px;"></i>
+                                    <input class="form-control" type="text" id="" name="" style="" value=" - " data-rel="{showDropdowns:false,callback:'',useRange:true,useToday:false,format:'yyyy/MM/dd HH:mm:ss',useTime:false,minDate:'2015/10/29 00:00:00',maxDate:'2015/11/05 00:00:00',startDate:'',endDate:'',btnClass:'search',drops:'down',opens:'right',startName:'search.beginCreateTime',endName:'search.endCreateTime'}" readonly="readonly">
+                                    <input type="hidden" name="search.beginCreateTime" value="">
+                                    <input type="hidden" name="search.endCreateTime" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" control-group clearfix">
+                            <label class="control-label" for="inputEmail">星座：</label>
+                            <div class="controls">
+                                <span class="input-group pull-left"><select class="chosen-select-no-single">
+  <option>射手座</option>
+    </select></span>
+                            </div>
+                        </div>
+                        <div class=" control-group">
+                            <label class="control-label" for="inputEmail">SKYPE：</label>
+                            <div class="controls">
+                                <input type="text" class="input" placeholder="" value="">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="inputEmail">MSN：</label>
+                            <div class="controls">
+                                <input type="text" class="input" placeholder="" value="">
+                            </div>
+                        </div>
+                        <div class=" control-group">
+                            <label class="control-label" for="inputEmail">QQ：</label>
+                            <div class="controls">
+                                <input type="text" class="input" placeholder="" value="">
+                            </div>
+                        </div>
+                        <div class=" control-group">
+                            <label class="control-label"></label>
+                            <button type="button" class="btn-blue btn large-big" data-toggle="modal" data-target="#notice-list-3">提交</button>
+                            <button type="button" class="btn-gray btn large-big m-l">取消</button>
+                        </div>
+                        <div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="account-list account-info-warp">
+                <div class="left-ico-message">
+                    <span class="account-info-title">账户安全<img src="images/safety-b.png"></span>
+                    <div class=" control-grouptwo">
+                        <label class="control-left" for="inputEmail">手机号码：</label>
+                        <div class="controls">
+                            <em class="orange">137******2495</em>此号码可用于接收通知、找回密码。
+                            <button class="btn  btn-outline btn-filter" type="button" data-toggle="modal" data-target="#notice-list-4">绑定手机</button>
+                        </div>
+                    </div>
+                    <div class="control-grouptwo  clearfix">
+                        <label class="control-left" for="inputEmail">邮箱：</label>
+                        <div class="controls">
+                            <em class="orange">137******2@qq.com</em>此邮箱可用于接收通知、找回密码。
+                            <button class="btn  btn-outline btn-filter" type="button" data-toggle="modal" data-target="#notice-list-5">绑定邮箱</button>
+                        </div>
+                    </div>
+                    <div class="control-grouptwo">
+                        <label class="control-left" for="inputEmail">安全问题：</label>
+                        <div class="controls">已设置安全保护问题，安全问题是您找回密码的方式之一
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="left-ico-message">
+                    <span class="account-info-title">个人信息<img src="images/info-b.png"></span>
+                    <form>
+                        <div class="control-group">
+                            <label class="control-label" for="inputEmail">真实姓名：</label>
+                            <div class="controls">张*大
+                            </div>
+                        </div>
+                        <div class=" control-group clearfix">
+                            <label class="control-label" for="inputEmail">主语言：</label>
+                            <div class="controls">
+                                简体中文
+                            </div>
+                        </div>
+                        <div class=" control-group clearfix">
+                            <label class="control-label" for="inputEmail">国家地区：</label>
+                            <div class="controls">
+                                中国 河北 唐山
+                            </div>
+                        </div>
+                        <div class=" control-group">
+                            <label class="control-label" for="inputEmail">呢称：</label>
+                            <div class="controls">
+                                张大爷
+                            </div>
+                        </div>
+                        <div class=" control-group">
+                            <label class="control-label" for="inputEmail">性别：</label>
+                            <div class="controls">
+                                男
+                            </div>
+                        </div>
+                        <div class=" control-group">
+                            <label class="control-label" for="inputEmail">生日：</label>
+                            <div class="controls">
+                                1975-03-21
+                            </div>
+                        </div>
+                        <div class=" control-group clearfix">
+                            <label class="control-label" for="inputEmail">星座：</label>
+                            <div class="controls">
+                                处女座
+                            </div>
+                        </div>
+                        <div class=" control-group">
+                            <label class="control-label" for="inputEmail">SKYPE：</label>
+                            <div class="controls">
+                                已被设为最高级别隐私，不予显示！
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="inputEmail">MSN：</label>
+                            <div class="controls">
+                                已被设为最高级别隐私，不予显示！
+                            </div>
+                        </div>
+                        <div class=" control-group">
+                            <label class="control-label" for="inputEmail">QQ：</label>
+                            <div class="controls">
+                                已被设为最高级别隐私，不予显示！
+                            </div>
+                        </div>
+                        <div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- 登录日志 -->
+            <div class="account-info-warp">
+                <div class="titleline">
+                    <h2>登陆日志</h2></div>
+            </div>
+            <div class="rgeechar">
+                <div class="history">
+                    <span class="orange">如果不确定是您本人登录，建议您</span> <a href="#">立即修改密码</a>。
+                </div>
+            </div>
+            <div class="chart-table">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <th width="18%">登录时间</th>
+                            <th width="18%">IP</th>
+                        </tr>
+                        <tr>
+                            <td>2015年03月31日 10:50:26</td>
+                            <td>162.251.21.110<span class="m-l  gray">福建厦门</span></td>
+                        </tr>
+                        <tr>
+                            <td>2015年03月31日 10:50:26</td>
+                            <td>162.251.21.110<span class="m-l gray">英属维尔京群岛</span></td>
+                        </tr>
+                        <tr>
+                            <td>2015年03月31日 10:50:26</td>
+                            <td>162.251.21.110<span class="m-l gray">福建厦门</span></td>
+                        </tr>
+                        <tr>
+                            <td>2015年03月31日 10:50:26</td>
+                            <td>162.251.21.110<span class="m-l gray">英属维尔京群岛</span></td>
+                        </tr>
+                        <tr>
+                            <td>2015年03月31日 10:50:26</td>
+                            <td>162.251.21.110<span class="m-l gray">福建厦门</span></td>
+                        </tr>
+                        <tr>
+                            <td>2015年03月31日 10:50:26</td>
+                            <td>162.251.21.110<span class="m-l gray">英属维尔京群岛</span></td>
+                        </tr>
+                        <tr>
+                            <td>2015年03月31日 10:50:26</td>
+                            <td>162.251.21.110<span class="m-l gray">福建厦门</span></td>
+                        </tr>
+                        <tr>
+                            <td>2015年03月31日 10:50:26</td>
+                            <td>162.251.21.110<span class="m-l gray">英属维尔京群岛</span></td>
+                        </tr>
+                        <tr>
+                            <td>2015年03月31日 10:50:26</td>
+                            <td>162.251.21.110<span class="m-l gray">福建厦门</span></td>
+                        </tr>
+                        <tr>
+                            <td>2015年03月31日 10:50:26</td>
+                            <td>162.251.21.110<span class="m-l gray">英属维尔京群岛</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="account-list">
+      <div class="account-list-top">
+        <dl>
+          <dt>
+            <dd>
+              您的帐号安全评分：
+              <span class="orange fontbig">60</span>
+              分
+              <span class="spacefs orange fontsmall">您的帐号存在安全风险，建议您立即修复</span>
+            </dd>
+            <dd>
+              安全等级：
+              <span class="auth-rate">
+                <span class="progress" style="width:50%"></span>
+              </span>
+              <span class="green">中</span>
+            </dd>
+          </dt>
+        </dl>
+      </div>
+      <div class="account-list-cen">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="20%">
+              <i class="mark plaint"></i>
+              登录密码
+            </td>
+            <td width="66%" class="gray">
+              密码安全度： <em class="passafe passafegreen"></em>
+              <em class="passafe"></em>
+              <em class="passafe"></em>
+            </td>
+            <td width="14%">
+              <button data-toggle="button" class="btn btn-blue btn-small classtitle" type="button" id="stateBut">
+                <span class="set">设置</span>
+                <span class="shrink">收起</span>
+              </button>
+            </td>
+          </tr>
+          <tr class="bottomline">
+            <td colspan="3" >
+              <div class="accout-retract classtext">
+                <h2>您当前密码安全级别：低</h2>
+                <div class="orange spaces modifypassword">建议您修改密码，提高密码的安全度！</div>
+                <div class="controls spaces">
+                  <button href="index.html" data-toggle="button" class="btn-gray btn btn-big" type="button">修改密码</button>
+                </div>
+              </div>
+    
+              <div class="accout-retract classtext">
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">当前密码：</label>
+                  <div class="controls">
+                    <input type="password" id="" placeholder=""  class="input">
+                    <i class="ico-ask hidesmall"></i>
+                    <span class="tips green">
+                      <i class="mark successsmall"></i>
+                    </span>
+                    <p class="m-tt">
+                      <a href="#">忘记密码?</a>
+                    </p>
+                  </div>
+                </div>
+    
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">新密码：</label>
+                  <div class="controls">
+                    <input type="password" id="" placeholder=""  class="input">
+                    <i class="ico-ask hidesmall"></i>
+                    <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      请输入密码
+                    </span>
+                  </div>
+                </div>
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">密码强度：</label>
+                  <div class="controls">
+                    <em class="passafe passafegreen"></em>
+                    <em class="passafe"></em>
+                    <em class="passafe"></em>
+                  </div>
+                </div>
+    
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">确认密码：</label>
+                  <div class="controls">
+                    <input type="password" id="" placeholder=""  class="input">
+                    <i class="ico-ask hidesmall"></i>
+                    <span class="tips red">
+                      <i class="mark wrongsmall"></i>
+                      密码不一致，请重新输入
+                    </span>
+                  </div>
+                </div>
+    
+                <div class="control-grouptwo">
+                  <label class="control-label" for="inputEmail"></label>
+                  <div class="controls">
+                    <button data-toggle="button" class="btn-gray btn btn-big" type="button">修改</button>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="control-sucess classtext">
+                <h3 class="popalign">
+                  <i class="tipbig success"></i>
+                  操作成功
+                </h3>
+              </div>
+            </td>
+          </tr>
+    
+          <tr>
+            <td>
+              <i class="mark plaint"></i>
+              安全密码
+            </td>
+            <td class="gray">已设置安全密码！在相关操作时输入，以提高您账户的安全性</td>
+            <td width="14%">
+              <button  data-toggle="button" class="btn btn-blue btn-small classtitle" type="button">
+                <span class="set">设置</span>
+                <span class="shrink">收起</span>
+              </button>
+            </td>
+          </tr>
+    
+          <tr class="bottomline">
+            <td colspan="3">
+              <div class="accout-retract classtext">
+                <h2>暂未设置安全密码！在相关操作时需要输入，用于提高您账户的安全性！</h2>
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">安全密码：</label>
+                  <div class="controls">
+                    <input type="password" id="" placeholder=""  class="input only-1-s" maxlength="1">
+                    <input type="password" id="" placeholder=""  class="input only-1-s" maxlength="1">
+                    <input type="password" id="" placeholder=""  class="input only-1-s" maxlength="1">
+                    <input type="password" id="" placeholder=""  class="input only-1-s" maxlength="1">
+                    <input type="password" id="" placeholder=""  class="input only-1-s" maxlength="1">
+                    <input type="password" id="" placeholder=""  class="input only-1-s" maxlength="1">
+                    <i class="ico-ask hidesmall"></i>
+                    <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      输入6位纯数字，请勿与登录密码相同
+                    </span>
+                  </div>
+                </div>
+    
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">确认密码：</label>
+                  <div class="controls">
+                    <input type="password" id="" placeholder=""  class="input only-1-s" maxlength="1">
+                    <input type="password" id="" placeholder=""  class="input only-1-s" maxlength="1">
+                    <input type="password" id="" placeholder=""  class="input only-1-s" maxlength="1">
+                    <input type="password" id="" placeholder=""  class="input only-1-s" maxlength="1">
+                    <input type="password" id="" placeholder=""  class="input only-1-s" maxlength="1">
+                    <input type="password" id="" placeholder=""  class="input only-1-s" maxlength="1">
+                    <i class="ico-ask hidesmall"></i>
+                    <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      请输入密码
+                    </span>
+                  </div>
+                </div>
+    
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">登录密码：</label>
+                  <div class="controls">
+                    <input type="password" id="" placeholder=""  class="input">
+                    <i class="ico-ask showsmall"></i>
+                  </div>
+                </div>
+    
+                <div class="control-grouptwo">
+                  <label class="control-label" for="inputEmail"></label>
+                  <div class="controls">
+                    <button data-toggle="button" class="btn-gray btn btn-big" type="button">确认</button>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="accout-retract classtext">
+                <h2>您当前已设置安全密码</h2>
+                <div class="orange spaces modifypassword">定期修改密码，能有效提高账户的安全度！</div>
+                <div class="controls spaces">
+                  <button href="index.html" data-toggle="button" class="btn-gray btn btn-big" type="button">修改密码</button>
+                </div>
+              </div>
+    
+              <div class="accout-retract classtext">
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">当前密码：</label>
+                  <div class="controls">
+                    <input type="password" id="" placeholder=""  class="input">
+    
+                    <i class="ico-ask hidesmall"></i>
+                    <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      请输入密码
+                    </span>
+                    <p class="m-tt">
+                      <a href="#">忘记密码?</a>
+                    </p>
+    
+                  </div>
+                </div>
+    
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">新密码：</label>
+                  <div class="controls">
+                    <input type="password" id="" placeholder=""  class="input">
+                    <i class="ico-ask hidesmall"></i>
+                    <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      请输入6位纯数字
+                    </span>
+                  </div>
+                </div>
+    
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">确认密码：</label>
+                  <div class="controls">
+                    <input type="password" id="" placeholder=""  class="input">
+                    <i class="ico-ask hidesmall"></i>
+                    <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      请输入密码
+                    </span>
+                  </div>
+                </div>
+    
+                <div class="control-grouptwo">
+                  <label class="control-label" for="inputEmail"></label>
+                  <div class="controls">
+                    <button data-toggle="button" class="btn-gray btn btn-big" type="button">修改</button>
+                  </div>
+                </div>
+              </div>
+    
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <i class="mark success"></i>
+              手机绑定
+            </td>
+            <td class="gray">
+              <span class="orange">137******2495</span>
+              此号码可用于接收通知、找回密码
+            </td>
+            <td width="14%">
+              <button  data-toggle="button" class="btn btn-blue btn-small classtitle" type="button">
+                <span class="set">设置</span>
+                <span class="shrink">收起</span>
+              </button>
+            </td>
+          </tr>
+          <tr class="bottomline">
+            <td colspan="3">
+              <div class="accout-retract classtext">
+                <h2>您还未绑定手机，绑定后可直接用于接收通知、找回密码</h2>
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">手机号码：</label>
+                  <div class="controls">
+                    <div class="country">
+                      <div class="select-country guj-select">
+                        <p class="select-arr">
+                          <span class="flag-img">
+                            <img src="../../pcenter/images/p-cn.jpg"></span>
+                          中国
+                        </p>
+                        <ul>
+                          <li>
+                            <a href="javascript:void(0)" rel="cn">
+                              <span class="flag-img">
+                                <img src="../../pcenter/images/p-cn.jpg"></span>
+                              中国
+                            </a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0)" rel="hk">
+                              <span class="flag-img">
+                                <img src="../../pcenter/images/p-hk.jpg"></span>
+                              台湾
+                            </a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0)" rel="en">
+                              <span class="flag-img">
+                                <img src="../../pcenter/images/p-en.jpg"></span>
+                              英国
+                            </a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0)" rel="th">
+                              <span class="flag-img">
+                                <img src="../../pcenter/images/p-th.jpg"></span>
+                              ไทย
+                            </a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0)" rel="vn">
+                              <span class="flag-img">
+                                <img src="../../pcenter/images/p-vn.jpg"></span>
+                              Tiếng Việt
+                            </a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0)" rel="kr">
+                              <span class="flag-img">
+                                <img src="../../pcenter/images/p-kr.jpg"></span>
+                              한국어
+                            </a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0)" rel="jp">
+                              <span class="flag-img">
+                                <img src="../../pcenter/images/p-jp.jpg"></span>
+                              日本
+                            </a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0)" rel="id">
+                              <span class="flag-img">
+                                <img src="../../pcenter/images/p-id.jpg"></span>
+                              Indonesia
+                            </a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0)" rel="kh">
+                              <span class="flag-img">
+                                <img src="../../pcenter/images/p-kh.jpg"></span>
+                              Khmer
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <input type="text"  class="countryinput" placeholder="" value="+86"></div>
+                    <div class="clear"></div>
+                  </div>
+                </div>
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">验证码：</label>
+                  <div class="controls">
+                    <input type="text" id="" placeholder=""  class="input-code">
+                    <button data-toggle="button" class="btn-gray btn btn-code" type="button">免费获取验证码</button>
+                  </div>
+    
+                </div>
+    
+                <div class="control-grouptwo">
+                  <label class="control-label" for="inputEmail"></label>
+                  <div class="controls">
+                    <button data-toggle="button" class="btn-gray btn btn-big" type="button">确认</button>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="accout-retract classtext">
+                <div class="spaces modifypassword">
+                  已绑定手机号
+                  <span class="orange bold">137******2495</span>
+                  ，此号码可用于接收通知、找回密码
+                </div>
+                <div class="controls spaces">
+                  <button href="index.html" data-toggle="button" class="btn-gray btn btn-big" type="button">更改号码</button>
+                </div>
+              </div>
+    
+              <div class="accout-retract classtext">
+                <h2>校验方式</h2>
+    
+                <div class="clearfix">
+                  <div class="verify-way">
+                    <dl>
+                      <dd class="title-a">
+                        <i class="navico recommend"></i>
+                        安全密码验证
+                      </dd>
+                      <dd class="title-b">正确输入安全密码即可修改</dd>
+                      <dd class="title-c">
+                        <button type="button" class="btn  btn-outline btn-filter btn-lg real-time-btn">
+                          <span class="hd">立即输入</span>
+                        </button>
+                      </dd>
+                    </dl>
+                  </div>
+    
+                  <div class="verify-way">
+                    <dl>
+                      <dd class="title-a">
+                        <i class="navico recommend"></i>
+                        安全问题验证
+                      </dd>
+                      <dd class="title-b">若您记得设置的安全问题的答案，请选择此验证方式。</dd>
+                      <dd class="title-c">
+                        <button type="button" class="btn  btn-outline btn-filter btn-lg real-time-btn">
+                          <span class="hd">立即回答</span>
+                        </button>
+                      </dd>
+                    </dl>
+                  </div>
+    
+                  <div class="verify-way">
+                    <dl>
+                      <dd class="title-a">
+                        <i class="navico recommend"></i>
+                        联系客服处理
+                      </dd>
+                      <dd class="title-b">暂无其他可使用的验证方式，请直接联系在线客服。</dd>
+                      <dd class="title-c">
+                        <button type="button" class="btn  btn-outline btn-filter btn-lg real-time-btn">
+                          <span class="hd">在线客服</span>
+                        </button>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+    
+              </div>
+    
+              <div class="accout-retract classtext">
+                <h2>安全密码验证</h2>
+    
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">安全密码：</label>
+                  <div class="controls">
+                    <input type="text" id="" placeholder="" class="input"></div>
+                </div>
+    
+                <div class="control-grouptwo">
+                  <label class="control-label" for="inputEmail"></label>
+                  <div class="controls">
+                    <button data-toggle="button" class="btn-blue btn btn-big" type="button">确定</button>
+                    <a href="#">用安全问题验证</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="accout-retract classtext">
+                <h2>安全问题验证</h2>
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">问题一：</label>
+                  <div class="controls">我妈妈的名字是？</div>
+                </div>
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">答案：</label>
+                  <div class="controls">
+                    <input type="text" id="" placeholder="" class="input">
+                    <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      您输入的答案有误，请重新输入
+                    </span>
+                  </div>
+                </div>
+    
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">问题二：</label>
+                  <div class="controls">我妹妹的名字是？</div>
+                </div>
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">答案：</label>
+                  <div class="controls">
+                    <input type="text" id="" placeholder="" class="input">
+                    <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      请输入答案
+                    </span>
+                  </div>
+                </div>
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">问题二：</label>
+                  <div class="controls">我爷爷的名字是？</div>
+                </div>
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">答案：</label>
+                  <div class="controls">
+                    <input type="text" id="" placeholder="" class="input"></div>
+                </div>
+                <div class="control-grouptwo">
+                  <label class="control-label" for="inputEmail"></label>
+                  <div class="controls">
+                    <button data-toggle="button" class="btn-blue btn btn-big" type="button">确定</button>
+                    <a href="#">用安全密码验证</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="accout-retract classtext">
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">原手机号：</label>
+                  <div class="controls">
+                    <input type="text"  class="input" placeholder="" value="请输入手机号码">
+                    <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      请输入手机号码
+                    </span>
+                  </div>
+                </div>
+    
+                <div class="control-grouptwo">
+                  <label class="control-left" for="inputEmail">验证码：</label>
+                  <div class="controls">
+                    <input type="text" id="input" placeholder=""  class="input-code">
+                    <button data-toggle="button" class="btn-bggray  btn-bigauto" type="button">92秒后重新获取短信</button>
+                  </span>
+                </div>
+              </div>
+              <div class="control-grouptwo">
+                <label class="control-label" for="inputEmail"></label>
+                <div class="controls">
+                  <button data-toggle="button" class="btn-gray btn btn-big" type="button">下一步</button>
+                </div>
+                <div class="warm-tips">
+                  <p>
+                    如原手机无法验证，请
+                    <a href="#">联系客服</a>
+                    验证身份后直接帮您修改
+                  </p>
+                </div>
+              </div>
+            </div>
+    
+          </td>
+        </tr>
+    
+        <tr>
+          <td>
+            <i class="mark success"></i>
+            邮箱绑定
+          </td>
+          <td class="gray">
+            <span class="orange">chen***@126.com</span>
+            此邮箱可用于接收通知、找回密码
+          </td>
+          <td width="14%">
+            <button data-toggle="button" class="btn btn-blue btn-small classtitle" type="button" id="stateBut">
+              <span class="set">设置</span>
+              <span class="shrink">收起</span>
+            </button>
+          </td>
+        </tr>
+    
+        <tr class="bottomline">
+          <td colspan="3">
+            <div class="accout-retract classtext">
+              <h2>您还未绑定邮箱，绑定后可用于接收通知、找回密码</h2>
+              <div class="control-grouptwo  clearfix">
+                <label class="control-left" for="inputEmail">邮箱：</label>
+                <div class="controls">
+                  <span class="sop-down">
+                    <input type="password" id="" placeholder=""  class="input">
+                    <ul class="sop-down-a hide">
+                      <li>@qq.com</li>
+                      <li>@qq.com</li>
+                    </ul>
+                  </span>
+    
+                </div>
+              </div>
+    
+              <div class="control-grouptwo">
+                <label class="control-left" for="inputEmail">验证码：</label>
+                <div class="controls">
+                  <input type="text" id="" placeholder=""  class="input-code">
+                  <button data-toggle="button" class="btn-gray btn btn-code" type="button">免费获取验证码</button>
+                </div>
+              </div>
+    
+              <div class="control-grouptwo">
+                <label class="control-label" for="inputEmail"></label>
+                <div class="controls">
+                  <button data-toggle="button" class="btn-gray btn btn-big" type="button">绑定邮箱</button>
+                </div>
+              </div>
+            </div>
+    
+            <div class="accout-retract classtext">
+              <div class="spaces modifypassword">
+                已绑定邮箱
+                <span class="orange bold">137******2495@139.com</span>
+                ，此邮箱可用于接收通知、找回密码
+              </div>
+              <div class="controls spaces">
+                <button href="index.html" data-toggle="button" class="btn-gray btn btn-big" type="button">更换邮箱</button>
+              </div>
+            </div>
+    
+            <div class="accout-retract classtext">
+              <div class="control-grouptwo">
+                <label class="control-left" for="inputEmail">原安全邮箱：</label>
+                <div class="controls error">
+                  <input type="text"  class="input" placeholder="" value="请输入手机号码">
+                  <span class="tips orange">
+                    <i class="mark plaintsmall"></i>
+                    请输入手机号码
+                  </span>
+                </div>
+              </div>
+    
+              <div class="control-grouptwo">
+                <label class="control-left" for="inputEmail">验证码：</label>
+                <div class="controls">
+                  <input type="text" id="input" placeholder=""  class="input-code">
+                  <button data-toggle="button" class="btn-bggray  btn-bigauto" type="button">92秒后重新获取短信</button>
+                </span>
+              </div>
+            </div>
+            <div class="control-grouptwo">
+              <label class="control-label" for="inputEmail"></label>
+              <div class="controls">
+                <button data-toggle="button" class="btn-gray btn btn-big" type="button">下一步</button>
+              </div>
+              <div class="warm-tips">
+                <p>
+                  如原邮箱无法验证，请
+                  <a href="#">联系客服</a>
+                  验证身份后再绑定新邮箱
+                </p>
+              </div>
+            </div>
+          </div>
+    
+          <div class="accout-retract classtext">
+            <div class="control-grouptwo">
+              <label class="control-left" for="inputEmail">新安全邮箱：</label>
+              <div class="controls">
+                <input type="text"  class="input" placeholder="" value="">
+                <span class="tips orange">
+                  <i class="mark plaintsmall"></i>
+                  请输入新安全邮箱
+                </span>
+              </div>
+            </div>
+    
+            <div class="control-grouptwo">
+              <label class="control-left" for="inputEmail">验证码：</label>
+              <div class="controls">
+                <input type="text" id="input" placeholder=""  class="input-code">
+                <button data-toggle="button" class="btn-gray btn btn-code" type="button">获取验证码</button>
+                <span class="tips orange">
+                  <i class="mark plaintsmall"></i>
+                  请输入您收到的验证码
+                </span>
+    
+              </span>
+            </div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-label" for="inputEmail"></label>
+            <div class="controls">
+              <button data-toggle="button" class="btn-blue btn btn-big" type="button">保存</button>
+              <button data-toggle="button" class="btn-gray btn btn-big" type="button">取消</button>
+    
+            </div>
+          </div>
+        </div>
+    
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <i class="mark plaint"></i>
+        安全问题
+      </td>
+      <td class="gray">已设置安全保护问题，安全问题是您找回密码的方式之一</td>
+      <td width="14%">
+        <button data-toggle="button" class="btn btn-blue btn-small classtitle" type="button" id="stateBut">
+          <span class="set">设置</span>
+          <span class="shrink">收起</span>
+        </button>
+      </td>
+    </tr>
+    <tr class="bottomline">
+      <td colspan="3">
+        <div class="accout-retract classtext">
+          <h2>您暂未设置安全问题，安全问题是找回安全密码和登录密码的方式之一。</h2>
+          <div class="warm-tips">
+            <h3 class="orange">贴心提示：</h3>
+            <p>设置自己容易记住他人难以获取的问题及答案，能更有效保障密码安全。</p>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">问题一：</label>
+            <div class="controls">
+              <select name="select" class="selectwidth">
+                <option>请选择</option>
+                <option>我爷爷的姓名是？</option>
+                <option>我奶奶的姓名是？</option>
+                <option>我外公的姓名是？</option>
+                <option>我外婆的姓名是？</option>
+                <option>我爸爸的名字是？</option>
+                <option>我妈妈的生日是？</option>
+                <option>我哥哥的名字是？</option>
+                <option>我姐姐的名字是？</option>
+                <option>我弟弟的名字是？</option>
+                <option>我妹妹的名字是？</option>
+    
+              </select>
+            </div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">答案：</label>
+            <div class="controls">
+              <input type="text" id="" placeholder=""  class="input"></div>
+          </div>
+    
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">问题二：</label>
+            <div class="controls">
+              <select name="select" class="selectwidth">
+                <option>请选择</option>
+                <option>我比较喜欢的球类运动是？</option>
+                <option>我最喜欢的一首歌是？</option>
+                <option>我最喜欢的汽车品牌是？</option>
+                <option>我最喜欢的一部电影名称是？</option>
+                <option>我的幸运数字是？</option>
+                <option>我向往的旅游地是？</option>
+              </select>
+            </div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">答案：</label>
+            <div class="controls">
+              <input type="text" id="" placeholder=""  class="input"></div>
+          </div>
+    
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">问题三：</label>
+            <div class="controls">
+              <select name="select" class="selectwidth">
+                <option>请选择</option>
+                <option>我第一次购房的日期是？</option>
+                <option>我高考的总分是？</option>
+                <option>我的初恋的名字是？</option>
+                <option>我的工号是？</option>
+                <option>我的结婚记念日是？</option>
+                <option>我第一辆车的车牌是？</option>
+              </select>
+            </div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">答案：</label>
+            <div class="controls">
+              <input type="text" id="" placeholder=""  class="input"></div>
+          </div>
+    
+          <div class="control-grouptwo">
+            <label class="control-label" for="inputEmail"></label>
+            <div class="controls">
+              <button data-toggle="button" class="btn-gray btn btn-big" type="button">下一步</button>
+            </div>
+          </div>
+        </div>
+    
+        <div class="accout-retract classtext">
+          <h2>请回答您刚才设置的问题，以确认问题。</h2>
+          <div class="warm-tips">
+            <h3 class="orange">贴心提示：</h3>
+            <p>设置自己容易记住他人难以获取的问题及答案，能更有效保障密码安全。</p>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">问题一：</label>
+            <div class="controls">我妈妈的名字是</div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">答案：</label>
+            <div class="controls">
+              <input type="text" id="" placeholder=""  class="input"></div>
+          </div>
+    
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">问题二：</label>
+            <div class="controls">我妹妹的名字是</div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">答案：</label>
+            <div class="controls">
+              <input type="text" id="" placeholder=""  class="input"></div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">问题二：</label>
+            <div class="controls">我爷爷的名字是</div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">答案：</label>
+            <div class="controls">
+              <input type="text" id="" placeholder=""  class="input"></div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">登录密码：</label>
+            <div class="controls">
+              <input type="password" id="" placeholder=""  class="input">
+              <p class="m-tt">
+                <a href="#">忘记密码?</a>
+              </p>
+    
+            </div>
+          </div>
+    
+          <div class="control-grouptwo">
+            <label class="control-label" for="inputEmail"></label>
+            <div class="controls">
+              <button data-toggle="button" class="btn-blue btn btn-big" type="button">提交</button>
+              <button data-toggle="button" class="btn-gray btn btn-bigauto" type="button">重新设置安全问题</button>
+            </div>
+          </div>
+        </div>
+    
+        <div class="accout-retract classtext">
+          <h2>您已设置安全保护问题</h2>
+          <div class="orange spaces modifypassword">安全问题是找回安全密码和登录密码方式之一，定期修改能更有效的保障密码安全！</div>
+          <div class="controls spaces">
+            <button href="index.html" data-toggle="button" class="btn-gray btn btn-big" type="button">修改密保</button>
+          </div>
+        </div>
+    
+        <div class="accout-retract classtext">
+          <h2>您正在使用 “回答安全保护问题+验证原安全密码” 进行校验。</h2>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">问题一：</label>
+            <div class="controls">我妈妈的名字是</div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">答案：</label>
+            <div class="controls">
+              <input type="text" id="" placeholder=""  class="input"></div>
+          </div>
+    
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">问题二：</label>
+            <div class="controls">我妹妹的名字是</div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">答案：</label>
+            <div class="controls">
+              <input type="text" id="" placeholder=""  class="input"></div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">问题二：</label>
+            <div class="controls">我爷爷的名字是</div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">答案：</label>
+            <div class="controls">
+              <input type="text" id="" placeholder=""  class="input"></div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-label" for="inputEmail"></label>
+            <div class="controls">
+              <button data-toggle="button" class="btn-blue btn btn-big" type="button">下一步</button>
+              &nbsp;&nbsp;忘记答案?
+              <a href="#">选择其他方式验证</a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="accout-retract classtext">
+          <h2>设置新问题，新安全问题及答案将会覆盖原有问题和答案</h2>
+          <div class="warm-tips">
+            <h3 class="orange">贴心提示：</h3>
+            <p>设置自己容易记住他人难以获取的问题及答案，能更有效保障密码安全。</p>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">问题一：</label>
+            <div class="controls">
+              <select name="select" class="selectwidth">
+                <option>请选择</option>
+                <option>我爷爷的姓名是？</option>
+                <option>我奶奶的姓名是？</option>
+                <option>我外公的姓名是？</option>
+                <option>我外婆的姓名是？</option>
+                <option>我爸爸的名字是？</option>
+                <option>我妈妈的生日是？</option>
+                <option>我哥哥的名字是？</option>
+                <option>我姐姐的名字是？</option>
+                <option>我弟弟的名字是？</option>
+                <option>我妹妹的名字是？</option>
+    
+              </select>
+            </div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">答案：</label>
+            <div class="controls">
+              <input type="text" id="" placeholder=""  class="input"></div>
+          </div>
+    
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">问题二：</label>
+            <div class="controls">
+              <select name="select" class="selectwidth">
+                <option>请选择</option>
+                <option>我比较喜欢的球类运动是？</option>
+                <option>我最喜欢的一首歌是？</option>
+                <option>我最喜欢的汽车品牌是？</option>
+                <option>我最喜欢的一部电影名称是？</option>
+                <option>我的幸运数字是？</option>
+                <option>我向往的旅游地是？</option>
+              </select>
+            </div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">答案：</label>
+            <div class="controls">
+              <input type="text" id="" placeholder=""  class="input"></div>
+          </div>
+    
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">问题三：</label>
+            <div class="controls">
+              <select name="select" class="selectwidth">
+                <option>请选择</option>
+                <option>我第一次购房的日期是？</option>
+                <option>我高考的总分是？</option>
+                <option>我的初恋的名字是？</option>
+                <option>我的工号是？</option>
+                <option>我的结婚记念日是？</option>
+                <option>我第一辆车的车牌是？</option>
+              </select>
+            </div>
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">答案：</label>
+            <div class="controls">
+              <input type="text" id="" placeholder=""  class="input"></div>
+          </div>
+    
+          <div class="control-grouptwo">
+            <label class="control-label" for="inputEmail"></label>
+            <div class="controls">
+              <button data-toggle="button" class="btn-gray btn btn-big" type="button">下一步</button>
+            </div>
+          </div>
+        </div>
+    
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <i class="mark success"></i>
+        银行卡信息
+      </td>
+      <td class="gray">
+        5138 **** **** 891
+        <i class="pay-bank icbc m-l"></i>
+      </td>
+      <td width="14%">
+        <button data-toggle="button" class="btn btn-blue btn-small classtitle" type="button" id="stateBut">
+          <span class="set">设置</span>
+          <span class="shrink">收起</span>
+        </button>
+      </td>
+    </tr>
+    <tr class="bottomline">
+      <td colspan="3">
+        <div class="accout-retract classtext">
+          <h2>您还未设置取款时用于收款的银行卡账号，请先设置</h2>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">真实姓名：</label>
+            <div class="controls">
+              <a href="#">请先设置真实姓名</a>
+            </div>
+          </div>
+    
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">银行卡号：</label>
+            <div class="controls">
+              <input type="text" id="" placeholder="1234**** **** 123"  class="input"></div>
+            <p class="tipsgray">输入卡号后会自动识别银行和卡种</p>
+          </div>
+    
+          <div class="control-grouptwo clearfix ud-select">
+            <label class="control-left" for="inputEmail">银行：</label>
+            <div class="country controls">
+              <div class="select-discern">
+                <p class="select-arr">
+                  <span class="pay-bank icbc"></span>
+                  工商银行
+                </p>
+    
+              </div>
+    
+            </div>
+          </div>
+    
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">开户行：</label>
+            <div class="controls">
+              <input type="text" id="" placeholder=""  class="input"></div>
+            <p class="tipsgray">如：河北唐山建设银行</p>
+    
+          </div>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">安全密码：</label>
+            <div class="controls">
+              <input type="password" id="" placeholder=""  class="input"></div>
+          </div>
+    
+          <div class="control-grouptwo">
+            <label class="control-label" for="inputEmail"></label>
+            <div class="controls">
+              <button data-toggle="button" class="btn-gray btn btn-big" type="button">重置</button>
+              <button data-toggle="button" class="btn-blue btn btn-big" type="button">确认</button>
+            </div>
+          </div>
+        </div>
+    
+        <div class="accout-retract classtext">
+          <h2>您还未设置取款时用于收款的银行卡账号，请先设置</h2>
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">真实姓名：</label>
+            <div class="controls">
+              <input type="text"  class="input" placeholder="" value="张*大"></div>
+          </div>
+    
+          <div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">银行卡号：</label>
+    
+            <div class="controls">
+              <input type="text"  class="input" placeholder="" value="1234**** **** 123"></div>
+            <p class="tipsgray">
+              <i class="mark plaintsmall"></i>
+              未检测出所属银行和卡种，请检测卡号是否正确填写！您也可以直接填写“银行”，或选择搜索结果！
+            </p>
+          </div>
+    
+          <div class="control-grouptwo clearfix ud-select">
+          <label class="control-left" for="inputEmail">银行：</label>
+          <div class="country controls">
+            <div class="select-country">
+              <p class="select-arr">
+                <span class="pay-bank icbc"></span>
+                工商银行
+              </p>
+              <ul>
+                <li>
+                  <a href="javascript:void(0)" rel="icbc">
+                    <span class="pay-bank icbc"></span>
+                    工商银行
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" rel="cmb">
+                    <span class="pay-bank cmb"></span>
+                    招商银行
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" rel="ccb">
+                    <span class="pay-bank ccb"></span>
+                    建设银行
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" rel="abc">
+                    <span class="pay-bank abc"></span>
+                    农业银行
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" rel="boc">
+                    <span class="pay-bank boc"></span>
+                    中国银行
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" rel="cib">
+                    <span class="pay-bank cib"></span>
+                    兴业银行
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" rel="boco">
+                    <span class="pay-bank comm"></span>
+                    交通银行
+                  </a>
+                </li>
+              </ul>
+            </div>
+    
+          </div>
+        </div>
+        <div class="control-grouptwo">
+          <label class="control-left" for="inputEmail">银行：</label>
+          <div class="controls">
+            <span class="pull-down-a">
+              <input type="text" class="input" placeholder="账号">
+              <ul class="gbsug shadow show">
+                <li>中国银行</li>
+                <li>中国工商银行</li>
+                <li>中国农业银行</li>
+                <li>中国建设银行</li>
+                <li>中国招商银行</li>
+              </ul>
+            </span>
+          </div>
+    
+        </div>
+        <div class="control-grouptwo">
+          <label class="control-left" for="inputEmail">开户行：</label>
+          <div class="controls">
+            <input type="text" id="" placeholder=""  class="input"></div>
+          <p class="tipsgray">如：河北唐山建设银行</p>
+    
+        </div>
+        <div class="control-grouptwo">
+          <label class="control-left" for="inputEmail">安全密码：</label>
+          <div class="controls">
+            <input type="password" id="" placeholder=""  class="input"></div>
+        </div>
+    
+        <div class="control-grouptwo">
+          <label class="control-label" for="inputEmail"></label>
+          <div class="controls">
+            <button data-toggle="button" class="btn-gray btn btn-big" type="button">重置</button>
+            <button data-toggle="button" class="btn-blue btn btn-big" type="button">确认</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="accout-retract classtext">
+        <div class="control-grouptwo">
+          <label class="control-left" for="inputEmail">银行卡号：</label>
+          <div class="controls">
+            5138 **** **** 891
+            <i class="pay-bank icbc m-l"></i>
+          </div>
+        </div>
+    
+        <div class="control-grouptwo">
+          <label class="control-left" for="inputEmail">开户行：</label>
+          <div class="controls">河北*******银行</div>
+    
+        </div>
+    
+        <div class="control-grouptwo">
+          <label class="control-label" for="inputEmail"></label>
+          <div class="controls">
+            <button type="button" class="btn btn-filter btn-lg real-time-btn">
+              <span class="hd">更改银行卡</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    
+    </td>
+      </tr>
+    </table>
+    </div>
+    </div> -->
+        </div>
+    </div>
+    <!-- 右边客服服务-->
+    <div id="moquu_wxin" class="moquu_wxin">
+        <a href="javascript:void(0)">
+玩家游戏
+<div class="moquu_wxinh"></div>
+</a>
+    </div>
+    <div id="moquu_wshare" class="moquu_wshare">
+        <a href="javascript:void(0)">
+玩家游戏
+<div class="moquu_wshareh"></div>
+</a>
+    </div>
+    <div id="moquu_wmaps">
+        <a href="#">玩家游戏</a>
+    </div>
+    <!--弹窗1-->
+<div class="modal inmodal" id="notice-list-1" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content animated bounceInRight family">
+<div class="modal-header">
+<span class="filter">修改比特币钱包地址</span>
+<button type="button" class="close" data-dismiss="modal">
+  <span aria-hidden="true">×</span>
+  <span class="sr-only">关闭</span>
+</button>
+</div>
+<div class="modal-body">
+
+
+<div class="rgeechar">
+                <div class="title">
+                    <span class="tips"><em class="orange">成功取款后，我们会将款项打入您填写的收款钱包账户！</em></span></div>
+            </div>
+            <div class="form-group clearfix line-hi34 m-t-sm">
+                        <label class="col-xs-3 al-right" for="inputEmail">比特币钱包地址：</label>
+                        <div class="col-xs-8 p-x">
+                            <input type="text" id="" placeholder="" class="input" style="width: 280px;">
+                        </div>
+                    </div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-gray">取消</button>
+<button type="button" class="btn btn-filter" data-toggle="modal" data-target="#notice-list-2">确认</button>
+</div>
+</div>
+</div>
+</div>
+
+    <!-- 弹窗2 -->
+    <div class="modal inmodal" id="notice-list-2" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content animated bounceInRight family">
+<div class="modal-header">
+<span class="filter">消息</span>
+<button type="button" class="close" data-dismiss="modal">
+  <span aria-hidden="true">×</span>
+  <span class="sr-only">关闭</span>
+</button>
+</div>
+<div class="modal-body">
+<h3 class="m-sm al-center">确认提交吗？</h3>
+
+<div class="form-group clearfix line-hi34 m-b-xxs al-center">
+  <b>比特币钱包地址：</b>11ds1f5dfd4f4adsf5d4a1sdf5d4fa1sd5fdf44dsdf
+  
+</div>
+<div class="rgeechar">
+                <div class="title">
+                    <span class="tips"><i class="mark plaintsmall"></i> <em class="orange">比特币钱包地址将直接影响您的正常收款，请务必再次确认！</em></span></div>
+            </div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-gray">取消</button>
+<button type="button" class="btn btn-filter">确认</button>
+</div>
+</div>
+</div>
+</div>
+    <!--弹窗3-->
+    <div class="modal inmodal in" id="notice-list-3" tabindex="-1" role="dialog" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight family">
+                <div class="modal-header">
+                    <span class="filter">消息</span>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="al-center">确认提交了吗？</h3>
+                    <dd class="m-sm">提交后不能自行修改，只能联系客服修改。</dd>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline btn-filter">返回修改</button>
+                    <button type="button" class="btn btn-outline btn-filter">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗4 -->
+    <div class="modal inmodal in" id="notice-list-4" tabindex="-1" role="dialog" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight family">
+                <div class="modal-header">
+                    <span class="filter">消息</span>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group clearfix line-hi34 m-b-xxs">
+                        <label class="col-xs-3 al-right" for="inputEmail">原手机号：</label>
+                        <div class="col-xs-8 p-x">
+                            <input type="text" id="" placeholder="" class="input">
+                            <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      请输入手机号码
+                    </span>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix line-hi34 m-b-xxs">
+                        <label class="col-xs-3 al-right">验证码：</label>
+                        <div class="col-xs-8 p-x">
+                            <input type="password" id="" placeholder="" class="input">
+                            <button class="btn  btn-outline btn-filter m-t-xs-minus" type="button">92秒后重新发送短信</button>
+                        </div>
+                    </div>
+                    <p class="popgray">如原手机无法验证，请 <a href="#" title="" class="orange">联系客服</a> 验证身份后直接帮您修改</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline btn-filter">下一步</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗5 -->
+    <div class="modal inmodal in" id="notice-list-5" tabindex="-1" role="dialog" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight family">
+                <div class="modal-header">
+                    <span class="filter">消息</span>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group clearfix line-hi34 m-b-xxs">
+                        <label class="col-xs-3 al-right" for="inputEmail">原安全邮箱：</label>
+                        <div class="col-xs-8 p-x">
+                            <input type="email" id="" placeholder="" class="input">
+                            <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      请输入新安全邮箱
+                    </span>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix line-hi34 m-b-xxs">
+                        <label class="col-xs-3 al-right">验证码：</label>
+                        <div class="col-xs-8 p-x">
+                            <input type="password" id="" placeholder="" class="input">
+                            <button class="btn  btn-outline btn-filter m-t-xs-minus" type="button">92秒后重新获取验证码</button>
+                        </div>
+                    </div>
+                    <p class="popgray">如原邮箱无法验证，请 <a href="#" title="" class="orange">联系客服</a> 验证身份后再绑定新邮箱</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline btn-filter">下一步</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- //* 语言版本切换 #select-lang* -->
+    <script type="text/javascript">
+    $(function() {
+
+        $(".select-lang p").click(function() {
+            var ul = $(".select-lang ul");
+            if (ul.css("display") == "none") {
+                ul.slideDown("fast");
+            } else {
+                ul.slideUp("fast");
+            }
+        });
+
+        $(".select-lang ul li a").click(function() {
+            var txt = $(this).text();
+            var value = $(this).attr("rel");
+            $(".select-lang p").html("<span class='flag " + value + "'></span>" + txt);
+            $(".select-lang ul").hide();
+        });
+
+    });
+    </script>
+    <!-- //* 国家银行切换 #country-lang* -->
+    <script type="text/javascript">
+    $(function() {
+
+        $(".ud-select p").click(function() {
+            var ul = $(this).next("ul");
+            if (ul.css("display") == "none") {
+                ul.slideDown("fast");
+            } else {
+                ul.slideUp("fast");
+            }
+        });
+
+
+        $(".ud-select ul li a").click(function() {
+            var txt = $(this).text();
+            var value = $(this).attr("rel");
+            $(this).parentsUntil(".ud-select").children("p").html("<span class='pay-bank " + value + "'></span>" + txt);
+            $(".ud-select ul").hide();
+        });
+
+
+    });
+    </script>
+    <!-- //* 国家银行切换 #country-lang* -->
+    <script type="text/javascript">
+    $(function() {
+
+        $(".guj-select p").click(function() {
+            var ul = $(this).next("ul");
+            if (ul.css("display") == "none") {
+                ul.slideDown("fast");
+            } else {
+                ul.slideUp("fast");
+            }
+        });
+
+
+        $(".guj-select ul li a").click(function() {
+            var txt = $(this).text();
+            var value = $(this).attr("rel");
+            $(this).parentsUntil(".ud-select").children("p").html("<span class='flag " + value + "'></span>" + txt);
+            $(".guj-select ul").hide();
+        });
+
+
+    });
+    </script>
+    <!-- 展开收缩-->
+    <script>
+    $(".classtitle").click(function() {
+        $(this).parent().parent().next().children().children('.classtext').slideToggle();
+        $(this).children('.set').toggle();
+        $(this).children('.shrink').toggle();
+    });
+    </script>
+</body>
+
+</html>

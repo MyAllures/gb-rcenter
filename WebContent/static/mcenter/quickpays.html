@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>快速充值</title>
+<style>
+body {
+  font: 12px/24px "microsoft yahei";
+  color: #444;
+  background: url(../../mcenter/images/bj.jpg) no-repeat right top #000000;
+}
+.clearfix:after{
+  display: table;
+  content: " ";
+  clear: both;
+}
+.box {
+  width: 1002px;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.box .logo {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.top-text{
+  padding:30px 0 20px 0;
+}
+.top-text img{float:left; margin:20px 20px 0 56px;}
+.mian {
+  width: 1002px;
+  height: auto;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.mian .bt {
+  font-size: 25px;
+  line-height: 30px;
+  padding-bottom: 15px;
+  font-weight: 100;
+  font-family: "Microsoft Yahei";
+  display: block;
+  float:left;
+  margin:0 20px;
+  max-width: 790px;
+}
+
+.mian .cn {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-top: 2px solid #08a3dd;
+  margin-bottom: 20px;
+}
+
+.mian .cn tr {
+  background: #f2f7f9;
+}
+
+.mian .cn td {
+  border-bottom: solid 1px #d5d5d5;
+  line-height: 68px;
+}
+
+.mian .cn td.w1 {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+  width: 140px;
+  padding-right: 40px;
+}
+
+.mian .cn td .text {
+  width: 270px;
+  height: 40px;
+  border: solid 1px #ccc;
+  border-radius: 2px;
+  line-height: 38px;
+  background: #fff;
+  vertical-align: top;
+  margin-top: 13px;
+  -moz-box-shadow: inset 0 1px 3px #ddd;
+  -webkit-box-shadow: inset 0 1px 3px #ddd;
+  box-shadow: inset 0 1px 3px #ddd;
+  color: #666;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.mian .cn td .w2 {
+  color: #f00;
+}
+
+
+.mian .cn td input {
+  margin-left: 20px;
+  outline:none;
+  padding:0 15px;
+  transition: border ease-in-out .4s,box-shadow ease-in-out .4s,background ease-in-out .6s;
+}
+.mian .cn td input.text:focus{background: #e4f5fb;
+  box-shadow:0 0 6px #37c3f7;
+  border:1px solid #21bdf8;
+}
+.mian .cn td img {
+  padding-left: 10px;
+}
+
+.mian .btn {
+  width: 150px;
+  height: 60px;
+  background: #08a3dd;
+  line-height: 60px;
+  text-align: center;
+  margin: 0 auto 20px auto;
+  display: block;
+  border-radius: 5px;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+.mian .btn:hover{background: #0eb0ec;}
+
+.mian .botm {
+  text-align: center;
+  border-top: 2px solid #08a3dd;
+  padding:25px 0;
+}
+.mian .botm font{font-size: 15px; line-height: 20px;}
+.mian .botm p{margin: 0;}
+.bottom {
+  background: #000000;
+  text-align: center;
+  line-height: 60px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.t-alert{
+  display: block;
+  margin-top: 10px;
+  line-height: 25px;
+  background: #f9f2ea;
+  border: 1px solid #eccca6;
+  padding: 5px 10px;
+}
+.quick1{display:block;}
+.quick2{display:none}
+.footer {
+    padding: 30px 0;
+    text-align: center;
+    color: #fff;
+}
+.w-pay-img{padding-left: 20px}
+.mian .cn td.w3{padding-right: 48px;}
+@media (max-width:870px){
+  .box {
+  width: 100%;
+}
+.mian {width: 100%;
+}
+
+.top-text img {
+    float:none;
+    margin:0 auto;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.mian .bt {
+  float: none;
+}
+.mian .cn td.w1 {
+    padding-left: 20px;
+    display: block;
+    position: absolute;
+    border:0;
+    width: auto;
+    line-height: 60px;
+    padding-right: 0;
+}
+.mian .cn .pays-more td.w1{line-height: 66px;}
+.mian .cn td.w-input{padding: 0px 10px 10px; line-height: 36px;}
+.mian .cn td input{  
+  width: 100%!important;
+  box-sizing: border-box;
+  padding: 0 15px 0 80px;
+  margin:10px 0 0 0!important;
+  display: block;
+  }
+  .w-pay-img{padding-left: 96px}
+.mian .cn td.w3{display: none}
+.quick1{display:none}
+.quick2{display:block;}
+}
+/*#pays-more{
+  display: none;
+}*/
+.pay-label,#pay-select{
+  display:inline-block;
+  width: 128px;
+  height: 39px;
+  background: url(../../mcenter/images/qj-pays.png);
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+#pay-select{background-position:0 1px;}
+.pay-label input{
+  display: block;
+  opacity: 0;
+cursor: pointer;
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+filter: alpha(opacity=0);}
+.pay-wechatpay{background-position:0 1px!important;}
+.pay-alipay{background-position:0 -35px!important; width: 106px;}
+.pay-icbc{background-position:0 -71px!important;}
+.pay-cib{background-position:0 -107px!important;}
+.pay-cmb{background-position:0 -142px!important;}
+.pay-boc{background-position:0 -178px!important;}
+.pay-comm{background-position:0 -215px!important;}
+.pay-ccb{background-position:0 -250px!important;}
+.pay-abc{background-position:0 -290px!important;}
+.pay-bjbank{background-position:0 -324px!important;}
+.pay-njyh{background-position:0 -360px!important;}
+.pay-cmbc{background-position:0 -394px!important;}
+.pay-ceb{background-position:0 -427px!important;}
+.pay-spdb{background-position:0 -461px!important;}
+.pay-spabank{background-position:0 -500px!important;}
+.pay-citic{background-position:0 -537px!important;}
+.pay-gdb{background-position:0 -576px!important;}
+.pay-psbc{background-position:0 -613px!important;}
+.pay-jsbank{background-position:0 -645px!important;}
+.pay-hxbank{background-position:0 -679px!important;}
+.pay-shbank{background-position:0 -715px!important;}
+.pay-bohaib{background-position:0 -752px!important;}
+.pay-hkbea{background-position:0 -787px!important;}
+.pay-nbbank{background-position:0 -825px!important;}
+.pay-czbank{background-position:0 -860px!important;}
+.pay-hzcb{background-position:0 -896px!important;}
+.pay-gcb{background-position:4px -932px!important;}
+.pay-fjnx{background-position:0 -966px!important;}
+.pay-hangseng{background-position:0 -1000px!important;}
+.pay-tzb{background-position:0 -1032px!important;}
+.pay-ebank{background-position:0 -1071px!important;}
+.pay-qqwallet{background-position:0 -1111px!important;}
+.pay-label.active{
+  border:1px solid #5fcbf3;
+  background-color: #d9f4ff;
+  border-radius: 4px;
+  position: relative;
+}
+.pay-label.active:after{
+    display: inline-block;
+    content: " ";
+    width: 19px;
+    height:18px;
+    position: absolute;
+    right: -1px;
+    bottom: -1px;
+    background: url(../../mcenter/images/q-pay-yes.png);
+  }
+.pay-select-a{
+      position: relative;
+    display: inline-block;
+    color: #555;
+    text-decoration: none;
+}
+.pay-select-a:hover{
+  color: #29b4e8;
+}
+.pay-select-a span{
+    background: url(../../mcenter/images/icon_select.png);
+    height: 13px;
+    width: 13px;
+    display: block;
+    position: absolute;
+    right: -21px;
+    top: 29px;
+    transition: all ease-in-out .4s;
+  }
+.pay-select-a.active span{
+  transform: rotate(180deg);
+}
+.notice-tips{
+	  position: fixed;
+    z-index: 99;
+    background: rgba(4, 4, 4, 0.86);
+    width: 195px;
+    top: -160px;
+    left: calc(50% - 116px);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+.notice-tips.active{
+	  top: 40%;
+}
+</style>
+
+</head>
+<body>
+<div class="box">
+<h1 class="logo"><img src="../../mcenter/images/logo.png"></h1>
+<form id="pay" action="" method=" post" name="pay">
+<div class="mian">
+  <div class="top-text clearfix">
+      <img class="quick1" src="../../mcenter/images/quick1.png">
+      <img class="quick2" src="../../mcenter/images/quick2.png">
+      <h2 class="bt">
+           <font size="4">支持【<b><font color="#dd6c08">手机端</font></b>、电脑端】<b><font color="#45dd08">微信扫码支付</font>、<font color="#08a3dd">支付宝（扫码支付/登入账户付款）</font></b>付款成功自动到账！</font><br>
+           <font size="2" class="t-alert"><b>支付流程：</b>输入并确认GameBox正确的会员账号→输入存款额度→点击确认支付→付款成功后<b><font color="#FF0000">1~10秒</font><font color="#08a3dd">自动到账</font></b>；
+           <br>存款金额范围为（<span style="font-weight: 400"><b><font color="#FF0000">1</font></b></span><font color="#FF0000">~5</font><span style="font-weight: 400"><b><font color="#FF0000">000元</font></b></span>）需要大额入款可分多次存入或使用其它方式存款；<br>
+  若客户担心，可先测试1元小额支付，或联系<b><font color="#FF0000"><a target="_blank"href="#" style="text-decoration: none"><font color="#FF0000">【在线客服】</font></a></font></b>确认！</font>
+  </h2>
+  </div>
+  <div class="cn">
+       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+              <tr>
+                <td class="w1">会员帐号：</td>
+                <td class="w-input">
+                    <input name="username" id="username" type="text" class="text">
+                    <font size="4" color="#000000">@hh</font><font size="4" color="#FF0000">
+                    </font><font color="#FF0000">输入GameBox会员账号（无需+@hh）</font>
+                </td>
+                <td class="w3" align="center"><b><font color="#FF0000">*</font>必填</b></td>
+              </tr>
+              <tr>
+                <td class="w1">确认帐号：</td>
+                <td class="w-input">
+                    <input name="rusername" id="rusername" type="text" class="text">
+                    <font size="4" color="#000000">@hh</font><font size="4" color="#FF0000">
+                    </font><font color="#FF0000">请确认会员账号是否正确，否则无法正常充值</font>
+                </td>
+                <td class="w3" align="center"><b><font color="#FF0000">*</font>必填</b></td>
+              </tr>
+              <tr>
+                <td class="w1">支付类型：</td>
+                <td class="w-pay-img">
+                  <label id="pay-select">
+                  </label>
+                 <!--  <a href="javascript:void" class="pay-select-a">选择其他支付方式 <span style="background: url(../../mcenter/images/icon_select.png); height: 13px; width: 13px;"></span></a> -->
+                  
+                </td>
+                <td class="w3">　</td>
+              </tr>
+              <tr id="pays-more">
+                  <td></td>
+                  <td colspan="2" style="padding-left:20px">
+                     <label class="pay-label pay-ebank active">
+                        <input type="radio" id="pay-ebank" name="bank_code" value="203" checked>
+                     </label>
+                     <label class="pay-label pay-qqwallet">
+                        <input type="radio" id="pay-qqwallet" name="bank_code" value="203" checked>
+                     </label>
+                     <label class="pay-label pay-gsyh">
+                        <input type="radio" id="pay-gsyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-xyyh">
+                        <input type="radio" id="pay-xyyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-zgzsyh">
+                        <input type="radio" id="pay-zgzsyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-zgyh">
+                        <input type="radio" id="pay-zgyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-jtyh">
+                        <input type="radio" id="pay-jtyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-zgjsyh">
+                        <input type="radio" id="pay-zgjsyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-nyyh">
+                        <input type="radio" id="pay-nyyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-bjyh">
+                        <input type="radio" id="pay-bjyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-njyh">
+                        <input type="radio" id="pay-njyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-msyh">
+                        <input type="radio" id="pay-msyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-gdyh">
+                        <input type="radio" id="pay-gdyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-pfyh">
+                        <input type="radio" id="pay-pfyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-payh">
+                        <input type="radio" id="pay-payh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-zxyh">
+                        <input type="radio" id="pay-zxyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-gfyh">
+                        <input type="radio" id="pay-gfyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-yzyh">
+                        <input type="radio" id="pay-yzyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-jsyh">
+                        <input type="radio" id="pay-jsyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-hxyh">
+                        <input type="radio" id="pay-hxyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-shyh">
+                        <input type="radio" id="pay-shyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-bhyh">
+                        <input type="radio" id="pay-bhyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-dyyh">
+                        <input type="radio" id="pay-dyyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-nbyh">
+                        <input type="radio" id="pay-nbyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-zsyh">
+                        <input type="radio" id="pay-zsyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-hzyh">
+                        <input type="radio" id="pay-hzyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-gzyh">
+                        <input type="radio" id="pay-gzyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-nsyh">
+                        <input type="radio" id="pay-nsyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-hsyh">
+                        <input type="radio" id="pay-hsyh" name="bank_code" value="203">
+                     </label>
+                     <label class="pay-label pay-tzyh">
+                        <input type="radio" id="pay-tzyh" name="bank_code" value="203">
+                     </label>
+                  </td>
+              </tr>
+              <tr>
+                <td class="w1">存款额度：</td>
+                <td  class="w-input"><input name="coin" type="text" class="text" id="coin">存款金额范围（<font color="#FF0000"><b>1~5000元</b></font>）</td>
+                <td class="w3" align="center"><b><font color="#FF0000">*</font>必填</b></td>
+              </tr>
+
+            </tbody>
+      </table>
+</div>
+    <a id="btn-tips" class="btn">确认支付</a>
+
+    <div class="botm">
+      <font>为了避免掉单情况的发生，请您在支付完成后，等待"支付成功"页面跳转出来后再关闭页面，以免掉单
+      </font>
+      <p><font>支付成功后，若3分钟内未能及时到达您的会员账号请联系<b><font color="#FF0000"><a href="#"><font color="#FF0000">【在线客服】</font></a></font></b>咨询；</font></p>
+      <p><font>GameBox祝您游戏愉快，盈利多多！O(∩_∩)O</font></p>
+    </div>
+</div>
+</form>
+</div>
+<div class="footer">Copyright © GameBox 版权所有</div>
+<div id="notice-tips" class="notice-tips">
+	请不要重复提交!
+</div>
+</body>
+<script src="../../common/js/jquery/jquery-2.1.1.js"></script>
+<script type="text/javascript">
+// $(".pay-select-a").click(function(){
+//   $(this).toggleClass("active");
+//    $("#pays-more").toggle();
+// });
+function PaySelect(){
+  $(".pay-label").click(function(){
+  var payz= $(this).children("input").attr('id'); 
+  $(this).addClass("active");
+  $(this).siblings().removeClass("active");
+  $("#pay-select").removeClass().addClass(payz);
+});
+};
+PaySelect();
+ $("#btn-tips").click(function(){
+ 	 $("#notice-tips").addClass("active");
+ })
+</script>
+
+</html>

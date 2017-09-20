@@ -1,0 +1,250 @@
+
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>统计报表</span>
+        <span>/</span><span>日志查询</span>
+<!--        <a href="javascript:void(0)" nav-target="mainFrame" class="m-l-sm btn btn-outline btn-default btn-xs co-gray6 return-btn"><em class="fa fa-caret-left"></em>返回</a>-->
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow clearfix">
+            <div class="clearfix m-t-xs m-b-sm">
+               <div class="col-lg-10 clearfix">
+                   
+                        
+                           <div class="form-group clearfix pull-left content-width-limit-400 m-t-sm m-b-none">
+                        <div class="input-group clearfix">
+                            <span class="input-group-addon abroder-no"><b>类型：</b></span>
+
+                            <div class="pull-left">
+                                <select class="chosen-select-no-single">
+                                    <option value="">运营商</option>
+                                    <option value="">站长</option>
+                                </select>
+                            </div>
+                            <div class="pull-left m-l content-width-limit-5">
+                                <select class="chosen-select-no-single">
+                                    <option>站点A</option>
+                                    <option>站点B</option>
+                                    <option>站点C</option>
+                                </select>
+                            </div>
+                            <div class="pull-left m-l">
+                                <select class="chosen-select-no-single">
+                                    <option value="">站点日志</option>
+                                    <option value="">总代日志</option>
+                                    <option value="">代理日志</option>
+                                    <option value="">玩家日志</option>
+                                </select>
+                            </div>                       
+                        </div>
+                    </div>
+                           <div class="form-group clearfix pull-left content-width-limit-400 m-t-sm m-b-none">
+                           <div class="input-group">
+                            <span class="input-group-addon abroder-no"><b>时间：</b></span>
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" value="2013-10-11 16:00:00 至 2014-01-16 16:00:00">
+                            
+                       </div>
+                    </div>
+                    <div class="form-group clearfix pull-left content-width-limit-250 m-t-sm m-b-none">
+                        <div class="input-group">
+                            <span class="input-group-addon abroder-no"><b>日志类型：</b></span>
+                            <select class="chosen-select-no-single">
+                                <option value="">登录日志</option>
+                                <option value="">操作日志</option>
+                                <option value="">任务日志</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix pull-left content-width-limit-30 m-t-sm m-b-none">
+                        <div class="input-group">
+                            <span class="input-group-addon abroder-no"><b>搜索关键字：</b></span>
+                            <span class="bg-gray input-group-addon bdn">
+                                <select data-placeholder="角色账号" class="chosen-select-no-single" tabindex="9">
+                                    <option>运营商子账号</option>
+                                    <option>IP地址</option>
+                                </select>
+                            </span>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2"><div class="form-group clearfix m-t-sm m-b-none"><button class="btn btn-filter pull-right">查询</button></div></div>
+            </div>
+<!--
+            <div class="operate-btn">
+                <button class="btn btn-filter">查询</button>
+            </div>
+-->
+        </div>
+    </div>
+    <div class="col-lg-12 m-t">
+        <div class="wrapper white-bg shadow">
+            
+            <div class="dataTables_wrapper" role="grid">               
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable m-b-none" aria-describedby="editable_info">
+                        <thead>
+                            <tr role="row" class="bg-gray">
+                                <th>编号</th>
+                                <th class="inline">
+                                    <select class="chosen-select-no-single">
+                                        <option value="">所有角色</option>
+                                        <option value="">站长</option>
+                                        <option value="">站长-子账号</option>
+                                    </select>
+                                </th>
+                                </th>
+                                <th>操作时间</th>
+                                <th>IP地址</th>
+                                <th>终端设备</th>
+                                <th class="inline">
+                                    <select class="chosen-select-no-single">
+                                        <option value="">所有操作</option>
+                                        <option value="">玩家登录</option>
+                                        <option value="">添加</option>
+                                        <option value="">修改</option>
+                                        <option value="">删除</option>
+                                        <option value="">其他</option>
+                                    </select>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>478</td>
+                                <td>admin</td>
+                                <td>2015-06-30 21:04:52</td>
+                                <td>212.233.233.191<br>浙江省绍兴市电信ADSL</td>
+                                <td>系统：Windows7 浏览器：Firefox</td>
+                                <td><dd class="co-green">【添加】</dd><dd>添加[个人资料]信息</dd></td>
+                            </tr>
+                            <tr>
+                                <td>478</td>
+                                <td>admin</td>
+                                <td>2015-06-30 21:04:52</td>
+                                <td>212.233.233.191<br>浙江省绍兴市电信ADSL</td>
+                                <td>系统：Windows7 浏览器：Firefox</td>
+                                <td><dd class="co-orange">【修改】</dd><dd>修改[个人资料]信息</dd></td>
+                            </tr>
+                            <tr>
+                                <td>478</td>
+                                <td>admin</td>
+                                <td>2015-06-30 21:04:52</td>
+                                <td>212.233.233.191<br>浙江省绍兴市电信ADSL</td>
+                                <td>系统：Windows7 浏览器：Firefox</td>
+                                <td><dd class="co-red">【删除】</dd><dd>删除[个人资料]信息</dd></td>
+                            </tr>
+                            <tr>
+                                <td>478</td>
+                                <td>admin</td>
+                                <td>2015-06-30 21:04:52</td>
+                                <td>212.233.233.191<br>浙江省绍兴市电信ADSL</td>
+                                <td>系统：Windows7 浏览器：Firefox</td>
+                                <td><dd class="">【其他】</dd><dd>找回[登录密码/安全密码/账号]</dd></td>
+                            </tr>
+                            <tr>
+                                <td>478</td>
+                                <td>admin</td>
+                                <td>2015-06-30 21:04:52</td>
+                                <td>212.233.233.191<br>浙江省绍兴市电信ADSL</td>
+                                <td>系统：Windows7 浏览器：Firefox</td>
+                                <td><dd class="co-green">【添加】</dd><dd>新增[取款申请]订单<a href="#">QK23423513</a></dd></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row bdtop3">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left">
+                            <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                                <option value=""></option>
+                                <option>每页20条</option>
+                                <option>每页30条</option>
+                                <option>每页40条</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                                <form class="form-inline">
+                                    <label class="m-l-sm">共10页</label>
+                                    <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                                    <button class="btn btn-sm m-l-sm">跳转</button>
+                                </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--选择优惠失败原因-->
+<div class="modal inmodal" id="failureCause" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">选择优惠失败原因</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group clearfix m-b-sm">
+                    <label class="col-xs-3 al-right line-hi34">失败原因：</label>
+                    <div class="col-xs-8 p-x">
+                        <select>
+                            <option value="">请选择</option>
+                            <option value="">原因1</option>
+                            <option value="">原因2</option>
+                        </select>
+                        <textarea class="form-control m-t-sm"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认失败</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+//表格内下拉菜单    
+$(document).ready(function(){
+      $("th.inline").click(function () {
+      $(this).find(".chosen-drop").css({top:$(this).parent().offset().top-$("body").scrollTop()+28});
+      $(this).find(".chosen-drop").css({left:$(this).find(".chosen-container").offset().left});
+    });
+});
+</script>
+<script>
+    $(".btn-advanced-down").click(function () {
+            $(".advanced-options").toggleClass("show");
+            $(this).parent().toggleClass("show");
+        });
+ var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': {allow_single_deselect: true},
+        '.chosen-select-no-single': {disable_search_threshold: 10},
+        '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+        '.chosen-select-width': {width: "95%"}
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+    
+    $('.help-popover').popover()
+</script>

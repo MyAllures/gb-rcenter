@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+  <!-- 提示弹出框 --> 
+<script type="text/javascript">
+var environment = {
+	userVo : '',
+	role : '',
+	userId : '',
+	basePath : '',
+	userCash : '',
+	globalPath : '/',
+	userActiveTime : '',
+	yoolibaoWhiteListStatus : '',
+	yoolibaoOpenStatus : '',
+	cerrencyOpenTime : "2015/9/10"//new Date()
+};
+</script>
+ <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+<script src="../../common/js/pcenterJS/global-1.1.0.min.js" type="text/javascript"></script>  
+
+<!--项部下拉弹出 --> 
+<script type="text/javascript" src="../../common/js/pcenterJS/head.js"></script>
+  <title>玩家中心首页</title>
+</head>
+<body>
+<!-- //* Top -->
+
+<div class="top-wrap">
+        <div class="top">
+               <!--顶部右边-->
+                   <div class="top-right">
+               <div class="member">
+            您好，<div id="site-nav">  
+			<ul>  
+               <li>
+				  <div class="menu">
+					  <a class="menu-hd" href="#"> <span class="orange">PCKmenr</span><b></b></a> 
+					  <div class="menu-bd box">
+                         <div class="global-account-head"><a href="#" class="global-account-img">
+                          <img src="images/face.png" width="39" height="39"  alt="我的头像" /> </a>
+    <p class="global-account-name" title="name">下午好，陈先生</p><a href="account.html">账户设置</a><span class="global-top-seperator">|</span><a href="gamerecord.html">交易记录</a>
+  </div>
+  
+  <div class="global-account-money">
+   钱包余额：<span class="show"><a href="#" >显示余额</a></span>
+   <p class="dottline space"></p>
+    <div class="total"> <a href="asset-transfer.html">转帐</a> <span class="global-top-seperator">|</span>
+      <a href="asset-deposit.html">存款</a><span class="global-top-seperator">|</span>
+      <a href="asset-withdraw.html">取款</a>
+    </div>
+     </div>
+      </div>
+    </div>
+			  </li>
+               </ul>
+               </div>
+       [退出] <label class="line-after"><span class="new"><i class="new-ico select"></i><a href="#">新消息</a></span></label>
+               </div>  
+            </div>
+             <!--顶部左边-->
+            <div class="top-left">
+                <div class="select-lang">
+                  <p><span class="flag cn"></span>简体中文</p>
+                    <ul>
+                        <li><a href="#" rel="cn"><span class="flag cn"></span>简体中文</a> 
+                        </li>
+                        <li><a href="#" rel="hk"><span class="flag hk"></span>繁体中文</a> 
+                        </li>
+                        <li><a href="#" rel="en"><span class="flag en"></span>English</a> 
+                        </li>
+                        <li><a href="#" rel="th"><span class="flag th"></span>ไทย</a> 
+                        </li>
+                        <li><a href="#" rel="vn"><span class="flag vn"></span>Tiếng Việt</a> 
+                        </li>
+                        <li><a href="#" rel="kr"><span class="flag kr"></span>한국어</a> 
+                        </li>
+                        <li><a href="#" rel="jp"><span class="flag jp"></span>日本語</a> 
+                        </li>
+                        <li><a href="#" rel="id"><span class="flag id"></span>Indonesia</a> 
+                        </li>
+                        <li><a href="#" rel="kh"><span class="flag kh"></span>Khmer</a> 
+                        </li>
+                    </ul>
+              </div>
+             <label class="time line-after">GMT +8 2015-03-24  15:02:57</label>
+            </div>
+      
+        </div>
+    </div>
+    
+ <!--banner-->
+<div class="banner"><div class="logo"></div><div class="right"></div>
+</div>   
+    <div class="wrapper">
+  <!--left-->  
+  <div class="sidebar">
+  <div class="sidebar-item">
+  <h2>下午好，<span class="orange name">PCKmenr</span></h2>
+  <div class="safe">
+  <ul>
+  <li><a href="javascript:;" class="ToolTips ToolTipCol" data-text="您已完成实名认证&lt;br&gt;&lt;a href='#'&gt;查看&lt;/a&gt;"><span class="safeico realname-select"></span></a>
+   </li>
+  <li><a href="javascript:;" class="ToolTips ToolTipCol" data-text="您已完成银行卡绑定&lt;br&gt;&lt;a href='#'&gt;修改&lt;/a&gt;"><span class="safeico bank-select"></span></a></li>
+  <li><a href="javascript:;" class="ToolTips ToolTipCol" data-text="您尚未完成邮箱绑定&lt;br&gt;&lt;a href='#'&gt;立即绑定&lt;/a&gt;"><span class="safeico email"></span></a></li>
+  <li><a href="javascript:;" class="ToolTips ToolTipCol" data-text="您尚未完成手机绑定&lt;br&gt;&lt;a href='#'&gt;立即绑定&lt;/a&gt;"><span class="safeico phone"></span></a></li>
+</ul>
+</div>
+<div class="auth-total">
+<div class="auth-rate">
+        <div class="progress" style="width:50%"></div>
+    </div>
+<div class="auth-level">安全等级：<span class="green">中</span><a href="#" target="_blank">&nbsp;[提升]</a></div>
+</div>
+</div>
+  <!--左边菜单栏-->  
+<div class="sidebar-nav">
+<dl><dt><a href="index.html"><i class="navico home"></i>玩家首页</a></dt></dl>
+<dl><dt><a href="asset-transfer.html"><i class="navico capital"></i>资金管理</a></dt></dl>
+<dl><dt><a href="gamerecord.html"><i class="navico gamerecord"></i>交易记录</a></dt>
+</dl>
+<dl><dt><a href="sale.html"><i class="navico sale"></i>优惠活动</a></dt></dl>
+<dl><dt class="select"><a href="infonotice.html"><i class="navico info-select"></i>消息公告</a><i class="ci-count"><a href="#">2</a></i></dt>
+<dd class="select"><a href="infonotice.html"><i class="navico arrow-select"></i>站点消息</a></dd>
+<dd><a href="gamenotice.html"><i class="navico arrow"></i>游戏公告</a></dd>
+<span class="beeline"></span>
+</dl>
+<dl><dt><a href="account.html"><i class="navico accout"></i>帐号管理</a></dt></dl>
+<dl><dt><a href="recommended.html"><i class="navico recommend"></i>推荐好友</a></dt></dl>
+</div>
+</div>
+
+  <!--right-->  
+<div class="main-wrap">
+<div class="notice"><div class="notice-left"><em class="path"></em></div>
+<div class="path-right"><a href="index.html">玩家首页</a><span class="arrow">></span><a href="infonotice.html">消息公告</a><span class="arrow">></span>站点消息</div>
+</div>
+
+<div class="return"><button><a data-toggle="button" class="btn btn-gray btn-big fontsmall" type="button" href="mymessage.html">返回列表</a></button></div>
+<!--选项卡 --> 
+  <div class="tabmenu">
+  <ul class="tab">
+    <li><a href="infonotice.html"  class="current">站点消息</a></li>
+   <li><a href="system-notice.html">系统公告</a></li>
+   <li><a href="gamenotice.html">游戏公告</a></li>
+   </ul>
+</div>
+
+<div class="tabmenu tabmenu-2">
+  <ul class="tab-2">
+   <li><a href="infonotice.html"  class="current">系统消息</a><i class="ci-count"><a href="#">2</a></i></li>
+   <li><a href="mymessage.html" class="current active">我的消息</a><i class="ci-count menutwo"><a href="#">2</a></i></li>
+   <li><a href="sendmessage.html" class="current no-badge">发送消息</a></li>
+   </ul>
+</div>
+
+
+<!--我的消息详情页-->
+<div class="mymessagemore">
+
+<div class="question">
+<h2><i class="problem">提问</i>QA和QC各是什么意思?<span class="date">财务问题&nbsp;&nbsp;|&nbsp;&nbsp;2015-05-21 12:18:12</span></h2>
+<p class="proble-text">好比QA是警察，QC是法官？好比QA是警察，QC是法官？好比QA是警察，QC是法官？好比QA是警察，QC是法官？</p>
+</div>
+
+<div class="answer">
+<i class="triangle blue"></i>
+<h2><i class="reply">回复</i>【回复】QA和QC各是什么意思?<span class="date">管理员回复&nbsp;&nbsp;|&nbsp;&nbsp;2015-05-21 12:18:12</span></h2>
+<p class="proble-text">QA：Quality Assurance，品质保证，通过建立和维持质量管理体系来确保产品质量没有问题；<br/>
+QC：Quality Control，品质控制，产品的质量检验，发现质量问题后的分析、改善和不合格品控制相关人员的总称；
+</p>
+</div>
+<p class="dottline far"></p>
+<div class="question">
+<h2><i class="problem">追问</i>【追问】QA和QC各是什么意思?<span class="date">财务问题&nbsp;&nbsp;|&nbsp;&nbsp;2015-05-21 12:18:12</span></h2>
+<p class="proble-text">好比QA是警察，QC是法官？好比QA是警察，QC是法官？好比QA是警察，QC是法官？好比QA是警察，QC是法官？</p>
+</div>
+
+<div class="reanswer">
+<i class="triangle gray"></i>
+<h2><i class="reply">回复</i>【回复追问】QA和QC各是什么意思?<span class="date">管理员回复&nbsp;&nbsp;|&nbsp;&nbsp;2015-05-21 12:18:12</span></h2>
+<p class="proble-text">QA：Quality Assurance，品质保证，通过建立和维持质量管理体系来确保产品质量没有问题；<br/>
+QC：Quality Control，品质控制，产品的质量检验，发现质量问题后的分析、改善和不合格品控制相关人员的总称；
+</p>
+<p class="dottline far"></p>
+<h2><i class="reply">回复</i>【回复追问】QA和QC各是什么意思?<span class="date">管理员回复&nbsp;&nbsp;|&nbsp;&nbsp;2015-05-21 12:18:12</span></h2>
+<p class="proble-text">QA：Quality Assurance，品质保证，通过建立和维持质量管理体系来确保产品质量没有问题；<br/>
+QC：Quality Control，品质控制，产品的质量检验，发现质量问题后的分析、改善和不合格品控制相关人员的总称；
+</p>
+
+</div>
+
+
+</div>
+
+<!--分页-->  
+<div class="row bdtop3">
+    <input type="hidden" name="paging.pageNumber" value="1">
+    <input type="hidden" name="paging.prePage" value="1">
+    <input type="hidden" name="paging.nextPage" value="2">
+    <input type="hidden" name="paging.firstPageNumber" value="1">
+    <input type="hidden" name="paging.lastPageNumber" value="7">
+
+        <div class="col-sm-3 col-xs-12">
+            <div aria-relevant="all" aria-live="polite" role="alert" id="editable_info" class="dataTables_info pull-left">
+                <ul class="pagination-pages">
+                    <li tabindex="0" aria-controls="editable" class="paginate_button "><span>每页显示</span></li>
+                </ul>
+            </div>
+            
+            <div class="pull-left">
+                <select name="paging.pageSize" tabindex="-1" class="selectpicker chosen-select-no-single"  data-placeholder="10条">
+                    <option selected="selected" value="10">10条</option>
+                    <option value="20">20条</option>
+                    <option value="30">30条</option>
+                    <option value="50">50条</option>
+                </select>
+                    
+            </div>
+        </div>
+    
+
+    <div class="col-sm-9 col-xs-12">
+        <div id="editable_paginate" class="dataTables_paginate paging_simple_numbers">
+
+            
+                <div class="pull-right pages form-inline">
+                        <label class="m-l-sm">共7页</label>
+                        <label class="m-l">第<input name="paging.pageNumberText" type="text" value="1" class="m-l-xs m-r-xs min form-control input-sm">页</label>
+                        <button type="button" class="btn btn-sm m-l-sm">跳转</button>
+                </div>
+            
+            <ul class="pagination pull-right">
+                
+                    <li aria-controls="editable" class="paginate_button previous disabled home"><a name="paging.firstPageNumber" href="javascript:void(0);">首页</a></li>
+                
+                <li aria-controls="editable" class="paginate_button previous disabled prev"><a name="paging.prePage" href="javascript:void(0);">上一页</a></li>
+
+                            <li class="paginate_button disabled current"><a name="paging.Page" href="javascript:void(0)" data-page="0">1</a></li>
+               <li aria-controls="editable" class="paginate_button "><a name="paging.Page" href="javascript:void(0)" data-page="2">2</a></li>
+                        
+                        
+                            <li aria-controls="editable" class="paginate_button "><a name="paging.Page" href="javascript:void(0)" data-page="3">3</a></li>
+                        
+                    
+                        
+                        
+                            <li aria-controls="editable" class="paginate_button "><a name="paging.Page" href="javascript:void(0)" data-page="4">4</a></li>
+                        
+                    
+                        
+                        
+                            <li aria-controls="editable" class="paginate_button "><a name="paging.Page" href="javascript:void(0)" data-page="5">5</a></li>
+                        
+                    
+
+                    
+                    
+                        <li class="paginate_button disabled"><a href="javascript:void(0);">...</a></li>
+                        
+                    
+
+                    
+                        <li aria-controls="editable" class="paginate_button"><a name="paging.Page" href="javascript:void(0)" data-page="7">7</a></li>
+                    
+                
+
+                <li aria-controls="editable" class="paginate_button next prev"><a name="paging.nextPage" href="javascript:void(0);">下一页</a></li>
+                
+                    <li aria-controls="editable" class="paginate_button next home"><a name="paging.lastPageNumber" href="javascript:void(0);">尾页</a></li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+<!--继续追问-->  
+<div class="follow-question">
+<h2>继续追问</h2>
+ <div class="control-group">
+ <label class="control-label" >标题：</label>
+ <div class="controls-text">【追问】QA和QC各是什么意思? </div>
+ </div>
+    <div class="control-group">
+ <label class="control-label" for="inputEmail">内容：</label>
+ <div class="controls">
+<textarea class="textarea-big" placeholder="">至少输入10个字符</textarea>
+   <p class="character">0/20000</p>
+
+   </div>
+</div>
+ <div class="submit">
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">提交</button>
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">取消</button>
+</div>
+</div>
+</div>
+
+
+
+</div>
+<!-- 右边客服服务-->
+<div id="moquu_wxin" class="moquu_wxin"><a href="javascript:void(0)">玩家游戏<div class="moquu_wxinh"></div></a></div>
+<div id="moquu_wshare" class="moquu_wshare"><a href="javascript:void(0)">玩家游戏<div class="moquu_wshareh"></div></a></div>
+<div id="moquu_wmaps"><a href="#">玩家游戏</a></div>
+
+
+<!-- //* 语言版本切换 #select-lang* -->
+   <script type="text/javascript">
+        $(function() {
+         
+            $(".select-lang p").click(function() {
+                var ul = $(".select-lang ul");
+                if (ul.css("display") == "none") {
+                    ul.slideDown("fast");
+                } else {
+                    ul.slideUp("fast");
+                }
+            });
+
+            $(".select-lang ul li a").click(function() {
+                var txt = $(this).text();
+                var value = $(this).attr("rel");
+                $(".select-lang p").html("<span class='flag " + value + "'></span>" + txt);
+                $(".select-lang ul").hide();
+            });
+         
+        });
+      
+    </script>
+   
+   
+   
+ 
+</body>
+</html>

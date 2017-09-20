@@ -1,0 +1,106 @@
+
+   <div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>站点</span><span>/</span><span>站点管理</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+            <div class="wrapper white-bg shadow">
+                <ul class="artificial-tab clearfix">
+                    <li class="col-sm-2 col-xs-12 p-x"><a href="javascript:void(0)"><span class="no">1</span><span class="con">站点基本信息</span></a></li>
+                    <li class="col-sm-2 col-xs-12 p-x"><a href="javascript:void(0)"><span class="no">2</span><span class="con">包网方案</span></a></li>
+                    <li class="col-sm-2 col-xs-12 p-x"><a href="javascript:void(0)"><span class="no">3</span><span class="con">选择模板</span></a></li>
+                    <li class="col-sm-2 col-xs-12 p-x"><a href="javascript:void(0)"><span class="no">4</span><span class="con">预览</span></a></li>
+                    <li class="col-sm-2 col-xs-12 p-x"><a class="current" href="javascript:void(0)"><span class="no">5</span><span class="con">建站成功</span></a></li>
+                </ul>
+                  <div class="fundsContext step-finish p-b-lg clearfix">
+                <div class="col-xs-5 al-right">
+                <i class="success fa fa-smile-o"></i>
+                </div>
+                <div class="col-xs-7">
+                <div class="success p-t-sm">建站成功！</div>
+                </div>
+            </div>
+                  <div class="m-lg">
+                  <div class="gray-chunk  clearfix">
+                     <dd class="pull-left p-xs text-oflow-20">
+                       <b>临时站点域名：</b>
+                       <span class="m-l-xs">zh.gamebod.com</span>
+                     </dd>
+                     <dd class="pull-left p-xs text-oflow-20">
+                       <b>临时管理中心地址：</b>
+                       <span class="m-l-xs">zh.gamebod.com/gx</span>
+                     </dd>
+																						<dd class="pull-left text-oflow-20"><a href="site/add-site-4.html" class="btn btn-filter btn-sm m-t-xs">复制</a></dd>
+                   </div>
+                   <div class="line-hi34">
+                <span class="co-yellow"><i class="fa fa-exclamation-circle"></i></span>
+                 有效期15天，过期将停用站点！
+            </div>
+                  </div>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                <div class="operate-btn">
+                   <a href="site/main.html" nav-target="topFrame" class="btn btn-outline btn-filter btn-lg">返回列表</a>
+                   <a href="site/add-site.html" nav-target="mainFrame" class="btn btn-filter btn-lg">继续新增</a>
+                </div>
+            </div>
+        </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>
+
+
+
+<script>
+	//新增左侧菜单-选中/取消 效果
+        $(".add-shortcut-menu dd a").click(function () {
+            $(this).toggleClass("selected");
+        });
+
+        //添加标签-选中/取消 效果
+        $(".compile-li-tag a").click(function () {
+            $(this).toggleClass("selected");
+        });
+	
+	     $(".down-menu-sq").click(function () {
+						   $(this).parents(".operate-memu").prev(".add-shortcut-menu").children("dd").toggleClass("open");
+							$(this).parents(".operate-memu").toggleClass("open");
+						})
+
+//表格内下拉菜单    
+$(document).ready(function(){
+      $("th.inline").click(function () {
+      $(this).find(".chosen-drop").css({top:$(this).parent().offset().top-$("body").scrollTop()+28});
+      $(this).find(".chosen-drop").css({left:$(this).find(".chosen-container").offset().left});
+    });
+});
+</script>
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>

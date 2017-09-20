@@ -1,0 +1,83 @@
+ <div class="row">
+            <div class="position-wrap clearfix">
+                <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+                <span>服务</span><span>/</span><span>系统公告</span>
+                <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+            </div>
+            <div class="col-lg-12 m-b">
+                <div class="wrapper white-bg shadow">
+                    
+                    <!--表格内容-->
+                    <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                       
+                           
+                            <ul class="artificial-tab clearfix bg-gray">
+                <li class="col-sm-3"></li>
+                <li class="m-l-lg"><a href="javascript:void(0)" class="p-r-sm"><span class="con">Englist 未编辑</span></a></li>
+                <li><a class="current" href="javascript:void(0)"><span class="con">简体中文 编辑中</span></a></li>
+                <li><a href="javascript:void(0)"><span class="con">繁體中文 未編輯</span></a></li>
+                
+            </ul>
+                       
+                       <div class="clearfix m-l-lg line-hi34">
+                <label class="ft-bold col-sm-3 al-right">公告类型：</label>
+                <div class="col-sm-5">运营公告</div>
+            </div>
+                       <div class="clearfix m-l-lg line-hi34">
+                <label class="ft-bold col-sm-3 al-right">发布方式：</label>
+                <div class="col-sm-5">仅展示</div>
+            </div>
+                     <div class="clearfix m-l-lg line-hi34">
+                <label class="ft-bold col-sm-3 al-right">发布时间：</label>
+                <div class="col-sm-5">立即发布</div>
+            </div>
+                    <div class="clearfix m-l-lg line-hi34">
+                <label class="ft-bold col-sm-3 al-right">公告标题：</label>
+                <div class="col-sm-5">独立日</div>
+            </div>  
+                      
+                      
+                      <div class="clearfix m-l-lg line-hi34">
+                <label class="ft-bold col-sm-3 al-right">发送内容：</label>
+                <div class="col-sm-5">独立日（Independence Day，又称Fourth of July、4th of July或July Fourth）是美国的主要法定节日之一，日期为每年7月4日，以纪念1776年7月4日大陆会议在费城正式通过《独立宣言》。《独立宣言》由托马斯·杰佛逊起草，1776年7月4日经大陆会议专门委员会修改后通过，并由大陆会议主席约翰·汉考克签字生效。《独立宣言》开宗明义地阐明，一切人生而平等，具有追求幸福与自由的天赋权利；淋漓尽致地历数了英国殖民主义者在美洲大陆犯下的罪行；最后庄严宣告美利坚合众国脱离英国而独立。《独立宣言》是具有世界历史意义的伟大文献。通过《独立宣言》的这一天也成为美国人民永远纪念的节日，定为美国独立日。</div>
+            </div>
+                      
+                      
+                      
+                       
+                    </div>
+                    <div class="operate-btn ">
+                   <a href="serve/system-notice.html" nav-target="mainFrame" class="btn btn-outline btn-filter btn-lg ">上一步</a>
+                   <a href="serve/system-notice-finish.html" nav-target="mainFrame" class="btn btn-filter btn-lg ">发布</a>
+                </div>
+                </div>
+            </div>
+        </div>
+<!-- 左侧菜单响应控件 -->
+<script src="../../common/js/inspinia/inspinia.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+    //表格内下拉菜单    
+$(document).ready(function(){
+      $("th.inline").click(function () {
+      $(this).find(".chosen-drop").css({top:$(this).parent().offset().top-$("body").scrollTop()+28});
+      $(this).find(".chosen-drop").css({left:$(this).find(".chosen-container").offset().left});
+    });
+});
+</script>

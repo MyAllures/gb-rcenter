@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>服务</span><span>/</span><span>新手引导</span>
+        <a href="javascript:void(0)" class="m-l-sm btn btn-outline btn-default btn-xs co-gray6 return-btn"><em class="fa fa-caret-left"></em>返回</a>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12 m-b">
+        <div class="wrapper white-bg shadow">
+            <!--筛选条件-->
+            <div class="filter-wraper clearfix p-xs border-b-1">
+                <div class="form-group clearfix pull-left content-width-limit-200 m-b-xs">
+                        <div class="input-group line-hi34">
+                            <span class="input-group-addon abroder-no"><b>一级分类：</b></span>
+                            存款帮助
+                        </div>
+                   </div>
+<div class="form-group clearfix pull-left content-width-limit-200 m-b-xs">
+                        <div class="input-group line-hi34">
+                            <span class="input-group-addon abroder-no"><b>二级分类：</b></span>
+                            线上支付
+                        </div>
+                   </div>
+
+            </div>
+            <!--表格内容-->
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+
+
+                <ul class="artificial-tab clearfix bg-gray">
+                    <li class="m-l-lg"><a href="javascript:void(0)" class="p-r-sm"><span class="con">Englist 未编辑</span></a>
+                    </li>
+                    <li><a class="current" href="javascript:void(0)"><span class="con">简体中文 编辑中</span></a></li>
+                    <li><a href="javascript:void(0)"><span class="con">繁體中文 未編輯</span></a></li>
+                    <li class="pull-right m-t-md">
+                        <div class="btn-group">
+                            <button data-toggle="dropdown" class="btn btn-link dropdown-toggle fzyx">
+                                复制语系&nbsp;&nbsp;<span class="caret"></span></button>
+                            <ul class="dropdown-menu pull-right">
+                                <li class="temp"><a href="javascript:void(0)" class="co-gray">复制语系</a></li>
+                                <li class="temp"><a href="javascript:void(0)" class="co-gray">复制语系</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+
+                <div class="clearfix m-l-lg m-t-md line-hi34">
+                    <label class="ft-bold pull-left">标题：</label>
+
+                    <div class="col-sm-5">我爱你塞北的雪
+                    </div>
+                </div>
+
+
+                <div class="clearfix m-l-lg line-hi34">
+                    <label class="ft-bold pull-left">内容：</label>
+
+                    <div class="col-sm-10">
+
+                    啦啦啦，啦啦啦我是卖报的小行家<br>
+                    <img src="images//1.jpg" style="width: 100%">
+                    </div>
+                </div>
+
+            </div>
+            <div class="operate-btn ">
+                <a href="serve/system-notice-preview.html" nav-target="mainFrame"
+                   class="btn btn-filter btn-lg ">确认</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 左侧菜单响应控件 -->
+<script src="../../common/js/inspinia/inspinia.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': {allow_single_deselect: true},
+            '.chosen-select-no-single': {disable_search_threshold: 10},
+            '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+            '.chosen-select-width': {width: "95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+    //表格内下拉菜单    
+    $(document).ready(function () {
+        $("th.inline").click(function () {
+            $(this).find(".chosen-drop").css({top: $(this).parent().offset().top - $("body").scrollTop() + 28});
+            $(this).find(".chosen-drop").css({left: $(this).find(".chosen-container").offset().left});
+        });
+    });
+</script>

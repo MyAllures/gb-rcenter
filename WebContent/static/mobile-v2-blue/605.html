@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>禁止訪問|手机端DEMO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/blue/ued/style.css" />
+</head>
+
+<body class="gb-theme">
+    <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+        <!-- 主页面容器 -->
+        <div class="mui-inner-wrap">
+            <header class="mui-bar mui-bar-nav gb-header">
+                <h1 class="mui-title">禁止訪問</h1>
+            </header>
+            <div class="mui-content mui-scroll-wrapper gb-navbar">
+                <div class="mui-scroll">
+                    <div class="mui-content-padded gb-error">
+                        <div class="mui-row m-y-lg">
+                            <div class="mui-col-xs-3"></div>
+                            <div class="mui-col-xs-6 mui-text-center gb-error-img">
+                                <img src="../../mobile-v2/images/error/ico-605.png">
+                            </div>
+                            <div class="mui-col-xs-3"></div>
+                        </div>
+                        <p>由于您目前所在的地区不在服务访问内，我们暂时无法为您提供服务。给您造成的不便，敬请谅解！</p>
+                        <p>有任何疑问？ 请通过在线客服，联系全年无休的在线客户支持团队，我们将竭诚为您服务。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-off-canvas-backdrop"></div>
+        </div>
+    </div>
+</body>
+<script src="../../mobile-v2/js/mui/mui.js"></script>
+<script src="../../mobile-v2/js/zepto/zepto.min.js"></script>
+<script>
+//mui初始化
+mui.init({
+    swipeBack: true //启用右滑关闭功能
+});
+var info = document.getElementById("info");
+document.getElementById("alertBtn").addEventListener('tap', function() {
+    mui.alert('忘记账号和密码？请联系在线客服。客服人员将根据您提供的信息，在核实您身份之后，帮您找回账号密码。', '找回密码！', function() {});
+});
+//主体内容滚动条
+mui('.mui-scroll-wrapper').scroll();
+//data-href
+mui("body").on("tap", "[data-href]", function() {
+    var _href = $(this).data('href');
+    mui.openWindow({
+        url: _href,
+        id: _href,
+        extras: {},
+        createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+        show: {
+            autoShow: true, //页面loaded事件发生后自动显示，默认为true
+        },
+        waiting: {
+            autoShow: true, //自动显示等待框，默认为true
+            title: '正在加载...', //等待对话框上显示的提示内容
+
+        }
+    })
+})
+</script>
+
+</html>

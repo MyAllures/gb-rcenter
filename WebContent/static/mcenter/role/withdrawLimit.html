@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玩家管理-角色管理</title>
+    <link href="../../../mcenter/themes/default/common.css" rel="stylesheet">
+    <link href="../../../common/themes/default/style.css" rel="stylesheet">
+    <link href="../../../common/themes/default/iconfont.css" rel="stylesheet" >
+    <link href="../../../common/themes/default/switchery/switchery.css" rel="stylesheet" >
+    <link href="../../../common/themes/default/dist/bootstrapSwitch.css" rel="stylesheet">
+    <link href="../../../common/themes/default/iCheck/custom.css" rel="stylesheet">
+    <link href="../../../common/themes/default/nouslider/jquery.nouislider.css" rel="stylesheet">
+    <link href="../../../common/themes/default/chosen/chosen.css" rel="stylesheet" >
+    <link href="../../../common/themes/default/banner/elastislide.css" rel="stylesheet" />
+    <link href="../../../common/themes/default/content.css" rel="stylesheet">
+</head>
+<body>
+<div id="wrapper">
+    <div class="row">
+        <div class="position-wrap clearfix">
+            <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+            <span>角色管理</span>
+            <span>/</span><span>层级管理</span>
+        	<a href="javascript:void(0)" nav-target="mainFrame" class="m-l-sm btn btn-outline btn-default btn-xs co-gray6 return-btn"><em class="fa fa-caret-left"></em>返回</a>
+            <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+        </div>
+        <div class="col-lg-12">
+            <div class="wrapper white-bg shadow">
+<!--
+                <div class="rechargeCon">
+                    <div class="clearfix m-b-xs p-t-sm"><i class="fa fa-exclamation-circle"></i><span class="m-l-sm">以下涉及金额的项目，其他货币将根据您设置的主货币自动进行额度转换</span></div>
+                </div>
+-->
+                <div class="line-hi34 col-sm-12 bg-gray m-b m-t">
+                    <label class="ft-bold col-sm-3 al-right line-hi34"></label>
+                    <span class="co-yellow m-r-sm m-l-sm"><i class="fa fa-exclamation-circle"></i></span>
+                    以下涉及金额的项目，其他货币将根据您设置的主货币自动进行额度转换
+                </div>
+                <div class="form-group clearfix pull-right content-width-limit-250 m-r-sm m-b-none">
+                                <div class="input-group date">
+                                  <span class="input-group-addon abroder-no"><b>复制参数：</b></span>
+                                  <div class="">
+                                      <select class="chosen-select-no-single" data-placeholder="选择层级">
+                            <option></option>
+                            <option>A层</option>
+                            <option>B层</option>
+                            <option>C层</option>
+                            <option>D层</option>
+                            <option>E层</option>
+                            <option>F层</option>
+                        </select>
+                                  </div>
+                                </div>
+                            </div>
+                
+                <div class="clearfix m-b limit_title_wrap">
+                    <h3 class="limit_title cur">玩家单笔取款手续费</h3>
+                </div>
+<!--                <hr class="m-t-sm m-b">-->
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">时限/小时</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <input type="text" class="form-control">
+                          <span tabindex="0" class="input-group-addon help-popover" role="button" data-container="body" data-toggle="popover"  data-html="true" data-trigger="focus" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."><i class="fa fa-question-circle"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">免手续费次数</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <input type="text" class="form-control">
+                          <span tabindex="0" class="input-group-addon help-popover" role="button" data-container="body" data-toggle="popover"  data-html="true" data-trigger="focus" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."><i class="fa fa-question-circle"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">手续费上限金额CNY</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <input type="text" class="form-control">
+                          <span tabindex="0" class="input-group-addon help-popover" role="button" data-container="body" data-toggle="popover"  data-html="true" data-trigger="focus" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."><i class="fa fa-question-circle"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">按比例收费</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <span class="input-group-addon"><input type="radio" class="i-checks" name="sf" checked></span>
+                          <input type="text" class="form-control" placeholder="">
+                          <span class="input-group-addon">%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">固定收费</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <span class="input-group-addon"><input type="radio" class="i-checks" name="sf" checked></span>
+                          <input type="text" class="form-control">
+                          <span class="input-group-addon bdn">&nbsp;≤100</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix m-b limit_title_wrap">
+                    <h3 class="limit_title cur">取款限制</h3>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">启用取款限制</label>
+                    <div class="col-sm-5 line-hi34">                        
+                        <input type="checkbox" name="my-checkbox" data-size="mini" checked>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">每日内允许取款次数</label>
+                    <div class="col-sm-5 line-hi34">                        
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="clearfix m-b limit_title_wrap">
+                    <h3 class="limit_title cur">取款审核设置</h3>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">启用普通取款审核</label>
+                    <div class="col-sm-5 line-hi34">                        
+                        <input type="checkbox" name="my-checkbox" data-size="mini" checked>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">处理时间/小时</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <input type="text" class="form-control">
+                          <span tabindex="0" class="input-group-addon help-popover" role="button" data-container="body" data-toggle="popover"  data-html="true" data-trigger="focus" data-placement="top" data-content="小于超额取款的订单从审核至到账所需要的时间。<br>当玩家确认继续取款后，将弹窗告知玩家几个小时会到账；"><i class="fa fa-question-circle"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">启用超额取款审核</label>
+                    <div class="col-sm-5 line-hi34">
+                        <input type="checkbox" name="my-checkbox" data-size="mini">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">超出金额CNY</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" placeholder="超出金额CNY">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">处理时间/小时</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <input type="text" class="form-control">
+                         <span tabindex="0" class="input-group-addon help-popover" role="button" data-container="body" data-toggle="popover"  data-html="true" data-trigger="focus" data-placement="top" data-content="大于等于超额取款的订单从审核至到账所需要的时间。<br>当玩家确认继续取款后，将弹窗告知玩家几个小时会到账；"><i class="fa fa-question-circle"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix m-b limit_title_wrap">
+                    <h3 class="limit_title cur">取款稽核设置</h3>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">单笔上限金额CNY</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">单笔下限金额CNY</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">存款稽核</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <input type="text" class="form-control" placeholder="%">
+                          <span tabindex="0" class="input-group-addon help-popover" role="button" data-container="body" data-toggle="popover"  data-html="true" data-trigger="focus" data-placement="top" data-content="避免玩家洗钱（存款后未在游戏进行有效交易量就申请取款），可高于100%。<br>&nbsp;&nbsp; 如设置100%，则玩家的有效交易量需达到存款金额的100%才可申请取款，否则除取款手续费外，将会被额外扣除行政费（按%算）"><i class="fa fa-question-circle"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">行政费</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <input type="text" class="form-control" placeholder="">
+                          <span class="input-group-addon">%</span>
+                          <span tabindex="0" class="input-group-addon help-popover" role="button" data-container="body" data-toggle="popover"  data-html="true" data-trigger="focus" data-placement="top" data-content="未达到存款稽核标准时强行取款，除取款手续费外，将会被额外扣除行政费。<br>&nbsp; &nbsp;&nbsp; 如行政费设置为50%，手续费为50，存款1000未达到存款稽核标注强行取款，将被扣除550（1000×50%+50=550）"><i class="fa fa-question-circle"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">放宽额度CNY</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <input type="text" class="form-control">
+                          <span tabindex="0" class="input-group-addon help-popover" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top" data-content="如放宽额度设置为50，存款稽核设置为100%。当玩家存款1000时，有效交易量应达到100%（1000），因额度放宽了50，故玩家有效交易量只需达到950，就视为已达到存款稽核要求"><i class="fa fa-question-circle"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="ft-bold col-sm-3 al-right line-hi34">余额稽核</label>
+                    <div class="col-sm-5">
+                        <div class="input-group date">
+                          <input type="text" class="form-control" placeholder="%">
+                          <span tabindex="0" class="input-group-addon help-popover" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top" data-content="如设置为50，当玩家总资产剩余≤50则视为玩家已输光了，此时再存款则之前的稽核点清零，从本次开始重新计"><i class="fa fa-question-circle"></i></span>
+                        </div>
+                    </div>
+                </div>
+<!--                <hr class="m-t-sm m-b">-->
+<!--
+                <div class="m-b">
+                    <b class="pull-left m-r-sm">使用于所有层级</b>
+                    <input type="checkbox" class="i-checks" checked />
+                </div>
+-->
+                <div class="operate-btn">
+                    <button class="btn btn-filter btn-lg m-r">提交</button>
+                    <button class="btn btn-outline btn-filter btn-lg">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Mainly scripts -->
+<script src="../../../common/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../../common/js/bootstrap/bootstrap.min.js"></script>
+<script src="../../../common/js/jquery/plugins/jquery.metisMenu/jquery.metisMenu.js"></script>
+<!-- Chosen -->
+<script src="../../../common/js/jquery/plugins/jquery.chosen/jquery.chosen.js"></script>
+<!-- JSKnob -->
+<script src="../../../common/js/jquery/plugins/jquery.knob/jquery.knob.js"></script>
+<!-- NouSlider -->
+<script src="../../../common/js/jquery/plugins/jquery.nouislider/jquery.nouislider.min.js"></script>
+<!-- Peity -->
+<script src="../../../common/js/jquery/plugins/jquery.peity/jquery.peity.min.js"></script>
+<!-- GITTER -->
+<script src="../../../common/js/jquery/plugins/jquery.gritter/jquery.gritter.min.js"></script> 
+<!-- Switchery --> 
+<script src="../../../common/js/switchery/switchery.js"></script> 
+<!-- Sparkline -->
+<script src="../../../common/js/jquery/plugins/jquery.sparkline/jquery.sparkline.min.js"></script>
+<!-- ChartJS-->
+<script src="../../../common/js/chartJs/Chart.min.js"></script>
+<!-- Toastr -->
+<script src="../../../common/js/toastr/toastr.min.js"></script>
+<!-- iCheck -->
+<script src="../../../common/js/iCheck/icheck.min.js"></script>
+<!-- Custom and plugin javascript -->
+<script src="../../../common/js/inspinia/inspinia.js"></script>
+<!--switch-->
+<script src="../../../common/js/dist/bootstrap-switch.js"></script>
+
+<script src="../../../common/js/modernizr.custom/modernizr.custom.17475.js"></script>
+
+<script src="../../../common/js/jquery/plugins/jquery.elastislide/jquery.elastislide.js"></script>
+
+<script src="../app.js"></script>
+<!-- End SlidesJS Required -->
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>
+<script>
+    $('.help-popover').popover()
+    
+    $(document).ready(function () {
+        $("iframe",window.top.document).height($(document.body).height());
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+    $(document).ready(function(){
+        $(".more-data").mousedown(function(){
+            $(this).parent().toggleClass("show-data");
+        })
+        //表格详情查看、关闭
+        $(".view").mousedown(function(){
+            $(this).parent("td").parent("tr").next(".bg-color").toggle();
+        });
+        $(".dial").knob();
+		//condition
+		$(".condition li").click(function(){
+			$(this).parent().children().removeClass("click");
+			$(this).addClass("click");
+		});
+		$(".condition li").mouseover(function(){
+			$(this).children(".edit").show();
+		});
+		$(".condition li").mouseleave(function(){
+			$(this).children(".edit").hide();
+		});
+
+		//condition-wraper
+		$(".condition-wraper .add").click(function(){
+			$(this).hide();
+			$(".condition-options-wraper.sx").slideToggle();
+			$(".cancel-create").show();
+		});
+		$(".condition-wraper .cancel-create").click(function(){
+			$(this).hide();
+			$(".condition-options-wraper.sx").slideToggle();
+			$(".add").show();
+		});	
+    });
+</script>
+
+</body>
+</html>

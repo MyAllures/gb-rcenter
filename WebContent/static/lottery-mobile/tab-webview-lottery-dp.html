@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Perfect Lottery</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="../../lottery-mobile/themes/mui.min.css" rel="stylesheet"/>
+    <link href="../../lottery-mobile/themes/style.css" rel="stylesheet"/>
+	</head>
+
+	<body>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right draw-list-a">
+						    <img class="mui-media-object draw-list-img" src="../../lottery-mobile/images/lottery_ico/hklhc.png">
+						    <div class="mui-media-body draw-list-right">
+						    	<span class="title">香港六合彩</span>
+						    	<span class="mui-pull-right"><font class="col-blue">20170502077期</font>&nbsp;17-05-02 18:50</span>
+						    	<p class="mui-ellipsis">
+						    		<span class="inline-list-2">
+                                    <i class="lottery-ball lhc-num" num="1">1</i><i class="lottery-ball lhc-num" num="15">15</i><i class="lottery-ball lhc-num" num="23">23</i><i class="lottery-ball lhc-num" num="27">27</i><i class="lottery-ball lhc-num" num="46">46</i><i class="lottery-ball lhc-num" num="48">48</i><i class="draw-list-i-add">+</i><i class="lottery-ball">45</i>
+                                </span>
+						    	    <span class="inline-list-2"><i class="lottery-block">鸡</i><i class="lottery-block">羊</i><i class="lottery-block">猪</i><i class="lottery-block">羊</i><i class="lottery-block">鼠</i><i class="lottery-block">狗</i><i class="draw-list-i-add"></i><i class="lottery-block">牛</i></span>
+						    	</p>
+						    	
+						    </div>
+					    </a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script>
+			mui.init({
+				swipeBack: false,
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			/**
+			 * 下拉刷新具体业务实现
+			 */
+			function pulldownRefresh() {
+				setTimeout(function() {
+                //业务逻辑
+				}, 1000);
+			}
+			var count = 0;
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				setTimeout(function() {
+                //业务逻辑
+				}, 1000);
+			}
+		</script>
+	</body>
+
+</html>

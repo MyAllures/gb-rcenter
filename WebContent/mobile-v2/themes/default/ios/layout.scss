@@ -1,0 +1,113 @@
+$phone6rem:37.5;
+body { background: #fff;line-height: 24rem /$phone6rem; }
+ul, ol, dl {
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 25.6rem /$phone6rem;
+    list-style-position: outside;
+    margin-bottom: 30rem /$phone6rem;
+}
+.iosinstruction_box { height: 4.266666666666667rem; background:#242222; }
+.orbit-slide-number { display: none; }
+.orbit-timer { display: none; }
+.center_align { text-align: center; }
+.button {
+    background-color: #000;
+    border: 1px solid #252525;
+    font-size: 14px;
+    width: 3.413333333333333rem;
+    height: 1.333333333333333rem;
+    padding: 0;
+    line-height: 1.333333333333333rem;
+    text-align: center;
+    margin: 0;
+}
+.margintop1 {margin-top: 0.4266666666666667rem; }
+.column, .columns {
+    position: relative;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    float: left;
+}
+.marginbottom1 { margin-bottom: 1rem; }
+.orbit-container .orbit-slides-container > * .orbit-caption { background-color: transparent; font-size: 16px; }
+.orbit-number { color: #666;     font-size: 32px; height: 51rem /$phone6rem;line-height:51rem /$phone6rem;}
+button:hover, button:focus, .button:hover, .button:focus { background-color: #999; }
+.orbit-bullets { display: block!important; }
+.orbit-container .orbit-slides-container > * .orbit-caption { bottom: 0.8rem; }
+.orbit-text{font-size: 16px;}
+.orbit-bullets li{width: 0.24rem;height: 0.24rem;}
+.orbit-container .orbit-slides-container > * .orbit-caption{padding: 10rem/$phone6rem 14rem/$phone6rem;} 
+
+.com-name{    position: absolute;
+    top: 320rem /$phone6rem;
+    left: 0;
+    right: 0;
+    text-align: center;    font-size: 15rem /$phone6rem;
+    font-weight: bold;
+    color: #000;width: 240rem /$phone6rem;
+    margin: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;}
+.com-name.small{
+    top: 225rem /$phone6rem;
+    font-size: 8rem /$phone6rem;
+    width: 120rem /$phone6rem;
+}
+.com-name2{ position: absolute;
+    top: 317rem /$phone6rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 14rem /$phone6rem;
+    color: #4c99f9;width: 240rem /$phone6rem;
+    margin: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;}
+.com-name2.small{
+top: 5.099502487562189rem;
+    font-size: 0.1492537313432836rem;
+    width: 120rem /$phone6rem;
+}
+.par-1{position: relative;height: 470rem /$phone6rem;
+    .logo-big{
+            position: absolute;
+    top: 42rem /$phone6rem;
+    text-align: center;
+    right: 0;
+    left: 0;
+    height: 30rem /$phone6rem;
+        img{height: 100%;}
+    }
+    .logo-small{    position: absolute;
+    top: 4.285714285714286rem;
+    left: 2.128571428571429rem;
+    height: 0.5018571428571429rem;
+    width: 2.93333rem;
+    text-align: left;
+        img{height: 100%;vertical-align: top;}
+    }
+}
+.sli1{
+    .app-icon-big{position: absolute;
+    top: 209rem /$phone6rem;
+    left: 209rem /$phone6rem;
+    width: 70rem /$phone6rem;
+    border-radius: 6rem /$phone6rem;}
+    .app-icon-small{position: absolute;
+    top: 328rem /$phone6rem;
+    left: 138rem /$phone6rem;
+    width: 27rem /$phone6rem;
+    border-radius: 4rem /$phone6rem;}
+    .txt1{position: absolute;top: 0;left: 0;}
+    
+}
+.sli2{    
+    .app-icon-small{    position: absolute;
+    top: 309rem /$phone6rem;
+    left: 139rem /$phone6rem;
+    width: 25rem /$phone6rem;
+    border-radius: 5rem /$phone6rem;}
+}

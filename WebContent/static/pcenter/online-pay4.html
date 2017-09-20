@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="renderer" content="webkit">
+  <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+  <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+  <link rel="stylesheet" href="../../pcenter/themes/default/bootstrap.css">
+  <!-- 提示弹出框 -->
+  <script type="text/javascript">
+var environment = {
+  userVo : '',
+  role : '',
+  userId : '',
+  basePath : '',
+  userCash : '',
+  globalPath : '/',
+  userActiveTime : '',
+  yoolibaoWhiteListStatus : '',
+  yoolibaoOpenStatus : '',
+  cerrencyOpenTime : "2015/9/10"//new Date()
+};
+</script>
+
+  <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+  <script src="../../common/js/pcenterJS/global-1.1.0.min.js" type="text/javascript"></script>
+  <script src="../../common/js/bootstrap/bootstrap.min.js"></script>
+  <!--项部下拉弹出 -->
+  <script type="text/javascript" src="../../common/js/pcenterJS/head.js"></script>
+  <title>玩家中心首页</title>
+</head>
+<body>
+  <!-- //* Top -->
+
+  <div class="top-wrap">
+    <div class="top">
+      <!--顶部右边-->
+      <div class="top-right">
+        <div class="member">
+          您好，
+          <div id="site-nav">
+            <ul>
+              <li>
+                <div class="menu">
+                  <a class="menu-hd" href="#">
+                    <span class="orange">PCKmenr</span> <b></b>
+                  </a>
+                  <div class="menu-bd box">
+                    <div class="global-account-head">
+                      <a href="#" class="global-account-img">
+                        <img src="images/face.png" width="39" height="39"  alt="我的头像" />
+                      </a>
+                      <p class="global-account-name" title="name">下午好，陈先生</p>
+                      <a href="account.html">账户设置</a>
+                      <span class="global-top-seperator">|</span>
+                      <a href="gamerecord.html">交易记录</a>
+                    </div>
+
+                    <div class="global-account-money">
+                      钱包余额：
+                      <span class="show">
+                        <a href="#" >显示余额</a>
+                      </span>
+                      <p class="dottline space"></p>
+                      <div class="total">
+                        <a href="asset-transfer.html">转帐</a>
+                        <span class="global-top-seperator">|</span>
+                        <a href="asset-deposit.html">存款</a>
+                        <span class="global-top-seperator">|</span>
+                        <a href="asset-withdraw.html">取款</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          [退出]
+          <label class="line-after">
+            <span class="new"> <i class="new-ico select"></i>
+              <a href="#">新消息</a>
+            </span>
+          </label>
+        </div>
+      </div>
+      <!--顶部左边-->
+      <div class="top-left">
+        <div class="select-lang">
+          <p>
+            <span class="flag cn"></span>
+            简体中文
+          </p>
+          <ul>
+            <li>
+              <a href="#" rel="cn">
+                <span class="flag cn"></span>
+                简体中文
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="hk">
+                <span class="flag hk"></span>
+                繁体中文
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="en">
+                <span class="flag en"></span>
+                English
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="th">
+                <span class="flag th"></span>
+                ไทย
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="vn">
+                <span class="flag vn"></span>
+                Tiếng Việt
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="kr">
+                <span class="flag kr"></span>
+                한국어
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="jp">
+                <span class="flag jp"></span>
+                日本語
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="id">
+                <span class="flag id"></span>
+                Indonesia
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="kh">
+                <span class="flag kh"></span>
+                Khmer
+              </a>
+            </li>
+          </ul>
+        </div>
+        <label class="time line-after">GMT +8 2015-03-24  15:02:57</label>
+      </div>
+
+    </div>
+  </div>
+
+  <!--banner-->
+  <div class="banner">
+    <div class="logo"></div>
+    <div class="right"></div>
+  </div>
+  <div class="wrapper">
+    <!--left-->
+    <div class="sidebar">
+
+      <!--左边菜单栏-->
+      <div class="sidebar-nav">
+        <dl>
+          <dt>
+            <a href="index.html"> <i class="navico home"></i>
+              钱包转账
+            </a>
+          </dt>
+        </dl>
+         <dl>
+          <dt class="select">
+            <a href="deposit-region.html">
+              <i class="navico capital-select"></i>
+              存款专区
+            </a>
+          </dt>
+        </dl>
+         <dl>
+          <dt>
+            <a href="withdraw.html">
+              <i class="navico capital"></i>
+              取款专区
+            </a>
+          </dt>
+        </dl>
+        <dl>
+          <dt>
+            <a href="asset-history.html">
+              <i class="navico capital"></i>
+              资金记录
+            </a>
+          </dt>
+        </dl>
+        <dl>
+          <dt>
+            <a href="gamerecord.html">
+              <i class="navico gamerecord"></i>
+              投注记录
+            </a>
+          </dt>
+        </dl>
+      
+        <dl>
+          <dt>
+            <a href="infonotice.html">
+              <i class="navico info"></i>
+              消息公告
+            </a>
+          </dt>
+        </dl>
+        <dl>
+          <dt>
+            <a href="account.html">
+              <i class="navico accout"></i>
+              个人资料
+            </a>
+          </dd>
+        
+        </dl>
+        <dl>
+          <dt>
+            <a href="recommended.html">
+              <i class="navico recommend"></i>
+              推荐好友
+            </a>
+          </dt>
+        </dl>
+      </div>
+    </div>
+
+    <!--right-->
+    <div class="main-wrap">
+      <div class="notice">
+        <div class="notice-left"> <em class="path"></em>
+        </div>
+        <div class="path-right">
+          <a href="index.html">玩家首页</a>
+          <span class="arrow">></span>
+          <a href="infonotice.html">存款专区</a>
+        </div>
+      </div>
+      <!--扫码支付-->
+      
+    <div class="deposit-info-warp  clearfix">
+<div class="titleline pull-left"><h2>柜员机/柜台存款</h2></div><a href="deposit-region.html" class="btn-gray btn btn-big pull-right">返回上一级</a></div>
+
+ <div class="account-list account-info-warp">
+   <div class="left-ico-message">
+   <h4>选择支付方式：</h4>
+     <span class="deposit-info-title">步骤1<img src="images/online-pay1.png"></span>
+       
+      <div class="bank-deposit">
+                        
+                        <div class="bank-total" >
+                        
+                        <label class="bank select teller-b">
+                        <a href="online-pay4-b1.html">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="柜员机现金存款"><i class="pay-third bank-a" checked="checked"></i></span>
+                                <span class="bank-logo-name">柜员机现金存款</span>
+                                        </a>
+                            </label>
+                  
+                          
+                            <label class="bank teller-b">
+                            <a href="online-pay4-b2.html">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="柜员机转账"><i class="pay-third bank-b"></i></span>
+                                <span class="bank-logo-name">柜员机转账</span>
+                                </a>
+                            </label>
+                          
+                          
+                            <label class="bank teller-b">
+                            <a href="online-pay4-b3.html">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="银行窗口存款"><i class="pay-third bank-c"></i></span>
+                                <span class="bank-logo-name">银行窗口存款</span>
+
+                          </a>
+                            </label>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    
+
+        </div>                        
+      </div>
+      
+
+<div class="account-list account-info-warp">
+<div class="left-ico-message">
+<h4>请选择银行</h4>
+<span class="deposit-info-title">步骤2<img src="images/online-pay2.png"></span>
+<form>
+<div class="control-grouptwo">
+            <label class="control-left" for="inputEmail">存入银行：</label>
+            <div class="controls">
+              <select name="select" class="selectwidth">
+                <option>请选择</option>
+                <option>中国银行</option>
+                <option>中国工商银行</option>
+                <option>中国农业银行</option>
+                <option>中国建设银行</option>
+                <option>中国交通银行</option>
+                <option>中国招商银行</option>
+
+              </select>
+               <select name="select" class="selectwidth tail-number">
+                <option>尾号</option>
+                <option>3421</option>
+                <option>1212</option>
+
+              </select>
+            
+            </div>
+          </div>
+<div class="control-group">
+
+ <label class="control-label" for="inputEmail">存款金额：</label>
+ <div class="controls">
+   <input type="text" class="input" placeholder="">
+   <span class="tips line-hi30"> 返还 <em class="red">￥0.5</em> 手续费</span>
+   </div>
+  </div>
+<div class="applysale">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody><tr>
+                                <td width="72" class="al-right">申请优惠：</td>
+                                <td width="500"><span class="radiotwo">
+      <input name="bankcode" type="radio"></span><i class="item-title-ico goryorange">分类一</i> 满500送50，满1000送200…&nbsp;&nbsp;
+                                    <a href="#">收起其他优惠</a><i class="bank-arrico up"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><span class="radiotwo">
+  <input name="bankcode" type="radio"></span><i class="item-title-ico gorylightblue">分类一</i> 满500送50，满1000送200…
+                                    <a href="#"></a>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+  
+ 
+  <div class="control-group">
+ <label class="control-label" for="input">验证码：</label>
+ <div class="controls">
+   <input type="text" id="input" placeholder="" class="input">
+   <span class="verify-img"><img src="../../pcenter/images/yzm.png"></span>
+   <i class="ico-ask refresh"></i>
+   
+ </div>
+  </div>
+    
+  
+  
+    <div class=" control-group">
+ <label class="control-label"></label> 
+ <button type="button" class="btn-blue btn large-big">确定存款</button>
+  </div>  
+  
+  
+ <div>
+ </div>
+ 
+   </form>
+ </div>
+  </div>
+
+  <div class="account-list account-info-warp">
+<div class="left-ico-message">
+<span class="deposit-info-title">注意事项<img src="images/online-pay3.png"></span>
+
+
+
+  
+ <ul class="attention-list">
+ 
+   <li>1、 单笔储值最低<em class="red">100RMB</em>，最高<em class="red">10000RMB</em>，如存款高于上限请分多笔支付。</li>
+   <li>2、 请使用同行存款，加速您的入款速度。</li>
+   
+ </ul>
+  
+    
+  
+  
+ 
+  
+ <div>
+ </div>
+ 
+   </form>
+ </div>
+  </div>
+   
+
+
+
+
+
+
+
+</div>
+</div>
+<!-- 右边客服服务-->
+<div id="moquu_wxin" class="moquu_wxin">
+<a href="javascript:void(0)">
+玩家游戏
+<div class="moquu_wxinh"></div>
+</a>
+</div>
+<div id="moquu_wshare" class="moquu_wshare">
+<a href="javascript:void(0)">
+玩家游戏
+<div class="moquu_wshareh"></div>
+</a>
+</div>
+<div id="moquu_wmaps">
+<a href="#">玩家游戏</a>
+</div>
+<!--弹窗1-->
+<div class="modal inmodal in" id="notice-list-1" tabindex="-1" role="dialog" aria-hidden="false" >
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">修改登录密码</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+               <div class="form-group clearfix line-hi34 m-b-xxs">
+                  <label class="col-xs-3 al-right" for="inputEmail">当前密码：</label>
+                  <div class="col-xs-8 p-x">
+                    <input type="password" id="" placeholder="" class="input">
+                    <span class="tips green">
+                      <i class="mark successsmall"></i>
+                    </span>
+                    <div class="co-grayc2 m-t-xxs">忘记密码?</div>
+                  </div>
+                </div>
+                 <div class="form-group clearfix line-hi34 m-b-xxs">
+                  <label class="col-xs-3 al-right">新密码：</label>
+                  <div class="col-xs-8 p-x">
+                    <input type="password" id="" placeholder="" class="input">
+                    <span class="tips green">
+                      <i class="mark successsmall"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                  <label class="col-xs-3 al-right">密码强度：</label>
+                  <div class="col-xs-8 p-x controls">
+                    <em class="passafe passafegreen"></em>
+                    <em class="passafe"></em>
+                    <em class="passafe"></em>
+                  </div>
+                </div>
+                 <div class="form-group clearfix line-hi34 m-b-xxs">
+                  <label class="col-xs-3 al-right">确认密码：</label>
+                  <div class="col-xs-8 p-x">
+                    <input type="password" id="" placeholder="" class="input">
+                    <span class="tips green">
+                      <i class="mark successsmall"></i>
+                    </span>
+                  </div>
+                </div>
+                
+</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline btn-filter">修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 弹窗2 -->
+<div class="modal inmodal in" id="notice-list-2" tabindex="-1" role="dialog" aria-hidden="false" >
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">修改安全密码</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+               <div class="form-group clearfix line-hi34 m-b-xxs">
+                  <label class="col-xs-3 al-right" for="inputEmail">真实姓名：</label>
+                  <div class="col-xs-8 p-x">
+                    <input type="text" id="" placeholder="" class="input">
+                    <span class="tips green">
+                      <i class="mark successsmall"></i>
+                    </span>
+                    
+                  </div>
+                </div>
+                 <div class="form-group clearfix line-hi34 m-b-xxs">
+                  <label class="col-xs-3 al-right">当前密码：</label>
+                  <div class="col-xs-8 p-x">
+                    <input type="password" id="" placeholder="" class="input">
+                    <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      请输入密码
+                    </span>
+                    <div class="co-grayc2 m-t-xxs">忘记密码?</div>
+                  </div>
+                </div>
+              
+                 <div class="form-group clearfix line-hi34 m-b-xxs">
+                  <label class="col-xs-3 al-right">新密码：</label>
+                  <div class="col-xs-8 p-x">
+                    <input type="password" id="" placeholder="" class="input">
+                    <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      请输入6位纯数字
+                    </span>
+                  </div>
+                </div>
+                  <div class="form-group clearfix line-hi34 m-b-xxs">
+                  <label class="col-xs-3 al-right">确认密码：</label>
+                  <div class="col-xs-8 p-x">
+                    <input type="password" id="" placeholder="" class="input">
+                   <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      请输入密码
+                    </span>
+                  </div>
+                </div>
+                
+</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline btn-filter">修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--弹窗3-->
+<div class="modal inmodal in" id="notice-list-3" tabindex="-1" role="dialog" aria-hidden="false" >
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="al-center">确认提交了吗？</h3>
+                <dd class="m-sm">提交后不能自行修改，只能联系客服修改。</dd>
+                
+</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline btn-filter">返回修改</button>
+                <button type="button" class="btn btn-outline btn-filter">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 弹窗4 -->
+<div class="modal inmodal in" id="notice-list-4" tabindex="-1" role="dialog" aria-hidden="false" >
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+               <div class="form-group clearfix line-hi34 m-b-xxs">
+                  <label class="col-xs-3 al-right" for="inputEmail">原手机号：</label>
+                  <div class="col-xs-8 p-x">
+                    <input type="text" id="" placeholder="" class="input">
+                   <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      请输入手机号码
+                    </span>
+                    
+                  </div>
+                </div>
+                 <div class="form-group clearfix line-hi34 m-b-xxs">
+                  <label class="col-xs-3 al-right">验证码：</label>
+                  <div class="col-xs-8 p-x">
+                    <input type="password" id="" placeholder="" class="input">
+                    <button class="btn  btn-outline btn-filter m-t-xs-minus" type="button">92秒后重新发送短信</button>
+                  </div>
+                </div>
+              
+                <p class="popgray">如原手机无法验证，请 <a href="#" title="" class="orange">联系客服</a> 验证身份后直接帮您修改</p>
+               
+                
+</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline btn-filter">下一步</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 弹窗5 -->
+<div class="modal inmodal in" id="notice-list-5" tabindex="-1" role="dialog" aria-hidden="false" >
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+               <div class="form-group clearfix line-hi34 m-b-xxs">
+                  <label class="col-xs-3 al-right" for="inputEmail">原安全邮箱：</label>
+                  <div class="col-xs-8 p-x">
+                    <input type="email" id="" placeholder="" class="input">
+                   <span class="tips orange">
+                      <i class="mark plaintsmall"></i>
+                      请输入新安全邮箱
+                    </span>
+                    
+                  </div>
+                </div>
+                 <div class="form-group clearfix line-hi34 m-b-xxs">
+                  <label class="col-xs-3 al-right">验证码：</label>
+                  <div class="col-xs-8 p-x">
+                    <input type="password" id="" placeholder="" class="input">
+                    <button class="btn  btn-outline btn-filter m-t-xs-minus" type="button">92秒后重新获取验证码</button>
+                  </div>
+                </div>
+              
+                <p class="popgray">如原邮箱无法验证，请 <a href="#" title="" class="orange">联系客服</a> 验证身份后再绑定新邮箱</p>
+               
+                
+</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline btn-filter">下一步</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- //* 语言版本切换 #select-lang* -->
+<script type="text/javascript">
+        $(function() {
+         
+            $(".select-lang p").click(function() {
+                var ul = $(".select-lang ul");
+                if (ul.css("display") == "none") {
+                    ul.slideDown("fast");
+                } else {
+                    ul.slideUp("fast");
+                }
+            });
+
+            $(".select-lang ul li a").click(function() {
+                var txt = $(this).text();
+                var value = $(this).attr("rel");
+                $(".select-lang p").html("<span class='flag " + value + "'></span>" + txt);
+                $(".select-lang ul").hide();
+            });
+         
+        });
+      
+    </script>
+
+<!-- //* 国家银行切换 #country-lang* -->
+<script type="text/javascript">
+        $(function() {
+         
+            $(".ud-select p").click(function() {
+                var ul = $(this).next("ul");
+                if (ul.css("display") == "none") {
+                    ul.slideDown("fast");
+                } else {
+                    ul.slideUp("fast");
+                }
+            });
+             
+                  
+            $(".ud-select ul li a").click(function() {
+                var txt = $(this).text();
+                var value = $(this).attr("rel");
+                             $(this).parentsUntil(".ud-select").children("p").html("<span class='pay-bank " + value + "'></span>" + txt);
+                $(".ud-select ul").hide();
+            });
+                  
+         
+        });
+      
+    </script>
+
+<!-- //* 国家银行切换 #country-lang* -->
+<script type="text/javascript">
+        $(function() {
+         
+            $(".guj-select p").click(function() {
+                var ul = $(this).next("ul");
+                if (ul.css("display") == "none") {
+                    ul.slideDown("fast");
+                } else {
+                    ul.slideUp("fast");
+                }
+            });
+             
+                  
+            $(".guj-select ul li a").click(function() {
+                var txt = $(this).text();
+                var value = $(this).attr("rel");
+                             $(this).parentsUntil(".ud-select").children("p").html("<span class='flag " + value + "'></span>" + txt);
+                $(".guj-select ul").hide();
+            });
+                  
+         
+        });
+      
+    </script>
+
+<!-- 展开收缩-->
+<script>
+$(".classtitle").click(function(){
+    $(this).parent().parent().next().children().children('.classtext').slideToggle();
+  $(this).children('.set').toggle();
+    $(this).children('.shrink').toggle();
+});
+</script>
+
+</body>
+</html>

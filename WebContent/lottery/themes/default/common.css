@@ -1,0 +1,18 @@
+.p-r-0 {padding-right: 0!important;}
+.main-right {width: 215px!important;}
+.m-t-5 {margin-top: 5px!important;}
+.pointer {cursor: pointer!important;}
+
+/* loading */
+.loader {width: 140px; padding: 15px 0; border-radius: 5px; background: rgba(0, 0, 0, 0.6); text-align: center; color: #fff; position: absolute; top: 50%; left: 50%; z-index: 9999;}
+.loader img {vertical-align: middle; margin-right: 5px;}
+.loader span {display: inline-block; line-height: 30px; vertical-align: middle;}
+
+/* 确认下注弹框 */
+.place-title {font-size: 16px; font-weight: bold; color: #fff; text-align: center; background-color: #fa6200}
+.place-close {background: url(img/ico_close.png) no-repeat}
+.place-tip {font-weight: bold;padding-bottom: 5px;border-bottom: 1px dashed #bebebe;margin-bottom: 5px;}
+.place-tip b {color: #f30;}
+
+/* 投注页面Tab样式 */
+.init-tip {width:100%;padding:24px;text-align:center;}

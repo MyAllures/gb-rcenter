@@ -1,0 +1,18 @@
+<#if data.siteInfo.keywords?default('')!=''>
+<meta name="keywords" content="${data.siteInfo.keywords}">
+</#if>
+<#if data.siteInfo.description?default('')!=''>
+<meta name="description" content="${data.siteInfo.description}">
+</#if>
+<link rel="bookmark" href="${data.configInfo.sitePath}/images/favicon.ico">
+<link rel="shortcut Icon" href="${data.configInfo.sitePath}/images/favicon.ico"/>
+<link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/gui-base.css">
+<link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/gui-skin-default.css">
+<link rel="stylesheet" href="${data.configInfo.sitePath}/themes/common.css">
+<link rel="stylesheet" href="${data.configInfo.sitePath}/themes/bootstrap-dialog.min.css">
+<script type="text/javascript">
+    var imgRoot = '${data.configInfo.imgRoot}';
+</script>
+<!--[if lt IE 9]>
+<script src="/ftl/commonPage/js/html5.js"></script>
+<![endif]-->

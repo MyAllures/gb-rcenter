@@ -1,0 +1,496 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>资金管理</span>
+        <span>/</span><span>公司入款审核</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow">
+            <!--筛选条件-->
+            <div class="m-t-md">
+                <div class="m-b-xs clearfix">
+           <div class="col-sm-5 clearfix search_1" style="padding-left: 0;">
+           
+           <div class="form-group clearfix pull-left col-md-5 col-sm-12 m-b-sm padding-r-none-sm  advanced-hide">
+                    <div class="input-group">
+                        <span class="bg-gray input-group-addon bdn">
+                            <select class="chosen-select-no-single" data-placeholder="玩家账号">
+                                <option value=""></option>
+                                <option value="">玩家账号</option>
+                                <option value="">账户名称</option>
+                                <option value="">收款账号</option>
+                                <option value="">卡主姓名</option>
+                                <option value="">备注</option>
+                            </select>
+                        </span>
+                        <input type="text" class="form-control" placeholder="多个账号，用半角逗号隔开">
+                    </div>
+                </div>
+                <div class="form-group clearfix pull-left col-md-7 col-sm-12 m-b-sm padding-r-none-sm advanced-hide">
+                        <div class="input-group date time-select-a">
+                            <span class="input-group-addon bg-gray">审核时间</span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-20 12:30:21">
+                            <span class="input-group-addon time-select-t">~</span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-22 12:30:21">
+                            <span class="input-group-addon time-select-btn"><a type="button" class="btn btn-filter btn-outline">快选</a></span>
+                        </div>
+                    </div>
+                
+                    
+                     
+                    
+                     <!--<div class="form-group clearfix pull-left col-md-6 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group date time-select-a">
+                            <span class="input-group-addon bg-gray">派彩时间</span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-20 12:30:21">
+                            <span class="input-group-addon time-select-t">~</span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-22 12:30:21">
+                            <span class="input-group-addon time-select-btn"><a type="button" class="btn btn-filter btn-outline">快选</a></span>
+                        </div>
+                    </div> -->
+
+
+
+                    <div class="show-demand-a">
+                    <div class="form-group clearfix pull-left col-md-2 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group date">
+                            <span class="input-group-addon bg-gray">玩家账号</span>
+                            <input type="text" class="form-control" placeholder="多个账号，用半角逗号隔开">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix pull-left col-md-2 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group">
+                            <span class="input-group-addon bg-gray">层级</span>
+                            <span class=" input-group-addon bdn right-btn-down">
+                            <div class="btn-group table-desc-right-t-dropdown" initprompt="10条" callback="query">
+                            <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default right-radius type-search-btn">
+                        <span prompt="prompt">已选12项</span>
+                        <span class="caret-a pull-right"></span>
+                    </button>
+                   
+                </div>
+                        </span>
+                        </div>
+                        <div class="type-search" style="display: none;">
+                
+                <div class="">
+                    <table class="table table-bordered m-b-xxs">
+                        <tbody style="border-top: 0!important;padding: 0;">
+                        
+                            <tr>
+                            <td class="al-left">
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">层级1</span></label>
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">层级1</span></label>
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">层级1</span></label>
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">层级1</span></label>
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">层级1</span></label>
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">层级1</span></label>
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">层级1</span></label>
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">层级1</span></label>
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">层级1</span></label>
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"> <span class="m-r-xs">层级1</span></label>
+                            </td>
+                        </tr>
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+                    </div>
+                     <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group date time-select-a">
+                            <span class="input-group-addon bg-gray">创建时间</span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-20 12:30:21">
+                            <span class="input-group-addon time-select-t">~</span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-22 12:30:21">
+                            <span class="input-group-addon time-select-btn"><a type="button" class="btn btn-filter btn-outline">快选</a></span>
+                        </div>
+                    </div>
+                     <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group date time-select-a">
+                            <span class="input-group-addon bg-gray">审核时间</span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-20 12:30:21">
+                            <span class="input-group-addon time-select-t">~</span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-22 12:30:21">
+                            <span class="input-group-addon time-select-btn"><a type="button" class="btn btn-filter btn-outline">快选</a></span>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix pull-left col-md-3 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group date">
+                            <span class="input-group-addon bg-gray">交易号</span>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix pull-left col-md-3 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group time-select-a">
+                            <span class="input-group-addon bg-gray">金额</span>
+                            <span class="input-group-addon time-select-ico">起</span>
+                            <input type="text" class="form-control" placeholder="">
+                            <span class="input-group-addon time-select-t">~</span>
+                            <span class="input-group-addon time-select-ico">止</span>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                       </div>
+
+                      <div class="form-group clearfix pull-left col-md-3 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group">
+                            <span class="input-group-addon bg-gray">存款渠道</span>
+                            <span class=" input-group-addon bdn right-btn-down">
+                            <div class="btn-group table-desc-right-t-dropdown" initprompt="10条" callback="query">
+                            <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default right-radius type-search-btn">
+                        <span prompt="prompt">已选12项</span>
+                        <span class="caret-a pull-right"></span>
+                    </button>
+                   
+                </div>
+                        </span>
+                        </div>
+                        <div class="type-search" style="display: none;">
+                
+                <div class="">
+                    <table class="table table-bordered m-b-xxs">
+                        <tbody style="border-top: 0!important;padding: 0;">
+                        
+                            <tr>
+                            <td class="al-left">
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">支付宝</span></label>
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">微信支付</span></label>
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">融宝</span></label>
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">宝付</span></label>
+                                <label class="fwn m-r-sm"><input type="checkbox" class="i-checks"><span class="m-l-xs">国付宝</span></label>
+                            </td>
+                        </tr>
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+                    </div>
+                     <div class="form-group clearfix pull-left col-md-3 col-sm-12 m-b-sm padding-r-none-sm" id="advanced-hide">
+                    <div class="input-group">
+                        <span class="bg-gray input-group-addon bdn">
+                            <select class="chosen-select-no-single" data-placeholder="账户名称">
+                                <option value=""></option>
+                                <option value="">账户名称</option>
+                                <option value="">收款账号</option>
+                                <option value="">卡主姓名</option>
+                                <option value="">备注</option>
+                            </select>
+                        </span>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+              
+                 <!--<div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group date">
+                            <span class="input-group-addon bg-gray">注单号</span>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>-->
+                   
+                     <div class="form-group clearfix pull-left col-md-6 col-sm-12 m-b-sm padding-r-none-sm h-line-a">
+                        <div class="input-group">
+                            <span class="input-group-addon bg-gray">来源终端</span>
+                            <span class=" input-group-addon bdn  right-btn-down">
+                            <div class="btn-group table-desc-right-t-dropdown">
+                      <ul role="menu">
+                        <li role="presentation">
+                            <span><input type="radio" name="a1"> 全部</span>
+                        </li>
+                        <li role="presentation">
+                            <span><input type="radio" name="a1"> pc端</span>
+                        </li>
+                        <li role="presentation">
+                            <span><input type="radio" name="a1"> 手机端</span>
+                        </li>
+                    </ul>
+                </div>
+                        </span>
+                        </div>
+                    </div>
+                    
+               
+
+                    <div class="form-group clearfix pull-left col-md-3 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group date">
+                            <span class="input-group-addon bg-gray">审核人</span>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix pull-left col-md-3 col-sm-12 m-b-sm padding-r-none-sm">
+                        <div class="input-group date">
+                            <span class="input-group-addon bg-gray">存款IP</span>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    
+                    
+                    </div>  
+
+                    </div>
+                   
+                    <div class="col-sm-7 clearfix  search_2 m-b-xs">
+                        
+                         <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-info-hide dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">禁用声音提醒 <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">启用声音提醒</a></li>
+                        <li><a href="#">禁用声音提醒</a></li>
+                    </ul>
+                </div>
+                       
+                        <div class="btn-group m-r-sm pull-right">
+                    <a href="#" class="btn btn-primary-hide"><i class="fa fa-refresh fa-spin"></i><span class="hd">53秒</span></a>
+                    <a href="#" class="btn btn-primary-hide dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">5秒 刷新</a></li>
+                        <li><a href="#">10秒 刷新</a></li>
+                        <li><a href="#">15秒 刷新</a></li>
+                        <li><a href="#">30秒 刷新</a></li>
+                        <li><a href="#">60秒 刷新</a></li>
+                    </ul>
+                </div>
+                <div class="pull-right line-hi34 m-r-sm"><b class="m-l">共</b><span class="co-red3">￥2815.00</span></div>
+               
+                 <button type="button" class="btn btn-filter search_btn pull-left m-r-sm"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button>
+                 <button type="button" class="btn btn-filter btn-outline pull-left show-demand-b m-r-sm"><i class="fa fa-chevron-down"></i> 高级搜索</button>
+                        <div class="input-group-btn pull-left"> 
+                          <div class="input-group">
+                          <button type="button" class="btn btn-filter btn-outline pull-right radius-right-none">保存</button>
+                        <span class="bg-gray input-group-addon bdn">
+                            <div class="btn-group table-desc-right-t-dropdown"  callback="query">
+                            <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default right-radius" data-toggle="dropdown" aria-expanded="false">
+                        <a href="javascript:void(0)" class="del-template"><span class="fa fa-times"></span></a>
+                        <span prompt="prompt">请选择模板</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a href="javascript:void(0)" class="del-template"><span class="fa fa-times"></span></a><a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10" class="text-template">模板1</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="javascript:void(0)" class="del-template"><span class="fa fa-times"></span></a><a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10" class="text-template">模板1</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="javascript:void(0)" class="del-template"><span class="fa fa-times"></span></a><a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10" class="text-template">模板1</a>
+                        </li>
+                    </ul>
+                </div>
+                        </span>
+                    </div>
+                    </div>
+                    
+                        </div>
+
+
+            </div>
+            </div>
+            <!--表格内容-->
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover dataTable" id="editable" aria-describedby="editable_info">
+                        <thead>
+                            <tr role="row" class="bg-gray">
+                                <th>序号</th>
+                                <th>玩家</th>
+                                <th>层级</th>
+                                <th class="inline">
+                                    <div>
+                                        <select data-placeholder="所有方式" class="chosen-select-no-single" tabindex="9">
+                                            <option value=""></option>
+                                            <option>网银转账</option>
+                                            <option>ATM转账</option>
+                                            <option>柜台转账</option>
+                                        </select>
+                                    </div>
+                                </th>
+                                <th>收款账号</th>
+                                <th>存款金额</th>
+                                <th class="inline">
+                                    <div>
+                                        <select data-placeholder="全部状态" class="chosen-select-no-single" tabindex="9">
+                                            <option value=""></option>
+                                            <option>待处理</option>
+                                            <option>成功</option>
+                                            <option>失败</option>
+                                        </select>
+                                    </div>
+                                </th>
+                                <th>审核人</th>
+                                <th>审核时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tab-detail">
+                                <td>1</td>
+                                <td>
+                                    <div class="al-cleft">
+                                        <img src="images//zgq.jpg" /> <a href="javascript:void(0)">demovip</a>
+                                        <a href="javascript:void(0)" class="ico-lock co-red3"><i class="fa fa-warning"></i></a>
+                                    </div>
+                                </td>
+                                <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">A层级</span></a></td>
+                                <td><a href="funds/charge-audit.html" nav-target="mainFrame">微信电子支付 <div class="list-note"><span class="co-wathet">大开大合</span><em>[82154]</em></div></a>
+                                </td>
+                                <td><a href="javascript:void(0)">中国银行-刘威</a></td>
+                                <td class="money"><span class="fee"></span>￥ 188<i>.00</i></td>
+                                <td align="center"><span class="label label-danger p-x-md">失败</span></td>
+                                <td>jack</td>
+                                <td colspan="co-grayc2"><span class="co-grayc2">15分钟前</span></td>
+                                <td>
+                                    <a href="funds/charge-detail.html" nav-target="mainFrame" class="co-blue">详细</a>
+                                </td>
+                            </tr>
+                            <tr class="tab-detail">
+                                <td>2</td>
+                                <td>
+                                    <div class="al-cleft">
+                                        <img src="images//gq.jpg" /> <a href="javascript:void(0)">demovip</a>
+                                    </div>
+                                </td>
+                                <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">VIP层级</span></a></td>
+                                <td><a href="funds/charge-audit.html" nav-target="mainFrame">网银存款 <span class="co-wathet">首存</span></a>
+                                </td>
+                                <td><a href="javascript:void(0)">工商银行-马云</a></td>
+                                <td class="money"><span class="fee positive"></span>￥ 52,000<i>.00</i></td>
+                                <td align="center">
+                                    <button class="btn btn-sm btn-success-hide m-x-xs"><i class="fa fa-check"></i>通过</button>
+                                    <button class="btn btn-sm btn-danger-hide m-x-xs"><i class="fa fa-close"></i>失败</button>
+                                </td>
+                                <td>jack</td>
+                                <td colspan="co-grayc2"><span class="co-grayc2">20分钟前</span></td>
+                                <td>
+                                    <a href="funds/charge-detail.html" nav-target="mainFrame" class="co-blue">详细</a>
+                                </td>
+                            </tr>
+                            <tr class="tab-detail">
+                                <td>3</td>
+                                <td>
+                                    <div class="al-cleft">
+                                        <img src="images//cgq.jpg" /> <a href="javascript:void(0)">demovip</a>
+                                    </div>
+                                </td>
+                                <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">C层级</span></a></td>
+                                <td><a href="funds/charge-audit.html" nav-target="mainFrame">柜台机ATM存账 <span class="co-wathet">首存</span><div class="list-note"><span class="co-wathet">北京市东城区王府井</span></div></a>
+                                </td>
+                                <td><a href="javascript:void(0)">交通银行-李斯木</a></td>
+                                <td class="money"><span class="fee negative"></span>￥ 1,024<i>.00</i></td>
+                                <td align="center"><span class="label label-success p-x-md">成功</span></td>
+                                <td>admin</td>
+                                <td colspan="co-grayc2"><span class="co-grayc2">1小时前</span></td>
+                                <td>
+                                    <a href="funds/charge-detail.html" nav-target="mainFrame" class="co-blue">详细</a>
+                                </td>
+                            </tr>
+                            <tr class="tab-detail">
+                                <td>4</td>
+                                <td>
+                                    <div class="al-cleft">
+                                        <img src="images//zgq.jpg" /> <a href="javascript:void(0)">demovip</a>
+                                    </div>
+                                </td>
+                                <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">C层级</span></a></td>
+                                <td><a href="funds/charge-audit.html" nav-target="mainFrame">网银转账 <div class="list-note"><span class="co-wathet">北京市东城区王府井</span></div></a>
+                                </td>
+                                <td><a href="javascript:void(0)">工商银行-马云</a></td>
+                                <td class="money"><span class="fee positive"></span>￥ 99,000<i>.00</i></td>
+                                <td align="center"><span class="label label-danger p-x-md">失败</span></td>
+                                <td>admin</td>
+                                <td colspan="co-grayc2"><span class="co-grayc2">2小时前</span></td>
+                                <td>
+                                    <a href="funds/charge-detail.html" nav-target="mainFrame" class="co-blue">详细</a>
+                                </td>
+                            </tr>
+                            <tr class="tab-detail">
+                                <td>5</td>
+                                <td>
+                                    <div class="al-cleft">
+                                        <img src="images//gq.jpg" /> <a href="javascript:void(0)">demovip</a>
+                                    </div>
+                                </td>
+                                <td><a href="role/level_detail.html" nav-target="mainFrame"><span class="label label-info">A层级</span></a></td>
+                                <td><a href="funds/charge-audit.html" nav-target="mainFrame">支付宝电子支付 <span class="co-wathet">首存</span><div class="list-note"><span class="co-wathet">朕是皇上</span><em>[88480]</em></div></a>
+                                </td>
+                                <td><a href="javascript:void(0)">邮政储蓄银行-唐明启</a></td>
+                                <td class="money"><span class="fee negative"></span>￥ 200<i>.00</i></td>
+                                <td align="center"><span class="label label-success p-x-md">成功</span></td>
+                                <td>admin</td>
+                                <td colspan="co-grayc2"><span class="co-grayc2">3小时前</span></td>
+                                <td>
+                                    <a href="funds/charge-detail.html" nav-target="mainFrame" class="co-blue">详细</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-center m-t-sm co-gray9"><span class="fa fa-spinner fa-pulse"></span> 数据加载中…</div>
+                </div>
+                <!-- <div class="row bdtop3">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="pull-left">
+                            <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                                <option value=""></option>
+                                <option>每页20条</option>
+                                <option>每页30条</option>
+                                <option>每页40条</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                            <div class="pull-right pages show-hide-1095 page-skip">
+                                <form class="form-inline">
+                                    <label class="m-l-sm">共10页</label>
+                                    <label class="m-l">第
+                                        <input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                                    <button class="btn btn-sm m-l-sm">跳转</button>
+                                </form>
+                            </div>
+                            <ul class="pagination pull-right">
+                                <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$('.time-tooltip [data-toggle="tooltip"]').tooltip();
+ $(".show-demand-b").click(function(){
+      $(this).toggleClass("open")
+      $(".show-demand-a").toggle();
+      $(".advanced-hide").toggle();
+      $(".search_1").toggleClass("col-sm-12")
+      $(".search_1").toggleClass("col-sm-5")
+      $(".search_2").toggleClass("col-sm-12")
+      $(".search_2").toggleClass("col-sm-7")
+      $(".search_2").toggleClass("template-menu")
+    });
+$(".type-search-btn").click(function(){
+      $(this).toggleClass("open")
+      $(this).parents(".input-group").next(".type-search").toggle()
+    });
+</script>

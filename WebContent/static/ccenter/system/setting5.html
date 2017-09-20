@@ -1,0 +1,352 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>系统设置</span><span>/</span><span>平台参数</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper">
+            
+                <ul class="clearfix sys_tab_wrap b-none">
+                            <li><a href="system/main.html" nav-target="topFrame">基础设置</a></li>
+                            <li><a href="system/setting3.html" nav-target="mainFrame">客服参数</a></li>
+                            <li><a href="system/domain.html" nav-target="mainFrame">域名管理</a></li>
+                            <li><a href="system/audit.html" nav-target="mainFrame">访问限制</a></li>
+                            <li class="active"><a href="system/setting5.html" nav-target="mainFrame">偏好设置</a></li>
+                        </ul>
+              <div class="dataTables_wrapper white-bg shadow">
+               <div class="clearfix bg-gray p-t-xs p-l-sm p-r-sm">
+                    <span class="co-orange fs36 line-hi25 pull-left m-r-sm">
+                        <i class="fa fa-exclamation-circle m-t-n-sm"></i>                        
+                    </span>
+                    <div class="line-hi25 pull-left m-b-sm">本页面主要针对您的使用习惯进行设置,将对您的账号及您设置的子账号生效!
+</div>
+                </div>
+                <div class="clearfix line-hi34 border-b-1 p-sm">
+                    <label class="ft-bold pull-left m-r">安全密码输入间隔时间设置</label>
+                    <div class="col-xs-10 p-x">
+                        <div class="input-group date bg-white pull-left m-r line-hi25">
+                            <select class="chosen-select-no-single">
+                                <option>15分钟</option>
+                                <option>20分钟</option>
+                                <option>30分钟</option>
+                            </select>
+                        </div>设置时间内，本次登录输入权限密码后可免再次输入
+                    </div>
+                </div>
+                <div class="clearfix">
+
+                    <div class="col-lg-12 site-switch">
+                        <h3>提醒设置</h3>
+                        <ul class="content clearfix">
+                            <!--<button class="btn btn-outline btn-filter m-t-sm" data-toggle="modal" data-target="#notice">设置通知对象</button>-->
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover dataTable m-b-sm m-t">
+                                    <thead>
+                                        <tr class="bg-gray">
+                                            <th>提醒项目</th>
+                                            <th colspan="4">提醒设置</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       
+                                       
+                                        <tr>
+                                            <td>审批</td>
+                                            <td><input type="checkbox" class="i-checks">任务栏提醒</td>
+                                            <td><input type="checkbox" class="i-checks">系统弹窗</td>
+                                          
+                                        </tr>
+                                        <tr>
+                                            <td>警示</td>
+                                            <td><input type="checkbox" class="i-checks">任务栏提醒</td>
+                                            <td><input type="checkbox" class="i-checks">系统弹窗</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>公告</td>
+                                            <td><input type="checkbox" class="i-checks">任务栏提醒</td>
+                                            <td><input type="checkbox" class="i-checks">系统弹窗</td>
+                                           
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            
+                        </ul>
+                    </div>
+                    <div class="col-lg-12 site-switch">
+                        <h3>提示音设置</h3>
+                        <ul class="content clearfix">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover dataTable m-b-sm m-t">
+                                    <thead>
+                                        <tr class="bg-gray">
+                                            <th>提示音项目</th>
+                                            <th>当前使用</th>
+                                            <th>启用声音</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td>审批</td>
+                                            
+                                            <td>
+                                                <a href="javascript:void(0)" class="btn btn-outline btn-success btn-xs">
+                                                    <i class="fa fa-play-circle m-r-xs"></i>播放试听
+                                                </a>
+                                                <a href="javascript:void(0)" class="m-l-sm" data-toggle="modal" data-target="#updBeep">更换</a>
+                                            </td>
+                                            <td><input type="checkbox" name="my-checkbox" data-size="mini" checked></td>
+                                        </tr>
+                                        <tr>
+                                            <td>警示</td>
+                                            
+                                            <td>
+                                                <a href="javascript:void(0)" class="btn btn-outline btn-success btn-xs">
+                                                    <i class="fa fa-play-circle m-r-xs"></i>播放试听
+                                                </a>
+                                                <a href="javascript:void(0)" class="m-l-sm" data-toggle="modal" data-target="#updBeep">更换</a>
+                                            </td>
+                                            <td><input type="checkbox" name="my-checkbox" data-size="mini" checked></td>
+                                        </tr>
+                                        <tr>
+                                            <td>公告</td>
+                                            
+                                            <td>
+                                                <a href="javascript:void(0)" class="btn btn-outline btn-success btn-xs">
+                                                    <i class="fa fa-play-circle m-r-xs"></i>播放试听
+                                                </a>
+                                                <a href="javascript:void(0)" class="m-l-sm" data-toggle="modal" data-target="#updBeep">更换</a>
+                                            </td>
+                                            <td><input type="checkbox" name="my-checkbox" data-size="mini" checked></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            
+                        </ul>
+                    </div>
+                    
+                </div>
+                <div class="operate-btn">
+                <button class="btn btn-filter btn-lg m-r">保存</button>
+                <button class="btn btn-outline btn-filter pull-right btn-lg">恢复系统默认</button>
+            </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<!--tips-->
+<script src="../../../common/js/flot/jquery.flot.tooltip.min.js"></script>
+<!--设置通知对象-->
+<div class="modal inmodal" id="notice" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">设置通知对象</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="m-b">                    
+                    <button type="button" class="btn btn-filter m-r-xs">邮件通知对象</button>
+                    <button type="button" class="btn btn-outline btn-filter">短信通知对象</button>
+                </div>
+                <div class="add-players">
+                    <dl class="notice_list clearfix">
+                        <dt>
+                            <a href="javascript:void(0)" class="current">存款审批</a>
+                            <a href="javascript:void(0)">取款审批</a>
+                            <a href="javascript:void(0)">收款账户满额</a>
+                            <a href="javascript:void(0)">层级账户不足</a>
+                            <a href="javascript:void(0)">代理申请审批</a>
+                            <a href="javascript:void(0)">子账号操作审批</a>
+                            <a href="javascript:void(0)">玩家返水申请审批</a>
+                            <a href="javascript:void(0)">优惠申请审批</a>
+                            <a href="javascript:void(0)">本月对账单</a>
+                            <a href="javascript:void(0)">下月消费预计账单</a>
+                            <a href="javascript:void(0)">玩家反馈</a>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" class="i-checks" checked> 张三
+                                    <span class="co-grayc2 m-l-sm">运营主管</span>
+                                    <span class="pull-right">297****23@qq.com</span>
+                                </li>
+                                <li>
+                                    <input type="checkbox" class="i-checks" checked> 张三
+                                    <span class="co-grayc2 m-l-sm">运营主管</span>
+                                    <span class="pull-right">297****23@qq.com</span>
+                                </li>
+                                <li>
+                                    <input type="checkbox" class="i-checks" checked> 张三
+                                    <span class="co-grayc2 m-l-sm">运营主管</span>
+                                    <span class="pull-right">297****23@qq.com</span>
+                                </li>
+                                <li>
+                                    <input type="checkbox" class="i-checks" checked> 张三
+                                    <span class="co-grayc2 m-l-sm">运营主管</span>
+                                    <span class="pull-right">297****23@qq.com</span>
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline btn-filter">应用</button>
+                <button type="button" class="btn btn-filter">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--修改提示音-->
+<div class="modal inmodal" id="updBeep" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">修改审批提示音</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>提示音名称</th>
+                                    <th>试听</th>
+                                    <th>时长</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><input type="radio" class="i-checks" name="a"> 系统默认</td>
+                                    <td><a href="javascript:void(0)" class="btn btn-outline btn-success btn-xs">
+                                                    <i class="fa fa-play-circle m-r-xs"></i>播放试听
+                                                </a></td>
+                                    <td>1000ms</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td><input type="radio" class="i-checks" name="a"> 清脆鸟声</td>
+                                    <td><a href="javascript:void(0)" class="btn btn-outline btn-success btn-xs">
+                                                    <i class="fa fa-play-circle m-r-xs"></i>播放试听
+                                                </a></td>
+                                    <td>1200ms</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td><input type="radio" class="i-checks" name="a"> 3D和弦</td>
+                                    <td><a href="javascript:void(0)" class="btn btn-outline btn-success btn-xs">
+                                                    <i class="fa fa-play-circle m-r-xs"></i>播放试听
+                                                </a></td>
+                                    <td>1000ms</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td><input type="radio" class="i-checks" name="a"> 流水声</td>
+                                    <td><a href="javascript:void(0)" class="btn btn-outline btn-success btn-xs">
+                                                    <i class="fa fa-play-circle m-r-xs"></i>播放试听
+                                                </a></td>
+                                    <td>1000ms</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td><input type="radio" class="i-checks" name="a"> 布鲁斯</td>
+                                    <td><a href="javascript:void(0)" class="btn btn-outline btn-success btn-xs">
+                                                    <i class="fa fa-play-circle m-r-xs"></i>播放试听
+                                                </a></td>
+                                    <td>1500ms</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td><input type="radio" class="i-checks" name="a"> 管弦乐</td>
+                                    <td><a href="javascript:void(0)" class="btn btn-outline btn-success btn-xs">
+                                                    <i class="fa fa-play-circle m-r-xs"></i>播放试听
+                                                </a></td>
+                                    <td>1030ms</td>
+                                    
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                
+                
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增提示音-->
+<div class="modal inmodal" id="addBeep" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">新增提示音</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+<!--
+                <div class="form-group clearfix m-b-xxs line-hi34">
+                    <label class="col-xs-4 al-right">现提示音：</label>
+                    <div class="col-xs-8 p-x"><a href="javascript:void(0)" class="label label-filter"><i class="fa fa-play-circle m-r-xs"></i>播放试听</a></div>
+                </div>
+-->
+                <div class="form-group clearfix m-b-xxs line-hi34">
+                    <label class="col-xs-4 al-right">上传提示音：</label>
+                    <div class="col-xs-8 p-x">
+                        <button class="btn btn-default btn-sm">选择文件</button>
+                    </div>
+                </div>
+                <div class="form-group clearfix m-b-xxs line-hi34">
+                   <div class="col-xs-8 p-x pull-right">
+                       取款订单声音提醒 <span class="co-grayc2">0.8M/MP3</span><a href="javascript:void(0)" class="btn btn-outline btn-success btn-xs m-l-sm"> <i class="fa fa-play-circle m-r-xs"></i>播放试听</a>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-filter">上传</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+    
+    $(".site-switch .dd-list dd").mouseover(function(){
+        $(this).addClass("shut");
+    })
+    $(".site-switch .dd-list dd").mouseleave(function(){
+        $(this).removeClass("shut");
+    })
+				
+</script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>

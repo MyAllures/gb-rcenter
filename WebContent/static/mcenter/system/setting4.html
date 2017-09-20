@@ -1,0 +1,341 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>系统设置</span><span>/</span><span>站点参数</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow">
+            <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
+                <ul class="clearfix sys_tab_wrap">
+                    <li><a href="system/setting.html" nav-target="mainFrame">基本设置</a></li>
+                    <li class="active"><a href="system/setting4.html" nav-target="mainFrame">站点开关</a></li>
+                    <li><a href="system/setting5.html" nav-target="mainFrame">偏好设置</a></li>
+                    <li><a href="system/setting6.html" nav-target="mainFrame">验证码设置</a></li>
+                    <li><a href="system/setting7.html" nav-target="mainFrame">导入玩家</a></li>
+                </ul>
+                <div class="clearfix">
+                    <div class="col-lg-12 site-switch">
+                        <h3>运营管理开关</h3>
+                        <ul class="content clearfix">
+                            <li class="clearfix"><label class="ft-bold">启用线路检测站：</label><span class="co-grayc2 on-off-hint-show">开启后，玩家访问时将对前端的线路进行速度检测，并在页面显示检测结果，便于玩家选择线路！</span><div class="pull-right"><button type="button" data-toggle="modal" data-target="#addMassSend" class="btn btn-primary-hide">开关提示弹窗</button> <input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="开启后，玩家访问时将对前端的线路进行速度检测，并在页面显示检测结果，便于玩家选择线路！"><i class="fa fa-question-circle"></i></span></div></li>
+                            <li class="clearfix"><label class="ft-bold">启用玩家积分：</label><span class="co-grayc2 on-off-hint-show">关闭后，玩家后续操作将无法获得积分，玩家等级和积分商城也同步关闭，同时隐藏积分和等级相关功能！</span><div class="pull-right" ><a href="javascript:void(0)" data-toggle="modal" data-target="#editAccount"><input type="checkbox" name="my-checkbox" data-size="mini"  checked ></a><span tabindex="0" class=" help-popover m-l-sm  on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="关闭后，玩家后续操作将无法获得积分，玩家等级和积分商城也同步关闭，同时隐藏积分和等级相关功能！"><i class="fa fa-question-circle"></i></span></div></li>
+                            <li class="clearfix"><label class="ft-bold">启用积分商城：</label><span class="co-grayc2 on-off-hint-show">关闭后，前端隐藏积分商城入口，积分商城页面处于“维护中”！</span><div class="pull-right"><input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="关闭后，前端隐藏积分商城入口，积分商城页面处于“维护中”！
+"><i class="fa fa-question-circle"></i></span></div></li>
+                            <li class="clearfix"><label class="ft-bold">启用玩家等级：</label><span class="co-grayc2 on-off-hint-show">关闭后，玩家将停止升级，无法享受等级特权，同时前端将隐藏等级相关功能！</span><div class="pull-right"><input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="关闭后，玩家将停止升级，无法享受等级特权，同时前端将隐藏等级相关功能！"><i class="fa fa-question-circle"></i></span></div></li>
+                            <li class="clearfix"><label class="ft-bold">启用资讯站：</label><span class="co-grayc2 on-off-hint-show">关闭后，前端将隐藏资讯入口，所有资讯页面处于“维护中”！</span><div class="pull-right"><input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="关闭后，前端将隐藏资讯入口，所有资讯页面处于“维护中”！"><i class="fa fa-question-circle"></i></span></div></li>
+                            <!--<li class="clearfix"><label class="ft-bold">启用取款功能：<span class="co-orange">请慎用！</span></label><span class="co-grayc2 on-off-hint-show">关闭后全站用户将无法申请取款，可选择将正在处理中的取款申请冻结！</span><div class="pull-right"><input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="关闭后全站用户将无法申请取款，可选择将正在处理中的取款申请冻结！"><i class="fa fa-question-circle"></i></span></div></li>-->
+                            <li class="clearfix"><label class="ft-bold">启用站点营业：<span class="co-orange">请慎用！</span></label><span class="co-grayc2 on-off-hint-show">关闭后，前端将显示”正在维护“页面，所有玩家均无法访问站点！</span><div class="pull-right"><button type="button" data-toggle="modal" data-target="#addMassSend1" class="btn btn-primary-hide">开关提示弹窗</button><input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="关闭后，前端将显示”正在维护“页面，所有玩家均无法访问站点！"><i class="fa fa-question-circle"></i></span></div></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-12 site-switch">
+                        <h3>系统设置开关</h3>
+                        <ul class="content clearfix">
+                            <li class="clearfix"><label class="ft-bold">启用短信功能：</label><span class="co-grayc2 on-off-hint-show">关闭后，将无法通过后台功能直接向玩家发送短信！</span><div class="pull-right"><input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="关闭后，将无法通过后台功能直接向玩家发送短信！"><i class="fa fa-question-circle"></i></span></div></li>
+                            <li class="clearfix"><label class="ft-bold">启用邮件功能：</label><span class="co-grayc2 on-off-hint-show">关闭后，将无法通过后台功能直接向玩家发送邮件！</span><div class="pull-right"><input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="关闭后，将无法通过后台功能直接向玩家发送邮件！"><i class="fa fa-question-circle"></i></span></div></li>
+                            <li class="clearfix"><label class="ft-bold">启用客服站内信：</label><span class="co-grayc2 on-off-hint-show">关闭后，将无法向玩家发送站内信！</span><div class="pull-right"><input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="关闭后，将无法向玩家发送站内信！"><i class="fa fa-question-circle"></i></span></div></li>
+                            <li class="clearfix"><label class="ft-bold">启用玩家推荐：</label><span class="co-grayc2 on-off-hint-show">关闭后，将隐藏玩家推荐功能！</span><div class="pull-right"><input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="关闭后，将隐藏玩家推荐功能！"><i class="fa fa-question-circle"></i></span></div></li>
+                            <li class="clearfix"><label class="ft-bold">启用禁用右键：</label><span class="co-grayc2 on-off-hint-show">开启后，将禁止复制页面文字！</span><div class="pull-right"><input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="开启后，将禁止复制页面文字！"><i class="fa fa-question-circle"></i></span></div></li>
+                            <li class="clearfix"><label class="ft-bold">启用玩家注册：</label><span class="co-grayc2 on-off-hint-show">关闭后，玩家将无法在前端自行注册，只能通过后台添加新玩家！</span><div class="pull-right"><input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="关闭后，玩家将无法在前端自行注册，只能通过后台添加新玩家！"><i class="fa fa-question-circle"></i></span></div></li>
+                            <li class="clearfix"><label class="ft-bold">启用代理注册：</label><span class="co-grayc2 on-off-hint-show">关闭后，代理将无法在前端自行注册，只能通过后台添加新代理！</span><div class="pull-right"><input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="关闭后，代理将无法在前端自行注册，只能通过后台添加新代理！"><i class="fa fa-question-circle"></i></span></div></li>
+                            <li class="clearfix"><label class="ft-bold">启用存款稽核：<span class="co-orange">高风险，请慎用！</span></label><span class="co-grayc2 on-off-hint-show">关闭后，所有取款订单将无需进行存款稽核，玩家存款后可立刻申请取款，存在洗钱的风险！</span><div class="pull-right"><input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="关闭后，所有取款订单将无需进行存款稽核，玩家存款后可立刻申请取款，存在洗钱的风险！"><i class="fa fa-question-circle"></i></span></div></li>
+                            <li class="clearfix"><label class="ft-bold">启用优惠稽核：<span class="co-orange">高风险，请慎用！</span></label><span class="co-grayc2 on-off-hint-show">关闭后，所有取款订单将无需进行优惠稽核，无论玩家本次取款是否达到优惠有效交易量，都无需被扣除优惠费用！</span><div class="pull-right"><input type="checkbox" name="my-checkbox" data-size="mini" checked><span tabindex="0" class=" help-popover m-l-sm on-off-hint-hide" role="button" data-container="body" data-toggle="popover"  data-trigger="focus" data-placement="top"  data-content="关闭后，所有取款订单将无需进行优惠稽核，无论玩家本次取款是否达到优惠有效交易量，都无需被扣除优惠费用！"><i class="fa fa-question-circle"></i></span></div></li>
+                        </ul>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--账号编辑-->
+<div class="modal inmodal" id="editAccount" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">账号编辑</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                    <label class="col-xs-3 al-right">ID：</label>
+                    <div class="col-xs-8 p-x ">5314</div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                    <label class="col-xs-3 al-right"><span class="co-red3 m-r-xs">*</span>账号：</label>
+                    <div class="col-xs-8 p-x">admin</div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                    <label class="col-xs-3 al-right"></label>
+                    <div class="col-xs-8 p-x">                        
+                        <label class="m-r-sm"><input type="radio" name="upwd" class="i-checks">修改权限密码</label>
+
+                        <label><input type="radio" name="upwd" class="i-checks" checked>修改登录密码</label>
+
+                    </div>
+                </div>
+                
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                    <label class="col-xs-3 al-right"><span class="co-red3 m-r-xs">*</span>新登录密码：</label>
+                    <div class="col-xs-8 p-x"><input type="password" class="form-control m-b"></div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                    <label class="col-xs-3 al-right"><span class="co-red3 m-r-xs">*</span>确认登录密码：</label>
+                    <div class="col-xs-8 p-x"><input type="password" class="form-control m-b"></div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                    <label class="col-xs-3 al-right"><span class="co-red3 m-r-xs">*</span>状态：</label>
+                    <div class="col-xs-8 p-x">
+                        <label class="m-r-sm"><input type="radio" name="zt" class="i-checks">启用</label>
+                        <label><input type="radio" name="zt" class="i-checks" checked>停用</label>
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                    <label class="col-xs-3 al-right"><span class="co-red3 m-r-xs">*</span>姓名：</label>
+                    <div class="col-xs-8 p-x"><input type="text" class="form-control m-b"></div>
+                </div>
+                <div class="form-group clearfix line-hi34">
+                    <label class="col-xs-3 al-right">性别：</label>
+                    <div class="col-xs-8 p-x">
+                        <select class="chosen-select-no-single">
+                            <option value="1">男</option>
+                            <option value="2">女</option>
+                            <option value="3">其他</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                    <label class="col-xs-3 al-right">邮箱：</label>
+                    <div class="col-xs-8 p-x"><input type="text" class="form-control m-b"></div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                    <label class="col-xs-3 al-right">手机：</label>
+                    <div class="col-xs-8 p-x"><input type="text" class="form-control m-b"></div>
+                </div>
+                <div class="form-group clearfix line-hi34">
+                    <label class="col-xs-3 al-right">提问：</label>
+                    <div class="col-xs-8 p-x">
+                        <select class="chosen-select-no-single">
+                            <option value="1">我妈妈的名字是？</option>
+                            <option value="2">我爸爸的名字是？</option>
+                            <option value="3">我比较喜欢的球类运动是？</option>
+                            <option value="4">我最喜欢的一首歌是？</option>
+                            <option value="5">我最喜欢车的汽车品牌是？</option>
+                            <option value="6">我最喜欢的一部电影名称是？</option>
+                            <option value="7">我的幸运数字？</option>
+                            <option value="8">我向往的旅游地是？</option>
+                            <option value="9">我第一次购房的日期？</option>
+                            <option value="10">我的初恋的名字是？</option>
+                            <option value="11">我的工号是？</option>
+                            <option value="12">我的结婚纪念日是？</option>
+                            <option value="13">我第一辆车的车牌是？</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group clearfix line-hi34">
+                    <label class="col-xs-3 al-right">回答：</label>
+                    <div class="col-xs-8 p-x"><textarea class="form-control"></textarea></div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                    <label class="col-xs-3 al-right">备注：</label>
+                    <div class="col-xs-8 p-x"><textarea class="form-control"></textarea></div>
+                </div>
+                <div class="form-group clearfix line-hi34 m-b-xxs">
+                    <label class="col-xs-3 al-right"><span class="co-red3 m-r-xs">*</span>角色：</label>
+                    <div class="col-xs-8 p-x">
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">客服</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">营销推广</label>
+                        <label class="m-r-sm"><input type="checkbox" class="i-checks">财务</label>
+                        <div class="m-t-n"><a href="javascript:void(0)"><i class="fa fa-search"></i> 权限预览</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-primary-hide">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--验证消息-->
+<div class="modal inmodal" id="verify" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-bell"></i>&nbsp;&nbsp;消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">                
+                <div class="del verify"><i class="fa fa-exclamation-circle"></i>删除该注册项，将一并删除玩家已填写的该字段数据！</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-primary-hide">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--新增原因模板-->
+<div class="modal inmodal" id="addMassSend" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-comments-o"></i>&nbsp;&nbsp;消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+           
+            <div class="modal-body">
+               
+                     
+                    <div class="clearfix m-sm">
+                    
+                    <div class="line-hi25 ">关闭后，玩家访问时前端线路将不再进行速度检测，确认关闭吗？</div>
+                </div>        
+             
+                
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-primary-hide" data-toggle="modal" data-target="#addMassSendaa" data-dismiss="modal">继续关闭</button>
+                <button type="button" class="btn btn-filter">取消</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增原因模板-->
+<div class="modal inmodal" id="addMassSend1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter"><i class="fa fa-comments-o"></i>&nbsp;&nbsp;消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+           
+            <div class="modal-body">
+               
+                     
+                    <div class="clearfix m-sm">
+                    <div class="line-hi25 co-orange fs20 al-center m-b ft-bold">请慎用！</div>
+                    <div class="line-hi25">关闭后，前端将显示”正在维护“页面，所有玩家均无法访问站点！</div>
+                </div>        
+             
+                
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-primary-hide" data-toggle="modal" data-target="#addMassSendaa1" data-dismiss="modal">继续关闭</button>
+                <button type="button" class="btn btn-filter">取消</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--新增原因模板-->
+<div class="modal inmodal" id="addMassSendaa" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter">关闭线路检测</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+           
+            <div class="modal-body">
+                
+                     <div class="form-group clearfix m-b-xxs">
+                        <label class="form_lab_block line-hi34 m-r-sm"><b>提醒文案 :</b> <span tabindex="0" class=" help-popover m-l-sm" role="button" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="提醒文案将在维护页面展示"><i class="fa fa-question-circle"></i></span></label>
+                        
+                    </div>  
+                    
+                               
+                                                                 
+                <div class="clearfix save lgg-version">
+                    <a href="javasrcipt:void(0)" class="current">简体中文<span>未编辑</span></a>
+                    <a href="javasrcipt:void(0)">English<span>已编辑</span></a>
+                    <a href="javasrcipt:void(0)">繁体中文<span>已编辑</span></a>
+                    <span class="more"><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i></a></span>
+                </div>
+                <div class="hfsj-wrap">
+               
+                <div class="form-group"><label>文案内容</label><textarea class="form-control m-b"></textarea></div>
+                
+              </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-primary-hide">确认</button>
+                <button type="button" class="btn btn-filter">取消</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增原因模板-->
+<div class="modal inmodal" id="addMassSendaa1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight unstyled family">
+            <div class="modal-header">
+                <span class="filter">关闭站点营业</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+           
+            <div class="modal-body">
+                
+                     <div class="form-group clearfix m-b-xxs">
+                        <label class="form_lab_block line-hi34 m-r-sm"><b>提醒文案 :</b><span tabindex="0" class=" help-popover m-l-sm" role="button" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="提醒文案将在维护页面展示"><i class="fa fa-question-circle"></i></span></label>
+                        
+                    </div>  
+                    
+                               
+                                                                 
+                <div class="clearfix save lgg-version">
+                    <a href="javasrcipt:void(0)" class="current">简体中文<span>未编辑</span></a>
+                    <a href="javasrcipt:void(0)">English<span>已编辑</span></a>
+                    <a href="javasrcipt:void(0)">繁体中文<span>已编辑</span></a>
+                    <span class="more"><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i></a></span>
+                </div>
+                <div class="hfsj-wrap">
+               
+                <div class="form-group"><label>文案内容</label><textarea class="form-control m-b"></textarea></div>
+                <div class="input-group">
+                                    <span class="input-group-addon abroder-no bg-gray"><b>时间：</b></span>
+                                    <span class="input-group-addon bdn">
+                                      
+                              <select data-placeholder="定时生效" class="chosen-select-no-single input-sm" tabindex="9">
+                                <option value=""></option>
+                                <option>定时生效</option>
+                                <option>立即生效</option>
+                              </select>
+                                    </span>
+                                    <input type="text" class="form-control" value="最近7天(2013-10-11~2013-10-11)">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+              </div>
+              <div class="clearfix m-t bg-gray p-t-xs">
+                    <span class="co-orange fs36 line-hi25 col-xs-1 al-right">
+                        <i class="fa fa-exclamation-circle m-t-n-sm"></i>                        
+                    </span>
+                    <div class="line-hi25 pull-left col-xs-11 m-b-sm">您可在生效前，提前通知玩家！<a href="javasrcipt:void(0)">去通知</a></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-primary-hide">确认</button>
+                <button type="button" class="btn btn-filter">取消</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch    
+</script>
+<script>
+    $('.help-popover').popover()
+</script>
+<script>
+    //玩家设置开关js
+    $("li.switch div.tix span").click(function(){
+        $(this).toggleClass("co-gray6")
+    })
+</script>

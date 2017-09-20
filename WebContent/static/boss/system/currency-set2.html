@@ -1,0 +1,297 @@
+
+        <div class="row">
+            <div class="position-wrap clearfix">
+                <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+                <span>系统</span><span>/</span><span>货币管理</span>
+                <a href="javascript:void(0)" nav-target="mainFrame" class="m-l-sm btn btn-outline btn-default btn-xs co-gray6 return-btn"><em class="fa fa-caret-left"></em>返回</a>
+                <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+            </div>
+            <div class="col-lg-12">
+                <div class="wrapper">
+                   
+                        
+                        <div class="wrapper white-bg shadow">
+                        <div class="present_wrap"><b>设置汇率</b></div>
+                        
+                        <div class="dataTables_wrapper" role="grid">
+                        <div class="panel-body">
+                            <div class="tab-content">                           
+                                <div class="table-responsive">                                
+                                    <table class="table table-striped table-hover dataTable m-b-none" aria-describedby="editable_info">
+                                        <thead>
+                                            
+                                            <tr>
+                                                <th>名称</th>
+                                                <td>美元 USD</td>
+                                                <td>欧元 EUR</td>
+                                                <td>英镑 GBP</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>美元 USD</td>
+                                                <td>1</td>
+                                                <td class="co-red">0.9449</td>
+                                                <td>0.6649</td>
+                                            </tr>
+                                            <tr>
+                                                <td>欧元 EUR</td>
+                                                <td class="co-red">1.0582</td>
+                                                <td>1</td>
+                                                <td class="co-red">0.7036</td>
+                                            </tr>
+                                            <tr>
+                                                <td>英镑 GBP</td>
+                                                <td>1.5038</td>
+                                                <td class="co-red">1.4209</td>
+                                                <td>1</td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>  
+                       </div>
+                    </div>
+                        <div class="operate-btn">
+           <a href="system/currency-set.html" nav-target="mainFrame" class="btn btn-outline btn-filter btn-lg">上一步</a>
+           <a href="javascript:void(0)" class="btn btn-filter btn-lg">提交</a>
+        </div>
+                        </div>
+                </div>
+            </div>
+            
+            <!--<div class="col-lg-12 m-t">
+        <div class="wrapper white-bg shadow">
+           
+            <div class="sys_tab_wrap p-xs"><b class="fs16">弹窗</b></div>
+            <div class="filter-wraper clearfix">
+                <button type="button" class="btn btn-outline btn-filter" data-toggle="modal" data-target="#zstc1">关闭经营地区</button>
+                <button type="button" class="btn btn-outline btn-filter" data-toggle="modal" data-target="#zstc2">开启语言包</button>
+                <button type="button" class="btn btn-outline btn-filter" data-toggle="modal" data-target="#zstc3">关闭语言包</button>
+                <button type="button" class="btn btn-outline btn-filter" data-toggle="modal" data-target="#zstc4">开启货币</button>
+                <button type="button" class="btn btn-outline btn-filter" data-toggle="modal" data-target="#zstc5">新增邮件接口</button>
+                
+
+                
+            </div>
+            
+        </div>
+    </div>-->
+            
+        </div>
+    
+<!--新增地区-->
+<div class="modal inmodal" id="addarea" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">添加经营地区</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="al-center line-hi34">新增地区，表示同意玩家绑定该国家银行卡</div>
+                <div class="form-group clearfix line-hi34 m-b-sm">
+                    <label class="col-sm-3 al-right ft-bold">新地区 : </label>
+                    <div class="clearfix col-sm-8">
+                        <div class="col-xs-5 p-x">
+                            <div>
+                                <select class="chosen-select-no-single">
+                                    <option>亚洲</option>
+                                    <option>欧洲</option>
+                                    <option>美洲</option>
+                                    <option>大洋洲</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-7">
+                            <div>
+                                <select class="chosen-select-no-single">
+                                    <option>中国</option>
+                                    <option>韩国</option>
+                                    <option>日本</option>
+                                    <option>朝鲜</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">确认</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--关闭货币弹窗-->
+<div class="modal inmodal" id="tip" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="co-orange al-center">请谨慎操作</h3>
+                <div>当前共有<span class="co-orange">432个</span>正常玩家正用此作为主货币。关闭后，这些玩家将无法存款或取款，确认关闭吗？</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">继续关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--关闭经营地区弹窗-->
+<div class="modal inmodal in" id="zstc1" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <dd class="m-sm">关闭后，新玩家将无法绑定该国家的银行卡，确认关闭吗？</dd>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">继续关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--开启语言包弹窗-->
+<div class="modal inmodal in" id="zstc2" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <dd class="m-sm"><b>开启后：</b></dd>
+                <dd class="m-sm">1、系统将会对站点前端，玩家中心以及站长，总代，代理的管理后台提供该语言版本的文案支持；</dd>
+                <dd class="m-sm">2、同时，各角色可将该语言设置为主语言，便于接收站内信等；</dd>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">继续开启</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--关闭语言包弹窗-->
+<div class="modal inmodal in" id="zstc3" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <dd class="m-sm"><b>关闭后：</b></dd>
+                <dd class="m-sm">1、系统将不再提供该语言版本的文案支持；</dd>
+                <dd class="m-sm">2、各角色的主语言将替换为您的或站长的主语言版本；</dd>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">继续关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--开启货币弹窗-->
+<div class="modal inmodal in" id="zstc4" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="co-orange al-center">货币开启后，有玩家使用时将无法关闭！</h3>
+                <dd class="m-sm">1、开启后，玩家可将此作为主货币进行存款或取款，且玩家主货币一旦设置不可修改；</dd>
+                <dd class="m-sm">2、关闭该货币玩家将无法存取款，因此开启后，有站点使用时，将不可关闭；</dd>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">继续开启</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增邮件接口弹窗-->
+<div class="modal inmodal in" id="zstc5" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">新增邮件接口</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group clearfix line-hi34">
+                    <label class="col-xs-5 al-right">发送邮件服务器地址(SMTP)：</label>
+                    <div class="col-xs-6 p-x"><input type="text" class="form-control"></div>
+                </div>
+                <div class="form-group clearfix line-hi34">
+                    <label class="col-xs-4 al-right">服务器端口：</label>
+                    <div class="col-xs-7 p-x"><input type="text" class="form-control"></div>
+                </div>
+                <div class="form-group clearfix line-hi34">
+                    <label class="col-xs-4 al-right">邮件发送帐号：</label>
+                    <div class="col-xs-7 p-x"><input type="text" class="form-control"></div>
+                </div>
+                <div class="form-group clearfix line-hi34">
+                    <label class="col-xs-4 al-right">帐号密码：</label>
+                    <div class="col-xs-7 p-x"><input type="text" class="form-control"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-filter">确定</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 左侧菜单响应控件 -->
+<script src="../../common/js/inspinia/inspinia.js"></script>
+<script src="../../../common/js/flot/jquery.flot.tooltip.min.js"></script>
+<script>
+    $('.help-popover').popover()
+</script>
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>
+<script>
+    $(document).ready(function () {
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': {allow_single_deselect: true},
+            '.chosen-select-no-single': {disable_search_threshold: 10},
+            '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+            '.chosen-select-width': {width: "95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>

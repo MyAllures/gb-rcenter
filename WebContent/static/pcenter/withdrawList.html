@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/bootstrap.css">
+  <!-- 提示弹出框 --> 
+<script type="text/javascript">
+var environment = {
+	userVo : '',
+	role : '',
+	userId : '',
+	basePath : '',
+	userCash : '',
+	globalPath : '/',
+	userActiveTime : '',
+	yoolibaoWhiteListStatus : '',
+	yoolibaoOpenStatus : '',
+	cerrencyOpenTime : "2015/9/10"//new Date()
+};
+</script>
+ <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+<script src="../../common/js/pcenterJS/global-1.1.0.min.js" type="text/javascript"></script>  
+<script src="../../common/js/bootstrap/bootstrap.min.js"></script>
+
+<!--项部下拉弹出 --> 
+<script type="text/javascript" src="../../common/js/pcenterJS/head.js"></script>
+<!--弹窗 --> 
+ <script>
+jQuery(document).ready(function($) {
+	$('.theme-login').click(function(){
+		$('.theme-pop-mask').fadeIn(100);
+		$('.theme-pop').slideDown(200);
+	})
+	$('.theme-poptitle .close').click(function(){
+		$('.theme-pop-mask').fadeOut(100);
+		$('.theme-pop').slideUp(200);
+	})
+
+})
+</script>
+  <title>玩家中心首页</title>
+</head>
+<body>
+<!-- //* 弹窗 --> 
+<div class="theme-pop pop-hide">
+<!-- //* 弹窗标题 --> 
+     <div class="theme-poptitle">
+          <a href="javascript:;" title="关闭" class="close">×</a>
+          <h1>取款</h1>
+     </div>
+<!-- //* 弹窗内容 --> 
+     <div class="theme-popcon">
+<h2 class="popalign">正在努力计算中…</h2>
+<div class="text">
+<p>计算本次取款是否达到稽核条件</p>
+</div>
+<form class="popbutton"><button data-toggle="button" class="btn btn-blue middle-big" type="button">取消计算</button>
+<button data-toggle="button" class="btn btn-gray btn-auto" type="button">关闭弹窗，计算完后通知我</button></form>
+</div>
+</div> 
+
+ <div class="theme-pop-mask pop-hide"></div>
+
+
+
+<!-- //* Top -->
+
+<div class="top-wrap">
+        <div class="top">
+               <!--顶部右边-->
+                   <div class="top-right">
+               <div class="member">
+            您好，<div id="site-nav">  
+			<ul>  
+               <li>
+				  <div class="menu">
+					  <a class="menu-hd" href="#"> <span class="orange">PCKmenr</span><b></b></a> 
+					  <div class="menu-bd box">
+                         <div class="global-account-head"><a href="#" class="global-account-img">
+                          <img src="images/face.png" width="39" height="39"  alt="我的头像" /> </a>
+    <p class="global-account-name" title="name">下午好，陈先生</p><a href="account.html">账户设置</a><span class="global-top-seperator">|</span><a href="gamerecord.html">交易记录</a>
+  </div>
+  
+  <div class="global-account-money">
+   钱包余额：<span class="show"><a href="#" >显示余额</a></span>
+   <p class="dottline space"></p>
+    <div class="total"> <a href="asset-transfer.html">转帐</a> <span class="global-top-seperator">|</span>
+      <a href="asset-deposit.html">存款</a><span class="global-top-seperator">|</span>
+      <a href="asset-withdraw.html">取款</a>
+    </div>
+     </div>
+      </div>
+    </div>
+			  </li>
+               </ul>
+               </div>
+       [退出] <label class="line-after"><span class="new"><i class="new-ico select"></i><a href="#">新消息</a></span></label>
+               </div>  
+            </div>
+             <!--顶部左边-->
+            <div class="top-left">
+                <div class="select-lang">
+                  <p><span class="flag cn"></span>简体中文</p>
+                    <ul>
+                        <li><a href="#" rel="cn"><span class="flag cn"></span>简体中文</a> 
+                        </li>
+                        <li><a href="#" rel="hk"><span class="flag hk"></span>繁体中文</a> 
+                        </li>
+                        <li><a href="#" rel="en"><span class="flag en"></span>English</a> 
+                        </li>
+                        <li><a href="#" rel="th"><span class="flag th"></span>ไทย</a> 
+                        </li>
+                        <li><a href="#" rel="vn"><span class="flag vn"></span>Tiếng Việt</a> 
+                        </li>
+                        <li><a href="#" rel="kr"><span class="flag kr"></span>한국어</a> 
+                        </li>
+                        <li><a href="#" rel="jp"><span class="flag jp"></span>日本語</a> 
+                        </li>
+                        <li><a href="#" rel="id"><span class="flag id"></span>Indonesia</a> 
+                        </li>
+                        <li><a href="#" rel="kh"><span class="flag kh"></span>Khmer</a> 
+                        </li>
+                    </ul>
+              </div>
+             <label class="time line-after">GMT +8 2015-03-24  15:02:57</label>
+            </div>
+      
+        </div>
+    </div>
+    
+ <!--banner-->
+<div class="banner"><div class="logo"></div><div class="right"></div>
+</div>   
+    <div class="wrapper">
+  <!--left-->  
+  <div class="sidebar">
+
+      <!--左边菜单栏-->
+      <div class="sidebar-nav">
+        <dl>
+          <dt>
+            <a href="index.html"> <i class="navico home"></i>
+              钱包转账
+            </a>
+          </dt>
+        </dl>
+         <dl>
+          <dt>
+            <a href="deposit-region.html">
+              <i class="navico capital"></i>
+              存款专区
+            </a>
+          </dt>
+        </dl>
+         <dl>
+          <dt class="select">
+            <a href="withdraw.html">
+              <i class="navico capital-select"></i>
+              取款专区
+            </a>
+          </dt>
+        </dl>
+        <dl>
+          <dt>
+            <a href="asset-history.html">
+              <i class="navico capital"></i>
+              资金记录
+            </a>
+          </dt>
+        </dl>
+        <dl>
+          <dt>
+            <a href="gamerecord.html">
+              <i class="navico gamerecord"></i>
+              投注记录
+            </a>
+          </dt>
+        </dl>
+      <dl><dt><a href="sale1.html"><i class="navico sale"></i> 优惠记录</a></dt></dl>
+        <dl>
+          <dt>
+            <a href="infonotice.html">
+              <i class="navico info"></i>
+              消息公告
+            </a>
+          </dt>
+        </dl>
+        <dl>
+          <dt>
+            <a href="account.html">
+              <i class="navico accout"></i>
+              个人资料
+            </a>
+          </dd>
+        
+        </dl>
+        <dl>
+          <dt>
+            <a href="recommended.html">
+              <i class="navico recommend"></i>
+              推荐好友
+            </a>
+          </dt>
+        </dl>
+      </div>
+    </div>
+
+  <!--right-->  
+<div class="main-wrap">
+<div class="notice"><div class="notice-left"><em class="path"></em></div>
+<div class="path-right"><a href="#">玩家首页</a><span class="arrow">></span><a href="#">取款专区</a></div>
+</div>
+ 
+<div class="tabmenu">
+            <ul class="tab">
+                <li><a href="withdrawList.html" class="current">银行卡账户</a></li>
+                <li><a href="withdrawbit.html">比特币钱包</a></li>
+            </ul>
+        </div>
+
+<div class="user-info">
+<h3>绑定取款银行卡</h3>
+<div class="rgeechar">
+                <div class="title">
+                    <span class="tips"><em class="orange">取款前请先添加银行卡,成功取款后,我们会将款项打至您填写的这张卡上!</em></span></div>
+            </div>
+
+<div class="m-t-sm line-hi32">
+<div id="validateRule" style="display: none">rules:{'result.bankDeposit':{required:{ depends: function(elem) { return $("[name=\'result.bankName\']:checked").val()=='other_bank' == true; }},maxlength:200,minlength:0},'result.bankcardNumber':{required:true,maxlength:25,minlength:10,pattern:/^[0-9]{10,25}$/,remote:{ url: '/pcenter/player/withdraw/checkCardIsExists.html', cache: false, type: 'POST', data: { 'result.bankcardNumber': function() { return $("[name='result.bankcardNumber']").val(); }, 'result.bankcardNumber': function() { return $("[name='result.bankcardNumber']").val(); } } }},'result.bankName':{required:true},'result.bankcardMasterName':{required:true,maxlength:30,minlength:2,pattern:/(?!\d+$)^[a-zA-Z0-9\u4E00-\u9FA5\·]{2,30}$/}},messages:{'result.bankDeposit':{required:'passport.edit.info.bank.deposit.notBlank',maxlength:'{org.hibernate.validator.constraints.Length.message}',minlength:'{org.hibernate.validator.constraints.Length.message}'},'result.bankcardNumber':{required:'passport.edit.info.bank.card',maxlength:'passport.edit.info.bank.card',minlength:'passport.edit.info.bank.card',pattern:'passport.edit.info.bank.card.format.error',remote:'passport.edit.info.bank.card.already'},'result.bankName':{required:'passport.edit.info.select.bank'},'result.bankcardMasterName':{required:'passport.edit.info.notBlank',maxlength:'passport.edit.info.realName',minlength:'passport.edit.info.realName',pattern:'passport.edit.info.format.error'}},</div>
+<div class="control-grouptwo">
+<label class="control-left">真实姓名：</label>
+<div class="controls">
+<input type="text" name="result.bankcardMasterName" maxlength="30" class="input bn error" aria-required="true" aria-invalid="true" value=""><span class="tips orange"><i class="mark plaintsmall"></i>不能为空</span>
+</div>
+<p class="tipsgray">银行卡户名与真实姓名一致才能取款成功</p>
+</div>
+<div class="control-grouptwo">
+<label class="control-left">真实姓名：</label>
+<div class="controls">
+<a href="#" class="m-l-lg">请先设置真实姓名</a>
+</div>
+<p class="tipsgray">银行卡户名与真实姓名一致才能取款成功</p>
+</div>
+<div class="control-grouptwo clearfix ud-select" style="margin-top: 0;">
+<label class="control-left">银行：</label>
+<div class="bank-deposit" style="margin-bottom: 0">
+<div class="bank-total">
+<label class="bank" bankcode="icbc">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="icbc" aria-required="true" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="中国工商银行">
+<i class="pay-bank icbc"></i>
+</span>
+<span class="bank-logo-name">中国工商银行</span>
+</label>
+<label class="bank" bankcode="ccb">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="ccb" aria-invalid="false" class="valid">
+</span>
+<span class="radio-bank" title="中国建设银行">
+<i class="pay-bank ccb"></i>
+</span>
+<span class="bank-logo-name">中国建设银行</span>
+</label>
+<label class="bank" bankcode="abc">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="abc" class="valid">
+</span>
+<span class="radio-bank" title="中国农业银行">
+<i class="pay-bank abc"></i>
+</span>
+<span class="bank-logo-name">中国农业银行</span>
+</label>
+<label class="bank" bankcode="boc">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="boc" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="中国银行">
+<i class="pay-bank boc"></i>
+</span>
+<span class="bank-logo-name">中国银行</span>
+</label>
+<label class="bank" bankcode="cmb">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="cmb" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="招商银行">
+<i class="pay-bank cmb"></i>
+</span>
+<span class="bank-logo-name">招商银行</span>
+</label>
+<label class="bank" bankcode="cmbc">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="cmbc" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="中国民生银行">
+<i class="pay-bank cmbc"></i>
+</span>
+<span class="bank-logo-name">中国民生银行</span>
+</label>
+<label class="bank" bankcode="ceb">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="ceb" class="valid">
+</span>
+<span class="radio-bank" title="中国光大银行">
+<i class="pay-bank ceb"></i>
+</span>
+<span class="bank-logo-name">中国光大银行</span>
+</label>
+<label class="bank" bankcode="cib">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="cib" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="兴业银行">
+<i class="pay-bank cib"></i>
+</span>
+<span class="bank-logo-name">兴业银行</span>
+</label>
+<label class="bank" bankcode="spdb">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="spdb" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="上海浦东发展银行">
+<i class="pay-bank spdb"></i>
+</span>
+<span class="bank-logo-name">上海浦东发展银行</span>
+</label>
+<label class="bank" bankcode="comm">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="comm" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="交通银行">
+<i class="pay-bank comm"></i>
+</span>
+<span class="bank-logo-name">交通银行</span>
+</label>
+<label class="bank" bankcode="spabank">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="spabank" class="valid">
+</span>
+<span class="radio-bank" title="平安银行">
+<i class="pay-bank spabank"></i>
+</span>
+<span class="bank-logo-name">平安银行</span>
+</label>
+<label class="bank" bankcode="bjbank">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="bjbank" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="北京银行">
+<i class="pay-bank bjbank"></i>
+</span>
+<span class="bank-logo-name">北京银行</span>
+</label>
+<label class="bank" bankcode="citic">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="citic" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="中信银行">
+<i class="pay-bank citic"></i>
+</span>
+<span class="bank-logo-name">中信银行</span>
+</label>
+<label class="bank" bankcode="gdb">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="gdb" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="广东发展银行">
+<i class="pay-bank gdb"></i>
+</span>
+<span class="bank-logo-name">广东发展银行</span>
+</label>
+<label class="bank" bankcode="psbc">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="psbc" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="中国邮政储蓄银行">
+<i class="pay-bank psbc"></i>
+</span>
+<span class="bank-logo-name">中国邮政储蓄银行</span>
+</label>
+</div>
+<div name="hideBank" style="display: none;">
+<label class="bank" bankcode="jsbank">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="jsbank" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="江苏银行">
+<i class="pay-bank jsbank"></i>
+</span>
+<span class="bank-logo-name">江苏银行</span>
+</label>
+<label class="bank" bankcode="hxbank">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="hxbank" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="华夏银行">
+<i class="pay-bank hxbank"></i>
+</span>
+<span class="bank-logo-name">华夏银行</span>
+</label>
+<label class="bank" bankcode="shbank">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="shbank" class="valid">
+</span>
+<span class="radio-bank" title="上海银行">
+<i class="pay-bank shbank"></i>
+</span>
+<span class="bank-logo-name">上海银行</span>
+</label>
+<label class="bank" bankcode="bohaib">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="bohaib" class="valid">
+</span>
+<span class="radio-bank" title="渤海银行">
+<i class="pay-bank bohaib"></i>
+</span>
+<span class="bank-logo-name">渤海银行</span>
+</label>
+<label class="bank" bankcode="hkbea">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="hkbea" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="东亚银行">
+<i class="pay-bank hkbea"></i>
+</span>
+<span class="bank-logo-name">东亚银行</span>
+</label>
+<label class="bank" bankcode="nbbank">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="nbbank" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="宁波银行">
+<i class="pay-bank nbbank"></i>
+</span>
+<span class="bank-logo-name">宁波银行</span>
+</label>
+<label class="bank" bankcode="czbank">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="czbank" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="浙商银行">
+<i class="pay-bank czbank"></i>
+</span>
+<span class="bank-logo-name">浙商银行</span>
+</label>
+<label class="bank" bankcode="hzcb">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="hzcb" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="杭州银行">
+<i class="pay-bank hzcb"></i>
+</span>
+<span class="bank-logo-name">杭州银行</span>
+</label>
+<label class="bank" bankcode="gcb">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="gcb" class="valid">
+</span>
+<span class="radio-bank" title="广州银行">
+<i class="pay-bank gcb"></i>
+</span>
+<span class="bank-logo-name">广州银行</span>
+</label>
+<label class="bank" bankcode="fjnx">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="fjnx" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="福建农商银行">
+<i class="pay-bank fjnx"></i>
+</span>
+<span class="bank-logo-name">福建农商银行</span>
+</label>
+<label class="bank select" bankcode="hangseng">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="hangseng" class="valid" aria-invalid="false" checked="checked">
+</span>
+<span class="radio-bank" title="恒生银行">
+<i class="pay-bank hangseng"></i>
+</span>
+<span class="bank-logo-name">恒生银行</span>
+</label>
+<label class="bank" bankcode="tzb">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="tzb" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="台州银行">
+<i class="pay-bank tzb"></i>
+</span>
+<span class="bank-logo-name">台州银行</span>
+</label>
+<label class="bank" bankcode="other_bank">
+<span class="radio">
+<input name="result.bankName" showsuccmsg="false" type="radio" value="other_bank" class="valid" aria-invalid="false">
+</span>
+<span class="radio-bank" title="其他银行">
+<i class="pay-bank other_bank"></i>
+</span>
+<span class="bank-logo-name">其他银行</span>
+</label>
+</div>
+<div class="clear"></div>
+<div class="bank-total" name="bankNameMsg" style="display: none">
+<div class="title">
+</div>
+</div>
+</div>
+<div class="bank-spreadout set" style="margin-right: 108px; margin-bottom: 0;">
+<span name="extendBank" style="display: inline;">
+<a title="展开更多银行" class="" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;showMoreBank&quot;,confirm:&quot;&quot;,text:&quot;展开更多银行&quot;,size:&quot;&quot; }">
+展开更多银行
+</a>
+<i class="bank-arrico down"></i>
+</span>
+<span style="display: none;" name="collapseBank">
+<a title="收起部分银行" class="" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;showMoreBank&quot;,confirm:&quot;&quot;,text:&quot;收起部分银行&quot;,size:&quot;&quot; }">
+收起部分银行
+</a>
+<i class="bank-arrico up"></i>
+</span>
+</div>
+</div>
+<div class="control-grouptwo">
+<label class="control-left">银行卡号：</label>
+<div class="controls">
+<input type="text" class="input bn ignore" placeholder="" maxlength="24" name="bankcardNumber2" tipsname="result.bankcardNumber-tips" autocomplete="off" value="">
+<input type="hidden" class="input" name="result.bankcardNumber" value="">
+</div>
+</div>
+<div class="control-grouptwo">
+<label class="control-left">开户行：</label>
+<div class="controls">
+<input type="text" autocomplete="off" class="input bn result-bankDeposit valid" placeholder="选择“其它”银行时必填" name="result.bankDeposit" value="" aria-invalid="false">
+</div>
+<p class="tipsgray">如：河北唐山建设银行</p>
+</div>
+<div class="control-grouptwo">
+<label class="control-label" style="width:132px;"></label>
+<div class="controls" id="submitInfo">
+<a title="重置" class="btn btn-gray middle-big " data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;resetBankCard&quot;,confirm:&quot;&quot;,text:&quot;重置&quot;,size:&quot;&quot; }">
+重置
+</a>
+<a title="确认" class="btn btn-blue middle-big btn-bank" data-rel="{&quot;precall&quot;:&quot;validateForm&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;submitBankCard&quot;,confirm:&quot;&quot;,text:&quot;确认&quot;,size:&quot;&quot; }">
+确认
+</a>
+<a style="display: none" name="returnMain" nav-target="mainFrame" href="/player/withdraw/withdrawList.html"></a>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+<!-- 右边客服服务-->
+<div id="moquu_wxin" class="moquu_wxin"><a href="javascript:void(0)">玩家游戏<div class="moquu_wxinh"></div></a></div>
+<div id="moquu_wshare" class="moquu_wshare"><a href="javascript:void(0)">玩家游戏<div class="moquu_wshareh"></div></a></div>
+<div id="moquu_wmaps"><a href="#">玩家游戏</a></div>
+
+<!--弹窗1-->
+<div class="modal inmodal in" id="notice-list-1" tabindex="-1" role="dialog" aria-hidden="false" >
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">稽核详细</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive tab-border-1 modal-full-screen">
+                        <table class="table  table-hover dataTable m-b-none table-full-screen" border="0" cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr class="bg-gray">
+                                    <th>存款时间</th>
+                                    <th>有效交易量</th>
+                                    <th>存款金额</th>
+                                    <th>放宽额度</th>
+                                    <th>存款稽核点</th>
+                                    <th>行政费用</th>
+                                    <th>优惠金额</th>
+                                    <th>优惠稽核点</th>
+                                    <th>优惠扣除</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2009-03-03 10:09:23</td>
+                                    <td>0</td>
+                                    <td class="gray">无</td>
+                                    <td>10.00</td>
+                                    <td class="gray">免稽核</td>
+                                    <td class="gray">无</td>
+                                    <td>￥ 1,000</td>
+                                    <td>10.00</td>
+                                    <td class="co-red3">￥ -1,00.00</td>
+                                </tr>
+                                <tr>
+                                    <td>2009-03-03 10:09:23</td>
+                                    <td>50.00</td>
+                                    <td>￥ 1,00.00</td>
+                                    <td>10.00</td>
+                                    <td>10.00</td>
+                                    <td class="co-red3">￥ -50.00</td>
+                                    <td class="gray">无</td>
+                                    <td class="gray">免稽核</td>
+                                    <td class="gray">无</td>
+                                </tr>
+                                <tr>
+                                    <td>2009-03-03 10:09:23</td>
+                                    <td>3000.00</td>
+                                    <td>￥ 1,00.00</td>
+                                    <td>10.00</td>
+                                    <td>1，00.00</td>
+                                    <td class="green">通过</td>
+                                    <td>￥ 1,000</td>
+                                    <td>10.00</td>
+                                    <td class="green">通过</td>
+                                </tr>
+    <!--
+                                <tr>
+                                    <td colspan="9">
+                                        <span class="m-r-sm m-l-sm">存款记录共<span class="co-blue">3</span>笔</span>
+                                        <span class="m-r-sm">存款稽核全部通过</span>
+                                        <span class="m-r-sm">优惠稽核有<span class="co-blue">1</span>笔未通过，须扣除优惠共74.00</span>
+                                        <a href="javascript:void(0)">修改稽核</a>
+                                    </td>
+                                </tr>
+    -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-outline btn-filter">关闭</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!--弹窗2-->
+<div class="modal inmodal in" id="notice-list-2" tabindex="-1" role="dialog" aria-hidden="false" >
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">系统消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="withdraw-not">
+<h1><i class="tipbig fail"></i></h1>
+<div class="tiptext">
+<p>订单超时！</p>
+<p>非常抱歉，由于网络连接异常，本次订单已超时，建议您重新发起请求！</p>
+
+</div>
+</div>
+                
+</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">再试一次</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--弹窗3-->
+<div class="modal inmodal in" id="notice-list-3" tabindex="-1" role="dialog" aria-hidden="false" >
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">系统消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="withdraw-not">
+<h1><i class="tipbig fail"></i></h1>
+<div class="tiptext">
+<p>您的中心钱包余额尚未达到提款标准，</p>
+<p>非常抱歉，由于数据异常，本次转账已失败！建议您重新操作！</p>
+
+</div>
+</div>
+                
+</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter">重新转账</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--弹窗4-->
+<div class="modal inmodal in" id="notice-list-4" tabindex="-1" role="dialog" aria-hidden="false" >
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">系统消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="withdraw-not">
+<h1><i class="tipbig fail"></i></h1>
+<div class="tiptext">
+<p>当前已有取款订单正在审核，</p>
+<p>请该订单结束后再继续取款!&nbsp;</p>
+
+</div>
+
+</div>
+                
+</div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-filter">重新转账</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<!--弹窗5-->
+<div class="modal inmodal in" id="notice-list-5" tabindex="-1" role="dialog" aria-hidden="false" >
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">系统消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="theme-popcon">
+<h3 class="popalign"><i class="tipbig cry"></i>ㄒoㄒ~人家算不出来了啦！</h3>
+<p>我已经拜托财务姐姐帮忙手动核算了，会很快算完哟！</p>
+<div class="text">
+<p class="orange">算完后：</p>
+<p><span class="bold">1.通过稽核：</span>直接审核通过；</p>
+<p><span class="bold">2.未通过稽核：</span>会弹窗通知结果，你可以选择是否要继续取款哦！</p>
+</div>
+<form class="popbutton"><button data-toggle="button" class="btn btn-blue middle-big" type="button">那就等等吧</button>
+<button data-toggle="button" class="btn btn-gray middle-big" type="button">查看资金记录</button></form>
+<p class="popgray">取款订单提交时间：2015-01-23 16:32:24</p>
+
+</div>
+                
+</div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-filter">重新转账</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+<!--弹窗6-->
+<div class="modal inmodal in" id="notice-list-6" tabindex="-1" role="dialog" aria-hidden="false" >
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">系统消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="al-center">货币开启后，有玩家使用时将无法关闭！</h3>
+                <dd class="m-sm">关闭该货币玩家将无法存取款，因此开启后，有玩家使用时，将不可关闭；</dd>
+                
+</div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-filter">重新转账</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<div class="modal inmodal in" id="notice-list-11" tabindex="-1" role="dialog" aria-hidden="false">
+<div class="modal-dialog">
+<div class="modal-content animated bounceInRight family">
+<div class="modal-header">
+<span class="filter">账户验证</span>
+<button type="button" class="close" data-dismiss="modal">
+  <span aria-hidden="true">×</span>
+  <span class="sr-only">关闭</span>
+</button>
+</div>
+<div class="modal-body">
+<h3 class="m-sm al-center">请设置您的时区！</h3>
+
+<div class="form-group clearfix line-hi34 m-b-xxs">
+  <label class="col-xs-3 al-right">您的时区：</label>
+  <div class="col-xs-8 p-x">
+    <select class="selectwidth m-bigr">
+      <option>东八区</option>
+      <option>东九区</option>
+    </select>
+
+    <div class="co-grayc2">GMT +8 2015-03-24  15:02:57</div>
+  </div>
+</div>
+<div class="clearfix m-b bg-gray p-t-xs">
+  <div class="line-hi25 p-sm">
+    您的系统信息将以该时区显示！
+    <span class="co-orange">一旦设置，不可修改！</span>
+  </div>
+</div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-filter">使用该时区</button>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<!-- //* 语言版本切换 #select-lang* -->
+   <script type="text/javascript">
+        $(function() {
+         
+            $(".select-lang p").click(function() {
+                var ul = $(".select-lang ul");
+                if (ul.css("display") == "none") {
+                    ul.slideDown("fast");
+                } else {
+                    ul.slideUp("fast");
+                }
+            });
+
+            $(".select-lang ul li a").click(function() {
+                var txt = $(this).text();
+                var value = $(this).attr("rel");
+                $(".select-lang p").html("<span class='flag " + value + "'></span>" + txt);
+                $(".select-lang ul").hide();
+            });
+         
+        });
+      
+    </script>
+   
+   
+   
+ 
+</body>
+</html>

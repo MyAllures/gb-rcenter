@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="renderer" content="webkit">
+  <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+  <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+  <link rel="stylesheet" href="../../pcenter/themes/default/bootstrap.css">
+  <!-- 提示弹出框 -->
+  <script type="text/javascript">
+var environment = {
+  userVo : '',
+  role : '',
+  userId : '',
+  basePath : '',
+  userCash : '',
+  globalPath : '/',
+  userActiveTime : '',
+  yoolibaoWhiteListStatus : '',
+  yoolibaoOpenStatus : '',
+  cerrencyOpenTime : "2015/9/10"//new Date()
+};
+</script>
+
+  <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+  <script src="../../common/js/pcenterJS/global-1.1.0.min.js" type="text/javascript"></script>
+  <script src="../../common/js/bootstrap/bootstrap.min.js"></script>
+  <!--项部下拉弹出 -->
+  <script type="text/javascript" src="../../common/js/pcenterJS/head.js"></script>
+  <title>玩家中心首页</title>
+</head>
+<body>
+  <!-- //* Top -->
+
+  <div class="top-wrap">
+    <div class="top">
+      <!--顶部右边-->
+      <div class="top-right">
+        <div class="member">
+          您好，
+          <div id="site-nav">
+            <ul>
+              <li>
+                <div class="menu">
+                  <a class="menu-hd" href="#">
+                    <span class="orange">PCKmenr</span> <b></b>
+                  </a>
+                  <div class="menu-bd box">
+                    <div class="global-account-head">
+                      <a href="#" class="global-account-img">
+                        <img src="images/face.png" width="39" height="39"  alt="我的头像" />
+                      </a>
+                      <p class="global-account-name" title="name">下午好，陈先生</p>
+                      <a href="account.html">账户设置</a>
+                      <span class="global-top-seperator">|</span>
+                      <a href="gamerecord.html">交易记录</a>
+                    </div>
+
+                    <div class="global-account-money">
+                      钱包余额：
+                      <span class="show">
+                        <a href="#" >显示余额</a>
+                      </span>
+                      <p class="dottline space"></p>
+                      <div class="total">
+                        <a href="asset-transfer.html">转帐</a>
+                        <span class="global-top-seperator">|</span>
+                        <a href="asset-deposit.html">存款</a>
+                        <span class="global-top-seperator">|</span>
+                        <a href="asset-withdraw.html">取款</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          [退出]
+          <label class="line-after">
+            <span class="new"> <i class="new-ico select"></i>
+              <a href="#">新消息</a>
+            </span>
+          </label>
+        </div>
+      </div>
+      <!--顶部左边-->
+      <div class="top-left">
+        <div class="select-lang">
+          <p>
+            <span class="flag cn"></span>
+            简体中文
+          </p>
+          <ul>
+            <li>
+              <a href="#" rel="cn">
+                <span class="flag cn"></span>
+                简体中文
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="hk">
+                <span class="flag hk"></span>
+                繁体中文
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="en">
+                <span class="flag en"></span>
+                English
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="th">
+                <span class="flag th"></span>
+                ไทย
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="vn">
+                <span class="flag vn"></span>
+                Tiếng Việt
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="kr">
+                <span class="flag kr"></span>
+                한국어
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="jp">
+                <span class="flag jp"></span>
+                日本語
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="id">
+                <span class="flag id"></span>
+                Indonesia
+              </a>
+            </li>
+            <li>
+              <a href="#" rel="kh">
+                <span class="flag kh"></span>
+                Khmer
+              </a>
+            </li>
+          </ul>
+        </div>
+        <label class="time line-after">GMT +8 2015-03-24  15:02:57</label>
+      </div>
+
+    </div>
+  </div>
+
+  <!--banner-->
+  <div class="banner">
+    <div class="logo"></div>
+    <div class="right"></div>
+  </div>
+  <div class="wrapper">
+    <!--left-->
+    <div class="sidebar">
+
+      <!--左边菜单栏-->
+      <div class="sidebar-nav">
+        <dl>
+          <dt>
+            <a href="index.html"> <i class="navico home"></i>
+              钱包转账
+            </a>
+          </dt>
+        </dl>
+         <dl>
+          <dt class="select">
+            <a href="deposit-region.html">
+              <i class="navico capital-select"></i>
+              存款专区
+            </a>
+          </dt>
+        </dl>
+         <dl>
+          <dt>
+            <a href="withdraw.html">
+              <i class="navico capital"></i>
+              取款专区
+            </a>
+          </dt>
+        </dl>
+        <dl>
+          <dt>
+            <a href="asset-history.html">
+              <i class="navico capital"></i>
+              资金记录
+            </a>
+          </dt>
+        </dl>
+        <dl>
+          <dt>
+            <a href="gamerecord.html">
+              <i class="navico gamerecord"></i>
+              投注记录
+            </a>
+          </dt>
+        </dl>
+      
+        <dl>
+          <dt>
+            <a href="infonotice.html">
+              <i class="navico info"></i>
+              消息公告
+            </a>
+          </dt>
+        </dl>
+        <dl>
+          <dt>
+            <a href="account.html">
+              <i class="navico accout"></i>
+              个人资料
+            </a>
+          </dd>
+        
+        </dl>
+        <dl>
+          <dt>
+            <a href="recommended.html">
+              <i class="navico recommend"></i>
+              推荐好友
+            </a>
+          </dt>
+        </dl>
+      </div>
+    </div>
+
+    <!--right-->
+    <div class="main-wrap">
+      <div class="notice">
+        <div class="notice-left"> <em class="path"></em>
+        </div>
+        <div class="path-right">
+          <a href="index.html">玩家首页</a>
+          <span class="arrow">></span>
+          <a href="infonotice.html">存款专区</a>
+        </div>
+      </div>
+      <!--在线支付-->
+      
+    <div class="deposit-info-warp  clearfix">
+<div class="titleline pull-left"><h2>在线支付</h2></div><a href="deposit-region.html" class="btn-gray btn btn-big pull-right">返回上一级</a></div>
+
+ <div class="account-list account-info-warp">
+   <div class="left-ico-message">
+   <h4>选择您将使用的银行：</h4>
+     <span class="deposit-info-title">步骤1<img src="images/online-pay1.png"></span>
+       
+      <div class="bank-deposit">
+                        
+                        <div class="bank-total">
+                            <label class="bank select">
+                                <span class="radio"><input name="bankcode" type="radio" checked="checked"></span>
+                                <span class="radio-bank" title="中国工商银行"><i class="pay-bank else"></i></span>
+                                <span class="bank-logo-name">中国工商银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="招商银行"><i class="pay-bank select"></i></span>
+                                <span class="bank-logo-name">招商银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"> </span>
+                                <span class="radio-bank" title="中国建设银行"><i class="pay-bank ccb"></i></span>
+                                <span class="bank-logo-name">中国建设银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="中国农业银行"><i class="pay-bank abc"></i></span>
+                                <span class="bank-logo-name">中国农业银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="中国银行"><i class="pay-bank boc"></i></span>
+                                <span class="bank-logo-name">中国银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="中国民生银行"><i class="pay-bank cmbc"></i></span>
+                                <span class="bank-logo-name">中国民生银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="中国光大银行"><i class="pay-bank ceb"></i></span>
+                                <span class="bank-logo-name">中国光大银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"> </span>
+                                <span class="radio-bank" title="交通银行"><i class="pay-bank comm"></i></span>
+                                <span class="bank-logo-name">交通银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="浦发银行"><i class="pay-bank spdb"></i></span>
+                                <span class="bank-logo-name">浦发银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="平安银行"><i class="pay-bank spabank"></i></span>
+                                <span class="bank-logo-name">平安银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="兴业银行"><i class="pay-bank cib"></i></span>
+                                <span class="bank-logo-name">兴业银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="北京银行"><i class="pay-bank bjbank"></i></span>
+                                <span class="bank-logo-name">北京银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"> </span>
+                                <span class="radio-bank" title="中信银行"><i class="pay-bank citic"></i></span>
+                                <span class="bank-logo-name">中信银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="广发银行"><i class="pay-bank gdb"></i></span>
+                                <span class="bank-logo-name">广发银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="中国邮政储蓄银行"><i class="pay-bank psbc"></i></span>
+                                <span class="bank-logo-name">中国邮政储蓄银行</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="江苏银行"><i class="pay-bank jsbank"></i></span>
+                                <span class="bank-logo-name">江苏银行</span>
+                            </label>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="bank-spreadout set"><a href="#">展开更多银行</a><span class="shrink"><a href="#">收起部分银行</a></span><i class="bank-arrico down"></i></div>
+
+        </div>                        
+      </div>
+      <div class="account-list account-info-warp">
+<div class="left-ico-message">
+<h4>请填写存款金额：</h4>
+<span class="deposit-info-title">步骤2<img src="images/online-pay2.png"></span>
+<form>
+<div class="control-group">
+ <label class="control-label" for="inputEmail">存款帐号：</label>
+ <div class="controls"> HASDFJASF192
+   </div>
+  </div>
+<div class="control-group">
+
+ <label class="control-label" for="inputEmail">存款金额：</label>
+ <div class="controls">
+   <input type="text"  class="input" placeholder="">
+   </div>
+  </div>
+<div class="applysale">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody><tr>
+                                <td width="72" class="al-right">申请优惠：</td>
+                                <td width="500"><span class="radiotwo">
+      <input name="bankcode" type="radio"></span><i class="item-title-ico goryorange">分类一</i> 满500送50，满1000送200…&nbsp;&nbsp;
+                                    <a href="#">收起其他优惠</a><i class="bank-arrico up"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><span class="radiotwo">
+  <input name="bankcode" type="radio"></span><i class="item-title-ico gorylightblue">分类一</i> 满500送50，满1000送200…
+                                    <a href="#"></a>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+  
+ 
+  <div class="control-group">
+ <label class="control-label" for="inputEmail">验证码：</label>
+ <div class="controls">
+   <input type="text" id="input" placeholder="" class="input">
+   <span class="verify-img"><img src="../../pcenter/images/yzm.png"></span>
+   <i class="ico-ask refresh"></i>
+   
+ </div>
+  </div>
+    
+  
+  
+    <div class=" control-group">
+ <label class="control-label"></label> 
+ <button type="button" class="btn-blue btn large-big"  data-toggle="modal" data-target="#notice-list-1">立即存款</button>
+  </div>  
+  
+  
+ <div>
+ </div>
+ 
+   </form>
+ </div>
+  </div>
+
+
+
+  <div class="account-list account-info-warp">
+<div class="left-ico-message">
+<span class="deposit-info-title">注意事项<img src="images/online-pay3.png"></span>
+
+
+
+  
+ <ul class="attention-list">
+   <li>在线快速支付单笔储值最低为<em class="red">100RMB</em>，最高为<em class="red">50,000RMB</em>，并须视各家银行转款上限而定。</li>
+ </ul>
+  
+    
+  
+  
+ 
+  
+ <div>
+ </div>
+ 
+   </form>
+ </div>
+  </div>
+   
+
+
+
+
+
+
+
+</div>
+</div>
+<!-- 右边客服服务-->
+<div id="moquu_wxin" class="moquu_wxin">
+<a href="javascript:void(0)">
+玩家游戏
+<div class="moquu_wxinh"></div>
+</a>
+</div>
+<div id="moquu_wshare" class="moquu_wshare">
+<a href="javascript:void(0)">
+玩家游戏
+<div class="moquu_wshareh"></div>
+</a>
+</div>
+<div id="moquu_wmaps">
+<a href="#">玩家游戏</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- //* 语言版本切换 #select-lang* -->
+<script type="text/javascript">
+        $(function() {
+         
+            $(".select-lang p").click(function() {
+                var ul = $(".select-lang ul");
+                if (ul.css("display") == "none") {
+                    ul.slideDown("fast");
+                } else {
+                    ul.slideUp("fast");
+                }
+            });
+
+            $(".select-lang ul li a").click(function() {
+                var txt = $(this).text();
+                var value = $(this).attr("rel");
+                $(".select-lang p").html("<span class='flag " + value + "'></span>" + txt);
+                $(".select-lang ul").hide();
+            });
+         
+        });
+      
+    </script>
+
+<!-- //* 国家银行切换 #country-lang* -->
+<script type="text/javascript">
+        $(function() {
+         
+            $(".ud-select p").click(function() {
+                var ul = $(this).next("ul");
+                if (ul.css("display") == "none") {
+                    ul.slideDown("fast");
+                } else {
+                    ul.slideUp("fast");
+                }
+            });
+             
+                  
+            $(".ud-select ul li a").click(function() {
+                var txt = $(this).text();
+                var value = $(this).attr("rel");
+                             $(this).parentsUntil(".ud-select").children("p").html("<span class='pay-bank " + value + "'></span>" + txt);
+                $(".ud-select ul").hide();
+            });
+                  
+         
+        });
+      
+    </script>
+
+<!-- //* 国家银行切换 #country-lang* -->
+<script type="text/javascript">
+        $(function() {
+         
+            $(".guj-select p").click(function() {
+                var ul = $(this).next("ul");
+                if (ul.css("display") == "none") {
+                    ul.slideDown("fast");
+                } else {
+                    ul.slideUp("fast");
+                }
+            });
+             
+                  
+            $(".guj-select ul li a").click(function() {
+                var txt = $(this).text();
+                var value = $(this).attr("rel");
+                             $(this).parentsUntil(".ud-select").children("p").html("<span class='flag " + value + "'></span>" + txt);
+                $(".guj-select ul").hide();
+            });
+                  
+         
+        });
+      
+    </script>
+
+<!-- 展开收缩-->
+<script>
+$(".classtitle").click(function(){
+    $(this).parent().parent().next().children().children('.classtext').slideToggle();
+  $(this).children('.set').toggle();
+    $(this).children('.shrink').toggle();
+});
+</script>
+
+</body>
+</html>

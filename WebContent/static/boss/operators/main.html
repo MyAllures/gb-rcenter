@@ -1,0 +1,47 @@
+<nav class="navbar-default navbar-static-side shadow" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="active"><a href="operators/main.html" nav-target="topFrame"><em class="iconfont icon-huodongguanli"></em> <span class="nav-label">监控</span></a></li>
+            <li><a href="operators/transfer-unusual.html" nav-target="mainFrame"><em class="iconfont icon-xinxiqunfa"></em> <span class="nav-label">转账异常处理</span></a></li>
+            <li><a href="operators/message.html" nav-target="mainFrame"><em class="iconfont icon-xinxiqunfa"></em> <span class="nav-label">意见反馈</span></a></li>
+            
+        </ul>
+    </div>
+</nav>
+<div id="page-wrapper" class="gray-bg dashbard-1">
+    <div id="mainFrame">
+        <div class="row">
+            <div class="position-wrap clearfix">
+                <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+                <span>运营</span><span>/</span><span>账务</span>
+                <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+            </div>
+            <div class="col-lg-12">
+                <div class="wrapper white-bg shadow">
+                    adsfadf
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 左侧菜单响应控件 -->
+<script src="../../common/js/inspinia/inspinia.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
+
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>

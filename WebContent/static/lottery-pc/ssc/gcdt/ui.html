@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <link rel="stylesheet" href="../../../../lottery/themes/default/css/cabel-v1.css?v=20170206" type="text/css">
+    <link rel="stylesheet" href="../../../../lottery/themes/default/css/style.css?v=20170216" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../../../../lottery/themes/default/css/animate.min.css?v=20170206" type="text/css"><!--CSS3动画-->
+    <link rel="stylesheet" href="../../../../lottery/themes/default/css/lottery.css?v=20170206" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../../../../lottery/themes/default/css/liMarquee.css?v=20170206" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../../../../lottery/themes/default/css/global.css?v=1490702994993" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../../../../lottery/themes/default/css/other.css?v=20170309" type="text/css"><!--页面CSS-->
+    <link rel="stylesheet" href="../../../../common/themes/public-mod.css" type="text/css"><!--图标CSS-->	
+    <script src="../themes/default/js/FancyZoom.js" language="JavaScript" type="text/javascript"></script>
+    <script src="../themes/default/js/FancyZoomHTML.js" language="JavaScript" type="text/javascript"></script>
+    <script>
+    <!--
+    // 屏蔽JS错误
+//    window.onerror = function(){return true;}
+    // -->
+</script>
+<script src="../themes/default/js/mobile-detect.min.js"></script><style>
+        a:hover{
+            color: red;
+
+        }
+        a:active{
+            color:deepskyblue;
+        }
+    </style>
+    <script>
+        var CONFIG = {
+            BASEURL: "./",    // 根路径
+            RESURL: "../themes/default/"         // 资源路径
+        };
+    </script>
+</head>
+<body>
+<div class="ui_list">
+    <h2>分页</h2>
+    <!--分页-->
+    <div class="paging">
+    	<div class="paging-left">
+    		<form class="paging-form-inline">
+                <span class="paging-tit">每页显示</span>
+                <select class="paging-select">
+                	<option value="1">20条</option>
+                	<option value="1">30条</option>
+                	<option value="1">40条</option>
+                </select>
+                <label class="">共618条</label>
+            </form>
+    	</div>
+        <div class="paging-right">
+            <ul class="paging-btn-list">
+                <li class=""><a href="javascript:void(0)"><i class="paging-ico first-ico"></i></a></li>
+                <li class=""><a href="javascript:void(0)"><i class="paging-ico go-ico"></i></a></li>
+                <li class="active"><a href="javascript:void(0)">1</a></li>
+                <li class=""><a href="javascript:void(0)">2</a></li>
+                <li class=""><a href="javascript:void(0)">3</a></li>
+                <li class=""><a href="javascript:void(0)">4</a></li>
+                <li class=""><a href="javascript:void(0)"><i class="paging-ico retreat-ico"></i></a></li>
+                <li class=""><a href="javascript:void(0)"><i class="paging-ico last-ico"></i></a></li>
+            </ul>
+            <form class="paging-form-inline">
+                <label class="">共10页</label>
+                <label class="">第<input type="text" class="input-sm">页</label>
+                <button class="paging-btn">跳转</button>
+            </form>
+        </div>
+    </div>
+        <h2>色子图标</h2>
+        <div> <em class="gr gr-dice-1 fs1"></em> <em class="gr gr-dice-2 fs1"></em> <em class="gr gr-dice-3 fs1"></em> <em class="gr gr-dice-4 fs1"></em> <em class="gr gr-dice-5 fs1"></em> <em class="gr gr-dice-6 fs1"></em></div>
+</div>
+<script type="text/javascript" src="../themes/default/js/jquery.min.js?v=2017"></script><!--jQuery库-->
+<script type="text/javascript" src="../themes/default/js/scrollanim.min.js?v=2017"></script> <!--"动画库"-->
+<script src="../themes/default/js/type.js?v=2017"></script><!--自定义封装函数-->
+<script src="../themes/default/js/global.js?v=20170321"></script><!--自定义封装函数-->
+<script src="../themes/default/js/jquery.cookie.js?v=2017"></script><!--自定义封装函数-->
+<script src="../themes/default/js/jquery.md5.js?v=2017"></script><!--自定义封装函数-->
+<script src="../themes/default/layer/layer.js?v=2017"></script>
+<script src="../themes/default/js/jquery.nicescroll.js?v=2017"></script>
+<script src="../themes/default/js/dateFormat.js?v=2017"></script>
+<script src="../themes/default/js/template.js?v=2017"></script>
+<script src="../themes/default/js/swfobject/swfobject.js?v=2017"></script>
+<script src="../themes/default/js/jquery.liMarquee.js?v=2017"></script>
+<script src="../themes/default/js/placeholders.jquery.min.js?v=2017"></script>
+<script>
+    // 闪烁
+    var blinkColorArr = "#fa6200|#0f3f94".split("|");
+    $(".blink").each(function() {
+        var obj = $(this);
+        setInterval(function() {
+            var tmpColor = blinkColorArr[parseInt(Math.random() * blinkColorArr.length)];
+            $(obj).css("color", tmpColor);
+        },200);
+    });
+</script><script>
+    var str1 = location.href;
+
+    $(function() {
+        parent.hideLoading();
+    });
+
+    function goZst(url) {
+        parent.showLoading();
+        window.location.href = url;
+    }
+</script>
+</body>
+</html>

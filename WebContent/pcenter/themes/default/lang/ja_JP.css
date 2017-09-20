@@ -1,0 +1,18 @@
+/*
+Author:jacky
+updated:2017-08-02
+*/
+/* 现在存款页面样式 */
+.bank-menu a.more-pull-down {
+    display: block;
+    position: absolute;
+    right: -80px;
+    top: -35px;
+}
+/* 投注记录表格样式修改 */
+.chart-table{overflow-x: auto;}
+.chart-table .game-record-table1{width: 1200px !important;}
+.jp-open-dialog-700 .modal-dialog{
+    min-width: 500px;
+    width: 700px;
+}

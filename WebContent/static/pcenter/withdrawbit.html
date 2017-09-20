@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/bootstrap.css">
+  <!-- 提示弹出框 --> 
+<script type="text/javascript">
+var environment = {
+	userVo : '',
+	role : '',
+	userId : '',
+	basePath : '',
+	userCash : '',
+	globalPath : '/',
+	userActiveTime : '',
+	yoolibaoWhiteListStatus : '',
+	yoolibaoOpenStatus : '',
+	cerrencyOpenTime : "2015/9/10"//new Date()
+};
+</script>
+ <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+<script src="../../common/js/pcenterJS/global-1.1.0.min.js" type="text/javascript"></script>  
+<script src="../../common/js/bootstrap/bootstrap.min.js"></script>
+
+<!--项部下拉弹出 --> 
+<script type="text/javascript" src="../../common/js/pcenterJS/head.js"></script>
+<!--弹窗 --> 
+ <script>
+jQuery(document).ready(function($) {
+	$('.theme-login').click(function(){
+		$('.theme-pop-mask').fadeIn(100);
+		$('.theme-pop').slideDown(200);
+	})
+	$('.theme-poptitle .close').click(function(){
+		$('.theme-pop-mask').fadeOut(100);
+		$('.theme-pop').slideUp(200);
+	})
+
+})
+</script>
+  <title>玩家中心首页</title>
+</head>
+<body>
+<!-- //* 弹窗 --> 
+<div class="theme-pop pop-hide">
+<!-- //* 弹窗标题 --> 
+     <div class="theme-poptitle">
+          <a href="javascript:;" title="关闭" class="close">×</a>
+          <h1>取款</h1>
+     </div>
+<!-- //* 弹窗内容 --> 
+     <div class="theme-popcon">
+<h2 class="popalign">正在努力计算中…</h2>
+<div class="text">
+<p>计算本次取款是否达到稽核条件</p>
+</div>
+<form class="popbutton"><button data-toggle="button" class="btn btn-blue middle-big" type="button">取消计算</button>
+<button data-toggle="button" class="btn btn-gray btn-auto" type="button">关闭弹窗，计算完后通知我</button></form>
+</div>
+</div> 
+
+ <div class="theme-pop-mask pop-hide"></div>
+
+
+
+<!-- //* Top -->
+
+<div class="top-wrap">
+        <div class="top">
+               <!--顶部右边-->
+                   <div class="top-right">
+               <div class="member">
+            您好，<div id="site-nav">  
+			<ul>  
+               <li>
+				  <div class="menu">
+					  <a class="menu-hd" href="#"> <span class="orange">PCKmenr</span><b></b></a> 
+					  <div class="menu-bd box">
+                         <div class="global-account-head"><a href="#" class="global-account-img">
+                          <img src="images/face.png" width="39" height="39"  alt="我的头像" /> </a>
+    <p class="global-account-name" title="name">下午好，陈先生</p><a href="account.html">账户设置</a><span class="global-top-seperator">|</span><a href="gamerecord.html">交易记录</a>
+  </div>
+  
+  <div class="global-account-money">
+   钱包余额：<span class="show"><a href="#" >显示余额</a></span>
+   <p class="dottline space"></p>
+    <div class="total"> <a href="asset-transfer.html">转帐</a> <span class="global-top-seperator">|</span>
+      <a href="asset-deposit.html">存款</a><span class="global-top-seperator">|</span>
+      <a href="asset-withdraw.html">取款</a>
+    </div>
+     </div>
+      </div>
+    </div>
+			  </li>
+               </ul>
+               </div>
+       [退出] <label class="line-after"><span class="new"><i class="new-ico select"></i><a href="#">新消息</a></span></label>
+               </div>  
+            </div>
+             <!--顶部左边-->
+            <div class="top-left">
+                <div class="select-lang">
+                  <p><span class="flag cn"></span>简体中文</p>
+                    <ul>
+                        <li><a href="#" rel="cn"><span class="flag cn"></span>简体中文</a> 
+                        </li>
+                        <li><a href="#" rel="hk"><span class="flag hk"></span>繁体中文</a> 
+                        </li>
+                        <li><a href="#" rel="en"><span class="flag en"></span>English</a> 
+                        </li>
+                        <li><a href="#" rel="th"><span class="flag th"></span>ไทย</a> 
+                        </li>
+                        <li><a href="#" rel="vn"><span class="flag vn"></span>Tiếng Việt</a> 
+                        </li>
+                        <li><a href="#" rel="kr"><span class="flag kr"></span>한국어</a> 
+                        </li>
+                        <li><a href="#" rel="jp"><span class="flag jp"></span>日本語</a> 
+                        </li>
+                        <li><a href="#" rel="id"><span class="flag id"></span>Indonesia</a> 
+                        </li>
+                        <li><a href="#" rel="kh"><span class="flag kh"></span>Khmer</a> 
+                        </li>
+                    </ul>
+              </div>
+             <label class="time line-after">GMT +8 2015-03-24  15:02:57</label>
+            </div>
+      
+        </div>
+    </div>
+    
+ <!--banner-->
+<div class="banner"><div class="logo"></div><div class="right"></div>
+</div>   
+    <div class="wrapper">
+  <!--left-->  
+  <div class="sidebar">
+
+      <!--左边菜单栏-->
+      <div class="sidebar-nav">
+        <dl>
+          <dt>
+            <a href="index.html"> <i class="navico home"></i>
+              钱包转账
+            </a>
+          </dt>
+        </dl>
+         <dl>
+          <dt>
+            <a href="deposit-region.html">
+              <i class="navico capital"></i>
+              存款专区
+            </a>
+          </dt>
+        </dl>
+         <dl>
+          <dt class="select">
+            <a href="withdraw.html">
+              <i class="navico capital-select"></i>
+              取款专区
+            </a>
+          </dt>
+        </dl>
+        <dl>
+          <dt>
+            <a href="asset-history.html">
+              <i class="navico capital"></i>
+              资金记录
+            </a>
+          </dt>
+        </dl>
+        <dl>
+          <dt>
+            <a href="gamerecord.html">
+              <i class="navico gamerecord"></i>
+              投注记录
+            </a>
+          </dt>
+        </dl>
+      <dl><dt><a href="sale1.html"><i class="navico sale"></i> 优惠记录</a></dt></dl>
+        <dl>
+          <dt>
+            <a href="infonotice.html">
+              <i class="navico info"></i>
+              消息公告
+            </a>
+          </dt>
+        </dl>
+        <dl>
+          <dt>
+            <a href="account.html">
+              <i class="navico accout"></i>
+              个人资料
+            </a>
+          </dd>
+        
+        </dl>
+        <dl>
+          <dt>
+            <a href="recommended.html">
+              <i class="navico recommend"></i>
+              推荐好友
+            </a>
+          </dt>
+        </dl>
+      </div>
+    </div>
+
+  <!--right-->  
+<div class="main-wrap">
+<div class="notice"><div class="notice-left"><em class="path"></em></div>
+<div class="path-right"><a href="#">玩家首页</a><span class="arrow">></span><a href="#">取款专区</a></div>
+</div>
+ 
+<div class="tabmenu">
+            <ul class="tab">
+                <li><a href="withdrawList.html">银行卡账户</a></li>
+                <li><a href="system-notice.html" class="current">比特币钱包</a></li>
+            </ul>
+        </div>
+
+<div class="user-info">
+<h3>绑定比特币钱包</h3>
+<div class="rgeechar">
+                <div class="title">
+                    <span class="tips"><em class="orange">取款前请先添加比特币钱包地址,成功取款后,我们会将款项打至您填写的钱包账户!</em></span></div>
+            </div>
+
+<div class="m-t-sm line-hi32">
+<div id="validateRule" style="display: none"></div>
+<div class="control-grouptwo">
+<label class="control-left">比特币钱包地址：</label>
+<div class="controls">
+<input type="text" class="input bn" style="width: 280px;"><span class="tips orange"><i class="mark plaintsmall"></i>不能为空</span>
+</div>
+</div>
+
+
+<div class="control-grouptwo">
+<label class="control-label" style="width:132px;"></label>
+<div class="controls" id="submitInfo">
+<a title="重置" class="btn btn-gray middle-big ">
+重置
+</a>
+<a title="确认" class="btn btn-blue middle-big btn-bank"  data-toggle="modal" data-target="#notice-list-1">
+确认
+</a>
+<a style="display: none" name="returnMain" nav-target="mainFrame" href="/player/withdraw/withdrawList.html"></a>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+<!-- 右边客服服务-->
+<div id="moquu_wxin" class="moquu_wxin"><a href="javascript:void(0)">玩家游戏<div class="moquu_wxinh"></div></a></div>
+<div id="moquu_wshare" class="moquu_wshare"><a href="javascript:void(0)">玩家游戏<div class="moquu_wshareh"></div></a></div>
+<div id="moquu_wmaps"><a href="#">玩家游戏</a></div>
+
+<!--弹窗1-->
+<div class="modal inmodal" id="notice-list-1" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content animated bounceInRight family">
+<div class="modal-header">
+<span class="filter">消息</span>
+<button type="button" class="close" data-dismiss="modal">
+  <span aria-hidden="true">×</span>
+  <span class="sr-only">关闭</span>
+</button>
+</div>
+<div class="modal-body">
+<h3 class="m-sm al-center">确认提交吗？</h3>
+
+<div class="form-group clearfix line-hi34 m-b-xxs al-center">
+  <b>比特币钱包地址：</b>11ds1f5dfd4f4adsf5d4a1sdf5d4fa1sd5fdf44dsdf
+  
+</div>
+<div class="rgeechar">
+                <div class="title">
+                    <span class="tips"><i class="mark plaintsmall"></i> <em class="orange">比特币钱包地址将直接影响您的正常收款，请务必再次确认！</em></span></div>
+            </div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-gray">取消</button>
+<button type="button" class="btn btn-filter">确认</button>
+</div>
+</div>
+</div>
+</div>
+<!--弹窗2-->
+
+
+
+<!-- //* 语言版本切换 #select-lang* -->
+   <script type="text/javascript">
+        $(function() {
+         
+            $(".select-lang p").click(function() {
+                var ul = $(".select-lang ul");
+                if (ul.css("display") == "none") {
+                    ul.slideDown("fast");
+                } else {
+                    ul.slideUp("fast");
+                }
+            });
+
+            $(".select-lang ul li a").click(function() {
+                var txt = $(this).text();
+                var value = $(this).attr("rel");
+                $(".select-lang p").html("<span class='flag " + value + "'></span>" + txt);
+                $(".select-lang ul").hide();
+            });
+         
+        });
+      
+    </script>
+   
+   
+   
+ 
+</body>
+</html>

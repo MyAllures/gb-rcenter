@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="../internal.js"></script>
+    <style type="text/css">
+        .section {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .section input {
+            margin-left: 5px;
+            width: 70px;
+        }
+
+        .fix_>div{margin-bottom: 10px;}
+        .aaa{display: inline-block; width: 80px;text-align: right;}
+    </style>
+</head>
+<body>
+<div class="section fix_">
+    <div><span class="aaa"><var id="lang_tdBkColor"></var></span>
+        <input type="text" id="J_tone"/></div>
+    <div><span class="aaa"><var id="lang_tdBkWidth"></var></span>
+        <input type="text" id="J_width"/></div>
+    <div><span class="aaa"><var id="lang_tdBkHeight"></var></span>
+        <input type="text" id="J_height"/></div>
+
+</div>
+<script type="text/javascript">
+    var tone = $G("J_tone"),
+            colorPiker = new UE.ui.ColorPicker({
+                editor:editor
+            }),
+            colorPop = new UE.ui.Popup({
+                editor:editor,
+                content:colorPiker
+            });
+    domUtils.on(tone, "click", function () {
+        colorPop.showAnchor(tone);
+    });
+    domUtils.on(document, 'mousedown', function () {
+        colorPop.hide();
+    });
+    colorPiker.addListener("pickcolor", function () {
+        tone.value = arguments[1];
+        colorPop.hide();
+    });
+    colorPiker.addListener("picknocolor", function () {
+        tone.value="";
+        colorPop.hide();
+    });
+
+    var tone_width = $G("J_width");
+    var oldWidthVal = tone_width.value;
+    var tone_height = $G("J_height");
+    var oldHeightVal = tone_height.value;
+    dialog.onok=function(){
+        editor.execCommand("edittd",tone.value);
+
+        if (tone_width.value) {
+            if (oldWidthVal != tone_width.value) {
+                editor.execCommand("edittdwidth",tone_width.value);
+            }
+        } else {
+            editor.execCommand("edittdheight",0);
+        }
+
+
+        if (tone_height.value) {
+            if (oldHeightVal != tone_height.value) {
+                editor.execCommand("edittdheight",tone_height.value);
+            }
+        } else {
+            editor.execCommand("edittdheight",0);
+        }
+
+    };
+
+    var start = editor.selection.getStart(),
+        cell = start && domUtils.findParentByTagName(start, ["td", "th"], true);
+    if(cell){
+        var color = domUtils.getComputedStyle(cell,'background-color');
+        if(/^#/.test(color)){
+            tone.value = color
+        }
+        if (!isNaN(parseInt(cell.width))) {
+            tone_width.value = parseInt(cell.width);
+        }
+        if (cell.height) {
+            tone_height.value = parseInt(cell.height);
+        } else {
+            tone_height.value = 0;
+        }
+    }
+
+
+</script>
+</body>
+</html>

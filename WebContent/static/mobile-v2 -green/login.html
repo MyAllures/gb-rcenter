@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/mui-icon-extra.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/default/style.css" />
+</head>
+
+<body class="gb-theme mine-page login-page">
+    <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+        <div class="mui-inner-wrap">
+            <header class="mui-bar mui-bar-nav">
+                <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+                <h1 class="mui-title">登录</h1>
+                <a class="mui-icon mui-icon-home mui-pull-right" data-href="/"></a>
+            </header>
+            <div class="mui-content mui-scroll-wrapper"> 
+                <div class="mui-scroll">
+                    <div class="mui-row">
+                        <div class="login-top-logo mui-hide">
+                            <img src="../../mobile-v2/images/login-top-logo.png" alt="">
+                        </div>
+                        
+                    </div>
+                    <div class="mui-row">
+                        <div class="mui-input-group mine-form m-t-sm">
+                            <div class="mui-input-row">
+                                <div class="form-row">
+                                    <div class="cont">
+                                        <input type="text" class="ico1" placeholder="请输入账号" name="username" id="username" autocomplete="off">
+                                        <p class="error-wrap"><span class="mui-icon mui-icon-info"></span>账号不能为空</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mui-input-row _pass final">
+                                <div class="form-row">
+                                    <div class="cont">
+                                         <p  class="error-wrap"><span class="mui-icon mui-icon-info"></span>密码不能为空</p>
+                                        <input type="password" class="ico2" placeholder="请输入密码" name="password" id="password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mui-input-row _captcha " id="captcha_div" style="display: none">
+                                <div class="form-row">
+                                    <div class="cont">
+                                        <input type="text" class="mui-input ico6" maxlength="4" placeholder="请输入验证码" name="captcha" id="captcha">
+                                        <div class="gb-vcode">
+                                            <img class="_captcha_img" src="/captcha/code.html" data-src="/captcha/code.html" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mui-input-row">
+                            <div class="gb-form-foot" style="height: 65px;position: relative;">
+                                <button class="mui-btn mui-btn-primary submit _login" type="button">立即登录</button>
+                                <p class="no-account">没有账号？</p>
+                                <div style="position: absolute;top: 75px;left: 10px;right: 10px;z-index: 0;height: 1px;background: #d2d2d2;"></div>
+                                <button class="mui-btn mui-btn-primary btn-reg" data-href="/signUp/index.html" type="button">免费开户</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-off-canvas-backdrop"></div>
+        </div>
+    </div>
+</body>
+<script src="../../mobile-v2/js/mui/mui.min.js"></script>
+<script src="../../mobile-v2/js/jquery/jquery-2.1.1.js"></script>
+<script type="text/javascript">
+/*内容区域滚动*/
+mui('.mui-content.mui-scroll-wrapper').scroll({
+    scrollY: true, //是否竖向滚动
+    scrollX: false, //是否横向滚动
+    startX: 0, //初始化时滚动至x
+    startY: 0, //初始化时滚动至y
+    indicators: false, //是否显示滚动条
+    deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+    bounce: true //是否启用回弹
+});
+</script>
+
+</html>

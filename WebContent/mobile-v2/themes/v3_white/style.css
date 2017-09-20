@@ -1,0 +1,492 @@
+/**
+ * v3主题
+ */
+.theme {background: #020511;}
+.load-bg {
+    background: #131313;
+}
+.mui-content {
+    background-color: #fff;
+}
+.mui-bar-nav .user .btn{
+    border-color: #122058;
+}
+.mui-bar-tab{
+    background-color: #666;
+    border-top: 1px solid #858585;
+}
+.default-background{
+    background-color: #3c4b88;
+}
+.gb-homemenu.mui-segmented-control .mui-control-item{
+    color: #fff;
+    border-right: 0;
+}
+.gb-homemenu.mui-segmented-control .mui-control-item span{    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#8cc9e3), to(#fff));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;}
+.gb-homemenu.mui-segmented-control .mui-control-item.ico1{
+    background-image: url(./images/game-ico1.png);    background-position: 19px 11px !important;
+}
+.gb-homemenu.mui-segmented-control .mui-control-item.ico2{
+    background-image: url(./images//game-ico2.png);background-position-y: 10px !important;
+}
+.gb-homemenu.mui-segmented-control .mui-control-item.ico3{
+    background-image: url(./images/game-ico3.png);background-position-y: 9px !important;
+}
+.gb-homemenu.mui-segmented-control .mui-control-item.ico4{
+    background-image: url(./images/game-ico4.png);    background-position-y: 9px !important;
+}
+.gb-homemenu.mui-segmented-control .mui-control-item.ico5{
+    background-image: url(./images/game-ico5.png);    background-position-y: 10px !important;
+}
+.gb-homemenu.mui-segmented-control .mui-control-item.ico6{
+    background-image: url(./images//game-ico6.png);background-position-y: 12px !important;
+}
+.gb-homemenu.mui-segmented-control .mui-control-item.ico7{
+    background-image: url(./images/game-ico7.png);    background-position-y: 9px !important;
+}
+.gb-homemenu.mui-segmented-control .mui-control-item.ico8{
+    background-image: url(./images/game-ico8.png);background-position-y: 8px !important;
+}
+.gb-homemenu.mui-segmented-control .mui-control-item.ico9{
+    background-image: url(./images/game-ico9.png);    background-position-y: 11px !important;
+}
+.gb-homemenu.mui-segmented-control .mui-control-item.ico10{
+    background-image: url(./images/icon_index.png);background-position-y: 10px !important;
+    background-size: 24px !important;
+}
+.gb-homemenu.mui-segmented-control .mui-control-item.mui-active{
+    background-color: #243a9a;
+    color: #fff;
+}
+/* lottery */
+.lottery-list{background: #fff;}
+.lottery-list .mui-segmented-control{border: 1px solid #d0d0d0;}
+.lottery-list .mui-segmented-control .mui-control-item{border-color: #d0d0d0;color: #333;font-size: 12px;}
+.lottery-list .mui-segmented-control .mui-control-item.mui-active{background-color: #2d5eac;color: #fff;}
+.lottery-list .lottery-content{border: 1px solid #d0d0d0;border-radius: 2px;background: #f0f0f0;font-size: 12px;color: #333;}
+.lottery-list .lottery-content .mui-col-xs-3{text-align: center;}
+.lottery-list .lottery-content .mui-col-xs-3 img{width: 80%;margin-top: 5px;max-width: 100%;}
+.lottery-list .lottery-content .mui-col-xs-3 span{display: block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.lottery-list .lottery-content .mui-col-xs-3{border-right: 1px solid #d0d0d0;border-bottom: 1px solid #d0d0d0 ;}
+.lottery-list .mui-control-item i{display: inline-block;width: 46px;height: 30px;vertical-align: middle;background-size: 42px auto;background-position: center;background-repeat: no-repeat;}
+.lottery-list .mui-control-item i.l-kg{background-image: url(images/api-lottery-2.png);}
+.lottery-list .mui-control-item.mui-active i.l-kg{background-image: url(images/api-lottery-2-active.png);}
+.lottery-list .mui-control-item i.l-bb{background-image: url(images/api-lottery-10.png);}
+.lottery-list .mui-control-item.mui-active i.l-bb{background-image: url(images/api-lottery-10-active.png);}
+.lottery-list .mui-control-item i.l-wm{background-image: url(images/api-lottery-22.png);}
+.lottery-list .mui-control-item.mui-active i.l-wm{background-image: url(images/api-lottery-22-active.png);}
+.mui-no-data {
+    color: #e6e6e6;
+}
+.electronic-type.mui-segmented-control{
+    background-color: #2b3042!important;
+    border-bottom: 1px solid #4f587a;
+}
+.electronic-type.mui-segmented-control .mui-control-item{
+    color: #fff;
+    border-right:0;
+    padding: 0;
+    margin: 0 10px;
+}
+.electronic-type.mui-segmented-control .mui-control-item.mui-active{
+color: #6b88fe;
+    position: relative;
+    border-bottom: 2px #6b88fe solid;
+    padding: 0;
+    margin: 0 10px;
+}
+
+.electronic-list{
+       background:#fff;
+}
+.electronic-list img{display: block;max-width: 100%;}
+.electronic-list .item p{
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.electronic-srch{
+   background-color: #3e445c;
+}
+.electronic-srch >i {
+    background: url(../../images/default/ico-clear.png) no-repeat center;
+    background-size: 20px auto;
+}
+.electronic-srch >a{
+    background: url(../../images/default/ico-find.png) no-repeat center;
+    background-size: 20px auto;
+}
+.electronic-srch input{
+    color: #fff;
+}
+.about-text{
+    background: url(../../images/bg-about.jpg);
+}
+.agent-text{
+    background: #353741;
+}
+.agent-text p{
+    color: #fff;
+}
+/* sports */
+.sports-list{    background:#fff;}
+.sports-list img{    display: block; max-width: 100%;}
+/* live */
+.live-list{
+    background:#fff;
+}
+.live-list .item >.ct p span{
+    background: url(../../images/label-immortal.png) no-repeat center #243a99;
+}
+.bank-selector >p{
+    border-left: 5px solid #1766bb;
+    color: #1766bb !important;
+}
+.bank-selector >.ct a.active{
+    border-color: #1766bb;
+}
+.bank-cash a.active{
+    border-color: #1766bb;
+}
+.mine-form p.text-gray{
+    color: #aeaeae;
+}
+.gb-select >a{
+    color: #999;
+}
+.gb-datafilter .btn{
+    background-color: #1766bb;
+    border-color: #1766bb;
+}
+.gb-panel.gray{
+    background-color: #1e1e1e;
+    border-color: #1e1e1e;
+}
+.invite-cont .cont >p .btn{
+    background-color: #1766bb;
+    border-color: #1766bb;
+}
+.pays-wxcode >.ct p .btn{
+    background-color: #1766bb;
+    border-color: #1766bb;
+}
+.gb-userinfo{
+    background-color: #1766bb;
+}
+.gb-stressed p i.active{
+    background-color: #1766bb;
+}
+.gb-headtabs .mui-segmented-control {
+    border:1px solid #1766bb;
+}
+.gb-homemenu.mui-segmented-control >i{
+    background: url(../../images/ex4.png) no-repeat center;
+    background-size: 100% auto;
+}
+.gb-headtabs .mui-segmented-control .mui-control-item.gray{
+    background-color: #cbcbcb;
+    border-color: #353741;
+}
+.gb-headtabs .mui-segmented-control .mui-control-item.mui-active {
+    background: #1766bb;
+}
+.gb-headtabs .mui-segmented-control .mui-control-item.gray.mui-active {
+        background: #31955e;
+}
+
+.text-blue, .text-primary {
+    color: #1766bb;
+}
+.gb-notice {
+    background-color: #353741;
+}
+.gb-notice-box{
+    border: 1px solid #243a9a;
+}
+.gb-error, .gb-error p {
+    color: #fff;
+}
+.label-success{
+    color: #4dce83;
+}
+.label-danger{
+    color: #ea5e5e;
+}
+.label-orange {
+    color: #fda000;
+}
+
+.gb-theme .mui-bar-nav {
+    background-color: #09102c;
+}
+.gb-theme.mine-page .mui-bar-nav {
+    background-color: #1766bb;
+}
+.gb-theme .mui-slider-indicator .mui-active.mui-indicator {
+    background-color: #353741;
+}
+.gb-theme .gb-header {
+    background-color: rgba(255, 255, 255, .2);
+}
+.gb-theme .gb-header .mui-title{}
+.form-row >.cont p .ck{
+    background: url(../../images/default/checkbox.png);
+}
+.form-row >.cont p .ck.active{
+    background-image: url(../../images/default/checkbox-on.png);
+    background-size: cover;
+}
+.gb-foot{
+    background-color: #353741;
+}
+
+.desk{
+    background: rgba(255, 255, 255, 0.9);
+}
+.desk .desk-text{
+    color: #333;
+}
+.desk .desk-text em{
+    background: url(../../images/default/desk.png) no-repeat top left;
+}
+/* 电子中转页 */
+
+
+/*存款页面优惠弹窗*/
+.pro-window{width:320px !important; margin-top:-165px;margin-left:-160px;padding:15px;}
+.pro-window h3{color:#1766bb;margin-bottom:30px;line-height: 16px;}
+.pro-window .cont-text{line-height:20px;font-size: 12px;color:#666;}
+.pro-window .cont-text p,.pro-window .text-pro p{color:#666;}
+.pro-window .org{color:#f49e2e;font-size: 14px;}
+.pro-window .text-pro ul{max-height:110px;overflow: auto;background:#e2e2e2;border-radius: 4px;}
+.pro-window .text-pro li{padding:0 0 0 10px;line-height:16px;font-size: 12px;}
+.pro-window .text-pro .text-warp{border-bottom: 1px dashed #d2d2d2;width: 100%;padding:5px 0;position: relative;}
+.pro-window .text-pro li span{color:#666;display:inline-block;width:238px;word-wrap: break-word}
+.pro-window .text-pro li input{width: 16px;height: 16px;position:absolute;top:20%;right:15px;}
+.pro-btn{margin: 20px 0 0 10px;width:280px;}
+.pro-btn a{font-size: 14px; margin: 0 5px; color: #fff; width:120px;height: 32px;border-radius: 4px;line-height: 32px;text-align: center;display: inline-block}
+.pro-btn .next-btn{background:#1766bb;}
+.pro-btn .agin-btn{background:#e2e2e2;color: #666;}
+.pro-window .close{position:absolute;top:5px;right:5px;background:url(../../images/close.png)no-repeat center center;width: 48px;height:48px;zoom:0.7;}
+
+/*存款页面提交成功*/
+.window-ok{padding:0 20px;height: 255px;}
+.window-ok .ok-box{text-align: center;}
+.window-ok .ok-box .ok-icon{width: 57px;height: 57px;background:url(../../images/default/ok.png)no-repeat top left;display:block;background-size: cover;margin:20px auto 10px auto;}
+.window-ok .ok-box span{font-size: 16px;font-weight:bold;color:#00d623;}
+.window-ok .ct{margin:10px 0 !important;}
+.window-ok .ft a{display: block;margin-top:5px;}
+
+.gb-promo .gb-panel {
+    background-color: #3e445c;
+    border-top: 1px solid #3e445c;
+    border-bottom: 1px solid #3e445d;
+}
+.gb-promo .gb-panel .activity-detail {
+    padding: 10px;
+    background-color: #32374f;
+    color: #fff;
+}
+.gb-promo .gb-panel .activity-detail > p {
+    color: #fff;
+}
+.gb-promo .gb-panel .activity-detail img {
+    width: 100%;
+}
+.gb-headtabs .mui-segmented-control .mui-control-item.gray >i {
+    background: url(../../images/default/ex6.png);
+    background-size: cover;
+}
+.lottery-type .api-logo a {
+    background: #3e445c;
+    border: 1px solid #3e445c;
+}
+.mui-slider-indicator.mui-segmented-control table {
+    background-color: #353741;
+    border:1px solid #efeff4;
+}
+.mui-btn-blue {
+    color: #fff;
+    border: 1px solid #1766bb;
+    background-color: #1766bb;
+}
+/*首页样式start*/
+
+/*头部*/
+.index{background: #fff;}
+.index .mui-bar-nav{    background: linear-gradient(to bottom,#2e5fae,#29559c);}
+.index .mui-bar-nav .user .btn { border-color: transparent;}
+.index .mui-bar-nav .btn-login{background-color: #31955e;}
+.index .mui-bar-nav .btn-register{background-color: #eda527;}
+.index .site-address{height: 21px;position: fixed;z-index: 3;top: 44px;left: 0;right: 0;background: #2c5ba7;font-size: 9px;color: #fff;text-align: center;line-height: 21px;}
+.index .site-address img{width: 100%;}
+/*公告*/
+.index .gb-notice {  background-color: #fff;}
+.gb-notice .gb-notice-list a{color: #333;}
+/*滑动导航*/
+.index .gb-homemenu.mui-segmented-control {  border-top:0; background:url(images/nav-bg.png) repeat-x; border-bottom:0;}
+/*喜好定制*/
+.index .index-block{color: #333;}
+.index .index-block-header{height: 20px;line-height: 20px;    font-size: 13px;}
+.index .mui-pull-left.title{    border-left: 4px solid #3b61fe;padding-left: 4px;}
+.index .mui-pull-right.more{padding-right: 10px;color: #a3a8c0;}
+.index .mui-pull-right.more a{color: #333;}
+.index .index-block-header{margin-bottom: 5px;}
+.index .index-block-content{    background: #f0f0f0 !important; }
+.index .index-block-content .mui-col-xs-6{padding-left: 10px;}
+.index .hb-block .index-block-content{padding-top: 0;}
+.index .hb-block .text{padding-left: 48px;}
+.index .hb-block .text .title{font-size: 12px;color: #fff;    line-height: 12px;margin-top: 5px;}
+.index .hb-block .text .description{margin-top: 5px;font-size: 10px;color: #d4daf3;    line-height: 10px;}
+.index .hb-block .mui-col-xs-6{margin-bottom: 15px;}
+.index .index-block .mui-icon{    font-size: 17px;  }
+.index .hb-block .mui-col-xs-4{border-right: 1px solid #fff;border-bottom: 1px solid #fff;}
+.index .hb-block .index-block-content{border-bottom: 0;text-align: center;}
+.index .hb-block .icon-text{display: block;font-size: 12px;color: #333;margin-bottom: 10px;line-height: 12px;}
+.index .index-block-header {  height: 20px; line-height: 20px; font-size: 13px;}
+
+/*优惠速递*/
+.index .mui-icon-double-arrow:before{    content: ''; width: 10px; height: 10px; background: url(./images/double-arrow.png) 0 0 /100%; display: inline-block;}
+.index .index-block .mui-icon.mui-icon-double-arrow{    vertical-align: 0; margin-left: 4px;}
+.index .promo-block .index-block-content{padding: 10px 10px 0;background: #f0f0f0 !important;}
+.index .promo-block .index-block-content .mui-row{padding-bottom: 10px;}
+.index .promo-block .index-block-content .mui-row img{width: 100%;vertical-align: middle;}
+/*游戏推荐*/
+.index .game-block .game-hot{position: relative;}
+.index .game-block .game-hot .img{position: absolute; bottom: 0; right: 0;}
+.index .game-block .game-hot .img img{vertical-align: middle;}
+.index .game-block .game-hot.g1 .img img{width: 74px;}
+.index .game-block .game-hot.g2 .img img{width: 63px;}
+.index .game-block .game-hot.g3 .img img{width: 61px;}
+.index .game-block .game-hot .text{font-size: 12px;color: #333;padding-top: 10px;line-height: 12px;}
+.index .game-block .game-hot .description{font-size: 10px;line-height: 10px;color: #333;margin-top: 5px;opacity: 0.7;alpha:filter(opacity=70);}
+.index .game-block .game-hot.g1 {  height: 130px;border-right: 1px solid #fff;}
+.index .game-block .game-hot.g2,.index .game-block .game-hot.g3 {  height: 65px;border-bottom: 1px solid #fff;}
+.index .game-block .game-hot.g3{border-bottom: 0;}
+.index .game-block .game-hot.g2 .text,.index .game-block .game-hot.g3 .text{padding-left: 10px;}
+.index .hot-row{    border-bottom: 1px solid #fff;}
+.index .normal-row{padding: 0;border-bottom: 0;text-align: center;overflow: hidden;}
+.index .mui-row.normal-row>div {padding: 10px 0; border-bottom: 1px solid #fff;}
+.index .mui-row.normal-row>div+div{border-left: 1px solid #fff;}
+.game-block-content{border-bottom:0 !important;}
+.index .normal-row img{width: 47px;height: 47px; vertical-align: top;}
+.index .normal-row .name{display: block;font-size: 12px;color: #333;margin-top: 5px;opacity: 0.7;alpha: filter(opacity=70);white-space: nowrap;overflow: hidden;text-overflow: ellipsis;margin: 5px 10px 0;line-height: 12px;}
+.index .game-block .index-block-header{    height: 30px; margin-bottom: 0;border-bottom: 1px solid #fff;}
+.index .game-block .mui-col-xs-6{background: url(./images/game-item-bg.png) no-repeat 0 bottom;}
+.index .game-block .mui-col-xs-3{background: url(./images/game-item-bg-small.png) no-repeat 0 bottom;}
+/* 400以上的屏幕一排放8个图标 */
+@media (min-width:400px) {.mui-col-sm-8-1{width: 16.666667%;}.index .normal-row{height: auto;}  }
+
+/*超级彩金*/
+.index .jackpot{    background: url(../images/jackpot-bg.png) 0 0 /cover;height: 42px;margin-top: 8px;    border-top: 1px solid #4f587a;padding: 0 0 0 10px; border-bottom: 1px solid #4f587a;    text-align: center;}
+.index .jackpot .tit{font-size: 12px;line-height: 14px;margin-top: 6px; color: #fdfdfd;float: none;   display: inline-block;}
+.index .jackpot-num {    height: 42px;line-height: 42px;letter-spacing:14px;     padding-left: 13px;    background: url(../images/jackpot-num-bg.png) 12px center/268px no-repeat;width: 278px;    color: #fdfdfd;    float: none;
+    display: inline-block;    vertical-align: top;}
+/*底部导航*/
+.index .bottom-nav{text-align: center;font-size: 10px;margin-top: 14px;margin-bottom:71px;}
+.index .bottom-nav a{color: #333;opacity: 0.7;alpha:filter(opacity=70);}
+.index .bottom-nav li{padding: 0 4px;position: relative;}
+.index .bottom-nav li+li:before{    content: '|'; position: absolute; left: -3px; color: #333;  top: -1px;}
+/*底部信息*/
+.footer-info{
+    color: #d4daf3;
+}
+/* 侧边栏样式 */
+.index-canvas {color: #fff;}
+.index-canvas a{color: inherit;}
+.index-canvas .mui-off-canvas-left .mui-scroll-wrapper{font-size: 12px; background: #2c5ba7 url(../images/canvas-bg.png) 0 0/224px no-repeat;box-shadow: 5px 5px 5px rgba(6,0,1,0.3);}
+.index-canvas.mui-active .mui-off-canvas-left{ z-index: 3 !important;}
+.index-canvas .c-l-header{text-align: center;}
+.c-l-header .h-text{color: #fff;line-height: 1;}
+.c-l-header .h-btn{border-radius: 15px;width: 150px;height: 35px;line-height: 35px;margin: 0 auto;display: block;font-size: 15px;border: 1px solid transparent;}
+.c-l-header .unlogin-status .h-btn{background: #eda527;border-color:#eda527; }
+.c-l-header .login-status .h-btn{background: transparent;border-color: #31955e;}
+.c-nav {margin-top: 27px;}
+.index-canvas .mui-table-view{background-color: transparent;}
+.index-canvas .mui-table-view:before,.index-canvas .mui-table-view:after,.index-canvas .mui-table-view-cell:after{height: 0;}
+.index-canvas .mui-off-canvas-left .mui-table-view-cell a,.index-canvas .mui-off-canvas-left .mui-table-view-cell{height: 40px;line-height: 40px;text-align: center;}
+.index-canvas .mui-table-view-cell{padding: 0;border-left: 3px solid transparent;}
+.index-canvas .mui-table-view-cell.active{    border-left: 3px solid #445dc2;  background: #555555;}
+.index-canvas .mui-table-view-cell a .icon-canvas{display: inline-block;width: 26px;height: 27px;background: url(../images/icon-canvas-nav.png) 0 0/26px no-repeat;vertical-align: middle;margin-right: 18px;}
+.index-canvas .mui-table-view-cell a .icon-canvas.ic-promo{    background-position-y: -41px;}
+.index-canvas .mui-table-view-cell a .icon-canvas.ic-download{    background-position-y: -83px;}
+.index-canvas .mui-table-view-cell a .icon-canvas.ic-deposit{    background-position-y: -125px;}
+.index-canvas .mui-table-view-cell a .icon-canvas.ic-change{    background-position-y: -166px;}
+.index-canvas .mui-table-view-cell a .icon-canvas.ic-problem{    background-position-y: -208px;}
+.index-canvas .mui-table-view-cell a .icon-canvas.ic-online{    background-position-y: -249px;}
+.index-canvas .btn-logout{ border-radius: 15px; width: 150px; height: 35px;  line-height: 35px; margin: 35px auto;  display: block; font-size: 15px;  border: 1px solid #eda527;  text-align: center;    }
+.index-canvas .mui-table-view-cell > a:not(.mui-btn).mui-active{  background-color: transparent;}
+.index-canvas .mui-off-canvas-left{ width: 224px;}
+/*首页样式end*/
+/* 体育样式start */
+.game-list .game01{  background: url(images/game-list01.jpg) 0 0/100% no-repeat; border: 1px solid #4f587a;}
+.game-list .game02{  background: url(images/game-list02.jpg) 0 0/100% no-repeat; border: 1px solid #4f587a;}
+.game-list .game .enter-btn{background: url(images/game-btn-bg.png) 0 0/100% no-repeat;}
+/* 体育样式end */
+/* 帮助中心样式 */
+.help-center{background-color: #f2f2f2;}
+.help-center .mui-content{background-color: #f2f2f2;font-size: 12px;color: #333;}
+.help-center .mui-bar-nav{    background-color: #1766bb;color: #fff;}
+.help-center .mui-title{color: #fff;}
+.help-center .mui-action-back{color: #fff;}
+.help-center .mui-content > .mui-table-view:first-child{margin-top: 0;}
+.help-center .fqa{ margin: 12px 0 ;}
+.help-center .fqa dt{height: 40px;line-height: 40px;background-color: #fff;margin-bottom: 12px;}
+.help-center .fqa dt span{display: inline-block;padding-left: 6px; height: 21px;line-height: 21px;font-size: 12px;color: #445dc2;border-left: 4px solid #445dc2;  margin-top:10px; }
+.help-center .fqa dd{margin: 0;padding: 0 10px;    overflow: hidden;    -webkit-transition-duration:0ms;
+    -o-transition-duration: 0ms;
+    transition-duration: 0ms;height:auto;}
+.help-center .fqa dd p{color: #333;font-size: 12px;line-height: 17px;margin-bottom: 17px;}
+.help-center .fqa .mui-content{display: none;}
+/* 电子中转页 */
+.e-transfer .game-item .game-detail h1{font-size: 18px;color: #fff;font-weight:normal;}
+.e-transfer .e-btn-group{text-align: center;padding: 0 10px;background: #3e445e;border-top: 1px solid #4f587a;border-bottom: 1px solid #4f587a;color: #fff;font-size: 12px;}
+.e-transfer .game-item .game-detail .g-money{font-size: 15px;color: #fff;margin-top: 8px;}
+.e-transfer .game-item .game-detail .icon-refresh{background: url(../default/images/icon-refresh.png) 0 0 /24px no-repeat;display: inline-block;width: 24px;height: 24px;    vertical-align: middle;}
+.e-transfer .game-description p{color: #adaeb5;font-size: 12px;line-height: 18px;}
+.e-transfer .unlogin-status a{font-size: 12px;color: #999ba4;}
+/* game-page */
+.game-page .game-type{height: 76px;background: #3e445e;border-bottom: 1px solid #4d5677;padding: 13px 10px 0;    line-height: 38px;}
+.game-page  .btn-back-index{margin: 12px 0 0 0;width: 82px;height: 26px;line-height: 26px;font-size: 12px;padding: 0;background: transparent;color: #fff;border-color: #4d5677;}
+.game-page .game-select select{height: 40px;padding: 8px;text-align: center;line-height: 16px;margin: 0;background: #3e445e;font-size: 12px;color: #fbfbfc;border-radius: 4px;border: 1px solid #4d5677 !important;}
+.game-page  .search-wrap{margin: 10px 10px 0 10px;border-radius: 4px;border: 1px solid #4d5677;padding: 10px 40px 10px 10px;height: 40px;position: relative;background: #3e445e;color: #fff;}
+.game-page  .search-wrap  ::-webkit-input-placeholder { color: #fff; }
+.game-page-detail  .electronic-list{margin-top: 10px;background: #32374f;padding-top: 0;}
+.search-collapse .mui-collapse .toggle-btn{position: absolute;right: 150px;top: -38px;color: #fff;width: auto;}
+.index .game-name .name{font-size: 14px;color: #fff;}
+.game-page .game-select:before{content: '\e581';pointer-events: none;font-family: Muiicons;font-weight: normal;font-style: normal;line-height: 1;display: inline-block;text-decoration: none;-webkit-font-smoothing: antialiased;position: absolute;right: 25px;top: 20px;font-size: 20px;color: #fff;}
+.game-page  .search-wrap .mui-icon-search{    font-size: 20px; color: #fff; right: 10px; position: absolute; width: 24px; height: 24px; text-align: center; line-height: 24px; top: 8px;}
+.game-page  .search-wrap input{padding: 0;margin: 0;vertical-align: top;width: 100%;height: 20px;line-height: 20px;background: transparent;border: 0;color: #fff;font-size: 12px;}
+.game-page  .search-wrap input::-webkit-input-placeholder{color: #fff;}
+.v-tip span {}
+.activity-content-bg{background-color: #32374f !important;}
+/*h5优惠页面*/
+.activity-content-bg.mui-content .gb-imgs h4{background-color:#1766bb;color:#fff;padding:5px 0;border-radius:10px;display: inline-block;}
+.activity-content-bg.mui-content .gb-imgs .table{width:100%;}
+.activity-content-bg.mui-content .gb-imgs .table th{color:#00b5fe}
+.activity-content-bg.mui-content .gb-imgs .table td{color:#ffffff}
+.activity-content-bg.mui-content .gb-imgs .table th,
+.activity-content-bg.mui-content .gb-imgs .table td{border:1px solid #00b5fe;text-align:center;padding:6px 10px;font-size:13px}
+.activity-content-bg.mui-content .gb-imgs ol{padding-left: 20px}
+.activity-content-bg.mui-content .gb-imgs ol li{list-style: decimal; color:#8f8f94;}
+/* 首页api图标雪碧图 */
+.hb-block .index-block-content .api-icon{background-image: url(../../images/api/round/api-sprite-v3-white.png);background-repeat: no-repeat;background-size: 100%;}
+.mui-bar-tab .mui-tab-item{color: #fff;}
+.mui-bar-tab .mui-tab-item .mui-icon.icon1 {
+    background-image: url(./images/foot1.png);
+}
+.mui-bar-tab .mui-tab-item .mui-icon.icon2 {
+    background-image: url(./images/foot2.png);
+}
+.mui-bar-tab .mui-tab-item .mui-icon.icon3 {
+    background-image: url(./images/foot3.png);
+}
+.mui-bar-tab .mui-tab-item .mui-icon.icon4 {
+    background-image: url(./images/foot4.png);
+}
+.mui-bar-tab .mui-tab-item .mui-icon.icon5 {
+    background-image: url(./images/foot5.png);
+}

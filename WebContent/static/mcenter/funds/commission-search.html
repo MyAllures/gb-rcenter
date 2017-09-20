@@ -1,0 +1,202 @@
+
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>资金管理</span>
+        <span>/</span><span>佣金结算</span>
+        <a href="javascript:void(0)" nav-target="mainFrame" class="m-l-sm btn btn-outline btn-default btn-xs co-gray6 return-btn"><em class="fa fa-caret-left"></em>返回</a>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow clearfix">
+            <div class="form-group clearfix m-t-lg">
+                <label class="ft-bold col-sm-3 al-right line-hi34">交易时间：</label>
+                <div class="col-sm-5">
+                    <div class="input-group date">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input type="text" class="form-control" value="2013-10-11 16:00:00 至 2014-01-16 16:00:00">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="ft-bold col-sm-3 al-right line-hi34">代理账号：</label>
+                <div class="col-sm-5">
+                    <div class="input-group date">
+                        <span class="input-group-addon bdn">
+                            <span class="p-r-sm">
+                                <select class="chosen-select-no-single">
+                                    <option value="">玩家账号</option>
+                                    <option value="">代理商</option>
+                                </select>
+                            </span>
+                        </span>
+                        <input type="text" class="form-control" placeholder="不填写表示查询所有代理商">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="ft-bold col-sm-3 al-right line-hi34">订单号：</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="ft-bold col-sm-3 al-right line-hi34">佣金状态：</label>
+                <div class="col-sm-5">
+                    <select class="chosen-select-no-single">
+                        <option value="">所有账号</option>
+                        <option value="">已结算</option>
+                        <option value="">未结算</option>
+                        <option value="">已拒绝</option>
+                    </select>
+                </div>
+            </div>
+            <div class="operate-btn">
+                <button class="btn btn-filter btn-lg">查询</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 m-t">
+        <div class="wrapper white-bg shadow clearfix">
+            <div class="table-responsive m-t-md">
+                <table class="table table-striped table-hover dataTable m-b-none" aria-describedby="editable_info">
+                    <thead>
+                        <tr role="row" class="bg-gray">
+                            <th><input type="checkbox" class="i-checks"></th>
+                            <th>代理账号</th>
+                            <th>有效玩家</th>
+                            <th>有效交易量</th>
+                            <th>盈亏</th>
+                            <th>存款</th>
+                            <th>提现</th>
+                            <th>优惠</th>
+                            <th>扣除费用</th>
+                            <th>获得佣金</th>
+                            <th>佣金状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" class="i-checks"></td>
+                            <td>homagg</td>
+                            <td>10</td>
+                            <td>190.00</td>
+                            <td>2342.34</td>
+                            <td>56532.66</td>
+                            <td>156.00</td>
+                            <td>52.66</td>
+                            <td>412</td>
+                            <td>412</td>
+                            <td><span class="label label-success">已结算</span></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="i-checks"></td>
+                            <td>homagg</td>
+                            <td>10</td>
+                            <td>190.00</td>
+                            <td>2342.34</td>
+                            <td>56532.66</td>
+                            <td>156.00</td>
+                            <td>52.66</td>
+                            <td>412</td>
+                            <td>412</td>
+                            <td><span class="label label-warning">未结算</span></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="i-checks"></td>
+                            <td>homagg</td>
+                            <td>10</td>
+                            <td>190.00</td>
+                            <td>2342.34</td>
+                            <td>56532.66</td>
+                            <td>156.00</td>
+                            <td>52.66</td>
+                            <td>412</td>
+                            <td>412</td>
+                            <td><span class="label label-danger">已拒绝</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row bdtop3 p-b-sm">
+                <div class="col-sm-3 col-xs-6">
+                    <div class="pull-left">
+                        <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="9">
+                            <option value=""></option>
+                            <option>每页20条</option>
+                            <option>每页30条</option>
+                            <option>每页40条</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-9 col-xs-6">
+                    <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                        <div class="pull-right pages show-hide-1095 page-skip">
+                            <form class="form-inline">
+                                <label class="m-l-sm">共10页</label>
+                                <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm" />页</label>
+                                <button class="btn btn-sm m-l-sm">跳转</button>
+                            </form>
+                        </div>
+                        <ul class="pagination pull-right">
+                            <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                            <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                            <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                            <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                            <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                            <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                            <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                            <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="operate-btn">
+                <button class="btn btn-filter btn-lg m-r" data-toggle="modal" data-target="#confirm">确认结算</button>
+                <button class="btn btn-filter btn-lg">拒绝结算</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>
+<script src="../../../common/js/flot/jquery.flot.tooltip.min.js"></script>
+<script>
+    $('.help-popover').popover()
+</script>
+<script>
+   
+    $("#file-0").fileinput({
+        'allowedFileExtensions' : ['jpg', 'png','gif'],
+    });
+</script>
+<!--确认佣金结算-->
+<div class="modal inmodal" id="confirm" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content animated bounceInRight unstyled family">
+        <div class="modal-header">
+            <span class="filter">确认佣金结算</span>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="clearfix from-group line-hi34">
+                <label class="col-xs-3 al-right">佣金结算时间：</label>
+                <div class="col-xs-8 p-x">2015-08-01 ~ 2015-08-01</div>
+            </div>
+            <div class="clearfix from-group line-hi34">
+                <label class="col-xs-3 al-right">佣金代理：</label>
+                <div class="col-xs-8 p-x">总75人&nbsp;&nbsp;结算73人</div>
+            </div>
+            <div class="clearfix from-group line-hi34">
+                <label class="col-xs-3 al-right">佣金总金额CNY：</label>
+                <div class="col-xs-8 p-x fs36">122.00</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-filter">确认</button>
+            <button type="button" class="btn btn-primary-hide">取消</button>
+        </div>
+    </div>
+</div>
+</div>

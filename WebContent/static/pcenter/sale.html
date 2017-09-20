@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+    <link rel="stylesheet" href="../../common/themes/default/bootstrap-dialog/bootstrap-dialog.css">
+    <link rel="stylesheet" href="../../common/themes/default/chosen/chosen.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+    <link rel="stylesheet" href="../../common/themes/default/font-awesome/font-awesome.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/bootstrap.css">
+
+  <!-- 提示弹出框 --> 
+<script type="text/javascript">
+var environment = {
+	userVo : '',
+	role : '',
+	userId : '',
+	basePath : '',
+	userCash : '',
+	globalPath : '/',
+	userActiveTime : '',
+	yoolibaoWhiteListStatus : '',
+	yoolibaoOpenStatus : '',
+	cerrencyOpenTime : "2015/9/10"//new Date()
+};
+</script>
+ <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+<script src="../../common/js/pcenterJS/global-1.1.0.min.js" type="text/javascript"></script>  
+<!-- Chosen 选择下拉控件-->
+<script src="../../common/js/jquery/plugins/jquery.chosen/jquery.chosen.js"></script>
+<!--项部下拉弹出 --> 
+<script type="text/javascript" src="../../common/js/pcenterJS/head.js"></script>
+<script src="../../common/js/bootstrap/bootstrap.min.js"></script>
+<script src="../../common/js/bootstrap-dialog/bootstrap-dialog.min.js"></script>
+  <title>玩家中心首页</title>
+</head>
+<body>
+<!-- //* Top -->
+
+<div class="top-wrap">
+        <div class="top">
+               <!--顶部右边-->
+                   <div class="top-right">
+               <div class="member">
+            您好，<div id="site-nav">  
+			<ul>  
+               <li>
+				  <div class="menu">
+					  <a class="menu-hd" href="#"> <span class="orange">PCKmenr</span><b></b></a> 
+					  <div class="menu-bd box">
+                         <div class="global-account-head"><a href="#" class="global-account-img">
+                          <img src="images/face.png" width="39" height="39"  alt="我的头像" /> </a>
+    <p class="global-account-name" title="name">下午好，陈先生</p><a href="account.html">账户设置</a><span class="global-top-seperator">|</span><a href="gamerecord.html">交易记录</a>
+  </div>
+  
+  <div class="global-account-money">
+   钱包余额：<span class="show"><a href="#" >显示余额</a></span>
+   <p class="dottline space"></p>
+    <div class="total"> <a href="asset-transfer.html">转帐</a> <span class="global-top-seperator">|</span>
+      <a href="asset-deposit.html">存款</a><span class="global-top-seperator">|</span>
+      <a href="asset-withdraw.html">取款</a>
+    </div>
+     </div>
+      </div>
+    </div>
+			  </li>
+               </ul>
+               </div>
+       [退出] <label class="line-after"><span class="new"><i class="new-ico select"></i><a href="#">新消息</a></span></label>
+               </div>  
+            </div>
+             <!--顶部左边-->
+            <div class="top-left">
+                <div class="select-lang">
+                  <p><span class="flag cn"></span>简体中文</p>
+                    <ul>
+                        <li><a href="#" rel="cn"><span class="flag cn"></span>简体中文</a> 
+                        </li>
+                        <li><a href="#" rel="hk"><span class="flag hk"></span>繁体中文</a> 
+                        </li>
+                        <li><a href="#" rel="en"><span class="flag en"></span>English</a> 
+                        </li>
+                        <li><a href="#" rel="th"><span class="flag th"></span>ไทย</a> 
+                        </li>
+                        <li><a href="#" rel="vn"><span class="flag vn"></span>Tiếng Việt</a> 
+                        </li>
+                        <li><a href="#" rel="kr"><span class="flag kr"></span>한국어</a> 
+                        </li>
+                        <li><a href="#" rel="jp"><span class="flag jp"></span>日本語</a> 
+                        </li>
+                        <li><a href="#" rel="id"><span class="flag id"></span>Indonesia</a> 
+                        </li>
+                        <li><a href="#" rel="kh"><span class="flag kh"></span>Khmer</a> 
+                        </li>
+                    </ul>
+              </div>
+             <label class="time line-after">GMT +8 2015-03-24  15:02:57</label>
+            </div>
+      
+        </div>
+    </div>
+    
+ <!--banner-->
+<div class="banner"><div class="logo"></div><div class="right"></div>
+</div>   
+    <div class="wrapper">
+  <!--left-->  
+  <div class="sidebar">
+  <div class="sidebar-item">
+  <h2>下午好，<span class="orange name">PCKmenr</span></h2>
+  <div class="safe">
+  <ul>
+  <li><a href="javascript:;" class="ToolTips ToolTipCol" data-text="您已完成实名认证&lt;br&gt;&lt;a href='#'&gt;查看&lt;/a&gt;"><span class="safeico realname-select"></span></a>
+   </li>
+  <li><a href="javascript:;" class="ToolTips ToolTipCol" data-text="您已完成银行卡绑定&lt;br&gt;&lt;a href='#'&gt;修改&lt;/a&gt;"><span class="safeico bank-select"></span></a></li>
+  <li><a href="javascript:;" class="ToolTips ToolTipCol" data-text="您尚未完成邮箱绑定&lt;br&gt;&lt;a href='#'&gt;立即绑定&lt;/a&gt;"><span class="safeico email"></span></a></li>
+  <li><a href="javascript:;" class="ToolTips ToolTipCol" data-text="您尚未完成手机绑定&lt;br&gt;&lt;a href='#'&gt;立即绑定&lt;/a&gt;"><span class="safeico phone"></span></a></li>
+</ul>
+</div>
+<div class="auth-total">
+<div class="auth-rate">
+        <div class="progress" style="width:50%"></div>
+    </div>
+<div class="auth-level">安全等级：<span class="green">中</span><a href="#" target="_blank">&nbsp;[提升]</a></div>
+</div>
+</div>
+  <!--左边菜单栏-->  
+<div class="sidebar-nav">
+<dl><dt><a href="index.html"><i class="navico home"></i>玩家首页</a></dt></dl>
+<dl><dt><a href="asset-transfer.html"><i class="navico capital"></i>资金管理</a></dt></dl>
+<dl><dt><a href="gamerecord.html"><i class="navico gamerecord"></i>交易记录</a></dt>
+</dl>
+<dl><dt  class="select"><a href="sale.html"><i class="navico sale-select"></i>优惠活动</a></dt></dl>
+<dl><dt><a href="infonotice.html"><i class="navico info"></i>消息公告</a><i class="ci-count"><a href="#">2</a></i></dt></dl>
+<dl><dt><a href="account.html"><i class="navico accout"></i>帐号管理</a></dt></dl>
+<dl><dt><a href="recommended.html"><i class="navico recommend"></i>推荐好友</a></dt></dl>
+</div>
+</div>
+
+  <!--right-->  
+<div class="main-wrap">
+<div class="notice"><div class="notice-left"><em class="path"></em></div>
+<div class="path-right"><a href="index.html">玩家首页</a><span class="arrow">></span>优惠活动</div>
+</div>
+<!--优惠活动-->
+<div class="allactice">
+     <span class="pull-right al-left">
+     <select name="select" class="chosen-select-no-single">
+      <option>全部分类</option>
+      <option>角色扮演</option>
+      <option>角色扮演</option>
+      <option>休闲电子</option>
+      <option>棋牌彩票</option>
+    </select></span></div>
+ <div class="saletotal">
+ <ul>
+ 
+ <li>
+ <i class="horn"></i>
+ <h2><i class="item-title-ico goryorange">分类1</i><span class="name"><a href="salemore.html">国庆大礼 老板任性 全网返水提高1%</a></span>
+ <span class="datetime"><span class="line">|</span><i class="clock"></i>活动时间：2015.8.12-2015.9.20（北京时间）</span></h2>
+<div class="content">
+<div class="content-left">
+<span class="item-img"><a href="salemore.html"><img src="images/sale.jpg"/></a></span>
+</div>
+<div class="content-cen">适逢国庆，老板说了，为了全民同乐，全站玩家返水统一提高1%。估计以后是不会有这样的机会了，老板娘不许！小伙伴约起来，go go go~</div>
+<div class="content-right">
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">申请领取</button>
+<a id="notice-content" data-toggle="button" class="btn btn-gray middle-big" type="button" href="salemore.html">活动详情</a>
+</div>
+</div>
+ </li>
+ 
+ <li>
+ <i class="horn"></i>
+ <h2><i class="item-title-ico goryred">分类2</i><span class="name"><a href="salemore.html">老虎机超级救援金</a></span>
+ <span class="datetime"><span class="line">|</span><i class="clock"></i>活动时间：2015.8.12-2015.9.20（北京时间）（每周仅限申领一次）</span></h2>
+<div class="content">
+<div class="content-left">
+<span class="item-img"><a href="salemore.html"><img src="images/sale.jpg"/></a></span>
+</div>
+<div class="content-cen">最低50元存款，获取68%奖金，1分钟即可开始游戏，试试手气就这么简单。一定要吉祥哦！</div>
+<div class="content-right">
+<button data-toggle="button" class="btn btn-blue-bor middle-big" type="button">已申请</button>
+<a id="notice-content-3" data-toggle="button" class="btn btn-gray middle-big" type="button" href="salemore-notstart.html">活动详情</a>
+</div>
+</div>
+ </li>
+ 
+ <li>
+ <i class="horn"></i>
+ <h2><i class="item-title-ico gorylightblue">分类3</i><span class="name"><a href="#">注册后首次存款赠送彩金</a></span>
+ <span class="datetime"><span class="line">|</span><i class="clock"></i>活动时间：2015.8.12-2015.9.20（北京时间）</span></h2>
+<div class="content">
+<div class="content-left">
+<span class="item-img"><a href="salemore.html"><img src="images/sale.jpg"/></a></span>
+</div>
+<div class="content-cen">存满200以上，赠送彩金50；<br>
+存满500以上，赠送彩金150……</div>
+<div class="content-right">
+<button data-toggle="button" class="btn btn-green middle-big" type="button">参与</button>
+<a  id="notice-content-2" data-toggle="button" class="btn btn-gray middle-big" type="button" href="salemore-end.html">活动详情</a>
+</div>
+</div>
+ </li>
+ 
+ <li>
+ <i class="horn"></i>
+ <h2><i class="item-title-ico gorygreen">分类4</i><span class="name"><a href="salemore.html">注册成功即可获得赠送彩金</a></span>
+ <span class="datetime"><span class="line">|</span><i class="clock"></i>活动时间：2015.8.12-2015.9.20（北京时间）（注册后仅1天内申请有效）</span></h2>
+<div class="content">
+<div class="content-left">
+<span class="item-img"><a href="salemore.html"><img src="images/sale.jpg"/></a></span>
+</div>
+<div class="content-cen">注册成功后，即可获得100彩金</div>
+<div class="content-right">
+<button data-toggle="button" class="btn middle-big  btn-green-bor" type="button">参与中</button>
+<a data-toggle="button" class="btn btn-gray middle-big" type="button" href="salemore.html">活动详情</a>
+</div>
+</div>
+ </li>
+ 
+
+ 
+ <li>
+ <i class="horn"></i>
+ <h2><i class="item-title-ico ">分类5</i><span class="name"><a href="salemore.html">注册成功即可获得赠送彩金</a></span>
+ <span class="datetime"><span class="line">|</span><i class="clock"></i>活动时间：2015.8.12-2015.9.20（北京时间）（每周限申领一次，仅7天内有效）</span></h2>
+<div class="content">
+<div class="content-left">
+<span class="item-img"><a href="salemore.html"><img src="images/sale.jpg"/></a></span>
+</div>
+<div class="content-cen">注册成功后，即可获得100彩金</div>
+<div class="content-right">
+<button data-toggle="button" class="btn btn-drakgray-bor middle-big" type="button">名额已满</button>
+<a data-toggle="button" class="btn btn-gray middle-big" type="button" href="salemore.html">活动详情</a>
+</div>
+</div>
+ </li>
+ 
+ 
+ 
+ <li>
+ <i class="horn"></i>
+ <h2><i class="item-title-ico gorylightgray">分类6</i><span class="name"><a href="salemore.html">注册成功即可获得赠送彩金</a></span>
+ <span class="datetime"><span class="line">|</span><i class="clock"></i>活动时间：2015.8.12-2015.9.20（北京时间）（每日均可申领一次，仅当日有效）</span></h2>
+<div class="content">
+<div class="content-left">
+<span class="item-img"><a href="salemore.html"><img src="images/sale.jpg" width="176" height="65"/></a></span>
+</div>
+<div class="content-cen">注册成功后，即可获得100彩金</div>
+<div class="content-right">
+<button data-toggle="button" class="btn btn-blue middle-big" type="button">存款时申请</button>
+<a data-toggle="button" class="btn btn-gray middle-big" type="button" href="salemore.html">活动详情</a>
+</div>
+</div>
+ </li>
+ <li>
+ <i class="horn"></i>
+ <h2><i class="item-title-ico gorylightgreen">分类7</i><span class="name"><a href="salemore.html">注册成功即可获得赠送彩金</a></span>
+ <span class="datetime"><span class="line">|</span><i class="clock"></i>活动时间：2015.8.12-2015.9.20（北京时间）</span></h2>
+<div class="content">
+<div class="content-left">
+<span class="item-img"><a href="salemore.html"><img src="images/sale.jpg"/></a></span>
+</div>
+<div class="content-cen">注册成功后，即可获得100彩金</div>
+<div class="content-right">
+<button data-toggle="button" class="btn btn-green middle-big" type="button">参与</button>
+<a data-toggle="button" class="btn btn-gray middle-big" type="button" href="salemore.html">活动详情</a>
+</div>
+</div>
+ </li>
+  
+ <li>
+ <i class="horn"></i>
+ <h2><i class="item-title-ico goryblue2">分类一</i><span class="name"><a href="salemore.html">老虎机超级救济金</a></span>
+ <span class="datetime"><span class="line">|</span><i class="clock"></i>活动时间：2015.8.12-2015.9.20（北京时间）</span></h2>
+<div class="content">
+<div class="content-left">
+<span class="item-img"><a href="salemore.html"><img src="images/sale.jpg"/></a></span>
+</div>
+<div class="content-cen">最低50元存款，获取68%奖金，1分钟即可开始游戏，试试手气就这么简单。一定要吉祥哦！</div>
+<div class="content-right">
+<a data-toggle="button" class="btn btn-gray middle-big" type="button" href="salemore.html">活动详情</a>
+</div>
+</div>
+ </li>
+ </ul>
+ </div>
+  
+ <div class="row bdtop3 ">
+    <input type="hidden" name="paging.pageNumber" value="1">
+    <input type="hidden" name="paging.prePage" value="1">
+    <input type="hidden" name="paging.nextPage" value="1">
+    <input type="hidden" name="paging.firstPageNumber" value="1">
+    <input type="hidden" name="paging.lastPageNumber" value="1">
+
+    
+        <div class="col-sm-3 col-xs-12">
+            <div aria-relevant="all" aria-live="polite" role="alert" id="editable_info" class="dataTables_info pull-left">
+                <ul class="pagination-pages">
+                    <li tabindex="0" aria-controls="editable" class="paginate_button "><span>每页显示</span></li>
+                </ul>
+            </div>
+            <div class="pull-left">
+                <select name="paging.pageSize" tabindex="-1" class="selectpicker chosen-select-no-single valid"  data-placeholder="10条" aria-invalid="false">
+                    <option selected="selected" value="10">10条</option>
+                    <option value="20">20条</option>
+                    <option value="30">30条</option>
+                    <option value="50">50条</option>
+                </select>
+                    
+            </div>
+        </div>
+    
+
+    <div class="col-sm-9 col-xs-12">
+        <div id="editable_paginate" class="dataTables_paginate paging_simple_numbers">
+
+            
+                <div class="pull-right pages form-inline">
+                        <label class="m-l-sm">共1页</label>
+                        <label class="m-l">第<input name="paging.pageNumberText" type="text" value="1" class="m-l-xs m-r-xs min form-control input-sm">页</label>
+                        <button type="button" class="btn btn-sm m-l-sm">跳转</button>
+                </div>
+            
+            <ul class="pagination pull-right">
+                
+                    <li aria-controls="editable" class="paginate_button previous disabled"><a name="paging.firstPageNumber" href="javascript:void(0);">首页</a></li>
+                
+                <li aria-controls="editable" class="paginate_button previous disabled"><a name="paging.prePage" href="javascript:void(0);">上一页</a></li>
+
+                
+                    
+
+                    
+                    
+                        
+                            <li class="paginate_button disabled"><a name="paging.Page" href="javascript:void(0)" data-page="0">1</a></li>
+                        
+                        
+                    
+
+                    
+                    
+
+                    
+                
+
+                <li aria-controls="editable" class="paginate_button next disabled"><a name="paging.nextPage" href="javascript:void(0);">下一页</a></li>
+                
+                    <li aria-controls="editable" class="paginate_button next disabled"><a name="paging.lastPageNumber" href="javascript:void(0);">尾页</a></li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- 右边客服服务-->
+<div id="moquu_wxin" class="moquu_wxin"><a href="javascript:void(0)">玩家游戏<div class="moquu_wxinh"></div></a></div>
+<div id="moquu_wshare" class="moquu_wshare"><a href="javascript:void(0)">玩家游戏<div class="moquu_wshareh"></div></a></div>
+<div id="moquu_wmaps"><a href="#">玩家游戏</a></div>
+
+
+<!-- //* 语言版本切换 #select-lang* -->
+   <script type="text/javascript">
+        $(function() {
+         
+            $(".select-lang p").click(function() {
+                var ul = $(".select-lang ul");
+                if (ul.css("display") == "none") {
+                    ul.slideDown("fast");
+                } else {
+                    ul.slideUp("fast");
+                }
+            });
+
+            $(".select-lang ul li a").click(function() {
+                var txt = $(this).text();
+                var value = $(this).attr("rel");
+                $(".select-lang p").html("<span class='flag " + value + "'></span>" + txt);
+                $(".select-lang ul").hide();
+            });
+         
+        });
+      
+    </script>
+   
+   <script>
+     //chosen 下拉选择框
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': {allow_single_deselect: true},
+            '.chosen-select-no-single': {disable_search_threshold: 10},
+            '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+            '.chosen-select-width': {width: "95%"}
+        };
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+        $("#notice-content").click(function() {
+            BootstrapDialog.show({
+                type: 'info',
+                title: '优惠',
+                size:BootstrapDialog.SIZE_WIDE,
+                message: $('<div></div>').load('salemore.html'),
+            });
+        });
+        $("#notice-content-2").click(function() {
+            BootstrapDialog.show({
+                type: 'info',
+                title: '优惠',
+                size:BootstrapDialog.SIZE_WIDE,
+                message: $('<div></div>').load('salemore-end.html'),
+            });
+        });
+        $("#notice-content-3").click(function() {
+            BootstrapDialog.show({
+                type: 'info',
+                title: '优惠',
+                size:BootstrapDialog.SIZE_WIDE,
+                message: $('<div></div>').load('salemore-notstart.html'),
+            });
+        });
+    </script>
+   
+ 
+</body>
+</html>

@@ -1,0 +1,449 @@
+/**
+* 财政专用支付css
+*/
+body, div, p, form, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #fafafa;
+    width: 100%;
+    height: 100%;
+}
+
+p, a {
+    font-size: 12px;
+    font-family: Arial, Helvetica;
+}
+
+ul, li {
+    list-style: none outside none;
+}
+
+table {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.warp {
+    position: relative;
+    margin: 0 auto;
+    max-width: 980px;
+    min-width: 320px;
+    width: 100%;
+}
+
+.top {
+    background-color: #f3f3f3;
+    height: 30px;
+    border-bottom: 1px solid #ccc;
+}
+
+@media screen and (max-width: 980px) {
+    .top {
+        background-color: #f3f3f3;
+        height: 60px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .header .common .logo {
+        float: left;
+        height: 75px;
+        width: 75px;
+        margin-left: 10px;
+        margin-right: 15px;
+    }
+
+    .fl {
+        float: left;
+    }
+
+    table td img {
+        width: 75%;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .top {
+        background-color: #f3f3f3;
+        height: 90px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .header .common .logo {
+        display: block;
+    }
+
+    table td img {
+        width: 60%;
+        max-width: 100%;
+    }
+}
+
+.header .common .logo {
+    float: left;
+    height: 75px;
+    width: 75px;
+    margin-left: 10px;
+    margin-right: 15px;
+}
+
+.top p {
+    margin: 0 auto;
+    width: 100%;
+    font-size: 12px;
+    line-height: 30px;
+    color: #b11313;
+    overflow: hidden;
+    text-align: center;
+}
+
+.top p a {
+    color: #b11313;
+    display: inline-block;
+    font-weight: bold;
+    height: 12px;
+    line-height: 12px;
+    width: 10px;
+    margin-top: 9px;
+    padding-left: 2px;
+    margin-left: 20px;
+}
+
+.top p a:hover {
+    border: 1px solid #b11313;
+}
+
+.header .common {
+    margin: 15px 0 10px;
+    font-size: 30px;
+    overflow: hidden;
+}
+
+.content {
+    margin-top: 25px;
+}
+
+.historypay, .otherbank {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.separator {
+    border-top: 1px dotted #CCC;
+    position: relative;
+}
+
+.separator .line {
+    background-color: #1066b0;
+    width: 80px;
+    height: 5px;
+    position: absolute;
+    top: -3px;
+}
+
+.separator .wid6 {
+    width: 105px;
+}
+
+.historypay .bank {
+    margin: 15px 0 0 0;
+    padding: 0 10px;
+}
+
+.bank input, .otherbank input {
+    vertical-align: middle;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.historypay ul li {
+    margin-bottom: 20px;
+    float: left;
+    width: 196px;
+}
+
+.otherbank table {
+    margin: 15px 10px auto;
+}
+
+.otherbank table tr {
+    height: 60px;
+}
+
+.paybtn {
+    background: url(../../images/button_orange.png) no-repeat;
+
+    height: 38px;
+    margin-left: 36px;
+    width: 144px;
+    text-align: center;
+}
+
+.paybtn a {
+    display: block;
+    color: #FFF;
+    font: bold 14px/38px "å®‹ä½“";
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.que {
+    border: 1px solid #85b1dd;
+    background-color: #f2f8fe;
+    margin: 20px auto;
+    padding: 20px;
+    font-size: 12px;
+    color: #666;
+    line-height: 22px;
+}
+
+h2 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.ordermsg {
+    margin-top: 20px;
+}
+
+.otherbank p, .ordermsg p {
+    font: bold 14px/16px "微软雅黑";
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.former {
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.ordermsg dl {
+    font-size: 14px;
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ordermsg dd, .ordermsg dt {
+    float: left;
+    margin-bottom: 10px;
+}
+
+.ordermsg dt {
+    padding-top: 2px;
+    margin-left: 10px;
+}
+
+.ordermsg dd {
+    margin-right: 10px;
+}
+
+.ordermsg input {
+    height: 18px;
+    border: 1px solid #CCC;
+}
+
+.otherbank td {
+    position: relative;
+}
+
+label span {
+    position: absolute;
+    display: block;
+    width: 144px;
+    height: 44px;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    top: 8px;
+    left: 18px;
+    background-color: #FFF \0;
+    z-index: 10 \0;
+}
+
+.pay-bank {
+    width: 125px;
+    display: inline-block;
+    height: 30px;
+    vertical-align: middle;
+    background: url(../../../common/images/pay-bank.png) left top no-repeat;
+}
+
+.fl {
+    float: left;
+}
+
+* {
+    font: 14px/22px Microsoft YaHei;
+}
+
+.pay-third {
+    width: 125px;
+    display: inline-block;
+    height: 30px;
+    vertical-align: middle;
+    background: url(../../../common/images/pay-third.png) left top no-repeat;
+}
+
+/* 01 中国工商银行 */
+.pay-bank.icbc {
+    background-position: 0 -60px;
+}
+
+/* 02 招商银行 */
+.pay-bank.cmb {
+    background-position: 0 -90px;
+}
+
+/* 03 中国建设银行 */
+    .pay-bank.ccb {
+    background-position: 0 -120px;
+}
+
+/* 04 中国农业银行 */
+.pay-bank.abc {
+    background-position: 0 -150px;
+}
+
+/* 05 中国银行 */
+.pay-bank.boc {
+    background-position: 0 -180px;
+}
+
+/* 06 中国民生银行 */
+.pay-bank.cmbc {
+    background-position: 0 -210px;
+}
+
+/* 07 中国光大银行 */
+.pay-bank.ceb {
+    background-position: 0 -240px;
+}
+
+/* 08 交通银行 */
+.pay-bank.comm {
+    background-position: 0 -270px;
+}
+
+/* 09 浦发银行 */
+.pay-bank.spdb {
+    background-position: 0 -300px;
+}
+
+/* 10 平安银行 */
+.pay-bank.spabank {
+    background-position: 0 -330px;
+}
+
+/* 11 兴业银行 */
+.pay-bank.cib {
+    background-position: 0 -360px;
+}
+
+/* 12 北京银行 */
+.pay-bank.bjbank {
+    background-position: 0 -390px;
+}
+
+/* 13 中信银行 */
+.pay-bank.citic {
+    background-position: 0 -420px;
+}
+
+/* 14 广发银行 */
+.pay-bank.gdb {
+    background-position: 0 -450px;
+}
+
+/* 15 中国邮政储蓄银行 */
+.pay-bank.psbc {
+    background-position: 0 -480px;
+}
+
+/* 16 江苏银行 */
+.pay-bank.jsbank {
+    background-position: 0 -510px;
+}
+
+/* 17 华夏银行 */
+.pay-bank.hxbank {
+    background-position: 0 -540px;
+}
+
+/* 18 上海银行 */
+.pay-bank.shbank {
+    background-position: 0 -570px;
+}
+
+/* 19 渤海银行 */
+.pay-bank.bohaib {
+    background-position: 0 -600px;
+}
+
+/* 20 东亚银行 */
+.pay-bank.hkbea {
+    background-position: 0 -630px;
+}
+
+/* 21 宁波银行 */
+.pay-bank.nbbank {
+    background-position: 0 -660px;
+}
+
+/* 22 浙商银行 */
+.pay-bank.czbank {
+    background-position: 0 -690px;
+}
+
+/* 23 杭州银行 */
+.pay-bank.hzcb {
+    background-position: 0 -720px;
+}
+
+/* 24 广州银行 */
+.pay-bank.gcb {
+    background-position: 0 -750px;
+}
+
+/* 25 福建农商银行 */
+.pay-bank.fjnx {
+    background-position: 0 -780px;
+}
+
+/* 26 恒生银行 */
+.pay-bank.hangseng {
+    background-position: 0 -810px;
+}
+
+/*支付宝*/
+.pay-third.alipay {
+    background-position: 0 -60px;
+}
+
+/*微信*/
+.pay-third.wechatpay {
+    background-position: 0 -90px;
+}
