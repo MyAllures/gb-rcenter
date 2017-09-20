@@ -12,7 +12,8 @@ define(['gb/components/Comet', 'site/index/PopUp', 'cookie'], function (Comet, P
             popUp.bindEvent();
             param.success = function () {
                 console.info(window.top.message.index_auto['连接成功']);
-                subscribes = [{subscribeType: "MCENTER-popUp-Notice", callBack: popUp.popUpCallBack},
+                subscribes = [
+                    {subscribeType: "MCENTER-popUp-Notice", callBack: popUp.popUpCallBack},
                     {subscribeType: "MCENTER-dialog-Notice", callBack: popUp.dialogCallBack},
                     {subscribeType: "MCENTER_WITHDRAW_REMINDER", callBack: popUp.TellerReminderCallBack},
                     {
@@ -36,7 +37,8 @@ define(['gb/components/Comet', 'site/index/PopUp', 'cookie'], function (Comet, P
                     //播放声音
                     {subscribeType: "MCENTER_PLAYER_AUDIO", callBack: popUp.playerAudio},
                     {subscribeType: "MCENTER_WITHDRAW_AUDIT_UPDATE_STATUS",callBack:popUp.fetchWithdrawRecord},
-                    {subscribeType: "EXPORT_DOWNLOAD_REMINDER",callBack:popUp.exportDownload}
+                    {subscribeType: "EXPORT_DOWNLOAD_REMINDER",callBack:popUp.exportDownload},
+                    {subscribeType: "MESSAGE_NOTICE",callBack:popUp.playerNoticeVoice}
                 ];
                 _this.subscribeMsgs(subscribes);
             };

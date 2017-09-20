@@ -22,11 +22,24 @@ define(['common/BaseListPage'], function (BaseListPage) {
          */
         bindEvent: function () {
             this._super();
+            $(this.formSelector).on("click", "#lotteryDiv li", function (e,opt) {
+                $("#lotteryDiv li").removeClass("active");
+                $(this).addClass("active");
+                var datacode = $(this).attr("data-code");
+                var code = $(this).attr("code");
+                var type = $(this).attr("type");
+                $("#searchDiv a").addClass("hide");
+                $("#searchDiv a[data-rel*='"+datacode+"']").removeClass("hide");
+                $("#searchDiv a[data-rel*='weikaijiang']").removeClass("hide");
+                $("#searchDiv a").removeClass("ssc-active");
+                $("#searchDiv a[data-rel*='"+code+"']").addClass("ssc-active");
+                $("#searchDiv a[data-rel*='"+code+"']").click();
+            });
         },
         queryByLottery:function (e, opt) {
             var code = opt.code;
             var type = opt.type;
-
+            $("#updateTime").addClass("hide");
             $("[name='betorderform']").attr("action",root+"/lotteryResult/list.html");
             $("[name='result.expect']").val("");
             $("[name='result.openTime']").val("");
@@ -92,6 +105,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     }
                     html+='</select>';
                 }
+                $("#openNumber").attr("colspan","3");
             }else  if(type=='ssc'){
                 for(var i=0;i<=4;i++){
                     html+='<select name="result.openCode"><option value="">--</option>'
@@ -100,6 +114,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     }
                     html+='</select>';
                 }
+                $("#openNumber").attr("colspan","1.5");
             }else  if(type=='k3'){
                 for(var i=0;i<=2;i++){
                     html+='<select name="result.openCode"><option value="">--</option>'
@@ -108,6 +123,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     }
                     html+='</select>';
                 }
+                $("#openNumber").attr("colspan","1");
             }else  if(type=='lhc'){
                 for(var i=0;i<=6;i++){
                     html+='<select name="result.openCode"><option value="">--</option>'
@@ -120,6 +136,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     }
                     html+='</select>';
                 }
+                $("#openNumber").attr("colspan","3");
             }else if(type=='pl3'||code=='xy28'){
                 for(var i=0;i<=2;i++){
                     html+='<select name="result.openCode"><option value="">--</option>'
@@ -128,6 +145,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     }
                     html+='</select>';
                 }
+                $("#openNumber").attr("colspan","1");
             }else if(type=='sfc') {
                 for(var i=0;i<=7;i++){
                     html+='<select name="result.openCode"><option value="">--</option>'
@@ -141,6 +159,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     }
                     html+='</select>';
                 }
+                $("#openNumber").attr("colspan","3");
             }else if(type=='keno'){
                 for(var i=0;i<=19;i++){
                     html+='<select name="result.openCode"><option value="">--</option>'
@@ -154,6 +173,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     }
                     html+='</select>';
                 }
+                $("#openNumber").attr("colspan","7");
             }
             return html;
         },
@@ -179,9 +199,18 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $("#query-time-div").addClass("hide");
             $("#not-open-result-div").removeClass("hide");
             $(".ssc-label").removeClass("ssc-active");
+            var sela = $("#searchDiv a:visible:not(:last)");
+            var codelist = new  Array();
+            sela.each(function () {
+               var datarel = $(this).attr("data-rel");
+                var json  = eval("("+datarel+")");
+                codelist.push(json.code);
+            });
+            var jsonstr = JSON.stringify(codelist).replace(/"/g,'').replace('[','').replace(']','');
             window.top.topPage.ajax({
                 type:"post",
                 url:root+'/lotteryResult/queryAllLotteryResultNotOpen.html',
+                data:{'search.codes':jsonstr},
                 success:function(data){
                     $("[name='betorderform']").attr("action",root+"/lotteryResult/queryAllLotteryResultNotOpen.html");
                     $(".search-list-container").html(data);
@@ -207,6 +236,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 url:root+'/lotteryResult/queryLotteryResult.html',
                 success:function(data){
                     if(data.state&&data.result){
+                        $("#updateTime").removeClass("hide");
                         $("[name='result.type']").val(data.result.type);
                         $("[name='result.code']").val(data.result.code);
                         $("[name='result.expect']").attr("readonly","readonly");

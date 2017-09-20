@@ -14,19 +14,29 @@ define(['common/BaseListPage'], function (BaseListPage) {
             this._super();
             
 
-            $(".sys_tab_wrap a").click(function (e) {
-                var code = $(this).attr("code");
-                $(this).attr('class', 'label ssc-label ssc-active');
-                $(this).siblings().attr('class', 'label ssc-label');
-                $("#editable_wrapper").load(root+'/lottery/quotas/'+code+'/Index.html');
-            });
-            if(!$(".sys_tab_wrap a").hasClass('ssc-active')){
-                $(".sys_tab_wrap a").eq(0).trigger("click");
+
+            if(!$("#searchDiv a").hasClass('ssc-active')){
+                $("#searchDiv a").eq(0).trigger("click");
             }
         },
 
         bindEvent: function () {
             this._super();
+            $(this.formSelector).on("click", "#searchDiv a", function (e) {
+                var code = $(this).attr("code");
+                $(this).attr('class', 'label ssc-label ssc-active');
+                $(this).siblings().attr('class', 'label ssc-label');
+                $("#editable_wrapper").load(root+'/lottery/quotas/'+code+'/Index.html');
+            });
+            $(this.formSelector).on("click", "#lotteryDiv li", function (e) {
+                $("#lotteryDiv li").removeClass("active");
+                $(this).addClass("active");
+                var datacode = $(this).attr("data-code");
+                var code = $(this).attr("code");
+                $("#searchDiv a").attr("style", "display:none");
+                $("#searchDiv a[data-code='"+datacode+"']").attr("style", "display:");
+                $("#searchDiv a[code='"+code+"']").click();
+            });
         },
 
 

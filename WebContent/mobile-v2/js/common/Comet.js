@@ -47,7 +47,6 @@ var comet = (function (document, undefined) {
             var subscribeType = message.subscribeType;
             Zepto.each(subscribes, function (i, val) {
                 if (val.type == subscribeType) {
-                    console.info("收到订阅类型为" + subscribeType + "的消息，调用回调函数" + val.callBack + ",入参为：" + data);
                     val.callBack.call(val, data);
                     return false;
                 }

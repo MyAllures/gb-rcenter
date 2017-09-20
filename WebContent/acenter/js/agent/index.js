@@ -1,29 +1,32 @@
+/**
+ * Created by fly on 15-10-26.
+ */
 define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage) {
-
     return BaseListPage.extend({
         /**
          * 初始化及构造函数，在子类中采用
          * this._super();
          * 调用
          */
-        init : function() {
+        init: function () {
             this._super();
         },
         onPageLoad: function () {
             this._super();
-            this.initBootstrapSwitch();
+            var _this = this;
+            $('[data-toggle="popover"]', _this.formSelector).popover({
+                trigger: 'hover',
+                placement: 'top'
+            });
+            _this.initBootstrapSwitch();
         },
 
         /**
          * 当前对象事件初始化函数
          */
-        bindEvent : function() {
+        bindEvent: function () {
             this._super();
-            $("#searchtext").keydown(function (event) {
-                if(event.keyCode==13){
-                    $(".btn-query-css").click();
-                }
-            });
+            var _this = this;
         },
         /**
          * 初始化 BootstrapSwitch
@@ -81,7 +84,6 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage) {
                     }
                 }
             });
-        },
-    });
-
-});
+        }
+    })
+})

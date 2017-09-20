@@ -318,7 +318,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                 if (this.getAttribute("name") == "delete") {
                     var ids = t.getSelectIdsArray("site1_check").join(",");
                     if (ids == '') {
-                        t.toast(window.top.message.my_auto["请选择需要删除的记录！"]);
+                        t.toast(window.top.message.my_auto["请选择需要删除的记录"]);
                     } else {
                         mui.ajax({
                             type: "post",
@@ -339,7 +339,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                 } else if (this.getAttribute("name") == "editStatus") {
                     var ids = t.getSelectIdsArray("site1_check").join(",");
                     if (ids == '') {
-                        t.toast(window.top.message.my_auto["请选择消息记录！"]);
+                        t.toast(window.top.message.my_auto["请选择消息记录"]);
                     } else {
                         mui.ajax({
                             type: "post",
@@ -365,7 +365,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                 if (this.getAttribute("name") == "delete") {
                     var ids = t.getSelectIdsArray("site2_check").join(",");
                     if (ids == '') {
-                        t.toast(window.top.message.my_auto["请选择需要删除的记录！"]);
+                        t.toast(window.top.message.my_auto["请选择需要删除的记录"]);
                     } else {
                         mui.ajax({
                             type: "post",

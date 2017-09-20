@@ -7,6 +7,7 @@ define(['common/BaseEditPage','mailAutoComplete'], function (BaseEditPage) {
         init: function () {
             this._super("form");
             $(".inputMailList").mailAutoComplete();
+            this.querySearchCondition();
         },
         onPageLoad: function () {
             this._super();
@@ -134,6 +135,18 @@ define(['common/BaseEditPage','mailAutoComplete'], function (BaseEditPage) {
                 }
             });
         },
+
+        queryView: function (e) {
+            var _this = this;
+            var load = this.getCurrentForm(e).parentNode;
+            window.top.topPage.ajax({
+                data: {"search.id": $("#userId").val()},
+                url: root+"/player/getVUserPlayer.html",
+                success: function (data) {
+                    $(load).html(data);
+                }
+            });
+        },
         showSelectTag: function (e, btnOption) {
             if (e.returnValue) {
                 var labels = e.returnValue
@@ -227,10 +240,16 @@ define(['common/BaseEditPage','mailAutoComplete'], function (BaseEditPage) {
                     url: root+"/playerRank/copyParameter.html.html?search.id="+id,
                     dataType: "json",
                     success: function (data) {
-                        if(data&&data.result&&data.result.riskMarker){
-                            var obj = {};
-                            obj.currentTarget = $("[selectdiv='result.rankId']");
-                            page.showPopover(obj,{"placement":"right"},"warning",window.top.message.player_auto['危险层级'],true);
+                        if(data&&data.result){
+                            if(data.result.riskMarker){
+                                var obj = {};
+                                obj.currentTarget = $("[selectdiv='result.rankId']");
+                                page.showPopover(obj,{"placement":"right"},"warning",window.top.message.player_auto['危险层级'],true);
+                            }
+                            if(data.rakebackSet){
+                                $("#rakebackName-div").html(data.rakebackSet.name);
+                            }
+
                         }
                     }
                 });
@@ -285,6 +304,136 @@ define(['common/BaseEditPage','mailAutoComplete'], function (BaseEditPage) {
                     e.page.showPopover(e, option, 'danger', window.top.message.common['save.failed'], true);
                 }
             })
-        }
+        },
+
+
+
+
+
+
+        queryPlayerAgent:function (e, opt) {
+            var _this = this;
+            var playerId = $("[name='result.id']").val();
+            if (!playerId || playerId == null || playerId == "" || playerId == undefined) {
+                return;
+            }
+            window.top.topPage.ajax({
+                url: root + "/player/queryUserPlayerById.html?search.id=" + playerId,
+                dataType: "JSON",
+                success: function (data) {
+                    if(data){
+                        _this.setSelectedValue("search.agentRanks",data.agentRank);
+                        _this.setSelectedValue("result.agentId",data.agentId);
+                    }
+                }
+            });
+        },
+        setSelectedValue:function (name,value) {
+            $("div[selectdiv='"+name+"']").attr("value",value);
+            $("[name='"+name+"']").val(value);
+            var displayName = "";
+            var selectItem;
+            $("div[selectdiv='"+name+"']").find("a[role='menuitem']").each(function (idx, sel) {
+                var key = $(sel).attr("key");
+                if(key==value){
+                    selectItem = sel;
+                    displayName = $(sel).html();
+                }
+            });
+            $("div[selectdiv='"+name+"']").find("span[prompt='prompt']").html(displayName);
+            $(selectItem).click();
+        },
+
+
+        /**
+         * 切换代理线 by kobe
+         * @param e
+         */
+        editAgentLine: function (e, opt) {
+            $("#agent-rank-detail").addClass("hide");
+            $("#agent-rank-edit").removeClass("hide");
+            this.queryPlayerAgent(e);
+            $(e.currentTarget).unlock();
+        },
+
+        cancelEditAgentLine: function (e, opt) {
+            $("#agent-rank-detail").removeClass("hide");
+            $("#agent-rank-edit").addClass("hide");
+            $(e.currentTarget).unlock();
+        },
+
+        changeAgentLine: function (e, opt) {
+            var oldRankId = $("#current-agentRank").val();
+            var newId = e.key;
+            if (newId != "" && newId != oldRankId) {
+                $(".btn-save-agent").removeClass("hide");
+            } else {
+                $(".btn-save-agent").addClass("hide");
+            }
+        },
+
+        updateAgentLine: function (e, opt) {
+            var _this = this;
+            var agentId = $("[name='result.agentId']").val();
+            var oldagentId = $("[name='current-agentRank']").val();
+            var username = $(".player-name").text();
+            if (agentId == null || agentId == "") {
+                var obj = {};
+                obj.currentTarget = $("[selectdiv='result.agentId']");
+                page.showPopover(obj, {}, "warning", window.top.message.player_auto['代理不能为空'], true);
+                $(e.currentTarget).unlock();
+                return;
+            }
+
+            window.top.topPage.ajax({
+                data: {"result.userAgentId": agentId, "oldagentId": oldagentId, "result.id": $("#userId").val(), "username": username},
+                url: root + "/player/updateAgentLine.html",
+                type: "POST",
+                dataType: "JSON",
+                success: function (data) {
+                    if (data.state) {
+                        page.showPopover(e, {}, "success", window.top.message.player_auto['操作成功'], true);
+                        setTimeout(function () {
+                            _this.queryView(e);
+                        }, 1500);
+
+                    } else {
+                        page.showPopover(e, {}, "danger", window.top.message.player_auto['操作失败'], true);
+                    }
+                }
+            });
+        },
+
+        /**
+         * 展示几级代理
+         * @param e
+         */
+        querySearchCondition:function () {
+
+            var _this = this;
+            var rankHtml = '<li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" key="{0}">{1}</a></li>';
+            window.top.topPage.ajax({
+                url: root + "/rebateAgent/queryCondtion.html?t=" + new Date().getTime(),
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    if(data.ranks){
+                        $("div[selectdiv='search.agentRanks']").find("ul[role='menu']").html("");
+                        for(var i=0;i<data.ranks.length;i++){
+                            var rankMap = data.ranks[i];
+                            var key = rankMap.key;
+                            var val = rankMap.value;
+                            var formatHtml = _this.formatStr(rankHtml,key,val);
+                            $("div[selectdiv='search.agentRanks']").find("ul[role='menu']").append(formatHtml);
+                        }
+                    }
+                },
+                error: function (data) {
+
+                }
+            })
+        },
+
+
     });
 });

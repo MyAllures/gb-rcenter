@@ -9,13 +9,26 @@ define(['common/BaseListPage'], function (BaseListPage) {
          * 调用
          */
         init: function () {
-            this._super();
+            this.formSelector = "form[name=betorderform]";
+            this._super(this.formSelector);
+
         },
         /**
          * 当前对象事件初始化函数
          */
         bindEvent: function () {
             this._super();
+            $(this.formSelector).on("click", "#lotteryDiv li", function (e) {
+                $("#lotteryDiv li").removeClass("active");
+                $(this).addClass("active");
+                var datacode = $(this).attr("data-code");
+                var code = $(this).attr("code");
+                $("#searchDiv a").addClass("hide");
+                $("#searchDiv a[data-rel*='"+datacode+"']").removeClass("hide");
+                $("#searchDiv a").removeClass("ssc-active");
+                $("#searchDiv a[data-rel*='"+code+"']").addClass("ssc-active");
+                $("#lotteryCode").val(code);
+            });
         },
         onPageLoad: function () {
             this._super();

@@ -32,7 +32,6 @@ define([], function() {
                 var subscribeType = message.subscribeType;
                 $.each(comet.subscribes,function(i,val){
                     if(val.type==subscribeType){
-                        console.info("收到订阅类型为"+subscribeType+"的消息，调用回调函数"+val.callBack+",入参为："+data);
                         val.callBack.call(val,data);
                         return false;
                     }
@@ -139,6 +138,11 @@ define([], function() {
             this._subscribeMsg();
         },
         subscribeMsgs : function (subscribeArr) {
+            if (subscribeArr != undefined) {
+                subscribeArr.push(
+                    {subscribeType: "ECHO", callBack: function (data) {console.info(data)}}
+                );
+            }
             var _this = this;
             $.each(subscribeArr,function(i,val){
                 _this._genSubscribes(val);

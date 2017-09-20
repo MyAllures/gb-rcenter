@@ -8,6 +8,15 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
         init: function (formSelector) {
             this.formSelector = this.formSelector || formSelector || "#mainFrame form";
             this._super();
+            $("#lotteryDiv li").click(function (e) {
+                $("#lotteryDiv li").removeClass("active");
+                $(this).addClass("active");
+                var datacode = $(this).attr("data-code");
+                var code = $(this).attr("code");
+                $("#searchDiv a").attr("style", "display:none");
+                $("#searchDiv a[data-code='"+datacode+"']").attr("style", "display:");
+                $("#searchDiv a[code='"+code+"']").click();
+            });
         },
 
         onPageLoad: function () {
@@ -28,18 +37,20 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                 }
             };
 
-            $(".sys_tab_wrap a").click(function (e) {
+            $("#searchDiv a").click(function (e) {
                 var code = $(this).attr("code");
                 $(this).attr('class', 'label ssc-label ssc-active');
                 $(this).siblings().attr('class', 'label ssc-label');
                 $("#lot_two_menu").load(root + '/lottery/odds/' + code + '/Index.html');
             });
-            if (!$(".sys_tab_wrap a").hasClass('ssc-active')) {
-                $(".sys_tab_wrap a").eq(0).trigger("click");
+            if (!$("#searchDiv a").hasClass('ssc-active')) {
+                $("#searchDiv a").eq(0).trigger("click");
             }
 
 
             $(".wan-spinner-1").WanSpinner(options);
+
+
         },
 
         bindEvent: function () {

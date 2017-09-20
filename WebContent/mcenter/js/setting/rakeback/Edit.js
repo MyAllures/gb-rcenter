@@ -11,6 +11,14 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         },
         bindEvent: function () {
             this._super();
+            $(document).click(function (e) {
+                if($(".ratio_area").has(e.target).length==0 && !$(e.target).hasClass("batch_ratio") && $("#_contents").is(":visible")){
+                    e.preventDefault();
+                    $("#_contents").hide();
+                    $(".ratio_area").html("");
+                    return false;
+                }
+            });
         },
         onPageLoad: function () {
             this._super();
@@ -132,6 +140,46 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
 
             ($_ratio_val / 100 >= 0 && $_ratio_val <= 100 * 100) && $_ratio.val($_ratio_val / 100 );
             $(event.currentTarget).unlock();
+        },
+        batchUpdateRatio:function (e, opt) {
+            $(".ratio_area").html("");
+            this.initTimeSelector(e);
+            this._SetInputPosition(e);
+            $(e.currentTarget).unlock();
+        },
+        initTimeSelector:function (e) {
+            var _this = this;
+            var str = "<div class='hide' id=\"_contents\" style=\"padding:6px; background-color:#E3E3E3; font-size: 12px; border: 1px solid #777777;  left:?px; top:?px; width:?px; height:?px; z-index:1;\">";
+
+            str += "<input type='number' name='batch_ratio' style='width: 100px'> <input name=\"queding\" type=\"button\" onclick=\"\" value=\"确认\" style=\"font-size:12px\" /></div>";
+            $($(e.currentTarget).parent()).find(".ratio_area").html(str);
+
+            $("[name='queding']").click(function (obj) {
+                _this._select();
+            });
+
+        },
+        _select:function () {
+            var orgin = $("[name='batch_ratio']").val();
+            if(orgin!=null&&orgin!=""){
+                if(parseFloat(orgin)>100||parseFloat(orgin)<0){
+                    page.showPopover({currentTarget:$("[name='batch_ratio']")},{},"warning",window.top.message.setting_auto['返佣比例范围为0-100'],true);
+                    return;
+                }
+                $($(_fieldname).parent().parent()).find("._ratio").val(orgin);
+            }
+            $("#_contents").addClass("hide");
+            $(".ratio_area").html("");
+        },
+        _SetInputPosition:function (e) {
+            _fieldname = $(e.currentTarget);
+            var ttop = e.currentTarget.parentElement.offsetTop;    //TT控件的定位点高
+            var thei = e.currentTarget.clientHeight;    //TT控件本身的高
+            var tleft = e.currentTarget.parentElement.offsetLeft;    //TT控件的定位点宽
+            $("#_contents").css("left", tleft+21);
+            $("#_contents").css("top", thei);
+            $("#_contents").removeClass("hide");
+            //document.all._contents.style.visibility = "visible";
         }
     });
 });

@@ -240,14 +240,13 @@ define(['common/BasePage','site/index/PopUp'], function (BasePage,PopUp) {
                 async:false,
                 success: function (data) {
                     if(data){
-                        console.log(data);
                         if(data.companyDepositCount&&parseInt(data.companyDepositCount)>0){
                             var voice = data.depositVoice;
-                            console.log("play company deposit："+voice);
+                            // console.log("play company deposit："+voice);
                             popUp.audioplayer('companyDeposit',voice)
                         }else if(data.playerWithdrawCount&&parseInt(data.playerWithdrawCount)>0){
                             var voice = data.withdrawVoice;
-                            console.log("play player withdraw："+voice)
+                            // console.log("play player withdraw："+voice)
                             popUp.audioplayer('playerWithdraw',voice)
                         }
                         setTimeout(function () {

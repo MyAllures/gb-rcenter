@@ -14,6 +14,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             this.formSelector = "form";
             this._super();
             this.queryPlayerAllSumMoney();
+            this.querySearchCondition();
         },
         /**
          * 页面加载和异步加载时需要重新初始化的工作
@@ -280,6 +281,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             $("#player-rank-edit").removeClass("hide");
             $(e.currentTarget).unlock();
         },
+
         cancelEditPlayerRank: function (e, opt) {
             $("#player-rank-detail").removeClass("hide");
             $("#player-rank-edit").addClass("hide");
@@ -598,6 +600,134 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             } else {
                 e.page.showPopover(e, {}, 'danger', window.top.message.common['operation.fail'], true);
             }
-        }
+        },
+
+
+
+        queryPlayerAgent:function (e, opt) {
+            var _this = this;
+            var playerId = $("[name='result.id']").val();
+            if (!playerId || playerId == null || playerId == "" || playerId == undefined) {
+                return;
+            }
+            window.top.topPage.ajax({
+                url: root + "/player/queryUserPlayerById.html?search.id=" + playerId,
+                dataType: "JSON",
+                success: function (data) {
+                    if(data){
+                        _this.setSelectedValue("search.agentRanks",data.agentRank);
+                        _this.setSelectedValue("result.agentId",data.agentId);
+                    }
+                }
+            });
+        },
+        setSelectedValue:function (name,value) {
+            $("div[selectdiv='"+name+"']").attr("value",value);
+            $("[name='"+name+"']").val(value);
+            var displayName = "";
+            var selectItem;
+            $("div[selectdiv='"+name+"']").find("a[role='menuitem']").each(function (idx, sel) {
+                var key = $(sel).attr("key");
+                if(key==value){
+                    selectItem = sel;
+                    displayName = $(sel).html();
+                }
+            });
+            $("div[selectdiv='"+name+"']").find("span[prompt='prompt']").html(displayName);
+            $(selectItem).click();
+        },
+
+
+        /**
+         * 切换代理线 by kobe
+         * @param e
+         */
+        editAgentLine: function (e, opt) {
+            $("#agent-rank-detail").addClass("hide");
+            $("#agent-rank-edit").removeClass("hide");
+            this.queryPlayerAgent(e);
+            $(e.currentTarget).unlock();
+        },
+
+        cancelEditAgentLine: function (e, opt) {
+            $("#agent-rank-detail").removeClass("hide");
+            $("#agent-rank-edit").addClass("hide");
+            $(e.currentTarget).unlock();
+        },
+
+        changeAgentLine: function (e, opt) {
+            var oldRankId = $("#current-agentRank").val();
+            var newId = e.key;
+            if (newId != "" && newId != oldRankId) {
+                $(".btn-save-agent").removeClass("hide");
+            } else {
+                $(".btn-save-agent").addClass("hide");
+            }
+        },
+
+        updateAgentLine: function (e, opt) {
+            var _this = this;
+            var agentId = $("[name='result.agentId']").val();
+            var oldagentId = $("[name='current-agentRank']").val();
+            var username = $(".player-name").text();
+            if (agentId == null || agentId == "") {
+                var obj = {};
+                obj.currentTarget = $("[selectdiv='result.agentId']");
+                page.showPopover(obj, {}, "warning", window.top.message.player_auto['代理不能为空'], true);
+                $(e.currentTarget).unlock();
+                return;
+            }
+
+            window.top.topPage.ajax({
+                data: {"result.userAgentId": agentId, "oldagentId": oldagentId, "result.id": $("#userId").val(), "username": username},
+                url: root + "/player/updateAgentLine.html",
+                type: "POST",
+                dataType: "JSON",
+                success: function (data) {
+                    if (data.state) {
+                        page.showPopover(e, {}, "success", window.top.message.player_auto['操作成功'], true);
+                        setTimeout(function () {
+                            _this.queryView(e);
+                        }, 1500);
+
+                    } else {
+                        page.showPopover(e, {}, "danger", window.top.message.player_auto['操作失败'], true);
+                    }
+                }
+            });
+        },
+
+        /**
+         * 展示几级代理
+         * @param e
+         */
+        querySearchCondition:function () {
+
+            var _this = this;
+            var rankHtml = '<li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" key="{0}">{1}</a></li>';
+            window.top.topPage.ajax({
+                url: root + "/rebateAgent/queryCondtion.html?t=" + new Date().getTime(),
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    if(data.ranks){
+                        $("div[selectdiv='search.agentRanks']").find("ul[role='menu']").html("");
+                        for(var i=0;i<data.ranks.length;i++){
+                            var rankMap = data.ranks[i];
+                            var key = rankMap.key;
+                            var val = rankMap.value;
+                            var formatHtml = _this.formatStr(rankHtml,key,val);
+                            $("div[selectdiv='search.agentRanks']").find("ul[role='menu']").append(formatHtml);
+                        }
+                    }
+                },
+                error: function (data) {
+
+                }
+            })
+        },
+
+
+
     });
 });

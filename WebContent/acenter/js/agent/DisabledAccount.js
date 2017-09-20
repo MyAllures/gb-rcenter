@@ -57,7 +57,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 $(".reason-content").html("");
                 $("[name=groupCode]").val("");
             }
-            this.reasonPreviewMore.viewFailureDetail(event);
+            //this.reasonPreviewMore.viewFailureDetail(event);
             this.resizeDialog();
             $this.unlock();
 
@@ -78,10 +78,8 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             }
             $(event.currentTarget).unlock();
         },
-        toConfirm:function(e){
+        validConfirm:function (e, opt) {
             var _this = this;
-            window.top.topPage.closeDialog();
-            var _page = window.top.topPage;
             var type = $("input[name=type]").val();
             var content;
             if(type=='agent') {
@@ -91,32 +89,16 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             } else {
                 content = window.top.message.agent['player.account.disabled.content'];
             }
-
+            var msg = window.top.message.common['operation.success'];
             window.top.topPage.showConfirmDynamic(window.top.message.agent['player.account.disabled.tipsTitle'],
                 content,window.top.message.setting['common.ok'],
                 window.top.message.setting['common.cancel'],function(result){
                     if(result){
-                        _page.ajax({
-                            type:"POST",
-                            url:root+'/share/account/setAccountDisabled.html',
-                            data:_page.getCurrentFormData(e),
-                            dataType:"JSON",
-                            error:function(data){
-                            },
-                            success: function (data) {
-                                if(data.state){
-                                    _page.showSuccessMessage(window.top.message.common['operation.success'],function(){
-                                        _page.showPage();
-                                    });
-                                }else{
-                                    _page.showErrorMessage(data.msg,null);
-                                }
-                            },
-                        });
+                        window.top.topPage.doAjax(e,opt);
                     }else{
                         _page.closeDialog();
                     }
-                });
+            });
         }
     });
 });

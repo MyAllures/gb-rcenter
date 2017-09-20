@@ -987,6 +987,14 @@ a.popup-screen-btn:visited{
 .mui-bar-tab .mui-tab-item.mui-active .mui-icon.bar-buttom-icon.icon-touzhujilu:before{background-image:url(images/ico4-h.png);}
 .mui-bar-tab .mui-tab-item.mui-active .mui-icon.bar-buttom-icon.icon-huiyuanzhongxin:before{background-image:url(images/ico5-h.png);}
 
+
+/*.icon-cunkuan:before,.icon-chongzhitikuan:before { content: "\e674"; }
+.icon-home:before,.icon-shouye:before { content: "\e675"; }
+.icon-kaijiangjilu:before { content: "\e676"; }
+.icon-touzhujilu:before { content: "\e677"; }
+.icon-goucaidating:before { content: "\e678"; }
+.icon-huiyuanzhongxin:before { content: "\e679"; }*/
+
 /*首页底部菜单*/
 .mui-bar-tab .mui-tab-item .mui-icon.bar-buttom-icon.icon-home:before{background-image:url(../images/icohome.png);}
 .mui-bar-tab .mui-tab-item .mui-icon.bar-buttom-icon.icon-shouye:before{background-image:url(../images/icohome.png);}

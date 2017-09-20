@@ -10,12 +10,26 @@ define(['common/BaseListPage'], function (BaseListPage) {
          */
         init: function () {
             this._super(this.formSelector);
+            var _this =this;
+
         },
         /**
          * 当前对象事件初始化函数
          */
         bindEvent: function () {
             this._super();
+            $(this.formSelector).on("click", "#lotteryDiv li", function (e,opt) {
+                $("#lotteryDiv li").removeClass("active");
+                $(this).addClass("active");
+                var datacode = $(this).attr("data-code");
+                var code = $(this).attr("code");
+                var type = $(this).attr("type");
+                $("#searchDiv a").addClass("hide");
+                $("#searchDiv a[data-rel*='"+datacode+"']").removeClass("hide");
+                $("#searchDiv a").removeClass("ssc-active");
+                $("#searchDiv a[data-rel*='"+code+"']").addClass("ssc-active");
+                $("#searchDiv a[data-rel*='"+code+"']").click();
+            });
         },
         queryByLottery:function (e, opt) {
             var type = opt.type;

@@ -291,6 +291,12 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
                 return false;
             }
             return true;
+        },
+        topagentShowPlayer:function (e, opt) {
+            select.setValue($("div[selectdiv='roleName']"),"search.playerName");
+            $("input.role").attr("name","search.playerName");
+            $('[name=subSysCode]').val($('[name="role.player"]').val());
+            $("a.btn-search-css").click();
         }
     });
 });
