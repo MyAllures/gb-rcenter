@@ -25,10 +25,34 @@ define(['common/BaseListPage'], function (BaseListPage) {
 
             $(this.formSelector).on("click", function () {
                 $(".type-search").hide();
-                _this.selCheckLength();
             });
             $(this.formSelector).on("click", ".type-search", function (event) {
                 event.stopPropagation();
+            });
+            $("#comitSearch").click(function (e,opt) {
+                var siteId=$("#search_id").val();
+                if(!siteId){
+                    page.showPopover(e,opt,"danger","站点ID不能为空",true);
+                    return;
+                }
+                $.ajax({
+                    url:root+"/LotteryBetOrderReport/getbetYear.html?siteSearchID="+siteId,
+                    type: "get",
+                    success:function(data){
+                        if (data != null){
+                            var years = eval(data);
+                            $("#searchDiv").css('display','block');
+                            $("#tishiDiv").css('display','block');
+                            $('#betrecord').css('display','block');
+
+                            $("#sitesearchid").val(siteId);
+                            var lis ="";
+                            for (var i=0;i<years.length;i++){
+                                $("#yearUl").append(" <li role='presentation'><a  role='menuitem' tabindex='-1' >"+years[i]+"</a></li>")
+                            }
+                        }
+                    },
+                })
             });
         },
         changeTime: function (e, option) {
@@ -36,46 +60,32 @@ define(['common/BaseListPage'], function (BaseListPage) {
             var data = option.data;
             $("#searchDate").val(data);
             $("#searchDiv button").removeClass("active");
-            this.selCheckLength();
             $(e.currentTarget).addClass("active");
             $(e.currentTarget).unlock();
-        },
-        selCheckLength: function () {
-            var length = $("#checkTable input:checked", this.formSelector).length;
-            if (length == 0) {
-                $('.tranTypeNum').text('请选择');
-            } else {
-                $('.tranTypeNum').text('已选' + length + '项');
-            }
         },
         allCheck: function (e, option) {
             $(".type-search input[type='checkbox']").prop("checked", true);
             $("#typesearchdiv button").removeClass("active");
-            this.selCheckLength()
             $(e.currentTarget).blur();
             $(e.currentTarget).unlock();
         },
         clearCheck: function (e, option) {
             $(".type-search input[type='checkbox']").prop("checked", false);
-            this.selCheckLength()
             $(e.currentTarget).blur();
             $(e.currentTarget).unlock();
         },
         highCheck: function (e, option) {
             $("#highlottery input[type='checkbox']").prop("checked", true);
-            this.selCheckLength();
             $(e.currentTarget).blur();
             $(e.currentTarget).unlock();
         },
         lowCheck: function (e, option) {
             $("#lowlottery input[type='checkbox']").prop("checked", true);
-            this.selCheckLength();
             $(e.currentTarget).blur();
             $(e.currentTarget).unlock();
         },
         query: function (e, option) {
             $(".type-search").hide();
-            this.selCheckLength();
             var yearSpan = $("#searchYearSpan").text();
             if (yearSpan != 'undefined' && yearSpan != '') {
                 var yearInput = $("#searchYear");
@@ -86,7 +96,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 }
             }
             var monthSpan = $("#searchMonthSpan").text();
-            if (monthSpan != 'undefined' && monthSpan != '') {
+            if (monthSpan != 'undefined' && monthSpan != '' && monthSpan != '请选择') {
                 var monthInput = $("#searchMonth");
                 if (monthSpan != '请选择') {
                     monthInput.val(monthSpan);

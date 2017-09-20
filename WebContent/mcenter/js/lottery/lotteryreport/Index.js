@@ -25,7 +25,6 @@ define(['common/BaseListPage'], function (BaseListPage) {
 
             $(this.formSelector).on("click", function () {
                 $(".type-search").hide();
-                _this.selCheckLength();
             });
             $(this.formSelector).on("click", ".type-search", function (event) {
                 event.stopPropagation();
@@ -35,41 +34,27 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $(".type-search").hide();
             var data = option.data;
             $("#searchDate").val(data);
-            this.selCheckLength();
             $("#searchDiv button").removeClass("active");
             $(e.currentTarget).addClass("active");
             $(e.currentTarget).unlock();
         },
-        selCheckLength: function () {
-            var length = $("#checkTable input:checked", this.formSelector).length;
-            if (length == 0) {
-                $('.tranTypeNum').text(window.top.message.report_auto['请选择']);
-            } else {
-                $('.tranTypeNum').text(window.top.message.report_auto['已选'] + length + window.top.message.report_auto['项']);
-            }
-        },
         allCheck: function (e, option) {
             $(".type-search input[type='checkbox']").prop("checked", true);
-            this.selCheckLength()
             $(e.currentTarget).unlock();
         },
         clearCheck: function (e, option) {
             $(".type-search input[type='checkbox']").prop("checked", false);
-            this.selCheckLength()
             $(e.currentTarget).unlock();
         },
         highCheck: function (e, option) {
             $("#highlottery input[type='checkbox']").prop("checked", true);
-            this.selCheckLength()
             $(e.currentTarget).unlock();
         },
         lowCheck: function (e, option) {
             $("#lowlottery input[type='checkbox']").prop("checked", true);
-            this.selCheckLength()
             $(e.currentTarget).unlock();
         },
         query: function (e, option) {
-            this.selCheckLength();
             $(".type-search").hide();
             var yearSpan = $("#searchYearSpan").text();
             if (yearSpan != 'undefined' && yearSpan != '') {
@@ -81,7 +66,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 }
             }
             var monthSpan = $("#searchMonthSpan").text();
-            if (monthSpan != 'undefined' && monthSpan != '') {
+            if (monthSpan != 'undefined' && monthSpan != '' && monthSpan != '请选择') {
                 var monthInput = $("#searchMonth");
                 if (monthSpan != '请选择') {
                     monthInput.val(monthSpan);

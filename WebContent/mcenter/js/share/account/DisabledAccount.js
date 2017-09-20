@@ -78,8 +78,9 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             }
             $(event.currentTarget).unlock();
         },
-        toConfirm:function(e,opt){
+        toConfirm:function(e){
             var _this = this;
+            window.top.topPage.closeDialog();
             var _page = window.top.topPage;
             var type = $("input[name=type]").val();
             var content;
@@ -90,16 +91,8 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             } else {
                 content = window.top.message.content['player.account.disabled.content'];
             }
+
             window.top.topPage.showConfirmDynamic(window.top.message.content['player.account.disabled.tipsTitle'],
-                content,window.top.message.setting['common.ok'],
-                window.top.message.setting['common.cancel'],function(result){
-                    if(result){
-                        window.top.topPage.doAjax(e,opt);
-                    }else{
-                        _page.closeDialog();
-                    }
-                });
-            /*window.top.topPage.showConfirmDynamic(window.top.message.content['player.account.disabled.tipsTitle'],
                 content,window.top.message.setting['common.ok'],
                 window.top.message.setting['common.cancel'],function(result){
                     if(result){
@@ -123,7 +116,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     }else{
                         _page.closeDialog();
                     }
-                });*/
+                });
         }
     });
 });

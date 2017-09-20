@@ -310,5 +310,3 @@ tr.tab-title th{background-color:#f3f3f3;}
 
 td > .input-group.date.content-width-limit-200 input{min-width:120px;}
 .content-width-limit-8{width:120px;}
-.dropdown-menu{border:medium none;border-radius:3px;display:none;float:left;font-size:12px;left:0;list-style:none outside none;padding:0;position:absolute;text-shadow:none;top:100%;z-index:1000;border-radius:2px;}
-.dropdown-menu > li > a{padding:5px 13px;font-size:14px;}

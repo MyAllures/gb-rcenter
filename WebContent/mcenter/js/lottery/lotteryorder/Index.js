@@ -11,17 +11,6 @@ define(['common/BaseListPage'], function (BaseListPage) {
         init: function () {
             this.formSelector = "form[name=betorderform]";
             this._super(this.formSelector);
-            $("#lotteryDiv li").click(function (e) {
-                $("#lotteryDiv li").removeClass("active");
-                $(this).addClass("active");
-                var datacode = $(this).attr("data-code");
-                var code = $(this).attr("code");
-                $("#searchDiv a").addClass("hide");
-                $("#searchDiv a[data-rel*='"+datacode+"']").removeClass("hide");
-                $("#searchDiv a").removeClass("ssc-active");
-                $("#searchDiv a[data-rel*='"+code+"']").addClass("ssc-active");
-                $("#lotteryType").val(code);
-            });
         },
         /**
          * 当前对象事件初始化函数
@@ -34,7 +23,6 @@ define(['common/BaseListPage'], function (BaseListPage) {
             var e = {currentTarget:$(".ssc-label").eq(0)};
             var opt = eval('(' + $('.ssc-label').attr('data-rel') + ')');
             this.queryStatMoney();
-
         },
 
         queryByLottery:function (e, opt) {

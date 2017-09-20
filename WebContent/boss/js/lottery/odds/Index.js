@@ -6,10 +6,10 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
     return BaseListPage.extend({
 
         init: function (formSelector) {
-            this.formSelector = "form[name=lotteryoddform]";
-            this._super(this.formSelector);
-
+            this.formSelector = this.formSelector || formSelector ||"#mainFrame form";
+            this._super();
         },
+
         onPageLoad: function () {
             this._super();
             var options = {
@@ -24,19 +24,7 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                 valueChanged: function(val) {}
             };
 
-
-            if(!$("#searchDiv a").hasClass('ssc-active')){
-                $("#searchDiv a").eq(0).trigger("click");
-            }
-            $(".wan-spinner-1").WanSpinner(options);
-
-
-
-
-        },
-        bindEvent: function () {
-            this._super();
-            $(this.formSelector).on("click", "#searchDiv a", function (e,opt) {
+            $(".sys_tab_wrap a").click(function (e,opt) {
                 var siteId = $("#search_id").val();
                 if(!siteId){
                     return false;
@@ -46,16 +34,13 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                 $(this).siblings().attr('class', 'label ssc-label');
                 $("#lot_two_menu").load(root+'/lottery/odds/'+code+'/Index.html');
             });
-            $(this.formSelector).on("click", "#lotteryDiv li", function (e) {
-                $("#lotteryDiv li").removeClass("active");
-                $(this).addClass("active");
-                var datacode = $(this).attr("data-code");
-                var code = $(this).attr("code");
-                $("#searchDiv a").attr("style", "display:none");
-                $("#searchDiv a[data-code='"+datacode+"']").attr("style", "display:");
-                $("#searchDiv a[code='"+code+"']").click();
-            });
-            $(this.formSelector).on("click", "#comitSearch", function (e,opt) {
+            if(!$(".sys_tab_wrap a").hasClass('ssc-active')){
+                $(".sys_tab_wrap a").eq(0).trigger("click");
+            }
+            $(".wan-spinner-1").WanSpinner(options);
+
+
+            $("#comitSearch").click(function (e,opt) {
                 var siteId=$("#search_id").val();
                 if(!siteId){
                     page.showPopover(e,opt,"danger","站点ID不能为空",true);
@@ -81,6 +66,10 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     },
                 })
             });
+
+        },
+        bindEvent: function () {
+            this._super();
         },
 
         /**

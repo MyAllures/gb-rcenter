@@ -54,9 +54,9 @@ define(['gb/components/PopUp'], function (PopUp) {
                 for (var index = 0; index < tones.length; index++) {
                     var tone = tones[index];
                     if (type == tone.paramCode) {
-                        if (!tone.active) {
-                            console.log(type + "的声音偏好设置被关闭")
-                        } else {
+                        if (!tone.active){
+                            console.log(type+"的声音偏好设置被关闭")
+                        }else{
                             window.top.popUp.audioplayer(type, tone.paramValue);
                         }
 
@@ -141,19 +141,15 @@ define(['gb/components/PopUp'], function (PopUp) {
          * 更新顶部消息数量
          */
         unReadNotice: function (data) {
-            var map = $.parseJSON(data);
-            console.log(map);
-            $("span[id=unReadCount]").text(parseInt($("span[id=unReadCount]").text()) + 1);
-            window.top.popUp.playerNoticeVoice();
-        },
-        //只播放类型 为notice的声音
-        playerNoticeVoice:function () {
             window.top.popUp.queryTones();
             var tones = window.top.tones;
+            $("span[id=unReadCount]").text(parseInt($("span[id=unReadCount]").text()) + 1);
             //声音集合
             for (var index = 0; index < tones.length; index++) {
                 var tone = tones[index];
                 if (!tone.active) continue;
+                var map = $.parseJSON(data);
+                console.log(map);
                 if ("notice" == tone.paramCode) {
                     window.top.popUp.audioplayer(tone.paramCode, tone.paramValue);
                 }
@@ -250,25 +246,18 @@ define(['gb/components/PopUp'], function (PopUp) {
          * @param data
          */
         profit: function (data) {
-            var msgBody = $.parseJSON($.parseJSON(data).msgBody);
-            var level = msgBody.level;
-            var rate = msgBody.rate;
-            var siteName = msgBody.siteName;
-            var key = 'profit.' + level + '.warning';
-            var msg = window.top.message.report[key];
-            if (msg) {
-                msg = msg.replace("${siteName}", siteName);
-                msg = msg.replace("${rate}", rate);
-                var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), window.top.dateFormat.daySecond);
-                msg = msg.replace("${leftTime}", date);
-                if (rate >= 100) { //达到100%时 所有账号都提醒
-                    window.top.topPage.showWarningMessage(msg);
-                } else if ($("#topSecurity") && $("#topSecurity").length > 0) {
+            if($("#topSecurity")&&$("#topSecurity").length>0) {
+                var msgBody = $.parseJSON($.parseJSON(data).msgBody);
+                var level = msgBody.level;
+                var rate = msgBody.rate;
+                var siteName = msgBody.siteName;
+                var key = 'profit.' + level + '.warning';
+                var msg = window.top.message.report[key];
+                if (msg) {
+                    msg = msg.replace("${siteName}", siteName);
+                    msg = msg.replace("${rate}", rate);
                     window.top.topPage.showWarningMessage(msg);
                 }
-            }
-
-            if ($("#topSecurity") && $("#topSecurity").length > 0) {
                 //1-79 safe
                 var className = "safety";
                 if (rate >= 80 && rate < 95) {
@@ -332,7 +321,7 @@ define(['gb/components/PopUp'], function (PopUp) {
                         window.top.tones = data;
                     }
                 })
-            } else {
+            }else {
                 return window.top.tones;
             }
         },

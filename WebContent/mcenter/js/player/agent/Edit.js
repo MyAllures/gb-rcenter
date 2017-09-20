@@ -1,13 +1,12 @@
 /**
  * Created by jeff on 15-9-7.
  */
-define(['common/BaseEditPage','mailAutoComplete','bootstrapswitch'], function (BaseEditPage) {
+define(['common/BaseEditPage','mailAutoComplete'], function (BaseEditPage) {
 
     return BaseEditPage.extend({
         listVo:null,
         lastAgentUserName:'',
         init: function () {
-            this.formSelector="form";
             this._super();
             $(".inputMailList").mailAutoComplete();
         },
@@ -21,7 +20,6 @@ define(['common/BaseEditPage','mailAutoComplete','bootstrapswitch'], function (B
             if(_defaultAgent!=null&&_defaultAgent!=""&&_defaultAgent!='undefine'){
                 this.getAgentRate(_defaultAgent);
             }
-            this.initSwitch();
             //change
         },
         changeAgent:function( event , option ){
@@ -99,23 +97,7 @@ define(['common/BaseEditPage','mailAutoComplete','bootstrapswitch'], function (B
                 window.top.topPage.doAjax(e,opt);
             }
             return false;
-        },
-        /**
-         * 初始化开关
-         */
-        initSwitch:function(){
-            var _this=this;
-            var $bootstrapSwitch = $("[name='my-checkbox']");
-            this.unInitSwitch($bootstrapSwitch)
-                .bootstrapSwitch({
-                        onText: window.top.message.common['enable'],
-                        offText: window.top.message.common['forbidden'],
-                        onSwitchChange: function (e, state) {
-                            $("[name='result.addNewPlayer']").val(state);
-                        }
-                    }
-                );
-        },
+        }
 
     });
 });

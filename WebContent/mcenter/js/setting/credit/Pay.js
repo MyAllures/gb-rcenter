@@ -19,36 +19,6 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
         },
         onPageLoad: function () {
             this._super();
-            var _this = this;
-            var leftTime = $(this.formSelector + " #leftTime[data-time]");
-            if (leftTime && leftTime.length > 0) {
-                _this.showLeftTime();
-                var interval = setInterval(function () {
-                    _this.showLeftTime(interval)
-                }, 60 * 1000);
-            }
-        },
-        showLeftTime: function (interval) {
-            var leftTime = $("#leftTime[data-time]");
-            if ((!leftTime || leftTime.length == 0) && interval) {
-                window.clearInterval(interval);
-                return;
-            }
-            var time = $(leftTime).attr("data-time");
-            if (time < 0 && interval) {
-                window.clearInterval(interval);
-                return;
-            }
-            var tmpTime = Number(time);
-            var hour = Math.floor(tmpTime / 60);
-            tmpTime = tmpTime - hour * 60;
-            var minute = tmpTime;
-            if (minute < 10) {
-                minute = '0' + minute;
-            }
-            $("span#hour").text(hour);
-            $("span#minute").text(minute);
-            $("#leftTime[data-time]").attr("data-time", time--);
         },
         /**
          * 更新支付金额的远程验证提示消息
@@ -84,7 +54,6 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
         submit: function (e, option) {
             var _window = window.open("", '_blank');
             _window.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
-            var flag = true;
             window.top.topPage.ajax({
                 url: root + "/credit/pay/submit.html",
                 data: this.getCurrentFormData(e),
@@ -101,7 +70,6 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
                                 label: '重新填写',
                                 action: function (dialog) {
                                     dialog.close();
-                                    flag = false;
                                     $("#mainFrame").load(root + "/credit/pay/pay.html");
                                 }
                             }, {
@@ -109,15 +77,12 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
                                 cssClass: 'btn-primary',
                                 action: function (dialog) {
                                     dialog.close();
-                                    flag = false;
                                     $("#mainFrame").load(root + "/creditRecord/list.html");
                                 }
                             }],
                             onhidden: function (dialog) {
                                 dialog.close();
-                                if (flag) {
-                                    $("#mainFrame").load(root + "/credit/pay/pay.html");
-                                }
+                                $("#mainFrame").load(root + "/credit/pay/pay.html");
                             }
                         });
                         $(e.currentTarget).unlock();
