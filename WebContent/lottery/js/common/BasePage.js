@@ -1,4 +1,4 @@
-define([], function () {
+define(['moment'], function (moment) {
     return Class.extend({
         /**
          * 初始化及构造函数，在子类中采用
@@ -115,6 +115,29 @@ define([], function () {
                 $(".menu_left .list_menu ul li a.Refresh").show();
             }
             $(".con_right .arrows-btn a").attr("opent", "0");
+        },
+        /**
+         * 格式化制定的日期时间
+         * @param date
+         * @param format
+         */
+        formatDateTime: function (date, format) {
+            var theMoment = moment();
+            theMoment._d = date;
+            return theMoment.format(format);
+        },
+
+        /**
+         * 将0时区时间转换为用户时区时间
+         * @param date
+         * @param format
+         * @returns {*}
+         */
+        formatToMyDateTime: function (date, format) {
+            var theMoment = moment();
+            theMoment._d = date;
+            theMoment.utcOffset(0, false);
+            return theMoment.utcOffset(window.top.utcOffSet, false).format(format);
         }
     })
 });
