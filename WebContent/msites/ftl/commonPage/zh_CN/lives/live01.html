@@ -1,0 +1,229 @@
+<style>
+    .accordion-wrap{border:3px solid #00a0e6; padding:20px; background: #222;}
+    .live-accordion{height:650px;overflow:hidden;margin-bottom: 0;}
+    .live-accordion>li{float:left;height:650px;position:relative;overflow:hidden;background-repeat:no-repeat;background-position:center 0;}
+    .live-accordion>li>.mask{position:absolute;overflow:hidden;width:100%;height:100%;z-index: 11;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA9JREFUeNpiEBQU3AwQYAABUQDn8rOpmgAAAABJRU5ErkJggg==);}
+    .live-accordion>li>.mask>img{position: absolute;display: block; bottom: 20px;}
+    .live-accordion>li>.mask>.title{position: absolute;display: block; bottom: 80px; right: 10px; color: #eee; font-weight: bold; font-size: 16px;}
+    .live-accordion>li>.logo{position:absolute;height:100px;left:20px;top:20px;z-index: 12;display: none;}
+    .live-accordion>li>.cover{position:absolute;left:0;right:0;bottom:0;width:100%;height:200px;overflow:hidden;z-index:10;display:none;}
+    .live-accordion>li>.cover.row3{height:240px;}
+    .live-accordion>li>.cover>.blur{position:absolute;width:100%;height:200px;left:0;background-repeat:no-repeat;background-position:center bottom;-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-filter:blur(8px);-moz-filter:blur(8px);filter:blur(8px);filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius=8,MakeShadow=false);}
+    .live-accordion>li>.row3>.blur{height:240px;}
+    .live-accordion>li>.cover>.hot-list{height:200px;left:0;bottom:0;width:100%;background-color:rgba(0,0,0,.3);filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#4d000000,endColorStr=#4d000000);}
+    .live-accordion>li>.row3>.hot-list{height:240px;}
+    .live-accordion>li>.cover>.hot-list > div{height:100px;}
+    .live-accordion>li>.row3>.hot-list > div{height:80px;}
+    .live-accordion>li>.link{position:absolute;overflow:hidden;width:100%;height:100%;z-index: 10;}
+    .live-accordion>li>.link>a{width:100%;height:100%;display: block;}
+    .btn-live{display:inline-block;width:100%;height:100%;padding:15px 0;color:#eee;font-size:16px;text-align:center;border-width:1px;border-style:solid;border-top-color:#0c0c0c;border-right-color:#0c0c0c;border-bottom-color:#262626;border-left-color:#2b2b2b;border-top-color:rgba(0,0,0,.7);border-right-color:rgba(0,0,0,.7);border-bottom-color:rgba(255,255,255,.1);border-left-color:rgba(255,255,255,.1);background-color:rgba(0,0,0,0.5);filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#80000000,endColorStr=#80000000);}
+    .btn-live:hover{color:#fae39e;text-decoration:none;background-color:rgba(0,0,0,0.3);filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#4d000000,endColorStr=#4d000000);}
+    .btn-live>span.gui{display:block;}
+</style>
+<div class="accordion-wrap">
+    <ul class="list-unstyled live-accordion">
+        <li style="background-image: url(../../ftl/commonPage/images/live-item-bb.jpg);">
+            <div class="mask">
+                <img src="../../ftl/commonPage/images/live-logo-bb.png">
+                <h3 class="title">BB游戏大厅</h3>
+            </div>
+            <div class="logo"><img src="../../ftl/commonPage/images/live-logo-bb.png"></div>
+            <div class="link">
+                <a href="https://www.baidu.com"></a>
+            </div>
+            <div class="cover row3">
+                <div class="blur" style="background-image: url(../../ftl/commonPage/images/live-item-bb.jpg);"></div>
+                <div class="row row-gutter-0 hot-list">
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>百家乐</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎斗</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-spade-fill"></span>牛牛</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-chip2"></span>无限21点</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-coin-cny"></span>番摊</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>三公</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>二八杠</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-chip1"></span>色碟</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker2"></span>德州扑克</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>温州牌九</a></div>
+                </div>
+            </div>
+        </li>
+        <li style="background-image: url(../../ftl/commonPage/images/live-item-ag.jpg);">
+            <div class="mask"><img src="../../ftl/commonPage/images/live-logo-ag.png">
+                <h3 class="title">AG女优厅</h3></div>
+            <div class="logo"><img src="../../ftl/commonPage/images/live-logo-ag.png"></div>
+            <div class="link">
+                <a href="https://www.baidu.com"></a>
+            </div>
+            <div class="cover">
+                <div class="blur" style="background-image: url(../../ftl/commonPage/images/live-item-ag.jpg);"></div>
+                <div class="row row-gutter-0 hot-list">
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette1"></span>旗舰厅</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette2"></span>国际厅</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette4"></span>贵宾厅</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>百家乐</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎斗</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                </div>
+            </div>
+        </li>
+        <li style="background-image: url(../../ftl/commonPage/images/live-item-og.jpg);">
+            <div class="mask"><img src="../../ftl/commonPage/images/live-logo-og.png">
+                <h3 class="title">OG东方厅</h3></div>
+            <div class="logo"><img src="../../ftl/commonPage/images/live-logo-og.png"></div>
+            <div class="link">
+                <a href="https://www.baidu.com"></a>
+            </div>
+            <div class="cover">
+                <div class="blur" style="background-image: url(../../ftl/commonPage/images/live-item-og.jpg);"></div>
+                <div class="row row-gutter-0 hot-list">
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>连环百家乐</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker2"></span>百家乐</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎斗</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-chip2"></span>番摊</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                </div>
+            </div>
+        </li>
+        <li style="background-image: url(../../ftl/commonPage/images/live-item-gd.jpg);">
+            <div class="mask"><img src="../../ftl/commonPage/images/live-logo-gd.png">
+                <h3 class="title">GD旗舰厅</h3></div>
+            <div class="logo"><img src="../../ftl/commonPage/images/live-logo-gd.png"></div>
+            <div class="link">
+                <a href="https://www.baidu.com"></a>
+            </div>
+            <div class="cover">
+                <div class="blur" style="background-image: url(../../ftl/commonPage/images/live-item-gd.jpg);"></div>
+                <div class="row row-gutter-0 hot-list">
+                    <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>3D百家乐</a></div>
+                    <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker2"></span>多台百家乐</a></div>
+                    <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>多彩百家乐</a></div>
+                    <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                </div>
+            </div>
+        </li>
+        <li style="background-image: url(../../ftl/commonPage/images/live-item-sa.jpg);">
+            <div class="mask"><img src="../../ftl/commonPage/images/live-logo-sa.png">
+                <h3 class="title">SA沙龙厅</h3></div>
+            <div class="logo"><img src="../../ftl/commonPage/images/live-logo-sa.png"></div>
+            <div class="link">
+                <a href="https://www.baidu.com"></a>
+            </div>
+            <div class="cover">
+                <div class="blur" style="background-image: url(../../ftl/commonPage/images/live-item-sa.jpg);"></div>
+                <div class="row row-gutter-0 hot-list">
+                    <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>百家乐</a></div>
+                    <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-chip2"></span>番摊</a></div>
+                </div>
+            </div>
+        </li>
+        <li style="background-image: url(../../ftl/commonPage/images/live-item-mg.jpg);">
+            <div class="mask"><img src="../../ftl/commonPage/images/live-logo-mg.png">
+                <h3 class="title">MG欧美厅</h3></div>
+            <div class="logo"><img src="../../ftl/commonPage/images/live-logo-mg.png"></div>
+            <div class="link">
+                <a href="https://www.baidu.com"></a>
+            </div>
+            <div class="cover">
+                <div class="blur" style="background-image: url(../../ftl/commonPage/images/live-item-mg.jpg);"></div>
+                <div class="row row-gutter-0 hot-list">
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎百家乐</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>百家乐</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-chip2"></span>21点</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker2"></span>德州扑克</a></div>
+                    <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-heart-fill"></span>PLAYBOY</a></div>
+                </div>
+            </div>
+        </li>
+        <li style="background-image: url(../../ftl/commonPage/images/live-item-ebet.jpg);">
+            <div class="mask"><img src="../../ftl/commonPage/images/live-logo-ebet.png">
+                <h3 class="title">EBET时尚厅</h3></div>
+            <div class="logo"><img src="../../ftl/commonPage/images/live-logo-ebet.png"></div>
+            <div class="link">
+                <a href="https://www.baidu.com"></a>
+            </div>
+            <div class="cover">
+                <div class="blur" style="background-image: url(../../ftl/commonPage/images/live-item-ebet.jpg);"></div>
+                <div class="row row-gutter-0 hot-list">
+                    <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>竞咪百家乐</a></div>
+                    <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker2"></span>百家乐</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                </div>
+            </div>
+        </li>
+        <!--
+        <li style="background-image: url(../../ftl/commonPage/images/live-item-slc.jpg);">
+            <div class="mask"><img src="../../ftl/commonPage/images/live-logo-slc.png">
+                <h3 class="title">DW现场厅</h3></div>
+            <div class="logo"><img src="../../ftl/commonPage/images/live-logo-slc.png"></div>
+            <div class="link">
+                <a href="https://www.baidu.com"></a>
+            </div>
+            <div class="cover row3">
+                <div class="blur" style="background-image: url(../../ftl/commonPage/images/live-item-slc.jpg);"></div>
+                <div class="row row-gutter-0 hot-list">
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>百家乐</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker2"></span>保险百家乐</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-chip2"></span>番摊</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎斗</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>色碟</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker2"></span>色碟</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>鱼虾蟹骰宝</a></div>
+                </div>
+            </div>
+        </li>-->
+        <li style="background-image: url(../../ftl/commonPage/images/live-item-ds.jpg);">
+            <div class="mask"><img src="../../ftl/commonPage/images/live-logo-ds.png">
+                <h3 class="title">DS贵宾厅</h3></div>
+            <div class="logo"><img src="../../ftl/commonPage/images/live-logo-ds.png"></div>
+            <div class="link">
+                <a href="https://www.baidu.com"></a>
+            </div>
+            <div class="cover">
+                <div class="blur" style="background-image: url(../../ftl/commonPage/images/live-item-ds.jpg);"></div>
+                <div class="row row-gutter-0 hot-list">
+                    <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>百家乐</a></div>
+                    <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                    <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-spade-fill"></span>斗牛</a></div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<script>
+    $(document).ready(function() {
+        // 真人-手风琴
+        $(".live-accordion").accordion({
+            maxWidth: "350",
+            expandSpeed: "10",
+            slideSpeed: "10",
+            showIndex: "1"
+        });
+        // 真人-手风琴滑入动画
+        $(".live-accordion > li").hover(function() {
+            var $this = $(this);
+            $('.mask', $this).stop().fadeOut(300);
+            $('.cover', $this).show();
+            $('.logo', $this).stop().fadeIn(300)
+        }, function() {
+            var $this = $(this);
+            $('.mask', $this).stop().fadeIn(300);
+            $('.cover', $this).hide();
+            $('.logo', $this).stop().fadeOut(300)
+        });
+    });
+</script>
