@@ -55,7 +55,12 @@ define(['common/BaseEditPage', 'jqFileInput', 'site/index/Index', 'css!commonCss
                 window.top.topPage.showWarningMessage(window.top.message.personInfo_auto['图片错误请重新上传']);
                 return false;
             }
-            e.objId = 1;
+            if($("#playerId")){
+                e.objId = $("#playerId").val();
+            }else{
+                e.objId = 1;
+            }
+
             e.catePath = 'headImage';
             $(e.currentTarget).unlock();
             var result = this.uploadAllFiles(e, opt);
@@ -68,8 +73,15 @@ define(['common/BaseEditPage', 'jqFileInput', 'site/index/Index', 'css!commonCss
         /**
          * 刷新顶部右边导航的图标
          */
-        refreshPlayerHeadInfo: function () {
-            this.index.loadPlayerInfo();
+        refreshPlayerHeadInfo: function (e,opt) {
+            var _this = this;
+            if(opt.data.state){
+                page.showPopover(e,{"callback":function () {
+                    _this.index.loadPlayerInfo();
+                }},"success",opt.data.msg,true);
+            }else{
+                page.showPopover(e,{},"danger",opt.data.msg,true);
+            }
         },
 
         goToLastPage: function (e) {
