@@ -48,7 +48,8 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
             }
             $("span#hour").text(hour);
             $("span#minute").text(minute);
-            $("#leftTime[data-time]").attr("data-time", time--);
+            time = time - 1;
+            $("#leftTime[data-time]").attr("data-time", time);
         },
         /**
          * 更新支付金额的远程验证提示消息
