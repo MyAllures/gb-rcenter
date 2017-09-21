@@ -1,22 +1,22 @@
-
-define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Template) {
+define(['site/common/BasePage'], function (BasePage) {
 
     return BasePage.extend({
-        t:null,
+        t: null,
         init: function (formSelector) {
-            t=this;
-            t.onPageLoad();
+            this._super();
+            t = this;
         },
 
         onPageLoad: function () {
             this.loadUserInfo();
+            var _this = this;
             mui('body').on('tap', '.mui-pull-right a[data-href]', function () {
-                page.gotoUrl($(this).data('href'));
+                _this.gotoUrl($(this).data('href'));
             });
         },
 
 
-        loadUserInfo : function () {
+        loadUserInfo: function () {
             mui.ajax(root + "/member/getMemberDetail.html", {
                 type: 'post',//HTTP请求类型
                 timeout: 20000,//超时时间设置为10秒；
@@ -26,31 +26,29 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 },
                 dataType: "json",
                 success: function (data) {
+                    $("#username").text(data.username);
+                    $("#lastLoginIp").text(data.lastLoginIp);
+                    $("#lastLoginTime").text(data.lastLoginTime);
                     if (data.balance != null && data.balance != 0)
-                        $("#balance").html(data.balance.toFixed(2));
-                    else{
-                        $("#balance").html("0.00");
+                        $("#balance").text(data.balance);
+                    else {
+                        $("#balance").text("0.00");
                     }
                     if (data.lastWeekOrder != null && data.lastWeekOrder != 0) {
-                        $("#lastWeekOrder").html(data.lastWeekOrder);
-                    }else{
-                        $("#lastWeekOrder").html("0.00");
+                        $("#lastWeekOrder").text(data.lastWeekOrder);
+                    } else {
+                        $("#lastWeekOrder").text("0.00");
                     }
                     if (data.thisWeekOrder != null && data.thisWeekOrder != 0) {
-                        $("#thisWeekOrder").html(data.thisWeekOrder);
-                    }else{
-                        $("#thisWeekOrder").html("0.00");
+                        $("#thisWeekOrder").text(data.thisWeekOrder);
+                    } else {
+                        $("#thisWeekOrder").text("0.00");
                     }
-                    $("#deposit").html(data.deposit);
-                    $("#withdraw").html(data.withdraw);
-                    mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
-                },
-                error: function (e) {
-                    mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
-                    t.toast("加载失败");
+                    $("#deposit").text(data.deposit);
+                    $("#withdraw").text(data.withdraw);
                 }
             });
-        },
+        }
 
     })
 });
