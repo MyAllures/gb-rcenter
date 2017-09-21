@@ -19,11 +19,6 @@ define(['site/common/BasePage'], function (BasePage) {
         loadUserInfo: function () {
             mui.ajax(root + "/member/getMemberDetail.html", {
                 type: 'post',//HTTP请求类型
-                timeout: 20000,//超时时间设置为10秒；
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Soul-Requested-With': 'XMLHttpRequest'
-                },
                 dataType: "json",
                 success: function (data) {
                     $("#username").text(data.username);
