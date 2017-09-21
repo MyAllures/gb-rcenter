@@ -1,0 +1,27 @@
+ /*!
+ * Hongtu Mobile-Gold Style (灰色皮肤)
+ * Author: Steven
+ * Update by 2017-04-10
+ */
+ 
+ /* themes-bg */
+body.games-page,body.download-page{background:url(images/games-page-bg.png) center top no-repeat;}
+body.index-page{background:url(images/index-page-bg.jpg) center top no-repeat;}
+
+/* menu */
+.menu>li>a{color:#e1b450;border:1px solid #8b5b35;border-color:rgba(225,180,80,0.4);}
+.menu>li>a:hover,.menu>li.active>a{color:#ffc864;border-color:#e1b450;border-color:rgba(225,180,80,1);background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlOArV5bRgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=);}
+.menu>li>a>small:after{background-image:url(images/menu-icon.png);}
+.menu>li>a:hover>small:after,.menu>li.active>a>small:after{background-image:url(images/menu-icon-hover.png);}
+
+/* navbar */
+.navbar>ul>li>a{color:#e1b450;}
+.navbar>ul>li>a:hover,.navbar>ul>.active>a{color:#f0d26e;background-image:url(images/navbar-hover.png);}
+.navbar:before{background-image:url(images/navbar-side.png);}
+
+/* itemIcon */
+.itemIcon{background-image:url(images/itemIcon.png);}
+
+/* download-page */
+.download-page .navbar>ul>li>a{background-image:url(images/navbar-hover2.png);}
+.download-page .section .content>.url-text{color:#e1b352;}
