@@ -8,31 +8,23 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="../../mobile-v2/themes/mui.css" />
-    <link rel="stylesheet" href="../../mobile-v2/themes/style.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/default/style.css">
+    <link rel="stylesheet" href="../../mobile-v2/themes/common.css">
 </head>
 
-<body class="gb-theme">
+<body class="gb-theme mine-page mui-fullscreen">
     <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
         <!-- 主页面容器 -->
         <div class="mui-inner-wrap">
-            <header class="mui-bar mui-bar-nav gb-header">
-                <h1 class="mui-title">网站维护中</h1>
+            <header class="mui-bar mui-bar-nav">
+                <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+                <h1 class="mui-title">606</h1>
             </header>
-            <div class="mui-content mui-scroll-wrapper gb-navbar">
-                <div class="mui-scroll">
-                    <div class="mui-content-padded gb-error">
-                        <div class="mui-row m-y-lg">
-                            <div class="mui-col-xs-3"></div>
-                            <div class="mui-col-xs-6 mui-text-center gb-error-img">
-                                <img src="../../mobile-v2/images/error/ico-606.png">
-                            </div>
-                            <div class="mui-col-xs-3"></div>
-                        </div>
-                        <p class="mui-text-center">您已被強制踢出</p>
-                        <p class="mui-text-center">如有任何疑問，請與我們聯絡。</p>
-                    </div>
-                </div>
-            </div>
+            <div class="mui-content">
+			    <div class="no-data-img kick-out"></div>
+			    <div class="no-data-txt">您已被强制踢出</div>
+			    <div class="no-data-txt-2">您的账号有可能在另外一个地点登录或账号长时间未进行任何操作，您被强制踢出。如有疑问请联系 <a href="#">在线客服</a> 我们将竭诚为您服务。</div>
+		    </div>
             <div class="mui-off-canvas-backdrop"></div>
         </div>
     </div>
