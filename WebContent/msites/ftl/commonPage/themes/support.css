@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+/* ---reset.css--- */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
+body{line-height:1;background:#192138;}
+ol,ul{list-style:none;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+
+/* ---reset.css--- */
+html{overflow-x:hidden;overflow-y:auto;}
+html,body{font-family:Arial,"Microsoft Yahei";-webkit-text-size-adjust:none;width:100%;min-height:100%;}
+a{text-decoration:none;}
+.wrapper{margin:0 auto;width:1002px;background-color:#141b2e;height:750px;min-height:750px;height:auto!important;}
+
+/*======================內容區 ==========================*/
+.conTent{margin:-10px auto;width:1002px;background-color:#24304c;}
+.conTent:after{display:block;content:"";clear:left;}
+.conTent .dh4 span{width:322px;height:40px;display:block;line-height:40px;font-size:20px;color:#F0BC18;border:1px solid #F0BC18;text-align:center;margin:0px 340px 30px;margin-top:10px;}
+.solveProblem{padding-left:16px;width:986px;clear:both;}
+.questionBox{width:290px;height:auto;float:left;margin:0 16px 33px 17px;background-color:#2e3542;}
+.questionBox img{margin:43px 67px 0 67px;}
+.questionBox a{filter:alpha(opacity=100);opacity:1.0;}
+.questionBox a:hover{filter:alpha(opacity=100);opacity:0.8;}
+.questionBox h2{font-size:17px;width:290px;text-align:center;height:71px;line-height:71px;color:#F0BC18;display:block;}
+.questionBox p{font-size:14px;color:#FFFFFF;width:235px;height:35px;background-repeat:no-repeat;background-position:center right;background-color:#4F5257;line-height:35px;padding-left:55px;display:block;}
+
+/*===================== 解決方法區 ==========================*/
+.conTop{width:100%;height:140px;background-color:#141b2e;background-position:850px 0px;background-repeat:no-repeat;}
+.conTop img{width:auto;height:73px;margin:35px 30px 32px 130px;float:left;}
+.text{margin:35px 0;float:left;}
+.text h2{font-size:32px;color:#EEEEEE;line-height:40px;}
+.conTop p{font-size:20px;color:#F1B920;line-height:35px;}
+.soluTions{width:912px;padding:10px 45px;}
+.soluTions:after{display:block;content:"";clear:left;}
+.solveBox{width:210px;background-color:#2e3542;min-height:520px;height:auto!important;height:520px;margin:0 44px;border-radius:2px;float:left;text-align: center;}
+.number{width:210px;height:40px;text-indent:-9999px;background-repeat:no-repeat;background-position:top center;background-color:#141b2e;}
+.solveBox h1{font-size:18px;line-height:30px;color:#F1B920;text-align:center;font-weight:bold;}
+.solveBox p{font-size:13px;line-height:30px;color:#FFFFFF;text-align:center;}
+.pushButton1{text-align: center;}
+.pushButton{width:160px;padding:10px 25px;}
+.pushButton a{font-size:15px;font-weight:bold;height:30px;line-height:30px;text-align:center;background-color:#F0BC18;color:#000000;width:160px;display:block;margin-bottom:12px;border-radius:2px;}
+.pushButton a:hover{background-color:#CCCCCC;color:#000000;}
+.questionMenu{margin:20px 0 10px 0;height:35px;float:left;}
+.questionMenu a{font-size:14px;padding:0 35px 0 30px;background-repeat:no-repeat;background-position:center right;height:35px;line-height:35px;color:#EEEEEE;display:block;float:left;filter:alpha(opacity=65);opacity:.65;}
+.questionMenu a:hover{color:#FFFFFF;-moz-background-size:28px;-webkit-background-size:28px;-o-background-size:28px;background-size:28px;filter:alpha(opacity=100);opacity:1.0;}
+
+/*===================== 清除缓存區 ==========================*/
+.ben_menu{position:absolute;margin-left:550px;margin-top:100px;}
+.ben_menu a{display:inline-block;height:35px;line-height:35px;padding:0 12px;color:#575757;font-size:14px;border:1px solid #575757;float:left;margin-left:2px;border-top-left-radius:5px;border-top-right-radius:5px;}
+.ben_menu a:hover{background-color:#0E0E0E;color:#FFFFFF;border:1px solid #FFF;}
+.GoBack{position:absolute;margin-top:50px;margin-left:750px;}
+.GoBack a{display:inline-block;border:1px solid #F0BC18;color:#F0BC18;font-size:14px;padding:8px 20px;}
+.GoBack a:hover{filter:alpha(opacity=65);opacity:.65;}
+.CearCachel{width:987px;padding:10px 0 10px 15px;position:relative;}
+.Text_A1,.Text_A2,.Text_A3,.Text_A4,.Text_A5,.Text_A6,.Text_A7,.Text_A8,.Text_A9{position:absolute;left:580px;padding-right:40px;font-size:16px;color:#FFF8F8;line-height:1.6;}
+.Text_A1 strong,.Text_A2 strong,.Text_A3 strong,.Text_A4 strong,.Text_A5 strong,.Text_A6 strong,.Text_A7 strong,.Text_A8 strong,.Text_A9 strong{color:#FF0004;font-weight:bold;}
+.btn_subMenusubSelected{background-color:#0E0E0E;color:#FFFFFF;border:1px solid #FFF;}
