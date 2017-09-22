@@ -1,4 +1,4 @@
-define([], function () {
+define(['moment'], function (moment) {
     return Class.extend({
         /**
          * 初始化及构造函数，在子类中采用
