@@ -168,8 +168,10 @@ define(['site/plugin/template'], function (Template) {
                     var d = data.code[0];
                     //code代码为100表示成功
                     if (d && d.code && d.code == '100') {
+                        //刷新玩家数据
+                        // $("font#money",parent.document).text(data.balance);
+                        parent.index.refreshPlayer();
                         layer.msg(d.msg, {icon: d.icon});
-                        $("font#money",parent.document).text(data.balance);
                         if($("#bottomInfo .tabs .acti").length>0 && $("#bottomInfo .tabs .acti").data("tab") == 'myBet'){
                             // 刷新我的投注
                             page.getMyOrders();

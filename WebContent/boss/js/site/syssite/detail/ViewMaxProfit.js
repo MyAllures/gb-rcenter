@@ -65,7 +65,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             }
             $("span#hour").text(hour);
             $("span#minute").text(minute);
-            $("#leftTime[data-time]").attr("data-time", time--);
+            $("#leftTime[data-time]").attr("data-time", --time);
         }
     });
 });
