@@ -32,6 +32,121 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $(".import_list").hide();
             $(".btn_list").addClass("btn-outline");
             $(e.currentTarget).unlock();
+        },
+        toImportPlayer:function (e,opt) {
+            var _this = this;
+            window.top.topPage.ajax({
+                url: root + "/userPlayerImport/playerImport.html",
+                success: function (data) {
+                    $("#content-div").html(data);
+                    _this.bindFormValidation();
+                    $("#playerFilename").change(function () {
+                        _this.showFileMsg();
+                    });
+                }
+            });
+        },
+        myValidateForm: function (e,opt) {
+            var f = document.getElementById("playerFilename").files;
+            if(f&&f[0]&&f[0].size&&f[0].size>10240000){
+                var obj = {};
+                obj.currentTarget = $("#playerFilename");
+                page.showPopover(obj, {}, "warning", window.top.message.setting_auto['仅支持'], true);
+                $(e.currentTarget).unlock();
+                return false;
+            }
+            var $form = $(window.top.topPage.getCurrentForm(e));
+            var valid =  !$form.valid || $form.valid();
+            if (!valid) {
+                $(e.currentTarget).unlock();
+                return false;
+            }
+            return true;
+        },
+        showFileMsg: function () {
+            $("#file-div").removeClass("hide");
+            var f = document.getElementById("playerFilename").files;
+            //上次修改时间
+            //alert(f[0].lastModifiedDate);
+            //名称
+            $("#filename-span").html(f[0].name);
+            //大小 字节
+            $("#filesize-span").html(this.bytesToSize(f[0].size));
+            //类型
+            //alert(f[0].type);
+        },
+        bytesToSize: function (bytes) {
+            if (bytes === 0) return '0 B';
+            var k = 1000;
+            sizes = ['B','KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+            i = Math.floor(Math.log(bytes) / Math.log(k));
+            var size = (bytes / Math.pow(k, i));//toFixed
+            size = size.toFixed(1);
+            return  size + " " + sizes[i];
+            //toPrecision(3) 后面保留一位小数，如1.0GB                                                                                                                  //return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+        },
+        doAjax:function(e,btnOption) {
+            var _this=this;
+            var option={
+                cache: false,
+                eventTarget: {currentTarget:e.currentTarget},
+                url:  window.top.root+"/userPlayerImport/saveImport.html",
+                timeout: 300000,
+                beforeSend: function () {
+                    $(".save-import").attr("disabled",true);
+                },
+                error: function(request, state, msg) {
+                    $(e.currentTarget).unlock();
+                    var message = msg;
+                    if(request.responseJSON && request.responseJSON.message){
+                        message = request.responseJSON.message;
+                    }
+                    if (request.status != 601) {
+                        window.top.topPage.showErrorMessage(message);
+                    }
+                    $(e.currentTarget).unlock();
+                    $(".save-import").attr("disabled",false);
+                },
+                success: function(data) {
+                    $("#content-div").html(data);
+                    //$("#formDiv").hide();
+                    //$("#importForm").append(data);
+                    $(e.currentTarget).unlock();
+                    $(".save-import").attr("disabled",false);
+                }
+            };
+            option.type="POST";
+            option.contentType=false;
+            option.processData=false;
+            option.data=_this.getFormData(e,option);
+            option.eventTarget={currentTarget: e.currentTarget};
+            option.eventCall=function(e){
+                window.top.topPage.ajax(option);
+            };
+            window.top.topPage.ajax(option);
+        },
+        getFormData:function(e,o){
+            var data = new FormData();
+            jQuery.each(jQuery('input[type=file]'), function(i, file) {
+                data.append(file.name, file.files[0]);
+            });
+            return data;
+        },
+        playerImportIndex:function (e,opt) {
+            var _this = this;
+            $(".sys_tab_wrap").find("li").removeClass("active");
+            $("#li_top_3").addClass("active");
+            window.top.topPage.ajax({
+                url: root + "/vUserPlayerImport/list.html",
+                success: function (data) {
+                    $("#content-div").html(data);
+                    _this.bindFormValidation();
+                    page.onPageLoad();
+                    if(e){
+                        $(e.currentTarget).unlock();
+                    }
+                }
+            });
         }
     })
 })

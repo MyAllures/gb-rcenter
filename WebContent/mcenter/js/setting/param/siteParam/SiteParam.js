@@ -11,7 +11,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this.formSelector = "form";
             this._super();
             //switch
-            var li = $(".sys_tab_wrap").find("li");
+            /*var li = $(".sys_tab_wrap").find("li");
             var id;
             if (li.length > 0) {
                 var liClass = $(".sys_tab_wrap").find(".active");
@@ -30,7 +30,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 } else if (id == "li_top_3") {
                     this.playerImportIndex(obj);
                 }
-            }
+            }*/
             //this.basicSettingIndex();
         },
         basicSettingIndex:function (e,opt) {
@@ -98,6 +98,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
              * 控件的初始化
              */
             this._super();
+            this.bindPreferenceEvent();
         },
         /**
          * 当前页面所有事件初始化函数
