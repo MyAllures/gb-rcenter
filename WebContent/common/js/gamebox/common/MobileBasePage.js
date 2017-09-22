@@ -78,6 +78,11 @@ define(['moment'], function (moment) {
 
         gotoUrl: function (url) {
             var domain = window.location.origin + '/';
+            if (url.indexOf("?") < 0) {
+                url = url + "?t=" + random;
+            } else {
+                url = url + "&t=" + random;
+            }
             if ((this.os == 'app_android') && url.indexOf('api/detail.') > 0) {
                 window.gamebox.gotoApi(url);
             } else if ((this.os == 'app_android' || this.os == 'app_ios') && url.indexOf("/game.", 0) == -1

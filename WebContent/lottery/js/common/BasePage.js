@@ -125,19 +125,6 @@ define(['moment'], function (moment) {
             var theMoment = moment();
             theMoment._d = date;
             return theMoment.format(format);
-        },
-
-        /**
-         * 将0时区时间转换为用户时区时间
-         * @param date
-         * @param format
-         * @returns {*}
-         */
-        formatToMyDateTime: function (date, format) {
-            var theMoment = moment();
-            theMoment._d = date;
-            theMoment.utcOffset(0, false);
-            return theMoment.utcOffset(window.top.utcOffSet, false).format(format);
         }
     })
 });
