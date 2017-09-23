@@ -1059,7 +1059,7 @@ a.popup-screen-btn:visited{
 .mui-popup .mui-popup-title{background:#fa6200;}
 .mui-popup-inner{background:#fff;}
 .mui-popup-button{font-size:14px;color:#3d4145;}
-.mui-popup-button.mui-popup-button-bold{color:#40AFFE;font-weight:100;}
+.mui-popup-button.mui-popup-button-bold{color:#fa6200;font-weight:100;}
 .mui-popup .layui-m-layercont p{/*text-align:left;*/padding:0 0.25rem;}
 .dialog-reminder-icon i{background-color: #fa6200;}
 
@@ -1273,3 +1273,6 @@ a.popup-screen-btn:visited{
 .middle-content.member-list .mui-navigate-right .iconfont.icon-xinxizhongxin{background-image:url(../images/ico29.png);}
 .middle-content.member-list .mui-navigate-right .iconfont.icon-gonggao{background-image:url(../images/ico30.png);}
 .middle-content.member-list .mui-navigate-right .iconfont.icon-zaixiankefu{background-image:url(../images/ico31.png);}
+i.back {line-height: 2.3rem; color: #fff; font-size: 0.7rem; display: inline-block; position: absolute; top: 1px; left: 24px; width: 36px;}
+a.bet_menu {width:30px; height: 48px; background: url('../images/icon_more.png') center no-repeat; background-size: 20px; margin-right: -5px;}
+div.menu-popover {width: 120px;}

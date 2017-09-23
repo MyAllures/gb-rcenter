@@ -506,7 +506,7 @@ a { color: #fa6200; }
 .home-logo img { height: 100%; }
 .gb-notice { background: #fff; margin-bottom: 5px; border-bottom: 1px solid #ddd; height: auto; padding: 0; }
 .mui-bar-nav .index-action-menu.mui-action-menu { height: 2.2rem; line-height: 2.2rem; }
-.mui-bar-nav.mui-bar .mui-btn { top: 0.5rem; }
+.mui-bar-nav.mui-bar .mui-btn {}
 
 /*自定义内容区域*/
 
