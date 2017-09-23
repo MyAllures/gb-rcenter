@@ -563,7 +563,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
          * @returns {*|jQuery}
          */
         getSiteInfoFormData:function(e,opt){
-          return $("input,textarea","#siteInfoDiv").serialize();
+            return $("input,textarea","#siteInfoDiv").serialize();
         },
         getPCFormData:function (e,opt) {
             return $("input,textarea","#pcCustomService").serialize();
@@ -572,13 +572,16 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             return $("input,textarea","#appDownloadDomain").serialize();
         },
         getAccessDomainFormData:function (e,opt) {
-        return $("input,textarea","#accessDomain").serialize();
-         },
+            return $("input,textarea","#accessDomain").serialize();
+        },
         getMobileFormData:function (e,opt) {
             return $("input,textarea","#mobileCustomService").serialize();
         },
         getValidCodeFormData:function (e, opt) {
             return $("input,textarea","#validCodeDiv").serialize();
+        },
+        getMobileStaticValidateForm:function (e,opt) {
+            return $("input,textarea","#mobileTrafficStatistics").serialize();
         },
         /**
          * 获取统计代码表单
