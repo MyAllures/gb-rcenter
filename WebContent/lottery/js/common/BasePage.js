@@ -115,16 +115,6 @@ define(['moment'], function (moment) {
                 $(".menu_left .list_menu ul li a.Refresh").show();
             }
             $(".con_right .arrows-btn a").attr("opent", "0");
-        },
-        /**
-         * 格式化制定的日期时间
-         * @param date
-         * @param format
-         */
-        formatDateTime: function (date, format) {
-            var theMoment = moment();
-            theMoment._d = date;
-            return theMoment.format(format);
         }
     })
 });
