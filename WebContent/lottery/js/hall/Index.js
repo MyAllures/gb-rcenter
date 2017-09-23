@@ -122,13 +122,13 @@ define(['site/common/BasePage', 'nicescroll'], function (BasePage) {
                 _this.getPage($(this).data("url"));
             });
             $("#refreshMoney").click(function () {
-                this.refreshPlayer();
+                _this.refreshPlayer();
             });
             $(".Account a[data-url]").on("click", function () {
                 _this.getPage($(this).attr("data-url"));
             });
         },
-        refreshPlayer:function(){
+        refreshPlayer : function(){
             ajaxRequest({
                 url: root + '/hall/getAccountAndBalance.html',
                 success: function (data) {
