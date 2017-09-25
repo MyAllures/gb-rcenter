@@ -227,6 +227,8 @@ define([], function () {
                 window.gamebox.goLogin();
             } else if ((sos == 'app_android') && url != domain && url != "/") {
                 window.gamebox.gotoActivity(url);
+            } else if (sos == 'app_ios') {
+                gotoCustom(url);
             } else {
                 if (url.indexOf("?") < 0) {
                     url = url + "?v=" + rcVersion;
