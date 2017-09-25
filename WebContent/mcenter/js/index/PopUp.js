@@ -282,7 +282,7 @@ define(['gb/components/PopUp'], function (PopUp) {
                             dialog.close();
                         }
                     });
-                    window.top.topPage.showWarningMessage(msg);
+                    //window.top.topPage.showWarningMessage(msg);
                 } else if ($("#topSecurity") && $("#topSecurity").length > 0) {
                     window.top.topPage.showWarningMessage(msg);
                 }
