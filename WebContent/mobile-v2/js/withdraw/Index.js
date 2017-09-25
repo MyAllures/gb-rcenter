@@ -325,10 +325,18 @@ define(['common/MobileBasePage'], function (Mobile) {
             var _this = this;
             mui("body").on("tap", "[data-skip]", function() {
                 var target = $(this).data('target');
+                var dos = $(this).data('os');
+                var url = $(this).data('skip');
                 if (_this.os === 'app_android' && typeof target !== 'undefined') {
                     window.gamebox.gotoFragment(target);
+                } else if (dos === 'app_ios') {
+                    if (target || target === 0) {
+                        gotoTab(target);
+                    } else {
+                        gotoGame(url);
+                    }
                 } else {
-                    _this.gotoUrl($(this).data('skip'));
+                    _this.gotoUrl(url);
                 }
             });
         },

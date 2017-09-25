@@ -9,6 +9,7 @@ define(['site/common/BasePage'], function (BasePage) {
 
         onPageLoad: function () {
             this.loadUserInfo();
+            this.iosGoBack();
             var _this = this;
             mui('body').on('tap', '.mui-pull-right a[data-href]', function () {
                 _this.gotoUrl($(this).data('href'));

@@ -11,6 +11,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         init: function () {
             this._super();
             this.muiInit();
+            this.iosGoBack();
         },
         /**
          * 绑定事件
