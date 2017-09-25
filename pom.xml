@@ -108,7 +108,6 @@
                         <exclude>common/js/ueditor/third-party/video-js/video.dev.js</exclude>
                         <exclude>common/js/layer/**/*.*</exclude>
                         <exclude>common/js/dist/clipboard.js</exclude>
-                        <exclude>common/js/dist/bootstrap-switch.js</exclude>
                         <exclude>mcenter/js/content/payaccount/HideSetting.js</exclude>
                         <exclude>mcenter/js/operation/mass.information/editContent.js</exclude>
                         <exclude>mcenter/js/player/agent/resetpwd/ResetPwdIndex.js</exclude>

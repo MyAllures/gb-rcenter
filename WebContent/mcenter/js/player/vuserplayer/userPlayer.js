@@ -11,6 +11,11 @@ define(['common/BaseEditPage','mailAutoComplete'], function (BaseEditPage) {
         },
         onPageLoad: function () {
             this._super();
+            var _this = this;
+            $('[data-toggle="popover"]', _this.formSelector).popover({
+                trigger: 'hover',
+                placement: 'top'
+            });
         },
 
         bindEvent: function () {
