@@ -181,7 +181,7 @@ define(['common/BaseEditPage', 'jqFileInput', 'css!themesCss/fileinput/fileinput
                 mainClass: "input-group",
                 removeLabel: window.top.message.content['floatPic.file.upload.remove'],
                 browseLabel: window.top.message.content['floatPic.file.upload.browse'] + '&hellip;',
-                allowedFileExtensions: ['jpg', 'jpeg', 'png'],
+                allowedFileExtensions: ['jpg', 'jpeg', 'png','gif'],
                 msgInvalidFileExtension: window.top.message.content['floatPic.file.upload.msgInvalidFileExtension'],
                 msgValidationError: window.top.message.content['floatPic.file.upload.msgValidationError'],
                 msgSizeTooLarge: window.top.message.content['floatPic.file.upload.msgSizeTooLarge'],
