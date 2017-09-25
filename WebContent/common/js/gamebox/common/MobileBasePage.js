@@ -78,6 +78,11 @@ define(['moment'], function (moment) {
 
         gotoUrl: function (url) {
             var domain = window.location.origin + '/';
+            if (url.indexOf("?") < 0) {
+                url = url + "?t=" + random;
+            } else {
+                url = url + "&t=" + random;
+            }
             if ((this.os == 'app_android') && url.indexOf('api/detail.') > 0) {
                 window.gamebox.gotoApi(url);
             } else if ((this.os == 'app_android' || this.os == 'app_ios') && url.indexOf("/game.", 0) == -1
@@ -662,7 +667,11 @@ define(['moment'], function (moment) {
                     if (url.indexOf('http') === -1) {
                         url = window.location.origin + url;
                     }
-                    _this.gotoUrl(url);
+                    if (_this.os === 'app_android' && siteType === 'lottery') {
+                        window.gamebox.gotoBet(url);
+                    } else {
+                        _this.gotoUrl(url);
+                    }
                 }
                 return;
             }
@@ -680,8 +689,14 @@ define(['moment'], function (moment) {
                                 if (url.indexOf('http') === -1) {
                                     url = window.location.origin + url;
                                 }
-                                _this.gotoUrl(url);
+                                if (_this.os === 'app_android' && siteType === 'lottery') {
+                                    window.gamebox.gotoBet(url);
+                                } else {
+                                    _this.gotoUrl(url);
+                                }
                             }
+                        } else {
+                            _this.openLayer('转账功能未开启');
                         }
                     } else {
                         _this.openLayer(window.top.message.game_auto['无法登录']);

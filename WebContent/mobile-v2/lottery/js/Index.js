@@ -70,6 +70,7 @@ define(['site/include/BaseIndex', '../js/template', '../js/Zodiac'], function (B
             this.iosBug();
             this.gotoBet();
             this.gotoDemo();
+            this.updateOpenHistoryHref();
         },
         initPage: function () {
             var _this = this;
@@ -223,6 +224,49 @@ define(['site/include/BaseIndex', '../js/template', '../js/Zodiac'], function (B
                 })
             });
         },
+
+        //获取头部信息
+        getHeadInfo: function () {
+            var _this = this;
+            mui.ajax(root + "/getHeadInfo.html", {
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {
+                    if (data.isLogin === true) { //已登录
+                        $('._rightUnLogin').hide();
+                        $('._rightLogin').removeClass('mui-hide').show();
+                        $(".right_username").text(data.name);
+                        if (data.avatar) {
+                            $(".avatar").attr("src", data.avatar);
+                        }
+                        $('.is-login').show();
+                        $('.un-login').hide();
+                        _this.getBalance();
+                    } else { //未登录
+                        $("._rightLogin").hide();
+                        $("._rightUnLogin").show();
+                        $('.is-login').hide();
+                        $('.un-login').show();
+                    }
+                }
+            })
+        },
+        /**
+         * 获取余额
+         */
+        getBalance: function () {
+            mui.ajax(root + '/lottery/hall/getBalance.html', {
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {
+                    $("#_balance").text('￥' + data.balance);
+                }
+            });
+        },
+        updateOpenHistoryHref: function () {
+            var href = $('a._open_lottery').attr('data-href');
+            $('a._open_lottery').attr('data-href', href + "0");
+        }
 
     });
 });

@@ -4913,7 +4913,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 400px !important;
 }
 .chosen-select-add-mid-width{
-  min-width: 100px;
+  min-width: 130px;
 }
 /*#rechargeTotalBegin.form-control,#txTotalBegin.form-control,#txCountBegin.form-control,#operator3.form-control,#rechargeCountBegin.form-control,#rechargeCountBegin.form-control{padding-left: 70px;}
 #rechargeTotalEnd.form-control,#txTotalEnd.form-control,#txCountEnd.form-control,#operator4.form-control,#rechargeCountEnd.form-control,#rechargeCountEnd.form-control{padding-left: 60px;}

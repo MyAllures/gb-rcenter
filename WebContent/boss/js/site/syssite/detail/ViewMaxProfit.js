@@ -24,6 +24,14 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
              * 控件的初始化
              */
             this._super();
+            var _this = this;
+            var leftTime = $(this.formSelector + " #leftTime[data-time]");
+            if (leftTime && leftTime.length > 0) {
+                _this.showLeftTime();
+                var interval = setInterval(function () {
+                    _this.showLeftTime(interval)
+                }, 60 * 1000);
+            }
         },
         /**
          * 当前对象事件初始化函数
@@ -36,6 +44,28 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                 trigger: 'hover',
                 placement: 'top'
             });
+        },
+        showLeftTime: function (interval) {
+            var leftTime = $("#leftTime[data-time]");
+            if ((!leftTime || leftTime.length == 0) && interval) {
+                window.clearInterval(interval);
+                return;
+            }
+            var time = $(leftTime).attr("data-time");
+            if (time < 0 && interval) {
+                window.clearInterval(interval);
+                return;
+            }
+            var tmpTime = Number(time);
+            var hour = Math.floor(tmpTime / 60);
+            tmpTime = tmpTime - hour * 60;
+            var minute = tmpTime;
+            if (minute < 10) {
+                minute = '0' + minute;
+            }
+            $("span#hour").text(hour);
+            $("span#minute").text(minute);
+            $("#leftTime[data-time]").attr("data-time", --time);
         }
     });
 });
