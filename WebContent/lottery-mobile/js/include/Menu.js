@@ -12,6 +12,8 @@ define(['site/plugin/template'], function (Template) {
         },
         onPageLoad: function () {
             this.getHeadInfo();
+            this.iosGoBack();
+            this.refreshBalance();
             if ($("#template_lotteryMenu").length > 0) {
                 mui.ajax(root + "/hall/getLottery.html", {
                     type: 'post',
@@ -22,8 +24,7 @@ define(['site/plugin/template'], function (Template) {
                 })
             }
             if (this.tos === 'app_android') {
-                $('a.bet_menu').hide();
-                $('div.bet_info').show();
+                $('div.middle-content-bat').attr('style', 'top:0');
             }
             if(this.tos == 'app_android' || this.tos == 'app_ios'){
                 $(".mui-scroll-wrapper.middle-content").addClass("app-middle-content");
@@ -67,7 +68,7 @@ define(['site/plugin/template'], function (Template) {
         //获取头部信息
         getHeadInfo: function () {
             var _this = this;
-            if ($(".aside-right-menu").length <= 0) {
+            if ($(".aside-right-menu").length <= 0 && $('a.bet_menu').length <= 0) {
                 return;
             }
             mui.ajax(root + "/getHeadInfo.html", {
@@ -110,17 +111,21 @@ define(['site/plugin/template'], function (Template) {
         gotoFragment: function () {
             var _this = this;
             mui("body").on("tap", "[data-skip]", function () {
-                /* var canvasStatus = mui('#mui-canvas-wrapper').offCanvas().isShown();
-                 if (canvasStatus) {
-                 mui('#mui-canvas-wrapper').offCanvas().close();
-                 }*/
+                var canvasLeft = $('.mui-off-canvas-left').hasClass('mui-active');
+                if (canvasLeft) {
+                    mui('.mui-off-canvas-left').offCanvas('close');
+                }
+                var canvasRight = $('.mui-off-canvas-right').hasClass('mui-active');
+                if (canvasRight) {
+                    mui('.mui-off-canvas-right').offCanvas('close');
+                }
 
                 var target = $(this).data('target');
                 var dos = $(this).data('os');
                 var url = $(this).data('skip');
                 if (_this.tos === 'app_android' && typeof target !== 'undefined') {
                     window.gamebox.gotoFragment(target);
-                } else if (dos === 'app_ios' && target == '0') {
+                } else if (dos === 'app_ios') {
                     gotoTab(target);
                 } else {
                     page.gotoUrl(url);
@@ -144,14 +149,40 @@ define(['site/plugin/template'], function (Template) {
         gotoBet: function () {
             var _this = this;
             mui('body').on('tap', '[data-bet]', function () {
-                /*  var canvasStatus = mui('.canvas-wrapper').offCanvas().isShown();
-                 if (canvasStatus) {
-                 mui('.canvas-wrapper').offCanvas().close();
-                 }*/
                 var href = $(this).data('bet');
-                page.gotoUrl(href);
+                if (_this.tos === 'app_android' && isLotterySite == 'true') {
+                    window.gamebox.gotoBet(window.location.origin + href);
+                } else {
+                    page.gotoUrl(href);
+                }
             });
+        },
+
+        iosGoBack: function () {
+            if (isLotterySite == 'true' && this.tos === 'app_ios' && window.history.length === 1) {
+                $('header').on('tap', '.mui-action-back', function () {
+                    var target = $('input#_from').val();
+                    gotoTab((target === null || target === '') ? 0 : target);
+                })
+            }
+        },
+
+        refreshBalance: function () {
+            var _this = this;
+            mui('.mui-media').on('tap', '#refreshBalance', function () {
+                _this.loadBalance();
+                mui.toast('刷新成功')
+            });
+        },
+
+        loadBalance: function () {
+            var _this = this;
+            mui.ajax('/mine/getBalance.html', {
+                type: 'POST',
+                success: function (data) {
+                    $('font#_balance').text('￥' + data);
+                }
+            })
         }
     });
 });
-

@@ -2,7 +2,7 @@
  * Created by eagle on 15-9-10.
  */
 
-define(['common/BaseListPage'], function (BaseListPage) {
+define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
     return BaseListPage.extend({
 
@@ -16,7 +16,10 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $('.help-popover').popover();
         },
         bindEvent:function () {
-            
+            this._super();
+            $(this.formSelector).on("click",".dropdown-menu-stop", function (event) {
+                event.stopPropagation();//阻止事件向上冒泡
+            });
         },
         querySearchCondition:function () {
             /**<li role="presentation">
@@ -44,7 +47,16 @@ define(['common/BaseListPage'], function (BaseListPage) {
 
                 }
             })
-        }
+        },
+        /**
+         * 保存或更新前验证
+         * @param e   事件对象
+         * @return 验证是否通过
+         */
+        validateForm: function (e) {
+            var $form = $(window.top.topPage.getCurrentForm(e));
+            return !$form.valid || $form.valid();
+        },
     });
 
 });
