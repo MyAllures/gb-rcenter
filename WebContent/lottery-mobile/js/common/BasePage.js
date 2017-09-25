@@ -106,7 +106,6 @@ define([], function () {
             $(window).bind('orientationchange', function (e) {
                 _this.resetScreen();
             });
-            this.goBack();
         },
         /**
          * 绑定事件
@@ -221,13 +220,11 @@ define([], function () {
             var _this = this;
             var sos = this.whatOs();
             var domain = window.location.origin + '/';
-            if (url.indexOf("commonLogin.html") > 0 && sos == 'app_ios') { //如果是登录页面
-                gotoCustom("/login/commonLogin.html");
-            } else if (url.indexOf("commonLogin.html") > 0 && sos == 'app_android') {
+            if (url.indexOf("/commonLogin.htm") > 0 && sos == 'app_android') {
                 window.gamebox.goLogin();
-            } else if ((sos == 'app_android') && url != domain && url != "/") {
+            } else if ((sos === 'app_android') && url != domain && url != "/") {
                 window.gamebox.gotoActivity(url);
-            } else if (sos == 'app_ios') {
+            } else if (sos === 'app_ios') {
                 gotoCustom(url);
             } else {
                 if (url.indexOf("?") < 0) {
@@ -310,17 +307,6 @@ define([], function () {
             }
         },
         /**
-         *ios顶部后退
-         */
-        goBack: function () {
-            var _this = this;
-            if (_this.os == 'app_ios') {
-                mui("body").on("tap", "[class*='mui-action-back']", function () {
-                    goBack();
-                });
-            }
-        },
-        /**
          * 手机屏幕方向
          * @returns {boolean}
          */
@@ -367,6 +353,24 @@ define([], function () {
             setTimeout(function () {
                 $("#loadingPopover").removeClass('mui-active');
             }, 1000);
+        },
+
+        iosGoBack: function () {
+            var sos = this.whatOs();
+            if (sos == 'app_ios' && window.history.length == 1) {
+                $('header').on('tap', '.mui-action-back', function () {
+                    var canvasRight = $('.mui-off-canvas-right').hasClass('mui-active');
+                    if (canvasRight) {
+                        mui('.mui-off-canvas-right').offCanvas('close');
+                    }
+                    var target = $('input#_from').val();
+                    if (target) {
+                        gotoTab(target);
+                    } else {
+                        goBack();
+                    }
+                })
+            }
         }
     })
 });
