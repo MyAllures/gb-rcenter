@@ -56,6 +56,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                     t.gotoUrl($(this).data('url'));
                 }
             });
+            this.updateOpenHistoryHref();
         },
         getUserInfo: function () {
             mui.ajax(root + "/mine/userInfo.html", {
@@ -136,6 +137,11 @@ define(['common/MobileBasePage'], function (Mobile) {
             mui('.c_setting').on('tap', 'button', function () {
                 window.gamebox.setting();
             })
+        },
+
+        updateOpenHistoryHref: function () {
+            var href = $('a._open_lottery').attr('data-href');
+            $('a._open_lottery').attr('data-href', href + "4");
         }
 
     });

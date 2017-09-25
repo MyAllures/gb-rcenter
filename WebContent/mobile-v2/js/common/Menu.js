@@ -43,7 +43,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                 type: 'POST',
                 success: function (data) {
                     if (data.isLogin == true) { //已登录
-                        $("#username").text(data.name);
+                        $(".right_username").text(data.name);
                         isLogin = 'true';
                         $(".is-login").show();
                         $(".un-login").hide();
@@ -62,18 +62,14 @@ define(['common/MobileBasePage'], function (Mobile) {
         gotoFragment : function () {
             var _this = this;
             mui("body").on("tap", "[data-skip]", function() {
-                var canvasStatus = mui('.canvas-wrapper').offCanvas().isShown();
+                var canvasStatus = mui('.mui-off-canvas-right').offCanvas().isShown();
                 if (canvasStatus) {
-                    mui('.canvas-wrapper').offCanvas().close();
+                    mui('.mui-off-canvas-right').offCanvas('close');
                 }
 
                 var target = $(this).data('target');
                 var dos = $(this).data('os');
                 var url = $(this).data('skip');
-                if($(this).data("auto")) {
-                    _this.autoLoginPl(url);
-                    return;
-                }
                 if (_this.os === 'app_android' && typeof target !== 'undefined') {
                     window.gamebox.gotoFragment(target);
                 } else if (dos === 'app_ios') {
@@ -105,6 +101,7 @@ define(['common/MobileBasePage'], function (Mobile) {
             var _this = this;
             mui('.mui-media').on('tap', '#refreshBalance', function () {
                 _this.loadBalance();
+                _this.toast('刷新成功')
             });
         },
 
@@ -112,7 +109,7 @@ define(['common/MobileBasePage'], function (Mobile) {
             mui.ajax(root + '/mine/getBalance.html', {
                 type: 'POST',
                 success: function (data) {
-                    $('font#_balance').text(data);
+                    $('font#_balance').text('￥' + data);
                 }
             })
         }

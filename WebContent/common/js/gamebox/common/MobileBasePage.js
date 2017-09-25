@@ -667,7 +667,11 @@ define(['moment'], function (moment) {
                     if (url.indexOf('http') === -1) {
                         url = window.location.origin + url;
                     }
-                    _this.gotoUrl(url);
+                    if (_this.os === 'app_android' && siteType === 'lottery') {
+                        window.gamebox.gotoBet(url);
+                    } else {
+                        _this.gotoUrl(url);
+                    }
                 }
                 return;
             }
@@ -685,8 +689,14 @@ define(['moment'], function (moment) {
                                 if (url.indexOf('http') === -1) {
                                     url = window.location.origin + url;
                                 }
-                                _this.gotoUrl(url);
+                                if (_this.os === 'app_android' && siteType === 'lottery') {
+                                    window.gamebox.gotoBet(url);
+                                } else {
+                                    _this.gotoUrl(url);
+                                }
                             }
+                        } else {
+                            _this.openLayer('转账功能未开启');
                         }
                     } else {
                         _this.openLayer(window.top.message.game_auto['无法登录']);
