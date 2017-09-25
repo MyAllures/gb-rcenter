@@ -147,7 +147,7 @@ define(['gb/components/PopUp'], function (PopUp) {
             window.top.popUp.playerNoticeVoice();
         },
         //只播放类型 为notice的声音
-        playerNoticeVoice:function () {
+        playerNoticeVoice: function () {
             window.top.popUp.queryTones();
             var tones = window.top.tones;
             //声音集合
@@ -262,6 +262,26 @@ define(['gb/components/PopUp'], function (PopUp) {
                 var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), window.top.dateFormat.daySecond);
                 msg = msg.replace("${leftTime}", date);
                 if (rate >= 100) { //达到100%时 所有账号都提醒
+                    var dialog = BootstrapDialog.show({
+                        title: '消息',
+                        message: msg,
+                        buttons: [{
+                            label: '去充值',
+                            action: function (dialog) {
+                                dialog.close();
+                                $("#mainFrame").load(root + "/credit/pay/pay.html");
+                            }
+                        }, {
+                            label: '取消',
+                            cssClass: 'btn-primary',
+                            action: function (dialog) {
+                                dialog.close();
+                            }
+                        }],
+                        onhidden: function (dialog) {
+                            dialog.close();
+                        }
+                    });
                     window.top.topPage.showWarningMessage(msg);
                 } else if ($("#topSecurity") && $("#topSecurity").length > 0) {
                     window.top.topPage.showWarningMessage(msg);
