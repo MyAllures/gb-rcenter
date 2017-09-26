@@ -57,6 +57,10 @@ define(['site/plugin/template'], function (Template) {
             });
 
             mui("body").on('tap', "button.user-login", function () {
+                var canvasRight = $('.mui-off-canvas-right').hasClass('mui-active');
+                if (canvasRight) {
+                    mui('.mui-off-canvas-right').offCanvas('close');
+                }
                 page.gotoUrl("/login/commonLogin.html");
             });
 
