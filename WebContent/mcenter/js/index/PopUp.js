@@ -1,4 +1,4 @@
-define(['gb/components/PopUp'], function (PopUp) {
+define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDialog) {
 
     return PopUp.extend({
         tones: null,
