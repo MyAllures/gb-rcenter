@@ -367,7 +367,7 @@ define(['site/hall/trendchart/LotteryTrendChart'], function (LotteryTrendChart) 
 
 
 
-
+            var datalength = data.length-1;
             for(var i = 0; i < 3; ++i) {
                 for(var j = 0; j < 10; ++j) {
                     var obj = yilou[i][j];
@@ -380,16 +380,20 @@ define(['site/hall/trendchart/LotteryTrendChart'], function (LotteryTrendChart) 
 
                         if(tmpValue != j) { // 遗漏
                             tmpYlCs++;
-                            if(tmpLcCs > obj.maxLcCs) {
-                                obj.maxLcCs = tmpLcCs;
-                            }
                             tmpLcCs = 0;
+                            if (index==datalength){
+                                obj.ylArr.push(tmpYlCs);
+                            }
                         } else { // 中
                             obj.cxCs++;
                             tmpLcCs++;
-
-                            obj.ylArr.push(tmpYlCs);
+                            if(tmpYlCs !=0){
+                                obj.ylArr.push(tmpYlCs);
+                            }
                             tmpYlCs = 0;
+                        }
+                        if(tmpLcCs > obj.maxLcCs) {
+                            obj.maxLcCs = tmpLcCs;
                         }
                     });
                 }

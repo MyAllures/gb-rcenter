@@ -444,7 +444,7 @@ define(['site/common/BasePage'], function (BasePage) {
                     };
                 }
             }
-
+            var datalength = data.length-1;
             for(var i =0; i < 5; ++i) {
                 for(var j = 0; j < 10; ++j) {
                     var obj = yilou[i][j];
@@ -457,16 +457,20 @@ define(['site/common/BasePage'], function (BasePage) {
 
                         if(tmpValue != j) { // 遗漏
                             tmpYlCs++;
-                            if(tmpLcCs > obj.maxLcCs) {
-                                obj.maxLcCs = tmpLcCs;
-                            }
                             tmpLcCs = 0;
+                            if (index==datalength){
+                                obj.ylArr.push(tmpYlCs);
+                            }
                         } else { // 中
                             obj.cxCs++;
                             tmpLcCs++;
-
-                            obj.ylArr.push(tmpYlCs);
+                            if(tmpYlCs !=0){
+                                obj.ylArr.push(tmpYlCs);
+                            }
                             tmpYlCs = 0;
+                        }
+                        if(tmpLcCs > obj.maxLcCs) {
+                            obj.maxLcCs = tmpLcCs;
                         }
                     });
                 }
@@ -573,8 +577,8 @@ define(['site/common/BasePage'], function (BasePage) {
                 for(var j = 0; j < 10; ++j) {
                     var tmpCount = 0;
                     var obj = $(".i_" + i + "_" + j + " i");
-                    for(var k = obj.length - 1; k >= 0; --k) {
-                        var tmpObj = $(obj).eq(k);
+                    for(var k = Number($("ul.search-right div.xuan a").attr("data-num")) - 1; k >= 0; --k) {
+                        var tmpObj = $(obj)[k];
                         if(typeof $(tmpObj).data('num') == 'undefined') {
                             $(tmpObj).parent().addClass("ylfc")
                         } else {

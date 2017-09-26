@@ -109,23 +109,28 @@ define(['site/hall/trendchart/LotteryTrendChart'], function (LotteryTrendChart) 
 
                  var tmpYlCs = 0; // 连续遗漏次数
                  var tmpLcCs = 0; // 连出次数
+                 var datalength = data.length-1;
                  $.each(data, function(index, value) {
                      var openCodeArr = value.openCode.split(",");
                      var tmpValue = Tools.parseInt(openCodeArr[i]);
 
-                     if(tmpValue != j + 1) { // 遗漏
+                     if(tmpValue != j + 1 ) { // 遗漏
                          tmpYlCs++;
-                         if(tmpLcCs > obj.maxLcCs) {
-                             obj.maxLcCs = tmpLcCs;
-                         }
                          tmpLcCs = 0;
+                         if (index==datalength){
+                             obj.ylArr.push(tmpYlCs);
+                         }
                      } else { // 中
                          obj.cxCs++;
                          tmpLcCs++;
-
+                         if(tmpYlCs !=0){
                          obj.ylArr.push(tmpYlCs);
+                         }
                          tmpYlCs = 0;
                      }
+                         if(tmpLcCs > obj.maxLcCs) {
+                             obj.maxLcCs = tmpLcCs;
+                         }
                  });
              }
          }
