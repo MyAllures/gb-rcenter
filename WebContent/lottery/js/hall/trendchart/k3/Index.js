@@ -9,7 +9,7 @@ define(['site/hall/trendchart/LotteryTrendChart'], function (LotteryTrendChart) 
             for(var i = 0; i < data.length; i++) {
                 // qihao
                 str += '<div class="cl-30 clean">';
-                str += '<div class="left cl-31 number">' + this.formatDateTime(new Date(data[i].openTime), "yyyy-mm-dd HH:mm:ss") + '</div>';
+                str += '<div class="left cl-31 number">' + this.formatDateTime(new Date(data[i].openTime), "yyyy-MM-dd HH:mm:ss") + '</div>';
                 str += '<div class="left cl-31 number">' + data[i].expect + '</div>';
                 str += '<div class="left cl-32 openCode">' + data[i].openCode + '</div>';
                 var kjData = data[i].openCode.split(",");
