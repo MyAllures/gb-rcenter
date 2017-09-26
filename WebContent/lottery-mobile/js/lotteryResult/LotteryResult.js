@@ -1,5 +1,5 @@
 define(['site/common/BasePage', 'site/plugin/template', "site/lotteryResult/Zodiac"], function (BasePage, Template, Zodiac) {
-    t:null;
+    null;
     return BasePage.extend({
         noreCode: '<div class="mui-content"> <div class="no-data-img no-record"></div> </div>',
         freshTime: null,
@@ -14,6 +14,7 @@ define(['site/common/BasePage', 'site/plugin/template', "site/lotteryResult/Zodi
         },
         onPageLoad: function () {
             var _this = this;
+            this.iosGoBack();
             //禁用侧滑手势
             if (document.querySelector('.mui-inner-wrap')) {
                 document.querySelector('.mui-inner-wrap').addEventListener('drag', function (e) {

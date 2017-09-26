@@ -47,6 +47,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             }, 1000);
             this.getOpenHistory();
             this.muiInit();
+            this.iosGoBack();
             if(this.os == 'pc') {
                 //已应对在h5下金额输入框不能输入
                 $("input#inputMoney").focus();

@@ -62,7 +62,12 @@ define(['common/MobileBasePage'], function (Mobile) {
         gotoFragment : function () {
             var _this = this;
             mui("body").on("tap", "[data-skip]", function() {
-                var canvasStatus = mui('.mui-off-canvas-right').offCanvas().isShown();
+                var canvasStatus;
+                if (mui('.mui-off-canvas-right').length > 0) {
+                    canvasStatus = mui('.mui-off-canvas-right').offCanvas().isShown();
+                } else if (mui('.mui-off-canvas-left').length > 0) {
+                    canvasStatus = mui('.mui-off-canvas-left').offCanvas().isShown();
+                }
                 if (canvasStatus) {
                     mui('.mui-off-canvas-right').offCanvas('close');
                 }
