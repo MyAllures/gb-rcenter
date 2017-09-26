@@ -20,7 +20,7 @@ define([], function () {
             mui.ajaxSettings.error = function (error, type, xhr, settings) {
                 var status = error.getResponseHeader("headerStatus") || error.status;
                 if (status == 600) {//Session过期 跳转登录页面
-                    _this.gotoUrl(root + "/login/commonLogin.html");
+                    _this.gotoUrl("/login/commonLogin.html");
                 } else if (status == 606) {// 踢出
                     _this.gotoUrl(root + "/errors/" + status + ".html");
                     /* mui.toast("您已被強制踢出,如有任何疑問，請與我們聯絡");

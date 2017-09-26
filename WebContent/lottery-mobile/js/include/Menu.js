@@ -57,7 +57,11 @@ define(['site/plugin/template'], function (Template) {
             });
 
             mui("body").on('tap', "button.user-login", function () {
-                page.gotoUrl(root + "/login/commonLogin.html");
+                var canvasRight = $('.mui-off-canvas-right').hasClass('mui-active');
+                if (canvasRight) {
+                    mui('.mui-off-canvas-right').offCanvas('close');
+                }
+                page.gotoUrl("/login/commonLogin.html");
             });
 
             this.gotoBet();
