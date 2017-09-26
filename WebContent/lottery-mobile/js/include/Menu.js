@@ -57,7 +57,7 @@ define(['site/plugin/template'], function (Template) {
             });
 
             mui("body").on('tap', "button.user-login", function () {
-                page.gotoUrl(root + "/login/commonLogin.html");
+                page.gotoUrl("/login/commonLogin.html");
             });
 
             this.gotoBet();
