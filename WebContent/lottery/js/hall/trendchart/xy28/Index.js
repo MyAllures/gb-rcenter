@@ -408,8 +408,8 @@ define(['site/hall/trendchart/LotteryTrendChart'], function (LotteryTrendChart) 
          }
      },
         setzhifang: function (yData,option,data) {
-            for(var i = 1; i <= 10; ++i) {
-                yData[i - 1] = 0;
+            for(var i = 0; i <= 9; ++i) {
+                yData[i ] = 0;
                 option.xAxis.data.push(i);
             }
             $.each(data, function(index, value) {
@@ -418,7 +418,7 @@ define(['site/hall/trendchart/LotteryTrendChart'], function (LotteryTrendChart) 
 
                 for(var i = 0; i < arr.length; ++i) {
                     //                console.log(parseInt(arr[i]));
-                    yData[parseInt(arr[i] - 1)]++;
+                    yData[parseInt(arr[i] )]++;
                 }
             });
     },
