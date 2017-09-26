@@ -29,7 +29,11 @@ define(['common/MobileBasePage'], function (Mobile) {
                         $submit.text(window.top.message.promo_auto['抢红包']);
                     }
                     $submit.on("tap", function () {
-                        t.joinPromo(this);
+                        if (isDemo == 'true') {
+                            t.alert('试玩账号无权限参与活动');
+                        } else {
+                            t.joinPromo(this);
+                        }
                     });
                 }
                 t.changeApplyStatus();

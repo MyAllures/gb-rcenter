@@ -211,8 +211,9 @@ define(['site/include/BaseIndex', '../js/template', '../js/Zodiac'], function (B
                          if (_this.os === 'app_ios') {
                             demoEnter();
                          } else {
-                             mui.ajax('/lotteryDemo/demoAccount.html', {
+                             mui.ajax('/demo/lottery.html', {
                                  dataType: 'json',
+                                 type: 'POST',
                                  success: function (data) {
                                      if (data) {
                                          _this.gotoUrl('/mainIndex.html');
