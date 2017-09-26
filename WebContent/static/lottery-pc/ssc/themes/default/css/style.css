@@ -2057,3 +2057,23 @@ i.bg-1,i.bg-2,i.bg-3,i.bg-4,i.bg-5,i.bg-6,i.bg-7,i.bg-8,i.bg-9,i.bg-10{border-ra
 
 /*蓝波*/
 .lhc-num[num="3"].bg-yellow .pl, .lhc-num[num="4"].bg-yellow .pl, .lhc-num[num="9"].bg-yellow .pl, .lhc-num[num="03"].bg-yellow .pl, .lhc-num[num="04"].bg-yellow .pl, .lhc-num[num="09"].bg-yellow .pl, .lhc-num[num="10"].bg-yellow .pl, .lhc-num[num="14"].bg-yellow .pl, .lhc-num[num="15"].bg-yellow .pl, .lhc-num[num="20"].bg-yellow .pl, .lhc-num[num="25"].bg-yellow .pl, .lhc-num[num="26"].bg-yellow .pl, .lhc-num[num="31"].bg-yellow .pl, .lhc-num[num="36"].bg-yellow .pl, .lhc-num[num="37"].bg-yellow .pl, .lhc-num[num="41"].bg-yellow .pl, .lhc-num[num="42"].bg-yellow .pl, .lhc-num[num="47"].bg-yellow .pl, .lhc-num[num="48"].bg-yellow .pl { background-color: #48a0de;  border: 1px solid #48a0de; }
+
+.hx-list strong{
+    background: #fff;
+    border: 1px #ccc solid;
+    box-shadow: 1px 1px 1px #ccc;
+    width: 19px;
+    height: 19px;
+    line-height: 19px;
+    display: inline-block;
+    vertical-align: middle;
+    color: #383737;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0 auto;
+    margin-right: 10px;
+}
+.hx-list input{
+	position: absolute;
+	opacity: 0;
+}
