@@ -292,7 +292,7 @@ define(['common/BaseEditPage','jstree','css!themesCss/jquery/plugins/jquery.jstr
                         $currentRoleTree.jstree("destroy");
                         that.getResource(null,{post:roleId})
                     }
-                    //$(event.currentTarget).unlock();
+                    $(event.currentTarget).unlock();
                     //that.query(event,option);
                 }
             });
