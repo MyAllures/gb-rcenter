@@ -97,7 +97,7 @@ mui("body").on("tap","button.try",function(){
              if (os === 'app_ios') {
                 demoEnter();
              } else {
-                 mui.ajax('/lotteryDemo/demoAccount.html', {
+                 mui.ajax('/demo/lottery.html', {
                      dataType: 'json',
                      success: function (data) {
                          if (data) {
