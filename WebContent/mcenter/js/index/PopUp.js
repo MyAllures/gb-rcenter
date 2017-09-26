@@ -261,7 +261,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 msg = msg.replace("${rate}", rate);
                 var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), window.top.dateFormat.daySecond);
                 msg = msg.replace("${leftTime}", date);
-                if (rate >= 80) { //所有账号都提醒
+                if (rate >= 100) { //所有账号都提醒
                     var dialog = BootstrapDialog.show({
                         title: '消息',
                         message: msg,
@@ -282,6 +282,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                             dialog.close();
                         }
                     });
+                } else if ($("#topSecurity") && $("#topSecurity").length > 0) {
+                    window.top.topPage.showWarningMessage(msg);
                 }
             }
 
