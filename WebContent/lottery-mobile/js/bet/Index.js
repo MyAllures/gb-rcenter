@@ -9,7 +9,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         noreCode: '<div class="mui-content"> <div class="no-data-img no-record"></div> </div>',
         timeCode: "today",
         //记录当前页数,投注额度等信息
-        bet: new Array(),
+        bet: [],
         /**
          * 初始化
          */
@@ -18,6 +18,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             _this = this;
             //mui初始化
             this.muiInit();
+            this.iosGoBack();
             mui('#betContent').pullRefresh({
                 container: '#betContent',
                 up: {
@@ -126,13 +127,13 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 var et = $("#endTime").val();
                 var myDate = new Date();
                 if (new Date(et).getTime() > myDate.getTime()) {
-                    _this.toast("请重新选择时间！")
+                    _this.toast("请重新选择时间！");
                     return;
                 }
                 var dayOfMonth = myDate.getDate();
                 myDate.setDate(dayOfMonth - 41);
                 if (new Date(st).getTime() < myDate.getTime()) {
-                    _this.toast("请重新选择时间！")
+                    _this.toast("请重新选择时间！");
                     return;
                 }
 

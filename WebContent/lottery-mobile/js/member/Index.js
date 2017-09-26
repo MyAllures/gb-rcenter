@@ -13,6 +13,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         onPageLoad: function () {
              t = this;
             this.getUserInfo();
+            this.iosGoBack();
         },
 
 
