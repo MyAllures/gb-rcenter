@@ -16,6 +16,28 @@ define(['common/BaseListPage'], function (BaseListPage) {
         },
         onPageLoad: function () {
             this._super();
+        },
+        payout:function (e, option) {
+            var siteId=$("#siteId").val();
+            var code=$("[name='code']").val();
+            var expect=$("[name='expect']").val();
+            var $target = $(e.currentTarget);
+            window.top.topPage.ajax({
+                type: "post",
+                url: root + '/lotteryPayoutRecord/payout.html',
+                data: {'search.siteId': siteId,"search.code":code,"search.expect":expect},
+                success: function (data) {
+                    data=eval("("+data+")");
+                    var msg=data.msg;
+                    var state=data.state;
+                    if (data.state == true) {
+                        e.page.showPopover(e, option, 'success', msg, true);
+                    }else {
+                        e.page.showPopover(e, option, 'danger', msg, true);
+                    }
+                    $target.unlock();
+                }
+            })
         }
     });
 });

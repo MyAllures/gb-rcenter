@@ -27,6 +27,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 }
             });
             this.bindEvent();
+            this.iosGoBack();
             _this.getLotteryResult(true);
         },
 

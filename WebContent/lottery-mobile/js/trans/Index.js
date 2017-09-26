@@ -6,7 +6,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
     return BasePage.extend({
         timeCode : "today",
         //记录当前页数,交易记录等信息
-        trans : new Array(),
+        trans : [],
 
          _this:null,
          noreCode:'<div class="mui-content"> <div class="no-data-img no-record"></div> </div>',
@@ -16,6 +16,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         init: function () {
             this._super();
             this.muiInit();
+            this.iosGoBack();
             mui('#transContent').pullRefresh({
                 container: '#transContent',
                 up: {
@@ -74,13 +75,13 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                var et=$("#endTime").val();
                var myDate = new Date();
                if(new Date(et).getTime()>myDate.getTime()){
-                   _this.toast("请重新选择时间！")
+                   _this.toast("请重新选择时间！");
                    return ;
                }
                 var dayOfMonth = myDate.getDate();
                 myDate.setDate(dayOfMonth - 41);
                if(new Date(st).getTime()<myDate.getTime()){
-                   _this.toast("请重新选择时间！")
+                   _this.toast("请重新选择时间！");
                    return;
                }
 

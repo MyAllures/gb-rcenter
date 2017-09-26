@@ -1026,7 +1026,7 @@ a.popup-screen-btn:visited{
 .aside-right-menu .mui-table-view-cell{padding:0.2rem 0.75rem;}
 .aside-right-menu.mui-table-view-inverted:after{background:none;}
 .aside-right-menu .mui-table-view-cell:after{background:none;}
-.aside-right-menu.mui-table-view .mui-table-view-cell .mui-media-object{line-height:50px;width:50px;height:50px;}
+.aside-right-menu.mui-table-view .mui-table-view-cell .mui-media-object{line-height:50px;width:50px;height:50px; max-width: 50px;}
 .aside-right-menu.mui-table-view .mui-table-view-cell .mui-ellipsis{margin-top:16px;color:#fff;}
 .aside-right-menu.mui-table-view .mui-table-view-cell .mui-ellipsis font{color:#ffea00;font-size:12px;display:inline-block;margin-right:2px;max-width:63px;vertical-align:bottom;overflow:hidden;text-overflow:ellipsis;}
 .aside-right-menu .mui-table-view-cell .mui-icon-refreshempty{left:200px;background-image:url(../images/hico36.png);background-position:10px 37px;background-repeat:no-repeat;background-size:30%;}
