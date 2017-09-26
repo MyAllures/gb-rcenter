@@ -4,8 +4,10 @@
 define(['site/include/BaseIndex', '../js/template', '../js/Zodiac'], function (BaseIndex, Template, Zodiac) {
     var isLoad = false;
     return BaseIndex.extend({
+        zodiac: null,
         init: function () {
             this._super();
+            this.zodiac = new Zodiac();
             mui(document.body).on('tap', '.index-action-menu', function () {
                 mui('.mui-off-canvas-wrap').offCanvas('show');
             });
@@ -152,25 +154,28 @@ define(['site/include/BaseIndex', '../js/template', '../js/Zodiac'], function (B
 
         /** 查询开奖结果 */
         getOpenResult: function () {
+            var _this = this;
             mui.ajax(root + "/lotteryResult/getOpenResult.html", {
                 type: "post",
                 dataType: "json",
                 success: function (data) {
-                    if (data.length > 0) {
+                    if (data && data.length > 0) {
                         for (var i = 0; i < data.length; i++) {
                             var ball = [];
                             var sx = [];
-                            var spBall = data[i].openCode.split(",");
-                            for (var j = 0; j < spBall.length; j++) {
-                                ball.push(spBall[j]);
-                                if (data[i].type === "lhc") {
-                                    var num = parseInt(spBall[j]);
-                                    sx.push(Zodiac(num));
+                            if (data[i].openCode) {
+                                var spball = data[i].openCode.split(",");
+                                for (var j = 0; j < spball.length; j++) {
+                                    ball.push(spball[j]);
+                                    if (data[i].type == "lhc") {
+                                        sx.push(_this.zodiac.getSxName(spball[j]));
+                                    }
                                 }
+                                data[i].sx = sx;
+                                data[i].ball = ball;
                             }
-                            data[i].sx = sx;
-                            data[i].ball = ball;
                         }
+
                         var html = Template('template_myLotteryTemplate', {list: data});
                         $("ul._result").html(html);
                     }
