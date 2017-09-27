@@ -24,12 +24,7 @@ define(['site/plugin/template'], function (Template) {
             this.bindTdInput();
             //下注
             $("#subContent .btns button[type='submit']").click(function () {
-                try{
-                    $(this).attr("disabled","disabled");
-                    _this.placeOrder();
-                }finally {
-                    $(this).removeAttr("disabled");
-                }
+                _this.placeOrder();
             });
             // 重置按钮
             $("#subContent .btns .btn-2").click(function () {
@@ -167,6 +162,7 @@ define(['site/plugin/template'], function (Template) {
                 beforeSend: function () {
                     layer.closeAll();
                     page.showLoading();
+                    $("button[type=submit]").attr("disabled","disabled");
                 },
                 success: function (data) {
                     var d = data.code[0];
@@ -187,6 +183,7 @@ define(['site/plugin/template'], function (Template) {
                     }
                 },
                 complete: function () {
+                    $("button[type=submit]").removeAttr("disabled");
                     page.hideLoading();
                 }
             });
