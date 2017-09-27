@@ -128,7 +128,6 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                 content += '<p><span>[&nbsp;' + title+'-'+ value + '&nbsp;]</span><span>&nbsp;@' + odd + '&nbsp;X&nbsp;' + betAmount + '</span></p>';
             });
 
-            console.info(betForm.betOrders);
             // 询问框
             layer.confirm(content, {
                 btn: ['确认', '取消'], //按钮
