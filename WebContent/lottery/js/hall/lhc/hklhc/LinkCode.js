@@ -71,8 +71,6 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                         betAmount: $("#inputMoney").val(),
                         memo: $(this).attr("data-name")
                     });
-                    /*betForm.totalMoney = add(betForm.totalMoney, betAmount);
-                    betForm.quantity = add(betForm.quantity, 1);*/
                 }
             });
             return betForm;
