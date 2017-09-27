@@ -1641,3 +1641,65 @@ div.scroll{overflow-x:hidden;overflow-y:hidden;white-space:pre-wrap;word-wrap:br
   right: 0;
   left: auto;
 }
+
+/*数字货币存款*/
+.account-list .sc-left-warp{
+	display: inline-block;
+	vertical-align: middle;
+	width: 120px;
+    text-align: center;
+}
+.account-list .sc-left-warp img{
+	width: 66px;
+}
+.account-list .sc-right-warp{
+	display: inline-block;
+	width: 810px;
+}
+.account-list .sc-right-warp .st-r-tit{
+	height:52px;
+	border-bottom: 1px solid #e1e2e4;
+}
+.account-list .sc-right-warp .st-r-tit .s-title{
+	float: left;
+	height:52px;
+	line-height: 50px;
+	font-size: 18px;
+	font-weight: 600;
+}
+.account-list .sc-right-warp .st-r-tit .s-yue{
+	float: right;
+	height:52px;
+	line-height: 50px;
+}
+.account-list .sc-right-warp .st-r-tit .s-yue button{
+	margin-left: 5px;
+}
+.account-list .sc-right-warp .st-r-gn{
+	padding: 15px 0;
+}
+.account-list .sc-right-warp .st-r-gn .title{
+	margin-bottom: 10px;
+	height: 32px;
+	line-height: 32px;
+}
+
+.account-list .sc-right-warp .st-r-gn .sao-ewm,.account-list .sc-right-warp .st-r-gn .lzdz{display: inline-block;vertical-align: top;}
+.account-list .sc-right-warp .st-r-gn .sao-ewm{
+	margin-right: 10px;
+}
+.st-r-gn .sao-ewm span,.st-r-gn .lzdz span{display: block;}
+.st-r-gn .sao-ewm .ewm-img{
+	border: 1px solid #cecfd0;
+    padding: 10px;
+    height: 104px;
+    width: 104px;
+}
+.st-r-gn .sao-ewm .ewm-img img{width: 104px;}
+
+.st-r-gn .lzdz .textarea{
+	resize: none;
+	width: 500px;
+    height: 104px;
+    margin-bottom: 0;
+}
