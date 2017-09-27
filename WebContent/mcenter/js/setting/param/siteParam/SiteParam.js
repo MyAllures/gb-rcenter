@@ -62,6 +62,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
              * 控件的初始化
              */
             this._super();
+            this.bindSiteParamEvent();
         },
         /**
          * 当前页面所有事件初始化函数
