@@ -72,6 +72,7 @@ define(['common/BaseEditPage','mailAutoComplete'], function (BaseEditPage) {
                 if(!$batchInput.hasClass("error")){
                     $('._batch').val($batchInput_val)
                     var self = 100 - $batchInput_val;
+                    self = self.toFixed(2);
                     /*不是NaN*/
                     self === self && $('._self').text(self+"%");
                 }
