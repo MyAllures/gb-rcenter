@@ -21,7 +21,6 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                 $(this).addClass("active");
                 var subCode = $(this).attr("subCode");
                 var title = $(this).text();
-                $("#current_lhc").val(title);
                 $("#lhc_title").text(title);
 
                 ajaxRequest({
@@ -155,21 +154,14 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                 betNumArr.push(betForm.betOrders[index].betNum);
             }
             //组合数组
-            var combinationArr = queue(betNumArr, minNum);
-            //排列数组
-            var arrangementArr = new Array();
+            var chooseArr = this.choose(betNumArr, minNum);
 
-            for(var i=0;i<combinationArr.length;i++){
-                if(!contains(arrangementArr,combinationArr[i])){
-                    arrangementArr.push(combinationArr[i]);
-                    betForm.totalMoney = add(betForm.totalMoney, $("#inputMoney").val());
-                    betForm.quantity = add(betForm.quantity, 1);
-                }
-            }
-
-            var title = $("#current_lhc").val();
+            var title = $("#lhc_title").text();
             var betAmount = $("#inputMoney").val();
             var odd = $("#oddValue").text();
+
+            betForm.quantity = chooseArr.length;
+            betForm.totalMoney = betAmount * betForm.quantity;
 
             var content = '<p class="place-tip">共计：￥<b> ' + betForm.totalMoney + ' </b>/<b> ' + betForm.quantity + ' </b>&nbsp;注，您确定要下注吗？</p>';
 
@@ -177,11 +169,11 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
             betForm.betOrders = [];
 
             var nextOddValue = "";
-            if($("#current_lhc").val()=="三中二" || $("#current_lhc").val()=="二中特"){
+            if($("#lhc_title").text()=="三中二" || $("#lhc_title").text()=="二中特"){
                 nextOddValue = '&nbsp;@' + $("#nextOddValue").text()  +'&nbsp;X&nbsp;' + betAmount;
             }
 
-            $.each(arrangementArr, function (index, value) {
+            $.each(chooseArr, function (index, value) {
                 //[ 三全中-1,2,3 ] @650 X 50
                 betOrder.betNum = value.sort().toString();
                 betForm.betOrders.push(jQuery.extend(true, {}, betOrder));
@@ -216,35 +208,35 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
         clearTdInput : function(){
             page.reset();
             $(".main-left .table-common input").attr("checked",false);
-        }
-
-    })
-    function queue(arr, size) {
-        if (size > arr.length) { return; }
-        var allResult = [];
-
-        (function (arr, size, result) {
-            if (result.length == size) {
-                allResult.push(result);
-            } else {
-                for (var i = 0, len = arr.length; i < len; i++) {
-                    var newArr = [].concat(arr),
-                        curItem = newArr.splice(i, 1);
-                    arguments.callee(newArr, size, [].concat(result, curItem));
+        },
+        //组合函数
+        choose : function (arr, size) {
+            var allResult = [];
+            (function (arr, size, result) {
+                var arrLen = arr.length;
+                if (size > arrLen) {
+                    return;
                 }
-            }
-        })(arr, size, []);
+                if (size == arrLen) {
+                    allResult.push([].concat(result, arr))
+                } else {
+                    for (var i = 0; i < arrLen; i++) {
+                        var newResult = [].concat(result);
+                        newResult.push(arr[i]);
 
-        return allResult;
-    }
+                        if (size == 1) {
+                            allResult.push(newResult);
+                        } else {
+                            var newArr = [].concat(arr);
+                            newArr.splice(0, i + 1);
+                            arguments.callee(newArr, size - 1, newResult);
+                        }
+                    }
+                }
+            })(arr, size, []);
 
-    function  contains(array, element) {
-        for(var i=0;i<array.length;i++){
-            if(array[i].sort().toString()==element.sort().toString()){
-                return true;
-            }
+            return allResult;
         }
-        return false;
-    }
+    })
 });
 
