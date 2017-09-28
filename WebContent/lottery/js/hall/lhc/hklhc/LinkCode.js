@@ -51,47 +51,42 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                             $(".nextOddValue").show();
                         }
 
+                        var minNum = 0;
+                        var index = 0;
+
+                        if(title=="二全中"){
+                            minNum = 2;
+                            index=2;
+                        }
+                        if(title=="三全中"){
+                            minNum = 3;
+                            index=3;
+                        }
+                        if(title=="四全中"){
+                            minNum = 4;
+                            index=4;
+                        }
+                        if(title=="三中二"){
+                            minNum=3;
+                            index=5;
+                        }
+                        if(title=="二中特"){
+                            minNum = 2;
+                            index=6;
+                        }
+                        if(title=="特串"){
+                            minNum = 2;
+                            index=7;
+                        }
+
+                        $("#minNum").text(minNum);
 
                         $(".lhc-ztm tr").each(function (i) {
                             var $tr = $(this).find("input");
                             $($tr).each(function () {
-                                //$(this).parent("td").prev().find("strong").html(bet.odd);
                                 $(this).attr("data-odds", bet.odd);
                                 $(this).attr("data-bet-code", bet.betCode);
-                                //$(this).attr("data-name", title + "-" + $(this).attr("data-name"));
-
-                                var minNum = 0;
-                                var index = 0;
-
-                                if(title=="二全中"){
-                                    minNum = 2;
-                                    index=2;
-                                }
-                                if(title=="三全中"){
-                                    minNum = 3;
-                                    index=3;
-                                }
-                                if(title=="四全中"){
-                                    minNum = 4;
-                                    index=4;
-                                }
-                                if(title=="三中二"){
-                                    minNum=3;
-                                    index=5;
-                                }
-                                if(title=="二中特"){
-                                    minNum = 2;
-                                    index=6;
-                                }
-                                if(title=="特串"){
-                                    minNum = 2;
-                                    index=7;
-                                }
-
-                                $("#minNum").text(minNum);
-
                                 $(this).attr("data-play",$("#playCode"+index).val());
-
                                 $(this).attr("data-bet-num",bet.betNum);
                             })
 
@@ -182,7 +177,7 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
             betForm.betOrders = [];
 
             var nextOddValue = "";
-            if($("#current_lhc").val()=="三中二"){
+            if($("#current_lhc").val()=="三中二" || $("#current_lhc").val()=="二中特"){
                 nextOddValue = '&nbsp;@' + $("#nextOddValue").text()  +'&nbsp;X&nbsp;' + betAmount;
             }
 
