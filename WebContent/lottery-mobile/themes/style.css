@@ -1276,3 +1276,135 @@ a.popup-screen-btn:visited{
 i.back {line-height: 2.3rem; color: #fff; font-size: 0.7rem; display: inline-block; position: absolute; top: 1px; left: 24px; width: 36px;}
 a.bet_menu {width:30px; height: 48px; background: url('../images/icon_more.png') center no-repeat; background-size: 20px; margin-right: -5px;}
 div.menu-popover {width: 120px;}
+
+/*走势图*/
+.middle-content.middle-content-bat.zst-content{bottom:0;}
+
+/*走势图样式*/
+.zst-cl-101 span {
+    text-align: center;
+    border-left: solid #E6E6E6 1px;
+    height: 2rem !important;
+}
+
+
+
+.zst-cl-101 .sxName {
+    border: none !important;
+}
+
+.zst-cl-102_span {
+    line-height: 2rem !important;
+}
+
+.cl-601 .copyright {
+    font-size: 0.18rem;
+    color: #a0a0a0;
+    line-height: 2.5rem;
+    text-align: center;
+    background: #F9F9F9;
+}
+
+.zst-cl-1 .item span i {
+    margin-top: 3px;
+    margin-bottom: 0rem;
+}
+
+.zst-cl-1 .item span .sxName {
+    margin-top: -2px;
+    color: #A4A3A2;
+}
+
+.color-green {
+    color: green;
+}
+
+.color-blue {
+    color: blue;
+}
+
+.color-red {
+    color: red;
+}
+
+/*.zst-content-all {
+    height: calc(110vh - 1.8rem - 3.2rem - 21px - 2.0rem - 1.8rem) !important;
+}
+
+.rezst-content-all {
+    height: calc(110vh - 1.8rem - 3.2rem - 21px - 2.0rem - 2.3rem) !important;
+}
+
+.zst-content {
+    height: calc(100vh - 1.8rem - 3.2rem - 23px - 2.5rem + 0.8rem);
+}*/
+
+.zst_style {
+    padding: 0 !important;
+}
+
+.zst-cl-102_resetH {
+    height: 1rem !important;
+}
+
+.zst-cl-21 span var, .zst-cl-21 span i {
+    background: #F9F9F9 !important;
+}
+
+.zst-cl-1 .item span .i_style_mar {
+    margin-top: 1px !important;
+}
+
+
+.zst-cl-1{}
+.zst-cl-1 .item{overflow: hidden;}
+.zst-cl-1 .item span{background:initial;height:23px;line-height:23px;display:block;text-align:center}
+.zst-cl-1 .item:nth-child(even){background:#f9f9f9}
+.zst-cl-1 .item:nth-child(odd){background:#eee}
+.zst-cl-1 .item span{text-align:center;border-left:solid #E6E6E6 1px;display:inline-block;width:7.5%;margin:0;padding:0;float:left}
+.zst-cl-1{width:100%;overflow:hidden}
+.zst-cl-1 .item span i{margin:2px auto}
+.zst-cl-1 .item span:nth-child(1){border-left:none;width:25%}
+.zst-cl-10{height:100%;overflow:hidden}
+.zst-cl-10 .copyright{margin-top:0}
+.zst-cl-20 .item{white-space:nowrap}
+.zst-cl-20 .item span{width:2rem}
+.zst-cl-21,.zst-cl-21 span{overflow:hidden;margin:0;padding:0;height:2rem!important;line-height:2rem!important}
+.zst-cl-21 span i,.zst-cl-21 span var{height:1rem;line-height:1rem;margin:0!important;padding:0!important}
+.zst-cl-21 span i{display:inline-block;float:left}
+.zst-cl-50{overflow:hidden;position:relative;height:inherit}
+.zst-cl-51{position:absolute;left:0}
+.zst-cl-102{height:2rem!important;line-height:2rem!important}
+
+/*中奖号背景*/
+.jbspan i {
+    display: block;
+    width: 19px;
+    margin: 0 auto;
+    height: 19px;
+    line-height: 19px;
+    border-bottom: 1px solid #F9F7F3;
+    color: #fff;
+    border-radius: 50%;
+}
+
+.cus-on-red {
+    background-color: #F63F3F;
+}
+
+.cus-on-green {
+    background-color: #27F619;
+}
+
+.cus-on-blue {
+    background-color: #4D9CF6;
+}
+
+.zst_relative {
+    position: relative !important;
+}
+
+/*.zst-cl-50,.zst-cl-102_resetH{overflow: visible!important;}*/
+.mobile_zx {
+    position: absolute !important;
+}

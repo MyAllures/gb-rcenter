@@ -1327,6 +1327,9 @@ body.has-srchbar .electronic-srch{
     color: #333333;
     font-size: 12px;
 }
+.invite-cont .cont >p.al-left{
+	text-align: left;
+}
 .invite-cont .cont .link{
     background-color: #f2f2f2;
     border-radius: 3px;
