@@ -30,7 +30,7 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                             $("#topSecurity").find("#curProfit").text(profit);
                             var percent = 0;
                             if (profitLimit > 0) {
-                                percent = Math.round(profit / profitLimit * 100);
+                                percent = Math.floor(profit / profitLimit * 100);
                             }
                             $("#topSecurity").find("#usePercent").text(percent + '%');
                             //1-79 safe
