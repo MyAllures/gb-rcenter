@@ -614,7 +614,7 @@ define(['site/common/BasePage'], function (BasePage) {
             var _this = this;
             var successTime = _this.success_time;
             // 30秒内防止重复请求，避免接口获取数据延迟增加不必要的访问量
-            if (successTime && (new Date()).getTime() - successTime < 30 * 1000) {
+            if (successTime && (new Date()).getTime() - successTime < 10 * 1000) {
                 return;
             }
 //        this.hall_expect[code] = $("#expect" + code).text();
@@ -639,7 +639,7 @@ define(['site/common/BasePage'], function (BasePage) {
                         strNum = strNumber.substr(strNumber.length-3,strNumber.length);
                     }
                     $("#tip").html( strNum + '期已开盘，距离下一期还有:');
-                    $("#leftTime").data("time", json.leftTime);
+                    $("#leftTime").attr("data-time", json.leftTime);
                     $("#tip").data("opening", true);
 
                 },
@@ -656,8 +656,10 @@ define(['site/common/BasePage'], function (BasePage) {
             }, 10000);
 
             setInterval(function() {
-                var time = $("#leftTime").data("time");
-                if (isNaN(time) || time < 0) {
+                var time = $("#leftTime").attr("data-time");
+                if (isNaN(time) || time <= 0) {
+                    $("#tip").html("正在开奖");
+                    $("#leftTime").html("");
                     return;
                 }
                 --time;
@@ -676,7 +678,7 @@ define(['site/common/BasePage'], function (BasePage) {
                 str += second + '秒';
                 $("#leftTime").html(str);
 
-                $("#leftTime").data("time", time);
+                $("#leftTime").attr("data-time", time);
             }, 1000);
         }
     })
