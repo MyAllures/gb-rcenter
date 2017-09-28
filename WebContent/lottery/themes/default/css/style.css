@@ -2028,15 +2028,22 @@ i.bg-01,i.bg-02,i.bg-03,i.bg-04,i.bg-05,i.bg-06,i.bg-07,i.bg-08,i.bg-09,i.bg-10{
 
 /*合肖 & 连肖*/
 .hx-list strong{
-	background: #fff;
+    background: #fff;
     border: 1px #ccc solid;
-    box-shadow: 1px 1px 2px #ccc;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    display: block;
-    color: #8f8f8f;
-    font-size: 19px;
-    font-weight: 500;
+    box-shadow: 1px 1px 1px #ccc;
+    width: 19px;
+    height: 19px;
+    line-height: 19px;
+    display: inline-block;
+    vertical-align: middle;
+    color: #383737;
+    font-size: 12px;
+    font-weight: 600;
     margin: 0 auto;
+    margin-right: 10px;
 }
+.hx-list input{
+	position: absolute;
+	opacity: 0;
+}
+
