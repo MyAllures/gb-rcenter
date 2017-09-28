@@ -284,7 +284,7 @@ define(['site/hall/trendchart/LotteryTrendChart'], function (LotteryTrendChart) 
 
          if(lcflag_1.length > 0){
              for(var m = 0; m < lcflag_1.length; m++){
-                 for(var n=0; n<30; n++){
+                 for(var n=0; n<data_len; n++){
                      if(yilouJis1[n] == lcflag_1[m]){
                          yilouJis1[n] = 99;
                      }
