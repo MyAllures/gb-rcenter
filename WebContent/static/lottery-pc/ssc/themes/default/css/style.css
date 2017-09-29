@@ -2078,3 +2078,16 @@ i.bg-1,i.bg-2,i.bg-3,i.bg-4,i.bg-5,i.bg-6,i.bg-7,i.bg-8,i.bg-9,i.bg-10{border-ra
 	opacity: 0;
 }
 
+/*圆角分按钮修改*/
+.yjf-wrap{display: inline-block;margin-left: 5px; padding-top: 1px;}
+.yjf-wrap .mode_select {
+    display: inline-block;
+    border: 1px solid #ccc;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    margin: 0;
+    cursor: pointer;
+}
+.yjf-wrap .mode_select.selected{background: #fa6200;border-color: #fa6200;color: #fff;}
