@@ -28,7 +28,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
              */
             $('.type-search-btn', _that.formSelector).on('click', function (e) {
                 $(this).toggleClass("open");
-                $(".type-search").toggle();
+                $(".type-search").css("display", "none");
+                $(".type-search",$(this).parent().parent().parent().parent()).toggle();
                 $(".rank-btn").siblings(".dropdown-menu").css("display", "none");
                 //阻止事件冒泡
                 if (e.stopPropagation)
@@ -74,11 +75,12 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 /**
                  * 资金类型显示选择条数
                  */
-                var length = $(".tranType:checked", this.formSelector).length;
+                $(this.getFirstParentByTag({}, 'table'));
+                var length = $(".tranType:checked", $(this).parent().parent().parent().parent()).length;
                 if (length == 0) {
-                    $('.tranTypeNum').text(window.top.message.report_auto['请选择']);
+                    $('.tranTypeNum',$(this).parent().parent().parent().parent().parent().parent().parent().parent()).text(window.top.message.report_auto['请选择']);
                 } else {
-                    $('.tranTypeNum').text(window.top.message.report_auto['已选'] + length + window.top.message.report_auto['项']);
+                    $('.tranTypeNum',$(this).parent().parent().parent().parent().parent().parent().parent().parent()).text(window.top.message.report_auto['已选'] + length + window.top.message.report_auto['项']);
                 }
                 //单个资金类型触发分类变化
                 var isall = true;
@@ -107,13 +109,13 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $(".type-search div button", _that.formSelector).on('click', function () {
                 var type = $(this).data('type');
                 if (type == 'all') {
-                    $('.type-search').find(".tranType").each(function (e) {
+                    $('.type-search',$(this).parent().parent().parent()).find(".tranType").each(function (e) {
                         if (!$(this).prop('checked')) {
                             $(this).prop('checked', true).change();
                         }
                     })
                 } else if (type == 'clear') {
-                    $('.type-search').find(".tranType").each(function (e) {
+                    $('.type-search',$(this).parent().parent().parent()).find(".tranType").each(function (e) {
                         if ($(this).prop('checked')) {
                             $(this).prop('checked', false).change();
                         }
