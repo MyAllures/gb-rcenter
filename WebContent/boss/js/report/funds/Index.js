@@ -28,7 +28,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
              */
             $('.type-search-btn',_that.formSelector).on('click', function (e) {
                 $(this).toggleClass("open");
-                $(".type-search").toggle();
+                $(".type-search").css("display", "none");
+                $(".type-search",$(this).parent().parent().parent().parent()).toggle();
                 $(".rank-btn").siblings(".dropdown-menu").css("display", "none");
                 //阻止事件冒泡
                 if (e.stopPropagation)
@@ -74,11 +75,12 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 /**
                  * 资金类型显示选择条数
                  */
-                var length = $(".tranType:checked",this.formSelector).length;
+                var $table = $(_that.getFirstParentByTag({currentTarget:$(this)}, 'table'));
+                var length = $(".tranType:checked", $table).length;
                 if (length == 0) {
-                    $('.tranTypeNum').text("请选择");
+                    $('.tranTypeNum',$(this).parent().parent().parent().parent().parent().parent().parent().parent()).text("请选择");
                 } else {
-                    $('.tranTypeNum').text("已选" + length + "项");
+                    $('.tranTypeNum',$(this).parent().parent().parent().parent().parent().parent().parent().parent()).text("已选" + length + "项");
                 }
                 //单个资金类型触发分类变化
                 var isall = true;
