@@ -298,6 +298,20 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             } else {
                 e.page.showPopover(e, opt, 'danger', window.top.message.common['operation.fail'], true);
             }
+        },
+        userDetail: function (e){
+            var origin = window.location.origin;
+            var playerId = $("input[name='playerId']").val();
+            var url = origin + "/mcenter/#/player/playerView.html?search.id=" + playerId;
+            window.open(url);
+            $(e.currentTarget).unlock();
+        },
+        agentDetail: function (e){
+            var origin = window.location.origin;
+            var agentId = $("input[name='agentId']").val();
+            var url = origin + "/mcenter/#/userAgent/agent/detail.html?search.id=" + agentId;
+            window.open(url);
+            $(e.currentTarget).unlock();
         }
     });
 });

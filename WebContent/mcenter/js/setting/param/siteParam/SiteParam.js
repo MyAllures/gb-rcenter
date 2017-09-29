@@ -11,26 +11,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this.formSelector = "form";
             this._super();
             //switch
-            /*var li = $(".sys_tab_wrap").find("li");
-            var id;
-            if (li.length > 0) {
-                var liClass = $(".sys_tab_wrap").find(".active");
-                //var id = $($(".sys_tab_wrap").find("li")[0]).attr("id");
-                if (liClass.length == 0) {
-                    id = $($(".sys_tab_wrap").find("li")[0]).attr("id");
-                } else {
-                    id = $(liClass).attr("id");
-                }
-                var obj = {};
-                obj.currentTarget = $($(".sys_tab_wrap").find("li")[0]).find("a")[0];
-                if (id == "li_top_1") {
-                    this.basicSettingIndex(obj);
-                } else if (id == "li_top_2") {
-                    this.preferenceIndex(obj);
-                } else if (id == "li_top_3") {
-                    this.playerImportIndex(obj);
-                }
-            }*/
+
             //this.basicSettingIndex();
         },
         basicSettingIndex:function (e,opt) {
@@ -70,23 +51,6 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 }
             });
         },
-        playerImportIndex:function (e,opt) {
-            var _this = this;
-            $(".sys_tab_wrap").find("li").removeClass("active");
-            $("#li_top_3").addClass("active");
-            window.top.topPage.ajax({
-                url: root + "/vUserPlayerImport/list.html",
-                success: function (data) {
-                    $("#content-div").html(data);
-                    $("#siteParam").attr("action", root + "/vUserPlayerImport/list.html");
-                    _this.bindFormValidation();
-                    page.onPageLoad();
-                    if(e){
-                        $(e.currentTarget).unlock();
-                    }
-                }
-            });
-        },
         /**
          * 页面加载和异步加载时需要重新初始化的工作
          */
@@ -98,7 +62,6 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
              * 控件的初始化
              */
             this._super();
-            this.bindPreferenceEvent();
         },
         /**
          * 当前页面所有事件初始化函数
@@ -479,39 +442,6 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 window.top.topPage.showPage();
             }
         },
-        //导入玩家的JS
-        showImportList: function (e,opt) {
-            $("#introduce-div").removeClass("hide");
-            $("#process-div").addClass("hide");
-            $(".import_list").removeClass("btn-outline");
-
-            $(".import_introduce").addClass("btn-outline");
-            $(".btn_list").removeClass("btn-outline");
-            $(".btn_introduce").addClass("btn-outline");
-            $(e.currentTarget).unlock();
-        },
-        showImportIntroduce : function (e,opt) {
-            $("#process-div").removeClass("hide");
-            $("#introduce-div").addClass("hide");
-            $(".btn_introduce").removeClass("btn-outline");
-            $(".import_introduce").removeClass("hide");
-
-            $(".btn_list").addClass("btn-outline");
-            $(e.currentTarget).unlock();
-        },
-        toImportPlayer:function (e,opt) {
-            var _this = this;
-            window.top.topPage.ajax({
-                url: root + "/userPlayerImport/playerImport.html",
-                success: function (data) {
-                    $("#content-div").html(data);
-                    _this.bindFormValidation();
-                    $("#playerFilename").change(function () {
-                        _this.showFileMsg();
-                    });
-                }
-            });
-        },
 
         /**
          * 恢复系统默认
@@ -564,7 +494,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
          * @returns {*|jQuery}
          */
         getSiteInfoFormData:function(e,opt){
-          return $("input,textarea","#siteInfoDiv").serialize();
+            return $("input,textarea","#siteInfoDiv").serialize();
         },
         getPCFormData:function (e,opt) {
             return $("input,textarea","#pcCustomService").serialize();
@@ -573,13 +503,16 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             return $("input,textarea","#appDownloadDomain").serialize();
         },
         getAccessDomainFormData:function (e,opt) {
-        return $("input,textarea","#accessDomain").serialize();
-         },
+            return $("input,textarea","#accessDomain").serialize();
+        },
         getMobileFormData:function (e,opt) {
             return $("input,textarea","#mobileCustomService").serialize();
         },
         getValidCodeFormData:function (e, opt) {
             return $("input,textarea","#validCodeDiv").serialize();
+        },
+        getMobileStaticValidateForm:function (e,opt) {
+            return $("input,textarea","#mobileTrafficStatistics").serialize();
         },
         /**
          * 获取统计代码表单
@@ -620,11 +553,6 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 return true;
             }
         },
-        uploadFile: function (e, opt) {
-            e.objId = 1;//$("#siteGameId").val();
-            e.catePath = 'ImportPlayer';
-            return this.uploadAllFiles(e, opt);
-        },
         myCallBack : function (e,opt) {
             alert(opt.data.state);
         },
@@ -634,89 +562,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 data.append(file.name, file.files[0]);
             });
             return data;
-        },
-        saveImport: function (e,opt) {
-            $("#importForm").submit();
-            $(e.currentTarget).unlock();
-        },
-        doAjax:function(e,btnOption)
-        {
-            var _this=this;
-            var option={
-                cache: false,
-                eventTarget: {currentTarget:e.currentTarget},
-                url:  window.top.root+"/userPlayerImport/saveImport.html",
-                timeout: 300000,
-                beforeSend: function () {
-                    $(".save-import").attr("disabled",true);
-                },
-                error: function(request, state, msg) {
-                    $(e.currentTarget).unlock();
-                    var message = msg;
-                    if(request.responseJSON && request.responseJSON.message){
-                        message = request.responseJSON.message;
-                    }
-                    if (request.status != 601) {
-                        window.top.topPage.showErrorMessage(message);
-                    }
-                    $(e.currentTarget).unlock();
-                    $(".save-import").attr("disabled",false);
-                },
-                success: function(data) {
-                    $("#content-div").html(data);
-                    //$("#formDiv").hide();
-                    //$("#importForm").append(data);
-                    $(e.currentTarget).unlock();
-                    $(".save-import").attr("disabled",false);
-                }
-            };
-            option.type="POST";
-            option.contentType=false;
-            option.processData=false;
-            option.data=_this.getFormData(e,option);
-            option.eventTarget={currentTarget: e.currentTarget};
-            option.eventCall=function(e){
-                window.top.topPage.ajax(option);
-            };
-            window.top.topPage.ajax(option);
-        },
-        showFileMsg: function () {
-            $("#file-div").removeClass("hide");
-            var f = document.getElementById("playerFilename").files;
-            //上次修改时间
-            //alert(f[0].lastModifiedDate);
-            //名称
-            $("#filename-span").html(f[0].name);
-            //大小 字节
-            $("#filesize-span").html(this.bytesToSize(f[0].size));
-            //类型
-            //alert(f[0].type);
-        },
-        bytesToSize: function (bytes) {
-            if (bytes === 0) return '0 B';
-            var k = 1000;
-            sizes = ['B','KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-            i = Math.floor(Math.log(bytes) / Math.log(k));
-            var size = (bytes / Math.pow(k, i));//toFixed
-            size = size.toFixed(1);
-            return  size + " " + sizes[i];
-            //toPrecision(3) 后面保留一位小数，如1.0GB                                                                                                                  //return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
-        },
-        myValidateForm: function (e,opt) {
-            var f = document.getElementById("playerFilename").files;
-            if(f&&f[0]&&f[0].size&&f[0].size>10240000){
-                var obj = {};
-                obj.currentTarget = $("#playerFilename");
-                page.showPopover(obj, {}, "warning", window.top.message.setting_auto['仅支持'], true);
-                $(e.currentTarget).unlock();
-                return false;
-            }
-            if (!this.validateForm(e)) {
-                $(e.currentTarget).unlock();
-                return false;
-            }
-            return true;
         }
+
 
     });
 });

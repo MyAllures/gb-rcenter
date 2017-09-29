@@ -122,18 +122,22 @@ define(['site/common/BasePage', 'nicescroll'], function (BasePage) {
                 _this.getPage($(this).data("url"));
             });
             $("#refreshMoney").click(function () {
-                ajaxRequest({
-                    url: root + '/hall/getBalance.html',
-                    success: function (data) {
-                        $("font#money").text(data);
-                    },
-                    error: function (e) {
-                        console.log("error");
-                    }
-                });
+                this.refreshPlayer();
             });
             $(".Account a[data-url]").on("click", function () {
                 _this.getPage($(this).attr("data-url"));
+            });
+        },
+        refreshPlayer:function(){
+            ajaxRequest({
+                url: root + '/hall/getAccountAndBalance.html',
+                success: function (data) {
+                    $(".con_right font#money").text(data.balance);
+                    $(".con_right i#player-account").text(data.account);
+                },
+                error: function (e) {
+                    console.log("error");
+                }
             });
         },
         getSscPage: function (url) {

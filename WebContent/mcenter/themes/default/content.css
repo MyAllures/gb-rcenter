@@ -755,7 +755,7 @@ a.co-red3.red:hover{color:#f34235;}
 }
 .abroder-no{border:0;}
 .dropdown-menu-right{right:0;left:auto;}
-.footer button.language-btn{border:0;border-radius:5px;background:#f9f9f9;}
+.footer button.language-btn{border:0;border-radius:5px;background:#f9f9f9;margin-right: 40px;}
 .footer button.language-btn:hover{background:#2095f2;color:#fff;}
 .footer .dropdown-menu{min-width:115px;}
 .footer .a-copy{padding:19px 0 9px 0}

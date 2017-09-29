@@ -519,6 +519,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             $("div.bet-table-list td").removeClass("mui-active");
             $("#quantity").text($("div.bet-table-list td.mui-active").length);
             $("input#inputMoney").val("");
+            $("input#inputMoney").blur();
         }
     });
 });

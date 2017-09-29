@@ -15,7 +15,8 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
 
             $('textarea').bind('input propertychange', function () {
                 if ($(this).val().length <= 2000) {
-                    $(".textareaMsg").html(_this.formatStr(window.top.message.systemFeedBack_auto['还可以输入']),2000-$(this).val().length);
+                    $(".textareaMsg").html(
+                        _this.formatStr(window.top.message.systemFeedBack_auto['还可以输入']),2000-$(this).val().length);
                 } else {
                     $(".textareaMsg").html(window.top.message.systemFeedBack_auto['还可输入2000个字符']);
                 }

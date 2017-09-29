@@ -1327,6 +1327,9 @@ body.has-srchbar .electronic-srch{
     color: #333333;
     font-size: 12px;
 }
+.invite-cont .cont >p.al-left{
+	text-align: left;
+}
 .invite-cont .cont .link{
     background-color: #f2f2f2;
     border-radius: 3px;
@@ -5020,8 +5023,8 @@ span.api-icon.api-icon-2-28{    background-position-y: -1296px;}
 
 /*新缺省页面*/
 .no-data-img {background-size: 14.75rem 9.6rem; width: 14.75rem; height: 7.7rem; margin-left: auto; margin-right: auto; margin-top: 3.875rem; background-repeat: no-repeat;}
-.no-data-txt{text-align: center;margin: 0.9rem 0;font-size: 1rem;color: #8f8f8e;}
-.no-data-txt-2{font-size: 12px;text-align: center; max-width: 330px; margin: 0 auto;color: #8f8f8e;padding: 0 10px;}
+.no-data-txt{text-align: center;margin: 0.9rem 0;font-size: 1rem;color: #f1efef;}
+.no-data-txt-2{font-size: 12px;text-align: center; max-width: 330px; margin: 0 auto;color: #f1efef;padding: 0 10px;}
 .no-record { background-image: url(../images/error/no-record.png); }
 .no-network { background-image: url(../images/error/no-network.png); }
 .no-notice { background-image: url(../images/error/no-notice.png); }
