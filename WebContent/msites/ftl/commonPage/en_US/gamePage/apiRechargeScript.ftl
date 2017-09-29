@@ -9,7 +9,7 @@
                 var wd = $("#box_playGameDemo_iframe").width();
                 data.width = wd;
                 $("#box_playGameDemo_iframe").css("width","0px");
-                if((apiId!='20'){
+                if(apiId!='20'){
                     showTransferWin(data);
                 }
             },
