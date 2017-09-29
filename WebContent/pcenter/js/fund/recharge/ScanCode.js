@@ -81,7 +81,8 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             }
             var r = /^\+?[1-9][0-9]*$/;
             var isNum = r.test(value);
-            if(!isNum){
+            var isFloatNum = parseInt(value)==value;
+            if(!isNum&&!isFloatNum){
                 return ;
             }
             if(flag=="false"){
