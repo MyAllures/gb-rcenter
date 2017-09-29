@@ -1,5 +1,7 @@
 define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
     return PlayWay.extend({
+        playCode:"lhc_three_all_in",
+        betCode:"lhc_three_all_in",
         init: function () {
             this._super();
         },
@@ -15,21 +17,19 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
          * 六合彩正码特跳转子页面
          */
         getLinkCode: function () {
-
+            var _this = this;
             $(".main-left .fr .T-tab a").click(function () {
+                _this.clearTdInput();
                 $(".main-left .fr .T-tab a").removeClass("active");
                 $(this).addClass("active");
                 var subCode = $(this).attr("subCode");
                 var title = $(this).text();
-                $("#current_lhc").val(title);
                 $("#lhc_title").text(title);
-
                 ajaxRequest({
                     url: root + '/lhc/hklhc/getLhcBet.html',
                     data: {"subCode": subCode},
                     dataType: "json",
                     success: function (data) {
-
                         var bet = null;
                         var nextBet = null;
                         //二,三,四全中
@@ -51,205 +51,118 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                             $(".nextOddValue").show();
                         }
 
+                        var minNum = 0;
+                        var index = 0;
 
-                        $(".lhc-ztm tr").each(function (i) {
-                            var $tr = $(this).find("input");
-                            $($tr).each(function () {
-                                //$(this).parent("td").prev().find("strong").html(bet.odd);
-                                $(this).attr("data-odds", bet.odd);
-                                $(this).attr("data-bet-code", bet.betCode);
-                                //$(this).attr("data-name", title + "-" + $(this).attr("data-name"));
+                        if(title=="二全中"){
+                            minNum = 2;
+                            index=2;
+                        }
+                        if(title=="三全中"){
+                            minNum = 3;
+                            index=3;
+                        }
+                        if(title=="四全中"){
+                            minNum = 4;
+                            index=4;
+                        }
+                        if(title=="三中二"){
+                            minNum=3;
+                            index=5;
+                        }
+                        if(title=="二中特"){
+                            minNum = 2;
+                            index=6;
+                        }
+                        if(title=="特串"){
+                            minNum = 2;
+                            index=7;
+                        }
 
-                                var minNum = 0;
-                                var index = 0;
-
-                                if(title=="二全中"){
-                                    minNum = 2;
-                                    index=2;
-                                }
-                                if(title=="三全中"){
-                                    minNum = 3;
-                                    index=3;
-                                }
-                                if(title=="四全中"){
-                                    minNum = 4;
-                                    index=4;
-                                }
-                                if(title=="三中二"){
-                                    minNum=3;
-                                    index=5;
-                                }
-                                if(title=="二中特"){
-                                    minNum = 2;
-                                    index=6;
-                                }
-                                if(title=="特串"){
-                                    minNum = 2;
-                                    index=7;
-                                }
-
-                                $("#minNum").text(minNum);
-
-                                $(this).attr("data-play",$("#playCode"+index).val());
-
-                                $(this).attr("data-bet-num",bet.betNum);
-                            })
-
-                        });
-
-                        $(".main-left .table-common input").attr("checked",false);
-                        $(".main-left .table-common tbody tr td.new-ball-st").removeClass("bg-yellow");
+                        $("#minNum").text(minNum);
+                        _this.playCode=$("#playCode"+index).val();
+                        _this.betCode=bet.betCode;
                     },
                     error: function (e) {
                         console.log("error");
                     }
                 });
-                $(".main-left .fl input").val("");
             });
         },
         /** 获取注单 */
         getBetOrder: function () {
             var _this = this;
+            var minNum = $("#minNum").text();
+            if ($(".main-left .table-common td.bg-yellow").length < minNum) {
+                layer.msg("请至少选择"+minNum+"个号码");
+                return;
+            }
+            var betAmount = $("input#inputMoney").val();
+            if(betAmount == "" || betAmount == undefined || betAmount == null){
+                layer.msg("请输入正确金额");
+                return;
+            }
+            betAmount = parseInt(betAmount);
+            var betNumArr = new Array();
+            $(".main-left .table-common td.bg-yellow").each(function () {
+                var num = $(this).attr("num");
+                if(num){
+                    betNumArr.push(num);
+                }
+            });
+            var chooseArr = this.combination(betNumArr, minNum);
+
+            var expect = $('i#expect').text();
+            var odd = $("#oddValue").text();
+            var memo = $("#lhc_title").text();
+
             var betForm = {
                 code: _this.code,
                 totalMoney: 0,
                 betOrders: [],
                 quantity: 0
             };
-            $(".main-left .table-common input").each(function () {
-                if ($(this).attr("checked")!=undefined) {
-                    //改为attr取值，防止值变动，这里的$(this).data值不变
-                    betForm.betOrders.push({
-                        expect: $('i#expect').text(),
-                        code: _this.code,
-                        betCode: $(this).attr('data-bet-code'),
-                        playCode: $(this).attr('data-play'),
-                        betNum: $(this).attr('data-name'),
-                        odd: $(this).attr("data-odds"),
-                        betAmount: $("#inputMoney").val(),
-                        memo: $(this).attr("data-name")
-                    });
-                }
-            });
+            var count = chooseArr.length;
+            for(var i = 0; i < count; i++){
+                var value = chooseArr[i];
+                betForm.betOrders.push({
+                    expect: expect,
+                    code: _this.code,
+                    betCode: _this.betCode,
+                    playCode: _this.playCode,
+                    betNum: value,
+                    odd: odd,
+                    betAmount: betAmount,
+                    memo: memo+"-"+value
+                });
+                betForm.totalMoney += betAmount;
+                betForm.quantity++;
+            }
             return betForm;
         },
-
-        /** 下注 */
-        placeOrder: function () {
-            var _this = this;
-            var betForm = this.getBetOrder();
-            if (typeof betForm != 'object') {
-                return;
+        //组合函数
+        combination : function (arr, size) {
+            var allResult = [];
+            if(arr.length >= size){
+                var temp = new Array(size)
+                temp[size-1]="";
+                this.combinationSelect(allResult,arr,0,temp,0);
             }
-
-            var minNum = $("#minNum").text();
-
-            if (betForm.betOrders.length < minNum) {
-                layer.msg("请至少选择"+minNum+"个号码");
-                return;
-            }
-
-            if(!$("#inputMoney").val()){
-                layer.msg("请选择金额！");
-                return;
-            }
-            //下注数组
-            var betNumArr = new Array();
-
-            for(var index in betForm.betOrders){
-                betNumArr.push(betForm.betOrders[index].betNum);
-            }
-            //组合数组
-            var combinationArr = queue(betNumArr, minNum);
-            //排列数组
-            var arrangementArr = new Array();
-
-            for(var i=0;i<combinationArr.length;i++){
-                if(!contains(arrangementArr,combinationArr[i])){
-                    arrangementArr.push(combinationArr[i]);
-                    betForm.totalMoney = add(betForm.totalMoney, $("#inputMoney").val());
-                    betForm.quantity = add(betForm.quantity, 1);
-                }
-            }
-
-            var title = $("#current_lhc").val();
-            var betAmount = $("#inputMoney").val();
-            var odd = $("#oddValue").text();
-
-            var content = '<p class="place-tip">共计：￥<b> ' + betForm.totalMoney + ' </b>/<b> ' + betForm.quantity + ' </b>&nbsp;注，您确定要下注吗？</p>';
-
-            var betOrder = betForm.betOrders[0];
-            betForm.betOrders = [];
-
-            var nextOddValue = "";
-            if($("#current_lhc").val()=="三中二"){
-                nextOddValue = '&nbsp;@' + $("#nextOddValue").text()  +'&nbsp;X&nbsp;' + betAmount;
-            }
-
-            $.each(arrangementArr, function (index, value) {
-                //[ 三全中-1,2,3 ] @650 X 50
-                betOrder.betNum = value.sort().toString();
-                betForm.betOrders.push(jQuery.extend(true, {}, betOrder));
-                content += '<p><span>[&nbsp;' + title+'-'+ value + '&nbsp;]</span><span>&nbsp;@' + odd  +'&nbsp;X&nbsp;' + betAmount + nextOddValue+'</span></p>';
-            });
-
-            // 询问框
-            layer.confirm(content, {
-                btn: ['确认', '取消'], //按钮
-                title: "<font color='red'>" + $('i#expect').text() + "期</font>下注清单"
-            }, function () {
-                _this.confirmOrder(betForm);
-            });
-
-            $(".layui-layer-title").addClass('place-title');
-            $(".layui-layer-close").addClass('place-close');
+            return allResult;
         },
-
-        bindTdInput : function(){
-            $(".main-left .table-common tbody tr td.new-ball-st").click(function () {
-                if ($(this).hasClass("bg-yellow")) {
-                    $(this).removeClass("bg-yellow");
-                    $(this).find("input").attr("checked",false);
-                } else {
-                    $(this).addClass("bg-yellow");
-                    $(this).find("input").attr("checked",true);
-                }
-            });
-        },
-
-        //如果有特殊玩法除了重置页面input之外的其他操作,请继承该js,重写该方法
-        clearTdInput : function(){
-            page.reset();
-            $(".main-left .table-common input").attr("checked",false);
+        combinationSelect : function(allResult,dataList,dataIndex,resultCode,resultIndex){
+            var resultLen = resultCode.length;
+            var resultCount = resultIndex + 1;
+            if (resultCount > resultLen) { // 全部选择完时，输出组合结果
+                allResult.push(resultCode.join(","));
+                return;
+            }
+            var count = dataList.length + resultCount - resultLen;
+            for (var i = dataIndex; i < count; i++) {
+                resultCode[resultIndex] = dataList[i];
+                this.combinationSelect(allResult,dataList, i + 1, resultCode, resultIndex + 1);
+            }
         }
-
     })
-    function queue(arr, size) {
-        if (size > arr.length) { return; }
-        var allResult = [];
-
-        (function (arr, size, result) {
-            if (result.length == size) {
-                allResult.push(result);
-            } else {
-                for (var i = 0, len = arr.length; i < len; i++) {
-                    var newArr = [].concat(arr),
-                        curItem = newArr.splice(i, 1);
-                    arguments.callee(newArr, size, [].concat(result, curItem));
-                }
-            }
-        })(arr, size, []);
-
-        return allResult;
-    }
-
-    function  contains(array, element) {
-        for(var i=0;i<array.length;i++){
-            if(array[i].sort().toString()==element.sort().toString()){
-                return true;
-            }
-        }
-        return false;
-    }
 });
 
