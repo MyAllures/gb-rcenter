@@ -21,7 +21,8 @@ define(['gb/components/Comet', 'site/index/PopUp', 'cookie'], function (Comet, P
                     {subscribeType: "EXPORT_DOWNLOAD_REMINDER", callBack: popUp.exportDownload},
                     {subscribeType: "MCENTER_PROFIT", callBack: popUp.profit},
                     {subscribeType: "BOSS_LOTTERY_RESULT_WARNING", callBack: popUp.lotteryResultWarning},
-                    {subscribeType: "BOSS_CREDIT_PAY_REMINDER", callBack: popUp.creditPayReminder}
+                    {subscribeType: "BOSS_CREDIT_PAY_REMINDER", callBack: popUp.creditPayReminder},
+                    {subscribeType:'TRANSFER_LIMIT_WARNING',callBack:popUp.transferLimit}
                 ];
                 _this.subscribeMsgs(subscribes);
             };
