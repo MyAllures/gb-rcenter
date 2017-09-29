@@ -946,6 +946,163 @@ a.popup-screen-btn:visited{
 .bar-top-l-h div span {display: block; color: #fff; height: 18px; line-height: 18px;}
 .bar-top-l-h div span.balance {color: #ff0; font-weight: bold;}
 
+/*官方玩法*/
+.mui-bar-top .mui-title .gfwf-title{display: inline-block;}
+.mui-bar-top .mui-title .gfwf-title:after{content:"";width: 0px; height: 0px; border-width: 7px; border-style: solid; border-color: #fff transparent transparent transparent; display: inline; position: relative; top: 0.65rem; right: -0.3rem;}
+.ssc-method-list.gfwf-list{height: fit-content;border-top: 1px solid #ddd;}
+
+.x_wrap { width: 100%; height: 1.9rem;line-height: 1.9rem; background: #fff;text-align: center; z-index: 9; color: #fa6200!important; }
+.x_wrap .x_1 { width: 46%; display: inline-block; position: relative; height: 1.9rem;}
+.x_wrap .x_2 { width: 5%; display: inline-block; position: relative;top: 0.23rem;margin: 0 0 6px 4px;}
+.x_wrap .x_2 img { height: 0.9rem;}
+.x_wrap .x_3 { width: 45%; display: inline-block; position: relative;}
+.x_wrap .x_3:after{content:""; width: 0px; height: 0px; border-width: 7px; border-style: solid; border-color: #101010 transparent transparent transparent; display: inline; position: relative; top: 0.54rem; right: -0.3rem;}
+
+.Fixed{padding-top:1.9rem;}
+.Fixed .mui-scroll{height: 100%;transform: translate3d(0px, 0px, 0px) translateZ(0px)!important;}
+.Fixed .ssc-method-list.gfwf-list{position: fixed; top: 0; z-index: 12;top:-1.9rem;}
+.ssc-method-list.gfwf-list .gfwf-bg{display:none;position: fixed; top: 1px; width: 100%; height: 100%; background: #000;z-index: 11; opacity: 0.7;}
+.Fixed .ssc-method-list.gfwf-list .gfwf-bg{display: block;}
+.Fixed .ssc-method-list.gfwf-list .x_wrap{position: relative; z-index: 12;}
+.selected-wrap{padding-bottom: 0.5rem; position: relative; z-index: 12; background: #fff;display: none;}
+.Fixed .ssc-method-list.gfwf-list .selected-wrap{display: block;}
+.selected-wrap .s-title{height: 25px; position: relative;text-align: center;}
+.selected-wrap .s-title span{display: inline-block;background:#fff;position: relative; background:#fff; color: #fa6200; padding: 0 10px;z-index: 4;}
+.selected-wrap .s-title:after{content: "";height: 1px;width: 100%; background: #ddd;position: absolute;top: 9px;z-index: 3;left: 0;}
+.selected-wrap .s-menu{ word-spacing: -5px;}
+.selected-wrap .selected-btn{display: inline-block;padding: 0.25rem;}
+.selected-wrap .selected-btn span{ text-align: center;border: 1px solid #ddd; color: #999; display: block; padding: 0.3em 0;border-radius: 4px;}
+.selected-wrap .selected-btn.mui-active span{border:1px solid #fa6200; color:#fa6200;}
+
+
+.newball-content-top.gfwf-top .left-titel{padding-right: 1rem; padding-left: 1rem; background: #fa6200; color: #fff;}
+.newball-content-top.gfwf-top .xz{float: right;margin-top: 0.5rem;}
+.newball-content-top.gfwf-top .xz i{border: 1px solid #dddddd; padding: 0.28em 0.5em; border-radius: 5px; margin-right: 0.3em;}
+.newball-content-top.gfwf-top .xz.mui-segmented-control{display: inline-block;overflow:inherit;width: auto;border: 0;}
+.newball-content-top.gfwf-top .xz.mui-segmented-control .mui-control-item{line-height: inherit; display: initial; overflow: initial; width: auto;color: #3d4145;}
+.newball-content-top.gfwf-top .xz i.mui-active{background: #fa6200;border: 1px solid #fa6200; color: #fff!important;}
+
+.gfwf-buttom{text-align: center;}
+.btn-jixuan-gfwf,.btn-reset-gfwf{display: none!important;}
+.btn-jixuan-gfwf.mui-active,.btn-reset-gfwf.mui-active{display:initial!important;}
+.bet-bar-buttom .bottom-bar-btn.btn-reset-gfwf{background: #ccc!important; color: #8C828C!important;}
+.bar-bottom-l-h.gfwf-l-h{display: inline-block;}
+
+
+
+/***滑块美化***/
+.playPlRangeContainer{
+    padding:5px;
+    height: 27px;
+    border-radius: 10px; /*将轨道设为圆角的*/
+    /*box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; !*轨道内置阴影效果*!*/
+    border: 1px solid #F72021;
+    background:#fafafa;
+    box-shadow: 0 1px 1px #F72021,inset 0 1px 1px #F72021!important
+}
+.playPlRangeContainer input[type=range] {
+    -webkit-appearance: none;
+    border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
+    height: auto;
+    margin: 0;
+    background: #fff;
+    outline:none;
+}
+.playPlRangeContainer input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+.playPlRangeContainer input[type=range]::-webkit-slider-runnable-track {
+    height: 15px;
+    border-radius: 10px; /*将轨道设为圆角的*/
+    /*box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; !*轨道内置阴影效果*!*/
+    border: 1px solid #ddd;
+}
+.playPlRangeContainer input[type=range]:focus {
+    outline: none;
+}
+.playPlRangeContainer input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 22px;
+    width: 22px;
+    margin-top: -5px; /*使滑块超出轨道部分的偏移量相等*/
+    background: #ffffff;
+    border-radius: 50%; /*外观设置为圆形*/
+    border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
+    box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
+}
+/****************/
+.betContent {
+    padding: 0 10px;
+    margin: auto;
+}
+.betContent .slide-item{
+    display:block;
+    margin:10px 0;
+    overflow:hidden;
+    text-align: left;
+    padding-right: 5px;
+}
+.betContent .slide-item:last-child{
+    /*margin-bottom:0*/
+}
+/**官方layer**/
+.layui-m-layer-gfwf{
+    width:90%;
+}
+.layui-m-layer-gfwf .layui-m-layercont{
+    padding:0!important;
+}
+
+.slide-item .ft{float:left;}
+.slide-item .fr{float:right;}
+.slide-item input[type=number]{
+    width: 50px;
+    border: 1px solid #dedede;
+    height: 20px;
+    border-radius: 0;
+}
+
+.foot_checkbox{
+    width: 100%;
+    line-height: 2rem;
+    height: 2rem;
+    text-align: center;
+    border-top: 1px solid #e7e7e7;
+    margin-top: 5%;
+    font-size: 0.8rem;
+}
+.foot_checkbox label input{
+    zoom:150%;
+    vertical-align:middle;
+}
+
+.foot_checkbox label span{
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: -0.2rem;
+    margin-top: -0.01rem;
+}
+/*************checkbox美化************/
+.myLabel {cursor:pointer;}
+.myLabel i {font-size:0.5rem;font-style:normal;display:inline-block;width:12px;height:12px;text-align:center;line-height:12px;color:#fff;vertical-align:middle;margin:-2px 2px 1px 0px;border:#2489c5 1px solid;}
+input[type="checkbox"],input[type="radio"] {display:none;}
+input[type="radio"] + i {border-radius:7px;}
+input[type="checkbox"]:checked + i,input[type="radio"]:checked + i {background:#2489c5;}
+input[type="checkbox"]:disabled + i,input[type="radio"]:disabled + i {border-color:#ccc;}
+input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled + i {background:#ccc;}
+
+.foot_checkbox .myLabel{margin:0 5px;}
+.hide{display:none;}
+.show{display:inherit}
+.mode_select{display:inline-block;border:1px solid #ccc;width:20px;height:20px;line-height:20px;text-align:center;margin:0;}
+.mode_select.selected{background:#fa6200;color:#fff;border:1px solid #fa6200;}
+.dzje_add,.beishu_add{cursor:pointer;display:inline-block;border:1px solid #ccc;width:20px;height:20px;line-height:20px;text-align:center;}
+.wrap .cus_common .wan_bottom .cus-flex-item{padding:0.4rem;}
+.beishu_remove{cursor:pointer;display:inline-block;border:1px solid #ccc;width:20px;height:20px;line-height:20px;text-align:center;}
+.wrap .cus_common .wan_bottom .cus-flex-item .xz{font-size:1.1rem;width:1.8rem;height:1.8rem;line-height:1.8rem;}
+.wrap .cus_common .wan_bottom .cus-flex-item{width:20%}
+
+
 
 /*600w皮肤*/
 /*颜色调整*/
