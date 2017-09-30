@@ -993,7 +993,7 @@ a.popup-screen-btn:visited{
 /***滑块美化***/
 .playPlRangeContainer{
     padding:5px;
-    height: 27px;
+    height: 29px;
     border-radius: 10px; /*将轨道设为圆角的*/
     /*box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; !*轨道内置阴影效果*!*/
     border: 1px solid #F72021;
@@ -1003,7 +1003,7 @@ a.popup-screen-btn:visited{
 .playPlRangeContainer input[type=range] {
     -webkit-appearance: none;
     border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
-    height: auto;
+    height: 16px;
     margin: 0;
     background: #fff;
     outline:none;
