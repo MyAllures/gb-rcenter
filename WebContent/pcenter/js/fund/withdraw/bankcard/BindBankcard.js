@@ -111,7 +111,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 if (confirm) {
                     window.top.topPage.ajax({
                         type: "post",
-                        url: root + "/fund/userBankcard/submitBankCard.html",
+                        url: root + "/fund/userBankcard/submitBankCard.html?userType=24",
                         dataType: "json",
                         data: data,
                         success: function (data) {
@@ -145,7 +145,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 if (confirm) {
                     window.top.topPage.ajax({
                         type: "post",
-                        url: root + "/fund/userBankcard/submitBtc.html",
+                        url: root + "/fund/userBankcard/submitBtc.html?userType=24",
                         dataType: "json",
                         data: data,
                         success: function (data) {
