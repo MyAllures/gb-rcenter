@@ -12,9 +12,6 @@ define(['site/include/BaseIndex', '../js/template', '../js/Zodiac'], function (B
                 mui('.mui-off-canvas-wrap').offCanvas('show');
             });
             this.muiInit();
-            if (this.os === 'app_andriod') {
-                mui('#mui-refresh').scroll().setStopped(true);
-            }
         },
         /**
          * mui初始化
