@@ -134,7 +134,7 @@ define(['common/MobileBasePage'], function (Mobile) {
         },
 
         setting: function () {
-            mui('.c_setting').on('tap', 'button', function () {
+            mui('gb-userinfo').on('tap', '.setting', function () {
                 window.gamebox.setting();
             })
         },
