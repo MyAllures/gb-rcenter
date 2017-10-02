@@ -4933,12 +4933,23 @@ input[type=number]::-webkit-outer-spin-button {
   right: 80px!important;}
   
 /*新增额度充值*/
+.limit-price-wrap{
+	background: #edf7ff;
+    border-radius: 6px;
+    border: 1px solid #b3ccf9;
+    margin: 5px 0 5px -15px;
+}
 .limit-price-wrap div{
     max-width: 99%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.limit-price-wrap .bold-fs16{
+	font-size: 15px;
+	font-weight: 600;
+}
+.limit-price-wrap .fs20{font-size: 16px;}
 .limit-tips ul{
 	display: block;
     margin-top: 22px;
@@ -4967,6 +4978,10 @@ input[type=number]::-webkit-outer-spin-button {
     -o-transform:rotate(45deg); 
     }
 .limit-tips ul li{margin-bottom: 10px; font-size: 15px;}
+@media(min-width:768px ) {
+.col-sm-5-1{width:20%}
+.col-sm-7-1{width:14%}
+}
 @media(max-width:993px ) {
 	.limit-tips ul{position: relative;left: 0;}
 	.limit-tips ul:before{display: none;}
