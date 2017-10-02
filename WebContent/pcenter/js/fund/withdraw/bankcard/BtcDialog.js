@@ -11,7 +11,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             this._super();
         },
         saveBtc: function (e, option) {
-            var url = root + "/fund/userBankcard/submitBtc.html";
+            var url = root + "/fund/userBankcard/submitBtc.html?userType=24";
             var data = this.getCurrentFormData(e);
             var btcAddress = $("input[name='result.bankcardNumber']").val();
             var _msgTitle = '<h3 class="m-sm al-center">'+window.top.message.fund_auto['确认提交吗']+'</h3>'+

@@ -22,7 +22,8 @@ define(['gb/components/Comet', 'site/index/PopUp', 'cookie'], function (Comet, P
                     {subscribeType: "MCENTER_PROFIT", callBack: popUp.profit},
                     {subscribeType: "BOSS_LOTTERY_RESULT_WARNING", callBack: popUp.lotteryResultWarning},
                     {subscribeType: "BOSS_CREDIT_PAY_REMINDER", callBack: popUp.creditPayReminder},
-                    {subscribeType:'TRANSFER_LIMIT_WARNING',callBack:popUp.transferLimit}
+                    {subscribeType:'TRANSFER_LIMIT_WARNING',callBack:popUp.transferLimit},
+                    {subscribeType:'LARGE_TRANSACTION_MONITOR',callBack:popUp.largeTransactionMonitor},
                 ];
                 _this.subscribeMsgs(subscribes);
             };

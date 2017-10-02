@@ -341,7 +341,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     var data = window.top.topPage.getCurrentFormData(e);
                     window.top.topPage.ajax({
                         type: "post",
-                        url: root + "/fund/userBankcard/submitBankCard.html",
+                        url: root + "/fund/userBankcard/submitBankCard.html?userType=24",
                         dataType: "json",
                         data: data,
                         success: function (data) {
