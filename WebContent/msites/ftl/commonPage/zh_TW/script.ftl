@@ -821,7 +821,24 @@
             newWindow.location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
         }
     }
-
+    //试玩登录
+    function apiLoginDemo(apiId, gameCode, apiTypeId) {
+        if (apiId) {
+            var newWindow = window.open();
+            newWindow.location ="/commonPage/gamePage/loadingDemo.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
+        }
+    }
+    //彩票试玩登录
+    function lotteryDemo() {
+        $.ajax('/demo/lottery.html', {
+            dataType: 'json',
+            success: function (data) {
+                if (data) {
+                    changeLoginStatus();
+                }
+            }
+        });
+    }
     function currentPage(apiId){
         if (apiId == "4"){
             document.getElementById('sportFrame').contentWindow.location.replace("https://im.ampinplayopt0matrix.com");
