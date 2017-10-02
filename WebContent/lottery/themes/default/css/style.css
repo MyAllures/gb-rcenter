@@ -2047,3 +2047,16 @@ i.bg-01,i.bg-02,i.bg-03,i.bg-04,i.bg-05,i.bg-06,i.bg-07,i.bg-08,i.bg-09,i.bg-10{
 	opacity: 0;
 }
 
+/*时时彩官方玩法元角分模式*/
+.yjf-wrap{display: inline-block;margin-left: 5px; padding-top: 1px;}
+.yjf-wrap .mode_select {
+    display: inline-block;
+    border: 1px solid #ccc;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    margin: 0;
+    cursor: pointer;
+}
+.yjf-wrap .mode_select.selected{background: #fa6200;border-color: #fa6200;color: #fff;}

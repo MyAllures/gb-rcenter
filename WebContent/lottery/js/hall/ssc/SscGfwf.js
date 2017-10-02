@@ -1674,7 +1674,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             console.log(betForm)
             var _this = this;
             ajaxRequest({
-                url: root + "ssc/ajaxBet.json",
+                url: _this.baseUrl + '/' + _this.code + '/saveBetOrder.html',
                 data: {
                     betForm: betForm
                 },
@@ -1689,9 +1689,17 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                     if (d && d.code && d.code == '100') {
                         // 清空临时变量
                         _this.tmpBetContent = null;
-                        layer.msg("下注成功", {icon: 1});
-                        // 刷新我的投注
-                        _this.getBetDetails();
+                        //刷新玩家数据
+                        // $("font#money",parent.document).text(data.balance);
+                        parent.index.refreshPlayer();
+                        layer.msg(d.msg, {icon: d.icon});
+                        if($("#bottomInfo .tabs .acti").length>0 && $("#bottomInfo .tabs .acti").data("tab") == 'myBet'){
+                            // 刷新我的投注
+                            page.getMyOrders();
+                        }
+                        // layer.msg("下注成功", {icon: 1});
+                        // // 刷新我的投注
+                        // _this.getBetDetails();
                         // 刷新余额
                         // parent.getUserSession();
                         // 重置预投注
