@@ -831,7 +831,17 @@
             newWindow.location ="/commonPage/gamePage/loadingDemo.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
         }
     }
-
+    //彩票试玩登录
+    function lotteryDemo() {
+        $.ajax('/demo/lottery.html', {
+            dataType: 'json',
+            success: function (data) {
+                if (data) {
+                    changeLoginStatus();
+                }
+            }
+        });
+    }
     function currentPage(apiId){
         if (apiId == "4"){
             document.getElementById('sportFrame').contentWindow.location.replace("https://im.ampinplayopt0matrix.com");

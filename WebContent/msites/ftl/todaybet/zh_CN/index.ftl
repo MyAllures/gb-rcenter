@@ -401,8 +401,7 @@
                         </div>
                         <a href="javascript:" class="_vr_login btn-login">登录</a>
                         <a href="register.html" class="btn-register">立即注册</a>
-                        <a class="_vr_mt_check game-demo btn-sw" href="javascript:void(0)" data-api="22"
-                           data-apitype="4"
+                        <a class="btn-sw" href="javascript:void(0)" data-api="22" data-apitype="4" onclick="lotteryDemo()"
                            <#if data.siteApiMap["22"]?has_content && data.siteApiMap["22"].maintainStartTime?has_content>startTime="${data.siteApiMap["22"].maintainStartTime?long?string.computer}"</#if>
                            <#if data.siteApiMap["22"]?has_content && data.siteApiMap["22"].maintainEndTime?has_content>endTime="${data.siteApiMap["22"].maintainEndTime?long?string.computer}"</#if>>免费试玩</a>
                     </form>
