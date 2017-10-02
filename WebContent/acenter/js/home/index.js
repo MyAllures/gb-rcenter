@@ -84,18 +84,6 @@ define(['common/BasePage', 'site/home/include/Chart', 'site/home/include/Table',
                 }
             });
         },
-        staticToday : function () {
-            window.top.topPage.ajax({
-                //loading:true,
-                url:root+"/home/staticToday.html",
-                type:"post",
-                success:function(data){
-                },
-                error:function(data, state, msg){
-                    $(event.currentTarget).unlock();
-                }
-            });
-        },
         checkBrowser:function(){
             var ie678 = !$.support.leadingWhitespac;
             if (!ie678) {
