@@ -138,17 +138,26 @@ define(['gb/components/PopUp'], function (PopUp) {
             var stopRate = Number(data.stopRate);
             if (rate >= stopRate) { //立即停止
                 var msg = "站点【${siteId}】${siteName}转账上限已使用${rate},已停止玩家转账！";
-                msg = msg.replace("${siteId}",data.siteId);
-                msg = msg.replace("${siteName}",data.siteName);
-                msg = msg.replace("${rate}",data.rate);
+                msg = msg.replace("${siteId}", data.siteId);
+                msg = msg.replace("${siteName}", data.siteName);
+                msg = msg.replace("${rate}", data.rate);
                 window.top.topPage.showConfirmMessage(msg)
             } else if (rate >= warnRate) {
                 var msg = "站点【${siteId}】${siteName}转账上限已使用${rate},需提醒站点在${date}之前充值，请及时关注！";
-                msg = msg.replace("${siteId}",data.siteId);
-                msg = msg.replace("${siteName}",data.siteName);
-                msg = msg.replace("${rate}",data.rate);
+                msg = msg.replace("${siteId}", data.siteId);
+                msg = msg.replace("${siteName}", data.siteName);
+                msg = msg.replace("${rate}", data.rate);
                 window.top.topPage.showConfirmMessage(msg);
             }
+        },
+        largeTransactionMonitor: function (data) {
+            var msgBody = $.parseJSON($.parseJSON(data).msgBody);
+            var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.date), dateFormat.daySecond);
+            var content = '<a nav-target="mainFrame" name="tellerReminder" href="/largeTransactionMonitor/list.html?search.transactionNo=' + msgBody.transactionNo + '">' + date + '站点[' + msgBody.siteId + ']玩家' + msgBody.name + '新增' + msgBody.amount + '大额交易,交易号' + msgBody.transactionNo + '&nbsp;</a>';
+            popUp.pop(content, date, "warning");
+            $("a[name=tellerReminder]").click(function (e) {
+                $(e.currentTarget).parent().parent().parent().remove()
+            });
         }
     });
 });
