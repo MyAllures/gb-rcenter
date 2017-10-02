@@ -15,6 +15,7 @@ define(['common/MobileBasePage'], function (Mobile) {
             this._super();
             t = this;
             this.getUserInfo();
+            this.setting();
             mui(document.body).on('tap', '.index-action-menu', function () {
                 mui('.mui-off-canvas-wrap').offCanvas('show');
             });
@@ -134,7 +135,7 @@ define(['common/MobileBasePage'], function (Mobile) {
         },
 
         setting: function () {
-            mui('gb-userinfo').on('tap', '.setting', function () {
+            mui('.gb-userinfo').on('tap', '.setting', function () {
                 window.gamebox.setting();
             })
         },
