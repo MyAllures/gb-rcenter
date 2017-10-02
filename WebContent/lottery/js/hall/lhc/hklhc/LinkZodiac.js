@@ -33,15 +33,9 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
 
                         PlayWay.lhcBet = data;
 
-                        var numJson = {"二":2, "三":3,"四":4,"五":5,"六":6,"七":7,"八":8,"九":9,"十":10,"十一":11};
+                        var numJson = {"二":2, "三":3,"四":4,"五":5};
 
-                        var minNum = numJson[title.substring(0,2)];
-
-                        if(minNum>10){
-                            minNum = minNum;
-                        }else{
-                            minNum = numJson[title.substring(0,1)];
-                        }
+                        minNum = numJson[title.substring(0,1)];
 
                         $("#minNum").text(minNum);
 
@@ -54,6 +48,7 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                                 $(this).attr("data-bet-code", bet.betCode);
                                 $(this).attr("data-play",$("#playCode"+minNum).val());
                                 $(this).attr("data-bet-num", bet.betNum);
+                                $(this).parent().next().children().text(bet.odd);
                             })
 
                         });
