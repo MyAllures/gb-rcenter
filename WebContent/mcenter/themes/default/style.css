@@ -4937,7 +4937,7 @@ input[type=number]::-webkit-outer-spin-button {
 	background: #edf7ff;
     border-radius: 6px;
     border: 1px solid #b3ccf9;
-    margin-left: -15px;
+    margin: 5px 0 5px -15px;
 }
 .limit-price-wrap div{
     max-width: 99%;
