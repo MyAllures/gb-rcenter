@@ -4937,7 +4937,7 @@ input[type=number]::-webkit-outer-spin-button {
 	background: #edf7ff;
     border-radius: 6px;
     border: 1px solid #b3ccf9;
-    margin-left: -15px;
+    margin: 5px 0 5px -15px;
 }
 .limit-price-wrap div{
     max-width: 99%;
@@ -4986,3 +4986,10 @@ input[type=number]::-webkit-outer-spin-button {
 	.limit-tips ul{position: relative;left: 0;}
 	.limit-tips ul:before{display: none;}
 }
+/*赔率官方玩法*/
+.gfwfqh-wrap{border-bottom: 1px solid #e6e6e6; position: relative;min-height: 108px;}
+.gfwfqh-wrap .lot_two_menu,.gfwfqh-wrap .lot_three_menu{margin-left: 126px;}
+.gfwfqh-wrap .wfqh-btn{ position: absolute; background: #fff;  height: 100%;  width: 125px;}
+.gfwfqh-wrap .wfqh-btn a{display: block; width: 100px; margin-left: auto; margin-right: auto; text-align: center; background: #fff; color: #333; border:1px solid #b4b7bb; padding: 10px 0; border-radius: 40px; margin-top: 9px;}
+.gfwfqh-wrap .wfqh-btn a:hover,.gfwfqh-wrap .wfqh-btn a.active{background: #f39503; border:1px solid #f39503; color: #fff;}
+.gfwfqh-wrap .lot_three_menu{padding: 10px 15px 10px 15px;}
