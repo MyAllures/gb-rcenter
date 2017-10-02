@@ -48,6 +48,7 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                                 $(this).attr("data-bet-code", bet.betCode);
                                 $(this).attr("data-play",$("#playCode"+minNum).val());
                                 $(this).attr("data-bet-num", bet.betNum);
+                                $(this).parent().next().children().text(bet.odd);
                             })
 
                         });
