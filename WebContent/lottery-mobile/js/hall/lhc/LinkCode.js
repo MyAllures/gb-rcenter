@@ -69,15 +69,15 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                         bet = data[title];
                         $("#oddValue").text(bet.odd);
                         $(".nextOddValue").hide();
-                    }else if(data['三中二之中二'] || data['三中二之中三']){
-                        bet = data['三中二之中二'];
-                        nextBet = data['三中二之中三'];
+                    }else if(data['中2'] && data['中3']){
+                        bet = data['中2'];
+                        nextBet = data['中3'];
                         $("#oddValue").text(bet.odd);
                         $("#nextOddValue").text(nextBet.odd);
                         $(".nextOddValue").show();
-                    }else if(data['二中特之中二'] || data['二中特之中特']){
-                       bet = data['二中特之中特'];
-                       nextBet = data['二中特之中二'];
+                    }else if(data['中2'] && data['中特']){
+                       bet = data['中特'];
+                       nextBet = data['中2'];
                        $("#oddValue").text(bet.odd);
                        $("#nextOddValue").text(nextBet.odd);
                        $(".nextOddValue").show();
