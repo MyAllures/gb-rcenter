@@ -3,7 +3,7 @@
  */
 define(['common/BaseEditPage', 'jqFileInput', 'UE.I18N.' + window.top.language, 'css!themesCss/fileinput/fileinput'], function (BaseEditPage, fileinput) {
     return BaseEditPage.extend({
-        maxRange: 10,
+        maxRange: 30,
         ue: null,
 
         init: function () {

@@ -113,6 +113,30 @@ define(['gb/components/PopUp'], function (PopUp) {
                     }
                 }
             }
+        },
+        /**
+         * 转账上限提醒
+         * @param data
+         */
+        transferLimit: function (data) {
+            var msgBody = $.parseJSON($.parseJSON(data).msgBody);
+            var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), dateFormat.daySecond);
+            var rate = Number(data.rate);
+            var warnRate = Number(data.warnRate);
+            var stopRate = Number(data.stopRate);
+            if (rate >= stopRate) { //立即停止
+                var msg = "站点【${siteId}】${siteName}转账上限已使用${rate},已停止玩家转账！";
+                msg = msg.replace("${siteId}",data.siteId);
+                msg = msg.replace("${siteName}",data.siteName);
+                msg = msg.replace("${rate}",data.rate);
+                window.top.topPage.showConfirmMessage(msg)
+            } else if (rate >= warnRate) {
+                var msg = "站点【${siteId}】${siteName}转账上限已使用${rate},需提醒站点在${date}之前充值，请及时关注！";
+                msg = msg.replace("${siteId}",data.siteId);
+                msg = msg.replace("${siteName}",data.siteName);
+                msg = msg.replace("${rate}",data.rate);
+                window.top.topPage.showConfirmMessage(msg);
+            }
         }
 
     });
