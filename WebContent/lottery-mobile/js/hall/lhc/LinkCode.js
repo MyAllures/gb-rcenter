@@ -25,69 +25,39 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
 
         getOdds: function () {
             var url = root + '/' + this.type + '/' + this.code + '/' + this.betCode + 'Odd.html';
-            var subCode = $("a.mui-active[data-subCode]").attr("data-subCode");
-            var title = $("a.mui-active[data-subCode]").text();
-
-            mui.ajax(url, {
+            var activeA = $("a.mui-active[data-subCode]");
+            var subCode = activeA.attr("data-subCode");
+            var title = activeA.text();
+            var minNum = activeA.attr("min-num");
+                mui.ajax(url, {
                 dataType: 'json',
                 type: 'POST',
                 data: {'betCode': subCode},
                 success: function (data) {
 
-                    var minNum = 0;
-                    var index = 0;
-
                     var bet = null;
                     var nextBet = null;
-
-                    if(title=="二全中"){
-                        minNum = 2;
-                        index = 2;
-                    }
-                    if(title=="三全中"){
-                        minNum = 3;
-                        index = 3;
-                    }
-                    if(title=="四全中"){
-                        minNum = 4;
-                        index = 4;
-                    }
-                    if(title=="三中二"){
-                        minNum=3;
-                        index = 5;
-                    }
-                    if(title=="二中特"){
-                        minNum = 2;
-                        index = 6;
-                    }
-                    if(title=="特串"){
-                        minNum = 2;
-                        index = 7;
-                    }
-
-                    if(data[title]){
-                        bet = data[title];
-                        $("#oddValue").text(bet.odd);
-                        $(".nextOddValue").hide();
-                    }else if(data['三中二之中二'] || data['三中二之中三']){
-                        bet = data['三中二之中二'];
-                        nextBet = data['三中二之中三'];
+                    if(data['中2'] && data['中3']){
+                        bet = data['中2'];
+                        nextBet = data['中3'];
                         $("#oddValue").text(bet.odd);
                         $("#nextOddValue").text(nextBet.odd);
                         $(".nextOddValue").show();
-                    }else if(data['二中特之中二'] || data['二中特之中特']){
-                       bet = data['二中特之中特'];
-                       nextBet = data['二中特之中二'];
-                       $("#oddValue").text(bet.odd);
-                       $("#nextOddValue").text(nextBet.odd);
-                       $(".nextOddValue").show();
-                   }
-
+                    }else if(data['中2'] && data['中特']){
+                        bet = data['中特'];
+                        nextBet = data['中2'];
+                        $("#oddValue").text(bet.odd);
+                        $("#nextOddValue").text(nextBet.odd);
+                        $(".nextOddValue").show();
+                    }//二,三,四全中
+                    else if(data[minNum]){
+                        bet = data[minNum];
+                        $("#oddValue").text(bet.odd);
+                        $(".nextOddValue").hide();
+                    }
                     $("#lhc_title").text(title);
                     $("#minNum").text(minNum);
-                    $("#index").val(index);
 
-                    //_this.templateOdd(data);
                 }
             })
         },
@@ -132,9 +102,8 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
             var expect = $('font#expect').text();
             var odd = $("#oddValue").text();
             var memo = $("#lhc_title").text();
-            var index = $("#index").val();
-            var playCode = $("#playCode"+index).val();
             var betCode = $("a.mui-active[data-subCode]").attr("data-subCode");
+            var playCode = $("#"+betCode).val();
             var betForm = {
                 code: _this.code,
                 totalMoney: 0,
@@ -182,6 +151,29 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                 resultCode[resultIndex] = dataList[i];
                 this.combinationSelect(allResult,dataList, i + 1, resultCode, resultIndex + 1);
             }
+        },
+        combinationNum : function(m,n) {
+            var o = 1;
+            var j = m - n + 1;
+            while (m >= j) {
+                o *= m--;
+            }
+            if(o==0){
+                return 0;
+            }
+            while (n >= 1) {
+                o /= n--;
+            }
+            return o;
+        },
+        //点击投注选项
+        bindTdInput: function (obj) {
+            var flag = $(obj).is('.not-selected');
+            if (!flag) {
+                $(obj).toggleClass('mui-active');
+            }
+            var arrLength = $("div.bet-table-list .mui-active").length;
+            $("#quantity").text(this.combinationNum(arrLength,$("#minNum").text()));
         }
     });
 });
