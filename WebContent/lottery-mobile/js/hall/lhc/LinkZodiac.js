@@ -111,10 +111,9 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                 betOrders: [],
                 quantity: 0
             };
-            for(var index in chooseArr){
+            for(var i = 0; i < chooseArr.length; i++){
 
-                var value = chooseArr[index];
-
+                var value = chooseArr[i];
                 var arrayMin = new Array();
                 var valueArr = value.split(",");
                 for(var index in valueArr){
