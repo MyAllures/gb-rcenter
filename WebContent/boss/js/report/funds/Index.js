@@ -75,7 +75,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 /**
                  * 资金类型显示选择条数
                  */
-                var $table = $(_that.getFirstParentByTag({currentTarget:$(this)}, 'table'));
+                var $table = $(_that.getFirstParentByTag(e, 'table'));
                 var length = $(".tranType:checked", $table).length;
                 if (length == 0) {
                     $('.tranTypeNum',$(this).parent().parent().parent().parent().parent().parent().parent().parent()).text("请选择");
@@ -109,7 +109,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $(".type-search div button",_that.formSelector).on('click', function () {
                 var type = $(this).data('type');
                 if (type == 'all') {
-                    $('.type-search').find(".tranType").each(function (e) {
+                    $('.type-search',$(this).parent().parent().parent()).find(".tranType").each(function (e) {
                         if (!$(this).prop('checked')) {
                             $(this).prop('checked', true).change();
                         }
