@@ -1026,7 +1026,7 @@ a.popup-screen-btn:visited{
 .aside-right-menu .mui-table-view-cell{padding:0.2rem 0.75rem;}
 .aside-right-menu.mui-table-view-inverted:after{background:none;}
 .aside-right-menu .mui-table-view-cell:after{background:none;}
-.aside-right-menu.mui-table-view .mui-table-view-cell .mui-media-object{line-height:50px;width:50px;height:50px; max-width: 50px;}
+.aside-right-menu.mui-table-view .mui-table-view-cell .mui-media-object{line-height:50px;width:50px;height:50px;}
 .aside-right-menu.mui-table-view .mui-table-view-cell .mui-ellipsis{margin-top:16px;color:#fff;}
 .aside-right-menu.mui-table-view .mui-table-view-cell .mui-ellipsis font{color:#ffea00;font-size:12px;display:inline-block;margin-right:2px;max-width:63px;vertical-align:bottom;overflow:hidden;text-overflow:ellipsis;}
 .aside-right-menu .mui-table-view-cell .mui-icon-refreshempty{left:200px;background-image:url(../images/hico36.png);background-position:10px 37px;background-repeat:no-repeat;background-size:30%;}
@@ -1276,6 +1276,7 @@ a.popup-screen-btn:visited{
 i.back {line-height: 2.3rem; color: #fff; font-size: 0.7rem; display: inline-block; position: absolute; top: 1px; left: 24px; width: 36px;}
 a.bet_menu {width:30px; height: 48px; background: url('../images/icon_more.png') center no-repeat; background-size: 20px; margin-right: -5px;}
 div.menu-popover {width: 120px;}
+._refresh {font-size: 1.2rem!important; font-weight: bold!important; padding-top: 12px!important;}
 
 /*走势图*/
 .middle-content.middle-content-bat.zst-content{bottom:0;}

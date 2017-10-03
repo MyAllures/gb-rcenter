@@ -284,7 +284,7 @@ define(['site/hall/trendchart/LotteryTrendChart'], function (LotteryTrendChart) 
 
          if(lcflag_1.length > 0){
              for(var m = 0; m < lcflag_1.length; m++){
-                 for(var n=0; n<30; n++){
+                 for(var n=0; n<data_len; n++){
                      if(yilouJis1[n] == lcflag_1[m]){
                          yilouJis1[n] = 99;
                      }
@@ -400,7 +400,7 @@ define(['site/hall/trendchart/LotteryTrendChart'], function (LotteryTrendChart) 
                  }
              }
          }
-
+         var datalength = data.length-1;
          for(var i = 0; i < 3; ++i) {
              for(var j = 1; j < 7; ++j) {
                  var obj = yilou[i][j];
@@ -413,16 +413,20 @@ define(['site/hall/trendchart/LotteryTrendChart'], function (LotteryTrendChart) 
 
                      if(tmpValue != j) { // 遗漏
                          tmpYlCs++;
-                         if(tmpLcCs > obj.maxLcCs) {
-                             obj.maxLcCs = tmpLcCs;
-                         }
                          tmpLcCs = 0;
+                         if (index==datalength){
+                             obj.ylArr.push(tmpYlCs);
+                         }
                      } else { // 中
                          obj.cxCs++;
                          tmpLcCs++;
-
-                         obj.ylArr.push(tmpYlCs);
+                         if(tmpYlCs !=0){
+                             obj.ylArr.push(tmpYlCs);
+                         }
                          tmpYlCs = 0;
+                     }
+                     if(tmpLcCs > obj.maxLcCs) {
+                         obj.maxLcCs = tmpLcCs;
                      }
                  });
 

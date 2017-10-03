@@ -19,6 +19,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             //mui初始化
             this.muiInit();
             this.iosGoBack();
+            this.manualRefresh();
             mui('#betContent').pullRefresh({
                 container: '#betContent',
                 up: {
@@ -326,6 +327,21 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 $('#payout').html(betProfit.payout.toFixed(2));
             else
                 $('#payout').html(0);
+        },
+
+        /** 手动刷新 */
+        manualRefresh: function () {
+            var _this = this;
+            mui('header').on('tap', 'a._refresh', function () {
+                $(this).hide();
+                $('div._refresh').show();
+                _this.refreshBetOrder();
+                setTimeout(function () {
+                    $('div._refresh').hide();
+                    $('a._refresh').show();
+                    mui.toast('刷新成功');
+                }, 1000);
+            })
         }
     })
 

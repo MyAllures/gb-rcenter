@@ -100,7 +100,11 @@ define(['gb/components/PopUp'], function (PopUp) {
                 msg = msg.replace("${siteId}", msgBody.siteId);
                 msg = msg.replace("${maxProfit}", msgBody.maxProfit);
                 msg = msg.replace("${profit}", msgBody.profit);
-                window.top.topPage.showWarningMessage(msg);
+                var content = '<a nav-target="mainFrame" name="tellerReminder" href="/site/detail/viewSiteBasic.html?search.id=' + msgBody.siteId + '">' + msg + '&nbsp;</a>';
+                popUp.pop(content,null,"warning");
+                $("a[name=tellerReminder]").click(function (e) {
+                    $(e.currentTarget).parent().parent().parent().remove()
+                });
             }
         },
         lotteryResultWarning: function (data) {
@@ -125,6 +129,42 @@ define(['gb/components/PopUp'], function (PopUp) {
             var content = '<a name="tellerReminder"  nav-target="mainFrame" href="#">[站点' + data.siteId + ']  ' + data.siteName + '在' + date + '提交买分,购买额度' + data.amount + ',请及时确认';
             popUp.pop(content, date, "warning");
             window.top.voice.playVoice(data, "order");
+        },
+        /**
+         * 转账上限提醒
+         * @param data
+         */
+        transferLimit: function (data) {
+            var msgBody = $.parseJSON($.parseJSON(data).msgBody);
+            var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), dateFormat.daySecond);
+            var rate = Number(msgBody.rate);
+            var warnRate = Number(msgBody.warnRate);
+            var stopRate = Number(msgBody.stopRate);
+            var msg;
+            if (rate >= stopRate) { //立即停止
+                msg = "站点【${siteId}】${siteName}转账上限已使用${rate},已停止玩家转账！";
+            } else if (rate >= warnRate) {
+                msg = "站点【${siteId}】${siteName}转账上限已使用${rate},需提醒站点在${date}之前充值，请及时关注！";
+            }
+            if (msg) {
+                msg = msg.replace("${siteId}", msgBody.siteId);
+                msg = msg.replace("${siteName}", msgBody.siteName);
+                msg = msg.replace("${rate}", msgBody.rate);
+                var content = '<a nav-target="mainFrame" name="tellerReminder" href="/site/detail/viewSiteBasic.html?search.id=' + msgBody.siteId + '">' + msg + '&nbsp;</a>';
+                popUp.pop(content, date, "warning");
+                $("a[name=tellerReminder]").click(function (e) {
+                    $(e.currentTarget).parent().parent().parent().remove()
+                });
+            }
+        },
+        largeTransactionMonitor: function (data) {
+            var msgBody = $.parseJSON($.parseJSON(data).msgBody);
+            var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.date), dateFormat.daySecond);
+            var content = '<a nav-target="mainFrame" name="tellerReminder" href="/largeTransactionMonitor/list.html?search.transactionNo=' + msgBody.transactionNo + '">' + '站点[' + msgBody.siteId + ']玩家' + msgBody.name + '于' + date + '新增&nbsp;' + msgBody.amount + '&nbsp;大额交易!,交易号为' + msgBody.transactionNo + '&nbsp;</a>';
+            popUp.pop(content, date, "warning");
+            $("a[name=tellerReminder]").click(function (e) {
+                $(e.currentTarget).parent().parent().parent().remove()
+            });
         }
     });
 });

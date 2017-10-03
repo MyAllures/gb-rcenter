@@ -69,7 +69,7 @@ $(document).ready(function(){
     });
 
     var img = new Image();
-    img.src="img/color.bmp";
+    img.src= resRoot + '/themes/' + curTheme + "/zst/img/color.bmp";
 
     $("#close_window").bind("click",function(){
         $("#forbiden_back").fadeOut(300);

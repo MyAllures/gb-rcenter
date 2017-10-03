@@ -20,6 +20,7 @@ define(['gb/components/Comet','site/index/PopUp','cookie'], function(Comet,PopUp
                     {subscribeType:"MCENTER_PLAYER_AUDIO",callBack:popUp.playerAudio},
                     {subscribeType:"MSITE-Player-Announcement-Notice",callBack:popUp.playerAnnouncementDialogCallBack},
                     {subscribeType: "EXPORT_DOWNLOAD_REMINDER",callBack:popUp.exportDownload},
+                    {subscribeType:'TRANSFER_LIMIT_WARNING',callBack:popUp.transferLimit}
                 ];
                 _this.subscribeMsgs(subscribes);
             };

@@ -38,7 +38,8 @@ define(['gb/components/Comet', 'site/index/PopUp', 'cookie'], function (Comet, P
                     {subscribeType: "MCENTER_PLAYER_AUDIO", callBack: popUp.playerAudio},
                     {subscribeType: "MCENTER_WITHDRAW_AUDIT_UPDATE_STATUS",callBack:popUp.fetchWithdrawRecord},
                     {subscribeType: "EXPORT_DOWNLOAD_REMINDER",callBack:popUp.exportDownload},
-                    {subscribeType: "MESSAGE_NOTICE",callBack:popUp.playerNoticeVoice}
+                    {subscribeType: "MESSAGE_NOTICE",callBack:popUp.playerNoticeVoice},
+                    {subscribeType:'TRANSFER_LIMIT_WARNING',callBack:popUp.transferLimit}
                 ];
                 _this.subscribeMsgs(subscribes);
             };

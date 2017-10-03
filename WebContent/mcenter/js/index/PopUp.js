@@ -261,10 +261,11 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 msg = msg.replace("${rate}", rate);
                 var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), window.top.dateFormat.daySecond);
                 msg = msg.replace("${leftTime}", date);
-                if (rate >= 100) { //所有账号都提醒
+                if (rate >= 100) {
+                    var html = '<div class="line-hi34 m-sm">'+msg+'</div>';
                     var dialog = BootstrapDialog.show({
                         title: '消息',
-                        message: msg,
+                        message: html,
                         buttons: [{
                             label: '去充值',
                             action: function (dialog) {
@@ -451,6 +452,27 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 });
             }
 
+        },
+        /**
+         * 转账上限提醒
+         * @param data
+         */
+        transferLimit: function (data) {
+            var msgBody = $.parseJSON($.parseJSON(data).msgBody);
+            var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), dateFormat.daySecond);
+            var rate = Number(data.rate);
+            var warnRate = Number(data.warnRate);
+            var stopRate = Number(data.stopRate);
+            if (rate >= stopRate) { //立即停止
+                var msg = "您站点的转账上限使用已超出${stopRate}%，已停止玩家转账，请立即充值，提升额度！";
+                msg = msg.replace("${stopRate}",stopRate);
+                window.top.topPage.showConfirmMessage(msg)
+            } else if (rate >= warnRate) {
+                var msg = "您站点的额度已用${rate}，为了避免管理后台被维护,请最迟于${leftTime}前尽快充值,提升额度！";
+                msg = msg.replace("${rate}",data.rate);
+                msg = msg.replace("${leftTime}",date);
+                window.top.topPage.showConfirmMessage(msg);
+            }
         }
     });
 });
