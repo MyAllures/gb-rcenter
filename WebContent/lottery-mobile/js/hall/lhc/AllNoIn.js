@@ -25,8 +25,11 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
 
         getOdds: function () {
             var url = root + '/' + this.type + '/' + this.code + '/' + this.betCode + 'Odd.html';
-            var subCode = $("a.mui-active[data-subCode]").attr("data-subCode");
-            var minNum = $("a.mui-active[data-subCode]").attr("min-num");
+            var activeA = $("a.mui-active[data-subCode]");
+            var subCode = activeA.attr("data-subCode");
+            var minNum = activeA.attr("min-num");
+            var title = activeA.text();
+
             mui.ajax(url, {
                 dataType: 'json',
                 type: 'POST',
@@ -37,7 +40,7 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                         $("#oddValue").text(bet.odd);
                     }
                     $("#minNum").text(minNum);
-
+                    $("#lhc_title").text(title);
                 }
             })
         },
