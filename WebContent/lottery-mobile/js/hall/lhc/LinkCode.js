@@ -33,8 +33,6 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                 type: 'POST',
                 data: {'betCode': subCode},
                 success: function (data) {
-                    var bet = null;
-                    var nextBet = null;
                     if(data['中2'] && data['中3']){
                         var bet = data['中2'];
                         var nextBet = data['中3'];
@@ -42,13 +40,12 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                         $("#nextOddValue").text(nextBet.odd);
                         $(".nextOddValue").show();
                     }else if(data['中2'] && data['中特']){
-                        bet = data['中特'];
-                        nextBet = data['中2'];
+                        var bet = data['中特'];
+                        var nextBet = data['中2'];
                         $("#oddValue").text(bet.odd);
                         $("#nextOddValue").text(nextBet.odd);
                         $(".nextOddValue").show();
-                    }//二,三,四全中
-                    else if(data[minNum]){
+                    }else if(data[minNum]){
                         var bet = data[minNum];
                         $("#oddValue").text(bet.odd);
                         $(".nextOddValue").hide();
@@ -97,7 +94,6 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
             var expect = $('font#expect').text();
             var odd = $("#oddValue").text();
             var memo = $("#lhc_title").text();
-
             var betCode = $("a.mui-active[data-subCode]").attr("data-subCode");
             var playCode = $("#"+betCode).val();
             var betForm = {
@@ -106,8 +102,8 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                 betOrders: [],
                 quantity: 0
             };
-            for(var i = 0; i < chooseArr.length; i++){
-
+            var count = chooseArr.length;
+            for(var i = 0; i < count; i++){
                 var value = chooseArr[i];
                 betForm.betOrders.push({
                     expect: expect,
@@ -123,29 +119,6 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                 betForm.quantity++;
             }
             return betForm;
-        },
-        combinationNum : function(m,n) {
-            var o = 1;
-            var j = m - n + 1;
-            while (m >= j) {
-                o *= m--;
-            }
-            if(o==0){
-                return 0;
-            }
-            while (n >= 1) {
-                o /= n--;
-            }
-            return o;
-        },
-        //点击投注选项
-        bindTdInput: function (obj) {
-            var flag = $(obj).is('.not-selected');
-            if (!flag) {
-                $(obj).toggleClass('mui-active');
-            }
-            var arrLength = $("div.bet-table-list .mui-active").length;
-            $("#quantity").text(this.combinationNum(arrLength,$("#minNum").text()));
         }
     });
 });

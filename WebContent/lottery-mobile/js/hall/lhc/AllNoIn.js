@@ -1,6 +1,5 @@
 define(['site/hall/lhc/PlayWay'], function (PlayWay) {
     return PlayWay.extend({
-
         init: function () {
             this._super();
         },
@@ -29,7 +28,6 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
             var subCode = activeA.attr("data-subCode");
             var minNum = activeA.attr("min-num");
             var title = activeA.text();
-
             mui.ajax(url, {
                 dataType: 'json',
                 type: 'POST',
@@ -79,7 +77,6 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                 }
             });
             var chooseArr = this.combination(betNumArr, minNum);
-
             var expect = $('font#expect').text();
             var odd = $("#oddValue").text();
             var memo = $("#lhc_title").text();
@@ -107,7 +104,6 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                 betForm.quantity++;
             }
             return betForm;
-
         }
     });
 });

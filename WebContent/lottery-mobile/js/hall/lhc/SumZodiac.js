@@ -54,7 +54,6 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
             }
             var betForm = this.getBetOrder();
 
-            sessionStorage.betForm = JSON.stringify(betForm);
             this.placeOrder(betForm);
             $("#dingdan").addClass('mui-active');
         },

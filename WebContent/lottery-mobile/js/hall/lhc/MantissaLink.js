@@ -24,33 +24,21 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
         },
         lhcBet:null,
         getOdds: function () {
-
+            var _this = this;
             this.resetBet();
-
             var url = root + '/' + this.type + '/' + this.code + '/' + this.betCode + 'Odd.html';
-            var subCode = $("a.mui-active[data-subCode]").attr("data-subCode");
-            var title = $("a.mui-active[data-subCode]").text();
-
+            var activeA = $("a.mui-active[data-subCode]");
+            var subCode = activeA.attr("data-subCode");
+            var minNum = activeA.attr("min-num");
+            var title = activeA.text();
             mui.ajax(url, {
                 dataType: 'json',
                 type: 'POST',
                 data: {'betCode': subCode},
                 success: function (data) {
-
-                    var bet = null;
-                    PlayWay.lhcBet = data;
-                    if(data[title]){
-                        bet = data[title];
-                        $("#oddValue").text(bet.odd);
-                    }
-
-                    var numJson = {"二":2, "三":3,"四":4,"五":5};
-
-                    var minNum = numJson[title.substring(0,1)];
-
+                    _this.lhcBet = data;
                     $("#lhc_title").text(title);
                     $("#minNum").text(minNum);
-
                     $(".bet-table-list td[data-bet-num]").each(function () {
                         var betNum = $(this).attr('data-bet-num');
                         var bet = data[betNum];
@@ -77,7 +65,6 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
             }
             var betForm = this.getBetOrder();
 
-            sessionStorage.betForm = JSON.stringify(betForm);
             this.placeOrder(betForm);
             $("#dingdan").addClass('mui-active');
         },
@@ -116,7 +103,7 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                 var arrayMin = new Array();
                 var valueArr = value.split(",");
                 for(var index in valueArr){
-                    arrayMin.push(PlayWay.lhcBet[valueArr[index]].odd);
+                    arrayMin.push(this.lhcBet[valueArr[index]].odd);
                 }
                 var odd = eval("Math.min(" + arrayMin.toString() + ")");
 
@@ -135,29 +122,6 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
             }
             return betForm;
 
-        },
-        //组合函数
-        combination : function (arr, size) {
-            var allResult = [];
-            if(arr.length >= size){
-                var temp = new Array(size)
-                temp[size-1]="";
-                this.combinationSelect(allResult,arr,0,temp,0);
-            }
-            return allResult;
-        },
-        combinationSelect : function(allResult,dataList,dataIndex,resultCode,resultIndex){
-            var resultLen = resultCode.length;
-            var resultCount = resultIndex + 1;
-            if (resultCount > resultLen) { // 全部选择完时，输出组合结果
-                allResult.push(resultCode.join(","));
-                return;
-            }
-            var count = dataList.length + resultCount - resultLen;
-            for (var i = dataIndex; i < count; i++) {
-                resultCode[resultIndex] = dataList[i];
-                this.combinationSelect(allResult,dataList, i + 1, resultCode, resultIndex + 1);
-            }
         },
         combinationNum : function(m,n) {
             var o = 1;
