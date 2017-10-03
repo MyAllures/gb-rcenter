@@ -25,7 +25,6 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
         lhcBet:null,
         getOdds: function () {
 
-            var _this = this;
             this.resetBet();
 
             var url = root + '/' + this.type + '/' + this.code + '/' + this.betCode + 'Odd.html';
@@ -50,7 +49,7 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                     var minNum = numJson[title.substring(0,1)];
 
                     $("#lhc_title").text(title);
-                    $("#minNum").val(minNum);
+                    $("#minNum").text(minNum);
 
                     $(".bet-table-list td[data-bet-num]").each(function () {
                         var betNum = $(this).attr('data-bet-num');
@@ -71,7 +70,7 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                 return;
             }
             var activeTds = $("div.bet-table-list .mui-active");
-            var minNum = $("#minNum").val();
+            var minNum = $("#minNum").text();
             if (activeTds.length < minNum) {
                 this.toast("请至少选择"+minNum+"个号码");
                 return;
@@ -92,7 +91,7 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
             var betAmount = $("input#inputMoney").val();
             betAmount = parseInt(betAmount);
             var betNumArr = new Array();
-            var minNum = $("#minNum").val();
+            var minNum = $("#minNum").text();
             $("div.bet-table-list .mui-active").each(function () {
                 var num = $(this).attr("data-bet-num");
                 if(num){
@@ -181,7 +180,7 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                 $(obj).toggleClass('mui-active');
             }
             var arrLength = $("div.bet-table-list .mui-active").length;
-            $("#quantity").text(this.combinationNum(arrLength,$("#minNum").val()));
+            $("#quantity").text(this.combinationNum(arrLength,$("#minNum").text()));
         }
     });
 });
