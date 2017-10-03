@@ -100,11 +100,15 @@ define(['gb/components/PopUp'], function (PopUp) {
                 msg = msg.replace("${siteId}", msgBody.siteId);
                 msg = msg.replace("${maxProfit}", msgBody.maxProfit);
                 msg = msg.replace("${profit}", msgBody.profit);
-                var content = '<a nav-target="mainFrame" name="tellerReminder" href="/site/detail/viewSiteBasic.html?search.id=' + msgBody.siteId + '">' + msg + '&nbsp;</a>';
-                popUp.pop(content,null,"warning");
-                $("a[name=tellerReminder]").click(function (e) {
-                    $(e.currentTarget).parent().parent().parent().remove()
-                });
+                if (Number(rate) >= 100) {
+                    window.top.topPage.showConfirmMessage(msg);
+                } else {
+                    var content = '<a nav-target="mainFrame" name="tellerReminder" href="/site/detail/viewSiteBasic.html?search.id=' + msgBody.siteId + '">' + msg + '&nbsp;</a>';
+                    popUp.pop(content, null, "warning");
+                    $("a[name=tellerReminder]").click(function (e) {
+                        $(e.currentTarget).parent().parent().parent().remove()
+                    });
+                }
             }
         },
         lotteryResultWarning: function (data) {
@@ -142,14 +146,15 @@ define(['gb/components/PopUp'], function (PopUp) {
             var stopRate = Number(msgBody.stopRate);
             var msg;
             if (rate >= stopRate) { //立即停止
-                msg = "站点【${siteId}】${siteName}转账上限已使用${rate},已停止玩家转账！";
+                msg = "站点【${siteId}】${siteName}转账上限已使用${rate}%,已停止玩家转账！";
             } else if (rate >= warnRate) {
-                msg = "站点【${siteId}】${siteName}转账上限已使用${rate},需提醒站点在${date}之前充值，请及时关注！";
+                msg = "站点【${siteId}】${siteName}转账上限已使用${rate}%,需提醒站点在${date}之前充值，请及时关注！";
             }
             if (msg) {
                 msg = msg.replace("${siteId}", msgBody.siteId);
                 msg = msg.replace("${siteName}", msgBody.siteName);
                 msg = msg.replace("${rate}", msgBody.rate);
+                msg = msg.replace("${date}", date);
                 var content = '<a nav-target="mainFrame" name="tellerReminder" href="/site/detail/viewSiteBasic.html?search.id=' + msgBody.siteId + '">' + msg + '&nbsp;</a>';
                 popUp.pop(content, date, "warning");
                 $("a[name=tellerReminder]").click(function (e) {
@@ -163,7 +168,7 @@ define(['gb/components/PopUp'], function (PopUp) {
             var content = '<a nav-target="mainFrame" name="tellerReminder" href="/largeTransactionMonitor/list.html?search.transactionNo=' + msgBody.transactionNo + '">' + '站点[' + msgBody.siteId + ']玩家' + msgBody.name + '于' + date + '新增&nbsp;' + msgBody.amount + '&nbsp;大额交易!,交易号为' + msgBody.transactionNo + '&nbsp;</a>';
             popUp.pop(content, date, "warning");
             $("a[name=tellerReminder]").click(function (e) {
-                $(e.currentTarget).parent().parent().parent().remove()
+                $(e.currentTarget).parent().parent().parent().remove();
             });
         }
     });
