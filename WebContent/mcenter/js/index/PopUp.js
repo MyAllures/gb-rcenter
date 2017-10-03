@@ -261,7 +261,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 msg = msg.replace("${rate}", rate);
                 var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), window.top.dateFormat.daySecond);
                 msg = msg.replace("${leftTime}", date);
-                if (rate >= 100) { //所有账号都提醒
+                if (rate >= 100) {
                     var dialog = BootstrapDialog.show({
                         title: '消息',
                         message: msg,
