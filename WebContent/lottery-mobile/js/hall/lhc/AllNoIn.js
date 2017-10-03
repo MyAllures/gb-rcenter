@@ -26,7 +26,6 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
         getOdds: function () {
             var url = root + '/' + this.type + '/' + this.code + '/' + this.betCode + 'Odd.html';
             var subCode = $("a.mui-active[data-subCode]").attr("data-subCode");
-            var title = $("a.mui-active[data-subCode]").text();
             var minNum = $("a.mui-active[data-subCode]").attr("min-num");
             mui.ajax(url, {
                 dataType: 'json',
