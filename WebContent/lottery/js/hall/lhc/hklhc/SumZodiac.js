@@ -117,7 +117,6 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
             }
             return betForm;
         },
-
         bindTdInput : function(){
             // 点击变黄
             $(".main-left .table-common tbody tr td.hx-list").click(function() {
@@ -126,32 +125,8 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                     $(this).removeClass("bg-yellow");
                 } else{
                     $(this).addClass("bg-yellow");
-                };
+                }
             });
-        },
-
-        //组合函数
-        combination : function (arr, size) {
-            var allResult = [];
-            if(arr.length >= size){
-                var temp = new Array(size)
-                temp[size-1]="";
-                this.combinationSelect(allResult,arr,0,temp,0);
-            }
-            return allResult;
-        },
-        combinationSelect : function(allResult,dataList,dataIndex,resultCode,resultIndex){
-            var resultLen = resultCode.length;
-            var resultCount = resultIndex + 1;
-            if (resultCount > resultLen) { // 全部选择完时，输出组合结果
-                allResult.push(resultCode.join(","));
-                return;
-            }
-            var count = dataList.length + resultCount - resultLen;
-            for (var i = dataIndex; i < count; i++) {
-                resultCode[resultIndex] = dataList[i];
-                this.combinationSelect(allResult,dataList, i + 1, resultCode, resultIndex + 1);
-            }
         }
     })
 });
