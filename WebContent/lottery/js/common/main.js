@@ -59,6 +59,14 @@ curl = {
                 exports: '$',
                 requires: ['jquery']
             }
+        },
+        range: {
+            location: resRoot + '/js/plugin/jquery.range.js',
+            config: {
+                loader: 'curl/curl/loader/legacy',
+                exports: '$',
+                requires: ['jquery']
+            }
         }
     },
 

@@ -251,6 +251,34 @@ function getRequest(url) {
     }
     return theRequest;
 }
+
+
+
+
+//获取重复元素
+Array.prototype.duplicateNew = function () {
+    var tempArr = new Array();
+    this.sort();
+    for(i = 0; i < this.length; i++) {
+        if( this[i] == this[i+1]) {
+            tempArr.push(this[i]);
+            continue;
+        }
+    }
+    return tempArr;
+};
+//去掉数组重复
+Array.prototype.uniqueArr = function () {
+    var temp = new Array();
+    this.sort();
+    for(i = 0; i < this.length; i++) {
+        if( this[i] == this[i+1]) {
+            continue;
+        }
+        temp[temp.length]=this[i];
+    }
+    return temp;
+};
 /**
  * 获得从m中取n的所有组合
  */
