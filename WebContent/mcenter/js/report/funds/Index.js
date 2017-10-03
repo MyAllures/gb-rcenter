@@ -75,7 +75,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 /**
                  * 资金类型显示选择条数
                  */
-                var length = $(".tranType:checked", $(this).parent().parent().parent().parent()).length;
+                var length = $(".tranType:checked", $(this).parent().parent().parent().parent().parent()).length;
                 if (length == 0) {
                     $('.tranTypeNum',$(this).parent().parent().parent().parent().parent().parent().parent().parent()).text(window.top.message.report_auto['请选择']);
                 } else {
