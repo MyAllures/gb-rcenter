@@ -43,45 +43,45 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                     if(title=="二全中"){
                         minNum = 2;
                         index = 2;
+                        bet = data["2"];
+                        $("#oddValue").text(bet.odd);
+                        $(".nextOddValue").hide();
                     }
                     if(title=="三全中"){
                         minNum = 3;
                         index = 3;
+                        bet = data["3"];
+                        $("#oddValue").text(bet.odd);
+                        $(".nextOddValue").hide();
                     }
                     if(title=="四全中"){
                         minNum = 4;
                         index = 4;
+                        bet = data["4"];
+                        $("#oddValue").text(bet.odd);
+                        $(".nextOddValue").hide();
                     }
                     if(title=="三中二"){
                         minNum=3;
                         index = 5;
+                        $("#oddValue").text(data["中2"].odd);
+                        $("#nextOddValue").text(data["中3"].odd);
+                        $(".nextOddValue").show();
                     }
                     if(title=="二中特"){
                         minNum = 2;
                         index = 6;
+                        $("#oddValue").text(data["中特"].odd);
+                        $("#nextOddValue").text(data["中2"].odd);
+                        $(".nextOddValue").show();
                     }
                     if(title=="特串"){
                         minNum = 2;
                         index = 7;
-                    }
-
-                    if(data[title]){
-                        bet = data[title];
+                        bet = data["2"];
                         $("#oddValue").text(bet.odd);
                         $(".nextOddValue").hide();
-                    }else if(data['三中二之中二'] || data['三中二之中三']){
-                        bet = data['三中二之中二'];
-                        nextBet = data['三中二之中三'];
-                        $("#oddValue").text(bet.odd);
-                        $("#nextOddValue").text(nextBet.odd);
-                        $(".nextOddValue").show();
-                    }else if(data['二中特之中二'] || data['二中特之中特']){
-                       bet = data['二中特之中特'];
-                       nextBet = data['二中特之中二'];
-                       $("#oddValue").text(bet.odd);
-                       $("#nextOddValue").text(nextBet.odd);
-                       $(".nextOddValue").show();
-                   }
+                    }
 
                     $("#lhc_title").text(title);
                     $("#minNum").text(minNum);
@@ -141,9 +141,8 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                 betOrders: [],
                 quantity: 0
             };
-            var count = chooseArr.length;
-            for(var i = 0; i < count; i++){
-                var value = chooseArr[i];
+            for(var index in chooseArr){
+                var value = chooseArr[index];
                 betForm.betOrders.push({
                     expect: expect,
                     code: _this.code,
@@ -182,6 +181,29 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                 resultCode[resultIndex] = dataList[i];
                 this.combinationSelect(allResult,dataList, i + 1, resultCode, resultIndex + 1);
             }
+        },
+        combinationNum : function(m,n) {
+            var o = 1;
+            var j = m - n + 1;
+            while (m >= j) {
+                o *= m--;
+            }
+            if(o==0){
+                return 0;
+            }
+            while (n >= 1) {
+                o /= n--;
+            }
+            return o;
+        },
+        //点击投注选项
+        bindTdInput: function (obj) {
+            var flag = $(obj).is('.not-selected');
+            if (!flag) {
+                $(obj).toggleClass('mui-active');
+            }
+            var arrLength = $("div.bet-table-list .mui-active").length;
+            $("#quantity").text(this.combinationNum(arrLength,$("#minNum").text()));
         }
     });
 });
