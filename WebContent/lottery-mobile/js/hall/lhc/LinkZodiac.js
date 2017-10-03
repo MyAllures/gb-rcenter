@@ -52,7 +52,13 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                     $("#lhc_title").text(title);
                     $("#minNum").text(minNum);
 
-                    _this.templateOdd(data);
+                    $(".bet-table-list td[data-bet-num]").each(function () {
+                        var betNum = $(this).attr('data-bet-num');
+                        var bet = data[betNum];
+                        $(this).attr("data-odds", bet.odd);
+                        $(this).attr("data-bet-code", bet.betCode);
+                        $(this).next().children().text(bet.odd);
+                    })
 
                 }
             })
