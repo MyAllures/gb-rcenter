@@ -9,63 +9,43 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
         },
         bindButtonEvents: function () {
             this._super();
-            this.getLinkCode();
+            this.getLinkZodiac();
         },
 
         lhcBet:null,
         /**
-         * 六合彩正码特跳转子页面
+         * 连肖
          */
-        getLinkCode: function () {
-
+        getLinkZodiac: function () {
+            var _this = this;
             $(".main-left .fr .T-tab a").click(function () {
+                _this.clearTdInput();
                 $(".main-left .fr .T-tab a").removeClass("active");
                 $(this).addClass("active");
                 var subCode = $(this).attr("subCode");
                 var title = $(this).text();
                 $("#lhc_title").text(title);
-
+                var minNum = $(this).attr("min-num");
                 ajaxRequest({
                     url: root + '/lhc/hklhc/getLhcBet.html',
                     data: {"subCode": subCode},
                     dataType: "json",
                     success: function (data) {
-
-                        PlayWay.lhcBet = data;
-
-                        var numJson = {"二":2, "三":3,"四":4,"五":5};
-
-                        minNum = numJson[title.substring(0,1)];
-
+                        _this.lhcBet = data;
                         $("#minNum").text(minNum);
-
-                        $(".lhc-ztm tr").each(function (i) {
-
-                            var $tr = $(this).find("input");
-                            $($tr).each(function (i) {
-                                var bet = data[$(this).attr("data-name")];
-                                $(this).attr("data-odds", bet.odd);
-                                $(this).attr("data-bet-code", bet.betCode);
-                                $(this).attr("data-play",$("#playCode"+minNum).val());
-                                $(this).attr("data-bet-num", bet.betNum);
-                                $(this).parent().next().children().text(bet.odd);
-                            })
-
+                        $(".lhc-ztm td.hx-list").each(function (i) {
+                            var bet = data[$(this).attr("data-name")];
+                            $(this).attr("data-odds", bet.odd);
+                            $(this).attr("data-bet-code", bet.betCode);
+                            $(this).attr("data-play",$("#playCode"+minNum).val());
+                            $(this).attr("data-bet-num", bet.betNum);
+                            $(this).next().children().text(bet.odd);
                         });
-
-                        var tdList = $(".main-left .table-common tbody tr td.hx-list");
-                        tdList.removeClass("bg-yellow");
-                        tdList.each(function() {
-                            $(this).find("input").attr("checked",false);
-                        });
-
-                        PlayWay.lhcBet = data;
                     },
                     error: function (e) {
                         console.log("error");
                     }
                 });
-                $(".main-left .fl input").val("");
             });
         },
         /** 获取注单 */
@@ -85,7 +65,7 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
             betAmount = parseInt(betAmount);
             var betNumArr = new Array();
             $(".main-left .table-common td.bg-yellow").each(function () {
-                var num = $(this).children("strong:first-child").text();
+                var num = $(this).attr("data-name");
                 if(num){
                     betNumArr.push(num);
                 }
@@ -110,8 +90,8 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
 
                 var arrayMin = new Array();
                 var valueArr = value.split(",");
-                for(var index in valueArr){
-                    arrayMin.push(PlayWay.lhcBet[valueArr[index]].odd);
+                for(var index = 0; index < valueArr.length; index++){
+                    arrayMin.push(this.lhcBet[valueArr[index]].odd);
                 }
                 var odd = eval("Math.min(" + arrayMin.toString() + ")");
 
@@ -137,18 +117,10 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                 var xz = $(this).hasClass("bg-yellow");
                 if (xz == true) {
                     $(this).removeClass("bg-yellow");
-                    $(this).children("input").attr("checked",false);
                 } else{
                     $(this).addClass("bg-yellow");
-                    $(this).children("input").attr("checked",true);
-                };
+                }
             });
-        },
-
-        //如果有特殊玩法除了重置页面input之外的其他操作,请继承该js,重写该方法
-        clearTdInput : function(){
-            page.reset();
-            $(".main-left .table-common input").attr("checked",false);
         },
 
         //组合函数

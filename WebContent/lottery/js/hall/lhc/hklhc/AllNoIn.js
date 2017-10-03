@@ -9,12 +9,12 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
         },
         bindButtonEvents: function () {
             this._super();
-            this.getLinkCode();
+            this.getAllNoIn();
         },
         /**
-         * 六合彩正码特跳转子页面
+         *  全不中
          */
-        getLinkCode: function () {
+        getAllNoIn: function () {
 
             $(".main-left .fr .T-tab a").click(function () {
                 $(".main-left .fr .T-tab a").removeClass("active");
@@ -22,33 +22,18 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                 var subCode = $(this).attr("subCode");
                 var title = $(this).text();
                 $("#lhc_title").text(title);
-
+                var minNum = $(this).attr("min-num");
                 ajaxRequest({
                     url: root + '/lhc/hklhc/getLhcBet.html',
                     data: {"subCode": subCode},
                     dataType: "json",
                     success: function (data) {
-
                         var bet = null;
-                        //二,三,四全中
-                        if(data[title]){
-                            bet = data[title];
+                        if(data[minNum]){
+                            bet = data[minNum];
                             $("#oddValue").text(bet.odd);
                         }
-
-                        var numJson = {"五":5,"六":6,"七":7,"八":8,"九":9,"十":10,"十一":11,"十二":12};
-
-                        var minNum = numJson[title.substring(0,2)];
-
-                        if(minNum>10){
-                            minNum = minNum;
-                        }else{
-                            minNum = numJson[title.substring(0,1)];
-                        }
-
                         $("#minNum").text(minNum);
-
-
                         $(".lhc-ztm tr").each(function (i) {
                             var $tr = $(this).find("input");
                             $($tr).each(function () {
@@ -125,23 +110,23 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
             return betForm;
         },
 
-        bindTdInput : function(){
-            $(".main-left .table-common tbody tr td.new-ball-st").click(function () {
-                if ($(this).hasClass("bg-yellow")) {
-                    $(this).removeClass("bg-yellow");
-                    $(this).find("input").attr("checked",false);
-                } else {
-                    $(this).addClass("bg-yellow");
-                    $(this).find("input").attr("checked",true);
-                }
-            });
-        },
+        // bindTdInput : function(){
+        //     $(".main-left .table-common tbody tr td.new-ball-st").click(function () {
+        //         if ($(this).hasClass("bg-yellow")) {
+        //             $(this).removeClass("bg-yellow");
+        //             $(this).find("input").attr("checked",false);
+        //         } else {
+        //             $(this).addClass("bg-yellow");
+        //             $(this).find("input").attr("checked",true);
+        //         }
+        //     });
+        // },
 
         //如果有特殊玩法除了重置页面input之外的其他操作,请继承该js,重写该方法
-        clearTdInput : function(){
-            page.reset();
-            $(".main-left .table-common input").attr("checked",false);
-        },
+        // clearTdInput : function(){
+        //     page.reset();
+        //     $(".main-left .table-common input").attr("checked",false);
+        // },
         //组合函数
         combination : function (arr, size) {
             var allResult = [];
