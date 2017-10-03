@@ -109,24 +109,6 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
             }
             return betForm;
         },
-
-        // bindTdInput : function(){
-        //     $(".main-left .table-common tbody tr td.new-ball-st").click(function () {
-        //         if ($(this).hasClass("bg-yellow")) {
-        //             $(this).removeClass("bg-yellow");
-        //             $(this).find("input").attr("checked",false);
-        //         } else {
-        //             $(this).addClass("bg-yellow");
-        //             $(this).find("input").attr("checked",true);
-        //         }
-        //     });
-        // },
-
-        //如果有特殊玩法除了重置页面input之外的其他操作,请继承该js,重写该方法
-        // clearTdInput : function(){
-        //     page.reset();
-        //     $(".main-left .table-common input").attr("checked",false);
-        // },
         //组合函数
         combination : function (arr, size) {
             var allResult = [];
