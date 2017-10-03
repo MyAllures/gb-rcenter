@@ -22,37 +22,20 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
 
             })
         },
-
         getOdds: function () {
-
             this.resetBet();
-
             var url = root + '/' + this.type + '/' + this.code + '/' + this.betCode + 'Odd.html';
             var subCode = $("a.mui-active[data-subCode]").attr("data-subCode");
             var title = $("a.mui-active[data-subCode]").text();
-
+            var minNum = $("a.mui-active[data-subCode]").attr("min-num");
             mui.ajax(url, {
                 dataType: 'json',
                 type: 'POST',
                 data: {'betCode': subCode},
                 success: function (data) {
-
-                    var numJson = {"二":2, "三":3,"四":4,"五":5,"六":6,"七":7,"八":8,"九":9,"十":10,"十一":11};
-
-                    var minNum = numJson[title.substring(0,2)];
-
-                    if(minNum>10){
-                        minNum = minNum;
-                    }else{
-                        minNum = numJson[title.substring(0,1)];
-                    }
-
                     $("#oddValue").text(data[minNum].odd);
                     $("#lhc_title").text(title);
                     $("#minNum").text(minNum);
-
-                    //_this.templateOdd(data);
-
                 }
             })
         },
@@ -123,29 +106,6 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
             }
             return betForm;
 
-        },
-        //组合函数
-        combination : function (arr, size) {
-            var allResult = [];
-            if(arr.length >= size){
-                var temp = new Array(size)
-                temp[size-1]="";
-                this.combinationSelect(allResult,arr,0,temp,0);
-            }
-            return allResult;
-        },
-        combinationSelect : function(allResult,dataList,dataIndex,resultCode,resultIndex){
-            var resultLen = resultCode.length;
-            var resultCount = resultIndex + 1;
-            if (resultCount > resultLen) { // 全部选择完时，输出组合结果
-                allResult.push(resultCode.join(","));
-                return;
-            }
-            var count = dataList.length + resultCount - resultLen;
-            for (var i = dataIndex; i < count; i++) {
-                resultCode[resultIndex] = dataList[i];
-                this.combinationSelect(allResult,dataList, i + 1, resultCode, resultIndex + 1);
-            }
         },
         combinationNum : function(m,n) {
             var o = 1;
