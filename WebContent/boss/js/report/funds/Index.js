@@ -115,7 +115,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                         }
                     })
                 } else if (type == 'clear') {
-                    $('.type-search').find(".tranType").each(function (e) {
+                    $('.type-search',$(this).parent().parent().parent()).find(".tranType").each(function (e) {
                         if ($(this).prop('checked')) {
                             $(this).prop('checked', false).change();
                         }
