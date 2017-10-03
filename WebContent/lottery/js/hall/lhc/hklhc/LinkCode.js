@@ -94,8 +94,7 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                 betOrders: [],
                 quantity: 0
             };
-            var count = chooseArr.length;
-            for(var i = 0; i < count; i++){
+            for(var i = 0; i < chooseArr.length; i++){
                 var value = chooseArr[i];
                 betForm.betOrders.push({
                     expect: expect,
