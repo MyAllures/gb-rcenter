@@ -162,9 +162,9 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 if (typeof flag != "undefined" && flag == "wei-r2") {
                     _this.getZuChengFangAnR2(obj, fnId);
                 } else if (typeof flag != "undefined" && flag == "wei-r3") {
-                    _thisgetZuChengFangAnR3(obj, fnId);
+                    _this.getZuChengFangAnR3(obj, fnId);
                 } else if (typeof flag != "undefined" && flag == "wei-r4") {
-                    _thisgetZuChengFangAnR4(obj, fnId);
+                    _this.getZuChengFangAnR4(obj, fnId);
                 }
                 _this.renderZhushu();
             });
@@ -2157,10 +2157,29 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
         getBetNum:function(obj) {
             var betNum = obj.attr("data-bet_content");
             if (betNum.toString().indexOf('|') < 0) {
-                betNum = betNum.replace(",","|");
+                betNum = betNum.replace(new RegExp(",","gm"),"|");
             }
             return betNum;
+        },
+        getNoWeiStr:function (arr) {
+        var checkArr = [], checkStrArr = [];
+        checkArr = arr;
+        for (var i = 0; i < checkArr.length; i++) {
+            if (checkArr[i] == 1) {
+                checkStrArr.push("万");
+            } else if (checkArr[i] == 2) {
+                checkStrArr.push("千");
+            } else if (checkArr[i] == 3) {
+                checkStrArr.push("百");
+            } else if (checkArr[i] == 4) {
+                checkStrArr.push("十");
+            } else if (checkArr[i] == 5) {
+                checkStrArr.push("个");
+            }
         }
+        return checkStrArr;
+    }
+
     })
 
 });
