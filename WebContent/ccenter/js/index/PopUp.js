@@ -56,11 +56,16 @@ define(['gb/components/PopUp'], function (PopUp) {
                 msg = msg.replace("${siteId}", msgBody.siteId);
                 msg = msg.replace("${maxProfit}", msgBody.maxProfit);
                 msg = msg.replace("${profit}", msgBody.profit);
-                var content = '<a nav-target="mainFrame" name="tellerReminder" href="/site/detail/viewSiteBasic.html?search.id=' + msgBody.siteId + '">' + msg + '&nbsp;</a>';
-                popUp.pop(content, null, "warning");
-                $("a[name=tellerReminder]").click(function (e) {
-                    $(e.currentTarget).parent().parent().parent().remove()
-                });
+                if(Number(rate)>=100) {
+                    window.top.topPage.showWarningMessage(msg);
+                } else {
+                    var content = '<a nav-target="mainFrame" name="tellerReminder" href="/site/detail/viewSiteBasic.html?search.id=' + msgBody.siteId + '">' + msg + '&nbsp;</a>';
+                    popUp.pop(content, null, "warning");
+                    $("a[name=tellerReminder]").click(function (e) {
+                        $(e.currentTarget).parent().parent().parent().remove()
+                    });
+                }
+
             }
         },
         /**
