@@ -20,13 +20,16 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             var balance = $("input[name='search.walletBalance']").val();
             var id = $("input[name='search.id']").val();
             var ids= window.parent.page.getSelectedIds();
+            var _this=this;
             window.top.topPage.ajax({
                 url: root + '/simulationAccount/saveAddQuota.html?walletBalance='+balance+'&search.id='+id,
                 data: {"playerIds":ids},
                 dataType:'json',
                 type: "POST",
                 success: function (data) {
-
+                    if (data.state){
+                        _this.saveCallbak(e);
+                    }
                 }
             });
         }
