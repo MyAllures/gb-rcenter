@@ -100,6 +100,21 @@ define(['site/hall/PlayWay'], function (PlayWay) {
                 resultCode[resultIndex] = dataList[i];
                 this.combinationSelect(allResult,dataList, i + 1, resultCode, resultIndex + 1,resultLen);
             }
+        },
+        //求组合数
+        combinationNum : function(m,n) {
+            var o = 1;
+            var j = m - n + 1;
+            while (m >= j) {
+                o *= m--;
+            }
+            if(o==0){
+                return 0;
+            }
+            while (n >= 1) {
+                o /= n--;
+            }
+            return o;
         }
     });
 });
