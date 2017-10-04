@@ -104,6 +104,30 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                 betForm.quantity++;
             }
             return betForm;
+        },
+
+        combinationNum : function(m,n) {
+            var o = 1;
+            var j = m - n + 1;
+            while (m >= j) {
+                o *= m--;
+            }
+            if(o==0){
+                return 0;
+            }
+            while (n >= 1) {
+                o /= n--;
+            }
+            return o;
+        },
+        //点击投注选项
+        bindTdInput: function (obj) {
+            var flag = $(obj).is('.not-selected');
+            if (!flag) {
+                $(obj).toggleClass('mui-active');
+            }
+            var arrLength = $("div.bet-table-list .mui-active").length;
+            $("#quantity").text(this.combinationNum(arrLength,$("#minNum").text()));
         }
     });
 });
