@@ -122,7 +122,7 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
                         });
                         $(e.currentTarget).unlock();
                     } else if (data.token) {
-                        e.page.showPopover(e, option, 'danger', "服务忙,请稍侯再试!", true);
+                        e.page.showPopover(e, option, 'danger', "已被关闭存款渠道,请联系客服!", true);
                         $(e.currentTarget).unlock();
                         _window.close();
                     } else {

@@ -551,6 +551,18 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
 
             return checkedItems;
         },
+        freezenAccount:function (e, opt) {
+          var data = this.getSelectIds(e,opt);
+            window.top.topPage.ajax({
+                url: root + '/player/changeStatus.html',
+                data: data,
+                dataType:'json',
+                type: "POST",
+                success: function (data) {
+                    $(e.currentTarget).unlock();
+                }
+            });
+        },
         /**
          * 保存或更新前验证
          * @param e   事件对象

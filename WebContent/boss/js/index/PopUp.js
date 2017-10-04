@@ -100,7 +100,15 @@ define(['gb/components/PopUp'], function (PopUp) {
                 msg = msg.replace("${siteId}", msgBody.siteId);
                 msg = msg.replace("${maxProfit}", msgBody.maxProfit);
                 msg = msg.replace("${profit}", msgBody.profit);
-                window.top.topPage.showWarningMessage(msg);
+                if (Number(rate) >= 100) {
+                    window.top.topPage.showConfirmMessage(msg);
+                } else {
+                    var content = '<a nav-target="mainFrame" name="tellerReminder" href="/site/detail/viewSiteBasic.html?search.id=' + msgBody.siteId + '">' + msg + '&nbsp;</a>';
+                    popUp.pop(content, null, "warning");
+                    $("a[name=tellerReminder]").click(function (e) {
+                        $(e.currentTarget).parent().parent().parent().remove()
+                    });
+                }
             }
         },
         lotteryResultWarning: function (data) {
@@ -133,30 +141,34 @@ define(['gb/components/PopUp'], function (PopUp) {
         transferLimit: function (data) {
             var msgBody = $.parseJSON($.parseJSON(data).msgBody);
             var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), dateFormat.daySecond);
-            var rate = Number(data.rate);
-            var warnRate = Number(data.warnRate);
-            var stopRate = Number(data.stopRate);
+            var rate = Number(msgBody.rate);
+            var warnRate = Number(msgBody.warnRate);
+            var stopRate = Number(msgBody.stopRate);
+            var msg;
             if (rate >= stopRate) { //立即停止
-                var msg = "站点【${siteId}】${siteName}转账上限已使用${rate},已停止玩家转账！";
-                msg = msg.replace("${siteId}", data.siteId);
-                msg = msg.replace("${siteName}", data.siteName);
-                msg = msg.replace("${rate}", data.rate);
-                window.top.topPage.showConfirmMessage(msg)
+                msg = "站点【${siteId}】${siteName}转账上限已使用${rate}%,已停止玩家转账！";
             } else if (rate >= warnRate) {
-                var msg = "站点【${siteId}】${siteName}转账上限已使用${rate},需提醒站点在${date}之前充值，请及时关注！";
-                msg = msg.replace("${siteId}", data.siteId);
-                msg = msg.replace("${siteName}", data.siteName);
-                msg = msg.replace("${rate}", data.rate);
-                window.top.topPage.showConfirmMessage(msg);
+                msg = "站点【${siteId}】${siteName}转账上限已使用${rate}%,需提醒站点在${date}之前充值，请及时关注！";
+            }
+            if (msg) {
+                msg = msg.replace("${siteId}", msgBody.siteId);
+                msg = msg.replace("${siteName}", msgBody.siteName);
+                msg = msg.replace("${rate}", msgBody.rate);
+                msg = msg.replace("${date}", date);
+                var content = '<a nav-target="mainFrame" name="tellerReminder" href="/site/detail/viewSiteBasic.html?search.id=' + msgBody.siteId + '">' + msg + '&nbsp;</a>';
+                popUp.pop(content, date, "warning");
+                $("a[name=tellerReminder]").click(function (e) {
+                    $(e.currentTarget).parent().parent().parent().remove()
+                });
             }
         },
         largeTransactionMonitor: function (data) {
             var msgBody = $.parseJSON($.parseJSON(data).msgBody);
             var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.date), dateFormat.daySecond);
-            var content = '<a nav-target="mainFrame" name="tellerReminder" href="/largeTransactionMonitor/list.html?search.transactionNo=' + msgBody.transactionNo + '">' + date + '站点[' + msgBody.siteId + ']玩家' + msgBody.name + '新增' + msgBody.amount + '大额交易,交易号' + msgBody.transactionNo + '&nbsp;</a>';
+            var content = '<a nav-target="mainFrame" name="tellerReminder" href="/largeTransactionMonitor/list.html?search.transactionNo=' + msgBody.transactionNo + '">' + '站点[' + msgBody.siteId + ']玩家' + msgBody.name + '于' + date + '新增&nbsp;' + msgBody.amount + '&nbsp;大额交易!,交易号为' + msgBody.transactionNo + '&nbsp;</a>';
             popUp.pop(content, date, "warning");
             $("a[name=tellerReminder]").click(function (e) {
-                $(e.currentTarget).parent().parent().parent().remove()
+                $(e.currentTarget).parent().parent().parent().remove();
             });
         }
     });
