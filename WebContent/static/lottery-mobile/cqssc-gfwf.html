@@ -489,6 +489,7 @@
 			});
 //			直选复式
             mui(".gfwf-playName")[0].addEventListener('tap',function(){
+
             	mui(".gfwf-wrap")[0].classList.toggle('Fixed');
             });
             mui(".gfwf-bg")[0].addEventListener('tap',function(){
@@ -497,25 +498,31 @@
             
 //          机选清除
             mui(".btn-jixuan-gfwf")[0].addEventListener('tap',function(){
+
             	this.classList.remove('mui-active');
             	mui(".btn-reset-gfwf")[0].classList.add('mui-active');
             });
             mui(".btn-reset-gfwf")[0].addEventListener('tap',function(){
+
             	this.classList.remove('mui-active');
             	mui(".btn-jixuan-gfwf")[0].classList.add('mui-active');
             });
             //投注选择
             
             mui(".bet-table .bet-table-list").on('tap','td',function(){
+
             	this.classList.toggle('mui-active');
             });
             document.getElementById("show-t").addEventListener('tap',function(){
+
             	document.getElementById("dingdan").classList.toggle('mui-active');
             });
             mui(".screen-munber").on('tap','a',function(){
+
             	this.classList.toggle('mui-active');
             });
             document.getElementById("quxiao").addEventListener('tap',function(){
+
             	document.getElementById("dingdan").classList.toggle('mui-active');
             });
     
