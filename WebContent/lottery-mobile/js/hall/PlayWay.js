@@ -616,6 +616,316 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 betNum +=$(this).html()+"|";
             });
             /*return betNum;*/
+        },
+
+
+
+        showBetTemplate:function() {
+            var _this = this;
+            var contentFun = _this.getPlayPlFun_content();    // 内容算法
+            var zhushuFun = _this.getPlayPlFun_zhushu();  // 注数算法
+            if (typeof contentFun == 'undefined' || typeof zhushuFun == 'undefined') {
+                return;
+            }
+
+            var data = eval("_this."+contentFun + "()");
+            var zhushu = eval("_this."+zhushuFun + "()");
+
+            if(data == -1){
+                return;
+            }
+
+
+            if (typeof data == 'undefined' || typeof zhushu == 'undefined' || zhushu <= 0) {
+                Tools.toast("号码选择不完整，请重新选择");
+                return;
+            }
+
+            var plAndMaxFd = _this.getPlAndMaxFd();   // 获取当前选中的玩法赔率和返点
+            var maxPlayPl;  // 最高赔率
+            var maxFandian;  // 最大返点
+            var minPl;  // 最低赔率
+            var convertBlMoney;  // 每1%转换赔率
+
+            var plSelName = '',  //赔率名称
+                plSelIndex = 0;  //获取赔率索引
+
+            if ($.inArray(parseInt(_this.getPlayId()), [515, 534, 936, 914, 639, 625, 1013, 991, 730, 708, 859, 837]) >= 0) {
+                var l = $('.tshStr .wan_bottom .cus-flex-item span.active_gfwf').length;
+                if (l == 1) {
+                    $('.tshStr .wan_bottom .cus-flex-item').each(function () {
+                        plSelName = $(this).parent().find(' span.active_gfwf').html();
+                    });
+                    if (plSelName == '豹子') {
+                        plSelIndex = 0;
+                    } else if (plSelName == '顺子') {
+                        plSelIndex = 1;
+                    } else if (plSelName == '对子') {
+                        plSelIndex = 2;
+                    }
+                }
+            }
+
+            if (plAndMaxFd instanceof Array) {  // 多赔率
+                maxPlayPl = plAndMaxFd[plSelIndex].playPl;  // 最高赔率
+                maxFandian = plAndMaxFd[plSelIndex].maxFdBl;    // 最大返点
+                minPl = plAndMaxFd[plSelIndex].minPl;   // 最低赔率
+            } else {
+                maxPlayPl = plAndMaxFd.playPl;  // 最高赔率
+                maxFandian = plAndMaxFd.maxFdBl;    // 最大返点
+                minPl = plAndMaxFd.minPl;   // 最低赔率
+            }
+            convertBlMoney = (maxPlayPl - minPl) / maxFandian;  // 每1%转换赔率
+
+            // 投注内容
+            tmpBetContent = data;
+
+            var firstShowPl = maxPlayPl.toFixed(3);
+            // 渲染界面中赔率部分
+            if (plAndMaxFd instanceof Array) {  // 多赔率
+                var strArr = [];
+                $.each(plAndMaxFd, function(index, value) {
+                    strArr.push(value.playPl.toFixed(3));
+                });
+                firstShowPl = strArr.join('|');
+            }
+
+            var bet_template = template('template_betTemplate', {
+                defaultPlayPl: maxPlayPl.toFixed(3),
+                playPlShow: firstShowPl,
+                playGroupId: playGroupId,
+                number: _this.getNumber(),
+                playId: _this.getPlayId(),
+                playPlId: _this.getPlayPlId(),
+                zhushu: zhushu,
+                betContent: data,
+                // betMode: 1,
+                totalMoney: parseFloat((2 * zhushu * 1).toFixed(3)), // 默认2元 * 1倍 * 注数
+                canWin: parseFloat((2 * maxPlayPl * 1).toFixed(3))  // 默认2元 * 1倍 * 赔率
+            });
+            layer.closeAll();
+            //页面层
+            layerBet = layer.open({
+                type: 1,
+                skin: 'gfwf',
+                title: false,
+                closeBtn: 0,
+                content: bet_template
+            });
+
+            // 滑块事件绑定
+            $("#playPlRange").RangeSlider({
+                min: 0,
+                max: maxFandian,
+                step: 0.1,
+                leftColor: '#' + fengge1,
+                onChange: function(obj) {
+                    // 返点比例
+                    var fandianBili = parseFloat($(obj).val()).toFixed(1); // 当前滚动条移动的比例
+                    $("#betContent_fanli").attr("data-value", fandianBili);
+                    $("#betContent_fanli").html(fandianBili + "%");    // 渲染界面中百分比部分
+
+                    // 赔率 = 最大配率 - 返点比例 * 转换比例
+                    var pl = (maxPlayPl - fandianBili * convertBlMoney).toFixed(3);
+                    $("#betContent_playPl").attr("data-value", pl);
+
+                    // 渲染界面中赔率部分
+                    if (plAndMaxFd instanceof Array) {  // 多赔率
+                        var strArr = [];
+                        $.each(plAndMaxFd, function(index, value) {
+                            var tmpConvertBlMoney = (value.playPl - value.minPl) / value.maxFdBl;
+                            strArr.push((value.playPl - fandianBili * tmpConvertBlMoney).toFixed(3));
+                        });
+                        $("#betContent_playPl").html(strArr.join('|'));
+                    } else {
+                        $("#betContent_playPl").html(pl);
+                    }
+
+                    // 渲染下注总额，奖金等等
+                    renderZhushu();
+                }
+            });
+
+            // 取消事件绑定
+            $("#no-btn").click(function() {
+                layer.closeAll();
+            });
+
+            // 确认事件绑定
+            $("#yes-btn").click(function() {
+                // 注单
+                var betForm = {
+                    totalMoney: 0,
+                    totalZhushu: 0,
+                    sscBetList: []
+                };
+                // 手机版只有选择一单
+                betForm.sscBetList.push({
+                    playGroupId: $(this).attr("data-bet_play_group_id"),
+                    number: $(this).attr("data-bet_number"),
+                    playId: $(this).attr("data-bet_play_id"),
+                    playPlId: $(this).attr("data-bet_play_pl_id"),
+                    zhushu: $(this).attr("data-zhushu"),
+                    // content: $(this).attr("data-bet_content"),
+                    content: tmpBetContent,
+                    perMoney: $("#betContent_inputMoney").val(),
+                    playPl: $("#betContent_playPl").attr("data-value"),
+                    beishu: $("#betContent_inputBeishu").val(),
+                    totalMoney: parseFloat($("#betContent_totalMoney").html()),
+                    type: 2,
+                    // mode: $(this).attr("data-bet_mode"),
+                    mode: $(".mode_select.selected").attr("data-value"),
+                    fandian: $("#betContent_fanli").attr("data-value")
+                });
+                betForm.totalMoney += betForm.sscBetList[0].totalMoney;
+                betForm.totalZhushu += parseInt(betForm.sscBetList[0].zhushu);
+
+                betForm = JSON.stringify(betForm);
+                ajaxRequest({
+                    url: CONFIG.BASEURL + "ssc/ajaxBet.json",
+                    data: {
+                        betForm: betForm
+                    },
+                    beforeSend: function() {
+                        layer.closeAll();
+                        Tools.showLoading("加载中...");
+                    },
+                    success: function(json) {
+                        Tools.hideLoading();
+                        if (json.result == 1) {
+                            // 清空临时变量
+                            tmpBetContent = null;
+                            Tools.toast("下注成功");
+                            clearSelected();
+                        } else {
+                            Tools.toast("下注失败：" + json.description);
+                        }
+                    },
+                    complete: function() {
+                    }
+                });
+            });
+
+            // 单注金额变化
+            $("#betContent_inputMoney").keyup(function() {
+                // 渲染下注总额，奖金等等
+                renderZhushu();
+            });
+
+            // 倍数变化
+            $("#betContent_inputBeishu").keyup(function() {
+                // 渲染下注总额，奖金等等
+                renderZhushu();
+            });
+
+            // 渲染下注总额，奖金等等
+            function renderZhushu() {
+                var money = $("#betContent_inputMoney").val();
+                var beishu = $("#betContent_inputBeishu").val();
+                var zhushu = parseInt($("#betContent_zhushu").html());
+                var playPl = parseFloat($("#betContent_playPl").attr("data-value"));
+                var mode = parseInt($(".mode_select.selected").attr("data-value"));
+                var tmpMode = 1;
+                if (mode == 1) {
+                    tmpMode = 1;
+                } else if (mode == 2) {
+                    tmpMode = 0.1;
+                } else if (mode == 3) {
+                    tmpMode = 0.01;
+                } else {
+                    return;
+                }
+
+                var totalMoney = parseFloat((money * zhushu * beishu * tmpMode).toFixed(3));  // 总金额
+                var canWin = parseFloat(money * beishu * playPl * tmpMode);  // 可获奖金
+
+                $("#betContent_totalMoney").html(totalMoney.toFixed(3));
+                $("#betContent_canWin").html(canWin.toFixed(3));
+            }
+
+            $("#ischange").change(function() {
+                alert("checked");
+            });
+
+            // 模式选择
+            $(".mode_select").click(function() {
+                $(".mode_select.selected").removeClass("selected");
+                $(this).addClass("selected");
+
+                // 渲染下注总额，奖金等等
+                renderZhushu();
+            });
+
+            // 加号
+            $(".dzje_add").click(function() {
+                $("#betContent_inputMoney").val(parseInt($("#betContent_inputMoney").val()) + 1);
+
+                // 渲染下注总额，奖金等等
+                renderZhushu();
+            });
+            $(".beishu_add").click(function() {
+                $("#betContent_inputBeishu").val(parseInt($("#betContent_inputBeishu").val()) + 1);
+                // 渲染下注总额，奖金等等
+                renderZhushu();
+            });
+            $(".beishu_remove").click(function() {
+                var num = parseInt($("#betContent_inputBeishu").val()) - 1;
+                if(num <= 0){
+                    return;
+                }
+                $("#betContent_inputBeishu").val(parseInt($("#betContent_inputBeishu").val()) - 1);
+                // 渲染下注总额，奖金等等
+                renderZhushu();
+            });
+        },
+        /**
+         * 获取当前赔率内容算法
+         */
+        getPlayPlFun_content:function() {
+            return $(".gfwf_xz .wx-select a.selected").attr("data-fun_content");
+        },
+        /**
+         * 获取当前玩法ID
+         */
+        getPlayId:function () {
+            return $(".gfwf_xz .wx-select a.selected").attr("data-play_id");
+        },
+
+        /**
+         * 获取当前期数
+         */
+        getNumber:function() {
+            return $("#number").attr("data-number");
+        },
+        /**
+         * 获取赔率和最高返点
+         */
+         getPlAndMaxFd:function() {
+        // 全局赔率变量
+        var playPlId = this.getPlayPlId2();   // 当前赔率ID
+
+        if (playPlId.toString().indexOf('|') > 0) {    // 多赔率
+            var result = [];
+            var tmpArr = playPlId.split('|');
+            $.each(tmpArr, function(index, value) {
+                for (var i = 0; i < this.gfwfPlJson.sscPlayPlList.length; ++i) {
+                    var o = this.gfwfPlJson.sscPlayPlList[i];
+                    if (o.playPlId == value) {
+                        result.push(o);
+                    }
+                }
+            });
+            return result;
+        } else {    // 单一赔率
+            for (var i = 0; i < this.gfwfPlJson.sscPlayPlList.length; ++i) {
+                var o = this.gfwfPlJson.sscPlayPlList[i];
+                if (o.playPlId == playPlId) {
+                    return o;
+                }
+            }
         }
+        return;
+    }
+
     });
 });
