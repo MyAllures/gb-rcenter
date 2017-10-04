@@ -62,7 +62,7 @@ define(['common/MobileBasePage'], function (Mobile) {
         submitBtc: function (_this) {
             var $submit = $("#bindBtc");
             $submit.attr("disabled", true);
-            mui.ajax(root + '/fund/userBankcard/submitBtc.html', {
+            mui.ajax(root + '/fund/userBankcard/submitBtc.html?userType=24', {
                 dataType: 'json',
                 data: $("form[name=btcForm]").serialize(),
                 type: 'post',

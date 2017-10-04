@@ -56,7 +56,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                 }
                 $submit.attr("disabled", true);
                 var data = $form.serialize();
-                mui.ajax(root + '/fund/userBankcard/submitBankCard.html', {
+                mui.ajax(root + '/fund/userBankcard/submitBankCard.html?userType=24', {
                     dataType: 'json',
                     data: data,
                     type: 'post',

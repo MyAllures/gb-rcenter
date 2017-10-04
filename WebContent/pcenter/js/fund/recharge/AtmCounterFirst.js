@@ -221,7 +221,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             var max = $("input[name=onlinePayMax]").val();
             var min = $("input[name=onlinePayMin]").val();
             if (!min || min == 0) {
-                min = '1.00';
+                min = '0.01';
             }
             if (!max || max == 0) {
                 max = '99,999,999.00';
