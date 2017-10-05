@@ -20,19 +20,22 @@ define(['common/BaseListPage','common/BaseEditPage'], function(BaseListPage,Base
         onPageLoad: function () {
             this._super();
         },
-        unableAccount:function () {
+        unableAccount:function (e,opt) {
             var _msg;
+            var _this=this;
             _msg="<div style='text-align: center'><div style='color: red'><i class='fa fa-exclamation-circle'></i>停用后不可重新启用！</div>确认停用该虚拟账号吗？</div>"
             window.top.topPage.showConfirmMessage(_msg, function (confirm) {
                 if (confirm){
-                    var id=$("input[name='id']").val();
+                    var id=opt.searchId;
                     window.top.topPage.ajax({
                         url: root + '/simulationAccount/disablePlayer.html',
                         data: {"search.id":id},
                         dataType:'json',
                         type: "POST",
                         success: function (data) {
-
+                            if (data.state){
+                                _this.query(e);
+                            }
                         }
                     });
                 }
