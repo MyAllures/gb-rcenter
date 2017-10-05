@@ -125,20 +125,20 @@ define(['gb/components/PopUp'], function (PopUp) {
         transferLimit: function (data) {
             var msgBody = $.parseJSON($.parseJSON(data).msgBody);
             var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), dateFormat.daySecond);
-            var rate = Number(data.rate);
-            var warnRate = Number(data.warnRate);
-            var stopRate = Number(data.stopRate);
+            var rate = Number(msgBody.rate);
+            var warnRate = Number(msgBody.warnRate);
+            var stopRate = Number(msgBody.stopRate);
+            var msg;
             if (rate >= stopRate) { //立即停止
-                var msg = "站点【${siteId}】${siteName}转账上限已使用${rate},已停止玩家转账！";
-                msg = msg.replace("${siteId}", data.siteId);
-                msg = msg.replace("${siteName}", data.siteName);
-                msg = msg.replace("${rate}", data.rate);
-                window.top.topPage.showConfirmMessage(msg)
+                msg = "站点【${siteId}】${siteName}转账上限已使用${rate},已停止玩家转账！";
             } else if (rate >= warnRate) {
-                var msg = "站点【${siteId}】${siteName}转账上限已使用${rate},需提醒站点在${date}之前充值，请及时关注！";
-                msg = msg.replace("${siteId}", data.siteId);
-                msg = msg.replace("${siteName}", data.siteName);
-                msg = msg.replace("${rate}", data.rate);
+                msg = "站点【${siteId}】${siteName}转账上限已使用${rate},需提醒站点在${date}之前充值，请及时关注！";
+            }
+            if (msg) {
+                msg = msg.replace("${siteId}", msgBody.siteId);
+                msg = msg.replace("${siteName}", msgBody.siteName);
+                msg = msg.replace("${rate}", msgBody.rate);
+                msg = msg.replace("${date}", date);
                 window.top.topPage.showConfirmMessage(msg);
             }
         }
