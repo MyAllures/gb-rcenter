@@ -28,6 +28,20 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
         bindEvent: function () {
             this._super();
             var _this = this;
+            /**
+             * 链接地址添加占位符
+             *
+             * @param e
+             */
+            $(this.formSelector).on("click", "._editTags a", function(e){
+                var $tag = '$'+$(this).children().text();
+                var obj = $(e.currentTarget).parent().prev();
+                var startPos =  obj[0].selectionStart;
+                var endPos =  obj[0].selectionEnd;
+                var restoreTop = obj[0].scrollTop;
+                var newValue= obj.val().substring(0, startPos) + $tag + obj.val().substring(endPos, obj.val().length);
+                $(obj).val(newValue);
+            });
             //切换语言
             $(this.formSelector).on("click","a[name='tag']", function () {
                 $("a[name='tag']").removeClass("current");
@@ -310,7 +324,8 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
 
                 }
             });*/
-        }
+        },
+
 
     });
 });
