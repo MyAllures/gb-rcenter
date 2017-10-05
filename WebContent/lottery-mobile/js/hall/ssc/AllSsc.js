@@ -3,9 +3,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         init: function () {
             this._super();
             this.isGfwf();
-            /*this.selectFun();
-            this.getZhuShu();*/
-            /*this.sscYixing_random();*/
         },
 
 

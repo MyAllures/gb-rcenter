@@ -27,13 +27,19 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
                 mui(".gfwf-wrap")[0].classList.remove('Fixed');
             });
 
+            //直选复试
+            mui("div.s-menu").on('tap','a',function(){
+                $("a.selected-btn.mui-active").removeClass("mui-active");
+                this.classList.toggle('mui-active');
+                _this.getOdds();
+                _this.getGfwfAllOdd();
+            });
+
             //选择球
             mui(".screen-munber.gfwf").on('tap','a',function(){
-                /* alert($("div.newball-item-20 a").attr("class").length)*/
                 this.classList.toggle('mui-active');
                 $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
                 _this.getZhuShu();
-
             });
             //清
             mui(".newball-content-top").on('tap','.qing',function(){
@@ -152,25 +158,6 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
                 $("a.n-btn.ge."+random).addClass("mui-active");
             }
         },
-
-
-
-        /*getOdds: function () {
-            /!*$(".s-menu a").removeClass("mui-active");*!/
-            var _this=this;
-            var url = root + '/' + _this.type + '/' + _this.code + '/getGfwfOdds.html';
-            mui.ajax(url, {
-                dataType: 'json',
-                type: 'POST',
-                success: function (data) {
-                    $(".s-menu a").each(function () {
-                        var dwd = data.ssc_yixing_dwd.定位胆;
-                        $("a[data-code='ssc_yixing_dwd']").attr("data-odd", dwd.oddLimit).attr("data-num",dwd.rebateLimit).attr("data-play_pl_id",dwd.id);
-
-                    });
-                }
-            })
-        },*/
 
         bindEvent: function () {
             var _this=this;
