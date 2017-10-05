@@ -48,7 +48,6 @@ define(['gb/components/PopUp'], function (PopUp) {
             var userName = msgBody.userName;
             var key = 'profit.' + level + '.warning';
             var msg = window.top.message.report[key];
-            console.log("盈利预警弹窗key:" + key + ",消息提示：" + msg);
             if (msg) {
                 msg = msg.replace("${siteName}", siteName);
                 msg = msg.replace("${rate}", rate);
@@ -56,11 +55,8 @@ define(['gb/components/PopUp'], function (PopUp) {
                 msg = msg.replace("${siteId}", msgBody.siteId);
                 msg = msg.replace("${maxProfit}", msgBody.maxProfit);
                 msg = msg.replace("${profit}", msgBody.profit);
-                var content = '<a nav-target="mainFrame" name="tellerReminder" href="/site/detail/viewSiteBasic.html?search.id=' + msgBody.siteId + '">' + msg + '&nbsp;</a>';
+                var content = '<a nav-target="mainFrame" name="tellerReminder" href="/site/detail/viewMaxProfit.html?search.id=' + msgBody.siteId + '">' + msg + '&nbsp;</a>';
                 popUp.pop(content, null, "warning");
-                $("a[name=tellerReminder]").click(function (e) {
-                    $(e.currentTarget).parent().parent().parent().remove()
-                });
             }
         },
         /**
