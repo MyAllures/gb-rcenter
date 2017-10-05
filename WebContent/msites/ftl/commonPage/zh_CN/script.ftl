@@ -385,16 +385,29 @@
             draggable: true,
             title: "${imgTitl}",
         <#--title: "${.now}",-->
-            message: $('<a href="<#if link?default("")=="">javascript:void(0)<#else >${link}</#if>" class="home_dialog_a"><img  src="${imgSrc}"/></a>'),
-            size: 'index-modal'
+            size: 'index-modal',
+            message: function(dialog) {
+                var _href = "${link}";
+                if(_href!=undefined && _href!=""){
+                    if(_href.indexOf("\$\{website\}")>-1){
+                        _href = window.location.host;
+                    }else{
+                        _href = "javascript:void(0)";
+                    }
+                }else{
+                    _href = "javascript:void(0)";
+                }
+                var $message = $('<a href="'+_href+'"><img  src="${imgSrc}"/></a>');
+                return $message;
+            }
         });
         // 定时关闭
         setTimeout(function () {
             $(".index-modal").modal("hide")
-        }, 6000000);
+        }, 60000);
     </#if>
-    transWebUrlHomeDialog();
     }
+
     /*公共维护状态检测设置 By Faker*/
     function maintainCheck(){
         var newTime = $("._user_time").attr("time");
@@ -605,20 +618,6 @@
                 }
                 $(tar).children("a").attr("href",_href);
             })
-        }
-    }
-
-    function transWebUrlHomeDialog(){
-        var dialog = $(".home_dialog_a");
-        if(dialog){
-            var _href = $(".home_dialog_a").attr("href");
-            if(typeof _href!="undefined" && _href.indexOf("\$\{website\}")>-1){
-                _href = _href.replace("\$\{website\}",window.location.host);
-            }
-            if(_href.indexOf("http")==-1){
-                _href = "http://" + _href;
-            }
-            $(".home_dialog_a").attr("href",_href);
         }
     }
 
