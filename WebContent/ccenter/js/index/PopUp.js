@@ -139,7 +139,8 @@ define(['gb/components/PopUp'], function (PopUp) {
                 msg = msg.replace("${siteName}", msgBody.siteName);
                 msg = msg.replace("${rate}", msgBody.rate);
                 msg = msg.replace("${date}", date);
-                window.top.topPage.showConfirmMessage(msg);
+                var content = '<a nav-target="mainFrame" name="tellerReminder" href="/site/detail/viewSiteBasic.html?search.id=' + msgBody.siteId + '">' + msg + '&nbsp;</a>';
+                popUp.pop(content, date, "warning");
             }
         }
 

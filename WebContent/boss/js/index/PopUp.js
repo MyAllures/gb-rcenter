@@ -157,9 +157,6 @@ define(['gb/components/PopUp'], function (PopUp) {
                 msg = msg.replace("${date}", date);
                 var content = '<a nav-target="mainFrame" name="tellerReminder" href="/site/detail/viewSiteBasic.html?search.id=' + msgBody.siteId + '">' + msg + '&nbsp;</a>';
                 popUp.pop(content, date, "warning");
-                $("a[name=tellerReminder]").click(function (e) {
-                    $(e.currentTarget).parent().parent().parent().remove()
-                });
             }
         },
         largeTransactionMonitor: function (data) {
@@ -167,9 +164,6 @@ define(['gb/components/PopUp'], function (PopUp) {
             var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.date), dateFormat.daySecond);
             var content = '<a nav-target="mainFrame" name="tellerReminder" href="/largeTransactionMonitor/list.html?search.transactionNo=' + msgBody.transactionNo + '">' + '站点[' + msgBody.siteId + ']玩家' + msgBody.name + '于' + date + '新增大额交易&nbsp;' + msgBody.amount + '!,交易号为' + msgBody.transactionNo + '&nbsp;</a>';
             popUp.pop(content, date, "warning");
-            $("a[name=tellerReminder]").click(function (e) {
-                $(e.currentTarget).parent().parent().parent().remove();
-            });
         }
     });
 });
