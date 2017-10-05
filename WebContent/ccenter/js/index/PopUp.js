@@ -46,6 +46,7 @@ define(['gb/components/PopUp'], function (PopUp) {
             var rate = msgBody.rate;
             var siteName = msgBody.siteName;
             var userName = msgBody.userName;
+            var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), dateFormat.daySecond);
             var key = 'profit.' + level + '.warning';
             var msg = window.top.message.report[key];
             if (msg) {
@@ -55,8 +56,9 @@ define(['gb/components/PopUp'], function (PopUp) {
                 msg = msg.replace("${siteId}", msgBody.siteId);
                 msg = msg.replace("${maxProfit}", msgBody.maxProfit);
                 msg = msg.replace("${profit}", msgBody.profit);
+                msg = msg.replace("${date}", msgBody.date);
                 var content = '<a nav-target="mainFrame" name="tellerReminder" href="/site/detail/viewMaxProfit.html?search.id=' + msgBody.siteId + '">' + msg + '&nbsp;</a>';
-                popUp.pop(content, null, "warning");
+                popUp.pop(content, date, "warning");
             }
         },
         /**
