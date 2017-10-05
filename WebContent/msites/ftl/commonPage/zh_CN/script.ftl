@@ -61,6 +61,7 @@
         /*通用真人手风琴脚本*/
         liveAccordion();
         /*浮窗判断脚本*/
+        transWebUrlSlide();
     <#if data.floatPicsInIndex??>
         <#list data.floatPicsInIndex as pic>
             <#if pic.location == "left">
@@ -588,6 +589,22 @@
                 $(tar).children("a").attr("href",_href.replace("\$\{website\}",window.location.host))
             }
         })
+    }
+
+    function transWebUrlSlide(){
+        var slide = $("._vr_carousels_check");
+        if(slide){
+            $("._vr_carousels_check").each(function(i,tar){
+                var _href = $(tar).children("a").attr("href");
+                if(typeof _href!="undefined" && _href.indexOf("\$\{website\}")>-1){
+                    _href = _href.replace("\$\{website\}",window.location.host);
+                }
+                if(_href.indexOf("http")==-1){
+                    _href = "http://" + _href;
+                }
+                $(tar).children("a").attr("href",_href);
+            })
+        }
     }
 
     //当前站点的api name
