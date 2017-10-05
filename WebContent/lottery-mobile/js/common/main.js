@@ -25,7 +25,15 @@ curl = {
     paths: {
         jquery: 'jquery/jquery-2.1.1.min',
         jqValidate: 'jquery/plugins/jquery.validate/jquery.validate.min',
-        cookie: 'jquery/plugins/jquery.cookie/jquery.cookie'
+        cookie: 'jquery/plugins/jquery.cookie/jquery.cookie',
+        RangeSlider: {
+            location: resRoot + '/js/common/RangeSlider',
+            config: {
+                loader: 'curl/curl/loader/legacy',
+                exports: '$',
+                requires: ['jquery']
+            }
+        }
     },
     preloads: ['common/ClassTool']
 };

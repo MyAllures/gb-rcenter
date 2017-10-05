@@ -423,24 +423,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             this.placeOrder(betForm);
             $("#dingdan").addClass('mui-active');
         },
-        /**
-         * gfwf投注
-         */
-        gfwfBetOrder: function () {
-            var betForm = this.gfwfGetBetOrder();
-            // var jishuAndjiangjin = this.jishuAndjiangjin();
-            if (typeof betForm != 'object') {
-                return;
-            }
-            if (betForm.betOrders.length == 0) {
-                this.toast("请选择!");
-                return;
-            }
-            sessionStorage.betForm = JSON.stringify(betForm);
-            this.gfwfPlaceOrder(betForm,jishuAndjiangjin);
-            $("#dingdan").addClass('mui-active');
 
-        },
         /**
          * 验证是否符合下注条件
          * @returns {boolean}
@@ -462,18 +445,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             $("#dingdan").html(content);
         },
 
-        /**
-         * gfwf下注清单
-         * @param betForm
-         */
-        gfwfPlaceOrder: function (betForm) {
-            var content = Template('gfwf_template_order', {data: betForm});
-            $("#dingdan").html(content);
-        },
-        /**
-         * 获取注单
-         * @returns {{code: *, expect: (*|jQuery), type: *, betOrders: Array}}
-         */
         getBetOrder: function () {
             var code = this.code;
             var expect = $('font#expect').text();
@@ -504,39 +475,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             return betForm;
         },
 
-        /**
-         * gfwf获取注单
-         * @returns {{code: *, expect: (*|jQuery), type: *, betOrders: Array}}
-         */
-        gfwfGetBetOrder: function () {
-            var _this=this;
-            var betForm = {
-                totalMoney: 0,
-                quantity: 0,
-                playModel:1,//1代表官方玩法
-                betOrders: []
-            };
-            var code = this.code;
-
-            $("a.n-btn.mui-active").each(function () {
-                betForm.betOrders.push({
-                    code: code,//彩种
-                    expect: $('font#expect').text(),//期号
-                    playCode: $("a.selected-btn.mui-active").attr("data-code"),//彩种玩法
-                    betCode: $(this).attr("data-bet_play_id"),//投注玩法
-                    betCount: Number($("#quantity").text()),//注数
-                    betAmount: 2,//单注金额,先写死。
-                    betNum: _this.gfwfGetBetNum(),//下注号码
-                    //odd: $(this).attr("data-bet_play_pl"),//奖金
-                    //multiple: $("#betContent_inputBeishu").val(),//倍数
-                    //bonusModel: $("span.mode_select.selected").attr("data-value"),//元角分模式
-                    // rebate: $("#betContent_fanli").text()//返点比例
-                });
-                betForm.totalMoney += parseFloat(2);
-                betForm.quantity += Number($("#quantity").text());
-            });
-            return betForm;
-        },
 
         /**
          * 显示清除弹窗
@@ -586,23 +524,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             $("div.bet-table-list td").removeClass("mui-active");
             $("#quantity").text($("div.bet-table-list td.mui-active").length);
             $("input#inputMoney").val("");
-        },
-
-        /**
-         * gfwf获取下注号码
-         */
-        gfwfGetBetNum:function() {
-            var betNum="";
-            $("a.n-btn.mui-active").each(function(){
-                betNum +=$(this).html()+"|";
-            });
-            /*return betNum;*/
-        },
-
-
-
-
-
+        }
 
     });
 });
