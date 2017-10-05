@@ -27,8 +27,9 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
                 mui(".gfwf-wrap")[0].classList.remove('Fixed');
             });
 
-            //直选复试
+            //头部选择
             mui("div.s-menu").on('tap','a',function(){
+
                 $("a.selected-btn.mui-active").removeClass("mui-active");
                 this.classList.toggle('mui-active');
                 _this.getOdds();
