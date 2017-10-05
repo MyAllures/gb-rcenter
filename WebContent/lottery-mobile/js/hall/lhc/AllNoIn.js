@@ -23,6 +23,7 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
         },
 
         getOdds: function () {
+            this.resetBet();
             var url = root + '/' + this.type + '/' + this.code + '/' + this.betCode + 'Odd.html';
             var activeA = $("a.mui-active[data-subCode]");
             var subCode = activeA.attr("data-subCode");
