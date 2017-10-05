@@ -23,7 +23,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             var _this=this;
             window.top.topPage.ajax({
                 url: root + '/simulationAccount/saveAddQuota.html?walletBalance='+balance+'&search.id='+id,
-                data: {"playerIds":ids},
+                data: {"search.ids":ids},
                 dataType:'json',
                 type: "POST",
                 success: function (data) {
