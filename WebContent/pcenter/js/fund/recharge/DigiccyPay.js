@@ -22,7 +22,10 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          * 生成地址
          */
         newAddress: function (e, option) {
+            var currency = option.currency;
+            window.top.topPage.ajax({
 
+            })
         },
         /**
          * 兑换
@@ -30,7 +33,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          * @param option
          */
         exchange: function (e, option) {
-
+            var currency = option.currency;
         }
     })
 });
