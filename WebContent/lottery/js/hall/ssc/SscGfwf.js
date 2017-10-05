@@ -1,5 +1,5 @@
-define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jquery.range.css','css!themesCss/gfwf.css'], function (Common,Template,Range) {
-    return Common.extend({
+define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jquery.range.css','css!themesCss/gfwf.css'], function (PlayWay,Template,Range,Common) {
+    return PlayWay.extend({
         arrNum2 : [], //获取点击数的数组
         arrNum3 : [],
         arrNum4 : [],
@@ -44,7 +44,6 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                     if (!$.isEmptyObject(data)) {
                         _this.gfwfPlJson = data;
                        _this.initSubPage();
-                        console.log(data)
                     } else {
                         console.log(name + ":odd is null");
                     }
@@ -682,8 +681,8 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             $(".re-5x-i i.acti").removeClass("acti");
             $(".Pick ul li span.acti_tsh").removeClass("acti_tsh");
             $("#zhushuInfo").data("zhushu", 0);
-            if (typeof clearStateTouZhu == 'function') {
-                clearStateTouZhu();
+            if (typeof this.clearStateTouZhu == 'function') {
+                this.clearStateTouZhu();
             }
 
             this.initArrNum();
@@ -2181,6 +2180,5 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
     }
 
     })
-
 });
 
