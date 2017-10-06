@@ -1,5 +1,5 @@
-define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jquery.range.css','css!themesCss/gfwf.css'], function (Common,Template,Range) {
-    return Common.extend({
+define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jquery.range.css','css!themesCss/gfwf.css'], function (PlayWay,Template,Range,Common) {
+    return PlayWay.extend({
         arrNum2 : [], //获取点击数的数组
         arrNum3 : [],
         arrNum4 : [],
@@ -44,7 +44,6 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                     if (!$.isEmptyObject(data)) {
                         _this.gfwfPlJson = data;
                        _this.initSubPage();
-                        console.log(data)
                     } else {
                         console.log(name + ":odd is null");
                     }
@@ -162,9 +161,9 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 if (typeof flag != "undefined" && flag == "wei-r2") {
                     _this.getZuChengFangAnR2(obj, fnId);
                 } else if (typeof flag != "undefined" && flag == "wei-r3") {
-                    _thisgetZuChengFangAnR3(obj, fnId);
+                    _this.getZuChengFangAnR3(obj, fnId);
                 } else if (typeof flag != "undefined" && flag == "wei-r4") {
-                    _thisgetZuChengFangAnR4(obj, fnId);
+                    _this.getZuChengFangAnR4(obj, fnId);
                 }
                 _this.renderZhushu();
             });
@@ -194,20 +193,20 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             _this.initJjh();
 
             var plAndMaxFd = _this.getPlAndMaxFd();   // 获取当前选中的玩法赔率和返点
-            var pljs = this.getPljs();   // 当前基数
+            // var pljs = this.getPljs();   // 当前基数
             var maxPlayPl;  // 最高赔率
             var maxFandian;  // 最大返点
             var minPl;  // 最低赔率
             var convertBlMoney;  // 每1%转换赔率
             if (plAndMaxFd instanceof Array) {  // 多赔率
-                maxPlayPl = plAndMaxFd[0].oddLimit;  // 最高赔率
-                maxFandian = plAndMaxFd[0].rebateLimit*100;    // 最大返点
-                var pljsarr = pljs.split('|');
-                minPl = (plAndMaxFd[0].oddLimit-Number(pljsarr[0])*plAndMaxFd[0].rebateLimit).toFixed(3);   // 最低赔率
+                maxPlayPl = plAndMaxFd[0].odd;  // 最高赔率
+                maxFandian = plAndMaxFd[0].rebate*100;    // 最大返点
+                // var pljsarr = pljs.split('|');
+                minPl = (plAndMaxFd[0].odd-Number(plAndMaxFd[0].baseNum)*plAndMaxFd[0].rebate).toFixed(3);   // 最低赔率
             } else {
-                maxPlayPl = plAndMaxFd.oddLimit;  // 最高赔率
-                maxFandian = plAndMaxFd.rebateLimit*100;    // 最大返点
-                minPl = (plAndMaxFd.oddLimit-Number(pljs)*plAndMaxFd.rebateLimit).toFixed(3);   // 最低赔率
+                maxPlayPl = plAndMaxFd.odd;  // 最高赔率
+                maxFandian = plAndMaxFd.rebate*100;    // 最大返点
+                minPl = (plAndMaxFd.odd-Number(plAndMaxFd.baseNum)*plAndMaxFd.rebate).toFixed(3);   // 最低赔率
             }
             convertBlMoney = (maxPlayPl - minPl) / maxFandian;  // 每1%转换赔率
 
@@ -235,12 +234,12 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                     // 渲染界面中赔率部分
                     if (plAndMaxFd instanceof Array) {  // 多赔率
                         var strArr = [];
-                        var pljsarr = pljs.split('|');
+                        // var pljsarr = pljs.split('|');
                         $.each(plAndMaxFd, function (index, value) {
-                            var valTemp = value.rebateLimit;
-                            var zxodd= value.oddLimit-Number(pljsarr[index])*(valTemp == 0 ? 1 : valTemp);
-                            var tmpConvertBlMoney = (value.oddLimit - zxodd) /((valTemp == 0 ? 1 : valTemp)*100);
-                            strArr.push((value.oddLimit - fandianBili * tmpConvertBlMoney).toFixed(3));
+                            var valTemp = value.rebate;
+                            var zxodd= value.odd-Number(value.baseNum)*(valTemp == 0 ? 1 : valTemp);
+                            var tmpConvertBlMoney = (value.odd - zxodd) /((valTemp == 0 ? 1 : valTemp)*100);
+                            strArr.push((value.odd - fandianBili * tmpConvertBlMoney).toFixed(3));
                         });
                         $("#jiangjin-change").html(strArr.join('|'));
                     } else {
@@ -682,8 +681,8 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             $(".re-5x-i i.acti").removeClass("acti");
             $(".Pick ul li span.acti_tsh").removeClass("acti_tsh");
             $("#zhushuInfo").data("zhushu", 0);
-            if (typeof clearStateTouZhu == 'function') {
-                clearStateTouZhu();
+            if (typeof this.clearStateTouZhu == 'function') {
+                this.clearStateTouZhu();
             }
 
             this.initArrNum();
@@ -1530,6 +1529,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             if ($("#zhudanList .re_touzhu_tem").length <= 0) {
                 $("#zhudanList").html('<tr class="noRecord"><td>暂无投注项</td></tr>');
             }
+            $("#moreZhudan").remove();
         },
         buyBtn: function() {
             var _this = this;
@@ -1602,12 +1602,12 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                         playCode: $(this).attr("data-bet_play_code"),//彩种玩法
                         betCode: $(this).attr("data-bet_play_id"),//投注玩法
                         betCount: $(this).attr("data-bet_zhushu"),//注数
-                        betAmount: $(this).attr("data-bet_per_money"),//单注金额
+                        betAmount: $(this).data("bet_total_money"),//单注金额
                         betNum: _this.getBetNum($(this)),//下注号码
                         odd: $(this).attr("data-bet_play_pl"),//奖金
                         multiple: $(this).attr("data-bet_beishu"),//倍数
                         bonusModel: $(this).attr("data-bet_mode"),//元角分模式
-                        rebate: $(this).attr("data-bet_fandian")//返点比例
+                        rebate: Number($(this).attr("data-bet_fandian"))/100//返点比例
                     });
 
                     betForm.totalMoney += parseFloat($(this).attr("data-bet_total_money"));
@@ -1615,39 +1615,6 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 });
                 //追号
                 var money = 0;
-                // var zs = 0;
-                // if (betForm.isZhuihao == 1) {
-                //
-                //     $('.reBetting .tabs ul li').each(function () {
-                //         var ft = $(this).hasClass('acti');
-                //         if (ft) {
-                //             nameF = $(this).attr('data-opertype');
-                //         }
-                //     })
-                //
-                //     if (nameF == 'tbzh') {
-                //         $(".list_wrap_zh .tbulzh .checkbox_selected").each(function () {
-                //             betForm.sscBetZhList.push({
-                //                 number: $(this).children(".content_qs").text(),
-                //                 beishu: $(this).children(".nosel").children('input[type="text"]').val()
-                //             });
-                //             var bei = $(this).children(".nosel").children('input[type="text"]').val();
-                //             zs += betForm.totalZhushu;
-                //         });
-                //     } else if (nameF == 'fbzh') {
-                //         $(".list_wrap_zh .fbulzh .checkbox_selected").each(function () {
-                //             betForm.sscBetZhList.push({
-                //                 number: $(this).children(".content_qs").text(),
-                //                 beishu: $(this).children(".nosel").children('input[type="text"]').val()
-                //             });
-                //             var bei = $(this).children(".nosel").children('input[type="text"]').val();
-                //             zs += betForm.totalZhushu;
-                //         });
-                //     }
-                //
-                //     betForm.totalMoney = parseFloat(totalM);
-                //     betForm.totalZhushu = zs;
-                // }
 
                 betForm.totalMoney = (betForm.totalMoney).toFixed(3);
                 betForm = JSON.stringify(betForm);
@@ -1690,19 +1657,12 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                         // 清空临时变量
                         _this.tmpBetContent = null;
                         //刷新玩家数据
-                        // $("font#money",parent.document).text(data.balance);
                         parent.index.refreshPlayer();
                         layer.msg(d.msg, {icon: d.icon});
                         if($("#bottomInfo .tabs .acti").length>0 && $("#bottomInfo .tabs .acti").data("tab") == 'myBet'){
                             // 刷新我的投注
                             page.getMyOrders();
                         }
-                        // layer.msg("下注成功", {icon: 1});
-                        // // 刷新我的投注
-                        // _this.getBetDetails();
-                        // 刷新余额
-                        // parent.getUserSession();
-                        // 重置预投注
                         _this.clearContent();
                     } else {
                         layer.msg(d.msg + '[' + d.code + ']', {icon: d.icon});
@@ -2157,11 +2117,29 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
         getBetNum:function(obj) {
             var betNum = obj.attr("data-bet_content");
             if (betNum.toString().indexOf('|') < 0) {
-                betNum = betNum.replace(",","|");
+                betNum = betNum.replace(new RegExp(",","gm"),"|");
             }
             return betNum;
+        },
+        getNoWeiStr:function (arr) {
+        var checkArr = [], checkStrArr = [];
+        checkArr = arr;
+        for (var i = 0; i < checkArr.length; i++) {
+            if (checkArr[i] == 1) {
+                checkStrArr.push("万");
+            } else if (checkArr[i] == 2) {
+                checkStrArr.push("千");
+            } else if (checkArr[i] == 3) {
+                checkStrArr.push("百");
+            } else if (checkArr[i] == 4) {
+                checkStrArr.push("十");
+            } else if (checkArr[i] == 5) {
+                checkStrArr.push("个");
+            }
         }
-    })
+        return checkStrArr;
+    }
 
+    })
 });
 

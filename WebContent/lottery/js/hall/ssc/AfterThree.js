@@ -1541,7 +1541,20 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             showContent: showContent,
             betContent: betContent
         };
-    }
+    },
+        //获取下注号码
+        getBetNum:function(obj) {
+            var betNum = obj.attr("data-bet_content");
+            if (betNum.toString().indexOf('|') < 0) {
+                var betCode = this.getPlayId();
+                if (betCode == 'ssc_sanxing_zhixuan_hskd' || betCode =='ssc_sanxing_zuxuan_hsz3fs' || betCode =='ssc_sanxing_zuxuan_hsz6fs' ){
+
+                }else {
+                    betNum = betNum.replace(new RegExp(",", "gm"), "|");
+                }
+            }
+            return betNum;
+        }
 
     })
 });

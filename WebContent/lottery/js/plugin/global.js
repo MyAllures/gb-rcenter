@@ -279,6 +279,14 @@ Array.prototype.uniqueArr = function () {
     }
     return temp;
 };
+//查找数据中重复元素
+Array.prototype.duplicate=function() {
+    var tmp = [];
+    this.concat().sort().sort(function(a,b){
+        if(a==b && tmp.indexOf(a) === -1) tmp.push(a);
+    });
+    return tmp;
+}
 /**
  * 获得从m中取n的所有组合
  */

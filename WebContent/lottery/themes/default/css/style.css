@@ -2060,3 +2060,23 @@ i.bg-01,i.bg-02,i.bg-03,i.bg-04,i.bg-05,i.bg-06,i.bg-07,i.bg-08,i.bg-09,i.bg-10{
     cursor: pointer;
 }
 .yjf-wrap .mode_select.selected{background: #fa6200;border-color: #fa6200;color: #fff;}
+
+/*购彩大厅缺省*/
+.default-wrap .default-img{
+	margin: 0 auto;
+    width: 360px;
+    margin-top: 10%;
+}
+.default-wrap .default-img .d-img{
+	display: block;
+	width: 356px;
+	height: 203px;
+	background: url(../img/default-img.png);
+}
+.default-wrap .default-img .d-title{
+	display: block;
+    text-align: center;
+    font-size: 22px;
+    color: #848484;
+    padding-top: 10px;
+}
