@@ -170,6 +170,22 @@ define(['common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], function (
             //时限跟免手续费次数需都设置后才能生效；
             var withdrawTimeLimit = $("#withdrawTimeLimit").val();
             var withdrawFreeCount = $("#withdrawFreeCount").val();
+
+            //手续费收费相关判断和保存
+            var withdrawMaxFee = $("#withdrawMaxFee").val();
+            var withdrawFeeType = $("input[name='withdrawFeeTypeRedio']:checked").val();
+            if (withdrawMaxFee > 0) {
+                $("input[name='result.withdrawFeeType']").val(withdrawFeeType);
+                $("input[name='result.withdrawFeeNum']").val($("#Type" + withdrawFeeType).val());
+            } else {
+                $("input[name='result.withdrawFeeNum']").val("");
+            }
+            $("input[name='result.isWithdrawLimit']").val($("#isWithdrawLimit").is(":checked"));
+            $("input[name='result.withdrawCheckStatus']").val($("#withdrawCheckStatus").is(":checked"));
+            $("input[name='result.withdrawExcessCheckStatus']").val($("#withdrawExcessCheckStatus").is(":checked"));
+           if (!this.validateForm(e)) {
+                return false;
+            }
             if ((!withdrawTimeLimit&&withdrawFreeCount)||(withdrawTimeLimit&&!withdrawFreeCount)) {
                 if (_this.parentTarget == undefined || $(e.currentTarget).attr("isContinue") != 1) {
                     window.top.topPage.bootstrapDialog.show({
@@ -200,21 +216,6 @@ define(['common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], function (
                 }
                 $(e.currentTarget).attr("isContinue", 0);
 
-            }
-            //手续费收费相关判断和保存
-            var withdrawMaxFee = $("#withdrawMaxFee").val();
-            var withdrawFeeType = $("input[name='withdrawFeeTypeRedio']:checked").val();
-            if (withdrawMaxFee > 0) {
-                $("input[name='result.withdrawFeeType']").val(withdrawFeeType);
-                $("input[name='result.withdrawFeeNum']").val($("#Type" + withdrawFeeType).val());
-            } else {
-                $("input[name='result.withdrawFeeNum']").val("");
-            }
-            $("input[name='result.isWithdrawLimit']").val($("#isWithdrawLimit").is(":checked"));
-            $("input[name='result.withdrawCheckStatus']").val($("#withdrawCheckStatus").is(":checked"));
-            $("input[name='result.withdrawExcessCheckStatus']").val($("#withdrawExcessCheckStatus").is(":checked"));
-           if (!this.validateForm(e)) {
-                return false;
             }
             return true;
         },
