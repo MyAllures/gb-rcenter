@@ -2091,3 +2091,20 @@ i.bg-1,i.bg-2,i.bg-3,i.bg-4,i.bg-5,i.bg-6,i.bg-7,i.bg-8,i.bg-9,i.bg-10{border-ra
     cursor: pointer;
 }
 .yjf-wrap .mode_select.selected{background: #fa6200;border-color: #fa6200;color: #fff;}
+
+/*购彩大厅缺省*/
+.default-wrap .default-img{
+	margin: 0 auto;
+    width: 360px;
+    margin-top: 10%;
+}
+.default-wrap .default-img .d-img{
+	display: block;
+	width: 356px;
+	height: 203px;
+	background: url(../img/default-img.png);
+}
+.default-wrap .default-img .d-title{
+	display: block;
+	text-align: center;
+}
