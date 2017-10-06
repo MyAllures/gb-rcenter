@@ -264,16 +264,16 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 if (rate >= 100) {
                     var html = '<div class="line-hi34 m-sm">'+msg+'</div>';
                     var dialog = BootstrapDialog.show({
-                        title: '消息',
+                        title: window.top.message.setting_auto['消息'],
                         message: html,
                         buttons: [{
-                            label: '去充值',
+                            label: window.top.message.setting_auto['去充值'],
                             action: function (dialog) {
                                 dialog.close();
                                 $("#mainFrame").load(root + "/credit/pay/pay.html");
                             }
                         }, {
-                            label: '取消',
+                            label: window.top.message.setting_auto['取消'],
                             cssClass: 'btn-primary',
                             action: function (dialog) {
                                 dialog.close();
@@ -464,11 +464,11 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var warnRate = Number(msgBody.warnRate);
             var stopRate = Number(msgBody.stopRate);
             if (rate >= stopRate) { //立即停止
-                var msg = "您站点的转账上限使用已超出${stopRate}%，已停止玩家转账，请立即充值，提升额度！";
+                var msg = (window.top.message.setting_auto['您站点的转账上限使用已超出']).replace("[0]",stopRate);
                 msg = msg.replace("${stopRate}",stopRate);
                 window.top.topPage.showConfirmMessage(msg)
             } else if (rate >= warnRate) {
-                var msg = "您站点的额度已用${rate}%，为了避免管理后台被维护,请最迟于${leftTime}前尽快充值,提升额度！";
+                var msg = (window.top.message.setting_auto['您站点的额度已用']).replace("[0]",rate).replace("[1]",leftTime);
                 msg = msg.replace("${rate}",rate);
                 msg = msg.replace("${leftTime}",date);
                 window.top.topPage.showConfirmMessage(msg);
