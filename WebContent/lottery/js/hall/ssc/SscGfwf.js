@@ -1529,6 +1529,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             if ($("#zhudanList .re_touzhu_tem").length <= 0) {
                 $("#zhudanList").html('<tr class="noRecord"><td>暂无投注项</td></tr>');
             }
+            $("#moreZhudan").remove();
         },
         buyBtn: function() {
             var _this = this;
