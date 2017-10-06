@@ -319,6 +319,9 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui(this.formSelector).on("tap", "a.selected-btn.mui-col-xs-4[data-code]", function () {
                 var dataCode = $(this).attr("data-code");
                 _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+"&isGfwf=1");
+                // _this.getIndex();
+                // $("span.x_3.gfwf-playName").html($("a.selected-btn.mui-active").text());
+                // $("div.s-title span").html($("a.selected-btn.mui-active").text());
             });
             //确认清空选项
             mui("body").on("tap", 'button#confirmClearPop', function () {
@@ -338,6 +341,22 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 _this.confirmOrder(betForm);
             });
         },
+
+
+
+        getIndex: function () {
+            var url = root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+"&isGfwf=1";
+            var _this = this;
+            mui.ajax(url, {
+                dataType: 'json',
+                type: 'get',
+                success: function (data) {
+
+                }
+            })
+        },
+
+
         /**
          * 确定下注
          */
