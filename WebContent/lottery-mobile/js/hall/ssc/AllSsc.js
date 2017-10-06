@@ -2,7 +2,10 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
     return PlayWay.extend({
         init: function () {
             this._super();
+            this.isGfwf();
         },
+
+
 
         showLastOpenCode: function (numArr) {
             var html = Template('template_lastOpenCode', {numArr: numArr, len: numArr.length});
@@ -48,7 +51,16 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     });
                 }
             })
-        }
+        },
 
+        //传统,官方玩法切换
+        isGfwf: function () {
+            var _this = this;
+            mui("body").on("tap", "a#is-gfwf", function () {
+                var flag = $(this).attr("data-flag");
+                _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
+
+            });
+        }
     });
 });

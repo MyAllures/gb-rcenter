@@ -963,14 +963,26 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 betContent: betContent
             };
         },
-        gfwf_2xfs:function (shiArr,
-            geArr) {
+        gfwf_2xfs:function (shiArr,geArr) {
         var tmpStr_1 = shiArr.join(",");
         var tmpStr_2 = geArr.join(",");
         return "{0}|{1}".format(
             tmpStr_1,
             tmpStr_2
         );
-    }
+    },
+        //获取下注号码
+        getBetNum:function(obj) {
+            var betNum = obj.attr("data-bet_content");
+            if (betNum.toString().indexOf('|') < 0) {
+                var betCode = this.getPlayId();
+                if (betCode == 'ssc_erxing_zhixuan_qekd'|| betCode == 'ssc_erxing_zuxuan_qefs' || betCode == 'zhushu_q2zuxbd'){
+
+                }else{
+                betNum = betNum.replace(new RegExp(",","gm"),"|");
+                }
+            }
+            return betNum;
+        }
     })
 });

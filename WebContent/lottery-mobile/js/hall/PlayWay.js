@@ -305,6 +305,11 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("body").on("tap", 'a#show-t', function () {
                 _this.betOrder();
             });
+            //gfwf投注
+            mui("body").on("tap", 'a#show-t-gfwf', function () {
+                _this.showBetTemplate();
+            });
+
             //跳转其他玩法页面
             mui(this.formSelector).on("tap", "a.mui-control-item[data-code]", function () {
                 var dataCode = $(this).attr("data-code");
@@ -417,6 +422,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             this.placeOrder(betForm);
             $("#dingdan").addClass('mui-active');
         },
+
         /**
          * 验证是否符合下注条件
          * @returns {boolean}
@@ -437,10 +443,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             var content = Template('template_order', {data: betForm});
             $("#dingdan").html(content);
         },
-        /**
-         * 获取注单
-         * @returns {{code: *, expect: (*|jQuery), type: *, betOrders: Array}}
-         */
+
         getBetOrder: function () {
             var code = this.code;
             var expect = $('font#expect').text();
@@ -468,9 +471,10 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 betForm.totalMoney = betForm.totalMoney + betAmount;
                 betForm.quantity = betForm.quantity + 1;
             });
-
             return betForm;
         },
+
+
         /**
          * 显示清除弹窗
          */
@@ -520,5 +524,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             $("#quantity").text($("div.bet-table-list td.mui-active").length);
             $("input#inputMoney").val("");
         }
+
     });
 });

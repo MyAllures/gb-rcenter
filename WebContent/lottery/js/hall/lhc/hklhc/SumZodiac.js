@@ -11,12 +11,12 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
         },
         bindButtonEvents: function () {
             this._super();
-            this.getLinkCode();
+            this.getSumZodiac();
         },
         /**
-         * 六合彩正码特跳转子页面
+         * 合肖
          */
-        getLinkCode: function () {
+        getSumZodiac: function () {
             var _this = this;
             $(".main-left .fr .T-tab a").click(function () {
                 $(".main-left .fr .T-tab a").removeClass("active");
@@ -24,37 +24,23 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                 var subCode = $(this).attr("subCode");
                 var title = $(this).text();
                 $("#lhc_title").text(title);
-
+                var minNum = $(this).attr("min-num");
                 ajaxRequest({
                     url: root + '/lhc/hklhc/getLhcBet.html',
                     data: {"subCode": subCode},
                     dataType: "json",
                     success: function (data) {
-
                         var bet = null;
-
-                        if(data[title]){
-                            bet = data[title];
+                        if(data[minNum]){
+                            bet = data[minNum];
                             $("#oddValue").text(bet.odd);
-                        }
-
-                        var numJson = {"二":2, "三":3,"四":4,"五":5,"六":6,"七":7,"八":8,"九":9,"十":10,"十一":11};
-
-                        var minNum = numJson[title.substring(0,2)];
-
-                        if(minNum>10){
-                            minNum = minNum;
-                        }else{
-                            minNum = numJson[title.substring(0,1)];
                         }
 
                         $("#minNum").text(minNum);
 
                         $(".lhc-ztm tr").each(function (i) {
-
                             var $tr = $(this).find("input");
                             $($tr).each(function () {
-
                                 $(this).attr("data-odds", bet.odd);
                                 $(this).attr("data-bet-code", bet.betCode);
                                 $(this).attr("data-bet-num",bet.betNum);
@@ -113,8 +99,7 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                 betOrders: [],
                 quantity: 0
             };
-            var count = chooseArr.length;
-            for(var i = 0; i < count; i++){
+            for(var i = 0; i < chooseArr.length; i++){
                 var value = chooseArr[i];
                 betForm.betOrders.push({
                     expect: expect,
@@ -131,53 +116,17 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
             }
             return betForm;
         },
-
         bindTdInput : function(){
             // 点击变黄
             $(".main-left .table-common tbody tr td.hx-list").click(function() {
                 var xz = $(this).hasClass("bg-yellow");
                 if (xz == true) {
                     $(this).removeClass("bg-yellow");
-                    $(this).children("input").attr("checked",false);
                 } else{
                     $(this).addClass("bg-yellow");
-                    $(this).children("input").attr("checked",true);
-                };
+                }
             });
-        },
-
-        //如果有特殊玩法除了重置页面input之外的其他操作,请继承该js,重写该方法
-        clearTdInput : function(){
-            page.reset();
-            $(".main-left .table-common input").attr("checked",false);
-        },
-
-        //组合函数
-        combination : function (arr, size) {
-            var allResult = [];
-            if(arr.length >= size){
-                var temp = new Array(size)
-                temp[size-1]="";
-                this.combinationSelect(allResult,arr,0,temp,0);
-            }
-            return allResult;
-        },
-        combinationSelect : function(allResult,dataList,dataIndex,resultCode,resultIndex){
-            var resultLen = resultCode.length;
-            var resultCount = resultIndex + 1;
-            if (resultCount > resultLen) { // 全部选择完时，输出组合结果
-                allResult.push(resultCode.join(","));
-                return;
-            }
-            var count = dataList.length + resultCount - resultLen;
-            for (var i = dataIndex; i < count; i++) {
-                resultCode[resultIndex] = dataList[i];
-                this.combinationSelect(allResult,dataList, i + 1, resultCode, resultIndex + 1);
-            }
         }
-
     })
-
-
 });
 
