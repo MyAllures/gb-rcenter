@@ -117,6 +117,7 @@
                         <exclude>mobile-v2/js/jquery/jquery.js</exclude>
                         <exclude>mobile/**</exclude>
                         <exclude>lottery/js/hall/**</exclude>
+                        <exclude>lottery/js/plugin/jquery.range.js</exclude>
                         <exclude>lottery-mobile/js/mui/app.js</exclude>
                         <exclude>static/**</exclude>
                         <exclude>ftl_bak/**</exclude>
