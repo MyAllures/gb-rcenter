@@ -464,11 +464,11 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var warnRate = Number(msgBody.warnRate);
             var stopRate = Number(msgBody.stopRate);
             if (rate >= stopRate) { //立即停止
-                var msg = (window.top.message.setting_auto['您站点的转账上限使用已超出']).replace("[0]",stopRate);
+                var msg = window.top.message.setting_auto['您站点的转账上限使用已超出'];
                 msg = msg.replace("${stopRate}",stopRate);
                 window.top.topPage.showConfirmMessage(msg)
             } else if (rate >= warnRate) {
-                var msg = (window.top.message.setting_auto['您站点的额度已用']).replace("[0]",rate).replace("[1]",leftTime);
+                var msg = window.top.message.setting_auto['您站点的额度已用'];
                 msg = msg.replace("${rate}",rate);
                 msg = msg.replace("${leftTime}",date);
                 window.top.topPage.showConfirmMessage(msg);
