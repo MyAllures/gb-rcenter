@@ -21,19 +21,32 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
 
             //直选复式
             mui(".gfwf-playName")[0].addEventListener('tap',function(){
+
                 mui(".gfwf-wrap")[0].classList.toggle('Fixed');
             });
             mui(".gfwf-bg")[0].addEventListener('tap',function(){
+
                 mui(".gfwf-wrap")[0].classList.remove('Fixed');
             });
 
             //头部选择
             mui("div.s-menu").on('tap','a',function(){
-
+                _this.resetBet();
                 $("a.selected-btn.mui-active").removeClass("mui-active");
                 this.classList.toggle('mui-active');
+                // $("span.x_3.gfwf-playName").html($("a.selected-btn.mui-active").text());
+                //$("div.s-title span").html($("a.selected-btn.mui-active").text());
+                $("span.x_1.gfwf-tit").html($("a.selected-btn.mui-active").text());
+                var dataCode=$("a.selected-btn.mui-active").attr("data-code");
+                if(dataCode=="ssc_yixing" || dataCode=="ssc_wuxing_zhixuan"){
+                    mui(".gfwf-wrap")[0].classList.remove('Fixed');
+                    $("a[data-code='zxfs']").addClass("mui-active");
+                }
                 _this.getOdds();
                 _this.getGfwfAllOdd();
+
+
+
             });
 
             //选择球
@@ -109,11 +122,13 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
                 this.classList.remove('mui-active');
                 $("div.newball-item-20 a").removeClass("mui-active");
                 mui(".btn-reset-gfwf")[0].classList.add('mui-active');
-                var dataCode=$("a.selected-btn.mui-active").attr("data-code");
+                /*var dataCode=$("a.selected-btn.mui-active").attr("data-code");
                 if(dataCode=="ssc_yixing"){
                     _this.sscYixing_random();
 
-                }
+                }*/
+                var randomName=$("a.selected-btn.mui-active").attr("data-fun_random");
+                eval("_this."+randomName + "()");
                 _this.getZhuShu();
             });
             //机选清除
@@ -127,15 +142,19 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
 
         },
 
-
         //获取注数
         getZhuShu : function () {
-            var gfwfBetCode=$("#gfwf-betCode").val();
-            if(gfwfBetCode =="sscYixing"){
-                var len=$("div.newball-item-20 .mui-active").length;
-                $("#quantity").text(len);
-                $("#inputMoney").text(len*2);//目前写死
-            }
+            // var gfwfBetCode=$("#gfwf-betCode").val();
+            // if(gfwfBetCode =="sscYixing"){
+            //     var len=$("div.newball-item-20.mui-active").length;
+            //     $("#quantity").text(len);
+            //     $("#inputMoney").text(len*2);//目前写死
+            // }
+            var zhushuName = $("a.selected-btn.mui-active").attr("data-fun_zhushu");
+            var zhushu = eval("_this."+zhushu + "()");
+            alert(zhushu);
+            $("#quantity").text(zhushu);
+            $("#inputMoney").text(zhushu*2);//目前写死
         },
 
         //定位胆机选
@@ -374,11 +393,6 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
                 }
             });
 
-            // 取消事件绑定
-            /*$("#no-btn").click(function() {
-                layer.closeAll();
-            });*/
-
 
             // 单注金额变化
             $("#betContent_inputMoney").keyup(function() {
@@ -392,30 +406,6 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
                 _this.renderZhushu();
             });
 
-            // 渲染下注总额，奖金等等
-            // function renderZhushu() {
-            //     var money = $("#betContent_inputMoney").val();
-            //     var beishu = $("#betContent_inputBeishu").val();
-            //     var zhushu = parseInt($("#betContent_zhushu").html());
-            //     var playPl = parseFloat($("#betContent_playPl").attr("data-value"));
-            //     var mode = parseInt($(".mode_select.selected").attr("data-value"));
-            //     var tmpMode = 1;
-            //     if (mode == 0) {
-            //         tmpMode = 1;
-            //     } else if (mode == 1) {
-            //         tmpMode = 0.1;
-            //     } else if (mode == 2) {
-            //         tmpMode = 0.01;
-            //     } else {
-            //         return;
-            //     }
-            //
-            //     var totalMoney = parseFloat((money * zhushu * beishu * tmpMode).toFixed(3));  // 总金额
-            //     var canWin = parseFloat(money * beishu * playPl * tmpMode);  // 可获奖金
-            //
-            //     $("#betContent_totalMoney").html(totalMoney.toFixed(3));
-            //     $("#betContent_canWin").html(canWin.toFixed(3));
-            // }
 
             $("#ischange").change(function() {
                 alert("checked");
@@ -609,6 +599,8 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
             $("#dingdan").removeClass('mui-active');
             $("#quantity").text(0);
             $("#inputMoney").text(0);
+            $("a.bottom-bar-btn.btn-jixuan-gfwf").addClass("mui-active");
+            $("a.bottom-bar-btn.btn-reset-gfwf").removeClass("mui-active");
         },
 
 

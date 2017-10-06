@@ -315,6 +315,11 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 var dataCode = $(this).attr("data-code");
                 _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode);
             });
+            //gfwf跳转其他玩法页面
+            mui(this.formSelector).on("tap", "a.selected-btn.mui-col-xs-4[data-code]", function () {
+                var dataCode = $(this).attr("data-code");
+                _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+"&isGfwf=1");
+            });
             //确认清空选项
             mui("body").on("tap", 'button#confirmClearPop', function () {
                 _this.closeClearPopup(true);

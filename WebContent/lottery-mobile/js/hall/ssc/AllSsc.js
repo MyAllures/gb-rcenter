@@ -59,7 +59,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             mui("body").on("tap", "a#is-gfwf", function () {
                 var flag = $(this).attr("data-flag");
                 _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
-
             });
         }
     });
