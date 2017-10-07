@@ -307,7 +307,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         var showContent = '';
         var betContent = '';
 
-        var arr = thisi.getRandom2num();
+        var arr = this.getRandom2num();
         var zhiHao1 = arr[0];
         var zhiHao2 = arr[1];
 

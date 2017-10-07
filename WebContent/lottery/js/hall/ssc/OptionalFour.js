@@ -935,19 +935,6 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         //获取下注号码
         getBetNum:function(obj) {
             var betNum = obj.attr("data-bet_content");
-            if (betNum.toString().indexOf('|') >= 0) {
-                var betCode = this.getPlayId();
-                if (betCode=='ssc_renxuan4_zxfs'){
-
-                }else if (betCode == 'ssc_renxuan4_zxds' ){
-                    betNum = betNum.split("|")[1];
-                    betNum = betNum.replace(new RegExp(",","gm"),"|");
-                }else if (betCode == 'ssc_renxuan4_zx12' || betCode == 'ssc_renxuan4_zx4'){
-                    betNum = betNum.replace(betNum.split("|")[0]+"|","");
-                }else {
-                    betNum = betNum.split("|")[1];
-                }
-            }
             return betNum;
         }
 
