@@ -25,7 +25,7 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                 var subCode = $(this).attr("subCode");
                 var title = $(this).text();
                 var minNum = $(this).attr("min-num");
-                $("#lhc_title").text(title);
+
                 ajaxRequest({
                     url: root + '/lhc/hklhc/getLhcBet.html',
                     data: {"subCode": subCode},
@@ -39,17 +39,22 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                             $("#oddValue").text(bet.odd);
                             $("#nextOddValue").text(nextBet.odd);
                             $(".nextOddValue").show();
+                            $("#lhc_title").text("中2");
+                            $("#nextOddTitle").text("中3");
                         }else if(data['中2'] && data['中特']){
                             bet = data['中特'];
                             nextBet = data['中2'];
                             $("#oddValue").text(bet.odd);
                             $("#nextOddValue").text(nextBet.odd);
                             $(".nextOddValue").show();
+                            $("#lhc_title").text("中特");
+                            $("#nextOddTitle").text("中2");
                         }//二,三,四全中
                         else if(data[minNum]){
                             bet = data[minNum];
                             $("#oddValue").text(bet.odd);
                             $(".nextOddValue").hide();
+                            $("#lhc_title").text(title);
                         }
                         $("#minNum").text(minNum);
                         _this.playCode=$("#"+subCode).val();
