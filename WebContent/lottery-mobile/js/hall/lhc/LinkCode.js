@@ -40,18 +40,23 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                         $("#oddValue").text(bet.odd);
                         $("#nextOddValue").text(nextBet.odd);
                         $(".nextOddValue").show();
+                        $("#lhc_title").text("中2");
+                        $("#nextOddTitle").text("中3");
                     }else if(data['中2'] && data['中特']){
                         var bet = data['中特'];
                         var nextBet = data['中2'];
                         $("#oddValue").text(bet.odd);
                         $("#nextOddValue").text(nextBet.odd);
                         $(".nextOddValue").show();
+                        $("#lhc_title").text("中特");
+                        $("#nextOddTitle").text("中2");
                     }else if(data[minNum]){
                         var bet = data[minNum];
                         $("#oddValue").text(bet.odd);
                         $(".nextOddValue").hide();
+                        $("#lhc_title").text(title);
                     }
-                    $("#lhc_title").text(title);
+
                     $("#minNum").text(minNum);
                 }
             })
