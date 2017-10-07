@@ -823,6 +823,9 @@ a.popup-screen-btn:visited{
 	color: #df3a29;
 	margin: 0.15rem;
 }
+.newball-content.mui-table-view .screen-munber .newball-item-20.tsh-ball .n-btn{
+    font-size: 0.76rem!important;
+}
 .newball-content.mui-table-view .screen-munber .newball-item-20 .n-btn.mui-active{
 	background: #df3a29;
     color: #fff;
