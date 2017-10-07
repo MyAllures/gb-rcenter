@@ -2106,5 +2106,8 @@ i.bg-1,i.bg-2,i.bg-3,i.bg-4,i.bg-5,i.bg-6,i.bg-7,i.bg-8,i.bg-9,i.bg-10{border-ra
 }
 .default-wrap .default-img .d-title{
 	display: block;
-	text-align: center;
+    text-align: center;
+    font-size: 22px;
+    color: #848484;
+    padding-top: 10px;
 }
