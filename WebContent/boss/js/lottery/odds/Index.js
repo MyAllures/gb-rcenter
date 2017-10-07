@@ -35,6 +35,7 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
 
         },
         bindEvent: function () {
+            var _this= this;
             this._super();
             $(this.formSelector).on("click", "#searchDiv a", function (e,opt) {
                 var siteId = $("#search_id").val();
@@ -42,10 +43,36 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     return false;
                 }
                 var code = $(this).attr("code");
+                if(code.indexOf('ssc')>0){
+                    $(".wfqh-btn").attr("style", "display:");
+                    $("#gfwfqh").addClass("gfwfqh-wrap");
+                    $("#jdwf").addClass("active");
+                    $("#gfwf").removeClass("active");
+
+                }else {
+                    $(".wfqh-btn").attr("style", "display:none");
+                    $("#gfwfqh").removeClass("gfwfqh-wrap");
+                }
                 $(this).attr('class', 'label ssc-label ssc-active');
                 $(this).siblings().attr('class', 'label ssc-label');
                 $("#lot_two_menu").load(root+'/lottery/odds/'+code+'/Index.html');
             });
+
+            $(this.formSelector).on("click", "#wfqh-btn a", function () {
+                var code = $("#searchDiv a.ssc-active").attr("code")
+                $(this).siblings().removeClass('active');
+                $(this).addClass("active");
+                var i = $(this).attr('id');
+                if(i=='gfwf'&& code.indexOf('gf')<0){
+                    code+="gf";
+                }else if(code.indexOf('gf')>0){
+                    code = code.substr(0,(code.length-2));
+                }
+                $(_this).attr('class', 'label ssc-label ssc-active');
+                $(_this).siblings().attr('class', 'label ssc-label');
+                $("#lot_two_menu").load(root+'/lottery/odds/'+code+'/Index.html');
+            });
+
             $(this.formSelector).on("click", "#lotteryDiv li", function (e) {
                 $("#lotteryDiv li").removeClass("active");
                 $(this).addClass("active");
