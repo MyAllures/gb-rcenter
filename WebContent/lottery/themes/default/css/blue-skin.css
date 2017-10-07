@@ -1,6 +1,16 @@
 
-.top{ background: linear-gradient(to bottom, rgba(25,84,154,1) 1%,rgba(5,56,111,1) 100%);}
-
+.top{ background: url(../img/main_bg.png);}
+.top .news {
+    margin-left: 25px;
+    
+}
+.top .nav{
+	width: 150px;
+}
+.top .nav h1{
+	background: url(../img/main_bg-r.png);
+	width: 192px;
+}
 /*左侧菜单*/
 .menu_left{background: #e6e6e6;padding-top: 5px;border-right: 1px solid #ccc;/*width: 200px!important;*/ margin-right: -1px; /*transition: all 0.3s;*/}
 /*.menu_left.add_menu{width: 39px!important; transition: all 0.3s;}*/
@@ -272,7 +282,65 @@
 .game_name .box2_stage p span i.acti{
 	background: #82ace2;
 }
+.game_name .box2_stage .pt10{
+	overflow: inherit;
+}
+.game_name .box2_stage .number span {
+    border: 1px solid #ec5c2b;
+    background: linear-gradient(to bottom, #ff925f 0%,#ea470b 100%);
+    position: relative;
+    color: #ffffff;
+    line-height: 38px;
+    text-align: center;
+    padding-left: 0;
+    margin-right: 10px;
+    width: 39px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+.game_name .box2_stage .number span.ball-blue{
+	border: 1px solid #0074ff;
+}
+.game_name .box2_stage .number span.ball-red{
+	border: 1px solid #f13030;
+}
+.game_name .box2_stage .number span.ball-green{
+	border: 1px solid #5bae1c;
+}
+.game_name .box2_stage .number span:before{
+    content: "";
+    width: 48%;
+    height: 25%;
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 24%;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.78) 0%,rgba(255, 115, 64, 0) 100%);
+}
+.game_name .box2_stage .number span:after{
+    content: "";
+    width: 60%;
+    height: 25%;
+    display: block;
+    position: absolute;
+    bottom: 1px;
+    left: 20%;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%,rgba(56, 56, 56, 0.28) 100%);
+}
 
+.game_name .box2_stage .number.globule span{
+	width: 27px;
+    height: 30px;
+    line-height: 25px;
+    padding-left: 3px;
+    font-size: 17px;
+}
+
+.game_name .box2_stage .number ul li i{
+	background: linear-gradient(to bottom, #ff925f 0%,#ea470b 100%);
+	border-radius: 50%;
+}
 
 .game_name .box3_timer{
 	height: 86px;
@@ -381,12 +449,27 @@
 	border-right:1px solid #b9c2cb;
 }
 
+.btn-1{ 
+	color: #fff;
+    background: linear-gradient(to bottom, #5b8ac7 0%,#2765b5 100%);
+    border:1px solid #2161b3;
+}
+
+.btn-2{ 
+	color: #fff;
+    background: linear-gradient(to bottom, #5b8ac7 0%,#2765b5 100%);
+    border:1px solid #2161b3;
+}
+.btn-1:hover,.btn-2:hover{
+	background: #4782cf;
+}
+
 /*玩法选择菜单*/
 .Single .layout .Playmethod{
 	border-bottom: 1px solid #e2e2e2;
     padding-left: 1px;
     margin-top: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 6px;
 }
 .Single .layout  .Playmethod ul li{
 	margin: 4px 0;
@@ -415,6 +498,20 @@
 	border: 0;
 	height: 35px;
 	line-height: 35px;
+	width: auto;
+}
+.game_name .box2_stage .number.kl8{
+	padding-top: 4px;
+}
+.game_name .box2_stage .number.kl8 span {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    margin-right: 2px;
+}
+.game_name .box2_stage .number.kl8 span:nth-child(10){
+	margin-right: 30px;
 }
 .Single .layout  .Playmethod ul li p span a{
 	padding-right:5px;
@@ -535,13 +632,35 @@
 
 .Betting {
 	margin-left: 10px;
-    border-radius: 10px;
-    background: #fa6200;
+    border-radius: 0;
+    background: #2866b5;
     display: table;
     margin-top: 20px;
-    border-bottom: 3px solid #a43f20;
+    border-bottom: 0;
     margin-bottom: 40px;
 }
+.Betting .tabs {
+    margin-top: 1px;
+    margin-left: 1px;
+}
 .Betting .tabs ul li{
-	
+	border-radius: 0;
+	background: #6d95ca;
+	color: #c3d3e8;
+	margin-right: 1px;
+}
+.Betting .list_wrap {
+    width: 998px;
+    margin-left: 1px;
+    margin-bottom: 1px;
+}
+
+/*弹窗*/
+.layui-layer-dialog{
+	border-radius: 4px!important;
+}
+.layui-layer-title{
+	background-color: #2161b3!important;
+	border-top-right-radius: 4px!important;
+	border-top-left-radius: 4px!important;
 }
