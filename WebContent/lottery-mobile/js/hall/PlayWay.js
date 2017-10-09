@@ -389,6 +389,9 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 },
                 complete: function () {
                     _this.hideLoading();
+                },error:function(xhr,type,errorThrown){
+                    _this.hideLoading();
+                    _this.toast('下注失败：请求异常');
                 }
             })
         },
