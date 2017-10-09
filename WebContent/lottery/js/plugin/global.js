@@ -165,10 +165,6 @@ var ajaxRequest = function (obj) {
             } else {
                 // Tools.toast("服务器异常，请联系管理员");
             }
-
-            if (typeof(obj.error) == "function") {
-                obj.error(XMLHttpRequest, textStatus, errorThrown);
-            }
         },
         beforeSend: function () {
             Tools.log(requestStr + "-beforeSend");

@@ -185,9 +185,12 @@ define(['site/plugin/template'], function (Template) {
                 complete: function () {
                     $("button[type=submit]").removeAttr("disabled");
                     page.hideLoading();
-                },error:function(){
-                    $("button[type=submit]").removeAttr("disabled");
-                    page.hideLoading();
+                },error:function(XMLHttpRequest, textStatus, errorThrown){
+                    Tools.log({
+                        "XMLHttpRequest": XMLHttpRequest,
+                        "textStatus": textStatus,
+                        "errorThrown": errorThrown
+                    });
                     layer.msg('下注失败：请求异常', {icon: 5});
                 }
             });
