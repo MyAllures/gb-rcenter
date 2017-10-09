@@ -58,7 +58,11 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 $("a.selected-btn.mui-active").removeClass("mui-active");
                 this.classList.toggle('mui-active');
                 var dataCode=$("a.selected-btn.mui-active").attr("data-code");
-                var dataPlayId=$("a.selected-btn.mui-active").attr("data-play_id");
+                var dataPlayId="";
+                    $("a.selected-btn.main.mui-active").attr("data-play_id");
+                if($("a.selected-btn.main.mui-active").size()>0){
+                    dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
+                }
                 _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+'&isGfwf=1&playCode='+dataPlayId);
                 if(dataCode=="ssc_yixing" || dataCode=="ssc_wuxing_zhixuan" || dataCode=="ssc_sixing_zhixuan" ){
                     mui(".gfwf-wrap")[0].classList.remove('Fixed');
@@ -597,6 +601,17 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 numstr = numstr.split(".")[0]+"."+numstr.split(".")[1].substring(0,xs);
             }
             return Number(numstr);
+        },
+        uniqueArr:function (obj) {
+            var temp = new Array();
+            obj.sort();
+            for(i = 0; i < obj.length; i++) {
+                if( obj[i] == obj[i+1]) {
+                    continue;
+                }
+                temp[temp.length]=obj[i];
+            }
+            return temp;
         }
 
     });
