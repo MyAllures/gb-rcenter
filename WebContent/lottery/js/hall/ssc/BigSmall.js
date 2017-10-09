@@ -144,7 +144,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 arr.push(tempArr[parseInt(Math.random() * tempArr.length)]);
             }
 
-            showPlayName = "后二大小单双";
+            showPlayName = "前三大小单双";
             showContent = "万位: ({0}), 千位: ({1}), 百位: ({2})".format(arr[0], arr[1], arr[2]);
             betContent = "{0}|{1}|{2}".format(arr[0], arr[1], arr[2]);
 

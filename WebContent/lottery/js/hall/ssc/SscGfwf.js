@@ -202,11 +202,12 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 maxPlayPl = plAndMaxFd[0].odd;  // 最高赔率
                 maxFandian = plAndMaxFd[0].rebate*100;    // 最大返点
                 // var pljsarr = pljs.split('|');
-                minPl = (plAndMaxFd[0].odd-Number(plAndMaxFd[0].baseNum)*plAndMaxFd[0].rebate).toFixed(3);   // 最低赔率
+                // minPl = Math.floor((plAndMaxFd[0].odd-Number(plAndMaxFd[0].baseNum)*plAndMaxFd[0].rebate)*1000)/1000;   // 最低赔率
+                minPl = _this.getArgNum((plAndMaxFd[0].odd-Number(plAndMaxFd[0].baseNum)*plAndMaxFd[0].rebate)) // 最低赔率
             } else {
                 maxPlayPl = plAndMaxFd.odd;  // 最高赔率
                 maxFandian = plAndMaxFd.rebate*100;    // 最大返点
-                minPl = (plAndMaxFd.odd-Number(plAndMaxFd.baseNum)*plAndMaxFd.rebate).toFixed(3);   // 最低赔率
+                minPl =_this.getArgNum((plAndMaxFd.odd-Number(plAndMaxFd.baseNum)*plAndMaxFd.rebate));   // 最低赔率
             }
             convertBlMoney = (maxPlayPl - minPl) / maxFandian;  // 每1%转换赔率
 
@@ -227,23 +228,22 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                     $("#fandian-bfb").data("value", fandianBili);
                     $("#fandian-bfb").html(fandianBili + "%");    // 渲染界面中百分比部分
 
-                    // 赔率 = 最大配率 - 返点比例 * 转换比例
-                    var pl = (maxPlayPl - fandianBili * convertBlMoney).toFixed(3);
-                    $("#jiangjin-change").data("value", pl);
-
                     // 渲染界面中赔率部分
                     if (plAndMaxFd instanceof Array) {  // 多赔率
+                        var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd[0].baseNum));
+                        $("#jiangjin-change").data("value", pl);
                         var strArr = [];
                         // var pljsarr = pljs.split('|');
                         $.each(plAndMaxFd, function (index, value) {
-                            var valTemp = value.rebate;
-                            var zxodd= value.odd-Number(value.baseNum)*(valTemp == 0 ? 1 : valTemp);
-                            var tmpConvertBlMoney = (value.odd - zxodd) /((valTemp == 0 ? 1 : valTemp)*100);
-                            strArr.push((value.odd - fandianBili * tmpConvertBlMoney).toFixed(3));
+                            strArr.push(_this.getArgNum((value.odd - fandianBili/100 * value.baseNum)));
                         });
                         $("#jiangjin-change").html(strArr.join('|'));
+                        $("#jiangjin-change").data("plStr", strArr.join('|'));
                     } else {
+                        var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd.baseNum));
+                        $("#jiangjin-change").data("value", pl);
                         $("#jiangjin-change").html(pl);
+                        $("#jiangjin-change").data("plStr",pl);
                     }
 
                     // 渲染中部注数，赔率，返点等等
@@ -463,11 +463,11 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 $('.p1 .i_beishu').html($("#inputBeishu").val());   // 渲染倍数
 
                 // 投注总金额 = 倍数 * 注数 * 单注金额
-                var totalMoney = parseFloat((moneyMode * inputBeishu * zhushu * $("#inputMoney").data("money")).toFixed(3));
+                var totalMoney = parseFloat((moneyMode * inputBeishu * zhushu * $("#inputMoney").attr("data-money")).toFixed(3));
                 $('.p1 .i_money').html(totalMoney);
 
                 // 返点金额 = 投注总金额 * 返点比例
-                var fandianMoney = parseFloat((totalMoney * inputFandianBili).toFixed(3));
+                var fandianMoney = _this.getArgNum((totalMoney * inputFandianBili));
                 $('.p1 .i_fanD').html(fandianMoney);
             }
         },
@@ -589,6 +589,9 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
 //===============================获取内容算法===================================
         tjzd: function() {
             var _this = this;
+            var plSelIndex = 0; //特殊号多赔率
+            var plSelName = ''; //特殊号多赔率名称
+            var plSelVal = 0; //特殊号赔率值
             var contentFun = _this.getPlayPlFun_content();    // 内容算法
             var zhushuFun = _this.getPlayPlFun_zhushu();  // 注数算法
             if (typeof contentFun == 'undefined' || typeof zhushuFun == 'undefined') {
@@ -607,7 +610,34 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 alert("号码选择不完整，请重新选择");
                 return;
             }
-
+            if ($.inArray(this.getPlayId(), ["ssc_sanxing_zuxuan_qsts","ssc_sanxing_zuxuan_hsts"]) >= 0) {
+                var l = $('.cl-1015-tsh ul li span.acti_tsh').length;
+                if (l == 1) {
+                    $('.cl-1015-tsh ul li span.acti_tsh').each(function () {
+                        plSelName = $(this).html();
+                    });
+                    if (plSelName == '豹子') {
+                        plSelIndex = 0;
+                    } else if (plSelName == '顺子') {
+                        plSelIndex = 1;
+                    } else if (plSelName == '对子') {
+                        plSelIndex = 2;
+                    }
+                }else {
+                    plSelName = $('.cl-1015-tsh ul li span.acti_tsh').html();
+                    if (plSelName == '豹子') {
+                        plSelIndex = 0;
+                    } else if (plSelName == '顺子') {
+                        plSelIndex = 1;
+                    } else if (plSelName == '对子') {
+                        plSelIndex = 2;
+                    }
+                }
+                var tempNum = $("#jiangjin-change").data("plStr");
+                plSelVal = (tempNum.split("|"))[plSelIndex];
+            } else {
+                plSelVal = $("#jiangjin-change").data("value");
+            }
             var obj = {};
             //======函数获取=====
             obj.showPlayName = data.showPlayName;
@@ -621,10 +651,10 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             obj.betTotalMoney = (obj.betZhushu * obj.betPerMoney * _this.getMode(obj.betMode) * obj.betBeishu).toFixed(3);
             obj.betPlayGroupId = _this.playGroupId;
             obj.betFandian = $("#fandian-bfb").data("value");
-            obj.betPlayPl = $("#jiangjin-change").data("value");
+            obj.betPlayPl = plSelVal;
             var strPlId = _this.getPlayPlId();
             if (strPlId.toString().indexOf('|') > 0) {
-                obj.betPlayPlId = (strPlId.toString().split("|"))[0];
+                obj.betPlayPlId = (strPlId.toString().split("|"))[plSelIndex];
             } else {
                 obj.betPlayPlId = _this.getPlayPlId();
             }
@@ -957,7 +987,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                     return;
                 }
 
-                if ($.inArray(_this.playId, [515, 534, 936, 914, 639, 625, 1013, 991, 730, 708, 859, 837]) >= 0) {
+                if ($.inArray(_this.getPlayId(), ["ssc_sanxing_zuxuan_qsts","ssc_sanxing_zuxuan_hsts"]) >= 0) {
                     plSelName = data.betContent;
                     if (plSelName == '豹子') {
                         plSelIndex = 0;
@@ -2138,8 +2168,19 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             }
         }
         return checkStrArr;
-    }
-
+    },
+        //处理金额，截取三位小数。
+        getArgNum:function (num) {
+            var numstr = num + "";
+            if (numstr.indexOf(".")!=-1){
+                var xs = 3;
+                if(numstr.split(".")[1].length<3){
+                   xs = numstr.split(".")[1].length;
+                }
+                numstr = numstr.split(".")[0]+"."+numstr.split(".")[1].substring(0,xs);
+            }
+            return Number(numstr);
+        }
     })
 });
 
