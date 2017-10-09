@@ -190,8 +190,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 betForm.betOrders.push({
                     code: _this.code,//彩种
                     expect: $('font#expect').text(),//期号
-                    playCode: $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code"),//彩种玩法
-                    betCode:  $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id"),//投注玩法
+                    playCode: $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id"),//彩种玩法
+                    betCode:  $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code"),//投注玩法
                     betCount: $("#quantity").text(),//注数
                     betAmount: $("#betContent_totalMoney").text(),//下注总额。
                     betNum: _this.tmpBetContent,//下注号码
@@ -225,8 +225,64 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     complete: function () {
                         _this.hideLoading();
                     }
-                })
+                });
 
+            });
+
+
+
+            // 单注金额变化
+            $("#betContent_inputMoney").keyup(function() {
+                // 渲染下注总额，奖金等等
+                _this.renderZhushu();
+            });
+
+            // 倍数变化
+            $("#betContent_inputBeishu").keyup(function() {
+                // 渲染下注总额，奖金等等
+                _this.renderZhushu();
+            });
+
+
+            // $("#ischange").change(function() {
+            //     alert("checked");
+            // });
+
+            // 模式选择
+            $(".mode_select").click(function() {
+                $(".mode_select.selected").removeClass("selected");
+                $(this).addClass("selected");
+                // 渲染下注总额，奖金等等
+                _this.renderZhushu();
+            });
+
+            // 加号
+            $(".dzje_add").click(function() {
+                $("#betContent_inputMoney").val(parseInt($("#betContent_inputMoney").val()) + 1);
+                // 渲染下注总额，奖金等等
+                _this.renderZhushu();
+            });
+
+            $(".beishu_add").click(function() {
+                $("#betContent_inputBeishu").val(parseInt($("#betContent_inputBeishu").val()) + 1);
+                // 渲染下注总额，奖金等等
+                _this.renderZhushu();
+            });
+
+            $(".beishu_remove").click(function() {
+                var num = parseInt($("#betContent_inputBeishu").val()) - 1;
+                if(num <= 0){
+                    return;
+                }
+                $("#betContent_inputBeishu").val(parseInt($("#betContent_inputBeishu").val()) - 1);
+                // 渲染下注总额，奖金等等
+                _this.renderZhushu();
+            });
+
+            //取消下注
+            mui("body").on("tap", "#quxiao", function () {
+                $("#dingdan").html('');
+                $("#dingdan").removeClass('mui-active');
             });
 
         },
@@ -381,60 +437,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 }
             });
 
-
-            // 单注金额变化
-            $("#betContent_inputMoney").keyup(function() {
-                // 渲染下注总额，奖金等等
-                _this.renderZhushu();
-            });
-
-            // 倍数变化
-            $("#betContent_inputBeishu").keyup(function() {
-                // 渲染下注总额，奖金等等
-                _this.renderZhushu();
-            });
-
-
-            // $("#ischange").change(function() {
-            //     alert("checked");
-            // });
-
-            // 模式选择
-            $(".mode_select").click(function() {
-                $(".mode_select.selected").removeClass("selected");
-                $(this).addClass("selected");
-                // 渲染下注总额，奖金等等
-                _this.renderZhushu();
-            });
-
-            // 加号
-            $(".dzje_add").click(function() {
-                $("#betContent_inputMoney").val(parseInt($("#betContent_inputMoney").val()) + 1);
-                // 渲染下注总额，奖金等等
-                _this.renderZhushu();
-            });
-
-            $(".beishu_add").click(function() {
-                $("#betContent_inputBeishu").val(parseInt($("#betContent_inputBeishu").val()) + 1);
-                // 渲染下注总额，奖金等等
-                _this.renderZhushu();
-            });
-
-            $(".beishu_remove").click(function() {
-                var num = parseInt($("#betContent_inputBeishu").val()) - 1;
-                if(num <= 0){
-                    return;
-                }
-                $("#betContent_inputBeishu").val(parseInt($("#betContent_inputBeishu").val()) - 1);
-                // 渲染下注总额，奖金等等
-                _this.renderZhushu();
-            });
-
-            //取消下注
-            mui("body").on("tap", "#quxiao", function () {
-                $("#dingdan").html('');
-                $("#dingdan").removeClass('mui-active');
-            });
         },
 
 
@@ -456,6 +458,12 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
          */
         getPlayId:function () {
             return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id");
+        },
+        /**
+         * 获取当前betCode
+         */
+        getBetCode:function () {
+            return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code");
         },
 
 
@@ -499,7 +507,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             var _this = this;
             // 全局赔率变量
             var playPlId = this.getPlayPlId();   // 当前赔率ID
-            var betCode = this.getPlayId();   // 当前投注玩法
+            var betCode = this.getBetCode();   // 当前投注玩法
 
             if (playPlId.toString().indexOf('|') > 0) {    // 多赔率
                 var result = [];

@@ -2,6 +2,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
 
     return PlayWay.extend({
         _this: null,
+        //active_a:$("a.selected-btn.mui-col-xs-4.main.mui-active"),
         //筛选数字组合
         screeningDigtal: new Array(),
         init: function () {
@@ -37,7 +38,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         /**
          * 注数-定位胆 / 时时彩与11选5共用注数方法
          */
-        zhushu_dwd :function(){
+        zhushu_ssc_renxuan2_zxfs :function(){
             var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [], newArr = [];
             $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
                 wanArr.push($.trim($(this).html()));
@@ -85,7 +86,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         /**
          * 定位胆
          */
-        content_dwd : function(){
+        content_ssc_renxuan2_zxfs : function(){
             var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [];
             $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
                 wanArr.push($.trim($(this).html()));
