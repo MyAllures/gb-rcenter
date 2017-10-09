@@ -43,7 +43,7 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     return false;
                 }
                 var code = $(this).attr("code");
-                if(code.indexOf('ssc')>0){
+                if(code=='cqssc'||code=='tjssc'||code=='xjssc'){
                     $(".wfqh-btn").attr("style", "display:");
                     $("#gfwfqh").addClass("gfwfqh-wrap");
                     $("#jdwf").addClass("active");

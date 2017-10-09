@@ -1,28 +1,51 @@
-define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
-        gfwfPlJson : null,
         tmpBetContent:null,
+        gfwfPlJson : null,
         _this: null,
-        //筛选数字组合
-        screeningDigtal: new Array(),
         init: function () {
             _this = this;
             this._super();
             this.selectFun();
             this.bindEvent();
             this.getGfwfAllOdd();
+            this.isGfwf();
+        },
+
+        //传统,官方玩法切换
+        isGfwf: function () {
+            var _this = this;
+            mui("body").on("tap", "a#is-gfwf", function () {
+                var flag = $(this).attr("data-flag");
+                _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
+            });
+        },
+
+        getOdds: function () {
+            var url = root + '/' + this.type + '/' + this.code + '/getOdds.html';
+            var _this = this;
+            mui.ajax(url, {
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {
+                    $(".bet-table[data-subCode]").each(function () {
+                        var subCode = $(this).attr("data-subCode");
+                        var $tdBet = $(this).find("a[data-bet-num]");
+                        var $tds = $(this).find("td");
+                        oddsar = data[subCode];
+                    });
+                }
+            })
         },
 
         selectFun: function () {
             var _this = this;
-
             document.getElementById("show-t-gfwf").addEventListener('tap',function(){
                 document.getElementById("dingdan").classList.toggle('mui-active');
             });
 
             //直选复式
-            mui(".gfwf-playName")[0].addEventListener('tap',function(){
-
+            mui(".x_3.gfwf-playName")[0].addEventListener('tap',function(){
                 mui(".gfwf-wrap")[0].classList.toggle('Fixed');
             });
             mui(".gfwf-bg")[0].addEventListener('tap',function(){
@@ -32,18 +55,16 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
 
             //头部选择
             mui("div.s-menu").on('tap','a',function(){
-                // _this.resetBet();
                 $("a.selected-btn.mui-active").removeClass("mui-active");
                 this.classList.toggle('mui-active');
                 var dataCode=$("a.selected-btn.mui-active").attr("data-code");
-                _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+'&isGfwf=1');
-                if(dataCode=="ssc_yixing" || dataCode=="ssc_wuxing_zhixuan"){
+                var dataPlayId=$("a.selected-btn.mui-active").attr("data-play_id");
+                _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+'&isGfwf=1&playCode='+dataPlayId);
+                if(dataCode=="ssc_yixing" || dataCode=="ssc_wuxing_zhixuan" || dataCode=="ssc_sixing_zhixuan" ){
                     mui(".gfwf-wrap")[0].classList.remove('Fixed');
-                    $("a[data-code='zxfs']").addClass("mui-active");
                 }
                 _this.getOdds();
                 _this.getGfwfAllOdd();
-
             });
 
             //选择球
@@ -119,7 +140,7 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
                 this.classList.remove('mui-active');
                 $("div.newball-item-20 a").removeClass("mui-active");
                 mui(".btn-reset-gfwf")[0].classList.add('mui-active');
-                var randomName=$("a.selected-btn.mui-active").attr("data-fun_random");
+                var randomName=$("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-fun_random");
                 eval("_this."+randomName + "()");
                 _this.getZhuShu();
             });
@@ -135,12 +156,11 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
 
         //获取注数
         getZhuShu : function () {
-            var zhushuName = $("a.selected-btn.mui-active").attr("data-fun_zhushu");
+            var zhushuName = $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-fun_zhushu");
             var zhushu = eval("_this."+zhushuName + "()");
             $("#quantity").text(zhushu);
             $("#inputMoney").text(zhushu*2);//目前写死
         },
-
 
         bindEvent: function () {
             var _this=this;
@@ -166,8 +186,8 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
                 betForm.betOrders.push({
                     code: _this.code,//彩种
                     expect: $('font#expect').text(),//期号
-                    playCode: $("a.selected-btn.mui-active").attr("data-code"),//彩种玩法
-                    betCode:  $("a.selected-btn.mui-active").attr("data-play_id"),//投注玩法
+                    playCode: $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code"),//彩种玩法
+                    betCode:  $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id"),//投注玩法
                     betCount: $("#quantity").text(),//注数
                     betAmount: $("#betContent_totalMoney").text(),//下注总额。
                     betNum: _this.tmpBetContent,//下注号码
@@ -240,7 +260,6 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
             })
         },
 
-
         showBetTemplate:function() {
             var _this = this;
             var contentFun = _this.getPlayPlFun_content();    // 内容算法
@@ -257,7 +276,6 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
             var zhushu = eval("_this."+zhushuFun + "()");
 
 
-
             if(data == -1){
                 return;
             }
@@ -270,7 +288,7 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
             }
 
             var plAndMaxFd = _this.getPlAndMaxFd();   // 获取当前选中的玩法赔率和返点
-            var pljs = this.getPljs();   // 当前基数
+            /*var pljs = this.getPljs();   // 当前基数*/
             var maxPlayPl;  // 最高赔率
             var maxFandian;  // 最大返点
             var minPl;  // 最低赔率
@@ -296,14 +314,15 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
             }
 
             if (plAndMaxFd instanceof Array) {  // 多赔率
-                maxPlayPl = plAndMaxFd[0].oddLimit;  // 最高赔率
-                maxFandian = plAndMaxFd[0].rebateLimit*100;    // 最大返点
-                var pljsarr = pljs.split('|');
-                minPl = (plAndMaxFd[0].oddLimit-Number(pljsarr[0])*plAndMaxFd[0].rebateLimit).toFixed(3);   // 最低赔率
+                maxPlayPl = plAndMaxFd[0].odd;  // 最高赔率
+                maxFandian = plAndMaxFd[0].rebate*100;    // 最大返点
+                // var pljsarr = pljs.split('|');
+                // minPl = Math.floor((plAndMaxFd[0].odd-Number(plAndMaxFd[0].baseNum)*plAndMaxFd[0].rebate)*1000)/1000;   // 最低赔率
+                minPl = _this.getArgNum((plAndMaxFd[0].odd-Number(plAndMaxFd[0].baseNum)*plAndMaxFd[0].rebate)) // 最低赔率
             } else {
-                maxPlayPl = plAndMaxFd.oddLimit;  // 最高赔率
-                maxFandian = plAndMaxFd.rebateLimit*100;    // 最大返点
-                minPl = (plAndMaxFd.oddLimit-Number(pljs)*plAndMaxFd.rebateLimit).toFixed(3);   // 最低赔率
+                maxPlayPl = plAndMaxFd.odd;  // 最高赔率
+                maxFandian = plAndMaxFd.rebate*100;    // 最大返点
+                minPl =_this.getArgNum((plAndMaxFd.odd-Number(plAndMaxFd.baseNum)*plAndMaxFd.rebate));   // 最低赔率
             }
             convertBlMoney = (maxPlayPl - minPl) / maxFandian;  // 每1%转换赔率
 
@@ -372,7 +391,9 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
             });
 
 
-
+            // $("#ischange").change(function() {
+            //     alert("checked");
+            // });
 
             // 模式选择
             $(".mode_select").click(function() {
@@ -418,19 +439,19 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
          * 获取当前赔率内容算法
          */
         getPlayPlFun_content:function() {
-            return $("a.selected-btn.mui-active").attr("data-fun_content");
+            return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-fun_content");
         },
         /**
          * 获取当前赔率注数算法
          */
         getPlayPlFun_zhushu:function() {
-            return $("a.selected-btn.mui-active").attr("data-fun_zhushu");
+            return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-fun_zhushu");
         },
         /**
          * 获取当前玩法ID
          */
         getPlayId:function () {
-            return $("a.selected-btn.mui-active").attr("data-play_id");
+            return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id");
         },
 
 
@@ -438,7 +459,7 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
          * 获取当前赔率ID
          */
         getPlayPlId: function() {
-            return $("a.selected-btn.mui-active").attr("data-play_pl_id");
+            return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_pl_id");
         },
 
         /**
@@ -448,21 +469,21 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
             return $("#number").attr("data-number");
         },
 
-        //获取赔率基数,用于计算滑条最低奖金
+        /*//获取赔率基数,用于计算滑条最低奖金
         getPljs:function(){
-            return $("a.selected-btn.mui-active").attr("data-pljs");
-        },
+            return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-pljs");
+        },*/
 
         /**
          * 获取当前赔率ID2
          */
         getPlayPlId2 : function() {
             var arrTemp = null;
-            var indexStr = ($("a.selected-btn.mui-active").attr("data-play_pl_id")).toString();
+            var indexStr = ($("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_pl_id")).toString();
             if(indexStr.indexOf("|") > 0){
                 arrTemp = indexStr;
             }else {
-                arrTemp = $("a.selected-btn.mui-active").attr("data-play_pl_id");
+                arrTemp = $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_pl_id");
             }
             return arrTemp;
         },
@@ -507,7 +528,7 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
 
 
         // 渲染下注总额，奖金等等
-         renderZhushu : function() {
+        renderZhushu : function() {
             var money = $("#betContent_inputMoney").val();
             var beishu = $("#betContent_inputBeishu").val();
             var zhushu = parseInt($("#betContent_zhushu").html());
@@ -565,352 +586,17 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
             $("a.bottom-bar-btn.btn-reset-gfwf").removeClass("mui-active");
         },
 
-
-        /**************定位胆***************/
-        /**
-         * 注数-定位胆 / 时时彩与11选5共用注数方法
-         */
-        zhushu_dwd :function(){
-            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [], newArr = [];
-            $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
-                wanArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.qianweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
-                qianArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
-                baiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.shiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
-                shiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
-                geArr.push($.trim($(this).html()));
-            });
-            var wanLength = wanArr.length;
-            var qianLength = qianArr.length;
-            var baiLength = baiArr.length;
-            var shiLength = shiArr.length;
-            var geLength = geArr.length;
-
-            if (wanLength <= 0 && qianLength <= 0 && baiLength <= 0 && shiLength <= 0 && geLength <= 0) {
-                return 0;
-            }
-
-            if (wanLength > 0) {
-                newArr = newArr.concat(wanArr);
-            }
-            if (qianLength > 0) {
-                newArr = newArr.concat(qianArr);
-            }
-            if (baiLength > 0) {
-                newArr = newArr.concat(baiArr);
-            }
-            if (shiLength > 0) {
-                newArr = newArr.concat(shiArr);
-            }
-            if (geLength > 0) {
-                newArr = newArr.concat(geArr);
-            }
-            return newArr.length;
-        },
-
-        //定位胆机选
-        sscYixing_random : function () {
-            var random = parseInt(Math.random() * 10);
-            var wei = parseInt(Math.random() * 5);
-            if(wei == 0){
-                $("a.n-btn.wang").removeClass("mui-active");
-                $("a.n-btn.wang."+random).addClass("mui-active");
-            } else if(wei == 1){
-                $("a.n-btn.qian").removeClass("mui-active");
-                $("a.n-btn.qian."+random).addClass("mui-active");
-            } else if(wei == 2){
-                $("a.n-btn.bai").removeClass("mui-active");
-                $("a.n-btn.bai."+random).addClass("mui-active");
-            } else if(wei == 3){
-                $("a.n-btn.shi").removeClass("mui-active");
-                $("a.n-btn.shi."+random).addClass("mui-active");
-            } else if(wei == 4){
-                $("a.n-btn.ge").removeClass("mui-active");
-                $("a.n-btn.ge."+random).addClass("mui-active");
-            }
-        },
-
-        /**
-         * 定位胆
-         */
-        content_dwd : function(){
-            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [];
-            $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                wanArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.qianweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                qianArr.push($.trim($(this).html()));
-            });
-              $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                baiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.shiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                shiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                geArr.push($.trim($(this).html()));
-            });
-
-            var wanStr = wanArr.length > 0 ? wanArr.join(",") : "";
-            var qianStr = qianArr.length > 0 ? qianArr.join(",") : "";
-            var baiStr = baiArr.length > 0 ? baiArr.join(",") : "";
-            var shiStr = shiArr.length > 0 ? shiArr.join(",") : "";
-            var geStr = geArr.length > 0 ? geArr.join(",") : "";
-
-            return $.trim(
-                (wanStr == ' ' ? ' ' : wanStr ) + "|" +
-                (qianStr == ' ' ? ' ' : qianStr) + "|" +
-                (baiStr == ' ' ? ' ' : baiStr) + "|" +
-                (shiStr == ' ' ? ' ' : shiStr) + "|" +
-                (geStr == ' ' ? ' ' : geStr)
-            );
-        },
-
-
-        /**
-         * 随机算法-五星直选复式
-         */
-        random_5xzxfs : function() {
-            var random_1 = parseInt(Math.random() * 10);
-            var random_2 = parseInt(Math.random() * 10);
-            var random_3 = parseInt(Math.random() * 10);
-            var random_4 = parseInt(Math.random() * 10);
-            var random_5 = parseInt(Math.random() * 10);
-
-            $(".wangweisStr a.n-btn").removeClass("mui-active").eq(random_1).addClass("mui-active");
-            $(".qianweisStr a.n-btn").removeClass("mui-active").eq(random_2).addClass("mui-active");
-            $(".baiweisStr  a.n-btn").removeClass("mui-active").eq(random_3).addClass("mui-active");
-            $(".shiweisStr  a.n-btn").removeClass("mui-active").eq(random_4).addClass("mui-active");
-            $(".geweisStr   a.n-btn").removeClass("mui-active").eq(random_5).addClass("mui-active");
-        },
-
-        /***********五星直选复式*************/
-        /**
-         * 注数-5星直选复式
-         */
-         zhushu_5xzxfs : function() {
-            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [];
-            $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                wanArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.qianweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                qianArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                baiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.shiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                shiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                geArr.push($.trim($(this).html()));
-            });
-
-            var wanLength = wanArr.length;
-            var qianLength = qianArr.length;
-            var baiLength = baiArr.length;
-            var shiLength = shiArr.length;
-            var geLength = geArr.length;
-
-            if (wanLength <= 0 || qianLength <= 0 || baiLength <= 0 || shiLength <= 0 || geLength <= 0) {
-                return 0;
-            }
-
-            var newArr = _this.getNewArrs(wanArr, qianArr, baiArr, shiArr, geArr);
-            return newArr.length;
-        },
-
-
-        /**
-         * 五星直选复式
-         */
-         content_5xzxfs : function() {
-            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [];
-            $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                wanArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.qianweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                qianArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                baiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.shiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                shiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                geArr.push($.trim($(this).html()));
-            });
-
-            var wanLength = wanArr.length;
-            var qianLength = qianArr.length;
-            var baiLength = baiArr.length;
-            var shiLength = shiArr.length;
-            var geLength = geArr.length;
-
-            if (wanLength <= 0 || qianLength <= 0 || baiLength <= 0 || shiLength <= 0 || geLength <= 0) {
-                return 0;
-            }
-
-            return "{0}|{1}|{2}|{3}|{4}".format(
-                wanArr.join(","),
-                qianArr.join(","),
-                baiArr.join(","),
-                shiArr.join(","),
-                geArr.join(",")
-            );
-        },
-
-
-        /**
-         * 随机算法-4星直选复式
-         */
-         random_4xzxfs :function() {
-            var random_1 = parseInt(Math.random() * 10);
-            var random_2 = parseInt(Math.random() * 10);
-            var random_3 = parseInt(Math.random() * 10);
-            var random_4 = parseInt(Math.random() * 10);
-
-            $(".qianweisStr a.n-btn").removeClass("mui-active").eq(random_1).addClass("mui-active");
-            $(".baiweisStr  a.n-btn").removeClass("mui-active").eq(random_2).addClass("mui-active");
-            $(".shiweisStr  a.n-btn").removeClass("mui-active").eq(random_3).addClass("mui-active");
-            $(".geweisStr   a.n-btn").removeClass("mui-active").eq(random_4).addClass("mui-active");
-        },
-
-
-        /**
-         * 四星直选复式
-         */
-         content_4xzxfs :function() {
-            var qianArr = [], baiArr = [], shiArr = [], geArr = [];
-            $.each($("ul.qianweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                qianArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                baiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.shiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                shiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                geArr.push($.trim($(this).html()));
-            });
-
-            if(qianArr.length <= 0|| baiArr.length <= 0|| shiArr.length <= 0|| geArr.length <= 0){
-                return;
-            }
-
-            // 初始化变量
-            var showPlayName = '';
-            var showContent = '';
-            var betContent = '';
-
-            showPlayName = "四星直选-复式";
-            showContent = "千位：({0})，百位：({1})，十位：({2})，个位：({3})".format(
-                qianArr.join(","),
-                baiArr.join(","),
-                shiArr.join(","),
-                geArr.join(",")
-            );
-            betContent = _this.gfwf_4xfs(qianArr,baiArr,shiArr,geArr);
-            return betContent;
-        },
-
-        /***********四星直选复式*************/
-        /**
-         * 注数-4星直选复式
-         */
-         zhushu_4xzxfs : function() {
-            var qianArr = [], baiArr = [], shiArr = [], geArr = [];
-            $.each($("ul.qianweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                qianArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                baiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.shiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                shiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                geArr.push($.trim($(this).html()));
-            });
-
-            var qianLength = qianArr.length;
-            var baiLength = baiArr.length;
-            var shiLength = shiArr.length;
-            var geLength = geArr.length;
-
-            if (qianLength <= 0 || baiLength <= 0 || shiLength <= 0 || geLength <= 0) {
-                return 0;
-            }
-
-            var newArr = _this.getFourNewArrs(qianArr, baiArr, shiArr, geArr);
-
-            return newArr.length;
-        },
-
-         gfwf_4xfs :function(qianArr,baiArr,shiArr,geArr) {
-            var tmpStr_1 = qianArr.join(",");
-            var tmpStr_2 = baiArr.join(",");
-            var tmpStr_3 = shiArr.join(",");
-            var tmpStr_4 = geArr.join(",");
-
-            return "{0}|{1}|{2}|{3}".format(
-                tmpStr_1,
-                tmpStr_2,
-                tmpStr_3,
-                tmpStr_4
-            );
-        },
-
-        // 获取万、千、百、十、个，固定位数的个数所组成5位所有组合
-         getNewArrs : function(wanA, qianA, baiA, shiA, geA) {
-            var wArr = [], qArr = [], bArr = [], sArr = [], gArr = [];
-            wArr = wanA;
-            qArr = qianA;
-            bArr = baiA;
-            sArr = shiA;
-            gArr = geA;
-            var tempArr = [];
-            for (var w = 0; w < wArr.length; w++) {
-                for (var q = 0; q < qArr.length; q++) {
-                    for (var b = 0; b < bArr.length; b++) {
-                        for (var s = 0; s < sArr.length; s++) {
-                            for (var g = 0; g < gArr.length; g++) {
-                                tempArr.push(wArr[w] + "" + qArr[q] + "" + bArr[b] + "" + sArr[s] + "" + gArr[g]);
-                            }
-                        }
-                    }
+        //处理金额，截取三位小数。
+        getArgNum:function (num) {
+            var numstr = num + "";
+            if (numstr.indexOf(".")!=-1){
+                var xs = 3;
+                if(numstr.split(".")[1].length<3){
+                    xs = numstr.split(".")[1].length;
                 }
+                numstr = numstr.split(".")[0]+"."+numstr.split(".")[1].substring(0,xs);
             }
-            return tempArr;
-        },
-
-        // 获取千、百、十、个固定位数的个数所组成4位所有组合
-         getFourNewArrs :function(qianA, baiA, shiA, geA) {
-            var qArr = [], bArr = [], sArr = [], gArr = [];
-            qArr = qianA;
-            bArr = baiA;
-            sArr = shiA;
-            gArr = geA;
-            var tempArr = [];
-            for (var q = 0; q < qArr.length; q++) {
-                for (var b = 0; b < bArr.length; b++) {
-                    for (var s = 0; s < sArr.length; s++) {
-                        for (var g = 0; g < gArr.length; g++) {
-                            tempArr.push(qArr[q] + "" + bArr[b] + "" + sArr[s] + "" + gArr[g]);
-                        }
-                    }
-                }
-            }
-            return tempArr;
+            return Number(numstr);
         }
 
     });

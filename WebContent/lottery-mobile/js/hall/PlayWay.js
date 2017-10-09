@@ -263,6 +263,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          * 获取赔率
          */
         getOdds: function () {
+            // var betCode=this.betCode;
+            // if(betCode);
             var url = root + '/' + this.type + '/' + this.code + '/' + this.betCode + 'Odd.html';
             var _this = this;
             mui.ajax(url, {
@@ -315,14 +317,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 var dataCode = $(this).attr("data-code");
                 _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode);
             });
-            //gfwf跳转其他玩法页面
-            mui(this.formSelector).on("tap", "a.selected-btn.mui-col-xs-4[data-code]", function () {
-                var dataCode = $(this).attr("data-code");
-                _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+"&isGfwf=1");
-                // _this.getIndex();
-                // $("span.x_3.gfwf-playName").html($("a.selected-btn.mui-active").text());
-                // $("div.s-title span").html($("a.selected-btn.mui-active").text());
-            });
+
             //确认清空选项
             mui("body").on("tap", 'button#confirmClearPop', function () {
                 _this.closeClearPopup(true);
@@ -341,21 +336,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 _this.confirmOrder(betForm);
             });
         },
-
-
-
-        getIndex: function () {
-            var url = root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+"&isGfwf=1";
-            var _this = this;
-            mui.ajax(url, {
-                dataType: 'json',
-                type: 'get',
-                success: function (data) {
-
-                }
-            })
-        },
-
 
         /**
          * 确定下注
@@ -456,8 +436,9 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          */
         checkBetOrder: function () {
             var betAmount = $("input#inputMoney").val();
-            if (!betAmount || Number(betAmount) == 'NaN') {
-                this.toast("请输入正确的投注金额");
+            var g = /^[1-9]*[1-9][0-9]*$/;
+            if(!g.test(betAmount)){
+                this.toast("请输入正整数投注金额");
                 return false;
             }
             return true;
