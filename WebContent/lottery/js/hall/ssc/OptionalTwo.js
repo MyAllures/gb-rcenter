@@ -825,12 +825,6 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 var betCode = this.getPlayId()
                 if (betCode=='ssc_renxuan2_zxfs'){
                     betNum = betNum.replace(new RegExp(",","gm"),"");
-                }else if (betCode == 'ssc_renxuan2_zuxfs'){
-                    betNum = betNum.split("|")[1];
-                }else {
-                betNum = betNum.split("|")[1];
-                betNum = betNum.replace(new RegExp(",","gm"),"|");
-
                 }
             }
             return betNum;

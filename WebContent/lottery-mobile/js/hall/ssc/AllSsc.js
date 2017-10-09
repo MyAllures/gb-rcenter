@@ -6,7 +6,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         },
 
 
-
         showLastOpenCode: function (numArr) {
             var html = Template('template_lastOpenCode', {numArr: numArr, len: numArr.length});
             var sum = parseInt(numArr[0]) + parseInt(numArr[1]) + parseInt(numArr[2]) + parseInt(numArr[3]) + parseInt(numArr[4]);

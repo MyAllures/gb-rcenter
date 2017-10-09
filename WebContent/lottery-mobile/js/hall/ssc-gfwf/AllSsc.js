@@ -1,21 +1,45 @@
-define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
-        gfwfPlJson : null,
         tmpBetContent:null,
+        gfwfPlJson : null,
         _this: null,
-        //筛选数字组合
-        screeningDigtal: new Array(),
         init: function () {
             _this = this;
             this._super();
             this.selectFun();
             this.bindEvent();
             this.getGfwfAllOdd();
+            this.isGfwf();
+        },
+
+        //传统,官方玩法切换
+        isGfwf: function () {
+            var _this = this;
+            mui("body").on("tap", "a#is-gfwf", function () {
+                var flag = $(this).attr("data-flag");
+                _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
+            });
+        },
+
+        getOdds: function () {
+            var url = root + '/' + this.type + '/' + this.code + '/getOdds.html';
+            var _this = this;
+            mui.ajax(url, {
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {
+                    $(".bet-table[data-subCode]").each(function () {
+                        var subCode = $(this).attr("data-subCode");
+                        var $tdBet = $(this).find("a[data-bet-num]");
+                        var $tds = $(this).find("td");
+                        oddsar = data[subCode];
+                    });
+                }
+            })
         },
 
         selectFun: function () {
             var _this = this;
-
             document.getElementById("show-t-gfwf").addEventListener('tap',function(){
                 document.getElementById("dingdan").classList.toggle('mui-active');
             });
@@ -141,7 +165,6 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
             $("#inputMoney").text(zhushu*2);//目前写死
         },
 
-
         bindEvent: function () {
             var _this=this;
             mui("#betCodeDiv").on('tap', 'a', function () {
@@ -240,7 +263,6 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
             })
         },
 
-
         showBetTemplate:function() {
             var _this = this;
             var contentFun = _this.getPlayPlFun_content();    // 内容算法
@@ -255,7 +277,6 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
 
             var data = eval("_this."+contentFun + "()");
             var zhushu = eval("_this."+zhushuFun + "()");
-
 
 
             if(data == -1){
@@ -372,7 +393,9 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
             });
 
 
-
+            // $("#ischange").change(function() {
+            //     alert("checked");
+            // });
 
             // 模式选择
             $(".mode_select").click(function() {
@@ -507,7 +530,7 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
 
 
         // 渲染下注总额，奖金等等
-         renderZhushu : function() {
+        renderZhushu : function() {
             var money = $("#betContent_inputMoney").val();
             var beishu = $("#betContent_inputBeishu").val();
             var zhushu = parseInt($("#betContent_zhushu").html());
@@ -563,354 +586,6 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template','RangeSlider'], function 
             $("#inputMoney").text(0);
             $("a.bottom-bar-btn.btn-jixuan-gfwf").addClass("mui-active");
             $("a.bottom-bar-btn.btn-reset-gfwf").removeClass("mui-active");
-        },
-
-
-        /**************定位胆***************/
-        /**
-         * 注数-定位胆 / 时时彩与11选5共用注数方法
-         */
-        zhushu_dwd :function(){
-            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [], newArr = [];
-            $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
-                wanArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.qianweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
-                qianArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
-                baiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.shiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
-                shiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
-                geArr.push($.trim($(this).html()));
-            });
-            var wanLength = wanArr.length;
-            var qianLength = qianArr.length;
-            var baiLength = baiArr.length;
-            var shiLength = shiArr.length;
-            var geLength = geArr.length;
-
-            if (wanLength <= 0 && qianLength <= 0 && baiLength <= 0 && shiLength <= 0 && geLength <= 0) {
-                return 0;
-            }
-
-            if (wanLength > 0) {
-                newArr = newArr.concat(wanArr);
-            }
-            if (qianLength > 0) {
-                newArr = newArr.concat(qianArr);
-            }
-            if (baiLength > 0) {
-                newArr = newArr.concat(baiArr);
-            }
-            if (shiLength > 0) {
-                newArr = newArr.concat(shiArr);
-            }
-            if (geLength > 0) {
-                newArr = newArr.concat(geArr);
-            }
-            return newArr.length;
-        },
-
-        //定位胆机选
-        sscYixing_random : function () {
-            var random = parseInt(Math.random() * 10);
-            var wei = parseInt(Math.random() * 5);
-            if(wei == 0){
-                $("a.n-btn.wang").removeClass("mui-active");
-                $("a.n-btn.wang."+random).addClass("mui-active");
-            } else if(wei == 1){
-                $("a.n-btn.qian").removeClass("mui-active");
-                $("a.n-btn.qian."+random).addClass("mui-active");
-            } else if(wei == 2){
-                $("a.n-btn.bai").removeClass("mui-active");
-                $("a.n-btn.bai."+random).addClass("mui-active");
-            } else if(wei == 3){
-                $("a.n-btn.shi").removeClass("mui-active");
-                $("a.n-btn.shi."+random).addClass("mui-active");
-            } else if(wei == 4){
-                $("a.n-btn.ge").removeClass("mui-active");
-                $("a.n-btn.ge."+random).addClass("mui-active");
-            }
-        },
-
-        /**
-         * 定位胆
-         */
-        content_dwd : function(){
-            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [];
-            $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                wanArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.qianweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                qianArr.push($.trim($(this).html()));
-            });
-              $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                baiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.shiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                shiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                geArr.push($.trim($(this).html()));
-            });
-
-            var wanStr = wanArr.length > 0 ? wanArr.join(",") : "";
-            var qianStr = qianArr.length > 0 ? qianArr.join(",") : "";
-            var baiStr = baiArr.length > 0 ? baiArr.join(",") : "";
-            var shiStr = shiArr.length > 0 ? shiArr.join(",") : "";
-            var geStr = geArr.length > 0 ? geArr.join(",") : "";
-
-            return $.trim(
-                (wanStr == ' ' ? ' ' : wanStr ) + "|" +
-                (qianStr == ' ' ? ' ' : qianStr) + "|" +
-                (baiStr == ' ' ? ' ' : baiStr) + "|" +
-                (shiStr == ' ' ? ' ' : shiStr) + "|" +
-                (geStr == ' ' ? ' ' : geStr)
-            );
-        },
-
-
-        /**
-         * 随机算法-五星直选复式
-         */
-        random_5xzxfs : function() {
-            var random_1 = parseInt(Math.random() * 10);
-            var random_2 = parseInt(Math.random() * 10);
-            var random_3 = parseInt(Math.random() * 10);
-            var random_4 = parseInt(Math.random() * 10);
-            var random_5 = parseInt(Math.random() * 10);
-
-            $(".wangweisStr a.n-btn").removeClass("mui-active").eq(random_1).addClass("mui-active");
-            $(".qianweisStr a.n-btn").removeClass("mui-active").eq(random_2).addClass("mui-active");
-            $(".baiweisStr  a.n-btn").removeClass("mui-active").eq(random_3).addClass("mui-active");
-            $(".shiweisStr  a.n-btn").removeClass("mui-active").eq(random_4).addClass("mui-active");
-            $(".geweisStr   a.n-btn").removeClass("mui-active").eq(random_5).addClass("mui-active");
-        },
-
-        /***********五星直选复式*************/
-        /**
-         * 注数-5星直选复式
-         */
-         zhushu_5xzxfs : function() {
-            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [];
-            $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                wanArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.qianweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                qianArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                baiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.shiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                shiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                geArr.push($.trim($(this).html()));
-            });
-
-            var wanLength = wanArr.length;
-            var qianLength = qianArr.length;
-            var baiLength = baiArr.length;
-            var shiLength = shiArr.length;
-            var geLength = geArr.length;
-
-            if (wanLength <= 0 || qianLength <= 0 || baiLength <= 0 || shiLength <= 0 || geLength <= 0) {
-                return 0;
-            }
-
-            var newArr = _this.getNewArrs(wanArr, qianArr, baiArr, shiArr, geArr);
-            return newArr.length;
-        },
-
-
-        /**
-         * 五星直选复式
-         */
-         content_5xzxfs : function() {
-            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [];
-            $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                wanArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.qianweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                qianArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                baiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.shiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                shiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                geArr.push($.trim($(this).html()));
-            });
-
-            var wanLength = wanArr.length;
-            var qianLength = qianArr.length;
-            var baiLength = baiArr.length;
-            var shiLength = shiArr.length;
-            var geLength = geArr.length;
-
-            if (wanLength <= 0 || qianLength <= 0 || baiLength <= 0 || shiLength <= 0 || geLength <= 0) {
-                return 0;
-            }
-
-            return "{0}|{1}|{2}|{3}|{4}".format(
-                wanArr.join(","),
-                qianArr.join(","),
-                baiArr.join(","),
-                shiArr.join(","),
-                geArr.join(",")
-            );
-        },
-
-
-        /**
-         * 随机算法-4星直选复式
-         */
-         random_4xzxfs :function() {
-            var random_1 = parseInt(Math.random() * 10);
-            var random_2 = parseInt(Math.random() * 10);
-            var random_3 = parseInt(Math.random() * 10);
-            var random_4 = parseInt(Math.random() * 10);
-
-            $(".qianweisStr a.n-btn").removeClass("mui-active").eq(random_1).addClass("mui-active");
-            $(".baiweisStr  a.n-btn").removeClass("mui-active").eq(random_2).addClass("mui-active");
-            $(".shiweisStr  a.n-btn").removeClass("mui-active").eq(random_3).addClass("mui-active");
-            $(".geweisStr   a.n-btn").removeClass("mui-active").eq(random_4).addClass("mui-active");
-        },
-
-
-        /**
-         * 四星直选复式
-         */
-         content_4xzxfs :function() {
-            var qianArr = [], baiArr = [], shiArr = [], geArr = [];
-            $.each($("ul.qianweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                qianArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                baiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.shiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                shiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                geArr.push($.trim($(this).html()));
-            });
-
-            if(qianArr.length <= 0|| baiArr.length <= 0|| shiArr.length <= 0|| geArr.length <= 0){
-                return;
-            }
-
-            // 初始化变量
-            var showPlayName = '';
-            var showContent = '';
-            var betContent = '';
-
-            showPlayName = "四星直选-复式";
-            showContent = "千位：({0})，百位：({1})，十位：({2})，个位：({3})".format(
-                qianArr.join(","),
-                baiArr.join(","),
-                shiArr.join(","),
-                geArr.join(",")
-            );
-            betContent = _this.gfwf_4xfs(qianArr,baiArr,shiArr,geArr);
-            return betContent;
-        },
-
-        /***********四星直选复式*************/
-        /**
-         * 注数-4星直选复式
-         */
-         zhushu_4xzxfs : function() {
-            var qianArr = [], baiArr = [], shiArr = [], geArr = [];
-            $.each($("ul.qianweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                qianArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                baiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.shiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                shiArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                geArr.push($.trim($(this).html()));
-            });
-
-            var qianLength = qianArr.length;
-            var baiLength = baiArr.length;
-            var shiLength = shiArr.length;
-            var geLength = geArr.length;
-
-            if (qianLength <= 0 || baiLength <= 0 || shiLength <= 0 || geLength <= 0) {
-                return 0;
-            }
-
-            var newArr = _this.getFourNewArrs(qianArr, baiArr, shiArr, geArr);
-
-            return newArr.length;
-        },
-
-         gfwf_4xfs :function(qianArr,baiArr,shiArr,geArr) {
-            var tmpStr_1 = qianArr.join(",");
-            var tmpStr_2 = baiArr.join(",");
-            var tmpStr_3 = shiArr.join(",");
-            var tmpStr_4 = geArr.join(",");
-
-            return "{0}|{1}|{2}|{3}".format(
-                tmpStr_1,
-                tmpStr_2,
-                tmpStr_3,
-                tmpStr_4
-            );
-        },
-
-        // 获取万、千、百、十、个，固定位数的个数所组成5位所有组合
-         getNewArrs : function(wanA, qianA, baiA, shiA, geA) {
-            var wArr = [], qArr = [], bArr = [], sArr = [], gArr = [];
-            wArr = wanA;
-            qArr = qianA;
-            bArr = baiA;
-            sArr = shiA;
-            gArr = geA;
-            var tempArr = [];
-            for (var w = 0; w < wArr.length; w++) {
-                for (var q = 0; q < qArr.length; q++) {
-                    for (var b = 0; b < bArr.length; b++) {
-                        for (var s = 0; s < sArr.length; s++) {
-                            for (var g = 0; g < gArr.length; g++) {
-                                tempArr.push(wArr[w] + "" + qArr[q] + "" + bArr[b] + "" + sArr[s] + "" + gArr[g]);
-                            }
-                        }
-                    }
-                }
-            }
-            return tempArr;
-        },
-
-        // 获取千、百、十、个固定位数的个数所组成4位所有组合
-         getFourNewArrs :function(qianA, baiA, shiA, geA) {
-            var qArr = [], bArr = [], sArr = [], gArr = [];
-            qArr = qianA;
-            bArr = baiA;
-            sArr = shiA;
-            gArr = geA;
-            var tempArr = [];
-            for (var q = 0; q < qArr.length; q++) {
-                for (var b = 0; b < bArr.length; b++) {
-                    for (var s = 0; s < sArr.length; s++) {
-                        for (var g = 0; g < gArr.length; g++) {
-                            tempArr.push(qArr[q] + "" + bArr[b] + "" + sArr[s] + "" + gArr[g]);
-                        }
-                    }
-                }
-            }
-            return tempArr;
         }
 
     });
