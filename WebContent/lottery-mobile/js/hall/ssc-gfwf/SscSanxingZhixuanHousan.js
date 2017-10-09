@@ -181,8 +181,77 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         random_h3zxhz : function () {
             var random_1 = parseInt(Math.random() * 28);
             $("a.n-btn.hz").removeClass("mui-active").eq(random_1).addClass("mui-active");
-        }
+        },
 
+
+        /*========================================后3直选跨度===============================================*/
+        /**
+         * 随机算法-后三直选跨度
+         */
+        random_h3zxkd : function () {
+            var random_1 = parseInt(Math.random() * 10);
+            $("a.n-btn.kuadu").removeClass("mui-active").eq(random_1).addClass("mui-active");
+        },
+
+        /**
+         * 后三直选-跨度
+         */
+        content_h3zxkd : function () {
+            var kaDuArr = [];
+            $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
+                kaDuArr.push($.trim($(this).html()));
+            });
+            return kaDuArr.join(",");
+        },
+
+        /**
+         * 注数-直选跨度
+         */
+        zhushu_h3zxkd :function () {
+            var newArr = [];
+            var kaDuArr = [];
+            $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
+                kaDuArr.push($.trim($(this).html()));
+            });
+            if (kaDuArr.length <= 0) {
+                return 0;
+            }
+            newArr = _this.getKaduNewArrs(kaDuArr);
+            return newArr.length;
+        },
+
+
+        // 前三和后三直选-跨度所选跨度值所有组合
+        getKaduNewArrs :function (kDArr) {
+            var kaDuArr = [], tempArr1 = [], tempArr2 = [], tempArr3 = [];
+            var allArr = [];
+            for (var t = 0; t < 10; t++) {
+                tempArr1[t] = t;
+                tempArr2[t] = t;
+                tempArr3[t] = t;
+            }
+            var maxZhi = 0, minZhi = 0, tempZhi = 0;
+            kaDuArr = kDArr;
+            for (var i = 0; i < kaDuArr.length; i++) {
+                tempZhi = parseInt(kaDuArr[i]);
+                for (var n = 0; n < tempArr1.length; n++) {
+                    for (var n1 = 0; n1 < tempArr2.length; n1++) {
+                        for (var n2 = 0; n2 < tempArr3.length; n2++) {
+                            maxZhi = tempArr1[n] > tempArr2[n1] ? tempArr1[n] : tempArr2[n1];
+                            maxZhi= maxZhi > tempArr3[n2] ? maxZhi :tempArr3[n2];
+                            minZhi = tempArr1[n] < tempArr2[n1] ? tempArr1[n] : tempArr2[n1];
+                            minZhi= minZhi < tempArr3[n2] ? minZhi :tempArr3[n2];
+                            if ((maxZhi - minZhi) == tempZhi) {
+                                allArr.push(n + "" + n1 + "" + n2);
+                                maxZhi = 0;
+                                minZhi = 0;
+                            }
+                        }
+                    }
+                }
+            }
+            return allArr;
+        }
 
 
 
