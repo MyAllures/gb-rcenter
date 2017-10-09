@@ -198,7 +198,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     odd: $("#betContent_playPl").text(),//奖金
                     multiple: $("#betContent_inputBeishu").val(),//倍数
                     bonusModel: $("span.mode_select.selected").attr("data-value"),//元角分模式
-                    rebate: Number($("#betContent_fanli").attr("data-value"))/100+""//返点比例
+                    rebate: (Number($("#betContent_fanli").attr("data-value"))/100).toFixed(3)//返点比例
                 });
 
                 mui.ajax(root + '/' + _this.type + '/' + _this.code + '/saveBetOrder.html', {
@@ -356,7 +356,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
             var plSelName = '',  //赔率名称
                 plSelIndex = 0;  //获取赔率索引
-
+            _this.getPlayId()
             if ($.inArray(parseInt(_this.getPlayId()), [515, 534, 936, 914, 639, 625, 1013, 991, 730, 708, 859, 837]) >= 0) {
                 var l = $('.tshStr .wan_bottom .cus-flex-item span.active_gfwf').length;
                 if (l == 1) {
@@ -415,21 +415,20 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     $("#betContent_fanli").attr("data-value", fandianBili);
                     $("#betContent_fanli").html(fandianBili + "%");    // 渲染界面中百分比部分
 
-                    // 赔率 = 最大配率 - 返点比例 * 转换比例
-                    var pl = (maxPlayPl - fandianBili * convertBlMoney).toFixed(3);
-                    $("#betContent_playPl").attr("data-value", pl);
+
 
                     // 渲染界面中赔率部分
                     if (plAndMaxFd instanceof Array) {  // 多赔率
+                        var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd[0].baseNum));
+                        $("#betContent_playPl").attr("data-value", pl);
                         var strArr = [];
                         $.each(plAndMaxFd, function (index, value) {
-                            var valTemp = value.rebateLimit;
-                            var zxodd= value.oddLimit-Number(pljsarr[index])*(valTemp == 0 ? 1 : valTemp);
-                            var tmpConvertBlMoney = (value.oddLimit - zxodd) /((valTemp == 0 ? 1 : valTemp)*100);
-                            strArr.push((value.oddLimit - fandianBili * tmpConvertBlMoney).toFixed(3));
+                            strArr.push(_this.getArgNum((value.odd - fandianBili/100 * value.baseNum)));
                         });
                         $("#betContent_playPl").html(strArr.join('|'));
                     } else {
+                        var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd.baseNum));
+                        $("#betContent_playPl").attr("data-value", pl);
                         $("#betContent_playPl").html(pl);
                     }
                     // 渲染下注总额，奖金等等

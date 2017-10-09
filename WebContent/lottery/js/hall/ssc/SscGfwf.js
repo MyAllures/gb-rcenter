@@ -1637,7 +1637,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                         odd: $(this).attr("data-bet_play_pl"),//奖金
                         multiple: $(this).attr("data-bet_beishu"),//倍数
                         bonusModel: $(this).attr("data-bet_mode"),//元角分模式
-                        rebate: Number($(this).attr("data-bet_fandian"))/100//返点比例
+                        rebate: (Number($(this).attr("data-bet_fandian"))/100).toFixed(3)//返点比例
                     });
 
                     betForm.totalMoney += parseFloat($(this).attr("data-bet_total_money"));
