@@ -6,6 +6,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             this._super();
         },
 
+        /*================================后3直选复式===============================*/
         /**
          * 注数-后3直选复式
          */
@@ -100,7 +101,90 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 tmpStr_2,
                 tmpStr_3
             );
+        },
+
+
+
+
+        /*========================================后3直选和值===============================================*/
+
+        /**
+         * 注数-直选和值
+         */
+         zhushu_h3zxhz :function() {
+            var heZhiArr = [], newArr = [];
+            $.each($("a.n-btn.hz.mui-active"), function (index, value) {
+                heZhiArr.push($.trim($(this).html()));
+            });
+
+            var heZhiLength = heZhiArr.length;
+            if (heZhiLength <= 0) {
+                return 0;
+            }
+
+            newArr = _this.getHezNewArrs(heZhiArr);
+            return newArr.length;
+        },
+
+        /**
+         * 后三直选-和值
+         */
+         content_h3zxhz :function() {
+            var heZhiArr = [];
+            var zhushu = 0;
+            $.each($("a.n-btn.hz.mui-active"), function (index, value) {
+                heZhiArr.push($.trim($(this).html()));
+            });
+
+            return heZhiArr.join(",");
+        },
+
+
+        // 后三直选--获取所选号码分散为三位所有组合的和值
+        getHezNewArrs : function (hZArr) {
+        var heZhiArr = [], shuArr = [], tempArr = [];
+        var sumTemp = 0;
+        var num = 0; //当前号码
+        var fjHaoZuhe = []; //分解号组合
+
+        heZhiArr = hZArr;
+
+        //号码分解---所选号分解成所有组合的值等于此号的所有组合
+        for (var i = 0; i < heZhiArr.length; i++) {
+            var temp = [];
+            sumTemp = parseInt(heZhiArr[i]);
+            num = parseInt(heZhiArr[i]);
+            while (sumTemp >= 0) {
+                temp.push(sumTemp);
+                sumTemp--;
+            }
+
+            //所选号码分解至零，被分解出所有的号码三个为一组，所组成的所有组合的每一组值等于所选号的值的组合数
+            for (var n = 0; n < temp.length; n++) {
+                for(var m = 0; m < temp.length; m++){
+                    for(var mn = 0; mn < temp.length; mn++){
+                        if(temp[n] + temp[m] + temp[mn] == num && temp[mn] <= 9 && temp[m] <= 9 && temp[n] <= 9){
+                            fjHaoZuhe.push(temp[n] + "" + temp[m] + "" + temp[mn]);
+                        }
+                    }
+                }
+            }
+            tempArr = this.uniqueArr(fjHaoZuhe);
         }
+        return tempArr;
+        },
+
+
+        /**
+         * 随机算法-后三直选和值
+         */
+        random_h3zxhz : function () {
+            var random_1 = parseInt(Math.random() * 28);
+            $("a.n-btn.hz").removeClass("mui-active").eq(random_1).addClass("mui-active");
+        }
+
+
+
 
     });
 });
