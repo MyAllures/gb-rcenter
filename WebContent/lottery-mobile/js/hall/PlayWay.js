@@ -433,8 +433,9 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          */
         checkBetOrder: function () {
             var betAmount = $("input#inputMoney").val();
-            if (!betAmount || Number(betAmount) == 'NaN') {
-                this.toast("请输入正确的投注金额");
+            var g = /^[1-9]*[1-9][0-9]*$/;
+            if(!g.test(betAmount)){
+                this.toast("请输入正整数投注金额");
                 return false;
             }
             return true;
