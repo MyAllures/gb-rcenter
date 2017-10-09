@@ -251,7 +251,141 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 }
             }
             return allArr;
+        },
+
+
+        /*===============================后3组合==============================*/
+
+
+        /**
+         * 注数-后3组合
+         */
+        zhushu_h3zh:function () {
+            var baiArr = [], shiArr = [], geArr = [];
+            $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
+                baiArr.push($.trim($(this).html()));
+            });
+            $.each($("ul.shiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
+                shiArr.push($.trim($(this).html()));
+            });
+            $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
+                geArr.push($.trim($(this).html()));
+            });
+
+            var baiLength = baiArr.length;
+            var shiLength = shiArr.length;
+            var geLength = geArr.length;
+
+            if (baiLength <= 0 || shiLength <= 0 || geLength <= 0) {
+                return;
+            }
+
+            var newArr = _this.getHszhNewArrs(baiArr, shiArr, geArr);
+            return newArr.length;
+        },
+
+        // 获取百、十、个固定位数的个数所组成(后三直选--后三组合)
+        getHszhNewArrs :function (baiA, shiA, geA) {
+            var bArr = [], sArr = [], gArr = [];
+            bArr = baiA;
+            sArr = shiA;
+            gArr = geA;
+            var tempArr = [];
+            for (var b = 0; b < bArr.length; b++) {
+                for (var s = 0; s < sArr.length; s++) {
+                    for (var g = 0; g < gArr.length; g++) {
+                        tempArr.push(bArr[b] + "" + sArr[s] + "" + gArr[g]);
+                        tempArr.push(sArr[s] + "" + gArr[g]);
+                        tempArr.push(gArr[g]);
+                    }
+                }
+            }
+            return tempArr;
+        },
+
+
+        /**
+         * 后三直选-后三组合
+         */
+        content_h3zh :function () {
+            var baiArr = [], shiArr = [], geArr = [];
+            $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
+                baiArr.push($.trim($(this).html()));
+            });
+            $.each($("ul.shiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
+                shiArr.push($.trim($(this).html()));
+            });
+            $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
+                geArr.push($.trim($(this).html()));
+            });
+
+            return _this.gfwf_3xfs(
+                baiArr,
+                shiArr,
+                geArr
+            );
+        },
+
+        gfwf_3xfs :function (baiArr,shiArr,geArr) {
+            var tmpStr_1 = baiArr.join(",");
+            var tmpStr_2 = shiArr.join(",");
+            var tmpStr_3 = geArr.join(",");
+
+            return "{0}|{1}|{2}".format(
+                tmpStr_1,
+                tmpStr_2,
+                tmpStr_3
+            );
+        },
+
+        /**
+         * 随机算法-后三组合
+         */
+        random_h3zh :function () {
+            var random_1 = parseInt(Math.random() * 10);
+            var random_2 = parseInt(Math.random() * 10);
+            var random_3 = parseInt(Math.random() * 10);
+
+            $(".baiweisStr  a.n-btn").removeClass("mui-active").eq(random_1).addClass("mui-active");
+            $(".shiweisStr  a.n-btn").removeClass("mui-active").eq(random_2).addClass("mui-active");
+            $(".geweisStr  a.n-btn").removeClass("mui-active").eq(random_3).addClass("mui-active");
+        },
+
+        /*===============================组三复式=================================*/
+        /**
+         * 注数-组三复式
+         */
+        zhushu_h3z3fs :function (){
+            var fuShiArr = [], newArr = [];
+            $.each($(".z3fsStr .wan_bottom .cus-flex-item span.active_gfwf"), function (index, value) {
+                fuShiArr.push($.trim($(this).html()));
+            });
+
+            var heZhiLength = fuShiArr.length;
+            if (heZhiLength <= 1) {
+                return 0;
+            }
+            newArr = _this.getZuXuanNewArrs(fuShiArr);
+            return newArr.length;
+        },
+
+        // 后三组选-组三复式
+        getZuXuanNewArrs :function (zuXuanArr) {
+            var tempArr = [],zxArr = [];
+            zxArr = zuXuanArr;
+
+            for(var i = 0; i < zxArr.length - 1; i++){
+                for(var i1 = 1; i1 < zxArr.length; i1++){
+                    if(zxArr[i1] != zxArr[i]){
+                        tempArr.push(zxArr[i] + "" + zxArr[i1] + "" + zxArr[i1]);
+                        tempArr.push(zxArr[i1] + "" + zxArr[i] + "" + zxArr[i]);
+                    }
+                }
+            }
+            tempArr = _this.uniqueArr(tempArr);
+            return tempArr;
         }
+
 
 
 
