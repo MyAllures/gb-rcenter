@@ -45,8 +45,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             });
 
             //直选复式
-            mui(".gfwf-playName")[0].addEventListener('tap',function(){
-
+            mui(".x_3.gfwf-playName")[0].addEventListener('tap',function(){
                 mui(".gfwf-wrap")[0].classList.toggle('Fixed');
             });
             mui(".gfwf-bg")[0].addEventListener('tap',function(){
@@ -56,18 +55,20 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
             //头部选择
             mui("div.s-menu").on('tap','a',function(){
-                // _this.resetBet();
                 $("a.selected-btn.mui-active").removeClass("mui-active");
                 this.classList.toggle('mui-active');
                 var dataCode=$("a.selected-btn.mui-active").attr("data-code");
-                _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+'&isGfwf=1');
-                if(dataCode=="ssc_yixing" || dataCode=="ssc_wuxing_zhixuan"){
+                var dataPlayId="";
+                    $("a.selected-btn.main.mui-active").attr("data-play_id");
+                if($("a.selected-btn.main.mui-active").size()>0){
+                    dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
+                }
+                _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+'&isGfwf=1&playCode='+dataPlayId);
+                if(dataCode=="ssc_yixing" || dataCode=="ssc_wuxing_zhixuan" || dataCode=="ssc_sixing_zhixuan" ){
                     mui(".gfwf-wrap")[0].classList.remove('Fixed');
-                    $("a[data-code='zxfs']").addClass("mui-active");
                 }
                 _this.getOdds();
                 _this.getGfwfAllOdd();
-
             });
 
             //选择球
@@ -143,7 +144,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 this.classList.remove('mui-active');
                 $("div.newball-item-20 a").removeClass("mui-active");
                 mui(".btn-reset-gfwf")[0].classList.add('mui-active');
-                var randomName=$("a.selected-btn.mui-active").attr("data-fun_random");
+                var randomName=$("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-fun_random");
                 eval("_this."+randomName + "()");
                 _this.getZhuShu();
             });
@@ -159,7 +160,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
         //获取注数
         getZhuShu : function () {
-            var zhushuName = $("a.selected-btn.mui-active").attr("data-fun_zhushu");
+            var zhushuName = $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-fun_zhushu");
             var zhushu = eval("_this."+zhushuName + "()");
             $("#quantity").text(zhushu);
             $("#inputMoney").text(zhushu*2);//目前写死
@@ -189,8 +190,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 betForm.betOrders.push({
                     code: _this.code,//彩种
                     expect: $('font#expect').text(),//期号
-                    playCode: $("a.selected-btn.mui-active").attr("data-code"),//彩种玩法
-                    betCode:  $("a.selected-btn.mui-active").attr("data-play_id"),//投注玩法
+                    playCode: $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code"),//彩种玩法
+                    betCode:  $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id"),//投注玩法
                     betCount: $("#quantity").text(),//注数
                     betAmount: $("#betContent_totalMoney").text(),//下注总额。
                     betNum: _this.tmpBetContent,//下注号码
@@ -291,7 +292,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             }
 
             var plAndMaxFd = _this.getPlAndMaxFd();   // 获取当前选中的玩法赔率和返点
-            var pljs = this.getPljs();   // 当前基数
+            /*var pljs = this.getPljs();   // 当前基数*/
             var maxPlayPl;  // 最高赔率
             var maxFandian;  // 最大返点
             var minPl;  // 最低赔率
@@ -317,14 +318,15 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             }
 
             if (plAndMaxFd instanceof Array) {  // 多赔率
-                maxPlayPl = plAndMaxFd[0].oddLimit;  // 最高赔率
-                maxFandian = plAndMaxFd[0].rebateLimit*100;    // 最大返点
-                var pljsarr = pljs.split('|');
-                minPl = (plAndMaxFd[0].oddLimit-Number(pljsarr[0])*plAndMaxFd[0].rebateLimit).toFixed(3);   // 最低赔率
+                maxPlayPl = plAndMaxFd[0].odd;  // 最高赔率
+                maxFandian = plAndMaxFd[0].rebate*100;    // 最大返点
+                // var pljsarr = pljs.split('|');
+                // minPl = Math.floor((plAndMaxFd[0].odd-Number(plAndMaxFd[0].baseNum)*plAndMaxFd[0].rebate)*1000)/1000;   // 最低赔率
+                minPl = _this.getArgNum((plAndMaxFd[0].odd-Number(plAndMaxFd[0].baseNum)*plAndMaxFd[0].rebate)) // 最低赔率
             } else {
-                maxPlayPl = plAndMaxFd.oddLimit;  // 最高赔率
-                maxFandian = plAndMaxFd.rebateLimit*100;    // 最大返点
-                minPl = (plAndMaxFd.oddLimit-Number(pljs)*plAndMaxFd.rebateLimit).toFixed(3);   // 最低赔率
+                maxPlayPl = plAndMaxFd.odd;  // 最高赔率
+                maxFandian = plAndMaxFd.rebate*100;    // 最大返点
+                minPl =_this.getArgNum((plAndMaxFd.odd-Number(plAndMaxFd.baseNum)*plAndMaxFd.rebate));   // 最低赔率
             }
             convertBlMoney = (maxPlayPl - minPl) / maxFandian;  // 每1%转换赔率
 
@@ -441,19 +443,19 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
          * 获取当前赔率内容算法
          */
         getPlayPlFun_content:function() {
-            return $("a.selected-btn.mui-active").attr("data-fun_content");
+            return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-fun_content");
         },
         /**
          * 获取当前赔率注数算法
          */
         getPlayPlFun_zhushu:function() {
-            return $("a.selected-btn.mui-active").attr("data-fun_zhushu");
+            return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-fun_zhushu");
         },
         /**
          * 获取当前玩法ID
          */
         getPlayId:function () {
-            return $("a.selected-btn.mui-active").attr("data-play_id");
+            return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id");
         },
 
 
@@ -461,7 +463,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
          * 获取当前赔率ID
          */
         getPlayPlId: function() {
-            return $("a.selected-btn.mui-active").attr("data-play_pl_id");
+            return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_pl_id");
         },
 
         /**
@@ -471,21 +473,21 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             return $("#number").attr("data-number");
         },
 
-        //获取赔率基数,用于计算滑条最低奖金
+        /*//获取赔率基数,用于计算滑条最低奖金
         getPljs:function(){
-            return $("a.selected-btn.mui-active").attr("data-pljs");
-        },
+            return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-pljs");
+        },*/
 
         /**
          * 获取当前赔率ID2
          */
         getPlayPlId2 : function() {
             var arrTemp = null;
-            var indexStr = ($("a.selected-btn.mui-active").attr("data-play_pl_id")).toString();
+            var indexStr = ($("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_pl_id")).toString();
             if(indexStr.indexOf("|") > 0){
                 arrTemp = indexStr;
             }else {
-                arrTemp = $("a.selected-btn.mui-active").attr("data-play_pl_id");
+                arrTemp = $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_pl_id");
             }
             return arrTemp;
         },
@@ -586,6 +588,30 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             $("#inputMoney").text(0);
             $("a.bottom-bar-btn.btn-jixuan-gfwf").addClass("mui-active");
             $("a.bottom-bar-btn.btn-reset-gfwf").removeClass("mui-active");
+        },
+
+        //处理金额，截取三位小数。
+        getArgNum:function (num) {
+            var numstr = num + "";
+            if (numstr.indexOf(".")!=-1){
+                var xs = 3;
+                if(numstr.split(".")[1].length<3){
+                    xs = numstr.split(".")[1].length;
+                }
+                numstr = numstr.split(".")[0]+"."+numstr.split(".")[1].substring(0,xs);
+            }
+            return Number(numstr);
+        },
+        uniqueArr:function (obj) {
+            var temp = new Array();
+            obj.sort();
+            for(i = 0; i < obj.length; i++) {
+                if( obj[i] == obj[i+1]) {
+                    continue;
+                }
+                temp[temp.length]=obj[i];
+            }
+            return temp;
         }
 
     });
