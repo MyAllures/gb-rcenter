@@ -130,7 +130,6 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
          * 随机算法-任二直选复式
          */
         random_rx2zxfs : function() {
-
             var arrTemp = [];
             var wei_1 = 0;
             var wei_2 = 1;
@@ -150,23 +149,28 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             var random_5 = parseInt(Math.random() * 10);
 
             if(wei_1 == 0 || wei_2 == 0){
-                $(".wanweiStr .wan_bottom .xz").eq(random_1).removeClass("active_gfwf").addClass("active_gfwf");
+                $("a.n-btn.wang").removeClass("mui-active");
+                $("a.n-btn.wang."+random_1).addClass("mui-active");
             }
 
             if(wei_1 == 1 || wei_2 == 1){
-                $(".qianweiStr .wan_bottom .xz").eq(random_2).removeClass("active_gfwf").addClass("active_gfwf");
+                $("a.n-btn.qian").removeClass("mui-active");
+                $("a.n-btn.qian."+random_2).addClass("mui-active");
             }
 
             if(wei_1 == 2 || wei_2 == 2){
-                $(".baiweiStr .wan_bottom .xz").eq(random_3).removeClass("active_gfwf").addClass("active_gfwf");
+                $("a.n-btn.bai").removeClass("mui-active");
+                $("a.n-btn.bai."+random_3).addClass("mui-active");
             }
 
             if(wei_1 == 3 || wei_2 == 3){
-                $(".shiweiStr .wan_bottom .xz").eq(random_4).removeClass("active_gfwf").addClass("active_gfwf");
+                $("a.n-btn.shi").removeClass("mui-active");
+                $("a.n-btn.shi."+random_4).addClass("mui-active");
             }
 
             if(wei_1 == 4 || wei_2 == 4){
-                $(".geweiStr .wan_bottom .xz").eq(random_5).removeClass("active_gfwf").addClass("active_gfwf");
+                $("a.n-btn.ge").removeClass("mui-active");
+                $("a.n-btn.ge."+random_5).addClass("mui-active");
             }
 
         }
