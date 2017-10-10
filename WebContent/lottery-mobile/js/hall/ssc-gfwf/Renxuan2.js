@@ -2,6 +2,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
 
     return PlayWay.extend({
         _this: null,
+        //active_a:$("a.selected-btn.mui-col-xs-4.main.mui-active"),
         //筛选数字组合
         screeningDigtal: new Array(),
         init: function () {
@@ -37,8 +38,9 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         /**
          * 注数-定位胆 / 时时彩与11选5共用注数方法
          */
-        zhushu_dwd :function(){
-            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [], newArr = [];
+        zhushu_ssc_renxuan2_zxfs :function(){
+
+            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [], arrNew = [], tempArr = [];
             $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
                 wanArr.push($.trim($(this).html()));
             });
@@ -54,38 +56,44 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
                 geArr.push($.trim($(this).html()));
             });
-            var wanLength = wanArr.length;
-            var qianLength = qianArr.length;
-            var baiLength = baiArr.length;
-            var shiLength = shiArr.length;
-            var geLength = geArr.length;
 
-            if (wanLength <= 0 && qianLength <= 0 && baiLength <= 0 && shiLength <= 0 && geLength <= 0) {
+
+            if (wanArr.length > 0) {
+                arrNew.push(wanArr);
+            }
+            if (qianArr.length > 0) {
+                arrNew.push(qianArr);
+            }
+            if (baiArr.length > 0) {
+                arrNew.push(baiArr);
+            }
+            if (shiArr.length > 0) {
+                arrNew.push(shiArr);
+            }
+            if (geArr.length > 0) {
+                arrNew.push(geArr);
+            }
+
+            if (arrNew.length < 2) {
                 return 0;
             }
 
-            if (wanLength > 0) {
-                newArr = newArr.concat(wanArr);
+            for (var i = 0; i < arrNew.length; i++) {
+                for (var i1 = 0; i1 < arrNew[i].length; i1++) {
+                    for (var x = i + 1; x < arrNew.length; x++) {
+                        for (var n = 0; n < arrNew[x].length; n++) {
+                            tempArr.push(arrNew[i][i1] + "" + arrNew[x][n]);
+                        }
+                    }
+                }
             }
-            if (qianLength > 0) {
-                newArr = newArr.concat(qianArr);
-            }
-            if (baiLength > 0) {
-                newArr = newArr.concat(baiArr);
-            }
-            if (shiLength > 0) {
-                newArr = newArr.concat(shiArr);
-            }
-            if (geLength > 0) {
-                newArr = newArr.concat(geArr);
-            }
-            return newArr.length;
+            return tempArr.length;
         },
 
         /**
-         * 定位胆
+         * 直选复式
          */
-        content_dwd : function(){
+        content_ssc_renxuan2_zxfs : function(){
             var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [];
             $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
                 wanArr.push($.trim($(this).html()));

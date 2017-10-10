@@ -58,13 +58,18 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 $("a.selected-btn.mui-active").removeClass("mui-active");
                 this.classList.toggle('mui-active');
                 var dataCode=$("a.selected-btn.mui-active").attr("data-code");
-                var dataPlayId="";
-                    $("a.selected-btn.main.mui-active").attr("data-play_id");
+                var dataPlayId=$("a.selected-btn.mui-active").attr("data-play_id");
                 if($("a.selected-btn.main.mui-active").size()>0){
                     dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
+                    dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
                 }
-                _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+'&isGfwf=1&playCode='+dataPlayId);
-                if(dataCode=="ssc_yixing" || dataCode=="ssc_wuxing_zhixuan" || dataCode=="ssc_sixing_zhixuan" ){
+                /*if(dataCode !="ssc_sanxing_hs"){*/
+                    _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+'&isGfwf=1&playCode='+dataPlayId);
+                /*}
+                $("div.s-menu.xiabu").hide();
+                $("#"+dataCode).show();
+                $("a.selected-btn.mui-col-xs-4.main.one").addClass("mui-active");*/
+                if(dataCode=="ssc_yixing_dwd" || dataCode=="ssc_wuxing_zhixuan_fs" || dataCode=="ssc_sixing_zhixuan_fs" ){
                     mui(".gfwf-wrap")[0].classList.remove('Fixed');
                 }
                 _this.getOdds();
@@ -75,6 +80,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             mui(".screen-munber.gfwf").on('tap','a',function(){
                 this.classList.toggle('mui-active');
                 $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
+
                 _this.getZhuShu();
             });
             //清
@@ -190,8 +196,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 betForm.betOrders.push({
                     code: _this.code,//彩种
                     expect: $('font#expect').text(),//期号
-                    playCode: $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code"),//彩种玩法
-                    betCode:  $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id"),//投注玩法
+                    playCode: $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id"),//彩种玩法
+                    betCode:  $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code"),//投注玩法
                     betCount: $("#quantity").text(),//注数
                     betAmount: $("#betContent_totalMoney").text(),//下注总额。
                     betNum: _this.tmpBetContent,//下注号码
@@ -225,7 +231,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     complete: function () {
                         _this.hideLoading();
                     }
-                })
+                });
 
             });
 
@@ -300,8 +306,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
             var plSelName = '',  //赔率名称
                 plSelIndex = 0;  //获取赔率索引
-            _this.getPlayId()
-            if ($.inArray(parseInt(_this.getPlayId()), [515, 534, 936, 914, 639, 625, 1013, 991, 730, 708, 859, 837]) >= 0) {
+            if ($.inArray(parseInt(_this.getBetCode()), [515, 534, 936, 914, 639, 625, 1013, 991, 730, 708, 859, 837]) >= 0) {
                 var l = $('.tshStr .wan_bottom .cus-flex-item span.active_gfwf').length;
                 if (l == 1) {
                     $('.tshStr .wan_bottom .cus-flex-item').each(function () {
@@ -380,7 +385,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 }
             });
 
-
             // 单注金额变化
             $("#betContent_inputMoney").keyup(function() {
                 // 渲染下注总额，奖金等等
@@ -434,10 +438,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 $("#dingdan").html('');
                 $("#dingdan").removeClass('mui-active');
             });
+
         },
-
-
-
         /**
          * 获取当前赔率内容算法
          */
@@ -451,13 +453,11 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-fun_zhushu");
         },
         /**
-         * 获取当前玩法ID
+         * 获取当前betCode
          */
-        getPlayId:function () {
-            return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id");
+        getBetCode:function () {
+            return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code");
         },
-
-
         /**
          * 获取当前赔率ID
          */
@@ -498,7 +498,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             var _this = this;
             // 全局赔率变量
             var playPlId = this.getPlayPlId();   // 当前赔率ID
-            var betCode = this.getPlayId();   // 当前投注玩法
+            var betCode = this.getBetCode();   // 当前投注玩法
 
             if (playPlId.toString().indexOf('|') > 0) {    // 多赔率
                 var result = [];
