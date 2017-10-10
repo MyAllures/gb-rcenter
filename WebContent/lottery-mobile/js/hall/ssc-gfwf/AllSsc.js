@@ -435,9 +435,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             });
 
         },
-
-
-
         /**
          * 获取当前赔率内容算法
          */
@@ -456,8 +453,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         getBetCode:function () {
             return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code");
         },
-
-
         /**
          * 获取当前赔率ID
          */
