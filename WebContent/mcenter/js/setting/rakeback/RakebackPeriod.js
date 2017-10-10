@@ -130,6 +130,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
         },
         _showSelectedNextDay: function (times) {
             $('tbody td.allsel', this.formSelector).removeClass('allsel').addClass('current');
+            $('tbody td[id^=next]', this.formSelector).removeClass('current');
             var dayText = window.top.message.common.day;
             var countDay, monthEndDay = $('tbody td[id^=this]:last', this.formSelector).text();
             var c = $('[name=curPeriod]').val();
@@ -146,33 +147,33 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                 case '2':
                     $('tbody td.nextday', this.formSelector).removeClass('nextday');
                     if (c == 0) {
-                        $('tbody td[id$=15]', this.formSelector).addClass('allsel');
+                        $('tbody td[id$=this_15]', this.formSelector).addClass('allsel');
                     } else {
-                        $('tbody td[id$=15]', this.formSelector).addClass('nextday');
+                        $('tbody td[id$=this_30]', this.formSelector).addClass('nextday');
                     }
                     countDay = 15 + dayText + '、' + monthEndDay + dayText;
                     break;
                 case '3':
                     $('tbody td.nextday', this.formSelector).removeClass('nextday');
                     if (c == 0) {
-                        $('tbody td[id$=10]', this.formSelector).addClass('allsel');
-                        $('tbody td[id$=20]', this.formSelector).addClass('allsel');
+                        $('tbody td[id$=this_10]', this.formSelector).addClass('allsel');
+                        $('tbody td[id$=this_20]', this.formSelector).addClass('allsel');
                     } else {
-                        $('tbody td[id$=10]', this.formSelector).addClass('nextday');
-                        $('tbody td[id$=20]', this.formSelector).addClass('nextday');
+                        $('tbody td[id$=v10]', this.formSelector).addClass('nextday');
+                        $('tbody td[id$=v20]', this.formSelector).addClass('nextday');
                     }
                     countDay = 10 + dayText + '、' + 20 + dayText + '、' + monthEndDay + dayText;
                     break;
                 case '4':
                     $('tbody td.nextday', this.formSelector).removeClass('nextday');
                     if (c == 0) {
-                        $('tbody td[id$=_7]', this.formSelector).addClass('allsel');
-                        $('tbody td[id$=14]', this.formSelector).addClass('allsel');
-                        $('tbody td[id$=21]', this.formSelector).addClass('allsel');
+                        $('tbody td[id$=this_7]', this.formSelector).addClass('allsel');
+                        $('tbody td[id$=this_14]', this.formSelector).addClass('allsel');
+                        $('tbody td[id$=this_21]', this.formSelector).addClass('allsel');
                     } else {
-                        $('tbody td[id$=_7]', this.formSelector).addClass('nextday');
-                        $('tbody td[id$=14]', this.formSelector).addClass('nextday');
-                        $('tbody td[id$=21]', this.formSelector).addClass('nextday');
+                        $('tbody td[id$=this_7]', this.formSelector).addClass('nextday');
+                        $('tbody td[id$=this_14]', this.formSelector).addClass('nextday');
+                        $('tbody td[id$=this_21]', this.formSelector).addClass('nextday');
                     }
                     countDay = 7 + dayText + '、' + 14 + dayText + '、' + 21 + dayText + '、' + monthEndDay + dayText;
                     break;

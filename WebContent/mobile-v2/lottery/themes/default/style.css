@@ -608,6 +608,7 @@ a { color: #fa6200; }
 .promo-box-left,
 .promo-records-warp i,
 .promo-box-right { height: 83.5px; }
+a.btn-download {background-color: #fa6200; border-color: #fa6200;}
 
 /*我的调整*/
 
