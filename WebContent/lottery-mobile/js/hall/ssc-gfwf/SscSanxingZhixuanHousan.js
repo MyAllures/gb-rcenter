@@ -634,10 +634,84 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         random_h3zuxbd :function () {
             var random_1 = parseInt(Math.random() * 10);
             $("a.n-btn.kuadu").removeClass("mui-active").eq(random_1).addClass("mui-active");
+        },
+
+        /*============================和值尾数===================================*/
+        /**
+         * 注数-和值尾数
+         */
+        zhushu_h3hzws:function () {
+            var wsArr = [], newArr = [];
+            $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
+                wsArr.push($.trim($(this).html()));
+            });
+            var zlLength = wsArr.length;
+            if (zlLength < 0) {
+                return 0;
+            }
+            return zlLength;
+        },
+
+        /**
+         * 后三组选-后三和值尾数
+         */
+        content_h3hzws:function (){
+            var hzArr = [];
+            $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
+                hzArr.push($.trim($(this).html()));
+            });
+            return hzArr.join(",");
+        },
+
+
+        /**
+         * 随机算法-后三和值尾数
+         */
+        random_h3hzws :function () {
+            var random_1 = parseInt(Math.random() * 10);
+            $("a.n-btn.kuadu").removeClass("mui-active").eq(random_1).addClass("mui-active");
+        },
+
+
+        /*=====================================特殊号========================================*/
+        /**
+         * 注数-特殊号
+         */
+        zhushu_h3tsh :function () {
+            var tsArr = [];
+            $.each($("a.n-btn.teshu.mui-active"), function (index, value) {
+                tsArr.push($.trim($(this).html()));
+            });
+            var zlLength = tsArr.length;
+            if (zlLength <= 0) {
+                return 0;
+            }
+            return tsArr.length;
+        },
+
+
+        /**
+         * 后三组选-特殊号
+         */
+        content_h3tsh: function (){
+            var thArr = [];
+            $.each($("a.n-btn.teshu.mui-active"), function (index, value) {
+                thArr.push($.trim($(this).html()));
+            });
+            if (thArr.length <= 0) {
+                alert("至少选择1注号码才能投注");
+                return false;
+            }
+            return thArr.join(",");
+        },
+
+        /**
+         * 随机算法-后三特殊号
+         */
+        random_h3tsh :function () {
+            var random_1 = parseInt(Math.random() * 3);
+            $("a.n-btn.teshu").removeClass("mui-active").eq(random_1).addClass("mui-active");
         }
-
-
-
 
     });
 });

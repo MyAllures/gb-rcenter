@@ -150,7 +150,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 this.classList.remove('mui-active');
                 $("div.newball-item-20 a").removeClass("mui-active");
                 mui(".btn-reset-gfwf")[0].classList.add('mui-active');
-                var randomName=$("a.selected-btn.mui-active").attr("data-fun_random");
+                var randomName=$("a.selected-btn.main.mui-active").attr("data-fun_random");
                 eval("_this."+randomName + "()");
                 _this.getZhuShu();
             });
@@ -166,7 +166,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
         //获取注数
         getZhuShu : function () {
-            var zhushuName = $("a.selected-btn.mui-active").attr("data-fun_zhushu");
+            var zhushuName = $("a.selected-btn.main.mui-active").attr("data-fun_zhushu");
             var zhushu = eval("_this."+zhushuName + "()");
             $("#quantity").text(zhushu);
             $("#inputMoney").text(zhushu*2);//目前写死
@@ -306,21 +306,9 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
             var plSelName = '',  //赔率名称
                 plSelIndex = 0;  //获取赔率索引
-            if ($.inArray(parseInt(_this.getBetCode()), [515, 534, 936, 914, 639, 625, 1013, 991, 730, 708, 859, 837]) >= 0) {
-                var l = $('.tshStr .wan_bottom .cus-flex-item span.active_gfwf').length;
-                if (l == 1) {
-                    $('.tshStr .wan_bottom .cus-flex-item').each(function () {
-                        plSelName = $(this).parent().find(' span.active_gfwf').html();
-                    });
-                    if (plSelName == '豹子') {
-                        plSelIndex = 0;
-                    } else if (plSelName == '顺子') {
-                        plSelIndex = 1;
-                    } else if (plSelName == '对子') {
-                        plSelIndex = 2;
-                    }
-                }
-            }
+
+
+
 
             if (plAndMaxFd instanceof Array) {  // 多赔率
                 maxPlayPl = plAndMaxFd[0].odd;  // 最高赔率
@@ -616,7 +604,36 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             var odd = $("#betContent_playPl").text();
             if (odd.indexOf('|') > 0) {
                 var arrOdd=odd.split('|');
-                odd=arrOdd[0];
+                var betCode=_this.getBetCode();
+                if(betCode=="ssc_sanxing_zuxuan_qsts" || betCode=="ssc_sanxing_zuxuan_hsts"){
+                    var l = $("a.n-btn.teshu.mui-active").length;
+                    var teshuIndex;
+                    var teshuName;
+                    if (l == 1) {
+                        $("a.n-btn.teshu.mui-active").each(function () {
+                            teshuName = $(this).html();
+                        });
+                        if (teshuName == '豹子') {
+                            teshuIndex = 0;
+                        } else if (teshuName == '顺子') {
+                            teshuIndex = 1;
+                        } else if (teshuName == '对子') {
+                            teshuIndex = 2;
+                        }
+                    }else {
+                        teshuName = $("a.n-btn.teshu.mui-active").html();
+                        if (teshuName == '豹子') {
+                            teshuIndex = 0;
+                        } else if (teshuName == '顺子') {
+                            teshuIndex = 1;
+                        } else if (teshuName == '对子') {
+                            teshuIndex = 2;
+                        }
+                    }
+                    odd=arrOdd[teshuIndex];
+                }else{
+                    odd=arrOdd[0];
+                }
             }
             return odd;
         }
