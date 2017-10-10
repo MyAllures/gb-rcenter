@@ -1219,7 +1219,7 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .mui-popup .mui-popup-title{background:#fa6200;}
 .mui-popup-inner{background:#fff;}
 .mui-popup-button{font-size:14px;color:#3d4145;}
-.mui-popup-button.mui-popup-button-bold{color:#40AFFE;font-weight:100;}
+.mui-popup-button.mui-popup-button-bold{color:#40AFFE;font-weight:bold;}
 .mui-popup .layui-m-layercont p{/*text-align:left;*/padding:0 0.25rem;}
 .dialog-reminder-icon i{background-color: #fa6200;}
 

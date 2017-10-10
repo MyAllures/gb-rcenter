@@ -39,10 +39,39 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
 
             $("#searchDiv a").click(function (e) {
                 var code = $(this).attr("code");
+                if(code=='cqssc'||code=='tjssc'||code=='xjssc'){
+                    $(".wfqh-btn").attr("style", "display:");
+                    $("#gfwfqh").addClass("gfwfqh-wrap");
+                    $("#jdwf").addClass("active");
+                    $("#gfwf").removeClass("active");
+
+                }else {
+                    $(".wfqh-btn").attr("style", "display:none");
+                    $("#gfwfqh").removeClass("gfwfqh-wrap");
+                }
+
                 $(this).attr('class', 'label ssc-label ssc-active');
                 $(this).siblings().attr('class', 'label ssc-label');
                 $("#lot_two_menu").load(root + '/lottery/odds/' + code + '/Index.html');
             });
+
+            $(this.formSelector).on("click", "#wfqh-btn a", function () {
+               var $target = $("#searchDiv a.ssc-active");
+                var code = $target.attr("code");
+                $(this).siblings().removeClass('active');
+                $(this).addClass("active");
+                var i = $(this).attr('id');
+                if(i=='gfwf'&& code.indexOf('gf')<0){
+                    code+="gf";
+                }else if(code.indexOf('gf')>0){
+                    code = code.substr(0,(code.length-2));
+                }
+                $target.attr('class', 'label ssc-label ssc-active');
+                $target.siblings().attr('class', 'label ssc-label');
+                $("#lot_two_menu").load(root+'/lottery/odds/'+code+'/Index.html');
+            });
+
+
             if (!$("#searchDiv a").hasClass('ssc-active')) {
                 $("#searchDiv a").eq(0).trigger("click");
             }
