@@ -150,7 +150,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 this.classList.remove('mui-active');
                 $("div.newball-item-20 a").removeClass("mui-active");
                 mui(".btn-reset-gfwf")[0].classList.add('mui-active');
-                var randomName=$("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-fun_random");
+                var randomName=$("a.selected-btn.mui-active").attr("data-fun_random");
                 eval("_this."+randomName + "()");
                 _this.getZhuShu();
             });
@@ -166,7 +166,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
         //获取注数
         getZhuShu : function () {
-            var zhushuName = $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-fun_zhushu");
+            var zhushuName = $("a.selected-btn.mui-active").attr("data-fun_zhushu");
             var zhushu = eval("_this."+zhushuName + "()");
             $("#quantity").text(zhushu);
             $("#inputMoney").text(zhushu*2);//目前写死
