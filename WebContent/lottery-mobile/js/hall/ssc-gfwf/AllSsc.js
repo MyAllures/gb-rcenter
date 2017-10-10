@@ -75,6 +75,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             mui(".screen-munber.gfwf").on('tap','a',function(){
                 this.classList.toggle('mui-active');
                 $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
+
                 _this.getZhuShu();
             });
             //清
@@ -300,8 +301,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
             var plSelName = '',  //赔率名称
                 plSelIndex = 0;  //获取赔率索引
-            _this.getPlayId()
-            if ($.inArray(parseInt(_this.getPlayId()), [515, 534, 936, 914, 639, 625, 1013, 991, 730, 708, 859, 837]) >= 0) {
+            if ($.inArray(parseInt(_this.getBetCode()), [515, 534, 936, 914, 639, 625, 1013, 991, 730, 708, 859, 837]) >= 0) {
                 var l = $('.tshStr .wan_bottom .cus-flex-item span.active_gfwf').length;
                 if (l == 1) {
                     $('.tshStr .wan_bottom .cus-flex-item').each(function () {
@@ -449,12 +449,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
          */
         getPlayPlFun_zhushu:function() {
             return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-fun_zhushu");
-        },
-        /**
-         * 获取当前玩法ID
-         */
-        getPlayId:function () {
-            return $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id");
         },
         /**
          * 获取当前betCode
