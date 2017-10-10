@@ -58,12 +58,17 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 $("a.selected-btn.mui-active").removeClass("mui-active");
                 this.classList.toggle('mui-active');
                 var dataCode=$("a.selected-btn.mui-active").attr("data-code");
-                var dataPlayId="";
-                    $("a.selected-btn.main.mui-active").attr("data-play_id");
+                var dataPlayId=$("a.selected-btn.mui-active").attr("data-play_id");
                 if($("a.selected-btn.main.mui-active").size()>0){
                     dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
+                    dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
                 }
-                _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+'&isGfwf=1&playCode='+dataPlayId);
+                /*if(dataCode !="ssc_sanxing_hs"){*/
+                    _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+'&isGfwf=1&playCode='+dataPlayId);
+                /*}
+                $("div.s-menu.xiabu").hide();
+                $("#"+dataCode).show();
+                $("a.selected-btn.mui-col-xs-4.main.one").addClass("mui-active");*/
                 if(dataCode=="ssc_yixing_dwd" || dataCode=="ssc_wuxing_zhixuan_fs" || dataCode=="ssc_sixing_zhixuan_fs" ){
                     mui(".gfwf-wrap")[0].classList.remove('Fixed');
                 }

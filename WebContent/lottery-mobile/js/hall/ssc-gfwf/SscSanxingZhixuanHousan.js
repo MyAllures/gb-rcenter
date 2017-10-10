@@ -414,8 +414,164 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             }
             $("a.n-btn.kuadu").removeClass("mui-active").eq(arrTemp[0]).addClass("mui-active");
             $("a.n-btn.kuadu").eq(arrTemp[1]).addClass("mui-active");
-        }
+        },
 
+
+        /*=================================组6复式=====================================*/
+        /**
+         * 注数-组六复式
+         */
+        zhushu_h3z6fs:function (){
+                var fuShiArr = [], newArr = [];
+                $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
+                    fuShiArr.push($.trim($(this).html()));
+                });
+                var zlLength = fuShiArr.length;
+                if (zlLength < 3) {
+                    return 0;
+                }
+                newArr = _this.getZuLiuNewArrs(fuShiArr);
+                return newArr.length;
+        },
+
+        // 后三组选-组六复式
+        getZuLiuNewArrs : function (zuXuanArr) {
+            var tempArr = [], zxArr = [];
+            zxArr = zuXuanArr;
+            for (var i = 0; i < zxArr.length; i++) {
+                for (var i1 = 0; i1 < zxArr.length; i1++) {
+                    for (var i2 = 0; i2 < zxArr.length; i2++) {
+                        if (zxArr[i] != zxArr[i1] && zxArr[i1] != zxArr[i2] && zxArr[i] != zxArr[i2]) {
+                            var sortArr = [];
+                            sortArr.push(zxArr[i]);
+                            sortArr.push(zxArr[i1]);
+                            sortArr.push(zxArr[i2]);
+                            sortArr.sort();
+                            tempArr.push(sortArr.join(""));
+                        }
+                    }
+                }
+            }
+            tempArr = _this.uniqueArr(tempArr);
+            return tempArr;
+        },
+
+
+        /**
+         * 后三组选-组六复式
+         */
+        content_h3z6fs :function (){
+            var zuLiuArr = [];
+
+            $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
+                zuLiuArr.push($.trim($(this).html()));
+            });
+            return zuLiuArr.join(",");
+        },
+
+
+        /**
+         * 随机算法-后三组6复式
+         */
+        random_h3z6fs:function () {
+            var arrTemp = [];
+            while(arrTemp.length < 3){
+                var x1 = parseInt(Math.random() * 10);
+                var x2 = parseInt(Math.random() * 10);
+                var x3 = parseInt(Math.random() * 10);
+                if(x1 != x2 && x2 != x3 && x1 != x3){
+                    arrTemp.push(x1);
+                    arrTemp.push(x2);
+                    arrTemp.push(x3);
+                }
+            }
+            $("a.n-btn.kuadu").removeClass("mui-active").eq(arrTemp[0]).addClass("mui-active");
+            $("a.n-btn.kuadu").eq(arrTemp[1]).addClass("mui-active");
+            $("a.n-btn.kuadu").eq(arrTemp[2]).addClass("mui-active");
+        },
+
+
+        /*===================================后3组选和值=======================*/
+
+        /**
+         * 注数-组选和值
+         */
+        zhushu_h3zuxhz:function (){
+            var fuShiArr = [], newArr = [];
+            $.each($("a.n-btn.hezhi.mui-active"), function (index, value) {
+                fuShiArr.push($.trim($(this).html()));
+            });
+
+            var zlLength = fuShiArr.length;
+            if (zlLength <= 0) {
+                return 0;
+            }
+            newArr = _this.getZxhzNewArrs(fuShiArr);
+            return newArr.length;
+        },
+
+        // 后三组选-组选和值
+        getZxhzNewArrs :function (zuXuanArr) {
+            var heZhiArr = [], tempArr = [];
+            var sumTemp = 0;
+            var num = 0; //当前号码
+            var fjHaoZuhe = []; //分解号组合
+
+            heZhiArr = zuXuanArr;
+            //号码分解---所选号分解成所有组合的值等于此号的所有组合
+            for (var i = 0; i < heZhiArr.length; i++) {
+                var temp = [];
+                sumTemp = parseInt(heZhiArr[i]);
+                num = parseInt(heZhiArr[i]);
+                while (sumTemp >= 0) {
+                    temp.push(sumTemp);
+                    sumTemp--;
+                }
+
+                //获取所选号的组选三和组选六形态的所有组数（不包含豹子号、顺序不限）
+                for (var n = 0; n < temp.length; n++) {
+                    for(var m = 0; m < temp.length; m++){
+                        for(var mn = 0; mn < temp.length; mn++){
+                            if(temp[n] + temp[m] + temp[mn] == num && temp[mn] <= 9 && temp[m] <= 9 && temp[n] <= 9){
+                                if(temp[m] != temp[n] && temp[n] != temp[mn] && temp[mn] != temp[n]){
+                                    var sortArr = [];
+                                    sortArr.push(temp[n]);
+                                    sortArr.push(temp[m]);
+                                    sortArr.push(temp[mn]);
+                                    sortArr.sort();
+                                    fjHaoZuhe.push(sortArr.join(""));
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            tempArr = _this.uniqueArr(fjHaoZuhe);
+            return tempArr;
+        },
+
+
+        /**
+         * 后三组选-和值
+         */
+        content_h3zuxhz:function () {
+            var heZhiArr = [];
+            var zhushu = 0;
+            $.each($("a.n-btn.hezhi.mui-active"), function (index, value) {
+                heZhiArr.push($.trim($(this).html()));
+            });
+            return heZhiArr.join(",");
+        },
+
+        /**
+         * 随机算法-后三组选和值
+         */
+        random_h3zuxhz:function () {
+        var random_1 = (parseInt(Math.random() * 26) + 1);
+            $("a.n-btn.hezhi").removeClass("mui-active").eq(random_1).addClass("mui-active");
+        }
 
 
 
