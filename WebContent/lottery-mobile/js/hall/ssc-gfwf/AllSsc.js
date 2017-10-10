@@ -201,7 +201,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     betCount: $("#quantity").text(),//注数
                     betAmount: $("#betContent_totalMoney").text(),//下注总额。
                     betNum: _this.tmpBetContent,//下注号码
-                    odd: $("#betContent_playPl").text(),//奖金
+                    odd: /*$("#betContent_playPl").text()*/_this.getBetOddl(),//奖金
                     multiple: $("#betContent_inputBeishu").val(),//倍数
                     bonusModel: $("span.mode_select.selected").attr("data-value"),//元角分模式
                     rebate: (Number($("#betContent_fanli").attr("data-value"))/100).toFixed(3)//返点比例
@@ -343,7 +343,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             if (plAndMaxFd instanceof Array) {  // 多赔率
                 var strArr = [];
                 $.each(plAndMaxFd, function(index, value) {
-                    strArr.push(value.playPl.toFixed(3));
+                    strArr.push(value.odd.toFixed(3));
                 });
                 firstShowPl = strArr.join('|');
             }
@@ -611,6 +611,14 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 temp[temp.length]=obj[i];
             }
             return temp;
+        },
+        getBetOddl: function(){
+            var odd = $("#betContent_playPl").text();
+            if (odd.indexOf('|') > 0) {
+                var arrOdd=odd.split('|');
+                odd=arrOdd[0];
+            }
+            return odd;
         }
 
     });
