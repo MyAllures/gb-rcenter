@@ -76,16 +76,23 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                     $("[id*='bet-']").addClass("mui-hidden");
                     $("#bet-" + targetTab).removeClass("mui-hidden");
                     $("#au").removeClass("auto-active");
+                    _this.timeCode = targetTab;
+                    if (_this.bet[_this.timeCode] == null) {
+                        //初始化对象
+                        _this.bet[_this.timeCode] = {};
+                        _this.bet[_this.timeCode].pageNumber = 1;
+                    }
+                }else{
+                    if (_this.bet["auto"] == null) {
+                        //初始化对象
+                        _this.bet["auto"] = {};
+                        _this.bet["auto"].pageNumber = 1;
+                    }
                 }
 
                 //加载投注记录数据
                 //已经加载过的不再加载
-                _this.timeCode = targetTab;
-                if (_this.bet[_this.timeCode] == null) {
-                    //初始化对象
-                    _this.bet[_this.timeCode] = {};
-                    _this.bet[_this.timeCode].pageNumber = 1;
-                }
+
                 if (targetTab == 'yesterday' && !isLoadBet2) {
                     _this.getMyOrders(true);
                     isLoadBet2 = true;
@@ -93,8 +100,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                     _this.getMyOrders(true);
                     isLoadBet3 = true;
                 } else if (targetTab == 'auto') {
-                    _this.bet[_this.timeCode].endTime = $("#endTime").val();
-                    _this.bet[_this.timeCode].startTime = $("#startTime").val();
+                    _this.bet["auto"].endTime = $("#endTime").val();
+                    _this.bet["auto"].startTime = $("#startTime").val();
                 }
                 if (!(targetTab == "auto")) {
                     _this.setBetProfit();
@@ -135,7 +142,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                     _this.toast("请重新选择时间！")
                     return;
                 }
-
+                _this.timeCode = "auto";
                 _this.bet[_this.timeCode].endTime = et;
                 _this.bet[_this.timeCode].startTime = st;
                 _this.bet[_this.timeCode].pageNumber = 1;
@@ -305,26 +312,34 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         setBetProfit: function () {
             var betProfit = _this.bet[_this.timeCode].betProfit;
             if (!betProfit) betProfit = {};
-            //设置总盈亏
-            if (betProfit.profitloss && betProfit.profitloss != 0)
-                $('#profitloss').html(betProfit.profitloss.toFixed(2));
-            else
-                $('#profitloss').html(0);
+            var totalBetAmount =0.0;
+            var betamount =0.0;
             //设置总投注额
-            if (betProfit.betamount && betProfit.betamount != 0)
-                $('#betamount').html(betProfit.betamount.toFixed(2));
-            else
+            if (betProfit.betamount && betProfit.betamount != 0) {
+                $('#betamount').html(betProfit.betamount.toFixed(2))
+                totalBetAmount = betProfit.betamount.toFixed(2)
+            }else{
                 $('#betamount').html(0);
+            }
+            //设置总盈亏
+            if (betProfit.profitloss && betProfit.profitloss != 0) {
+                $('#profitloss').html((betProfit.profitloss-totalBetAmount).toFixed(2));
+            }else{
+                $('#profitloss').html(0);
+            }
             //设置当前投注额
-            if (betProfit.currentAmount && betProfit.currentAmount != 0)
-                $('#currentAmount').html(betProfit.currentAmount.toFixed(2));
-            else
+            if (betProfit.currentAmount && betProfit.currentAmount != 0){
+                $('#currentAmount').html(betProfit.currentAmount.toFixed(2))
+                betamount = betProfit.currentAmount.toFixed(2)
+            }else{
                 $('#currentAmount').html(0);
+            }
             //设置当前盈亏
-            if (betProfit.payout && betProfit.payout != 0)
-                $('#payout').html(betProfit.payout.toFixed(2));
-            else
+            if (betProfit.payout && betProfit.payout != 0){
+                $('#payout').html((betProfit.payout-betamount).toFixed(2));
+            } else{
                 $('#payout').html(0);
+            }
         }
     })
 
