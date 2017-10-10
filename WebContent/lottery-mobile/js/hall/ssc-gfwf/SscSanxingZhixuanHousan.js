@@ -702,7 +702,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 alert("至少选择1注号码才能投注");
                 return false;
             }
-            return thArr.join(",");
+            return thArr.join("|");
         },
 
         /**
