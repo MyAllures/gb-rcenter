@@ -571,7 +571,71 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         random_h3zuxhz:function () {
         var random_1 = (parseInt(Math.random() * 26) + 1);
             $("a.n-btn.hezhi").removeClass("mui-active").eq(random_1).addClass("mui-active");
+        },
+
+
+        /*===================================组选包胆=================================*/
+        /**
+         * 注数-组选包胆
+         */
+        zhushu_h3zuxbd : function (){
+            var baoDanArr = [], newArr = [];
+            $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
+                baoDanArr.push($.trim($(this).html()));
+            });
+            var zlLength = baoDanArr.length;
+            if (zlLength < 0) {
+                return 0;
+            }
+            newArr = _this.getZxbdNewArrs(baoDanArr);
+            return newArr.length;
+        },
+
+
+        // 后三组选-组选包胆
+        getZxbdNewArrs :function (zuXuanArr) {
+            var tempArr = [], bdArr = [];
+            bdArr = zuXuanArr;
+            for(var n = 0; n < bdArr.length; n++) {
+                for(var n1 = 0; n1 < 10; n1++){
+                    for(var n2 = 0; n2 < 10; n2++){
+                        if(bdArr[n] != n1 && bdArr != n2 && n1 != n2 || n1 == n2 && bdArr[n] != n2 || n2 == bdArr[n] && bdArr[n] != n1 || n1 == bdArr[n] && bdArr[n] != n2){
+                            var sortArr = [];
+                            sortArr.push(bdArr[n]);
+                            sortArr.push(n1);
+                            sortArr.push(n2);
+                            sortArr.sort();
+                            tempArr.push(sortArr.join(""));
+                        }
+                    }
+                }
+            }
+
+            tempArr =_this.uniqueArr(tempArr);
+            return tempArr;
+        },
+
+
+        /**
+         * 后三组选-组选包胆
+         */
+        content_h3zuxbd :function (){
+            var bdArr = [];
+            $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
+                bdArr.push($.trim($(this).html()));
+            });
+
+            return bdArr.join(",");
+        },
+
+        /**
+         * 随机算法-后三组选包胆
+         */
+        random_h3zuxbd :function () {
+            var random_1 = parseInt(Math.random() * 10);
+            $("a.n-btn.kuadu").removeClass("mui-active").eq(random_1).addClass("mui-active");
         }
+
 
 
 
