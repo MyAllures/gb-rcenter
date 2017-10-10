@@ -73,7 +73,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 data: {'currency': currency},
                 dataType: 'json',
                 success: function (data) {
-                    $(e.currentTarget).prev(".orange").text()
+                    $(e.currentTarget).prev(".orange").text(data.amount);
                 }
             })
         }
