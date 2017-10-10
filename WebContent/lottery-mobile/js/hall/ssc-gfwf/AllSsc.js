@@ -64,7 +64,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
                 }
                 _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode+'&isGfwf=1&playCode='+dataPlayId);
-                if(dataCode=="ssc_yixing" || dataCode=="ssc_wuxing_zhixuan" || dataCode=="ssc_sixing_zhixuan" ){
+                if(dataCode=="ssc_yixing_dwd" || dataCode=="ssc_wuxing_zhixuan_fs" || dataCode=="ssc_sixing_zhixuan_fs" ){
                     mui(".gfwf-wrap")[0].classList.remove('Fixed');
                 }
                 _this.getOdds();
