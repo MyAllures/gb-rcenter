@@ -129,7 +129,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         /**
          * 随机算法-任二直选复式
          */
-        random_rx2zxfs : function() {
+        random_ssc_renxuan2_zxfs : function() {
             var arrTemp = [];
             var wei_1 = 0;
             var wei_2 = 1;
