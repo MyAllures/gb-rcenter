@@ -1,5 +1,5 @@
 //模板页面
-define(['common/BaseEditPage'], function (BaseEditPage) {
+define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
 
     return BaseEditPage.extend({
         /**
@@ -20,8 +20,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     e.currentTarget = $("a[key=" + key + "]");
                     this.bankChannel(e);
                 }
-
-
             }
         },
         /**
@@ -35,6 +33,14 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
              * 控件的初始化
              */
             this._super();
+            $("[name='result.bankCode']", this.formSelector).chosen({
+                no_results_text: window.top.message.fund_auto['没有找到']
+            });
+            var _this = this;
+            $("[name='result.bankCode']", this.formSelector).chosen().change(function (item) {
+                var _e = {'key': $(item.target).val()};
+                _this.bankChannel(_e);
+            });
         },
         /**
          * 当前页面所有事件初始化函数
