@@ -124,6 +124,51 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 (shiStr == ' ' ? ' ' : shiStr) + "|" +
                 (geStr == ' ' ? ' ' : geStr)
             );
+        },
+
+        /**
+         * 随机算法-任二直选复式
+         */
+        random_rx2zxfs : function() {
+
+            var arrTemp = [];
+            var wei_1 = 0;
+            var wei_2 = 1;
+            while(arrTemp.length < 2){
+                wei_1 = parseInt(Math.random() * 5);
+                wei_2 = parseInt(Math.random() * 5);
+                if(wei_1 != wei_2){
+                    arrTemp.push(wei_1);
+                    arrTemp.push(wei_2);
+                }
+            }
+
+            var random_1 = parseInt(Math.random() * 10);
+            var random_2 = parseInt(Math.random() * 10);
+            var random_3 = parseInt(Math.random() * 10);
+            var random_4 = parseInt(Math.random() * 10);
+            var random_5 = parseInt(Math.random() * 10);
+
+            if(wei_1 == 0 || wei_2 == 0){
+                $(".wanweiStr .wan_bottom .xz").eq(random_1).removeClass("active_gfwf").addClass("active_gfwf");
+            }
+
+            if(wei_1 == 1 || wei_2 == 1){
+                $(".qianweiStr .wan_bottom .xz").eq(random_2).removeClass("active_gfwf").addClass("active_gfwf");
+            }
+
+            if(wei_1 == 2 || wei_2 == 2){
+                $(".baiweiStr .wan_bottom .xz").eq(random_3).removeClass("active_gfwf").addClass("active_gfwf");
+            }
+
+            if(wei_1 == 3 || wei_2 == 3){
+                $(".shiweiStr .wan_bottom .xz").eq(random_4).removeClass("active_gfwf").addClass("active_gfwf");
+            }
+
+            if(wei_1 == 4 || wei_2 == 4){
+                $(".geweiStr .wan_bottom .xz").eq(random_5).removeClass("active_gfwf").addClass("active_gfwf");
+            }
+
         }
 
     });
