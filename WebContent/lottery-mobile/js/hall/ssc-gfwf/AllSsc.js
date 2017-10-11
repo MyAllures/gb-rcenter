@@ -336,7 +336,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 firstShowPl = strArr.join('|');
             }
             //弹出订单
-            var content = Template('gfwf_template_order', {"quantity": Number($("#quantity").text()),"firstShowPl":firstShowPl,"totalMoney":Number($("#quantity").text())*2, "canWin": parseFloat((2 * maxPlayPl * 1).toFixed(3))});
+            var content = Template('gfwf_template_order', {"quantity": Number($("#quantity").text()),"firstShowPl":firstShowPl,"totalMoney":Number($("#quantity").text())*2, "canWin": parseFloat((2 * maxPlayPl * 1).toFixed(3)),"expect":$('font#expect').text()});
             $("#dingdan").html(content);
             $("#dingdan").addClass('mui-active');
 
