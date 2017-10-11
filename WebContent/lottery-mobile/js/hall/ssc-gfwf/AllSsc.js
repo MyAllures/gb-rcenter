@@ -526,11 +526,11 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             var playPl = parseFloat($("#betContent_playPl").attr("data-value"));
             var mode = parseInt($(".mode_select.selected").attr("data-value"));
             var tmpMode = 1;
-            if (mode == 0) {
+            if (mode == 1) {
                 tmpMode = 1;
-            } else if (mode == 1) {
+            } else if (mode == 10) {
                 tmpMode = 0.1;
-            } else if (mode == 2) {
+            } else if (mode == 100) {
                 tmpMode = 0.01;
             } else {
                 return;
