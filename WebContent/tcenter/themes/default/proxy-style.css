@@ -1628,3 +1628,15 @@ td {
 /*技术支援*/
 .support-btn a{display:block; z-index:1000; position: fixed;bottom:5px; right: 5px; width: 44px;height: 55px; border-radius:10px 10px 6px 6px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.55); background: url(../../images/support-img.gif) no-repeat;transition: all 0.3s;}
 .support-btn a:hover{background: url(../../images/support-img-hover.gif);}
+.h-line-a .right-btn-down{
+    border: 1px solid #b4b7bb!important;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.right-btn-down{width: inherit;}
+.form-group.h-line-a ul{text-align: left;}
+.form-group.h-line-a li{
+    display: inline-block;
+    margin-left: 10px;
+}
+.form-group.h-line-a ul li input{vertical-align: middle;}
