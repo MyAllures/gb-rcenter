@@ -4939,6 +4939,13 @@ span.api-icon.api-icon-4-22-2 {
     span.api-icon.api-icon-4-22 {
         background-position-y: -1140px;
     }
+    /*一指通彩票api*/
+    span.api-icon.api-icon-4-22-2 {
+        background-position-y:-2281px;
+    }
+    span.api-icon.api-icon-2-26 {
+         background-position-y: -2205px;
+    }
 }
 .no-promo {
     width: 100%;
