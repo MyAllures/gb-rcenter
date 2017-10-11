@@ -1106,6 +1106,13 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .wrap .cus_common .wan_bottom .cus-flex-item{width:20%}
 
 
+/*和值复选框*/
+.gfwf-fx-wrap{background: #fff;border-bottom: 1px solid #ddd;line-height: 40px; height: 40px;text-align: center;}
+.gfwf-fx-wrap .mui-input-row{display: inline-block;}
+.gfwf-fx-wrap .mui-checkbox.mui-left label,.gfwf-fx-wrap  .mui-radio.mui-left label { padding-right: 5px; padding-left: 30px;}
+.gfwf-fx-wrap .mui-checkbox input[type=checkbox],.gfwf-fx-wrap  .mui-radio input[type=radio]{ top: 5px;}
+.gfwf-fx-wrap .mui-checkbox.mui-left input[type=checkbox],.gfwf-fx-wrap  .mui-radio.mui-left input[type=radio] { left: 0;}
+.mui-checkbox input[type=checkbox]:checked:before, .mui-radio input[type=radio]:checked:before{color: #2489c5;}
 
 /*600w皮肤*/
 /*颜色调整*/
