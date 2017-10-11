@@ -1236,9 +1236,9 @@ define(['common/BaseEditPage', 'jqFileInput', 'UE.I18N.' + window.top.language, 
             var _this = this;
             var tr = $("#hidden_money_condition").find("tr:eq(0)").clone();
             var trlen = $("#money_condition").find("tr:gt(0)").length;
-            if(trlen>=10){
+            if(trlen>=30){
                 var msg = ""+window.top.message.operation_auto['最多添加N个梯度']+"";
-                msg =_this.formatStr(msg,10);
+                msg =_this.formatStr(msg,30);
                 page.showPopover(e,opt,"danger",msg,true);
                 return;
             }

@@ -13,6 +13,7 @@ define(['site/plugin/template'], function (Template) {
         onPageLoad: function () {
             this.getHeadInfo();
             this.refreshBalance();
+            this.betBack();
             if ($("#template_lotteryMenu").length > 0) {
                 mui.ajax(root + "/hall/getLottery.html", {
                     type: 'post',
@@ -175,6 +176,17 @@ define(['site/plugin/template'], function (Template) {
                 type: 'POST',
                 success: function (data) {
                     $('font#_balance').text('￥' + data);
+                }
+            })
+        },
+
+        betBack: function () {
+            var _this = this;
+            mui('header').on('tap', '.betBack', function () {
+                if (_this.tos === 'app_ios') {
+                    gotoIndex('/lottery/mainIndex.html');
+                } else {
+                    page.gotoUrl('/lottery/mainIndex.html');
                 }
             })
         }
