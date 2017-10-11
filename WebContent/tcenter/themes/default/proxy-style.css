@@ -1640,3 +1640,23 @@ td {
     margin-left: 10px;
 }
 .form-group.h-line-a ul li input{vertical-align: middle;}
+
+.show-demand-a{display: none;}
+.form-group.h-line-a ul{text-align: left;}
+.form-group.h-line-a li{
+    display: inline-block;
+    margin-left: 10px;
+}
+.form-group.h-line-a ul li input{vertical-align: middle;}
+.h-line-a .right-btn-down{
+    border: 1px solid #b4b7bb!important;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.h-line-a .table-desc-right-t-dropdown{height: 32px;}
+.template-menu>.search_btn{position: absolute;
+    width: 15%;
+    left: 38%;
+    z-index: 888;}
+.del-template{color:#333;}
+.input-group-addon .table-desc-right-t-dropdown span.fa{margin: 0 4px 0 -3px;}
