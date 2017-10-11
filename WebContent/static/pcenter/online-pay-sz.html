@@ -250,7 +250,7 @@ var environment = {
     <div class="deposit-info-warp  clearfix">
 <div class="titleline pull-left"><h2>数字货币存款</h2></div><a href="deposit-region.html" class="btn-gray btn btn-big pull-right">返回上一级</a></div>
 
- <div class="account-list account-info-warp">
+ <div class="account-list account-info-warp sc-warp">
       <div class="sc-left-warp"><img src="../../pcenter/images/scqk-btb.png"></div>
       <div class="sc-right-warp">
       	  <div class="st-r-tit">
@@ -258,14 +258,15 @@ var environment = {
       	  	  <span class="s-yue">
       	  	  	   <em>余额:</em>
       	  	  	   <i class="orange">999,999,999,999.00</i>
+      	  	  	   <i class="orange"><em class="t-load"></em></i>
       	  	  	   <i class="ico-ask refresh"></i>
-      	  	  	   <button type="button" class="btn btn-filter btn-outline btn-lg">兑换金额</button>
+      	  	  	   <button type="button" class="btn btn-filter btn-outline btn-lg" data-toggle="modal" data-target="#notice-list-1">兑换金额</button>
       	  	  </span>
       	  </div>
       	  <div class="st-r-gn">
       	  	  <div class="sao-ewm">
       	  	  	<span class="title">二维码</span>
-      	  	  	<span class="ewm-img"><img src="../../pcenter/images/ewm.png"></span>
+      	  	  	<span class="ewm-img"><img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chld=H&choe=UTF-8&chl=bitcoin:mjPoVnrP5YJtrMLb2jD1i638wy5TkV9Rm4"></span>
       	  	  </div>
       	  	  <div class="lzdz">
       	  	  	<span class="title">数字货币的地址 <button type="button" class="btn btn-filter btn-xs">复制</button></span>
@@ -275,8 +276,32 @@ var environment = {
       </div>
       </div>
   
-
-<div class="account-list account-info-warp">
+<div class="account-list account-info-warp sc-warp">
+      <div class="sc-left-warp"><img src="../../pcenter/images/scqk-btb.png"></div>
+      <div class="sc-right-warp">
+      	  <div class="st-r-tit">
+      	  	  <span class="s-title">比特币</span>
+      	  	  <span class="s-yue">
+      	  	  	   <em>余额:</em>
+      	  	  	   <i class="orange">999,999,999,999.00</i>
+      	  	  	   <i class="orange"><em class="t-load"></em></i>
+      	  	  	   <i class="ico-ask refresh"></i>
+      	  	  	   <button type="button" class="btn btn-filter btn-outline btn-lg" data-toggle="modal" data-target="#notice-list-1">兑换金额</button>
+      	  	  </span>
+      	  </div>
+      	  <div class="st-r-gn">
+      	  	  <div class="sao-ewm">
+      	  	  	<span class="title">二维码</span>
+      	  	  	<span class="ewm-img"><img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chld=H&choe=UTF-8&chl=bitcoin:mjPoVnrP5YJtrMLb2jD1i638wy5TkV9Rm4"></span>
+      	  	  </div>
+      	  	  <div class="lzdz">
+      	  	  	<span class="title">数字货币的地址 <button type="button" class="btn btn-filter btn-xs">复制</button></span>
+      	  	  	<textarea class="textarea" placeholder="">http://www.baidu.com?/=bl5rx </textarea>
+      	  	  </div>
+      	  </div>
+      </div>
+      </div>
+<div class="account-list account-info-warp sc-warp">
       <div class="sc-left-warp"><img src="../../pcenter/images/scqk-btb.png"></div>
       <div class="sc-right-warp">
       	  <div class="st-r-tit">
@@ -285,13 +310,13 @@ var environment = {
       	  	  	   <em>余额:</em>
       	  	  	   <i class="orange">999,999,999,999.00</i>
       	  	  	   <i class="ico-ask refresh"></i>
-      	  	  	   <button type="button" class="btn btn-filter btn-outline btn-lg">兑换金额</button>
+      	  	  	   <button type="button" class="btn btn-filter btn-outline btn-lg" data-toggle="modal" data-target="#notice-list-1">兑换金额</button>
       	  	  </span>
       	  </div>
       	  <div class="st-r-gn">
       	  	  <div class="sao-ewm">
       	  	  	<span class="title">二维码</span>
-      	  	  	<span class="ewm-img"><img src="../../pcenter/images/ewm.png"></span>
+      	  	  	<span class="ewm-img"><img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chld=H&choe=UTF-8&chl=bitcoin:mjPoVnrP5YJtrMLb2jD1i638wy5TkV9Rm4"></span>
       	  	  </div>
       	  	  <div class="lzdz">
       	  	  	<span class="title">数字货币的地址 <button type="button" class="btn btn-filter btn-xs">复制</button></span>
@@ -321,56 +346,43 @@ var environment = {
 </div>
 <!--弹窗1-->
 <div class="modal inmodal in" id="notice-list-1" tabindex="-1" role="dialog" aria-hidden="false" >
-    <div class="modal-dialog">
-        <div class="modal-content animated bounceInRight family">
-            <div class="modal-header">
-                <span class="filter">修改登录密码</span>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
-            </div>
-            <div class="modal-body">
-               <div class="form-group clearfix line-hi34 m-b-xxs">
-                  <label class="col-xs-3 al-right" for="inputEmail">当前密码：</label>
-                  <div class="col-xs-8 p-x">
-                    <input type="password" id="" placeholder="" class="input">
-                    <span class="tips green">
-                      <i class="mark successsmall"></i>
-                    </span>
-                    <div class="co-grayc2 m-t-xxs">忘记密码?</div>
-                  </div>
-                </div>
-                 <div class="form-group clearfix line-hi34 m-b-xxs">
-                  <label class="col-xs-3 al-right">新密码：</label>
-                  <div class="col-xs-8 p-x">
-                    <input type="password" id="" placeholder="" class="input">
-                    <span class="tips green">
-                      <i class="mark successsmall"></i>
-                    </span>
-                  </div>
-                </div>
-                <div class="form-group clearfix line-hi34 m-b-xxs">
-                  <label class="col-xs-3 al-right">密码强度：</label>
-                  <div class="col-xs-8 p-x controls">
-                    <em class="passafe passafegreen"></em>
-                    <em class="passafe"></em>
-                    <em class="passafe"></em>
-                  </div>
-                </div>
-                 <div class="form-group clearfix line-hi34 m-b-xxs">
-                  <label class="col-xs-3 al-right">确认密码：</label>
-                  <div class="col-xs-8 p-x">
-                    <input type="password" id="" placeholder="" class="input">
-                    <span class="tips green">
-                      <i class="mark successsmall"></i>
-                    </span>
-                  </div>
-                </div>
-                
+<div class="modal-dialog">
+<div class="modal-content animated bounceInRight family">
+<div class="modal-header">
+<span class="filter">兑换金额</span>
+<button type="button" class="close" data-dismiss="modal">
+  <span aria-hidden="true">×</span>
+  <span class="sr-only">关闭</span>
+</button>
 </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline btn-filter">修改</button>
+<div class="modal-body">
+
+
+            <div class="form-group clearfix line-hi34 m-t-sm">
+                        <label class="col-xs-3 al-right" for="inputEmail">兑换金额：</label>
+                        <div class="col-xs-8 p-x">
+                            ￥ <i class="orange">999,999,999,999.00</i>
+                        </div>
             </div>
-        </div>
-    </div>
+            <div class="form-group clearfix line-hi34 m-t-sm">
+                        <label class="col-xs-3 al-right" for="inputEmail">选择优惠：</label>
+                        <div class="col-xs-8 p-x">
+                            <select name="select" class="selectwidth">
+                                <option>请选择</option>
+                                <option>优惠10%</option>
+                                <option>优惠20%</option>
+                                <option>优惠30%</option>
+                            </select>
+                        </div>
+                    </div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-gray">取消</button>
+<button type="button" class="btn btn-filter" data-toggle="modal" data-target="#notice-list-2">确认</button>
+</div>
+</div>
+</div>
 </div>
 
 <!-- 弹窗2 -->
