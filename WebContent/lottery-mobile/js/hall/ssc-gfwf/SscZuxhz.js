@@ -155,7 +155,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
 
         random_ssc_renxuan2_zuxhz: function () {
 
-            var random_1 = parseInt(Math.random() * 19);
+            var random_1 = (parseInt(Math.random() * 17) + 1);
             $("a.n-btn.hz").removeClass("mui-active").eq(random_1).addClass("mui-active");
         }
     });
