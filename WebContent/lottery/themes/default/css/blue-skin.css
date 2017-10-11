@@ -366,6 +366,12 @@
     background: #f2f2f2;
 }
 /*玩法表格*/
+
+.lot-content {
+    padding: 0 10px 10px;
+    border: 1px solid #ccc;
+}
+
 .Single.wid1{
 	background: none;
 	margin-top: 0;
@@ -385,7 +391,7 @@
 }
 .lot-content .main-right{
 	padding-right:0;
-	width: 215px;
+	width: 195px;
 	margin-top: 42px;
 }
 .table-common table{
@@ -466,7 +472,7 @@
 
 /*玩法选择菜单*/
 .Single .layout .Playmethod{
-	border-bottom: 1px solid #e2e2e2;
+	border-bottom: 0;
     padding-left: 1px;
     margin-top: 10px;
     padding-bottom: 6px;
@@ -631,6 +637,7 @@
 /*我的投注*/
 
 .Betting {
+	width: 980px;
 	margin-left: 10px;
     border-radius: 0;
     background: #2866b5;
@@ -640,6 +647,7 @@
     margin-bottom: 40px;
 }
 .Betting .tabs {
+	width: 977px;
     margin-top: 1px;
     margin-left: 1px;
 }
@@ -650,7 +658,7 @@
 	margin-right: 1px;
 }
 .Betting .list_wrap {
-    width: 998px;
+    width: 978px;
     margin-left: 1px;
     margin-bottom: 1px;
 }
@@ -664,3 +672,106 @@
 	border-top-right-radius: 4px!important;
 	border-top-left-radius: 4px!important;
 }
+
+/*走势图*/
+.zs_list li{
+	background: linear-gradient(to bottom, rgb(255, 255, 255) 1%,rgb(236, 236, 236) 100%);
+	border: 1px solid #ccc;
+    border-radius: 4px;
+}
+/*开奖结果*/
+.Resultt {
+    background: none;
+    margin-top: 28px;
+    border-radius: 0;
+    position: relative;
+    display: table;
+    margin-bottom: 22px;
+    box-shadow: none;
+    width: 1000px;
+    border: 1px solid #ddd;
+    margin: 20px;
+}
+
+.Resultt .latyout {
+    background: #fff;
+    width: 98%;
+    margin-top: 10px;
+}
+.Resultt .latyout .tabs_ce {
+    height: 50px;
+    border-bottom: 1px solid #2161b3;
+    margin-top: 0px;
+    width: 100%;
+}
+.Resultt .latyout .Color_type{
+	margin-bottom: 0;
+	margin-top: 15px;
+}
+.Resultt .latyout .tabs_ce ul li.acti a {
+    color: #2161b3;
+    border-left: 1px solid #2161b3;
+    border-right: 1px solid #2161b3;
+    display: block;
+    z-index: 1;
+}
+.Resultt .latyout .tabs_ce ul li.acti {
+    border-top: 3px solid #2161b3;
+    color: #fa6200;
+}
+.Resultt .latyout .Color_type ul li.head {
+    background: #a9c1e0;
+}
+.Resultt .latyout .Color_type ul li.head span {
+    border-left: 1px solid #e2e2e2;
+    height: 45px;
+}
+.Resultt .latyout .Color_type ul li span{
+	margin-top: 0;
+}
+.Resultt .latyout .Color_type ul li span.sp1{
+	margin-left: 0!important;
+}
+.Resultt .latyout .Color_type ul li span.sp8 {
+    width: 55px;
+}
+.Resultt .latyout .Color_type ul li span i{
+	background: linear-gradient(to bottom, #ff925f 0%,#ea470b 100%);
+}
+.Color_type ul li span a.a1{
+	color: #fff;
+    background: linear-gradient(to bottom, #5b8ac7 0%,#2765b5 100%);
+    border-color: #2161b3;
+}
+
+/*新彩票球*/
+.new-ball-st .pl{
+	position: relative;
+}
+.new-ball-st .pl:before {
+    content: "";
+    width: 51%;
+    height: 25%;
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 24%;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.78) 0%,rgba(255, 115, 64, 0) 100%);
+}
+.new-ball-st .pl:after {
+    content: "";
+    width: 60%;
+    height: 25%;
+    display: block;
+    position: absolute;
+    bottom: 1px;
+    left: 20%;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%,rgba(56, 56, 56, 0.28) 100%);
+}
+.new-ball-st.bg-yellow:not(.lhc-num) .pl{
+	border: 1px solid #ec5c2b;
+    background: linear-gradient(to bottom, #ff925f 0%,#ea470b 100%);
+}
+
