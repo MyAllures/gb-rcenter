@@ -12,7 +12,6 @@ define(['site/plugin/template'], function (Template) {
         },
         onPageLoad: function () {
             this.getHeadInfo();
-            this.iosGoBack();
             this.refreshBalance();
             if ($("#template_lotteryMenu").length > 0) {
                 mui.ajax(root + "/hall/getLottery.html", {
@@ -58,7 +57,11 @@ define(['site/plugin/template'], function (Template) {
             });
 
             mui("body").on('tap', "button.user-login", function () {
-                page.gotoUrl(root + "/login/commonLogin.html");
+                var canvasRight = $('.mui-off-canvas-right').hasClass('mui-active');
+                if (canvasRight) {
+                    mui('.mui-off-canvas-right').offCanvas('close');
+                }
+                page.gotoUrl("/login/commonLogin.html");
             });
 
             this.gotoBet();
@@ -156,15 +159,6 @@ define(['site/plugin/template'], function (Template) {
                     page.gotoUrl(href);
                 }
             });
-        },
-
-        iosGoBack: function () {
-            if (isLotterySite == 'true' && this.tos === 'app_ios' && window.history.length === 1) {
-                $('header').on('tap', '.mui-action-back', function () {
-                    var target = $('input#_from').val();
-                    gotoTab((target === null || target === '') ? 0 : target);
-                })
-            }
         },
 
         refreshBalance: function () {

@@ -1276,6 +1276,7 @@ a.popup-screen-btn:visited{
 i.back {line-height: 2.3rem; color: #fff; font-size: 0.7rem; display: inline-block; position: absolute; top: 1px; left: 24px; width: 36px;}
 a.bet_menu {width:30px; height: 48px; background: url('../images/icon_more.png') center no-repeat; background-size: 20px; margin-right: -5px;}
 div.menu-popover {width: 120px;}
+._refresh {font-size: 1.2rem!important; font-weight: bold!important; padding-top: 12px!important;}
 
 /*走势图*/
 .middle-content.middle-content-bat.zst-content{bottom:0;}

@@ -201,11 +201,11 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
                 localStorage.setItem(page.apiObjKey, objKey);
             }
             if (page.os == 'ios') {
-                page.gotoUrl(root + '/login/commonLogin.html');
+                page.gotoUrl('/login/commonLogin.html');
             } else if (page.os == 'app_android') {
                 window.gamebox.gotoLogin('/index.html');
             } else {
-                page.gotoUrl(root + '/login/commonLogin.html');
+                page.gotoUrl('/login/commonLogin.html');
             }
         },
         apiLogin: function (obj) {
