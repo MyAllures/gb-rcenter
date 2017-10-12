@@ -3,6 +3,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         tmpBetContent:null,
         gfwfPlJson:null,
         _this: null,
+        code:null,
+        type:null,
         init: function () {
             _this = this;
             // this._super();
@@ -10,6 +12,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             this.bindEvent();
             this.isGfwf();
             this.getGfwfOdd();
+            code =$("#czCode").val();
+            type =$("#czType").val();
         },
 
         getGfwfOdd:function(){
@@ -31,7 +35,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             var _this = this;
             mui("body").on("tap", "a#is-gfwf", function () {
                 var flag = $(this).attr("data-flag");
-                _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
+                // _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
+                _this.gotoUrl(root + '/ssc/cqssc/index.html?betCode=&isGfwf='+flag);
             });
         },
 
@@ -165,7 +170,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     betOrders: []
                 };
                 betForm.betOrders.push({
-                    code: _this.code,//彩种
+                    code: $("#czCode").val(),//彩种
                     expect: $('font#expect').text(),//期号
                     playCode: $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id"),//彩种玩法
                     betCode:  $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code"),//投注玩法
