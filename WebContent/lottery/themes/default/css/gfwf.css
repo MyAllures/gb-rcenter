@@ -191,6 +191,19 @@
     width: 75px!important;
 }
 
+.Single .layout .Pick ul.dxds li .clear.qc-btn-w {
+    float: right;
+    width: 100px;
+    height: 43px;
+    background: url(../img/reico57-2.png);
+    text-align: center;
+}
+
+.Single .layout .Pick ul.dxds li .re-5x-i.qc-btn-w{
+    margin-right: 490px;
+    margin-top: 5px;
+}
+
 /*任选*/
 .selposition {
     width: 681px;
