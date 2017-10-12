@@ -49,15 +49,42 @@ define(['common/BaseListPage'], function (BaseListPage) {
             var genre = e.key;
             var code = $(e.currentTarget).parent().parent().parent().parent().find("input[name='code']").val();
             var id = $(e.currentTarget).parent().parent().parent().parent().find("input[name='id']").val();
+            var _e = {
+                currentTarget:$(e.currentTarget).parent().parent().parent(),
+                page:page
+            };
             window.top.topPage.ajax({
                 type:"post",
                 url:root+'/lottery/manage/changeLotteryGenre.html',
                 data:{'result.code':code,'result.genre':genre,'result.id':id},
                 error:function(data){
-                    alert("更新失败")
+                    _e.page.showPopover(_e, option, 'danger', '保存失败', true);
                 },
                 success:function (data) {
-                    alert("修改成功");
+                    _e.page.showPopover(_e, option, 'success', '保存成功', true);
+                }
+            })
+        },
+        updateSiteLotteryGenre: function (e) {
+            var genre = e.key;
+            var a = $("input[name='code']");
+            var code = $(e.currentTarget).parent().parent().parent().parent().find("input[name='code']").val();
+            var id = $(e.currentTarget).parent().parent().parent().parent().find("input[name='id']").val();
+            var siteId = $("#singleVal").val();
+            var _e = {
+                currentTarget:$(e.currentTarget).parent().parent().parent(),
+                page:page
+            };
+            var option = {};
+            window.top.topPage.ajax({
+                type:"post",
+                url:root+'/siteLottery/changeLotteryGenre.html',
+                data:{'result.genre':genre,'result.id':id,'result.siteId':siteId},
+                error:function(data){
+                    _e.page.showPopover(_e, option, 'danger', '保存失败', true);
+                },
+                success:function (data) {
+                    _e.page.showPopover(_e, option, 'success', '保存成功', true);
                 }
             })
         }

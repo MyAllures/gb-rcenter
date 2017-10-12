@@ -275,6 +275,65 @@ Array.prototype.uniqueArr = function () {
     }
     return temp;
 };
+//获取重复元素,无序
+Array.prototype.duplicateNewa = function () {
+    var tempArr = new Array();
+    var newarr = arrSort(this);
+    for(i = 0; i < newarr.length; i++) {
+        var aa = numSort(newarr[i]);
+        var bb = numSort(newarr[i+1]);
+        if( aa == bb) {
+            tempArr.push(aa);
+            continue;
+        }
+    }
+    return tempArr;
+};
+//去掉数组重复,无序
+Array.prototype.uniqueArra = function () {
+    var temp = new Array();
+    var newarr = arrSort(this);
+    for(i = 0; i < newarr.length; i++) {
+        var aa = numSort(newarr[i]);
+        var bb = numSort(newarr[i+1]);
+        if( aa == bb) {
+            continue;
+        }
+        temp[temp.length]=aa;
+    }
+    return temp;
+};
+//对数字字符串排序
+function  numSort(num) {
+    var newnum = "";
+    if (typeof(num) != "undefined") {
+        var tempArr = [];
+        for (j = 0; j < num.length; j++) {
+            tempArr.push(num[j]);
+        }
+        tempArr.sort();
+
+        for (k = 0; k < tempArr.length; k++) {
+            newnum = newnum + tempArr[k]
+        }
+    }else {
+        newnum = "undefined";
+    }
+    return newnum;
+}
+//数组的无序排序
+function  arrSort(num) {
+    var tempArr = [];
+    if (typeof(num) != "undefined") {
+        for (q = 0; q < num.length; q++) {
+            tempArr.push(numSort(num[q]));
+        }
+        tempArr.sort();
+    }else {
+        tempArr = "undefined";
+    }
+    return tempArr;
+}
 //查找数据中重复元素
 Array.prototype.duplicate=function() {
     var tmp = [];

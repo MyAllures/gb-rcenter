@@ -605,9 +605,10 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             }
 
             if (typeof data == 'undefined' || typeof zhushu == 'undefined' || zhushu <= 0) {
-                alert("号码选择不完整，请重新选择");
+                _this.alertmsg("号码选择不完整，请重新选择");
                 return;
             }
+            _this.delRrepet();
             if ($.inArray(this.getPlayId(), ["ssc_sanxing_zuxuan_qsts","ssc_sanxing_zuxuan_hsts"]) >= 0) {
                 var l = $('.cl-1015-tsh ul li span.acti_tsh').length;
                 if (l == 1) {
@@ -640,7 +641,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             //======函数获取=====
             obj.showPlayName = data.showPlayName;
             obj.showContent = data.showContent;
-            obj.betContent = data.betContent;
+            obj.betContent = _this.getBetNum(data.betContent);
             //======动态获取=====
             obj.betPerMoney = $("#inputMoney").data("money");
             obj.betZhushu = zhushu;
@@ -842,10 +843,11 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             });
         },
         //删除重复号码
-        delRrepet: function(obj) {
+        delRrepet: function() {
             var _this = this;
-            var xObj = $(obj).parent().parent().parent();
-            var textStr = $(xObj).find(".content_tex").val();
+            // var xObj = $(obj).parent().parent().parent();
+            // var textStr = $(xObj).find(".content_tex").val();
+            var textStr =$("div.content_jiang").find(".content_tex").val();
             var newArr = [], repeatArr = [], tempArr = [];
             textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
             var arr_new = textStr.split(",");
@@ -854,18 +856,22 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                     newArr.push(arr_new[i]);
                 }
             }
-
-            repeatArr = newArr.duplicateNew().uniqueArr();
-            tempArr = newArr.uniqueArr();
-
+            var playcode = _this.getPlayCode();
+            if (playcode == 'ssc_sanxing_zuxuan' || playcode =='ssc_erxing_zuxuan') {//一些需要无序去重的玩法
+                repeatArr = newArr.duplicateNewa().uniqueArra();
+                tempArr = newArr.uniqueArra();
+            }else{
+                repeatArr = newArr.duplicateNew().uniqueArr();
+                tempArr = newArr.uniqueArr();
+            }
             if (repeatArr.length <= 0) {
-                alert("无重复号码！");
+                // _this.alertmsg("无重复号码！");
             } else {
-                alert("已删除掉重复号: " + repeatArr.join(" "));
+                _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
                 $(".content_jiang .content_tex").val(tempArr.join(" "));
             }
             //重新计算注数
-            _this.renderZhushu();
+            // _this.renderZhushu();
         },
         // 数字批量选择算法
         selectFun_1: function(obj) {
@@ -1006,7 +1012,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 obj.showPlayName = data.showPlayName;
                 obj.showContent = data.showContent;
                 zhushu = (typeof data.betZhushu != 'undefined' || data.betZhushu > 1) ? data.betZhushu : zhushu;
-                obj.betContent = data.betContent;
+                obj.betContent = _this.getBetNum(data.betContent);
                 obj.betPlayGroupId = data.playGroupId;
                 //========动态获取=====
                 obj.betPerMoney = $("#inputMoney").data("money");
@@ -1630,8 +1636,8 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                         playCode: $(this).attr("data-bet_play_code"),//彩种玩法
                         betCode: $(this).attr("data-bet_play_id"),//投注玩法
                         betCount: $(this).attr("data-bet_zhushu"),//注数
-                        betAmount: $(this).data("bet_total_money"),//单注金额
-                        betNum: _this.getBetNum($(this)),//下注号码
+                        betAmount: $(this).attr("data-bet_total_money"),//单注金额
+                        betNum: $(this).attr("data-bet_content"),//下注号码
                         odd: $(this).attr("data-bet_play_pl"),//奖金
                         multiple: $(this).attr("data-bet_beishu"),//倍数
                         bonusModel: $(this).attr("data-bet_mode"),//元角分模式
@@ -1745,7 +1751,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
         ajaxSubmit: function() {
             var _this = this;
             if (typeof(FileReader) == "undefined") {
-                alert("你的浏览器不支持文件读取");
+                _this.alertmsg("你的浏览器不支持文件读取");
                 return;
             }
             var file = document.getElementById("file").files[0];
@@ -2142,8 +2148,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             return $(".playPlIdBtn.acti").attr("data-pljs");
         },
         //获取下注号码
-        getBetNum:function(obj) {
-            var betNum = obj.attr("data-bet_content");
+        getBetNum:function(betNum) {
             if (betNum.toString().indexOf('|') < 0) {
                 betNum = betNum.replace(new RegExp(",","gm"),"|");
             }
@@ -2178,6 +2183,13 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 numstr = numstr.split(".")[0]+"."+numstr.split(".")[1].substring(0,xs);
             }
             return Number(numstr);
+        },
+        alertmsg : function(context){
+            layer.alert(context, {
+                title: '温馨提示',
+                skin: 'layui-layer-popup layui-layer-rim', //加上边框
+                area: ['300px', '150px'], //宽高
+            });
         }
     })
 });
