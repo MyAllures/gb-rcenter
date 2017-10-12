@@ -506,7 +506,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
         },
 
         /**
-         * 获取当前玩法ID
+         * 获取当前投注玩法：betCode
          */
         getPlayId: function() {
             return $(".playPlIdBtn.acti").attr("data-play_id");
@@ -573,14 +573,12 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             $('.slider-input').jRange("setValue", '0');
         },
         getMode: function(mode) {
-            if (mode == 0) {    // 元
+            if (mode == 1) {    // 元
                 return 1;
-            } else if (mode == 1) { // 角
+            } else if (mode == 10) { // 角
                 return 0.1;
-            } else if (mode == 2) { // 分
+            } else if (mode == 100) { // 分
                 return 0.01;
-            } else if (mode == 3) { // 厘
-                return 0.001;
             }
             return;
         },
@@ -697,11 +695,11 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
         getSelectMode: function() {
             var mode = $(".yjf-wrap span.selected").text();
             if (mode == '元') {
-                return 0;
-            } else if (mode == '角') {
                 return 1;
+            } else if (mode == '角') {
+                return 10;
             } else if (mode == '分') {
-                return 2;
+                return 100;
             }
             return;
         },
@@ -811,7 +809,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                  <tr>\
                      <td>\
                         <h4>\
-                              <span class="txtinfo">请选择你要载入的文件</span>\
+                              <span class="txtinfo">请选择你要载入的文件(只支持txt文件)</span>\
                         </h4>\
                         <h4 class="txt-select">\
                               <input type="file" id="file" name="file" size="30" value="未选择任何文件">\
@@ -1157,7 +1155,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             return zhTotelMoney.toFixed(2);
         },
         //计算购买追号同倍总金额
-        getTbTotelMoney: function(){
+            getTbTotelMoney: function(){
             var _this = this;
             var totelMoney = 0;
             var tempMoney = 0;
@@ -1719,9 +1717,9 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
 
                 if(model == 1){
                     modelStr = '元';
-                } else if(model == 2){
+                } else if(model == 10){
                     modelStr = '角';
-                } else if(model == 3){
+                } else if(model == 100){
                     modelStr = '分';
                 }
 

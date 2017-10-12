@@ -1263,7 +1263,7 @@ i.bg-1,i.bg-2,i.bg-3,i.bg-4,i.bg-5,i.bg-6,i.bg-7,i.bg-8,i.bg-9,i.bg-10{border-ra
 .Newest .Analysis .box2 ul li .box_num{float: left;width: 128px;margin-left:2px;}
 .Newest .Analysis .box2 ul li .box_num p{font-size: 12px;color: #00a0e9;margin-bottom: 4px;}
 .Newest .Analysis .box2 ul li .box_num i{width: 19px;height: 19px;background:url(../img/ico_19.png) center center;-webkit-border-radius: 50%;-moz-border-radius: 50%;border-radius: 50%;color: #fff;text-align: center;line-height: 19px;display: inline-block;overflow: hidden;}
-.Newest .Analysis .box2 ul li .box_num i.s0{ background-image:url(../img/ico_45.png);}
+.Newest .Analysis .box2 ul li .box_num i.s0{background-image:url(../img/ico_45.png);}
 .Newest .Analysis .box2 ul li .box_num i.s1{background-image:url(../img/ico_45_01.png);}
 .Newest .Analysis .box2 ul li .box_num i.s2{background-image:url(../img/ico_45_02.png);}
 .Newest .Analysis .box2 ul li .calc{float: left;margin-top: 8px;}
@@ -2110,4 +2110,10 @@ i.bg-1,i.bg-2,i.bg-3,i.bg-4,i.bg-5,i.bg-6,i.bg-7,i.bg-8,i.bg-9,i.bg-10{border-ra
     font-size: 22px;
     color: #848484;
     padding-top: 10px;
+}
+
+/*投注弹窗调整*/
+.layui-layer-dialog .layui-layer-content p span{
+	display: inline-block;
+	font-size: 13px;
 }

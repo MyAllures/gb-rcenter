@@ -11,32 +11,9 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
 
         },
 
-        //定位胆机选
-        sscYixing_random : function () {
-            var random = parseInt(Math.random() * 10);
-            var wei = parseInt(Math.random() * 5);
-            if(wei == 0){
-                $("a.n-btn.wang").removeClass("mui-active");
-                $("a.n-btn.wang."+random).addClass("mui-active");
-            } else if(wei == 1){
-                $("a.n-btn.qian").removeClass("mui-active");
-                $("a.n-btn.qian."+random).addClass("mui-active");
-            } else if(wei == 2){
-                $("a.n-btn.bai").removeClass("mui-active");
-                $("a.n-btn.bai."+random).addClass("mui-active");
-            } else if(wei == 3){
-                $("a.n-btn.shi").removeClass("mui-active");
-                $("a.n-btn.shi."+random).addClass("mui-active");
-            } else if(wei == 4){
-                $("a.n-btn.ge").removeClass("mui-active");
-                $("a.n-btn.ge."+random).addClass("mui-active");
-            }
-        },
-
-
-        /**************定位胆***************/
+        /**************任选二***************/
         /**
-         * 注数-定位胆 / 时时彩与11选5共用注数方法
+         * 注数-任选二 / 时时彩与11选5共用注数方法
          */
         zhushu_ssc_renxuan2_zxfs :function(){
 

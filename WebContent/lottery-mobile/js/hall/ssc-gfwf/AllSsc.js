@@ -287,7 +287,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 firstShowPl = strArr.join('|');
             }
             //弹出订单
-            var content = Template('gfwf_template_order', {"quantity": Number($("#quantity").text()),"firstShowPl":firstShowPl,"totalMoney":Number($("#quantity").text())*2, "canWin": parseFloat((2 * maxPlayPl * 1).toFixed(3))});
+            var content = Template('gfwf_template_order', {"quantity": Number($("#quantity").text()),"firstShowPl":firstShowPl,"totalMoney":Number($("#quantity").text())*2, "canWin": parseFloat((2 * maxPlayPl * 1).toFixed(3)),"expect":$('font#expect').text()});
             $("#dingdan").html(content);
             $("#dingdan").addClass('mui-active');
 
@@ -460,11 +460,11 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             var playPl = parseFloat($("#betContent_playPl").attr("data-value"));
             var mode = parseInt($(".mode_select.selected").attr("data-value"));
             var tmpMode = 1;
-            if (mode == 0) {
+            if (mode == 1) {
                 tmpMode = 1;
-            } else if (mode == 1) {
+            } else if (mode == 10) {
                 tmpMode = 0.1;
-            } else if (mode == 2) {
+            } else if (mode == 100) {
                 tmpMode = 0.01;
             } else {
                 return;
