@@ -135,6 +135,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             $("x_3.gfwf-playName").text("直选复式");
             $("span.x_1.gfwf-tit").text("四星");
             $(".s-title.title1 span").text("四星");
+            $(".s-title.title2 span").text("直选复式")
         }
 
     });

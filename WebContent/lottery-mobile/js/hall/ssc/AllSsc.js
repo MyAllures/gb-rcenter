@@ -55,9 +55,12 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         //传统,官方玩法切换
         isGfwf: function () {
             var _this = this;
+            var lotteryGenra = $("input#lotteryGenra").val();
             mui("body").on("tap", "a#is-gfwf", function () {
+                if(lotteryGenra ==1){
                 var flag = $(this).attr("data-flag");
                 _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
+                }
             });
         }
     });

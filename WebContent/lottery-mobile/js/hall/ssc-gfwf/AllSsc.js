@@ -33,10 +33,13 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         //传统,官方玩法切换
         isGfwf: function () {
             var _this = this;
+            var lotteryGenra = $("input#lotteryGenra").val();
             mui("body").on("tap", "a#is-gfwf", function () {
-                var flag = $(this).attr("data-flag");
-                // _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
-                _this.gotoUrl(root + '/ssc/cqssc/index.html?betCode=&isGfwf='+flag);
+                if(lotteryGenra ==1) {
+                    var flag = $(this).attr("data-flag");
+                    // _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
+                    _this.gotoUrl(root + '/ssc/cqssc/index.html?betCode=&isGfwf=' + flag);
+                }
             });
         },
 
@@ -441,15 +444,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 var result = [];
                 var tmpArr = playPlId.split('|');
                 $.each(tmpArr, function (index, values) {
-                    // for (var i = 0; i < _this.gfwfPlJson.length; ++i) {
                         result.push(_this.gfwfPlJson[values])
-                        // var o = _this.gfwfPlJson[i];
-                        // $.each(o, function (index, value) {
-                        //     if (value.betNum == values && value.betCode == betCode) {
-                        //         result.push(value);
-                        //     }
-                        // });
-                    // }
                 });
                 return result;
             } else {    // 单一赔率

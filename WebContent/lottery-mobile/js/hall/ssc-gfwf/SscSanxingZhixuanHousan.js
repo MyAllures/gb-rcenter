@@ -5,7 +5,18 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             _this = this;
             this._super();
             this.showTable();
+            // this.getJspName();
         },
+
+        // getJspName : function () {
+        //     var betCode=$("#gfwfBetCode").val();
+        //     if(betCode=="ssc_sanxing_hs"){
+        //         return "SscHousan";
+        //     }else{
+        //         return "";
+        //     }
+        //
+        // },
 
 
         showTable : function(){
@@ -15,6 +26,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             $("#housan").show();
             $("span.x_1.gfwf-tit").text("后三");
             $(".s-title.title1 span").text("后三");
+            $(".s-title.title2 span").text("直选复式")
             if(betCode =="ssc_sanxing_hs"){
                 $("a[data-code='ssc_sanxing_zhixuan_hsfs']").addClass("mui-active");
 
