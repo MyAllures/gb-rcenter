@@ -7,6 +7,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         init: function () {
             _this = this;
             this._super();
+            this.showTable();
         },
 
         //定位胆机选
@@ -114,6 +115,15 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 (shiStr == ' ' ? ' ' : shiStr) + "|" +
                 (geStr == ' ' ? ' ' : geStr)
             );
+        },
+
+        showTable : function(){
+            //定位胆
+            $("div.s-menu.second").hide();
+            $("#zxfs").show();
+            $("a[data-code='zxfs']").addClass("mui-active");
+            $("x_3.gfwf-playName").text("直选复式");
+            $(".s-title.title1 span").text("定位胆");
         }
 
     });

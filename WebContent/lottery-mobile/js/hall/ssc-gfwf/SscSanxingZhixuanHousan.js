@@ -4,6 +4,68 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         init: function () {
             _this = this;
             this._super();
+            this.showTable();
+        },
+
+
+        showTable : function(){
+            var betCode=$("#gfwfBetCode").val();
+            $("a[data-code='ssc_sanxing_hs']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#housan").show();
+            $("span.x_1.gfwf-tit").text("后三");
+            $(".s-title.title1 span").text("后三");
+            if(betCode =="ssc_sanxing_hs"){
+                $("a[data-code='ssc_sanxing_zhixuan_hsfs']").addClass("mui-active");
+
+            }else{
+                $("#housan a").removeClass("mui-active");
+                $("a[data-code='"+betCode+"']").addClass("mui-active");
+            }
+            if(betCode =="ssc_sanxing_zhixuan_hsfs"){
+                $(".x_3.gfwf-playName").text("直选复式")
+                $(".s-title.title2 span").text("直选复式");
+            }
+            if(betCode =="ssc_sanxing_zhixuan_hshz"){
+                $(".x_3.gfwf-playName").text("直选和值")
+                $(".s-title.title2 span").text("直选和值");
+            }
+            if(betCode =="ssc_sanxing_zhixuan_hskd"){
+                $(".x_3.gfwf-playName").text("直选跨度")
+                $(".s-title.title2 span").text("直选跨度");
+            }
+            if(betCode =="ssc_sanxing_zhixuan_hszh"){
+                $(".x_3.gfwf-playName").text("后三组合")
+                $(".s-title.title2 span").text("后三组合");
+            }
+            if(betCode =="ssc_sanxing_zuxuan_hsz3fs"){
+                $(".x_3.gfwf-playName").text("组三复式")
+                $(".s-title.title2 span").text("组三复式");
+            }
+            if(betCode =="ssc_sanxing_zhixuan_hsfs"){
+                $(".x_3.gfwf-playName").text("直选复式")
+                $(".s-title.title2 span").text("直选复式");
+            }
+            if(betCode =="ssc_sanxing_zuxuan_hsz6fs"){
+                $(".x_3.gfwf-playName").text("组六复式")
+                $(".s-title.title2 span").text("组六复式");
+            }
+            if(betCode =="ssc_sanxing_zuxuan_hszxhz"){
+                $(".x_3.gfwf-playName").text("组选和值")
+                $(".s-title.title2 span").text("组选和值");
+            }
+            if(betCode =="ssc_sanxing_zuxuan_hszxbd"){
+                $(".x_3.gfwf-playName").text("组选包胆")
+                $(".s-title.title2 span").text("组选包胆");
+            }
+            if(betCode =="ssc_sanxing_zuxuan_hshzws"){
+                $(".x_3.gfwf-playName").text("和值尾数")
+                $(".s-title.title2 span").text("和值尾数");
+            }
+            if(betCode =="ssc_sanxing_zuxuan_hsts"){
+                $(".x_3.gfwf-playName").text("特殊号")
+                $(".s-title.title2 span").text("特殊号");
+            }
         },
 
         /*================================后3直选复式===============================*/

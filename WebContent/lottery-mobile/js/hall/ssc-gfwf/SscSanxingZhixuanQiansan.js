@@ -4,6 +4,66 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         init: function () {
             _this = this;
             this._super();
+            this.showTable();
+        },
+
+        showTable : function(){
+            var betCode=$("#gfwfBetCode").val();
+            $("a[data-code='ssc_sanxing_qs']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#qiansan").show();
+            $("span.x_1.gfwf-tit").text("前三");
+            $(".s-title.title1 span").text("前三");
+            if(betCode =="ssc_sanxing_qs"){
+                $("a[data-code='ssc_sanxing_zhixuan_qsfs']").addClass("mui-active");
+            }else{
+                $("#qiansan a").removeClass("mui-active");
+                $("a[data-code='"+betCode+"']").addClass("mui-active");
+            }
+            if(betCode =="ssc_sanxing_zhixuan_qsfs"){
+                $(".x_3.gfwf-playName").text("直选复式")
+                $(".s-title.title2 span").text("直选复式");
+            }
+            if(betCode =="ssc_sanxing_zhixuan_qshz"){
+                $(".x_3.gfwf-playName").text("直选和值")
+                $(".s-title.title2 span").text("直选和值");
+            }
+            if(betCode =="ssc_sanxing_zhixuan_qskd"){
+                $(".x_3.gfwf-playName").text("直选跨度")
+                $(".s-title.title2 span").text("直选跨度");
+            }
+            if(betCode =="ssc_sanxing_zhixuan_qszh"){
+                $(".x_3.gfwf-playName").text("前三组合")
+                $(".s-title.title2 span").text("前三组合");
+            }
+            if(betCode =="ssc_sanxing_zuxuan_qsz3fs"){
+                $(".x_3.gfwf-playName").text("组三复式")
+                $(".s-title.title2 span").text("组三复式");
+            }
+            if(betCode =="ssc_sanxing_zhixuan_qsfs"){
+                $(".x_3.gfwf-playName").text("直选复式")
+                $(".s-title.title2 span").text("直选复式");
+            }
+            if(betCode =="ssc_sanxing_zuxuan_qsz6fs"){
+                $(".x_3.gfwf-playName").text("组六复式")
+                $(".s-title.title2 span").text("组六复式");
+            }
+            if(betCode =="ssc_sanxing_zuxuan_qszxhz"){
+                $(".x_3.gfwf-playName").text("组选和值")
+                $(".s-title.title2 span").text("组选和值");
+            }
+            if(betCode =="ssc_sanxing_zuxuan_qszxbd"){
+                $(".x_3.gfwf-playName").text("组选包胆")
+                $(".s-title.title2 span").text("组选包胆");
+            }
+            if(betCode =="ssc_sanxing_zuxuan_qshzws"){
+                $(".x_3.gfwf-playName").text("和值尾数")
+                $(".s-title.title2 span").text("和值尾数");
+            }
+            if(betCode =="ssc_sanxing_zuxuan_qsts"){
+                $(".x_3.gfwf-playName").text("特殊号")
+                $(".s-title.title2 span").text("特殊号");
+            }
         },
 
         /*================================前3直选复式===============================*/
@@ -111,7 +171,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         /**
          * 注数-直选和值
          */
-         zhushu_h3zxhz :function() {
+        zhushu_q3zxhz :function () {
             var heZhiArr = [], newArr = [];
             $.each($("a.n-btn.hz.mui-active"), function (index, value) {
                 heZhiArr.push($.trim($(this).html()));
@@ -142,36 +202,36 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
 
         // 后三直选--获取所选号码分散为三位所有组合的和值
         getHezNewArrs : function (hZArr) {
-        var heZhiArr = [], shuArr = [], tempArr = [];
-        var sumTemp = 0;
-        var num = 0; //当前号码
-        var fjHaoZuhe = []; //分解号组合
+            var heZhiArr = [], shuArr = [], tempArr = [];
+            var sumTemp = 0;
+            var num = 0; //当前号码
+            var fjHaoZuhe = []; //分解号组合
 
-        heZhiArr = hZArr;
+            heZhiArr = hZArr;
 
-        //号码分解---所选号分解成所有组合的值等于此号的所有组合
-        for (var i = 0; i < heZhiArr.length; i++) {
-            var temp = [];
-            sumTemp = parseInt(heZhiArr[i]);
-            num = parseInt(heZhiArr[i]);
-            while (sumTemp >= 0) {
-                temp.push(sumTemp);
-                sumTemp--;
-            }
+            //号码分解---所选号分解成所有组合的值等于此号的所有组合
+            for (var i = 0; i < heZhiArr.length; i++) {
+                var temp = [];
+                sumTemp = parseInt(heZhiArr[i]);
+                num = parseInt(heZhiArr[i]);
+                while (sumTemp >= 0) {
+                    temp.push(sumTemp);
+                    sumTemp--;
+                }
 
-            //所选号码分解至零，被分解出所有的号码三个为一组，所组成的所有组合的每一组值等于所选号的值的组合数
-            for (var n = 0; n < temp.length; n++) {
-                for(var m = 0; m < temp.length; m++){
-                    for(var mn = 0; mn < temp.length; mn++){
-                        if(temp[n] + temp[m] + temp[mn] == num && temp[mn] <= 9 && temp[m] <= 9 && temp[n] <= 9){
-                            fjHaoZuhe.push(temp[n] + "" + temp[m] + "" + temp[mn]);
+                //所选号码分解至零，被分解出所有的号码三个为一组，所组成的所有组合的每一组值等于所选号的值的组合数
+                for (var n = 0; n < temp.length; n++) {
+                    for(var m = 0; m < temp.length; m++){
+                        for(var mn = 0; mn < temp.length; mn++){
+                            if(temp[n] + temp[m] + temp[mn] == num && temp[mn] <= 9 && temp[m] <= 9 && temp[n] <= 9){
+                                fjHaoZuhe.push(temp[n] + "" + temp[m] + "" + temp[mn]);
+                            }
                         }
                     }
                 }
+                tempArr = this.uniqueArr(fjHaoZuhe);
             }
-            tempArr = this.uniqueArr(fjHaoZuhe);
-        }
-        return tempArr;
+            return tempArr;
         },
 
 
