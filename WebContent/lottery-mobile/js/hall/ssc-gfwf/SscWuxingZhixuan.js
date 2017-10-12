@@ -4,11 +4,8 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         //筛选数字组合
         screeningDigtal: new Array(),
         init: function () {
-            _this = this;
             this._super();
         },
-
-
 
         /**
          * 随机算法-五星直选复式
