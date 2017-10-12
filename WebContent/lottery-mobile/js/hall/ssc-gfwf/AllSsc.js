@@ -149,8 +149,11 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         getZhuShu : function () {
             var zhushuName = $("a.selected-btn.main.mui-active").attr("data-fun_zhushu");
             var zhushu = eval("_this."+zhushuName + "()");
-            $("#quantity").text(zhushu);
-            $("#inputMoney").text(zhushu*2);//目前写死
+            if(zhushu !=undefined){
+                $("#quantity").text(zhushu);
+                $("#inputMoney").text(zhushu*2);//目前写死
+            }
+
         },
 
         bindEvent: function () {
@@ -438,14 +441,15 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 var result = [];
                 var tmpArr = playPlId.split('|');
                 $.each(tmpArr, function (index, values) {
-                    for (var i = 0; i < _this.gfwfPlJson.length; ++i) {
-                        var o = _this.gfwfPlJson[i];
-                        $.each(o, function (index, value) {
-                            if (value.betNum == values && value.betCode == betCode) {
-                                result.push(value);
-                            }
-                        });
-                    }
+                    // for (var i = 0; i < _this.gfwfPlJson.length; ++i) {
+                        result.push(_this.gfwfPlJson[values])
+                        // var o = _this.gfwfPlJson[i];
+                        // $.each(o, function (index, value) {
+                        //     if (value.betNum == values && value.betCode == betCode) {
+                        //         result.push(value);
+                        //     }
+                        // });
+                    // }
                 });
                 return result;
             } else {    // 单一赔率
