@@ -20,7 +20,6 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
 
 
         showTable : function(){
-            alert(1)
             var betCode=$("#gfwfBetCode").val();
             $("a[data-code='ssc_sanxing_hs']").addClass("mui-active");
             $("div.s-menu.second").hide();
