@@ -640,6 +640,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
          * 前二组选-组选单式
          */
         content_q2zuxds: function () {
+            var _this = this;
             var textStr = $(".recl-1007-zuxds .content_jiang .content_tex").val();
             var newArr = [];
             var repeatArr = [], errorArr = [], allErrorArr = [], pairArr = [];
@@ -692,7 +693,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 for (var e = 0; e < allErrorArr.length; e++) {
                     errorStr += allErrorArr[e] + " ";
                 }
-                alert(errorStr);
+                _this.alertmsg(errorStr);
             }
 
             // 初始化变量
@@ -795,6 +796,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
          * 前二直选-直选单式
          */
         content_qezxds: function () {
+            var _this;
             var textStr = $(".recl-1003 .content_jiang .content_tex").val();
             var newArr = [];
             var errorArr = [];
@@ -834,7 +836,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 for (var e = 0; e < errorArr.length; e++) {
                     errorStr += errorArr[e] + "";
                 }
-                alert("被过滤掉的错误号码" + errorStr);
+                _this.alertmsg("被过滤掉的错误号码" + errorStr);
             }
 
             // 初始化变量
@@ -885,6 +887,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
          * 前二直选-直选单式
          */
         content_q2zxds:  function () {
+            var _this = this;
             var textStr = $(".recl-1003 .content_jiang .content_tex").val();
             var newArr = [];
             var errorArr = [];
@@ -910,7 +913,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 for (var e = 0; e < errorArr.length; e++) {
                     errorStr += errorArr[e] + "";
                 }
-                alert("被过滤掉的错误号码" + errorStr);
+                _this.alertmsg("被过滤掉的错误号码" + errorStr);
             }
 
             // 初始化变量
