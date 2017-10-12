@@ -307,10 +307,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("body").on("tap", 'a#show-t', function () {
                 _this.betOrder();
             });
-            //gfwf投注
-            mui("body").on("tap", 'a#show-t-gfwf', function () {
-                _this.showBetTemplate();
-            });
+
 
             //跳转其他玩法页面
             mui(this.formSelector).on("tap", "a.mui-control-item[data-code]", function () {

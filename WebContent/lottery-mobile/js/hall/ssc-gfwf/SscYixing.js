@@ -3,11 +3,10 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
     return PlayWay.extend({
         _this: null,
         //筛选数字组合
-        screeningDigtal: new Array(),
+        // screeningDigtal: new Array(),
         init: function () {
             _this = this;
             this._super();
-
         },
 
         //定位胆机选
@@ -31,7 +30,6 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 $("a.n-btn.ge."+random).addClass("mui-active");
             }
         },
-
 
         /**************定位胆***************/
         /**
