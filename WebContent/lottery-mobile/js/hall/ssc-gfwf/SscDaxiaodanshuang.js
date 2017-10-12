@@ -29,15 +29,15 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 $(".x_3.gfwf-playName").text("前二大小单双")
                 $(".s-title.title2 span").text("前二大小单双");
             }
-            if(betCode =="ssc_daxiaodanshuang_q2"){
-                $(".x_3.gfwf-playName").text("后二大小单双0000")
-                $(".s-title.title2 span").text("后二大小单双1111");
+            if(betCode =="ssc_daxiaodanshuang_h2"){
+                $(".x_3.gfwf-playName").text("后二大小单双")
+                $(".s-title.title2 span").text("后二大小单双");
             }
-            if(betCode =="ssc_daxiaodanshuang_q2"){
+            if(betCode =="ssc_daxiaodanshuang_q3"){
                 $(".x_3.gfwf-playName").text("前三大小单双")
                 $(".s-title.title2 span").text("前三大小单双");
             }
-            if(betCode =="ssc_daxiaodanshuang_q2"){
+            if(betCode =="ssc_daxiaodanshuang_h3"){
                 $(".x_3.gfwf-playName").text("后三大小单双")
                 $(".s-title.title2 span").text("后三大小单双");
             }
