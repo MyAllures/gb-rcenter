@@ -83,6 +83,10 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             if(betCode =="ssc_erxing" && jspName==undefined){
                 jspName="SscQianer";
             }
+            //不定位初始化
+            if(betCode =="ssc_budingwi" && jspName==undefined){
+                jspName="SscBudingwei";
+            }
 
             return jspName;
         },
