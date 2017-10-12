@@ -152,8 +152,11 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         getZhuShu : function () {
             var zhushuName = $("a.selected-btn.main.mui-active").attr("data-fun_zhushu");
             var zhushu = eval("_this."+zhushuName + "()");
-            $("#quantity").text(zhushu);
-            $("#inputMoney").text(zhushu*2);//目前写死
+            if(zhushu !=undefined){
+                $("#quantity").text(zhushu);
+                $("#inputMoney").text(zhushu*2);//目前写死
+            }
+
         },
 
         bindEvent: function () {
