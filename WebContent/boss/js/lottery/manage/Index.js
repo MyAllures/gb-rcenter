@@ -44,6 +44,22 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 btnOption.text = "下架全部站点";
             }
             window.top.topPage.doDialog(e, btnOption);
+        },
+        updateLotteryGenre:function (e,option) {
+            var genre = e.key;
+            var code = $(e.currentTarget).parent().parent().parent().parent().find("input[name='code']").val();
+            var id = $(e.currentTarget).parent().parent().parent().parent().find("input[name='id']").val();
+            window.top.topPage.ajax({
+                type:"post",
+                url:root+'/lottery/manage/changeLotteryGenre.html',
+                data:{'result.code':code,'result.genre':genre,'result.id':id},
+                error:function(data){
+                    alert("更新失败")
+                },
+                success:function (data) {
+                    alert("修改成功");
+                }
+            })
         }
     })
 });
