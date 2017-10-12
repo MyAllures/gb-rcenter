@@ -847,7 +847,8 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             var _this = this;
             // var xObj = $(obj).parent().parent().parent();
             // var textStr = $(xObj).find(".content_tex").val();
-            var textStr =$("div.content_jiang").find(".content_tex").val();
+            var textStr = $("div.content_jiang").find(".content_tex").val();
+            if (typeof (textStr)!= "undefined") {
             var newArr = [], repeatArr = [], tempArr = [];
             textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
             var arr_new = textStr.split(",");
@@ -857,10 +858,10 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 }
             }
             var playcode = _this.getPlayCode();
-            if (playcode == 'ssc_sanxing_zuxuan' || playcode =='ssc_erxing_zuxuan') {//一些需要无序去重的玩法
+            if (playcode == 'ssc_sanxing_zuxuan' || playcode == 'ssc_erxing_zuxuan') {//一些需要无序去重的玩法
                 repeatArr = newArr.duplicateNewa().uniqueArra();
                 tempArr = newArr.uniqueArra();
-            }else{
+            } else {
                 repeatArr = newArr.duplicateNew().uniqueArr();
                 tempArr = newArr.uniqueArr();
             }
@@ -870,6 +871,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
                 $(".content_jiang .content_tex").val(tempArr.join(" "));
             }
+        }
             //重新计算注数
             // _this.renderZhushu();
         },
