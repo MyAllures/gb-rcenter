@@ -25,6 +25,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             $("#qiansan").show();
             $("span.x_1.gfwf-tit").text("前三");
             $(".s-title.title1 span").text("前三");
+            $(".s-title.title2 span").text("直选复式")
             if(betCode =="ssc_sanxing_qs"){
                 $("a[data-code='ssc_sanxing_zhixuan_qsfs']").addClass("mui-active");
             }else{
