@@ -39,7 +39,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             var zuLength = zuArr.length;
 
             if (zuLength < 2) {
-                return;
+                return 0;
             }
 
             for (var i = 0; i < zuArr.length; i++) {

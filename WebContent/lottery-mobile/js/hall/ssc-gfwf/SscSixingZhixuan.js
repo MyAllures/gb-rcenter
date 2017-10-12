@@ -6,8 +6,6 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             this._super();
         },
 
-
-
         /**
          * 随机算法-4星直选复式
          */

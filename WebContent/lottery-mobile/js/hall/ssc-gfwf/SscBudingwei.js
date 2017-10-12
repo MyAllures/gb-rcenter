@@ -50,26 +50,26 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
     },
         //注数-前三二码
         zhushu_q3em :function () {
-        var budwArr = [];
-        $.each($(" .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-            budwArr.push($.trim($(this).html()));
-        });
+            var budwArr = [];
+            $.each($(" .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
+                budwArr.push($.trim($(this).html()));
+            });
 
-        var newArr = [];
-        for (var i = 0; i < budwArr.length; i++) {
-            for (var j = 0; j < budwArr.length; j++) {
-                if (i != j) {
-                    var arr = [];
-                    arr.push(budwArr[i]);
-                    arr.push(budwArr[j]);
-                    arr.sort();
-                    newArr.push(arr.join(","));
+            var newArr = [];
+            for (var i = 0; i < budwArr.length; i++) {
+                for (var j = 0; j < budwArr.length; j++) {
+                    if (i != j) {
+                        var arr = [];
+                        arr.push(budwArr[i]);
+                        arr.push(budwArr[j]);
+                        arr.sort();
+                        newArr.push(arr.join(","));
+                    }
                 }
             }
-        }
-        newArr = newArr.uniqueArr();
-        return newArr.length;
-    },
+            newArr = this.uniqueArr(newArr);
+            return newArr.length;
+        },
         /**
          * 随机算法-前三二码
          */
@@ -148,7 +148,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 }
             }
         }
-        newArr = newArr.uniqueArr();
+            newArr = this.uniqueArr(newArr);
         return newArr.length;
     },
         /**
@@ -230,7 +230,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             }
         }
 
-        newArr = newArr.uniqueArr();
+            newArr = this.uniqueArr(newArr);
         return newArr.length;
     },
         /**
@@ -313,7 +313,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             }
         }
 
-        newArr = newArr.uniqueArr();
+         newArr = this.uniqueArr(newArr);
         return newArr.length;
     },
         /**
@@ -335,36 +335,6 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         $(" a.n-btn").eq(random_2).addClass("mui-active");
     },
 
-        /*************五星一码*************/
-        /**
-         * 不定位-五星一码
-         */
-        content_wxym:function (){
-        var budwArr = [];
-        $.each($(" .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
-            budwArr.push($.trim($(this).html()));
-        });
-
-        return budwArr.join(",");
-    },
-        //注数-五星一码
-        zhushu_wxym:function () {
-        var budwArr = [];
-        $.each($(" .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-            budwArr.push($.trim($(this).html()));
-        });
-        return budwArr.length;
-    },
-
-        /**
-         * 随机算法-五星一码
-         */
-
-        random_wxym:function () {
-        var random_1 = parseInt(Math.random() * 10);
-
-        $(" a.n-btn").removeClass("mui-active").eq(random_1).addClass("mui-active");
-    },
 
         /*************五星二码*************/
         /**
@@ -397,8 +367,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 }
             }
         }
-
-        newArr = newArr.uniqueArr();
+        newArr = this.uniqueArr(newArr);
         return newArr.length;
     },
 
@@ -458,7 +427,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             }
         }
 
-        newArr = newArr.uniqueArr();
+        newArr = this.uniqueArr(newArr);
         return newArr.length;
     },
 
