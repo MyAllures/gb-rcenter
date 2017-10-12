@@ -5,7 +5,18 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             _this = this;
             this._super();
             this.showTable();
+            // this.getJspName();
         },
+
+        // getJspName : function () {
+        //     var betCode=$("#gfwfBetCode").val();
+        //     if(betCode=="ssc_sanxing_hs"){
+        //         return "SscHousan";
+        //     }else{
+        //         return "";
+        //     }
+        //
+        // },
 
 
         showTable : function(){
