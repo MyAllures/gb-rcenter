@@ -972,8 +972,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         );
     },
         //获取下注号码
-        getBetNum:function(obj) {
-            var betNum = obj.attr("data-bet_content");
+        getBetNum:function(betNum) {
             if (betNum.toString().indexOf('|') < 0) {
                 var betCode = this.getPlayId();
                 if (betCode == 'ssc_erxing_zhixuan_qekd'|| betCode == 'ssc_erxing_zuxuan_qefs' || betCode == 'zhushu_q2zuxbd'){

@@ -225,6 +225,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
          * 后三直选-直选单式
          */
         content_gd11x5_hszxds:function() {
+            var _this = this;
             var textStr = $(".recl-1003 .content_jiang .content_tex").val();
             var newArr = [];
             var errorArr = [];
@@ -278,7 +279,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             }
 
             if (allStrError.length > 0) {
-                alert(allStrError.join(""));
+                this.alertmsg(allStrError.join(""));
             }
 
             // 初始化变量
@@ -416,6 +417,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
          * 后三直选-直选单式
          */
         content_h3zxds:function() {
+            var _this = this;
             var textStr = $(".content_jiang .content_tex").val();
             var newArr = [];
             var errorArr = [];
@@ -441,7 +443,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 for (var e = 0; e < errorArr.length; e++) {
                     errorStr += errorArr[e] + ",";
                 }
-                alert("被过滤掉的错误号码" + errorStr);
+                _this.alertmsg("被过滤掉的错误号码" + errorStr);
             }
 
             // 初始化变量
@@ -1333,6 +1335,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
      * 后三组选-组六混合
      */
      content_h3hhzx:function() {
+        var _this = this;
         var textStr = $(".cl-1011-hhzx .content_jiang .content_tex").val();
         var newArr = [], tempArr = [], errorStr = '', errorArr = [];
         textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
@@ -1364,7 +1367,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             for (var e = 0; e < errorArr.length; e++) {
                 errorStr += errorArr[e] + ",";
             }
-            alert("被过滤掉的错误号码" + errorStr);
+            _this.alertmsg("被过滤掉的错误号码" + errorStr);
         }
 
         // 初始化变量
@@ -1387,6 +1390,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
      * 后三组选-组六单式
      */
      content_h3z6ds:function() {
+         var _this = this;
         var textStr = $(".cl-1010-zlds .content_jiang .content_tex").val();
         var newArr = [], tempArr = [], errorStr = '', errorArr = [];
         textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
@@ -1418,7 +1422,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             for (var e = 0; e < errorArr.length; e++) {
                 errorStr += errorArr[e] + ",";
             }
-            alert("被过滤掉的错误号码" + errorStr);
+            _this.alertmsg("被过滤掉的错误号码" + errorStr);
         }
 
         // 初始化变量
@@ -1467,6 +1471,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
      * 后三组选-组三单式
      */
      content_h3z3ds:function() {
+         var _this = this;
         var textStr = $(".cl-1008-zsds .content_jiang .content_tex").val();
         var newArr = [], tempArr = [], errorStr = '', errorArr = [];
         textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
@@ -1497,7 +1502,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             for (var e = 0; e < errorArr.length; e++) {
                 errorStr += errorArr[e] + ",";
             }
-            alert("被过滤掉的错误号码" + errorStr);
+            _this.alertmsg("被过滤掉的错误号码" + errorStr);
         }
 
 
@@ -1543,8 +1548,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         };
     },
         //获取下注号码
-        getBetNum:function(obj) {
-            var betNum = obj.attr("data-bet_content");
+        getBetNum:function(betNum) {
             if (betNum.toString().indexOf('|') < 0) {
                 var betCode = this.getPlayId();
                 if (betCode == 'ssc_sanxing_zhixuan_hskd' || betCode =='ssc_sanxing_zuxuan_hsz3fs' || betCode =='ssc_sanxing_zuxuan_hsz6fs' ){

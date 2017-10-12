@@ -795,8 +795,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         };
     },
         //获取下注号码
-        getBetNum:function(obj) {
-            var betNum = obj.attr("data-bet_content");
+        getBetNum:function(betNum) {
             return betNum;
         }
 

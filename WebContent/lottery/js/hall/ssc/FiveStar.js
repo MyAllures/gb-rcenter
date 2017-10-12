@@ -170,6 +170,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
          * 5星直选单式
          */
         content_5xzxds: function() {
+            var _this = this;
             var textStr = $(".content_jiang .content_tex").val();
             var newArr = [];
             var errorArr = [];
@@ -194,7 +195,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 for (var e = 0; e < errorArr.length; e++) {
                     errorStr += errorArr[e] + ",";
                 }
-                alert("被过滤掉的错误号码" + errorStr);
+                _this.alertmsg("被过滤掉的错误号码" + errorStr);
             }
 
             // 初始化变量
