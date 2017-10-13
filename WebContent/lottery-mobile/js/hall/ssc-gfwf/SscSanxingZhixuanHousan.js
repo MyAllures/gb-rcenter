@@ -29,7 +29,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             $(".s-title.title2 span").text("直选复式")
             if(betCode =="ssc_sanxing_hs"){
                 $("a[data-code='ssc_sanxing_zhixuan_hsfs']").addClass("mui-active");
-
+                $(".x_3.gfwf-playName").text("直选复式");
             }else{
                 $("#housan a").removeClass("mui-active");
                 $("a[data-code='"+betCode+"']").addClass("mui-active");
