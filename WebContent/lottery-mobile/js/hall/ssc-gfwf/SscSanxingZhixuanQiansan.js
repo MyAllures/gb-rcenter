@@ -475,22 +475,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             return zuSanArr.join(",");
         },
 
-        /**
-         * 随机算法-后三组三复式
-         */
-        random_h3z3fs : function () {
-            var arrTemp = [];
-            while(arrTemp.length < 2){
-                var x1 = parseInt(Math.random() * 10);
-                var x2 = parseInt(Math.random() * 10);
-                if(x1 != x2){
-                    arrTemp.push(x1);
-                    arrTemp.push(x2);
-                }
-            }
-            $("a.n-btn.kuadu").removeClass("mui-active").eq(arrTemp[0]).addClass("mui-active");
-            $("a.n-btn.kuadu").eq(arrTemp[1]).addClass("mui-active");
-        },
+
 
         /**
          * 随机算法-前三组三复式
