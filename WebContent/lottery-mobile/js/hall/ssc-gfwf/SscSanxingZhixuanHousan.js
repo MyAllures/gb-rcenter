@@ -636,7 +636,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             $.each($("a.n-btn.hezhi.mui-active"), function (index, value) {
                 heZhiArr.push($.trim($(this).html()));
             });
-            return heZhiArr.join(",");
+            return heZhiArr.join("|");
         },
 
         /**
