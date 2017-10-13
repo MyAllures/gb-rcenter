@@ -97,6 +97,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             return jspName;
         },
 
+
         /**
          * 重置下注选项
          */

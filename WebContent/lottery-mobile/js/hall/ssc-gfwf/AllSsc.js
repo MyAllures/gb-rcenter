@@ -21,8 +21,9 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         getGfwfOdd:function(){
             var _this = this;
             var betCode=$("#gfwfBetCode").val();
+            var betCode1=_this.getInitbetCode(betCode);
             mui.ajax(root + '/'+type+'/'+code+'/'+betCode+'/getOdds.html', {
-                data: {"betCode": betCode},
+                data: {"betCode": betCode1},
                 dataType: 'json',
                 type: 'POST',
                 success: function (data) {
@@ -30,6 +31,34 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     _this.gfwfPlJson = data;
                 }
             });
+        },
+
+        getInitbetCode : function (betCode) {
+            //后三初始化
+            if(betCode =="ssc_sanxing_hs"){
+                betCode="ssc_sanxing_zhixuan_hsfs";
+            }
+            //前三初始化
+            if(betCode =="ssc_sanxing_qs"){
+                betCode="ssc_sanxing_zhixuan_qsfs";
+            }
+            //前二初始化
+            if(betCode =="ssc_erxing"){
+                betCode="ssc_erxing_zhixuan_qefs";
+            }
+            //不定位初始化
+            if(betCode =="ssc_budingwei"){
+                betCode="ssc_budingwei_q3ym";
+            }else
+            //任选二初始化
+            if(betCode =="R2"){
+                betCode="ssc_renxuan2_zxfs";
+            }
+            //大小单双初始化
+            if(betCode =="ssc_daxiaodanshuang"){
+                betCode="ssc_daxiaodanshuang_q2";
+            }
+            return betCode;
         },
 
         //传统,官方玩法切换
