@@ -86,6 +86,9 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
 
             if (arrNew.length < 2) {
                 return 0;
+            }else {
+                $("a.bottom-bar-btn.btn-jixuan-gfwf").removeClass("mui-active");
+                $("a.bottom-bar-btn.btn-reset-gfwf").addClass("mui-active");
             }
 
             for (var i = 0; i < arrNew.length; i++) {
