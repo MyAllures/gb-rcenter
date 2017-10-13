@@ -68,7 +68,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             mui("body").on("tap", "a#is-gfwf", function () {
                 if(lotteryGenra ==1) {
                     var flag = $(this).attr("data-flag");
-                    _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
+                    _this.gotoUrl(root + '/' +type + '/' +code + '/index.html?betCode=&isGfwf='+flag);
                     // _this.gotoUrl(root + '/ssc/cqssc/index.html?betCode=&isGfwf=' + flag);
                 }
             });
