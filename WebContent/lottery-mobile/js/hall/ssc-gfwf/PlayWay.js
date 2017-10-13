@@ -49,9 +49,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
         getBetTable: function(betCode,jspName){
             var _this = this;
-
             var jspStr=_this.getJspName(betCode,jspName);
-            mui.ajax(root + '/ssc/cqssc/getBetTable.html', {
+            mui.ajax(root + '/'+_this.type+'/'+_this.code+'/getBetTable.html', {
                 data: {"betCode": betCode,"jspStr":jspStr},
                 type: 'POST',
                 success: function (data) {
@@ -63,7 +62,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             });
         },
         changeList : function(){
-            mui.ajax(root + '/ssc/cqssc/getBetTable.html', {
+            mui.ajax(root + '/'+this.type+'/'+this.code+'/getBetTable.html', {
                 data: {"betCode": "ssc_yixing_dwd","jspStr":"SscWuxing"},
                 type: 'POST',
                 success: function (data) {

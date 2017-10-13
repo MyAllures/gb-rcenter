@@ -19,7 +19,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         getGfwfOdd:function(){
             var _this = this;
             var betCode=$("#gfwfBetCode").val();
-
             mui.ajax(root + '/'+type+'/'+code+'/'+betCode+'/getOdds.html', {
                 data: {"betCode": betCode},
                 dataType: 'json',
