@@ -10,6 +10,17 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             });
         },
 
+        showTable : function(){
+            $("a[data-code='R2']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#R2").show();
+            $("span.x_1.gfwf-tit").text("任选二");
+            $(".s-title.title1 span").text("任选二");
+            $(".s-title.title2 span").text("直选和值");
+            $(".x_3.gfwf-playName").text("直选和值");
+            $("a[data-code='ssc_renxuan2_zxhz']").addClass("mui-active");
+        },
+
         /**
          * 任选二-直选和值
          */
@@ -39,7 +50,12 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             });
 
             if (hzArr.length <= 0) {
+                $("a.bottom-bar-btn.btn-jixuan-gfwf").addClass("mui-active");
+                $("a.bottom-bar-btn.btn-reset-gfwf").removeClass("mui-active");
                 return 0;
+            }else {
+                $("a.bottom-bar-btn.btn-jixuan-gfwf").removeClass("mui-active");
+                $("a.bottom-bar-btn.btn-reset-gfwf").addClass("mui-active");
             }
             for (var i = 0; i < hzArr.length; i++) {
                 for (var x = 0; x < 10; x++) {
