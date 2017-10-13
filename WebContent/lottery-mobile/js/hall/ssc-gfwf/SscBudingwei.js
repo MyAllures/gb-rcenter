@@ -6,6 +6,64 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         init: function () {
             _this = this;
             this._super();
+            this.showTable();
+        },
+        showTable : function(){
+            var betCode=$("#gfwfBetCode").val();
+            $("a[data-code='ssc_budingwei']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#budingwei").show();
+            $("span.x_1.gfwf-tit").text("不定位");
+            $(".s-title.title1 span").text("不定位");
+            if(betCode =="ssc_budingwei"){
+                $("a[data-code='ssc_budingwei_q3ym']").addClass("mui-active");
+                $(".x_3.gfwf-playName").text("前三一码")
+                $(".s-title.title2 span").text("前三一码");
+
+            }else{
+                $("#budingwei a").removeClass("mui-active");
+                $("a[data-code='"+betCode+"']").addClass("mui-active");
+            }
+            if(betCode =="ssc_budingwei_q3ym"){
+                $(".x_3.gfwf-playName").text("前三一码")
+                $(".s-title.title2 span").text("前三一码");
+            }
+            if(betCode =="ssc_budingwei_q3em"){
+                $(".x_3.gfwf-playName").text("前三二码")
+                $(".s-title.title2 span").text("前三二码");
+            }
+            if(betCode =="ssc_budingwei_h3ym"){
+                $(".x_3.gfwf-playName").text("后三一码")
+                $(".s-title.title2 span").text("后三一码");
+            }
+            if(betCode =="ssc_budingwei_h3em"){
+                $(".x_3.gfwf-playName").text("后三二码")
+                $(".s-title.title2 span").text("后三二码");
+            }
+            if(betCode =="ssc_budingwei_q4ym"){
+                $(".x_3.gfwf-playName").text("前四一码")
+                $(".s-title.title2 span").text("前四一码");
+            }
+            if(betCode =="ssc_budingwei_q4em"){
+                $(".x_3.gfwf-playName").text("前四二码")
+                $(".s-title.title2 span").text("前四二码");
+            }
+            if(betCode =="ssc_budingwei_h4ym"){
+                $(".x_3.gfwf-playName").text("后四一码")
+                $(".s-title.title2 span").text("后四一码");
+            }
+            if(betCode =="ssc_budingwei_h4em"){
+                $(".x_3.gfwf-playName").text("后四二码")
+                $(".s-title.title2 span").text("后四二码");
+            }
+            if(betCode =="ssc_budingwei_wxem"){
+                $(".x_3.gfwf-playName").text("五星二码")
+                $(".s-title.title2 span").text("五星二码");
+            }
+            if(betCode =="ssc_budingwei_wxsm"){
+                $(".x_3.gfwf-playName").text("五星三码")
+                $(".s-title.title2 span").text("五星三码");
+            }
         },
 
         /***************不定位**************/

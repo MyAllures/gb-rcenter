@@ -8,9 +8,42 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         init: function () {
             _this = this;
             this._super();
-
+            this.showTable();
         },
 
+        showTable : function(){
+            var betCode=$("#gfwfBetCode").val();
+            $("a[data-code='R2']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#R2").show();
+            $("span.x_1.gfwf-tit").text("任选二");
+            $(".s-title.title1 span").text("任选二");
+            $(".s-title.title2 span").text("直选复式")
+            if(betCode =="R2"){
+                $("a[data-code='ssc_renxuan2_zxfs']").addClass("mui-active");
+
+            }else{
+                $("#R2 a").removeClass("mui-active");
+                $("a[data-code='"+betCode+"']").addClass("mui-active");
+            }
+            if(betCode =="ssc_renxuan2_zxfs"){
+                $(".x_3.gfwf-playName").text("直选复式")
+                $(".s-title.title2 span").text("直选复式");
+            }
+            if(betCode =="ssc_renxuan2_zxhz"){
+                $(".x_3.gfwf-playName").text("直选和值")
+                $(".s-title.title2 span").text("直选和值");
+            }
+            if(betCode =="ssc_renxuan2_zuxfs"){
+                $(".x_3.gfwf-playName").text("组选复式")
+                $(".s-title.title2 span").text("组选复式");
+            }
+            if(betCode =="ssc_renxuan2_zuxhz"){
+                $(".x_3.gfwf-playName").text("组选和值")
+                $(".s-title.title2 span").text("组选和值");
+            }
+        },
+        
         /**************任选二***************/
         /**
          * 注数-任选二 / 时时彩与11选5共用注数方法
@@ -149,7 +182,6 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 $("a.n-btn.ge").removeClass("mui-active");
                 $("a.n-btn.ge."+random_5).addClass("mui-active");
             }
-
         }
 
     });

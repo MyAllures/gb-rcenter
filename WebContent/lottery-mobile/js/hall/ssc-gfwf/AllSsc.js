@@ -3,6 +3,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         tmpBetContent:null,
         gfwfPlJson:null,
         _this: null,
+        code:null,
+        type:null,
         init: function () {
             _this = this;
             // this._super();
@@ -10,6 +12,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             this.bindEvent();
             this.isGfwf();
             this.getGfwfOdd();
+            code =$("#czCode").val();
+            type =$("#czType").val();
         },
 
         getGfwfOdd:function(){
@@ -29,9 +33,13 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         //传统,官方玩法切换
         isGfwf: function () {
             var _this = this;
+            var lotteryGenra = $("input#lotteryGenra").val();
             mui("body").on("tap", "a#is-gfwf", function () {
-                var flag = $(this).attr("data-flag");
-                _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
+                if(lotteryGenra ==1) {
+                    var flag = $(this).attr("data-flag");
+                    // _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
+                    _this.gotoUrl(root + '/ssc/cqssc/index.html?betCode=&isGfwf=' + flag);
+                }
             });
         },
 
@@ -144,8 +152,11 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         getZhuShu : function () {
             var zhushuName = $("a.selected-btn.main.mui-active").attr("data-fun_zhushu");
             var zhushu = eval("_this."+zhushuName + "()");
-            $("#quantity").text(zhushu);
-            $("#inputMoney").text(zhushu*2);//目前写死
+            if(zhushu !=undefined){
+                $("#quantity").text(zhushu);
+                $("#inputMoney").text(zhushu*2);//目前写死
+            }
+
         },
 
         bindEvent: function () {
@@ -165,7 +176,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     betOrders: []
                 };
                 betForm.betOrders.push({
-                    code: _this.code,//彩种
+                    code: $("#czCode").val(),//彩种
                     expect: $('font#expect').text(),//期号
                     playCode: $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id"),//彩种玩法
                     betCode:  $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code"),//投注玩法
@@ -433,14 +444,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 var result = [];
                 var tmpArr = playPlId.split('|');
                 $.each(tmpArr, function (index, values) {
-                    for (var i = 0; i < _this.gfwfPlJson.length; ++i) {
-                        var o = _this.gfwfPlJson[i];
-                        $.each(o, function (index, value) {
-                            if (value.betNum == values && value.betCode == betCode) {
-                                result.push(value);
-                            }
-                        });
-                    }
+                        result.push(_this.gfwfPlJson[values])
                 });
                 return result;
             } else {    // 单一赔率
