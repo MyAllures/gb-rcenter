@@ -14,7 +14,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             _this.changeList();
             //头部选择
             mui("div.s-menu").on('tap','a',function(){
-                _this.menuclick(this.classList);
+                _this.menuClick(this.classList);
             });
             //直选复式
             mui(".x_3.gfwf-playName")[0].addEventListener('tap',function(){
@@ -24,7 +24,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 mui(".gfwf-wrap")[0].classList.remove('Fixed');
             });
         },
-        menuclick:function(thisClassList){
+        menuClick:function(thisClassList){
             var _this = this;
             $("a.selected-btn.mui-active").removeClass("mui-active");
             thisClassList.toggle('mui-active');
@@ -36,7 +36,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
             }
             this.getBetTable(dataCode,jspName);
-            if(dataCode !="ssc_sanxing_hs" && dataCode !="ssc_sanxing_qs" && dataCode !="ssc_erxing"){
+            if(dataCode !="ssc_sanxing_hs" && dataCode !="ssc_sanxing_qs" && dataCode !="ssc_erxing" && dataCode !="R2" ){
                 mui(".gfwf-wrap")[0].classList.remove('Fixed');
             }
             _this.resetBet();
@@ -74,18 +74,22 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             //后三初始化
             if(betCode =="ssc_sanxing_hs" && jspName==undefined){
                 jspName="SscHousan";
-            }
+            }else
             //前三初始化
             if(betCode =="ssc_sanxing_qs" && jspName==undefined){
                 jspName="SscQiansan";
-            }
+            }else
             //前二初始化
             if(betCode =="ssc_erxing" && jspName==undefined){
                 jspName="SscQianer";
-            }
+            }else
             //不定位初始化
             if(betCode =="ssc_budingwi" && jspName==undefined){
                 jspName="SscBudingwei";
+            }else
+            //任选二初始化
+            if(betCode =="R2" && jspName==undefined){
+                jspName="SscR2Zxfs";
             }
 
             return jspName;
