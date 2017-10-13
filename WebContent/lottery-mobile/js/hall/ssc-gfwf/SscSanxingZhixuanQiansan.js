@@ -199,18 +199,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             return newArr.length;
         },
 
-        /**
-         * 后三直选-和值
-         */
-         content_h3zxhz :function() {
-            var heZhiArr = [];
-            var zhushu = 0;
-            $.each($("a.n-btn.hz.mui-active"), function (index, value) {
-                heZhiArr.push($.trim($(this).html()));
-            });
 
-            return heZhiArr.join(",");
-        },
 
         /**
          * 前三直选-和值
@@ -222,7 +211,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 heZhiArr.push($.trim($(this).html()));
             });
 
-            return heZhiArr.join(",");
+            return heZhiArr.join("|");
         },
 
 
@@ -754,16 +743,6 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             return zlLength;
         },
 
-        /**
-         * 后三组选-后三和值尾数
-         */
-        content_h3hzws:function (){
-            var hzArr = [];
-            $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
-                hzArr.push($.trim($(this).html()));
-            });
-            return hzArr.join("|");
-        },
 
         /**
          * 前三组选-前三和值尾数
@@ -774,7 +753,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 hzArr.push($.trim($(this).html()));
             });
 
-            return hzArr.join(",");
+            return hzArr.join("|");
         },
 
         /**
