@@ -69,7 +69,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             mui("body").on("tap", "a#is-gfwf", function () {
                 if(lotteryGenra ==1) {
                     var flag = $(this).attr("data-flag");
-                    _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
+                    _this.gotoUrl(root + '/' +type + '/' +code + '/index.html?betCode=&isGfwf='+flag);
                     // _this.gotoUrl(root + '/ssc/cqssc/index.html?betCode=&isGfwf=' + flag);
                 }
             });
@@ -86,9 +86,10 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
             //选择球
             mui(".screen-munber.gfwf").on('tap','a',function(){
+                //判断是否为包胆
+                _this.checkBaodan();
                 this.classList.toggle('mui-active');
                 $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
-
                 _this.getZhuShu();
             });
             //清
@@ -182,6 +183,13 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 $("#inputMoney").text(zhushu*2);//目前写死
             }
 
+        },
+
+        checkBaodan : function () {
+            var betCode=$("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code");
+            if(betCode =="ssc_sanxing_zuxuan_hszxbd" || betCode =="ssc_sanxing_zuxuan_qszxbd" || betCode =="ssc_erxing_zuxuan_qebd"){
+                $("div.newball-item-20 a.n-btn").removeClass("mui-active");
+            }
         },
 
         bindEvent: function () {

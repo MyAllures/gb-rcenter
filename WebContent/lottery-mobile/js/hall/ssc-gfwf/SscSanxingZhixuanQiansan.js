@@ -199,18 +199,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             return newArr.length;
         },
 
-        /**
-         * 后三直选-和值
-         */
-         content_h3zxhz :function() {
-            var heZhiArr = [];
-            var zhushu = 0;
-            $.each($("a.n-btn.hz.mui-active"), function (index, value) {
-                heZhiArr.push($.trim($(this).html()));
-            });
 
-            return heZhiArr.join(",");
-        },
 
         /**
          * 前三直选-和值
@@ -222,7 +211,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 heZhiArr.push($.trim($(this).html()));
             });
 
-            return heZhiArr.join(",");
+            return heZhiArr.join("|");
         },
 
 
@@ -486,22 +475,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             return zuSanArr.join(",");
         },
 
-        /**
-         * 随机算法-后三组三复式
-         */
-        random_h3z3fs : function () {
-            var arrTemp = [];
-            while(arrTemp.length < 2){
-                var x1 = parseInt(Math.random() * 10);
-                var x2 = parseInt(Math.random() * 10);
-                if(x1 != x2){
-                    arrTemp.push(x1);
-                    arrTemp.push(x2);
-                }
-            }
-            $("a.n-btn.kuadu").removeClass("mui-active").eq(arrTemp[0]).addClass("mui-active");
-            $("a.n-btn.kuadu").eq(arrTemp[1]).addClass("mui-active");
-        },
+
 
         /**
          * 随机算法-前三组三复式
@@ -754,16 +728,6 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             return zlLength;
         },
 
-        /**
-         * 后三组选-后三和值尾数
-         */
-        content_h3hzws:function (){
-            var hzArr = [];
-            $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
-                hzArr.push($.trim($(this).html()));
-            });
-            return hzArr.join("|");
-        },
 
         /**
          * 前三组选-前三和值尾数
@@ -774,7 +738,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 hzArr.push($.trim($(this).html()));
             });
 
-            return hzArr.join(",");
+            return hzArr.join("|");
         },
 
         /**
