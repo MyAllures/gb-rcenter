@@ -17,6 +17,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             this.showTable();
         },
         showTable : function (){
+            debugger;
         },
         getGfwfOdd:function(){
             var _this = this;
