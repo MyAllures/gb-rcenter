@@ -455,7 +455,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 }
 
                 var inputBeishu = $("#inputBeishu").val();
-                var inputFandianBili = $("#fandian-bfb").data("value") / 100;
+                var inputFandianBili = ($("#fandian-bfb").data("value") / 100).toFixed(3);
                 var mode = _this.getSelectMode();//获取模式
                 var moneyMode = _this.getMode(mode);
 
