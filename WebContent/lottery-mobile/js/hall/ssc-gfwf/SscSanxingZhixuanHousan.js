@@ -4,7 +4,6 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         init: function () {
             _this = this;
             this._super();
-            this.showTable();
             // this.getJspName();
         },
 

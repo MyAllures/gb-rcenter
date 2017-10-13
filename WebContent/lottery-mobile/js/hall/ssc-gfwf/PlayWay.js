@@ -45,8 +45,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             _this.getBetTable(dataCode,jspName);
             _this.resetBet();
         },
-
-
         getBetTable: function(betCode,jspName){
             var _this = this;
             var jspStr=_this.getJspName(betCode,jspName);
@@ -56,7 +54,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 success: function (data) {
                     //betCode赋值
                     $("#gfwfBetCode").val(betCode);
-                    _this.showTable();
                     $(".bet-table").html(data);
                 }
             });
@@ -69,10 +66,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     $(".bet-table").html(data);
                 }
             });
-        },
-
-        showTable : function (){
-
         },
 
         getJspName : function (betCode,jspName) {

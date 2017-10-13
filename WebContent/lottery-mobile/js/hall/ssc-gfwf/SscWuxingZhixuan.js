@@ -5,7 +5,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         screeningDigtal: new Array(),
         init: function () {
             this._super();
-            this.showTable();
+            // this.showTable();
         },
 
         /**

@@ -14,8 +14,10 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             this.bindEvent();
             this.isGfwf();
             this.getGfwfOdd();
+            this.showTable();
         },
-
+        showTable : function (){
+        },
         getGfwfOdd:function(){
             var _this = this;
             var betCode=$("#gfwfBetCode").val();
