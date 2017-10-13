@@ -29,7 +29,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             $(".s-title.title2 span").text("直选复式")
             if(betCode =="ssc_sanxing_hs"){
                 $("a[data-code='ssc_sanxing_zhixuan_hsfs']").addClass("mui-active");
-
+                $(".x_3.gfwf-playName").text("直选复式");
             }else{
                 $("#housan a").removeClass("mui-active");
                 $("a[data-code='"+betCode+"']").addClass("mui-active");
@@ -636,7 +636,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             $.each($("a.n-btn.hezhi.mui-active"), function (index, value) {
                 heZhiArr.push($.trim($(this).html()));
             });
-            return heZhiArr.join(",");
+            return heZhiArr.join("|");
         },
 
         /**
@@ -734,7 +734,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
                 hzArr.push($.trim($(this).html()));
             });
-            return hzArr.join(",");
+            return hzArr.join("|");
         },
 
 

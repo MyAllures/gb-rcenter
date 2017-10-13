@@ -7,19 +7,19 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         type:null,
         init: function () {
             _this = this;
+            code =$("#czCode").val();
+            type =$("#czType").val();
             // this._super();
             this.selectFun();
             this.bindEvent();
             this.isGfwf();
             this.getGfwfOdd();
-            code =$("#czCode").val();
-            type =$("#czType").val();
         },
 
         getGfwfOdd:function(){
             var _this = this;
             var betCode=$("#gfwfBetCode").val();
-            mui.ajax(root + '/ssc/cqssc/'+betCode+'/getOdds.html', {
+            mui.ajax(root + '/'+type+'/'+code+'/'+betCode+'/getOdds.html', {
                 data: {"betCode": betCode},
                 dataType: 'json',
                 type: 'POST',
@@ -37,8 +37,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             mui("body").on("tap", "a#is-gfwf", function () {
                 if(lotteryGenra ==1) {
                     var flag = $(this).attr("data-flag");
-                    // _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
-                    _this.gotoUrl(root + '/ssc/cqssc/index.html?betCode=&isGfwf=' + flag);
+                    _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
+                    // _this.gotoUrl(root + '/ssc/cqssc/index.html?betCode=&isGfwf=' + flag);
                 }
             });
         },
@@ -51,13 +51,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 $("#dingdan").addClass("mui-active");
                 _this.showBetTemplate();
             });
-            // document.getElementById("show-t-gfwf").addEventListener('tap',function(){
-            //     document.getElementById("dingdan").classList.toggle('mui-active');
-            // });
-
-            // mui("div.mui-pull-right.bar-bottom-l-h").off('tap','a#show-t-gfwf').on('tap','a#show-t-gfwf',function(){
-            //     $("#dingdan").addClass("mui-active");
-            // });
 
             //选择球
             mui(".screen-munber.gfwf").on('tap','a',function(){
@@ -189,7 +182,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     rebate: (Number($("#betContent_fanli").attr("data-value"))/100).toFixed(3)//返点比例
                 });
 
-                mui.ajax(root + '/ssc/cqssc/saveBetOrder.html', {
+                mui.ajax(root + '/'+type+'/'+code+'/saveBetOrder.html', {
                     data: {betForm: JSON.stringify(betForm)},
                     dataType: 'json',
                     type: 'POST',

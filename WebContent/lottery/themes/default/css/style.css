@@ -2080,3 +2080,8 @@ i.bg-01,i.bg-02,i.bg-03,i.bg-04,i.bg-05,i.bg-06,i.bg-07,i.bg-08,i.bg-09,i.bg-10{
     color: #848484;
     padding-top: 10px;
 }
+/*投注弹窗调整*/
+.layui-layer-dialog .layui-layer-content p span{
+	display: inline-block;
+	font-size: 13px;
+}
