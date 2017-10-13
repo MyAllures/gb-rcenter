@@ -597,9 +597,9 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             }
 
 
+            _this.delRrepet();
             var data = eval("_this."+contentFun + "()");
             var zhushu = eval("_this."+zhushuFun + "()");
-
             if (data == -1) {
                 return;
             }
@@ -608,7 +608,6 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 _this.alertmsg("号码选择不完整，请重新选择");
                 return;
             }
-            _this.delRrepet();
             if ($.inArray(this.getPlayId(), ["ssc_sanxing_zuxuan_qsts","ssc_sanxing_zuxuan_hsts"]) >= 0) {
                 var l = $('.cl-1015-tsh ul li span.acti_tsh').length;
                 if (l == 1) {
