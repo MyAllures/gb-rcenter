@@ -84,7 +84,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 jspName="SscQianer";
             }
             //不定位初始化
-            if(betCode =="ssc_budingwi" && jspName==undefined){
+            if(betCode =="ssc_budingwei" && jspName==undefined){
                 jspName="SscBudingwei";
             }else
             //任选二初始化
