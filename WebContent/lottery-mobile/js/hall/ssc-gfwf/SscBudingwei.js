@@ -17,6 +17,8 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             $(".s-title.title1 span").text("不定位");
             if(betCode =="ssc_budingwei"){
                 $("a[data-code='ssc_budingwei_q3ym']").addClass("mui-active");
+                $(".x_3.gfwf-playName").text("前三一码")
+                $(".s-title.title2 span").text("前三一码");
 
             }else{
                 $("#budingwei a").removeClass("mui-active");
