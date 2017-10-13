@@ -39,7 +39,14 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
                 dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
             }
-            if(dataCode !="ssc_sanxing_hs" && dataCode !="ssc_sanxing_qs" && dataCode !="ssc_erxing" && dataCode !="ssc_budingwei"&& dataCode !="ssc_daxiaodanshuang" && dataCode !="R2"){
+            if(    dataCode !="ssc_sanxing_hs"
+                && dataCode !="ssc_sanxing_qs"
+                && dataCode !="ssc_erxing"
+                && dataCode !="ssc_budingwei"
+                && dataCode !="ssc_daxiaodanshuang"
+                && dataCode !="R2"
+                && dataCode !="R3"
+            ){
                 mui(".gfwf-wrap")[0].classList.remove('Fixed');
             }
             _this.getBetTable(dataCode,jspName);
@@ -88,6 +95,10 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             //任选二初始化
             if(betCode =="R2" && jspName==undefined){
                 jspName="SscR2Zxfs";
+            }
+            //任选三初始化
+            if(betCode =="R3" && jspName==undefined){
+                jspName="SscR3Zxfs";
             }
             //大小单双初始化
             if(betCode =="ssc_daxiaodanshuang" && jspName==undefined){

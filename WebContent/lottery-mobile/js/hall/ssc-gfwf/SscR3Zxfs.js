@@ -11,6 +11,16 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
 
         },
 
+        showTable : function(){
+            $("a[data-code='R3']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#R3").show();
+            $("span.x_1.gfwf-tit").text("任选三");
+            $(".s-title.title1 span").text("任选三");
+            $(".s-title.title2 span").text("直选复式");
+            $(".x_3.gfwf-playName").text("直选复式");
+            $("a[data-code='ssc_renxuan3_zxfs']").addClass("mui-active");
+        },
         /**************任选二***************/
         /**
          * 注数-任选二 / 时时彩与11选5共用注数方法
