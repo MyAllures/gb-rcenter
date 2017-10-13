@@ -27,8 +27,11 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 dataType: 'json',
                 type: 'POST',
                 success: function (data) {
-                    //todo
-                    _this.gfwfPlJson = data;
+                    if (!$.isEmptyObject(data)) {
+                        _this.gfwfPlJson = data;
+                    } else {
+                        console.log(name + ":odd is null");
+                    }
                 }
             });
         },
@@ -226,7 +229,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     dataType: 'json',
                     type: 'POST',
                     beforeSend: function () {
-                        _this.closeConfirmOrder();
+                        _this.showLoading();
                         _this.gfwfCloseConfirmOrder();
                     },
                     success: function (data) {
@@ -244,6 +247,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     },
                     complete: function () {
                         _this.hideLoading();
+                    },error:function(xhr,type,errorThrown){
+                    _this.toast('下注失败：请求异常');
                     }
                 });
 
