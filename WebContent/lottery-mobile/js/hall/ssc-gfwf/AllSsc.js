@@ -162,6 +162,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             });
             //机选清除
             mui("body").off('tap','.btn-reset-gfwf').on('tap','.btn-reset-gfwf',function(){
+                $("div.newball-content-top i.mui-control-item").removeClass("mui-active");
                 this.classList.remove('mui-active');
                 mui(".btn-jixuan-gfwf")[0].classList.add('mui-active');
                 $("div.newball-item-20 a").removeClass("mui-active");
@@ -170,6 +171,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
         },
         jixuan:function(){
+            $("div.newball-content-top i.mui-control-item").removeClass("mui-active");
+            $("div.newball-item-20 a.n-btn").removeClass("mui-active");
             $("a.bottom-bar-btn.btn-jixuan-gfwf").removeClass("mui-active");
             $("a.bottom-bar-btn.btn-reset-gfwf").addClass("mui-active");
             var randomName=$("a.selected-btn.main.mui-active").attr("data-fun_random");
