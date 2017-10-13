@@ -36,7 +36,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
             }
             this.getBetTable(dataCode,jspName);
-            if(dataCode !="ssc_sanxing_hs" && dataCode !="ssc_sanxing_qs" && dataCode !="ssc_erxing" && dataCode !="ssc_budingwei"&& dataCode !="ssc_daxiaodanshuang"){
+            if(dataCode !="ssc_sanxing_hs" && dataCode !="ssc_sanxing_qs" && dataCode !="ssc_erxing" && dataCode !="ssc_budingwei"&& dataCode !="ssc_daxiaodanshuang" && dataCode !="R2"){
                 mui(".gfwf-wrap")[0].classList.remove('Fixed');
             }
             _this.resetBet();
