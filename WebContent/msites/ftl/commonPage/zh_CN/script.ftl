@@ -886,6 +886,19 @@
             }
         });
     }
+    //免费试玩账号
+    function createFreeAccount() {
+        $.ajax('/register/createFreeAccount.html', {
+            dataType: 'json',
+            success: function (data) {
+                if (data&&data.status==true) {
+                    window.location.href ="/";
+                }
+            },error:function (state,obj) {
+                console.log("免费试玩账号异常");
+            }
+        });
+    }
     function currentPage(apiId){
         if (apiId == "4"){
             document.getElementById('sportFrame').contentWindow.location.replace("https://im.ampinplayopt0matrix.com");
