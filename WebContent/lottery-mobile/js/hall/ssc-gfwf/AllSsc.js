@@ -72,7 +72,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 if(lotteryGenra ==1) {
                     var flag = $(this).attr("data-flag");
                     _this.gotoUrl(root + '/' +type + '/' +code + '/index.html?betCode=&isGfwf='+flag);
-                    // _this.gotoUrl(root + '/ssc/cqssc/index.html?betCode=&isGfwf=' + flag);
                 }
             });
         },
@@ -155,7 +154,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 }
                 _this.getZhuShu();
             });
-            var _this = this;
+
             //机选
             mui("body").off('tap','.btn-jixuan-gfwf').on('tap','.btn-jixuan-gfwf',function(){
                 _this.jixuan();
