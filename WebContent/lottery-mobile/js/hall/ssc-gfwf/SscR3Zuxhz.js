@@ -11,40 +11,39 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         },
 
         showTable : function(){
-            $("a[data-code='R2']").addClass("mui-active");
+            $("a[data-code='R3']").addClass("mui-active");
             $("div.s-menu.second").hide();
-            $("#R2").show();
-            $("span.x_1.gfwf-tit").text("任选二");
-            $(".s-title.title1 span").text("任选二");
+            $("#R3").show();
+            $("span.x_1.gfwf-tit").text("任选三");
+            $(".s-title.title1 span").text("任选三");
             $(".s-title.title2 span").text("组选和值");
             $(".x_3.gfwf-playName").text("组选和值");
-            $("a[data-code='ssc_renxuan2_zuxhz']").addClass("mui-active");
+            $("a[data-code='ssc_renxuan3_zuxhz']").addClass("mui-active");
         },
-
         /**
-         * 任选二-直选和值
+         * 任选三-直选和值
          */
-        content_ssc_renxuan2_zuxhz: function () {
-            var hzArr = [], checkStrArr = [];
-            $.each($("a.n-btn.hz"), function () {
-                hzArr.push($.trim($(this).html()));
-            });
-
+        content_ssc_renxuan3_zuxhz: function () {
+            var hzArr = [];
+            var checkStrArr = [];
+            //获取位数字符串
             checkStrArr = this.getCheckboxValue();
 
-            if (checkStrArr.length < 2) {
-                mui.toast("[任选二]至少需要选择2个位置");
+            if (checkStrArr.length < 3) {
+                mui.toast("[任选三]至少需要选择3个位置");
                 return -1;
             }
+
+            $.each($("a.n-btn.hz"), function (index, value) {
+                hzArr.push($.trim($(this).html()));
+            });
 
             return checkStrArr.join(',') + "|" + hzArr.join(",");
         },
 
-        zhushu_ssc_renxuan2_zuxhz:function () {
+        zhushu_ssc_renxuan3_zuxhz:function () {
 
             var hzArr = [];
-            var newArr = [];
-
             $.each($("a.n-btn.hz.mui-active"), function (index, value) {
                 hzArr.push($.trim($(this).html()));
             });
@@ -52,20 +51,30 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             if (hzArr.length <= 0) {
                 return 0;
             }
+
+            var newArr = [];
             for (var i = 0; i < hzArr.length; i++) {
                 for (var x = 0; x < 10; x++) {
                     for (var y = 0; y < 10; y++) {
-                        if (x + y == hzArr[i]) {
-                            newArr.push(x + "" + y);
+                        for (var y1 = 0; y1 < 10; y1++) {
+                            if (x + y + y1 == hzArr[i] && !(x == y && x == y1 && y == y1)) {
+                                var arr = [];
+                                arr.push(x);
+                                arr.push(y);
+                                arr.push(y1);
+                                arr.sort();
+                                newArr.push(arr.join(""));
+                            }
                         }
                     }
                 }
             }
+
+            newArr = newArr.uniqueArr();
             var zhushu = newArr.length;
             // 选取选中checkbox
             var checkArr = this.getCheckboxValue();
-
-            var shu = this.getFlagArrs(checkArr, 2).length;
+            var shu = this.getFlagArrs(checkArr, 3).length;
             return zhushu * shu;
 
         },
@@ -164,10 +173,23 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
          * 随机算法-任二直选和值
          */
 
-        random_ssc_renxuan2_zuxhz: function () {
+        random_ssc_renxuan3_zuxhz: function () {
 
-            var random_1 = (parseInt(Math.random() * 17) + 1);
+            var random_1 = (parseInt(Math.random() * 27) + 1);
             $("a.n-btn.hz").removeClass("mui-active").eq(random_1).addClass("mui-active");
         }
     });
 });
+
+//去掉数组重复
+Array.prototype.uniqueArr = function () {
+    var temp = new Array();
+    this.sort();
+    for(i = 0; i < this.length; i++) {
+        if( this[i] == this[i+1]) {
+            continue;
+        }
+        temp[temp.length]=this[i];
+    }
+    return temp;
+}

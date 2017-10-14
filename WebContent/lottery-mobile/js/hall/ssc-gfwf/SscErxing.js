@@ -4,7 +4,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         init: function () {
             _this = this;
             this._super();
-            this.showTable();
+            // this.showTable();
         },
 
 
@@ -169,7 +169,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 hzArr.push($.trim($(this).html()));
             });
 
-            return hzArr.join(",");
+            return hzArr.join("|");
         },
 
         /**
@@ -349,7 +349,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             $.each($("a.n-btn.hezhi.mui-active"), function () {
                 hzArr.push($.trim($(this).html()));
             });
-            return hzArr.join(",");
+            return hzArr.join("|");
         },
 
         /**
@@ -408,8 +408,6 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             var random_1 = parseInt(Math.random() * 10);
             $("a.n-btn.kuadu").removeClass("mui-active").eq(random_1).addClass("mui-active");
         }
-
-
 
     });
 });

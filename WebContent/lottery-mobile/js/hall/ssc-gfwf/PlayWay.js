@@ -14,8 +14,12 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             _this.changeList();
             //头部选择
             mui("div.s-menu").on('tap','a',function(){
-                _this.menuClick(this.classList);
+                //检测是否为定位胆，五星，四星 直选复式事件
+                if($(this).attr("data-code") !='zxfs'){
+                    _this.menuClick(this.classList);
+                }
             });
+
             //直选复式
             mui(".x_3.gfwf-playName")[0].addEventListener('tap',function(){
                 mui(".gfwf-wrap")[0].classList.toggle('Fixed');
@@ -35,39 +39,40 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
                 dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
             }
-            this.getBetTable(dataCode,jspName);
-            if(dataCode !="ssc_sanxing_hs" && dataCode !="ssc_sanxing_qs" && dataCode !="ssc_erxing" && dataCode !="ssc_budingwei"&& dataCode !="ssc_daxiaodanshuang" && dataCode !="R2"){
+            if(    dataCode !="ssc_sanxing_hs"
+                && dataCode !="ssc_sanxing_qs"
+                && dataCode !="ssc_erxing"
+                && dataCode !="ssc_budingwei"
+                && dataCode !="ssc_daxiaodanshuang"
+                && dataCode !="R2"
+                && dataCode !="R3"
+            ){
                 mui(".gfwf-wrap")[0].classList.remove('Fixed');
             }
+            _this.getBetTable(dataCode,jspName);
             _this.resetBet();
         },
         getBetTable: function(betCode,jspName){
             var _this = this;
             var jspStr=_this.getJspName(betCode,jspName);
-
-            mui.ajax(root + '/ssc/cqssc/getBetTable.html', {
+            mui.ajax(root + '/'+_this.type+'/'+_this.code+'/getBetTable.html', {
                 data: {"betCode": betCode,"jspStr":jspStr},
                 type: 'POST',
                 success: function (data) {
                     //betCode赋值
                     $("#gfwfBetCode").val(betCode);
-                    _this.showTable();
                     $(".bet-table").html(data);
                 }
             });
         },
         changeList : function(){
-            mui.ajax(root + '/ssc/cqssc/getBetTable.html', {
+            mui.ajax(root + '/'+this.type+'/'+this.code+'/getBetTable.html', {
                 data: {"betCode": "ssc_yixing_dwd","jspStr":"SscWuxing"},
                 type: 'POST',
                 success: function (data) {
                     $(".bet-table").html(data);
                 }
             });
-        },
-
-        showTable : function (){
-
         },
 
         getJspName : function (betCode,jspName) {
@@ -84,12 +89,16 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 jspName="SscQianer";
             }
             //不定位初始化
-            if(betCode =="ssc_budingwi" && jspName==undefined){
+            if(betCode =="ssc_budingwei" && jspName==undefined){
                 jspName="SscBudingwei";
             }else
             //任选二初始化
             if(betCode =="R2" && jspName==undefined){
                 jspName="SscR2Zxfs";
+            }
+            //任选三初始化
+            if(betCode =="R3" && jspName==undefined){
+                jspName="SscR3Zxfs";
             }
             //大小单双初始化
             if(betCode =="ssc_daxiaodanshuang" && jspName==undefined){
@@ -98,6 +107,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
             return jspName;
         },
+
 
         /**
          * 重置下注选项

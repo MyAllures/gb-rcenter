@@ -7,27 +7,61 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         type:null,
         init: function () {
             _this = this;
+            code =$("#czCode").val();
+            type =$("#czType").val();
             // this._super();
             this.selectFun();
             this.bindEvent();
             this.isGfwf();
             this.getGfwfOdd();
-            code =$("#czCode").val();
-            type =$("#czType").val();
+            this.showTable();
         },
-
+        showTable : function (){
+        },
         getGfwfOdd:function(){
             var _this = this;
             var betCode=$("#gfwfBetCode").val();
-            mui.ajax(root + '/ssc/cqssc/'+betCode+'/getOdds.html', {
-                data: {"betCode": betCode},
+            var betCode1=_this.getInitbetCode(betCode);
+            mui.ajax(root + '/'+type+'/'+code+'/'+betCode+'/getOdds.html', {
+                data: {"betCode": betCode1},
                 dataType: 'json',
                 type: 'POST',
                 success: function (data) {
-                    //todo
-                    _this.gfwfPlJson = data;
+                    if (!$.isEmptyObject(data)) {
+                        _this.gfwfPlJson = data;
+                    } else {
+                        console.log(name + ":odd is null");
+                    }
                 }
             });
+        },
+
+        getInitbetCode : function (betCode) {
+            //后三初始化
+            if(betCode =="ssc_sanxing_hs"){
+                betCode="ssc_sanxing_zhixuan_hsfs";
+            }
+            //前三初始化
+            if(betCode =="ssc_sanxing_qs"){
+                betCode="ssc_sanxing_zhixuan_qsfs";
+            }
+            //前二初始化
+            if(betCode =="ssc_erxing"){
+                betCode="ssc_erxing_zhixuan_qefs";
+            }
+            //不定位初始化
+            if(betCode =="ssc_budingwei"){
+                betCode="ssc_budingwei_q3ym";
+            }else
+            //任选二初始化
+            if(betCode =="R2"){
+                betCode="ssc_renxuan2_zxfs";
+            }
+            //大小单双初始化
+            if(betCode =="ssc_daxiaodanshuang"){
+                betCode="ssc_daxiaodanshuang_q2";
+            }
+            return betCode;
         },
 
         //传统,官方玩法切换
@@ -37,8 +71,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             mui("body").on("tap", "a#is-gfwf", function () {
                 if(lotteryGenra ==1) {
                     var flag = $(this).attr("data-flag");
-                    // _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
-                    _this.gotoUrl(root + '/ssc/cqssc/index.html?betCode=&isGfwf=' + flag);
+                    _this.gotoUrl(root + '/' +type + '/' +code + '/index.html?betCode=&isGfwf='+flag);
                 }
             });
         },
@@ -51,19 +84,13 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 $("#dingdan").addClass("mui-active");
                 _this.showBetTemplate();
             });
-            // document.getElementById("show-t-gfwf").addEventListener('tap',function(){
-            //     document.getElementById("dingdan").classList.toggle('mui-active');
-            // });
-
-            // mui("div.mui-pull-right.bar-bottom-l-h").off('tap','a#show-t-gfwf').on('tap','a#show-t-gfwf',function(){
-            //     $("#dingdan").addClass("mui-active");
-            // });
 
             //选择球
             mui(".screen-munber.gfwf").on('tap','a',function(){
+                //判断是否为包胆
+                _this.checkBaodan();
                 this.classList.toggle('mui-active');
                 $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
-
                 _this.getZhuShu();
             });
             //清
@@ -127,13 +154,14 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 }
                 _this.getZhuShu();
             });
-            var _this = this;
+
             //机选
             mui("body").off('tap','.btn-jixuan-gfwf').on('tap','.btn-jixuan-gfwf',function(){
                 _this.jixuan();
             });
             //机选清除
             mui("body").off('tap','.btn-reset-gfwf').on('tap','.btn-reset-gfwf',function(){
+                $("div.newball-content-top i.mui-control-item").removeClass("mui-active");
                 this.classList.remove('mui-active');
                 mui(".btn-jixuan-gfwf")[0].classList.add('mui-active');
                 $("div.newball-item-20 a").removeClass("mui-active");
@@ -142,6 +170,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
         },
         jixuan:function(){
+            $("div.newball-content-top i.mui-control-item").removeClass("mui-active");
+            $("div.newball-item-20 a.n-btn").removeClass("mui-active");
             $("a.bottom-bar-btn.btn-jixuan-gfwf").removeClass("mui-active");
             $("a.bottom-bar-btn.btn-reset-gfwf").addClass("mui-active");
             var randomName=$("a.selected-btn.main.mui-active").attr("data-fun_random");
@@ -157,6 +187,13 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 $("#inputMoney").text(zhushu*2);//目前写死
             }
 
+        },
+
+        checkBaodan : function () {
+            var betCode=$("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code");
+            if(betCode =="ssc_sanxing_zuxuan_hszxbd" || betCode =="ssc_sanxing_zuxuan_qszxbd" || betCode =="ssc_erxing_zuxuan_qebd"){
+                $("div.newball-item-20 a.n-btn").removeClass("mui-active");
+            }
         },
 
         bindEvent: function () {
@@ -189,12 +226,12 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     rebate: (Number($("#betContent_fanli").attr("data-value"))/100).toFixed(3)//返点比例
                 });
 
-                mui.ajax(root + '/ssc/cqssc/saveBetOrder.html', {
+                mui.ajax(root + '/'+type+'/'+code+'/saveBetOrder.html', {
                     data: {betForm: JSON.stringify(betForm)},
                     dataType: 'json',
                     type: 'POST',
                     beforeSend: function () {
-                        _this.closeConfirmOrder();
+                        _this.showLoading();
                         _this.gfwfCloseConfirmOrder();
                     },
                     success: function (data) {
@@ -212,6 +249,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     },
                     complete: function () {
                         _this.hideLoading();
+                    },error:function(xhr,type,errorThrown){
+                    _this.toast('下注失败：请求异常');
                     }
                 });
 
@@ -298,7 +337,14 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 firstShowPl = strArr.join('|');
             }
             //弹出订单
-            var content = Template('gfwf_template_order', {"quantity": Number($("#quantity").text()),"firstShowPl":firstShowPl,"totalMoney":Number($("#quantity").text())*2, "canWin": parseFloat((2 * maxPlayPl * 1).toFixed(3)),"expect":$('font#expect').text()});
+            var content = Template('gfwf_template_order',
+                {"quantity": Number($("#quantity").text()),
+                "firstShowPl":firstShowPl,
+                "totalMoney":Number($("#quantity").text())*2,
+                "canWin": parseFloat((2 * maxPlayPl * 1).toFixed(3)),
+                "expect":$('font#expect').text()
+                });
+
             $("#dingdan").html(content);
             $("#dingdan").addClass('mui-active');
 

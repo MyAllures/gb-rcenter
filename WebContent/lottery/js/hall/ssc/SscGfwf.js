@@ -455,7 +455,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 }
 
                 var inputBeishu = $("#inputBeishu").val();
-                var inputFandianBili = $("#fandian-bfb").data("value") / 100;
+                var inputFandianBili = ($("#fandian-bfb").data("value") / 100).toFixed(3);
                 var mode = _this.getSelectMode();//获取模式
                 var moneyMode = _this.getMode(mode);
 
@@ -1020,7 +1020,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 obj.betZhushu = zhushu;
                 obj.betBeishu = $("#inputBeishu").data("beishu");
                 obj.betMode = _this.getSelectMode();
-                obj.betTotalMoney = obj.betZhushu * obj.betPerMoney * _this.getMode(obj.betMode) * obj.betBeishu;
+                obj.betTotalMoney = (obj.betZhushu * obj.betPerMoney * _this.getMode(obj.betMode) * obj.betBeishu).toFixed(3);
                 obj.betPlayPl = plSelVal;
                 obj.betFandian = $("#fandian-bfb").data("value");
                 var strPlId = _this.getPlayPlId();

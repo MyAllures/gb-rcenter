@@ -1,78 +1,103 @@
 define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+
     return PlayWay.extend({
         _this: null,
+        //active_a:$("a.selected-btn.mui-col-xs-4.main.mui-active"),
+        //筛选数字组合
+        screeningDigtal: new Array(),
         init: function () {
             _this = this;
             this._super();
-
             $("#checkSelected input[type='checkbox']").change(function() {
                 _this.getZhuShu();  //获取注数方法
             });
         },
 
         showTable : function(){
+
             $("a[data-code='R3']").addClass("mui-active");
             $("div.s-menu.second").hide();
             $("#R3").show();
             $("span.x_1.gfwf-tit").text("任选三");
             $(".s-title.title1 span").text("任选三");
-            $(".s-title.title2 span").text("直选和值");
-            $(".x_3.gfwf-playName").text("直选和值");
-            $("a[data-code='ssc_renxuan3_zxhz']").addClass("mui-active");
-        },
-        /**
-         * 任选三-直选和值
-         */
-        content_ssc_renxuan3_zxhz: function () {
-            var hzArr = [], checkStrArr = [];
-            $.each($("a.n-btn.hz"), function () {
-                hzArr.push($.trim($(this).html()));
-            });
+            $(".s-title.title2 span").text("组六复式");
+            $(".x_3.gfwf-playName").text("组六复式");
+            $("a[data-code='ssc_renxuan3_z6fs']").addClass("mui-active");
 
+        },
+
+        /**************任选二***************/
+        /**
+         * 注数-任选二 / 时时彩与11选5共用注数方法
+         */
+        zhushu_ssc_renxuan3_z6fs :function(){
+
+            var fuShiArr = [], newArr = [];
+            $.each($("a.n-btn.mui-active"), function (index, value) {
+                fuShiArr.push($.trim($(this).html()));
+            });
+            var zlLength = fuShiArr.length;
+            if (zlLength < 3) {
+                return 0;
+            }
+
+            newArr = this.getZuLiuNewArrs(fuShiArr);
+            var zhushu = newArr.length;
+            // 选取选中checkbox
+            var checkArr = this.getCheckboxValue();
+            var shu = this.getFlagArrs(checkArr, 3).length;
+            return zhushu * shu;
+        },
+
+        /**
+         * 直选复式
+         */
+        content_ssc_renxuan3_z6fs : function(){
+
+            var zuArr = [];
+            var checkStrArr = [];
+            //获取位数字符串
             checkStrArr = this.getCheckboxValue();
+
+            $.each($("a.n-btn.mui-active"), function (index, value) {
+                zuArr.push($.trim($(this).html()));
+            });
 
             if (checkStrArr.length < 3) {
                 mui.toast("[任选三]至少需要选择3个位置");
                 return -1;
             }
 
-            return checkStrArr.join(',') + "|" + hzArr.join(",");
+            return checkStrArr.join(',') + "|" + zuArr.join(",");
         },
 
-        zhushu_ssc_renxuan3_zxhz:function () {
+        /**
+         * 随机算法-任二直选复式
+         */
+        random_ssc_renxuan3_z6fs : function() {
 
-            var hzArr = [];
-            var newArr = [];
-
-            $.each($("a.n-btn.hz.mui-active"), function (index, value) {
-                hzArr.push($.trim($(this).html()));
-            });
-
-            if (hzArr.length <= 0) {
-                return 0;
-            }
-            for (var i = 0; i < hzArr.length; i++) {
-                for (var x = 0; x < 10; x++) {
-                    for (var y = 0; y < 10; y++) {
-                        if (x + y == hzArr[i]) {
-                            newArr.push(x + "" + y);
-                        }
-                    }
+            var arrTemp = [];
+            while(arrTemp.length < 3){
+                var random_1 = parseInt(Math.random() * 10);
+                var random_2 = parseInt(Math.random() * 10);
+                var random_3 = parseInt(Math.random() * 10);
+                if(random_1 != random_2 && random_2 != random_3 && random_1 != random_3){
+                    arrTemp.push(random_1);
+                    arrTemp.push(random_2);
+                    arrTemp.push(random_3);
                 }
             }
-            var zhushu = newArr.length;
-            // 选取选中checkbox
-            var checkArr = this.getCheckboxValue();
 
-            var shu = this.getFlagArrs(checkArr, 3).length;
-            return zhushu * shu;
-
+            $("a.n-btn.mui-active").removeClass("mui-active");
+            $("a.n-btn").eq(random_1).addClass("mui-active");
+            $("a.n-btn").eq(random_2).addClass("mui-active");
+            $("a.n-btn").eq(random_3).addClass("mui-active");
         },
 
         /**
          * 获得从m中取n的所有组合
          */
-         getFlagArrs:function(arr, num) {
+        getFlagArrs:function(arr, num) {
 
             if (arr.length < num) {
                 return [];
@@ -146,10 +171,11 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             }
             return list;
         },
+
         /**
          * 获得checkbox选中值列表
          */
-         getCheckboxValue:function() {
+        getCheckboxValue:function() {
             var result = [];
             $("#checkSelected input[type='checkbox']").each(function() {
                 if ($(this).is(":checked")) {
@@ -159,14 +185,40 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             return result;
         },
 
-    /**
-         * 随机算法-任二直选和值
-         */
-
-        random_ssc_renxuan3_zxhz: function () {
-
-            var random_1 = parseInt(Math.random() * 19);
-            $("a.n-btn.hz").removeClass("mui-active").eq(random_1).addClass("mui-active");
+        //组六复式
+         getZuLiuNewArrs: function(zuXuanArr) {
+            var tempArr = [], zxArr = [];
+            zxArr = zuXuanArr;
+            for (var i = 0; i < zxArr.length; i++) {
+                for (var i1 = 0; i1 < zxArr.length; i1++) {
+                    for (var i2 = 0; i2 < zxArr.length; i2++) {
+                        if (zxArr[i] != zxArr[i1] && zxArr[i1] != zxArr[i2] && zxArr[i] != zxArr[i2]) {
+                            var sortArr = [];
+                            sortArr.push(zxArr[i]);
+                            sortArr.push(zxArr[i1]);
+                            sortArr.push(zxArr[i2]);
+                            sortArr.sort();
+                            tempArr.push(sortArr.join(""));
+                        }
+                    }
+                }
+            }
+            tempArr = tempArr.uniqueArr();
+            return tempArr;
         }
+
     });
 });
+
+//去掉数组重复
+Array.prototype.uniqueArr = function () {
+    var temp = new Array();
+    this.sort();
+    for(i = 0; i < this.length; i++) {
+        if( this[i] == this[i+1]) {
+            continue;
+        }
+        temp[temp.length]=this[i];
+    }
+    return temp;
+}

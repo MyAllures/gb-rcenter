@@ -4,7 +4,6 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
         init: function () {
             _this = this;
             this._super();
-            this.showTable();
             // this.getJspName();
         },
 
@@ -210,7 +209,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 heZhiArr.push($.trim($(this).html()));
             });
 
-            return heZhiArr.join(",");
+            return heZhiArr.join("|");
         },
 
 
@@ -636,7 +635,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             $.each($("a.n-btn.hezhi.mui-active"), function (index, value) {
                 heZhiArr.push($.trim($(this).html()));
             });
-            return heZhiArr.join(",");
+            return heZhiArr.join("|");
         },
 
         /**
@@ -734,7 +733,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
             $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
                 hzArr.push($.trim($(this).html()));
             });
-            return hzArr.join(",");
+            return hzArr.join("|");
         },
 
 
