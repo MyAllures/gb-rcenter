@@ -67,7 +67,6 @@ define(['common/BaseListPage'], function (BaseListPage) {
         },
         updateSiteLotteryGenre: function (e) {
             var genre = e.key;
-            var a = $("input[name='code']");
             var code = $(e.currentTarget).parent().parent().parent().parent().find("input[name='code']").val();
             var id = $(e.currentTarget).parent().parent().parent().parent().find("input[name='id']").val();
             var siteId = $("#singleVal").val();
