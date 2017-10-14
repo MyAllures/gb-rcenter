@@ -378,14 +378,14 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                         $("#betContent_playPl").attr("data-value", pl);
                         var betCode=_this.getBetCode();
                         var strArr = [];
-                        var fuck  = 0;
+                        var zxzh  = 0;
                         $.each(plAndMaxFd, function (index, value) {
                             strArr.push(_this.getArgNum((value.odd - fandianBili/100 * value.baseNum)));
-                            fuck = _this.getArgNum(fuck +(value.odd - fandianBili/100 * value.baseNum));
+                            zxzh = _this.getArgNum(zxzh +(value.odd - fandianBili/100 * value.baseNum));
                         });
                         $("#betContent_playPl").html(strArr.join('|'));
                         if(betCode =="ssc_sanxing_zhixuan_hszh" || betCode=="ssc_sanxing_zhixuan_qszh") {
-                            $("#betContent_playPl").attr("data-value", fuck);
+                            $("#betContent_playPl").attr("data-value", zxzh);
                         }
                     } else {
                         var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd.baseNum));
