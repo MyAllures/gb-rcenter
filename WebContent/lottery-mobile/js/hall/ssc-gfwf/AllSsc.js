@@ -352,7 +352,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 {"quantity": Number($("#quantity").text()),
                 "firstShowPl":firstShowPl,
                 "totalMoney":Number($("#quantity").text())*2,
-                "canWin": parseFloat((maxCanWin * 1).toFixed(3)),
+                "canWin": parseFloat((maxCanWin * 1)).toFixed(3),
                 "expect":$('font#expect').text()
                 });
 
