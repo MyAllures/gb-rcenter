@@ -1,5 +1,5 @@
 //模板页面
-define(['common/BaseEditPage'], function (BaseEditPage) {
+define(['common/BaseEditPage','bootstrapswitch'], function (BaseEditPage) {
 
     return BaseEditPage.extend({
         /**
@@ -35,6 +35,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
              * 控件的初始化
              */
             this._super();
+            this.initSwitch();
         },
         /**
          * 当前页面所有事件初始化函数
@@ -301,6 +302,19 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     $(e.currentTarget).unlock();
                 }
             });
+        },
+        initSwitch:function(){
+            var _this=this;
+            var $bootstrapSwitch = $("[name='my-checkbox']");
+            this.unInitSwitch($bootstrapSwitch)
+                .bootstrapSwitch({
+                        onText: window.top.message.common['enable'],
+                        offText: window.top.message.common['forbidden'],
+                        onSwitchChange: function (e, state) {
+                            $("[name='result.randomAmount']").val(state);
+                        }
+                    }
+                );
         }
     });
 });
