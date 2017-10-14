@@ -59,10 +59,31 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 data: {'currency': currency},
                 dataType: 'json',
                 success: function (data) {
-
+                    var state = data.state;
+                    if (state == false && data.msg) {
+                        e.page.showPopover(e, option, 'warning', data.msg, true);
+                    } else if (state == true) {
+                        var btnOption = {};
+                        btnOption.target = root + '/fund/recharge/digiccy/sale.html?search.transactionNo=' + data.transactionNo;
+                        btnOption.callback = "back";
+                        btnOption.text = option.text;
+                        window.top.topPage.doDialog(e, btnOption);
+                    } else {
+                        e.page.showPopover(e, option, 'warning', '兑换金额失败请稍后再试', true);
+                    }
                     $(e.currentTarget).unlock();
                 }
             })
+        },
+        /**
+         * 回调
+         * @param e
+         * @param option
+         */
+        back: function (e, option) {
+            var currency = option.currency;
+            var _e = {currentTarget: $(e.currentTarget).prev(), page: e.page};
+            this.refresh(_e, option);
         },
         /**
          * 刷新金额
@@ -71,12 +92,24 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         refresh: function (e, option) {
             var currency = option.currency;
+            var text = $(e.currentTarget).prev(".orange").text();
+            var loading = '<em class="t-load"></em>';
+            $(e.currentTarget).prev(".orange").html(loading);
             window.top.topPage.ajax({
                 url: root + "/fund/recharge/digiccy/refresh.html",
                 data: {'currency': currency},
                 dataType: 'json',
                 success: function (data) {
                     $(e.currentTarget).prev(".orange").text(data.amount);
+                    if (data.amount <= 0) {
+                        $(e.currentTarget).next().hide();
+                    } else {
+                        $(e.currentTarget).next().show();
+                    }
+                    $(e.currentTarget).unlock();
+                },
+                error: function () {
+                    $(e.currentTarget).prev(".orange").text(text);
                     $(e.currentTarget).unlock();
                 }
             })
