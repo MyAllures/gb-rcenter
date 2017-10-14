@@ -341,7 +341,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 {"quantity": Number($("#quantity").text()),
                 "firstShowPl":firstShowPl,
                 "totalMoney":Number($("#quantity").text())*2,
-                "canWin": parseFloat((2 * maxPlayPl * 1).toFixed(3)),
+                "canWin": parseFloat((Number($("#quantity").text()) * firstShowPl * 1).toFixed(3)),
                 "expect":$('font#expect').text()
                 });
 
@@ -504,10 +504,10 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
         // 渲染下注总额，奖金等等
         renderZhushu : function() {
-            var money = $("#betContent_inputMoney").val();
-            var beishu = $("#betContent_inputBeishu").val();
-            var zhushu = parseInt($("#betContent_zhushu").html());
-            var playPl = parseFloat($("#betContent_playPl").attr("data-value"));
+            var money = $("#betContent_inputMoney").val();//圆角分
+            var beishu = $("#betContent_inputBeishu").val();//倍数
+            var zhushu = parseInt($("#betContent_zhushu").html());//注数
+            var playPl = parseFloat($("#betContent_playPl").attr("data-value"));//奖金
             var mode = parseInt($(".mode_select.selected").attr("data-value"));
             var tmpMode = 1;
             if (mode == 1) {
@@ -521,7 +521,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             }
 
             var totalMoney = parseFloat((money * zhushu * beishu * tmpMode).toFixed(3));  // 总金额
-            var canWin = parseFloat(money * beishu * playPl * tmpMode);  // 可获奖金
+            var canWin = parseFloat(tmpMode * beishu * playPl * zhushu);  // 可获奖金
 
             $("#betContent_totalMoney").html(totalMoney.toFixed(3));
             $("#betContent_canWin").html(canWin.toFixed(3));

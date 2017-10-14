@@ -138,7 +138,9 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                 var rebate;
                 var rlimit;
                 var $rinput;
+                var baseNum;
                 var rori;
+                var minlimit;
                 group = $form.find("div.tab-content table tbody td");
                 var len = group.length/2;
                 for (var i = 0; i < len; i++) {
@@ -150,6 +152,8 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     ori = Number($input.attr("data-value"));
                     rebate = Number($rinput.val());
                     rori = Number($rinput.attr("data-value"));
+                    baseNum = $(oddObj).find("input[name$=baseNum]").val();
+                    minlimit = baseNum*rebate;
                     if (odd != ori || rebate !=rori) {
                         if (!$input.valid()|| !$rinput.valid()) {
                             return;
@@ -157,10 +161,9 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                         limit = $input.attr("data-limit");
                         rlimit = $rinput.attr("data-limit");
                         //超过赔率定义上限需提示
-                        if (odd > limit) {
+                        if (odd > limit || odd <minlimit) {
                             validate.settings.highlight.call(validate, $input, validate.settings.errorClass, validate.settings.validClass);
-                            validate.showLabel($input, '当前奖金不能超过上限' + limit);
-                            $target.unlock();
+                            validate.showLabel($input, '当前奖金不能超过上限' + limit+'不能低于'+minlimit);
                             return;
                         }
                         if (rebate > rlimit) {
