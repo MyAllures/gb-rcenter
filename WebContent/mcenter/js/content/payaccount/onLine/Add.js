@@ -1,5 +1,5 @@
 //模板页面
-define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
+define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEditPage) {
 
     return BaseEditPage.extend({
         /**
@@ -20,6 +20,8 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
                     e.currentTarget = $("a[key=" + key + "]");
                     this.bankChannel(e);
                 }
+
+
             }
         },
         /**
@@ -33,6 +35,7 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
              * 控件的初始化
              */
             this._super();
+            this.initSwitch();
             $("[name='result.bankCode']", this.formSelector).chosen({
                 no_results_text: window.top.message.fund_auto['没有找到']
             });
@@ -307,6 +310,19 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
                     $(e.currentTarget).unlock();
                 }
             });
+        },
+        initSwitch:function(){
+            var _this=this;
+            var $bootstrapSwitch = $("[name='my-checkbox']");
+            this.unInitSwitch($bootstrapSwitch)
+                .bootstrapSwitch({
+                        onText: window.top.message.common['enable'],
+                        offText: window.top.message.common['forbidden'],
+                        onSwitchChange: function (e, state) {
+                            $("[name='result.randomAmount']").val(state);
+                        }
+                    }
+                );
         }
     });
 });

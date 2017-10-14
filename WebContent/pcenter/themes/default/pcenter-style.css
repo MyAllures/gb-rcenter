@@ -1643,18 +1643,27 @@ div.scroll{overflow-x:hidden;overflow-y:hidden;white-space:pre-wrap;word-wrap:br
 }
 
 /*数字货币存款*/
-.account-list .sc-left-warp{
+.account-list.sc-warp{
 	display: inline-block;
-	vertical-align: middle;
-	width: 120px;
+    width: 47%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.account-list .sc-left-warp{
+	display: block;
+    vertical-align: middle;
+    width: 80px;
+    height: 0px;
     text-align: center;
 }
 .account-list .sc-left-warp img{
-	width: 66px;
+	width: 30px;
+    margin: 11px 0 0 -30px;
 }
 .account-list .sc-right-warp{
 	display: inline-block;
-	width: 810px;
+    width: 96%;
+    padding: 0 10px;
 }
 .account-list .sc-right-warp .st-r-tit{
 	height:52px;
@@ -1664,14 +1673,25 @@ div.scroll{overflow-x:hidden;overflow-y:hidden;white-space:pre-wrap;word-wrap:br
 	float: left;
 	height:52px;
 	line-height: 50px;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 600;
+	margin: 0 0 0 35px;
 }
 .account-list .sc-right-warp .st-r-tit .s-yue{
 	float: right;
 	height:52px;
 	line-height: 50px;
 }
+.account-list .sc-right-warp .st-r-tit .s-yue i.orange{
+	display: inline-block;
+    max-width: 100px;
+    height: 32px;
+    vertical-align: top;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .account-list .sc-right-warp .st-r-tit .s-yue button{
 	margin-left: 5px;
 }
@@ -1691,15 +1711,21 @@ div.scroll{overflow-x:hidden;overflow-y:hidden;white-space:pre-wrap;word-wrap:br
 .st-r-gn .sao-ewm span,.st-r-gn .lzdz span{display: block;}
 .st-r-gn .sao-ewm .ewm-img{
 	border: 1px solid #cecfd0;
-    padding: 10px;
-    height: 104px;
-    width: 104px;
+    height: 124px;
+    width: 124px;
 }
-.st-r-gn .sao-ewm .ewm-img img{width: 104px;}
+.st-r-gn .sao-ewm .ewm-img img{width: 124px;}
 
 .st-r-gn .lzdz .textarea{
 	resize: none;
-	width: 500px;
-    height: 104px;
+    width: 275px;
+    height: 60px;
     margin-bottom: 0;
+}
+.sc-right-warp .t-load{
+	background-image: url(../../images/022b.gif);
+	background-size: 100%;
+	width: 12px;
+	height: 12px;
+	display: inline-block;
 }
