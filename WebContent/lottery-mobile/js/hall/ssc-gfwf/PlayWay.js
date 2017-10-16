@@ -46,6 +46,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 && dataCode !="ssc_daxiaodanshuang"
                 && dataCode !="R2"
                 && dataCode !="R3"
+                && dataCode !="R4"
             ){
                 mui(".gfwf-wrap")[0].classList.remove('Fixed');
             }
@@ -99,6 +100,10 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             //任选三初始化
             if(betCode =="R3" && jspName==undefined){
                 jspName="SscR3Zxfs";
+            }
+            //任选四初始化
+            if(betCode =="R4" && jspName==undefined){
+                jspName="SscR4Zxfs";
             }
             //大小单双初始化
             if(betCode =="ssc_daxiaodanshuang" && jspName==undefined){

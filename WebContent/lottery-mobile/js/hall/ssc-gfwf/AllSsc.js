@@ -328,20 +328,31 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             _this.tmpBetContent = data;
 
             var firstShowPl = maxPlayPl.toFixed(3);
+            var maxCanWin = maxPlayPl.toFixed(3);
             // 渲染界面中赔率部分
             if (plAndMaxFd instanceof Array) {  // 多赔率
                 var strArr = [];
                 $.each(plAndMaxFd, function(index, value) {
                     strArr.push(value.odd.toFixed(3));
                 });
+                maxCanWin=0;
+                var betCode=_this.getBetCode();
+                if(betCode =="ssc_sanxing_zhixuan_hszh" || betCode=="ssc_sanxing_zhixuan_qszh"){
+                    for(var i=0;i<strArr.length;i++){
+                        maxCanWin +=parseFloat(strArr[i]);
+                    }
+                }else{
+                    maxCanWin=strArr[0];
+                }
                 firstShowPl = strArr.join('|');
+
             }
             //弹出订单
             var content = Template('gfwf_template_order',
                 {"quantity": Number($("#quantity").text()),
                 "firstShowPl":firstShowPl,
                 "totalMoney":Number($("#quantity").text())*2,
-                "canWin": parseFloat((2 * maxPlayPl * 1).toFixed(3)),
+                "canWin": parseFloat((maxCanWin * 1)).toFixed(3),
                 "expect":$('font#expect').text()
                 });
 
@@ -365,11 +376,17 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     if (plAndMaxFd instanceof Array) {  // 多赔率
                         var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd[0].baseNum));
                         $("#betContent_playPl").attr("data-value", pl);
+                        var betCode=_this.getBetCode();
                         var strArr = [];
+                        var zxzh  = 0;
                         $.each(plAndMaxFd, function (index, value) {
                             strArr.push(_this.getArgNum((value.odd - fandianBili/100 * value.baseNum)));
+                            zxzh = _this.getArgNum(zxzh +(value.odd - fandianBili/100 * value.baseNum));
                         });
                         $("#betContent_playPl").html(strArr.join('|'));
+                        if(betCode =="ssc_sanxing_zhixuan_hszh" || betCode=="ssc_sanxing_zhixuan_qszh") {
+                            $("#betContent_playPl").attr("data-value", zxzh);
+                        }
                     } else {
                         var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd.baseNum));
                         $("#betContent_playPl").attr("data-value", pl);
@@ -504,10 +521,10 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
         // 渲染下注总额，奖金等等
         renderZhushu : function() {
-            var money = $("#betContent_inputMoney").val();
-            var beishu = $("#betContent_inputBeishu").val();
-            var zhushu = parseInt($("#betContent_zhushu").html());
-            var playPl = parseFloat($("#betContent_playPl").attr("data-value"));
+            var money = $("#betContent_inputMoney").val();//圆角分
+            var beishu = $("#betContent_inputBeishu").val();//倍数
+            var zhushu = parseInt($("#betContent_zhushu").html());//注数
+            var playPl = parseFloat($("#betContent_playPl").attr("data-value"));//奖金
             var mode = parseInt($(".mode_select.selected").attr("data-value"));
             var tmpMode = 1;
             if (mode == 1) {
@@ -521,7 +538,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             }
 
             var totalMoney = parseFloat((money * zhushu * beishu * tmpMode).toFixed(3));  // 总金额
-            var canWin = parseFloat(money * beishu * playPl * tmpMode);  // 可获奖金
+            var canWin = parseFloat(tmpMode * beishu * playPl * 1);  // 可获奖金
 
             $("#betContent_totalMoney").html(totalMoney.toFixed(3));
             $("#betContent_canWin").html(canWin.toFixed(3));
