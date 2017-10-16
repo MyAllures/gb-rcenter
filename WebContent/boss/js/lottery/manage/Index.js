@@ -44,6 +44,48 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 btnOption.text = "下架全部站点";
             }
             window.top.topPage.doDialog(e, btnOption);
+        },
+        updateLotteryGenre:function (e,option) {
+            var genre = e.key;
+            var code = $(e.currentTarget).parent().parent().parent().parent().find("input[name='code']").val();
+            var id = $(e.currentTarget).parent().parent().parent().parent().find("input[name='id']").val();
+            var _e = {
+                currentTarget:$(e.currentTarget).parent().parent().parent(),
+                page:page
+            };
+            window.top.topPage.ajax({
+                type:"post",
+                url:root+'/lottery/manage/changeLotteryGenre.html',
+                data:{'result.code':code,'result.genre':genre,'result.id':id},
+                error:function(data){
+                    _e.page.showPopover(_e, option, 'danger', '保存失败', true);
+                },
+                success:function (data) {
+                    _e.page.showPopover(_e, option, 'success', '保存成功', true);
+                }
+            })
+        },
+        updateSiteLotteryGenre: function (e) {
+            var genre = e.key;
+            var code = $(e.currentTarget).parent().parent().parent().parent().find("input[name='code']").val();
+            var id = $(e.currentTarget).parent().parent().parent().parent().find("input[name='id']").val();
+            var siteId = $("#singleVal").val();
+            var _e = {
+                currentTarget:$(e.currentTarget).parent().parent().parent(),
+                page:page
+            };
+            var option = {};
+            window.top.topPage.ajax({
+                type:"post",
+                url:root+'/siteLottery/changeLotteryGenre.html',
+                data:{'result.genre':genre,'result.id':id,'result.siteId':siteId},
+                error:function(data){
+                    _e.page.showPopover(_e, option, 'danger', '保存失败', true);
+                },
+                success:function (data) {
+                    _e.page.showPopover(_e, option, 'success', '保存成功', true);
+                }
+            })
         }
     })
 });

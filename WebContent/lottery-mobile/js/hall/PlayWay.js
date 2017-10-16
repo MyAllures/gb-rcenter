@@ -264,6 +264,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          * 获取赔率
          */
         getOdds: function () {
+            // var betCode=this.betCode;
+            // if(betCode);
             var url = root + '/' + this.type + '/' + this.code + '/' + this.betCode + 'Odd.html';
             var _this = this;
             mui.ajax(url, {
@@ -306,11 +308,14 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("body").on("tap", 'a#show-t', function () {
                 _this.betOrder();
             });
+
+
             //跳转其他玩法页面
             mui(this.formSelector).on("tap", "a.mui-control-item[data-code]", function () {
                 var dataCode = $(this).attr("data-code");
                 _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=' + dataCode);
             });
+
             //确认清空选项
             mui("body").on("tap", 'button#confirmClearPop', function () {
                 _this.closeClearPopup(true);
@@ -329,6 +334,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 _this.confirmOrder(betForm);
             });
         },
+
         /**
          * 确定下注
          */
@@ -381,6 +387,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 },
                 complete: function () {
                     _this.hideLoading();
+                },error:function(xhr,type,errorThrown){
+                    _this.toast('下注失败：请求异常');
                 }
             })
         },
@@ -418,14 +426,16 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             this.placeOrder(betForm);
             $("#dingdan").addClass('mui-active');
         },
+
         /**
          * 验证是否符合下注条件
          * @returns {boolean}
          */
         checkBetOrder: function () {
             var betAmount = $("input#inputMoney").val();
-            if (!betAmount || Number(betAmount) == 'NaN') {
-                this.toast("请输入正确的投注金额");
+            var g = /^[1-9]*[1-9][0-9]*$/;
+            if(!g.test(betAmount)){
+                this.toast("请输入正整数投注金额");
                 return false;
             }
             return true;
@@ -438,10 +448,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             var content = Template('template_order', {data: betForm});
             $("#dingdan").html(content);
         },
-        /**
-         * 获取注单
-         * @returns {{code: *, expect: (*|jQuery), type: *, betOrders: Array}}
-         */
+
         getBetOrder: function () {
             var code = this.code;
             var expect = $('font#expect').text();
@@ -469,9 +476,10 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 betForm.totalMoney = betForm.totalMoney + betAmount;
                 betForm.quantity = betForm.quantity + 1;
             });
-
             return betForm;
         },
+
+
         /**
          * 显示清除弹窗
          */
@@ -522,5 +530,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             $("input#inputMoney").val("");
             $("input#inputMoney").blur();
         }
+
     });
 });

@@ -2625,3 +2625,8 @@ div.scroll{
     width: 100px;
 }
 
+/*单元格宽度限制*/
+.td-width-120,.td-width-150,.td-width-200{overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.td-width-120{max-width: 120px;}
+.td-width-150{max-width: 150px;}
+.td-width-200{max-width: 200px;}

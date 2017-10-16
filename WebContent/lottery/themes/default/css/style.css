@@ -2009,3 +2009,90 @@ i.bg-01,i.bg-02,i.bg-03,i.bg-04,i.bg-05,i.bg-06,i.bg-07,i.bg-08,i.bg-09,i.bg-10{
 .arrows-btn{display: inline-block; vertical-align: middle;}
 .arrows-btn a{width: 29px;height: 29px; background:url(../img/ico0-1.png);float: right;margin: 5px 15px 5px 15px;transition:0.3s; }
 .arrows-btn.add_menu a{margin-right:10px; transform:rotate(180deg)}
+
+/*新六合彩三色波*/
+.new-ball-st.lhc-num .pl{
+	position: relative;
+}
+.new-ball-st.lhc-num .pl:before{content: "";display: block;position:absolute; top: 0; left: 0; width: 30px;height: 30px;background: url(../images/ball-lhc-num.png);}
+.new-ball-st.lhc-num.bg-yellow  .pl{text-shadow: rgba(0, 0, 0, 0.1) 1px 0 0, rgba(0, 0, 0, 0.1) 0 1px 0, rgba(0, 0, 0, 0.1) -1px 0 0, rgba(0, 0, 0, 0.1) 0 -1px 0;}
+/*红波*/
+
+.lhc-num[num="1"].bg-yellow .pl, .lhc-num[num="2"].bg-yellow .pl, .lhc-num[num="7"].bg-yellow .pl, .lhc-num[num="8"].bg-yellow .pl, .lhc-num[num="01"].bg-yellow .pl, .lhc-num[num="02"].bg-yellow .pl, .lhc-num[num="07"].bg-yellow .pl, .lhc-num[num="08"].bg-yellow .pl, .lhc-num[num="12"].bg-yellow .pl, .lhc-num[num="13"].bg-yellow .pl, .lhc-num[num="18"].bg-yellow .pl, .lhc-num[num="19"].bg-yellow .pl, .lhc-num[num="23"].bg-yellow .pl, .lhc-num[num="24"].bg-yellow .pl, .lhc-num[num="29"].bg-yellow .pl, .lhc-num[num="30"].bg-yellow .pl, .lhc-num[num="34"].bg-yellow .pl, .lhc-num[num="35"].bg-yellow .pl, .lhc-num[num="40"].bg-yellow .pl, .lhc-num[num="45"].bg-yellow .pl, .lhc-num[num="46"].bg-yellow .pl { background-color: #f03f50; border: 1px solid #f03f50;}
+
+/*绿波*/
+.lhc-num[num="5"].bg-yellow .pl, .lhc-num[num="6"].bg-yellow .pl, .lhc-num[num="05"].bg-yellow .pl, .lhc-num[num="06"].bg-yellow .pl, .lhc-num[num="11"].bg-yellow .pl, .lhc-num[num="16"].bg-yellow .pl, .lhc-num[num="17"].bg-yellow .pl, .lhc-num[num="21"].bg-yellow .pl, .lhc-num[num="22"].bg-yellow .pl, .lhc-num[num="27"].bg-yellow .pl, .lhc-num[num="28"].bg-yellow .pl, .lhc-num[num="32"].bg-yellow .pl, .lhc-num[num="33"].bg-yellow .pl, .lhc-num[num="38"].bg-yellow .pl, .lhc-num[num="39"].bg-yellow .pl, .lhc-num[num="43"].bg-yellow .pl, .lhc-num[num="44"].bg-yellow .pl, .lhc-num[num="49"].bg-yellow .pl { background-color: #0ba31e; border: 1px solid #0ba31e;}
+
+/*蓝波*/
+.lhc-num[num="3"].bg-yellow .pl, .lhc-num[num="4"].bg-yellow .pl, .lhc-num[num="9"].bg-yellow .pl, .lhc-num[num="03"].bg-yellow .pl, .lhc-num[num="04"].bg-yellow .pl, .lhc-num[num="09"].bg-yellow .pl, .lhc-num[num="10"].bg-yellow .pl, .lhc-num[num="14"].bg-yellow .pl, .lhc-num[num="15"].bg-yellow .pl, .lhc-num[num="20"].bg-yellow .pl, .lhc-num[num="25"].bg-yellow .pl, .lhc-num[num="26"].bg-yellow .pl, .lhc-num[num="31"].bg-yellow .pl, .lhc-num[num="36"].bg-yellow .pl, .lhc-num[num="37"].bg-yellow .pl, .lhc-num[num="41"].bg-yellow .pl, .lhc-num[num="42"].bg-yellow .pl, .lhc-num[num="47"].bg-yellow .pl, .lhc-num[num="48"].bg-yellow .pl { background-color: #48a0de;  border: 1px solid #48a0de; }
+
+/*合肖 & 连肖*/
+.hx-list strong{
+    background: #fff;
+    border: 1px #ccc solid;
+    box-shadow: 1px 1px 1px #ccc;
+    width: 19px;
+    height: 19px;
+    line-height: 19px;
+    display: inline-block;
+    vertical-align: middle;
+    color: #383737;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0 auto;
+    margin-right: 10px;
+}
+.hx-list input{
+	position: absolute;
+	opacity: 0;
+}
+
+/*时时彩官方玩法元角分模式*/
+.yjf-wrap{display: inline-block;margin-left: 5px; padding-top: 1px;}
+.yjf-wrap .mode_select {
+    display: inline-block;
+    border: 1px solid #ccc;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    margin: 0;
+    cursor: pointer;
+}
+.yjf-wrap .mode_select.selected{background: #fa6200;border-color: #fa6200;color: #fff;}
+
+/*购彩大厅缺省*/
+.default-wrap .default-img{
+	margin: 0 auto;
+    width: 360px;
+    margin-top: 10%;
+}
+.default-wrap .default-img .d-img{
+	display: block;
+	width: 356px;
+	height: 203px;
+	background: url(../img/default-img.png);
+}
+.default-wrap .default-img .d-title{
+	display: block;
+    text-align: center;
+    font-size: 22px;
+    color: #848484;
+    padding-top: 10px;
+}
+/*投注弹窗调整*/
+.layui-layer-dialog .layui-layer-content p span{
+	display: inline-block;
+	font-size: 13px;
+}
+
+/*六合彩封盘效果*/
+.block-bet-btn .pl{
+	background: #ccc!important;
+    border: 1px #ccc solid!important;
+    color: #a5a5a5!important;
+    text-shadow: none!important;
+}
+.new-ball-st.lhc-num.block-bet-btn .pl:before{
+	background: url(../images/ball-lhc-num-block.png);
+}

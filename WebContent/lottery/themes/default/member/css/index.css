@@ -174,7 +174,10 @@
   color: #666;
   height: 46px;
   border-right:1px solid #e9e9e9;
- 
+  max-width: 120px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .help_r_main .eveb_index_validation {
   height: 120px;

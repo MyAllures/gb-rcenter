@@ -1,0 +1,206 @@
+.top { background: url(../img/main_bg.png); }
+.top .news { margin-left: 25px; }
+.top .nav { width: 150px; }
+.top .nav h1 { background: url(../img/main_bg-r.png); width: 192px; }
+
+/*左侧菜单*/
+.menu_left { background: #e6e6e6; padding-top: 5px; border-right: 1px solid #ccc;/*width: 200px!important;*/ margin-right: -1px; /*transition: all 0.3s;*/ }
+
+/*.menu_left.add_menu{width: 39px!important; transition: all 0.3s;}*/
+.menu_left.add_menu { padding-top: 2px; }
+.menu_left .list_menu ul li { margin: 0 5px 3px; width: calc(100% - 10px); }
+.menu_left .list_menu ul li h2 { border: 1px solid #2866b5; height: 30px; line-height: 30px; border-radius: 4px; background: rgb(94, 140, 200); background: -moz-linear-gradient(top, rgba(94, 140, 200, 1) 1%, rgba(40, 102, 181, 1) 100%); background: -webkit-linear-gradient(top, rgba(94, 140, 200, 1) 1%, rgba(40, 102, 181, 1) 100%); background: linear-gradient(to bottom, rgba(94, 140, 200, 1) 1%, rgba(40, 102, 181, 1) 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5e8cc8', endColorstr='#2866b5', GradientType=0); color: #fff; }
+.menu_left .list_menu ul li h2.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; background: #2866b5; }
+.menu_left .list_menu ul li a.Refresh { background: url(../img/blue-skin/ico4.png); top: 6px; right: 6px; }
+.menu_left .list_menu ul li h2 i { background-image: url(../img/blue-skin/ico7.png); background-repeat: no-repeat; margin-top: 8px; height: 19px; margin-right: 11px; }
+.menu_left .list_menu ul li h2 i.show { background-image: url(../img/blue-skin/ico6.png); background-repeat: no-repeat; margin-right: 5px; width: 19px; margin-top: 10px; }
+.add_menu .list_menu ul li { margin: 0 1px 2px; width: calc(100% - 10px); }
+.add_menu .list_menu ul li h2 span { width: 35px; }
+.menu_left .list_menu ul li h2 span { margin-left: 20px; margin-right: 8px; }
+.menu_left .list_menu ul li h2 span .pict { height: 30px; }
+.menu_left .list_menu ul li h2 span .pict img { height: 15px; }
+.menu_left .list_menu ul li h2 b { font-size: 14px; font-weight: 600; }
+.add_menu .list_menu ul li h2 span { margin-left: 0; margin-right: 0; }
+.menu_left .list_menu ul li .down a { display: block; color: #000; height: 30px; margin: 2px; background: rgba(255, 255, 255, 0); line-height: 30px; transition: 0.3s; }
+.menu_left .list_menu ul li .down { background: #ffffff; border: 1px solid #999; border-top: 1px solid #2866b5; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; }
+.menu_left .list_menu ul li .down a:hover { background: #2161b3; color: #fff; border-radius: 4px; }
+.menu_left .list_menu ul li .down a img { margin-top: 3px; }
+.add_menu .list_menu ul li .down a img { margin-left: 3px; margin-right: 0; }
+
+/*购彩大厅*/
+.list_ject { margin-top: 20px; }
+.list_ject ul li { margin-left: 10px; height: 246px; }
+.list_ject ul li .pro_name .text { margin-top: 5px; }
+.list_ject ul li .pro_name .pict { width: 50px; height: 50px; }
+.list_ject ul li .Time p.p1 { margin-top: 16px; }
+.list_ject ul li .Time .timer_wrap { height: 45px; background: #dcdcdc; border-radius: 10px; border-bottom: 2px solid #c7c6c6; }
+.list_ject ul li .Time .timer_wrap ol span { background: none; color: #353636; }
+.list_ject ul li .Time .timer_wrap ol:after { top: 11px; }
+.list_ject ul li .Time .timer_wrap ol span:after { top: 48%; background: #dcdcdc; }
+.list_ject ul li .Result { background: none; border-top: 0; }
+.list_ject ul li .Result p a { width: 75px; font-size: 12px; line-height: 30px; border: 1px solid #ccc; margin: 0 6px; border-radius: 5px; transition: 0.3s; }
+.list_ject ul li .Result p a:after { display: none; }
+.list_ject ul li .Result p a.acti { color: #fff; background: linear-gradient(to bottom, #5b8ac7 0%, #2765b5 100%); border-color: #2161b3; }
+.list_ject ul li .Result p a.acti:hover { background: #4782cf; }
+.Account { background: #e6e6e6; border-bottom: 1px solid #ccc; border-left: 1px solid #ccc; height: 40px; }
+.Account .state { margin: 5px 0px !important; }
+.Account p { line-height: 40px; }
+.Account p { color: #000000; }
+.Account p .i0 { color: #fe200f; }
+.Account p .i1 { color: #f87c2d; }
+.Account p a { color: #000000; }
+.Account .state ul li { background: #fff; }
+.Account .state .buton p a { color: #000; }
+.Account .state .buton button { border: 1px solid #29904f; background: linear-gradient(to bottom, rgba(93, 210, 136, 1) 0%, rgba(57, 197, 109, 1) 100%); }
+.arrows-btn a { margin: 4px 5px 5px 9px; background: url(../img/blue-skin/ico0-1.png); }
+
+/*期数时间*/
+.game_name { background: #fff; border-left: 1px solid #ccc; height: 107px; }
+.game_name .wid1 { margin: 10px 0 0 10px; background-image: none; }
+.game_name .box1_name { float: left; padding-top: 19px; background: linear-gradient(to bottom, rgba(94, 140, 200, 1) 1%, rgba(40, 102, 181, 1) 100%); border: 1px solid #2866b5; padding: 11px 10px; height: 83px; border-radius: 4px; border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.game_name .box1_name h2 { text-align: center; color: #fff; }
+.game_name .box1_name p { color: #fff; text-align: center; }
+.game_name .box1_name p.p1 { color: #fff; text-align: center; }
+.game_name .box1_name .select { border-top: 1px solid rgba(255, 255, 255, 0.3); padding-top: 6px; margin-top: 6px; }
+.game_name .box2_stage { height: 95px; padding: 10px 0 0 0; margin-left: 0px; background: linear-gradient(to bottom, rgb(255, 255, 255) 1%, rgb(236, 236, 236) 100%); border-bottom: 1px solid #c7c6c6; border-top: 1px solid #c7c6c6; width: 480px !important; }
+.game_name .box2_stage .pt10 { padding: 10px 0 0 10px; }
+.game_name .box2_stage .number { padding-left: 10px; }
+.game_name .box2_stage>p { border-bottom: 1px solid #e2e2e2; padding-left: 10px; }
+.game_name .box2_stage p span { float: left; margin-right: 25px; border: 1px solid #82ace2; }
+.game_name .box2_stage p span i { color: #82ace2; }
+.game_name .box2_stage p span i.acti { background: #82ace2; }
+.game_name .box2_stage .pt10 { overflow: inherit; }
+.game_name .box2_stage .number span { border: 1px solid #ec5c2b; background: linear-gradient(to bottom, #ff925f 0%, #ea470b 100%); position: relative; color: #ffffff; line-height: 38px; text-align: center; padding-left: 0; margin-right: 10px; width: 39px; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); }
+.game_name .box2_stage .number span.ball-blue { border: 1px solid #0074ff; }
+.game_name .box2_stage .number span.ball-red { border: 1px solid #f13030; }
+.game_name .box2_stage .number span.ball-green { border: 1px solid #5bae1c; }
+.game_name .box2_stage .number span:before { content: ""; width: 48%; height: 25%; display: block; position: absolute; top: 0px; left: 24%; border-radius: 50%; background: linear-gradient(to bottom, rgba(255, 255, 255, 0.78) 0%, rgba(255, 115, 64, 0) 100%); }
+.game_name .box2_stage .number span:after { content: ""; width: 60%; height: 25%; display: block; position: absolute; bottom: 1px; left: 20%; border-radius: 50%; background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(56, 56, 56, 0.28) 100%); }
+.game_name .box2_stage .number.globule span { width: 27px; height: 30px; line-height: 25px; padding-left: 3px; font-size: 17px; }
+.game_name .box2_stage .number ul li i { background: linear-gradient(to bottom, #ff925f 0%, #ea470b 100%); border-radius: 50%; }
+.game_name .box3_timer { height: 86px; padding-left: 15px; margin-right: 20px; margin-left: 0; float: right; background: linear-gradient(to bottom, rgb(255, 255, 255) 1%, rgb(236, 236, 236) 100%); border: 1px solid #c7c6c6; border-left: 0; border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
+.game_name .box3_timer .timer_wrap { }
+.game_name .box3_timer .timer_wrap ol span { color: #2e2f2f; background: none; }
+.game_name .box3_timer .timer_wrap ol span:after { top: 48%; background: #f2f2f2; }
+
+/*玩法表格*/
+.lot-content { padding: 0 10px 10px; border: 1px solid #ccc; }
+.Single.wid1 { background: none; margin-top: 0; padding-top: 0; margin-left: 0; border-bottom: 0 }
+.Single.wid1 .layout { border: 0; width: 98%; }
+#subContent,
+.Single .layout .Playmethod ul { width: 100%; }
+.lot-content .main-left { width: 755px; }
+.lot-content .main-right { padding-right: 0; width: 195px; margin-top: 42px; }
+.table-common table { font-size: 13px; font-family: Verdana, Arial, Helvetica, sans-serif; }
+.table-common table thead tr { background: #edf4fe; }
+.table-common table td,
+.table-common table th { border: 1px solid #b9c2cb; }
+.table-common table td.bg-yellow { background: #FFC214 !important; }
+.game_tables table tr {    /*border-collapse:collapse;*/ }
+.T-tab a { background: #cecece; }
+.T-tab a.active { background: #2866b5; }
+.fr .table-common table tr:first-child td { background: linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #fef4ea 51%, #fef4ea 100%); color: #ff7441; font-weight: bold; }
+.fr .table-common table td:first-child { background: linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #f0f0f0 51%, #f0f0f0 100%); }
+.table-common .table-txt { border-radius: 0; }
+.game_tab { border-collapse: collapse; }
+.game_tab th { background: linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #f0f0f0 51%, #f0f0f0 100%); border: 1px solid #b9c2cb; color: #4F4D4D; }
+.game_tab th.choose { background: linear-gradient(to bottom, #dee9f3 0%, #dee9f3 50%, #cfd9e3 51%, #cfd9e3 100%); color: #000; }
+.resultLoad { border-collapse: collapse; border: 1px solid #b9c2cb; }
+.resultLoad tr { border: none; }
+.resultLoad tr td { border: none; border-right: 1px solid #b9c2cb; }
+.btn-1 { color: #fff; background: linear-gradient(to bottom, #5b8ac7 0%, #2765b5 100%); border: 1px solid #2161b3; }
+.btn-2 { color: #fff; background: linear-gradient(to bottom, #5b8ac7 0%, #2765b5 100%); border: 1px solid #2161b3; }
+.btn-1:hover,
+.btn-2:hover { background: #4782cf; }
+
+/*玩法选择菜单*/
+.Single .layout .Playmethod { border-bottom: 0; padding-left: 1px; margin-top: 10px; padding-bottom: 6px; }
+.Single .layout  .Playmethod ul li { margin: 4px 0; }
+.Single .layout  .Playmethod ul li b { background: linear-gradient(to bottom, #ff925f 0%, #ff7340 100%); border: 1px solid #ff6835; color: #fff; width: 100px; margin-right: 25px; border-radius: 3px; position: relative; }
+.Single .layout  .Playmethod ul li b:after { content: ""; display: block; background: url(../img/blue-skin/ico49.png); width: 20px; height: 37px; position: absolute; top: -1px; right: -19px; }
+.Single .layout .Playmethod ul li p span { background: none; border: 0; height: 35px; line-height: 35px; width: auto; }
+.game_name .box2_stage .number.kl8 { padding-top: 4px; }
+.game_name .box2_stage .number.kl8 span { width: 25px; height: 25px; line-height: 25px; font-size: 16px; margin-right: 2px; }
+.game_name .box2_stage .number.kl8 span:nth-child(10) { margin-right: 30px; }
+.Single .layout  .Playmethod ul li p span a { padding-right: 5px; }
+.Single .layout  .Playmethod ul li p span a:after { content: "|"; padding-left: 10px; color: #666666; }
+.Single .layout  .Playmethod ul li p span:last-child a:after { display: none; }
+.Single .layout .Playmethod ul li p.kuaiqian span { width: auto !important; }
+.Single .layout .Playmethod ul li p span:hover { background: none; border: 0; color: #f98d5c; padding: 0; }
+.Single .layout  .Playmethod ul li p span:hover a { color: #f98d5c; }
+.Single .layout .Playmethod ul li p span.acti { background: none; border-bottom: 0; padding: 0; }
+.Single .layout  .Playmethod ul li p span.acti a { color: #f98d5c; }
+
+/*快捷投注*/
+.lot-content .main-left .hd { height: 32px; }
+.lot-content .main-left .hd .fl { line-height: 32px; }
+.img-50:before,
+.img-100:before,
+.img-500:before,
+.img-1000:before,
+.img-5000:before,
+.img-10000:before { content: ""; font-size: 12px; font-weight: 600; text-align: center; width: 24px; height: 24px; line-height: 24px; border-radius: 50%; position: absolute; top: 4px; left: 4px; }
+.img-50:after,
+.img-100:after,
+.img-500:after,
+.img-1000:after,
+.img-5000:after,
+.img-10000:after { content: ""; display: block; width: 32px; height: 32px; position: absolute; top: 0; left: 0; background: url(../img/blue-skin/cmd-1.png); }
+.img-50:before { background: url(../img/blue-skin/50.png); }
+.img-100:before { background: url(../img/blue-skin/100.png); }
+.img-500:before { background: url(../img/blue-skin/500.png); }
+.img-1000:before { background: url(../img/blue-skin/1000.png); }
+.img-5000:before { background: url(../img/blue-skin/5000.png); }
+.img-10000:before { background: url(../img/blue-skin/10000.png); }
+.img-50,
+.img-100,
+.img-500,
+.img-1000,
+.img-5000,
+.img-10000 { width: 32px; height: 32px; border-radius: 50%; background-image: none !important; position: relative; margin-right: 5px; transition: all 0.3s; }
+.img-50:hover,
+.img-100:hover,
+.img-500:hover,
+.img-1000:hover,
+.img-5000:hover,
+.img-10000:hover { transform: translate3d(0, -90%, 90%); }
+.img-50 { background: #ffcb0c; }
+.img-100 { background: #2f7aff; }
+.img-500 { background: #0bcc8f; }
+.img-1000 { background: #6ec70e; }
+.img-5000 { background: #d5112c; }
+.img-10000 { background: #ff900c; }
+
+/*我的投注*/
+.Betting { width: 980px; margin-left: 10px; border-radius: 0; background: #2866b5; display: table; margin-top: 20px; border-bottom: 0; margin-bottom: 40px; }
+.Betting .tabs { width: 977px; margin-top: 1px; margin-left: 1px; }
+.Betting .tabs ul li { border-radius: 0; background: #6d95ca; color: #c3d3e8; margin-right: 1px; }
+.Betting .list_wrap { width: 978px; margin-left: 1px; margin-bottom: 1px; }
+
+/*弹窗*/
+.layui-layer-dialog { border-radius: 4px !important; }
+.layui-layer-title { background-color: #2161b3 !important; border-top-right-radius: 4px !important; border-top-left-radius: 4px !important; }
+
+/*走势图*/
+.zs_list li { background: linear-gradient(to bottom, rgb(255, 255, 255) 1%, rgb(236, 236, 236) 100%); border: 1px solid #ccc; border-radius: 4px; }
+
+/*开奖结果*/
+.Resultt { background: none; margin-top: 28px; border-radius: 0; position: relative; display: table; margin-bottom: 22px; box-shadow: none; width: 1000px; border: 1px solid #ddd; margin: 20px; }
+.Resultt .latyout { background: #fff; width: 98%; margin-top: 10px; }
+.Resultt .latyout .tabs_ce { height: 50px; border-bottom: 1px solid #2161b3; margin-top: 0px; width: 100%; }
+.Resultt .latyout .Color_type { margin-bottom: 0; margin-top: 15px; }
+.Resultt .latyout .tabs_ce ul li.acti a { color: #2161b3; border-left: 1px solid #2161b3; border-right: 1px solid #2161b3; display: block; z-index: 1; }
+.Resultt .latyout .tabs_ce ul li.acti { border-top: 3px solid #2161b3; color: #fa6200; }
+.Resultt .latyout .Color_type ul li.head { background: #a9c1e0; }
+.Resultt .latyout .Color_type ul li.head span { border-left: 1px solid #e2e2e2; height: 45px; }
+.Resultt .latyout .Color_type ul li span { margin-top: 0; }
+.Resultt .latyout .Color_type ul li span.sp1 { margin-left: 0 !important; }
+.Resultt .latyout .Color_type ul li span.sp8 { width: 55px; }
+.Resultt .latyout .Color_type ul li span i { background: linear-gradient(to bottom, #ff925f 0%, #ea470b 100%); }
+.Color_type ul li span a.a1 { color: #fff; background: linear-gradient(to bottom, #5b8ac7 0%, #2765b5 100%); border-color: #2161b3; }
+
+/*新彩票球*/
+.new-ball-st .pl { position: relative; }
+.new-ball-st .pl:before { content: ""; width: 51%; height: 25%; display: block; position: absolute; top: 0px; left: 24%; border-radius: 50%; background: linear-gradient(to bottom, rgba(255, 255, 255, 0.78) 0%, rgba(255, 115, 64, 0) 100%); }
+.new-ball-st .pl:after { content: ""; width: 60%; height: 25%; display: block; position: absolute; bottom: 1px; left: 20%; border-radius: 50%; background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(56, 56, 56, 0.28) 100%); }
+.new-ball-st.bg-yellow:not(.lhc-num) .pl { border: 1px solid #ec5c2b; background: linear-gradient(to bottom, #ff925f 0%, #ea470b 100%); }
