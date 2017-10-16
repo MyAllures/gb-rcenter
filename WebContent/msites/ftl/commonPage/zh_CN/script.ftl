@@ -842,6 +842,12 @@
 
     /*api登录*/
     function apiLogin(apiId, gameCode, apiTypeId) {
+        //判断登录模式
+        var demoModel = sessionStorage.demoModel;
+        if(demoModel=="MODEL_4_PLATFORM"){
+            alert("试玩账号不能登录正式游戏，请点击试玩按钮");
+            return;
+        }
         //未登录的时候
         if(sessionStorage.is_login!="true"){
             var protocol = window.location.protocol;
@@ -892,7 +898,8 @@
             dataType: 'json',
             success: function (data) {
                 if (data&&data.status==true) {
-                    window.location.href ="/";
+                    window.sessionStorage.demoModel = data.demoModel;
+                    changeLoginStatus();
                 }
             },error:function (state,obj) {
                 console.log("免费试玩账号异常");
