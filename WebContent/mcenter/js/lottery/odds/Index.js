@@ -130,10 +130,19 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     minlimit = baseNum*rebate;
                     if (odd != ori || rebate !=rori) {
                         if (!$input.valid()|| !$rinput.valid()) {
+                            $target.unlock();
                             return;
                         }
                         limit = $input.attr("data-limit");
                         rlimit = $rinput.attr("data-limit");
+                        //返点比例上限提示
+                        if (rebate > rlimit) {
+                            validate.settings.highlight.call(validate, $rinput, validate.settings.errorClass, validate.settings.validClass);
+                            validate.showLabel($rinput, '返点比例不能超过上限' + rlimit);
+                            $target.unlock();
+                            return;
+                        }
+
                         //超过赔率定义上限需提示
                         if (odd > limit || odd <minlimit) {
                             validate.settings.highlight.call(validate, $input, validate.settings.errorClass, validate.settings.validClass);
@@ -141,19 +150,15 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                             $target.unlock();
                             return;
                         }
-                        if (rebate > rlimit) {
-                            validate.settings.highlight.call(validate, $rinput, validate.settings.errorClass, validate.settings.validClass);
-                            validate.showLabel($rinput, '返点比例不能超过上限' + rlimit);
-                            $target.unlock();
-                            return;
-                        }
+
                         obj = {
                             'id': $(oddObj).find("input[name$=id]").val(),
                             'odd': odd,
                             'betCode': null,
                             'betNum': null,
                             'code': null,
-                            'rebate':rebate
+                            'rebate':rebate,
+                            'baseNum':baseNum
                         };
                         array.push(obj);
                     }
