@@ -56,6 +56,39 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                 resultCode[resultIndex] = dataList[i];
                 this.combinationSelect(allResult,dataList, i + 1, resultCode, resultIndex + 1,resultLen);
             }
+        },
+        //六合彩封盘
+        closeLhcHandicap: function () {
+            console.log("六合彩封盘了");
+            $("#subContent td").unbind("click");//移除变黄点击事件
+            $(".kjanniu a").unbind("click");//快捷金额按钮移除点击事件
+            $("#subContent td input").attr("placeholder","已封盘");
+            $("#subContent td input").attr("disabled",true);
+            $("#inputMoney").attr("disabled",true);
+            $("#inputMoney").attr("placeholder","已封盘");
+            $("#subContent td input[type='checkbox']").attr("disabled",true);
+            $("#subContent button[type='submit']").unbind("click");
+            $(".main-left .fr .T-tab a").unbind("click");
+            if ($("#subContent td").hasClass("new-ball-st")){
+                $("#subContent td").addClass("block-bet-btn");
+            }
+        },
+        //六合彩开盘
+        openLhcHandicap: function () {
+            console.log("六合彩开盘了11")
+            $("#subContent td input").attr("placeholder","");
+            $("#subContent td input").attr("disabled",false);
+            $("#inputMoney").attr("disabled",false);
+            $("#inputMoney").attr("placeholder","");
+            $("#subContent td input[type='checkbox']").attr("disabled",false);
+            $("#subContent td").removeClass("block-bet-btn");
+            this.init();
+        },
+        setShortcutkeyButton: function () {
+            this._super();
+            if(!page.isLhcOpen) {
+                this.closeLhcHandicap();
+            }
         }
     })
 });
