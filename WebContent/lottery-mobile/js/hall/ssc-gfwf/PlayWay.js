@@ -21,12 +21,22 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             });
 
             //直选复式
-            mui(".x_3.gfwf-playName")[0].addEventListener('tap',function(){
+            // mui(".x_3.gfwf-playName")[0].addEventListener('tap',function(){
+            //     mui(".gfwf-wrap")[0].classList.toggle('Fixed');
+            // });
+            // mui(".gfwf-bg")[0].addEventListener('tap',function(){
+            //     mui(".gfwf-wrap")[0].classList.remove('Fixed');
+            // });
+
+            mui("body").on('tap','.x_3.gfwf-playName.top',function(){
                 mui(".gfwf-wrap")[0].classList.toggle('Fixed');
             });
-            mui(".gfwf-bg")[0].addEventListener('tap',function(){
-                mui(".gfwf-wrap")[0].classList.remove('Fixed');
+
+            mui("body").on('tap','.gfwf-bg',function(){
+                mui(".gfwf-wrap")[0].classList.toggle('Fixed');
             });
+
+
         },
         menuClick:function(thisClassList){
             var _this = this;
