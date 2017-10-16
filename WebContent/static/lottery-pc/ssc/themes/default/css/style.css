@@ -2117,3 +2117,14 @@ i.bg-1,i.bg-2,i.bg-3,i.bg-4,i.bg-5,i.bg-6,i.bg-7,i.bg-8,i.bg-9,i.bg-10{border-ra
 	display: inline-block;
 	font-size: 13px;
 }
+
+/*六合彩封盘效果*/
+.block-bet-btn .pl{
+	background: #ccc!important;
+    border: 1px #ccc solid!important;
+    color: #a5a5a5!important;
+    text-shadow: none!important;
+}
+.new-ball-st.lhc-num.block-bet-btn .pl:before{
+	background: url(../images/ball-lhc-num-block.png);
+}

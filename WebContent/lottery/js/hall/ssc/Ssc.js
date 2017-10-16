@@ -463,21 +463,21 @@ define(['site/hall/common/Common'], function (Common) {
                 layer.close(this.layerId);
                 this.layerId = null;
             }
-            if (typeof page.PlayWay.layerInfo != 'undefined' && page.PlayWay.layerInfo != null) {
+            if (typeof page.PlayWay != "undefined"  && typeof page.PlayWay.layerInfo != 'undefined' && page.PlayWay.layerInfo != null) {
                 layer.close(page.PlayWay.layerInfo);
                 page.PlayWay.layerInfo = null;
             }
 
-            if (typeof page.PlayWay.layerInfoInsert != 'undefined' && page.PlayWay.layerInfoInsert != null) {
+            if (typeof page.PlayWay != "undefined"  && typeof page.PlayWay.layerInfoInsert != 'undefined' && page.PlayWay.layerInfoInsert != null) {
                 layer.close(page.PlayWay.layerInfoInsert);
                 page.PlayWay.layerInfoInsert = null;
             }
 
-            if (typeof page.PlayWay.layerTishi1 != 'undefined' && page.PlayWay.layerTishi1 != null) {
+            if (typeof page.PlayWay != "undefined"  &&  typeof page.PlayWay.layerTishi1 != 'undefined' && page.PlayWay.layerTishi1 != null) {
                 layer.close(page.PlayWay.layerTishi1);
                 page.PlayWay.layerTishi1 = null;
             }
-            if (typeof page.PlayWay.layerTishi2 != 'undefined' && page.PlayWay.layerTishi2 != null) {
+            if (typeof page.PlayWay != "undefined"  &&  typeof page.PlayWay.layerTishi2 != 'undefined' && page.PlayWay.layerTishi2 != null) {
                 layer.close(page.PlayWay.layerTishi2);
                 page.PlayWay.layerTishi2 = null;
             }
@@ -486,7 +486,7 @@ define(['site/hall/common/Common'], function (Common) {
                 if (isReset && typeof this.reset == 'function') {
                     this.reset();
                 }
-                if(isReset){
+                if(typeof page.PlayWay != "undefined"  && isReset){
                     page.PlayWay.clearSelected();
                     page.PlayWay.clearTextarea();
                     page.PlayWay.clearContent();
