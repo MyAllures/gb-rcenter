@@ -61,6 +61,7 @@
         /*通用真人手风琴脚本*/
         liveAccordion();
         /*浮窗判断脚本*/
+        transWebUrlSlide();
     <#if data.floatPicsInIndex??>
         <#list data.floatPicsInIndex as pic>
             <#if pic.location == "left">
@@ -384,8 +385,21 @@
             draggable: true,
             title: "${imgTitl}",
         <#--title: "${.now}",-->
-            message: $('<a href="<#if link?default("")=="">javascript:void(0)<#else >${link}</#if>"><img  src="${imgSrc}" /></a>'),
-            size: 'index-modal'
+            size: 'index-modal',
+            message: function(dialog) {
+                var _href = "${link}";
+                if(_href!=undefined && _href!=""){
+                    if(_href.indexOf("\$\{website\}")>-1){
+                        _href = window.location.host;
+                    }else{
+                        _href = "javascript:void(0)";
+                    }
+                }else{
+                    _href = "javascript:void(0)";
+                }
+                var $message = $('<a href="'+_href+'"><img  src="${imgSrc}"/></a>');
+                return $message;
+            }
         });
         // 定时关闭
         setTimeout(function () {
@@ -393,6 +407,7 @@
         }, 60000);
     </#if>
     }
+
     /*公共维护状态检测设置 By Faker*/
     function maintainCheck(){
         var newTime = $("._user_time").attr("time");
@@ -588,6 +603,22 @@
                 $(tar).children("a").attr("href",_href.replace("\$\{website\}",window.location.host))
             }
         })
+    }
+
+    function transWebUrlSlide(){
+        var slide = $("._vr_carousels_check");
+        if(slide){
+            $("._vr_carousels_check").each(function(i,tar){
+                var _href = $(tar).children("a").attr("href");
+                if(typeof _href!="undefined" && _href.indexOf("\$\{website\}")>-1){
+                    _href = _href.replace("\$\{website\}",window.location.host);
+                }
+                if(_href.indexOf("http")==-1){
+                    _href = "http://" + _href;
+                }
+                $(tar).children("a").attr("href",_href);
+            })
+        }
     }
 
     //当前站点的api name
@@ -852,6 +883,19 @@
                 if (data) {
                     changeLoginStatus();
                 }
+            }
+        });
+    }
+    //免费试玩账号
+    function createFreeAccount() {
+        $.ajax('/register/createFreeAccount.html', {
+            dataType: 'json',
+            success: function (data) {
+                if (data&&data.status==true) {
+                    window.location.href ="/";
+                }
+            },error:function (state,obj) {
+                console.log("免费试玩账号异常");
             }
         });
     }

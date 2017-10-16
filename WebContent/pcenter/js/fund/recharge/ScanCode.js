@@ -299,7 +299,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             var max = $target.find("input.onlinePayMax").val();
             var min = $target.find("input.onlinePayMin").val();
             if (!min || min == 0) {
-                min = '1';
+                min = '0.01';
             }
             if (!max || max == 0) {
                 max = '99,999,999';
