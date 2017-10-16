@@ -60,8 +60,10 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 dataType: 'json',
                 success: function (data) {
                     var state = data.state;
-                    if (state == false && data.msg) {
-                        e.page.showPopover(e, option, 'warning', data.msg, true);
+                    var msg = window.top.message.fund['Recharge.digiccyRecharge.'+data.msg];
+                    if (state == false && data.msg && msg) {
+                        option.callback = 'back';
+                        e.page.showPopover(e, option, 'warning', msg, true);
                     } else if (state == true) {
                         var btnOption = {};
                         btnOption.target = root + '/fund/recharge/digiccy/sale.html?search.transactionNo=' + data.transactionNo;
