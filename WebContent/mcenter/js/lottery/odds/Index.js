@@ -144,9 +144,9 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                         }
 
                         //超过赔率定义上限需提示
-                        if (odd > limit || odd <minlimit) {
+                        if (odd > limit || odd <=minlimit) {
                             validate.settings.highlight.call(validate, $input, validate.settings.errorClass, validate.settings.validClass);
-                            validate.showLabel($input, '当前奖金不能超过上限' + limit+'不能低于'+minlimit);
+                            validate.showLabel($input, '当前奖金不能超过上限' + limit+'不能小于等于'+minlimit);
                             $target.unlock();
                             return;
                         }
