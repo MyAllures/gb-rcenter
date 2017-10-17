@@ -5048,3 +5048,20 @@ div.setting {
     position: absolute;
     right: 10px;
 }
+
+/*玩家中心数字支付*/
+.xzzf-wrap .title-wrap .logo{height: 30px; vertical-align: middle;margin-left: 10px;}
+.xzzf-wrap .title-wrap .title{margin-left: 10px;vertical-align: top;display: inline-block;max-width: 90px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.xzzf-wrap .title-wrap span{font-size: 14px;}
+
+.xzzf-wrap .title-wrap .ye-num{vertical-align: top; display:inline-block;max-width: 100px; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+
+.xzzf-wrap .mui-input-row .mui-btn{width: auto;padding: 6px 12px;line-height: initial;margin: 4px 0 0 5px;}
+.xzzf-wrap .mui-input-row:after{left: 0;}
+.xzzf-wrap .mui-input-row .list-xzzf{text-align: center;padding: 0 15px;}
+.xzzf-wrap .mui-input-row .list-xzzf .info{margin-top: -15px;}
+.xzzf-wrap .mui-input-row .list-xzzf .textarea{background: #eeeeee;border: 1px solid #ddd;margin-top: 11px;}
+.mui-active .gb-withdraw-box{display: block;}
+.d-none {display: none;}
+.d-none.mui-active{display: block;}
+.pro-selec{background-color: #efefef;}
