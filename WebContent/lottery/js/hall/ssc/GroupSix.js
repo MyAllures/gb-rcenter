@@ -18,6 +18,10 @@ define(['site/hall/ssc/PlayWay'], function (PlayWay) {
                 $(this).addClass('active');
                 _this.getoddsa();
             })
+            $("#subContent .btns .btn-2").click(function () {
+                _this.clearTdInput();
+                $("span#pl").text("");
+            })
         },
         getoddsa: function () {
             var _this = this;

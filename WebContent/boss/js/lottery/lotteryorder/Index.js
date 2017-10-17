@@ -40,6 +40,10 @@ define(['common/BaseListPage'], function (BaseListPage) {
             if($("#search_id").val()!=""){
                 this.queryStatMoney();
             }
+            $('[data-toggle="popover"]',this.formSelector).popover({
+                trigger: 'hover',
+                html: true
+            });
         },
 
         queryByLottery:function (e, opt) {
