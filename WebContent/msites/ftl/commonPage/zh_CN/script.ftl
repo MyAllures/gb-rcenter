@@ -900,9 +900,15 @@
                 if (data&&data.status==true) {
                     window.sessionStorage.demoModel = data.demoModel;
                     changeLoginStatus();
+                }else if(data&&data.status==false) {
+                    window.sessionStorage.demoModel = "";
+                    alert(data.msg);
+                }else{
+                    window.sessionStorage.demoModel = "";
                 }
             },error:function (state,obj) {
-                console.log("免费试玩账号异常");
+                alert("免费试玩账号异常");
+                window.sessionStorage.demoModel = "";
             }
         });
     }
@@ -1366,6 +1372,7 @@
             success: function(data) {
                 if (window.sessionStorage){
                     sessionStorage.is_login = false;
+                    sessionStorage.demoModel = null;
                 }
                 window.location.href="/";
             }
