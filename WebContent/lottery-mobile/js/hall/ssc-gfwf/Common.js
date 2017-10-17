@@ -28,7 +28,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             //     mui(".gfwf-wrap")[0].classList.remove('Fixed');
             // });
 
-            mui("body").on('tap','.x_3.gfwf-playName.top',function(){
+            mui("body").on('tap','.gfwf-playName',function(){
                 mui(".gfwf-wrap")[0].classList.toggle('Fixed');
             });
 
