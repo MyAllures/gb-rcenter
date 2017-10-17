@@ -286,9 +286,12 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
          * 随机算法-前二组选复式
          */
         random_q2zuxfs : function () {
-            var random_1 = parseInt(Math.random() * 10);
-            var random_2 = parseInt(Math.random() * 10);
-
+            var random_1 = 0;
+            var random_2 = 0;
+            while (random_1 ==random_2){
+                random_1 = parseInt(Math.random() * 10);
+                random_2 = parseInt(Math.random() * 10);
+            }
             $("a.n-btn.kuadu").removeClass("mui-active").eq(random_1).addClass("mui-active");
             $("a.n-btn.kuadu").eq(random_2).addClass("mui-active");
 

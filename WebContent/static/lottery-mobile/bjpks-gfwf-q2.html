@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>Perfect Lottery</title>
+    <title></title>
     <link href="../../lottery-mobile/themes/mui.min.css" rel="stylesheet"/>
     <link href="../../lottery-mobile/themes/style.css" rel="stylesheet"/>
     <link href="../../lottery-mobile/themes/skin/orange/style.css" rel="stylesheet"/>
@@ -108,32 +108,34 @@
 		</aside>
 		<div class="mui-inner-wrap">
 	    <header class="mui-bar mui-bar-top mui-bar-nav ">
-	    	<a href="#offCanvasSide" class="mui-icon iconfont icon-jtleft mui-action-menu mui-pull-left bar-top-l-h">
-	    		彩种列表
-	    	</a>
-	    	<h1 class="mui-title"><a class="gfwf-title" href="bjpks-gfwf.html">北京PK拾-信用模式</a></h1>
+	    	<a href="#offCanvasSide" class="mui-icon iconfont icon-zuocaidan t-icon-left mui-action-menu mui-pull-left bar-top-l-h">彩种列表</a>
+	    	<h1 class="mui-title"><a class="gfwf-title" href="bjpks.html">北京PK拾-官方模式</a></h1>
 	    	<div class="mui-pull-right bar-top-l-h">
 	    		<a href="#offCanvasSideRight" class="top-bar-btn n-broder mui-action-menu">菜单</a>
 	        </div>
 	    </header>
-	    <div class="mui-scroll-wrapper middle-content middle-content-bat">
+	    <div class="mui-scroll-wrapper middle-content middle-content-bat gfwf-wrap">
 			<div class="mui-scroll">
-				<div class="mui-scroll-wrapper ssc-method-list">
-				    <div class="mui-scroll mui-segmented-control ssc-method-label">
-                        <a href="bjpks.html" class="mui-control-item mui-active">双面</a>
-                        <a href="bjpks1.html" class="mui-control-item">数字盘</a>
-                        <a href="bjpks2.html" class="mui-control-item">冠军</a>
-                        <a href="bjpks2.html" class="mui-control-item">亚军</a>
-                        <a href="bjpks2.html" class="mui-control-item">季军</a>
-                        <a href="bjpks2.html" class="mui-control-item">第四名</a>
-                        <a href="bjpks2.html" class="mui-control-item">第五名</a>
-                        <a href="bjpks2.html" class="mui-control-item">第六名</a>
-                        <a href="bjpks2.html" class="mui-control-item">第七名</a>
-                        <a href="bjpks2.html" class="mui-control-item">第八名</a>
-                        <a href="bjpks2.html" class="mui-control-item">第九名</a>
-                        <a href="bjpks2.html" class="mui-control-item">第十名</a>
-                        <a href="bjpks3.html" class="mui-control-item">冠亚和</a>
-                    </div>
+				<div class="mui-scroll-wrapper ssc-method-list gfwf-list">
+				    <div class="x_wrap">
+				    	<span class="x_1 gfwf-tit">前二</span>
+				    	<span class="x_2"><img src="../../lottery-mobile/images/ico22.png"></span>
+				    	<span class="x_3 gfwf-playName">直选复式</span>
+				    </div>	
+				    <div class="selected-wrap">
+				    	<div class="s-title"><span>定位胆</span></div>
+				    	<div class="s-menu">
+				    		<a href="bjpks-gfwf.html" class="selected-btn mui-col-xs-4"><span>前一</span></a>
+				    		<a href="bjpks-gfwf-q2.html" class="selected-btn mui-col-xs-4 mui-active"><span>前二</span></a>
+				    		<a href="bjpks-gfwf-q3.html" class="selected-btn mui-col-xs-4"><span>前三</span></a>
+				    		<a href="bjpks-gfwf-dwd.html" class="selected-btn mui-col-xs-4"><span>定位胆</span></a>
+				    	</div>
+				    	<div class="s-title"><span>直选复式</span></div>
+				    	<div class="s-menu">
+				    		<a href="#" class="selected-btn mui-col-xs-4 mui-active"><span>直选复式</span></a>
+				    	</div>
+				    </div>
+				    <div class="gfwf-bg"></div>
                 </div>
                 <div class="gray-lump">
                 	<span class="mui-pull-left inline-list-2 title">
@@ -188,344 +190,141 @@
                         </li>
                     </ul>
                 </div>
+                
                 <div class="bet-table">
-                	<div class="bet-title">冠军</div>
-                	<div class="bet-table-list">
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td>
-                						<span>大</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>小</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>单</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>双</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>龙</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>虎</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                			</tbody>
-                		</table>
+                	<div class="newball-content-top gfwf-top">
+                		<span class="left-titel">冠军</span>
+                		<span class="xz mui-segmented-control">
+                            <i class="mui-control-item">全</i>
+                            <i class="mui-control-item">大</i>
+                            <i class="mui-control-item">小</i>
+                            <i class="mui-control-item">奇</i>
+                            <i class="mui-control-item">偶</i>
+                            <i class="mui-control-item mui-active">清</i>
+                        </span>
                 	</div>
-                	<div class="bet-title">亚军</div>
-                	<div class="bet-table-list">
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td>
-                						<span>大</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>小</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>单</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>双</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>龙</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>虎</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                			</tbody>
-                		</table>
+                	<ul class="newball-content mui-table-view">
+						<li class="screen-munber">
+							<div class="newball-item-20"><a href="#" class="n-btn">1</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">2</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">3</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">4</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">5</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">6</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">7</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">8</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">9</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">10</a></div>
+						</li>
+					</ul>
+					<div class="newball-content-top gfwf-top">
+                		<span class="left-titel">亚军</span>
+                		<span class="xz mui-segmented-control">
+                            <i class="mui-control-item">全</i>
+                            <i class="mui-control-item">大</i>
+                            <i class="mui-control-item">小</i>
+                            <i class="mui-control-item">奇</i>
+                            <i class="mui-control-item">偶</i>
+                            <i class="mui-control-item mui-active">清</i>
+                        </span>
                 	</div>
-                	<div class="bet-title">季军</div>
-                	<div class="bet-table-list">
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td>
-                						<span>大</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>小</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>单</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>双</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>龙</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>虎</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                			</tbody>
-                		</table>
-                	</div>
-                	<div class="bet-title">第四名</div>
-                	<div class="bet-table-list">
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td>
-                						<span>大</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>小</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>单</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>双</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>龙</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>虎</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                			</tbody>
-                		</table>
-                	</div>
-                	<div class="bet-title">第五名</div>
-                	<div class="bet-table-list">
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td>
-                						<span>大</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>小</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>单</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>双</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>龙</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>虎</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                			</tbody>
-                		</table>
-                	</div>
-                	<div class="bet-title">第六名</div>
-                	<div class="bet-table-list">
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td>
-                						<span>大</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>小</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>单</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>双</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>	
-                			</tbody>
-                		</table>
-                	</div>
-                	<div class="bet-title">第七名</div>
-                	<div class="bet-table-list">
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td>
-                						<span>大</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>小</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>单</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>双</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>	
-                			</tbody>
-                		</table>
-                	</div>
-                	<div class="bet-title">第八名</div>
-                	<div class="bet-table-list">
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td>
-                						<span>大</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>小</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>单</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>双</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>	
-                			</tbody>
-                		</table>
-                	</div>
-                	<div class="bet-title">第九名</div>
-                	<div class="bet-table-list">
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td>
-                						<span>大</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>小</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>单</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>双</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>	
-                			</tbody>
-                		</table>
-                	</div>
-                	<div class="bet-title">第十名</div>
-                	<div class="bet-table-list">
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td>
-                						<span>大</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>小</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>
-                				<tr>
-                					<td>
-                						<span>单</span>
-                						<span>9.85</span>
-                					</td>
-                					<td>
-                						<span>双</span>
-                						<span>9.85</span>
-                					</td>
-                				</tr>	
-                			</tbody>
-                		</table>
-                	</div>
+                	<ul class="newball-content mui-table-view">
+						<li class="screen-munber">
+							<div class="newball-item-20"><a href="#" class="n-btn">1</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">2</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">3</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">4</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">5</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">6</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">7</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">8</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">9</a></div>
+						    <div class="newball-item-20"><a href="#" class="n-btn">10</a></div>
+						</li>
+					</ul>
                 </div>
            </div>
            <div >
            </div>
 	    </div>
-		<nav class="mui-bar mui-bar-tab bet-bar-buttom">
-			<div class="mui-pull-left bar-bottom-l-h">
-				已选<font class="col-red">0</font>注
+		<nav class="mui-bar mui-bar-tab bet-bar-buttom gfwf-buttom">
+			<div class="mui-pull-left bar-bottom-l-h tab-gfwf-clear">
+				<a href="#" class="bottom-bar-btn btn-jixuan-gfwf mui-active">机选</a>
+				<a href="#" class="bottom-bar-btn btn-reset-gfwf">清除</a>
+			</div>
+			<div class="bar-bottom-l-h gfwf-l-h">
+				已选 <font class="co-black">0</font> 注，共 <font class="col-red">2</font> 元
 			</div>
 			<div class="mui-pull-right bar-bottom-l-h">
-				<a href="betting-order.html" class="bottom-bar-btn" id="show-t">投注</a>
+				<a href="#" class="bottom-bar-btn" id="show-t">投注</a>
 			</div>
 		</nav>
 		<div class="mui-off-canvas-backdrop"></div>
 		</div>
 	</div>
-		<script src="../../lottery-mobile/js/mui/mui.min.js"></script>
+		<div class="d-none" id="dingdan">
+	<div class="mui-popup mui-popup-in">
+		<div class="mui-popup-inner">
+			<div class="mui-popup-title">下注清单</div>
+			<div class="layui-m-layercont">
+				<div class="betContent">
+            <div class="slidebg">
+                <div class="slide-top slide-item">
+                    <span class="ft"><label>赔率：</label><label id="betContent_playPl" class="fandian" data-value="9.800">9.800</label></span>&nbsp;&nbsp;
+                    <span class="fr"><label>返利：</label><label id="betContent_fanli" class="fanli" data-value="0">0%</label></span>
+                </div>
+                <div class="mui-input-row mui-input-range playPlRangeContainer slide-item">
+		            <input type="range" id="block-range" value="50" min="0" max="100" data-input-slider="4">
+		            <span class="mui-tooltip mui-hidden"></span>
+		        </div>
+                
+                <div class="slide-item">
+                    <span>单注金额：
+                        <input type="number" min="2" value="2" id="betContent_inputMoney">&nbsp;
+                        <span class="mode_select selected" data-value="1">元</span>
+                        <span class="mode_select" data-value="2">角</span>
+                        <span class="mode_select" data-value="3">分</span>
+                        <span class="dzje_add">+</span>
+                    </span>
+                </div>
+                <div class="slide-item">
+                    <span>下注倍数：
+                        <input type="number" min="1" value="1" id="betContent_inputBeishu">倍
+                        <span class="beishu_remove">-</span>
+                        <span class="beishu_add">+</span>
+                    </span>
+                </div>
+                <div class="slide-item">
+                    <span>下注注数：
+                        <font id="betContent_zhushu" data-value="1">1</font>注
+                    </span>
+                </div>
+                <div class="slide-item">
+                    <span>下注总额：
+                        <font id="betContent_totalMoney">2</font>元
+                    </span>
+                </div>
+                <div class="slide-item">
+                    <span>若中奖，单注最高中：
+                        <font id="betContent_canWin" color="green">19.6</font>元
+                    </span>
+                </div>
+                <div class="slide-item"></div>
+            </div>
+        </div>
+			</div>
+			
+		</div>
+		<div class="mui-popup-buttons">
+			<span class="mui-popup-button" id="quxiao">取消</span>
+			<span class="mui-popup-button mui-popup-button-bold">确定</span>
+		</div>
+	</div>
+    <div class="mui-popup-backdrop mui-active"></div>
+    </div>
+	<script src="../../lottery-mobile/js/mui/mui.min.js"></script>
+	<script src="../../lottery-mobile/js/jquery/jquery-2.1.1.js"></script>
+
 <script>
 	        mui.init();
 			var autoShow = true;
@@ -556,15 +355,15 @@
 		        bounce: false //是否启用回弹
 	        });
 	        /*滚动菜单*/
-			mui('.ssc-method-list').scroll({
-		        scrollY: false, //是否竖向滚动
-		        scrollX: true, //是否横向滚动
-		        startX: 0, //初始化时滚动至x
-		        startY: 0, //初始化时滚动至y
-		        indicators: false, //是否显示滚动条
-		        deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
-		        bounce: false //是否启用回弹
-	        });
+//			mui('.ssc-method-list').scroll({
+//		        scrollY: false, //是否竖向滚动
+//		        scrollX: true, //是否横向滚动
+//		        startX: 0, //初始化时滚动至x
+//		        startY: 0, //初始化时滚动至y
+//		        indicators: false, //是否显示滚动条
+//		        deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+//		        bounce: false //是否启用回弹
+//	        });
 //	        mui('.layui-m-layercont').scroll({
 //		        scrollY: true, //是否竖向滚动
 //		        scrollX: false, //是否横向滚动
@@ -606,17 +405,45 @@
 				}
 				
 			});
+//			直选复式
+            mui(".gfwf-playName")[0].addEventListener('tap',function(){
+
+            	mui(".gfwf-wrap")[0].classList.toggle('Fixed');
+            });
+            mui(".gfwf-bg")[0].addEventListener('tap',function(){
+            	mui(".gfwf-wrap")[0].classList.remove('Fixed');
+            });
             
+//          机选清除
+            mui(".btn-jixuan-gfwf")[0].addEventListener('tap',function(){
+
+            	this.classList.remove('mui-active');
+            	mui(".btn-reset-gfwf")[0].classList.add('mui-active');
+            });
+            mui(".btn-reset-gfwf")[0].addEventListener('tap',function(){
+
+            	this.classList.remove('mui-active');
+            	mui(".btn-jixuan-gfwf")[0].classList.add('mui-active');
+            });
             //投注选择
+            
             mui(".bet-table .bet-table-list").on('tap','td',function(){
+
             	this.classList.toggle('mui-active');
             });
             document.getElementById("show-t").addEventListener('tap',function(){
+
             	document.getElementById("dingdan").classList.toggle('mui-active');
+            });
+            mui(".screen-munber").on('tap','a',function(){
+
+            	this.classList.toggle('mui-active');
             });
             document.getElementById("quxiao").addEventListener('tap',function(){
+
             	document.getElementById("dingdan").classList.toggle('mui-active');
             });
+    
 </script>
 		
 </body>
