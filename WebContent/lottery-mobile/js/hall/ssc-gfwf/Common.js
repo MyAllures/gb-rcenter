@@ -29,13 +29,14 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             // });
 
             mui("body").on('tap','.gfwf-playName',function(){
-                mui(".gfwf-wrap")[0].classList.toggle('Fixed');
-                // $("div.selected-wrap").show();
+                // mui(".gfwf-wrap")[0].classList.toggle('Fixed');
+                $('div.selected-wrap').toggle();
+                $('div.gfwf-bg').toggle();
             });
 
             mui("body").on('tap','.gfwf-bg',function(){
-                mui(".gfwf-wrap")[0].classList.toggle('Fixed');
-                // $("div.selected-wrap").hide();
+                $('div.gfwf-bg').slideUp();
+                $('div.selected-wrap').slideUp();
             });
 
 
@@ -60,7 +61,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 && dataCode !="R3"
                 && dataCode !="R4"
             ){
-                mui(".gfwf-wrap")[0].classList.remove('Fixed');
+                $('div.gfwf-bg').slideUp();
+                $('div.selected-wrap').slideUp();
             }
             _this.getBetTable(dataCode,jspName);
             _this.resetBet();
