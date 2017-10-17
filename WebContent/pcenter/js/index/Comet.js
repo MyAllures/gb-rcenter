@@ -17,7 +17,8 @@ define(['gb/components/Comet','site/index/PopUp','cookie'], function(Comet,PopUp
                     {subscribeType:"MSITE-Player-Withdraw-Notice",callBack:popUp.playerWithdrawDialogCallBack},
                     {subscribeType:"MSITE-Player-Announcement-Notice",callBack:popUp.playerAnnouncementDialogCallBack},
                     {subscribeType:"MCENTER_READ_COUNT",callBack:popUp.unReadNotice},
-                    {subscribeType:"MSITE-ONLINERECHARGE",callBack:popUp.onlineRecharge}
+                    {subscribeType:"MSITE-ONLINERECHARGE",callBack:popUp.onlineRecharge},
+                    {subscribeType:"MSITE_DIGICCY_REFRESH_BALANCE",callBack:popUp.digiccyRefreshBalance}
                 ];
                 _this.subscribeMsgs(subscribes);
             };

@@ -111,7 +111,7 @@ define(['gb/components/PopUp'], function (PopUp) {
             var result = eval("(" + eval("(" + data + ")").msgBody + ")");
             var orderId = result.orderId;
             var $target = $("a._submit");
-            if (orderId == window.top.onlineTransactionNo && $target.length>0) {
+            if (orderId == window.top.onlineTransactionNo && $target.length > 0) {
                 window.top.onlineTransactionNo = null;
                 var url = root + "/fund/recharge/online/onlineOverTime.html?search.transactionNo=" + orderId;
                 var btnOption = {};
@@ -122,6 +122,36 @@ define(['gb/components/PopUp'], function (PopUp) {
                 var _e = {currentTarget: $target, page: page};
                 window.top.topPage.doDialog(_e, btnOption);
             }
+        },
+        /**
+         * 刷新余额
+         * @param data
+         */
+        digiccyRefreshBalance: function (data) {
+            if ($("form[name=digiccyPayForm]").length <= 0) {
+                return;
+            }
+            window.top.topPage.ajax({
+                url: root + '/fund/recharge/digiccy/getBalances.html',
+                dataType: 'json',
+                success: function (data) {
+                    if (data) {
+                        for (var i = 0; i < data.length; i++) {
+                            var map = data[i];
+                            var currency = map.currency;
+                            var amount = map.amount;
+                            var $bal = $("[name=account" + currency + "] .s-yue .orange");
+                            if (Number($bal.text()) != amount) {
+                                var loading = '<em class="t-load"></em>';
+                                $bal.html(loading);
+                                window.setTimeout(function () {
+                                    $bal.text(amount);
+                                }, 1000);
+                            }
+                        }
+                    }
+                }
+            })
         }
     });
 });
