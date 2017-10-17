@@ -30,22 +30,33 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 success: function (data) {
                     var address = data.address;
                     if (address) {
+                        option.data = data;
+                        option.callback = 'addressBack';
                         e.page.showPopover(e, option, 'success', '生成地址成功', true);
-                        window.setTimeout(function () {
-                            var html = $("#addressRender").render({data: data});
-                            $("#" + currency).html(html);
-                            var clip = new ZeroClipboard($('button[name="copy"]'));
-                            clip.on('aftercopy', function (e) {
-                                e.currentTarget = e.target;
-                                page.showPopover(e, {}, 'success', window.top.message.fund_auto['复制成功'], true);
-                            });
-                        }, 1000);
                     } else {
                         e.page.showPopover(e, option, 'warning', '生成地址失败请稍后再试！', true);
                     }
                     $(e.currentTarget).unlock();
                 }
             })
+        },
+        /**
+         * 生成地址回调
+         * @param e
+         * @param option
+         */
+        addressBack: function (e, option) {
+            var currency = option.currency;
+            var data = option.data;
+            var html = $("#addressRender").render({data: data});
+            $("#" + currency).html(html);
+            var $currencyInfo = $("div[name=account" + currency + "]");
+            $currencyInfo.find(".s-yue").show();
+            var clip = new ZeroClipboard($('button[name="copy"]'));
+            clip.on('aftercopy', function (e) {
+                e.currentTarget = e.target;
+                page.showPopover(e, {}, 'success', window.top.message.fund_auto['复制成功'], true);
+            });
         },
         /**
          * 兑换
@@ -60,7 +71,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 dataType: 'json',
                 success: function (data) {
                     var state = data.state;
-                    var msg = window.top.message.fund['Recharge.digiccyRecharge.'+data.msg];
+                    var msg = window.top.message.fund['Recharge.digiccyRecharge.' + data.msg];
                     if (state == false && data.msg && msg) {
                         option.callback = 'back';
                         e.page.showPopover(e, option, 'warning', msg, true);
