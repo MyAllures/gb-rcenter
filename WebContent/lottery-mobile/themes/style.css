@@ -963,8 +963,8 @@ a.popup-screen-btn:visited{
 .x_wrap .x_2 img { height: 0.9rem;}
 .x_wrap .x_3 { width: 45%; display: inline-block; position: relative;}
 .x_wrap .x_3:after{content:""; width: 0px; height: 0px; border-width: 7px; border-style: solid; border-color: #101010 transparent transparent transparent; display: inline; position: relative; top: 0.54rem; right: -0.3rem;}
-.gfwf-bg{display:none;position: fixed; top: 87px; width: 100%; height: 100%; background:rgba(0,0,0,0.5); z-index: 11;}
-.selected-wrap{position: absolute; z-index: 12; background: #fff;display: none; top: 87px;}
+.gfwf-bg{display:none;position: fixed; top: 4.10rem; width: 100%; height: 100%; background:rgba(0,0,0,0.5); z-index: 11;}
+.selected-wrap{position: absolute; z-index: 12; background: #fff;display: none; top: 4.10rem;width: 100%;}
 .selected-wrap .s-title{height: 25px; position: relative;text-align: center;}
 .selected-wrap .s-title span{display: inline-block;background:#fff;position: relative; background:#fff; color: #fa6200; padding: 0 10px;z-index: 4;}
 .selected-wrap .s-title:after{content: "";height: 1px;width: 100%; background: #ddd;position: absolute;top: 9px;z-index: 3;left: 0;}
