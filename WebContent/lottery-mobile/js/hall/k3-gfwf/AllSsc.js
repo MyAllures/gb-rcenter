@@ -380,7 +380,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                         var strArr = [];
                         var zxzh  = 0;
                         $.each(plAndMaxFd, function (index, value) {
-                            strArr.push(_this.getArgNum((value.odd - fandianBili/100 * value.baseNum)).toFixed(3));
+                            strArr.push(_this.getArgNum((value.odd - fandianBili/100 * value.baseNum)));
                             zxzh = _this.getArgNum(zxzh +(value.odd - fandianBili/100 * value.baseNum));
                         });
                         $("#betContent_playPl").html(strArr.join('|'));
@@ -389,7 +389,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                         }
                     } else {
                         var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd.baseNum));
-                        $("#betContent_playPl").attr("data-value", pl);
+                        $("#betContent_playPl").attr("data-value", pl.toFixed(3));
                         $("#betContent_playPl").html(pl.toFixed(3));
                     }
                     // 渲染下注总额，奖金等等
