@@ -30,10 +30,12 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
             mui("body").on('tap','.gfwf-playName',function(){
                 mui(".gfwf-wrap")[0].classList.toggle('Fixed');
+                // $("div.selected-wrap").show();
             });
 
             mui("body").on('tap','.gfwf-bg',function(){
                 mui(".gfwf-wrap")[0].classList.toggle('Fixed');
+                // $("div.selected-wrap").hide();
             });
 
 

@@ -14,19 +14,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             _this.changeList();
             //头部选择
             mui("div.s-menu").on('tap','a',function(){
-                //检测是否为定位胆，五星，四星 直选复式事件
-                if($(this).attr("data-code") !='zxfs'){
-                    _this.menuClick(this.classList);
-                }
+                _this.menuClick(this.classList);
             });
-
-            //直选复式
-            // mui(".x_3.gfwf-playName")[0].addEventListener('tap',function(){
-            //     mui(".gfwf-wrap")[0].classList.toggle('Fixed');
-            // });
-            // mui(".gfwf-bg")[0].addEventListener('tap',function(){
-            //     mui(".gfwf-wrap")[0].classList.remove('Fixed');
-            // });
 
             mui("body").on('tap','.x_3.gfwf-playName.top',function(){
                 mui(".gfwf-wrap")[0].classList.toggle('Fixed');
@@ -78,7 +67,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         },
         changeList : function(){
             mui.ajax(root + '/'+this.type+'/'+this.code+'/getBetTable.html', {
-                data: {"betCode": "ssc_yixing_dwd","jspStr":"SscWuxing"},
+                data: {"betCode": "k3_tongxuan_santong","jspStr":"K3Tongxuan"},
                 type: 'POST',
                 success: function (data) {
                     $(".bet-table").html(data);
