@@ -16,9 +16,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             mui("div.s-menu").on('tap','a',function(){
                 _this.menuClick(this.classList);
             });
-
+            //标准选号
             mui("body").on('tap','.gfwf-playName',function(){
-                // mui(".gfwf-wrap")[0].classList.toggle('Fixed');
                 $('div.selected-wrap').toggle();
                 $('div.gfwf-bg').toggle();
             });
@@ -41,18 +40,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
                 dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
             }
-            if(    dataCode !="ssc_sanxing_hs"
-                && dataCode !="ssc_sanxing_qs"
-                && dataCode !="ssc_erxing"
-                && dataCode !="ssc_budingwei"
-                && dataCode !="ssc_daxiaodanshuang"
-                && dataCode !="R2"
-                && dataCode !="R3"
-                && dataCode !="R4"
-            ){
-                $('div.gfwf-bg').slideUp();
-                $('div.selected-wrap').slideUp();
-            }
+            $('div.gfwf-bg').slideUp();
+            $('div.selected-wrap').slideUp();
             _this.getBetTable(dataCode,jspName);
             _this.resetBet();
         },
