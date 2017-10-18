@@ -601,7 +601,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         checkBeishu: function () {
             var beishu = $("input#betContent_inputBeishu").val();
             if(beishu =="" || beishu=="0" || beishu==undefined){
-                this.toast("下注倍数不能为空或为零");
+                this.toast("下注倍数不能为空");
                 return false;
             }
             return true;
