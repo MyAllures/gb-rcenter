@@ -563,11 +563,15 @@ a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 
 /*投注记录*/
 .draw-list-a .bet-list-img { display: inline-block; vertical-align: middle; border-radius: 0.6rem; margin: 0 3px; }
-.draw-list-a .bet-list-right { display: inline-block; vertical-align: middle; }
+.draw-list-a .bet-list-right { display: inline-block; vertical-align: middle; position: relative;width: calc(100% - 2rem);}
+.draw-list-a .bet-list-right span{max-width: 60%;display: inline-block; overflow: hidden; white-space: nowrap;text-overflow: ellipsis;}
+.draw-list-a .bet-list-right p.mui-ellipsis{max-width: 90%;}
 .draw-list-a .bet-list-time { display: inline-block; vertical-align: middle; }
 .draw-list-a .bet-list-right .bet-result { position: absolute; right: 1.5rem; }
 .mui-bar.bet-bottom { background: #ddd; -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0); box-shadow: 0 0 1px rgba(0, 0, 0, 0); }
 .mui-bar-tab .bet-bottom-statistics { display: table-cell; text-align: center; vertical-align: middle; font-size: 0.5rem; }
+
+.zdjl-list .mui-table-view-cell span{word-break: break-word;}
 
 /*资金记录*/
 .money-record-list .mui-table-view-cell { padding-right: 0 !important; }
