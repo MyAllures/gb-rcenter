@@ -359,7 +359,11 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
          * 随机算法-前二组选和值
          */
         random_q2zuxhz : function () {
-            var random_1 = (parseInt(Math.random() * 17) + 1);
+            var random_1 = 0;
+            while (random_1 ==0 || random_1 ==18){
+                random_1 = parseInt(Math.random() * 17)+1;
+            }
+            // console.log(random_1);
             $("a.n-btn.hezhi").removeClass("mui-active").eq(random_1).addClass("mui-active");
         },
 
