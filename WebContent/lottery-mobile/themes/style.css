@@ -1440,7 +1440,8 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 /*六合彩封盘*/
 .bet-table-list .disabled tbody tr td{background: #efefef!important;}
 .bet-table .bet-table-list table.disabled tbody tr td.not-selected.mui-active {background: #efefef!important;}
-.bet-table .bet-table-list  table.disabled  tbody tr td {color: #c1c1c1!important;}
+.bet-table .bet-table-list table.disabled  tbody tr td {color: #c1c1c1!important;}
+.bet-table .bet-table-list table.disabled tbody tr td span:nth-child(1) {color: #c1c1c1!important;}
 .bet-table .bet-table-list  table.disabled  tbody tr td .lhc-num{background: #c1c1c1;}
 .bet-table .bet-table-list table.disabled tbody tr td.mui-active span, .bet-table .bet-table-list table.disabled tbody tr td span.lhc-num{color: #c1c1c1!important;}
 .disabled-btn{background: #ccc!important;color: #8C828C!important;}
