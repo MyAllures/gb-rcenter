@@ -71,15 +71,26 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                     _this.isRunning = true;
                 },
                 success: function (data) {
-                    if (data) {
-                        var expect = $("#expect").text();
-                        $("#expect").html(data.expect);
-                        $("#leftTime").attr("data-time", data.leftTime);
-                        if (expect && expect == data.expect) { //重新获取盘口数据以防因为封盘时间比实际早，导致通过接口查询的期数值不对，要加１
-                            $("#expect").html(Number(expect) + 1);
-                        }
-                        if (typeof callback == 'function') {
-                            callback();
+                    if (data.opening) {
+                        if (_this.code == 'hklhc' && data.leftOpenTime >0){
+
+                            $("font#leftTime").attr("data-time", data.leftOpenTime);
+                            //六合彩前端封盘控制
+                            $(".fengPan").addClass("disabled");
+                            $("#show-t").addClass("disabled-btn");
+                            $("#show-t").removeAttr("id");
+                            $("#inputMoney").attr("placeholder","已封盘");
+                        }else {
+
+                            var expect = $("#expect").text();
+                            $("#expect").html(data.expect);
+                            $("#leftTime").attr("data-time", data.leftTime);
+                            if (expect && expect == data.expect) { //重新获取盘口数据以防因为封盘时间比实际早，导致通过接口查询的期数值不对，要加１
+                                $("#expect").html(Number(expect) + 1);
+                            }
+                            if (typeof callback == 'function') {
+                                callback();
+                            }
                         }
                     } else { //handicap为空
                         $(".mui-table-view-cell.mui-collapse").html('sorry,该彩票暂停!');
@@ -90,6 +101,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 }
             })
         },
+
         /**
          * 加载倒计时
          */
