@@ -177,6 +177,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
          */
         random_q2zxhz : function () {
         var random_1 = parseInt(Math.random() * 19);
+            // console.log(random_1);
             $("a.n-btn.hz").removeClass("mui-active").eq(random_1).addClass("mui-active");
         },
 
