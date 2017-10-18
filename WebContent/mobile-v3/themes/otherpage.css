@@ -337,7 +337,83 @@
   bottom: 0;
   left: 0;
   margin: auto;
+  -webkit-transform: scale(0.5);
   transform: scale(0.5);
+}
+
+/* download page */
+.download-content {
+  background: url(images/appBg.jpg) no-repeat center 0/100%;
+}
+.download-content .app-logo {
+  width: 100px;
+  height: 100px;
+  margin: 40px auto 0;
+  display: block;
+}
+.download-content .tit {
+  font-size: 24px;
+  color: #fff;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 24px;
+}
+.download-content .des {
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  line-height: 24px;
+}
+.download-content .btn-wrap {
+  margin-top: 60px;
+}
+.download-content .btn-wrap .btn-download {
+  width: 238px;
+  height: 44px;
+  line-height: 44px;
+  font-size: 17px;
+  color: #fff;
+  display: block;
+  margin: 0 auto 20px;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  padding-left: 74px;
+}
+.download-content .btn-wrap .btn-download.android {
+  background: url(images/icon-android.png) no-repeat 40px/24px;
+}
+.download-content .btn-wrap .btn-download.ios {
+  background: url(images/icon-ios.png) no-repeat 40px/24px;
+}
+
+.download-content-ios {
+  background: #fff;
+}
+.download-content-ios .h-bg {
+  width: 100%;
+}
+.download-content-ios .app-logo {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  margin-left: -50px;
+}
+.download-content-ios .btn-install {
+  display: block;
+  margin: 20px auto 0;
+  width: 165px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: #eb0002;
+  font-size: 15px;
+  border: 1px solid #eb0002;
+  border-radius: 6px;
+}
+.download-content-ios .down-step {
+  width: 100%;
 }
 
 /*# sourceMappingURL=otherpage.css.map */
