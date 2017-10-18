@@ -21,25 +21,18 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 $('div.selected-wrap').toggle();
                 $('div.gfwf-bg').toggle();
             });
-
             mui("body").on('tap','.gfwf-bg',function(){
                 $('div.gfwf-bg').slideUp();
                 $('div.selected-wrap').slideUp();
             });
-
-
         },
         menuClick:function(thisClassList){
             var _this = this;
             $("a.selected-btn.mui-active").removeClass("mui-active");
             thisClassList.toggle('mui-active');
-            var dataCode=$("a.selected-btn.mui-active").attr("data-code");
-            var dataPlayId=$("a.selected-btn.mui-active").attr("data-play_id");
+            var dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
+            var dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
             var jspName=$("a.selected-btn.main.mui-active").attr("data-jsp-name");
-            if($("a.selected-btn.main.mui-active").size()>0){
-                dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
-                dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
-            }
             $('div.gfwf-bg').slideUp();
             $('div.selected-wrap').slideUp();
             _this.getBetTable(dataCode,jspName);
@@ -47,9 +40,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         },
         getBetTable: function(betCode,jspName){
             var _this = this;
-            var jspStr=_this.getJspName(betCode,jspName);
             mui.ajax(root + '/'+_this.type+'/'+_this.code+'/getBetTable.html', {
-                data: {"betCode": betCode,"jspStr":jspStr},
+                data: {"betCode": betCode,"jspStr":jspName},
                 type: 'POST',
                 success: function (data) {
                     //betCode赋值
@@ -67,44 +59,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 }
             });
         },
-
-        getJspName : function (betCode,jspName) {
-            //后三初始化
-            if(betCode =="ssc_sanxing_hs" && jspName==undefined){
-                jspName="SscHousan";
-            }
-            //前三初始化
-            if(betCode =="ssc_sanxing_qs" && jspName==undefined){
-                jspName="SscQiansan";
-            }
-            //前二初始化
-            if(betCode =="ssc_erxing" && jspName==undefined){
-                jspName="SscQianer";
-            }
-            //不定位初始化
-            if(betCode =="ssc_budingwei" && jspName==undefined){
-                jspName="SscBudingwei";
-            }else
-            //任选二初始化
-            if(betCode =="R2" && jspName==undefined){
-                jspName="SscR2Zxfs";
-            }
-            //任选三初始化
-            if(betCode =="R3" && jspName==undefined){
-                jspName="SscR3Zxfs";
-            }
-            //任选四初始化
-            if(betCode =="R4" && jspName==undefined){
-                jspName="SscR4Zxfs";
-            }
-            //大小单双初始化
-            if(betCode =="ssc_daxiaodanshuang" && jspName==undefined){
-                jspName="SscDaxiaodanshuangErxing";
-            }
-
-            return jspName;
-        },
-
 
         /**
          * 重置下注选项
