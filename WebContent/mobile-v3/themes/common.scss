@@ -7,7 +7,7 @@ header{
     &.mui-bar-nav{
         .logo{height: 20px;    position: absolute;    left: 60px;    right: 60px;    top: 0;    bottom: 0;    margin: auto;}
         .btn-login,.btn-demo{ margin-left: 5px !important;   padding:4px 2px;font-size: 12px;    top: 10px;}
-        .btn-download{     display: inline-block;display: none;
+        .btn-download{     display: inline-block;
     width: 24px;
     height: 24px;background: url(images/icon-download.png) center/24px no-repeat;
     margin: 10px;
@@ -38,9 +38,9 @@ header{
     z-index: 2;}
 }
 /* notice */
-.notice{height: 28px;line-height: 28px;  display: flex;  overflow: hidden;
+.notice{height: 28px;line-height: 28px;  display: -webkit-box;  display: -ms-flexbox;  display: flex;  overflow: hidden;
     .btn-title{padding: 0px 2px; margin: 3px 10px;font-size: 12px;}
-    .notice-list{flex: 1;
+    .notice-list{-webkit-box-flex: 1;-ms-flex: 1;flex: 1;
         p{margin: 0;font-size: 12px;
             a{}
         }
@@ -62,8 +62,9 @@ header{
 /* nav */
 .nav{height: 65px;
     .mui-scroll-wrapper{height: 70px;
-        .mui-scroll{height: 70px;    transform: none !important;
-    transition-duration: 0ms !important;width: 100%;
+        .mui-scroll{height: 70px;    -webkit-transform: none !important;    transform: none !important;
+    -webkit-transition-duration: 0ms !important;
+            transition-duration: 0ms !important;width: 100%;
     font-size: 0;
             .mui-control-item{font-size: 12px;   height:61px;    width: 20%;    padding: 27px 0 0;    line-height: 32px;
                 &.mui-active{border-bottom: 0;}
@@ -103,6 +104,9 @@ header{
 /*  ads-slider */
 .ads-slider{    position: absolute;    right: 10px;    bottom: 63px;    width: 98px;    z-index: 11;    padding-top: 24px;    padding-left: 24px;    height: 98px;
     .close-ads{width: 24px; height: 24px; background: url(images/icon-close-ads.png) center/14px no-repeat;  position: absolute;   top: 0;    left: 0;}
+    .mui-slider{height: 84px;}
+    .mui-slider-indicator{bottom: -2px;}
+    .mui-slider-indicator .mui-indicator{margin: 1px 2px;}
 }
 /* mui-off-canvas-left */
 .mui-off-canvas-left{width: 80%;
@@ -171,7 +175,7 @@ header{
         padding-left: 20px;
         position: absolute;
         top: 34px;
-        padding-top: 5px;transition: all 0.3s;
+        padding-top: 5px;-webkit-transition: all 0.3s;transition: all 0.3s;
         right: -200px; height: 475px;  z-index: 10;
         &.open{right: -10px;}
     }
@@ -194,7 +198,7 @@ header{
     }
     .ex .ct {
         position: absolute;
-        bottom: 0;
+        bottom: 0; 
         left: 20px;
         width: 150px
     }
@@ -202,7 +206,7 @@ header{
         display: block;
         height: 35px;
         line-height: 35px;
-        color: #fff;
+        color: #fff; 
         font-size: 10px;
         background-color: #403f3f;
         text-align: center

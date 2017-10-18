@@ -293,6 +293,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
                 random_1 = parseInt(Math.random() * 10);
                 random_2 = parseInt(Math.random() * 10);
             }
+            // console.log(random_1+","+random_2);
             $("a.n-btn.kuadu").removeClass("mui-active").eq(random_1).addClass("mui-active");
             $("a.n-btn.kuadu").eq(random_2).addClass("mui-active");
 
@@ -360,12 +361,9 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
          * 随机算法-前二组选和值
          */
         random_q2zuxhz : function () {
-            var random_1 = 0;
-            while (random_1 ==0 || random_1 ==18){
-                random_1 = parseInt(Math.random() * 17)+1;
-            }
+            var random_1 = (parseInt(Math.random() * 17) + 1);
             // console.log(random_1);
-            $("a.n-btn.hezhi").removeClass("mui-active").eq(random_1).addClass("mui-active");
+            $("a.n-btn.hezhi").removeClass("mui-active").eq(random_1-1).addClass("mui-active");
         },
 
 
