@@ -82,18 +82,25 @@
                 lobbyUrl: window.location.href
             },
             success: function (data) {
-                if (data.isSuccess == true) {
-                    if(isAuto){
-                        getAutoApiUrl(apiId,gameCode,apiTypeId);
-                    }else{
-                        getNotAutoApiUrl(apiId, gameCode, apiTypeId);
-                    }
+                if(data){
+                    if (data.isSuccess == true) {
+                        if(isAuto){
+                            getAutoApiUrl(apiId,gameCode,apiTypeId);
+                        }else{
+                            getNotAutoApiUrl(apiId, gameCode, apiTypeId);
+                        }
 
-                }else{
-                    if (data.msg){
-                        alert(data.msg);
+                    }else{
+                        if (data.msg){
+                            alert(data.msg);
+                        }else{
+                            beforeSendPage(apiId);
+                        }
                     }
+                }else{
+                    beforeSendPage(apiId);
                 }
+
             }
         });
     }
