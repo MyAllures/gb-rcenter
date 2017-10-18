@@ -61,18 +61,43 @@
             document.getElementById('sportFrame').contentWindow.location.replace("http://sports-hg.com");
         }*/
     }
-
+    <!--修改开始-->
     function getApiUrl(apiId,gameCode,apiTypeId,bool){
         if(!bool){
             var isAutoPay = getCookie("isAutoPay");
-            if(isAutoPay == 'true') {
-                getAutoApiUrl(apiId,gameCode,apiTypeId);
-            } else {
-                getNotAutoApiUrl(apiId, gameCode, apiTypeId);
-            }
+            var flag = isAutoPay == 'true';
+            isAllowLogin(apiId,gameCode,apiTypeId,flag);
         }
     }
 
+    function isAllowLogin(apiId,gameCode,apiTypeId,isAuto) {
+        $.ajax({
+            type: "POST",
+            url: "transfer/auto/isAllowLogin.html?t=" + new Date().getTime().toString(36),
+            dataType: "JSON",
+            data: {
+                apiId: apiId,
+                gameCode: gameCode,
+                apiTypeId: apiTypeId,
+                lobbyUrl: window.location.href
+            },
+            success: function (data) {
+                if (data.isSuccess == true) {
+                    if(isAuto){
+                        getAutoApiUrl(apiId,gameCode,apiTypeId);
+                    }else{
+                        getNotAutoApiUrl(apiId, gameCode, apiTypeId);
+                    }
+
+                }else{
+                    if (data.msg){
+                        alert(data.msg);
+                    }
+                }
+            }
+        });
+    }
+    <!--修改结束-->
     function getAutoApiUrl(apiId,gameCode,apiTypeId) {
         $.ajax({
             type: "POST",
@@ -117,11 +142,11 @@
                     }
                     document.getElementById('sportFrame').contentWindow.location.replace(localStorage.re_url);
                 } else {
-                    if (!data.loginSuccess &&( data.errMsg =='' || data.errMsg == null)){
-
-                    }else {
-                        alert(data.errMsg);
+                    <!--修改开始-->
+                    if (data.msg){
+                        alert(data.msg);
                     }
+                    <!--修改结束-->
                 }
             },
             error: function(error) {

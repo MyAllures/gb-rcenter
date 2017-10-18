@@ -121,7 +121,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             }
 
             fuShiArr.push(arr);
-            betZhushu = getZxhzNewArrs(fuShiArr).length;
+            betZhushu = this.getZxhzNewArrs(fuShiArr).length;
             showPlayName = "后三直选-组选和值";
             showContent = "和值: ({0})".format(arr[0]);
             betContent = "{0}".format(arr[0]);

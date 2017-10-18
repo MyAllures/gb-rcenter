@@ -516,6 +516,8 @@ a.list-delete-btn:active{background: #df3a29; color: #fff;}
 a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 /*返回按钮*/
 .mui-action-back.mui-icon { font-size: 1.4rem !important; line-height: 2.2rem; height: 2.2rem; padding: 0 !important; }
+.mui-action-back.mui-icon:before{vertical-align: middle;}
+.mui-action-back.mui-icon i.back{font-size: 0.8rem;line-height: 0.8rem;vertical-align: middle;}
 .back.mui-icon { font-size: 1.4rem !important; line-height: 2.2rem; height: 2.2rem; padding: 0 !important; }
 .middle-content .content-title { margin: 10px 15px 10px; font-size: 0.7rem; }
 
@@ -561,11 +563,15 @@ a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 
 /*投注记录*/
 .draw-list-a .bet-list-img { display: inline-block; vertical-align: middle; border-radius: 0.6rem; margin: 0 3px; }
-.draw-list-a .bet-list-right { display: inline-block; vertical-align: middle; }
+.draw-list-a .bet-list-right { display: inline-block; vertical-align: middle; position: relative;width: calc(100% - 2rem);}
+.draw-list-a .bet-list-right span{max-width: 60%;display: inline-block; overflow: hidden; white-space: nowrap;text-overflow: ellipsis;}
+.draw-list-a .bet-list-right p.mui-ellipsis{max-width: 90%;}
 .draw-list-a .bet-list-time { display: inline-block; vertical-align: middle; }
 .draw-list-a .bet-list-right .bet-result { position: absolute; right: 1.5rem; }
 .mui-bar.bet-bottom { background: #ddd; -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0); box-shadow: 0 0 1px rgba(0, 0, 0, 0); }
 .mui-bar-tab .bet-bottom-statistics { display: table-cell; text-align: center; vertical-align: middle; font-size: 0.5rem; }
+
+.zdjl-list .mui-table-view-cell span{word-break: break-word;}
 
 /*资金记录*/
 .money-record-list .mui-table-view-cell { padding-right: 0 !important; }
@@ -823,6 +829,9 @@ a.popup-screen-btn:visited{
 	color: #df3a29;
 	margin: 0.15rem;
 }
+.newball-content.mui-table-view .screen-munber .newball-item-20.tx-ball .n-btn{
+    font-size: 0.7rem;
+}
 .newball-content.mui-table-view .screen-munber .newball-item-20.tsh-ball .n-btn{
     font-size: 0.76rem!important;
 }
@@ -960,15 +969,8 @@ a.popup-screen-btn:visited{
 .x_wrap .x_2 img { height: 0.9rem;}
 .x_wrap .x_3 { width: 45%; display: inline-block; position: relative;}
 .x_wrap .x_3:after{content:""; width: 0px; height: 0px; border-width: 7px; border-style: solid; border-color: #101010 transparent transparent transparent; display: inline; position: relative; top: 0.54rem; right: -0.3rem;}
-
-.Fixed{padding-top:1.9rem;}
-.Fixed .mui-scroll{height: 100%;transform: translate3d(0px, 0px, 0px) translateZ(0px)!important;}
-.Fixed .ssc-method-list.gfwf-list{position: fixed; top: 0; z-index: 12;top:-1.9rem;}
-.ssc-method-list.gfwf-list .gfwf-bg{display:none;position: fixed; top: 1px; width: 100%; height: 100%; background: #000;z-index: 11; opacity: 0.7;}
-.Fixed .ssc-method-list.gfwf-list .gfwf-bg{display: block;}
-.Fixed .ssc-method-list.gfwf-list .x_wrap{position: relative; z-index: 12;}
-.selected-wrap{padding-bottom: 0.5rem; position: relative; z-index: 12; background: #fff;display: none;}
-.Fixed .ssc-method-list.gfwf-list .selected-wrap{display: block;}
+.gfwf-bg{display:none;position: fixed; top: 4.10rem; width: 100%; height: 100%; background:rgba(0,0,0,0.5); z-index: 11;}
+.selected-wrap{position: absolute; z-index: 12; background: #fff;display: none; top: 4.10rem;width: 100%;}
 .selected-wrap .s-title{height: 25px; position: relative;text-align: center;}
 .selected-wrap .s-title span{display: inline-block;background:#fff;position: relative; background:#fff; color: #fa6200; padding: 0 10px;z-index: 4;}
 .selected-wrap .s-title:after{content: "";height: 1px;width: 100%; background: #ddd;position: absolute;top: 9px;z-index: 3;left: 0;}
@@ -1440,3 +1442,10 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .middle-content.member-list .mui-navigate-right .iconfont.icon-xinxizhongxin{background-image:url(../images/ico29.png);}
 .middle-content.member-list .mui-navigate-right .iconfont.icon-gonggao{background-image:url(../images/ico30.png);}
 .middle-content.member-list .mui-navigate-right .iconfont.icon-zaixiankefu{background-image:url(../images/ico31.png);}
+
+/*六合彩封盘*/
+.bet-table-list .disabled tbody tr td{background: #efefef!important;}
+.bet-table .bet-table-list  table.disabled  tbody tr td span{color: #c1c1c1!important;}
+.bet-table .bet-table-list  table.disabled  tbody tr td span .lhc-num{background: #c1c1c1;}
+.bet-table .bet-table-list table.disabled tbody tr td.mui-active span, .bet-table .bet-table-list table.disabled tbody tr td span.lhc-num{color: #c1c1c1!important;}
+.disabled-btn{background: #ccc!important;color: #8C828C!important;}
