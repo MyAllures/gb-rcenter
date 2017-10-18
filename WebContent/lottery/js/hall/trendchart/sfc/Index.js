@@ -94,27 +94,31 @@ define(['site/hall/trendchart/LotteryTrendChart'], function (BasePage) {
              });
          });
 
+             var datalength = data.length-1;
          for(var j = 1; j <= 20; ++j) {
              var obj = yilou[j];
              var tmpYlCs = 0; // 连续遗漏次数
              var tmpLcCs = 0; // 连出次数
-
              $.each(tmpArr, function(index, value) {
                  var tmpValue = Tools.parseInt(value[j]);
 
                  if(tmpValue != 1) { // 遗漏
                      tmpYlCs++;
-                     if(tmpLcCs > obj.maxLcCs) {
-                         obj.maxLcCs = tmpLcCs;
-                     }
                      tmpLcCs = 0;
+                     if (index==datalength){
+                         obj.ylArr.push(tmpYlCs);
+                     }
                  } else { // 中
                      obj.cxCs++;
                      tmpLcCs++;
-
-                     obj.ylArr.push(tmpYlCs);
+                     if(tmpYlCs !=0){
+                         obj.ylArr.push(tmpYlCs);
+                     }
                      tmpYlCs = 0;
                  }
+                     if(tmpLcCs > obj.maxLcCs) {
+                         obj.maxLcCs = tmpLcCs;
+                     }
              });
          }
          var str1 = '',

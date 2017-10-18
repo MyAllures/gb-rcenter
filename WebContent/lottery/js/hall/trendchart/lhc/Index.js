@@ -181,9 +181,9 @@ define(['site/hall/trendchart/LotteryTrendChart'],function (LotteryTrendChart) {
                 str += '<div class="left cl-31 number" style="background:none;width:53px;height:45px;line-height:45px;">' + maxBose + '</div>';
 
                 var tm = Tools.parseInt(kjData[6]);
-                str += '<div class="left cl-31 number" style="background:none;width:53px;height:45px;line-height:45px;">' + (tm % 2 == 0 ? '<font class="color-red">双</font>' : '<font>单</font>') + '</div>';
+                str += '<div class="left cl-31 number" style="background:none;width:53px;height:45px;line-height:45px;">' + (tm == 49 ? '和' : (tm % 2 == 0 ? '<font class="color-red">双</font>' : '<font>单</font>')) + '</div>';
                 str += '<div class="left cl-31 number" style="background:none;width:53px;height:45px;line-height:45px;">' + (tm >= 25 ? (tm != 49 ? '<font class="color-red">大</font>' : '和') : '<font>小</font>') + '</div>';
-                str += '<div class="left cl-31 number" style="background:none;width:53px;height:45px;line-height:45px;">' + ((Math.floor(tm / 10) + tm % 10) % 2 == 0 ? '<font class="color-red">合双</font>' : '<font>合单</font>') + '</div>';
+                str += '<div class="left cl-31 number" style="background:none;width:53px;height:45px;line-height:45px;">' + ((tm == 49 ? '和' : (Math.floor(tm / 10) + tm % 10) % 2 == 0 ? '<font class="color-red">合双</font>' : '<font>合单</font>')) + '</div>';
                 str += '<div class="left cl-31 number" style="background:none;width:53px;height:45px;line-height:45px;">' + (tm == 49 ? '和' : ((Math.floor(tm / 10) + tm % 10) >= 7 ? '<font class="color-red">合大</font>' : '<font>合小</font>')) + '</div>';
                 str += '<div class="left cl-31 number" style="background:none;width:53px;height:45px;line-height:45px;">' + (tm == 49 ? '和' : (tm % 10 >= 5 ? '<font class="color-red">尾大</font>' : '<font>尾小</font>')) + '</div>';
 

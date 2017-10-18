@@ -717,28 +717,47 @@
       });
       return ret;
     };
-    $.fn.bootstrapSwitch.Constructor = BootstrapSwitch;
-    return $.fn.bootstrapSwitch.defaults = {
-      state: true,
-      size: null,
-      animate: true,
-      disabled: false,
-      readonly: false,
-      indeterminate: false,
-      inverse: false,
-      radioAllOff: false,
-      onColor: "primary",
-      offColor: "default",
-      onText: "启用",
-      offText: "禁用",
-      labelText: "&nbsp;",
-      handleWidth: "auto",
-      labelWidth: "auto",
-      baseClass: "bootstrap-switch",
-      wrapperClass: "wrapper",
-      onInit: function() {},
-      onSwitchChange: function() {}
-    };
+      var _language={
+          "default":{'onText': '启用','offText': '禁用'},
+          "zh-CN":{'onText': '启用','offText': '禁用'},
+          "en-US":{'onText': 'ON','offText': 'OFF'},
+          "ja-JP":{'onText': '適用','offText': '禁止'},
+          "zh-TW":{'onText': '啓用','offText': '禁用'}
+      }
+      $.fn.bootstrapSwitch.Constructor = BootstrapSwitch;
+      var defaults=$.fn.bootstrapSwitch.defaults = {
+          state: true,
+          size: null,
+          animate: true,
+          disabled: false,
+          readonly: false,
+          indeterminate: false,
+          inverse: false,
+          radioAllOff: false,
+          onColor: "primary",
+          offColor: "default",
+          onText: function () {
+              if (window.top.language){
+                  return _language[window.top.language].onText
+              }else {
+                  return _language.default.onText
+              }
+          },
+          offText: function () {
+              if (window.top.language){
+                  return _language[window.top.language].offText
+              }else {
+                  return _language.default.offText
+              }
+          },
+          labelText: "&nbsp;",
+          handleWidth: "auto",
+          labelWidth: "auto",
+          baseClass: "bootstrap-switch",
+          wrapperClass: "wrapper",
+          onInit: function() {},
+          onSwitchChange: function() {}
+      };
   })(window.jQuery, window);
 
 }).call(this);

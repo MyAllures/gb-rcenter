@@ -17,9 +17,11 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
                 var apiId = $(this).data("api-id");
                 var apiTypeId = $(this).data("api-type-id");
                 var status = $(this).data("status");
+                var code = $(this).data('code');
                 var obj = {};
                 obj.apiId = apiId;
                 obj.apiTypeId = apiTypeId;
+                obj.gameCode = code;
                 if (status == "maintain") {
                     _this.openLayer(window.top.message.game_auto['游戏维护中']);
                     $("[class='mui-backdrop mui-active']").remove();
@@ -47,7 +49,9 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
             mui("body").on("tap", "._game", function () {
                 var $this = $(this);
                 var status = $this.data('status');
+                var code = $(this).data('code');
                 var obj = $this.data();
+                obj.gameCode = code;
                 if (status == 'maintain' || status == 'disable') {
                     _this.gameMaintaing();
                 } else {
@@ -201,11 +205,11 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
                 localStorage.setItem(page.apiObjKey, objKey);
             }
             if (page.os == 'ios') {
-                page.gotoUrl(root + '/login/commonLogin.html');
+                page.gotoUrl('/login/commonLogin.html');
             } else if (page.os == 'app_android') {
                 window.gamebox.gotoLogin('/index.html');
             } else {
-                page.gotoUrl(root + '/login/commonLogin.html');
+                page.gotoUrl('/login/commonLogin.html');
             }
         },
         apiLogin: function (obj) {

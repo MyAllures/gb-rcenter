@@ -39,6 +39,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
 
             $(this.formSelector).on("change", "input[name='result.rechargeType']", function (e) {
                 _this.changeValid(e);
+                $('[name="result.rechargeAmount"]').val('');
                 var amount = $(_this.formSelector).find("input[name='result.rechargeAmount']").val();
                 if (!amount) {
                     _this.changeSale();
@@ -61,6 +62,36 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                     e.result = false;
                 }
             });
+
+            //判断是否添加随机金额
+            $(this.formSelector).on("blur", "input[name='result.rechargeAmount']", function () {
+                _this.checkRechargeAmount();
+            });
+        },
+
+        /**
+         * 判断是否添加随机金额
+         */
+        checkRechargeAmount:function () {
+            var value = $('[name="result.rechargeAmount"]').val();
+            var m = $(".radio").find("input:checked").siblings("a")[0];
+            var flag = $(m).attr("value");
+            if (value==""){
+                return;
+            }
+            var r = /^\+?[1-9][0-9]*$/;
+            var isNum = r.test(value);
+            var isFloatNum = parseInt(value)==value;
+            if(!isNum&&!isFloatNum){
+                return ;
+            }
+            if(flag=="false"){
+                return;
+            }
+            var random = (Math.random()*0.88+0.11).toFixed(2);//随机生成0.11-0.99的随机两位小数
+            value = (parseFloat(value)+parseFloat(random)).toFixed(2);
+            $('[name="result.rechargeAmount"]').val(value);
+            return;
         },
         /**
          * 更换支付方式
@@ -268,7 +299,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             var max = $target.find("input.onlinePayMax").val();
             var min = $target.find("input.onlinePayMin").val();
             if (!min || min == 0) {
-                min = '1';
+                min = '0.01';
             }
             if (!max || max == 0) {
                 max = '99,999,999';

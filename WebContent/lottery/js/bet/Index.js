@@ -52,6 +52,7 @@ define(['site/common/PagingQuery'], function (PagingQuery) {
                 success: function (data) {
                     $("#totalMoney").text(data.betamount);
                     $("#totalWinOrLoseMoney").text(data.profitloss);
+                    $("#totalRebateAmount").text((data.betrebate).toFixed(2));
                 }
             });
         }

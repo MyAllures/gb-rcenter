@@ -28,7 +28,7 @@ define(['site/common/BasePage', 'nicescroll'], function (BasePage) {
             var money = '';
             var lotteryType = sessionStorage.lottery_type;
             var lotteryCode = sessionStorage.lottery_code;
-            if(lotteryType && lotteryType != 'undefined' && lotteryCode && lotteryCode != 'undefined' ){
+            if(lotteryType  && lotteryType != ''&& lotteryType != 'undefined' && lotteryCode && lotteryCode != '' && lotteryCode != 'undefined'){
                 var url = '/' + lotteryType + '/' + lotteryCode + '/index.html';
                 sessionStorage.removeItem("lottery_type");
                 sessionStorage.removeItem("lottery_code");
@@ -122,7 +122,7 @@ define(['site/common/BasePage', 'nicescroll'], function (BasePage) {
                 _this.getPage($(this).data("url"));
             });
             $("#refreshMoney").click(function () {
-                this.refreshPlayer();
+                _this.refreshPlayer();
             });
             $(".Account a[data-url]").on("click", function () {
                 _this.getPage($(this).attr("data-url"));

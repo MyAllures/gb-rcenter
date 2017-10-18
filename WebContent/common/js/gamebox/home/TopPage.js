@@ -53,7 +53,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 }
                 var state = xhr.getResponseHeader("headerStatus") || xhr.status;
                 if (state == 600) {//Session过期
-                    window.top.location.href = window.top.root;
+                    window.top.location.href = window.top.location.href;
                 }
                 else if (state == 601) {//需要权限密码验证
                     _this.checkPrivilege({

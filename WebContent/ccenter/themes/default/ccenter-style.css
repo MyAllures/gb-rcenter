@@ -2301,3 +2301,114 @@ td {
 /*技术支援*/
 .support-btn a{display:block; z-index:1000; position: fixed;bottom:5px; right: 5px; width: 44px;height: 55px; border-radius:10px 10px 6px 6px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.55); background: url(../../images/support-img.gif) no-repeat;transition: all 0.3s;}
 .support-btn a:hover{background: url(../../images/support-img-hover.gif);}
+
+/*实时通知菜单模块*/
+.real-time-inform{
+    position: fixed;
+    bottom: 67px;
+    right:16px;
+    z-index: 1000;
+    display: none;
+    z-index: 1001;
+}
+.real-time-inform .max-ccc{
+    overflow-x: hidden;
+    max-height: 413px;
+    padding: 3px;
+    transition: max-height 0.4s,vertical-align 0.4s;
+    -o-transition: max-height 0.4s,vertical-align 0.4s;
+    -ms-transition: max-height 0.4s,vertical-align 0.4s;
+    -moz-transition: max-height 0.4s,vertical-align 0.4s;
+    -webkit-transition: max-height 0.4s,vertical-align 0.4s;
+}
+.real-time-inform.max-h .max-ccc{
+    max-height: 74px;
+    overflow: auto;
+}
+
+
+.real-time-inform .inform-success{
+    background: -webkit-linear-gradient(top, #ebf5fa , #c9dfea);
+    background: -o-linear-gradient(top, #ebf5fa , #c9dfea);
+    background: -moz-linear-gradient(top, #ebf5fa , #c9dfea);
+    background: linear-gradient(to bottom, #ebf5fa , #c9dfea);
+    padding: 10px;
+    color: #36a1d7;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+.real-time-inform .inform-success a{
+    color: #36a1d7;
+}
+
+.real-time-inform .inform-warning{
+    background: -webkit-linear-gradient(top, #FDF9E7 , #F7EBC8);
+    background: -o-linear-gradient(top, #FDF9E7 , #F7EBC8);
+    background: -moz-linear-gradient(top, #FDF9E7 , #F7EBC8);
+    background: linear-gradient(to bottom, #FDF9E7 , #F7EBC8);
+    padding: 10px;
+    color: #E2913B;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+.real-time-inform .inform-warning a{
+    color: #E2913B;
+}
+
+.real-time-inform .in-details{
+    /*float: right; */
+    /*width: 365px;*/
+}
+.real-time-inform .btn-close{
+    float: right;
+}
+.real-time-inform .btn-close a{
+    display: block;
+    margin: -15px -6px 0 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.in-details>.hint-text,
+.in-details>.hint-time{
+    display: block;
+}
+.in-details>.hint-text{
+    font-size: 14px;
+    font-weight: 100;
+    width: 365px;
+}
+
+.in-details>.hint-time{
+    opacity: 0.5;
+    filter: "alpha(opacity=50)";
+}
+.real-time-inform .unfold{ float: right; background: rgba(0,0,0,0.6); padding: 2px 5px;}
+.real-time-inform .unfold i{
+    color: #fff;
+    line-height: 18px;
+    transition: transform 0.4s,vertical-align 0.4s;
+    -o-transition: transform 0.4s,vertical-align 0.4s;
+    -ms-transition: transform 0.4s,vertical-align 0.4s;
+    -moz-transition: transform 0.4s,vertical-align 0.4s;
+    -webkit-transition: transform 0.4s,vertical-align 0.4s;
+}
+.real-time-inform .unfold.open i{
+    transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+}
+
+.real-time-inform .unfold a.unfold-z,
+.real-time-inform .unfold.open a.unfold-s{
+    display: block;
+    float: left;
+    color: #fff;
+}
+.real-time-inform .unfold a.unfold-s,
+.real-time-inform .unfold.open a.unfold-z{
+    display: none;
+    float: left;
+}

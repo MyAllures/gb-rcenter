@@ -20,6 +20,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         isOpened: null,
         //是否加载声音播放器
         isLoadSwf: null,
+        //用于六合彩判断是否封盘
+        isOpen: null,
         init: function () {
             //用于定义js版本号 在进入玩法获取不到js版本号
             window.top.rcVersion = rcVersion;
@@ -58,6 +60,27 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             var _this = this;
             //切换玩法
             $(".Playmethod ul li p span a").click(function () {
+                var name_flag = $(this).parent().parent().data('name');
+                if (name_flag == 'gfwf') {
+                    var flag_acti = $(this).parent().parent().parent().next().find('b').hasClass('acti');
+                    if (flag_acti == true) {
+                        $(this).parent().parent().parent().next().find('b').removeClass('acti');
+                    }
+                    $(this).parent().parent().parent().find('b').addClass('acti');
+                    $(".left_it0").show();
+                    $(".right_it1").show();
+                    $(".Detailedlist").show();
+
+                } else {
+                    var flag_acti = $(this).parent().parent().parent().prev().find("b").hasClass('acti');
+                    if (flag_acti == true) {
+                        $(this).parent().parent().parent().prev().find("b").removeClass('acti');
+                    }
+                    $(this).parent().parent().parent().find('b').addClass('acti');
+                    $(".left_it0").hide();
+                    $(".right_it1").hide();
+                    $(".Detailedlist").hide();
+                }
                 $(".Playmethod ul li p span.acti").removeClass("acti");
                 $(this).parent().addClass("acti");
                 _this.getSubPage($(this).data("url"));
@@ -104,11 +127,20 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 success: function (data) {
                     if (data) {
                         var expect = $("i.expect").text();
-                        $('i.expect').text(data.expect);
                         if (data.opening) {
+                            if (_this.code == 'hklhc' && data.leftOpenTime >0){
+                                $("div#leftTime").attr("data-time", data.leftOpenTime);
+                                $("p#tip").html("<i class='expect' style='color: red;font-weight:bold;font-size: 13px;'></i>期距离开盘还有:");
+                                $("p#tip").data("opening", data.opening);
+                                //六合彩前端封盘控制
+                                _this.closeLhcHandicap();
+                            }else {
                             $("div#leftTime").attr("data-time", data.leftTime);
+                            $("p#tip").html("<i class='expect' style='color: red;font-weight:bold;font-size: 13px;'></i>期已开盘，欢迎投注。距离封盘还有:");
                             $("p#tip").data("opening", data.opening);
+                            }
                         }
+                        $('i.expect').text(data.expect);
                         if (expect && expect == data.expect) { //重新获取盘口数据以防因为封盘时间比实际早，导致通过接口查询的期数值不对，要加１
                             $('i.expect').text(Number(expect) + 1);
                         }
@@ -510,6 +542,9 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         getTodayOpen: function (data) {
             var openList = Template('template_todayOpenTemplate', {list: data});
             $(".todayOpen").html(openList);
+        },
+        closeLhcHandicap: function () {
+            console.log("六合彩封盘了")
         }
     });
 });

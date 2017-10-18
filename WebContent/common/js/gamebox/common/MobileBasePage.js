@@ -113,7 +113,7 @@ define(['moment'], function (moment) {
             } else if (this.os == 'app_android') {
                 window.gamebox.gotoLogin(url);
             } else {
-                url = root + '/login/commonLogin.html';
+                url = '/login/commonLogin.html';
                 mui.openWindow({
                     url: url,
                     id: url,
