@@ -16,7 +16,8 @@
     left: -9px;z-index: 2;
     border-top-left-radius: 28px;
     border-top-right-radius: 28px;
-    transform: rotateZ(-45deg);}
+    -webkit-transform: rotateZ(-45deg);
+            transform: rotateZ(-45deg);}
         &:before{content: '';position: absolute;width: 56px;height: 56px;top: 0;left: 0;z-index: 1;background: url(images/api-sprite.png) 0 0/56px no-repeat;}
         &.mg:before{background-position: -7px 0;}        
         &.ebet:before{background-position: 0 -56px;}     
@@ -97,4 +98,3 @@
         a{padding: 18px 0;}
      }     
 }
-

@@ -22,7 +22,6 @@ header.mui-bar-nav .btn-login, header.mui-bar-nav .btn-demo {
 }
 header.mui-bar-nav .btn-download {
   display: inline-block;
-  display: none;
   width: 24px;
   height: 24px;
   background: url(images/icon-download.png) center/24px no-repeat;
@@ -63,6 +62,8 @@ header.mui-bar-nav .mui-icon-bars {
 .notice {
   height: 28px;
   line-height: 28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
 }
@@ -72,6 +73,8 @@ header.mui-bar-nav .mui-icon-bars {
   font-size: 12px;
 }
 .notice .notice-list {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
 }
 .notice .notice-list p {
@@ -116,7 +119,9 @@ header.mui-bar-nav .mui-icon-bars {
 }
 .nav .mui-scroll-wrapper .mui-scroll {
   height: 70px;
+  -webkit-transform: none !important;
   transform: none !important;
+  -webkit-transition-duration: 0ms !important;
   transition-duration: 0ms !important;
   width: 100%;
   font-size: 0;
@@ -215,6 +220,15 @@ header.mui-bar-nav .mui-icon-bars {
   position: absolute;
   top: 0;
   left: 0;
+}
+.ads-slider .mui-slider {
+  height: 84px;
+}
+.ads-slider .mui-slider-indicator {
+  bottom: -2px;
+}
+.ads-slider .mui-slider-indicator .mui-indicator {
+  margin: 1px 2px;
 }
 
 /* mui-off-canvas-left */
@@ -404,6 +418,7 @@ header.mui-bar-nav .mui-icon-bars {
   position: absolute;
   top: 34px;
   padding-top: 5px;
+  -webkit-transition: all 0.3s;
   transition: all 0.3s;
   right: -200px;
   height: 475px;
