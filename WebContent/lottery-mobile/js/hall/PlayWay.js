@@ -538,6 +538,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          */
         resetBet: function () {
             $("div.bet-table-list td").removeClass("mui-active");
+            $("div.bet-table-list li a").removeClass("mui-active");
             $("#quantity").text($("div.bet-table-list td.mui-active").length);
             $("input#inputMoney").val("");
             $("input#inputMoney").blur();
