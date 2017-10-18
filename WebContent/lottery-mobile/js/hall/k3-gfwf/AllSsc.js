@@ -86,9 +86,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             });
 
             //选择球
-            mui(".screen-munber.gfwf").on('tap','a',function(){
-                //判断是否为包胆
-                _this.checkBaodan();
+            mui("div.bet-table").on('tap','a.n-btn',function(){
                 this.classList.toggle('mui-active');
                 $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
                 _this.getZhuShu();
@@ -104,54 +102,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             mui(".newball-content-top").on('tap','.quan',function(){
                 var flag = $(this).attr("data-flag");
                 $("a."+flag).addClass("mui-active");
-                _this.getZhuShu();
-            });
-            //大
-            mui(".newball-content-top").on('tap','.da',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).removeClass("mui-active");
-                var Aarr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-                var Barr = [, , , , , 5, 6, 7, 8, 9];
-                for (var i = 0; i <= Aarr.length; ++i) {
-                    if (Aarr[i] == Barr[i]) {
-                        $("a."+flag+"."+i).addClass("mui-active");
-                    }
-                }
-                _this.getZhuShu();
-            });
-            //小
-            mui(".newball-content-top").on('tap','.xiao',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).removeClass("mui-active");
-                var Aarr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-                var Barr = [0, 1, 2, 3, 4, , , , ,];
-                for (var i = 0; i <= Aarr.length; ++i) {
-                    if (Aarr[i] == Barr[i]) {
-                        $("a."+flag+"."+i).addClass("mui-active");
-                    }
-                }
-                _this.getZhuShu();
-            });
-            //奇
-            mui(".newball-content-top").on('tap','.ji',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).removeClass("mui-active");
-                for (var i = 0; i < 12; i++) {
-                    if (i%2 != 0) {   //奇数
-                        $("a."+flag+"."+i).addClass("mui-active");
-                    }
-                }
-                _this.getZhuShu();
-            });
-            //偶
-            mui(".newball-content-top").on('tap','.ou',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).removeClass("mui-active");
-                for (var i = 0; i < 12; i++) {
-                    if (i%2 == 0) {   //奇数
-                        $("a."+flag+"."+i).addClass("mui-active");
-                    }
-                }
                 _this.getZhuShu();
             });
 
@@ -207,7 +157,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             mui("#dingdan").off('tap','#queding').on('tap','#queding',function(){
                 // 注单
                 var betForm = {
-                    code: $("#czCode").val(),
                     totalMoney: parseFloat($("#betContent_totalMoney").text())+"",
                     quantity: Number($("#betContent_zhushu").text()),
                     playModel:1,//1代表官方玩法
@@ -381,7 +330,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                         var strArr = [];
                         var zxzh  = 0;
                         $.each(plAndMaxFd, function (index, value) {
-                            strArr.push(_this.getArgNum((value.odd - fandianBili/100 * value.baseNum)).toFixed(3));
+                            strArr.push(_this.getArgNum((value.odd - fandianBili/100 * value.baseNum)));
                             zxzh = _this.getArgNum(zxzh +(value.odd - fandianBili/100 * value.baseNum));
                         });
                         $("#betContent_playPl").html(strArr.join('|'));
@@ -390,7 +339,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                         }
                     } else {
                         var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd.baseNum));
-                        $("#betContent_playPl").attr("data-value", pl);
+                        $("#betContent_playPl").attr("data-value", pl.toFixed(3));
                         $("#betContent_playPl").html(pl.toFixed(3));
                     }
                     // 渲染下注总额，奖金等等
