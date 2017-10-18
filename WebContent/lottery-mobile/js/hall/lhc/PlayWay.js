@@ -6,6 +6,7 @@ define(['site/hall/PlayWay'], function (PlayWay) {
         zodiacMap:undefined,
         showZodiac:false,
         clickFlag:false,
+        isLhcOpen:true,
         init: function () {
             this._super();
         },/**
@@ -115,6 +116,92 @@ define(['site/hall/PlayWay'], function (PlayWay) {
                 o /= n--;
             }
             return o;
+        },
+        getHandicap:function ( ) {
+            if (this.isRunning) {
+                return;
+            }
+            var _this = this;
+            var url = root + '/commonLottery/getExpect.html';
+            mui.ajax(url, {
+                dataType: 'json',
+                type: 'POST',
+                async: false,
+                data: {'code': this.code},
+                beforeSend: function () {
+                    _this.isRunning = true;
+                },
+                success: function (data) {
+                    if (data) {
+                        var expect = $("#expect").text();
+                        $("#expect").html(data.expect);
+                        $("#leftTime").attr("data-time", data.leftTime);
+                        if (_this.code == 'hklhc' &&_this.isLhcOpen && data.leftOpenTime >0){
+                            _this.closeLhcHandicap();
+                            $("#leftTime").parent().html("距离开盘还有：<font id='leftTime' >")
+                            $("#leftTime").attr("data-time", data.leftOpenTime);
+                            _this.isLhcOpen = false;
+                            _this.showClearPopups();
+                        }
+                        if (_this.code == 'hklhc' && !_this.isLhcOpen&& data.leftOpenTime <=0){
+                            var dtime = $("#leftTime").attr("data-time");
+                            $("#leftTime").parent().html("距离下一期还有：<font id='leftTime' >")
+                            $("#leftTime").attr("data-time", dtime);
+                            _this.isLhcOpen = true;
+                            _this.openLhcHandicap();
+                        }
+                        if (typeof callback == 'function') {
+                            callback();
+                        }
+                    } else { //handicap为空
+                        $(".mui-table-view-cell.mui-collapse").html('sorry,该彩票暂停!');
+                    }
+                },
+                complete: function () {
+                    _this.isRunning = false;
+                }
+            })
+        },
+        closeLhcHandicap:function () {
+            $(".fengPan").addClass("disabled");
+            $("#show-t").addClass("disabled-btn");
+            $("#inputMoney").attr("placeholder","已封盘");
+        },
+        openLhcHandicap:function () {
+            $(".fengPan").removeClass("disabled");
+            $("#show-t").removeClass("disabled-btn");
+            $("#inputMoney").attr("placeholder","");
+            /** 小彩种 */
+            this.code = $(this.formSelector + ' input[name=code]').val();
+            this.type = $(this.formSelector + " input[name=type]").val();
+            this.betCode = $(this.formSelector + " .ssc-method-list .ssc-method-label a.mui-active").attr("data-code");
+            this.getOpenHistory();
+            this.muiInit();
+            this.iosGoBack();
+            if(this.os == 'pc') {
+                //已应对在h5下金额输入框不能输入
+                $("input#inputMoney").focus();
+            }
+        },
+        showClearPopup:function () {
+
+        },
+        showClearPopups: function () {
+            console.log("封盘了")
+            if (this.clearPopFlag) {
+                return;
+            }
+            mui.toast("当前期已封盘，请等待下期开盘.");
+            var time = 5;
+            var _this = this;
+            this.clearPopLayer = setInterval(function () {
+                if (time == 0) {
+                    _this.closeClearPopup();
+                    return;
+                }
+                $(".clearBet_time").html(time);
+                --time;
+            }, 1000)
         }
     });
 });
