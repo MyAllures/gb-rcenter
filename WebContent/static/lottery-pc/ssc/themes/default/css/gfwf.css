@@ -1,7 +1,19 @@
 /*官方玩法*/
 .Playmethod .respan span{
-    width: 61px!important;
+    min-width: 61px!important;
+    width: auto!important;
 }
+
+.Single .layout .group.k3-select ul li b{
+	width: 100px;
+	background: url(../img/ico50-big.png);
+}
+
+.Playmethod .respan.k3 span{
+    min-width: 81px!important;
+    width: auto!important;
+}
+
 .btn_fu_zhi span.acti{
     border: none;border-bottom: 2px solid #a92309;background: #f02800;padding: 0 1px;
 }
