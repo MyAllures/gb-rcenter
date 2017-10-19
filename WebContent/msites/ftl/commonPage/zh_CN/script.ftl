@@ -845,7 +845,7 @@
         //判断登录模式
         var demoModel = sessionStorage.demoModel;
         if(demoModel=="MODEL_4_PLATFORM"){
-            alert("试玩账号不能登录正式游戏，请点击试玩按钮");
+            alert("请使用正式账号登录");
             return;
         }
         //---
@@ -871,7 +871,7 @@
                             if(data.msg){
                                 alert(data.msg);
                             }else{
-                                alert("试玩模式下不能登陆当前游戏")
+                                alert("试玩模式下不能登录当前游戏")
                             }
                         }else{
                             doApiLogin(apiId, gameCode, apiTypeId)
@@ -942,7 +942,7 @@
                             if(data.msg){
                                 alert(data.msg);
                             }else{
-                                alert("试玩模式下不能登陆当前游戏")
+                                alert("试玩模式下不能登录当前游戏")
                             }
                         }else{
                             if (apiId) {
@@ -982,7 +982,18 @@
             dataType: 'json',
             success: function (data) {
                 if (data&&data.status==true) {
-                    changeLoginStatus();
+                    BootstrapDialog.alert({
+                        title: '提示',
+                        message: "恭喜您，注册成功!",
+                        type: BootstrapDialog.TYPE_SUCCESS,
+                        buttonLabel: '确定',
+                        callback: function(result) {
+                            if (result){
+                                changeLoginStatus();
+                            }
+                        }
+                    });
+
                     sessionStorage.demoModel = data.demoModel;
                 }else if(data&&data.status==false) {
                     sessionStorage.demoModel = "";
