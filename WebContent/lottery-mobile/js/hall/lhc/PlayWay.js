@@ -164,13 +164,15 @@ define(['site/hall/PlayWay'], function (PlayWay) {
         },
         closeLhcHandicap:function () {
             $(".fengPan").addClass("disabled");
-            $("#show-t").addClass("disabled-btn");
             $("#inputMoney").attr("placeholder","已封盘");
+            $("a#show-t").addClass("disabled-btn");
+            $("a#show-t").attr("id","show_t");
         },
         openLhcHandicap:function () {
             $(".fengPan").removeClass("disabled");
-            $("#show-t").removeClass("disabled-btn");
             $("#inputMoney").attr("placeholder","");
+            $("a#show_t").removeClass("disabled-btn");
+            $("a#show_t").attr("id","show-t");
             /** 小彩种 */
             this.code = $(this.formSelector + ' input[name=code]').val();
             this.type = $(this.formSelector + " input[name=type]").val();
