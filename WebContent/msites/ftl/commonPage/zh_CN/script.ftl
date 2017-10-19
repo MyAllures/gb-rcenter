@@ -848,6 +848,19 @@
 
     /*api登录*/
     function apiLogin(apiId, gameCode, apiTypeId,thiz) {
+        //判断试玩模式
+        var demoModel = sessionStorage.demoModel;
+        if(demoModel){
+            if(demoModel == "MODEL_4_PLATFORM"){
+                alert("请使用正式账号登录");
+                return;
+            }else if(demoModel == "MODEL_4_MOCK_ACCOUNT"){
+                if(apiId != 21 && apiId != 22){
+                    alert("模拟账号不能登录该游戏");
+                    return;
+                }
+            }
+        }
         //根据thiz判断是否可以直接进入对应彩票
         if($(thiz).attr("data-lottery-type")!=undefined && $(thiz).attr("data-lottery-code")!=undefined){
             sessionStorage.lottery_type = $(thiz).attr("data-lottery-type");
@@ -881,6 +894,13 @@
 
     //试玩登录
     function apiLoginDemo(apiId, gameCode, apiTypeId) {
+        var demoModel = sessionStorage.demoModel;
+        if(demoModel){
+            if(demoModel == "MODEL_4_MOCK_ACCOUNT"){
+                alert("模拟账号不能登录该游戏");
+                return;
+            }
+        }
         if (apiId) {
             var newWindow = window.open();
             newWindow.location ="/commonPage/gamePage/loadingDemo.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
@@ -894,6 +914,35 @@
                 if (data) {
                     changeLoginStatus();
                 }
+            }
+        });
+    }
+    //创建免费试玩账号
+    function createFreeAccount() {
+        $.ajax('/register/createFreeAccount.html', {
+            dataType: 'json',
+            success: function (data) {
+                if (data&&data.status==true) {
+                    BootstrapDialog.alert({
+                        title: '提示',
+                        message: "恭喜您，注册成功!",
+                        type: BootstrapDialog.TYPE_SUCCESS,
+                        buttonLabel: '确定',
+                        callback: function(result) {
+                            if (result){
+                                changeLoginStatus();
+                            }
+                        }
+                    });
+                }else if(data&&data.status==false) {
+                    sessionStorage.demoModel = "";
+                    alert(data.msg);
+                }else{
+                    sessionStorage.demoModel = "";
+                }
+            },error:function (state,obj) {
+                alert("免费试玩账号异常");
+                sessionStorage.demoModel = "";
             }
         });
     }
@@ -1195,6 +1244,7 @@
                 /*已经登录*/
                 if(data.isLogin){
                     sessionStorage.is_login = true;
+                    sessionStorage.demoModel = data.demoModel;
                     setCookie("isAutoPay", data.isAutoPay);
                     /*登录成功div jquery对象*/
                     var $loginSuccess = $("._vr_loginSuccess");
@@ -1358,6 +1408,7 @@
             success: function(data) {
                 if (window.sessionStorage){
                     sessionStorage.is_login = false;
+                    sessionStorage.demoModel = null;
                 }
                 window.location.href="/";
             }
