@@ -5008,4 +5008,4 @@ input[type=number]::-webkit-outer-spin-button {
 .sdcq-xz{background: #f7f7f7;border-bottom: 1px solid #ddd;border-top: 1px solid #ddd;}
 .sdcq-xz .panel-heading{border-bottom: 1px solid #ddd;}
 .sdcq-xz .panel-heading h3{border-left: 3px solid #2095f2;padding-left: 10px;}
-.sdcq-xz .
+.sdcq-xz .col-sm-6:last-child:after{content:"";width: 1px;height: 100%;border-left:2px dashed #ddd;display: block;position: absolute; top: 0; left: -1px;}
