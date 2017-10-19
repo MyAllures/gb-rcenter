@@ -247,6 +247,25 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             </div>\
         </div>\
         ';
+            if (this.code == 'hklhc'  ){
+                 clearBet_template = '\
+        <div class="clearBet_template">\
+            <div class="l">\
+                <span>\
+                <i></i>\
+                </span>\
+            </div>\
+            <div class="r">\
+                <p>' + this.curExpect + '期已封盘，请等待下期开盘.</p>\
+            </div>\
+            <div style="clear:both"></div>\
+            <div class="btns" style="text-align:center">\
+                <button type="button" id="confirmClear">确定</button>\
+                <button type="button" id="cancelClear">取消<font class="time"></font></button>\
+            </div>\
+        </div>\
+        ';
+            }
 
             layer.closeAll();
             //页面层

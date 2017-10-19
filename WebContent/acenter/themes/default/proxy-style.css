@@ -1665,3 +1665,9 @@ td {
     padding-left: 10px;}
 .dropdown-menu .del-template{position: absolute;padding: 5px 6px 5px 12px;}
 .dropdown-menu .text-template{padding-left: 32px;}
+
+.no-border th, .no-border td{border-top:none!important;}
+.width-response {width: 50%;}
+td.money strong {color: #f34235!important;font-size: 1.2em;}
+.dropdown-menu .del-template{position: absolute;padding: 5px 6px 5px 12px; margin: 0;}
+.dropdown-menu .text-template{padding-left: 32px;}
