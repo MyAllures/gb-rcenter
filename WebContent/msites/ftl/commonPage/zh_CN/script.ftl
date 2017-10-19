@@ -848,52 +848,6 @@
 
     /*api登录*/
     function apiLogin(apiId, gameCode, apiTypeId,thiz) {
-        //判断登录模式
-        var demoModel = sessionStorage.demoModel;
-        if(demoModel=="MODEL_4_PLATFORM"){
-            alert("请使用正式账号登录");
-            return;
-        }
-        //判断试玩模式下能否登录api游戏
-        $.ajax({
-            type: "POST",
-            url: "transfer/auto/isAllowLogin.html?t=" + new Date().getTime().toString(36),
-            dataType: "JSON",
-            async:false,
-            data: {
-                apiId: apiId,
-                gameCode: gameCode,
-                apiTypeId: apiTypeId,
-                lobbyUrl: window.location.href,
-                //PC端
-                platformType:1
-            },
-            success: function (data) {
-                if(data){
-                    if (data.isSuccess == true) {
-                        doApiLogin(apiId, gameCode, apiTypeId,thiz)
-                    }else{
-                        if(data.isSuccess==false){
-                            if(data.msg){
-                                alert(data.msg);
-                            }else{
-                                alert("试玩模式下不能登录当前游戏")
-                            }
-                        }else{
-                            doApiLogin(apiId, gameCode, apiTypeId,thiz)
-                        }
-
-                    }
-                }else{
-                    doApiLogin(apiId, gameCode, apiTypeId,thiz)
-                }
-
-            }
-        });
-
-    }
-    //---
-    function doApiLogin(apiId, gameCode, apiTypeId,thiz) {
         //根据thiz判断是否可以直接进入对应彩票
         if($(thiz).attr("data-lottery-type")!=undefined && $(thiz).attr("data-lottery-code")!=undefined){
             sessionStorage.lottery_type = $(thiz).attr("data-lottery-type");
@@ -927,52 +881,10 @@
 
     //试玩登录
     function apiLoginDemo(apiId, gameCode, apiTypeId) {
-        //判断登录模式
-        $.ajax({
-            type: "POST",
-            url: "transfer/auto/isAllowLogin.html?t=" + new Date().getTime().toString(36),
-            dataType: "JSON",
-            async:false,
-            data: {
-                apiId: apiId,
-                gameCode: gameCode,
-                apiTypeId: apiTypeId,
-                lobbyUrl: window.location.href,
-                //PC端
-                platformType:1
-            },
-            success: function (data) {
-                if(data){
-                    if (data.isSuccess == true) {
-                        if (apiId) {
-                            var newWindow = window.open();
-                            newWindow.location ="/commonPage/gamePage/loadingDemo.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
-                        }
-                    }else{
-                        if(data.isSuccess==false){
-                            if(data.msg){
-                                alert(data.msg);
-                            }else{
-                                alert("试玩模式下不能登录当前游戏")
-                            }
-                        }else{
-                            if (apiId) {
-                                var newWindow = window.open();
-                                newWindow.location ="/commonPage/gamePage/loadingDemo.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
-                            }
-                        }
-
-                    }
-                }else{
-                    if (apiId) {
-                        var newWindow = window.open();
-                        newWindow.location ="/commonPage/gamePage/loadingDemo.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
-                    }
-                }
-
-            }
-        });
-
+        if (apiId) {
+            var newWindow = window.open();
+            newWindow.location ="/commonPage/gamePage/loadingDemo.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
+        }
     }
     //彩票试玩登录
     function lotteryDemo() {
@@ -982,36 +894,6 @@
                 if (data) {
                     changeLoginStatus();
                 }
-            }
-        });
-    }
-    //免费试玩账号
-    function createFreeAccount() {
-        $.ajax('/register/createFreeAccount.html', {
-            dataType: 'json',
-            success: function (data) {
-                if (data&&data.status==true) {
-                    BootstrapDialog.alert({
-                        title: '提示',
-                        message: "恭喜您，注册成功!",
-                        type: BootstrapDialog.TYPE_SUCCESS,
-                        buttonLabel: '确定',
-                        callback: function(result) {
-                            if (result){
-                                changeLoginStatus();
-                            }
-                        }
-                    });
-                    sessionStorage.demoModel = data.demoModel;
-                }else if(data&&data.status==false) {
-                    sessionStorage.demoModel = "";
-                    alert(data.msg);
-                }else{
-                    sessionStorage.demoModel = "";
-                }
-            },error:function (state,obj) {
-                alert("免费试玩账号异常");
-                sessionStorage.demoModel = "";
             }
         });
     }
@@ -1214,7 +1096,7 @@
     }
 
 
-    /******************** 用户登录登出 *******************/
+    /******************** 用户登陆登出 *******************/
 
     /* 回车登录 */
     function enterLogin() {
@@ -1309,10 +1191,10 @@
                 }
             },
             success:function(data){
+
                 /*已经登录*/
                 if(data.isLogin){
                     sessionStorage.is_login = true;
-                    sessionStorage.demoModel = data.demoModel;
                     setCookie("isAutoPay", data.isAutoPay);
                     /*登录成功div jquery对象*/
                     var $loginSuccess = $("._vr_loginSuccess");
@@ -1363,7 +1245,7 @@
                     if(data.isOpenCaptcha){
                         /*显示验证码*/
                         isOpenCaptcha = true;
-                        $("._vr_login","._vr_unLogin").removeAttr("style");//判断个别情况永利登录按钮取消样式
+                        $("._vr_login","._vr_unLogin").removeAttr("style");//判断个别情况永利登陆按钮取消样式
                         $("._vr_unLogin").each(function(){
                             var captchaObj =  $(this).find("._vr_captcha_code");
                             $(captchaObj).attr("src","${data.contextInfo.playerCenterContext}captcha/"+$(captchaObj).data("code")+".html?t="+ new Date().getTime().toString(36));
@@ -1408,7 +1290,7 @@
             }
             alert(msg);
             if(data.isOpenCaptcha){
-                $("._vr_login",$form).removeAttr("style");//判断个别情况永利登录按钮取消样式
+                $("._vr_login",$form).removeAttr("style");//判断个别情况永利登陆按钮取消样式
                 var captchaObj =  $("._vr_captcha_code",$form);
                 $(captchaObj).attr("src","${data.contextInfo.playerCenterContext}captcha/"+$(captchaObj).data("code")+".html?t="+ new Date().getTime().toString(36));
                 $("._vr_captcha_box").show();
@@ -1476,7 +1358,6 @@
             success: function(data) {
                 if (window.sessionStorage){
                     sessionStorage.is_login = false;
-                    sessionStorage.demoModel = null;
                 }
                 window.location.href="/";
             }
@@ -1519,7 +1400,7 @@
     </#if>
     }
 
-    //进入玩家中心前验证是否登录
+    //进入玩家中心前验证是否登陆
     function loginPlayer(e){
         if (sessionStorage.is_login != "true") {
             loginObj.getLoginPopup();

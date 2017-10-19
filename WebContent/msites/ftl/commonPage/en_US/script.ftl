@@ -837,12 +837,6 @@
 
     /*api登录*/
     function apiLogin(apiId, gameCode, apiTypeId,thiz) {
-        //判断登录模式
-        var demoModel = sessionStorage.demoModel;
-        if(demoModel=="MODEL_4_PLATFORM"){
-            alert("试玩账号不能登录正式游戏，请点击试玩按钮");
-            return;
-        }
         //根据thiz判断是否可以直接进入对应彩票
         if($(thiz).attr("data-lottery-type")!=undefined && $(thiz).attr("data-lottery-code")!=undefined){
             sessionStorage.lottery_type = $(thiz).attr("data-lottery-type");
@@ -1358,7 +1352,6 @@
             success: function(data) {
                 if (window.sessionStorage){
                     sessionStorage.is_login = false;
-                    sessionStorage.demoModel = null;
                 }
                 window.location.href="/";
             }
