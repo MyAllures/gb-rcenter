@@ -215,7 +215,12 @@
     margin-right: 490px;
     margin-top: 5px;
 }
-
+.Single .layout .Pick ul.dxds.k3 li .re-5x-i.qc-btn-w {
+    margin-right: 380px;
+}
+.Single .layout .Pick ul.dxds.k3-hz li .re-5x-i.qc-btn-w {
+    margin-right: 60px;
+}
 /*任选*/
 .selposition {
     width: 681px;
@@ -394,6 +399,7 @@
 
 .Single .layout .Pick.cl-1002 ul li span:first-child{margin-left:0}
 .Single .layout .Pick ul li span{margin:0 5px}
+.Single .layout .Pick ul li span.k2-tx-ball i{font-size: 13px;}
 .Single .layout .Pick ul li span i{
     margin-bottom:0;
     width: 33px;
