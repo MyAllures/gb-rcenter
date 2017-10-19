@@ -4990,6 +4990,13 @@ input[type=number]::-webkit-outer-spin-button {
 	.limit-tips ul{position: relative;left: 0;}
 	.limit-tips ul:before{display: none;}
 }
+/*赔率官方玩法*/
+.gfwfqh-wrap{border-bottom: 1px solid #e6e6e6; position: relative;min-height: 108px;}
+.gfwfqh-wrap .lot_two_menu,.gfwfqh-wrap .lot_three_menu{margin-left: 126px;}
+.gfwfqh-wrap .wfqh-btn{ position: absolute; background: #fff;  height: 100%;  width: 125px;}
+.gfwfqh-wrap .wfqh-btn a{display: block; width: 100px; margin-left: auto; margin-right: auto; text-align: center; background: #fff; color: #333; border:1px solid #b4b7bb; padding: 10px 0; border-radius: 40px; margin-top: 9px;}
+.gfwfqh-wrap .wfqh-btn a:hover,.gfwfqh-wrap .wfqh-btn a.active{background: #f39503; border:1px solid #f39503; color: #fff;}
+.gfwfqh-wrap .lot_three_menu{padding: 10px 15px 10px 15px;}
 
 /*赔率官方玩法*/
 .gfwfqh-wrap .lot_two_menu,.gfwfqh-wrap .lot_three_menu{margin-left: 150px;}
@@ -4999,3 +5006,9 @@ input[type=number]::-webkit-outer-spin-button {
 .sdcq-xz{background: #f7f7f7;border-bottom: 1px solid #ddd;border-top: 1px solid #ddd;}
 .sdcq-xz .panel-heading{border-bottom: 1px solid #ddd;}
 .sdcq-xz .panel-heading h3{border-left: 3px solid #2095f2;padding-left: 10px;}
+
+/*单元格宽度限制*/
+.td-width-120,.td-width-150,.td-width-200{overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.td-width-120{max-width: 120px;}
+.td-width-150{max-width: 150px;}
+.td-width-200{max-width: 200px;}

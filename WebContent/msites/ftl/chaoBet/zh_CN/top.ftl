@@ -170,6 +170,7 @@
                         </div>
                         <a href="javascript:" type="button" class="btn-login _vr_login">立即登录</a>
                         <a href="register.html" class="btn-register">免费注册</a>
+                        <a href="javascript:createFreeAccount()" class="btn-register">免费试玩</a>
                     </form>
                 </div>
                 <!--panel-->

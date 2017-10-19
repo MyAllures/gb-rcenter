@@ -35,6 +35,11 @@ define(['common/BaseListPage'], function (BaseListPage) {
             var opt = eval('(' + $('.ssc-label').attr('data-rel') + ')');
             this.queryStatMoney();
 
+            $('[data-toggle="popover"]',this.formSelector).popover({
+                trigger: 'hover',
+                html: true
+            });
+
         },
 
         queryByLottery:function (e, opt) {

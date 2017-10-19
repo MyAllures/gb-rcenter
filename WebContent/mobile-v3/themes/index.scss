@@ -1,0 +1,100 @@
+/*
+ index style
+ * */
+/* api-grid */
+.api-grid{
+    padding: 0 5px 15px;
+    .mui-grid-view.mui-grid-9 .mui-table-view-cell{padding: 5px;height: 103px;border: 0;
+        a{    border-radius: 6px;padding: 8px 0;}
+    }
+    .api-item{display: inline-block;width:56px;height:57px;position: relative;
+        &:after{content: '';
+    position: absolute;
+    width: 56px;
+    height: 28px;
+    top: 4px;
+    left: -9px;z-index: 2;
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+    transform: rotateZ(-45deg);}
+        &:before{content: '';position: absolute;width: 56px;height: 56px;top: 0;left: 0;z-index: 1;background: url(images/api-sprite.png) 0 0/56px no-repeat;}
+        &.mg:before{background-position: -7px 0;}        
+        &.ebet:before{background-position: 0 -56px;}     
+        &.og:before{background-position: 0 -112px;}    
+        &.sa:before{background-position: 0 -168px;}    
+        &.ag:before{background-position: 0 -224px;}     
+        &.bb:before{background-position: 0 -280px;}   
+        &.gd:before{background-position: 0 -336px;}   
+        &.ds:before{background-position: 0 -392px;}   
+        &.hg:before{background-position: 0 -448px;}   
+        &.pt:before{background-position: 0 -504px;}   
+        &.sb:before{background-position: 0 -560px;}   
+        &.hb:before{background-position: 0 -616px;}   
+        &.png:before{background-position: 0 -672px;}   
+        &.bsg:before{background-position: 0 -728px;}   
+        &.opus:before{background-position: 0 -784px;}   
+        &.sg:before{background-position: 0 -840px;}  
+        &.im:before{background-position: 0 -896px;}  
+        &.dt:before{background-position: 0 -952px;}  
+        &.kg:before{background-position: 0 -1008px;}  
+        &.gg:before{background-position: 0 -1064px;} 
+        &.lt:before{background-position: 0 -1120px;} 
+        &.yzt:before{background-position: 0 -1176px;} 
+    }
+    .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{margin-top: 0;    font-size: 12px;}
+    .mui-table-view{display: none;
+        &.active{display: block;}
+    }
+    /* 彩票内页样式 */
+    ul[data-list="lottery"]{
+        .lottery-nav{
+    display: block;
+    height: 40px;
+    font-size: 12px;
+    margin: 0 0 8px;text-align: center;
+        .mui-scroll-wrapper{height: 40px;}
+        ul{height: 40px;   display: block;       border: 0;white-space: nowrap;text-align: center;}
+            li{    display: inline-block;font-size: 12px;
+    width: 104px;
+                .mui-tab-item{padding: 0;   height: 40px;   display: block;    width: 100%;    line-height: 39px;   padding-left: 40px;background-position: 4px center;
+    background-size: 30px;
+    background-repeat: no-repeat;    text-align: left;
+                    &.yzt{background-image: url(images/icon-yzt.png);}  
+                    &.kg{background-image: url(images/icon-kg.png);} 
+                    &.bb{background-image: url(images/icon-bb.png);}                   
+                }
+            }
+        }        
+    }
+    .lottery-content{
+        li{font-size: 12px;
+            .lottery-img{width: 56px;height: 56px;display: inline-block;}
+            a{background: #fff !important;}
+        }
+    }
+}
+/* iphone6 style fixed */
+@media screen and (min-width:375px){
+     .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell{height: 119px;
+        a{padding: 16px 0;}
+     }     
+     .nav{
+        .mui-scroll-wrapper{
+            .mui-scroll{
+                .mui-control-item{ height: 62px;
+                    &.mui-active{
+                        &:after{content: '';    position: absolute;    top: 0;    left: 50%;    margin-left: -38px !important;    z-index: -1;    width: 75px !important;    height: 70px;    background-size: 75px 61px !important;}
+                    }
+                }
+            }
+        }
+    }
+    .api-grid ul[data-list="lottery"] .lottery-nav li{width: 134px;}
+}
+/* ipad style fixed */
+@media screen and (min-width:768px){
+     .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell{height: 120px;
+        a{padding: 18px 0;}
+     }     
+}
+

@@ -1,0 +1,115 @@
+/* style of other pages */
+/* mui-content-without-footer-address */
+.mui-content-without-footer-address{    padding: 44px 0 0 0 !important;}
+/* page promo */
+.banner{text-align: center;
+    img{width: 100%;}
+}
+.promo{
+    margin: 10px 10px 0;    position: relative;
+    z-index: 1;    border-radius: 4px;padding: 10px;
+    .promo-sorts{padding-bottom: 10px;}
+    .btn-promo-sort{margin-right: 2px;margin-bottom: 5px;}
+    .promo-list{
+        li{margin-bottom: 10px;}
+        img{width: 100%;vertical-align: middle;}
+    }
+}
+/* blue-bar */
+.mui-bar-blue{background-color: #1766bb;-webkit-box-shadow: 0 0 8px 2px rgba(0,0,0,0.2) !important;box-shadow: 0 0 8px 2px rgba(0,0,0,0.2) !important;
+    .mui-icon-arrowleft,.mui-title,.mui-icon{color: #fff !important;}
+}
+/* login and register page */
+.type-header{
+    padding: 15px 0;text-align: center;font-size: 0;    border: 0;display: block;
+    .mui-btn{display: inline-block;width: auto;line-height: 1;    padding: 7px 25px;border-radius:4px; border-color: #1766bb;color: #1766bb;        
+        &:first-child{border-top-right-radius: 0;border-bottom-right-radius:0;border-left-width: 1px;}
+        &:last-child{border-top-left-radius: 0;border-bottom-left-radius: 0;}
+        &.mui-active{background: #1766bb;}
+    }
+}
+.type-content{
+    .mui-control-content{padding: 10px 30px;
+            .mui-input-group{background-color: transparent;
+                &:before,&:after{content: none;}
+                .mui-input-row{height: auto;
+                    &:after{content: none;}
+                    label,input{float: none;}
+                    label{padding: 0;    width: 100px;    display: block;    font-size: 12px;    color: #333;    margin-bottom: 5px;    line-height: 22px;    height: 16px;}
+                    input[type=text],input[type=password]{    border: 1px solid #999;    width: 100%;    margin: 5px 0;    border-radius: 5px;    padding: 0 15px;    height: 35px;   line-height: 35px;    font-size: 12px;    color: #333;}
+                    .mui-icon-eye,.mui-icon-clear{    top: 26px;    height: 35px;    line-height: 35px;}     
+                    .error-info{position: absolute;right: 0;top: 0;font-size: 12px;color: #999;
+                        .mui-icon-info{color: #f65d5d;font-size: 18px;}
+                    }
+                    .forget-pas{position: absolute;color: #999;right: 0;}
+                    &.password-input-row{height: 100px;}
+                    .mui-input-select~.mui-icon-arrowdown{font-size: 20px;    z-index: 1;    right: 0;    width: 38px;    text-align: center;    color: #999;    top: 26px;    height: 35px;    line-height: 35px;    position: absolute;}
+                    .mui-flex{display: -webkit-box;display: -ms-flexbox;display: flex;position: relative;
+                        input{-webkit-box-flex: 1;-ms-flex: 1;flex: 1;}
+                        .mui-icon-clear{    top: 5px; right: 120px;}
+                        img{width: 110px;  height: 35px;  margin: 5px;}
+                    }
+                }
+                .mui-button-row{height: auto;           
+                    .mui-btn-block{    font-size: 13px;    padding: 10px 0;                    
+                    }                
+                }
+                .tk{height: 45px;
+                    input[type=checkbox]{    left: 0;   top: 9px;
+                        &:before{font-size: 24px;    color: #1766bb;}
+                    }
+                    a{color: #999;float: left;line-height: 45px;margin-left: 30px;}
+                }
+                .icon-star{    background: url(images/icon-star.png) no-repeat center/100%;    display: inline-block;    width: 12px;    height: 12px;    margin: 0 4px -1px;}
+            }
+    }
+}
+
+/* mine page */
+.icon-message{    background: url(./images/icon-message.png) no-repeat center;
+background-size: 20px auto;
+width: 44px;
+height: 44px;
+    .mui-badge{    font-size: 7px;
+    top: 9px;
+    margin-left: -17px;
+    padding: 1px 4px;}
+}
+.icon-gift{   background: url(./images/icon-gift.png) no-repeat center;
+background-size: 20px auto;
+width: 44px;margin-right: -10px !important;margin-left: 0 !important;
+height: 44px;}
+.mine-content{padding-bottom: 63px !important;
+    .user-info-wrap{height: 60px;position: relative;    margin-bottom: 50px;
+        .gb-userinfo{position: absolute;height: 100px;left: 10px;right: 10px;    -webkit-box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);border-radius: 5px;
+            .ct{overflow: hidden;border-bottom: 1px solid #efefef;    height: 56px;  padding: 13px 10px 0;display: -webkit-box;display: -ms-flexbox;display: flex;
+                .avatar{width: 34px;height: 34px;}
+                p{ -webkit-box-flex: 1; -ms-flex: 1; flex: 1;       line-height: 34px;    padding: 0 10px;    color: #666;}
+                .user-logout{height: 32px;}
+        }
+            .money-info{display: -webkit-box;display: -ms-flexbox;display: flex;height: 44px;  margin: 0;  line-height: 44px;
+                .span{-webkit-box-flex: 1;-ms-flex: 1;flex: 1;text-align: center;
+                    &+.span{border-left: 1px solid #efefef;}
+                }
+                .green{color: #35b386;}
+                .orange{color: #e9a400;}
+            }
+        }
+    }
+    .list-mine-item{margin: 0 0 10px;background: #fff;overflow: hidden;
+        li{float: left;text-align: center;font-size: 14px;color: #333;height: 98px;border-right: 1px solid #efefef;
+            a{color: inherit;padding-top: 15px;display: block;
+                p{color: inherit;margin-top: 8px;margin-bottom:0;    line-height: 16px;}
+                .ext-info{color: #999;font-size: 10px;
+                    &.with-icon{
+                            padding-left: 50px;
+                    } 
+                    &.icon-bank1{background: url(images/banks-1.png) no-repeat 0/auto 11px;}
+                }
+            }
+            &:nth-child(3){border-right:0;}
+            .item-img-wrap{height: 31px;display: block;position: relative;}
+            .mine-item-img{position: absolute;top: 0;right: 0;bottom: 0;left: 0;margin: auto;transform: scale(0.5);}
+        }
+    }
+}

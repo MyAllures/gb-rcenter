@@ -165,10 +165,6 @@ var ajaxRequest = function (obj) {
             } else {
                 // Tools.toast("服务器异常，请联系管理员");
             }
-
-            if (typeof(obj.error) == "function") {
-                obj.error(XMLHttpRequest, textStatus, errorThrown);
-            }
         },
         beforeSend: function () {
             Tools.log(requestStr + "-beforeSend");
@@ -250,6 +246,101 @@ function getRequest(url) {
         }
     }
     return theRequest;
+}
+
+
+
+
+//获取重复元素
+Array.prototype.duplicateNew = function () {
+    var tempArr = new Array();
+    this.sort();
+    for(i = 0; i < this.length; i++) {
+        if( this[i] == this[i+1]) {
+            tempArr.push(this[i]);
+            continue;
+        }
+    }
+    return tempArr;
+};
+//去掉数组重复
+Array.prototype.uniqueArr = function () {
+    var temp = new Array();
+    this.sort();
+    for(i = 0; i < this.length; i++) {
+        if( this[i] == this[i+1]) {
+            continue;
+        }
+        temp[temp.length]=this[i];
+    }
+    return temp;
+};
+//获取重复元素,无序
+Array.prototype.duplicateNewa = function () {
+    var tempArr = new Array();
+    var newarr = arrSort(this);
+    for(i = 0; i < newarr.length; i++) {
+        var aa = numSort(newarr[i]);
+        var bb = numSort(newarr[i+1]);
+        if( aa == bb) {
+            tempArr.push(aa);
+            continue;
+        }
+    }
+    return tempArr;
+};
+//去掉数组重复,无序
+Array.prototype.uniqueArra = function () {
+    var temp = new Array();
+    var newarr = arrSort(this);
+    for(i = 0; i < newarr.length; i++) {
+        var aa = numSort(newarr[i]);
+        var bb = numSort(newarr[i+1]);
+        if( aa == bb) {
+            continue;
+        }
+        temp[temp.length]=aa;
+    }
+    return temp;
+};
+//对数字字符串排序
+function  numSort(num) {
+    var newnum = "";
+    if (typeof(num) != "undefined") {
+        var tempArr = [];
+        for (j = 0; j < num.length; j++) {
+            tempArr.push(num[j]);
+        }
+        tempArr.sort();
+
+        for (k = 0; k < tempArr.length; k++) {
+            newnum = newnum + tempArr[k]
+        }
+    }else {
+        newnum = "undefined";
+    }
+    return newnum;
+}
+//数组的无序排序
+function  arrSort(num) {
+    var tempArr = [];
+    if (typeof(num) != "undefined") {
+        for (q = 0; q < num.length; q++) {
+            tempArr.push(numSort(num[q]));
+        }
+        tempArr.sort();
+    }else {
+        tempArr = "undefined";
+    }
+    return tempArr;
+}
+//查找数据中重复元素
+Array.prototype.duplicate=function() {
+    var tmp = [];
+    this.concat().sort().sort(function(a,b){
+        if(a==b && tmp.indexOf(a) === -1) tmp.push(a);
+    });
+    return tmp;
 }
 /**
  * 获得从m中取n的所有组合
