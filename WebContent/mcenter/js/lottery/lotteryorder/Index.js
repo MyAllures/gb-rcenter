@@ -65,7 +65,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     $("#betAmount").text(data.betAmount);
                     $("#payoutAmount").text(data.payoutAmount);
                     $("#profitLoss").text(data.profitLoss);
-
+                    $("#rabateAmount").text(data.rabateAmount);
                 },
                 error: function (data) {
 
