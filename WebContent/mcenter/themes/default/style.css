@@ -4993,3 +4993,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 /*赔率官方玩法*/
 .gfwfqh-wrap .lot_two_menu,.gfwfqh-wrap .lot_three_menu{margin-left: 150px;}
+
+/*手动存取修改*/
+.sdcq-wrap .table-desc-list > tbody > tr > th{ width: 110px!important;}
+.sdcq-xz{background: #f7f7f7;border-bottom: 1px solid #ddd;border-top: 1px solid #ddd;}
+.sdcq-xz .panel-heading{border-bottom: 1px solid #ddd;}
+.sdcq-xz .panel-heading h3{border-left: 3px solid #2095f2;padding-left: 10px;}
