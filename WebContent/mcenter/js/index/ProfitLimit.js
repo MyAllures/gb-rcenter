@@ -26,13 +26,22 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                         if (data.isMaster == true) {
                             var profitLimit = data.profitLimit;
                             var profit = data.profit;
+                            var transferLimit = data.transferLimit;
+                            var currentProfit = data.currentProfit;
                             $("#topSecurity").find("#profitLimit").text(profitLimit);
                             $("#topSecurity").find("#curProfit").text(profit);
+                            $("#topSecurity").find("#transferLimit").text(transferLimit);
+                            $("#topSecurity").find("#currentProfit").text(currentProfit);
                             var percent = 0;
+                            var tranferPercent = 0;
                             if (profitLimit > 0) {
                                 percent = Math.floor(profit / profitLimit * 100);
                             }
+                            if (transferLimit > 0){
+                                tranferPercent = Math.floor(currentProfit / transferLimit * 100);
+                            }
                             $("#topSecurity").find("#usePercent").text(percent + '%');
+                            $("#topSecurity").find("#currentUsePercent").text(tranferPercent + '%');
                             //1-79 safe
                             var className = "safety";
                             if (percent >= 80 && percent < 95) {

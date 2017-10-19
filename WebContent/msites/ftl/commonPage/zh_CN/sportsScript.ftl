@@ -63,6 +63,18 @@
     }
 
     function getApiUrl(apiId,gameCode,apiTypeId,bool){
+        var demoModel = sessionStorage.demoModel;
+        if(demoModel){
+            if(demoModel == "MODEL_4_PLATFORM"){
+                alert("请使用正式账号登录");
+                return;
+            }else if(demoModel == "MODEL_4_MOCK_ACCOUNT"){
+                if(apiId != 21 && apiId != 22){
+                    alert("模拟账号不能登录该游戏");
+                    return;
+                }
+            }
+        }
         if(!bool){
             var isAutoPay = getCookie("isAutoPay");
             if(isAutoPay == 'true') {

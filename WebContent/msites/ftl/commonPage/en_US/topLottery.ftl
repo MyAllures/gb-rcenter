@@ -12,8 +12,13 @@
         <#if relationMap.apiId?string.computer == '10'><#--BBIN-->
             <#assign game_bb_img_10={'bb-mark6.png':'Mark Six','bb-bb3d.png':'BB 3D','bb-bbkeno.png':'BB KENO','bb-bbruning.png':'BB Running','bb-CQssc.png':'Chongqing Lotto','bb-11e5.png':'11/5','bb-fast3.png':'Fast 3','bb-pk10.png':'Beijing PK10','bb-happy10.png':'Happy 10','bb-keno8.png':'Beijing KENO'}>
         </#if>
-        <#if relationMap.apiId?string.computer == '22'><#--PG-->
-            <#assign game_lt_img_22={'lt-CQssc.png':'Chongqing Lotto','lt-pk10.png':'Beijing PK10','lt-JSfast3.png':'Jiangsu Fast 3','lt-mark6.png':'HongKong Mark Six','lt-XJssc.png':'XinJiang Lotto','lt-TJssc.png':'TianJin Lotto'}>
+        <#if relationMap.apiId?string.computer == '22'><#--LT-->
+            <#assign game_lt_img_22={
+            <#--'lt-FFssc.png':'分分时时彩',-->'lt-chongqing.png':'重庆时时彩',<#--'lt-LFssc.png':'两分时时彩',-->'lt-beijingPK10.png':'北京PK10',<#--'lt-SFssc.png':'三分时时彩',-->
+            'lt-AHfast3.png':'安徽快3','lt-GXfast3.png':'广西快3','lt-JSfast3.png':'江苏快3','lt-HBfast3.png':'湖北快3',<#--'lt-WFssc.png':'五分时时彩',-->
+            'lt-HKmark6.png':'香港六合彩','lt-XJssc.png':'新疆时时彩','lt-TJssc.png':'天津时时彩','lt-XYyt.png':'幸运飞艇','lt-XY28.png':'幸运28','lt-XYnc.png':'幸运农场',
+            'lt-happy10.png':'快乐10分','lt-beijing-happy8.png':'北京快乐8','lt-FC3d.png':'福彩3D','lt-PL3.png':'排列3'
+            }>
         </#if>
     </#list>
 </#if>

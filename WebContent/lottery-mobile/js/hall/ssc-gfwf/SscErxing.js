@@ -177,6 +177,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
          */
         random_q2zxhz : function () {
         var random_1 = parseInt(Math.random() * 19);
+            // console.log(random_1);
             $("a.n-btn.hz").removeClass("mui-active").eq(random_1).addClass("mui-active");
         },
 
@@ -286,9 +287,13 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
          * 随机算法-前二组选复式
          */
         random_q2zuxfs : function () {
-            var random_1 = parseInt(Math.random() * 10);
-            var random_2 = parseInt(Math.random() * 10);
-
+            var random_1 = 0;
+            var random_2 = 0;
+            while (random_1 ==random_2){
+                random_1 = parseInt(Math.random() * 10);
+                random_2 = parseInt(Math.random() * 10);
+            }
+            // console.log(random_1+","+random_2);
             $("a.n-btn.kuadu").removeClass("mui-active").eq(random_1).addClass("mui-active");
             $("a.n-btn.kuadu").eq(random_2).addClass("mui-active");
 
@@ -357,7 +362,8 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
          */
         random_q2zuxhz : function () {
             var random_1 = (parseInt(Math.random() * 17) + 1);
-            $("a.n-btn.hezhi").removeClass("mui-active").eq(random_1).addClass("mui-active");
+            // console.log(random_1);
+            $("a.n-btn.hezhi").removeClass("mui-active").eq(random_1-1).addClass("mui-active");
         },
 
 

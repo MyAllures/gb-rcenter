@@ -44,23 +44,23 @@
     // PlayGameDemo iframe
     $(document).ready(function() {
         document.getElementById('box_playGameDemo_iframe').setAttribute('src',localStorage.re_url_lottery);
-        var widthSet = parseInt($(".GameContainer").data("width")) / parseInt($(".GameContainer").data("height"))
-        $("#box_playGameDemo_iframe").css("height", ($(window).height() - $("header").height()) + "px");
-        $("#box_playGameDemo_iframe").css("width", ($(window).height() - $("header").height()) * widthSet + "px");
-        $(".GameContainer").css("height", ($(window).height() - $("header").height()) + "px");
-        $(".GameContainer").css("width", ($(window).height() - $("header").height()) * widthSet + "px");
+        var height=$(window).height() - (parseInt($(".CasinoGameOverlay").css("top"))||$("header").height()) + "px"
+        $("#box_playGameDemo_iframe").css("height",height);
+        $("#box_playGameDemo_iframe").css("width",$(window).width() + "px");
+        $(".GameContainer").css("height",height);
+        $(".GameContainer").css("width", $(window).width() + "px");
         $(window).bind('resize', function(e) {
-            $("#box_playGameDemo_iframe").css("height", ($(window).height() - $("header").height()) + "px");
-            $("#box_playGameDemo_iframe").css("width", ($(window).height() - $("header").height()) * widthSet + "px");
-            $(".GameContainer").css("height", ($(window).height() - $("header").height()) + "px");
-            $(".GameContainer").css("width", ($(window).height() - $("header").height()) * widthSet + "px");
+            $("#box_playGameDemo_iframe").css("height", height);
+            $("#box_playGameDemo_iframe").css("width", $(window).width() + "px");
+            $(".GameContainer").css("height",height);
+            $(".GameContainer").css("width", $(window).width() + "px");
         });
     });
     $(function(){
         var dosome = getlocationParam("do")
         if( dosome === 'loginDialog' && sessionStorage.is_login!="true"){
             loginObj.getLoginPopup(function(){
-                window.location.href = "/gamePage/casino-lottery.html";
+                window.location.href = "/gamePage/lottery-game.html";
 
             });
         }

@@ -643,7 +643,8 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
          */
         random_h3zuxhz:function () {
         var random_1 = (parseInt(Math.random() * 26) + 1);
-            $("a.n-btn.hezhi").removeClass("mui-active").eq(random_1).addClass("mui-active");
+            // console.log(random_1);
+            $("a.n-btn.hezhi").removeClass("mui-active").eq(random_1-1).addClass("mui-active");
         },
 
 
