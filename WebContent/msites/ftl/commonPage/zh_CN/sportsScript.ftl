@@ -61,7 +61,7 @@
             document.getElementById('sportFrame').contentWindow.location.replace("http://sports-hg.com");
         }*/
     }
-    <!--修改开始-->
+
     function getApiUrl(apiId,gameCode,apiTypeId,bool){
         if(!bool){
             var isAutoPay = getCookie("isAutoPay");
@@ -91,7 +91,6 @@
                         }else{
                             getNotAutoApiUrl(apiId, gameCode, apiTypeId);
                         }
-
                     }else{
                         if (data.msg){
                             alert(data.msg);
@@ -102,11 +101,10 @@
                 }else{
                     beforeSendPage(apiId);
                 }
-
             }
         });
     }
-    <!--修改结束-->
+
     function getAutoApiUrl(apiId,gameCode,apiTypeId) {
         $.ajax({
             type: "POST",
@@ -151,11 +149,9 @@
                     }
                     document.getElementById('sportFrame').contentWindow.location.replace(localStorage.re_url);
                 } else {
-                    <!--修改开始-->
                     if (data.msg){
                         alert(data.msg);
                     }
-                    <!--修改结束-->
                 }
             },
             error: function(error) {
