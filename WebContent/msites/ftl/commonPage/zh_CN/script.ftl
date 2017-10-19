@@ -848,6 +848,46 @@
             alert("试玩账号不能登录正式游戏，请点击试玩按钮");
             return;
         }
+        //---
+        $.ajax({
+            type: "POST",
+            url: "transfer/auto/isAllowLogin.html?t=" + new Date().getTime().toString(36),
+            dataType: "JSON",
+            async:false,
+            data: {
+                apiId: apiId,
+                gameCode: gameCode,
+                apiTypeId: apiTypeId,
+                lobbyUrl: window.location.href,
+                //PC端
+                platformType:1
+            },
+            success: function (data) {
+                if(data){
+                    if (data.isSuccess == true) {
+                        doApiLogin(apiId, gameCode, apiTypeId)
+                    }else{
+                        if(data.isSuccess==false){
+                            if(data.msg){
+                                alert(data.msg);
+                            }else{
+                                alert("试玩模式下不能登陆当前游戏")
+                            }
+                        }else{
+                            doApiLogin(apiId, gameCode, apiTypeId)
+                        }
+
+                    }
+                }else{
+                    doApiLogin(apiId, gameCode, apiTypeId)
+                }
+
+            }
+        });
+
+    }
+    //---
+    function doApiLogin(apiId, gameCode, apiTypeId) {
         //未登录的时候
         if(sessionStorage.is_login!="true"){
             var protocol = window.location.protocol;
@@ -873,14 +913,57 @@
             newWindow.location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
         }
     }
-
+    //---
     //试玩登录
     function apiLoginDemo(apiId, gameCode, apiTypeId) {
-        if (apiId) {
-            var newWindow = window.open();
-            newWindow.location ="/commonPage/gamePage/loadingDemo.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
-        }
+        //判断登录模式
+        $.ajax({
+            type: "POST",
+            url: "transfer/auto/isAllowLogin.html?t=" + new Date().getTime().toString(36),
+            dataType: "JSON",
+            async:false,
+            data: {
+                apiId: apiId,
+                gameCode: gameCode,
+                apiTypeId: apiTypeId,
+                lobbyUrl: window.location.href,
+                //PC端
+                platformType:1
+            },
+            success: function (data) {
+                if(data){
+                    if (data.isSuccess == true) {
+                        if (apiId) {
+                            var newWindow = window.open();
+                            newWindow.location ="/commonPage/gamePage/loadingDemo.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
+                        }
+                    }else{
+                        if(data.isSuccess==false){
+                            if(data.msg){
+                                alert(data.msg);
+                            }else{
+                                alert("试玩模式下不能登陆当前游戏")
+                            }
+                        }else{
+                            if (apiId) {
+                                var newWindow = window.open();
+                                newWindow.location ="/commonPage/gamePage/loadingDemo.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
+                            }
+                        }
+
+                    }
+                }else{
+                    if (apiId) {
+                        var newWindow = window.open();
+                        newWindow.location ="/commonPage/gamePage/loadingDemo.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
+                    }
+                }
+
+            }
+        });
+
     }
+    //---
     //彩票试玩登录
     function lotteryDemo() {
         $.ajax('/demo/lottery.html', {
@@ -893,25 +976,27 @@
         });
     }
     //免费试玩账号
+    //---
     function createFreeAccount() {
         $.ajax('/register/createFreeAccount.html', {
             dataType: 'json',
             success: function (data) {
                 if (data&&data.status==true) {
-                    window.sessionStorage.demoModel = data.demoModel;
                     changeLoginStatus();
+                    sessionStorage.demoModel = data.demoModel;
                 }else if(data&&data.status==false) {
-                    window.sessionStorage.demoModel = "";
+                    sessionStorage.demoModel = "";
                     alert(data.msg);
                 }else{
-                    window.sessionStorage.demoModel = "";
+                    sessionStorage.demoModel = "";
                 }
             },error:function (state,obj) {
                 alert("免费试玩账号异常");
-                window.sessionStorage.demoModel = "";
+                sessionStorage.demoModel = "";
             }
         });
     }
+    //---
     function currentPage(apiId){
         if (apiId == "4"){
             document.getElementById('sportFrame').contentWindow.location.replace("https://im.ampinplayopt0matrix.com");
@@ -1209,6 +1294,9 @@
                 /*已经登录*/
                 if(data.isLogin){
                     sessionStorage.is_login = true;
+                    //---
+                    sessionStorage.demoModel = data.demoModel;
+                    //---
                     setCookie("isAutoPay", data.isAutoPay);
                     /*登录成功div jquery对象*/
                     var $loginSuccess = $("._vr_loginSuccess");

@@ -79,7 +79,9 @@
                 apiId: apiId,
                 gameCode: gameCode,
                 apiTypeId: apiTypeId,
-                lobbyUrl: window.location.href
+                lobbyUrl: window.location.href,
+                //PC端
+                platformType:1
             },
             success: function (data) {
                 if(data){
