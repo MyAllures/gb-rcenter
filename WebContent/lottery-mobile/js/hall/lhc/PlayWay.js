@@ -138,14 +138,17 @@ define(['site/hall/PlayWay'], function (PlayWay) {
                         $("#leftTime").attr("data-time", data.leftTime);
                         if (_this.code == 'hklhc' &&_this.isLhcOpen && data.leftOpenTime >0){
                             _this.closeLhcHandicap();
-                            $("#leftTime").parent().html("距离开盘还有：<font id='leftTime' >")
+                            $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' >")
                             $("#leftTime").attr("data-time", data.leftOpenTime);
                             _this.isLhcOpen = false;
                             _this.showClearPopups();
                         }
                         if (_this.code == 'hklhc' && !_this.isLhcOpen&& data.leftOpenTime <=0){
                             var dtime = $("#leftTime").attr("data-time");
-                            $("#leftTime").parent().html("距离下一期还有：<font id='leftTime' >")
+
+                            //leftTimeTitle
+
+                            //$("#leftTime").parent().html("距离封盘时间还有：<font id='leftTime' >")
                             $("#leftTime").attr("data-time", dtime);
                             _this.isLhcOpen = true;
                             _this.openLhcHandicap();
@@ -165,12 +168,14 @@ define(['site/hall/PlayWay'], function (PlayWay) {
         closeLhcHandicap:function () {
             $(".fengPan").addClass("disabled");
             $("#inputMoney").attr("placeholder","已封盘");
+            $("#inputMoney").attr("disabled",true);
             $("a#show-t").addClass("disabled-btn");
             $("a#show-t").attr("id","show_t");
         },
         openLhcHandicap:function () {
             $(".fengPan").removeClass("disabled");
             $("#inputMoney").attr("placeholder","");
+            $("#inputMoney").attr("disabled",false);
             $("a#show_t").removeClass("disabled-btn");
             $("a#show_t").attr("id","show-t");
             /** 小彩种 */
