@@ -740,11 +740,11 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             var geLength = geArr.length;
 
             if (baiLength <= 0 || shiLength <= 0 || geLength <= 0) {
-                return;
+                return 0;
             }
 
             var newArr = this.getHszhNewArrs(baiArr, shiArr, geArr);
-            return newArr.length;
+            return newArr.length;j
         },
 
         /**

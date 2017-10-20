@@ -1175,7 +1175,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             var baiLength = baiArr.length;
 
             if (wanLength <= 0 || qianLength <= 0 || baiLength <= 0) {
-                return;
+                return 0;
             }
 
             var newArr = this.getHszhNewArrs(wanArr, qianArr, baiArr);
