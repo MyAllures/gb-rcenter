@@ -517,7 +517,6 @@ a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 /*返回按钮*/
 .mui-action-back.mui-icon { font-size: 1.4rem !important; line-height: 2.2rem; height: 2.2rem; padding: 0 !important; }
 .mui-action-back.mui-icon:before{vertical-align: middle;}
-.mui-action-back.mui-icon i.back{font-size: 0.8rem;line-height: 0.8rem;vertical-align: middle;}
 .back.mui-icon { font-size: 1.4rem !important; line-height: 2.2rem; height: 2.2rem; padding: 0 !important; }
 .middle-content .content-title { margin: 10px 15px 10px; font-size: 0.7rem; }
 
