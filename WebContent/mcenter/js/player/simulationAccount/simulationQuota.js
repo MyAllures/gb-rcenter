@@ -18,17 +18,20 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
         },
         updatePlayer:function (e,opt) {
             var balance = $("input[name='search.walletBalance']").val();
+            var totalAssets = $("input[name='search.totalAssets']").val();
             var id = $("input[name='search.id']").val();
             var ids= window.parent.page.getSelectedIds();
             var _this=this;
             window.top.topPage.ajax({
-                url: root + '/simulationAccount/saveAddQuota.html?walletBalance='+balance+'&search.id='+id,
-                data: {"search.ids":ids},
+                url: root + '/simulationAccount/saveAddQuota.html',
+                data: {"search.ids":ids,"search.id":id,"search.walletBalance":balance},
                 dataType:'json',
                 type: "POST",
                 success: function (data) {
                     if (data.state){
                         _this.saveCallbak(e);
+                    }else {
+                        page.showPopover(e,{},"danger",data.msg,true);
                     }
                 }
             });
