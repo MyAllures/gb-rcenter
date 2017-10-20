@@ -31,6 +31,8 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 }
                 // 初始化子页面
                 _this.initSubPage();
+
+
             });
 
         },
@@ -61,7 +63,6 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             // 内容点击，触发统计注数函数
             $(".Pick ul li span i").click(function () {
                 var nowFlag = $(".re-5x-i i").hasClass('acti');
-
                 if (nowFlag == true) {
                     $(".re-5x-i i").removeClass('acti');
                 }
@@ -140,12 +141,31 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 _this.renderZhushu();
             });
 
+            // 内容点击，触发统计注数函数（二同号单选）
+            $(".Pick ul li span.erbutong").click(function () {
+                $(this).addClass('acti');   // 变色
+                var text=parseInt($(this).text())*11;
+                $(".Pick ul li span.ertonghao."+text).removeClass('acti');
+                // 渲染中部注数，赔率，返点等等
+                _this.renderZhushu();
+            });
+
+            // 内容点击，触发统计注数函数（二同号单选）
+            $(".Pick ul li span.ertonghao").click(function () {
+                $(this).addClass('acti');   // 变色
+                var text=parseInt($(this).text())/11;
+                $(".Pick ul li span.erbutong."+text).removeClass('acti');
+                // 渲染中部注数，赔率，返点等等
+                _this.renderZhushu();
+            });
+
             // 内容点击，触发统计注数函数（特殊号）
             $(".Pick ul li.tsh_li span").click(function () {
                 $(this).toggleClass('acti_tsh');   // 变色
                 // 渲染中部注数，赔率，返点等等
                 _this.renderZhushu();
             });
+
 
             // 手动输入，触发统计注数函数
             $('.content_jiang .content_tex').keyup(function () {
