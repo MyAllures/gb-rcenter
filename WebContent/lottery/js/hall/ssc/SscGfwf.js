@@ -209,7 +209,35 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 maxFandian = plAndMaxFd.rebate*100;    // 最大返点
                 minPl =_this.getArgNum((plAndMaxFd.odd-Number(plAndMaxFd.baseNum)*plAndMaxFd.rebate));   // 最低赔率
             }
-            convertBlMoney = (maxPlayPl - minPl) / maxFandian;  // 每1%转换赔率
+            // convertBlMoney = (maxPlayPl - minPl) / maxFandian;  // 每1%转换赔率
+
+            if(maxFandian ==0){
+                // 返点比例
+                var fandianBili = 0; // 当前滚动条移动的比例
+                $("#fandian-bfb").data("value", fandianBili);
+                $("#fandian-bfb").html(fandianBili + "%");    // 渲染界面中百分比部分
+
+                // 渲染界面中赔率部分
+                if (plAndMaxFd instanceof Array) {  // 多赔率
+                    var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd[0].baseNum));
+                    $("#jiangjin-change").data("value", pl);
+                    var strArr = [];
+                    // var pljsarr = pljs.split('|');
+                    $.each(plAndMaxFd, function (index, value) {
+                        strArr.push(_this.getArgNum((value.odd - fandianBili/100 * value.baseNum)));
+                    });
+                    $("#jiangjin-change").html(strArr.join('|'));
+                    $("#jiangjin-change").data("plStr", strArr.join('|'));
+                } else {
+                    var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd.baseNum));
+                    $("#jiangjin-change").data("value", pl);
+                    $("#jiangjin-change").html(pl);
+                    $("#jiangjin-change").data("plStr",pl);
+                }
+
+                // 渲染中部注数，赔率，返点等等
+                _this.renderZhushu();
+            }
 
             // 初始化返点赔率滚动条
             $('.slider-input').jRange({
