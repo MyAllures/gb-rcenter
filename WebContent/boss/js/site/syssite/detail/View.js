@@ -217,6 +217,24 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                 page.showPopover(e, {"callback": function () {
                 },"placement":"left"}, 'danger', msg, true);
             }
+        },
+        /** 图表模式 */
+        chartModel: function (e) {
+            $(e.currentTarget).addClass('hide');
+            $('a.chart_model').removeClass('hide');
+            $('#chart').show();
+            $('#table').hide();
+            $('.showData').removeAttr('disabled');
+            $(e.currentTarget).unlock();
+        },
+        /** 报表模式 */
+        tableModel: function (e) {
+            $(e.currentTarget).addClass('hide');
+            $('a.table_model').removeClass('hide');
+            $('#table').show();
+            $('#chart').hide();
+            $('.showData').attr('disabled', 'disabled');
+            $(e.currentTarget).unlock();
         }
     });
 });
