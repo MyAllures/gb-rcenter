@@ -61,52 +61,30 @@
             document.getElementById('sportFrame').contentWindow.location.replace("http://sports-hg.com");
         }*/
     }
-    <!--修改开始-->
+
     function getApiUrl(apiId,gameCode,apiTypeId,bool){
+        var demoModel = sessionStorage.demoModel;
+        if(demoModel){
+            if(demoModel == "MODEL_4_PLATFORM"){
+                alert("请使用正式账号登录");
+                return;
+            }else if(demoModel == "MODEL_4_MOCK_ACCOUNT"){
+                if(apiId != 21 && apiId != 22){
+                    alert("模拟账号不能登录该游戏");
+                    return;
+                }
+            }
+        }
         if(!bool){
             var isAutoPay = getCookie("isAutoPay");
-            var flag = isAutoPay == 'true';
-            isAllowLogin(apiId,gameCode,apiTypeId,flag);
+            if(isAutoPay == 'true') {
+                getAutoApiUrl(apiId,gameCode,apiTypeId);
+            } else {
+                getNotAutoApiUrl(apiId, gameCode, apiTypeId);
+            }
         }
     }
 
-    function isAllowLogin(apiId,gameCode,apiTypeId,isAuto) {
-        $.ajax({
-            type: "POST",
-            url: "transfer/auto/isAllowLogin.html?t=" + new Date().getTime().toString(36),
-            dataType: "JSON",
-            data: {
-                apiId: apiId,
-                gameCode: gameCode,
-                apiTypeId: apiTypeId,
-                lobbyUrl: window.location.href,
-                //PC端
-                platformType:1
-            },
-            success: function (data) {
-                if(data){
-                    if (data.isSuccess == true) {
-                        if(isAuto){
-                            getAutoApiUrl(apiId,gameCode,apiTypeId);
-                        }else{
-                            getNotAutoApiUrl(apiId, gameCode, apiTypeId);
-                        }
-
-                    }else{
-                        if (data.msg){
-                            alert(data.msg);
-                        }else{
-                            beforeSendPage(apiId);
-                        }
-                    }
-                }else{
-                    beforeSendPage(apiId);
-                }
-
-            }
-        });
-    }
-    <!--修改结束-->
     function getAutoApiUrl(apiId,gameCode,apiTypeId) {
         $.ajax({
             type: "POST",
@@ -151,11 +129,11 @@
                     }
                     document.getElementById('sportFrame').contentWindow.location.replace(localStorage.re_url);
                 } else {
-                    <!--修改开始-->
-                    if (data.msg){
-                        alert(data.msg);
+                    if (!data.loginSuccess &&( data.errMsg =='' || data.errMsg == null)){
+
+                    }else {
+                        alert(data.errMsg);
                     }
-                    <!--修改结束-->
                 }
             },
             error: function(error) {

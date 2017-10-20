@@ -79,7 +79,7 @@
 .pubads-slide .swiper-wrapper .swiper-slide a{position: absolute;width: 100%;top: 0;z-index: 2;}
 .pubads-slide .pagination .swiper-pagination-switch{display: inline-block;width: 9px;height: 9px;background: url(../../ftl/commonPage/themes/images/dot_normal.png) no-repeat center;margin: 0 4px;    cursor: pointer;}
 .pubads-slide .pagination .swiper-pagination-switch.swiper-active-switch{background: url(../../ftl/commonPage/themes/images/dot_active.png) no-repeat center;}
-.pubads-slide .btn-close{position: absolute;right: 0;top: 0;z-index:99;background: url(../../ftl/commonPage/themes/images/icon_close.png) no-repeat center;width: 15px;height: 15px;cursor: pointer;}
+.pubads-slide .btn-close{position: absolute;right: 0;top: 0;z-index:99;background: url(../../ftl/commonPage/themes/images/icon_close.png) no-repeat center/100%;width: 24px;height: 24px;cursor: pointer;}
 .pubads-slide .pagination{    position: absolute;    left: 0;    right: 0;    height: 22px; text-align: center;   bottom: 0;    margin: 0;}
 @keyframes spin{
 	from{    transform: rotateZ(0deg);}
@@ -111,7 +111,7 @@
     <script src="../../ftl/commonPage/js/idangerous.swiper.min.js"></script>
     <script>
     $(function() {
-		var mySwiper = new Swiper('.swiper-container',{
+		var mySwiper = new Swiper('.swiper-container.pubads-slide',{
 			autoplay : 3500,//可选选项，自动滑动
 			loop : true,//可选选项，开启循环
 			pagination : '.pagination',
