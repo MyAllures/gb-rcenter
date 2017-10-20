@@ -58,6 +58,8 @@
         initMenuEvents();
         /*通用真人手风琴脚本*/
         liveAccordion();
+        /*轮播图占位符替换*/
+        transWebUrlSlide();
         /*浮窗判断脚本*/
     <#if data.floatPicsInIndex??>
         <#list data.floatPicsInIndex as pic>
@@ -94,6 +96,26 @@
         $(".current_language").text("日文");
     }
 
+    /*轮播图占位符替换*/
+    function transWebUrlSlide(){
+        var slide = $("._vr_carousels_check");
+        if(slide){
+            $("._vr_carousels_check").each(function(i,tar){
+                var _href = $(tar).children("a").attr("href");
+                if(_href != undefined && _href != ""){
+                    if(_href.indexOf("http")>-1){
+                        _href = _href;
+                    }else{
+                        _href = "http://" + _href;
+                    }
+                    if( _href.indexOf("\$\{website\}")>-1){
+                        _href = _href.replace("\$\{website\}",window.location.host);
+                    }
+                    $(tar).children("a").attr("href",_href);
+                }
+            })
+        }
+    }
 
     /*切换语言*/
     $(".changeLanguage").on("click",function(){
@@ -382,8 +404,24 @@
             draggable: true,
             title: "${imgTitl}",
         <#--title: "${.now}",-->
-            message: $('<a href="<#if link?default("")=="">javascript:void(0)<#else >${link}</#if>"><img  src="${imgSrc}" /></a>'),
-            size: 'index-modal'
+            size: 'index-modal',
+            message: function(dialog) {
+                var _href = "${link}";
+                if(_href!=undefined && _href!=""){
+                    if(_href.indexOf("http")>-1){
+                        _href = _href;
+                    }else{
+                        _href = "http://"+_href;
+                    }
+                    if(_href.indexOf("\$\{website\}")>-1){
+                        _href = _href.replace("\$\{website\}",window.location.host);
+                    }
+                }else{
+                    _href = "javascript:void(0)";
+                }
+                var $message = $('<a href="'+_href+'"><img  src="${imgSrc}"/></a>');
+                return $message;
+            }
         });
         // 定时关闭
         setTimeout(function () {
@@ -796,7 +834,13 @@
     /******************** api登陆 *******************/
 
     /*api登录*/
-    function apiLogin(apiId, gameCode, apiTypeId) {
+    function apiLogin(apiId, gameCode, apiTypeId,thiz) {
+        //根据thiz判断是否可以直接进入对应彩票
+        if($(thiz).attr("data-lottery-type")!=undefined && $(thiz).attr("data-lottery-code")!=undefined){
+            sessionStorage.lottery_type = $(thiz).attr("data-lottery-type");
+            sessionStorage.lottery_code = $(thiz).attr("data-lottery-code");
+        }
+        //未登录的时候
         if(sessionStorage.is_login!="true"){
             var protocol = window.location.protocol;
             if(protocol.indexOf("https:")>-1){

@@ -21,7 +21,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         //是否加载声音播放器
         isLoadSwf: null,
         //用于六合彩判断是否封盘
-        isOpen: null,
+        isLhcOpen: true,
         init: function () {
             //用于定义js版本号 在进入玩法获取不到js版本号
             window.top.rcVersion = rcVersion;
@@ -133,8 +133,20 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                                 $("p#tip").html("<i class='expect' style='color: red;font-weight:bold;font-size: 13px;'></i>期距离开盘还有:");
                                 $("p#tip").data("opening", data.opening);
                                 //六合彩前端封盘控制
-                                _this.closeLhcHandicap();
+                                if (_this.isLhcOpen){
+                                _this.isLhcOpen = false;
+                                    if (typeof page.playWay != 'undefined') {
+                                        page.playWay.closeLhcHandicap();
+                                    }
+                                }
+
                             }else {
+                             if (_this.code == 'hklhc' && !_this.isLhcOpen){
+                                 _this.isLhcOpen = true;
+                                 if (typeof page.playWay != 'undefined'){
+                                 page.playWay.openLhcHandicap();
+                                 }
+                             }
                             $("div#leftTime").attr("data-time", data.leftTime);
                             $("p#tip").html("<i class='expect' style='color: red;font-weight:bold;font-size: 13px;'></i>期已开盘，欢迎投注。距离封盘还有:");
                             $("p#tip").data("opening", data.opening);
@@ -235,6 +247,25 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             </div>\
         </div>\
         ';
+            if (this.code == 'hklhc'  ){
+                 clearBet_template = '\
+        <div class="clearBet_template">\
+            <div class="l">\
+                <span>\
+                <i></i>\
+                </span>\
+            </div>\
+            <div class="r">\
+                <p>' + this.curExpect + '期已封盘，请等待下期开盘.</p>\
+            </div>\
+            <div style="clear:both"></div>\
+            <div class="btns" style="text-align:center">\
+                <button type="button" id="confirmClear">确定</button>\
+                <button type="button" id="cancelClear">取消<font class="time"></font></button>\
+            </div>\
+        </div>\
+        ';
+            }
 
             layer.closeAll();
             //页面层
@@ -542,9 +573,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         getTodayOpen: function (data) {
             var openList = Template('template_todayOpenTemplate', {list: data});
             $(".todayOpen").html(openList);
-        },
-        closeLhcHandicap: function () {
-            console.log("六合彩封盘了")
         }
     });
 });

@@ -1660,3 +1660,9 @@ td {
     z-index: 888;}
 .del-template{color:#333;}
 .input-group-addon .table-desc-right-t-dropdown span.fa{margin: 0 4px 0 -3px;}
+
+.no-border th, .no-border td{border-top:none!important;}
+.width-response {width: 50%;}
+td.money strong {color: #f34235!important;font-size: 1.2em;}
+.dropdown-menu .del-template{position: absolute;padding: 5px 6px 5px 12px; margin: 0;}
+.dropdown-menu .text-template{padding-left: 32px;}
