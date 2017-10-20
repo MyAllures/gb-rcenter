@@ -51,7 +51,10 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
                 var status = $this.data('status');
                 var code = $(this).data('code');
                 var obj = $this.data();
-                obj.gameCode = code;
+                if(code) {
+                    obj.gameCode = code;
+                }
+
                 if (status == 'maintain' || status == 'disable') {
                     _this.gameMaintaing();
                 } else {
