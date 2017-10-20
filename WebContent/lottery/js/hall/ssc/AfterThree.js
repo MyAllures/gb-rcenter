@@ -744,7 +744,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             }
 
             var newArr = this.getHszhNewArrs(baiArr, shiArr, geArr);
-            return newArr.length;j
+            return newArr.length;
         },
 
         /**
