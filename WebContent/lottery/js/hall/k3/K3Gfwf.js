@@ -31,8 +31,6 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 }
                 // 初始化子页面
                 _this.initSubPage();
-
-
             });
 
         },
@@ -178,13 +176,13 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 var obj = $(this).parent().parent();
                 var fnId = $(obj).attr("data-name");   //方案id
 
-                if (typeof flag != "undefined" && flag == "wei-r2") {
-                    _this.getZuChengFangAnR2(obj, fnId);
-                } else if (typeof flag != "undefined" && flag == "wei-r3") {
-                    _this.getZuChengFangAnR3(obj, fnId);
-                } else if (typeof flag != "undefined" && flag == "wei-r4") {
-                    _this.getZuChengFangAnR4(obj, fnId);
-                }
+                // if (typeof flag != "undefined" && flag == "wei-r2") {
+                //     _this.getZuChengFangAnR2(obj, fnId);
+                // } else if (typeof flag != "undefined" && flag == "wei-r3") {
+                //     _this.getZuChengFangAnR3(obj, fnId);
+                // } else if (typeof flag != "undefined" && flag == "wei-r4") {
+                //     _this.getZuChengFangAnR4(obj, fnId);
+                // }
                 _this.renderZhushu();
             });
 
@@ -353,7 +351,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 numArr.splice(indexVal, 1);
             }
         },
-        //任选2 组成方案获取函数
+/*        //任选2 组成方案获取函数
         getZuChengFangAnR2: function(obj, fnId) {
             //选中位置自动获取组成方案-直选单式
             var arrTemp = [];
@@ -434,7 +432,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 $("#positioninfo-" + fnId + "").html(0);
                 $("#positioncount-" + fnId + "").html(0);
             }
-        },
+        },*/
         initJjh: function() {
             var _this = this;
             $(".Single .layout .add_spot .left .sopt_wrap .down .down_menu i").click(function () {
@@ -655,34 +653,34 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 _this.alertmsg("号码选择不完整，请重新选择");
                 return;
             }
-            if ($.inArray(this.getPlayId(), ["ssc_sanxing_zuxuan_qsts","ssc_sanxing_zuxuan_hsts"]) >= 0) {
-                var l = $('.cl-1015-tsh ul li span.acti_tsh').length;
-                if (l == 1) {
-                    $('.cl-1015-tsh ul li span.acti_tsh').each(function () {
-                        plSelName = $(this).html();
-                    });
-                    if (plSelName == '豹子') {
-                        plSelIndex = 0;
-                    } else if (plSelName == '顺子') {
-                        plSelIndex = 1;
-                    } else if (plSelName == '对子') {
-                        plSelIndex = 2;
-                    }
-                }else {
-                    plSelName = $('.cl-1015-tsh ul li span.acti_tsh').html();
-                    if (plSelName == '豹子') {
-                        plSelIndex = 0;
-                    } else if (plSelName == '顺子') {
-                        plSelIndex = 1;
-                    } else if (plSelName == '对子') {
-                        plSelIndex = 2;
-                    }
-                }
-                var tempNum = $("#jiangjin-change").data("plStr");
-                plSelVal = (tempNum.split("|"))[plSelIndex];
-            } else {
+            // if ($.inArray(this.getPlayId(), ["ssc_sanxing_zuxuan_qsts","ssc_sanxing_zuxuan_hsts"]) >= 0) {
+            //     var l = $('.cl-1015-tsh ul li span.acti_tsh').length;
+            //     if (l == 1) {
+            //         $('.cl-1015-tsh ul li span.acti_tsh').each(function () {
+            //             plSelName = $(this).html();
+            //         });
+            //         if (plSelName == '豹子') {
+            //             plSelIndex = 0;
+            //         } else if (plSelName == '顺子') {
+            //             plSelIndex = 1;
+            //         } else if (plSelName == '对子') {
+            //             plSelIndex = 2;
+            //         }
+            //     }else {
+            //         plSelName = $('.cl-1015-tsh ul li span.acti_tsh').html();
+            //         if (plSelName == '豹子') {
+            //             plSelIndex = 0;
+            //         } else if (plSelName == '顺子') {
+            //             plSelIndex = 1;
+            //         } else if (plSelName == '对子') {
+            //             plSelIndex = 2;
+            //         }
+            //     }
+            //     var tempNum = $("#jiangjin-change").data("plStr");
+            //     plSelVal = (tempNum.split("|"))[plSelIndex];
+            // } else {
                 plSelVal = $("#jiangjin-change").data("value");
-            }
+            // }
             var obj = {};
             //======函数获取=====
             obj.showPlayName = data.showPlayName;
@@ -823,21 +821,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
         unbindYuxuan: function() {
             $(".Detailedlist .layout .boxt .left table tbody tr.re_touzhu_tem").unbind('mouseenter').unbind('mouseleave');
         },
-        //右侧选择号码点击事件
-        selectFun_3: function(obj) {
-            $(obj).parent().find(".acti").removeClass("acti");
-            $(obj).addClass("acti");
 
-            var objArr = $(obj).parent().parent().find("span");
-            objArr.each(function () {
-                $(this).removeClass("acti");
-                var num = parseInt($(this).find("i").html());
-                if ($.inArray(num, [0, 1, 2, 3, 4]) >= 0) {
-                    $(this).addClass("acti");
-                }
-            });
-            this.renderZhushu();
-        },
         daoRu:function(){
             this.showloadTxtTemplate1();
         },
@@ -946,70 +930,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
 
             this.renderZhushu();
         },
-        selectFun_2: function(obj) {
-            $(obj).parent().find(".acti").removeClass("acti");
-            $(obj).addClass("acti");
 
-            var objArr = $(obj).parent().parent().find("span");
-            objArr.each(function () {
-                $(this).removeClass("acti");
-                var num = parseInt($(this).find("i").html());
-                if ($.inArray(num, [5, 6, 7, 8, 9,10]) >= 0) {
-                    $(this).addClass("acti");
-                }
-            });
-            this.renderZhushu();
-        },
-        selectFun_4: function(obj) {
-            var _this = this ;
-            $(obj).parent().find(".acti").removeClass("acti");
-            $(obj).addClass("acti");
-
-            var objArr = $(obj).parent().parent().find("span");
-            objArr.each(function () {
-                $(this).removeClass("acti");
-                var num = parseInt($(this).find("i").html());
-                if ($.inArray(num, [1, 3, 5, 7, 9,11]) >= 0) {
-                    $(this).addClass("acti");
-                }
-            });
-            var objName = $(obj).parent().parent().parent().find("li").eq(0).find(".numLines").attr('class');
-            var maName = '';
-            if(typeof objName != 'undefined'){
-                maName = objName.split(' ')[1];
-                var objBtn = _this.getCommonObj(obj, maName);
-                var btnFlag = "qi";
-                changeActi(btnFlag, objBtn);
-            }
-
-            this.renderZhushu();
-        },
-
-        selectFun_5: function(obj) {
-            var _this = this ;
-            $(obj).parent().find(".acti").removeClass("acti");
-            $(obj).addClass("acti");
-
-            var objArr = $(obj).parent().parent().find("span");
-            objArr.each(function () {
-                $(this).removeClass("acti");
-                var num = parseInt($(this).find("i").html());
-                if ($.inArray(num, [0, 2, 4, 6, 8, 10]) >= 0) {
-                    $(this).addClass("acti");
-                }
-            });
-
-            var objName = $(obj).parent().parent().parent().find("li").eq(0).find(".numLines").attr('class');
-            var maName = '';
-            if(typeof objName != 'undefined'){
-                maName = objName.split(' ')[1];
-                var objBtn = getCommonObj(obj, maName);
-                var btnFlag = "ou";
-                _this.changeActi(btnFlag, objBtn);
-            }
-
-            this.renderZhushu();
-        },
         selectFun_6: function(obj) {
             $(obj).parent().parent().find(".acti").removeClass("acti");
             $(obj).addClass("acti");
@@ -1039,21 +960,21 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                     return;
                 }
 
-                if ($.inArray(_this.getPlayId(), ["ssc_sanxing_zuxuan_qsts","ssc_sanxing_zuxuan_hsts"]) >= 0) {
-                    plSelName = data.betContent;
-                    if (plSelName == '豹子') {
-                        plSelIndex = 0;
-                    } else if (plSelName == '顺子') {
-                        plSelIndex = 1;
-                    } else if (plSelName == '对子') {
-                        plSelIndex = 2;
-                    }
-
-                    var tempNum = $("#jiangjin-change").data("plStr");
-                    plSelVal = (tempNum.split("|"))[plSelIndex];
-                } else {
+                // if ($.inArray(_this.getPlayId(), ["ssc_sanxing_zuxuan_qsts","ssc_sanxing_zuxuan_hsts"]) >= 0) {
+                //     plSelName = data.betContent;
+                //     if (plSelName == '豹子') {
+                //         plSelIndex = 0;
+                //     } else if (plSelName == '顺子') {
+                //         plSelIndex = 1;
+                //     } else if (plSelName == '对子') {
+                //         plSelIndex = 2;
+                //     }
+                //
+                //     var tempNum = $("#jiangjin-change").data("plStr");
+                //     plSelVal = (tempNum.split("|"))[plSelIndex];
+                // } else {
                     plSelVal = $("#jiangjin-change").data("value");
-                }
+                // }
 
                 var obj = {};
                 //======函数获取=====
@@ -1720,7 +1641,6 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
         },
 
         sureGfwtXz: function(betForm) {
-            console.log(betForm)
             var _this = this;
             ajaxRequest({
                 url: _this.baseUrl + '/' + _this.code + '/saveBetOrder.html',
