@@ -17,7 +17,7 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
                 var apiId = $(this).data("api-id");
                 var apiTypeId = $(this).data("api-type-id");
                 var status = $(this).data("status");
-                var code = $(this).data('code');
+                var code = $(this).data('game-code');
                 var obj = {};
                 obj.apiId = apiId;
                 obj.apiTypeId = apiTypeId;
@@ -49,7 +49,7 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
             mui("body").on("tap", "._game", function () {
                 var $this = $(this);
                 var status = $this.data('status');
-                var code = $(this).data('code');
+                var code = $(this).data('game-code');
                 var obj = $this.data();
                 obj.gameCode = code;
                 if (status == 'maintain' || status == 'disable') {

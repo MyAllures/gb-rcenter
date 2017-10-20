@@ -1442,6 +1442,10 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .middle-content.member-list .mui-navigate-right .iconfont.icon-xinxizhongxin{background-image:url(../images/ico29.png);}
 .middle-content.member-list .mui-navigate-right .iconfont.icon-gonggao{background-image:url(../images/ico30.png);}
 .middle-content.member-list .mui-navigate-right .iconfont.icon-zaixiankefu{background-image:url(../images/ico31.png);}
+i.back {line-height: 2.3rem; color: #fff; font-size: 0.7rem; display: inline-block; position: absolute; top: 1px; left: 24px; width: 36px;}
+a.bet_menu {width:30px; height: 48px; background: url('../images/icon_more.png') center no-repeat; background-size: 20px; margin-right: -5px;}
+div.menu-popover {width: 120px;}
+._refresh {font-size: 1.2rem!important; font-weight: bold!important; padding-top: 12px!important;}
 
 /*六合彩封盘*/
 .bet-table-list .disabled tbody tr td{background: #efefef!important;}
@@ -1451,3 +1455,9 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .bet-table .bet-table-list  table.disabled  tbody tr td .lhc-num{background: #c1c1c1;}
 .bet-table .bet-table-list table.disabled tbody tr td.mui-active span, .bet-table .bet-table-list table.disabled tbody tr td span.lhc-num{color: #c1c1c1!important;}
 .disabled-btn{background: #ccc!important;color: #8C828C!important;}
+
+.betBack:before {
+	font-size: 1.4rem;
+	margin: 0.36rem 0 0 -0.45rem;
+	display: inline-block;
+}
