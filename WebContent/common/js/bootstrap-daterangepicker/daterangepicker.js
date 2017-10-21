@@ -451,6 +451,7 @@
         },
 
         updateView: function () {
+
             this.updateMonthsInView();
             this.updateCalendars();
         },
@@ -1058,6 +1059,18 @@
                 }
                 if (this.element.data().isEnd) {
                     this.setEndDate(end);
+                }
+                if (this.startDateElement && this.endDateElement) {
+                    if(!this.startDate.isValid() && this.startDateElement && this.element.data().isStart){
+                        this.element.val("");
+                    }
+                    if(!this.endDate.isValid() && this.endDateElement && this.element.data().isEnd){
+                        this.element.val("");
+                    }
+                } else {
+                    if(!this.startDate.isValid()){
+                        this.element.val("");
+                    }
                 }
                 this.updateView();
             }
