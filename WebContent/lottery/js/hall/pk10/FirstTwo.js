@@ -1,7 +1,7 @@
 
 define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
     return PlayWay.extend({
-        playId : '5x',
+        playId : 'qezxfs',
         init: function () {
             this._super();
         },
@@ -254,6 +254,10 @@ define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
                 betContent: betContent,
                 playGroupId: this.playGroupId
             };
+        },
+        //删除重复号码
+        delRrepet: function() {
+
         }
 
 
