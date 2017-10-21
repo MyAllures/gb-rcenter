@@ -97,7 +97,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
         },
         onPageLoad: function () {
             this._super();
-            this.queryStatMoney();
+            // this.queryStatMoney();
         },
         queryStatMoney:function () {
             //getCurrentFormData
