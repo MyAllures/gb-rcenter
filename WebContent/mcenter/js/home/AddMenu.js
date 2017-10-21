@@ -27,7 +27,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     $(e.currentTarget).toggleClass("selected");
                     var obj = {};
                     obj.currentTarget = $(".short-cut-count-tips");
-                    page.showPopover(obj, {}, 'warning', '操作无效，最多可添加20个快键方式', true);
+                    page.showPopover(obj, {}, 'warning', window.top.message.home_auto['操作无效'], true);
                 }else{
                     $("#selectCount").text(parseInt(count));
                 }
@@ -35,7 +35,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             }else{
                 var obj = {};
                 obj.currentTarget = $(".short-cut-count-tips");
-                page.showPopover(obj, {}, 'warning', '操作无效，最多可添加20个快键方式', true);
+                page.showPopover(obj, {}, 'warning', window.top.message.home_auto['操作无效'], true);
             }
             $(e.currentTarget).unlock();
 
@@ -49,7 +49,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         confirmMenu: function (e, option) {
             if ($("a.selected").length > 20) {
                 //操作无效，最多可添加20个快键方式
-                page.showPopover(e, {}, 'warning', '操作无效，最多可添加20个快键方式', true);
+                page.showPopover(e, {}, 'warning', window.top.message.home_auto['操作无效'], true);
                 //$("div.condition-wraper").show();
                 this.resizeDialog();
                 $(e.currentTarget).unlock();
