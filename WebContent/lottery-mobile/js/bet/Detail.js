@@ -67,7 +67,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 dataType:"json",
                 success: function (data) {
                     if(data){
-                        if(!$.isEmptyObject(data.lottery)){
+                        if(!$.isEmptyObject(data.lottery) && data.lottery[0].openCode){
                             var openCode = data.lottery[0].openCode.split(",");
                             data.openCode = openCode;
                         }else {
