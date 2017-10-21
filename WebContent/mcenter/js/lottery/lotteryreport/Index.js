@@ -78,6 +78,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     yearInput.val(yearSpan.replace(".0", ""));
                 } else {
                     yearInput.val("");
+                    page.showPopover(e,option,"danger","请选择要查询的年份",true);
+                    return;
                 }
             }
             var monthSpan = $("#searchMonthSpan").text();
@@ -89,11 +91,31 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     monthInput.val("");
                 }
             }
+
+
             this._super(e, option);
         },
         onPageLoad: function () {
             this._super();
+            // this.queryStatMoney();
+        },
+        queryStatMoney:function () {
+            //getCurrentFormData
+            var formData = this.getCurrentFormData({"currentTarget":$(".search_btn")});
+            window.top.topPage.ajax({
+                url: root + "/LotteryBetOrderReport/queryStatMoney.html?t=" + new Date().getTime(),
+                dataType: 'json',
+                data:formData,
+                success: function (data) {
+                    $("#betAmount").text(data.betAmount);
+                    $("#payoutAmount").text(data.payoutAmount);
+                    $("#profitLoss").text(data.profitLoss);
+                    $("#rabateAmount").text(data.rabateAmount);
+                },
+                error: function (data) {
 
+                }
+            })
         }
     });
 });

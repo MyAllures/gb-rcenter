@@ -127,6 +127,8 @@
                         <exclude>mobile-v2/js/mui/**</exclude>
                         <exclude>mobile-v2/js/zepto/**</exclude>
                         <exclude>mobile-v2/js/plugin/**</exclude>
+                        <exclude>mobile-v3/**</exclude>
+
                         <exclude>lottery-mobile/js/mui/**</exclude>
                         <exclude>lottery-mobile/js/plugin/**</exclude>
                         <exclude>lottery-mobile/js/jquery/**</exclude>
