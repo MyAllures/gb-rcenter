@@ -22,9 +22,10 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             var id = $("input[name='search.id']").val();
             var ids= window.parent.page.getSelectedIds();
             var _this=this;
+            var token = $("[name='gb.token']").val()
             window.top.topPage.ajax({
                 url: root + '/simulationAccount/saveAddQuota.html',
-                data: {"search.ids":ids,"search.id":id,"search.walletBalance":balance},
+                data: {"search.ids":ids,"search.id":id,"search.walletBalance":balance,"gb.token":token},
                 dataType:'json',
                 type: "POST",
                 success: function (data) {
