@@ -14,19 +14,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             _this.changeList();
             //头部选择
             mui("div.s-menu").on('tap','a',function(){
-                //检测是否为定位胆，五星，四星 直选复式事件
-                if($(this).attr("data-code") !='zxfs'){
-                    _this.menuClick(this.classList);
-                }
+                _this.menuClick(this.classList);
             });
-
-            //直选复式
-            // mui(".x_3.gfwf-playName")[0].addEventListener('tap',function(){
-            //     mui(".gfwf-wrap")[0].classList.toggle('Fixed');
-            // });
-            // mui(".gfwf-bg")[0].addEventListener('tap',function(){
-            //     mui(".gfwf-wrap")[0].classList.remove('Fixed');
-            // });
 
             mui("body").on('tap','.gfwf-playName',function(){
                 // mui(".gfwf-wrap")[0].classList.toggle('Fixed');
@@ -43,23 +32,19 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         },
         menuClick:function(thisClassList){
             var _this = this;
+            $("div.s-menu.second").hide();
             $("a.selected-btn.mui-active").removeClass("mui-active");
             thisClassList.toggle('mui-active');
             var dataCode=$("a.selected-btn.mui-active").attr("data-code");
-            var dataPlayId=$("a.selected-btn.mui-active").attr("data-play_id");
             var jspName=$("a.selected-btn.main.mui-active").attr("data-jsp-name");
             if($("a.selected-btn.main.mui-active").size()>0){
-                dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
                 dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
             }
             if(    dataCode !="3star"
-                && dataCode !="ssc_sanxing_qs"
-                && dataCode !="ssc_erxing"
-                && dataCode !="ssc_budingwei"
-                && dataCode !="ssc_daxiaodanshuang"
-                && dataCode !="R2"
-                && dataCode !="R3"
-                && dataCode !="R4"
+                && dataCode !="First2"
+                && dataCode !="After2"
+                && dataCode !="DingWeiDan"
+                && dataCode !="BuDingWei"
             ){
                 $('div.gfwf-bg').slideUp();
                 $('div.selected-wrap').slideUp();
@@ -71,7 +56,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             var _this = this;
             var pageName=_this.getJspName(betCode,jspName);
             mui.ajax(root + '/'+_this.type+'/'+_this.code+'/getSubPage.html', {
-                data: {"betCode": betCode,"pageName":pageName},
+                data: {"pageName":pageName},
                 type: 'POST',
                 success: function (data) {
                     //betCode赋值
@@ -91,37 +76,25 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         },
 
         getJspName : function (betCode,jspName) {
-            //后三初始化
-            if(betCode =="ssc_sanxing_hs" && jspName==undefined){
-                jspName="SscHousan";
-            }
-            //前三初始化
-            if(betCode =="ssc_sanxing_qs" && jspName==undefined){
-                jspName="SscQiansan";
-            }
-            //前二初始化
-            if(betCode =="ssc_erxing" && jspName==undefined){
-                jspName="SscQianer";
-            }
-            //不定位初始化
-            if(betCode =="ssc_budingwei" && jspName==undefined){
-                jspName="SscBudingwei";
-            }else
-            //任选二初始化
+            //三星
             if(betCode =="3star" && jspName==undefined){
                 jspName="3star";
             }
-            //任选三初始化
-            if(betCode =="R3" && jspName==undefined){
-                jspName="SscR3Zxfs";
+            //前二
+            if(betCode =="First2" && jspName==undefined){
+                jspName="First2Zxfs";
             }
-            //任选四初始化
-            if(betCode =="R4" && jspName==undefined){
-                jspName="SscR4Zxfs";
+            //后二
+            if(betCode =="After2" && jspName==undefined){
+                jspName="After2Zxfs";
             }
-            //大小单双初始化
-            if(betCode =="ssc_daxiaodanshuang" && jspName==undefined){
-                jspName="SscDaxiaodanshuangErxing";
+            //定位胆
+            if(betCode =="DingWeiDan" && jspName==undefined){
+                jspName="DingWeiDanZxfs";
+            }
+            //不定位
+            if(betCode =="BuDingWei" && jspName==undefined){
+                jspName="BuDingWeiZxfs";
             }
 
             return jspName;

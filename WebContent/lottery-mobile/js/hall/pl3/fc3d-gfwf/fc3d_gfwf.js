@@ -37,29 +37,11 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         },
 
         getInitbetCode : function (betCode) {
-            //后三初始化
-            if(betCode =="ssc_sanxing_hs"){
-                betCode="ssc_sanxing_zhixuan_hsfs";
+            if(betCode =="3star"){
+                betCode="pl3_sanxing_zhixuan_fs";
             }
-            //前三初始化
-            if(betCode =="ssc_sanxing_qs"){
-                betCode="ssc_sanxing_zhixuan_qsfs";
-            }
-            //前二初始化
-            if(betCode =="ssc_erxing"){
-                betCode="ssc_erxing_zhixuan_qefs";
-            }
-            //不定位初始化
-            if(betCode =="ssc_budingwei"){
-                betCode="ssc_budingwei_q3ym";
-            }else
-            //任选二初始化
-            if(betCode =="R2"){
-                betCode="ssc_renxuan2_zxfs";
-            }
-            //大小单双初始化
-            if(betCode =="ssc_daxiaodanshuang"){
-                betCode="ssc_daxiaodanshuang_q2";
+            if(betCode =="First2"){
+                betCode="pl3_erxing_zhixuan_qefs";
             }
             return betCode;
         },

@@ -7,20 +7,8 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
             // this.getJspName();
         },
 
-        // getJspName : function () {
-        //     var betCode=$("#gfwfBetCode").val();
-        //     if(betCode=="ssc_sanxing_hs"){
-        //         return "SscHousan";
-        //     }else{
-        //         return "";
-        //     }
-        //
-        // },
-
-
         showTable : function(){
-
-            $("a[data-code='3starZu6fs']").addClass("mui-active");
+            $("a[data-code='3star']").addClass("mui-active");
             $("#3star").show();
             $("span.x_1.gfwf-tit").text("三星");
             $(".s-title.title1 span").text("三星");
