@@ -76,7 +76,7 @@ define(['site/hall/pl3/PlayWay'], function (PlayWay) {
             var playCode = $(".main-left .table-common input.lottery").data("play");
             var expect = $('i#expect').text();
             var code = this.code;
-            for(var index in allGroup){
+            for(var index = 0; index < allGroup.length; index++){
                 var betNum = allGroup[index];
                 betForm.betOrders.push({
                     expect: expect,

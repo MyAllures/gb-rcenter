@@ -1652,6 +1652,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
 
                 // 注单内容
                 var betForm = {
+                    code: _this.code,
                     totalMoney: 0,
                     quantity: 0,
                     playModel:1,//1表官方玩法

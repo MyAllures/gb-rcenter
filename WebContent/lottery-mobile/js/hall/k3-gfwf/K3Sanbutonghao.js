@@ -61,9 +61,9 @@ define(['site/hall/k3-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], funct
             var random_2 = (parseInt(Math.random() * 6) + 1);
             var random_3 = (parseInt(Math.random() * 6) + 1);
             while (random_1 ==random_2 || random_1 ==random_3 || random_3 ==random_2 ){
-                 random_1 = (parseInt(Math.random() * 6) + 1);
-                 random_2 = (parseInt(Math.random() * 6) + 1);
-                 random_3 = (parseInt(Math.random() * 6) + 1);
+                random_1 = (parseInt(Math.random() * 6) + 1);
+                random_2 = (parseInt(Math.random() * 6) + 1);
+                random_3 = (parseInt(Math.random() * 6) + 1);
             }
             $("a.n-btn.butonghao").removeClass("mui-active").eq(random_1-1).addClass("mui-active");
             $("a.n-btn.butonghao").eq(random_2-1).addClass("mui-active");
