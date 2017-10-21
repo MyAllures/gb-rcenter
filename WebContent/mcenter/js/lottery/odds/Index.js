@@ -39,7 +39,7 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
 
             $("#searchDiv a").click(function (e) {
                 var code = $(this).attr("code");
-                if(code=='cqssc'||code=='tjssc'||code=='xjssc'){
+                if(code=='cqssc'||code=='tjssc'||code=='xjssc'||code=='bjpk10'||code=='ahk3'||code=='fc3d'){
                     $(".wfqh-btn").attr("style", "display:");
                     $("#gfwfqh").addClass("gfwfqh-wrap");
                     $("#jdwf").addClass("active");

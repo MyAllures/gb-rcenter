@@ -1,7 +1,7 @@
 /**
  * 跨度
  */
-define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
+define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
     return PlayWay.extend({
         playId : '5x',
         init: function () {
@@ -10,7 +10,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         onPageLoad: function () {
             this._super();
         },
-        /*后三直选复式*/
+        /*三星直选复式*/
         suiji_gd11x5_hszxfs: function() {
             // 初始化变量
             var showPlayName = '';
@@ -33,7 +33,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
 
             }
 
-            showPlayName = "后三直选-直选复式";
+            showPlayName = "三星直选-直选复式";
             showContent = "第三位: (" + newArr[0] + ") 第四位: (" + newArr[1] + ") 第五位 : (" + newArr[2] + ")";
             betContent = newArr[0] + "|" + newArr[1] + "|" + newArr[2];
 
@@ -44,67 +44,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 playGroupId: this.playGroupId
             };
         },
-        /**
-         * 后三直选-跨度
-         */
-        suiji_q3zxkd: function() {
-            // 初始化变量
-            var betZhushu = 0;
-            var showPlayName = '';
-            var showContent = '';
-            var betContent = '';
-
-            var tempArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-            var arr = [];
-            while (arr.length < 1) {
-                arr.push(tempArr[parseInt(Math.random() * tempArr.length)]);
-            }
-            betZhushu = this.getKaduNewArrs(arr).length;
-            showPlayName = "前三直选-跨度";
-            showContent = "跨度: ({0})".format(arr[0]);
-            betContent = "{0}".format(arr[0]);
-
-            return {
-                showPlayName: showPlayName,
-                showContent: showContent,
-                betContent: betContent,
-                betZhushu: betZhushu,
-                playGroupId: playGroupId
-            };
-        },
-        /**
-         * 后三直选-组选包胆
-         */
-        suiji_h3zxbd: function() {
-            var baoDanArr = [];
-            // 初始化变量
-            var showPlayName = '';
-            var showContent = '';
-            var betContent = '';
-            var betZhushu = '';
-
-            var tempArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-            var arr = [];
-            while (arr.length < 1) {
-                arr.push(tempArr[parseInt(Math.random() * tempArr.length)]);
-            }
-            baoDanArr.push(arr);
-            betZhushu = this.getZxbdNewArrs(baoDanArr).length;
-            showPlayName = "后三直选-组选包胆";
-            showContent = "包胆: ({0})".format(arr[0]);
-            betContent = "{0}".format(arr[0]);
-
-            return {
-                showPlayName: showPlayName,
-                showContent: showContent,
-                betContent: betContent,
-                betZhushu: betZhushu,
-                playGroupId: playGroupId
-            };
-        },
 
         /**
-         * 后三直选-组选和值
+         * 三星直选-组选和值
          */
         suiji_h3zuxhz: function() {
             var fuShiArr = [];
@@ -121,8 +63,8 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             }
 
             fuShiArr.push(arr);
-            betZhushu = this.getZxhzNewArrs(fuShiArr).length;
-            showPlayName = "后三直选-组选和值";
+            betZhushu = getZxhzNewArrs(fuShiArr).length;
+            showPlayName = "三星直选-组选和值";
             showContent = "和值: ({0})".format(arr[0]);
             betContent = "{0}".format(arr[0]);
 
@@ -136,7 +78,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三直选-组合
+         * 三星直选-组合
          */
         suiji_h3zh: function() {
             var baiArr = [], shiArr = [], geArr = [];
@@ -155,7 +97,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             shiArr.push(arr[1]);
             geArr.push(arr[2]);
             betZhushu = (this.getHszhNewArrs(baiArr, shiArr, geArr)).length
-            showPlayName = "后三直选-组合";
+            showPlayName = "三星直选-组合";
             showContent = "百位: ({0}), 十位: ({1}), 个位: ({2})".format(arr[0], arr[1], arr[2]);
             betContent = "{0}|{1}|{2}".format(arr[0], arr[1], arr[2]);
 
@@ -169,7 +111,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三直选-单式
+         * 三星直选-单式
          */
         suiji_h3zxds: function() {
             // 初始化变量
@@ -183,7 +125,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 arr.push(tempArr[parseInt(Math.random() * tempArr.length)]);
             }
 
-            showPlayName = "后三直选-单式";
+            showPlayName = "三星直选-单式";
             showContent = "号码: (" + arr[0] + "" + arr[1] + "" + arr[2] + ")";
             betContent = "{0}{1}{2}".format(arr[0], arr[1], arr[2]);
 
@@ -195,7 +137,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             };
         },
         /**
-         * 后三直选复式
+         * 三星直选复式
          */
         suiji_h3zxfs: function() {
             // 初始化变量
@@ -209,7 +151,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 arr.push(tempArr[parseInt(Math.random() * tempArr.length)]);
             }
 
-            showPlayName = "后三直选-复式";
+            showPlayName = "三星直选-复式";
             showContent = "百位: ({0}), 十位: ({1}), 个位: ({2})".format(arr[0], arr[1], arr[2]);
             betContent = "{0}|{1}|{2}".format(arr[0], arr[1], arr[2]);
 
@@ -222,7 +164,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三直选-直选单式
+         * 三星直选-直选单式
          */
         content_gd11x5_hszxds:function() {
             var _this = this;
@@ -287,7 +229,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             var showContent = '';
             var betContent = '';
 
-            showPlayName = "后三直选-直选单式";
+            showPlayName = "三星直选-直选单式";
             showContent = "号码: (" + tempArr.join(',') + ")";
             // 转换投注格式
             betContent = tempArr.join(',');
@@ -300,31 +242,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三直选-跨度
-         */
-        content_q3zxkd:function() {
-            var kaDuArr = [];
-            $.each($(".cl-1006-zxkd ul li[data-name = '跨度'] span.acti"), function (index, value) {
-                kaDuArr.push($.trim($(this).find("i").html()));
-            });
-
-            // 初始化变量
-            var showPlayName = '';
-            var showContent = '';
-            var betContent = '';
-
-            showPlayName = "前三直选-跨度";
-            showContent = "跨度: (" + kaDuArr.join(",") + ")";
-            betContent = kaDuArr.join(",");
-
-            return {
-                showPlayName: showPlayName,
-                showContent: showContent,
-                betContent: betContent
-            };
-        },
-        /**
-         * 后三直选-后三组合
+         * 三星直选-三星组合
          */
         content_h3zh: function() {
             var baiArr = [], shiArr = [], geArr = [];
@@ -343,7 +261,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             var showContent = '';
             var betContent = '';
 
-            showPlayName = "后三直选-组合";
+            showPlayName = "三星直选-组合";
             showContent = "百位：({0})，十位：({1})，个位：({2})".format(
                 baiArr.join(","),
                 shiArr.join(","),
@@ -363,35 +281,11 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
 
         },
 
-        /**
-         * 后三直选-跨度
-         */
-        content_h3zxkd:function() {
-            var kaDuArr = [];
-            $.each($(".cl-1006-zxkd ul li[data-name = '跨度'] span.acti"), function (index, value) {
-                kaDuArr.push($.trim($(this).find("i").html()));
-            });
-
-            // 初始化变量
-            var showPlayName = '';
-            var showContent = '';
-            var betContent = '';
-
-            showPlayName = "后三直选-跨度";
-            showContent = "跨度: (" + kaDuArr.join(",") + ")";
-            betContent = kaDuArr.join(",");
-
-            return {
-                showPlayName: showPlayName,
-                showContent: showContent,
-                betContent: betContent
-            };
-        },
 
         /**
-         * 后三直选-和值
+         * 三星直选-和值
          */
-        content_h3zxhz:function() {
+        content_pl3zxhz:function() {
             var heZhiArr = [];
             var zhushu = 0;
             $.each($(".cl-1005-zxhz ul li[data-name = '和值'] span.acti"), function (index, value) {
@@ -403,7 +297,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             var showContent = '';
             var betContent = '';
 
-            showPlayName = "后三直选-和值";
+            showPlayName = "三星直选-和值";
             showContent = "和值: (" + heZhiArr.join(",") + ")";
             betContent = heZhiArr.join(",");
 
@@ -414,9 +308,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             };
         },
         /**
-         * 后三直选-直选单式
+         * 三星直选-直选单式
          */
-        content_h3zxds:function() {
+        content_pl3zxds:function() {
             var _this = this;
             var textStr = $(".content_jiang .content_tex").val();
             var newArr = [];
@@ -451,7 +345,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             var showContent = '';
             var betContent = '';
 
-            showPlayName = "后三直选-单式";
+            showPlayName = "三星直选-单式";
             showContent = "号码: (" + newArr.join(",") + ")";
             betContent = newArr.join(",");
 
@@ -462,9 +356,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             };
         },
         /**
-         * 后三直选复式
+         * 三星直选复式
          */
-        content_h3zxfs:function() {
+        content_pl3zxfs:function() {
             var baiArr = [], shiArr = [], geArr = [];
             $.each($(".cl-1002 ul li[data-name = '百'] span.acti"), function (index, value) {
                 baiArr.push($.trim($(this).find("i").html()));
@@ -485,7 +379,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             var showContent = '';
             var betContent = '';
 
-            showPlayName = "后三直选-复式";
+            showPlayName = "三星直选-复式";
             showContent = "百位：({0})，十位：({1})，个位：({2})".format(
                 baiArr.join(","),
                 shiArr.join(","),
@@ -545,26 +439,11 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             return zlLength;
         },
 
-        /**
-         * 注数-组选包胆
-         */
-        zhushu_h3zxbd: function() {
-            var baoDanArr = [], newArr = [];
-            $.each($(".cl-1013-zxbd ul li[data-name = '包胆'] span.acti"), function (index, value) {
-                baoDanArr.push($.trim($(this).find("i").html()));
-            });
-            var zlLength = baoDanArr.length;
-            if (zlLength < 0) {
-                return 0;
-            }
-            newArr = this.getZxbdNewArrs(baoDanArr);
-            return newArr.length;
-        },
 
         /**
          * 注数-组选和值
          */
-        zhushu_h3zuxhz: function() {
+        zhushu_pl3zuxhz: function() {
             var fuShiArr = [], newArr = [];
             $.each($(".cl-1012-zxhz ul li[data-name = '和值'] span.acti"), function (index, value) {
                 fuShiArr.push($.trim($(this).find("i").html()));
@@ -580,7 +459,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         /**
          * 注数-混合组选
          */
-        zhushu_h3hhzx: function() {
+        zhushu_pl3hhzx: function() {
             var textStr = $(".cl-1011-hhzx .content_jiang .content_tex").val();
             var newArr = [], tempArr = [], errorStr = '';
             textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
@@ -605,7 +484,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         /**
          * 注数-组六单式
          */
-        zhushu_h3z6ds: function() {
+        zhushu_pl3z6ds: function() {
             var textStr = $(".cl-1010-zlds .content_jiang .content_tex").val();
             var newArr = [], tempArr = [];
             textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
@@ -630,7 +509,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         /**
          * 注数-组六复式
          */
-        zhushu_h3z6fs: function() {
+        zhushu_pl3z6fs: function() {
             var fuShiArr = [], newArr = [];
             $.each($(".cl-1009-zlfs ul li[data-name = '组六'] span.acti"), function (index, value) {
                 fuShiArr.push($.trim($(this).find("i").html()));
@@ -646,7 +525,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         /**
          * 注数-组三单式
          */
-        zhushu_h3z3ds:function() {
+        zhushu_pl3z3ds:function() {
             var zhushu = 0;
             var textStr = $(".cl-1008-zsds .content_jiang .content_tex").val();
             var newArr = [], tempArr = [], errorStr = '', errorArr = [];
@@ -672,7 +551,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         /**
          * 注数-组三复式
          */
-        zhushu_h3z3fs:function() {
+        zhushu_pl3z3fs:function() {
             var fuShiArr = [], newArr = [];
             $.each($(".cl-1007-zsfs ul li[data-name = '组三'] span.acti"), function (index, value) {
                 fuShiArr.push($.trim($(this).find("i").html()));
@@ -705,7 +584,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         /**
          * 注数-直选和值
          */
-        zhushu_h3zxhz: function() {
+        zhushu_pl3zxhz: function() {
             var heZhiArr = [], newArr = [];
             $.each($(".cl-1005-zxhz ul li[data-name = '和值'] span.acti"), function (index, value) {
                 heZhiArr.push($.trim($(this).find("i").html()));
@@ -721,7 +600,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 注数-后3组合
+         * 注数-三星组合
          */
         zhushu_h3zh: function() {
             var baiArr = [], shiArr = [], geArr = [];
@@ -740,7 +619,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             var geLength = geArr.length;
 
             if (baiLength <= 0 || shiLength <= 0 || geLength <= 0) {
-                return 0;
+                return;
             }
 
             var newArr = this.getHszhNewArrs(baiArr, shiArr, geArr);
@@ -748,9 +627,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 注数-后3直选单式
+         * 注数-三星直选单式
          */
-        zhushu_h3zxds: function() {
+        zhushu_pl3zxds: function() {
             var textStr = $(".content_jiang .content_tex").val();
             var newArr = [];
             var errorArr = [];
@@ -767,9 +646,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 注数-后3直选复式
+         * 注数-三星直选复式
          */
-        zhushu_h3zxfs: function() {
+        zhushu_pl3zxfs: function() {
             var newArr = [];
             var baiArr = [], shiArr = [], geArr = [];
             $.each($(".cl-1002 ul li[data-name = '百'] span.acti"), function (index, value) {
@@ -793,7 +672,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三其它-特殊号"
+         * 三星其它-特殊号"
          */
         suiji_h3tsh:function() {
             // 初始化变量
@@ -810,7 +689,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 newArr.push(arrTsh[parseInt(zhiTsh)]);
             }
 
-            showPlayName = "后三其它-特殊号";
+            showPlayName = "三星其它-特殊号";
             showContent = "特殊号: (" + newArr[0] + ")";
             betContent = newArr[0];
 
@@ -823,7 +702,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三其它-后三和值尾数"
+         * 三星其它-三星和值尾数"
          */
         suiji_h3hzws: function() {
             // 初始化变量
@@ -837,7 +716,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 arr.push(tempArr[parseInt(Math.random() * tempArr.length)]);
             }
 
-            showPlayName = "后三其它-后三和值尾数";
+            showPlayName = "三星其它-三星和值尾数";
             showContent = "尾数: ({0})".format(arr[0]);
             betContent = "{0}".format(arr[0]);
 
@@ -851,7 +730,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
 
 
         /**
-         * 后三直选-组选包胆
+         * 三星直选-组选包胆
          */
         suiji_h3zxbd:function() {
             var baoDanArr = [];
@@ -868,7 +747,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             }
             baoDanArr.push(arr);
             betZhushu = this.getZxbdNewArrs(baoDanArr).length;
-            showPlayName = "后三直选-组选包胆";
+            showPlayName = "三星直选-组选包胆";
             showContent = "包胆: ({0})".format(arr[0]);
             betContent = "{0}".format(arr[0]);
 
@@ -882,9 +761,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三直选-组选和值
+         * 三星直选-组选和值
          */
-        suiji_h3zuxhz:function() {
+        suiji_pl3zuxhz:function() {
             var fuShiArr = [];
             // 初始化变量
             var showPlayName = '';
@@ -900,7 +779,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
 
             fuShiArr.push(arr);
             betZhushu = this.getZxhzNewArrs(fuShiArr).length;
-            showPlayName = "后三直选-组选和值";
+            showPlayName = "三星直选-组选和值";
             showContent = "和值: ({0})".format(arr[0]);
             betContent = "{0}".format(arr[0]);
 
@@ -914,9 +793,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三组选-混合组选
+         * 三星组选-混合组选
          */
-        suiji_h3hhzx: function() {
+        suiji_pl3hhzx: function() {
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -935,7 +814,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 }
             }
 
-            showPlayName = "后三组选-混合组选";
+            showPlayName = "三星组选-混合组选";
             showContent = "号码: (" + arr[0] + "" + arr[1] + "" + arr[2] + ")";
             betContent = "{0}{1}{2}".format(arr[0], arr[1], arr[2]);
 
@@ -948,9 +827,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三组选-组六单式
+         * 三星组选-组六单式
          */
-        suiji_h3z6ds:function() {
+        suiji_pl3z6ds:function() {
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -969,7 +848,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 }
             }
 
-            showPlayName = "后三组选-组六单式";
+            showPlayName = "三星组选-组六单式";
             showContent = "号码: (" + arr[0] + "" + arr[1] + "" + arr[2] + ")";
             betContent = "{0}{1}{2}".format(arr[0], arr[1], arr[2]);
 
@@ -982,9 +861,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三组选-组六复式
+         * 三星组选-组六复式
          */
-        suiji_h3z6fs:function() {
+        suiji_pl3z6fs:function() {
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -1003,7 +882,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 }
             }
 
-            showPlayName = "后三组选-组六复式";
+            showPlayName = "三星组选-组六复式";
             showContent = "组六: ({0},{1},{2})".format(arr[0], arr[1], arr[2]);
             betContent = "{0},{1},{2}".format(arr[0], arr[1], arr[2]);
 
@@ -1017,9 +896,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
 
 
         /**
-         * 后三组选-组三单式
+         * 三星组选-组三单式
          */
-        suiji_h3z3ds:function() {
+        suiji_pl3z3ds:function() {
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -1038,7 +917,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 }
             }
 
-            showPlayName = "后三组选-组三单式";
+            showPlayName = "三星组选-组三单式";
             showContent = "号码: (" + arr[0] + "" + arr[1] + "" + arr[2] + ")";
             betContent = "{0}{1}{2}".format(arr[0], arr[1], arr[2]);
 
@@ -1051,9 +930,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三组选-组三复式
+         * 三星组选-组三复式
          */
-        suiji_h3z3fs:function() {
+        suiji_pl3z3fs:function() {
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -1071,7 +950,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 }
             }
 
-            showPlayName = "后三组选-组三复式";
+            showPlayName = "三星组选-组三复式";
             showContent = "组三: ({0},{1})".format(arr[0], arr[1]);
             betContent = "{0},{1}".format(arr[0], arr[1]);
             betZhushu = 2; //默认两个号码两注
@@ -1085,7 +964,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三直选-跨度
+         * 三星直选-跨度
          */
         suiji_h3zxkd:function() {
             // 初始化变量
@@ -1100,7 +979,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 arr.push(tempArr[parseInt(Math.random() * tempArr.length)]);
             }
             betZhushu = this.getKaduNewArrs(arr).length;
-            showPlayName = "后三直选-跨度";
+            showPlayName = "三星直选-跨度";
             showContent = "跨度: ({0})".format(arr[0]);
             betContent = "{0}".format(arr[0]);
 
@@ -1114,9 +993,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三直选-和值
+         * 三星直选-和值
          */
-        suiji_h3zxhz:function() {
+        suiji_pl3zxhz:function() {
             var betZhushu = 0;
             // 初始化变量
             var showPlayName = '';
@@ -1129,7 +1008,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 arr.push(tempArr[parseInt(Math.random() * tempArr.length)]);
             }
             betZhushu = this.getHezNewArrs(arr).length;
-            showPlayName = "后三直选-和值";
+            showPlayName = "三星直选-和值";
             showContent = "和值: ({0})".format(arr[0]);
             betContent = "{0}".format(arr[0]);
 
@@ -1143,7 +1022,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三直选-组合
+         * 三星直选-组合
          */
         suiji_h3zh:function() {
             var baiArr = [], shiArr = [], geArr = [];
@@ -1162,7 +1041,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
             shiArr.push(arr[1]);
             geArr.push(arr[2]);
             betZhushu = (this.getHszhNewArrs(baiArr, shiArr, geArr)).length
-            showPlayName = "后三直选-组合";
+            showPlayName = "三星直选-组合";
             showContent = "百位: ({0}), 十位: ({1}), 个位: ({2})".format(arr[0], arr[1], arr[2]);
             betContent = "{0}|{1}|{2}".format(arr[0], arr[1], arr[2]);
 
@@ -1176,9 +1055,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三直选-单式
+         * 三星直选-单式
          */
-        suiji_h3zxds:function() {
+        suiji_pl3zxds:function() {
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -1190,7 +1069,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 arr.push(tempArr[parseInt(Math.random() * tempArr.length)]);
             }
 
-            showPlayName = "后三直选-单式";
+            showPlayName = "三星直选-单式";
             showContent = "号码: (" + arr[0] + "" + arr[1] + "" + arr[2] + ")";
             betContent = "{0}{1}{2}".format(arr[0], arr[1], arr[2]);
 
@@ -1203,9 +1082,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         },
 
         /**
-         * 后三直选复式
+         * 三星直选复式
          */
-        suiji_h3zxfs:function() {
+        suiji_pl3zxfs:function() {
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -1217,7 +1096,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 arr.push(tempArr[parseInt(Math.random() * tempArr.length)]);
             }
 
-            showPlayName = "后三直选-复式";
+            showPlayName = "三星直选-复式";
             showContent = "百位: ({0}), 十位: ({1}), 个位: ({2})".format(arr[0], arr[1], arr[2]);
             betContent = "{0}|{1}|{2}".format(arr[0], arr[1], arr[2]);
 
@@ -1243,7 +1122,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         var showContent = '';
         var betContent = '';
 
-        showPlayName = "后三其它-特殊号";
+        showPlayName = "三星其它-特殊号";
         showContent = "特殊号: (" + thArr.join(",") + ")";
         betContent = thArr.join(",");
 
@@ -1256,7 +1135,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
 
 
     /**
-     * 后三组选-后三和值尾数
+     * 三星组选-三星和值尾数
      */
      content_h3hzws:function() {
         var hzArr = [];
@@ -1269,7 +1148,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         var showContent = '';
         var betContent = '';
 
-        showPlayName = "后三其它-后三和值尾数";
+        showPlayName = "三星其它-三星和值尾数";
         showContent = "和值尾数: (" + hzArr.join(",") + ")";
         betContent = hzArr.join(",");
 
@@ -1280,36 +1159,10 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         };
     },
 
-
     /**
-     * 后三组选-组选包胆
+     * 三星组选-组选和值
      */
-     content_h3zxbd:function() {
-        var bdArr = [];
-        $.each($(".cl-1013-zxbd ul li[data-name = '包胆'] span.acti"), function (index, value) {
-            bdArr.push($.trim($(this).find("i").html()));
-        });
-
-        // 初始化变量
-        var showPlayName = '';
-        var showContent = '';
-        var betContent = '';
-
-        showPlayName = "后三组选-组选包胆";
-        showContent = "包胆: (" + bdArr.join(",") + ")";
-        betContent = bdArr.join(",");
-
-        return {
-            showPlayName: showPlayName,
-            showContent: showContent,
-            betContent: betContent
-        };
-    },
-
-    /**
-     * 后三组选-组选和值
-     */
-     content_h3zuxhz:function() {
+     content_pl3zuxhz:function() {
         var heZhiArr = [];
         $.each($(".cl-1012-zxhz ul li[data-name = '和值'] span.acti"), function (index, value) {
             heZhiArr.push($.trim($(this).find("i").html()));
@@ -1320,7 +1173,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         var showContent = '';
         var betContent = '';
 
-        showPlayName = "后三组选-组选和值";
+        showPlayName = "三星组选-组选和值";
         showContent = "和值: (" + heZhiArr.join(",") + ")";
         betContent = heZhiArr.join(",");
 
@@ -1332,9 +1185,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
     },
 
     /**
-     * 后三组选-组六混合
+     * 三星组选-组六混合
      */
-     content_h3hhzx:function() {
+     content_pl3hhzx:function() {
         var _this = this;
         var textStr = $(".cl-1011-hhzx .content_jiang .content_tex").val();
         var newArr = [], tempArr = [], errorStr = '', errorArr = [];
@@ -1375,7 +1228,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         var showContent = '';
         var betContent = '';
 
-        showPlayName = "后三组选-混合组选";
+        showPlayName = "三星组选-混合组选";
         showContent = "号码: (" + tempArr.join(',') + ")";
         betContent = tempArr.join(',');
 
@@ -1387,9 +1240,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
     },
 
     /**
-     * 后三组选-组六单式
+     * 三星组选-组六单式
      */
-     content_h3z6ds:function() {
+     content_pl3z6ds:function() {
          var _this = this;
         var textStr = $(".cl-1010-zlds .content_jiang .content_tex").val();
         var newArr = [], tempArr = [], errorStr = '', errorArr = [];
@@ -1430,7 +1283,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         var showContent = '';
         var betContent = '';
 
-        showPlayName = "后三组选-组六单式";
+        showPlayName = "三星组选-组六单式";
         showContent = "号码: (" + tempArr.join(',') + ")";
         betContent = tempArr.join(',');
 
@@ -1442,9 +1295,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
     },
 
     /**
-     * 后三组选-组六复式
+     * 三星组选-组六复式
      */
-     content_h3z6fs:function() {
+     content_pl3z6fs:function() {
         var zuLiuArr = [];
 
         $.each($(".cl-1009-zlfs ul li[data-name = '组六'] span.acti"), function (index, value) {
@@ -1456,7 +1309,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         var showContent = '';
         var betContent = '';
 
-        showPlayName = "后三组选-组六复式";
+        showPlayName = "三星组选-组六复式";
         showContent = "组六: (" + zuLiuArr.join(",") + ")";
         betContent = zuLiuArr.join(",");
 
@@ -1468,9 +1321,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
     },
 
     /**
-     * 后三组选-组三单式
+     * 三星组选-组三单式
      */
-     content_h3z3ds:function() {
+     content_pl3z3ds:function() {
          var _this = this;
         var textStr = $(".cl-1008-zsds .content_jiang .content_tex").val();
         var newArr = [], tempArr = [], errorStr = '', errorArr = [];
@@ -1511,7 +1364,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         var showContent = '';
         var betContent = '';
 
-        showPlayName = "后三组选-组三单式";
+        showPlayName = "三星组选-组三单式";
         showContent = "号码: (" + tempArr.join(',') + ")";
         betContent = tempArr.join(",");
 
@@ -1523,9 +1376,9 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
     },
 
     /**
-     * 后三组选-组三复式
+     * 三星组选-组三复式
      */
-     content_h3z3fs:function() {
+     content_pl3z3fs:function() {
         var zuSanArr = [];
         $.each($(".cl-1007-zsfs ul li[data-name = '组三'] span.acti"), function (index, value) {
             zuSanArr.push($.trim($(this).find("i").html()));
@@ -1537,7 +1390,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         var showContent = '';
         var betContent = '';
 
-        showPlayName = "后三组选-组三复式";
+        showPlayName = "三星组选-组三复式";
         showContent = "组三: (" + zuSanArr.join(",") + ")";
         betContent = zuSanArr.join(",");
 
@@ -1551,7 +1404,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
         getBetNum:function(betNum) {
             if (betNum.toString().indexOf('|') < 0) {
                 var betCode = this.getPlayId();
-                if (betCode == 'ssc_sanxing_zhixuan_hskd' || betCode =='ssc_sanxing_zuxuan_hsz3fs' || betCode =='ssc_sanxing_zuxuan_hsz6fs' ){
+                if (betCode == 'pl3_sanxing_zhixuan_ds' || betCode =='pl3_sanxing_zhixuan_fs' || betCode =='pl3_sanxing_zhixuan_hz' ){
 
                 }else {
                     betNum = betNum.replace(new RegExp(",", "gm"), "|");

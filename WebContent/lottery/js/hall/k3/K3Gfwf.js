@@ -31,13 +31,15 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 }
                 // 初始化子页面
                 _this.initSubPage();
+
+
             });
 
         },
         getGfwfAllOdd: function () {
             var _this = this;
             ajaxRequest({
-                url: root + '/ssc/getGfwfAllOdd.html',
+                url: root + '/k3/getGfwfAllOdd.html',
                 async:false,
                 data: {code: _this.code},
                 success: function (data) {
@@ -61,7 +63,6 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             // 内容点击，触发统计注数函数
             $(".Pick ul li span i").click(function () {
                 var nowFlag = $(".re-5x-i i").hasClass('acti');
-
                 if (nowFlag == true) {
                     $(".re-5x-i i").removeClass('acti');
                 }
@@ -140,12 +141,31 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 _this.renderZhushu();
             });
 
+            // 内容点击，触发统计注数函数（二同号单选）
+            $(".Pick ul li span.erbutong").click(function () {
+                $(this).addClass('acti');   // 变色
+                var text=parseInt($(this).text())*11;
+                $(".Pick ul li span.ertonghao."+text).removeClass('acti');
+                // 渲染中部注数，赔率，返点等等
+                _this.renderZhushu();
+            });
+
+            // 内容点击，触发统计注数函数（二同号单选）
+            $(".Pick ul li span.ertonghao").click(function () {
+                $(this).addClass('acti');   // 变色
+                var text=parseInt($(this).text())/11;
+                $(".Pick ul li span.erbutong."+text).removeClass('acti');
+                // 渲染中部注数，赔率，返点等等
+                _this.renderZhushu();
+            });
+
             // 内容点击，触发统计注数函数（特殊号）
             $(".Pick ul li.tsh_li span").click(function () {
                 $(this).toggleClass('acti_tsh');   // 变色
                 // 渲染中部注数，赔率，返点等等
                 _this.renderZhushu();
             });
+
 
             // 手动输入，触发统计注数函数
             $('.content_jiang .content_tex').keyup(function () {
@@ -210,7 +230,6 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 minPl =_this.getArgNum((plAndMaxFd.odd-Number(plAndMaxFd.baseNum)*plAndMaxFd.rebate));   // 最低赔率
             }
             // convertBlMoney = (maxPlayPl - minPl) / maxFandian;  // 每1%转换赔率
-
             if(maxFandian ==0){
                 // 返点比例
                 var fandianBili = 0; // 当前滚动条移动的比例
@@ -695,7 +714,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
 
         },
         getStringFormat: function () {
-// 字符串格式化函数
+        // 字符串格式化函数
             String.prototype.format = function (args) {
                 var result = this;
                 if (arguments.length > 0) {
@@ -1652,7 +1671,6 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
 
                 // 注单内容
                 var betForm = {
-                    code: _this.code,
                     totalMoney: 0,
                     quantity: 0,
                     playModel:1,//1表官方玩法

@@ -1,4 +1,4 @@
-define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jquery.range.css','css!themesCss/gfwf.css'], function (PlayWay,Template,Range,Common) {
+define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss/jquery.range.css','css!themesCss/gfwf.css'], function (PlayWay,Template,Range,Common) {
     return PlayWay.extend({
         arrNum2 : [], //获取点击数的数组
         arrNum3 : [],
@@ -35,15 +35,16 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
 
         },
         getGfwfAllOdd: function () {
+            var betCode = $("span.playPlIdBtn.acti").attr("data-play_id");
             var _this = this;
             ajaxRequest({
-                url: root + '/ssc/getGfwfAllOdd.html',
+                url: root + '/pl3/fc3d/getGfwfAllOdd.html',
                 async:false,
                 data: {code: _this.code},
                 success: function (data) {
                     if (!$.isEmptyObject(data)) {
                         _this.gfwfPlJson = data;
-                       _this.initSubPage();
+                        _this.initSubPage();
                     } else {
                         console.log(name + ":odd is null");
                     }
@@ -209,11 +210,9 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 maxFandian = plAndMaxFd.rebate*100;    // 最大返点
                 minPl =_this.getArgNum((plAndMaxFd.odd-Number(plAndMaxFd.baseNum)*plAndMaxFd.rebate));   // 最低赔率
             }
-            // convertBlMoney = (maxPlayPl - minPl) / maxFandian;  // 每1%转换赔率
 
-            if(maxFandian ==0){
-                // 返点比例
-                var fandianBili = 0; // 当前滚动条移动的比例
+            if(maxFandian == 0){
+                var fandianBili = 0 // 当前滚动条移动的比例
                 $("#fandian-bfb").data("value", fandianBili);
                 $("#fandian-bfb").html(fandianBili + "%");    // 渲染界面中百分比部分
 
@@ -237,8 +236,9 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
 
                 // 渲染中部注数，赔率，返点等等
                 _this.renderZhushu();
+            }else {
+                convertBlMoney = (maxPlayPl - minPl) / maxFandian;  // 每1%转换赔率
             }
-
             // 初始化返点赔率滚动条
             $('.slider-input').jRange({
                 from: 0,
@@ -588,6 +588,8 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 return obj;
             }
             return;
+
+            //return this.gfwfPlJson[this.getPlayPlId()];
         },
 
         /**
@@ -876,29 +878,29 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             // var textStr = $(xObj).find(".content_tex").val();
             var textStr = $("div.content_jiang").find(".content_tex").val();
             if (typeof (textStr)!= "undefined") {
-            var newArr = [], repeatArr = [], tempArr = [];
-            textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
-            var arr_new = textStr.split(",");
-            for (var i = 0; i < arr_new.length; i++) {
-                if (arr_new[i].toString().length > 0) {
-                    newArr.push(arr_new[i]);
+                var newArr = [], repeatArr = [], tempArr = [];
+                textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
+                var arr_new = textStr.split(",");
+                for (var i = 0; i < arr_new.length; i++) {
+                    if (arr_new[i].toString().length > 0) {
+                        newArr.push(arr_new[i]);
+                    }
+                }
+                var playcode = _this.getPlayCode();
+                if (playcode == 'ssc_sanxing_zuxuan' || playcode == 'ssc_erxing_zuxuan') {//一些需要无序去重的玩法
+                    repeatArr = newArr.duplicateNewa().uniqueArra();
+                    tempArr = newArr.uniqueArra();
+                } else {
+                    repeatArr = newArr.duplicateNew().uniqueArr();
+                    tempArr = newArr.uniqueArr();
+                }
+                if (repeatArr.length <= 0) {
+                    // _this.alertmsg("无重复号码！");
+                } else {
+                    _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
+                    $(".content_jiang .content_tex").val(tempArr.join(" "));
                 }
             }
-            var playcode = _this.getPlayCode();
-            if (playcode == 'ssc_sanxing_zuxuan' || playcode == 'ssc_erxing_zuxuan') {//一些需要无序去重的玩法
-                repeatArr = newArr.duplicateNewa().uniqueArra();
-                tempArr = newArr.uniqueArra();
-            } else {
-                repeatArr = newArr.duplicateNew().uniqueArr();
-                tempArr = newArr.uniqueArr();
-            }
-            if (repeatArr.length <= 0) {
-                // _this.alertmsg("无重复号码！");
-            } else {
-                _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
-                $(".content_jiang .content_tex").val(tempArr.join(" "));
-            }
-        }
             //重新计算注数
             // _this.renderZhushu();
         },
@@ -1190,7 +1192,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             return zhTotelMoney.toFixed(2);
         },
         //计算购买追号同倍总金额
-            getTbTotelMoney: function(){
+        getTbTotelMoney: function(){
             var _this = this;
             var totelMoney = 0;
             var tempMoney = 0;
@@ -1652,7 +1654,6 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
 
                 // 注单内容
                 var betForm = {
-                    code: _this.code,
                     totalMoney: 0,
                     quantity: 0,
                     playModel:1,//1表官方玩法
@@ -2185,30 +2186,30 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             return betNum;
         },
         getNoWeiStr:function (arr) {
-        var checkArr = [], checkStrArr = [];
-        checkArr = arr;
-        for (var i = 0; i < checkArr.length; i++) {
-            if (checkArr[i] == 1) {
-                checkStrArr.push("万");
-            } else if (checkArr[i] == 2) {
-                checkStrArr.push("千");
-            } else if (checkArr[i] == 3) {
-                checkStrArr.push("百");
-            } else if (checkArr[i] == 4) {
-                checkStrArr.push("十");
-            } else if (checkArr[i] == 5) {
-                checkStrArr.push("个");
+            var checkArr = [], checkStrArr = [];
+            checkArr = arr;
+            for (var i = 0; i < checkArr.length; i++) {
+                if (checkArr[i] == 1) {
+                    checkStrArr.push("万");
+                } else if (checkArr[i] == 2) {
+                    checkStrArr.push("千");
+                } else if (checkArr[i] == 3) {
+                    checkStrArr.push("百");
+                } else if (checkArr[i] == 4) {
+                    checkStrArr.push("十");
+                } else if (checkArr[i] == 5) {
+                    checkStrArr.push("个");
+                }
             }
-        }
-        return checkStrArr;
-    },
+            return checkStrArr;
+        },
         //处理金额，截取三位小数。
         getArgNum:function (num) {
             var numstr = num + "";
             if (numstr.indexOf(".")!=-1){
                 var xs = 3;
                 if(numstr.split(".")[1].length<3){
-                   xs = numstr.split(".")[1].length;
+                    xs = numstr.split(".")[1].length;
                 }
                 numstr = numstr.split(".")[0]+"."+numstr.split(".")[1].substring(0,xs);
             }

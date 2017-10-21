@@ -1,4 +1,4 @@
-define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jquery.range.css','css!themesCss/gfwf.css'], function (PlayWay,Template,Range,Common) {
+define(['site/hall/pk10/PlayWay','site/plugin/template','range','css!themesCss/jquery.range.css','css!themesCss/gfwf.css'], function (PlayWay,Template,Range,Common) {
     return PlayWay.extend({
         arrNum2 : [], //获取点击数的数组
         arrNum3 : [],
@@ -37,7 +37,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
         getGfwfAllOdd: function () {
             var _this = this;
             ajaxRequest({
-                url: root + '/ssc/getGfwfAllOdd.html',
+                url: root + '/pk10/getGfwfAllOdd.html',
                 async:false,
                 data: {code: _this.code},
                 success: function (data) {
@@ -209,8 +209,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 maxFandian = plAndMaxFd.rebate*100;    // 最大返点
                 minPl =_this.getArgNum((plAndMaxFd.odd-Number(plAndMaxFd.baseNum)*plAndMaxFd.rebate));   // 最低赔率
             }
-            // convertBlMoney = (maxPlayPl - minPl) / maxFandian;  // 每1%转换赔率
-
+            /*convertBlMoney = (maxPlayPl - minPl) / maxFandian;  // 每1%转换赔率*/
             if(maxFandian ==0){
                 // 返点比例
                 var fandianBili = 0; // 当前滚动条移动的比例
@@ -238,6 +237,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 // 渲染中部注数，赔率，返点等等
                 _this.renderZhushu();
             }
+
 
             // 初始化返点赔率滚动条
             $('.slider-input').jRange({
@@ -813,7 +813,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             objArr.each(function () {
                 $(this).removeClass("acti");
                 var num = parseInt($(this).find("i").html());
-                if ($.inArray(num, [0, 1, 2, 3, 4]) >= 0) {
+                if ($.inArray(num, [ 1, 2, 3, 4, 5]) >= 0) {
                     $(this).addClass("acti");
                 }
             });
@@ -935,7 +935,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             objArr.each(function () {
                 $(this).removeClass("acti");
                 var num = parseInt($(this).find("i").html());
-                if ($.inArray(num, [5, 6, 7, 8, 9,10]) >= 0) {
+                if ($.inArray(num, [6, 7, 8, 9,10]) >= 0) {
                     $(this).addClass("acti");
                 }
             });
@@ -1652,7 +1652,6 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
 
                 // 注单内容
                 var betForm = {
-                    code: _this.code,
                     totalMoney: 0,
                     quantity: 0,
                     playModel:1,//1表官方玩法
