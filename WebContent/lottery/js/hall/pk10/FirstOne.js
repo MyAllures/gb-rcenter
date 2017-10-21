@@ -1,7 +1,7 @@
 
 define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
     return PlayWay.extend({
-        playId : '5x',
+        playId : 'qyzxfs',
         init: function () {
             this._super();
         },
@@ -87,7 +87,15 @@ define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
                 betContent: betContent,
                 playGroupId: this.playGroupId
             };
-        }
+        },
+
+        //获取下注号码
+        getBetNum:function(betNum) {
+            if (betNum.toString().indexOf('|') < 0) {
+                betNum = betNum.replace(new RegExp(",","gm"),",");
+            }
+            return betNum;
+        },
 
 
 

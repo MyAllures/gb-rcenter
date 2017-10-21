@@ -1,7 +1,7 @@
 
 define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
     return PlayWay.extend({
-        playId : '5x',
+        playId : 'dwd',
         init: function () {
             this._super();
         },
@@ -171,57 +171,64 @@ define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
          * 定位胆"
          */
         suiji_dwdzxfs:function () {
-        // 初始化变量
-        var showPlayName = '';
-        var showContent = '';
-        var betContent = '';
+            // 初始化变量
+            var showPlayName = '';
+            var showContent = '';
+            var betContent = '';
 
-        var numArr = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10'];
-        var xArr = ["冠军", "亚军", "季军", "第四名", "第五名","第六名","第七名","第八名","第九名","第十名"];
+            var numArr = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10'];
+            var xArr = ["冠军", "亚军", "季军", "第四名", "第五名","第六名","第七名","第八名","第九名","第十名"];
 
-        var arr = [];
-        var betStr = '';
-        while (arr.length < 1) {
-            var num1 = parseInt(Math.random() * 10);
-            var num2 = numArr[parseInt(Math.random() * 10)];
-            var str = xArr[num1];
-            str = str + ": (" + num2 + ")";
-            arr.push(str);
-            if (num1 == 0) {
-                betStr = num2 + "|" + "|" + "|" + "|" + "|" + "|" + "|" + "|" + "|";
-            } else if (num1 == 1) {
-                betStr ="|" + num2 + "|" + "|" + "|" + "|" + "|" + "|" + "|" + "|";
-            } else if (num1 == 2) {
-                betStr ="|" + "|" + num2  + "|" + "|" + "|" + "|" + "|" + "|" + "|";
-            } else if (num1 == 3) {
-                betStr ="|" + "|" + "|" + num2 + "|" + "|" + "|" + "|" + "|" + "|";
-            } else if (num1 == 4) {
-                betStr ="|" + "|" + "|" +"|"+ num2 + "|" + "|" + "|" + "|" + "|";
-            }else if (num1 == 5) {
-                betStr ="|" + "|"+ "|" + "|" + "|" + num2  + "|" + "|" + "|" + "|";
-            }else if (num1 == 6) {
-                betStr ="|" + "|"+ "|" + "|" + "|"  + "|" + num2 + "|" + "|" + "|";
-            }else if (num1 == 7) {
-                betStr ="|" + "|"+ "|" + "|" + "|"  + "|"  + "|"+ num2 + "|" + "|";
-            }else if (num1 == 8) {
-                betStr ="|" + "|"+ "|" + "|" + "|"  + "|"  + "|" + "|"+ num2 + "|";
-            }else if (num1 == 9) {
-                betStr ="|" + "|"+ "|" + "|" + "|"  + "|"  + "|" + "|" + "|"+  num2
+            var arr = [];
+            var betStr = '';
+            while (arr.length < 1) {
+                var num1 = parseInt(Math.random() * 10);
+                var num2 = numArr[parseInt(Math.random() * 10)];
+                var str = xArr[num1];
+                str = str + ": (" + num2 + ")";
+                arr.push(str);
+                if (num1 == 0) {
+                    betStr = num2 + "|" + "|" + "|" + "|" + "|" + "|" + "|" + "|" + "|";
+                } else if (num1 == 1) {
+                    betStr ="|" + num2 + "|" + "|" + "|" + "|" + "|" + "|" + "|" + "|";
+                } else if (num1 == 2) {
+                    betStr ="|" + "|" + num2  + "|" + "|" + "|" + "|" + "|" + "|" + "|";
+                } else if (num1 == 3) {
+                    betStr ="|" + "|" + "|" + num2 + "|" + "|" + "|" + "|" + "|" + "|";
+                } else if (num1 == 4) {
+                    betStr ="|" + "|" + "|" +"|"+ num2 + "|" + "|" + "|" + "|" + "|";
+                }else if (num1 == 5) {
+                    betStr ="|" + "|"+ "|" + "|" + "|" + num2  + "|" + "|" + "|" + "|";
+                }else if (num1 == 6) {
+                    betStr ="|" + "|"+ "|" + "|" + "|"  + "|" + num2 + "|" + "|" + "|";
+                }else if (num1 == 7) {
+                    betStr ="|" + "|"+ "|" + "|" + "|"  + "|"  + "|"+ num2 + "|" + "|";
+                }else if (num1 == 8) {
+                    betStr ="|" + "|"+ "|" + "|" + "|"  + "|"  + "|" + "|"+ num2 + "|";
+                }else if (num1 == 9) {
+                    betStr ="|" + "|"+ "|" + "|" + "|"  + "|"  + "|" + "|" + "|"+  num2
+                }
+
             }
 
-        }
+            showPlayName = "定位胆-定位胆";
+            showContent = arr[0];
+            betContent = betStr;
 
-        showPlayName = "定位胆-定位胆";
-        showContent = arr[0];
-        betContent = betStr;
+            return {
+                showPlayName: showPlayName,
+                showContent: showContent,
+                betContent: betContent,
+                playGroupId: this.playGroupId
+            };
+        },
 
-        return {
-            showPlayName: showPlayName,
-            showContent: showContent,
-            betContent: betContent,
-            playGroupId: this.playGroupId
-        };
-    }
+        selectFun_6: function(obj) {
+            $(obj).parent().parent().find(".acti").removeClass("acti");
+            $(obj).addClass("acti");
+            // this.clearStateTouZhu();//清除投注状态栏
+            this.renderZhushu();
+        },
 
 
 
