@@ -90,11 +90,11 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             }
             //定位胆
             if(betCode =="DingWeiDan" && jspName==undefined){
-                jspName="DingWeiDanZxfs";
+                jspName="YixingDwd";
             }
             //不定位
-            if(betCode =="BuDingWei" && jspName==undefined){
-                jspName="BuDingWeiZxfs";
+            if(betCode =="Sxymbdw" && jspName==undefined){
+                jspName="Sxymbdw";
             }
 
             return jspName;
