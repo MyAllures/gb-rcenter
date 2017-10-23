@@ -48,7 +48,7 @@ define(['site/hall/k3/K3Gfwf'], function (PlayWay) {
             while (arr.length < 1) {
                 arr.push(tempArr[parseInt(Math.random() * tempArr.length)]);
             }
-            console.log(arr[0]);
+            // console.log(arr[0]);
             // 初始化变量
             var showPlayName = "三同号-单选";
             var showContent = arr[0];

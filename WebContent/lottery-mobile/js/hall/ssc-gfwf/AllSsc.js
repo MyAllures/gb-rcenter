@@ -492,7 +492,16 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             } else {
                 return;
             }
-
+            var betCode=_this.getBetCode();
+            if(betCode =="ssc_sanxing_zhixuan_hszh" || betCode=="ssc_sanxing_zhixuan_qszh"){
+                var playPl1=0;
+                var tmpArr = $("#betContent_playPl").attr("data-value").split('|');
+                $.each(tmpArr, function (index, values) {
+                    playPl1 +=parseFloat(tmpArr[index]);
+                });
+                playPl=playPl1;
+            }
+            // console.log(playPl);
             var totalMoney = parseFloat((money * zhushu * beishu * tmpMode).toFixed(3));  // 总金额
             var canWin = parseFloat(tmpMode * beishu * playPl * 1);  // 可获奖金
 
