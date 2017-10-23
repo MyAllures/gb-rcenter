@@ -143,18 +143,20 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
 
             // 内容点击，触发统计注数函数（二同号单选）
             $(".Pick ul li span.erbutong").click(function () {
-                $(this).addClass('acti');   // 变色
+                // $(this).addClass('acti');   // 变色
                 var text=parseInt($(this).text())*11;
                 $(".Pick ul li span.ertonghao."+text).removeClass('acti');
+                /*$(this).toggleClass('acti');*/ // 变色
                 // 渲染中部注数，赔率，返点等等
                 _this.renderZhushu();
             });
 
             // 内容点击，触发统计注数函数（二同号单选）
             $(".Pick ul li span.ertonghao").click(function () {
-                $(this).addClass('acti');   // 变色
+                // $(this).addClass('acti');   // 变色
                 var text=parseInt($(this).text())/11;
                 $(".Pick ul li span.erbutong."+text).removeClass('acti');
+                /*$(this).toggleClass('acti'); */// 变色
                 // 渲染中部注数，赔率，返点等等
                 _this.renderZhushu();
             });
