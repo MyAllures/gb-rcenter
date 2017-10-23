@@ -30,6 +30,51 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $(this.formSelector).on("click", ".type-search", function (event) {
                 event.stopPropagation();
             });
+            $("table#checkTable input[type='checkbox']", _this.formSelector).change(function (e) {
+                var  status = true;
+                $("table#checkTable input[type='checkbox']", this.formSelector).each(function () {
+                    if (!$(this).prop("checked")) {
+                        status = false;
+                        return false;
+                    }
+                })
+                if (status) {
+                    content = "<b style='color:#964e4e;'>".concat(window.top.message.report_auto['全部']).concat("</b>");
+                }else {
+                    var content = '';
+                    var gpcstaus = true;
+                    var gpccontent = '';
+                    $("#highlottery input[type='checkbox']", this.formSelector).each(function () {
+                        if (!$(this).prop("checked")) {
+                            gpcstaus = false;
+                        }else {
+                        gpccontent  += $(this).parent().text()+"、";
+                        }
+                    })
+                    if (gpcstaus){
+                        gpccontent = "<b style='color:#964e4e;'>高频彩</b>、";
+                    }
+                    var dpcstaus = true;
+                    var dpccontent = '';
+                    $("#lowlottery input[type='checkbox']", this.formSelector).each(function () {
+                        if (!$(this).prop("checked")) {
+                            dpcstaus = false;
+                        }else {
+                        dpccontent  += $(this).parent().text()+"、";
+                        }
+                    })
+                    if (dpcstaus){
+                        dpccontent = "<b style='color:#964e4e;'>低频彩</b>、";
+                    }
+                    content = gpccontent + dpccontent;
+                    if (content.trim() == "") {
+                        content = '未选择彩种';
+                    } else {
+                        content = content.substr(0, content.length - 1);
+                    }
+                }
+                $(".codeDisplay").html(content);
+            })
         },
         changeTime: function (e, option) {
             $(".type-search").hide();
@@ -49,22 +94,22 @@ define(['common/BaseListPage'], function (BaseListPage) {
             }
         },
         allCheck: function (e, option) {
-            $(".type-search input[type='checkbox']").prop("checked", true);
+            $(".type-search input[type='checkbox']").prop("checked", true).change();
             this.selCheckLength()
             $(e.currentTarget).unlock();
         },
         clearCheck: function (e, option) {
-            $(".type-search input[type='checkbox']").prop("checked", false);
+            $(".type-search input[type='checkbox']").prop("checked", false).change();
             this.selCheckLength()
             $(e.currentTarget).unlock();
         },
         highCheck: function (e, option) {
-            $("#highlottery input[type='checkbox']").prop("checked", true);
+            $("#highlottery input[type='checkbox']").prop("checked", true).change();
             this.selCheckLength()
             $(e.currentTarget).unlock();
         },
         lowCheck: function (e, option) {
-            $("#lowlottery input[type='checkbox']").prop("checked", true);
+            $("#lowlottery input[type='checkbox']").prop("checked", true).change();
             this.selCheckLength()
             $(e.currentTarget).unlock();
         },
@@ -97,7 +142,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
         },
         onPageLoad: function () {
             this._super();
-            // this.queryStatMoney();
+            this.queryStatMoney();
         },
         queryStatMoney:function () {
             //getCurrentFormData
@@ -107,10 +152,10 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 dataType: 'json',
                 data:formData,
                 success: function (data) {
-                    $("#betAmount").text(data.betAmount);
-                    $("#payoutAmount").text(data.payoutAmount);
-                    $("#profitLoss").text(data.profitLoss);
-                    $("#rabateAmount").text(data.rabateAmount);
+                    $("#betAmount").text(data.betamount);
+                    $("#payoutAmount").text(data.payoutamount);
+                    $("#profitLoss").text(data.profitloss);
+                    $("#rabateAmount").text(data.rabateamount);
                 },
                 error: function (data) {
 
