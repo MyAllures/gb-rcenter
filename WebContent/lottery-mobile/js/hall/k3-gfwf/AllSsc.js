@@ -202,10 +202,10 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             //弹出订单
             var content = Template('gfwf_template_order',
                 {"quantity": Number($("#quantity").text()),
-                    "firstShowPl":firstShowPl,
-                    "totalMoney":Number($("#quantity").text())*2,
-                    "canWin": parseFloat((maxCanWin * 1)).toFixed(3),
-                    "expect":$('font#expect').text()
+                "firstShowPl":firstShowPl,
+                "totalMoney":Number($("#quantity").text())*2,
+                "canWin": parseFloat((maxCanWin * 1)).toFixed(3),
+                "expect":$('font#expect').text()
                 });
             $("#dingdan").html(content);
             $("#dingdan").addClass('mui-active');
@@ -347,7 +347,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 var result = [];
                 var tmpArr = playPlId.split('|');
                 $.each(tmpArr, function (index, values) {
-                    result.push(_this.gfwfPlJson[values])
+                        result.push(_this.gfwfPlJson[values])
                 });
                 return result;
             } else {    // 单一赔率
@@ -444,7 +444,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             var odd = $("#betContent_playPl").text();
             if (odd.indexOf('|') > 0) {
                 var arrOdd=odd.split('|');
-                odd=arrOdd[0];
+                    odd=arrOdd[0];
             }
             return odd;
         },
@@ -480,6 +480,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     _this.gfwfCloseConfirmOrder();
                 },
                 success: function (data) {
+                    // console.log(JSON.stringify(betForm));
                     var d = data.code[0];
                     //code代码为100表示成功
                     if (d && d.code && d.code == '100') {
