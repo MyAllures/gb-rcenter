@@ -23,7 +23,7 @@ define(['common/BaseListPage','common/BaseEditPage'], function(BaseListPage,Base
         unableAccount:function (e,opt) {
             var _msg;
             var _this=this;
-            _msg="<div style='text-align: center'><div style='color: red'><i class='fa fa-exclamation-circle'></i>停用后不可重新启用！</div>确认停用该虚拟账号吗？</div>"
+            _msg=window.top.message.player_auto['停用后不可重新启用']
             window.top.topPage.showConfirmMessage(_msg, function (confirm) {
                 if (confirm){
                     var id=opt.searchId;
@@ -32,6 +32,7 @@ define(['common/BaseListPage','common/BaseEditPage'], function(BaseListPage,Base
                         data: {"search.id":id},
                         dataType:'json',
                         type: "POST",
+                        html:true,
                         success: function (data) {
                             if (data.state){
                                 _this.query(e);
