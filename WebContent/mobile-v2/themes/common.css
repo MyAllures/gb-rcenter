@@ -3016,7 +3016,9 @@ body.no-backdrop .mui-backdrop{
 .pay-third.jiupay{background-position: 0 -660px;}/* 22 久付支付 */
 .pay-third.rfupay{background-position: 0 -690px;}/* 23 锐付支付 */
 .pay-third.tonghui{background-position: 0 -720px;}/* 24 通汇卡 */
-.pay-third.bitcoin{background-position: 0 -781px;}/* 25 比特币 */
+.pay-third.bitcoin,
+.pay-third.BTC
+{background-position: 0 -781px;}/* 25 比特币 */
 .pay-third.qqwallet{background-position: 0 -818px;}/* 25 QQ钱包 */
 /*表单*/
 
