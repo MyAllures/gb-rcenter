@@ -31,7 +31,7 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
                 _this.changeAuditType();
             });
             //选中稽核类型
-            $(this.formSelector).on("change", "[name='auditType']", function (e) {
+            $(this.formSelector).on("change", "[name='result.isAuditRecharge']", function (e) {
                 _this.changeAuditType();
             });
         },
@@ -39,18 +39,13 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
          * 稽核类型变更
          */
         changeAuditType: function () {
-            var auditType = $("input[name=auditType]:checked").val();
-            if (auditType == 0) {
+            var auditType = $("input[name='result.isAuditRecharge']:checked").val();
+            if (auditType == false) {
                 $("#auditMultipleDiv").hide();
                 $("input[name=auditMultiple]").attr("disabled", true);
             } else {
                 $("input[name=auditMultiple]").removeAttr("disabled");
                 $("#auditMultipleDiv").show();
-            }
-            if (auditType == 2) {
-                $('#fav_tip').show();
-            } else {
-                $('#fav_tip').hide();
             }
         },
         /**
