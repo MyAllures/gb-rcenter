@@ -103,7 +103,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     });
             });
             $("#recentHistory").html(openList);
-        },
+        }
 
     });
 });
