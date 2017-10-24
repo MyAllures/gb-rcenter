@@ -13,6 +13,8 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
             this._super("form");
             this.changeRechargeType();
             this.changeAuditType();
+            this.changeFavorableType();
+            this.changeFavorableAuditType();
             this.userNamesCont();
         },
         /**
@@ -30,19 +32,41 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
                 _this.changeRechargeType();
                 _this.changeAuditType();
             });
+            //选择优惠类型关联对应稽核类型
+            $(this.formSelector).on("change", "[name='favorableType']", function (e) {
+                _this.changeFavorableType();
+                _this.changeFavorableAuditType();
+            });
             //选中稽核类型
             $(this.formSelector).on("change", "[name='result.isAuditRecharge']", function (e) {
                 _this.changeAuditType();
             });
+            //选中优惠稽核类型
+            $(this.formSelector).on("change", "[name='playerFavorable.isAuditFavorable']", function (e) {
+                _this.changeFavorableAuditType();
+            });
+        },
+        /**
+         * 优惠稽核类型变更
+         */
+        changeFavorableAuditType: function () {
+            var auditType = $("input[name='playerFavorable.isAuditFavorable']:checked").val();
+            if (auditType == 'false') {
+                $("#favorableAuditMultipleDiv").hide();
+                $("input[name='playerFavorable.auditFavorableMultiple']").prop("disabled", true);
+            } else {
+                $("input[name='playerFavorable.auditFavorableMultiple']").removeAttr("disabled");
+                $("#favorableAuditMultipleDiv").show();
+            }
         },
         /**
          * 稽核类型变更
          */
         changeAuditType: function () {
             var auditType = $("input[name='result.isAuditRecharge']:checked").val();
-            if (auditType == false) {
+            if (auditType == 'false') {
                 $("#auditMultipleDiv").hide();
-                $("input[name=auditMultiple]").attr("disabled", true);
+                $("input[name=auditMultiple]").prop("disabled", true);
             } else {
                 $("input[name=auditMultiple]").removeAttr("disabled");
                 $("#auditMultipleDiv").show();
@@ -84,15 +108,15 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
             var rechargeType = $("[name='result.rechargeType']").val();
             //人工存取-免稽核、存款稽核（默认选中）
             if (rechargeType == 'manual_deposit') {
-                $("input[name='result.isAuditRecharge']:eq(true)").prop("checked", true);
+                $("input[name='result.isAuditRecharge'][value='true']").prop("checked", true);
                 $("#spanTips").hide();
                 $("#spanTips2").hide();
             } else if (rechargeType == 'manual_payout') {//派彩-免稽核（默认选中）、存款稽核、优惠稽核
-                $("input[name='result.isAuditRecharge']:eq(false)").prop("checked", true);
+                $("input[name='result.isAuditRecharge'][value='false']").prop("checked", true);
                 $("#spanTips").hide();
                 $("#spanTips2").show();
             } else if (rechargeType == 'manual_other') {//其他-免稽核、存款稽核（默认选中）、优惠稽核
-                $("input[name='result.isAuditRecharge']:eq(true)").prop("checked", true);
+                $("input[name='result.isAuditRecharge'][value='true']").prop("checked", true);
                 $("#spanTips").hide();
                 $("#spanTips2").hide();
             }
@@ -101,24 +125,24 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
          * 类型变更
          */
         changeFavorableType: function () {
-            var favorableType = $("[name='result.favorableType']").val();
+            var favorableType = $("[name='favorableType']").val();
             if (favorableType == 'manual_favorable') {//优惠活动-优惠稽核（默认选中）
-                $("input[name='playerFavorable.isAuditFavorable']:eq(true)").prop("checked", true);
+                $("input[name='playerFavorable.isAuditFavorable'][value='true']").prop("checked", true);
                 $("#spanTips3").show();
                 $("#spanTips4").hide();
                 $("#favorableTr").show();
             } else if (favorableType == 'manual_rakeback') {//返水-免稽核、优惠稽核（默认选中）
-                $("input[name='playerFavorable.isAuditFavorable']:eq(true)").prop("checked", true);
+                $("input[name='playerFavorable.isAuditFavorable'][value='true']").prop("checked", true);
                 $("#spanTips3").show();
                 $("#spanTips4").hide();
                 $("#favorableTr").hide();
             } else if (favorableType == 'manual_payout') {//派彩-免稽核（默认选中）、存款稽核、优惠稽核
-                $("input[name='playerFavorable.isAuditFavorable']:eq(false)").prop("checked", true);
+                $("input[name='playerFavorable.isAuditFavorable'][value='false']").prop("checked", true);
                 $("#spanTips3").hide();
                 $("#spanTips4").show();
                 $("#favorableTr").hide();
             } else if (favorableType == 'manual_other') {//其他-免稽核、存款稽核（默认选中）、优惠稽核
-                $("input[name='playerFavorable.isAuditFavorable']:eq(true)").prop("checked", true);
+                $("input[name='playerFavorable.isAuditFavorable'][value='true']").prop("checked", true);
                 $("#spanTips3").hide();
                 $("#spanTips4").hide();
                 $("#favorableTr").hide();
