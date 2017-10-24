@@ -39,7 +39,8 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
 
             $("#searchDiv a").click(function (e) {
                 var code = $(this).attr("code");
-                if(code=='cqssc'||code=='tjssc'||code=='xjssc'||code=='bjpk10'||code=='ahk3'||code=='fc3d'){
+                if(code=='cqssc'||code=='tjssc'||code=='xjssc'||code=='bjpk10'||code=='ahk3'||code=='fc3d'||
+                    code=='tcpl3'||code=='jsk3'||code=='hbk3'||code=='gxk3'){
                     $(".wfqh-btn").attr("style", "display:");
                     $("#gfwfqh").addClass("gfwfqh-wrap");
                     $("#jdwf").addClass("active");
