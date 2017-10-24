@@ -41,9 +41,9 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
                         if (msg) {
                             _this.toast(msg);
                         } else if (data.state == true) {
-                            _this.toast("申请优惠成功！");
+                            _this.toast(window.top.message.deposit_auto['申请优惠成功']);
                         } else if (!data.state == false) {
-                            _this.toast("申请优惠失败！");
+                            _this.toast(window.top.message.deposit_auto['申请优惠失败']);
                         }
                     }
                 })
@@ -72,7 +72,7 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
                 success: function (data) {
                     var address = data.address;
                     if (address) {
-                        _this.toast("生成地址成功！");
+                        _this.toast(window.top.message.deposit_auto['生成地址成功']);
                         window.setTimeout(function () {
                             $("[name=account" + currency + "] .list-xzzf img").attr("src", data.addressQrcodeUrl);
                             $("[name=account" + currency + "] .list-xzzf textarea").val(address);
@@ -80,7 +80,7 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
                             $("[name=notAddress" + currency + "]").hide();
                         }, 1000);
                     } else {
-                        _this.toast("生成地址失败请稍后再试！");
+                        _this.toast(window.top.message.deposit_auto['生成地址失败请稍后再试']);
                     }
                 }
             })
@@ -108,7 +108,7 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
                         //展示选择优惠内容
                         _this.sale(data.transactionNo);
                     } else {
-                        _this.toast('兑换金额失败，请稍后再试');
+                        _this.toast(window.top.message.deposit_auto['兑换金额失败']);
                     }
                 },
                 complete: function () {

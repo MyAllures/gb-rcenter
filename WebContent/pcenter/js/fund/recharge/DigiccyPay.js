@@ -32,9 +32,9 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     if (address) {
                         option.data = data;
                         option.callback = 'addressBack';
-                        e.page.showPopover(e, option, 'success', '生成地址成功', true);
+                        e.page.showPopover(e, option, 'success', window.top.message.fund_auto['生成地址成功'], true);
                     } else {
-                        e.page.showPopover(e, option, 'warning', '生成地址失败请稍后再试！', true);
+                        e.page.showPopover(e, option, 'warning', window.top.message.fund_auto['生成地址失败请稍后再试'], true);
                     }
                     $(e.currentTarget).unlock();
                 }
@@ -82,7 +82,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                         btnOption.text = option.text;
                         window.top.topPage.doDialog(e, btnOption);
                     } else {
-                        e.page.showPopover(e, option, 'warning', '兑换金额失败请稍后再试', true);
+                        e.page.showPopover(e, option, 'warning', window.top.message.fund_auto['兑换金额失败请稍后再试'], true);
                     }
                     $(e.currentTarget).unlock();
                 }
