@@ -183,7 +183,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 }
 
             }
-
+            debugger;
             showPlayName = "定位胆-定位胆";
             showContent = arr[0];
             betContent = betStr;
@@ -298,13 +298,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         content_dwd:function () {
-            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [];
-            $.each($(".cl-1002 ul li[data-name = '万'] span.acti"), function (index, value) {
-                wanArr.push($.trim($(this).find("i").html()));
-            });
-            $.each($(".cl-1002 ul li[data-name = '千'] span.acti"), function (index, value) {
-                qianArr.push($.trim($(this).find("i").html()));
-            });
+            var baiArr = [], shiArr = [], geArr = [];
             $.each($(".cl-1002 ul li[data-name = '百'] span.acti"), function (index, value) {
                 baiArr.push($.trim($(this).find("i").html()));
             });
@@ -315,16 +309,12 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 geArr.push($.trim($(this).find("i").html()));
             });
 
-            var wanStr = wanArr.length > 0 ? ("万位: (" + wanArr.join(",") + ")") : "";
-            var qianStr = qianArr.length > 0 ? (" 千位: (" + qianArr.join(",") + ")") : "";
             var baiStr = baiArr.length > 0 ? (" 百位: (" + baiArr.join(",") + ")") : "";
             var shiStr = shiArr.length > 0 ? (" 十位: (" + shiArr.join(",") + ")") : "";
             var geStr = geArr.length > 0 ? (" 个位: (" + geArr.join(",") + ")") : "";
 
             var nowArr = [];
             var strTemp = $.trim(
-                (wanStr == ' ' ? ' ' : wanArr.join(",") + "|") +
-                (qianStr == ' ' ? ' ' : qianArr.join(",") + "|") +
                 (baiStr == ' ' ? ' ' : baiArr.join(",") + "|") +
                 (shiStr == ' ' ? ' ' : shiArr.join(",") + "|") +
                 (geStr == ' ' ? ' ' : geArr.join(","))
@@ -336,7 +326,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var betContent = '';
 
             showPlayName = "定位胆-定位胆";
-            showContent = $.trim(wanStr + qianStr + baiStr + shiStr + geStr);
+            showContent = $.trim(baiStr + shiStr + geStr);
             // 转换投注格式
             betContent = strTemp;
 

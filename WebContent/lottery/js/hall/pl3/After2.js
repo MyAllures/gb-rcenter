@@ -523,7 +523,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             }
 
             showPlayName = "前二直选-复式";
-            showContent = "万位: (" + newArr[0] + ") 千位: (" + newArr[1] + ")";
+            showContent = "十位: (" + newArr[0] + ") 个位: (" + newArr[1] + ")";
             betContent = newArr[0] + "|" + newArr[1];
             ;
 
@@ -862,10 +862,10 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         zhushu_q2zxfs:function () {
             var tempArr = [];
             var wanArr = [], qianArr = [];
-            $.each($(".recl-1002 ul li[data-name = '万'] span.acti"), function (index, value) {
+            $.each($(".recl-1002 ul li[data-name = '十'] span.acti"), function (index, value) {
                 wanArr.push($.trim($(this).find("i").html()));
             });
-            $.each($(".recl-1002 ul li[data-name = '千'] span.acti"), function (index, value) {
+            $.each($(".recl-1002 ul li[data-name = '个'] span.acti"), function (index, value) {
                 qianArr.push($.trim($(this).find("i").html()));
             });
 
@@ -937,10 +937,10 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
          */
         content_q2zxfs:  function () {
             var wanArr = [], qianArr = [];
-            $.each($(".recl-1002 ul li[data-name = '万'] span.acti"), function (index, value) {
+            $.each($(".recl-1002 ul li[data-name = '十'] span.acti"), function (index, value) {
                 wanArr.push($.trim($(this).find("i").html()));
             });
-            $.each($(".recl-1002 ul li[data-name = '千'] span.acti"), function (index, value) {
+            $.each($(".recl-1002 ul li[data-name = '个'] span.acti"), function (index, value) {
                 qianArr.push($.trim($(this).find("i").html()));
             });
 
@@ -950,7 +950,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var betContent = '';
 
             showPlayName = "前二直选-复式";
-            showContent = "万位：({0})，千位：({1})".format(
+            showContent = "十位：({0})，个位：({1})".format(
                 wanArr.join(","),
                 qianArr.join(",")
             );
