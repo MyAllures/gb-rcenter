@@ -8,13 +8,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             this._super();
         },
         zhushu_dwd:function () {
-            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [], newArr = [];
-            $.each($(".cl-1002 ul li[data-name = '万'] span.acti"), function (index, value) {
-                wanArr.push($.trim($(this).find("i").html()));
-            });
-            $.each($(".cl-1002 ul li[data-name = '千'] span.acti"), function (index, value) {
-                qianArr.push($.trim($(this).find("i").html()));
-            });
+            var baiArr = [], shiArr = [], geArr = [], newArr = [];
             $.each($(".cl-1002 ul li[data-name = '百'] span.acti"), function (index, value) {
                 baiArr.push($.trim($(this).find("i").html()));
             });
@@ -25,22 +19,14 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 geArr.push($.trim($(this).find("i").html()));
             });
 
-            var wanLength = wanArr.length;
-            var qianLength = qianArr.length;
             var baiLength = baiArr.length;
             var shiLength = shiArr.length;
             var geLength = geArr.length;
 
-            if (wanLength <= 0 && qianLength <= 0 && baiLength <= 0 && shiLength <= 0 && geLength <= 0) {
+            if (baiLength <= 0 && shiLength <= 0 && geLength <= 0) {
                 return 0;
             }
 
-            if (wanLength > 0) {
-                newArr = newArr.concat(wanArr);
-            }
-            if (qianLength > 0) {
-                newArr = newArr.concat(qianArr);
-            }
             if (baiLength > 0) {
                 newArr = newArr.concat(baiArr);
             }
@@ -57,39 +43,25 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
          * 注数-定位胆
          */
         zhushu_gd11x5_dwd:function () {
-            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [], newArr = [];
+            var baiArr = [], shiArr = [], geArr = [], newArr = [];
             $.each($(".cl-1002 ul li[data-name = '第一位'] span.acti"), function (index, value) {
-                wanArr.push($.trim($(this).find("i").html()));
-            });
-            $.each($(".cl-1002 ul li[data-name = '第二位'] span.acti"), function (index, value) {
-                qianArr.push($.trim($(this).find("i").html()));
-            });
-            $.each($(".cl-1002 ul li[data-name = '第三位'] span.acti"), function (index, value) {
                 baiArr.push($.trim($(this).find("i").html()));
             });
-            $.each($(".cl-1002 ul li[data-name = '第四位'] span.acti"), function (index, value) {
+            $.each($(".cl-1002 ul li[data-name = '第二位'] span.acti"), function (index, value) {
                 shiArr.push($.trim($(this).find("i").html()));
             });
-            $.each($(".cl-1002 ul li[data-name = '第五位'] span.acti"), function (index, value) {
+            $.each($(".cl-1002 ul li[data-name = '第三位'] span.acti"), function (index, value) {
                 geArr.push($.trim($(this).find("i").html()));
             });
 
-            var wanLength = wanArr.length;
-            var qianLength = qianArr.length;
             var baiLength = baiArr.length;
             var shiLength = shiArr.length;
             var geLength = geArr.length;
 
-            if (wanLength <= 0 && qianLength <= 0 && baiLength <= 0 && shiLength <= 0 && geLength <= 0) {
+            if (baiLength <= 0 && shiLength <= 0 && geLength <= 0) {
                 return 0;
             }
 
-            if (wanLength > 0) {
-                newArr = newArr.concat(wanArr);
-            }
-            if (qianLength > 0) {
-                newArr = newArr.concat(qianArr);
-            }
             if (baiLength > 0) {
                 newArr = newArr.concat(baiArr);
             }
@@ -192,26 +164,22 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var betContent = '';
 
             var numArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-            var xArr = ["万位", "千位", "百位", "十位", "个位"];
+            var xArr = ["百位", "十位", "个位"];
 
             var arr = [];
             var betStr = '';
             while (arr.length < 1) {
-                var num1 = parseInt(Math.random() * 5);
-                var num2 = parseInt(Math.random() * 10);
+                var num1 = parseInt(Math.random() * 3);
+                var num2 = parseInt(Math.random() * 6);
                 var str = xArr[num1];
                 str = str + ": (" + numArr[num2] + ")";
                 arr.push(str);
                 if (num1 == 0) {
-                    betStr = numArr[num2] + "|" + "|" + "|" + "|";
+                    betStr = numArr[num2] + "|" + "|";
                 } else if (num1 == 1) {
-                    betStr = "|" + numArr[num2] + "|" + "|" + "|";
+                    betStr = "|" + numArr[num2] + "|";
                 } else if (num1 == 2) {
-                    betStr = "|" + "|" + numArr[num2] + "|" + "|";
-                } else if (num1 == 3) {
-                    betStr = "|" + "|" + "|" + numArr[num2] + "|";
-                } else if (num1 == 4) {
-                    betStr = "|" + "|" + "|" + "|" + numArr[num2];
+                    betStr = "|" + "|" + numArr[num2];
                 }
 
             }
