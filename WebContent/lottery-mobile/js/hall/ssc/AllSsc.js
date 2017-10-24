@@ -62,6 +62,48 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
                 }
             });
-        }
+        },
+
+        /**
+         * 展示最近开奖记录
+         */
+        showRecentHistory: function (data) {
+            var openList = '';
+            $.each(data, function (index, value) {
+                var numArr = value.openCode ? value.openCode.split(",") : [];
+                var sum = parseInt(numArr[0]) + parseInt(numArr[1]) + parseInt(numArr[2]) + parseInt(numArr[3]) + parseInt(numArr[4]);
+                var ds;
+                var dx;
+                var lhh;
+                if (sum % 2 == 0) {
+                    ds="双";
+                } else {
+                    ds="单";
+                }
+                if (sum > 22) {
+                    dx="大";
+                } else {
+                    dx="小";
+                }
+                if (parseInt(numArr[0]) > parseInt(numArr[4])) {
+                    lhh="龙";
+                } else if (parseInt(numArr[0]) < parseInt(numArr[4])) {
+                    lhh="虎";
+                } else {
+                    lhh="和";
+                }
+                openList = openList + Template('template_recentHistory', {
+                        number: value.expect,
+                        list: numArr,
+                        len: numArr.length,
+                        sum: sum,
+                        ds:ds,
+                        dx:dx,
+                        lhh:lhh
+                    });
+            });
+            $("#recentHistory").html(openList);
+        },
+
     });
 });
