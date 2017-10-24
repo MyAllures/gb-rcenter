@@ -65,9 +65,10 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         exchange: function (e, option) {
             var currency = option.currency;
+            var bitAmount = $("input[name='bitAmount'][currency=" + currency + "]").val();
             window.top.topPage.ajax({
                 url: root + "/fund/recharge/digiccy/exchange.html",
-                data: {'currency': currency},
+                data: {'currency': currency, 'bitAmount': bitAmount},
                 dataType: 'json',
                 success: function (data) {
                     var state = data.state;

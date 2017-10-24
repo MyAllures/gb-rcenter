@@ -33,9 +33,11 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
             //确认选择优惠
             mui("body").on("tap", "a#confirmSale", function (e) {
                 var url = $(this).attr("sale-url");
-                window.top.topPage.ajax(url, {
+                var transactionNo = $(".gb-withdraw-box input[name='search.transactionNo']").val();
+                var activityId = $(".gb-withdraw-box select[name=activityId]").val();
+                mui.ajax(url, {
                     dataType: 'json',
-                    data: {},
+                    data: {'search.transactionNo': transactionNo,'activityId':activityId},
                     success: function (data) {
                         var msg = data.msg;
                         if (msg) {
@@ -45,11 +47,18 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
                         } else if (!data.state == false) {
                             _this.toast(window.top.message.deposit_auto['申请优惠失败']);
                         }
+                        $("#applySale").removeClass("mui-active");
+                        $("#applySale").html("");
                     }
                 })
             });
             //取消选择优惠
             mui("body").on("tap", "a#cancelSale", function (e) {
+                $("#applySale").removeClass("mui-active");
+                $("#applySale").html("");
+            });
+            //关闭优惠弹窗
+            mui("body").on("tap", ".gb-withdraw-box.close", function (e) {
                 $("#applySale").removeClass("mui-active");
                 $("#applySale").html("");
             });
@@ -107,6 +116,7 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
                     } else if (state == true) {
                         //展示选择优惠内容
                         _this.sale(data.transactionNo);
+                        _this.back(currency);
                     } else {
                         _this.toast(window.top.message.deposit_auto['兑换金额失败']);
                     }
@@ -133,7 +143,7 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
          * @param currency
          */
         back: function (currency) {
-            var _e = {currentTarget: $("[name=account" + currency + "]").find("button[name=refresh]")};
+            var _e = {target: $("[name=account" + currency + "]").find("button[name=refresh]")};
             this.refresh(_e);
         },
         /**
@@ -155,7 +165,7 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
                     if (data.amount <= 0) {
                         $("[name=exchange" + currency + "]").hide();
                     } else {
-                        $("[name=exchange" + currency + "]").next().show();
+                        $("[name=exchange" + currency + "]").show();
                     }
                 },
                 error: function () {
