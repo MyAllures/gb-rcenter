@@ -23,21 +23,15 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
 
         //定位胆机选
         random_pl3_yixing_dwd : function () {
-            var random = parseInt(Math.random() * 10);
-            var wei = parseInt(Math.random() * 5);
-            if(wei == 0){
-                $("a.n-btn.wang").removeClass("mui-active");
-                $("a.n-btn.wang."+random).addClass("mui-active");
-            } else if(wei == 1){
-                $("a.n-btn.qian").removeClass("mui-active");
-                $("a.n-btn.qian."+random).addClass("mui-active");
-            } else if(wei == 2){
+            var random = parseInt(Math.random() * 6);
+            var wei = parseInt(Math.random() * 3);
+           if(wei == 0){
                 $("a.n-btn.bai").removeClass("mui-active");
                 $("a.n-btn.bai."+random).addClass("mui-active");
-            } else if(wei == 3){
+            } else if(wei == 1){
                 $("a.n-btn.shi").removeClass("mui-active");
                 $("a.n-btn.shi."+random).addClass("mui-active");
-            } else if(wei == 4){
+            } else if(wei == 2){
                 $("a.n-btn.ge").removeClass("mui-active");
                 $("a.n-btn.ge."+random).addClass("mui-active");
             }
@@ -48,13 +42,8 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
          * 注数-定位胆 / 时时彩与11选5共用注数方法
          */
         zhushu_pl3_yixing_dwd :function(){
-            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [], newArr = [];
-            $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
-                wanArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.qianweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
-                qianArr.push($.trim($(this).html()));
-            });
+            var baiArr = [], shiArr = [], geArr = [], newArr = [];
+
             $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
                 baiArr.push($.trim($(this).html()));
             });
@@ -64,22 +53,14 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
             $.each($("ul.geweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
                 geArr.push($.trim($(this).html()));
             });
-            var wanLength = wanArr.length;
-            var qianLength = qianArr.length;
             var baiLength = baiArr.length;
             var shiLength = shiArr.length;
             var geLength = geArr.length;
 
-            if (wanLength <= 0 && qianLength <= 0 && baiLength <= 0 && shiLength <= 0 && geLength <= 0) {
+            if (baiLength <= 0 && shiLength <= 0 && geLength <= 0) {
                 return 0;
             }
 
-            if (wanLength > 0) {
-                newArr = newArr.concat(wanArr);
-            }
-            if (qianLength > 0) {
-                newArr = newArr.concat(qianArr);
-            }
             if (baiLength > 0) {
                 newArr = newArr.concat(baiArr);
             }
@@ -96,13 +77,8 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
          * 定位胆
          */
         content_pl3_yixing_dwd : function(){
-            var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [];
-            $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                wanArr.push($.trim($(this).html()));
-            });
-            $.each($("ul.qianweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
-                qianArr.push($.trim($(this).html()));
-            });
+            var  baiArr = [], shiArr = [], geArr = [];
+
             $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
                 baiArr.push($.trim($(this).html()));
             });
@@ -113,15 +89,11 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
                 geArr.push($.trim($(this).html()));
             });
 
-            var wanStr = wanArr.length > 0 ? wanArr.join(",") : "";
-            var qianStr = qianArr.length > 0 ? qianArr.join(",") : "";
             var baiStr = baiArr.length > 0 ? baiArr.join(",") : "";
             var shiStr = shiArr.length > 0 ? shiArr.join(",") : "";
             var geStr = geArr.length > 0 ? geArr.join(",") : "";
 
             return $.trim(
-                (wanStr == ' ' ? ' ' : wanStr ) + "|" +
-                (qianStr == ' ' ? ' ' : qianStr) + "|" +
                 (baiStr == ' ' ? ' ' : baiStr) + "|" +
                 (shiStr == ' ' ? ' ' : shiStr) + "|" +
                 (geStr == ' ' ? ' ' : geStr)

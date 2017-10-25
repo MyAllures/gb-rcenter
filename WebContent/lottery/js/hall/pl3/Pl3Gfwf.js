@@ -1661,14 +1661,21 @@ define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss
                 };
 
                 $("#zhudanList .re_touzhu_tem").each(function () {
+
+                    var betNum = $(this).attr("data-bet_content");
+                    var betCode = $(this).attr("data-bet_play_id");
+                    if(betCode=="pl3_erxing_zuxuan_qefs" || betCode=="pl3_erxing_zuxuan_hefs"){
+                        betNum = betNum.split('|').join(',');
+                    }
+
                     betForm.betOrders.push({
                         code: _this.code,//彩种
                         expect: _this.getNumber(),//期号
                         playCode: $(this).attr("data-bet_play_code"),//彩种玩法
-                        betCode: $(this).attr("data-bet_play_id"),//投注玩法
+                        betCode: betCode,//投注玩法
                         betCount: $(this).attr("data-bet_zhushu"),//注数
                         betAmount: $(this).attr("data-bet_total_money"),//单注金额
-                        betNum: $(this).attr("data-bet_content"),//下注号码
+                        betNum: betNum,//下注号码
                         odd: $(this).attr("data-bet_play_pl"),//奖金
                         multiple: $(this).attr("data-bet_beishu"),//倍数
                         bonusModel: $(this).attr("data-bet_mode"),//元角分模式

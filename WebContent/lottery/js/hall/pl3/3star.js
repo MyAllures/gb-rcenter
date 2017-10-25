@@ -1402,13 +1402,11 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
     },
         //获取下注号码
         getBetNum:function(betNum) {
-            if (betNum.toString().indexOf('|') < 0) {
-                var betCode = this.getPlayId();
-                if (betCode == 'pl3_sanxing_zhixuan_ds' || betCode =='pl3_sanxing_zhixuan_fs' || betCode =='pl3_sanxing_zhixuan_hz' ){
-
-                }else {
-                    betNum = betNum.replace(new RegExp(",", "gm"), "|");
-                }
+            var betCode = this.getPlayId();
+            if(betCode=="pl3_sanxing_zhixuan_ds" || betCode=="pl3_sanxing_zhixuan_hz" ||
+                betCode== "pl3_sanxing_zuxuan_z3ds" || betCode=="pl3_sanxing_zuxuan_z6ds" ||
+                betCode== "pl3_sanxing_zuxuan_hhzx" || betCode== "pl3_sanxing_zuxuan_zxhz"){
+                betNum = betNum.split(',').join('|');
             }
             return betNum;
         }
