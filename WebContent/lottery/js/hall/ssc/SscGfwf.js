@@ -1702,7 +1702,6 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
         },
 
         sureGfwtXz: function(betForm) {
-            console.log(betForm)
             var _this = this;
             ajaxRequest({
                 url: _this.baseUrl + '/' + _this.code + '/saveBetOrder.html',

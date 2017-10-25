@@ -152,6 +152,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 dataType: 'json',
                 data:formData,
                 success: function (data) {
+                    $("#betCount").text(data.betvolume);
                     $("#betAmount").text(data.betamount);
                     $("#payoutAmount").text(data.payoutamount);
                     $("#profitLoss").text(data.profitloss);
