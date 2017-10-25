@@ -38,6 +38,7 @@
         <c:if test="${empty selectView && selection eq 'a'}">
             <c:set var="selectView" value="${views.sportsbook['selection.19.1.a']}"/>
         </c:if>
+        ${selectView}
     </c:when>
     <c:when test="${apiId==19}">
         <c:set var="len" value="${fn:length(selection)}"/>
