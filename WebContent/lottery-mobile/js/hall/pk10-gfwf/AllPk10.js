@@ -188,6 +188,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             mui("#dingdan").off('tap','#queding').on('tap','#queding',function(){
                 // 注单
                 var betForm = {
+                    code:_this.code,
                     totalMoney: parseFloat($("#betContent_totalMoney").text())+"",
                     quantity: Number($("#betContent_zhushu").text()),
                     playModel:1,//1代表官方玩法
