@@ -204,7 +204,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     playModel:1,//1代表官方玩法
                     betOrders: []
                 };
-                debugger;
                 betForm.betOrders.push({
                     code: $("#czCode").val(),//彩种
                     expect: $('font#expect').text(),//期号
