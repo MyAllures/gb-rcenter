@@ -976,14 +976,21 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
     },
         //获取下注号码
         getBetNum:function(betNum) {
-            if (betNum.toString().indexOf('|') < 0) {
+
+            var betCode = this.getPlayId();
+            if(betCode=="pl3_erxing_zhixuan_qeds" || betCode=="pl3_erxing_zuxuan_qeds" ){
+                betNum = betNum.split(',').join('|');
+            }
+            //betNum = betNum.split(',').join('|');
+
+         /*   if (betNum.toString().indexOf('|') < 0) {
                 var betCode = this.getPlayId();
                 if (betCode == 'ssc_erxing_zhixuan_qekd'|| betCode == 'ssc_erxing_zuxuan_qefs' || betCode == 'zhushu_q2zuxbd'){
 
                 }else{
                 betNum = betNum.replace(new RegExp(",","gm"),"|");
                 }
-            }
+            }*/
             return betNum;
         }
     })
