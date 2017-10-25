@@ -183,7 +183,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 }
 
             }
-            debugger;
+
             showPlayName = "定位胆-定位胆";
             showContent = arr[0];
             betContent = betStr;
