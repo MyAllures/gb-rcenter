@@ -1654,12 +1654,12 @@ define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss
 
                 // 注单内容
                 var betForm = {
+                    code:_this.code,
                     totalMoney: 0,
                     quantity: 0,
                     playModel:1,//1表官方玩法
                     betOrders: []
                 };
-
                 $("#zhudanList .re_touzhu_tem").each(function () {
 
                     var betNum = $(this).attr("data-bet_content");

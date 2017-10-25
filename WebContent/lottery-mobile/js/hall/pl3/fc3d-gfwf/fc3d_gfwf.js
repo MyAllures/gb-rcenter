@@ -198,11 +198,13 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             mui("#dingdan").off('tap','#queding').on('tap','#queding',function(){
                 // 注单
                 var betForm = {
+                    code:$("#czCode").val(),
                     totalMoney: parseFloat($("#betContent_totalMoney").text())+"",
                     quantity: Number($("#betContent_zhushu").text()),
                     playModel:1,//1代表官方玩法
                     betOrders: []
                 };
+                debugger;
                 betForm.betOrders.push({
                     code: $("#czCode").val(),//彩种
                     expect: $('font#expect').text(),//期号
@@ -627,7 +629,102 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 }
             }
             return odd;
-        }
+        },
+
+        /*getHandicap:function ( ) {
+            debugger;
+            if (this.isRunning) {
+                return;
+            }
+            var _this = this;
+            var url = root + '/commonLottery/getExpect.html';
+            mui.ajax(url, {
+                dataType: 'json',
+                type: 'POST',
+                async: false,
+                data: {'code': this.code},
+                beforeSend: function () {
+                    _this.isRunning = true;
+                },
+                success: function (data) {
+                    if (data) {
+                        var expect = $("#expect").text();
+                        $("#expect").html(data.expect);
+                        $("#leftTime").attr("data-time", data.leftTime);
+                        if (_this.code == 'hklhc' &&_this.isLhcOpen && data.leftOpenTime >0){
+                            _this.closeLhcHandicap();
+                            $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' >")
+                            $("#leftTime").attr("data-time", data.leftOpenTime);
+                            _this.isLhcOpen = false;
+                            _this.showClearPopups();
+                        }
+                        if (_this.code == 'hklhc' && !_this.isLhcOpen&& data.leftOpenTime <=0){
+                            var dtime = $("#leftTime").attr("data-time");
+
+                            //leftTimeTitle
+
+                            //$("#leftTime").parent().html("距离封盘时间还有：<font id='leftTime' >")
+                            $("#leftTime").attr("data-time", dtime);
+                            _this.isLhcOpen = true;
+                            _this.openLhcHandicap();
+                        }
+                        if (typeof callback == 'function') {
+                            callback();
+                        }
+                    } else { //handicap为空
+                        $(".mui-table-view-cell.mui-collapse").html('sorry,该彩票暂停!');
+                    }
+                },
+                complete: function () {
+                    _this.isRunning = false;
+                }
+            })
+        },
+        closeLhcHandicap:function () {
+            $(".fengPan").addClass("disabled");
+            $("#inputMoney").attr("placeholder","已封盘");
+            $("#inputMoney").attr("disabled",true);
+            $("a#show-t").addClass("disabled-btn");
+            $("a#show-t").attr("id","show_t");
+        },
+        openLhcHandicap:function () {
+            $(".fengPan").removeClass("disabled");
+            $("#inputMoney").attr("placeholder","");
+            $("#inputMoney").attr("disabled",false);
+            $("a#show_t").removeClass("disabled-btn");
+            $("a#show_t").attr("id","show-t");
+            /!** 小彩种 *!/
+            this.code = $(this.formSelector + ' input[name=code]').val();
+            this.type = $(this.formSelector + " input[name=type]").val();
+            this.betCode = $(this.formSelector + " .ssc-method-list .ssc-method-label a.mui-active").attr("data-code");
+            this.getOpenHistory();
+            this.muiInit();
+            this.iosGoBack();
+            if(this.os == 'pc') {
+                //已应对在h5下金额输入框不能输入
+                $("input#inputMoney").focus();
+            }
+        },
+        showClearPopup:function () {
+
+        },
+        showClearPopups: function () {
+            console.log("封盘了")
+            if (this.clearPopFlag) {
+                return;
+            }
+            mui.toast("当前期已封盘，请等待下期开盘.");
+            var time = 5;
+            var _this = this;
+            this.clearPopLayer = setInterval(function () {
+                if (time == 0) {
+                    _this.closeClearPopup();
+                    return;
+                }
+                $(".clearBet_time").html(time);
+                --time;
+            }, 1000)
+        }*/
 
     });
 });
