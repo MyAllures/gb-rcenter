@@ -116,6 +116,19 @@
                     $("#lottery_time_tip-msg").addClass("hide");
                     return;
                 }
+                if(data.gameNum==-5){
+                    $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
+                    $("#tip-msg").html('本次红包已经抢光了');
+                    if(data.nextLotteryTime!=""){
+                        $("#next_lottery_time").text(data.nextLotteryTime);
+                        $("#lottery_time_tip-msg").removeClass("hide");
+                    }else{
+                        $("#lottery_time_tip-msg").addClass("hide");
+                    }
+                    $("#lotteryPageBtn_1").hide();
+                    $("#lottery_time_tip-msg").removeClass("hide");
+                    return;
+                }
                 /*$("#lotteryPageBtn_1").show();
                 $("#lottery_time_tip-msg").addClass("hide");*/
                 if(data.award==0){
