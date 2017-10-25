@@ -452,6 +452,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         saveBetOrder : function () {
             // 注单
             var betForm = {
+                code: $("#czCode").val(),
                 totalMoney: parseFloat($("#betContent_totalMoney").text())+"",
                 quantity: Number($("#betContent_zhushu").text()),
                 playModel:1,//1代表官方玩法
