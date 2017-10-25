@@ -7,6 +7,15 @@ define(['common/BaseListPage'], function (BaseListPage) {
 
         bindEvent: function () {
             this._super();
+            var _this = this;
+            $("#common-order").click(function(){
+                var siteId = $("#singleVal").val();
+                var href = '/lottery/manage/orderLottery.html';
+                if(siteId){
+                    href = "/siteLottery/orderLottery.html?siteId="+siteId;
+                }
+                $(this).attr("href",href);
+            })
 
         },
         onPageLoad: function () {
