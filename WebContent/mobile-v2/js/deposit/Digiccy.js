@@ -37,15 +37,12 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
                 var activityId = $(".gb-withdraw-box select[name=activityId]").val();
                 mui.ajax(url, {
                     dataType: 'json',
-                    data: {'search.transactionNo': transactionNo,'activityId':activityId},
+                    data: {'search.transactionNo': transactionNo, 'activityId': activityId},
                     success: function (data) {
-                        var msg = data.msg;
-                        if (msg) {
-                            _this.toast(msg);
-                        } else if (data.state == true) {
-                            _this.toast(window.top.message.deposit_auto['申请优惠成功']);
+                        if (data.state == true) {
+                            _this.toast(window.top.message.deposit_auto['提交成功']);
                         } else if (!data.state == false) {
-                            _this.toast(window.top.message.deposit_auto['申请优惠失败']);
+                            _this.toast(window.top.message.deposit_auto['提交失败']);
                         }
                         $("#applySale").removeClass("mui-active");
                         $("#applySale").html("");
