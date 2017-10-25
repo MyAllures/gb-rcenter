@@ -630,7 +630,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             return odd;
         },
 
-        /*getHandicap:function ( ) {
+        getHandicap:function ( ) {
             debugger;
             if (this.isRunning) {
                 return;
@@ -692,7 +692,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             $("#inputMoney").attr("disabled",false);
             $("a#show_t").removeClass("disabled-btn");
             $("a#show_t").attr("id","show-t");
-            /!** 小彩种 *!/
+            /** 小彩种 */
             this.code = $(this.formSelector + ' input[name=code]').val();
             this.type = $(this.formSelector + " input[name=type]").val();
             this.betCode = $(this.formSelector + " .ssc-method-list .ssc-method-label a.mui-active").attr("data-code");
@@ -723,7 +723,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 $(".clearBet_time").html(time);
                 --time;
             }, 1000)
-        }*/
+        }
 
     });
 });
