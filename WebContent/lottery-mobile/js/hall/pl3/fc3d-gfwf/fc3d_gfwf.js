@@ -631,7 +631,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         },
 
         getHandicap:function ( ) {
-            debugger;
             if (this.isRunning) {
                 return;
             }
