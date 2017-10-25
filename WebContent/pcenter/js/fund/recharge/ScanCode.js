@@ -64,9 +64,9 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             });
 
             //判断是否添加随机金额
-            $(this.formSelector).on("blur", "input[name='result.rechargeAmount']", function () {
-                _this.checkRechargeAmount();
-            });
+            // $(this.formSelector).on("blur", "input[name='result.rechargeAmount']", function () {
+            //     _this.checkRechargeAmount();
+            // });
         },
 
         /**
