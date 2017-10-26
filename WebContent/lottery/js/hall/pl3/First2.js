@@ -523,7 +523,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             }
 
             showPlayName = "前二直选-复式";
-            showContent = "十位: (" + newArr[0] + ") 个位: (" + newArr[1] + ")";
+            showContent = "百位: (" + newArr[0] + ") 十位: (" + newArr[1] + ")";
             betContent = newArr[0] + "|" + newArr[1];
             ;
 
@@ -674,6 +674,9 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             if (newArr.length <= 0) {
                 return 0;
             }
+           /* for(var i=0;i<newArr.length;i++){
+                newArr[i] = newArr[i].charAt(1)+ newArr[i].charAt(0);
+            }*/
 
             if (pairArr.length > 0) {
                 allErrorArr.push("自动过滤对子号码:");
@@ -705,7 +708,6 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             showContent = "号码: (" + newArr + ")";
             // 转换投注格式
             betContent = newArr.join(",");
-
             return {
                 showPlayName: showPlayName,
                 showContent: showContent,
@@ -862,10 +864,10 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         zhushu_q2zxfs:function () {
             var tempArr = [];
             var wanArr = [], qianArr = [];
-            $.each($(".recl-1002 ul li[data-name = '十'] span.acti"), function (index, value) {
+            $.each($(".recl-1002 ul li[data-name = '百'] span.acti"), function (index, value) {
                 wanArr.push($.trim($(this).find("i").html()));
             });
-            $.each($(".recl-1002 ul li[data-name = '个'] span.acti"), function (index, value) {
+            $.each($(".recl-1002 ul li[data-name = '十'] span.acti"), function (index, value) {
                 qianArr.push($.trim($(this).find("i").html()));
             });
 
@@ -937,10 +939,10 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
          */
         content_q2zxfs:  function () {
             var wanArr = [], qianArr = [];
-            $.each($(".recl-1002 ul li[data-name = '十'] span.acti"), function (index, value) {
+            $.each($(".recl-1002 ul li[data-name = '百'] span.acti"), function (index, value) {
                 wanArr.push($.trim($(this).find("i").html()));
             });
-            $.each($(".recl-1002 ul li[data-name = '个'] span.acti"), function (index, value) {
+            $.each($(".recl-1002 ul li[data-name = '十'] span.acti"), function (index, value) {
                 qianArr.push($.trim($(this).find("i").html()));
             });
 
@@ -950,7 +952,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var betContent = '';
 
             showPlayName = "前二直选-复式";
-            showContent = "十位：({0})，个位：({1})".format(
+            showContent = "百位：({0})，十位：({1})".format(
                 wanArr.join(","),
                 qianArr.join(",")
             );
