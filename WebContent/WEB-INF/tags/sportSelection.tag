@@ -31,7 +31,14 @@
         <c:set var="len" value="${fn:length(selection)}"/>
         <c:set var="selection" value="${fn:substring(selection,len-1,len)}"/>
         <c:set var="key" value="selection.${apiId}.${betType}.${selection}"/>
-        ${views.sportsbook[key]}
+        <c:set var="selectView" value="${views.sportsbook[key]}"/>
+        <c:if test="${empty selectView && selection eq 'h'}">
+            <c:set var="selectView" value="${views.sportsbook['selection.19.1.h']}"/>
+        </c:if>
+        <c:if test="${empty selectView && selection eq 'a'}">
+            <c:set var="selectView" value="${views.sportsbook['selection.19.1.a']}"/>
+        </c:if>
+        ${selectView}
     </c:when>
     <c:when test="${apiId==19}">
         <c:set var="len" value="${fn:length(selection)}"/>
