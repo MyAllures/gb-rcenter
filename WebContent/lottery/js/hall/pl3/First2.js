@@ -659,7 +659,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                         var tempArr = [];
                         tempArr.push(parseInt(strTemp));
                         tempArr.push(parseInt(strTemp1));
-                        tempArr.sort();
+                        //tempArr.sort();
                         newArr.push(tempArr.join(""));
                     } else {
                         pairArr.push(arr_new[i]);
@@ -674,9 +674,6 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             if (newArr.length <= 0) {
                 return 0;
             }
-           /* for(var i=0;i<newArr.length;i++){
-                newArr[i] = newArr[i].charAt(1)+ newArr[i].charAt(0);
-            }*/
 
             if (pairArr.length > 0) {
                 allErrorArr.push("自动过滤对子号码:");
