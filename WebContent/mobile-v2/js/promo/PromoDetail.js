@@ -319,6 +319,20 @@ define(['common/MobileBasePage'], function (Mobile) {
                         $("#lottery_time_tip-msg").addClass("mui-hide");
                         $("#containerOut").css("display", "block");
 
+                    }else if(data.drawTimes==-5){
+                        $("#lotteryPage").css({'background-image': 'url(' + resRoot + '/themes/hb/images/noChance.png)'});
+                        $("#tip-msg").html('本次红包已经抢光了');
+                        $("#tip-msg").removeClass("mui-hide");
+                        if(data.nextLotteryTime!=""){
+                            $("#next_lottery_time").text(data.nextLotteryTime);
+                            $("#lottery_time_tip-msg").removeClass("mui-hide");
+                        }else{
+                            $("#lottery_time_tip-msg").addClass("mui-hide");
+                        }
+                        $("#lotteryPageBtn_1").hide();
+                        $("#lottery_time_tip-msg").removeClass("mui-hide");
+                        $("#containerOut").css("display","block");
+                        return;
                     }
                 }
             });
