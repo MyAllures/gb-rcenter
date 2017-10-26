@@ -152,7 +152,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
         changeApiTypeStatus: function (e, opt) {
             var _this = this;
             var oldVal = $("#tempStatusVal").val();
-            var status = $("[name='apiTypeStatus']:checked").val();
+            var status = $("[name='siteApiStatus']:checked").val();
 
             if(oldVal=="disable"&&status!=oldVal){
                 window.top.topPage.showConfirmDynamic(window.top.message.common['gameManage.tipsTitle'],
@@ -193,7 +193,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
                 return false;
             }
 
-            return this.changeApiTypeStatus(e,opt);
+            return true;//this.changeApiTypeStatus(e,opt);
         },
         /**
          * 自定义名称恢复默认
