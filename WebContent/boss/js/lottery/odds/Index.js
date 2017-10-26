@@ -156,7 +156,7 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     rebate = Number($rinput.val());
                     rori = Number($rinput.attr("data-value"));
                     baseNum = $(oddObj).find("input[name$=baseNum]").val();
-                    minlimit = baseNum*rebate;
+                    minlimit = baseNum*rebate.toFixed(3);
                     if (odd != ori || rebate !=rori) {
                         if (!$input.valid()|| !$rinput.valid()) {
                             $target.unlock();
