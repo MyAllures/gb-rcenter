@@ -170,6 +170,10 @@ define(['common/BaseEditPage', 'jqFileInput', 'UE.I18N.' + window.top.language, 
              */
             this._super();
             var _this = this;
+            $('[data-toggle="popover"]', _this.formSelector).popover({
+                trigger: 'hover',
+                placement: 'top'
+            });
 
             _this.unInitFileInput($('.file'))
                 .fileinput({
