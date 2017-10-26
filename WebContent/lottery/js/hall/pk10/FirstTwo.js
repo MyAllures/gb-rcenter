@@ -155,10 +155,12 @@ define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
             var oneStr = temp.substr(0, 2);
             var towStr = temp.substr(2, 2);
 
-            if(parseInt(oneStr)>0 && parseInt(oneStr)<11 && parseInt(towStr)>0 && parseInt(towStr)<11){
-                tempArr.push(oneStr +" "+ towStr);
-            }else{
-                return;
+            if (oneStr != towStr) {
+                if (parseInt(oneStr) > 0 && parseInt(oneStr) < 11 && parseInt(towStr)>0 && parseInt(towStr) < 11) {
+                    tempArr.push(newArr[n]);
+                }else{
+                    return;
+                }
             }
         }
 
