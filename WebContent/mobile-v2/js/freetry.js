@@ -28,7 +28,7 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
             mui('body').on('tap', '.btn-try', function () {
                 layer.open({
                     title: window.top.message.game_auto['提示'],
-                    content: window.top.message.game_auto['游客盘口只供试玩'],
+                    content: window.top.message.game_auto['欢迎使用试玩模式'],
                     btn: [window.top.message.game_auto['确定'], ''],
                     yes: function (index) {
                         layer.close(index);
@@ -40,9 +40,9 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
                                  dataType: 'json',
                                  type: 'POST',
                                  success: function (data) {
-                                     var demoModel = data.demoModel;
-                                     sessionStorage.demoModel = demoModel;
                                      if (data.status) {
+                                         var demoModel = data.demoModel;
+                                         sessionStorage.demoModel = demoModel;
                                          _this.gotoUrl('/mainIndex.html');
                                      }
                                  }
