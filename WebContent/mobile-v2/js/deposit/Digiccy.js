@@ -37,15 +37,12 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
                 var activityId = $(".gb-withdraw-box select[name=activityId]").val();
                 mui.ajax(url, {
                     dataType: 'json',
-                    data: {'search.transactionNo': transactionNo,'activityId':activityId},
+                    data: {'search.transactionNo': transactionNo, 'activityId': activityId},
                     success: function (data) {
-                        var msg = data.msg;
-                        if (msg) {
-                            _this.toast(msg);
-                        } else if (data.state == true) {
-                            _this.toast("申请优惠成功！");
+                        if (data.state == true) {
+                            _this.toast(window.top.message.deposit_auto['提交成功']);
                         } else if (!data.state == false) {
-                            _this.toast("申请优惠失败！");
+                            _this.toast(window.top.message.deposit_auto['提交失败']);
                         }
                         $("#applySale").removeClass("mui-active");
                         $("#applySale").html("");
@@ -81,7 +78,7 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
                 success: function (data) {
                     var address = data.address;
                     if (address) {
-                        _this.toast("生成地址成功！");
+                        _this.toast(window.top.message.deposit_auto['生成地址成功']);
                         window.setTimeout(function () {
                             $("[name=account" + currency + "] .list-xzzf img").attr("src", data.addressQrcodeUrl);
                             $("[name=account" + currency + "] .list-xzzf textarea").val(address);
@@ -89,7 +86,7 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
                             $("[name=notAddress" + currency + "]").hide();
                         }, 1000);
                     } else {
-                        _this.toast("生成地址失败请稍后再试！");
+                        _this.toast(window.top.message.deposit_auto['生成地址失败请稍后再试']);
                     }
                 }
             })
@@ -118,7 +115,7 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
                         _this.sale(data.transactionNo);
                         _this.back(currency);
                     } else {
-                        _this.toast('兑换金额失败，请稍后再试');
+                        _this.toast(window.top.message.deposit_auto['兑换金额失败']);
                     }
                 },
                 complete: function () {
