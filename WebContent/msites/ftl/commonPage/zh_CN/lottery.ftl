@@ -26,8 +26,8 @@
             <p class="ab" id="awardname">
                 获得了0元
             </p>
-            <#--<input class="inputClass btnFont" onclick="closePage('haveAwardPage','lotteryPage')" id="noAwardPageBtn_1" value="再来一次" type="button"/>-->
-            <input class="inputClass btnFont" onclick="applyMoney()" id="haveAwardPageBtn_2" value="领取红包" type="button"/>
+            <input class="inputClass btnFont" onclick="closePage('haveAwardPage','lotteryPage')" id="noAwardPageBtn_1" value="再来一次" type="button"/>
+            <#--<input class="inputClass btnFont" onclick="applyMoney()" id="haveAwardPageBtn_2" value="领取红包" type="button"/>-->
         </div>
         <!--规则页面-->
         <div class="divBg divClass" id="explainPage">
@@ -114,6 +114,19 @@
                     $("#tip-msg").html('条件不满足，不能参与红包活动!');
                     $("#lotteryPageBtn_1").hide();
                     $("#lottery_time_tip-msg").addClass("hide");
+                    return;
+                }
+                if(data.gameNum==-5){
+                    $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
+                    $("#tip-msg").html('本次红包已经抢光了');
+                    if(data.nextLotteryTime!=""){
+                        $("#next_lottery_time").text(data.nextLotteryTime);
+                        $("#lottery_time_tip-msg").removeClass("hide");
+                    }else{
+                        $("#lottery_time_tip-msg").addClass("hide");
+                    }
+                    $("#lotteryPageBtn_1").hide();
+                    $("#lottery_time_tip-msg").removeClass("hide");
                     return;
                 }
                 /*$("#lotteryPageBtn_1").show();
