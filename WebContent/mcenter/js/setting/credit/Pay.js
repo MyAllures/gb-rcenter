@@ -93,19 +93,19 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
                 success: function (data) {
                     if (data && data.transactionNo) {
                         _window.location = root + "/credit/pay/callOnline.html?search.transactionNo=" + data.transactionNo;
-                        var html = '<div class="modal-body"><div class="p-xs bg-gray co-yellow"><i class="fa fa-exclamation-circle"></i>正在与第三方对接，请尽快完成支付！</div></div>';
+                        var html =  window.top.message.setting_auto['正在与第三方对接'];
                         var dialog = BootstrapDialog.show({
-                            title: '消息',
+                            title: window.top.message.setting_auto['消息'],
                             message: html,
                             buttons: [{
-                                label: '重新填写',
+                                label: window.top.message.setting_auto['重新填写'],
                                 action: function (dialog) {
                                     dialog.close();
                                     flag = false;
                                     $("#mainFrame").load(root + "/credit/pay/pay.html");
                                 }
                             }, {
-                                label: '查看记录',
+                                label: window.top.message.setting_auto['查看记录'],
                                 cssClass: 'btn-primary',
                                 action: function (dialog) {
                                     dialog.close();
@@ -122,7 +122,7 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
                         });
                         $(e.currentTarget).unlock();
                     } else if (data.token) {
-                        e.page.showPopover(e, option, 'danger', "已被关闭存款渠道,请联系客服!", true);
+                        e.page.showPopover(e, option, 'danger', window.top.message.setting_auto['已被关闭存款渠道'], true);
                         $(e.currentTarget).unlock();
                         _window.close();
                     } else {
