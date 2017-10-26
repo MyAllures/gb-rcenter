@@ -243,7 +243,8 @@
         });
     }
     function canShowLottery(id){
-        $("#money_lottery_timezone").html("GMT+08:00");
+        var tiz = sessionStorage.getItem("timezone");
+        $("#money_lottery_timezone").html(tiz);
         $.ajax({
             url:"/ntl/activity/countDrawTimes.html",
             type: "POST",
