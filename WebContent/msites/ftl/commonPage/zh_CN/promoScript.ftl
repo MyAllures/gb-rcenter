@@ -243,6 +243,7 @@
         });
     }
     function canShowLottery(id){
+        $("#money_lottery_timezone").html("GMT+08:00");
         $.ajax({
             url:"/ntl/activity/countDrawTimes.html",
             type: "POST",

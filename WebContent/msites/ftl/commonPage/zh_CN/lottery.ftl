@@ -15,7 +15,9 @@
                     你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">0</span>次抽奖机会
                 </div>
                 <div style="text-align: center;font-size: 18px;color: #fff;" id="lottery_time_tip-msg" class="hide">
-                     下次拆红包开始时间为<br><span style="font-size: 22px;padding: 0 5px;color: gold" id="next_lottery_time"></span>
+                     下次拆红包开始时间为<br>
+                    <span id="money_lottery_timezone" style="font-size: 22px;padding: 0 5px;color: gold"></span><br>
+                    <span style="font-size: 22px;padding: 0 5px;color: gold" id="next_lottery_time"></span>
                 </div>
             </div>
             <#--<input class="inputClass btnFont" id="lotteryPageBtn_2" value="游戏规则" onclick="showExplain()" type="button"/> -->
@@ -53,6 +55,7 @@
 </div>
 
 <script>
+
     function closePage(page_0,page_1){
         if(page_0){
             $('#'+page_0).hide();
