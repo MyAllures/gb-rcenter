@@ -29,6 +29,11 @@ define(['site/game/ApiLogin'], function (ApiLogin) {
             var _this = this;
             /*金额转入弹窗*/
             $('.btn-in').click(function () {
+                var demoModel = sessionStorage.demoModel;
+                if(demoModel){
+                    _this.toast(window.top.message.game_auto['试玩模式不支持额度转换']);
+                    return;
+                }
                 mui.confirm("<input type='text' id='transferIn' name='transferAmount' placeholder='¥'>", window.top.message.game_auto['转入金额'], [window.top.message.game_auto['确认'], window.top.message.game_auto['取消']], function (e) {
                     if (e.index === 0) {
                         var transferIn = $("#transferIn").val();
@@ -70,6 +75,11 @@ define(['site/game/ApiLogin'], function (ApiLogin) {
             });
             /*金额转出弹窗*/
             $('.btn-out').click(function () {
+                var demoModel = sessionStorage.demoModel;
+                if(demoModel){
+                    _this.toast(window.top.message.game_auto['试玩模式不支持额度转换']);
+                    return;
+                }
                 mui.confirm("<input type='text' id='transferOut' placeholder='¥'>", window.top.message.game_auto['转出金额'], [window.top.message.game_auto['确认'], window.top.message.game_auto['取消']], function (e) {
                     if (e.index === 0) {
                         var transferOut = $("#transferOut").val();
