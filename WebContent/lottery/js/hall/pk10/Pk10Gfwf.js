@@ -615,6 +615,7 @@ define(['site/hall/pk10/PlayWay','site/plugin/template','range','css!themesCss/j
 //===============================获取内容算法===================================
         tjzd: function() {
             var _this = this;
+
             var plSelIndex = 0; //特殊号多赔率
             var plSelName = ''; //特殊号多赔率名称
             var plSelVal = 0; //特殊号赔率值
@@ -623,15 +624,13 @@ define(['site/hall/pk10/PlayWay','site/plugin/template','range','css!themesCss/j
             if (typeof contentFun == 'undefined' || typeof zhushuFun == 'undefined') {
                 return;
             }
+            _this.delRrepets();
 
-
-            _this.delRrepet();
             var data = eval("_this."+contentFun + "()");
             var zhushu = eval("_this."+zhushuFun + "()");
             if (data == -1) {
                 return;
             }
-
             if (typeof data == 'undefined' || typeof zhushu == 'undefined' || zhushu <= 0) {
                 _this.alertmsg("号码选择不完整，请重新选择");
                 return;
@@ -870,8 +869,9 @@ define(['site/hall/pk10/PlayWay','site/plugin/template','range','css!themesCss/j
             });
         },
         //删除重复号码
-        delRrepet: function() {
+        delRrepets: function() {
             var _this = this;
+
             // var xObj = $(obj).parent().parent().parent();
             // var textStr = $(xObj).find(".content_tex").val();
             var textStr = $("div.content_jiang").find(".content_tex").val();
@@ -885,13 +885,13 @@ define(['site/hall/pk10/PlayWay','site/plugin/template','range','css!themesCss/j
                 }
             }
             var playcode = _this.getPlayCode();
-            if (playcode == 'ssc_sanxing_zuxuan' || playcode == 'ssc_erxing_zuxuan') {//一些需要无序去重的玩法
-                repeatArr = newArr.duplicateNewa().uniqueArra();
-                tempArr = newArr.uniqueArra();
-            } else {
+            // if (playcode == 'ssc_sanxing_zuxuan' || playcode == 'ssc_erxing_zuxuan') {//一些需要无序去重的玩法
+            //     repeatArr = newArr.duplicateNewa().uniqueArra();
+            //     tempArr = newArr.uniqueArra();
+            // } else {
                 repeatArr = newArr.duplicateNew().uniqueArr();
                 tempArr = newArr.uniqueArr();
-            }
+            // }
             if (repeatArr.length <= 0) {
                 // _this.alertmsg("无重复号码！");
             } else {
@@ -2179,10 +2179,12 @@ define(['site/hall/pk10/PlayWay','site/plugin/template','range','css!themesCss/j
         },
         //获取下注号码
         getBetNum:function(betNum) {
-            if (betNum.toString().indexOf('|') < 0) {
-                betNum = betNum.replace(new RegExp(",","gm"),"|");
+            if(betNum !=undefined){
+                if (betNum.toString().indexOf('|') < 0) {
+                    betNum = betNum.replace(new RegExp(",","gm"),"|");
+                }
+                return betNum;
             }
-            return betNum;
         },
         getNoWeiStr:function (arr) {
         var checkArr = [], checkStrArr = [];
