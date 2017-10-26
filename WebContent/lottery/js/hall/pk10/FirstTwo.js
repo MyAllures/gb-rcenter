@@ -149,12 +149,19 @@ define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
                 }
             }
         }
+
         for (var n = 0; n < newArr.length; n++) {
             var temp = newArr[n].toString();
             var oneStr = temp.substr(0, 2);
             var towStr = temp.substr(2, 2);
 
-            tempArr.push(oneStr +" "+ towStr);
+            if (oneStr != towStr) {
+                if (parseInt(oneStr) > 0 && parseInt(oneStr) < 11 && parseInt(towStr)>0 && parseInt(towStr) < 11) {
+                    tempArr.push(newArr[n]);
+                }else{
+                    return;
+                }
+            }
         }
 
         if (tempArr.length <= 0) {
@@ -206,8 +213,10 @@ define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
                 var oneStr = temp.substr(0, 2);
                 var twoStr = temp.substr(2, 2);
                 if (oneStr != twoStr) {
-                    if (parseInt(oneStr) < 12 && parseInt(twoStr) < 12) {
+                    if (parseInt(oneStr) > 0 && parseInt(oneStr) < 11 && parseInt(twoStr)>0 && parseInt(twoStr) < 11) {
                         tempArr.push(newArr[n]);
+                    }else{
+                        return;
                     }
                 }
             }

@@ -151,7 +151,12 @@ define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
                 var threeStr = temp.substr(4, 2);
 
                 if(oneStr != twoStr && oneStr != threeStr && threeStr != twoStr){
-                    tempArr.push(oneStr +" "+ twoStr+" " + threeStr);
+
+                    if((parseInt(oneStr)>0 && parseInt(oneStr)<11 && parseInt(twoStr)>0 && parseInt(twoStr)<11)&& parseInt(threeStr)>0 && parseInt(threeStr)<11){
+                        tempArr.push(oneStr +" "+ twoStr+" " + threeStr);
+                    }else {
+                        return;
+                    }
                 }
             }
 
@@ -204,8 +209,10 @@ define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
                 var twoStr = temp.substr(2, 2);
                 var threeStr = temp.substr(4, 2);
                 if (oneStr != twoStr && twoStr != threeStr && oneStr != threeStr) {
-                    if (parseInt(oneStr) < 12 && parseInt(twoStr) < 12 && parseInt(threeStr) < 12) {
+                    if (parseInt(oneStr) > 0 && parseInt(oneStr) < 11 && parseInt(twoStr)>0 && parseInt(twoStr) < 11&& parseInt(threeStr)>0 && parseInt(threeStr) < 11) {
                         tempArr.push(newArr[n]);
+                    }else{
+                        return ;
                     }
                 }
             }

@@ -55,7 +55,7 @@ define(['common/MobileBasePage', 'validate'], function (MobileBasePage) {
                 $("#applySale").html("");
             });
             //关闭优惠弹窗
-            mui("body").on("tap", ".gb-withdraw-box.close", function (e) {
+            mui("body").on("tap", ".gb-withdraw-box .close", function (e) {
                 $("#applySale").removeClass("mui-active");
                 $("#applySale").html("");
             });
