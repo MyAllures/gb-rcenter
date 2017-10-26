@@ -15,6 +15,11 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             this.isGfwf();
             this.getGfwfOdd();
             this.showTable();
+
+            //this.getHandicap();
+           /* window.setInterval(function () {
+                _this.loadLeftTime();
+            }, 1000);*/
         },
         showTable : function (){
         },
@@ -631,7 +636,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         },
 
         getHandicap:function ( ) {
-            debugger;
             if (this.isRunning) {
                 return;
             }
