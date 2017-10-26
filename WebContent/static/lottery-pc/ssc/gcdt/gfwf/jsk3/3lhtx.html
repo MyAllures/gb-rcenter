@@ -1,0 +1,88 @@
+
+<!-- saved from url=(0049)https://www.600wan.cm/ssc/gcdt/gfwf/cqssc/q2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><div class="group k3-select">
+    <ul>
+        <li>
+            <b>三连号通选</b>
+            <p class="btn_fu_zhi">
+                <span class="playPlIdBtn acti" data-play_id="535" data-play_pl_id="14253" data-name="q2zxfs" data-fun_zhushu="zhushu_q2zxfs" data-fun_content="content_q2zxfs" data-fun_suiji="suiji_q2zxfs"><a href="javascript:void(0)">标准选号</a></span>
+            </p>
+        </li>
+        
+    </ul>
+</div>
+
+<div id="subPage"></div>
+<div id="subJRange"></div><script>
+    $(function() {
+        // 初始化子页面
+        initSubPage();
+        // 切换玩法
+        $(".group ul li p span").click(function () {
+            $(".group ul li p span.acti").removeClass("acti");
+            $(this).addClass("acti");
+            var currentId = $(this).data('play_id');
+            if(currentId != null){
+                playId = currentId;
+            }
+
+            // 初始化子页面
+            initSubPage();
+        });
+
+
+        // 幸运选号
+        var tmpXyxhNums = getQueryString("nums");
+        var tmpXyxhMoney = getQueryString("money");
+/*
+        if (typeof tmpXyxhNums != 'undefined' && typeof tmpXyxhMoney != 'undefined' && tmpXyxhNums != '' && tmpXyxhMoney != '' && tmpXyxhNums != null && tmpXyxhMoney != null) {
+            var oArr = [
+                ['wan', '万位'],['qian', '千位'],['bai', '百位'],['shi', '十位'],['ge', '个位']
+            ];
+
+            for (var i = 0; i < oArr.length; ++i) {
+                tmpXyxhNums = tmpXyxhNums.replace(new RegExp(oArr[i][0],'gm'), oArr[i][1]);
+            }
+
+            var arr = tmpXyxhNums.split(",");
+            var beishu = parseInt(tmpXyxhMoney) / 2;
+
+            for (var i = 0; i < arr.length; ++i) {
+                var strWei = arr[i].toString();
+                var wei = (strWei.split("-")[0]).replace("位",'');
+                var num = strWei.split("-")[1];
+
+                var obj = $(".wx-page [data-name='" + wei + "'] var.numLine span").eq(num);
+                $(obj).addClass("acti");
+            }
+
+            $("#inputBeishu").val(beishu);
+            $("#inputBeishu").data("beishu",beishu);
+            $("#inputMoney").data("inputMoney",tmpXyxhMoney);
+
+            renderZhushu();
+        }*/
+
+    });
+</script>
+<script type="text/html" id="template_q2zxfs">
+<div class="Pick cl-1002 recl-1002" data-name="zxfs" data-flag="zxfs-q2">
+    <p class="p1">
+        <span class="fr fl cl-1001">
+            2元全包顺子(123,234,345,456)投注，开出任意顺子即中奖。
+        </span>
+    </p>
+    <ul>
+        <li data-name="三连号">
+            <b><i>三连号</i></b>
+            <var class="numLine">
+                <span class="k2-tx-ball"><i>通选</i></span>
+            </var>
+        </li>
+        
+    </ul>
+</div>
+</script>
+
+
+</body></html>

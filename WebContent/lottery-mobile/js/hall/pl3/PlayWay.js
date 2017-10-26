@@ -2,7 +2,22 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
     return PlayWay.extend({
         init: function () {
             this._super();
+            this.isGfwf();
         },
+        //传统,官方玩法切换
+        isGfwf: function () {
+            var type = $("input[name='type']").val();
+            var code = $("input[name='code']").val();
+            var _this = this;
+            var lotteryGenra = $("input#lotteryGenra").val();
+            mui("body").on("tap", "a#is-gfwf", function () {
+                if(lotteryGenra ==1) {
+                    var flag = $(this).attr("data-flag");
+                    _this.gotoUrl(root + '/' +type + '/' +code + '/index.html?betCode=&isGfwf='+flag);
+                }
+            });
+        },
+
         showLastOpenCode: function (numArr) {
             var titles = [];
             var sum = 0;

@@ -43,7 +43,8 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     return false;
                 }
                 var code = $(this).attr("code");
-                if(code=='cqssc'||code=='tjssc'||code=='xjssc'){
+                if(code=='cqssc'||code=='tjssc'||code=='xjssc'||code=='bjpk10'||code=='ahk3'||code=='fc3d'||
+                code=='tcpl3'||code=='jsk3'||code=='hbk3'||code=='gxk3'){
                     $(".wfqh-btn").attr("style", "display:");
                     $("#gfwfqh").addClass("gfwfqh-wrap");
                     $("#jdwf").addClass("active");
@@ -155,7 +156,7 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     rebate = Number($rinput.val());
                     rori = Number($rinput.attr("data-value"));
                     baseNum = $(oddObj).find("input[name$=baseNum]").val();
-                    minlimit = baseNum*rebate;
+                    minlimit = baseNum*rebate.toFixed(3);
                     if (odd != ori || rebate !=rori) {
                         if (!$input.valid()|| !$rinput.valid()) {
                             $target.unlock();

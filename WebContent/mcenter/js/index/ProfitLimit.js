@@ -29,7 +29,7 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                             var transferLimit = data.transferLimit;
                             var currentProfit = data.currentProfit;
                             $("#topSecurity").find("#profitLimit").text(profitLimit);
-                            $("#topSecurity").find("#curProfit").text(profit);
+                            $("#topSecurity").find("#curProfit").text(data.profitCur);
                             $("#topSecurity").find("#transferLimit").text(transferLimit);
                             $("#topSecurity").find("#currentProfit").text(currentProfit);
                             var percent = 0;
