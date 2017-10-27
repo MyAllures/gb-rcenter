@@ -526,7 +526,8 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
          * 注数-组三单式
          */
         zhushu_pl3z3ds:function() {
-            var zhushu = 0;
+
+            var _this = this;
             var textStr = $(".cl-1008-zsds .content_jiang .content_tex").val();
             var newArr = [], tempArr = [], errorStr = '', errorArr = [];
             textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
@@ -543,10 +544,33 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 var threeStr = temp.substr(2, 1);
                 if (oneStr == twoStr && twoStr != threeStr || twoStr == threeStr && oneStr != threeStr || threeStr == oneStr && twoStr != oneStr) {
                     tempArr.push(newArr[n]);
+                } else {
+                    if (newArr[n] != '') {
+                        errorArr.push(newArr[n]);
+                    }
                 }
             }
 
-            return tempArr.length;
+            //先排序
+            for(var i=0;i<tempArr.length;i++){
+                var chars =[];
+                for(var j=0;j<tempArr[i].length;j++){
+                    chars.push(tempArr[i][j]);
+                }
+                tempArr[i]=chars.sort().join("");
+            }
+            //再去重
+            var lastArr =[];
+            var repeatArr = [];
+            for(var i=0;i<tempArr.length;i++){
+                if(this.contain(lastArr,tempArr[i])){
+                    repeatArr.push(tempArr[i]);
+                }else{
+                    lastArr.push(tempArr[i]);
+                }
+            }
+
+            return lastArr.length;
         },
         /**
          * 注数-组三复式
@@ -1347,7 +1371,8 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
      * 三星组选-组三单式
      */
      content_pl3z3ds:function() {
-         var _this = this;
+
+        var _this = this;
         var textStr = $(".cl-1008-zsds .content_jiang .content_tex").val();
         var newArr = [], tempArr = [], errorStr = '', errorArr = [];
         textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
