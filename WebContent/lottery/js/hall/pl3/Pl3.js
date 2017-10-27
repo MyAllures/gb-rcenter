@@ -193,6 +193,36 @@ define(['site/hall/common/Common','site/plugin/template'], function (Common,Temp
                 maxMap[head+"_ds"] = this.getMaxMap(sortObj.ds);
             }
             return maxMap;
+        },
+
+        /**
+         * 获取子页
+         * @param url
+         */
+        getSubPage: function (url) {
+
+            var _this = this;
+            var flag = $(".Playmethod b.acti").next().data('name');
+
+            var subUrl = _this.baseUrl + "/" + url.split("-").join("/") + ".html";
+
+            if(flag=="gfwf"){
+                subUrl = _this.baseUrl + "/" + url.split("-")[0]+"/getSubPage.html?pageName="+url.split("-")[1];
+            }
+
+            ajaxRequest({
+                url: subUrl,
+                type: 'GET',
+                dataType: 'html',
+                beforeSend: function () {
+                    $("#subContent").html('<img src="' + resRoot + '/themes/default/img/base_loading.gif" style="display: block;margin: auto;margin: 50px auto;">');
+                },
+                success: function (html) {
+                    // 读取HTML页内容
+                    $("#subContent").html(html);
+                    //原来这里有初始化内容js统一放在PlayWay.js里
+                }
+            });
         }
     })
 
