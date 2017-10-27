@@ -47,7 +47,6 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
         },
         //封盘
         closeLhcHandicap: function () {
-            console.log("封盘了");
             $("#subContent td").unbind("click");//移除变黄点击事件
             $(".kjanniu a").unbind("click");//快捷金额按钮移除点击事件
             $("#subContent td input").attr("placeholder","已封盘");
@@ -63,7 +62,6 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
         },
         //开盘
         openLhcHandicap: function () {
-            console.log("开盘了")
             $("#subContent td input").attr("placeholder","");
             $("#subContent td input").attr("disabled",false);
             $("#inputMoney").attr("disabled",false);
