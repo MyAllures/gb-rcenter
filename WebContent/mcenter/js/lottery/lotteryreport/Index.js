@@ -155,7 +155,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     $("#betCount").text(data.betvolume);
                     $("#betAmount").text(data.betamount);
                     $("#payoutAmount").text(data.payoutamount);
-                    $("#profitLoss").text(data.profitloss);
+                    $("#profitLoss").text(-data.profitloss);
                     $("#rabateAmount").text(data.rabateamount);
                 },
                 error: function (data) {
