@@ -66,7 +66,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
         showRandomAmountMsg:function () {
             //var flag = $("input[name='randomAmount']");
             var flag = $("#randomAmount").val();
-            if(flag=="false"){
+            if(flag=="false"||flag==""){
                 $('#randomAmountMsg').addClass('tiphide');
                 return;
             }

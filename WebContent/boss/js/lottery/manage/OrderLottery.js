@@ -56,6 +56,11 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
             //cashOrder.isTakeTurns = $("[name='takeTurnsStatus']").val();
             //cashOrder.takeTurns= $("input:radio[name='takeTurns']:checked").val();
             var orderObj = [];
+            var url = '/lottery/manage/saveLotteryOrder.html';
+            var siteId =$('.td-handle2').val();
+            if(siteId){
+                url = '/siteLottery/saveSiteLotteryOrder.html?siteId='+siteId;
+            }
             $("tbody tr").each(function(index,obj){
                 orderObj.push({"order":index+1,"objectId":$(obj).children("[name='lotteryId']").val()});
                 apiTypeOrder.orderList = orderObj;
@@ -66,7 +71,7 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
                 data:JSON.stringify(apiTypeOrder),
                 async:false,
                 type:"post",
-                url:root+'/lottery/manage/saveLotteryOrder.html',
+                url:root+url,
                 success:function(data){
                     window.top.topPage.showSuccessMessage(window.top.message.common['save.success'], function (state) {
                         $(".return-btn").click();
