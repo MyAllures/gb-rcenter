@@ -426,7 +426,7 @@ i, var { font-style: normal; }
 .inline-list-2:last-child { margin-top: 5px; }
 .inline-list-3 { height: 1rem; line-height: 1rem; display: block; }
 .inline-list-4{display:inline-block;vertical-align: middle; height: 2.1rem; line-height: 2.1rem;}
-.inline-list-kl8{display: inline-block;vertical-align: middle; width: 12rem;white-space: initial;}
+.inline-list-kl8{display: inline-block;vertical-align: middle; width: 12rem;white-space: initial; word-spacing: -3px;}
 .inline-list-kl8 i:nth-child(10)+i{margin-top: 3px;}
 /*六合彩三色波*/
 
@@ -907,6 +907,7 @@ a.popup-screen-btn:visited{
 		width: 1rem;
 		border-radius: 1rem;
 		font-size: .5rem;
+		margin-left: 0;
 	}
 	.lottery-block {
 		height: 1rem;
@@ -915,7 +916,7 @@ a.popup-screen-btn:visited{
 		font-size: 12px;
 		font-size: .5rem;
 	}
-	.inline-list-kl8{width: 10.5rem;word-spacing: -3px;}
+	.inline-list-kl8{width: 10.5rem;}
 	.bet-table .bet-table-list table tbody tr td span:nth-child(2) {width: 35px;right: calc(50% - 35px);}
 }
 .mui-bar-tab.mui-lottery .mui-tab-item {
