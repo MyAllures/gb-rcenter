@@ -247,7 +247,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             </div>\
         </div>\
         ';
-            if (this.code == 'hklhc'  ){
+            if (this.code == 'hklhc' ||this.code=='fc3d' || this.code=='tcpl3' ){
                  clearBet_template = '\
         <div class="clearBet_template">\
             <div class="l">\
