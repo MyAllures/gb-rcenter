@@ -997,6 +997,7 @@ define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss
             $(obj).parent().parent().find(".acti").removeClass("acti");
             $(obj).addClass("acti");
             this.clearStateTouZhu();//清除投注状态栏
+            this.renderZhushu();
         },
         getSuiji: function(total) {
             var _this = this;
@@ -1818,7 +1819,7 @@ define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss
                 reader.readAsText(file);
                 reader.onload = function (data) {
                     $(".content_tex").val(this.result);
-                    /* tt.innerHTML = this.result;*/
+                    _this.renderZhushu();
                 }
             } else {
                 $(".tzInsertTemplate .errorTxt").html("文件名不合法,只能上传txt格式");

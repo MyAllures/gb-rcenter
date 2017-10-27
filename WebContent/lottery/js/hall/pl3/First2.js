@@ -640,6 +640,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
          * 前二组选-组选单式
          */
         content_q2zuxds: function () {
+
             var _this = this;
             var textStr = $(".recl-1007-zuxds .content_jiang .content_tex").val();
             var newArr = [];
@@ -659,7 +660,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                         var tempArr = [];
                         tempArr.push(parseInt(strTemp));
                         tempArr.push(parseInt(strTemp1));
-                        tempArr.sort();
+                        //tempArr.sort();
                         newArr.push(tempArr.join(""));
                     } else {
                         pairArr.push(arr_new[i]);
@@ -674,9 +675,22 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             if (newArr.length <= 0) {
                 return 0;
             }
-           /* for(var i=0;i<newArr.length;i++){
-                newArr[i] = newArr[i].charAt(1)+ newArr[i].charAt(0);
-            }*/
+            var tempArr = [];
+            newArr.sort();
+            for(var i=0;i<newArr.length;i++){
+                if(this.contain(tempArr,newArr[i])){
+                    repeatArr.push(newArr[i]);
+                }else{
+                    tempArr.push(newArr[i]);
+                }
+            }
+            newArr=tempArr;
+
+            if (repeatArr.length> 0) {
+
+                _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
+
+            }
 
             if (pairArr.length > 0) {
                 allErrorArr.push("自动过滤对子号码:");
@@ -715,7 +729,16 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
 
-        /**
+         contain:function(newArr,item){
+            for(var i=0;i<newArr.length;i++){
+                    if(newArr[i].charAt(0) ==item.charAt(1) && newArr[i].charAt(1) ==item.charAt(0)){
+                        return true;
+                    }
+                }
+                return false;
+         },
+
+    /**
          * 前二组选-组选复式
          */
         content_q2zuxfs: function () {
