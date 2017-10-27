@@ -625,9 +625,7 @@ define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss
             if (typeof contentFun == 'undefined' || typeof zhushuFun == 'undefined') {
                 return;
             }
-
-
-            _this.delRrepet();
+            //_this.delRrepet();
             var data = eval("_this."+contentFun + "()");
             var zhushu = eval("_this."+zhushuFun + "()");
             if (data == -1) {

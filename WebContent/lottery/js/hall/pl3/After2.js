@@ -712,7 +712,11 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 if(this.contain(tempArr,newArr[i])){
                     repeatArr.push(newArr[i]);
                 }else{
-                    tempArr.push(newArr[i]);
+                    var a= newArr[i];
+                    var b = [];
+                    b.push(a.charAt(0));
+                    b.push(a.charAt(1));
+                    tempArr.push(b.sort().join(""));
                 }
             }
             newArr=tempArr;
