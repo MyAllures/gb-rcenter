@@ -675,6 +675,14 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 return 0;
             }
 
+            repeatArr = newArr.duplicateNew().uniqueArr();
+
+            if (repeatArr.length> 0) {
+
+                _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
+
+            }
+
             if (pairArr.length > 0) {
                 allErrorArr.push("自动过滤对子号码:");
                 for (var p = 0; p < pairArr.length; p++) {
@@ -695,6 +703,8 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 }
                 _this.alertmsg(errorStr);
             }
+
+            newArr = newArr.uniqueArr();
 
             // 初始化变量
             var showPlayName = '';
@@ -731,7 +741,6 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             showContent = "组选: (" + zuxArr.join(",") + ")";
             // 转换投注格式
             betContent = zuxArr.join(",");
-
             return {
                 showPlayName: showPlayName,
                 showContent: showContent,

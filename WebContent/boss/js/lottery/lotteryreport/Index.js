@@ -154,10 +154,10 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 data:formData,
                 success: function (data) {
                     $("#betCount").text(data.betvolume);
-                    $("#betAmount").text(data.betamount);
-                    $("#payoutAmount").text(data.payoutamount);
-                    $("#profitLoss").text(data.profitloss);
-                    $("#rabateAmount").text(data.rabateamount);
+                    $("#betAmount").text((data.betamount).toFixed(2));
+                    $("#payoutAmount").text((data.payoutamount).toFixed(2));
+                    $("#profitLoss").text((-data.profitloss).toFixed(2));
+                    $("#rabateAmount").text((data.rabateamount).toFixed(2));
                 },
                 error: function (data) {
 
