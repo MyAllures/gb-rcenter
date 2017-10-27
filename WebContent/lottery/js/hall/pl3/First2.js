@@ -85,8 +85,13 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
          * 注数-组选单式
          */
         zhushu_q2zuxds:function () {
+
+            var _this = this;
             var textStr = $(".recl-1007-zuxds .content_jiang .content_tex").val();
             var newArr = [];
+            var repeatArr = [], errorArr = [], allErrorArr = [], pairArr = [];
+            var errorStr = '';
+            var zhushu = 0;
             textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
             var arr_new = textStr.split(",");
             for (var i = 0; i < arr_new.length; i++) {
@@ -100,15 +105,30 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                         var tempArr = [];
                         tempArr.push(parseInt(strTemp));
                         tempArr.push(parseInt(strTemp1));
-                        tempArr.sort();
+                        //tempArr.sort();
                         newArr.push(tempArr.join(""));
+                    } else {
+                        pairArr.push(arr_new[i]);
+                    }
+                } else {
+                    if (arr_new[i] != "") {
+                        errorArr.push(arr_new[i]);
                     }
                 }
             }
-            if (newArr.length <= 0) {
-                return 0;
+
+            var tempArr = [];
+            newArr.sort();
+
+            for(var i=0;i<newArr.length;i++){
+                if(this.contain(tempArr,newArr[i])){
+                    repeatArr.push(newArr[i]);
+                }else{
+                    tempArr.push(newArr[i]);
+                }
             }
-            return newArr.length;
+
+            return tempArr.length;
         },
         /**
          * 注数-组选复式
@@ -677,6 +697,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             }
             var tempArr = [];
             newArr.sort();
+
             for(var i=0;i<newArr.length;i++){
                 if(this.contain(tempArr,newArr[i])){
                     repeatArr.push(newArr[i]);
