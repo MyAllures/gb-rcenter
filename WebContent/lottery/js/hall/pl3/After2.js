@@ -84,7 +84,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         /**
          * 注数-组选单式
          */
-        zhushu_q2zuxds:function () {
+        zhushu_pl3_erxing_zuxuan_heds:function () {
             var textStr = $(".recl-1007-zuxds .content_jiang .content_tex").val();
             var newArr = [];
             textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
@@ -113,7 +113,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         /**
          * 注数-组选复式
          */
-        zhushu_q2zuxfs:function () {
+        zhushu_pl3_erxing_zuxuan_hefs:function () {
             var tempArr = [], zuxArr = [];
             $.each($(".recl-1006-zuxfs ul li[data-name = '组选'] span.acti"), function (index, value) {
                 zuxArr.push($.trim($(this).find("i").html()));
@@ -223,7 +223,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         /**
          * 注数-直选单式
          */
-        zhushu_q2zxds:  function () {
+        zhushu_pl3_erxing_zhixuan_heds:  function () {
             var textStr = $(".recl-1003 .content_jiang .content_tex").val();
             var newArr = [];
             textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
@@ -330,7 +330,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         /**
          * 前2直选-组选单式"
          */
-        suiji_q2zuxds:function () {
+        suiji_pl3_erxing_zuxuan_heds:function () {
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -359,7 +359,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         /**
          * 前2直选-组选复式"
          */
-        suiji_q2zuxfs:function () {
+        suiji_pl3_erxing_zuxuan_hefs:function () {
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -444,7 +444,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         /**
          * 前2直选-直选单式"
          */
-        suiji_q2zxds: function () {
+        suiji_pl3_erxing_zhixuan_heds: function () {
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -508,7 +508,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         /**
          * 前2直选-直选复式"
          */
-        suiji_q2zxfs:function () {
+        suiji_pl3_erxing_zhixuan_hefs:function () {
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -639,7 +639,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         /**
          * 前二组选-组选单式
          */
-        content_q2zuxds: function () {
+        content_pl3_erxing_zuxuan_heds: function () {
             var _this = this;
             var textStr = $(".recl-1007-zuxds .content_jiang .content_tex").val();
             var newArr = [];
@@ -675,6 +675,14 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 return 0;
             }
 
+            repeatArr = newArr.duplicateNew().uniqueArr();
+
+            if (repeatArr.length> 0) {
+
+                _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
+
+            }
+
             if (pairArr.length > 0) {
                 allErrorArr.push("自动过滤对子号码:");
                 for (var p = 0; p < pairArr.length; p++) {
@@ -696,6 +704,8 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 _this.alertmsg(errorStr);
             }
 
+            newArr = newArr.uniqueArr();
+
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -716,7 +726,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         /**
          * 前二组选-组选复式
          */
-        content_q2zuxfs: function () {
+        content_pl3_erxing_zuxuan_hefs: function () {
             var zuxArr = [];
             $.each($(".recl-1006-zuxfs ul li[data-name = '组选'] span.acti"), function (index, value) {
                 zuxArr.push($.trim($(this).find("i").html()));
@@ -731,7 +741,6 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             showContent = "组选: (" + zuxArr.join(",") + ")";
             // 转换投注格式
             betContent = zuxArr.join(",");
-
             return {
                 showPlayName: showPlayName,
                 showContent: showContent,
@@ -859,7 +868,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         /**
          * 注数-直选复式
          */
-        zhushu_q2zxfs:function () {
+        zhushu_pl3_erxing_zhixuan_hefs:function () {
             var tempArr = [];
             var wanArr = [], qianArr = [];
             $.each($(".recl-1002 ul li[data-name = '十'] span.acti"), function (index, value) {
@@ -886,7 +895,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         /**
          * 前二直选-直选单式
          */
-        content_q2zxds:  function () {
+        content_pl3_erxing_zhixuan_heds:  function () {
             var _this = this;
             var textStr = $(".recl-1003 .content_jiang .content_tex").val();
             var newArr = [];
@@ -935,7 +944,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         /**
          * 前二直选-直选复式
          */
-        content_q2zxfs:  function () {
+        content_pl3_erxing_zhixuan_hefs:  function () {
             var wanArr = [], qianArr = [];
             $.each($(".recl-1002 ul li[data-name = '十'] span.acti"), function (index, value) {
                 wanArr.push($.trim($(this).find("i").html()));
