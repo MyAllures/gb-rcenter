@@ -28,7 +28,7 @@
             <p class="ab" id="awardname">
                 获得了0元
             </p>
-            <input class="inputClass btnFont" onclick="closePage('haveAwardPage','lotteryPage')" id="noAwardPageBtn_1" value="再来一次" type="button"/>
+            <input class="inputClass btnFont" onclick="closePage('haveAwardPage','lotteryPage')" id="haveAwardPageBtn_2" value="再来一次" type="button"/>
             <#--<input class="inputClass btnFont" onclick="applyMoney()" id="haveAwardPageBtn_2" value="领取红包" type="button"/>-->
         </div>
         <!--规则页面-->

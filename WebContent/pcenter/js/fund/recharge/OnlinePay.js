@@ -24,6 +24,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
         onPageLoad: function () {
             this._super();
             this.initCaptcha();
+            this.showRandomAmountMsg();
             window.top.onlineTransactionNo = null;
         },
         /**
@@ -58,6 +59,21 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                 }
             });
         },
+
+        /**
+         * 显示/隐藏随机额度提示信息
+         */
+        showRandomAmountMsg:function () {
+            //var flag = $("input[name='randomAmount']");
+            var flag = $("#randomAmount").val();
+            if(flag=="false"){
+                $('#randomAmountMsg').addClass('tiphide');
+                return;
+            }
+            $('#randomAmountMsg').removeClass('tiphide');
+            return;
+        },
+
         /**
          * 更换存款银行
          */
