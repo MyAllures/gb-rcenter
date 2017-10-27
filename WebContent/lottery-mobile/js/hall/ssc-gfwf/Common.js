@@ -35,8 +35,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             });
 
             mui("body").on('tap','.gfwf-bg',function(){
-                $('div.gfwf-bg').hide();
-                $('div.selected-wrap').hide();
+                $('div.gfwf-bg').slideUp();
+                $('div.selected-wrap').slideUp();
             });
 
 
@@ -61,8 +61,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 && dataCode !="R3"
                 && dataCode !="R4"
             ){
-                $('div.gfwf-bg').hide();
-                $('div.selected-wrap').hide();
+                $('div.gfwf-bg').slideUp();
+                $('div.selected-wrap').slideUp();
             }
             _this.getBetTable(dataCode,jspName);
             _this.resetBet();
