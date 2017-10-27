@@ -457,36 +457,13 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         },
 
         /**
-         * 注数-混合组选
-         */
-        zhushu_pl3hhzx: function() {
-            var textStr = $(".cl-1011-hhzx .content_jiang .content_tex").val();
-            var newArr = [], tempArr = [], errorStr = '';
-            textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
-            var arr_new = textStr.split(",");
-            for (var i = 0; i < arr_new.length; i++) {
-                if (arr_new[i].toString().length > 0 && arr_new[i].toString().length == 3) {
-                    newArr.push(arr_new[i]);
-                }
-            }
-            for (var n = 0; n < newArr.length; n++) {
-                var temp = newArr[n].toString();
-                var oneStr = temp.substr(0, 1);
-                var twoStr = temp.substr(1, 1);
-                var threeStr = temp.substr(2, 1);
-                if (twoStr != threeStr && oneStr != threeStr && twoStr != oneStr || oneStr == twoStr && twoStr != threeStr || twoStr == threeStr && oneStr != threeStr || threeStr == oneStr && twoStr != oneStr) {
-                    tempArr.push(newArr[n]);
-                }
-            }
-            return tempArr.length;
-        },
-
-        /**
          * 注数-组六单式
          */
         zhushu_pl3z6ds: function() {
+
+            var _this = this;
             var textStr = $(".cl-1010-zlds .content_jiang .content_tex").val();
-            var newArr = [], tempArr = [];
+            var newArr = [], tempArr = [], errorStr = '', errorArr = [];
             textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
             var arr_new = textStr.split(",");
             for (var i = 0; i < arr_new.length; i++) {
@@ -501,9 +478,33 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 var threeStr = temp.substr(2, 1);
                 if (twoStr != threeStr && oneStr != threeStr && twoStr != oneStr) {
                     tempArr.push(newArr[n]);
+                } else {
+                    if (newArr[n] != '') {
+                        errorArr.push(newArr[n]);
+                    }
                 }
             }
-            return tempArr.length;
+
+            //先排序
+            for(var i=0;i<tempArr.length;i++){
+                var chars =[];
+                for(var j=0;j<tempArr[i].length;j++){
+                    chars.push(tempArr[i][j]);
+                }
+                tempArr[i]=chars.sort().join("");
+            }
+            //再去重
+            var lastArr =[];
+            var repeatArr = [];
+            for(var i=0;i<tempArr.length;i++){
+                if(this.contain2(lastArr,tempArr[i])){
+                    repeatArr.push(tempArr[i]);
+                }else{
+                    lastArr.push(tempArr[i]);
+                }
+            }
+
+            return lastArr.length;
         },
 
         /**
