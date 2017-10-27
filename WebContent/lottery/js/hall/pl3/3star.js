@@ -1271,6 +1271,29 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             return 0;
         }
 
+        //先排序
+        for(var i=0;i<tempArr.length;i++){
+            var chars =[];
+            for(var j=0;j<tempArr[i].length;j++){
+                chars.push(tempArr[i][j]);
+            }
+            tempArr[i]=chars.sort().join("");
+        }
+        //再去重
+        var lastArr =[];
+        var repeatArr = [];
+        for(var i=0;i<tempArr.length;i++){
+            if(this.contain2(lastArr,tempArr[i])){
+                repeatArr.push(tempArr[i]);
+            }else{
+                lastArr.push(tempArr[i]);
+            }
+        }
+
+        if (repeatArr.length> 0) {
+            _this.alertmsg("已删除掉重排序重复号: " + repeatArr.join(" "));
+        }
+
         if (errorArr.length > 0) {
             for (var e = 0; e < errorArr.length; e++) {
                 errorStr += errorArr[e] + ",";
@@ -1284,8 +1307,8 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         var betContent = '';
 
         showPlayName = "三星组选-组六单式";
-        showContent = "号码: (" + tempArr.join(',') + ")";
-        betContent = tempArr.join(',');
+        showContent = "号码: (" + lastArr.join(',') + ")";
+        betContent = lastArr.join(',');
 
         return {
             showPlayName: showPlayName,
@@ -1371,7 +1394,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         }
 
         if (repeatArr.length> 0) {
-            _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
+            _this.alertmsg("已删除掉重排序重复号: " + repeatArr.join(" "));
         }
 
         if (errorArr.length > 0) {
@@ -1401,6 +1424,14 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
     contain:function(newArr,item){
         for(var i=0;i<newArr.length;i++){
             if(newArr[i].charAt(0) ==item.charAt(0) && newArr[i].charAt(1) ==item.charAt(1)){
+                return true;
+            }
+        }
+        return false;
+    },
+    contain2:function(newArr,item){
+        for(var i=0;i<newArr.length;i++){
+            if(newArr[i].charAt(0) ==item.charAt(0) && newArr[i].charAt(1) ==item.charAt(1) && newArr[i].charAt(2) ==item.charAt(2)){
                 return true;
             }
         }
