@@ -15,7 +15,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             this.isGfwf();
             this.getGfwfOdd();
             this.showTable();
-
+            //禁用滑块
+            $("#block-range").attr("disabled",true);
             //this.getHandicap();
            /* window.setInterval(function () {
                 _this.loadLeftTime();
