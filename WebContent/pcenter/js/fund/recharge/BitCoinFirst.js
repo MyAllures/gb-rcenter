@@ -55,6 +55,6 @@ define(['common/BasePage'], function (BasePage) {
          */
         customerService: function (e, option) {
             window.top.topPage.customerService(e, option);
-        },
+        }
     });
 });
