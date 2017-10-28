@@ -280,6 +280,11 @@ define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss
             });
 
             $(".my-slide-theme .back-bar .pointer").attr("tabIndex", -1);    // 滑块添加tabIndex来获得focus事件
+
+            if(maxFandian==0){
+                $('.slider-input').attr("disabled",true);
+            }
+
         },
         //初始化11选5胆码计数器全局变量
         initArrNum: function () {
