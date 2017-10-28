@@ -5067,3 +5067,7 @@ div.setting {
 .d-none {display: none;}
 .d-none.mui-active{display: block;}
 .pro-selec{background-color: #efefef;}
+
+/* 2017-10-28 */
+.mui-bar-nav .user .btn{padding: 4px 8px;}
+.mui-bar-nav .user .btn.btn-shiwan{background: #00a0e9;}
