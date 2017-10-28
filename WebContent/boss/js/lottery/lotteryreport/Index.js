@@ -153,8 +153,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 dataType: 'json',
                 data:formData,
                 success: function (data) {
-                    $("#betCount").text(data.betvolume);
-                    $("#betAmount").text((data.betamount).toFixed(2));
+                    $("#betCount").text(isNaN(data.betvolume)?0:data.betvolume);
+                    $("#betAmount").text(data.betamount);
                     $("#payoutAmount").text((data.payoutamount).toFixed(2));
                     $("#profitLoss").text((-data.profitloss).toFixed(2));
                     $("#rabateAmount").text((data.rabateamount).toFixed(2));
