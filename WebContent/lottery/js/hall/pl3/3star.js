@@ -1423,7 +1423,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         var lastArr =[];
         var repeatArr = [];
         for(var i=0;i<tempArr.length;i++){
-            if(this.contain2(lastArr,tempArr[i])){
+            if(this.contain_pl3z6ds(lastArr,tempArr[i])){
                 repeatArr.push(tempArr[i]);
             }else{
                 lastArr.push(tempArr[i]);
