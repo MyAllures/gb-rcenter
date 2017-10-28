@@ -678,7 +678,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var lastArr =[];
             var repeatArr = [];
             for(var i=0;i<tempArr.length;i++){
-                if(this.contain(lastArr,tempArr[i])){
+                if(this.contain_pl3z3ds(lastArr,tempArr[i])){
                     repeatArr.push(tempArr[i]);
                 }else{
                     lastArr.push(tempArr[i]);
