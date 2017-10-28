@@ -247,6 +247,7 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
          */
         back: function (e, option) {
             var hasRetrun = $("[name='hasRetrun']").val();
+            var transactionNo = $("input[name='search.transactionNo']").val();
             if (hasRetrun) {
                 var fromPlayerDetail = $("[name='fromPlayerDetail']").val();
                 var playerId = $("[name='playerId']").val();
@@ -254,8 +255,10 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
                     $("#mainFrame").load(root + "/player/playerDetail.html?search.id=" + playerId);
                 } else if (fromPlayerDetail == "playerList") {
                     $("#mainFrame").load(root + "/player/list.html");
+                } else if (transactionNo) {
+                    window.top.topPage.showPage(window.top.topPage.lastHash.substr(1))
                 } else {
-                    $(".return-btn").click();
+                    window.top.topPage.goToLastPage();
                 }
             } else {
                 $("#mainFrame").load(root + "/fund/manual/index.html");
