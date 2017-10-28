@@ -328,7 +328,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                     }
                 }
             }
-
+            newArr = newArr.uniqueArr();
             if (newArr.length <= 0) {
                 return 0;
             }
@@ -781,6 +781,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                     newArr.push(arr_new[i]);
                 }
             }
+            newArr = newArr.uniqueArr();
             return newArr.length;
         },
 
