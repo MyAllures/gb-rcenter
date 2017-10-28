@@ -43,8 +43,9 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             if(    dataCode !="3star"
                 && dataCode !="First2"
                 && dataCode !="After2"
-                && dataCode !="DingWeiDan"
-                && dataCode !="BuDingWei"
+                //只有一个子菜单直接关闭遮照
+              /*  && dataCode !="DingWeiDan"
+                && dataCode !="BuDingWei"*/
             ){
                 $('div.gfwf-bg').slideUp();
                 $('div.selected-wrap').slideUp();

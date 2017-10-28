@@ -625,9 +625,7 @@ define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss
             if (typeof contentFun == 'undefined' || typeof zhushuFun == 'undefined') {
                 return;
             }
-
-
-            _this.delRrepet();
+            //_this.delRrepet();
             var data = eval("_this."+contentFun + "()");
             var zhushu = eval("_this."+zhushuFun + "()");
             if (data == -1) {
@@ -913,7 +911,7 @@ define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss
             objArr.each(function () {
                 $(this).removeClass("acti");
                 var num = parseInt($(this).find("i").html());
-                if ($.inArray(num, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11]) >= 0) {
+                if ($.inArray(num, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28]) >= 0) {
                     $(this).addClass("acti");
                 }
             });
