@@ -79,9 +79,9 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
         showRandomAmountMsg:function () {
             var randomAmount = $(".radio").find("input:checked").siblings("a")[0];
             var flag = $(randomAmount).attr("value");
-            $('#randomAmountMsg').addClass('tiphide');
+            $('[name="randomAmountMsg"]').addClass('tiphide');
             if(flag=="true"){
-                $('#randomAmountMsg').removeClass('tiphide');
+                $('[name="randomAmountMsg"]').removeClass('tiphide');
                 return;
             }
             return;
