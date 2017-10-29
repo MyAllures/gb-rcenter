@@ -394,10 +394,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 }
             });
 
-            if(maxFandian==0){
-                $('#block-range').attr("disabled",true);
-            }
-
             // 单注金额变化
             $("#betContent_inputMoney").keyup(function() {
                 // 渲染下注总额，奖金等等
