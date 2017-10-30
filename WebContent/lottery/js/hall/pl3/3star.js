@@ -1340,6 +1340,10 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             }
         }
 
+        if (repeatArr.length> 0) {
+            _this.alertmsg("已删除掉重排序重复号: " + repeatArr.join(" "));
+        }
+
         if (errorArr.length > 0) {
             for (var e = 0; e < errorArr.length; e++) {
                 errorStr += errorArr[e] + ",";
