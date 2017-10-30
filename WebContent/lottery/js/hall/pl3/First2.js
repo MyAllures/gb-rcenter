@@ -107,6 +107,8 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                         tempArr.push(parseInt(strTemp1));
                         //tempArr.sort();
                         newArr.push(tempArr.join(""));
+
+
                     } else {
                         pairArr.push(arr_new[i]);
                     }
@@ -117,11 +119,18 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 }
             }
 
-            var tempArr = [];
-            newArr.sort();
-
+            //先排序
             for(var i=0;i<newArr.length;i++){
-                if(this.contain(tempArr,newArr[i])){
+                var chars =[];
+                for(var j=0;j<newArr[i].length;j++){
+                    chars.push(newArr[i][j]);
+                }
+                newArr[i]=chars.sort().join("");
+            }
+            //再去重
+            var tempArr = [];
+            for(var i=0;i<newArr.length;i++){
+                if(this.contain_q2zuxds(tempArr,newArr[i])){
                     repeatArr.push(newArr[i]);
                 }else{
                     tempArr.push(newArr[i]);
@@ -695,21 +704,24 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             if (newArr.length <= 0) {
                 return 0;
             }
-            var tempArr = [];
-            newArr.sort();
 
+            //先排序
             for(var i=0;i<newArr.length;i++){
-                if(this.contain(tempArr,newArr[i])){
+                var chars =[];
+                for(var j=0;j<newArr[i].length;j++){
+                    chars.push(newArr[i][j]);
+                }
+                newArr[i]=chars.sort().join("");
+            }
+            //再去重
+            var tempArr = [];
+            for(var i=0;i<newArr.length;i++){
+                if(this.contain_q2zuxds(tempArr,newArr[i])){
                     repeatArr.push(newArr[i]);
                 }else{
-                    var a= newArr[i];
-                    var b = [];
-                    b.push(a.charAt(0));
-                    b.push(a.charAt(1));
-                    tempArr.push(b.sort().join(""));
+                    tempArr.push(newArr[i]);
                 }
             }
-            newArr=tempArr;
 
             if (repeatArr.length> 0) {
 
@@ -744,9 +756,9 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var betContent = '';
 
             showPlayName = "前二组选-单式";
-            showContent = "号码: (" + newArr + ")";
+            showContent = "号码: (" + tempArr + ")";
             // 转换投注格式
-            betContent = newArr.join(",");
+            betContent = tempArr.join(",");
             return {
                 showPlayName: showPlayName,
                 showContent: showContent,
@@ -754,9 +766,9 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
 
-         contain:function(newArr,item){
+         contain_q2zuxds:function(newArr,item){
             for(var i=0;i<newArr.length;i++){
-                    if(newArr[i].charAt(0) ==item.charAt(1) && newArr[i].charAt(1) ==item.charAt(0)){
+                    if(newArr[i].charAt(0) ==item.charAt(0) && newArr[i].charAt(1) ==item.charAt(1)){
                         return true;
                     }
                 }
