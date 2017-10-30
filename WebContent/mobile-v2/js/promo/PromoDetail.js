@@ -274,6 +274,10 @@ define(['common/MobileBasePage'], function (Mobile) {
 
         /** 抢红包 */
         canShowLottery: function(id){
+            if (!isLogin || isLogin === "false") {
+                window.location.href="/login/commonLogin.html";
+                return;
+            }
             mui.ajax({
                 url:"/ntl/activity/countDrawTimes.html",
                 type: "POST",
