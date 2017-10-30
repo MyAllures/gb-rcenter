@@ -1,4 +1,4 @@
-define(['site/hall/k3-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+define(['site/hall/GfwfPlayWay', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
 
     return PlayWay.extend({
         _this: null,

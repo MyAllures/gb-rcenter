@@ -1,11 +1,10 @@
-define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+define(['site/hall/ssc-gfwf/PlayWay', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
     return PlayWay.extend({
         _this: null,
         //筛选数字组合
         screeningDigtal: new Array(),
         init: function () {
             this._super();
-            // this.showTable();
         },
 
         /**
@@ -30,6 +29,7 @@ define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], func
          * 注数-5星直选复式
          */
         zhushu_5xzxfs : function() {
+            var _this=this;
             var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [];
             $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
                 wanArr.push($.trim($(this).html()));

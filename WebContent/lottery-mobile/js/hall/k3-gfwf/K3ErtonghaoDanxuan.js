@@ -1,4 +1,4 @@
-define(['site/hall/k3-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+define(['site/hall/GfwfPlayWay', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
 
     return PlayWay.extend({
         _this: null,
@@ -65,7 +65,7 @@ define(['site/hall/k3-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], funct
             $("a.n-btn.butong").removeClass("mui-active").eq(butong-1).addClass("mui-active");
         },
 
-        checkWanfa : function (obj) {
+        checkBaodan : function (obj) {
             var len=obj.text().length;
             if(len>1){
                 $("a.n-btn.butong."+parseInt(obj.text())/11).removeClass("mui-active");
