@@ -27,7 +27,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             var _this = this;
             var betCode=$("#gfwfBetCode").val();
             var betCode1=_this.getInitbetCode(betCode);
-            debugger;
             mui.ajax(root + '/'+type+'/'+code+'/'+betCode+'/getOdds.html', {
                 data: {"betCode": betCode1,"code":code},
                 dataType: 'json',
