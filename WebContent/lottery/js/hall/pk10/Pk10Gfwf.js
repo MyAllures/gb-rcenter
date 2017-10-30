@@ -896,7 +896,7 @@ define(['site/hall/pk10/PlayWay','site/plugin/template','range','css!themesCss/j
                 // _this.alertmsg("无重复号码！");
             } else {
                 _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
-                $(".content_jiang .content_tex").val(tempArr.join(" "));
+                $(".content_jiang .content_tex").val(tempArr.join(","));
             }
         }
             //重新计算注数
