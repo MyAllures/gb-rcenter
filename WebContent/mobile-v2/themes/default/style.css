@@ -480,3 +480,39 @@ color: #6b88fe;
 .mui-title {color: #fff;}
 .mui-bar-nav a {color: #fff;}
 
+/*  ads-slider */
+.ads-slider {
+    position: absolute;
+    right: 10px;
+    bottom: 63px;
+    width: 98px;
+    z-index: 11;
+    padding-top: 24px;
+    padding-left: 24px;
+    height: 98px;
+}
+.ads-slider .close-ads {
+    width: 24px;
+    height: 24px;
+    background: url(images/icon-close-ads.png) center/14px no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.ads-slider .mui-slider {
+    height: 84px;
+}
+.ads-slider .mui-slider-indicator {
+    bottom: -2px;
+}
+.ads-slider .mui-slider-indicator .mui-indicator {
+    margin: 1px 2px;
+}
+
+/*  ads-slider */
+.ads-slider{    position: absolute;    right: 10px;    bottom: 63px;    width: 98px;    z-index: 11;    padding-top: 24px;    padding-left: 24px;    height: 98px;
+.close-ads{width: 24px; height: 24px; background: url(images/icon-close-ads.png) center/14px no-repeat;  position: absolute;   top: 0;    left: 0;}
+.mui-slider{height: 84px;}
+.mui-slider-indicator{bottom: -2px;}
+.mui-slider-indicator .mui-indicator{margin: 1px 2px;}
+}

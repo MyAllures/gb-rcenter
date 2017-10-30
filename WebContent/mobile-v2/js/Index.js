@@ -1,12 +1,14 @@
 /**
  * Created by fei on 16-12-11.
  */
-define(['site/include/BaseIndex'], function (BaseIndex) {
+define(['site/include/BaseIndex',"site/promo/PromoDetail"], function (BaseIndex,PromoDetail) {
     var isload = false;
     return BaseIndex.extend({
+        promoJs:null,
         init: function () {
             this._super();
             var _this = this;
+            _this.promoJs= new PromoDetail();
             /*内容区域滚动*/
             mui("#mui-refresh").pullRefresh().refresh();
             /*滚动菜单*/
@@ -51,6 +53,16 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
 
             // 刷新页面后获取容器高度，解决IOS设备刷新时出现空白页问题
             $('.mui-inner-wrap').height();
+            /* 关闭浮窗广告 */
+            mui(".ads-slider").on("tap",".close-ads",function(){
+                $(".ads-slider").hide();
+            });
+            mui(".ads-slider").on("tap","#float_idx",function () {
+                var activityId = $("#activityId").val();
+                if(activityId){
+                    _this.promoJs.canShowLottery(activityId);
+                }
+            })
         },
 
         initPage: function () {
