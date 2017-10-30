@@ -585,7 +585,27 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                     tempArr.push(newArr[n]);
                 }
             }
-            return tempArr.length;
+
+            //先排序
+            for(var i=0;i<tempArr.length;i++){
+                var chars =[];
+                for(var j=0;j<tempArr[i].length;j++){
+                    chars.push(tempArr[i][j]);
+                }
+                tempArr[i]=chars.sort().join("");
+            }
+            //再去重
+            var lastArr =[];
+            var repeatArr = [];
+            for(var i=0;i<tempArr.length;i++){
+                if(this.contain_pl3hhzx(lastArr,tempArr[i])){
+                    repeatArr.push(tempArr[i]);
+                }else{
+                    lastArr.push(tempArr[i]);
+                }
+            }
+
+            return lastArr.length;
         },
         /**
          * 前三组选-混合组选
@@ -1356,6 +1376,25 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             return 0;
         }
 
+        //先排序
+        for(var i=0;i<tempArr.length;i++){
+            var chars =[];
+            for(var j=0;j<tempArr[i].length;j++){
+                chars.push(tempArr[i][j]);
+            }
+            tempArr[i]=chars.sort().join("");
+        }
+        //再去重
+        var lastArr =[];
+        var repeatArr = [];
+        for(var i=0;i<tempArr.length;i++){
+            if(this.contain_pl3hhzx(lastArr,tempArr[i])){
+                repeatArr.push(tempArr[i]);
+            }else{
+                lastArr.push(tempArr[i]);
+            }
+        }
+
         if (errorArr.length > 0) {
             for (var e = 0; e < errorArr.length; e++) {
                 errorStr += errorArr[e] + ",";
@@ -1369,8 +1408,8 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         var betContent = '';
 
         showPlayName = "三星组选-混合组选";
-        showContent = "号码: (" + tempArr.join(',') + ")";
-        betContent = tempArr.join(',');
+        showContent = "号码: (" + lastArr.sort().join(',') + ")";
+        betContent = lastArr.sort().join(',');
 
         return {
             showPlayName: showPlayName,
@@ -1571,6 +1610,15 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         return false;
     },
     contain_pl3z6ds:function(newArr,item){
+        for(var i=0;i<newArr.length;i++){
+            if(newArr[i].charAt(0) ==item.charAt(0) && newArr[i].charAt(1) ==item.charAt(1) && newArr[i].charAt(2) ==item.charAt(2)){
+                return true;
+            }
+        }
+        return false;
+    },
+
+    contain_pl3hhzx:function(newArr,item){
         for(var i=0;i<newArr.length;i++){
             if(newArr[i].charAt(0) ==item.charAt(0) && newArr[i].charAt(1) ==item.charAt(1) && newArr[i].charAt(2) ==item.charAt(2)){
                 return true;
