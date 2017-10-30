@@ -252,9 +252,11 @@ var searchday = function (id) {
             De.setDate(De.getDate() + 1);
             endymd = De.getFullYear() + "-" + GetFullDate(De.getMonth() + 1) + "-" + GetFullDate(De.getDate()) + " 00:00:00";
         } else if (id == 3) {
-            De.setDate(De.getDate() - 2);
-            endymd = ymd;
+            De.setDate(De.getDate() + 1);
+            endymd = De.getFullYear() + "-" + GetFullDate(De.getMonth() + 1) + "-" + GetFullDate(De.getDate()) + " 00:00:00";
+            De.setDate(De.getDate() - 3);
             ymd = De.getFullYear() + "-" + GetFullDate(De.getMonth() + 1) + "-" + GetFullDate(De.getDate()) + " 00:00:00";
+
         } else if (id == 7) {
             var endDate = new Date();
             endDate.setDate(endDate.getDate() + 1);
