@@ -877,8 +877,10 @@ define(['site/hall/pk10/PlayWay','site/plugin/template','range','css!themesCss/j
             var textStr = $("div.content_jiang").find(".content_tex").val();
             if (typeof (textStr)!= "undefined") {
             var newArr = [], repeatArr = [], tempArr = [];
-            textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
-            var arr_new = textStr.split(",");
+            textStr = textStr.replace(/(^\s+)|(\s+$)/g, "");//去掉前后空格
+            textStr = $.trim(textStr.replace(/[^01,02,03,04,05,06,07,08,09,10,11,' ']/g, ','));
+            textStr = $.trim(textStr.replace(/\s/g,""));
+            var arr_new = textStr.split(',');
             for (var i = 0; i < arr_new.length; i++) {
                 if (arr_new[i].toString().length > 0) {
                     newArr.push(arr_new[i]);
