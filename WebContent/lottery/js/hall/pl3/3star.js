@@ -1564,7 +1564,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
 
     contain_pl3z3ds:function(newArr,item){
         for(var i=0;i<newArr.length;i++){
-            if(newArr[i].charAt(0) ==item.charAt(0) && newArr[i].charAt(1) ==item.charAt(1)){
+            if(newArr[i].charAt(0) ==item.charAt(0) && newArr[i].charAt(1) ==item.charAt(1) && newArr[i].charAt(2) ==item.charAt(2)){
                 return true;
             }
         }
