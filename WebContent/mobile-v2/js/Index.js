@@ -58,7 +58,7 @@ define(['site/include/BaseIndex',"site/promo/PromoDetail"], function (BaseIndex,
                 $(".ads-slider").hide();
             });
             mui(".ads-slider").on("tap","#float_idx",function () {
-                var activityId = $("#activityId").val();
+                var activityId = $(this).attr("objectId");
                 if(activityId){
                     _this.promoJs.canShowLottery(activityId);
                 }
