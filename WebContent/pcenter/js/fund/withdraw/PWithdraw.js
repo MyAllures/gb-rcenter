@@ -87,6 +87,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 if (this.value == "") {
                     $(".withdraw-btn-css").addClass("disable-gray ui-button-disable disabled");
                     $(".my-tips").html("");
+                    $("#actualWithdraw-span").text("--");
                 } else {
                     if (_this.checkAmout(this.value)) {
                         window.top.topPage.ajax({

@@ -14,6 +14,25 @@ define(['common/BaseEditPage', 'UE.I18N.'+window.top.language], function (BaseEd
             });
         },
 
+        bindEvent: function () {
+            this._super();
+            var that = this;
+            /**
+             * 解决提示不准确的问题
+             */
+            $(that.formSelector).on("validate", ".field", function (e, message) {
+                if (message) {
+                    if (!$(this).parents('.div_length').hasClass('active')) {
+                        $("#index_" + $(this).attr("bbb")).formtip(message);
+                        e.result = true;
+                    }
+                }
+                else {
+                    e.result = false;
+                }
+            });
+        },
+
         onPageLoad: function () {
             this._super();
             this.copyLanguage();
@@ -77,13 +96,19 @@ define(['common/BaseEditPage', 'UE.I18N.'+window.top.language], function (BaseEd
                 }
             });
 
-            //点击游戏公告
             $(".announcement").on("click",function (e) {
                 var val = $(this).val();
+                //点击游戏公告
                 if(val=='game_announcement'){
                     $(".game_announcement").removeClass("hide");
                 }else{
                     $(".game_announcement").addClass("hide");
+                }
+                //点击运营公告
+                if (val=='operator_announcement'){
+                    $(".operator_announcement").removeClass("hide");
+                }else{
+                    $(".operator_announcement").addClass("hide");
                 }
             });
 

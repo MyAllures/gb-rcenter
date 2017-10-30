@@ -243,6 +243,8 @@
         });
     }
     function canShowLottery(id){
+        var tiz = sessionStorage.getItem("timezone");
+        $("#money_lottery_timezone").html(tiz);
         $.ajax({
             url:"/ntl/activity/countDrawTimes.html",
             type: "POST",
@@ -261,6 +263,7 @@
                 }else if(data.drawTimes==0){
                     if(data.isEnd=="false"){
                         $("#tip-msg").removeClass("hide");
+                        $("#tip-msg").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">0</span>次抽奖机会');
                         $("#ramain-count").text(data.drawTimes);
                         $("#containerOut").css("display","block");
                         $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
@@ -285,6 +288,20 @@
                     $("#tip-msg").removeClass("hide");
                     $("#lotteryPageBtn_1").hide();
                     $("#lottery_time_tip-msg").addClass("hide");
+                    $("#containerOut").css("display","block");
+                    return;
+                }else if(data.drawTimes==-5){
+                    $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
+                    $("#tip-msg").html('本次红包已经抢光了');
+                    $("#tip-msg").removeClass("hide");
+                    if(data.nextLotteryTime!=""){
+                        $("#next_lottery_time").text(data.nextLotteryTime);
+                        $("#lottery_time_tip-msg").removeClass("hide");
+                    }else{
+                        $("#lottery_time_tip-msg").addClass("hide");
+                    }
+                    $("#lotteryPageBtn_1").hide();
+                    $("#lottery_time_tip-msg").removeClass("hide");
                     $("#containerOut").css("display","block");
                     return;
                 }

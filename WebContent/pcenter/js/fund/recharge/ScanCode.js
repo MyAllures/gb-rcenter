@@ -24,7 +24,9 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
         onPageLoad: function () {
             this._super();
             this.initCaptcha();
+            this.showRandomAmountMsg();
             window.top.onlineTransactionNo = null;
+
         },
         /**
          * 当前对象事件初始化函数
@@ -44,6 +46,8 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                 if (!amount) {
                     _this.changeSale();
                 }
+                _this.showRandomAmountMsg();
+                return;
             });
 
             $(this.formSelector).on("input", "[name='result.rechargeAmount']", function () {
@@ -64,9 +68,23 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             });
 
             //判断是否添加随机金额
-            $(this.formSelector).on("blur", "input[name='result.rechargeAmount']", function () {
-                _this.checkRechargeAmount();
-            });
+            // $(this.formSelector).on("blur", "input[name='result.rechargeAmount']", function () {
+            //     _this.checkRechargeAmount();
+            // });
+        },
+
+        /**
+         * 显示/隐藏随机额度提示信息
+         */
+        showRandomAmountMsg:function () {
+            var randomAmount = $(".radio").find("input:checked").siblings("a")[0];
+            var flag = $(randomAmount).attr("value");
+            $('[name="randomAmountMsg"]').addClass('tiphide');
+            if(flag=="true"){
+                $('[name="randomAmountMsg"]').removeClass('tiphide');
+                return;
+            }
+            return;
         },
 
         /**
