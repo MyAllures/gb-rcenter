@@ -1810,7 +1810,7 @@ define(['site/hall/pk10/PlayWay','site/plugin/template','range','css!themesCss/j
                 reader.readAsText(file);
                 reader.onload = function (data) {
                     $(".content_tex").val(this.result);
-                    /* tt.innerHTML = this.result;*/
+                    _this.renderZhushu();
                 }
             } else {
                 $(".tzInsertTemplate .errorTxt").html("文件名不合法,只能上传txt格式");

@@ -328,7 +328,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                     }
                 }
             }
-
+            newArr = newArr.uniqueArr();
             if (newArr.length <= 0) {
                 return 0;
             }
@@ -457,9 +457,61 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         },
 
         /**
+         * 注数-组六单式
+         */
+        zhushu_pl3z6ds: function() {
+
+            var _this = this;
+            var textStr = $(".cl-1010-zlds .content_jiang .content_tex").val();
+            var newArr = [], tempArr = [], errorStr = '', errorArr = [];
+            textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
+            var arr_new = textStr.split(",");
+            for (var i = 0; i < arr_new.length; i++) {
+                if (arr_new[i].toString().length > 0 && arr_new[i].toString().length == 3) {
+                    newArr.push(arr_new[i]);
+                }
+            }
+            for (var n = 0; n < newArr.length; n++) {
+                var temp = newArr[n].toString();
+                var oneStr = temp.substr(0, 1);
+                var twoStr = temp.substr(1, 1);
+                var threeStr = temp.substr(2, 1);
+                if (twoStr != threeStr && oneStr != threeStr && twoStr != oneStr) {
+                    tempArr.push(newArr[n]);
+                } else {
+                    if (newArr[n] != '') {
+                        errorArr.push(newArr[n]);
+                    }
+                }
+            }
+
+            //先排序
+            for(var i=0;i<tempArr.length;i++){
+                var chars =[];
+                for(var j=0;j<tempArr[i].length;j++){
+                    chars.push(tempArr[i][j]);
+                }
+                tempArr[i]=chars.sort().join("");
+            }
+            //再去重
+            var lastArr =[];
+            var repeatArr = [];
+            for(var i=0;i<tempArr.length;i++){
+                if(this.contain_pl3z6ds(lastArr,tempArr[i])){
+                    repeatArr.push(tempArr[i]);
+                }else{
+                    lastArr.push(tempArr[i]);
+                }
+            }
+
+            return lastArr.length;
+        },
+
+        /**
          * 注数-混合组选
          */
-        zhushu_pl3hhzx: function() {
+        zhushu_pl3hhzx: function () {
+
             var textStr = $(".cl-1011-hhzx .content_jiang .content_tex").val();
             var newArr = [], tempArr = [], errorStr = '';
             textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
@@ -478,34 +530,62 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                     tempArr.push(newArr[n]);
                 }
             }
-            return tempArr.length;
-        },
 
+            //先排序
+            for(var i=0;i<tempArr.length;i++){
+                var chars =[];
+                for(var j=0;j<tempArr[i].length;j++){
+                    chars.push(tempArr[i][j]);
+                }
+                tempArr[i]=chars.sort().join("");
+            }
+            //再去重
+            var lastArr =[];
+            var repeatArr = [];
+            for(var i=0;i<tempArr.length;i++){
+                if(this.contain_pl3hhzx(lastArr,tempArr[i])){
+                    repeatArr.push(tempArr[i]);
+                }else{
+                    lastArr.push(tempArr[i]);
+                }
+            }
+
+            return lastArr.length;
+        },
         /**
-         * 注数-组六单式
+         * 前三组选-混合组选
          */
-        zhushu_pl3z6ds: function() {
-            var textStr = $(".cl-1010-zlds .content_jiang .content_tex").val();
-            var newArr = [], tempArr = [];
-            textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
-            var arr_new = textStr.split(",");
-            for (var i = 0; i < arr_new.length; i++) {
-                if (arr_new[i].toString().length > 0 && arr_new[i].toString().length == 3) {
-                    newArr.push(arr_new[i]);
-                }
-            }
-            for (var n = 0; n < newArr.length; n++) {
-                var temp = newArr[n].toString();
-                var oneStr = temp.substr(0, 1);
-                var twoStr = temp.substr(1, 1);
-                var threeStr = temp.substr(2, 1);
-                if (twoStr != threeStr && oneStr != threeStr && twoStr != oneStr) {
-                    tempArr.push(newArr[n]);
-                }
-            }
-            return tempArr.length;
-        },
+        suiji_pl3hhzx: function () {
 
+            // 初始化变量
+            var showPlayName = '';
+            var showContent = '';
+            var betContent = '';
+
+            var tempArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            var arr = [];
+            while (arr.length < 3) {
+                var xHhzx = parseInt(Math.random() * 10);
+                var yHhzx = parseInt(Math.random() * 10);
+                var zHhzx = parseInt(Math.random() * 10);
+                if (xHhzx == yHhzx && yHhzx != zHhzx || xHhzx == zHhzx && zHhzx != yHhzx || yHhzx == zHhzx && zHhzx != xHhzx || xHhzx != yHhzx && yHhzx != zHhzx && zHhzx != xHhzx) {
+                    arr.push(xHhzx);
+                    arr.push(yHhzx);
+                    arr.push(zHhzx);
+                }
+            }
+
+            showPlayName = "前三组选-混合组选";
+            showContent = "号码: (" + arr[0] + "" + arr[1] + "" + arr[2] + ")";
+            betContent = "{0}{1}{2}".format(arr[0], arr[1], arr[2]);
+
+            return {
+                showPlayName: showPlayName,
+                showContent: showContent,
+                betContent: betContent,
+                playGroupId: this.playGroupId
+            };
+        },
         /**
          * 注数-组六复式
          */
@@ -526,7 +606,8 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
          * 注数-组三单式
          */
         zhushu_pl3z3ds:function() {
-            var zhushu = 0;
+
+            var _this = this;
             var textStr = $(".cl-1008-zsds .content_jiang .content_tex").val();
             var newArr = [], tempArr = [], errorStr = '', errorArr = [];
             textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
@@ -543,10 +624,33 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 var threeStr = temp.substr(2, 1);
                 if (oneStr == twoStr && twoStr != threeStr || twoStr == threeStr && oneStr != threeStr || threeStr == oneStr && twoStr != oneStr) {
                     tempArr.push(newArr[n]);
+                } else {
+                    if (newArr[n] != '') {
+                        errorArr.push(newArr[n]);
+                    }
                 }
             }
 
-            return tempArr.length;
+            //先排序
+            for(var i=0;i<tempArr.length;i++){
+                var chars =[];
+                for(var j=0;j<tempArr[i].length;j++){
+                    chars.push(tempArr[i][j]);
+                }
+                tempArr[i]=chars.sort().join("");
+            }
+            //再去重
+            var lastArr =[];
+            var repeatArr = [];
+            for(var i=0;i<tempArr.length;i++){
+                if(this.contain_pl3z3ds(lastArr,tempArr[i])){
+                    repeatArr.push(tempArr[i]);
+                }else{
+                    lastArr.push(tempArr[i]);
+                }
+            }
+
+            return lastArr.length;
         },
         /**
          * 注数-组三复式
@@ -642,6 +746,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                     newArr.push(arr_new[i]);
                 }
             }
+            newArr = newArr.uniqueArr();
             return newArr.length;
         },
 
@@ -1216,6 +1321,29 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             return 0;
         }
 
+        //先排序
+        for(var i=0;i<tempArr.length;i++){
+            var chars =[];
+            for(var j=0;j<tempArr[i].length;j++){
+                chars.push(tempArr[i][j]);
+            }
+            tempArr[i]=chars.sort().join("");
+        }
+        //再去重
+        var lastArr =[];
+        var repeatArr = [];
+        for(var i=0;i<tempArr.length;i++){
+            if(this.contain_pl3hhzx(lastArr,tempArr[i])){
+                repeatArr.push(tempArr[i]);
+            }else{
+                lastArr.push(tempArr[i]);
+            }
+        }
+
+        if (repeatArr.length> 0) {
+            _this.alertmsg("已删除掉重排序重复号: " + repeatArr.join(" "));
+        }
+
         if (errorArr.length > 0) {
             for (var e = 0; e < errorArr.length; e++) {
                 errorStr += errorArr[e] + ",";
@@ -1229,8 +1357,8 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         var betContent = '';
 
         showPlayName = "三星组选-混合组选";
-        showContent = "号码: (" + tempArr.join(',') + ")";
-        betContent = tempArr.join(',');
+        showContent = "号码: (" + lastArr.sort().join(',') + ")";
+        betContent = lastArr.sort().join(',');
 
         return {
             showPlayName: showPlayName,
@@ -1271,6 +1399,29 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             return 0;
         }
 
+        //先排序
+        for(var i=0;i<tempArr.length;i++){
+            var chars =[];
+            for(var j=0;j<tempArr[i].length;j++){
+                chars.push(tempArr[i][j]);
+            }
+            tempArr[i]=chars.sort().join("");
+        }
+        //再去重
+        var lastArr =[];
+        var repeatArr = [];
+        for(var i=0;i<tempArr.length;i++){
+            if(this.contain_pl3z6ds(lastArr,tempArr[i])){
+                repeatArr.push(tempArr[i]);
+            }else{
+                lastArr.push(tempArr[i]);
+            }
+        }
+
+        if (repeatArr.length> 0) {
+            _this.alertmsg("已删除掉重排序重复号: " + repeatArr.join(" "));
+        }
+
         if (errorArr.length > 0) {
             for (var e = 0; e < errorArr.length; e++) {
                 errorStr += errorArr[e] + ",";
@@ -1284,8 +1435,8 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         var betContent = '';
 
         showPlayName = "三星组选-组六单式";
-        showContent = "号码: (" + tempArr.join(',') + ")";
-        betContent = tempArr.join(',');
+        showContent = "号码: (" + lastArr.join(',') + ")";
+        betContent = lastArr.join(',');
 
         return {
             showPlayName: showPlayName,
@@ -1324,7 +1475,8 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
      * 三星组选-组三单式
      */
      content_pl3z3ds:function() {
-         var _this = this;
+
+        var _this = this;
         var textStr = $(".cl-1008-zsds .content_jiang .content_tex").val();
         var newArr = [], tempArr = [], errorStr = '', errorArr = [];
         textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
@@ -1351,6 +1503,29 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             return 0;
         }
 
+        //先排序
+        for(var i=0;i<tempArr.length;i++){
+            var chars =[];
+            for(var j=0;j<tempArr[i].length;j++){
+                chars.push(tempArr[i][j]);
+            }
+            tempArr[i]=chars.sort().join("");
+        }
+        //再去重
+        var lastArr =[];
+        var repeatArr = [];
+        for(var i=0;i<tempArr.length;i++){
+            if(this.contain_pl3z3ds(lastArr,tempArr[i])){
+                repeatArr.push(tempArr[i]);
+            }else{
+                lastArr.push(tempArr[i]);
+            }
+        }
+
+        if (repeatArr.length> 0) {
+            _this.alertmsg("已删除掉重排序重复号: " + repeatArr.join(" "));
+        }
+
         if (errorArr.length > 0) {
             for (var e = 0; e < errorArr.length; e++) {
                 errorStr += errorArr[e] + ",";
@@ -1365,14 +1540,40 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         var betContent = '';
 
         showPlayName = "三星组选-组三单式";
-        showContent = "号码: (" + tempArr.join(',') + ")";
-        betContent = tempArr.join(",");
+        showContent = "号码: (" + lastArr.join(',') + ")";
+        betContent = lastArr.join(",");
 
         return {
             showPlayName: showPlayName,
             showContent: showContent,
             betContent: betContent
         };
+    },
+
+    contain_pl3z3ds:function(newArr,item){
+        for(var i=0;i<newArr.length;i++){
+            if(newArr[i].charAt(0) ==item.charAt(0) && newArr[i].charAt(1) ==item.charAt(1) && newArr[i].charAt(2) ==item.charAt(2)){
+                return true;
+            }
+        }
+        return false;
+    },
+    contain_pl3z6ds:function(newArr,item){
+        for(var i=0;i<newArr.length;i++){
+            if(newArr[i].charAt(0) ==item.charAt(0) && newArr[i].charAt(1) ==item.charAt(1) && newArr[i].charAt(2) ==item.charAt(2)){
+                return true;
+            }
+        }
+        return false;
+    },
+
+    contain_pl3hhzx:function(newArr,item){
+        for(var i=0;i<newArr.length;i++){
+            if(newArr[i].charAt(0) ==item.charAt(0) && newArr[i].charAt(1) ==item.charAt(1) && newArr[i].charAt(2) ==item.charAt(2)){
+                return true;
+            }
+        }
+        return false;
     },
 
     /**

@@ -907,6 +907,7 @@ a.popup-screen-btn:visited{
 		width: 1rem;
 		border-radius: 1rem;
 		font-size: .5rem;
+		margin-left: 0;
 	}
 	.lottery-block {
 		height: 1rem;

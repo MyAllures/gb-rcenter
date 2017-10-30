@@ -22,8 +22,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 $('div.gfwf-bg').toggle();
             });
             mui("body").on('tap','.gfwf-bg',function(){
-                $('div.gfwf-bg').hide();
-                $('div.selected-wrap').hide();
+                $('div.gfwf-bg').slideUp();
+                $('div.selected-wrap').slideUp();
             });
         },
         menuClick:function(thisClassList){
@@ -33,8 +33,8 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             var dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
             var dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
             var jspName=$("a.selected-btn.main.mui-active").attr("data-jsp-name");
-            $('div.gfwf-bg').hide();
-            $('div.selected-wrap').hide();
+            $('div.gfwf-bg').slideUp();
+            $('div.selected-wrap').slideUp();
             _this.getBetTable(dataCode,jspName);
             _this.resetBet();
         },
