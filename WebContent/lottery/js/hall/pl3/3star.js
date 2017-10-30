@@ -506,61 +506,6 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
 
             return lastArr.length;
         },
-        /**
-         * 前三组选-组六混合
-         */
-        content_pl3hhzx: function () {
-
-            var _this = this;
-            var textStr = $(".cl-1011-hhzx .content_jiang .content_tex").val();
-            var newArr = [], tempArr = [], errorStr = '', errorArr = [];
-            textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
-            var arr_new = textStr.split(",");
-            for (var i = 0; i < arr_new.length; i++) {
-                if (arr_new[i].toString().length > 0 && arr_new[i].toString().length == 3) {
-                    newArr.push(arr_new[i]);
-                } else {
-                    errorArr.push(arr_new[i]);
-                }
-            }
-            for (var n = 0; n < newArr.length; n++) {
-                var temp = newArr[n].toString();
-                var oneStr = temp.substr(0, 1);
-                var twoStr = temp.substr(1, 1);
-                var threeStr = temp.substr(2, 1);
-                if (twoStr != threeStr && oneStr != threeStr && twoStr != oneStr || oneStr == twoStr && twoStr != threeStr || twoStr == threeStr && oneStr != threeStr || threeStr == oneStr && twoStr != oneStr) {
-                    tempArr.push(newArr[n]);
-                } else {
-                    errorArr.push(newArr[n]);
-                }
-            }
-
-            if (tempArr.length <= 0) {
-                return 0;
-            }
-
-            if (errorArr.length > 0) {
-                for (var e = 0; e < errorArr.length; e++) {
-                    errorStr += errorArr[e] + ",";
-                }
-                _this.alertmsg("被过滤掉的错误号码" + errorStr);
-            }
-
-            // 初始化变量
-            var showPlayName = '';
-            var showContent = '';
-            var betContent = '';
-
-            showPlayName = "前三组选-混合组选";
-            showContent = "号码: (" + tempArr.join(',') + ")";
-            betContent = tempArr.join(',');
-
-            return {
-                showPlayName: showPlayName,
-                showContent: showContent,
-                betContent: betContent
-            };
-        },
 
         /**
          * 注数-混合组选
