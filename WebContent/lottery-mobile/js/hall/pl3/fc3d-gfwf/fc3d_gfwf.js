@@ -28,7 +28,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             var betCode=$("#gfwfBetCode").val();
             var betCode1=_this.getInitbetCode(betCode);
             mui.ajax(root + '/'+type+'/'+code+'/'+betCode+'/getOdds.html', {
-                data: {"betCode": betCode1},
+                data: {"betCode": betCode1,"code":code},
                 dataType: 'json',
                 type: 'POST',
                 success: function (data) {
@@ -393,10 +393,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     _this.renderZhushu();
                 }
             });
-
-            if(maxFandian==0){
-                $('#block-range').attr("disabled",true);
-            }
 
             // 单注金额变化
             $("#betContent_inputMoney").keyup(function() {
