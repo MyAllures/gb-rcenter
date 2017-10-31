@@ -111,6 +111,9 @@ define(['site/game/ApiLogin'], function (ApiLogin) {
                         }
 
                         return false;
+                    } else {
+                        //点击取消删除弹窗内容，以防止出现异常时，无法点击取消弹窗
+                        $('.mui-popup').remove();
                     }
                 }, 'div');
                 $('.mui-popup').addClass('money-window');
