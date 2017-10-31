@@ -146,6 +146,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
             this.queryStatMoney();
         },
         queryStatMoney:function () {
+            var _this = this;
             //getCurrentFormData
             var formData = this.getCurrentFormData({"currentTarget":$(".search_btn")});
             window.top.topPage.ajax({
@@ -153,16 +154,25 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 dataType: 'json',
                 data:formData,
                 success: function (data) {
-                    $("#betCount").text(data.betvolume);
-                    $("#betAmount").text(data.betamount);
-                    $("#payoutAmount").text(data.payoutamount);
-                    $("#profitLoss").text(data.profitloss);
-                    $("#rabateAmount").text(data.rabateamount);
+                    $("#betCount").text(isNaN(data.betvolume)?0:data.betvolume);
+                    $("#betAmount").text(_this.getMoneyFormat(data.betamount));
+                    $("#payoutAmount").text(_this.getMoneyFormat(data.payoutamount));
+                    $("#profitLoss").text(_this.getMoneyFormat(-data.profitloss));
+                    $("#rabateAmount").text(_this.getMoneyFormat(data.rabateamount));
                 },
                 error: function (data) {
 
                 }
             })
+        },
+        getMoneyFormat : function (amount) {
+            if (amount == 0){
+                amount = "0.00" ;
+            }else {
+                amount= (amount).toFixed(3);
+                amount = amount.substring(0,amount.lastIndexOf('.')+3);
+            }
+            return amount;
         }
     });
 });
