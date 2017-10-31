@@ -1,15 +1,12 @@
 /**
  * Created by diego on 17-10-11.
  */
-define(['site/hall/ssc-gfwf/PlayWay', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+define(['site/hall/ssc-gfwf/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         _this: null,
-        //筛选数字组合
-        screeningDigtal: new Array(),
         init: function () {
             _this = this;
             this._super();
-            /*this.showTable();*/
         },
         showTable : function(){
             var betCode=$("#gfwfBetCode").val();

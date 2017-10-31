@@ -1,8 +1,6 @@
-define(['site/hall/ssc-gfwf/PlayWay', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+define(['site/hall/ssc-gfwf/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         _this: null,
-        //筛选数字组合
-        screeningDigtal: new Array(),
         init: function () {
             this._super();
         },

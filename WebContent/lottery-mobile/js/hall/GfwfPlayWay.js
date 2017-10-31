@@ -1,5 +1,5 @@
 /**基本投注玩法**/
-define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Template) {
+define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function (BasePage, Template) {
     return BasePage.extend({
         /**
          * 大彩种
