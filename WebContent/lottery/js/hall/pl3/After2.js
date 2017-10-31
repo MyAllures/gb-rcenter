@@ -117,18 +117,9 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 }
             }
 
-            //先排序
-            for(var i=0;i<newArr.length;i++){
-                var chars =[];
-                for(var j=0;j<newArr[i].length;j++){
-                    chars.push(newArr[i][j]);
-                }
-                newArr[i]=chars.sort().join("");
-            }
-            //再去重
             var tempArr = [];
             for(var i=0;i<newArr.length;i++){
-                if(this.contain_q2zuxds(tempArr,newArr[i])){
+                if(this.contain_h2zuxds(tempArr,newArr[i])){
                     repeatArr.push(newArr[i]);
                 }else{
                     tempArr.push(newArr[i]);
@@ -138,9 +129,20 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             return tempArr.length;
         },
 
-        contain_q2zuxds:function(newArr,item){
+        contain_h2zuxds:function(newArr,item){
+
             for(var i=0;i<newArr.length;i++){
-                if(newArr[i].charAt(0) ==item.charAt(0) && newArr[i].charAt(1) ==item.charAt(1)){
+                var a=[];
+                var b=[];
+                a.push(newArr[i].charAt(0));
+                a.push(newArr[i].charAt(1));
+                a.push(newArr[i].charAt(2));
+
+                b.push(item.charAt(0));
+                b.push(item.charAt(1));
+                b.push(item.charAt(2));
+
+                if(a.sort().join("")==b.sort().join("")){
                     return true;
                 }
             }
@@ -722,18 +724,9 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 return 0;
             }
 
-            //先排序
-            for(var i=0;i<newArr.length;i++){
-                var chars =[];
-                for(var j=0;j<newArr[i].length;j++){
-                    chars.push(newArr[i][j]);
-                }
-                newArr[i]=chars.sort().join("");
-            }
-            //再去重
             var tempArr = [];
             for(var i=0;i<newArr.length;i++){
-                if(this.contain_q2zuxds(tempArr,newArr[i])){
+                if(this.contain_h2zuxds(tempArr,newArr[i])){
                     repeatArr.push(newArr[i]);
                 }else{
                     tempArr.push(newArr[i]);
