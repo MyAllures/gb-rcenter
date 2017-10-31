@@ -96,7 +96,11 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                 });
 
             $(":radio[name='result.singleMode']").on('change', function (e) {
-                _this._switchDisplay(this.value);
+                _this._switchDisplay();
+            });
+
+            $(":radio[name='result.picType']").on('change', function (e) {
+                _this._switchDisplay();
             });
 
             this.initEditTagsEvent();
@@ -147,17 +151,58 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
          * @param userTemp
          * @private
          */
-        _switchDisplay: function (singleMode) {
+        _switchDisplay: function () {
+            var singleMode = $(":radio[name='result.singleMode']:checked").val();
+            var floatType = $(":radio[name='result.picType']:checked").val();
             //单图
             if (singleMode == 'true') {
-                $("#content_float_pic_single_link_div").removeClass("hide");
-                $("#singleMode_templateType_div").removeClass("hide");
-                $("#float_template_list_div").addClass("hide");
+                if(floatType == '1'){
+                    $("#content_float_pic_single_link_div").removeClass("hide");//单图模式链接去掉hide
+                    $("#singleMode_templateType_div").removeClass("hide");//单图模式图片去掉hide
+                    $("#singleMode_service_pic").removeClass("hide");
+                    $("#singleMode_promo_pic").addClass("hide");
+                    $("#pic_showEffect").addClass("hide");//显示效果添加hide
+                    $("#float_template_list_div").addClass("hide");//多图模式添加hide
+
+                    $(".show_page_1").siblings().removeClass('hide');
+                    $(".show_page_1").siblings('input').attr("checked", false);
+                }else {
+                    $("#content_float_pic_single_link_div").addClass("hide");//单图模式链接去掉hide
+                    $("#singleMode_templateType_div").removeClass("hide");//单图模式图片去掉hide
+                    $("#singleMode_service_pic").addClass("hide");
+                    $("#singleMode_promo_pic").removeClass("hide");
+                    $("#pic_showEffect").removeClass("hide");//显示效果移除hide
+                    $("#float_template_list_div").addClass("hide");//多图模式添加hide
+
+                    $(".show_page_1").siblings().addClass('hide');
+                    $(".show_page_span_1").removeClass('hide');
+                    $(".show_page_1").siblings('input').attr("checked", false);
+                    $(".show_page_1").attr("checked", true);
+                }
+
             } else {
                 //列表
-                $("#float_template_list_div").removeClass("hide");
-                $("#content_float_pic_single_link_div").addClass("hide");
-                $("#singleMode_templateType_div").addClass("hide");
+                if(floatType == '1'){
+                    $("#float_template_list_div").removeClass("hide");//列表模式移除hide
+                    $("#content_float_pic_single_link_div").addClass("hide");//单图链接添加hide
+                    $("#singleMode_templateType_div").addClass("hide");//单图模式图片添加hide
+                    $(".select_float_pic_link_type").removeClass("hide");//列表模式链接移除hide
+                    $("#pic_showEffect").addClass("hide");//显示效果添加hide
+
+                    $(".show_page_1").siblings().removeClass('hide');
+                    $(".show_page_1").siblings('input').attr("checked", false);
+                }else {
+                    $("#float_template_list_div").removeClass("hide");//列表模式移除hide
+                    $("#content_float_pic_single_link_div").addClass("hide");//单图链接添加hide
+                    $("#singleMode_templateType_div").addClass("hide");//单图模式图片添加hide
+                    $(".select_float_pic_link_type").addClass("hide");//列表模式链接添加hide
+                    $("#pic_showEffect").removeClass("hide");//显示效果移除hide
+
+                    $(".show_page_1").siblings().addClass('hide');
+                    $(".show_page_span_1").removeClass('hide');
+                    $(".show_page_1").siblings('input').attr("checked", false);
+                    $(".show_page_1").attr("checked", true);
+                }
                 this.initSelectEvent();
                 //鼠标移入效果
                 if ($("input[name=mouseInEffect]:checked").val()) {
@@ -167,7 +212,6 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                     $(".mouseInEffectDiv").addClass("hide");
                     $(".mouseInEffectDiv").hide();
                 }
-                //图片链接样式切换
             }
         },
 

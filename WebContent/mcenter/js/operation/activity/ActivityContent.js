@@ -144,11 +144,16 @@ define(['common/BaseEditPage', 'jqFileInput', 'UE.I18N.' + window.top.language, 
                 $("input[name='rank']").val(ids);
             });
             $(".has-condition-radio").click(function (item) {
-                var hcrs = document.getElementsByName("activityRule.hasCondition");
+                var hcrs = document.getElementsByName("activityRule.conditionType");
                 if(hcrs.length>0){
                     for(var i=0;i<hcrs.length;i++){
                         var rdo = hcrs[i];
-                        if(rdo.checked&&rdo.value=="true"){
+                        if(rdo.checked&&rdo.value!="3"){
+                            if(rdo.value=='1'){
+                                $("#deposit_type_title").html("单次存款金额");
+                            }else{
+                                $("#deposit_type_title").html("累计存款金额");
+                            }
                             $("#money_condition").removeClass("hide");
                             $("#money_condition_add_btn").removeClass("hide");
                             $("#betCountMaxLimit_div").addClass("hide");
@@ -170,6 +175,10 @@ define(['common/BaseEditPage', 'jqFileInput', 'UE.I18N.' + window.top.language, 
              */
             this._super();
             var _this = this;
+            $('[data-toggle="popover"]', _this.formSelector).popover({
+                trigger: 'hover',
+                placement: 'top'
+            });
 
             _this.unInitFileInput($('.file'))
                 .fileinput({
@@ -760,9 +769,9 @@ define(['common/BaseEditPage', 'jqFileInput', 'UE.I18N.' + window.top.language, 
                 });
 
                 $("#preview_money_condition").find("tr:gt(0)").remove();
-                var hcs = document.getElementsByName("activityRule.hasCondition");
-                var isCheckHas = $("[name='activityRule.hasCondition']:checked").val();
-                if(isCheckHas=="true"){
+                var hcs = document.getElementsByName("activityRule.conditionType");
+                var isCheckHas = $("[name='activityRule.conditionType']:checked").val();
+                if(isCheckHas!="3"){
                     $("#preview_bet_count_div").hide();
                     $("#money_condition").find("tr:gt(0)").each(function (idx, item) {
                         var a1 = $(item).find("td:eq(0) input").val();

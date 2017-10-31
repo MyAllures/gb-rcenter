@@ -9,8 +9,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             _this = this;
             code =$("#czCode").val();
             type =$("#czType").val();
-            // this._super();
-            this.selectFun();
             this.bindEvent();
             this.isGfwf();
             this.getGfwfOdd();
@@ -18,12 +16,15 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         },
         showTable : function (){
         },
+        checkWanfa : function () {
+
+        },
+
         getGfwfOdd:function(){
             var _this = this;
             var betCode=$("#gfwfBetCode").val();
-            var betCode1=_this.getInitbetCode(betCode);
             mui.ajax(root + '/'+type+'/'+code+'/'+betCode+'/getOdds.html', {
-                data: {"betCode": betCode1},
+                data: {"betCode": betCode},
                 dataType: 'json',
                 type: 'POST',
                 success: function (data) {
@@ -34,34 +35,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     }
                 }
             });
-        },
-
-        getInitbetCode : function (betCode) {
-            //后三初始化
-            if(betCode =="ssc_sanxing_hs"){
-                betCode="ssc_sanxing_zhixuan_hsfs";
-            }
-            //前三初始化
-            if(betCode =="ssc_sanxing_qs"){
-                betCode="ssc_sanxing_zhixuan_qsfs";
-            }
-            //前二初始化
-            if(betCode =="ssc_erxing"){
-                betCode="ssc_erxing_zhixuan_qefs";
-            }
-            //不定位初始化
-            if(betCode =="ssc_budingwei"){
-                betCode="ssc_budingwei_q3ym";
-            }else
-            //任选二初始化
-            if(betCode =="R2"){
-                betCode="ssc_renxuan2_zxfs";
-            }
-            //大小单双初始化
-            if(betCode =="ssc_daxiaodanshuang"){
-                betCode="ssc_daxiaodanshuang_q2";
-            }
-            return betCode;
         },
 
         //传统,官方玩法切换
@@ -76,49 +49,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             });
         },
 
-
-        selectFun: function () {
-            var _this = this;
-            //gfwf投注
-            mui("body").off('tap','a#show-t-gfwf').on("tap", 'a#show-t-gfwf', function () {
-                $("#dingdan").addClass("mui-active");
-                _this.showBetTemplate();
-            });
-
-            //选择球
-            mui("div.bet-table").on('tap','a.n-btn',function(){
-                this.classList.toggle('mui-active');
-                $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
-                _this.getZhuShu();
-            });
-            //清
-            mui(".newball-content-top").on('tap','.qing',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).removeClass("mui-active");
-                _this.getZhuShu();
-
-            });
-            //全
-            mui(".newball-content-top").on('tap','.quan',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).addClass("mui-active");
-                _this.getZhuShu();
-            });
-
-            //机选
-            mui("body").off('tap','.btn-jixuan-gfwf').on('tap','.btn-jixuan-gfwf',function(){
-                _this.jixuan();
-            });
-            //机选清除
-            mui("body").off('tap','.btn-reset-gfwf').on('tap','.btn-reset-gfwf',function(){
-                $("div.newball-content-top i.mui-control-item").removeClass("mui-active");
-                this.classList.remove('mui-active');
-                mui(".btn-jixuan-gfwf")[0].classList.add('mui-active');
-                $("div.newball-item-20 a").removeClass("mui-active");
-                _this.getZhuShu();
-            });
-
-        },
         jixuan:function(){
             $("div.newball-content-top i.mui-control-item").removeClass("mui-active");
             $("div.newball-item-20 a.n-btn").removeClass("mui-active");
@@ -139,13 +69,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
         },
 
-        checkBaodan : function () {
-            var betCode=$("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code");
-            if(betCode =="ssc_sanxing_zuxuan_hszxbd" || betCode =="ssc_sanxing_zuxuan_qszxbd" || betCode =="ssc_erxing_zuxuan_qebd"){
-                $("div.newball-item-20 a.n-btn").removeClass("mui-active");
-            }
-        },
-
         bindEvent: function () {
             var _this=this;
             //清除下注按钮点击事件
@@ -155,57 +78,55 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
             // 确认事件绑定
             mui("#dingdan").off('tap','#queding').on('tap','#queding',function(){
-                // 注单
-                var betForm = {
-                    totalMoney: parseFloat($("#betContent_totalMoney").text())+"",
-                    quantity: Number($("#betContent_zhushu").text()),
-                    playModel:1,//1代表官方玩法
-                    betOrders: []
-                };
-                betForm.betOrders.push({
-                    code: $("#czCode").val(),//彩种
-                    expect: $('font#expect').text(),//期号
-                    playCode: $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id"),//彩种玩法
-                    betCode:  $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code"),//投注玩法
-                    betCount: $("#quantity").text(),//注数
-                    betAmount: $("#betContent_totalMoney").text(),//下注总额。
-                    betNum: _this.tmpBetContent,//下注号码
-                    odd: /*$("#betContent_playPl").text()*/_this.getBetOddl(),//奖金
-                    multiple: $("#betContent_inputBeishu").val(),//倍数
-                    bonusModel: $("span.mode_select.selected").attr("data-value"),//元角分模式
-                    rebate: (Number($("#betContent_fanli").attr("data-value"))/100).toFixed(3)//返点比例
-                });
-
-                mui.ajax(root + '/'+type+'/'+code+'/saveBetOrder.html', {
-                    data: {betForm: JSON.stringify(betForm)},
-                    dataType: 'json',
-                    type: 'POST',
-                    beforeSend: function () {
-                        _this.showLoading();
-                        _this.gfwfCloseConfirmOrder();
-                    },
-                    success: function (data) {
-                        var d = data.code[0];
-                        //code代码为100表示成功
-                        if (d && d.code && d.code == '100') {
-                            _this.toast(d.msg);
-                            sessionStorage.removeItem("betForm");
-                            $("div.bet-table-list .mui-active").removeClass("mui-active");
-                            $(".balance").text(data.balance);
-                            _this.resetBet();
-                        } else {
-                            _this.toast(d.msg + '[' + d.code + ']');
-                        }
-                    },
-                    complete: function () {
-                        _this.hideLoading();
-                    },error:function(xhr,type,errorThrown){
-                    _this.toast('下注失败：请求异常');
-                    }
-                });
-
+                _this.saveBetOrder();
             });
 
+            //取消下注
+            mui("body").off('tap','#quxiao').on("tap", "#quxiao", function () {
+                $("#dingdan").html('');
+                $("#dingdan").removeClass('mui-active');
+            });
+
+            //gfwf投注
+            mui("body").off('tap','a#show-t-gfwf').on("tap", 'a#show-t-gfwf', function () {
+                $("#dingdan").addClass("mui-active");
+                _this.showBetTemplate();
+            });
+
+            //选择球
+            mui("div.bet-table").off('tap','a.n-btn').on('tap','a.n-btn',function(){
+                this.classList.toggle('mui-active');
+                $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
+                _this.checkWanfa($(this));
+                _this.getZhuShu();
+            });
+            //清
+            mui(".newball-content-top").on('tap','.qing',function(){
+                var flag = $(this).attr("data-flag");
+                $("a."+flag).removeClass("mui-active");
+                _this.getZhuShu();
+
+            });
+            //全
+            mui(".newball-content-top").on('tap','.quan',function(){
+                var flag = $(this).attr("data-flag");
+                $("a."+flag).addClass("mui-active");
+                _this.getZhuShu();
+            });
+
+            //机选
+            mui("body").off('tap','.btn-jixuan-gfwf').on('tap','.btn-jixuan-gfwf',function(){
+                _this.jixuan();
+            });
+
+            //机选清除
+            mui("body").off('tap','.btn-reset-gfwf').on('tap','.btn-reset-gfwf',function(){
+                $("div.newball-content-top i.mui-control-item").removeClass("mui-active");
+                this.classList.remove('mui-active');
+                mui(".btn-jixuan-gfwf")[0].classList.add('mui-active');
+                $("div.newball-item-20 a").removeClass("mui-active");
+                _this.getZhuShu();
+            });
         },
         //点击投注选项
         bindTdInput: function (thiz) {
@@ -224,48 +145,37 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         },
 
         showBetTemplate:function() {
-
             var _this = this;
             var contentFun = _this.getPlayPlFun_content();    // 内容算法
             var zhushuFun = _this.getPlayPlFun_zhushu();  // 注数算法
 
             var type = $("input[name=type]").val();
             var code = $("input[name=code]").val();
-
             if (typeof contentFun == 'undefined' || typeof zhushuFun == 'undefined') {
                 return;
             }
-
             var data = eval("_this."+contentFun + "()");
             var zhushu = eval("_this."+zhushuFun + "()");
-
             if(data == -1){
                 return;
             }
 
-
             if (typeof data == 'undefined' || typeof zhushu == 'undefined' || zhushu <= 0) {
-                // Tools.toast("号码选择不完整，请重新选择");
                 this.toast("号码选择不完整，请重新选择");
                 return;
             }
 
             var plAndMaxFd = _this.getPlAndMaxFd();   // 获取当前选中的玩法赔率和返点
-            /*var pljs = this.getPljs();   // 当前基数*/
             var maxPlayPl;  // 最高赔率
             var maxFandian;  // 最大返点
             var minPl;  // 最低赔率
             var convertBlMoney;  // 每1%转换赔率
-
             var plSelName = '',  //赔率名称
                 plSelIndex = 0;  //获取赔率索引
-
 
             if (plAndMaxFd instanceof Array) {  // 多赔率
                 maxPlayPl = plAndMaxFd[0].odd;  // 最高赔率
                 maxFandian = plAndMaxFd[0].rebate*100;    // 最大返点
-                // var pljsarr = pljs.split('|');
-                // minPl = Math.floor((plAndMaxFd[0].odd-Number(plAndMaxFd[0].baseNum)*plAndMaxFd[0].rebate)*1000)/1000;   // 最低赔率
                 minPl = _this.getArgNum((plAndMaxFd[0].odd-Number(plAndMaxFd[0].baseNum)*plAndMaxFd[0].rebate)) // 最低赔率
             } else {
                 maxPlayPl = plAndMaxFd.odd;  // 最高赔率
@@ -280,22 +190,14 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             var firstShowPl = maxPlayPl.toFixed(3);
             var maxCanWin = maxPlayPl.toFixed(3);
             // 渲染界面中赔率部分
-            if (plAndMaxFd instanceof Array) {  // 多赔率
+            if (plAndMaxFd instanceof Array) {// 多赔率
                 var strArr = [];
                 $.each(plAndMaxFd, function(index, value) {
                     strArr.push(value.odd.toFixed(3));
                 });
                 maxCanWin=0;
-                var betCode=_this.getBetCode();
-                if(betCode =="ssc_sanxing_zhixuan_hszh" || betCode=="ssc_sanxing_zhixuan_qszh"){
-                    for(var i=0;i<strArr.length;i++){
-                        maxCanWin +=parseFloat(strArr[i]);
-                    }
-                }else{
-                    maxCanWin=strArr[0];
-                }
+                maxCanWin=strArr[0];
                 firstShowPl = strArr.join('|');
-
             }
             //弹出订单
             var content = Template('gfwf_template_order',
@@ -305,7 +207,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 "canWin": parseFloat((maxCanWin * 1)).toFixed(3),
                 "expect":$('font#expect').text()
                 });
-
             $("#dingdan").html(content);
             $("#dingdan").addClass('mui-active');
 
@@ -326,7 +227,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                     if (plAndMaxFd instanceof Array) {  // 多赔率
                         var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd[0].baseNum));
                         $("#betContent_playPl").attr("data-value", pl);
-                        var betCode=_this.getBetCode();
                         var strArr = [];
                         var zxzh  = 0;
                         $.each(plAndMaxFd, function (index, value) {
@@ -334,9 +234,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                             zxzh = _this.getArgNum(zxzh +(value.odd - fandianBili/100 * value.baseNum));
                         });
                         $("#betContent_playPl").html(strArr.join('|'));
-                        if(betCode =="ssc_sanxing_zhixuan_hszh" || betCode=="ssc_sanxing_zhixuan_qszh") {
-                            $("#betContent_playPl").attr("data-value", zxzh);
-                        }
                     } else {
                         var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd.baseNum));
                         $("#betContent_playPl").attr("data-value", pl.toFixed(3));
@@ -358,7 +255,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 // 渲染下注总额，奖金等等
                 _this.renderZhushu();
             });
-
 
             // 模式选择
             $(".mode_select").click(function() {
@@ -389,12 +285,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 $("#betContent_inputBeishu").val(parseInt($("#betContent_inputBeishu").val()) - 1);
                 // 渲染下注总额，奖金等等
                 _this.renderZhushu();
-            });
-
-            //取消下注
-            mui("body").off('tap','#quxiao').on("tap", "#quxiao", function () {
-                $("#dingdan").html('');
-                $("#dingdan").removeClass('mui-active');
             });
 
         },
@@ -554,39 +444,63 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             var odd = $("#betContent_playPl").text();
             if (odd.indexOf('|') > 0) {
                 var arrOdd=odd.split('|');
-                var betCode=_this.getBetCode();
-                if(betCode=="ssc_sanxing_zuxuan_qsts" || betCode=="ssc_sanxing_zuxuan_hsts"){
-                    var l = $("a.n-btn.teshu.mui-active").length;
-                    var teshuIndex;
-                    var teshuName;
-                    if (l == 1) {
-                        $("a.n-btn.teshu.mui-active").each(function () {
-                            teshuName = $(this).html();
-                        });
-                        if (teshuName == '豹子') {
-                            teshuIndex = 0;
-                        } else if (teshuName == '顺子') {
-                            teshuIndex = 1;
-                        } else if (teshuName == '对子') {
-                            teshuIndex = 2;
-                        }
-                    }else {
-                        teshuName = $("a.n-btn.teshu.mui-active").html();
-                        if (teshuName == '豹子') {
-                            teshuIndex = 0;
-                        } else if (teshuName == '顺子') {
-                            teshuIndex = 1;
-                        } else if (teshuName == '对子') {
-                            teshuIndex = 2;
-                        }
-                    }
-                    odd=arrOdd[teshuIndex];
-                }else{
                     odd=arrOdd[0];
-                }
             }
             return odd;
-        }
+        },
+
+        saveBetOrder : function () {
+            // 注单
+            var betForm = {
+                code: $("#czCode").val(),
+                totalMoney: parseFloat($("#betContent_totalMoney").text())+"",
+                quantity: Number($("#betContent_zhushu").text()),
+                playModel:1,//1代表官方玩法
+                betOrders: []
+            };
+            betForm.betOrders.push({
+                code: $("#czCode").val(),//彩种
+                expect: $('font#expect').text(),//期号
+                playCode: $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id"),//彩种玩法
+                betCode:  $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code"),//投注玩法
+                betCount: $("#quantity").text(),//注数
+                betAmount: $("#betContent_totalMoney").text(),//下注总额。
+                betNum: _this.tmpBetContent,//下注号码
+                odd: /*$("#betContent_playPl").text()*/_this.getBetOddl(),//奖金
+                multiple: $("#betContent_inputBeishu").val(),//倍数
+                bonusModel: $("span.mode_select.selected").attr("data-value"),//元角分模式
+                rebate: (Number($("#betContent_fanli").attr("data-value"))/100).toFixed(3)//返点比例
+            });
+
+            mui.ajax(root + '/'+type+'/'+code+'/saveBetOrder.html', {
+                data: {betForm: JSON.stringify(betForm)},
+                dataType: 'json',
+                type: 'POST',
+                beforeSend: function () {
+                    _this.showLoading();
+                    _this.gfwfCloseConfirmOrder();
+                },
+                success: function (data) {
+                    // console.log(JSON.stringify(betForm));
+                    var d = data.code[0];
+                    //code代码为100表示成功
+                    if (d && d.code && d.code == '100') {
+                        _this.toast(d.msg);
+                        sessionStorage.removeItem("betForm");
+                        $("div.bet-table-list .mui-active").removeClass("mui-active");
+                        $(".balance").text(data.balance);
+                        _this.resetBet();
+                    } else {
+                        _this.toast(d.msg + '[' + d.code + ']');
+                    }
+                },
+                complete: function () {
+                    _this.hideLoading();
+                },error:function(xhr,type,errorThrown){
+                    _this.toast('下注失败：请求异常');
+                }
+            });
+        },
 
     });
 });

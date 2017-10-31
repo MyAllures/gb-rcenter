@@ -1,0 +1,188 @@
+
+<!-- saved from url=(0051)https://www.600wan.cm/ssc/gcdt/gfwf/cqssc/dxds.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><div class="group">
+    <ul>
+        <li>
+            <b>三不同号</b>
+            <p class="btn_fu_zhi dsdx-menu">
+                <span class="playPlIdBtn acti" data-play_id="555" data-play_pl_id="14273" data-name="q2dxds" data-suiji_fun="suiji_q2dxds" data-fun_zhushu="zhushu_q2dxds" data-fun_content="content_q2dxds" data-fun_suiji="suiji_q2dxds"><a href="javascript:void(0)">标准选号</a></span>
+                <span class="playPlIdBtn" data-play_id="556" data-play_pl_id="14274" data-name="h2dxds" data-suiji_fun="suiji_h2dxds" data-fun_zhushu="zhushu_h2dxds" data-fun_content="content_h2dxds" data-fun_suiji="suiji_h2dxds"><a href="javascript:void(0)">拖胆选号</a></span>
+                <span class="playPlIdBtn" data-play_id="557" data-play_pl_id="14275" data-name="q3dxds" data-suiji_fun="suiji_q3dxds" data-fun_zhushu="zhushu_q3dxds" data-fun_content="content_q3dxds" data-fun_suiji="suiji_q3dxds"><a href="javascript:void(0)">和值选号</a></span>
+                <span class="playPlIdBtn" data-play_id="558" data-play_pl_id="14276" data-name="h3dxds" data-suiji_fun="suiji_h3dxds" data-fun_zhushu="zhushu_h3dxds" data-fun_content="content_h3dxds" data-fun_suiji="suiji_h3dxds"><a href="javascript:void(0)">单式选号</a></span>
+            </p>
+        </li>
+    </ul>
+</div>
+<div id="subPage"></div>
+<div id="subJRange"></div><script>
+    $(function() {
+        // 初始化子页面
+        initSubPage();
+        // 切换玩法
+        $(".group ul li p span").click(function () {
+            $(".group ul li p span.acti").removeClass("acti");
+            $(this).addClass("acti");
+            var currentId = $(this).data('play_id');
+            if(currentId != null){
+                playId = currentId;
+            }
+
+            // 初始化子页面
+            initSubPage();
+        });
+
+
+        // 幸运选号
+        var tmpXyxhNums = getQueryString("nums");
+        var tmpXyxhMoney = getQueryString("money");
+/*
+        if (typeof tmpXyxhNums != 'undefined' && typeof tmpXyxhMoney != 'undefined' && tmpXyxhNums != '' && tmpXyxhMoney != '' && tmpXyxhNums != null && tmpXyxhMoney != null) {
+            var oArr = [
+                ['wan', '万位'],['qian', '千位'],['bai', '百位'],['shi', '十位'],['ge', '个位']
+            ];
+
+            for (var i = 0; i < oArr.length; ++i) {
+                tmpXyxhNums = tmpXyxhNums.replace(new RegExp(oArr[i][0],'gm'), oArr[i][1]);
+            }
+
+            var arr = tmpXyxhNums.split(",");
+            var beishu = parseInt(tmpXyxhMoney) / 2;
+
+            for (var i = 0; i < arr.length; ++i) {
+                var strWei = arr[i].toString();
+                var wei = (strWei.split("-")[0]).replace("位",'');
+                var num = strWei.split("-")[1];
+
+                var obj = $(".wx-page [data-name='" + wei + "'] var.numLine span").eq(num);
+                $(obj).addClass("acti");
+            }
+
+            $("#inputBeishu").val(beishu);
+            $("#inputBeishu").data("beishu",beishu);
+            $("#inputMoney").data("inputMoney",tmpXyxhMoney);
+
+            renderZhushu();
+        }*/
+
+    });
+</script>
+<script type="text/html" id="template_q2dxds">
+    <div class="Pick cl-1002 recl-1002 recl-1002-q2dxds">
+        <p class="p1">
+        <span class="fr fl cl-1001">
+            至少选择3个不同号码投注，选号与开奖号码一致即中奖。
+        </span>
+    </p>
+    <ul class="dxds k3">
+        <li data-name="万">
+            <b><i>三不同</i></b>
+            <var class="numLine">
+                <span><i>1</i></span>
+                <span><i>2</i></span>
+                <span><i>3</i></span>
+                <span><i>4</i></span>
+                <span><i>5</i></span>
+                <span><i>6</i></span>
+            </var>
+            <div class="clear re-5x-i qc-btn-w">
+                	<i onclick="selectFun_1(this)">全</i>
+                    <i onclick="selectFun_6(this)">清</i>
+            </div>
+        </li>
+    </ul>
+    </div>
+</script>
+<script type="text/html" id="template_h2dxds">
+    <div class="Pick cl-1002 recl-1003-h2dxds">
+        <div class="">
+        <p class="p1">
+        <span class="fr fl cl-1001">
+            游戏玩法选择一个胆码和俩个拖码组成一注进行投注，三个开奖号码完全不同，与所选号码一致，顺序不限。
+        </span>
+    </p>
+    <ul class="dxds k3">
+        <li data-name="万">
+            <b><i>拖码</i></b>
+            <var class="numLine">
+                <span><i>1</i></span>
+                <span><i>2</i></span>
+                <span><i>3</i></span>
+                <span><i>4</i></span>
+                <span><i>5</i></span>
+                <span><i>6</i></span>
+            </var>
+            <div class="clear re-5x-i qc-btn-w">
+                	<i onclick="selectFun_1(this)">全</i>
+                    <i onclick="selectFun_6(this)">清</i>
+            </div>
+        </li>
+        <li data-name="万">
+            <b><i>胆码</i></b>
+            <var class="numLine">
+                <span><i>1</i></span>
+                <span><i>2</i></span>
+                <span><i>3</i></span>
+                <span><i>4</i></span>
+                <span><i>5</i></span>
+                <span><i>6</i></span>
+            </var>
+            <div class="clear re-5x-i qc-btn-w">
+                	<i onclick="selectFun_1(this)">全</i>
+                    <i onclick="selectFun_6(this)">清</i>
+            </div>
+        </li>
+    </ul>
+    </div>
+    </div>
+</script>
+<script type="text/html" id="template_q3dxds">
+    <div class="Pick cl-1002 recl-1004-q3dxds">
+        <p class="p1">
+        <span class="fr fl cl-1001">
+            游戏玩法是指对三个各不相同的号码的和值进行投注
+        </span>
+    </p>
+    <ul class="dxds k3-hz">
+        <li data-name="和值">
+            <b><i>和值</i></b>
+            <var class="numLine">
+                <span><i>6</i></span>
+                <span><i>7</i></span>
+                <span><i>8</i></span>
+                <span><i>9</i></span>
+                <span><i>10</i></span>
+                <span><i>11</i></span>
+                <span><i>12</i></span>
+                <span><i>13</i></span>
+                <span><i>14</i></span>
+                <span><i>15</i></span>
+            </var>
+            <div class="clear re-5x-i qc-btn-w">
+                	<i onclick="selectFun_1(this)">全</i>
+                    <i onclick="selectFun_6(this)">清</i>
+            </div>
+        </li>
+    </ul>
+    </div>
+</script>
+<script type="text/html" id="template_h3dxds">
+    <div class="Pick cl-1002 recl-1005-h3dxds">
+        <p class="p1">
+        <span class="fr fl cl-1001">
+            游戏玩法手动输入，至少输入一个3位数,号码由1-6组成的不同的号码。
+        </span>
+    </p>
+    <div class="content_jiang">
+        <textarea  id="textarea1" class="content_tex" autofocus></textarea>
+        <div class="right con_j_end">
+            <ul>
+                <li onclick="delRrepet(this)"><a href="javascript:void(0)">删除重复号</a></li>
+                <li onclick="daoRu()"><a href="javascript:void(0)">导入文件</a></li>
+                <li onclick="clearTextarea()"><a href="javascript:void(0)">清空</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <p class="rep1_zhushi">每一注号码之间请用一个 空格[ ]、逗号[,] 或者 分号[;] 隔开</p>
+    </div>
+</script></body></html>

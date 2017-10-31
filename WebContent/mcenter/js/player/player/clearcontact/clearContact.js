@@ -50,7 +50,7 @@ define(['common/BaseEditPage'],function(BaseEditPage){
             var _this = this;
             window.top.topPage.ajax({
                 loading:true,
-                url:root+"/player/exportRecords.html?exportFrom=clearContract&needCallBack=true",
+                url:root+"/player/export.html?exportFrom=clearContract&needCallBack=true",
                 type:"post",
                 dataType:"json",
                 beforeSend: function () {

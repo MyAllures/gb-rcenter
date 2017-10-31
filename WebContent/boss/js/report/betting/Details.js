@@ -16,6 +16,21 @@ define(['common/BaseEditPage'], function (BaseListPage) {
                 trigger: 'hover',
                 html: true
             });
+        },
+        detail:function (e) {
+            var betId=$("#betId").val();
+            var siteId=$("#siteId").val();
+            window.top.topPage.ajax({
+                url: root + "/report/betting/getGameDetailLink.html?betId="+betId+"&siteId="+siteId,
+                type: 'GET',
+                success: function (data) {
+                    if(data){
+                        var data = eval('('+data+')')
+                        window.open(data.link);
+                        $(e.currentTarget).unlock();
+                    }
+                },
+            })
         }
     });
 });

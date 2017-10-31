@@ -3016,8 +3016,15 @@ body.no-backdrop .mui-backdrop{
 .pay-third.jiupay{background-position: 0 -660px;}/* 22 久付支付 */
 .pay-third.rfupay{background-position: 0 -690px;}/* 23 锐付支付 */
 .pay-third.tonghui{background-position: 0 -720px;}/* 24 通汇卡 */
-.pay-third.bitcoin{background-position: 0 -781px;}/* 25 比特币 */
+.pay-third.bitcoin,
+.pay-third.BTC
+{background-position: 0 -781px;}/* 25 比特币 */
 .pay-third.qqwallet{background-position: 0 -818px;}/* 25 QQ钱包 */
+.pay-third.zhihpay{background-position: 0 -859px;}/* 26 智汇付 */
+.pay-third.upay{background-position: 0 -896px;}/* 27 优贝支付 */
+.pay-third.ymf{background-position: 0 -936px;}/* 28 1码付 */
+.pay-third.baifubao{background-position: 0 -974px;}/* 29 百度钱包 */
+.pay-third.jdpay{background-position: 0 -1011px;}/* 30 京东钱包 */
 /*表单*/
 
 .gb-input-help .mui-icon {
@@ -5065,3 +5072,8 @@ div.setting {
 .d-none {display: none;}
 .d-none.mui-active{display: block;}
 .pro-selec{background-color: #efefef;}
+
+/* 2017-10-28 */
+.mui-bar-nav .user .btn{padding: 4px 8px;}
+.mui-bar-nav .user .btn.btn-shiwan{background: #00a0e9;}
+.login-page .mui-btn.try{width: 100%; padding: 10px 12px; font-size: 13px;  background: #f2f2f2;  color: #445dc2;   margin-top: 20px;}

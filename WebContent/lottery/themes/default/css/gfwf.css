@@ -1,7 +1,19 @@
 /*官方玩法*/
 .Playmethod .respan span{
-    width: 61px!important;
+    min-width: 61px!important;
+    width: auto!important;
 }
+
+.Single .layout .group.k3-select ul li b{
+	width: 100px;
+	background: url(../img/ico50-big.png);
+}
+
+.Playmethod .respan.k3 span{
+    min-width: 81px!important;
+    width: auto!important;
+}
+
 .btn_fu_zhi span.acti{
     border: none;border-bottom: 2px solid #a92309;background: #f02800;padding: 0 1px;
 }
@@ -203,7 +215,12 @@
     margin-right: 490px;
     margin-top: 5px;
 }
-
+.Single .layout .Pick ul.dxds.k3 li .re-5x-i.qc-btn-w {
+    margin-right: 380px;
+}
+.Single .layout .Pick ul.dxds.k3-hz li .re-5x-i.qc-btn-w {
+    margin-right: 60px;
+}
 /*任选*/
 .selposition {
     width: 681px;
@@ -382,6 +399,7 @@
 
 .Single .layout .Pick.cl-1002 ul li span:first-child{margin-left:0}
 .Single .layout .Pick ul li span{margin:0 5px}
+.Single .layout .Pick ul li span.k2-tx-ball i{font-size: 13px;}
 .Single .layout .Pick ul li span i{
     margin-bottom:0;
     width: 33px;

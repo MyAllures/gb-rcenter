@@ -73,13 +73,25 @@ function lottery() {
                 return;
             }
             if(data.gameNum==-4){
-                $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
+                $("#lotteryPage").css({'background-image':'url('+resRoot+'/themes/hb/images/noChance_pc.png)'});
                 $("#tip-msg").html('条件不满足，不能参与红包活动!');
                 $("#lotteryPageBtn_1").hide();
                 $("#lottery_time_tip-msg").addClass("mui-hide");
                 return;
             }
-
+            if(data.gameNum==-5){
+                $("#lotteryPage").css({'background-image':'url('+resRoot+'/themes/hb/images/noChance_pc.png)'});
+                $("#tip-msg").html('本次红包已经抢光了');
+                if(data.nextLotteryTime!=""){
+                    $("#next_lottery_time").text(data.nextLotteryTime);
+                    $("#lottery_time_tip-msg").removeClass("mui-hide");
+                }else{
+                    $("#lottery_time_tip-msg").addClass("mui-hide");
+                }
+                $("#lotteryPageBtn_1").hide();
+                $("#lottery_time_tip-msg").removeClass("mui-hide");
+                return;
+            }
             if (data.award === 0) {
                 $remainCount.text(data.gameNum);
                 closePage('lotteryPage', 'noAwardPage');

@@ -1,4 +1,4 @@
-define(['common/BaseEditPage', 'jqFileInput', 'css!themesCss/fileinput/fileinput'], function (BaseEditPage) {
+define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/fileinput/fileinput'], function (BaseEditPage, Bootstrapswitch) {
 
     return BaseEditPage.extend({
 
@@ -9,9 +9,9 @@ define(['common/BaseEditPage', 'jqFileInput', 'css!themesCss/fileinput/fileinput
 
         onPageLoad: function () {
             this._super();
-            var _this=this;
+            var _this = this;
             this.initFileInput();
-            var key,e;
+            var key, e;
             if ($("#resultId").val() != "") {
                 key = $("[name='result.bankCode']").val();
                 if (key != null && key != "") {
@@ -35,10 +35,13 @@ define(['common/BaseEditPage', 'jqFileInput', 'css!themesCss/fileinput/fileinput
                 }
             }
             //鼠标移上去，展示文案
-            $('[data-toggle="popover"]',_this.formSelector).popover({
+            $('[data-toggle="popover"]', _this.formSelector).popover({
                 trigger: 'hover',
                 html: true
             });
+            var $bootstrapSwitch = $("input[type=checkbox][name='result.supportAtmCounter']");
+            this.unInitSwitch($bootstrapSwitch)
+                .bootstrapSwitch({});
             //this.TimeCallBack();
         },
         /**
@@ -181,7 +184,7 @@ define(['common/BaseEditPage', 'jqFileInput', 'css!themesCss/fileinput/fileinput
                 mainClass: "input-group",
                 removeLabel: window.top.message.content['floatPic.file.upload.remove'],
                 browseLabel: window.top.message.content['floatPic.file.upload.browse'] + '&hellip;',
-                allowedFileExtensions: ['jpg', 'jpeg', 'png','gif'],
+                allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif'],
                 msgInvalidFileExtension: window.top.message.content['floatPic.file.upload.msgInvalidFileExtension'],
                 msgValidationError: window.top.message.content['floatPic.file.upload.msgValidationError'],
                 msgSizeTooLarge: window.top.message.content['floatPic.file.upload.msgSizeTooLarge'],
@@ -268,6 +271,7 @@ define(['common/BaseEditPage', 'jqFileInput', 'css!themesCss/fileinput/fileinput
                 $("div.showKey").hide();
                 $("#accountSpan").text(window.top.message.content['账号']);
                 $("#khx-div").removeClass("hide");
+                $("#supportAtmCounter-div").removeClass("hide");
                 //给默认值-银行
                 select.setValue($("[selectdiv='result.bankCode1']"), $("#defaultBank").text());
                 $("#bankCode").val($("#defaultBank").text());
@@ -280,7 +284,7 @@ define(['common/BaseEditPage', 'jqFileInput', 'css!themesCss/fileinput/fileinput
                     tchannel = 'other';
                     $("#bankCode").val(tchannel);
                 }
-                if(tchannel == 'bitcoin') {
+                if (tchannel == 'bitcoin') {
                     $("div.showKey").show();
                     $("#accountSpan").text(window.top.message.content['地址']);
                 }
@@ -290,6 +294,7 @@ define(['common/BaseEditPage', 'jqFileInput', 'css!themesCss/fileinput/fileinput
                     $('div.qr-code').show();
                 }
                 $("#khx-div").addClass("hide");
+                $("#supportAtmCounter-div").addClass("hide");
             }
             //账号输入的显示和隐藏
             $(".account").hide();
@@ -329,10 +334,10 @@ define(['common/BaseEditPage', 'jqFileInput', 'css!themesCss/fileinput/fileinput
             $("#bankCode").val(e.key);
             $("div.showKey").hide();
             $("#accountSpan").text(window.top.message.content['账号']);
-            if ($('[name="result.accountType"]').val() == '2'   ) {
+            if ($('[name="result.accountType"]').val() == '2') {
                 $('div.qr-code').show();
                 //比特币展示比特币地址
-                if(e.key == 'bitcoin') {
+                if (e.key == 'bitcoin') {
                     $("div.showKey").show();
                     $("#accountSpan").text(window.top.message.content['地址']);
                 }
@@ -403,7 +408,7 @@ define(['common/BaseEditPage', 'jqFileInput', 'css!themesCss/fileinput/fileinput
             if ((accountType == '1' ? true : customBankName.length > 0)
                 && payName.length > 0
                 && fullName.length > 0
-                //&& disableAmount.length > 0
+                    //&& disableAmount.length > 0
                 && currency.length > 0
                 && (rank.length > 0 || fullRank.length > 0)
                 && account.length > 0) {
@@ -417,33 +422,33 @@ define(['common/BaseEditPage', 'jqFileInput', 'css!themesCss/fileinput/fileinput
 
         },
         /*revertDepositTotal: function (e, opt) {
-            var id = $("#resultId").val();
-            window.top.topPage.ajax({
-                url: root + '/payAccount/revertData.html',
-                dataType: "json",
-                data: {"id": id},
-                success: function (data) {
-                    if (data != null) {
-                        $("[name='result.depositTotal']").val(data.depositDefaultTotal);
-                    }
-                    $(e.currentTarget).unlock();
-                }
-            });
-        },
-        revertDepositCount: function (e, opt) {
-            var id = $("#resultId").val();
-            window.top.topPage.ajax({
-                url: root + '/payAccount/revertData.html',
-                dataType: "json",
-                data: {"id": id},
-                success: function (data) {
-                    if (data != null) {
-                        $("[name='result.depositCount']").val(data.depositDefaultCount);
-                    }
-                    $(e.currentTarget).unlock();
-                }
-            });
-        },*/
+         var id = $("#resultId").val();
+         window.top.topPage.ajax({
+         url: root + '/payAccount/revertData.html',
+         dataType: "json",
+         data: {"id": id},
+         success: function (data) {
+         if (data != null) {
+         $("[name='result.depositTotal']").val(data.depositDefaultTotal);
+         }
+         $(e.currentTarget).unlock();
+         }
+         });
+         },
+         revertDepositCount: function (e, opt) {
+         var id = $("#resultId").val();
+         window.top.topPage.ajax({
+         url: root + '/payAccount/revertData.html',
+         dataType: "json",
+         data: {"id": id},
+         success: function (data) {
+         if (data != null) {
+         $("[name='result.depositCount']").val(data.depositDefaultCount);
+         }
+         $(e.currentTarget).unlock();
+         }
+         });
+         },*/
         deleteQrCode: function (e, opt) {
             $("#picUrl").parent().parent().hide();
             $("input[name='result.qrCodeUrl']").val("");
@@ -451,20 +456,20 @@ define(['common/BaseEditPage', 'jqFileInput', 'css!themesCss/fileinput/fileinput
             $("._search").removeClass("disabled");
         },
         test: function (obj) {
-            if(! $(obj).prop('checked')){
-                $('#fullRank').prop('checked',false);
-            }else{
-                var inputs= $('.i-checks');
-                var dd =0;
-                for (var i=0;i<inputs.length;i++){
-                    if($(inputs[i]).prop('checked')){
-                        dd=dd+1;
-                    }else{
+            if (!$(obj).prop('checked')) {
+                $('#fullRank').prop('checked', false);
+            } else {
+                var inputs = $('.i-checks');
+                var dd = 0;
+                for (var i = 0; i < inputs.length; i++) {
+                    if ($(inputs[i]).prop('checked')) {
+                        dd = dd + 1;
+                    } else {
                         return;
                     }
                 }
-                if (dd==inputs.length){
-                    $('#fullRank').prop('checked',true);
+                if (dd == inputs.length) {
+                    $('#fullRank').prop('checked', true);
                 }
             }
         }
