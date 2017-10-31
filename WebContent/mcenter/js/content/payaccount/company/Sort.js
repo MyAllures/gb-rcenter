@@ -1,8 +1,8 @@
 /**
  * 公司入款金流顺序
  */
-define(['common/BaseEditPage', 'nestable', 'css!themesCss/jquery/plugins/jquery.nestable/jquery.nestable.css'], function (BaseEditPage, nestable) {
-    return BaseEditPage.extend({
+define(['common/BaseEditPage', 'bootstrapswitch','nestable', 'css!themesCss/jquery/plugins/jquery.nestable/jquery.nestable.css'], function (BaseEditPage, nestable) {
+        return BaseEditPage.extend({
         init: function () {
             this.formSelector = "form[name=companySortForm]";
             this._super(this.formSelector);
@@ -10,6 +10,7 @@ define(['common/BaseEditPage', 'nestable', 'css!themesCss/jquery/plugins/jquery.
         onPageLoad: function () {
             this._super();
             this.initNestable();
+            this.initSwitch();
         },
         bindEvent: function () {
             this._super();
@@ -93,6 +94,20 @@ define(['common/BaseEditPage', 'nestable', 'css!themesCss/jquery/plugins/jquery.
                     $(e.currentTarget).unlock();
                 }
             });
+        },
+
+        initSwitch:function(){
+            var _this=this;
+            var $bootstrapSwitch = $("[name='openMoreAccount']");
+            this.unInitSwitch($bootstrapSwitch)
+                .bootstrapSwitch({
+                        onText: window.top.message.common['enable'],
+                        offText: window.top.message.common['forbidden'],
+                        onSwitchChange: function (e, state) {
+                            $("[name='result.addNewPlayer']").val(state);
+                        }
+                    }
+                );
         }
     })
 });
