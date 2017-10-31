@@ -1,8 +1,6 @@
-define(['site/hall/pk10-gfwf/AllPk10', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+define(['site/hall/GfwfPlayWay', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         _this: null,
-        //筛选数字组合
-        screeningDigtal: new Array(),
         init: function () {
             _this = this;
             this._super();
