@@ -56,6 +56,16 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 $current.parent().addClass("select");
                 $("#mainFrame").load(root + "/fund/recharge/company/bitCoinFirst.html");
             }
+        },
+        /**
+         * 展开其它优惠
+         * @param e
+         * @param option
+         */
+        expendSale: function (e, option) {
+            $("tr.expendSales").show();
+            $(e.currentTarget).hide();
+            $(e.currentTarget).unlock();
         }
     });
 });
