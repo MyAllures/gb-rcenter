@@ -1,48 +1,33 @@
-<div class="row">
-	<div class="position-wrap clearfix">
-		<h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
-		<span>资金管理</span>
-		<!--            <span>/</span><span>人工存提</span>-->
-		<span>/</span><span>手动存取</span>
-	</div>
-	<div class="col-lg-12">
-		<div class="white-bg shadow">
-			<ul class="clearfix sys_tab_wrap">
-				<li class="active">
-					<a href="funds/funds.html" nav-target="mainFrame">人工存入</a>
-				</li>
-				<li>
-					<a href="funds/genera-funds.html" nav-target="mainFrame">人工取出</a>
-				</li>
-			</ul>
 
-			<!--表格内容-->
-			<div class="panel-body p-sm sdcq-wrap">
-				<table class="table no-border table-desc-list">
-					<tbody>
-						<tr>
-							<th scope="row" class="text-right">玩家账号：</th>
-							<td>
-								<div class="tablht-t width-response"><input type="text" class="form-control" placeholder="26"><span class="right-flo">共 <i class="co-red f
-                        ont-sty ft-bold">0</i> 人</span></div>
-
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="row sdcq-xz">
-					<div class="col-sm-6">
-						<div class="panel-heading">
-							<h3 class="co-blue">存款</h3>
-						</div>
-						<table class="table no-border table-desc-list">
-							<tbody>
-								<tr>
-									<th scope="row" class="text-right">存款金额：</th>
-									<td>
-										<input type="tex
+    <div class="row">
+        <div class="position-wrap clearfix">
+            <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+            <span>资金管理</span>
+<!--            <span>/</span><span>人工存提</span>-->
+            <span>/</span><span>手动存取</span>            
+            </div>
+        <div class="col-lg-12">
+        <div class="white-bg shadow">
+           <ul class="clearfix sys_tab_wrap">
+                            <li class="active"><a href="javascript:void(0)" nav-target="mainFrame">人工存入</a></li>
+                            <li><a href="javascript:void(0)">人工取出</a></li>
+                        </ul>
+                        
+            
+            <!--表格内容-->
+            <div class="panel-body p-sm">
+                <table class="table no-border table-desc-list">
+                    <tbody>
+                        
+                        <tr>
+                            <th scope="row" class="text-right">玩家账号：</th>
+                            <td>
+                            <div class="table-desc-right-t width-response"><input type="text" class="form-control" placeholder="水电费，asdfasdf" disabled><span class="right-flo">共 <i class="co-red font-sty ft-bold">0</i> 人</span></div>
+                            
+                            </td>
+                        </tr>
                          <tr>
-                            <th scope="row" class="text-right">存款金额：</th>
+                            <th scope="row" class="text-right">优惠金额：</th>
                             <td>
                             <input type="text" class="form-control" placeholder="26" style="width:25%;">
                             </td>
@@ -54,7 +39,7 @@
                             <div class="btn-group table-desc-right-t-dropdown" initprompt="10条" callback="query">
                             <input type="hidden" name="paging.pageSize" value="">
                     <button type="button" class="btn btn btn-default" data-toggle="dropdown" aria-expanded="false">
-                        <span prompt="prompt">派彩</span>
+                        <span prompt="prompt">优惠活动</span>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="max-height: 1298px; min-width: 55px; overflow-y: scroll; overflow-x: visible;">
@@ -81,8 +66,6 @@
                             <td>
                             <div class="line-hi34 m-b-sm min-w">
                             <label class="m-r"><input type="radio" class="" value="1" name="jih"><label for="checkbox3"></label>免稽核</label>
-                            <label><input type="radio" class="" value="1" name="jih"><label for="checkbox3"></label>存款稽核</label>
-                            <span tabindex="0" class=" help-popover m-r" role="button" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-html="true" data-content="勾选并成功存款后，将继续稽核玩家未达到的有效投注额（不算新的存款订单）" data-original-title="" title=""><i class="fa fa-question-circle"></i></span>
                             <label><input type="radio" class="" value="1" name="jih"><label for="checkbox3"></label>优惠稽核</label>
                             <span tabindex="0" class=" help-popover m-r" role="button" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-html="true" data-content="1、优惠稽核倍数为空，视为不对该笔优惠进行稽核；优惠稽核倍数为空，视为不对该笔优惠进行稽核；<br>2、玩家在取款时，有效投注额需要达到（存款金额+优惠金额）*优惠稽核倍数，否则将被扣除该笔优惠；<br>3、当没有通过存款申请获得优惠，而是直接获得优惠时，则直接按优惠金额*优惠稽核倍数来算即可；" title=""><i class="fa fa-question-circle"></i></span>
                             </div>
@@ -134,53 +117,120 @@
                                     <button class="btn btn-filter p-x-lg m-r-md" data-toggle="modal" data-target="#notice2">提示弹窗2，请无视</button>
                                 </div>
                             </td>
-                        </tr>t" class="form-control" placeholder="26" style="width:25 = 0; i < portals.length; i++) {
-			if(portals[i].checked) {
-				if(portals[i].value === "select1") {
-					location.href = "funds/funds2-1.html";
-				} else if(portals[i].value === "select2") {
-					location.href = "funds/funds2-2.html";
-				} else if(portals[i].value === "select3") {
-					location.href = "funds/funds2-3.html";
-				} else if(portals[i].value === "select4") {
-					location.href = "funds/funds2-4.html";
-				} else if(portals[i].value === "select5") {
-					location.href = "funds/funds2-5.html";
-				} else if(portals[i].value === "select6") {
-					location.href = "funds/funds2-6.html";
-				} else if(portals[i].value === "select7") {
-					location.href = "funds/funds2-7.html";
-				} else if(portals[i].value === "select8") {
-					location.href = "funds/funds2-8.html";
-				}
-			}
-		}
-	}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+<!-- 消息 -->
+<div class="modal inmodal" id="notice" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="line-hi34 m-sm">
+                        <span class="m-r">以下玩家账号不存在，请先修改</span>
+                        <a href="javascript:void(0)" class="pull-right">复制</a>
+                    </div>
+                <div class="m-sm">
+                <div class="gray-chunk remind-chunk clearfix">serves, happyies, younen, serves, happyies, younen, serves, happyies, younen, serves, happyies, younen, serves, happyies, younen, serves, happyies, younen, serves, happyies, younen, serves, happyies, younen, serves, happyies, younen,
+                </div>
+                </div>
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#yuedjyl">返回修改</button>
+                <!-- <button type="button" class="btn btn-primary-hide">取消</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal inmodal" id="notice2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">消息</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <h3 class=" al-center"> 成功存入14位，失败<span class="co-red">21</span>位。</h3>
+                <div class="line-hi34 m-sm">
+                        <span class="m-r">以下玩家存入失败：</span>
+                        <a href="javascript:void(0)" class="pull-right">复制</a>
+                    </div>
+                <div class="m-sm">
+                <div class="gray-chunk remind-chunk clearfix">serves, happyies, younen, serves, happyies, younen, serves, happyies, younen, serves, happyies, younen, serves, happyies, younen, serves, happyies, younen, serves, happyies, younen, serves, happyies, younen, serves, happyies, younen,
+                </div>
+                </div>
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-filter" data-toggle="modal" data-target="#yuedjyl">重新存入</button>
+                <button type="button" class="btn btn-primary-hide">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+function login() {
+    var portals = document.getElementsByName("project");
+    for(var i = 0; i < portals.length; i++) {
+        if(portals[i].checked) {
+            if(portals[i].value === "select1") {
+                location.href = "funds/funds2-1.html";
+            }
+            else if(portals[i].value === "select2") {
+                location.href = "funds/funds2-2.html";
+            }
+			else if(portals[i].value === "select3") {
+                location.href = "funds/funds2-3.html";
+            }
+			else if(portals[i].value === "select4") {
+                location.href = "funds/funds2-4.html";
+            }
+			else if(portals[i].value === "select5") {
+                location.href = "funds/funds2-5.html";
+            }
+			else if(portals[i].value === "select6") {
+                location.href = "funds/funds2-6.html";
+            }
+			else if(portals[i].value === "select7") {
+                location.href = "funds/funds2-7.html";
+            }
+			else if(portals[i].value === "select8") {
+                location.href = "funds/funds2-8.html";
+            }
+        }
+    }
+}
 </script>
 <script>
-	$(document).ready(function() {
-		$('.i-checks').iCheck({
-			checkboxClass: 'icheckbox_square-blue',
-			radioClass: 'iradio_square-blue',
-		});
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+        });
 
-		var config = {
-			'.chosen-select': {},
-			'.chosen-select-deselect': {
-				allow_single_deselect: true
-			},
-			'.chosen-select-no-single': {
-				disable_search_threshold: 10
-			},
-			'.chosen-select-no-results': {
-				no_results_text: 'Oops, nothing found!'
-			},
-			'.chosen-select-width': {
-				width: "95%"
-			}
-		}
-		for(var selector in config) {
-			$(selector).chosen(config[selector]);
-		}
-	});
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+            '.chosen-select-width'     : {width:"95%"}
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
 </script>
