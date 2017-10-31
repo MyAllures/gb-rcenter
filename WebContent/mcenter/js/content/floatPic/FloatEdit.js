@@ -163,9 +163,9 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                     $("#singleMode_promo_pic").addClass("hide");
                     $("#pic_showEffect").addClass("hide");//显示效果添加hide
                     $("#float_template_list_div").addClass("hide");//多图模式添加hide
-
                     $(".show_page_1").siblings().removeClass('hide');
                     $(".show_page_1").siblings('input').attr("checked", false);
+                    $("[name='templateType'][value='1']").prop("checked", true);
                 }else {
                     $("#content_float_pic_single_link_div").addClass("hide");//单图模式链接去掉hide
                     $("#singleMode_templateType_div").removeClass("hide");//单图模式图片去掉hide
@@ -178,6 +178,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                     $(".show_page_span_1").removeClass('hide');
                     $(".show_page_1").siblings('input').attr("checked", false);
                     $(".show_page_1").attr("checked", true);
+                    $("[name='templateType'][value='7']").prop("checked", true);
                 }
 
             } else {
@@ -191,17 +192,18 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
 
                     $(".show_page_1").siblings().removeClass('hide');
                     $(".show_page_1").siblings('input').attr("checked", false);
+                    $("[name='templateType'][value='1']").prop("checked", true);
                 }else {
                     $("#float_template_list_div").removeClass("hide");//列表模式移除hide
                     $("#content_float_pic_single_link_div").addClass("hide");//单图链接添加hide
                     $("#singleMode_templateType_div").addClass("hide");//单图模式图片添加hide
                     $(".select_float_pic_link_type").addClass("hide");//列表模式链接添加hide
                     $("#pic_showEffect").removeClass("hide");//显示效果移除hide
-
                     $(".show_page_1").siblings().addClass('hide');
                     $(".show_page_span_1").removeClass('hide');
                     $(".show_page_1").siblings('input').attr("checked", false);
                     $(".show_page_1").attr("checked", true);
+                    $("[name='templateType'][value='7']").prop("checked", true);
                 }
                 this.initSelectEvent();
                 //鼠标移入效果
