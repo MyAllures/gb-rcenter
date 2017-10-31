@@ -30,7 +30,7 @@ define(['site/game/ApiLogin'], function (ApiLogin) {
             /*金额转入弹窗*/
             $('.btn-in').click(function () {
                 var demoModel = sessionStorage.demoModel;
-                if(demoModel){
+                if(demoModel !="undefined"){
                     _this.toast(window.top.message.game_auto['试玩模式不支持额度转换']);
                     return;
                 }
@@ -76,7 +76,7 @@ define(['site/game/ApiLogin'], function (ApiLogin) {
             /*金额转出弹窗*/
             $('.btn-out').click(function () {
                 var demoModel = sessionStorage.demoModel;
-                if(demoModel){
+                if(demoModel !="undefined"){
                     _this.toast(window.top.message.game_auto['试玩模式不支持额度转换']);
                     return;
                 }
