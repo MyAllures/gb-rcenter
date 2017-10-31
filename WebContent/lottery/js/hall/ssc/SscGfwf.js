@@ -14,6 +14,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
         layerInfoInsert : null,
         tmpBetContent : null,
         gfwfPlJson : null,
+        alertContext:null,
         init: function () {
             this._super();
             this.getStringFormat();
@@ -624,7 +625,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 return;
             }
 
-
+            this.alertContext = "";
             _this.delRrepet();
             var data = eval("_this."+contentFun + "()");
             var zhushu = eval("_this."+zhushuFun + "()");
@@ -895,7 +896,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             if (repeatArr.length <= 0) {
                 // _this.alertmsg("无重复号码！");
             } else {
-                _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
+                _this.alertContext = "已删除掉重复号: " + repeatArr.join(" ");
                 $(".content_jiang .content_tex").val(tempArr.join(" "));
             }
         }
@@ -2214,7 +2215,10 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             return Number(numstr);
         },
         alertmsg : function(context){
-            layer.alert(context, {
+            if (this.alertContext != ''){
+                this.alertContext = this.alertContext +"<br>"
+            }
+            layer.alert(this.alertContext+context, {
                 title: '温馨提示',
                 skin: 'layui-layer-popup layui-layer-rim', //加上边框
                 area: ['300px', '150px'], //宽高
