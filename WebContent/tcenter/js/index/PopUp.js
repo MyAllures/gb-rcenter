@@ -6,7 +6,7 @@ define(['gb/components/PopUp'], function (PopUp) {
         },
         popUpCallBack : function (data) {
             var dataObj = $.parseJSON(data);
-            console.info("订阅类型为"+dataObj.subscribeType+"的订阅点收到消息，成功调用回调函数，参数值为" + data);
+            console.info(window.top.message.index_auto['订阅类型为']+dataObj.subscribeType+"的订阅点收到消息，成功调用回调函数，参数值为" + data);
             var msgBody = dataObj.msgBody;
             var content = msgBody.content;
             var date = msgBody.title;
@@ -14,7 +14,7 @@ define(['gb/components/PopUp'], function (PopUp) {
         },
         dialogCallBack :function (data) {
             var dataObj = $.parseJSON(data);
-            console.info("订阅类型为"+dataObj.subscribeType+"的订阅点收到消息，成功调用回调函数，参数值为" + data);
+            console.info(window.top.message.index_auto['订阅类型为']+dataObj.subscribeType+"的订阅点收到消息，成功调用回调函数，参数值为" + data);
             var msgBody = dataObj.msgBody;
             var content = msgBody.content;
             content = "<div style='padding: 20px'>"+content+"</div>";
