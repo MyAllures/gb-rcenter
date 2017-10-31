@@ -1,7 +1,7 @@
 /**
  * Created by snekey on 15-8-13.
  */
-define(['common/BaseListPage'], function (BaseListPage) {
+define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
     return BaseListPage.extend({
         init: function () {
             this._super();
@@ -14,6 +14,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
         onPageLoad: function () {
             this._super();
             var _this = this;
+            this.initSwitch();
             $("#li_top_7").addClass("active");
         },
         showImportList: function (e,opt) {
@@ -142,6 +143,19 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 return false;
             }
             return true;
-        }
+        },
+        initSwitch:function(){
+            var _this=this;
+            var $bootstrapSwitch = $("[name='my-checkbox']");
+            this.unInitSwitch($bootstrapSwitch)
+                .bootstrapSwitch({
+                        onText: window.top.message.common['enable'],
+                        offText: window.top.message.common['forbidden'],
+                        onSwitchChange: function (e, state) {
+                            // $("[name='result.addNewPlayer']").val(state);
+                        }
+                    }
+                );
+        },
     })
 });
