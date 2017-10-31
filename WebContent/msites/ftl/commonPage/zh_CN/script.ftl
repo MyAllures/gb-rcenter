@@ -611,7 +611,8 @@
             //点击关闭浮动图
             $("._close").on("click",function(){
                 var _this = this;
-                if (window.sessionStorage){
+                var showEffect = $(_this).parent().hasClass("show_effect");
+                if (window.sessionStorage && !showEffect){
                     sessionStorage.setItem("is_float_close_"+$(_this).parent().data("fp"),"true");
                 }
                 $(_this).parent().hide();
