@@ -706,9 +706,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             }
 
             if (repeatArr.length> 0) {
-
-                _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
-
+                allErrorArr.push("已删除掉重复号: " + repeatArr.join(" ")+"<br/>");
             }
 
             if (pairArr.length > 0) {
@@ -716,6 +714,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 for (var p = 0; p < pairArr.length; p++) {
                     allErrorArr.push(pairArr[p]);
                 }
+                allErrorArr.push("<br/>");
             }
 
             if (errorArr.length > 0) {
@@ -723,6 +722,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 for (var l = 0; l < errorArr.length; l++) {
                     allErrorArr.push(errorArr[l]);
                 }
+                allErrorArr.push("<br/>");
             }
 
             if (allErrorArr.length > 0) {
