@@ -157,6 +157,9 @@ i, var { font-style: normal; }
 /*自定义内容区域*/
 .mui-bar-nav~.mui-content { padding-top: 4.3rem; }
 .middle-content { top: 2.2rem; bottom: 2.5rem; background: #efeff4; overflow: inherit; }
+
+.new-middle-content.middle-content{ top: 4.5rem;}
+
 .middle-content.middle-content-bat{bottom: 2.5rem; }
 .middle-content.middle-content-bat.not-bottom{bottom: 0; }
 .bar-top-l-h { line-height: 2.2rem; height: 2.2rem; }
@@ -415,6 +418,8 @@ i, var { font-style: normal; }
 .formerly-record-list .mui-table-view-cell .time-1 { margin-right: 1.25rem; }
 .formerly-record-list .mui-table-view-cell .time-1 font { color: #67ce3a; }
 .formerly-record-list>.mui-table-view>.mui-table-view-cell>.mui-collapse-content:nth-child(odd) { background: #f7f7f7; }
+
+.formerly-record-list.new-formerly{position: fixed;width: 100%;top: 2.2rem;z-index: 13;border-bottom: 1px solid #ddd;}
 
 /*彩票开奖号码*/
 .lottery-ball { display: inline-block; height: 1rem; line-height: 1rem; background: #e00404; color: #fff; text-align: center; width: 1rem; border-radius: 1.1rem; margin-left: 0.2rem; }
@@ -961,6 +966,7 @@ a.popup-screen-btn:visited{
 .mui-bar-top .mui-title .gfwf-title{display: inline-block;}
 .mui-bar-top .mui-title .gfwf-title:after{content:"";width: 0px; height: 0px; border-width: 7px; border-style: solid; border-color: #fff transparent transparent transparent; display: inline; position: relative; top: 0.65rem; right: -0.3rem;}
 .ssc-method-list.gfwf-list{height: fit-content;border-top: 1px solid #ddd;}
+.ssc-method-list.gfwf-list.Fixed{position: fixed; top: 2.2rem; z-index: 14;}
 
 .x_wrap { width: 100%; height: 1.9rem;line-height: 1.9rem; background: #fff;text-align: center; z-index: 9; color: #fa6200!important; }
 .x_wrap .x_1 { width: 46%; display: inline-block; position: relative; height: 1.9rem;}
@@ -969,7 +975,7 @@ a.popup-screen-btn:visited{
 .x_wrap .x_3 { width: 45%; display: inline-block; position: relative;}
 .x_wrap .x_3:after{content:""; width: 0px; height: 0px; border-width: 7px; border-style: solid; border-color: #101010 transparent transparent transparent; display: inline; position: relative; top: 0.54rem; right: -0.3rem;}
 .gfwf-bg{display:none;position: fixed; top: 4.10rem; width: 100%; height: 100%; background:rgba(0,0,0,0.5); z-index: 11;}
-.selected-wrap{position: absolute; z-index: 12; background: #fff;display: none; top: 4.10rem;width: 100%;}
+.selected-wrap{ z-index: 12; background: #fff; top: 4.10rem;width: 100%;}
 .selected-wrap .s-title{height: 25px; position: relative;text-align: center;}
 .selected-wrap .s-title span{display: inline-block;background:#fff;position: relative; background:#fff; color: #fa6200; padding: 0 10px;z-index: 4;}
 .selected-wrap .s-title:after{content: "";height: 1px;width: 100%; background: #ddd;position: absolute;top: 9px;z-index: 3;left: 0;}
