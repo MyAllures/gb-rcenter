@@ -979,10 +979,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             }
 
             if (errorArr.length > 0) {
-                for (var e = 0; e < errorArr.length; e++) {
-                    errorStr += errorArr[e] + "";
-                }
-                _this.alertmsg("被过滤掉的错误号码" + errorStr);
+                _this.alertmsg("被过滤掉的错误号码" + errorArr.join(","));
             }
 
             // 初始化变量
