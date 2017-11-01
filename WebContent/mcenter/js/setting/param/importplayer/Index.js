@@ -18,19 +18,19 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             $("#li_top_7").addClass("active");
         },
         showImportList: function (e,opt) {
-            $(".import_list").show();
-            $(".import_list").removeClass("btn-outline");
-            $(".import_introduce").hide();
-            $(".import_introduce").addClass("btn-outline");
+            $("#introduce-div").show();
+            $("#introduce-div").removeClass("btn-outline");
+            $("#process-div").hide();
+            $("#process-div").addClass("btn-outline");
             $(".btn_list").removeClass("btn-outline");
             $(".btn_introduce").addClass("btn-outline");
             $(e.currentTarget).unlock();
         },
         showImportIntroduce : function (e,opt) {
-            $(".import_introduce").show();
+            $("#process-div").show();
             $(".btn_introduce").removeClass("btn-outline");
-            $(".import_introduce").removeClass("hide");
-            $(".import_list").hide();
+            $("#process-div").removeClass("hide");
+            $("#introduce-div").hide();
             $(".btn_list").addClass("btn-outline");
             $(e.currentTarget).unlock();
         },
