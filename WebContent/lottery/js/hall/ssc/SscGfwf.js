@@ -632,7 +632,9 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             if (data == -1) {
                 return;
             }
-
+            if (_this.alertContext != ''){
+                _this.alertmsg('');
+            }
             if (typeof data == 'undefined' || typeof zhushu == 'undefined' || zhushu <= 0) {
                 _this.alertmsg("号码选择不完整，请重新选择");
                 return;
@@ -2223,6 +2225,9 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 skin: 'layui-layer-popup layui-layer-rim', //加上边框
                 area: ['300px', '150px'], //宽高
             });
+            if (context != ''){
+                this.alertContext = '';
+            }
         }
     })
 });
