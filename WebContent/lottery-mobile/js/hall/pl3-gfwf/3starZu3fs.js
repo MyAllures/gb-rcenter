@@ -1,10 +1,9 @@
-define(['site/hall/pl3/fc3d-gfwf/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/pl3-gfwf/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         _this: null,
         init: function () {
             _this = this;
             this._super();
-            // this.getJspName();
         },
 
         showTable : function(){
@@ -12,10 +11,9 @@ define(['site/hall/pl3/fc3d-gfwf/PlayWay', 'site/plugin/template'], function (Pl
             $("#3star").show();
             $("span.x_1.gfwf-tit").text("三星");
             $(".s-title.title1 span").text("三星");
-            $(".s-title.title2 span").text("直选和值");
-            $(".x_3.gfwf-playName").text("直选和值");
-            $("a[data-code='pl3_sanxing_zhixuan_hz']").addClass("mui-active");
-
+            $(".s-title.title2 span").text("组三复式");
+            $(".x_3.gfwf-playName").text("组三复式");
+            $("a[data-code='pl3_sanxing_zuxuan_z3fs']").addClass("mui-active");
         },
 
         /*================================后3直选复式===============================*/
@@ -123,7 +121,7 @@ define(['site/hall/pl3/fc3d-gfwf/PlayWay', 'site/plugin/template'], function (Pl
         /**
          * 注数-直选和值
          */
-         zhushu_pl3_sanxing_zhixuan_hz :function() {
+         zhushu_h3zxhz :function() {
             var heZhiArr = [], newArr = [];
             $.each($("a.n-btn.hz.mui-active"), function (index, value) {
                 heZhiArr.push($.trim($(this).html()));
@@ -141,7 +139,7 @@ define(['site/hall/pl3/fc3d-gfwf/PlayWay', 'site/plugin/template'], function (Pl
         /**
          * 后三直选-和值
          */
-         content_pl3_sanxing_zhixuan_hz :function() {
+         content_h3zxhz :function() {
             var heZhiArr = [];
             var zhushu = 0;
             $.each($("a.n-btn.hz.mui-active"), function (index, value) {
@@ -190,7 +188,7 @@ define(['site/hall/pl3/fc3d-gfwf/PlayWay', 'site/plugin/template'], function (Pl
         /**
          * 随机算法-后三直选和值
          */
-        random_pl3_sanxing_zhixuan_hz : function () {
+        random_h3zxhz : function () {
             var random_1 = parseInt(Math.random() * 28);
             $("a.n-btn.hz").removeClass("mui-active").eq(random_1).addClass("mui-active");
         },
@@ -367,7 +365,7 @@ define(['site/hall/pl3/fc3d-gfwf/PlayWay', 'site/plugin/template'], function (Pl
         /**
          * 注数-组三复式
          */
-        zhushu_h3z3fs :function (){
+        zhushu_pl3_sanxing_zuxuan_z3fs :function (){
             var fuShiArr = [], newArr = [];
             $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
                 fuShiArr.push($.trim($(this).html()));
@@ -402,7 +400,7 @@ define(['site/hall/pl3/fc3d-gfwf/PlayWay', 'site/plugin/template'], function (Pl
         /**
          * 后三组选-组三复式
          */
-        content_h3z3fs :function () {
+        content_pl3_sanxing_zuxuan_z3fs :function () {
             var zuSanArr = [];
             $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
                 zuSanArr.push($.trim($(this).html()));
@@ -414,7 +412,7 @@ define(['site/hall/pl3/fc3d-gfwf/PlayWay', 'site/plugin/template'], function (Pl
         /**
          * 随机算法-后三组三复式
          */
-        random_h3z3fs : function () {
+        random_pl3_sanxing_zuxuan_z3fs : function () {
             var arrTemp = [];
             while(arrTemp.length < 2){
                 var x1 = parseInt(Math.random() * 10);

@@ -1,4 +1,4 @@
-define(['site/hall/pl3/fc3d-gfwf/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/pl3-gfwf/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         _this: null,
         init: function () {
@@ -8,13 +8,13 @@ define(['site/hall/pl3/fc3d-gfwf/PlayWay', 'site/plugin/template'], function (Pl
         },
 
         showTable : function(){
-            $("a[data-code='First2']").addClass("mui-active");
-            $("#First2").show();
-            $("span.x_1.gfwf-tit").text("前二");
-            $(".s-title.title1 span").text("前二");
+            $("a[data-code='After2']").addClass("mui-active");
+            $("#After2").show();
+            $("span.x_1.gfwf-tit").text("后二");
+            $(".s-title.title1 span").text("后二");
             $(".s-title.title2 span").text("直选复式");
             $(".x_3.gfwf-playName").text("直选复式");
-            $("a[data-code='pl3_erxing_zhixuan_qefs']").addClass("mui-active");
+            $("a[data-code='pl3_erxing_zhixuan_hefs']").addClass("mui-active");
 
         },
 
@@ -23,7 +23,7 @@ define(['site/hall/pl3/fc3d-gfwf/PlayWay', 'site/plugin/template'], function (Pl
         /**
          * 注数-直选复式
          */
-        zhushu_pl3_erxing_zhixuan_qefs :function () {
+        zhushu_pl3_erxing_zhixuan_hefs :function () {
             var tempArr = [];
             var wanArr = [], qianArr = [];
             $.each($("ul.wanweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
@@ -53,7 +53,7 @@ define(['site/hall/pl3/fc3d-gfwf/PlayWay', 'site/plugin/template'], function (Pl
         /**
          * 前二直选-直选复式
          */
-        content_pl3_erxing_zhixuan_qefs : function (){
+        content_pl3_erxing_zhixuan_hefs : function (){
             var wanArr = [], qianArr = [];
             $.each($("ul.wanweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
                 wanArr.push($.trim($(this).html()));
@@ -78,7 +78,7 @@ define(['site/hall/pl3/fc3d-gfwf/PlayWay', 'site/plugin/template'], function (Pl
         /**
          * 随机算法-前二直选复式
          */
-        random_pl3_erxing_zhixuan_qefs : function () {
+        random_pl3_erxing_zhixuan_hefs : function () {
             var random_1 = parseInt(Math.random() * 10);
             var random_2 = parseInt(Math.random() * 10);
             $(".wanweisStr  a.n-btn").removeClass("mui-active").eq(random_1).addClass("mui-active");

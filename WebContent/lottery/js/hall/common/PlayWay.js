@@ -6,6 +6,8 @@ define(['site/plugin/template'], function (Template) {
         code: null,
         //基本路径
         baseUrl: null,
+        gfwfPlJson : null,
+        tmpBetContent : null,
         init: function () {
             this.type = $('[name=type]').val();
             this.code = $('[name=code]').val();
