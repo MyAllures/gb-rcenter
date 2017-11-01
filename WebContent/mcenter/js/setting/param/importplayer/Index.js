@@ -146,16 +146,46 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         },
         initSwitch:function(){
             var _this=this;
-            var $bootstrapSwitch = $("[name='my-checkbox']");
-            this.unInitSwitch($bootstrapSwitch)
-                .bootstrapSwitch({
-                        onText: window.top.message.common['enable'],
-                        offText: window.top.message.common['forbidden'],
-                        onSwitchChange: function (e, state) {
-                            // $("[name='result.addNewPlayer']").val(state);
+            var $switch = $("[name='my-checkbox']");
+            _this.unInitSwitch($switch)
+                .bootstrapSwitch()
+                .on('switchChange.bootstrapSwitch',function( event , status ){
+                    var $this = $(this);
+                    $this.bootstrapSwitch('indeterminate',true);
+                    /*提示信息*/
+                    var message = status ? window.top.message.setting_auto['确认开启吗'] : window.top.message.setting_auto['确认关闭吗']
+                    window.top.topPage.showConfirmMessage( message , function( bol ){
+                        if( bol ){
+                            _this.doChange({currentTarget:$this[0],status:status,returnValue:true});
+                        } else {
+                            /*取消不确定状态*/
+                            $this.bootstrapSwitch('indeterminate',false);
+                            /*第三个参数为true 不会进入change事件*/
+                            $this.bootstrapSwitch('state', !status,true);
                         }
-                    }
-                );
+                    });
+                });
         },
+        doChange:function (e) {
+            var _this=this;
+            var $this= $(e.currentTarget);
+            if(e.returnValue!=true){
+                $this.bootstrapSwitch('indeterminate', false);
+                $this.bootstrapSwitch('state', !e.status, true);
+                return;
+            }
+            window.top.topPage.ajax({
+                url:root+'/vUserPlayerImport/changeStatus.html',
+                type:'POST',
+                dataType:'json',
+                data:{
+                    'nameVerification':e.status,
+                },
+                success:function(){
+                    /*取消不确定状态*/
+                    $this.bootstrapSwitch('indeterminate',false);
+                },
+            });
+        }
     })
 });
