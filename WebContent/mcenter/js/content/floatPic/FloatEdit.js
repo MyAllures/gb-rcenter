@@ -272,6 +272,14 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                                     return false;
                                 }
                             });
+                        }else {
+                            if('function' == opType){
+                                window.top.topPage.doPageFunction(e, function() {
+                                    _this.previewFloatPic(e,opt);
+                                }, opt);
+                            }else {
+                                window.top.topPage.doAjax(e,opt);
+                            }
                         }
                     }
                 });
