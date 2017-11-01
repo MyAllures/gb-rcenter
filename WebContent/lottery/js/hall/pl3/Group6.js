@@ -9,7 +9,6 @@ define(['site/hall/pl3/PlayWay'], function (PlayWay) {
         },bindTdInput: function () {
             this._super();
             $('.table-common td.new-ball-st').on('click', function () {
-                debugger;
                 var num = $('.table-common td.bg-yellow').length;
                 var odd = '';
                 if(num >= 4 && num <= 8){

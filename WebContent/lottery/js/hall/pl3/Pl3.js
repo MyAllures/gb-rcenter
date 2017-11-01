@@ -1,5 +1,7 @@
 define(['site/hall/common/Common','site/plugin/template'], function (Common,Template) {
     return Common.extend({
+        //用于彩判断是否封盘
+        isCodeOpen: true,
         init: function () {
             this._super();
         },
@@ -223,7 +225,85 @@ define(['site/hall/common/Common','site/plugin/template'], function (Common,Temp
                     //原来这里有初始化内容js统一放在PlayWay.js里
                 }
             });
-        }
+        },/**
+         * 加载计算倒计时
+         */
+            loadLeftTime: function () {
+            var _this = this;
+            var $left = $("div#leftTime");
+            var time = $left.attr("data-time");
+            if (isNaN(time) || time < 0) {
+                // 5秒内防止重复请求，避免接口获取数据延迟增加不必要的访问量
+                if (this.successTime != null && (new Date()).getTime() - this.successTime < 5 * 1000) {
+                    return;
+                }
+                if (time == -1) {
+                    //赋值，用来判断是否开奖中
+                    this.curExpect = $("#expect").text();
+                    if( $("p#tip").text().indexOf("封盘") >0){
+                    this.showClearPopup();
+                    }
+                }
+                this.getHandicap(function () {
+                    _this.successTime = (new Date()).getTime();
+                    _this.getOpenHistory();
+                });
+                $left.attr("data-time", --time);
+                return;
+            }
+            this.showLeftTime(time);
+        },
+        getHandicap: function (callback) {
+            if (this.isRunning) return;
+            var _this = this;
+            ajaxRequest({
+                url: root + '/commonLottery/getExpect.html',
+                data: {'code': this.code},
+                beforeSend: function () {
+                    this.isRunning = true;
+                },
+                success: function (data) {
+                    if (data) {
+                        var expect = $("i.expect").text();
+                        if (data.opening) {
+                            if ((_this.code == 'fc3d'||_this.code == 'tcpl3')  && data.leftOpenTime >0){
+                                $("div#leftTime").attr("data-time", data.leftOpenTime);
+                                $("p#tip").html("<i class='expect' style='color: red;font-weight:bold;font-size: 13px;'></i>期距离开盘还有:");
+                                $("p#tip").data("opening", data.opening);
+                                //前端封盘控制
+                                if (_this.isCodeOpen){
+                                    _this.isCodeOpen = false;
+                                    if (typeof page.playWay != 'undefined') {
+                                        page.playWay.closeLhcHandicap();
+                                    }
+                                }
+
+                            }else {
+                                if ((_this.code == 'fc3d'||_this.code == 'tcpl3')  && !_this.isCodeOpen){
+                                    _this.isCodeOpen = true;
+                                    if (typeof page.playWay != 'undefined'){
+                                        page.playWay.openLhcHandicap();
+                                    }
+                                }
+                                $("div#leftTime").attr("data-time", data.leftTime);
+                                $("p#tip").html("<i class='expect' style='color: red;font-weight:bold;font-size: 13px;'></i>期已开盘，欢迎投注。距离封盘还有:");
+                                $("p#tip").data("opening", data.opening);
+                            }
+                        }
+                        $('i.expect').text(data.expect);
+                        if (expect && expect == data.expect) { //重新获取盘口数据以防因为封盘时间比实际早，导致通过接口查询的期数值不对，要加１
+                            $('i.expect').text(Number(expect) + 1);
+                        }
+                        if (typeof callback == 'function') {
+                            callback();
+                        }
+                    }
+                },
+                complete: function () {
+                    this.isRunning = false;
+                }
+            });
+        },
     })
 
 });

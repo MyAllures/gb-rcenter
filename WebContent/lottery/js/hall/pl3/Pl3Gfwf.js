@@ -280,6 +280,7 @@ define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss
             });
 
             $(".my-slide-theme .back-bar .pointer").attr("tabIndex", -1);    // 滑块添加tabIndex来获得focus事件
+
         },
         //初始化11选5胆码计数器全局变量
         initArrNum: function () {
@@ -625,9 +626,7 @@ define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss
             if (typeof contentFun == 'undefined' || typeof zhushuFun == 'undefined') {
                 return;
             }
-
-
-            _this.delRrepet();
+            //_this.delRrepet();
             var data = eval("_this."+contentFun + "()");
             var zhushu = eval("_this."+zhushuFun + "()");
             if (data == -1) {
@@ -913,7 +912,7 @@ define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss
             objArr.each(function () {
                 $(this).removeClass("acti");
                 var num = parseInt($(this).find("i").html());
-                if ($.inArray(num, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11]) >= 0) {
+                if ($.inArray(num, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28]) >= 0) {
                     $(this).addClass("acti");
                 }
             });
@@ -997,6 +996,7 @@ define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss
             $(obj).parent().parent().find(".acti").removeClass("acti");
             $(obj).addClass("acti");
             this.clearStateTouZhu();//清除投注状态栏
+            this.renderZhushu();
         },
         getSuiji: function(total) {
             var _this = this;
@@ -1818,7 +1818,7 @@ define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss
                 reader.readAsText(file);
                 reader.onload = function (data) {
                     $(".content_tex").val(this.result);
-                    /* tt.innerHTML = this.result;*/
+                    _this.renderZhushu();
                 }
             } else {
                 $(".tzInsertTemplate .errorTxt").html("文件名不合法,只能上传txt格式");

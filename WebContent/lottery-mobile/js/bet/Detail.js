@@ -12,6 +12,25 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             this._super();
             this.muiInit();
             this.iosGoBack();
+            Template.helper('formatPrice', function (price, type) {
+                if (price) {
+                    var arrayPrice = price.toString().split(".");
+                    if (type == 'integer') {
+                        return arrayPrice[0] ? arrayPrice[0] : "0";
+                    } else if (type == 'decimal') {
+                        if (arrayPrice[1] && arrayPrice[1].length >= 2) {
+                            return arrayPrice[0] + '.' + arrayPrice[1].substr(0, 2);
+                        }
+                        return price;
+                    }
+                } else {
+                    if (type == 'integer') {
+                        return "0";
+                    } else if (type == 'decimal') {
+                        return ".00";
+                    }
+                }
+            });
         },
         /**
          * 绑定事件
