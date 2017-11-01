@@ -1,7 +1,7 @@
 /**
  * 公司入款金流顺序
  */
-define(['common/BaseEditPage', 'nestable', 'css!themesCss/jquery/plugins/jquery.nestable/jquery.nestable.css'], function (BaseEditPage, nestable) {
+define(['common/BaseEditPage', 'nestable', 'bootstrapswitch', 'css!themesCss/jquery/plugins/jquery.nestable/jquery.nestable.css'], function (BaseEditPage, nestable, Bootstrapswitch) {
     return BaseEditPage.extend({
         init: function () {
             this.formSelector = "form[name=companySortForm]";
@@ -22,21 +22,27 @@ define(['common/BaseEditPage', 'nestable', 'css!themesCss/jquery/plugins/jquery.
                 $("#" + data + ".table-responsive").show();
             });
             //是否开启多个账号
-            this.unInitSwitch($("[name='openMoreAccount']"))
+            var $bootstrapSwitch = $("[name='openMoreAccount']");
+            this.unInitSwitch($bootstrapSwitch)
                 .bootstrapSwitch()
                 .on('switchChange.bootstrapSwitch', function (event, state) {
-                    $.ajax({
-                        url: root + '/vPayAccount/askRemeberInfo.html',
+                    window.top.topPage.ajax({
+                        url: root + '/vPayAccount/changeOpenAccounts.html',
                         dataType: 'json',
                         success: function (data) {
-                            if (data.code == 'pop') {
-                                $thisTurn.bootstrapSwitch('indeterminate', true);
-                                $("[data-rel*='remDialog']").trigger("click");
+                            if (data && data == true) {
+                                var $obj = $("[name='openMoreAccount']");
+                                window.top.topPage.customerPopover($obj, window.top.message.common['save.success']);
+                                return true;
                             } else {
-                                $("[name='takeTurnsStatus']").val("false");
+                                window.top.topPage.customerPopover($obj, window.top.message.common['save.fail']);
+                                if (state == true) {
+                                    $bootstrapSwitch.bootstrapSwitch('state', false, true);
+                                } else {
+                                    $bootstrapSwitch.bootstrapSwitch('state', true, true);
+                                }
+                                return false;
                             }
-                            $("input[type='radio']").removeAttr('checked');
-                            $("input[type='radio']").attr('disabled', "disabled");
                         }
                     });
                 });
