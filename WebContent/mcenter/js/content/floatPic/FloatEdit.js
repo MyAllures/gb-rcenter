@@ -227,7 +227,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
          * @returns {boolean}
          */
         valiDateFormAndUploadFile: function (e, opt) {
-
+            var _this = this;
             e.objId = $("#floatId").val();
             e.catePath = 'floatImage';
             var flag = this.uploadAllFiles(e, opt);
@@ -238,6 +238,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                 $(e.currentTarget).unlock();
                 return false;
             }
+            var opType = opt.opType;
             var editType = $("[name='editType']").val();
             var picType =$("[name='result.picType']:checked").val();
             if(editType == '1' && picType == '2'){
@@ -251,19 +252,27 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                         if (isExitPromo){
                             window.top.topPage.showConfirmMessage( window.top.message.content['add.new.promoFloatPic'] , function( bol ){
                                 if(bol){
-                                    window.top.topPage.doPageFunction(e,previewFloatPic,opt);
+                                    if('function' == opType){
+                                        window.top.topPage.doPageFunction(e, function() {
+                                            _this.previewFloatPic(e,opt);
+                                        }, opt);
+                                    }else {
+                                        window.top.topPage.doAjax(e,opt);
+                                    }
                                 }else{
-                                    $(e.currentTarget).unlock();
+                                    return false;
                                 }
                             });
                         }
                     }
                 });
+            }else{
+                return true;
             }
             $("#ctt_float_pic_item_div").remove();
             //select.disable('.middle-img-list [name="cttFloatPicTempVo.result.middle1ImgLinkType"]:first');
             //$('.middle-img-list input[name="cttFloatPicTempVo.result.middle1ImgLinkValue"]:first').prop('disabled', true);
-            return true;
+            return false;
         },
 
         /**
