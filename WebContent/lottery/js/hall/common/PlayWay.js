@@ -158,34 +158,44 @@ define(['site/plugin/template'], function (Template) {
                 });
             });
             var _this = this;
+            _this.saveBetOrder(data);
+        },
+
+
+        //官方，双面玩法提交表单方法。
+        saveBetOrder: function(betForm) {
+            var _this = this;
             ajaxRequest({
                 url: _this.baseUrl + '/' + _this.code + '/saveBetOrder.html',
-                data: {betForm: JSON.stringify(data)},
+                data: {
+                    betForm: betForm
+                },
                 beforeSend: function () {
                     layer.closeAll();
                     page.showLoading();
-                    $("button[type=submit]").attr("disabled","disabled");
+                    $("button#gfwfBetForm_submit").attr("disabled","disabled");
                 },
                 success: function (data) {
                     var d = data.code[0];
                     //code代码为100表示成功
                     if (d && d.code && d.code == '100') {
-                        //刷新金额
-                        // $("font#money",parent.document).text(data.balance);
+                        // 清空临时变量（传统玩法）
+                        _this.tmpBetContent = null;
+                        //刷新玩家数据
                         parent.index.refreshPlayer();
                         layer.msg(d.msg, {icon: d.icon});
                         if($("#bottomInfo .tabs .acti").length>0 && $("#bottomInfo .tabs .acti").data("tab") == 'myBet'){
                             // 刷新我的投注
                             page.getMyOrders();
                         }
-                        // 重置表格
-                        _this.clearTdInput();
+                        _this.clearContent();
                     } else {
                         layer.msg(d.msg + '[' + d.code + ']', {icon: d.icon});
                     }
                 },
                 complete: function () {
-                    $("button[type=submit]").removeAttr("disabled");
+                    $("button#gfwfBetForm_submit").removeAttr("disabled");//官方玩法
+                    $("button[type=submit]").removeAttr("disabled");//传统玩法
                     page.hideLoading();
                 },error:function(XMLHttpRequest, textStatus, errorThrown){
                     Tools.log({
@@ -197,6 +207,8 @@ define(['site/plugin/template'], function (Template) {
                 }
             });
         },
+
+
         /**
          * 投注项标黄
          * @param betNum
@@ -232,7 +244,62 @@ define(['site/plugin/template'], function (Template) {
                 var num =parseInt($(this).data('num'));
                 $('.clearfix .main-left .clearfix .fl input').first().val(num);
             });
-        }
+        },
+
+        /*=============================================官方玩法=========================================================*/
+
+        //加减号。
+        initJjh: function() {
+            var _this = this;
+            $(".Single .layout .add_spot .left .sopt_wrap .down .down_menu i").click(function () {
+                var text = $(this).text();
+                $(this).parent().parent().find('input').val(text);
+                $(this).parent().hide();
+
+                $(this).parent().parent().find('input').data("money", parseInt(text));
+                _this.renderZhushu();
+            });
+            $(".yjf-wrap span").click(function () {
+                $(".yjf-wrap span").removeClass("selected");
+                $(this).addClass("selected");
+                _this.renderZhushu();
+            });
+            $(".Single .layout .add_spot .left .sopt_wrap .down span").click(function () {
+                $(this).parent().find(".down_menu").show();
+            });
+
+            $(".Single .layout .add_spot .left .sopt_wrap .down .down_menu i").parent().parent().hover(function () {
+            }, function () {
+                $(this).find(".down_menu").hide();
+            });
+
+            $(".Single .layout .add_spot .left .sopt_wrap .reduce a.fl").click(function () {
+                var val = parseInt($(".Single .layout .add_spot .left .sopt_wrap .reduce input").val());
+                if (isNaN(val) || typeof val != 'number') {
+                    val = 1;
+                }
+                val = parseInt(val);
+
+                --val;
+                val = val < 1 ? 1 : val;
+                $(".Single .layout .add_spot .left .sopt_wrap .reduce input").data("beishu", val).val(val);
+                _this.renderZhushu();
+            });
+
+            $(".Single .layout .add_spot .left .sopt_wrap .reduce a.fr").click(function () {
+                var val = parseInt($(".Single .layout .add_spot .left .sopt_wrap .reduce input").val());
+                if (isNaN(val) || typeof val != 'number') {
+                    val = 1;
+                }
+                val = parseInt(val);
+
+                ++val;
+                val = val < 1 ? 1 : val;
+                $(".Single .layout .add_spot .left .sopt_wrap .reduce input").data("beishu", val).val(val);
+                _this.renderZhushu();
+            });
+        },
+
     });
 
 });
