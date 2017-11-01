@@ -13,6 +13,15 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             this._super();//
 
             this.initSelectEvent();
+            this.initPicType();
+        },
+
+        initPicType: function(){
+            var value = $("[name='result.picType']:checked").val();
+            if("2" == value){
+                $(".show_page_1").siblings().addClass('hide');
+                $(".show_page_span_1").removeClass('hide');
+            }
         },
 
         initSelectEvent: function () {
