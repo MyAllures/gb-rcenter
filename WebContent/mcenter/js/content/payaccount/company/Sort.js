@@ -21,6 +21,25 @@ define(['common/BaseEditPage', 'nestable', 'css!themesCss/jquery/plugins/jquery.
                 $(".table-responsive").hide();
                 $("#" + data + ".table-responsive").show();
             });
+            //是否开启多个账号
+            this.unInitSwitch($("[name='openMoreAccount']"))
+                .bootstrapSwitch()
+                .on('switchChange.bootstrapSwitch', function (event, state) {
+                    $.ajax({
+                        url: root + '/vPayAccount/askRemeberInfo.html',
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.code == 'pop') {
+                                $thisTurn.bootstrapSwitch('indeterminate', true);
+                                $("[data-rel*='remDialog']").trigger("click");
+                            } else {
+                                $("[name='takeTurnsStatus']").val("false");
+                            }
+                            $("input[type='radio']").removeAttr('checked');
+                            $("input[type='radio']").attr('disabled', "disabled");
+                        }
+                    });
+                });
         },
         /**
          * 拖动排序初始化
