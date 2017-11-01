@@ -217,6 +217,9 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             }
         },
 
+        showConfirm: function (e,option,msg) {
+
+        },
         /**
          * 预览并提交
          * @param e
@@ -234,6 +237,28 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             if (!this.validateForm(e)) {
                 $(e.currentTarget).unlock();
                 return false;
+            }
+            var editType = $("[name='editType']").val();
+            var picType =$("[name='result.picType']:checked").val();
+            if(editType == '1' && picType == '2'){
+                window.top.topPage.ajax({
+                    url: root + '/cttFloatPic/isExitPromo.html',
+                    data: {"search.picType":picType},
+                    type: "POST",
+                    success: function (data) {
+                        var json = eval("(" + data + ")");
+                        var isExitPromo = json.isExitPromo;
+                        if (isExitPromo){
+                            window.top.topPage.showConfirmMessage( window.top.message.content['add.new.promoFloatPic'] , function( bol ){
+                                if(bol){
+                                    window.top.topPage.doPageFunction(e,previewFloatPic,opt);
+                                }else{
+                                    $(e.currentTarget).unlock();
+                                }
+                            });
+                        }
+                    }
+                });
             }
             $("#ctt_float_pic_item_div").remove();
             //select.disable('.middle-img-list [name="cttFloatPicTempVo.result.middle1ImgLinkType"]:first');
