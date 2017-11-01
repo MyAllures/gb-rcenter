@@ -17,7 +17,7 @@ function lottery() {
     var $winId = $('#win_id');
     var $recordId = $('#record_id');
     if(!id){
-        $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
+        $("#lotteryPage").css({'background-image':'url('+fltRootPath+'themes/hb/images/noChance.png)'});
         $("#tip-msg").html('红包活动已经结束!');
         $("#lotteryPageBtn_1").hide();
         $("#lottery_time_tip-msg").addClass("mui-hide");
@@ -73,14 +73,14 @@ function lottery() {
                 return;
             }
             if(data.gameNum==-4){
-                $("#lotteryPage").css({'background-image':'url('+resRoot+'/themes/hb/images/noChance_pc.png)'});
+                $("#lotteryPage").css({'background-image':'url('+resRoot+'/themes/hb/images/noChance.png)'});
                 $("#tip-msg").html('条件不满足，不能参与红包活动!');
                 $("#lotteryPageBtn_1").hide();
                 $("#lottery_time_tip-msg").addClass("mui-hide");
                 return;
             }
             if(data.gameNum==-5){
-                $("#lotteryPage").css({'background-image':'url('+resRoot+'/themes/hb/images/noChance_pc.png)'});
+                $("#lotteryPage").css({'background-image':'url('+resRoot+'/themes/hb/images/noChance.png)'});
                 $("#tip-msg").html('本次红包已经抢光了');
                 if(data.nextLotteryTime!=""){
                     $("#next_lottery_time").text(data.nextLotteryTime);
