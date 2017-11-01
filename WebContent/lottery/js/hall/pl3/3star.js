@@ -328,18 +328,32 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                     }
                 }
             }
-            newArr = newArr.uniqueArr();
+
             if (newArr.length <= 0) {
                 return 0;
             }
-
-            if (errorArr.length > 0) {
-                for (var e = 0; e < errorArr.length; e++) {
-                    errorStr += errorArr[e] + ",";
+            var lastArr =[];
+            var repeatArr = [];
+            for(var i=0;i<newArr.length;i++){
+                if(this.contain_pl3zxds(lastArr,newArr[i])){
+                    repeatArr.push(newArr[i]);
+                }else{
+                    lastArr.push(newArr[i]);
                 }
-                _this.alertmsg("被过滤掉的错误号码" + errorStr);
             }
 
+            if (repeatArr.length> 0) {
+                errorStr += "已删除掉重复号: " + repeatArr.join(" ")+"<br/>";
+            }
+
+            if (errorArr.length > 0) {
+                errorStr += "被过滤掉的错误号码" + errorArr.join(" ")+"<br/>";
+            }
+            if(errorStr.length>0){
+                _this.alertmsg(errorStr);
+            }
+
+            newArr = newArr.uniqueArr();
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -1520,6 +1534,17 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         }
         return false;
     },
+
+    contain_pl3zxds:function(newArr,item){
+
+        for(var i=0;i<newArr.length;i++){
+            if(newArr[i].charAt(0)==item.charAt(0) && newArr[i].charAt(1)==item.charAt(1) && newArr[i].charAt(2)==item.charAt(2)){
+                return true;
+            }
+        }
+        return false;
+    },
+
     contain_pl3z6ds:function(newArr,item){
 
         for(var i=0;i<newArr.length;i++){
