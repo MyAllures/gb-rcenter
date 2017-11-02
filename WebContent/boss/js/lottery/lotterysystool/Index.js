@@ -25,8 +25,34 @@ define(['common/BaseListPage'], function (BaseListPage) {
             this._super();
         },
         cancelNoPayoutOrder: function (event,option) {
-           var formobj =  $("#noPayoutOrderForm")[0];
-           this.query(event,option,formobj,"_this.getFirstForm()")
+            var formobj =  $("#noPayoutOrderForm")[0];
+            var codename = $(formobj).find("span[prompt='prompt']").text();//彩种名称
+            var code = $(formobj).find("input[name='search.code']").val();
+            var expect = $(formobj).find("input[name='search.expect']").val();
+            var siteId = $(formobj).find("input[name='search.siteId']").val();
+            if (code == ''){
+                page.showPopover(event,option,"danger","彩种不能选择为空",true);
+                return;
+            }
+            if (expect == ''){
+                page.showPopover(event,option,"danger","期号不能为空",true);
+                return;
+            }
+            var context = '';
+            if (siteId == ''){
+                context = "您将对"+codename+expect+"期的所有未结算注单进行撤销,是否确认执行";
+            }else {
+                context = "您将对站点"+siteId+codename+expect+"期的所有未结算注单进行撤销,是否确认执行";
+            }
+            window.top.topPage.showConfirmMessage(context, function (confirm) {
+                if (confirm) {
+                    _this.query(event,option,formobj,null);
+                } else {
+                    $(event.currentTarget).unlock()
+                }
+            });
+
+
         },
         query : function(event,option,formobj,callback) {
                 window.top.topPage.ajax({
@@ -59,10 +85,6 @@ define(['common/BaseListPage'], function (BaseListPage) {
                         $(event.currentTarget).unlock();
                     }});
                 return;
-
-        },
-        getFirstForm:function(){
-            alert(1)
         }
 
     });
