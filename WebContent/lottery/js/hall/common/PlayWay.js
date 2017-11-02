@@ -6,7 +6,6 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
         code: null,
         //基本路径
         baseUrl: null,
-
         layerInfo : null,
         layerTishi1 : null,
         layerTishi2 : null,
@@ -127,6 +126,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
             };
             $(".main-left .table-common input").each(function () {
                 var betAmount = $(this).val();
+                console.log($('i#expect').text())
                 if (typeof betAmount != 'undefined' && betAmount != '') {
                     //改为attr取值，防止值变动，这里的$(this).data值不变
                     betForm.betOrders.push({
@@ -169,7 +169,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 });
             });
             var _this = this;
-            _this.saveBetOrder(data);
+            _this.saveBetOrder(JSON.stringify(data));
         },
 
 
