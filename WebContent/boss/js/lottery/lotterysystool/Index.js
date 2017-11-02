@@ -8,8 +8,10 @@ define(['common/BaseListPage'], function (BaseListPage) {
          * this._super();
          * 调用
          */
+        _this:null,
         init: function () {
             this._super();
+             _this = this;
         },
         /**
          * 当前对象事件初始化函数
@@ -22,18 +24,19 @@ define(['common/BaseListPage'], function (BaseListPage) {
         onPageLoad: function () {
             this._super();
         },
-        cancelNoPayoutOrderDiv: function (event,option) {
-           this.query(event,option)
+        cancelNoPayoutOrder: function (event,option) {
+           var formobj =  $("#noPayoutOrderForm")[0];
+           this.query(event,option,formobj)
         },
-        query : function(event,option) {
+        query : function(event,option,formobj) {
                 window.top.topPage.ajax({
                     loading:true,
-                    url:window.top.topPage.getCurrentFormAction(event),
+                    url:formobj.action,
                     headers: {
                         "Soul-Requested-With":"XMLHttpRequest"
                     },
                     type:"post",
-                    data:this.getCurrentFormData(event),
+                    data:$(formobj).serialize(),
                     success:function(data){
                         var obj = eval("("+data+")");
                         if (obj.state){
@@ -55,6 +58,9 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 return;
 
         },
+        getFirstForm:function(event){
+            window.top.topPage.getCurrentForm(event);
+        }
 
     });
 });
