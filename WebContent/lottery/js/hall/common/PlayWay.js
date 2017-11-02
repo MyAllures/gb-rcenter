@@ -487,7 +487,6 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                     _this.renderZhushu();
                 }
             });
-
             $(".my-slide-theme .back-bar .pointer").attr("tabIndex", -1);    // 滑块添加tabIndex来获得focus事件
         },
 
