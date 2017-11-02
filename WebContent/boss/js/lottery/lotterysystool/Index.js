@@ -26,9 +26,9 @@ define(['common/BaseListPage'], function (BaseListPage) {
         },
         cancelNoPayoutOrder: function (event,option) {
            var formobj =  $("#noPayoutOrderForm")[0];
-           this.query(event,option,formobj)
+           this.query(event,option,formobj,"_this.getFirstForm()")
         },
-        query : function(event,option,formobj) {
+        query : function(event,option,formobj,callback) {
                 window.top.topPage.ajax({
                     loading:true,
                     url:formobj.action,
@@ -44,6 +44,9 @@ define(['common/BaseListPage'], function (BaseListPage) {
                         }else{
                             page.showPopover(event,option,"danger",obj.msg,true);
                         }
+                        if (callback != null){
+                            eval("(" + callback + ")");
+                        }
 
                         // var $result=$(".search-list-container",$form);
                         // $result.html(data);
@@ -58,8 +61,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 return;
 
         },
-        getFirstForm:function(event){
-            window.top.topPage.getCurrentForm(event);
+        getFirstForm:function(){
+            alert(1)
         }
 
     });
