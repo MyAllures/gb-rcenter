@@ -1013,7 +1013,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         contain_pl3_erxing_zhixuan_heds:function(newArr,item){
 
             for(var i=0;i<newArr.length;i++){
-                if(newArr[i].charAt(0)==item.charAt(0) && newArr[i].charAt(1)==item.charAt(1) && newArr[i].charAt(2)==item.charAt(2)){
+                if(newArr[i].charAt(0)==item.charAt(0) && newArr[i].charAt(1)==item.charAt(1)){
                     return true;
                 }
             }
