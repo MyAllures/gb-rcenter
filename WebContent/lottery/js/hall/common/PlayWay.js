@@ -279,9 +279,6 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
         checkTeshu : function (plSelName,plSelIndex) {
             return $("#jiangjin-change").data("value");
         },
-        //删除重复号码
-        delRrepet: function() {
-        },
         //随机特殊号
         suiJiTeshu : function (code) {
             return $("#jiangjin-change").data("value");
@@ -1891,6 +1888,9 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 skin: 'layui-layer-popup layui-layer-rim', //加上边框
                 area: ['300px', '150px'], //宽高
             });
+            if (context != ''){
+                this.alertContext = '';
+            }
         }
 
     });

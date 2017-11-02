@@ -101,7 +101,7 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
 
 
         //删除重复号码
-        delRrepets: function() {
+        delRrepet: function() {
             var _this = this;
             var textStr = $("div.content_jiang").find(".content_tex").val();
             if (typeof (textStr)!= "undefined") {
@@ -118,6 +118,7 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                 var playcode = _this.getPlayCode();
                 repeatArr = newArr.duplicateNew().uniqueArr();
                 tempArr = newArr.uniqueArr();
+
                 if (repeatArr.length > 0) {
                     _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
                     $(".content_jiang .content_tex").val(tempArr.join(","));
