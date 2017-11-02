@@ -3,6 +3,7 @@
         <ul class="nav" id="side-menu">
             <li class="active"> <a href="lottery/main.html" nav-target="topFrame"><em class="iconfont icon-zhandiancanshu"></em> <span class="nav-label">开奖设置</span></a></li>
             <li> <a href="lottery/lottery-report.html" nav-target="mainFrame"><em class="iconfont icon-zhandiancanshu"></em> <span class="nav-label">报表</span></a></li>
+            <li> <a href="lottery/lottery-tool.html" nav-target="mainFrame"><em class="iconfont icon-zhandiancanshu"></em> <span class="nav-label">工具</span></a></li>
            </ul> 
     </div>
 </nav>
@@ -210,7 +211,7 @@
                                 <td>虎</td>
                                 <td>杂六 / 杂六 / 对子</td>
                                 <td><span class="label label-green">已结算</span></td>
-                                <td><a href="javascript:void(0)">编辑</a></td>
+                                <td><a href="javascript:void(0)" data-toggle="modal" data-target="#zstc5">开号</a></td>
                             </tr>
                             <tr class="tab-detail">
                                 <td>重庆时时彩</td>
@@ -446,26 +447,122 @@
     <div class="modal-dialog">
         <div class="modal-content animated bounceInRight family">
             <div class="modal-header">
-                <span class="filter">新增邮件接口</span>
+                <span class="filter">开号</span>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
             </div>
             <div class="modal-body">
-                <div class="form-group clearfix line-hi34">
-                    <label class="col-xs-5 al-right">发送邮件服务器地址(SMTP)：</label>
-                    <div class="col-xs-6 p-x"><input type="text" class="form-control"></div>
-                </div>
-                <div class="form-group clearfix line-hi34">
-                    <label class="col-xs-4 al-right">服务器端口：</label>
-                    <div class="col-xs-7 p-x"><input type="text" class="form-control"></div>
-                </div>
-                <div class="form-group clearfix line-hi34">
-                    <label class="col-xs-4 al-right">邮件发送帐号：</label>
-                    <div class="col-xs-7 p-x"><input type="text" class="form-control"></div>
-                </div>
-                <div class="form-group clearfix line-hi34">
-                    <label class="col-xs-4 al-right">帐号密码：</label>
-                    <div class="col-xs-7 p-x"><input type="text" class="form-control"></div>
-                </div>
+                <div class="col-sm-12 clearfix" style="padding-left: 0;">
+                       <div class="col-sm-12 p-none-important">
+                        <div class="form-group clearfix pull-left col-sm-12 m-b-sm padding-r-none-sm">
+                        
+                        <div class="input-group date time-select-a">
+                            <span class="input-group-addon abroder-no"><b>彩票类别：</b></span>
+                            <span class="line-hi34">重庆时时彩 </span>
+                        </div></div>
+                        </div>
+                        <div class="col-sm-12 p-none-important">
+                        <div class="form-group clearfix pull-left col-sm-12 m-b-sm padding-r-none-sm">
+                        
+                        <div class="input-group date">
+                            <span class="input-group-addon abroder-no"><b>开奖期号：</b></span>
+                            <span class="line-hi34">20170405085</span>
+                        </div></div>
+                        </div>
+                        <div class="col-sm-12 p-none-important">
+                        <div class="form-group clearfix pull-left col-sm-12 m-b-sm padding-r-none-sm">
+                        
+                        <div class="input-group date time-select-a">
+                            <span class="input-group-addon abroder-no"><b>开盘时间：</b></span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-20 12:30:21">  
+                        </div></div>
+                        </div>
+                        <div class="col-sm-12 p-none-important">
+                        <div class="form-group clearfix pull-left col-sm-12 m-b-sm padding-r-none-sm">
+                        
+                        <div class="input-group date time-select-a">
+                            <span class="input-group-addon abroder-no"><b>封盘时间：</b></span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-20 12:30:21">  
+                        </div></div>
+                        </div>
+                        <div class="col-sm-12 p-none-important">
+                        <div class="form-group clearfix pull-left col-sm-12 m-b-sm padding-r-none-sm">
+                        
+                        <div class="input-group date time-select-a">
+                            <span class="input-group-addon abroder-no"><b>开奖时间：</b></span>
+                            <span class="input-group-addon time-select-ico"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control" placeholder="2016-09-20 12:30:21">  
+                        </div></div>
+                        </div>
+                        <div class="col-sm-12 p-none-important">
+                        <div class="form-group clearfix pull-left col-sm-12 m-b-sm padding-r-none-sm">
+                        
+                        <div class="input-group date time-select-a">
+                            <span class="input-group-addon abroder-no"><b>开奖号码：</b></span>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="1">  
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="2">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="3">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="4">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="5">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="6">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="7">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="8">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="9">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="10">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="11">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="12">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="13">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="14">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="15">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="16">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="17">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="18">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="19">
+                            </div>
+                            <div class="pull-left">
+                                <input type="text" class="content-width-limit-3x m-xs" placeholder="20">
+                            </div>
+                        </div></div>
+                        </div>
+                        </div>
             </div>
             <div class="modal-footer">
                <button type="button" class="btn btn-filter">确定</button>
