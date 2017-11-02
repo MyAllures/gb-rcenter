@@ -1,5 +1,5 @@
 
-define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
+define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
     return PlayWay.extend({
         playId : 'qezxfs',
         init: function () {

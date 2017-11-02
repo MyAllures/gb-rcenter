@@ -300,9 +300,7 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                     repeatArr = newArr.duplicateNew().uniqueArr();
                     tempArr = newArr.uniqueArr();
                 }
-                if (repeatArr.length <= 0) {
-                    // _this.alertmsg("无重复号码！");
-                } else {
+                if (repeatArr.length > 0) {
                     _this.alertContext = "已删除掉重复号: " + repeatArr.join(" ");
                     $(".content_jiang .content_tex").val(tempArr.join(" "));
                 }
