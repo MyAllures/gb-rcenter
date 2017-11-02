@@ -631,8 +631,6 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 return result;
             } else {// 单一赔率
                 var obj = null;
-                console.log("BBBBBBBBBBBBBBB")
-                console.log(this.gfwfPlJson.length)
                 for (var i = 0; i < this.gfwfPlJson.length; ++i) {
                     var o = this.gfwfPlJson[i];
                     $.each(o, function (index, value) {
@@ -999,7 +997,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 if (data == -1) {
                     return;
                 }
-                _this.suiJiTeshu(data.betContent);
+                plSelVal=_this.suiJiTeshu(data.betContent);
                 var obj = {};
                 //======函数获取=====
                 obj.showPlayName = data.showPlayName;
@@ -1649,15 +1647,10 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 });
                 //追号
                 var money = 0;
-
                 betForm.totalMoney = (betForm.totalMoney).toFixed(3);
                 betForm = JSON.stringify(betForm);
-                console.log(betForm);
-                console.log("AAAAAAAAAAAAAAAAAAAAAA");
                 // 解决双引号冲突
                 tmpBetContent = betForm;
-                console.log(tmpBetContent);
-
                 // 确定按钮
                 $("#gfwfBetForm_submit").click(function () {
                     _this.saveBetOrder(tmpBetContent);

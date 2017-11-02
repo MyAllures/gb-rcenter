@@ -391,6 +391,7 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
             } else {
                 plSelVal = $("#jiangjin-change").data("value");
             }
+            return plSelVal;
         },
 
         //后三直选--获取所选号码分散为三位所有组合的和值
