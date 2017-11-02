@@ -325,6 +325,7 @@ define(['common/BaseEditPage', 'jqFileInput', 'UE.I18N.' + window.top.language, 
          */
         initUEditor: function () {
             var _this = this;
+            $("div[class^=_editArea]").html("");
             for (var i = 0; i < languageCounts; i++) {
                 UE.delEditor('editContent' + i);
                 this.ue = UE.getEditor('editContent' + i, {
