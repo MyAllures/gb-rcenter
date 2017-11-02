@@ -10,5 +10,6 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
             this._super();
             page.refreshView();
         }
+
     })
 });
