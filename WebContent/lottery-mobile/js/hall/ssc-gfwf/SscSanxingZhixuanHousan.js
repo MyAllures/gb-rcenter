@@ -1,4 +1,4 @@
-define(['site/hall/ssc-gfwf/PlayWay', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+define(['site/hall/ssc-gfwf/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         _this: null,
         init: function () {
@@ -21,39 +21,33 @@ define(['site/hall/ssc-gfwf/PlayWay', 'site/plugin/template','RangeSlider'], fun
                 $("#housan a").removeClass("mui-active");
                 $("a[data-code='"+betCode+"']").addClass("mui-active");
             }
+
             if(betCode =="ssc_sanxing_zhixuan_hsfs"){
                 $(".x_3.gfwf-playName").text("直选复式")
                 $(".s-title.title2 span").text("直选复式");
-            }
-            if(betCode =="ssc_sanxing_zhixuan_hshz"){
+            }else if(betCode =="ssc_sanxing_zhixuan_hshz"){
                 $(".x_3.gfwf-playName").text("直选和值")
                 $(".s-title.title2 span").text("直选和值");
-            }
-            if(betCode =="ssc_sanxing_zhixuan_hskd"){
+            }else if(betCode =="ssc_sanxing_zhixuan_hskd"){
                 $(".x_3.gfwf-playName").text("直选跨度")
                 $(".s-title.title2 span").text("直选跨度");
             }
             if(betCode =="ssc_sanxing_zuxuan_hsz3fs"){
                 $(".x_3.gfwf-playName").text("组三复式")
                 $(".s-title.title2 span").text("组三复式");
-            }
-            if(betCode =="ssc_sanxing_zhixuan_hsfs"){
+            }else if(betCode =="ssc_sanxing_zhixuan_hsfs"){
                 $(".x_3.gfwf-playName").text("直选复式")
                 $(".s-title.title2 span").text("直选复式");
-            }
-            if(betCode =="ssc_sanxing_zuxuan_hsz6fs"){
+            }else if(betCode =="ssc_sanxing_zuxuan_hsz6fs"){
                 $(".x_3.gfwf-playName").text("组六复式")
                 $(".s-title.title2 span").text("组六复式");
-            }
-            if(betCode =="ssc_sanxing_zuxuan_hszxhz"){
+            }else if(betCode =="ssc_sanxing_zuxuan_hszxhz"){
                 $(".x_3.gfwf-playName").text("组选和值")
                 $(".s-title.title2 span").text("组选和值");
-            }
-            if(betCode =="ssc_sanxing_zuxuan_hszxbd"){
+            }else if(betCode =="ssc_sanxing_zuxuan_hszxbd"){
                 $(".x_3.gfwf-playName").text("组选包胆")
                 $(".s-title.title2 span").text("组选包胆");
-            }
-            if(betCode =="ssc_sanxing_zuxuan_hshzws"){
+            }else if(betCode =="ssc_sanxing_zuxuan_hshzws"){
                 $(".x_3.gfwf-playName").text("和值尾数")
                 $(".s-title.title2 span").text("和值尾数");
             }
