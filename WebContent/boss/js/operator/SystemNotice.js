@@ -14,6 +14,25 @@ define(['common/BaseEditPage', 'UE.I18N.'+window.top.language], function (BaseEd
             });
         },
 
+        bindEvent: function () {
+            this._super();
+            var that = this;
+            /**
+             * 解决提示不准确的问题
+             */
+            $(that.formSelector).on("validate", ".field", function (e, message) {
+                if (message) {
+                    if (!$(this).parents('.div_length').hasClass('active')) {
+                        $("#index_" + $(this).attr("bbb")).formtip(message);
+                        e.result = true;
+                    }
+                }
+                else {
+                    e.result = false;
+                }
+            });
+        },
+
         onPageLoad: function () {
             this._super();
             this.copyLanguage();
