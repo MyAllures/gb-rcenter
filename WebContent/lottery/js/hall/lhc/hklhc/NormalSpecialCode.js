@@ -15,7 +15,9 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
          * 六合彩正码特跳转子页面
          */
         getNormalSpecialCode: function () {
+            var _this=this;
             $(".main-left .fr .T-tab a").click(function () {
+                _this.clearTdInput();
                 $(".main-left .fr .T-tab a").removeClass("active");
                 $(this).addClass("active");
                 var subCode = $(this).attr("subCode");
