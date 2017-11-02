@@ -1,0 +1,146 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>彩票</span>
+        <span>/</span><span>系统工具</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow">
+            <div class="present_wrap"><b>系统工具</b></div>
+            <div class="clearfix personalInfo_wrap">
+                <div class="gray-chunk clearfix">
+                   
+                   <div class="clearfix pull-left m-sm change-logo col-xs-12 col-sm-4">
+                   
+                   <dd class="change-logo-title"><span><b>系统工具</b></span> <span>维护</span></dd>
+                   <dd></dd>
+                   </div>
+            
+                   <div class="clearfix pull-left m-sm change-logo col-xs-12 col-sm-4">
+                   
+                   <dd class="change-logo-title"><span><b>系统工具</b></span> <span>派彩</span></dd>
+                   <dd></dd>
+                   </div>
+                   
+                   <div class="clearfix pull-left m-sm change-logo col-xs-12 col-sm-4">
+                   
+                   <dd class="change-logo-title"><span><b>系统工具</b></span> <span>派彩</span></dd>
+                   <dd></dd>
+                   </div>
+            </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+<!--盈利上限-->
+<div class="modal inmodal" id="add-upper" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content animated bounceInRight family">
+<div class="modal-header">
+<span class="filter">撤销</span>
+<button type="button" class="close" data-dismiss="modal">
+<span aria-hidden="true">&times;</span>
+<span class="sr-only">关闭</span>
+</button>
+</div>
+<div class="modal-body">
+<div class="form-group clearfix m-b-sm col-xs-12">
+
+<div class="clearfix m-md">
+                            <span class="pull-left">您确定要撤销该注单？撤销后金额将重新计算并退回！</span>
+                               
+                            </div>
+</div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-filter" data-toggle="modal" data-dismiss="modal" data-target="#competenceError">确定</button>
+<button type="button" class="btn btn-primary-hide">取消</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+ $(".show-demand-b").click(function(){
+      $(this).toggleClass("open")
+      $(".show-demand-a").toggle()
+    });
+//$(".type-search-btn").click(function(){
+//    $(this).toggleClass("open")
+//    $(".type-search").toggle()
+//  });
+//  
+    
+    
+     //themes快捷菜单冒泡阻止
+        $(".type-search-btn").click(function () {
+            $(this).toggleClass("open");
+            $(document).one("click", function () {
+                $(".type-search-btn").removeClass("open");
+            });
+            $(".type-search").toggle();
+            $(document).one("click", function () {
+                $(".type-search").hide();
+            });
+            event.stopPropagation();
+        });
+        $(".type-search").click(function (event) {
+            event.stopPropagation();
+        });
+    
+    
+    
+    $(".btn-total").click(function(){
+        $(".con-total").slideToggle();
+    });
+    $(".btn-advanced-down").click(function () {
+            $(".advanced-options").slideToggle("10");
+            $(this).parent().toggleClass("show");
+        });
+ var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': {allow_single_deselect: true},
+        '.chosen-select-no-single': {disable_search_threshold: 10},
+        '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+        '.chosen-select-width': {width: "95%"}
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+    
+    $("#file-0").fileinput({
+        'allowedFileExtensions' : ['jpg', 'png','gif'],
+    });
+    
+    $('.help-popover').popover();
+   
+
+</script>
+<script>
+  $(document).ready(function() {
+    var options = {
+      maxValue: 10,
+      minValue: 0,
+      step: 0.01,
+      inputWidth: 100,
+      start: -2,
+      plusClick: function(val) {
+        console.log(val);
+      },
+      minusClick: function(val) {
+        console.log(val);
+      },
+      exceptionFun: function(val) {
+        console.log("excep: " + val);
+      },
+      valueChanged: function(val) {
+        console.log('change: ' + val);
+      }
+    }
+    $(".wan-spinner-1").WanSpinner(options);
+  });
+  </script>
