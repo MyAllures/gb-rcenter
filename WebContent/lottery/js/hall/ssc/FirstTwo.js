@@ -1,7 +1,7 @@
 /**
  * 前二
  */
-define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
+define(['site/hall/ssc/GfwfPlayWay'], function (PlayWay) {
     return PlayWay.extend({
         playId : '5x',
         init: function () {
