@@ -130,6 +130,16 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
                 $hid.attr("fileName", files[index].files[0].name);
                 $hid.val(files[index].files[0].name);
             }
+        },
+        /**
+         *
+         * */
+        saveCallbak: function (e, option) {
+            if(option.data.state){
+                this.returnValue = true;
+                window.top.topPage.closeDialog();
+            }
+            //this.returnValue = true;
         }
     });
 });
