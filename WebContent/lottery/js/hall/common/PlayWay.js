@@ -264,6 +264,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
         },
         //ssc
         arrNumAll : function (obj) {
+            obj.parent().toggleClass('acti'); //变色
         },
         //ssc任选
         zuChengFangan :function () {
@@ -276,12 +277,14 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
         },
         //特殊玩法
         checkTeshu : function (plSelName,plSelIndex) {
+            return $("#jiangjin-change").data("value");
         },
         //删除重复号码
         delRrepet: function() {
         },
         //随机特殊号
         suiJiTeshu : function (code) {
+            return $("#jiangjin-change").data("value");
         },
         //gfwf赔率
         getGfwfAllOdd :function () {
