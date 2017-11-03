@@ -14,6 +14,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
         layerInfoInsert : null,
         tmpBetContent : null,
         gfwfPlJson : null,
+        alertContext:null,
         init: function () {
             this._super();
             this.getStringFormat();
@@ -624,14 +625,16 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 return;
             }
 
-
+            this.alertContext = "";
             _this.delRrepet();
             var data = eval("_this."+contentFun + "()");
             var zhushu = eval("_this."+zhushuFun + "()");
             if (data == -1) {
                 return;
             }
-
+            if (_this.alertContext != ''){
+                _this.alertmsg('');
+            }
             if (typeof data == 'undefined' || typeof zhushu == 'undefined' || zhushu <= 0) {
                 _this.alertmsg("号码选择不完整，请重新选择");
                 return;
@@ -895,7 +898,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             if (repeatArr.length <= 0) {
                 // _this.alertmsg("无重复号码！");
             } else {
-                _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
+                _this.alertContext = "已删除掉重复号: " + repeatArr.join(" ");
                 $(".content_jiang .content_tex").val(tempArr.join(" "));
             }
         }
@@ -911,7 +914,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             objArr.each(function () {
                 $(this).removeClass("acti");
                 var num = parseInt($(this).find("i").html());
-                if ($.inArray(num, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11]) >= 0) {
+                if ($.inArray(num, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27]) >= 0) {
                     $(this).addClass("acti");
                 }
             });
@@ -1809,7 +1812,7 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
                 reader.readAsText(file);
                 reader.onload = function (data) {
                     $(".content_tex").val(this.result);
-                    /* tt.innerHTML = this.result;*/
+                   _this.renderZhushu();
                 }
             } else {
                 $(".tzInsertTemplate .errorTxt").html("文件名不合法,只能上传txt格式");
@@ -2214,11 +2217,17 @@ define(['site/hall/ssc/PlayWay','site/plugin/template','range','css!themesCss/jq
             return Number(numstr);
         },
         alertmsg : function(context){
-            layer.alert(context, {
+            if (this.alertContext != ''){
+                this.alertContext = this.alertContext +"<br>"
+            }
+            layer.alert(this.alertContext+context, {
                 title: '温馨提示',
                 skin: 'layui-layer-popup layui-layer-rim', //加上边框
                 area: ['300px', '150px'], //宽高
             });
+            if (context != ''){
+                this.alertContext = '';
+            }
         }
     })
 });

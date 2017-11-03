@@ -120,25 +120,24 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
         /*========================================后3直选和值===============================================*/
 
         /**
-         * 注数-直选和值
+         * 注数-组选和值
          */
          zhushu_pl3_sanxing_zuxuan_zxhz :function() {
-            var heZhiArr = [], newArr = [];
+            var fuShiArr = [], newArr = [];
             $.each($("a.n-btn.hz.mui-active"), function (index, value) {
-                heZhiArr.push($.trim($(this).html()));
+                fuShiArr.push($.trim($(this).html()));
             });
 
-            var heZhiLength = heZhiArr.length;
-            if (heZhiLength <= 0) {
+            var zlLength = fuShiArr.length;
+            if (zlLength <= 0) {
                 return 0;
             }
-
-            newArr = _this.getHezNewArrs(heZhiArr);
+            newArr = _this.getZxhzNewArrs(fuShiArr);
             return newArr.length;
         },
 
         /**
-         * 后三直选-和值
+         * 后三组选-和值
          */
          content_pl3_sanxing_zuxuan_zxhz :function() {
             var heZhiArr = [];
@@ -190,8 +189,8 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
          * 随机算法-后三直选和值
          */
         random_pl3_sanxing_zuxuan_zxhz : function () {
-            var random_1 = parseInt(Math.random() * 28);
-            $("a.n-btn.hz").removeClass("mui-active").eq(random_1).addClass("mui-active");
+            var random_1 = (parseInt(Math.random() * 26) + 1);
+            $("a.n-btn.hz").removeClass("mui-active").eq(random_1-1).addClass("mui-active");
         },
 
 
@@ -563,7 +562,17 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
             return tempArr;
         },
 
-
+   /*     uniqueArr:function (obj) {
+            var temp = new Array();
+            obj.sort();
+            for(i = 0; i < obj.length; i++) {
+                if( obj[i] == obj[i+1]) {
+                    continue;
+                }
+                temp[temp.length]=obj[i];
+            }
+            return temp;
+        },*/
         /**
          * 后三组选-和值
          */

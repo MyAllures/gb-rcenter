@@ -24,7 +24,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,Bootstr
 
             $("._cacheKey").on("click",function () {
                 var cacheKey = $(this).html();
-                $("input[name=dataKey]").val(cacheKey + "*");
+                $("input[name=dataKey]").val(cacheKey);
             });
         },
 

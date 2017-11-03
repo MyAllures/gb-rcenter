@@ -144,6 +144,11 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                 var baseNum;
                 var rori;
                 var minlimit;
+                var sameRebate = Number($("input#sameRebate").val());
+                var sameRebate1 = Number($("input#sameRebate1").val());
+                var sameRebate2 = Number($("input#sameRebate2").val());
+                var betCode;
+                var betNum;
                 group = $form.find("div.tab-content table tbody td");
                 var len = group.length/2;
                 for (var i = 0; i < len; i++) {
@@ -156,7 +161,27 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     rebate = Number($rinput.val());
                     rori = Number($rinput.attr("data-value"));
                     baseNum = $(oddObj).find("input[name$=baseNum]").val();
-                    minlimit = baseNum*rebate.toFixed(3);
+                    minlimit = baseNum*rebate;
+                    minlimit = minlimit.toFixed(3);
+                    betCode = String($(oddObj).find("input[name$=betCode]").val());
+                    betNum = String($(oddObj).find("input[name$=betNum]").val());
+                    //三星（一星，三星统一用二星的返点比例）混合组选（组六统一用组三返点比例）混合和值（统一用组三的返点比例）
+                    if(("ssc_sanxing_zhixuan_hszh"==betCode && "三星"==betNum)||
+                        ("ssc_sanxing_zhixuan_hszh"==betCode && "一星"==betNum)||
+                        ("ssc_sanxing_zhixuan_qszh"==betCode && "三星"==betNum)||
+                        ("ssc_sanxing_zhixuan_qszh"==betCode && "一星"==betNum)||
+                        ("ssc_sanxing_zuxuan_hshhzx"==betCode && "组六"==betNum)||
+                        ("ssc_sanxing_zuxuan_qshhzx"==betCode && "组六"==betNum)||
+                        ("pl3_sanxing_zuxuan_hhzx"==betCode&& "组六"==betNum)){
+                        rebate = sameRebate;
+                    }else if(("ssc_sanxing_zuxuan_hszxhz"==betCode && "组六"==betNum)||
+                        ("pl3_sanxing_zuxuan_zxhz"==betCode&& "组六"==betNum)||
+                        ("ssc_sanxing_zuxuan_qszxhz"==betCode&& "组六"==betNum)){
+                        rebate = sameRebate1;
+                    }else if(("ssc_sanxing_zuxuan_hszxbd"==betCode&& "组六"==betNum)||
+                        ("ssc_sanxing_zuxuan_qszxbd"==betCode&& "组六"==betNum)){
+                        rebate = sameRebate2;
+                    }
                     if (odd != ori || rebate !=rori) {
                         if (!$input.valid()|| !$rinput.valid()) {
                             $target.unlock();
@@ -209,14 +234,36 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                             e.page.showPopover(e, option, 'success', '保存成功', true);
                             //修改还原数据
                             for (var i = 0; i < group.length; i++) {
-                                oddObj = group[i];
+                                oddObj = group[2*i];
+                                rebateObj = group[2*i+1];
                                 $input = $(oddObj).find("input.odd");
                                 odd = $input.val();
-                                $rinput = $(oddObj).find("input.rebate");
+                                $rinput = $(rebateObj).find("input.rebate");
                                 rebate = $rinput.val();
+                                sameRebate = Number($("input#sameRebate").val());
+                                sameRebate1 = Number($("input#sameRebate1").val());
+                                sameRebate2 = Number($("input#sameRebate2").val());
+                                betCode = String($(oddObj).find("input[name$=betCode]").val());
+                                betNum = String($(oddObj).find("input[name$=betNum]").val());
                                 ori = $input.attr("data-value");
                                 if (odd != ori) {
                                     ori = $input.attr("data-value", odd);
+                                }
+                                if(("ssc_sanxing_zhixuan_hszh"==betCode && "三星"==betNum)||
+                                    ("ssc_sanxing_zhixuan_hszh"==betCode && "一星"==betNum)||
+                                    ("ssc_sanxing_zhixuan_qszh"==betCode && "三星"==betNum)||
+                                    ("ssc_sanxing_zhixuan_qszh"==betCode && "一星"==betNum)||
+                                    ("ssc_sanxing_zuxuan_hshhzx"==betCode && "组六"==betNum)||
+                                    ("ssc_sanxing_zuxuan_qshhzx"==betCode && "组六"==betNum)||
+                                    ("pl3_sanxing_zuxuan_hhzx"==betCode&& "组六"==betNum)){
+                                    rebate = sameRebate;
+                                }else if(("ssc_sanxing_zuxuan_hszxhz"==betCode && "组六"==betNum)||
+                                    ("pl3_sanxing_zuxuan_zxhz"==betCode&& "组六"==betNum)||
+                                    ("ssc_sanxing_zuxuan_qszxhz"==betCode&& "组六"==betNum)){
+                                    rebate = sameRebate1;
+                                }else if(("ssc_sanxing_zuxuan_hszxbd"==betCode&& "组六"==betNum)||
+                                    ("ssc_sanxing_zuxuan_qszxbd"==betCode&& "组六"==betNum)){
+                                    rebate = sameRebate2;
                                 }
                                 rori = $rinput.attr("data-value");
                                 if (rebate != rori) {

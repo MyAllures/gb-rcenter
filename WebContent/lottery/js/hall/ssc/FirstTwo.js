@@ -680,6 +680,7 @@ define(['site/hall/ssc/SscGfwf'], function (PlayWay) {
                 for (var p = 0; p < pairArr.length; p++) {
                     allErrorArr.push(pairArr[p]);
                 }
+                allErrorArr.push("<br/>");
             }
 
             if (errorArr.length > 0) {

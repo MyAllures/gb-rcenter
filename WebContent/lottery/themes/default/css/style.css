@@ -423,7 +423,7 @@ body::-webkit-scrollbar{}/*--------------------------------*/
 .Betting .list_wrap ul li{height: 44px;line-height: 44px;width: 100%;}
 
 .Betting .list_wrap ul li.odd{background: #f7f7f7;}
-.Betting .list_wrap ul li span{width: 10%;float: left;text-align: center;color: #626262;}
+.Betting .list_wrap ul li span{width: 10%;max-width: 140px!important;float: left;text-align: center;color: #626262;}
 .Betting .list_wrap ul li span input{ position:relative; left:44px; top:18px; float:left;}
 .Betting .list_wrap ul li .notip{ width:85%; color:#d42f45; padding-left:20px; float:left;}
 .Betting .list_wrap ul li p{ width:30%; text-align:left; float:left; padding-left:30px;}
