@@ -28,6 +28,11 @@ define(['common/BaseListPage'], function (BaseListPage) {
            var formobj =  $("#noPayoutOrderForm")[0];
            this.query(event,option,formobj,"_this.getFirstForm()")
         },
+
+        lotteryMaintain: function (event,option) {
+           var formobj =  $("#lotteryMaintainForm")[0];
+           this.query(event,option,formobj,"_this.updateSysParamValue(data)")
+        },
         query : function(event,option,formobj,callback) {
                 window.top.topPage.ajax({
                     loading:true,
@@ -61,6 +66,11 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 return;
 
         },
+
+        updateSysParamValue:function(data){
+            console.info(data);
+        },
+
         getFirstForm:function(){
             alert(1)
         }
