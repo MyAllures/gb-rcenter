@@ -11,9 +11,9 @@
             <div class="present_wrap"><b>彩票系统工具</b></div>
             <div class="sys_tab_wrap clearfix">
                 <div class="m-sm">
-            <a href="lottery/lottery-tool.html" nav-target="mainFrame" class="label ssc-label ssc-active">维护</a>
+            <a href="lottery/lottery-tool.html" nav-target="mainFrame" class="label ssc-label">维护</a>
             <a href="lottery/lottery-tool-1.html" nav-target="mainFrame" class="label ssc-label">撤单</a>
-            <a href="lottery/lottery-tool-2.html" nav-target="mainFrame" class="label ssc-label">派彩</a>
+            <a href="lottery/lottery-tool-2.html" nav-target="mainFrame" class="label ssc-label ssc-active">派彩</a>
             <a href="lottery/lottery-tool-3.html" nav-target="mainFrame" class="label ssc-label">采集</a>
             <a href="lottery/lottery-tool-4.html" nav-target="mainFrame" class="label ssc-label">重结</a>
             </div>
@@ -32,13 +32,10 @@
                             <div class="btn-group table-desc-right-t-dropdown" initprompt="10条" callback="query">
                             <input type="hidden" name="paging.pageSize" value="">
                     <button type="button" class="btn btn btn-default right-radius" data-toggle="dropdown" aria-expanded="false">
-                        <span prompt="prompt">全部彩种</span>
+                        <span prompt="prompt"></span>
                         <span class="caret-a pull-right"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    	<li role="presentation">
-                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">全部彩种</a>
-                        </li>
                         <li role="presentation">
                             <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">重庆时时彩</a>
                         </li>
@@ -54,6 +51,21 @@
                         </div>
                     </div>
                     
+                    
+                    <div class="form-group clearfix col-sm-12">
+                        <div class="input-group date time-select-a">
+                            <span class="input-group-addon abroder-no"><b>期数：</b></span>
+                            <input type="text" class="form-control" placeholder="">
+                         </div>
+                    </div>
+                    <div class="form-group clearfix col-sm-12">
+                        <div class="input-group date time-select-a">
+                            <span class="input-group-addon abroder-no"><b>开奖号码：</b></span>
+                            <div class="pull-left">
+                            	<span class="cpq-num cpq-cqssc m-l-xs">12</span><span class="cpq-num cpq-cqssc m-l-xs">22</span><span class="cpq-num cpq-cqssc m-l-xs">16</span><span class="cpq-num cpq-cqssc m-l-xs">9</span><span class="cpq-num cpq-cqssc m-l-xs">14</span><span class="cpq-num cpq-cqssc m-l-xs">10</span>
+                            </div>
+                         </div>
+                    </div>
                     <div class="form-group clearfix col-sm-12">
                         <div class="input-group date time-select-a">
                             <span class="input-group-addon abroder-no"><b>站点：</b></span>
@@ -68,8 +80,8 @@
             </div>
             <div class="col-sm-12 clearfix template-menu">
                          
-                        <button class="btn btn-filter btn-md disabled" data-toggle="modal">维护</button>
-                        <button class="btn btn-filter btn-md" data-toggle="modal" data-target="#zstc5">维护</button>
+                        <button class="btn btn-filter btn-md disabled" data-toggle="modal">派彩</button>
+                        <button class="btn btn-filter btn-md" data-toggle="modal" data-target="#zstc5">派彩</button>
                         
                         </div>
             </div>
@@ -82,7 +94,7 @@
 <div class="modal-dialog">
 <div class="modal-content animated bounceInRight family">
 <div class="modal-header">
-<span class="filter">提示</span>
+<span class="filter">撤销</span>
 <button type="button" class="close" data-dismiss="modal">
 <span aria-hidden="true">&times;</span>
 <span class="sr-only">关闭</span>
@@ -105,18 +117,16 @@
 </div>
 </div>
 </div>
-
-
 <div class="modal inmodal in" id="zstc5" tabindex="-1" role="dialog" aria-hidden="false">
     <div class="modal-dialog">
         <div class="modal-content animated bounceInRight family">
             <div class="modal-header">
-                <span class="filter">维护</span>
+                <span class="filter">提示</span>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
             </div>
             <div class="modal-body">
                 <div class="clearfix m-md">
-                    <span class="line-hi25">维护维护维护维护维护维护维护维护维护维护维护维护维护维护维护维护维护维护维护维护维护，请谨慎操作！</span>
+                    <span class="line-hi25">您将对重庆时时彩第<font class="co-red">321154545</font>期的所有注单进行派彩，是否确认执行？</span>
                 </div>
             </div>
             <div class="modal-footer">
@@ -126,7 +136,6 @@
         </div>
     </div>
 </div>
-
 <script>
  $(".show-demand-b").click(function(){
       $(this).toggleClass("open")

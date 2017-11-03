@@ -1,6 +1,4 @@
-/**
- * 时时彩js
- */
+
 define(['site/hall/common/PlayWay'], function (PlayWay) {
     return PlayWay.extend({
         arrNum2 : [], //获取点击数的数组
@@ -281,6 +279,7 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
 
         //删除重复号码
         delRrepet: function() {
+            console.log(123456);
             var _this = this;
             var textStr = $("div.content_jiang").find(".content_tex").val();
             if (typeof (textStr)!= "undefined") {
@@ -301,7 +300,8 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                     tempArr = newArr.uniqueArr();
                 }
                 if (repeatArr.length > 0) {
-                    _this.alertContext = "已删除掉重复号: " + repeatArr.join(" ");
+                    // _this.alertContext = "已删除掉重复号: " + repeatArr.join(" ");
+                    _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
                     $(".content_jiang .content_tex").val(tempArr.join(" "));
                 }
             }
@@ -340,37 +340,6 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
             }
             return plSelVal;
         },
-
-        //删除重复号码
-        delRrepet: function() {
-            var _this = this;
-            var textStr = $("div.content_jiang").find(".content_tex").val();
-            if (typeof (textStr)!= "undefined") {
-                var newArr = [], repeatArr = [], tempArr = [];
-                textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
-                var arr_new = textStr.split(",");
-                for (var i = 0; i < arr_new.length; i++) {
-                    if (arr_new[i].toString().length > 0) {
-                        newArr.push(arr_new[i]);
-                    }
-                }
-                var playcode = _this.getPlayCode();
-                if (playcode == 'ssc_sanxing_zuxuan' || playcode == 'ssc_erxing_zuxuan') {//一些需要无序去重的玩法
-                    repeatArr = newArr.duplicateNewa().uniqueArra();
-                    tempArr = newArr.uniqueArra();
-                } else {
-                    repeatArr = newArr.duplicateNew().uniqueArr();
-                    tempArr = newArr.uniqueArr();
-                }
-                if (repeatArr.length <= 0) {
-                    // _this.alertmsg("无重复号码！");
-                } else {
-                    _this.alertContext = "已删除掉重复号: " + repeatArr.join(" ");
-                    $(".content_jiang .content_tex").val(tempArr.join(" "));
-                }
-            }
-        },
-
 
         suiJiTeshu : function(betContent){
             if ($.inArray(_this.getPlayId(), ["ssc_sanxing_zuxuan_qsts","ssc_sanxing_zuxuan_hsts"]) >= 0) {

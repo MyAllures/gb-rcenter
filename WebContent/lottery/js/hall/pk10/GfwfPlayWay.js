@@ -7,7 +7,6 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
         },
         onPageLoad: function () {
             this._super();
-            // page.refreshView();
         },
 
         getGfwfAllOdd: function () {
@@ -102,6 +101,7 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
 
         //删除重复号码
         delRrepet: function() {
+            console.log(1234567890);
             var _this = this;
             var textStr = $("div.content_jiang").find(".content_tex").val();
             if (typeof (textStr)!= "undefined") {
@@ -126,6 +126,41 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
             }
 
         },
+
+        // delRrepet: function() {
+        //     var _this = this;
+        //     // var xObj = $(obj).parent().parent().parent();
+        //     // var textStr = $(xObj).find(".content_tex").val();
+        //     var textStr = $("div.content_jiang").find(".content_tex").val();
+        //     if (typeof (textStr)!= "undefined") {
+        //         var newArr = [], repeatArr = [], tempArr = [];
+        //         textStr = textStr.replace(/(^\s+)|(\s+$)/g, "");//去掉前后空格
+        //         textStr = $.trim(textStr.replace(/[^01,02,03,04,05,06,07,08,09,10,11,' ']/g, ','));
+        //         textStr = $.trim(textStr.replace(/\s/g,""));
+        //         var arr_new = textStr.split(',');
+        //         for (var i = 0; i < arr_new.length; i++) {
+        //             if (arr_new[i].toString().length > 0) {
+        //                 newArr.push(arr_new[i]);
+        //             }
+        //         }
+        //         var playcode = _this.getPlayCode();
+        //         // if (playcode == 'ssc_sanxing_zuxuan' || playcode == 'ssc_erxing_zuxuan') {//涓€浜涢渶瑕佹棤搴忓幓閲嶇殑鐜╂硶
+        //         //     repeatArr = newArr.duplicateNewa().uniqueArra();
+        //         //     tempArr = newArr.uniqueArra();
+        //         // } else {
+        //         repeatArr = newArr.duplicateNew().uniqueArr();
+        //         tempArr = newArr.uniqueArr();
+        //         // }
+        //         if (repeatArr.length <= 0) {
+        //             // _this.alertmsg("鏃犻噸澶嶅彿鐮侊紒");
+        //         } else {
+        //             _this.alertmsg("已删除掉重复号? " + repeatArr.join(" "));
+        //             $(".content_jiang .content_tex").val(tempArr.join(","));
+        //         }
+        //     }
+        //     //閲嶆柊璁＄畻娉ㄦ暟
+        //     // _this.renderZhushu();
+        // },
 
     })
 });

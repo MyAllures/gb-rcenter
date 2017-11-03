@@ -84,6 +84,11 @@ define(['common/BaseListPage'], function (BaseListPage) {
 
 
         },
+
+        lotteryMaintain: function (event,option) {
+           var formobj =  $("#lotteryMaintainForm")[0];
+           this.query(event,option,formobj,"_this.updateSysParamValue(data)")
+        },
         query : function(event,option,formobj,callback) {
                 window.top.topPage.ajax({
                     loading:true,
@@ -114,6 +119,11 @@ define(['common/BaseListPage'], function (BaseListPage) {
                         window.top.topPage.showErrorMessage(data.responseText);
                         $(event.currentTarget).unlock();
                     }});
+
+        },
+
+        updateSysParamValue:function(data){
+            console.info(data);
         }
 
     });
