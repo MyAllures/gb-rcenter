@@ -5,7 +5,6 @@ define(['common/BaseEditPage', 'jqFileInput', 'UE.I18N.' + window.top.language, 
     return BaseEditPage.extend({
         maxRange: 30,
         ue: null,
-
         init: function () {
             this._super();
         },
@@ -325,39 +324,46 @@ define(['common/BaseEditPage', 'jqFileInput', 'UE.I18N.' + window.top.language, 
          */
         initUEditor: function () {
             var _this = this;
+
             for (var i = 0; i < languageCounts; i++) {
-                UE.delEditor('editContent' + i);
-                this.ue = UE.getEditor('editContent' + i, {
-                    toolbars: [
-                        [
-                            'source','anchor', 'undo', 'redo', 'bold', 'indent', 'italic', 'underline', 'strikethrough', 'subscript', 'fontborder',
-                            'superscript', 'formatmatch', 'blockquote', 'pasteplain', 'selectall', 'preview', 'horizontal', 'removeformat', 'time',
-                            'date', 'unlink', 'insertrow', 'insertcol', 'mergeright', 'mergedown', 'deleterow', 'deletecol', 'splittorows', 'splittocols',
-                            'splittocells', 'deletecaption', 'inserttitle', 'mergecells', 'deletetable', 'cleardoc', 'insertparagraphbeforetable',
-                            'fontfamily', 'fontsize', 'paragraph', 'edittable', 'edittd', 'link', 'spechars', 'searchreplace', 'justifyleft', 'justifyright',
-                            'justifycenter', 'justifyjustify', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'fullscreen',
-                            'directionalityltr', 'directionalityrtl', 'rowspacingtop', 'rowspacingbottom', 'imagenone', 'imageleft', 'imageright',
-                            'imagecenter', 'lineheight', 'edittip ', 'customstyle', 'autotypeset', 'touppercase', 'tolowercase', 'background', 'inserttable',
-                            'simpleupload', 'insertimage'
-                        ]
-                    ],
-                    imageUrlPrefix: window.top.imgRoot + "/files/",
-                    urlParam: 'objId=' + i + '&catePath=activityPic',
-                    enableAutoSave: false, /*是否自动保存*/
-                    initialFrameWidth: ($(window.document).width() * .6), /*初始化编辑器宽度*/
-                    initialFrameHeight: 200, /*初始化编辑器高度*/
-                    autoHeightEnabled: false, /*是否自动长高*/
-                    autoFloatEnabled: true, /*toolbar 是否固定 */
-                    elementPathEnabled: false,
-                    maximumWords: 1000000000,
-                    index: i,
-                    wordCount: false
-                });
+                if( $("div._editArea"+i).length>0) {
+                    this.ue = UE.getEditor('editContent' + i);
+                } else {
+                    UE.delEditor('editContent' + i);
+                    this.ue = UE.getEditor('editContent' + i, {
+                        toolbars: [
+                            [
+                                'source','anchor', 'undo', 'redo', 'bold', 'indent', 'italic', 'underline', 'strikethrough', 'subscript', 'fontborder',
+                                'superscript', 'formatmatch', 'blockquote', 'pasteplain', 'selectall', 'preview', 'horizontal', 'removeformat', 'time',
+                                'date', 'unlink', 'insertrow', 'insertcol', 'mergeright', 'mergedown', 'deleterow', 'deletecol', 'splittorows', 'splittocols',
+                                'splittocells', 'deletecaption', 'inserttitle', 'mergecells', 'deletetable', 'cleardoc', 'insertparagraphbeforetable',
+                                'fontfamily', 'fontsize', 'paragraph', 'edittable', 'edittd', 'link', 'spechars', 'searchreplace', 'justifyleft', 'justifyright',
+                                'justifycenter', 'justifyjustify', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'fullscreen',
+                                'directionalityltr', 'directionalityrtl', 'rowspacingtop', 'rowspacingbottom', 'imagenone', 'imageleft', 'imageright',
+                                'imagecenter', 'lineheight', 'edittip ', 'customstyle', 'autotypeset', 'touppercase', 'tolowercase', 'background', 'inserttable',
+                                'simpleupload', 'insertimage'
+                            ]
+                        ],
+                        imageUrlPrefix: window.top.imgRoot + "/files/",
+                        urlParam: 'objId=' + i + '&catePath=activityPic',
+                        enableAutoSave: false, /*是否自动保存*/
+                        initialFrameWidth: ($(window.document).width() * .6), /*初始化编辑器宽度*/
+                        initialFrameHeight: 200, /*初始化编辑器高度*/
+                        autoHeightEnabled: false, /*是否自动长高*/
+                        autoFloatEnabled: true, /*toolbar 是否固定 */
+                        elementPathEnabled: false,
+                        maximumWords: 1000000000,
+                        index: i,
+                        wordCount: false
+                    });
+
+                }
                 this.ue.addListener("contentChange", function (e) {
                     var index = this.options.index;
                     var areaClassName = '._editArea' + index;
                     this.sync();
                     $($(areaClassName)[1]).valid();
+                    $("textarea").text( UE.getEditor('editContent'+index).getContent());
                     _this.updateText(e, index);
                 });
             }
