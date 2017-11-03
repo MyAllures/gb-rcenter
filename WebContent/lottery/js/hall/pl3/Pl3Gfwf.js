@@ -20,20 +20,20 @@ define(['site/hall/pl3/Pl3PlayWay','site/plugin/template','range','css!themesCss
             this.getGfwfAllOdd();//获取所有官方玩法奖金，返点数据，并初始化子页面
 
         },
-        bindButtonEvents: function () {
-            var _this = this;
-            $(".group ul li p span").click(function () {
-                $(".group ul li p span.acti").removeClass("acti");
-                $(this).addClass("acti");
-                var currentId = $(this).attr('data-play_id');
-                if(currentId != null){
-                    playId = currentId;
-                }
-                // 初始化子页面
-                _this.initSubPage();
-            });
-
-        },
+        // bindButtonEvents: function () {
+        //     var _this = this;
+        //     $(".group ul li p span").click(function () {
+        //         $(".group ul li p span.acti").removeClass("acti");
+        //         $(this).addClass("acti");
+        //         var currentId = $(this).attr('data-play_id');
+        //         if(currentId != null){
+        //             playId = currentId;
+        //         }
+        //         // 初始化子页面
+        //         _this.initSubPage();
+        //     });
+        //
+        // },
         getGfwfAllOdd: function () {
             var betCode = $("span.playPlIdBtn.acti").attr("data-play_id");
             var _this = this;
