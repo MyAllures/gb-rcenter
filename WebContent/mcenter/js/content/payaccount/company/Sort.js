@@ -26,9 +26,11 @@ define(['common/BaseEditPage', 'nestable', 'bootstrapswitch', 'css!themesCss/jqu
             this.unInitSwitch($bootstrapSwitch)
                 .bootstrapSwitch()
                 .on('switchChange.bootstrapSwitch', function (event, state) {
+                    var rankId = $("input[name='openMoreAccount']").attr("data-rank");
                     window.top.topPage.ajax({
                         url: root + '/vPayAccount/changeOpenAccounts.html',
                         dataType: 'json',
+                        data: {'rankId': rankId, 'state': state},
                         success: function (data) {
                             if (data && data == true) {
                                 var $obj = $("[name='openMoreAccount']");
