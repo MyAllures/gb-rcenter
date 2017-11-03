@@ -22,9 +22,8 @@
                                             target="_blank"
                                         </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
-                                        <a href="javascript:canShowLottery(searchId)">
-                                    </#if>
-                                >
+                                            href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
+                                    </#if>>
                                     <#if data.floatPicItems[key].mouseInEffect?? && data.floatPicItems[key].mouseInEffect!="">
                                         <img src="${imgPath(data.configInfo.domain,data.floatPicItems[key].mouseInEffect)}" alt="">
                                     </#if>
@@ -45,9 +44,8 @@
                                                 href="<#if data.floatPicItems[key].imgLinkType?string == 'link'>${data.floatPicItems[key].imgLinkValue?contains("http://")?string("","http://")}</#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
                                         </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
-                                    <a href="javascript:canShowLottery(searchId)">
-                                    </#if>
-                        >
+                                            href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
+                                    </#if>>
                                     <#if data.floatPicItems[key].mouseInEffect?? && data.floatPicItems[key].mouseInEffect!="">
                                         <img src="${imgPath(data.configInfo.domain,data.floatPicItems[key].mouseInEffect)}" alt="">
                                     </#if>
@@ -68,9 +66,8 @@
                                                 href="<#if data.floatPicItems[key].imgLinkType?string == 'link'>${data.floatPicItems[key].imgLinkValue?contains("http://")?string("","http://")}</#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
                                         </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
-                                        <a href="javascript:canShowLottery(searchId)">
-                                    </#if>
-                                >
+                                            href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
+                                    </#if>>
                                     <#if data.floatPicItems[key].mouseInEffect?? && data.floatPicItems[key].mouseInEffect!="">
                                         <img src="${imgPath(data.configInfo.domain,data.floatPicItems[key].mouseInEffect)}" alt="">
                                     </#if>
@@ -99,9 +96,8 @@
                                                 href="<#if data.floatPicItems[key].imgLinkType?string == 'link'>${data.floatPicItems[key].imgLinkValue?contains("http://")?string("","http://")}</#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
                                         </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
-                                        <a href="javascript:canShowLottery(searchId)">
-                                    </#if>
-                                >
+                                            href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
+                                    </#if>>
                                     <#if data.floatPicItems[key].mouseInEffect?? && data.floatPicItems[key].mouseInEffect!="">
                                         <img src="${imgPath(data.configInfo.domain,data.floatPicItems[key].mouseInEffect)}" alt="">
                                     </#if>
@@ -122,9 +118,8 @@
                                                 href="<#if data.floatPicItems[key].imgLinkType?string == 'link'>${data.floatPicItems[key].imgLinkValue?contains("http://")?string("","http://")}</#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
                                         </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
-                                        <a href="javascript:canShowLottery(searchId)">
-                                    </#if>
-                                >
+                                            href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
+                                    </#if>>
                                     <#if data.floatPicItems[key].mouseInEffect?? && data.floatPicItems[key].mouseInEffect!="">
                                         <img src="${imgPath(data.configInfo.domain,data.floatPicItems[key].mouseInEffect)}" alt="">
                                     </#if>
@@ -145,9 +140,8 @@
                                                 href="<#if data.floatPicItems[key].imgLinkType?string == 'link'>${data.floatPicItems[key].imgLinkValue?contains("http://")?string("","http://")}</#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
                                         </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
-                                        <a href="javascript:canShowLottery(searchId)">
-                                    </#if>
-                                >
+                                            href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
+                                    </#if>>
                                     <#if data.floatPicItems[key].mouseInEffect?? && data.floatPicItems[key].mouseInEffect!="">
                                         <img src="${imgPath(data.configInfo.domain,data.floatPicItems[key].mouseInEffect)}" alt="">
                                     </#if>

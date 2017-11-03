@@ -328,18 +328,32 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                     }
                 }
             }
-            newArr = newArr.uniqueArr();
+
             if (newArr.length <= 0) {
                 return 0;
             }
-
-            if (errorArr.length > 0) {
-                for (var e = 0; e < errorArr.length; e++) {
-                    errorStr += errorArr[e] + ",";
+            var lastArr =[];
+            var repeatArr = [];
+            for(var i=0;i<newArr.length;i++){
+                if(this.contain_pl3zxds(lastArr,newArr[i])){
+                    repeatArr.push(newArr[i]);
+                }else{
+                    lastArr.push(newArr[i]);
                 }
-                _this.alertmsg("被过滤掉的错误号码" + errorStr);
             }
 
+            if (repeatArr.length> 0) {
+                errorStr += "已删除掉重复号: " + repeatArr.join(" ")+"<br/>";
+            }
+
+            if (errorArr.length > 0) {
+                errorStr += "被过滤掉的错误号码" + errorArr.join(" ")+"<br/>";
+            }
+            if(errorStr.length>0){
+                _this.alertmsg(errorStr);
+            }
+
+            newArr = newArr.uniqueArr();
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -485,18 +499,11 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 }
             }
 
-            //先排序
-            for(var i=0;i<tempArr.length;i++){
-                var chars =[];
-                for(var j=0;j<tempArr[i].length;j++){
-                    chars.push(tempArr[i][j]);
-                }
-                tempArr[i]=chars.sort().join("");
-            }
-            //再去重
             var lastArr =[];
             var repeatArr = [];
+
             for(var i=0;i<tempArr.length;i++){
+
                 if(this.contain_pl3z6ds(lastArr,tempArr[i])){
                     repeatArr.push(tempArr[i]);
                 }else{
@@ -531,15 +538,6 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 }
             }
 
-            //先排序
-            for(var i=0;i<tempArr.length;i++){
-                var chars =[];
-                for(var j=0;j<tempArr[i].length;j++){
-                    chars.push(tempArr[i][j]);
-                }
-                tempArr[i]=chars.sort().join("");
-            }
-            //再去重
             var lastArr =[];
             var repeatArr = [];
             for(var i=0;i<tempArr.length;i++){
@@ -631,15 +629,6 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 }
             }
 
-            //先排序
-            for(var i=0;i<tempArr.length;i++){
-                var chars =[];
-                for(var j=0;j<tempArr[i].length;j++){
-                    chars.push(tempArr[i][j]);
-                }
-                tempArr[i]=chars.sort().join("");
-            }
-            //再去重
             var lastArr =[];
             var repeatArr = [];
             for(var i=0;i<tempArr.length;i++){
@@ -1321,15 +1310,6 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             return 0;
         }
 
-        //先排序
-        for(var i=0;i<tempArr.length;i++){
-            var chars =[];
-            for(var j=0;j<tempArr[i].length;j++){
-                chars.push(tempArr[i][j]);
-            }
-            tempArr[i]=chars.sort().join("");
-        }
-        //再去重
         var lastArr =[];
         var repeatArr = [];
         for(var i=0;i<tempArr.length;i++){
@@ -1341,14 +1321,15 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         }
 
         if (repeatArr.length> 0) {
-            _this.alertmsg("已删除掉重排序重复号: " + repeatArr.join(" "));
+            errorStr += "已删除掉重复号: " + repeatArr.join(" ")+"<br/>";
         }
 
         if (errorArr.length > 0) {
-            for (var e = 0; e < errorArr.length; e++) {
-                errorStr += errorArr[e] + ",";
-            }
-            _this.alertmsg("被过滤掉的错误号码" + errorStr);
+            errorStr += "被过滤掉的错误号码: "+errorArr.join(" ")+"<br/>";
+        }
+
+        if(errorStr.length>0){
+            _this.alertmsg(errorStr);
         }
 
         // 初始化变量
@@ -1399,18 +1380,11 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             return 0;
         }
 
-        //先排序
-        for(var i=0;i<tempArr.length;i++){
-            var chars =[];
-            for(var j=0;j<tempArr[i].length;j++){
-                chars.push(tempArr[i][j]);
-            }
-            tempArr[i]=chars.sort().join("");
-        }
-        //再去重
         var lastArr =[];
         var repeatArr = [];
+
         for(var i=0;i<tempArr.length;i++){
+
             if(this.contain_pl3z6ds(lastArr,tempArr[i])){
                 repeatArr.push(tempArr[i]);
             }else{
@@ -1419,16 +1393,16 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         }
 
         if (repeatArr.length> 0) {
-            _this.alertmsg("已删除掉重排序重复号: " + repeatArr.join(" "));
+            errorStr += "已删除掉重复号: " + repeatArr.join(" ")+"<br/>";
         }
 
         if (errorArr.length > 0) {
-            for (var e = 0; e < errorArr.length; e++) {
-                errorStr += errorArr[e] + ",";
-            }
-            _this.alertmsg("被过滤掉的错误号码" + errorStr);
+            errorStr += "被过滤掉的错误号码: "+errorArr.join(" ")+"<br/>";
         }
 
+        if(errorStr.length>0){
+            _this.alertmsg(errorStr);
+        }
         // 初始化变量
         var showPlayName = '';
         var showContent = '';
@@ -1503,15 +1477,6 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             return 0;
         }
 
-        //先排序
-        for(var i=0;i<tempArr.length;i++){
-            var chars =[];
-            for(var j=0;j<tempArr[i].length;j++){
-                chars.push(tempArr[i][j]);
-            }
-            tempArr[i]=chars.sort().join("");
-        }
-        //再去重
         var lastArr =[];
         var repeatArr = [];
         for(var i=0;i<tempArr.length;i++){
@@ -1523,16 +1488,16 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         }
 
         if (repeatArr.length> 0) {
-            _this.alertmsg("已删除掉重排序重复号: " + repeatArr.join(" "));
+            errorStr += "已删除掉重复号: " + repeatArr.join(" ")+"<br/>";
         }
 
         if (errorArr.length > 0) {
-            for (var e = 0; e < errorArr.length; e++) {
-                errorStr += errorArr[e] + ",";
-            }
-            _this.alertmsg("被过滤掉的错误号码" + errorStr);
+            errorStr += "被过滤掉的错误号码: "+errorArr.join(" ")+"<br/>";
         }
 
+        if(errorStr.length>0){
+            _this.alertmsg(errorStr);
+        }
 
         // 初始化变量
         var showPlayName = '';
@@ -1551,16 +1516,49 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
     },
 
     contain_pl3z3ds:function(newArr,item){
+
         for(var i=0;i<newArr.length;i++){
-            if(newArr[i].charAt(0) ==item.charAt(0) && newArr[i].charAt(1) ==item.charAt(1) && newArr[i].charAt(2) ==item.charAt(2)){
+            var a=[];
+            var b=[];
+            a.push(newArr[i].charAt(0));
+            a.push(newArr[i].charAt(1));
+            a.push(newArr[i].charAt(2));
+
+            b.push(item.charAt(0));
+            b.push(item.charAt(1));
+            b.push(item.charAt(2));
+
+            if(a.sort().join("")==b.sort().join("")){
                 return true;
             }
         }
         return false;
     },
-    contain_pl3z6ds:function(newArr,item){
+
+    contain_pl3zxds:function(newArr,item){
+
         for(var i=0;i<newArr.length;i++){
-            if(newArr[i].charAt(0) ==item.charAt(0) && newArr[i].charAt(1) ==item.charAt(1) && newArr[i].charAt(2) ==item.charAt(2)){
+            if(newArr[i].charAt(0)==item.charAt(0) && newArr[i].charAt(1)==item.charAt(1) && newArr[i].charAt(2)==item.charAt(2)){
+                return true;
+            }
+        }
+        return false;
+    },
+
+    contain_pl3z6ds:function(newArr,item){
+
+        for(var i=0;i<newArr.length;i++){
+            var a=[];
+            var b=[];
+            a.push(newArr[i].charAt(0));
+            a.push(newArr[i].charAt(1));
+            a.push(newArr[i].charAt(2));
+
+            b.push(item.charAt(0));
+            b.push(item.charAt(1));
+            b.push(item.charAt(2));
+
+            if(a.sort().join("")==b.sort().join("")){
                 return true;
             }
         }
@@ -1568,8 +1566,19 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
     },
 
     contain_pl3hhzx:function(newArr,item){
+
         for(var i=0;i<newArr.length;i++){
-            if(newArr[i].charAt(0) ==item.charAt(0) && newArr[i].charAt(1) ==item.charAt(1) && newArr[i].charAt(2) ==item.charAt(2)){
+            var a=[];
+            var b=[];
+            a.push(newArr[i].charAt(0));
+            a.push(newArr[i].charAt(1));
+            a.push(newArr[i].charAt(2));
+
+            b.push(item.charAt(0));
+            b.push(item.charAt(1));
+            b.push(item.charAt(2));
+
+            if(a.sort().join("")==b.sort().join("")){
                 return true;
             }
         }
