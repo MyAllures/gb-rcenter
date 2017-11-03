@@ -12,17 +12,27 @@
 <%--百家乐、保险百家乐--%>
 <c:if test="${betType eq 'BACCARAT' || betType eq 'BACCARAT_INSURANCE'}">
     <c:if test="${!empty porkerList && !empty porkerListSet}">
-        庄：
+        <span style="vertical-align: 10px">
+        庄：&nbsp;&nbsp;&nbsp;(
+        </span>
         <c:forEach items="${porkerList}" var="poker">
             <gb:poker poker="${poker}"/>
         </c:forEach>
+        <span style="vertical-align: 10px">
+        )
+        </span>
         <br/>
-        闲：
+        <span style="vertical-align: 10px">
+        闲：&nbsp;&nbsp;&nbsp;(
+        </span>
         <c:forEach items="${porkerListSet}" var="pokerList">
             <c:forEach items="${pokerList}" var="poker">
                 <gb:poker poker="${poker}"/>
             </c:forEach>
         </c:forEach>
+        <span style="vertical-align: 10px">
+        )
+        </span>
     </c:if>
     <c:if test="${empty porkerList || empty porkerListSet}">
         --
@@ -31,23 +41,38 @@
 <%--牛牛--%>
 <c:if test="${betType eq 'BULL_BULL'}">
     <c:if test="${!empty commonPorker}">
-        公牌：
+        <span style="vertical-align: 10px">
+        公牌：&nbsp;&nbsp;(
+        </span>
         <c:forEach items="${commonPorker}" var="poker">
             <gb:poker poker="${poker}"/>
         </c:forEach>
+        <span style="vertical-align: 10px">
+        )
+        </span>
         <br/>
     </c:if>
     <c:if test="${!empty porkerList && !empty porkerListSet}">
-        庄：&nbsp;&nbsp;&nbsp;
+        <span style="vertical-align: 10px">
+        庄：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(
+        </span>
         <c:forEach items="${porkerList}" var="poker">
             <gb:poker poker="${poker}"/>
         </c:forEach>
+        <span style="vertical-align: 10px">
+        )
+        </span>
         <br/>
         <c:forEach items="${porkerListSet}" var="pokerList" varStatus="pokerIndex">
-            闲${pokerIndex.index+1}：&nbsp;
+            <span style="vertical-align: 10px">
+            闲${pokerIndex.index+1}：&nbsp;&nbsp;&nbsp;(
+            </span>
             <c:forEach items="${pokerList}" var="poker">
                 <gb:poker poker="${poker}"/>
             </c:forEach>
+            <span style="vertical-align: 10px">
+              )
+            </span>
             <c:if test="${pokerIndex.index!=fn:length(porkerListSet)-1}">
                 <br/>
             </c:if>
@@ -60,17 +85,27 @@
 <%--龙虎--%>
 <c:if test="${betType eq 'DRAGON_TIGER'}">
     <c:if test="${!empty porkerList && !empty porkerListSet}">
-        龙：
+        <span style="vertical-align: 10px">
+        龙：&nbsp;&nbsp;&nbsp;(
+        </span>
         <c:forEach items="${porkerList}" var="poker">
             <gb:poker poker="${poker}"/>
         </c:forEach>
+        <span style="vertical-align: 10px">
+        )
+        </span>
         <br/>
-        虎：
+        <span style="vertical-align: 10px">
+        虎：&nbsp;&nbsp;&nbsp;(
+        </span>
         <c:forEach items="${porkerListSet}" var="pokerList">
             <c:forEach items="${pokerList}" var="poker">
                 <gb:poker poker="${poker}"/>
             </c:forEach>
         </c:forEach>
+        <span style="vertical-align: 10px">
+        )
+        </span>
     </c:if>
     <c:if test="${empty porkerList || empty porkerListSet}">
         --
@@ -121,16 +156,26 @@
 <%--三公--%>
 <c:if test="${betType eq 'THREE_FACE'}">
     <c:if test="${!empty porkerList && !empty porkerListSet}">
-        庄：&nbsp;&nbsp;
+        <span style="vertical-align: 10px">
+        庄：&nbsp;&nbsp;&nbsp;(
+        </span>
         <c:forEach items="${porkerList}" var="poker">
             <gb:poker poker="${poker}"/>
         </c:forEach>
+        <span style="vertical-align: 10px">
+        )
+        </span>
         <br/>
         <c:forEach items="${porkerListSet}" var="pokerList" varStatus="pokerIndex">
-            闲${pokerIndex.index+1}：
+            <span style="vertical-align: 10px">
+            闲${pokerIndex.index+1}：&nbsp;&nbsp;&nbsp;(
+            </span>
             <c:forEach items="${pokerList}" var="poker">
                 <gb:poker poker="${poker}"/>
             </c:forEach>
+            <span style="vertical-align: 10px">
+            )
+            </span>
             <c:if test="${pokerIndex.index!=fn:length(porkerListSet)-1}">
                 <br/>
             </c:if>
@@ -143,18 +188,26 @@
 <%--温州牌九--%>
 <c:if test="${betType eq 'WENZHOU_PAI_GOW'}">
     <c:if test="${!empty porkerList && !empty porkerListSet}">
-        庄：&nbsp;&nbsp;&nbsp;
+        <span style="vertical-align: 10px">
+        庄：&nbsp;&nbsp;&nbsp;(
+        </span>
         <c:forEach items="${porkerList}" var="poker">
             <gb:poker poker="${poker}"/>
         </c:forEach>
+        <span style="vertical-align: 10px">
+            )
+        </span>
         <br/>
         <c:forEach items="${porkerListSet}" var="pokerList" varStatus="pokerIndex">
-            <c:if test="${pokerIndex.index==0}">顺门：</c:if>
-            <c:if test="${pokerIndex.index==1}">出门：</c:if>
-            <c:if test="${pokerIndex.index==2}">到门：</c:if>
+            <c:if test="${pokerIndex.index==0}"> <span style="vertical-align: 10px">顺门：&nbsp;&nbsp;&nbsp;(</span></c:if>
+            <c:if test="${pokerIndex.index==1}"> <span style="vertical-align: 10px">出门：&nbsp;&nbsp;&nbsp;(</span></c:if>
+            <c:if test="${pokerIndex.index==2}"> <span style="vertical-align: 10px">到门：&nbsp;&nbsp;&nbsp;(</span></c:if>
             <c:forEach items="${pokerList}" var="poker">
                 <gb:poker poker="${poker}"/>
             </c:forEach>
+            <span style="vertical-align: 10px">
+            )
+            </span>
             <c:if test="${pokerIndex.index!=fn:length(porkerListSet)-1}">
                 <br/>
             </c:if>
@@ -167,22 +220,37 @@
 <%--德州扑克--%>
 <c:if test="${betType eq 'TEXAS_HOLDEM'}">
     <c:if test="${!empty porkerList && !empty porkerListSet}">
-        公牌：
+        <span style="vertical-align: 10px">
+        公牌：&nbsp;&nbsp;&nbsp;(
+        </span>
         <c:forEach items="${commonPorker}" var="poker">
             <gb:poker poker="${poker}"/>
         </c:forEach>
+        <span style="vertical-align: 10px">
+            )
+        </span>
         <br/>
-        庄：&nbsp;&nbsp;
+        <span style="vertical-align: 10px">
+        庄：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(
+         </span>
         <c:forEach items="${porkerList}" var="poker">
             <gb:poker poker="${poker}"/>
         </c:forEach>
+        <span style="vertical-align: 10px">
+            )
+        </span>
         <br/>
-        闲：&nbsp;&nbsp;
+        <span style="vertical-align: 10px">
+        闲：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(
+         </span>
         <c:forEach items="${porkerListSet}" var="pokerList">
             <c:forEach items="${pokerList}" var="poker">
                 <gb:poker poker="${poker}"/>
             </c:forEach>
         </c:forEach>
+        <span style="vertical-align: 10px">
+            )
+        </span>
     </c:if>
     <c:if test="${empty porkerList || empty porkerListSet}">
         --
