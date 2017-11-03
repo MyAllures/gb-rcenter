@@ -6,7 +6,6 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
         code: null,
         //基本路径
         baseUrl: null,
-
         layerInfo : null,
         layerTishi1 : null,
         layerTishi2 : null,
@@ -127,6 +126,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
             };
             $(".main-left .table-common input").each(function () {
                 var betAmount = $(this).val();
+                console.log($('i#expect').text())
                 if (typeof betAmount != 'undefined' && betAmount != '') {
                     //改为attr取值，防止值变动，这里的$(this).data值不变
                     betForm.betOrders.push({
@@ -169,7 +169,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 });
             });
             var _this = this;
-            _this.saveBetOrder(data);
+            _this.saveBetOrder(JSON.stringify(data));
         },
 
 
@@ -264,6 +264,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
         },
         //ssc
         arrNumAll : function (obj) {
+            obj.parent().toggleClass('acti'); //变色
         },
         //ssc任选
         zuChengFangan :function () {
@@ -276,12 +277,11 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
         },
         //特殊玩法
         checkTeshu : function (plSelName,plSelIndex) {
-        },
-        //删除重复号码
-        delRrepet: function() {
+            return $("#jiangjin-change").data("value");
         },
         //随机特殊号
         suiJiTeshu : function (code) {
+            return $("#jiangjin-change").data("value");
         },
         //gfwf赔率
         getGfwfAllOdd :function () {
@@ -484,7 +484,6 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                     _this.renderZhushu();
                 }
             });
-
             $(".my-slide-theme .back-bar .pointer").attr("tabIndex", -1);    // 滑块添加tabIndex来获得focus事件
         },
 
@@ -631,8 +630,6 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 return result;
             } else {// 单一赔率
                 var obj = null;
-                console.log("BBBBBBBBBBBBBBB")
-                console.log(this.gfwfPlJson.length)
                 for (var i = 0; i < this.gfwfPlJson.length; ++i) {
                     var o = this.gfwfPlJson[i];
                     $.each(o, function (index, value) {
@@ -999,7 +996,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 if (data == -1) {
                     return;
                 }
-                _this.suiJiTeshu(data.betContent);
+                plSelVal=_this.suiJiTeshu(data.betContent);
                 var obj = {};
                 //======函数获取=====
                 obj.showPlayName = data.showPlayName;
@@ -1649,15 +1646,10 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 });
                 //追号
                 var money = 0;
-
                 betForm.totalMoney = (betForm.totalMoney).toFixed(3);
                 betForm = JSON.stringify(betForm);
-                console.log(betForm);
-                console.log("AAAAAAAAAAAAAAAAAAAAAA");
                 // 解决双引号冲突
                 tmpBetContent = betForm;
-                console.log(tmpBetContent);
-
                 // 确定按钮
                 $("#gfwfBetForm_submit").click(function () {
                     _this.saveBetOrder(tmpBetContent);
@@ -1896,6 +1888,9 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 skin: 'layui-layer-popup layui-layer-rim', //加上边框
                 area: ['300px', '150px'], //宽高
             });
+            if (context != ''){
+                this.alertContext = '';
+            }
         }
 
     });

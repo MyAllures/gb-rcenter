@@ -1,5 +1,5 @@
 
-define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
+define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
     return PlayWay.extend({
         playId : 'qezxfs',
         init: function () {
@@ -264,10 +264,7 @@ define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
                 playGroupId: this.playGroupId
             };
         },
-        //删除重复号码
-        delRrepet: function() {
 
-        }
 
 
 })
