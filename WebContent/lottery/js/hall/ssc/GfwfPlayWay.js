@@ -279,7 +279,6 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
 
         //删除重复号码
         delRrepet: function() {
-            console.log(123456);
             var _this = this;
             var textStr = $("div.content_jiang").find(".content_tex").val();
             if (typeof (textStr)!= "undefined") {
