@@ -274,7 +274,6 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
         },
         //去除重复号码
         delRrepet : function (){
-            debugger;
         },
         //特殊玩法
         checkTeshu : function (plSelName,plSelIndex) {

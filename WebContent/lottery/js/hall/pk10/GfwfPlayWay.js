@@ -7,7 +7,6 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
         },
         onPageLoad: function () {
             this._super();
-            // page.refreshView();
         },
 
         getGfwfAllOdd: function () {
@@ -102,6 +101,7 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
 
         //删除重复号码
         delRrepet: function() {
+            console.log(1234567890);
             var _this = this;
             var textStr = $("div.content_jiang").find(".content_tex").val();
             if (typeof (textStr)!= "undefined") {

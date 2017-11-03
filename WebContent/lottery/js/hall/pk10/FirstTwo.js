@@ -264,10 +264,7 @@ define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
                 playGroupId: this.playGroupId
             };
         },
-        //删除重复号码
-        delRrepet: function() {
 
-        }
 
 
 })
