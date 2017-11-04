@@ -10,6 +10,7 @@ define(['common/BaseEditPage', 'nestable', 'bootstrapswitch', 'css!themesCss/jqu
         onPageLoad: function () {
             this._super();
             this.initNestable();
+            this.initCheck();
         },
         bindEvent: function () {
             this._super();
@@ -21,6 +22,11 @@ define(['common/BaseEditPage', 'nestable', 'bootstrapswitch', 'css!themesCss/jqu
                 $(".table-responsive").hide();
                 $("#" + data + ".table-responsive").show();
             });
+        },
+        /**
+         * 初始化checkbox
+         */
+        initCheck:function() {
             //是否开启多个账号
             var $bootstrapSwitch = $("[name='openMoreAccount']");
             this.unInitSwitch($bootstrapSwitch)
@@ -79,6 +85,7 @@ define(['common/BaseEditPage', 'nestable', 'bootstrapswitch', 'css!themesCss/jqu
                     $(e.currentTarget).addClass("current");
                     $("#companySort").html(data);
                     _this.initNestable();
+                    _this.initCheck();
                     $(e.currentTarget).unlock();
                 }
             });
