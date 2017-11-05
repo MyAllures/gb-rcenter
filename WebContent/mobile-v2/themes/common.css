@@ -2710,6 +2710,7 @@ body.no-backdrop .mui-backdrop{
     vertical-align: middle;
     background: url(../images/pay-third.png) left top no-repeat;
 }
+
 /* 银行 */
 
 /* 00 其它 */
@@ -4132,7 +4133,9 @@ div.tab-2 a.mui-active span {
 .pay-bank.s{
     zoom: .5;
 }
-
+.pay-bank.sm,.pay-third.sm{width:35px;display:inline-block;height:30px;vertical-align:middle;background:url(images/pay-bank-x.png) left top no-repeat;}
+.sm.ceb,.sm.spdb,.sm.spabank,.sm.cib,.sm.bohaib{width: 50px;}
+.diy-pay-title{display: inline-block;font-size:12px;width: 80px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;vertical-align: middle;}
 /* 银行 */
 .pay-bank.other_bank{background-position: 0 0;}/* 其他 */
 .pay-bank.select{background-position: 0 -30px;}/* 请选择银行*/
@@ -4194,7 +4197,8 @@ div.tab-2 a.mui-active span {
 /*第三方支付*/
 /* 银行 & 第三方支付 Steven 2016-9-4 */
 .pay-third{width:125px;display:inline-block;height:30px;vertical-align:middle;background:url(../themes/images/pay-third.png) right top no-repeat;  zoom: .8;  margin-left: -3px;  }
-
+.pay-third.sm{background:url(images/pay-third-x.png) left top no-repeat;}
+.sm.unionpay,.sm.chinaums,.sm.bill99,.sm.chinapnr,.sm.reapal,.sm.dinpay,.sm.kjt,.sm.mobao,.sm.upay,.sm.onecodepay{width: 50px;}
 /* 第三方支付 */
 .pay-third.else{background-position: 0 -0;}/* 其他 */
 .pay-third.select{background-position: 0 -30px;}/* 请选择 */
@@ -4239,7 +4243,15 @@ div.tab-2 a.mui-active span {
 .pay-third.jiupay{background-position: 0 -660px;}/* 22 久付支付 */
 .pay-third.rfupay{background-position: 0 -690px;}/* 23 锐付支付 */
 .pay-third.tonghui{background-position: 0 -720px;}/* 24 通汇卡 */
-
+.pay-third.bitcoin,
+.pay-third.BTC
+{background-position: 0 -781px;}/* 25 比特币 */
+.pay-third.zhih_qq{background-position: 0 -818px;}/* 25 QQ钱包 */
+.pay-third.zhihpay{background-position: 0 -859px;}/* 26 智汇付 */
+.pay-third.upay{background-position: 0 -896px;}/* 27 优贝支付 */
+.pay-third.onecodepay{background-position: 0 -936px;}/* 28 1码付 */
+.pay-third.bdwallet{background-position: 0 -974px;}/* 29 百度钱包 */
+.pay-third.jdwallet{background-position: 0 -1011px;}/* 30 京东钱包 */
 .gb-foot p{
     text-align: center;
     color: #fff;
