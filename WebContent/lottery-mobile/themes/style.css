@@ -416,6 +416,14 @@ i, var { font-style: normal; }
 .formerly-record-list .mui-table-view-cell .time-1 font { color: #67ce3a; }
 .formerly-record-list>.mui-table-view>.mui-table-view-cell>.mui-collapse-content:nth-child(odd) { background: #f7f7f7; }
 
+.formerly-record-list.new-formerly{position: fixed;width: 100%;top: 2.2rem;z-index: 13;border-bottom: 1px solid #ddd;}
+.formerly-record-list.new-formerly .mui-table-view{background: linear-gradient(to bottom, rgb(255, 255, 255) 1%,rgb(234, 234, 234) 100%);}
+.new-formerly .gray-lump{padding: 0.2rem 0.5rem;background: linear-gradient(to bottom, #ffffff 0%,#ffffff 50%,#ffffff 51%,#f0f0f0 100%);}
+.new-formerly .gray-lump font {color: #0087d5;}
+.new-formerly .gray-lump .time-1 font {color: #46bb22;}
+
+
+.new-middle-content.middle-content{ top: 5.9rem;}
 /*彩票开奖号码*/
 .lottery-ball { display: inline-block; height: 1rem; line-height: 1rem; background: #e00404; color: #fff; text-align: center; width: 1rem; border-radius: 1.1rem; margin-left: 0.2rem; }
 .lottery-pull {display: inline-block;width: 0.6rem;margin-left: 0.2rem;text-align: center;}

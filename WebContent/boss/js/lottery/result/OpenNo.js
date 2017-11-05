@@ -44,6 +44,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             if(type=='pk10' || type=='lhc' || type=='sfc' || type=='keno'){
 
                 var txts=$("input.m-xs");
+
                 for(var i = 0; i<txts.length;i++){
                     var t = txts[i];
                     t.index = i;
@@ -98,8 +99,23 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                 var txts_i=$("input.m-xs");
                 var n=0;
                 for(var j=0;j<txts_i.length;j++){
-                    $(txts_i[j]).val(txts[n]+txts[n+1]);
-                    n=n+2;
+                    if(txts[n]!=undefined && txts[n+1]!=undefined){
+
+                        $(txts_i[j]).val(txts[n]+txts[n+1]);
+                        if($(txts_i[j]).val()>11){
+                            $(txts_i[j]).val("");
+                            n=n+2;
+                        }else{
+                            n=n+2;
+                        }
+
+                    }else if(txts[n]!=undefined && txts[n+1]==undefined){
+                        $(txts_i[j]).val(txts[n]);
+                        break;
+                    }else if(txts[n]==undefined){
+                        break;
+                    }
+
                 }
 
             }
@@ -112,31 +128,58 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             }
 
         },
+        // getCurrentFormData:function () {
+        //     var _this = this;
+        //     var openCode = "";
+        //     $("input.m-xs").each(function(index,value){
+        //         openCode += $(this).val();
+        //     });
+        //     var id = $("#objId").val();
+        //     return {
+        //         id : id,
+        //         openCode:openCode
+        //     };
+        // },
+        validateForm:function () {
+            alert("test");
+            return false;
+        },
         saveOpenCode:function (opt) {
+            var _this = this;
             var openCode = "";
-            var id = opt.objId;
+            var type = $("#czType").val();
+            var code = $("#czCode").val();
+            var expect = $("#czExpect").val();
             $("input.m-xs").each(function(index,value){
-                openCode += $(this).val();
+                openCode += $(this).val()+",";
             });
+            var _e = {
+                currentTarget:$(opt.currentTarget),
+                page:page
+            };
+            var option = {};
             //window.top.topPage.ajax
             //ajaxRequest
             window.top.topPage.ajax({
                 url: root + "/lotteryResult/saveOpenno.html",
+                dataType: "json",
                 data: {
-                    'result.openCode': openCode
+                    'result.openCode': openCode,
+                    'result.code': code,
+                    'result.expect': expect,
+                    'result.type': type,
                 },
-                // beforeSend: function(){
-                //
-                // },
                 success: function(data) {
-                    console.log(data.code);
-                    console.log(data.msg);
-                    this.closePage()
 
-                }
+                    if(data.code==1){
+                        _e.page.showPopover(_e, option, 'success', data.msg, true);
+                         _this.closePage()
+                    }else{
+                        _e.page.showPopover(_e, option, 'danger', data.msg, true);
+                    }
+                },
             });
-
-        }
+        },
 
 
 
