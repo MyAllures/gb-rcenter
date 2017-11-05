@@ -1,7 +1,7 @@
 /**
  * 资金管理-手工存取
  */
-define(['common/BaseListPage'], function (BaseListPage) {
+define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
     return BaseListPage.extend({
         /**
          * 初始化及构造函数，在子类中采用
@@ -23,6 +23,48 @@ define(['common/BaseListPage'], function (BaseListPage) {
         },
         onPageLoad: function () {
             this._super();
+
+            this.unInitSwitch($('input[type=checkbox][name=my-checkbox]')).bootstrapSwitch({
+
+                onText: window.top.message.content['floatPic.display.on'],
+                offText: window.top.message.content['floatPic.display.off'],
+                onSwitchChange: function (e, state) {
+                    var _target = e.currentTarget;
+                    var msg="关闭后, 当前站点配置的彩票状态非正常，不能跳转彩票页面，确认关闭吗？";
+                    if (!$(_target).attr("isChanged")&&!state) {
+                        var okLabel = window.top.message.setting['common.ok'];
+                        var cancelLabel = window.top.message.setting['common.cancel'];
+                        window.top.topPage.showConfirmDynamic(window.top.message.common['msg'], msg, okLabel, cancelLabel, function (confirm) {
+                            if (confirm && !$(_target).attr("isChanged")) {
+                                window.top.topPage.ajax({
+                                    url: root + '/lotterySysTool/lotteryMaintain.html',
+                                    dataType: "json",
+                                    data: {"state":!state},
+                                    success: function (data) {
+                                        $(_target).attr("isChanged", true);
+                                        $(_target).bootstrapSwitch("state", !_target.checked);
+                                    }
+                                });
+                            }
+                        })
+                    }else if(!$(_target).attr("isChanged")&&state) {
+                        window.top.topPage.ajax({
+                            url: root + '/lotterySysTool/lotteryMaintain.html',
+                            dataType: "json",
+                            data: {"state":!state},
+                            success: function (data) {
+                            }
+                        });
+                        return true;
+                    } else if($(_target).attr("isChanged")){
+                        $(_target).removeAttr("isChanged");
+                        return true;
+                    }
+                    return false;
+
+                }
+            });
+
         },
         cancelNoPayoutOrder: function (event,option) {
             var formobj =  $("#noPayoutOrderCancleForm")[0];
@@ -86,8 +128,27 @@ define(['common/BaseListPage'], function (BaseListPage) {
         },
 
         lotteryMaintain: function (event,option) {
-           var formobj =  $("#lotteryMaintainForm")[0];
-           this.query(event,option,formobj,"_this.updateSysParamValue(data)")
+
+            var text = event.targetElement;
+            debugger;
+            if (window.confirm("aaaaaaaaaa")) {
+                var _this = this;
+                window.top.topPage.ajax({
+                    url: root + "/taskSchedule/initTaskSchedule2222222222222.html",
+                    dataType: 'json',
+                    data: {"search.scheduler": scheduler},
+                    success: function (data) {
+                        window.alert(data.msg);
+                        $(e.currentTarget).unlock();
+                    },
+                    error: function (data) {
+                        $(e.currentTarget).unlock();
+                    }
+                });
+            } else {
+                $(e.currentTarget).unlock();
+            }
+
         },
         query : function(event,option,formobj,callback) {
                 window.top.topPage.ajax({
@@ -120,10 +181,6 @@ define(['common/BaseListPage'], function (BaseListPage) {
                         $(event.currentTarget).unlock();
                     }});
 
-        },
-
-        updateSysParamValue:function(data){
-            console.info(data);
         }
 
     });
