@@ -68,6 +68,27 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                     }
                 }
 
+            }else  if(code=='xy28'){
+                var txts=$("input.m-xs");
+                for(var i = 0; i<txts.length;i++){
+                    var t = txts[i];
+                    t.index = i;
+                    t.onkeyup=function(){
+                        this.value=this.value.replace(/\D/g,'');
+                        if(this.value !="" && this.value>=0 && this.value<81){
+                            var next = this.index + 1;
+                            if(next > txts.length - 1) return;
+                            txts[next].focus();
+                        }else{
+                            this.value="";
+                        }
+                        if(next==undefined){
+                            if(this.value==""){
+                                txts[this.index - 1].focus();
+                            }
+                        }
+                    }
+                }
             }else  if(type=='ssc'||type=='k3'|| type=='pl3'||code=='xy28'){
                 var txts=$("input.m-xs");
                 for(var i = 0; i<txts.length;i++){
@@ -90,6 +111,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                     }
                 }
             }
+
         },
         //支持复制
         createCopy:function (txt,code,type) {
@@ -158,6 +180,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                 page:page
             };
             var option = {};
+            openCode=openCode.substring(0,openCode.length-1);
             //window.top.topPage.ajax
             //ajaxRequest
             window.top.topPage.ajax({

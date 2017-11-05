@@ -1,7 +1,7 @@
 /**
  * 跨度
  */
-define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
+define(['site/hall/pl3/GfwfPlayWay'], function (PlayWay) {
     return PlayWay.extend({
         playId : '5x',
         init: function () {

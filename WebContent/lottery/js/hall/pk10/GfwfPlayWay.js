@@ -42,66 +42,27 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
             });
         },
 
-        // 数字批量选择算法
-        selectFun_1: function(obj) {
-            $(obj).parent().find(".acti").removeClass("acti");
-            $(obj).addClass("acti");
-
-            var objArr = $(obj).parent().parent().find("span");
-            objArr.each(function () {
-                $(this).removeClass("acti");
-                var num = parseInt($(this).find("i").html());
-                if ($.inArray(num, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11]) >= 0) {
-                    $(this).addClass("acti");
-                }
-            });
-
-            var objName = $(obj).parent().parent().parent().find("li").eq(0).find(".numLines").attr('class');
-            var maName = '';
-            if(typeof objName != 'undefined'){
-                maName = objName.split(' ')[1];
-                var objBtn = getCommonObj(obj, maName);
-                var btnFlag = "quan";
-                changeActi(btnFlag, objBtn);
+        selectFun_1num:function($obj,num){
+            if ($.inArray(num, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) >= 0) {
+                $obj.addClass("acti");
             }
-
-            this.renderZhushu();
-        },
-        selectFun_2: function(obj) {
-            $(obj).parent().find(".acti").removeClass("acti");
-            $(obj).addClass("acti");
-
-            var objArr = $(obj).parent().parent().find("span");
-            objArr.each(function () {
-                $(this).removeClass("acti");
-                var num = parseInt($(this).find("i").html());
-                if ($.inArray(num, [6, 7, 8, 9,10]) >= 0) {
-                    $(this).addClass("acti");
-                }
-            });
-            this.renderZhushu();
         },
 
-        //右侧选择号码点击事件
-        selectFun_3: function(obj) {
-            $(obj).parent().find(".acti").removeClass("acti");
-            $(obj).addClass("acti");
+        selectFun_2num :function($obj,num){
+            if ($.inArray(num, [6, 7, 8, 9, 10]) >= 0) {
+                $obj.addClass("acti");
+            }
+        },
 
-            var objArr = $(obj).parent().parent().find("span");
-            objArr.each(function () {
-                $(this).removeClass("acti");
-                var num = parseInt($(this).find("i").html());
-                if ($.inArray(num, [ 1, 2, 3, 4, 5]) >= 0) {
-                    $(this).addClass("acti");
-                }
-            });
-            this.renderZhushu();
+        selectFun_3num :function($obj,num){
+            if ($.inArray(num, [1, 2, 3, 4, 5]) >= 0) {
+                $obj.addClass("acti");
+            }
         },
 
 
         //删除重复号码
         delRrepet: function() {
-            console.log(1234567890);
             var _this = this;
             var textStr = $("div.content_jiang").find(".content_tex").val();
             if (typeof (textStr)!= "undefined") {
