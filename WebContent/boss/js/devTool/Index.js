@@ -65,10 +65,11 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,Bootstr
         },
 
         doCacheSyBtn : function ($this) {
-            $this.attr('disabled', true);
-            var text = $this.text();
-            $this.text(text + '...');
-            var siteId = $("input[name=siteId]").val();
+            var siteId = $("input[name='sites']").val();
+            if (siteId == "") {
+                alert("请选择一个站点.")
+                return;
+            }
             $.ajax({
                 url: root + "/devTool/"+$this.attr("target")+".html",
                 type:"POST",
