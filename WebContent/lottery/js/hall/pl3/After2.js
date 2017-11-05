@@ -348,7 +348,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前2直选-组选和值"
+         * 后二直选-组选和值"
          */
         suiji_q2zuxhz: function () {
             // 初始化变量
@@ -376,7 +376,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前2直选-组选单式"
+         * 后二直选-组选单式"
          */
         suiji_pl3_erxing_zuxuan_heds:function () {
             // 初始化变量
@@ -405,7 +405,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前2直选-组选复式"
+         * 后二直选-组选复式"
          */
         suiji_pl3_erxing_zuxuan_hefs:function () {
             // 初始化变量
@@ -434,7 +434,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前2直选-直选跨度"
+         * 后二直选-直选跨度"
          */
         suiji_q2zxkd: function () {
             // 初始化变量
@@ -462,7 +462,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前2直选-直选和值"
+         * 后二直选-直选和值"
          */
         suiji_q2zxhz:function () {
             // 初始化变量
@@ -490,7 +490,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前2直选-直选单式"
+         * 后二直选-直选单式"
          */
         suiji_pl3_erxing_zhixuan_heds: function () {
             // 初始化变量
@@ -518,7 +518,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前2直选-直选单式"
+         * 后二直选-直选单式"
          */
         suiji_qezxds:  function () {
             // 初始化变量
@@ -554,7 +554,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         },
 
         /**
-         * 前2直选-直选复式"
+         * 后二直选-直选复式"
          */
         suiji_pl3_erxing_zhixuan_hefs:function () {
             // 初始化变量
