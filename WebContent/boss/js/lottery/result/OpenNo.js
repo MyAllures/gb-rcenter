@@ -151,7 +151,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             var code = $("#czCode").val();
             var expect = $("#czExpect").val();
             $("input.m-xs").each(function(index,value){
-                openCode += $(this).val();
+                openCode += $(this).val()+",";
             });
             var _e = {
                 currentTarget:$(opt.currentTarget),
@@ -167,7 +167,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                     'result.openCode': openCode,
                     'result.code': code,
                     'result.expect': expect,
-                    'result.type': type
+                    'result.type': type,
                 },
                 success: function(data) {
 
