@@ -202,16 +202,8 @@ define(['site/hall/common/Common','site/plugin/template'], function (Common,Temp
          * @param url
          */
         getSubPage: function (url) {
-
             var _this = this;
-            var flag = $(".Playmethod b.acti").next().data('name');
-
             var subUrl = _this.baseUrl + "/" + url.split("-").join("/") + ".html";
-
-            if(flag=="gfwf"){
-                subUrl = _this.baseUrl + "/" + url.split("-")[0]+"/getSubPage.html?pageName="+url.split("-")[1];
-            }
-
             ajaxRequest({
                 url: subUrl,
                 type: 'GET',
