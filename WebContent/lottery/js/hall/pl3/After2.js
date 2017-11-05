@@ -1,5 +1,5 @@
 /**
- * 前二
+ * 后二
  */
 define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
     return PlayWay.extend({
@@ -288,7 +288,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             return newArr.length;
         },
         /**
-         * 注数 前二-直选单式
+         * 注数 后二-直选单式
          */
         zhushu_qezxds:  function () {
             var textStr = $(".recl-1003 .content_jiang .content_tex").val();
@@ -335,7 +335,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 newArr.push(zhiTsh);
             }
             betZhushu = this.zhushu_q2zuxbd(newArr);
-            showPlayName = "前二组选-包胆";
+            showPlayName = "后二组选-包胆";
             showContent = "包胆: (" + newArr[0] + ")";
             betContent = newArr.join("");
 
@@ -348,7 +348,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前2直选-组选和值"
+         * 后二直选-组选和值"
          */
         suiji_q2zuxhz: function () {
             // 初始化变量
@@ -363,7 +363,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 newArr.push(zhiTsh);
             }
             betZhushu = this.zhushu_q2zuxhz(newArr);
-            showPlayName = "前二组选-和值";
+            showPlayName = "后二组选-和值";
             showContent = "和值: (" + newArr[0] + ")";
             betContent = newArr.join("");
 
@@ -376,7 +376,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前2直选-组选单式"
+         * 后二直选-组选单式"
          */
         suiji_pl3_erxing_zuxuan_heds:function () {
             // 初始化变量
@@ -393,7 +393,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                     newArr.push(zhiHao2);
                 }
             }
-            showPlayName = "前二组选-单式";
+            showPlayName = "后二组选-单式";
             showContent = "号码: (" + newArr.join(",") + ")";
             betContent = newArr.join("");
 
@@ -405,7 +405,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前2直选-组选复式"
+         * 后二直选-组选复式"
          */
         suiji_pl3_erxing_zuxuan_hefs:function () {
             // 初始化变量
@@ -422,7 +422,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                     newArr.push(zhiHao2);
                 }
             }
-            showPlayName = "前二组选-复式";
+            showPlayName = "后二组选-复式";
             showContent = "组选: (" + newArr.join(",") + ")";
             betContent = newArr.join(",");
 
@@ -434,7 +434,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前2直选-直选跨度"
+         * 后二直选-直选跨度"
          */
         suiji_q2zxkd: function () {
             // 初始化变量
@@ -449,7 +449,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 newArr.push(zhiTsh);
             }
             betZhushu = this.zhushu_q2zxkd(newArr);
-            showPlayName = "前二直选-跨度";
+            showPlayName = "后二直选-跨度";
             showContent = "跨度: (" + newArr[0] + ")";
             betContent = newArr.join(",");
 
@@ -462,7 +462,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前2直选-直选和值"
+         * 后二直选-直选和值"
          */
         suiji_q2zxhz:function () {
             // 初始化变量
@@ -477,7 +477,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 newArr.push(zhiTsh);
             }
             betZhushu = this.zhushu_q2zxhz(newArr);
-            showPlayName = "前二直选-和值";
+            showPlayName = "后二直选-和值";
             showContent = "和值: (" + newArr[0] + ")";
             betContent = newArr.join("");
 
@@ -490,7 +490,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前2直选-直选单式"
+         * 后二直选-直选单式"
          */
         suiji_pl3_erxing_zhixuan_heds: function () {
             // 初始化变量
@@ -506,7 +506,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 newArr.push(arrTsh[parseInt(zhiTsh)]);
             }
 
-            showPlayName = "前二直选-直选单式";
+            showPlayName = "后二直选-直选单式";
             showContent = "号码: (" + newArr[0] + "" + newArr[1] + ")";
             betContent = newArr[0] + "" + newArr[1];
 
@@ -518,7 +518,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前2直选-直选单式"
+         * 后二直选-直选单式"
          */
         suiji_qezxds:  function () {
             // 初始化变量
@@ -541,7 +541,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             }
 
 
-            showPlayName = "前二直选-直选单式";
+            showPlayName = "后二直选-直选单式";
             showContent = "号码: (" + newArr[0] + "" + newArr[1] + ")";
             betContent = newArr[0] + "" + newArr[1];
 
@@ -554,7 +554,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         },
 
         /**
-         * 前2直选-直选复式"
+         * 后二直选-直选复式"
          */
         suiji_pl3_erxing_zhixuan_hefs:function () {
             // 初始化变量
@@ -570,7 +570,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
                 newArr.push(arrTsh[parseInt(zhiTsh)]);
             }
 
-            showPlayName = "前二直选-复式";
+            showPlayName = "后二直选-复式";
             showContent = "十位: (" + newArr[0] + ") 个位: (" + newArr[1] + ")";
             betContent = newArr[0] + "|" + newArr[1];
             ;
@@ -583,7 +583,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             };
         },
         /**
-         * 前二大小单双
+         * 后二大小单双
          */
         suiji_q2dxds:function () {
             // 初始化变量
@@ -596,7 +596,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             while (arr.length < 2) {
                 arr.push(tempArr[parseInt(Math.random() * tempArr.length)]);
             }
-            showPlayName = "前二大小单双";
+            showPlayName = "后二大小单双";
             showContent = "万位: ({0}), 千位: ({1})".format(arr[0], arr[1]);
             betContent = "{0}|{1}".format(arr[0], arr[1]);
 
@@ -646,7 +646,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var showContent = '';
             var betContent = '';
 
-            showPlayName = "前二组选-包胆";
+            showPlayName = "后二组选-包胆";
             showContent = "包胆: (" + dmArr.join(",") + ")";
             // 转换投注格式
             betContent = dmArr.join(",");
@@ -659,7 +659,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         },
 
         /**
-         * 前二组选-组选和值
+         * 后二组选-组选和值
          */
         content_q2zuxhz:  function () {
             var hzArr = [];
@@ -672,7 +672,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var showContent = '';
             var betContent = '';
 
-            showPlayName = "前二组选-和值";
+            showPlayName = "后二组选-和值";
             showContent = "和值: (" + hzArr.join(",") + ")";
             // 转换投注格式
             betContent = hzArr.join(",");
@@ -685,7 +685,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         }
         ,
         /**
-         * 前二组选-组选单式
+         * 后二组选-组选单式
          */
         content_pl3_erxing_zuxuan_heds: function () {
 
@@ -765,7 +765,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var showContent = '';
             var betContent = '';
 
-            showPlayName = "前二组选-单式";
+            showPlayName = "后二组选-单式";
             showContent = "号码: (" + tempArr + ")";
             // 转换投注格式
             betContent = tempArr.join(",");
@@ -777,7 +777,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         },
 
         /**
-         * 前二组选-组选复式
+         * 后二组选-组选复式
          */
         content_pl3_erxing_zuxuan_hefs: function () {
             var zuxArr = [];
@@ -790,7 +790,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var showContent = '';
             var betContent = '';
 
-            showPlayName = "前二组选-复式";
+            showPlayName = "后二组选-复式";
             showContent = "组选: (" + zuxArr.join(",") + ")";
             // 转换投注格式
             betContent = zuxArr.join(",");
@@ -803,7 +803,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         ,
 
         /**
-         * 前二直选-直选跨度
+         * 后二直选-直选跨度
          */
         content_q2zxkd:function () {
             var kdArr = [];
@@ -816,7 +816,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var showContent = '';
             var betContent = '';
 
-            showPlayName = "前二直选-跨度";
+            showPlayName = "后二直选-跨度";
             showContent = "跨度: (" + kdArr.join(",") + ")";
             // 转换投注格式
             betContent = kdArr.join(",");
@@ -829,7 +829,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         },
 
         /**
-         * 前二直选-直选和值
+         * 后二直选-直选和值
          */
         content_q2zxhz: function () {
             var hzArr = [];
@@ -842,7 +842,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var showContent = '';
             var betContent = '';
 
-            showPlayName = "前二直选-和值";
+            showPlayName = "后二直选-和值";
             showContent = "和值: (" + hzArr.join(",") + ")";
             // 转换投注格式
             betContent = hzArr.join(",");
@@ -855,7 +855,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         }
         ,
         /**
-         * 前二直选-直选单式
+         * 后二直选-直选单式
          */
         content_qezxds: function () {
             var _this;
@@ -906,7 +906,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var showContent = '';
             var betContent = '';
 
-            showPlayName = "前二直选-直选单式";
+            showPlayName = "后二直选-直选单式";
             showContent = "号码: (" + tempArr + ")";
             // 转换投注格式
             betContent = tempArr.join(",");
@@ -946,7 +946,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             return tempArr.length;
         },
         /**
-         * 前二直选-直选单式
+         * 后二直选-直选单式
          */
         content_pl3_erxing_zhixuan_heds:  function () {
             var _this = this;
@@ -998,7 +998,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var showContent = '';
             var betContent = '';
 
-            showPlayName = "前二直选-单式";
+            showPlayName = "后二直选-单式";
             showContent = "号码: (" + newArr + ")";
             // 转换投注格式
             betContent = newArr.join(",");
@@ -1013,7 +1013,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         contain_pl3_erxing_zhixuan_heds:function(newArr,item){
 
             for(var i=0;i<newArr.length;i++){
-                if(newArr[i].charAt(0)==item.charAt(0) && newArr[i].charAt(1)==item.charAt(1) && newArr[i].charAt(2)==item.charAt(2)){
+                if(newArr[i].charAt(0)==item.charAt(0) && newArr[i].charAt(1)==item.charAt(1)){
                     return true;
                 }
             }
@@ -1021,7 +1021,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
         },
 
         /**
-         * 前二直选-直选复式
+         * 后二直选-直选复式
          */
         content_pl3_erxing_zhixuan_hefs:  function () {
             var wanArr = [], qianArr = [];
@@ -1037,7 +1037,7 @@ define(['site/hall/pl3/Pl3Gfwf'], function (PlayWay) {
             var showContent = '';
             var betContent = '';
 
-            showPlayName = "前二直选-复式";
+            showPlayName = "后二直选-复式";
             showContent = "十位：({0})，个位：({1})".format(
                 wanArr.join(","),
                 qianArr.join(",")
