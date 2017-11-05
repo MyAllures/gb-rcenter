@@ -47,7 +47,7 @@ define(['common/MobileBasePage'], function (Mobile) {
             // }
             t.promoCheck();
             
-            mui('body').on('tap', 'a', function () {
+            mui('#activity-content').on('tap', 'a', function () {
                 var href = $(this).attr('href');
                 t.gotoUrl(href);
             })
