@@ -41,7 +41,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             });
         },
         createOpenNo:function (code,type) {
-            if(type=='pk10' || type=='lhc' || type=='sfc'){
+            if(type=='pk10' ){
 
                 var txts=$("input.m-xs");
 
@@ -68,7 +68,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                     }
                 }
 
-            }else  if(type=='ssc'||type=='k3'|| type=='pl3'||code=='xy28'){
+            }else  if(type=='ssc'|| type=='pl3'||code=='xy28'){
                 var txts=$("input.m-xs");
                 for(var i = 0; i<txts.length;i++){
                     var t = txts[i];
@@ -115,13 +115,86 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                         }
                     }
                 }
+            }else if(type=='lhc'){
+
+                var txts=$("input.m-xs");
+
+                for(var i = 0; i<txts.length;i++){
+                    var t = txts[i];
+                    t.index = i;
+                    t.onkeyup=function(){
+                        this.value=this.value.replace(/\D/g,'');
+                        var varStr=this.value+"";
+                        if(varStr.length==2){
+                            if(this.value !="" && this.value>=1 && this.value<50){
+                                var next = this.index + 1;
+                                if(next > txts.length - 1) return;
+                                txts[next].focus();
+                            }else{
+                                this.value="";
+                            }
+                        }
+                        if(next==undefined){
+                            if(this.value==""){
+                                txts[this.index - 1].focus();
+                            }
+                        }
+                    }
+                }
+            }else if(type=='sfc'){
+
+                var txts=$("input.m-xs");
+
+                for(var i = 0; i<txts.length;i++){
+                    var t = txts[i];
+                    t.index = i;
+                    t.onkeyup=function(){
+                        this.value=this.value.replace(/\D/g,'');
+                        var varStr=this.value+"";
+                        if(varStr.length==2){
+                            if(this.value !="" && this.value>=1 && this.value<21){
+                                var next = this.index + 1;
+                                if(next > txts.length - 1) return;
+                                txts[next].focus();
+                            }else{
+                                this.value="";
+                            }
+                        }
+                        if(next==undefined){
+                            if(this.value==""){
+                                txts[this.index - 1].focus();
+                            }
+                        }
+                    }
+                }
+            }else  if(type=='k3'){
+                var txts=$("input.m-xs");
+                for(var i = 0; i<txts.length;i++){
+                    var t = txts[i];
+                    t.index = i;
+                    t.onkeyup=function(){
+                        this.value=this.value.replace(/\D/g,'');
+                        if(this.value !="" && this.value>=0 && this.value<7){
+                            var next = this.index + 1;
+                            if(next > txts.length - 1) return;
+                            txts[next].focus();
+                        }else{
+                            this.value="";
+                        }
+                        if(next==undefined){
+                            if(this.value==""){
+                                txts[this.index - 1].focus();
+                            }
+                        }
+                    }
+                }
             }
         },
         //支持复制
         createCopy:function (txt,code,type) {
             var s=0;
           var txts=txt.replace(/\D/g,'');
-            if(type=='pk10' || type=='lhc' || type=='sfc' ){
+            if(type=='pk10'  ){
                 var txts_i=$("input.m-xs");
                 var n=0;
                 for(var j=0;j<txts_i.length;j++){
@@ -142,7 +215,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                         break;
                     }
                 }
-            }else  if(type=='ssc'||type=='k3'|| type=='pl3'||code=='xy28'){
+            }else  if(type=='ssc'|| type=='pl3'||code=='xy28'){
               var txts_i=$("input.m-xs");
                 for(var j=0;j<txts_i.length;j++){
                     $(txts_i[j]).val(txts[j]);
@@ -168,6 +241,61 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                     }else if(txts[n]==undefined){
                         break;
                     }
+                }
+            }else  if(type=='sfc'){
+                var txts_i=$("input.m-xs");
+                var n=0;
+                for(var j=0;j<txts_i.length;j++){
+                    if(txts[n]!=undefined && txts[n+1]!=undefined){
+
+                        $(txts_i[j]).val(txts[n]+txts[n+1]);
+                        if($(txts_i[j]).val()>20){
+                            $(txts_i[j]).val("");
+                            n=n+2;
+                        }else{
+                            n=n+2;
+                        }
+
+                    }else if(txts[n]!=undefined && txts[n+1]==undefined){
+                        $(txts_i[j]).val(txts[n]);
+                        break;
+                    }else if(txts[n]==undefined){
+                        break;
+                    }
+                }
+            }else  if( type=='lhc'){
+                var txts_i=$("input.m-xs");
+                var n=0;
+                for(var j=0;j<txts_i.length;j++){
+                    if(txts[n]!=undefined && txts[n+1]!=undefined){
+
+                        $(txts_i[j]).val(txts[n]+txts[n+1]);
+                        if($(txts_i[j]).val()>49){
+                            $(txts_i[j]).val("");
+                            n=n+2;
+                        }else{
+                            n=n+2;
+                        }
+
+                    }else if(txts[n]!=undefined && txts[n+1]==undefined){
+                        $(txts_i[j]).val(txts[n]);
+                        break;
+                    }else if(txts[n]==undefined){
+                        break;
+                    }
+                }
+            }else  if(type=='k3'){
+                var n=0;
+                var txts_i=$("input.m-xs");
+                for(var j=0;j<txts_i.length;j++){
+                    $(txts_i[j]).val(txts[j]);
+                    if($(txts_i[j]).val()>6){
+                        $(txts_i[j]).val("");
+                        n++;
+                    }else{
+                        n++;
+                    }
+
                 }
             }
         },
