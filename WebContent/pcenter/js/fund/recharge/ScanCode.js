@@ -23,10 +23,10 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
          */
         onPageLoad: function () {
             this._super();
-            this.initCaptcha();
+            //展示优惠活动
+            this.changeSale();
             this.showRandomAmountMsg();
             window.top.onlineTransactionNo = null;
-
         },
         /**
          * 当前对象事件初始化函数
@@ -34,6 +34,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
         bindEvent: function () {
             this._super();
             var _this = this;
+            this.initCaptcha();
             //更换支付方式
             $(this.formSelector).on("click", "label.bank", function (e) {
                 _this.changeBank(e);
