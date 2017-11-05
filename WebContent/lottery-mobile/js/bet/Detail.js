@@ -13,6 +13,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             this.muiInit();
             this.iosGoBack();
             Template.helper('formatPrice', function (price, type) {
+                price = price.toFixed(3);
                 if (price) {
                     var arrayPrice = price.toString().split(".");
                     if (type == 'integer') {

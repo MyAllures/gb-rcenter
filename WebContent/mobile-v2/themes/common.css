@@ -5089,3 +5089,28 @@ div.setting {
 .mui-bar-nav .user .btn{padding: 4px 8px;}
 .mui-bar-nav .user .btn.btn-shiwan{background: #00a0e9;}
 .login-page .mui-btn.try{width: 100%; padding: 10px 12px; font-size: 13px;  background: #f2f2f2;  color: #445dc2;   margin-top: 20px;}
+
+
+/*  2017-11-02 ads-slider */
+.ads-slider {
+    position: absolute;
+    right: 10px;
+    bottom: 63px;
+    width: 144px;
+    z-index: 11;
+    padding-top: 24px;
+    padding-left: 24px;
+}
+.ads-slider .close-ads {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.ads-slider .mui-slider-indicator {
+    bottom: -2px;
+}
+.ads-slider .mui-slider-indicator .mui-indicator {
+    margin: 1px 2px;
+}
