@@ -424,6 +424,7 @@ i, var { font-style: normal; }
 
 
 .new-middle-content.middle-content{ top: 5.9rem;}
+.new-middle-content.pk10-middle-content.middle-content {top: 7.4rem;}
 /*彩票开奖号码*/
 .lottery-ball { display: inline-block; height: 1rem; line-height: 1rem; background: #e00404; color: #fff; text-align: center; width: 1rem; border-radius: 1.1rem; margin-left: 0.2rem; }
 .lottery-pull {display: inline-block;width: 0.6rem;margin-left: 0.2rem;text-align: center;}
