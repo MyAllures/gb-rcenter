@@ -59,17 +59,27 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
         closePl3GfwfHandicap: function () {
             $("ul .numLine").addClass("block-bet-btn");
             $("textarea.content_tex").attr("readonly",true);
-            $(".suiji1").removeAttr("onclick");
-            $(".suiji5").removeAttr("onclick");
+            $("a#suiji1").removeAttr("onclick");
+            $("a#suiji1").addClass("disabled-btn");
+            $("a#suiji5").removeAttr("onclick");
+            $("a#suiji5").addClass("disabled-btn");
             $("a#tjzd").removeAttr("onclick");
+            $("a#tjzd").addClass("disabled-btn");
+            $("a#qrtz").removeAttr("onclick");
+            $("a#qrtz").addClass("disabled-btn");
             //开盘
         },
         openPl3GfwfHandicap: function () {
             $("ul .numLine").removeClass("block-bet-btn");
             $("textarea.content_tex").removeAttr("readonly");
-            $(".suiji1").attr("onclick","page.PlayWay.getSuiji(1)");
-            $(".suiji5").attr("onclick","page.PlayWay.getSuiji(5)");
+            $("a#suiji1").attr("onclick","page.PlayWay.getSuiji(1)");
+            $("a#suiji1").removeClass("disabled-btn");
+            $("a#suiji5").attr("onclick","page.PlayWay.getSuiji(5)");
+            $("a#suiji5").removeClass("disabled-btn");
             $("a#tjzd").attr("onclick","page.PlayWay.tjzd()");
+            $("a#tjzd").removeClass("disabled-btn");
+            $("a#qrtz").attr("onclick","page.PlayWay.buyBtn()");
+            $("a#qrtz").removeClass("disabled-btn");
             this.init();
         }
 
