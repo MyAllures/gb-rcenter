@@ -158,6 +158,78 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             });
 
         },
+
+        payout:function (e,option) {
+            var formobj =  $("#payoutForm")[0];
+            var code = $(formobj).find("input[name='result.code']").val();
+            var expect = $(formobj).find("input[name='result.expect']").val();
+            var siteId = $(formobj).find("input[name='search.siteId']").val();
+            var btnOption = {};
+            var type=1;
+            if (code == ''){
+                e.page.showPopover(e,btnOption,"danger","彩种不能选择为空",true);
+                return;
+            }
+            if (expect == ''){
+                e.page.showPopover(e,btnOption,"danger","期号不能为空",true);
+                return;
+            }
+            var _this = this;
+            window.top.topPage.ajax({
+                dataType:'json',
+                async:false,
+                type:"post",
+                data:{'code':code,'expect':expect},
+                url:root+'/lotterySysTool/searchOpenCode.html',
+                success:function (data) {
+
+                    if (data.status){
+                        $("#opencode").val(data.msg);
+                        var formbj = $("#payoutForm")[0];
+                        _this.query1(e,option,formbj,null,type);
+                    }else{
+                        e.page.showPopover(e,btnOption,"danger",data.msg,true);
+                    }
+
+                }
+            })
+        },
+
+        heavy:function (e,option) {
+            var formobj =  $("#payoutForm")[0];
+            var code = $(formobj).find("input[name='result.code']").val();
+            var expect = $(formobj).find("input[name='result.expect']").val();
+            var siteId = $(formobj).find("input[name='search.siteId']").val();
+            var btnOption = {};
+            var type=2;
+            if (code == ''){
+                e.page.showPopover(e,btnOption,"danger","彩种不能选择为空",true);
+                return;
+            }
+            if (expect == ''){
+                e.page.showPopover(e,btnOption,"danger","期号不能为空",true);
+                return;
+            }
+            var _this = this;
+            window.top.topPage.ajax({
+                dataType:'json',
+                async:false,
+                type:"post",
+                data:{'code':code,'expect':expect},
+                url:root+'/lotterySysTool/searchOpenCode.html',
+                success:function (data) {
+
+                    if (data.status){
+                        $("#opencode").val(data.msg);
+                        var formbj = $("#payoutForm")[0];
+                        _this.query1(e,option,formbj,null,type);
+                    }else{
+                        e.page.showPopover(e,btnOption,"danger",data.msg,true);
+                    }
+
+                }
+            })
+        },
         query : function(event,option,formobj,callback) {
                 window.top.topPage.ajax({
                     loading:true,
@@ -188,6 +260,38 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                         window.top.topPage.showErrorMessage(data.responseText);
                         $(event.currentTarget).unlock();
                     }});
+
+        },
+        query1 : function(e,option,formobj,callback,type) {
+            var url="/lotterySysTool/payout.html";
+            if(type==2){
+                url ="/lotterySysTool/heavy.html";
+            }
+            window.top.topPage.ajax({
+                loading:true,
+                url:root+url,
+                headers: {
+                    "Soul-Requested-With":"XMLHttpRequest"
+                },
+                type:"post",
+                data:$(formobj).serialize(),
+                success:function(data){
+                    debugger;
+                    var obj = eval("("+data+")");
+                    if (obj.state){
+                        e.page.showPopover(e,option,"success",obj.msg,true);
+                    }else{
+                        e.page.showPopover(e,option,"danger",obj.msg,true);
+                    }
+                    if (callback != null){
+                        eval("(" + callback + ")");
+                    }
+                    $(e.currentTarget).unlock()
+                },
+                error:function(data, state, msg){
+                    window.top.topPage.showErrorMessage(data.responseText);
+                    $(e.currentTarget).unlock();
+                }});
 
         }
 
