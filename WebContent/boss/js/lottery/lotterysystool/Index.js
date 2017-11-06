@@ -65,8 +65,12 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             });
 
             $.get(root + '/lotterySysTool/getMaintainStatus.html', function(data){
+                var my_checkbox = $('input[type=checkbox][name=my-checkbox]');
                 var data = eval("("+data+")");
-                $('input[type=checkbox][name=my-checkbox]').bootstrapSwitch("state", !data);
+                if(data==null){
+                    my_checkbox.attr("disabled",true);
+                }
+                my_checkbox.bootstrapSwitch("state", !data);
             });
 
         },
