@@ -2128,3 +2128,10 @@ i.bg-1,i.bg-2,i.bg-3,i.bg-4,i.bg-5,i.bg-6,i.bg-7,i.bg-8,i.bg-9,i.bg-10{border-ra
 .new-ball-st.lhc-num.block-bet-btn .pl:before{
 	background: url(../images/ball-lhc-num-block.png);
 }
+
+/*福彩3d封盘效果*/
+.numLine.block-bet-btn{background: #fff!important; box-shadow: none!important;}
+.numLine.block-bet-btn span{position: relative;}
+.numLine.block-bet-btn span:before{content: "";display: block;position: absolute;top: 3px;left: 7px;width: 30px;height: 30px; background: url(../images/ball-lhc-num-block.png);}
+.numLine.block-bet-btn span i{background: #cccccc!important;border: 1px solid #cccccc!important;}
+.numLine.block-bet-btn span i:hover{transform:none!important;}

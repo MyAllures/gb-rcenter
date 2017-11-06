@@ -1478,3 +1478,5 @@ div.menu-popover {width: 120px;}
 	margin: 0.36rem 0 0 -0.45rem;
 	display: inline-block;
 }
+.screen-munber.disabled .newball-item-20 .n-btn{position: relative;background: #ddd!important; border-color:  #ddd!important;}
+.screen-munber.disabled .newball-item-20 .n-btn:before{content: "封";display: block;position: absolute;top: -1px;left: -1px;width: 1.8rem;height: 1.8rem;line-height: 1.8rem;background: #ddd;    border-radius: 50%;color: #a9a8a8;}
