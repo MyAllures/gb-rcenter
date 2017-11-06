@@ -19,6 +19,9 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                     if (!$.isEmptyObject(data)) {
                         _this.gfwfPlJson = data;
                         _this.initSubPage();
+                        if(!page.isCodeOpen) {
+                            _this.closePl3GfwfHandicap();
+                        }
                     } else {
                         console.log(name + ":odd is null");
                     }
@@ -39,6 +42,9 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                 }
                 // 初始化子页面
                 _this.initSubPage();
+                if(!page.isCodeOpen) {
+                    _this.closePl3GfwfHandicap();
+                }
             });
         },
 
@@ -47,6 +53,25 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                 $obj.addClass("acti");
             }
         },
+
+
+        //封盘
+        closePl3GfwfHandicap: function () {
+            $("ul .numLine").addClass("block-bet-btn");
+            $("textarea.content_tex").attr("readonly",true);
+            $(".suiji1").removeAttr("onclick");
+            $(".suiji5").removeAttr("onclick");
+            $("a#tjzd").removeAttr("onclick");
+            //开盘
+        },
+        openPl3GfwfHandicap: function () {
+            $("ul .numLine").removeClass("block-bet-btn");
+            $("textarea.content_tex").removeAttr("readonly");
+            $(".suiji1").attr("onclick","page.PlayWay.getSuiji(1)");
+            $(".suiji5").attr("onclick","page.PlayWay.getSuiji(5)");
+            $("a#tjzd").attr("onclick","page.PlayWay.tjzd()");
+            this.init();
+        }
 
     })
 });
