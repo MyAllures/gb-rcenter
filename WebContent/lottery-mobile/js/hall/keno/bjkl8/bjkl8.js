@@ -17,7 +17,13 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             if (!flag) {
                 $(obj).toggleClass('mui-active');
             }
-            $("#quantity").text(1);
+            var numsLength = $('#numsLength').attr('numsLength');
+            var realNumLength = $("div.bet-table-list td.mui-active").length;
+            if(realNumLength != undefined && numsLength == realNumLength){
+                $("#quantity").text(1);
+            }else{
+                $("#quantity").text(0);
+            }
         },
         /**
          * 获取赔率

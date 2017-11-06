@@ -10,6 +10,7 @@ define(['site/hall/ssc/AllSsc','site/plugin/template'], function (PlayWay,Templa
         bindButtonEvents: function () {
             this._super();
             mui(this.formSelector).on("tap", "a.mui-control-item[data-type]", function () {
+                _this.resetBet();
                 var type = $(this).attr("data-type");
                 var betTitle = $(this).text();
                 $(".bet-title").html(betTitle);
