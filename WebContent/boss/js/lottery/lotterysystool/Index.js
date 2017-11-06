@@ -28,9 +28,23 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 onText: window.top.message.content['floatPic.display.on'],
                 offText: window.top.message.content['floatPic.display.off'],
                 onSwitchChange: function (e, state) {
+
                     var _target = e.currentTarget;
                     var msg="关闭后, 当前站点配置的彩票状态非正常，不能跳转彩票页面，确认关闭吗？";
+
                     if (!$(_target).attr("isChanged")&&!state) {
+
+                        window.top.topPage.ajax({
+                            url: root + '/lotterySysTool/lotteryMaintain.html',
+                            dataType: "json",
+                            data: {"state":true},
+                            success: function (data) {
+                            }
+                        });
+                        return true;
+
+                    }else if(!$(_target).attr("isChanged")&&state) {
+
                         var okLabel = window.top.message.setting['common.ok'];
                         var cancelLabel = window.top.message.setting['common.cancel'];
                         window.top.topPage.showConfirmDynamic(window.top.message.common['msg'], msg, okLabel, cancelLabel, function (confirm) {
@@ -38,7 +52,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                                 window.top.topPage.ajax({
                                     url: root + '/lotterySysTool/lotteryMaintain.html',
                                     dataType: "json",
-                                    data: {"state":!state},
+                                    data: {"state":false},
                                     success: function (data) {
                                         $(_target).attr("isChanged", true);
                                         $(_target).bootstrapSwitch("state", !_target.checked);
@@ -46,15 +60,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                                 });
                             }
                         })
-                    }else if(!$(_target).attr("isChanged")&&state) {
-                        window.top.topPage.ajax({
-                            url: root + '/lotterySysTool/lotteryMaintain.html',
-                            dataType: "json",
-                            data: {"state":!state},
-                            success: function (data) {
-                            }
-                        });
-                        return true;
+
                     } else if($(_target).attr("isChanged")){
                         $(_target).removeAttr("isChanged");
                         return true;
@@ -62,15 +68,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                     return false;
 
                 }
-            });
-
-            $.get(root + '/lotterySysTool/getMaintainStatus.html', function(data){
-                var my_checkbox = $('input[type=checkbox][name=my-checkbox]');
-                var data = eval("("+data+")");
-                if(data==null){
-                    my_checkbox.attr("disabled",true);
-                }
-                my_checkbox.bootstrapSwitch("state", !data);
             });
 
         },
