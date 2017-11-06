@@ -126,30 +126,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
 
         },
-
-        lotteryMaintain: function (event,option) {
-
-            var text = event.targetElement;
-            debugger;
-            if (window.confirm("aaaaaaaaaa")) {
-                var _this = this;
-                window.top.topPage.ajax({
-                    url: root + "/taskSchedule/initTaskSchedule2222222222222.html",
-                    dataType: 'json',
-                    data: {"search.scheduler": scheduler},
-                    success: function (data) {
-                        window.alert(data.msg);
-                        $(e.currentTarget).unlock();
-                    },
-                    error: function (data) {
-                        $(e.currentTarget).unlock();
-                    }
-                });
-            } else {
-                $(e.currentTarget).unlock();
-            }
-
-        },
         query : function(event,option,formobj,callback) {
                 window.top.topPage.ajax({
                     loading:true,
