@@ -19,7 +19,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         bindEvent: function () {
             this._super();
             var _this = this;
-
         },
         onPageLoad: function () {
             this._super();
@@ -63,6 +62,11 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                     return false;
 
                 }
+            });
+
+            $.get(root + '/lotterySysTool/getMaintainStatus.html', function(data){
+                var data = eval("("+data+")");
+                $('input[type=checkbox][name=my-checkbox]').bootstrapSwitch("state", !data);
             });
 
         },
@@ -127,27 +131,30 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
         },
 
-        lotteryMaintain: function (event,option) {
+        gatherOpenCode: function (event,option) {
 
-            var text = event.targetElement;
+            var form = $("#gatherOpenCodeForm");
+            var context = "您将采集xx彩种 yy日期的所有已开奖号码";
+            var _target = event.currentTarget;
+            var code = $("#lotteryCode").val();
             debugger;
-            if (window.confirm("aaaaaaaaaa")) {
-                var _this = this;
-                window.top.topPage.ajax({
-                    url: root + "/taskSchedule/initTaskSchedule2222222222222.html",
-                    dataType: 'json',
-                    data: {"search.scheduler": scheduler},
-                    success: function (data) {
-                        window.alert(data.msg);
-                        $(e.currentTarget).unlock();
-                    },
-                    error: function (data) {
-                        $(e.currentTarget).unlock();
-                    }
-                });
-            } else {
-                $(e.currentTarget).unlock();
-            }
+
+            window.top.topPage.showConfirmMessage(context, function (confirm) {
+                if (confirm) {
+
+                    window.top.topPage.ajax({
+                        url: root + '/lotterySysTool/gatherOpenCode.html',
+                        dataType: "json",
+                        data: {"state":true},
+                        success: function (data) {
+
+                        }
+                    });
+
+                } else {
+                    $(event.currentTarget).unlock();
+                }
+            });
 
         },
         query : function(event,option,formobj,callback) {
