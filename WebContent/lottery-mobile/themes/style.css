@@ -418,7 +418,7 @@ i, var { font-style: normal; }
 
 .formerly-record-list.new-formerly{position: fixed;width: 100%;top: 2.2rem;z-index: 13;border-bottom: 1px solid #ddd;}
 .formerly-record-list.new-formerly .mui-table-view{background: linear-gradient(to bottom, rgb(255, 255, 255) 1%,rgb(234, 234, 234) 100%);}
-.new-formerly .gray-lump{padding: 0.2rem 0.5rem;background: linear-gradient(to bottom, #ffffff 0%,#ffffff 50%,#ffffff 51%,#f0f0f0 100%);}
+.new-formerly .gray-lump{height: 1.5rem; line-height: 1.5rem; padding:0 0.5rem;background: linear-gradient(to bottom, #ffffff 0%,#ffffff 50%,#ffffff 51%,#f0f0f0 100%);}
 .new-formerly .gray-lump font {color: #0087d5;}
 .new-formerly .gray-lump .time-1 font {color: #46bb22;}
 
@@ -982,10 +982,10 @@ a.popup-screen-btn:visited{
 .selected-wrap{position: absolute; z-index: 12; background: #fff;display: none; top: 4.10rem;width: 100%;}
 
 .new-gfwf-qh .x_wrap { width: 100%; height: initial;line-height: initial; background: #fff;text-align: center; z-index: 9; padding: 0.3rem 0.25rem;word-spacing: -5px;}
-.new-gfwf-qh .x_wrap .x_1 { display: inline-block; position: relative; line-height: 1.7rem;border: 2px solid #fa6200; color: #5d5d5d; border-top-left-radius:6px; border-bottom-left-radius:6px;}
+.new-gfwf-qh .x_wrap .x_1 { display: inline-block; position: relative; line-height: 1.7rem;height: 1.7rem; border: 2px solid #fa6200; color: #5d5d5d; border-top-left-radius:6px; border-bottom-left-radius:6px;}
 .new-gfwf-qh .x_wrap .x_2 { width: 5%; display: inline-block; position: relative;top: 0.23rem;margin: 0 0 6px 4px;}
 .new-gfwf-qh .x_wrap .x_2 img { height: 0.9rem;}
-.new-gfwf-qh .x_wrap .x_3 { display: inline-block; position: relative; line-height: 1.7rem;border: 2px solid #fa6200; color: #5d5d5d; border-top-right-radius:6px; border-bottom-right-radius:6px;}
+.new-gfwf-qh .x_wrap .x_3 { display: inline-block; position: relative; line-height: 1.7rem;height: 1.7rem;border: 2px solid #fa6200; color: #5d5d5d; border-top-right-radius:6px; border-bottom-right-radius:6px;}
 .new-gfwf-qh .x_wrap .x_3:after{display: none;}
 .new-gfwf-qh .x_wrap .x_active{background: #fa6200; color: #fff;}
 .gfwf-bg{display:none;position: fixed; top: 4.10rem; width: 100%; height: 100%; background:rgba(0,0,0,0.5); z-index: 11;}
