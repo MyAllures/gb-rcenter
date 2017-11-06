@@ -52,18 +52,27 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             var _this = this;
             //头部选择
             mui("div.s-menu").on('tap', 'a', function () {
-                _this.checkNoSon($(this).attr("data-code"), this.classList);
+                 _this.checkNoSon($(this).attr("data-code"), this.classList);
+                 return;
             });
 
             //直选复式
-            mui("body").on('tap', '.gfwf-playName', function () {
-                $('div.selected-wrap').toggle();
-                $('div.gfwf-bg').toggle();
+            mui("body").on('tap', '.gfwf-title.gfwf-playName', function () {
+                 // $('div.mui-scroll-wrapper.ssc-method-list.gfwf-list.gfwf-wrap.new-gfwf-qh').addClass("Fixed");
+                 // $('div.gfwf-bg').addClass('show');
+                mui(".gfwf-wrap")[0].classList.toggle('Fixed');
+                mui(".gfwf-bg")[0].classList.toggle('show');
             });
 
-            mui("body").on('tap', '.gfwf-bg', function () {
-                $('div.gfwf-bg').hide();
-                $('div.selected-wrap').hide();
+            // mui("body").on('tap', '.gfwf-bg', function () {
+            //     $('div.gfwf-bg').hide();
+            //     $('div.selected-wrap').hide();
+            // });
+
+            mui(".gfwf-bg")[0].addEventListener('tap', function() {
+                mui(".gfwf-wrap")[0].classList.remove('Fixed');
+                mui(".new-formerly .mui-table-view .mui-table-view-cell")[0].classList.remove('mui-active');
+                mui(".gfwf-bg")[0].classList.remove('show');
             });
 
             //确认清空选项
@@ -195,7 +204,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                                 _this.getOpenHistory();
                             }, 30000);
                         }
-                        $(".gray-lump .mui-pull-left .style_blue").text(open.expect);
+                        $(".mui-pull-left .style_blue").text(open.expect);
                         //是否展示开奖效果
                         _this.showOpeningStyle(numArr);
                         //展示上一期中奖号码

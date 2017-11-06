@@ -70,8 +70,15 @@ define(['site/hall/GfwfCommon', 'site/plugin/template'], function (PlayWay, Temp
         },
 
         changeList : function(){
+            var lotteryGenra=$("#Genra").val();
+            var betCode="ssc_shuzipan";
+            var jspStr="DigitalDisk";
+            if(lotteryGenra =="ssc_yixing_dwd"){
+                betCode="ssc_yixing_dwd";
+                jspStr="SscWuxing";
+            }
             mui.ajax(root + '/'+this.type+'/'+this.code+'/getBetTable.html', {
-                data: {"betCode": "ssc_yixing_dwd","jspStr":"SscWuxing"},
+                data: {"betCode": betCode,"jspStr":jspStr},
                 type: 'POST',
                 success: function (data) {
                     $(".bet-table").html(data);
@@ -100,8 +107,13 @@ define(['site/hall/GfwfCommon', 'site/plugin/template'], function (PlayWay, Temp
                     && dataCode !="R3"
                     && dataCode !="R4"
                 ){
-                    $('div.gfwf-bg').slideUp();
-                    $('div.selected-wrap').slideUp();
+
+                    // $('div.gfwf-bg').slideUp();
+                    // $('div.selected-wrap').slideUp();
+                    // $('div.x_wrap').slideUp();
+                    mui(".gfwf-wrap")[0].classList.remove('Fixed');
+                    mui(".new-formerly .mui-table-view .mui-table-view-cell")[0].classList.remove('mui-active');
+                    mui(".gfwf-bg")[0].classList.remove('show');
                 }
 
                 if(betCode =="ssc_sanxing_hs" && jspName==undefined){//后三初始化
