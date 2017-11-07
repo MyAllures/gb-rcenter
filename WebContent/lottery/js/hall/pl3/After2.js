@@ -896,9 +896,9 @@ define(['site/hall/pl3/GfwfPlayWay'], function (PlayWay) {
 
             if (errorArr.length > 0) {
                 for (var e = 0; e < errorArr.length; e++) {
-                    errorStr += errorArr[e] + "";
+                    errorStr += errorArr[e] + ",";
                 }
-                _this.alertmsg("被过滤掉的错误号码" + errorStr);
+                _this.alertmsg("被过滤掉的错误号码:" + errorStr.substring(0,errorStr.length-1));
             }
 
             // 初始化变量
@@ -986,7 +986,7 @@ define(['site/hall/pl3/GfwfPlayWay'], function (PlayWay) {
             }
 
             if (errorArr.length > 0) {
-                errorStr += "被过滤掉的错误号码" + errorArr.join(" ")+"<br/>";
+                errorStr += "被过滤掉的错误号码:" + errorArr.join(" ")+"<br/>";
             }
             if(errorStr.length>0){
                 _this.alertmsg(errorStr);
