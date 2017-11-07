@@ -96,14 +96,14 @@
                         var expect = $("#expect").text();
                         $("#expect").html(data.expect);
                         $("#leftTime").attr("data-time", data.leftTime);
-                        if (_this.code == 'fc3d' &&_this.isPl3Open && data.leftOpenTime >0){
+                        if ((_this.code == 'fc3d' || _this.code == 'tcpl3') &&_this.isPl3Open && data.leftOpenTime >0){
                             _this.closePl3Handicap();
                             $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' >")
                             $("#leftTime").attr("data-time", data.leftOpenTime);
                             _this.isPl3Open = false;
                             // _this.showClearPopups();
                         }
-                        if (_this.code == 'fc3d' && !_this.isPl3Open&& data.leftOpenTime <=0){
+                        if ((_this.code == 'fc3d' || _this.code == 'tcpl3') && !_this.isPl3Open&& data.leftOpenTime <=0){
                             var dtime = $("#leftTime").attr("data-time");
                             $("#leftTime").attr("data-time", dtime);
                             _this.isPl3Open = true;
