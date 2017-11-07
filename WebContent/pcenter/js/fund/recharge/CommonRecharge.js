@@ -65,15 +65,15 @@ define(['common/BasePage'], function (BasePage) {
             if (activityId) {
                 url = url + "&activityId=" + activityId;
             }
-            if(rechargeAmount) {
+            if (rechargeAmount) {
                 url = url + "&result.rechargeAmount=" + rechargeAmount;
             }
             var bitAmount = $("input[name='result.bitAmount']").val();
-            if(bitAmount) {
+            if (bitAmount) {
                 url = url + "&result.bitAmount=" + bitAmount;
             }
             var returnTime = $("input[name='result.returnTime']").val();
-            if(returnTime) {
+            if (returnTime) {
                 url = url + "&result.returnTime=" + returnTime;
             }
             /* if (payerBankcard) {
