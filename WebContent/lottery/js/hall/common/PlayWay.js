@@ -199,6 +199,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                             page.getMyOrders();
                         }
                         _this.clearContent();
+                        _this.clearTdInput();
                     } else {
                         layer.msg(d.msg + '[' + d.code + ']', {icon: d.icon});
                     }
