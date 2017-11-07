@@ -138,8 +138,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var context = "您将采集xx彩种 yy日期的所有已开奖号码";
             var _target = event.currentTarget;
             var code = $("#lotteryCode").val();
-            debugger;
-
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
 
