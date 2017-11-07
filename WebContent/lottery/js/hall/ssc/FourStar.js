@@ -178,7 +178,7 @@ define(['site/hall/ssc/GfwfPlayWay'], function (PlayWay) {
                 for (var e = 0; e < errorArr.length; e++) {
                     errorStr += errorArr[e] + ",";
                 }
-                _this.alertmsg("被过滤掉的错误号码" + errorStr);
+                _this.alertmsg("被过滤掉的错误号码:" + errorStr.substring(0,errorStr.length-1));
             }
 
             // 初始化变量
