@@ -1646,7 +1646,8 @@
     }
 
     function canShowLottery(id){
-        var tiz = sessionStorage.getItem("timezone");
+        var timezone = sessionStorage.getItem("timezone");
+        var tiz = transTimeZone(timezone);
         $("#money_lottery_timezone").html(tiz);
         $.ajax({
             url:"/ntl/activity/countDrawTimes.html",

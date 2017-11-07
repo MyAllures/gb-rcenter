@@ -1,14 +1,12 @@
 /**
  * Created by fei on 16-12-11.
  */
-define(['site/include/BaseIndex',"site/promo/PromoDetail"], function (BaseIndex,PromoDetail) {
+define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
     var isload = false;
     return BaseIndex.extend({
-        promoJs:null,
         init: function () {
             this._super();
             var _this = this;
-            _this.promoJs= new PromoDetail();
             /*内容区域滚动*/
             mui("#mui-refresh").pullRefresh().refresh();
             /*滚动菜单*/
@@ -60,7 +58,7 @@ define(['site/include/BaseIndex',"site/promo/PromoDetail"], function (BaseIndex,
             mui(".ads-slider").on("tap",".float_idx",function () {
                 var activityId = $(this).attr("objectId");
                 if(activityId){
-                    _this.promoJs.canShowLottery(activityId);
+                    _this.canShowLottery(activityId);
                 }
             })
         },
