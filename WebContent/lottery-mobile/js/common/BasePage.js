@@ -27,11 +27,11 @@ define([], function () {
                      window.setTimeout(_this.gotoUrl(root + "login/commonLogin.html"), 2000);*/
                 } else if (status == 608) {
                     mui.toast(window.top.message.common["repeat.request.error"]);
-                } else if (status >= 0 && settings.comet != true) { //服务器忙
+                } else if (status >= 0 && settings && settings.comet != true) { //服务器忙
                     if (!settings.error) {
                         window.top.location.href = window.top.root + "/errors/" + status + ".html";
                     }
-                } else if (!settings.error && status != 200 && status != 0) {
+                } else if (settings && !settings.error && status != 200 && status != 0) {
                     if (settings.comet == true) {
                         mui.toast(window.top.message.common["online.message.error"]);
                     } else {
