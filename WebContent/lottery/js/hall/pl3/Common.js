@@ -265,14 +265,23 @@ define(['site/hall/common/Common','site/plugin/template'], function (Common,Temp
                                 //前端封盘控制
                                 if (_this.isCodeOpen){
                                     _this.isCodeOpen = false;
+                                    //官方
+                                    if (typeof page.PlayWay != 'undefined') {
+                                        page.PlayWay.closePl3GfwfHandicap();
+                                    }
+                                    //信用
                                     if (typeof page.playWay != 'undefined') {
                                         page.playWay.closeLhcHandicap();
                                     }
                                 }
-
                             }else {
                                 if ((_this.code == 'fc3d'||_this.code == 'tcpl3')  && !_this.isCodeOpen){
                                     _this.isCodeOpen = true;
+                                    //官方
+                                    if (typeof page.PlayWay != 'undefined'){
+                                        page.PlayWay.openPl3GfwfHandicap();
+                                    }
+                                    //信用
                                     if (typeof page.playWay != 'undefined'){
                                         page.playWay.openLhcHandicap();
                                     }

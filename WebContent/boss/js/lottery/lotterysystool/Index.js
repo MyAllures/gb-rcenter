@@ -163,7 +163,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var formobj =  $("#payoutForm")[0];
             var code = $(formobj).find("input[name='result.code']").val();
             var expect = $(formobj).find("input[name='result.expect']").val();
-            var siteId = $(formobj).find("input[name='search.siteId']").val();
+            var siteId = $(formobj).find("input[name='siteId']").val();
             var btnOption = {};
             var type=1;
             if (code == ''){
@@ -185,10 +185,22 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
                     if (data.status){
                         $("#opencode").val(data.msg);
-                        var formbj = $("#payoutForm")[0];
-                        _this.query1(e,option,formbj,null,type);
+                        if (siteId == ''){
+                            window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有未结算的注单进行收到派彩,是否确认执行?",function () {
+                                var formbj = $("#payoutForm")[0];
+                                _this.query1(e,option,formbj,null,type);
+                            });
+                        }else {
+                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有未结算的注单进行收到派彩,是否确认执行?",function () {
+                                var formbj = $("#payoutForm")[0];
+                                _this.query1(e,option,formbj,null,type);
+                            });
+                        }
+
+
                     }else{
                         e.page.showPopover(e,btnOption,"danger",data.msg,true);
+                        return;
                     }
 
                 }
@@ -199,7 +211,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var formobj =  $("#payoutForm")[0];
             var code = $(formobj).find("input[name='result.code']").val();
             var expect = $(formobj).find("input[name='result.expect']").val();
-            var siteId = $(formobj).find("input[name='search.siteId']").val();
+            var siteId = $(formobj).find("input[name='siteId']").val();
             var btnOption = {};
             var type=2;
             if (code == ''){
@@ -221,8 +233,17 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
                     if (data.status){
                         $("#opencode").val(data.msg);
-                        var formbj = $("#payoutForm")[0];
-                        _this.query1(e,option,formbj,null,type);
+                        if (siteId == ''){
+                            window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有注单进行重新结算,侧操作可能导致玩家钱包余额为负数,是否确认执行?",function(){
+                                var formbj = $("#payoutForm")[0];
+                                _this.query1(e,option,formbj,null,type);
+                            });
+                        }else {
+                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有注单进行重新结算,侧操作可能导致玩家钱包余额为负数,是否确认执行?",function () {
+                                var formbj = $("#payoutForm")[0];
+                                _this.query1(e,option,formbj,null,type);
+                            });
+                        }
                     }else{
                         e.page.showPopover(e,btnOption,"danger",data.msg,true);
                     }
@@ -276,7 +297,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 type:"post",
                 data:$(formobj).serialize(),
                 success:function(data){
-                    debugger;
                     var obj = eval("("+data+")");
                     if (obj.state){
                         e.page.showPopover(e,option,"success",obj.msg,true);
@@ -290,7 +310,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 },
                 error:function(data, state, msg){
                     window.top.topPage.showErrorMessage(data.responseText);
-                    $(e.currentTarget).unlock();
                 }});
 
         }

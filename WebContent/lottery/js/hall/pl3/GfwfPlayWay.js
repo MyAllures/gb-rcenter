@@ -19,6 +19,9 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                     if (!$.isEmptyObject(data)) {
                         _this.gfwfPlJson = data;
                         _this.initSubPage();
+                        if(!page.isCodeOpen) {
+                            _this.closePl3GfwfHandicap();
+                        }
                     } else {
                         console.log(name + ":odd is null");
                     }
@@ -39,6 +42,9 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                 }
                 // 初始化子页面
                 _this.initSubPage();
+                if(!page.isCodeOpen) {
+                    _this.closePl3GfwfHandicap();
+                }
             });
         },
 
@@ -47,6 +53,35 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                 $obj.addClass("acti");
             }
         },
+
+
+        //封盘
+        closePl3GfwfHandicap: function () {
+            $("ul .numLine").addClass("block-bet-btn");
+            $("textarea.content_tex").attr("readonly",true);
+            $("a#suiji1").removeAttr("onclick");
+            $("a#suiji1").addClass("disabled-btn");
+            $("a#suiji5").removeAttr("onclick");
+            $("a#suiji5").addClass("disabled-btn");
+            $("a#tjzd").removeAttr("onclick");
+            $("a#tjzd").addClass("disabled-btn");
+            $("a#qrtz").removeAttr("onclick");
+            $("a#qrtz").addClass("disabled-btn");
+            //开盘
+        },
+        openPl3GfwfHandicap: function () {
+            $("ul .numLine").removeClass("block-bet-btn");
+            $("textarea.content_tex").removeAttr("readonly");
+            $("a#suiji1").attr("onclick","page.PlayWay.getSuiji(1)");
+            $("a#suiji1").removeClass("disabled-btn");
+            $("a#suiji5").attr("onclick","page.PlayWay.getSuiji(5)");
+            $("a#suiji5").removeClass("disabled-btn");
+            $("a#tjzd").attr("onclick","page.PlayWay.tjzd()");
+            $("a#tjzd").removeClass("disabled-btn");
+            $("a#qrtz").attr("onclick","page.PlayWay.buyBtn()");
+            $("a#qrtz").removeClass("disabled-btn");
+            this.init();
+        }
 
     })
 });
