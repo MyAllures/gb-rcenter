@@ -53,7 +53,8 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
                     if ($a.hasClass("active")) {
                         $a.removeClass("active");
                     }
-                    if (/^[1-9]*$/.test($(this).val())) {
+                    /*if (/^[0-9]*$/.test($(this).val())) {*/
+                    if (/^\d+(\.\d+)?$/.test($(this).val())) {
                         $btn.removeAttr("disabled");
                     }
                     if (!$(this).val()) {

@@ -7,6 +7,7 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
             this._super();
             var _this = this;
             mui(this.formSelector).on("tap", "a.mui-control-item[data-subCode]", function () {
+                _this.resetBet();
                 var oldBetTitle = $("a.mui-active[data-subCode]").text();
                 $("a.mui-control-item[data-subCode]").removeClass("mui-active");
                 $(this).addClass("mui-active");

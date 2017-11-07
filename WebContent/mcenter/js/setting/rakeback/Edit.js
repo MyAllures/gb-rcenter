@@ -5,7 +5,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
 
     return BaseEditPage.extend({
         /*最多梯度*/
-        maxGrads:5,
+        maxGrads:50,
         init: function () {
             this._super();
         },
