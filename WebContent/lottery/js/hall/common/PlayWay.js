@@ -921,6 +921,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
             $(obj).parent().parent().find(".acti").removeClass("acti");
             $(obj).addClass("acti");
             this.clearStateTouZhu();//清除投注状态栏
+            this.renderZhushu();//重新计算注数
         },
 
         //右侧选择号码点击事件
