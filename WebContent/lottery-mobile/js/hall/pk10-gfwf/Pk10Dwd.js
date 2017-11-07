@@ -166,20 +166,30 @@ define(['site/hall/GfwfPlayWay', 'site/plugin/template'], function (PlayWay, Tem
          * 随机算法-定位胆
          */
         random_dwd_pk10:function () {
-        var random_1 = parseInt(Math.random() * 10)+1;
-        var wei = parseInt(Math.random() * 5);
-        if(wei == 0){
-            $(".guanjunStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
-        } else if(wei == 1){
-            $(".yajunStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
-        } else if(wei == 2){
-            $(".jijunStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
-        } else if(wei == 3){
-            $(".disiStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
-        } else if(wei == 4){
-            $(".diwuStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
-        }
-    }
+            var random_1 = parseInt(Math.random() * 10)+1;
+            var wei = parseInt(Math.random() * 10);
+            if(wei == 0){
+                $(".guanjunStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 1){
+                $(".yajunStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 2){
+                $(".jijunStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 3){
+                $(".disiStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 4){
+                $(".diwuStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 5){
+                $(".diliuStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 6){
+                $(".diqiStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 7){
+                $(".dibaStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 8){
+                $(".dijiuStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 9){
+                $(".dishiStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            }
+        },
 
 
 

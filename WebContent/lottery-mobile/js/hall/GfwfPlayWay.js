@@ -229,7 +229,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                         sessionStorage.removeItem("betForm");
                         $("div.bet-table-list .mui-active").removeClass("mui-active");
                         $(".balance").text(data.balance);
-                        page.resetBet();
+                        _this.resetBet();
                     } else {
                         _this.toast(d.msg + '[' + d.code + ']');
                     }
@@ -240,6 +240,20 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                     _this.toast('下注失败：请求异常');
                 }
             });
+        },
+
+
+        /**
+         * 重置下注选项
+         */
+        resetBet: function () {
+            $("i.mui-control-item").removeClass("mui-active");
+            $("a.n-btn").removeClass("mui-active");
+            $("#dingdan").removeClass('mui-active');
+            $("#quantity").text(0);
+            $("#inputMoney").text(0);
+            $("a.bottom-bar-btn.btn-jixuan-gfwf").addClass("mui-active");
+            $("a.bottom-bar-btn.btn-reset-gfwf").removeClass("mui-active");
         },
 
 
