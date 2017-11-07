@@ -148,7 +148,7 @@
 }
 .hongbao_detail .hongbao_inner {
   width: 396.89px;
-  height: 416.06px;
+  height: 378px;
   position: absolute;
   margin: auto;
   top: 0;
@@ -243,7 +243,7 @@
   display: block;
   background: url(images/hongbao/icon-close-rule.png) 0 0/100%;
   width: 91.59px;
-  height: 39.05px;
+  height: 32px;
   margin: 40px auto 0;
 }
 .hongbao_detail .hongbao_inner .hongbao .hongbao-rule .icon-close-rule:hover {
@@ -278,7 +278,7 @@
   width: 335.83px;
   height: 355.71px;
   z-index: 1;
-  top: 56.8px;
+  top: 30px;
   position: absolute;
   left: 29.82px;
 }
