@@ -1482,3 +1482,14 @@ div.menu-popover {width: 120px;}
 .screen-munber.disabled .newball-item-20 .n-btn:before{content: "封";display: block;position: absolute;top: -1px;left: -1px;width: 1.8rem;height: 1.8rem;line-height: 1.8rem;background: #ddd;    border-radius: 50%;color: #a9a8a8;}
 
 .bottom-bar-btn.disabled{background: #ccc!important;color: #8C828C!important;}
+
+/*注单弹窗列表*/
+.zd-wrap{text-align:left;word-spacing: -5px;border-bottom: 1px solid #ddd;padding: 0.2rem;font-size: 14px;}
+.zd-wrap .zd-left{display: inline-block;width: 50%;vertical-align: middle;word-wrap: break-word;}
+.zd-wrap .zd-left .title{word-wrap: normal;}
+.zd-wrap .zd-right{display: inline-block; width: 50%; text-align: right; vertical-align: middle;}
+.zd-wrap .zd-right font{display: inline-block; vertical-align: text-bottom; line-height: 30px; margin-right: 5px;word-spacing: 0;}
+.zd-wrap .zd-right .mui-input-numbox{width: 42px; padding: 10px 5px; height: 30px; vertical-align: top; margin-bottom: 0; margin-right: 5px;font-size: 14px;}
+.zd-wrap .zd-right a.list-delete-btn{height: 14px; width: 14px; text-align: center; margin: 8px 0;}
+.zd-wrap .zd-right a.list-delete-btn span {font-size: 14px; font-weight: 100; line-height: 14px; vertical-align: top;}
+.zd-wrap:last-child{border-bottom: 0;}
