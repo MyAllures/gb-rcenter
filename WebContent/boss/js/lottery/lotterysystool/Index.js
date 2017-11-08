@@ -150,7 +150,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 }
             });
 
-
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
 
@@ -167,6 +166,8 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                     $(event.currentTarget).unlock();
                 }
             });
+
+            $(event.currentTarget).unlock();
 
         },
 
