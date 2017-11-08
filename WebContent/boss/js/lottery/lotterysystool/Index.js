@@ -219,7 +219,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         },
 
         heavy:function (e,option) {
-            var formobj =  $("#payoutForm")[0];
+            var formobj =  $("#heavyForm")[0];
             var code = $(formobj).find("input[name='result.code']").val();
             var expect = $(formobj).find("input[name='result.expect']").val();
             var siteId = $(formobj).find("input[name='siteId']").val();
@@ -243,15 +243,15 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 success:function (data) {
 
                     if (data.status){
-                        $("#opencode").val(data.msg);
+                        $("#opencode1").val(data.msg);
                         if (siteId == ''){
                             window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有注单进行重新结算,侧操作可能导致玩家钱包余额为负数,是否确认执行?",function(){
-                                var formbj = $("#payoutForm")[0];
+                                var formbj = $("#heavyForm")[0];
                                 _this.query1(e,option,formbj,null,type);
                             });
                         }else {
                             window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有注单进行重新结算,侧操作可能导致玩家钱包余额为负数,是否确认执行?",function () {
-                                var formbj = $("#payoutForm")[0];
+                                var formbj = $("#heavyForm")[0];
                                 _this.query1(e,option,formbj,null,type);
                             });
                         }
