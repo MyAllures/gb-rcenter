@@ -19,6 +19,7 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
             $(".s-title.title1 span").text("任选四");
             $(".s-title.title2 span").text("直选复式");
             $(".x_3.gfwf-playName").text("直选复式");
+            $("#toobarTitle").text("官方玩法-任选四");
             $("a[data-code='ssc_renxuan4_zxfs']").addClass("mui-active");
         },
         /**************任选二***************/

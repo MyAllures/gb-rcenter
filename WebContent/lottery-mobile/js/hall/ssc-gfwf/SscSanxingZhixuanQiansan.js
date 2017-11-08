@@ -14,7 +14,8 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
             $("#qiansan").show();
             $("span.x_1.gfwf-tit").text("前三");
             $(".s-title.title1 span").text("前三");
-            $(".s-title.title2 span").text("直选复式")
+            $(".s-title.title2 span").text("直选复式");
+            $("#toobarTitle").text("官方玩法-前三");
             if(betCode =="ssc_sanxing_qs"){
                 $("a[data-code='ssc_sanxing_zhixuan_qsfs']").addClass("mui-active");
                 $(".x_3.gfwf-playName").text("直选复式");

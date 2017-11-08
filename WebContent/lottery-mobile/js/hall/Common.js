@@ -403,8 +403,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                         $("#guanfangWanfa").hide();
                         $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
                         $("a[data-code='ssc_shuzipan']").addClass("mui-active");
-                        $("a[data-code='ssc_yixing_dwd']").addClass("mui-active");
-                        $("a[data-code='zxfs']").addClass("mui-active");
                         $("a[data-code='szp']").addClass("mui-active");
                         $("a.x_1.mui-col-xs-6").addClass("x_active");
                         $("a.x_3.mui-col-xs-6").removeClass("x_active");
@@ -425,10 +423,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                         $("#xinyongWanfa").hide();
                         $("#guanfangWanfa").show();
                         $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
-                        $("a[data-code='ssc_shuzipan']").addClass("mui-active");
                         $("a[data-code='ssc_yixing_dwd']").addClass("mui-active");
                         $("a[data-code='zxfs']").addClass("mui-active");
-                        $("a[data-code='szp']").addClass("mui-active");
                         $("a.x_1.mui-col-xs-6").removeClass("x_active");
                         $("a.x_3.mui-col-xs-6").addClass("x_active");
                         $("#toobarTitle").text("官方玩法-定位胆");

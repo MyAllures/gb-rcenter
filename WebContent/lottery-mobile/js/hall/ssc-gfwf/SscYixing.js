@@ -123,6 +123,7 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
             $("span.x_1.gfwf-tit").text("定位胆");
             $(".s-title.title1 span").text("定位胆");
             $(".s-title.title2 span").text("直选复式")
+            $("#toobarTitle").text("官方玩法-定位胆");
         }
 
     });
