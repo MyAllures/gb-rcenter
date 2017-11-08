@@ -159,7 +159,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                         dataType: "json",
                         data: {"code":code,"date":date},
                         success: function (data) {
-
+                            $(event.currentTarget).unlock();
                         }
                     });
 
