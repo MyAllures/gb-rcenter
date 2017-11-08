@@ -382,11 +382,16 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         //封盘
         closeHandicap:function () {
             $("li.screen-munber").addClass("disabled");
+            $("#show-t-gfwf").addClass("disabled");
             mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn');
+            mui("body").off('tap','a#show-t-gfwf');
+            mui("body").off('tap','.btn-jixuan-gfwf');
+            mui("body").off('tap','.btn-reset-gfwf');
         },
         //开盘
         openHandicap:function () {
             $("li.screen-munber").removeClass("disabled");
+            $("#show-t-gfwf").removeClass("disabled");
             if(typeof page.playway != 'undefined'){
                 page.playway.bindButtonEvents();
             }
