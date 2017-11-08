@@ -37,6 +37,8 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             //更换收款账号
             $(this.formSelector).on("click", "label.bank", function (e) {
                 _this.changeBank(e);
+                _this.changePayerBankMsg();
+                $("input[name='result.payerBankcard']").valid();
             });
 
             $(this.formSelector).on("input", "[name='result.rechargeAmount']", function () {
@@ -188,6 +190,14 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             }
             this.extendValidateMessage({"result.rechargeAmount": {remote: msg}});
             this.extendValidateMessage({"result.rechargeAmount": {max: msg}});
+        },
+        changePayerBankMsg: function () {
+            var msg = $("label[for='result.payerBankcard']").text();
+            if(msg) {
+                msg = msg.trim().replace(/[:：]$/, '').replace(/^\*/, "").trim();
+            }
+            msg = window.top.message.common['{org.soul.commons.validation.form.constraints.Depends.message}'].replace('{}', msg);
+            this.extendValidateMessage({"result.payerBankcard": {required: msg}});
         },
         /**
          * 展开其它优惠
