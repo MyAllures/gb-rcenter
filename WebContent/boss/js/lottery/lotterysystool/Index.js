@@ -18,7 +18,10 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
          */
         bindEvent: function () {
             this._super();
-            var _this = this;
+            $("body").on("click","ul.dropdown-menu li", function (e) {
+                $(this).parent().parent().removeClass("open")
+            });
+
         },
         onPageLoad: function () {
             this._super();
