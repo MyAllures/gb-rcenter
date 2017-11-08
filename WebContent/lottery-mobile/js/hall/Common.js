@@ -396,7 +396,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             //信用
             mui("body").on("tap", "a.x_1.mui-col-xs-6", function () {
                 mui.ajax(root + '/'+_this.type+'/'+_this.code+'/checkBetTable.html', {
-                    data: {"jspStr": "BetAmount-xy"},
+                    data: {"jspStr": "BetAmount-xywf"},
                     type: 'POST',
                     success: function (data) {
                         $("#xinyongWanfa").show();
@@ -412,6 +412,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                         $("#GenraType").val("ssc_shuzipan");
                         _this.changeList();
                         $("#betAmount").html(data);
+                        $("#betDiv").html()
                     }
                 });
             });
