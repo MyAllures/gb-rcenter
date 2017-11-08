@@ -1,4 +1,6 @@
-
+/**
+ * Created by diego on 17-10-31.
+ */
 define(['common/BaseEditPage'], function(BaseEditPage) {
 
     return BaseEditPage.extend({
@@ -24,296 +26,67 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
          */
         bindEvent: function () {
             this._super();
-            var _this = this;
-
         },
-        // closePage: function () {
-        //     window.top.topPage.closeDialog();
-        // },
         bindEventOther:function(){
             var _this = this;
-            $(this.formSelector).on("keydown","input.m-xs", function (e) {
-                _this.createOpenNo(_this.code,_this.type);
+            $(this.formSelector).on("keyup","div#open-code-div input.m-xs", function (e) {
+                _this.keyupFun($(this),e);
             }).on("paste","input.m-xs", function (e) {
                 var txt = e.originalEvent.clipboardData.getData('Text');
-                _this.createCopy(txt,_this.code,_this.type);
+                if(txt != undefined && txt != '' && txt.replace(/\D/g,'') != ''){
+                    _this.createCopy($(this),txt.replace(/\D/g,''));
+                }
                 return false;
             });
         },
-        createOpenNo:function (code,type) {
-            if(type=='pk10' ){
-
-                var txts=$("input.m-xs");
-
-                for(var i = 0; i<txts.length;i++){
-                    var t = txts[i];
-                    t.index = i;
-                    t.onkeyup=function(){
-                        this.value=this.value.replace(/\D/g,'');
-                        var varStr=this.value+"";
-                        if(varStr.length==2){
-                            if(this.value !="" && this.value>=1 && this.value<11){
-                                var next = this.index + 1;
-                                if(next > txts.length - 1) return;
-                                txts[next].focus();
-                            }else{
-                                this.value="";
-                            }
-                        }
-                        if(next==undefined){
-                            if(this.value==""){
-                                txts[this.index - 1].focus();
-                            }
-                        }
-                    }
+        //监听backspace事件
+        keyupFun : function (thiz,e){
+            var k = e.keyCode;
+            thiz.val(thiz.val().replace(/\D/g,''));
+            if(k == 8){             //8是backspace的keyCode
+                if(thiz.val() == ''){
+                    var prevThiz = thiz.prev();
+                    prevThiz.focus().val(prevThiz.val());
                 }
-
-            }else  if(type=='ssc'|| type=='pl3'||code=='xy28'){
-                var txts=$("input.m-xs");
-                for(var i = 0; i<txts.length;i++){
-                    var t = txts[i];
-                    t.index = i;
-                    t.onkeyup=function(){
-                        this.value=this.value.replace(/\D/g,'');
-                        if(this.value !="" && this.value>=0 && this.value<11){
-                            var next = this.index + 1;
-                            if(next > txts.length - 1) return;
-                            txts[next].focus();
-                        }else{
-                            this.value="";
-                        }
-                        if(next==undefined){
-                            if(this.value==""){
-                                txts[this.index - 1].focus();
-                            }
-                        }
-                    }
-                }
-            }else if(type=='keno'){
-
-                var txts=$("input.m-xs");
-
-                for(var i = 0; i<txts.length;i++){
-                    var t = txts[i];
-                    t.index = i;
-                    t.onkeyup=function(){
-                        this.value=this.value.replace(/\D/g,'');
-                        var varStr=this.value+"";
-                        if(varStr.length==2){
-                            if(this.value !="" && this.value>=1 && this.value<81){
-                                var next = this.index + 1;
-                                if(next > txts.length - 1) return;
-                                txts[next].focus();
-                            }else{
-                                this.value="";
-                            }
-                        }
-                        if(next==undefined){
-                            if(this.value==""){
-                                txts[this.index - 1].focus();
-                            }
-                        }
-                    }
-                }
-            }else if(type=='lhc'){
-
-                var txts=$("input.m-xs");
-
-                for(var i = 0; i<txts.length;i++){
-                    var t = txts[i];
-                    t.index = i;
-                    t.onkeyup=function(){
-                        this.value=this.value.replace(/\D/g,'');
-                        var varStr=this.value+"";
-                        if(varStr.length==2){
-                            if(this.value !="" && this.value>=1 && this.value<50){
-                                var next = this.index + 1;
-                                if(next > txts.length - 1) return;
-                                txts[next].focus();
-                            }else{
-                                this.value="";
-                            }
-                        }
-                        if(next==undefined){
-                            if(this.value==""){
-                                txts[this.index - 1].focus();
-                            }
-                        }
-                    }
-                }
-            }else if(type=='sfc'){
-
-                var txts=$("input.m-xs");
-
-                for(var i = 0; i<txts.length;i++){
-                    var t = txts[i];
-                    t.index = i;
-                    t.onkeyup=function(){
-                        this.value=this.value.replace(/\D/g,'');
-                        var varStr=this.value+"";
-                        if(varStr.length==2){
-                            if(this.value !="" && this.value>=1 && this.value<21){
-                                var next = this.index + 1;
-                                if(next > txts.length - 1) return;
-                                txts[next].focus();
-                            }else{
-                                this.value="";
-                            }
-                        }
-                        if(next==undefined){
-                            if(this.value==""){
-                                txts[this.index - 1].focus();
-                            }
-                        }
-                    }
-                }
-            }else  if(type=='k3'){
-                var txts=$("input.m-xs");
-                for(var i = 0; i<txts.length;i++){
-                    var t = txts[i];
-                    t.index = i;
-                    t.onkeyup=function(){
-                        this.value=this.value.replace(/\D/g,'');
-                        if(this.value !="" && this.value>=0 && this.value<7){
-                            var next = this.index + 1;
-                            if(next > txts.length - 1) return;
-                            txts[next].focus();
-                        }else{
-                            this.value="";
-                        }
-                        if(next==undefined){
-                            if(this.value==""){
-                                txts[this.index - 1].focus();
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        //支持复制
-        createCopy:function (txt,code,type) {
-            var s=0;
-          var txts=txt.replace(/\D/g,'');
-            if(type=='pk10'  ){
-                var txts_i=$("input.m-xs");
-                var n=0;
-                for(var j=0;j<txts_i.length;j++){
-                    if(txts[n]!=undefined && txts[n+1]!=undefined){
-
-                        $(txts_i[j]).val(txts[n]+txts[n+1]);
-                        if($(txts_i[j]).val()>11){
-                            $(txts_i[j]).val("");
-                            n=n+2;
-                        }else{
-                            n=n+2;
-                        }
-
-                    }else if(txts[n]!=undefined && txts[n+1]==undefined){
-                        $(txts_i[j]).val(txts[n]);
-                        break;
-                    }else if(txts[n]==undefined){
-                        break;
-                    }
-                }
-            }else  if(type=='ssc'|| type=='pl3'||code=='xy28'){
-              var txts_i=$("input.m-xs");
-                for(var j=0;j<txts_i.length;j++){
-                    $(txts_i[j]).val(txts[j]);
-
-                }
-            }else  if(type=='keno'){
-                var txts_i=$("input.m-xs");
-                var n=0;
-                for(var j=0;j<txts_i.length;j++){
-                    if(txts[n]!=undefined && txts[n+1]!=undefined){
-
-                        $(txts_i[j]).val(txts[n]+txts[n+1]);
-                        if($(txts_i[j]).val()>80){
-                            $(txts_i[j]).val("");
-                            n=n+2;
-                        }else{
-                            n=n+2;
-                        }
-
-                    }else if(txts[n]!=undefined && txts[n+1]==undefined){
-                        $(txts_i[j]).val(txts[n]);
-                        break;
-                    }else if(txts[n]==undefined){
-                        break;
-                    }
-                }
-            }else  if(type=='sfc'){
-                var txts_i=$("input.m-xs");
-                var n=0;
-                for(var j=0;j<txts_i.length;j++){
-                    if(txts[n]!=undefined && txts[n+1]!=undefined){
-
-                        $(txts_i[j]).val(txts[n]+txts[n+1]);
-                        if($(txts_i[j]).val()>20){
-                            $(txts_i[j]).val("");
-                            n=n+2;
-                        }else{
-                            n=n+2;
-                        }
-
-                    }else if(txts[n]!=undefined && txts[n+1]==undefined){
-                        $(txts_i[j]).val(txts[n]);
-                        break;
-                    }else if(txts[n]==undefined){
-                        break;
-                    }
-                }
-            }else  if( type=='lhc'){
-                var txts_i=$("input.m-xs");
-                var n=0;
-                for(var j=0;j<txts_i.length;j++){
-                    if(txts[n]!=undefined && txts[n+1]!=undefined){
-
-                        $(txts_i[j]).val(txts[n]+txts[n+1]);
-                        if($(txts_i[j]).val()>49){
-                            $(txts_i[j]).val("");
-                            n=n+2;
-                        }else{
-                            n=n+2;
-                        }
-
-                    }else if(txts[n]!=undefined && txts[n+1]==undefined){
-                        $(txts_i[j]).val(txts[n]);
-                        break;
-                    }else if(txts[n]==undefined){
-                        break;
-                    }
-                }
-            }else  if(type=='k3'){
-                var n=0;
-                var txts_i=$("input.m-xs");
-                for(var j=0;j<txts_i.length;j++){
-                    $(txts_i[j]).val(txts[j]);
-                    if($(txts_i[j]).val()>6){
-                        $(txts_i[j]).val("");
-                        n++;
+            }else{
+                var maxLength = parseInt(thiz.attr("maxlength"));
+                var min = parseInt(thiz.attr("min"));
+                var max = parseInt(thiz.attr("max"));
+                if(thiz.val() != '' && thiz.val().length >= maxLength){
+                    var value = parseInt(thiz.val());
+                    if(value >= min && value <= max){
+                        thiz.next("input.m-xs").focus();
                     }else{
-                        n++;
+                        thiz.val("");
                     }
-
                 }
             }
         },
-        // getCurrentFormData:function () {
-        //     var _this = this;
-        //     var openCode = "";
-        //     $("input.m-xs").each(function(index,value){
-        //         openCode += $(this).val();
-        //     });
-        //     var id = $("#objId").val();
-        //     return {
-        //         id : id,
-        //         openCode:openCode
-        //     };
-        // },
-        validateForm:function () {
-            alert("test");
-            return false;
+
+        //支持复制
+        createCopy:function (thiz,txt) {
+            var tempThiz = thiz;
+            while (true){
+                var maxLength = parseInt(tempThiz.attr("maxlength"));
+                var min = parseInt(tempThiz.attr("min"));
+                var max = parseInt(tempThiz.attr("max"));
+                if(txt.length <= maxLength){
+                    maxLength = txt.length;
+                }
+                var valueStr = txt.substring(0,maxLength);
+                txt = txt.substring(maxLength);
+                var parseValue = parseInt(valueStr);
+                if(parseValue >= min && parseValue <= max){
+                    tempThiz.val(valueStr);
+                }else{
+                    tempThiz.val("");
+                }
+                if(txt == '' || tempThiz.next("input.m-xs").length == 0){
+                    return;
+                }
+                tempThiz = tempThiz.next("input.m-xs");
+                tempThiz.focus();
+            }
         },
         saveOpenCode:function (opt) {
             var _this = this;
@@ -349,14 +122,8 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                     }else{
                         _e.page.showPopover(_e, option, 'danger', data.msg, true);
                     }
-                },
+                }
             });
-        },
-
-
-
-
+        }
     });
-});/**
- * Created by diego on 17-10-31.
- */
+});
