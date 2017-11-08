@@ -21,6 +21,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         clearPopLayer: null,
         /**标志上一次执行计时器时间,以防止手机后台计时器停止*/
         lastIntervalTime: null,
+        //是否开盘
+        isOpen:true,
         init: function (formSelector) {
             this._super(formSelector || ".mui-off-canvas-wrap");
         },
@@ -94,6 +96,9 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                     //betCode赋值
                     $("#gfwfBetCode").val(betCode);
                     $(".bet-table").html(data);
+                    if(!_this.isOpen){
+                        _this.closeHandicap();
+                    }
                 }
             });
         },
@@ -277,7 +282,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             $("#dingdan").removeClass('mui-active');
             sessionStorage.removeItem("betForm");
             if (reset) {
-                this.resetBet();
+                _this.resetBet();
             }
         },
 
@@ -381,7 +386,25 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         },
         //初始化各猜中默认第一个玩法页面。
         changeList : function () {
-        }
+        },
+
+        //封盘
+        closeHandicap:function () {
+            $("li.screen-munber").addClass("disabled");
+            $("#show-t-gfwf").addClass("disabled");
+            mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn');
+            mui("body").off('tap','a#show-t-gfwf');
+            mui("body").off('tap','.btn-jixuan-gfwf');
+            mui("body").off('tap','.btn-reset-gfwf');
+        },
+        //开盘
+        openHandicap:function () {
+            $("li.screen-munber").removeClass("disabled");
+            $("#show-t-gfwf").removeClass("disabled");
+            if(typeof page.playway != 'undefined'){
+                page.playway.bindButtonEvents();
+            }
+        },
 
     });
 });

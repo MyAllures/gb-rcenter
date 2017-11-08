@@ -13,6 +13,15 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             this._super();//
 
             this.initSelectEvent();
+            this.initPicType();
+        },
+
+        initPicType: function(){
+            var value = $("[name='result.picType']:checked").val();
+            if("2" == value){
+                $(".show_page_1").siblings().addClass('hide');
+                $(".show_page_span_1").removeClass('hide');
+            }
         },
 
         initSelectEvent: function () {
@@ -167,7 +176,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                     $(".show_page_1").siblings('input').attr("checked", false);
                     $("[name='templateType'][value='1']").prop("checked", true);
                 }else {
-                    $("#content_float_pic_single_link_div").addClass("hide");//单图模式链接去掉hide
+                    $("#content_float_pic_single_link_div").addClass("hide");//单图模式链接添加hide
                     $("#singleMode_templateType_div").removeClass("hide");//单图模式图片去掉hide
                     $("#singleMode_service_pic").addClass("hide");
                     $("#singleMode_promo_pic").removeClass("hide");
@@ -197,7 +206,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                     $("#float_template_list_div").removeClass("hide");//列表模式移除hide
                     $("#content_float_pic_single_link_div").addClass("hide");//单图链接添加hide
                     $("#singleMode_templateType_div").addClass("hide");//单图模式图片添加hide
-                    $(".select_float_pic_link_type").addClass("hide");//列表模式链接添加hide
+                    $(".select_float_pic_link_type").removeClass("hide");//列表模式链接添加hide
                     $("#pic_showEffect").removeClass("hide");//显示效果移除hide
                     $(".show_page_1").siblings().addClass('hide');
                     $(".show_page_span_1").removeClass('hide');
@@ -217,6 +226,9 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             }
         },
 
+        showConfirm: function (e,option,msg) {
+
+        },
         /**
          * 预览并提交
          * @param e
@@ -224,7 +236,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
          * @returns {boolean}
          */
         valiDateFormAndUploadFile: function (e, opt) {
-
+            var _this = this;
             e.objId = $("#floatId").val();
             e.catePath = 'floatImage';
             var flag = this.uploadAllFiles(e, opt);
@@ -235,10 +247,49 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                 $(e.currentTarget).unlock();
                 return false;
             }
+            var opType = opt.opType;
+            var editType = $("[name='editType']").val();
+            var picType =$("[name='result.picType']:checked").val();
+            if(editType == '1' && picType == '2'){
+                window.top.topPage.ajax({
+                    url: root + '/cttFloatPic/isExitPromo.html',
+                    data: {"search.picType":picType},
+                    type: "POST",
+                    success: function (data) {
+                        var json = eval("(" + data + ")");
+                        var isExitPromo = json.isExitPromo;
+                        if (isExitPromo){
+                            window.top.topPage.showConfirmMessage( window.top.message.content['add.new.promoFloatPic'] , function( bol ){
+                                if(bol){
+                                    if('function' == opType){
+                                        window.top.topPage.doPageFunction(e, function() {
+                                            _this.previewFloatPic(e,opt);
+                                        }, opt);
+                                    }else {
+                                        window.top.topPage.doAjax(e,opt);
+                                    }
+                                }else{
+                                    return false;
+                                }
+                            });
+                        }else {
+                            if('function' == opType){
+                                window.top.topPage.doPageFunction(e, function() {
+                                    _this.previewFloatPic(e,opt);
+                                }, opt);
+                            }else {
+                                window.top.topPage.doAjax(e,opt);
+                            }
+                        }
+                    }
+                });
+            }else{
+                return true;
+            }
             $("#ctt_float_pic_item_div").remove();
             //select.disable('.middle-img-list [name="cttFloatPicTempVo.result.middle1ImgLinkType"]:first');
             //$('.middle-img-list input[name="cttFloatPicTempVo.result.middle1ImgLinkValue"]:first').prop('disabled', true);
-            return true;
+            return false;
         },
 
         /**

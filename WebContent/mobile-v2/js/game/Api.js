@@ -30,7 +30,7 @@ define(['site/game/ApiLogin'], function (ApiLogin) {
             /*金额转入弹窗*/
             $('.btn-in').click(function () {
                 var demoModel = sessionStorage.demoModel;
-                if(demoModel !="undefined"){
+                if (demoModel && demoModel != 'undefined') {
                     _this.toast(window.top.message.game_auto['试玩模式不支持额度转换']);
                     return;
                 }
@@ -56,14 +56,17 @@ define(['site/game/ApiLogin'], function (ApiLogin) {
                                     }
                                 },
                                 error: function () {
-                                    $('.mui-popup').attr("style","");
+                                    $('.mui-popup').attr("style", "");
                                     $this.text('确认提交').removeAttr("disabled");
                                     _this.toast(window.top.message.game_auto['转账异常']);
                                 }
                             });
-                            $('.mui-popup').attr("style","opacity:1;display:block");//不关闭对话框
+                            $('.mui-popup').attr("style", "opacity:1;display:block");//不关闭对话框
                         }
                         return false;
+                    } else {
+                        //点击取消删除弹窗内容，以防止出现异常时，无法点击取消弹窗
+                        $('.mui-popup').remove();
                     }
                 }, 'div');
                 $('.mui-popup').addClass('money-window');
@@ -76,7 +79,7 @@ define(['site/game/ApiLogin'], function (ApiLogin) {
             /*金额转出弹窗*/
             $('.btn-out').click(function () {
                 var demoModel = sessionStorage.demoModel;
-                if(demoModel !="undefined"){
+                if (demoModel && demoModel != 'undefined') {
                     _this.toast(window.top.message.game_auto['试玩模式不支持额度转换']);
                     return;
                 }
@@ -102,15 +105,18 @@ define(['site/game/ApiLogin'], function (ApiLogin) {
                                     }
                                 },
                                 error: function () {
-                                    $('.mui-popup').attr("style","");
+                                    $('.mui-popup').attr("style", "");
                                     $this.text('确认提交').removeAttr("disabled");
                                     _this.toast(window.top.message.game_auto['转账异常']);
                                 }
                             });
-                            $('.mui-popup').attr("style","opacity:1;display:block");//不关闭对话框
+                            $('.mui-popup').attr("style", "opacity:1;display:block");//不关闭对话框
                         }
 
                         return false;
+                    } else {
+                        //点击取消删除弹窗内容，以防止出现异常时，无法点击取消弹窗
+                        $('.mui-popup').remove();
                     }
                 }, 'div');
                 $('.mui-popup').addClass('money-window');
@@ -131,7 +137,7 @@ define(['site/game/ApiLogin'], function (ApiLogin) {
                 var apiId = $("#apiId").val();
                 var apiTypeId = $("#apiTypeId").val();
                 var data = new Object({'apiId': apiId, 'apiTypeId': apiTypeId});
-                if(apiId == '3' && apiTypeId == '1')
+                if (apiId == '3' && apiTypeId == '1')
                     data.gameCode = "1179";
                 if (apiId != "") {
                     if (apiId == "10") {
@@ -140,8 +146,8 @@ define(['site/game/ApiLogin'], function (ApiLogin) {
                     } else if (apiTypeId != "" && (apiTypeId == "1" || apiTypeId == "3" || apiTypeId == "4")) {
                         _this.apiLogin(data);
                         _this.showGameLoading();
-                    } else if (apiTypeId != "" && (apiTypeId == "2")){
-                        if(os == 'app_ios')
+                    } else if (apiTypeId != "" && (apiTypeId == "2")) {
+                        if (os == 'app_ios')
                             gotoPay("/game/apiGames.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
                         else
                             _this.gotoUrl("/game/apiGames.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
@@ -216,14 +222,14 @@ define(['site/game/ApiLogin'], function (ApiLogin) {
          * 转账回调
          */
         transferBack: function (data) {
-            $('.mui-popup').attr("style","");
+            $('.mui-popup').attr("style", "");
             var _this = this;
             var apiId = $("#apiId").val();
             var apiTypeId = $("#apiTypeId").val();
             if (!data) {
                 _this.toast(window.top.message.game_auto["转账异常2"]);
             } else if (data.state == true && data.result == 0) {
-                if(_this.os == 'app_android'){
+                if (_this.os == 'app_android') {
                     window.gamebox.backRefresh();
                 }
                 //转账成功

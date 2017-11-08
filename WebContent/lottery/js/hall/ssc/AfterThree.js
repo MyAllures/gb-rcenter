@@ -275,7 +275,7 @@ define(['site/hall/ssc/GfwfPlayWay'], function (PlayWay) {
             }
 
             if (errorArrs.length > 0){
-                allStrError.push(" 被过滤掉的错误号码 " + errorArrs.join(' '));
+                allStrError.push(" 被过滤掉的错误号码:" + errorArrs.join(' '));
             }
 
             if (allStrError.length > 0) {
@@ -443,7 +443,7 @@ define(['site/hall/ssc/GfwfPlayWay'], function (PlayWay) {
                 for (var e = 0; e < errorArr.length; e++) {
                     errorStr += errorArr[e] + ",";
                 }
-                _this.alertmsg("被过滤掉的错误号码" + errorStr);
+                _this.alertmsg("被过滤掉的错误号码:" + errorStr.substr(0,errorStr.length-1));
             }
 
             // 初始化变量
@@ -1367,7 +1367,7 @@ define(['site/hall/ssc/GfwfPlayWay'], function (PlayWay) {
             for (var e = 0; e < errorArr.length; e++) {
                 errorStr += errorArr[e] + ",";
             }
-            _this.alertmsg("被过滤掉的错误号码" + errorStr);
+            _this.alertmsg("被过滤掉的错误号码:" + errorStr.substr(0,errorStr.length-1));
         }
 
         // 初始化变量
@@ -1422,7 +1422,7 @@ define(['site/hall/ssc/GfwfPlayWay'], function (PlayWay) {
             for (var e = 0; e < errorArr.length; e++) {
                 errorStr += errorArr[e] + ",";
             }
-            _this.alertmsg("被过滤掉的错误号码" + errorStr);
+            _this.alertmsg("被过滤掉的错误号码:" + errorStr.substr(0,errorStr.length-1));
         }
 
         // 初始化变量
@@ -1502,7 +1502,7 @@ define(['site/hall/ssc/GfwfPlayWay'], function (PlayWay) {
             for (var e = 0; e < errorArr.length; e++) {
                 errorStr += errorArr[e] + ",";
             }
-            _this.alertmsg("被过滤掉的错误号码" + errorStr);
+            _this.alertmsg("被过滤掉的错误号码:" + errorStr.substr(0,errorStr.length-1));
         }
 
 

@@ -244,7 +244,8 @@ define(['common/BasePage','site/index/PopUp'], function (BasePage,PopUp) {
                             var voice = data.depositVoice;
                             // console.log("play company deposit："+voice);
                             popUp.audioplayer('companyDeposit',voice)
-                        }else if(data.playerWithdrawCount&&parseInt(data.playerWithdrawCount)>0){
+                        }
+                        if(data.playerWithdrawCount&&parseInt(data.playerWithdrawCount)>0){
                             var voice = data.withdrawVoice;
                             // console.log("play player withdraw："+voice)
                             popUp.audioplayer('playerWithdraw',voice)

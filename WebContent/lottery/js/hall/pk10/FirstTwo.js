@@ -170,9 +170,9 @@ define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
 
         if (errorArr.length > 0) {
             for (var e = 0; e < errorArr.length; e++) {
-                errorStr += errorArr[e] + "";
+                errorStr += errorArr[e] + ",";
             }
-            alert("被过滤掉的错误号码" + errorStr);
+            alert("被过滤掉的错误号码:" + errorStr.substring(0,errorStr.length-1));
         }
 
         // 初始化变量

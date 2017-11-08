@@ -36,11 +36,14 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
          */
         bindButtonEvents: function () {
             var _this = this;
-            //gfwf投注
-            mui("body").off('tap','a#show-t-gfwf').on("tap", 'a#show-t-gfwf', function () {
-                $("#dingdan").addClass("mui-active");
-                _this.showBetTemplate();
-            });
+            //开盘点击效果才有
+            if(page.isOpen){
+                //gfwf投注
+                mui("body").off('tap','a#show-t-gfwf').on("tap", 'a#show-t-gfwf', function () {
+                    $("#dingdan").addClass("mui-active");
+                    _this.showBetTemplate();
+                });
+            }
 
             //清除下注按钮点击事件
             mui("body").off('tap','a#del-bet').on('tap', 'a#del-bet', function () {
@@ -59,7 +62,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 var flag = $(this).attr("data-flag");
                 $("a."+flag).removeClass("mui-active");
                 _this.getZhuShu();
-
             });
             //全
             mui(".newball-content-top").on('tap','.quan',function(){
@@ -124,18 +126,20 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
                 _this.getZhuShu();
             });
-
-            mui("body").off('tap','.btn-jixuan-gfwf').on('tap','.btn-jixuan-gfwf',function(){
-                _this.jixuan();
-            });
-            //机选清除
-            mui("body").off('tap','.btn-reset-gfwf').on('tap','.btn-reset-gfwf',function(){
-                $("div.newball-content-top i.mui-control-item").removeClass("mui-active");
-                this.classList.remove('mui-active');
-                mui(".btn-jixuan-gfwf")[0].classList.add('mui-active');
-                $("div.newball-item-20 a").removeClass("mui-active");
-                _this.getZhuShu();
-            });
+            //开盘才有效果。
+            if(page.isOpen){
+                mui("body").off('tap','.btn-jixuan-gfwf').on('tap','.btn-jixuan-gfwf',function(){
+                    _this.jixuan();
+                });
+                //机选清除
+                mui("body").off('tap','.btn-reset-gfwf').on('tap','.btn-reset-gfwf',function(){
+                    $("div.newball-content-top i.mui-control-item").removeClass("mui-active");
+                    this.classList.remove('mui-active');
+                    mui(".btn-jixuan-gfwf")[0].classList.add('mui-active');
+                    $("div.newball-item-20 a").removeClass("mui-active");
+                    _this.getZhuShu();
+                });
+            }
 
             //清除下注按钮点击事件
             mui("body").off('tap','a#del-bet').on('tap', 'a#del-bet', function () {
@@ -241,6 +245,20 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 }
             });
         },
+
+
+        // /**
+        //  * 重置下注选项
+        //  */
+        // resetBet: function () {
+        //     $("i.mui-control-item").removeClass("mui-active");
+        //     $("a.n-btn").removeClass("mui-active");
+        //     $("#dingdan").removeClass('mui-active');
+        //     $("#quantity").text(0);
+        //     $("#inputMoney").text(0);
+        //     $("a.bottom-bar-btn.btn-jixuan-gfwf").addClass("mui-active");
+        //     $("a.bottom-bar-btn.btn-reset-gfwf").removeClass("mui-active");
+        // },
 
 
         showBetTemplate:function() {

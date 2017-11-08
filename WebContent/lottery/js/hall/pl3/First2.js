@@ -889,9 +889,9 @@ define(['site/hall/pl3/GfwfPlayWay'], function (PlayWay) {
 
             if (errorArr.length > 0) {
                 for (var e = 0; e < errorArr.length; e++) {
-                    errorStr += errorArr[e] + "";
+                    errorStr += errorArr[e] + ",";
                 }
-                _this.alertmsg("被过滤掉的错误号码" + errorStr);
+                _this.alertmsg("被过滤掉的错误号码:" + errorStr.substring(0,errorStr.length-1));
             }
 
             // 初始化变量
@@ -959,15 +959,33 @@ define(['site/hall/pl3/GfwfPlayWay'], function (PlayWay) {
                     }
                 }
             }
-            newArr = newArr.uniqueArr();
+
             if (newArr.length <= 0) {
                 return 0;
             }
 
-            if (errorArr.length > 0) {
-                _this.alertmsg("被过滤掉的错误号码" + errorArr.join(","));
+            var lastArr =[];
+            var repeatArr = [];
+            for(var i=0;i<newArr.length;i++){
+                if(this.contain_q2zxds(lastArr,newArr[i])){
+                    repeatArr.push(newArr[i]);
+                }else{
+                    lastArr.push(newArr[i]);
+                }
             }
 
+            if (repeatArr.length> 0) {
+                errorStr += "已删除掉重复号: " + repeatArr.join(" ")+"<br/>";
+            }
+
+            if (errorArr.length > 0) {
+                errorStr += "被过滤掉的错误号码:" + errorArr.join(" ")+"<br/>";
+            }
+            if(errorStr.length>0){
+                _this.alertmsg(errorStr);
+            }
+
+            newArr = newArr.uniqueArr();
             // 初始化变量
             var showPlayName = '';
             var showContent = '';
@@ -983,6 +1001,16 @@ define(['site/hall/pl3/GfwfPlayWay'], function (PlayWay) {
                 showContent: showContent,
                 betContent: betContent
             };
+        },
+
+        contain_q2zxds:function(newArr,item){
+
+            for(var i=0;i<newArr.length;i++){
+                if(newArr[i].charAt(0)==item.charAt(0) && newArr[i].charAt(1)==item.charAt(1)){
+                    return true;
+                }
+            }
+            return false;
         },
         /**
          * 前二直选-直选复式
