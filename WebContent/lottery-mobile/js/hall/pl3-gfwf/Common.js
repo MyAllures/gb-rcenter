@@ -54,7 +54,7 @@ define(['site/hall/GfwfCommon', 'site/plugin/template'], function (PlayWay, Temp
         changeList : function(){
             var _this=this;
             mui.ajax(root + '/'+this.type+'/'+this.code+'/getBetTable.html', {
-                data: {"betCode": "pl3_sanxing_zhixuan_fs","jspStr":"3star"},
+                data: {"betCode": "pl3_yixing_dwd","jspStr":"YixingDwd"},
                 type: 'POST',
                 success: function (data) {
                     $(".bet-table").html(data);
