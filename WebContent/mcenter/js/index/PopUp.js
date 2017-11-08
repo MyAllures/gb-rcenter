@@ -315,13 +315,13 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                             dialog.close();
                         }
                     });
-                    if (date && date.length > 0) {
-                        window.top.popUp.showLeftTime();
-                        var interval = setInterval(function () {
-                            window.top.popUp.showLeftTime(interval)
-                        }, 60 * 1000);
-                    }
-                } else if ($("#topSecurity") && $("#topSecurity").length > 0) {
+                } else if (date && date.length > 0) {
+                    window.top.popUp.showLeftTime();
+                    var interval = setInterval(function () {
+                        window.top.popUp.showLeftTime(interval)
+                    }, 60 * 1000);
+                }
+                else if ($("#topSecurity") && $("#topSecurity").length > 0) {
                     window.top.topPage.showWarningMessage(msg);
                 }
             }
@@ -568,8 +568,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         dialog.close();
                     }
                 });
-            }
-            if (date && date.length > 0) {
+            } else if (date && date.length > 0) {
                 window.top.popUp.showLeftTime();
                 var interval = setInterval(function () {
                     window.top.popUp.showLeftTime(interval)
