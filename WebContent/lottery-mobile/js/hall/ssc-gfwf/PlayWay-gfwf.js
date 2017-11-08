@@ -1,4 +1,4 @@
-define(['site/hall/GfwfPlayWay', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
 
         init: function () {
@@ -38,6 +38,24 @@ define(['site/hall/GfwfPlayWay', 'site/plugin/template'], function (PlayWay, Tem
             if(betCode =="ssc_sanxing_zuxuan_hszxbd" || betCode =="ssc_sanxing_zuxuan_qszxbd" || betCode =="ssc_erxing_zuxuan_qebd"){
                 $("div.newball-item-20 a.n-btn").removeClass("mui-active");
             }
+        },
+
+        getGfwfOdd:function(){
+            var _this = this;
+            var betCode=$("#gfwfBetCode").val();
+            var betCode1=_this.getInitbetCode(betCode);
+            mui.ajax(root + '/'+_this.type+'/'+_this.code+'/'+betCode+'/getOdds.html', {
+                data: {"betCode": betCode1},
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {
+                    if (!$.isEmptyObject(data)) {
+                        _this.gfwfPlJson = data;
+                    } else {
+                        console.log(name + ":odd is null");
+                    }
+                }
+            });
         },
 
 
