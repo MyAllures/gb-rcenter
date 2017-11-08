@@ -34,6 +34,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             /** 小彩种 */
             this.code = $(this.formSelector + ' input[name=code]').val();
             this.type = $(this.formSelector + " input[name=type]").val();
+            this.betCode = $(this.formSelector + " .ssc-method-list .ssc-method-label a.mui-active").attr("data-code");
             //传统，官方切换
             this.isGfwf();
             //获取盘口数据
@@ -52,6 +53,16 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          */
         bindButtonEvents: function () {
             var _this = this;
+            //确认清空选项
+            mui("body").on("tap", 'button#confirmClearPop', function () {
+                _this.closeClearPopup(true);
+            });
+            mui("body").on("tap", 'button#cancelPop', function () {
+                _this.closeClearPopup();
+            });
+
+
+            /*==============================官方====================================*/
             //头部选择
             mui("div.s-menu").on('tap', 'a', function () {
                  _this.checkNoSon($(this).attr("data-code"), this.classList);
@@ -108,6 +119,14 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          * 重置下注选项
          */
         resetBet: function () {
+            //信用
+            $("div.bet-table-list td").removeClass("mui-active");
+            $("div.bet-table-list li a").removeClass("mui-active");
+            $("#quantity").text($("div.bet-table-list td.mui-active").length);
+            $("input#inputMoney").val("");
+            $("input#inputMoney").blur();
+
+            //官方
             $("i.mui-control-item").removeClass("mui-active");
             $("a.n-btn").removeClass("mui-active");
             $("#dingdan").removeClass('mui-active');
@@ -188,6 +207,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             }
             this.showLeftTime(time);
         },
+
+
         /**
          * 获取最近开奖历史记录
          */
@@ -372,12 +393,49 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         //传统,官方玩法切换
         isGfwf: function () {
             var _this = this;
-            var lotteryGenra = $("input#lotteryGenra").val();
-            mui("body").on("tap", "a#is-gfwf", function () {
-                if(lotteryGenra ==1) {
-                    var flag = $(this).attr("data-flag");
-                    _this.gotoUrl(root + '/' +_this.type + '/' +_this.code + '/index.html?betCode=&isGfwf='+flag);
-                }
+            //信用
+            mui("body").on("tap", "a.x_1.mui-col-xs-6", function () {
+                mui.ajax(root + '/'+_this.type+'/'+_this.code+'/checkBetTable.html', {
+                    data: {"jspStr": "BetAmount-xy"},
+                    type: 'POST',
+                    success: function (data) {
+                        $("#xinyongWanfa").show();
+                        $("#guanfangWanfa").hide();
+                        $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
+                        $("a[data-code='ssc_shuzipan']").addClass("mui-active");
+                        $("a[data-code='ssc_yixing_dwd']").addClass("mui-active");
+                        $("a[data-code='zxfs']").addClass("mui-active");
+                        $("a[data-code='szp']").addClass("mui-active");
+                        $("a.x_1.mui-col-xs-6").addClass("x_active");
+                        $("a.x_3.mui-col-xs-6").removeClass("x_active");
+                        $("#toobarTitle").text("信用玩法-数字盘");
+                        $("#GenraType").val("ssc_shuzipan");
+                        _this.changeList();
+                        $("#betAmount").html(data);
+                    }
+                });
+            });
+            //官方
+            mui("body").on("tap", "a.x_3.mui-col-xs-6", function () {
+                mui.ajax(root + '/'+_this.type+'/'+_this.code+'/checkBetTable.html', {
+                    data: {"jspStr": "BetAmount-gfwf"},
+                    type: 'POST',
+                    success: function (data) {
+                        $("#xinyongWanfa").hide();
+                        $("#guanfangWanfa").show();
+                        $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
+                        $("a[data-code='ssc_shuzipan']").addClass("mui-active");
+                        $("a[data-code='ssc_yixing_dwd']").addClass("mui-active");
+                        $("a[data-code='zxfs']").addClass("mui-active");
+                        $("a[data-code='szp']").addClass("mui-active");
+                        $("a.x_1.mui-col-xs-6").removeClass("x_active");
+                        $("a.x_3.mui-col-xs-6").addClass("x_active");
+                        $("#toobarTitle").text("官方玩法-定位胆");
+                        $("#GenraType").val("ssc_yixing_dwd");
+                        _this.changeList();
+                        $("#betAmount").html(data);
+                    }
+                });
             });
         },
 
@@ -404,7 +462,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             if(typeof page.playway != 'undefined'){
                 page.playway.bindButtonEvents();
             }
-        },
+        }
 
     });
 });

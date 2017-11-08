@@ -1,4 +1,4 @@
-define(['site/hall/ssc/AllSsc','site/plugin/template'], function (PlayWay,Template) {
+define(['site/hall/GfwfPlayWay','site/plugin/template'], function (PlayWay,Template) {
 
     return PlayWay.extend({
         _this:null,

@@ -1,4 +1,4 @@
-define(['site/hall/GfwfCommon', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         init: function () {
             this._super();
@@ -70,7 +70,7 @@ define(['site/hall/GfwfCommon', 'site/plugin/template'], function (PlayWay, Temp
         },
 
         changeList : function(){
-            var lotteryGenra=$("#Genra").val();
+            var lotteryGenra=$("#GenraType").val();
             var betCode="ssc_shuzipan";
             var jspStr="DigitalDisk";
             if(lotteryGenra =="ssc_yixing_dwd"){

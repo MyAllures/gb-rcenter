@@ -9,12 +9,17 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
         code: null,
         //玩法
         betCode: null,
+        //上一次获取盘口时间
+        successTime: page.successTime,
         //下注号码
         betNum:null,
         //赔率Json
         gfwfPlJson: null,
         init: function (formSelector) {
             this._super(formSelector || ".mui-off-canvas-wrap");
+            //获取赔率xy
+            this.getOdds();
+            //获取赔率gf
             this.getGfwfOdd();
             this.showTable();
         },
@@ -30,12 +35,43 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             var _this = this;
             this.muiInit();
             this.iosGoBack();
+            if(this.os == 'pc') {
+                //已应对在h5下金额输入框不能输入
+                $("input#inputMoney").focus();
+            }
         },
         /**
          * 绑定事件
          */
         bindButtonEvents: function () {
             var _this = this;
+            /*==============================信用====================================*/
+            //点击下注选项
+            mui("body").on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn', function () {
+                _this.bindTdInput(this);
+            });
+            //清除下注项
+            mui("body").on('tap', 'a#del-bet', function () {
+                page.resetBet();
+            });
+            //投注
+            mui("body").on("tap", 'a#show-t', function () {
+                _this.betOrder();
+            });
+
+            //取消下注
+            mui("body").on("tap", "#cancel", function () {
+                $("#dingdan").html('');
+                $("#dingdan").removeClass('mui-active');
+            });
+            //确认投注
+            mui("body").on("tap", "#confirmOrder", function () {
+                var betForm = _this.getBetOrder();
+                _this.confirmOrder(betForm);
+            });
+
+
+            /*==================================官方============================================*/
             //开盘点击效果才有
             if(page.isOpen){
                 //gfwf投注
@@ -168,18 +204,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             _this.getZhuShu();
         },
 
-        //传统,官方玩法切换
-        isGfwf: function () {
-            var _this = this;
-            var lotteryGenra = $("input#lotteryGenra").val();
-            mui("body").on("tap", "a#is-gfwf", function () {
-                if(lotteryGenra ==1) {
-                    var flag = $(this).attr("data-flag");
-                    _this.gotoUrl(root + '/' +_this.type + '/' +_this.code + '/index.html?betCode=&isGfwf='+flag);
-                }
-            });
-        },
-
         /**
          * 验证下注倍数不能为空
          * @returns {boolean}
@@ -245,21 +269,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 }
             });
         },
-
-
-        // /**
-        //  * 重置下注选项
-        //  */
-        // resetBet: function () {
-        //     $("i.mui-control-item").removeClass("mui-active");
-        //     $("a.n-btn").removeClass("mui-active");
-        //     $("#dingdan").removeClass('mui-active');
-        //     $("#quantity").text(0);
-        //     $("#inputMoney").text(0);
-        //     $("a.bottom-bar-btn.btn-jixuan-gfwf").addClass("mui-active");
-        //     $("a.bottom-bar-btn.btn-reset-gfwf").removeClass("mui-active");
-        // },
-
 
         showBetTemplate:function() {
             var _this = this;
@@ -584,7 +593,187 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
         //针对ssc三星组合
         checkSanxingZuhe:function () {
             return false;
-        }
+        },
+
+
+
+        /*=============================信用=================================*/
+        //点击投注选项
+        bindTdInput: function (obj) {
+            var flag = $(obj).is('.not-selected');
+            if (!flag) {
+                $(obj).toggleClass('mui-active');
+            }
+            $("#quantity").text($("div.bet-table-list .mui-active").length);
+        },
+
+        /**
+         * 投注
+         */
+        betOrder: function () {
+            if (!this.checkBetOrder()) {
+                return;
+            }
+            var betForm = this.getBetOrder();
+            if (typeof betForm != 'object') {
+                return;
+            }
+            if (betForm.betOrders.length == 0) {
+                this.toast("请选择");
+                return;
+            }
+            sessionStorage.betForm = JSON.stringify(betForm);
+            this.placeOrder(betForm);
+            $("#dingdan").addClass('mui-active');
+        },
+
+        getBetOrder: function () {
+            var code = this.code;
+            var expect = $('font#expect').text();
+            var type = this.type;
+            var betAmount = Number($("input#inputMoney").val());
+            var betForm = {
+                code: code,
+                expect: expect,
+                type: type,
+                betOrders: [],
+                quantity: 0,
+                totalMoney: 0
+            };
+            $("div.bet-table-list .mui-active").each(function () {
+                betForm.betOrders.push({
+                    code: code,
+                    expect: expect,
+                    betAmount: betAmount,
+                    betCode: $(this).attr('data-bet-code'),
+                    playCode: $(this).attr('data-play'),
+                    betNum: $(this).attr('data-bet-num'),
+                    odd: $(this).attr("data-odds"),
+                    memo: $(this).attr("data-name")
+                });
+                betForm.totalMoney = betForm.totalMoney + betAmount;
+                betForm.quantity = betForm.quantity + 1;
+            });
+            return betForm;
+        },
+
+        /**
+         * 确定下注
+         */
+        confirmOrder: function (betForm) {
+            var _this = this;
+            var type = $("input[name=type]").val();
+            var code = $("input[name=code]").val();
+            if (typeof betForm != 'object') {
+                return;
+            }
+            var ajaxData = {
+                code: code,
+                quantity: betForm.quantity,
+                totalMoney: betForm.totalMoney,
+                betOrders: []
+            };
+            $.each(betForm.betOrders, function (index, value) {
+                ajaxData.betOrders.push({
+                    expect: value.expect,
+                    code: value.code,
+                    betCode: value.betCode,
+                    playCode: value.playCode,
+                    betNum: value.betNum,
+                    odd: value.odd,
+                    betAmount: value.betAmount,
+                    memo: ""
+                });
+            });
+
+            mui.ajax(root + '/' + type + '/' + code + '/saveBetOrder.html', {
+                data: {betForm: JSON.stringify(ajaxData)},
+                dataType: 'json',
+                type: 'POST',
+                beforeSend: function () {
+                    _this.closeConfirmOrder();
+                    _this.showLoading();
+                },
+                success: function (data) {
+                    var d = data.code[0];
+                    //code代码为100表示成功
+                    if (d && d.code && d.code == '100') {
+                        _this.toast(d.msg);
+                        sessionStorage.removeItem("betForm");
+                        $("div.bet-table-list .mui-active").removeClass("mui-active");
+                        $(".balance").text(data.balance);
+                        page.resetBet();
+                    } else {
+                        _this.toast(d.msg + '[' + d.code + ']');
+                    }
+                },
+                complete: function () {
+                    _this.hideLoading();
+                },error:function(xhr,type,errorThrown){
+                    _this.toast('下注失败：请求异常');
+                }
+            })
+        },
+
+        /**
+         * 关闭下注清单
+         */
+        closeConfirmOrder: function () {
+            $("#dingdan").html('');
+            $("#dingdan").removeClass('mui-active');
+        },
+
+        /**
+         * 验证是否符合下注条件
+         * @returns {boolean}
+         */
+        checkBetOrder: function () {
+            var betAmount = $("input#inputMoney").val();
+            var g = /^[1-9]*[1-9][0-9]*$/;
+            if(!g.test(betAmount)){
+                this.toast("请输入正整数投注金额");
+                return false;
+            }
+            return true;
+        },
+
+        /**
+         * 下注清单
+         * @param betForm
+         */
+        placeOrder: function (betForm) {
+            var content = Template('template_order', {data: betForm});
+            $("#dingdan").html(content);
+        },
+
+        /**信用玩法
+         * 获取赔率
+         */
+        getOdds: function () {
+            var url = root + '/' + this.type + '/' + this.code + '/' + this.betCode + 'Odd.html';
+            var _this = this;
+            mui.ajax(url, {
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {
+                    _this.templateOdd(data);
+                }
+            })
+        },
+
+        /**
+         * 组装赔率（各自玩法各自组装赔率）信用玩法
+         * @param data
+         */
+        templateOdd: function (data) {
+            $(".bet-table-list td[data-bet-num]").each(function () {
+                var betNum = $(this).attr('data-bet-num');
+                var bet = data[betNum];
+                $(this).attr("data-odds", bet.odd);
+                $(this).attr("data-bet-code", bet.betCode);
+                $(this).children("span[name=odd]").text(bet.odd);
+            })
+        },
 
     });
 });
