@@ -18,7 +18,10 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
          */
         bindEvent: function () {
             this._super();
-            var _this = this;
+            $("body").on("click","ul.dropdown-menu li", function (e) {
+                $(this).parent().parent().removeClass("open")
+            });
+
         },
         onPageLoad: function () {
             this._super();
@@ -135,18 +138,28 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         gatherOpenCode: function (event,option) {
 
             var form = $("#gatherOpenCodeForm");
-            var context = "您将采集xx彩种 yy日期的所有已开奖号码";
-            var _target = event.currentTarget;
-            var code = $("#lotteryCode").val();
+            var date = form.find("input").val();
+            var code = null;
+            var codeName = form.find("span[prompt='prompt']").text();//彩种名称
+            var context = "您将采集 "+codeName + " "+date+"的所有已开奖号码";
+
+            $("#lotteryList li a").each(function(i){
+                if($(this).text()==codeName){
+                    code = $(this).attr("key");
+                    return;
+                }
+            });
+
+
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
 
                     window.top.topPage.ajax({
                         url: root + '/lotterySysTool/gatherOpenCode.html',
                         dataType: "json",
-                        data: {"state":true},
+                        data: {"code":code,"date":date},
                         success: function (data) {
-
+                            $(event.currentTarget).unlock();
                         }
                     });
 
