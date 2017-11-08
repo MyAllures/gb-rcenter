@@ -291,12 +291,6 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                             dialog.close();
                         }
                     });
-                    if (date && date.length > 0) {
-                        window.top.popUp.showLeftTime();
-                        var interval = setInterval(function () {
-                            window.top.popUp.showLeftTime(interval)
-                        }, 60 * 1000);
-                    }
                 } else if (rate >= 100){
                     var html = '<div class="sys_tab_wrap p-xs"><div class="co-orange fs36 line-hi25 al-center"><i class="fa fa-exclamation-circle"></i></div><div class="line-hi34 m-sm">'+msg+'</div></div>'+
                         '<div class="sys_tab_wrap p-xs"><b class="fs16">'+countDown+'</b><span class="fs20 ft-bold co-red" id="leftTime" data-time="${leftTime}"><span id="hour">00</span>'+hours+'<span id="minute">00</span>'+minutes+'</span></div>'
@@ -321,6 +315,12 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                             dialog.close();
                         }
                     });
+                    if (date && date.length > 0) {
+                        window.top.popUp.showLeftTime();
+                        var interval = setInterval(function () {
+                            window.top.popUp.showLeftTime(interval)
+                        }, 60 * 1000);
+                    }
                 } else if ($("#topSecurity") && $("#topSecurity").length > 0) {
                     window.top.topPage.showWarningMessage(msg);
                 }
@@ -568,12 +568,12 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         dialog.close();
                     }
                 });
-                if (date && date.length > 0) {
-                    window.top.popUp.showLeftTime();
-                    var interval = setInterval(function () {
-                        window.top.popUp.showLeftTime(interval)
-                    }, 60 * 1000);
-                }
+            }
+            if (date && date.length > 0) {
+                window.top.popUp.showLeftTime();
+                var interval = setInterval(function () {
+                    window.top.popUp.showLeftTime(interval)
+                }, 60 * 1000);
             }
         }
     });
