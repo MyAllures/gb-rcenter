@@ -31,6 +31,7 @@ define(['site/hall/ssc-gfwf/PlayWay', 'site/plugin/template'], function (PlayWay
          * 注数-后3组合
          */
         zhushu_h3zh:function () {
+            var _this=this;
             var baiArr = [], shiArr = [], geArr = [];
             $.each($("ul.baiweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
                 baiArr.push($.trim($(this).html()));
@@ -47,7 +48,7 @@ define(['site/hall/ssc-gfwf/PlayWay', 'site/plugin/template'], function (PlayWay
             var geLength = geArr.length;
 
             if (baiLength <= 0 || shiLength <= 0 || geLength <= 0) {
-                return;
+                return 0;
             }
 
             var newArr = _this.getHszhNewArrs(baiArr, shiArr, geArr);

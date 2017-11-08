@@ -1,7 +1,9 @@
 define(['site/hall/GfwfCommon', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
+
         init: function () {
             this._super();
+            this.checkPl3Handicap();
         },
 
         checkNoSon : function (betCode,thisClassList){
@@ -50,16 +52,73 @@ define(['site/hall/GfwfCommon', 'site/plugin/template'], function (PlayWay, Temp
         },
 
         changeList : function(){
+            var _this=this;
             mui.ajax(root + '/'+this.type+'/'+this.code+'/getBetTable.html', {
                 data: {"betCode": "pl3_sanxing_zhixuan_fs","jspStr":"3star"},
                 type: 'POST',
                 success: function (data) {
                     $(".bet-table").html(data);
+                    if(!_this.isOpen){
+                        _this.closeHandicap();
+                    }
                 }
             });
         },
 
 
+        getHandicap:function ( ) {
+            if (this.isRunning) {
+                return;
+            }
+            var _this = this;
+            var url = root + '/commonLottery/getExpect.html';
+            mui.ajax(url, {
+                dataType: 'json',
+                type: 'POST',
+                async: false,
+                data: {'code': this.code},
+                beforeSend: function () {
+                    _this.isRunning = true;
+                },
+                success: function (data) {
+                    if (data) {
+                        var expect = $("#expect").text();
+                        $("#expect").html(data.expect);
+                        $("#leftTime").attr("data-time", data.leftTime);
+                        if ((_this.code == 'fc3d' || _this.code == 'tcpl3') &&_this.isOpen && data.leftOpenTime >0){
+                            _this.closeHandicap();
+                            $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' >")
+                            $("#leftTime").attr("data-time", data.leftOpenTime);
+                            _this.isOpen = false;
+                        }
+                        if ((_this.code == 'fc3d' || _this.code == 'tcpl3') && !_this.isOpen&& data.leftOpenTime <=0){
+                            var dtime = $("#leftTime").attr("data-time");
+                            $("#leftTime").attr("data-time", dtime);
+                            _this.isOpen = true;
+                            _this.openHandicap();
+                        }
+                        if (typeof callback == 'function') {
+                            callback();
+                        }
+                    } else { //handicap为空
+                        $(".mui-table-view-cell.mui-collapse").html('sorry,该彩票暂停!');
+                    }
+                },
+                complete: function () {
+                    _this.isRunning = false;
+                }
+            })
+        },
 
+
+        showClearPopup:function () {
+
+        },
+
+        checkPl3Handicap:function () {
+            if (!this.isOpen){
+                this.closeHandicap();
+            }
+        }
     });
 });
