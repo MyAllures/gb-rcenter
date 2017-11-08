@@ -42,6 +42,9 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             dataType: "json",
                             data: {"state":true},
                             success: function (data) {
+                                if(!data.state){
+                                    alert(data.msg);
+                                }
                             }
                         });
                         return true;
@@ -57,6 +60,10 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                                     dataType: "json",
                                     data: {"state":false},
                                     success: function (data) {
+                                        if(!data.state){
+                                            alert(data.msg);
+                                            return;
+                                        }
                                         $(_target).attr("isChanged", true);
                                         $(_target).bootstrapSwitch("state", !_target.checked);
                                     }
