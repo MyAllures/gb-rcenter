@@ -79,6 +79,7 @@ define(['moment'], function (moment) {
 
         /** 一些IOS上有的Bug */
         iosBug: function () {
+            var _this = this;
             // 刷新页面后获取容器高度，解决IOS设备刷新时出现空白页问题
             $('.mui-inner-wrap').height();
             //苹果safari浏览器首页的底部导航栏,首页和我的图标不显示问题

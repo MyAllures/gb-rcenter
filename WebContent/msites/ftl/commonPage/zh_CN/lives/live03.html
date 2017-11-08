@@ -1,0 +1,241 @@
+<style>
+    .row.row-match{background: #132842;}
+    .live-item, .live-item > .title { border-color: #313346; }
+    .live-item { margin: 10px 0; border-width: 1px; border-style: solid; }
+    .live-item > .item { height: 315px; display: block; position: relative; background-repeat: no-repeat; background-color: #050505; background-position: right bottom; background-size: 100%; }
+    .live-item > .item > .logo { position: absolute; left: 10%; top: 100px; z-index: 9; }
+    .live-item > .item > .logo > img { display: block; }
+    .live-item > .item > .logo > .title { display: block; color: #666; margin: 3px 0; }
+    .live-item > .item > .cover { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 315px; overflow: hidden; z-index: 10; display: none; }
+    .live-item > .item > .cover > .blur { position: absolute; width: 100%; height: 315px; left: 0; background-repeat: no-repeat; background-position: right bottom; -webkit-transform: translateZ(0); transform: translateZ(0); -webkit-filter: blur(8px); -moz-filter: blur(8px); filter: blur(8px); filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=8,MakeShadow=false); }
+    .live-item > .item > .cover > .hot-list { position: absolute; width: 100%; height: 315px; left: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.3); filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#4d000000,endColorStr=#4d000000); }
+    .live-item > .item > .cover > .hot-list > div { height: 158px; }
+    .live-item > .item > .row3 > .hot-list > div { height: 106px; }
+    .live-item > .item > .cover > .hot-list .btn-live { padding: 25px 0; }
+    .live-item > .title { color: #777; line-height: 38px; background: #053269 ; border-top-width: 1px; border-top-style: solid; padding: 20px; overflow: hidden; }
+    .live-item > .title span { color: #fff; font-size: 18px; background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(white), to(#a5aaae)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .coming > .title { text-align: center; }
+    .live-item > .title > .live-play { width: 146px; height: 46px; font-size: 16px; text-align: center; text-decoration: none; color: #0058de; float: right; display: inline-block;background: no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAAAmCAMAAAA/ULM3AAABJlBMVEUAAAAiIiJBPz4BAQE1MzJ4eHgFBQUFBQUfHh5vb28CAgIMDAyJiYkxMC0+Pj7BwcE/Pz80Mi86OjoqKil5eXkzMzEuLSoAAAACAgIPDw/GxsbGxsY5NjOjo6Otra0pKCWdnZ1xcXEyMCy9vb0UFBOUlJQrKyuIiIhmZma1tbWenp51dXVOTk59fX0AAAAcHR0bGxsaGhoAAAAWFhYDAwMZGBgXGBgQEBANDg4TExMMDAwREBAVFBQHBwcFBQUUFRUKCwsUERF4eHhISEgOCgoSDg4SEhIJCQkQDQ0PDAwWFRUNCQkiIB8MBwfp6enPzs6QkJBcW1tNS0onJyb09PS6urqwrK2srKykpKSRjI2GhoZ8fHx6dXRqZGRaVlQuLi5wb29ubm7CtZFvAAAAL3RSTlMABP4Z/tE+EqmMcFj47ubl4eDRw6iiamgxDfzy8url08yvr6mSjIx0X1xZU0AoCnoUxZcAAAKcSURBVFjDxdXXetpAEIbhEdW91/TeExNZQRIrCTlxJCCiu9fk/m8iMwMbwZNTj/ydcfS/z+4CwBkfN4rfM674/N2uAbrPxX4habfbv0YdCjdaSQr94qcvY8HbhRzO43KTalA/xWpQPHR4mFuYLfNBvO7vIa053j3IpLEm6W/k0fDhzwHtN5RSB5SXQTyEgw3v92wejCeFWrNh2yqKItf1vFartS8cTnie6+KgsguPS/D+kgRKMYD3q2nf7rBqGisYodTlLLwcaIHH+7z7VTDWsMIjw+AZLA8dB68BBXUESAu0gRF1NKjhMjysTgl4vyIaKRjBhvoDOK7dE0EfwzGcOY4WEID294RDBSK04Qx6fAquhwZNEDZU/hHqSFA9uEgvAg+HCMKGyoig34K6oFNw7Mh1R0+BBLIG/R5Gj8F1ox6c1vRjyP4t8CmcQjekm5i8CGnD9EXYXeiE/z0G2aYFyu7AUcyGya+loIL3J7+Stn0EHSKkr4ERojEgPQSnA12fj2HKoLvjZd2kwHa6cOL7YTj1T8UMsfTftRY4J3Ae+HFco7vgXwdEUFWx9rk6/SIQoFY7h6sADaE2MEI6BmhBeAXXVuCnBkSgQjiXAFoQX8ONaREixDdJCKUizBUswpRCAArC0PdvYEAEOgiNsJV4tgbEvh8MIGeiwRobGCEfA8YCKwePLNPUB8EKdEjG67xPgMAKCrDqm9qACFYIx/sIYIEVL8KLyOQsUjCDHILFeh738Qaip7CVEEAjWCFfMAZgyQyUV5tmimCGfDzEk83FOTC2hvxBKzJKzw1n5gF2N5PAxDJzmGlBsr5dAjDym7mKeS9VcutzpTyQYX7ltuqYGefs3y692i7lDSBDeefN2sqPjFtam5mb3ykb8BfL4xriLf1aOAAAAABJRU5ErkJggg==);}
+    .live-item > .title > .live-play:hover { color: #fef400; }
+    .live-item:hover .title { color: #fae39e; }
+    .btn-live { display: inline-block; width: 100%; height: 100%; padding: 15px 0; color: #eee; font-size: 16px; text-align: center; border-width: 1px; border-style: solid; border-top-color: #0c0c0c; border-right-color: #0c0c0c; border-bottom-color: #262626; border-left-color: #2b2b2b; border-top-color: rgba(0, 0, 0, 0.7); border-right-color: rgba(0, 0, 0, 0.7); border-bottom-color: rgba(255, 255, 255, 0.1); border-left-color: rgba(255, 255, 255, 0.1); background-color: rgba(0, 0, 0, 0.5); filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#80000000,endColorStr=#80000000); }
+    .btn-live:hover { color: #fae39e; text-decoration: none; background-color: rgba(0, 0, 0, 0.3); filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#4d000000,endColorStr=#4d000000); }
+    .btn-live > span.gui { display: block; }
+</style>
+<div class="row row-match">
+    <div class="col-3-1">
+        <figure class="live-item bb">
+            <div class="item" style="background-image: url(../../ftl/jinkai/images/live-item-bg-bb.jpg);">
+                <div class="logo"><img src="../../ftl/jinkai/images/live-logo-bb.png">
+                    <h5 class="title">亚洲最知名游戏平台</h5>
+                </div>
+                <div class="cover row3">
+                    <div class="blur" style="background-image: url(../../ftl/jinkai/images/live-item-bg-bb.jpg);"></div>
+                    <div class="row row-gutter-0 hot-list">
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>百家乐</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎斗</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-spade-fill"></span>牛牛</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-chip2"></span>无限21点</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-coin-cny"></span>番摊</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>三公</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>二八杠</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-chip1"></span>色碟</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker2"></span>德州扑克</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>温州牌九</a></div>
+                    </div>
+                </div>
+            </div>
+            <figcaption class="title"><span>BB游戏大厅</span><a class="live-play" href="#">开始游戏</a></figcaption>
+        </figure>
+    </div>
+    <div class="col-3-1">
+        <figure class="live-item ag">
+            <div class="item" style="background-image: url(../../ftl/jinkai/images/live-item-bg-ag.jpg);">
+                <div class="logo"><img src="../../ftl/jinkai/images/live-logo-ag.png">
+                    <h5 class="title">全球唯一女优发牌</h5>
+                </div>
+                <div class="cover">
+                    <div class="blur" style="background-image: url(../../ftl/jinkai/images/live-item-bg-ag.jpg);"></div>
+                    <div class="row row-gutter-0 hot-list">
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette1"></span>旗舰厅</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette2"></span>国际厅</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette4"></span>贵宾厅</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>百家乐</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎斗</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                    </div>
+                </div>
+            </div>
+            <figcaption class="title"><span>AG女优厅</span><a class="live-play" href="#">开始游戏</a></figcaption>
+        </figure>
+    </div>
+    <div class="col-3-1">
+        <figure class="live-item ebet">
+            <div class="item" style="background-image: url(../../ftl/jinkai/images/live-item-bg-ebet.jpg);">
+                <div class="logo"><img src="../../ftl/jinkai/images/live-logo-ebet.png">
+                    <h5 class="title">亚洲技术领先的新晋赌场</h5>
+                </div>
+                <div class="cover">
+                    <div class="blur" style="background-image: url(../../ftl/jinkai/images/live-item-bg-ebet.jpg);"></div>
+                    <div class="row row-gutter-0 hot-list">
+                        <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>竞咪百家乐</a></div>
+                        <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker2"></span>百家乐</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                    </div>
+                </div>
+            </div>
+            <figcaption class="title"><span>EBET时尚厅</span><a class="live-play" href="#">开始游戏</a></figcaption>
+        </figure>
+    </div>
+    <div class="col-3-1">
+        <figure class="live-item sa">
+            <div class="item" style="background-image: url(../../ftl/jinkai/images/live-item-bg-sa.jpg);">
+                <div class="logo"><img src="../../ftl/jinkai/images/live-logo-sa.png">
+                    <h5 class="title">亚洲服务最好娱乐平台</h5>
+                </div>
+                <div class="cover">
+                    <div class="blur" style="background-image: url(../../ftl/jinkai/images/live-item-bg-sa.jpg);"></div>
+                    <div class="row row-gutter-0 hot-list">
+                        <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>百家乐</a></div>
+                        <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-chip2"></span>番摊</a></div>
+                    </div>
+                </div>
+            </div>
+            <figcaption class="title"><span>SA沙龙厅</span><a class="live-play" href="#">开始游戏</a></figcaption>
+        </figure>
+    </div>
+    <div class="col-3-1">
+        <figure class="live-item og">
+            <div class="item" style="background-image: url(../../ftl/jinkai/images/live-item-bg-og.jpg);">
+                <div class="logo"><img src="../../ftl/jinkai/images/live-logo-og.png">
+                    <h5 class="title">东南亚最大赌场</h5>
+                </div>
+                <div class="cover">
+                    <div class="blur" style="background-image: url(../../ftl/jinkai/images/live-item-bg-og.jpg);"></div>
+                    <div class="row row-gutter-0 hot-list">
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>连环百家乐</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker2"></span>百家乐</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎斗</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-chip2"></span>番摊</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                    </div>
+                </div>
+            </div>
+            <figcaption class="title"><span>OG东方厅</span><a class="live-play" href="#">开始游戏</a></figcaption>
+        </figure>
+    </div>
+    <div class="col-3-1">
+        <figure class="live-item gd">
+            <div class="item" style="background-image: url(../../ftl/jinkai/images/live-item-bg-gd.jpg);">
+                <div class="logo"><img src="../../ftl/jinkai/images/live-logo-gd.png">
+                    <h5 class="title">全球口碑最好平台之一</h5>
+                </div>
+                <div class="cover">
+                    <div class="blur" style="background-image: url(../../ftl/jinkai/images/live-item-bg-gd.jpg);"></div>
+                    <div class="row row-gutter-0 hot-list">
+                        <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>3D百家乐</a></div>
+                        <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker2"></span>多台百家乐</a></div>
+                        <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>多彩百家乐</a></div>
+                        <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                    </div>
+                </div>
+            </div>
+            <figcaption class="title"><span>GD旗舰厅</span><a class="live-play" href="#">开始游戏</a></figcaption>
+        </figure>
+    </div>
+
+    <!-- <div class="col-3-1">
+        <figure class="live-item mg">
+            <div class="item" style="background-image: url(../../ftl/jinkai/images/live-item-bg-mg.jpg);">
+                <div class="logo"><img src="../../ftl/jinkai/images/live-logo-mg.png">
+                    <h5 class="title">VIP贵宾厅，至尊享受</h5>
+                </div>
+                <div class="cover">
+                    <div class="blur" style="background-image: url(../../ftl/jinkai/images/live-item-bg-mg.jpg);"></div>
+                    <div class="row row-gutter-0 hot-list">
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎百家乐</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>百家乐</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-chip2"></span>21点</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker2"></span>德州扑克</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-heart-fill"></span>PLAYBOY</a></div>
+                    </div>
+                </div>
+            </div>
+            <figcaption class="title"><span>MG欧美厅</span><a class="live-play" href="#">开始游戏</a></figcaption>
+        </figure>
+    </div> -->
+
+    <div class="col-3-1">
+        <figure class="live-item ds">
+            <div class="item" style="background-image: url(../../ftl/jinkai/images/live-item-bg-ds.jpg);">
+                <div class="logo"><img src="../../ftl/jinkai/images/live-logo-ds.png">
+                    <h5 class="title">服务至上的亚洲线上赌场</h5>
+                </div>
+                <div class="cover">
+                    <div class="blur" style="background-image: url(../../ftl/jinkai/images/live-item-bg-ds.jpg);"></div>
+                    <div class="row row-gutter-0 hot-list">
+                        <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>百家乐</a></div>
+                        <div class="col-2-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-spade-fill"></span>斗牛</a></div>
+                    </div>
+                </div>
+            </div>
+            <figcaption class="title"><span>DS时尚厅</span><a class="live-play" href="#">开始游戏</a></figcaption>
+        </figure>
+    </div>
+    <div class="col-3-1">
+        <figure class="live-item opus">
+            <div class="item" style="background-image: url(../../ftl/jinkai/images/live-item-bg-opus.jpg);">
+                <div class="logo"><img src="../../ftl/jinkai/images/live-logo-opus.png">
+                    <h5 class="title">欧洲最流行的线上娱乐平台</h5>
+                </div>
+                <div class="cover">
+                    <div class="blur" style="background-image: url(../../ftl/jinkai/images/live-item-bg-opus.jpg);"></div>
+                    <div class="row row-gutter-0 hot-list">
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>七喜百家乐</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker2"></span>21点</a></div>
+                        <div class="col-3-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>骰宝</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dragon-tiger"></span>龙虎</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-roulette3"></span>轮盘</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-poker1"></span>三公</a></div>
+                        <div class="col-4-1"><a class="btn-live" href="javascript:"><span class="gui gui-2x gui-dice1"></span>鱼虾蟹</a></div>
+                    </div>
+                </div>
+            </div>
+            <figcaption class="title"><span>OUPS欧洲厅</span><a class="live-play" href="#">开始游戏</a></figcaption>
+        </figure>
+    </div>
+    <div class="col-3-1">
+        <figure class="live-item coming">
+            <div class="item" style="background-image: url(../../ftl/jinkai/images/live-item-bg-coming.jpg);height: 395px;">
+            </div>
+        </figure>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        // 真人-栅格滑入动画
+        $(".live-item > .item").hover(function() {
+            var $this = $(this);
+            $('.logo', $this).stop().fadeOut(300);
+            $('.cover', $this).show()
+        }, function() {
+            var $this = $(this);
+            $('.logo', $this).stop().fadeIn(300);
+            $('.cover', $this).hide()
+        });
+    });
+</script>

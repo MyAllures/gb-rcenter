@@ -72,7 +72,7 @@
                 $(this).text(eTime.format($(this).data("format")));
             })
             if (nowTime < sTime) {
-                //未開始
+                //未开始
                 $this.find("._vr_promo_processing").hide();
                 $this.find("._vr_promo_nostart").show();
                 $this.find("._vr_promo_over").hide();
@@ -122,7 +122,7 @@
     function changeApplyStatus() {
         var backwaterObj = $("._vr_promo_join").parents("._vr_promo_check[data-code^='back_water'][data-type='processing']");
         backwaterObj.each(function (i, obj) {
-            $(obj).find("._vr_promo_join").text("參與中");
+            $(obj).find("._vr_promo_join").text("參與中"");
         });
         $.ajax({
             url: "/ntl/activity/getPlayerActivityIds.html",
@@ -164,7 +164,8 @@
                     }
                 }
             }
-            if ($(actObj).data("code") == "regist_send" || $(actObj).data("code") == "relief_fund" || $(actObj).data("code") == "profit_loss" || $(actObj).data("code") == "effective_transaction") {
+            if ($(actObj).data("code") == "regist_send" || $(actObj).data("code") == "relief_fund" || $(actObj).data("code") == "profit_loss"
+                    || $(actObj).data("code") == "effective_transaction"|| $(actObj).data("code") == "money") {
                 if (data.length < 1) {
                     if ($(actObj).data("rankId") != "all" && flag) {
                         $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " disabled notfit").text("未滿足條件");
@@ -186,17 +187,20 @@
     }
 
     function joinPromo(aplyObj, isRefresh) {
+        var code = $(aplyObj).parents("._vr_promo_check").data("code");
         $(aplyObj).attr("disabled","disabled");
         if(ctime > 0){
             return false;
         }
-        ctime++;
+        if(code!='money'){
+            ctime++;
+
+        }
         var nowTime = $("._user_time").attr("time");
         if ($(aplyObj).parents("._vr_promo_check").find("._vr_promo_ostart").val() > nowTime || $(aplyObj).parents("._vr_promo_check").find("._vr_promo_oend").val() < nowTime) {
             return false;
         }
         if (sessionStorage.is_login == "true") {
-            var code = $(aplyObj).parents("._vr_promo_check").data("code");
             if (code == "back_water" || code == "first_deposit" || code == "deposit_send") {
                 if (isRefresh) {
                     BootstrapDialog.alert({
@@ -214,7 +218,14 @@
                 if (isRefresh) {
                     applyActivities(aplyObj, true);
                 } else {
-                    applyActivities(aplyObj);
+                    if(code=='money'){
+                        var searchId = $(aplyObj).parents("._vr_promo_check").data("searchid");
+                        canShowLottery(searchId);
+                        $(aplyObj).removeAttr("disabled");
+                    }else{
+                        applyActivities(aplyObj);
+                    }
+
                 }
             }
         } else {
@@ -224,6 +235,12 @@
                 }
             });
         }
+    }
+    function setDivCss() {
+        $('#containerOut').css({
+            "height": function () { return $(document).height(); },
+            "width": function () { return $(document).width(); }
+        });
     }
 
     function applyActivities(aplyObj, isRefresh) {
