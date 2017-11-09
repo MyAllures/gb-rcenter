@@ -98,7 +98,8 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                     dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
                     dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
                 }
-                if(    dataCode !="ssc_sanxing_hs"
+                if( //官方
+                    dataCode !="ssc_sanxing_hs"
                     && dataCode !="ssc_sanxing_qs"
                     && dataCode !="ssc_erxing"
                     && dataCode !="ssc_budingwei"
@@ -106,6 +107,14 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                     && dataCode !="R2"
                     && dataCode !="R3"
                     && dataCode !="R4"
+                    //信用
+                    && dataCode !="ssc_yizidingwei"
+                    && dataCode !="ssc_erzidingwei"
+                    && dataCode !="ssc_sanzidingwei"
+                    && dataCode !="ssc_yizizuhe"
+                    && dataCode !="ssc_zuxuansan"
+                    && dataCode !="ssc_zuxuanliu"
+                    && dataCode !="ssc_longhu"
                 ){
 
                     // $('div.gfwf-bg').slideUp();
@@ -115,7 +124,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                     mui(".new-formerly .mui-table-view .mui-table-view-cell")[0].classList.remove('mui-active');
                     mui(".gfwf-bg")[0].classList.remove('show');
                 }
-
+                //官方
                 if(betCode =="ssc_sanxing_hs" && jspName==undefined){//后三初始化
                     jspName="SscHousan";
                 }else if(betCode =="ssc_sanxing_qs" && jspName==undefined){//前三初始化
@@ -131,6 +140,24 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                 }else if(betCode =="R4" && jspName==undefined){//任选四初始化
                     jspName="SscR4Zxfs";
                 }else if(betCode =="ssc_daxiaodanshuang" && jspName==undefined){//大小单双初始化
+                    jspName="SscDaxiaodanshuangErxing";
+                }
+                //信用
+                else if(betCode =="ssc_yizidingwei" && jspName==undefined){
+                    jspName="OneDigital";
+                    dataCode="万";
+                }else if(betCode =="ssc_erzidingwei" && jspName==undefined){
+                    jspName="TwoDigital";
+                    dataCode="万千";
+                }else if(betCode =="ssc_sanzidingwei" && jspName==undefined){
+                    jspName="SscDaxiaodanshuangErxing";
+                }else if(betCode =="ssc_yizizuhe" && jspName==undefined){
+                    jspName="SscDaxiaodanshuangErxing";
+                }else if(betCode =="ssc_zuxuansan" && jspName==undefined){
+                    jspName="SscDaxiaodanshuangErxing";
+                }else if(betCode =="ssc_zuxuanliu" && jspName==undefined){
+                    jspName="SscDaxiaodanshuangErxing";
+                }else if(betCode =="ssc_longhu" && jspName==undefined){
                     jspName="SscDaxiaodanshuangErxing";
                 }
                 _this.getBetTable(dataCode,jspName);

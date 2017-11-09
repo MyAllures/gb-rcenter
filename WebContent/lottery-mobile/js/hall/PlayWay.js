@@ -17,11 +17,11 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
         gfwfPlJson: null,
         init: function (formSelector) {
             this._super(formSelector || ".mui-off-canvas-wrap");
+            this.showTable();
             //获取赔率xy
             this.getOdds();
             //获取赔率gf
             this.getGfwfOdd();
-            this.showTable();
         },
         /**
          * 页面加载

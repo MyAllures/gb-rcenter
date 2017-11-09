@@ -4,32 +4,27 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf','site/plugin/template'], function (Pla
         _this:null,
         init: function () {
             this._super();
-            _this=this;
+        },
+        showTable : function(){
+            var betCode=$("#gfwfBetCode").val();
+            $("a[data-code='ssc_yizidingwei']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#yizidingwei").show();
+            $("span.x_1.gfwf-tit").text("一字定位");
+            $(".s-title.title1 span").text("一字定位");
+            $(".s-title.title2 span").text("万定位");
+            $("#toobarTitle").text("信用玩法-一字定位");
+            if(betCode =="ssc_yizidingwei"){
+                $("a[data-code='万']").addClass("mui-active");
+                $(".x_3.gfwf-playName").text("万定位");
+            }else{
+                $("#yizidingwei a").removeClass("mui-active");
+                $("a[data-code='"+betCode+"']").addClass("mui-active");
+            }
+            $(".x_3.gfwf-playName").text(betCode+"定位")
+            $(".s-title.title2 span").text(betCode+"定位");
+        },
 
-        },
-        bindButtonEvents: function () {
-            this._super();
-            mui(this.formSelector).on("tap", "a.mui-control-item[data-type]", function () {
-                var type = $(this).attr("data-type");
-                if(type!="ten_thousand"){
-                    $(".hideText").css('display','none');
-                }else{
-                    $(".hideText").css('display','block');
-                }
-                var betTitle = $(this).text();
-                $(".bet-title1").html(betTitle);
-                $(".bet-table-list[data-subCode]").each(function (i) {
-                    if(i==0)
-                    $(this).attr("data-subCode",type);
-                    var $tdBet = $(this).find("td[data-bet-num]");
-                    $tdBet.each(function(){
-                        var betNum = $(this).attr('data-bet-num');
-                        $(this).attr("data-name",betTitle+"-"+betNum);
-                    })
-                });
-                _this.getOdds();
-            })
-        },
         getOdds: function () {
             var url = root + '/' + this.type+ '/' + this.code +'/getOdds.html';
             var _this = this;

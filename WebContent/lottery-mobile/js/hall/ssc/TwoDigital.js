@@ -8,22 +8,45 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
             _this = this;
             this._super();
             this.bindEvent();
+
+        },
+
+        showTable : function(){
+            var betCode=$("#gfwfBetCode").val();
+            console.log(betCode);
+            $("a[data-code='ssc_erzidingwei']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#erzidingwei").show();
+            $("span.x_1.gfwf-tit").text("二字定位");
+            $(".s-title.title1 span").text("二字定位");
+            $(".s-title.title2 span").text("万千定位");
+            $("#toobarTitle").text("信用玩法-二字定位");
+            if(betCode =="ssc_erzidingwei"){
+                $("a[data-code='万千']").addClass("mui-active");
+                $(".x_3.gfwf-playName").text("万千定位");
+            }else{
+                $("#erzidingwei a").removeClass("mui-active");
+                $("a[data-code='"+betCode+"']").addClass("mui-active");
+            }
+            $(".x_3.gfwf-playName").text(betCode+"定位")
+            $(".s-title.title2 span").text(betCode+"定位");
         },
 
         getOdds: function () {
-            $(".screen-munber a").removeClass("mui-active");
-            var subCode = $("#betCodeDiv a.mui-active").data("type");
+            // (".screen-munber a").removeClass("mui-active");
+            var subCode = $("#erzidingwei a.mui-active").data("type");
             var url = root + '/' + this.type + '/' + this.code + '/getTwoOrThreeDigitalOdds.html';
             mui.ajax(url, {
                 dataType: 'json',
                 data: {'subCode': subCode},
                 type: 'POST',
                 success: function (data) {
-                    var betname = $("#betCodeDiv a.mui-active").text();
+                    var betname = $("#erzidingwei a.mui-active").text();
                     var tdata = data["中2"];
+                    console.log(tdata.odd+"a");
                     var toua = $("#bettouli div a");
                     var weia = $("#betweili div a");
-                    $("#betTitleDiv").html(betname + "定位(中2@<strong  class='col-red'>" + tdata.odd + "</strong>)");
+                    $("#betTitleDiv").html(betname + "(中2@<strong  class='col-red'>" + tdata.odd + "</strong>)");
                     toua.attr("data-odd", tdata.odd);
                     weia.attr("data-odd", tdata.odd);
                     toua.attr("data-bet-code", tdata.betCode);
