@@ -79,6 +79,7 @@ define(['moment'], function (moment) {
 
         /** 一些IOS上有的Bug */
         iosBug: function () {
+            var _this = this;
             // 刷新页面后获取容器高度，解决IOS设备刷新时出现空白页问题
             $('.mui-inner-wrap').height();
             //苹果safari浏览器首页的底部导航栏,首页和我的图标不显示问题
@@ -793,6 +794,75 @@ define(['moment'], function (moment) {
             setTimeout(function () {
                 $('div.game-mask').remove();
             }, 1000);
+        },
+        /** 抢红包 */
+        canShowLottery: function(id){
+            if (!isLogin || isLogin === "false") {
+                window.location.href="/login/commonLogin.html";
+                return;
+            }
+            mui.ajax({
+                url:"/ntl/activity/countDrawTimes.html",
+                type: "POST",
+                dataType: "json",
+                data:{activityMessageId:id},
+                success: function(data) {
+                    $("[name='gb.token']").val(data.token);
+                    $("#activity_message_id").val(id);
+                    if (data.drawTimes && data.drawTimes > 0) {
+                        $("#tip-msg").removeClass("mui-hide");
+                        $("#lottery_time_tip-msg").addClass("mui-hide");
+                        $("#tip-msg").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">'+data.drawTimes+'</span>次抽奖机会');
+                        //$("#ramain-count").text(data.drawTimes);
+                        $("#containerOut").css("display", "block");
+                        $("#lotteryPageBtn_1").removeAttr("disabled");
+                        $("#lotteryPageBtn_1").show();
+                        $("#lotteryPage").css({'background-image': 'url(' + resRoot + '/themes/hb/images/lottery.png)'});
+                        $("#lottery_time_tip-msg").addClass("mui-hide");
+                    } else if (data.drawTimes === 0) {
+                        if (data.isEnd === "false") {
+                            $("#tip-msg").removeClass("mui-hide");
+                            $("#ramain-count").text(data.drawTimes);
+                            $("#containerOut").css("display", "block");
+                            $("#lotteryPage").css({'background-image': 'url(' + resRoot + '/themes/hb/images/noChance.png)'});
+                            $("#lotteryPageBtn_1").hide();
+                        } else {
+                            $("#tip-msg").addClass("mui-hide");
+                            $("#containerOut").css("display", "block");
+                            $("#lotteryPage").css({'background-image': 'url(' + resRoot + '/themes/hb/images/noChance.png)'});
+                            $("#lotteryPageBtn_1").hide();
+                        }
+                        if(data.nextLotteryTime!=""){
+                            $("#next_lottery_time").text(data.nextLotteryTime);
+                            $("#lottery_time_tip-msg").removeClass("mui-hide");
+                        }else{
+                            $("#lottery_time_tip-msg").addClass("mui-hide");
+                        }
+                    } else if (data.drawTimes === -1) {
+                        $("#lotteryPage").css({'background-image': 'url(' + resRoot + '/themes/hb/images/noChance.png)'});
+                        $("#tip-msg").html('红包活动已经结束!');
+                        $("#tip-msg").removeClass("mui-hide");
+                        $("#lotteryPageBtn_1").hide();
+                        $("#lottery_time_tip-msg").addClass("mui-hide");
+                        $("#containerOut").css("display", "block");
+
+                    }else if(data.drawTimes==-5){
+                        $("#lotteryPage").css({'background-image': 'url(' + resRoot + '/themes/hb/images/noChance.png)'});
+                        $("#tip-msg").html('本次红包已经抢光了');
+                        $("#tip-msg").removeClass("mui-hide");
+                        if(data.nextLotteryTime!=""){
+                            $("#next_lottery_time").text(data.nextLotteryTime);
+                            $("#lottery_time_tip-msg").removeClass("mui-hide");
+                        }else{
+                            $("#lottery_time_tip-msg").addClass("mui-hide");
+                        }
+                        $("#lotteryPageBtn_1").hide();
+                        $("#lottery_time_tip-msg").removeClass("mui-hide");
+                        $("#containerOut").css("display","block");
+                        return;
+                    }
+                }
+            });
         }
     });
 });
