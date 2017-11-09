@@ -320,4 +320,16 @@
   background-image: url(images/hongbao/icon-close-rule-hover.png);
 }
 
-/*# sourceMappingURL=hongbao.css.map */
+.hongbao-wrap .icon-close{     background: url(images/hongbao/icon-close-1.png) 0 0 /100%;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 0;
+  top: 0;
+  transition: all 0.3s;
+  cursor: pointer;
+  z-index: 4;}
+.hongbao-wrap .icon-close:hover{
+  transform: rotateZ(90deg);
+}
+
