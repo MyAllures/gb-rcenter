@@ -25,10 +25,10 @@
 
 	var domBuffer = '<div class="mui-dtpicker" data-type="datetime">\
 		<div class="mui-dtpicker-header">\
-			<button data-id="btn-cancel" class="mui-btn">' + window.top.message.common_auto['取消'] + '</button>\
-			<button data-id="btn-ok" class="mui-btn mui-btn-blue">' + window.top.message.common_auto['确定'] + '</button>\
+			<button data-id="btn-cancel" class="mui-btn">取消</button>\
+			<button data-id="btn-ok" class="mui-btn mui-btn-blue">确定</button>\
 		</div>\
-		<div class="mui-dtpicker-title"><h5 data-id="title-y">' + window.top.message.common_auto['年'] + '</h5><h5 data-id="title-m">' + window.top.message.common_auto['月'] + '</h5><h5 data-id="title-d">' + window.top.message.common_auto['日'] + '</h5><h5 data-id="title-h">' + window.top.message.common_auto['时'] + '</h5><h5 data-id="title-i">' + window.top.message.common_auto['分'] + '</h5></div>\
+		<div class="mui-dtpicker-title"><h5 data-id="title-y">年</h5><h5 data-id="title-m">月</h5><h5 data-id="title-d">日</h5><h5 data-id="title-h">时</h5><h5 data-id="title-i">分</h5></div>\
 		<div class="mui-dtpicker-body">\
 			<div data-id="picker-y" class="mui-picker">\
 				<div class="mui-picker-inner">\
@@ -148,45 +148,28 @@
 					return this.value;
 				}
 			};
-
-            var language = 'zh-CN';try{language=window.top.language;}catch(ex){}
-			var separator = '-';
-            switch (language) {
-				case 'zh-CN':
-					separator = '-';
-					break;
-				case 'zh-TW':
-				case 'ja-JP':
-					separator = '/';
-					break;
-				case 'en-US':
-					separator = '-';
-					break;
-			}
-
 			switch (type) {
 				case 'datetime':
-					selected.value = selected.y.value + separator + selected.m.value + separator + selected.d.value + ' ' + selected.h.value + ':' + selected.i.value;
-					selected.text = selected.y.text + separator + selected.m.text + separator + selected.d.text + ' ' + selected.h.text + ':' + selected.i.text;
+					selected.value = selected.y.value + '-' + selected.m.value + '-' + selected.d.value + ' ' + selected.h.value + ':' + selected.i.value;
+					selected.text = selected.y.text + '-' + selected.m.text + '-' + selected.d.text + ' ' + selected.h.text + ':' + selected.i.text;
 					break;
 				case 'date':
-					selected.value = selected.y.value + separator + selected.m.value + separator + selected.d.value;
-					selected.text = selected.y.text + separator + selected.m.text + separator + selected.d.text;
+					selected.value = selected.y.value + '-' + selected.m.value + '-' + selected.d.value;
+					selected.text = selected.y.text + '-' + selected.m.text + '-' + selected.d.text;
 					break;
 				case 'time':
 					selected.value = selected.h.value + ':' + selected.i.value;
 					selected.text = selected.h.text + ':' + selected.i.text;
 					break;
 				case 'month':
-					selected.value = selected.y.value + separator + selected.m.value;
-					selected.text = selected.y.text + separator + selected.m.text;
+					selected.value = selected.y.value + '-' + selected.m.value;
+					selected.text = selected.y.text + '-' + selected.m.text;
 					break;
 				case 'hour':
-					selected.value = selected.y.value + separator + selected.m.value + separator + selected.d.value + ' ' + selected.h.value;
-					selected.text = selected.y.text + separator + selected.m.text + separator + selected.d.text + ' ' + selected.h.text;
+					selected.value = selected.y.value + '-' + selected.m.value + '-' + selected.d.value + ' ' + selected.h.value;
+					selected.text = selected.y.text + '-' + selected.m.text + '-' + selected.d.text + ' ' + selected.h.text;
 					break;
 			}
-			selected.date = new Date(selected.y.value,Number(selected.m.value)-1,selected.d.value,selected.h.value,selected.i.value,'00');
 			return selected;
 		},
 		setSelectedValue: function(value) {
@@ -408,8 +391,8 @@
 		_create: function(options) {
 			var self = this;
 			options = options || {};
-			options.labels = options.labels || [window.top.message.common_auto['年'], window.top.message.common_auto['月'], window.top.message.common_auto['日'], window.top.message.common_auto['时'], window.top.message.common_auto['分']];
-			options.buttons = options.buttons || [window.top.message.common_auto['取消'], window.top.message.common_auto['确定']];
+			options.labels = options.labels || ['年', '月', '日', '时', '分'];
+			options.buttons = options.buttons || ['取消', '确定'];
 			options.type = options.type || 'datetime';
 			options.customData = options.customData || {};
 			self.options = options;
@@ -479,7 +462,7 @@
 				for (var name in self) {
 					self[name] = null;
 					delete self[name];
-				}
+				};
 				self.disposed = true;
 			}, 300);
 		}
