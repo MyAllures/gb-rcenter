@@ -90,32 +90,45 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
         },
         saveOpenCode:function (opt) {
             var _this = this;
-            var openCode = "";
+            var openCodes = new Array();
             var type = $("#czType").val();
             var code = $("#czCode").val();
             var expect = $("#czExpect").val();
             $("input.m-xs").each(function(index,value){
-                openCode += $(this).val()+",";
+                var maxLength = parseInt($(this).attr("maxlength"));
+                var min = parseInt($(this).attr("min"));
+                var max = parseInt($(this).attr("max"));
+                var numStr = $(this).val();
+                var num = parseInt(numStr);
+                if(numStr == undefined || numStr == ''){
+                    _e.page.showPopover(_e, {}, 'danger', '开奖号码不能为空', true);
+                    return;
+                }if(numStr.length != maxLength){
+                    _e.page.showPopover(_e, {}, 'danger', '开奖号码不符合格式', true);
+                    return;
+                }if(num < min || num > max){
+                    _e.page.showPopover(_e, {}, 'danger', '开奖号码不符合格式', true);
+                    return;
+                }
+                openCodes.push(numStr)
             });
             var _e = {
                 currentTarget:$(opt.currentTarget),
                 page:page
             };
             var option = {};
-            openCode=openCode.substring(0,openCode.length-1)
             //window.top.topPage.ajax
             //ajaxRequest
             window.top.topPage.ajax({
                 url: root + "/lotteryResult/saveOpenno.html",
                 dataType: "json",
                 data: {
-                    'result.openCode': openCode,
+                    'result.openCode': openCodes.join(","),
                     'result.code': code,
                     'result.expect': expect,
-                    'result.type': type,
+                    'result.type': type
                 },
                 success: function(data) {
-
                     if(data.code==1){
                         _e.page.showPopover(_e, option, 'success', data.msg, true);
                          _this.closePage()
