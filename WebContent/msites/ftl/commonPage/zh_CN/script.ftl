@@ -863,27 +863,31 @@
             }
         }
         //根据thiz判断是否可以直接进入对应彩票
-        if($(thiz).attr("data-lottery-type")!=undefined && $(thiz).attr("data-lottery-code")!=undefined){
-            sessionStorage.lottery_type = $(thiz).attr("data-lottery-type");
-            sessionStorage.lottery_code = $(thiz).attr("data-lottery-code");
+        if(apiId == "22" && $(thiz).attr("data-lottery-code")!=undefined){
+            gameCode = $(thiz).attr("data-lottery-code");
         }
         //未登录的时候
         if(sessionStorage.is_login!="true"){
-            var protocol = window.location.protocol;
-            if(protocol.indexOf("https:")>-1){
-                loginObj.getLoginPopup(function (logined) {
-                    if(logined){
-                        if(apiTypeId == "3" && apiId=="19"){
-                            window.open("https://mkt.ampinplayopt0matrix.com?lang=cs");
-                        }else if(apiTypeId == "3" && apiId=="21"){
-                            window.open("http://sports-hg.com");
-                        }else{
-                            currentPage(apiId);
+            if (apiId == "22") {
+                var newWindow = window.open();
+                newWindow.location = "/commonPage/gamePage/loadingUnLoginLottery.html?lottery_code="+gameCode;
+            }else {
+                var protocol = window.location.protocol;
+                if(protocol.indexOf("https:")>-1){
+                    loginObj.getLoginPopup(function (logined) {
+                        if(logined){
+                            if(apiTypeId == "3" && apiId=="19"){
+                                window.open("https://mkt.ampinplayopt0matrix.com?lang=cs");
+                            }else if(apiTypeId == "3" && apiId=="21"){
+                                window.open("http://sports-hg.com");
+                            }else{
+                                currentPage(apiId);
+                            }
                         }
-                    }
-                });
-            }else{
-                loginObj.getLoginPopup();
+                    });
+                }else{
+                    loginObj.getLoginPopup();
+                }
             }
             return;
         }
@@ -1646,7 +1650,8 @@
     }
 
     function canShowLottery(id){
-        var tiz = sessionStorage.getItem("timezone");
+        var timezone = sessionStorage.getItem("timezone");
+        var tiz = transTimeZone(timezone);
         $("#money_lottery_timezone").html(tiz);
         $.ajax({
             url:"/ntl/activity/countDrawTimes.html",

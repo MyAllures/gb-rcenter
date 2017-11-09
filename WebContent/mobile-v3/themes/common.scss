@@ -101,13 +101,6 @@ header{
         }            
     }
 }
-/*  ads-slider */
-.ads-slider{    position: absolute;    right: 10px;    bottom: 63px;    width: 98px;    z-index: 11;    padding-top: 24px;    padding-left: 24px;    height: 98px;
-    .close-ads{width: 24px; height: 24px; background: url(images/icon-close-ads.png) center/14px no-repeat;  position: absolute;   top: 0;    left: 0;}
-    .mui-slider{height: 84px;}
-    .mui-slider-indicator{bottom: -2px;}
-    .mui-slider-indicator .mui-indicator{margin: 1px 2px;}
-}
 /* mui-off-canvas-left */
 .mui-off-canvas-left{width: 80%;
     .person-info{height: 154px;padding-bottom:1px;  
