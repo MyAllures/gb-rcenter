@@ -7,13 +7,10 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
         init: function () {
             _this = this;
             this._super();
-            this.bindEvent();
-
         },
 
         showTable : function(){
             var betCode=$("#gfwfBetCode").val();
-            console.log(betCode);
             $("a[data-code='ssc_erzidingwei']").addClass("mui-active");
             $("div.s-menu.second").hide();
             $("#erzidingwei").show();
@@ -33,7 +30,6 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
         },
 
         getOdds: function () {
-            // (".screen-munber a").removeClass("mui-active");
             var subCode = $("#erzidingwei a.mui-active").data("type");
             var url = root + '/' + this.type + '/' + this.code + '/getTwoOrThreeDigitalOdds.html';
             mui.ajax(url, {
@@ -43,7 +39,6 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
                 success: function (data) {
                     var betname = $("#erzidingwei a.mui-active").text();
                     var tdata = data["中2"];
-                    console.log(tdata.odd+"a");
                     var toua = $("#bettouli div a");
                     var weia = $("#betweili div a");
                     $("#betTitleDiv").html(betname + "(中2@<strong  class='col-red'>" + tdata.odd + "</strong>)");
@@ -57,17 +52,42 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
                 }
             })
         },
-        bindEvent: function () {
-            mui("#betCodeDiv").on('tap', 'a', function () {
-                $("#betCodeDiv a").removeClass("mui-active");
-                $(this).addClass("mui-active");
-                _this.getOdds();
+
+        /**
+         * 绑定事件
+         */
+        bindButtonEvents: function () {
+            var _this = this;
+            /*==============================信用====================================*/
+            //清除下注项
+            mui("body").on('tap', 'a#del-bet', function () {
+                page.resetBet();
+            });
+            //投注
+            mui("body").on("tap", 'a#show-t', function () {
+                _this.betOrder();
+            });
+
+            //取消下注
+            mui("body").on("tap", "#cancel", function () {
+                $("#dingdan").html('');
+                $("#dingdan").removeClass('mui-active');
+            });
+            //确认投注
+            mui("body").on("tap", "#confirmOrder", function () {
+                var betForm = _this.getBetOrder();
+                _this.confirmOrder(betForm);
+            });
+
+            mui("body").off('tap','a').on('tap', 'a', function () {
+                _this.bindTdInput(this);
             });
             //清除下注按钮点击事件
-            mui("body").on('tap', 'a#del-bet', function () {
+            mui("body").off('tap','a#del-bet').on('tap', 'a#del-bet', function () {
                 $(".screen-munber a").removeClass("mui-active");
             });
-        },//点击投注选项
+        },
+        //点击投注选项
         bindTdInput : function(thiz){
             var flag=$(thiz).is('.not-selected');
             if (!flag){
