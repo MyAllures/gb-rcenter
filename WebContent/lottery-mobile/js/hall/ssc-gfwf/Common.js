@@ -156,7 +156,8 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                     jspName="OneCombination";
                     dataCode="全五一字";
                 }else if(betCode =="ssc_zuxuansan" && jspName==undefined){
-                    jspName="SscDaxiaodanshuangErxing";
+                    jspName="GroupThree";
+                    dataCode="前三组选三";
                 }else if(betCode =="ssc_zuxuanliu" && jspName==undefined){
                     jspName="SscDaxiaodanshuangErxing";
                 }else if(betCode =="ssc_longhu" && jspName==undefined){
