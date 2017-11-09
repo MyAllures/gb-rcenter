@@ -56,14 +56,15 @@ define(['common/BaseListPage'], function (BaseListPage) {
             if(code){
                 $("#not-open-result-div").addClass("hide");
                 if(code=='hklhc'){
-                    $("#query-time-div").addClass("hide");
+                   // $("#query-time-div").addClass("hide");
                 }else{
                     if($("[name='search.queryDate']").val()==""){
                         var date = this.setQueryDate(0);
                         $("[name='search.queryDate']").val(date);
                     }
-                    $("#query-time-div").removeClass("hide");
+                    // $("#query-time-div").removeClass("hide");
                 }
+                $("#query-time-div").removeClass("hide");
                 $(".ssc-label").removeClass("ssc-active")
                 $("#lotteryCode").val(code);
                 $("#lotteryType").val(type);
@@ -180,22 +181,22 @@ define(['common/BaseListPage'], function (BaseListPage) {
         doQuery:function (e, opt) {
             $("[name='search.code']").val(e.key);
             $("#not-open-result-div").removeClass("hide");
-            $("#query-time-div").addClass("hide");
+            //$("#query-time-div").addClass("hide");
             this.query(e);
         },
         queryNotOpenResult:function (e, opt) {
-            $("#lotteryCode").val("");
-            $("#lotteryType").val("");
-            $("[name='result.openingTime']").val("");
-            $("[name='result.closeTime']").val("");
-            $("[name='result.expect']").val("");
-            $("[name='result.openTime']").val("");
-            $("[name='result.code']").val("");
-            $("[name='result.type']").val("");
-            $("[name='search.queryDate']").val("");
-            $("[name='search.queryStartDate']").val("");
-            $("[name='search.queryEndDate']").val("");
-            $("#lottery_type_name").text("");
+            // $("#lotteryCode").val("");
+            // $("#lotteryType").val("");
+            // $("[name='result.openingTime']").val("");
+            // $("[name='result.closeTime']").val("");
+            // $("[name='result.expect']").val("");
+            // $("[name='result.openTime']").val("");
+            // c
+            // $("[name='result.type']").val("");
+             $("[name='search.queryDate']").val("");
+            // $("[name='search.queryStartDate']").val("");
+            // $("[name='search.queryEndDate']").val("");
+            // $("#lottery_type_name").text("");
             $("#query-time-div").addClass("hide");
             $("#not-open-result-div").removeClass("hide");
             $(".ssc-label").removeClass("ssc-active");
@@ -206,13 +207,22 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 var json  = eval("("+datarel+")");
                 codelist.push(json.code);
             });
-            var jsonstr = JSON.stringify(codelist).replace(/"/g,'').replace('[','').replace(']','');
+            // var jsonstr = JSON.stringify(codelist).replace(/"/g,'').replace('[','').replace(']','');
+            var code = $("[name='result.code']").val();
+            var type = $("[name='result.type']").val();
+
+            var expect = $("[name='search.expect']").val();
+            var queryStartDate = $("[name='search.queryStartDate']").val();
+            var queryEndDate = $("[name='search.queryEndDate']").val();
+
+            //search.expect search.queryStartDate search.queryEndDate
+
             window.top.topPage.ajax({
                 type:"post",
-                url:root+'/lotteryResult/queryAllLotteryResultNotOpen.html',
-                data:{'search.codes':jsonstr},
+                url:root+'/lotteryResult/queryLotteryResultNotOpen.html',
+                data:{'search.code':code,'search.type':type,'search.expect':expect,'search.queryStartDate':queryStartDate,'search.queryEndDate':queryEndDate},
                 success:function(data){
-                    $("[name='betorderform']").attr("action",root+"/lotteryResult/queryAllLotteryResultNotOpen.html");
+                     $("[name='betorderform']").attr("action",root+"/lotteryResult/queryLotteryResultNotOpen.html");
                     $(".search-list-container").html(data);
                     page.onPageLoad();
                     $(e.currentTarget).unlock();
@@ -281,27 +291,6 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 data:data,
                 type:"post",
                 url:root+'/lotteryResult/payout.html',
-                success:function(data){
-                    if(data.state){
-                        e.page.showPopover(e,opt,"success",data.msg,true);
-                    }else {
-                        e.page.showPopover(e,opt,"danger",data.msg,true);
-                    }
-                },
-                error:function(data) {
-                    e.page.showPopover(e,opt,"danger",data.msg,true);
-                }
-            });
-        },
-        heavy:function (e, opt) {
-            var _this = this;
-            var id = opt.objId;
-            var data = {"search.id":id};
-            window.top.topPage.ajax({
-                dataType:'json',
-                data:data,
-                type:"post",
-                url:root+'/lotteryResult/heavy.html',
                 success:function(data){
                     if(data.state){
                         e.page.showPopover(e,opt,"success",data.msg,true);

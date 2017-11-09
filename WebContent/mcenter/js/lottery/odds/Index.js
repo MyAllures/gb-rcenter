@@ -49,6 +49,7 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                 }else {
                     $(".wfqh-btn").attr("style", "display:none");
                     $("#gfwfqh").removeClass("gfwfqh-wrap");
+                    $("#gfwf").removeClass("active");
                 }
 
                 $(this).attr('class', 'label ssc-label ssc-active');
@@ -144,7 +145,11 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                         ("ssc_sanxing_zhixuan_qszh"==betCode && "一星"==betNum)||
                         ("ssc_sanxing_zuxuan_hshhzx"==betCode && "组六"==betNum)||
                         ("ssc_sanxing_zuxuan_qshhzx"==betCode && "组六"==betNum)||
-                        ("pl3_sanxing_zuxuan_hhzx"==betCode&& "组六"==betNum)){
+                        ("pl3_sanxing_zuxuan_hhzx"==betCode&& "组六"==betNum)||
+                        ("ssc_sanxing_zuxuan_qsts"==betCode && "豹子"==betNum)||
+                        ("ssc_sanxing_zuxuan_qsts"==betCode && "对子"==betNum)||
+                        ("ssc_sanxing_zuxuan_hsts"==betCode && "豹子"==betNum)||
+                        ("ssc_sanxing_zuxuan_hsts"==betCode && "对子"==betNum)){
                         rebate = sameRebate;
                     }else if(("ssc_sanxing_zuxuan_hszxhz"==betCode && "组六"==betNum)||
                         ("pl3_sanxing_zuxuan_zxhz"==betCode&& "组六"==betNum)||
@@ -227,7 +232,11 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                                     ("ssc_sanxing_zhixuan_qszh"==betCode && "一星"==betNum)||
                                     ("ssc_sanxing_zuxuan_hshhzx"==betCode && "组六"==betNum)||
                                     ("ssc_sanxing_zuxuan_qshhzx"==betCode && "组六"==betNum)||
-                                    ("pl3_sanxing_zuxuan_hhzx"==betCode&& "组六"==betNum)){
+                                    ("pl3_sanxing_zuxuan_hhzx"==betCode&& "组六"==betNum)||
+                                    ("ssc_sanxing_zuxuan_qsts"==betCode && "豹子"==betNum)||
+                                    ("ssc_sanxing_zuxuan_qsts"==betCode && "对子"==betNum)||
+                                    ("ssc_sanxing_zuxuan_hsts"==betCode && "豹子"==betNum)||
+                                    ("ssc_sanxing_zuxuan_hsts"==betCode && "对子"==betNum)){
                                     rebate = sameRebate;
                                 }else if(("ssc_sanxing_zuxuan_hszxhz"==betCode && "组六"==betNum)||
                                     ("pl3_sanxing_zuxuan_zxhz"==betCode&& "组六"==betNum)||

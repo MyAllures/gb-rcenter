@@ -18,7 +18,10 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
          */
         bindEvent: function () {
             this._super();
-            var _this = this;
+            $("body").on("click","ul.dropdown-menu li", function (e) {
+                $(this).parent().parent().removeClass("open")
+            });
+
         },
         onPageLoad: function () {
             this._super();
@@ -39,6 +42,9 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             dataType: "json",
                             data: {"state":true},
                             success: function (data) {
+                                if(!data.state){
+                                    alert(data.msg);
+                                }
                             }
                         });
                         return true;
@@ -54,6 +60,10 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                                     dataType: "json",
                                     data: {"state":false},
                                     success: function (data) {
+                                        if(!data.state){
+                                            alert(data.msg);
+                                            return;
+                                        }
                                         $(_target).attr("isChanged", true);
                                         $(_target).bootstrapSwitch("state", !_target.checked);
                                     }
@@ -135,18 +145,27 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         gatherOpenCode: function (event,option) {
 
             var form = $("#gatherOpenCodeForm");
-            var context = "您将采集xx彩种 yy日期的所有已开奖号码";
-            var _target = event.currentTarget;
-            var code = $("#lotteryCode").val();
+            var date = form.find("input").val();
+            var code = null;
+            var codeName = form.find("span[prompt='prompt']").text();//彩种名称
+            var context = "您将采集 "+codeName + " "+date+"的所有已开奖号码";
+
+            $("#lotteryList li a").each(function(i){
+                if($(this).text()==codeName){
+                    code = $(this).attr("key");
+                    return;
+                }
+            });
+
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
 
                     window.top.topPage.ajax({
                         url: root + '/lotterySysTool/gatherOpenCode.html',
                         dataType: "json",
-                        data: {"state":true},
+                        data: {"code":code,"date":date},
                         success: function (data) {
-
+                            $(event.currentTarget).unlock();
                         }
                     });
 
@@ -154,6 +173,8 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                     $(event.currentTarget).unlock();
                 }
             });
+
+            $(event.currentTarget).unlock();
 
         },
 
@@ -184,14 +205,22 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                     if (data.status){
                         $("#opencode").val(data.msg);
                         if (siteId == ''){
-                            window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有未结算的注单进行收到派彩,是否确认执行?",function () {
+                            window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
+                                if(bol){
                                 var formbj = $("#payoutForm")[0];
                                 _this.query1(e,option,formbj,null,type);
+                                }else {
+                                    $(e.currentTarget).unlock();
+                                }
                             });
                         }else {
-                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有未结算的注单进行收到派彩,是否确认执行?",function () {
+                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
+                                if(bol){
                                 var formbj = $("#payoutForm")[0];
                                 _this.query1(e,option,formbj,null,type);
+                                }else {
+                                    $(e.currentTarget).unlock();
+                                }
                             });
                         }
 
@@ -206,7 +235,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         },
 
         heavy:function (e,option) {
-            var formobj =  $("#payoutForm")[0];
+            var formobj =  $("#heavyForm")[0];
             var code = $(formobj).find("input[name='result.code']").val();
             var expect = $(formobj).find("input[name='result.expect']").val();
             var siteId = $(formobj).find("input[name='siteId']").val();
@@ -230,16 +259,22 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 success:function (data) {
 
                     if (data.status){
-                        $("#opencode").val(data.msg);
+                        $("#opencode1").val(data.msg);
                         if (siteId == ''){
-                            window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有注单进行重新结算,侧操作可能导致玩家钱包余额为负数,是否确认执行?",function(){
-                                var formbj = $("#payoutForm")[0];
-                                _this.query1(e,option,formbj,null,type);
+                            window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function(bol) {
+                                if (bol) {
+                                var formbj = $("#heavyForm")[0];
+                                _this.query1(e, option, formbj, null, type);
+                            }else {
+                                    $(e.currentTarget).unlock();
+                                }
                             });
                         }else {
-                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有注单进行重新结算,侧操作可能导致玩家钱包余额为负数,是否确认执行?",function () {
-                                var formbj = $("#payoutForm")[0];
+                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function (bol) {
+                                if(bol){
+                                var formbj = $("#heavyForm")[0];
                                 _this.query1(e,option,formbj,null,type);
+                                }else {$(e.currentTarget).unlock();}
                             });
                         }
                     }else{
