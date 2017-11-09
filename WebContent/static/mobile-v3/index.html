@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/index.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/hongbao.css" />    
 </head>
 
 <body>
@@ -348,20 +349,7 @@
 	        <span class="mui-tab-label">我的</span>
 	    </a>
 	</footer>   
-	<!--浮窗广告轮播-->
-	<div class="ads-slider">
-		<a href="javascript:" class="close-ads"></a>
-		<div class="mui-slider">
-		  <div class="mui-slider-group">
-			<div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/ads-banner-01.png" /></a></div>
-			<div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/ads-banner-01.png" /></a></div>
-		  </div>
-		  <div class="mui-slider-indicator">
-		      <div class="mui-indicator mui-active"></div>
-		      <div class="mui-indicator"></div>
-		  </div>
-		</div>		
-	</div>
+
   </div>
 </div>
 <!--语言弹窗-->
@@ -370,7 +358,133 @@
 	<li class="en-US"><a href="">English</a></li>
 	<li class="ja-JP"><a href="">日文</a></li>
 </ul>
+    <!--红包html开始  通过改变hongbao-wrap的class来改变红包样式，一共三种（hb_type_1,hb_type_2,hb_type_3）--> 
+    <div class="hongbao-slide-wrap hongbao-wrap" id="hongbao">
+    		<div class="mui-slider hongbao-slider">
+			  <div class="mui-slider-group">
+			    <div class="mui-slider-item hb_type_1">   				
+			    	<div class="img"></div>
+			    	<div class="extra"></div>
+    			</div>
+			    <div class="mui-slider-item hb_type_2">   				
+			    	<div class="img"></div>
+			    	<div class="extra"></div>
+    			</div>
+			    <div class="mui-slider-item hb_type_3">   				
+			    	<div class="img"></div>
+			    	<div class="extra"></div>
+    			</div>
+			  </div>
+			  <div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+    </div> 
+    <div id="hongbao_detail" class="hongbao_detail">
+    	<div class="hongbao_inner">
+    		<div class="icon-close"></div>
+    		<div class="hongbao"><!--未能拆时加disabled类名-->
+    			<div class="icon-open"></div>
+    			<div class="hongbao-time-txt">下次拆红包开始时间为</div>
+    			<div class="hongbao-time">2017-11-11  11:11:11</div>
+    			<a href="javascript:" class="btn-rule" id="btn-rule"></a>
+    			<!--红包规则元素-->
+    			<div class="hongbao-rule">
+    				<div class="txt">
+    					<div class="nice-wrapper">
+    						游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则
+    					</div>    					
+    				</div>
+    				<a href="javascript:" class="icon-close-rule"></a>
+    			</div>
+    			<!--中奖时的提示-->
+    			<div class="win-hongbao tips">
+    				<div class="ttxt-1">恭喜您</div>
+    				<div class="ttxt-2">获得20元</div>
+    			</div>
+    			<!--未中奖时的提示-->
+    			<div class="lose-hongbao tips">
+    				<div class="ttxt-1">很遗憾</div>
+    				<div class="ttxt-2">还差一点就中奖了呦！</div>
+    			</div>
+    		</div>
+    		<div class="hongbao_extra"></div>
+    			<!--拆开红包时的彩带和光环-->
+			<div class="caidai"></div>
+			<div class="hongbao-light"></div>
+			<!--关闭红包继续抽奖按钮-->
+			<a href="javascript:" id="btn-ok" class="btn-ok"></a>
+    	</div>
+    </div>
+    <!--红包html结束-->	
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
 <script src="../../mobile-v3/js/common.js"></script>
+<script src="../../mobile-v3/js/jquery/jquery.nicescroll.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		    	/*红包脚本开始*/
+    	$(function(){   		
+    		/*展开右下角红包*/
+    		$("#hongbao").on("tap",function(){
+    			$(this).addClass('hide_hongbao');    			
+    			$("#hongbao_detail").fadeIn(1000);
+    		});
+    		/*关闭红包*/
+    		$("#hongbao_detail .icon-close").on('click',function(){
+    			$(this).parents('.hongbao_detail').fadeOut(1000);
+    			$("#hongbao").removeClass('hide_hongbao');
+    		});
+    		/*打开红包规则*/
+    		$("#btn-rule").on('tap',function(){
+    			$('.hongbao-rule').show();
+    			/*自定义滚动条*/
+	    		$(".hongbao-rule .txt").niceScroll(".nice-wrapper", {
+			        cursorwidth: "12px",
+			        cursorcolor:"#c0111c",
+			        cursorborder: "1px solid #d2aa48"
+			    });
+    		});
+    		/*关闭红包规则*/
+    		$(".icon-close-rule").on('tap',function(){
+    			$(".hongbao-rule").hide();
+    		});
+    		/*打开红包*/
+    		$(".hongbao").not(".disabled").find(".icon-open").on('tap',function(){
+    			var hongbao_win = false;//是否中奖变量
+    			$(this).parents(".hongbao_inner").addClass('opened');
+    			$(this).hide();
+    			$(".btn-rule").hide();
+    			$(".hongbao-time-txt").hide();
+    			$(".hongbao-time").hide();
+    			if(hongbao_win){
+    				$(".win-hongbao.tips").show();
+    			}else{
+    				$(".lose-hongbao.tips").show();
+    			}
+    		});
+    		$("#btn-ok").on("tap",function(){
+    			$(".hongbao_inner").removeClass("opened");
+    			$(".icon-open").show();
+    			$(".btn-rule").show();
+    			$(".hongbao-time-txt").show();
+    			$(".hongbao-time").show();
+    			$(".tips").hide();
+    		});
+    	});
+    	/*红包脚本结束*/
+	});
+</script>
 </html>

@@ -315,6 +315,10 @@ $(window).on("load",function(){$('[data-ride="carousel"]').each(function(){var $
   $(document).ready(function() {
     //修复页面截断问题
     $('body').css("min-width",$(".container").outerWidth());
+    // ie9
+	if(/msie 9.0/.test(window.navigator.userAgent.toLowerCase())){
+		$("html").addClass("ie9");
+	}
     // IE8升级提示,浏览器媒体响应
      if (!$.support.leadingWhitespace) {
          $('html').addClass('ie8');

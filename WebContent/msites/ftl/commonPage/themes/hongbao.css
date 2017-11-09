@@ -1,0 +1,332 @@
+.hongbao-wrap {
+  width: 343px;
+  height: 298px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 2001;
+  cursor: pointer;
+  margin: 0;
+  -webkit-transform: rotateZ(0);
+  transform: rotateZ(0);
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+}
+.hongbao-wrap .extra, .hongbao-wrap .img {
+  position: absolute;
+}
+.hongbao-wrap .img {
+  -webkit-animation: scaleIn 3s infinite;
+  animation: scaleIn 3s infinite;
+}
+.hongbao-wrap ul {
+  padding: 0;
+  list-style: none;
+}
+.hongbao-wrap .slide-inner li {
+  height: 298px;
+}
+.hongbao-wrap .slide-indicators {
+  position: absolute;
+  bottom: 10px;
+  width: 300px;
+  text-align: center;
+}
+.hongbao-wrap .slide-indicators li {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 14px;
+  vertical-align: middle;
+  font-size: 0;
+  margin: 0 4px;
+}
+.hongbao-wrap .slide-indicators li.active {
+  background: #fec021;
+}
+.hongbao-wrap .hb_type_1 .extra {
+  background: url(images/hongbao/hongbao_type1.png);
+  width: 193px;
+  height: 192px;
+  top: 78px;
+  left: 38px;
+}
+.hongbao-wrap .hb_type_1 .img {
+  background: url(images/hongbao/hongbao_extra1_hover.png);
+  width: 274px;
+  height: 223px;
+  top: 50px;
+  left: 20px;
+}
+.hongbao-wrap .hb_type_1:hover .extra {
+  background-image: url(images/hongbao/hongbao_type1_hover.png);
+}
+.hongbao-wrap .hb_type_2 .extra {
+  background: url(images/hongbao/hongbao_type2.png);
+  width: 204px;
+  height: 191px;
+  top: 84px;
+  left: 66px;
+}
+.hongbao-wrap .hb_type_2 .img {
+  background: url(images/hongbao/hongbao_extra2_hover.png);
+  width: 336px;
+  height: 214px;
+  top: 64px;
+  left: 0;
+}
+.hongbao-wrap .hb_type_2:hover .extra {
+  background-image: url(images/hongbao/hongbao_type2_hover.png);
+}
+.hongbao-wrap .hb_type_3 .extra {
+  background: url(images/hongbao/hongbao_type3.png);
+  width: 215px;
+  height: 284px;
+  top: 22px;
+  left: 58px;
+}
+.hongbao-wrap .hb_type_3 .img {
+  background: url(images/hongbao/hongbao_extra3_hover.png);
+  width: 266px;
+  height: 168px;
+  top: 0;
+  left: 16px;
+}
+.hongbao-wrap .hb_type_3:hover .extra {
+  background-image: url(images/hongbao/hongbao_type3_hover.png);
+}
+.hongbao-wrap.hide_hongbao {
+  right: 50%;
+  margin-right: -172px;
+  bottom: 50%;
+  margin-bottom: -149px;
+  -webkit-transform: rotateZ(720deg);
+  transform: rotateZ(720deg);
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+/* caidai donghua */
+@-webkit-keyframes scaleIn {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scaleIn {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes rotateZ {
+  from {
+    -webkit-transform: rotateZ(0);
+    transform: rotateZ(0);
+  }
+  to {
+    -webkit-transform: rotateZ(360deg);
+    transform: rotateZ(360deg);
+  }
+}
+@keyframes rotateZ {
+  from {
+    -webkit-transform: rotateZ(0);
+    transform: rotateZ(0);
+  }
+  to {
+    -webkit-transform: rotateZ(360deg);
+    transform: rotateZ(360deg);
+  }
+}
+.hongbao_detail {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2001;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+}
+.hongbao_detail .hongbao_inner {
+  width: 559px;
+  height: 586px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.hongbao_detail .hongbao_inner .icon-close {
+  background: url(images/hongbao/icon-close.png);
+  width: 37px;
+  height: 36px;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.hongbao_detail .hongbao_inner .icon-close:hover {
+  -webkit-transform: rotateZ(90deg);
+  transform: rotateZ(90deg);
+}
+.hongbao_detail .hongbao_inner .hongbao {
+  background: url(images/hongbao/hongbao_open_bg.png);
+  width: 319px;
+  height: 451px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -159px;
+  z-index: 2;
+}
+.hongbao_detail .hongbao_inner .hongbao .icon-open {
+  background: url(images/hongbao/icon-open.png) no-repeat 0 0;
+  width: 126px;
+  height: 128px;
+  position: absolute;
+  left: 50%;
+  margin-left: -63px;
+  top: 80px;
+  cursor: pointer;
+}
+.hongbao_detail .hongbao_inner .hongbao .icon-open:hover {
+  background-image: url(images/hongbao/icon-open-hover.png);
+}
+.hongbao_detail .hongbao_inner .hongbao .hongbao-time-txt {
+  font-size: 16px;
+  color: #f7dc8b;
+  text-align: center;
+  margin-top: 221px;
+}
+.hongbao_detail .hongbao_inner .hongbao .hongbao-time {
+  font-size: 17px;
+  font-weight: bold;
+  color: #ffc000;
+  text-align: center;
+}
+.hongbao_detail .hongbao_inner .hongbao .btn-rule {
+  display: block;
+  margin: 34px auto 0;
+  background: url(images/hongbao/icon-hongbao-rule.png);
+  width: 200px;
+  height: 63px;
+}
+.hongbao_detail .hongbao_inner .hongbao .btn-rule:hover {
+  background-image: url(images/hongbao/icon-hongbao-rule-hover.png);
+}
+.hongbao_detail .hongbao_inner .hongbao.disabled .icon-open {
+  background-image: url(images/hongbao/icon-open-disabled.png);
+  cursor: not-allowed;
+}
+.hongbao_detail .hongbao_inner .hongbao .hongbao-rule {
+  background: url(images/hongbao/hongbao-rule-bg.png) no-repeat center 15px;
+  width: 319px;
+  height: 440px;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  display: none;
+}
+.hongbao_detail .hongbao_inner .hongbao .hongbao-rule .txt {
+  margin: 110px auto 0;
+  width: 222px;
+  color: #8a080f;
+  font-size: 19px;
+  line-height: 1.5;
+  height: 220px;
+  overflow: auto;
+}
+.hongbao_detail .hongbao_inner .hongbao .hongbao-rule .icon-close-rule {
+  display: block;
+  background: url(images/hongbao/icon-close-rule.png);
+  width: 129px;
+  height: 55px;
+  margin: 50px auto 0;
+}
+.hongbao_detail .hongbao_inner .hongbao .hongbao-rule .icon-close-rule:hover {
+  background-image: url(images/hongbao/icon-close-rule-hover.png);
+}
+.hongbao_detail .hongbao_inner .hongbao .tips {
+  display: none;
+  position: absolute;
+  top: 60px;
+  text-align: center;
+  left: 0;
+  right: 0;
+}
+.hongbao_detail .hongbao_inner .hongbao .tips .ttxt-1 {
+  font-size: 43px;
+  color: #d11623;
+}
+.hongbao_detail .hongbao_inner .hongbao .tips .ttxt-2 {
+  font-size: 31px;
+  color: #8c141c;
+  font-weight: bold;
+}
+.hongbao_detail .hongbao_inner .hongbao .tips.lose-hongbao .ttxt-2 {
+  font-size: 20px;
+}
+.hongbao_detail .hongbao_inner .hongbao_extra {
+  opacity: 0;
+  -webkit-animation: scaleIn 1s 1s forwards;
+  animation: scaleIn 1s 1s forwards;
+  background: url(images/hongbao/hongbao_open_extra.png);
+  width: 473px;
+  height: 501px;
+  z-index: 1;
+  top: 80px;
+  position: absolute;
+  left: 42px;
+}
+.hongbao_detail .hongbao_inner.opened .hongbao {
+  background: url(images/hongbao/opened_hongbao_bg.png);
+  height: 501px;
+}
+.hongbao_detail .hongbao_inner.opened .btn-rule {
+  margin: 359px auto 0;
+}
+.hongbao_detail .hongbao_inner.opened .caidai {
+  opacity: 0;
+  -webkit-animation: scaleIn 1s 1s forwards;
+  animation: scaleIn 1s 1s forwards;
+  background: url(images/hongbao/opened_line.png);
+  width: 611px;
+  height: 676px;
+}
+.hongbao_detail .hongbao_inner.opened .hongbao-light {
+  -webkit-animation: rotateZ 50s infinite;
+  animation: rotateZ 50s infinite;
+  background: url(images/hongbao/opened_light.png);
+  width: 594px;
+  height: 594px;
+  position: absolute;
+  top: -72px;
+  z-index: 2;
+  left: 50%;
+  margin-left: -297px;
+}
+
+/*# sourceMappingURL=hongbao.css.map */

@@ -269,8 +269,21 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 var time = parseInt((leftTime-now)/60000);
                 sessionStorage.setItem("minutes",time);
                 msg = msg.replace("${leftTime}", date);
-                if (rate >= 120) {
-                    var html = '<div class="line-hi34 m-sm">'+msg+'</div>';
+                var tmpTime = time;
+                var hour = Math.floor(tmpTime / 60);
+                tmpTime = tmpTime - hour * 60;
+                var minute = tmpTime;
+                if (minute < 10) {
+                    minute = '0' + minute;
+                }
+                if (rate >= 100){
+                    if (level=='red'){
+                        var html = '<div class="sys_tab_wrap p-xs"><div class="co-orange fs36 line-hi25 al-center"><i class="fa fa-exclamation-circle"></i></div><div class="line-hi34 m-sm">'+msg+'</div></div>'+
+                            '<div class="sys_tab_wrap p-xs"><b class="fs16">'+countDown+'</b><span class="fs20 ft-bold co-red" id="leftTime" data-time="${leftTime}"><span id="hour">'+hour+'</span>'+hours+'<span id="minute">'+minute+'</span>'+minutes+'</span></div>'
+                            +'<div>'+tips+'</div>';
+                    }else if (level=='stop'){
+                        var html = '<div class="line-hi34 m-sm">'+msg+'</div>';
+                    }
                     var dialog = BootstrapDialog.show({
                         title: window.top.message.setting_auto['消息'],
                         message: html,
@@ -297,30 +310,6 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                             window.top.popUp.showLeftTime(interval)
                         }, 60 * 1000);
                     }
-                } else if (rate >= 100){
-                    var html = '<div class="sys_tab_wrap p-xs"><div class="co-orange fs36 line-hi25 al-center"><i class="fa fa-exclamation-circle"></i></div><div class="line-hi34 m-sm">'+msg+'</div></div>'+
-                        '<div class="sys_tab_wrap p-xs"><b class="fs16">'+countDown+'</b><span class="fs20 ft-bold co-red" id="leftTime" data-time="${leftTime}"><span id="hour">00</span>'+hours+'<span id="minute">00</span>'+minutes+'</span></div>'
-                        +'<div>'+tips+'</div>';
-                    var dialog = BootstrapDialog.show({
-                        title: window.top.message.setting_auto['消息'],
-                        message: html,
-                        buttons: [{
-                            label: window.top.message.setting_auto['去充值'],
-                            action: function (dialog) {
-                                dialog.close();
-                                $("#mainFrame").load(root + "/credit/pay/pay.html");
-                            }
-                        }, {
-                            label: window.top.message.setting_auto['取消'],
-                            cssClass: 'btn-primary',
-                            action: function (dialog) {
-                                dialog.close();
-                            }
-                        }],
-                        onhidden: function (dialog) {
-                            dialog.close();
-                        }
-                    });
                 } else if ($("#topSecurity") && $("#topSecurity").length > 0) {
                     window.top.topPage.showWarningMessage(msg);
                 }
@@ -545,8 +534,15 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 var msg = window.top.message.setting_auto['您站点的额度已用'];
                 msg = msg.replace("${rate}",rate);
                 msg = msg.replace("${leftTime}",date);
+                var tmpTime = time;
+                var hour = Math.floor(tmpTime / 60);
+                tmpTime = tmpTime - hour * 60;
+                var minute = tmpTime;
+                if (minute < 10) {
+                    minute = '0' + minute;
+                }
                 var html = '<div class="sys_tab_wrap p-xs"><div class="co-orange fs36 line-hi25 al-center"><i class="fa fa-exclamation-circle"></i></div><div class="line-hi34 m-sm">'+msg+'</div></div>'+
-                    '<div class="p-xs" style="text-align: center"><b class="fs16">'+countDown+'</b><span class="fs20 ft-bold co-red" id="leftTime" data-time="${leftTime}"><span id="hour">00</span>'+hours+'<span id="minute">00</span>'+minutes+'</span></div>'
+                    '<div class="p-xs" style="text-align: center"><b class="fs16">'+countDown+'</b><span class="fs20 ft-bold co-red" id="leftTime" data-time="${leftTime}"><span id="hour">'+hour+'</span>'+hours+'<span id="minute">'+minute+'</span>'+minutes+'</span></div>'
                     +'<div class="p-xs">'+tips+'</div>';
                 var dialog = BootstrapDialog.show({
                     title: window.top.message.setting_auto['消息'],

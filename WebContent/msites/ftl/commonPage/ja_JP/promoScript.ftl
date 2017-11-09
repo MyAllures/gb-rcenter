@@ -242,58 +242,6 @@
             "width": function () { return $(document).width(); }
         });
     }
-    function canShowLottery(id){
-        $.ajax({
-            url:"/ntl/activity/countDrawTimes.html",
-            type: "POST",
-            dataType: "json",
-            data:{activityMessageId:id},
-            success: function(data){
-                if(data.drawTimes&&data.drawTimes>0){
-                    $("#tip-msg").removeClass("hide");
-                    $("#lottery_time_tip-msg").addClass("hide");
-                    $("#tip-msg").html('もう<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">'+data.drawTimes+'</span>回チャンス');
-                    $("#containerOut").css("display","block");
-                    $("#lotteryPageBtn_1").removeAttr("disabled");
-                    $("#lotteryPageBtn_1").show();
-                    $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/lottery_pc.png)'});
-                    $("#lottery_time_tip-msg").addClass("hide");
-                }else if(data.drawTimes==0){
-                    if(data.isEnd=="false"){
-                        $("#tip-msg").removeClass("hide");
-                        $("#ramain-count").text(data.drawTimes);
-                        $("#containerOut").css("display","block");
-                        $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
-                        $("#lotteryPageBtn_1").hide();
-                    }else{
-                        $("#tip-msg").addClass("hide");
-                        $("#containerOut").css("display","block");
-                        $("#lotteryPage").css
-                        ({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
-                        $("#lotteryPageBtn_1").hide();
-                    }
-                    if(data.nextLotteryTime!=""){
-                        $("#next_lottery_time").text(data.nextLotteryTime);
-                        $("#lottery_time_tip-msg").removeClass("hide");
-                    }else{
-                        $("#lottery_time_tip-msg").addClass("hide");
-                    }
-
-                }else if(data.drawTimes==-1){
-                    $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
-                    $("#tip-msg").html('キャンペーン終了!');
-                    $("#tip-msg").removeClass("hide");
-                    $("#lotteryPageBtn_1").hide();
-                    $("#lottery_time_tip-msg").addClass("hide");
-                    $("#containerOut").css("display","block");
-                    return;
-                }
-                //setDivCss();
-                $("[name='gb.token']").val(data.token);
-                $("#activity_message_id").val(id);
-            }
-        });
-    }
 
     function applyActivities(aplyObj, isRefresh) {
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
