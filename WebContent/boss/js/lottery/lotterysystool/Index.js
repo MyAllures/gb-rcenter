@@ -165,6 +165,11 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                         dataType: "json",
                         data: {"result.code":code,"result.date":date},
                         success: function (data) {
+                            if(data.state){
+                                alert("更新成功!");
+                            }else {
+                                alert(data.msg);
+                            }
                             $(event.currentTarget).unlock();
                         }
                     });
