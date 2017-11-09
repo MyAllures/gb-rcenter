@@ -148,7 +148,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var date = form.find("input").val();
             var code = null;
             var codeName = form.find("span[prompt='prompt']").text();//彩种名称
-            var context = "您将采集 "+codeName + " "+date+"的所有已开奖号码";
+            var context = "您将采集 "+codeName + ", "+date+"的所有已开奖号码";
 
             $("#lotteryList li a").each(function(i){
                 if($(this).text()==codeName){
@@ -161,9 +161,9 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 if (confirm) {
 
                     window.top.topPage.ajax({
-                        url: root + '/lotterySysTool/gatherOpenCode.html',
+                        url: root + '/lotterySysTool/collectOpenCode.html',
                         dataType: "json",
-                        data: {"code":code,"date":date},
+                        data: {"result.code":code,"result.date":date},
                         success: function (data) {
                             $(event.currentTarget).unlock();
                         }
