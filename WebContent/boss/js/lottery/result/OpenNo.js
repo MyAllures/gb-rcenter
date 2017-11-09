@@ -94,28 +94,50 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             var type = $("#czType").val();
             var code = $("#czCode").val();
             var expect = $("#czExpect").val();
+            var _e = {
+                currentTarget:$(opt.currentTarget),
+                page:page
+            };
+            var checkFlag = false;
             $("input.m-xs").each(function(index,value){
                 var maxLength = parseInt($(this).attr("maxlength"));
                 var min = parseInt($(this).attr("min"));
                 var max = parseInt($(this).attr("max"));
                 var numStr = $(this).val();
                 var num = parseInt(numStr);
-                if(numStr == undefined || numStr == ''){
+                if( numStr == undefined || numStr == ''){
                     _e.page.showPopover(_e, {}, 'danger', '开奖号码不能为空', true);
-                    return;
-                }if(numStr.length != maxLength){
-                    _e.page.showPopover(_e, {}, 'danger', '开奖号码不符合格式', true);
-                    return;
+                    checkFlag = true;
+                    return false;
+                }if(isNaN(num)){
+                    _e.page.showPopover(_e, {}, 'danger', '开奖号码有误', true);
+                    checkFlag = true;
+                    return false;
+                }
+                if(numStr.length != maxLength){
+                    _e.page.showPopover(_e, {}, 'danger', '开奖号码有误', true);
+                    checkFlag = true;
+                    return false;
                 }if(num < min || num > max){
-                    _e.page.showPopover(_e, {}, 'danger', '开奖号码不符合格式', true);
-                    return;
+                    _e.page.showPopover(_e, {}, 'danger', '开奖号码有误', true);
+                    checkFlag = true;
+                    return false;
                 }
                 openCodes.push(numStr)
             });
-            var _e = {
-                currentTarget:$(opt.currentTarget),
-                page:page
-            };
+            if(checkFlag){
+                return;
+            }
+            if(code == 'hklhc' || code == 'cqxync' || code == 'gdkl10' || code == 'xyft' || code == 'bjkl8' || code == 'bjpk10' || code == 'jspk10'){
+                for(var i = 0; i < openCodes.length; i++){
+                    for(var j = i+1; j < openCodes.length; j++) {
+                        if(openCodes[i] == openCodes[j]){
+                            _e.page.showPopover(_e, {}, 'danger', '开奖号码不能重复', true);
+                            return;
+                        }
+                    }
+                }
+            }
             var option = {};
             //window.top.topPage.ajax
             //ajaxRequest
