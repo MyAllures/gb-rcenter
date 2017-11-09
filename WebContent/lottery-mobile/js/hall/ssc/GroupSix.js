@@ -7,14 +7,59 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
             _this = this;
 
         },
+
+        showTable : function(){
+            var betCode=$("#gfwfBetCode").val();
+            $("a[data-code='ssc_zuxuanliu']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#zuxuanliu").show();
+            $("span.x_1.gfwf-tit").text("组选六");
+            $(".s-title.title1 span").text("组选六");
+            $(".s-title.title2 span").text(betCode);
+            $("#toobarTitle").text("信用玩法-组选六");
+            if(betCode =="ssc_zuxuanliu"){
+                $("a[data-code='前三组选六']").addClass("mui-active");
+            }else{
+                $("#zuxuanliu a").removeClass("mui-active");
+                $("a[data-code='"+betCode+"']").addClass("mui-active");
+            }
+            $(".x_3.gfwf-playName").text(betCode)
+        },
+
+
         bindButtonEvents: function () {
-            this._super();
+            var _this=this;
+            //清除下注项
+            mui("body").off('tap','a#del-bet1').on('tap', 'a#del-bet1', function () {
+                page.resetBet();
+            });
+            //投注
+            mui("body").off('tap','a#show-t').on("tap", 'a#show-t', function () {
+                _this.betOrder();
+            });
+
+            //取消下注
+            mui("body").off('tap','#cancel').on("tap", "#cancel", function () {
+                $("#dingdan").html('');
+                $("#dingdan").removeClass('mui-active');
+            });
+            //确认投注
+            mui("body").off('tap','#confirmOrder').on("tap", "#confirmOrder", function () {
+                var betForm = _this.getBetOrder();
+                _this.confirmOrder(betForm);
+            });
+
+            //清除下注按钮点击事件
+            mui("body").off('tap','a#del-bet').on('tap', 'a#del-bet', function () {
+                $(".screen-munber a").removeClass("mui-active");
+            });
+
             mui(this.formSelector).on("tap", "a.mui-control-item[data-type]", function () {
                 var type = $(this).attr("data-type");
                 var betTitle = $(this).text();
                 $("#bet-title").html(betTitle + "@<font id='pl' class='col-red'></font> (请选择4~8个号码)");
                 $("#betli a").removeClass("mui-active");
-                $(".bet-table[data-subCode]").each(function () {
+                $(".bet-table-list[data-subCode]").each(function () {
                     $(this).attr("data-subCode", type);
                     var $tdBet = $(this).find("td[data-bet-num]");
                     $tdBet.each(function () {
@@ -35,10 +80,6 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
                     $("#quantity").text(0);
                 }
             });
-            //清除下注按钮点击事件
-            mui("body").on('tap', 'a#del-bet', function () {
-                $(".screen-munber a").removeClass("mui-active");
-            });
         },
         getOdds: function () {
             var url = root + '/' + this.type + '/' + this.code + '/getOdds.html';
@@ -47,7 +88,7 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
                 dataType: 'json',
                 type: 'POST',
                 success: function (data) {
-                    $(".bet-table[data-subCode]").each(function () {
+                    $(".bet-table-list[data-subCode]").each(function () {
                         var subCode = $(this).attr("data-subCode");
                         var $tdBet = $(this).find("a[data-bet-num]");
                         var $tds = $(this).find("td");
@@ -77,7 +118,7 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
          * @returns {{code: *, expect: (*|jQuery), type: *, betOrders: Array}}
          */
         getBetOrder: function () {
-            var seltd = $("div.bet-table a.mui-active");
+            var seltd = $("div.bet-table-list a.mui-active");
             var betNum = "";
             $.each(seltd, function (i, item) {
                 betNum = betNum + $(this).data("bet-num") + ",";
@@ -101,8 +142,8 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
                 code: code,
                 expect: expect,
                 betAmount: betAmount,
-                betCode: $("#seltype a.mui-active").attr("data-type"),
-                playCode: $("#seltype a.mui-active").attr("data-play"),
+                betCode: $("#zuxuanliu a.mui-active").attr("data-type"),
+                playCode: $("#zuxuanliu a.mui-active").attr("data-play"),
                 betNum: betNum,
                 odd: oddsar[Number(seltd.length)].odd,
                 memo: $("#seltype a.mui-active").text() + "-" + betNum

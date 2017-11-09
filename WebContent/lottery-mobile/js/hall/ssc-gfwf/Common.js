@@ -114,7 +114,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                     && dataCode !="ssc_yizizuhe"
                     && dataCode !="ssc_zuxuansan"
                     && dataCode !="ssc_zuxuanliu"
-                    && dataCode !="ssc_longhu"
+                    && dataCode !="ssc_kaudu"
                 ){
 
                     // $('div.gfwf-bg').slideUp();
@@ -159,9 +159,11 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                     jspName="GroupThree";
                     dataCode="前三组选三";
                 }else if(betCode =="ssc_zuxuanliu" && jspName==undefined){
-                    jspName="SscDaxiaodanshuangErxing";
-                }else if(betCode =="ssc_longhu" && jspName==undefined){
-                    jspName="SscDaxiaodanshuangErxing";
+                    jspName="GroupSix";
+                    dataCode="前三组选六";
+                }else if(betCode =="ssc_kaudu" && jspName==undefined){
+                    jspName="Span";
+                    dataCode="前三跨度";
                 }
                 _this.getBetTable(dataCode,jspName);
                 _this.resetBet();

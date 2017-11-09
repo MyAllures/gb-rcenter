@@ -15,17 +15,17 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf','site/plugin/template'], function (Pla
             $("#yizizuhe").show();
             $("span.x_1.gfwf-tit").text("一字组合");
             $(".s-title.title1 span").text("一字组合");
-            $(".s-title.title2 span").text("万千百");
+            $(".s-title.title2 span").text(betCode);
             $("#toobarTitle").text("信用玩法-一字组合");
             if(betCode =="ssc_yizizuhe"){
                 $("a[data-code='全五一字']").addClass("mui-active");
-                $(".x_3.gfwf-playName").text("全五一字");
+                // $(".x_3.gfwf-playName").text("全五一字");
             }else{
                 $("#yizizuhe a").removeClass("mui-active");
                 $("a[data-code='"+betCode+"']").addClass("mui-active");
             }
             $(".x_3.gfwf-playName").text(betCode)
-            $(".s-title.title2 span").text(betCode);
+            // $(".s-title.title2 span").text(betCode);
         },
 
         getOdds: function () {
