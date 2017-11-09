@@ -42,6 +42,9 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             dataType: "json",
                             data: {"state":true},
                             success: function (data) {
+                                if(!data.state){
+                                    alert(data.msg);
+                                }
                             }
                         });
                         return true;
@@ -57,6 +60,10 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                                     dataType: "json",
                                     data: {"state":false},
                                     success: function (data) {
+                                        if(!data.state){
+                                            alert(data.msg);
+                                            return;
+                                        }
                                         $(_target).attr("isChanged", true);
                                         $(_target).bootstrapSwitch("state", !_target.checked);
                                     }
@@ -150,7 +157,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 }
             });
 
-
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
 
@@ -167,6 +173,8 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                     $(event.currentTarget).unlock();
                 }
             });
+
+            $(event.currentTarget).unlock();
 
         },
 
@@ -197,14 +205,22 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                     if (data.status){
                         $("#opencode").val(data.msg);
                         if (siteId == ''){
-                            window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有未结算的注单进行收到派彩,是否确认执行?",function () {
+                            window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
+                                if(bol){
                                 var formbj = $("#payoutForm")[0];
                                 _this.query1(e,option,formbj,null,type);
+                                }else {
+                                    $(e.currentTarget).unlock();
+                                }
                             });
                         }else {
-                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有未结算的注单进行收到派彩,是否确认执行?",function () {
+                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
+                                if(bol){
                                 var formbj = $("#payoutForm")[0];
                                 _this.query1(e,option,formbj,null,type);
+                                }else {
+                                    $(e.currentTarget).unlock();
+                                }
                             });
                         }
 
@@ -219,7 +235,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         },
 
         heavy:function (e,option) {
-            var formobj =  $("#payoutForm")[0];
+            var formobj =  $("#heavyForm")[0];
             var code = $(formobj).find("input[name='result.code']").val();
             var expect = $(formobj).find("input[name='result.expect']").val();
             var siteId = $(formobj).find("input[name='siteId']").val();
@@ -243,16 +259,22 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 success:function (data) {
 
                     if (data.status){
-                        $("#opencode").val(data.msg);
+                        $("#opencode1").val(data.msg);
                         if (siteId == ''){
-                            window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有注单进行重新结算,侧操作可能导致玩家钱包余额为负数,是否确认执行?",function(){
-                                var formbj = $("#payoutForm")[0];
-                                _this.query1(e,option,formbj,null,type);
+                            window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function(bol) {
+                                if (bol) {
+                                var formbj = $("#heavyForm")[0];
+                                _this.query1(e, option, formbj, null, type);
+                            }else {
+                                    $(e.currentTarget).unlock();
+                                }
                             });
                         }else {
-                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有注单进行重新结算,侧操作可能导致玩家钱包余额为负数,是否确认执行?",function () {
-                                var formbj = $("#payoutForm")[0];
+                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function (bol) {
+                                if(bol){
+                                var formbj = $("#heavyForm")[0];
                                 _this.query1(e,option,formbj,null,type);
+                                }else {$(e.currentTarget).unlock();}
                             });
                         }
                     }else{
