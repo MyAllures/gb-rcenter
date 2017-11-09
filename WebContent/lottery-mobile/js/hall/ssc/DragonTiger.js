@@ -7,6 +7,19 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
             _this = this;
 
         },
+
+        showTable : function(){
+            $("div.s-menu.second").hide();
+            $("#shuzipan").show();
+            $("a[data-code='szp']").addClass("mui-active");
+            $(".x_3.gfwf-playName").text("龙虎");
+            $("span.x_1.gfwf-tit").text("龙虎");
+            $(".s-title.title1 span").text("龙虎");
+            $(".s-title.title2 span").text("龙虎");
+            $("#toobarTitle").text("信用玩法-龙虎");
+            $("a[data-code='szp'] span").text("龙虎");
+        },
+
         getOdds: function () {
             var url = root + '/' + this.type + '/getDragonTigerOdds.html';
             console.log("url=" + url)
