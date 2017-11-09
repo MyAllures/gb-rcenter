@@ -46,6 +46,11 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                     e.result = false;
                 }
             });
+
+            $(this.formSelector).on("click", "label.bank", function (e) {
+                $("label.bank.select").removeClass("select");
+                $(this).addClass("select");
+            })
         },
         /**
          * 立即存款

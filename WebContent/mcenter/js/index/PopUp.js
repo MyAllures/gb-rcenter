@@ -127,7 +127,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             btnOption.target = root + "/operation/announcementMessage/announcementPopup.html?search.id=" + id;
             btnOption.text = window.top.message.index_auto['公告'];
             btnOption.callback = function (e, option) {
-                if (e.returnValue.isDetail) {
+                if (e.returnValue && e.returnValue.isDetail) {
                     if (e.returnValue.apiId != "") {
                         $("#mainFrame").load(root + "/operation/announcementMessage/messageDetail.html?search.id=" + e.messageId);
                     } else {
