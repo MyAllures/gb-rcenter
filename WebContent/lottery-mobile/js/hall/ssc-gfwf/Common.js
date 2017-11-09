@@ -150,9 +150,11 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                     jspName="TwoDigital";
                     dataCode="万千";
                 }else if(betCode =="ssc_sanzidingwei" && jspName==undefined){
-                    jspName="SscDaxiaodanshuangErxing";
+                    jspName="ThreeDigital";
+                    dataCode="万千百";
                 }else if(betCode =="ssc_yizizuhe" && jspName==undefined){
-                    jspName="SscDaxiaodanshuangErxing";
+                    jspName="OneCombination";
+                    dataCode="全五一字";
                 }else if(betCode =="ssc_zuxuansan" && jspName==undefined){
                     jspName="SscDaxiaodanshuangErxing";
                 }else if(betCode =="ssc_zuxuanliu" && jspName==undefined){

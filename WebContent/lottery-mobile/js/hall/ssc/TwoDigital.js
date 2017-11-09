@@ -16,17 +16,17 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
             $("#erzidingwei").show();
             $("span.x_1.gfwf-tit").text("二字定位");
             $(".s-title.title1 span").text("二字定位");
-            $(".s-title.title2 span").text("万千定位");
+            $(".s-title.title2 span").text("万千");
             $("#toobarTitle").text("信用玩法-二字定位");
             if(betCode =="ssc_erzidingwei"){
                 $("a[data-code='万千']").addClass("mui-active");
-                $(".x_3.gfwf-playName").text("万千定位");
+                $(".x_3.gfwf-playName").text("万千");
             }else{
                 $("#erzidingwei a").removeClass("mui-active");
                 $("a[data-code='"+betCode+"']").addClass("mui-active");
             }
-            $(".x_3.gfwf-playName").text(betCode+"定位")
-            $(".s-title.title2 span").text(betCode+"定位");
+            $(".x_3.gfwf-playName").text(betCode)
+            $(".s-title.title2 span").text(betCode);
         },
 
         getOdds: function () {
@@ -38,10 +38,11 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
                 type: 'POST',
                 success: function (data) {
                     var betname = $("#erzidingwei a.mui-active").text();
+                    console.log(betname);
                     var tdata = data["中2"];
                     var toua = $("#bettouli div a");
                     var weia = $("#betweili div a");
-                    $("#betTitleDiv").html(betname + "(中2@<strong  class='col-red'>" + tdata.odd + "</strong>)");
+                    $("#betTitleDiv").html(betname + "定位(中2@<strong  class='col-red'>" + tdata.odd + "</strong>)");
                     toua.attr("data-odd", tdata.odd);
                     weia.attr("data-odd", tdata.odd);
                     toua.attr("data-bet-code", tdata.betCode);
@@ -60,21 +61,21 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
             var _this = this;
             /*==============================信用====================================*/
             //清除下注项
-            mui("body").on('tap', 'a#del-bet', function () {
+            mui("body").off('tap','a#del-bet1').on('tap', 'a#del-bet1', function () {
                 page.resetBet();
             });
             //投注
-            mui("body").on("tap", 'a#show-t', function () {
+            mui("body").off('tap','a#show-t').on("tap", 'a#show-t', function () {
                 _this.betOrder();
             });
 
             //取消下注
-            mui("body").on("tap", "#cancel", function () {
+            mui("body").off('tap','#cancel').on("tap", "#cancel", function () {
                 $("#dingdan").html('');
                 $("#dingdan").removeClass('mui-active');
             });
             //确认投注
-            mui("body").on("tap", "#confirmOrder", function () {
+            mui("body").off('tap','#confirmOrder').on("tap", "#confirmOrder", function () {
                 var betForm = _this.getBetOrder();
                 _this.confirmOrder(betForm);
             });
@@ -126,7 +127,7 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (Pl
                         code: code,
                         expect: expect,
                         betAmount: betAmount,
-                        betCode: $("#betCodeDiv a.mui-active").attr("data-type"),
+                        betCode: $("#erzidingwei a.mui-active").attr("data-type"),
                         playCode: $(toua[i]).attr("data-play"),
                         betNum: $(toua[i]).attr("data-bet-num") + "" + $(weia[j]).attr("data-bet-num"),
                         odd: $(toua[i]).attr("data-odd"),

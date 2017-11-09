@@ -7,23 +7,27 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf','site/plugin/template'], function (Pla
             _this=this;
 
         },
-        bindButtonEvents: function () {
-            this._super();
-            mui(this.formSelector).on("tap", "a.mui-control-item[data-type]", function () {
-                var type = $(this).attr("data-type");
-                var betTitle = $(this).text();
-                $(".bet-title").html(betTitle);
-                $(".bet-table-list[data-subCode]").each(function () {
-                    $(this).attr("data-subCode",type);
-                    var $tdBet = $(this).find("td[data-bet-num]");
-                    $tdBet.each(function(){
-                        var betNum = $(this).attr('data-bet-num');
-                        $(this).attr("data-name",betTitle+"-"+betNum);
-                    })
-                });
-                _this.getOdds();
-            })
+
+        showTable : function(){
+            var betCode=$("#gfwfBetCode").val();
+            $("a[data-code='ssc_yizizuhe']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#yizizuhe").show();
+            $("span.x_1.gfwf-tit").text("一字组合");
+            $(".s-title.title1 span").text("一字组合");
+            $(".s-title.title2 span").text("万千百");
+            $("#toobarTitle").text("信用玩法-一字组合");
+            if(betCode =="ssc_yizizuhe"){
+                $("a[data-code='全五一字']").addClass("mui-active");
+                $(".x_3.gfwf-playName").text("全五一字");
+            }else{
+                $("#yizizuhe a").removeClass("mui-active");
+                $("a[data-code='"+betCode+"']").addClass("mui-active");
+            }
+            $(".x_3.gfwf-playName").text(betCode)
+            $(".s-title.title2 span").text(betCode);
         },
+
         getOdds: function () {
             var url = root + '/' + this.type+ '/' + this.code +'/getOdds.html';
             var _this = this;
@@ -40,6 +44,7 @@ define(['site/hall/ssc-gfwf/PlayWay-xywf','site/plugin/template'], function (Pla
                             var bet = thisData[betNum];
                             $(this).attr("data-odds", bet.odd);
                             $(this).attr("data-bet-code", bet.betCode);
+                            $(this).attr("data-play","one_combination")
                             $(this).children("span[name=odd]").text(bet.odd);
                         })
                     });

@@ -42,25 +42,25 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             var _this = this;
             /*==============================信用====================================*/
             //点击下注选项
-            mui("body").on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn', function () {
-                _this.bindTdInput(this);
+            mui("body").off('tap','div.bet-table-list td,div.bet-table-list .n-btn').on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn', function () {
+                _this.bindTdInput($(this));
             });
             //清除下注项
-            mui("body").on('tap', 'a#del-bet', function () {
+            mui("body").off('tap','a#del-bet1').on('tap', 'a#del-bet1', function () {
                 page.resetBet();
             });
             //投注
-            mui("body").on("tap", 'a#show-t', function () {
+            mui("body").off('tap','a#show-t').on("tap", 'a#show-t', function () {
                 _this.betOrder();
             });
 
             //取消下注
-            mui("body").on("tap", "#cancel", function () {
+            mui("body").off('tap','#cancel').on("tap", "#cancel", function () {
                 $("#dingdan").html('');
                 $("#dingdan").removeClass('mui-active');
             });
             //确认投注
-            mui("body").on("tap", "#confirmOrder", function () {
+            mui("body").off('tap','#confirmOrder').on("tap", "#confirmOrder", function () {
                 var betForm = _this.getBetOrder();
                 _this.confirmOrder(betForm);
             });
@@ -149,7 +149,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             });
 
             //选择球
-            mui("li.screen-munber").on('tap','a',function(){
+            mui("li.screen-munber").off('tap','a').on('tap','a',function(){
                 //判断是否为SSC包胆,K3二同号单选
                 _this.checkBaodan($(this));
                 this.classList.toggle('mui-active');
