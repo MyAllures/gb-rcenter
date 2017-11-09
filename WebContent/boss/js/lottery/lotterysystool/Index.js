@@ -253,12 +253,12 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                     if (data.status){
                         $("#opencode1").val(data.msg);
                         if (siteId == ''){
-                            window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有注单进行重新结算,侧操作可能导致玩家钱包余额为负数,是否确认执行?",function(){
+                            window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function(){
                                 var formbj = $("#heavyForm")[0];
                                 _this.query1(e,option,formbj,null,type);
                             });
                         }else {
-                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有注单进行重新结算,侧操作可能导致玩家钱包余额为负数,是否确认执行?",function () {
+                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function () {
                                 var formbj = $("#heavyForm")[0];
                                 _this.query1(e,option,formbj,null,type);
                             });
