@@ -147,7 +147,7 @@
   display: none;
 }
 .hongbao_detail .hongbao_inner {
-  width: 396.89px;
+  width: 320px;
   height: 378px;
   position: absolute;
   margin: auto;
@@ -275,12 +275,12 @@
   -webkit-animation: scaleIn 1s 1s forwards;
   animation: scaleIn 1s 1s forwards;
   background: url(images/hongbao/hongbao_open_extra.png) 0 0/100%;
-  width: 335.83px;
-  height: 355.71px;
+  width: 320px;
+  height: 388px;
   z-index: 1;
   top: 30px;
   position: absolute;
-  left: 29.82px;
+  left: -13px;
 }
 .hongbao_detail .hongbao_inner.opened .hongbao {
   background: url(images/hongbao/opened_hongbao_bg.png) 0 0/100%;
