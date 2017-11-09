@@ -97,6 +97,7 @@
         $("#applyId").val("");
         var id = $("#activity_message_id").val();
         if(!id){
+            $(".hongbao").removeClass('disabled');
             $("#tip-msgs").html('红包活动已经结束!');
             $(".hongbao-time-txt").hide();
             $(".hongbao-time").hide();

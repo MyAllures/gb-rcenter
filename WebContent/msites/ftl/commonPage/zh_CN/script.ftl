@@ -67,15 +67,15 @@
         <#list data.floatPicsInIndex as pic>
             <#if pic.location == "left">
                 <#if pic.interactivity=="scroll_with_page">
-                if($("[data-fp='${pic.id}']").length>0){
+                    if($("[data-fp='${pic.id}']").length>0){
                     $("[data-fp='${pic.id}']").Float({ <#if pic.distanceTop??>topSide: ${pic.distanceTop?string.computer}<#else>topSide:150</#if>, floatRight: 0,<#if pic.distanceSide??>side: ${pic.distanceSide?string.computer}<#else >side:0</#if>, close: 'aside-float' });
-                }
+                    }
                 </#if>
             </#if>
             <#if pic.location == "right">
                 <#if pic.interactivity=="scroll_with_page">
                     if($("[data-fp='${pic.id}']").length>0){
-                        $("[data-fp='${pic.id}']").Float({ <#if pic.distanceTop??>topSide: ${pic.distanceTop?string.computer}<#else>topSide:150</#if>, floatRight: 1,<#if pic.distanceSide??>side: ${pic.distanceSide?string.computer}<#else >side:0</#if>, close: 'aside-float' });
+                    $("[data-fp='${pic.id}']").Float({ <#if pic.distanceTop??>topSide: ${pic.distanceTop?string.computer}<#else>topSide:150</#if>, floatRight: 1,<#if pic.distanceSide??>side: ${pic.distanceSide?string.computer}<#else >side:0</#if>, close: 'aside-float' });
                     }
                 </#if>
             </#if>
@@ -1655,6 +1655,10 @@
             return;
         }
         if (!id){
+            $(".hongbao").removeClass('disabled');
+            $("#tip-msgs").html('红包活动已经结束!');
+            $(".hongbao-time-txt").hide();
+            $(".hongbao-time").hide();
             return;
         }
         $("#hongbao").addClass('hide_hongbao');
