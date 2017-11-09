@@ -470,12 +470,16 @@ color: #6b88fe;
 .activity-content-bg{background-color: #32374f !important;}
 /*h5优惠页面*/
 .activity-content-bg.mui-content .gb-imgs h4{background-color: #4d87c5;color:#fff;padding: 5px 5px;border-radius: 5px;display: inline-block;}
-.activity-content-bg.mui-content .gb-imgs .table{width:100%;}
-.activity-content-bg.mui-content .gb-imgs .table th{color: #4d87c5;}
-.activity-content-bg.mui-content .gb-imgs .table td{color:#ffffff}
-.activity-content-bg.mui-content .gb-imgs .table th,
-.activity-content-bg.mui-content .gb-imgs .table td{border:1px solid #487cb5;text-align:center;padding:6px 10px;font-size:13px}
+.activity-content-bg.mui-content .gb-imgs table{width:100%;}
+.activity-content-bg.mui-content .gb-imgs table th{color: #4d87c5;}
+.activity-content-bg.mui-content .gb-imgs table td{color:#ffffff}
+.activity-content-bg.mui-content .gb-imgs table th,
+.activity-content-bg.mui-content .gb-imgs table td{border:1px solid #487cb5!important;text-align:center;padding:6px 10px;font-size:13px}
 .activity-content-bg.mui-content .gb-imgs ol{padding-left: 20px}
 .activity-content-bg.mui-content .gb-imgs ol li{list-style: decimal; color:#8f8f94;}
+.activity-content-bg.mui-content .gb-imgs .ct p,.activity-content-bg.mui-content .gb-imgs .ct p span{color: #dedede;}
+.activity-content-bg.mui-content .agent-text p span{color:#fff!important;}
+.activity-content-bg.mui-content .agent-text table td{border:1px solid #487cb5!important;}
+
 .mui-title {color: #fff;}
 .mui-bar-nav a {color: #fff;}
