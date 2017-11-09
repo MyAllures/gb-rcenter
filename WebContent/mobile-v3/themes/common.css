@@ -202,31 +202,6 @@ header.mui-bar-nav .mui-icon-bars {
   background: url(images/footer-nav-icon.png) no-repeat -83px -43px/auto 80px;
 }
 
-/*  ads-slider */
-.ads-slider {
-  position: absolute;
-  right: 10px;
-  bottom: 63px;
-  width: 144px;
-  z-index: 11;
-  padding-top: 24px;
-  padding-left: 24px;
-}
-.ads-slider .close-ads {
-  width: 24px;
-  height: 24px;
-  background: url(images/icon-close-ads.png) center/14px no-repeat;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.ads-slider .mui-slider-indicator {
-  bottom: -2px;
-}
-.ads-slider .mui-slider-indicator .mui-indicator {
-  margin: 1px 2px;
-}
-
 /* mui-off-canvas-left */
 .mui-off-canvas-left {
   width: 80%;
