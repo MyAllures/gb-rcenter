@@ -11,7 +11,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         _this:null,
         init: function () {
             this._super();
-             _this = this;
+            this._this = this;
         },
         /**
          * 当前对象事件初始化函数
@@ -43,7 +43,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             data: {"state":true},
                             success: function (data) {
                                 if(!data.state){
-                                    alert(data.msg);
+                                    page.showPopover(event,option,"danger",data.msg,true);
                                 }
                             }
                         });
@@ -61,7 +61,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                                     data: {"state":false},
                                     success: function (data) {
                                         if(!data.state){
-                                            alert(data.msg);
+                                            page.showPopover(event,option,"danger",data.msg,true);
                                             return;
                                         }
                                         $(_target).attr("isChanged", true);
@@ -81,20 +81,35 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             });
 
         },
-        cancelNoPayoutOrder: function (event,option) {
-            var formobj =  $("#noPayoutOrderCancleForm")[0];
-            var codename = $(formobj).find("span[prompt='prompt']").text();//彩种名称
+
+        checkRevokeParam : function(formobj,event,option){
             var code = $(formobj).find("input[name='search.code']").val();
             var expect = $(formobj).find("input[name='search.expect']").val();
             var siteId = $(formobj).find("input[name='search.siteId']").val();
             if (code == ''){
                 page.showPopover(event,option,"danger","彩种不能选择为空",true);
-                return;
-            }
-            if (expect == ''){
+                return true;
+            }if (expect == ''){
                 page.showPopover(event,option,"danger","期号不能为空",true);
+                return true;
+            }
+            if(isNaN(Number(expect))){
+                page.showPopover(event,option,"danger","期号格式错误",true);
+                return true;
+            }if(siteId != '' && isNaN(Number(siteId))){
+                page.showPopover(event,option,"danger","站点id格式错误",true);
+                return true;
+            }
+            return false;
+        },
+        cancelNoPayoutOrder: function (event,option) {
+            var formobj =  $("#noPayoutOrderCancleForm")[0];
+            if(this.checkRevokeParam(formobj,event,option)){
                 return;
             }
+            var codename = $(formobj).find("span[prompt='prompt']").text();//彩种名称
+            var expect = $(formobj).find("input[name='search.expect']").val();
+            var siteId = $(formobj).find("input[name='search.siteId']").val();
             var context = '';
             if (siteId == ''){
                 context = "您将对"+codename+expect+"期的所有未结算注单进行撤销,是否确认执行";
@@ -113,18 +128,12 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         },
         cancelPayoutOrder: function (event,option) {
             var formobj =  $("#payoutOrderCancleForm")[0];
+            if(this.checkRevokeParam(formobj,event,option)){
+                return;
+            }
             var codename = $(formobj).find("span[prompt='prompt']").text();//彩种名称
-            var code = $(formobj).find("input[name='search.code']").val();
             var expect = $(formobj).find("input[name='search.expect']").val();
             var siteId = $(formobj).find("input[name='search.siteId']").val();
-            if (code == ''){
-                page.showPopover(event,option,"danger","彩种不能选择为空",true);
-                return;
-            }
-            if (expect == ''){
-                page.showPopover(event,option,"danger","期号不能为空",true);
-                return;
-            }
             var context = '';
             if (siteId == ''){
                 context = "您将对"+codename+expect+"期的所有已结算注单进行撤销,是否确认执行";
@@ -148,7 +157,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var date = form.find("input").val();
             var code = null;
             var codeName = form.find("span[prompt='prompt']").text();//彩种名称
-            var context = "您将采集 "+codeName + " "+date+"的所有已开奖号码";
+            var context = "您将采集 "+codeName + ", "+date+"的所有已开奖号码";
 
             $("#lotteryList li a").each(function(i){
                 if($(this).text()==codeName){
@@ -161,10 +170,16 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 if (confirm) {
 
                     window.top.topPage.ajax({
-                        url: root + '/lotterySysTool/gatherOpenCode.html',
+                        url: root + '/lotterySysTool/collectOpenCode.html',
                         dataType: "json",
-                        data: {"code":code,"date":date},
+                        data: {"result.code":code,"result.date":date},
                         success: function (data) {
+                            if(data.state){
+                                page.showPopover(event,option,"success","更新成功!",true);
+                            }else {
+                                page.showPopover(event,option,"danger",data.msg,true);
+
+                            }
                             $(event.currentTarget).unlock();
                         }
                     });
@@ -254,7 +269,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 dataType:'json',
                 async:false,
                 type:"post",
-                data:{'code':code,'expect':expect},
+                data:{'code':code,'expect':expect,'siteId':siteId,'payoutSource':2},
                 url:root+'/lotterySysTool/searchOpenCode.html',
                 success:function (data) {
 
