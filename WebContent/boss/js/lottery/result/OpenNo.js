@@ -94,6 +94,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             var type = $("#czType").val();
             var code = $("#czCode").val();
             var expect = $("#czExpect").val();
+            var openTime = $("#czOpenTime").val();
             var _e = {
                 currentTarget:$(opt.currentTarget),
                 page:page
@@ -148,7 +149,9 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                     'result.openCode': openCodes.join(","),
                     'result.code': code,
                     'result.expect': expect,
-                    'result.type': type
+                    'result.type': type,
+                    'result.openTime': openTime,
+
                 },
                 success: function(data) {
                     if(data.code==1){
