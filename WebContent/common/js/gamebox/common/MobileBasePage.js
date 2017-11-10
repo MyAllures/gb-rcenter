@@ -42,39 +42,7 @@ define(['moment'], function (moment) {
                 _this.resetScreen();
             });
             _this.goBack();
-
-            this.gotoDemo();
             this.iosBug();
-        },
-        /** 试玩 */
-        gotoDemo: function () {
-            var _this = this;
-            mui('body').on('tap', '.btn-try', function () {
-                layer.open({
-                    title: window.top.message.game_auto['提示'],
-                    content: window.top.message.game_auto['欢迎使用试玩模式'],
-                    btn: [window.top.message.game_auto['确定'], ''],
-                    yes: function (index) {
-                        layer.close(index);
-                        sessionStorage.is_login = true;
-                        if (_this.os === 'app_ios') {
-                            demoEnter();
-                        } else {
-                            mui.ajax('/signUp/createFreeAccount.html', {
-                                dataType: 'json',
-                                type: 'POST',
-                                success: function (data) {
-                                    if (data.status) {
-                                        var demoModel = data.demoModel;
-                                        sessionStorage.demoModel = demoModel;
-                                        _this.gotoUrl('/mainIndex.html');
-                                    }
-                                }
-                            })
-                        }
-                    }
-                })
-            });
         },
 
         /** 一些IOS上有的Bug */
