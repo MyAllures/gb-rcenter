@@ -55,16 +55,16 @@ define(['common/BaseListPage'], function (BaseListPage) {
 
             if(code){
                 $("#not-open-result-div").addClass("hide");
-                if(code=='hklhc'){
-                   // $("#query-time-div").addClass("hide");
+                if(code=='hklhc' || code=='tcpl3' || code=='fc3d'){
+                    $("#query-time-div").addClass("hide");
                 }else{
                     if($("[name='search.queryDate']").val()==""){
                         var date = this.setQueryDate(0);
                         $("[name='search.queryDate']").val(date);
                     }
-                    // $("#query-time-div").removeClass("hide");
+                     $("#query-time-div").removeClass("hide");
                 }
-                $("#query-time-div").removeClass("hide");
+                //$("#query-time-div").removeClass("hide");
                 $(".ssc-label").removeClass("ssc-active")
                 $("#lotteryCode").val(code);
                 $("#lotteryType").val(type);
