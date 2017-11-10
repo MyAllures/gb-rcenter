@@ -43,7 +43,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             data: {"state":true},
                             success: function (data) {
                                 if(!data.state){
-                                    alert(data.msg);
+                                    page.showPopover(event,option,"danger",data.msg,true);
                                 }
                             }
                         });
@@ -61,7 +61,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                                     data: {"state":false},
                                     success: function (data) {
                                         if(!data.state){
-                                            alert(data.msg);
+                                            page.showPopover(event,option,"danger",data.msg,true);
                                             return;
                                         }
                                         $(_target).attr("isChanged", true);
@@ -175,9 +175,10 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                         data: {"result.code":code,"result.date":date},
                         success: function (data) {
                             if(data.state){
-                                alert("更新成功!");
+                                page.showPopover(event,option,"success","更新成功!",true);
                             }else {
-                                alert(data.msg);
+                                page.showPopover(event,option,"danger",data.msg,true);
+
                             }
                             $(event.currentTarget).unlock();
                         }
