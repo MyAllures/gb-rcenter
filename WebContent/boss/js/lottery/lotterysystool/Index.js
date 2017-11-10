@@ -8,10 +8,8 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
          * this._super();
          * 调用
          */
-        _this:null,
         init: function () {
             this._super();
-            this._this = this;
         },
         /**
          * 当前对象事件初始化函数
@@ -107,6 +105,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             if(this.checkRevokeParam(formobj,event,option)){
                 return;
             }
+            var _this = this;
             var codename = $(formobj).find("span[prompt='prompt']").text();//彩种名称
             var expect = $(formobj).find("input[name='search.expect']").val();
             var siteId = $(formobj).find("input[name='search.siteId']").val();
@@ -131,6 +130,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             if(this.checkRevokeParam(formobj,event,option)){
                 return;
             }
+            var _this = this;
             var codename = $(formobj).find("span[prompt='prompt']").text();//彩种名称
             var expect = $(formobj).find("input[name='search.expect']").val();
             var siteId = $(formobj).find("input[name='search.siteId']").val();
