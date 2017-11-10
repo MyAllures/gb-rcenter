@@ -1,231 +1,145 @@
 /**
  * Created by fei on 17-6-19.
  */
-function closePage(page_0, page_1){
-    if (page_0) $('#' + page_0).hide();
-    if (page_1) $('#' + page_1).show();
+function closePage(){
+    $("#hongbao_detail .icon-close").parents('.hongbao_detail').fadeOut(1000);
+    $("#hongbao").removeClass('hide_hongbao');
+    $("#lotteryPages").show();
+    $(".tips").hide();
+    $(".hongbao_inner").removeClass("opened");
+    $(".hongbao-rule").hide();
 }
 
-/** 拆红包 */
-function lottery() {
+/*打开红包规则*/
+function openRule(){
+    $('.hongbao-rule').show();
+    /*自定义滚动条*/
+    $(".hongbao-rule .txt").niceScroll(".nice-wrapper", {
+        cursorwidth: "12px",
+        cursorcolor:"#c0111c",
+        cursorborder: "1px solid #d2aa48"
+    });
+}
+/*关闭红包规则*/
+function closeRule(){
+    $(".hongbao-rule").hide();
+}
+/*打开红包*/
+function lottery(){
+    var flag = $(".hongbao").hasClass("disabled");
+    if(flag){
+        return;
+    }
     $("#win_id").val("");
     $("#record_id").val("");
     $("#applyId").val("");
     var id = $("#activity_message_id").val();
-    var $lotteryPage = $('#lotteryPage');
-    var $btn1 = $('#lotteryPageBtn_1');
-    var $winId = $('#win_id');
-    var $recordId = $('#record_id');
     if(!id){
-        $("#lotteryPage").css({'background-image':'url('+fltRootPath+'themes/hb/images/noChance.png)'});
-        $("#tip-msg").html('红包活动已经结束!');
-        $("#lotteryPageBtn_1").hide();
-        $("#lottery_time_tip-msg").addClass("mui-hide");
+        $(".hongbao").removeClass('disabled');
+        $("#tip-msgs").html('红包活动已经结束!');
+        $(".hongbao-time-txt").hide();
+        $(".hongbao-time").hide();
         return;
     }
-
-    $btn1.attr('disabled', true);
-    
-    $lotteryPage.css({'background-image': 'url(' + resRoot + '/themes/hb/images/noChance.png)'});
-    $winId.val('');
-    $recordId.val('');
     var oldToken = $("[name='gb.token']").val();
     $("[name='gb.token']").val("");
-    $.ajax({
-        url: '/ntl/activity/getPacket.html',
-        type: 'POST',
-        dataType: 'json',
-        data:{"gb.token":oldToken,"activityMessageId":id},
-        success: function (data) {
-            var $lotteryPage = $('#lotteryPage');
-            var $tipMsg = $('#tip-msg');
-            var $nextTime = $('#next_lottery_time');
-            var $timeMsg = $('#lottery_time_tip-msg');
-            var $remainCount = $('#ramain-count');
-            var $noAwardBtn0 = $('#noAwardPageBtn_0');
-            var $noAwardBtn1 = $('#noAwardPageBtn_1');
-            var $rewardBtn0 = $('#rewardPageBtn_0');
-            var $apply = $('#applyId');
-            var $awardname = $('#awardname');
-            $("[name='gb.token']").val(data.token);
-            if (data.gameNum === -1) {
-                $lotteryPage.css({'background-image': 'url(' + resRoot + '/themes/hb/images/noChance.png)'});
-                $tipMsg.html(window.top.message.promo_auto['剩余抽奖次数'].replace('{0}', 0));
-                if(data.nextLotteryTime!=""){
-                    $nextTime.text(data.nextLotteryTime);
-                    $timeMsg.removeClass("mui-hide");
-                }else{
-                    $timeMsg.addClass("mui-hide");
-                }
 
-                $btn1.hide();
+    $.ajax({
+        url:"/ntl/activity/getPacket.html",
+        type: "POST",
+        dataType: "json",
+        data:{"gb.token":oldToken,"activityMessageId":id},
+        success: function(data){
+            $("[name='gb.token']").val(data.token);
+            console.log(data.nextLotteryTime);
+            console.log(data.gameNum);
+            console.log(data.award);
+            if(data.gameNum==-1){
+                $(".hongbao").addClass('disabled');
+                $("#tip-msgs").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">0</span>次抽奖机会');
+                if(data.nextLotteryTime!=""){
+                    $(".hongbao-time-txt").show();
+                    $(".hongbao-time").show();
+                    $(".hongbao-time").text(data.nextLotteryTime);
+                }else{
+                    $(".hongbao-time-txt").hide();
+                    $(".hongbao-time").hide();
+                }
+                $("#tip-msgs").show();
                 return;
             }
-            if (data.gameNum === -2) {
-                $tipMsg.html(window.top.message.promo_auto['抽奖出现异常']);
+            if(data.gameNum==-2){
+                $(".hongbao").addClass('disabled');
+                $("#tip-msgs").show();
+                $("#tip-msgs").html("抽奖出现异常<br/>请退出重新登录再继续操作");
+                $(".hongbao-time-txt").hide();
+                $(".hongbao-time").hide();
                 return;
             }
-            if (data.gameNum === -3) {
-                $lotteryPage.css({'background-image': 'url(' + resRoot + '/themes/hb/images/noChance.png)'});
-                $tipMsg.html(window.top.message.promo_auto['红包活动已经结束']);
-                $btn1.hide();
-                $timeMsg.addClass("mui-hide");
+            if(data.gameNum==-3){
+                $(".hongbao").addClass('disabled');
+                $("#tip-msgs").show();
+                $("#tip-msgs").html('红包活动已经结束!');
+                $(".hongbao-time-txt").hide();
+                $(".hongbao-time").hide();
                 return;
             }
             if(data.gameNum==-4){
-                $("#lotteryPage").css({'background-image':'url('+resRoot+'/themes/hb/images/noChance.png)'});
-                $("#tip-msg").html('条件不满足，不能参与红包活动!');
-                $("#lotteryPageBtn_1").hide();
-                $("#lottery_time_tip-msg").addClass("mui-hide");
+                $(".hongbao").addClass('disabled');
+                $("#tip-msgs").show();
+                $("#tip-msgs").html('条件不满足，不能参与红包活动!');
+                $(".hongbao-time-txt").hide();
+                $(".hongbao-time").hide();
                 return;
             }
             if(data.gameNum==-5){
-                $("#lotteryPage").css({'background-image':'url('+resRoot+'/themes/hb/images/noChance.png)'});
-                $("#tip-msg").html('本次红包已经抢光了');
+                $(".hongbao").addClass("disabled");
+                $("#tip-msgs").show();
+                $("#tip-msgs").html('本次红包已经抢光了');
                 if(data.nextLotteryTime!=""){
-                    $("#next_lottery_time").text(data.nextLotteryTime);
-                    $("#lottery_time_tip-msg").removeClass("mui-hide");
+                    $(".hongbao-time-txt").show();
+                    $(".hongbao-time").show();
+                    $(".hongbao-time").text(data.nextLotteryTime);
                 }else{
-                    $("#lottery_time_tip-msg").addClass("mui-hide");
+                    $(".hongbao-time-txt").hide();
+                    $(".hongbao-time").hide();
                 }
-                $("#lotteryPageBtn_1").hide();
-                $("#lottery_time_tip-msg").removeClass("mui-hide");
                 return;
             }
-            if (data.award === 0) {
-                $remainCount.text(data.gameNum);
-                closePage('lotteryPage', 'noAwardPage');
-            } else {
-                $winId.val(data.id);
-                $recordId.val(data.recordId);
-                $apply.val(data.applyId);
-                var msg = ""+window.top.message.promo_auto['获得奖励']+"";
-                msg = msg.replace('{0}', data.award);
-                $awardname.html(msg);
-                $tipMsg.html(window.top.message.promo_auto['剩余抽奖次数'].replace('{0}', data.gameNum));
-                closePage('lotteryPage', 'haveAwardPage');
+            if(data.award==0){
+                $(".icon-open").parents(".hongbao_inner").addClass('opened');
+                $("#lotteryPages").hide();
+                $(".lose-hongbao").show();
+                $("#ramain-count").text(data.gameNum);
+            }else {
+                $(".icon-open").parents(".hongbao_inner").addClass('opened');
+                $("#lotteryPages").hide();
+                $(".win-hongbao.tips").show();
+                $("#win_id").val(data.id);
+                $("#record_id").val(data.recordId);
+                $("#applyId").val(data.applyId);
+                $(".win-hongbao　.ttxt-2").html('获得了'+data.award+'元');
+                $("#ramain-count").text(data.gameNum);
             }
-            console.log(data.gameNum);
-
-            if (data.gameNum === 0) {
-                $lotteryPage.css({'background-image': 'url(' + resRoot + '/themes/hb/images/noChance.png)'});
-                $btn1.hide();
+            if(data.gameNum==0){
+                $(".hongbao").addClass('disabled');
                 if(data.nextLotteryTime!=""){
-                    $nextTime.text(data.nextLotteryTime);
-                    $timeMsg.removeClass("mui-hide");
+                    $(".hongbao-time-txt").show();
+                    $(".hongbao-time").show();
+                    $(".hongbao-time").text(data.nextLotteryTime);
                 }else{
-                    $timeMsg.addClass("mui-hide");
+                    $(".hongbao-time-txt").hide();
+                    $(".hongbao-time").hide();
                 }
-
-                $noAwardBtn0.click(function () {
-                    closePage('noAwardPage', 'lotteryPage');
-                    $lotteryPage.css({'background-image': 'url(' + resRoot + '/themes/hb/images/noChance.png)'});
-                });
-                $noAwardBtn1.click(function () {
-                    closePage('noAwardPage', 'lotteryPage');
-                    $lotteryPage.css({'background-image': 'url(' + resRoot + '/themes/hb/images/noChance.png)'});
-                });
-                $rewardBtn0.click(function () {
-                    closePage('rewardPage', 'lotteryPage');
-                    $lotteryPage.css({'background-image': 'url(' + resRoot + '/themes/hb/images/noChance.png)'});
-                });
-                closePage('lotteryPage', '');
                 return;
-            } else {
-                $noAwardBtn0.on('tab', function () {
-                    onceAgain();
-                });
-                $noAwardBtn1.on('tab', function () {
-                    onceAgain();
-                });
-                $rewardBtn0.on('tab', function () {
-                    onceAgain();
-                });
-            }
-            closePage('lotteryPage', '');
-        }
-    });
-}
+            }else{
 
-function showExplain() {
-    $('#explainContent').html(explainContent);
-    $('#explainPage').show();
-    closePage('lotteryPage', '');
-}
-
-function applyMoneyActivity(searchId, isRefresh) {
-    var code = 'money';
-    var win_id = $('#win_id').val();
-    var applyId = $("#applyId").val();
-    $.ajax({
-        url: '/ntl/activity/applyActivities.html',
-        type: 'POST',
-        dataType: 'json',
-        data: {
-            code: code,
-            resultId: searchId,
-            winId: win_id,
-            "applyId":applyId
-        },
-        success: function (data) {
-            if (data.state) {
-                closePage('haveAwardPage', 'rewardPage');
-            } else {
-                closePage('haveAwardPage', '');
-                closePage('lotteryPage', '');
-                $('#containerOut').css('display', 'none');
-                showWin(data, isRefresh);
-            }
-        }
-    })
-}
-
-function applyMoney() {
-    $.ajax({
-        url: '/ntl/activity/isNeedApply.html',
-        type: 'POST',
-        dataType: 'json',
-        success: function (data) {
-            if (!data) return;
-            if (data.isNull) return;
-            //需要申请
-            if (data.state) {
-                applyMoneyActivity(data.resultId, true);
-            } else {
-                rewardFn();
             }
         }
     });
 }
-
-function rewardFn() {
-    var winId = $('#win_id').val();
-    var recordId = $('#record_id').val();
-    var applyId = $("#applyId").val();
-    if (winId === '' || recordId === ''||applyId==='') {
-        console.log('参数不全');
-        return;
-    }
-    var dataParam = {'winId': winId, 'recordId': recordId,"applyId":applyId};
-    $.ajax({
-        url: '/ntl/activity/getReward.html',
-        type: 'POST',
-        dataType: 'json',
-        data: dataParam,
-        success: function (data) {
-            if (data.state) {
-                closePage('haveAwardPage', 'rewardPage');
-            } else {
-                console.log('领取红包失败');
-            }
-        }
-    })
-}
-
-function onceAgain() {
-    $('#lotteryPageBtn_1').removeAttr('disabled');
-    $('#lotteryPage').css({'background-image': 'url(' + resRoot + '/themes/hb/images/lottery.png)'});
-    closePage('rewardPage', '');
-    closePage('haveAwardPage', '');
-    closePage('noAwardPage', 'lotteryPage');
+function onceAgain(){
+    $(".hongbao_inner").removeClass("opened");
+    $("#lotteryPages").show();
+    $(".tips").hide();
 }

@@ -67,15 +67,15 @@
         <#list data.floatPicsInIndex as pic>
             <#if pic.location == "left">
                 <#if pic.interactivity=="scroll_with_page">
-                if($("[data-fp='${pic.id}']").length>0){
+                    if($("[data-fp='${pic.id}']").length>0){
                     $("[data-fp='${pic.id}']").Float({ <#if pic.distanceTop??>topSide: ${pic.distanceTop?string.computer}<#else>topSide:150</#if>, floatRight: 0,<#if pic.distanceSide??>side: ${pic.distanceSide?string.computer}<#else >side:0</#if>, close: 'aside-float' });
-                }
+                    }
                 </#if>
             </#if>
             <#if pic.location == "right">
                 <#if pic.interactivity=="scroll_with_page">
                     if($("[data-fp='${pic.id}']").length>0){
-                        $("[data-fp='${pic.id}']").Float({ <#if pic.distanceTop??>topSide: ${pic.distanceTop?string.computer}<#else>topSide:150</#if>, floatRight: 1,<#if pic.distanceSide??>side: ${pic.distanceSide?string.computer}<#else >side:0</#if>, close: 'aside-float' });
+                    $("[data-fp='${pic.id}']").Float({ <#if pic.distanceTop??>topSide: ${pic.distanceTop?string.computer}<#else>topSide:150</#if>, floatRight: 1,<#if pic.distanceSide??>side: ${pic.distanceSide?string.computer}<#else >side:0</#if>, close: 'aside-float' });
                     }
                 </#if>
             </#if>
@@ -1650,67 +1650,73 @@
     }
 
     function canShowLottery(id){
-        var timezone = sessionStorage.getItem("timezone");
-        var tiz = transTimeZone(timezone);
-        $("#money_lottery_timezone").html(tiz);
+        if(sessionStorage.is_login!="true"){
+            loginObj.getLoginPopup();
+            return;
+        }
+        if (!id){
+            $(".hongbao").removeClass('disabled');
+            $("#tip-msgs").html('红包活动已经结束!');
+            $(".hongbao-time-txt").hide();
+            $(".hongbao-time").hide();
+            return;
+        }
+        $("#hongbao").addClass('hide_hongbao');
+        $("#hongbao_detail").fadeIn(1000);
         $.ajax({
             url:"/ntl/activity/countDrawTimes.html",
             type: "POST",
             dataType: "json",
             data:{activityMessageId:id},
             success: function(data){
+                console.log(data.nextLotteryTime);
+                console.log(data.drawTimes);
                 if(data.drawTimes&&data.drawTimes>0){
-                    $("#tip-msg").removeClass("hide");
-                    $("#lottery_time_tip-msg").addClass("hide");
-                    $("#tip-msg").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">'+data.drawTimes+'</span>次抽奖机会');
-                    $("#containerOut").css("display","block");
-                    $("#lotteryPageBtn_1").removeAttr("disabled");
-                    $("#lotteryPageBtn_1").show();
-                    $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/lottery_pc.png)'});
-                    $("#lottery_time_tip-msg").addClass("hide");
+                    $(".hongbao").removeClass('disabled');
+                    $("#tip-msgs").show();
+                    $("#tip-msgs").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">'+data.drawTimes+'</span>次抽奖机会');
+                    $(".hongbao-time-txt").hide();
+                    $(".hongbao-time").hide();
                 }else if(data.drawTimes==0){
                     if(data.isEnd=="false"){
-                        $("#tip-msg").removeClass("hide");
-                        $("#tip-msg").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">0</span>次抽奖机会');
+                        $(".hongbao").addClass('disabled');
+                        $("#tip-msgs").show();
+                        $("#tip-msgs").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">0</span>次抽奖机会');
                         $("#ramain-count").text(data.drawTimes);
-                        $("#containerOut").css("display","block");
-                        $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
-                        $("#lotteryPageBtn_1").hide();
                     }else{
-                        $("#tip-msg").addClass("hide");
-                        $("#containerOut").css("display","block");
-                        $("#lotteryPage").css
-                        ({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
-                        $("#lotteryPageBtn_1").hide();
+                        $(".hongbao").addClass('disabled');
+                        $(".icon-open").show();
+                        $("#tip-msgs").html('红包活动已经结束!');
+                        $("#btn-rule").show();
                     }
                     if(data.nextLotteryTime!=""){
-                        $("#next_lottery_time").text(data.nextLotteryTime);
-                        $("#lottery_time_tip-msg").removeClass("hide");
+                        $(".hongbao-time-txt").show();
+                        $(".hongbao-time").show();
+                        $(".hongbao-time").text(data.nextLotteryTime);
                     }else{
-                        $("#lottery_time_tip-msg").addClass("hide");
+                        $(".hongbao-time-txt").hide();
+                        $(".hongbao-time").hide();
                     }
 
                 }else if(data.drawTimes==-1){
-                    $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
-                    $("#tip-msg").html('红包活动已经结束!');
-                    $("#tip-msg").removeClass("hide");
-                    $("#lotteryPageBtn_1").hide();
-                    $("#lottery_time_tip-msg").addClass("hide");
-                    $("#containerOut").css("display","block");
+                    $(".hongbao").addClass('disabled');
+                    $("#tip-msgs").show();
+                    $("#tip-msgs").html('红包活动已经结束!');
+                    $(".hongbao-time-txt").hide();
+                    $(".hongbao-time").hide();
                     return;
                 }else if(data.drawTimes==-5){
-                    $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
-                    $("#tip-msg").html('本次红包已经抢光了');
-                    $("#tip-msg").removeClass("hide");
+                    $(".hongbao").addClass('disabled');
+                    $("#tip-msgs").show();
+                    $("#tip-msgs").html('本次红包已经抢光了');
                     if(data.nextLotteryTime!=""){
-                        $("#next_lottery_time").text(data.nextLotteryTime);
-                        $("#lottery_time_tip-msg").removeClass("hide");
+                        $(".hongbao-time-txt").show();
+                        $(".hongbao-time").show();
+                        $(".hongbao-time").text(data.nextLotteryTime);
                     }else{
-                        $("#lottery_time_tip-msg").addClass("hide");
+                        $(".hongbao-time-txt").hide();
+                        $(".hongbao-time").hide();
                     }
-                    $("#lotteryPageBtn_1").hide();
-                    $("#lottery_time_tip-msg").removeClass("hide");
-                    $("#containerOut").css("display","block");
                     return;
                 }
                 //setDivCss();
