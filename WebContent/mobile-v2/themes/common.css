@@ -1591,7 +1591,7 @@ body.has-srchbar .electronic-srch{
 }
 .gb-headtabs{
     margin: 11px auto;
-    width: 160px;
+    width: 60%;
     background-color: #fff;
 }
 .gb-headtabs.span3{
@@ -5084,7 +5084,7 @@ div.setting {
 .d-none {display: none;}
 .d-none.mui-active{display: block;}
 .pro-selec{background-color: #efefef;}
-
+.gb-bankcard>.ct>p>span{word-wrap: break-word;}
 /* 2017-10-28 */
 .mui-bar-nav .user .btn{padding: 4px 8px;}
 .mui-bar-nav .user .btn.btn-shiwan{background: #00a0e9;}

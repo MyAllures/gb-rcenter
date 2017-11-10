@@ -441,9 +441,7 @@ color: #6b88fe;
 .help-center .fqa{ margin: 12px 0 ;}
 .help-center .fqa dt{height: 40px;line-height: 40px;background-color: #fff;margin-bottom: 12px;}
 .help-center .fqa dt span{display: inline-block;padding-left: 6px; height: 21px;line-height: 21px;font-size: 12px;color: #445dc2;border-left: 4px solid #445dc2;  margin-top:10px; }
-.help-center .fqa dd{margin: 0;padding: 0 10px;    overflow: hidden;    -webkit-transition-duration:0ms;
-    -o-transition-duration: 0ms;
-    transition-duration: 0ms;height:auto;}
+.help-center .fqa dd{margin: 0;padding: 0 10px; overflow: hidden; -webkit-transition-duration:0ms; -o-transition-duration: 0ms; transition-duration: 0ms;height:auto;}
 .help-center .fqa dd p{color: #333;font-size: 12px;line-height: 17px;margin-bottom: 17px;}
 .help-center .fqa .mui-content{display: none;}
 /* 电子中转页 */
@@ -454,7 +452,7 @@ color: #6b88fe;
 .e-transfer .game-description p{color: #adaeb5;font-size: 12px;line-height: 18px;}
 .e-transfer .unlogin-status a{font-size: 12px;color: #999ba4;}
 /* game-page */
-.game-page .game-type{height: 76px;background: #3e445e;border-bottom: 1px solid #4d5677;padding: 13px 10px 0;    line-height: 38px;}
+.game-page .game-type{height: 76px;background: #3e445e;border-bottom: 1px solid #4d5677;padding: 13px 10px 0; line-height: 38px;}
 .game-page  .btn-back-index{margin: 12px 0 0 0;width: 82px;height: 26px;line-height: 26px;font-size: 12px;padding: 0;background: transparent;color: #fff;border-color: #4d5677;}
 .game-page .game-select select{height: 40px;padding: 8px;text-align: center;line-height: 16px;margin: 0;background: #3e445e;font-size: 12px;color: #fbfbfc;border-radius: 4px;border: 1px solid #4d5677 !important;}
 .game-page  .search-wrap{margin: 10px 10px 0 10px;border-radius: 4px;border: 1px solid #4d5677;padding: 10px 40px 10px 10px;height: 40px;position: relative;background: #3e445e;color: #fff;}
@@ -463,19 +461,23 @@ color: #6b88fe;
 .search-collapse .mui-collapse .toggle-btn{position: absolute;right: 150px;top: -38px;color: #fff;width: auto;}
 .index .game-name .name{font-size: 14px;color: #fff;}
 .game-page .game-select:before{content: '\e581';pointer-events: none;font-family: Muiicons;font-weight: normal;font-style: normal;line-height: 1;display: inline-block;text-decoration: none;-webkit-font-smoothing: antialiased;position: absolute;right: 25px;top: 20px;font-size: 20px;color: #fff;}
-.game-page  .search-wrap .mui-icon-search{    font-size: 20px; color: #fff; right: 10px; position: absolute; width: 24px; height: 24px; text-align: center; line-height: 24px; top: 8px;}
-.game-page  .search-wrap input{padding: 0;margin: 0;vertical-align: top;width: 100%;height: 20px;line-height: 20px;background: transparent;border: 0;color: #fff;font-size: 12px;}
-.game-page  .search-wrap input::-webkit-input-placeholder{color: #fff;}
+.game-page .search-wrap .mui-icon-search{font-size: 20px; color: #fff; right: 10px; position: absolute; width: 24px; height: 24px; text-align: center; line-height: 24px; top: 8px;}
+.game-page .search-wrap input{padding: 0;margin: 0;vertical-align: top;width: 100%;height: 20px;line-height: 20px;background: transparent;border: 0;color: #fff;font-size: 12px;}
+.game-page .search-wrap input::-webkit-input-placeholder{color: #fff;}
 .v-tip span {}
 .activity-content-bg{background-color: #32374f !important;}
 /*h5优惠页面*/
 .activity-content-bg.mui-content .gb-imgs h4{background-color: #4d87c5;color:#fff;padding: 5px 5px;border-radius: 5px;display: inline-block;}
-.activity-content-bg.mui-content .gb-imgs .table{width:100%;}
-.activity-content-bg.mui-content .gb-imgs .table th{color: #4d87c5;}
-.activity-content-bg.mui-content .gb-imgs .table td{color:#ffffff}
-.activity-content-bg.mui-content .gb-imgs .table th,
-.activity-content-bg.mui-content .gb-imgs .table td{border:1px solid #487cb5;text-align:center;padding:6px 10px;font-size:13px}
-.activity-content-bg.mui-content .gb-imgs ol{padding-left: 20px}
+.activity-content-bg.mui-content .gb-imgs table{width:100%;}
+.activity-content-bg.mui-content .gb-imgs table th{color:#4d87c5;}
+.activity-content-bg.mui-content .gb-imgs table td{color:#ffffff;}
+.activity-content-bg.mui-content .gb-imgs table th,
+.activity-content-bg.mui-content .gb-imgs table td{border:1px solid #487cb5!important;text-align:center;padding:6px 10px;font-size:13px;}
+.activity-content-bg.mui-content .gb-imgs ol{padding-left: 20px;}
 .activity-content-bg.mui-content .gb-imgs ol li{list-style: decimal; color:#8f8f94;}
+.activity-content-bg.mui-content .gb-imgs .ct p,.activity-content-bg.mui-content .gb-imgs .ct p span{color: #dedede!important;}
+.activity-content-bg.mui-content .agent-text p span{color:#fff!important;}
+.activity-content-bg.mui-content .agent-text table td{border:1px solid #487cb5!important;}
+
 .mui-title {color: #fff;}
 .mui-bar-nav a {color: #fff;}

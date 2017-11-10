@@ -52,7 +52,7 @@ define(['gb/components/PopUp'], function (PopUp) {
             btnOption.target = root + "/agentGameAnnouncement/announcementPopup.html?search.id=" + id;
             btnOption.text = window.top.message.index_auto['公告'];
             btnOption.callback = function (e, opt) {
-                if(e.returnValue&&e.returnValue.isDetail){
+                if(e.returnValue && e.returnValue.isDetail){
                     if(e.returnValue.apiId!=""){
                         $("#mainFrame").load(root + "/agentGameAnnouncement/agentMessageDetail.html?search.id=" + e.messageId);
                     }else{
