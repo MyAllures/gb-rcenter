@@ -26,8 +26,8 @@
 
 	var panelBuffer = '<div class="mui-poppicker">\
 		<div class="mui-poppicker-header">\
-			<button class="mui-btn mui-poppicker-btn-cancel">' + window.top.message.common_auto['取消'] + '</button>\
-			<button class="mui-btn mui-btn-blue mui-poppicker-btn-ok">' + window.top.message.common_auto['确定'] + '</button>\
+			<button class="mui-btn mui-poppicker-btn-cancel">取消</button>\
+			<button class="mui-btn mui-btn-blue mui-poppicker-btn-ok">确定</button>\
 			<div class="mui-poppicker-clear"></div>\
 		</div>\
 		<div class="mui-poppicker-body">\
@@ -49,7 +49,7 @@
 		init: function(options) {
 			var self = this;
 			self.options = options || {};
-			self.options.buttons = self.options.buttons || [window.top.message.common_auto['取消'], window.top.message.common_auto['确定']];
+			self.options.buttons = self.options.buttons || ['取消', '确定'];
 			self.panel = $.dom(panelBuffer)[0];
 			document.body.appendChild(self.panel);
 			self.ok = self.panel.querySelector('.mui-poppicker-btn-ok');
@@ -112,9 +112,11 @@
 		getSelectedItems: function() {
 			var self = this;
 			var items = [];
-			for (var i in self.pickers) {
-				var picker = self.pickers[i];
-				items.push(picker.getSelectedItem() || {});
+			for (var i in self.pickers) {    
+				if(self.pickers.hasOwnProperty(i)) { // 修复for in会访问继承属性造成items报错情况
+					var picker = self.pickers[i];
+					items.push(picker.getSelectedItem() || {});
+				}
 			}
 			return items;
 		},
@@ -149,7 +151,7 @@
 				for (var name in self) {
 					self[name] = null;
 					delete self[name];
-				}
+				};
 				self.disposed = true;
 			}, 300);
 		}
