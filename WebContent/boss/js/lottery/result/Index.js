@@ -303,5 +303,32 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 }
             });
         },
+        checkOpenTime:function (e,opt) {
+            // var _e = {
+            //     currentTarget:$(opt.currentTarget),
+            //     page:page
+            // };
+            // var option = {};
+            var openTime = $("#czOpenTime").val();
+            var flag = false;
+            window.top.topPage.ajax({
+                url: root + "/lotteryResult/checkOpenTime.html",
+                dataType: "json",
+                async:false,
+                data: {
+                    'result.openTime': openTime,
+                },
+                success: function(data) {
+                    if(data.code==1){
+                        // e.page.showPopover(e,opt, 'success', data.msg, true);
+                        flag = true;
+                    }else{
+                        e.page.showPopover(e,opt, 'danger', data.msg, true);
+                        flag = false;
+                    }
+                }
+            });
+            return flag;
+        }
     });
 });
