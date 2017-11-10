@@ -76,8 +76,8 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             });
             //确认投注
             mui("body").off('tap','#confirmOrder').on("tap", "#confirmOrder", function () {
-                var betForm = _this.getBetOrder();
-                _this.confirmOrder(betForm);
+
+                _this.confirmOrder(_this.betForm);
             });
 
             mui("body").off('tap','a').on('tap', 'a', function () {

@@ -64,7 +64,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             //确认投注
             mui("body").off('tap','#confirmOrder').on("tap", "#confirmOrder", function () {
                 // var betForm = _this.getBetOrder();
-
                 _this.confirmOrder(_this.betForm);
             });
 
@@ -663,13 +662,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 });
                 betForm.totalMoney = betForm.totalMoney + betAmount;
                 betForm.quantity = betForm.quantity + 1;
-            });
-            return betForm;
-        },
-        getNewBetOrder: function () {
-            var betForm = this.getBetOrder();
-            $.each(betForm.betOrders,function(index,value){
-
             });
             return betForm;
         },
