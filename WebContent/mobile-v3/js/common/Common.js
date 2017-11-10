@@ -41,7 +41,6 @@ function muiInit(options) {
             }
         }
     }
-
     //默认处理mui ajax错误
     muiAjaxError();
 }
@@ -124,9 +123,9 @@ function muiAjax(options) {
     }
     //是否出现加载中样式
     if (options.loading) {
-       loading();
+        showLoading();
         var complete = options.complete;
-        options.complete = function() {
+        options.complete = function () {
             hideLoading();
             complete();
         }
@@ -147,8 +146,27 @@ function muiAjax(options) {
 /**
  * 请求加载loading
  */
-function loading() {
+function showLoading() {
 
+}
+
+/**
+ * 判断终端
+ * @returns {*}
+ */
+function whatOs() {
+    var ua = navigator.userAgent;
+    if (/(app_ios)/i.test(ua)) {
+        return 'app_ios';
+    } else if (/(iPhone|iPad|iPod|iOS)/i.test(ua)) {
+        return 'ios';
+    } else if (/(app_android)/i.test(ua)) {
+        return 'app_android';
+    } else if (/(android)/i.test(ua)) {
+        return 'android';
+    } else {
+        return 'pc';
+    }
 }
 
 /**
@@ -156,4 +174,31 @@ function loading() {
  */
 function hideLoading() {
 
+}
+
+/**
+ * 统一请求跳转页面
+ * @param url
+ */
+function goToUrl(url) {
+    //终端标识，以判断ｕrl走什么入口
+    var os = whatOs();
+    if (url.indexOf("?") < 0) {
+        url = url + "?v=" + rcVersion;
+    } else {
+        url = url + "&v=" + rcVersion;
+    }
+    mui.openWindow({
+        url: url,
+        id: url,
+        extras: {},
+        createNew: false,
+        show: {autoShow: true},
+        waiting: {
+            autoShow: true,
+            title: '正在加载...',
+            loading: _this.showLoading,
+            close: _this.hideLoading
+        }
+    })
 }
