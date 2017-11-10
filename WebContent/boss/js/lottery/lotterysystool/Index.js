@@ -43,7 +43,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             data: {"state":true},
                             success: function (data) {
                                 if(!data.state){
-                                    alert(data.msg);
+                                    page.showPopover(event,option,"danger",data.msg,true);
                                 }
                             }
                         });
@@ -61,7 +61,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                                     data: {"state":false},
                                     success: function (data) {
                                         if(!data.state){
-                                            alert(data.msg);
+                                            page.showPopover(event,option,"danger",data.msg,true);
                                             return;
                                         }
                                         $(_target).attr("isChanged", true);
@@ -148,7 +148,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var date = form.find("input").val();
             var code = null;
             var codeName = form.find("span[prompt='prompt']").text();//彩种名称
-            var context = "您将采集 "+codeName + " "+date+"的所有已开奖号码";
+            var context = "您将采集 "+codeName + ", "+date+"的所有已开奖号码";
 
             $("#lotteryList li a").each(function(i){
                 if($(this).text()==codeName){
@@ -161,10 +161,16 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 if (confirm) {
 
                     window.top.topPage.ajax({
-                        url: root + '/lotterySysTool/gatherOpenCode.html',
+                        url: root + '/lotterySysTool/collectOpenCode.html',
                         dataType: "json",
-                        data: {"code":code,"date":date},
+                        data: {"result.code":code,"result.date":date},
                         success: function (data) {
+                            if(data.state){
+                                page.showPopover(event,option,"success","更新成功!",true);
+                            }else {
+                                page.showPopover(event,option,"danger",data.msg,true);
+
+                            }
                             $(event.currentTarget).unlock();
                         }
                     });
@@ -254,7 +260,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 dataType:'json',
                 async:false,
                 type:"post",
-                data:{'code':code,'expect':expect},
+                data:{'code':code,'expect':expect,'siteId':siteId,'payoutSource':2},
                 url:root+'/lotterySysTool/searchOpenCode.html',
                 success:function (data) {
 

@@ -90,35 +90,67 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
         },
         saveOpenCode:function (opt) {
             var _this = this;
-            var openCode = "";
+            var openCodes = new Array();
             var type = $("#czType").val();
             var code = $("#czCode").val();
             var expect = $("#czExpect").val();
-            var openTime = $("#czOpenTime").val();
-            $("input.m-xs").each(function(index,value){
-                openCode += $(this).val()+",";
-            });
             var _e = {
                 currentTarget:$(opt.currentTarget),
                 page:page
             };
+            var checkFlag = false;
+            $("input.m-xs").each(function(index,value){
+                var maxLength = parseInt($(this).attr("maxlength"));
+                var min = parseInt($(this).attr("min"));
+                var max = parseInt($(this).attr("max"));
+                var numStr = $(this).val();
+                var num = parseInt(numStr);
+                if( numStr == undefined || numStr == ''){
+                    _e.page.showPopover(_e, {}, 'danger', '开奖号码不能为空', true);
+                    checkFlag = true;
+                    return false;
+                }if(isNaN(num)){
+                    _e.page.showPopover(_e, {}, 'danger', '开奖号码有误', true);
+                    checkFlag = true;
+                    return false;
+                }
+                if(numStr.length != maxLength){
+                    _e.page.showPopover(_e, {}, 'danger', '开奖号码有误', true);
+                    checkFlag = true;
+                    return false;
+                }if(num < min || num > max){
+                    _e.page.showPopover(_e, {}, 'danger', '开奖号码有误', true);
+                    checkFlag = true;
+                    return false;
+                }
+                openCodes.push(numStr)
+            });
+            if(checkFlag){
+                return;
+            }
+            if(code == 'hklhc' || code == 'cqxync' || code == 'gdkl10' || code == 'xyft' || code == 'bjkl8' || code == 'bjpk10' || code == 'jspk10'){
+                for(var i = 0; i < openCodes.length; i++){
+                    for(var j = i+1; j < openCodes.length; j++) {
+                        if(openCodes[i] == openCodes[j]){
+                            _e.page.showPopover(_e, {}, 'danger', '开奖号码不能重复', true);
+                            return;
+                        }
+                    }
+                }
+            }
             var option = {};
-            openCode=openCode.substring(0,openCode.length-1)
             //window.top.topPage.ajax
             //ajaxRequest
             window.top.topPage.ajax({
                 url: root + "/lotteryResult/saveOpenno.html",
                 dataType: "json",
                 data: {
-                    'result.openCode': openCode,
+                    'result.openCode': openCodes.join(","),
                     'result.code': code,
                     'result.expect': expect,
-                    'result.type': type,
-                    'result.openTime': openTime,
-
+                    'result.type': type
                 },
                 success: function(data) {
-
                     if(data.code==1){
                         _e.page.showPopover(_e, option, 'success', data.msg, true);
                          _this.closePage()
@@ -127,6 +159,6 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                     }
                 }
             });
-        },
+        }
     });
 });
