@@ -3,7 +3,7 @@
   height: 110px;
   position: fixed;
   right: 0;
-  bottom: 50px;
+  bottom: 85px;
   z-index: 2001;
   cursor: pointer;
   margin: 0;
@@ -46,38 +46,38 @@
 .hongbao-wrap .hb_type_1:hover .extra {
   background-image: url(images/hongbao/hongbao_type1_hover.png) 0 0/100%;
 }
-.hongbao-wrap .hb_type_2 .extra {
+.hongbao-wrap .hb_type_3 .extra {
   background: url(images/hongbao/hongbao_type2.png) 0 0/100%;
   width: 71.4px;
   height: 66.85px;
   top: 29.4px;
   left: 23.1px;
 }
-.hongbao-wrap .hb_type_2 .img {
+.hongbao-wrap .hb_type_3 .img {
   background: url(images/hongbao/hongbao_extra2_hover.png) 0 0/100%;
   width: 117.6px;
   height: 74.9px;
   top: 22.4px;
   left: 0;
 }
-.hongbao-wrap .hb_type_2:hover .extra {
+.hongbao-wrap .hb_type_3:hover .extra {
   background-image: url(images/hongbao/hongbao_type2_hover.png) 0 0/100%;
 }
-.hongbao-wrap .hb_type_3 .extra {
+.hongbao-wrap .hb_type_2 .extra {
   background: url(images/hongbao/hongbao_type3.png) 0 0/100%;
   width: 75.25px;
   height: 99.4px;
   top: 7.7px;
   left: 20.3px;
 }
-.hongbao-wrap .hb_type_3 .img {
+.hongbao-wrap .hb_type_2 .img {
   background: url(images/hongbao/hongbao_extra3_hover.png) 0 0/100%;
   width: 93.1px;
   height: 58.8px;
   top: 0;
   left: 5.6px;
 }
-.hongbao-wrap .hb_type_3:hover .extra {
+.hongbao-wrap .hb_type_2:hover .extra {
   background-image: url(images/hongbao/hongbao_type3_hover.png) 0 0/100%;
 }
 .hongbao-wrap.hide_hongbao {

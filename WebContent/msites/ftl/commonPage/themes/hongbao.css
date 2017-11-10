@@ -219,7 +219,6 @@
   font-size: 16px;
   color: #f7dc8b;
   text-align: center;
-  margin-top: 221px;
 }
 .hongbao_detail .hongbao_inner .hongbao .hongbao-time {
   font-size: 17px;
@@ -229,7 +228,7 @@
 }
 .hongbao_detail .hongbao_inner .hongbao .btn-rule {
   display: block;
-  margin: 34px auto 0;
+  margin: 17px auto 0;
   background: url(images/hongbao/icon-hongbao-rule.png);
   width: 200px;
   height: 63px;
@@ -305,9 +304,6 @@
   background: url(images/hongbao/opened_hongbao_bg.png);
   height: 501px;
 }
-.hongbao_detail .hongbao_inner.opened .btn-rule {
-  margin: 359px auto 0;
-}
 .hongbao_detail .hongbao_inner.opened .caidai {
   opacity: 0;
   -webkit-animation: scaleIn 1s 1s forwards;
@@ -328,5 +324,17 @@
   left: 50%;
   margin-left: -297px;
 }
+.hongbao_detail .hongbao_inner.opened .btn-ok {
+  background: url(images/hongbao/icon-close-rule.png);
+  width: 129px;
+  height: 55px;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  margin-left: -64px;
+  z-index: 3;
+}
+.hongbao_detail .hongbao_inner.opened .btn-ok:hover {
+  background-image: url(images/hongbao/icon-close-rule-hover.png);
+}
 
-/*# sourceMappingURL=hongbao.css.map */
