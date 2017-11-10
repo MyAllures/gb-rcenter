@@ -1,4 +1,4 @@
-define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay, Template) {
 
     return PlayWay.extend({
         _this: null,
@@ -15,14 +15,14 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
 
         showTable : function(){
 
-            $("a[data-code='R4']").addClass("mui-active");
+            $("a[data-code='R3']").addClass("mui-active");
             $("div.s-menu.second").hide();
-            $("#R4").show();
-            $("span.x_1.gfwf-tit").text("任选四");
-            $(".s-title.title1 span").text("任选四");
-            $(".s-title.title2 span").text("组选4");
-            $(".x_3.gfwf-playName").text("组选4");
-            $("a[data-code='ssc_renxuan4_zx4']").addClass("mui-active");
+            $("#R3").show();
+            $("span.x_1.gfwf-tit").text("任选三");
+            $(".s-title.title1 span").text("任选三");
+            $(".s-title.title2 span").text("组六复式");
+            $(".x_3.gfwf-playName").text("组六复式");
+            $("a[data-code='ssc_renxuan3_z6fs']").addClass("mui-active");
 
         },
 
@@ -30,79 +30,68 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
         /**
          * 注数-任选二 / 时时彩与11选5共用注数方法
          */
-        zhushu_ssc_renxuan4_zx4 :function(){
+        zhushu_ssc_renxuan3_z6fs :function(){
 
-            var sanChongHaoArr = [], danHaoArr = [], tempArr = [], nowArr = [];
+            var fuShiArr = [], newArr = [];
             $.each($("a.n-btn.mui-active"), function (index, value) {
-                sanChongHaoArr.push($.trim($(this).html()));
+                fuShiArr.push($.trim($(this).html()));
             });
-            $.each($("a.n-btn.mui-active"), function (index, value) {
-                danHaoArr.push($.trim($(this).html()));
-            });
-            for (var d = 0; d < sanChongHaoArr.length; d++) {
-                for (var n = 0; n < danHaoArr.length; n++) {
-                    if (sanChongHaoArr[d] != danHaoArr[n]) {
-                        tempArr.push(sanChongHaoArr[d] + "" + danHaoArr[n]);
-                    }
-                }
-            }
-            if (tempArr.length < 1) {
+            var zlLength = fuShiArr.length;
+            if (zlLength < 3) {
                 return 0;
             }
-            var zhushu = tempArr.length;
+
+            newArr = this.getZuLiuNewArrs(fuShiArr);
+            var zhushu = newArr.length;
             // 选取选中checkbox
             var checkArr = this.getCheckboxValue();
-            var shu = this.getFlagArrs(checkArr, 4).length;
+            var shu = this.getFlagArrs(checkArr, 3).length;
             return zhushu * shu;
-
         },
 
         /**
          * 直选复式
          */
-        content_ssc_renxuan4_zx4 : function(){
+        content_ssc_renxuan3_z6fs : function(){
 
-            var sanChongHaoArr = [], danHaoArr = [];
+            var zuArr = [];
             var checkStrArr = [];
             //获取位数字符串
             checkStrArr = this.getCheckboxValue();
 
             $.each($("a.n-btn.mui-active"), function (index, value) {
-                sanChongHaoArr.push($.trim($(this).html()));
+                zuArr.push($.trim($(this).html()));
             });
 
-            $.each($("a.n-btn.mui-active"), function (index, value) {
-                danHaoArr.push($.trim($(this).html()));
-            });
-
-
-            if (checkStrArr.length < 4) {
-                mui.toast("[任选四]至少需要选择4个位置");
+            if (checkStrArr.length < 3) {
+                mui.toast("[任选三]至少需要选择3个位置");
                 return -1;
             }
-            return checkStrArr.join(',') + "|" + sanChongHaoArr.join(",") + "|" + danHaoArr.join(",");
 
+            return checkStrArr.join(',') + "|" + zuArr.join(",");
         },
 
         /**
          * 随机算法-任二直选复式
          */
-        random_ssc_renxuan4_zx4 : function() {
+        random_ssc_renxuan3_z6fs : function() {
 
-            var arrOneNum = [];
-            var random_1 = parseInt(Math.random() * 10);
-
-            while(arrOneNum.length < 1){
+            var arrTemp = [];
+            while(arrTemp.length < 3){
+                var random_1 = parseInt(Math.random() * 10);
                 var random_2 = parseInt(Math.random() * 10);
-                if(random_1 != random_2){
-                    arrOneNum.push(2);
+                var random_3 = parseInt(Math.random() * 10);
+                if(random_1 != random_2 && random_2 != random_3 && random_1 != random_3){
+                    arrTemp.push(random_1);
+                    arrTemp.push(random_2);
+                    arrTemp.push(random_3);
                 }
             }
 
             $("a.n-btn.mui-active").removeClass("mui-active");
             $("a.n-btn").eq(random_1).addClass("mui-active");
             $("a.n-btn").eq(random_2).addClass("mui-active");
-
+            $("a.n-btn").eq(random_3).addClass("mui-active");
         },
 
         /**
@@ -196,27 +185,26 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
             return result;
         },
 
-        //获取 0 到 9 位上4个不同号码
-        getFourNum:function(){
-            var arrTemp = [];
-            var wei_1 = 0;
-            var wei_2 = 1;
-            var wei_3 = 2;
-            var wei_4 = 3;
-            while(arrTemp.length < 4){
-                wei_1 = parseInt(Math.random() * 5);
-                wei_2 = parseInt(Math.random() * 5);
-                wei_3 = parseInt(Math.random() * 5);
-                wei_4 = parseInt(Math.random() * 5);
-                if(wei_1 != wei_2 && wei_3 != wei_1 && wei_1 != wei_4 && wei_2 != wei_3 && wei_2 != wei_4 && wei_3 != wei_4){
-                    arrTemp.push(wei_1);
-                    arrTemp.push(wei_2);
-                    arrTemp.push(wei_3);
-                    arrTemp.push(wei_4);
+        //组六复式
+         getZuLiuNewArrs: function(zuXuanArr) {
+            var tempArr = [], zxArr = [];
+            zxArr = zuXuanArr;
+            for (var i = 0; i < zxArr.length; i++) {
+                for (var i1 = 0; i1 < zxArr.length; i1++) {
+                    for (var i2 = 0; i2 < zxArr.length; i2++) {
+                        if (zxArr[i] != zxArr[i1] && zxArr[i1] != zxArr[i2] && zxArr[i] != zxArr[i2]) {
+                            var sortArr = [];
+                            sortArr.push(zxArr[i]);
+                            sortArr.push(zxArr[i1]);
+                            sortArr.push(zxArr[i2]);
+                            sortArr.sort();
+                            tempArr.push(sortArr.join(""));
+                        }
+                    }
                 }
             }
-
-            return arrTemp;
+            tempArr = tempArr.uniqueArr();
+            return tempArr;
         }
 
     });

@@ -70,7 +70,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             });
 
             //直选复式
-            mui("body").on('tap', '.gfwf-title.gfwf-playName', function () {
+            mui("body").on('tap', '.gfwf-playName', function () {
                  // $('div.mui-scroll-wrapper.ssc-method-list.gfwf-list.gfwf-wrap.new-gfwf-qh').addClass("Fixed");
                  // $('div.gfwf-bg').addClass('show');
                 mui(".gfwf-wrap")[0].classList.toggle('Fixed');

@@ -1,4 +1,4 @@
-define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay, Template) {
 
     return PlayWay.extend({
         _this: null,
@@ -12,24 +12,23 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
         },
 
         showTable : function(){
-            $("a[data-code='R4']").addClass("mui-active");
+            $("a[data-code='R3']").addClass("mui-active");
             $("div.s-menu.second").hide();
-            $("#R4").show();
-            $("span.x_1.gfwf-tit").text("任选四");
-            $(".s-title.title1 span").text("任选四");
+            $("#R3").show();
+            $("span.x_1.gfwf-tit").text("任选三");
+            $(".s-title.title1 span").text("任选三");
             $(".s-title.title2 span").text("直选复式");
             $(".x_3.gfwf-playName").text("直选复式");
-            $("#toobarTitle").text("官方玩法-任选四");
-            $("a[data-code='ssc_renxuan4_zxfs']").addClass("mui-active");
+            $("#toobarTitle").text("官方玩法-任选三");
+            $("a[data-code='ssc_renxuan3_zxfs']").addClass("mui-active");
         },
         /**************任选二***************/
         /**
          * 注数-任选二 / 时时彩与11选5共用注数方法
          */
-        zhushu_ssc_renxuan4_zxfs :function(){
+        zhushu_ssc_renxuan3_zxfs :function(){
 
             var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [], newArr = [];
-
             $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
                 wanArr.push($.trim($(this).html()));
             });
@@ -65,11 +64,11 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
                 numArr.push(4);
             }
 
-            if (numArr.length < 4) {
+            if (numArr.length < 3) {
                 return 0;
             }
 
-            var tmpArr = this.getFlagArrs(numArr, 4);
+            var tmpArr = this.getFlagArrs(numArr, 3);
             var result = 0;
             $.each(tmpArr, function (index, value) {
                 var tmpResult = 0;
@@ -87,10 +86,8 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
         /**
          * 直选复式
          */
-        content_ssc_renxuan4_zxfs : function(){
-
+        content_ssc_renxuan3_zxfs : function(){
             var wanArr = [], qianArr = [], baiArr = [], shiArr = [], geArr = [];
-
             $.each($("ul.wangweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
                 wanArr.push($.trim($(this).html()));
             });
@@ -107,34 +104,40 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
                 geArr.push($.trim($(this).html()));
             });
 
-            var wanStr = wanArr.length > 0 ? ("万位: " + wanArr.join("")) : '';
-            var qianStr = qianArr.length > 0 ? (" 千位: " + qianArr.join("")) : '';
-            var baiStr = baiArr.length > 0 ? (" 百位: " + baiArr.join("")) : '';
-            var shiStr = shiArr.length > 0 ?  (" 十位: " + shiArr.join("")) : '';
-            var geStr = geArr.length > 0 ? (" 个位: " + geArr.join("")) : '';
+            var wanStr = wanArr.length > 0 ? wanArr.join(",") : "";
+            var qianStr = qianArr.length > 0 ? qianArr.join(",") : "";
+            var baiStr = baiArr.length > 0 ? baiArr.join(",") : "";
+            var shiStr = shiArr.length > 0 ? shiArr.join(",") : "";
+            var geStr = geArr.length > 0 ? geArr.join(",") : "";
 
-            var strTemp = $.trim(
-                (wanStr == ' ' ? ' ' : wanArr.join(",") + "|") +
-                (qianStr == ' ' ? ' ' : qianArr.join(",") + "|") +
-                (baiStr == ' ' ? ' ' : baiArr.join(",") + "|") +
-                (shiStr == ' ' ? ' ' : shiArr.join(",") + "|") +
-                (geStr == ' ' ? ' ' : geArr.join(","))
+            return $.trim(
+                (wanStr == ' ' ? ' ' : wanStr ) + "|" +
+                (qianStr == ' ' ? ' ' : qianStr) + "|" +
+                (baiStr == ' ' ? ' ' : baiStr) + "|" +
+                (shiStr == ' ' ? ' ' : shiStr) + "|" +
+                (geStr == ' ' ? ' ' : geStr)
             );
-
-            return strTemp;
         },
 
         /**
          * 随机算法-任二直选复式
          */
-        random_ssc_renxuan4_zxfs : function() {
+        random_ssc_renxuan3_zxfs : function() {
 
             var arrTemp = [];
-            arrTemp = this.getFourNum();
-            var wei_1 = arrTemp[0];
-            var wei_2 = arrTemp[1];
-            var wei_3 = arrTemp[2];
-            var wei_4 = arrTemp[3];
+            var wei_1 = 0;
+            var wei_2 = 1;
+            var wei_3 = 2;
+            while(arrTemp.length < 3){
+                wei_1 = parseInt(Math.random() * 5);
+                wei_2 = parseInt(Math.random() * 5);
+                wei_3 = parseInt(Math.random() * 5);
+                if(wei_1 != wei_2 && wei_3 != wei_1 && wei_2 != wei_3){
+                    arrTemp.push(wei_1);
+                    arrTemp.push(wei_2);
+                    arrTemp.push(wei_3);
+                }
+            }
 
             var random_1 = parseInt(Math.random() * 10);
             var random_2 = parseInt(Math.random() * 10);
@@ -142,7 +145,7 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
             var random_4 = parseInt(Math.random() * 10);
             var random_5 = parseInt(Math.random() * 10);
 
-            if(wei_1 == 0 || wei_2 == 0|| wei_3 == 0 || wei_4 == 0){
+            if(wei_1 == 0 || wei_2 == 0|| wei_3 == 0){
                 $("a.n-btn.wang").removeClass("mui-active").eq(random_1).addClass("mui-active");
             }
 
@@ -150,40 +153,18 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
                 $("a.n-btn.qian").removeClass("mui-active").eq(random_2).addClass("mui-active");
             }
 
-            if(wei_1 == 2 || wei_2 == 2 || wei_3 == 2 || wei_4 == 2){
+            if(wei_1 == 2 || wei_2 == 2 || wei_3 == 2){
                 $("a.n-btn.bai").removeClass("mui-active").eq(random_3).addClass("mui-active");
             }
 
-            if(wei_1 == 3 || wei_2 == 3 || wei_3 == 3 || wei_4 == 3){
+            if(wei_1 == 3 || wei_2 == 3 || wei_3 == 3){
                 $("a.n-btn.shi").removeClass("mui-active").eq(random_4).addClass("mui-active");
             }
 
-            if(wei_1 == 4 || wei_2 == 4 || wei_3 == 4 || wei_4 == 4){
+            if(wei_1 == 4 || wei_2 == 4 || wei_3 == 4){
                 $("a.n-btn.ge").removeClass("mui-active").eq(random_5).addClass("mui-active");
             }
-        },
 
-        //获取 0 到 9 位上4个不同号码
-        getFourNum:function(){
-            var arrTemp = [];
-            var wei_1 = 0;
-            var wei_2 = 1;
-            var wei_3 = 2;
-            var wei_4 = 3;
-            while(arrTemp.length < 4){
-                wei_1 = parseInt(Math.random() * 5);
-                wei_2 = parseInt(Math.random() * 5);
-                wei_3 = parseInt(Math.random() * 5);
-                wei_4 = parseInt(Math.random() * 5);
-                if(wei_1 != wei_2 && wei_3 != wei_1 && wei_1 != wei_4 && wei_2 != wei_3 && wei_2 != wei_4 && wei_3 != wei_4){
-                    arrTemp.push(wei_1);
-                    arrTemp.push(wei_2);
-                    arrTemp.push(wei_3);
-                    arrTemp.push(wei_4);
-                }
-            }
-
-            return arrTemp;
         },
 
         /**

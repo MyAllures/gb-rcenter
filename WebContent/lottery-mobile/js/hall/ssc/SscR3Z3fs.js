@@ -1,79 +1,103 @@
-define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay, Template) {
+
     return PlayWay.extend({
         _this: null,
+        //active_a:$("a.selected-btn.mui-col-xs-4.main.mui-active"),
+        //筛选数字组合
+        screeningDigtal: new Array(),
         init: function () {
             _this = this;
             this._super();
-
             $("#checkSelected input[type='checkbox']").change(function() {
                 _this.getZhuShu();  //获取注数方法
             });
         },
 
         showTable : function(){
-            $("a[data-code='R2']").addClass("mui-active");
+
+            $("a[data-code='R3']").addClass("mui-active");
             $("div.s-menu.second").hide();
-            $("#R2").show();
-            $("span.x_1.gfwf-tit").text("任选二");
-            $(".s-title.title1 span").text("任选二");
-            $(".s-title.title2 span").text("组选和值");
-            $(".x_3.gfwf-playName").text("组选和值");
-            $("a[data-code='ssc_renxuan2_zuxhz']").addClass("mui-active");
+            $("#R3").show();
+            $("span.x_1.gfwf-tit").text("任选三");
+            $(".s-title.title1 span").text("任选三");
+            $(".s-title.title2 span").text("组三复式");
+            $(".x_3.gfwf-playName").text("组三复式");
+            $("a[data-code='ssc_renxuan3_z3fs']").addClass("mui-active");
+
+        },
+
+        /**************任选二***************/
+        /**
+         * 注数-任选二 / 时时彩与11选5共用注数方法
+         */
+        zhushu_ssc_renxuan3_z3fs :function(){
+
+            var zuArr = [];
+            $.each($("a.n-btn.mui-active"), function (index, value) {
+                zuArr.push($.trim($(this).html()));
+            });
+            var tempArr = [];
+            for (var i = 0; i < zuArr.length; i++) {
+                for (var i1 = 0; i1 < zuArr.length; i1++) {
+                    if (zuArr[i] != zuArr[i1]) {
+                        tempArr.push(zuArr[i] + "" + zuArr[i1]);
+                    }
+                }
+
+            }
+
+            // 选取选中checkbox
+            var checkArr = this.getCheckboxValue();
+            var shu = this.getFlagArrs(checkArr, 3).length;
+            return tempArr.length * shu;
         },
 
         /**
-         * 任选二-直选和值
+         * 直选复式
          */
-        content_ssc_renxuan2_zuxhz: function () {
-            var hzArr = [], checkStrArr = [];
-            $.each($("a.n-btn.hz"), function () {
-                hzArr.push($.trim($(this).html()));
-            });
+        content_ssc_renxuan3_z3fs : function(){
 
+            var zuArr = [];
+            var checkStrArr = [];
+            //获取位数字符串
             checkStrArr = this.getCheckboxValue();
 
-            if (checkStrArr.length < 2) {
-                mui.toast("[任选二]至少需要选择2个位置");
+            $.each($("a.n-btn.mui-active"), function (index, value) {
+                zuArr.push($.trim($(this).html()));
+            });
+
+            if (checkStrArr.length < 3) {
+                mui.toast("[任选三]至少需要选择3个位置");
                 return -1;
             }
 
-            return checkStrArr.join(',') + "|" + hzArr.join(",");
+            return checkStrArr.join(',') + "|" + zuArr.join(",");
         },
 
-        zhushu_ssc_renxuan2_zuxhz:function () {
+        /**
+         * 随机算法-任二直选复式
+         */
+        random_ssc_renxuan3_z3fs : function() {
 
-            var hzArr = [];
-            var newArr = [];
-
-            $.each($("a.n-btn.hz.mui-active"), function (index, value) {
-                hzArr.push($.trim($(this).html()));
-            });
-
-            if (hzArr.length <= 0) {
-                return 0;
-            }
-            for (var i = 0; i < hzArr.length; i++) {
-                for (var x = 0; x < 10; x++) {
-                    for (var y = 0; y < 10; y++) {
-                        if (x + y == hzArr[i]) {
-                            newArr.push(x + "" + y);
-                        }
-                    }
+            var arrTemp = [];
+            while(arrTemp.length < 2){
+                var random_1 = parseInt(Math.random() * 10);
+                var random_2 = parseInt(Math.random() * 10);
+                if(random_1 != random_2){
+                    arrTemp.push(random_1);
+                    arrTemp.push(random_2);
                 }
             }
-            var zhushu = newArr.length;
-            // 选取选中checkbox
-            var checkArr = this.getCheckboxValue();
 
-            var shu = this.getFlagArrs(checkArr, 2).length;
-            return zhushu * shu;
-
+            $("a.n-btn.mui-active").removeClass("mui-active");
+            $("a.n-btn").eq(random_1).addClass("mui-active");
+            $("a.n-btn").eq(random_2).addClass("mui-active");
         },
 
         /**
          * 获得从m中取n的所有组合
          */
-         getFlagArrs:function(arr, num) {
+        getFlagArrs:function(arr, num) {
 
             if (arr.length < num) {
                 return [];
@@ -147,10 +171,11 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
             }
             return list;
         },
+
         /**
          * 获得checkbox选中值列表
          */
-         getCheckboxValue:function() {
+        getCheckboxValue:function() {
             var result = [];
             $("#checkSelected input[type='checkbox']").each(function() {
                 if ($(this).is(":checked")) {
@@ -158,16 +183,7 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
                 }
             });
             return result;
-        },
-
-    /**
-         * 随机算法-任二直选和值
-         */
-
-        random_ssc_renxuan2_zuxhz: function () {
-
-            var random_1 = (parseInt(Math.random() * 17) + 1);
-            $("a.n-btn.hz").removeClass("mui-active").eq(random_1).addClass("mui-active");
         }
+
     });
 });

@@ -1,4 +1,4 @@
-define(['site/hall/ssc-gfwf/PlayWay-xywf', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         init: function () {
             this._super();

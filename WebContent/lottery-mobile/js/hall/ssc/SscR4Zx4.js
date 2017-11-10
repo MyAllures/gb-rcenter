@@ -1,4 +1,4 @@
-define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay, Template) {
 
     return PlayWay.extend({
         _this: null,
@@ -20,9 +20,9 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
             $("#R4").show();
             $("span.x_1.gfwf-tit").text("任选四");
             $(".s-title.title1 span").text("任选四");
-            $(".s-title.title2 span").text("组选24");
-            $(".x_3.gfwf-playName").text("组选24");
-            $("a[data-code='ssc_renxuan4_zx24']").addClass("mui-active");
+            $(".s-title.title2 span").text("组选4");
+            $(".x_3.gfwf-playName").text("组选4");
+            $("a[data-code='ssc_renxuan4_zx4']").addClass("mui-active");
 
         },
 
@@ -30,36 +30,26 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
         /**
          * 注数-任选二 / 时时彩与11选5共用注数方法
          */
-        zhushu_ssc_renxuan4_zx24 :function(){
+        zhushu_ssc_renxuan4_zx4 :function(){
 
-            var fuShiArr = [], newArr = [];
+            var sanChongHaoArr = [], danHaoArr = [], tempArr = [], nowArr = [];
             $.each($("a.n-btn.mui-active"), function (index, value) {
-                fuShiArr.push($.trim($(this).html()));
+                sanChongHaoArr.push($.trim($(this).html()));
             });
-            var zlLength = fuShiArr.length;
-            if (zlLength < 4) {
-                return 0;
-            }
-
-            for (var n1 = 0; n1 < fuShiArr.length; n1++) {
-                for (var n2 = 0; n2 < fuShiArr.length; n2++) {
-                    for (var n3 = 0; n3 < fuShiArr.length; n3++) {
-                        for (var n4 = 0; n4 < fuShiArr.length; n4++) {
-                            if (fuShiArr[n1] != fuShiArr[n2] && fuShiArr[n1] != fuShiArr[n3] && fuShiArr[n1] != fuShiArr[n4] && fuShiArr[n2] != fuShiArr[n3] && fuShiArr[n2] != fuShiArr[n4] && fuShiArr[n3] != fuShiArr[n4]) {
-                                var arr = [];
-                                arr.push(fuShiArr[n1]);
-                                arr.push(fuShiArr[n2]);
-                                arr.push(fuShiArr[n3]);
-                                arr.push(fuShiArr[n4]);
-                                arr.sort();
-                                newArr.push(arr.join(""));
-                            }
-                        }
+            $.each($("a.n-btn.mui-active"), function (index, value) {
+                danHaoArr.push($.trim($(this).html()));
+            });
+            for (var d = 0; d < sanChongHaoArr.length; d++) {
+                for (var n = 0; n < danHaoArr.length; n++) {
+                    if (sanChongHaoArr[d] != danHaoArr[n]) {
+                        tempArr.push(sanChongHaoArr[d] + "" + danHaoArr[n]);
                     }
                 }
             }
-            newArr = newArr.uniqueArr();
-            var zhushu = newArr.length;
+            if (tempArr.length < 1) {
+                return 0;
+            }
+            var zhushu = tempArr.length;
             // 选取选中checkbox
             var checkArr = this.getCheckboxValue();
             var shu = this.getFlagArrs(checkArr, 4).length;
@@ -70,42 +60,48 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
         /**
          * 直选复式
          */
-        content_ssc_renxuan4_zx24 : function(){
+        content_ssc_renxuan4_zx4 : function(){
 
-            var zu24Arr = [];
+            var sanChongHaoArr = [], danHaoArr = [];
             var checkStrArr = [];
-            $.each($("a.n-btn.mui-active"), function () {
-                zu24Arr.push($.trim($(this).html()));
-            });
-
             //获取位数字符串
             checkStrArr = this.getCheckboxValue();
+
+            $.each($("a.n-btn.mui-active"), function (index, value) {
+                sanChongHaoArr.push($.trim($(this).html()));
+            });
+
+            $.each($("a.n-btn.mui-active"), function (index, value) {
+                danHaoArr.push($.trim($(this).html()));
+            });
+
 
             if (checkStrArr.length < 4) {
                 mui.toast("[任选四]至少需要选择4个位置");
                 return -1;
             }
+            return checkStrArr.join(',') + "|" + sanChongHaoArr.join(",") + "|" + danHaoArr.join(",");
 
-            return checkStrArr.join(',') + "|" + zu24Arr.join(",");
         },
 
         /**
          * 随机算法-任二直选复式
          */
-        random_ssc_renxuan4_zx24 : function() {
+        random_ssc_renxuan4_zx4 : function() {
 
-            var arrTemp = [];
-            arrTemp = this.getFourNum();
-            var random_1 = arrTemp[0];
-            var random_2 = arrTemp[1];
-            var random_3 = arrTemp[2];
-            var random_4 = arrTemp[3];
+            var arrOneNum = [];
+            var random_1 = parseInt(Math.random() * 10);
 
-            $("a.n-btn").removeClass("mui-active");
+            while(arrOneNum.length < 1){
+                var random_2 = parseInt(Math.random() * 10);
+                if(random_1 != random_2){
+                    arrOneNum.push(2);
+                }
+            }
+
+            $("a.n-btn.mui-active").removeClass("mui-active");
             $("a.n-btn").eq(random_1).addClass("mui-active");
             $("a.n-btn").eq(random_2).addClass("mui-active");
-            $("a.n-btn").eq(random_3).addClass("mui-active");
-            $("a.n-btn").eq(random_4).addClass("mui-active");
 
         },
 

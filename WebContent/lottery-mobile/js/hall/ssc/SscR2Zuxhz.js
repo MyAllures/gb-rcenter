@@ -1,4 +1,4 @@
-define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         _this: null,
         init: function () {
@@ -11,19 +11,20 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
         },
 
         showTable : function(){
-            $("a[data-code='R3']").addClass("mui-active");
+            $("a[data-code='R2']").addClass("mui-active");
             $("div.s-menu.second").hide();
-            $("#R3").show();
-            $("span.x_1.gfwf-tit").text("任选三");
-            $(".s-title.title1 span").text("任选三");
-            $(".s-title.title2 span").text("直选和值");
-            $(".x_3.gfwf-playName").text("直选和值");
-            $("a[data-code='ssc_renxuan3_zxhz']").addClass("mui-active");
+            $("#R2").show();
+            $("span.x_1.gfwf-tit").text("任选二");
+            $(".s-title.title1 span").text("任选二");
+            $(".s-title.title2 span").text("组选和值");
+            $(".x_3.gfwf-playName").text("组选和值");
+            $("a[data-code='ssc_renxuan2_zuxhz']").addClass("mui-active");
         },
+
         /**
-         * 任选三-直选和值
+         * 任选二-直选和值
          */
-        content_ssc_renxuan3_zxhz: function () {
+        content_ssc_renxuan2_zuxhz: function () {
             var hzArr = [], checkStrArr = [];
             $.each($("a.n-btn.hz"), function () {
                 hzArr.push($.trim($(this).html()));
@@ -31,15 +32,15 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
 
             checkStrArr = this.getCheckboxValue();
 
-            if (checkStrArr.length < 3) {
-                mui.toast("[任选三]至少需要选择3个位置");
+            if (checkStrArr.length < 2) {
+                mui.toast("[任选二]至少需要选择2个位置");
                 return -1;
             }
 
             return checkStrArr.join(',') + "|" + hzArr.join(",");
         },
 
-        zhushu_ssc_renxuan3_zxhz:function () {
+        zhushu_ssc_renxuan2_zuxhz:function () {
 
             var hzArr = [];
             var newArr = [];
@@ -64,7 +65,7 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
             // 选取选中checkbox
             var checkArr = this.getCheckboxValue();
 
-            var shu = this.getFlagArrs(checkArr, 3).length;
+            var shu = this.getFlagArrs(checkArr, 2).length;
             return zhushu * shu;
 
         },
@@ -163,9 +164,9 @@ define(['site/hall/ssc-gfwf/PlayWay-gfwf', 'site/plugin/template'], function (Pl
          * 随机算法-任二直选和值
          */
 
-        random_ssc_renxuan3_zxhz: function () {
+        random_ssc_renxuan2_zuxhz: function () {
 
-            var random_1 = parseInt(Math.random() * 19);
+            var random_1 = (parseInt(Math.random() * 17) + 1);
             $("a.n-btn.hz").removeClass("mui-active").eq(random_1).addClass("mui-active");
         }
     });
