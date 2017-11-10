@@ -260,7 +260,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 dataType:'json',
                 async:false,
                 type:"post",
-                data:{'code':code,'expect':expect},
+                data:{'code':code,'expect':expect,'siteId':siteId,'payoutSource':2},
                 url:root+'/lotterySysTool/searchOpenCode.html',
                 success:function (data) {
 

@@ -62,6 +62,27 @@ define(['common/BaseListPage'], function (BaseListPage) {
             var fmt = dateFormat.day;
             var time = window.top.topPage.formatDateTime(myDate,fmt);
             return time;
-        }
+        },
+        payout:function (e, opt) {
+            var _this = this;
+            var id = opt.objId;
+            var data = {"search.id":id};
+            window.top.topPage.ajax({
+                dataType:'json',
+                data:data,
+                type:"post",
+                url:root+'/lotteryResult/payout.html',
+                success:function(data){
+                    if(data.state){
+                        e.page.showPopover(e,opt,"success",data.msg,true);
+                    }else {
+                        e.page.showPopover(e,opt,"danger",data.msg,true);
+                    }
+                },
+                error:function(data) {
+                    e.page.showPopover(e,opt,"danger",data.msg,true);
+                }
+            });
+        },
     });
 });
