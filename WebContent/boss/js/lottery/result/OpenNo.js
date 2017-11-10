@@ -94,6 +94,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             var type = $("#czType").val();
             var code = $("#czCode").val();
             var expect = $("#czExpect").val();
+            var openTime = $("#czOpenTime").val();
             $("input.m-xs").each(function(index,value){
                 openCode += $(this).val()+",";
             });
@@ -113,6 +114,8 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                     'result.code': code,
                     'result.expect': expect,
                     'result.type': type,
+                    'result.openTime': openTime,
+
                 },
                 success: function(data) {
 
@@ -124,6 +127,6 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                     }
                 }
             });
-        }
+        },
     });
 });
