@@ -2,25 +2,9 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
     return PlayWay.extend({
         init: function () {
             this._super();
-            this.isGfwf();
         },
 
-        showLastOpenCode: function (numArr) {
-            var html = Template('template_lastOpenCode', {numArr: numArr, len: numArr.length});
-            var sum = parseInt(numArr[0]) + parseInt(numArr[1]) + parseInt(numArr[2]);
-            html += "<i class='lottery-block'>" + sum + "</i>";
-            if (sum % 2 == 0) {
-                html += "<i class='lottery-block'>双</i>";
-            } else {
-                html += "<i class='lottery-block'>单</i>";
-            }
-            if (sum > 10) {
-                html += "<i class='lottery-block'>大</i>";
-            } else {
-                html += "<i class='lottery-block'>小</i>";
-            }
-            $("#lastOpenCode").html(html);
-        },
+
         getOdds: function () {
             var url = root + '/' + this.type + '/' + this.code + '/getOdds.html';
             var _this = this;
@@ -44,18 +28,6 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             })
         },
 
-
-        //传统,官方玩法切换
-        isGfwf: function () {
-            var _this = this;
-            var lotteryGenra = $("input#lotteryGenra").val();
-            mui("body").on("tap", "a#is-gfwf", function () {
-                if(lotteryGenra ==1){
-                    var flag = $(this).attr("data-flag");
-                    _this.gotoUrl(root + '/' + _this.type + '/' + _this.code + '/index.html?betCode=&isGfwf='+flag);
-                }
-            });
-        }
 
     });
 });
