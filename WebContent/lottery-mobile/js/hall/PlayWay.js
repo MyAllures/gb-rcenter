@@ -15,6 +15,8 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
         betNum:null,
         //赔率Json
         gfwfPlJson: null,
+        //空注单数据
+        betForm:null,
         init: function (formSelector) {
             this._super(formSelector || ".mui-off-canvas-wrap");
             this.showTable();
@@ -61,8 +63,9 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             });
             //确认投注
             mui("body").off('tap','#confirmOrder').on("tap", "#confirmOrder", function () {
-                var betForm = _this.getBetOrder();
-                _this.confirmOrder(betForm);
+                // var betForm = _this.getBetOrder();
+
+                _this.confirmOrder(_this.betForm);
             });
 
             /*==================================官方============================================*/
@@ -184,6 +187,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 }
 
             });
+
         },
 
 
@@ -601,9 +605,36 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 this.toast("请选择");
                 return;
             }
+
+            this.betForm = betForm;
+            var _this = this;
             sessionStorage.betForm = JSON.stringify(betForm);
+
             this.placeOrder(betForm);
             $("#dingdan").addClass('mui-active');
+            //重新操作表单
+            mui("body").off('tap','a.mui-pull-right.list-delete-btn').on('tap', 'a.mui-pull-right.list-delete-btn', function () {
+                if($("div.mui-input-row.zd-wrap").size()>1){
+                    $("#zhushu_new").text($("#zhushu_new").text()-1);
+                    $("#zongjine_new").text($("#zongjine_new").text()-$(this).prev().val());
+                    $(this).parent().parent().remove();
+                    _this.betForm.betOrders.splice($(this).prev().attr("data-name"),1);
+                    _this.betForm.totalMoney=$("#zongjine_new").text();
+                    _this.betForm.quantity=_this.betForm.quantity-1;
+                }else{
+                    $("#dingdan").html('');
+                    $("#dingdan").removeClass('mui-active');
+                }
+            });
+            $(".mui-input-numbox.jinge").keyup(function() {
+                var sum = 0;
+                $(".mui-input-numbox.jinge").each(function(index,value){
+                    _this.betForm.betOrders[index].betAmount = Number($(this).val());
+                    sum += Number($(this).val());
+                })
+                $("#zongjine_new").text(sum);
+                _this.betForm.totalMoney=sum;
+            });
         },
 
         getBetOrder: function () {
@@ -632,6 +663,13 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 });
                 betForm.totalMoney = betForm.totalMoney + betAmount;
                 betForm.quantity = betForm.quantity + 1;
+            });
+            return betForm;
+        },
+        getNewBetOrder: function () {
+            var betForm = this.getBetOrder();
+            $.each(betForm.betOrders,function(index,value){
+
             });
             return betForm;
         },
