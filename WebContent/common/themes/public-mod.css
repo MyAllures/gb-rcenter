@@ -14,7 +14,7 @@
 .pay-bank.sm,.pay-third.sm{width:35px;display:inline-block;height:30px;vertical-align:middle;background:url(../images/pay-bank-x.png) left top no-repeat;}
 .pay-third{background:url(../images/pay-third.png) left top no-repeat;}
 .pay-third.sm{background:url(../images/pay-third-x.png) left top no-repeat;}
-.diy-pay-title{display: inline-block;font-size:12px;width: 80px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;vertical-align: middle;}
+.diy-pay-title{display: inline-block;font-size:12px;width: 76px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;vertical-align: middle;}
 
 /* 银行 */
 .pay-bank.else{background-position: 0 0;}/* 其他 */

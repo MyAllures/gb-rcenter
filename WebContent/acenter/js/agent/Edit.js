@@ -54,7 +54,7 @@ define(['common/BaseEditPage','mailAutoComplete'], function (BaseEditPage) {
                     for(var i = 0;replaceSelect[i];i++){
                         var list = data.vPrograms[replaceSelect[i]];
                         var html = list ? $(".chooseAOption option"):$(".chooseAgentNoData option");
-                        if ($("."+replaceSelect[i]) && $("."+replaceSelect[i]).length > 0)　{
+                        if ($("."+replaceSelect[i]) && $("."+replaceSelect[i]).length > 0) {
                             for(var ii = 0;html&&html[ii];ii++){
                                 //select.addOption("."+replaceSelect[i],html[ii].value,html[ii].innerHTML);
                                 select.clearOption("."+replaceSelect[i],html[ii].innerHTML);
