@@ -1591,7 +1591,7 @@ body.has-srchbar .electronic-srch{
 }
 .gb-headtabs{
     margin: 11px auto;
-    width: 160px;
+    width: 60%;
     background-color: #fff;
 }
 .gb-headtabs.span3{
@@ -4246,7 +4246,7 @@ div.tab-2 a.mui-active span {
 .pay-third.bitcoin,
 .pay-third.BTC
 {background-position: 0 -781px;}/* 25 比特币 */
-.pay-third.zhih_qq{background-position: 0 -818px;}/* 25 QQ钱包 */
+.pay-third.qqwallet{background-position: 0 -818px;}/* 25 QQ钱包 */
 .pay-third.zhihpay{background-position: 0 -859px;}/* 26 智汇付 */
 .pay-third.upay{background-position: 0 -896px;}/* 27 优贝支付 */
 .pay-third.onecodepay{background-position: 0 -936px;}/* 28 1码付 */
@@ -5084,7 +5084,7 @@ div.setting {
 .d-none {display: none;}
 .d-none.mui-active{display: block;}
 .pro-selec{background-color: #efefef;}
-
+.gb-bankcard>.ct>p>span{word-wrap: break-word;}
 /* 2017-10-28 */
 .mui-bar-nav .user .btn{padding: 4px 8px;}
 .mui-bar-nav .user .btn.btn-shiwan{background: #00a0e9;}
