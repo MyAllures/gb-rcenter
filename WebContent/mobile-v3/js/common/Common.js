@@ -202,3 +202,52 @@ function goToUrl(url) {
         }
     })
 }
+
+/**
+ * 封装绑定button/a标签事件
+ */
+function bindButtonEvent() {
+    /**
+     * 绑定使用button.tag标签
+     */
+    mui("body").on("tap", "[data-rel]", function (e) {
+        var options = eval("(" + $(this).data('rel') + ")");
+        var opType = options.opType;
+        if (opType == 'function') {
+            doFunction(this, options);
+        } else if (opType == 'dialog') {
+
+        }
+    });
+}
+
+/**
+ * 封装事件执行function
+ * @param obj
+ * @param options
+ */
+function doFunction(obj, options) {
+    var $target = $(obj);
+    var isLocked = $target.isLocked();
+    if (isLocked) {
+        console.log("事件标签已被锁定");
+        return;
+    }
+    $target.lock();
+    var func = options.target;
+    if (func && typeof func == 'function') {
+        func.apply(this, [this, options]);
+    } else {
+        console.log(func + "方法找不到！");
+    }
+}
+/**
+ * 封装事件执行弹窗
+ */
+function doDialog() {
+
+}
+
+function toast() {
+    var os = whatOs();
+}
