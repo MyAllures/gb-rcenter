@@ -1,4 +1,4 @@
-define(['site/hall/GfwfPlayWay', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/pk10/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         _this: null,
         init: function () {
@@ -8,13 +8,22 @@ define(['site/hall/GfwfPlayWay', 'site/plugin/template'], function (PlayWay, Tem
         },
         showTable : function(){
             //前一
-            $("div.s-menu.second").hide();
-            $("#zxfs").show();
-            $("a[data-code='zxfs']").addClass("mui-active");
-            // $(".x_3.gfwf-playName").text("直选复式");
+            // $("div.s-menu.second").hide();
+            // $("#zxfs").show();
+            // $("a[data-code='zxfs']").addClass("mui-active");
+            // // $(".x_3.gfwf-playName").text("直选复式");
+            // $("span.x_1.gfwf-tit").text("前二");
+            // $(".s-title.title1 span").text("前二");
+            // // $(".s-title.title2 span").text("直选复式")
+
+            $("a[data-code='"+$("#gfwfBetCode").val()+"']").addClass("mui-active");
             $("span.x_1.gfwf-tit").text("前二");
             $(".s-title.title1 span").text("前二");
-            // $(".s-title.title2 span").text("直选复式")
+            $("a[data-code='zxfs']").addClass("mui-active");
+            $("#toobarTitle").text("官方玩法-前二");
+            $(".x_3.gfwf-playName").text("直选复式");
+            $(".s-title.title2 span").text("直选复式")
+            $("a[data-code='zxfs'] span").text("直选复式");
         },
 
         /************************************************PK10**********************************************/

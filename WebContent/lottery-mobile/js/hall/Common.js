@@ -62,15 +62,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 _this.closeClearPopup();
             });
 
-            //确认清空选项
-            // mui("body").off('tap','button#confirmClearPop').on("tap", 'button#confirmClearPop', function () {
-            //     _this.closeClearPopup(true);
-            // });
-            // mui("body").off('tap','button#cancelPop').on("tap", 'button#cancelPop', function () {
-            //     _this.closeClearPopup();
-            // });
-
-
             /*==============================官方====================================*/
             //头部选择
             mui("div.s-menu").off('tap','a').on('tap', 'a', function () {

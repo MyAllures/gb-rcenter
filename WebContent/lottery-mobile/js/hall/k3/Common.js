@@ -66,7 +66,6 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 $("a.selected-btn.mui-active").removeClass("mui-active");
                 thisClassList.toggle('mui-active');
                 var dataCode = $("a.selected-btn.main.mui-active").attr("data-code");
-                var dataPlayId = $("a.selected-btn.main.mui-active").attr("data-play_id");
                 var jspName = $("a.selected-btn.main.mui-active").attr("data-jsp-name");
                 // $('div.gfwf-bg').hide();
                 // $('div.selected-wrap').hide();

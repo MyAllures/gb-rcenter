@@ -196,7 +196,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             $("div.newball-item-20 a.n-btn").removeClass("mui-active");
             $("a.bottom-bar-btn.btn-jixuan-gfwf").removeClass("mui-active");
             $("a.bottom-bar-btn.btn-reset-gfwf").addClass("mui-active");
-            console.log($("div#guanfangWanfa a.selected-btn.main.mui-active").size())
             var randomName=$("div#guanfangWanfa a.selected-btn.main.mui-active").attr("data-fun_random");
             eval("_this."+randomName + "()");
             _this.getZhuShu();
