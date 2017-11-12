@@ -195,6 +195,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                     type: 'POST',
                     success: function (data) {
                         _this.openGuanfangwanfa(data);
+                        $("#gfwfBetCode").val("ssc_yixing_dwd");
                         $("a[data-code='ssc_yixing_dwd']").addClass("mui-active");
                         $("a[data-code='zxfs']").addClass("mui-active");
                         $("a.x_1.mui-col-xs-6").removeClass("x_active");

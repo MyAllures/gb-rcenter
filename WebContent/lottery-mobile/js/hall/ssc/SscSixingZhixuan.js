@@ -130,6 +130,7 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
             //四星
             $("div.s-menu.second").hide();
             $("#zxfs").show();
+            $("a[data-code='"+$("#gfwfBetCode").val()+"']").addClass("mui-active");
             $("a[data-code='zxfs']").addClass("mui-active");
             $(".x_3.gfwf-playName").text("直选复式");
             $("span.x_1.gfwf-tit").text("四星");

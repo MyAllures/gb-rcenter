@@ -75,7 +75,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             //头部选择
             mui("div.s-menu").off('tap','a').on('tap', 'a', function () {
                 _this.checkSubordinate($(this).attr("data-code"), this.classList);
-                // return;
+                return;
             });
 
             //直选复式
@@ -135,11 +135,12 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             $("i.mui-control-item").removeClass("mui-active");
             $("a.n-btn").removeClass("mui-active");
             $("#dingdan").removeClass('mui-active');
-            $("#quantity").text(0);
-            $("#inputMoney").text(0);
+            $("#quantity-gfwf").text(0);
+            $("#inputMoney-gfwf").text(0);
             $("a.bottom-bar-btn.btn-jixuan-gfwf").addClass("mui-active");
             $("a.bottom-bar-btn.btn-reset-gfwf").removeClass("mui-active");
         },
+
 
         /**
          * 获取期数盘口数据
@@ -425,15 +426,21 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         },
         
         openGuanfangwanfa : function (data) {
+            var _this=this;
+            _this.resetBet();
             $("#xinyongWanfa").hide();
             $("#guanfangWanfa").show();
+            $("a.selected-btn.main").removeClass("mui-active");
             $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
             $("#betAmount").html(data);
         },
         
         openXinyongwanfa : function (data) {
+            var _this=this;
+            _this.resetBet();
             $("#xinyongWanfa").show();
             $("#guanfangWanfa").hide();
+            $("a.selected-btn.main").removeClass("mui-active");
             $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
             $("#betAmount").html(data);
         }

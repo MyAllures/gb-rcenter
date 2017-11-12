@@ -196,7 +196,8 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             $("div.newball-item-20 a.n-btn").removeClass("mui-active");
             $("a.bottom-bar-btn.btn-jixuan-gfwf").removeClass("mui-active");
             $("a.bottom-bar-btn.btn-reset-gfwf").addClass("mui-active");
-            var randomName=$("a.selected-btn.main.mui-active").attr("data-fun_random");
+            console.log($("div#guanfangWanfa a.selected-btn.main.mui-active").size())
+            var randomName=$("div#guanfangWanfa a.selected-btn.main.mui-active").attr("data-fun_random");
             eval("_this."+randomName + "()");
             _this.getZhuShu();
         },
@@ -229,7 +230,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 expect: $('font#expect').text(),//期号
                 playCode: $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-play_id"),//彩种玩法
                 betCode:  $("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code"),//投注玩法
-                betCount: $("#quantity").text(),//注数
+                betCount: $("#quantity-gfwf").text(),//注数
                 betAmount: $("#betContent_totalMoney").text(),//下注总额。
                 betNum: _this.betNum,//下注号码
                 odd: _this.getBetOddl(),//奖金
@@ -326,9 +327,9 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             }
             //弹出订单
             var content = Template('gfwf_template_order',
-                {"quantity": Number($("#quantity").text()),
+                {"quantity": Number($("#quantity-gfwf").text()),
                     "firstShowPl":firstShowPl,
-                    "totalMoney":Number($("#quantity").text())*2,
+                    "totalMoney":Number($("#quantity-gfwf").text())*2,
                     "canWin": parseFloat((maxCanWin * 1)).toFixed(3),
                     "expect":$('font#expect').text()
                 });
@@ -417,8 +418,8 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             var zhushuName = $("a.selected-btn.main.mui-active").attr("data-fun_zhushu");
             var zhushu = eval("_this."+zhushuName + "()");
             if(zhushu !=undefined){
-                $("#quantity").text(zhushu);
-                $("#inputMoney").text(zhushu*2);//目前写死
+                $("#quantity-gfwf").text(zhushu);
+                $("#inputMoney-gfwf").text(zhushu*2);//目前写死
             }
 
         },

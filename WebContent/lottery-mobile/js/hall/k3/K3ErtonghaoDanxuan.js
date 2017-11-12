@@ -9,6 +9,7 @@ define(['site/hall/k3/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay,
 
         showTable : function(){
             var _this=this;
+            $("a[data-code='"+$("#gfwfBetCode").val()+"']").addClass("mui-active");
             $("span.x_1.gfwf-tit").text("二同号单选");
             $(".s-title.title1 span").text("二同号单选");
             $("a[data-code='bzxh']").addClass("mui-active");
