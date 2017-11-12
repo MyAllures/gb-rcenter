@@ -111,9 +111,9 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var siteId = $(formobj).find("input[name='search.siteId']").val();
             var context = '';
             if (siteId == ''){
-                context = "您将对"+codename+","+expect+"期的所有未结算注单进行撤销,是否确认执行";
+                context = "您将对"+codename+","+expect+"期的所有未结算注单进行撤单,是否确认执行";
             }else {
-                context = "您将对站点"+siteId+","+codename+","+expect+"期的所有未结算注单进行撤销,是否确认执行";
+                context = "您将对"+siteId+"站点,"+codename+","+expect+"期的所有未结算注单进行撤单,是否确认执行";
             }
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
@@ -138,7 +138,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             if (siteId == ''){
                 context = "您将对"+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行";
             }else {
-                context = "您将对站点"+siteId+","+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行";
+                context = "您将对"+siteId+"站点,"+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行";
             }
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
