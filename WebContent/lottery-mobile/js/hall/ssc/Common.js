@@ -188,7 +188,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                         $("#GenraType").val("ssc_shuzipan");
                         _this.changeList();
                         $("#betAmount").html(data);
-                        $("#betDiv").html()
+                        // $("#betDiv").html()
                     }
                 });
             });

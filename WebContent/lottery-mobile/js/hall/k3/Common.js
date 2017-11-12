@@ -4,6 +4,40 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
             this._super();
         },
 
+        /**
+         * 展示最近开奖记录
+         */
+        showRecentHistory: function (data) {
+            var openList = '';
+            $.each(data, function (index, value) {
+                var numArr = value.openCode ? value.openCode.split(",") : [];
+                var sum = parseInt(numArr[0]) + parseInt(numArr[1]) + parseInt(numArr[2]);
+                var ds;
+                var dx;
+
+                if (sum % 2 == 0) {
+                    ds="双";
+                } else {
+                    ds="单";
+                }
+                if (sum > 10) {
+                    dx="大";
+                } else {
+                    dx="小";
+                }
+
+                openList = openList + Template('template_recentHistory', {
+                        number: value.expect,
+                        list: numArr,
+                        len: numArr.length,
+                        sum: sum,
+                        ds:ds,
+                        dx:dx
+                    });
+            });
+            $("#recentHistory").html(openList);
+        },
+
         showLastOpenCode: function (numArr) {
             var html = Template('template_lastOpenCode', {numArr: numArr, len: numArr.length});
             var sum = parseInt(numArr[0]) + parseInt(numArr[1]) + parseInt(numArr[2]);
@@ -73,7 +107,9 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                         $("#GenraType").val("k3_dianshu");
                         _this.changeList();
                         $("#betAmount").html(data);
-                        $("#betDiv").html()
+                        // $("#betDiv").html();
+
+
                     }
                 });
             });
@@ -92,8 +128,8 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                         $("a.x_3.mui-col-xs-6").addClass("x_active");
                         $("#toobarTitle").text("官方玩法-三同号通选");
                         $("#GenraType").val("k3_tongxuan_santong");
-                        _this.changeList();
                         $("#betAmount").html(data);
+                        _this.changeList();
                     }
                 });
             });
