@@ -54,23 +54,31 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         bindButtonEvents: function () {
             var _this = this;
             //确认清空选项
-            mui("body").on("tap", 'button#confirmClearPop', function () {
+            mui("body").off('tap','button#confirmClearPop').on("tap", 'button#confirmClearPop', function () {
                 _this.closeClearPopup(true);
             });
-            mui("body").on("tap", 'button#cancelPop', function () {
+            mui("body").off('tap','button#cancelPop').on("tap", 'button#cancelPop', function () {
                 _this.closeClearPopup();
             });
+
+            //确认清空选项
+            // mui("body").off('tap','button#confirmClearPop').on("tap", 'button#confirmClearPop', function () {
+            //     _this.closeClearPopup(true);
+            // });
+            // mui("body").off('tap','button#cancelPop').on("tap", 'button#cancelPop', function () {
+            //     _this.closeClearPopup();
+            // });
 
 
             /*==============================官方====================================*/
             //头部选择
-            mui("div.s-menu").on('tap', 'a', function () {
+            mui("div.s-menu").off('tap','a').on('tap', 'a', function () {
                  _this.checkNoSon($(this).attr("data-code"), this.classList);
-                 return;
+                 // return;
             });
 
             //直选复式
-            mui("body").on('tap', '.gfwf-playName', function () {
+            mui("body").off('tap','.gfwf-playName').on('tap', '.gfwf-playName', function () {
                  // $('div.mui-scroll-wrapper.ssc-method-list.gfwf-list.gfwf-wrap.new-gfwf-qh').addClass("Fixed");
                  // $('div.gfwf-bg').addClass('show');
                 mui(".gfwf-wrap")[0].classList.toggle('Fixed');
@@ -84,14 +92,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
 
             mui(".gfwf-bg")[0].addEventListener('tap', function() {
                 _this.closeTop();
-            });
-
-            //确认清空选项
-            mui("body").on("tap", 'button#confirmClearPop', function () {
-                _this.closeClearPopup(true);
-            });
-            mui("body").on("tap", 'button#cancelPop', function () {
-                _this.closeClearPopup();
             });
         },
         //收起头部
