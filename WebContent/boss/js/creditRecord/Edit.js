@@ -1,4 +1,4 @@
-define(['common/BaseEditPage'], function(BaseEditPage) {
+define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput','validate'], function(BaseEditPage) {
 
     return BaseEditPage.extend({
         /**
@@ -15,27 +15,54 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
         },
         onPageLoad: function () {
             this._super();
-        },
-        updatePlayer:function (e,opt) {
-            var balance = $("input[name='search.walletBalance']").val();
-            var totalAssets = $("input[name='search.totalAssets']").val();
-            var id = $("input[name='search.id']").val();
-            var ids= window.parent.page.getSelectedIds();
-            var _this=this;
-            var token = $("[name='gb.token']").val()
-            window.top.topPage.ajax({
-                url: root + '/simulationAccount/saveAddQuota.html',
-                data: {"search.ids":ids,"search.id":id,"search.walletBalance":balance,"gb.token":token},
-                dataType:'json',
-                type: "POST",
-                success: function (data) {
-                    if (data.state){
-                        _this.saveCallbak(e);
-                    }else {
-                        page.showPopover(e,{},"danger",data.msg,true);
-                    }
-                }
+            this.unInitFileInput($('#file_path')).fileinput({
+                showUpload: false,
+                maxFileCount: 1,
+                maxFileSize: 1024,
+                mainClass: "input-group",
+                removeLabel: window.top.message.content['floatPic.file.upload.remove'],
+                browseLabel: window.top.message.content['floatPic.file.upload.browse'] + '&hellip;',
+                allowedFileExtensions: ['png','jpg'],
+                msgInvalidFileExtension: window.top.message.content['floatPic.file.upload.msgInvalidFileExtension'],
+                msgValidationError: window.top.message.content['floatPic.file.upload.msgValidationError'],
+                msgSizeTooLarge: window.top.message.content['floatPic.file.upload.msgSizeTooLarge'],
+                msgImageWidthSmall: window.top.message.content['logo.file.size.widthError'],
+                msgImageHeightSmall: window.top.message.content['logo.file.size.heightError'],
+                msgImageWidthLarge: window.top.message.content['logo.file.size.widthError'],
+                msgImageHeightLarge: window.top.message.content['logo.file.size.heightError']
+            }).bind("filecleared", function (e) {
+                e.fileInput.$container.prev().show();
+                page.resizeDialog();
+            }).bind("fileloaded", function (e) {
+                e.fileInput.$container.prev().hide();
+                e.fileInput.$container.parent().removeClass("error");
+                page.resizeDialog();
             });
-        }
+        },
+        /**
+         * 图片上传
+         * @param e
+         * @param opt
+         * @returns {boolean}
+         */
+        uploadFile: function (e, opt) {
+            //$(e.currentTarget).lock();
+            e.objId = $("#creditId").val();
+            e.catePath = 'creditRecord';
+            var flag = this.uploadAllFiles(e, opt);
+            if(!flag){
+                return false;
+            }
+            if (!this.validateForm(e)) {
+                return false;
+            }
+            if ($('.file-error-message:visible').length > 0) {
+                return false;
+            }
+
+            //$(e.currentTarget).unlock();
+
+            return true;
+        },
     });
 });
