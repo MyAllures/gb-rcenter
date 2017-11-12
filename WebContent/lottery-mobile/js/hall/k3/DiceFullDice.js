@@ -6,7 +6,6 @@ define(['site/hall/k3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay,
         },
 
         showTable : function(){
-
             $("a[data-code='ds']").addClass("mui-active");
             $(".x_3.gfwf-playName").text("围骰/全骰");
             $("span.x_1.gfwf-tit").text("围骰/全骰");

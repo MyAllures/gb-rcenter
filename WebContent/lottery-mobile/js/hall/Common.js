@@ -83,9 +83,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             // });
 
             mui(".gfwf-bg")[0].addEventListener('tap', function() {
-                mui(".gfwf-wrap")[0].classList.remove('Fixed');
-                mui(".new-formerly .mui-table-view .mui-table-view-cell")[0].classList.remove('mui-active');
-                mui(".gfwf-bg")[0].classList.remove('show');
+                _this.closeTop();
             });
 
             //确认清空选项
@@ -95,6 +93,12 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("body").on("tap", 'button#cancelPop', function () {
                 _this.closeClearPopup();
             });
+        },
+        //收起头部
+        closeTop : function () {
+            mui(".gfwf-wrap")[0].classList.remove('Fixed');
+            mui(".new-formerly .mui-table-view .mui-table-view-cell")[0].classList.remove('mui-active');
+            mui(".gfwf-bg")[0].classList.remove('show');
         },
 
 
@@ -392,48 +396,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
 
         //传统,官方玩法切换
         isGfwf: function () {
-            var _this = this;
-            //信用
-            mui("body").on("tap", "a.x_1.mui-col-xs-6", function () {
-                mui.ajax(root + '/'+_this.type+'/'+_this.code+'/checkBetTable.html', {
-                    data: {"jspStr": "BetAmount-xywf"},
-                    type: 'POST',
-                    success: function (data) {
-                        $("#xinyongWanfa").show();
-                        $("#guanfangWanfa").hide();
-                        $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
-                        $("a[data-code='ssc_shuzipan']").addClass("mui-active");
-                        $("a[data-code='szp']").addClass("mui-active");
-                        $("a.x_1.mui-col-xs-6").addClass("x_active");
-                        $("a.x_3.mui-col-xs-6").removeClass("x_active");
-                        $("#toobarTitle").text("信用玩法-数字盘");
-                        $("#GenraType").val("ssc_shuzipan");
-                        _this.changeList();
-                        $("#betAmount").html(data);
-                        $("#betDiv").html()
-                    }
-                });
-            });
-            //官方
-            mui("body").on("tap", "a.x_3.mui-col-xs-6", function () {
-                mui.ajax(root + '/'+_this.type+'/'+_this.code+'/checkBetTable.html', {
-                    data: {"jspStr": "BetAmount-gfwf"},
-                    type: 'POST',
-                    success: function (data) {
-                        $("#xinyongWanfa").hide();
-                        $("#guanfangWanfa").show();
-                        $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
-                        $("a[data-code='ssc_yixing_dwd']").addClass("mui-active");
-                        $("a[data-code='zxfs']").addClass("mui-active");
-                        $("a.x_1.mui-col-xs-6").removeClass("x_active");
-                        $("a.x_3.mui-col-xs-6").addClass("x_active");
-                        $("#toobarTitle").text("官方玩法-定位胆");
-                        $("#GenraType").val("ssc_yixing_dwd");
-                        _this.changeList();
-                        $("#betAmount").html(data);
-                    }
-                });
-            });
         },
 
         //判断是为没有小玩法的大玩法点击时间,给各自玩法重写。

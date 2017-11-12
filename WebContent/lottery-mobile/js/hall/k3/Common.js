@@ -28,15 +28,17 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
             var dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
             var dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
             var jspName=$("a.selected-btn.main.mui-active").attr("data-jsp-name");
-            $('div.gfwf-bg').hide();
-            $('div.selected-wrap').hide();
+            // $('div.gfwf-bg').hide();
+            // $('div.selected-wrap').hide();
+
+            _this.closeTop();
             _this.getBetTable(dataCode,jspName);
             _this.resetBet();
         },
 
         changeList : function(){
             var lotteryGenra=$("#GenraType").val();
-            var betCode="ssc_dianshu";
+            var betCode="k3_dianshu";
             var jspStr="Points";
             if(lotteryGenra =="k3_tongxuan_santong"){
                 betCode="k3_tongxuan_santong";
@@ -49,7 +51,53 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                     $(".bet-table").html(data);
                 }
             });
-        }
+        },
+
+        //传统,官方玩法切换
+        isGfwf: function () {
+            var _this = this;
+            //信用
+            mui("body").on("tap", "a.x_1.mui-col-xs-6", function () {
+                mui.ajax(root + '/'+_this.type+'/'+_this.code+'/checkBetTable.html', {
+                    data: {"jspStr": "BetAmount-xywf"},
+                    type: 'POST',
+                    success: function (data) {
+                        $("#xinyongWanfa").show();
+                        $("#guanfangWanfa").hide();
+                        $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
+                        $("a[data-code='k3_dianshu']").addClass("mui-active");
+                        $("a[data-code='ds']").addClass("mui-active");
+                        $("a.x_1.mui-col-xs-6").addClass("x_active");
+                        $("a.x_3.mui-col-xs-6").removeClass("x_active");
+                        $("#toobarTitle").text("信用玩法-点数");
+                        $("#GenraType").val("k3_dianshu");
+                        _this.changeList();
+                        $("#betAmount").html(data);
+                        $("#betDiv").html()
+                    }
+                });
+            });
+            //官方
+            mui("body").on("tap", "a.x_3.mui-col-xs-6", function () {
+                mui.ajax(root + '/'+_this.type+'/'+_this.code+'/checkBetTable.html', {
+                    data: {"jspStr": "BetAmount-gfwf"},
+                    type: 'POST',
+                    success: function (data) {
+                        $("#xinyongWanfa").hide();
+                        $("#guanfangWanfa").show();
+                        $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
+                        $("a[data-code='k3_tongxuan_santong']").addClass("mui-active");
+                        $("a[data-code='bzxh']").addClass("mui-active");
+                        $("a.x_1.mui-col-xs-6").removeClass("x_active");
+                        $("a.x_3.mui-col-xs-6").addClass("x_active");
+                        $("#toobarTitle").text("官方玩法-三同号通选");
+                        $("#GenraType").val("k3_tongxuan_santong");
+                        _this.changeList();
+                        $("#betAmount").html(data);
+                    }
+                });
+            });
+        },
 
     });
 });

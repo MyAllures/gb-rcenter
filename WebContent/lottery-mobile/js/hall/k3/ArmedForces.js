@@ -6,7 +6,6 @@ define(['site/hall/k3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay,
         },
 
         showTable : function(){
-
             $("a[data-code='ds']").addClass("mui-active");
             $(".x_3.gfwf-playName").text("三军");
             $("span.x_1.gfwf-tit").text("三军");
@@ -15,6 +14,7 @@ define(['site/hall/k3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay,
             $("#toobarTitle").text("信用玩法-三军");
             $("a[data-code='ds'] span").text("三军");
         }
+
 
     });
 });
