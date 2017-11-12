@@ -26,7 +26,12 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
          */
         onPageLoad: function () {
             this._super();
+            var _this=this;
             $('a.needLock').addClass('disabled').lock();
+            $('[data-toggle="popover"]', _this.formSelector).popover({
+                trigger: 'hover',
+                placement: 'top'
+            });
         },
         //成功
         successMessage: function (e,option) {
