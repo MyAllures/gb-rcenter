@@ -109,8 +109,8 @@ function muiAjaxError() {
 }
 
 /**
- * 封装mui.ajax ajax请求方法
- *  options {url:请求地址　lading:是否加载中 data:}
+ * 封装 mui.ajax ajax请求方法
+ *  options {url:请求地址　lading:是否加载中 data:请求参数}
  * @param options
  */
 function muiAjax(options) {
