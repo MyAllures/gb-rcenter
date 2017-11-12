@@ -1,5 +1,5 @@
-define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template) {
-    return PlayWay.extend({
+define(['site/hall/Common', 'site/plugin/template'], function (Common, Template) {
+    return Common.extend({
         init: function () {
             this._super();
         },
@@ -57,17 +57,18 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
 
         checkNoSon:function(betCode,thisClassList){
             var _this = this;
-            $("a.selected-btn.mui-active").removeClass("mui-active");
-            thisClassList.toggle('mui-active');
-            var dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
-            var dataPlayId=$("a.selected-btn.main.mui-active").attr("data-play_id");
-            var jspName=$("a.selected-btn.main.mui-active").attr("data-jsp-name");
-            // $('div.gfwf-bg').hide();
-            // $('div.selected-wrap').hide();
-
-            _this.closeTop();
-            _this.getBetTable(dataCode,jspName);
-            _this.resetBet();
+            if(betCode !='ds' && betCode !='bzxh') {
+                $("a.selected-btn.mui-active").removeClass("mui-active");
+                thisClassList.toggle('mui-active');
+                var dataCode = $("a.selected-btn.main.mui-active").attr("data-code");
+                var dataPlayId = $("a.selected-btn.main.mui-active").attr("data-play_id");
+                var jspName = $("a.selected-btn.main.mui-active").attr("data-jsp-name");
+                // $('div.gfwf-bg').hide();
+                // $('div.selected-wrap').hide();
+                _this.closeTop();
+                _this.getBetTable(dataCode, jspName);
+                _this.resetBet();
+            }
         },
 
         changeList : function(){
@@ -96,9 +97,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                     data: {"jspStr": "BetAmount-xywf"},
                     type: 'POST',
                     success: function (data) {
-                        $("#xinyongWanfa").show();
-                        $("#guanfangWanfa").hide();
-                        $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
+                        _this.openXinyongwanfa(data);
                         $("a[data-code='k3_dianshu']").addClass("mui-active");
                         $("a[data-code='ds']").addClass("mui-active");
                         $("a.x_1.mui-col-xs-6").addClass("x_active");
@@ -106,10 +105,6 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                         $("#toobarTitle").text("信用玩法-点数");
                         $("#GenraType").val("k3_dianshu");
                         _this.changeList();
-                        $("#betAmount").html(data);
-                        // $("#betDiv").html();
-
-
                     }
                 });
             });
@@ -119,16 +114,13 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                     data: {"jspStr": "BetAmount-gfwf"},
                     type: 'POST',
                     success: function (data) {
-                        $("#xinyongWanfa").hide();
-                        $("#guanfangWanfa").show();
-                        $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
+                        _this.openGuanfangwanfa(data);
                         $("a[data-code='k3_tongxuan_santong']").addClass("mui-active");
                         $("a[data-code='bzxh']").addClass("mui-active");
                         $("a.x_1.mui-col-xs-6").removeClass("x_active");
                         $("a.x_3.mui-col-xs-6").addClass("x_active");
                         $("#toobarTitle").text("官方玩法-三同号通选");
                         $("#GenraType").val("k3_tongxuan_santong");
-                        $("#betAmount").html(data);
                         _this.changeList();
                     }
                 });

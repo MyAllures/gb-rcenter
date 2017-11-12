@@ -421,7 +421,23 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             if(typeof page.playway != 'undefined'){
                 page.playway.bindButtonEvents();
             }
+        },
+        
+        openGuanfangwanfa : function (data) {
+            $("#xinyongWanfa").hide();
+            $("#guanfangWanfa").show();
+            $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
+            $("#betAmount").html(data);
+        },
+        
+        openXinyongwanfa : function (data) {
+            $("#xinyongWanfa").show();
+            $("#guanfangWanfa").hide();
+            $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
+            $("#betAmount").html(data);
         }
+        
+        
 
     });
 });

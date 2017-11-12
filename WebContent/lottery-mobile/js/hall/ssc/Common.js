@@ -1,5 +1,5 @@
-define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template) {
-    return PlayWay.extend({
+define(['site/hall/Common', 'site/plugin/template'], function (Common, Template) {
+    return Common.extend({
         init: function () {
             this._super();
         },
@@ -88,7 +88,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
 
         checkNoSon : function (betCode,thisClassList) {
             var _this = this;
-            if(betCode !='zxfs'){
+            if(betCode !='zxfs' && betCode !='szp'){
                 $("a.selected-btn.mui-active").removeClass("mui-active");
                 thisClassList.toggle('mui-active');
                 var dataCode=$("a.selected-btn.mui-active").attr("data-code");
@@ -116,7 +116,6 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                     && dataCode !="ssc_zuxuanliu"
                     && dataCode !="ssc_kaudu"
                 ){
-
                     // $('div.gfwf-bg').slideUp();
                     // $('div.selected-wrap').slideUp();
                     // $('div.x_wrap').slideUp();
@@ -177,9 +176,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                     data: {"jspStr": "BetAmount-xywf"},
                     type: 'POST',
                     success: function (data) {
-                        $("#xinyongWanfa").show();
-                        $("#guanfangWanfa").hide();
-                        $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
+                        _this.openXinyongwanfa(data);
                         $("a[data-code='ssc_shuzipan']").addClass("mui-active");
                         $("a[data-code='szp']").addClass("mui-active");
                         $("a.x_1.mui-col-xs-6").addClass("x_active");
@@ -187,8 +184,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                         $("#toobarTitle").text("信用玩法-数字盘");
                         $("#GenraType").val("ssc_shuzipan");
                         _this.changeList();
-                        $("#betAmount").html(data);
-                        // $("#betDiv").html()
+
                     }
                 });
             });
@@ -198,9 +194,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                     data: {"jspStr": "BetAmount-gfwf"},
                     type: 'POST',
                     success: function (data) {
-                        $("#xinyongWanfa").hide();
-                        $("#guanfangWanfa").show();
-                        $("a.selected-btn.mui-col-xs-4").removeClass("mui-active");
+                        _this.openGuanfangwanfa(data);
                         $("a[data-code='ssc_yixing_dwd']").addClass("mui-active");
                         $("a[data-code='zxfs']").addClass("mui-active");
                         $("a.x_1.mui-col-xs-6").removeClass("x_active");
@@ -208,7 +202,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (PlayWay, Template
                         $("#toobarTitle").text("官方玩法-定位胆");
                         $("#GenraType").val("ssc_yixing_dwd");
                         _this.changeList();
-                        $("#betAmount").html(data);
+
                     }
                 });
             });
