@@ -42,8 +42,16 @@
 <#include "apiRechargeScript.ftl">
 <script>
     // PlayGameDemo iframe
+    var lottery_code = getlocationParam("lottery_code");
+    var _url = null;
+    if(lottery_code!=undefined && lottery_code!="undefined" && lottery_code!="null"){
+        _url = "/lottery/index.html?code="+lottery_code;
+    }else{
+        _url = "/lottery/index.html";
+    }
+
     $(document).ready(function() {
-        document.getElementById('box_playGameDemo_iframe').setAttribute('src',"/lottery/hall/index.html");
+        document.getElementById('box_playGameDemo_iframe').setAttribute('src',_url);
         var height=$(window).height() - (parseInt($(".CasinoGameOverlay").css("top"))||$("header").height()) + "px"
         $("#box_playGameDemo_iframe").css("height",height);
         $("#box_playGameDemo_iframe").css("width",$(window).width() + "px");
