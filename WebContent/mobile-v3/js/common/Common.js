@@ -211,14 +211,39 @@ function bindButtonEvent() {
      * 绑定使用button.tag标签
      */
     mui("body").on("tap", "[data-rel]", function (e) {
-        var options = eval("(" + $(this).data('rel') + ")");
-        var opType = options.opType;
-        if (opType == 'function') {
-            doFunction(this, options);
-        } else if (opType == 'dialog') {
-
+        var $target = $(this);
+        var isLocked = $target.isLocked();
+        if (isLocked) {
+            console.log("事件标签已被锁定");
+            return;
         }
+        $target.lock();
+        var options = eval("(" + $(this).data('rel') + ")");
+        var confirm = options.confirm;
+        if (confirm) {
+            showConfirmMsg(options, this);
+        }
+
     });
+}
+
+function doEvent(obj, options) {
+    var precall = options.precall;
+    //前置函数执行
+    if (precall && typeof precall == 'function' && !precall.apply(obj, [obj, options])) {
+        $target.unlock();
+        return false;
+    }
+    var opType = options.opType;
+    if (opType == 'function') {
+        doFunction(obj, options);
+    } else if (opType == 'dialog') {
+
+    } else if (opType == 'ajax') {
+        doAjax(obj, options);
+    } else if (opType == 'href') {
+        goToUrl(options.target);
+    }
 }
 
 /**
@@ -227,19 +252,13 @@ function bindButtonEvent() {
  * @param options
  */
 function doFunction(obj, options) {
-    var $target = $(obj);
-    var isLocked = $target.isLocked();
-    if (isLocked) {
-        console.log("事件标签已被锁定");
-        return;
-    }
-    $target.lock();
     var func = options.target;
     if (func && typeof func == 'function') {
         func.apply(this, [this, options]);
     } else {
         console.log(func + "方法找不到！");
     }
+    $(obj).unlock();
 }
 /**
  * 封装事件执行弹窗
@@ -247,7 +266,73 @@ function doFunction(obj, options) {
 function doDialog() {
 
 }
-
-function toast() {
+/**
+ * 封装事件执行ajax
+ */
+function doAjax(obj, options) {
+    var ajaxOption = {
+        url: options.target,
+        loading: true,
+        success: function (data) {
+            if (data.msg) {
+                toast(data.msg);
+            }
+            options.data = data;
+            var func = options.callback;
+            if (func && typeof func == 'function') {
+                func.apply(obj, [obj, options]);
+            }
+            $(obj).unlock();
+        }
+    };
+    //ajax请求参数
+    var post = options.post;
+    if (post && typeof post == 'function') {
+        ajaxOption.data = post.apply(obj, [obj, options]);
+    }
+    muiAjax(ajaxOption);
+}
+/**
+ * 消息提示
+ *
+ * @param msg
+ */
+function toast(msg) {
     var os = whatOs();
+    if (os == 'app_android') {
+        window.gamebox.toast(msg);
+    } else {
+        mui.toast(msg);
+    }
+}
+
+/**
+ * 确认弹窗
+ * @param options {btnArray:按钮组合,confirm:确认提示信息,}
+ * @param obj　target对象
+ */
+function showConfirmMsg(options, obj) {
+    var btnArray = options.btnArray || ['是', '否'];
+    mui.confirm(options.confirm, options.title, btnArray, function (e) {
+        if (e.index == 0) {
+            var func = options.event;
+            if (func && typeof func == 'function') {
+                func.apply(obj, [obj, options]);
+            }
+        }
+    })
+}
+
+/**
+ * 警告消息提示弹窗
+ * @param title 标题
+ * @param msg 提示信息
+ * @param callback 回调函数
+ */
+function showWarningMsg(title, msg, callback) {
+    mui.alert(msg, title, function () {
+        if (callback && typeof callback == 'function') {
+            callback();
+        }
+    });
 }
