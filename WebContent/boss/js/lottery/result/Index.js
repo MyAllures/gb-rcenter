@@ -55,16 +55,16 @@ define(['common/BaseListPage'], function (BaseListPage) {
 
             if(code){
                 $("#not-open-result-div").addClass("hide");
-                if(code=='hklhc'){
-                   // $("#query-time-div").addClass("hide");
+                if(code=='hklhc' || code=='tcpl3' || code=='fc3d'){
+                    $("#query-time-div").addClass("hide");
                 }else{
                     if($("[name='search.queryDate']").val()==""){
                         var date = this.setQueryDate(0);
                         $("[name='search.queryDate']").val(date);
                     }
-                    // $("#query-time-div").removeClass("hide");
+                     $("#query-time-div").removeClass("hide");
                 }
-                $("#query-time-div").removeClass("hide");
+                //$("#query-time-div").removeClass("hide");
                 $(".ssc-label").removeClass("ssc-active")
                 $("#lotteryCode").val(code);
                 $("#lotteryType").val(type);
@@ -303,5 +303,32 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 }
             });
         },
+        checkOpenTime:function (e,opt) {
+            // var _e = {
+            //     currentTarget:$(opt.currentTarget),
+            //     page:page
+            // };
+            // var option = {};
+            var openTime = $("#czOpenTime").val();
+            var flag = false;
+            window.top.topPage.ajax({
+                url: root + "/lotteryResult/checkOpenTime.html",
+                dataType: "json",
+                async:false,
+                data: {
+                    'result.openTime': openTime,
+                },
+                success: function(data) {
+                    if(data.code==1){
+                        // e.page.showPopover(e,opt, 'success', data.msg, true);
+                        flag = true;
+                    }else{
+                        e.page.showPopover(e,opt, 'danger', data.msg, true);
+                        flag = false;
+                    }
+                }
+            });
+            return flag;
+        }
     });
 });

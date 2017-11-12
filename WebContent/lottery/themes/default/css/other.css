@@ -197,7 +197,7 @@ table.touzhuArea {
     margin-top: 5px!important;
 }
 /*金额按钮*/
-.img-10000,.img-5000,.img-1000,.img-500,.img-100,.img-50{
+.img-10000,.img-5000,.img-1000,.img-500,.img-100,.img-50,.img-20,.img-10,.img-5{
     background-repeat: no-repeat;
     background-position: 0px 0px;
     float: left;
@@ -231,6 +231,18 @@ table.touzhuArea {
     background-image: url(../img/50.png) !important;
     background-size: 121px 30px;
 }
+.img-20{
+    background-image: url(../img/20.png) !important;
+    background-size: 121px 30px;
+}
+.img-10{
+    background-image: url(../img/10.png) !important;
+    background-size: 121px 30px;
+}
+.img-5{
+    background-image: url(../img/5.png) !important;
+    background-size: 121px 30px;
+}
 .main-left .rehd{
     padding-top: 5px;
     padding-bottom: 5px;
@@ -250,13 +262,14 @@ table.touzhuArea {
     background-position: -45px 0px;
 }
 
-.kjanniu .img-10000:hover,.kjanniu .img-5000:hover,.kjanniu .img-1000:hover,.kjanniu .img-500:hover,.kjanniu .img-100:hover,.kjanniu .img-50:hover {
+.kjanniu .img-10000:hover,.kjanniu .img-5000:hover,.kjanniu .img-1000:hover,.kjanniu .img-500:hover,.kjanniu .img-100:hover,.kjanniu .img-50:hover,.kjanniu .img-20:hover,.kjanniu .img-10:hover,.kjanniu .img-5:hover {
     background-position: -45px 0px;
 }
 
-.kjanniu .img-10000:active,.kjanniu .img-5000:active,.kjanniu .img-1000:active,.kjanniu .img-500:active,.kjanniu .img-100:active,.kjanniu .img-50:active {
+.kjanniu .img-10000:active,.kjanniu .img-5000:active,.kjanniu .img-1000:active,.kjanniu .img-500:active,.kjanniu .img-100:active,.kjanniu .img-50:active,.kjanniu .img-20:active,.kjanniu .img-10:active,.kjanniu .img-5:active {
     background-position: -86px;
 }
+
 
 
 .tzgz span.fr a{

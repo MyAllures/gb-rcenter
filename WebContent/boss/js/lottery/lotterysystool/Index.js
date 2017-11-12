@@ -8,10 +8,8 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
          * this._super();
          * 调用
          */
-        _this:null,
         init: function () {
             this._super();
-            this._this = this;
         },
         /**
          * 当前对象事件初始化函数
@@ -107,14 +105,15 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             if(this.checkRevokeParam(formobj,event,option)){
                 return;
             }
+            var _this = this;
             var codename = $(formobj).find("span[prompt='prompt']").text();//彩种名称
             var expect = $(formobj).find("input[name='search.expect']").val();
             var siteId = $(formobj).find("input[name='search.siteId']").val();
             var context = '';
             if (siteId == ''){
-                context = "您将对"+codename+expect+"期的所有未结算注单进行撤销,是否确认执行";
+                context = "您将对"+codename+","+expect+"期的所有未结算注单进行撤销,是否确认执行";
             }else {
-                context = "您将对站点"+siteId+codename+expect+"期的所有未结算注单进行撤销,是否确认执行";
+                context = "您将对站点"+siteId+","+codename+","+expect+"期的所有未结算注单进行撤销,是否确认执行";
             }
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
@@ -131,14 +130,15 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             if(this.checkRevokeParam(formobj,event,option)){
                 return;
             }
+            var _this = this;
             var codename = $(formobj).find("span[prompt='prompt']").text();//彩种名称
             var expect = $(formobj).find("input[name='search.expect']").val();
             var siteId = $(formobj).find("input[name='search.siteId']").val();
             var context = '';
             if (siteId == ''){
-                context = "您将对"+codename+expect+"期的所有已结算注单进行撤销,是否确认执行";
+                context = "您将对"+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行";
             }else {
-                context = "您将对站点"+siteId+codename+expect+"期的所有已结算注单进行撤销,是否确认执行";
+                context = "您将对站点"+siteId+","+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行";
             }
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
@@ -203,6 +203,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var code = $(formobj).find("input[name='result.code']").val();
             var expect = $(formobj).find("input[name='result.expect']").val();
             var siteId = $(formobj).find("input[name='siteId']").val();
+            var codename = $(formobj).find("span[prompt='prompt']").text();//彩种名称
             var btnOption = {};
             var type=1;
             if (code == ''){
@@ -225,7 +226,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                     if (data.status){
                         $("#opencode").val(data.msg);
                         if (siteId == ''){
-                            window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
+                            window.top.topPage.showConfirmMessage("你将对"+codename+"彩种"+expect+"期全平台所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
                                 if(bol){
                                 var formbj = $("#payoutForm")[0];
                                 _this.query1(e,option,formbj,null,type);
@@ -234,7 +235,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                                 }
                             });
                         }else {
-                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
+                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+codename+"彩种"+expect+"期所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
                                 if(bol){
                                 var formbj = $("#payoutForm")[0];
                                 _this.query1(e,option,formbj,null,type);
@@ -260,6 +261,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var expect = $(formobj).find("input[name='result.expect']").val();
             var siteId = $(formobj).find("input[name='siteId']").val();
             var btnOption = {};
+            var codename = $(formobj).find("span[prompt='prompt']").text();//彩种名称
             var type=2;
             if (code == ''){
                 e.page.showPopover(e,btnOption,"danger","彩种不能选择为空",true);
@@ -281,7 +283,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                     if (data.status){
                         $("#opencode1").val(data.msg);
                         if (siteId == ''){
-                            window.top.topPage.showConfirmMessage("你将对"+code+"彩种"+expect+"期全平台所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function(bol) {
+                            window.top.topPage.showConfirmMessage("你将对"+codename+"彩种"+expect+"期全平台所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function(bol) {
                                 if (bol) {
                                 var formbj = $("#heavyForm")[0];
                                 _this.query1(e, option, formbj, null, type);
@@ -290,7 +292,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                                 }
                             });
                         }else {
-                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+code+"彩种"+expect+"期全平台所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function (bol) {
+                            window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+codename+"彩种"+expect+"期所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function (bol) {
                                 if(bol){
                                 var formbj = $("#heavyForm")[0];
                                 _this.query1(e,option,formbj,null,type);
