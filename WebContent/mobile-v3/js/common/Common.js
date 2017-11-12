@@ -221,7 +221,10 @@ function bindButtonEvent() {
         var options = eval("(" + $(this).data('rel') + ")");
         var confirm = options.confirm;
         if (confirm) {
+            options.event = doEvent(this, options);
             showConfirmMsg(options, this);
+        } else {
+            doEvent(this, options);
         }
 
     });
@@ -237,9 +240,7 @@ function doEvent(obj, options) {
     var opType = options.opType;
     if (opType == 'function') {
         doFunction(obj, options);
-    } else if (opType == 'dialog') {
-
-    } else if (opType == 'ajax') {
+    }  else if (opType == 'ajax') {
         doAjax(obj, options);
     } else if (opType == 'href') {
         goToUrl(options.target);
@@ -260,12 +261,7 @@ function doFunction(obj, options) {
     }
     $(obj).unlock();
 }
-/**
- * 封装事件执行弹窗
- */
-function doDialog() {
 
-}
 /**
  * 封装事件执行ajax
  */
