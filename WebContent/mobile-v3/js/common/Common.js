@@ -91,7 +91,7 @@ function muiAjaxError() {
         if (status == 600) {//Session过期 跳转登录页面
             window.top.location.href = window.top.root + "/login/commonLogin.html";
         } else if (status == 606) {// 踢出
-            _this.gotoUrl(root + "/errors/" + status + ".html");
+            gotoUrl(root + "/errors/" + status + ".html");
         } else if (status == 608) {
             mui.toast(window.top.message.common["repeat.request.error"]);
         } else if (status >= 0 && settings.comet != true) { //606、403、404、605等状态码跳转页面
@@ -197,8 +197,8 @@ function goToUrl(url) {
         waiting: {
             autoShow: true,
             title: '正在加载...',
-            loading: _this.showLoading,
-            close: _this.hideLoading
+            loading: showLoading,
+            close: hideLoading
         }
     })
 }
