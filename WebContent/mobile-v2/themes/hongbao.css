@@ -1,0 +1,334 @@
+.hongbao-wrap {
+  width: 120px;
+  height: 110px;
+  position: fixed;
+  right: 0;
+  bottom: 85px;
+  z-index: 2001;
+  cursor: pointer;
+  margin: 0;
+  -webkit-transform: rotateZ(0);
+  transform: rotateZ(0);
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+}
+.hongbao-wrap .extra, .hongbao-wrap .img {
+  position: absolute;
+}
+.hongbao-wrap .img {
+  -webkit-animation: scaleIn 3s infinite;
+  animation: scaleIn 3s infinite;
+}
+.hongbao-wrap .hongbao-slider .mui-slider-item {
+  height: 104.3px;
+}
+.hongbao-wrap .mui-slider-indicator {
+  bottom: -7px;
+}
+.hongbao-wrap .hb_type_1 .extra {
+  background: url(images/hongbao/hongbao_type1.png) 0 0/100%;
+  width: 67.55px;
+  height: 67.2px;
+  top: 27.3px;
+  left: 26px;
+}
+.hongbao-wrap .hb_type_1 .img {
+  background: url(images/hongbao/hongbao_extra1_hover.png) 0 0/100%;
+  width: 95.9px;
+  height: 78.05px;
+  top: 17.5px;
+  left: 15px;
+}
+.hongbao-wrap .hb_type_1:hover .extra {
+  background-image: url(images/hongbao/hongbao_type1_hover.png) 0 0/100%;
+}
+.hongbao-wrap .hb_type_3 .extra {
+  background: url(images/hongbao/hongbao_type2.png) 0 0/100%;
+  width: 71.4px;
+  height: 66.85px;
+  top: 29.4px;
+  left: 23.1px;
+}
+.hongbao-wrap .hb_type_3 .img {
+  background: url(images/hongbao/hongbao_extra2_hover.png) 0 0/100%;
+  width: 117.6px;
+  height: 74.9px;
+  top: 22.4px;
+  left: 0;
+}
+.hongbao-wrap .hb_type_3:hover .extra {
+  background-image: url(images/hongbao/hongbao_type2_hover.png) 0 0/100%;
+}
+.hongbao-wrap .hb_type_2 .extra {
+  background: url(images/hongbao/hongbao_type3.png) 0 0/100%;
+  width: 75.25px;
+  height: 99.4px;
+  top: 7.7px;
+  left: 20.3px;
+}
+.hongbao-wrap .hb_type_2 .img {
+  background: url(images/hongbao/hongbao_extra3_hover.png) 0 0/100%;
+  width: 93.1px;
+  height: 58.8px;
+  top: 0;
+  left: 5.6px;
+}
+.hongbao-wrap .hb_type_2:hover .extra {
+  background-image: url(images/hongbao/hongbao_type3_hover.png) 0 0/100%;
+}
+.hongbao-wrap.hide_hongbao {
+  right: 50%;
+  margin-right: -60.2px;
+  bottom: 50%;
+  margin-bottom: -52.15px;
+  -webkit-transform: rotateZ(720deg);
+  transform: rotateZ(720deg);
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+/* caidai donghua */
+@-webkit-keyframes scaleIn {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scaleIn {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes rotateZ {
+  from {
+    -webkit-transform: rotateZ(0);
+    transform: rotateZ(0);
+  }
+  to {
+    -webkit-transform: rotateZ(360deg);
+    transform: rotateZ(360deg);
+  }
+}
+@keyframes rotateZ {
+  from {
+    -webkit-transform: rotateZ(0);
+    transform: rotateZ(0);
+  }
+  to {
+    -webkit-transform: rotateZ(360deg);
+    transform: rotateZ(360deg);
+  }
+}
+.hongbao_detail {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2001;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+}
+.hongbao_detail .hongbao_inner {
+  width: 396.89px;
+  height: 378px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.hongbao_detail .hongbao_inner .icon-close {
+  background: url(images/hongbao/icon-close.png) 0 0/100%;
+  width: 26.27px;
+  height: 25.56px;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 50px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.hongbao_detail .hongbao_inner .icon-close:hover {
+  -webkit-transform: rotateZ(90deg);
+  transform: rotateZ(90deg);
+}
+.hongbao_detail .hongbao_inner .hongbao {
+  background: url(images/hongbao/hongbao_open_bg.png) 0 0/100%;
+  width: 226.49px;
+  height: 320.21px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -112.89px;
+  z-index: 2;
+}
+.hongbao_detail .hongbao_inner .hongbao .icon-open {
+  background: url(images/hongbao/icon-open.png) no-repeat 0 0/100%;
+  width: 89.46px;
+  height: 90.88px;
+  position: absolute;
+  left: 50%;
+  margin-left: -44.73px;
+  top: 56.8px;
+  cursor: pointer;
+}
+.hongbao_detail .hongbao_inner .hongbao .icon-open:hover {
+  background-image: url(images/hongbao/icon-open-hover.png);
+}
+.hongbao_detail .hongbao_inner .hongbao .hongbao-time-txt {
+  font-size: 11.36px;
+  color: #f7dc8b;
+  text-align: center;
+}
+.hongbao_detail .hongbao_inner .hongbao .hongbao-time {
+  font-size: 12.07px;
+  font-weight: bold;
+  color: #ffc000;
+  text-align: center;
+}
+.hongbao_detail .hongbao_inner .hongbao .btn-rule {
+  display: block;
+  margin: 10px auto 0;
+  background: url(images/hongbao/icon-hongbao-rule.png) 0 0/100%;
+  width: 142px;
+  height: 44.73px;
+}
+.hongbao_detail .hongbao_inner .hongbao .btn-rule:hover {
+  background-image: url(images/hongbao/icon-hongbao-rule-hover.png);
+}
+.hongbao_detail .hongbao_inner .hongbao.disabled .icon-open {
+  background-image: url(images/hongbao/icon-open-disabled.png);
+  cursor: not-allowed;
+}
+.hongbao_detail .hongbao_inner .hongbao .hongbao-rule {
+  background: url(images/hongbao/hongbao-rule-bg.png) no-repeat center 10px/89%;
+  width: 226.49px;
+  height: 312.4px;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  display: none;
+}
+.hongbao_detail .hongbao_inner .hongbao .hongbao-rule .txt {
+  margin: 80px auto 0;
+  width: 157.62px;
+  color: #8a080f;
+  font-size: 13.49px;
+  line-height: 1.5;
+  height: 156.2px;
+  overflow: auto;
+}
+.hongbao_detail .hongbao_inner .hongbao .hongbao-rule .icon-close-rule {
+  display: block;
+  background: url(images/hongbao/icon-close-rule.png) 0 0/100%;
+  width: 91.59px;
+  height: 32px;
+  margin: 40px auto 0;
+}
+.hongbao_detail .hongbao_inner .hongbao .hongbao-rule .icon-close-rule:hover {
+  background-image: url(images/hongbao/icon-close-rule-hover.png);
+}
+.hongbao_detail .hongbao_inner .hongbao .tips {
+  display: none;
+  line-height: 1.5;
+  position: absolute;
+  top: 42.6px;
+  text-align: center;
+  left: 0;
+  right: 0;
+}
+.hongbao_detail .hongbao_inner .hongbao .tips .ttxt-1 {
+  font-size: 30.53px;
+  color: #d11623;
+}
+.hongbao_detail .hongbao_inner .hongbao .tips .ttxt-2 {
+  font-size: 22.01px;
+  color: #8c141c;
+  font-weight: bold;
+}
+.hongbao_detail .hongbao_inner .hongbao .tips.lose-hongbao .ttxt-2 {
+  font-size: 14.2px;
+}
+.hongbao_detail .hongbao_inner .hongbao_extra {
+  opacity: 0;
+  -webkit-animation: scaleIn 1s 1s forwards;
+  animation: scaleIn 1s 1s forwards;
+  background: url(images/hongbao/hongbao_open_extra.png) 0 0/100%;
+  width: 335.83px;
+  height: 355.71px;
+  z-index: 1;
+  top: 30px;
+  position: absolute;
+  left: 29.82px;
+}
+.hongbao_detail .hongbao_inner.opened .hongbao {
+  background: url(images/hongbao/opened_hongbao_bg.png) 0 0/100%;
+  height: 355.71px;
+}
+.hongbao_detail .hongbao_inner.opened .caidai {
+  opacity: 0;
+  -webkit-animation: scaleIn 1s 1s forwards;
+  animation: scaleIn 1s 1s forwards;
+  background: url(images/hongbao/opened_line.png) 0 0/100%;
+  width: 433.81px;
+  height: 479.96px;
+}
+.hongbao_detail .hongbao_inner.opened .hongbao-light {
+  -webkit-animation: rotateZ 50s infinite;
+  animation: rotateZ 50s infinite;
+  background: url(images/hongbao/opened_light.png) 0 0/100%;
+  width: 421.74px;
+  height: 421.74px;
+  position: absolute;
+  top: -51.12px;
+  z-index: 2;
+  left: 50%;
+  margin-left: -210.87px;
+}
+.hongbao_detail .hongbao_inner.opened .btn-ok {
+  background: url(images/hongbao/icon-close-rule.png) 0 0/100%;
+  width: 91.59px;
+  height: 39.05px;
+  position: absolute;
+  bottom: 21.3px;
+  left: 50%;
+  margin-left: -45.44px;
+  z-index: 3;
+}
+.hongbao_detail .hongbao_inner.opened .btn-ok:hover {
+  background-image: url(images/hongbao/icon-close-rule-hover.png);
+}
+
+.hongbao-wrap .icon-close{     background: url(images/hongbao/icon-close-1.png) 0 0 /100%;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 30;
+  top: 30;
+  transition: all 0.3s;
+  cursor: pointer;
+  z-index: 4;}
+.hongbao-wrap .icon-close:hover{
+  transform: rotateZ(90deg);
+}
+

@@ -1,7 +1,7 @@
 /**
  * 公司入款金流顺序
  */
-define(['common/BaseEditPage', 'nestable', 'css!themesCss/jquery/plugins/jquery.nestable/jquery.nestable.css'], function (BaseEditPage, nestable) {
+define(['common/BaseEditPage', 'nestable', 'bootstrapswitch', 'css!themesCss/jquery/plugins/jquery.nestable/jquery.nestable.css'], function (BaseEditPage, nestable, Bootstrapswitch) {
     return BaseEditPage.extend({
         init: function () {
             this.formSelector = "form[name=companySortForm]";
@@ -10,6 +10,7 @@ define(['common/BaseEditPage', 'nestable', 'css!themesCss/jquery/plugins/jquery.
         onPageLoad: function () {
             this._super();
             this.initNestable();
+            this.initCheck();
         },
         bindEvent: function () {
             this._super();
@@ -21,6 +22,38 @@ define(['common/BaseEditPage', 'nestable', 'css!themesCss/jquery/plugins/jquery.
                 $(".table-responsive").hide();
                 $("#" + data + ".table-responsive").show();
             });
+        },
+        /**
+         * 初始化checkbox
+         */
+        initCheck:function() {
+            //是否开启多个账号
+            var $bootstrapSwitch = $("[name='openMoreAccount']");
+            this.unInitSwitch($bootstrapSwitch)
+                .bootstrapSwitch()
+                .on('switchChange.bootstrapSwitch', function (event, state) {
+                    var rankId = $("input[name='openMoreAccount']").attr("data-rank");
+                    window.top.topPage.ajax({
+                        url: root + '/vPayAccount/changeOpenAccounts.html',
+                        dataType: 'json',
+                        data: {'rankId': rankId, 'state': state},
+                        success: function (data) {
+                            if (data && data == true) {
+                                var $obj = $("[name='openMoreAccount']");
+                                window.top.topPage.customerPopover($obj, window.top.message.common['save.success']);
+                                return true;
+                            } else {
+                                window.top.topPage.customerPopover($obj, window.top.message.common['save.fail']);
+                                if (state == true) {
+                                    $bootstrapSwitch.bootstrapSwitch('state', false, true);
+                                } else {
+                                    $bootstrapSwitch.bootstrapSwitch('state', true, true);
+                                }
+                                return false;
+                            }
+                        }
+                    });
+                });
         },
         /**
          * 拖动排序初始化
@@ -52,6 +85,7 @@ define(['common/BaseEditPage', 'nestable', 'css!themesCss/jquery/plugins/jquery.
                     $(e.currentTarget).addClass("current");
                     $("#companySort").html(data);
                     _this.initNestable();
+                    _this.initCheck();
                     $(e.currentTarget).unlock();
                 }
             });

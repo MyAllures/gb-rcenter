@@ -75,16 +75,60 @@ define(['common/MobileBasePage'], function (Mobile) {
                 var target = $(this).data('target');
                 var dos = $(this).data('os');
                 var url = $(this).data('skip');
-                if (_this.os === 'app_android' && typeof target !== 'undefined') {
-                    window.gamebox.gotoFragment(target);
-                } else if (dos === 'app_ios') {
-                    if (target || target === 0) {
-                        gotoTab(target);
-                    } else {
-                        gotoGame(url);
-                    }
+                if(isLogin == 'true') {
+                    var postData = {};
+                    postData.apiId = 22;
+                    mui.ajax(root + "/transfer/auto/loginAndAutoTransfer.html", {
+                        dataType: 'json',
+                        data: postData,
+                        type: "POST",
+                        success: function (data) {
+                            _this.hideLoading();
+                            if (data) {
+                                if (_this.os === 'app_android' && typeof target !== 'undefined') {
+                                    window.gamebox.gotoFragment(target);
+                                } else if (dos === 'app_ios') {
+                                    if (target || target === 0) {
+                                        gotoTab(target);
+                                    } else {
+                                        gotoGame(url);
+                                    }
+                                } else {
+                                    _this.gotoUrl(url);
+                                }
+                            } else {
+                                _this.openLayer(window.top.message.game_auto['无法登录']);
+                                $("[class='mui-backdrop mui-active']").remove();
+                                _this.reload();
+                            }
+                        },
+                        error: function (error) {
+                            if (error.status === 600) {
+                                _this.signIn(postData);
+                            } else if (error.status === 606) {
+                                _this.gotoUrl(root + '/errors/606.html');
+                            } else {
+                                _this.openLayer(window.top.message.game_auto['无法登录']);
+                                $("[class='mui-backdrop mui-active']").remove();
+                                _this.reload();
+                            }
+                        },
+                        complete: function () {
+                            _this.hideGameLoading();
+                        }
+                    });
                 } else {
-                    _this.gotoUrl(url);
+                    if (_this.os === 'app_android' && typeof target !== 'undefined') {
+                        window.gamebox.gotoFragment(target);
+                    } else if (dos === 'app_ios') {
+                        if (target || target === 0) {
+                            gotoTab(target);
+                        } else {
+                            gotoGame(url);
+                        }
+                    } else {
+                        _this.gotoUrl(url);
+                    }
                 }
             });
         },
