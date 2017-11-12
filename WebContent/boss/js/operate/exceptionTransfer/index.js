@@ -149,7 +149,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                         var apiTransId = $(".danger .apiTransId").text();
                         $(".apiTransactionNo").each(function () {
                             var apiTransactionNo = $(this).text();
-                            if((apiTransactionNo　!= '' && apiTransactionNo.indexOf(transactionNo)>-1) || (apiTransId!= '' && apiTransactionNo.indexOf(apiTransId)>-1)){
+                            if((apiTransactionNo!= '' && apiTransactionNo.indexOf(transactionNo)>-1) || (apiTransId!= '' && apiTransactionNo.indexOf(apiTransId)>-1)){
                                 $("#isFind").text(transactionNo+"已匹配到API记录!");
                                 return;
                             }

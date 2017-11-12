@@ -42,7 +42,7 @@ define(['gb/common/BaseEditPage'], function(BaseEditPage) {
         /**
          * 拼装标签CODE
          */
-        pieceRole: function () {　
+        pieceRole: function () {
             var Selected = $("#roleSelectTag").children();
             var selectVal = "";
             $(Selected).each(function (index) {

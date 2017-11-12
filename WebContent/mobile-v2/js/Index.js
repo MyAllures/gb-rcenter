@@ -52,7 +52,7 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
             // 刷新页面后获取容器高度，解决IOS设备刷新时出现空白页问题
             $('.mui-inner-wrap').height();
             /* 关闭浮窗广告 */
-            mui(".ads-slider").on("tap",".close-ads",function(){
+            mui(".ads-slider").on("tap",".icon-close",function(){
                 $(".ads-slider").hide();
             });
             mui(".ads-slider").on("tap",".float_idx",function () {
@@ -61,8 +61,38 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
                     _this.canShowLottery(activityId);
                 }
             })
+            this.gotoDemo();
         },
-
+        /** 试玩 */
+        gotoDemo: function () {
+            var _this = this;
+            mui('body').on('tap', '.btn-try', function () {
+                layer.open({
+                    title: window.top.message.game_auto['提示'],
+                    content: window.top.message.game_auto['欢迎使用试玩模式'],
+                    btn: [window.top.message.game_auto['确定'], ''],
+                    yes: function (index) {
+                        layer.close(index);
+                        sessionStorage.is_login = true;
+                        if (_this.os === 'app_ios') {
+                            demoEnter();
+                        } else {
+                            mui.ajax('/signUp/createFreeAccount.html', {
+                                dataType: 'json',
+                                type: 'POST',
+                                success: function (data) {
+                                    if (data.status) {
+                                        var demoModel = data.demoModel;
+                                        sessionStorage.demoModel = demoModel;
+                                        _this.gotoUrl('/mainIndex.html');
+                                    }
+                                }
+                            })
+                        }
+                    }
+                })
+            });
+        },
         initPage: function () {
             var _this = this;
 

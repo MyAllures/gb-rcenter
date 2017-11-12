@@ -53,7 +53,13 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 }
                 var state = xhr.getResponseHeader("headerStatus") || xhr.status;
                 if (state == 600) {//Session过期
-                    window.top.location.href = window.top.location.href;
+                    if (settings.comet == true) {
+                        var myRoot = (root || "/");
+                        myRoot = myRoot.lastIndexOf("/") == -1 ? myRoot + "/" : myRoot;
+                        window.top.location.href = myRoot;
+                    } else {
+                        window.top.location.href = settings.url;
+                    }
                 }
                 else if (state == 601) {//需要权限密码验证
                     _this.checkPrivilege({
