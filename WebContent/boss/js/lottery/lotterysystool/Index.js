@@ -28,28 +28,14 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
             this.unInitSwitch($('input[type=checkbox][name=my-checkbox]')).bootstrapSwitch({
 
-                onText: window.top.message.content['floatPic.display.on'],
-                offText: window.top.message.content['floatPic.display.off'],
+                onText: "开",
+                offText: "关",
                 onSwitchChange: function (e, state) {
 
                     var _target = e.currentTarget;
                     var msg="关闭后, 当前站点配置的彩票状态非正常，不能跳转彩票页面，确认关闭吗？";
 
                     if (!$(_target).attr("isChanged")&&!state) {
-
-                        window.top.topPage.ajax({
-                            url: root + '/lotterySysTool/lotteryMaintain.html',
-                            dataType: "json",
-                            data: {"state":true},
-                            success: function (data) {
-                                if(!data.state){
-                                    page.showPopover(event,option,"danger",data.msg,true);
-                                }
-                            }
-                        });
-                        return true;
-
-                    }else if(!$(_target).attr("isChanged")&&state) {
 
                         var okLabel = window.top.message.setting['common.ok'];
                         var cancelLabel = window.top.message.setting['common.cancel'];
@@ -69,7 +55,21 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                                     }
                                 });
                             }
-                        })
+                        });
+
+                    }else if(!$(_target).attr("isChanged")&&state) {
+
+                        window.top.topPage.ajax({
+                            url: root + '/lotterySysTool/lotteryMaintain.html',
+                            dataType: "json",
+                            data: {"state":true},
+                            success: function (data) {
+                                if(!data.state){
+                                    page.showPopover(event,option,"danger",data.msg,true);
+                                }
+                            }
+                        });
+                        return true;
 
                     } else if($(_target).attr("isChanged")){
                         $(_target).removeAttr("isChanged");
@@ -151,13 +151,18 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
         },
 
-        gatherOpenCode: function (event,option) {
+        collectOpenCode: function (event,option) {
 
-            var form = $("#gatherOpenCodeForm");
+            var form = $("#collectOpenCodeForm");
             var date = form.find("input").val();
             var code = null;
             var codeName = form.find("span[prompt='prompt']").text();//彩种名称
             var context = "您将采集 "+codeName + ", "+date+"的所有已开奖号码";
+            if(codeName=="请选择" || !date){
+                page.showPopover(event,option,"danger","请选择彩种和日期",true);
+                $(event.currentTarget).unlock();
+                return;
+            }
 
             $("#lotteryList li a").each(function(i){
                 if($(this).text()==codeName){
