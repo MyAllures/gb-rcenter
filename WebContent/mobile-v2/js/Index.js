@@ -52,7 +52,7 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
             // 刷新页面后获取容器高度，解决IOS设备刷新时出现空白页问题
             $('.mui-inner-wrap').height();
             /* 关闭浮窗广告 */
-            mui(".ads-slider").on("tap",".close-ads",function(){
+            mui(".ads-slider").on("tap",".icon-close",function(){
                 $(".ads-slider").hide();
             });
             mui(".ads-slider").on("tap",".float_idx",function () {
