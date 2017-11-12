@@ -118,15 +118,17 @@ header{
         ul{margin: 5px 0;}
         li{height: 40px;line-height: 40px;padding-left: 66px;position: relative;        
             &:before{content: ''; background: url(images/icon-side-menu-sprite.png) no-repeat 0 0/28px;width: 30px;height: 30px;position: absolute;    left: 20px;  top: 5px;}           
-            &:nth-child(1):before{background-position: center 1px;}
-            &:nth-child(2):before{background-position: center -44px;}
-            &:nth-child(3):before{background-position: center -88px;}
-            &:nth-child(4):before{background-position: center -134px;}
-            &:nth-child(5):before{background-position: center -178px;}
-            &:nth-child(6):before{background-position: center -224px;}
-            &:nth-child(7):before{background-position: center -269px;}
-            &:nth-child(8):before{background-position: center -314px;}
-            &:nth-child(9):before{background-position: center -360px;}
+            &.home:before{background-position: center 1px;}
+            &.pro:before{background-position: center -44px;}
+            &.download:before{background-position: center -88px;}
+            &.deposit:before{background-position: center -134px;}
+            &.about:before{background-position: center -178px;}
+            &.question:before{background-position: center -224px;}
+            &.service:before{background-position: center -269px;}
+            &.reg_rules:before{background-position: center -314px;}
+            &.lang:before{background-position: center -360px;}
+            &.pc:before{background-position: center -448px;}
+            &.trans:before{background-position: center -404px;}
             &.lang:after{content: ''; background: url(images/icon-flag.png) no-repeat 0 0/30px;   width: 30px;   height: 22px;   position: absolute;   top: 8px;   left: 100px;}
             &.lang.zh-CN:after{background-position: 0 0;}
             &.lang.ja-JP:after{background-position: 0 -32px;}

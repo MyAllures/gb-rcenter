@@ -256,13 +256,34 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var siteName = msgBody.siteName;
             var key = 'profit.' + level + '.warning';
             var msg = window.top.message.report[key];
+            var countDown = window.top.message.setting_auto['倒计时'];
+            var hours = window.top.message.setting_auto['小时'];
+            var minutes= window.top.message.setting_auto['分'];
+            var tips = window.top.message.setting_auto['tips'];
             if (msg) {
                 msg = msg.replace("${siteName}", siteName);
                 msg = msg.replace("${rate}", rate);
                 var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), window.top.dateFormat.daySecond);
+                var leftTime = new Date(msgBody.leftTime);
+                var now = new Date();
+                var time = parseInt((leftTime-now)/60000);
+                sessionStorage.setItem("minutes",time);
                 msg = msg.replace("${leftTime}", date);
-                if (rate >= 100) {
-                    var html = '<div class="line-hi34 m-sm">'+msg+'</div>';
+                var tmpTime = time;
+                var hour = Math.floor(tmpTime / 60);
+                tmpTime = tmpTime - hour * 60;
+                var minute = tmpTime;
+                if (minute < 10) {
+                    minute = '0' + minute;
+                }
+                if (rate >= 100){
+                    if (level=='red'){
+                        var html = '<div class="sys_tab_wrap p-xs"><div class="co-orange fs36 line-hi25 al-center"><i class="fa fa-exclamation-circle"></i></div><div class="line-hi34 m-sm">'+msg+'</div></div>'+
+                            '<div class="sys_tab_wrap p-xs"><b class="fs16">'+countDown+'</b><span class="fs20 ft-bold co-red" id="leftTime" data-time="${leftTime}"><span id="hour">'+hour+'</span>'+hours+'<span id="minute">'+minute+'</span>'+minutes+'</span></div>'
+                            +'<div>'+tips+'</div>';
+                    }else if (level=='stop'){
+                        var html = '<div class="line-hi34 m-sm">'+msg+'</div>';
+                    }
                     var dialog = BootstrapDialog.show({
                         title: window.top.message.setting_auto['消息'],
                         message: html,
@@ -283,6 +304,12 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                             dialog.close();
                         }
                     });
+                    if (date && date.length > 0) {
+                        window.top.popUp.showLeftTime();
+                        var interval = setInterval(function () {
+                            window.top.popUp.showLeftTime(interval)
+                        }, 60 * 1000);
+                    }
                 } else if ($("#topSecurity") && $("#topSecurity").length > 0) {
                     window.top.topPage.showWarningMessage(msg);
                 }
@@ -304,6 +331,23 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 $("#topSecurity").removeClass("risk");
                 $("#topSecurity").addClass(className);
             }
+        },
+        showLeftTime: function (interval) {
+            var time = sessionStorage.getItem("minutes");
+            if (time < 0 && interval) {
+                window.clearInterval(interval);
+                return;
+            }
+            var tmpTime = Number(time);
+            var hour = Math.floor(tmpTime / 60);
+            tmpTime = tmpTime - hour * 60;
+            var minute = tmpTime;
+            if (minute < 10) {
+                minute = '0' + minute;
+            }
+            $("span#hour").text(hour);
+            $("span#minute").text(minute);
+            sessionStorage.setItem("minutes",--time);
         },
         rankInadequate: function (data) {
             var btnOption = {};
@@ -460,18 +504,72 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
         transferLimit: function (data) {
             var msgBody = $.parseJSON($.parseJSON(data).msgBody);
             var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), dateFormat.daySecond);
+            var leftTime = new Date(msgBody.leftTime);
+            var now = new Date();
+            var time = parseInt((leftTime-now)/60000);
+            sessionStorage.setItem("minutes",time);
             var rate = Number(msgBody.rate);
             var warnRate = Number(msgBody.warnRate);
             var stopRate = Number(msgBody.stopRate);
+            var countDown = window.top.message.setting_auto['倒计时'];
+            var hours = window.top.message.setting_auto['小时'];
+            var minutes= window.top.message.setting_auto['分'];
+            var tips = window.top.message.setting_auto['tips'];
             if (rate >= stopRate) { //立即停止
                 var msg = window.top.message.setting_auto['您站点的转账上限使用已超出'];
                 msg = msg.replace("${stopRate}",stopRate);
-                window.top.topPage.showConfirmMessage(msg)
+                var html='<div class="line-hi34 m-sm">'+msg+'</div>';
+                var dialog=BootstrapDialog.show({
+                    title: window.top.message.setting_auto['消息'],
+                    message: html,
+                    buttons:[{
+                        label: '确定',
+                        cssClass: 'btn-primary',
+                        action: function (dialog) {
+                            dialog.close();
+                        }
+                }],
+            });
             } else if (rate >= warnRate) {
                 var msg = window.top.message.setting_auto['您站点的额度已用'];
                 msg = msg.replace("${rate}",rate);
                 msg = msg.replace("${leftTime}",date);
-                window.top.topPage.showConfirmMessage(msg);
+                var tmpTime = time;
+                var hour = Math.floor(tmpTime / 60);
+                tmpTime = tmpTime - hour * 60;
+                var minute = tmpTime;
+                if (minute < 10) {
+                    minute = '0' + minute;
+                }
+                var html = '<div class="sys_tab_wrap p-xs"><div class="co-orange fs36 line-hi25 al-center"><i class="fa fa-exclamation-circle"></i></div><div class="line-hi34 m-sm">'+msg+'</div></div>'+
+                    '<div class="p-xs" style="text-align: center"><b class="fs16">'+countDown+'</b><span class="fs20 ft-bold co-red" id="leftTime" data-time="${leftTime}"><span id="hour">'+hour+'</span>'+hours+'<span id="minute">'+minute+'</span>'+minutes+'</span></div>'
+                    +'<div class="p-xs">'+tips+'</div>';
+                var dialog = BootstrapDialog.show({
+                    title: window.top.message.setting_auto['消息'],
+                    message: html,
+                    buttons: [{
+                        label: window.top.message.setting_auto['去充值'],
+                        action: function (dialog) {
+                            dialog.close();
+                            $("#mainFrame").load(root + "/credit/pay/pay.html");
+                        }
+                    }, {
+                        label: window.top.message.setting_auto['取消'],
+                        cssClass: 'btn-primary',
+                        action: function (dialog) {
+                            dialog.close();
+                        }
+                    }],
+                    onhidden: function (dialog) {
+                        dialog.close();
+                    }
+                });
+                if (date && date.length > 0) {
+                    window.top.popUp.showLeftTime();
+                    var interval = setInterval(function () {
+                        window.top.popUp.showLeftTime(interval)
+                    }, 60 * 1000);
+                }
             }
         }
     });
