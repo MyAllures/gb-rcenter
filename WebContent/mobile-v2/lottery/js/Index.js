@@ -138,20 +138,6 @@ define(['site/include/BaseIndex', '../js/template', '../js/Zodiac'], function (B
             }
         },
 
-        /** 一些IOS上有的Bug */
-        iosBug: function () {
-            // 刷新页面后获取容器高度，解决IOS设备刷新时出现空白页问题
-            $('.mui-inner-wrap').height();
-            //苹果safari浏览器首页的底部导航栏,首页和我的图标不显示问题
-            $(window).bind("pageshow", function () {
-                if (isLoad && _this.os === 'ios') {
-                    $("#footer_index").addClass("mui-active");
-                    $("[id!='footer_index'][id*='footer_']").removeClass("mui-active");
-                }
-                isLoad = true;
-            });
-        },
-
         /** 查询开奖结果 */
         getOpenResult: function () {
             var _this = this;

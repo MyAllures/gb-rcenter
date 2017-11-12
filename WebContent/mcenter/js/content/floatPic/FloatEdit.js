@@ -278,12 +278,14 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                                     _this.previewFloatPic(e,opt);
                                 }, opt);
                             }else {
+                                $("#ctt_float_pic_item_div").remove();
                                 window.top.topPage.doAjax(e,opt);
                             }
                         }
                     }
                 });
             }else{
+                $("#ctt_float_pic_item_div").remove();
                 return true;
             }
             $("#ctt_float_pic_item_div").remove();

@@ -42,43 +42,12 @@ define(['moment'], function (moment) {
                 _this.resetScreen();
             });
             _this.goBack();
-
-            this.gotoDemo();
             this.iosBug();
-        },
-        /** 试玩 */
-        gotoDemo: function () {
-            var _this = this;
-            mui('body').on('tap', '.btn-try', function () {
-                layer.open({
-                    title: window.top.message.game_auto['提示'],
-                    content: window.top.message.game_auto['欢迎使用试玩模式'],
-                    btn: [window.top.message.game_auto['确定'], ''],
-                    yes: function (index) {
-                        layer.close(index);
-                        sessionStorage.is_login = true;
-                        if (_this.os === 'app_ios') {
-                            demoEnter();
-                        } else {
-                            mui.ajax('/signUp/createFreeAccount.html', {
-                                dataType: 'json',
-                                type: 'POST',
-                                success: function (data) {
-                                    if (data.status) {
-                                        var demoModel = data.demoModel;
-                                        sessionStorage.demoModel = demoModel;
-                                        _this.gotoUrl('/mainIndex.html');
-                                    }
-                                }
-                            })
-                        }
-                    }
-                })
-            });
         },
 
         /** 一些IOS上有的Bug */
         iosBug: function () {
+            var _this = this;
             // 刷新页面后获取容器高度，解决IOS设备刷新时出现空白页问题
             $('.mui-inner-wrap').height();
             //苹果safari浏览器首页的底部导航栏,首页和我的图标不显示问题
@@ -793,6 +762,81 @@ define(['moment'], function (moment) {
             setTimeout(function () {
                 $('div.game-mask').remove();
             }, 1000);
+        },
+        /** 抢红包 */
+        canShowLottery: function(id){
+            if (!isLogin || isLogin === "false") {
+                window.location.href="/login/commonLogin.html";
+                return;
+            }
+            if (!id){
+                $(".hongbao").removeClass('disabled');
+                $("#tip-msgs").html('红包活动已经结束!');
+                $(".hongbao-time-txt").hide();
+                $(".hongbao-time").hide();
+                return;
+            }
+            $("#hongbao").addClass('hide_hongbao');
+            $("#hongbao_detail").fadeIn(1000);
+            mui.ajax({
+                url:"/ntl/activity/countDrawTimes.html",
+                type: "POST",
+                dataType: "json",
+                data:{activityMessageId:id},
+                success: function(data){
+                    console.log(data.nextLotteryTime);
+                    console.log(data.drawTimes);
+                    if(data.drawTimes&&data.drawTimes>0){
+                        $(".hongbao").removeClass('disabled');
+                        $("#tip-msgs").show();
+                        $("#tip-msgs").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">'+data.drawTimes+'</span>次抽奖机会');
+                        $(".hongbao-time-txt").hide();
+                        $(".hongbao-time").hide();
+                    }else if(data.drawTimes==0){
+                        if(data.isEnd=="false"){
+                            $(".hongbao").addClass('disabled');
+                            $("#tip-msgs").show();
+                            $("#tip-msgs").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">0</span>次抽奖机会');
+                            $("#ramain-count").text(data.drawTimes);
+                        }else{
+                            $(".hongbao").addClass('disabled');
+                            $("#tip-msgs").hide();
+                        }
+                        if(data.nextLotteryTime!=""){
+                            $(".hongbao-time-txt").show();
+                            $(".hongbao-time").show();
+                            $(".hongbao-time").text(data.nextLotteryTime);
+                        }else{
+                            $(".hongbao-time-txt").hide();
+                            $(".hongbao-time").hide();
+                        }
+
+                    }else if(data.drawTimes==-1){
+                        $(".hongbao").addClass('disabled');
+                        $("#tip-msgs").show();
+                        $("#tip-msgs").html('红包活动已经结束!');
+                        $(".hongbao-time-txt").hide();
+                        $(".hongbao-time").hide();
+                        return;
+                    }else if(data.drawTimes==-5){
+                        $(".hongbao").addClass('disabled');
+                        $("#tip-msgs").show();
+                        $("#tip-msgs").html('本次红包已经抢光了');
+                        if(data.nextLotteryTime!=""){
+                            $(".hongbao-time-txt").show();
+                            $(".hongbao-time").show();
+                            $(".hongbao-time").text(data.nextLotteryTime);
+                        }else{
+                            $(".hongbao-time-txt").hide();
+                            $(".hongbao-time").hide();
+                        }
+                        return;
+                    }
+                    //setDivCss();
+                    $("[name='gb.token']").val(data.token);
+                    $("#activity_message_id").val(id);
+                }
+            });
         }
     });
 });

@@ -1,7 +1,7 @@
 /**
  * Created by snekey on 15-8-13.
  */
-define(['common/BaseListPage'], function (BaseListPage) {
+define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
     return BaseListPage.extend({
         init: function () {
             this._super();
@@ -14,22 +14,23 @@ define(['common/BaseListPage'], function (BaseListPage) {
         onPageLoad: function () {
             this._super();
             var _this = this;
+            this.initSwitch();
             $("#li_top_7").addClass("active");
         },
         showImportList: function (e,opt) {
-            $(".import_list").show();
-            $(".import_list").removeClass("btn-outline");
-            $(".import_introduce").hide();
-            $(".import_introduce").addClass("btn-outline");
+            $("#introduce-div").show();
+            $("#introduce-div").removeClass("btn-outline");
+            $("#process-div").hide();
+            $("#process-div").addClass("btn-outline");
             $(".btn_list").removeClass("btn-outline");
             $(".btn_introduce").addClass("btn-outline");
             $(e.currentTarget).unlock();
         },
         showImportIntroduce : function (e,opt) {
-            $(".import_introduce").show();
+            $("#process-div").show();
             $(".btn_introduce").removeClass("btn-outline");
-            $(".import_introduce").removeClass("hide");
-            $(".import_list").hide();
+            $("#process-div").removeClass("hide");
+            $("#introduce-div").hide();
             $(".btn_list").addClass("btn-outline");
             $(e.currentTarget).unlock();
         },
@@ -142,6 +143,49 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 return false;
             }
             return true;
+        },
+        initSwitch:function(){
+            var _this=this;
+            var $switch = $("[name='my-checkbox']");
+            _this.unInitSwitch($switch)
+                .bootstrapSwitch()
+                .on('switchChange.bootstrapSwitch',function( event , status ){
+                    var $this = $(this);
+                    $this.bootstrapSwitch('indeterminate',true);
+                    /*提示信息*/
+                    var message = status ? window.top.message.setting_auto['确认开启吗'] : window.top.message.setting_auto['确认关闭吗']
+                    window.top.topPage.showConfirmMessage( message , function( bol ){
+                        if( bol ){
+                            _this.doChange({currentTarget:$this[0],status:status,returnValue:true});
+                        } else {
+                            /*取消不确定状态*/
+                            $this.bootstrapSwitch('indeterminate',false);
+                            /*第三个参数为true 不会进入change事件*/
+                            $this.bootstrapSwitch('state', !status,true);
+                        }
+                    });
+                });
+        },
+        doChange:function (e) {
+            var _this=this;
+            var $this= $(e.currentTarget);
+            if(e.returnValue!=true){
+                $this.bootstrapSwitch('indeterminate', false);
+                $this.bootstrapSwitch('state', !e.status, true);
+                return;
+            }
+            window.top.topPage.ajax({
+                url:root+'/vUserPlayerImport/changeStatus.html',
+                type:'POST',
+                dataType:'json',
+                data:{
+                    'nameVerification':e.status,
+                },
+                success:function(){
+                    /*取消不确定状态*/
+                    $this.bootstrapSwitch('indeterminate',false);
+                },
+            });
         }
     })
 });
