@@ -4,6 +4,11 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
             this._super();
         },
 
+        onPageLoad: function () {
+            this._super();
+            var _this = this;
+        },
+
         /**
          * 展示最近开奖记录
          */
@@ -55,7 +60,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
             $("#lastOpenCode").html(html);
         },
 
-        checkNoSon:function(betCode,thisClassList){
+        checkSubordinate:function(betCode,thisClassList){
             var _this = this;
             if(betCode !='ds' && betCode !='bzxh') {
                 $("a.selected-btn.mui-active").removeClass("mui-active");

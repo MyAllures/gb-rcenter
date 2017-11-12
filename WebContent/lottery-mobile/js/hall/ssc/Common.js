@@ -86,7 +86,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
             });
         },
 
-        checkNoSon : function (betCode,thisClassList) {
+        checkSubordinate : function (betCode,thisClassList) {
             var _this = this;
             if(betCode !='zxfs' && betCode !='szp'){
                 $("a.selected-btn.mui-active").removeClass("mui-active");

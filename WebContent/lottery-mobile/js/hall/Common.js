@@ -37,6 +37,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             this.betCode = $(this.formSelector + " .ssc-method-list .ssc-method-label a.mui-active").attr("data-code");
             //传统，官方切换
             this.isGfwf();
+
             //获取盘口数据
             this.getHandicap();
             var _this = this;
@@ -73,8 +74,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             /*==============================官方====================================*/
             //头部选择
             mui("div.s-menu").off('tap','a').on('tap', 'a', function () {
-                 _this.checkNoSon($(this).attr("data-code"), this.classList);
-                 // return;
+                _this.checkSubordinate($(this).attr("data-code"), this.classList);
+                // return;
             });
 
             //直选复式
@@ -399,7 +400,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         },
 
         //判断是为没有小玩法的大玩法点击时间,给各自玩法重写。
-        checkNoSon : function (betCode) {
+        checkSubordinate : function (betCode) {
         },
         //初始化各猜中默认第一个玩法页面。
         changeList : function () {
