@@ -236,6 +236,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
                     if (data.status){
                         $("#opencode").val(data.msg);
+                        $("#opencode").attr("title",data.msg);
                         if (siteId == ''){
                             window.top.topPage.showConfirmMessage("你将对"+codename+"彩种"+expect+"期全平台所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
                                 if(bol){
@@ -293,6 +294,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
                     if (data.status){
                         $("#opencode1").val(data.msg);
+                        $("#opencode1").attr("title",data.msg);
                         if (siteId == ''){
                             window.top.topPage.showConfirmMessage("你将对"+codename+"彩种"+expect+"期全平台所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function(bol) {
                                 if (bol) {
