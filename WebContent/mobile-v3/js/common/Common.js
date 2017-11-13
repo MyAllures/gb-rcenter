@@ -19,15 +19,15 @@ function muiInit(options) {
     }
     //主页面内容上下滚动
     if (options.containerScroll) {
-        muiScrollY(settings.containerScroll);
+        muiScrollY(options.containerScroll);
     }
     /*左侧菜单上下滚动*/
     if (options.leftMenuScroll) {
-        muiScrollY(settings.leftMenuScroll);
+        muiScrollY(options.leftMenuScroll);
     }
     /*右侧菜单上下滚动*/
     if (options.rightMenuScroll) {
-        muiScrollY(settings.rightMenuScroll);
+        muiScrollY(options.rightMenuScroll);
     }
 
     //禁用侧滑手势
@@ -43,6 +43,8 @@ function muiInit(options) {
     }
     //默认处理mui ajax错误
     muiAjaxError();
+    //绑定事件
+    bindButtonEvent();
 }
 
 /**
@@ -93,14 +95,14 @@ function muiAjaxError() {
         } else if (status == 606) {// 踢出
             gotoUrl(root + "/errors/" + status + ".html");
         } else if (status == 608) {
-            mui.toast(window.top.message.common["repeat.request.error"]);
+            toast(window.top.message.common["repeat.request.error"]);
         } else if (status >= 0 && settings.comet != true) { //606、403、404、605等状态码跳转页面
             window.top.location.href = window.top.root + "/errors/" + status + ".html";
         } else if (!settings.error && status != 200 && status != 0) {
             if (settings.comet == true) {
-                mui.toast(window.top.message.common["online.message.error"]);
+                toast(window.top.message.common["online.message.error"]);
             } else {
-                mui.toast(error.responseText);
+                toast(error.responseText);
             }
         } else {
             console.log(error);
