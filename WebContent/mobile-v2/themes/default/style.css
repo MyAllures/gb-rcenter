@@ -346,7 +346,7 @@ color: #6b88fe;
 .index .shadow-right{left: auto;right: 0; background: linear-gradient(to left,#242735,transparent);}
 /*喜好定制*/
 .index .index-block{color: #fff;}
-.index .index-block-header{height: 20px;line-height: 20px;    font-size: 13px;}
+.index .index-block-header{height: 20px;line-height: 20px; font-size: 13px;}
 .index .mui-pull-left.title{border-left: 4px solid #3b61fe;padding-left: 4px;}
 .index .mui-pull-right.more{padding-right: 10px;color: #a3a8c0;}
 .index .mui-pull-right.more a{color: #fefefe;}
