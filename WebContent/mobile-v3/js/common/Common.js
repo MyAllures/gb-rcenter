@@ -1,3 +1,5 @@
+/**终端标志*/
+var os = whatOs();
 /*mui 初始化配置选项*/
 var muiDefaultOptions = {
     /*主页面滚动指定容器，可自行指定范围*/
@@ -181,15 +183,24 @@ function hideLoading() {
 /**
  * 统一请求跳转页面
  * @param url
+ *
  */
 function goToUrl(url) {
-    //终端标识，以判断ｕrl走什么入口
-    var os = whatOs();
     if (url.indexOf("?") < 0) {
         url = url + "?v=" + rcVersion;
     } else {
         url = url + "&v=" + rcVersion;
     }
+    //登录页面
+    if (url.indexOf("commonLogin.html") > 0) {
+        login(url);
+        return;
+    }
+    //todo::终端标识，以判断ｕrl走什么入口
+    openWindow(url);
+}
+
+function openWindow(url) {
     mui.openWindow({
         url: url,
         id: url,
@@ -242,7 +253,7 @@ function doEvent(obj, options) {
     var opType = options.opType;
     if (opType == 'function') {
         doFunction(obj, options);
-    }  else if (opType == 'ajax') {
+    } else if (opType == 'ajax') {
         doAjax(obj, options);
     } else if (opType == 'href') {
         goToUrl(options.target);
@@ -333,4 +344,19 @@ function showWarningMsg(title, msg, callback) {
             callback();
         }
     });
+}
+
+/**
+ * 统一登录方法
+ * @param url
+ */
+function login(url) {
+    if (os == 'app_ios') {
+        gotoCustom("/login/commonLogin.html");
+    } else if (os == 'app_android') {
+        window.gamebox.gotoLogin(url);
+    } else {
+        url = '/login/commonLogin.html?v=' + rcVersion;
+        openWindow(url);
+    }
 }
