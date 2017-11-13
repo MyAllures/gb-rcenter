@@ -246,7 +246,7 @@ function bindButtonEvent() {
 function doEvent(obj, options) {
     var precall = options.precall;
     //前置函数执行
-    if (precall && typeof precall == 'function' && !precall.apply(obj, [obj, options])) {
+    if (precall && !applyFunction(precall, options)) {
         $target.unlock();
         return false;
     }
@@ -266,13 +266,22 @@ function doEvent(obj, options) {
  * @param options
  */
 function doFunction(obj, options) {
-    var func = options.target;
+    var func = this[options.target];
+    applyFunction(func, options);
+    $(obj).unlock();
+}
+
+function applyFunction(func, options) {
     if (func && typeof func == 'function') {
-        func.apply(this, [this, options]);
+        var rs = func.apply(this, [this, options]);
+        return rs;
+    } else if (func && typeof func == 'string' && this[func] && typeof this[func] == 'function') {
+        func = this[func];
+        var rs = func.apply(this, [this, options]);
+        return rs;
     } else {
         console.log(func + "方法找不到！");
     }
-    $(obj).unlock();
 }
 
 /**
@@ -288,16 +297,16 @@ function doAjax(obj, options) {
             }
             options.data = data;
             var func = options.callback;
-            if (func && typeof func == 'function') {
-                func.apply(obj, [obj, options]);
+            if (func) {
+                applyFunction(func, options)
             }
             $(obj).unlock();
         }
     };
     //ajax请求参数
     var post = options.post;
-    if (post && typeof post == 'function') {
-        ajaxOption.data = post.apply(obj, [obj, options]);
+    if (post) {
+        ajaxOption.data = applyFunction(post, options);
     }
     muiAjax(ajaxOption);
 }
@@ -325,8 +334,8 @@ function showConfirmMsg(options, obj) {
     mui.confirm(options.confirm, options.title, btnArray, function (e) {
         if (e.index == 0) {
             var func = options.event;
-            if (func && typeof func == 'function') {
-                func.apply(obj, [obj, options]);
+            if (func) {
+                applyFunction(func, options);
             }
         }
     })
@@ -340,14 +349,14 @@ function showConfirmMsg(options, obj) {
  */
 function showWarningMsg(title, msg, callback) {
     mui.alert(msg, title, function () {
-        if (callback && typeof callback == 'function') {
-            callback();
+        if (callback) {
+            applyFunction(callback);
         }
     });
 }
 
 /**
- * 统一登录方法
+ * 统一登录入口
  * @param url
  */
 function login(url) {
@@ -359,4 +368,17 @@ function login(url) {
         url = '/login/commonLogin.html?v=' + rcVersion;
         openWindow(url);
     }
+}
+
+/**
+ * 统一退出登录入口
+ */
+function loginOut(e, options) {
+    sessionStorage.is_login = false;
+    if (os === 'app_ios')
+        loginOut();
+    if (os === 'android')
+        window.gamebox.logout();
+    else
+        goToUrl("/passport/logout.html");
 }
