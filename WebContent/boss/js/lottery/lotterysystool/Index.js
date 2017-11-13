@@ -151,8 +151,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
         },
 
-        collectTimeOut:{},
-
         collectOpenCode: function (event,option) {
             var _this = this;
             var form = $("#collectOpenCodeForm");
@@ -173,15 +171,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 }
             });
 
-            var checkDate = _this.collectTimeOut[code];
-            if(checkDate){
-                var now = new Date().getTime();
-                if((now-checkDate)<10000){
-                    page.showPopover(event,option,"danger","同一彩种的采集间隔至少10秒.",true);
-                    return;
-                }
-            }
-
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
 
@@ -192,7 +181,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                         success: function (data) {
                             if(data.state){
                                 page.showPopover(event,option,"success","采集成功!",true);
-                                _this.collectTimeOut[code] = new Date();
                             }else {
                                 page.showPopover(event,option,"danger",data.msg,true);
                             }
