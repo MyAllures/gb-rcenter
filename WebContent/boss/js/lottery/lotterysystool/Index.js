@@ -160,7 +160,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var context = "您将采集 "+codeName + ", "+date+"的所有已开奖号码";
             if(codeName=="请选择" || !date){
                 page.showPopover(event,option,"danger","请选择彩种和日期",true);
-                $(event.currentTarget).unlock();
                 return;
             }
 
