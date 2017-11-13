@@ -151,8 +151,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
         },
 
-        collectTimeOut:{},
-
         collectOpenCode: function (event,option) {
             var _this = this;
             var form = $("#collectOpenCodeForm");
@@ -162,7 +160,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var context = "您将采集 "+codeName + ", "+date+"的所有已开奖号码";
             if(codeName=="请选择" || !date){
                 page.showPopover(event,option,"danger","请选择彩种和日期",true);
-                $(event.currentTarget).unlock();
                 return;
             }
 
@@ -172,15 +169,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                     return;
                 }
             });
-
-            var checkDate = _this.collectTimeOut[code];
-            if(checkDate){
-                var now = new Date().getTime();
-                if((now-checkDate)<10000){
-                    page.showPopover(event,option,"danger","同一彩种的采集间隔至少10秒.",true);
-                    return;
-                }
-            }
 
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
@@ -192,7 +180,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                         success: function (data) {
                             if(data.state){
                                 page.showPopover(event,option,"success","采集成功!",true);
-                                _this.collectTimeOut[code] = new Date();
                             }else {
                                 page.showPopover(event,option,"danger",data.msg,true);
                             }
@@ -236,6 +223,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
                     if (data.status){
                         $("#opencode").val(data.msg);
+                        $("#opencode").attr("title",data.msg);
                         if (siteId == ''){
                             window.top.topPage.showConfirmMessage("你将对"+codename+"彩种"+expect+"期全平台所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
                                 if(bol){
@@ -293,6 +281,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
                     if (data.status){
                         $("#opencode1").val(data.msg);
+                        $("#opencode1").attr("title",data.msg);
                         if (siteId == ''){
                             window.top.topPage.showConfirmMessage("你将对"+codename+"彩种"+expect+"期全平台所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function(bol) {
                                 if (bol) {
