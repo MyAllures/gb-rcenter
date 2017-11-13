@@ -7,15 +7,6 @@ define(['site/hall/pk10/PlayWay-gfwf', 'site/plugin/template'], function (PlayWa
 
         },
         showTable : function(){
-            //前一
-            $("div.s-menu.second").hide();
-            $("#zxfs").show();
-            $("a[data-code='zxfs']").addClass("mui-active");
-            // $(".x_3.gfwf-playName").text("直选复式");
-            $("span.x_1.gfwf-tit").text("前三");
-            $(".s-title.title1 span").text("前三");
-            // $(".s-title.title2 span").text("直选复式")
-
             $("a[data-code='"+$("#gfwfBetCode").val()+"']").addClass("mui-active");
             $("span.x_1.gfwf-tit").text("前三");
             $(".s-title.title1 span").text("前三");
