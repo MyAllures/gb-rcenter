@@ -1,4 +1,4 @@
-define(['site/hall/pl3/PlayWay'], function (PlayWay) {
+define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
     return PlayWay.extend({
         _this: null,
         init: function () {
