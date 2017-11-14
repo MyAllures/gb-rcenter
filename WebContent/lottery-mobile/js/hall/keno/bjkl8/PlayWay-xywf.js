@@ -3,15 +3,6 @@ define(['site/hall/PlayWay','site/plugin/template'], function (PlayWay,Template)
         init: function () {
             this._super();
         },
-        getRandomNumber:function(len){
-            var tmpStr = '<span class="inline-list-kl8">';
-            for (var i = 0; i < len; ++i) {
-                var num = Math.floor(Math.random() * 10);
-                tmpStr += '<i class="lottery-ball">' + num + '</i>';
-            }
-            tmpStr += '</span>';
-            return tmpStr;
-        },
         /**
          * 获取赔率
          */
