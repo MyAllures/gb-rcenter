@@ -35,7 +35,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
             var type = opt.type;
             var code = opt.code;
             if(code){
-                if(code=='hklhc'){
+                if(code=='hklhc'|| code=='tcpl3' || code=='fc3d'){
                     $("#query-time-div").addClass("hide");
                 }else{
                     $("#query-time-div").removeClass("hide");
