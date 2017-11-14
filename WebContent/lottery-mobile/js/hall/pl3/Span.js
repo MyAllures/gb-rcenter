@@ -8,6 +8,19 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
             _this=this;
             this._super();
         },
+
+        showTable : function(){
+            $("a[data-code='zusan']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#zusan").show();
+            $(".x_3.gfwf-playName").text("跨度");
+            $("span.x_1.gfwf-tit").text("跨度");
+            $(".s-title.title1 span").text("跨度");
+            $(".s-title.title2 span").text("跨度");
+            $("#toobarTitle").text("信用玩法-跨度");
+            $("a[data-code='zusan'] span").text("跨度");
+        },
+
         getOdds: function () {
             var url = root + '/' + this.type + '/' + this.code + '/getOdds.html';
             mui.ajax(url, {
