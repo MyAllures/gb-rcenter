@@ -94,7 +94,6 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                         $("#toobarTitle").text("信用玩法-定位");
                         $("#GenraType").val("fix");
                         _this.changeList();
-
                     }
                 });
             });
@@ -105,13 +104,13 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                     type: 'POST',
                     success: function (data) {
                         _this.openGuanfangwanfa(data);
-                        $("#gfwfBetCode").val("ssc_yixing_dwd");
-                        $("a[data-code='ssc_yixing_dwd']").addClass("mui-active");
+                        $("#gfwfBetCode").val("pl3_yixing_dwd");
+                        $("a[data-code='pl3_yixing_dwd']").addClass("mui-active");
                         $("a[data-code='zxfs']").addClass("mui-active");
                         $("a.x_1.mui-col-xs-6").removeClass("x_active");
                         $("a.x_3.mui-col-xs-6").addClass("x_active");
                         $("#toobarTitle").text("官方玩法-定位胆");
-                        $("#GenraType").val("ssc_yixing_dwd");
+                        $("#GenraType").val("pl3_yixing_dwd");
                         _this.changeList();
 
                     }
