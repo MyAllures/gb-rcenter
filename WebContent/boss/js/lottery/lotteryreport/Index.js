@@ -155,10 +155,10 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 data:formData,
                 success: function (data) {
                     $("#betCount").text(isNaN(data.betvolume)?0:data.betvolume);
-                    $("#betAmount").text(_this.getMoneyFormat(data.betamount));
-                    $("#payoutAmount").text(_this.getMoneyFormat(data.payoutamount));
-                    $("#profitLoss").text(_this.getMoneyFormat(-data.profitloss));
-                    $("#rabateAmount").text(_this.getMoneyFormat(data.rabateamount));
+                    $("#betAmount").text((data.betamount).toFixed(2));
+                    $("#payoutAmount").text((data.payoutamount).toFixed(2));
+                    $("#profitLoss").text((-data.profitloss).toFixed(2));
+                    $("#rabateAmount").text((data.rabateamount).toFixed(2));
                 },
                 error: function (data) {
 
