@@ -275,15 +275,19 @@ function doFunction(obj, options) {
  * 实现执行function方法
  * @param func 方法名或者function
  * @param options 方法参数
+ * @param obj 对象操作
  * @returns {*}
  */
-function applyFunction(func, options) {
+function applyFunction(func, options, obj) {
+    if(!obj) {
+        obj = this;
+    }
     if (func && typeof func == 'function') {
-        var rs = func.apply(this, [this, options]);
+        var rs = func.apply(this, [obj, options]);
         return rs;
     } else if (func && typeof func == 'string' && this[func] && typeof this[func] == 'function') {
         func = this[func];
-        var rs = func.apply(this, [this, options]);
+        var rs = func.apply(this, [obj, options]);
         return rs;
     } else {
         console.log(func + "方法找不到！");
