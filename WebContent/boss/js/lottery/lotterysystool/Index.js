@@ -190,6 +190,8 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             }
                         }
                     });
+                }else{
+                    $(event.currentTarget).unlock();
                 }
             });
         },
