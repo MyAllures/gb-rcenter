@@ -8,15 +8,16 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
 
         checkSubordinate : function (betCode,thisClassList){
             var _this = this;
-            $("div.s-menu.second").hide();
-            $("a.selected-btn.mui-active").removeClass("mui-active");
-            thisClassList.toggle('mui-active');
-            var dataCode=$("a.selected-btn.mui-active").attr("data-code");
-            var jspName=$("a.selected-btn.main.mui-active").attr("data-jsp-name");
-            if($("a.selected-btn.main.mui-active").size()>0){
-                dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
-            }
-            if( //官方
+            if(betCode !='zusan'){
+                $("div.s-menu.second").hide();
+                $("a.selected-btn.mui-active").removeClass("mui-active");
+                thisClassList.toggle('mui-active');
+                var dataCode=$("a.selected-btn.mui-active").attr("data-code");
+                var jspName=$("a.selected-btn.main.mui-active").attr("data-jsp-name");
+                if($("a.selected-btn.main.mui-active").size()>0){
+                    dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
+                }
+                if( //官方
                 dataCode !="3star"
                 && dataCode !="First2"
                 && dataCode !="After2"
@@ -24,35 +25,36 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 && dataCode !="fix"
                 && dataCode !="comb"
                 && dataCode !="sum"
-            ){
-                // $('div.gfwf-bg').slideUp();
-                // $('div.selected-wrap').slideUp();
-                _this.closeTop();
-            }
+                ){
+                    // $('div.gfwf-bg').slideUp();
+                    // $('div.selected-wrap').slideUp();
+                    _this.closeTop();
+                }
 
-            if(betCode =="3star" && jspName==undefined){//三星
-                jspName="3star";
-            }else if(betCode =="First2" && jspName==undefined){//前二
-                jspName="First2Zxfs";
-            }else if(betCode =="After2" && jspName==undefined){//后二
-                jspName="After2Zxfs";
-            }else if(betCode =="DingWeiDan" && jspName==undefined){//定位胆
-                jspName="YixingDwd";
-            }else if(betCode =="Sxymbdw" && jspName==undefined){//不定位
-                jspName="Sxymbdw";
-            }else if(betCode =="fix" && jspName==undefined){
-                jspName="Fix1";
-                dataCode="百定位";
-            }else if(betCode =="comb" && jspName==undefined){
-                jspName="Comb1";
-                dataCode="一字组合";
-            }else if(betCode =="sum" && jspName==undefined){
-                jspName="Sum2";
-                dataCode="百十和数";
-            }
+                if(betCode =="3star" && jspName==undefined){//三星
+                    jspName="3star";
+                }else if(betCode =="First2" && jspName==undefined){//前二
+                    jspName="First2Zxfs";
+                }else if(betCode =="After2" && jspName==undefined){//后二
+                    jspName="After2Zxfs";
+                }else if(betCode =="DingWeiDan" && jspName==undefined){//定位胆
+                    jspName="YixingDwd";
+                }else if(betCode =="Sxymbdw" && jspName==undefined){//不定位
+                    jspName="Sxymbdw";
+                }else if(betCode =="fix" && jspName==undefined){
+                    jspName="Fix1";
+                    dataCode="百定位";
+                }else if(betCode =="comb" && jspName==undefined){
+                    jspName="Comb1";
+                    dataCode="一字组合";
+                }else if(betCode =="sum" && jspName==undefined){
+                    jspName="Sum2";
+                    dataCode="百十和数";
+                }
 
-            _this.getBetTable(dataCode,jspName);
-            _this.resetBet();
+                _this.getBetTable(dataCode,jspName);
+                _this.resetBet();
+            }
         },
 
         changeList : function(){
