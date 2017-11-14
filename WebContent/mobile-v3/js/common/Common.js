@@ -12,13 +12,42 @@ var muiDefaultOptions = {
     disabledHandSlip: ['mui-off-canvas-left']
 };
 /**
+ * mui 向下拉默认参数配置
+ * @param container
+ * @param callback
+ * @param auto
+ * @returns {{pullRefresh: {container: *, up: {auto: *, contentrefresh: string, callback: *}}}}
+ */
+function pullUpRefreshOption(container, callback, auto) {
+    if (!auto) {
+        auto = false;
+    }
+    var pullUpRefresh = {
+        pullRefresh: {
+            container: container,
+            up: {
+                auto: auto,
+                contentrefresh: '正在加载...',
+                callback: callback
+            }
+        }
+    };
+    return pullUpRefresh;
+}
+
+/**
  * mui初始化
  */
 function muiInit(options) {
-    mui.init();
     if (!options) {
         var options = {};
     }
+    if (options.init) {
+        mui.init(options.init);
+    } else {
+        mui.init();
+    }
+
     //主页面内容上下滚动
     if (options.containerScroll) {
         muiScrollY(options.containerScroll);
@@ -279,7 +308,7 @@ function doFunction(obj, options) {
  * @returns {*}
  */
 function applyFunction(func, options, obj) {
-    if(!obj) {
+    if (!obj) {
         obj = this;
     }
     if (func && typeof func == 'function') {

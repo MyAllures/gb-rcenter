@@ -4,6 +4,9 @@ $(function () {
     headInfo();
 });
 
+/**
+ * 获取头部用户信息
+ */
 function headInfo() {
     var options = {
         url: root + '/userInfo.html',
@@ -30,4 +33,15 @@ function headInfo() {
         }
     };
     muiAjax(options);
+}
+/**
+ * 打开左侧菜单
+ */
+function leftMenu(obj) {
+    if(mui('.mui-off-canvas-wrap').offCanvas().isShown('left')){
+        mui('.mui-off-canvas-wrap').offCanvas().close();
+    } else {
+        mui('.mui-off-canvas-wrap').offCanvas().show();
+    }
+    $(obj).unlock();
 }

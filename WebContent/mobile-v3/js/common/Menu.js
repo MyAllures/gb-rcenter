@@ -30,4 +30,5 @@ function loadCustomer(obj, options) {
 function lang(obj, options) {
     $(obj).parent().addClass("active");
     $(".lang-menu").toggle();
+    $(obj).unlock();
 }
