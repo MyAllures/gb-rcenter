@@ -46,7 +46,9 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             if(k == 8){             //8是backspace的keyCode
                 if(thiz.val() == ''){
                     var prevThiz = thiz.prev();
-                    prevThiz.focus().val(prevThiz.val());
+                    var value = prevThiz.val();
+                    var len = value == undefined || value == ''?0:value.length;
+                    prevThiz.selectRange(len);
                 }
             }else{
                 var maxLength = parseInt(thiz.attr("maxlength"));
@@ -165,3 +167,17 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
         }
     });
 });
+$.fn.selectRange = function(index) {
+    return this.each(function() {
+        if (this.setSelectionRange) {
+            this.focus();
+            this.setSelectionRange(index, index);
+        } else if (this.createTextRange) {
+            var range = this.createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', index);
+            range.moveStart('character', index);
+            range.select();
+        }
+    });
+};
