@@ -111,9 +111,9 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var siteId = $(formobj).find("input[name='search.siteId']").val();
             var context = '';
             if (siteId == ''){
-                context = "您将对"+codename+","+expect+"期的所有未结算注单进行撤单,是否确认执行";
+                context = "您将对"+codename+","+expect+"期的所有未结算注单进行撤单,是否确认执行?";
             }else {
-                context = "您将对"+siteId+"站点,"+codename+","+expect+"期的所有未结算注单进行撤单,是否确认执行";
+                context = "您将对"+siteId+"站点,"+codename+","+expect+"期的所有未结算注单进行撤单,是否确认执行?";
             }
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
@@ -136,9 +136,9 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var siteId = $(formobj).find("input[name='search.siteId']").val();
             var context = '';
             if (siteId == ''){
-                context = "您将对"+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行";
+                context = "您将对"+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行?";
             }else {
-                context = "您将对"+siteId+"站点,"+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行";
+                context = "您将对"+siteId+"站点,"+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行?";
             }
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
@@ -150,9 +150,13 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
 
         },
-
+        /**
+         * 补采
+         * @param event
+         * @param option
+         */
         collectOpenCode: function (event,option) {
-            var _this = this;
+
             var form = $("#collectOpenCodeForm");
             var date = form.find("input").val();
             var code = null;
@@ -171,6 +175,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             });
 
             window.top.topPage.showConfirmMessage(context, function (confirm) {
+
                 if (confirm) {
 
                     window.top.topPage.ajax({
@@ -183,17 +188,10 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             }else {
                                 page.showPopover(event,option,"danger",data.msg,true);
                             }
-                            $(event.currentTarget).unlock();
                         }
                     });
-
-                } else {
-                    $(event.currentTarget).unlock();
                 }
             });
-
-            $(event.currentTarget).unlock();
-
         },
 
         payout:function (e,option) {
