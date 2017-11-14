@@ -278,31 +278,51 @@ Array.prototype.uniqueArr = function () {
 //获取重复元素,无序
 Array.prototype.duplicateNewa = function () {
     var tempArr = new Array();
-    var newarr = arrSort(this);
-    for(i = 0; i < newarr.length; i++) {
-        var aa = numSort(newarr[i]);
-        var bb = numSort(newarr[i+1]);
-        if( aa == bb) {
-            tempArr.push(aa);
-            continue;
+    var lastArr =[];
+    for(i = 0; i < this.length; i++) {
+        if(containtArr(lastArr,this[i])){
+            tempArr.push(this[i]);
+        }else{
+            lastArr.push(this[i]);
         }
     }
     return tempArr;
 };
+function containtArr(newArr,item){
+
+    for(var j=0;j<newArr.length;j++){
+        var a=[];
+        var b=[];
+        a.push(newArr[j].charAt(0));
+        a.push(newArr[j].charAt(1));
+
+        b.push(item.charAt(0));
+        b.push(item.charAt(1));
+        if (item.length==3){
+        a.push(newArr[j].charAt(2));
+        b.push(item.charAt(2));
+        }
+
+        if(newArr[j].length ==item.length &&  a.sort().join("")==b.sort().join("")){
+            return true;
+        }
+    }
+    return false;
+}
 //去掉数组重复,无序
-Array.prototype.uniqueArra = function () {
+Array.prototype.uniqueArra = function() {
     var temp = new Array();
     var newarr = arrSort(this);
-    for(i = 0; i < newarr.length; i++) {
+    for (i = 0; i < newarr.length; i++) {
         var aa = numSort(newarr[i]);
-        var bb = numSort(newarr[i+1]);
-        if( aa == bb) {
-            continue;
+        var bb = numSort(newarr[i + 1]);
+        if (aa == bb) {
+            continue
         }
-        temp[temp.length]=aa;
+        temp[temp.length] = aa
     }
-    return temp;
-};
+    return temp
+}
 //对数字字符串排序
 function  numSort(num) {
     var newnum = "";
