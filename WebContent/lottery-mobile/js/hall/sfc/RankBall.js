@@ -1,4 +1,4 @@
-define(['site/hall/sfc/AllSfc', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/sfc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay, Template) {
 
     return PlayWay.extend({
         _this: null,
@@ -7,6 +7,37 @@ define(['site/hall/sfc/AllSfc', 'site/plugin/template'], function (PlayWay, Temp
             _this = this;
 
         },
+        showTable : function(){
+            var BetCode=$("#gfwfBetCode").val();
+            var BetCode1="第一球";
+            if(BetCode=="sfc_first"){
+                BetCode1="第一球";
+            }else if(BetCode=="sfc_second"){
+                BetCode1="第二球";
+            }else if(BetCode=="sfc_third"){
+                BetCode1="第三球";
+            }else if(BetCode=="sfc_fourth"){
+                BetCode1="第四球";
+            }else if(BetCode=="sfc_fifth"){
+                BetCode1="第五球";
+            }else if(BetCode=="sfc_sixth"){
+                BetCode1="第六球";
+            }else if(BetCode=="sfc_seventh"){
+                BetCode1="第七球";
+            }else if(BetCode=="sfc_eighth"){
+                BetCode1="第八球";
+            }
+
+            $("a[data-code='"+BetCode+"']").addClass("mui-active");
+            $("a[data-code='sm']").addClass("mui-active");
+            $(".x_3.gfwf-playName").text(BetCode1);
+            $("span.x_1.gfwf-tit").text(BetCode1);
+            $(".s-title.title1 span").text(BetCode1);
+            $(".s-title.title2 span").text(BetCode1);
+            $("#toobarTitle").text("信用玩法-"+BetCode1);
+            $("a[data-code='sm'] span").text(BetCode1);
+        },
+
         getOdds: function () {
             var betCode = $("#lotteryBetCode").val();
             var url = root + '/' + this.type + '/' + this.code + '/getOdds.html';
@@ -32,7 +63,7 @@ define(['site/hall/sfc/AllSfc', 'site/plugin/template'], function (PlayWay, Temp
                         td.attr("data-bet-code",tdata.betCode);
                         td.attr("data-bet-num",tdata.betNum);
                         td.attr("data-play","sfc_digital");
-                        td.attr("data-name",$("a.mui-control-item.mui-active").text()+"-"+tdata.betNum);
+                        td.attr("data-name",$("a.main.mui-active").text()+"-"+tdata.betNum);
                     });
 
                 }
