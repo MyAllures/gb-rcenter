@@ -98,16 +98,16 @@ function muiAjaxError() {
             gotoUrl(root + "/errors/" + status + ".html");
         } else if (status == 608) {
             toast(window.top.message.common["repeat.request.error"]);
-        } else if (status >= 0 && settings.comet != true) { //606、403、404、605等状态码跳转页面
+        } else if (status >= 0 && settings && settings.comet != true) { //606、403、404、605等状态码跳转页面
             window.top.location.href = window.top.root + "/errors/" + status + ".html";
-        } else if (!settings.error && status != 200 && status != 0) {
+        } else if (settings && !settings.error && status != 200 && status != 0) {
             if (settings.comet == true) {
                 toast(window.top.message.common["online.message.error"]);
             } else {
                 toast(error.responseText);
             }
         } else {
-            console.log(error);
+            console.log(error.context);
         }
     }
 }
@@ -271,6 +271,12 @@ function doFunction(obj, options) {
     $(obj).unlock();
 }
 
+/**
+ * 实现执行function方法
+ * @param func 方法名或者function
+ * @param options 方法参数
+ * @returns {*}
+ */
 function applyFunction(func, options) {
     if (func && typeof func == 'function') {
         var rs = func.apply(this, [this, options]);

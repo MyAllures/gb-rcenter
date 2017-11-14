@@ -234,7 +234,8 @@ ul.tempstyle li .icheckbox_square-blue{position:absolute;bottom:5px;right:5px;ba
 .filter-wraper .search-wrapper .input-group-btn{color:#c2c8cd;font-size:12px;background-color:#fff;}
 .filter-wraper .search-wrapper .input-group-btn:last-child>.btn{width:90px;margin-left:13px;border-radius:2px;}
 .input-group-btn:first-child>.dropdown-toggle{border-radius:0;}
-.dropdown-menu{border:medium none;border-radius:3px; background-color: #3a4656; box-shadow:0 0 3px rgba(86,96,117,0.7);display:none;float:left;font-size:12px;left:0;list-style:none outside none;padding:0;position:absolute;text-shadow:none;top:100%;z-index:1000;border-radius:2px;}
+.dropdown-menu{border:medium none;border-radius:3px; box-shadow:0 0 3px rgba(86,96,117,0.7);display:none;float:left;font-size:12px;left:0;list-style:none outside none;padding:0;position:absolute;text-shadow:none;top:100%;z-index:1000;border-radius:2px;}
+.nav.navbar-nav li .dropdown-menu{ background-color: #3a4656;}
 .dropdown-menu.lang{min-width:84px;}
 .dropdown-menu > li > a{border-radius:3px;color:inherit;line-height:25px;margin:4px;text-align:left;font-weight:normal;padding:3px 10px;}
 .dropdown-menu.lang > li > a{line-height:22px;padding:0 10px;}
