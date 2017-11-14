@@ -1,13 +1,12 @@
-/**
- * 组选三
- */
-define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
+define(['site/hall/pl3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay, Template) {
+
     return PlayWay.extend({
         _this: null,
         init: function () {
-            _this = this;
             this._super();
+            _this = this;
         },
+
         showTable : function(){
             $("a[data-code='zusan']").addClass("mui-active");
             $(".x_3.gfwf-playName").text("组三");
@@ -50,8 +49,7 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
                 $(".screen-munber a").removeClass("mui-active");
             });
 
-            mui(this.formSelector).on("tap", "a", function () {
-                console.log("a")
+            mui(this.formSelector).on("tap", "a.mui-control-item[data-type]", function () {
                 var type = $(this).attr("data-type");
                 var betTitle = $(this).text();
                 $("#bet-title").html(betTitle + "@<font id='pl' class='col-red'></font> (请选择5个及以上号码)");
@@ -66,9 +64,8 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
                 });
                 _this.getOdds();
             })
-            mui("body").on('tap', 'li div a', function () {
-                console.log("b")
-                var seltd = Number($("li div a.mui-active").length);
+            mui("body").on('tap', 'li#betli div a', function () {
+                var seltd = Number($("li#betli div a.mui-active").length);
                 if (seltd > 4) {
                     $("#quantity").text(1);
                     var bet = oddsar[seltd];
@@ -80,42 +77,22 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
             });
         },
 
-
         getOdds: function () {
             var url = root + '/' + this.type + '/' + this.code + '/getOdds.html';
+            var _this = this;
             mui.ajax(url, {
                 dataType: 'json',
                 data: {betCode: "pl3_group3"},
                 type: 'POST',
                 success: function (data) {
-                    //todo 增加data判空
-                    _this.refreshBetTable(data);
-                    _this.hideLoading();
+                    $(".bet-table-list[data-subCode]").each(function () {
+                        var subCode = $(this).attr("data-subCode");
+                        var $tdBet = $(this).find("a[data-bet-num]");
+                        var $tds = $(this).find("td");
+                        oddsar = data[subCode];
+                    });
                 }
             })
-        },
-        bindTdInput: function (obj) {
-            this._super(obj);
-            var num = $("div.group3-list .mui-active").length;
-            var value = '';
-            var length = 0;
-            if (num >= 5 && num <= 10) {
-                value = $("div.group3-list input.group3Odd_" + num).attr("data-odd");
-                length = 1;
-            }
-            $("div.group3-list span.group3Odd").html(value);
-            $("#quantity").text(length);
-        },
-        resetBet: function (thiz) {
-            this._super();
-            $("div.group3-list span.group3Odd").html('');
-        },
-        refreshBetTable: function (data) {
-            for (var key in data.obj) {
-                var value = data.obj[key];
-                $("div.group3-list input.group3Odd_" + key).attr("data-odd", value.odd);
-                $("div.group3-list input.group3Odd_" + key).attr("data-bet-code", value.betCode);
-            }
         },
         /**
          * 验证是否符合下注条件
@@ -123,32 +100,42 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
          */
         checkBetOrder: function () {
             var isValid = this._super();
-            if(!isValid) {
+            if (!isValid) {
                 return false;
             }
-            var $num = $("div.group3-list .mui-active");
-            if ($num == undefined || $num.length < 5) {
+            var seltd = Number($("div.bet-table-list a.mui-active").length);
+            if (seltd < 5) {
                 this.toast("请选择5个及以上号码");
                 return false;
             }
-            if ($num.length > 10) {
-                this.toast("无效选号,请重置号码后重新选号");
+
+            var betForm = this.getBetOrder();
+            if (typeof betForm != 'object') {
+                return false;
+            }
+            if (betForm.betOrders.length == 0) {
+                this.toast("请选择");
                 return false;
             }
             return true;
         },
+        /**
+         * 获取注单
+         * @returns {{code: *, expect: (*|jQuery), type: *, betOrders: Array}}
+         */
         getBetOrder: function () {
-            var $num = $("div.group3-list .mui-active");
             var code = this.code;
             var expect = $('font#expect').text();
             var type = this.type;
             var betAmount = Number($("input#inputMoney").val());
-            var betNum = [];
-            var i = 0;
-            $num.each(function () {
-                betNum[i++] = $(this).attr("data-num")
-            });
-            var $target = $("div.group3-list input.group3Odd_" + $num.length);
+            var seltd = $("div.bet-table-list a.mui-active");
+            var betNum = "";
+            $.each(seltd, function (i, item) {
+                betNum = betNum + $(this).data("bet-num") + ",";
+            })
+            if (betNum != '') {
+                betNum = betNum.substring(0, betNum.length - 1);
+            }
             var betForm = {
                 code: this.code,
                 expect: $('font#expect').text(),
@@ -160,14 +147,15 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
             betForm.betOrders.push({
                 code: code,
                 expect: expect,
-                betCode: $target.attr("data-bet-code"),
-                playCode: $target.attr("data-play"),
-                betNum: betNum.join(","),
-                odd: $target.attr("data-odd"),
-                memo: $target.attr("data-name") + "-" + betNum,
-                betAmount: betAmount
+                betAmount: betAmount,
+                betCode: $("#zuxuansan a.mui-active").attr("data-type"),
+                playCode: $("#zuxuansan a.mui-active").attr("data-play"),
+                betNum: betNum,
+                odd: oddsar[Number(seltd.length)].odd,
+                memo: $("#zuxuansan a.mui-active").text() + "-" + betNum
             });
             return betForm;
         }
+
     });
 });

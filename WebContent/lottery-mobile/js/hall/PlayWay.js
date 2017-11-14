@@ -616,8 +616,9 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 if($("div.mui-input-row.zd-wrap").size()>1){
                     $("#zhushu_new").text($("#zhushu_new").text()-1);
                     $("#zongjine_new").text($("#zongjine_new").text()-$(this).prev().val());
+                    var len=$(this).parent().parent().index()-1;
+                    _this.betForm.betOrders.splice(len,1);
                     $(this).parent().parent().remove();
-                    _this.betForm.betOrders.splice($(this).prev().attr("data-name"),1);
                     _this.betForm.totalMoney=$("#zongjine_new").text();
                     _this.betForm.quantity=_this.betForm.quantity-1;
                 }else{

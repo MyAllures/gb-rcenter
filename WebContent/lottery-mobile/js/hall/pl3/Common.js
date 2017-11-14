@@ -16,35 +16,39 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
             if($("a.selected-btn.main.mui-active").size()>0){
                 dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
             }
-            if(    dataCode !="3star"
+            if( //官方
+                dataCode !="3star"
                 && dataCode !="First2"
                 && dataCode !="After2"
-            //只有一个子菜单直接关闭遮照
-            /*  && dataCode !="DingWeiDan"
-             && dataCode !="BuDingWei"*/
+                //信用
+                && dataCode !="fix"
+                && dataCode !="comb"
+                && dataCode !="sum"
             ){
-                $('div.gfwf-bg').slideUp();
-                $('div.selected-wrap').slideUp();
+                // $('div.gfwf-bg').slideUp();
+                // $('div.selected-wrap').slideUp();
+                _this.closeTop();
             }
-            //三星
-            if(betCode =="3star" && jspName==undefined){
+
+            if(betCode =="3star" && jspName==undefined){//三星
                 jspName="3star";
-            }
-            //前二
-            if(betCode =="First2" && jspName==undefined){
+            }else if(betCode =="First2" && jspName==undefined){//前二
                 jspName="First2Zxfs";
-            }
-            //后二
-            if(betCode =="After2" && jspName==undefined){
+            }else if(betCode =="After2" && jspName==undefined){//后二
                 jspName="After2Zxfs";
-            }
-            //定位胆
-            if(betCode =="DingWeiDan" && jspName==undefined){
+            }else if(betCode =="DingWeiDan" && jspName==undefined){//定位胆
                 jspName="YixingDwd";
-            }
-            //不定位
-            if(betCode =="Sxymbdw" && jspName==undefined){
+            }else if(betCode =="Sxymbdw" && jspName==undefined){//不定位
                 jspName="Sxymbdw";
+            }else if(betCode =="fix" && jspName==undefined){
+                jspName="Fix1";
+                dataCode="百定位";
+            }else if(betCode =="comb" && jspName==undefined){
+                jspName="Comb1";
+                dataCode="一字组合";
+            }else if(betCode =="sum" && jspName==undefined){
+                jspName="Sum2";
+                dataCode="百十和数";
             }
 
             _this.getBetTable(dataCode,jspName);
@@ -53,17 +57,68 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
 
         changeList : function(){
             var _this=this;
+            var lotteryGenra=$("#GenraType").val();
+            var betCode="百定位";
+            var jspStr="Fix1";
+            if(lotteryGenra =="pl3_yixing_dwd"){
+                betCode="pl3_yixing_dwd";
+                jspStr="YixingDwd";
+            }
             mui.ajax(root + '/'+this.type+'/'+this.code+'/getBetTable.html', {
-                data: {"betCode": "pl3_yixing_dwd","jspStr":"YixingDwd"},
+                data: {"betCode": betCode,"jspStr":jspStr},
                 type: 'POST',
                 success: function (data) {
                     $(".bet-table").html(data);
+                    $("#gfwfBetCode").val(betCode);
                     if(!_this.isOpen){
                         _this.closeHandicap();
                     }
                 }
             });
         },
+
+        //传统,官方玩法切换
+        isGfwf: function () {
+            var _this = this;
+            //信用
+            mui("body").on("tap", "a.x_1.mui-col-xs-6", function () {
+                mui.ajax(root + '/'+_this.type+'/'+_this.code+'/checkBetTable.html', {
+                    data: {"jspStr": "BetAmount-xywf"},
+                    type: 'POST',
+                    success: function (data) {
+                        _this.openXinyongwanfa(data);
+                        $("a[data-code='fix']").addClass("mui-active");
+                        $("a[data-code='百定位']").addClass("mui-active");
+                        $("a.x_1.mui-col-xs-6").addClass("x_active");
+                        $("a.x_3.mui-col-xs-6").removeClass("x_active");
+                        $("#toobarTitle").text("信用玩法-定位");
+                        $("#GenraType").val("fix");
+                        _this.changeList();
+
+                    }
+                });
+            });
+            //官方
+            mui("body").on("tap", "a.x_3.mui-col-xs-6", function () {
+                mui.ajax(root + '/'+_this.type+'/'+_this.code+'/checkBetTable.html', {
+                    data: {"jspStr": "BetAmount-gfwf"},
+                    type: 'POST',
+                    success: function (data) {
+                        _this.openGuanfangwanfa(data);
+                        $("#gfwfBetCode").val("ssc_yixing_dwd");
+                        $("a[data-code='ssc_yixing_dwd']").addClass("mui-active");
+                        $("a[data-code='zxfs']").addClass("mui-active");
+                        $("a.x_1.mui-col-xs-6").removeClass("x_active");
+                        $("a.x_3.mui-col-xs-6").addClass("x_active");
+                        $("#toobarTitle").text("官方玩法-定位胆");
+                        $("#GenraType").val("ssc_yixing_dwd");
+                        _this.changeList();
+
+                    }
+                });
+            });
+        },
+
 
 
         showLastOpenCode: function (numArr) {
