@@ -34,6 +34,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
             });
             $("#recentHistory").html(openList);
         },
+
         showLastOpenCode: function (openCodeArr) {
             var sum = 0;
             $.each(openCodeArr, function(index, value) {
@@ -57,7 +58,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
 
         checkSubordinate:function(betCode,thisClassList){
             var _this = this;
-            if(betCode !='hh') {
+            if(betCode !='hhs') {
                 $("a.selected-btn.mui-active").removeClass("mui-active");
                 thisClassList.toggle('mui-active');
                 var dataCode = $("a.selected-btn.main.mui-active").attr("data-code");
