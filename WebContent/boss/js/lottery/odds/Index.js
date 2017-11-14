@@ -53,6 +53,7 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                 }else {
                     $(".wfqh-btn").attr("style", "display:none");
                     $("#gfwfqh").removeClass("gfwfqh-wrap");
+                    $("#gfwf").removeClass("active");
                 }
                 $(this).attr('class', 'label ssc-label ssc-active');
                 $(this).siblings().attr('class', 'label ssc-label');
