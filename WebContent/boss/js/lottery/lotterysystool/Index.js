@@ -150,9 +150,13 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
 
         },
-
+        /**
+         * 补采
+         * @param event
+         * @param option
+         */
         collectOpenCode: function (event,option) {
-            var _this = this;
+
             var form = $("#collectOpenCodeForm");
             var date = form.find("input").val();
             var code = null;
@@ -171,6 +175,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             });
 
             window.top.topPage.showConfirmMessage(context, function (confirm) {
+
                 if (confirm) {
 
                     window.top.topPage.ajax({
@@ -183,17 +188,10 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             }else {
                                 page.showPopover(event,option,"danger",data.msg,true);
                             }
-                            $(event.currentTarget).unlock();
                         }
                     });
-
-                } else {
-                    $(event.currentTarget).unlock();
                 }
             });
-
-            $(event.currentTarget).unlock();
-
         },
 
         payout:function (e,option) {
