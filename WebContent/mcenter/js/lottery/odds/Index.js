@@ -265,6 +265,7 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     ori = Number($input.attr("data-value"));
                     if (odd != ori) {
                         if (!$input.valid()) {
+                            $target.unlock();
                             return;
                         }
                         limit = $input.attr("data-limit");

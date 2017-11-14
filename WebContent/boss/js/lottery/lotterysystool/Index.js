@@ -190,6 +190,8 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             }
                         }
                     });
+                }else{
+                    $(event.currentTarget).unlock();
                 }
             });
         },
@@ -203,11 +205,15 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var btnOption = {};
             var type=1;
             if (code == ''){
-                e.page.showPopover(e,btnOption,"danger","彩种不能选择为空",true);
+                e.page.showPopover(e,btnOption,"danger","彩种不能选择为空!",true);
                 return;
             }
             if (expect == ''){
-                e.page.showPopover(e,btnOption,"danger","期号不能为空",true);
+                e.page.showPopover(e,btnOption,"danger","期号不能为空!",true);
+                return;
+            }
+            if (isNaN(siteId)){
+                e.page.showPopover(e,btnOption,"danger","请输入真确的站点Id!",true);
                 return;
             }
             var _this = this;
@@ -227,8 +233,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                                 if(bol){
                                 var formbj = $("#payoutForm")[0];
                                 _this.query1(e,option,formbj,null,type);
-                                }else {
-                                    $(e.currentTarget).unlock();
                                 }
                             });
                         }else {
@@ -236,8 +240,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                                 if(bol){
                                 var formbj = $("#payoutForm")[0];
                                 _this.query1(e,option,formbj,null,type);
-                                }else {
-                                    $(e.currentTarget).unlock();
                                 }
                             });
                         }
@@ -268,6 +270,10 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 e.page.showPopover(e,btnOption,"danger","期号不能为空",true);
                 return;
             }
+            if (isNaN(siteId)){
+                e.page.showPopover(e,btnOption,"danger","请输入真确的站点Id!",true);
+                return;
+            }
             var _this = this;
             window.top.topPage.ajax({
                 dataType:'json',
@@ -285,16 +291,14 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                                 if (bol) {
                                 var formbj = $("#heavyForm")[0];
                                 _this.query1(e, option, formbj, null, type);
-                            }else {
-                                    $(e.currentTarget).unlock();
-                                }
+                            }
                             });
                         }else {
                             window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+codename+"彩种"+expect+"期所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function (bol) {
                                 if(bol){
                                 var formbj = $("#heavyForm")[0];
                                 _this.query1(e,option,formbj,null,type);
-                                }else {$(e.currentTarget).unlock();}
+                                }
                             });
                         }
                     }else{
