@@ -27,11 +27,6 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
          */
         bindButtonEvents: function () {
             var _this = this;
-            /*==============================信用====================================*/
-            //点击下注选项
-            mui("body").off('tap','div.bet-table-list td,div.bet-table-list .n-btn').on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn', function () {
-                _this.bindTdInput($(this));
-            });
 
             //清除下注项
             mui("body").off('tap','a#del-bet1').on('tap', 'a#del-bet1', function () {
@@ -66,7 +61,6 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
             var length = 1;
             $("div.comb-div:visible .screen-munber").each(function () {
                 length = length * $(this).find(".mui-active").length;
-                console.log(11)
             });
             if (length > 1) {
                 length = 1;

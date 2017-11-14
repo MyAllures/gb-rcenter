@@ -29,7 +29,7 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
                 success: function (data) {
                     var list = data.obj;
                     var $oneWordFix = $("div.one-word-fix");
-                    var title = $("a.mui-active[data-bet-code]  span").html();
+                    var title = $("#dingwei a.main.mui-active span").html();
                     $oneWordFix.find("div.bet-title").each(function () {
                         $(this).html(title);
                     });
