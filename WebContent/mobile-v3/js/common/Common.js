@@ -1,3 +1,5 @@
+/**终端标志*/
+var os = whatOs();
 /*mui 初始化配置选项*/
 var muiDefaultOptions = {
     /*主页面滚动指定容器，可自行指定范围*/
@@ -181,15 +183,24 @@ function hideLoading() {
 /**
  * 统一请求跳转页面
  * @param url
+ *
  */
 function goToUrl(url) {
-    //终端标识，以判断ｕrl走什么入口
-    var os = whatOs();
     if (url.indexOf("?") < 0) {
         url = url + "?v=" + rcVersion;
     } else {
         url = url + "&v=" + rcVersion;
     }
+    //登录页面
+    if (url.indexOf("commonLogin.html") > 0) {
+        login(url);
+        return;
+    }
+    //todo::终端标识，以判断ｕrl走什么入口
+    openWindow(url);
+}
+
+function openWindow(url) {
     mui.openWindow({
         url: url,
         id: url,
@@ -235,14 +246,14 @@ function bindButtonEvent() {
 function doEvent(obj, options) {
     var precall = options.precall;
     //前置函数执行
-    if (precall && typeof precall == 'function' && !precall.apply(obj, [obj, options])) {
+    if (precall && !applyFunction(precall, options)) {
         $target.unlock();
         return false;
     }
     var opType = options.opType;
     if (opType == 'function') {
         doFunction(obj, options);
-    }  else if (opType == 'ajax') {
+    } else if (opType == 'ajax') {
         doAjax(obj, options);
     } else if (opType == 'href') {
         goToUrl(options.target);
@@ -255,13 +266,22 @@ function doEvent(obj, options) {
  * @param options
  */
 function doFunction(obj, options) {
-    var func = options.target;
+    var func = this[options.target];
+    applyFunction(func, options);
+    $(obj).unlock();
+}
+
+function applyFunction(func, options) {
     if (func && typeof func == 'function') {
-        func.apply(this, [this, options]);
+        var rs = func.apply(this, [this, options]);
+        return rs;
+    } else if (func && typeof func == 'string' && this[func] && typeof this[func] == 'function') {
+        func = this[func];
+        var rs = func.apply(this, [this, options]);
+        return rs;
     } else {
         console.log(func + "方法找不到！");
     }
-    $(obj).unlock();
 }
 
 /**
@@ -277,16 +297,16 @@ function doAjax(obj, options) {
             }
             options.data = data;
             var func = options.callback;
-            if (func && typeof func == 'function') {
-                func.apply(obj, [obj, options]);
+            if (func) {
+                applyFunction(func, options)
             }
             $(obj).unlock();
         }
     };
     //ajax请求参数
     var post = options.post;
-    if (post && typeof post == 'function') {
-        ajaxOption.data = post.apply(obj, [obj, options]);
+    if (post) {
+        ajaxOption.data = applyFunction(post, options);
     }
     muiAjax(ajaxOption);
 }
@@ -314,8 +334,8 @@ function showConfirmMsg(options, obj) {
     mui.confirm(options.confirm, options.title, btnArray, function (e) {
         if (e.index == 0) {
             var func = options.event;
-            if (func && typeof func == 'function') {
-                func.apply(obj, [obj, options]);
+            if (func) {
+                applyFunction(func, options);
             }
         }
     })
@@ -329,8 +349,36 @@ function showConfirmMsg(options, obj) {
  */
 function showWarningMsg(title, msg, callback) {
     mui.alert(msg, title, function () {
-        if (callback && typeof callback == 'function') {
-            callback();
+        if (callback) {
+            applyFunction(callback);
         }
     });
+}
+
+/**
+ * 统一登录入口
+ * @param url
+ */
+function login(url) {
+    if (os == 'app_ios') {
+        gotoCustom("/login/commonLogin.html");
+    } else if (os == 'app_android') {
+        window.gamebox.gotoLogin(url);
+    } else {
+        url = '/login/commonLogin.html?v=' + rcVersion;
+        openWindow(url);
+    }
+}
+
+/**
+ * 统一退出登录入口
+ */
+function loginOut(e, options) {
+    sessionStorage.is_login = false;
+    if (os === 'app_ios')
+        loginOut();
+    if (os === 'android')
+        window.gamebox.logout();
+    else
+        goToUrl("/passport/logout.html");
 }
