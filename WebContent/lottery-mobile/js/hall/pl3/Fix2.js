@@ -28,7 +28,6 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
                 type: 'POST',
                 success: function (data) {
                     var betname = $("#dingwei a.mui-active").text();
-                    console.log(betname);
                     var tdata = data["obj"];
                     var toua = $("#bettouli div a");
                     var weia = $("#betweili div a");
