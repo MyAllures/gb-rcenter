@@ -13,15 +13,15 @@ define(['common/MobileBasePage'], function (Mobile) {
             this.gotoFragment();
             this.logout();
             var _this = this;
-            mui(".mui-off-canvas-left").on("tap","li.mui-table-view-cell",function (e) {
+            mui(".mui-off-canvas-left").on("tap", "li.mui-table-view-cell", function (e) {
                 $("li.mui-table-view-cell").removeClass("active");
                 mui('.mui-off-canvas-wrap').offCanvas('toggle');
                 $(this).addClass("active");
             });
-            mui(".mui-off-canvas-left").on("tap",".login-status .h-btn",function (e) {
+            mui(".mui-off-canvas-left").on("tap", ".login-status .h-btn", function (e) {
                 mui('.mui-off-canvas-wrap').offCanvas('toggle');
             });
-            $("._download").on("tap",function (e) {
+            $("._download").on("tap", function (e) {
                 var win = window.open($(this).data("download"), "_blank");
                 win.document.cookie = "ACCESS_TERMINAL=mobile;expires=0";
             });
@@ -59,9 +59,9 @@ define(['common/MobileBasePage'], function (Mobile) {
                 }
             })
         },
-        gotoFragment : function () {
+        gotoFragment: function () {
             var _this = this;
-            mui("body").on("tap", "[data-skip]", function() {
+            mui("body").on("tap", "[data-skip]", function () {
                 var canvasStatus;
                 if (mui('.mui-off-canvas-right').length > 0) {
                     canvasStatus = mui('.mui-off-canvas-right').offCanvas().isShown();
@@ -75,7 +75,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                 var target = $(this).data('target');
                 var dos = $(this).data('os');
                 var url = $(this).data('skip');
-                if(isLogin == 'true') {
+                if (isLogin == 'true' && url.indexOf('/lottery/mainIndex') > 0) {
                     var postData = {};
                     postData.apiId = 22;
                     mui.ajax(root + "/transfer/auto/loginAndAutoTransfer.html", {
@@ -137,7 +137,7 @@ define(['common/MobileBasePage'], function (Mobile) {
             var _this = this;
             mui("body").on("tap", ".user-logout", function () {
                 sessionStorage.is_login = false;
-                if(os === 'app_ios')
+                if (os === 'app_ios')
                     loginOut();
                 if (os === 'android')
                     window.gamebox.logout();
