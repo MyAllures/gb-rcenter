@@ -1,4 +1,4 @@
-define(['site/hall/xy28/PlayWay'], function (PlayWay) {
+define(['site/hall/PlayWay'], function (PlayWay) {
     return PlayWay.extend({
         init: function () {
             this._super();

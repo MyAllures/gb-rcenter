@@ -1,38 +1,22 @@
-define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/xy28/xy28/PlayWay-xywf', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         init: function () {
             this._super();
         },
-        getRandomNumber: function (len) {
-            var list = [];
-            var sum = 0;
-            for (var i = 0; i < len; ++i) {
-                var value = Math.floor(Math.random() * 10);
-                list[i] = value;
-                sum += value;
-            }
-            var tmpStr = Template('template_lastOpenCode', {numArr: list, sum: sum});
-            return tmpStr;
-        }, /**
-         * 展示最近开奖记录
-         */
-        showRecentHistory: function (data) {
-            var openList = '';
-            $.each(data, function (index, value) {
-                var numArr = value.openCode ? value.openCode.split(",") : [];
-                var sum = 0;
-                $.each(numArr, function (ind, val) {
-                    sum += parseInt(val);
-                });
-                openList = openList + Template('template_recentHistory', {
-                        number: value.expect,
-                        list: numArr,
-                        len: numArr.length,
-                        sum: sum
-                    });
-            });
-            $("#recentHistory").html(openList);
+
+        showTable : function(){
+            var BetCode=$("#gfwfBetCode").val();
+            var BetCode1="特码包三";
+            $("a[data-code='"+BetCode+"']").addClass("mui-active");
+            $("a[data-code='s5']").addClass("mui-active");
+            $(".x_3.gfwf-playName").text(BetCode1);
+            $("span.x_1.gfwf-tit").text(BetCode1);
+            $(".s-title.title1 span").text(BetCode1);
+            $(".s-title.title2 span").text(BetCode1);
+            $("#toobarTitle").text("信用玩法-"+BetCode1);
+            $("a[data-code='s5'] span").text(BetCode1);
         },
+
         /**
          * 获取赔率
          */
