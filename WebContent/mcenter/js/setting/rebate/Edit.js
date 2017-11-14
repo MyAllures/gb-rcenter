@@ -201,6 +201,14 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             $("#_contents").css("top", thei);
             $("#_contents").removeClass("hide");
             //document.all._contents.style.visibility = "visible";
+        },
+        insertRow:function (e, opt) {
+            //var $tbl = $('._tables table');
+            var currentTr =  $($(e.currentTarget).parent().parent());
+            var $newGrads = $("table#foolishlyTable .apiGrad").clone().removeAttr('id').removeClass("hide");
+            currentTr.before($newGrads);
+            this.resetIndex();
+            $(e.currentTarget).unlock();
         }
     });
 });
