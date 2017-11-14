@@ -111,9 +111,9 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var siteId = $(formobj).find("input[name='search.siteId']").val();
             var context = '';
             if (siteId == ''){
-                context = "您将对"+codename+","+expect+"期的所有未结算注单进行撤销,是否确认执行";
+                context = "您将对"+codename+","+expect+"期的所有未结算注单进行撤单,是否确认执行?";
             }else {
-                context = "您将对站点"+siteId+","+codename+","+expect+"期的所有未结算注单进行撤销,是否确认执行";
+                context = "您将对"+siteId+"站点,"+codename+","+expect+"期的所有未结算注单进行撤单,是否确认执行?";
             }
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
@@ -136,9 +136,9 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var siteId = $(formobj).find("input[name='search.siteId']").val();
             var context = '';
             if (siteId == ''){
-                context = "您将对"+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行";
+                context = "您将对"+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行?";
             }else {
-                context = "您将对站点"+siteId+","+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行";
+                context = "您将对"+siteId+"站点,"+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行?";
             }
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
@@ -150,7 +150,11 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
 
         },
-
+        /**
+         * 补采
+         * @param event
+         * @param option
+         */
         collectOpenCode: function (event,option) {
 
             var form = $("#collectOpenCodeForm");
@@ -160,7 +164,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var context = "您将采集 "+codeName + ", "+date+"的所有已开奖号码";
             if(codeName=="请选择" || !date){
                 page.showPopover(event,option,"danger","请选择彩种和日期",true);
-                $(event.currentTarget).unlock();
                 return;
             }
 
@@ -172,6 +175,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             });
 
             window.top.topPage.showConfirmMessage(context, function (confirm) {
+
                 if (confirm) {
 
                     window.top.topPage.ajax({
@@ -180,22 +184,14 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                         data: {"result.code":code,"result.date":date},
                         success: function (data) {
                             if(data.state){
-                                page.showPopover(event,option,"success","更新成功!",true);
+                                page.showPopover(event,option,"success","采集成功!",true);
                             }else {
                                 page.showPopover(event,option,"danger",data.msg,true);
-
                             }
-                            $(event.currentTarget).unlock();
                         }
                     });
-
-                } else {
-                    $(event.currentTarget).unlock();
                 }
             });
-
-            $(event.currentTarget).unlock();
-
         },
 
         payout:function (e,option) {
@@ -225,6 +221,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
                     if (data.status){
                         $("#opencode").val(data.msg);
+                        $("#opencode").attr("title",data.msg);
                         if (siteId == ''){
                             window.top.topPage.showConfirmMessage("你将对"+codename+"彩种"+expect+"期全平台所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
                                 if(bol){
@@ -282,6 +279,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
                     if (data.status){
                         $("#opencode1").val(data.msg);
+                        $("#opencode1").attr("title",data.msg);
                         if (siteId == ''){
                             window.top.topPage.showConfirmMessage("你将对"+codename+"彩种"+expect+"期全平台所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function(bol) {
                                 if (bol) {
