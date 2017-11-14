@@ -1,31 +1,28 @@
-define(['site/hall/pl3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay, Template) {
 
     return PlayWay.extend({
         _this: null,
         init: function () {
             this._super();
             _this = this;
+
         },
 
         showTable : function(){
             $("a[data-code='zusan']").addClass("mui-active");
             $("div.s-menu.second").hide();
             $("#zusan").show();
-            $(".x_3.gfwf-playName").text("组三");
-            $("span.x_1.gfwf-tit").text("组三");
-            $(".s-title.title1 span").text("组三");
-            $(".s-title.title2 span").text("组三");
-            $("#toobarTitle").text("信用玩法-组三");
-            $("a[data-code='zusan'] span").text("组三");
+            $(".x_3.gfwf-playName").text("组六");
+            $("span.x_1.gfwf-tit").text("组六");
+            $(".s-title.title1 span").text("组六");
+            $(".s-title.title2 span").text("组六");
+            $("#toobarTitle").text("信用玩法-组六");
+            $("a[data-code='zusan'] span").text("组六");
         },
 
 
-        /**
-         * 绑定事件
-         */
         bindButtonEvents: function () {
-            var _this = this;
-            /*==============================信用====================================*/
+            var _this=this;
             //清除下注项
             mui("body").off('tap','a#del-bet1').on('tap', 'a#del-bet1', function () {
                 page.resetBet();
@@ -54,11 +51,11 @@ define(['site/hall/pl3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             mui(this.formSelector).on("tap", "a.mui-control-item[data-type]", function () {
                 var type = $(this).attr("data-type");
                 var betTitle = $(this).text();
-                $("#bet-title").html(betTitle + "@<font id='pl' class='col-red'></font> (请选择5个及以上号码)");
+                $("#bet-title").html(betTitle + "@<font id='pl' class='col-red'></font> (请选择4~8个号码)");
                 $("#betli a").removeClass("mui-active");
-                $("#bet-title").each(function () {
+                $(".bet-table-list[data-subCode]").each(function () {
                     $(this).attr("data-subCode", type);
-                    var $tdBet = $(this).find("a[data-bet-num]");
+                    var $tdBet = $(this).find("td[data-bet-num]");
                     $tdBet.each(function () {
                         var betNum = $(this).attr('data-bet-num');
                         $(this).attr("data-name", betTitle + "-" + betNum);
@@ -68,7 +65,7 @@ define(['site/hall/pl3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             })
             mui("body").on('tap', 'li#betli div a', function () {
                 var seltd = Number($("li#betli div a.mui-active").length);
-                if (seltd > 4) {
+                if (seltd >= 4 && seltd < 9) {
                     $("#quantity").text(1);
                     var bet = oddsar[seltd];
                     $("font#pl").text(bet.odd);
@@ -78,16 +75,16 @@ define(['site/hall/pl3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 }
             });
         },
-
         getOdds: function () {
             var url = root + '/' + this.type + '/' + this.code + '/getOdds.html';
             var _this = this;
             mui.ajax(url, {
                 dataType: 'json',
-                data: {betCode: "pl3_group3"},
+                data: {betCode: "pl3_group6"},
                 type: 'POST',
                 success: function (data) {
                     $(".bet-table-list[data-subCode]").each(function () {
+                        // var subCode = $(this).attr("data-subCode");
                         var $tdBet = $(this).find("a[data-bet-num]");
                         var $tds = $(this).find("td");
                         oddsar = data["obj"];
@@ -105,17 +102,8 @@ define(['site/hall/pl3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 return false;
             }
             var seltd = Number($("div.bet-table-list a.mui-active").length);
-            if (seltd < 5) {
-                this.toast("请选择5个及以上号码");
-                return false;
-            }
-
-            var betForm = this.getBetOrder();
-            if (typeof betForm != 'object') {
-                return false;
-            }
-            if (betForm.betOrders.length == 0) {
-                this.toast("请选择");
+            if (seltd < 4 || seltd > 8) {
+                this.toast("请选择4~8个号码");
                 return false;
             }
             return true;
@@ -125,25 +113,25 @@ define(['site/hall/pl3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
          * @returns {{code: *, expect: (*|jQuery), type: *, betOrders: Array}}
          */
         getBetOrder: function () {
-            var code = this.code;
-            var expect = $('font#expect').text();
-            var type = this.type;
-            var betAmount = Number($("input#inputMoney").val());
             var seltd = $("div.bet-table-list a.mui-active");
             var betNum = "";
             $.each(seltd, function (i, item) {
                 betNum = betNum + $(this).data("bet-num") + ",";
-            })
+            });
             if (betNum != '') {
                 betNum = betNum.substring(0, betNum.length - 1);
             }
+            var code = this.code;
+            var expect = $('font#expect').text();
+            var type = this.type;
+            var betAmount = Number($("input#inputMoney").val());
             var betForm = {
-                code: this.code,
-                expect: $('font#expect').text(),
-                type: this.type,
+                code: code,
+                expect: expect,
+                type: type,
                 betOrders: [],
-                quantity: 1,
-                totalMoney: betAmount
+                quantity: 0,
+                totalMoney: 0
             };
             betForm.betOrders.push({
                 code: code,
@@ -153,8 +141,10 @@ define(['site/hall/pl3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 playCode: $("div.bet-table-list").attr("data-play"),
                 betNum: betNum,
                 odd: oddsar[Number(seltd.length)].odd,
-                memo: "组三-" + betNum
+                memo: "组六-" + betNum
             });
+            betForm.totalMoney = betForm.totalMoney + betAmount;
+            betForm.quantity = betForm.quantity + 1;
             return betForm;
         }
 
