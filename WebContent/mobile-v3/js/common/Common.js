@@ -297,7 +297,7 @@ function doEvent(obj, options) {
  */
 function doFunction(obj, options) {
     var func = this[options.target];
-    applyFunction(func, options);
+    applyFunction(func, options, obj);
     $(obj).unlock();
 }
 
@@ -338,7 +338,7 @@ function doAjax(obj, options) {
             options.data = data;
             var func = options.callback;
             if (func) {
-                applyFunction(func, options)
+                applyFunction(func, options, obj);
             }
             $(obj).unlock();
         }
@@ -346,7 +346,7 @@ function doAjax(obj, options) {
     //ajax请求参数
     var post = options.post;
     if (post) {
-        ajaxOption.data = applyFunction(post, options);
+        ajaxOption.data = applyFunction(post, options, obj);
     }
     muiAjax(ajaxOption);
 }
@@ -375,7 +375,7 @@ function showConfirmMsg(options, obj) {
         if (e.index == 0) {
             var func = options.event;
             if (func) {
-                applyFunction(func, options);
+                applyFunction(func, options, obj);
             }
         }
     })
