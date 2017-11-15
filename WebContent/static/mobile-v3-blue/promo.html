@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+    <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+</head>
+
+<body>
+<!-- 侧滑导航根容器 -->
+<div class="mui-off-canvas-wrap mui-draggable">
+  <!-- 菜单容器 -->
+  <aside class="mui-off-canvas-left">
+    <div class="mui-scroll-wrapper side-menu-scroll-wrapper">
+      <div class="mui-scroll">
+        <!-- 菜单具体展示内容 -->
+        <!--个人信息部分-->
+        <div class="person-info">
+        	<!--登录前-->
+        	<div class="un-login">
+        		<p>欢迎观临，请先登录</p>
+        		<a type="button" class="mui-btn mui-btn-success  btn-login">用户登录</a>
+        	</div>
+        	<!--登陆后-->
+        	<div class="login" hidden>
+        		<i class="icon-person"></i>
+        		<p>EVEN_999</p>
+        		<a type="button" class="mui-btn mui-btn-success  btn-person">个人中心</a>         		
+        	</div>
+        </div>	
+        <!--side-nav-->
+        <div class="side-nav">
+        	<ul class="mui-list-unstyled">
+        		<li class="active home"><a href="index.html">首页</a></li>
+        		<li class="pro"><a href="promo.html">优惠活动</a></li>
+        		<li class="download"><a href="">下载客户端</a></li>
+        		<li class="pc"><a href="">电脑版</a></li>
+        		<li class="trans"><a href="">转账</a></li>
+        		<li class="deposit"><a href="">账户存款</a></li>
+        		<li class="about"><a href="">关于我们</a></li>
+        		<li class="question"><a href="">常见问题</a></li>
+        		<li class="service"><a href="">在线客服</a></li>
+        		<li class="reg_rules"><a href="">注册条款</a></li>
+        		<li class=" lang zh-CN">
+        			<a href="">语言</a>
+        		</li>
+        	</ul>
+        	<a type="button" class="mui-btn mui-btn-success  btn-logout">退出登录</a> 
+        </div>
+      </div>
+    </div>
+  </aside>
+  <!-- 主页面容器 -->
+  <div class="mui-inner-wrap">
+    <!-- 主页面标题 -->
+    <header class="mui-bar mui-bar-nav">
+      <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+      <div class="login-info" id="login-info">
+      	<div class="user_name">a*1</div>
+      	<div class="money">￥0.00</div>
+        <div class="ex">
+            <table>
+                <tr>
+                    <td>总资产</td>
+                    <td><span class="bar-asset" style="padding-right: 0; color: #ffffff">￥0</span></td>
+                </tr>
+            </table>
+            <hr>
+            <table>
+                <tr>
+                    <td>钱包</td>
+                    <td class="bar-wallet">￥0</td>
+                </tr>
+            </table>
+            <hr>
+            <div class="mui-scroll-wrapper mui-assets">
+                <div class="mui-scroll">
+                    <table id="api-balance"><tbody><tr><td>DS 贵宾厅</td><td class="_money" id="_api_1">￥0</td></tr><tr><td>KG彩票</td><td class="_money" id="_api_2">￥0</td></tr><tr><td>MG电子</td><td class="_money" id="_api_3">￥0</td></tr><tr><td>IM体育</td><td class="_money" id="_api_4">￥0</td></tr><tr><td>GD 锦绣厅</td><td class="_money" id="_api_5">￥0</td></tr><tr><td> PT电子</td><td class="_money" id="_api_6">￥0</td></tr><tr><td>OG 东方厅</td><td class="_money" id="_api_7">￥0</td></tr><tr><td>AG大厅</td><td class="_money" id="_api_9">￥0</td></tr><tr><td>BBIN大厅</td><td class="_money" id="_api_10">￥0</td></tr><tr><td>皇冠体育</td><td class="_money" id="_api_12">￥0</td></tr><tr><td>HB电子</td><td class="_money" id="_api_15">￥0</td></tr><tr><td>Ebet如意厅</td><td class="_money" id="_api_16">￥0</td></tr><tr><td>SA澳门厅</td><td class="_money" id="_api_17">￥0</td></tr><tr><td>沙巴体育</td><td class="_money" id="_api_19">￥0</td></tr><tr><td>BSG电子</td><td class="_money" id="_api_20">￥0</td></tr><tr><td>LT彩票</td><td class="_money" id="_api_22">￥0</td></tr><tr><td>OPUS体育</td><td class="_money" id="_api_23">￥0</td></tr><tr><td>OPUS幸运厅</td><td class="_money" id="_api_24">￥0</td></tr><tr><td>SG电子</td><td class="_money" id="_api_25">￥0</td></tr><tr><td>PNG电子</td><td class="_money" id="_api_26">￥0</td></tr></tbody></table>
+                </div>
+            </div>
+            <div class="ct">
+                <p><a class="go btn-refresh">刷新额度</a></p>
+                <p><a class="go btn-deposit">存款</a></p>
+                </div>
+        </div>
+      </div><!--login-info end-->
+      <h1 class="mui-title">优惠活动</h1>
+      <!--易记域名-->
+      <section class="yjym">易记域名：www.1136.mb.com</section>
+    </header>
+    <div class="mui-content mui-scroll-wrapper">
+      <div class="mui-scroll">
+        <!-- 主界面具体展示内容 -->
+        <!--优惠列表-->
+        <section class="promo">
+        	<div class="promo-sorts">
+        		<a type="button" class="mui-btn btn-promo-sort active">电子</a>
+        		<a type="button" class="mui-btn btn-promo-sort">进行中</a>
+        		<a type="button" class="mui-btn btn-promo-sort">已过期</a>
+        	</div>
+        	<ul class="promo-list mui-list-unstyled">
+        		<li><a href=""><img src="../../mobile-v3/images/promo/promo01.png"/></a></li>
+        		<li><a href=""><img src="../../mobile-v3/images/promo/promo02.png"/></a></li>
+        		<li><a href=""><img src="../../mobile-v3/images/promo/promo03.png"/></a></li>
+        	</ul>
+        </section>
+      </div> <!--mui-scroll 闭合标签-->
+    </div>  <!--mui-content 闭合标签-->
+	<!--footer-->
+	<footer class="mui-bar mui-bar-tab">
+	    <a class="mui-tab-item">
+	        <span class="mui-icon icon-deposit"></span>
+	        <span class="mui-tab-label">存款</span>
+	    </a>
+	    <a class="mui-tab-item mui-active">
+	        <span class="mui-icon icon-promo"></span>
+	        <span class="mui-tab-label">优惠</span>
+	    </a>
+	    <a class="mui-tab-item" href="index.html">
+	        <span class="mui-icon icon-home"></span>
+	        <span class="mui-tab-label">首页</span>
+	    </a>
+	    <a class="mui-tab-item">
+	        <span class="mui-icon icon-service"></span>
+	        <span class="mui-tab-label">客服</span>
+	    </a>
+	    <a class="mui-tab-item" href="mine.html">
+	        <span class="mui-icon icon-mine"></span>
+	        <span class="mui-tab-label">我的</span>
+	    </a>
+	</footer>   
+	<!--浮窗广告轮播-->
+	<div class="ads-slider">
+		<a href="javascript:" class="close-ads"></a>
+		<div class="mui-slider">
+		  <div class="mui-slider-group">
+		    <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/ads-banner-01.png" /></a></div>
+		    <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/ads-banner-01.png" /></a></div>
+		  </div>
+		</div>		
+	</div>
+  </div>
+</div>
+<!--语言弹窗-->
+<ul class="lang-menu">
+	<li class="current zh-CN"><a href="">中文</a></li><!--当前语言版本加current-->
+	<li class="en-US"><a href="">English</a></li>
+	<li class="ja-JP"><a href="">日文</a></li>
+</ul>
+<script src="../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../mobile-v3/js/common.js"></script>
+</html>
