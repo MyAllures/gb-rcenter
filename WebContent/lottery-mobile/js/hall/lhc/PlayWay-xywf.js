@@ -7,6 +7,29 @@ define(['site/hall/PlayWay'], function (PlayWay) {
             this._super();
         },
 
+
+        /**
+         * 获取赔率
+         */
+        getOdds: function () {
+            var url = root + '/' + this.type + '/' + this.code + '/' + this.betCode + 'Odd.html';
+            var _this = this;
+            mui.ajax(url, {
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {
+                    $(".bet-table-list td[data-bet-num]").each(function () {
+                        var betNum = $(this).attr('data-bet-num');
+                        var bet = data[betNum];
+                        $(this).attr("data-odds", bet.odd);
+                        $(this).attr("data-bet-code", bet.betCode);
+                        $(this).children("span[name=odd]").text(bet.odd);
+                    })
+                }
+            })
+        },
+
+
         //组合函数
         combination : function (arr, size) {
             var allResult = [];
