@@ -296,7 +296,7 @@ function doEvent(obj, options) {
  */
 function doFunction(obj, options) {
     var func = this[options.target];
-    applyFunction(func, options);
+    applyFunction(func, options, obj);
     $(obj).unlock();
 }
 
