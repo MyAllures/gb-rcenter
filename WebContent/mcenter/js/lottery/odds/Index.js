@@ -49,6 +49,7 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                 }else {
                     $(".wfqh-btn").attr("style", "display:none");
                     $("#gfwfqh").removeClass("gfwfqh-wrap");
+                    $("#gfwf").removeClass("active");
                 }
 
                 $(this).attr('class', 'label ssc-label ssc-active');
@@ -256,6 +257,7 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     ori = Number($input.attr("data-value"));
                     if (odd != ori) {
                         if (!$input.valid()) {
+                            $target.unlock();
                             return;
                         }
                         limit = $input.attr("data-limit");
