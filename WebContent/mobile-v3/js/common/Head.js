@@ -40,6 +40,7 @@ function headInfo() {
 function leftMenu(obj) {
     if(mui('.mui-off-canvas-wrap').offCanvas().isShown('left')){
         mui('.mui-off-canvas-wrap').offCanvas().close();
+        $(".lang-menu").hide();
     } else {
         mui('.mui-off-canvas-wrap').offCanvas().show();
     }

@@ -261,7 +261,7 @@ function bindButtonEvent() {
             return;
         }
         $target.lock();
-        var options = eval("(" + $(this).data('rel') + ")");
+        var options = eval("(" + $(this).attr('data-rel') + ")");
         var confirm = options.confirm;
         if (confirm) {
             options.event = doEvent(this, options);
