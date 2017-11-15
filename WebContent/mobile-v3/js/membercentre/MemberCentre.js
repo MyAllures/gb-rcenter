@@ -3,8 +3,7 @@ function userInfo() {
     var option = {
         url: root + "/memberCentre/getUserInfo.html",
         success: function (data) {
-            console.log(data);
-            if (data != null && data.username != null) {
+            if (data != null) {
                 var currency = data.currency;
 
                 if (data.username != null) {
@@ -25,10 +24,10 @@ function userInfo() {
                 if (data.recomdAmount != null) {
                     $(".recomdAmount").text("昨日收益:" + currency + data.recomdAmount);
                 }
+                if(data.unReadCount == null || data.unReadCount == 0){
+                    $(".unReadCount").hide();
+                }
                 if (data.unReadCount != null) {
-                    if(data.unReadCount == 0){
-                        $(".unReadCount").hide();
-                    }
                     $(".unReadCount").text(data.unReadCount);
                 }
             }
