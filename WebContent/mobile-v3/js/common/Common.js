@@ -26,6 +26,7 @@ function pullUpRefreshOption(container, callback, auto) {
         pullRefresh: {
             container: container,
             up: {
+                height:100,//可选.默认50.触发上拉加载拖动距离
                 auto: auto,
                 contentrefresh: '正在加载...',
                 callback: callback
