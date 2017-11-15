@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../mobile-v3/themes/mui.min.css">
+</head>
+<body>
+<br>
+<div id="demo1" class="mui-progressbar">
+    <span></span>
+</div>
+
+<br>
+<br>
+<div id="demo2" class="mui-progressbar mui-progressbar-infinite">
+    <span></span>
+</div>
+
+<br>
+<header class="mui-bar mui-bar-nav mui-bar-transparent">
+    <h1 class="mui-title">标题</h1>
+</header>
+
+</body>
+
+<script src="../../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../../mobile-v3/js/mui/mui.picker.min.js"></script>
+<script src="../../../mobile-v3/js/common.js"></script>
+
+<script type="text/javascript">
+    //初始化:
+    mui("#demo1").progressbar({progress:20}).show();
+    //更改显示进度条:
+    mui("#demo1").progressbar().setProgress(50);
+    //关闭进度条:
+    mui("#demo1").progressbar().hide();
+
+    mui("#demo2").progressbar().show();
+</script>
+
+</html>

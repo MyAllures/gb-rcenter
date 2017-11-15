@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../mobile-v3/themes/mui.min.css">
+
+</head>
+<body style="background-color: #3d4d5d;">
+
+<div class="top" >
+    顶部
+    <button value="打开新页面" id="openNewPage" title="打开新页面">打开新页面</button>
+</div>
+<div class="bottom">
+    底部
+</div>
+
+</body>
+
+
+<script src="../../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../../mobile-v3/js/mui/mui.picker.min.js"></script>
+<script src="../../../mobile-v3/js/common.js"></script>
+
+<script type="text/javascript">
+
+    mui.plusReady(function(){
+        console.log("11111111");
+        //console.log("当前页面URL："+plus.webview.currentWebview().getURL());
+    });
+
+    mui.init({
+        subpages:[{
+            url:'../testEdon.html',//子页面HTML地址，支持本地地址和网络地址
+            id:'testEdon.html',//子页面标志
+            styles:{
+                top:'30px',
+                //top:'45px',//mui标题栏默认高度为45px；
+                bottom:'30px'//默认为0px，可不定义；
+        },
+        extras:{}//额外扩展参数
+    }]
+    });
+
+    $("#openNewPage").click(function(){
+        var webview = mui.openWindow({
+            url:'../test/testEdonNewWindow.html',
+            id:'info',
+            show:{
+                autoShow:false
+            },
+            extras:{
+                name:'mui'  //扩展参数
+            }
+        });
+        console.log(webview.name);//输出mui字符串
+    });
+</script>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../mobile-v3/themes/mui.min.css">
+</head>
+<body>
+<br>
+<div class="mui-slider">
+    <div class="mui-slider-group">
+        <!--第一个内容区容器-->
+        <div class="mui-slider-item">
+            <!-- 具体内容 -->
+            <img src="../../../mobile-v2/images/game-ico1.png" height="42" width="40"/></div>
+        <!--第二个内容区-->
+        <div class="mui-slider-item">
+            <!-- 具体内容 -->
+            <img src="../../../mobile-v2/images/game-ico2.png" height="42" width="40"/></div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script src="../../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../../mobile-v3/js/mui/mui.picker.min.js"></script>
+<script src="../../../mobile-v3/js/common.js"></script>
+
+<script type="text/javascript">
+   /* var item2Show = false,item3Show = false;//子选项卡是否显示标志
+    document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+        if (event.detail.slideNumber === 1&&!item2Show) {
+            //切换到第二个选项卡
+            //根据具体业务，动态获得第二个选项卡内容；
+            var content = "";
+            //显示内容
+            document.getElementById("item2").innerHTML = content;
+            //改变标志位，下次直接显示
+            item2Show = true;
+        } else if (event.detail.slideNumber === 2&&!item3Show) {
+            //切换到第三个选项卡
+            //根据具体业务，动态获得第三个选项卡内容；
+            var content ="";
+            //显示内容
+            document.getElementById("item3").innerHTML = content;
+            //改变标志位，下次直接显示
+            item3Show = true;
+        }
+    });*/
+
+    document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+        //注意slideNumber是从0开始的；
+        //document.getElementById("info").innerText = "你正在看第"+(event.detail.slideNumber+1)+"张图片";
+    });
+
+</script>
+
+</html>

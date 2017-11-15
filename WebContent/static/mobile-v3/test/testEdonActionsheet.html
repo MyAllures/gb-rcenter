@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../mobile-v3/themes/mui.min.css">
+
+</head>
+<body>
+
+
+<br>
+<input type="text" id="selectText" value="请选择" >
+<div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
+    <!-- 可选择菜单 -->
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell">
+            <a href="javascript:void(0);" onclick="setSelectValue(this)">菜单1</a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a href="javascript:void(0);" onclick="setSelectValue(this)">菜单2</a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a href="javascript:void(0);" onclick="setSelectValue(this)">菜单3</a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a href="javascript:void(0);" onclick="setSelectValue(this)">菜单4</a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a href="javascript:void(0);" onclick="setSelectValue(this)">菜单5</a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a href="javascript:void(0);" onclick="setSelectValue(this)">菜单6</a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a href="javascript:void(0);" onclick="setSelectValue(this)">菜单7</a>
+        </li>
+
+    </ul>
+    <!-- 取消菜单 -->
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell">
+            <a href="#sheet1"><b>取消</b></a>
+        </li>
+    </ul>
+</div>
+
+
+</body>
+
+
+<script src="../../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../../mobile-v3/js/mui/mui.picker.min.js"></script>
+<script src="../../../mobile-v3/js/common.js"></script>
+
+<script type="text/javascript">
+    $("#selectText").click(function(){
+        mui('#sheet1').popover('toggle');
+    });
+
+    function setSelectValue(e){
+         $("#selectText").val(e.innerText);
+        mui('#sheet1').popover('toggle');
+    }
+</script>
+
+</html>

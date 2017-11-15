@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../mobile-v3/themes/mui.min.css">
+</head>
+<body>
+<br>
+<div class="mui-input-row mui-radio">
+    <label>radio</label>
+    <input name="radio1" type="radio">
+</div>
+
+<br>
+<div class="mui-input-row mui-radio mui-left">
+    <label>radio</label>
+    <input name="radio1" type="radio">
+</div>
+
+<br>
+<ul class="mui-table-view mui-table-view-radio">
+    <li class="mui-table-view-cell">
+        <a class="mui-navigate-right">Item 1</a>
+    </li>
+    <li class="mui-table-view-cell mui-selected">
+        <a class="mui-navigate-right">Item 2</a>
+    </li>
+    <li class="mui-table-view-cell">
+        <a class="mui-navigate-right">Item 3</a>
+    </li>
+</ul>
+</body>
+
+<script src="../../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../../mobile-v3/js/mui/mui.picker.min.js"></script>
+<script src="../../../mobile-v3/js/common.js"></script>
+
+<script type="text/javascript">
+    var list = document.querySelector('.mui-table-view.mui-table-view-radio');
+    list.addEventListener('selected',function(e){
+        console.log("当前选中的为："+e.detail.el.innerText);
+    });
+
+</script>
+
+</html>
