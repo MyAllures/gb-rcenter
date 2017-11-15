@@ -55,11 +55,13 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
             var apiTypeOrder = {};
             //cashOrder.isTakeTurns = $("[name='takeTurnsStatus']").val();
             //cashOrder.takeTurns= $("input:radio[name='takeTurns']:checked").val();
+            var siteId = $("input[name='siteId']").val();
             var orderObj = [];
             $("tbody tr").each(function(index,obj){
                 orderObj.push({"order":index+1,"objectId":$(obj).children("[name='gameId']").val()});
                 apiTypeOrder.orderList = orderObj;
             });
+            apiTypeOrder.siteId = siteId;
             window.top.topPage.ajax({
                 contentType: 'application/json; charset=utf-8',
                 dataType:'json',

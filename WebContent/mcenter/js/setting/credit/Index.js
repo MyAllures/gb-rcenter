@@ -1,7 +1,7 @@
 /**
  * 资金管理-提现管理列表
  */
-define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstrapswitch) {
+define(['common/BaseListPage'], function (BaseListPage) {
 
     return BaseListPage.extend({
         /**
@@ -27,28 +27,10 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
         onPageLoad: function () {
             this._super();
             var _this=this;
-            $('a.needLock').addClass('disabled').lock();
             $('[data-toggle="popover"]', _this.formSelector).popover({
                 trigger: 'hover',
                 placement: 'top'
             });
         },
-        //成功
-        successMessage: function (e,option) {
-            this.showConfirm(e,option,window.top.message.content['is.handle.success']);
-        },
-        failMessage: function (e,option){
-            this.showConfirm(e,option,window.top.message.content['is.handle.fail']);
-        },
-        showConfirm: function (e,option,msg) {
-            window.top.topPage.showConfirmMessage( msg , function( bol ){
-                if(bol){
-                    window.top.topPage.doAjax(e,option);
-                }else{
-                    $(e.currentTarget).unlock();
-                }
-            });
-        },
-
     });
 });
