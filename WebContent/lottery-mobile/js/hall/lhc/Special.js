@@ -7,6 +7,8 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
         showTable : function(){
             var BetCode=$("#gfwfBetCode").val();
             var BetCode1="特码";
+            $("div.s-menu.second").hide();
+            $("#tema").show();
             $("a[data-code='"+BetCode+"']").addClass("mui-active");
             $("a[data-code='tema']").addClass("mui-active");
             $(".x_3.gfwf-playName").text(BetCode1);

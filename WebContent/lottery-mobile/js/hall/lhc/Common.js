@@ -49,7 +49,7 @@ define(['site/hall/Common'], function (Common) {
                     dataCode="正码一";
                 }else if(betCode =="linkCode" && jspName==undefined){//前二
                     jspName="LinkCode";
-                    dataCode="正码一";
+                    dataCode="三全中";
                 }else if(betCode =="sumZodiac" && jspName==undefined){//后二
                     jspName="SumZodiac";
                     dataCode="二肖";

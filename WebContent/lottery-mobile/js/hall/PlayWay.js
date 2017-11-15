@@ -586,7 +586,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             if (!flag) {
                 $(obj).toggleClass('mui-active');
             }
-            console.log($("div.bet-table-list .mui-active").length);
             $("#quantity").text($("div.bet-table-list .mui-active").length);
         },
 

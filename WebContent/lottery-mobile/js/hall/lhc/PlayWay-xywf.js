@@ -12,7 +12,8 @@ define(['site/hall/PlayWay'], function (PlayWay) {
          * 获取赔率
          */
         getOdds: function () {
-            var url = root + '/' + this.type + '/' + this.code + '/' + this.betCode + 'Odd.html';
+            var dataCode=$("a.selected-btn.main.mui-active").attr("data-code");
+            var url = root + '/' + this.type + '/' + this.code + '/' + dataCode + 'Odd.html';
             var _this = this;
             mui.ajax(url, {
                 dataType: 'json',
