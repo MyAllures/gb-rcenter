@@ -94,7 +94,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             if(isNaN(Number(expect))){
                 page.showPopover(event,option,"danger","期号格式错误",true);
                 return true;
-            }if(siteId != '' && isNaN(Number(siteId))){
+            }if(siteId != '' && (isNaN(Number(siteId)) || !(Number(siteId)%1 === 0))){
                 page.showPopover(event,option,"danger","站点id格式错误",true);
                 return true;
             }
@@ -197,6 +197,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         },
 
         payout:function (e,option) {
+            $("#opencode").val("");
             var formobj =  $("#payoutForm")[0];
             var code = $(formobj).find("input[name='result.code']").val();
             var expect = $(formobj).find("input[name='result.expect']").val();
@@ -211,9 +212,8 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             if (expect == ''){
                 e.page.showPopover(e,btnOption,"danger","期号不能为空!",true);
                 return;
-            }
-            if (isNaN(siteId)){
-                e.page.showPopover(e,btnOption,"danger","请输入真确的站点Id!",true);
+            }if(siteId != '' && (isNaN(Number(siteId)) || !(Number(siteId)%1 === 0))){
+                e.page.showPopover(e,option,"danger","站点id格式错误",true);
                 return;
             }
             var _this = this;
@@ -257,6 +257,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         },
 
         heavy:function (e,option) {
+            $("#opencode1").val("");
             var formobj =  $("#heavyForm")[0];
             var code = $(formobj).find("input[name='result.code']").val();
             var expect = $(formobj).find("input[name='result.expect']").val();
@@ -271,9 +272,8 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             if (expect == ''){
                 e.page.showPopover(e,btnOption,"danger","期号不能为空",true);
                 return;
-            }
-            if (isNaN(siteId)){
-                e.page.showPopover(e,btnOption,"danger","请输入真确的站点Id!",true);
+            }if(siteId != '' && (isNaN(Number(siteId)) || !(Number(siteId)%1 === 0))){
+                e.page.showPopover(e,option,"danger","站点id格式错误",true);
                 return;
             }
             var _this = this;
