@@ -46,7 +46,7 @@ define(['site/hall/sfc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 dataType: 'json',
                 type: 'POST',
                 success: function (data) {
-                    console.log(data[betCode]);
+
                     $("div.bet-table > div > table > tbody tr td").each(function (i,item) {
                         var ii =i+1;
                         var td = $("#tdnum" + ii);

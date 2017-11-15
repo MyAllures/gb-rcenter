@@ -23,13 +23,13 @@ define(['site/hall/sfc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
 
         getOdds: function () {
             var url = root + '/' + this.type + '/' + this.code + '/getOdds.html';
-            console.log(url)
+
             var _this = this;
             mui.ajax(url, {
                 dataType: 'json',
                 type: 'POST',
                 success: function (data) {
-                    console.log(data)
+
                     var sumdata = data['sfc_sum8'];
                     var dradata = data['sfc_dragon_tiger_18'];
                     var firstdata = data['sfc_first'];

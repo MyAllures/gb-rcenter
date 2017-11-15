@@ -22,14 +22,13 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
 
         getOdds: function () {
             var url = root + '/' + this.type + '/getDragonTigerOdds.html';
-            console.log("url=" + url)
+
             var _this = this;
             mui.ajax(url, {
                 dataType: 'json',
                 type: 'POST',
                 data: {code: _this.code},
                 success: function (data) {
-                    console.log(data)
                     for (i = 0; i < data.length; i++) {
                         var dnum = '';
                         var tnum = '';
