@@ -232,26 +232,28 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             window.top.topPage.showConfirmMessage("你将对"+codename+"彩种"+expect+"期全平台所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
                                 if(bol){
                                 var formbj = $("#payoutForm")[0];
-                                _this.query1(e,option,formbj,null,type);
+                                    _this.query1(e,option,formbj,null,type);
+                                }else{
+                                    $(e.currentTarget).unlock()
                                 }
                             });
                         }else {
                             window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+codename+"彩种"+expect+"期所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
                                 if(bol){
                                 var formbj = $("#payoutForm")[0];
-                                _this.query1(e,option,formbj,null,type);
+                                    _this.query1(e,option,formbj,null,type);
+                                }else{
+                                    $(e.currentTarget).unlock()
                                 }
                             });
                         }
 
-
                     }else{
                         e.page.showPopover(e,btnOption,"danger",data.msg,true);
-                        return;
                     }
 
                 }
-            })
+            });
         },
 
         heavy:function (e,option) {
@@ -290,14 +292,18 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             window.top.topPage.showConfirmMessage("你将对"+codename+"彩种"+expect+"期全平台所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function(bol) {
                                 if (bol) {
                                 var formbj = $("#heavyForm")[0];
-                                _this.query1(e, option, formbj, null, type);
-                            }
+                                    _this.query1(e, option, formbj, null, type);
+                                }else{
+                                    $(e.currentTarget).unlock()
+                                }
                             });
                         }else {
                             window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+codename+"彩种"+expect+"期所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function (bol) {
                                 if(bol){
                                 var formbj = $("#heavyForm")[0];
-                                _this.query1(e,option,formbj,null,type);
+                                    _this.query1(e,option,formbj,null,type);
+                                }else{
+                                    $(e.currentTarget).unlock()
                                 }
                             });
                         }
