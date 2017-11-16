@@ -44,9 +44,12 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             var _this = this;
             /*==============================信用====================================*/
             //点击下注选项
-            mui("body").off('tap','div.bet-table-list td,div.bet-table-list .n-btn').on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn', function () {
-                _this.bindTdInput($(this));
-            });
+            //开盘点击效果才有
+            if(page.isOpen) {
+                mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn').on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn', function () {
+                    _this.bindTdInput($(this));
+                });
+            }
             //清除下注项
             mui("body").off('tap','a#del-bet1').on('tap', 'a#del-bet1', function () {
                 page.resetBet();

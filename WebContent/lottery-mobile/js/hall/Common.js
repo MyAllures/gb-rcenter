@@ -104,8 +104,10 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                     $("#gfwfBetCode").val(betCode);
                     $(".bet-table").html(data);
                     if(!_this.isOpen){
-                        _this.closeHandicap();
+                        _this.closeHandicapGF();
+                        _this.closeHandicapXY();
                     }
+                    _this.resetBet();
                 }
             });
         },
@@ -398,8 +400,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         changeList : function () {
         },
 
-        //封盘
-        closeHandicap:function () {
+        //封盘GF
+        closeHandicapGF:function () {
             $("li.screen-munber").addClass("disabled");
             $("#show-t-gfwf").addClass("disabled");
             mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn');
@@ -407,12 +409,46 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("body").off('tap','.btn-jixuan-gfwf');
             mui("body").off('tap','.btn-reset-gfwf');
         },
-        //开盘
-        openHandicap:function () {
+        //开盘GF
+        openHandicapGF:function () {
             $("li.screen-munber").removeClass("disabled");
             $("#show-t-gfwf").removeClass("disabled");
             if(typeof page.playway != 'undefined'){
                 page.playway.bindButtonEvents();
+            }
+        },
+
+        /*==============================信用玩法封盘================================*/
+        closeHandicapXY:function () {
+            mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn');
+            $("div.bet-table-list .n-btn").attr("style","color: #c1c1c1!important");
+            $(".fengPan").addClass("disabled");
+            // $("div.fix-div.two-word-fix").addClass("disabled");
+            $("#inputMoney").attr("placeholder","已封盘");
+            $("#inputMoney").attr("disabled",true);
+            $("a#show-t").addClass("disabled-btn");
+            $("a#show-t").attr("id","show_t");
+        },
+        openHandicapXY:function () {
+            // mui("body").on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn');
+            // $("div.bet-table-lists td,div.bet-table-lists .n-btn").attr("style","");
+            $("div.bet-table-list .n-btn").attr("style","color:");
+            $(".fengPan").removeClass("disabled");
+            $("#inputMoney").attr("placeholder","");
+            $("#inputMoney").attr("disabled",false);
+            $("a#show_t").removeClass("disabled-btn");
+            $("a#show_t").attr("id","show-t");
+            /** 小彩种 */
+            this.code = $(this.formSelector + ' input[name=code]').val();
+            this.type = $(this.formSelector + " input[name=type]").val();
+            this.betCode = $(this.formSelector + " .ssc-method-list .ssc-method-label a.mui-active").attr("data-code");
+            this.getOpenHistory();
+            // this.muiInit();
+            this.iosGoBack();
+            this.init();
+            if(this.os == 'pc') {
+                //已应对在h5下金额输入框不能输入
+                $("input#inputMoney").focus();
             }
         },
         

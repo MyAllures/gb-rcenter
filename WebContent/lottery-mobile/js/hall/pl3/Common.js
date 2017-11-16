@@ -51,7 +51,6 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                     jspName="Sum2";
                     dataCode="百十和数";
                 }
-
                 _this.getBetTable(dataCode,jspName);
                 _this.resetBet();
             }
@@ -73,8 +72,10 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                     $(".bet-table").html(data);
                     $("#gfwfBetCode").val(betCode);
                     if(!_this.isOpen){
-                        _this.closeHandicap();
+                        _this.closeHandicapGF();//官方
+                        _this.closeHandicapXY();//信用
                     }
+
                 }
             });
         },
@@ -180,20 +181,37 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                         var expect = $("#expect").text();
                         $("#expect").html(data.expect);
                         $("#leftTime").attr("data-time", data.leftTime);
-                        if ((_this.code == 'fc3d' || _this.code == 'tcpl3') &&_this.isOpen && data.leftOpenTime >0){
-                            _this.closeHandicap();//官方
-                            _this.closePl3Handicap();//信用
-                            $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' >")
-                            $("#leftTime").attr("data-time", data.leftOpenTime);
-                            _this.isOpen = false;
+
+                        if(_this.code == 'fc3d'){
+                            if (_this.isOpen && data.leftOpenTime >0){
+                                _this.closeHandicapGF();//官方
+                                _this.closeHandicapXY();//信用
+                                $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' >")
+                                $("#leftTime").attr("data-time", data.leftOpenTime);
+                                _this.isOpen = false;
+                            }else if (!_this.isOpen){
+                                var dtime = $("#leftTime").attr("data-time");
+                                $("#leftTime").attr("data-time", dtime);
+                                _this.isOpen = true;
+                                _this.openHandicapGF();//官方
+                                _this.openHandicapXY();//信用
+                            }
+                        }else if(_this.code == 'tcpl3'){
+                            if (_this.isOpen && data.leftOpenTime >0){
+                                _this.closeHandicapGF();//官方
+                                _this.closeHandicapXY();//信用
+                                $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' >")
+                                $("#leftTime").attr("data-time", data.leftOpenTime);
+                                _this.isOpen = false;
+                            }else if(!_this.isOpen){
+                                var dtime = $("#leftTime").attr("data-time");
+                                $("#leftTime").attr("data-time", dtime);
+                                _this.isOpen = true;
+                                _this.openHandicapGF();//官方
+                                _this.openHandicapXY();//信用
+                            }
                         }
-                        if ((_this.code == 'fc3d' || _this.code == 'tcpl3') && !_this.isOpen&& data.leftOpenTime <=0){
-                            var dtime = $("#leftTime").attr("data-time");
-                            $("#leftTime").attr("data-time", dtime);
-                            _this.isOpen = true;
-                            _this.openHandicap();//官方
-                            _this.openPl3Handicap();//信用
-                        }
+
                         if (typeof callback == 'function') {
                             callback();
                         }
@@ -214,44 +232,11 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
 
         checkPl3Handicap:function () {
             if (!this.isOpen){
-                this.closeHandicap();//传统
-                this.closePl3Handicap();//信用
+                this.closeHandicapGF();//传统
+                this.closeHandicapXY();//信用
             }
         },
 
-        /*==============================信用玩法封盘================================*/
-        closePl3Handicap:function () {
-            mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn');
-            $("div.bet-table-list .n-btn").attr("style","color: #c1c1c1!important");
-            $(".fengPan").addClass("disabled");
-            // $("div.fix-div.two-word-fix").addClass("disabled");
-            $("#inputMoney").attr("placeholder","已封盘");
-            $("#inputMoney").attr("disabled",true);
-            $("a#show-t").addClass("disabled-btn");
-            $("a#show-t").attr("id","show_t");
-        },
-        openPl3Handicap:function () {
-            // mui("body").on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn');
-            // $("div.bet-table-lists td,div.bet-table-lists .n-btn").attr("style","");
-            $("div.bet-table-list .n-btn").attr("style","color:");
-            $(".fengPan").removeClass("disabled");
-            $("#inputMoney").attr("placeholder","");
-            $("#inputMoney").attr("disabled",false);
-            $("a#show_t").removeClass("disabled-btn");
-            $("a#show_t").attr("id","show-t");
-            /** 小彩种 */
-            this.code = $(this.formSelector + ' input[name=code]').val();
-            this.type = $(this.formSelector + " input[name=type]").val();
-            this.betCode = $(this.formSelector + " .ssc-method-list .ssc-method-label a.mui-active").attr("data-code");
-            this.getOpenHistory();
-            // this.muiInit();
-            this.iosGoBack();
-            this.init();
-            if(this.os == 'pc') {
-                //已应对在h5下金额输入框不能输入
-                $("input#inputMoney").focus();
-            }
-        },
 
         showClearPopups: function () {
             console.log("封盘了")
