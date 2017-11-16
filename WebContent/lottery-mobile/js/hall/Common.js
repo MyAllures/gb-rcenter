@@ -451,6 +451,20 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 $("input#inputMoney").focus();
             }
         },
+
+        showClearPopups: function () {
+            mui.toast("当前期已封盘，请等待下期开盘.");
+            var time = 5;
+            var _this = this;
+            this.clearPopLayer = setInterval(function () {
+                if (time == 0) {
+                    _this.closeClearPopup();
+                    return;
+                }
+                $(".clearBet_time").html(time);
+                --time;
+            }, 1000)
+        },
         
         openGuanfangwanfa : function (data) {
             var _this=this;

@@ -189,6 +189,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                                 $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' >")
                                 $("#leftTime").attr("data-time", data.leftOpenTime);
                                 _this.isOpen = false;
+                                _this.showClearPopups();
                             }else if (!_this.isOpen){
                                 var dtime = $("#leftTime").attr("data-time");
                                 $("#leftTime").attr("data-time", dtime);
@@ -203,6 +204,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                                 $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' >")
                                 $("#leftTime").attr("data-time", data.leftOpenTime);
                                 _this.isOpen = false;
+                                _this.showClearPopups();
                             }else if(!_this.isOpen){
                                 var dtime = $("#leftTime").attr("data-time");
                                 $("#leftTime").attr("data-time", dtime);
@@ -235,25 +237,6 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 this.closeHandicapGF();//传统
                 this.closeHandicapXY();//信用
             }
-        },
-
-
-        showClearPopups: function () {
-            console.log("封盘了")
-            if (this.clearPopFlag) {
-                return;
-            }
-            mui.toast("当前期已封盘，请等待下期开盘.");
-            var time = 5;
-            var _this = this;
-            this.clearPopLayer = setInterval(function () {
-                if (time == 0) {
-                    _this.closeClearPopup();
-                    return;
-                }
-                $(".clearBet_time").html(time);
-                --time;
-            }, 1000)
         },
 
     });

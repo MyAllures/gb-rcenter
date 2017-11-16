@@ -6,17 +6,21 @@ define(['site/hall/Common'], function (Common) {
         zodiacMap:undefined,
         showZodiac:false,
         clickFlag:false,
-        isLhcOpen:true,
         init: function () {
             this._super();
+            this.checkLhlHandicap();
         },
 
         changeList : function(){
+            var _this=this;
             mui.ajax(root + '/'+this.type+'/'+this.code+'/getBetTable.html', {
                 data: {"betCode": "special","jspStr":"Special"},
                 type: 'POST',
                 success: function (data) {
                     $(".bet-table").html(data);
+                    if(!_this.isOpen){
+                        _this.closeHandicapXY();//信用
+                    }
                 }
             });
         },
@@ -199,22 +203,21 @@ define(['site/hall/Common'], function (Common) {
                         var expect = $("#expect").text();
                         $("#expect").html(data.expect);
                         $("#leftTime").attr("data-time", data.leftTime);
-                        if (_this.code == 'hklhc' &&_this.isLhcOpen && data.leftOpenTime >0){
-                            _this.closeLhcHandicap();
+                        if (_this.code == 'hklhc' &&_this.isOpen && data.leftOpenTime >0){
+                            _this.closeHandicapXY();
                             $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' >")
                             $("#leftTime").attr("data-time", data.leftOpenTime);
-                            _this.isLhcOpen = false;
+                            _this.isOpen = false;
                             _this.showClearPopups();
+
                         }
-                        if (_this.code == 'hklhc' && !_this.isLhcOpen&& data.leftOpenTime <=0){
+                        if (_this.code == 'hklhc' && !_this.isOpen&& data.leftOpenTime <=0){
                             var dtime = $("#leftTime").attr("data-time");
-
-                            //leftTimeTitle
-
-                            //$("#leftTime").parent().html("距离封盘时间还有：<font id='leftTime' >")
                             $("#leftTime").attr("data-time", dtime);
-                            _this.isLhcOpen = true;
-                            _this.openLhcHandicap();
+                            _this.isOpen = true;
+                            _this.openHandicapXY();//信用
+                            // _this.openLhcHandicap();
+
                         }
                         if (typeof callback == 'function') {
                             callback();
@@ -228,50 +231,16 @@ define(['site/hall/Common'], function (Common) {
                 }
             })
         },
-        closeLhcHandicap:function () {
-            $(".fengPan").addClass("disabled");
-            $("#inputMoney").attr("placeholder","已封盘");
-            $("#inputMoney").attr("disabled",true);
-            $("a#show-t").addClass("disabled-btn");
-            $("a#show-t").attr("id","show_t");
-        },
-        openLhcHandicap:function () {
-            $(".fengPan").removeClass("disabled");
-            $("#inputMoney").attr("placeholder","");
-            $("#inputMoney").attr("disabled",false);
-            $("a#show_t").removeClass("disabled-btn");
-            $("a#show_t").attr("id","show-t");
-            /** 小彩种 */
-            this.code = $(this.formSelector + ' input[name=code]').val();
-            this.type = $(this.formSelector + " input[name=type]").val();
-            this.betCode = $(this.formSelector + " .ssc-method-list .ssc-method-label a.mui-active").attr("data-code");
-            this.getOpenHistory();
-            this.muiInit();
-            this.iosGoBack();
-            if(this.os == 'pc') {
-                //已应对在h5下金额输入框不能输入
-                $("input#inputMoney").focus();
-            }
-        },
+
         showClearPopup:function () {
 
         },
-        showClearPopups: function () {
-            console.log("封盘了")
-            if (this.clearPopFlag) {
-                return;
+
+        checkLhlHandicap:function () {
+            if (!this.isOpen){
+                this.closeHandicapXY();//信用
             }
-            mui.toast("当前期已封盘，请等待下期开盘.");
-            var time = 5;
-            var _this = this;
-            this.clearPopLayer = setInterval(function () {
-                if (time == 0) {
-                    _this.closeClearPopup();
-                    return;
-                }
-                $(".clearBet_time").html(time);
-                --time;
-            }, 1000)
-        }
+        },
+
     });
 });
