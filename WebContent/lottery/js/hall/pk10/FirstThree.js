@@ -1,5 +1,5 @@
 
-define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
+define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
     return PlayWay.extend({
         playId : 'qszxfs',
         init: function () {
@@ -166,9 +166,9 @@ define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
 
             if (errorArr.length > 0) {
                 for (var e = 0; e < errorArr.length; e++) {
-                    errorStr += errorArr[e] + "";
+                    errorStr += errorArr[e] + ",";
                 }
-                alert("被过滤掉的错误号码" + errorStr);
+                alert("被过滤掉的错误号码:" + errorStr.substring(0,errorStr.length-1));
             }
 
             // 初始化变量
@@ -257,10 +257,7 @@ define(['site/hall/pk10/Pk10Gfwf'], function (PlayWay) {
                 playGroupId: this.playGroupId
             };
         },
-        //删除重复号码
-        delRrepet: function() {
 
-        }
 
 
 })

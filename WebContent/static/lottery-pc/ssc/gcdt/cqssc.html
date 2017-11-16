@@ -253,13 +253,13 @@
                 </div><!--left-->
                 <div class="right">
                     <ul>
-                        <li><a class="suiji1" href="javascript:void(0)" onclick="getSuiji(1)">随机一注</a></li>
-                        <li><a class="suiji5" href="javascript:void(0)" onclick="getSuiji(5)">随机五注</a></li>
+                        <li><a class="suiji1 disabled-btn" href="javascript:void(0)" onclick="getSuiji(1)">随机一注</a></li>
+                        <li><a class="suiji5 disabled-btn" href="javascript:void(0)" onclick="getSuiji(5)">随机五注</a></li>
                         <li class="clearLiZhudanbtn" sp="0"><a id="zhbtn" class="wdzhli" href="javascript:void(0)" onclick="renderZhuihao(null, this)"><span class="imgZh"></span>我要追号</a></li>
                         <li><a href="javascript:void(0)" onclick="clearZhudan()"><img src="../themes/default/img/ico52.png" alt="">清空注单</a></li>
                     </ul>
                     <p id="zongtouInfo">总投 <span>0</span> 注，<span>0</span> 倍，共 <span>0</span> 元。</p>
-                    <a href="javascript:void(0)" class="ok" onclick="buyBtn()"><img src="../themes/default/img/ico54.png" alt="">确认投注</a>
+                    <a href="javascript:void(0)" class="ok disabled-btn" onclick="buyBtn()"><img src="../themes/default/img/ico54.png" alt="">确认投注</a>
                 </div>
             </div>
         </div>
@@ -481,7 +481,7 @@
             </p>
         </div>
         <div class="rigth">
-            <a href="javascript:void(0)" onclick="tjzd()"><img src="../themes/default/img/ico65.png" alt="">添加注单</a>
+            <a href="javascript:void(0)" onclick="tjzd()" class="disabled-btn"><img src="../themes/default/img/ico65.png" alt="">添加注单</a>
         </div>
     </div>
 </script>
