@@ -91,6 +91,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
             }
             if (array.length <= 0) {
                 e.page.showPopover(e, option, 'success', '保存成功', true);
+                window.setTimeout(function (){
+                    e.popoverObj.popover("destroy");}, 300);
                 $target.unlock();
                 return;
             }
