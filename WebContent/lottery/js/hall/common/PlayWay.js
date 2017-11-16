@@ -691,6 +691,9 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
             if (data == -1) {
                 return;
             }
+            if (_this.alertContext != ''){
+                _this.alertmsg('');
+            }
             if (typeof data == 'undefined' || typeof zhushu == 'undefined' || zhushu <= 0) {
                 _this.alertmsg("号码选择不完整，请重新选择");
                 return;

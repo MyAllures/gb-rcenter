@@ -94,7 +94,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             if(isNaN(Number(expect))){
                 page.showPopover(event,option,"danger","期号格式错误",true);
                 return true;
-            }if(siteId != '' && isNaN(Number(siteId))){
+            }if(siteId != '' && (isNaN(Number(siteId)) || !(Number(siteId)%1 === 0))){
                 page.showPopover(event,option,"danger","站点id格式错误",true);
                 return true;
             }
@@ -111,9 +111,9 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var siteId = $(formobj).find("input[name='search.siteId']").val();
             var context = '';
             if (siteId == ''){
-                context = "您将对"+codename+","+expect+"期的所有未结算注单进行撤单,是否确认执行";
+                context = "您将对"+codename+","+expect+"期的所有未结算注单进行撤单,是否确认执行?";
             }else {
-                context = "您将对"+siteId+"站点,"+codename+","+expect+"期的所有未结算注单进行撤单,是否确认执行";
+                context = "您将对"+siteId+"站点,"+codename+","+expect+"期的所有未结算注单进行撤单,是否确认执行?";
             }
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
@@ -136,9 +136,9 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var siteId = $(formobj).find("input[name='search.siteId']").val();
             var context = '';
             if (siteId == ''){
-                context = "您将对"+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行";
+                context = "您将对"+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行?";
             }else {
-                context = "您将对"+siteId+"站点,"+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行";
+                context = "您将对"+siteId+"站点,"+codename+","+expect+"期的所有已结算注单进行撤销,是否确认执行?";
             }
             window.top.topPage.showConfirmMessage(context, function (confirm) {
                 if (confirm) {
@@ -150,9 +150,13 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
 
         },
-
+        /**
+         * 补采
+         * @param event
+         * @param option
+         */
         collectOpenCode: function (event,option) {
-            var _this = this;
+
             var form = $("#collectOpenCodeForm");
             var date = form.find("input").val();
             var code = null;
@@ -171,6 +175,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             });
 
             window.top.topPage.showConfirmMessage(context, function (confirm) {
+
                 if (confirm) {
 
                     window.top.topPage.ajax({
@@ -183,20 +188,16 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             }else {
                                 page.showPopover(event,option,"danger",data.msg,true);
                             }
-                            $(event.currentTarget).unlock();
                         }
                     });
-
-                } else {
+                }else{
                     $(event.currentTarget).unlock();
                 }
             });
-
-            $(event.currentTarget).unlock();
-
         },
 
         payout:function (e,option) {
+            $("#opencode").val("");
             var formobj =  $("#payoutForm")[0];
             var code = $(formobj).find("input[name='result.code']").val();
             var expect = $(formobj).find("input[name='result.expect']").val();
@@ -205,11 +206,14 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             var btnOption = {};
             var type=1;
             if (code == ''){
-                e.page.showPopover(e,btnOption,"danger","彩种不能选择为空",true);
+                e.page.showPopover(e,btnOption,"danger","彩种不能选择为空!",true);
                 return;
             }
             if (expect == ''){
-                e.page.showPopover(e,btnOption,"danger","期号不能为空",true);
+                e.page.showPopover(e,btnOption,"danger","期号不能为空!",true);
+                return;
+            }if(siteId != '' && (isNaN(Number(siteId)) || !(Number(siteId)%1 === 0))){
+                e.page.showPopover(e,option,"danger","站点id格式错误",true);
                 return;
             }
             var _this = this;
@@ -228,33 +232,32 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             window.top.topPage.showConfirmMessage("你将对"+codename+"彩种"+expect+"期全平台所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
                                 if(bol){
                                 var formbj = $("#payoutForm")[0];
-                                _this.query1(e,option,formbj,null,type);
-                                }else {
-                                    $(e.currentTarget).unlock();
+                                    _this.query1(e,option,formbj,null,type);
+                                }else{
+                                    $(e.currentTarget).unlock()
                                 }
                             });
                         }else {
                             window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+codename+"彩种"+expect+"期所有未结算的注单进行手动派彩,是否确认执行?",function (bol) {
                                 if(bol){
                                 var formbj = $("#payoutForm")[0];
-                                _this.query1(e,option,formbj,null,type);
-                                }else {
-                                    $(e.currentTarget).unlock();
+                                    _this.query1(e,option,formbj,null,type);
+                                }else{
+                                    $(e.currentTarget).unlock()
                                 }
                             });
                         }
 
-
                     }else{
                         e.page.showPopover(e,btnOption,"danger",data.msg,true);
-                        return;
                     }
 
                 }
-            })
+            });
         },
 
         heavy:function (e,option) {
+            $("#opencode1").val("");
             var formobj =  $("#heavyForm")[0];
             var code = $(formobj).find("input[name='result.code']").val();
             var expect = $(formobj).find("input[name='result.expect']").val();
@@ -268,6 +271,9 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
             }
             if (expect == ''){
                 e.page.showPopover(e,btnOption,"danger","期号不能为空",true);
+                return;
+            }if(siteId != '' && (isNaN(Number(siteId)) || !(Number(siteId)%1 === 0))){
+                e.page.showPopover(e,option,"danger","站点id格式错误",true);
                 return;
             }
             var _this = this;
@@ -286,17 +292,19 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                             window.top.topPage.showConfirmMessage("你将对"+codename+"彩种"+expect+"期全平台所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function(bol) {
                                 if (bol) {
                                 var formbj = $("#heavyForm")[0];
-                                _this.query1(e, option, formbj, null, type);
-                            }else {
-                                    $(e.currentTarget).unlock();
+                                    _this.query1(e, option, formbj, null, type);
+                                }else{
+                                    $(e.currentTarget).unlock()
                                 }
                             });
                         }else {
                             window.top.topPage.showConfirmMessage("你将对"+siteId+"站点"+codename+"彩种"+expect+"期所有注单进行重新结算,此操作可能导致玩家钱包余额为负数,是否确认执行?",function (bol) {
                                 if(bol){
                                 var formbj = $("#heavyForm")[0];
-                                _this.query1(e,option,formbj,null,type);
-                                }else {$(e.currentTarget).unlock();}
+                                    _this.query1(e,option,formbj,null,type);
+                                }else{
+                                    $(e.currentTarget).unlock()
+                                }
                             });
                         }
                     }else{

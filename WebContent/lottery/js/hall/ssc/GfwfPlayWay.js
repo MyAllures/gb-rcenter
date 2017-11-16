@@ -292,15 +292,14 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                 }
                 var playcode = _this.getPlayCode();
                 if (playcode == 'ssc_sanxing_zuxuan' || playcode == 'ssc_erxing_zuxuan') {//一些需要无序去重的玩法
-                    repeatArr = newArr.duplicateNewa().uniqueArra();
+                    repeatArr = newArr.duplicateNewa();
                     tempArr = newArr.uniqueArra();
                 } else {
-                    repeatArr = newArr.duplicateNew().uniqueArr();
-                    tempArr = newArr.uniqueArr();
+                    repeatArr = newArr.duplicateNew();
+                    tempArr = newArr.uniqueArrByzx();
                 }
                 if (repeatArr.length > 0) {
-                    // _this.alertContext = "已删除掉重复号: " + repeatArr.join(" ");
-                    _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
+                    _this.alertContext = "已删除掉重复号: " + repeatArr.join(" ");
                     $(".content_jiang .content_tex").val(tempArr.join(" "));
                 }
             }
@@ -359,7 +358,19 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
             }
             return plSelVal;
         },
-
+        alertmsg : function(context){
+        if (this.alertContext != ''){
+            this.alertContext = this.alertContext +"<br>"
+        }
+        layer.alert(this.alertContext+context, {
+            title: '温馨提示',
+            skin: 'layui-layer-popup layui-layer-rim', //加上边框
+            area: ['300px', '150px'], //宽高
+        });
+        if (context != ''){
+            this.alertContext = '';
+        }
+    }
 
 
     })

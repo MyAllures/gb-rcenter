@@ -22,6 +22,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
             var code=$("[name='code']").val();
             var expect=$("[name='expect']").val();
             var $target = $(e.currentTarget);
+            var _this = this;
             window.top.topPage.ajax({
                 type: "post",
                 url: root + '/lotteryPayoutRecord/payout.html',
@@ -33,6 +34,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     if (data.state == true) {
                         e.page.showPopover(e, option, 'success', msg, true);
                     }else {
+                        _this.returnValue = false;
                         e.page.showPopover(e, option, 'danger', msg, true);
                     }
                     $target.unlock();
