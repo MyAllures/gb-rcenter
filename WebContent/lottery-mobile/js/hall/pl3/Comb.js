@@ -28,6 +28,10 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
         bindButtonEvents: function () {
             var _this = this;
 
+            mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn').on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn', function () {
+                _this.bindTdInput($(this));
+            });
+
             //清除下注项
             mui("body").off('tap','a#del-bet1').on('tap', 'a#del-bet1', function () {
                 page.resetBet();
