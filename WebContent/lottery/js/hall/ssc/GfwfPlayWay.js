@@ -296,7 +296,7 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                     tempArr = newArr.uniqueArra();
                 } else {
                     repeatArr = newArr.duplicateNew();
-                    tempArr = newArr.uniqueArr();
+                    tempArr = newArr.uniqueArrByzx();
                 }
                 if (repeatArr.length > 0) {
                     _this.alertContext = "已删除掉重复号: " + repeatArr.join(" ");

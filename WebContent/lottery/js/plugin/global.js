@@ -266,6 +266,18 @@ Array.prototype.duplicateNew = function () {
 };
 //去掉数组重复
 Array.prototype.uniqueArr = function () {
+    var temp = new Array();
+    this.sort();
+    for(i = 0; i < this.length; i++) {
+        if( this[i] == this[i+1]) {
+            continue;
+        }
+        temp[temp.length]=this[i];
+    }
+    return temp;
+};
+//去掉数组重复保留数组顺序
+Array.prototype.uniqueArrByzx = function () {
     var tempArr = new Array();
     var lastArr =[];
     for(i = 0; i < this.length; i++) {
