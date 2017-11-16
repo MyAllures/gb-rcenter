@@ -248,12 +248,15 @@ function openWindow(url) {
 
 /**
  * 封装绑定button/a标签事件
+ * selector 支持动态内容再次绑定事件
+ * 由于mui.on对动态增加的元素不能自动绑定事件，动态元素需要重新绑定事件
  */
-function bindButtonEvent() {
+function bindButtonEvent(selector) {
     /**
      * 绑定使用button.tag标签
      */
-    mui("body").on("tap", "[data-rel]", function (e) {
+    selector=selector||"body";
+    mui(selector).on("tap", "[data-rel]", function (e) {
         var $target = $(this);
         var isLocked = $target.isLocked();
         if (isLocked) {

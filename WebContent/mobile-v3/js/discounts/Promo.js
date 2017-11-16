@@ -25,7 +25,8 @@ function pullfresh() {
         if (pageNumber == lastPageNumber) {
             mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
         }
-        var type = $(".promo-sorts .active").attr("data-value");
+        var options = eval("(" + $(".promo-sorts .active").attr('data-rel') + ")" );
+        var type = options.activityType;
         getPromoInfo(type, pageNumber + 1)
     }, 0);
 }
@@ -54,11 +55,8 @@ function promoInfo() {
                         var rel ='';
                         rel = JSON.stringify(option).toString();
                         a = a+"<a class='mui-btn btn-promo-sort' data-rel='"+rel+"'>" + type[d].value + "</a>";
-                       // a = a + '<a class="mui-btn btn-promo-sort" data-rel="'+JSON.stringify(option)+'">' + type[d].value + '</a>';
-                        //a = a + '<a type="button" data-value="' + type[d].key + '" class="mui-btn btn-promo-sort">' + type[d].value + '</a>';
-                       // a = a + '<a title="" class="mui-btn btn-promo-sort" data-rel="{"precall":"","callback":"",post:"",opType:"function",dataType:"",target:"activityType",confirm:"",text:"",size:"","activityType":"'+type[d].key+'" }">'+type[d].value+'</a>'
                     }
-                    $(".promo .promo-sorts").append(a);
+                    $(".promo-sorts").append(a);
                 }
                 appendActivity(data);
             }
@@ -78,13 +76,6 @@ function activityType(obj, options) {
     mui('#pullrefresh').pullRefresh().refresh(true);
     $(obj).unlock();
 }
-
-/*点击活动*/
-mui(".promo-list").on("tap", "a", function (e) {
-    var id = $(e.target.parentNode).attr("data-id");
-    var url = root + "/promo/promoDetail.html?search.id=" + id;
-    goToUrl(url);
-});
 
 function getPromoInfo(type, pageNumber) {
     var option = {
@@ -115,7 +106,19 @@ function appendActivity(data) {
             var message = data.message;
             var b = '';
             for (var m in message) {
-                b = b + '<li><a href="javascript:void(0);" data-id="' + message[m].id + '"><img src="' + imgRoot + message[m].activityAffiliated + '"/></a></li>';
+                var option ={
+                    precall:'',
+                    callback:'',
+                    post:'',
+                    opType:'href',
+                    target: root + '/promo/promoDetail.html?search.id=' + message[m].id,
+                    confirm:'',
+                    text:'',
+                    size:''
+                };
+                var rel ='';
+                rel = JSON.stringify(option).toString();
+                b = b + '<li><a data-rel='+rel+'><img src="' + message[m].activityAffiliated + '"/></a></li>';
             }
             $(".promo .promo-list").append(b);
         }

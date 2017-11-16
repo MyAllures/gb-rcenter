@@ -1,7 +1,7 @@
 /*获取用户信息*/
 function userInfo() {
     var option = {
-        url: root + "/memberCentre/getUserInfo.html",
+        url: root + "/mine/userInfo.html",
         success: function (data) {
             if (data != null) {
                 var currency = data.currency;
@@ -9,26 +9,60 @@ function userInfo() {
                 if (data.username != null) {
                     $(".ct p").text(data.username);
                 }
-                if (data.walletBalance != null) {
-                    $(".span .green").text(currency + data.walletBalance);
+                //钱包余额
+                if (data.walletBalance != null && data.walletBalance != 0) {
+                    $(".span .green").text(currency + data.walletBalance.toFixed(2));
+                } else {
+                    $(".span .green").text(currency + "0.00");
                 }
-                if (data.totalAssets != null) {
-                    $(".span .orange").text(currency + data.totalAssets);
+                //总资产
+                if (data.totalAssets != null && data.totalAssets != 0) {
+                    $(".span .orange").text(currency + data.totalAssets.toFixed(2));
+                } else {
+                    $(".span .orange").text(currency + "0.00");
                 }
-                if (data.withdrawAmount != null) {
-                    $(".withdrawAmount").text("处理中：" + currency + data.withdrawAmount);
+                //正在处理中取款金额
+                if (data.withdrawAmount != null && data.withdrawAmount != 0) {
+                    $(".withdrawAmount").text(window.top.message.my_auto['处理中'] + ":" + currency + data.withdrawAmount);
+                } else {
+                    $(".withdrawAmount").text("");
                 }
-                if (data.preferentialAmount != null) {
-                    $(".preferentialAmount").text("近7日收益:" + currency + data.preferentialAmount);
+                //计算近7日收益（优惠金额）
+                if (data.preferentialAmount != null && data.preferentialAmount != 0) {
+                    $(".preferentialAmount").text(window.top.message.my_auto['近7日收益'] + ":" + currency + data.preferentialAmount);
+                } else {
+                    $(".preferentialAmount").text("");
                 }
-                if (data.recomdAmount != null) {
-                    $(".recomdAmount").text("昨日收益:" + currency + data.recomdAmount);
+                //推荐好友,昨日收益
+                if (data.recomdAmount != null && data.recomdAmount != 0) {
+                    $(".recomdAmount").text(window.top.message.my_auto['昨日收益'] + ":" + currency + data.recomdAmount);
+                } else {
+                    $(".recomdAmount").text("");
                 }
-                if(data.unReadCount == null || data.unReadCount == 0){
+                //系统消息-未读数量
+                if (data.unReadCount != null && data.unReadCount != 0) {
+                    $(".unReadCount").text(data.unReadCount);
+                } else {
                     $(".unReadCount").hide();
                 }
-                if (data.unReadCount != null) {
-                    $(".unReadCount").text(data.unReadCount);
+                /*var number = '***0945';
+                var bankName = 'cmb';
+                $("#bankImg").addClass(bankName);
+                $("#bankImg").text(number);*/
+                //银行卡信息
+                if(data.bankcard) {
+                    /*$("#bankImg").addClass("pay-bank s " + data.bankcard.bankName);
+                    $("#bankImg").text(data.bankcard.bankcardNumber);*/
+                }
+                //比特币
+                if(data.btcNum) {
+                    $("#btcNumber").text(data.btcNum);
+                }
+                //正在处理中转账金额,额度转换
+                if (data.transferAmount != null && data.transferAmount != 0) {
+                    $("#transferAmount").html(window.top.message.my_auto['处理中'] + ":" + currency + data.transferAmount);
+                } else {
+                    $("#transferAmount").html("");
                 }
             }
         }
