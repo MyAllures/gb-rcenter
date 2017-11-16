@@ -1,10 +1,9 @@
-define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+define(['site/hall/pl3-gfwf/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         _this: null,
         init: function () {
             _this = this;
             this._super();
-            // this.getJspName();
         },
 
         showTable : function(){

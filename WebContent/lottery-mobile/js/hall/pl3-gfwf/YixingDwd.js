@@ -1,13 +1,10 @@
-define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+define(['site/hall/pl3-gfwf/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
 
     return PlayWay.extend({
         _this: null,
-        //筛选数字组合
-        // screeningDigtal: new Array(),
         init: function () {
             _this = this;
             this._super();
-            // this.showTable();
         },
 
         showTable : function(){
@@ -16,8 +13,8 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
             $("#DingWeiDan").show();
             $("span.x_1.gfwf-tit").text("定位胆");
             $(".s-title.title1 span").text("定位胆");
-            $(".s-title.title2 span").text("定位胆");
-            $(".x_3.gfwf-playName").text("定位胆");
+            $(".s-title.title2 span").text("直选复式");
+            $(".x_3.gfwf-playName").text("直选复式");
             $("a[data-code='pl3_yixing_dwd']").addClass("mui-active");
         },
 

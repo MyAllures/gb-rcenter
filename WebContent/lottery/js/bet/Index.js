@@ -50,8 +50,8 @@ define(['site/common/PagingQuery'], function (PagingQuery) {
                 data: data,
                 dataType: 'json',
                 success: function (data) {
-                    $("#totalMoney").text(data.betamount);
-                    $("#totalWinOrLoseMoney").text(data.profitloss);
+                    $("#totalMoney").text((data.betamount).toFixed(2));
+                    $("#totalWinOrLoseMoney").text((data.profitloss).toFixed(2));
                     $("#totalRebateAmount").text((data.betrebate).toFixed(2));
                 }
             });

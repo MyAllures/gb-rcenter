@@ -1,13 +1,10 @@
-define(['site/hall/ssc-gfwf/AllSsc', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+define(['site/hall/ssc-gfwf/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
 
     return PlayWay.extend({
         _this: null,
-        //筛选数字组合
-        // screeningDigtal: new Array(),
         init: function () {
             _this = this;
             this._super();
-            // this.showTable();
         },
 
         //定位胆机选

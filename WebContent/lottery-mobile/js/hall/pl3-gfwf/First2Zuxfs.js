@@ -1,4 +1,4 @@
-define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+define(['site/hall/pl3-gfwf/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         _this: null,
         init: function () {
@@ -8,13 +8,13 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
         },
 
         showTable : function(){
-            $("a[data-code='After2']").addClass("mui-active");
-            $("#After2").show();
-            $("span.x_1.gfwf-tit").text("后二");
-            $(".s-title.title1 span").text("后二");
-            $(".s-title.title2 span").text("直选复式");
-            $(".x_3.gfwf-playName").text("直选复式");
-            $("a[data-code='pl3_erxing_zhixuan_hefs']").addClass("mui-active");
+            $("a[data-code='First2']").addClass("mui-active");
+            $("#First2").show();
+            $("span.x_1.gfwf-tit").text("前二");
+            $(".s-title.title1 span").text("前二");
+            $(".s-title.title2 span").text("组选复式");
+            $(".x_3.gfwf-playName").text("组选复式");
+            $("a[data-code='pl3_erxing_zuxuan_qefs']").addClass("mui-active");
 
         },
 
@@ -23,7 +23,7 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
         /**
          * 注数-直选复式
          */
-        zhushu_pl3_erxing_zhixuan_hefs :function () {
+        zhushu_q2zxfs :function () {
             var tempArr = [];
             var wanArr = [], qianArr = [];
             $.each($("ul.wanweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
@@ -53,7 +53,7 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
         /**
          * 前二直选-直选复式
          */
-        content_pl3_erxing_zhixuan_hefs : function (){
+        content_q2zxfs : function (){
             var wanArr = [], qianArr = [];
             $.each($("ul.wanweisStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function (index, value) {
                 wanArr.push($.trim($(this).html()));
@@ -78,7 +78,7 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
         /**
          * 随机算法-前二直选复式
          */
-        random_pl3_erxing_zhixuan_hefs : function () {
+        random_q2zxfs : function () {
             var random_1 = parseInt(Math.random() * 10);
             var random_2 = parseInt(Math.random() * 10);
             $(".wanweisStr  a.n-btn").removeClass("mui-active").eq(random_1).addClass("mui-active");
@@ -213,7 +213,7 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
         /*================================前二组选复式===============================*/
 
         //注数-组选复式
-        zhushu_q2zuxfs : function () {
+        zhushu_pl3_erxing_zuxuan_qefs : function () {
             var tempArr = [], zuxArr = [];
             $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
                 zuxArr.push($.trim($(this).html()));
@@ -242,7 +242,7 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
         /**
          * 前二组选-组选复式
          */
-        content_q2zuxfs : function (){
+        content_pl3_erxing_zuxuan_qefs : function (){
         var zuxArr = [];
             $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
                 zuxArr.push($.trim($(this).html()));
@@ -253,7 +253,7 @@ define(['site/hall/pl3/fc3d-gfwf/fc3d_gfwf', 'site/plugin/template','RangeSlider
         /**
          * 随机算法-前二组选复式
          */
-        random_q2zuxfs : function () {
+        random_pl3_erxing_zuxuan_qefs : function () {
             var random_1 = 0;
             var random_2 = 0;
             while (random_1 ==random_2){

@@ -1,5 +1,5 @@
 
-define(['site/hall/k3/K3Gfwf'], function (PlayWay) {
+define(['site/hall/k3/GfwfPlayWay'], function (PlayWay) {
     return PlayWay.extend({
         playId : 'sbth',
         init: function () {

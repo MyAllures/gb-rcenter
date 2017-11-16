@@ -1,8 +1,6 @@
-define(['site/hall/pk10-gfwf/AllPk10', 'site/plugin/template','RangeSlider'], function (PlayWay, Template) {
+define(['site/hall/GfwfPlayWay', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         _this: null,
-        //筛选数字组合
-        screeningDigtal: new Array(),
         init: function () {
             _this = this;
             this._super();
@@ -13,10 +11,10 @@ define(['site/hall/pk10-gfwf/AllPk10', 'site/plugin/template','RangeSlider'], fu
             $("div.s-menu.second").hide();
             $("#zxfs").show();
             $("a[data-code='zxfs']").addClass("mui-active");
-            $(".x_3.gfwf-playName").text("定位胆");
+            // $(".x_3.gfwf-playName").text("直选复式");
             $("span.x_1.gfwf-tit").text("定位胆");
             $(".s-title.title1 span").text("定位胆");
-            $(".s-title.title2 span").text("定位胆")
+            // $(".s-title.title2 span").text("定位胆")
         },
 
         /************************************************PK10**********************************************/
@@ -168,20 +166,30 @@ define(['site/hall/pk10-gfwf/AllPk10', 'site/plugin/template','RangeSlider'], fu
          * 随机算法-定位胆
          */
         random_dwd_pk10:function () {
-        var random_1 = parseInt(Math.random() * 10)+1;
-        var wei = parseInt(Math.random() * 5);
-        if(wei == 0){
-            $(".guanjunStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
-        } else if(wei == 1){
-            $(".yajunStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
-        } else if(wei == 2){
-            $(".jijunStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
-        } else if(wei == 3){
-            $(".disiStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
-        } else if(wei == 4){
-            $(".diwuStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
-        }
-    }
+            var random_1 = parseInt(Math.random() * 10)+1;
+            var wei = parseInt(Math.random() * 10);
+            if(wei == 0){
+                $(".guanjunStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 1){
+                $(".yajunStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 2){
+                $(".jijunStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 3){
+                $(".disiStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 4){
+                $(".diwuStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 5){
+                $(".diliuStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 6){
+                $(".diqiStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 7){
+                $(".dibaStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 8){
+                $(".dijiuStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            } else if(wei == 9){
+                $(".dishiStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
+            }
+        },
 
 
 

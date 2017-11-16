@@ -2096,3 +2096,12 @@ i.bg-01,i.bg-02,i.bg-03,i.bg-04,i.bg-05,i.bg-06,i.bg-07,i.bg-08,i.bg-09,i.bg-10{
 .new-ball-st.lhc-num.block-bet-btn .pl:before{
 	background: url(../images/ball-lhc-num-block.png);
 }
+
+/*福彩3d封盘效果*/
+.numLine.block-bet-btn{background: #fff!important; box-shadow: none!important;}
+.numLine.block-bet-btn span{position: relative;}
+.numLine.block-bet-btn span:before{content: "";display: block;position: absolute;top: 3px;left: 7px;width: 30px;height: 30px; background: url(../images/ball-lhc-num-block.png);}
+.numLine.block-bet-btn span i{background: #cccccc!important;border: 1px solid #cccccc!important;}
+.numLine.block-bet-btn span i:hover{transform:none!important;}
+
+.disabled-btn{background: #a5a5a5!important;border-bottom: 3px solid #8a8a8a!important; color: #fff!important;}
