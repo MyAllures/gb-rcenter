@@ -2,6 +2,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
 
     return PlayWay.extend({
         _this: null,
+        oddsar:null,
         init: function () {
             this._super();
             _this = this;
