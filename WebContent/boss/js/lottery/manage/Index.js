@@ -3,8 +3,32 @@ define(['common/BaseListPage'], function (BaseListPage) {
     return BaseListPage.extend({
         init: function () {
             this._super();
+            this.initSelectHigh();
         },
-
+        initSelectHigh:function () {
+            select.setSelectHeight=function($this){
+                var maxHeight= 300;
+                if(!$this.parent().hasClass("dropup")){
+                    var maxHeight1=document.body.clientHeight-$this.parent()[0].offsetTop-$this[0].clientHeight-20;
+                    var maxHeight2=$(window).height()-$this.parent()[0].offsetTop-$this[0].clientHeight-20;
+                    if(maxHeight1>maxHeight2 && maxHeight2>0){
+                        maxHeight=maxHeight2
+                    }
+                    else{
+                        maxHeight=maxHeight1;
+                    }
+                    if(maxHeight>300){
+                        maxHeight=300;
+                    }
+                }
+                if ($this.parents("tbody").length==1){
+                    maxHeight=300;
+                }
+                var ul=$('ul[class="dropdown-menu"]',$this.parent());
+                ul.css("maxHeight",maxHeight)
+                    .css("minWidth",93).css("minHeight",25).css('overflow-y','auto').css('overflow-x','visible');
+            }
+        },
         bindEvent: function () {
             this._super();
             var _this = this;
