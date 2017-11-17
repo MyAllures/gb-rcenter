@@ -201,6 +201,15 @@ header.mui-bar-nav .mui-icon-bars {
 .mui-bar-tab .mui-active .mui-icon.icon-home:after {
   background: url(images/footer-nav-icon.png) no-repeat -83px -43px/auto 80px;
 }
+.mui-hide-bar {
+  width: 100%;
+  height: 44px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 999;
+}
 
 /* mui-off-canvas-left */
 .mui-off-canvas-left {

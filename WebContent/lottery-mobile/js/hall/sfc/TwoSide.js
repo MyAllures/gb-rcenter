@@ -1,4 +1,4 @@
-define(['site/hall/sfc/AllSfc', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/sfc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay, Template) {
 
     return PlayWay.extend({
         _this: null,
@@ -7,15 +7,29 @@ define(['site/hall/sfc/AllSfc', 'site/plugin/template'], function (PlayWay, Temp
             _this = this;
 
         },
+
+        showTable : function(){
+            var BetCode=$("#gfwfBetCode").val();
+            var BetCode1="双面";
+            $("a[data-code='"+BetCode+"']").addClass("mui-active");
+            $("a[data-code='sm']").addClass("mui-active");
+            $(".x_3.gfwf-playName").text(BetCode1);
+            $("span.x_1.gfwf-tit").text(BetCode1);
+            $(".s-title.title1 span").text(BetCode1);
+            $(".s-title.title2 span").text(BetCode1);
+            $("#toobarTitle").text("信用玩法-"+BetCode1);
+            $("a[data-code='sm'] span").text(BetCode1);
+        },
+
         getOdds: function () {
             var url = root + '/' + this.type + '/' + this.code + '/getOdds.html';
-            console.log(url)
+
             var _this = this;
             mui.ajax(url, {
                 dataType: 'json',
                 type: 'POST',
                 success: function (data) {
-                    console.log(data)
+
                     var sumdata = data['sfc_sum8'];
                     var dradata = data['sfc_dragon_tiger_18'];
                     var firstdata = data['sfc_first'];

@@ -1,12 +1,30 @@
-define(['site/hall/ssc/AllSsc','site/plugin/template'], function (PlayWay,Template) {
+define(['site/hall/ssc/PlayWay-xywf','site/plugin/template'], function (PlayWay,Template) {
 
     return PlayWay.extend({
         _this:null,
         init: function () {
             this._super();
             _this=this;
-
         },
+
+        showTable : function(){
+            var betCode=$("#gfwfBetCode").val();
+            $("a[data-code='ssc_kaudu']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#qiansankuadu").show();
+            $("span.x_1.gfwf-tit").text("跨度");
+            $(".s-title.title1 span").text("跨度");
+            $(".s-title.title2 span").text(betCode);
+            $("#toobarTitle").text("信用玩法-跨度");
+            if(betCode =="ssc_kaudu"){
+                $("a[data-code='前三组选六']").addClass("mui-active");
+            }else{
+                $("#qiansankuadu a").removeClass("mui-active");
+                $("a[data-code='"+betCode+"']").addClass("mui-active");
+            }
+            $(".x_3.gfwf-playName").text(betCode)
+        },
+
         bindButtonEvents: function () {
             this._super();
             mui(this.formSelector).on("tap", "a.mui-control-item[data-type]", function () {
@@ -35,7 +53,6 @@ define(['site/hall/ssc/AllSsc','site/plugin/template'], function (PlayWay,Templa
                    $(".bet-table-list[data-subCode]").each(function () {
                         var subCode = $(this).attr("data-subCode");
                         var $tdBet = $(this).find("td[data-bet-num]");
-                       console.log("subCode"+subCode)
                         $tdBet.each(function(){
                             var betNum = $(this).attr('data-bet-num');
                             var thisData=data[subCode];
