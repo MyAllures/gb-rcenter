@@ -1,0 +1,206 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>彩票</span>
+        <span>/</span><span>彩票系统工具</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow">
+            <div class="present_wrap"><b>彩票系统工具</b></div>
+            <div class="sys_tab_wrap clearfix">
+                <div class="m-sm">
+            <a href="lottery/lottery-tool.html" nav-target="mainFrame" class="label ssc-label">维护</a>
+            <a href="lottery/lottery-tool-1.html" nav-target="mainFrame" class="label ssc-label">撤单</a>
+            <a href="lottery/lottery-tool-2.html" nav-target="mainFrame" class="label ssc-label">派彩</a>
+            <a href="lottery/lottery-tool-3.html" nav-target="mainFrame" class="label ssc-label">采集</a>
+            <a href="lottery/lottery-tool-4.html" nav-target="mainFrame" class="label ssc-label ssc-active">重结</a>
+            </div>
+            </div>
+            <div class="m-b-xs clearfix">
+                <div class="clearfix row">
+                   
+                   <div class=" col-sm-12 col-md-6 m-t-sm m-b-sm">
+                   <div class="clearfix pull-left col-xs-12">
+                   
+                   <dd class="clearfix m-t-xs">
+                   	<div class="form-group clearfix col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-addon abroder-no"><b>彩种：</b></span>
+                            <span class=" input-group-addon bdn  right-btn-down">
+                            <div class="btn-group table-desc-right-t-dropdown" initprompt="10条" callback="query">
+                            <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default right-radius" data-toggle="dropdown" aria-expanded="false">
+                        <span prompt="prompt">全部彩种</span>
+                        <span class="caret-a pull-right"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    	<li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">全部彩种</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">重庆时时彩</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20">新疆时时彩</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30">天津时时彩</a>
+                        </li>
+                    </ul>
+                </div>
+                        </span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group clearfix col-sm-12">
+                        <div class="input-group date time-select-a">
+                            <span class="input-group-addon abroder-no"><b>期数：</b></span>
+                            <input type="text" class="form-control" placeholder="">
+                         </div>
+                    </div>
+                   </dd>
+                   
+                   </div>
+                   </div>
+                   
+            </div>
+            <div class="col-sm-12 clearfix template-menu">
+                         
+                        <button class="btn btn-filter btn-md disabled" data-toggle="modal">重结</button>
+                        <button class="btn btn-filter btn-md" data-toggle="modal" data-target="#zstc5">重结</button>
+                        
+                        </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<!--盈利上限-->
+<div class="modal inmodal" id="add-upper" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content animated bounceInRight family">
+<div class="modal-header">
+<span class="filter">撤销</span>
+<button type="button" class="close" data-dismiss="modal">
+<span aria-hidden="true">&times;</span>
+<span class="sr-only">关闭</span>
+</button>
+</div>
+<div class="modal-body">
+<div class="form-group clearfix m-b-sm col-xs-12">
+
+<div class="clearfix m-md">
+                            <span class="pull-left">您确定要撤销该注单？撤销后金额将重新计算并退回！</span>
+                               
+                            </div>
+</div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-filter" data-toggle="modal" data-dismiss="modal" data-target="#competenceError">确定</button>
+<button type="button" class="btn btn-primary-hide">取消</button>
+</div>
+</div>
+</div>
+</div>
+<div class="modal inmodal in" id="zstc5" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight family">
+            <div class="modal-header">
+                <span class="filter">维护</span>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="clearfix m-md">
+                    <span class="line-hi25">您将对重庆时时彩第<font class="co-red">321154545</font>期全平台所有注单进行重新结算，此操作有可能导致玩家钱包余额为负数，是否确认执行？</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-filter">确定</button>
+                <button type="button" class="btn btn-outline btn-filter">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+ $(".show-demand-b").click(function(){
+      $(this).toggleClass("open")
+      $(".show-demand-a").toggle()
+    });
+//$(".type-search-btn").click(function(){
+//    $(this).toggleClass("open")
+//    $(".type-search").toggle()
+//  });
+//  
+    
+    
+     //themes快捷菜单冒泡阻止
+        $(".type-search-btn").click(function () {
+            $(this).toggleClass("open");
+            $(document).one("click", function () {
+                $(".type-search-btn").removeClass("open");
+            });
+            $(".type-search").toggle();
+            $(document).one("click", function () {
+                $(".type-search").hide();
+            });
+            event.stopPropagation();
+        });
+        $(".type-search").click(function (event) {
+            event.stopPropagation();
+        });
+    
+    
+    
+    $(".btn-total").click(function(){
+        $(".con-total").slideToggle();
+    });
+    $(".btn-advanced-down").click(function () {
+            $(".advanced-options").slideToggle("10");
+            $(this).parent().toggleClass("show");
+        });
+ var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': {allow_single_deselect: true},
+        '.chosen-select-no-single': {disable_search_threshold: 10},
+        '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+        '.chosen-select-width': {width: "95%"}
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+    
+    $("#file-0").fileinput({
+        'allowedFileExtensions' : ['jpg', 'png','gif'],
+    });
+    
+    $('.help-popover').popover();
+   
+
+</script>
+<script>
+  $(document).ready(function() {
+    var options = {
+      maxValue: 10,
+      minValue: 0,
+      step: 0.01,
+      inputWidth: 100,
+      start: -2,
+      plusClick: function(val) {
+        console.log(val);
+      },
+      minusClick: function(val) {
+        console.log(val);
+      },
+      exceptionFun: function(val) {
+        console.log("excep: " + val);
+      },
+      valueChanged: function(val) {
+        console.log('change: ' + val);
+      }
+    }
+    $(".wan-spinner-1").WanSpinner(options);
+  });
+  </script>

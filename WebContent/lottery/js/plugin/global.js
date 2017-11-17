@@ -254,11 +254,12 @@ function getRequest(url) {
 //获取重复元素
 Array.prototype.duplicateNew = function () {
     var tempArr = new Array();
-    this.sort();
+    var lastArr =[];
     for(i = 0; i < this.length; i++) {
-        if( this[i] == this[i+1]) {
+        if(containtArr(lastArr,this[i])){
             tempArr.push(this[i]);
-            continue;
+        }else{
+            lastArr.push(this[i]);
         }
     }
     return tempArr;
@@ -275,34 +276,86 @@ Array.prototype.uniqueArr = function () {
     }
     return temp;
 };
+//去掉数组重复保留数组顺序
+Array.prototype.uniqueArrByzx = function () {
+    var tempArr = new Array();
+    var lastArr =[];
+    for(i = 0; i < this.length; i++) {
+        if(containtArr(lastArr,this[i])){
+            tempArr.push(this[i]);
+        }else{
+            lastArr.push(this[i]);
+        }
+    }
+    return lastArr;
+};
 //获取重复元素,无序
 Array.prototype.duplicateNewa = function () {
     var tempArr = new Array();
-    var newarr = arrSort(this);
-    for(i = 0; i < newarr.length; i++) {
-        var aa = numSort(newarr[i]);
-        var bb = numSort(newarr[i+1]);
-        if( aa == bb) {
-            tempArr.push(aa);
-            continue;
+    var lastArr =[];
+    for(i = 0; i < this.length; i++) {
+        if(containtArra(lastArr,this[i])){
+            tempArr.push(this[i]);
+        }else{
+            lastArr.push(this[i]);
         }
     }
     return tempArr;
 };
-//去掉数组重复,无序
-Array.prototype.uniqueArra = function () {
-    var temp = new Array();
-    var newarr = arrSort(this);
-    for(i = 0; i < newarr.length; i++) {
-        var aa = numSort(newarr[i]);
-        var bb = numSort(newarr[i+1]);
-        if( aa == bb) {
-            continue;
+function containtArr(newArr,item){
+
+    for(var j=0;j<newArr.length;j++){
+        var a=[];
+        var b=[];
+        a.push(newArr[j].charAt(0));
+        a.push(newArr[j].charAt(1));
+
+        b.push(item.charAt(0));
+        b.push(item.charAt(1));
+        if (item.length==3){
+            a.push(newArr[j].charAt(2));
+            b.push(item.charAt(2));
         }
-        temp[temp.length]=aa;
+        if(newArr[j].length ==item.length &&  a.join("")==b.join("")){
+            return true;
+        }
     }
-    return temp;
-};
+    return false;
+}
+function containtArra(newArr,item){
+
+    for(var j=0;j<newArr.length;j++){
+        var a=[];
+        var b=[];
+        a.push(newArr[j].charAt(0));
+        a.push(newArr[j].charAt(1));
+
+        b.push(item.charAt(0));
+        b.push(item.charAt(1));
+        if (item.length==3){
+        a.push(newArr[j].charAt(2));
+        b.push(item.charAt(2));
+        }
+
+        if(newArr[j].length ==item.length &&  a.sort().join("")==b.sort().join("")){
+            return true;
+        }
+    }
+    return false;
+}
+//去掉数组重复,无序
+Array.prototype.uniqueArra = function() {
+    var tempArr = new Array();
+    var lastArr =[];
+    for(i = 0; i < this.length; i++) {
+        if(containtArra(lastArr,this[i])){
+            tempArr.push(this[i]);
+        }else{
+            lastArr.push(this[i]);
+        }
+    }
+    return lastArr;
+}
 //对数字字符串排序
 function  numSort(num) {
     var newnum = "";

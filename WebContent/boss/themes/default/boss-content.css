@@ -284,6 +284,10 @@ div.tip ul{float:left;width:450px;}
 div.tip li{line-height:26px;}
 div.tip .fa-exclamation-circle{float:right;color:#f99c95;font-size:55px;}
 .content-width-no{display:block;    /*margin: auto;*/overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.content-width-limit-28{width:28px;}
+.content-width-limit-3x{width:30px;}
+.content-width-limit-35{width:35px;}
+.content-width-limit-50{width:50px;}
 .content-width-limit-5{width:83px;}
 .content-width-limit-10{width:165px;}
 .content-width-limit-200{width:200px;}

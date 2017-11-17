@@ -23,7 +23,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             this._super();
             var _this = this;
             //计算输入玩家账号人数
-            $(_this.formSelector).on("input", "textarea[name='usernames']", function () {
+            $(_this.formSelector).on("blur", "textarea[name='usernames']", function () {
                 _this.userNamesCuont();
                 _this.validRemainCount(null,null,false);
             });

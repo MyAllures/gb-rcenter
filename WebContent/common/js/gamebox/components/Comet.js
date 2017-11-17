@@ -195,6 +195,7 @@ define([], function() {
                 cache: false,
                 data : _this.userParam,
                 crossDomain : true,
+                comet:true,
                 success : function(result) {
                     if(result){
                         var data = eval("(" + result + ")");

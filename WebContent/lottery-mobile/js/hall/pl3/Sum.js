@@ -1,35 +1,28 @@
 /**
  * 和数
  */
-define(['site/hall/pl3/PlayWay'], function (PlayWay) {
+define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
     return PlayWay.extend({
         _this:null,
         init: function () {
             _this=this;
             this._super();
         },
-        bindButtonEvents: function () {
-            this._super();
-            mui(this.formSelector).on("tap", "a.mui-control-item[data-bet-code]", function () {
-                $("div.bet-table td.mui-active").each(function(){
-                    $(this).removeClass("mui-active")
-                });
-                var betCode = $(this).attr("data-bet-code");
-                if(betCode == "pl3_hundred_ten_sum" || betCode == "pl3_hundred_one_sum" || betCode == "pl3_ten_one_sum"){
-                    _this.getOdds(betCode,$("div.two-word-sum"));
-                }else if(betCode == "pl3_hundred_ten_one_sum") {
-                    _this.getOdds(betCode,$("div.three-word-sum"));
-                }
-            })
+        showTable : function(){
+            var gfwfBetCode=$("#gfwfBetCode").val();
+            $("a[data-code='sum']").addClass("mui-active");
+            $("a[data-code='"+gfwfBetCode+"']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#heshu").show();
+            $("span.x_1.gfwf-tit").text(gfwfBetCode);
+            $(".s-title.title1 span").text(gfwfBetCode);
+            $("#toobarTitle").text("官方玩法-和数");
+            $(".x_3.gfwf-playName").text(gfwfBetCode)
+            $(".s-title.title2 span").text(gfwfBetCode);
         },
-        getOdds: function (betCode,$sumDiv) {
-            if(betCode == undefined && $sumDiv == undefined){
-                betCode = "pl3_hundred_ten_sum";
-                $sumDiv = $("div.two-word-sum");
-            }
-            $("div.sum-div").each(function(){
-                $(this).css('display','none');
-            });
+
+        getOdds: function () {
+            var betCode = $("#heshu a.mui-active").data("type");
             var url = root + '/' + this.type + '/' + this.code + '/getOdds.html';
             mui.ajax(url, {
                 dataType: 'json',
@@ -37,7 +30,7 @@ define(['site/hall/pl3/PlayWay'], function (PlayWay) {
                 type: 'POST',
                 success: function (data) {
                     //todo 增加data判空
-                    _this.refreshBetTable(data,$sumDiv);
+                    _this.refreshBetTable(data,$("div.word-sum"));
                     _this.hideLoading();
                 }, error: function (xhr, type, errorThrown) {
                     //异常处理
@@ -45,13 +38,9 @@ define(['site/hall/pl3/PlayWay'], function (PlayWay) {
                     _this.hideLoading();
                 }
             })
-        },refreshBetTable:function(data,$sumDiv) {
-            var title = $("a.mui-active[data-bet-code]").html();
-            $sumDiv.find(".title0").html(title);
-            $sumDiv.find(".title1").html(title+"尾数");
-            $sumDiv.find(".title2").html(title+"双面");
-            $sumDiv.find(".title3").html(title+"尾数双面");
-
+        },
+        refreshBetTable:function(data,$sumDiv) {
+            var title = $("a.mui-active[data-type] span").html();
             var list = data.obj;
             $sumDiv.find(".sum-list td[data-bet-num]").each(function(){
                 var betNum = $(this).attr("data-bet-num");
@@ -70,8 +59,6 @@ define(['site/hall/pl3/PlayWay'], function (PlayWay) {
                 $(this).attr("data-name",title+"-"+betNum);
                 $(this).find("span[name]").html(lottery.odd);
             });
-
-            $sumDiv.css('display','block');
         }
     });
 });

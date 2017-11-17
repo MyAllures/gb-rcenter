@@ -12,13 +12,43 @@ var muiDefaultOptions = {
     disabledHandSlip: ['mui-off-canvas-left']
 };
 /**
+ * mui 向下拉默认参数配置
+ * @param container
+ * @param callback
+ * @param auto
+ * @returns {{pullRefresh: {container: *, up: {auto: *, contentrefresh: string, callback: *}}}}
+ */
+function pullUpRefreshOption(container, callback, auto) {
+    if (!auto) {
+        auto = false;
+    }
+    var pullUpRefresh = {
+        pullRefresh: {
+            container: container,
+            up: {
+                height:100,//可选.默认50.触发上拉加载拖动距离
+                auto: auto,
+                contentrefresh: '正在加载...',
+                callback: callback
+            }
+        }
+    };
+    return pullUpRefresh;
+}
+
+/**
  * mui初始化
  */
 function muiInit(options) {
-    mui.init();
     if (!options) {
         var options = {};
     }
+    if (options.init) {
+        mui.init(options.init);
+    } else {
+        mui.init();
+    }
+
     //主页面内容上下滚动
     if (options.containerScroll) {
         muiScrollY(options.containerScroll);
@@ -98,16 +128,16 @@ function muiAjaxError() {
             gotoUrl(root + "/errors/" + status + ".html");
         } else if (status == 608) {
             toast(window.top.message.common["repeat.request.error"]);
-        } else if (status >= 0 && settings.comet != true) { //606、403、404、605等状态码跳转页面
+        } else if (status >= 0 && settings && settings.comet != true) { //606、403、404、605等状态码跳转页面
             window.top.location.href = window.top.root + "/errors/" + status + ".html";
-        } else if (!settings.error && status != 200 && status != 0) {
+        } else if (settings && !settings.error && status != 200 && status != 0) {
             if (settings.comet == true) {
                 toast(window.top.message.common["online.message.error"]);
             } else {
                 toast(error.responseText);
             }
         } else {
-            console.log(error);
+            console.log(error.context);
         }
     }
 }
@@ -218,12 +248,15 @@ function openWindow(url) {
 
 /**
  * 封装绑定button/a标签事件
+ * selector 支持动态内容再次绑定事件
+ * 由于mui.on对动态增加的元素不能自动绑定事件，动态元素需要重新绑定事件
  */
-function bindButtonEvent() {
+function bindButtonEvent(selector) {
     /**
      * 绑定使用button.tag标签
      */
-    mui("body").on("tap", "[data-rel]", function (e) {
+    selector=selector||"body";
+    mui(selector).on("tap", "[data-rel]", function (e) {
         var $target = $(this);
         var isLocked = $target.isLocked();
         if (isLocked) {
@@ -231,7 +264,7 @@ function bindButtonEvent() {
             return;
         }
         $target.lock();
-        var options = eval("(" + $(this).data('rel') + ")");
+        var options = eval("(" + $(this).attr('data-rel') + ")");
         var confirm = options.confirm;
         if (confirm) {
             options.event = doEvent(this, options);
@@ -267,17 +300,27 @@ function doEvent(obj, options) {
  */
 function doFunction(obj, options) {
     var func = this[options.target];
-    applyFunction(func, options);
+    applyFunction(func, options, obj);
     $(obj).unlock();
 }
 
-function applyFunction(func, options) {
+/**
+ * 实现执行function方法
+ * @param func 方法名或者function
+ * @param options 方法参数
+ * @param obj 对象操作
+ * @returns {*}
+ */
+function applyFunction(func, options, obj) {
+    if (!obj) {
+        obj = this;
+    }
     if (func && typeof func == 'function') {
-        var rs = func.apply(this, [this, options]);
+        var rs = func.apply(this, [obj, options]);
         return rs;
     } else if (func && typeof func == 'string' && this[func] && typeof this[func] == 'function') {
         func = this[func];
-        var rs = func.apply(this, [this, options]);
+        var rs = func.apply(this, [obj, options]);
         return rs;
     } else {
         console.log(func + "方法找不到！");
@@ -298,7 +341,7 @@ function doAjax(obj, options) {
             options.data = data;
             var func = options.callback;
             if (func) {
-                applyFunction(func, options)
+                applyFunction(func, options, obj);
             }
             $(obj).unlock();
         }
@@ -306,7 +349,7 @@ function doAjax(obj, options) {
     //ajax请求参数
     var post = options.post;
     if (post) {
-        ajaxOption.data = applyFunction(post, options);
+        ajaxOption.data = applyFunction(post, options, obj);
     }
     muiAjax(ajaxOption);
 }
@@ -335,7 +378,7 @@ function showConfirmMsg(options, obj) {
         if (e.index == 0) {
             var func = options.event;
             if (func) {
-                applyFunction(func, options);
+                applyFunction(func, options, obj);
             }
         }
     })

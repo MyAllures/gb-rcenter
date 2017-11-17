@@ -27,6 +27,7 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
                     _this.showLeftTime(interval)
                 }, 60 * 1000);
             }
+            _this.changeAmountMsg();
         },
         showLeftTime: function (interval) {
             var leftTime = $("#leftTime[data-time]");
@@ -110,7 +111,7 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
                                 action: function (dialog) {
                                     dialog.close();
                                     flag = false;
-                                    $("#mainFrame").load(root + "/creditRecord/list.html");
+                                    $("#mainFrame").load(root + "/vCreditRecord/list.html");
                                 }
                             }],
                             onhidden: function (dialog) {
