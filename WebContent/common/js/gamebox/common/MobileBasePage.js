@@ -52,11 +52,11 @@ define(['moment'], function (moment) {
             $('.mui-inner-wrap').height();
             //苹果safari浏览器首页的底部导航栏,首页和我的图标不显示问题
             $(window).bind("pageshow", function () {
-                if (isLoad && _this.os === 'ios') {
+                if (_this.isLoad && _this.os === 'ios') {
                     $("#footer_index").addClass("mui-active");
                     $("[id!='footer_index'][id*='footer_']").removeClass("mui-active");
                 }
-                isLoad = true;
+                _this.isLoad = true;
             });
         },
         /**
