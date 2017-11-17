@@ -22,6 +22,7 @@ define(['common/BaseListPage', 'bootstrapswitch', 'jsrender'], function (BaseLis
             this._super();
             var _this = this;
             var $bootstrapSwitch = $('input[type=checkbox][name=my-checkbox]');
+
             this.unInitSwitch($bootstrapSwitch)
                 .bootstrapSwitch(
                     {
@@ -31,6 +32,11 @@ define(['common/BaseListPage', 'bootstrapswitch', 'jsrender'], function (BaseLis
                             var _target = e.currentTarget;
                             var index = $(_target).attr("tt");
                             var id = $(_target).attr("creditAccountId");
+                            var msg = "请确认您的操作！";
+                            if (confirm(msg)!=true){
+                                return false;
+                            }
+
                             window.top.topPage.ajax({
                                 url: root + '/creditAccount/changeStatus.html',
                                 dataType: "json",
