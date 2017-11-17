@@ -11,6 +11,7 @@ define(['site/hall/pl3/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
             $("#3star").show();
             $("span.x_1.gfwf-tit").text("三星");
             $(".s-title.title1 span").text("三星");
+            $("#toobarTitle").text("官方玩法-三星");
             $(".s-title.title2 span").text("直选复式");
             $(".x_3.gfwf-playName").text("直选复式");
             $("a[data-code='pl3_sanxing_zhixuan_fs']").addClass("mui-active");
