@@ -1,33 +1,28 @@
-define(['site/hall/lhc/PlayWay'], function (PlayWay) {
+define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
     return PlayWay.extend({
 
         init: function () {
             this._super();
         },
-        bindButtonEvents: function () {
-            this._super();
-            var _this = this;
-            mui(this.formSelector).on("tap", "a.mui-control-item[data-subCode]", function () {
-                var oldBetTitle = $("a.mui-active[data-subCode]").text();
-                $("a.mui-control-item[data-subCode]").removeClass("mui-active");
-                $(this).addClass("mui-active");
-                _this.getOdds();
-                var betTitle = $("a.mui-active[data-subCode]").text();
-                $("td[data-name]").removeClass("mui-active");
-                $("td[data-name]").each(function () {
-                    var name = $(this).attr("data-name");
-                    name = name.replace(oldBetTitle, betTitle);
-                    $(this).attr("data-name", name);
-                });
-
-            })
+        showTable : function(){
+            var BetCode=$("#gfwfBetCode").val();
+            $("a[data-code='"+BetCode+"']").addClass("mui-active");
+            $("a[data-code='sumZodiac']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#hexiao").show();
+            $(".x_3.gfwf-playName").text(BetCode);
+            $("span.x_1.gfwf-tit").text(BetCode);
+            $(".s-title.title1 span").text("合肖");
+            $(".s-title.title2 span").text(BetCode);
+            $("#toobarTitle").text("信用玩法-合肖");
         },
+
         getOdds: function () {
-            this.resetBet();
-            var url = root + '/' + this.type + '/' + this.code + '/' + this.betCode + 'Odd.html';
-            var subCode = $("a.mui-active[data-subCode]").attr("data-subCode");
+            page.resetBet();
+            var url = root + '/' + this.type + '/' + this.code + '/sumZodiacOdd.html';
+            var subCode = $("#hexiao a.main.mui-active[data-subCode]").attr("data-subCode");
             var title = $("a.mui-active[data-subCode]").text();
-            var minNum = $("a.mui-active[data-subCode]").attr("min-num");
+            var minNum = $("#hexiao a.main.mui-active[data-subCode]").attr("min-num");
             mui.ajax(url, {
                 dataType: 'json',
                 type: 'POST',
@@ -53,9 +48,36 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
                 return;
             }
             var betForm = this.getBetOrder();
+            this.betForm = betForm;
+            var _this = this;
+            sessionStorage.betForm = JSON.stringify(betForm);
 
             this.placeOrder(betForm);
             $("#dingdan").addClass('mui-active');
+            //重新操作表单
+            mui("body").off('tap','a.mui-pull-right.list-delete-btn').on('tap', 'a.mui-pull-right.list-delete-btn', function () {
+                if($("div.mui-input-row.zd-wrap").size()>1){
+                    $("#zhushu_new").text($("#zhushu_new").text()-1);
+                    $("#zongjine_new").text($("#zongjine_new").text()-$(this).prev().val());
+                    var len=$(this).parent().parent().index()-1;
+                    _this.betForm.betOrders.splice(len,1);
+                    $(this).parent().parent().remove();
+                    _this.betForm.totalMoney=$("#zongjine_new").text();
+                    _this.betForm.quantity=_this.betForm.quantity-1;
+                }else{
+                    $("#dingdan").html('');
+                    $("#dingdan").removeClass('mui-active');
+                }
+            });
+            $(".mui-input-numbox.jinge").keyup(function() {
+                var sum = 0;
+                $(".mui-input-numbox.jinge").each(function(index,value){
+                    _this.betForm.betOrders[index].betAmount = Number($(this).val());
+                    sum += Number($(this).val());
+                })
+                $("#zongjine_new").text(sum);
+                _this.betForm.totalMoney=sum;
+            });
         },
 
         /**
@@ -80,7 +102,7 @@ define(['site/hall/lhc/PlayWay'], function (PlayWay) {
             var odd = $("#oddValue").text();
             var memo = $("#lhc_title").text();
             var playCode = $("#playCode").val();
-            var betCode = $("a.mui-active[data-subCode]").attr("data-subCode");
+            var betCode = $("a.main.mui-active[data-subCode]").attr("data-subCode");
             var betForm = {
                 code: _this.code,
                 totalMoney: 0,

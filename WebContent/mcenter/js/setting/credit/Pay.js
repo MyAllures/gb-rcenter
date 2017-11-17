@@ -111,7 +111,7 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
                                 action: function (dialog) {
                                     dialog.close();
                                     flag = false;
-                                    $("#mainFrame").load(root + "/creditRecord/list.html");
+                                    $("#mainFrame").load(root + "/vCreditRecord/list.html");
                                 }
                             }],
                             onhidden: function (dialog) {
