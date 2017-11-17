@@ -21,6 +21,7 @@ define(['moment'], function (moment) {
         displayName: "",
         dateTimeFromat: "",
         userTimeTimerId: null,
+        isLoad:false,
         /**
          * 初始化及构造函数，在子类中采用
          * this._super();

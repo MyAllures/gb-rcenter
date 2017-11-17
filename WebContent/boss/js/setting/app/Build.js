@@ -4,7 +4,7 @@
 /**
  * Created by jeff on 15-10-20.
  */
-define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput'], function (BaseEditPage,fileinput) {
+define(['common/BaseEditPage'], function (BaseEditPage) {
 
     return BaseEditPage.extend({
         init: function () {
@@ -12,31 +12,6 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
         },
         bindEvent: function () {
             this._super();
-            this.unInitFileInput($('#appLogo')).fileinput({
-                showUpload: false,
-                maxFileCount: 1,
-                maxFileSize: 2048,
-                mainClass: "input-group",
-                removeLabel: '删除',
-                browseLabel: '浏览' + '&hellip;',
-                allowedFileExtensions: ['zip', 'rar'],
-                msgInvalidFileExtension: '仅支持"{extensions}"等类型的文件',
-                msgValidationError: '文件上传失败',
-                msgSizeTooLarge: '您上传的图片大于2M，无法上传，请重新选择.'
-            }).bind("filecleared", function (e) {
-                e.fileInput.$container.prev().show();
-                page.resizeDialog();
-            }).bind("fileloaded", function (e) {
-                e.fileInput.$container.prev().hide();
-                e.fileInput.$container.parent().removeClass("error");
-                page.resizeDialog();
-            });
-
-            $(".delete-img-btn").click(function () {
-                $(this).parent().parent().parent().find(".logo-path").val("");
-                $($(this).parent()).remove();
-                _this.resizeDialog();
-            });
         },
         onPageLoad: function () {
             this._super();
@@ -55,6 +30,38 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
                 return false;
             }
             return true;
+        },
+        buildAndroid: function (e) {
+            window.top.topPage.ajax({
+                url: root + "/build/android/package.html",
+                data: this.getCurrentFormData(e),
+                type: 'POST',
+                dataType: 'JSON',
+                success: function (data) {
+                    if (data.state) {
+                        $('#_param').val(data.param);
+                        $('._android').show();
+                    }
+                    $(e.currentTarget).unlock();
+                }
+            })
+        },
+        buildIos: function (e) {
+            window.top.topPage.ajax({
+                url: root + "/build/ios/package.html",
+                data: this.getCurrentFormData(e),
+                type: 'POST',
+                dataType: 'JSON',
+                success: function (data) {
+                    if (data.state) {
+                        $('#_pch').val(data.pch);
+                        $('#_plist').val(data.plist);
+                        $('#ios_tip').html('*请将下面文件另存为 <b class="co-red">app_' + data.code+ '_'+ data.version +'.plist</b>')
+                        $('._ios').show();
+                    }
+                    $(e.currentTarget).unlock();
+                }
+            })
         },
     })
 });
