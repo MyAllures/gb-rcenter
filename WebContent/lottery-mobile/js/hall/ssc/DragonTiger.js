@@ -1,4 +1,4 @@
-define(['site/hall/ssc/AllSsc', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay, Template) {
 
     return PlayWay.extend({
         _this: null,
@@ -7,16 +7,28 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template'], function (PlayWay, Temp
             _this = this;
 
         },
+
+        showTable : function(){
+            $("div.s-menu.second").hide();
+            $("#shuzipan").show();
+            $("a[data-code='szp']").addClass("mui-active");
+            $(".x_3.gfwf-playName").text("龙虎");
+            $("span.x_1.gfwf-tit").text("龙虎");
+            $(".s-title.title1 span").text("龙虎");
+            $(".s-title.title2 span").text("龙虎");
+            $("#toobarTitle").text("信用玩法-龙虎");
+            $("a[data-code='szp'] span").text("龙虎");
+        },
+
         getOdds: function () {
             var url = root + '/' + this.type + '/getDragonTigerOdds.html';
-            console.log("url=" + url)
+
             var _this = this;
             mui.ajax(url, {
                 dataType: 'json',
                 type: 'POST',
                 data: {code: _this.code},
                 success: function (data) {
-                    console.log(data)
                     for (i = 0; i < data.length; i++) {
                         var dnum = '';
                         var tnum = '';

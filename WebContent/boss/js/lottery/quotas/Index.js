@@ -110,6 +110,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 ori3 = Number($($input[2]).attr("data-value"));
                 if (numQuota != ori1||betQuota!=ori2||playQuota!=ori3) {
                     if (!$input.valid()) {
+                        $target.unlock();
                         return;
                     }
                     obj = {

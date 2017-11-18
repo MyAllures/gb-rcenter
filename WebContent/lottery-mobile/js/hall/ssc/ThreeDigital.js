@@ -1,4 +1,4 @@
-define(['site/hall/ssc/AllSsc', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay, Template) {
 
     return PlayWay.extend({
         _this: null,
@@ -7,19 +7,38 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template'], function (PlayWay, Temp
         init: function () {
             _this = this;
             this._super();
-            this.bindEvent();
+        },
+
+        showTable : function(){
+            var betCode=$("#gfwfBetCode").val();
+            $("a[data-code='ssc_sanzidingwei']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#sanzidingwei").show();
+            $("span.x_1.gfwf-tit").text("三字定位");
+            $(".s-title.title1 span").text("三字定位");
+            $(".s-title.title2 span").text("万千百");
+            $("#toobarTitle").text("信用玩法-三字定位");
+            if(betCode =="ssc_sanzidingwei"){
+                $("a[data-code='万千百']").addClass("mui-active");
+                $(".x_3.gfwf-playName").text("万千百");
+            }else{
+                $("#sanzidingwei a").removeClass("mui-active");
+                $("a[data-code='"+betCode+"']").addClass("mui-active");
+            }
+            $(".x_3.gfwf-playName").text(betCode)
+            $(".s-title.title2 span").text(betCode);
         },
 
         getOdds: function () {
-            $(".screen-munber a").removeClass("mui-active");
-            var subCode = $("#betCodeDiv a.mui-active").data("type");
+            // $(".screen-munber a").removeClass("mui-active");
+            var subCode = $("#sanzidingwei a.mui-active").data("type");
             var url = root + '/' + this.type + '/' + this.code + '/getTwoOrThreeDigitalOdds.html';
             mui.ajax(url, {
                 dataType: 'json',
                 data: {'subCode': subCode},
                 type: 'POST',
                 success: function (data) {
-                    var betname = $("#betCodeDiv a.mui-active").text();
+                    var betname = $("#sanzidingwei a.mui-active").text();
                     var tdata = data["中3"];
                     var toua = $("#bettouli div a");
                     var zhonga = $("#betzhongli div a");
@@ -37,17 +56,41 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template'], function (PlayWay, Temp
                 }
             })
         },
-        bindEvent: function () {
-            mui("#betCodeDiv").on('tap', 'a', function () {
-                $("#betCodeDiv a").removeClass("mui-active");
-                $(this).addClass("mui-active");
-                _this.getOdds();
+        /**
+         * 绑定事件
+         */
+        bindButtonEvents: function () {
+            var _this = this;
+            /*==============================信用====================================*/
+            //清除下注项
+            mui("body").off('tap','a#del-bet1').on('tap', 'a#del-bet1', function () {
+                page.resetBet();
+            });
+            //投注
+            mui("body").off('tap','a#show-t').on("tap", 'a#show-t', function () {
+                _this.betOrder();
+            });
+
+            //取消下注
+            mui("body").off('tap','#cancel').on("tap", "#cancel", function () {
+                $("#dingdan").html('');
+                $("#dingdan").removeClass('mui-active');
+            });
+            //确认投注
+            mui("body").off('tap','#confirmOrder').on("tap", "#confirmOrder", function () {
+
+                _this.confirmOrder(_this.betForm);
+            });
+
+            mui("body").off('tap','a').on('tap', 'a', function () {
+                _this.bindTdInput(this);
             });
             //清除下注按钮点击事件
-            mui("body").on('tap', 'a#del-bet', function () {
+            mui("body").off('tap','a#del-bet').on('tap', 'a#del-bet', function () {
                 $(".screen-munber a").removeClass("mui-active");
             });
-        },//点击投注选项
+        },
+        //点击投注选项
         bindTdInput: function (thiz) {
             var flag = $(thiz).is('.not-selected');
             if (!flag) {
@@ -89,7 +132,7 @@ define(['site/hall/ssc/AllSsc', 'site/plugin/template'], function (PlayWay, Temp
                             code: code,
                             expect: expect,
                             betAmount: betAmount,
-                            betCode: $("#betCodeDiv a.mui-active").attr("data-type"),
+                            betCode: $("#sanzidingwei a.mui-active").attr("data-type"),
                             playCode: $(toua[i]).attr("data-play"),
                             betNum: $(toua[i]).attr("data-bet-num") + "" + $(zhonga[j]).attr("data-bet-num") + "" + $(weia[k]).attr("data-bet-num"),
                             odd: $(toua[i]).attr("data-odd"),

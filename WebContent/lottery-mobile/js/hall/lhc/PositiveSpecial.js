@@ -1,29 +1,24 @@
-define(['site/hall/lhc/PlayWay'], function (PlayWay) {
+define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
     return PlayWay.extend({
         init: function () {
             this._super();
         },
-        bindButtonEvents: function () {
-            this._super();
-            var _this = this;
-            mui(this.formSelector).on("tap", "a.mui-control-item[data-subCode]", function () {
-                _this.resetBet();
-                var oldBetTitle = $("a.mui-active[data-subCode]").text();
-                $("a.mui-control-item[data-subCode]").removeClass("mui-active");
-                $(this).addClass("mui-active");
-                _this.getOdds();
-                var betTitle = $("a.mui-active[data-subCode]").text();
-                $("td[data-name]").removeClass("mui-active");
-                $("td[data-name]").each(function () {
-                    var name = $(this).attr("data-name");
-                    name = name.replace(oldBetTitle, betTitle);
-                    $(this).attr("data-name", name);
-                });
-
-            })
+        showTable : function(){
+            var BetCode=$("#gfwfBetCode").val();
+            $("a[data-code='"+BetCode+"']").addClass("mui-active");
+            $("a[data-code='positiveSpecial']").addClass("mui-active");
+            $("div.s-menu.second").hide();
+            $("#zhengmate").show();
+            $(".x_3.gfwf-playName").text(BetCode);
+            $("span.x_1.gfwf-tit").text(BetCode);
+            $(".s-title.title1 span").text("正码特");
+            $(".s-title.title2 span").text(BetCode);
+            $("#toobarTitle").text("信用玩法-正码特");
         },
+
+
         getOdds: function () {
-            var url = root + '/' + this.type + '/' + this.code + '/' + this.betCode + 'Odd.html';
+            var url = root + '/' + this.type + '/' + this.code + '/positiveSpecialOdd.html';
             var subCode = $("a.mui-active[data-subCode]").attr("data-subCode");
             var betTitle = $("a.mui-active[data-subCode]").text();
             var _this = this;

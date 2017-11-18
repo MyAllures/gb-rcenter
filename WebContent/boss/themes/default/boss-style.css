@@ -194,7 +194,7 @@ nav .nav > li.active > a {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background: #4b5869;
+  background: #fff;
 }
 .nav.navbar-top-links > li > a:hover,
 .nav.navbar-top-links > li > a:focus {
@@ -870,7 +870,7 @@ ol.unstyled {
 .top{
 	width:100%;
 	/*height:50px;*/
-	line-height:40px;
+	line-height:57px;
 	color:#ffffff;
 	background:#3a4656;
     padding-right: 15px;
@@ -894,7 +894,7 @@ ol.unstyled {
 /*.nav-shadow{box-shadow:3px 3px 3px  rgba(0,0,0,0.2),-3px 3px 3px  rgba(0,0,0,0.2); }*/
 .top .show-info{
     cursor: pointer;
-    margin-top: 0px;
+    margin-top: 15px;
 }
 /*.top .show-info.open a{
     color: #666;
@@ -935,7 +935,7 @@ ol.unstyled {
 	width:120px;
 	padding:0;
 	position:absolute;
-	top:46px;
+	top:62px;
 	right:0;
 	z-index:1001;
 	background:#fff;
@@ -1688,7 +1688,7 @@ fieldset[disabled] .btn-white.active {
 @media (min-width: 768px) {
   #page-wrapper {
     position: inherit;
-    margin: 0 0 0 0px;
+    margin: 0 0 0 210px;
     min-height: 1200px;
 /*    box-shadow: 1px -5px 5px #ddd inset;*/
     border-left: 1px solid #dddddd;
@@ -1698,10 +1698,11 @@ fieldset[disabled] .btn-white.active {
     position: absolute;
     width: 210px;
   }
-  .navbar-nav > li > a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
+    .navbar-nav > li > a {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 }
 @media (max-width: 768px) {
   #page-wrapper {
@@ -2630,7 +2631,5 @@ div.scroll{
 .td-width-150{max-width: 150px;}
 .td-width-200{max-width: 200px;}
 
-#mainFrame .row {
-    margin-left: 0px;
-    margin-right: 0px;
-}
+/*下拉菜单滚动*/
+.d-menu-o-150{overflow-x: hidden;max-height: 150px;}

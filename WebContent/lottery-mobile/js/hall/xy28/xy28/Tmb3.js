@@ -1,38 +1,22 @@
-define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Template) {
+define(['site/hall/xy28/xy28/PlayWay-xywf', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         init: function () {
             this._super();
+            // this.showLastOpenCode();
         },
-        getRandomNumber: function (len) {
-            var list = [];
-            var sum = 0;
-            for (var i = 0; i < len; ++i) {
-                var value = Math.floor(Math.random() * 10);
-                list[i] = value;
-                sum += value;
-            }
-            var tmpStr = Template('template_lastOpenCode', {numArr: list, sum: sum});
-            return tmpStr;
-        }, /**
-         * 展示最近开奖记录
-         */
-        showRecentHistory: function (data) {
-            var openList = '';
-            $.each(data, function (index, value) {
-                var numArr = value.openCode ? value.openCode.split(",") : [];
-                var sum = 0;
-                $.each(numArr, function (ind, val) {
-                    sum += parseInt(val);
-                });
-                openList = openList + Template('template_recentHistory', {
-                        number: value.expect,
-                        list: numArr,
-                        len: numArr.length,
-                        sum: sum
-                    });
-            });
-            $("#recentHistory").html(openList);
+        showTable : function(){
+            var BetCode=$("#gfwfBetCode").val();
+            var BetCode1="特码包三";
+            $("a[data-code='"+BetCode+"']").addClass("mui-active");
+            $("a[data-code='hhs']").addClass("mui-active");
+            $(".x_3.gfwf-playName").text(BetCode1);
+            $("span.x_1.gfwf-tit").text(BetCode1);
+            $(".s-title.title1 span").text(BetCode1);
+            $(".s-title.title2 span").text(BetCode1);
+            $("#toobarTitle").text("信用玩法-"+BetCode1);
+            $("a[data-code='hhs'] span").text(BetCode1);
         },
+
         /**
          * 获取赔率
          */
@@ -58,23 +42,23 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
                 }
             })
         },
-        showLastOpenCode: function (openCodeArr) {
-            var tmpStr = '';
-            var sum = 0;
-            var colorBg = 'lottery-ball';
-
-            $.each(openCodeArr, function (index, value) {
-                sum += parseInt(value);
-
-                if (index < 2) {
-                    tmpStr += '<span  class="lottery-ball">' + value + '</span><span class="plus">+</span>';
-                } else {
-                    tmpStr += '<span  class="lottery-ball">' + value + '</span><span class="plus">=</span><span class="lottery-ball xy28-num" num="' + sum + '">' + sum + '</span>';
-                }
-
-            });
-            $("#lastOpenCode").html(tmpStr);
-        },
+        // showLastOpenCode: function () {
+        //     var tmpStr = '';
+        //     var sum = 0;
+        //     var colorBg = 'lottery-ball';
+        //
+        //     $.each(page.showRecentHistoryData, function (index, value) {
+        //         sum += parseInt(value);
+        //
+        //         if (index < 2) {
+        //             tmpStr += '<span  class="lottery-ball">' + value + '</span><span class="plus">+</span>';
+        //         } else {
+        //             tmpStr += '<span  class="lottery-ball">' + value + '</span><span class="plus">=</span><span class="lottery-ball xy28-num" num="' + sum + '">' + sum + '</span>';
+        //         }
+        //
+        //     });
+        //     $("#lastOpenCode").html(tmpStr);
+        // },
         /**
          * 验证是否符合下注条件
          * @returns {boolean}
