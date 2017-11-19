@@ -66,8 +66,10 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             });
             //确认投注
             mui("body").off('tap','#confirmOrder').on("tap", "#confirmOrder", function () {
-                // var betForm = _this.getBetOrder();
-                _this.confirmOrder(_this.betForm);
+                if(_this.checkJinE()){
+                    _this.confirmOrder(_this.betForm);
+                }
+
             });
 
             /*==================================官方============================================*/
@@ -190,6 +192,17 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
 
             });
 
+        },
+
+        checkJinE :function () {
+            var on=true;
+            $(".mui-input-numbox.jinge").each(function(index,value){
+                if($(this).val()=="" || value==undefined){
+                    mui.toast("请输入金额");
+                    on= false;
+                }
+            })
+            return on;
         },
 
 
@@ -607,6 +620,15 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 this.toast("请选择");
                 return;
             }
+
+            $(".mui-input-numbox.jinge").each(function(index,value){
+
+                console.log(value);
+                if(value=="" || value==undefined){
+                    this.toast("请输入金额");
+                    return;
+                }
+            })
 
             this.betForm = betForm;
             var _this = this;

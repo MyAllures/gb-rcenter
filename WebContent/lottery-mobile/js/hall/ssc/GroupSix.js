@@ -46,7 +46,9 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             //确认投注
             mui("body").off('tap','#confirmOrder').on("tap", "#confirmOrder", function () {
 
-                _this.confirmOrder(_this.betForm);
+                if(_this.checkJinE()){
+                    _this.confirmOrder(_this.betForm);
+                }
             });
 
             //清除下注按钮点击事件
