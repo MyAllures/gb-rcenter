@@ -11,6 +11,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
 
         showTable : function(){
             $("a[data-code='zusan']").addClass("mui-active");
+            $("a[data-code='group6']").addClass("mui-active");
             $("div.s-menu.second").hide();
             $("#zusan").show();
             $(".x_3.gfwf-playName").text("组六");
@@ -24,6 +25,8 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
 
         bindButtonEvents: function () {
             var _this=this;
+            mui("body").off('tap','a');
+
             mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn').on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn', function () {
                 _this.bindTdInput($(this));
             });
