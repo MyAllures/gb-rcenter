@@ -422,6 +422,7 @@ i, var { font-style: normal; }
 .new-formerly .gray-lump font {color: #0087d5;}
 .new-formerly .gray-lump .time-1 font {color: #46bb22;}
 
+.formerly-record-list.new-formerly.pks-record .mui-table-view-cell>a{height: 3.45rem;}
 
 .new-middle-content.middle-content{ top: 5.9rem;}
 .new-middle-content.pk10-middle-content.middle-content {top: 7.2rem;}
@@ -1485,7 +1486,8 @@ div.menu-popover {width: 120px;}
 .zd-wrap .zd-left .title{word-wrap: normal;}
 .zd-wrap .zd-right{display: inline-block; width: 50%; text-align: right; vertical-align: middle;}
 .zd-wrap .zd-right font{display: inline-block; vertical-align: text-bottom; line-height: 30px; margin-right: 5px;word-spacing: 0;}
-.zd-wrap .zd-right .mui-input-numbox{width: 42px; padding: 10px 5px; height: 30px; vertical-align: top; margin-bottom: 0; margin-right: 5px;font-size: 14px;}
+.zd-wrap .zd-right .mui-input-numbox{width: 42px; padding: 0 5px; height: 30px; vertical-align: top; margin-bottom: 0; font-size: 14px;}
 .zd-wrap .zd-right a.list-delete-btn{height: 14px; width: 14px; text-align: center; margin: 8px 0;}
 .zd-wrap .zd-right a.list-delete-btn span {font-size: 14px; font-weight: 100; line-height: 14px; vertical-align: top;}
 .zd-wrap:last-child{border-bottom: 0;}
+.layui-m-layercont .disabled-wrap{list-style: none;padding: 0;}
