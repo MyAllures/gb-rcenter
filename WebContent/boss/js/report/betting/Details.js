@@ -21,7 +21,7 @@ define(['common/BaseEditPage'], function (BaseListPage) {
             var betId=$("#betId").val();
             var siteId=$("#siteId").val();
             window.top.topPage.ajax({
-                url: root + "/report/betting/getGameDetailLink.html?betId="+betId+"&siteId="+siteId,
+                url: root + "/report/betting/getGameDetailLink.html?search.betId="+betId+"&siteId="+siteId,
                 type: 'GET',
                 success: function (data) {
                     if(data){
