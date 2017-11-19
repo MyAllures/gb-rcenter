@@ -73,8 +73,8 @@ function activityType(obj, options) {
     $(obj).addClass("active");
     var pageNumber = 1;
     getPromoInfo(type, pageNumber);
-    mui('#pullrefresh').pullRefresh().refresh(true);
     $(obj).unlock();
+    //mui('#pullrefresh').pullRefresh().refresh(true); //切换类型不能上拉
 }
 
 function getPromoInfo(type, pageNumber) {
