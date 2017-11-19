@@ -15,6 +15,7 @@ define(['common/BaseEditPage', 'Util', 'tooltips'], function (BaseEditPage) {
         init: function () {
             this.formSelector = "form[name=transferForm]";
             this._super(this.formSelector);
+            Util.ToolTip.init();
         },
         /**
          * 当前对象事件初始化函数
