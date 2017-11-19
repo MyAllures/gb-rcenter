@@ -30,6 +30,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             //数字盘
             $("div.s-menu.second").hide();
             $("#shuzipan").show();
+            $("a[data-code='ssc_shuzipan']").addClass("mui-active");
             $("a[data-code='szp']").addClass("mui-active");
             $(".x_3.gfwf-playName").text("数字盘");
             $("span.x_1.gfwf-tit").text("数字盘");

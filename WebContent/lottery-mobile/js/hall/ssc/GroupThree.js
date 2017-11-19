@@ -51,7 +51,9 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             //确认投注
             mui("body").off('tap','#confirmOrder').on("tap", "#confirmOrder", function () {
 
-                _this.confirmOrder(_this.betForm);
+                if(_this.checkJinE()){
+                    _this.confirmOrder(_this.betForm);
+                }
             });
 
             //清除下注按钮点击事件
@@ -59,7 +61,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 $(".screen-munber a").removeClass("mui-active");
             });
 
-            mui(this.formSelector).on("tap", "a.mui-control-item[data-type]", function () {
+            mui(this.formSelector).off("tap", "a.mui-control-item[data-type]").on("tap", "a.mui-control-item[data-type]", function () {
                 var type = $(this).attr("data-type");
                 var betTitle = $(this).text();
                 $("#bet-title").html(betTitle + "@<font id='pl' class='col-red'></font> (请选择5个及以上号码)");
@@ -74,7 +76,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 });
                 _this.getOdds();
             })
-            mui("body").on('tap', 'li#betli div a', function () {
+            mui("body").off('tap', 'li#betli div a').on('tap', 'li#betli div a', function () {
                 var seltd = Number($("li#betli div a.mui-active").length);
                 if (seltd > 4) {
                     $("#quantity").text(1);

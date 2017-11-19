@@ -38,9 +38,9 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
                     toua.attr("data-bet-code", tdata.betCode);
                     zhonga.attr("data-bet-code", tdata.betCode);
                     weia.attr("data-bet-code", tdata.betCode);
-                    toua.attr("data-name", betname.substring(0, betname.length - 2) + "位");
-                    zhonga.attr("data-name", betname.substring(1, betname.length - 1) + "位");
-                    weia.attr("data-name", betname.substring(2, betname.length) + "位");
+                    toua.attr("data-name", betname.substring(0, 1) + "位");
+                    zhonga.attr("data-name", betname.substring(1, 2) + "位");
+                    weia.attr("data-name", betname.substring(2, 3) + "位");
                 }
             })
         },
@@ -67,7 +67,9 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
             //确认投注
             mui("body").off('tap','#confirmOrder').on("tap", "#confirmOrder", function () {
 
-                _this.confirmOrder(_this.betForm);
+                if(_this.checkJinE()){
+                    _this.confirmOrder(_this.betForm);
+                }
             });
 
             mui("body").off('tap','a').on('tap', 'a', function () {
