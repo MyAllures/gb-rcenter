@@ -615,10 +615,10 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             this.placeOrder(betForm);
             $("#dingdan").addClass('mui-active');
             //重新操作表单
-            mui("body").off('tap','a.mui-pull-right.list-delete-btn').on('tap', 'a.mui-pull-right.list-delete-btn', function () {
+            mui("body").off('tap','a.mui-btn.mui-btn-red').on('tap', 'a.mui-btn.mui-btn-red', function () {
                 if($("div.mui-input-row.zd-wrap").size()>1){
                     $("#zhushu_new").text($("#zhushu_new").text()-1);
-                    $("#zongjine_new").text($("#zongjine_new").text()-$(this).prev().val());
+                    $("#zongjine_new").text($("#zongjine_new").text()-$(this).parents("li.mui-table-view-cell").find("input").val());
                     var len=$(this).parent().parent().index()-1;
                     _this.betForm.betOrders.splice(len,1);
                     $(this).parent().parent().remove();
