@@ -54,7 +54,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 $(".screen-munber a").removeClass("mui-active");
             });
 
-            mui(this.formSelector).on("tap", "a.mui-control-item[data-type]", function () {
+            mui(this.formSelector).off("tap", "a.mui-control-item[data-type]").on("tap", "a.mui-control-item[data-type]", function () {
                 var type = $(this).attr("data-type");
                 var betTitle = $(this).text();
                 $("#bet-title").html(betTitle + "@<font id='pl' class='col-red'></font> (请选择4~8个号码)");
@@ -69,7 +69,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 });
                 _this.getOdds();
             })
-            mui("body").on('tap', 'li#betli div a', function () {
+            mui("body").off('tap', 'li#betli div a').on('tap', 'li#betli div a', function () {
                 var seltd = Number($("li#betli div a.mui-active").length);
                 if (seltd >= 4 && seltd < 9) {
                     $("#quantity").text(1);
