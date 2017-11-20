@@ -24,10 +24,13 @@ define(['common/BaseEditPage'], function (BaseListPage) {
                 url: root + "/report/betting/getGameDetailLink.html?search.betId="+betId+"&siteId="+siteId,
                 type: 'GET',
                 success: function (data) {
-                    if(data){
-                        var data = eval('('+data+')')
-                        window.open(data.link);
+                    var datas = eval('('+data+')')
+                    if(datas.state){
+                        window.open(datas.msg);
                         $(e.currentTarget).unlock();
+                    }else{
+                        window.top.topPage.showWarningMessage(datas.msg);
+                        return;
                     }
                 },
             })

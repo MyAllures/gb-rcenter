@@ -11,6 +11,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
         showTable : function(){
             $("div.s-menu.second").hide();
             $("#shuzipan").show();
+            $("a[data-code='ssc_longhu']").addClass("mui-active");
             $("a[data-code='szp']").addClass("mui-active");
             $(".x_3.gfwf-playName").text("龙虎");
             $("span.x_1.gfwf-tit").text("龙虎");
