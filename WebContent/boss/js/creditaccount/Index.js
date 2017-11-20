@@ -33,6 +33,9 @@ define(['common/BaseListPage', 'bootstrapswitch', 'jsrender'], function (BaseLis
                             var index = $(_target).attr("tt");
                             var id = $(_target).attr("creditAccountId");
                             var msg = "关闭后将无法用此账号收款,确认关闭吗?";
+                            if (state){
+                                msg = "确定要开启该收款账号?"
+                            }
                             if (confirm(msg)!=true){
                                 return false;
                             }
