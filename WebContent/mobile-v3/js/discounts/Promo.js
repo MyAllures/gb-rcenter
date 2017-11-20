@@ -16,7 +16,7 @@ $(function () {
 });
 
 
-/*下来请求数据*/
+/*上拉请求数据*/
 function pullfresh() {
     setTimeout(function () {
         mui('#pullrefresh').pullRefresh().endPullupToRefresh(false);
@@ -74,7 +74,7 @@ function activityType(obj, options) {
     var pageNumber = 1;
     getPromoInfo(type, pageNumber);
     $(obj).unlock();
-    //mui('#pullrefresh').pullRefresh().refresh(true); //切换类型不能上拉
+    mui('#pullrefresh').pullRefresh().refresh(true); //切换类型不能上拉
 }
 
 function getPromoInfo(type, pageNumber) {

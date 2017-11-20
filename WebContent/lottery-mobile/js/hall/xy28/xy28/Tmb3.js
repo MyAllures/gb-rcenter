@@ -2,7 +2,6 @@ define(['site/hall/xy28/xy28/PlayWay-xywf', 'site/plugin/template'], function (P
     return PlayWay.extend({
         init: function () {
             this._super();
-            // this.showLastOpenCode();
         },
         showTable : function(){
             var BetCode=$("#gfwfBetCode").val();
@@ -42,23 +41,7 @@ define(['site/hall/xy28/xy28/PlayWay-xywf', 'site/plugin/template'], function (P
                 }
             })
         },
-        // showLastOpenCode: function () {
-        //     var tmpStr = '';
-        //     var sum = 0;
-        //     var colorBg = 'lottery-ball';
-        //
-        //     $.each(page.showRecentHistoryData, function (index, value) {
-        //         sum += parseInt(value);
-        //
-        //         if (index < 2) {
-        //             tmpStr += '<span  class="lottery-ball">' + value + '</span><span class="plus">+</span>';
-        //         } else {
-        //             tmpStr += '<span  class="lottery-ball">' + value + '</span><span class="plus">=</span><span class="lottery-ball xy28-num" num="' + sum + '">' + sum + '</span>';
-        //         }
-        //
-        //     });
-        //     $("#lastOpenCode").html(tmpStr);
-        // },
+
         /**
          * 验证是否符合下注条件
          * @returns {boolean}

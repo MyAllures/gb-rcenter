@@ -25,7 +25,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
 
         bindButtonEvents: function () {
             var _this=this;
-            mui("body").off('tap','a');
+            // mui("body").off('tap','a');
 
             mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn').on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn', function () {
                 _this.bindTdInput($(this));
