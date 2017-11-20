@@ -35,12 +35,30 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
             $("#recentHistory").html(openList);
         },
 
+        // showLastOpenCode: function (openCodeArr) {
+        //     var sum = 0;
+        //     $.each(openCodeArr, function(index, value) {
+        //         sum += parseInt(value);
+        //     });
+        //     var tmpStr = Template('template_lastOpenCode', {numArr:openCodeArr,sum:sum});
+        //     $("#lastOpenCode").html(tmpStr);
+        // },
+
         showLastOpenCode: function (openCodeArr) {
+            var tmpStr = '';
             var sum = 0;
-            $.each(openCodeArr, function(index, value) {
+            var colorBg = 'lottery-ball';
+
+            $.each(openCodeArr, function (index, value) {
                 sum += parseInt(value);
+
+                if (index < 2) {
+                    tmpStr += '<span  class="lottery-ball">' + value + '</span><span class="plus">+</span>';
+                } else {
+                    tmpStr += '<span  class="lottery-ball">' + value + '</span><span class="plus">=</span><span class="lottery-ball xy28-num" num="' + sum + '">' + sum + '</span>';
+                }
+
             });
-            var tmpStr = Template('template_lastOpenCode', {numArr:openCodeArr,sum:sum});
             $("#lastOpenCode").html(tmpStr);
         },
 

@@ -12,8 +12,6 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 var dataCode = $("a.selected-btn.main.mui-active").attr("data-code");
                 var jspName = $("a.selected-btn.main.mui-active").attr("data-jsp-name");
 
-                // $('div.gfwf-bg').slideUp();
-                // $('div.selected-wrap').slideUp();
                 _this.closeTop();
                 _this.getBetTable(dataCode, jspName);
                 _this.resetBet();
