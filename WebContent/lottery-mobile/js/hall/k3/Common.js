@@ -47,14 +47,19 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
             var html = Template('template_lastOpenCode', {numArr: numArr, len: numArr.length});
             var sum = parseInt(numArr[0]) + parseInt(numArr[1]) + parseInt(numArr[2]);
             html += "<i class='lottery-block'>" + sum + "</i>";
-            if (sum % 2 == 0) {
+            if(parseInt(numArr[0]) == parseInt(numArr[1]) && parseInt(numArr[0]) == parseInt(numArr[2]) && parseInt(numArr[1]) == parseInt(numArr[2])){
+                html += "<i class='lottery-block'>通吃</i>";
+            }else if (sum % 2 == 0) {
                 html += "<i class='lottery-block'>双</i>";
-            } else {
+            } else if(sum % 2 != 0){
                 html += "<i class='lottery-block'>单</i>";
             }
-            if (sum > 10) {
+
+            if(parseInt(numArr[0]) == parseInt(numArr[1]) && parseInt(numArr[0]) == parseInt(numArr[2]) && parseInt(numArr[1]) == parseInt(numArr[2])){
+                html += "<i class='lottery-block'>通吃</i>";
+            }else if (sum > 10) {
                 html += "<i class='lottery-block'>大</i>";
-            } else {
+            } else if(sum <= 10){
                 html += "<i class='lottery-block'>小</i>";
             }
             $("#lastOpenCode").html(html);
@@ -67,8 +72,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 thisClassList.toggle('mui-active');
                 var dataCode = $("a.selected-btn.main.mui-active").attr("data-code");
                 var jspName = $("a.selected-btn.main.mui-active").attr("data-jsp-name");
-                // $('div.gfwf-bg').hide();
-                // $('div.selected-wrap').hide();
+
                 _this.closeTop();
                 _this.getBetTable(dataCode, jspName);
                 _this.resetBet();
