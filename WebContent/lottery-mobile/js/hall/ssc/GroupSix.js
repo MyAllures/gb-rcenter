@@ -27,6 +27,8 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
         },
 
 
+
+
         bindButtonEvents: function () {
             var _this=this;
             //清除下注项
