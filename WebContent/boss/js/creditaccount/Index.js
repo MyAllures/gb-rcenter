@@ -32,7 +32,7 @@ define(['common/BaseListPage', 'bootstrapswitch', 'jsrender'], function (BaseLis
                             var _target = e.currentTarget;
                             var index = $(_target).attr("tt");
                             var id = $(_target).attr("creditAccountId");
-                            var msg = "请确认您的操作！";
+                            var msg = "关闭后将无法用此账号收款,确认关闭吗?";
                             if (confirm(msg)!=true){
                                 return false;
                             }
