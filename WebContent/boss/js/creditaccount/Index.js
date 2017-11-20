@@ -29,6 +29,7 @@ define(['common/BaseListPage', 'bootstrapswitch', 'jsrender'], function (BaseLis
                         onText: window.top.message.content['floatPic.display.on'],
                         offText: window.top.message.content['floatPic.display.off'],
                         onSwitchChange: function (e, state) {
+                            var $this = $(this);
                             var _target = e.currentTarget;
                             var index = $(_target).attr("tt");
                             var id = $(_target).attr("creditAccountId");
@@ -36,30 +37,41 @@ define(['common/BaseListPage', 'bootstrapswitch', 'jsrender'], function (BaseLis
                             if (state){
                                 msg = "确定要开启该收款账号?"
                             }
-                            if (confirm(msg)!=true){
-                                return false;
-                            }
-
-                            window.top.topPage.ajax({
-                                url: root + '/creditAccount/changeStatus.html',
-                                dataType: "json",
-                                data: {"result.id": id, "state": state},
-                                success: function (data) {
-                                    if(state) {
-                                        $("#status" + index).removeClass("label-danger");
-                                        $("#status" + index).addClass("label-success");
-                                        $("#status" + index).text('使用中');
-                                    } else {
-                                        $("#status" + index).removeClass("label-success");
-                                        $("#status" + index).addClass("label-danger");
-                                        $("#status" + index).text('已停用');
-                                    }
-
+                            $this.bootstrapSwitch('indeterminate',true);
+                            window.top.topPage.showConfirmMessage(msg,function (bol) {
+                                if(bol){
+                                    _this.changeStatus(id,state);
+                                    $this.bootstrapSwitch('indeterminate',false);
+                                }else{
+                                    $this.bootstrapSwitch('indeterminate',false);
+                                    $this.bootstrapSwitch('state', !state,true);
                                 }
                             });
+
+
                             return true;
                         }
                     });
+        },
+
+        changeStatus:function (id,state) {
+            window.top.topPage.ajax({
+                url: root + '/creditAccount/changeStatus.html',
+                dataType: "json",
+                data: {"result.id": id, "state": state},
+                success: function (data) {
+                    if(state) {
+                        $("#status" + index).removeClass("label-danger");
+                        $("#status" + index).addClass("label-success");
+                        $("#status" + index).text('使用中');
+                    } else {
+                        $("#status" + index).removeClass("label-success");
+                        $("#status" + index).addClass("label-danger");
+                        $("#status" + index).text('已停用');
+                    }
+
+                }
+            });
         },
 
         bindEvent: function () {
