@@ -1207,7 +1207,6 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .middle-content.middle-content-bat{bottom: 2.75rem; }
 .bar-bottom-l-h { line-height: 2.75rem; height: 2.75rem; }
 
-
 /*右侧菜单栏调整*/
 .mui-off-canvas-right{width:12rem;padding-top:10px;}
 .aside-right-menu{margin-top:10px;}
