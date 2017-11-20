@@ -12,7 +12,6 @@ define(['site/common/BasePage'], function (BasePage) {
             this.initTable();
             this.initTypeTop();
             this.initWindow();
-
         },
         bindButtonEvents:function() {
 
