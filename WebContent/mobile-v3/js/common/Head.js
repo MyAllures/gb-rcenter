@@ -5,7 +5,6 @@ var RECOVER_TIME_INTERVAL = 10;
 
 $(function () {
     headInfo();
-    muiInit({});
     /*右侧显示*/
     mui('.mui-bar-nav').on('tap', '.login-info', function () {
         if (document.activeElement) {
