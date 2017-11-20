@@ -84,7 +84,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 }
             });
 
-            mui("body").off('tap','a').on('tap', 'a', function () {
+            mui("li.screen-munber").off('tap','a').on('tap', 'a', function () {
                 _this.bindTdInput(this);
             });
             //清除下注按钮点击事件
