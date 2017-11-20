@@ -11,6 +11,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
 
         showTable : function(){
             $("a[data-code='zusan']").addClass("mui-active");
+            $("a[data-code='group6']").addClass("mui-active");
             $("div.s-menu.second").hide();
             $("#zusan").show();
             $(".x_3.gfwf-playName").text("组六");
@@ -24,6 +25,8 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
 
         bindButtonEvents: function () {
             var _this=this;
+            mui("body").off('tap','a');
+
             mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn').on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn', function () {
                 _this.bindTdInput($(this));
             });
@@ -44,7 +47,9 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             //确认投注
             mui("body").off('tap','#confirmOrder').on("tap", "#confirmOrder", function () {
 
-                _this.confirmOrder(_this.betForm);
+                if(_this.checkJinE()){
+                    _this.confirmOrder(_this.betForm);
+                }
             });
 
             //清除下注按钮点击事件
@@ -52,7 +57,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 $(".screen-munber a").removeClass("mui-active");
             });
 
-            mui(this.formSelector).on("tap", "a.mui-control-item[data-type]", function () {
+            mui(this.formSelector).off("tap", "a.mui-control-item[data-type]").on("tap", "a.mui-control-item[data-type]", function () {
                 var type = $(this).attr("data-type");
                 var betTitle = $(this).text();
                 $("#bet-title").html(betTitle + "@<font id='pl' class='col-red'></font> (请选择4~8个号码)");
@@ -67,7 +72,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 });
                 _this.getOdds();
             })
-            mui("body").on('tap', 'li#betli div a', function () {
+            mui("body").off('tap', 'li#betli div a').on('tap', 'li#betli div a', function () {
                 var seltd = Number($("li#betli div a.mui-active").length);
                 if (seltd >= 4 && seltd < 9) {
                     $("#quantity").text(1);

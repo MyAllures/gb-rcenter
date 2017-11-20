@@ -21,13 +21,16 @@ define(['common/BaseEditPage'], function (BaseListPage) {
             var betId=$("#betId").val();
             var siteId=$("#siteId").val();
             window.top.topPage.ajax({
-                url: root + "/report/gameTransaction/getGameDetailLink.html?betId="+betId+"&siteId="+siteId,
+                url: root + "/report/gameTransaction/getGameDetailLink.html?search.betId="+betId+"&siteId="+siteId,
                 type: 'GET',
                 success: function (data) {
-                    if(data){
-                        var data = eval('('+data+')')
-                        window.open(data.link);
+                    var datas = eval('('+data+')')
+                    if(datas.state){
+                        window.open(datas.msg);
                         $(e.currentTarget).unlock();
+                    }else{
+                        window.top.topPage.showWarningMessage(datas.msg);
+                        return;
                     }
                 },
             })

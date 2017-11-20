@@ -123,6 +123,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             $("#quantity").text($("div.bet-table-list td.mui-active").length);
             $("input#inputMoney").val("");
             $("input#inputMoney").blur();
+            $("font#pl").text("");
 
             //官方
             $("i.mui-control-item").removeClass("mui-active");
