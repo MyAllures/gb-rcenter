@@ -623,7 +623,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
 
             $(".mui-input-numbox.jinge").each(function(index,value){
 
-                console.log(value);
                 if(value=="" || value==undefined){
                     this.toast("请输入金额");
                     return;
