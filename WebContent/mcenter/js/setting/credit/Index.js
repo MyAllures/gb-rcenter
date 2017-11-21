@@ -18,6 +18,11 @@ define(['common/BaseListPage'], function (BaseListPage) {
          */
         bindEvent : function() {
             this._super();
+            //双击图片查看大图
+            $(this.formSelector).on('click', 'tbody td img', function (e, opt) {
+                e.imgs = [$(this).data('src')];
+                window.top.topPage.imageSilde(e,opt);
+            });
         },
 
         /**
