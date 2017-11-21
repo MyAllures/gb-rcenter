@@ -57,6 +57,7 @@ define(['site/hall/xy28/xy28/PlayWay-xywf', 'site/plugin/template'], function (P
             });
             if (betNumArray.length != 3) {
                 this.toast("只能选择" + 3 + "个号码!");
+                // $("#quantity").text(0);
                 return false;
             }
             return true;
@@ -116,6 +117,8 @@ define(['site/hall/xy28/xy28/PlayWay-xywf', 'site/plugin/template'], function (P
             }
             if ($("div.bet-table-list .mui-active").length == 3) {
                 $("#quantity").text(1);
+            }else{
+                $("#quantity").text(0);
             }
         }
     });
