@@ -60,8 +60,10 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
             var max = $target.find("input[name=max]").val();
 
             var payAmount = $(this.formSelector + " input[name='result.payAmount']").val();
-            var msg = "请输入" + min + "-" + max + "之间的整数";
-            this.extendValidateMessage({"result.payAmount": {remote: msg}});
+            if(min && max){
+                var msg = "请输入" + min + "-" + max + "之间的整数";
+                this.extendValidateMessage({"result.payAmount": {remote: msg}});
+            }
         },
         /**
          * 快选金额
