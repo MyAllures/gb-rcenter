@@ -85,10 +85,14 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             $(".yzmSelect").click(function(){
                 var obj = $(this).children().children();
                 var src = obj.attr("src");
-                var yzmValue = obj.attr("tt");
-                $("#yzm").attr("src",src);
-                $("#yzmValue").val(yzmValue);
+                var captchaStyle = obj.attr("tt");
+                $("#captchaStyleImg").attr("src",src);
+                $("#captchaStyle").val(captchaStyle);
             })
+            this.unInitSwitch($("[name='captchaGimpy']")).bootstrapSwitch({
+                onText: window.top.message.content['floatPic.display.on'],
+                offText: window.top.message.content['floatPic.display.off'],
+            });
             this.unInitSwitch($("[name='my-checkbox']"))
                 .bootstrapSwitch(
                     {
