@@ -54,6 +54,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          */
         bindButtonEvents: function () {
             var _this = this;
+
             //确认清空选项
             mui("body").off('tap','button#confirmClearPop').on("tap", 'button#confirmClearPop', function () {
                 _this.closeClearPopup(true);
@@ -65,22 +66,17 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             /*==============================官方====================================*/
             //头部选择
             mui("div.s-menu").off('tap','a').on('tap', 'a', function () {
+                mui('.mui-scroll-wrapper.middle-content').scroll().scrollTo(0,0,100);
                 _this.checkSubordinate($(this).attr("data-code"), this.classList);
                 return;
             });
 
             //直选复式
             mui("body").off('tap','.gfwf-playName').on('tap', '.gfwf-playName', function () {
-                 // $('div.mui-scroll-wrapper.ssc-method-list.gfwf-list.gfwf-wrap.new-gfwf-qh').addClass("Fixed");
-                 // $('div.gfwf-bg').addClass('show');
+
                 mui(".gfwf-wrap")[0].classList.toggle('Fixed');
                 mui(".gfwf-bg")[0].classList.toggle('show');
             });
-
-            // mui("body").on('tap', '.gfwf-bg', function () {
-            //     $('div.gfwf-bg').hide();
-            //     $('div.selected-wrap').hide();
-            // });
 
             mui(".gfwf-bg")[0].addEventListener('tap', function() {
                 _this.closeTop();

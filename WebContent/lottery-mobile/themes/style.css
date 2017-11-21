@@ -47,7 +47,7 @@ i, var { font-style: normal; }
 .col-cerise{color: #f00404;}
 /*自定义弹窗*/
 .mui-popup { width: 80%; max-width: 700px; }
-.mui-popup.mui-popup-in { width: 86%; }
+.mui-popup.mui-popup-in { width: 86%; z-index: 1000;}
 .mui-popup .mui-popup-title { background: #df3a29; margin: -15px -15px 15px -15px; padding: 0.5rem 0; color: #fff; }
 .mui-popup .recharge-dialog { }
 .mui-popup .recharge-dialog .dialog-info-1 { text-align: left; padding: .25rem 0; font-size: .6rem; }
@@ -1206,7 +1206,6 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .middle-content.app-middle-content{bottom: 0;}
 .middle-content.middle-content-bat{bottom: 2.75rem; }
 .bar-bottom-l-h { line-height: 2.75rem; height: 2.75rem; }
-
 
 /*右侧菜单栏调整*/
 .mui-off-canvas-right{width:12rem;padding-top:10px;}
