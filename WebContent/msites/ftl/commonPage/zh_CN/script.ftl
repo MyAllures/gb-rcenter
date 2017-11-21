@@ -36,7 +36,6 @@
 
 <script>
     var curTheme = '${curTheme}';
-    var root = '${root}';
     var resComRoot = '${resComRoot}';
     var resRoot = '${resRoot}';
     var imgRoot = '${imgRoot}';
@@ -47,8 +46,9 @@
 <script src="${resComRoot}/js/curl/curl.js"></script>
 <script type="text/javascript" language="JavaScript" src="${resComRoot}/js/gamebox/common/urlencode.js"></script>
 <script type="text/javascript">
-    curl(['site/index/Comet'], function (Comet) {
+    curl(['gb/home/TopPage','site/index/Comet'], function (TopPage,Comet) {
         comet = new Comet();
+        topPage = new TopPage();
     });
 </script>
 
@@ -1294,6 +1294,9 @@
                         sessionStorage.is_login = true;
                     }
                     isOpenCaptcha = false;
+                    if(typeof(comet)=="undefined"){
+                        return;
+                    }
                     if(!comet.isConnect){
                         comet.connection();
                     }
