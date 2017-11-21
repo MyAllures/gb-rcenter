@@ -156,7 +156,7 @@ define([], function() {
             userParam[this.SUBSCRIBE_TYPE] = subscribeTypes;
             userParam[this.CONNECTIONID_KEY] = this.cid;
             var _this = this;
-            window.top.topPage.ajax({
+            $.ajax({
                 type : 'GET',
                 url : _this.url,
                 cache: false,
@@ -189,7 +189,7 @@ define([], function() {
          */
         connection : function(caller) {
             var _this = this;
-            window.top.topPage.ajax({
+            $.ajax({
                 type : 'POST',
                 url : _this.url,
                 cache: false,
@@ -233,7 +233,7 @@ define([], function() {
             var param = {};
             param[this.CONNECTIONID_KEY] = cid;
             var _this = this;
-            window.top.topPage.ajax({
+            $.ajax({
                 type : 'GET',
                 url : _this.url,
                 cache: false,
@@ -307,7 +307,7 @@ define([], function() {
             param[this.CONNECTIONID_KEY] = this.cid;
             this.isConnect = false;
             var _this = this;
-            window.top.topPage.ajax({
+            $.ajax({
                 type : 'GET',
                 url : _this.url,
                 data : param,

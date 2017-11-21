@@ -31,8 +31,7 @@
 <script src="${resComRoot}/js/gamebox/common/jquery.validate.extend.msites.js"></script>
 <script src="${resComRoot}/js/bootstrap-daterangepicker/moment.js"></script><#--通用脚本-->
 <link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/hb/css/pc.css">
-<#--流量统计代码-->
-<#if data.siteStatistics?has_content>${data.siteStatistics}</#if>
+
 <script>
     /*全局变量；是否显示登录验证码*/
     var isOpenCaptcha = false;
@@ -1267,6 +1266,9 @@
                         sessionStorage.is_login = true;
                     }
                     isOpenCaptcha = false;
+                    if(!comet.isConnect){
+                        comet.connection();
+                    }
                 }else{
                     var dataPage = window.location.pathname.split("/")[3];
                     if(dataPage=='loading.html'){
@@ -1711,3 +1713,6 @@
     }
 
 </script>
+
+<#--流量统计代码-->
+<#if data.siteStatistics?has_content>${data.siteStatistics}</#if>
