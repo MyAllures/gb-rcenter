@@ -1284,6 +1284,9 @@
                         sessionStorage.is_login = true;
                     }
                     isOpenCaptcha = false;
+                    if(!comet.isConnect){
+                        comet.connection();
+                    }
                 }else{
                     var dataPage = window.location.pathname.split("/")[3];
                     if(dataPage=='loading.html'){
