@@ -41,8 +41,10 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
                                 msg="关闭后该站点将转为混合站,确认关闭吗？"
                             }else if(type=="auto_pay"){
                                 msg="关闭后该网站将失去免转功能，确认关闭吗？"
-                            }else if(type=="is_bitcoin"){
-                                msg="关闭后该网站将失去比特币取款功能，确认关闭吗？"
+                            }else if(type=="is_bitcoin") {
+                                msg = "关闭后该网站将失去比特币取款功能，确认关闭吗？"
+                            }else if(type=="is_enable"){
+                                msg="关闭后该网站将失去导入玩家功能，确认关闭吗？"
                             }else {
                                 msg="关闭后该网站将失去现金取款功能，确认关闭吗？"
                             }

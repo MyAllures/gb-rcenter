@@ -22,6 +22,13 @@ define(['common/BaseListPage'], function (BaseListPage) {
         validateForm: function (e) {
             var $form = $(window.top.topPage.getCurrentForm(e));
             return !$form.valid || $form.valid();
+        },
+        /*
+        * 排序
+        * */
+        orderSiteApi: function (e) {
+            $("[name='order']").trigger('click');
+            $(e.currentTarget).unlock();
         }
     })
 });

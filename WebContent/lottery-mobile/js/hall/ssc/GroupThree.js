@@ -33,7 +33,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
          */
         bindButtonEvents: function () {
             var _this = this;
-            /*==============================信用====================================*/
+            // mui("body").off('tap','a');
             //清除下注项
             mui("body").off('tap','a#del-bet1').on('tap', 'a#del-bet1', function () {
                 page.resetBet();

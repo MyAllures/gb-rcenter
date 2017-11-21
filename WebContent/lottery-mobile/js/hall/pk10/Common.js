@@ -12,8 +12,6 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 var dataCode = $("a.selected-btn.main.mui-active").attr("data-code");
                 var jspName = $("a.selected-btn.main.mui-active").attr("data-jsp-name");
 
-                // $('div.gfwf-bg').slideUp();
-                // $('div.selected-wrap').slideUp();
                 _this.closeTop();
                 _this.getBetTable(dataCode, jspName);
                 _this.resetBet();
@@ -42,15 +40,19 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
             html+='<span class="inline-list-2">';
             var sum=parseInt(numArr[0])+parseInt(numArr[1]);
             html+='<i class="lottery-block">'+sum+'</i>';
-            if(sum%2==0){
-                html+='<i class="lottery-block">双</i>';
+            if(this.code == 'bjpk10' && sum == 11){
+                html+='<i class="lottery-block">和</i><i class="lottery-block">和</i>';
             }else{
-                html+='<i class="lottery-block">单</i>';
-            }
-            if(sum>=11){
-                html+='<i class="lottery-block">大</i>';
-            }else{
-                html+='<i class="lottery-block">小</i>';
+                if(sum%2==0){
+                    html+='<i class="lottery-block">双</i>';
+                }else{
+                    html+='<i class="lottery-block">单</i>';
+                }
+                if(sum>=11){
+                    html+='<i class="lottery-block">大</i>';
+                }else{
+                    html+='<i class="lottery-block">小</i>';
+                }
             }
             if(parseInt(numArr[0])>parseInt(numArr[9])){
                 html+='<i class="lottery-block">龙</i>';

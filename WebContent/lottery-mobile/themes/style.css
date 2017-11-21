@@ -47,7 +47,7 @@ i, var { font-style: normal; }
 .col-cerise{color: #f00404;}
 /*自定义弹窗*/
 .mui-popup { width: 80%; max-width: 700px; }
-.mui-popup.mui-popup-in { width: 86%; }
+.mui-popup.mui-popup-in { width: 86%; z-index: 1000;}
 .mui-popup .mui-popup-title { background: #df3a29; margin: -15px -15px 15px -15px; padding: 0.5rem 0; color: #fff; }
 .mui-popup .recharge-dialog { }
 .mui-popup .recharge-dialog .dialog-info-1 { text-align: left; padding: .25rem 0; font-size: .6rem; }
@@ -104,6 +104,8 @@ i, var { font-style: normal; }
     background: rgba(0,0,0,.7);
 }
 */
+
+.mui-popup-backdrop.mui-active{height: 3000px;top:-1000px}
 .d-none{display: none;}
 .d-none.mui-active{ display: block; }
 
@@ -416,7 +418,7 @@ i, var { font-style: normal; }
 .formerly-record-list .mui-table-view-cell .time-1 font { color: #67ce3a; }
 .formerly-record-list>.mui-table-view>.mui-table-view-cell>.mui-collapse-content:nth-child(odd) { background: #f7f7f7; }
 
-.formerly-record-list.new-formerly{position: fixed;width: 100%;top: 2.2rem;z-index: 13;border-bottom: 1px solid #ddd;}
+.formerly-record-list.new-formerly{position: absolute;width: 100%;top: 2.2rem;z-index: 13;border-bottom: 1px solid #ddd;}
 .formerly-record-list.new-formerly .mui-table-view{background: linear-gradient(to bottom, rgb(255, 255, 255) 1%,rgb(234, 234, 234) 100%);}
 .new-formerly .gray-lump{height: 1.5rem; line-height: 1.5rem; padding:0 0.5rem;background: linear-gradient(to bottom, #ffffff 0%,#ffffff 50%,#ffffff 51%,#f0f0f0 100%);}
 .new-formerly .gray-lump font {color: #0087d5;}
@@ -517,7 +519,7 @@ i, var { font-style: normal; }
 .tab-td-5-20 table tr td{width: 20%;}
 /*投注清单*/
 .ber-order-list .mui-input-row label{width: auto; height: 40px; display: inline-block; line-height: 40px; padding: 0 0 0 15px;}
-.layui-m-layercont { max-height: 70vh; overflow: scroll; margin-left: -15px; margin-right: -15px; }
+.layui-m-layercont {max-height: calc(100vh - 4rem - 4rem); overflow: scroll; margin-left: -15px; margin-right: -15px; }
 .layui-m-layercont p { color: #3d4145; }
 .order-list-input{width: 4rem; background: #efeff4; height: 35px; margin: 2px 5px; border: 1px solid #bbb; border-radius: 4px;}
 .order-list-input input{padding: 0 5px; height: 33px; line-height: 33px; text-align: center;}
@@ -991,6 +993,7 @@ a.popup-screen-btn:visited{
 .new-gfwf-qh .x_wrap .x_active{background: #fa6200; color: #fff;}
 .gfwf-bg{display:none;position: fixed; top: 4.10rem; width: 100%; height: 100%; background:rgba(0,0,0,0.5); z-index: 11;}
 .new-gfwf-qh .selected-wrap{display: block;position: initial; z-index: 12; background: #fff; top: 4.10rem;width: 100%;}
+.ssc-method-list.gfwf-list.new-gfwf-qh.Fixed{position: absolute;}
 .selected-wrap .s-title{height: 25px; position: relative;text-align: center;}
 .selected-wrap .s-title span{display: inline-block;background:#fff;position: relative; background:#fff; color: #fa6200; padding: 0 10px;z-index: 4;}
 .selected-wrap .s-title:after{content: "";height: 1px;width: 100%; background: #ddd;position: absolute;top: 9px;z-index: 3;left: 0;}
@@ -1205,7 +1208,6 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .middle-content.app-middle-content{bottom: 0;}
 .middle-content.middle-content-bat{bottom: 2.75rem; }
 .bar-bottom-l-h { line-height: 2.75rem; height: 2.75rem; }
-
 
 /*右侧菜单栏调整*/
 .mui-off-canvas-right{width:12rem;padding-top:10px;}
@@ -1481,9 +1483,10 @@ div.menu-popover {width: 120px;}
 .bottom-bar-btn.disabled{background: #ccc!important;color: #8C828C!important;}
 
 /*注单弹窗列表*/
+
 .zd-wrap{text-align:left;word-spacing: -5px;border-bottom: 1px solid #ddd;padding: 0.2rem;font-size: 14px;}
 .zd-wrap .zd-left{display: inline-block;width: 50%;vertical-align: middle;word-wrap: break-word;}
-.zd-wrap .zd-left .title{word-wrap: normal;}
+.zd-wrap .zd-left .title{word-wrap: normal;padding-left: 5px;}
 .zd-wrap .zd-right{display: inline-block; width: 50%; text-align: right; vertical-align: middle;}
 .zd-wrap .zd-right font{display: inline-block; vertical-align: text-bottom; line-height: 30px; margin-right: 5px;word-spacing: 0;}
 .zd-wrap .zd-right .mui-input-numbox{width: 42px; padding: 0 5px; height: 30px; vertical-align: top; margin-bottom: 0; font-size: 14px;}
