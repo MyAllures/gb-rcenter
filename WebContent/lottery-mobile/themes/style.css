@@ -104,6 +104,8 @@ i, var { font-style: normal; }
     background: rgba(0,0,0,.7);
 }
 */
+
+.mui-popup-backdrop.mui-active{height: 3000px;top:-1000px}
 .d-none{display: none;}
 .d-none.mui-active{ display: block; }
 
@@ -1481,6 +1483,7 @@ div.menu-popover {width: 120px;}
 .bottom-bar-btn.disabled{background: #ccc!important;color: #8C828C!important;}
 
 /*注单弹窗列表*/
+
 .zd-wrap{text-align:left;word-spacing: -5px;border-bottom: 1px solid #ddd;padding: 0.2rem;font-size: 14px;}
 .zd-wrap .zd-left{display: inline-block;width: 50%;vertical-align: middle;word-wrap: break-word;}
 .zd-wrap .zd-left .title{word-wrap: normal;padding-left: 5px;}
