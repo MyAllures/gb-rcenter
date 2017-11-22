@@ -12,8 +12,12 @@ header.mui-bar-nav .btn-login {
   border: 1px solid #1dc28e;
 }
 header.mui-bar-nav .btn-demo {
-  background-color: #f9b808;
-  border: 1px solid #f9b808;
+  background-color: #1279d9;
+  border: 1px solid #1279d9;
+}
+header.mui-bar-nav .btn-register {
+  background-color: #f0af01;
+  border: 1px solid #f0af01;
 }
 header.mui-bar-nav .yjym {
   color: #333;
