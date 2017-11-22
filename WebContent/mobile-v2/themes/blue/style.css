@@ -438,7 +438,7 @@
 .index-canvas .mui-table-view-cell a .icon-canvas.ic-change{    background-position-y: -166px;}
 .index-canvas .mui-table-view-cell a .icon-canvas.ic-problem{    background-position-y: -208px;}
 .index-canvas .mui-table-view-cell a .icon-canvas.ic-online{    background-position-y: -249px;}
-.index-canvas .btn-logout{ border-radius: 15px; width: 150px; height: 35px;  line-height: 35px; margin: 35px auto;  display: block; font-size: 15px;  border: 1px solid #eda527;  text-align: center;    }
+.index-canvas .btn-logout{ border-radius: 15px; width: 150px; height: 35px;  line-height: 35px; margin: 35px auto;  display: block; font-size: 15px;  border: 1px solid #eda527;  text-align: center;}
 .index-canvas .mui-table-view-cell > a:not(.mui-btn).mui-active{  background-color: transparent;}
 .index-canvas .mui-off-canvas-left{ width: 224px;}
 /*首页样式end*/
@@ -492,3 +492,7 @@
 .activity-content-bg{background-color: #dadcde !important;}
 .bank-selector>.ct a:before {background: url(images/ex-check.png);background-size: cover;}
 a.btn-download {background-color: #08f; border-color: #08f;}
+/* load.css */
+.ball-pulse > div {
+    background-color: rgba(0, 136, 255, 0.8);
+}

@@ -81,6 +81,10 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui(".gfwf-bg")[0].addEventListener('tap', function() {
                 _this.closeTop();
             });
+
+            mui("body").off('tap','#inputMoney').on("tap", "#inputMoney", function () {
+                mui('.mui-scroll-wrapper.middle-content').scroll().refresh();
+            });
         },
         //收起头部
         closeTop : function () {

@@ -327,3 +327,7 @@
     color: #666;
 }
 .activity-content-bg{background-color: #dadcde !important;}
+/*load.css*/
+.ball-pulse > div {
+    background-color: rgba(0, 136, 255, 0.8);
+}

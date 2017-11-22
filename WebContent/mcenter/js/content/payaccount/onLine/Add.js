@@ -139,8 +139,13 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
                 var val = $("#val" + index).val();
                 var view = $("#view" + index).val();
                 if (!val) {
-                    validate.settings.highlight.call(validate, $("#val" + index), validate.settings.errorClass, validate.settings.validClass);
-                    $("#val" + index).formtip('不能为空');
+                    if(column=="payDomain"){
+                        validate.settings.highlight.call(validate, $("#onLinePay"), validate.settings.errorClass, validate.settings.validClass);
+                        $("#onLinePay").formtip('不能为空');
+                    }else {
+                        validate.settings.highlight.call(validate, $("#val" + index), validate.settings.errorClass, validate.settings.validClass);
+                        $("#val" + index).formtip('不能为空');
+                    }
                     return;
                 }
                 json.column = column.trim();

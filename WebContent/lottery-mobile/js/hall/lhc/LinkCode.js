@@ -25,7 +25,6 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
             var subCode = activeA.attr("data-subCode");
             var title = activeA.text();
             var minNum = activeA.attr("min-num");
-            console.log(minNum)
             mui.ajax(url, {
                 dataType: 'json',
                 type: 'POST',

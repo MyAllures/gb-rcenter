@@ -801,7 +801,9 @@ define(['moment'], function (moment) {
                             $("#ramain-count").text(data.drawTimes);
                         }else{
                             $(".hongbao").addClass('disabled');
-                            $("#tip-msgs").hide();
+                            $(".icon-open").show();
+                            $("#tip-msgs").html('红包活动已经结束!');
+                            $("#btn-rule").show();
                         }
                         if(data.nextLotteryTime!=""){
                             $(".hongbao-time-txt").show();
