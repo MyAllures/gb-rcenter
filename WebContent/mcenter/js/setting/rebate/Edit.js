@@ -187,7 +187,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     page.showPopover({currentTarget:$("[name='batch_ratio']")},{},"warning",window.top.message.setting_auto['返佣比例范围为0-100'],true);
                     return;
                 }
-                $($(_fieldname).parent().parent()).find("._ratio").val(orgin);
+                $($(_fieldname).parent().parent()).find("._batch_ratio").val(orgin);
             }
             $("#_contents").addClass("hide");
             $(".ratio_area").html("");
@@ -201,6 +201,14 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             $("#_contents").css("top", thei);
             $("#_contents").removeClass("hide");
             //document.all._contents.style.visibility = "visible";
+        },
+        insertRow:function (e, opt) {
+            //var $tbl = $('._tables table');
+            var currentTr =  $($(e.currentTarget).parent().parent());
+            var $newGrads = $("table#foolishlyTable .apiGrad").clone().removeAttr('id').removeClass("hide");
+            currentTr.before($newGrads);
+            this.resetIndex();
+            $(e.currentTarget).unlock();
         }
     });
 });
