@@ -69,7 +69,7 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
                 length = length * $(this).find(".mui-active").length;
             });
             if (length > 1) {
-                length = 1;
+                length = 0;
             }
             $("#quantity").text(length);
 

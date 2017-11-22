@@ -538,3 +538,7 @@ a {color: #e01a7b;}
     background-color: #fff;
 }
 a.btn-download {background-color: #e01a7b; border-color: #e01a7b;}
+/* load.css */
+.ball-pulse>div {background-color: rgba(224, 26, 123, 0.8) !important;}
+.game-loading .ball-white>div {background-color:rgba(224,26,123,0.8)!important;}
+.ball-pulse.api-div div {background-color: #eee!important;}

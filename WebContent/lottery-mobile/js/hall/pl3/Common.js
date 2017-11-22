@@ -121,39 +121,54 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
             });
         },
 
-
-
         showLastOpenCode: function (numArr) {
-            var titles = [];
-            var sum = 0;
-            $.each(numArr,function(index,value){
-                sum += parseInt(value);
-            });
-            titles[0] = sum;
-            titles[1] = sum % 2 == 0?'双':'单';
-            titles[2] = sum > 13?'大':'小';
-            var html = Template('template_lastOpenCode', {numArr: numArr,titles:titles});
+            var html = Template('template_lastOpenCode', {numArr: numArr, len: numArr.length});
+            var sum = parseInt(numArr[0]) + parseInt(numArr[1]) + parseInt(numArr[2]);
+            html += "<i class='lottery-block'>" + sum + "</i>";
+            if (sum % 2 == 0) {
+                html += "<i class='lottery-block'>双</i>";
+            } else {
+                html += "<i class='lottery-block'>单</i>";
+            }
+
+            if (sum > 13) {
+                html += "<i class='lottery-block'>大</i>";
+            } else {
+                html += "<i class='lottery-block'>小</i>";
+            }
             $("#lastOpenCode").html(html);
-        },/**
+        },
+
+
+        /**
          * 展示最近开奖记录
          */
         showRecentHistory: function (data) {
             var openList = '';
             $.each(data, function (index, value) {
                 var numArr = value.openCode ? value.openCode.split(",") : [];
-                var titles = [];
-                var sum = 0;
-                $.each(numArr,function(index,value){
-                    sum += parseInt(value);
-                });
-                titles[0] = sum;
-                titles[1] = sum % 2 == 0?'双':'单';
-                titles[2] = sum > 13?'大':'小';
+                var sum = parseInt(numArr[0]) + parseInt(numArr[1]) + parseInt(numArr[2]);
+                var ds;
+                var dx;
+
+                if (sum % 2 == 0) {
+                    ds="双";
+                } else {
+                    ds="单";
+                }
+
+                if (sum > 13) {
+                    dx="大";
+                } else {
+                    dx="小";
+                }
                 openList = openList + Template('template_recentHistory', {
                         number: value.expect,
                         list: numArr,
                         len: numArr.length,
-                        titles:titles
+                        sum: sum,
+                        ds:ds,
+                        dx:dx
                     });
             });
             $("#recentHistory").html(openList);

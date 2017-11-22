@@ -18,25 +18,22 @@ define(['common/BaseListPage'], function (BaseListPage) {
             this._super();
         },
         /**
-         * 刷新监控数据
+         * 切换版本号
          * @param e
          * @param opt
          */
-        refreshData:function (e, opt) {
-            var _this =this
+        changeVersion:function (e, opt) {
             window.top.topPage.ajax({
                 dataType:'json',
+                data:{appKey:opt.appKey,appVersion:opt.appVersion},
                 type:"post",
-                url:root+'/Monitor/refresh.html',
+                url:root+'/Monitor/ChangeVersion.html',
                 success:function(data){
                     if(data==true){
-                        window.setTimeout(function () {
-                            _this.query(e, opt);
-                        },1000);
+                        window.top.topPage.showSuccessMessage("操作成功!");
+                    }else{
+                        window.top.topPage.showSuccessMessage("操作失败!");
                     }
-                },
-                error:function(data) {
-
                 }
             });
         }

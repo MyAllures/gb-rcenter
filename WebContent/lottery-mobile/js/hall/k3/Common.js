@@ -20,12 +20,17 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 var ds;
                 var dx;
 
-                if (sum % 2 == 0) {
+                if(parseInt(numArr[0]) == parseInt(numArr[1]) && parseInt(numArr[0]) == parseInt(numArr[2]) && parseInt(numArr[1]) == parseInt(numArr[2])){
+                    ds="通吃";
+                }else if (sum % 2 == 0) {
                     ds="双";
                 } else {
                     ds="单";
                 }
-                if (sum > 10) {
+
+                if(parseInt(numArr[0]) == parseInt(numArr[1]) && parseInt(numArr[0]) == parseInt(numArr[2]) && parseInt(numArr[1]) == parseInt(numArr[2])){
+                    dx="通吃";
+                }else if (sum > 10) {
                     dx="大";
                 } else {
                     dx="小";
