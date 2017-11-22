@@ -1086,6 +1086,7 @@ a.popup-screen-btn:visited{
 	border: 1px solid #dedede;
 	height: 20px;
 	border-radius: 0;
+	margin-bottom: 0;
 }
 
 .foot_checkbox{
