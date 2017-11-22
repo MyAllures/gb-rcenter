@@ -148,7 +148,8 @@
                 var errorMsg = error[0].innerHTML;
                 if (element[0]) {
                     var elementName = element[0].name;
-                    var elem = $("[name='" + elementName+"']",element[0].form)[0];
+                    //TODO Tony 不确定是否会对其他的特殊情况有影响
+                    var elem = element[0];//$("[name='" + elementName+"']",element[0].form)[0];
 
                     // 消息参数替换
                     var $form = $(element[0].form);
