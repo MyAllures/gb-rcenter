@@ -5,8 +5,13 @@
 body{    font-size: 12px;} 
 header{
     &.mui-bar-nav{
-        .logo{height: 20px;    position: absolute;    left: 60px;    right: 60px;    top: 0;    bottom: 0;    margin: auto;}
-        .btn-login,.btn-demo{ margin-left: 5px !important;   padding:4px 2px;font-size: 12px;    top: 10px;}
+        .logo{height: 20px;
+    position: absolute;
+    left: 44px;
+    top: 0;
+    bottom: 0;
+    margin: auto;}
+        .btn-login,.btn-demo,.btn-register{ margin-left: 5px !important;   padding:4px 5px;font-size: 12px;    top: 10px;}
         .btn-download{     display: inline-block;
     width: 24px;
     height: 24px;background: url(images/icon-download.png) center/24px no-repeat;
@@ -210,4 +215,28 @@ header{
         top: 68px;height: 308px;
         left: 20px;
     }
+}
+/* casino-list */
+.casino-list-bar{    background-color: #efefef;border-bottom: 1px solid #ccc;}
+.mui-content-casino-list{padding-top: 44px !important;background: #efefef;
+    .casino-wrap{padding:10px;}
+    .electronic-search{position: relative;margin-bottom: 10px;
+        input{margin: 0;height: 35px;font-size: 14px;border: 1px solid #ccc;padding-right: 100px;}
+        .btn-search{position: absolute;right: 0;top: 0;font-size: 14px;color: #333;height: 35px;line-height: 35px;text-align: center;width: 84px;background: #ccc;border-top-right-radius: 3px;    border-bottom-right-radius: 3px;}
+        .mui-icon-clear{right: 80px;    top: 8px;}
+    }
+    .casino-list{    margin-left: -5px;    margin-right: -5px;
+        a{text-align: center;display: block;    padding: 0 5px;
+            p{height: 24px;line-height: 24px;background: #ccc;color: #333;font-size: 12px;}
+        }
+        .img-wrap{background: #fff;padding: 8px 0;
+            img{width: 60px;vertical-align: middle;}
+        }
+        
+    }
+}
+/* about */
+.about-wrap{
+    padding: 10px 20px;
+    p{font-size: 12px;color: #333;  }     
 }

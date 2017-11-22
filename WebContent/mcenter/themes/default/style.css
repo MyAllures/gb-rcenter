@@ -4953,7 +4953,8 @@ input[type=number]::-webkit-outer-spin-button {
 .limit-tips ul{
 	display: block;
     margin-top: 22px;
-    position: absolute;
+    /*position: absolute;*/
+    max-width: 600px;
     left: -30px;
     background: #fff6ed;
     padding: 15px;
@@ -4967,8 +4968,8 @@ input[type=number]::-webkit-outer-spin-button {
     height: 15px;
     background: #fff6ed;
     position: absolute;
-    left: -8px;
-    top: 23px;
+    left: 8px;
+    top: 47px;
     border-left: 1px solid #ecd4a8;
     border-bottom: 1px solid #ecd4a8;
     transform:rotate(45deg);

@@ -8,15 +8,14 @@ body {
 header.mui-bar-nav .logo {
   height: 20px;
   position: absolute;
-  left: 60px;
-  right: 60px;
+  left: 44px;
   top: 0;
   bottom: 0;
   margin: auto;
 }
-header.mui-bar-nav .btn-login, header.mui-bar-nav .btn-demo {
+header.mui-bar-nav .btn-login, header.mui-bar-nav .btn-demo, header.mui-bar-nav .btn-register {
   margin-left: 5px !important;
-  padding: 4px 2px;
+  padding: 4px 5px;
   font-size: 12px;
   top: 10px;
 }
@@ -200,15 +199,6 @@ header.mui-bar-nav .mui-icon-bars {
 }
 .mui-bar-tab .mui-active .mui-icon.icon-home:after {
   background: url(images/footer-nav-icon.png) no-repeat -83px -43px/auto 80px;
-}
-.mui-hide-bar {
-  width: 100%;
-  height: 44px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-  z-index: 999;
 }
 
 /* mui-off-canvas-left */
@@ -449,6 +439,82 @@ header.mui-bar-nav .mui-icon-bars {
   top: 68px;
   height: 308px;
   left: 20px;
+}
+
+/* casino-list */
+.casino-list-bar {
+  background-color: #efefef;
+  border-bottom: 1px solid #ccc;
+}
+
+.mui-content-casino-list {
+  padding-top: 44px !important;
+  background: #efefef;
+}
+.mui-content-casino-list .casino-wrap {
+  padding: 10px;
+}
+.mui-content-casino-list .electronic-search {
+  position: relative;
+  margin-bottom: 10px;
+}
+.mui-content-casino-list .electronic-search input {
+  margin: 0;
+  height: 35px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  padding-right: 100px;
+}
+.mui-content-casino-list .electronic-search .btn-search {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 14px;
+  color: #333;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  width: 84px;
+  background: #ccc;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.mui-content-casino-list .electronic-search .mui-icon-clear {
+  right: 80px;
+  top: 8px;
+}
+.mui-content-casino-list .casino-list {
+  margin-left: -5px;
+  margin-right: -5px;
+}
+.mui-content-casino-list .casino-list a {
+  text-align: center;
+  display: block;
+  padding: 0 5px;
+}
+.mui-content-casino-list .casino-list a p {
+  height: 24px;
+  line-height: 24px;
+  background: #ccc;
+  color: #333;
+  font-size: 12px;
+}
+.mui-content-casino-list .casino-list .img-wrap {
+  background: #fff;
+  padding: 8px 0;
+}
+.mui-content-casino-list .casino-list .img-wrap img {
+  width: 60px;
+  vertical-align: middle;
+}
+
+/* about */
+.about-wrap {
+  padding: 10px 20px;
+}
+.about-wrap p {
+  font-size: 12px;
+  color: #333;
 }
 
 /*# sourceMappingURL=common.css.map */
