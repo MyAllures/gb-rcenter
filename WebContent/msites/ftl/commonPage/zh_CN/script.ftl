@@ -42,15 +42,16 @@
     var mdRoot='${mdRoot}';
     var rcVersion='${rcVersion}';
 </script>
-<script src="${resComRoot}/js/gamebox/common/main.js"></script>
-<script src="${resComRoot}/js/curl/curl.js"></script>
-<script type="text/javascript" language="JavaScript" src="${resComRoot}/js/gamebox/common/urlencode.js"></script>
-<script type="text/javascript">
-    curl(['gb/home/TopPage','site/index/Comet'], function (TopPage,Comet) {
-        comet = new Comet();
-        topPage = new TopPage();
-    });
-</script>
+<#-- 站点消息订阅　-->
+<#--<script src="${resComRoot}/js/gamebox/common/main.js"></script>-->
+<#--<script src="${resComRoot}/js/curl/curl.js"></script>-->
+<#--<script type="text/javascript" language="JavaScript" src="${resComRoot}/js/gamebox/common/urlencode.js"></script>-->
+<#--<script type="text/javascript">-->
+    <#--curl(['gb/home/TopPage','site/index/Comet'], function (TopPage,Comet) {-->
+        <#--comet = new Comet();-->
+        <#--topPage = new TopPage();-->
+    <#--});-->
+<#--</script>-->
 
 <script>
     /*全局变量；是否显示登录验证码*/
@@ -1297,9 +1298,10 @@
                     if(typeof(comet)=="undefined"){
                         return;
                     }
-                    if(!comet.isConnect){
-                        comet.connection();
-                    }
+                <#-- 站点消息订阅　-->
+//                    if(!comet.isConnect){
+//                        comet.connection();
+//                    }
                 }else{
                     var dataPage = window.location.pathname.split("/")[3];
                     if(dataPage=='loading.html'){
