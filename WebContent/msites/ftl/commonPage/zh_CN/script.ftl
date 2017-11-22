@@ -36,21 +36,22 @@
 
 <script>
     var curTheme = '${curTheme}';
-    var root = '${root}';
     var resComRoot = '${resComRoot}';
     var resRoot = '${resRoot}';
     var imgRoot = '${imgRoot}';
     var mdRoot='${mdRoot}';
     var rcVersion='${rcVersion}';
 </script>
-<script src="${resComRoot}/js/gamebox/common/main.js"></script>
-<script src="${resComRoot}/js/curl/curl.js"></script>
-<script type="text/javascript" language="JavaScript" src="${resComRoot}/js/gamebox/common/urlencode.js"></script>
-<script type="text/javascript">
-    curl(['site/index/Comet'], function (Comet) {
-        comet = new Comet();
-    });
-</script>
+<#-- 站点消息订阅　-->
+<#--<script src="${resComRoot}/js/gamebox/common/main.js"></script>-->
+<#--<script src="${resComRoot}/js/curl/curl.js"></script>-->
+<#--<script type="text/javascript" language="JavaScript" src="${resComRoot}/js/gamebox/common/urlencode.js"></script>-->
+<#--<script type="text/javascript">-->
+    <#--curl(['gb/home/TopPage','site/index/Comet'], function (TopPage,Comet) {-->
+        <#--comet = new Comet();-->
+        <#--topPage = new TopPage();-->
+    <#--});-->
+<#--</script>-->
 
 <script>
     /*全局变量；是否显示登录验证码*/
@@ -1294,9 +1295,13 @@
                         sessionStorage.is_login = true;
                     }
                     isOpenCaptcha = false;
-                    if(!comet.isConnect){
-                        comet.connection();
+                    if(typeof(comet)=="undefined"){
+                        return;
                     }
+                <#-- 站点消息订阅　-->
+//                    if(!comet.isConnect){
+//                        comet.connection();
+//                    }
                 }else{
                     var dataPage = window.location.pathname.split("/")[3];
                     if(dataPage=='loading.html'){

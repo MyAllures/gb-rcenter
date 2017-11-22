@@ -6,7 +6,7 @@ define(['gb/components/PopUp'], function (PopUp) {
         },
         popUpCallBack: function (data) {
             var dataObj = $.parseJSON(data);
-            console.info(window.top.message.index_auto['订阅类型为'] + dataObj.subscribeType + "的订阅点收到消息，成功调用回调函数，参数值为" + data);
+            console.info('订阅类型为' + dataObj.subscribeType + "的订阅点收到消息，成功调用回调函数，参数值为" + data);
             $("#unReadCount").text(parseInt($("#unReadCount").text()) + 1);
             var msgBody = dataObj.msgBody;
             var content = "<a herf='#' onclick='alert(\"你点到人家啦\")'>" + msgBody.content + "</a>"
@@ -15,7 +15,7 @@ define(['gb/components/PopUp'], function (PopUp) {
         },
         dialogCallBack: function (data) {
             var dataObj = $.parseJSON(data);
-            console.info(window.top.message.index_auto['订阅类型为'] + dataObj.subscribeType + "的订阅点收到消息，成功调用回调函数，参数值为" + data);
+            console.info('订阅类型为' + dataObj.subscribeType + "的订阅点收到消息，成功调用回调函数，参数值为" + data);
             $("#unReadCount").text(parseInt($("#unReadCount").text()) + 1);
             var msgBody = dataObj.msgBody;
             var content = msgBody.content.replace("${user}", $('#ofullname').text().trim());
@@ -35,8 +35,8 @@ define(['gb/components/PopUp'], function (PopUp) {
             var btnOption = {};
             var dataObj = $.parseJSON(data);
             var id = dataObj.msgBody;
-            btnOption.target = root + "/operation/pAnnouncementMessage/announcementPopup.html?searchId=" + id;
-            btnOption.text = window.top.message.index_auto['公告'];
+            btnOption.target =  "/operation/pAnnouncementMessage/announcementPopup.html?searchId=" + id;
+            btnOption.text = '公告';
             btnOption.callback = function (e, opt) {
                 if (e.returnValue && e.returnValue.isDetail) {
                     if (e.returnValue.apiId != "") {
