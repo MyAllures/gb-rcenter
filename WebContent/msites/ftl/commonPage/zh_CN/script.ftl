@@ -33,8 +33,26 @@
 <script src="${resComRoot}/js/gamebox/common/jquery.validate.extend.msites.js"></script>
 <script src="${resComRoot}/js/bootstrap-daterangepicker/moment.js"></script><#--通用脚本-->
 <link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/hb/css/pc.css">
-<#--流量统计代码-->
-<#if data.siteStatistics?has_content>${data.siteStatistics}</#if>
+
+<script>
+    var curTheme = '${curTheme}';
+    var resComRoot = '${resComRoot}';
+    var resRoot = '${resRoot}';
+    var imgRoot = '${imgRoot}';
+    var mdRoot='${mdRoot}';
+    var rcVersion='${rcVersion}';
+</script>
+<#-- 站点消息订阅　-->
+<#--<script src="${resComRoot}/js/gamebox/common/main.js"></script>-->
+<#--<script src="${resComRoot}/js/curl/curl.js"></script>-->
+<#--<script type="text/javascript" language="JavaScript" src="${resComRoot}/js/gamebox/common/urlencode.js"></script>-->
+<#--<script type="text/javascript">-->
+    <#--curl(['gb/home/TopPage','site/index/Comet'], function (TopPage,Comet) {-->
+        <#--comet = new Comet();-->
+        <#--topPage = new TopPage();-->
+    <#--});-->
+<#--</script>-->
+
 <script>
     /*全局变量；是否显示登录验证码*/
     var isOpenCaptcha = false;
@@ -1277,6 +1295,13 @@
                         sessionStorage.is_login = true;
                     }
                     isOpenCaptcha = false;
+                    if(typeof(comet)=="undefined"){
+                        return;
+                    }
+                <#-- 站点消息订阅　-->
+//                    if(!comet.isConnect){
+//                        comet.connection();
+//                    }
                 }else{
                     var dataPage = window.location.pathname.split("/")[3];
                     if(dataPage=='loading.html'){
@@ -1728,3 +1753,6 @@
 
 
 </script>
+
+<#--流量统计代码-->
+<#if data.siteStatistics?has_content>${data.siteStatistics}</#if>

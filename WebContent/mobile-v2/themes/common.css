@@ -804,6 +804,15 @@ body.has-srchbar .electronic-srch{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.bank-selector >.ct a i.pay{background: url(images/pay-third-x.png) no-repeat;display: inline-block;width: 40px;height: 28px;vertical-align: top;}
+.bank-selector >.ct a i.pay.zfb{background-position: 2px -62px;}
+.bank-selector >.ct a i.pay.wx{background-position: 2px -92px;}
+.bank-selector >.ct a i.pay.cft{background-position: 2px -122px;}
+.bank-selector >.ct a i.pay.yl{background-position: -2px -152px;}
+.bank-selector >.ct a i.pay.btb{background-position: 4px -782px;}
+.bank-selector >.ct a i.pay.qq{background-position: 4px -820px;}
+.bank-selector >.ct a i.pay.jd{background-position: 4px -1012px;}
+.bank-selector >.ct a i.pay.bd{background-position: 2px -974px;}
 .bank-selector >.ct a:before{
     content: '';
     width: 16px;
