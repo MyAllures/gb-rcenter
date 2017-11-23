@@ -13,7 +13,7 @@ define(['site/hall/keno/bjkl8/PlayWay-xywf', 'site/plugin/template'], function (
             $("span.x_1.gfwf-tit").text(BetCode1);
             $(".s-title.title1 span").text(BetCode1);
             $(".s-title.title2 span").text(BetCode1);
-            $("#toobarTitle").text("信用玩法-"+BetCode1);
+            $("#toobarTitle").text("传统玩法-"+BetCode1);
             $("a[data-code='s5'] span").text(BetCode1);
         },
     });
