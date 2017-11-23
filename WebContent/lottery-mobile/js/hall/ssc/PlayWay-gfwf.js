@@ -58,6 +58,101 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             });
         },
 
+        getBetName : function (name,betCode) {
+            if(betCode=="ssc_yixing_dwd"){
+                return name+"-定位胆-直选复式";
+            }else if(betCode=="ssc_wuxing_zhixuan_fs"){
+                return name+"-五星-直选复式";
+            }else if(betCode=="ssc_sixing_zhixuan_fs"){
+                return name+"-四星-直选复式";
+            }
+            else if(betCode=="ssc_sanxing_zhixuan_hsfs"){
+                return name+"-后三-直选复式";
+            }else if(betCode=="ssc_sanxing_zhixuan_hshz"){
+                return name+"-后三-直选和值";
+            }else if(betCode=="ssc_sanxing_zhixuan_hskd"){
+                return name+"-后三-直选跨度";
+            }else if(betCode=="ssc_sanxing_zhixuan_hszh"){
+                return name+"-后三-后三组合";
+            }else if(betCode=="ssc_sanxing_zuxuan_hsz3fs"){
+                return name+"-后三-组三复式";
+            }else if(betCode=="ssc_sanxing_zuxuan_hsz6fs"){
+                return name+"-后三-组六复式";
+            }else if(betCode=="ssc_sanxing_zuxuan_hszxhz"){
+                return name+"-后三-组选和值";
+            }else if(betCode=="ssc_sanxing_zuxuan_hszxbd"){
+                return name+"-后三-组选包胆";
+            }else if(betCode=="ssc_sanxing_zuxuan_hshzws"){
+                return name+"-后三-和值尾数";
+            }else if(betCode=="ssc_sanxing_zuxuan_hsts"){
+                return name+"-后三-特殊号";
+            }
+            else if(betCode=="ssc_sanxing_zhixuan_qsfs"){
+                return name+"-前三-直选复式";
+            }else if(betCode=="ssc_sanxing_zhixuan_qshz"){
+                return name+"-前三-直选和值";
+            }else if(betCode=="ssc_sanxing_zhixuan_qskd"){
+                return name+"-前三-直选跨度";
+            }else if(betCode=="ssc_sanxing_zhixuan_qszh"){
+                return name+"-前三-前三组合";
+            }else if(betCode=="ssc_sanxing_zuxuan_qsz3fs"){
+                return name+"-前三-组三复式";
+            }else if(betCode=="ssc_sanxing_zuxuan_qsz6fs"){
+                return name+"-前三-组六复式";
+            }else if(betCode=="ssc_sanxing_zuxuan_qszxhz"){
+                return name+"-前三-组选和值";
+            }else if(betCode=="ssc_sanxing_zuxuan_qszxbd"){
+                return name+"-前三-组选包胆";
+            }else if(betCode=="ssc_sanxing_zuxuan_qshzws"){
+                return name+"-前三-和值尾数";
+            }else if(betCode=="ssc_sanxing_zuxuan_qsts"){
+                return name+"-前三-特殊号";
+            }
+            else if(betCode=="ssc_erxing_zhixuan_qefs"){
+                return name+"-前二-直选复式";
+            }else if(betCode=="ssc_erxing_zhixuan_qehz"){
+                return name+"-前二-直选和值";
+            }else if(betCode=="ssc_erxing_zhixuan_qekd"){
+                return name+"-前二-直选跨度";
+            }else if(betCode=="ssc_erxing_zuxuan_qefs"){
+                return name+"-前二-组选复式";
+            }else if(betCode=="ssc_erxing_zuxuan_qehz"){
+                return name+"-前二-组选和值";
+            }else if(betCode=="ssc_erxing_zuxuan_qebd"){
+                return name+"-前二-组选包胆";
+            }
+            else if(betCode=="ssc_budingwei_q3ym"){
+                return name+"-不定位-前三一码";
+            }else if(betCode=="ssc_budingwei_q3em"){
+                return name+"-不定位-前三二码";
+            }else if(betCode=="ssc_budingwei_h3ym"){
+                return name+"-不定位-后三一码";
+            }else if(betCode=="ssc_budingwei_h3em"){
+                return name+"-不定位-后三二码";
+            }else if(betCode=="ssc_budingwei_q4ym"){
+                return name+"-不定位-前四一码";
+            }else if(betCode=="ssc_budingwei_q4em"){
+                return name+"-不定位-前四二码";
+            }else if(betCode=="ssc_budingwei_h4ym"){
+                return name+"-不定位-后四一码";
+            }else if(betCode=="ssc_budingwei_h4em"){
+                return name+"-不定位-后四二码";
+            }else if(betCode=="ssc_budingwei_wxem"){
+                return name+"-不定位-五星二码";
+            }else if(betCode=="ssc_budingwei_wxsm"){
+                return name+"-不定位-五星三码";
+            }
+            // else if(betCode=="ssc_daxiaodanshuang_q2"){
+            //     return name+"-大小单双-直选复式";
+            // }else if(betCode=="ssc_daxiaodanshuang_h2"){
+            //     return name+"-大小单双-直选和值";
+            // }else if(betCode=="ssc_daxiaodanshuang_q3"){
+            //     return name+"-大小单双-直选跨度";
+            // }else if(betCode=="ssc_daxiaodanshuang_h3"){
+            //     return name+"-大小单双-组选复式";
+            // }
+        },
+
 
 
 
