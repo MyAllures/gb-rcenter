@@ -340,13 +340,16 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 firstShowPl = strArr.join('|');
 
             }
+
             //弹出订单
             var content = Template('gfwf_template_order',
                 {"quantity": Number($("#quantity-gfwf").text()),
                     "firstShowPl":firstShowPl,
                     "totalMoney":Number($("#quantity-gfwf").text())*2,
                     "canWin": parseFloat((maxCanWin * 1)).toFixed(3),
-                    "expect":$('font#expect').text()
+                    "expect":$('font#expect').text(),
+                    "betNum":_this.betNum,
+                    "betName":_this.getBetName($("a.mui-pull-left.bar-top-l-h").text().trim(),_this.getBetCode()),
                 });
 
             $("#dingdan").html(content);
@@ -438,6 +441,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             }
 
         },
+
 
         /**
          * 获取当前赔率内容算法
@@ -591,6 +595,11 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
         //针对ssc三星组合
         checkSanxingZuhe:function () {
             return false;
+        },
+
+        //获取玩法名称
+        getBetName : function (name,betCode) {
+            return name;
         },
 
 

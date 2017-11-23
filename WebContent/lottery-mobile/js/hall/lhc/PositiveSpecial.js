@@ -20,9 +20,7 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
         getOdds: function () {
             var url = root + '/' + this.type + '/' + this.code + '/positiveSpecialOdd.html';
             var subCode = $("a.mui-active[data-subCode]").attr("data-subCode");
-            var betTitle = $("a.mui-active[data-subCode]").text();
             var _this = this;
-            $(".bet-title").text(betTitle);
             mui.ajax(url, {
                 dataType: 'json',
                 type: 'POST',
