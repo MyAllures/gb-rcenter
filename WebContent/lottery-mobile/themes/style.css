@@ -1495,3 +1495,5 @@ div.menu-popover {width: 120px;}
 .zd-wrap .zd-right a.list-delete-btn span {font-size: 14px; font-weight: 100; line-height: 14px; vertical-align: top;}
 .zd-wrap:last-child{border-bottom: 0;}
 .layui-m-layercont .disabled-wrap{list-style: none;padding: 0;}
+
+.inline-list-1.right-list-o{width: calc(100% - 3.7rem);vertical-align: top;word-wrap: break-word;text-overflow: ellipsis;height: auto;}
