@@ -156,13 +156,15 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             });
 
             //选择球
-            mui("li.screen-munber").off('tap','a').on('tap','a',function(){
-                //判断是否为SSC包胆,K3二同号单选
-                _this.checkBaodan($(this));
-                this.classList.toggle('mui-active');
-                $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
-                _this.getZhuShu();
-            });
+            if(page.isOpen) {
+                mui("li.screen-munber").off('tap', 'a').on('tap', 'a', function () {
+                    //判断是否为SSC包胆,K3二同号单选
+                    _this.checkBaodan($(this));
+                    this.classList.toggle('mui-active');
+                    $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
+                    _this.getZhuShu();
+                });
+            }
             //开盘才有效果。
             if(page.isOpen){
                 mui("body").off('tap','.btn-jixuan-gfwf').on('tap','.btn-jixuan-gfwf',function(){

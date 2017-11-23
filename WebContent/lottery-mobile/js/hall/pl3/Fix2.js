@@ -87,6 +87,10 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
             }
             var toua = Number($("#bettouli div a.mui-active").length);
             var weia = Number($("#betweili div a.mui-active").length);
+            if(!page.isOpen) {
+                toua=0;
+                weia=0;
+            }
             if (toua > 0 && weia > 0) {
                 $("#quantity").text(toua * weia);
             } else {
