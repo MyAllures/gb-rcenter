@@ -27,7 +27,6 @@ define(['site/hall/pl3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
          */
         bindButtonEvents: function () {
             var _this = this;
-            // mui("body").off('tap','a')
 
             mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn').on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn', function () {
                 _this.bindTdInput($(this));
@@ -75,8 +74,12 @@ define(['site/hall/pl3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 });
                 _this.getOdds();
             })
+
             mui("body").off('tap', 'li#betli div a').on('tap', 'li#betli div a', function () {
                 var seltd = Number($("li#betli div a.mui-active").length);
+                if(!page.isOpen) {
+                    seltd=0;
+                }
                 if (seltd > 4) {
                     $("#quantity").text(1);
                     var bet = oddsar[seltd];
@@ -86,6 +89,7 @@ define(['site/hall/pl3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                     $("#quantity").text(0);
                 }
             });
+
         },
 
         getOdds: function () {

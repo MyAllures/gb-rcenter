@@ -42,6 +42,35 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             });
         },
 
+        getBetName : function (name,betCode) {
+            if(betCode=="pl3_yixing_dwd"){
+                return name+"-定位胆-直选复式";
+            }else if(betCode=="pl3_budingwei_sxym"){
+                return name+"-不定位-一码";
+            }
+            else if(betCode=="pl3_sanxing_zhixuan_fs"){
+                return name+"-三星-直选复式";
+            }else if(betCode=="pl3_sanxing_zhixuan_hz"){
+                return name+"-三星-直选和值";
+            }else if(betCode=="pl3_sanxing_zuxuan_z3fs"){
+                return name+"-三星-组三复式";
+            }else if(betCode=="pl3_sanxing_zuxuan_z6fs"){
+                return name+"-三星-组六复式";
+            }else if(betCode=="pl3_sanxing_zuxuan_zxhz"){
+                return name+"-三星-组选和值";
+            }
+            else if(betCode=="pl3_erxing_zhixuan_qefs"){
+                return name+"-前二-直选复式";
+            }else if(betCode=="pl3_erxing_zuxuan_qefs"){
+                return name+"-前二-组选复式";
+            }
+            else if(betCode=="pl3_erxing_zhixuan_hefs"){
+                return name+"-后二-直选复式";
+            }else if(betCode=="pl3_erxing_zuxuan_hefs"){
+                return name+"-后二-组选复式";
+            }
+        },
+
 
     });
 });

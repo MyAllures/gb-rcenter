@@ -74,6 +74,9 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             })
             mui("body").off('tap', 'li#betli div a').on('tap', 'li#betli div a', function () {
                 var seltd = Number($("li#betli div a.mui-active").length);
+                if(!page.isOpen) {
+                    seltd=0;
+                }
                 if (seltd >= 4 && seltd < 9) {
                     $("#quantity").text(1);
                     var bet = oddsar[seltd];

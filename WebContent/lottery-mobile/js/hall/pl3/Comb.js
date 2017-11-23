@@ -71,7 +71,12 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
             if (length > 1) {
                 length = 0;
             }
-            $("#quantity").text(length);
+            if(page.isOpen) {
+                $("#quantity").text(length);
+            }else{
+                $("#quantity").text(0);
+            }
+
 
         },
 

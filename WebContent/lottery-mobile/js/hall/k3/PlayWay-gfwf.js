@@ -23,6 +23,24 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
             });
         },
 
+        getBetName : function (name,betCode) {
+            if(betCode=="k3_tongxuan_santong"){
+                return name+"-三同号通选";
+            }else if(betCode=="k3_danxuan_santong"){
+                return name+"-三同号单选";
+            }else if(betCode=="k3_fuxuan_ertong"){
+                return name+"-二同号复选";
+            }else if(betCode=="k3_danxuan_ertong"){
+                return name+"-二同号单选";
+            }else if(betCode=="k3_sanbutong"){
+                return name+"-三不同号";
+            }else if(betCode=="k3_erbutong"){
+                return name+"-二不同号";
+            }else if(betCode=="k3_tongxuan_sanlian"){
+                return name+"-三连号通选";
+            }
+        },
+
 
 
 
