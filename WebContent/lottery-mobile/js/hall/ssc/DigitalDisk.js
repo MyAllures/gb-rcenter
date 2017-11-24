@@ -27,6 +27,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
         },
 
         showTable : function(){
+
             //数字盘
             $("div.s-menu.second").hide();
             $("#shuzipan").show();

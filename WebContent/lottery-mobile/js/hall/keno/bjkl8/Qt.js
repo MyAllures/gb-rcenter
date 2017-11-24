@@ -14,6 +14,9 @@ define(['site/hall/keno/bjkl8/PlayWay-xywf', 'site/plugin/template'], function (
             $(".s-title.title1 span").text(BetCode1);
             $(".s-title.title2 span").text(BetCode1);
             $("#toobarTitle").text("传统玩法-"+BetCode1);
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('传统玩法-'+BetCode1);
+            }
             $("a[data-code='s5'] span").text(BetCode1);
         },
     });
