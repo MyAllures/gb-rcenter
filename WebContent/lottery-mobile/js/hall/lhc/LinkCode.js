@@ -14,7 +14,7 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
             $("span.x_1.gfwf-tit").text(BetCode);
             $(".s-title.title1 span").text("连码");
             $(".s-title.title2 span").text(BetCode);
-            $("#toobarTitle").text("信用玩法-连码");
+            $("#toobarTitle").text("传统玩法-连码");
         },
 
 
