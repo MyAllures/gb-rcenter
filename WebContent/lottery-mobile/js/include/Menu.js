@@ -23,9 +23,6 @@ define(['site/plugin/template'], function (Template) {
                     }
                 })
             }
-            if (this.tos === 'app_android') {
-                $('div.middle-content-bat').attr('style', 'top:0');
-            }
             if(this.tos == 'app_android' || this.tos == 'app_ios'){
                 $(".mui-scroll-wrapper.middle-content").addClass("app-middle-content");
             }

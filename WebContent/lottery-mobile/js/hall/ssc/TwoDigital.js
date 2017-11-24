@@ -17,7 +17,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             $("span.x_1.gfwf-tit").text("二字定位");
             $(".s-title.title1 span").text("二字定位");
             $(".s-title.title2 span").text("万千");
-            $("#toobarTitle").text("信用玩法-二字定位");
+            $("#toobarTitle").text("传统玩法-二字定位");
             if(betCode =="ssc_erzidingwei"){
                 $("a[data-code='万千']").addClass("mui-active");
                 $(".x_3.gfwf-playName").text("万千");
@@ -47,6 +47,8 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                     weia.attr("data-odd", tdata.odd);
                     toua.attr("data-bet-code", tdata.betCode);
                     weia.attr("data-bet-code", tdata.betCode);
+                    $("#touwei").text(betname.substring(0, betname.length - 1));
+                    $("#weiwei").text(betname.substring(1, betname.length));
                     toua.attr("data-name", betname.substring(0, betname.length - 1) + "位");
                     weia.attr("data-name", betname.substring(1, betname.length) + "位");
 
