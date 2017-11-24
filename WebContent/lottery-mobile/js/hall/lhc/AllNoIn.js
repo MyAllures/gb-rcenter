@@ -13,7 +13,7 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
             $("span.x_1.gfwf-tit").text(BetCode);
             $(".s-title.title1 span").text("全不中");
             $(".s-title.title2 span").text(BetCode);
-            $("#toobarTitle").text("信用玩法-全不中");
+            $("#toobarTitle").text("传统玩法-全不中");
         },
 
 

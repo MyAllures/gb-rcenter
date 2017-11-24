@@ -16,7 +16,7 @@ define(['site/hall/ssc/PlayWay-xywf','site/plugin/template'], function (PlayWay,
             $("span.x_1.gfwf-tit").text("一字组合");
             $(".s-title.title1 span").text("一字组合");
             $(".s-title.title2 span").text(betCode);
-            $("#toobarTitle").text("信用玩法-一字组合");
+            $("#toobarTitle").text("传统玩法-一字组合");
             if(betCode =="ssc_yizizuhe"){
                 $("a[data-code='全五一字']").addClass("mui-active");
             }else{

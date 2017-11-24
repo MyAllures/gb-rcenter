@@ -94,7 +94,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                         $("a[data-code='百定位']").addClass("mui-active");
                         $("a.x_1.mui-col-xs-6").addClass("x_active");
                         $("a.x_3.mui-col-xs-6").removeClass("x_active");
-                        $("#toobarTitle").text("信用玩法-定位");
+                        $("#toobarTitle").text("传统玩法-定位");
                         $("#GenraType").val("fix");
                         _this.changeList();
                     }
