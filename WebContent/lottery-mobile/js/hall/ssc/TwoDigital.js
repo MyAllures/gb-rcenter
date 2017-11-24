@@ -47,6 +47,8 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                     weia.attr("data-odd", tdata.odd);
                     toua.attr("data-bet-code", tdata.betCode);
                     weia.attr("data-bet-code", tdata.betCode);
+                    $("#touwei").text(betname.substring(0, betname.length - 1));
+                    $("#weiwei").text(betname.substring(1, betname.length));
                     toua.attr("data-name", betname.substring(0, betname.length - 1) + "位");
                     weia.attr("data-name", betname.substring(1, betname.length) + "位");
 

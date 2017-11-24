@@ -121,7 +121,7 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
                     betNum: value,
                     odd: odd,
                     betAmount: betAmount,
-                    memo: memo+"-"+value
+                    memo: memo+"- "+value
                 });
                 betForm.totalMoney += betAmount;
                 betForm.quantity++;
