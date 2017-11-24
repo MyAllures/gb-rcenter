@@ -163,7 +163,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 playCode: $("#zuxuansan a.mui-active").attr("data-play"),
                 betNum: betNum,
                 odd: oddsar[Number(seltd.length)].odd,
-                memo: $("#zuxuansan a.mui-active").text() + "-" + betNum
+                memo: $("#zuxuansan a.mui-active").text() + "- " + betNum
             });
             return betForm;
         }
