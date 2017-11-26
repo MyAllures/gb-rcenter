@@ -15,6 +15,9 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
             $(".s-title.title1 span").text("后三");
             $(".s-title.title2 span").text("直选复式");
             $("#toobarTitle").text("官方玩法-后三");
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('官方玩法-后三');
+            }
             if(betCode =="ssc_sanxing_hs"){
                 $("a[data-code='ssc_sanxing_zhixuan_hsfs']").addClass("mui-active");
                 $(".x_3.gfwf-playName").text("直选复式");

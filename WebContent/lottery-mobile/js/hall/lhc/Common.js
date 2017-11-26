@@ -205,7 +205,7 @@ define(['site/hall/Common'], function (Common) {
                         $("#leftTime").attr("data-time", data.leftTime);
                         if (_this.code == 'hklhc' &&_this.isOpen && data.leftOpenTime >0){
                             _this.closeHandicapXY();
-                            $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' >")
+                            $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' ></font>")
                             $("#leftTime").attr("data-time", data.leftOpenTime);
                             _this.isOpen = false;
                             _this.showClearPopups();

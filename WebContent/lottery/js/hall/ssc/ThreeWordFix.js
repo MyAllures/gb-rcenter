@@ -34,6 +34,9 @@ define(['site/hall/ssc/PlayWay'], function (PlayWay) {
                     if (!$.isEmptyObject(data)) {
                         var toucheck =$("#betTalble tbody tr.headtr td");
                         var szdata =data[key];
+                        $("#touwei").text(betname.substring(0,1));
+                        $("#zhongwei").text(betname.substring(1,2));
+                        $("#weiwei").text(betname.substring(2,3));
                         toucheck.attr("data-name",betname.substring(0,1)+"位");
                         var zhcheck =$("#betTalble tbody tr.zhongtr td");
                         var weicheck =$("#betTalble tbody tr.weitr td");

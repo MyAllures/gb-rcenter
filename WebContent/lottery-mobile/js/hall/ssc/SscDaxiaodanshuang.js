@@ -16,6 +16,9 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
             $("span.x_1.gfwf-tit").text("大小单双");
             $(".s-title.title1 span").text("大小单双");
             $("#toobarTitle").text("官方玩法-大小单双");
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('官方玩法-大小单双');
+            }
             if(betCode =="ssc_daxiaodanshuang"){
                 $("a[data-code='ssc_daxiaodanshuang_q2']").addClass("mui-active");
                 $(".x_3.gfwf-playName").text("前二大小单双")

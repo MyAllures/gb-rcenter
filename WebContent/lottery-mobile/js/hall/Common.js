@@ -68,14 +68,12 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("div.s-menu").off('tap','a').on('tap', 'a', function () {
                 mui('.mui-scroll-wrapper.middle-content').scroll().scrollTo(0,0,100);
                 _this.checkSubordinate($(this).attr("data-code"), this.classList);
-                return;
+
             });
 
             //直选复式
             mui("body").off('tap','.gfwf-playName').on('tap', '.gfwf-playName', function () {
-
-                mui(".gfwf-wrap")[0].classList.toggle('Fixed');
-                mui(".gfwf-bg")[0].classList.toggle('show');
+                _this.changePlay();
             });
 
             mui(".gfwf-bg")[0].addEventListener('tap', function() {
@@ -93,6 +91,10 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui(".gfwf-bg")[0].classList.remove('show');
         },
 
+        changePlay: function () {
+            mui(".gfwf-wrap")[0].classList.toggle('Fixed');
+            mui(".gfwf-bg")[0].classList.toggle('show');
+        },
 
         getBetTable: function(betCode,jspName){
             var _this=this;
@@ -405,7 +407,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         closeHandicapGF:function () {
             $("li.screen-munber").addClass("disabled");
             $("#show-t-gfwf").addClass("disabled");
-            mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn');
+            mui("li.screen-munber").off('tap','a');
             mui("body").off('tap','a#show-t-gfwf');
             mui("body").off('tap','.btn-jixuan-gfwf');
             mui("body").off('tap','.btn-reset-gfwf');
@@ -424,15 +426,12 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn');
             $("div.bet-table-list .n-btn").attr("style","color: #c1c1c1!important");
             $(".fengPan").addClass("disabled");
-            // $("div.fix-div.two-word-fix").addClass("disabled");
             $("#inputMoney").attr("placeholder","已封盘");
             $("#inputMoney").attr("disabled",true);
             $("a#show-t").addClass("disabled-btn");
             $("a#show-t").attr("id","show_t");
         },
         openHandicapXY:function () {
-            // mui("body").on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn');
-            // $("div.bet-table-lists td,div.bet-table-lists .n-btn").attr("style","");
             $("div.bet-table-list .n-btn").attr("style","color:");
             $(".fengPan").removeClass("disabled");
             $("#inputMoney").attr("placeholder","");

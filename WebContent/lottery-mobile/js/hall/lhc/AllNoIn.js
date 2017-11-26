@@ -13,7 +13,10 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
             $("span.x_1.gfwf-tit").text(BetCode);
             $(".s-title.title1 span").text("全不中");
             $(".s-title.title2 span").text(BetCode);
-            $("#toobarTitle").text("信用玩法-全不中");
+            $("#toobarTitle").text("传统玩法-全不中");
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('传统玩法-全不中');
+            }
         },
 
 
@@ -121,7 +124,7 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
                     betNum: value,
                     odd: odd,
                     betAmount: betAmount,
-                    memo: memo+"-"+value
+                    memo: memo+"- "+value
                 });
                 betForm.totalMoney += betAmount;
                 betForm.quantity++;

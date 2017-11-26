@@ -36,6 +36,8 @@ define(['site/hall/ssc/PlayWay'], function (PlayWay) {
                         allcheck.prop("checked", false);
                         var toucheck = $("#betTalble tbody tr.headtr td");
                         var szdata = data[key];
+                        $("#touwei").text(betname.substring(0,1));
+                        $("#weiwei").text(betname.substring(1,2));
                         toucheck.attr("data-name",betname.substring(0,1) + "位");
                         var weicheck = $("#betTalble tbody tr.weitr td");
                         allcheck.attr("data-bet-code", szdata.betCode);

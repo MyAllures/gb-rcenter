@@ -94,7 +94,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                         $("a[data-code='百定位']").addClass("mui-active");
                         $("a.x_1.mui-col-xs-6").addClass("x_active");
                         $("a.x_3.mui-col-xs-6").removeClass("x_active");
-                        $("#toobarTitle").text("信用玩法-定位");
+                        $("#toobarTitle").text("传统玩法-定位");
                         $("#GenraType").val("fix");
                         _this.changeList();
                     }
@@ -201,7 +201,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                             if (_this.isOpen && data.leftOpenTime >0){
                                 _this.closeHandicapGF();//官方
                                 _this.closeHandicapXY();//信用
-                                $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' >")
+                                $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' ></font>")
                                 $("#leftTime").attr("data-time", data.leftOpenTime);
                                 _this.isOpen = false;
                                 _this.showClearPopups();
@@ -216,7 +216,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                             if (_this.isOpen && data.leftOpenTime >0){
                                 _this.closeHandicapGF();//官方
                                 _this.closeHandicapXY();//信用
-                                $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' >")
+                                $("#leftTime").parent().html("距离开盘时间还有：<font id='leftTime' ></font>")
                                 $("#leftTime").attr("data-time", data.leftOpenTime);
                                 _this.isOpen = false;
                                 _this.showClearPopups();

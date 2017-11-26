@@ -20,6 +20,9 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
             $(".s-title.title2 span").text("直选复式");
             $(".x_3.gfwf-playName").text("直选复式");
             $("#toobarTitle").text("官方玩法-任选三");
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('官方玩法-任选三');
+            }
             $("a[data-code='ssc_renxuan3_zxfs']").addClass("mui-active");
         },
         /**************任选二***************/

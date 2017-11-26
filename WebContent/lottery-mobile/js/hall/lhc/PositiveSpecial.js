@@ -13,16 +13,17 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
             $("span.x_1.gfwf-tit").text(BetCode);
             $(".s-title.title1 span").text("正码特");
             $(".s-title.title2 span").text(BetCode);
-            $("#toobarTitle").text("信用玩法-正码特");
+            $("#toobarTitle").text("传统玩法-正码特");
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('传统玩法-正码特');
+            }
         },
 
 
         getOdds: function () {
             var url = root + '/' + this.type + '/' + this.code + '/positiveSpecialOdd.html';
             var subCode = $("a.mui-active[data-subCode]").attr("data-subCode");
-            var betTitle = $("a.mui-active[data-subCode]").text();
             var _this = this;
-            $(".bet-title").text(betTitle);
             mui.ajax(url, {
                 dataType: 'json',
                 type: 'POST',

@@ -13,6 +13,10 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
             $("span.x_1.gfwf-tit").text("不定位");
             $(".s-title.title1 span").text("不定位");
             $("#toobarTitle").text("官方玩法-不定位");
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('官方玩法-不定位');
+            }
+
             if(betCode =="ssc_budingwei"){
                 $("a[data-code='ssc_budingwei_q3ym']").addClass("mui-active");
                 $(".x_3.gfwf-playName").text("前三一码")
