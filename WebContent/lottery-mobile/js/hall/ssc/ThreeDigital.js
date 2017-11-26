@@ -18,6 +18,9 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             $(".s-title.title1 span").text("三字定位");
             $(".s-title.title2 span").text("万千百");
             $("#toobarTitle").text("传统玩法-三字定位");
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('传统玩法-三字定位');
+            }
             if(betCode =="ssc_sanzidingwei"){
                 $("a[data-code='万千百']").addClass("mui-active");
                 $(".x_3.gfwf-playName").text("万千百");

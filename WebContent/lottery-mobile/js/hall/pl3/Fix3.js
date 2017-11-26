@@ -14,6 +14,9 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
             $("span.x_1.gfwf-tit").text(gfwfBetCode);
             $(".s-title.title1 span").text(gfwfBetCode);
             $("#toobarTitle").text("传统玩法-定位");
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('传统玩法-定位');
+            }
             $(".x_3.gfwf-playName").text(gfwfBetCode)
             $(".s-title.title2 span").text(gfwfBetCode);
         },

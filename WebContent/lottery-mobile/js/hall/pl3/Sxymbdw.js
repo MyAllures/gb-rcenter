@@ -15,6 +15,9 @@ define(['site/hall/pl3/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
             $("span.x_1.gfwf-tit").text("不定位");
             $(".s-title.title1 span").text("不定位");
             $("#toobarTitle").text("官方玩法-不定位");
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('官方玩法-不定位');
+            }
             $(".s-title.title2 span").text("一码");
             $(".x_3.gfwf-playName").text("一码");
             $("a[data-code='pl3_budingwei_sxym']").addClass("mui-active");

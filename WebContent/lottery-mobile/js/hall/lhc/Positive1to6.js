@@ -15,6 +15,9 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
             $(".s-title.title1 span").text(BetCode1);
             $(".s-title.title2 span").text(BetCode1);
             $("#toobarTitle").text("传统玩法-"+BetCode1);
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('传统玩法-'+BetCode1);
+            }
             $("a[data-code='tema'] span").text(BetCode1);
         },
 

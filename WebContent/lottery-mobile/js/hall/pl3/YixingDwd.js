@@ -14,6 +14,9 @@ define(['site/hall/pl3/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
             $("span.x_1.gfwf-tit").text("定位胆");
             $(".s-title.title1 span").text("定位胆");
             $("#toobarTitle").text("官方玩法-定位胆");
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('官方玩法-定位胆');
+            }
             $(".s-title.title2 span").text("直选复式");
             $(".x_3.gfwf-playName").text("直选复式");
             $("a[data-code='pl3_yixing_dwd']").addClass("mui-active");

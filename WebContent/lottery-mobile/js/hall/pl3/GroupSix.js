@@ -19,6 +19,9 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             $(".s-title.title1 span").text("组六");
             $(".s-title.title2 span").text("组六");
             $("#toobarTitle").text("传统玩法-组六");
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('传统玩法-组六');
+            }
             $("a[data-code='zusan'] span").text("组六");
         },
 
