@@ -90,6 +90,7 @@ define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage,Bootstra
                 var name=$(obj).attr("_name");
                 var isRequired=$(obj).is(":checked");
                 var isRegField=$("#field"+index).is(":checked");
+                var isOnly=$("#only"+index).is(":checked");
                 if($.trim(name).length>0) {
                     orderObj.push({
                         "bulitIn": bulitIn,
@@ -98,6 +99,7 @@ define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage,Bootstra
                         "name": name,
                         "isRequired": bulitIn == "true" ? "0" : (isRequired ? "1" : "2"),
                         "isRegField": bulitIn == "true" ? "0" : (isRegField ? "1" : "2"),
+                        "isOnly": isOnly ? "1" : "2",
                         "status": "1"
                     });
                 }
