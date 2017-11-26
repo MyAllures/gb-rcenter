@@ -70,7 +70,9 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
         },
 
         changeList : function(){
+            var _this=this;
             var lotteryGenra=$("#GenraType").val();
+            console.log(lotteryGenra)
             var betCode="ssc_shuzipan";
             var jspStr="DigitalDisk";
             if(lotteryGenra =="ssc_yixing_dwd"){
@@ -81,6 +83,9 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 data: {"betCode": betCode,"jspStr":jspStr},
                 type: 'POST',
                 success: function (data) {
+                    if(betCode=="ssc_yixing_dwd"){
+                        _this.backGuanfangwanfa();
+                    }
                     $(".bet-table").html(data);
                 }
             });
@@ -116,9 +121,6 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                     && dataCode !="ssc_zuxuanliu"
                     && dataCode !="ssc_kaudu"
                 ){
-                    // $('div.gfwf-bg').slideUp();
-                    // $('div.selected-wrap').slideUp();
-                    // $('div.x_wrap').slideUp();
                     _this.closeTop();
                 }
                 //官方

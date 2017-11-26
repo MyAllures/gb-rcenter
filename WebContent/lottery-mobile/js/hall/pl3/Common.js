@@ -26,8 +26,6 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 && dataCode !="comb"
                 && dataCode !="sum"
                 ){
-                    // $('div.gfwf-bg').slideUp();
-                    // $('div.selected-wrap').slideUp();
                     _this.closeTop();
                 }
 
@@ -70,6 +68,9 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 type: 'POST',
                 success: function (data) {
                     $(".bet-table").html(data);
+                    if(betCode=="pl3_yixing_dwd"){
+                        _this.backGuanfangwanfa();
+                    }
                     $("#gfwfBetCode").val(betCode);
                     if(!_this.isOpen){
                         _this.closeHandicapGF();//官方

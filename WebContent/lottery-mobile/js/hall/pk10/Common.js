@@ -19,6 +19,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
         },
 
         changeList : function(){
+            var _this=this;
             var lotteryGenra=$("#GenraType").val();
             var betCode="digitalDisk";
             var jspStr="DigitalDisk";
@@ -30,6 +31,9 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 data: {"betCode": betCode,"jspStr":jspStr},
                 type: 'POST',
                 success: function (data) {
+                    if(betCode=="pk10_yixing_dwd"){
+                        _this.backGuanfangwanfa();
+                    }
                     $(".bet-table").html(data);
                 }
             });

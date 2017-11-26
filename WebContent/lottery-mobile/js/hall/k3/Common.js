@@ -85,6 +85,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
         },
 
         changeList : function(){
+            var _this=this;
             var lotteryGenra=$("#GenraType").val();
             var betCode="k3_dianshu";
             var jspStr="Points";
@@ -96,6 +97,9 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 data: {"betCode": betCode,"jspStr":jspStr},
                 type: 'POST',
                 success: function (data) {
+                    if(betCode=="k3_tongxuan_santong"){
+                        _this.backGuanfangwanfa();
+                    }
                     $(".bet-table").html(data);
                 }
             });
