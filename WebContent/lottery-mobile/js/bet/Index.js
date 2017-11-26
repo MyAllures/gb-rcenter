@@ -324,11 +324,11 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 $('#betamount').html(0);
             }
             //设置总盈亏
-            if (betProfit.profitloss && betProfit.profitloss != 0) {
+            // if (betProfit.profitloss && betProfit.profitloss != 0) {
                 $('#profitloss').html((betProfit.profitloss-totalBetAmount).toFixed(2));
-            }else{
-                $('#profitloss').html(0);
-            }
+            // }else{
+            //     $('#profitloss').html(0);
+            // }
             //设置当前投注额
             if (betProfit.currentAmount && betProfit.currentAmount != 0){
                 $('#currentAmount').html(betProfit.currentAmount.toFixed(2))
@@ -337,11 +337,11 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 $('#currentAmount').html(0);
             }
             //设置当前盈亏
-            if (betProfit.payout && betProfit.payout != 0){
+            // if (betProfit.payout && betProfit.payout != 0){
                 $('#payout').html((betProfit.payout-betamount).toFixed(2));
-            } else{
-                $('#payout').html(0);
-            }
+            // } else{
+            //     $('#payout').html(0);
+            // }
         },
 
         /** 手动刷新 */
