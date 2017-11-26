@@ -280,7 +280,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 complete: function () {
                     _this.hideLoading();
                 },error:function(xhr,type,errorThrown){
-                    _this.toast('下注失败：请求异常');
+                    _this.toast('下注失败：请先登录');
                 }
             });
         },
@@ -756,7 +756,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                     $("font#pl").text("");
                     _this.hideLoading();
                 },error:function(xhr,type,errorThrown){
-                    _this.toast('下注失败：请求异常');
+                    _this.toast('下注失败：请先登录');
                 }
             })
         },
