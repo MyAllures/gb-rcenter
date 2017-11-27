@@ -36,7 +36,15 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
         checkBaodan : function ($this) {
             var betCode=$("a.selected-btn.mui-col-xs-4.main.mui-active").attr("data-code");
             if(betCode =="ssc_sanxing_zuxuan_hszxbd" || betCode =="ssc_sanxing_zuxuan_qszxbd" || betCode =="ssc_erxing_zuxuan_qebd"){
-                $("div.newball-item-20 a.n-btn").removeClass("mui-active");
+                if($this.hasClass("mui-active")){
+                    $("div.newball-item-20 a.n-btn").removeClass("mui-active");
+                }else{
+                    $("div.newball-item-20 a.n-btn").removeClass("mui-active");
+                    $this.addClass('mui-active');
+                }
+                return true;
+            }else{
+                return false;
             }
         },
 

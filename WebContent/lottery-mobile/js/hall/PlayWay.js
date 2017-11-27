@@ -159,8 +159,9 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             if(page.isOpen) {
                 mui("li.screen-munber").off('tap', 'a').on('tap', 'a', function () {
                     //判断是否为SSC包胆,K3二同号单选
-                    _this.checkBaodan($(this));
-                    this.classList.toggle('mui-active');
+                    if(!_this.checkBaodan($(this))){
+                        this.classList.toggle('mui-active');
+                    }
                     $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
                     _this.getZhuShu();
                 });
@@ -592,6 +593,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
 
         //判断是否为SSC包胆,K3二同号单选重写
         checkBaodan : function ($this) {
+            return false;
         },
 
         //针对ssc三星组合
