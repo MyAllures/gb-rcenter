@@ -18,19 +18,52 @@ define(['common/BaseListPage'], function (BaseListPage) {
             this._super();
         },
         /**
+         * 刷新版本数据
+         * @param e
+         * @param opt
+         */
+        refreshData:function (e, opt) {
+            var _this =this
+            window.top.topPage.ajax({
+                dataType:'json',
+                type:"post",
+                url:root+'/Version/refresh.html',
+                success:function(data){
+                    if(data==true){
+                        window.setTimeout(function () {
+                            _this.query(e, opt);
+                        },1000);
+                    }
+                },
+                error:function(data) {
+
+                }
+            });
+        },
+        /**
          * 切换版本号
          * @param e
          * @param opt
          */
         changeVersion:function (e, opt) {
+            var _this =this
             window.top.topPage.ajax({
                 dataType:'json',
-                data:{appKey:opt.appKey,appVersion:opt.appVersion},
+                data:{
+                    appKey:opt.appKey,
+                    hostIp:opt.hostIp,
+                    appVersion:opt.appVersion,
+                    versionName:opt.versionName,
+                    serverApp:opt.serverApp
+                },
                 type:"post",
                 url:root+'/Monitor/ChangeVersion.html',
                 success:function(data){
                     if(data==true){
                         window.top.topPage.showSuccessMessage("操作成功!");
+                        window.setTimeout(function () {
+                            _this.refreshData(e, opt);
+                        },2000);
                     }else{
                         window.top.topPage.showSuccessMessage("操作失败!");
                     }
