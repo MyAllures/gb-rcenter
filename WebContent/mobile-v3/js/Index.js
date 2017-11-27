@@ -1,7 +1,19 @@
 $(function () {
-    muiInit(muiDefaultOptions);
+    var options = {
+        /*主页面滚动指定容器，可自行指定范围*/
+        containerScroll: '.mui-content.mui-scroll-wrapper',
+        /*左侧菜单上下滚动，可自行指定范围*/
+        leftMenuScroll: '.mui-scroll-wrapper.side-menu-scroll-wrapper',
+        /*右侧菜单上下滚动，可自行指定范围*/
+        rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
+        /*禁用侧滑手势指定样式*/
+        disabledHandSlip: ['mui-off-canvas-left'],
+        init: pullUpRefreshOption('#pullfresh', pullfresh, false)
+    };
+    muiInit(options);
     initBanner();
     floatList();
+    loadData($('#lottery-id').val(),1);
 });
 
 /*轮播图*/
@@ -244,4 +256,86 @@ function onceAgain(){
     $(".hongbao_inner").removeClass("opened");
     $("#lotteryPages").show();
     $(".tips").hide();
+}
+
+/* 导航tab切换 */
+$(".nav").on("tap",".mui-control-item",function(){
+    var target = $(this).data('item');
+    $(".api-grid ul").removeClass('active');
+    $(".api-grid div").removeClass('active');
+    $(".api-grid ul[data-list='"+target+"']").addClass('active');
+});
+/*彩票导航菜单滚动*/
+mui('.lottery-nav .mui-scroll-wrapper').scroll({
+    scrollY: false, //是否竖向滚动
+    scrollX:true, //是否横向滚动
+    startX: 0, //初始化时滚动至x
+    startY: 0, //初始化时滚动至y
+    indicators: true, //是否显示滚动条
+    deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+    bounce: true //是否启用回弹
+});
+/*彩票切换*/
+$(".lottery-nav li").on("tap",function(){
+    $(this).siblings().find("a").removeClass("mui-active");
+    $(this).find("a").addClass("mui-active");
+    var isLoadData = $(this).find("a").attr("loadData");
+    var apiId = $(this).find("a").attr("data-lottery-id");
+    $('#lottery-id').val(apiId);
+    if(!isLoadData){
+        loadData(apiId,1);
+    }
+    var pageNumber = parseInt($('#total-page-'+apiId).attr("pageNumber"));
+    var lastPageNumber = parseInt($('#total-page-'+apiId).val());
+    if(pageNumber != lastPageNumber){
+        mui('#pullfresh').pullRefresh().refresh(true);
+    }
+
+});
+/*彩票上拉请求数据*/
+function pullfresh() {
+    setTimeout(function () {
+        mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
+        var type = $(".nav .mui-scroll .mui-active").attr("data-item");
+        if(type == "lottery"){
+            mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
+
+            var apiId = $("#lottery-id").val();
+            var pageNumber = parseInt($('#total-page-'+apiId).attr("pageNumber"));
+            var lastPageNumber = parseInt($('#total-page-'+apiId).val());
+            if(pageNumber == lastPageNumber){
+                mui('#pullfresh').pullRefresh().endPullupToRefresh(true);
+            }else{
+                loadData(apiId,pageNumber+1);
+            }
+        }
+
+    }, 0);
+}
+/** 切换TAB加载数据 */
+function loadData(apiId,pageNumber) {
+    mui.ajax(root + '/game/getGameByApiId.html?search.apiId='+apiId+'&search.apiTypeId=4&paging.pageNumber='+pageNumber, {
+        type: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Soul-Requested-With': 'XMLHttpRequest'
+        },
+        beforeSend: function () {
+            //_this.showLoading(338);
+            //$('div.lottery-content-' + apiId).parent().addClass('mui-show');
+        },
+        success: function (data) {
+            setTimeout(function() {
+                $('#lottery-id').val(apiId);
+                $('input#loading-' + apiId).val('false');
+                $('div#lottery-' + apiId).append(data);
+                $(".lottery-nav a[data-lottery-id='"+apiId+"']").attr("loadData","true");
+
+                $("#total-page-"+apiId).attr("pageNumber",pageNumber);
+            }, 1000);
+        },
+        complete: function () {
+            //_this.hideLoading();
+        }
+    });
 }
