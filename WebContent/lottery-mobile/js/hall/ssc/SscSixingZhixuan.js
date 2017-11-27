@@ -132,6 +132,7 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
             $("#zxfs").show();
             $("a[data-code='"+$("#gfwfBetCode").val()+"']").addClass("mui-active");
             $("a[data-code='zxfs']").addClass("mui-active");
+            $("a[data-code='zxfs'] span").text("直选复式");
             $(".x_3.gfwf-playName").text("直选复式");
             $("span.x_1.gfwf-tit").text("四星");
             $(".s-title.title1 span").text("四星");

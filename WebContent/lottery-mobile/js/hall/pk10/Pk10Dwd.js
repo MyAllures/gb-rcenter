@@ -15,9 +15,9 @@ define(['site/hall/pk10/PlayWay-gfwf', 'site/plugin/template'], function (PlayWa
             if (this.os == 'app_android' && isLotterySite == 'true') {
                 window.gamebox.setTitle('官方玩法-定位胆');
             }
-            $(".x_3.gfwf-playName").text("直选复式");
-            $(".s-title.title2 span").text("直选复式")
-            $("a[data-code='zxfs'] span").text("直选复式");
+            $(".x_3.gfwf-playName").text("定位胆");
+            $(".s-title.title2 span").text("定位胆")
+            $("a[data-code='zxfs'] span").text("定位胆");
         },
 
         /************************************************PK10**********************************************/

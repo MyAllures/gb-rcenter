@@ -26,8 +26,6 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 && dataCode !="comb"
                 && dataCode !="sum"
                 ){
-                    // $('div.gfwf-bg').slideUp();
-                    // $('div.selected-wrap').slideUp();
                     _this.closeTop();
                 }
 
@@ -70,6 +68,9 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 type: 'POST',
                 success: function (data) {
                     $(".bet-table").html(data);
+                    if(betCode=="pl3_yixing_dwd"){
+                        _this.backGuanfangwanfa();
+                    }
                     $("#gfwfBetCode").val(betCode);
                     if(!_this.isOpen){
                         _this.closeHandicapGF();//官方
@@ -207,6 +208,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                                 _this.showClearPopups();
                             }else if (!_this.isOpen){
                                 var dtime = $("#leftTime").attr("data-time");
+                                $("#leftTime").parent().html("距离封盘时间还有：<font id='leftTime' ></font>")
                                 $("#leftTime").attr("data-time", dtime);
                                 _this.isOpen = true;
                                 _this.openHandicapGF();//官方
@@ -222,6 +224,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                                 _this.showClearPopups();
                             }else if(!_this.isOpen){
                                 var dtime = $("#leftTime").attr("data-time");
+                                $("#leftTime").parent().html("距离封盘时间还有：<font id='leftTime' ></font>")
                                 $("#leftTime").attr("data-time", dtime);
                                 _this.isOpen = true;
                                 _this.openHandicapGF();//官方

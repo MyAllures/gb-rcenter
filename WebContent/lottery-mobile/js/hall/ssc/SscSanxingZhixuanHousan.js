@@ -525,7 +525,6 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
          */
         random_h3zuxhz:function () {
             var random_1 = (parseInt(Math.random() * 26) + 1);
-            // console.log(random_1);
             $("a.n-btn.hezhi").removeClass("mui-active").eq(random_1-1).addClass("mui-active");
         },
 
@@ -535,6 +534,7 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
          * 注数-组选包胆
          */
         zhushu_h3zuxbd : function (){
+            var _this=this;
             var baoDanArr = [], newArr = [];
             $.each($("a.n-btn.kuadu.mui-active"), function (index, value) {
                 baoDanArr.push($.trim($(this).html()));

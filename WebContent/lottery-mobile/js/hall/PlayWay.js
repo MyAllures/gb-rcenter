@@ -101,66 +101,78 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 _this.getZhuShu();
             });
             //全
-            mui(".newball-content-top").on('tap','.quan',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).addClass("mui-active");
-                _this.getZhuShu();
-            });
+            if(page.isOpen) {
+                mui(".newball-content-top").on('tap', '.quan', function () {
+                    var flag = $(this).attr("data-flag");
+                    $("a." + flag).addClass("mui-active");
+                    _this.getZhuShu();
+                });
+            }
             //大
-            mui(".newball-content-top").on('tap','.da',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).removeClass("mui-active");
-                var Aarr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-                var Barr = [, , , , , 5, 6, 7, 8, 9];
-                for (var i = 0; i <= Aarr.length; ++i) {
-                    if (Aarr[i] == Barr[i]) {
-                        $("a."+flag+"."+i).addClass("mui-active");
+            if(page.isOpen) {
+                mui(".newball-content-top").on('tap','.da',function(){
+                    var flag = $(this).attr("data-flag");
+                    $("a."+flag).removeClass("mui-active");
+                    var Aarr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+                    var Barr = [, , , , , 5, 6, 7, 8, 9];
+                    for (var i = 0; i <= Aarr.length; ++i) {
+                        if (Aarr[i] == Barr[i]) {
+                            $("a."+flag+"."+i).addClass("mui-active");
+                        }
                     }
-                }
-                _this.getZhuShu();
-            });
+                    _this.getZhuShu();
+                });
+            }
+
             //小
-            mui(".newball-content-top").on('tap','.xiao',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).removeClass("mui-active");
-                var Aarr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-                var Barr = [0, 1, 2, 3, 4, , , , ,];
-                for (var i = 0; i <= Aarr.length; ++i) {
-                    if (Aarr[i] == Barr[i]) {
-                        $("a."+flag+"."+i).addClass("mui-active");
+            if(page.isOpen) {
+                mui(".newball-content-top").on('tap', '.xiao', function () {
+                    var flag = $(this).attr("data-flag");
+                    $("a." + flag).removeClass("mui-active");
+                    var Aarr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+                    var Barr = [0, 1, 2, 3, 4, , , , ,];
+                    for (var i = 0; i <= Aarr.length; ++i) {
+                        if (Aarr[i] == Barr[i]) {
+                            $("a." + flag + "." + i).addClass("mui-active");
+                        }
                     }
-                }
-                _this.getZhuShu();
-            });
+                    _this.getZhuShu();
+                });
+            }
             //奇
-            mui(".newball-content-top").on('tap','.ji',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).removeClass("mui-active");
-                for (var i = 0; i < 12; i++) {
-                    if (i%2 != 0) {   //奇数
-                        $("a."+flag+"."+i).addClass("mui-active");
+            if(page.isOpen) {
+                mui(".newball-content-top").on('tap', '.ji', function () {
+                    var flag = $(this).attr("data-flag");
+                    $("a." + flag).removeClass("mui-active");
+                    for (var i = 0; i < 12; i++) {
+                        if (i % 2 != 0) {   //奇数
+                            $("a." + flag + "." + i).addClass("mui-active");
+                        }
                     }
-                }
-                _this.getZhuShu();
-            });
+                    _this.getZhuShu();
+                });
+            }
             //偶
-            mui(".newball-content-top").on('tap','.ou',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).removeClass("mui-active");
-                for (var i = 0; i < 12; i++) {
-                    if (i%2 == 0) {   //奇数
-                        $("a."+flag+"."+i).addClass("mui-active");
+            if(page.isOpen) {
+                mui(".newball-content-top").on('tap', '.ou', function () {
+                    var flag = $(this).attr("data-flag");
+                    $("a." + flag).removeClass("mui-active");
+                    for (var i = 0; i < 12; i++) {
+                        if (i % 2 == 0) {   //奇数
+                            $("a." + flag + "." + i).addClass("mui-active");
+                        }
                     }
-                }
-                _this.getZhuShu();
-            });
+                    _this.getZhuShu();
+                });
+            }
 
             //选择球
             if(page.isOpen) {
                 mui("li.screen-munber").off('tap', 'a').on('tap', 'a', function () {
                     //判断是否为SSC包胆,K3二同号单选
-                    _this.checkBaodan($(this));
-                    this.classList.toggle('mui-active');
+                    if(!_this.checkBaodan($(this))){
+                        this.classList.toggle('mui-active');
+                    }
                     $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
                     _this.getZhuShu();
                 });
@@ -280,7 +292,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 complete: function () {
                     _this.hideLoading();
                 },error:function(xhr,type,errorThrown){
-                    _this.toast('下注失败：请求异常');
+                    _this.toast('下注失败：请先登录');
                 }
             });
         },
@@ -347,7 +359,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             var content = Template('gfwf_template_order',
                 {"quantity": Number($("#quantity-gfwf").text()),
                     "firstShowPl":firstShowPl,
-                    "totalMoney":Number($("#quantity-gfwf").text())*2,
+                    "totalMoney":(Number($("#quantity-gfwf").text())*2).toFixed(3),
                     "canWin": parseFloat((maxCanWin * 1)).toFixed(3),
                     "expect":$('font#expect').text(),
                     "betNum":_this.betNum,
@@ -592,6 +604,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
 
         //判断是否为SSC包胆,K3二同号单选重写
         checkBaodan : function ($this) {
+            return false;
         },
 
         //针对ssc三星组合
@@ -756,7 +769,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                     $("font#pl").text("");
                     _this.hideLoading();
                 },error:function(xhr,type,errorThrown){
-                    _this.toast('下注失败：请求异常');
+                    _this.toast('下注失败：请先登录');
                 }
             })
         },

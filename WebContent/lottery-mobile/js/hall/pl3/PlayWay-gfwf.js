@@ -44,7 +44,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
         getBetName : function (name,betCode) {
             if(betCode=="pl3_yixing_dwd"){
-                return name+"-定位胆-直选复式";
+                return name+"-定位胆-定位胆";
             }else if(betCode=="pl3_budingwei_sxym"){
                 return name+"-不定位-一码";
             }
