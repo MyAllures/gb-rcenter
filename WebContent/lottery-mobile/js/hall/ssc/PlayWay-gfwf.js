@@ -68,7 +68,7 @@ define(['site/hall/PlayWay', 'site/plugin/template'], function (PlayWay, Templat
 
         getBetName : function (name,betCode) {
             if(betCode=="ssc_yixing_dwd"){
-                return name+"-定位胆-直选复式";
+                return name+"-定位胆-定位胆";
             }else if(betCode=="ssc_wuxing_zhixuan_fs"){
                 return name+"-五星-直选复式";
             }else if(betCode=="ssc_sixing_zhixuan_fs"){
