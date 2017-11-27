@@ -348,7 +348,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             var content = Template('gfwf_template_order',
                 {"quantity": Number($("#quantity-gfwf").text()),
                     "firstShowPl":firstShowPl,
-                    "totalMoney":Number($("#quantity-gfwf").text())*2,
+                    "totalMoney":(Number($("#quantity-gfwf").text())*2).toFixed(3),
                     "canWin": parseFloat((maxCanWin * 1)).toFixed(3),
                     "expect":$('font#expect').text(),
                     "betNum":_this.betNum,
