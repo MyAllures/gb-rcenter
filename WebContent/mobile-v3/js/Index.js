@@ -262,6 +262,7 @@ function onceAgain(){
 $(".nav").on("tap",".mui-control-item",function(){
     var target = $(this).data('item');
     $(".api-grid ul").removeClass('active');
+    $(".api-grid div").removeClass('active');
     $(".api-grid ul[data-list='"+target+"']").addClass('active');
 });
 /*彩票导航菜单滚动*/
