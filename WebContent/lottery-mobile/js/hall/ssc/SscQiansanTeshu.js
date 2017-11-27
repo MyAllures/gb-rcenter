@@ -46,7 +46,6 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
                 thArr.push($.trim($(this).html()));
             });
             if (thArr.length <= 0) {
-                alert("至少选择1注号码才能投注");
                 return false;
             }
             return thArr.join("|");

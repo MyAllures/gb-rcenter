@@ -213,6 +213,7 @@ define(['site/hall/Common'], function (Common) {
                         }
                         if (_this.code == 'hklhc' && !_this.isOpen&& data.leftOpenTime <=0){
                             var dtime = $("#leftTime").attr("data-time");
+                            $("#leftTime").parent().html("距离封盘时间还有：<font id='leftTime' ></font>")
                             $("#leftTime").attr("data-time", dtime);
                             _this.isOpen = true;
                             _this.openHandicapXY();//信用

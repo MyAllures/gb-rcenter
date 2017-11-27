@@ -208,6 +208,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                                 _this.showClearPopups();
                             }else if (!_this.isOpen){
                                 var dtime = $("#leftTime").attr("data-time");
+                                $("#leftTime").parent().html("距离封盘时间还有：<font id='leftTime' ></font>")
                                 $("#leftTime").attr("data-time", dtime);
                                 _this.isOpen = true;
                                 _this.openHandicapGF();//官方
@@ -223,6 +224,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                                 _this.showClearPopups();
                             }else if(!_this.isOpen){
                                 var dtime = $("#leftTime").attr("data-time");
+                                $("#leftTime").parent().html("距离封盘时间还有：<font id='leftTime' ></font>")
                                 $("#leftTime").attr("data-time", dtime);
                                 _this.isOpen = true;
                                 _this.openHandicapGF();//官方
