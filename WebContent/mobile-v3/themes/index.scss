@@ -19,26 +19,26 @@
     -webkit-transform: rotateZ(-45deg);
             transform: rotateZ(-45deg);}
         &:before{content: '';position: absolute;width: 56px;height: 56px;top: 0;left: 0;z-index: 1;background: url(images/api-sprite.png) 0 0/56px no-repeat;}
-        &.mg:before{background-position: -7px 0;}        
-        &.ebet:before{background-position: 0 -56px;}     
-        &.og:before{background-position: 0 -112px;}    
-        &.sa:before{background-position: 0 -168px;}    
-        &.ag:before{background-position: 0 -224px;}     
-        &.bb:before{background-position: 0 -280px;}   
-        &.gd:before{background-position: 0 -336px;}   
-        &.ds:before{background-position: 0 -392px;}   
-        &.hg:before{background-position: 0 -448px;}   
-        &.pt:before{background-position: 0 -504px;}   
-        &.sb:before{background-position: 0 -560px;}   
-        &.hb:before{background-position: 0 -616px;}   
-        &.png:before{background-position: 0 -672px;}   
-        &.bsg:before{background-position: 0 -728px;}   
-        &.opus:before{background-position: 0 -784px;}   
-        &.sg:before{background-position: 0 -840px;}  
-        &.im:before{background-position: 0 -896px;}  
-        &.dt:before{background-position: 0 -952px;}  
-        &.kg:before{background-position: 0 -1008px;}  
-        &.gg:before{background-position: 0 -1064px;} 
+        &.api-icon-2-3:before{background-position: -7px 0;}        
+        &.api-icon-1-16:before{background-position: 0 -56px;}     
+        &.api-icon-1-7:before{background-position: 0 -112px;}    
+        &.api-icon-1-17:before{background-position: 0 -168px;}    
+        &.api-icon-1-9:before,&.api-icon-2-9:before{background-position: 0 -224px;}     
+        &.api-icon-1-10:before,&.api-icon-2-10:before{background-position: 0 -280px;}   
+        &.api-icon-1-5:before{background-position: 0 -336px;}   
+        &.api-icon-1-1:before{background-position: 0 -392px;}   
+        &.api-icon-2-15:before{background-position: 0 -616px;}   
+        &.api-icon-2-6:before{background-position: 0 -504px;}  
+        &.api-icon-3-12:before{background-position: 0 -448px;}   
+        &.api-icon-3-19:before{background-position: 0 -560px;}   
+        &.api-icon-2-26:before{background-position: 0 -672px;}   
+        &.api-icon-2-20:before{background-position: 0 -728px;}   
+        &.api-icon-1-24:before,&.api-icon-3-24:before{background-position: 0 -784px;}   
+        &.api-icon-2-25:before{background-position: 0 -840px;}  
+        &.api-icon-3-4:before{background-position: 0 -896px;}  
+        &.api-icon-2-27:before{background-position: 0 -952px;}  
+        &.api-icon-1-2:before{background-position: 0 -1008px;}  
+        &.api-icon-2-28:before{background-position: 0 -1064px;} 
         &.lt:before{background-position: 0 -1120px;} 
         &.yzt:before{background-position: 0 -1176px;} 
     }
@@ -60,9 +60,10 @@
                 .mui-tab-item{padding: 0;   height: 40px;   display: block;    width: 100%;    line-height: 39px;   padding-left: 40px;background-position: 4px center;
     background-size: 30px;
     background-repeat: no-repeat;    text-align: left;
-                    &.yzt{background-image: url(images/icon-yzt.png);}  
-                    &.kg{background-image: url(images/icon-kg.png);} 
-                    &.bb{background-image: url(images/icon-bb.png);}                   
+                    &.api-icon-4-22-2{background-image: url(images/icon-yzt.png);}  
+                    &.api-icon-4-22-1{background-image: url(images/icon-lt.png);} 
+                    &.api-icon-4-2{background-image: url(images/icon-kg.png);} 
+                    &.api-icon-4-10{background-image: url(images/icon-bb.png);}                   
                 }
             }
         }        
