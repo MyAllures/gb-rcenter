@@ -115,7 +115,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                         $("a[data-code='ds']").addClass("mui-active");
                         $("a.x_1.mui-col-xs-6").addClass("x_active");
                         $("a.x_3.mui-col-xs-6").removeClass("x_active");
-                        $("#toobarTitle").text("信用玩法-点数");
+                        $("#toobarTitle").text("传统玩法-点数");
                         $("#GenraType").val("k3_dianshu");
                         _this.changeList();
                     }

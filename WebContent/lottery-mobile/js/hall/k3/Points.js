@@ -11,7 +11,10 @@ define(['site/hall/k3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay,
             $("span.x_1.gfwf-tit").text("点数");
             $(".s-title.title1 span").text("点数");
             $(".s-title.title2 span").text("点数");
-            $("#toobarTitle").text("信用玩法-点数");
+            $("#toobarTitle").text("传统玩法-点数");
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('传统玩法-点数');
+            }
             $("a[data-code='ds'] span").text("点数");
         }
 

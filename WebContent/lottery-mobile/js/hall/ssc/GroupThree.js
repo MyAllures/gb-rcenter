@@ -15,7 +15,10 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             $("span.x_1.gfwf-tit").text("组选三");
             $(".s-title.title1 span").text("组选三");
             $(".s-title.title2 span").text(betCode);
-            $("#toobarTitle").text("信用玩法-组选三");
+            $("#toobarTitle").text("传统玩法-组选三");
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('传统玩法-组选三');
+            }
             if(betCode =="ssc_zuxuansan"){
                 $("a[data-code='前三组选三']").addClass("mui-active");
                 /*$(".x_3.gfwf-playName").text("前三组选三");*/
@@ -23,6 +26,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 $("#zuxuansan a").removeClass("mui-active");
                 $("a[data-code='"+betCode+"']").addClass("mui-active");
             }
+
             $(".x_3.gfwf-playName").text(betCode)
             /*$(".s-title.title2 span").text(betCode);*/
         },

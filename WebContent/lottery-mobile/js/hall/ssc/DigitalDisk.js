@@ -27,6 +27,7 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
         },
 
         showTable : function(){
+
             //数字盘
             $("div.s-menu.second").hide();
             $("#shuzipan").show();
@@ -36,7 +37,10 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             $("span.x_1.gfwf-tit").text("数字盘");
             $(".s-title.title1 span").text("数字盘");
             $(".s-title.title2 span").text("数字盘");
-            $("#toobarTitle").text("信用玩法-数字盘");
+            $("#toobarTitle").text("传统玩法-数字盘");
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle('传统玩法-数字盘');
+            }
             $("a[data-code='szp'] span").text("数字盘");
         }
 

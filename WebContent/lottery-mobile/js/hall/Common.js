@@ -68,14 +68,12 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("div.s-menu").off('tap','a').on('tap', 'a', function () {
                 mui('.mui-scroll-wrapper.middle-content').scroll().scrollTo(0,0,100);
                 _this.checkSubordinate($(this).attr("data-code"), this.classList);
-                return;
+
             });
 
             //直选复式
             mui("body").off('tap','.gfwf-playName').on('tap', '.gfwf-playName', function () {
-
-                mui(".gfwf-wrap")[0].classList.toggle('Fixed');
-                mui(".gfwf-bg")[0].classList.toggle('show');
+                _this.changePlay();
             });
 
             mui(".gfwf-bg")[0].addEventListener('tap', function() {
@@ -93,6 +91,10 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui(".gfwf-bg")[0].classList.remove('show');
         },
 
+        changePlay: function () {
+            mui(".gfwf-wrap")[0].classList.toggle('Fixed');
+            mui(".gfwf-bg")[0].classList.toggle('show');
+        },
 
         getBetTable: function(betCode,jspName){
             var _this=this;
