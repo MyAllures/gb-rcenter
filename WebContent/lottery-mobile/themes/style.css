@@ -1219,7 +1219,7 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .middle-content {bottom: 2.75rem;}
 .middle-content.app-middle-content{bottom: 0;}
 .middle-content.middle-content-bat{bottom: 2.75rem; }
-.middle-content.middle-content-bat.result-today{bottom: 4.4rem; }
+.middle-content.middle-content-bat.result-today{padding-bottom: 1.65rem; }
 .bar-bottom-l-h { line-height: 2.75rem; height: 2.75rem; }
 
 /*右侧菜单栏调整*/
