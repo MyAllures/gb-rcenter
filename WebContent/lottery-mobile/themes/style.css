@@ -407,11 +407,13 @@ i, var { font-style: normal; }
 .ssc-method-label.mui-segmented-control .mui-control-item.mui-active { color: #df3a29; background-color: #fff; border-bottom-color: #df3a29; }
 .list-2 .ssc-method-label.mui-segmented-control .mui-control-item.mui-active { background-color: #3a89ce; border-color: #3a89ce; color: #fff; }
 
-.ssc-method-list.list-3 { padding: 0.3rem 0.15rem; height: 2.25rem; line-height: 2.25rem; margin-top: 10px;}
+.ssc-method-list.list-3 { padding: 0.3rem 0.15rem; height: 2.25rem; line-height: 2.25rem; margin-top: 0.5rem;}
 .list-3 .ssc-method-label.mui-segmented-control .mui-control-item { border: 1px solid #ddd; border-radius: 0.15rem; margin: 0 0.2rem; height: 1.2rem; line-height: 1.2rem; }
 .list-3 .ssc-method-label.mui-segmented-control .mui-control-item.mui-active { background-color: #fa6200; border-color: #fa6200; color: #fff; }
 .list-3 .ssc-method-label.mui-segmented-control .mui-control-item.select-btn:after{content: '\e581'; font-family: Muiicons;margin-left: 0.4rem;}
 .list-3 .ssc-method-label.mui-segmented-control .mui-control-item.select-btn.mui-active { background-color: #fff; border-color: #fa6200; color: #fa6200; }
+
+.ssc-method-list.list-5 {margin-top: 0; padding: 0; height: auto; border: 3px solid #ddd; border-left: 2px solid #ddd; border-right: 2px solid #ddd;}
 /*开奖历史*/
 .formerly-record-list { padding: 0; }
 .formerly-record-list .mui-table-view-cell.mui-collapse.mui-active { margin-top: 0; }
@@ -722,7 +724,6 @@ a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 	position: fixed!important;
 	height: 100%!important;
 	width: 100%;
-	display: block!important;
 	margin: 0!important;
 	left: 0!important;
 	opacity: 1!important;
@@ -739,6 +740,7 @@ a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 	transition-duration: 400ms;
 }
 .popup-up-diy.mui-active{
+	display: block!important;
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 	-webkit-transition-duration: 400ms;
@@ -858,17 +860,20 @@ a.popup-screen-btn:visited{
 }
 .popup-screen-btn{
 	display: block;
-	position: absolute;
-	right: 0.5rem;
-	bottom: 3rem;
-	width: 2.3rem;
-	height: 2.3rem;
-	line-height: 2.3rem;
-	border-radius: 50%;
-	text-align: center;
-	background: rgba(0, 0, 0, 0.67);
-	color: #fff;
+    position: absolute;
+    right: 0;
+    bottom: 2.75rem;
+    width: 100%;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    border-radius: 0;
+    padding: 0 0.5rem;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
 }
+.popup-screen-btn font{display: inline-block; vertical-align: bottom; color: #ffa86f; margin-left: 5px; max-width: 100px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.popup-screen-btn a{float: right; color: #ffffff;}
 a.popup-screen-btn:visited{
 	color: #fff;
 }
@@ -1214,6 +1219,7 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .middle-content {bottom: 2.75rem;}
 .middle-content.app-middle-content{bottom: 0;}
 .middle-content.middle-content-bat{bottom: 2.75rem; }
+.middle-content.middle-content-bat.result-today{padding-bottom: 1.65rem; }
 .bar-bottom-l-h { line-height: 2.75rem; height: 2.75rem; }
 
 /*右侧菜单栏调整*/
@@ -1314,6 +1320,8 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 /*筛选调整*/
 .popup-diy-top{background:#fa6200;}
 .mui-table-view .screen-munber .n-btn.mui-active{background:#fa6200;color:#fff;border-color:#fa6200;}
+.middle-content.game-regular{z-index: -1;margin: 0;bottom: 0;overflow: hidden;}
+.middle-content.game-regular .menu_body{padding: 0.6rem;}
 /*时时彩 二字定位 三字定位 */
 .newball-content-top .left-titel{
 	color: #fa6200;
@@ -1504,3 +1512,178 @@ div.menu-popover {width: 120px;}
 .layui-m-layercont .disabled-wrap{list-style: none;padding: 0;}
 
 .inline-list-1.right-list-o{width: calc(100% - 3.7rem);vertical-align: top;word-wrap: break-word;text-overflow: ellipsis;height: auto;}
+
+
+
+
+/*大小单双走势*/
+.waybill-wrap table td {
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 0.15rem;
+}
+.waybill-wrap table td i {
+    display: block;
+    width: 19px;
+    height: 19px;
+    font-style: normal;
+    text-align: center;
+    line-height: 20px;
+    font-size: 11px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    color: #fff;
+}
+.waybill-wrap table td:nth-child(odd) i{
+    background: #2a85e2;
+}
+.waybill-wrap table td:nth-child(even) i{
+    background: #e23b2a;
+}
+
+/*走势图*/
+.zst-cl-1{overflow:hidden}.zst-cl-1 .item{overflow:hidden}.zst-cl-1 .item span{background:initial;height:23px;line-height:23px;display:block;text-align:center}.zst-cl-1 .item:nth-child(even){background:#f9f9f9}.zst-cl-1 .item:nth-child(odd){background:#eee}.zst-cl-1 .item span{text-align:center;border-left:solid #E6E6E6 1px;display:inline-block;width:7.5%;margin:0;padding:0;float:left}.zst-cl-1{width:100%;overflow:hidden}.zst-cl-1 .item span i{margin:2px auto}.zst-cl-1 .item span:nth-child(1){border-left:none;width:25%}.zst-cl-10{height:100%;overflow:hidden}.zst-cl-10 .copyright{margin-top:0}.zst-cl-20 .item{white-space:nowrap}.zst-cl-20 .item span{width:2rem}.zst-cl-21,.zst-cl-21 span{overflow:hidden;margin:0;padding:0;height:2rem!important;line-height:2rem!important}.zst-cl-21 span i,.zst-cl-21 span var{height:1rem;line-height:1rem;margin:0!important;padding:0!important}.zst-cl-21 span i{display:inline-block;float:left}.zst-cl-50{overflow:hidden;position:relative;height:inherit}.zst-cl-51{position:absolute;left:0}.zst-cl-102{height:2rem!important;line-height:2rem!important}.cl-300{width:100%;overflow:hidden}.pcAndMobile{text-align:center;margin:15px 0}.cl-608 input{width:2.9rem}.glxq{color:#fa6200}.gonggao_title{font-size:.7rem;margin-bottom:5px;color:#fa6200}.gonggao_time{font-size:.6rem;color:#8D8D8D;margin-bottom:5px}.gonggao_content{font-size:.6rem;padding:0!important;margin:0!important}
+/*走势图样式*/
+.zst-cl-101 span {
+    text-align: center;
+    border-left: solid #E6E6E6 1px;
+    height: 2rem !important;
+}
+
+.zst-cl-101 .sxName {
+    border: none !important;
+}
+
+.zst-cl-102_span {
+    line-height: 2rem !important;
+}
+
+.cl-601 .copyright {
+    font-size: 0.18rem;
+    color: #a0a0a0;
+    line-height: 2.5rem;
+    text-align: center;
+    background: #F9F9F9;
+}
+
+.zst-cl-1 .item span i {
+    margin-top: 3px;
+    margin-bottom: 0rem;
+}
+
+.zst-cl-1 .item span .sxName {
+    margin-top: -2px;
+    color: #A4A3A2;
+}
+
+.color-green {
+    color: green;
+}
+
+.color-blue {
+    color: blue;
+}
+
+.color-red {
+    color: red;
+}
+
+.zst-content-all {
+    height: calc(110vh - 1.8rem - 3.2rem - 21px - 2.0rem - 1.8rem) !important;
+}
+
+.rezst-content-all {
+    height: calc(110vh - 1.8rem - 3.2rem - 21px - 2.0rem - 2.3rem) !important;
+}
+
+.zst-content {
+    height: calc(100vh - 1.8rem - 3.2rem - 23px - 2.5rem + 0.8rem);
+}
+
+.zst_style {
+    padding: 0 !important;
+}
+
+.zst-cl-102_resetH {
+    height: 1rem !important;
+}
+
+.zst-cl-21 span var, .zst-cl-21 span i {
+    background: #F9F9F9 !important;
+}
+
+.zst-cl-1 .item span .i_style_mar {
+    margin-top: 1px !important;
+}
+
+/*中奖号背景*/
+.jbspan i {
+    display: block;
+    width: 19px;
+    margin: 0 auto;
+    height: 19px;
+    line-height: 19px;
+    border-bottom: 1px solid #F9F7F3;
+    color: #fff;
+    border-radius: 50%;
+}
+
+.cus-on-red {
+    background-color: #F63F3F;
+}
+
+.cus-on-green {
+    background-color: #27F619;
+}
+
+.cus-on-blue {
+    background-color: #4D9CF6;
+}
+
+.zst_relative {
+    position: relative !important;
+}
+
+/*.zst-cl-50,.zst-cl-102_resetH{overflow: visible!important;}*/
+.mobile_zx {
+    position: absolute !important;
+}
+
+/*幸运飞艇冠亚和*/
+.gyjh_table tbody tr td {
+    width: 50% !important;
+}
+
+.gyjh_table tbody tr td span:first-child {
+    display: inline-block;
+    width: 30px;
+    text-align: right;
+    float: left;
+    margin-left: 30%;
+}
+
+.gyjh_table tbody tr td span:last-child {
+    display: inline-block;
+    text-align: center;
+    float: left;
+    margin-left: 5% !important;
+}
+
+.cl-604 .gyjh_table_hcol2 tbody tr td {
+    border-top: 0;
+}
+
+.cl-604 .gyjh_table_h tbody tr td span:first-child {
+    display: inline-block;
+    width: 20%;
+    text-align: right;
+    float: left;
+    margin-left: 28%;
+}
+
+.cl-604 .gyjh_table_h tbody tr td span:last-child {
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    float: left;
+}
