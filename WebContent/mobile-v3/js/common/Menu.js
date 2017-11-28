@@ -32,3 +32,7 @@ function lang(obj, options) {
     $(".lang-menu").toggle();
     $(obj).unlock();
 }
+/* 关闭侧滑菜单隐藏语言弹窗 */
+$('.mui-off-canvas-wrap').on('hidden',function (event) {
+    $(".lang-menu").hide();
+});
