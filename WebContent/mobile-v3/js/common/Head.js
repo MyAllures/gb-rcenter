@@ -184,7 +184,7 @@ function recoveryCallBack() {
         var options={
             url:root+"/transfer/auto/getApiBalances.html",
             success:function(data){
-                var d = eval('(' + data + ')');
+                var d = eval(data);
                 $('.bar-wallet').html(d.currSign + d.playerWallet);
                 $('.bar-asset').html(d.currSign + d.playerAssets);
 
