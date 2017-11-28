@@ -486,19 +486,5 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             $("#betAmount").html(data);
         },
 
-        //返回官方玩法投注条变化
-        backGuanfangwanfa: function () {
-            var _this=this;
-            mui.ajax(root + '/'+_this.type+'/'+_this.code+'/checkBetTable.html', {
-                data: {"jspStr": "BetAmount-gfwf"},
-                type: 'POST',
-                success: function (data) {
-                    $("#betAmount").html(data);
-                }
-            });
-        }
-        
-        
-
     });
 });

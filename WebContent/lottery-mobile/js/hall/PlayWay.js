@@ -412,6 +412,12 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
 
             // 倍数变化
             $("#betContent_inputBeishu").keyup(function() {
+                var val=$(this).val();
+                console.log("qq")
+                if(val>1000001){
+                    mui.toast("倍数不能大于1000000");
+                    $(this).val("1");
+                }
                 // 渲染下注总额，奖金等等
                 _this.renderZhushu();
             });
