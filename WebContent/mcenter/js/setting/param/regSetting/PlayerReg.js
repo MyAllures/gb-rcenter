@@ -57,6 +57,7 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
                 var name=$(obj).children().eq(2).attr("val");
                 var isRequired=$(obj).children().eq(3).attr("val");
                 var isRegField=$(obj).children().eq(4).attr("val");
+                var isOnly=$(obj).children().eq(4).children('#isOnly').attr("val");
                 if($.trim(name).length>0) {
                     orderObj.push({
                         "bulitIn": bulitIn,
@@ -65,6 +66,7 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
                         "name": name,
                         "isRequired": isRequired,
                         "isRegField": isRegField,
+                        "isOnly": isOnly,
                         "status": "1"
                     });
                 }
