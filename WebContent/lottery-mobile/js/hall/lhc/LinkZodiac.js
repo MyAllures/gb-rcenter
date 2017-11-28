@@ -21,7 +21,6 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
         },
 
 
-
         getOdds: function () {
             var _this = this;
             page.resetBet();
@@ -154,7 +153,9 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
         bindTdInput: function (obj) {
             var flag = $(obj).is('.not-selected');
             if (!flag) {
-                $(obj).toggleClass('mui-active');
+                if($(obj).attr("data-bet-num") !=undefined){
+                    $(obj).toggleClass('mui-active');
+                }
             }
             var arrLength = $("div.bet-table-list .mui-active").length;
             $("#quantity").text(this.combinationNum(arrLength,$("#minNum").text()));

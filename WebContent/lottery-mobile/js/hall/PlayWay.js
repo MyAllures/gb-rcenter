@@ -101,59 +101,70 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 _this.getZhuShu();
             });
             //全
-            mui(".newball-content-top").on('tap','.quan',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).addClass("mui-active");
-                _this.getZhuShu();
-            });
+            if(page.isOpen) {
+                mui(".newball-content-top").on('tap', '.quan', function () {
+                    var flag = $(this).attr("data-flag");
+                    $("a." + flag).addClass("mui-active");
+                    _this.getZhuShu();
+                });
+            }
             //大
-            mui(".newball-content-top").on('tap','.da',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).removeClass("mui-active");
-                var Aarr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-                var Barr = [, , , , , 5, 6, 7, 8, 9];
-                for (var i = 0; i <= Aarr.length; ++i) {
-                    if (Aarr[i] == Barr[i]) {
-                        $("a."+flag+"."+i).addClass("mui-active");
+            if(page.isOpen) {
+                mui(".newball-content-top").on('tap','.da',function(){
+                    var flag = $(this).attr("data-flag");
+                    $("a."+flag).removeClass("mui-active");
+                    var Aarr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+                    var Barr = [, , , , , 5, 6, 7, 8, 9];
+                    for (var i = 0; i <= Aarr.length; ++i) {
+                        if (Aarr[i] == Barr[i]) {
+                            $("a."+flag+"."+i).addClass("mui-active");
+                        }
                     }
-                }
-                _this.getZhuShu();
-            });
+                    _this.getZhuShu();
+                });
+            }
+
             //小
-            mui(".newball-content-top").on('tap','.xiao',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).removeClass("mui-active");
-                var Aarr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-                var Barr = [0, 1, 2, 3, 4, , , , ,];
-                for (var i = 0; i <= Aarr.length; ++i) {
-                    if (Aarr[i] == Barr[i]) {
-                        $("a."+flag+"."+i).addClass("mui-active");
+            if(page.isOpen) {
+                mui(".newball-content-top").on('tap', '.xiao', function () {
+                    var flag = $(this).attr("data-flag");
+                    $("a." + flag).removeClass("mui-active");
+                    var Aarr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+                    var Barr = [0, 1, 2, 3, 4, , , , ,];
+                    for (var i = 0; i <= Aarr.length; ++i) {
+                        if (Aarr[i] == Barr[i]) {
+                            $("a." + flag + "." + i).addClass("mui-active");
+                        }
                     }
-                }
-                _this.getZhuShu();
-            });
+                    _this.getZhuShu();
+                });
+            }
             //奇
-            mui(".newball-content-top").on('tap','.ji',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).removeClass("mui-active");
-                for (var i = 0; i < 12; i++) {
-                    if (i%2 != 0) {   //奇数
-                        $("a."+flag+"."+i).addClass("mui-active");
+            if(page.isOpen) {
+                mui(".newball-content-top").on('tap', '.ji', function () {
+                    var flag = $(this).attr("data-flag");
+                    $("a." + flag).removeClass("mui-active");
+                    for (var i = 0; i < 12; i++) {
+                        if (i % 2 != 0) {   //奇数
+                            $("a." + flag + "." + i).addClass("mui-active");
+                        }
                     }
-                }
-                _this.getZhuShu();
-            });
+                    _this.getZhuShu();
+                });
+            }
             //偶
-            mui(".newball-content-top").on('tap','.ou',function(){
-                var flag = $(this).attr("data-flag");
-                $("a."+flag).removeClass("mui-active");
-                for (var i = 0; i < 12; i++) {
-                    if (i%2 == 0) {   //奇数
-                        $("a."+flag+"."+i).addClass("mui-active");
+            if(page.isOpen) {
+                mui(".newball-content-top").on('tap', '.ou', function () {
+                    var flag = $(this).attr("data-flag");
+                    $("a." + flag).removeClass("mui-active");
+                    for (var i = 0; i < 12; i++) {
+                        if (i % 2 == 0) {   //奇数
+                            $("a." + flag + "." + i).addClass("mui-active");
+                        }
                     }
-                }
-                _this.getZhuShu();
-            });
+                    _this.getZhuShu();
+                });
+            }
 
             //选择球
             if(page.isOpen) {
