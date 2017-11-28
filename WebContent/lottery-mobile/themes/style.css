@@ -587,7 +587,7 @@ a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 .draw-list-a .bet-list-time { display: inline-block; vertical-align: middle; }
 .draw-list-a .bet-list-right .bet-result { position: absolute; right: 1.5rem; }
 .mui-bar.bet-bottom { background: #ddd; -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0); box-shadow: 0 0 1px rgba(0, 0, 0, 0); }
-.mui-bar-tab .bet-bottom-statistics { display: table-cell; text-align: center; vertical-align: middle; font-size: 0.5rem; }
+.mui-bar-tab .bet-bottom-statistics { display: table-cell; text-align: center; vertical-align: middle; font-size: 0.5rem; word-break: keep-all;}
 
 .zdjl-list .mui-table-view-cell span{word-break: break-word;}
 
@@ -869,7 +869,7 @@ a.popup-screen-btn:visited{
     border-radius: 0;
     padding: 0 0.5rem;
     text-align: left;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     color: #fff;
 }
 .popup-screen-btn font{display: inline-block; vertical-align: bottom; color: #ffa86f; margin-left: 5px; max-width: 100px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
@@ -1535,10 +1535,10 @@ div.menu-popover {width: 120px;}
     color: #fff;
 }
 .waybill-wrap table td:nth-child(odd) i{
-    background: #2a85e2;
+	background: #e23b2a;
 }
 .waybill-wrap table td:nth-child(even) i{
-    background: #e23b2a;
+    background: #2a85e2;
 }
 
 /*走势图*/
