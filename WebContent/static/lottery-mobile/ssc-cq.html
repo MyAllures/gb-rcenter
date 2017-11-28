@@ -7,7 +7,8 @@
 		<title></title>
 		<link href="../../lottery-mobile/themes/mui.min.css" rel="stylesheet" />
 		<link href="../../lottery-mobile/themes/style.css" rel="stylesheet" />
-		<link href="../../lottery-mobile/themes/skin/orange/style.css" rel="stylesheet" />
+		<!--App自定义的css-->
+	    <link href="../../lottery-mobile/themes/mui.picker.min.css" rel="stylesheet" />
 	</head>
 
 	<body class="mui-fullscreen orange-skin">
@@ -316,6 +317,13 @@
 								</table>
 							</div>
 						</div>
+						<div class="mui-scroll-wrapper ssc-method-list list-3">
+				    <div class="mui-scroll mui-segmented-control ssc-method-label">
+				    	<a href="#" id="showUserPicker" class="mui-control-item select-btn">第一球</a>
+                        <a href="javascript:void(0)" class="mui-control-item mui-active">大小</a>
+                        <a href="javascript:void(0)" class="mui-control-item">单双</a>
+                    </div>
+                </div>
 					</div>
 					<div>
 					</div>
@@ -380,6 +388,7 @@
 			</div>
 		</div>
 		<script src="../../lottery-mobile/js/mui/mui.min.js"></script>
+		<script src="../../lottery-mobile/js/mui/mui.picker.min.js"></script>
 		<script>
 			mui.init();
 			var autoShow = true;
@@ -460,6 +469,40 @@
 				}
 
 			});
+			
+			
+			 (function($, doc) {
+				$.init();
+				$.ready(function() {
+					//普通示例
+					var userPicker = new $.PopPicker();
+					userPicker.setData([{
+						value: 'dyq',
+						text: '第一球'
+					}, {
+						value: 'deq',
+						text: '第二球'
+					},  {
+						value: 'dsq',
+						text: '第三球'
+					}, {
+						value: 'dsq',
+						text: '第四球'
+					},{
+						value: 'dwq',
+						text: '第五球'
+					}]);
+					var showUserPickerButton = doc.getElementById('showUserPicker');
+					showUserPickerButton.addEventListener('tap', function(event) {
+						userPicker.show(function(items) {
+							showUserPickerButton.innerText = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false)
+				});
+			})(mui, document);
+			
 			//直选复式
 			mui(".gfwf-playName")[0].addEventListener('tap', function() {
 				mui(".gfwf-wrap")[0].classList.toggle('Fixed');

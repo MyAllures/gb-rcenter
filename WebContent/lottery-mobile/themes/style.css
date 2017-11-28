@@ -407,6 +407,11 @@ i, var { font-style: normal; }
 .ssc-method-label.mui-segmented-control .mui-control-item.mui-active { color: #df3a29; background-color: #fff; border-bottom-color: #df3a29; }
 .list-2 .ssc-method-label.mui-segmented-control .mui-control-item.mui-active { background-color: #3a89ce; border-color: #3a89ce; color: #fff; }
 
+.ssc-method-list.list-3 { padding: 0.3rem 0.15rem; height: 2.25rem; line-height: 2.25rem; margin-top: 10px;}
+.list-3 .ssc-method-label.mui-segmented-control .mui-control-item { border: 1px solid #ddd; border-radius: 0.15rem; margin: 0 0.2rem; height: 1.2rem; line-height: 1.2rem; }
+.list-3 .ssc-method-label.mui-segmented-control .mui-control-item.mui-active { background-color: #fa6200; border-color: #fa6200; color: #fff; }
+.list-3 .ssc-method-label.mui-segmented-control .mui-control-item.select-btn:after{content: '\e581'; font-family: Muiicons;margin-left: 0.4rem;}
+.list-3 .ssc-method-label.mui-segmented-control .mui-control-item.select-btn.mui-active { background-color: #fff; border-color: #fa6200; color: #fa6200; }
 /*开奖历史*/
 .formerly-record-list { padding: 0; }
 .formerly-record-list .mui-table-view-cell.mui-collapse.mui-active { margin-top: 0; }
@@ -1304,6 +1309,7 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .bet-table .bet-title{color:#fa6200;}
 .bet-table .bet-table-list table tbody tr td span:nth-child(1){color:#fa6200;}
 .bet-table .bet-table-list table tbody tr td.mui-active{background:#fa6200;}
+
 
 /*筛选调整*/
 .popup-diy-top{background:#fa6200;}
