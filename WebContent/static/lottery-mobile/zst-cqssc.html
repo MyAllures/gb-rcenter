@@ -123,9 +123,10 @@
 						<a href="#offCanvasSideRight" class="top-bar-btn n-broder mui-action-menu">彩种切换</a>
 					</div>
 				</header>
-				<div class="mui-scroll-wrapper middle-content middle-content-bat zst-content">
-					<div class="mui-scroll">
-						<div class="content-title">
+					    
+					    
+					    
+					    <div class="content-title">
 						</div>
 						<div class="zst-cl-1 zst_style">
 							<div class="item">
@@ -141,6 +142,10 @@
 								<span>8</span>
 								<span>9</span>
 							</div>
+							
+							<div class="mui-scroll-wrapper middle-content middle-content-bat zst-content">
+					        <div class="mui-scroll">
+							
 							<div class="zst-content zst_relative">
 								<div class="item">
 									<span>170927059</span>
@@ -149,7 +154,7 @@
 
 									<span class="common_span">1</span>
 
-									<span class="jbspan jbspan_relative"><i class="cus-on-red">2<canvas class="mobile_zx" id="canvas00" width="224px" height="46px" style="z-index: 10; left:150px; display: inline;"></canvas></i></span>
+									<span class="jbspan jbspan_relative"><i class="cus-on-red">2</i></span>
 
 									<span class="common_span">3</span>
 
@@ -187,13 +192,13 @@
 
 									<span class="common_span">8</span>
 
-									<span class="jbspan jbspan_relative"><i class="cus-on-red">9<canvas class="mobile_zx" id="canvas10" width="280px" height="46px" style="z-index: 10; left:94px; display: inline;"></canvas></i></span>
+									<span class="jbspan jbspan_relative"><i class="cus-on-red">9</i></span>
 
 								</div>
 								<div class="item">
 									<span>170927057</span>
 
-									<span class="jbspan jbspan_relative"><i class="cus-on-red">0<canvas class="mobile_zx" id="canvas20" width="252px" height="46px" style="z-index: 10; left:94px; display: inline;"></canvas></i></span>
+									<span class="jbspan jbspan_relative"><i class="cus-on-red">0</i></span>
 
 									<span class="common_span">1</span>
 
@@ -233,7 +238,7 @@
 
 									<span class="common_span">7</span>
 
-									<span class="jbspan jbspan_relative"><i class="cus-on-red">8<canvas class="mobile_zx" id="canvas30" width="28px" height="46px" style="z-index: 10; left:318px; display: inline;"></canvas></i></span>
+									<span class="jbspan jbspan_relative"><i class="cus-on-red">8</i></span>
 
 									<span class="common_span">9</span>
 
@@ -959,10 +964,10 @@
 
 								</div>
 							</div>
+							</div>
+							</div>
 						</div>
 
-					</div>
-				</div>
 				<div class="mui-off-canvas-backdrop"></div>
 			</div>
 		</div>
@@ -1621,7 +1626,171 @@
         }
     }
 </script>
+<script>
+    var playGroupId = 14;
 
+    function renderData(data) {
+        var left_w = 0; //球离左边的距离
+        var spanW = 0, firstSpanW = 0;
+        var spanH = 0;
+        firstSpanW = $(".zst_style .item span").eq(0).width(); //宽度
+        spanW = $(".zst_style .item span").eq(1).width();
+        spanH = $(".zst_style .item span").eq(1).height() * 2;
+
+        var cxzcs = []; // 出现总次数
+        var zdylz = []; // 最大遗漏值
+        var tmpZdylz = [];   // 临时计算最大遗漏值
+
+        var pjylz = []; // 平均遗漏值
+        var tmpPjylz = []; // 临时计算平均遗漏值
+
+        var zdlcz = []; // 最大连出值
+        var tmpZdlcz = [];  // 临时计算最大连出值
+
+        for (var j = 1; j <= 10; ++j) {
+            cxzcs[j-1] = 0;
+
+            zdylz[j-1] = 0;
+            tmpZdylz[j-1] = {
+                total: 0,   // 当前数
+                maxTotal: 0,    // 最大数
+                count: 0    // 计算次数
+            };
+
+            pjylz[j-1] = 0;
+            tmpPjylz[j-1] = {
+                totalYl: 0, // 遗漏总计
+                count: 0    // 遗漏次数
+            };
+
+            zdlcz[j-1] = 0;
+            tmpZdlcz[j-1] = {
+                max: 0, // 连出最大
+                count: 0    // 连出计数
+            };
+        }
+
+
+        var dataIndex = parseInt($(".index-btns .active").attr("data-index"));
+        var result = [];
+        var bc1 = 0;
+
+//        $.each(data, function (index, value) {
+        for (var ii = 0; ii < data.length; ii++) {
+            var num = parseInt(data[ii].openCode.split(",")[dataIndex]);
+            var htmlCanvas ="";
+            if( ii < data.length - 1){
+                bc1 = Tools.parseInt(data[ii].openCode.split(',')[dataIndex]) - Tools.parseInt(data[ii + 1].openCode.split(',')[dataIndex]);
+            }
+
+            if (bc1 > 0) {
+                bc1 = (bc1 + 1) * spanW; //获取两个球之间的宽度
+                left_w = (Tools.parseInt(data[ii].openCode.split(',')[dataIndex])) * spanW + firstSpanW - bc1; //获取画板距左边的位置
+            } else if (bc1 < 0) {
+                bc1 = (-bc1 + 1) * spanW;
+                left_w = Tools.parseInt(data[ii].openCode.split(',')[dataIndex] - 1) * spanW + firstSpanW;
+            } else if (bc1 == 0) {
+                bc1 = spanW;
+                left_w = Tools.parseInt(data[ii].openCode.split(',')[dataIndex] - 1) * spanW + firstSpanW;
+            }
+
+            htmlCanvas = '<canvas class="mobile_zx" id="canvas'+ ii +''+ dataIndex +'" width="'+ bc1 +'px" height="'+ spanH +'px" style="z-index: 10; left:'+ left_w +'px; display: inline;"></canvas>';
+
+
+            var tmpArr = [];
+            for (var i = 1; i <= 10; ++i) {
+                tmpArr.push({
+                    num: i,
+                    flag: num == i ? true : false
+                });
+
+                // 出现总次数
+                if (num == i) {
+                    cxzcs[i - 1]++;
+                }
+
+                // 遗漏值
+                if (num == i) { // 出现
+                    tmpZdylz[i-1].maxTotal = tmpZdylz[i-1].total > tmpZdylz[i-1].maxTotal ? tmpZdylz[i-1].total : tmpZdylz[i-1].maxTotal;
+                    tmpZdylz[i-1].total = 0;
+
+                    tmpZdlcz[i-1].count++;
+                    tmpZdlcz[i-1].max = tmpZdlcz[i-1].count > tmpZdlcz[i-1].max ? tmpZdlcz[i-1].count : tmpZdlcz[i-1].max;
+                } else {   // 遗漏
+                    tmpPjylz[i-1].totalYl++;
+                    if( tmpZdylz[i-1].total < 1){
+                        tmpPjylz[i-1].count++; //遗漏次数
+                    }
+
+                    tmpZdylz[i-1].total++;
+                    tmpZdlcz[i-1].count = 0;
+                }
+            }
+
+            result.push({
+                htmlCanvas: htmlCanvas,//画板标签
+                number: data[ii].number.substr(2),
+                numArr: tmpArr
+            });
+        }
+
+        $.each(tmpZdylz, function (index, value) {
+            if (cxzcs[index] > 0) {
+                zdylz[index] = value.maxTotal;
+            }
+        });
+
+        $.each(tmpPjylz, function (index, value) {
+            if (cxzcs[index] > 0) {
+                pjylz[index] = parseInt(value.totalYl / value.count);
+            }
+        });
+
+        $.each(tmpZdlcz, function (index, value) {
+            if (cxzcs[index] > 0) {
+                zdlcz[index] = value.max;
+            }
+        });
+
+        var str = '';
+        $.each(result, function (index, value) {
+            var html = template("template_item", value);
+            str += html;
+        });
+
+        var tongjiData = {
+            cxzcs: cxzcs,
+            zdylz: zdylz,
+            pjylz: pjylz,
+            zdlcz: zdlcz
+        };
+        str += template("template_tongji", tongjiData);
+
+
+        $(".zst-content").html(str);
+
+        //画出相对应的折线
+        for (var m = 0; m < data.length - 1; m++) {
+            //设置canvas定位
+            var canvas = document.getElementById("canvas" + m + "" + dataIndex + "");
+            var context = canvas.getContext("2d");
+            var bc1 = (data[m].openCode.split(',')[dataIndex]) - data[m + 1].openCode.split(',')[dataIndex];
+            if (bc1 < 0) {
+                context.moveTo(17, 13);
+                context.lineTo(canvas.width - 18, canvas.height - 12);
+            } else if (bc1 > 0) {
+                context.moveTo(canvas.width - 16, 13);
+                context.lineTo(18, canvas.height - 15);
+            } else {
+                context.moveTo(canvas.width / 2, canvas.height / 3);
+                context.lineTo(canvas.width / 2, canvas.height / 2);
+            }
+            context.strokeStyle = "#F63F3F";
+            context.lineWidth = 2;
+            context.stroke();
+        }
+    }
+</script>
 	</body>
 
 </html>
