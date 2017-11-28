@@ -27,6 +27,7 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                     data: {"subCode": subCode},
                     dataType: "json",
                     success: function (data) {
+                        console.log(data);
                         $(".lhc-ztm tr").each(function (i) {
                             var $tr = $(this).find("input");
                             $($tr).each(function () {
