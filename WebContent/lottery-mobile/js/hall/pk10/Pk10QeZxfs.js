@@ -20,11 +20,11 @@ define(['site/hall/pk10/PlayWay-gfwf', 'site/plugin/template'], function (PlayWa
             $("a[data-code='zxfs'] span").text("直选复式");
         },
 
-        /************************************************PK10**********************************************/
-        /**
-         * PK10-前二
-         */
-        content_qe:function (){
+    /************************************************PK10**********************************************/
+    /**
+     * PK10-前二
+     */
+    content_qe:function (){
         var arr1 = [], arr2 = [], strContent = '';
         $.each($(".guanjunStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
             arr1.push($.trim($(this).html()));
@@ -46,10 +46,10 @@ define(['site/hall/pk10/PlayWay-gfwf', 'site/plugin/template'], function (PlayWa
         );
     },
 
-        /**
-         * 注数-PK10前二
-         */
-        zhushu_qe:function (){
+    /**
+     * 注数-PK10前二
+     */
+    zhushu_qe:function (){
         var arr1 = [], arr2 = [], newArr = [];
         $.each($(".guanjunStr .screen-munber .newball-item-20 a.n-btn.mui-active"), function () {
             arr1.push($.trim($(this).html()));
@@ -72,10 +72,10 @@ define(['site/hall/pk10/PlayWay-gfwf', 'site/plugin/template'], function (PlayWa
 
         return newArr.length;
     },
-        /**
-         * 随机算法-pk10前二
-         */
-        random_qe:function() {
+    /**
+     * 随机算法-pk10前二
+     */
+    random_qe:function() {
         var arrTemp = [];
         var random_1 = 0;
         var random_2 = 0;
@@ -90,6 +90,17 @@ define(['site/hall/pk10/PlayWay-gfwf', 'site/plugin/template'], function (PlayWa
 
         $(".guanjunStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
         $(".yajunStr a.n-btn").eq(random_2-1).removeClass("mui-active").addClass("mui-active");
+    },
+
+
+    checkBaodan : function (obj) {
+        var len=parseInt(obj.text());
+        var name=obj.attr("class").substring(6,10);
+        if(name=="yjqe"){
+            $("a.n-btn.gjqe."+len).removeClass("mui-active");
+        }else{
+            $("a.n-btn.yjqe."+len).removeClass("mui-active");
+        }
     }
 
 

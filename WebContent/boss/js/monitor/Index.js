@@ -34,11 +34,28 @@ define(['common/BaseListPage'], function (BaseListPage) {
                             _this.query(e, opt);
                         },1000);
                     }
-                },
-                error:function(data) {
-
                 }
             });
-        }
+        },
+        /**
+         *
+         * @param e
+         * @param opt
+         */
+        clearMonitorData:function (e, opt) {
+            var _this =this
+            window.top.topPage.ajax({
+                dataType:'json',
+                type:"post",
+                url:root+'/Monitor/clearMonitorData.html',
+                success:function(data){
+                    if(data==true) {
+                        window.top.topPage.showSuccessMessage("操作成功!");
+                    }else{
+                        window.top.topPage.showErrorMessage("操作失败!");
+                    }
+                }
+            });
+        },
     });
 });
