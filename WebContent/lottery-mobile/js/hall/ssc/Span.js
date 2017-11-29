@@ -7,6 +7,18 @@ define(['site/hall/ssc/PlayWay-xywf','site/plugin/template'], function (PlayWay,
             _this=this;
         },
 
+        onPageLoad: function () {
+            this._super();
+            var betTitle = $('div.bet-title').text();
+            if (betTitle === '前三跨度') {
+                $('div.bet-table-list').attr('data-subCode', 'span_first_three');
+            } else if (betTitle === '中三跨度') {
+                $('div.bet-table-list').attr('data-subCode', 'span_in_three');
+            } else if (betTitle === '后三跨度') {
+                $('div.bet-table-list').attr('data-subCode', 'span_after_three');
+            }
+        },
+
         showTable : function(){
             var betCode=$("#gfwfBetCode").val();
             $("a[data-code='ssc_kaudu']").addClass("mui-active");
