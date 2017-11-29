@@ -200,15 +200,6 @@ header.mui-bar-nav .mui-icon-bars {
 .mui-bar-tab .mui-active .mui-icon.icon-home:after {
   background: url(images/footer-nav-icon.png) no-repeat -83px -43px/auto 80px;
 }
-.mui-hide-bar {
-  width: 100%;
-  height: 44px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-  z-index: 999;
-}
 
 /* mui-off-canvas-left */
 .mui-off-canvas-left {
@@ -526,41 +517,170 @@ header.mui-bar-nav .mui-icon-bars {
   color: #333;
 }
 
-/* go game */
-.game-mask {
-  position: fixed;
-  z-index: 998;
-  top: 0;
-  left: 0;
+/* content style */
+.content-without-notice {
+  padding-top: 44px !important;
+}
+
+.content-without-footer {
+  padding-bottom: 0 !important;
+}
+
+/* promo-detail */
+.promo-detail-content .gb-imgs > .ct {
+  padding: 10px;
+}
+.promo-detail-content .gb-imgs > .ct ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.promo-detail-content .gb-imgs > .ct ul li > a {
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, .5);
+  line-height: 0;
+  display: inline-block;
+}
+.promo-detail-content .gb-imgs > .ct ul li > a img {
+  width: 100%;
+}
+.promo-detail-content .gb-imgs > .ct ul li > .ct {
+  background-color: #fff;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.promo-detail-content .gb-imgs > .ct ul li > .ct h5 {
+  font-size: 14px;
+  font-weight: normal;
+  color: #8f8f94;
+  position: relative;
+  text-align: center;
+}
+.promo-detail-content .gb-imgs > .ct ul li > .ct h5 > i {
+  display: block;
+  border-bottom: 1px dashed #e2e2e2;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+}
+.promo-detail-content .gb-imgs > .ct ul li > .ct h5 span {
+  display: inline-block;
+  height: 23px;
+  padding: 0 7px;
+  border-radius: 3px;
+  line-height: 23px;
+  color: #fff;
+  background-color: #1766bb;
+  font-size: 12px;
+  position: relative;
+  z-index: 1;
+}
+.promo-detail-content .gb-imgs > .ct ul li > .ct p {
+  padding: 5px 0;
+  line-height: 18px;
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+.promo-detail-content .gb-form-foot {
+  padding: 10px;
+}
+.promo-detail-content .gb-form-foot .submit {
+  border: 1px solid #1766bb;
+  background-color: #1766bb;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+/* promo-records */
+.promo-records-content .gb-headtabs {
+  margin: 11px auto;
+  width: 60%;
+  background-color: #fff;
+}
+.promo-records-content .gb-headtabs .mui-segmented-control {
+  overflow: visible;
+  border: 1px solid #1766bb;
+}
+.promo-records-content .gb-headtabs .mui-segmented-control .mui-control-item {
+  line-height: 28px;
+  color: #333;
+  font-size: 12px;
+  overflow: visible;
+  position: relative;
+}
+.promo-records-content .gb-headtabs .mui-segmented-control .mui-control-item i {
+  width: 10px;
+  height: 7px;
+  background: url(./images/ex3.png);
+  background-size: cover;
+  position: absolute;
+  top: 34px;
+  left: 50%;
+  margin-left: -5px;
   display: none;
 }
-.game-mask .game-loading {
-  width: 200px;
-  height: 100px;
-  left: 50%;
-  margin-left: -100px;
-  border-radius: 9px;
-  background: rgba(255, 255, 255, 0.9);
-  border:1px solid #353741;
-  position: fixed;
-  z-index: 999;
-  padding: 10px 20px;
+.promo-records-content .gb-headtabs .mui-segmented-control .mui-control-item.mui-active {
+  background: #1766bb;
+  color: #fff;
 }
-.game-mask .game-loading .loader {
-  min-height: 24px;
-  margin-top: 18px;
+.promo-records-content .gb-headtabs .mui-segmented-control .mui-control-item.mui-active i {
+  display: block;
 }
-.game-mask .game-loading .loader-tip {
+.promo-records-content .gb-panel {
+  background-color: #fff;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+}
+.promo-records-content .gb-imgs > .hd {
+  padding: 10px;
+  border-bottom: 1px solid #f2f2f2;
+}
+.promo-records-content .gb-select {
+  display: inline-block;
+}
+.promo-records-content .gb-select > a {
+  color: #999;
+  display: inline-block;
   font-size: 12px;
-  width: 100%;
-  text-align: center;
-  color: #807d7d;
+  margin-right: 15px;
 }
-.game-mask .game-loading .ball-pulse > div {
-  background: #807d7d;
+.promo-records-content .gb-select > a .mui-icon {
+  color: #7a7674 !important;
+  font-size: 17px;
+  vertical-align: middle;
+}
+.promo-records-content .gb-imgs > .ct {
+  padding: 10px;
+}
+.promo-records-content .gb-imgs > .ct ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.promo-records-content .gb-imgs > .ct ul li {
+  margin-bottom: 10px;
+  line-height: 0;
+}
+.promo-records-content .gb-imgs > .ct ul li > a {
+  width: 100%;
+  line-height: 0;
+  display: inline-block;
+}
+.promo-records-content .gb-imgs > .ct ul li > a img {
+  width: 100%;
+}
+
+.gb-popover .mui-table-view {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  background-color: #fff;
+}
+.gb-popover .mui-table-view a {
+  color: #333;
+  font-size: 12px;
 }
 
 .com-loading {
