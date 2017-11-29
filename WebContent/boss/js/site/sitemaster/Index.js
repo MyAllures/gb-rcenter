@@ -61,9 +61,10 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
                                             success: function (data) {
                                                 if(data){
                                                     $(_target).attr("isChanged", true);
-                                                    $(_target).bootstrapSwitch("state", !_target.checked);
+                                                    // $(_target).bootstrapSwitch("state", !_target.checked);
                                                     $("#status").removeClass("label-success");
                                                     $("#status").addClass("label-danger");
+                                                    _this.query(e);
                                                 }else{
                                                     page.showPopover(e,{"callback":function () {
                                                         _this.query(e);
@@ -82,9 +83,10 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
                                     success: function (data) {
                                         if(data){
                                             $(_target).attr("isChanged", true);
-                                            $(_target).bootstrapSwitch("state", !_target.checked);
+                                            // $(_target).bootstrapSwitch("state", !_target.checked);
                                             $("#status").removeClass("label-success");
                                             $("#status").addClass("label-danger");
+                                            _this.query(e);
                                         }else{
                                             page.showPopover(e,{"callback":function () {
                                                 _this.query(e);
