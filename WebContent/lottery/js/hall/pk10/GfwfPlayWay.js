@@ -86,7 +86,35 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                 }
             }
 
-        }
+        },
+
+        teShuHaoClick : function () {
+            var _this=this;
+
+            $("span.gj").click(function () {
+                var text=$(this).children('i').text();
+                $("span.yj."+text).removeClass('acti');
+                $("span.jj."+text).removeClass('acti');
+                // 渲染中部注数，赔率，返点等等
+                _this.renderZhushu();
+            });
+
+            $("span.yj").click(function () {
+                var text=$(this).children('i').text();
+                $("span.gj."+text).removeClass('acti');
+                $("span.jj."+text).removeClass('acti');
+                // 渲染中部注数，赔率，返点等等
+                _this.renderZhushu();
+            });
+
+            $("span.jj").click(function () {
+                var text=$(this).children('i').text();
+                $("span.gj."+text).removeClass('acti');
+                $("span.yj."+text).removeClass('acti');
+                // 渲染中部注数，赔率，返点等等
+                _this.renderZhushu();
+            });
+        },
 
     })
 });
