@@ -65,7 +65,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                             _this.refreshData(e, opt);
                         },2000);
                     }else{
-                        window.top.topPage.showSuccessMessage("操作失败!");
+                        window.top.topPage.showErrorMessage("操作失败!");
                     }
                 }
             });
