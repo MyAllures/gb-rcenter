@@ -24,6 +24,9 @@ header.mui-bar-nav .yjym {
   background: #e2e2e2;
   border-top: 1px solid #c4c4c4;
 }
+header.mui-bar-nav .mui-action-back {
+  color: #666;
+}
 
 /* notice */
 .notice {

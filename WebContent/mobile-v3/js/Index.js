@@ -152,12 +152,13 @@ function closePage(){
 /*打开红包规则*/
 function openRule(){
     $('.hongbao-rule').show();
+    $(".nice-wrapper").html($("#description").val());
     /*自定义滚动条*/
-    $(".hongbao-rule .txt").niceScroll(".nice-wrapper", {
+    /*$(".hongbao-rule .txt").niceScroll(".nice-wrapper", {
         cursorwidth: "12px",
         cursorcolor:"#c0111c",
         cursorborder: "1px solid #d2aa48"
-    });
+    });*/
 }
 /*关闭红包规则*/
 function closeRule(){
