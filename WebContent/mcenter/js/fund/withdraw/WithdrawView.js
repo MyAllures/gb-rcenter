@@ -107,15 +107,16 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 data: {"search.id": id},
                 dataType: "json",
                 success: function (data) {
+                    $(e.target).unlock();
                     opt.placement = 'right';
                     if (data == true) {
                         e.returnValue = true;
-                        _this.refreshBack(e,opt);
+                        _this.refreshBack(e,opt,id);
                         //page.showPopover(e, opt, 'success', window.top.message.common['operation.success'], true);
                     } else {
                         page.showPopover(e, opt, 'danger', '本条订单已被其他管理员锁定！', true);
                     }
-                    $(e.target).unlock();
+
                 }
             });
         },
@@ -133,7 +134,8 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 success: function (data) {
                     opt.placement = 'right';
                     if (data == true) {
-                        _this.refreshBack(e,opt);
+                        e.returnValue = true;
+                        _this.refreshBack(e,opt,id);
                         //opt.callback = "refreshBack";
                         //page.showPopover(e, opt, 'success', window.top.message.common['operation.success'], true);
                     } else {
@@ -147,9 +149,9 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          * @param e
          * @param opt
          */
-        refreshBack: function (e, opt) {
+        refreshBack: function (e, opt,id) {
             if(e.returnValue) {
-                var id = $("[name='search.id']").val();
+                //var id = $("input[name='search.id']").val();
                 $("#mainFrame").load(root + "/fund/withdraw/withdrawAuditView.html?search.id=" + id + "&pageType=detail");
             }
         },

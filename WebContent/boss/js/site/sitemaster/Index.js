@@ -25,6 +25,7 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
              * 控件的初始化
              */
             this._super();
+            var _this = this;
             $(".tab-pane").css("display","block");
             var $bootstrapSwitch = $('input[type=checkbox][name=my-checkbox]');
             this.unInitSwitch($bootstrapSwitch)
@@ -58,10 +59,18 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
                                             dataType: "json",
                                             data: {"result.paramValue": state, "result.siteId": payRankId,"result.paramCode":type},
                                             success: function (data) {
-                                                $(_target).attr("isChanged", true);
-                                                $(_target).bootstrapSwitch("state", !_target.checked);
-                                                $("#status").removeClass("label-success");
-                                                $("#status").addClass("label-danger");
+                                                if(data){
+                                                    $(_target).attr("isChanged", true);
+                                                    // $(_target).bootstrapSwitch("state", !_target.checked);
+                                                    $("#status").removeClass("label-success");
+                                                    $("#status").addClass("label-danger");
+                                                    _this.query(e);
+                                                }else{
+                                                    page.showPopover(e,{"callback":function () {
+                                                        _this.query(e);
+                                                    }},"danger","操作失败",true);
+                                                }
+
                                             }
                                         });
                                     }
@@ -72,6 +81,17 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
                                     dataType: "json",
                                     data: {"result.paramValue": state, "result.siteId": payRankId,"result.paramCode":type},
                                     success: function (data) {
+                                        if(data){
+                                            $(_target).attr("isChanged", true);
+                                            // $(_target).bootstrapSwitch("state", !_target.checked);
+                                            $("#status").removeClass("label-success");
+                                            $("#status").addClass("label-danger");
+                                            _this.query(e);
+                                        }else{
+                                            page.showPopover(e,{"callback":function () {
+                                                _this.query(e);
+                                            }},"danger","操作失败",true);
+                                        }
                                     }
                                 });
                                 return true;

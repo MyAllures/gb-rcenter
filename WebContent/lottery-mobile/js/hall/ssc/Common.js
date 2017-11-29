@@ -84,6 +84,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 type: 'POST',
                 success: function (data) {
                     if(betCode=="ssc_yixing_dwd"){
+                        $("#gfwfBetCode").val("ssc_yixing_dwd");
                         _this.backGuanfangwanfa();
                     }
                     $(".bet-table").html(data);
@@ -210,6 +211,25 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 });
             });
         },
+
+        //返回官方玩法投注条变化
+        backGuanfangwanfa: function () {
+            var _this=this;
+            mui.ajax(root + '/'+_this.type+'/'+_this.code+'/checkBetTable.html', {
+                data: {"jspStr": "BetAmount-gfwf"},
+                type: 'POST',
+                success: function (data) {
+                    _this.openGuanfangwanfa(data);
+                    $("a[data-code='ssc_yixing_dwd']").addClass("mui-active");
+                    $("a[data-code='zxfs']").addClass("mui-active");
+                    $("a.x_1.mui-col-xs-6").removeClass("x_active");
+                    $("a.x_3.mui-col-xs-6").addClass("x_active");
+                    $("#toobarTitle").text("官方玩法-定位胆");
+                    $("#GenraType").val("ssc_yixing_dwd");
+                }
+            });
+        }
+
 
     });
 });
