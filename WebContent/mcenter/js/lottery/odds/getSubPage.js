@@ -6,7 +6,14 @@ $(function () {
         var play =$(this).attr("play");
         var page =$(this).attr("page");
         var code = $('.sys_tab_wrap .ssc-active').attr('code');
-        $("#editable_wrapper").load(root + '/lottery/odds/'+code+'/'+play+'/'+betCode+'/Index.html?page='+page);
+        $.ajax({
+            url:root + "/lottery/odds/code/play/betCode/Index.html",
+            type:"post",
+            data:{"category":play,"betCode":betCode,"page":page,"code":code},
+            success: function (data) {
+                $("#editable_wrapper").html(data);
+            }
+        })
     });
 
     if (!$(".lot_three_menu a").hasClass('active')) {
