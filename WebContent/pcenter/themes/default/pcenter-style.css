@@ -151,7 +151,7 @@ a{color:#2772ee}
 .banner .logo{width:162px;float:left;background:url(../../images/logo.png) no-repeat center;height:90px;margin:5px 0 0 28px;}
 .banner .right{width:100%;height:95px;}
 .banner .banner-bg-t{background: url(../../images/banner-bg-after.png);width: 100%; min-width: 1200px; height: 221px; position: absolute; left: 0; top: 33px; z-index: -1;}
-.banner .banner-bg{background-image: url(../../images/banner-bg.png);width: 100%; min-width: 1200px; height: 220px; position: absolute; left: 0; top: 33px; z-index: -2; overflow: hidden;}
+.banner .banner-bg{width: 100%; min-width: 1200px; height: 220px; position: absolute; left: 0; top: 33px; z-index: -2; overflow: hidden;}
 
 .banner .banner-bg>img{display: none;}
 .banner .banner-bg svg{width: 100%;}
