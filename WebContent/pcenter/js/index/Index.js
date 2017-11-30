@@ -45,7 +45,9 @@ define([], function () {
             this.bindEvent();
             this.checkBrowser();
             this.onPageLoad();
-            this.initBackgroundBlur();
+            if(isLotterySite){
+                this.initBackgroundBlur();
+            }
         },
 
         initBackgroundBlur:function () {
