@@ -101,7 +101,7 @@ $(".lottery-nav li").on("tap",function(){
 
 });
 /*彩票上拉请求数据*/
-function pullfresh() {
+    function pullfresh() {
     setTimeout(function () {
         mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
         var type = $(".nav .mui-scroll .mui-active").attr("data-item");
@@ -114,22 +114,45 @@ function pullfresh() {
             if(pageNumber == lastPageNumber){
                 mui('#pullfresh').pullRefresh().endPullupToRefresh(true);
             }else{
-                loadData(apiId,pageNumber+1);
+                pullUpLoadData(apiId,pageNumber+1);
             }
         }
 
     }, 0);
 }
+
+function pullUpLoadData(apiId,pageNumber){
+    var url = root + '/game/getGameByApiId.html?search.apiId='+apiId+'&search.apiTypeId=4&paging.pageNumber='+pageNumber;
+    mui.ajax(url, {
+        type: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Soul-Requested-With': 'XMLHttpRequest'
+        },
+        success: function (data) {
+            setTimeout(function() {
+                $('#lottery-id').val(apiId);
+                $('input#loading-' + apiId).val('false');
+                $('div#lottery-' + apiId).append(data);
+                $(".lottery-nav a[data-lottery-id='"+apiId+"']").attr("loadData","true");
+
+                $("#total-page-"+apiId).attr("pageNumber",pageNumber);
+            }, 1000);
+        }
+    });
+}
+
 /** 切换TAB加载数据 */
 function loadData(apiId,pageNumber) {
-    mui.ajax(root + '/game/getGameByApiId.html?search.apiId='+apiId+'&search.apiTypeId=4&paging.pageNumber='+pageNumber, {
+    var url = root + '/game/getGameByApiId.html?search.apiId='+apiId+'&search.apiTypeId=4&paging.pageNumber='+pageNumber;
+    mui.ajax(url, {
         type: 'GET',
         headers: {
             'Content-Type': 'application/json',
             'Soul-Requested-With': 'XMLHttpRequest'
         },
         beforeSend: function () {
-            //showLoading(338);
+            showLoading(338);
             //$('div.lottery-content-' + apiId).parent().addClass('mui-show');
         },
         success: function (data) {
@@ -143,7 +166,7 @@ function loadData(apiId,pageNumber) {
             }, 1000);
         },
         complete: function () {
-            //hideLoad();
+             hideLoad();
         }
     });
 }
