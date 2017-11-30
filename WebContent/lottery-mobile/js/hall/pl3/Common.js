@@ -74,8 +74,8 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                     }
                     $("#gfwfBetCode").val(betCode);
                     if(!_this.isOpen){
-                        _this.closeHandicapGF();//官方
                         _this.closeHandicapXY();//信用
+                        _this.closeHandicapGF();//官方
                     }
 
                 }
@@ -272,6 +272,9 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                     $("a.x_3.mui-col-xs-6").addClass("x_active");
                     $("#toobarTitle").text("官方玩法-定位胆");
                     $("#GenraType").val("pl3_yixing_dwd");
+                    if (!this.isOpen){
+                        $("#show-t-gfwf").addClass("disabled");
+                    }
                 }
             });
         }
