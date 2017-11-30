@@ -30,7 +30,7 @@ function initBanner() {
 }
 
 /*公告弹窗*/
-mui(".notice .notice-list").on("tap","a",function(){
+function showNotice(obj,options){
     var noticeA =noticeIndicator="";
     $(".notice .notice-list p a").each(function(){//生成公告html和indicator
         noticeA+="<div class='mui-slider-item'><a href='javascript:'>"+$(this).html()+"</a></div>";
@@ -39,7 +39,7 @@ mui(".notice .notice-list").on("tap","a",function(){
     var noticeHtml = $('<div><div class="mui-slider notice-slider"><div class="mui-slider-group">'+noticeA+'</div><div class="mui-slider-indicator">'+noticeIndicator+'</div></div></div></div>');
     var alertNotice = mui.alert(noticeHtml.html(),"公告","关闭");
     $(alertNotice.element).addClass('notice-alert');// 定义弹窗的class,方便修改样式
-    var index = $(this).index();//当前点击的公告index
+    var index = $(obj).index();//当前点击的公告index
     //初始化notice-slider
     var notice = mui('.mui-slider');
     notice.slider({
@@ -49,7 +49,7 @@ mui(".notice .notice-list").on("tap","a",function(){
     $(".notice-slider .mui-indicator").removeClass("mui-active");
     $(".notice-slider .mui-indicator:eq("+index+")").addClass("mui-active");
     notice.slider().gotoItem(index);
-});
+}
 
 /*浮窗广告*/
 function floatList(){
