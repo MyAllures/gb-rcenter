@@ -44,7 +44,8 @@ function promoInfo(pageNumber) {
         },
         success: function (data) {
             if(data != null){
-                $("#content").html(data);
+                $("#content").append(data);
+                $("#pageNumber").val(pageNumber);
             }
         },
         error: function (e) {
