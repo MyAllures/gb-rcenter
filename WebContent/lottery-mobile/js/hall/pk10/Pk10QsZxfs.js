@@ -105,7 +105,23 @@ define(['site/hall/pk10/PlayWay-gfwf', 'site/plugin/template'], function (PlayWa
         $(".guanjunStr a.n-btn").eq(random_1-1).removeClass("mui-active").addClass("mui-active");
         $(".yajunStr a.n-btn").eq(random_2-1).removeClass("mui-active").addClass("mui-active");
         $(".jijunStr a.n-btn").eq(random_3-1).removeClass("mui-active").addClass("mui-active");
-    }
+    },
+
+
+        checkBaodan : function (obj) {
+            var len=parseInt(obj.text());
+            var name=obj.attr("class").substring(6,10);
+            if(name=="gjqs"){
+                $("a.n-btn.yjqs."+len).removeClass("mui-active");
+                $("a.n-btn.jjqs."+len).removeClass("mui-active");
+            }else if(name=="yjqs"){
+                $("a.n-btn.gjqs."+len).removeClass("mui-active");
+                $("a.n-btn.jjqs."+len).removeClass("mui-active");
+            }else{
+                $("a.n-btn.gjqs."+len).removeClass("mui-active");
+                $("a.n-btn.yjqs."+len).removeClass("mui-active");
+            }
+        }
 
 
 
