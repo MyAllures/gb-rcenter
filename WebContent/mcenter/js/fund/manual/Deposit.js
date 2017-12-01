@@ -252,7 +252,7 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
                 var fromPlayerDetail = $("[name='fromPlayerDetail']").val();
                 var playerId = $("[name='playerId']").val();
                 if (fromPlayerDetail == "true" && playerId) {
-                    $("#mainFrame").load(root + "/player/playerDetail.html?search.id=" + playerId);
+                    $("#mainFrame").load(root + "/player/playerView.html?search.id=" + playerId);
                 } else if (fromPlayerDetail == "playerList") {
                     $("#mainFrame").load(root + "/player/list.html");
                 } else if (transactionNo) {
