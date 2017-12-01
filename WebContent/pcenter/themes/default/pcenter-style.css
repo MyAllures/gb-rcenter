@@ -176,47 +176,67 @@ a{color:#2772ee}
 	color: #fff;
 	display: block;
 	padding: 29px 0;
-
-	animation-duration: 1s; animation-fill-mode: both;
+    animation-duration: 1s; animation-fill-mode: both;
 }
+
 .banner .right .nav-menu li a:hover{animation-name: tada;}
-.banner .right .nav-menu li a .nav-menu-ico{
+.banner .right .nav-menu li a.nav-menu-ico:before{
+	content: "";
 	display: inline-block;
 	vertical-align: middle;
 	background-image: url(../../images/nav-ico.png);
 	width: 33px;
 	height: 30px;
 	margin: 0 10px 0 13px;
-	
 }
-.banner .right .nav-menu li a:hover .nav-menu-ico{}
-.banner .right .nav-menu li a .nav-menu-ico.home-ico{
+
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-home-ico:before{
 	background-position: 0 0;
 }
-.banner .right .nav-menu li a .nav-menu-ico.casino-ico{
-	background-position: 0 -31px;
-}
-.banner .right .nav-menu li a .nav-menu-ico.lives-ico{
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-1-ico:before{
 	background-position: 0 -62px;
 }
-.banner .right .nav-menu li a .nav-menu-ico.sports-ico{
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-2-ico:before{
+	background-position: 0 -31px;
+}
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-3-ico:before{
 	background-position: 0 -92px;
 }
-.banner .right .nav-menu li a .nav-menu-ico.lottery-ico{
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-4-ico:before{
 	background-position: 0 -121px;
 }
-.banner .right .nav-menu li a .nav-menu-ico.promo-ico{
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-promo-ico:before{
 	background-position: 0 -152px;
+}
+
+.banner .right .nav-menu li a.nav-menu-ico span:after{
+	display: block;
+	font-size: 11px;
+}
+
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-home-ico span:after{
+	content: "HOME";
+}
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-1-ico span:after{
+	content: "CASINO";
+}
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-2-ico span:after{
+	content: "LIVES";
+}
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-3-ico span:after{
+	content: "SPORTS";
+}
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-4-ico span:after{
+	content: "LOTTERY";
+}
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-promo-ico span:after{
+	content: "PROMO";
 }
 
 .banner .right .nav-menu li a span{
 	text-align: center;
 	display: inline-block;
 	vertical-align: middle;
-}
-.banner .right .nav-menu li a span font{
-	display: block;
-	font-size: 11px;
 }
 .banner .right .nav-menu li a:after{
 	content: "";
