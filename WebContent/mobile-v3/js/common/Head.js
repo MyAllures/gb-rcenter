@@ -41,6 +41,7 @@ function headInfo() {
                 //右上角显示用户信息
                 $("#login-info").show();
                 isLogin = true;
+                sessionStorage.setItem("isLogin",isLogin);
                 getSiteApi();
                 //绑定动态增加的按钮事件
                 bindButtonEvent('.login-info .ex');
@@ -50,6 +51,7 @@ function headInfo() {
                 $("div.un-login").show();
                 $("#login-info").hide();
                 isLogin = false;
+                sessionStorage.setItem("isLogin",isLogin);
             }
         }
     };

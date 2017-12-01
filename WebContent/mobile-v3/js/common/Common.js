@@ -28,7 +28,9 @@ function pullUpRefreshOption(container, callback, auto) {
             up: {
                 height:100,//可选.默认50.触发上拉加载拖动距离
                 auto: auto,
+                contentdown: window.top.message.promo_auto['上拉加载'],
                 contentrefresh: '正在加载...',
+                contentnomore:'已经到底了',
                 callback: callback
             }
         }
