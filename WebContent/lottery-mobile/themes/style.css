@@ -438,7 +438,7 @@ i, var { font-style: normal; }
 /*彩票开奖号码*/
 .lottery-ball { display: inline-block; height: 1rem; line-height: 1rem; background: #e00404; color: #fff; text-align: center; width: 1rem; border-radius: 1.1rem; margin-left: 0.1rem; }
 .lottery-pull {display: inline-block;width: 0.6rem;margin-left: 0.2rem;text-align: center;}
-.lottery-block { display: inline-block; height: 1rem; line-height: 1rem; border: 1px solid #ddd; background-color: #ddd; text-align: center; min-width: 1rem; width: auto; margin-left: 0.2rem; }
+.lottery-block { display: inline-block; height: 1rem; line-height: 1rem; border: 1px solid #ddd; background-color: #ddd; text-align: center; min-width: 1rem; width: auto; margin-left: 0.1rem; }
 .inline-list-1 { height: 1rem; line-height: 1rem; display: inline-block; word-spacing: -3px;}
 .inline-list-2 { height: 1rem; line-height: 1rem; display: block; word-spacing: -3px;}
 .inline-list-2.title { height: 2.1rem; line-height: 2.1rem; }
