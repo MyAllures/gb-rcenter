@@ -102,7 +102,7 @@ define(['site/plugin/template'], function (Template) {
                     dataType: 'json',
                     type: 'POST',
                     success: function (data) {
-                        $(".balance").text('￥' + data.balance);
+                        $(".balance").text(data.balance);
                         $(".right_username").text(data.userName);
                     }
                 });
