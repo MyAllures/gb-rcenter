@@ -77,7 +77,7 @@ function goApiGame(obj,options){
 
             } else{
                 //_this.toLogin("/");
-                goToUrl("/passport/logout.html");
+                loginOut();
             }
         }
         if ($(".mui-popover")) {

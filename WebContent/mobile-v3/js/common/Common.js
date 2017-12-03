@@ -423,15 +423,15 @@ function login(url) {
 function loginOut(e, options) {
     sessionStorage.is_login = false;
     if (os === 'app_ios')
-        loginOut();
-    if (os === 'android')
+        window.gamebox.logout();
+    if (os === 'app_android')
         window.gamebox.logout();
     else
         goToUrl("/passport/logout.html");
 }
 
 function checkOs(){
-    if(os === 'pc'){
+    if(os != 'app_ios' && os != 'app_android'){
         $(".footerMenu").removeClass('mui-hide');
     }
 }
