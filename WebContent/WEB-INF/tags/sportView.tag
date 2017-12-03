@@ -33,7 +33,19 @@
     <br/>
 </c:if>
 <c:if test="${!empty homeTeam&&!empty awayTeam}">
-    ${homeTeam}(主)&nbsp;VS&nbsp;${awayTeam}
+    ${homeTeam}(主)
+    <c:if test="${!empty handicap && apiId==21}">
+        <c:if test="${fn:startsWith(handicap,'N')}">
+            <span class="co-blue">${fn:substring(handicap,1,fn:length(handicap))}</span>
+        </c:if>
+    </c:if>
+    &nbsp;VS&nbsp;
+    ${awayTeam}
+    <c:if test="${!empty handicap && apiId==21}">
+        <c:if test="${fn:startsWith(handicap,'Y')}">
+            <span class="co-blue">${fn:substring(handicap,1,fn:length(handicap))}</span>
+        </c:if>
+    </c:if>
     <c:if test="${fn:startsWith(ftScore,'1(')}">
         <c:set var="len" value="${fn:length(ftScore)}"/>
         <c:set var="ftScore" value="${fn:substring(ftScore,1,len-1)}"/>
@@ -55,7 +67,9 @@
      <gb:sportSelection apiId="${apiId}" homeTeam="${homeTeam}" homeTeamId="${homeTeamId}" awayTeam="${awayTeam}" awayTeamId="${awayTeamId}" betType="${betType}" selection="${selection}" betTeamName="${betTeamName}"/>
 </span>
 &nbsp;
+<c:if test="${apiId!=21}">
 <span class="co-blue">${handicap}</span>
+</c:if>
 <c:if test="${!empty odds}">
     &nbsp;@&nbsp;<span class="co-red">${odds}</span>
 </c:if>
