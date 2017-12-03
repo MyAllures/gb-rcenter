@@ -74,13 +74,13 @@ function autoLoginAndTransfer() {
                         }
                     } else if (data.msg) {
                         //_this.openLayer(data.msg);
-                        toast(data.msg);
+                        openLayer(data.msg);
                         reload();
                         $("[class='mui-backdrop mui-active']").remove();
                     }
                 } else {
                     //_this.openLayer(window.top.message.game_auto['无法登录']);
-                    toast(window.top.message.game_auto['无法登录']);
+                    openLayer(window.top.message.game_auto['无法登录']);
                     $("[class='mui-backdrop mui-active']").remove();
                     reload();
                 }
@@ -91,7 +91,7 @@ function autoLoginAndTransfer() {
                 } else if (error.status === 606) {
                     goToUrl(root + '/errors/606.html');
                 } else {
-                    toast(window.top.message.game_auto['无法登录']);
+                    openLayer(window.top.message.game_auto['无法登录']);
                     $("[class='mui-backdrop mui-active']").remove();
                     reload();
                 }
@@ -101,6 +101,20 @@ function autoLoginAndTransfer() {
             }
         })
     }
+}
+
+/**
+ * 打开layer提示窗
+ * */
+function openLayer(msg) {
+    layer.open({
+        title: '提示',
+        content: msg,
+        btn: ['确定', ''],
+        yes: function (index) {
+            layer.close(index);
+        }
+    })
 }
 
 function signIn (obj) {

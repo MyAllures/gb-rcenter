@@ -240,3 +240,148 @@ header{
     padding: 10px 20px;
     p{font-size: 12px;color: #333;  }     
 }
+/* content style */
+.content-without-notice{padding-top: 44px !important;}
+.content-without-footer{padding-bottom: 0 !important;}
+
+/* promo-detail */
+.promo-detail-content{
+    .gb-imgs >.ct {
+        padding: 10px;
+        ul{padding: 0;margin: 0;list-style: none;
+            li>a{    width: 100%;    line-height: 0;    display: inline-block;
+                img{width: 100%;}
+            }
+            li{
+                &>.ct{    background-color: #fff;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin-top: 5px;
+                    h5{    font-size: 14px;    font-weight: normal;    color: #8f8f94;    position: relative;    text-align: center;
+                        &>i{    display: block;    border-bottom: 1px dashed #e2e2e2;    position: absolute;    top: 50%;    left: 0;    right: 0;}
+                        span{    display: inline-block;    height: 23px;    padding: 0 7px;    border-radius: 3px;    line-height: 23px;   color: #fff;    background-color: #1766bb;    font-size: 12px;    position: relative;    z-index: 1;}
+                    }
+                    p{    padding: 5px 0;    line-height: 18px;   color: #999;    font-size: 12px;    margin-bottom: 0;}
+                }
+            }
+        }
+    }
+    .gb-form-foot {  padding: 10px;
+        .submit {    border: 1px solid #1766bb;    background-color: #1766bb;    width: 100%;    padding: 10px 12px;    font-size: 13px;}
+    }
+}
+/* promo-records */
+.promo-record-content{
+    .promo-records-warp {
+        padding: 0 10px;
+        margin-top: 10px;
+        height: 85px;
+        i {
+            display: block;
+            width: 4px;
+            height: 85px;
+            position: absolute;
+            top: 0;
+            left: -3px;
+            background-repeat: repeat-y;
+            background: url(../images/pro-bg.png);
+        }
+        .pro-bg-left {
+            background-position: 0 0;
+        }
+        .pro-bg-right {
+            background-position: right top;
+            left: -1px;
+        }
+    }
+    .promo-box-left {
+        background: #fff;
+        padding: 10px 10px;
+        height:85px;
+        width: 68%;
+        float: left;
+        position: relative;
+        h5 {
+            font-size: 12px;
+            color: #333;
+            line-height: 15px;
+            text-overflow: -o-ellipsis-lastline;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            margin-top: 0;
+            margin-bottom: 7px;
+            min-height: 45px;
+        }    
+        .text {
+            font-size: 10px!important;
+            color: #999;
+            line-height: 16px;
+            .sum {
+                float: left;
+            }
+            .time {
+                display: inline-block;
+                float: right;
+                margin-right: 20px;
+            }
+        }    
+    }
+    .promo-box-right {
+        border-radius: 4px;
+        position: relative;
+        padding: 10px 10px;
+        color: #fff;
+        line-height: 16px;
+        height: 85px;
+        width: 32%;
+        float: left;
+        &.promo-gray {
+            background: #7b7b7b;
+        }
+        &.promo-blue {
+            background: #3488e7
+        }
+        &.promo-green {
+            background: #1fbd66
+        }
+        &.promo-orange {
+            background: #f07e11
+        }
+        span {
+            display: block;
+            font-size: 12px;
+            text-align: center;
+        }
+        .num {
+            font-size: 20px;
+            margin-top: 15px;
+        }
+        .annotation {
+            line-height: 16px;
+            margin-top: 10px;
+            font-size: 10px;
+        }
+        .round {
+            position: absolute;
+            z-index: 999;
+            width: 10px;
+            height: 10px;
+            border-radius: 10px;
+            background: #f2f2f2;
+        }
+        .radio-up {
+            left: -3px;
+            top: -5px;
+        }
+        .radio-dwon {
+            left: -3px;
+            bottom: -5px;
+        }
+    }
+    .org {
+        color: #f1aa4d;
+    }
+}

@@ -151,7 +151,7 @@ a{color:#2772ee}
 .banner .logo{width:162px;float:left;background:url(../../images/logo.png) no-repeat center;height:90px;margin:5px 0 0 28px;}
 .banner .right{width:100%;height:95px;}
 .banner .banner-bg-t{background: url(../../images/banner-bg-after.png);width: 100%; min-width: 1200px; height: 221px; position: absolute; left: 0; top: 33px; z-index: -1;}
-.banner .banner-bg{background-image: url(../../images/banner-bg.png);width: 100%; min-width: 1200px; height: 220px; position: absolute; left: 0; top: 33px; z-index: -2; overflow: hidden;}
+.banner .banner-bg{width: 100%; min-width: 1200px; height: 220px; position: absolute; left: 0; top: 33px; z-index: -2; overflow: hidden;}
 
 .banner .banner-bg>img{display: none;}
 .banner .banner-bg svg{width: 100%;}
@@ -161,7 +161,7 @@ a{color:#2772ee}
 	height: 100%;
 	text-align: left;
 	word-spacing: -6px;
-	padding-left: 210px;
+	padding-left: 213px;
 }
 .banner .right .nav-menu li{
 	display: inline-block;
@@ -176,47 +176,67 @@ a{color:#2772ee}
 	color: #fff;
 	display: block;
 	padding: 29px 0;
-
-	animation-duration: 1s; animation-fill-mode: both;
+    animation-duration: 1s; animation-fill-mode: both;
 }
+
 .banner .right .nav-menu li a:hover{animation-name: tada;}
-.banner .right .nav-menu li a .nav-menu-ico{
+.banner .right .nav-menu li a.nav-menu-ico:before{
+	content: "";
 	display: inline-block;
 	vertical-align: middle;
 	background-image: url(../../images/nav-ico.png);
 	width: 33px;
 	height: 30px;
 	margin: 0 10px 0 13px;
-	
 }
-.banner .right .nav-menu li a:hover .nav-menu-ico{}
-.banner .right .nav-menu li a .nav-menu-ico.home-ico{
+
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-home-ico:before{
 	background-position: 0 0;
 }
-.banner .right .nav-menu li a .nav-menu-ico.casino-ico{
-	background-position: 0 -31px;
-}
-.banner .right .nav-menu li a .nav-menu-ico.lives-ico{
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-1-ico:before{
 	background-position: 0 -62px;
 }
-.banner .right .nav-menu li a .nav-menu-ico.sports-ico{
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-2-ico:before{
+	background-position: 0 -31px;
+}
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-3-ico:before{
 	background-position: 0 -92px;
 }
-.banner .right .nav-menu li a .nav-menu-ico.lottery-ico{
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-4-ico:before{
 	background-position: 0 -121px;
 }
-.banner .right .nav-menu li a .nav-menu-ico.promo-ico{
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-promo-ico:before{
 	background-position: 0 -152px;
+}
+
+.banner .right .nav-menu li a.nav-menu-ico span:after{
+	display: block;
+	font-size: 11px;
+}
+
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-home-ico span:after{
+	content: "HOME";
+}
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-1-ico span:after{
+	content: "CASINO";
+}
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-2-ico span:after{
+	content: "LIVES";
+}
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-3-ico span:after{
+	content: "SPORTS";
+}
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-4-ico span:after{
+	content: "LOTTERY";
+}
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-promo-ico span:after{
+	content: "PROMO";
 }
 
 .banner .right .nav-menu li a span{
 	text-align: center;
 	display: inline-block;
 	vertical-align: middle;
-}
-.banner .right .nav-menu li a span font{
-	display: block;
-	font-size: 11px;
 }
 .banner .right .nav-menu li a:after{
 	content: "";

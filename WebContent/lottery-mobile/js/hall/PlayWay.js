@@ -286,7 +286,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                         $(".balance").text(data.balance);
                         page.resetBet();
                     } else {
-                        _this.toast(d.msg + '[' + d.code + ']');
+                        _this.toast(d.msg);
                     }
                 },
                 complete: function () {
@@ -329,7 +329,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 minPl = _this.getArgNum((plAndMaxFd[0].odd-Number(plAndMaxFd[0].baseNum)*plAndMaxFd[0].rebate)) // 最低赔率
             } else {
                 maxPlayPl = plAndMaxFd.odd;  // 最高赔率
-                maxFandian = plAndMaxFd.rebate*100;    // 最大返点
+                maxFandian = plAndMaxFd.rebate*1000/10;// 最大返点
                 minPl =_this.getArgNum((plAndMaxFd.odd-Number(plAndMaxFd.baseNum)*plAndMaxFd.rebate));   // 最低赔率
             }
             convertBlMoney = (maxPlayPl - minPl) / maxFandian;  // 每1%转换赔率
@@ -768,7 +768,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                         $(".balance").text(data.balance);
                         page.resetBet();
                     } else {
-                        _this.toast(d.msg + '[' + d.code + ']');
+                        _this.toast(d.msg);
                     }
                 },
                 complete: function () {
