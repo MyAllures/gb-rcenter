@@ -31,9 +31,9 @@ function goGame(obj,options){
 
                     }
                     if (apiId == 6 && os != 'android' && os != 'app_ios') {
-                        _this.newWindow = window.open("about:blank", '_blank');
-                        if (_this.newWindow) {
-                            _this.newWindow.document.write("<div style='text-align:center;'><img style='margin-top:" +
+                        obj.newWindow = window.open("about:blank", '_blank');
+                        if (obj.newWindow) {
+                            obj.newWindow.document.write("<div style='text-align:center;'><img style='margin-top:" +
                                 document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
                         }
                     }
@@ -77,7 +77,7 @@ function goApiGame(obj,options){
 
             } else{
                 //_this.toLogin("/");
-                loginOut();
+                login("/");
             }
         }
         if ($(".mui-popover")) {
