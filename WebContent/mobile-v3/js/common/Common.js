@@ -79,6 +79,8 @@ function muiInit(options) {
     muiAjaxError();
     //绑定事件
     bindButtonEvent();
+    //初始化判断底部状态
+    checkOs();
 }
 
 /**
@@ -421,9 +423,15 @@ function login(url) {
 function loginOut(e, options) {
     sessionStorage.is_login = false;
     if (os === 'app_ios')
-        loginOut();
-    if (os === 'android')
+        window.gamebox.logout();
+    if (os === 'app_android')
         window.gamebox.logout();
     else
         goToUrl("/passport/logout.html");
+}
+
+function checkOs(){
+    if(os != 'app_ios' && os != 'app_android'){
+        $(".footerMenu").removeClass('mui-hide');
+    }
 }
