@@ -288,6 +288,7 @@ function bindButtonEvent(selector) {
 
 function doEvent(obj, options) {
     var precall = options.precall;
+    var $target = $(obj);
     //前置函数执行
     if (precall && !applyFunction(precall, options)) {
         $target.unlock();
@@ -300,6 +301,7 @@ function doEvent(obj, options) {
         doAjax(obj, options);
     } else if (opType == 'href') {
         goToUrl(options.target);
+        $target.unlock();
     }
 }
 
@@ -310,8 +312,9 @@ function doEvent(obj, options) {
  */
 function doFunction(obj, options) {
     var func = this[options.target];
-    applyFunction(func, options, obj);
+    var returnVal= applyFunction(func, options, obj);
     $(obj).unlock();
+    return returnVal;
 }
 
 /**
@@ -353,6 +356,8 @@ function doAjax(obj, options) {
             if (func) {
                 applyFunction(func, options, obj);
             }
+            $(obj).unlock();
+        },error:function () {
             $(obj).unlock();
         }
     };
