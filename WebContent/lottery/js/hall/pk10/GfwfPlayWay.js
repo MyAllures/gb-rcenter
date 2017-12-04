@@ -77,7 +77,7 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                     }
                 }
                 var playcode = _this.getPlayCode();
-                repeatArr = newArr.duplicateNew().uniqueArr();
+                repeatArr = newArr.duplicateNewPk10().uniqueArr();
                 tempArr = newArr.uniqueArr();
                 // }
                 if (repeatArr.length > 0) {

@@ -249,7 +249,46 @@ function getRequest(url) {
 }
 
 
+//获取重复元素
+Array.prototype.duplicateNewPk10 = function () {
+    var tempArr = new Array();
+    var lastArr =[];
+    for(i = 0; i < this.length; i++) {
+        if(containtArrPk10(lastArr,this[i])){
+            tempArr.push(this[i]);
+        }else{
+            lastArr.push(this[i]);
+        }
+    }
+    return tempArr;
+};
 
+function containtArrPk10(newArr,item){
+    for(var j=0;j<newArr.length;j++){
+        var a=[];
+        var b=[];
+        a.push(newArr[j].charAt(0));
+        a.push(newArr[j].charAt(1));
+        a.push(newArr[j].charAt(2));
+        a.push(newArr[j].charAt(3));
+
+
+        b.push(item.charAt(0));
+        b.push(item.charAt(1));
+        b.push(item.charAt(2));
+        b.push(item.charAt(3));
+
+        if (item.length==3){
+            a.push(newArr[j].charAt(2));
+            b.push(item.charAt(2));
+        }
+
+        if(newArr[j].length ==item.length &&  a.join("")==b.join("")){
+            return true;
+        }
+    }
+    return false;
+}
 
 //获取重复元素
 Array.prototype.duplicateNew = function () {
@@ -303,19 +342,21 @@ Array.prototype.duplicateNewa = function () {
     return tempArr;
 };
 function containtArr(newArr,item){
-
     for(var j=0;j<newArr.length;j++){
         var a=[];
         var b=[];
         a.push(newArr[j].charAt(0));
         a.push(newArr[j].charAt(1));
 
+
         b.push(item.charAt(0));
         b.push(item.charAt(1));
+
         if (item.length==3){
             a.push(newArr[j].charAt(2));
             b.push(item.charAt(2));
         }
+
         if(newArr[j].length ==item.length &&  a.join("")==b.join("")){
             return true;
         }
