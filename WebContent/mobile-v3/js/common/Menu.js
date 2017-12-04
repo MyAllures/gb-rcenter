@@ -36,3 +36,11 @@ function lang(obj, options) {
 $('.mui-off-canvas-wrap').on('hidden',function (event) {
     $(".lang-menu").hide();
 });
+
+/**
+ * 跳转到电脑端
+ * */
+function goPC(){
+    document.cookie = "ACCESS_TERMINAL=pc;expires=0";
+    window.location.replace(root + '/');
+}
