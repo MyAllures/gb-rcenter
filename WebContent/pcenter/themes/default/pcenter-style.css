@@ -1471,7 +1471,7 @@ a.hidebtn{display:none;}
 .account-info-warp .control-group .controls{width:460px;}
 .account-info-title{position:absolute;left:-260px;font-size:20px;top:35px;width: 260px;text-align: center;}
 .account-info-warp .controls{line-height:30px;}
-.left-ico-message{padding:20px 0;border-left:260px solid #f7f8f9;position:relative;min-height:120px;}
+.left-ico-message{padding:20px 0;border-left:180px solid #f7f8f9;position:relative;min-height:120px;}
 .account-info-warp hr{border-top:1px solid #d3d8dc;}
 .account-info-title img{position:absolute;left:85px;top:40px;opacity:0.2;}
 .account-info-warp .titleline{border-top:1px solid #e7ecee;margin:0 20px;position:relative;margin-top:40px;margin-bottom:30px;}
@@ -1501,16 +1501,18 @@ ul.deposit-notice{list-style-type:decimal;margin:20px 15px;}
 .deposit-tab01{position:relative;}
 .deposit-tab01 img{width:100%;height:100%;border-radius:4px;}
 .deposit-tab01 .pay-title{position:absolute;bottom:0px;left:-1px;background:#2987e7;width:100%;color:#fff;padding:7px 1px;display:block;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
-.deposit-tab01 .pay-title.orange-t-bg{background:#f06c00;}
-.deposit-tab01 .pay-title.blue-t-bg{background:#1286fd;}
-.deposit-tab01 .pay-title.green-t-bg{background:#24bd28;}
-.deposit-tab01 .pay-title.cyan-t-bg{background:#0098dc;}
-.deposit-tab01 .pay-title.sea-t-bg{background:#2987e7;}
-.deposit-tab01 .pay-title.red-t-bg{background:#c6292e;}
-.deposit-tab01 .pay-title.pink-t-bg{background:#e51b2b;}
-.deposit-tab01 .pay-title.yellow-t-bg{background:#ed9023;}
-.deposit-tab01 .pay-title.prasinous-t-bg{background:#40b170;}
-.deposit-tab01 .pay-title.dark-green-t-bg{background:#189ca6;}
+.deposit-tab01:nth-child(1) .pay-title{background:#f06c00;}
+.deposit-tab01:nth-child(2) .pay-title{background:#1286fd;}
+.deposit-tab01:nth-child(3) .pay-title{background:#24bd28;}
+.deposit-tab01:nth-child(4) .pay-title{background:#0098dc;}
+.deposit-tab01:nth-child(5) .pay-title{background:#2987e7;}
+.deposit-tab01:nth-child(6) .pay-title{background:#c6292e;}
+.deposit-tab01:nth-child(7) .pay-title{background:#e51b2b;}
+.deposit-tab01:nth-child(8) .pay-title{background:#ed9023;}
+.deposit-tab01:nth-child(9) .pay-title{background:#40b170;}
+.deposit-tab01:nth-child(10) .pay-title{background:#189ca6;}
+.deposit-tab01:nth-child(11) .pay-title{background:#638aa5;}
+
 
 .deposit-tab01 .pay-title em{margin-left:10px;font-size:17px;}
 .deposit-tab01 .pay-title small{font-size:12px;float:right;padding:5px 20px 0 0;color:#eee;}

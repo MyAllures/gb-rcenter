@@ -35,14 +35,14 @@
 <c:if test="${!empty homeTeam&&!empty awayTeam}">
     ${homeTeam}(主)
     <c:if test="${!empty handicap && apiId==21}">
-        <c:if test="${fn:startsWith(handicap,'N')}">
+        <c:if test="${fn:startsWith(handicap,'Y')}">
             <span class="co-blue">${fn:substring(handicap,1,fn:length(handicap))}</span>
         </c:if>
     </c:if>
     &nbsp;VS&nbsp;
     ${awayTeam}
     <c:if test="${!empty handicap && apiId==21}">
-        <c:if test="${fn:startsWith(handicap,'Y')}">
+        <c:if test="${fn:startsWith(handicap,'N')}">
             <span class="co-blue">${fn:substring(handicap,1,fn:length(handicap))}</span>
         </c:if>
     </c:if>
