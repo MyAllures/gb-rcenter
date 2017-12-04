@@ -5,8 +5,9 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
 
     return BaseListPage.extend({
         init: function () {
-            this.formSelector = "form";
-            this._super();
+            this.formSelector = "form[name='companyDepositForm']";
+            this._super(this.formSelector);
+            this.queryCount();
         },
 
         onPageLoad: function () {
@@ -30,12 +31,73 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
                 $("#todayTotal").parent().parent().hide();
                 $("#totalSumTarget").parent().parent().show();
             }
-
-
-
-
-
         },
+
+        /**
+         * 重写query方法
+         * @param event
+         * @param option
+         */
+        query: function (event, option) {
+            var $form = $(window.top.topPage.getCurrentForm(event));
+            if (!$form.valid || $form.valid()) {
+                window.top.topPage.ajax({
+                    loading: true,
+                    url: window.top.topPage.getCurrentFormAction(event),
+                    headers: {
+                        "Soul-Requested-With": "XMLHttpRequest"
+                    },
+                    type: "post",
+                    data: this.getCurrentFormData(event),
+                    success: function (data) {
+                        var $result = $(".search-list-container", $form);
+                        $result.html(data);
+                        event.page.onPageLoad();
+                        $(event.currentTarget).unlock()
+                    },
+                    error: function (data, state, msg) {
+                        window.top.topPage.showErrorMessage(data.responseText);
+                        $(event.currentTarget).unlock();
+                    }
+                });
+                if (option && option.isCount) {
+                    this.queryCount();
+                } else {
+                    this.queryCount("true");
+                }
+
+            } else {
+                $(event.currentTarget).unlock();
+            }
+        },
+
+        /**
+         * 重新计算分页
+         * @param e
+         */
+        queryCount: function (isCounter) {
+            var _this = this;
+            var url = root + "/fund/deposit/company/count.html";
+            if (isCounter) {
+                url = url + "?isCounter=" + isCounter;
+            }
+            window.top.topPage.ajax({
+                url: url,
+                data: $(this.formSelector).serialize(),
+                type: 'POST',
+                success: function (data) {
+                    console.info("data"+data);
+                    console.info($("#companyDepositpageDiv"));
+                    $("#companyDepositpageDiv").html(data);
+                    _this.initSelect();
+                    // $(_this.formSelector + " .search-wrapper [selectDiv]").attr("callback", "selectListChange");
+                },
+                error: function (data) {
+
+                }
+            })
+        },
+
         /** 声音开关 */
         toneSwitch: function (e) {
             var tone = $('[name=switchVal]').val();
@@ -176,6 +238,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
          * @param opt
          */
         queryByCondition: function (e, opt) {
+            opt.isCount = true;
             this.query(e, opt);
             $(e.currentTarget).unlock();
         },

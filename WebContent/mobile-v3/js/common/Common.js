@@ -231,7 +231,13 @@ function goToUrl(url) {
         return;
     }
     //todo::终端标识，以判断ｕrl走什么入口
-    openWindow(url);
+    if (os == 'app_ios') {
+        gotoCustom(url);
+    } else if (os == 'app_android') {
+        window.gamebox.gotoApi(url);
+    }else{
+        openWindow(url);
+    }
 }
 
 function openWindow(url) {

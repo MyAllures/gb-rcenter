@@ -8,6 +8,9 @@ var gameId;
 
 /*点击游戏（电子类、彩票类）进入*/
 function goGame(obj,options){
+    apiTypeId = options.dataApiTypeId;
+    apiId = options.dataApiId;
+    apiName = options.dataApiName;
     status = options.dataStatus;
     gameCode = options.dataGameCode;
     gameId = options.dataGameId;
