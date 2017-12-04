@@ -22,6 +22,7 @@ define(['common/BaseEditPage','mailAutoComplete','bootstrapswitch'], function (B
                 this.getAgentRate(_defaultAgent);
             }
             this.initSwitch();
+            this.initSwitch1();
             //change
         },
         changeAgent:function( event , option ){
@@ -112,6 +113,19 @@ define(['common/BaseEditPage','mailAutoComplete','bootstrapswitch'], function (B
                         offText: window.top.message.common['forbidden'],
                         onSwitchChange: function (e, state) {
                             $("[name='result.addNewPlayer']").val(state);
+                        }
+                    }
+                );
+        },
+        initSwitch1:function(){
+            var _this=this;
+            var $bootstrapSwitch = $("[name='my-checkbox1']");
+            this.unInitSwitch($bootstrapSwitch)
+                .bootstrapSwitch({
+                        onText: window.top.message.common['enable'],
+                        offText: window.top.message.common['forbidden'],
+                        onSwitchChange: function (e, state) {
+                            $("[name='result.viewCapitalRecord']").val(state);
                         }
                     }
                 );

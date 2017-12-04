@@ -20,6 +20,10 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
         onPageLoad: function () {
             this._super();
             var _this = this;
+            $('[data-toggle="popover"]', _this.formSelector).popover({
+                trigger: 'hover',
+                placement: 'top'
+            });
             var leftTime = $(this.formSelector + " #leftTime[data-time]");
             if (leftTime && leftTime.length > 0) {
                 _this.showLeftTime();

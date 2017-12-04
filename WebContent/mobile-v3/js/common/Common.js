@@ -231,7 +231,13 @@ function goToUrl(url) {
         return;
     }
     //todo::终端标识，以判断ｕrl走什么入口
-    openWindow(url);
+    if (os == 'app_ios') {
+        gotoCustom(url);
+    } else if (os == 'app_android') {
+        window.gamebox.gotoApi(url);
+    }else{
+        openWindow(url);
+    }
 }
 
 function openWindow(url) {
@@ -423,15 +429,15 @@ function login(url) {
 function loginOut(e, options) {
     sessionStorage.is_login = false;
     if (os === 'app_ios')
-        loginOut();
-    if (os === 'android')
+        window.gamebox.logout();
+    if (os === 'app_android')
         window.gamebox.logout();
     else
         goToUrl("/passport/logout.html");
 }
 
 function checkOs(){
-    if(os === 'pc'){
+    if(os != 'app_ios' && os != 'app_android'){
         $(".footerMenu").removeClass('mui-hide');
     }
 }
