@@ -343,7 +343,7 @@ i, var { font-style: normal; }
 .mui-off-canvas-wrap.mui-active .mui-off-canvas-backdrop {box-shadow: none;}
 .lottery-kind-list{margin-top:10px;margin-bottom: 20px;}
 .aside-right-menu{margin-top:10px;margin-bottom: 20px;}
-
+.mui-off-canvas-right.diy-screen-aside .mui-input-row label{text-align: right; padding: 0 10px 0 0; line-height: 40px;}
 /*侧滑彩种列表*/
 .lottery-kind-list .mui-table-view-cell { padding: 0.55rem 0.75rem; }
 .lottery-kind-list .lottery-ico { display: inline-block; vertical-align: middle; width: 1.8rem; height: 1.8rem; border-radius: 0.65rem; }
@@ -1244,6 +1244,7 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .right-menu span.iconfont.icon-xinxizhongxin{background:url(../images/hico43.png)no-repeat 100%/100%!important;}
 .right-menu span.iconfont.icon-zaixiankefu{background:url(../images/zxkf3.png)no-repeat 100%/100%!important;}
 .mui-off-canvas-right .p-1r .mui-btn-danger{padding:.5rem;border-radius:.3rem;color:#fff;border:1px solid #0087d5;background:#0087d5;background-size:1.5rem;}
+
 
 
 /*左侧菜单调整*/
