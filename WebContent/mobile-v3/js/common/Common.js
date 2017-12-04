@@ -441,6 +441,9 @@ function loginOut(e, options) {
         goToUrl("/passport/logout.html");
 }
 
+/**
+ * ios，android端隐藏下标
+ */
 function checkOs(){
     if(os != 'app_ios' && os != 'app_android'){
         $(".footerMenu").removeClass('mui-hide');
