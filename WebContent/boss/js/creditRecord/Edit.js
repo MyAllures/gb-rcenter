@@ -15,17 +15,17 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
         },
         onPageLoad: function () {
             this._super();
-            this.unInitFileInput($('#file_path')).fileinput({
+            this.unInitFileInput($('.file')).fileinput({
                 showUpload: false,
                 maxFileCount: 1,
                 maxFileSize: 1024,
                 mainClass: "input-group",
-                removeLabel: window.top.message.content['floatPic.file.upload.remove'],
-                browseLabel: window.top.message.content['floatPic.file.upload.browse'] + '&hellip;',
+                removeLabel: window.top.message.serve['apiManage.file.upload.remove'],
+                browseLabel: window.top.message.serve['apiManage.file.upload.browse'] + '&hellip;',
                 allowedFileExtensions: ['png','jpg','gif','gpeg'],
-                msgInvalidFileExtension: window.top.message.content['floatPic.file.upload.msgInvalidFileExtension'],
-                msgValidationError: window.top.message.content['floatPic.file.upload.msgValidationError'],
-                msgSizeTooLarge: window.top.message.content['floatPic.file.upload.msgSizeTooLarge'],
+                msgInvalidFileExtension: window.top.message.serve['apiManage.file.upload.msgInvalidFileExtension'],
+                msgValidationError: window.top.message.serve['apiManage.file.upload.msgValidationError'],
+                msgSizeTooLarge: window.top.message.serve['apiManage.file.upload.msgSizeTooLarge'],
                 msgImageWidthSmall: window.top.message.content['logo.file.size.widthError'],
                 msgImageHeightSmall: window.top.message.content['logo.file.size.heightError'],
                 msgImageWidthLarge: window.top.message.content['logo.file.size.widthError'],
