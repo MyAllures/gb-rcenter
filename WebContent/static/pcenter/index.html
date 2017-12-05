@@ -342,7 +342,7 @@ function onInitScrollPic(){
     <div class="right">
     	  <ul class="nav-menu">
     	  	  <li>
-    	  	  	  <a class="nav-menu-ico aip-type-home-ico" href="#">
+    	  	  	  <a class="nav-menu-ico aip-type-home-ico" href="www.baidu.com">
     	  	  	   	  <span>网站首页</span>
     	  	  	  </a>
     	  	  </li>
@@ -1185,11 +1185,11 @@ function onInitScrollPic(){
 	            var $avatar = $(this);
 	            var avatarImage = $avatar.find('img').first().attr('src');
 	            avatars.push(avatarImage);
-	            $avatar.click(function(e){
-	                e.preventDefault();
-
-	                $avatarHolderEl.backgroundBlur(avatarImage);
-	            });
+//	            $avatar.click(function(e){
+//	                e.preventDefault();
+//
+//	                $avatarHolderEl.backgroundBlur(avatarImage);
+//	            });
 	        });
 
 	        $avatarHolderEl.backgroundBlur({
