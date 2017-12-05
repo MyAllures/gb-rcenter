@@ -451,6 +451,6 @@ function checkOs(){
         $(".footerMenu").removeClass('mui-hide');
     }
     if(os == "app_android"){
-        $('.headMenu').addClass('hide');
+        $('.headMenu').addClass('mui-hide');
     }
 }
