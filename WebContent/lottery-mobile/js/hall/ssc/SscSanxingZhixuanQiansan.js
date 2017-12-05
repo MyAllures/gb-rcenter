@@ -3,59 +3,16 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
         _this: null,
         init: function () {
             _this = this;
+            this.showTable(this.getSecondText(),"官方玩法-前三",this.getSecondCode(),$("#qiansan"),"ssc_sanxing_qs");
             this._super();
         },
 
+        getSecondText:function () {
+            return $("div#qiansan a.mui-active span").text()==""?"直选复式":$("div#qiansan a.mui-active span").text();
+        },
 
-        showTable : function(){
-            var betCode=$("#gfwfBetCode").val();
-            $("a[data-code='ssc_sanxing_qs']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#qiansan").show();
-            $("span.x_1.gfwf-tit").text("前三");
-            $(".s-title.title1 span").text("前三");
-            $(".s-title.title2 span").text("直选复式");
-            $("#toobarTitle").text("官方玩法-前三");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('官方玩法-前三');
-            }
-            if(betCode =="ssc_sanxing_qs"){
-                $("a[data-code='ssc_sanxing_zhixuan_qsfs']").addClass("mui-active");
-                $(".x_3.gfwf-playName").text("直选复式");
-            }else{
-                $("#qiansan a").removeClass("mui-active");
-                $("a[data-code='"+betCode+"']").addClass("mui-active");
-            }
-
-            if(betCode =="ssc_sanxing_zhixuan_qsfs"){
-                $(".x_3.gfwf-playName").text("直选复式")
-                $(".s-title.title2 span").text("直选复式");
-            }else if(betCode =="ssc_sanxing_zhixuan_qshz"){
-                $(".x_3.gfwf-playName").text("直选和值")
-                $(".s-title.title2 span").text("直选和值");
-            }else if(betCode =="ssc_sanxing_zhixuan_qskd"){
-                $(".x_3.gfwf-playName").text("直选跨度")
-                $(".s-title.title2 span").text("直选跨度");
-            }else if(betCode =="ssc_sanxing_zuxuan_qsz3fs"){
-                $(".x_3.gfwf-playName").text("组三复式")
-                $(".s-title.title2 span").text("组三复式");
-            }else if(betCode =="ssc_sanxing_zhixuan_qsfs"){
-                $(".x_3.gfwf-playName").text("直选复式")
-                $(".s-title.title2 span").text("直选复式");
-            }else if(betCode =="ssc_sanxing_zuxuan_qsz6fs"){
-                $(".x_3.gfwf-playName").text("组六复式")
-                $(".s-title.title2 span").text("组六复式");
-            }else if(betCode =="ssc_sanxing_zuxuan_qszxhz"){
-                $(".x_3.gfwf-playName").text("组选和值")
-                $(".s-title.title2 span").text("组选和值");
-            }else if(betCode =="ssc_sanxing_zuxuan_qszxbd"){
-                $(".x_3.gfwf-playName").text("组选包胆")
-                $(".s-title.title2 span").text("组选包胆");
-            }else if(betCode =="ssc_sanxing_zuxuan_qshzws"){
-                $(".x_3.gfwf-playName").text("和值尾数")
-                $(".s-title.title2 span").text("和值尾数");
-            }
-
+        getSecondCode:function(){
+            return $("#gfwfBetCode").val()=="ssc_sanxing_qs"?"ssc_sanxing_zhixuan_qsfs":$("#gfwfBetCode").val();
         },
 
         /*================================前3直选复式===============================*/

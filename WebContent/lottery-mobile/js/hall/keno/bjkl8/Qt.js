@@ -1,23 +1,10 @@
 define(['site/hall/keno/bjkl8/PlayWay-xywf', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         init: function () {
+            this.showTable("其他","传统玩法-其他","s5","","");
             this._super();
+
         },
 
-        showTable : function(){
-            var BetCode=$("#gfwfBetCode").val();
-            var BetCode1="其他";
-            $("a[data-code='"+BetCode+"']").addClass("mui-active");
-            $("a[data-code='s5']").addClass("mui-active");
-            $(".x_3.gfwf-playName").text(BetCode1);
-            $("span.x_1.gfwf-tit").text(BetCode1);
-            $(".s-title.title1 span").text(BetCode1);
-            $(".s-title.title2 span").text(BetCode1);
-            $("#toobarTitle").text("传统玩法-"+BetCode1);
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-'+BetCode1);
-            }
-            $("a[data-code='s5'] span").text(BetCode1);
-        },
     });
 });

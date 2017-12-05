@@ -4,31 +4,13 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
         _this: null,
         oddsar:null,
         init: function () {
+            this.showTable("组六","传统玩法-组六","zusan",$("#zusan"),"");
             this._super();
             _this = this;
-
         },
-
-        showTable : function(){
-            $("a[data-code='zusan']").addClass("mui-active");
-            $("a[data-code='group6']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#zusan").show();
-            $(".x_3.gfwf-playName").text("组六");
-            $("span.x_1.gfwf-tit").text("组六");
-            $(".s-title.title1 span").text("组六");
-            $(".s-title.title2 span").text("组六");
-            $("#toobarTitle").text("传统玩法-组六");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-组六');
-            }
-            $("a[data-code='zusan'] span").text("组六");
-        },
-
 
         bindButtonEvents: function () {
             var _this=this;
-            // mui("body").off('tap','a');
 
             mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn').on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn', function () {
                 _this.bindTdInput($(this));

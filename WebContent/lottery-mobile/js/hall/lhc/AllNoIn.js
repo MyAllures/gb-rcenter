@@ -1,24 +1,18 @@
 define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
     return PlayWay.extend({
         init: function () {
+            this.showTable(this.getSecondText(),"传统玩法-全不中",this.getSecondCode(),$("#quanbuzhong"),"allNoIn");
             this._super();
-        },
-        showTable : function(){
-            var BetCode=$("#gfwfBetCode").val();
-            $("a[data-code='"+BetCode+"']").addClass("mui-active");
-            $("a[data-code='allNoIn']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#quanbuzhong").show();
-            $(".x_3.gfwf-playName").text(BetCode);
-            $("span.x_1.gfwf-tit").text(BetCode);
-            $(".s-title.title1 span").text("全不中");
-            $(".s-title.title2 span").text(BetCode);
-            $("#toobarTitle").text("传统玩法-全不中");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-全不中');
-            }
+
         },
 
+        getSecondText:function () {
+            return $("div#quanbuzhong a.mui-active span").text()==""?"五不中":$("div#quanbuzhong a.mui-active span").text();
+        },
+
+        getSecondCode:function(){
+            return $("#gfwfBetCode").val()=="allNoIn"?"五不中":$("#gfwfBetCode").val();
+        },
 
         getOdds: function () {
             page.resetBet();

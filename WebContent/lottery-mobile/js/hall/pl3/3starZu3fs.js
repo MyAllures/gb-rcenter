@@ -3,17 +3,8 @@ define(['site/hall/pl3/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
         _this: null,
         init: function () {
             _this = this;
+            this.showTable("组三复式","官方玩法-三星","pl3_sanxing_zuxuan_z3fs",$("#3star"),"3star");
             this._super();
-        },
-
-        showTable : function(){
-            $("a[data-code='3star']").addClass("mui-active");
-            $("#3star").show();
-            $("span.x_1.gfwf-tit").text("三星");
-            $(".s-title.title1 span").text("三星");
-            $(".s-title.title2 span").text("组三复式");
-            $(".x_3.gfwf-playName").text("组三复式");
-            $("a[data-code='pl3_sanxing_zuxuan_z3fs']").addClass("mui-active");
         },
 
         /*================================后3直选复式===============================*/
