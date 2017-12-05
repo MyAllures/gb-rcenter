@@ -82,7 +82,7 @@ function tableScroll (value) {
 function changeApplyStatus() {
     var url=root+"/promo/getPlayerActivityIds.html";
     var options ={
-        url:root+"/promo/getPlayerActivityIds.html",
+        url:url,
         success:function(data){
             filterActyByPlayer(data);
         }

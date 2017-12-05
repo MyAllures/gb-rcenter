@@ -42,14 +42,9 @@ function promoInfo() {
                     var a = '';
                     for (var d in data.type) {
                         var option ={
-                            precall:'',
-                            callback:'',
-                            post:'',
                             opType:'function',
                             target:'activityType',
-                            confirm:'',
                             text:'',
-                            size:'',
                             activityType:type[d].key
                         };
                         var rel ='';
@@ -107,14 +102,9 @@ function appendActivity(data) {
             var b = '';
             for (var m in message) {
                 var option ={
-                    precall:'',
-                    callback:'',
-                    post:'',
                     opType:'href',
                     target: root + '/promo/promoDetail.html?search.id=' + message[m].id,
-                    confirm:'',
-                    text:'',
-                    size:''
+                    text:''
                 };
                 var rel ='';
                 rel = JSON.stringify(option).toString();

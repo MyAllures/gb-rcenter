@@ -173,6 +173,8 @@ function muiAjax(options) {
         data: options.data,
         dataType: options.dataType || 'json',
         type: options.type || 'POST',
+        headers:options.headers,
+        timeout:options.timeout,
         success: options.success,
         error: options.error,
         complete: options.complete,
@@ -434,7 +436,7 @@ function login(url) {
 function loginOut(e, options) {
     sessionStorage.is_login = false;
     if (os === 'app_ios')
-        window.gamebox.logout();
+        loginOut();
     if (os === 'app_android')
         window.gamebox.logout();
     else

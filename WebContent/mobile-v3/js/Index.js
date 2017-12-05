@@ -123,13 +123,15 @@ $(".lottery-nav li").on("tap",function(){
 
 function pullUpLoadData(apiId,pageNumber){
     var url = root + '/game/getGameByApiId.html?search.apiId='+apiId+'&search.apiTypeId=4&paging.pageNumber='+pageNumber;
-    mui.ajax(url, {
-        type: 'GET',
-        headers: {
+    var options = {
+        url:url,
+        type:'GET',
+        dataType:'html',
+        headers:{
             'Content-Type': 'application/json',
             'Soul-Requested-With': 'XMLHttpRequest'
         },
-        success: function (data) {
+        success:function(data){
             setTimeout(function() {
                 $('#lottery-id').val(apiId);
                 $('input#loading-' + apiId).val('false');
@@ -139,21 +141,23 @@ function pullUpLoadData(apiId,pageNumber){
                 $("#total-page-"+apiId).attr("pageNumber",pageNumber);
             }, 1000);
         }
-    });
+    };
+    muiAjax(options);
 }
 
 /** 切换TAB加载数据 */
 function loadData(apiId,pageNumber) {
     var url = root + '/game/getGameByApiId.html?search.apiId='+apiId+'&search.apiTypeId=4&paging.pageNumber='+pageNumber;
-    mui.ajax(url, {
-        type: 'GET',
-        headers: {
+    var options={
+        url:url,
+        type:'GET',
+        dataType:'html',
+        headers:{
             'Content-Type': 'application/json',
             'Soul-Requested-With': 'XMLHttpRequest'
         },
-        beforeSend: function () {
+        beforeSend:function(){
             showLoading(338);
-            //$('div.lottery-content-' + apiId).parent().addClass('mui-show');
         },
         success: function (data) {
             setTimeout(function() {
@@ -166,9 +170,10 @@ function loadData(apiId,pageNumber) {
             }, 1000);
         },
         complete: function () {
-             hideLoad();
+            hideLoad();
         }
-    });
+    };
+    muiAjax(options);
 }
 
 /** 显示Loading */
