@@ -70,7 +70,11 @@ function goTab(obj,options){
     }else if(os == 'app_android'){
         window.gamebox.gotoTab(skip);
     }else{
-        goToUrl(dataHref);
+        if(skip == 3){
+            loadCustomer(obj,options);
+        }else{
+            goToUrl(dataHref);
+        }
     }
     mui(".mui-off-canvas-left").offCanvas('close');
 }
