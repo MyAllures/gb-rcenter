@@ -1,3 +1,9 @@
+$(function () {
+    //app不展示跳转电脑版
+    if(os == 'app_ios' || os == 'app_android') {
+        $(".side-nav .mui-list-unstyled .pc").remove();
+    }
+});
 /**
  * 跳转至客服
  * @param obj
