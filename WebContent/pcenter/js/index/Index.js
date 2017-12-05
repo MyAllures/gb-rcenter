@@ -61,11 +61,10 @@ define([], function () {
                 var $avatar = $(this);
                 var avatarImage = $avatar.find('img').first().attr('src');
                 avatars.push(avatarImage);
-                $avatar.click(function(e){
+                /*$avatar.click(function(e){
                     e.preventDefault();
-
                     $avatarHolderEl.backgroundBlur(avatarImage);
-                });
+                });*/
             });
 
             $avatarHolderEl.backgroundBlur({

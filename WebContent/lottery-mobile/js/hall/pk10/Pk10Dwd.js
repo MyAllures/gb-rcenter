@@ -3,21 +3,8 @@ define(['site/hall/pk10/PlayWay-gfwf', 'site/plugin/template'], function (PlayWa
         _this: null,
         init: function () {
             _this = this;
+            this.showTable("定位胆","官方玩法-定位胆","zxfs","","");
             this._super();
-
-        },
-        showTable : function(){
-            $("a[data-code='"+$("#gfwfBetCode").val()+"']").addClass("mui-active");
-            $("span.x_1.gfwf-tit").text("定位胆");
-            $(".s-title.title1 span").text("定位胆");
-            $("a[data-code='zxfs']").addClass("mui-active");
-            $("#toobarTitle").text("官方玩法-定位胆");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('官方玩法-定位胆');
-            }
-            $(".x_3.gfwf-playName").text("定位胆");
-            $(".s-title.title2 span").text("定位胆")
-            $("a[data-code='zxfs'] span").text("定位胆");
         },
 
         /************************************************PK10**********************************************/

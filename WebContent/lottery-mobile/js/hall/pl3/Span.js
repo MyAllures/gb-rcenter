@@ -6,22 +6,8 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
         _this:null,
         init: function () {
             _this=this;
+            this.showTable("跨度","传统玩法-跨度","zusan",$("#zusan"),"");
             this._super();
-        },
-
-        showTable : function(){
-            $("a[data-code='zusan']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#zusan").show();
-            $(".x_3.gfwf-playName").text("跨度");
-            $("span.x_1.gfwf-tit").text("跨度");
-            $(".s-title.title1 span").text("跨度");
-            $(".s-title.title2 span").text("跨度");
-            $("#toobarTitle").text("传统玩法-跨度");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-跨度');
-            }
-            $("a[data-code='zusan'] span").text("跨度");
         },
 
         getOdds: function () {

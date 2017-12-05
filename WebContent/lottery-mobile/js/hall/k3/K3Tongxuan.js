@@ -4,35 +4,13 @@ define(['site/hall/k3/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay,
         _this: null,
         init: function () {
             _this = this;
+            this.showTable(this.getSecondText(),"官方玩法-"+this.getSecondText(),"bzxh","","");
             this._super();
+
         },
 
-        showTable : function(){
-            var _this=this;
-            $("a[data-code='"+$("#gfwfBetCode").val()+"']").addClass("mui-active");
-            if(_this.getBetCode() =="k3_tongxuan_santong"){
-                $("span.x_1.gfwf-tit").text("三同号通选");
-                $(".s-title.title1 span").text("三同号通选");
-                $("a[data-code='bzxh']").addClass("mui-active");
-                $("#toobarTitle").text("官方玩法-三同号通选");
-                if (this.os == 'app_android' && isLotterySite == 'true') {
-                    window.gamebox.setTitle('官方玩法-三同号通选');
-                }
-                $(".x_3.gfwf-playName").text("三同号通选");
-                $(".s-title.title2 span").text("三同号通选")
-                $("a[data-code='bzxh'] span").text("三同号通选");
-            }else{
-                $("span.x_1.gfwf-tit").text("三连号通选");
-                $(".s-title.title1 span").text("三连号通选");
-                $("a[data-code='bzxh']").addClass("mui-active");
-                $("#toobarTitle").text("官方玩法-三连号通选");
-                if (this.os == 'app_android' && isLotterySite == 'true') {
-                    window.gamebox.setTitle('官方玩法-三连号通选');
-                }
-                $(".x_3.gfwf-playName").text("三连号通选");
-                $(".s-title.title2 span").text("三连号通选")
-                $("a[data-code='bzxh'] span").text("三连号通选");
-            }
+        getSecondText:function () {
+            return _this.getBetCode() =="k3_tongxuan_santong"?"三同号通选":"三连号通选";
         },
 
         getBetCode : function () {

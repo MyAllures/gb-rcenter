@@ -518,7 +518,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             $("input[name='search.loginTimeEnd']").val('');
             $("input[name='search.rechargeTotalBegin']").val('');
             $("input[name='search.rechargeTotalEnd']").val('');
-            var message = $("input[name='search.messages']").siblings('ul').find("a[key='search.realName']").text();
+            var message = $("input[name='search.messages']").siblings('ul').find("a[key='search.remarks']").text();
             $("input[name='search.messages']").siblings('button').find("span[prompt='prompt']").text(message);
             $("#operator2").val('');
             $("input[name='search.lastLoginIpv4']").val('');

@@ -2,25 +2,17 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
     return PlayWay.extend({
         lhcBet:null,
         init: function () {
+            this.showTable(this.getSecondText(),"传统玩法-尾数连",this.getSecondCode(),$("#weishulian"),"mantissaLink");
             this._super();
+
         },
-        showTable : function(){
-            var BetCode=$("#gfwfBetCode").val();
-            $("a[data-code='"+BetCode+"']").addClass("mui-active");
-            $("a[data-code='mantissaLink']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#weishulian").show();
-            $(".x_3.gfwf-playName").text(BetCode);
-            $("span.x_1.gfwf-tit").text(BetCode);
-            $(".s-title.title1 span").text("尾数连");
-            $(".s-title.title2 span").text(BetCode);
-            $("#toobarTitle").text("传统玩法-尾数连");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-尾数连');
-            }
+        getSecondText:function () {
+            return $("div#weishulian a.mui-active span").text()==""?"二尾连":$("div#weishulian a.mui-active span").text();
         },
 
-
+        getSecondCode:function(){
+            return $("#gfwfBetCode").val()=="mantissaLink"?"二尾连":$("#gfwfBetCode").val();
+        },
 
         getOdds: function () {
             var _this = this;

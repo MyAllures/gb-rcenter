@@ -4,26 +4,10 @@ define(['site/hall/pl3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
         _this: null,
         oddsar:null,
         init: function () {
+            this.showTable("组三","传统玩法-组三","zusan",$("#zusan"),"");
             this._super();
             _this = this;
         },
-
-        showTable : function(){
-            $("a[data-code='group3']").addClass("mui-active");
-            $("a[data-code='zusan']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#zusan").show();
-            $(".x_3.gfwf-playName").text("组三");
-            $("span.x_1.gfwf-tit").text("组三");
-            $(".s-title.title1 span").text("组三");
-            $(".s-title.title2 span").text("组三");
-            $("#toobarTitle").text("传统玩法-组三");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-组三');
-            }
-            $("a[data-code='zusan'] span").text("组三");
-        },
-
 
         /**
          * 绑定事件

@@ -2,24 +2,17 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
     return PlayWay.extend({
 
         init: function () {
+            this.showTable(this.getSecondText(),"传统玩法-连码",this.getSecondCode(),$("#lianma"),"linkCode");
             this._super();
         },
-        showTable : function(){
-            var BetCode=$("#gfwfBetCode").val();
-            $("a[data-code='"+BetCode+"']").addClass("mui-active");
-            $("a[data-code='linkCode']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#lianma").show();
-            $(".x_3.gfwf-playName").text(BetCode);
-            $("span.x_1.gfwf-tit").text(BetCode);
-            $(".s-title.title1 span").text("连码");
-            $(".s-title.title2 span").text(BetCode);
-            $("#toobarTitle").text("传统玩法-连码");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-连码');
-            }
+
+        getSecondText:function () {
+            return $("div#lianma a.mui-active span").text()==""?"三全中":$("div#lianma a.mui-active span").text();
         },
 
+        getSecondCode:function(){
+            return $("#gfwfBetCode").val()=="linkCode"?"三全中":$("#gfwfBetCode").val();
+        },
 
         getOdds: function () {
             page.resetBet();
