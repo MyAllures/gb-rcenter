@@ -4977,11 +4977,11 @@ input[type=number]::-webkit-outer-spin-button {
     -moz-transform:rotate(45deg); 	/* Firefox */
     -webkit-transform:rotate(45deg); /* Safari 和 Chrome */
     -o-transform:rotate(45deg); 
-    }
+}
 .limit-tips ul li{margin-bottom: 10px; font-size: 15px;}
 @media(min-width:768px ) {
-.col-sm-5-1{width:20%}
-.col-sm-7-1{width:14%}
+    .col-sm-5-1{width:20%}
+    .col-sm-7-1{width:14%}
 }
 @media(max-width:993px ) {
 	.limit-tips ul{position: relative;left: 0;}
