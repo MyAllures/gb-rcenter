@@ -60,29 +60,16 @@ if(os == "app_ios" || os == "app_android"){
 }
 
 /**
- * 返回首页
+ * 返回下标链接
  */
-function goHome(){
+function goTab(obj,options){
+    var skip = options.skip;
+    var dataHref = root + options.dataHref;
     if(os == 'app_ios'){
-        gotoTab(2);
+        gotoTab(skip);
     }else if(os == 'app_android'){
-        window.gamebox.gotoTab(2);
+        window.gamebox.gotoTab(skip);
     }else{
-        var url = root + "/mainIndex.html";
-        goToUrl(url);
-    }
-}
-
-/**
- * 返回优惠活动
- */
-function goDiscounts(){
-    if(os == 'app_ios'){
-        gotoTab(1);
-    }else if(os == 'app_android'){
-        window.gamebox.gotoTab(1);
-    }else{
-        var url = root + "/discounts/index.html?skip=1";
-        goToUrl(url);
+        goToUrl(dataHref);
     }
 }
