@@ -6,22 +6,11 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
         _this:null,
         init: function () {
             _this=this;
+            this.showTable(this.getSecondText(),"传统玩法-和数",$("#gfwfBetCode").val(),$("#heshu"),"sum");
             this._super();
         },
-        showTable : function(){
-            var gfwfBetCode=$("#gfwfBetCode").val();
-            $("a[data-code='sum']").addClass("mui-active");
-            $("a[data-code='"+gfwfBetCode+"']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#heshu").show();
-            $("span.x_1.gfwf-tit").text(gfwfBetCode);
-            $(".s-title.title1 span").text(gfwfBetCode);
-            $("#toobarTitle").text("传统玩法-和数");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-和数');
-            }
-            $(".x_3.gfwf-playName").text(gfwfBetCode)
-            $(".s-title.title2 span").text(gfwfBetCode);
+        getSecondText:function () {
+            return $("div#heshu a.mui-active").attr("data-code")==undefined?"百十和数":$("div#heshu a.mui-active").attr("data-code");
         },
 
         getOdds: function () {

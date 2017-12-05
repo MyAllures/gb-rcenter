@@ -2,24 +2,17 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
     return PlayWay.extend({
         lhcBet:null,
         init: function () {
+            this.showTable(this.getSecondText(),"传统玩法-连肖",this.getSecondCode(),$("#lianxiao"),"linkZodiac");
             this._super();
+
         },
-        showTable : function(){
-            var BetCode=$("#gfwfBetCode").val();
-            $("a[data-code='"+BetCode+"']").addClass("mui-active");
-            $("a[data-code='linkZodiac']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#lianxiao").show();
-            $(".x_3.gfwf-playName").text(BetCode);
-            $("span.x_1.gfwf-tit").text(BetCode);
-            $(".s-title.title1 span").text("连肖");
-            $(".s-title.title2 span").text(BetCode);
-            $("#toobarTitle").text("传统玩法-连肖");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-连肖');
-            }
+        getSecondText:function () {
+            return $("div#lianxiao a.mui-active span").text()==""?"二肖连":$("div#lianxiao a.mui-active span").text();
         },
 
+        getSecondCode:function(){
+            return $("#gfwfBetCode").val()=="linkZodiac"?"二肖连":$("#gfwfBetCode").val();
+        },
 
         getOdds: function () {
             var _this = this;

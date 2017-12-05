@@ -173,6 +173,8 @@ function muiAjax(options) {
         data: options.data,
         dataType: options.dataType || 'json',
         type: options.type || 'POST',
+        headers:options.headers,
+        timeout:options.timeout,
         success: options.success,
         error: options.error,
         complete: options.complete,
@@ -288,6 +290,7 @@ function bindButtonEvent(selector) {
 
 function doEvent(obj, options) {
     var precall = options.precall;
+    var $target = $(obj);
     //前置函数执行
     if (precall && !applyFunction(precall, options)) {
         $target.unlock();
@@ -300,6 +303,7 @@ function doEvent(obj, options) {
         doAjax(obj, options);
     } else if (opType == 'href') {
         goToUrl(options.target);
+        $target.unlock();
     }
 }
 
@@ -310,8 +314,9 @@ function doEvent(obj, options) {
  */
 function doFunction(obj, options) {
     var func = this[options.target];
-    applyFunction(func, options, obj);
+    var returnVal= applyFunction(func, options, obj);
     $(obj).unlock();
+    return returnVal;
 }
 
 /**
@@ -353,6 +358,8 @@ function doAjax(obj, options) {
             if (func) {
                 applyFunction(func, options, obj);
             }
+            $(obj).unlock();
+        },error:function () {
             $(obj).unlock();
         }
     };
@@ -429,13 +436,16 @@ function login(url) {
 function loginOut(e, options) {
     sessionStorage.is_login = false;
     if (os === 'app_ios')
-        window.gamebox.logout();
+        loginOut();
     if (os === 'app_android')
         window.gamebox.logout();
     else
         goToUrl("/passport/logout.html");
 }
 
+/**
+ * ios，android端隐藏下标
+ */
 function checkOs(){
     if(os != 'app_ios' && os != 'app_android'){
         $(".footerMenu").removeClass('mui-hide');

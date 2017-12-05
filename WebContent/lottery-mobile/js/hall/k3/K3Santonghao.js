@@ -4,22 +4,8 @@ define(['site/hall/k3/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay,
         _this: null,
         init: function () {
             _this = this;
+            this.showTable("三同号单选","官方玩法-三同号单选","bzxh","","");
             this._super();
-        },
-
-        showTable : function(){
-            var _this=this;
-            $("a[data-code='"+$("#gfwfBetCode").val()+"']").addClass("mui-active");
-            $("span.x_1.gfwf-tit").text("三同号单选");
-            $(".s-title.title1 span").text("三同号单选");
-            $("a[data-code='bzxh']").addClass("mui-active");
-            $("#toobarTitle").text("官方玩法-三同号单选");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('官方玩法-三同号单选');
-            }
-            $(".x_3.gfwf-playName").text("三同号单选");
-            $(".s-title.title2 span").text("三同号单选")
-            $("a[data-code='bzxh'] span").text("三同号单选");
         },
 
         /**************三同号单选***************/

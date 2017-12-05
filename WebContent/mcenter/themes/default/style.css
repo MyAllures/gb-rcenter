@@ -4977,11 +4977,11 @@ input[type=number]::-webkit-outer-spin-button {
     -moz-transform:rotate(45deg); 	/* Firefox */
     -webkit-transform:rotate(45deg); /* Safari 和 Chrome */
     -o-transform:rotate(45deg); 
-    }
+}
 .limit-tips ul li{margin-bottom: 10px; font-size: 15px;}
 @media(min-width:768px ) {
-.col-sm-5-1{width:20%}
-.col-sm-7-1{width:14%}
+    .col-sm-5-1{width:20%}
+    .col-sm-7-1{width:14%}
 }
 @media(max-width:993px ) {
 	.limit-tips ul{position: relative;left: 0;}
@@ -5010,3 +5010,10 @@ input[type=number]::-webkit-outer-spin-button {
 .sdcq-xz .panel-heading{border-bottom: 1px solid #ddd;}
 .sdcq-xz .panel-heading h3{border-left: 3px solid #2095f2;padding-left: 10px;}
 .sdcq-xz .col-sm-6:last-child:after{content:"";width: 1px;height: 100%;border-left:2px dashed #ddd;display: block;position: absolute; top: 0; left: -1px;}
+
+/*提示消息*/
+.msg{padding:6px 10px; background: #fff5e5;border: 1px solid #ffe6c0;}
+.msg:before{display: inline-block;vertical-align: middle;font: normal normal normal 14px/1 FontAwesome; font-size: 30px;padding: 4px;}
+.msg.msg-warning{}
+.msg.msg-warning:before{content: "\f06a";color: #ea9101;}
+.msg .msg-description{display: inline-block;vertical-align: middle;}

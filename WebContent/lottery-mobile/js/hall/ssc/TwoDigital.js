@@ -6,31 +6,14 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
         screeningDigtal: new Array(),
         init: function () {
             _this = this;
+            this.showTable(this.getSecondText(),"传统玩法-二字定位",$("#gfwfBetCode").val(),$("#erzidingwei"),"ssc_erzidingwei");
             this._super();
         },
 
-        showTable : function(){
-            var betCode=$("#gfwfBetCode").val();
-            $("a[data-code='ssc_erzidingwei']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#erzidingwei").show();
-            $("span.x_1.gfwf-tit").text("二字定位");
-            $(".s-title.title1 span").text("二字定位");
-            $(".s-title.title2 span").text("万千");
-            $("#toobarTitle").text("传统玩法-二字定位");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-二字定位');
-            }
-            if(betCode =="ssc_erzidingwei"){
-                $("a[data-code='万千']").addClass("mui-active");
-                $(".x_3.gfwf-playName").text("万千");
-            }else{
-                $("#erzidingwei a").removeClass("mui-active");
-                $("a[data-code='"+betCode+"']").addClass("mui-active");
-            }
-            $(".x_3.gfwf-playName").text(betCode)
-            $(".s-title.title2 span").text(betCode);
+        getSecondText:function () {
+            return $("div#erzidingwei a.mui-active").attr("data-code")==undefined?"万千":$("div#erzidingwei a.mui-active").attr("data-code");
         },
+
 
         getOdds: function () {
             var subCode = $("#erzidingwei a.mui-active").data("type");
@@ -41,7 +24,6 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
                 type: 'POST',
                 success: function (data) {
                     var betname = $("#erzidingwei a.mui-active").text();
-                    console.log(betname);
                     var tdata = data["中2"];
                     var toua = $("#bettouli div a");
                     var weia = $("#betweili div a");
