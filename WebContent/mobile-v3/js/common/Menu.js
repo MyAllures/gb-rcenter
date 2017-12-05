@@ -1,3 +1,9 @@
+$(function () {
+    //app不展示跳转电脑版
+    if(os == 'app_ios' || os == 'app_android') {
+        $(".side-nav .mui-list-unstyled .pc").remove();
+    }
+});
 /**
  * 跳转至客服
  * @param obj
@@ -54,29 +60,25 @@ if(os == "app_ios" || os == "app_android"){
 }
 
 /**
- * 返回首页
+ * 返回下标链接
  */
-function goHome(){
+function goTab(obj,options){
+    var skip = options.skip;
+    var dataHref = root + options.dataHref;
+    var isLeft = options.isLeft;
     if(os == 'app_ios'){
-        gotoTab(2);
+        gotoTab(skip);
     }else if(os == 'app_android'){
-        window.gamebox.gotoTab(2);
+        window.gamebox.gotoTab(skip);
     }else{
-        var url = root + "/mainIndex.html";
-        goToUrl(url);
+        if(skip == 3){
+            loadCustomer(obj,options);
+        }else{
+            goToUrl(dataHref);
+        }
     }
-}
-
-/**
- * 返回优惠活动
- */
-function goDiscounts(){
-    if(os == 'app_ios'){
-        gotoTab(1);
-    }else if(os == 'app_android'){
-        window.gamebox.gotoTab(1);
-    }else{
-        var url = root + "/discounts/index.html?skip=1";
-        goToUrl(url);
+    //左侧进入隐藏左侧，其他地方不用隐藏
+    if(isLeft == "true"){
+        mui(".mui-off-canvas-left").offCanvas('close');
     }
 }
