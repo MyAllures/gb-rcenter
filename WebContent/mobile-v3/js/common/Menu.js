@@ -77,6 +77,7 @@ function goTab(obj,options){
             goToUrl(dataHref);
         }
     }
+    //左侧进入隐藏左侧，其他地方不用隐藏
     if(isLeft == "true"){
         mui(".mui-off-canvas-left").offCanvas('close');
     }

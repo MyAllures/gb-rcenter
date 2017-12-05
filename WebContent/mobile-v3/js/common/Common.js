@@ -173,6 +173,8 @@ function muiAjax(options) {
         data: options.data,
         dataType: options.dataType || 'json',
         type: options.type || 'POST',
+        headers:options.headers,
+        timeout:options.timeout,
         success: options.success,
         error: options.error,
         complete: options.complete,
