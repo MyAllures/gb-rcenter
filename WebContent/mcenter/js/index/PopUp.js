@@ -280,11 +280,11 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 if (rate >= 100){
                     if (level=='red'){
                         var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">'+msg+'</div></div>'+
-                            '<div class="clearfix m-md al-center"><div><font class="fs16">'+countDown+'</font>' +
+                            '<div class="clearfix m-md al-center"><div><font class="fs20">'+countDown+'</font>' +
                             '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hour">'+hour+'</span>'+hours+'' +
                             '<span id="minute">'+minute+'</span>'+minutes+'</span></div>' +
                             '<div class="al-center co-grayc2">'+times+'</div></div>'
-                            +'<div>'+tips+'</div>';
+                            +'<div class="clearfix m-md">'+tips+'</div>';
                     }else if (level=='stop'){
                         var html = '<div class="line-hi34 m-sm">'+msg+'</div>';
                     }
@@ -568,11 +568,11 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     minute = '0' + minute;
                 }
                 var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">'+msg+'</div></div>'+
-                    '<div class="clearfix m-md al-center"><div><font class="fs16">'+countDown+'</font>' +
+                    '<div class="clearfix m-md al-center"><div><font class="fs20">'+countDown+'</font>' +
                     '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hour">'+hour+'</span>'+hours+'' +
                     '<span id="minute">'+minute+'</span>'+minutes+'</span></div>' +
                     '<div class="al-center co-grayc2">'+times+'</div></div>'
-                    +'<div>'+tips+'</div>';
+                    +'<div class="clearfix m-md">'+tips+'</div>';
                 var dialog = BootstrapDialog.show({
                     title: window.top.message.setting_auto['消息'],
                     message: html,
