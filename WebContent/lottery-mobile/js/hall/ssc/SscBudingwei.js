@@ -3,69 +3,16 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
         _this: null,
         init: function () {
             _this = this;
+            this.showTable(this.getSecondText(),"官方玩法-不定位",this.getSecondCode(),$("#budingwei"),"ssc_budingwei");
             this._super();
         },
-        showTable : function(){
-            var betCode=$("#gfwfBetCode").val();
-            $("a[data-code='ssc_budingwei']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#budingwei").show();
-            $("span.x_1.gfwf-tit").text("不定位");
-            $(".s-title.title1 span").text("不定位");
-            $("#toobarTitle").text("官方玩法-不定位");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('官方玩法-不定位');
-            }
 
-            if(betCode =="ssc_budingwei"){
-                $("a[data-code='ssc_budingwei_q3ym']").addClass("mui-active");
-                $(".x_3.gfwf-playName").text("前三一码")
-                $(".s-title.title2 span").text("前三一码");
+        getSecondText:function () {
+            return $("div#budingwei a.mui-active span").text()==""?"前三一码":$("div#budingwei a.mui-active span").text();
+        },
 
-            }else{
-                $("#budingwei a").removeClass("mui-active");
-                $("a[data-code='"+betCode+"']").addClass("mui-active");
-            }
-            if(betCode =="ssc_budingwei_q3ym"){
-                $(".x_3.gfwf-playName").text("前三一码")
-                $(".s-title.title2 span").text("前三一码");
-            }
-            if(betCode =="ssc_budingwei_q3em"){
-                $(".x_3.gfwf-playName").text("前三二码")
-                $(".s-title.title2 span").text("前三二码");
-            }
-            if(betCode =="ssc_budingwei_h3ym"){
-                $(".x_3.gfwf-playName").text("后三一码")
-                $(".s-title.title2 span").text("后三一码");
-            }
-            if(betCode =="ssc_budingwei_h3em"){
-                $(".x_3.gfwf-playName").text("后三二码")
-                $(".s-title.title2 span").text("后三二码");
-            }
-            if(betCode =="ssc_budingwei_q4ym"){
-                $(".x_3.gfwf-playName").text("前四一码")
-                $(".s-title.title2 span").text("前四一码");
-            }
-            if(betCode =="ssc_budingwei_q4em"){
-                $(".x_3.gfwf-playName").text("前四二码")
-                $(".s-title.title2 span").text("前四二码");
-            }
-            if(betCode =="ssc_budingwei_h4ym"){
-                $(".x_3.gfwf-playName").text("后四一码")
-                $(".s-title.title2 span").text("后四一码");
-            }
-            if(betCode =="ssc_budingwei_h4em"){
-                $(".x_3.gfwf-playName").text("后四二码")
-                $(".s-title.title2 span").text("后四二码");
-            }
-            if(betCode =="ssc_budingwei_wxem"){
-                $(".x_3.gfwf-playName").text("五星二码")
-                $(".s-title.title2 span").text("五星二码");
-            }
-            if(betCode =="ssc_budingwei_wxsm"){
-                $(".x_3.gfwf-playName").text("五星三码")
-                $(".s-title.title2 span").text("五星三码");
-            }
+        getSecondCode:function(){
+            return $("#gfwfBetCode").val()=="ssc_budingwei"?"ssc_budingwei_q3ym":$("#gfwfBetCode").val();
         },
 
         /***************不定位**************/

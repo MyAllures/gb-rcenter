@@ -3,21 +3,8 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
         _this: null,
         init: function () {
             _this = this;
+            this.showTable("前三组合","官方玩法-前三","ssc_sanxing_zhixuan_qszh",$("#qiansan"),"ssc_sanxing_qs");
             this._super();
-        },
-
-
-        showTable : function(){
-            $("a[data-code='ssc_sanxing_qs']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#qiansan").show();
-            $("span.x_1.gfwf-tit").text("前三");
-            $(".s-title.title1 span").text("前三");
-            $("#qiansan a").removeClass("mui-active");
-            $("a[data-code='ssc_sanxing_zhixuan_qszh']").addClass("mui-active");
-            $(".x_3.gfwf-playName").text("前三组合")
-            $(".s-title.title2 span").text("前三组合");
-
         },
 
         checkSanxingZuhe:function () {

@@ -6,30 +6,12 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
         screeningDigtal: new Array(),
         init: function () {
             _this = this;
+            this.showTable(this.getSecondText(),"传统玩法-三字定位",$("#gfwfBetCode").val(),$("#sanzidingwei"),"ssc_sanzidingwei");
             this._super();
         },
 
-        showTable : function(){
-            var betCode=$("#gfwfBetCode").val();
-            $("a[data-code='ssc_sanzidingwei']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#sanzidingwei").show();
-            $("span.x_1.gfwf-tit").text("三字定位");
-            $(".s-title.title1 span").text("三字定位");
-            $(".s-title.title2 span").text("万千百");
-            $("#toobarTitle").text("传统玩法-三字定位");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-三字定位');
-            }
-            if(betCode =="ssc_sanzidingwei"){
-                $("a[data-code='万千百']").addClass("mui-active");
-                $(".x_3.gfwf-playName").text("万千百");
-            }else{
-                $("#sanzidingwei a").removeClass("mui-active");
-                $("a[data-code='"+betCode+"']").addClass("mui-active");
-            }
-            $(".x_3.gfwf-playName").text(betCode)
-            $(".s-title.title2 span").text(betCode);
+        getSecondText:function () {
+            return $("div#sanzidingwei a.mui-active").attr("data-code")==undefined?"万千百":$("div#sanzidingwei a.mui-active").attr("data-code");
         },
 
         getOdds: function () {

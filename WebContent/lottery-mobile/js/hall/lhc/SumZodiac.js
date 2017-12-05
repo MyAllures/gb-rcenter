@@ -2,22 +2,17 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
     return PlayWay.extend({
 
         init: function () {
+            this.showTable(this.getSecondText(),"传统玩法-合肖",this.getSecondCode(),$("#hexiao"),"sumZodiac");
             this._super();
+
         },
-        showTable : function(){
-            var BetCode=$("#gfwfBetCode").val();
-            $("a[data-code='"+BetCode+"']").addClass("mui-active");
-            $("a[data-code='sumZodiac']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#hexiao").show();
-            $(".x_3.gfwf-playName").text(BetCode);
-            $("span.x_1.gfwf-tit").text(BetCode);
-            $(".s-title.title1 span").text("合肖");
-            $(".s-title.title2 span").text(BetCode);
-            $("#toobarTitle").text("传统玩法-合肖");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-合肖');
-            }
+
+        getSecondText:function () {
+            return $("div#hexiao a.mui-active span").text()==""?"二肖":$("div#hexiao a.mui-active span").text();
+        },
+
+        getSecondCode:function(){
+            return $("#gfwfBetCode").val()=="sumZodiac"?"二肖":$("#gfwfBetCode").val();
         },
 
         getOdds: function () {
