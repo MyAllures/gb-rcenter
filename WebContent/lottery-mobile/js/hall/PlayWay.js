@@ -286,7 +286,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                         $(".balance").text(data.balance);
                         page.resetBet();
                     } else {
-                        _this.toast(d.msg + '[' + d.code + ']');
+                        _this.toast(d.msg);
                     }
                 },
                 complete: function () {
@@ -768,7 +768,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                         $(".balance").text(data.balance);
                         page.resetBet();
                     } else {
-                        _this.toast(d.msg + '[' + d.code + ']');
+                        _this.toast(d.msg);
                     }
                 },
                 complete: function () {

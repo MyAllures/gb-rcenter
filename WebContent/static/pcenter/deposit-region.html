@@ -29,6 +29,9 @@ var environment = {
   <script src="../../common/js/bootstrap/bootstrap.min.js"></script>
   <!--项部下拉弹出 -->
   <script type="text/javascript" src="../../common/js/pcenterJS/head.js"></script>
+  <!--banner-背景模糊-->
+  <script src="../../common/js/jquery/plugins/velocity/background-blur.min.js"></script>
+  <script src="../../common/js/jquery/plugins/velocity/velocity.min.js"></script>
   <title>玩家中心首页</title>
 </head>
 <body>
@@ -156,9 +159,46 @@ var environment = {
   </div>
 
   <!--banner-->
-  <div class="banner">
+<div class="banner">
     <div class="logo"></div>
-    <div class="right"></div>
+    <div class="right">
+    	  <ul class="nav-menu">
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-home-ico" href="#">
+    	  	  	   	  <span>网站首页</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-1-ico" href="#">
+    	  	  	  	<span>真人视讯</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-2-ico" href="#">
+    	  	  	   	  <span>电子游艺</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-3-ico" href="#">
+    	  	  	   	  <span>体育竞技</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-4-ico" href="#">
+    	  	  	   	  <span>彩票游戏</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-promo-ico" href="#">
+    	  	  	   	  <span>优惠活动</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  </ul>
+    </div>
+    <div class="banner-bg-t"></div>
+    <div class="banner-bg">
+    	  <img src="../../pcenter/images/banner-bg.png">
+    </div>
   </div>
   <div class="wrapper">
     <!--left-->
@@ -166,72 +206,73 @@ var environment = {
 
       <!--左边菜单栏-->
       <div class="sidebar-nav">
-        <dl>
-          <dt>
-            <a href="index.html"> <i class="navico home"></i>
-              钱包转账
-            </a>
-          </dt>
-        </dl>
-         <dl>
-          <dt class="select">
-            <a href="deposit-region.html">
-              <i class="navico capital-select"></i>
-              存款专区
-            </a>
-          </dt>
-        </dl>
-         <dl>
-          <dt>
-            <a href="withdraw.html">
-              <i class="navico capital"></i>
-              取款专区
-            </a>
-          </dt>
-        </dl>
-        <dl>
-          <dt>
-            <a href="asset-history.html">
-              <i class="navico capital"></i>
-              资金记录
-            </a>
-          </dt>
-        </dl>
-        <dl>
-          <dt>
-            <a href="gamerecord.html">
-              <i class="navico gamerecord"></i>
-              投注记录
-            </a>
-          </dt>
-        </dl>
-      <dl><dt><a href="sale1.html"><i class="navico sale"></i> 优惠记录</a></dt></dl>
-        <dl>
-          <dt>
-            <a href="infonotice.html">
-              <i class="navico info"></i>
-              消息公告
-            </a>
-          </dt>
-        </dl>
-        <dl>
-          <dt>
-            <a href="account.html">
-              <i class="navico accout"></i>
-              个人资料
-            </a>
-          </dd>
-        
-        </dl>
-        <dl>
-          <dt>
-            <a href="recommended.html">
-              <i class="navico recommend"></i>
-              推荐好友
-            </a>
-          </dt>
-        </dl>
-      </div>
+    	<div class="left-nav-title">财务中心</div>
+      <dl>
+        <dt class="select">
+          <a href="deposit-region.html">
+            <i class="navico deposit select"></i>
+            存款专区
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="withdraw.html">
+            <i class="navico withdraw"></i>
+            取款专区
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="asset-history.html">
+            <i class="navico capital"></i>
+            资金记录
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="gamerecord.html">
+            <i class="navico gamerecord"></i>
+            投注记录
+          </a>
+        </dt>
+      </dl><dl><dt><a href="sale1.html"><i class="navico sale"></i> 优惠记录</a></dt></dl>
+      <dl>
+        <dt>
+          <a href="index.html">
+            <i class="navico home"></i>
+            钱包转账
+          </a>
+        </dt>
+      </dl>
+      <div class="left-nav-title">个人中心</div>
+      <dl>
+        <dt>
+          <a href="account.html">
+            <i class="navico accout"></i>
+            个人资料
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="infonotice.html">
+            <i class="navico info"></i>
+            消息公告
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="recommended.html">
+            <i class="navico recommend"></i>
+            推荐好友
+          </a>
+        </dt>
+      </dl>
+    </div>
     </div>
 
     <!--right-->
@@ -262,23 +303,23 @@ var environment = {
   </div>
   <div class="deposit-tab01">
      <a href="online-pay2.html"><img src="images/deposit-tab-img3.png">
-     <span class="pay-title"><em>扫码支付</em><i class="pay-title-tips">范例</i></span></a>
+     <span class="pay-title"><em>微信支付</em><i class="pay-title-tips">范例</i></span></a>
   </div>
   <div class="deposit-tab01">
      <a href="online-pay3.html"><img src="images/deposit-tab-img4.png">
-     <span class="pay-title"><em>电子支付</em><i class="pay-title-tips">范例</i></span></a>
+     <span class="pay-title"><em>支付宝支付</em><i class="pay-title-tips">范例</i></span></a>
   </div>
   <div class="deposit-tab01">
-     <a href="online-pay4.html"><img src="images/deposit-tab-img5.png">
-     <span class="pay-title"><em>柜员机/柜台存款</em><i class="pay-title-tips">范例</i></span></a>
+     <a href="online-pay4.html"><img src="images/deposit-tab-img7.png">
+     <span class="pay-title"><em>QQ支付</em><i class="pay-title-tips">范例</i></span></a>
+  </div>
+  <div class="deposit-tab01">
+     <a href="online-pay5.html"><img src="images/deposit-tab-img5.png">
+     <span class="pay-title"><em>京东支付</em><i class="pay-title-tips">范例</i></span></a>
   </div>
   <div class="deposit-tab01">
      <a href="online-pay5.html"><img src="images/deposit-tab-img6.png">
-     <span class="pay-title"><em>点卡支付</em><i class="pay-title-tips">范例</i></span></a>
-  </div>
-  <div class="deposit-tab01">
-     <a href="online-pay5.html"><img src="images/deposit-tab-img7.png">
-     <span class="pay-title"><em>快速充值中心</em><small>请优先使用其他存款方式</small></span></a>
+     <span class="pay-title"><em>百度支付</em><i class="pay-title-tips">范例</i></span></a>
   </div>
   <div class="deposit-tab01">
      <a href="online-pay5.html"><img src="images/deposit-tab-img8.png">
@@ -286,7 +327,15 @@ var environment = {
   </div>
   <div class="deposit-tab01">
      <a href="online-pay-sz.html"><img src="images/deposit-tab-img9.png">
-     <span class="pay-title"><em>数字货币支付</em></span></a>
+     <span class="pay-title"><em>一码付</em></span></a>
+  </div>
+  <div class="deposit-tab01">
+     <a href="online-pay-sz.html"><img src="images/deposit-tab-img10.png">
+     <span class="pay-title"><em>快充中心</em></span></a>
+  </div>
+  <div class="deposit-tab01">
+     <a href="online-pay-sz.html"><img src="images/deposit-tab-img11.png">
+     <span class="pay-title"><em>柜员机/柜台存款</em></span></a>
   </div>
 </div>
    
@@ -328,7 +377,6 @@ var environment = {
             <div class="item">
               <p>
                 ★ 澳门永利娱乐场入款账号【建设-郝文莉】将在北京时间5月30号5:30暂时停止汇款业务，请广大玩家务必在入款时进入公司网站点击线上存款-选择方式A-获取最新银行入款，谢谢！如存入废弃账号，公司概不负责，谢谢合作！
-              
               </p>
             </div>
           </dd>
@@ -577,7 +625,33 @@ var environment = {
     </div>
 </div>
 
+<script>
+	    // Scripts for demo page
+	    $( document ).ready(function() {
+	        var $avatarEl = $('.banner');
+	        var $avatarHolderEl = $('.banner-bg');
+	        var images = [];
+	        var avatars = [];
+	       
+	        // Avatar - based backgrounds
+	        $avatarEl.each(function(){
+	            var $avatar = $(this);
+	            var avatarImage = $avatar.find('img').first().attr('src');
+	            avatars.push(avatarImage);
+	            $avatar.click(function(e){
+	                e.preventDefault();
 
+	                $avatarHolderEl.backgroundBlur(avatarImage);
+	            });
+	        });
+
+	        $avatarHolderEl.backgroundBlur({
+	            imageURL : avatars[0], // URL to the image that will be used for blurring
+	            blurAmount : 10, // Amount of blur (higher amount degrades browser performance)
+	            imageClass : 'avatar-blur' // CSS class that will be applied to the image and to the SVG element,
+	        });
+        });
+</script>
 
 <!-- //* 语言版本切换 #select-lang* -->
 <script type="text/javascript">
@@ -650,7 +724,6 @@ var environment = {
                 $(".guj-select ul").hide();
             });
                   
-         
         });
       
     </script>

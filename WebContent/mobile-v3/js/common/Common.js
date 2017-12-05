@@ -28,7 +28,9 @@ function pullUpRefreshOption(container, callback, auto) {
             up: {
                 height:100,//可选.默认50.触发上拉加载拖动距离
                 auto: auto,
+                contentdown: window.top.message.promo_auto['上拉加载'],
                 contentrefresh: '正在加载...',
+                contentnomore:'已经到底了',
                 callback: callback
             }
         }
@@ -77,6 +79,8 @@ function muiInit(options) {
     muiAjaxError();
     //绑定事件
     bindButtonEvent();
+    //初始化判断底部状态
+    checkOs();
 }
 
 /**
@@ -169,6 +173,8 @@ function muiAjax(options) {
         data: options.data,
         dataType: options.dataType || 'json',
         type: options.type || 'POST',
+        headers:options.headers,
+        timeout:options.timeout,
         success: options.success,
         error: options.error,
         complete: options.complete,
@@ -227,7 +233,13 @@ function goToUrl(url) {
         return;
     }
     //todo::终端标识，以判断ｕrl走什么入口
-    openWindow(url);
+    if (os == 'app_ios') {
+        gotoCustom(url);
+    } else if (os == 'app_android') {
+        window.gamebox.gotoApi(url);
+    }else{
+        openWindow(url);
+    }
 }
 
 function openWindow(url) {
@@ -278,6 +290,7 @@ function bindButtonEvent(selector) {
 
 function doEvent(obj, options) {
     var precall = options.precall;
+    var $target = $(obj);
     //前置函数执行
     if (precall && !applyFunction(precall, options)) {
         $target.unlock();
@@ -290,6 +303,7 @@ function doEvent(obj, options) {
         doAjax(obj, options);
     } else if (opType == 'href') {
         goToUrl(options.target);
+        $target.unlock();
     }
 }
 
@@ -300,8 +314,9 @@ function doEvent(obj, options) {
  */
 function doFunction(obj, options) {
     var func = this[options.target];
-    applyFunction(func, options, obj);
+    var returnVal= applyFunction(func, options, obj);
     $(obj).unlock();
+    return returnVal;
 }
 
 /**
@@ -343,6 +358,8 @@ function doAjax(obj, options) {
             if (func) {
                 applyFunction(func, options, obj);
             }
+            $(obj).unlock();
+        },error:function () {
             $(obj).unlock();
         }
     };
@@ -419,9 +436,18 @@ function login(url) {
 function loginOut(e, options) {
     sessionStorage.is_login = false;
     if (os === 'app_ios')
-        loginOut();
-    if (os === 'android')
+        window.gamebox.logout();
+    if (os === 'app_android')
         window.gamebox.logout();
     else
         goToUrl("/passport/logout.html");
+}
+
+/**
+ * ios，android端隐藏下标
+ */
+function checkOs(){
+    if(os != 'app_ios' && os != 'app_android'){
+        $(".footerMenu").removeClass('mui-hide');
+    }
 }

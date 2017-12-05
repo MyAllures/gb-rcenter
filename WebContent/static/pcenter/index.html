@@ -35,6 +35,9 @@ var environment = {
   <script type="text/javascript" src="../../common/js/pcenterJS/tooltips.js"></script>
   <script src="../../common/js/bootstrap/bootstrap.min.js"></script>
   <script src="../../common/js/jquery/plugins/poster/poster.js"></script>
+  <!--banner-背景模糊-->
+  <script src="../../common/js/jquery/plugins/velocity/background-blur.min.js"></script>
+  <!--<script src="../../common/js/jquery/plugins/velocity/velocity.min.js"></script>-->
   <!--弹窗 -->
   <script>
 jQuery(document).ready(function($) {
@@ -336,7 +339,44 @@ function onInitScrollPic(){
   <!--banner-->
   <div class="banner">
     <div class="logo"></div>
-    <div class="right"></div>
+    <div class="right">
+    	  <ul class="nav-menu">
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-home-ico" href="www.baidu.com">
+    	  	  	   	  <span>网站首页</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-1-ico" href="#">
+    	  	  	  	<span>真人视讯</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-2-ico" href="#">
+    	  	  	   	  <span>电子游艺</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-3-ico" href="#">
+    	  	  	   	  <span>体育竞技</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-4-ico" href="#">
+    	  	  	   	  <span>彩票游戏</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-promo-ico" href="#">
+    	  	  	   	  <span>优惠活动</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  </ul>
+    </div>
+    <div class="banner-bg-t"></div>
+    <div class="banner-bg">
+    	  <img src="../../pcenter/images/banner-bg.png">
+    </div>
   </div>
   <div class="wrapper">
     <!--left-->
@@ -384,14 +424,7 @@ function onInitScrollPic(){
     -->
     <!--左边菜单栏-->
     <div class="sidebar-nav">
-      <dl>
-        <dt class="select">
-          <a href="index.html">
-            <i class="navico home select"></i>
-            钱包转账
-          </a>
-        </dt>
-      </dl>
+    	<div class="left-nav-title">财务中心</div>
       <dl>
         <dt>
           <a href="deposit-region.html">
@@ -425,18 +458,27 @@ function onInitScrollPic(){
         </dt>
       </dl><dl><dt><a href="sale1.html"><i class="navico sale"></i> 优惠记录</a></dt></dl>
       <dl>
-        <dt>
-          <a href="infonotice.html">
-            <i class="navico info"></i>
-            消息公告
+        <dt class="select">
+          <a href="index.html">
+            <i class="navico home select"></i>
+            额度转换
           </a>
         </dt>
       </dl>
+      <div class="left-nav-title">个人中心</div>
       <dl>
         <dt>
           <a href="account.html">
             <i class="navico accout"></i>
             个人资料
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="infonotice.html">
+            <i class="navico info"></i>
+            消息公告
           </a>
         </dt>
       </dl>
@@ -948,7 +990,7 @@ function onInitScrollPic(){
       <button type="button" class="btn btn-filter btn-lg real-time-btn" data-toggle="modal" data-target="#xitgg">公告弹窗</button>
 
     </div>
-    <div class="col-lg-12 m-t">
+    <!--<div class="col-lg-12 m-t">
       <div class="wrapper white-bg shadow">
         <div class="sys_tab_wrap clearfix m-b-sm">
           <div class="m-sm"> <b class="fs16">弹窗</b>
@@ -989,7 +1031,7 @@ function onInitScrollPic(){
 
 </div>
 
-</div>
+</div>-->
 </div>
 
 </div>
@@ -1130,10 +1172,37 @@ function onInitScrollPic(){
 
 </div>
 </div>
+<script>
+	    // Scripts for demo page
+	    $( document ).ready(function() {
+	        var $avatarEl = $('.banner');
+	        var $avatarHolderEl = $('.banner-bg');
+	        var images = [];
+	        var avatars = [];
+	       
+	        // Avatar - based backgrounds
+	        $avatarEl.each(function(){
+	            var $avatar = $(this);
+	            var avatarImage = $avatar.find('img').first().attr('src');
+	            avatars.push(avatarImage);
+//	            $avatar.click(function(e){
+//	                e.preventDefault();
+//
+//	                $avatarHolderEl.backgroundBlur(avatarImage);
+//	            });
+	        });
+
+	        $avatarHolderEl.backgroundBlur({
+	            imageURL : avatars[0], // URL to the image that will be used for blurring
+	            blurAmount : 10, // Amount of blur (higher amount degrades browser performance)
+	            imageClass : 'avatar-blur' // CSS class that will be applied to the image and to the SVG element,
+	        });
+        });
+</script>
 <!-- //* 公告滚动* -->
 <script>
 var oMarquee = document.getElementById("notice-con"); //滚动对象
-var iLineHeight = 30; //单行高度，像素
+var iLineHeight = 43; //单行高度，像素
 var iLineCount = 6; //实际行数
 var iScrollAmount =2; //每次滚动高度，像素
 function run() {
@@ -1427,6 +1496,6 @@ $('.help-popover').popover()
             $(".loading-a").fadeToggle(200);
           });
     </script>
-
+    
 </body>
 </html>

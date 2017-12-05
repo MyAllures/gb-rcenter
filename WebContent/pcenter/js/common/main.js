@@ -179,6 +179,15 @@ curl = {
                 requires: ['jquery']
             }
 
+        },
+        backgroundBlur:{
+            location: 'jquery/plugins/velocity/background-blur',
+            config: {
+                loader: 'curl/curl/loader/legacy',
+                exports: '$.fn.backgroundBlur',
+                requires: ['jquery']
+            }
+
         }
     },
 
