@@ -50,3 +50,39 @@ function goPC(){
     document.cookie = "ACCESS_TERMINAL=pc;expires=0";
     window.location.replace(root + '/');
 }
+
+/**
+ * 判断手机端的下载界面和到pc端隐藏
+ */
+if(os == "app_ios" || os == "app_android"){
+    $(".download").hide();
+    $(".pc").hide();
+}
+
+/**
+ * 返回首页
+ */
+function goHome(){
+    if(os == 'app_ios'){
+        gotoTab(2);
+    }else if(os == 'app_android'){
+        window.gamebox.gotoTab(2);
+    }else{
+        var url = root + "/mainIndex.html";
+        goToUrl(url);
+    }
+}
+
+/**
+ * 返回优惠活动
+ */
+function goDiscounts(){
+    if(os == 'app_ios'){
+        gotoTab(1);
+    }else if(os == 'app_android'){
+        window.gamebox.gotoTab(1);
+    }else{
+        var url = root + "/discounts/index.html?skip=1";
+        goToUrl(url);
+    }
+}

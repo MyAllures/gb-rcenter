@@ -86,11 +86,8 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
                 data: $(this.formSelector).serialize(),
                 type: 'POST',
                 success: function (data) {
-                    console.info("data"+data);
-                    console.info($("#companyDepositpageDiv"));
                     $("#companyDepositpageDiv").html(data);
                     _this.initSelect();
-                    // $(_this.formSelector + " .search-wrapper [selectDiv]").attr("callback", "selectListChange");
                 },
                 error: function (data) {
 
