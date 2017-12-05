@@ -281,8 +281,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     if (level=='red'){
                         var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">'+msg+'</div></div>'+
                             '<div class="clearfix m-md al-center"><div><font class="fs20">'+countDown+'</font>' +
-                            '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hour">'+hour+'</span>'+hours+'' +
-                            '<span id="minute">'+minute+'</span>'+minutes+'</span></div>' +
+                            '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">'+hour+'</span>'+hours+'' +
+                            '<span id="minutes">'+minute+'</span>'+minutes+'</span></div>' +
                             '<div class="al-center co-grayc2">'+times+'</div></div>'
                             +'<div class="clearfix m-md">'+tips+'</div>';
                     }else if (level=='stop'){
@@ -371,8 +371,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             if (minute < 10) {
                 minute = '0' + minute;
             }
-            $("span#hour").text(hour);
-            $("span#minute").text(minute);
+            $("span#hours").text(hour);
+            $("span#minutes").text(minute);
             sessionStorage.setItem("minutes",--time);
         },
         rankInadequate: function (data) {
@@ -569,8 +569,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 }
                 var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">'+msg+'</div></div>'+
                     '<div class="clearfix m-md al-center"><div><font class="fs20">'+countDown+'</font>' +
-                    '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hour">'+hour+'</span>'+hours+'' +
-                    '<span id="minute">'+minute+'</span>'+minutes+'</span></div>' +
+                    '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">'+hour+'</span>'+hours+'' +
+                    '<span id="minutes">'+minute+'</span>'+minutes+'</span></div>' +
                     '<div class="al-center co-grayc2">'+times+'</div></div>'
                     +'<div class="clearfix m-md">'+tips+'</div>';
                 var dialog = BootstrapDialog.show({
