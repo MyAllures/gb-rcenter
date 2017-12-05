@@ -65,6 +65,7 @@ if(os == "app_ios" || os == "app_android"){
 function goTab(obj,options){
     var skip = options.skip;
     var dataHref = root + options.dataHref;
+    var isLeft = options.isLeft;
     if(os == 'app_ios'){
         gotoTab(skip);
     }else if(os == 'app_android'){
@@ -76,5 +77,7 @@ function goTab(obj,options){
             goToUrl(dataHref);
         }
     }
-    mui(".mui-off-canvas-left").offCanvas('close');
+    if(isLeft == "true"){
+        mui(".mui-off-canvas-left").offCanvas('close');
+    }
 }
