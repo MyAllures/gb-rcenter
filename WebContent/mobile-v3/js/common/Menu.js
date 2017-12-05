@@ -72,4 +72,5 @@ function goTab(obj,options){
     }else{
         goToUrl(dataHref);
     }
+    mui(".mui-off-canvas-left").offCanvas('close');
 }
