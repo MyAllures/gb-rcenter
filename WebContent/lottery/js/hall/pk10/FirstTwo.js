@@ -184,7 +184,6 @@ define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
         showContent = "号码: (" + tempArr + ")";
         // 转换投注格式
         betContent = tempArr.join(",");
-        console.log(betContent);
         return {
             showPlayName: showPlayName,
             showContent: showContent,

@@ -214,7 +214,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                         "textStatus": textStatus,
                         "errorThrown": errorThrown
                     });
-                    layer.msg('下注失败：请求异常', {icon: 5});
+                    layer.msg('下注失败：请先登录', {icon: 5});
                 }
             });
         },
