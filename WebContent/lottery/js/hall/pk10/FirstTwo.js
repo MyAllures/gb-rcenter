@@ -157,7 +157,7 @@ define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
 
             if (oneStr != towStr) {
                 if (parseInt(oneStr) > 0 && parseInt(oneStr) < 11 && parseInt(towStr)>0 && parseInt(towStr) < 11) {
-                    tempArr.push(newArr[n]);
+                    tempArr.push(oneStr +" "+ towStr);
                 }else{
                     return;
                 }
@@ -184,7 +184,6 @@ define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
         showContent = "号码: (" + tempArr + ")";
         // 转换投注格式
         betContent = tempArr.join(",");
-
         return {
             showPlayName: showPlayName,
             showContent: showContent,

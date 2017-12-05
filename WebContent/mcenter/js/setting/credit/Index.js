@@ -11,6 +11,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
          */
         init: function () {
             this._super();
+            this.staticData();
         },
 
         /**
@@ -36,6 +37,50 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 trigger: 'hover',
                 placement: 'top'
             });
+            this.staticData();
         },
+        /**
+         * 统计
+         */
+        staticData: function (e,opt) {
+            var _this = this;
+            /*var siteId = $("input[name='search.siteId']").val();
+             if (!siteId) {
+             $("#total").text(0);
+             $("#moneyTotal").text(0);
+             $("#liquidation").text(0);
+             $("#actualRecharge").text(0);
+             return;
+             }*/
+            var html = "";
+            window.top.topPage.ajax({
+                url: root + "/creditRecord/statisticalData.html",
+                data: $(this.formSelector).serialize(),
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {
+                    if (data.total) {
+                        $("#total").text(data.total);
+                    } else {
+                        $("#total").text(0);
+                    }
+                    if (data.moneytotal) {
+                        $("#moneyTotal").text(data.moneytotal);
+                    } else {
+                        $("#moneyTotal").text(0);
+                    }
+                    if(data.liquidation) {
+                        $("#liquidation").text(data.liquidation);
+                    } else {
+                        $("#liquidation").text(0);
+                    }
+                    if (data.actualrecharge) {
+                        $("#actualRecharge").text(data.actualrecharge);
+                    } else {
+                        $("#actualRecharge").text(0);
+                    }
+                }
+            })
+        }
     });
 });
