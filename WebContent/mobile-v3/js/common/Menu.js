@@ -2,6 +2,7 @@ $(function () {
     //app不展示跳转电脑版
     if(os == 'app_ios' || os == 'app_android') {
         $(".side-nav .mui-list-unstyled .pc").remove();
+        $(".download").hide();
     }
 });
 /**
@@ -49,14 +50,6 @@ $('.mui-off-canvas-wrap').on('hidden',function (event) {
 function goPC(){
     document.cookie = "ACCESS_TERMINAL=pc;expires=0";
     window.location.replace(root + '/');
-}
-
-/**
- * 判断手机端的下载界面和到pc端隐藏
- */
-if(os == "app_ios" || os == "app_android"){
-    $(".download").hide();
-    $(".pc").hide();
 }
 
 /**

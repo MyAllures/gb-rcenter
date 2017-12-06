@@ -222,3 +222,15 @@ function isAllowRecovery (obj) {
     }
     return false;
 }
+
+/**
+ * ios，android端隐藏底部菜单 android隐藏头部
+ */
+function hideMenu() {
+    if (os != 'app_ios' && os != 'app_android') {
+        $("footer.footerMenu").removeClass('mui-hide');
+    }
+    if(os == 'app_android'){
+        $('header.mui-bar-nav').hide();
+    }
+}
