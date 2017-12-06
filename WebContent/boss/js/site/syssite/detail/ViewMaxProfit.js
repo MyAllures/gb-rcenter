@@ -7,7 +7,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
          * 调用
          */
         init: function () {
-            this.formSelector = "#viewMaxProfitForm";
+            this.formSelector = " #mainFrame  #viewMaxProfitForm";
             this._super();
             $(".tab-content > .tab-pane").css("display","block");
         },

@@ -1,8 +1,11 @@
 $(function () {
     //app不展示跳转电脑版
-    if(os == 'app_ios' || os == 'app_android') {
+    if (os == 'app_ios' || os == 'app_android') {
         $(".side-nav .mui-list-unstyled .pc").remove();
+        $(".download").hide();
     }
+    //h5展示底部菜单
+    showFooter();
 });
 /**
  * 跳转至客服
@@ -39,46 +42,44 @@ function lang(obj, options) {
     $(obj).unlock();
 }
 /* 关闭侧滑菜单隐藏语言弹窗 */
-$('.mui-off-canvas-wrap').on('hidden',function (event) {
+$('.mui-off-canvas-wrap').on('hidden', function (event) {
     $(".lang-menu").hide();
 });
 
 /**
  * 跳转到电脑端
  * */
-function goPC(){
+function goPC() {
     document.cookie = "ACCESS_TERMINAL=pc;expires=0";
     window.location.replace(root + '/');
 }
 
 /**
- * 判断手机端的下载界面和到pc端隐藏
- */
-if(os == "app_ios" || os == "app_android"){
-    $(".download").hide();
-    $(".pc").hide();
-}
-
-/**
  * 返回下标链接
  */
-function goTab(obj,options){
+function goTab(obj, options) {
     var skip = options.skip;
     var dataHref = root + options.dataHref;
     var isLeft = options.isLeft;
-    if(os == 'app_ios'){
+    if (os == 'app_ios') {
         gotoTab(skip);
-    }else if(os == 'app_android'){
+    } else if (os == 'app_android') {
         window.gamebox.gotoFragment(skip);
-    }else{
-        if(skip == 3){
-            loadCustomer(obj,options);
-        }else{
+    } else {
+        if (skip == 3) {
+            loadCustomer(obj, options);
+        } else {
             goToUrl(dataHref);
         }
     }
     //左侧进入隐藏左侧，其他地方不用隐藏
-    if(isLeft == "true"){
+    if (isLeft == "true") {
         mui(".mui-off-canvas-left").offCanvas('close');
+    }
+}
+
+function showFooter() {
+    if (os != 'app_ios' && os != 'app_android') {
+        $("footer.footerMenu").removeClass('mui-hide');
     }
 }

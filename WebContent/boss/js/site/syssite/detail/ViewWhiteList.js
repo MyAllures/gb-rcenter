@@ -8,7 +8,7 @@ define(['common/BasePage', 'common/Pagination'], function(BasePage,Pagination) {
          * 调用
          */
         init: function (formSelector) {
-            this.formSelector = "#viewWhiteListForm";
+            this.formSelector = "#mainFrame  #viewWhiteListForm";
             this.pagination = new Pagination(this.formSelector);
             this._super(this.formSelector);
         },
