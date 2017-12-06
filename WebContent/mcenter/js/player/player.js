@@ -507,6 +507,8 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             $('#operator').attr("name", "search.username").val('');
             $("input[name='search.createTimeBegin']").val('');
             $("input[name='search.createTimeEnd']").val('');
+            $("input[name='search.bankcardNumber']").val('');
+            $("input[name='search.realName']").val('');
             var fundType = $("input[name='search.fundTypes']").siblings('ul').find("a[key='search.walletBalance']").text();
             $("input[name='search.fundTypes']").siblings("button").find("span[prompt='prompt']").text(fundType);
             $("#operator3").val('');
