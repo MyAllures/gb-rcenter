@@ -8,7 +8,9 @@ $(function () {
         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
         /*禁用侧滑手势指定样式*/
         disabledHandSlip: ['mui-off-canvas-left'],
-        init: pullUpRefreshOption('#pullfresh', pullfresh, false)
+        init: pullUpRefreshOption('#pullfresh', pullfresh, false),
+        /*游戏分类api tab横向滚动*/
+        horizontalScroll: ['.lottery-nav .mui-scroll-wrapper']
     };
     muiInit(options);
     initBanner();
@@ -53,29 +55,27 @@ function showNotice(obj, options) {
     notice.slider().gotoItem(index);
 }
 
-/* 导航tab切换 */
-$(".nav").on("tap", ".mui-control-item", function () {
-    var target = $(this).data('item');
+/**
+ * 导航游戏分类切换
+ */
+function changeApiTypeTab(obj, options) {
     $(".api-grid ul").removeClass('active');
     $(".api-grid div").removeClass('active');
-    $(".api-grid ul[data-list='" + target + "']").addClass('active');
-});
-/*彩票导航菜单滚动*/
-mui('.lottery-nav .mui-scroll-wrapper').scroll({
-    scrollY: false, //是否竖向滚动
-    scrollX: true, //是否横向滚动
-    startX: 0, //初始化时滚动至x
-    startY: 0, //初始化时滚动至y
-    indicators: true, //是否显示滚动条
-    deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
-    bounce: true //是否启用回弹
-});
-/*彩票切换*/
-$(".lottery-nav li").on("tap", function () {
-    $(this).siblings().find("a").removeClass("mui-active");
-    $(this).find("a").addClass("mui-active");
-    var isLoadData = $(this).find("a").attr("loadData");
-    var apiId = $(this).find("a").attr("data-lottery-id");
+    var item = options.item;
+    $(".api-grid ul[data-list='" + item + "']").addClass('active');
+}
+
+/**
+ * 彩票切换
+ * @param obj
+ * @param options
+ */
+function changeLottery(obj, options) {
+    $(".lottery-nav li a.mui-tab-item.mui-active").removeClass("mui-active");
+    $(".lottery-content .mui-control-content.mui-active").removeClass("mui-active");
+    $(obj).addClass("mui-active");
+    var isLoadData = $(obj).attr("loadData");
+    var apiId = options.apiId;
     $('#lottery-id').val(apiId);
     if (!isLoadData) {
         loadData(apiId, 1);
@@ -85,8 +85,9 @@ $(".lottery-nav li").on("tap", function () {
     if (pageNumber != lastPageNumber) {
         mui('#pullfresh').pullRefresh().refresh(true);
     }
+    $('div#lottery-' + apiId).addClass("mui-active");
+}
 
-});
 /*彩票上拉请求数据*/
 function pullfresh() {
     setTimeout(function () {
@@ -94,7 +95,6 @@ function pullfresh() {
         var type = $(".nav .mui-scroll .mui-active").attr("data-item");
         if (type == "lottery") {
             mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
-
             var apiId = $("#lottery-id").val();
             var pageNumber = parseInt($('#total-page-' + apiId).attr("pageNumber"));
             var lastPageNumber = parseInt($('#total-page-' + apiId).val());
@@ -105,7 +105,7 @@ function pullfresh() {
             }
         }
 
-    }, 0);
+    }, 100);
 }
 
 function pullUpLoadData(apiId, pageNumber) {
@@ -114,19 +114,12 @@ function pullUpLoadData(apiId, pageNumber) {
         url: url,
         type: 'GET',
         dataType: 'html',
-        headers: {
-            'Content-Type': 'application/json',
-            'Soul-Requested-With': 'XMLHttpRequest'
-        },
         success: function (data) {
-            setTimeout(function () {
-                $('#lottery-id').val(apiId);
-                $('input#loading-' + apiId).val('false');
-                $('div#lottery-' + apiId).append(data);
-                $(".lottery-nav a[data-lottery-id='" + apiId + "']").attr("loadData", "true");
-
-                $("#total-page-" + apiId).attr("pageNumber", pageNumber);
-            }, 1000);
+            $('#lottery-id').val(apiId);
+            $('input#loading-' + apiId).val('false');
+            $('div#lottery-' + apiId).append(data);
+            $(".lottery-nav a[data-lottery-id='" + apiId + "']").attr("loadData", "true");
+            $("#total-page-" + apiId).attr("pageNumber", pageNumber);
         }
     };
     muiAjax(options);
@@ -139,10 +132,6 @@ function loadData(apiId, pageNumber) {
         url: url,
         type: 'GET',
         dataType: 'html',
-        headers: {
-            'Content-Type': 'application/json',
-            'Soul-Requested-With': 'XMLHttpRequest'
-        },
         beforeSend: function () {
             showLoading(338);
         },
@@ -151,8 +140,7 @@ function loadData(apiId, pageNumber) {
                 $('#lottery-id').val(apiId);
                 $('input#loading-' + apiId).val('false');
                 $('div#lottery-' + apiId).append(data);
-                $(".lottery-nav a[data-lottery-id='" + apiId + "']").attr("loadData", "true");
-
+                $(".lottery-nav a.mui-tab-item.mui-active").attr("loadData", "true");
                 $("#total-page-" + apiId).attr("pageNumber", pageNumber);
             }, 1000);
         },

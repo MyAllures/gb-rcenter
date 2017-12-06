@@ -9,7 +9,9 @@ var muiDefaultOptions = {
     /*右侧菜单上下滚动，可自行指定范围*/
     rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
     /*禁用侧滑手势指定样式*/
-    disabledHandSlip: ['mui-off-canvas-left']
+    disabledHandSlip: ['mui-off-canvas-left'],
+    /*支持横向滚动样式*/
+    horizontalScroll: ['']
 };
 /**
  * mui 向下拉默认参数配置
@@ -50,7 +52,6 @@ function muiInit(options) {
     } else {
         mui.init();
     }
-
     //主页面内容上下滚动
     if (options.containerScroll) {
         muiScrollY(options.containerScroll);
@@ -63,11 +64,19 @@ function muiInit(options) {
     if (options.rightMenuScroll) {
         muiScrollY(options.rightMenuScroll);
     }
-
+    //支持横向滚动
+    if (options.horizontalScroll) {
+        var horizontalScroll = options.horizontalScroll;
+        for (var i = 0; i < horizontalScroll.length; i++) {
+            if (horizontalScroll[i]) {
+                muiScrollX(horizontalScroll[i]);
+            }
+        }
+    }
     //禁用侧滑手势
     if (options.disabledClass) {
         var disableClass = options.disabledClass;
-        for (var i = 0; i < disableClass; i++) {
+        for (var i = 0; i < disableClass.length; i++) {
             if (document.querySelector(disableClass[i])) {
                 document.querySelector(disableClass[i]).addEventListener('drag', function (e) {
                     e.stopPropagation()
@@ -75,6 +84,7 @@ function muiInit(options) {
             }
         }
     }
+
     //默认处理mui ajax错误
     muiAjaxError();
     //绑定事件
@@ -239,7 +249,7 @@ function goToUrl(url) {
     if (os == 'app_ios') {
         gotoCustom(url);
     } else if (os == 'app_android') {
-        window.gamebox.gotoApi(url);
+        window.gamebox.gotoActivity(url);
     } else {
         openWindow(url);
     }
@@ -363,7 +373,7 @@ function doAjax(obj, options) {
             }
             $(obj).unlock();
         },
-        error:function () {
+        error: function () {
             $(obj).unlock();
         }
     };
@@ -440,11 +450,22 @@ function login(url) {
 function loginOut(e, options) {
     sessionStorage.is_login = false;
     isLogin = false;
-    sessionStorage.setItem("isLogin",isLogin);
-    if (os === 'app_ios')
-        loginOut();
-    if (os === 'app_android')
+    sessionStorage.setItem("isLogin", isLogin);
+    if (os === 'app_ios') {
+        var ajaxOption = {
+            url: root + "/passport/logout.html",
+            headers: {
+                "Soul-Requested-With": "XMLHttpRequest"
+            },
+            success: function (data) {
+                if(data) {
+                    loginOut();
+                }
+            }
+        };
+        muiAjax(ajaxOption);
+    } else if (os === 'app_android') {
         window.gamebox.logout();
-    else
+    } else
         goToUrl("/passport/logout.html");
 }
