@@ -249,7 +249,7 @@ function goToUrl(url) {
     if (os == 'app_ios') {
         gotoCustom(url);
     } else if (os == 'app_android') {
-        window.gamebox.gotoApi(url);
+        window.gamebox.gotoActivity(url);
     } else {
         openWindow(url);
     }
