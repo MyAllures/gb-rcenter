@@ -87,6 +87,7 @@ function changeLottery(obj, options) {
     }
     $('div#lottery-' + apiId).addClass("mui-active");
 }
+
 /*彩票上拉请求数据*/
 function pullfresh() {
     setTimeout(function () {
