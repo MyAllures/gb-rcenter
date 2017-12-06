@@ -21,6 +21,8 @@ $(function () {
         $(".login-info .ex").css("right","-200px");
         return false;
     });
+    //h5展示头部信息
+    hideHeader();
 });
 /**
  * 获取头部用户信息
@@ -224,12 +226,9 @@ function isAllowRecovery (obj) {
 }
 
 /**
- * ios，android端隐藏底部菜单 android隐藏头部
+ * android隐藏头部
  */
-function hideMenu() {
-    if (os != 'app_ios' && os != 'app_android') {
-        $("footer.footerMenu").removeClass('mui-hide');
-    }
+function hideHeader() {
     if(os == 'app_android'){
         $('header.mui-bar-nav').hide();
     }
