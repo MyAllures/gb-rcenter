@@ -250,6 +250,20 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             var opType = opt.opType;
             var editType = $("[name='editType']").val();
             var picType =$("[name='result.picType']:checked").val();
+            var flag = true;
+            $(".float_pic_list_item_link_type_value").each(function (idx,item) {
+                var url = $(item).val();
+                if(url!=""){
+                    if (url.startsWith("http://") || url.startsWith("https://")){
+                        flag = false;
+                    }
+                }
+            });
+            if(!flag){
+                page.showPopover(e, {}, 'warning', window.top.message.content_auto['链接地址输入格式有误'], true);
+                return false;
+            }
+
             if(editType == '1' && picType == '2'){
                 window.top.topPage.ajax({
                     url: root + '/cttFloatPic/isExitPromo.html',
