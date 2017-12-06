@@ -271,11 +271,16 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 var time = parseInt((leftTime-now)/60000);
                 sessionStorage.setItem("minutes",time);
                 var tmpTime = time;
-                var hour = Math.floor(tmpTime / 60);
-                tmpTime = tmpTime - hour * 60;
-                var minute = tmpTime;
-                if (minute < 10) {
-                    minute = '0' + minute;
+                if (tmpTime >= 0){
+                    var hour = Math.floor(tmpTime / 60);
+                    tmpTime = tmpTime - hour * 60;
+                    var minute = tmpTime;
+                    if (minute < 10) {
+                        minute = '0' + minute;
+                    }
+                }else {
+                    var hour = 0;
+                    var minute = 0;
                 }
                 if (rate >= 100){
                     if (level=='red'){
@@ -561,11 +566,16 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 msg = msg.replace("${rate}",rate);
                 msg = msg.replace("${leftTime}",date);
                 var tmpTime = time;
-                var hour = Math.floor(tmpTime / 60);
-                tmpTime = tmpTime - hour * 60;
-                var minute = tmpTime;
-                if (minute < 10) {
-                    minute = '0' + minute;
+                if (tmpTime >= 0){
+                    var hour = Math.floor(tmpTime / 60);
+                    tmpTime = tmpTime - hour * 60;
+                    var minute = tmpTime;
+                    if (minute < 10) {
+                        minute = '0' + minute;
+                    }
+                }else {
+                    var hour = 0;
+                    var minute = 0;
                 }
                 var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">'+msg+'</div></div>'+
                     '<div class="clearfix m-md al-center"><div><font class="fs20">'+countDown+'</font>' +
