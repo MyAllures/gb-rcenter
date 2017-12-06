@@ -1,8 +1,8 @@
 define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay, Template) {
     return PlayWay.extend({
         init: function () {
-            this._super();
             this.showTable("数字盘","传统玩法-数字盘","szp",$("#shuzipan"),"");
+            this._super();
         },
         getOdds: function () {
             var url = root + '/' + this.type + '/' + this.code + '/getOdds.html';
