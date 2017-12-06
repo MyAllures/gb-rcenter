@@ -3,10 +3,19 @@ define(['site/hall/pl3/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
         _this: null,
         init: function () {
             _this = this;
+            this.showTable(this.getSecondText(),"官方玩法-三星",this.getSecondCode(),$("#3star"),"3star");
             this._super();
         },
 
-        showTable : function(){
+        getSecondText:function () {
+            return $("div#3star a.mui-active span").text()==""?"直选复式":$("div#3star a.mui-active span").text();
+        },
+
+        getSecondCode:function(){
+            return $("#gfwfBetCode").val()=="3star"?"pl3_sanxing_zhixuan_fs":$("#gfwfBetCode").val();
+        },
+
+        /*showTable : function(){
             $("a[data-code='3star']").addClass("mui-active");
             $("#3star").show();
             $("span.x_1.gfwf-tit").text("三星");
@@ -19,7 +28,7 @@ define(['site/hall/pl3/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
             $(".x_3.gfwf-playName").text("直选复式");
             $("a[data-code='pl3_sanxing_zhixuan_fs']").addClass("mui-active");
 
-        },
+        },*/
 
         /*================================前3直选复式===============================*/
         /**

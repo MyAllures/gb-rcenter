@@ -34,22 +34,25 @@ function pullfresh() {
 function promoInfo(pageNumber) {
     var url = root + "/promo/myPromo.html";
     var data= {"paging.pageNumber": pageNumber};
-    mui.ajax(url, {
-        type: 'post',//HTTP请求类型
-        timeout: 10000,//超时时间设置为10秒；
-        data: data,
+    var options = {
+        url:url,
+        type:'post',
+        timeout:10000,
+        data:data,
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Soul-Requested-With': 'XMLHttpRequest'
         },
-        success: function (data) {
+        dataType:'html',
+        success:function(data){
             if(data != null){
                 $("#content").append(data);
                 $("#pageNumber").val(pageNumber);
             }
         },
-        error: function (e) {
+        error:function(e){
             toast("加载失败");
-        },
-    });
+        }
+    };
+    muiAjax(options);
 }

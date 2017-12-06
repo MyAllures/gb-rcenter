@@ -21,6 +21,8 @@ $(function () {
         $(".login-info .ex").css("right","-200px");
         return false;
     });
+    //h5展示头部信息
+    hideHeader();
 });
 /**
  * 获取头部用户信息
@@ -108,32 +110,30 @@ function getSiteApi() {
  * 刷新额度
  * */
 function refreshApi(){
-    setTimeout(function(){
-        var loading = '<div class="loader api-loader"><div class="loader-inner ball-pulse api-div"><div></div><div></div><div></div></div></div>';
-        $('.bar-wallet').html(loading);
-        $('.bar-asset').html(loading);
-        $('table#api-balance').find('td._money').html(loading);
+    var loading = '<div class="loader api-loader"><div class="loader-inner ball-pulse api-div"><div></div><div></div><div></div></div></div>';
+    $('.bar-wallet').html(loading);
+    $('.bar-asset').html(loading);
+    $('table#api-balance').find('td._money').html(loading);
 
-        var options = {
-            url:root + '/api/refreshApi.html',
-            success: function(data){
-                var d = eval(data);
-                $('.bar-wallet').html(d.currSign + d.playerWallet);
-                $('.bar-asset').html(d.currSign + d.playerAssets);
-                var apis = d.apis;
-                for (var i = 0; i < apis.length; i++) {
-                    var html;
-                    if (apis[i].status == 'maintain') {
-                        html = '<span class="text-red" style="font-size: 10px;">' + window.top.message.common_auto["游戏维护中"] + '</span>';
-                    } else {
-                        html = data.currSign + apis[i].balance;
-                    }
-                    $('td#_api_' + apis[i].apiId).html(html);
+    var options = {
+        url:root + '/api/refreshApi.html',
+        success: function(data){
+            var d = eval(data);
+            $('.bar-wallet').html(d.currSign + d.playerWallet);
+            $('.bar-asset').html(d.currSign + d.playerAssets);
+            var apis = d.apis;
+            for (var i = 0; i < apis.length; i++) {
+                var html;
+                if (apis[i].status == 'maintain') {
+                    html = '<span class="text-red" style="font-size: 10px;">' + window.top.message.common_auto["游戏维护中"] + '</span>';
+                } else {
+                    html = data.currSign + apis[i].balance;
                 }
+                $('td#_api_' + apis[i].apiId).html(html);
             }
-        };
-        muiAjax(options);
-    },1000);
+        }
+    };
+    muiAjax(options);
 }
 
 /**
@@ -223,4 +223,13 @@ function isAllowRecovery (obj) {
         return true;
     }
     return false;
+}
+
+/**
+ * android隐藏头部
+ */
+function hideHeader() {
+    if(os == 'app_android'){
+        $('header.mui-bar-nav').hide();
+    }
 }

@@ -3,8 +3,13 @@ define(['site/hall/ssc/PlayWay-xywf','site/plugin/template'], function (PlayWay,
     return PlayWay.extend({
         _this:null,
         init: function () {
+            this.showTable(this.getSecondText(),"传统玩法-跨度",$("#gfwfBetCode").val(),$("#qiansankuadu"),"ssc_kaudu");
             this._super();
             _this=this;
+        },
+
+        getSecondText:function () {
+            return $("div#qiansankuadu a.mui-active").attr("data-code")==undefined?"前三跨度":$("div#qiansankuadu a.mui-active").attr("data-code");
         },
 
         onPageLoad: function () {
@@ -17,28 +22,6 @@ define(['site/hall/ssc/PlayWay-xywf','site/plugin/template'], function (PlayWay,
             } else if (betTitle === '后三跨度') {
                 $('div.bet-table-list').attr('data-subCode', 'span_after_three');
             }
-        },
-
-        showTable : function(){
-            var betCode=$("#gfwfBetCode").val();
-            $("a[data-code='ssc_kaudu']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#qiansankuadu").show();
-            $("span.x_1.gfwf-tit").text("跨度");
-            $(".s-title.title1 span").text("跨度");
-            $(".s-title.title2 span").text(betCode);
-            $("#toobarTitle").text("传统玩法-跨度");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-跨度');
-            }
-
-            if(betCode =="ssc_kaudu"){
-                $("a[data-code='前三组选六']").addClass("mui-active");
-            }else{
-                $("#qiansankuadu a").removeClass("mui-active");
-                $("a[data-code='"+betCode+"']").addClass("mui-active");
-            }
-            $(".x_3.gfwf-playName").text(betCode)
         },
 
         bindButtonEvents: function () {
