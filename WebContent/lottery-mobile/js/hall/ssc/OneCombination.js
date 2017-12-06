@@ -3,32 +3,13 @@ define(['site/hall/ssc/PlayWay-xywf','site/plugin/template'], function (PlayWay,
     return PlayWay.extend({
         _this:null,
         init: function () {
+            this.showTable(this.getSecondText(),"传统玩法-一字组合",$("#gfwfBetCode").val(),$("#yizizuhe"),"ssc_yizizuhe");
             this._super();
             _this=this;
-
         },
 
-        showTable : function(){
-            var betCode=$("#gfwfBetCode").val();
-            $("a[data-code='ssc_yizizuhe']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#yizizuhe").show();
-            $("span.x_1.gfwf-tit").text("一字组合");
-            $(".s-title.title1 span").text("一字组合");
-            $(".s-title.title2 span").text(betCode);
-            $("#toobarTitle").text("传统玩法-一字组合");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-一字组合');
-            }
-            if(betCode =="ssc_yizizuhe"){
-                $("a[data-code='全五一字']").addClass("mui-active");
-            }else{
-                $("#yizizuhe a").removeClass("mui-active");
-                $("a[data-code='"+betCode+"']").addClass("mui-active");
-            }
-
-            $(".x_3.gfwf-playName").text(betCode)
-
+        getSecondText:function () {
+            return $("div#yizizuhe a.mui-active").attr("data-code")==undefined?"全五一字":$("div#yizizuhe a.mui-active").attr("data-code");
         },
 
         getOdds: function () {

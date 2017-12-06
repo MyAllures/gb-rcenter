@@ -73,7 +73,82 @@ define(['common/BasePage'], function(BasePage) {
                 });
             });
         },
+        validPCCustomerService:function () {
+            var opt = {};
+            opt.placement = 'bottom';
+            var flag = this.validDataVal($("[name='pc.name']"),false,20,'名称',opt);
+            if(flag){
+                flag = this.validDataVal($("[name='pc.parameter']"),false,450,'在线客服参数',opt);
+            }
+            return flag;
+        },
 
+        validMobileCustomerService:function () {
+            var opt = {};
+            opt.placement = 'bottom';
+            var flag = this.validDataVal($("[name='mobile.name']"),false,20,'名称',opt);
+            if(flag){
+                flag = this.validDataVal($("[name='mobile.parameter']"),false,450,'在线客服参数',opt);
+            }
+            return flag;
+        },
+        getMobileStaticValidateForm:function (e,opt) {
+            return {"result.paramValue":$("[name='result.paramValue']").val(),"result.id":$("[name='result.id']").val()}
+        },
+        getStaticValidateForm:function (e,opt) {
+            return {"result.trafficStatistics":$("[name='result.trafficStatistics']").val(),"result.id":$("[name='result.id']").val()}
+        },
+        validDataVal: function (obj, empty, len, title,opt) {
+            var val = $(obj).val();
+            var e = {};
+            e.currentTarget = obj;
+            if(!empty){
+                if(!val){
+                    page.showPopover(e, opt, 'danger','不能为空', true);
+                    $(obj).focus();
+                    return false;
+                }else{
+                    if(val.length>len){
+                        page.showPopover(e, opt, 'danger', title + '长度不能超过'.replace("[0]",len), true);
+                        $(obj).focus();
+                        return false;
+                    }
+                }
+            }else{
+                if(val&&val.length>len){
+                    page.showPopover(e, opt, 'danger', title + '长度不能超过'.replace("[0]",len), true);
+                    $(obj).focus();
+                    return false;
+                }
+            }
+            return true;
+        },
+        getPCFormData:function (e,opt) {
+             return {"pc.id":$("[name='pc.id']").val(),"pc.name":$("[name='pc.name']").val(),"pc.parameter":$("[name='pc.parameter']").val(),"result.id":$("[name='result.id']").val()};
+        },
+        getMobileFormData:function (e,opt) {
+            return {"mobile.id":$("[name='mobile.id']").val(),"mobile.name":$("[name='mobile.name']").val(),"mobile.parameter":$("[name='mobile.parameter']").val(),"result.id":$("[name='result.id']").val()};
+        },
+        /**
+         * 验证统计代码
+         * @param event
+         * @returns {boolean}
+         */
+        staticValidateForm:function(event) {
+            var paramValue = $("[name='result.trafficStatistics']").val();
+            if (paramValue)
+                return true;
+            else
+                return false;
+        },
+
+        _validateForm:function(e,option) {
+            var paramValue = $("[name='mstSites.mainLanguage']").val();
+            if (paramValue)
+                return true;
+            else
+                return false;
+        },
         getSelectIdsArray:function(e,option)
         {
             var checkedItems = [],counter = 0;

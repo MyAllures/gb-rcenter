@@ -3,19 +3,8 @@ define(['site/hall/pl3/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
         _this: null,
         init: function () {
             _this = this;
+            this.showTable("直选和值","官方玩法-三星","pl3_sanxing_zhixuan_hz",$("#3star"),"3star");
             this._super();
-            // this.getJspName();
-        },
-
-        showTable : function(){
-            $("a[data-code='3star']").addClass("mui-active");
-            $("#3star").show();
-            $("span.x_1.gfwf-tit").text("三星");
-            $(".s-title.title1 span").text("三星");
-            $(".s-title.title2 span").text("直选和值");
-            $(".x_3.gfwf-playName").text("直选和值");
-            $("a[data-code='pl3_sanxing_zhixuan_hz']").addClass("mui-active");
-
         },
 
         /*================================后3直选复式===============================*/

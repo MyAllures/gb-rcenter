@@ -72,7 +72,6 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
         changeList : function(){
             var _this=this;
             var lotteryGenra=$("#GenraType").val();
-            console.log(lotteryGenra)
             var betCode="ssc_shuzipan";
             var jspStr="DigitalDisk";
             if(lotteryGenra =="ssc_yixing_dwd"){

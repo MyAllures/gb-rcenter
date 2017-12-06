@@ -69,7 +69,7 @@ function goTab(obj,options){
     if(os == 'app_ios'){
         gotoTab(skip);
     }else if(os == 'app_android'){
-        window.gamebox.gotoTab(skip);
+        window.gamebox.gotoFragment(skip);
     }else{
         if(skip == 3){
             loadCustomer(obj,options);

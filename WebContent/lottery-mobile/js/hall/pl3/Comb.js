@@ -6,10 +6,15 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
         _this: null,
         init: function () {
             _this = this;
+            this.showTable(this.getSecondText(),"传统玩法-组合",$("#gfwfBetCode").val(),$("#zuhe"),"comb");
             this._super();
         },
 
-        showTable : function(){
+        getSecondText:function () {
+            return $("div#zuhe a.mui-active").attr("data-code");
+        },
+
+        /*showTable : function(){
             var gfwfBetCode=$("#gfwfBetCode").val();
             $("a[data-code='comb']").addClass("mui-active");
             $("a[data-code='"+gfwfBetCode+"']").addClass("mui-active");
@@ -23,7 +28,7 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
             }
             $(".x_3.gfwf-playName").text(gfwfBetCode)
             $(".s-title.title2 span").text(gfwfBetCode);
-        },
+        },*/
 
         /**
          * 绑定事件

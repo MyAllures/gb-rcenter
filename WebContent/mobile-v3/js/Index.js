@@ -93,17 +93,17 @@ $(".lottery-nav li").on("tap",function(){
     if(!isLoadData){
         loadData(apiId,1);
     }
-    var pageNumber = parseInt($('#total-page-'+apiId).attr("pageNumber"));
+    var pageNumber = parseInt($('#total-page-'+apiId).attr("pageNumber") == null ? "1":$('#total-page-'+apiId).attr("pageNumber"));
     var lastPageNumber = parseInt($('#total-page-'+apiId).val());
     if(pageNumber != lastPageNumber){
         mui('#pullfresh').pullRefresh().refresh(true);
+        $('.mui-pull-caption-down').addClass('mui-hidden');
     }
-
 });
 /*彩票上拉请求数据*/
     function pullfresh() {
     setTimeout(function () {
-        mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
+        //mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
         var type = $(".nav .mui-scroll .mui-active").attr("data-item");
         if(type == "lottery"){
             mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
@@ -118,7 +118,7 @@ $(".lottery-nav li").on("tap",function(){
             }
         }
 
-    }, 0);
+    }, 2000);
 }
 
 function pullUpLoadData(apiId,pageNumber){

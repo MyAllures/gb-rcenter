@@ -3,23 +3,8 @@ define(['site/hall/pl3/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
         _this: null,
         init: function () {
             _this = this;
+            this.showTable("直选复式","官方玩法-后二","pl3_erxing_zhixuan_hefs",$("#After2"),"After2");
             this._super();
-            // this.showTable();
-        },
-
-        showTable : function(){
-            $("a[data-code='After2']").addClass("mui-active");
-            $("#After2").show();
-            $("span.x_1.gfwf-tit").text("后二");
-            $(".s-title.title1 span").text("后二");
-            $("#toobarTitle").text("官方玩法-后二");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('官方玩法-后二');
-            }
-            $(".s-title.title2 span").text("直选复式");
-            $(".x_3.gfwf-playName").text("直选复式");
-            $("a[data-code='pl3_erxing_zhixuan_hefs']").addClass("mui-active");
-
         },
 
         /*================================前二直选复式===============================*/

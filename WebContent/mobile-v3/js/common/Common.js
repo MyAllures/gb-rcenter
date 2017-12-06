@@ -436,7 +436,7 @@ function login(url) {
 function loginOut(e, options) {
     sessionStorage.is_login = false;
     if (os === 'app_ios')
-        window.gamebox.logout();
+        loginOut();
     if (os === 'app_android')
         window.gamebox.logout();
     else
