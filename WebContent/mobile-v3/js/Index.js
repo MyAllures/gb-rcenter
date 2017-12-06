@@ -92,7 +92,9 @@ function changeLottery(obj, options) {
 function pullfresh() {
     setTimeout(function () {
         mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
-        var type = $(".nav .mui-scroll .mui-active").attr("data-item");
+        var $apiTypeTab = $(".nav .mui-scroll .mui-active");
+        var options = eval("(" + $($apiTypeTab).attr('data-rel') + ")");
+        var type = options.item;
         if (type == "lottery") {
             mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
             var apiId = $("#lottery-id").val();
