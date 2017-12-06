@@ -435,6 +435,8 @@ function login(url) {
  */
 function loginOut(e, options) {
     sessionStorage.is_login = false;
+    isLogin = false;
+    sessionStorage.setItem("isLogin",isLogin);
     if (os === 'app_ios')
         loginOut();
     if (os === 'app_android')
@@ -449,5 +451,8 @@ function loginOut(e, options) {
 function checkOs(){
     if(os != 'app_ios' && os != 'app_android'){
         $(".footerMenu").removeClass('mui-hide');
+    }
+    if(os == 'app_android'){
+        $('#headMenu').css("display","none");
     }
 }
