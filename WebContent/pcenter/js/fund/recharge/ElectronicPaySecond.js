@@ -1,8 +1,8 @@
 /**
  * 电子支付第二步-回执信息
  */
-define(['common/BaseEditPage'], function (BaseEditPage) {
-    return BaseEditPage.extend({
+define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
+    return CommonRecharge.extend({
         /**
          * 初始化及构造函数，在子类中采用
          * this._super();

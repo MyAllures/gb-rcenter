@@ -1,8 +1,8 @@
 /**
  * 管理首页-首页js
  */
-define(['common/BasePage'], function (BasePage) {
-    return BasePage.extend({
+define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
+    return CommonRecharge.extend({
         realName: null,
         /**
          * 初始化及构造函数，在子类中采用
