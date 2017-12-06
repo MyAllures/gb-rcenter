@@ -450,7 +450,4 @@ function checkOs(){
     if(os != 'app_ios' && os != 'app_android'){
         $(".footerMenu").removeClass('mui-hide');
     }
-    if(os == "app_android"){
-        $('.headMenu').addClass('mui-hide');
-    }
 }
