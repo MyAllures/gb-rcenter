@@ -435,6 +435,8 @@ function login(url) {
  */
 function loginOut(e, options) {
     sessionStorage.is_login = false;
+    isLogin = false;
+    sessionStorage.setItem("isLogin",isLogin);
     if (os === 'app_ios')
         loginOut();
     if (os === 'app_android')
