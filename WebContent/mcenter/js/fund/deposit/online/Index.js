@@ -73,6 +73,9 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
             })
         },
         queryByCondition: function (e, opt) {
+            if(!opt){
+                opt = {};
+            }
             opt.isCount = true;
             this.query(e, opt);
             $(e.currentTarget).unlock();
