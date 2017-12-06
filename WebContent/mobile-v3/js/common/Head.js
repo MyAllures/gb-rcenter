@@ -230,6 +230,6 @@ function isAllowRecovery (obj) {
  */
 function hideHeader() {
     if(os == 'app_android'){
-        $('header.mui-bar-nav').hide();
+        $('header.mui-bar-nav').remove();
     }
 }
