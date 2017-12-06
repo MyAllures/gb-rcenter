@@ -919,6 +919,10 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 for (var i = 0; i < funcs.length - 1; i++) {
                     page = page[funcs[i]];
                 }
+                /**
+                 * 替换目标操作ｐａｇｅ对象
+                 */
+                e.page=page;
                 if (funcs[funcs.length - 1] != "") {
                     var fn = page[funcs[funcs.length - 1]];
                     if (typeof fn === "function") {
