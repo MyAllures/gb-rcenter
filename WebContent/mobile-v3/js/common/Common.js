@@ -26,11 +26,11 @@ function pullUpRefreshOption(container, callback, auto) {
         pullRefresh: {
             container: container,
             up: {
-                height:100,//可选.默认50.触发上拉加载拖动距离
+                height: 100,//可选.默认50.触发上拉加载拖动距离
                 auto: auto,
                 contentdown: window.top.message.promo_auto['上拉加载'],
                 contentrefresh: '正在加载...',
-                contentnomore:'已经到底了',
+                contentnomore: '已经到底了',
                 callback: callback
             }
         }
@@ -159,6 +159,11 @@ function muiAjax(options) {
     if (!url) {
         return;
     }
+    if (url.indexOf("?") > 0) {
+        url = url + '&t=' + random;
+    } else {
+        url = url + '?t=' + random;
+    }
     //是否出现加载中样式
     if (options.loading) {
         showLoading();
@@ -173,8 +178,8 @@ function muiAjax(options) {
         data: options.data,
         dataType: options.dataType || 'json',
         type: options.type || 'POST',
-        headers:options.headers,
-        timeout:options.timeout,
+        headers: options.headers,
+        timeout: options.timeout,
         success: options.success,
         error: options.error,
         complete: options.complete,
@@ -237,7 +242,7 @@ function goToUrl(url) {
         gotoCustom(url);
     } else if (os == 'app_android') {
         window.gamebox.gotoApi(url);
-    }else{
+    } else {
         openWindow(url);
     }
 }
@@ -267,7 +272,7 @@ function bindButtonEvent(selector) {
     /**
      * 绑定使用button.tag标签
      */
-    selector=selector||"body";
+    selector = selector || "body";
     mui(selector).on("tap", "[data-rel]", function (e) {
         var $target = $(this);
         var isLocked = $target.isLocked();
@@ -314,7 +319,7 @@ function doEvent(obj, options) {
  */
 function doFunction(obj, options) {
     var func = this[options.target];
-    var returnVal= applyFunction(func, options, obj);
+    var returnVal = applyFunction(func, options, obj);
     $(obj).unlock();
     return returnVal;
 }
@@ -359,7 +364,7 @@ function doAjax(obj, options) {
                 applyFunction(func, options, obj);
             }
             $(obj).unlock();
-        },error:function () {
+        }, error: function () {
             $(obj).unlock();
         }
     };
@@ -446,11 +451,11 @@ function loginOut(e, options) {
 /**
  * ios，android端隐藏下标
  */
-function checkOs(){
-    if(os != 'app_ios' && os != 'app_android'){
+function checkOs() {
+    if (os != 'app_ios' && os != 'app_android') {
         $(".footerMenu").removeClass('mui-hide');
     }
-    if(os == "app_android"){
+    if (os == "app_android") {
         $('.headMenu').addClass('hide');
     }
 }
