@@ -447,7 +447,7 @@ function login(url) {
 /**
  * 统一退出登录入口
  */
-function loginOut(e, options) {
+function logout(e, options) {
     sessionStorage.is_login = false;
     isLogin = false;
     sessionStorage.setItem("isLogin", isLogin);
