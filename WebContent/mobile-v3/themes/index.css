@@ -216,5 +216,15 @@
     padding: 18px 0;
   }
 }
+/* banner-loading */
+.banner-loading .loader.api-loader, .api-loading .loader.api-loader {
+  align-items: center;
+}
+.banner-loading .ball-pulse.api-div div, .api-loading .ball-pulse.api-div div {
+  width: 10px;
+  height: 10px;
+  background-color: #666;
+  vertical-align: middle;
+}
 
 /*# sourceMappingURL=index.css.map */
