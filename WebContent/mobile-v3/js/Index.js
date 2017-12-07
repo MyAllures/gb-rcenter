@@ -91,7 +91,9 @@ function pullfresh() {
         var type = options.item;
         if (type == "lottery") {
             mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
-            var apiId = $("#lottery-id").val();
+            var $api = $(".lottery-nav a.mui-tab-item.mui-active");
+            var apiOption = eval("(" + $($api).attr('data-rel') + ")");
+            var apiId = apiOption.apiId;
             var pageNumber = parseInt($('#total-page-' + apiId).attr("pageNumber"));
             if(!pageNumber) {
                 pageNumber = 0;

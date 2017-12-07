@@ -53,7 +53,6 @@ function headInfo() {
     muiAjax(options);
 }
 
-
 /**
  * 打开左侧菜单
  */
@@ -101,6 +100,10 @@ function getSiteApi() {
  * 刷新额度
  * */
 function refreshApi() {
+    //防止事件冒泡
+    if(event) {
+        event.stopPropagation();
+    }
     var loading = '<div class="loader api-loader"><div class="loader-inner ball-pulse api-div"><div></div><div></div><div></div></div></div>';
     $('.bar-wallet').html(loading);
     $('.bar-asset').html(loading);
@@ -125,95 +128,6 @@ function refreshApi() {
         }
     };
     muiAjax(options);
-}
-
-/**
- * 回收
- * */
-function recovery(obj, options) {
-    if (isAutoPay == false) {
-        toast(window.top.message.common_auto["无免转"]);
-        return;
-    }
-    if (!isAllowRecovery(obj)) {
-        toast(window.top.message.common_auto["太频繁"]);
-        return;
-    }
-    var title = $(obj).text();
-    $(obj).attr("disabled", true);
-    $(obj).text("回收中...");
-
-    var option = {
-        url: root + "/transfer/auto/recovery.html",
-        success: function (data) {
-            if (data) {
-                if (data.msg) {
-                    toast(data.msg);
-                } else {
-                    toast(window.top.message.common_auto["正在回收"]);
-                }
-            } else {
-                toast(window.top.message.common_auto["系统繁忙"]);
-            }
-            recoveryCallBack();
-        },
-        error: function (data) {
-            toast(window.top.message.common_auto["系统繁忙"]);
-        },
-        complete: function () {
-            $(obj).attr("disabled", false);
-            $(obj).text(title);
-            $(obj).attr('lastTime', new Date().getTime());
-        }
-    };
-    muiAjax(option);
-};
-
-function recoveryCallBack() {
-    var loading = '<div class="loader api-loader"><div class="loader-inner ball-pulse api-div"><div></div><div></div><div></div></div></div>';
-    $('.bar-wallet').html(loading);
-    $('.bar-asset').html(loading);
-    $('table#api-balance').find('td._money').html(loading);
-
-    setTimeout(function () {
-
-        var options = {
-            url: root + "/transfer/auto/getApiBalances.html",
-            success: function (data) {
-                var d = eval(data);
-                $('.bar-wallet').html(d.currSign + d.playerWallet);
-                $('.bar-asset').html(d.currSign + d.playerAssets);
-
-                var apis = d.apis;
-                for (var i = 0; i < apis.length; i++) {
-                    var html;
-                    if (apis[i].status == 'maintain') {
-                        html = '<span class="text-red" style="font-size: 10px;">' + window.top.message.common_auto["游戏维护中"] + '</span>';
-                    } else {
-                        html = d.currSign + apis[i].balance;
-                    }
-                    $('td#_api_' + apis[i].apiId).html(html);
-                }
-            }
-        };
-        muiAjax(options);
-    }, 1000);
-};
-
-/**
- * 是否允许回收
- */
-function isAllowRecovery(obj) {
-    var lastTime = $(obj).attr("lastTime");
-    if (!lastTime) {
-        return true;
-    }
-    var date = new Date();
-    var timeInterval = parseInt(date.getTime() - lastTime) / 1000;
-    if (timeInterval >= RECOVER_TIME_INTERVAL) {
-        return true;
-    }
-    return false;
 }
 
 /**
