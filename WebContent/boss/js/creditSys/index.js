@@ -62,11 +62,11 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
                             var type=$(_target).attr("mold");
                             var msg="";
                             if(type=="disable_transfer"){
-                                msg="关闭后该站点将禁止转账,确认关闭吗？"
+                                msg="该站点将开启转账,确认开启吗？"
                             }
+                            var okLabel = window.top.message.setting['common.ok'];
+                            var cancelLabel = window.top.message.setting['common.cancel'];
                             if (!$(_target).attr("isChanged")&&!state) {
-                                var okLabel = window.top.message.setting['common.ok'];
-                                var cancelLabel = window.top.message.setting['common.cancel'];
                                 window.top.topPage.showConfirmDynamic(window.top.message.common['msg'], msg, okLabel, cancelLabel, function (confirm) {
                                     console.log(1);
                                     if (confirm && !$(_target).attr("isChanged")) {
@@ -95,6 +95,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
                                     $("#status").addClass("label-danger");
                                 })
                             }else if(!$(_target).attr("isChanged")&&state) {
+                                window.top.topPage.showConfirmDynamic(window.top.message.common['msg'],"该站点将禁止转账,确认禁止吗?",okLabel, cancelLabel, function (confirm) {
                                 window.top.topPage.ajax({
                                     url: root + '/vSysCredit/fetchSiteId.html',
                                     dataType: "json",
@@ -112,6 +113,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
                                             }},"danger","操作失败",true);
                                         }
                                     }
+                                })
                                 });
                                 return true;
                             }
