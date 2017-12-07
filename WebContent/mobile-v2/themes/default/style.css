@@ -488,3 +488,46 @@ color: #6b88fe;
 
 .mui-title {color: #fff;}
 .mui-bar-nav a {color: #fff;}
+
+/* loading */
+.loading-wrap {
+  background: fff;
+}
+
+.loading-wrap:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2002;
+}
+
+.loading-wrap .loading-img {
+  position: absolute;
+  z-index: 2003;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  -webkit-transform: translate3d(-50%, -50%, 0) scale(1);
+  transform: translate3d(-50%, -50%, 0) scale(1);
+}
+
+.loading-wrap .loading-img img {
+  vertical-align: middle;
+}
+
+.loading-wrap .loading-entirety {
+  background: rgba(62, 68, 93, 0.95);
+  width: 64px;
+  height: 64px;
+  line-height: 63px;
+  border-radius: 12px;
+}
+
+.loading-wrap .loading-entirety img {
+  width: 48px;
+}
