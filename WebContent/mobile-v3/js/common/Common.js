@@ -292,7 +292,7 @@ function bindButtonEvent(selector) {
         var options = eval("(" + $(this).attr('data-rel') + ")");
         var confirm = options.confirm;
         if (confirm) {
-            options.event = doEvent(this, options);
+            options.func = doEvent(this, options);
             showConfirmMsg(options, this);
         } else {
             doEvent(this, options);
@@ -400,14 +400,14 @@ function toast(msg) {
 
 /**
  * 确认弹窗
- * @param options {btnArray:按钮组合,confirm:确认提示信息,}
+ * @param options {btnArray:按钮组合,confirm:确认提示信息,func:确认信息后调用方法}
  * @param obj　target对象
  */
 function showConfirmMsg(options, obj) {
     var btnArray = options.btnArray || ['是', '否'];
     mui.confirm(options.confirm, options.title, btnArray, function (e) {
         if (e.index == 0) {
-            var func = options.event;
+            var func = options.func;
             if (func) {
                 applyFunction(func, options, obj);
             }
