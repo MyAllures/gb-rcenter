@@ -40,6 +40,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
          */
         query: function (event, option) {
             var $form = $(window.top.topPage.getCurrentForm(event));
+            var _this=this;
             if (!$form.valid || $form.valid()) {
                 window.top.topPage.ajax({
                     loading: true,
@@ -53,18 +54,18 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
                         var $result = $(".search-list-container", $form);
                         $result.html(data);
                         event.page.onPageLoad();
-                        $(event.currentTarget).unlock()
+                        $(event.currentTarget).unlock();
+                        if(event.goType==undefined || event.goType==-2){
+                            _this.queryCount();
+                        }else{
+                            _this.queryCount(true);
+                        }
                     },
                     error: function (data, state, msg) {
                         window.top.topPage.showErrorMessage(data.responseText);
                         $(event.currentTarget).unlock();
                     }
                 });
-                if (option && option.isCount) {
-                    this.queryCount();
-                } else {
-                    this.queryCount("true");
-                }
 
             } else {
                 $(event.currentTarget).unlock();
@@ -86,11 +87,9 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
                 data: $(this.formSelector).serialize(),
                 type: 'POST',
                 success: function (data) {
-                    console.info("data"+data);
-                    console.info($("#companyDepositpageDiv"));
                     $("#companyDepositpageDiv").html(data);
                     _this.initSelect();
-                    // $(_this.formSelector + " .search-wrapper [selectDiv]").attr("callback", "selectListChange");
+                    _this.pagination.bindSelectChange(page)
                 },
                 error: function (data) {
 
@@ -231,16 +230,6 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
         changeKey: function (e) {
             $('#operator').attr('name', e.key).val('');
 
-        },
-        /**
-         * 根据条件搜索（不包含彩池奖金条件）
-         * @param e
-         * @param opt
-         */
-        queryByCondition: function (e, opt) {
-            opt.isCount = true;
-            this.query(e, opt);
-            $(e.currentTarget).unlock();
         },
         selectListChange : function (e) {
             var target = $(e.currentTarget).parent().parent().parent().parent().next();
