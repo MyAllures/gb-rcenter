@@ -221,4 +221,37 @@ header.mui-bar-nav .mui-action-back {
   background: url(images/icon-open-offcanvas.png) no-repeat right center/5px;
 }
 
+/* casino-transfer */
+.content-casino-transfer .api-grid .mui-grid-view.mui-grid-9 {
+  border-top: 0;
+  border-left: 0;
+  background-color: #efefef;
+}
+.content-casino-transfer .api-grid .api-item {
+  background: url(./images/api-bg.png) no-repeat center/56px;
+}
+.content-casino-transfer .api-grid .api-item:after {
+  background: rgba(255, 255, 255, 0.3);
+}
+.content-casino-transfer .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell a {
+  background: #fff;
+}
+.content-casino-transfer .api-grid ul[data-list="lottery"] .lottery-nav {
+  color: #333;
+  border-bottom: 1px solid #fff;
+}
+.content-casino-transfer .api-grid ul[data-list="lottery"] .lottery-nav ul {
+  background: transparent;
+}
+.content-casino-transfer .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item {
+  color: #333;
+  border-bottom: 1px solid transparent;
+}
+.content-casino-transfer .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.mui-active {
+  border-bottom: 1px solid #168df6;
+}
+.content-casino-transfer .icon-refresh {
+  background: url(./images/icon-refresh.png) 0 0/24px no-repeat;
+}
+
 /*# sourceMappingURL=style.css.map */
