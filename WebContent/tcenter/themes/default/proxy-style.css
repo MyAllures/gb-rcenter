@@ -1666,3 +1666,134 @@ td {
 td.money strong {color: #f34235!important;font-size: 1.2em;}
 .dropdown-menu .del-template{position: absolute;padding: 5px 6px 5px 12px; margin: 0;}
 .dropdown-menu .text-template{padding-left: 32px;}
+
+.input-group .form-control:last-child {
+    border-top-left-radius: 0!important;
+    border-bottom-left-radius: 0!important;
+}
+.chosen-container-single .chosen-single {
+    border: 1px solid #b4b7bb!important;
+}
+.input-group-addon:first-child .chosen-container-single .chosen-single{
+    border-right: 0!important;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.input-group-addon:first-child{
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.input-group input:last-child,.input-group .right-radius.btn:not(:first-child):not(:last-child):not(.dropdown-toggle){
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.caret-a:after{
+    content: "\f0dc";
+    padding: 0 0 0 6px;
+    font: normal normal normal 14px/1 FontAwesome;
+    color:#b4b7bb;
+  }
+  .input-group-btn .btn-group .left-radius.btn:not(:first-child):not(:last-child):not(.dropdown-toggle){
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-right: 0;
+  }
+  .radius-right-none{    
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .radius-left-none{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+.right-demand{width: 191px!important;}
+.right-demand .my-right-demand{    min-width: 155px;
+    text-align: left;}
+.right-btn-down{width: inherit;}  
+  .radius-none{border-radius: 0}
+  .border-l-n{border-left:0;}
+.time-select-a .time-select-ico{position: absolute;
+    z-index: 99;
+    border: 0;
+    background: none;
+    line-height: 23px;
+    padding-left: 10px;}
+ .time-select-a.icon-right .time-select-ico{
+   right: 13px;
+ }   
+.time-select-a .form-control{padding-left: 30px;}
+.time-select-a.icon-right .form-control{padding-left: 10px;}
+.time-select-a.right-ico .form-control{padding-left: 8px; padding-right: 25px;}
+.time-select-a.right-ico .time-select-ico{right: 9px;}
+.time-select-a .time-select-t{border: 0;
+    padding: 3px;}
+.time-select-a .time-select-btn{    border: 0;
+    padding: 0 0 0 10px;}
+.time-select-a .time-select-btn.btn-p-left{
+    padding: 0 10px 0 0;}
+.show-demand-a{display: none;}
+
+.show-demand-b .fa-chevron-down{
+    text-align:center;
+    transition:transform 0.2s,vertical-align 0.2s;
+    -o-transition:transform 0.2s,vertical-align 0.2s;
+    -ms-transition:transform 0.2s,vertical-align 0.2s;
+    -moz-transition:transform 0.2s,vertical-align 0.2s;
+    -webkit-transition:transform 0.2s,vertical-align 0.2s;
+}
+.show-demand-b.open .fa-chevron-down{
+    text-align:center;
+    transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+    -ms-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+}
+@media (min-width:990px){
+  .padding-r-none-sm{padding-right:0;}
+}
+.mobile {
+  font-size: 1.4em;
+  color: #2095f2;
+  vertical-align: middle;
+}
+.btn-group .right-radius.btn:first-child:not(:last-child):not(.dropdown-toggle){
+    border-top-right-radius: 3px!important;
+    border-bottom-right-radius: 3px!important;
+}
+.popover-content {
+  font-family: 'sumsin', serif;
+  font-size: 13px;
+  color: #54544f;
+}
+
+textarea.resize-both{
+  resize: both;
+}
+textarea.resize-vertical{
+  resize: vertical;
+}
+textarea.resize-horizontal{
+  resize: horizontal;
+}
+
+.type-search table{border:0!important;}
+.type-search td{border: 0!important;}
+.type-search tbody{
+    padding: 10px 10px;
+    display: inline-block;
+    margin-bottom: 5px;
+    border-top: 1px solid #b4b7bb!important;
+    width: 100%
+}
+
+.type-search .search-game-title{font-size: 15px;}
+.type-search .search-top-menu .btn{margin-bottom: 5px; margin-right: 10px;}
+.type-search td .fwn{min-width: 80px;    padding-bottom: 3px;}
+.type-search .title-search{background: #e7f4ff;
+    display: inline-block;
+    border-left: 4px solid #2095f2;
+    padding: 0 6px;}
+.type-search.type-search-game tbody{display: inherit;}
+.type-search.type-search-game td {border: 1px solid #e7e7e7!important;}
+ .form-group .btn-default .caret-a{position: absolute; right: 12px;}
