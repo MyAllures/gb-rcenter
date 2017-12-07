@@ -1,6 +1,6 @@
-define(['common/BaseEditPage'], function(BaseEditPage) {
+define(['common/BasePage'], function(BasePage) {
     var _this=this;
-    return BaseEditPage.extend({
+    return BasePage.extend({
         /**
          * 初始化及构造函数，在子类中采用
          * this._super();

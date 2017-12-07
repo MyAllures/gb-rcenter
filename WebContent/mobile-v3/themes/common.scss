@@ -271,38 +271,117 @@ header{
     }
 }
 /* promo-records */
-.promo-records-content{
-    .gb-headtabs {    margin: 11px auto;    width: 60%;    background-color: #fff;
-        .mui-segmented-control{overflow: visible;    border: 1px solid #1766bb;
-        .mui-control-item {        line-height: 28px;        color: #333;        font-size: 12px;        overflow: visible;        position: relative;    
-            i{    width: 10px;    height: 7px;    background: url(./images/ex3.png);    background-size: cover;    position: absolute;    top: 34px;    left: 50%;    margin-left: -5px;    display: none;}
-            &.mui-active{    background: #1766bb;    color: #fff;
-                i{display: block;}
-            }
+.promo-record-content{
+    .promo-records-warp {
+        padding: 0 10px;
+        margin-top: 10px;
+        height: 85px;
+        i {
+            display: block;
+            width: 4px;
+            height: 85px;
+            position: absolute;
+            top: 0;
+            left: -3px;
+            background-repeat: repeat-y;
+            background: url(../images/pro-bg.png);
         }
+        .pro-bg-left {
+            background-position: 0 0;
+        }
+        .pro-bg-right {
+            background-position: right top;
+            left: -1px;
         }
     }
-    .gb-panel { background-color: #fff; border-top: 1px solid #e6e6e6;    border-bottom: 1px solid #e6e6e6;    }    
-    .gb-imgs >.hd {    padding: 10px;    border-bottom: 1px solid #f2f2f2;}
-    .gb-select {    display: inline-block;
-        &>a{color: #999;    display: inline-block;    font-size: 12px;    margin-right: 15px;
-            .mui-icon {    color: #7a7674 !important;    font-size: 17px;    vertical-align: middle;}
-        }
-    }  
-    .gb-imgs >.ct {
-        padding: 10px;
-        ul{padding: 0;margin: 0;list-style: none;
-            li{    margin-bottom: 10px;    line-height: 0;
-                &>a{    width: 100%;    line-height: 0;    display: inline-block;
-                    img{width: 100%;}
-                }
+    .promo-box-left {
+        background: #fff;
+        padding: 10px 10px;
+        height:85px;
+        width: 68%;
+        float: left;
+        position: relative;
+        h5 {
+            font-size: 12px;
+            color: #333;
+            line-height: 15px;
+            text-overflow: -o-ellipsis-lastline;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            margin-top: 0;
+            margin-bottom: 7px;
+            min-height: 45px;
+        }    
+        .text {
+            font-size: 10px!important;
+            color: #999;
+            line-height: 16px;
+            .sum {
+                float: left;
             }
+            .time {
+                display: inline-block;
+                float: right;
+                margin-right: 20px;
+            }
+        }    
+    }
+    .promo-box-right {
+        border-radius: 4px;
+        position: relative;
+        padding: 10px 10px;
+        color: #fff;
+        line-height: 16px;
+        height: 85px;
+        width: 32%;
+        float: left;
+        &.promo-gray {
+            background: #7b7b7b;
         }
+        &.promo-blue {
+            background: #3488e7
+        }
+        &.promo-green {
+            background: #1fbd66
+        }
+        &.promo-orange {
+            background: #f07e11
+        }
+        span {
+            display: block;
+            font-size: 12px;
+            text-align: center;
+        }
+        .num {
+            font-size: 20px;
+            margin-top: 15px;
+        }
+        .annotation {
+            line-height: 16px;
+            margin-top: 10px;
+            font-size: 10px;
+        }
+        .round {
+            position: absolute;
+            z-index: 999;
+            width: 10px;
+            height: 10px;
+            border-radius: 10px;
+            background: #f2f2f2;
+        }
+        .radio-up {
+            left: -3px;
+            top: -5px;
+        }
+        .radio-dwon {
+            left: -3px;
+            bottom: -5px;
+        }
+    }
+    .org {
+        color: #f1aa4d;
     }
 }
-.gb-popover .mui-table-view {
-    margin: 0 !important;
-    border-radius: 0 !important;
-    background-color: #fff;
-        a{ color: #333;  font-size: 12px;}
-} 

@@ -4854,7 +4854,12 @@ span.api-icon.api-icon-4-22 {
 span.api-icon.api-icon-4-22-2 {
     background-position-y: -1440px;
 }
-
+/* 2017-11-30 */
+span.api-icon.api-icon-2-31{    background-position-y: -1489px;}
+span.api-icon.api-icon-2-32{    background-position-y: -1537px;}
+span.api-icon.api-icon-2-26 { background-position-y: -1392px;}
+span.api-icon.api-icon-2-27{background-position-y: -1344px;}
+span.api-icon.api-icon-2-28{    background-position-y: -1296px;}
 @media only screen and (min-width:768px ) {
     .hb-block .index-block-content .api-icon {
         width: 76px;
@@ -4971,9 +4976,18 @@ span.api-icon.api-icon-4-22-2 {
     span.api-icon.api-icon-4-22-2 {
         background-position-y:-2281px;
     }
+    /* 2017-11-30 */
     span.api-icon.api-icon-2-26 {
-         background-position-y: -2205px;
+        background-position-y: -2433px;
     }
+    span.api-icon.api-icon-2-28 {
+        background-position-y: -2052px;
+    }
+    span.api-icon.api-icon-2-27 {
+         background-position-y: -2128px;
+     }
+    span.api-icon.api-icon-2-31{    background-position-y: -2357px;}
+    span.api-icon.api-icon-2-32{    background-position-y:-2433px;}
 }
 .no-promo {
     width: 100%;
@@ -5051,10 +5065,7 @@ li.mui-tab-item.api-logo img {
 .gb-bindcard-box.bit_addr .btn_wrap .btn_cancel{    background: #e2e2e2;  border-color: #e2e2e2;}
 .gb-bindcard-box.bit_addr .btn_wrap .btn_submit{    background: #1766bb;  border-color: #1766bb;  color: #fff;}
 
-/* 首页api新增图片 */
-span.api-icon.api-icon-2-26 { background-position-y: -1392px;}
-span.api-icon.api-icon-2-27{background-position-y: -1344px;}
-span.api-icon.api-icon-2-28{    background-position-y: -1296px;}
+
 
 /*新缺省页面*/
 .no-data-img {background-size: 14.75rem 9.6rem; width: 14.75rem; height: 7.7rem; margin-left: auto; margin-right: auto; margin-top: 3.875rem; background-repeat: no-repeat;}
