@@ -1,8 +1,8 @@
 /**
  * 存款-网银转账第二步
  */
-define(['common/BaseEditPage'], function (BaseEditPage) {
-    return BaseEditPage.extend({
+define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
+    return CommonRecharge.extend({
         /**
          * 初始化及构造函数，在子类中采用
          * this._super();
@@ -82,22 +82,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         customerService: function (e, option) {
             window.top.topPage.customerService(e, option);
-        },
-        /**
-         * 提交订单
-         * @param e
-         * @param option
-         */
-       /* submit: function (e, option) {
-            var btnOption = {};
-            btnOption.text = '完成存款，提交申请';
-            var payAccountId = $("input[name='result.payAccountId']").val();
-            var rechargeAmount = $("input[name='result.rechargeAmount']").val();
-            var activityId = $("input[name=activityId]").val();
-            btnOption.target = root + "/fund/recharge/company/onlineBankThird.html?result.payAccountId=" + payAccountId + "&result.rechargeAmount=" + rechargeAmount + "&activityId=" + activityId;
-            btnOption.callback = "back";
-            window.top.topPage.doDialog(e, btnOption);
-            window.top.topPage.online_payName = $("input[name='result.payerName']").val();
-        }*/
+        }
     });
 });

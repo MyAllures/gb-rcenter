@@ -8,13 +8,12 @@ $(function () {
         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
         /*禁用侧滑手势指定样式*/
         disabledHandSlip: ['mui-off-canvas-left'],
-        init: pullUpRefreshOption('#pullfresh', pullfresh, false),
+        init: pullUpRefreshOption('#pullfresh', pullfresh, true),
         /*游戏分类api tab横向滚动*/
         horizontalScroll: ['.lottery-nav .mui-scroll-wrapper']
     };
     muiInit(options);
     initBanner();
-    loadData($('#lottery-id').val(), 1);
 });
 
 /*轮播图*/
@@ -78,12 +77,7 @@ function changeLottery(obj, options) {
     var apiId = options.apiId;
     $('#lottery-id').val(apiId);
     if (!isLoadData) {
-        loadData(apiId, 1);
-    }
-    var pageNumber = parseInt($('#total-page-' + apiId).attr("pageNumber"));
-    var lastPageNumber = parseInt($('#total-page-' + apiId).val());
-    if (pageNumber != lastPageNumber) {
-        mui('#pullfresh').pullRefresh().refresh(true);
+        pullfresh();
     }
     $('div#lottery-' + apiId).addClass("mui-active");
 }
@@ -92,11 +86,18 @@ function changeLottery(obj, options) {
 function pullfresh() {
     setTimeout(function () {
         mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
-        var type = $(".nav .mui-scroll .mui-active").attr("data-item");
+        var $apiTypeTab = $(".nav .mui-scroll .mui-active");
+        var options = eval("(" + $($apiTypeTab).attr('data-rel') + ")");
+        var type = options.item;
         if (type == "lottery") {
             mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
-            var apiId = $("#lottery-id").val();
+            var $api = $(".lottery-nav a.mui-tab-item.mui-active");
+            var apiOption = eval("(" + $($api).attr('data-rel') + ")");
+            var apiId = apiOption.apiId;
             var pageNumber = parseInt($('#total-page-' + apiId).attr("pageNumber"));
+            if(!pageNumber) {
+                pageNumber = 0;
+            }
             var lastPageNumber = parseInt($('#total-page-' + apiId).val());
             if (pageNumber == lastPageNumber) {
                 mui('#pullfresh').pullRefresh().endPullupToRefresh(true);

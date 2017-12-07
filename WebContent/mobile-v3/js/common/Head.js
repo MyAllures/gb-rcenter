@@ -4,26 +4,19 @@ var isLogin = false;
 var RECOVER_TIME_INTERVAL = 10;
 
 $(function () {
-    headInfo();
-    /*右侧显示*/
-    mui('.mui-bar-nav').on('tap', '.login-info', function () {
-        if (document.activeElement) {
-            document.activeElement.blur();
-        }
-        $('.mui-hide-bar').show();
-        $(".login-info .ex").css("right","-10px");
-        return false;
-    });
-
-    /*右侧隐藏*/
-    mui('body').on('tap', '.mui-hide-bar', function () {
-        $(this).hide();
-        $(".login-info .ex").css("right","-200px");
-        return false;
-    });
-    //h5展示头部信息
+    //只有h5需要刷新头部信息，安卓 ios会自己调用方法刷新头部信息
+    if (os.indexOf("app") < 0) {
+        headInfo();
+    }
+    //安卓去掉头部部分
     hideHeader();
 });
+/**
+ * 点击右侧玩家信息展示玩家api金额
+ */
+function userAssert(obj,options) {
+    $(obj).find(".ex").toggleClass("open");
+}
 /**
  * 获取头部用户信息
  */
@@ -31,18 +24,18 @@ function headInfo() {
     var options = {
         url: root + '/sysUser.html',
         success: function (data) {
-            if (data == 'unLogin'){
+            if (data == 'unLogin') {
                 $("#notLogin").show();
                 $("div.login").hide();
                 $("div.un-login").show();
-                $("#login-info").hide();
+                $("#login-info").addClass("mui-hide");
                 isLogin = false;
-                sessionStorage.setItem("isLogin",isLogin);
-            }else{
+                sessionStorage.setItem("isLogin", isLogin);
+            } else {
                 $("#notLogin").hide();
                 $(".user_name").text(data.username);
                 //设置头像
-                if(!data.avatarUrl){
+                if (!data.avatarUrl) {
                     $('#avatarImg').attr('src', resRoot + "/images/avatar.png");
                 }
                 //左侧菜单用户信息显示
@@ -50,24 +43,21 @@ function headInfo() {
                 $("div.login").show();
                 $("div.un-login").hide();
                 //右上角显示用户信息
-                $("#login-info").show();
+                $("#login-info").removeClass("mui-hide");
                 isLogin = true;
-                sessionStorage.setItem("isLogin",isLogin);
+                sessionStorage.setItem("isLogin", isLogin);
                 getSiteApi();
-                //绑定动态增加的按钮事件
-                bindButtonEvent('.login-info .ex');
             }
         }
     };
     muiAjax(options);
 }
 
-
 /**
  * 打开左侧菜单
  */
 function leftMenu(obj) {
-    if(mui('.mui-off-canvas-wrap').offCanvas().isShown('left')){
+    if (mui('.mui-off-canvas-wrap').offCanvas().isShown('left')) {
         mui('.mui-off-canvas-wrap').offCanvas().close();
         $(".lang-menu").hide();
     } else {
@@ -80,10 +70,10 @@ function leftMenu(obj) {
  * 请求右侧信息
  * */
 function getSiteApi() {
-    var options={
+    var options = {
         url: root + '/api/getSiteApi.html',
-        success:function(data){
-            if(data) {
+        success: function (data) {
+            if (data) {
                 var d = eval(data);
                 //$('#bar-username').html(d.username);
                 $(".money").text(d.playerAssets);
@@ -99,7 +89,7 @@ function getSiteApi() {
                     }
                     $('table#api-balance').append(html);
                 }
-            }else {
+            } else {
                 isLogin = false;
             }
         }
@@ -109,15 +99,19 @@ function getSiteApi() {
 /**
  * 刷新额度
  * */
-function refreshApi(){
+function refreshApi() {
+    //防止事件冒泡
+    if(event) {
+        event.stopPropagation();
+    }
     var loading = '<div class="loader api-loader"><div class="loader-inner ball-pulse api-div"><div></div><div></div><div></div></div></div>';
     $('.bar-wallet').html(loading);
     $('.bar-asset').html(loading);
     $('table#api-balance').find('td._money').html(loading);
 
     var options = {
-        url:root + '/api/refreshApi.html',
-        success: function(data){
+        url: root + '/api/refreshApi.html',
+        success: function (data) {
             var d = eval(data);
             $('.bar-wallet').html(d.currSign + d.playerWallet);
             $('.bar-asset').html(d.currSign + d.playerAssets);
@@ -137,99 +131,10 @@ function refreshApi(){
 }
 
 /**
- * 回收
- * */
-function recovery(obj,options){
-    if(isAutoPay == false) {
-        toast(window.top.message.common_auto["无免转"]);
-        return;
-    }
-    if (!isAllowRecovery(obj)) {
-        toast(window.top.message.common_auto["太频繁"]);
-        return;
-    }
-    var title = $(obj).text();
-    $(obj).attr("disabled", true);
-    $(obj).text("回收中...");
-
-    var option = {
-        url : root + "/transfer/auto/recovery.html",
-        success:function(data){
-            if (data) {
-                if (data.msg) {
-                    toast(data.msg);
-                } else {
-                    toast(window.top.message.common_auto["正在回收"]);
-                }
-            } else {
-                toast(window.top.message.common_auto["系统繁忙"]);
-            }
-            recoveryCallBack();
-        },
-        error:function(data){
-            toast(window.top.message.common_auto["系统繁忙"]);
-        },
-        complete:function(){
-            $(obj).attr("disabled", false);
-            $(obj).text(title);
-            $(obj).attr('lastTime', new Date().getTime());
-        }
-    };
-    muiAjax(option);
-};
-
-function recoveryCallBack() {
-    var loading = '<div class="loader api-loader"><div class="loader-inner ball-pulse api-div"><div></div><div></div><div></div></div></div>';
-    $('.bar-wallet').html(loading);
-    $('.bar-asset').html(loading);
-    $('table#api-balance').find('td._money').html(loading);
-
-    setTimeout(function () {
-
-        var options={
-            url:root+"/transfer/auto/getApiBalances.html",
-            success:function(data){
-                var d = eval(data);
-                $('.bar-wallet').html(d.currSign + d.playerWallet);
-                $('.bar-asset').html(d.currSign + d.playerAssets);
-
-                var apis = d.apis;
-                for (var i = 0; i < apis.length; i++) {
-                    var html;
-                    if (apis[i].status == 'maintain') {
-                        html = '<span class="text-red" style="font-size: 10px;">' + window.top.message.common_auto["游戏维护中"] + '</span>';
-                    } else {
-                        html = d.currSign + apis[i].balance;
-                    }
-                    $('td#_api_' + apis[i].apiId).html(html);
-                }
-            }
-        };
-        muiAjax(options);
-    }, 1000);
-};
-
-/**
- * 是否允许回收
- */
-function isAllowRecovery (obj) {
-    var lastTime = $(obj).attr("lastTime");
-    if (!lastTime) {
-        return true;
-    }
-    var date = new Date();
-    var timeInterval = parseInt(date.getTime() - lastTime) / 1000;
-    if (timeInterval >= RECOVER_TIME_INTERVAL) {
-        return true;
-    }
-    return false;
-}
-
-/**
  * android隐藏头部
  */
 function hideHeader() {
-    if(os == 'app_android'){
-        $('header.mui-bar-nav').hide();
+    if (os == 'app_android') {
+        $('header.mui-bar-nav').remove();
     }
 }
