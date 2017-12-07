@@ -2,6 +2,7 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
     return PlayWay.extend({
         _this: null,
         init: function () {
+            this.showTable("直选复式","官方玩法-五星","zxfs",$("#zxfs"),"ssc_wuxing_zhixuan_fs");
             this._super();
         },
 
@@ -121,23 +122,6 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
                 }
             }
             return tempArr;
-        },
-
-        showTable : function(){
-            //五星
-            $("div.s-menu.second").hide();
-            $("#zxfs").show();
-            $("a[data-code='"+$("#gfwfBetCode").val()+"']").addClass("mui-active");
-            $("a[data-code='zxfs']").addClass("mui-active");
-            $("a[data-code='zxfs'] span").text("直选复式");
-            $(".x_3.gfwf-playName").text("直选复式");
-            $("span.x_1.gfwf-tit").text("五星");
-            $(".s-title.title1 span").text("五星");
-            $(".s-title.title2 span").text("直选复式");
-            $("#toobarTitle").text("官方玩法-五星");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('官方玩法-五星');
-            }
         }
 
     });

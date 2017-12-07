@@ -32,6 +32,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 }
             });
             Template.helper('formatPrice', function (price, type) {
+                price = price.toFixed(3);
                 if (price) {
                     var arrayPrice = price.toString().split(".");
                     if (type == 'integer') {
@@ -338,7 +339,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             }
             //设置当前盈亏
             // if (betProfit.payout && betProfit.payout != 0){
-                console.log(betProfit.payout + "," + betamount);
             var payout1=betProfit.payout !=undefined?betProfit.payout:0;
                 $('#payout').html((payout1-betamount).toFixed(2));
             // } else{

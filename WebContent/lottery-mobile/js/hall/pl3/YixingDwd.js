@@ -4,22 +4,8 @@ define(['site/hall/pl3/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
         _this: null,
         init: function () {
             _this = this;
+            this.showTable("定位胆","官方玩法-定位胆","pl3_yixing_dwd",$("#DingWeiDan"),"");
             this._super();
-        },
-
-        showTable : function(){
-            //定位胆
-            $("a[data-code='DingWeiDan']").addClass("mui-active");
-            $("#DingWeiDan").show();
-            $("span.x_1.gfwf-tit").text("定位胆");
-            $(".s-title.title1 span").text("定位胆");
-            $("#toobarTitle").text("官方玩法-定位胆");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('官方玩法-定位胆');
-            }
-            $(".s-title.title2 span").text("定位胆");
-            $(".x_3.gfwf-playName").text("定位胆");
-            $("a[data-code='pl3_yixing_dwd']").addClass("mui-active");
         },
 
         //定位胆机选

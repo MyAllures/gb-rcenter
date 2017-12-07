@@ -6,22 +6,11 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
         _this: null,
         init: function () {
             _this = this;
+            this.showTable(this.getSecondText(),"传统玩法-组合",$("#gfwfBetCode").val(),$("#zuhe"),"comb");
             this._super();
         },
-        showTable : function(){
-            var gfwfBetCode=$("#gfwfBetCode").val();
-            $("a[data-code='comb']").addClass("mui-active");
-            $("a[data-code='"+gfwfBetCode+"']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#zuhe").show();
-            $("span.x_1.gfwf-tit").text(gfwfBetCode);
-            $(".s-title.title1 span").text(gfwfBetCode);
-            $("#toobarTitle").text("传统玩法-组合");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-组合');
-            }
-            $(".x_3.gfwf-playName").text(gfwfBetCode)
-            $(".s-title.title2 span").text(gfwfBetCode);
+        getSecondText:function () {
+            return $("div#zuhe a.mui-active").attr("data-code")==undefined?"一字组合":$("div#zuhe a.mui-active").attr("data-code");
         },
 
         bindButtonEvents: function () {

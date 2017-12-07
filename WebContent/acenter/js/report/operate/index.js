@@ -145,6 +145,29 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
                 return false;
             }
             return true;
+        },
+        agentDetail:function(e,opt){
+            var _this=this;
+            var agentId = $("#agentId").val();
+            var startDate = $("[name='search.startDate']").val();
+            var endDate = $("[name='search.endDate']").val();
+            window.top.topPage.ajax({
+                loading:true,
+                url: root + "/report/operate/agentDetail.html",
+                headers: {
+                    "Soul-Requested-With":"XMLHttpRequest"
+                },
+                type:"post",
+                data: {"search.agentId":agentId, "search.startDate":startDate, "search.endDate":endDate},
+                success:function(data){
+                    var kobe = 'div.kobe';
+                    $(kobe, _this.formSelector).html(data);
+                    $(event.currentTarget).unlock();
+                    _this.onPageLoad();
+                },
+                error:function(data, state, msg){
+                    $(event.currentTarget).unlock();
+                }});
         }
     });
 });

@@ -49,17 +49,20 @@ function loadData(apiId,pageNumber,name) {
     if(name !=null && name != ""){
        tempName = '&search.name='+name;
     }
-    mui.ajax(root + '/game/getCasinoGameByApiId.html?search.apiId='+apiId+'&search.apiTypeId=2&paging.pageNumber='+pageNumber + tempName, {
-        type: 'GET',
-        headers: {
+    var options = {
+        url:root + '/game/getCasinoGameByApiId.html?search.apiId='+apiId+'&search.apiTypeId=2&paging.pageNumber='+pageNumber + tempName,
+        type:'GET',
+        headers:{
             'Content-Type': 'application/json',
             'Soul-Requested-With': 'XMLHttpRequest'
         },
-        success: function (data) {
+        dataType:'html',
+        success:function(data){
             setTimeout(function() {
                 $("#api").attr("pageNumber",pageNumber);
                 $(".casino-list .mui-row").append(data);
             }, 1000);
         }
-    });
+    };
+    muiAjax(options);
 }

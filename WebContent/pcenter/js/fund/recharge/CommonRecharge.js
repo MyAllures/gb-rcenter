@@ -1,8 +1,8 @@
 /**
  * 存款公共js
  */
-define(['common/BasePage'], function (BasePage) {
-    return BasePage.extend({
+define(['common/BaseEditPage'], function (BaseEditPage) {
+    return BaseEditPage.extend({
         /**
          * 初始化及构造函数，在子类中采用
          * this._super();
@@ -16,8 +16,7 @@ define(['common/BasePage'], function (BasePage) {
          */
         bindEvent: function () {
             this._super();
-
-            $(".openPage").on("click", function () {
+            $(this.formSelector).on("click",".openPage",function() {
                 var iWidth = 850;                          //弹出窗口的宽度;
                 var iHeight = 850;                       //弹出窗口的高度;
                 //获得窗口的垂直位置

@@ -3,34 +3,14 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
     return PlayWay.extend({
         _this: null,
         init: function () {
+            this.showTable(this.getSecondText(),"传统玩法-组选六",$("#gfwfBetCode").val(),$("#zuxuanliu"),"ssc_zuxuanliu");
             this._super();
             _this = this;
-
         },
 
-        showTable : function(){
-            var betCode=$("#gfwfBetCode").val();
-            $("a[data-code='ssc_zuxuanliu']").addClass("mui-active");
-            $("div.s-menu.second").hide();
-            $("#zuxuanliu").show();
-            $("span.x_1.gfwf-tit").text("组选六");
-            $(".s-title.title1 span").text("组选六");
-            $(".s-title.title2 span").text(betCode);
-            $("#toobarTitle").text("传统玩法-组选六");
-            if (this.os == 'app_android' && isLotterySite == 'true') {
-                window.gamebox.setTitle('传统玩法-组选六');
-            }
-            if(betCode =="ssc_zuxuanliu"){
-                $("a[data-code='前三组选六']").addClass("mui-active");
-            }else{
-                $("#zuxuanliu a").removeClass("mui-active");
-                $("a[data-code='"+betCode+"']").addClass("mui-active");
-            }
-            $(".x_3.gfwf-playName").text(betCode)
+        getSecondText:function () {
+            return $("div#zuxuanliu a.mui-active").attr("data-code")==undefined?"前三组选六":$("div#zuxuanliu a.mui-active").attr("data-code");
         },
-
-
-
 
         bindButtonEvents: function () {
             var _this=this;

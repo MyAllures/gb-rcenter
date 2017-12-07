@@ -348,10 +348,16 @@ function containtArr(newArr,item){
         var b=[];
         a.push(newArr[j].charAt(0));
         a.push(newArr[j].charAt(1));
+        a.push(newArr[j].charAt(2));
+        a.push(newArr[j].charAt(3));
+        a.push(newArr[j].charAt(4));
 
 
         b.push(item.charAt(0));
         b.push(item.charAt(1));
+        b.push(item.charAt(2));
+        b.push(item.charAt(3));
+        b.push(item.charAt(4));
 
         if (item.length==3){
             a.push(newArr[j].charAt(2));

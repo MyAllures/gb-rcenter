@@ -1,8 +1,8 @@
 /**
  * 电子支付第二步-回执信息
  */
-define(['common/BaseEditPage'], function (BaseEditPage) {
-    return BaseEditPage.extend({
+define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
+    return CommonRecharge.extend({
         /**
          * 初始化及构造函数，在子类中采用
          * this._super();
@@ -29,33 +29,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         bindEvent: function () {
             this._super();
         },
-        /**
-         * 立即存款
-         * @param e
-         * @param option
-         */
-        /*submit: function (e, option) {
-            window.top.topPage.ajax({
-                url: root + "/fund/playerRecharge/atmCounterSubmit.html",
-                data: this.getCurrentFormData(e),
-                dataType: 'json',
-                type: 'post',
-                success: function (data) {
-                    var state = data.state;
-                    if (state == true) {
-                        var btnOption = {};
-                        btnOption.text = window.top.message.fund_auto['提交存款订单'];
-                        btnOption.target = root + "/fund/playerRecharge/submitSuccess.html";
-                        btnOption.callback = "back";
-                        window.top.topPage.doDialog(e, btnOption);
-                    } else {
-                        option.callback = "back";
-                        e.page.showPopover(e, option, 'danger', data.msg, true);
-                    }
-                    $(e.currentTarget).unlock();
-                }
-            })
-        },*/
         /**
          * 支付后回调
          * @param e

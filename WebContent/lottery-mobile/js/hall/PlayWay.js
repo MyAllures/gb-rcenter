@@ -19,7 +19,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
         betForm:null,
         init: function (formSelector) {
             this._super(formSelector || ".mui-off-canvas-wrap");
-            this.showTable();
             //获取赔率xy
             this.getOdds();
             //获取赔率gf
@@ -600,7 +599,23 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             return temp;
         },
         //头部样式
-        showTable : function (){
+        showTable : function (text,titleText,secondCode,$showId,topCode){
+            if($showId !=""){
+                $("div.s-menu.second").hide();
+                $showId.show();
+            }
+            if(topCode !=""){
+                $(".s-title.title1 span").text($("a[data-code='"+topCode+"'] span").text());
+            }else{
+                $(".s-title.title1 span").text(text);
+            }
+            $("#toobarTitle").text(titleText);
+            if (this.os == 'app_android' && isLotterySite == 'true') {
+                window.gamebox.setTitle(titleText);
+            }
+            $(".s-title.title2 span").text(text)
+            $("a[data-code='"+secondCode+"']").addClass("mui-active");
+            $("a[data-code='"+secondCode+"'] span").text(text);
         },
 
         //选择大玩法，默认给一个小玩法。

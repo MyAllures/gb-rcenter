@@ -507,6 +507,8 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             $('#operator').attr("name", "search.username").val('');
             $("input[name='search.createTimeBegin']").val('');
             $("input[name='search.createTimeEnd']").val('');
+            $("input[name='search.bankcardNumber']").val('');
+            $("input[name='search.realName']").val('');
             var fundType = $("input[name='search.fundTypes']").siblings('ul').find("a[key='search.walletBalance']").text();
             $("input[name='search.fundTypes']").siblings("button").find("span[prompt='prompt']").text(fundType);
             $("#operator3").val('');
@@ -518,7 +520,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             $("input[name='search.loginTimeEnd']").val('');
             $("input[name='search.rechargeTotalBegin']").val('');
             $("input[name='search.rechargeTotalEnd']").val('');
-            var message = $("input[name='search.messages']").siblings('ul').find("a[key='search.realName']").text();
+            var message = $("input[name='search.messages']").siblings('ul').find("a[key='search.remarks']").text();
             $("input[name='search.messages']").siblings('button').find("span[prompt='prompt']").text(message);
             $("#operator2").val('');
             $("input[name='search.lastLoginIpv4']").val('');
