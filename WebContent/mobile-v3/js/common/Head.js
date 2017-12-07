@@ -28,7 +28,7 @@ function headInfo() {
                 $("#notLogin").show();
                 $("div.login").hide();
                 $("div.un-login").show();
-                $("#login-info").addClass("mui-hide");
+                $("#login-info").addClass("mui-hidden");
                 isLogin = false;
                 sessionStorage.setItem("isLogin", isLogin);
             } else {
@@ -43,7 +43,7 @@ function headInfo() {
                 $("div.login").show();
                 $("div.un-login").hide();
                 //右上角显示用户信息
-                $("#login-info").removeClass("mui-hide");
+                $("#login-info").removeClass("mui-hidden");
                 isLogin = true;
                 sessionStorage.setItem("isLogin", isLogin);
                 getSiteApi();
@@ -108,7 +108,6 @@ function refreshApi() {
     $('.bar-wallet').html(loading);
     $('.bar-asset').html(loading);
     $('table#api-balance').find('td._money').html(loading);
-
     var options = {
         url: root + '/api/refreshApi.html',
         success: function (data) {
