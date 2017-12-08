@@ -75,6 +75,11 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                         var profit = data.profit;
                         var profitLimit = data.profitLimit;
                         var time = data.leftTime;
+                        var countDown = window.top.message.setting_auto['倒计时'];
+                        var hours = window.top.message.setting_auto['小时'];
+                        var minutes= window.top.message.setting_auto['分'];
+                        var tips = window.top.message.setting_auto['tips'];
+                        var times = window.top.message.setting_auto['times'];
                         sessionStorage.setItem("minutes",time);
                         var percent = 0;
                         if (profitLimit > 0){
