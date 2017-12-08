@@ -124,6 +124,7 @@ define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
          * 前三直选-直选单式
          */
         content_qszxds:function () {
+
             var textStr = $(".recl-1003 .content_jiang .content_tex").val();
             var newArr = [];
             var errorArr = [];
@@ -136,7 +137,11 @@ define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
             textStr = $.trim(textStr.replace(/\s/g,""));
             var arr_new = textStr.split(',');
             for (var i = 0; i < arr_new.length; i++) {
-                if (arr_new[i].toString().length > 0 && arr_new[i].toString().length == 6) {
+                var arrN = arr_new[i].toString();
+                var oneN = arrN.substr(0, 2);
+                var twoN = arrN.substr(2, 2);
+                var threeN = arrN.substr(4, 2);
+                if (arr_new[i].toString().length > 0 && arr_new[i].toString().length == 6 && (parseInt(oneN)>0 && parseInt(oneN)<11 && parseInt(twoN)>0 && parseInt(twoN)<11)&& parseInt(threeN)>0 && parseInt(threeN)<11) {
                     newArr.push(arr_new[i]);
                 } else {
                     if (arr_new[i] != '') {
@@ -144,7 +149,9 @@ define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
                     }
                 }
             }
+
             for (var n = 0; n < newArr.length; n++) {
+
                 var temp = newArr[n].toString();
                 var oneStr = temp.substr(0, 2);
                 var twoStr = temp.substr(2, 2);
@@ -159,7 +166,6 @@ define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
                     }
                 }
             }
-
             if (tempArr.length <= 0) {
                 return 0;
             }
@@ -199,7 +205,11 @@ define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
             textStr = $.trim(textStr.replace(/\s/g,""));
             var arr_new = textStr.split(',');
             for (var i = 0; i < arr_new.length; i++) {
-                if (arr_new[i].toString().length > 0 && arr_new[i].toString().length == 6) {
+                var arrN = arr_new[i].toString();
+                var oneN = arrN.substr(0, 2);
+                var twoN = arrN.substr(2, 2);
+                var threeN = arrN.substr(4, 2);
+                if (arr_new[i].toString().length > 0 && arr_new[i].toString().length == 6 && (parseInt(oneN)>0 && parseInt(oneN)<11 && parseInt(twoN)>0 && parseInt(twoN)<11)&& parseInt(threeN)>0 && parseInt(threeN)<11) {
                     newArr.push(arr_new[i]);
                 }
             }

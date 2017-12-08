@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/index.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/loading.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/hongbao.css" />    
 </head>
@@ -83,6 +84,16 @@
 		    <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
 		    <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
 		  </div>
+		  <!--轮播图加载时的样式-->
+		  <div class="banner-loading">
+		  	<div class="loader api-loader">
+				<div class="loader-inner ball-pulse api-div">
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+		  </div>
 		</section>
 		<!--公告-->
 		<section class="notice">
@@ -121,9 +132,19 @@
 			</div>
 		</section>
 		<!--api九宫格-->
-		<section class="api-grid">
+		<section class="api-grid">  
 			<ul class="mui-table-view mui-grid-view mui-grid-9 active" data-list="live">
-				<div class="deficiency-nots">没有找到符合的游戏</div>
+				<div class="deficiency-nots">没有找到符合的游戏</div>				
+				  <!--api加载时的样式-->
+				  <div class="api-loading">
+				  	<div class="loader api-loader">
+						<div class="loader-inner ball-pulse api-div">
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
+					</div>
+				  </div>
 				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 	            	<a href="#">
 	                    <span class="api-item api-icon-1-10"></span>  <!--根据class的不同来显示api图标-->
@@ -439,6 +460,9 @@
 			<!--关闭红包继续抽奖按钮-->
 			<a href="javascript:" id="btn-ok" class="btn-ok"></a>
     	</div>
+    </div>
+    <div class="loading-wrap">
+    	<span class="loading-img loading-entirety"><img src="../../mobile-v3/images/oval.svg" alt></span>
     </div>
     <!--红包html结束-->	
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>

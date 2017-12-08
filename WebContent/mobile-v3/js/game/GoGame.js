@@ -5,6 +5,7 @@ var gameCode;
 var status;
 var isAutoPay;
 var gameId;
+var isLogin = sessionStorage.getItem("isLogin");
 
 /*点击游戏（电子类、彩票类）进入*/
 function goGame(obj,options){
@@ -73,7 +74,7 @@ function goApiGame(obj,options){
                 } else if ((isAutoPay == 'true' && apiTypeId != "2")) {
                     //判断是否免转，如果免转,则直接登陆游戏，不跳到游戏中转页面
                     showGameLoading();
-                    autoLoginAndTransfer(obj);
+                    autoLoginAndTransfer();
                 } else {
                     goToUrl(root + "/api/detail.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
                 }
@@ -100,6 +101,11 @@ function gameMaintaing() {
 }
 
 function apiLogin(obj) {
+    if(obj != null){
+        apiId = obj.apiId;
+        apiTypeId = obj.apiTypeId;
+        gameCode = obj.gameCode;
+    }
     /*var _this = this;
     var apiId = obj.apiId;
     var gameId = obj.gameId;
@@ -202,7 +208,8 @@ function autoLoginAndTransfer() {
                             if (os == 'android' || os == 'app_ios') {
                                 gotoGame(result.defaultLink, apiId);
                             } else {
-                                newWindow.location.href = result.defaultLink;
+                                //newWindow.location.href = result.defaultLink;
+                                goToUrl(result.defaultLink);
                             }
                         } else {
                             if (result.defaultLink) {
@@ -327,7 +334,7 @@ function gotoGame (url, apiId) {
                 url = url + "?ad=" + apiId
             }
         }
-        window.gamebox.gotoGame(url);
+        gotoGame(url);
     } else {
         goToUrl(url);
     }
