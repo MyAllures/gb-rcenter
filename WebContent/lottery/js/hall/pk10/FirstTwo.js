@@ -141,7 +141,10 @@ define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
         textStr = $.trim(textStr.replace(/\s/g,""));
         var arr_new = textStr.split(',');
         for (var i = 0; i < arr_new.length; i++) {
-            if (arr_new[i].toString().length > 0 && arr_new[i].toString().length == 4) {
+            var arrN = arr_new[i].toString();
+            var oneN = arrN.substr(0, 2);
+            var twoN = arrN.substr(2, 2);
+            if (arr_new[i].toString().length > 0 && arr_new[i].toString().length == 4 && parseInt(oneN) > 0 && parseInt(oneN) < 11 && parseInt(twoN)>0 && parseInt(twoN) < 11) {
                 newArr.push(arr_new[i]);
             } else {
                 if (arr_new[i] != '') {
@@ -203,7 +206,10 @@ define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
             textStr = $.trim(textStr.replace(/\s/g,""));
             var arr_new = textStr.split(',');
             for (var i = 0; i < arr_new.length; i++) {
-                if (arr_new[i].toString().length > 0 && arr_new[i].toString().length == 4) {
+                var arrN = arr_new[i].toString();
+                var oneN = arrN.substr(0, 2);
+                var twoN = arrN.substr(2, 2);
+                if (arr_new[i].toString().length > 0 && arr_new[i].toString().length == 4 && parseInt(oneN) > 0 && parseInt(oneN) < 11 && parseInt(twoN)>0 && parseInt(twoN) < 11) {
                     newArr.push(arr_new[i]);
                 }
             }
