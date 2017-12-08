@@ -173,6 +173,7 @@ a.more-data{position:absolute;right:0;top:-3px;z-index:9;padding:7px;border:1px 
 .table tr.tab-detail.shut{background:#e6f3fc;}
 .table tr.tab-detail.shut a.view img{transform:rotate(7deg);-ms-transform:rotate(180deg);-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg);-o-transform:rotate(180deg);}
 .table tr.tab-detail.shut td{border-bottom:1px solid #e6f3fc;}
+.table tr.tab-detail td{max-width: 260px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
 .table tr.open{background:#e6f3fc;}
 .table tr.open:nth-of-type(odd){background:#e6f3fc;}
 .table tr.open:hover{background:#e6f3fc;}
