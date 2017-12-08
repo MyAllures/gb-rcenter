@@ -200,7 +200,8 @@ function muiAjax(options) {
  * 请求加载loading
  */
 function showLoading() {
-
+    var loading = '<div class="loading-wrap"><span class="loading-img loading-entirety"><img src="' + resRoot + '/images/oval.svg"></span></div>';
+    $("body").append(loading);
 }
 
 /**
@@ -226,7 +227,9 @@ function whatOs() {
  * 关闭加载loading
  */
 function hideLoading() {
-
+    if ($(".loading-wrap").length > 0) {
+        $(".loading-wrap").remove();
+    }
 }
 
 /**
@@ -256,6 +259,9 @@ function goToUrl(url) {
 }
 
 function openWindow(url) {
+    //这里不用mui的waiting,是因为在h5情况下是直接设置window.top.location.href，并没有执行waiting相关参数设置
+    //不写hideloading方法是因为打开新的页面原来的loading效果会自动消失
+    showLoading();
     mui.openWindow({
         url: url,
         id: url,
@@ -268,7 +274,7 @@ function openWindow(url) {
             loading: showLoading,
             close: hideLoading
         }
-    })
+    });
 }
 
 /**
@@ -292,7 +298,7 @@ function bindButtonEvent(selector) {
         var options = eval("(" + $(this).attr('data-rel') + ")");
         var confirm = options.confirm;
         if (confirm) {
-            options.event = doEvent(this, options);
+            options.func = doEvent(this, options);
             showConfirmMsg(options, this);
         } else {
             doEvent(this, options);
@@ -400,14 +406,14 @@ function toast(msg) {
 
 /**
  * 确认弹窗
- * @param options {btnArray:按钮组合,confirm:确认提示信息,}
+ * @param options {btnArray:按钮组合,confirm:确认提示信息,func:确认信息后调用方法}
  * @param obj　target对象
  */
 function showConfirmMsg(options, obj) {
     var btnArray = options.btnArray || ['是', '否'];
     mui.confirm(options.confirm, options.title, btnArray, function (e) {
         if (e.index == 0) {
-            var func = options.event;
+            var func = options.func;
             if (func) {
                 applyFunction(func, options, obj);
             }
@@ -458,7 +464,7 @@ function logout(e, options) {
                 "Soul-Requested-With": "XMLHttpRequest"
             },
             success: function (data) {
-                if(data) {
+                if (data) {
                     loginOut();
                 }
             }
