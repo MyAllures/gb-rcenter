@@ -173,7 +173,7 @@ function muiAjax(options) {
         url = url + '?t=' + random;
     }
     //是否出现加载中样式
-    if (options.loading) {
+    if (options.loading == true) {
         showLoading();
         var complete = options.complete;
         options.complete = function () {
@@ -364,7 +364,7 @@ function applyFunction(func, options, obj) {
 function doAjax(obj, options) {
     var ajaxOption = {
         url: options.target,
-        loading: options.loading || true,
+        loading: options.loading || false,
         success: function (data) {
             if (data.msg) {
                 toast(data.msg);
