@@ -21,7 +21,7 @@ define(['moment'], function (moment) {
         displayName: "",
         dateTimeFromat: "",
         userTimeTimerId: null,
-        isLoad:false,
+        isLoad: false,
         /**
          * 初始化及构造函数，在子类中采用
          * this._super();
@@ -94,6 +94,7 @@ define(['moment'], function (moment) {
         },
 
         gotoUrl: function (url) {
+            var _this = this;
             var domain = window.location.origin + '/';
             if (url.indexOf("?") < 0) {
                 url = url + "?t=" + random;
@@ -110,8 +111,6 @@ define(['moment'], function (moment) {
                     gotoCustom(url);
                 }
             } else {
-                var loading = '<div class="loading-wrap"><span class="loading-img loading-entirety"><img src="' + resRoot + '/images/oval.svg"></span></div>';
-                $("body").append(loading);
                 mui.openWindow({
                     url: url,
                     id: url,
@@ -120,12 +119,28 @@ define(['moment'], function (moment) {
                     show: {autoShow: true},
                     waiting: {
                         autoShow: true,
-                        title: '正在加载...'
+                        title: '正在加载...',
+                        loading: _this.showPageLoading,
+                        close: _this.hidePageLoading
                     }
                 })
             }
         },
-
+        /**
+         * 展示页面加载loading效果
+         */
+        showPageLoading: function () {
+            var loading = '<div class="loading-wrap"><span class="loading-img loading-entirety"><img src="' + resRoot + '/images/oval.svg"></span></div>';
+            $("body").append(loading);
+        },
+        /**
+         * 隐藏页面loading效果
+         */
+        hidePageLoading:function() {
+            if ($(".loading-wrap").length > 0) {
+                $(".loading-wrap").remove();
+            }
+        },
         toLogin: function (url) {
             if (this.os == 'app_ios') {
                 gotoCustom("/login/commonLogin.html");
@@ -555,11 +570,11 @@ define(['moment'], function (moment) {
                 startTime = this.formatDateTime(new Date(startTime), format);
             } else if (dateValue == "7days") {
                 date.setDate(date.getDate() - 6);
-                startTime =  this.formatDateTime(date, format);
+                startTime = this.formatDateTime(date, format);
                 endTime = currentDate;
             } else if (dateValue == "30days") {
                 date.setDate(date.getDate() - 29);
-                startTime =this.formatDateTime(date, format);
+                startTime = this.formatDateTime(date, format);
                 endTime = currentDate;
             }
 
@@ -679,7 +694,7 @@ define(['moment'], function (moment) {
             var postData = {};
             postData.apiId = 22;
             var _this = this;
-            if(isLogin == 'false') {
+            if (isLogin == 'false') {
                 if (_this.os === 'app_ios') {
                     window.page.apiLogin.gotoGame(url, postData.apiId);
                 } else {
@@ -767,12 +782,12 @@ define(['moment'], function (moment) {
             }, 1000);
         },
         /** 抢红包 */
-        canShowLottery: function(id){
+        canShowLottery: function (id) {
             if (!isLogin || isLogin === "false") {
-                window.location.href="/login/commonLogin.html";
+                window.location.href = "/login/commonLogin.html";
                 return;
             }
-            if (!id){
+            if (!id) {
                 $(".hongbao").removeClass('disabled');
                 $("#tip-msgs").html('红包活动已经结束!');
                 $(".hongbao-time-txt").hide();
@@ -782,56 +797,56 @@ define(['moment'], function (moment) {
             $("#hongbao").addClass('hide_hongbao');
             $("#hongbao_detail").fadeIn(1000);
             mui.ajax({
-                url:"/ntl/activity/countDrawTimes.html",
+                url: "/ntl/activity/countDrawTimes.html",
                 type: "POST",
                 dataType: "json",
-                data:{activityMessageId:id},
-                success: function(data){
+                data: {activityMessageId: id},
+                success: function (data) {
                     console.log(data.nextLotteryTime);
                     console.log(data.drawTimes);
-                    if(data.drawTimes&&data.drawTimes>0){
+                    if (data.drawTimes && data.drawTimes > 0) {
                         $(".hongbao").removeClass('disabled');
                         $("#tip-msgs").show();
-                        $("#tip-msgs").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">'+data.drawTimes+'</span>次抽奖机会');
+                        $("#tip-msgs").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">' + data.drawTimes + '</span>次抽奖机会');
                         $(".hongbao-time-txt").hide();
                         $(".hongbao-time").hide();
-                    }else if(data.drawTimes==0){
-                        if(data.isEnd=="false"){
+                    } else if (data.drawTimes == 0) {
+                        if (data.isEnd == "false") {
                             $(".hongbao").addClass('disabled');
                             $("#tip-msgs").show();
                             $("#tip-msgs").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">0</span>次抽奖机会');
                             $("#ramain-count").text(data.drawTimes);
-                        }else{
+                        } else {
                             $(".hongbao").addClass('disabled');
                             $(".icon-open").show();
                             $("#tip-msgs").html('红包活动已经结束!');
                             $("#btn-rule").show();
                         }
-                        if(data.nextLotteryTime!=""){
+                        if (data.nextLotteryTime != "") {
                             $(".hongbao-time-txt").show();
                             $(".hongbao-time").show();
                             $(".hongbao-time").text(data.nextLotteryTime);
-                        }else{
+                        } else {
                             $(".hongbao-time-txt").hide();
                             $(".hongbao-time").hide();
                         }
 
-                    }else if(data.drawTimes==-1){
+                    } else if (data.drawTimes == -1) {
                         $(".hongbao").addClass('disabled');
                         $("#tip-msgs").show();
                         $("#tip-msgs").html('红包活动已经结束!');
                         $(".hongbao-time-txt").hide();
                         $(".hongbao-time").hide();
                         return;
-                    }else if(data.drawTimes==-5){
+                    } else if (data.drawTimes == -5) {
                         $(".hongbao").addClass('disabled');
                         $("#tip-msgs").show();
                         $("#tip-msgs").html('本次红包已经抢光了');
-                        if(data.nextLotteryTime!=""){
+                        if (data.nextLotteryTime != "") {
                             $(".hongbao-time-txt").show();
                             $(".hongbao-time").show();
                             $(".hongbao-time").text(data.nextLotteryTime);
-                        }else{
+                        } else {
                             $(".hongbao-time-txt").hide();
                             $(".hongbao-time").hide();
                         }
