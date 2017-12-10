@@ -200,15 +200,6 @@ header.mui-bar-nav .mui-icon-bars {
 .mui-bar-tab .mui-active .mui-icon.icon-home:after {
   background: url(images/footer-nav-icon.png) no-repeat -83px -43px/auto 80px;
 }
-.mui-hide-bar {
-  width: 100%;
-  height: 44px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-  z-index: 999;
-}
 
 /* mui-off-canvas-left */
 .mui-off-canvas-left {
@@ -526,41 +517,195 @@ header.mui-bar-nav .mui-icon-bars {
   color: #333;
 }
 
-/* go game */
-.game-mask {
-  position: fixed;
-  z-index: 998;
-  top: 0;
-  left: 0;
+/* content style */
+.content-without-notice {
+  padding-top: 44px !important;
+}
+
+.content-without-footer {
+  padding-bottom: 0 !important;
+}
+
+/* promo-detail */
+.promo-detail-content .gb-imgs > .ct {
+  padding: 10px;
+}
+.promo-detail-content .gb-imgs > .ct ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.promo-detail-content .gb-imgs > .ct ul li > a {
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, .5);
-  display: none;
+  line-height: 0;
+  display: inline-block;
 }
-.game-mask .game-loading {
-  width: 200px;
-  height: 100px;
-  left: 50%;
-  margin-left: -100px;
-  border-radius: 9px;
-  background: rgba(255, 255, 255, 0.9);
-  border:1px solid #353741;
-  position: fixed;
-  z-index: 999;
-  padding: 10px 20px;
-}
-.game-mask .game-loading .loader {
-  min-height: 24px;
-  margin-top: 18px;
-}
-.game-mask .game-loading .loader-tip {
-  font-size: 12px;
+.promo-detail-content .gb-imgs > .ct ul li > a img {
   width: 100%;
+}
+.promo-detail-content .gb-imgs > .ct ul li > .ct {
+  background-color: #fff;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.promo-detail-content .gb-imgs > .ct ul li > .ct h5 {
+  font-size: 14px;
+  font-weight: normal;
+  color: #8f8f94;
+  position: relative;
   text-align: center;
-  color: #807d7d;
 }
-.game-mask .game-loading .ball-pulse > div {
-  background: #807d7d;
+.promo-detail-content .gb-imgs > .ct ul li > .ct h5 > i {
+  display: block;
+  border-bottom: 1px dashed #e2e2e2;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+}
+.promo-detail-content .gb-imgs > .ct ul li > .ct h5 span {
+  display: inline-block;
+  height: 23px;
+  padding: 0 7px;
+  border-radius: 3px;
+  line-height: 23px;
+  color: #fff;
+  background-color: #1766bb;
+  font-size: 12px;
+  position: relative;
+  z-index: 1;
+}
+.promo-detail-content .gb-imgs > .ct ul li > .ct p {
+  padding: 5px 0;
+  line-height: 18px;
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+.promo-detail-content .gb-form-foot {
+  padding: 10px;
+}
+.promo-detail-content .gb-form-foot .submit {
+  border: 1px solid #1766bb;
+  background-color: #1766bb;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+/* promo-records */
+.promo-record-content .promo-records-warp {
+  padding: 0 10px;
+  margin-top: 10px;
+  height: 85px;
+}
+.promo-record-content .promo-records-warp i {
+  display: block;
+  width: 4px;
+  height: 85px;
+  position: absolute;
+  top: 0;
+  left: -3px;
+  background-repeat: repeat-y;
+  background: url(../images/pro-bg.png);
+}
+.promo-record-content .promo-records-warp .pro-bg-left {
+  background-position: 0 0;
+}
+.promo-record-content .promo-records-warp .pro-bg-right {
+  background-position: right top;
+  left: -1px;
+}
+.promo-record-content .promo-box-left {
+  background: #fff;
+  padding: 10px 10px;
+  height: 85px;
+  width: 68%;
+  float: left;
+  position: relative;
+}
+.promo-record-content .promo-box-left h5 {
+  font-size: 12px;
+  color: #333;
+  line-height: 15px;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-top: 0;
+  margin-bottom: 7px;
+  min-height: 45px;
+}
+.promo-record-content .promo-box-left .text {
+  font-size: 10px !important;
+  color: #999;
+  line-height: 16px;
+}
+.promo-record-content .promo-box-left .text .sum {
+  float: left;
+}
+.promo-record-content .promo-box-left .text .time {
+  display: inline-block;
+  float: right;
+  margin-right: 20px;
+}
+.promo-record-content .promo-box-right {
+  border-radius: 4px;
+  position: relative;
+  padding: 10px 10px;
+  color: #fff;
+  line-height: 16px;
+  height: 85px;
+  width: 32%;
+  float: left;
+}
+.promo-record-content .promo-box-right.promo-gray {
+  background: #7b7b7b;
+}
+.promo-record-content .promo-box-right.promo-blue {
+  background: #3488e7;
+}
+.promo-record-content .promo-box-right.promo-green {
+  background: #1fbd66;
+}
+.promo-record-content .promo-box-right.promo-orange {
+  background: #f07e11;
+}
+.promo-record-content .promo-box-right span {
+  display: block;
+  font-size: 12px;
+  text-align: center;
+}
+.promo-record-content .promo-box-right .num {
+  font-size: 20px;
+  margin-top: 15px;
+}
+.promo-record-content .promo-box-right .annotation {
+  line-height: 16px;
+  margin-top: 10px;
+  font-size: 10px;
+}
+.promo-record-content .promo-box-right .round {
+  position: absolute;
+  z-index: 999;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: #f2f2f2;
+}
+.promo-record-content .promo-box-right .radio-up {
+  left: -3px;
+  top: -5px;
+}
+.promo-record-content .promo-box-right .radio-dwon {
+  left: -3px;
+  bottom: -5px;
+}
+.promo-record-content .org {
+  color: #f1aa4d;
 }
 
 /*# sourceMappingURL=common.css.map */

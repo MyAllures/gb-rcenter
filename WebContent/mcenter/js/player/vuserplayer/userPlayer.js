@@ -276,7 +276,7 @@ define(['common/BaseEditPage','mailAutoComplete'], function (BaseEditPage) {
         },
         toPlayerDetail: function () {
             var playerId = $("[name='result.id']").val();
-            var url = root + "/player/playerDetail.html?search.id="+playerId;
+            var url = root + "/player/playerView.html?search.id="+playerId;
             window.top.topPage.ajax({
                 url: url,
                 success: function (data) {

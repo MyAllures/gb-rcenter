@@ -27,29 +27,33 @@ $(function () {
  */
 function headInfo() {
     var options = {
-        url: root + '/userInfo.html',
+        url: root + '/sysUser.html',
         success: function (data) {
-            if (data.isLogin == true) {
-                $("#notLogin").hide();
-                $(".user_name").text(data.name);
-                $(".bar-asset").text(data.asset);
-                $(".money").text(data.asset);
-                //左侧菜单用户信息显示
-                $("div.login p").text(data.name);
-                $("div.login").show();
-                $("div.un-login").hide();
-                //右上角显示用户信息
-                $("#login-info").show();
-                isLogin = true;
-                getSiteApi();
-                //绑定动态增加的按钮事件
-                bindButtonEvent('.login-info .ex');
-            } else {
+            if (data == 'unLogin'){
                 $("#notLogin").show();
                 $("div.login").hide();
                 $("div.un-login").show();
                 $("#login-info").hide();
                 isLogin = false;
+                sessionStorage.setItem("isLogin",isLogin);
+            }else{
+                $("#notLogin").hide();
+                $(".user_name").text(data.username);
+                //设置头像
+                if(!data.avatarUrl){
+                    $('#avatarImg').attr('src', resRoot + "/images/avatar.png");
+                }
+                //左侧菜单用户信息显示
+                $("div.login p").text(data.username);
+                $("div.login").show();
+                $("div.un-login").hide();
+                //右上角显示用户信息
+                $("#login-info").show();
+                isLogin = true;
+                sessionStorage.setItem("isLogin",isLogin);
+                getSiteApi();
+                //绑定动态增加的按钮事件
+                bindButtonEvent('.login-info .ex');
             }
         }
     };
@@ -80,6 +84,7 @@ function getSiteApi() {
             if(data) {
                 var d = eval(data);
                 //$('#bar-username').html(d.username);
+                $(".money").text(d.playerAssets);
                 $('.bar-wallet').html(d.currSign + d.playerWallet);
                 $('.bar-asset').html(d.currSign + d.playerAssets);
                 var apis = d.apis;
@@ -184,7 +189,7 @@ function recoveryCallBack() {
         var options={
             url:root+"/transfer/auto/getApiBalances.html",
             success:function(data){
-                var d = eval('(' + data + ')');
+                var d = eval(data);
                 $('.bar-wallet').html(d.currSign + d.playerWallet);
                 $('.bar-asset').html(d.currSign + d.playerAssets);
 

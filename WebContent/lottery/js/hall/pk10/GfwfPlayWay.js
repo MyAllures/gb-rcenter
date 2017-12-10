@@ -76,17 +76,43 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                         newArr.push(arr_new[i]);
                     }
                 }
-                var playcode = _this.getPlayCode();
-                repeatArr = newArr.duplicateNew().uniqueArr();
+                repeatArr = newArr.duplicateNewPk10().uniqueArr();
                 tempArr = newArr.uniqueArr();
-                // }
                 if (repeatArr.length > 0) {
                     _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
                     $(".content_jiang .content_tex").val(tempArr.join(","));
                 }
             }
 
-        }
+        },
+
+        teShuHaoClick : function () {
+            var _this=this;
+
+            $("span.gj").click(function () {
+                var text=$(this).children('i').text();
+                $("span.yj."+text).removeClass('acti');
+                $("span.jj."+text).removeClass('acti');
+                // 渲染中部注数，赔率，返点等等
+                _this.renderZhushu();
+            });
+
+            $("span.yj").click(function () {
+                var text=$(this).children('i').text();
+                $("span.gj."+text).removeClass('acti');
+                $("span.jj."+text).removeClass('acti');
+                // 渲染中部注数，赔率，返点等等
+                _this.renderZhushu();
+            });
+
+            $("span.jj").click(function () {
+                var text=$(this).children('i').text();
+                $("span.gj."+text).removeClass('acti');
+                $("span.yj."+text).removeClass('acti');
+                // 渲染中部注数，赔率，返点等等
+                _this.renderZhushu();
+            });
+        },
 
     })
 });

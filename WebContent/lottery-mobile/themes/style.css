@@ -343,7 +343,7 @@ i, var { font-style: normal; }
 .mui-off-canvas-wrap.mui-active .mui-off-canvas-backdrop {box-shadow: none;}
 .lottery-kind-list{margin-top:10px;margin-bottom: 20px;}
 .aside-right-menu{margin-top:10px;margin-bottom: 20px;}
-
+.mui-off-canvas-right.diy-screen-aside .mui-input-row label{text-align: right; padding: 0 10px 0 0; line-height: 40px;}
 /*侧滑彩种列表*/
 .lottery-kind-list .mui-table-view-cell { padding: 0.55rem 0.75rem; }
 .lottery-kind-list .lottery-ico { display: inline-block; vertical-align: middle; width: 1.8rem; height: 1.8rem; border-radius: 0.65rem; }
@@ -438,7 +438,7 @@ i, var { font-style: normal; }
 /*彩票开奖号码*/
 .lottery-ball { display: inline-block; height: 1rem; line-height: 1rem; background: #e00404; color: #fff; text-align: center; width: 1rem; border-radius: 1.1rem; margin-left: 0.1rem; }
 .lottery-pull {display: inline-block;width: 0.6rem;margin-left: 0.2rem;text-align: center;}
-.lottery-block { display: inline-block; height: 1rem; line-height: 1rem; border: 1px solid #ddd; background-color: #ddd; text-align: center; min-width: 1rem; width: auto; margin-left: 0.2rem; }
+.lottery-block { display: inline-block; height: 1rem; line-height: 1rem; border: 1px solid #ddd; background-color: #ddd; text-align: center; min-width: 1rem; width: auto; margin-left: 0.1rem; }
 .inline-list-1 { height: 1rem; line-height: 1rem; display: inline-block; word-spacing: -3px;}
 .inline-list-2 { height: 1rem; line-height: 1rem; display: block; word-spacing: -3px;}
 .inline-list-2.title { height: 2.1rem; line-height: 2.1rem; }
@@ -587,7 +587,7 @@ a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 .draw-list-a .bet-list-time { display: inline-block; vertical-align: middle; }
 .draw-list-a .bet-list-right .bet-result { position: absolute; right: 1.5rem; }
 .mui-bar.bet-bottom { background: #ddd; -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0); box-shadow: 0 0 1px rgba(0, 0, 0, 0); }
-.mui-bar-tab .bet-bottom-statistics { display: table-cell; text-align: center; vertical-align: middle; font-size: 0.5rem; }
+.mui-bar-tab .bet-bottom-statistics { display: table-cell; text-align: center; vertical-align: middle; font-size: 0.5rem; word-break: keep-all;}
 
 .zdjl-list .mui-table-view-cell span{word-break: break-word;}
 
@@ -869,7 +869,7 @@ a.popup-screen-btn:visited{
     border-radius: 0;
     padding: 0 0.5rem;
     text-align: left;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     color: #fff;
 }
 .popup-screen-btn font{display: inline-block; vertical-align: bottom; color: #ffa86f; margin-left: 5px; max-width: 100px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
@@ -1246,6 +1246,7 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .mui-off-canvas-right .p-1r .mui-btn-danger{padding:.5rem;border-radius:.3rem;color:#fff;border:1px solid #0087d5;background:#0087d5;background-size:1.5rem;}
 
 
+
 /*左侧菜单调整*/
 .mui-off-canvas-left{width:12rem;padding-top:10px;}
 .lottery-kind-list{margin-top:10px;}
@@ -1535,10 +1536,10 @@ div.menu-popover {width: 120px;}
     color: #fff;
 }
 .waybill-wrap table td:nth-child(odd) i{
-    background: #2a85e2;
+	background: #e23b2a;
 }
 .waybill-wrap table td:nth-child(even) i{
-    background: #e23b2a;
+    background: #2a85e2;
 }
 
 /*走势图*/

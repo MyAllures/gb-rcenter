@@ -214,7 +214,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                         "textStatus": textStatus,
                         "errorThrown": errorThrown
                     });
-                    layer.msg('下注失败：请求异常', {icon: 5});
+                    layer.msg('下注失败：请先登录', {icon: 5});
                 }
             });
         },
@@ -447,16 +447,16 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
 
                 // 渲染界面中赔率部分
                 if (plAndMaxFd instanceof Array) {  // 多赔率
-                    var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd[0].baseNum));
+                    var pl = _this.getArgNum((maxPlayPl - fandianBili * plAndMaxFd[0].baseNum/100));
                     $("#jiangjin-change").data("value", pl);
                     var strArr = [];
                     $.each(plAndMaxFd, function (index, value) {
-                        strArr.push(_this.getArgNum((value.odd - fandianBili/100 * value.baseNum)));
+                        strArr.push(_this.getArgNum((value.odd - fandianBili* value.baseNum/100 )));
                     });
                     $("#jiangjin-change").html(strArr.join('|'));
                     $("#jiangjin-change").data("plStr", strArr.join('|'));
                 } else {
-                    var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd.baseNum));
+                    var pl = _this.getArgNum((maxPlayPl - fandianBili * plAndMaxFd.baseNum/100));
                     $("#jiangjin-change").data("value", pl);
                     $("#jiangjin-change").html(pl);
                     $("#jiangjin-change").data("plStr",pl);
@@ -484,16 +484,16 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
 
                     // 渲染界面中赔率部分
                     if (plAndMaxFd instanceof Array) {  // 多赔率
-                        var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd[0].baseNum));
+                        var pl = _this.getArgNum((maxPlayPl - fandianBili * plAndMaxFd[0].baseNum/100));
                         $("#jiangjin-change").data("value", pl);
                         var strArr = [];
                         $.each(plAndMaxFd, function (index, value) {
-                            strArr.push(_this.getArgNum((value.odd - fandianBili/100 * value.baseNum)));
+                            strArr.push(_this.getArgNum((value.odd - fandianBili* value.baseNum/100)));
                         });
                         $("#jiangjin-change").html(strArr.join('|'));
                         $("#jiangjin-change").data("plStr", strArr.join('|'));
                     } else {
-                        var pl = _this.getArgNum((maxPlayPl - fandianBili/100 * plAndMaxFd.baseNum));
+                        var pl = _this.getArgNum((maxPlayPl - fandianBili* plAndMaxFd.baseNum/100 ));
                         $("#jiangjin-change").data("value", pl);
                         $("#jiangjin-change").html(pl);
                         $("#jiangjin-change").data("plStr",pl);

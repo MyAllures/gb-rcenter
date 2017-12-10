@@ -69,12 +69,13 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 success: function (data) {
                     $(".bet-table").html(data);
                     if(betCode=="pl3_yixing_dwd"){
+                        $("#gfwfBetCode").val("pl3_yixing_dwd");
                         _this.backGuanfangwanfa();
                     }
                     $("#gfwfBetCode").val(betCode);
                     if(!_this.isOpen){
-                        _this.closeHandicapGF();//官方
                         _this.closeHandicapXY();//信用
+                        _this.closeHandicapGF();//官方
                     }
 
                 }
@@ -256,6 +257,27 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 this.closeHandicapXY();//信用
             }
         },
+
+        //返回官方玩法投注条变化
+        backGuanfangwanfa: function () {
+            var _this=this;
+            mui.ajax(root + '/'+_this.type+'/'+_this.code+'/checkBetTable.html', {
+                data: {"jspStr": "BetAmount-gfwf"},
+                type: 'POST',
+                success: function (data) {
+                    _this.openGuanfangwanfa(data);
+                    $("a[data-code='DingWeiDan']").addClass("mui-active");
+                    $("a[data-code='pl3_yixing_dwd']").addClass("mui-active");
+                    $("a.x_1.mui-col-xs-6").removeClass("x_active");
+                    $("a.x_3.mui-col-xs-6").addClass("x_active");
+                    $("#toobarTitle").text("官方玩法-定位胆");
+                    $("#GenraType").val("pl3_yixing_dwd");
+                    if (!this.isOpen){
+                        $("#show-t-gfwf").addClass("disabled");
+                    }
+                }
+            });
+        }
 
     });
 });

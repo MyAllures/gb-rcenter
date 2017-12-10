@@ -10,6 +10,7 @@
         .btn-demo{background-color: #1279d9;border: 1px solid #1279d9;}
         .btn-register{background-color: #f0af01;border: 1px solid #f0af01;}
         .yjym{color: #333;background: #e2e2e2;border-top: 1px solid #c4c4c4;}
+        .mui-action-back{color: #666;}
     }
 }
 
@@ -132,3 +133,8 @@
 
 /* index-login-info */
 .login-info{ background: url(images/icon-open-offcanvas.png) no-repeat right center/5px;}
+
+/* nots deficiency */
+.deficiency-nots{
+    background: #fff;text-align: center;padding:15px 10px;margin: 5px;border-radius: 6px;word-break: break-word;font-size: 14px;
+}
