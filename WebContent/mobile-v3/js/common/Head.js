@@ -36,7 +36,7 @@ function headInfo() {
                 $("#login-info").addClass("mui-hidden");
                 isLogin = false;
                 sessionStorage.setItem("isLogin", isLogin);
-                sessionStorage.removeItem("isAutoPay");
+                sessionStorage.removeItem("")
             } else {
                 $("#notLogin").hide();
                 $(".user_name").text(data.name);
@@ -48,6 +48,7 @@ function headInfo() {
                 $("div.login p").text(data.name);
                 $("div.login").show();
                 $("div.un-login").hide();
+                $(".money").text(data.totalAssert);
                 //右上角显示用户信息
                 $("#login-info").removeClass("mui-hidden");
                 isLogin = true;
@@ -140,6 +141,7 @@ function refreshApi() {
  */
 function hideHeader() {
     if (os == 'app_android') {
-        $('header.mui-bar-nav').addClass("mui-hidden");
+        /*$('header.mui-bar-nav').addClass("mui-hidden");*/
+        $('header.mui-bar-nav').remove();
     }
 }

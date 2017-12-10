@@ -75,6 +75,13 @@ define(['common/BaseListPage'], function(BaseListPage) {
                 $(".rank-btn").siblings(".dropdown-menu").css("display", "none");
             });
         },
+        /**
+         * 改变下拉取值
+         * @param e
+         */
+        changeKey: function (e) {
+            $('#searchtext').attr('name', e.key).val('');
+        },
         callbackquery: function (e,option) {
             if (e.returnValue==true) {
                 this.query(e,option);
