@@ -90,7 +90,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                                 if (os == 'android') {
                                     window.history.go(-1);
                                 } else if (os == 'app_ios') {
-                                    _this.goBack();
+                                    goBack();
                                 } else {
                                     mui.back();
                                 }

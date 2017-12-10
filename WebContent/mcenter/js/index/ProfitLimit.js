@@ -85,8 +85,8 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                         if (profitLimit > 0){
                             percent = Math.floor(profit / profitLimit * 100);
                         }
-                        if (percent >= 100 && time >= 0){
-                            var msg = window.top.message.setting_auto['您站点的额度已用'];
+                        if (percent >= 100 && time > 0){
+                            var msg = window.top.message.setting_auto['profitWarning'];
                             if (time >= 0){
                                 var hour = Math.floor(time / 60);
                                 time = time - hour * 60;

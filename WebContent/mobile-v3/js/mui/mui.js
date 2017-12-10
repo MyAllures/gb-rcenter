@@ -2240,6 +2240,13 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 				id = id || url;
 			}
 		}
+		options = options || {};
+		var waiting = options.waiting || {};
+		//请求加载页面函数，如果传参有等待函数，执行等待函数
+		var loading = waiting.loading;
+		if (loading && (loading.constructor == Function || (loading.constructor.name && loading.constructor.name == "Function"))) {
+			loading.apply();
+		}
 		if(!$.os.plus) {
 			//TODO 先临时这么处理：手机上顶层跳，PC上parent跳
 			if($.os.ios || $.os.android) {
@@ -2247,13 +2254,15 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 			} else {
 				window.parent.location.href = url;
 			}
+			//关闭加载loading函数，如果传参有该函数，执行
+			$.closeLoading(waiting);
 			return;
 		}
 		if(!window.plus) {
+			//关闭加载loading函数，如果传参有该函数，执行
+			$.closeLoading(waiting);
 			return;
 		}
-
-		options = options || {};
 		var params = options.params || {};
 		var webview = null,
 			webviewCache = null,
@@ -2281,9 +2290,13 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 			if(webviewCache) {
 				webviewCache.afterShowMethodName && webview.evalJS(webviewCache.afterShowMethodName + '(\'' + JSON.stringify(params) + '\')');
 			}
+			//关闭加载loading函数，如果传参有该函数，执行
+			$.closeLoading(waiting);
 			return webview;
 		} else { //新窗口
 			if(!url) {
+				//关闭加载loading函数，如果传参有该函数，执行
+				$.closeLoading(waiting);
 				throw new Error('webview[' + id + '] does not exist');
 			}
 
@@ -2322,7 +2335,19 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 				}, false);
 			}
 		}
+		//关闭加载loading函数，如果传参有该函数，执行
+		$.closeLoading(waiting);
 		return webview;
+	};
+	/**
+	 * 关闭加载loading函数，如果传参有该函数，执行
+	 * @param waiting
+	 */
+	$.closeLoading = function(waiting) {
+		var close = waiting.close;
+		if (close && (close.constructor == Function || (close.constructor.name && close.constructor.name == "Function"))) {
+			close.apply();
+		}
 	};
 
 	$.openWindowWithTitle = function(options, titleConfig) {
