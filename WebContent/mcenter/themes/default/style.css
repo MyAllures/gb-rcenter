@@ -4223,6 +4223,11 @@ tr div.btn-group.open .dropdown-menu.lang {
     height: 60px;
     margin: -20px 0;}
 
+.open-dialog-95p .modal-dialog{
+  max-width: 95%;
+  min-width: 500px;
+  width: 100%;
+}
 .open-dialog-100 .modal-dialog{
   max-width: 1000px;
   min-width: 500px;
