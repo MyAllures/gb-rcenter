@@ -252,7 +252,11 @@ function goToUrl(url) {
     if (os == 'app_ios') {
         gotoCustom(url);
     } else if (os == 'app_android') {
-        window.gamebox.gotoActivity(url);
+        if(isLogin == false){
+            window.gamebox.logout();
+        }else{
+            window.gamebox.gotoActivity(url);
+        }
     } else {
         openWindow(url);
     }
