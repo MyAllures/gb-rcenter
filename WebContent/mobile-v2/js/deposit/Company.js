@@ -1,7 +1,7 @@
 /**
  * Created by bruce on 16-12-10.
  */
-define(['site/deposit/BaseCompanyDeposit'], function (BaseCompanyDeposit) {
+define(['site/deposit/BaseCompanyDeposit','clipboard'], function (BaseCompanyDeposit,Clipboard) {
     return BaseCompanyDeposit.extend({
 
         init: function (formSelector) {
@@ -47,6 +47,16 @@ define(['site/deposit/BaseCompanyDeposit'], function (BaseCompanyDeposit) {
                 depositUrl:"/wallet/deposit/company/deposit.html"
             };
             this.submit(options);
+            this.copy();
+        },
+        //按钮复制功能
+        copy :function () {
+            var _this = this;
+            var clipboard = new Clipboard('.copy');
+            clipboard.on('success',function (e) {
+                _this.toast("复制成功!");
+                e.clearSelection();
+            })
         }
     });
 });
