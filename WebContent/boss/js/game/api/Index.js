@@ -143,5 +143,17 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,Bootstr
                 }
             })
         },
+
+        /**
+         * 保存或更新前验证
+         * @param e   事件对象
+         * @return 验证是否通过
+         */
+        validateForm: function (e) {
+            var $form = $(window.top.topPage.getCurrentForm(e));
+            return !$form.valid || $form.valid();
+        }
+
+
     });
 });

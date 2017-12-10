@@ -545,7 +545,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                 },
                 success: function (data) {
                     var info = document.getElementById("sendMessage");
-                    info.innerHTML = info.innerHTML + data;
+                    info.innerHTML = data;
                     pageNumberSite2 = 1;
                     if($('#unReadType').attr("value")=="sendMessage"){
                         $('#displayType').text(window.top.message.my_auto['优惠申请']);
