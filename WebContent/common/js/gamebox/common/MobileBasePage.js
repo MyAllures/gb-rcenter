@@ -111,7 +111,6 @@ define(['moment'], function (moment) {
                     gotoCustom(url);
                 }
             } else {
-                _this.showPageLoading();
                 mui.openWindow({
                     url: url,
                     id: url,

@@ -259,9 +259,6 @@ function goToUrl(url) {
 }
 
 function openWindow(url) {
-    //这里不用mui的waiting,是因为在h5情况下是直接设置window.top.location.href，并没有执行waiting相关参数设置
-    //不写hideloading方法是因为打开新的页面原来的loading效果会自动消失
-    showLoading();
     mui.openWindow({
         url: url,
         id: url,
