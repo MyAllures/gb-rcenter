@@ -36,6 +36,7 @@ function headInfo() {
                 $("#login-info").addClass("mui-hidden");
                 isLogin = false;
                 sessionStorage.setItem("isLogin", isLogin);
+                sessionStorage.removeItem("isAutoPay");
             } else {
                 $("#notLogin").hide();
                 $(".user_name").text(data.name);
