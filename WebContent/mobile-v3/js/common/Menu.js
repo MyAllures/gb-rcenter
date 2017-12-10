@@ -80,6 +80,6 @@ function goTab(obj, options) {
 
 function showFooter() {
     if (os != 'app_ios' && os != 'app_android') {
-        $("footer.footerMenu").removeClass('mui-hide');
+        $("footer.footerMenu").removeClass('mui-hidden');
     }
 }
