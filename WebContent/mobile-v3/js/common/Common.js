@@ -367,7 +367,7 @@ function applyFunction(func, options, obj) {
 function doAjax(obj, options) {
     var ajaxOption = {
         url: options.target,
-        loading: true,
+        loading: options.loading || true,
         success: function (data) {
             if (data.msg) {
                 toast(data.msg);

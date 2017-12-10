@@ -110,6 +110,8 @@ define(['moment'], function (moment) {
                     gotoCustom(url);
                 }
             } else {
+                var loading = '<div class="loading-wrap"><span class="loading-img loading-entirety"><img src="' + resRoot + '/images/oval.svg"></span></div>';
+                $("body").append(loading);
                 mui.openWindow({
                     url: url,
                     id: url,
