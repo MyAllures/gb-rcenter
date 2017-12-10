@@ -1,12 +1,13 @@
 /**
  * Created by fei on 16-7-6.
  */
-define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPage) {
+define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function (BaseListPage,jsrender) {
 
     return BaseListPage.extend({
         init: function () {
             this.formSelector = "form[name='companyDepositForm']";
             this._super(this.formSelector);
+            this.doFormData();
             this.queryCount();
         },
 
@@ -34,6 +35,43 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
         },
 
         /**
+         * 请求数据
+         */
+        doFormData: function() {
+            var _this = this;
+            window.top.topPage.ajax({
+                //loading: true,
+                url: $(_this.formSelector).attr("action"),
+                type:'POST',
+                data: $(_this.formSelector).serialize(),
+                dataType: "html",
+                headers: {
+                    "Soul-Requested-With":"XMLHttpRequest"
+                },
+                success: function (data) {
+                    _this.renderData(data);
+                    _this.onPageLoad();
+                },
+                error: function (data, state, msg) {
+                    window.top.topPage.showErrorMessage(data.responseText);
+                }
+            });
+        },
+
+        /**
+         * 渲染表单数据
+         */
+        renderData:function (data) {
+            var _this=this;
+            var $result = $("#editable tbody", _this.formSelector)
+            var json = JSON.parse(data)
+            if(json.result.length>0) {
+                var html = $("#VPlayerDepositListVo").render({data:json.result});
+                $result.html(html);
+            }
+        },
+
+        /**
          * 重写query方法
          * @param event
          * @param option
@@ -51,8 +89,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
                     type: "post",
                     data: this.getCurrentFormData(event),
                     success: function (data) {
-                        var $result = $(".search-list-container", $form);
-                        $result.html(data);
+                        _this.renderData(data);
                         event.page.onPageLoad();
                         $(event.currentTarget).unlock();
                         if(event.goType==undefined || event.goType==-2){
