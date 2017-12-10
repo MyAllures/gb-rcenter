@@ -3,12 +3,12 @@ $(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
         containerScroll: '.mui-content.mui-scroll-wrapper',
-        /*左侧菜单上下滚动，可自行指定范围*/
-        leftMenuScroll: '.mui-scroll-wrapper.side-menu-scroll-wrapper',
         /*右侧菜单上下滚动，可自行指定范围*/
         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
         /*禁用侧滑手势指定样式*/
-        disabledHandSlip: ['mui-off-canvas-left']
+        disabledHandSlip: ['mui-off-canvas-left'],
+        /*表格添加横向滚动*/
+        horizontalScroll:'.ct table'
     };
     muiInit(options);
     onPageLoad();
@@ -19,9 +19,9 @@ function submit(obj,options){
 }
 
 function onPageLoad() {
-    mui(".mui-scroll-wrapper").scroll();
+    //mui(".mui-scroll-wrapper").scroll();
     //给表格添加横向滚动
-    tableScroll();
+    //tableScroll();
     var isLogin = sessionStorage.getItem("isLogin");
     if (isLogin && isLogin === "true") {
         var $submit = $(".submit");
@@ -63,8 +63,8 @@ function onPageLoad() {
     //t.promoCheck();
 }
 
-function tableScroll (value) {
-    var $table = $("table");
+/*function tableScroll (value) {
+    var $table = $(".ct table");
     for (var i = 0; i <= $table.size(); i++) {
         if (!($($table.get(i)).parent().attr("class") == 'mui-scroll')) {
             //给表格添加横向滚动
@@ -77,7 +77,7 @@ function tableScroll (value) {
             $($table.get(i)).parent().parent().css("height", scrollHeight + 2 + "px");
         }
     }
-}
+}*/
 
 function changeApplyStatus() {
     var url=root+"/promo/getPlayerActivityIds.html";
