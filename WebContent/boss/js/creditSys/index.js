@@ -54,8 +54,8 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
             this.unInitSwitch($bootstrapSwitch)
                 .bootstrapSwitch(
                     {
-                        onText: window.top.message.content['floatPic.display.on'],
-                        offText: window.top.message.content['floatPic.display.off'],
+                        onText: "开启",
+                        offText: "关闭",
                         onSwitchChange: function (e, state) {
                             var _target = e.currentTarget;
                             var payRankId = $(_target).attr("payRankId");
