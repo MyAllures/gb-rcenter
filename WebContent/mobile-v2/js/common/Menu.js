@@ -22,8 +22,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                 mui('.mui-off-canvas-wrap').offCanvas('toggle');
             });
             $("._download").on("tap", function (e) {
-                var win = window.open($(this).data("download"), "_blank");
-                win.document.cookie = "ACCESS_TERMINAL=mobile;expires=0";
+                _this.gotoUrl($(this).data("download"));
             });
             mui("body").on('tap', "button.user-login", function () {
                 var _href = "/index.html";
