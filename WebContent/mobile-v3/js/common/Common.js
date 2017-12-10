@@ -9,7 +9,7 @@ var muiDefaultOptions = {
     /*右侧菜单上下滚动，可自行指定范围*/
     rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
     /*禁用侧滑手势指定样式*/
-    disabledHandSlip: ['mui-off-canvas-left'],
+    disabledHandSlip: ['.mui-off-canvas-left'],
     /*支持横向滚动样式*/
     horizontalScroll: ['']
 };
