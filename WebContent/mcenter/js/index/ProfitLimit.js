@@ -75,13 +75,18 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                         var profit = data.profit;
                         var profitLimit = data.profitLimit;
                         var time = data.leftTime;
+                        var countDown = window.top.message.setting_auto['倒计时'];
+                        var hours = window.top.message.setting_auto['小时'];
+                        var minutes= window.top.message.setting_auto['分'];
+                        var tips = window.top.message.setting_auto['tips'];
+                        var times = window.top.message.setting_auto['times'];
                         sessionStorage.setItem("minutes",time);
                         var percent = 0;
                         if (profitLimit > 0){
                             percent = Math.floor(profit / profitLimit * 100);
                         }
-                        if (percent >= 100 && time >= 0){
-                            var msg = window.top.message.setting_auto['您站点的额度已用'];
+                        if (percent >= 100 && time > 0){
+                            var msg = window.top.message.setting_auto['profitWarning'];
                             if (time >= 0){
                                 var hour = Math.floor(time / 60);
                                 time = time - hour * 60;
