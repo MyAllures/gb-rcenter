@@ -81,8 +81,6 @@ define(['common/MobileBasePage'], function (Mobile) {
                                 var _href = root + '/wallet/withdraw/index.html';
                                 if (os == 'android') {
                                     window.gamebox.finish();
-                                } else if (os == 'app_ios') {
-                                    _this.goBack();
                                 } else {
                                     _this.gotoUrl(_href);
                                 }
