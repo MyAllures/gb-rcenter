@@ -317,14 +317,14 @@ function gotoGameUrl (url, apiId) {
     if (url.indexOf('http') === -1) {
         url = window.location.origin + url;
     }
-    if (this.os === 'app_ios') {
+    if (os === 'app_ios') {
         if (apiId == 22) {
             url = url + "?ad=" + apiId;
             goToUrl(url);
         } else {
             gotoGame(url);
         }
-    } else if (this.os === 'app_android') {
+    } else if (os === 'app_android') {
         if (apiId == 22 && url.indexOf('/mainIndex.') == -1 && url.indexOf('/lottery/') == -1) {
             url = url + "mainIndex.html?ad=22";
         } else {
@@ -334,7 +334,7 @@ function gotoGameUrl (url, apiId) {
                 url = url + "?ad=" + apiId
             }
         }
-        gotoGame(url);
+        window.gamebox.gotoGame(url);
     } else {
         goToUrl(url);
     }
