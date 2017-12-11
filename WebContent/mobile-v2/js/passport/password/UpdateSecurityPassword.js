@@ -132,6 +132,7 @@ define(['common/MobileBasePage'], function (Mobile) {
             var $pwd1 = $('[name=pwd1]');
             var pwd1 = $pwd1.val();
             var reg = /^[0-9]{6}$/;
+            var regNum = /^\d{6}$/;
 
             if (pwd1 == null || pwd1.trim().length == 0) {
                 _this.toast(window.top.message.passport_auto['请输入新的安全密码']);
@@ -141,7 +142,13 @@ define(['common/MobileBasePage'], function (Mobile) {
                 _this.toast(window.top.message.passport_auto['安全密码长度']);
                 $pwd1.focus();
                 return false;
-            } else if (window.top.page.security.checkPasswordStrength(pwd1) == 'false') {
+            }else if (!regNum.test(pwd1)) {
+                _this.toast(window.top.message.passport_auto['只能为数字']);
+                $pwd1.focus();
+                return false;
+            }
+
+            else if (window.top.page.security.checkPasswordStrength(pwd1) == 'false') {
                 _this.toast(window.top.message.passport_auto['安全密码过于简单']);
                 $pwd1.focus();
                 return false;
