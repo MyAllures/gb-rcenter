@@ -9,7 +9,7 @@ var muiDefaultOptions = {
     /*右侧菜单上下滚动，可自行指定范围*/
     rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
     /*禁用侧滑手势指定样式*/
-    disabledHandSlip: ['mui-off-canvas-left'],
+    disabledHandSlip: ['.mui-off-canvas-left'],
     /*支持横向滚动样式*/
     horizontalScroll: ['']
 };
@@ -173,7 +173,7 @@ function muiAjax(options) {
         url = url + '?t=' + random;
     }
     //是否出现加载中样式
-    if (options.loading) {
+    if (options.loading == true) {
         showLoading();
         var complete = options.complete;
         options.complete = function () {
@@ -200,7 +200,8 @@ function muiAjax(options) {
  * 请求加载loading
  */
 function showLoading() {
-
+    var loading = '<div class="loading-wrap"><span class="loading-img loading-entirety"><img src="' + resRoot + '/images/oval.svg"></span></div>';
+    $("body").append(loading);
 }
 
 /**
@@ -226,7 +227,9 @@ function whatOs() {
  * 关闭加载loading
  */
 function hideLoading() {
-
+    if ($(".loading-wrap").length > 0) {
+        $(".loading-wrap").remove();
+    }
 }
 
 /**
@@ -249,7 +252,11 @@ function goToUrl(url) {
     if (os == 'app_ios') {
         gotoCustom(url);
     } else if (os == 'app_android') {
-        window.gamebox.gotoActivity(url);
+        if(isLogin == false){
+            window.gamebox.logout();
+        }else{
+            window.gamebox.gotoActivity(url);
+        }
     } else {
         openWindow(url);
     }
@@ -268,7 +275,7 @@ function openWindow(url) {
             loading: showLoading,
             close: hideLoading
         }
-    })
+    });
 }
 
 /**
@@ -292,7 +299,7 @@ function bindButtonEvent(selector) {
         var options = eval("(" + $(this).attr('data-rel') + ")");
         var confirm = options.confirm;
         if (confirm) {
-            options.event = doEvent(this, options);
+            options.func = doEvent(this, options);
             showConfirmMsg(options, this);
         } else {
             doEvent(this, options);
@@ -361,7 +368,7 @@ function applyFunction(func, options, obj) {
 function doAjax(obj, options) {
     var ajaxOption = {
         url: options.target,
-        loading: true,
+        loading: options.loading || false,
         success: function (data) {
             if (data.msg) {
                 toast(data.msg);
@@ -400,14 +407,14 @@ function toast(msg) {
 
 /**
  * 确认弹窗
- * @param options {btnArray:按钮组合,confirm:确认提示信息,}
+ * @param options {btnArray:按钮组合,confirm:确认提示信息,func:确认信息后调用方法}
  * @param obj　target对象
  */
 function showConfirmMsg(options, obj) {
     var btnArray = options.btnArray || ['是', '否'];
     mui.confirm(options.confirm, options.title, btnArray, function (e) {
         if (e.index == 0) {
-            var func = options.event;
+            var func = options.func;
             if (func) {
                 applyFunction(func, options, obj);
             }
@@ -458,7 +465,7 @@ function logout(e, options) {
                 "Soul-Requested-With": "XMLHttpRequest"
             },
             success: function (data) {
-                if(data) {
+                if (data) {
                     loginOut();
                 }
             }

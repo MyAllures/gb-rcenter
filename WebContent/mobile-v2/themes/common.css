@@ -401,7 +401,7 @@ body.no-homemenu .gb-homemenu{
     background: none !important;
 }
 .gb-panel .ct {
-    padding: 10px 10px 0 10px;
+    padding: 2px 0 0 2px;
 }
 .gb-panel .activity-detail > p {
     margin-bottom: 0;
@@ -1580,7 +1580,7 @@ body.has-srchbar .electronic-srch{
     background-image: url(../images/bank-type1.png);
 }
 .gb-bankcard >.ct{
-    padding: 10px 20px 15px;
+    padding: 10px 7px 15px;
 }
 .gb-bankcard >.ct >p{
     color: #333333;
@@ -1590,13 +1590,22 @@ body.has-srchbar .electronic-srch{
 
 }
 .gb-bankcard >.ct >.ct p{
-    line-height: 19px;
+    line-height: 23px;
     color: #333333;
     font-size: 12px;
     margin-bottom: 0;
+    height: 28px;
 }
 .gb-bankcard >.ct >.ct p span{
     color: #999999;
+}
+.gb-bankcard >.ct > p a.copy,.gb-bankcard >.ct >.ct p a.copy{
+    float:right;
+    background: #e0efff;
+    padding: 0 5px;
+    border-radius: 3px;
+    color: #569ff1;
+    font-size: 12px;
 }
 .gb-headtabs{
     margin: 11px auto;
@@ -5134,3 +5143,6 @@ div.setting {
 .ads-slider .mui-slider-indicator .mui-indicator {
     margin: 1px 2px;
 }
+/*copyright*/
+.copy-right{margin-top: 7px;}
+.copy-right span{display: block;color:#7d808f}

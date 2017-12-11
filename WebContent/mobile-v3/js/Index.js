@@ -80,6 +80,7 @@ function changeLottery(obj, options) {
         pullfresh();
     }
     $('div#lottery-' + apiId).addClass("mui-active");
+    $(obj).attr("loadData", true);
 }
 
 /*彩票上拉请求数据*/
@@ -95,7 +96,7 @@ function pullfresh() {
             var apiOption = eval("(" + $($api).attr('data-rel') + ")");
             var apiId = apiOption.apiId;
             var pageNumber = parseInt($('#total-page-' + apiId).attr("pageNumber"));
-            if(!pageNumber) {
+            if (!pageNumber) {
                 pageNumber = 0;
             }
             var lastPageNumber = parseInt($('#total-page-' + apiId).val());
@@ -104,6 +105,7 @@ function pullfresh() {
             } else {
                 pullUpLoadData(apiId, pageNumber + 1);
             }
+            $api.attr("loadData", true);
         }
 
     }, 100);
@@ -115,54 +117,19 @@ function pullUpLoadData(apiId, pageNumber) {
         url: url,
         type: 'GET',
         dataType: 'html',
+        beforeSend: function () {
+            $('div.api-loading').show();
+        },
         success: function (data) {
             $('#lottery-id').val(apiId);
             $('input#loading-' + apiId).val('false');
             $('div#lottery-' + apiId).append(data);
             $(".lottery-nav a[data-lottery-id='" + apiId + "']").attr("loadData", "true");
             $("#total-page-" + apiId).attr("pageNumber", pageNumber);
-        }
-    };
-    muiAjax(options);
-}
-
-/** 切换TAB加载数据 */
-function loadData(apiId, pageNumber) {
-    var url = root + '/game/getGameByApiId.html?search.apiId=' + apiId + '&search.apiTypeId=4&paging.pageNumber=' + pageNumber;
-    var options = {
-        url: url,
-        type: 'GET',
-        dataType: 'html',
-        beforeSend: function () {
-            showLoading(338);
-        },
-        success: function (data) {
-            setTimeout(function () {
-                $('#lottery-id').val(apiId);
-                $('input#loading-' + apiId).val('false');
-                $('div#lottery-' + apiId).append(data);
-                $(".lottery-nav a.mui-tab-item.mui-active").attr("loadData", "true");
-                $("#total-page-" + apiId).attr("pageNumber", pageNumber);
-            }, 1000);
         },
         complete: function () {
-            hideLoad();
+            $('div.api-loading').hide();
         }
     };
     muiAjax(options);
-}
-
-/** 显示Loading */
-function showLoading(oth) {
-    var winHeight = $(window).height();
-    var navHeight = $('div#menu-slider').height();
-    var banHeight = $('div#slider').height();
-    $('div.loader').css({'height': winHeight - oth - navHeight - banHeight});
-    $('div.com-loading').addClass('mui-show');
-}
-
-function hideLoad() {
-    setTimeout(function () {
-        $('div.com-loading').removeClass('mui-show');
-    }, 1000);
 }

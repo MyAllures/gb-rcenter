@@ -65,6 +65,9 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                 });
             }
         },
+        /**
+         * 登录-额度上限弹窗
+         */
         profitLimitDialog: function () {
             var isOpen = $("#topSecurity").hasClass("open");
             if (!isOpen){
@@ -75,28 +78,36 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                         var profit = data.profit;
                         var profitLimit = data.profitLimit;
                         var time = data.leftTime;
+                        var countDown = window.top.message.setting_auto['倒计时'];
+                        var tips = window.top.message.setting_auto['tips'];
+                        var times = window.top.message.setting_auto['times'];
                         sessionStorage.setItem("minutes",time);
                         var percent = 0;
                         if (profitLimit > 0){
                             percent = Math.floor(profit / profitLimit * 100);
                         }
-                        if (percent >= 100 && time >= 0){
-                            var msg = window.top.message.setting_auto['您站点的额度已用'];
+                        if (percent >= 100 && time > 0){
+                            var msg = window.top.message.setting_auto['profitWarning'];
                             if (time >= 0){
-                                var hour = Math.floor(time / 60);
-                                time = time - hour * 60;
-                                var minute = time;
+                                var hour = Math.floor(time / 3600);
+                                time = time - hour * 3600;
+                                var minute = Math.floor(time / 60);
+                                var second = time - minute * 60;
                                 if (minute < 10) {
                                     minute = '0' + minute;
+                                }
+                                if (second < 10) {
+                                    second = '0' + second;
                                 }
                             }else {
                                 var hour = 0;
                                 var minute = 0;
+                                var second = 0;
                             }
                             var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">'+msg+'</div></div>'+
                                 '<div class="clearfix m-md al-center"><div><font class="fs20">'+countDown+'</font>' +
-                                '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hourss">'+hour+'</span>'+hours+'' +
-                                '<span id="minutess">'+minute+'</span>'+minutes+'</span></div>' +
+                                '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hourss">'+hour+'</span>'+":"+'' +
+                                '<span id="minutess">'+minute+'</span>'+":"+'<span id="secondss">'+second+'</span></span></div>' +
                                 '<div class="al-center co-grayc2">'+times+'</div></div>'
                                 +'<div class="clearfix m-md">'+tips+'</div>';
                             var dialog = BootstrapDialog.show({
@@ -122,7 +133,7 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                                 window.top.popUp.showLeftTime();
                                 var interval = setInterval(function () {
                                     window.top.popUp.showLeftTime(interval)
-                                }, 60 * 1000);
+                                }, 1000);
 
                         }else if (time < 0){
                             var sites = window.top.message.setting_auto['sites'];
@@ -148,7 +159,9 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                             })
                         }else if (percent >= 100){
                             var profitWarning = window.top.message.setting_auto['profitWarning'];
-                            var html = '<div class="msg msg-warning al-center"><div class="msg-description">'+profitWarning+'</div></div>'
+                            var information = window.top.message.setting_auto['information'];
+                            var html = '<div class="msg msg-warning al-center"><div class="msg-description">'+profitWarning+'</div></div>' +
+                                '<div class="clearfix m-md">'+information+'</div>';
                             var dialog = BootstrapDialog.show({
                                 title: window.top.message.setting_auto['消息'],
                                 message: html,
@@ -178,14 +191,19 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                 return;
             }
             var tmpTime = Number(time);
-            var hour = Math.floor(tmpTime / 60);
-            tmpTime = tmpTime - hour * 60;
-            var minute = tmpTime;
+            var hour = Math.floor(tmpTime / 3600);
+            tmpTime = tmpTime - hour * 3600;
+            var minute = Math.floor(tmpTime / 60);
+            var second = tmpTime - minute * 60;
             if (minute < 10) {
                 minute = '0' + minute;
             }
-            $("span#hours").text(hour);
-            $("span#minutes").text(minute);
+            if (second < 10) {
+                second = '0' + second;
+            }
+            $("span#hourss").text(hour);
+            $("span#minutess").text(minute);
+            $("span#secondss").text(second);
             sessionStorage.setItem("minutes",--time);
         }
     });

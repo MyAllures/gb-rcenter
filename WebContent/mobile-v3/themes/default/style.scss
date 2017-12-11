@@ -138,3 +138,14 @@
 .deficiency-nots{
     background: #fff;text-align: center;padding:15px 10px;margin: 5px;border-radius: 6px;word-break: break-word;font-size: 14px;
 }
+/* loading */
+.loading-wrap{
+    background: fff;
+    &:after{content: "";display: block;position: absolute;top:0; bottom:0; left: 0; right: 0;background: rgba(0,0,0,0.5);z-index: 2002;}
+    .loading-img{position: absolute;z-index: 2003;left:50%; top:50%; text-align: center; -webkit-transform: translate3d(-50%,-50%,0) scale(1);transform: translate3d(-50%,-50%,0) scale(1);
+        img{vertical-align: middle;}
+    }
+    .loading-entirety{background: rgba(255,255,255,0.95); width: 64px; height: 64px;line-height: 63px;border-radius: 12px;
+        img{width: 48px;}
+    }
+}

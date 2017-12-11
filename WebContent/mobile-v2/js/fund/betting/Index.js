@@ -138,7 +138,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                     pageNumber = 2;
                     mui('#refreshContainer').pullRefresh().refresh(true);
                     t.dismissProgress();
-                    $("#totalCount").html(window.top.message.fund_auto['加载失败'].replace('{0}', $("#hiddenTotalCount").attr("value")));
+                    /*$("#totalCount").html(window.top.message.fund_auto['加载失败'].replace('{0}', $("#hiddenTotalCount").attr("value")));*/
                 },
                 error: function (e) {
                     mui.toast(window.top.message.fund_auto['加载失败']);

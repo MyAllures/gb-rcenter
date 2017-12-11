@@ -121,7 +121,7 @@ define(['common/BasePage'], function (BasePage) {
                 $("#timer .fa-refresh").addClass('fa-spin');
             }
             else if(totalMillisecond == '-1'){
-                _this.refershHtml();
+                $('.fa-search').click().children();
                 $("#timer .hd").attr("totalMillisecond",$("#timer .hd").attr("data-value"));
                 _this.refreshTimer();
             }else{
@@ -133,30 +133,5 @@ define(['common/BasePage'], function (BasePage) {
                 }, 1000);
             }
         },
-        /**
-         * 公共跳转资金记录方法
-         */
-        refershHtml: function() {
-            var _this = this;
-            window.top.topPage.ajax({
-                //loading: true,
-                url: $(_this.formSelector).attr("action"),
-                type:'POST',
-                data: $(_this.formSelector).serialize(),
-                dataType: "html",
-                headers: {
-                    "Soul-Requested-With":"XMLHttpRequest"
-                },
-                success: function (data) {
-                    $(".search-list-container").html(data);
-                    $("#totalSumTarget").text($("#totalSumSource").text());
-                    $("#todayTotal").text($("#todayTotalSource").text());
-                    _this.onPageLoad();
-                },
-                error: function (data, state, msg) {
-                    window.top.topPage.showErrorMessage(data.responseText);
-                }
-            });
-        }
     });
 });

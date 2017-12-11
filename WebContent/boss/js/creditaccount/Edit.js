@@ -33,6 +33,8 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
              * 控件的初始化
              */
             this._super();
+            var offAmount= $("[name='offAmount']").val().replace(/,/g, '');
+            $("[name='result.offAmount']").val(offAmount);
         },
         /**
          * 当前页面所有事件初始化函数
