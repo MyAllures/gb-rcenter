@@ -15,7 +15,7 @@ function goGame(obj,options){
     status = options.dataStatus;
     gameCode = options.dataGameCode;
     gameId = options.dataGameId;
-    isAutoPay = $("#isAutoPay").val();
+    isAutoPay = sessionStorage.getItem("isAutoPay");//$("#isAutoPay").val();
     if (status == 'maintain' || status == 'disable') {
         gameMaintaing();
     } else {
@@ -58,7 +58,7 @@ function goApiGame(obj,options){
         apiTypeId = options.dataApiTypeId;
         status = options.dataStatus;
         gameCode = options.dataGameCode;
-        isAutoPay = $("#isAutoPay").val();
+        isAutoPay = sessionStorage.getItem("isAutoPay");//$("#isAutoPay").val();
         var obj = {};
         obj.apiId = apiId;
         obj.apiTypeId = apiTypeId;
