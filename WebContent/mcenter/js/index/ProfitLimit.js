@@ -130,9 +130,9 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                                     dialog.close();
                                 }
                             });
-                                window.top.popUp.showLeftTime();
+                                window.top.popUp._showLeftTime();
                                 var interval = setInterval(function () {
-                                    window.top.popUp.showLeftTime(interval)
+                                    window.top.popUp._showLeftTime(interval)
                                 }, 1000);
 
                         }else if (time < 0){
@@ -159,7 +159,9 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                             })
                         }else if (percent >= 100){
                             var profitWarning = window.top.message.setting_auto['profitWarning'];
-                            var html = '<div class="msg msg-warning al-center"><div class="msg-description">'+profitWarning+'</div></div>'
+                            var information = window.top.message.setting_auto['information'];
+                            var html = '<div class="msg msg-warning al-center"><div class="msg-description">'+profitWarning+'</div></div>' +
+                                '<div class="clearfix m-md">'+information+'</div>';
                             var dialog = BootstrapDialog.show({
                                 title: window.top.message.setting_auto['消息'],
                                 message: html,
@@ -182,7 +184,7 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                 })
             }
         },
-        showLeftTime: function (interval) {
+        _showLeftTime: function (interval) {
             var time = sessionStorage.getItem("minutes");
             if (time < 0 && interval) {
                 window.clearInterval(interval);

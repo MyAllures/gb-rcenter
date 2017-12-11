@@ -47,8 +47,8 @@ function userInfo() {
                 }
                 //银行卡信息
                 if(data.bankcard) {
-                    $("#bankImg").addClass("pay-bank s " + data.bankcard.bankName);
-                    $("#bankImg").text(data.bankcard.bankcardNumber);
+                    /*$("#bankImg").addClass("pay-bank s " + data.bankcard.bankName);
+                    $("#bankImg").text(data.bankcard.bankcardNumber);*/
                 }
                 //比特币
                 if(data.btcNum) {

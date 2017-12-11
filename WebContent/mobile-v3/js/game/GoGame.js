@@ -15,7 +15,7 @@ function goGame(obj,options){
     status = options.dataStatus;
     gameCode = options.dataGameCode;
     gameId = options.dataGameId;
-    isAutoPay = $("#isAutoPay").val();
+    isAutoPay = sessionStorage.getItem("isAutoPay");//$("#isAutoPay").val();
     if (status == 'maintain' || status == 'disable') {
         gameMaintaing();
     } else {
@@ -58,7 +58,7 @@ function goApiGame(obj,options){
         apiTypeId = options.dataApiTypeId;
         status = options.dataStatus;
         gameCode = options.dataGameCode;
-        isAutoPay = $("#isAutoPay").val();
+        isAutoPay = sessionStorage.getItem("isAutoPay");//$("#isAutoPay").val();
         var obj = {};
         obj.apiId = apiId;
         obj.apiTypeId = apiTypeId;
@@ -206,16 +206,16 @@ function autoLoginAndTransfer() {
                         var result = data.gameApiResult;
                         if (apiId == 6) {
                             if (os == 'android' || os == 'app_ios') {
-                                gotoGame(result.defaultLink, apiId);
+                                gotoGameUrl(result.defaultLink, apiId);
                             } else {
                                 //newWindow.location.href = result.defaultLink;
                                 goToUrl(result.defaultLink);
                             }
                         } else {
                             if (result.defaultLink) {
-                                gotoGame(result.defaultLink, apiId);
+                                gotoGameUrl(result.defaultLink, apiId);
                             } else {
-                                gotoGame(result.links[apiTypeId], apiId);
+                                gotoGameUrl(result.links[apiTypeId], apiId);
                             }
                         }
                     } else if (data.msg) {
@@ -233,7 +233,7 @@ function autoLoginAndTransfer() {
             },
             error:function(error){
                 if (error.status === 600) {
-                    signIn(obj);
+                    signIn();
                 } else if (error.status === 606) {
                     goToUrl(root + '/errors/606.html');
                 } else {
@@ -313,18 +313,18 @@ function reload () {
  * @param url
  * @param apiId
  */
-function gotoGame (url, apiId) {
+function gotoGameUrl (url, apiId) {
     if (url.indexOf('http') === -1) {
         url = window.location.origin + url;
     }
-    if (this.os === 'app_ios') {
+    if (os === 'app_ios') {
         if (apiId == 22) {
             url = url + "?ad=" + apiId;
             goToUrl(url);
         } else {
             gotoGame(url);
         }
-    } else if (this.os === 'app_android') {
+    } else if (os === 'app_android') {
         if (apiId == 22 && url.indexOf('/mainIndex.') == -1 && url.indexOf('/lottery/') == -1) {
             url = url + "mainIndex.html?ad=22";
         } else {
@@ -334,7 +334,7 @@ function gotoGame (url, apiId) {
                 url = url + "?ad=" + apiId
             }
         }
-        gotoGame(url);
+        window.gamebox.gotoGame(url);
     } else {
         goToUrl(url);
     }

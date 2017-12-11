@@ -542,6 +542,9 @@
   background: #ccc;
   color: #333;
   font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .mui-content-casino-list .casino-list .img-wrap {
   background: #fff;
@@ -935,6 +938,16 @@
   color: #333;
   font-size: 12px;
   line-height: 18px;
+}
+
+.allgame-popover {
+  width: 160px;
+}
+
+.allgame-scroll {
+  height: 300px;
+  margin: 0 !important;
+  background: #fff;
 }
 
 /*# sourceMappingURL=otherpage.css.map */
