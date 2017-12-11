@@ -6,9 +6,9 @@ $(function () {
         /*右侧菜单上下滚动，可自行指定范围*/
         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
         /*禁用侧滑手势指定样式*/
-        disabledHandSlip: ['mui-off-canvas-left'],
+        disabledHandSlip: ['.mui-off-canvas-left'],
         /*表格添加横向滚动*/
-        horizontalScroll:'.ct table'
+        horizontalScroll:['.ct table']
     };
     muiInit(options);
     onPageLoad();
