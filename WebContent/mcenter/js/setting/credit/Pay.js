@@ -29,7 +29,7 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
                 _this.showLeftTime();
                 var interval = setInterval(function () {
                     _this.showLeftTime(interval)
-                }, 60 * 1000);
+                }, 1000);
             }
             _this.changeAmountMsg();
         },
@@ -45,14 +45,19 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
                 return;
             }
             var tmpTime = Number(time);
-            var hour = Math.floor(tmpTime / 60);
-            tmpTime = tmpTime - hour * 60;
-            var minute = tmpTime;
+            var hour = Math.floor(tmpTime / 3600);
+            tmpTime = tmpTime - hour * 3600;
+            var minute = Math.floor(tmpTime/60);
+            var second = tmpTime - minute * 60;
             if (minute < 10) {
                 minute = '0' + minute;
             }
+            if (second < 10) {
+                second = '0' + second;
+            }
             $("span#hour").text(hour);
             $("span#minute").text(minute);
+            $("span#second").text(second);
             $("#leftTime[data-time]").attr("data-time", --time);
         },
         /**
