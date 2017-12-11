@@ -283,8 +283,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     }
                 }else {
                     var hour = 0;
-                    var minute = 0;
-                    var second = 0;
+                    var minute = '+'+0;
+                    var second = '+'+0;
                 }
                 if (rate >= 100){
                     if (level=='red'){
@@ -587,8 +587,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     }
                 }else {
                     var hour = 0;
-                    var minute = 0;
-                    var second = 0;
+                    var minute = '+'+0;
+                    var second = '+'+0;
                 }
                 var html = '<div class="msg msg-warning al-center" id="id"><div class="msg-description ft-bold">'+msg+'</div></div>'+
                     '<div class="clearfix m-md al-center"><div><font class="fs20">'+countDown+'</font>' +
