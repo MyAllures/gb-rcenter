@@ -391,7 +391,11 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             $("span#hours").text(hour);
             $("span#minutes").text(minute);
             $("span#seconds").text(second);
-            sessionStorage.setItem("minutes",--time);
+            if ("profit"==id){
+                sessionStorage.setItem("profit_second",--time);
+            }else {
+                sessionStorage.setItem("transfer_second",--time);
+            }
         },
         rankInadequate: function (data) {
             var btnOption = {};
