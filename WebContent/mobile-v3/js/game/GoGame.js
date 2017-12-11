@@ -206,16 +206,16 @@ function autoLoginAndTransfer() {
                         var result = data.gameApiResult;
                         if (apiId == 6) {
                             if (os == 'android' || os == 'app_ios') {
-                                gotoGame(result.defaultLink, apiId);
+                                gotoGameUrl(result.defaultLink, apiId);
                             } else {
                                 //newWindow.location.href = result.defaultLink;
                                 goToUrl(result.defaultLink);
                             }
                         } else {
                             if (result.defaultLink) {
-                                gotoGame(result.defaultLink, apiId);
+                                gotoGameUrl(result.defaultLink, apiId);
                             } else {
-                                gotoGame(result.links[apiTypeId], apiId);
+                                gotoGameUrl(result.links[apiTypeId], apiId);
                             }
                         }
                     } else if (data.msg) {
@@ -233,7 +233,7 @@ function autoLoginAndTransfer() {
             },
             error:function(error){
                 if (error.status === 600) {
-                    signIn(obj);
+                    signIn();
                 } else if (error.status === 606) {
                     goToUrl(root + '/errors/606.html');
                 } else {
@@ -313,7 +313,7 @@ function reload () {
  * @param url
  * @param apiId
  */
-function gotoGame (url, apiId) {
+function gotoGameUrl (url, apiId) {
     if (url.indexOf('http') === -1) {
         url = window.location.origin + url;
     }
