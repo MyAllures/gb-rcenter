@@ -287,7 +287,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 }
                 if (rate >= 100){
                     if (level=='red'){
-                        var id = profit;
+                        var id = 'profit';
                         var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">'+msg+'</div></div>'+
                             '<div class="clearfix m-md al-center"><div><font class="fs20">'+countDown+'</font>' +
                             '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">'+hour+'</span>'+":"+''+
@@ -593,7 +593,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     var minute = 0;
                     var second = 0;
                 }
-                var id = transfer;
+                var id = 'transfer';
                 var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">'+msg+'</div></div>'+
                     '<div class="clearfix m-md al-center"><div><font class="fs20">'+countDown+'</font>' +
                     '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">'+hour+'</span>'+":"+'' +
