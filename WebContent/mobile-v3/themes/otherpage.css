@@ -542,6 +542,9 @@
   background: #ccc;
   color: #333;
   font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .mui-content-casino-list .casino-list .img-wrap {
   background: #fff;
