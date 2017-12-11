@@ -267,7 +267,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 var leftTime = new Date(msgBody.leftTime);
                 var now = new Date();
                 var time = parseInt((leftTime-now)/1000);
-                sessionStorage.setItem("minutes",time);
+                sessionStorage.setItem("profit_second",time);
                 var tmpTime = time;
                 if (tmpTime >= 0){
                     var hour = Math.floor(tmpTime / 3600);
@@ -287,6 +287,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 }
                 if (rate >= 100){
                     if (level=='red'){
+                        var id = profit;
                         var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">'+msg+'</div></div>'+
                             '<div class="clearfix m-md al-center"><div><font class="fs20">'+countDown+'</font>' +
                             '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">'+hour+'</span>'+":"+''+
@@ -319,7 +320,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     if (date && date.length > 0 && time >= 0) {
                         window.top.popUp.showLeftTime();
                         var interval = setInterval(function () {
-                            window.top.popUp.showLeftTime(interval)
+                            window.top.popUp.showLeftTime(interval,id)
                         }, 1000);
                     }else {
                         var sites = window.top.message.setting_auto['sites'];
@@ -366,8 +367,12 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 $("#topSecurity").addClass(className);
             }
         },
-        showLeftTime: function (interval) {
-            var time = sessionStorage.getItem("minutes");
+        showLeftTime: function (interval,id) {
+            if ("profit"==id){
+                var time = sessionStorage.getItem("profit_second");
+            }else {
+                var time = sessionStorage.getItem("transfer_second");
+            }
             if (time < 0 && interval) {
                 window.clearInterval(interval);
                 return;
@@ -546,7 +551,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var leftTime = new Date(msgBody.leftTime);
             var now = new Date();
             var time = parseInt((leftTime-now)/1000);
-            sessionStorage.setItem("minutes",time);
+            sessionStorage.setItem("transfer_second",time);
             var rate = Number(msgBody.rate);
             var warnRate = Number(msgBody.warnRate);
             var stopRate = Number(msgBody.stopRate);
@@ -588,6 +593,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     var minute = 0;
                     var second = 0;
                 }
+                var id = transfer;
                 var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">'+msg+'</div></div>'+
                     '<div class="clearfix m-md al-center"><div><font class="fs20">'+countDown+'</font>' +
                     '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">'+hour+'</span>'+":"+'' +
@@ -617,7 +623,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 if (date && date.length > 0 && time >= 0) {
                     window.top.popUp.showLeftTime();
                     var interval = setInterval(function () {
-                        window.top.popUp.showLeftTime(interval)
+                        window.top.popUp.showLeftTime(interval,id)
                     }, 1000);
                 }else {
                     var sites = window.top.message.setting_auto['sites'];
