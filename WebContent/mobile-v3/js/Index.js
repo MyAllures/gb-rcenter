@@ -89,25 +89,26 @@ function pullfresh() {
         mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
         var $apiTypeTab = $(".nav .mui-scroll .mui-active");
         var options = eval("(" + $($apiTypeTab).attr('data-rel') + ")");
-        var type = options.item;
-        if (type == "lottery") {
-            mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
-            var $api = $(".lottery-nav a.mui-tab-item.mui-active");
-            var apiOption = eval("(" + $($api).attr('data-rel') + ")");
-            var apiId = apiOption.apiId;
-            var pageNumber = parseInt($('#total-page-' + apiId).attr("pageNumber"));
-            if (!pageNumber) {
-                pageNumber = 0;
+        if(options != null){
+            var type = options.item;
+            if (type == "lottery") {
+                mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
+                var $api = $(".lottery-nav a.mui-tab-item.mui-active");
+                var apiOption = eval("(" + $($api).attr('data-rel') + ")");
+                var apiId = apiOption.apiId;
+                var pageNumber = parseInt($('#total-page-' + apiId).attr("pageNumber"));
+                if (!pageNumber) {
+                    pageNumber = 0;
+                }
+                var lastPageNumber = parseInt($('#total-page-' + apiId).val());
+                if (pageNumber == lastPageNumber) {
+                    mui('#pullfresh').pullRefresh().endPullupToRefresh(true);
+                } else {
+                    pullUpLoadData(apiId, pageNumber + 1);
+                }
+                $api.attr("loadData", true);
             }
-            var lastPageNumber = parseInt($('#total-page-' + apiId).val());
-            if (pageNumber == lastPageNumber) {
-                mui('#pullfresh').pullRefresh().endPullupToRefresh(true);
-            } else {
-                pullUpLoadData(apiId, pageNumber + 1);
-            }
-            $api.attr("loadData", true);
         }
-
     }, 100);
 }
 
