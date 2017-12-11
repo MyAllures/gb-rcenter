@@ -5143,3 +5143,6 @@ div.setting {
 .ads-slider .mui-slider-indicator .mui-indicator {
     margin: 1px 2px;
 }
+/*copyright*/
+.copy-right{margin-top: 7px;}
+.copy-right span{display: block;color:#7d808f}
