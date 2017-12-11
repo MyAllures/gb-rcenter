@@ -130,9 +130,9 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                                     dialog.close();
                                 }
                             });
-                                window.top.popUp.showLeftTime();
+                                window.top.popUp._showLeftTime();
                                 var interval = setInterval(function () {
-                                    window.top.popUp.showLeftTime(interval)
+                                    window.top.popUp._showLeftTime(interval)
                                 }, 1000);
 
                         }else if (time < 0){
@@ -184,7 +184,7 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                 })
             }
         },
-        showLeftTime: function (interval) {
+        _showLeftTime: function (interval) {
             var time = sessionStorage.getItem("minutes");
             if (time < 0 && interval) {
                 window.clearInterval(interval);
