@@ -937,4 +937,14 @@
   line-height: 18px;
 }
 
+.allgame-popover {
+  width: 160px;
+}
+
+.allgame-scroll {
+  height: 300px;
+  margin: 0 !important;
+  background: #fff;
+}
+
 /*# sourceMappingURL=otherpage.css.map */
