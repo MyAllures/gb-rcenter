@@ -9,7 +9,7 @@ var muiDefaultOptions = {
     /*右侧菜单上下滚动，可自行指定范围*/
     rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
     /*禁用侧滑手势指定样式*/
-    disabledHandSlip: ['mui-off-canvas-left'],
+    disabledHandSlip: ['.mui-off-canvas-left'],
     /*支持横向滚动样式*/
     horizontalScroll: ['']
 };
@@ -173,7 +173,7 @@ function muiAjax(options) {
         url = url + '?t=' + random;
     }
     //是否出现加载中样式
-    if (options.loading) {
+    if (options.loading == true) {
         showLoading();
         var complete = options.complete;
         options.complete = function () {
@@ -252,16 +252,17 @@ function goToUrl(url) {
     if (os == 'app_ios') {
         gotoCustom(url);
     } else if (os == 'app_android') {
-        window.gamebox.gotoActivity(url);
+        if(isLogin == false){
+            window.gamebox.logout();
+        }else{
+            window.gamebox.gotoActivity(url);
+        }
     } else {
         openWindow(url);
     }
 }
 
 function openWindow(url) {
-    //这里不用mui的waiting,是因为在h5情况下是直接设置window.top.location.href，并没有执行waiting相关参数设置
-    //不写hideloading方法是因为打开新的页面原来的loading效果会自动消失
-    showLoading();
     mui.openWindow({
         url: url,
         id: url,
@@ -367,7 +368,7 @@ function applyFunction(func, options, obj) {
 function doAjax(obj, options) {
     var ajaxOption = {
         url: options.target,
-        loading: true,
+        loading: options.loading || false,
         success: function (data) {
             if (data.msg) {
                 toast(data.msg);

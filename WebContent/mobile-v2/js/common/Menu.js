@@ -22,8 +22,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                 mui('.mui-off-canvas-wrap').offCanvas('toggle');
             });
             $("._download").on("tap", function (e) {
-                var win = window.open($(this).data("download"), "_blank");
-                win.document.cookie = "ACCESS_TERMINAL=mobile;expires=0";
+                _this.gotoUrl($(this).data("download"));
             });
             mui("body").on('tap', "button.user-login", function () {
                 var _href = "/index.html";
@@ -137,12 +136,22 @@ define(['common/MobileBasePage'], function (Mobile) {
             var _this = this;
             mui("body").on("tap", ".user-logout", function () {
                 sessionStorage.is_login = false;
-                if (os === 'app_ios')
-                    loginOut();
-                if (os === 'android')
+                if (os === 'app_ios') {
+                    mui.ajax(root + "/passport/logout.html", {
+                        headers: {
+                            "Soul-Requested-With": "XMLHttpRequest"
+                        },
+                        success: function (data) {
+                            if (data) {
+                                loginOut();
+                            }
+                        }
+                    });
+                } else if (os === 'android') {
                     window.gamebox.logout();
-                else
+                } else {
                     _this.gotoUrl("/passport/logout.html?t=lottery");
+                }
             });
         },
 

@@ -14,7 +14,12 @@ $(function () {
 /**
  * 点击右侧玩家信息展示玩家api金额
  */
-function userAssert(obj,options) {
+function userAssert(obj, options) {
+    var $siteApi = $('table#api-balance tbody tr');
+    if (!$siteApi || $siteApi.length <= 0) {
+        getSiteApi();
+    }
+
     $(obj).find(".ex").toggleClass("open");
 }
 /**
@@ -22,31 +27,33 @@ function userAssert(obj,options) {
  */
 function headInfo() {
     var options = {
-        url: root + '/sysUser.html',
+        url: root + '/getHeadInfo.html',
         success: function (data) {
-            if (data == 'unLogin') {
+            if (data.isLogin == false) {
                 $("#notLogin").show();
                 $("div.login").hide();
                 $("div.un-login").show();
                 $("#login-info").addClass("mui-hidden");
                 isLogin = false;
                 sessionStorage.setItem("isLogin", isLogin);
+                sessionStorage.removeItem("")
             } else {
                 $("#notLogin").hide();
-                $(".user_name").text(data.username);
+                $(".user_name").text(data.name);
                 //设置头像
-                if (!data.avatarUrl) {
-                    $('#avatarImg').attr('src', resRoot + "/images/avatar.png");
+                if (data.avatar) {
+                    $('#avatarImg').attr('src', data.avatar);
                 }
                 //左侧菜单用户信息显示
-                $("div.login p").text(data.username);
+                $("div.login p").text(data.name);
                 $("div.login").show();
                 $("div.un-login").hide();
+                $(".money").text(data.totalAssert);
                 //右上角显示用户信息
                 $("#login-info").removeClass("mui-hidden");
                 isLogin = true;
                 sessionStorage.setItem("isLogin", isLogin);
-                getSiteApi();
+                sessionStorage.setItem("isAutoPay", data.isAutoPay);
             }
         }
     };
@@ -101,7 +108,7 @@ function getSiteApi() {
  * */
 function refreshApi() {
     //防止事件冒泡
-    if(event) {
+    if (event) {
         event.stopPropagation();
     }
     var loading = '<div class="loader api-loader"><div class="loader-inner ball-pulse api-div"><div></div><div></div><div></div></div></div>';
@@ -134,6 +141,7 @@ function refreshApi() {
  */
 function hideHeader() {
     if (os == 'app_android') {
+        /*$('header.mui-bar-nav').addClass("mui-hidden");*/
         $('header.mui-bar-nav').remove();
     }
 }

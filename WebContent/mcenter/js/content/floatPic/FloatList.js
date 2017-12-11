@@ -50,6 +50,7 @@ define(['common/BaseListPage', 'bootstrapswitch'], function (BaseListPage, boots
             $('table .bootstrap-switch span').click(function (e) {
                 var _target = e.currentTarget;
                 var value = $(this).siblings('input').attr('st');
+                var picType = $(this).siblings('input').attr('picType')
                 var check = value == 'true';
                 var id = $(_target).parents('td').siblings('th').children().val();
                 var _msg;
@@ -59,7 +60,7 @@ define(['common/BaseListPage', 'bootstrapswitch'], function (BaseListPage, boots
                     _msg = window.top.message.content['floatPic.display.notice.on'];
                 }
                 window.top.topPage.showConfirmMessage(_msg, function (confirm) {
-                    _this._changeDisplayState(e, _target, confirm, id, check)
+                    _this._changeDisplayState(e, _target, confirm, id, check, picType)
                 });
             });
             /*$(this.formSelector).on('mouseover', '.singleModeTemplateImageType', function () {
@@ -109,14 +110,14 @@ define(['common/BaseListPage', 'bootstrapswitch'], function (BaseListPage, boots
         },
 
         //手动切换效果
-        _changeDisplayState: function (e, _target, confirm, id, state) {
+        _changeDisplayState: function (e, _target, confirm, id, state, picType) {
             var _this=this;
             if (confirm) {
                 window.top.topPage.ajax({
                     url: root + "/cttFloatPic/changeStatus.html",
                     type: "post",
                     dataType: "json",
-                    data: {"result.id": id, "result.status": !state},
+                    data: {"result.id": id, "result.status": !state, "result.picType": picType},
                     success: function (data) {
                         if (data.state) {
                             $(_target).siblings('input').bootstrapSwitch('disabled', false);
