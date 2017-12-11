@@ -141,7 +141,6 @@ function refreshApi() {
  */
 function hideHeader() {
     if (os == 'app_android') {
-        /*$('header.mui-bar-nav').addClass("mui-hidden");*/
-        $('header.mui-bar-nav').remove();
+        $('header.mui-bar-nav').parent().hide()
     }
 }

@@ -80,6 +80,7 @@ function changeLottery(obj, options) {
         pullfresh();
     }
     $('div#lottery-' + apiId).addClass("mui-active");
+    $(obj).attr("loadData", true);
 }
 
 /*彩票上拉请求数据*/
@@ -104,6 +105,7 @@ function pullfresh() {
             } else {
                 pullUpLoadData(apiId, pageNumber + 1);
             }
+            $api.attr("loadData", true);
         }
 
     }, 100);
@@ -125,7 +127,7 @@ function pullUpLoadData(apiId, pageNumber) {
             $(".lottery-nav a[data-lottery-id='" + apiId + "']").attr("loadData", "true");
             $("#total-page-" + apiId).attr("pageNumber", pageNumber);
         },
-        complete:function() {
+        complete: function () {
             $('div.api-loading').hide();
         }
     };
