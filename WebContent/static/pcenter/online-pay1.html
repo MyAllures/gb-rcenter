@@ -159,7 +159,44 @@ var environment = {
   <!--banner-->
   <div class="banner">
     <div class="logo"></div>
-    <div class="right"></div>
+    <div class="right">
+    	  <ul class="nav-menu">
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-home-ico" href="#">
+    	  	  	   	  <span>网站首页</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-1-ico" href="#">
+    	  	  	  	<span>真人视讯</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-2-ico" href="#">
+    	  	  	   	  <span>电子游艺</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-3-ico" href="#">
+    	  	  	   	  <span>体育竞技</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-4-ico" href="#">
+    	  	  	   	  <span>彩票游戏</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-promo-ico" href="#">
+    	  	  	   	  <span>优惠活动</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  </ul>
+    </div>
+    <div class="banner-bg-t"></div>
+    <div class="banner-bg">
+    	  <img src="../../pcenter/images/banner-bg.png">
+    </div>
   </div>
   <div class="wrapper">
     <!--left-->
@@ -167,72 +204,73 @@ var environment = {
 
       <!--左边菜单栏-->
       <div class="sidebar-nav">
-        <dl>
-          <dt>
-            <a href="index.html"> <i class="navico home"></i>
-              钱包转账
-            </a>
-          </dt>
-        </dl>
-         <dl>
-          <dt class="select">
-            <a href="deposit-region.html">
-              <i class="navico capital-select"></i>
-              存款专区
-            </a>
-          </dt>
-        </dl>
-         <dl>
-          <dt>
-            <a href="withdraw.html">
-              <i class="navico capital"></i>
-              取款专区
-            </a>
-          </dt>
-        </dl>
-        <dl>
-          <dt>
-            <a href="asset-history.html">
-              <i class="navico capital"></i>
-              资金记录
-            </a>
-          </dt>
-        </dl>
-        <dl>
-          <dt>
-            <a href="gamerecord.html">
-              <i class="navico gamerecord"></i>
-              投注记录
-            </a>
-          </dt>
-        </dl>
-      
-        <dl>
-          <dt>
-            <a href="infonotice.html">
-              <i class="navico info"></i>
-              消息公告
-            </a>
-          </dt>
-        </dl>
-        <dl>
-          <dt>
-            <a href="account.html">
-              <i class="navico accout"></i>
-              个人资料
-            </a>
-          </dd>
-        
-        </dl>
-        <dl>
-          <dt>
-            <a href="recommended.html">
-              <i class="navico recommend"></i>
-              推荐好友
-            </a>
-          </dt>
-        </dl>
-      </div>
+    	<div class="left-nav-title">财务中心</div>
+      <dl>
+        <dt class="select">
+          <a href="deposit-region.html">
+            <i class="navico deposit select"></i>
+            存款专区
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="withdraw.html">
+            <i class="navico withdraw"></i>
+            取款专区
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="asset-history.html">
+            <i class="navico capital"></i>
+            资金记录
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="gamerecord.html">
+            <i class="navico gamerecord"></i>
+            投注记录
+          </a>
+        </dt>
+      </dl><dl><dt><a href="sale1.html"><i class="navico sale"></i> 优惠记录</a></dt></dl>
+      <dl>
+        <dt>
+          <a href="index.html">
+            <i class="navico home"></i>
+            钱包转账
+          </a>
+        </dt>
+      </dl>
+      <div class="left-nav-title">个人中心</div>
+      <dl>
+        <dt>
+          <a href="account.html">
+            <i class="navico accout"></i>
+            个人资料
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="infonotice.html">
+            <i class="navico info"></i>
+            消息公告
+          </a>
+        </dt>
+      </dl>
+      <dl>
+        <dt>
+          <a href="recommended.html">
+            <i class="navico recommend"></i>
+            推荐好友
+          </a>
+        </dt>
+      </dl>
+    </div>
     </div>
 
     <!--right-->
@@ -249,88 +287,114 @@ var environment = {
       <!--网银存款-->
       
     <div class="deposit-info-warp  clearfix">
-<div class="titleline pull-left"><h2>网银存款</h2></div><a href="deposit-region.html" class="btn-gray btn btn-big pull-right">返回上一级</a></div>
+<div class="titleline pull-left">
+	  <div class="btn-group table-desc-right-t-dropdown bank-down-menu" initprompt="10条" callback="query">
+                            <input type="hidden" name="" value="">
+                    <button type="button" class="btn btn btn-default" data-toggle="dropdown" aria-expanded="false">
+                        <i class="pay-bank ccb"></i> <span class="carat"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10"><i class="pay-bank icbc"></i></a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20"><i class="pay-bank cmb"></i></a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30"><i class="pay-bank ccb"></i></a>
+                        </li>
+                    </ul>
+                </div>
+</div><a href="deposit-region.html" class="btn-gray btn btn-big pull-right">返回上一级</a></div>
 
 
    
       <div class="account-list account-info-warp">
 <div class="left-ico-message">
-<h4>请选择银行</h4>
-<span class="deposit-info-title">步骤1<img src="images/online-pay1.png"></span>
-<form>
-<div class="control-grouptwo">
-            <label class="control-left" for="inputEmail">存入银行：</label>
-            <div class="controls">
-              <select name="select" class="selectwidth">
-                <option>请选择</option>
-                <option>中国银行</option>
-                <option>中国工商银行</option>
-                <option>中国农业银行</option>
-                <option>中国建设银行</option>
-                <option>中国交通银行</option>
-                <option>中国招商银行</option>
-
-              </select>
-              
-            
-            
-            </div>
-          </div>
-<div class="control-group">
-
- <label class="control-label" for="inputEmail">存款金额：</label>
- <div class="controls">
-   <input type="text"  class="input" placeholder="">
-   <span class="tips line-hi30"> 返还 <em class="red">￥0.5</em> 手续费</span>
-   </div>
-  </div>
-  
-<div class="applysale">
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tbody><tr>
-                                <td width="72" class="al-right">申请优惠：</td>
-                                <td width="500"><span class="radiotwo">
-      <input name="bankcode" type="radio"></span><i class="item-title-ico goryorange">分类一</i> 满500送50，满1000送200…&nbsp;&nbsp;
-                                    <a href="#">收起其他优惠</a><i class="bank-arrico up"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td><span class="radiotwo">
-  <input name="bankcode" type="radio"></span><i class="item-title-ico gorylightblue">分类一</i> 满500送50，满1000送200…
-                                    <a href="#"></a>
-                                </td>
-                            </tr>
-                        </tbody></table>
+   <h4>选择支付方式：</h4>
+     <span class="deposit-info-title">步骤1<img src="images/online-pay1.png"></span>
+       
+      <div class="bank-deposit">
+                        
+                        <div class="bank-total">
+                        <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio"></span>
+                                <span class="radio-bank" title="支付宝"><i class="pay-bank sm spabank"></i><font class="diy-pay-title">中国平安银行</font></span>
+                                <span class="bank-logo-name">支付宝</span>
+                            </label>
+                            <label class="bank select">
+                                <span class="radio"><input name="bankcode" type="radio" checked="checked"></span>
+                                <span class="radio-bank" title="微信支付"><i class="pay-third sm wechatpay"></i><font class="diy-pay-title">银联商务</font></span>
+                                <span class="bank-logo-name">微信支付</span>
+                            </label>
+                            <label class="bank">
+                                <span class="radio"><input name="bankcode" type="radio" checked="checked"></span>
+                                <span class="radio-bank" title="QQ钱包"><i class="pay-third qqwallet"></i></span>
+                                <span class="bank-logo-name">QQ钱包</span>
+                            </label>
+                            
+                        </div>
+                        <div class="clear"></div>
                     </div>
-  
- <div class="control-group">
- <label class="control-label" for="inputEmail">验证码：</label>
- <div class="controls">
-   <input type="text" id="input" placeholder="" class="input">
-   <span class="verify-img"><img src="../../pcenter/images/yzm.png"></span>
-   <i class="ico-ask refresh"></i>
-   
- </div>
+                    
+
+        </div>
   </div>
+
+<div class="account-list account-info-warp">
+<div class="left-ico-message clearfix">
+<h4>请用存款至下方银行帐户：</h4>
+<span class="deposit-info-title">步骤2<img src="images/online-pay1.png"></span>
+<form>
+
+
+<div class="bank-paidtotal">
+<ul><li>
+<div class="bankinfo  linbankinfo-m">
+<h1><i class="pay-bank icbc"></i><em class="cardlabel debit"></em></h1>
+  <span class="orange cardnumber select"><em class="bank-number">2703 0271 0102 2238 532</em><a href="javascript:void(0)" class="btn-copy">复制</a></span>
+<span class="paidname select"><em class="gray">银行用户名：</em><em class="gathering-name">欧高光</em><a href="javascript:void(0)" class="btn-copy">复制</a></span>
+<span class="paidname select"><em class="gray">开户支行：</em><em class="gathering-name">吕岭支行</em><a href="javascript:void(0)" class="btn-copy">复制</a></span>
+     <span class="paidname select">
+                            <em class="gray">存款金额：</em>
+                            <em data-clipboard-target="rechargeAmount${payAccount.id}" data-clipboard-text="Default clipboard text from attribute" name="copy">
+                                <em class="gathering-name orange fontsbig" id="rechargeAmount${payAccount.id}">500</em>
+                                <a href="javascript:;" class="btn-copy">复制</a>
+                            </em>
+                        </span>
+</div>
+                              </li></ul>
+                              </div>
+
+  
+  
   
     
   
-  
-    <div class=" control-group">
- <label class="control-label"></label> 
- <a href="online-pay1-b.html" type="button" class="btn-blue btn large-big">确定存款</a>
+  <ul class="attention-list">
+    <li><em class="orange">※ 请严格依照指定金额存款，包括小数点，否则将造成您的存款掉单！</em><a href="#">查看转账演示帮助？</a></li>
+ </ul>
+    <div class=" control-group bank-menu">
+ <a href="#" type="button" class="btn btn-outline btn-filter">去工商银行转账</a>
+ <a href="#" type="button" class="btn btn-outline btn-filter">去农业银行转账</a>
+ <a href="#" type="button" class="btn btn-outline btn-filter">去建设银行转账</a>
+ <a href="#" type="button" class="btn btn-outline btn-filter">去中国银行转账</a>
+ <a href="#" type="button" class="btn btn-outline btn-filter">去中国银行转账</a>
+ <a href="#" type="button" class="btn btn-outline btn-filter">去中国工商银行转账</a>
+ <a href="#" type="button" class="btn btn-outline btn-filter">去中国银行转账</a>
+ <a href="#" type="button" class="btn btn-outline btn-filter">去中国银行转账</a>
+ <a href="#" type="button" class="btn btn-outline btn-filter">去中国银行转账</a>
+ <a href="#" type="button" class="btn btn-outline btn-filter">去中国邮政储蓄银行转账</a>
+ <a href="#" class="more-pull-down"><i class="bank-arrico down"></i> 查看更多网上银行</a>
   </div>  
-  
+  </form></div>
   
  <div>
  </div>
  
-   </form>
+   
+   
  </div>
-  </div>
-
-
 
   <div class="account-list account-info-warp">
 <div class="left-ico-message">
