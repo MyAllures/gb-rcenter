@@ -14,7 +14,8 @@
     <#list data.floatPicsInIndex as pic>
         <#if pic.singleMode && pic.picType=='2'>
             <#if pic.location == "left" && pic.displayInPages?contains("1")>
-            <div class="hongbao-slide-wrap hongbao-wrap" id="hongbao" style="<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>left: ${pic.distanceSide}px;</#if> <#if pic.distanceBottom??>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
+            <div class="hongbao-slide-wrap hongbao-wrap" id="hongbao">
+                <div class="<#if pic.hideCloseButton?? && pic.hideCloseButton>icon-close</#if> _close"></div>
                 <div class="slide-inner">
                     <ul>
                         <#if data.floatPicItems?exists>
@@ -41,7 +42,8 @@
     <#list data.floatPicsInIndex as pic>
         <#if pic.singleMode && pic.picType=='2'>
             <#if pic.location == "right" && pic.displayInPages?contains("1")>
-            <div class="hongbao-slide-wrap hongbao-wrap" id="hongbao" style="<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>right: ${pic.distanceSide}px;</#if> <#if pic.distanceBottom??>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
+            <div class="hongbao-slide-wrap hongbao-wrap" id="hongbao" >
+                <div class="icon-close <#if pic.hideCloseButton?? && pic.hideCloseButton>_close</#if>"></div>
                 <div class="slide-inner">
                     <ul>
                         <#if data.floatPicItems?exists>
