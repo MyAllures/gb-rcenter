@@ -252,11 +252,6 @@ function goToUrl(url) {
     if (os == 'app_ios') {
         gotoCustom(url);
     } else if (os == 'app_android') {
-        /*if(isLogin == false){
-            window.gamebox.logout();
-        }else{
-            window.gamebox.gotoActivity(url);
-        }*/
         window.gamebox.gotoActivity(url);
     } else {
         openWindow(url);
@@ -459,7 +454,7 @@ function logout(e, options) {
     sessionStorage.is_login = false;
     isLogin = false;
     sessionStorage.setItem("isLogin", isLogin);
-    if (os === 'app_ios') {
+    if (os == 'app_ios') {
         var ajaxOption = {
             url: root + "/passport/logout.html",
             headers: {
@@ -472,8 +467,42 @@ function logout(e, options) {
             }
         };
         muiAjax(ajaxOption);
-    } else if (os === 'app_android') {
+    } else if (os == 'app_android') {
         window.gamebox.logout();
     } else
         goToUrl("/passport/logout.html");
+}
+
+/**
+ * 返回上一页
+ * @param e
+ * @param option
+ */
+function goToLastPage(e, option) {
+    if (os == 'app_ios') {
+        goBack();
+    } else if (os == 'app_android') {
+        window.history.go(-1);
+    } else {
+        mui.back();
+    }
+}
+
+/**
+ * 设置cookie
+ * @param name
+ * @param value
+ * @param time
+ */
+function setCookie(name, value, time) {
+    if(value == null) {
+        document.cookie = name + "=" + escape(value) + ";expires=-1";
+    } else if (time == 0) {
+        document.cookie = name + "=" + escape(value) + ";expires=0";
+    } else {
+        var strsec = getsec(time);
+        var exp = new Date();
+        exp.setTime(exp.getTime() + strsec * 1);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+    }
 }

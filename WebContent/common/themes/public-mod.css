@@ -307,6 +307,8 @@
 .pay-third.onecodepay{background-position: 0 -936px;}/* 28 1码付 */
 .pay-third.bdwallet{background-position: 0 -974px;}/* 29 百度钱包 */
 .pay-third.jdwallet{background-position: 0 -1011px;}/* 30 京东钱包 */
+.pay-third.ebankpay{background-position: 0 -1050px;}/* 31 网银支付 */
+.pay-third.qrcodepay{background-position: 0 -1083px;}/* 30 扫码支付 */
 
 .sm.unionpay,.sm.chinaums,.sm.bill99,.sm.chinapnr,.sm.reapal,.sm.dinpay,.sm.kjt,.sm.mobao,.sm.upay,.sm.onecodepay{width: 50px;}
 

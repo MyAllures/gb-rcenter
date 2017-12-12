@@ -47,8 +47,8 @@ function userInfo() {
                 }
                 //银行卡信息
                 if(data.bankcard) {
-                    $("#bankImg").addClass("pay-bank s " + data.bankcard.bankName);
-                    $("#bankImg").text(data.bankcard.bankcardNumber);
+                    /*$("#bankImg").addClass("pay-bank s " + data.bankcard.bankName);
+                    $("#bankImg").text(data.bankcard.bankcardNumber);*/
                 }
                 //比特币
                 if(data.btcNum) {
@@ -73,8 +73,8 @@ $(function () {
         /*左侧菜单上下滚动，可自行指定范围*/
         leftMenuScroll: '.mui-scroll-wrapper.side-menu-scroll-wrapper',
         /*禁用侧滑手势指定样式*/
-        disabledHandSlip: ['mui-off-canvas-left']
+        disabledHandSlip: ['.mui-off-canvas-left']
     };
     muiInit(options);
     userInfo();
-})
+});

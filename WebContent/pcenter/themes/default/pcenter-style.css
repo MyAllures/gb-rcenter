@@ -1759,6 +1759,8 @@ div.scroll{overflow-x:hidden;overflow-y:hidden;white-space:pre-wrap;word-wrap:br
   left: auto;
 }
 
+.titleline .bank-down-menu .btn.btn-default{min-width: 180px;margin: 0;}
+
 /*数字货币存款*/
 .account-list.sc-warp{
 	display: inline-block;
@@ -1876,4 +1878,23 @@ div.scroll{overflow-x:hidden;overflow-y:hidden;white-space:pre-wrap;word-wrap:br
 
 .tada {
   animation-name: tada;
+}
+
+/*支付调整*/
+.control-group .right-decimals{
+	display: inline-block;
+    background: #cecfd0;
+    height: 32px;
+    line-height: 32px;
+    vertical-align: bottom;
+    padding: 0 8px;
+    margin-left: -5px;
+}
+.applysale .transfer-tips{
+	width: 520px;
+    margin: 0 auto;
+    padding: 10px;
+}
+.applysale .transfer-tips li{
+	list-style-type: disc;
 }
