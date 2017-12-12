@@ -42,6 +42,17 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
             var time = $(leftTime).attr("data-time");
             if (time < 0 && interval) {
                 window.clearInterval(interval);
+                window.top.topPage.ajax({
+                    url: root + '/credit/pay/disableTransfer.html',
+                    dataType:'json',
+                    success: function (data) {
+                        if (data.state!=true){
+                            console.log("开启禁用转账功能异常");
+                        }else {
+                            console.log("开启禁用转账功能正常");
+                        }
+                    }
+                })
                 return;
             }
             var tmpTime = Number(time);
