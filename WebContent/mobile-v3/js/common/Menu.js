@@ -50,7 +50,7 @@ $('.mui-off-canvas-wrap').on('hidden', function (event) {
  * 跳转到电脑端
  * */
 function goPC() {
-    document.cookie = "ACCESS_TERMINAL=pc;expires=0";
+    setCookie('ACCESS_TERMINAL', 'pc', 0);
     window.location.replace(root + '/');
 }
 

@@ -254,7 +254,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var level = msgBody.level;
             var rate = msgBody.rate;
             var siteName = msgBody.siteName;
-            var id = new Date().getTime;
+            var id = new Date().getTime();
             var key = 'profit.' + level + '.warning';
             var msg = window.top.message.report[key];
             var countDown = window.top.message.setting_auto['倒计时'];
@@ -283,13 +283,13 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     }
                 }else {
                     var hour = 0;
-                    var minute = '+'+0;
-                    var second = '+'+0;
+                    var minute = '0'+ 0;
+                    var second = '0'+ 0;
                 }
                 if (rate >= 100){
                     if (level=='red'){
-                        var html = '<div class="msg msg-warning al-center" id=id><div class="msg-description ft-bold">'+msg+'</div></div>'+
-                            '<div class="clearfix m-md al-center"><div><font class="fs20">'+countDown+'</font>' +
+                        var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">'+msg+'</div></div>'+
+                            '<div class="clearfix m-md al-center"><div  id='+id+'><font class="fs20">'+countDown+'</font>' +
                             '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">'+hour+'</span>'+":"+''+
                             '<span id="minutes">'+minute+'</span>'+":"+'<span id="seconds">'+second+'</span></span></div>' +
                             '<div class="al-center co-grayc2">'+times+'</div></div>'
@@ -384,10 +384,11 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             if (second < 10) {
                 second = '0' + second;
             }
-            $("#"+id+" span#hours").text(hour);
-            $("#"+id+" span#minutes").text(minute);
-            $("#"+id+" span#seconds").text(second);
-                sessionStorage.setItem("popUp_second"+id,--time);
+
+            $("span#hours",$("#"+id)).text(hour);
+            $("span#minutes",$("#"+id)).text(minute);
+            $("span#seconds",$("#"+id)).text(second);
+            sessionStorage.setItem("popUp_second"+id,--time);
         },
         rankInadequate: function (data) {
             var btnOption = {};
@@ -547,7 +548,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var leftTime = new Date(msgBody.leftTime);
             var now = new Date();
             var time = parseInt((leftTime-now)/1000);
-            var id = new Date().getTime;
+            var id = new Date().getTime();
             sessionStorage.setItem("popUp_second"+id,time);
             var rate = Number(msgBody.rate);
             var warnRate = Number(msgBody.warnRate);
@@ -587,11 +588,11 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     }
                 }else {
                     var hour = 0;
-                    var minute = '+'+0;
-                    var second = '+'+0;
+                    var minute = '0'+ 0;
+                    var second = '0'+ 0;
                 }
-                var html = '<div class="msg msg-warning al-center" id="id"><div class="msg-description ft-bold">'+msg+'</div></div>'+
-                    '<div class="clearfix m-md al-center"><div><font class="fs20">'+countDown+'</font>' +
+                var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">'+msg+'</div></div>'+
+                    '<div class="clearfix m-md al-center"><div id='+id+'><font class="fs20">'+countDown+'</font>' +
                     '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">'+hour+'</span>'+":"+'' +
                     '<span id="minutes">'+minute+'</span>'+":"+'<span id="seconds">'+second+'</span></span></div>' +
                     '<div class="al-center co-grayc2">'+times+'</div></div>'
