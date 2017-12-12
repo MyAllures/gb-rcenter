@@ -1,5 +1,5 @@
 /**
- * 资金管理-提现管理列表
+ * 买分——大额监控
  */
 define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstrapswitch) {
 
@@ -141,6 +141,14 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
                 }
             });
         },
-
+        /**
+         * 保存或更新前验证
+         * @param e   事件对象
+         * @return 验证是否通过
+         */
+        validateForm: function (e) {
+            var $form = $(window.top.topPage.getCurrentForm(e));
+            return !$form.valid || $form.valid();
+        }
     });
 });
