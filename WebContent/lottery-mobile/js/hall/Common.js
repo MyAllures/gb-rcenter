@@ -442,10 +442,9 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             this.code = $(this.formSelector + ' input[name=code]').val();
             this.type = $(this.formSelector + " input[name=type]").val();
             this.betCode = $(this.formSelector + " .ssc-method-list .ssc-method-label a.mui-active").attr("data-code");
-            this.getOpenHistory();
-            // this.muiInit();
-            this.iosGoBack();
-            this.init();
+            /*this.getOpenHistory();*/
+            /*this.iosGoBack();
+            this.init();*/
             if(this.os == 'pc') {
                 //已应对在h5下金额输入框不能输入
                 $("input#inputMoney").focus();

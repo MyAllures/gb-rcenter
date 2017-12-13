@@ -151,7 +151,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 var typePicker = new mui.PopPicker();
                 typePicker.setData([{
                     value:'0',
-                    text: '任意'
+                    text: '全部'
                 }, {
                     value:'1',
                     text: '投注'
@@ -164,6 +164,21 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 }, {
                     value:'4',
                     text: '提款'
+                }, {
+                    value:'5',
+                    text: '返点'
+                }, {
+                    value:'6',
+                    text: '重结扣款'
+                }, {
+                    value:'7',
+                    text: '重结派彩'
+                }, {
+                    value:'8',
+                    text: '待结撤单'
+                }, {
+                    value:'9',
+                    text: '已结撤销'
                 }
                 ]);
                 typePicker.pickers[0].setSelectedIndex($("#typeValue").val());
