@@ -131,7 +131,6 @@ function apiLogin(obj) {
         dataType:"json",
         data:postData,
         success:function(data){
-            hideLoading();
             if (data.loginSuccess) {
                 var result = data.gameApiResult;
                 if (apiId == 6) {
@@ -200,7 +199,6 @@ function autoLoginAndTransfer() {
             data:postData,
             type:"POST",
             success:function(data){
-                hideLoading();
                 if (data) {
                     if (data.isSuccess == true) {
                         var result = data.gameApiResult;
@@ -338,12 +336,6 @@ function gotoGameUrl (url, apiId) {
     } else {
         goToUrl(url);
     }
-}
-
-function hideLoading () {
-    setTimeout(function () {
-        $("#loadingPopover").removeClass('mui-active');
-    }, 1000);
 }
 
 function hideGameLoading () {
