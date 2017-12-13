@@ -95,14 +95,14 @@ define(['common/MobileBasePage'], function (Mobile) {
                         $("#transferAmount").html("");
                     }
                     //银行卡信息
-                    if(data.bankcard) {
+                    if (data.bankcard) {
                         var no = data.bankcard.bankcardNumber;
                         var bankcardNumber = $("#bankcardNumber").get(0);
                         bankcardNumber.innerHTML = "<span id='bankImg'></span>" + no;
                         $("#bankImg").addClass("pay-bank s " + data.bankcard.bankName);
                     }
                     //比特币
-                    if(data.btcNum) {
+                    if (data.btcNum) {
                         $("#btcNumber").text(data.btcNum);
                     }
                     //推荐好友,昨日收益
@@ -123,6 +123,20 @@ define(['common/MobileBasePage'], function (Mobile) {
                     } else {
                         $("#unReadCount").html("");
                     }
+                    if (data.avatarUrl) {//头像
+                        $("img.avatarUrl").attr("src", data.avatarUrl);
+                    }
+                    if (data.username) {
+                        $("p#userName").text(data.username);
+                    }
+                    //展示登录时间（上次登录时间和本次登录时间互斥）
+                    var loginTimeText = '';
+                    if (data.lastLoginTime) {
+                        loginTimeText = window.top.message.common['上次登录时间'] + data.lastLoginTime;
+                    } else if (data.loginTime) {
+                        loginTimeText = window.top.message.common['本次登录时间'] + data.loginTime;
+                    }
+                    $("small#loginTime").text(loginTimeText);
                     mui('#mineRefreshContainer').pullRefresh().endPulldownToRefresh();
                 },
                 error: function (e) {
