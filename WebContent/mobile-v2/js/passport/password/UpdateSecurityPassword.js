@@ -139,7 +139,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                 $pwd1.focus();
                 return false;
             } else if (!reg.test(pwd1)) {
-                _this.toast(window.top.message.passport_auto['安全密码只能为6位数字']);
+                _this.toast(window.top.message.passport_auto['安全密码长度2']);
                 $pwd1.focus();
                 return false;
             }
