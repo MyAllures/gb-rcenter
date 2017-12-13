@@ -192,8 +192,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
             if (!this.validateForm(e)) {
                 return false;
             }
-
-            return this.changeApiTypeStatus(e,opt);
+            return  window.top.topPage.doAjax(e, opt);
         },
         /**
          * 自定义名称恢复默认

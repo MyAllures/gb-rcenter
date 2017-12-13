@@ -1,7 +1,7 @@
 /**
  * 资金管理-提现管理列表
  */
-define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstrapswitch) {
+define(['common/BaseListPage', 'bootstrapswitch'], function (BaseListPage, bootstrapswitch) {
 
     return BaseListPage.extend({
         /**
@@ -18,12 +18,12 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
         /**
          * 当前对象事件初始化函数
          */
-        bindEvent : function() {
+        bindEvent: function () {
             this._super();
             //双击图片查看大图
             $(this.formSelector).on('click', 'tbody td img', function (e, opt) {
                 e.imgs = [$(this).data('src')];
-                window.top.topPage.imageSilde(e,opt);
+                window.top.topPage.imageSilde(e, opt);
             });
         },
 
@@ -33,7 +33,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
          */
         onPageLoad: function () {
             this._super();
-            var _this=this;
+            var _this = this;
             $('a.needLock').addClass('disabled').lock();
             $('[data-toggle="popover"]', _this.formSelector).popover({
                 trigger: 'hover',
@@ -45,16 +45,16 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
         /**
          * 统计
          */
-        staticData: function (e,opt) {
+        staticData: function (e, opt) {
             var _this = this;
             /*var siteId = $("input[name='search.siteId']").val();
-            if (!siteId) {
-                $("#total").text(0);
-                $("#moneyTotal").text(0);
-                $("#liquidation").text(0);
-                $("#actualRecharge").text(0);
-                return;
-            }*/
+             if (!siteId) {
+             $("#total").text(0);
+             $("#moneyTotal").text(0);
+             $("#liquidation").text(0);
+             $("#actualRecharge").text(0);
+             return;
+             }*/
             var html = "";
             window.top.topPage.ajax({
                 url: root + "/creditRecord/statisticalData.html",
@@ -72,7 +72,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
                     } else {
                         $("#moneyTotal").text(0);
                     }
-                    if(data.liquidation) {
+                    if (data.liquidation) {
                         $("#liquidation").text(data.liquidation);
                     } else {
                         $("#liquidation").text(0);
@@ -86,21 +86,29 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
             })
         },
         //成功
-        successMessage: function (e,option) {
-            this.showConfirm(e,option,window.top.message.content['is.handle.success']);
+        successMessage: function (e, option) {
+            this.showConfirm(e, option, window.top.message.content['is.handle.success']);
         },
-        failMessage: function (e,option){
-            this.showConfirm(e,option,window.top.message.content['is.handle.fail']);
+        failMessage: function (e, option) {
+            this.showConfirm(e, option, window.top.message.content['is.handle.fail']);
         },
-        showConfirm: function (e,option,msg) {
-            window.top.topPage.showConfirmMessage( msg , function( bol ){
-                if(bol){
-                    window.top.topPage.doAjax(e,option);
-                }else{
+        showConfirm: function (e, option, msg) {
+            window.top.topPage.showConfirmMessage(msg, function (bol) {
+                if (bol) {
+                    window.top.topPage.doAjax(e, option);
+                } else {
                     $(e.currentTarget).unlock();
                 }
             });
         },
-
+        /**
+         * 保存或更新前验证
+         * @param e   事件对象
+         * @return 验证是否通过
+         */
+        validateForm: function (e) {
+            var $form = $(window.top.topPage.getCurrentForm(e));
+            return !$form.valid || $form.valid();
+        }
     });
 });

@@ -1,4 +1,4 @@
-define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jqplaceholder'], function (BaseListPage, PlayerTag, Moment) {
+define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jqplaceholder', 'jsrender'], function (BaseListPage, PlayerTag, Moment, jsrender) {
 
     return BaseListPage.extend({
 
@@ -17,6 +17,8 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             this.initRanks();
             //this.initPlayerViewButton();
             //this.closeView();
+            this.doFormData();
+            this.queryCount();
         },
         onPageLoad: function () {
             this._super();
@@ -52,6 +54,67 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             });
 
             this.rewrite();
+        },
+
+        /**
+         * 请求数据
+         */
+        doFormData: function () {
+            var _this = this;
+            window.top.topPage.ajax({
+                //loading: true,
+                // url: $(_this.formSelector).attr("action"),
+                url: root + "/player/doData.html",
+                type: 'POST',
+                data: $(_this.formSelector).serialize(),
+                dataType: "html",
+                headers: {
+                    "Soul-Requested-With": "XMLHttpRequest"
+                },
+                success: function (data) {
+                    _this.renderData(data);
+                    _this.onPageLoad();
+                },
+                error: function (data, state, msg) {
+                    window.top.topPage.showErrorMessage(data.responseText);
+                }
+            });
+        },
+
+        /**
+         * 渲染表单数据
+         */
+        renderData: function (data) {
+            var _this = this;
+            var $result = $("#editable tbody", _this.formSelector);
+            var json = JSON.parse(data)
+            var html = $("#VUserPlayerListVo").render({data: json.result});
+            $result.html(html);
+        },
+
+        /**
+         * 重新计算分页
+         * @param e
+         */
+        queryCount: function (isCounter) {
+            var _this = this;
+            var url = root + "/player/count.html";
+            if (isCounter) {
+                url = url + "?isCounter=" + isCounter;
+            }
+            window.top.topPage.ajax({
+                url: url,
+                data: $(this.formSelector).serialize(),
+                type: 'POST',
+                success: function (data) {
+                    $("#playerPage").html(data);
+                    _this.initSelect();
+                    _this.pagination.bindSelectChange(page)
+                },
+                error: function (data) {
+
+                }
+            })
         },
 
         /**
@@ -243,7 +306,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             });
             $("[name='search.username']").blur(function (e) {
                 var $username = $(e.currentTarget);
-                if($username&&$username.val()) {
+                if ($username && $username.val()) {
                     $username.val($username.val().replace(/\s+/g, ""));
                 }
             });
@@ -553,16 +616,16 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
 
             return checkedItems;
         },
-        freezenAccount:function (e, opt) {
-          var data = this.getSelectIds(e,opt);
-          var _this=this;
+        freezenAccount: function (e, opt) {
+            var data = this.getSelectIds(e, opt);
+            var _this = this;
             window.top.topPage.ajax({
                 url: root + '/player/changeStatus.html',
                 data: data,
-                dataType:'json',
+                dataType: 'json',
                 type: "POST",
                 success: function (data) {
-                    if (data.state){
+                    if (data.state) {
                         _this.query(e);
                     }
                     $(e.currentTarget).unlock();
@@ -576,7 +639,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
          */
         validateForm: function (e) {
             var $username = $("input[name='search.username']");
-            if($username&&$username.val()) {
+            if ($username && $username.val()) {
                 $username.val($username.val().replace(/\s+/g, ""));
             }
             var $form = $(window.top.topPage.getCurrentForm(e));
@@ -594,7 +657,45 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                     $("input[name='search.playerRanks'][value='" + line + "']:not(:checked)").prop("checked", true).change();
                 })
             }
-        }
+        },
+        /**
+         * 重写query方法
+         * @param event
+         * @param option
+         */
+        query: function (event, option) {
+            var $form = $(window.top.topPage.getCurrentForm(event));
+            var _this=this;
+            if (!$form.valid || $form.valid()) {
+                window.top.topPage.ajax({
+                    loading: true,
+                    // url: window.top.topPage.getCurrentFormAction(event),
+                    url: root + "/player/doData.html",
+                    headers: {
+                        "Soul-Requested-With": "XMLHttpRequest"
+                    },
+                    type: "post",
+                    data: this.getCurrentFormData(event),
+                    success: function (data) {
+                        _this.renderData(data);
+                        _this.onPageLoad();
+                        $(event.currentTarget).unlock();
+                        if(event.goType==undefined || event.goType==-2){
+                            _this.queryCount();
+                        }else{
+                            _this.queryCount(true);
+                        }
+                    },
+                    error: function (data, state, msg) {
+                        window.top.topPage.showErrorMessage(data.responseText);
+                        $(event.currentTarget).unlock();
+                    }
+                });
+
+            } else {
+                $(event.currentTarget).unlock();
+            }
+        },
 
     });
 
