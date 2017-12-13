@@ -19,20 +19,20 @@ function goGame(obj,options){
     if (status == 'maintain' || status == 'disable') {
         gameMaintaing();
     } else {
-        if (isLogin == true) {
+        isLogin = sessionStorage.getItem("isLogin");
+        if (isLogin == true || isLogin == 'true') {
             layer.open({
                 title: window.top.message.game_auto['提示'],
                 content: window.top.message.game_auto['是否进入游戏'],
                 btn: [window.top.message.game_auto['是'], window.top.message.game_auto['否']],
                 yes: function (index) {
                     if (isAutoPay == 'true') {
-                        showGameLoading();
+                        showLoading();
                         autoLoginAndTransfer();
                     } else {
-                        showGameLoading();
+                        showLoading();
                         apiLogin(obj);
                         layer.close(index);
-
                     }
                     if (apiId == 6 && os != 'android' && os != 'app_ios') {
                         obj.newWindow = window.open("about:blank", '_blank');
@@ -58,34 +58,30 @@ function goApiGame(obj,options){
         apiTypeId = options.dataApiTypeId;
         status = options.dataStatus;
         gameCode = options.dataGameCode;
-        isAutoPay = sessionStorage.getItem("isAutoPay");//$("#isAutoPay").val();
+        isAutoPay = sessionStorage.getItem("isAutoPay");
         var obj = {};
         obj.apiId = apiId;
         obj.apiTypeId = apiTypeId;
         obj.gameCode = gameCode;
         if (status == "maintain") {
             openLayer(window.top.message.game_auto['游戏维护中']);
-            $("[class='mui-backdrop mui-active']").remove();
         } else {
-            if (isLogin == true) {
+            isLogin = sessionStorage.getItem("isLogin");
+            if (isLogin == true || isLogin == 'true') {
                 //判断ｂｓｇ就直接到游戏列表，不到转账页面
                 if (apiId == '20') {
                     goToUrl("/game/apiGames.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
                 } else if ((isAutoPay == 'true' && apiTypeId != "2")) {
                     //判断是否免转，如果免转,则直接登陆游戏，不跳到游戏中转页面
-                    showGameLoading();
+                    showLoading();
                     autoLoginAndTransfer();
                 } else {
                     goToUrl(root + "/api/detail.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
                 }
 
             } else{
-                //_this.toLogin("/");
                 login("/");
             }
-        }
-        if ($(".mui-popover")) {
-            mui('.mui-popover').popover('hide');
         }
 }
 
@@ -101,16 +97,12 @@ function gameMaintaing() {
 }
 
 function apiLogin(obj) {
+    //详情页调用
     if(obj != null){
         apiId = obj.apiId;
         apiTypeId = obj.apiTypeId;
         gameCode = obj.gameCode;
     }
-    /*var _this = this;
-    var apiId = obj.apiId;
-    var gameId = obj.gameId;
-    var gameCode = obj.gameCode;
-    var apiTypeId = obj.apiTypeId;*/
     var postData = {};
     if (apiId) {
         postData.apiId = apiId;
@@ -131,13 +123,13 @@ function apiLogin(obj) {
         dataType:"json",
         data:postData,
         success:function(data){
+            hideLoading();
             if (data.loginSuccess) {
                 var result = data.gameApiResult;
                 if (apiId == 6) {
                     if (os == 'android' || os == 'app_ios') {
                         gotoGame(result.defaultLink, apiId);
                     } else {
-                        //_this.newWindow.location.href = result.defaultLink;
                         goToUrl(result.defaultLink);
                     }
                 } else {
@@ -157,7 +149,7 @@ function apiLogin(obj) {
                 } else {
                     toast(data.errMsg);
                 }
-                reload();
+                //reload();
             }
         },
         error:function(error){
@@ -167,11 +159,11 @@ function apiLogin(obj) {
                goToUrl(root + '/errors/606.html');
             } else {
                 toast('暂时无法登录游戏！');
-                reload();
+                //reload();
             }
         },
         complete:function(){
-            hideGameLoading();
+            hideLoading();
         }
     };
     muiAjax(options);
@@ -199,6 +191,7 @@ function autoLoginAndTransfer() {
             data:postData,
             type:"POST",
             success:function(data){
+                hideLoading();
                 if (data) {
                     if (data.isSuccess == true) {
                         var result = data.gameApiResult;
@@ -217,16 +210,11 @@ function autoLoginAndTransfer() {
                             }
                         }
                     } else if (data.msg) {
-                        //_this.openLayer(data.msg);
                         openLayer(data.msg);
-                        reload();
-                        $("[class='mui-backdrop mui-active']").remove();
                     }
                 } else {
                     //_this.openLayer(window.top.message.game_auto['无法登录']);
                     openLayer(window.top.message.game_auto['无法登录']);
-                    $("[class='mui-backdrop mui-active']").remove();
-                    reload();
                 }
             },
             error:function(error){
@@ -236,12 +224,10 @@ function autoLoginAndTransfer() {
                     goToUrl(root + '/errors/606.html');
                 } else {
                     openLayer(window.top.message.game_auto['无法登录']);
-                    $("[class='mui-backdrop mui-active']").remove();
-                    reload();
                 }
             },
             complete:function(){
-                hideGameLoading();
+                hideLoading();
             }
         };
         muiAjax(options);
@@ -264,7 +250,7 @@ function openLayer(msg) {
 
 function signIn (obj) {
     // 存储API登录信息，以便登录成功后进入游戏
-    if (isLocalStorageSupport()) {
+    /*if (isLocalStorageSupport()) {
         //如果为空不组成数值，以防解析json报错(gameId与gamecode可能为空)
         var objKey = '{"status":"' + status + '",';
         if (gameId) {
@@ -275,7 +261,7 @@ function signIn (obj) {
         }
         objKey = objKey + '"apiId":' + apiId + ', "apiTypeId":' + apiTypeId + '}';
         localStorage.setItem('api_object', objKey);
-    }
+    }*/
     if (os == 'ios') {
         goToUrl('/login/commonLogin.html');
     } else if (os == 'app_android') {
@@ -286,7 +272,7 @@ function signIn (obj) {
 }
 
 /** 是否支持本地存储（Safari非无痕模式） */
-function isLocalStorageSupport() {
+/*function isLocalStorageSupport() {
     var testKey = 'test';
     var storage = window.sessionStorage;
     try {
@@ -296,15 +282,7 @@ function isLocalStorageSupport() {
     } catch (error) {
         return false;
     }
-}
-
-function reload () {
-    if (isLogin == 'false') {
-        setTimeout(function () {
-            page.gotoUrl(window.location.href);
-        }, 1000);
-    }
-}
+}*/
 
 /**
  * 进入游戏
@@ -336,23 +314,4 @@ function gotoGameUrl (url, apiId) {
     } else {
         goToUrl(url);
     }
-}
-
-function hideGameLoading () {
-    setTimeout(function () {
-        $('div.game-mask').remove();
-    }, 1000);
-}
-
-function showGameLoading () {
-    var content = '<div class="game-mask"><div class="game-loading"></div></div>';
-    var loading = '<div class="com-loading" style="display: block"><div class="loader">' +
-        '<div class="loader-inner ball-pulse"><div></div><div></div><div></div></div></div></div>' +
-        '<div class="loader-tip">' + window.top.message.game_auto["游戏载入中"] + '</div>';
-    $('body').append(content);
-    var $gl = $('div.game-loading');
-    $gl.html(loading);
-    var winHeight = $(window).height();
-    $gl.css({'top': (winHeight - 100) / 2});
-    $('div.game-mask').show();
 }
