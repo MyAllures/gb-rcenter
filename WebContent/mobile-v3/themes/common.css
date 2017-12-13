@@ -360,10 +360,10 @@ header.mui-bar-nav .mui-icon-bars {
   background-position: 0 0;
 }
 .lang-menu li.en-US:after {
-  background-position: 0 -32px;
+  background-position: 0 -64px;
 }
 .lang-menu li.ja-JP:after {
-  background-position: 0 -64px;
+  background-position: 0 -32px;
 }
 .lang-menu li a {
   display: block;
