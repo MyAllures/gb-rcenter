@@ -175,48 +175,52 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
         //官方，双面玩法提交表单方法。
         saveBetOrder: function(betForm) {
             var _this = this;
-            ajaxRequest({
-                url: _this.baseUrl + '/' + _this.code + '/saveBetOrder.html',
-                data: {
-                    betForm: betForm
-                },
-                beforeSend: function () {
-                    layer.closeAll();
-                    page.showLoading();
-                    $("button#gfwfBetForm_submit").attr("disabled","disabled");
-                },
-                success: function (data) {
-                    var d = data.code[0];
-                    //code代码为100表示成功
-                    if (d && d.code && d.code == '100') {
-                        // 清空临时变量（传统玩法）
-                        _this.tmpBetContent = null;
-                        //刷新玩家数据
-                        parent.index.refreshPlayer();
-                        layer.msg(d.msg, {icon: d.icon});
-                        if($("#bottomInfo .tabs .acti").length>0 && $("#bottomInfo .tabs .acti").data("tab") == 'myBet'){
-                            // 刷新我的投注
-                            page.getMyOrders();
+            if($("button#gfwfBetForm_submit") != undefined && $("button#gfwfBetForm_submit").attr("disabled") != 'disabled' ||
+                $("div.layui-layer button[type=submit]") != undefined && $("div.layui-layer button[type=submit]").attr("disabled") != 'disabled' ){
+                ajaxRequest({
+                    url: _this.baseUrl + '/' + _this.code + '/saveBetOrder.html',
+                    data: {
+                        betForm: betForm
+                    },
+                    beforeSend: function () {
+                        $("button#gfwfBetForm_submit").attr("disabled","disabled");//官方玩法
+                        $("div.layui-layer button[type=submit]").attr("disabled","disabled");//传统玩法
+                        layer.closeAll();
+                        page.showLoading();
+                    },
+                    success: function (data) {
+                        var d = data.code[0];
+                        //code代码为100表示成功
+                        if (d && d.code && d.code == '100') {
+                            // 清空临时变量（传统玩法）
+                            _this.tmpBetContent = null;
+                            //刷新玩家数据
+                            parent.index.refreshPlayer();
+                            layer.msg(d.msg, {icon: d.icon});
+                            if($("#bottomInfo .tabs .acti").length>0 && $("#bottomInfo .tabs .acti").data("tab") == 'myBet'){
+                                // 刷新我的投注
+                                page.getMyOrders();
+                            }
+                            _this.clearContent();
+                            _this.clearTdInput();
+                        } else {
+                            layer.msg(d.msg + '[' + d.code + ']', {icon: d.icon});
                         }
-                        _this.clearContent();
-                        _this.clearTdInput();
-                    } else {
-                        layer.msg(d.msg + '[' + d.code + ']', {icon: d.icon});
+                    },
+                    complete: function () {
+                        $("button#gfwfBetForm_submit").removeAttr("disabled");//官方玩法
+                        $("div.layui-layer button[type=submit]").removeAttr("disabled");//传统玩法
+                        page.hideLoading();
+                    },error:function(XMLHttpRequest, textStatus, errorThrown){
+                        Tools.log({
+                            "XMLHttpRequest": XMLHttpRequest,
+                            "textStatus": textStatus,
+                            "errorThrown": errorThrown
+                        });
+                        layer.msg('下注失败：请先登录', {icon: 5});
                     }
-                },
-                complete: function () {
-                    $("button#gfwfBetForm_submit").removeAttr("disabled");//官方玩法
-                    $("button[type=submit]").removeAttr("disabled");//传统玩法
-                    page.hideLoading();
-                },error:function(XMLHttpRequest, textStatus, errorThrown){
-                    Tools.log({
-                        "XMLHttpRequest": XMLHttpRequest,
-                        "textStatus": textStatus,
-                        "errorThrown": errorThrown
-                    });
-                    layer.msg('下注失败：请先登录', {icon: 5});
-                }
-            });
+                });
+            }
         },
 
 
@@ -2129,7 +2133,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 }
             }
             return tempArr;
-        },
+        }
 
     });
 
