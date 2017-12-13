@@ -41,6 +41,27 @@ function lang(obj, options) {
     $(".lang-menu").toggle();
     $(obj).unlock();
 }
+
+function changeLanguage(obj,options){
+    var language = options.lang;
+    if(language != null && language.length > 0){
+        var index = language.indexOf('-');
+        var lang = language.substring(0,index);
+        var country = language.substring(index+1,language.length);
+        var options = {
+            url:root+'/index/language/change.html',
+            dataType: 'json',
+            cache: false,
+            data: {'lang': lang, 'country': country},
+            type: "get",
+            success: function (data) {
+                location.reload();
+            }
+        };
+        muiAjax(options);
+    }
+}
+
 /* 关闭侧滑菜单隐藏语言弹窗 */
 $('.mui-off-canvas-wrap').on('hidden', function (event) {
     $(".lang-menu").hide();
