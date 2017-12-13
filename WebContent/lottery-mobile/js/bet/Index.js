@@ -221,64 +221,68 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             if (isReload)
                 _this.getBetProfit();
 
-            mui.ajax(root + "/bet/getMyOrders.html", {
-                data: {
-                    "timeCode": _this.timeCode,
-                    "paging.pageNumber": _this.bet[_this.timeCode].pageNumber++,
-                    "queryStartDate": _this.bet[_this.timeCode].startTime,
-                    "queryEndDate": _this.bet[_this.timeCode].endTime
-                },
-                type: "post",
-                dataType: "json",
-                beforeSend: function () {
+            setTimeout(function () {
+                mui.ajax(root + "/bet/getMyOrders.html", {
+                    data: {
+                        "timeCode": _this.timeCode,
+                        "paging.pageNumber": _this.bet[_this.timeCode].pageNumber++,
+                        "queryStartDate": _this.bet[_this.timeCode].startTime,
+                        "queryEndDate": _this.bet[_this.timeCode].endTime
+                    },
+                    type: "post",
+                    dataType: "json",
+                    beforeSend: function () {
 
-                },
-                success: function (data) {
-                    if (data.length > 0) {
-                        //初始化当前页投注记录额
-                        var betProfit = _this.bet[_this.timeCode].betProfit;
-                        if (!betProfit) _this.bet[_this.timeCode].betProfit = betProfit = {};
-                        var currentAmount = betProfit.currentAmount ? betProfit.currentAmount : 0;
-                        var payout = betProfit.payout ? betProfit.payout : 0;
-                        if (isReload) {
-                            currentAmount = 0;
-                            payout = 0;
-                        }
+                    },
+                    success: function (data) {
+                        if (data.length > 0) {
+                            //初始化当前页投注记录额
+                            var betProfit = _this.bet[_this.timeCode].betProfit;
+                            if (!betProfit) _this.bet[_this.timeCode].betProfit = betProfit = {};
+                            var currentAmount = betProfit.currentAmount ? betProfit.currentAmount : 0;
+                            var payout = betProfit.payout ? betProfit.payout : 0;
+                            if (isReload) {
+                                currentAmount = 0;
+                                payout = 0;
+                            }
 
-                        for (var i = 0; i < data.length; i++) {
-                            //计算投注记录额
-                            currentAmount = currentAmount + data[i].betAmount;
-                            if (data[i].payout)
-                                payout = payout + data[i].payout;
-                            //时间格式转换
-                            var betTime = new Date(data[i].betTime);
-                            var betDay = betTime.getFullYear() + "-" + _this.getTen(betTime.getMonth() + 1) + "-" + _this.getTen(betTime.getDate());
-                            var betSecond = _this.getTen(betTime.getHours()) + ":" + _this.getTen(betTime.getMinutes()) + ":" + _this.getTen(betTime.getSeconds());
-                            data[i].betDay = betDay;
-                            data[i].betSecond = betSecond;
-                        }
-                        _this.bet[_this.timeCode].betProfit.currentAmount = currentAmount;
-                        _this.bet[_this.timeCode].betProfit.payout = payout;
-                        _this.setBetProfit();
-                        //填充数据
-                        var html = Template('template_myBetTemplate', {list: data});
-                        if (isReload)
-                            $("#bet-" + _this.timeCode).html(html);
-                        else
-                            $("#bet-" + _this.timeCode).append(html);
+                            for (var i = 0; i < data.length; i++) {
+                                //计算投注记录额
+                                currentAmount = currentAmount + data[i].betAmount;
+                                if (data[i].payout)
+                                    payout = payout + data[i].payout;
+                                //时间格式转换
+                                var betTime = new Date(data[i].betTime);
+                                var betDay = betTime.getFullYear() + "-" + _this.getTen(betTime.getMonth() + 1) + "-" + _this.getTen(betTime.getDate());
+                                var betSecond = _this.getTen(betTime.getHours()) + ":" + _this.getTen(betTime.getMinutes()) + ":" + _this.getTen(betTime.getSeconds());
+                                data[i].betDay = betDay;
+                                data[i].betSecond = betSecond;
+                            }
+                            _this.bet[_this.timeCode].betProfit.currentAmount = currentAmount;
+                            _this.bet[_this.timeCode].betProfit.payout = payout;
+                            _this.setBetProfit();
+                            //填充数据
+                            var html = Template('template_myBetTemplate', {list: data});
+                            if (isReload)
+                                $("#bet-" + _this.timeCode).html(html);
+                            else
+                                $("#bet-" + _this.timeCode).append(html);
 
-                        mui('#betContent').pullRefresh().endPullupToRefresh(false);
-                    } else {
-                        if (isReload) {
-                            $("#bet-" + _this.timeCode).html(_this.noreCode);
+                            mui('#betContent').pullRefresh().endPullupToRefresh(false);
+                        } else {
+                            if (isReload) {
+                                $("#bet-" + _this.timeCode).html(_this.noreCode);
+                            }
+                            if (!(_this.timeCode == "auto")) {
+                                _this.bet[_this.timeCode].isNoMore = true;
+                            }
+                            mui('#betContent').pullRefresh().endPullupToRefresh(true);
                         }
-                        if (!(_this.timeCode == "auto")) {
-                            _this.bet[_this.timeCode].isNoMore = true;
-                        }
-                        mui('#betContent').pullRefresh().endPullupToRefresh(true);
                     }
-                }
-            })
+                })
+            }, 500);
+
+
         },
         getTen: function (k) {
             if (k < 10)

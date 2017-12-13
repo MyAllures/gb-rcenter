@@ -412,8 +412,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             // 倍数变化
             $("#betContent_inputBeishu").keyup(function() {
                 var val=$(this).val();
-                console.log("qq")
-                if(val>1000001){
+                if(val>1000000){
                     mui.toast("倍数不能大于1000000");
                     $(this).val("1");
                 }
@@ -606,6 +605,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             }
             if(topCode !=""){
                 $(".s-title.title1 span").text($("a[data-code='"+topCode+"'] span").text());
+                $("a[data-code='"+topCode+"']").addClass("mui-active");
             }else{
                 $(".s-title.title1 span").text(text);
             }
