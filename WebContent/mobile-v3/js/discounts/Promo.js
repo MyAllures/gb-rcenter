@@ -24,10 +24,11 @@ function pullfresh() {
         var lastPageNumber = parseInt($("#lastPageNumber").val());
         if (pageNumber == lastPageNumber) {
             mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+        }else{
+            var options = eval("(" + $(".promo-sorts .active").attr('data-rel') + ")" );
+            var type = options.activityType;
+            getPromoInfo(type, pageNumber + 1)
         }
-        var options = eval("(" + $(".promo-sorts .active").attr('data-rel') + ")" );
-        var type = options.activityType;
-        getPromoInfo(type, pageNumber + 1)
     }, 0);
 }
 

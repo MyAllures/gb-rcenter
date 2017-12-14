@@ -76,9 +76,9 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,Bootstr
                 type:"POST",
                 data:{"siteId":siteId},
                 success: function (data) {
-                    alert(data == 'true' ? $this.text()+'成功！' : $this.text()+'失败，详情请查看服务器日志！');
+                    alert(data ? $this.text()+'成功！' : $this.text()+'失败，详情请查看服务器日志！');
                     $this.attr('disabled', false);
-                    $this.text(text);
+                    $("#cacheResult").val(data ? data : "No Data")
                 }
             });
         },
