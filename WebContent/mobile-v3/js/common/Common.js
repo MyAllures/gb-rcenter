@@ -11,7 +11,10 @@ var muiDefaultOptions = {
     /*禁用侧滑手势指定样式*/
     disabledHandSlip: ['.mui-off-canvas-left'],
     /*支持横向滚动样式*/
-    horizontalScroll: ['']
+    horizontalScroll: [''],
+    /**支持横向纵向样式*/
+    horizontalVerticalScroll: ['']
+
 };
 /**
  * mui 向下拉默认参数配置
@@ -45,7 +48,7 @@ function pullUpRefreshOption(container, callback, auto) {
  */
 function muiInit(options) {
     if (!options) {
-        var options = {};
+        options = {};
     }
     if (options.init) {
         mui.init(options.init);
@@ -84,6 +87,15 @@ function muiInit(options) {
             }
         }
     }
+    //同时支持横向纵向滚动
+    var horizontalVerticalScroll = options.horizontalVerticalScroll;
+    if (horizontalVerticalScroll && horizontalVerticalScroll.length > 0) {
+        for (var i = 0; i < horizontalVerticalScroll.length; i++) {
+            if (horizontalVerticalScroll[i]) {
+                muiScrollXY(horizontalVerticalScroll[i]);
+            }
+        }
+    }
 
     //默认处理mui ajax错误
     muiAjaxError();
@@ -117,6 +129,26 @@ function muiScrollX(obj, options) {
     if (!options) {
         options = {
             scrollY: false, //是否竖向滚动
+            scrollX: true, //是否横向滚动
+            startX: 0, //初始化时滚动至x
+            startY: 0, //初始化时滚动至y
+            indicators: false, //是否显示滚动条
+            deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+            bounce: false //是否启用回弹
+        };
+    }
+    mui(obj).scroll(options)
+}
+
+/**
+ * 支持横向纵向样式
+ * @param obj
+ * @param options
+ */
+function muiScrollXY(obj, options) {
+    if (!options) {
+        options = {
+            scrollY: true, //是否竖向滚动
             scrollX: true, //是否横向滚动
             startX: 0, //初始化时滚动至x
             startY: 0, //初始化时滚动至y
@@ -495,7 +527,7 @@ function goToLastPage(e, option) {
  * @param time
  */
 function setCookie(name, value, time) {
-    if(value == null) {
+    if (value == null) {
         document.cookie = name + "=" + escape(value) + ";expires=-1";
     } else if (time == 0) {
         document.cookie = name + "=" + escape(value) + ";expires=0";
