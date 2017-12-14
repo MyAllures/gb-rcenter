@@ -15,7 +15,12 @@ $(function () {
 });
 
 function submit(obj,options){
-
+    var isDemo = options.isDemo;
+    if (isDemo == 'true') {
+        alert('试玩账号无权限参与活动');
+    } else {
+        joinPromo(obj);
+    }
 }
 
 function onPageLoad() {
@@ -41,14 +46,14 @@ function onPageLoad() {
             if (code === 'money') {
                 $submit.text(window.top.message.promo_auto['抢红包']);
             }
-            $submit.on("tap", function () {
+            /*$submit.on("tap", function () {
 
                 if (isDemo == 'true') {
                     alert('试玩账号无权限参与活动');
                 } else {
                     joinPromo(this);
                 }
-            });
+            });*/
         }
         changeApplyStatus();
     } else {
