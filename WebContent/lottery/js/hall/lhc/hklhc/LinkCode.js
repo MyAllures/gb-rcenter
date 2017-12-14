@@ -19,6 +19,7 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
         getLinkCode: function () {
             var _this = this;
             $(".main-left .fr .T-tab a").click(function () {
+
                 _this.clearTdInput();
                 $(".main-left .fr .T-tab a").removeClass("active");
                 $(this).addClass("active");
@@ -115,7 +116,23 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                 betForm.quantity++;
             }
             return betForm;
-        }
+        },
+
+        xianZhiLHCZhuShu :function () {
+            var minNum = parseInt($("#minNum").text())+4;
+            var code = $(".main-left .fr .T-tab a").attr("subCode");
+            var len = $("td.new-ball-st.bg-yellow").length;
+            if(code =="lhc_three_all_in" || code=="lhc_four_all_in"){
+                if(len>minNum){
+                    layer.msg('注数过大', {icon: 5});
+                    return false;
+                }else{
+                    return true;
+                }
+            }else{
+                return true;
+            }
+        },
     })
 });
 
