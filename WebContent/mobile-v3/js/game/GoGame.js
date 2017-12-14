@@ -134,9 +134,9 @@ function apiLogin(obj) {
                     }
                 } else {
                     if (result.defaultLink) {
-                        gotoGame(result.defaultLink, apiId)
+                        gotoGameUrl(result.defaultLink, apiId);
                     } else {
-                        gotoGame(result.links[apiTypeId], apiId)
+                        gotoGameUrl(result.links[apiTypeId], apiId)
                     }
                 }
             } else {
