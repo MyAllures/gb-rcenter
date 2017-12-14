@@ -17,10 +17,9 @@
                         <#if  data.floatPicItems[key].floatPicId ==pic.id>
                             <li class="left_${data.floatPicItems[key].imgLinkType}" style="width:${data.floatPicItems[key].imgWidth}px;height: ${data.floatPicItems[key].imgHeight}px; background-image:url(${imgPath(data.configInfo.domain,data.floatPicItems[key].normalEffect)});">
                                 <a <#if pic.picType??&&pic.picType=='1'>
-                                        <#if data.floatPicItems[key].imgLinkValue?? && data.floatPicItems[key].imgLinkValue!="">
-                                            href="<#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if>${data.floatPicItems[key].imgLinkValue}"
-                                            target="_blank"
-                                        </#if>
+                                    <#if data.floatPicItems[key].imgLinkValue?? && data.floatPicItems[key].imgLinkValue!="">
+                                            href="<#if data.floatPicItems[key].imgLinkType?string == 'link'><#if !data.floatPicItems[key].imgLinkValue?contains("http://")><#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if></#if></#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
+                                    </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
                                             href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
                                     </#if>>
@@ -40,9 +39,9 @@
                         <#if  data.floatPicItems[key].floatPicId ==pic.id>
                             <li class="left_${data.floatPicItems[key].imgLinkType}" style="width:${data.floatPicItems[key].imgWidth}px;height: ${data.floatPicItems[key].imgHeight}px; background-image:url(${imgPath(data.configInfo.domain,data.floatPicItems[key].normalEffect)});">
                                 <a  <#if pic.picType??&&pic.picType=='1'>
-                                        <#if data.floatPicItems[key].imgLinkValue?? && data.floatPicItems[key].imgLinkValue!="">
-                                                href="<#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
-                                        </#if>
+                                    <#if data.floatPicItems[key].imgLinkValue?? && data.floatPicItems[key].imgLinkValue!="">
+                                            href="<#if data.floatPicItems[key].imgLinkType?string == 'link'><#if !data.floatPicItems[key].imgLinkValue?contains("http://")><#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if></#if></#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
+                                    </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
                                             href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
                                     </#if>>
@@ -62,9 +61,9 @@
                         <#if  data.floatPicItems[key].floatPicId ==pic.id>
                             <li class="left_${data.floatPicItems[key].imgLinkType}" style="width:${data.floatPicItems[key].imgWidth}px;height: ${data.floatPicItems[key].imgHeight}px; background-image:url(${imgPath(data.configInfo.domain,data.floatPicItems[key].normalEffect)});">
                                 <a <#if pic.picType??&&pic.picType=='1'>
-                                        <#if data.floatPicItems[key].imgLinkValue?? && data.floatPicItems[key].imgLinkValue!="">
-                                                href="<#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
-                                        </#if>
+                                    <#if data.floatPicItems[key].imgLinkValue?? && data.floatPicItems[key].imgLinkValue!="">
+                                            href="<#if data.floatPicItems[key].imgLinkType?string == 'link'><#if !data.floatPicItems[key].imgLinkValue?contains("http://")><#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if></#if></#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
+                                    </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
                                             href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
                                     </#if>>
@@ -92,9 +91,9 @@
                         <#if data.floatPicItems[key].floatPicId == pic.id>
                             <li class="right_${data.floatPicItems[key].imgLinkType}" style="width:${data.floatPicItems[key].imgWidth}px;height: ${data.floatPicItems[key].imgHeight}px; background-image:url(${imgPath(data.configInfo.domain,data.floatPicItems[key].normalEffect)});">
                                 <a <#if pic.picType??&&pic.picType=='1'>
-                                        <#if data.floatPicItems[key].imgLinkValue?? && data.floatPicItems[key].imgLinkValue!="">
-                                                href="<#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
-                                        </#if>
+                                    <#if data.floatPicItems[key].imgLinkValue?? && data.floatPicItems[key].imgLinkValue!="">
+                                            href="<#if data.floatPicItems[key].imgLinkType?string == 'link'><#if !data.floatPicItems[key].imgLinkValue?contains("http://")><#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if></#if></#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
+                                    </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
                                             href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
                                     </#if>>
@@ -114,9 +113,9 @@
                         <#if data.floatPicItems[key].floatPicId == pic.id>
                             <li class="right_${data.floatPicItems[key].imgLinkType}" style="width:${data.floatPicItems[key].imgWidth}px;height: ${data.floatPicItems[key].imgHeight}px; background-image:url(${imgPath(data.configInfo.domain,data.floatPicItems[key].normalEffect)});">
                                 <a <#if pic.picType??&&pic.picType=='1'>
-                                        <#if data.floatPicItems[key].imgLinkValue?? && data.floatPicItems[key].imgLinkValue!="">
-                                                href="<#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
-                                        </#if>
+                                    <#if data.floatPicItems[key].imgLinkValue?? && data.floatPicItems[key].imgLinkValue!="">
+                                            href="<#if data.floatPicItems[key].imgLinkType?string == 'link'><#if !data.floatPicItems[key].imgLinkValue?contains("http://")><#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if></#if></#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
+                                    </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
                                             href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
                                     </#if>>
@@ -136,9 +135,9 @@
                         <#if data.floatPicItems[key].floatPicId == pic.id>
                             <li class="right_${data.floatPicItems[key].imgLinkType}" style="width:${data.floatPicItems[key].imgWidth}px;height: ${data.floatPicItems[key].imgHeight}px; background-image:url(${imgPath(data.configInfo.domain,data.floatPicItems[key].normalEffect)});">
                                 <a  <#if pic.picType??&&pic.picType=='1'>
-                                        <#if data.floatPicItems[key].imgLinkValue?? && data.floatPicItems[key].imgLinkValue!="">
-                                                href="<#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
-                                        </#if>
+                                    <#if data.floatPicItems[key].imgLinkValue?? && data.floatPicItems[key].imgLinkValue!="">
+                                            href="<#if data.floatPicItems[key].imgLinkType?string == 'link'><#if !data.floatPicItems[key].imgLinkValue?contains("http://")><#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if></#if></#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
+                                    </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
                                             href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
                                     </#if>>
