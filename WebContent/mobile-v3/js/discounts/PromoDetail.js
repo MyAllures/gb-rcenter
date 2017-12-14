@@ -15,11 +15,16 @@ $(function () {
 });
 
 function submit(obj,options){
-    var isDemo = options.isDemo;
-    if (isDemo == 'true') {
-        alert('试玩账号无权限参与活动');
-    } else {
-        joinPromo(obj);
+    var isLogin = sessionStorage.getItem("isLogin");
+    if (isLogin && isLogin === "true") {
+        var isDemo = options.isDemo;
+        if (isDemo == 'true') {
+            alert('试玩账号无权限参与活动');
+        } else {
+            joinPromo(obj);
+        }
+    }else{
+        login(root+"/discounts/index.html?skip=1");
     }
 }
 
@@ -57,10 +62,10 @@ function onPageLoad() {
         }
         changeApplyStatus();
     } else {
-        $("body").on("tap", "a.submit", function () {
+        /*$("body").on("tap", "a.submit", function () {
             //t.toLogin("/game.html?typeId=5");
             login(root+"/discounts/index.html?skip=1");
-        });
+        });*/
     }
     // if (submit.data("states") == "processing" || submit.data("code") == "back_water") {
     //     submit.text(window.top.message.promo_auto['参与中']);
