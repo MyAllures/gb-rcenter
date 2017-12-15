@@ -140,6 +140,11 @@ function refreshApi() {
 function hideHeader() {
     if (os == 'app_android') {
         $('header.mui-bar-nav').hide();
-        $(".mui-bar-nav ~ .mui-content").attr("style", "padding-top: 0px;");
+        if($(".mui-bar-nav ~ .mui-content").hasClass("content-without-notice")) { //其他页面含有这个样式导致出现头部空白
+            $(".mui-bar-nav ~ .mui-content").removeClass("content-without-notice");
+            $(".mui-bar-nav ~ .mui-content").attr("style", "padding-top: 0px;");
+        } else if(!$(".mui-bar-nav ~ .mui-content").hasClass("mine-content")) {//我的 页面头部直接用h5不需要隐藏
+            $(".mui-bar-nav ~ .mui-content").attr("style", "padding-top: 0px;");
+        }
     }
 }
