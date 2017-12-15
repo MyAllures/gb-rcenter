@@ -107,7 +107,21 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                 betForm.quantity++;
             }
             return betForm;
-        }
+        },
+        xianZhiLHCZhuShu :function () {
+            var code = $(".main-left .fr .T-tab a.active").attr("subCode");
+            console.log(code);
+            var num = parseInt($("#minNum").text());
+            var minNum = code !="lhc_eleven_no_in" && code !="lhc_twelve_no_in"? num+4 : num+2;
+            var len = $("td.new-ball-st.bg-yellow").length;
+            console.log(minNum +"," +len);
+            if(len>minNum){
+                layer.msg('注数过大', {icon: 5});
+                return false;
+            }else{
+                return true;
+            }
+        },
     })
 });
 

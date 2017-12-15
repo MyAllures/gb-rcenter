@@ -2,6 +2,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
     return Common.extend({
         init: function () {
             this._super();
+            this.bindChangLong();
         },
 
         /**
@@ -227,7 +228,183 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                     $("#GenraType").val("ssc_yixing_dwd");
                 }
             });
-        }
+        },
+
+        refreshView: function () {
+            var _this = this;
+            mui.ajax(root + '/'+_this.type+'/'+_this.code+'/getRecent30Records.html', {
+                data: {code: _this.code},
+                success: function (data) {
+                    if (data && data.length > 0) {
+                        _this.renderView(data);
+                        /*_this.changeTable();*/
+                    }
+                }
+            });
+        },
+
+
+
+
+
+        renderView: function (json) {
+
+            var result = [];
+            for (var i = 0; i < 5; ++i) {
+                result[i] = {ds: [], dx: []};
+            }
+            var str = '';
+            /*$("#bottom_zs_table_head tbody tr th").each(function () {*/
+            for(var j=0;j<5;j++){
+                    // 单双
+                    str += '<table id="bottom_zs_table_' + j + '_ds" width="100%" border="0" class="resultLoad" style="display:none;">';
+                    str += '<tbody>';
+                    for (var i = 0; i < json.length; ++i) {
+                        var value = 0;
+                        console.log(json[i].openCode)
+                        for (var j = 0, tmpArr = json[i].openCode.split(","); j < tmpArr.length; ++j) {
+                            value += Tools.parseInt(tmpArr[j]);
+                        }
+
+                        var name = value % 2 == 0 ? '<font style="color:#e70f0f;">双</font>' : '<font style="color:#58adff;">单</font>';
+                        var x = 0, y = 0;
+
+                        if (result[5].ds.length != 0) {
+                            var preObj = result[5].ds[i - 1];
+                            if (preObj.name == name) {
+                                x = preObj.x;
+                                y = preObj.y + 1;
+                            } else {
+                                x = preObj.x + 1;
+                                y = 0;
+                            }
+                        }
+                        result[5].ds.push({
+                            name: name,
+                            x: x,
+                            y: y
+                        });
+                    }
+
+                    var maxX = 30;
+                    var maxY = 0;
+                    $.each(result[5].ds, function (index, value) {
+                        if (value.x > maxX) {
+                            maxX = value.x;
+                        }
+                        if (value.y > maxY) {
+                            maxY = value.y;
+                        }
+                    });
+
+                    for (var i = 0; i < maxY + 1; ++i) {
+                        str += '<tr class="resultLoad">';
+                        for (var j = 0; j < maxX + 1; ++j) {
+                            str += '<td>&nbsp;</td>';
+                        }
+                        str += '</tr>';
+                    }
+                    str += '</tbody>';
+                    str += '</table>';
+
+
+                    // 大小
+                    str += '<table id="bottom_zs_table_' + j + '_dx" width="100%" border="0" class="resultLoad" style="display:none;">';
+                    str += '<tbody>';
+                    for (var i = 0; i < json.length; ++i) {
+                        var value = 0;
+                        for (var j = 0, tmpArr = json[i].openCode.split(","); j < tmpArr.length; ++j) {
+                            value += Tools.parseInt(tmpArr[j]);
+                        }
+                        var name = value >= 23 ? '<font style="color:#e70f0f;">大</font>' : '<font style="color:#58adff;">小</font>';
+                        var x = 0, y = 0;
+
+                        if (result[5].dx.length != 0) {
+                            var preObj = result[5].dx[i - 1];
+                            if (preObj.name == name) {
+                                x = preObj.x;
+                                y = preObj.y + 1;
+                            } else {
+                                x = preObj.x + 1;
+                                y = 0;
+                            }
+                        }
+                        result[5].dx.push({
+                            name: name,
+                            x: x,
+                            y: y
+                        });
+                    }
+
+                    var maxX = 30;
+                    var maxY = 0;
+                    $.each(result[5].dx, function (index, value) {
+                        if (value.x > maxX) {
+                            maxX = value.x;
+                        }
+                        if (value.y > maxY) {
+                            maxY = value.y;
+                        }
+                    });
+
+                    for (var i = 0; i < maxY + 1; ++i) {
+                        str += '<tr class="resultLoad">';
+                        for (var j = 0; j < maxX + 1; ++j) {
+                            str += '<td>&nbsp;</td>';
+                        }
+                        str += '</tr>';
+                    }
+                    str += '</tbody>';
+                    str += '</table>';
+            }
+            /*});*/
+            console.log(str);
+
+            $("#bottom_zs_table_content").html(str);
+            for (var i = 0; i < 6; ++i) {
+                var value = result[i];
+
+                var pre = i == 5 ? 'zh' : i;
+                $.each(value.ds, function (index, value) {
+                    $('#bottom_zs_table_' + pre + '_ds').find("tr").eq(value.y).find("td").eq(value.x).html(value.name);
+                });
+                $.each(value.dx, function (index, value) {
+                    $('#bottom_zs_table_' + pre + '_dx').find("tr").eq(value.y).find("td").eq(value.x).html(value.name);
+                });
+            }
+        },
+
+        bindChangLong :function () {
+            //绑定长龙第几球
+            mui("body").on("tap", "#showUserPicker", function () {
+                var typePicker = new mui.PopPicker();
+                typePicker.setData([{
+                    value:'0',
+                    text: '第一球'
+                }, {
+                    value:'1',
+                    text: '第二球'
+                }, {
+                    value:'2',
+                    text: '第三球'
+                }, {
+                    value:'3',
+                    text: '第四球'
+                }, {
+                    value:'4',
+                    text: '第五球'
+                }
+                ]);
+                typePicker.pickers[0].setSelectedIndex($("#showUserPicker").val());
+                typePicker.show(function (e) {
+                    $("#showUserPicker").text(e[0].text);
+                    $("#showUserPicker").attr("data-num",e[0].value);
+                })
+            });
+
+        },
+
+
 
 
     });
