@@ -267,35 +267,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 bonusModel: $("span.mode_select.selected").attr("data-value"),//元角分模式
                 rebate: (Number($("#betContent_fanli").attr("data-value"))/100).toFixed(3)//返点比例
             });
-
-            mui.ajax(root + '/'+_this.type+'/'+_this.code+'/saveBetOrder.html', {
-                data: {betForm: JSON.stringify(betForm)},
-                dataType: 'json',
-                type: 'POST',
-                beforeSend: function () {
-                    _this.showLoading();
-                    _this.gfwfCloseConfirmOrder();
-                },
-                success: function (data) {
-                    var d = data.code[0];
-                    //code代码为100表示成功
-                    if (d && d.code && d.code == '100') {
-                        _this.toast(d.msg);
-                        sessionStorage.removeItem("betForm");
-                        $("div.bet-table-list .mui-active").removeClass("mui-active");
-                        $(".balance").text(data.balance);
-                        page.resetBet();
-                        _this.getProfitloss();
-                    } else {
-                        _this.toast(d.msg);
-                    }
-                },
-                complete: function () {
-                    _this.hideLoading();
-                },error:function(xhr,type,errorThrown){
-                    _this.toast('下注失败：请先登录');
-                }
-            });
+            _this.saveBetOrderAll(betForm);
         },
 
         showBetTemplate:function() {
@@ -353,7 +325,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                     maxCanWin=strArr[0];
                 }
                 firstShowPl = strArr.join('|');
-
             }
 
             //弹出订单
@@ -766,13 +737,18 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                     memo: ""
                 });
             });
+            _this.saveBetOrderAll(ajaxData);
+        },
 
-            mui.ajax(root + '/' + type + '/' + code + '/saveBetOrder.html', {
-                data: {betForm: JSON.stringify(ajaxData)},
+        saveBetOrderAll : function (betFormData) {
+            var _this=this;
+            mui.ajax(root + '/' + _this.type + '/' + _this.code + '/saveBetOrder.html', {
+                data: {betForm: JSON.stringify(betFormData)},
                 dataType: 'json',
                 type: 'POST',
                 beforeSend: function () {
                     _this.closeConfirmOrder();
+                    _this.gfwfCloseConfirmOrder();
                     _this.showLoading();
                 },
                 success: function (data) {
