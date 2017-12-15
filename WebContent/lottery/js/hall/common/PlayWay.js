@@ -177,8 +177,6 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
             var _this = this;
             _this.saveBetOrder(JSON.stringify(data));
         },
-
-
         //官方，双面玩法提交表单方法。
         saveBetOrder: function(betForm) {
             var _this = this;
@@ -198,7 +196,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                     },
                     success: function (data) {
                         if(data && data.token){
-                            $("#gameContent [name='gb.token']").val(data.token);
+                            $("#gameContent input[name='gb.token']").val(data.token);
                         }
                         var d = data.code[0];
                         //code代码为100表示成功
@@ -218,10 +216,13 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                             layer.msg(d.msg, {icon: d.icon});
                         }
                     },
-                    complete: function () {
-                        $("button#gfwfBetForm_submit").removeAttr("disabled");//官方玩法
-                        $("div.layui-layer button[type=submit]").removeAttr("disabled");//传统玩法
-                        page.hideLoading();
+                    complete: function (XMLHttpRequest,textStatus) {
+                        var state = XMLHttpRequest.getResponseHeader("headerStatus") || XMLHttpRequest.status;
+                        if (state != 608) {//重复请求不显示消息
+                            $("button#gfwfBetForm_submit").removeAttr("disabled");//官方玩法
+                            $("div.layui-layer button[type=submit]").removeAttr("disabled");//传统玩法
+                            page.hideLoading();
+                        }
                     },error:function(XMLHttpRequest, textStatus, errorThrown){
                         Tools.log({
                             "XMLHttpRequest": XMLHttpRequest,
@@ -234,11 +235,29 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                         }else if(state != 608){//重复请求不显示消息
                             layer.msg('下注失败：请求异常，请刷新界面后再下注', {icon: 5});
                         }
+                        _this.setLtToken();
                     }
                 });
             }
         },
-
+        setLtToken : function(){
+            ajaxRequest({
+                url: root + "/commonLottery/getLtToken.html",
+                async:false,
+                dataType:"text",
+                success: function (data) {
+                    if(data){
+                        $("#gameContent input[name='gb.token']").val(data);
+                    }
+                },error:function(XMLHttpRequest, textStatus, errorThrown){
+                    Tools.log({
+                        "XMLHttpRequest": XMLHttpRequest,
+                        "textStatus": textStatus,
+                        "errorThrown": errorThrown
+                    });
+                }
+            });
+        },
         /**
          * 投注项标黄
          * @param betNum
