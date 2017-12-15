@@ -13,6 +13,9 @@ $(function () {
     };
     muiInit(options);
     promoInfo(1);
+
+    //android隐藏头部
+    hideHeader();
 });
 
 
@@ -55,4 +58,14 @@ function promoInfo(pageNumber) {
         }
     };
     muiAjax(options);
+}
+
+/**
+ * android隐藏头部
+ */
+function hideHeader() {
+    if (os == 'app_android') {
+        $('header.mui-bar-nav').remove();
+        $(".mui-content").attr("style", "margin-top: -44px!important;");
+    }
 }
