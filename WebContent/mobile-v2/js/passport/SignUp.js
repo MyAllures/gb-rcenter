@@ -60,7 +60,7 @@ mui(".mui-content").on("tap", "._register", function () {
 function login() {
     var _username = $("[name='sysUser.username']").val();
     var _password = $("[name='sysUser.password']").val();
-
+    os = whatOs();
     if (os == 'android') {
         var _href = _username + "," + _password;
         window.gamebox.gotoLogin(_href);
@@ -334,4 +334,19 @@ function newOpenWin(_url) {
             options: {}
         }
     })
+}
+
+function whatOs() {
+    var ua = navigator.userAgent;
+    if (/(app_ios)/i.test(ua)) {
+        return 'app_ios';
+    } else if (/(iPhone|iPad|iPod|iOS)/i.test(ua)) {
+        return 'ios';
+    } else if (/(app_android)/i.test(ua)) {
+        return 'app_android';
+    } else if (/(android)/i.test(ua)) {
+        return 'android';
+    } else {
+        return 'pc';
+    }
 }
