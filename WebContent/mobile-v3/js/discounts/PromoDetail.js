@@ -25,7 +25,7 @@ function submit(obj,options){
         }
     }else{
         if (os == 'app_android'){
-           login(root+"/login/commonLogin.html");
+           goLogin(root+"/login/commonLogin.html");
         }else{
            login("/");
         }
