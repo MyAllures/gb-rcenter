@@ -756,15 +756,16 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             var _this=this;
             //防止重复提交前置判断
             if($("#dingdan.mui-active")) {
-                mui.ajax(root + '/' + type + '/' + code + '/saveBetOrder.html', {
+                mui.ajax(root + '/' + _this.type + '/' + _this.code + '/saveBetOrder.html', {
                     data: {
                         "gb.token": $("input[name='gb.token']").val(),
-                        betForm: JSON.stringify(ajaxData)
+                        betForm: JSON.stringify(betFormData)
                     },
                     dataType: 'json',
                     type: 'POST',
                     beforeSend: function () {
                         _this.closeConfirmOrder();
+                        _this.gfwfCloseConfirmOrder();
                         _this.showLoading();
                     },
                     success: function (data) {
@@ -779,6 +780,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                             $("div.bet-table-list .mui-active").removeClass("mui-active");
                             $(".balance").text(data.balance);
                             page.resetBet();
+                            _this.getProfitloss();
                         } else {
                             _this.toast(d.msg);
                         }
@@ -786,6 +788,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                     complete: function (xhr) {
                         var state = xhr.getResponseHeader("headerStatus") || xhr.status;
                         if (state != 608) {//重复请求不显示消息
+                            $("font#pl").text("");
                             _this.hideLoading();
                         }
                     }, error: function (xhr, type, errorThrown) {
