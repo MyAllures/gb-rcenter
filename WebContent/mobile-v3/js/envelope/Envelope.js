@@ -97,6 +97,7 @@ function closePage() {
 /*打开红包规则*/
 function openRule() {
     $('.hongbao-rule').show();
+    $('#tip-msgs').hide();
     var text = $("#description").val();
     if (text == null || text == "") {
         text = $(".ct p").text();
@@ -107,6 +108,7 @@ function openRule() {
 /*关闭红包规则*/
 function closeRule() {
     $(".hongbao-rule").hide();
+    $('#tip-msgs').show();
 }
 /*打开红包*/
 function lottery() {
