@@ -1590,22 +1590,36 @@ body.has-srchbar .electronic-srch{
 
 }
 .gb-bankcard >.ct >.ct p{
-    line-height: 23px;
     color: #333333;
     font-size: 12px;
-    margin-bottom: 0;
-    height: 28px;
+    margin-bottom: 5px;
+    text-align: left;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
 }
 .gb-bankcard >.ct >.ct p span{
     color: #999999;
+    white-space: nowrap;
+    padding-right: 5px;
+}
+.gb-bankcard >.ct >.ct p font{
+	width: 100%;
 }
 .gb-bankcard >.ct > p a.copy,.gb-bankcard >.ct >.ct p a.copy{
-    float:right;
+    float: right;
     background: #e0efff;
     padding: 0 5px;
     border-radius: 3px;
     color: #569ff1;
     font-size: 12px;
+    white-space: nowrap;
+    height: 22px;
+    line-height: 22px;
+    margin-left: 5px;
 }
 .gb-headtabs{
     margin: 11px auto;

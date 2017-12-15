@@ -909,8 +909,8 @@ a.popup-screen-btn:visited{
 
 /*投注表格调整*/
 .bet-table-list.k3-table tbody tr td { padding: .5rem 0;position: relative;height:auto;}
-.bet-table .bet-table-list.k3-table table tbody tr td span:nth-child(1) { width: auto; position: relative; left: initial;top: initial;}
-.bet-table .bet-table-list.k3-table table tbody tr td span:nth-child(2) { width: auto; text-align: left;  position: relative; right: initial;top: initial;}
+.bet-table .bet-table-list.k3-table table tbody tr td span:nth-child(1) {/* width: auto;*/ position: relative; left: initial;top: initial;}
+.bet-table .bet-table-list.k3-table table tbody tr td span:nth-child(2) {/* width: auto; */ text-align: left;  position: relative; right: initial;top: initial;}
 .bet-table-list.td-left tbody tr td {text-align: left; padding-left: 0.6rem;}
 .history {
 	font-size: 12px;
