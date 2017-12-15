@@ -57,7 +57,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
             var _this=this;
             var $result = $("#editable tbody", _this.formSelector);
             var json = JSON.parse(data);
-            if(json.result.length>0) {
+            if(json.result) {
                 var html = $("#VPlayerDepositListVo",_this.formSelector).render({data:json.result});
                 $result.html(html);
             }

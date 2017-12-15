@@ -23,6 +23,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             this.getOdds();
             //获取赔率gf
             this.getGfwfOdd();
+            this.getProfitloss();
         },
         /**
          * 页面加载
@@ -266,51 +267,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 bonusModel: $("span.mode_select.selected").attr("data-value"),//元角分模式
                 rebate: (Number($("#betContent_fanli").attr("data-value"))/100).toFixed(3)//返点比例
             });
-            //防止重复提交前置判断
-            if($("#dingdan.mui-active")) {
-                mui.ajax(root + '/' + _this.type + '/' + _this.code + '/saveBetOrder.html', {
-                    data: {
-                        "gb.token": $("input[name='gb.token']").val(),
-                        betForm: JSON.stringify(betForm)
-                    },
-                    dataType: 'json',
-                    type: 'POST',
-                    beforeSend: function () {
-                        _this.gfwfCloseConfirmOrder();
-                        _this.showLoading();
-                    },
-                    success: function (data) {
-                        if (data && data.token) {
-                            $("input[name='gb.token']").val(data.token);
-                        }
-                        var d = data.code[0];
-                        //code代码为100表示成功
-                        if (d && d.code && d.code == '100') {
-                            _this.toast(d.msg);
-                            sessionStorage.removeItem("betForm");
-                            $("div.bet-table-list .mui-active").removeClass("mui-active");
-                            $(".balance").text(data.balance);
-                            page.resetBet();
-                        } else {
-                            _this.toast(d.msg);
-                        }
-                    },
-                    complete: function (xhr) {
-                        var state = xhr.getResponseHeader("headerStatus") || xhr.status;
-                        if (state != 608) {//重复请求不显示消息
-                            _this.hideLoading();
-                        }
-                    }, error: function (xhr, type, errorThrown) {
-                        var state = xhr.getResponseHeader("headerStatus") || xhr.status;
-                        if (state == 600) {
-                            _this.toast('下注失败：请先登录');
-                        } else if (state != 608) {//重复请求不显示消息
-                            _this.toast('下注失败：请求异常，请刷新界面后再下注');
-                        }
-                        _this.setLtToken();
-                    }
-                });
-            }
+            _this.saveBetOrderAll(betForm);
         },
         setLtToken : function(){
             mui.ajax(root + "/commonLottery/getLtToken.html", {
@@ -380,7 +337,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                     maxCanWin=strArr[0];
                 }
                 firstShowPl = strArr.join('|');
-
             }
 
             //弹出订单
@@ -793,6 +749,11 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                     memo: ""
                 });
             });
+            _this.saveBetOrderAll(ajaxData);
+        },
+
+        saveBetOrderAll : function (betFormData) {
+            var _this=this;
             //防止重复提交前置判断
             if($("#dingdan.mui-active")) {
                 mui.ajax(root + '/' + type + '/' + code + '/saveBetOrder.html', {
@@ -888,6 +849,30 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 $(this).attr("data-odds", bet.odd);
                 $(this).attr("data-bet-code", bet.betCode);
                 $(this).children("span[name=odd]").text(bet.odd);
+            })
+        },
+
+        getProfitloss : function () {
+            mui.ajax(root + "/bet/betProfit.html", {
+                data: {
+                    "timeCode": "today",
+                },
+                type: "post",
+                dataType: "json",
+                beforeSend: function () {
+
+                },
+                success: function (data) {
+                    if (data) {
+                        var betProfit = data;
+                        if (!betProfit) betProfit = {};
+                        var totalBetAmount =0.0;
+                        if (betProfit.betamount && betProfit.betamount != 0) {
+                            totalBetAmount = betProfit.betamount.toFixed(2)
+                        }
+                        $('#jrsy').html((betProfit.profitloss-totalBetAmount).toFixed(2));
+                    }
+                }
             })
         },
 

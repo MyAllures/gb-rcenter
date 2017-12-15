@@ -482,7 +482,7 @@ color: #6b88fe;
 .activity-content-bg.mui-content .gb-imgs table td{border:1px solid #487cb5!important;text-align:center;padding:6px 10px;font-size:13px;}
 .activity-content-bg.mui-content .gb-imgs ol{padding-left: 20px;}
 .activity-content-bg.mui-content .gb-imgs ol li{list-style: decimal; color:#8f8f94;}
-.activity-content-bg.mui-content .gb-imgs .ct p,.activity-content-bg.mui-content .gb-imgs .ct p span{color: #dedede!important;}
+.activity-content-bg.mui-content .gb-imgs .ct p,.activity-content-bg.mui-content .gb-imgs .ct p span{color: #dedede!important; line-height: initial;}
 .activity-content-bg.mui-content .agent-text p span{color:#fff!important;}
 .activity-content-bg.mui-content .agent-text table td{border:1px solid #487cb5!important;}
 
