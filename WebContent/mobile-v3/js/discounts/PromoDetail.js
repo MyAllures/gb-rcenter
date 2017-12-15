@@ -24,7 +24,11 @@ function submit(obj,options){
             joinPromo(obj);
         }
     }else{
-        login(root+"/discounts/index.html?skip=1");
+        if (os == 'app_android'){
+            window.gamebox.goLogin();
+        }else{
+           login("/");
+        }
     }
 }
 
@@ -51,14 +55,6 @@ function onPageLoad() {
             if (code === 'money') {
                 $submit.text(window.top.message.promo_auto['抢红包']);
             }
-            /*$submit.on("tap", function () {
-
-                if (isDemo == 'true') {
-                    alert('试玩账号无权限参与活动');
-                } else {
-                    joinPromo(this);
-                }
-            });*/
         }
         changeApplyStatus();
     } else {
@@ -107,22 +103,24 @@ function joinPromo(aplyObj, isRefresh) {
     var st = new Date($(aplyObj).parent().parent().find("._vr_promo_ostart").attr("value")).getTime();
     var et = new Date($(aplyObj).parent().parent().find("._vr_promo_oend").attr("value")).getTime();
     if (st > nowTime || et < nowTime) {
-        return false;
+        toast("活动未开始");
+        return;
     }
 
     var options = eval("("+$(aplyObj).attr("data-rel")+")");
     var code = options.dataCode;//$(aplyObj).data("code");
     if (code == "back_water" || code == "first_deposit" || code == "deposit_send") {
         if (isRefresh) {
-            mui("body").alert({
+            showWarningMsg(window.top.message.promo_auto['提示'],window.top.message.promo_auto['参与中'],function(){window.location.reload();});
+            /*mui("body").alert({
                 title: window.top.message.promo_auto['提示'],
                 message: window.top.message.promo_auto['参与中'],
                 callback: function () {
                     window.location.reload();
                 }
-            });
+            });*/
         }
-        return false;
+        return;
     } else {
         if (isRefresh) {
             applyActivities(aplyObj, true);
@@ -173,7 +171,15 @@ function showWin(data, isRefresh) {
         title = window.top.message.promo_auto['申请失败'];
     }
 
-    layer.open({
+    var options ={
+        btnArray:[window.top.message.promo_auto['查看优惠记录'], window.top.message.promo_auto['好的']],
+        title:title,
+        confirm:data.msg,
+        func:doWin
+    };
+    showConfirmMsg(options);
+
+    /*layer.open({
         title: title,
         content: data.msg,
         btn: [window.top.message.promo_auto['查看优惠记录'], window.top.message.promo_auto['好的']],
@@ -183,7 +189,11 @@ function showWin(data, isRefresh) {
         no: function () {
             window.location.reload();
         }
-    });
+    });*/
+}
+
+function doWin(){
+    goToUrl(root+"/promo/myPromo.html");
 }
 
 function filterActyByPlayer(data) {
