@@ -27,21 +27,6 @@ define(['common/BaseListPage'], function (BaseListPage) {
             this._super();
             $(".tab-content > .tab-pane").css("display", "block");
         },
-
-        painView: function (e, option) {
-            if (e.returnValue == true) {
-                $("#mainFrame").load(root + "/Monitor/getVersiondataTab");
-            }
-        },
-
-        requery: function (event, option) {
-            if (event.returnValue == true)
-                $("div.panel ul li.active a").trigger("click");
-        },
-
-        _requery: function (event, option) {
-            $("div.panel ul li.active a").trigger("click");
-        },
         /**
          * 当前对象事件初始化函数
          */
