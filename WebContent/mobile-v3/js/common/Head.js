@@ -5,9 +5,7 @@ var RECOVER_TIME_INTERVAL = 10;
 
 $(function () {
     //只有h5需要刷新头部信息，安卓 ios会自己调用方法刷新头部信息
-    if (os.indexOf("app") < 0) {
-        headInfo();
-    }
+    headInfo();
     //安卓去掉头部部分
     hideHeader();
 });
