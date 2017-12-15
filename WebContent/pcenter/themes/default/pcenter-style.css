@@ -283,7 +283,7 @@ a{color:#2772ee}
 .wrapper .sidebar .auth-level{margin-top:10px;}
 
 /*左边菜单*/
-.wrapper .sidebar .sidebar-nav{margin-top:50px;padding: 0 10px;}
+.wrapper .sidebar .sidebar-nav{margin-top:50px;padding: 0 10px 10px 10px;}
 .wrapper .sidebar .sidebar-nav dl dt.select{background:#2987e7;color:#fff; position: relative;}
 .wrapper .sidebar .sidebar-nav dl dt.select a{color:#fff}
 .wrapper .sidebar .sidebar-nav dl dt.select:after{content: ""; display: block;background: url(../../images/left-select-finger.png);width: 7px;height: 10px;position: absolute; right: 7px;top: 15px;}
@@ -1552,7 +1552,7 @@ ul.deposit-notice{list-style-type:decimal;margin:20px 15px;}
 .col-xs-8.account-info-warp .control-grouptwo{margin:0 0 15px;}
 
 .body-b-none{background:#fff;}
-.wrapper>.main-wrap{min-height:500px;}
+.wrapper>.main-wrap{min-height:800px;}
 .applysale table td.al-right{width:102px;color:#666;}
 .bank-menu{position:relative;width:570px;}
 .bank-menu a.btn{margin:0 0 10px 10px;width:245px;}
