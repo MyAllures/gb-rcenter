@@ -187,6 +187,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 ajaxRequest({
                     url: _this.baseUrl + '/' + _this.code + '/saveBetOrder.html',
                     data: {
+                        "gb.token":$("#gameContent [name='gb.token']").val(),
                         betForm: betForm
                     },
                     beforeSend: function () {
@@ -196,6 +197,9 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                         page.showLoading();
                     },
                     success: function (data) {
+                        if(data && data.token){
+                            $("#gameContent [name='gb.token']").val(data.token);
+                        }
                         var d = data.code[0];
                         //code代码为100表示成功
                         if (d && d.code && d.code == '100') {
@@ -224,13 +228,16 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                             "textStatus": textStatus,
                             "errorThrown": errorThrown
                         });
-                        layer.msg('下注失败：请先登录', {icon: 5});
+                        var state = XMLHttpRequest.getResponseHeader("headerStatus") || XMLHttpRequest.status;
+                        if (state == 600) {
+                            layer.msg('下注失败：请先登录', {icon: 5});
+                        }else if(state != 608){//重复请求不显示消息
+                            layer.msg('下注失败：请求异常，请刷新界面后再下注', {icon: 5});
+                        }
                     }
                 });
             }
         },
-
-
 
         /**
          * 投注项标黄
