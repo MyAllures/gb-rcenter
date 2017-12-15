@@ -192,7 +192,8 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                             'code': code,
                             'rebate':rebate,
                             'baseNum':baseNum,
-                            'oldOdd':ori
+                            'oldOdd':ori,
+                            'oldRebate':rori
                         };
                         array.push(obj);
                     }
