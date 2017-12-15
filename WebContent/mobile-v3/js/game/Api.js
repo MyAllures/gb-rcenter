@@ -8,7 +8,7 @@ $(function () {
         /*右侧菜单上下滚动，可自行指定范围*/
         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
         /*禁用侧滑手势指定样式*/
-        disabledHandSlip: ['mui-off-canvas-left']
+        disabledHandSlip: ['.mui-off-canvas-left']
     };
     muiInit(options);
 });
@@ -117,15 +117,15 @@ function startGame(obj,options){
     if (apiId != "") {
         if (apiId == "10") {
             apiLogin(data);
-            showGameLoading();
+            showLoading();
         } else if (apiTypeId != "" && (apiTypeId == "1" || apiTypeId == "3" || apiTypeId == "4")) {
             apiLogin(data);
-            showGameLoading();
+            showLoading();
         } else if (apiTypeId != "" && (apiTypeId == "2")) {
             if (os == 'app_ios')
-                gotoPay("/game/apiGames.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
+                gotoPay(root + "/game/getGameByApiId.html?search.apiId=" + apiId + "&search.apiTypeId=" + apiTypeId);
             else
-                goToUrl("/game/apiGames.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
+                goToUrl(root + "/game/getGameByApiId.html?search.apiId=" + apiId + "&search.apiTypeId=" + apiTypeId);
         }
     }
 }
