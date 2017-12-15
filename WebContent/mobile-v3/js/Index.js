@@ -14,6 +14,7 @@ $(function () {
     };
     muiInit(options);
     initBanner();
+    termsStyle();
 });
 
 /*轮播图*/
@@ -133,4 +134,11 @@ function pullUpLoadData(apiId, pageNumber) {
         }
     };
     muiAjax(options);
+}
+
+/**
+ * V3注册条款 样式
+ */
+ function  termsStyle() {
+    $("[data-list=terms]").find("*").attr("style",""); $("[data-list=terms]").find("h2,h1,h3,h4,h5").css({fontSize:"18px"}); $("[data-list=terms]").find("ul ol").css({paddingLeft:"0"});
 }
