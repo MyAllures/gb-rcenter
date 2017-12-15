@@ -147,13 +147,19 @@ define(['site/deposit/BaseDeposit','gb/components/Comet'], function (BaseDeposit
                 if (document.activeElement) {
                     document.activeElement.blur();
                 }
-                
+
+                var rechargeAmount = $("input[name='result.rechargeAmount']").val();
+                if(!/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/.test(rechargeAmount)){
+                    _this.toast("请输入正确的金额格式！");
+                    return false;
+                }
+
                 var $form = $(page.formSelector);
                 if (!$form.valid()) {
                     return false;
                 }
                 
-                var rechargeAmount = $("input[name='result.rechargeAmount']").val();
+
                 var rechargeType = $("input[name='result.rechargeType']").val();
 
                 mui.ajax(root + '/wallet/deposit/online/scan/submit.html', {
