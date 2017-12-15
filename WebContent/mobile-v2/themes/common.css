@@ -1603,7 +1603,7 @@ body.has-srchbar .electronic-srch{
 }
 .gb-bankcard >.ct >.ct p span{
     color: #999999;
-    word-break: keep-all;
+    white-space: nowrap;
     padding-right: 5px;
 }
 .gb-bankcard >.ct >.ct p font{
@@ -1616,7 +1616,7 @@ body.has-srchbar .electronic-srch{
     border-radius: 3px;
     color: #569ff1;
     font-size: 12px;
-    word-break: keep-all;
+    white-space: nowrap;
     height: 22px;
     line-height: 22px;
     margin-left: 5px;
