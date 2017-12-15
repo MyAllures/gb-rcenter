@@ -60,11 +60,12 @@ mui(".mui-content").on("tap", "._register", function () {
 function login() {
     var _username = $("[name='sysUser.username']").val();
     var _password = $("[name='sysUser.password']").val();
-
+    os = whatOs();
     if (os == 'android') {
         var _href = _username + "," + _password;
         window.gamebox.gotoLogin(_href);
     } else if (os == 'app_ios') {
+        //0表示是注册成功后调用方法实际上是未登录，需要ios那里直接调用登录
         loginSucc(_username, _password, 0);
     } else {
         mui.ajax({
@@ -333,4 +334,19 @@ function newOpenWin(_url) {
             options: {}
         }
     })
+}
+
+function whatOs() {
+    var ua = navigator.userAgent;
+    if (/(app_ios)/i.test(ua)) {
+        return 'app_ios';
+    } else if (/(iPhone|iPad|iPod|iOS)/i.test(ua)) {
+        return 'ios';
+    } else if (/(app_android)/i.test(ua)) {
+        return 'app_android';
+    } else if (/(android)/i.test(ua)) {
+        return 'android';
+    } else {
+        return 'pc';
+    }
 }

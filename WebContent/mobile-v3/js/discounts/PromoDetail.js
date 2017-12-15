@@ -110,16 +110,17 @@ function joinPromo(aplyObj, isRefresh) {
     var options = eval("("+$(aplyObj).attr("data-rel")+")");
     var code = options.dataCode;//$(aplyObj).data("code");
     if (code == "back_water" || code == "first_deposit" || code == "deposit_send") {
-        if (isRefresh) {
+        /*if (isRefresh) {
             showWarningMsg(window.top.message.promo_auto['提示'],window.top.message.promo_auto['参与中'],function(){window.location.reload();});
-            /*mui("body").alert({
+            /!*mui("body").alert({
                 title: window.top.message.promo_auto['提示'],
                 message: window.top.message.promo_auto['参与中'],
                 callback: function () {
                     window.location.reload();
                 }
-            });*/
-        }
+            });*!/
+        }*/
+        showWarningMsg(window.top.message.promo_auto['提示'],window.top.message.promo_auto['参与中'],function(){window.location.reload();});
         return;
     } else {
         if (isRefresh) {
