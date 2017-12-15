@@ -1,7 +1,9 @@
 define(['site/hall/Common', 'site/plugin/template'], function (Common, Template) {
     return Common.extend({
+        name:null,
         init: function () {
             this._super();
+            this.bindChangLong();
         },
 
         /**
@@ -227,7 +229,201 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                     $("#GenraType").val("ssc_yixing_dwd");
                 }
             });
-        }
+        },
+
+        refreshView: function () {
+            var _this = this;
+            mui.ajax(root + '/'+_this.type+'/'+_this.code+'/getRecent30Records.html', {
+                data: {code: _this.code},
+                success: function (data) {
+                    if (data && data.length > 0) {
+                        var dataa=eval("("+data+")")
+                        dataa.reverse();
+                        _this.renderView(dataa);
+                    }
+                }
+            });
+        },
+
+        renderView: function (json) {
+            var result = [];
+            for (var k = 0; k < 6; ++k) {
+                result[k] = {ds: [], dx: []};
+            }
+            var str = '';
+             for(var xx=0;xx<5;++xx){
+                 // 单双
+                 str += '<table id="bottom_zs_table_' + xx + '_ds"  style="display:none;">';
+
+                 str += '<tbody>';
+                 for (var i = 0; i < json.length; ++i) {
+                     var value = Tools.parseInt(json[i].openCode.split(",")[Tools.parseInt(xx)]);
+
+                     var name = value % 2 == 0 ? '<i>双</i>' : '<i>单</i>';
+                     var x = 0, y = 0;
+
+                     if (result[Tools.parseInt(xx)].ds.length != 0) {
+                         var preObj = result[Tools.parseInt(xx)].ds[i - 1];
+                         if (preObj.name == name) {
+                             x = preObj.x;
+                             y = preObj.y + 1;
+                         } else {
+                             x = preObj.x + 1;
+                             y = 0;
+                         }
+                     }
+                     result[Tools.parseInt(xx)].ds.push({
+                         name: name,
+                         x: x,
+                         y: y
+                     });
+                 }
+
+                 var maxX = 30;
+                 var maxY = 0;
+                 $.each(result[Tools.parseInt(xx)].ds, function (index, value) {
+                     if (value.x > maxX) {
+                         maxX = value.x;
+                     }
+                     if (value.y > maxY) {
+                         maxY = value.y;
+                     }
+                 });
+
+                 for (var i = 0; i < maxY +2; ++i) {
+                     str += '<tr class="resultLoad">';
+                     for (var j = 0; j < maxX + 1; ++j) {
+                         str += '<td>&nbsp;</td>';
+                     }
+                     str += '</tr>';
+                 }
+                 str += '</tbody>';
+                 str += '</table>';
+
+
+                 // 大小
+                 str += '<table id="bottom_zs_table_' + xx + '_dx"  style="display:none;">';
+                 str += '<tbody>';
+                 for (var i = 0; i < json.length; ++i) {
+                     var value = json[i].openCode.split(",")[Tools.parseInt(xx)];
+                     var name = value >= 5 ? '<i>大</i>' : '<i>小</i>';
+                     var x = 0, y = 0;
+
+                     if (result[Tools.parseInt(xx)].dx.length != 0) {
+                         var preObj = result[Tools.parseInt(xx)].dx[i - 1];
+                         if (preObj.name == name) {
+                             x = preObj.x;
+                             y = preObj.y + 1;
+                         } else {
+                             x = preObj.x + 1;
+                             y = 0;
+                         }
+                     }
+                     result[Tools.parseInt(xx)].dx.push({
+                         name: name,
+                         x: x,
+                         y: y
+                     });
+                 }
+
+                 var maxX = 30;
+                 var maxY = 0;
+                 $.each(result[Tools.parseInt(xx)].dx, function (index, value) {
+                     if (value.x > maxX) {
+                         maxX = value.x;
+                     }
+                     if (value.y > maxY) {
+                         maxY = value.y;
+                     }
+                 });
+
+                 for (var i = 0; i < maxY +2; ++i) {
+                     str += '<tr class="resultLoad">';
+                     for (var j = 0; j < maxX + 1; ++j) {
+                         str += '<td>&nbsp;</td>';
+                     }
+                     str += '</tr>';
+                 }
+                 str += '</tbody>';
+                 str += '</table>';
+             }
+            $("#changLongTable").html(str);
+
+            for (var i = 0; i < 5; ++i) {
+                var value = result[i];
+                var pre = i;
+                $.each(value.ds, function (index, value) {
+                    $('#bottom_zs_table_' + pre + '_ds').find("tr").eq(value.y).find("td").eq(value.x).html(value.name);
+                });
+                $.each(value.dx, function (index, value) {
+                    $('#bottom_zs_table_' + pre + '_dx').find("tr").eq(value.y).find("td").eq(value.x).html(value.name);
+                });
+            }
+            var num1 = $("#qiuu").attr("data-num");
+            var name = $("div.ssc-method-label a[data-name].mui-active").attr("data-name");
+            $('#bottom_zs_table_' + num1 + '_'+name).show();
+        },
+
+        bindChangLong :function () {
+            var _this=this;
+            //绑定长龙第几球
+            mui("body").off("tap", "#qiuu").on("tap", "#qiuu", function () {
+                var name = $("div.ssc-method-label a[data-name].mui-active").attr("data-name");
+                if(name != undefined){
+                    _this.name=name;
+                }
+                var typePicker = new mui.PopPicker();
+                typePicker.setData([{
+                    value:'0',
+                    text: '第一球'
+                }, {
+                    value:'1',
+                    text: '第二球'
+                }, {
+                    value:'2',
+                    text: '第三球'
+                }, {
+                    value:'3',
+                    text: '第四球'
+                }, {
+                    value:'4',
+                    text: '第五球'
+                }
+                ]);
+                typePicker.show(function (e) {
+                    $("div.ssc-method-label a[data-name='"+_this.name+"']").addClass("mui-active");
+                    $("#qiuu").text(e[0].text);
+                    $("#qiuu").attr("data-num",e[0].value);
+                    $("#changLongTable table").hide();
+                    $('#bottom_zs_table_' + e[0].value + '_'+_this.name).show();
+                });
+            });
+            //选择球时，点取消和背景退出事件
+            mui('body').on('tap', '.mui-poppicker-btn-cancel, .mui-backdrop', function() {
+                $("div.ssc-method-label a[data-name='"+_this.name+"']").addClass("mui-active");
+                var num = $("#qiuu").attr("data-num");
+                $("#changLongTable table").hide();
+                $('#bottom_zs_table_' + num + '_'+ _this.name).show();
+            });
+            //大小
+            mui('body').off("tap", "#daxiao").on('tap', '#daxiao', function() {
+                $("#danshuang").removeClass("mui-active")
+                var num = $("#qiuu").attr("data-num");
+                $("#changLongTable table").hide();
+                $('#bottom_zs_table_' + num + '_dx').show();
+            });
+
+            //单双
+            mui('body').off("tap", "#danshuang").on('tap', '#danshuang', function() {
+                $("#daxiao").removeClass("mui-active")
+                var num = $("#qiuu").attr("data-num");
+                $("#changLongTable table").hide();
+                $('#bottom_zs_table_' + num + '_ds').show();
+            });
+
+        },
+
+
 
 
     });

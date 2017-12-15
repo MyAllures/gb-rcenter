@@ -23,6 +23,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             this.getOdds();
             //获取赔率gf
             this.getGfwfOdd();
+            this.getProfitloss();
         },
         /**
          * 页面加载
@@ -284,6 +285,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                         $("div.bet-table-list .mui-active").removeClass("mui-active");
                         $(".balance").text(data.balance);
                         page.resetBet();
+                        _this.getProfitloss();
                     } else {
                         _this.toast(d.msg);
                     }
@@ -782,6 +784,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                         $("div.bet-table-list .mui-active").removeClass("mui-active");
                         $(".balance").text(data.balance);
                         page.resetBet();
+                        _this.getProfitloss();
                     } else {
                         _this.toast(d.msg);
                     }
@@ -843,6 +846,30 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 $(this).attr("data-odds", bet.odd);
                 $(this).attr("data-bet-code", bet.betCode);
                 $(this).children("span[name=odd]").text(bet.odd);
+            })
+        },
+
+        getProfitloss : function () {
+            mui.ajax(root + "/bet/betProfit.html", {
+                data: {
+                    "timeCode": "today",
+                },
+                type: "post",
+                dataType: "json",
+                beforeSend: function () {
+
+                },
+                success: function (data) {
+                    if (data) {
+                        var betProfit = data;
+                        if (!betProfit) betProfit = {};
+                        var totalBetAmount =0.0;
+                        if (betProfit.betamount && betProfit.betamount != 0) {
+                            totalBetAmount = betProfit.betamount.toFixed(2)
+                        }
+                        $('#jrsy').html((betProfit.profitloss-totalBetAmount).toFixed(2));
+                    }
+                }
             })
         },
 

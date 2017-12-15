@@ -239,12 +239,23 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                         if (numArr && numArr.length > 0) {
                             _this.showLastOpenCode(numArr);
                         }
+                        if(_this.type == "ssc"){
+                            _this.refreshView();
+                        }
+
                         _this.showRecentHistory(data);
                     }
                 },
                 error: function (e) {
                 }
             });
+        },
+
+        /**
+         * 渲染双面长龙排行等 有需要的彩种请重写这个方法
+         */
+        refreshView: function () {
+
         },
 
         /**lot

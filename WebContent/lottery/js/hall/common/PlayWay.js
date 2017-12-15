@@ -83,10 +83,17 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 if ($(this).hasClass("bg-yellow")) {
                     $(this).removeClass("bg-yellow");
                 } else {
-                    $(this).addClass("bg-yellow");
+                    if(_this.xianZhiLHCZhuShu()){
+                        $(this).addClass("bg-yellow");
+                    }
                 }
             });
         },
+        //六合彩连码.全不中限制注数;
+        xianZhiLHCZhuShu: function () {
+          return true;
+        },
+
         /** 下注 */
         placeOrder: function () {
             var _this = this;
@@ -204,7 +211,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                             _this.clearContent();
                             _this.clearTdInput();
                         } else {
-                            layer.msg(d.msg + '[' + d.code + ']', {icon: d.icon});
+                            layer.msg(d.msg, {icon: d.icon});
                         }
                     },
                     complete: function () {
@@ -409,6 +416,11 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 var val = parseInt($(this).val());
                 if (isNaN(val) || typeof val != 'number') {
                     val = 1;
+                }
+                if(val>1000000){
+                    $("#inputBeishu").val("1");
+                    layer.msg("倍数不能大于1000000");
+                    return ;
                 }
                 val = parseInt(val);
                 val = val < 1 ? 1 : val;

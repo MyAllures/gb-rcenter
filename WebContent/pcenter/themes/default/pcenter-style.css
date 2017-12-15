@@ -725,8 +725,8 @@ form > .modal-body{overflow-y:auto;overflow-x:hidden;}
 
 /*图表模式-列表*/
 .chart-table{margin-left:20px;margin-top:20px;border:1px solid #d3d8dc;border-radius:4px;margin-right:20px;}
-.chart-table th{height:37px;line-height:37px;background:#f7f8f9;text-align:left;padding:10px 0 5px 15px}
-.chart-table td{border-bottom:1px solid #ededed;text-align:left;padding:10px 0 8px 15px}
+.chart-table th{height:37px;line-height:37px;background:#f7f8f9;text-align:left;padding:10px 0 5px 5px;}
+.chart-table td{border-bottom:1px solid #ededed;text-align:left; padding: 10px 0 8px 5px;}
 .chart-table select{margin-top:5px}
 .on{font-weight:bold}
 
@@ -1879,6 +1879,14 @@ div.scroll{overflow-x:hidden;overflow-y:hidden;white-space:pre-wrap;word-wrap:br
 .tada {
   animation-name: tada;
 }
+/*投注记录调整*/
+.record-total{
+	margin: 20px 20px -19px 20px;
+    background: #fbf3e5;
+    border: 1px solid #ffe1b4;
+    border-radius: 2px;
+    padding: 10px;
+}
 
 /*支付调整*/
 .control-group .right-decimals{
@@ -1898,3 +1906,4 @@ div.scroll{overflow-x:hidden;overflow-y:hidden;white-space:pre-wrap;word-wrap:br
 .applysale .transfer-tips li{
 	list-style-type: disc;
 }
+

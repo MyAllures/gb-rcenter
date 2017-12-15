@@ -264,38 +264,38 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 msg = msg.replace("${siteName}", siteName);
                 msg = msg.replace("${rate}", rate);
                 var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), window.top.dateFormat.daySecond);
-                times = times.replace("{0}",date);
+                times = times.replace("{0}", date);
                 var leftTime = new Date(msgBody.leftTime);
                 var now = new Date();
-                var time = parseInt((leftTime-now)/1000);
-                sessionStorage.setItem("popUp_second"+id,time);
+                var time = parseInt((leftTime - now) / 1000);
+                sessionStorage.setItem("popUp_second" + id, time);
                 var tmpTime = time;
-                if (tmpTime >= 0){
+                if (tmpTime >= 0) {
                     var hour = Math.floor(tmpTime / 3600);
                     tmpTime = tmpTime - hour * 3600;
-                    var minute = Math.floor(tmpTime/60);
+                    var minute = Math.floor(tmpTime / 60);
                     if (minute < 10) {
                         minute = '0' + minute;
                     }
-                    var second = tmpTime - minute*60;
+                    var second = tmpTime - minute * 60;
                     if (second < 10) {
                         second = '0' + second;
                     }
-                }else {
+                } else {
                     var hour = 0;
-                    var minute = '0'+ 0;
-                    var second = '0'+ 0;
+                    var minute = '0' + 0;
+                    var second = '0' + 0;
                 }
-                if (rate >= 100){
-                    if (level=='red'){
-                        var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">'+msg+'</div></div>'+
-                            '<div class="clearfix m-md al-center"><div  id='+id+'><font class="fs20">'+countDown+'</font>' +
-                            '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">'+hour+'</span>'+":"+''+
-                            '<span id="minutes">'+minute+'</span>'+":"+'<span id="seconds">'+second+'</span></span></div>' +
-                            '<div class="al-center co-grayc2">'+times+'</div></div>'
-                            +'<div class="clearfix m-md">'+tips+'</div>';
-                    }else if (level=='stop'){
-                        var html = '<div class="line-hi34 m-sm">'+msg+'</div>';
+                if (rate >= 100) {
+                    if (level == 'red') {
+                        var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">' + msg + '</div></div>' +
+                            '<div class="clearfix m-md al-center"><div  id=' + id + '><font class="fs20">' + countDown + '</font>' +
+                            '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">' + hour + '</span>' + ":" + '' +
+                            '<span id="minutes">' + minute + '</span>' + ":" + '<span id="seconds">' + second + '</span></span></div>' +
+                            '<div class="al-center co-grayc2">' + times + '</div></div>'
+                            + '<div class="clearfix m-md">' + tips + '</div>';
+                    } else if (level == 'stop') {
+                        var html = '<div class="line-hi34 m-sm">' + msg + '</div>';
                     }
                     var dialog = BootstrapDialog.show({
                         title: window.top.message.setting_auto['消息'],
@@ -320,13 +320,13 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     if (date && date.length > 0 && time >= 0) {
                         window.top.popUp.showLeftTime();
                         var interval = setInterval(function () {
-                            window.top.popUp.showLeftTime(interval,id)
+                            window.top.popUp.showLeftTime(interval, id)
                         }, 1000);
-                    }else {
+                    } else {
                         var sites = window.top.message.setting_auto['sites'];
                         var quota = window.top.message.setting_auto['quota'];
-                        var html = '<div class="msg msg-warning al-center"><div class="msg-description">'+sites+'</div></div>'+
-                            '<div class="clearfix m-md">'+quota+'</div>';
+                        var html = '<div class="msg msg-warning al-center"><div class="msg-description">' + sites + '</div></div>' +
+                            '<div class="clearfix m-md">' + quota + '</div>';
                         var dialog = BootstrapDialog.show({
                             title: window.top.message.setting_auto['消息'],
                             message: html,
@@ -345,8 +345,25 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                             }],
                         })
                     }
-                } else if ($("#topSecurity") && $("#topSecurity").length > 0) {
-                    window.top.topPage.showWarningMessage(msg);
+                } else {
+                    var html = '<div class="clearfix m-md">' + msg + '</div>';
+                    var dialog = BootstrapDialog.show({
+                        title: window.top.message.setting_auto['消息'],
+                        message: html,
+                        buttons: [{
+                            label: window.top.message.setting_auto['去充值'],
+                            action: function (dialog) {
+                                dialog.close();
+                                $("#mainFrame").load(root + "/credit/pay/pay.html");
+                            }
+                        }, {
+                            label: window.top.message.setting_auto['取消'],
+                            cssClass: 'btn-primary',
+                            action: function (dialog) {
+                                dialog.close();
+                            }
+                        }],
+                    });
                 }
             }
 
@@ -367,8 +384,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 $("#topSecurity").addClass(className);
             }
         },
-        showLeftTime: function (interval,id) {
-            var time = sessionStorage.getItem("popUp_second"+id);
+        showLeftTime: function (interval, id) {
+            var time = sessionStorage.getItem("popUp_second" + id);
             if (time < 0 && interval) {
                 window.clearInterval(interval);
                 return;
@@ -376,19 +393,19 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var tmpTime = Number(time);
             var hour = Math.floor(tmpTime / 3600);
             tmpTime = tmpTime - hour * 3600;
-            var minute = Math.floor(tmpTime/60);
+            var minute = Math.floor(tmpTime / 60);
             if (minute < 10) {
                 minute = '0' + minute;
             }
-            var second = tmpTime - minute*60;
+            var second = tmpTime - minute * 60;
             if (second < 10) {
                 second = '0' + second;
             }
 
-            $("span#hours",$("#"+id)).text(hour);
-            $("span#minutes",$("#"+id)).text(minute);
-            $("span#seconds",$("#"+id)).text(second);
-            sessionStorage.setItem("popUp_second"+id,--time);
+            $("span#hours", $("#" + id)).text(hour);
+            $("span#minutes", $("#" + id)).text(minute);
+            $("span#seconds", $("#" + id)).text(second);
+            sessionStorage.setItem("popUp_second" + id, --time);
         },
         rankInadequate: function (data) {
             var btnOption = {};
@@ -547,9 +564,9 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), dateFormat.daySecond);
             var leftTime = new Date(msgBody.leftTime);
             var now = new Date();
-            var time = parseInt((leftTime-now)/1000);
+            var time = parseInt((leftTime - now) / 1000);
             var id = new Date().getTime();
-            sessionStorage.setItem("popUp_second"+id,time);
+            sessionStorage.setItem("popUp_second" + id, time);
             var rate = Number(msgBody.rate);
             var warnRate = Number(msgBody.warnRate);
             var stopRate = Number(msgBody.stopRate);
@@ -557,46 +574,46 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var tips = window.top.message.setting_auto['tips'];
             if (rate >= stopRate) { //立即停止
                 var msg = window.top.message.setting_auto['您站点的转账上限使用已超出'];
-                msg = msg.replace("${stopRate}",stopRate);
-                var html='<div class="line-hi34 m-sm">'+msg+'</div>';
-                var dialog=BootstrapDialog.show({
+                msg = msg.replace("${stopRate}", stopRate);
+                var html = '<div class="line-hi34 m-sm">' + msg + '</div>';
+                var dialog = BootstrapDialog.show({
                     title: window.top.message.setting_auto['消息'],
                     message: html,
-                    buttons:[{
+                    buttons: [{
                         label: '确定',
                         cssClass: 'btn-primary',
                         action: function (dialog) {
                             dialog.close();
                         }
-                }],
-            });
+                    }],
+                });
             } else if (rate >= warnRate) {
                 var msg = window.top.message.setting_auto['您站点的额度已用'];
-                msg = msg.replace("${rate}",rate);
-                msg = msg.replace("${leftTime}",date);
+                msg = msg.replace("${rate}", rate);
+                msg = msg.replace("${leftTime}", date);
                 var tmpTime = time;
-                if (tmpTime >= 0){
+                if (tmpTime >= 0) {
                     var hour = Math.floor(tmpTime / 3600);
                     tmpTime = tmpTime - hour * 3600;
-                    var minute = Math.floor(tmpTime/60);
+                    var minute = Math.floor(tmpTime / 60);
                     if (minute < 10) {
                         minute = '0' + minute;
                     }
-                    var second = tmpTime - minute*60;
+                    var second = tmpTime - minute * 60;
                     if (second < 10) {
                         second = '0' + second;
                     }
-                }else {
+                } else {
                     var hour = 0;
-                    var minute = '0'+ 0;
-                    var second = '0'+ 0;
+                    var minute = '0' + 0;
+                    var second = '0' + 0;
                 }
-                var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">'+msg+'</div></div>'+
-                    '<div class="clearfix m-md al-center"><div id='+id+'><font class="fs20">'+countDown+'</font>' +
-                    '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">'+hour+'</span>'+":"+'' +
-                    '<span id="minutes">'+minute+'</span>'+":"+'<span id="seconds">'+second+'</span></span></div>' +
-                    '<div class="al-center co-grayc2">'+times+'</div></div>'
-                    +'<div class="clearfix m-md">'+tips+'</div>';
+                var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">' + msg + '</div></div>' +
+                    '<div class="clearfix m-md al-center"><div id=' + id + '><font class="fs20">' + countDown + '</font>' +
+                    '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">' + hour + '</span>' + ":" + '' +
+                    '<span id="minutes">' + minute + '</span>' + ":" + '<span id="seconds">' + second + '</span></span></div>' +
+                    '<div class="al-center co-grayc2">' + times + '</div></div>'
+                    + '<div class="clearfix m-md">' + tips + '</div>';
                 var dialog = BootstrapDialog.show({
                     title: window.top.message.setting_auto['消息'],
                     message: html,
@@ -620,13 +637,13 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 if (date && date.length > 0 && time >= 0) {
                     window.top.popUp.showLeftTime();
                     var interval = setInterval(function () {
-                        window.top.popUp.showLeftTime(interval,id)
+                        window.top.popUp.showLeftTime(interval, id)
                     }, 1000);
-                }else {
+                } else {
                     var sites = window.top.message.setting_auto['sites'];
                     var quota = window.top.message.setting_auto['quota'];
-                    var html = '<div class="msg msg-warning al-center"><div class="msg-description">'+sites+'</div></div>'+
-                        '<div class="clearfix m-md">'+quota+'</div>';
+                    var html = '<div class="msg msg-warning al-center"><div class="msg-description">' + sites + '</div></div>' +
+                        '<div class="clearfix m-md">' + quota + '</div>';
                     var dialog = BootstrapDialog.show({
                         title: window.top.message.setting_auto['消息'],
                         message: html,
