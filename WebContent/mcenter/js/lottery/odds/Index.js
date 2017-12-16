@@ -140,6 +140,11 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     betCode = String($(oddObj).find("input[name$=betCode]").val());
                     code = String($(oddObj).find("input[name$=code]").val());
                     betNum = String($(oddObj).find("input[name$=betNum]").val());
+
+                    if (!$input.valid()|| !$rinput.valid()) {
+                        $target.unlock();
+                        return;
+                    }
                     //三星（一星，三星统一用二星的返点比例）混合组选（组六统一用组三返点比例）混合和值（统一用组三的返点比例）
                     if(("ssc_sanxing_zhixuan_hszh"==betCode && "三星"==betNum)||
                         ("ssc_sanxing_zhixuan_hszh"==betCode && "一星"==betNum)||
@@ -162,10 +167,6 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                         rebate = sameRebate2;
                     }
                     if (odd != ori || rebate !=rori) {
-                        if (!$input.valid()|| !$rinput.valid()) {
-                            $target.unlock();
-                            return;
-                        }
                         limit = $input.attr("data-limit");
                         rlimit = $rinput.attr("data-limit");
                         //返点比例上限提示
@@ -270,11 +271,12 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     betCode = String($(oddObj).find("input[name$=betCode]").val());
                     code = String($(oddObj).find("input[name$=code]").val());
                     betNum = String($(oddObj).find("input[name$=betNum]").val());
+
+                    if (!$input.valid()) {
+                        $target.unlock();
+                        return;
+                    }
                     if (odd != ori) {
-                        if (!$input.valid()) {
-                            $target.unlock();
-                            return;
-                        }
                         limit = $input.attr("data-limit");
                         //超过赔率定义上限需提示
                         if (odd > limit) {
