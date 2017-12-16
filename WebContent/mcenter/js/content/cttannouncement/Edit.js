@@ -239,9 +239,8 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                 $(".targetContent"+language).val(content);
             });
 
-            var type = $("[name=announcementType]").val();
-            var typename = $("div[selectdiv='announcementType']").find("a[key='"+type+"']").text();
-            $("#targetType").text(typename);
+            var type = $("[name='announcementType']").attr('title');
+            $("#targetType").text(type);
 
             $(e.currentTarget).unlock();
             var task=$("#task").is(':checked');
