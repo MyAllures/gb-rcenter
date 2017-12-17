@@ -109,7 +109,7 @@ function openRule() {
     $('#tip-msgs').hide();
     var text = $("#description").val();
     if (text == null || text == "") {
-        text = $(".ct p").text();
+        text = $(".mui-row .ct p").text();
     }
     $(".nice-wrapper").html(text);
     /*添加规则滚动*/
