@@ -79,6 +79,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
             if(lotteryGenra =="ssc_yixing_dwd"){
                 betCode="ssc_yixing_dwd";
                 jspStr="SscWuxing";
+                $("#changLong").hide();
             }
             mui.ajax(root + '/'+this.type+'/'+this.code+'/getBetTable.html', {
                 data: {"betCode": betCode,"jspStr":jspStr},
@@ -188,7 +189,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                         $("#toobarTitle").text("传统玩法-数字盘");
                         $("#GenraType").val("ssc_shuzipan");
                         _this.changeList();
-
+                        $("#changLong").show();
                     }
                 });
             });
@@ -207,7 +208,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                         $("#toobarTitle").text("官方玩法-定位胆");
                         $("#GenraType").val("ssc_yixing_dwd");
                         _this.changeList();
-
+                        $("#changLong").hide();
                     }
                 });
             });
@@ -246,6 +247,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
         },
 
         renderView: function (json) {
+            var _this=this;
             var result = [];
             for (var k = 0; k < 6; ++k) {
                 result[k] = {ds: [], dx: []};
@@ -254,19 +256,23 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
              for(var xx=0;xx<5;++xx){
                  // 单双
                  str += '<table id="bottom_zs_table_' + xx + '_ds"  style="display:none;">';
-
                  str += '<tbody>';
                  for (var i = 0; i < json.length; ++i) {
                      var value = Tools.parseInt(json[i].openCode.split(",")[Tools.parseInt(xx)]);
 
-                     var name = value % 2 == 0 ? '<i>双</i>' : '<i>单</i>';
+                     var name = value % 2 == 0 ? "<i style='background-color:#2a85e2'>双</i>" : "<i style='background-color:#e23b2a'>单</i>";
                      var x = 0, y = 0;
 
                      if (result[Tools.parseInt(xx)].ds.length != 0) {
                          var preObj = result[Tools.parseInt(xx)].ds[i - 1];
                          if (preObj.name == name) {
-                             x = preObj.x;
-                             y = preObj.y + 1;
+                             if (preObj.y>4){
+                                 x = preObj.x +1;
+                                 y = 0;
+                             }else {
+                                 x = preObj.x;
+                                 y = preObj.y + 1;
+                             }
                          } else {
                              x = preObj.x + 1;
                              y = 0;
@@ -275,7 +281,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                      result[Tools.parseInt(xx)].ds.push({
                          name: name,
                          x: x,
-                         y: y
+                         y: y,
                      });
                  }
 
@@ -290,7 +296,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                      }
                  });
 
-                 for (var i = 0; i < maxY +2; ++i) {
+                 for (var i = 0; i < maxY +1; ++i) {
                      str += '<tr class="resultLoad">';
                      for (var j = 0; j < maxX + 1; ++j) {
                          str += '<td>&nbsp;</td>';
@@ -299,27 +305,30 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                  }
                  str += '</tbody>';
                  str += '</table>';
-
-
                  // 大小
                  str += '<table id="bottom_zs_table_' + xx + '_dx"  style="display:none;">';
                  str += '<tbody>';
                  for (var i = 0; i < json.length; ++i) {
                      var value = json[i].openCode.split(",")[Tools.parseInt(xx)];
-                     var name = value >= 5 ? '<i>大</i>' : '<i>小</i>';
+                     var name = value >= 5 ? "<i style='background-color:#2a85e2'>大</i>" : "<i style='background-color:#e23b2a'>小</i>";
                      var x = 0, y = 0;
 
-                     if (result[Tools.parseInt(xx)].dx.length != 0) {
+                     if (result[xx].dx.length != 0) {
                          var preObj = result[Tools.parseInt(xx)].dx[i - 1];
                          if (preObj.name == name) {
-                             x = preObj.x;
-                             y = preObj.y + 1;
+                             if (preObj.y>4){
+                                 x = preObj.x +1;
+                                 y = 0;
+                             }else {
+                                 x = preObj.x;
+                                 y = preObj.y + 1;
+                             }
                          } else {
                              x = preObj.x + 1;
                              y = 0;
                          }
                      }
-                     result[Tools.parseInt(xx)].dx.push({
+                     result[xx].dx.push({
                          name: name,
                          x: x,
                          y: y
@@ -328,7 +337,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
 
                  var maxX = 30;
                  var maxY = 0;
-                 $.each(result[Tools.parseInt(xx)].dx, function (index, value) {
+                 $.each(result[xx].dx, function (index, value) {
                      if (value.x > maxX) {
                          maxX = value.x;
                      }
@@ -337,9 +346,9 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                      }
                  });
 
-                 for (var i = 0; i < maxY +2; ++i) {
+                 for (var i = 0; i < maxY +1; ++i) {
                      str += '<tr class="resultLoad">';
-                     for (var j = 0; j < maxX + 1; ++j) {
+                     for (var j = 0; j < maxX +1; ++j) {
                          str += '<td>&nbsp;</td>';
                      }
                      str += '</tr>';
@@ -361,6 +370,9 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
             }
             var num1 = $("#qiuu").attr("data-num");
             var name = $("div.ssc-method-label a[data-name].mui-active").attr("data-name");
+            if(name ==undefined){
+                name = _this.name;
+            }
             $('#bottom_zs_table_' + num1 + '_'+name).show();
         },
 

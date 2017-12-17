@@ -81,7 +81,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             });
 
             mui("body").off('tap','#inputMoney').on("tap", "#inputMoney", function () {
-                mui('.mui-scroll-wrapper.middle-content').scroll().refresh();
+                mui('.middle-content.middle-content-bat').scroll().refresh();
             });
         },
         //收起头部
