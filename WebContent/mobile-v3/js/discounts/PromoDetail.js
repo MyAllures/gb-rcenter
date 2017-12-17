@@ -120,7 +120,13 @@ function joinPromo(aplyObj, isRefresh) {
                 }
             });*!/
         }*/
-        showWarningMsg(window.top.message.promo_auto['提示'],window.top.message.promo_auto['参与中'],function(){window.location.reload();});
+        showWarningMsg(
+            window.top.message.promo_auto['提示'],
+            window.top.message.promo_auto['参与中'],
+            function(){
+                //window.location.reload();
+            }
+            );
         return;
     } else {
         if (isRefresh) {
