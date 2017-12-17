@@ -239,7 +239,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                         if (numArr && numArr.length > 0) {
                             _this.showLastOpenCode(numArr);
                         }
-                        if(_this.type == "ssc"){
+                        if(_this.type == "ssc" || _this.type=="pl3"){
                             _this.refreshView();
                         }
 

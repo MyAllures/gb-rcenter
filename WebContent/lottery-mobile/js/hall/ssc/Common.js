@@ -236,6 +236,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
             var _this = this;
             mui.ajax(root + '/'+_this.type+'/'+_this.code+'/getRecent30Records.html', {
                 data: {code: _this.code},
+                type: 'POST',
                 success: function (data) {
                     if (data && data.length > 0) {
                         var dataa=eval("("+data+")")
@@ -253,114 +254,228 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 result[k] = {ds: [], dx: []};
             }
             var str = '';
-             for(var xx=0;xx<5;++xx){
-                 // 单双
-                 str += '<table id="bottom_zs_table_' + xx + '_ds"  style="display:none;">';
-                 str += '<tbody>';
-                 for (var i = 0; i < json.length; ++i) {
-                     var value = Tools.parseInt(json[i].openCode.split(",")[Tools.parseInt(xx)]);
+             for(var xx=0;xx<6;xx++){
+                 if(xx != 5){
+                     // 单双
+                     str += '<table id="bottom_zs_table_' + xx + '_ds"  style="display:none;">';
+                     str += '<tbody>';
+                     for (var i = 0; i < json.length; ++i) {
+                         var value = Tools.parseInt(json[i].openCode.split(",")[Tools.parseInt(xx)]);
 
-                     var name = value % 2 == 0 ? "<i style='background-color:#2a85e2'>双</i>" : "<i style='background-color:#e23b2a'>单</i>";
-                     var x = 0, y = 0;
+                         var name = value % 2 == 0 ? "<i style='background-color:#2a85e2'>双</i>" : "<i style='background-color:#e23b2a'>单</i>";
+                         var x = 0, y = 0;
 
-                     if (result[Tools.parseInt(xx)].ds.length != 0) {
-                         var preObj = result[Tools.parseInt(xx)].ds[i - 1];
-                         if (preObj.name == name) {
-                             if (preObj.y>4){
-                                 x = preObj.x +1;
+                         if (result[Tools.parseInt(xx)].ds.length != 0) {
+                             var preObj = result[Tools.parseInt(xx)].ds[i - 1];
+                             if (preObj.name == name) {
+                                 if (preObj.y>4){
+                                     x = preObj.x +1;
+                                     y = 0;
+                                 }else {
+                                     x = preObj.x;
+                                     y = preObj.y + 1;
+                                 }
+                             } else {
+                                 x = preObj.x + 1;
                                  y = 0;
-                             }else {
-                                 x = preObj.x;
-                                 y = preObj.y + 1;
                              }
-                         } else {
-                             x = preObj.x + 1;
-                             y = 0;
                          }
+                         result[Tools.parseInt(xx)].ds.push({
+                             name: name,
+                             x: x,
+                             y: y,
+                         });
                      }
-                     result[Tools.parseInt(xx)].ds.push({
-                         name: name,
-                         x: x,
-                         y: y,
+
+                     var maxX = 30;
+                     var maxY = 0;
+                     $.each(result[Tools.parseInt(xx)].ds, function (index, value) {
+                         if (value.x > maxX) {
+                             maxX = value.x;
+                         }
+                         if (value.y > maxY) {
+                             maxY = value.y;
+                         }
                      });
-                 }
 
-                 var maxX = 30;
-                 var maxY = 0;
-                 $.each(result[Tools.parseInt(xx)].ds, function (index, value) {
-                     if (value.x > maxX) {
-                         maxX = value.x;
+                     for (var i = 0; i < maxY +1; ++i) {
+                         str += '<tr class="resultLoad">';
+                         for (var j = 0; j < maxX + 1; ++j) {
+                             str += '<td>&nbsp;</td>';
+                         }
+                         str += '</tr>';
                      }
-                     if (value.y > maxY) {
-                         maxY = value.y;
-                     }
-                 });
+                     str += '</tbody>';
+                     str += '</table>';
+                     // 大小
+                     str += '<table id="bottom_zs_table_' + xx + '_dx"  style="display:none;">';
+                     str += '<tbody>';
+                     for (var i = 0; i < json.length; ++i) {
+                         var value = json[i].openCode.split(",")[Tools.parseInt(xx)];
+                         var name = value >= 5 ? "<i style='background-color:#2a85e2'>大</i>" : "<i style='background-color:#e23b2a'>小</i>";
+                         var x = 0, y = 0;
 
-                 for (var i = 0; i < maxY +1; ++i) {
-                     str += '<tr class="resultLoad">';
-                     for (var j = 0; j < maxX + 1; ++j) {
-                         str += '<td>&nbsp;</td>';
-                     }
-                     str += '</tr>';
-                 }
-                 str += '</tbody>';
-                 str += '</table>';
-                 // 大小
-                 str += '<table id="bottom_zs_table_' + xx + '_dx"  style="display:none;">';
-                 str += '<tbody>';
-                 for (var i = 0; i < json.length; ++i) {
-                     var value = json[i].openCode.split(",")[Tools.parseInt(xx)];
-                     var name = value >= 5 ? "<i style='background-color:#2a85e2'>大</i>" : "<i style='background-color:#e23b2a'>小</i>";
-                     var x = 0, y = 0;
-
-                     if (result[xx].dx.length != 0) {
-                         var preObj = result[Tools.parseInt(xx)].dx[i - 1];
-                         if (preObj.name == name) {
-                             if (preObj.y>4){
-                                 x = preObj.x +1;
+                         if (result[xx].dx.length != 0) {
+                             var preObj = result[Tools.parseInt(xx)].dx[i - 1];
+                             if (preObj.name == name) {
+                                 if (preObj.y>4){
+                                     x = preObj.x +1;
+                                     y = 0;
+                                 }else {
+                                     x = preObj.x;
+                                     y = preObj.y + 1;
+                                 }
+                             } else {
+                                 x = preObj.x + 1;
                                  y = 0;
-                             }else {
-                                 x = preObj.x;
-                                 y = preObj.y + 1;
                              }
-                         } else {
-                             x = preObj.x + 1;
-                             y = 0;
                          }
+                         result[xx].dx.push({
+                             name: name,
+                             x: x,
+                             y: y
+                         });
                      }
-                     result[xx].dx.push({
-                         name: name,
-                         x: x,
-                         y: y
+
+                     var maxX = 30;
+                     var maxY = 0;
+                     $.each(result[xx].dx, function (index, value) {
+                         if (value.x > maxX) {
+                             maxX = value.x;
+                         }
+                         if (value.y > maxY) {
+                             maxY = value.y;
+                         }
                      });
+
+                     for (var i = 0; i < maxY +1; ++i) {
+                         str += '<tr class="resultLoad">';
+                         for (var j = 0; j < maxX +1; ++j) {
+                             str += '<td>&nbsp;</td>';
+                         }
+                         str += '</tr>';
+                     }
+                     str += '</tbody>';
+                     str += '</table>';
+                 }else{
+                     //总和
+                     // 单双
+                     str += '<table id="bottom_zs_table_zh_ds"   style="display:none;">';
+                     str += '<tbody>';
+                     for (var i = 0; i < json.length; ++i) {
+                         var value = 0;
+                         for (var j = 0, tmpArr = json[i].openCode.split(","); j < tmpArr.length; ++j) {
+                             value += Tools.parseInt(tmpArr[j]);
+                         }
+
+                         var name = value % 2 == 0 ? '<font style="color:#e70f0f;">双</font>' : '<font style="color:#58adff;">单</font>';
+                         var x = 0, y = 0;
+
+                         if (result[5].ds.length != 0) {
+                             var preObj = result[5].ds[i - 1];
+                             if (preObj.name == name) {
+                                 if (preObj.y>4){
+                                     x = preObj.x +1;
+                                     y = 0;
+                                 }else {
+                                     x = preObj.x;
+                                     y = preObj.y + 1;
+                                 }
+                             } else {
+                                 x = preObj.x + 1;
+                                 y = 0;
+                             }
+                         }
+                         result[5].ds.push({
+                             name: name,
+                             x: x,
+                             y: y
+                         });
+                     }
+
+                     var maxX = 30;
+                     var maxY = 0;
+                     $.each(result[5].ds, function (index, value) {
+                         if (value.x > maxX) {
+                             maxX = value.x;
+                         }
+                         if (value.y > maxY) {
+                             maxY = value.y;
+                         }
+                     });
+
+                     for (var i = 0; i < maxY + 1; ++i) {
+                         str += '<tr class="resultLoad">';
+                         for (var j = 0; j < maxX + 1; ++j) {
+                             str += '<td>&nbsp;</td>';
+                         }
+                         str += '</tr>';
+                     }
+                     str += '</tbody>';
+                     str += '</table>';
+
+
+                     // 大小
+                     str += '<table id="bottom_zs_table_zh_dx"  style="display:none;">';
+                     str += '<tbody>';
+                     for (var i = 0; i < json.length; ++i) {
+                         var value = 0;
+                         for (var j = 0, tmpArr = json[i].openCode.split(","); j < tmpArr.length; ++j) {
+                             value += Tools.parseInt(tmpArr[j]);
+                         }
+                         var name = value >= 23 ? '<font style="color:#e70f0f;">大</font>' : '<font style="color:#58adff;">小</font>';
+                         var x = 0, y = 0;
+
+                         if (result[5].dx.length != 0) {
+                             var preObj = result[5].dx[i - 1];
+                             if (preObj.name == name) {
+                                 if (preObj.y>4){
+                                     x = preObj.x +1;
+                                     y = 0;
+                                 }else {
+                                     x = preObj.x;
+                                     y = preObj.y + 1;
+                                 }
+                             } else {
+                                 x = preObj.x + 1;
+                                 y = 0;
+                             }
+                         }
+                         result[5].dx.push({
+                             name: name,
+                             x: x,
+                             y: y
+                         });
+                     }
+
+                     var maxX = 30;
+                     var maxY = 0;
+                     $.each(result[5].dx, function (index, value) {
+                         if (value.x > maxX) {
+                             maxX = value.x;
+                         }
+                         if (value.y > maxY) {
+                             maxY = value.y;
+                         }
+                     });
+
+                     for (var i = 0; i < maxY + 1; ++i) {
+                         str += '<tr class="resultLoad">';
+                         for (var j = 0; j < maxX + 1; ++j) {
+                             str += '<td>&nbsp;</td>';
+                         }
+                         str += '</tr>';
+                     }
+                     str += '</tbody>';
+                     str += '</table>';
                  }
 
-                 var maxX = 30;
-                 var maxY = 0;
-                 $.each(result[xx].dx, function (index, value) {
-                     if (value.x > maxX) {
-                         maxX = value.x;
-                     }
-                     if (value.y > maxY) {
-                         maxY = value.y;
-                     }
-                 });
-
-                 for (var i = 0; i < maxY +1; ++i) {
-                     str += '<tr class="resultLoad">';
-                     for (var j = 0; j < maxX +1; ++j) {
-                         str += '<td>&nbsp;</td>';
-                     }
-                     str += '</tr>';
-                 }
-                 str += '</tbody>';
-                 str += '</table>';
              }
             $("#changLongTable").html(str);
 
-            for (var i = 0; i < 5; ++i) {
+            for (var i = 0; i < 6; ++i) {
                 var value = result[i];
-                var pre = i;
+                var pre = i == 5 ? 'zh' : i;
                 $.each(value.ds, function (index, value) {
                     $('#bottom_zs_table_' + pre + '_ds').find("tr").eq(value.y).find("td").eq(value.x).html(value.name);
                 });
@@ -400,6 +515,9 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 }, {
                     value:'4',
                     text: '第五球'
+                }, {
+                    value:'zh',
+                    text: '总和'
                 }
                 ]);
                 typePicker.show(function (e) {
