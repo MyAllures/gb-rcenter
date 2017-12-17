@@ -61,7 +61,7 @@ function login() {
     var _username = $("[name='sysUser.username']").val();
     var _password = $("[name='sysUser.password']").val();
     os = whatOs();
-    if (os == 'android') {
+    if (os == 'app_android') {
         var _href = _username + "," + _password;
         window.gamebox.gotoLogin(_href);
     } else if (os == 'app_ios') {
