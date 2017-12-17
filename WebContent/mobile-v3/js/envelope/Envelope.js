@@ -101,6 +101,7 @@ function closePage() {
     $("#lotteryPages").show();
     $(".tips").hide();
     $(".hongbao_inner").removeClass("opened");
+    closeRule();
 }
 
 /*打开红包规则*/
