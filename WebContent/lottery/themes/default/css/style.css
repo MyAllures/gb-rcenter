@@ -2105,3 +2105,19 @@ i.bg-01,i.bg-02,i.bg-03,i.bg-04,i.bg-05,i.bg-06,i.bg-07,i.bg-08,i.bg-09,i.bg-10{
 .numLine.block-bet-btn span i:hover{transform:none!important;}
 
 .disabled-btn{background: #a5a5a5!important;border-bottom: 3px solid #8a8a8a!important; color: #fff!important;}
+
+/*走势图 规则图标*/
+.tubiao {
+    width: 20px;
+}
+.zstb{
+    padding-left: 10px;
+    padding-top: 10px;
+    display: -webkit-inline-box;
+}
+.wftb{
+    float: right;
+    padding-right: 20px;
+    display: block;
+    padding-top: 10px;
+}

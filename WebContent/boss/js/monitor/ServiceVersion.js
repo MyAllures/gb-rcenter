@@ -10,52 +10,12 @@ define(['common/BaseListPage'], function (BaseListPage) {
          */
         init: function () {
             this._super(this.formSelector);
-            $(".tab-content > .tab-pane").css("display", "block");
-        },
-        /**
-         * 页面加载事件函数
-         */
-        onPageLoad: function () {
-            /**
-             * super中已经集成了
-             *      验证、
-             *      排序、
-             *      分页、
-             *      chosen Select
-             * 控件的初始化
-             */
-            this._super();
-            $(".tab-content > .tab-pane").css("display", "block");
         },
         /**
          * 当前对象事件初始化函数
          */
         bindEvent: function () {
             this._super();
-            var _this = this;
-
-            $("ul li a", "#mainFrame div.panel").on("click", function (e) {
-                var $href = $(this).attr("data-href");
-                $(".tab-content").addClass("hide");
-                $("#tab-content" + $(this).attr("index")).load(root + $href);
-                $("#tab-content" + $(this).attr("index")).removeClass("hide");
-            });
-
-            $(this.formSelector).on("click", "table thead input[type=checkbox]", function (e) {
-                e.page = _this;
-                $("tbody input[type=checkbox]", _this.getFirstParentByTag(e, "table")).each(function (node, obj) {
-                    var $this = $(obj);
-                    if (e.currentTarget.checked && !$this.prop("disabled")) {
-                        $this.parents('tr').addClass('open');
-                    }
-                    else {
-                        $this.parents('tr').removeClass('open');
-                    }
-                    if (!$this.prop("disabled")) {
-                        obj.checked = e.currentTarget.checked;
-                    }
-                });
-            });
         },
         /**
          * 刷新版本数据
@@ -63,7 +23,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
          * @param opt
          */
         refreshData:function (e, opt) {
-            var _this =this
+            var _this =this;
             window.top.topPage.ajax({
                 dataType:'json',
                 type:"post",
@@ -86,7 +46,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
          * @param opt
          */
         changeVersion:function (e, opt) {
-            var _this =this
+            var _this =this;
             window.top.topPage.ajax({
                 dataType:'json',
                 data:{

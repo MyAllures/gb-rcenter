@@ -6,8 +6,11 @@ function userInfo() {
             if (data != null) {
                 var currency = data.currency;
 
-                if (data.username != null) {
+                if (data.username) {
                     $(".ct p").text(data.username);
+                }
+                if (data.avatarUrl) {
+                    $(".ct img.avatar").attr("src", data.avatarUrl);
                 }
                 //钱包余额
                 if (data.walletBalance != null && data.walletBalance != 0) {
@@ -46,12 +49,12 @@ function userInfo() {
                     $(".unReadCount").hide();
                 }
                 //银行卡信息
-                if(data.bankcard) {
+                if (data.bankcard) {
                     /*$("#bankImg").addClass("pay-bank s " + data.bankcard.bankName);
-                    $("#bankImg").text(data.bankcard.bankcardNumber);*/
+                     $("#bankImg").text(data.bankcard.bankcardNumber);*/
                 }
                 //比特币
-                if(data.btcNum) {
+                if (data.btcNum) {
                     $("#btcNumber").text(data.btcNum);
                 }
                 //正在处理中转账金额,额度转换
@@ -73,8 +76,8 @@ $(function () {
         /*左侧菜单上下滚动，可自行指定范围*/
         leftMenuScroll: '.mui-scroll-wrapper.side-menu-scroll-wrapper',
         /*禁用侧滑手势指定样式*/
-        disabledHandSlip: ['mui-off-canvas-left']
+        disabledHandSlip: ['.mui-off-canvas-left']
     };
     muiInit(options);
     userInfo();
-})
+});

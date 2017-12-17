@@ -53,6 +53,8 @@ mui("#offCanvasWrapper").on("tap", "._captcha_img", function (e) {
                         mui("#captcha_div")[0].style.display = "block";
                     }
                     if (data.message) {
+                        //data.message("用户名或密码错误");
+                        data.message = "用户名或密码错误";
                         toast(message.passport[data.message] || data.message);
                     }
                     if (data.propMessages) {
