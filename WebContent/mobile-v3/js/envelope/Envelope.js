@@ -11,6 +11,15 @@ function closeAds(obj, options) {
     $(".ads-slider").hide();
 }
 
+/*规则活动滚动*/
+function scrollRule(){
+    var options = {
+        /*主页面滚动指定容器，可自行指定范围*/
+        containerScroll: '.hongbao-rule .txt',
+    };
+    muiScrollY(options.containerScroll);
+}
+
 /** 抢红包 */
 function canShowLottery(id) {
     var isLogin = sessionStorage.getItem("isLogin");
@@ -92,6 +101,7 @@ function closePage() {
     $("#lotteryPages").show();
     $(".tips").hide();
     $(".hongbao_inner").removeClass("opened");
+    closeRule();
 }
 
 /*打开红包规则*/
@@ -100,9 +110,11 @@ function openRule() {
     $('#tip-msgs').hide();
     var text = $("#description").val();
     if (text == null || text == "") {
-        text = $(".ct p").text();
+        text = $(".mui-row .ct p").text();
     }
     $(".nice-wrapper").html(text);
+    /*添加规则滚动*/
+    scrollRule();
 }
 
 /*关闭红包规则*/
