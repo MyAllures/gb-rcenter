@@ -59,11 +59,11 @@ define([], function () {
                     e.stopPropagation()
                 });
             }
-            if (document.querySelector('#offCanvasSideRight')) {
+            /*if (document.querySelector('#offCanvasSideRight')) {
                 document.querySelector('#offCanvasSideRight').addEventListener('drag', function (e) {
                     e.stopPropagation()
                 });
-            }
+            }*/
 
             /*内容区域滚动*/
             mui('.mui-scroll-wrapper.middle-content').scroll({
@@ -76,7 +76,7 @@ define([], function () {
                 bounce: false //是否启用回弹
             });
             /*左右两侧菜单滚动*/
-            mui('.mui-scroll-wrapper#offCanvasSideScroll').scroll({
+            /*mui('.mui-scroll-wrapper#offCanvasSideScroll').scroll({
                 scrollY: true, //是否竖向滚动
                 scrollX: false, //是否横向滚动
                 startX: 0, //初始化时滚动至x
@@ -84,7 +84,7 @@ define([], function () {
                 indicators: false, //是否显示滚动条
                 deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
                 bounce: false //是否启用回弹
-            });
+            });*/
             /*滚动菜单*/
             mui('.ssc-method-list').scroll({
                 scrollY: false, //是否竖向滚动
