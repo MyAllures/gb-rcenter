@@ -177,7 +177,9 @@ function showWin(data, isRefresh) {
     } else {
         title = window.top.message.promo_auto['申请失败'];
     }
-
+    if(data.msg == null || data.msg == ''){
+        data.msg = '';
+    }
     var options ={
         btnArray:[window.top.message.promo_auto['查看优惠记录'], window.top.message.promo_auto['好的']],
         title:title,
