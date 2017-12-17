@@ -181,6 +181,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                     data: {"jspStr": "BetAmount-xywf"},
                     type: 'POST',
                     success: function (data) {
+                        $("#changLong").show();
                         _this.openXinyongwanfa(data);
                         $("a[data-code='ssc_shuzipan']").addClass("mui-active");
                         $("a[data-code='szp']").addClass("mui-active");
@@ -189,7 +190,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                         $("#toobarTitle").text("传统玩法-数字盘");
                         $("#GenraType").val("ssc_shuzipan");
                         _this.changeList();
-                        $("#changLong").show();
+
                     }
                 });
             });
@@ -199,6 +200,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                     data: {"jspStr": "BetAmount-gfwf"},
                     type: 'POST',
                     success: function (data) {
+                        $("#changLong").hide();
                         _this.openGuanfangwanfa(data);
                         $("#gfwfBetCode").val("ssc_yixing_dwd");
                         $("a[data-code='ssc_yixing_dwd']").addClass("mui-active");
@@ -208,7 +210,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                         $("#toobarTitle").text("官方玩法-定位胆");
                         $("#GenraType").val("ssc_yixing_dwd");
                         _this.changeList();
-                        $("#changLong").hide();
+
                     }
                 });
             });
@@ -368,7 +370,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                              value += Tools.parseInt(tmpArr[j]);
                          }
 
-                         var name = value % 2 == 0 ? '<font style="color:#e70f0f;">双</font>' : '<font style="color:#58adff;">单</font>';
+                         var name = value % 2 == 0 ? "<i style='background-color:#2a85e2'>双</i>" : "<i style='background-color:#e23b2a'>单</i>";
                          var x = 0, y = 0;
 
                          if (result[5].ds.length != 0) {
@@ -423,7 +425,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                          for (var j = 0, tmpArr = json[i].openCode.split(","); j < tmpArr.length; ++j) {
                              value += Tools.parseInt(tmpArr[j]);
                          }
-                         var name = value >= 23 ? '<font style="color:#e70f0f;">大</font>' : '<font style="color:#58adff;">小</font>';
+                         var name = value >= 23 ? "<i style='background-color:#2a85e2'>大</i>" : "<i style='background-color:#e23b2a'>小</i>";
                          var x = 0, y = 0;
 
                          if (result[5].dx.length != 0) {
