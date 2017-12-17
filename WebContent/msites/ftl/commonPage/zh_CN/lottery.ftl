@@ -180,7 +180,7 @@
                     $("#win_id").val(data.id);
                     $("#record_id").val(data.recordId);
                     $("#applyId").val(data.applyId);
-                    $(".win-hongbao　.ttxt-2").html('获得了'+data.award+'元');
+                    $(".win-hongbao .ttxt-2").html('获得了'+data.award+'元');
                     $("#ramain-count").text(data.gameNum);
                 }
                 if(data.gameNum==0){
