@@ -100,8 +100,8 @@ function joinPromo(aplyObj, isRefresh) {
     // t.toast(window.top.message.promo_auto['请在电脑版上申请活动']);
     $(aplyObj).attr("disabled", "disabled");
     var nowTime = new Date($("._now_time").attr("value")).getTime();
-    var st = new Date($(aplyObj).parent().parent().find("._vr_promo_ostart").attr("value")).getTime();
-    var et = new Date($(aplyObj).parent().parent().find("._vr_promo_oend").attr("value")).getTime();
+    var st = new Date($('.mui-row ._vr_promo_ostart').attr('value')).getTime();
+    var et = new Date($('.mui-row ._vr_promo_oend').attr('value')).getTime();
     if (st > nowTime || et < nowTime) {
         toast("活动未开始");
         return;
@@ -177,7 +177,7 @@ function showWin(data, isRefresh) {
     } else {
         title = window.top.message.promo_auto['申请失败'];
     }
-    if(data.msg == null || data.msg == ''){
+    if(!data.msg){
         data.msg = '';
     }
     var options ={
@@ -207,7 +207,7 @@ function doWin(){
 
 function filterActyByPlayer(data) {
     var $obj = $("a.submit");
-    var startTimeObj = $obj.parent().parent().find("._vr_promo_ostart");
+    var startTimeObj = $('.mui-row ._vr_promo_ostart');
     var flag = new Date(startTimeObj.attr("value")) < new Date();
     var oldClass = $obj.data("oldClass");
     oldClass = typeof oldClass == "undefined" ? "" : oldClass;
