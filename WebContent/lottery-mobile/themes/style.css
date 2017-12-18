@@ -570,7 +570,6 @@ a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 .mui-bar-tab.tab-wv-bar { top: 2.2rem; box-shadow: none; padding: 0.3rem 0.3rem; width: auto; height: 1.6rem; background: #efeff4; }
 .mui-bar-tab.tab-wv-bar .mui-tab-item { height: 1.6rem; }
 .mui-bar-tab.tab-wv-bar .mui-tab-item.mui-active { color: #fff; background: #df3a29; border-radius: 9px; }
-
 /*开奖结果*/
 .draw-list-a .draw-list-img { display: inline-block; vertical-align: middle; border-radius: 0.6rem; }
 .draw-list-a .draw-list-right { display: inline-block; vertical-align: middle; width: 97%; }
@@ -767,6 +766,7 @@ a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 	font-size: 2.2rem;
 	padding: 0;
 }
+.popup-up-diy .mui-bar-tab.tab-wv-bar{position: relative;top: 0;}
 /*时时彩投注筛选*/
 .popup-up-diy .mui-table-view{
 	border-radius: 0;
