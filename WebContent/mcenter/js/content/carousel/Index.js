@@ -69,21 +69,17 @@ define(['common/BaseListPage','nestable','curl/curl/plugin/json','bootstrapswitc
 
         changeStatus:function (state,event) {
             var that = this;
+            var _type = $("input[name='result.type']").val();
             window.top.topPage.ajax({
                 type: "POST",
                 url: root+"/content/cttCarousel/changeStatus.html",
-                data:{'search.status':state,'search.id':$(event.currentTarget).val()},
+                data:{'result.status':state,'result.id':$(event.currentTarget).val(),'result.type':_type},
                 error: function (request) {
                 },
                 success: function (data) {
-                    if(data === 'true'){
-                        that.query(event);
-                    }
+                    that.query(event);
                 }
             });
-        },
-        nestableCallBack:function(e){
-
         },
         /**
          * 初始化 Nestable 拖动排序插件
@@ -126,8 +122,5 @@ define(['common/BaseListPage','nestable','curl/curl/plugin/json','bootstrapswitc
                 }
             });
         },
-        searchByUserStatus:function(e,p){
-
-        }
     });
 });
