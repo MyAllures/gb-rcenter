@@ -53,18 +53,18 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
             var arr_res = [];
             var lieYiDongFlag = false;
             var n = 0;
-            var td_col = 31;
+            var td_col = 0;
 
             //第二选项卡中的变量值
             var arr_hzInfo = [];
             var tab2_lieYiDongFlag = false;
-            var tab2_td_col = 31;
+            var tab2_td_col = 0;
             var tab2_n = 0;
 
             //第三个选项卡中的变量值
             var arr_dsInfo = [];
             var tab3_lieYiDongFlag = false;
-            var tab3_td_col = 31;
+            var tab3_td_col = 0;
             var tab3_n = 0;
 
             for (var m = 0; m < data.length; m++) {
@@ -119,19 +119,19 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
             for (var i = 0; i < arr_res.length; i++) {
                 if (i > 0 && i < arr_res.length - 1) {
                     if (arr_res[i].flag_dx != arr_res[i - 1].flag_dx) {
-                        td_col--; //发现前一个值不等换行 右移动一列单元格
+                        td_col++; //发现前一个值不等换行 右移动一列单元格
                         n = 0;//发现前一个值不等换行 初始化为第一行
                         lieYiDongFlag = true;
                     }
 
                     if (arr_hzInfo[i].flag_hz != arr_hzInfo[i - 1].flag_hz) {
-                        tab2_td_col--;
+                        tab2_td_col++;
                         tab2_n = 0;
                         tab2_lieYiDongFlag = true;
                     }
 
                     if (arr_dsInfo[i].flag_ds != arr_dsInfo[i - 1].flag_ds) {
-                        tab3_td_col--;
+                        tab3_td_col++;
                         tab3_n = 0;
                         tab3_lieYiDongFlag = true;
                     }
@@ -157,7 +157,7 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                     n = 0;  //初始化为第一行
                     //如写满六行发现刚好也变值这时判断上面的是否已经移动过列（没有则移动列否则不移动）
                     if (lieYiDongFlag != true) {
-                        td_col--; //左移动一列
+                        td_col++; //左移动一列
                     }
                     //初始化左移动标记
                     lieYiDongFlag = false;
@@ -176,7 +176,7 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                     tab2_n = 0;  //初始化为第一行
                     //如写满六行发现刚好也变值这时判断上面的是否已经移动过列（没有则移动列否则不移动）
                     if (tab2_lieYiDongFlag != true) {
-                        tab2_td_col--; //左移动一列
+                        tab2_td_col++; //左移动一列
                     }
                     //初始化左移动标记
                     tab2_lieYiDongFlag = false;
@@ -202,7 +202,7 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                     tab3_n = 0;  //初始化为第一行
                     //如写满六行发现刚好也变值这时判断上面的是否已经移动过列（没有则移动列否则不移动）
                     if (tab3_lieYiDongFlag != true) {
-                        tab3_td_col--; //左移动一列
+                        tab3_td_col++; //左移动一列
                     }
                     //初始化左移动标记
                     tab3_lieYiDongFlag = false;
