@@ -19,7 +19,7 @@ $(function () {
 /*轮播图*/
 function initBanner() {
     mui('.mui-banner').slider({
-        interval: 3000 // 自动轮播时长（毫秒），为0不自动播放，默认为0；
+        //interval: 3000 // 自动轮播时长（毫秒），为0不自动播放，默认为0；
     });
 }
 
@@ -46,7 +46,7 @@ function showNotice(obj, options) {
     //初始化notice-slider
     var notice = mui('.mui-slider');
     notice.slider({
-        interval: 3000//自动轮播周期，若为0则不自动播放，默认为0；
+        //interval: 3000//自动轮播周期，若为0则不自动播放，默认为0；
     });
     //点击公告，轮播跳转到对应的位置
     $(".notice-slider .mui-indicator").removeClass("mui-active");
@@ -134,3 +134,4 @@ function pullUpLoadData(apiId, pageNumber) {
     };
     muiAjax(options);
 }
+

@@ -230,7 +230,7 @@ define(['common/MobileBasePage'], function (Mobile) {
         /**
          * 是否绑定银行卡
          */
-        hasBank:function() {
+        hasBank: function () {
             var $target = $(".account_tab .mui-segmented-control a.mui-active[data]");
             var id = $target.attr("data");
             if (id == 'bank_account') {
@@ -265,16 +265,16 @@ define(['common/MobileBasePage'], function (Mobile) {
                             title: window.top.message.withdraw_auto['提示'],
                             content: window.top.message.withdraw_auto['取款提交成功'],
                             btn: [window.top.message.withdraw_auto['好的'], window.top.message.withdraw_auto['取款记录']],
-                            shadeClose:false,
-                            yes: function(index) {
-                                if(_this.os=="app_android")
+                            shadeClose: false,
+                            yes: function (index) {
+                                if (_this.os == "app_android")
                                     window.gamebox.gotoFragment(4);
-                                else if(_this.os == 'app_ios')
+                                else if (_this.os == 'app_ios')
                                     goBack();
                                 else
                                     _this.gotoUrl(root + '/mine/index.html');
                             },
-                            no: function(index) {
+                            no: function (index) {
                                 _this.gotoUrl(root + '/fund/record/index.html?search.transactionType=withdrawals');
                             }
                         });
@@ -283,13 +283,13 @@ define(['common/MobileBasePage'], function (Mobile) {
                             title: window.top.message.withdraw_auto['提示'],
                             content: data.msg,
                             btn: [window.top.message.withdraw_auto['联系客服'], window.top.message.withdraw_auto['取消']],
-                            shadeClose:false,
-                            yes: function(index) {
-                                if(os == 'android'){
+                            shadeClose: false,
+                            yes: function (index) {
+                                if (os == 'android') {
                                     window.gamebox.gotoFragment('3');
-                                }else if(os == 'app_ios'){
+                                } else if (os == 'app_ios') {
                                     gotoIndex(3);
-                                }else{
+                                } else {
                                     _this.gotoUrl(root + '/index/gotoCustomerService.html');
                                 }
                             }
@@ -304,15 +304,15 @@ define(['common/MobileBasePage'], function (Mobile) {
 
         initPage: function () {
             var _this = this;
-            mui("body").on("tap", "[data-href]", function() {
-                if($(this).parent().find(".btn-deposit").size()>0 && _this.os === 'app_ios'){
+            mui("body").on("tap", "[data-href]", function () {
+                if ($(this).parent().find(".btn-deposit").size() > 0 && _this.os === 'app_ios') {
                     gotoIndex(1);
                 } else {
-                    if (_this.os === 'app_android') {
-                        if (siteType === 'lottery') {
+                    if (_this.os == 'app_android') {
+                        if (siteType == 'lottery') {
                             window.gamebox.gotoFragment('2');
-                        } else if (action === 'default') {
-                            window.gamebox.gotoFragment('1');
+                        } else {
+                            window.gamebox.gotoActivity($(this).data('href'));
                         }
                     } else {
                         _this.gotoUrl($(this).data('href'));
@@ -321,9 +321,9 @@ define(['common/MobileBasePage'], function (Mobile) {
             });
         },
 
-        gotoFragment : function () {
+        gotoFragment: function () {
             var _this = this;
-            mui("body").on("tap", "[data-skip]", function() {
+            mui("body").on("tap", "[data-skip]", function () {
                 var target = $(this).data('target');
                 var dos = $(this).data('os');
                 var url = $(this).data('skip');
