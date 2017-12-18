@@ -18,7 +18,78 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
             if(open){
                 $("#openSearch").click();
             }
+            this.doFormData();
             this.queryCount();
+            this.doStatistics();
+        },
+
+        /**
+         * 请求数据
+         */
+        doFormData: function() {
+            var _this = this;
+            window.top.topPage.ajax({
+                //loading: true,
+                url: $(_this.formSelector).attr("action"),
+                type:'POST',
+                data: $(_this.formSelector).serialize(),
+                dataType: "html",
+                headers: {
+                    "Soul-Requested-With":"XMLHttpRequest"
+                },
+                success: function (data) {
+                    _this.renderData(data);
+                    _this.onPageLoad();
+                },
+                error: function (data, state, msg) {
+                    window.top.topPage.showErrorMessage(data.responseText);
+                }
+            });
+        },
+
+        /**
+         * 请求统计数据
+         */
+        doStatistics: function() {
+            var _this = this;
+            window.top.topPage.ajax({
+                //loading: true,
+                url: root+'/fund/withdraw/withdrawStatistics.html',
+                type:'POST',
+                data: $(_this.formSelector).serialize(),
+                dataType: "html",
+                headers: {
+                    "Soul-Requested-With":"XMLHttpRequest"
+                },
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    if(json.isTodaySales){
+                        $("#todayTotal",_this.formSelector).text(json.todayTotal);
+                        $("#totalSumTarget",_this.formSelector).parent().parent().hide();
+                        $("#todayTotal",_this.formSelector).parent().parent().show();
+                    }else{
+                        $("#totalSumTarget",_this.formSelector).text(json.totalSum);
+                        $("#todayTotal",_this.formSelector).parent().parent().hide();
+                        $("#totalSumTarget",_this.formSelector).parent().parent().show();
+                    }
+                },
+                error: function (data, state, msg) {
+                    window.top.topPage.showErrorMessage(data.responseText);
+                }
+            });
+        },
+
+        /**
+         * 渲染表单数据
+         */
+        renderData:function (data) {
+            var _this=this;
+            var $result = $("#editable tbody", _this.formSelector);
+            var json = JSON.parse(data);
+            if(json.result) {
+                var html = $("#VPlayerWithdrawListVo",_this.formSelector).render({data:json.result});
+                $result.html(html);
+            }
         },
 
         /**
@@ -39,8 +110,7 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
                     type: "post",
                     data: this.getCurrentFormData(event),
                     success: function (data) {
-                        var $result = $(".search-list-container", $form);
-                        $result.html(data);
+                        _this.renderData(data);
                         event.page.onPageLoad();
                         $(event.currentTarget).unlock();
                         if(event.goType==undefined || event.goType==-2){
@@ -48,6 +118,7 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
                         }else{
                             _this.queryCount(true);
                         }
+                        _this.doStatistics();
                     },
                     error: function (data, state, msg) {
                         window.top.topPage.showErrorMessage(data.responseText);
@@ -199,15 +270,6 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
             $("[name='fund-withdraw']").on("click", function () {
                 $('[role="tooltip"]').hide();
             });
-            if($("#todaySales").val()=='true'){
-                $("#todayTotal").text($("#todayTotalSource").text());
-                $("#totalSumTarget").parent().parent().hide();
-                $("#todayTotal").parent().parent().show();
-            }else{
-                $("#totalSumTarget").text($("#totalSumSource").text());
-                $("#todayTotal").parent().parent().hide();
-                $("#totalSumTarget").parent().parent().show();
-            }
         },
 
         /**
