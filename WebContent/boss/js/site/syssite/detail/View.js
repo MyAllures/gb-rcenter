@@ -310,6 +310,19 @@ define(['common/BasePage'], function(BasePage) {
             $('#chart').hide();
             $('.showData').attr('disabled', 'disabled');
             $(e.currentTarget).unlock();
+        },
+        /** 切换站点信息 */
+        queryView: function (e) {
+            var id = $("#siteId").val();
+            window.top.topPage.ajax({/*partial=1&*/
+                url: root + '/site/detail/viewSiteBasic.html?search.id='+id,
+                success: function (data) {
+                    if(data){
+                        $("#mainFrame",this.formSelector).html(data);
+                        $(e.currentTarget).unlock();
+                    }
+                }
+            });
         }
     });
 });

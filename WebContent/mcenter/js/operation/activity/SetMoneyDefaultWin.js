@@ -68,7 +68,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 dataType: "json",
                 success: function (data) {
                     if(data){
-                        var remainCount = data.remainCount;
+                        var remainCount = data.singleRemainCount;
                         var count = pcount*tv;
                         if(remainCount==0){
                             var msg = ""+window.top.message.operation['activity.defaultset.remaincount_empty']+"";

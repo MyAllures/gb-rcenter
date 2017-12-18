@@ -9,6 +9,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
             this._super(this.formSelector);
             this.doFormData();
             this.queryCount();
+            this.doStatistics();
         },
 
         onPageLoad: function () {
@@ -51,6 +52,38 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
         },
 
         /**
+         * 请求统计数据
+         */
+        doStatistics: function() {
+            var _this = this;
+            window.top.topPage.ajax({
+                //loading: true,
+                url: root+'/fund/deposit/company/doStatistics.html',
+                type:'POST',
+                data: $(_this.formSelector).serialize(),
+                dataType: "html",
+                headers: {
+                    "Soul-Requested-With":"XMLHttpRequest"
+                },
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    if(json.isTodaySales){
+                        $("#todayTotal",_this.formSelector).text(json.todayTotal);
+                        $("#totalSumTarget",_this.formSelector).parent().parent().hide();
+                        $("#todayTotal",_this.formSelector).parent().parent().show();
+                    }else{
+                        $("#totalSumTarget",_this.formSelector).text(json.totalSum);
+                        $("#todayTotal",_this.formSelector).parent().parent().hide();
+                        $("#totalSumTarget",_this.formSelector).parent().parent().show();
+                    }
+                },
+                error: function (data, state, msg) {
+                    window.top.topPage.showErrorMessage(data.responseText);
+                }
+            });
+        },
+
+        /**
          * 渲染表单数据
          */
         renderData:function (data) {
@@ -60,15 +93,6 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
             if(json.result) {
                 var html = $("#VPlayerDepositListVo",_this.formSelector).render({data:json.result});
                 $result.html(html);
-            }
-            if(json.isTodaySales){
-                $("#todayTotal",_this.formSelector).text(json.todayTotal);
-                $("#totalSumTarget",_this.formSelector).parent().parent().hide();
-                $("#todayTotal",_this.formSelector).parent().parent().show();
-            }else{
-                $("#totalSumTarget",_this.formSelector).text(json.totalSum);
-                $("#todayTotal",_this.formSelector).parent().parent().hide();
-                $("#totalSumTarget",_this.formSelector).parent().parent().show();
             }
         },
 
@@ -98,6 +122,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                         }else{
                             _this.queryCount(true);
                         }
+                        _this.doStatistics();
                     },
                     error: function (data, state, msg) {
                         window.top.topPage.showErrorMessage(data.responseText);
