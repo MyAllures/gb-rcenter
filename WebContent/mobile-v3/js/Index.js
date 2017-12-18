@@ -19,7 +19,7 @@ $(function () {
 /*轮播图*/
 function initBanner() {
     mui('.mui-banner').slider({
-        interval: 3000 // 自动轮播时长（毫秒），为0不自动播放，默认为0；
+        //interval: 3000 // 自动轮播时长（毫秒），为0不自动播放，默认为0；
     });
 }
 
