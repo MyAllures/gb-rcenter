@@ -65,7 +65,8 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 dataType:'json',
                 data:{
                     'result.display':e.status,
-                    'result.id':$this.val()
+                    'result.id':$this.val(),
+                    'result.announcementType':$this.attr('announcementType')
                 },
                 eventCall:function(opt){
                     _this.doChange(opt);
@@ -74,6 +75,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 success:function(){
                     /*取消不确定状态*/
                     $this.bootstrapSwitch('indeterminate',false);
+                    $("[title='search']").click();
                 },
                 error:function(event, xhr, settings){
                     if(event.status==601) {//需要权限密码验证

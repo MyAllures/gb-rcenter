@@ -117,6 +117,13 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                     }
 
                 }
+                //手续费开关（控制input知否启用）
+                var  state=$("#box_"+ff).bootstrapSwitch("state");
+                if (state) { //开
+                    $("#first_div_"+ff).find("input").attr("disabled", false);
+                } else { //关
+                    $("#first_div_"+ff).find("input").attr("disabled", true);
+                }
 
                 //$("#box_"+tname).bootstrapSwitch("state", $("#"+attr).val());
                 //$("#first_div_"+tname).find("input").attr("disabled",false);
