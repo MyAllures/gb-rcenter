@@ -66,7 +66,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             /*==============================官方====================================*/
             //头部选择
             mui("div.s-menu").off('tap','a').on('tap', 'a', function () {
-                mui('.mui-scroll-wrapper.middle-content').scroll().scrollTo(0,0,100);
+                mui('.middle-content.middle-content-bat').scroll().scrollTo(0,0,100);
                 _this.checkSubordinate($(this).attr("data-code"), this.classList);
 
             });
@@ -81,7 +81,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             });
 
             mui("body").off('tap','#inputMoney').on("tap", "#inputMoney", function () {
-                mui('.mui-scroll-wrapper.middle-content').scroll().refresh();
+                mui('.middle-content.middle-content-bat').scroll().refresh();
             });
         },
         //收起头部
@@ -239,10 +239,9 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                         if (numArr && numArr.length > 0) {
                             _this.showLastOpenCode(numArr);
                         }
-                        if(_this.type == "ssc"){
+                        if(_this.type == "ssc" || _this.type=="pl3" || _this.code=="xyft" || _this.code=="jspk10"){
                             _this.refreshView();
                         }
-
                         _this.showRecentHistory(data);
                     }
                 },
