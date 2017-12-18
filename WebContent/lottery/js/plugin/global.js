@@ -130,11 +130,17 @@ var ajaxRequest = function (obj) {
         dataType = obj.dataType;
     }
 
+    var async = true;
+    if (typeof obj.async != 'undefined') {
+        async = obj.async;
+    }
+
     requestStr += "t=" + new Date().getTime();
     $.ajax({
         type: type,
         url: requestStr,
         dataType: dataType,
+        async:async,
         data: data,
         timeout: 60000,
         success: function (json) {
@@ -172,10 +178,10 @@ var ajaxRequest = function (obj) {
                 obj.beforeSend();
             }
         },
-        complete: function () {
+        complete: function (XMLHttpRequest,textStatus) {
             Tools.log(requestStr + "-complete");
             if (typeof(obj.complete) == "function") {
-                obj.complete();
+                obj.complete(XMLHttpRequest,textStatus);
             }
         }
     });
