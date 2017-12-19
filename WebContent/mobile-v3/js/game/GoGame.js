@@ -15,39 +15,36 @@ function goGame(obj,options){
     status = options.dataStatus;
     gameCode = options.dataGameCode;
     gameId = options.dataGameId;
-    isAutoPay = sessionStorage.getItem("isAutoPay");//$("#isAutoPay").val();
+    isAutoPay = sessionStorage.getItem("isAutoPay");
     if (status == 'maintain' || status == 'disable') {
-        gameMaintaing();
+        showWarningMsg(window.top.message.game_auto['提示'],window.top.message.game_auto['游戏维护中']);
     } else {
         isLogin = sessionStorage.getItem("isLogin");
         if (isLogin == true || isLogin == 'true') {
-            layer.open({
-                title: window.top.message.game_auto['提示'],
-                content: window.top.message.game_auto['是否进入游戏'],
-                btn: [window.top.message.game_auto['是'], window.top.message.game_auto['否']],
-                yes: function (index) {
-                    if (isAutoPay == 'true') {
-                        showLoading();
-                        autoLoginAndTransfer();
-                    } else {
-                        showLoading();
-                        apiLogin(obj);
-                        layer.close(index);
-                    }
-                    if (apiId == 6 && os != 'android' && os != 'app_ios') {
-                        obj.newWindow = window.open("about:blank", '_blank');
-                        if (obj.newWindow) {
-                            obj.newWindow.document.write("<div style='text-align:center;'><img style='margin-top:" +
-                                document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
-                        }
-                    }
-                },
-                no: function (index) {
-                    layer.close(index);
-                }
-            })
+            var options = {
+                title:window.top.message.game_auto['提示'],
+                confirm:window.top.message.game_auto['是否进入游戏'],
+                btnArray:[window.top.message.game_auto['是'], window.top.message.game_auto['否']],
+                func:readGame
+            };
+            showConfirmMsg(options,obj);
         } else {
             signIn(obj);
+        }
+    }
+}
+
+function readGame(){
+    if (isAutoPay == 'true' || isAutoPay == true) {
+        autoLoginAndTransfer();
+    } else {
+        apiLogin(obj);
+    }
+    if (apiId == 6 && os != 'android' && os != 'app_ios') {
+        obj.newWindow = window.open("about:blank", '_blank');
+        if (obj.newWindow) {
+            obj.newWindow.document.write("<div style='text-align:center;'><img style='margin-top:" +
+                document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
         }
     }
 }
@@ -64,7 +61,7 @@ function goApiGame(obj,options){
         obj.apiTypeId = apiTypeId;
         obj.gameCode = gameCode;
         if (status == "maintain") {
-            openLayer(window.top.message.game_auto['游戏维护中']);
+            showWarningMsg(window.top.message.game_auto['提示'],window.top.message.game_auto['游戏维护中']);
         } else {
             isLogin = sessionStorage.getItem("isLogin");
             if (isLogin == true || isLogin == 'true') {
@@ -73,7 +70,6 @@ function goApiGame(obj,options){
                     goToUrl("/game/apiGames.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
                 } else if ((isAutoPay == 'true' && apiTypeId != "2")) {
                     //判断是否免转，如果免转,则直接登陆游戏，不跳到游戏中转页面
-                    showLoading();
                     autoLoginAndTransfer();
                 } else {
                     goToUrl(root + "/api/detail.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
@@ -83,17 +79,6 @@ function goApiGame(obj,options){
                 login("/");
             }
         }
-}
-
-function gameMaintaing() {
-    layer.open({
-        title: window.top.message.game_auto['提示'],
-        content: window.top.message.game_auto['游戏维护中'],
-        btn: [window.top.message.game_auto['确定'], ''],
-        yes: function (index) {
-            layer.close(index);
-        }
-    })
 }
 
 function apiLogin(obj) {
@@ -142,7 +127,7 @@ function apiLogin(obj) {
             } else {
                 if (!data.loginSuccess && ( data.errMsg == '' || data.errMsg == null)) {
                     if (data.maintain) {
-                        gameMaintaing();
+                        showWarningMsg(window.top.message.game_auto['提示'],window.top.message.game_auto['游戏维护中']);
                     } else {
                         toast(window.top.message.game_auto['无法登录']);
                     }
@@ -210,11 +195,10 @@ function autoLoginAndTransfer() {
                             }
                         }
                     } else if (data.msg) {
-                        openLayer(data.msg);
+                        showWarningMsg(window.top.message.game_auto['提示'],data.msg);
                     }
                 } else {
-                    //_this.openLayer(window.top.message.game_auto['无法登录']);
-                    openLayer(window.top.message.game_auto['无法登录']);
+                    showWarningMsg(window.top.message.game_auto['提示'],window.top.message.game_auto['无法登录']);
                 }
             },
             error:function(error){
@@ -223,7 +207,7 @@ function autoLoginAndTransfer() {
                 } else if (error.status === 606) {
                     goToUrl(root + '/errors/606.html');
                 } else {
-                    openLayer(window.top.message.game_auto['无法登录']);
+                    showWarningMsg(window.top.message.game_auto['提示'],window.top.message.game_auto['无法登录']);
                 }
             },
             complete:function(){
@@ -232,20 +216,6 @@ function autoLoginAndTransfer() {
         };
         muiAjax(options);
     }
-}
-
-/**
- * 打开layer提示窗
- * */
-function openLayer(msg) {
-    layer.open({
-        title: '提示',
-        content: msg,
-        btn: ['确定', ''],
-        yes: function (index) {
-            layer.close(index);
-        }
-    })
 }
 
 function signIn (obj) {

@@ -147,12 +147,13 @@ define(['site/deposit/BaseDeposit','gb/components/Comet'], function (BaseDeposit
                 if (document.activeElement) {
                     document.activeElement.blur();
                 }
-                
+
+
                 var $form = $(page.formSelector);
                 if (!$form.valid()) {
                     return false;
                 }
-                
+
                 var rechargeAmount = $("input[name='result.rechargeAmount']").val();
                 var rechargeType = $("input[name='result.rechargeType']").val();
 
