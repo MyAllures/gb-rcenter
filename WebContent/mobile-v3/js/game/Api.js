@@ -115,16 +115,12 @@ function startGame(obj,options){
     if (apiId == '3' && apiTypeId == '1')
         data.gameCode = "1179";
     if (apiId != "") {
-        if (apiId == "10") {
+        if (apiId == "10" || (apiTypeId != "" && (apiTypeId == "1" || apiTypeId == "3" || apiTypeId == "4"))) {
             apiLogin(data);
-            showLoading();
-        } else if (apiTypeId != "" && (apiTypeId == "1" || apiTypeId == "3" || apiTypeId == "4")) {
-            apiLogin(data);
-            showLoading();
         } else if (apiTypeId != "" && (apiTypeId == "2")) {
-            if (os == 'app_ios')
+            /*if (os == 'app_ios')
                 gotoPay(root + "/game/getGameByApiId.html?search.apiId=" + apiId + "&search.apiTypeId=" + apiTypeId);
-            else
+            else*/
                 goToUrl(root + "/game/getGameByApiId.html?search.apiId=" + apiId + "&search.apiTypeId=" + apiTypeId);
         }
     }
