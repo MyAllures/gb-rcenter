@@ -286,7 +286,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 $(".content_picture").addClass("hide");
                 $(".content_word").removeClass("hide");
             }
-            this.resizeDialog();
+            _this.resizeDialog();
         },
 
         /**
