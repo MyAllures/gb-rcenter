@@ -252,6 +252,7 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
                 select.setValue("[name='activityRule.placesNumber']", "0");
             }
             $("#placesNumbers").css("display", e.key == 'false' ? "table" : "none");
+            $("#placesNumber_tips").css("display", e.key == 'false' ? "table" : "none");
         },
 
         /**
