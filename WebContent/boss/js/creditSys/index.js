@@ -90,32 +90,36 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
                                             }
                                         });
                                     }
-                                    $(_target).bootstrapSwitch("state", _target.checked);
-                                    $("#status").removeClass("label-success");
-                                    $("#status").addClass("label-danger");
                                 })
                             }else if(!$(_target).attr("isChanged")&&state) {
                                 window.top.topPage.showConfirmDynamic(window.top.message.common['msg'],"该站点将禁止转账,确认禁止吗?",okLabel, cancelLabel, function (confirm) {
-                                    window.top.topPage.ajax({
-                                        url: root + '/vSysCredit/transferSwitch.html',
-                                        dataType: "json",
-                                        data: {"result.paramValue": state, "result.siteId": payRankId,"result.paramCode":type},
-                                        success: function (data) {
-                                            if(data){
-                                                $(_target).attr("isChanged", true);
-                                                // $(_target).bootstrapSwitch("state", !_target.checked);
-                                                $("#status").removeClass("label-success");
-                                                $("#status").addClass("label-danger");
-                                                _this.query(e);
-                                            }else{
-                                                page.showPopover(e,{"callback":function () {
+                                    if (confirm && !$(_target).attr("isChanged")) {
+                                        window.top.topPage.ajax({
+                                            url: root + '/vSysCredit/transferSwitch.html',
+                                            dataType: "json",
+                                            data: {
+                                                "result.paramValue": state,
+                                                "result.siteId": payRankId,
+                                                "result.paramCode": type
+                                            },
+                                            success: function (data) {
+                                                if (data) {
+                                                    $(_target).attr("isChanged", true);
+                                                    $(_target).bootstrapSwitch("state", _target.checked);
+                                                    $("#status").removeClass("label-success");
+                                                    $("#status").addClass("label-danger");
                                                     _this.query(e);
-                                                }},"danger","操作失败",true);
+                                                } else {
+                                                    page.showPopover(e, {
+                                                        "callback": function () {
+                                                            _this.query(e);
+                                                        }
+                                                    }, "danger", "操作失败", true);
+                                                }
                                             }
-                                        }
-                                    })
+                                        })
+                                    }
                                 });
-                                return true;
                             }
                             else if($(_target).attr("isChanged")){
                                 $(_target).removeAttr("isChanged");

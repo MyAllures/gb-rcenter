@@ -1,10 +1,12 @@
 /**
  * Created by jeff on 15-7-30.
  */
-define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput'], function (BaseEditPage,fileinput) {
+define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'css!themesCss/fileinput/fileinput'], function (BaseEditPage,fileinput) {
 
     return BaseEditPage.extend({
         _editor:null,
+        maxRange: 30,
+        ue:[],
         titleMaxLength:Number($("#titleMaxLength").val()),
         init: function () {
             //var that = this;
@@ -12,17 +14,6 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
             window.top.topPage.initFileWithPreview($("#uploadImageInput")[0], $("#picUrl")[0],{
                 maxFileSize:1024,
                 allowedFileExtensions:[".png",".jpg",".gif",".jpeg"]});
-            var type = $("[name='search.type']").val();
-            if(type=='carousel_type_player_index'){
-                var apiId = $("[name='apiId']").val();
-                if(apiId=='link'){
-                    this.hideApiTypeSelect(true);
-                }
-            }else if(type==""){
-                /*this.hideApiTypeSelect(true)
-                $("#url-div").addClass("hide");
-                $("#api-div").addClass("hide");*/
-            }
             this.resizeDialog();
         },
         bindEvent: function () {
@@ -115,6 +106,9 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
         onPageLoad: function () {
             var _this = this;
             this._super();
+            $(".contents_textarea",_this.formSelector).each(function(idx,item){
+                _this.initUEditor(idx);
+            });
             this.unInitFileInput($('.file'))
                 .fileinput({
                     showUpload: false,
@@ -136,18 +130,21 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
                     msgImageWidthLarge: window.top.message.setting['myAccount.file.size.widthError'],
                     msgImageHeightLarge: window.top.message.setting['myAccount.file.size.heightError']
                 }).bind("filecleared", function (e) {
-                    e.fileInput.$container.prev().show();
-                    page.resizeDialog();
-                }).bind("fileloaded", function (e) {
-                    e.fileInput.$container.prev().hide();
-                    e.fileInput.$container.parent().removeClass("error");
-                    page.resizeDialog();
-                });
-                setTimeout(function () {
-                    $("#oldContent").val(_this.getCurrentContent());
-                },1000)
-
+                e.fileInput.$container.prev().show();
+                page.resizeDialog();
+            }).bind("fileloaded", function (e) {
+                e.fileInput.$container.prev().hide();
+                e.fileInput.$container.parent().removeClass("error");
+                page.resizeDialog();
+            });
+            setTimeout(function () {
+                $("#oldContent").val(_this.getCurrentContent());
+            },1000)
+            $(":radio[name='result.contentType']").on('change', function (e) {
+                _this._switchDisplay();
+            });
         },
+
         getCurrentContent: function () {
             var contents= "";
             $(":input").each(function(index,obj){
@@ -176,7 +173,6 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
             $(e.currentTarget).unlock();
         },
         preSave:function( event , option ){
-            this.buildJson();
             event.objId = $('[name="search.id"]').val();
             event.catePath = 'carousel';
             var flag = this.uploadAllFiles( event, option);
@@ -195,23 +191,6 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
                 return false;
             }
             return true;
-        },
-
-        buildJson: function () {
-            var type = $("[name='result.type']").val();
-            if(type=='carousel_type_player_index'){
-                var apiId = $("[name='apiId']").val();
-                var link = {};
-                link.apiId = apiId;
-                if(apiId!="link"){
-                    link.apiTypeId = $("[name='apiTypeId']").val();
-                }else{
-                    link.url = $("[name='result.url']").val();
-                }
-                $("[name='result.link']").val(JSON.stringify(link));
-            }else{
-                $("[name='result.link']").val($("[name='result.url']").val());
-            }
         },
         /**
          * 自定义表单验证，保存
@@ -252,7 +231,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
                 var message = window.top.message.content['carousel.closePageConfirmMessage'];
                 window.top.topPage.showConfirmMessage(message,function(bol){
                     if(bol){
-                       that.closePage();
+                        that.closePage();
                     }
                     $(e.currentTarget).unlock();
                 });
@@ -282,50 +261,52 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
             }
 
         },
-        selectType: function (e, opt) {
-            var type = e.key;
-            if(type=="carousel_type_player_index"){
-                $("#api-div").removeClass("hide");
-                $("#url-div").addClass("hide");
-                this.hideApiTypeSelect(false);
-            }else{
-                this.hideApiTypeSelect(true);
-                $("#api-div").addClass("hide");
-                $("#url-div").removeClass("hide");
-                //$("[name='result.url']").removeClass("hide");
-            }
-            this.resizeDialog();
-        },
-        showLink: function (e, opt) {
-            var key = e.key;
-            if(key=='link'){
-                this.hideApiTypeSelect(true);
-                $("#url-div").removeClass("hide");
-            }else{
-                this.hideApiTypeSelect(false)
-                $("#url-div").addClass("hide");
-            }
-        },
-        hideApiTypeSelect: function (flag) {
-            if(flag){
-                $("#apiTypeId-div").addClass("hide");
+        /**
+         * 图片、文字模式切换
+         * @private
+         */
+        _switchDisplay: function () {
+            var _this = this;
+            var contentType = $(":radio[name='result.contentType']:checked").val();
+            //圖片
+            if(contentType == '1'){
+                $(".content_picture_title").removeClass("hide");//圖片模式標題去掉hide
+                $(".content_picture").removeClass("hide");//圖片模式图片去掉hide
+                $("#content_picture_link").removeClass("hide");
+                $(".content_word_title").addClass("hide");
+                $(".content_word").addClass("hide");//显示效果添加hide
             }else {
-                $("#apiTypeId-div").removeClass("hide");
+                $("#content_picture_link").addClass("hide");//图片链接添加hide
+                $(".content_picture_title").addClass("hide");//文字模式圖片名称添加hide
+                $(".content_word_title").removeClass("hide");//文字模式內容去掉hide
+                $(".content_picture").addClass("hide");
+                $(".content_word").removeClass("hide");
             }
-
-            /*$(document).find("div").each(function (idx, item) {
-                var seldiv = $(item).attr("selectdiv");
-                if(seldiv&&seldiv=="apiTypeId"){
-                    if(flag){
-                        $(item).addClass("hide");
-                    }else {
-                        $(item).removeClass("hide");
-                    }
-
-                }
-            });*/
+            _this.resizeDialog();
         },
 
+        /**
+         *
+         * 初始化富文本框
+         */
+        initUEditor:function(idx){
+            var that = this;
+            UE.delEditor('editContent'+idx);
+            var width = $("#editContent"+idx).width;
+            that.ue[idx] = UE.getEditor('editContent'+idx,{
+                enableAutoSave:false,/*是否自动保存*/
+                initialFrameWidth:width,/*初始化编辑器宽度($(window.document).width() *.8)*/
+                initialFrameHeight:200,/*初始化编辑器宽度*/
+                autoHeightEnabled:false,/*是否自动长高*/
+                maximumWords:2000,
+                toolbars: [[
+                    'fullscreen', 'source', '|', 'undo', 'redo', '|',
+                    'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+                    'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+                    'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|','link', 'unlink'
 
+                ]]
+            });
+        }
     });
 });

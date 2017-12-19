@@ -705,10 +705,11 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             var periods = this.getPeriodCount();
             var totalPeriods = 0;
             if(daysBettween > 0 ){
+                //要算上今天的剩余时段
                 if(periods >0){
-                    totalPeriods = daysBettween * periods;
+                    totalPeriods = daysBettween * periods + this.getRemainPeriodCount();
                 }else{
-                    totalPeriods = daysBettween;
+                    totalPeriods = daysBettween + 1;
                 }
             }else if(daysBettween == 0){
                 if(periods>0){
