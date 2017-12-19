@@ -40,11 +40,16 @@ define(['common/BaseViewPage'], function(BaseViewPage) {
                 type: "POST",
                 dataType: "JSON",
                 success: function (dataList) {
-                    if(dataList){
+                    if(dataList && dataList.length>0){
+                        var totalRemain = parseInt(0);
                         for(var i=0;i<dataList.length;i++){
                             var data = dataList[i];
-                            $("span#award_remain_count_"+data.id).text(data.singleRemainCount);
+                            if(data.singleRemainCount){
+                                $("span#award_remain_count_"+data.id).text(data.singleRemainCount);
+                                totalRemain += data.singleRemainCount;
+                            }
                         }
+                        $("span#allRemainCount").text(totalRemain);
                     }
                 }
             });
