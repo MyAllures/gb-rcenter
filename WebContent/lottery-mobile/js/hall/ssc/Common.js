@@ -4,6 +4,7 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
         init: function () {
             this._super();
             this.bindChangLong();
+            this.bindRules();
         },
 
         /**
@@ -553,6 +554,26 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                 $('#bottom_zs_table_' + num + '_ds').show();
             });
 
+        },
+
+        bindRules :function () {
+            mui("body").off("tap", ".game-regular .tab-wv-bar a").on("tap", ".game-regular .tab-wv-bar a", function() {
+                    var code = $(this).attr("data-code");
+                    console.log(code)
+                    if(code =="ct"){
+                        $("#ctRules").show();
+                        $("#gfRules").hide();
+                        $("#zongze").hide();
+                    }else if(code =="gf"){
+                        $("#ctRules").hide();
+                        $("#gfRules").show();
+                        $("#zongze").hide();
+                    }else{
+                        $("#ctRules").hide();
+                        $("#gfRules").hide();
+                        $("#zongze").show();
+                    }
+            });
         },
 
 
