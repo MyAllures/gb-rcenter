@@ -113,40 +113,42 @@
 </div>
 <!--新增公告栏管理-->
 <div class="modal inmodal" id="addnotice" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog  modal-lg">
         <div class="modal-content animated bounceInRight unstyled family">
             <div class="modal-header">
                 <span class="filter"><i class="fa fa-comments-o"></i>&nbsp;&nbsp;发送公告</span>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body m-md">
                 <div class="clearfix save lgg-version">
                     <a href="javasrcipt:void(0)" class="current">简体中文<span>未编辑</span></a>
                     <a href="javasrcipt:void(0)">English<span>已编辑</span></a>
                     <a href="javasrcipt:void(0)">繁体中文<span>已编辑</span></a>
-                    <span class="more"><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i></a></span>
+                    <span class="more"><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i></a></span><div class="pull-right inline">
+                        <div class="btn-group">
+                            <button data-toggle="dropdown" class="btn btn-link dropdown-toggle fzyx">复制语系&nbsp;&nbsp;<span class="caret"></span></button>
+                            <ul class="dropdown-menu pull-right">
+                                <li class="temp"><a href="javascript:void(0)" class="co-gray">复制语系</a></li>
+                                <li class="temp"><a href="javascript:void(0)" class="co-gray">复制语系</a></li>                                
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="hfsj-wrap">
                 <div class="form-group">
                   <div class="clearfix">
                     <label>标题</label>
-                    <div class="pull-right inline">
-                      <select class="lgg-sys chosen-select-no-single">
-                        <option>复制语系</option>
-                        <option>复制语系</option>
-                      </select>
-                    </div>
                   </div>
                   <input type="text" placeholder="" class="form-control m-b">
                 </div>
                 <div class="form-group"><label>信息内容</label><textarea class="form-control m-b"></textarea></div>
                 <div class="clearfix form-group m-b-xxs">
-                  <div class="dsfb"><label><input type="checkbox" class="i-checks"></label>定时发送</div>
-                  <div class="dsfb-data">
+                  <div class="dsfb"><label><input type="checkbox" class="i-checks"></label>定时发表</div>
+                  <!--<div class="dsfb-data">
                     <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                       <input type="text" class="form-control" value="2015-05-01 16:51:01 至 2015-05-04 10:20:20">
                     </div>
-                  </div>
+                  </div>-->
                 </div>
               </div>
             </div>
