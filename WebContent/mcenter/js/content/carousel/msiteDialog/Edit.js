@@ -212,6 +212,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 },
                 success: function (data) {
                     that.closePage();
+                    that._changeStatus(state,event);
                 }
             })
         },
@@ -286,7 +287,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 $(".content_picture").addClass("hide");
                 $(".content_word").removeClass("hide");
             }
-            this.resizeDialog();
+            _this.resizeDialog();
         },
 
         /**
@@ -311,6 +312,20 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
 
                 ]]
             });
-        }
+        },
+        _changeStatus:function (state,event) {
+            var that = this;
+            var _type = $("input[name='result.type']").val();
+            window.top.topPage.ajax({
+                type: "POST",
+                url: root+"/content/cttCarousel/changeStatus.html",
+                data:{'result.status':state,'result.id':$(event.currentTarget).val(),'result.type':_type},
+                error: function (request) {
+                },
+                success: function (data) {
+                    that.query(event);
+                }
+            });
+        },
     });
 });
