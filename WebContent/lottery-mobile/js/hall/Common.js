@@ -64,6 +64,24 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             });
 
             /*==============================官方====================================*/
+            //游戏规则
+            mui("body").off("tap", ".game-regular .tab-wv-bar a").on("tap", ".game-regular .tab-wv-bar a", function() {
+                var code = $(this).attr("data-code");
+                console.log(code)
+                if(code =="ct"){
+                    $("#ctRules").show();
+                    $("#gfRules").hide();
+                    $("#zongze").hide();
+                }else if(code =="gf"){
+                    $("#ctRules").hide();
+                    $("#gfRules").show();
+                    $("#zongze").hide();
+                }else{
+                    $("#ctRules").hide();
+                    $("#gfRules").hide();
+                    $("#zongze").show();
+                }
+            });
             //头部选择
             mui("div.s-menu").off('tap','a').on('tap', 'a', function () {
                 mui('.middle-content.middle-content-bat').scroll().scrollTo(0,0,100);
