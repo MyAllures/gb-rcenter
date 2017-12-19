@@ -610,6 +610,9 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             var tr = $("#total_count_table").find("tr:eq(0)").clone();
             $(tr).find("td").removeAttrs("style");
             $(tr).find("td:eq(7)").remove();
+            if($("#activityMessageId").val()==""){
+                $(tr).find("td:eq(6)").remove();
+            }
             $("#preview_awards_rules").append(tr);
 
         },
