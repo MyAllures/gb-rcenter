@@ -163,23 +163,13 @@
 <script src="../../../common/js/flot/jquery.flot.tooltip.min.js"></script>
 <!--新增轮播图-->
 <div class="modal inmodal" id="add-logo" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content animated bounceInRight unstyled family">
             <div class="modal-header">
                 <span class="filter"><i class="fa fa-plus"></i>&nbsp;&nbsp;添加新图片</span>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
             </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>类型</label>
-                    <div>
-                        <select class="chosen-select-no-single" data-placeholder="请选择">
-                            <option value=""></option>
-                            <option value="">类型1</option>
-                            <option value="">类型2</option>
-                        </select>
-                    </div>
-                </div>
+            <div class="modal-body m-md">
                 <div class="form-group">
                     <label>展示时间<span class="co-red m-l-sm">*</span> <!--<span class="co-yellow">(待使用)</span>--></label>
                     <div class="input-daterange input-group" id="datepicker" style="width:100%">
@@ -189,8 +179,104 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label>广告类型</label>
+                    <div>
+                        <span><input type="radio" name="a1"> 全部</span>
+                         <span><input type="radio" name="a1"> pc端</span>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label>图片链接</label>
-                    <input type="text" class="form-control" placeholder="请输入链接地址" />
+                    <div class="input-group date">
+                        <input type="text" class="form-control" placeholder="">
+                        <span class="input-group-addon bg-gray">站点网址{website}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>按钮链接</label>
+                    <div class="input-group date">
+                        <input type="text" class="form-control" placeholder="">
+                        <span class="input-group-addon bg-gray">站点网址{website}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>图片链接</label>
+                    <div class="" style="width:420px;">
+                            <div class="btn-group table-desc-right-t-dropdown" initprompt="10条" callback="query" style="width: 200px;">
+                            <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default" data-toggle="dropdown" aria-expanded="false">
+                        <span prompt="prompt">AG</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">AG</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20">AG</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30">AG</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="50">AG</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn-group table-desc-right-t-dropdown" initprompt="10条" callback="query" style="width: 200px;">
+                            <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default" data-toggle="dropdown" aria-expanded="false">
+                        <span prompt="prompt">真人视讯</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">真人视讯</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20">真人视讯</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30">真人视讯</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="50">真人视讯</a>
+                        </li>
+                    </ul>
+                </div>
+                </div>
+                </div>
+                <div class="form-group">
+                    <label>图片链接</label>
+                    <div class="" style="width:820px;">
+                            <div class="btn-group table-desc-right-t-dropdown" initprompt="10条" callback="query" style="width: 200px;">
+                            <input type="hidden" name="paging.pageSize" value="">
+                    <button type="button" class="btn btn btn-default" data-toggle="dropdown" aria-expanded="false">
+                        <span prompt="prompt">链接</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10">链接</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20">链接</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30">链接</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="50">链接</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn-group " initprompt="10条" callback="query" style="width: 600px;vertical-align: bottom;">
+                    <div class="input-group date">
+                        <input type="text" class="form-control" placeholder="请输入点击图片后跳转的链接地址">
+                        <span class="input-group-addon bg-gray">站点网址{website}</span>
+                    </div>
+                </div>
+                </div>
                 </div>
                 <div class="clearfix save lgg-version">
                     <a href="javasrcipt:void(0)" class="current">简体中文<span>未编辑</span></a>
@@ -214,6 +300,18 @@
                     <label>图片名称<span class="co-red m-l-sm">*</span></label>
                   </div>
                   <input type="text" placeholder="" class="form-control m-b"><p class="character">0/100</p>
+                </div>
+                <div class="form-group">
+                  <div class="clearfix">
+                    <label>弹窗标题<span class="co-red m-l-sm">*</span></label>
+                  </div>
+                  <input type="text" placeholder="" class="form-control m-b"><p class="character">0/100</p>
+                </div>
+                <div class="form-group">
+                  <div class="clearfix">
+                    <label>弹窗内容<span class="co-red m-l-sm">*</span></label>
+                  </div>
+                  <textarea type="text" placeholder="" class="form-control m-b"></textarea><p class="character">0/100</p>
                 </div>
                 <div class="form-group">
                 

@@ -23,9 +23,9 @@ define(['common/MobileBasePage'], function (Mobile) {
             };
 
             //是否需添加银行卡、比特币
-           this.hasBank();
-           this.initPage();
-           this.gotoFragment();
+            this.hasBank();
+            this.initPage();
+            this.gotoFragment();
         },
         /**
          * 无银行卡弹窗提示
@@ -72,7 +72,7 @@ define(['common/MobileBasePage'], function (Mobile) {
             });
 
             mui("form").on('tap', 'button.submit', function () {
-                if(!_this.hasBank()) {
+                if (!_this.hasBank()) {
                     return;
                 }
                 if (_this.checkAmout()) {
@@ -120,7 +120,7 @@ define(['common/MobileBasePage'], function (Mobile) {
             var amount = parseFloat($amount.val());
             var balance = parseFloat($('[name=walletBalance]').val());
 
-            if(!/^[1-9]\d*$/.test($amount.val())) {
+            if (!/^[1-9]\d*$/.test($amount.val())) {
                 _this.toast(window.top.message.withdraw_auto['取款金额为正整数']);
                 _this.recoverAmount();
                 $amount.focus();
@@ -327,10 +327,10 @@ define(['common/MobileBasePage'], function (Mobile) {
                 var target = $(this).data('target');
                 var dos = $(this).data('os');
                 var url = $(this).data('skip');
-                if (_this.os === 'app_android' && typeof target !== 'undefined') {
+                if (_this.os == 'app_android' && target) {
                     window.gamebox.gotoFragment(target);
-                } else if (dos === 'app_ios') {
-                    if (target || target === 0) {
+                } else if (dos == 'app_ios') {
+                    if (target || target == 0) {
                         gotoTab(target);
                     } else {
                         gotoGame(url);
@@ -339,6 +339,6 @@ define(['common/MobileBasePage'], function (Mobile) {
                     _this.gotoUrl(url);
                 }
             });
-        },
+        }
     });
 });
