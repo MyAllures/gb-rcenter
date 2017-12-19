@@ -259,8 +259,10 @@ var searchday = function (id) {
 
         } else if (id == 7) {
             var endDate = new Date();
-            endDate.setDate(endDate.getDate() + 1);
-            endymd = endDate.getFullYear() + "-" + GetFullDate(endDate.getMonth() + 1) + "-" + GetFullDate(endDate.getDate()) + " 00:00:00";
+            //endDate.setDate(endDate.getDate() + 1);
+            var weekEndDate = new Date(De.getFullYear(), De.getMonth(), De.getDate() - De.getDay() + 8);
+            endymd = weekEndDate.getFullYear() + "-" + GetFullDate(weekEndDate.getMonth() + 1) + "-" + GetFullDate(weekEndDate.getDate()) + " 00:00:00";
+
             var weekStartDate = new Date(De.getFullYear(), De.getMonth(), De.getDate() - De.getDay() + 1);
             ymd = weekStartDate.getFullYear() + "-" + GetFullDate(weekStartDate.getMonth() + 1) + "-" + GetFullDate(weekStartDate.getDate()) + " 00:00:00";
         }
