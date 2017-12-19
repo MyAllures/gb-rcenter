@@ -15,6 +15,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         cur_expect: null,
         /*随机数生成器*/
         randomNumInterval: null,
+        //判断是否在获取开奖号码
+        isGetOpen : null,
         /*清除弹窗显示标志*/
         clearPopFlag: null,
         /**清除弹窗对象标识*/
@@ -244,19 +246,33 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                     if (data.length > 0) {
                         var open = data[0];
                         var numArr = open.openCode ? open.openCode.split(",") : [];
-                        if (numArr.length == 0) { // 是否开奖中
-                            // 循环读取开奖数据，30秒
-                            window.setTimeout(function () {
-                                _this.getOpenHistory();
-                            }, 30000);
-                        }
-                        $(".mui-pull-left .style_blue").text(open.expect);
-                        //是否展示开奖效果
-                        _this.showOpeningStyle(numArr);
-                        //展示上一期中奖号码
-                        if (numArr && numArr.length > 0) {
-                            _this.showLastOpenCode(numArr);
-                        }
+                           if(!open.openCode){
+                               $(".mui-pull-left .style_blue").text(open.expect);
+                               //是否展示开奖效果
+                               if (!_this.randomNumInterval) {
+                                   _this.randomNumInterval = setInterval(function () {
+                                       _this.randomNumber();
+                                   }, 450);
+
+                                   _this.isGetOpen = setInterval(function () {
+                                       _this.getOpenHistory();
+                                   }, 30000);
+                               }
+                               // 循环读取开奖数据，30秒
+                               if (!_this.isGetOpen){
+                                   _this.isGetOpen = setInterval(function () {
+                                       _this.getOpenHistory();
+                                   }, 30000);
+                               }
+                           }else{
+                               if (_this.randomNumInterval != null) {
+                                   clearInterval(_this.randomNumInterval);
+                                   clearInterval(_this.isGetOpen);
+                                   _this.randomNumInterval = null;
+                               }
+                               //展示上一期中奖号码
+                               _this.showLastOpenCode(numArr);
+                           }
                         if(_this.type == "ssc" || _this.type=="pl3" || _this.code=="xyft" || _this.code=="jspk10"){
                             _this.refreshView();
                         }
@@ -272,28 +288,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          * 渲染双面长龙排行等 有需要的彩种请重写这个方法
          */
         refreshView: function () {
-
         },
 
-        /**lot
-         * 展示开奖效果
-         * @param numArr
-         */
-        showOpeningStyle: function (numArr) {
-            var _this = this;
-            if (!numArr || numArr.length <= 0) {
-                if (!this.randomNumInterval) {
-                    this.randomNumInterval = setInterval(function () {
-                        _this.randomNumber();
-                    }, 450);
-                }
-                return;
-            }
-            if (this.randomNumInterval) {
-                clearInterval(_this.randomNumInterval);
-                _this.randomNumInterval = null;
-            }
-        },
         /**
          * 显示清除弹窗
          */
