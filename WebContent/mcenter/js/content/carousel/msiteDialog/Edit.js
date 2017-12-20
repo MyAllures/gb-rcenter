@@ -270,6 +270,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
          * @private
          */
         _switchDisplay: function () {
+            var _this = this;
             var contentType = $(":radio[name='result.contentType']:checked").val();
             //圖片
             if(contentType == '1'){
@@ -285,6 +286,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 $(".content_picture").addClass("hide");
                 $(".content_word").removeClass("hide");
             }
+            _this.resizeDialog();
         },
 
         /**

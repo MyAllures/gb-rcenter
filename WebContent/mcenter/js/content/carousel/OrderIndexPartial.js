@@ -63,11 +63,13 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
                 type:"POST",
                 contentType: "application/json",
                 url:root+"/content/cttCarousel/resetSort.html",
-                data:that.getDate(),
+                data:that._getDate(),
                 success:function(data){
                     data = eval("("+data+")");
                     if(data.state){
-                        window.top.topPage.showSuccessMessage(data.msg,that.closePage());
+                        window.top.topPage.showSuccessMessage(data.msg, function () {
+                            $(".return-btn").click();
+                        });
                     }else{
                         window.top.topPage.showErrorMessage(data.msg);
                         $(e.currentTarget).unlock();
@@ -81,11 +83,11 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
         /**
          * 广告间隔时间
          */
-        getDate:function(){
+        _getDate:function(){
             var result = [];
             var params = [];
             $('.dragdd').each(function(tbIdx,tb){
-                $(tb).find("tr").each(function(trIdx,tr){
+                $(tb).find("tbody").find("tr").each(function(trIdx,tr){
                     var tr = $(tr);
                     var dis = tr.is(":visible");
                     if(dis){
