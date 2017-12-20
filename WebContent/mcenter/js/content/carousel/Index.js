@@ -34,7 +34,7 @@ define(['common/BaseListPage','nestable','curl/curl/plugin/json','bootstrapswitc
                     var useStatus = $(event.currentTarget).attr("useStatus");
                     $this.bootstrapSwitch('indeterminate',true);
                     if(state){
-                        if(status){
+                        if(status.length > 0){
                             window.top.topPage.showConfirmMessage(window.top.message.carousel['carousel.display.on.existed'],function (bol) {
                                 if(bol){
                                     $this.bootstrapSwitch('state', state,true);
