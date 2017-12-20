@@ -25,6 +25,7 @@ define(['common/BaseListPage','nestable','curl/curl/plugin/json','bootstrapswitc
         initBootstrapSwitch:function(){
             var that = this;
             var $my_checkbox = $(this.formSelector + " input[name='my-checkbox']");
+            var status = $("input[type=checkbox]:checked");
             /*switch 插件事件*/
             that.unInitSwitch($my_checkbox)
                 .bootstrapSwitch()
@@ -33,14 +34,25 @@ define(['common/BaseListPage','nestable','curl/curl/plugin/json','bootstrapswitc
                     var useStatus = $(event.currentTarget).attr("useStatus");
                     $this.bootstrapSwitch('indeterminate',true);
                     if(state){
-                        window.top.topPage.showConfirmMessage(window.top.message.carousel['carousel.display.on.showfront'],function (bol) {
-                            if(bol){
-                                $this.bootstrapSwitch('state', state,true);
-                                that.changeStatus(state,event);
-                            }else{
-                                $this.bootstrapSwitch('state', !state,true);
-                            }
-                        });
+                        if(status){
+                            window.top.topPage.showConfirmMessage(window.top.message.carousel['carousel.display.on.existed'],function (bol) {
+                                if(bol){
+                                    $this.bootstrapSwitch('state', state,true);
+                                    that.changeStatus(state,event);
+                                }else{
+                                    $this.bootstrapSwitch('state', !state,true);
+                                }
+                            });
+                        }else {
+                            window.top.topPage.showConfirmMessage(window.top.message.carousel['carousel.display.on.showfront'],function (bol) {
+                                if(bol){
+                                    $this.bootstrapSwitch('state', state,true);
+                                    that.changeStatus(state,event);
+                                }else{
+                                    $this.bootstrapSwitch('state', !state,true);
+                                }
+                            });
+                        }
                     }else{
                         if(useStatus=='wait'){
                             window.top.topPage.showConfirmMessage(window.top.message.carousel["carousel.display.off.wait"],function (bol) {
