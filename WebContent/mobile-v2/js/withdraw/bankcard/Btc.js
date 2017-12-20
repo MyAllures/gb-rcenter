@@ -79,14 +79,15 @@ define(['common/MobileBasePage'], function (Mobile) {
                         setTimeout(function () {
                             if (data.action == 'withdraw') {
                                 var _href = root + '/wallet/withdraw/index.html';
-                                if (os == 'android') {
-                                    window.gamebox.finish();
+                                if (os == 'android' || os == 'app_android') {
+                                    window.gamebox.finishActivity();
                                 } else {
                                     _this.gotoUrl(_href);
                                 }
                             } else {
-                                if (os == 'android') {
-                                    window.history.go(-1);
+                                if (os == 'android' || os == 'app_android') {
+                                    //window.history.go(-1);
+                                    window.gamebox.finishActivity();
                                 } else if (os == 'app_ios') {
                                     goBack();
                                 } else {
