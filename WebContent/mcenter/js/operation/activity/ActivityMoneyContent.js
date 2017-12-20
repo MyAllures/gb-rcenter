@@ -588,23 +588,33 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             $("#preview_awards_rules").find("tr:gt(0)").remove();
             $("#awards_rules").find("tr:gt(0)").each(function (idx, item) {
                 var a1 = $(item).find("td:eq(0) input").val();
-                var a2 = $(item).find("td:eq(4) input").val();
-                var a3 = $(item).find("td:eq(1) input").val();
-                var a4 = $(item).find("td:eq(5) input").val();
-                var a5 = "";
+                var a2 = $(item).find("td:eq(1) input").val();
+                var a3 = $(item).find("td:eq(2) span").text();
+                var a4 = $(item).find("td:eq(3) span").text();
+                var a5 = $(item).find("td:eq(4) input").val();
+                var a6 = $(item).find("td:eq(5) input").val();
+
+                var a7 = "";
                 if($("#activityMessageId").val()!=""){
-                    a5 =$(item).find("td:eq(4) input").val();
-                    if(!a5){
-                        a5=a3;
-                    }
+                    a7 =$(item).find("td:eq(6) span").text();
+
                 }
-                var trhtml = "<tr><td>"+siteCurrencySign + a1 + "</td><td>" + a2 + "倍</td><td>" + a3 + "个</td><td>"+a4+ "%</td>";
-                if(a5!=""){
-                    trhtml += "<td>"+a5+"</td>";
+                var trhtml = "<tr><td>"+siteCurrencySign + a1 + "</td><td>" + a2 + "个</td><td>"
+                    + a3 + "个</td><td>"+siteCurrencySign +a4+ "</td><td>"+a5+"倍</td><td>"+a6+"%</td>";
+                if(a7!=""){
+                    trhtml += "<td>"+a7+"</td>";
                 }
                 trhtml += "</tr>";
                 $("#preview_awards_rules").append(trhtml);
             });
+            var tr = $("#total_count_table").find("tr:eq(0)").clone();
+            $(tr).find("td").removeAttrs("style");
+            $(tr).find("td:eq(7)").remove();
+            if($("#activityMessageId").val()==""){
+                $(tr).find("td:eq(6)").remove();
+            }
+            $("#preview_awards_rules").append(tr);
+
         },
         //填写金额计算总额
         awardAmountEvent:function () {
