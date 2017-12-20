@@ -13,6 +13,8 @@ define(['common/MobileBasePage'], function (Mobile) {
         onPageLoad: function () {
             this._super();
             t=this;
+            beginTime = $("#beginTime").val();
+            endTime = $("#endTime").val();
             $('._userAsset').removeClass('mui-hide');
             mui('#refreshContainer').pullRefresh({
                 container: '#refreshContainer',
