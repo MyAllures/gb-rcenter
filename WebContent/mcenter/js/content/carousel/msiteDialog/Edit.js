@@ -175,7 +175,9 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
         preSave:function( event , option ){
             var status = $("[name='result.contentType']:checked").val();
             if (status!=1){
-                $(".content_picture").val('');
+                $(".content_picture").find("input.cover").val('');
+            }else {
+                $(".content_word_title").find("textarea.word_content").val('');
             }
             event.objId = $('[name="search.id"]').val();
             event.catePath = 'carousel';
