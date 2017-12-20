@@ -231,7 +231,7 @@ define(['site/common/BasePage'], function (BasePage) {
                 },
                 xAxis: [{
                     axisLabel: {
-                        rotate: -60,
+                        rotate: -90,
                         interval: 0
                     },
                     type: 'category',
