@@ -175,7 +175,9 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
         preSave:function( event , option ){
             var status = $("[name='result.contentType']:checked").val();
             if (status!=1){
-                $(".content_picture").val('');
+                $(".content_picture").find("input.cover").val('');
+            }else {
+                $(".content_word_title").find("textarea.word_content").val('');
             }
             event.objId = $('[name="search.id"]').val();
             event.catePath = 'carousel';
@@ -270,6 +272,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
          * @private
          */
         _switchDisplay: function () {
+            var _this = this;
             var contentType = $(":radio[name='result.contentType']:checked").val();
             //圖片
             if(contentType == '1'){
@@ -285,6 +288,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 $(".content_picture").addClass("hide");
                 $(".content_word").removeClass("hide");
             }
+            _this.resizeDialog();
         },
 
         /**
