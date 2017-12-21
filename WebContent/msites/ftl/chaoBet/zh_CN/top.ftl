@@ -170,14 +170,17 @@
                         </div>
                         <a href="javascript:" type="button" class="btn-login _vr_login">立即登录</a>
                         <a href="register.html" class="btn-register">免费注册</a>
-                        <a href="javascript:createFreeAccount()" class="btn-register">免费试玩</a>
+                        <a href="javascript:" onclick="createFreeAccount();" class="btn-register">免费试玩</a>
                     </form>
                 </div>
                 <!--panel-->
                 <div class="header-panel _vr_loginSuccess" style="display: none">
                     <a href="javascript:" class="_vr_nickname"></a>
-                    <a href="${data.contextInfo.playerCenterContext}" target="_blank">玩家中心</a>
-                    <#--<a class="exit openNewWindow" href="javascript:void(0)" data-url="${data.contextInfo.playerCenterContext}dialogIndex.html">玩家中心</a>-->
+                    <#if data.playerPopup?string == 'true'>
+                        <a class="openNewWindow" data-url="${data.contextInfo.playerCenterContext}dialogIndex.html" href="javascript:">玩家中心</a>
+                    <#else>
+                        <a href="${data.contextInfo.playerCenterContext}" target="_blank">玩家中心</a>
+                    </#if>
                     <a href="${data.contextInfo.playerCenterContext}#/operation/pAnnouncementMessage/messageList.html" target="_blank">消息 <span class="label label-info _vr_messageCount"></span></a>
                     <a href="${data.contextInfo.playerCenterContext}#/fund/playerTransfer/transfers.html" target="_blank">额度转换</a>
                     <a href="${data.contextInfo.playerCenterContext}#/fund/playerRecharge/recharge.html" target="_blank">存款专区</a>

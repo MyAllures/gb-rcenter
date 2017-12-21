@@ -32,7 +32,7 @@ define(['common/BasePage', 'bootstrap-dialog', 'serializeJSON'], function (BaseP
             var $target = $(e.currentTarget);
             var selectVal = $target.attr("key");
             if (selectVal && selectVal != '') {
-                var content = $target.parent().children("#content_" + selectVal).text();
+                var content = $target.parents().children("#content_" + selectVal).text();
                 var selectName = $target.text();
                 window.top.topPage.ajax({
                     loading: true,
