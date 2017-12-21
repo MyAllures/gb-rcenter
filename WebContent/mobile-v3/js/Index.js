@@ -13,6 +13,8 @@ $(function () {
     };
     muiInit(options);
     initBanner();
+    //默认打开弹窗消息
+    initDialog();
 });
 
 /*轮播图*/
@@ -20,6 +22,20 @@ function initBanner() {
     mui('.mui-banner').slider({
         //interval: 3000 // 自动轮播时长（毫秒），为0不自动播放，默认为0；
     });
+}
+
+/*消息弹窗*/
+function initDialog(){
+    mui('.mui-popover').popover('toggle',document.getElementById("openPopover"));
+}
+
+function dialog(obj,options){
+    var link = options.dataLink;
+    if(link){
+        goToUrl(link);
+    }else{
+        initDialog();
+    }
 }
 
 /**

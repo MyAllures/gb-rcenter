@@ -26,6 +26,7 @@ define(['common/BaseListPage','nestable','curl/curl/plugin/json','bootstrapswitc
             var that = this;
             var $my_checkbox = $(this.formSelector + " input[name='my-checkbox']");
             var status = $("input[type=checkbox]:checked");
+            var type = $("input[name='result.type']").val();
             /*switch 插件事件*/
             that.unInitSwitch($my_checkbox)
                 .bootstrapSwitch()
@@ -34,7 +35,7 @@ define(['common/BaseListPage','nestable','curl/curl/plugin/json','bootstrapswitc
                     var useStatus = $(event.currentTarget).attr("useStatus");
                     $this.bootstrapSwitch('indeterminate',true);
                     if(state){
-                        if(status.length > 0){
+                        if(status.length > 0 && (type == 'carousel_type_ad_dialog' || type == 'carousel_type_phone_dialog')){
                             window.top.topPage.showConfirmMessage(window.top.message.carousel['carousel.display.on.existed'],function (bol) {
                                 if(bol){
                                     $this.bootstrapSwitch('state', state,true);
