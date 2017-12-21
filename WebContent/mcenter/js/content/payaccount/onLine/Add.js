@@ -20,6 +20,14 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
                     e.currentTarget = $("a[key=" + key + "]");
                     this.bankChannel(e);
                 }
+                key = $("[name='result.payType']").val();
+                if (key != null && key != "") {
+                    var el = {};
+                    el.key = key;
+                    el.page = this;
+                    el.currentTarget = $("a[key=" + key + "]");
+                    this.bankChannel(el);
+                }
 
 
             }
@@ -41,6 +49,13 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
             });
             var _this = this;
             $("[name='result.bankCode']", this.formSelector).chosen().change(function (item) {
+                var _e = {'key': $(item.target).val()};
+                _this.bankChannel(_e);
+            });
+            $("[name='result.payType']", this.formSelector).chosen({
+                no_results_text: window.top.message.fund_auto['没有找到']
+            });
+            $("[name='result.payType']", this.formSelector).chosen().change(function (item) {
                 var _e = {'key': $(item.target).val()};
                 _this.bankChannel(_e);
             });
@@ -96,7 +111,30 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
                     e.result = false;
                 }
             });
-
+            /**
+             * 异步加载存款渠道
+             */
+            $("#SelectPayment").change(function (e, option) {
+                var paytype = $("#SelectPayment").find("option:selected").val();
+                window.top.topPage.ajax({
+                    url: root + '/payAccount/loadPayType.html',
+                    dataType: "json",
+                    data: {"paytype": paytype},
+                    success: function (data) {
+                        if (data != null) {
+                            var $select = $("#selectDeposit");
+                            var html = '<option value="">'+window.top.message.content_auto["请选择支付渠道"]+'</option>';
+                            var bankList = data.bankList;
+                            for (var index = 0; index < bankList.length; index++) {
+                                var bank = bankList[index];
+                                html = html + '<option value="' + bank.bankName + '" ${command.result.bankCode==' + bank.bankName + '?"selected":""}>' + bank.bankShortName + '</option>';
+                            }
+                            $select.html(html);
+                            $select.trigger("chosen:updated"); // bind  .chosen
+                        }
+                    }
+                });
+            });
         },
         savePlayer: function (e, option) {
             var that = this;
@@ -186,7 +224,7 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
                 dataType: "json",
                 data: {"channelCode": channel_code},
                 success: function (data) {
-                    for (var index = data.payApiParams.length - 1; index >= 0; index--) {
+                    for (var index = data.payApiParams.length - 1;index >= 0;index--){
                         var name = "channelJson";
                         var domainClass = '';
                         var hide = '';
