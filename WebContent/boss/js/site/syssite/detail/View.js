@@ -313,16 +313,29 @@ define(['common/BasePage'], function(BasePage) {
         },
         /** 切换站点信息 */
         queryView: function (e) {
-            var id = $("#siteId").val();
-            window.top.topPage.ajax({/*partial=1&*/
-                url: root + '/site/detail/viewSiteBasic.html?search.id='+id,
-                success: function (data) {
-                    if(data){
-                        $("#mainFrame",this.formSelector).html(data);
-                        $(e.currentTarget).unlock();
+            var id = $("#Id").val();
+            if ( !parseInt(id)) {
+                window.top.topPage.showInfoMessage('请输入正确的站点ID!');
+                $(e.currentTarget).unlock();
+            } else {
+                window.top.topPage.ajax({
+                    url: root + '/site/detail/queryViewSiteBasic.html?search.id=' + id,
+                    success: function (data) {
+                        if (data=="true") {
+                            window.top.topPage.ajax({
+                                url: root + '/site/detail/viewSiteBasic.html?search.id=' + id,
+                                success: function (data) {
+                                    $("#mainFrame", this.formSelector).html(data);
+                                    $(e.currentTarget).unlock();
+                                }
+                            })
+                        } else {
+                            window.top.topPage.showWarningMessage("没有此站点的信息");
+                            $(e.currentTarget).unlock();
+                        }
                     }
-                }
-            });
+                });
+            }
         }
     });
 });
