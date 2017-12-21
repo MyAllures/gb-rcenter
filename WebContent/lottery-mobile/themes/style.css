@@ -593,7 +593,7 @@ a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 /*资金记录*/
 .money-record-list .mui-table-view-cell { padding-right: 0 !important; }
 .money-record-list .mui-table-view-cell .bet-list-time { display: inline-block; vertical-align: middle; }
-.money-record-list .mui-table-view-cell .bet-list-right { display: inline-block; width: calc(100% - 90px); vertical-align: middle; line-height: 25px; padding-left: 18px; }
+.money-record-list .mui-table-view-cell .bet-list-right { display: inline-block; width: calc(100% - 3.5rem); vertical-align: middle; line-height: 25px; padding-left: 18px; }
 
 /*会员中心*/
 .member-head { height: 10.8rem; }
