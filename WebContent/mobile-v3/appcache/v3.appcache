@@ -1,0 +1,16 @@
+CACHE MANIFEST
+#在此标题下列出的文件将在首次下载后进行缓存
+#2017-12-21 v2004
+
+#以下是html
+
+#以下是js部分
+/mobile/message_zh_CN.js
+../../common/js/jquery/jquery-2.1.1.min.js
+
+
+#以下是css部分
+
+#以下是图片部分
+
+
