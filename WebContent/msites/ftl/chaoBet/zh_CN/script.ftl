@@ -21,11 +21,19 @@
         $('.footer-partner ul li a').hover(function() {
             $('span', this).stop().animate({
                 'opacity': 1
-            }, 300)
+            }, 300);
+            $(this).stop().animate({
+                "backgroundPositionY": "40px"
+            });
+            $(".hontu-wrap").css("z-index", "0");
         }, function() {
             $('span', this).stop().animate({
                 'opacity': 0
-            }, 300)
+            }, 300);
+            $(this).stop().animate({
+                "backgroundPositionY": 0
+            });
+            $(".hontu-wrap").css("z-index", "-1");
         });
 
         // 轮播图前进、后退滑入显示动画
@@ -90,5 +98,21 @@
             $(this).find(".enter-link").text(orgi);
         })
     }
+
+
+    //点击api的时候，加上active类名
+    $("#api-tabs li").on("click",function(){
+        $("#api-tabs li").removeClass("active");
+        var $dataApi = $(this).find('a').attr("data-api");
+        $("#api-tabs li a[data-api='"+$dataApi+"']").parent().addClass("active");
+    });
+    //页面加载的时候，默认第一个加active
+    $("#api-tabs li").each(function($index){
+        if($index==0&&window.location.search==""){
+            var $dataApi = $(this).find('a').attr("data-api");
+            $("#api-tabs li a[data-api='"+$dataApi+"']").parent().addClass("active");
+        }
+    });
+
 </script>
 

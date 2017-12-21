@@ -1,5 +1,13 @@
 <!-- 新界面开始-->
-<div id="hongbao_detail" class="hongbao_detail">
+<#assign activityDescription></#assign>
+<#if data.activityMessage??>
+    <#list data.activityMessage as am>
+        <#if am.code=='money'&& am.states=='processing' &&am.isDisplay>
+            <#assign activityDescription=am.activityDescription>
+        </#if>
+    </#list>
+</#if>
+<div id="hongbao_detail" class="hongbao_detail" style="display: none;">
 
     <input type="hidden" id="activity_message_id" value="">
     <input type="hidden" id="win_id" value="">
@@ -22,18 +30,7 @@
                 <div class="hongbao-rule">
                     <div class="txt">
                         <div class="nice-wrapper">
-                            游戏规则游戏规则
-                            游戏规则游戏规则
-                            游戏规则游戏规则
-                            游戏规则游戏规则
-                            游戏规则游戏规则
-                            游戏规则游戏规则
-                            游戏规则游戏规则
-                            游戏规则游戏规则
-                            游戏规则游戏规则
-                            游戏规则游戏规则
-                            游戏规则游戏规则
-                            游戏规则游戏规则
+                           ${activityDescription}
                         </div>
                     </div>
                     <a href="javascript:" class="icon-close-rule" onclick="closeRule()"></a>
@@ -42,7 +39,7 @@
             <!--中奖时的提示-->
             <div class="win-hongbao tips">
                 <div class="ttxt-1">恭喜您</div>
-                <div class="ttxt-2">获得20元</div>
+                <div class="ttxt-2">获得0元</div>
             </div>
             <!--未中奖时的提示-->
             <div class="lose-hongbao tips">
@@ -70,6 +67,7 @@
         $("#lotteryPages").show();
         $(".tips").hide();
         $(".hongbao_inner").removeClass("opened");
+        $(".hongbao-rule").hide();
     }
 
     /*打开红包规则*/
