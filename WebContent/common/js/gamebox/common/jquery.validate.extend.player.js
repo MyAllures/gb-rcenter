@@ -17,7 +17,7 @@
         if(typeof(ele) != "undefined") {
             _this = ele;
         }
-        var tipObj =$("[tipsName=\'"+_this[0].name+"-tips\']")
+        var tipObj =$("[tipsName=\'"+_this[0].name+"-tips\']");
         _this = tipObj.length>0?tipObj:_this;
         this._setTips(message,_this);
     }
@@ -38,7 +38,7 @@
         if((isShowSuccMsg&&isShowSuccMsg=="false")|| (!this.val()) || this.val()=="") {
             message = "";
         }
-        var tipObj =$("[tipsName=\'"+this[0].name+"-tips\']")
+        var tipObj =$("[tipsName=\'"+this[0].name+"-tips\']");
         var _this = tipObj.length>0?tipObj:this;
         if(this.is(":hidden")&&tipObj.length<=0) {
             return ;

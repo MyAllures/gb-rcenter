@@ -17,6 +17,7 @@ define(['common/MobileBasePage'], function (Mobile) {
             t = this;
             this.getList();
             this.getStatisticsData();
+            $('.mui-pull-loading').remove();
         },
         bindEvent: function () {
             this._super();
