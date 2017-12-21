@@ -14,6 +14,10 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
             window.top.topPage.initFileWithPreview($("#uploadImageInput")[0], $("#picUrl")[0],{
                 maxFileSize:1024,
                 allowedFileExtensions:[".png",".jpg",".gif",".jpeg"]});
+            var apiId = $("[name='apiId']").val();
+            if(apiId=='link'){
+                this.hideApiTypeSelect(true);
+            }
             this.resizeDialog();
         },
         bindEvent: function () {
@@ -321,6 +325,29 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
 
                 ]]
             });
-        }
+        },
+
+        /**
+         * 显示链接输入框
+         * @param e
+         * @param opt
+         */
+        showLink: function (e, opt) {
+            var key = e.key;
+            if(key=='link'){
+                this.hideApiTypeSelect(true);
+                $("#url-div").removeClass("hide");
+            }else{
+                this.hideApiTypeSelect(false);
+                $("#url-div").addClass("hide");
+            }
+        },
+        hideApiTypeSelect: function (flag) {
+            if(flag){
+                $("#apiTypeId-div").addClass("hide");
+            }else {
+                $("#apiTypeId-div").removeClass("hide");
+            }
+        },
     });
 });
