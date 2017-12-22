@@ -4,6 +4,19 @@
 mui.init({});
 mui('.mui-scroll-wrapper').scroll();
 
+$(function () {
+    displayToIndex();
+});
+
+function displayToIndex() {
+    var isOpen = $("input[name=isOpen]").val();
+    if(os != 'app_ios' && os !='app_android') {
+        toIndex(isOpen);
+    } else {
+        lazy2Index(isOpen);
+    }
+}
+
 mui(document.body).on('tap', '#welcome', function () {
     setTimeout(function () {
         var $bg = $('div.load-bg');
@@ -37,10 +50,10 @@ function toIndex(isOpen) {
     var nowTs = new Date().getTime();
     if (isOpen == 'true' && openTs >= nowTs) {
         document.cookie = "ACCESS_TERMINAL=pc;expires=0";
-        //window.location.replace(root + '/');
+        window.location.replace(root + '/');
     } else {
         document.cookie = "ACCESS_TERMINAL=mobile;expires=0";
-       // window.location.replace(root + '/mainIndex.html');
+        window.location.replace(root + '/mainIndex.html');
     }
 }
 
