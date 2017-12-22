@@ -37,10 +37,10 @@ function toIndex(isOpen) {
     var nowTs = new Date().getTime();
     if (isOpen == 'true' && openTs >= nowTs) {
         document.cookie = "ACCESS_TERMINAL=pc;expires=0";
-        window.location.replace(root + '/');
+        //window.location.replace(root + '/');
     } else {
         document.cookie = "ACCESS_TERMINAL=mobile;expires=0";
-        window.location.replace(root + '/mainIndex.html');
+       // window.location.replace(root + '/mainIndex.html');
     }
 }
 
