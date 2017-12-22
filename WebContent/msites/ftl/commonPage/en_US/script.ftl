@@ -1402,7 +1402,9 @@
                         afterLogin(data,$form,callback,obj,loginText);
                     },
                     error:function(error) {
-
+                        if(error.responseJSON.propMessages){
+                            window.location.href=error.responseJSON.propMessages.location;
+                        }
                     },
                     complete: function () {
                         $this.find("span").removeClass("loading gui gui-spinner gui-pulse");
