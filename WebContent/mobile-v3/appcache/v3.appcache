@@ -84,27 +84,27 @@ CACHE MANIFEST
 ../images/api/banner/2-4.jpg
 ../images/api/banner/2-4.jpg
 
-../images/lottery0.png
-../images/lottery1.png
-../images/lottery2.png
-../images/lottery3.png
-../images/lottery4.png
-../images/lottery5.png
-../images/lottery6.png
-../images/lottery7.png
-../images/lottery8.png
-../images/lottery9.png
-../images/lottery10.png
-../images/lottery11.png
-../images/lottery12.png
-../images/lottery13.png
-../images/lottery14.png
-../images/lottery15.png
-../images/lottery17.png
-../images/lottery18.png
-../images/lottery19.png
-../images/lottery20.png
-../images/lottery-demo.png
+../images/lottery/0.png
+../images/lottery/1.png
+../images/lottery/2.png
+../images/lottery/3.png
+../images/lottery/4.png
+../images/lottery/5.png
+../images/lottery/6.png
+../images/lottery/7.png
+../images/lottery/8.png
+../images/lottery/9.png
+../images/lottery/10.png
+../images/lottery/11.png
+../images/lottery/12.png
+../images/lottery/13.png
+../images/lottery/14.png
+../images/lottery/15.png
+../images/lottery/17.png
+../images/lottery/18.png
+../images/lottery/19.png
+../images/lottery/20.png
+../images/lottery/lottery-demo.png
 
 ../images/ads-banner-01.png
 ../images/App.png
@@ -284,3 +284,10 @@ CACHE MANIFEST
 
 #fonts
 ../../mobile-v2/fonts/mui.ttf
+
+NETWORK:
+*
+
+FALLBACK:
+/commonPage/unnet.html
+*.html /commonPage/e404.html
