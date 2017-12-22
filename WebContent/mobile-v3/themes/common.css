@@ -372,4 +372,14 @@ header.mui-bar-nav .mui-icon-bars {
   font-size: 0;
 }
 
+/* 加载条 */
+.load-wrap{  position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: #232327; z-index: 66;}
+.load-bg .load-bar{ position: absolute; width: 228px;  left: 50%;  margin-left: -114px;  top: 50%; margin-top: -150px;}
+.load-bg .load-bar p{font-size: 12px;color: #fff;text-align: center;margin-bottom: 14px;}
+.load-bg .load-bar-bottom{position: absolute;bottom: 62px;text-align: center;left: 0;right: 0;}
+.load-bg .load-bar-bottom .copy-right{font-size: 8px;color: #dcdcdd; line-height: 20px;}
+.load-bg .load-bar-bottom .tech-support{font-size: 8px;color: #dcdcdd; line-height: 16px;}
+.load-bg .load-bar-bottom .tech-support .icon-tech-support{background: url(../images/tech-support.png) 0 0/50px;display: inline-block;width: 50px;height: 11px;vertical-align: middle;}
+.load-bg .load-bar-middle{    position: absolute; left: 0; right: 0; text-align: center; top: 50%;}
+.load-bg .load-bar-middle .btn-back{border: 1px solid #e2e2e2; border-radius: 4px; padding: 5px 15px; background: #999; color: #fff; font-size: 12px;}
 /*# sourceMappingURL=common.css.map */
