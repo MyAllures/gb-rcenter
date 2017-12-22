@@ -46,22 +46,19 @@
                     <div class="shadow">
                         <div class="icon-wrap">
                             <#if data.siteApiMap["4"]??>
-                                <a class="_vr_mt_check" href="sports.html?apiId=4"
-                                   data-api="4" data-apitype="3"
+                                <a class="_vr_mt_check" data-href="sports.html?apiId=4" href="javascript:void(0)" data-api="4" data-apitype="3"
                                    <#if data.siteApiMap["4"].maintainStartTime?has_content>startTime="${data.siteApiMap["4"].maintainStartTime?long?string.computer}"</#if>
                                    <#if data.siteApiMap["4"].maintainEndTime?has_content>endTime="${data.siteApiMap["4"].maintainEndTime?long?string.computer}"</#if>>
                                     <span class="icon-game">IM體育</span></a>
                             </#if>
                             <#if data.siteApiMap["12"]??>
-                                <a class="_vr_mt_check" href="sports.html?apiId=12"
-                                   data-api="12" data-apitype="3"
+                                <a class="_vr_mt_check" data-href="sports.html?apiId=12" href="javascript:void(0)" data-api="12" data-apitype="3"
                                    <#if data.siteApiMap["12"].maintainStartTime?has_content>startTime="${data.siteApiMap["12"].maintainStartTime?long?string.computer}"</#if>
                                    <#if data.siteApiMap["12"].maintainEndTime?has_content>endTime="${data.siteApiMap["12"].maintainEndTime?long?string.computer}"</#if>>
                                     <span class="icon-game">皇冠體育</span></a>
                             </#if>
                             <#if data.siteApiMap["19"]??>
-                                <a class="_vr_mt_check" href="sports.html?apiId=19"
-                                   data-api="19" data-apitype="3"
+                                <a class="_vr_mt_check" data-href="sports.html?apiId=19" href="javascript:void(0)" data-api="19" data-apitype="3"
                                    <#if data.siteApiMap["19"].maintainStartTime?has_content>startTime="${data.siteApiMap["19"].maintainStartTime?long?string.computer}"</#if>
                                    <#if data.siteApiMap["19"].maintainEndTime?has_content>endTime="${data.siteApiMap["19"].maintainEndTime?long?string.computer}"</#if>>
                                     <span class="icon-game">沙巴體育</span></a>
@@ -77,22 +74,19 @@
                         <div class="icon-wrap">
                             <div class="d1">
                                 <#if data.siteApiMap["10"]??>
-                                    <a class="_vr_mt_check" href="casino.html?apiType=2&apiId=10&gameTag=hot_game"
-                                       data-api="10" data-apitype="2"
+                                    <a class="_vr_mt_check" data-href="casino.html?apiType=2&apiId=10&gameTag=hot_game" href="javascript:void(0)" data-api="10" data-apitype="2"
                                        <#if data.siteApiMap["10"].maintainStartTime?has_content>startTime="${data.siteApiMap["10"].maintainStartTime?long?string.computer}"</#if>
                                        <#if data.siteApiMap["10"].maintainEndTime?has_content>endTime="${data.siteApiMap["10"].maintainEndTime?long?string.computer}"</#if>>
                                         <span class="icon-game">BBIN</span></a>
                                 </#if>
                                 <#if data.siteApiMap["3"]??>
-                                    <a class="_vr_mt_check" href="casino.html?apiType=2&apiId=3&gameTag=hot_game"
-                                       data-api="3" data-apitype="2"
+                                    <a class="_vr_mt_check" data-href="casino.html?apiType=2&apiId=3&gameTag=hot_game" href="javascript:void(0)" data-api="3" data-apitype="2"
                                        <#if data.siteApiMap["3"].maintainStartTime?has_content>startTime="${data.siteApiMap["3"].maintainStartTime?long?string.computer}"</#if>
                                        <#if data.siteApiMap["3"].maintainEndTime?has_content>endTime="${data.siteApiMap["3"].maintainEndTime?long?string.computer}"</#if>>
                                         <span class="icon-game">MG電子</span></a>
                                 </#if>
                                 <#if data.siteApiMap["6"]??>
-                                    <a class="_vr_mt_check" href="casino.html?apiType=2&apiId=6&gameTag=hot_game"
-                                       data-api="6" data-apitype="2"
+                                    <a class="_vr_mt_check" data-href="casino.html?apiType=2&apiId=6&gameTag=hot_game" href="javascript:void(0)" data-api="6" data-apitype="2"
                                        <#if data.siteApiMap["6"].maintainStartTime?has_content>startTime="${data.siteApiMap["6"].maintainStartTime?long?string.computer}"</#if>
                                        <#if data.siteApiMap["6"].maintainEndTime?has_content>endTime="${data.siteApiMap["6"].maintainEndTime?long?string.computer}"</#if>>
                                         <span class="icon-game">PT電子</span></a>
@@ -100,15 +94,13 @@
                             </div>
                             <div class="d2">
                             <#if data.siteApiMap["9"]??>
-                                <a class="_vr_mt_check" href="casino.html?apiType=2&apiId=9&gameTag=hot_game"
-                                   data-api="9" data-apitype="2"
+                                <a class="_vr_mt_check" data-href="casino.html?apiType=2&apiId=9&gameTag=hot_game" href="javascript:void(0)" data-api="9" data-apitype="2"
                                    <#if data.siteApiMap["9"].maintainStartTime?has_content>startTime="${data.siteApiMap["9"].maintainStartTime?long?string.computer}"</#if>
                                    <#if data.siteApiMap["9"].maintainEndTime?has_content>endTime="${data.siteApiMap["9"].maintainEndTime?long?string.computer}"</#if>>
                                     <span class="icon-game">AG電子</span></a>
                             </#if>
                             <#if data.siteApiMap["15"]??>
-                                <a class="_vr_mt_check" href="casino.html?apiType=2&apiId=15&gameTag=hot_game"
-                                   data-api="15" data-apitype="2"
+                                <a class="_vr_mt_check" data-href="casino.html?apiType=2&apiId=15&gameTag=hot_game" href="javascript:void(0)" data-api="15" data-apitype="2"
                                    <#if data.siteApiMap["15"].maintainStartTime?has_content>startTime="${data.siteApiMap["15"].maintainStartTime?long?string.computer}"</#if>
                                    <#if data.siteApiMap["15"].maintainEndTime?has_content>endTime="${data.siteApiMap["15"].maintainEndTime?long?string.computer}"</#if>>
                                     <span class="icon-game">HB電子</span></a>

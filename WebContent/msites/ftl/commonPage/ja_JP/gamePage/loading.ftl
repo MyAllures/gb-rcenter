@@ -41,11 +41,29 @@
     $(function(){
         var isAutoPay = getCookie("isAutoPay");
         if(isAutoPay == 'true') {
-            autoPayLogin();
+            fetchAllBalance();
         } else {
             fetchBalance();
         }
     });
+
+    function fetchAllBalance(){
+        $.ajax({
+            url: "/ntl/getWalletBalanceAndAllApiBalance.html?t="+ new Date().getTime().toString(36),
+            type: "get",
+            dataType: "JSON",
+            success:function(data){
+                if(!data.allBalance>0&&apiId!='20'){
+                    showRecharge(data);
+                }else {
+                    autoPayLogin();
+                }
+            },
+            error:function(error){
+                console.log("getWalletBalanceAndAllApiBalance error")
+            }
+        })
+    }
 
     function fetchBalance(){
         $.ajax({
@@ -94,6 +112,27 @@
             }
         });
     }
+
+    function showRecharge(data){
+        dialog = BootstrapDialog.show({
+            title: '殘高に注意する',
+            draggable: true,
+            type:  BootstrapDialog.TYPE_WARNING,
+            data: {
+                'allBalance': data.allBalance,
+            },
+            message: function(dialog){
+                var $message = $('<div></div>').load('/commonPage/modal/toRecharge.html', function(){
+                    $("#walletBalance-value",$message).text(dialog.getData("allBalance"));
+                });
+                return $message;
+            },
+            onhide: function(dialogRef){
+                apiLoginReal(apiId,gameCode,apiTypeId);
+            }
+        });
+    }
+
     function checkRate(amount){
         if(amount==null||amount==""){
             alert("金額を入れてください");

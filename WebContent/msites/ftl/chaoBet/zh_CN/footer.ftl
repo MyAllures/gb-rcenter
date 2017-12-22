@@ -1,38 +1,52 @@
 <footer>
     <!--footer-parter-->
     <div class="footer-partner">
-        <div class="container">
-        <ul class="list-inline text-center">
-            <li>
-                <a href="http://www.hongtubet.com" target="_blank" class="partner dw"><span style="opacity: 0;"></span></a>
-            </li>
-            <li>
-                <a class="partner bb"><span></span></a>
-            </li>
-            <li>
-                <a class="partner mg"><span></span></a>
-            </li>
-            <li>
-                <a class="partner pt"><span></span></a>
-            </li>
-            <li>
-                <a class="partner ag"><span></span></a>
-            </li>
-            <li>
-                <a class="partner og"><span></span></a>
-            </li>
-            <li>
-                <a class="partner hg"><span></span></a>
-            </li>
-            <li>
-                <a class="partner gd"><span style="opacity: 0;"></span></a>
-            </li>
-            <li>
-                <a class="partner ds"><span></span></a>
-            </li>
-        </ul>
+            <div class="container">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a class="partner ht" href="http://www.hongtubet.com" target="_blank">
+                            <div class="hontu-wrap">
+                                <div class="img1"></div>
+                                <div class="img2"></div>
+                                <div class="img3"></div>
+                                <div class="img4"></div>
+                                <div class="img5"></div>
+                                <div class="img6"></div>
+                                <div class="img7"></div>
+                                <div class="img8"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="partner bb"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner ag"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner mg"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner pt"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner sb"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner og"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner gd"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner bsg"><span></span></a>
+                    </li>
+                    <li>
+                        <a class="partner opus"><span></span></a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
     <!--footer-link-copyright-->
     <div class="footer-link-copyright">
         <div class="container">
@@ -136,3 +150,4 @@
         </div>
     </div>
 </footer>
+<#include "../../commonPage/zh_CN/pubads/ads.ftl">
