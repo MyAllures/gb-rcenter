@@ -39,6 +39,7 @@
             <#--登录地址-->
                 <input type="hidden" name="loginUrl" value="${data.contextInfo.agentCenterContext}">
                 <input type="hidden" name="editType" value="agent">
+                <input type="hidden" name="sysUser.registerSite" value="">
 
                 <div style="display:none" id="validateRule">${data.registerValidateRule}</div>
                 <input type="hidden" value='${data.agentRequiredJson}' name="requiredJson">
@@ -373,6 +374,7 @@
     $(function () {
         resetLocal();
         $("._captcha_code","#regForm").attr("src","${data.contextInfo.playerCenterContext}captcha/apcregister.html?t="+ new Date().getTime().toString(36));
+        $("[name='sysUser.registerSite']").val(window.location.host);
     })
     var REGSTER_SEND_EMAIL_TIME = "REGSTER_SEND_EMAIL_TIME";
     /*根据时区显示当前时间*/
@@ -417,7 +419,7 @@
         setTimeout(
                 changePassowrdLevel
                 ,
-                $.validator.defaults.keypressDelay+500
+                800
         )
     });
     function getCustomerService(){

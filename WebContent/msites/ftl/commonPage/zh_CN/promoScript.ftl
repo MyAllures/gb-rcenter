@@ -215,7 +215,7 @@
                 return false;
 
             } else {
-                if (isRefresh) {
+                if (isRefresh&&code!='money') {
                     applyActivities(aplyObj, true);
                 } else {
                     if(code=='money'){

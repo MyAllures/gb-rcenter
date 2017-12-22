@@ -207,7 +207,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
             var that = this;
             window.top.topPage.ajax({
                 type:"POST",
-                url: root+"/content/cttCarousel/persist.html",
+                url: root+"/content/cttCarousel/dialog/persist.html",
                 data:window.top.topPage.getCurrentFormData(e),
                 error: function (request) {
 

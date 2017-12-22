@@ -8,8 +8,6 @@
     </#list>
 </#if>
 
-
-
 <#if data.floatPicsInIndex??>
     <#list data.floatPicsInIndex as pic>
         <#if pic.singleMode && pic.picType=='2'>
@@ -217,3 +215,67 @@
         </#if>
     </#list>
 </#if>
+
+<div class="modal bootstrap-dialog register-dialog type-primary fade size-normal in hide" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 1050; display: block; padding-right: 17px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="bootstrap-dialog-header">
+                    <div class="bootstrap-dialog-close-button" style="display: block;">
+                        <button class="close register-close">×</button>
+                    </div>
+                    <div class="bootstrap-dialog-title" id="fffadba0-38f0-417a-bdeb-ad0b6e9de587_title">注册公告</div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="bootstrap-dialog-body">
+                    <div class="bootstrap-dialog-message">
+                        <div style="text-indent: 30px;">
+                            <#if data.registerAnnouncement?has_content>
+                                <#list data.registerAnnouncement as msg >
+                                    ${msg.content}
+                                </#list>
+                            </#if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="display: none;">
+                <div class="bootstrap-dialog-footer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal bootstrap-dialog login-dialog type-primary fade size-normal in hide" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 1050; display: block; padding-right: 17px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="bootstrap-dialog-header">
+                    <div class="bootstrap-dialog-close-button" style="display: block;">
+                        <button class="close login-close">×</button>
+                    </div>
+                    <div class="bootstrap-dialog-title" id="fffadba0-38f0-417a-bdeb-ad0b6e9de587_title">登录公告</div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="bootstrap-dialog-body">
+                    <div class="bootstrap-dialog-message">
+                        <div style="text-indent: 30px;">
+                            <#if data.loginAnnouncement?has_content>
+                                <#list data.loginAnnouncement as msg >
+                                    ${msg.content}
+                                </#list>
+                            </#if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="display: none;">
+                <div class="bootstrap-dialog-footer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -66,42 +66,42 @@
 .hongbao-wrap .hb_type_1:hover .extra {
   background-image: url(images/hongbao/hongbao_type1_hover.png);
 }
-.hongbao-wrap .hb_type_2 .extra {
+.hongbao-wrap .hb_type_3 .extra {
   background: url(images/hongbao/hongbao_type2.png);
   width: 204px;
   height: 191px;
   top: 84px;
   left: 66px;
 }
-.hongbao-wrap .hb_type_2 .img {
+.hongbao-wrap .hb_type_3 .img {
   background: url(images/hongbao/hongbao_extra2_hover.png);
   width: 336px;
   height: 214px;
   top: 64px;
   left: 0;
 }
-.hongbao-wrap .hb_type_2:hover .extra {
+.hongbao-wrap .hb_type_3:hover .extra {
   background-image: url(images/hongbao/hongbao_type2_hover.png);
 }
-.hongbao-wrap .hb_type_3 .extra {
+.hongbao-wrap .hb_type_2 .extra {
   background: url(images/hongbao/hongbao_type3.png);
   width: 215px;
   height: 284px;
   top: 22px;
   left: 58px;
 }
-.hongbao-wrap .hb_type_3 .img {
+.hongbao-wrap .hb_type_2 .img {
   background: url(images/hongbao/hongbao_extra3_hover.png);
   width: 266px;
   height: 168px;
   top: 0;
   left: 16px;
 }
-.hongbao-wrap .hb_type_3:hover .extra {
+.hongbao-wrap .hb_type_2:hover .extra {
   background-image: url(images/hongbao/hongbao_type3_hover.png);
 }
 .hongbao-wrap.hide_hongbao {
-  right: 50%;
+  right: 50% !important;
   margin-right: -172px;
   bottom: 50%;
   margin-bottom: -149px;
@@ -109,6 +109,7 @@
   transform: rotateZ(720deg);
   opacity: 0;
   filter: alpha(opacity=0);
+  top: auto !important;
 }
 
 /* caidai donghua */
@@ -164,7 +165,6 @@
   left: 0;
   z-index: 2001;
   background: rgba(0, 0, 0, 0.7);
-  display: none;
 }
 .hongbao_detail .hongbao_inner {
   width: 559px;
@@ -338,3 +338,13 @@
   background-image: url(images/hongbao/icon-close-rule-hover.png);
 }
 
+.hongbao-wrap .icon-close{    background: url(images/hongbao/icon-close-1.png);
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    left: 0;
+    top: 0;transition: all 0.3s;
+    cursor: pointer;}
+.hongbao-wrap .icon-close:hover{
+	transform: rotateZ(90deg);
+}    
