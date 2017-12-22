@@ -5,12 +5,35 @@ var RECOVER_TIME_INTERVAL = 10;
 
 $(function () {
     //只有h5需要刷新头部信息，安卓 ios会自己调用方法刷新头部信息
-    if (os.indexOf("app") < 0) {
-        headInfo();
-    }
+    headInfo();
     //安卓去掉头部部分
     hideHeader();
+    //侧滑菜单
+    leftAside();
 });
+
+/**
+ * 左侧菜单侧滑
+ */
+function leftAside() {
+    //实现ios平台的侧滑关闭页面；
+    if (mui.os.plus && mui.os.ios) {
+        //侧滑容器父节点
+        var offCanvasWrapper = mui('div.mui-off-canvas-wrap');
+        if (offCanvasWrapper.length > 0) {
+            offCanvasWrapper[0].addEventListener('shown', function (e) { //菜单显示完成事件
+                plus.webview.currentWebview().setStyle({
+                    'popGesture': 'none'
+                });
+            });
+            offCanvasWrapper[0].addEventListener('hidden', function (e) { //菜单关闭完成事件
+                plus.webview.currentWebview().setStyle({
+                    'popGesture': 'close'
+                });
+            });
+        }
+    }
+}
 /**
  * 点击右侧玩家信息展示玩家api金额
  */
@@ -141,7 +164,13 @@ function refreshApi() {
  */
 function hideHeader() {
     if (os == 'app_android') {
-        $('header.mui-bar-nav').hide();
-        $(".mui-bar-nav ~ .mui-content").attr("style", "padding-top: 0px;");
+        if ($(".mui-bar-nav ~ .mui-content").hasClass("content-without-notice")) { //其他页面含有这个样式导致出现头部空白
+            $(".mui-bar-nav ~ .mui-content").removeClass("content-without-notice");
+            $(".mui-bar-nav ~ .mui-content").attr("style", "padding-top: 0px;");
+            $('header.mui-bar-nav').hide();
+        } else if (!$(".mui-bar-nav ~ .mui-content").hasClass("mine-content")) {//我的 页面头部直接用h5不需要隐藏
+            $(".mui-bar-nav ~ .mui-content").attr("style", "padding-top: 0px;");
+            $('header.mui-bar-nav').hide();
+        }
     }
 }

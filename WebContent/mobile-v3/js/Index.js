@@ -8,7 +8,6 @@ $(function () {
         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
         /*禁用侧滑手势指定样式*/
         disabledHandSlip: ['mui-off-canvas-left'],
-        init: pullUpRefreshOption('#pullfresh', pullfresh, true),
         /*游戏分类api tab横向滚动*/
         horizontalScroll: ['.lottery-nav .mui-scroll-wrapper']
     };
@@ -19,7 +18,7 @@ $(function () {
 /*轮播图*/
 function initBanner() {
     mui('.mui-banner').slider({
-        interval: 3000 // 自动轮播时长（毫秒），为0不自动播放，默认为0；
+        //interval: 3000 // 自动轮播时长（毫秒），为0不自动播放，默认为0；
     });
 }
 
@@ -46,7 +45,7 @@ function showNotice(obj, options) {
     //初始化notice-slider
     var notice = mui('.mui-slider');
     notice.slider({
-        interval: 3000//自动轮播周期，若为0则不自动播放，默认为0；
+        //interval: 3000//自动轮播周期，若为0则不自动播放，默认为0；
     });
     //点击公告，轮播跳转到对应的位置
     $(".notice-slider .mui-indicator").removeClass("mui-active");
@@ -73,64 +72,7 @@ function changeLottery(obj, options) {
     $(".lottery-nav li a.mui-tab-item.mui-active").removeClass("mui-active");
     $(".lottery-content .mui-control-content.mui-active").removeClass("mui-active");
     $(obj).addClass("mui-active");
-    var isLoadData = $(obj).attr("loadData");
     var apiId = options.apiId;
     $('#lottery-id').val(apiId);
-    if (!isLoadData) {
-        pullfresh();
-    }
     $('div#lottery-' + apiId).addClass("mui-active");
-    $(obj).attr("loadData", true);
-}
-
-/*彩票上拉请求数据*/
-function pullfresh() {
-    setTimeout(function () {
-        mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
-        var $apiTypeTab = $(".nav .mui-scroll .mui-active");
-        var options = eval("(" + $($apiTypeTab).attr('data-rel') + ")");
-        if(options != null){
-            var type = options.item;
-            if (type == "lottery") {
-                mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
-                var $api = $(".lottery-nav a.mui-tab-item.mui-active");
-                var apiOption = eval("(" + $($api).attr('data-rel') + ")");
-                var apiId = apiOption.apiId;
-                var pageNumber = parseInt($('#total-page-' + apiId).attr("pageNumber"));
-                if (!pageNumber) {
-                    pageNumber = 0;
-                }
-                var lastPageNumber = parseInt($('#total-page-' + apiId).val());
-                if (pageNumber == lastPageNumber) {
-                    mui('#pullfresh').pullRefresh().endPullupToRefresh(true);
-                } else {
-                    pullUpLoadData(apiId, pageNumber + 1);
-                }
-                $api.attr("loadData", true);
-            }
-        }
-    }, 100);
-}
-
-function pullUpLoadData(apiId, pageNumber) {
-    var url = root + '/game/getGameByApiId.html?search.apiId=' + apiId + '&search.apiTypeId=4&paging.pageNumber=' + pageNumber;
-    var options = {
-        url: url,
-        type: 'GET',
-        dataType: 'html',
-        beforeSend: function () {
-            $('div.api-loading').show();
-        },
-        success: function (data) {
-            $('#lottery-id').val(apiId);
-            $('input#loading-' + apiId).val('false');
-            $('div#lottery-' + apiId).append(data);
-            $(".lottery-nav a[data-lottery-id='" + apiId + "']").attr("loadData", "true");
-            $("#total-page-" + apiId).attr("pageNumber", pageNumber);
-        },
-        complete: function () {
-            $('div.api-loading').hide();
-        }
-    };
-    muiAjax(options);
 }

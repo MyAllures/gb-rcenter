@@ -152,7 +152,8 @@ function initTransfer() {
 function successBack(data) {
     var apiId = data.apiId;
     var type = true;
-    if(os == 'android')
+    var os = whatOs();
+    if(os == 'app_android')
         window.gamebox.refreshApiBalance(apiId);
     refreshApi(apiId, type);
     initTransfer();

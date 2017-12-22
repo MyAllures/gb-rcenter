@@ -15,19 +15,9 @@ define(['common/MobileBasePage'], function (Mobile) {
         onPageLoad: function () {
             this._super();
             t = this;
-            mui('#refreshContainer').pullRefresh({
-                container: '#refreshContainer',
-                up: {
-                    height: 100,//可选.默认50.触发上拉加载拖动距离
-                    contentdown: window.top.message.fund_auto['上拉加载'],
-                    contentrefresh: window.top.message.fund_auto['正在加载'],//可选，正在加载状态时，上拉加载控件上显示的标题内容
-                    contentnomore: window.top.message.fund_auto['已经到底'],//可选，请求完毕若没有更多数据时显示的提醒内容；
-                    callback: t.bettingPulldownRefresh
-                }
-            });
-
             this.getList();
             this.getStatisticsData();
+            $('.mui-pull-loading').remove();
         },
         bindEvent: function () {
             this._super();
@@ -74,6 +64,17 @@ define(['common/MobileBasePage'], function (Mobile) {
                 dtpicker.show(function (e) {
                     $("#endTime").val(_that.formatDateTime(new Date(e.value),format));
                 })
+            });
+            //上拉加载数据
+            mui('#refreshContainer').pullRefresh({
+                container: '#refreshContainer',
+                up: {
+                    height: 100,//可选.默认50.触发上拉加载拖动距离
+                    contentdown: window.top.message.fund_auto['上拉加载'],
+                    contentrefresh: window.top.message.fund_auto['正在加载'],//可选，正在加载状态时，上拉加载控件上显示的标题内容
+                    contentnomore: window.top.message.fund_auto['已经到底'],//可选，请求完毕若没有更多数据时显示的提醒内容；
+                    callback: _that.bettingPulldownRefresh
+                }
             });
 
         },//异步查询统计数据
