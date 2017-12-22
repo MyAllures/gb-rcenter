@@ -10,6 +10,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
             this._super(this.formSelector);
             this.doFormData();
             this.queryCount();
+            this.doStatistics();
         },
 
         /**
@@ -45,15 +46,38 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
             var json = JSON.parse(data);
             var html = $("#VPlayerOnlineDepositListVo",_this.formSelector).render({data:json.result});
             $result.html(html);
-            /*if(json.isTodaySales){
-                $("#todayTotal",_this.formSelector).text(json.todayTotal);
-                $("#totalSumTarget",_this.formSelector).parent().parent().hide();
-                $("#todayTotal",_this.formSelector).parent().parent().show();
-            }else{
-                $("#totalSumTarget",_this.formSelector).text(json.totalSum);
-                $("#todayTotal",_this.formSelector).parent().parent().hide();
-                $("#totalSumTarget",_this.formSelector).parent().parent().show();
-            }*/
+        },
+
+        /**
+         * 请求统计数据
+         */
+        doStatistics: function() {
+            var _this = this;
+            window.top.topPage.ajax({
+                //loading: true,
+                url: root+'/fund/deposit/online/doStatistics.html',
+                type:'POST',
+                data: $(_this.formSelector).serialize(),
+                dataType: "html",
+                headers: {
+                    "Soul-Requested-With":"XMLHttpRequest"
+                },
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    if(json.isTodaySales){
+                        $("#todayTotal",_this.formSelector).text(json.todayTotal);
+                        $("#totalSumTarget",_this.formSelector).parent().parent().hide();
+                        $("#todayTotal",_this.formSelector).parent().parent().show();
+                    }else{
+                        $("#totalSumTarget",_this.formSelector).text(json.totalSum);
+                        $("#todayTotal",_this.formSelector).parent().parent().hide();
+                        $("#totalSumTarget",_this.formSelector).parent().parent().show();
+                    }
+                },
+                error: function (data, state, msg) {
+                    window.top.topPage.showErrorMessage(data.responseText);
+                }
+            });
         },
 
         /**
@@ -84,10 +108,12 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                         }else{
                             _this.queryCount(true);
                         }
+                        _this.doStatistics();
                     },
                     error: function (data, state, msg) {
                         window.top.topPage.showErrorMessage(data.responseText);
                         $(event.currentTarget).unlock();
+                        _this.doStatistics();
                     }
                 });
 
@@ -134,7 +160,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                 e.currentTarget = e.target;
                 page.showPopover(e, {}, 'success', window.top.message.fund_auto['复制成功'], true);
             });
-            if($("#todaySales").val()=='true'){
+            /*if($("#todaySales").val()=='true'){
                 $("#todayTotal").text($("#todayTotalSource").text());
                 $("#totalSumTarget").parent().parent().hide();
                 $("#todayTotal").parent().parent().show();
@@ -142,7 +168,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                 $("#totalSumTarget").text($("#totalSumSource").text());
                 $("#todayTotal").parent().parent().hide();
                 $("#totalSumTarget").parent().parent().show();
-            }
+            }*/
 
         },
         /** 声音开关 */

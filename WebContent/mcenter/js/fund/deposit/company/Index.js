@@ -30,13 +30,14 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
         /**
          * 请求数据
          */
-        doFormData: function() {
+        doFormData: function(formData) {
             var _this = this;
+            var data =(formData)?formData:$(_this.formSelector).serialize();
             window.top.topPage.ajax({
                 //loading: true,
                 url: $(_this.formSelector).attr("action"),
                 type:'POST',
-                data: $(_this.formSelector).serialize(),
+                data: data,
                 dataType: "html",
                 headers: {
                     "Soul-Requested-With":"XMLHttpRequest"
@@ -54,13 +55,14 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
         /**
          * 请求统计数据
          */
-        doStatistics: function() {
+        doStatistics: function(formData) {
             var _this = this;
+            var data =(formData)?formData:$(_this.formSelector).serialize();
             window.top.topPage.ajax({
                 //loading: true,
                 url: root+'/fund/deposit/company/doStatistics.html',
                 type:'POST',
-                data: $(_this.formSelector).serialize(),
+                data: data,
                 dataType: "html",
                 headers: {
                     "Soul-Requested-With":"XMLHttpRequest"
@@ -139,15 +141,16 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
          * 重新计算分页
          * @param e
          */
-        queryCount: function (isCounter) {
+        queryCount: function (isCounter,formData) {
             var _this = this;
+            var data =(formData)?formData:$(_this.formSelector).serialize();
             var url = root + "/fund/deposit/company/count.html";
             if (isCounter) {
                 url = url + "?isCounter=" + isCounter;
             }
             window.top.topPage.ajax({
                 url: url,
-                data: $(this.formSelector).serialize(),
+                data: data,
                 type: 'POST',
                 success: function (data) {
                     $("#companyDepositpageDiv").html(data);

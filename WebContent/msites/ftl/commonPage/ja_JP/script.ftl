@@ -3,6 +3,8 @@
 <script src="${data.configInfo.ftlRootPath}commonPage/js/jquery/jquery-1.11.3.min.js"></script>
 <#--浮窗js-->
 <script src="${data.configInfo.ftlRootPath}commonPage/js/float.js"></script>
+<#--左下角广告轮播插件-->
+<script src="${data.configInfo.ftlRootPath}commonPage/js/idangerous.swiper.min.js"></script>
 <#--特定模板下需要特别处理的在该模板下覆盖同名脚本-->
 <script>
     var fltRootPath = '${data.configInfo.ftlRootPath}';
@@ -31,27 +33,6 @@
 <script src="${resComRoot}/js/gamebox/common/jquery.validate.extend.msites.js"></script>
 <script src="${resComRoot}/js/bootstrap-daterangepicker/moment.js"></script><#--通用脚本-->
 <link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/hb/css/pc.css">
-
-
-<script>
-    var curTheme = '${curTheme}';
-    var root = '${root}';
-    var resComRoot = '${resComRoot}';
-    var resRoot = '${resRoot}';
-    var imgRoot = '${imgRoot}';
-    var mdRoot='${mdRoot}';
-    var rcVersion='${rcVersion}';
-</script>
-<#-- 站点消息订阅　-->
-<#--<script src="${resComRoot}/js/gamebox/common/main.js"></script>-->
-<#--<script src="${resComRoot}/js/curl/curl.js"></script>-->
-<#--<script type="text/javascript" language="JavaScript" src="${resComRoot}/js/gamebox/common/urlencode.js"></script>-->
-<#--<script type="text/javascript">-->
-    <#--curl(['site/common/TopPage','site/index/Comet'], function (TopPage,Comet) {-->
-        <#--comet = new Comet();-->
-        <#--topPage = new TopPage();-->
-    <#--});-->
-<#--</script>-->
 
 <script>
     /*全局变量；是否显示登录验证码*/
@@ -402,52 +383,87 @@
         if (r!=null) return r[2]; return null;
     }
 
-
     //首页弹窗
     function homeDialog(){
-    <#assign flag = true>
-    <#if data.carousels??>
-        <#list data.carousels as carousel>
-            <#if flag && carousel["type"]="carousel_type_ad_dialog">
-                <#if .now?date gt carousel["start_time"]?date && .now?date lt carousel["end_time"]?date>
-                    <#if carousel["cover"]??><#assign imgSrc=imgPath(data.configInfo.domain,carousel["cover"])></#if>
-                    <#if carousel["name"]??><#assign imgTitl=carousel["name"]></#if>
-                    <#if carousel["link"]??><#assign link=carousel["link"]></#if>
-                    <#assign flag = false >
+        if(window.sessionStorage && sessionStorage.getItem("closeHomeDialog") != "true"){
+            sessionStorage.setItem("closeHomeDialog","false");
+        <#assign flag = true>
+        <#if data.carousels??>
+            <#list data.carousels as carousel>
+                <#if flag && carousel["type"]="carousel_type_ad_dialog">
+                    <#if .now?date gt carousel["start_time"]?date && .now?date lt carousel["end_time"]?date>
+                        <#if carousel["cover"]??><#assign imgSrc=imgPath(data.configInfo.domain,carousel["cover"])></#if>
+                        <#if carousel["name"]??><#assign imgTitl=carousel["name"]></#if>
+                        <#if carousel["link"]??><#assign link=carousel["link"]></#if>
+                        <#if carousel["content_type"]??><#assign content_type=carousel["content_type"]></#if>
+                        <#if carousel["content"]??><#assign content=carousel["content"]></#if>
+                        <#assign flag = false >
+                    </#if>
                 </#if>
+            </#list>
+        </#if>
+        <#if content_type?? && content_type=="1">
+            <#if imgSrc??>
+                BootstrapDialog.show({
+                    draggable: true,
+                    title: "${imgTitl}",
+                    size: 'index-modal',
+                    message: function(dialog) {
+                        var _href = "${link}";
+                        if(_href!=undefined && _href!=""){
+                            if(_href.indexOf("http")>-1){
+                                _href = _href;
+                            }else{
+                                _href = "http://"+_href;
+                            }
+                            if(_href.indexOf("\$\{website\}")>-1){
+                                _href = _href.replace("\$\{website\}",window.location.host);
+                            }
+                        }else{
+                            _href = "javascript:void(0)";
+                        }
+                        var $message = $('<a href="'+_href+'"><img src="${imgSrc}"/></a>');
+                        return $message;
+                    },
+                    buttons: [{
+                        label: '关闭后不显示',
+                        cssClass:'closeHomeDialog',
+                        action: function (dialog) {
+                            sessionStorage.setItem("closeHomeDialog","true");
+                            dialog.close();
+                        }
+                    }]
+                });
+                // 定时关闭
+                setTimeout(function () {
+                    $(".index-modal").modal("hide")
+                }, 60000);
             </#if>
-        </#list>
-    </#if>
-    <#if imgSrc??>
-        BootstrapDialog.show({
-            draggable: true,
-            title: "${imgTitl}",
-        <#--title: "${.now}",-->
-            size: 'index-modal',
-            message: function(dialog) {
-                var _href = "${link}";
-                if(_href!=undefined && _href!=""){
-                    if(_href.indexOf("http")>-1){
-                        _href = _href;
-                    }else{
-                        _href = "http://"+_href;
-                    }
-                    if(_href.indexOf("\$\{website\}")>-1){
-                        _href = _href.replace("\$\{website\}",window.location.host);
-                    }
-                }else{
-                    _href = "javascript:void(0)";
-                }
-                var $message = $('<a href="'+_href+'"><img  src="${imgSrc}"/></a>');
-                return $message;
-            }
-        });
-        // 定时关闭
-        setTimeout(function () {
-            $(".index-modal").modal("hide")
-        }, 60000);
-    </#if>
+        <#elseif content_type?? && content_type=="2">
+            <#if content??>
+                BootstrapDialog.show({
+                    draggable: true,
+                    title: "${imgTitl}",
+                    size: 'index-modal-content',
+                    message: "${content}",
+                    buttons: [{
+                        label: '关闭后不显示',
+                        cssClass:'closeHomeDialog',
+                        action: function (dialog) {
+                            sessionStorage.setItem("closeHomeDialog","true");
+                            dialog.close();
+                        }
+                    }]
+                });
+                // 定时关闭
+                setTimeout(function () {
+                    $(".index-modal-content").modal("hide")
+                }, 60000);
+            </#if>
+        </#if>
+        }
     }
+
     /*公共维护状态检测设置 By Faker*/
     function maintainCheck(){
         var newTime = $("._user_time").attr("time");
@@ -548,7 +564,11 @@
     }
     //公共维护弹窗
     function maintainInfo(st, et,apiId,gameName){
+        var isLotterySite = '<#if data.siteInfo??&&data.siteInfo.isLotterySite??>${data.siteInfo.isLotterySite?string ("true","false")}</#if>';
         var apiName = getApiName(apiId);
+        if('true' == isLotterySite){
+            apiName = '${data.siteInfo.siteName}';
+        }
         var sTime = moment(st).utcOffset(sessionStorage.getItem("timezone")).format("yyyy-MM-dd HH:mm:ss");
         var eTime = moment(et).utcOffset(sessionStorage.getItem("timezone")).format("yyyy-MM-dd HH:mm:ss");
 
@@ -634,6 +654,7 @@
 
     //当前站点的api
     function getApiName(apiId){
+        var ccenterId = '<#if data.siteInfo??&&data.siteInfo.ccenterId??>${data.siteInfo.ccenterId}</#if>';
         if (apiId == '1')  return '<#if data.siteApiI18nMap['1']??>${data.siteApiI18nMap['1'].name}</#if>';
         if (apiId == '2')  return '<#if data.siteApiI18nMap['2']??>${data.siteApiI18nMap['2'].name}</#if>';
         if (apiId == '3')  return '<#if data.siteApiI18nMap['3']??>${data.siteApiI18nMap['3'].name}</#if>';
@@ -653,7 +674,12 @@
         if (apiId == '19')  return  '<#if data.siteApiI18nMap['19']??>${data.siteApiI18nMap['19'].name}</#if>';
         if (apiId == '20')  return  '<#if data.siteApiI18nMap['20']??>${data.siteApiI18nMap['20'].name}</#if>';
         if (apiId == '21')  return  '<#if data.siteApiI18nMap['21']??>${data.siteApiI18nMap['21'].name}</#if>';
-        if (apiId == '22')  return  '<#if data.siteApiI18nMap['22']??>${data.siteApiI18nMap['22'].name}</#if>';
+        if (apiId == '22')  {
+            if ('-3' == ccenterId){
+                return '一指通彩票';
+            }
+            return  '<#if data.siteApiI18nMap['22']??>${data.siteApiI18nMap['22'].name}</#if>';
+        };
         if (apiId == '23')  return  '<#if data.siteApiI18nMap['23']??>${data.siteApiI18nMap['23'].name}</#if>';
         if (apiId == '24')  return  '<#if data.siteApiI18nMap['24']??>${data.siteApiI18nMap['24'].name}</#if>';
         if (apiId == '25')  return  '<#if data.siteApiI18nMap['25']??>${data.siteApiI18nMap['25'].name}</#if>';
@@ -1286,13 +1312,6 @@
                         sessionStorage.is_login = true;
                     }
                     isOpenCaptcha = false;
-                    if(typeof(comet)=="undefined"){
-                        return;
-                    }
-                <#-- 站点消息订阅　-->
-//                    if(!comet.isConnect){
-//                        comet.connection();
-//                    }
                 }else{
                     var dataPage = window.location.pathname.split("/")[3];
                     if(dataPage=='loading.html'){
@@ -1327,6 +1346,7 @@
                         $("._vr_captcha_box").hide();
                     }
                 }
+                showAnnouncement(); //展现登录公告
             },
             error:function(){
             },
@@ -1432,6 +1452,7 @@
                 if (window.sessionStorage){
                     sessionStorage.is_login = false;
                     sessionStorage.demoModel = null;
+                    sessionStorage.registerDialog = false;
                 }
                 window.location.href="/";
             }
@@ -1668,67 +1689,71 @@
     }
 
     function canShowLottery(id){
-        var timezone = sessionStorage.getItem("timezone");
-        var tiz = transTimeZone(timezone);
-        $("#money_lottery_timezone").html(tiz);
+        if(sessionStorage.is_login!="true"){
+            loginObj.getLoginPopup();
+            return;
+        }
+        if (!id){
+            $(".hongbao").removeClass('disabled');
+            $("#tip-msgs").html('红包活动已经结束!');
+            $(".hongbao-time-txt").hide();
+            $(".hongbao-time").hide();
+            return;
+        }
+        $("#hongbao").addClass('hide_hongbao');
+        $("#hongbao_detail").fadeIn(1000);
         $.ajax({
             url:"/ntl/activity/countDrawTimes.html",
             type: "POST",
             dataType: "json",
             data:{activityMessageId:id},
             success: function(data){
+                console.log(data.nextLotteryTime);
+                console.log(data.drawTimes);
                 if(data.drawTimes&&data.drawTimes>0){
-                    $("#tip-msg").removeClass("hide");
-                    $("#lottery_time_tip-msg").addClass("hide");
-                    $("#tip-msg").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">'+data.drawTimes+'</span>次抽奖机会');
-                    $("#containerOut").css("display","block");
-                    $("#lotteryPageBtn_1").removeAttr("disabled");
-                    $("#lotteryPageBtn_1").show();
-                    $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/lottery_pc.png)'});
-                    $("#lottery_time_tip-msg").addClass("hide");
+                    $(".hongbao").removeClass('disabled');
+                    $("#tip-msgs").show();
+                    $("#tip-msgs").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">'+data.drawTimes+'</span>次抽奖机会');
+                    $(".hongbao-time-txt").hide();
+                    $(".hongbao-time").hide();
                 }else if(data.drawTimes==0){
                     if(data.isEnd=="false"){
-                        $("#tip-msg").removeClass("hide");
-                        $("#tip-msg").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">0</span>次抽奖机会');
+                        $(".hongbao").addClass('disabled');
+                        $("#tip-msgs").show();
+                        $("#tip-msgs").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">0</span>次抽奖机会');
                         $("#ramain-count").text(data.drawTimes);
-                        $("#containerOut").css("display","block");
-                        $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
-                        $("#lotteryPageBtn_1").hide();
                     }else{
-                        $("#tip-msg").addClass("hide");
-                        $("#containerOut").css("display","block");
-                        $("#lotteryPage").css
-                        ({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
-                        $("#lotteryPageBtn_1").hide();
+                        $(".hongbao").addClass('disabled');
+                        $("#tip-msgs").hide();
                     }
                     if(data.nextLotteryTime!=""){
-                        $("#next_lottery_time").text(data.nextLotteryTime);
-                        $("#lottery_time_tip-msg").removeClass("hide");
+                        $(".hongbao-time-txt").show();
+                        $(".hongbao-time").show();
+                        $(".hongbao-time").text(data.nextLotteryTime);
                     }else{
-                        $("#lottery_time_tip-msg").addClass("hide");
+                        $(".hongbao-time-txt").hide();
+                        $(".hongbao-time").hide();
                     }
 
                 }else if(data.drawTimes==-1){
-                    $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
-                    $("#tip-msg").html('红包活动已经结束!');
-                    $("#tip-msg").removeClass("hide");
-                    $("#lotteryPageBtn_1").hide();
-                    $("#lottery_time_tip-msg").addClass("hide");
-                    $("#containerOut").css("display","block");
+                    $(".hongbao").addClass('disabled');
+                    $("#tip-msgs").show();
+                    $("#tip-msgs").html('红包活动已经结束!');
+                    $(".hongbao-time-txt").hide();
+                    $(".hongbao-time").hide();
                     return;
                 }else if(data.drawTimes==-5){
-                    $("#lotteryPage").css({'background-image':'url('+fltRootPath+'commonPage/themes/hb/images/noChance_pc.png)'});
-                    $("#tip-msg").html('本次红包已经抢光了');
-                    $("#tip-msg").removeClass("hide");
+                    $(".hongbao").addClass('disabled');
+                    $("#tip-msgs").show();
+                    $("#tip-msgs").html('本次红包已经抢光了');
                     if(data.nextLotteryTime!=""){
-                        $("#next_lottery_time").text(data.nextLotteryTime);
-                        $("#lottery_time_tip-msg").removeClass("hide");
+                        $(".hongbao-time-txt").show();
+                        $(".hongbao-time").show();
+                        $(".hongbao-time").text(data.nextLotteryTime);
                     }else{
-                        $("#lottery_time_tip-msg").addClass("hide");
+                        $(".hongbao-time-txt").hide();
+                        $(".hongbao-time").hide();
                     }
-                    $("#lotteryPageBtn_1").hide();
-                    $("#lottery_time_tip-msg").removeClass("hide");
-                    $("#containerOut").css("display","block");
                     return;
                 }
                 //setDivCss();
@@ -1737,7 +1762,52 @@
             }
         });
     }
+    $(function() {
+        /*左下角的轮播广告脚本*/
+        var mySwiper = new Swiper('.swiper-container.pubads-slide',{
+            autoplay : 3500,//可选选项，自动滑动
+            loop : true,//可选选项，开启循环
+            pagination : '.pagination',
+            paginationClickable :true,
+            autoplayDisableOnInteraction : false
+        });
+        if(!localStorage.getItem("pubads-close")){
+            $(".pubads-slide").show();
+        }
+        $(".pubads-slide .btn-close").on('click',function(){
+            $(this).parents(".pubads-slide").hide();
+            localStorage.setItem("pubads-close", true);
+        });
+    });
 
+    //展现注册公告和登录公告
+    function showAnnouncement(){
+        //登录公告
+        $(".login-close").on("click",function (e) {
+            $(".login-dialog").addClass('hide');
+        })
+        if(sessionStorage.is_login=="true"){
+        <#if data.loginAnnouncement?has_content>
+            $(".login-dialog").removeClass('hide');
+            setTimeout(function () {
+                $(".login-dialog").addClass('hide');
+            }, 60000);
+        </#if>
+        }
+        //注册公告
+        $(".register-close").on("click",function (e) {
+            $(".register-dialog").addClass('hide');
+        })
+        if(sessionStorage.is_login=="true" && sessionStorage.getItem("registerDialog") != "true"){
+            sessionStorage.setItem("registerDialog","true");
+        <#if data.registerAnnouncement?has_content>
+            $(".register-dialog").removeClass('hide');
+            setTimeout(function () {
+                $(".register-dialog").addClass('hide');
+            }, 60000);
+        </#if>
+        }
+    }
 </script>
 
 <#--流量统计代码-->

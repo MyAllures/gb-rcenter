@@ -135,3 +135,4 @@
         </div>
     </div>
 </footer>
+<#include "../../commonPage/zh_CN/pubads/ads.ftl">

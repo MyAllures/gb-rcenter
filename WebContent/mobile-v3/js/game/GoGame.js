@@ -36,10 +36,8 @@ function goGame(obj,options){
 
 function readGame(){
     if (isAutoPay == 'true' || isAutoPay == true) {
-        showLoading();
         autoLoginAndTransfer();
     } else {
-        showLoading();
         apiLogin(obj);
     }
     if (apiId == 6 && os != 'android' && os != 'app_ios') {
@@ -72,7 +70,6 @@ function goApiGame(obj,options){
                     goToUrl("/game/apiGames.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
                 } else if ((isAutoPay == 'true' && apiTypeId != "2")) {
                     //判断是否免转，如果免转,则直接登陆游戏，不跳到游戏中转页面
-                    showLoading();
                     autoLoginAndTransfer();
                 } else {
                     goToUrl(root + "/api/detail.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
