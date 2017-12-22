@@ -382,4 +382,13 @@ header.mui-bar-nav .mui-icon-bars {
 .load-bg .load-bar-bottom .tech-support .icon-tech-support{background: url(../images/tech-support.png) 0 0/50px;display: inline-block;width: 50px;height: 11px;vertical-align: middle;}
 .load-bg .load-bar-middle{    position: absolute; left: 0; right: 0; text-align: center; top: 50%;}
 .load-bg .load-bar-middle .btn-back{border: 1px solid #e2e2e2; border-radius: 4px; padding: 5px 15px; background: #999; color: #fff; font-size: 12px;}
+
+
+/*自定义弹窗*/
+.notice-popover-wrap .mui-popup { width: 80%; max-width: 700px; }
+.notice-popover-wrap .mui-popup.mui-popup-in { width: 86%; z-index: 1000;}
+.notice-popover-wrap .mui-popup .mui-popup-title { background: #168df6;text-align: left; margin: -15px -15px 15px -15px; padding:15px 10px; color: #fff; }
+.notice-popover-wrap .mui-popup .cont-text { text-align: left; padding: .25rem 0; font-size: .6rem; }
+.notice-popover-wrap .mui-popup .confirm-btn{ background: #168df6; color: #fff;}
+.notice-popover-wrap .mui-popover-arrow{display: none;}
 /*# sourceMappingURL=common.css.map */
