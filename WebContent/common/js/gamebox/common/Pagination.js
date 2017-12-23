@@ -126,7 +126,11 @@ define([], function () {
             } else if (e.goType == 2) {
                 pageNumber = $("[name='paging.lastPageNumber']", form).val();
             }
-
+            var lastpageNumber = $("[name='paging.lastPageNumber']", form).val();
+            if(lastpageNumber&&pageNumber>lastpageNumber){
+                window.top.topPage.showInfoMessage("超过当前最大页数");
+                return false;
+            }
             $("[name='paging.pageNumber']", form).val(pageNumber);
             e.page.query(e);
             return false;
