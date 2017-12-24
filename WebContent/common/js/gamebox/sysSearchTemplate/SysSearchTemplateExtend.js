@@ -15,7 +15,6 @@ define(['gb/sysSearchTemplate/SysSearchTemplate','common/BasePage'], function (S
             var selectVal = $target.attr("key");
             if (selectVal && selectVal != '') {
                 var data = $target.parents().find("#content_" + selectVal).text();
-                var selectName = $target.text();
                 window.top.topPage.ajax({
                     loading: true,
                     url: _this.getFirstFromAction(e),
@@ -23,12 +22,7 @@ define(['gb/sysSearchTemplate/SysSearchTemplate','common/BasePage'], function (S
                     data: JSON.parse(data),
                     dataType: "html",
                     success: function (data) {
-                        //保存返回按钮是否隐藏
-                        var style = $("#mainFrame .return-btn").attr("style");
                         $("#mainFrame").html(data);
-                        $("#mainFrame .return-btn").attr("style",style);
-                        $(".searchByTemp").find("button").children("span[prompt=prompt]").text(selectName);
-
                         $target.unlock();
                     }
                 });
