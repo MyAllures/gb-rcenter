@@ -358,10 +358,6 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                 var $imageInput1 = $image1.find('input:eq(1)');
                 $imageInput1.removeAttr('disabled');
                 $imageInput1.attr('name', targetText1);
-                var $imageProtoco = $("#content_float_pic_type_http1 input").attr('name');
-                $imageProtoco=$imageProtoco.replace('1',imgIndex);
-                $("#content_float_pic_type_http1 input").attr('name',$imageProtoco);
-
                 var $linkTypeSelect = $(newContent).find('[selectdiv]:first');
                 var nameText = $linkTypeSelect.attr('selectdiv');
                 nameText = nameText.replace('1', imgIndex);
@@ -375,6 +371,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                 //
 
                 $($addLi).before(newContent);
+                $($(newContent).find("#content_float_pic_type_http1 input")[0]).attr('name',"itemList["+(imgIndex)+"].imgLinkProtocol");
 
                 this._initFile($('[type=file]', newContent));
                 this.initSelectEvent();
@@ -410,6 +407,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                     var $image = $(ele).find("div.normalEffectDiv");
                     var $fileInput = $image.find('[type=file]');
                     var targetText = $fileInput.attr('target');
+                    //var newContent = $("#ctt_float_pic_item").clone();
                     targetText = targetText.replace(/\d/, imgIndex);
                     $fileInput.attr('target', targetText);
                     $image.find('input:eq(1)').attr('name', targetText);
@@ -417,6 +415,10 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                     var dotIdx = targetText.indexOf(".") + 1;
                     var imageWidthName = targetText.substring(0, dotIdx) + "imgWidth";
                     var imageHeightName = targetText.substring(0, dotIdx) + "imgHeight";
+                    //var imgLinkProtocol = targetText.substring(0, dotIdx) + "imgLinkProtocol";
+                    //$($(newContent).find("#content_float_pic_type_http1 input")[0]).attr('name', imgLinkProtocol);
+
+                    $($(ele).find(".float_pic_list_item_http input")[0]).attr('name',targetText.substring(0, dotIdx)+"imgLinkProtocol");
                     $image.find('input:eq(2)').attr('name', imageWidthName);
                     $image.find('input:eq(3)').attr('name', imageHeightName);
 
