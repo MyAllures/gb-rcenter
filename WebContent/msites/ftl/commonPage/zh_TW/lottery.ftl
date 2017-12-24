@@ -25,7 +25,7 @@
                 <div style="text-align: center;font-size: 18px;color: #fff;" id="tip-msgs">
                     你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">0</span>次抽奖机会
                 </div>
-                <a href="javascript:" class="btn-rule" id="btn-rule" onclick="openRule()"></a>
+                <#--<a href="javascript:" class="btn-rule" id="btn-rule" onclick="openRule()"></a>-->
                 <!--红包规则元素-->
                 <div class="hongbao-rule">
                     <div class="txt">
