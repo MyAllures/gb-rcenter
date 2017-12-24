@@ -13,13 +13,33 @@ $(function () {
     };
     muiInit(options);
     initBanner();
+    initNotice();
 });
 
 /*轮播图*/
 function initBanner() {
     mui('.mui-banner').slider({
-        //interval: 3000 // 自动轮播时长（毫秒），为0不自动播放，默认为0；
+        interval: 5000 // 自动轮播时长（毫秒），为0不自动播放，默认为0；
     });
+}
+
+/**
+ * 公告滚动
+ */
+function initNotice() {
+    var index = 0;
+    var len = $("section.notice .notice-list p").length;
+
+    function topScroll() {
+        if (index >= len) {
+            index = 0
+        }
+        $("section.notice .notice-list").css({
+            "transform": "translate3d(0px, " + index * -28 + "px, 0px)"
+        });
+        index++;
+    }
+    setInterval(topScroll, 3600);
 }
 
 /**
@@ -41,7 +61,7 @@ function showNotice(obj, options) {
     var noticeHtml = $('<div><div class="mui-slider notice-slider"><div class="mui-slider-group">' + noticeA + '</div><div class="mui-slider-indicator">' + noticeIndicator + '</div></div></div></div>');
     var alertNotice = mui.alert(noticeHtml.html(), "公告", "关闭");
     $(alertNotice.element).addClass('notice-alert');// 定义弹窗的class,方便修改样式
-    var index = $(obj).index();//当前点击的公告index
+    var index = options.idx;//当前点击的公告index
     //初始化notice-slider
     var notice = mui('.mui-slider');
     notice.slider({
