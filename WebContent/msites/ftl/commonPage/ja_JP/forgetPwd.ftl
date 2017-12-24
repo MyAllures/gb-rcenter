@@ -320,7 +320,7 @@
         setTimeout(
                 changePassowrdLevel
                 ,
-                $.validator.defaults.keypressDelay+500
+                800
         )
     });
     function changePassowrdLevel(){

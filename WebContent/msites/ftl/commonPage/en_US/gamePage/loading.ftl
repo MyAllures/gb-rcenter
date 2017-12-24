@@ -17,20 +17,20 @@
 </head>
 
 <body>
-<#include "/${data.configInfo.templateName}/zh_TW/gamePage/gameTop.ftl">
+<#include "/${data.configInfo.templateName}/zh_CN/gamePage/gameTop.ftl">
 <main>
     <!-- Casino Game Overlay -->
     <div class="CasinoGameOverlay">
         <div class="GameBody">
             <div class="loading"><span class="gui gui-3x gui-spinner gui-pulse"></span></div>
             <div class="brand logo"><img src="${imgPath(data.configInfo.domain,data.configInfo.logo)}" alt="<#if data.siteInfo.title?exists>${data.siteInfo.title}</#if>"></div>
-            <div class="desc"><#if data.siteInfo.title?exists>${data.siteInfo.title}</#if>Loading<span class="apiName"></span></div>
+            <div class="desc"><#if data.siteInfo.title?exists>${data.siteInfo.title}</#if>正在为您跳转<span class="apiName"></span></div>
         </div>
     </div>
 </main>
 
-<#include "../../en_US/script.ftl">
-<#include "../../en_US/autoPayLogin.ftl">
+<#include "../../zh_CN/script.ftl">
+<#include "../../zh_CN/autoPayLogin.ftl">
 <script>
     var apiId = getlocationParam("apiId");
     var gameCode = getlocationParam("gameCode");
@@ -41,11 +41,29 @@
     $(function(){
         var isAutoPay = getCookie("isAutoPay");
         if(isAutoPay == 'true') {
-            autoPayLogin();
+            fetchAllBalance();
         } else {
             fetchBalance();
         }
     });
+
+    function fetchAllBalance(){
+        $.ajax({
+            url: "/ntl/getWalletBalanceAndAllApiBalance.html?t="+ new Date().getTime().toString(36),
+            type: "get",
+            dataType: "JSON",
+            success:function(data){
+                if(!data.allBalance>0&&apiId!='20'){
+                    showRecharge(data);
+                }else {
+                    autoPayLogin();
+                }
+            },
+            error:function(error){
+                console.log("getWalletBalanceAndAllApiBalance error")
+            }
+        })
+    }
 
     function fetchBalance(){
         $.ajax({
@@ -94,6 +112,28 @@
             }
         });
     }
+
+    function showRecharge(data){
+        dialog = BootstrapDialog.show({
+            title: '余额提醒',
+            draggable: true,
+            type:  BootstrapDialog.TYPE_WARNING,
+            data: {
+                'allBalance': data.allBalance,
+            },
+            message: function(dialog){
+                var $message = $('<div></div>').load('/commonPage/modal/toRecharge.html', function(){
+                    $("#walletBalance-value",$message).text(dialog.getData("allBalance"));
+                });
+                return $message;
+            },
+            onhide: function(dialogRef){
+                apiLoginReal(apiId,gameCode,apiTypeId);
+                //enterToGame();
+            }
+        });
+    }
+
     function checkRate(amount){
         if(amount==null||amount==""){
             alert("转入金额不能为空");
@@ -109,7 +149,7 @@
             wb = wb.replace(/,/g, "");;
         }
         if(parseFloat(wb)<parseFloat(amount)){
-            alert("钱包餘額不足");
+            alert("钱包余额不足");
             return;
         }
         return true;
@@ -139,8 +179,8 @@
             },
             success:function(data){
                 if (data.isFreeze == true) {
-                    $("#confirm-btn").html('<span class="gui gui-check-square-o"></span> 账号餘額被冻结');
-                    alert("账号餘額被冻结");
+                    $("#confirm-btn").html('<span class="gui gui-check-square-o"></span> 账号余额被冻结');
+                    alert("账号余额被冻结");
                     return;
                 } else if (data.apiStatus == false) {
                     $("#confirm-btn").html('<span class="gui gui-check-square-o"></span> API维护或停用');
@@ -266,7 +306,7 @@
                 if(data.walletBalance){
                     $("#walletBalance-value").text(data.walletBalance);
                 }else{
-                    alert("刷新失败，未获取到钱包餘額");
+                    alert("刷新失败，未获取到钱包余额");
                 }
                 $("#wallet-refresh-span").removeClass("gui-pulse");
             },
@@ -287,7 +327,7 @@
                 if(data.apiMoney){
                     $("#apiBalance-value").text(data.apiMoney);
                 }else{
-                    alert("刷新失败，未获取到API餘額");
+                    alert("刷新失败，未获取到API余额");
                 }
                 $("#api-refresh-span").removeClass("gui-pulse");
             }

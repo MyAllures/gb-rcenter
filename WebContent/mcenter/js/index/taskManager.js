@@ -264,9 +264,9 @@ define(['common/BasePage','site/index/PopUp'], function (BasePage,PopUp) {
                 type: "POST",
                 dataType:"json",
                 success: function (data) {
-                    $("#onlinePlayerNum").text(data.onlinePlayerNum);
+                    $("#onlinePlayerNum").text(data.onlineplayernum);
                     //$("#activePlayerNum").attr("data-content",_this.formatStr(window.top.message.home_auto['今日活跃'],typeof (data.activePlayerNum)=='undefined'?'0':data.activePlayerNum));
-                    $("#activePlayerNum").text(data.activePlayerNum);
+                    $("#activePlayerNum").text(data.activeplayernum);
                     setTimeout(function () {
                         _this.playerNumTimer();
                     },60*1000)

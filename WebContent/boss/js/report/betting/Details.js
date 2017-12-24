@@ -34,6 +34,21 @@ define(['common/BaseEditPage'], function (BaseListPage) {
                     }
                 },
             })
+        },
+        update:function (e) {
+            var betId=$("#betId").val();
+            var siteId=$("#siteId").val();
+            window.top.topPage.ajax({
+                url: root + "/report/betting/updateState.html?search.betId="+betId+"&siteId="+siteId,
+                type: 'GET',
+                success: function (data) {
+                    var datas = eval('('+data+')')
+                    if(datas.state){
+                        window.top.topPage.showSuccessMessage(datas.msg);
+                       /* $(e.currentTarget).unlock();*/
+                    }
+                },
+            })
         }
     });
 });

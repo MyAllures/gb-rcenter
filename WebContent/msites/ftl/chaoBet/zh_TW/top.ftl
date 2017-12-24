@@ -175,7 +175,11 @@
                 <!--panel-->
                 <div class="header-panel _vr_loginSuccess" style="display: none">
                     <a href="javascript:" class="_vr_nickname"></a>
+                <#if data.playerPopup?string == 'true'>
+                    <a class="openNewWindow" data-url="${data.contextInfo.playerCenterContext}dialogIndex.html" href="javascript:">玩家中心</a>
+                <#else>
                     <a href="${data.contextInfo.playerCenterContext}" target="_blank">玩家中心</a>
+                </#if>
                     <a href="${data.contextInfo.playerCenterContext}#/operation/pAnnouncementMessage/messageList.html" target="_blank">訊息 <span class="label label-info _vr_messageCount"></span></a>
                     <a href="${data.contextInfo.playerCenterContext}#/fund/playerTransfer/transfers.html" target="_blank">額度轉換</a>
                     <a href="${data.contextInfo.playerCenterContext}#/fund/playerRecharge/recharge.html" target="_blank">存款專區</a>

@@ -1907,3 +1907,11 @@ div.scroll{overflow-x:hidden;overflow-y:hidden;white-space:pre-wrap;word-wrap:br
 	list-style-type: disc;
 }
 
+.input-time-ico{
+	display: inline-block;
+    height: 30px;
+    padding: 0;
+    width: 36px;
+    line-height: 30px;
+    margin-right: -5px;
+}

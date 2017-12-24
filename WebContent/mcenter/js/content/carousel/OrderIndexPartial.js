@@ -67,7 +67,9 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
                 success:function(data){
                     data = eval("("+data+")");
                     if(data.state){
-                        window.top.topPage.showSuccessMessage(data.msg,that.closePage());
+                        window.top.topPage.showSuccessMessage(data.msg, function () {
+                            $(".return-btn").click();
+                        });
                     }else{
                         window.top.topPage.showErrorMessage(data.msg);
                         $(e.currentTarget).unlock();

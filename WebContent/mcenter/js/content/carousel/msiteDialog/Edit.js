@@ -175,7 +175,9 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
         preSave:function( event , option ){
             var status = $("[name='result.contentType']:checked").val();
             if (status!=1){
-                $(".content_picture").val('');
+                $(".content_picture").find("input.cover").val('');
+            }else {
+                $(".content_word_title").find("textarea.word_content").val('');
             }
             event.objId = $('[name="search.id"]').val();
             event.catePath = 'carousel';
@@ -205,7 +207,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
             var that = this;
             window.top.topPage.ajax({
                 type:"POST",
-                url: root+"/content/cttCarousel/persist.html",
+                url: root+"/content/cttCarousel/dialog/persist.html",
                 data:window.top.topPage.getCurrentFormData(e),
                 error: function (request) {
 
@@ -286,7 +288,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 $(".content_picture").addClass("hide");
                 $(".content_word").removeClass("hide");
             }
-            this.resizeDialog();
+            _this.resizeDialog();
         },
 
         /**
