@@ -15,7 +15,6 @@ define(['gb/sysSearchTemplate/SysSearchTemplate','common/BasePage'], function (S
             var selectVal = $target.attr("key");
             if (selectVal && selectVal != '') {
                 var data = $target.parents().find("#content_" + selectVal).text();
-                var selectName = $target.text();
                 window.top.topPage.ajax({
                     loading: true,
                     url: _this.getFirstFromAction(e),
