@@ -362,10 +362,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                 var $imageInput1 = $image1.find('input:eq(1)');
                 $imageInput1.removeAttr('disabled');
                 $imageInput1.attr('name', targetText1);
-                var $imageProtoco = $("#content_float_pic_type_http1 input").attr('name');
-                $imageProtoco=$imageProtoco.replace('1',imgIndex);
-                $("#content_float_pic_type_http1 input").attr('name',$imageProtoco);
-
+                $("#content_float_pic_type_http1 input").eq(imgIndex).attr('name',"itemList["+imgIndex+"].imgLinkProtocol");
                 var $linkTypeSelect = $(newContent).find('[selectdiv]:first');
                 var nameText = $linkTypeSelect.attr('selectdiv');
                 nameText = nameText.replace('1', imgIndex);

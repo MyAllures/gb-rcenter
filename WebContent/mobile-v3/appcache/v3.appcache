@@ -16,9 +16,8 @@ CACHE MANIFEST
 #以下是js部分
 /mobile/message_zh_CN.js
 ../js/jquery/jquery-2.1.1.js
-../js/mui/mui.js
 ../js/mui/mui.min.js
-../js/mui/dtpicker.js
+../js/mui/mui.dtpicker.js
 ../js/mui/mui.picker.js
 ../js/mui/mui.picker.min.js
 ../js/mui/mui.poppicker.js
@@ -110,7 +109,7 @@ CACHE MANIFEST
 ../images/App.png
 ../images/apple-down.png
 ../images/apple-download-ios-bg.png
-../images/avater.png
+../images/avatar.png
 ../images/banner-01.jpg
 ../images/code.png
 ../images/electronic-transfer-banner.png
@@ -149,8 +148,8 @@ CACHE MANIFEST
 ../themes/images/hongbao/icon-hongbao-rule.png
 ../themes/images/hongbao/icon-hongbao-rule-hover.png
 ../themes/images/hongbao/icon-open.png
-../themes/images/hongbao/icon-disabled.png
-../themes/images/hongbao/icon-hover.png
+../themes/images/hongbao/icon-open-disabled.png
+../themes/images/hongbao/icon-open-hover.png
 ../themes/images/hongbao/opened_hongbao_bg.png
 ../themes/images/hongbao/opened_light.png
 ../themes/images/hongbao/opened_line.png
@@ -183,7 +182,7 @@ CACHE MANIFEST
 
 
 #fonts
-../fonts/mui.tff
+../fonts/mui.ttf
 ../fonts/iconfont.eot
 ../fonts/iconfont.svg
 ../fonts/iconfont.ttf
@@ -196,7 +195,7 @@ CACHE MANIFEST
 
 
 #js
-../common/js/jquery/jquery-2.1.1.min.js
+../../common/js/jquery/jquery-2.1.1.js
 ../../mobile-v2/js/common/ProgressDialog.js
 ../../mobile-v2/js/common/main.js
 ../../mobile-v2/js/mui/mui.min.js
@@ -211,21 +210,21 @@ CACHE MANIFEST
 ../../common/js/jquery/plugins/jquery.validate/jquery.validate.min.js
 ../../mobile-v2/js/deposit/Company.js
 ../../common/js/gamebox/components/Comet.js
-../common/js/gamebox/common/MobileBasePage.js
+../../common/js/gamebox/common/MobileBasePage.js
 ../../mobile-v2/js/deposit/BaseCompanyDeposit.js
-../common/js/dist/clipboard.min.js
-../common/js/bootstrap-daterangepicker/moment.js
+../../common/js/dist/clipboard.min.js
+../../common/js/bootstrap-daterangepicker/moment.js
 ../../mobile-v2/js/index/Comet.js
 ../../mobile-v2/js/deposit/BaseDeposit.js
 ../../mobile-v2/js/deposit/Online.js
 ../../mobile-v2/js/deposit/ScanCode.js
 ../../mobile-v2/js/common/Assets.js
-../common/js/gamebox/components/Comet.js
+../../common/js/gamebox/components/Comet.js
 ../../mobile-v2/js/deposit/ElectronicDeposit.js
 ../../mobile-v2/js/deposit/Digiccy.js
 ../../mobile-v2/js/deposit/BitcoinDeposit.js
 ../../mobile-v2/js/fund/betting/Index.js
-../../mobile-v2/js/fund/record.js
+../../mobile-v2/js/fund/record/Index.js
 ../../mobile-v2/js/help/Help.js
 ../../mobile-v2/js/my/message/Notice.js
 ../../mobile-v2/js/my/AddCard.js
@@ -241,7 +240,7 @@ CACHE MANIFEST
 ../../mobile-v2/js/passport/password/UpdateSecurityPassword.js
 ../../mobile-v2/js/passport/Login.js
 ../../mobile-v2/js/passport/SignUp.js
-../../mobile-v2/js/UpdatePassword.js
+../../mobile-v2/js/password/UpdatePassword.js
 ../../mobile-v2/js/transfer/auto/Index.js
 ../../mobile-v2/js/transfer/Index.js
 ../../mobile-v2/js/withdraw/bankcard/Bankcard.js
@@ -255,7 +254,6 @@ CACHE MANIFEST
 ../../mobile-v2/themes/common.css
 ../../mobile-v2/themes/loading.css
 ../../mobile-v2/themes/layer.css
-../../mobile-v2/themes/default/lang/zh_CN.cs
 ../../mobile-v2/themes/hb/style.css
 ../../mobile-v2/themes/blue/style.css
 ../../mobile-v2/themes/default/style.css
@@ -269,17 +267,16 @@ CACHE MANIFEST
 ../../mobile-v2/themes/images/icon-open-offcanvas.png
 ../../mobile-v2/images/ex-check.png
 ../../mobile-v2/themes/images/pay-bank.png
-../../mobile-v2/themes/images/avatar.png
-../../mobile-v2/themes/images/ban-01.jpg
-../../mobile-v2/themes/images/orient-tip.gif
-../../mobile-v2/themes/images/bg-about.jpg
-../../mobile-v2/themes/images/intro1.png
-../../mobile-v2/themes/images/intro2.png
-../../mobile-v2/themes/images/intro3.png
-../../mobile-v2/themes//images/intro4.png
-../../mobile-v2/themes/images/pay-bank-x.png
-../../mobile-v2/themes/images/pay-third.png
-../../mobile-v2/themes/images/pay-third-x.png
+../../mobile-v2/images/avatar.png
+../../mobile-v2/images/orient-tip.gif
+../../mobile-v2/images/bg-about.jpg
+../../mobile-v2/images/intro1.png
+../../mobile-v2/images/intro2.png
+../../mobile-v2/images/intro3.png
+../../mobile-v2/images/intro4.png
+../../mobile-v2/images/pay-bank-x.png
+../../mobile-v2/images/pay-third.png
+../../mobile-v2/images/pay-third-x.png
 
 
 #fonts
