@@ -17,16 +17,6 @@ function displayToIndex() {
     }
 }
 
-mui(document.body).on('tap', '#welcome', function () {
-    setTimeout(function () {
-        var $bg = $('div.load-bg');
-        $bg.fadeOut();
-        setTimeout(function () {
-            $bg.remove();
-        }, 1000);
-    }, 2000);
-});
-
 function lazy2Index(isOpen) {
     var b = "_OPEN_SPLASH";
     var a = getCookie(b);
@@ -35,7 +25,7 @@ function lazy2Index(isOpen) {
         setCookie(b, true, 0);
         setTimeout(function () {
             toIndex(isOpen);
-        }, 2000);
+        }, 1000);
     } else {
         toIndex(isOpen);
     }
