@@ -16,7 +16,7 @@ CACHE MANIFEST
 #以下是js部分
 /mobile/message_zh_CN.js
 ../js/jquery/jquery-2.1.1.js
-../js/mui/mui.min.js
+../js/mui/mui.js
 ../js/mui/mui.dtpicker.js
 ../js/mui/mui.picker.js
 ../js/mui/mui.picker.min.js
