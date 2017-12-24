@@ -240,6 +240,10 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             e.objId = $("#floatId").val();
             e.catePath = 'floatImage';
             var flag = this.uploadAllFiles(e, opt);
+            var status = $("input[name=mouseInEffect]:checked").val();
+            if (status != true){
+                $(".mouseInEffectDiv").remove();
+            }
             if (!flag) {
                 return false;
             }

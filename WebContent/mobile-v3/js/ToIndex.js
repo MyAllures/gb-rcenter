@@ -31,12 +31,12 @@ function lazy2Index(isOpen) {
     var b = "_OPEN_SPLASH";
     var a = getCookie(b);
     if (!a) {
-        $("div.load-bg").fadeIn();
         setCookie(b, true, 0);
         setTimeout(function () {
             toIndex(isOpen);
-        }, 2000);
+        }, 1000);
     } else {
+        $("div.load-bg").fadeOut();
         toIndex(isOpen);
     }
 }
