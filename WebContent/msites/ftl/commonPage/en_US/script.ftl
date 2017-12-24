@@ -636,15 +636,31 @@
                 }
                 transWebUrlTag($li);
             });
-            //点击关闭浮动图
-            $("._close").on("click",function(){
-                var _this = this;
-                if (window.sessionStorage){
-                    sessionStorage.setItem("is_float_close_"+$(_this).parent().data("fp"),"true");
+        }
+
+        var showEffect = $(".hongbao-slide-wrap");
+        if(showEffect){
+            $(showEffect).each(function(i,float){
+                if(window.sessionStorage && sessionStorage.getItem("is_float_close_"+$(float).data("fp")) != "true"){
+                    sessionStorage.setItem("is_float_close_"+$(float).data("fp"),"false");
                 }
-                $(_this).parent().hide();
+                if(window.sessionStorage && sessionStorage.getItem("is_float_close_"+$(float).data("fp")) == "false"){
+                    $(float).show();
+                }
             });
         }
+
+        //点击关闭浮动图
+        $("._close").on("click",function(){
+            var _this = this;
+            var showEffect = $(_this).parent().hasClass("show_effect");
+            var fpId = $(_this).parent().data("fp")==undefined?001:$(_this).parent().data("fp");
+            if (window.sessionStorage && showEffect){
+                sessionStorage.setItem("is_float_close_"+fpId,"true");
+            }
+            $(_this).parent().hide();
+        });
+
     }
     function transWebUrlTag(tarLi){
         $(tarLi).each(function(i,tar){
