@@ -25,7 +25,7 @@ mui(document.body).on('tap', '#welcome', function () {
         setTimeout(function () {
             $bg.remove();
         }, 1000);
-    }, 2000);
+    }, 1000);
 });
 
 function lazy2Index(isOpen) {
