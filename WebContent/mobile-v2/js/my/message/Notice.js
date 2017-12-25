@@ -494,6 +494,8 @@ define(['common/MobileBasePage'], function (Mobile) {
             }else if(unReadType == 'sendMessage'){
                 t.sendMessage();
                 eitem3 = true;
+            }else if(unReadType == 'noticeSys') {
+                t.sysNotice(true);
             }
         },
 
