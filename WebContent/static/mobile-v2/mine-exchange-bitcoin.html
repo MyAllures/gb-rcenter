@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="../../mobile-v2/themes/mui.css" />
     <link rel="stylesheet" href="../../mobile-v2/themes/style.css" />
     <link rel="stylesheet" href="../../mobile-v2/themes/common.css" />
-    <link rel="stylesheet" href="../../mobile-v2/themes/default/style.css" />
     <link rel="stylesheet" href="../../mobile-v2/themes/mui-icon-extra.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/default/style.css" />
+
 </head>
 
-<body class="gb-theme mine-page ex-wechat">
+<body class="gb-theme mine-page ex-wechat ex-bitcoin">
     <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
         <!-- 主页面容器 -->
         <div class="mui-inner-wrap">
@@ -24,16 +25,6 @@
             </header>
             <div class="mui-content mui-scroll-wrapper">
                 <div class="mui-scroll">
-                    <!--<div class="mui-row">-->
-                        <!--<div class="gb-panel" style="border-bottom-color: #fff;">-->
-                            <!--<div class="gb-headtabs">-->
-                                <!--<div id="segmentedControl" class="mui-segmented-control">-->
-                                    <!--<a href="#wechat1" class="mui-control-item mui-active">银行卡信息</a>-->
-                                    <!--<a href="#wechat2" class="mui-control-item">微信二维码</a>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
                     <div id="wechat1" class="mui-control-content mui-active ">
                         <div class="mui-row">
                             <div class="gb-panel" style="border-top-color: #fff;">
@@ -46,9 +37,9 @@
                                         </p>
                                     </div>
                                     <div class="ct"  style="padding-left:20px;">
-                                        <p><span class="text-green" style="color:#f49e2e;line-height:40px;">Angel388</span></p>
+                                        <p class="text-green" ><span >比特比支付比特币支付比特比支付比特币支付</span></p>
                                         <div class="ct">
-                                            <p><span>姓名:</span>
+                                            <p><span>氏名:</span>
                                                 宋小宝
                                             </p>
                                         </div>
@@ -63,29 +54,30 @@
                         </div>
                         <div class="mui-row">
                             <div class="mui-input-group mine-form m-t-sm">
-                                <div class="mui-input-row"><label for="">您的微信昵称</label>
+                                <div class="mui-input-row"><label for="">您的比特币地址</label>
                                     <div class="ct">
-                                        <input type="text" placeholder="昵称">
+                                        <input type="text" placeholder="请输入比特币地址">
                                     </div>
                                 </div>
-                                <div class="mui-input-row">
-                                    <label for="">订单号后5位
-                                        <span class="small">非必填</span>
-                                    </label>
+                                <div class="mui-input-row"><label for="">txid</label>
                                     <div class="ct">
-                                        <input type="text" placeholder="请填写“订单号”非商户订单号">
+                                        <input type="text" placeholder="请输入交易时产生的txid">
                                     </div>
                                 </div>
+                                <div class="mui-input-row"><label for="">比特币</label>
+                                    <div class="ct">
+                                        <input type="text" placeholder="请输入比特币数量">
+                                    </div>
+                                </div>
+                                <div class="mui-input-row"><label for="">交易时间</label>
+                                    <div class="ct">
+                                        <p class="time">2017-12-23 15：43</p>
+                                    </div>
+                                </div>
+                                <p class="info">* 为了方便系统快速完成转账，请输入正确的txid、交易时间等.</p>
                             </div>
                         </div>
-                        <ul class="info">
-                            <li>* 请先搜索微信号或扫描二维码添加好友。</li>
-                            <li>* 为了系统快速完成转账，请输入订单号后5位，以加快系统入款速度。</li>
-                            <li>* 支付成功后，请等待几秒钟，提示[支付成功] 按确认</li>
-                        </ul>
-
                     </div>
-
                     <!--<div id="wechat2" class="mui-control-content">-->
                         <!--<div class="mui-row">-->
                             <!--<div class="gb-panel" style="border-top-color: #fff;">-->
@@ -118,14 +110,11 @@
                         <!--</div>-->
                     <!--</div>-->
                 </div>
-
-
                 <div class="mui-row">
                     <div class="gb-form-foot bank-pay-btn">
                         <a href="" class="mui-btn mui-btn-primary submit">提交</a>
                     </div>
                 </div>
-
             </div>
             <div class="mui-off-canvas-backdrop"></div>
 
