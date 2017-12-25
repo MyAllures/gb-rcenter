@@ -8,7 +8,7 @@ $(function () {
         /*禁用侧滑手势指定样式*/
         disabledHandSlip: ['.mui-off-canvas-left'],
         /*表格添加横向滚动*/
-        horizontalScroll:['.ct table']
+        horizontalScroll:['li .ct']
     };
     muiInit(options);
     onPageLoad();
