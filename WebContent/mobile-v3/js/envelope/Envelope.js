@@ -108,8 +108,8 @@ function closePage() {
 function openRule() {
     $('.hongbao-rule').show();
     $('#tip-msgs').hide();
-    var text = $("#description").val();
-    if (text == null || text == "") {
+    var text = $(".txt .nice-wrapper").html();
+    if (!text.trim()) {
         text = $(".mui-row .ct p").text();
     }
     $(".nice-wrapper").html(text);
