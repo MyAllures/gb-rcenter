@@ -631,13 +631,7 @@ define(['site/common/BasePage'], function (BasePage) {
                     var strNumber = json.expect;
                     var strNum;
                     var lotteryCode = json.code;
-                    if (lotteryCode == 'xy28' || lotteryCode == 'bjpk10' || lotteryCode == 'bjkl8'){
-                        strNum = strNumber;
-                    }else if (lotteryCode == 'ffssc ' || lotteryCode == 'jspk10'){
-                        strNum = strNumber.substr(strNumber.length-4,strNumber.length);
-                    }else {
-                        strNum = strNumber.substr(strNumber.length-3,strNumber.length);
-                    }
+                    strNum = strNumber;
                     $("#tip").html( strNum + '期已开盘，距离下一期还有:');
                     $("#leftTime").attr("data-time", json.leftTime);
                     $("#tip").data("opening", true);
