@@ -240,10 +240,6 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             e.objId = $("#floatId").val();
             e.catePath = 'floatImage';
             var flag = this.uploadAllFiles(e, opt);
-            var status = $("input[name=mouseInEffect]:checked").val();
-            if (status != true){
-                $(".mouseInEffectDiv").remove();
-            }
             if (!flag) {
                 return false;
             }
@@ -310,6 +306,25 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             //select.disable('.middle-img-list [name="cttFloatPicTempVo.result.middle1ImgLinkType"]:first');
             //$('.middle-img-list input[name="cttFloatPicTempVo.result.middle1ImgLinkValue"]:first').prop('disabled', true);
             return false;
+        },
+
+        /**
+         * 发布
+         * @param e
+         * @param opt
+         */
+        valiDateFormAndSubmit: function (e,opt) {
+            var _this = this;
+            var flag = _this.valiDateFormAndUploadFile(e,opt);
+            if(!flag){
+                return false;
+            }
+            var status = $("[name='result.mouseInEffect']").val();
+            if (status != 'true'){
+                $(".mouseInEffectDiv").remove();//移除鼠标移入效果
+            }
+
+            return true;
         },
 
         /**
