@@ -11,6 +11,7 @@ $(function () {
 function displayToIndex() {
     var isOpen = $("input[name=isOpen]").val();
     if(os != 'app_ios' && os !='app_android') {
+        $('div.load-bg').fadeIn();
         toIndex(isOpen);
     } else {
         lazy2Index(isOpen);
@@ -31,6 +32,7 @@ function lazy2Index(isOpen) {
     var b = "_OPEN_SPLASH";
     var a = getCookie(b);
     if (!a) {
+        $("div.load-bg").fadeIn();
         setCookie(b, true, 0);
         setTimeout(function () {
             toIndex(isOpen);
