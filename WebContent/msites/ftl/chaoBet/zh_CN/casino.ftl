@@ -21,18 +21,10 @@
         <div class="container">
             <div class="casino-box">
                 <!-- Api-tabs -->
-                <ul class="api-tabs casino-tabs">
-                <#if data.siteApiTypeRelationMap??>
-                    <#list data.siteApiTypeRelationMap[apiType] as relationMap>
-                        <li class="<#if relationMap.apiId?string.computer == data.gameSearch.apiId?default('')>active</#if>">
-                            <a title="点击进入${data.siteApiTypeRelationI18n[apiType+relationMap.apiId?string.computer].name}" href="javascript:" class="_vr_getGames"
-                               data-api="${relationMap.apiId?string.computer}" data-href="casino_partial.html?apiType=${apiType}&apiId=${relationMap.apiId?string.computer}&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>">
-                                <span class="icon <#list apiMapKeys as key><#if key == relationMap.apiId?string.computer>${apiMap[key]}</#if></#list>"></span>
-                            </a>
-                        </li>
-                    </#list>
-                </#if>
-                </ul>
+                <div id="api-tabs" class="carousel auto" data-ride="carousel" data-shift="1" data-interval="2000">
+                    <#assign apiNumPerSlide=6>
+                    <#include "../../commonPage/zh_CN/commonApiTabs.ftl">
+                </div>
                 <div class="game-list _vr_itemCasino">
                     <#include "casino_partial.ftl">
                 </div>

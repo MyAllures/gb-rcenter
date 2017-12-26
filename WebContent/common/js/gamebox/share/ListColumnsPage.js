@@ -470,10 +470,11 @@ define(['common/BasePage', 'nestable'], function (BasePage, nestable) {
                         success: function (data) {
                             if (data.state) {
                                 window.top.topPage.showSuccessMessage(data.msg, function () {
-                                    //window.top.page.loadMoreData();
-                                    window.top.page.query({currentTarget:$(window.top.page.formSelector)[0]},{});
+                                    // //window.top.page.loadMoreData();
+                                    // //window.top.page.query({currentTarget:$(window.top.page.formSelector)[0]},{});
                                     $(".more-data").click();
-
+                                    var url = $("#mainFrame form").attr("action");
+                                    $("#mainFrame").load(url);
                                 });
                             } else {
                                 window.top.topPage.showErrorMessage(data.msg);

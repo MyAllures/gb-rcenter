@@ -130,7 +130,12 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                 if (_this.os == 'app_android') {
                     window.gamebox.depositAgain();
                 } else if(_this.os == 'app_ios'){
-                    gotoIndex(1);
+                    if(isMobileUpgrade && isMobileUpgrade == 'true') {
+                        //v3存款跳转
+                        gotoTab(0);
+                    } else {
+                        gotoIndex(1);
+                    }
                 } else {
                     _this.gotoUrl($(this).attr('_href'));
                 }

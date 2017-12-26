@@ -483,7 +483,6 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
 
                 },
                 success: function (data) {
-                    var url = $("#toDepoist").attr("href");
                     if (data.usernames) {
                         _this.doPostToDepoist(data.usernames);
                     }
@@ -495,7 +494,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
         doPostToDepoist: function (usernames) {
             var data = {"username": usernames};
             window.top.topPage.ajax({
-                url: root + '/fund/manual/fromPlayer.html?fromPlayerDetail=playerList',
+                url: root + '/fund/manual/index.html?hasReturn=true&fromPlayerDetail=playerList',
                 data: data,
                 cache: false,
                 type: "POST",

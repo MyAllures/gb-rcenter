@@ -128,7 +128,7 @@
     $("[name='sysUser.password']").on("keyup",function(){
         setTimeout(
                 changePassowrdLevel,
-                $.validator.defaults.keypressDelay+500
+                800
         )
     });
 

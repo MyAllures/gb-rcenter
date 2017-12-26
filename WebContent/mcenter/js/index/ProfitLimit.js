@@ -42,8 +42,8 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                             if (transferLimit > 0){
                                 tranferPercent = Math.floor(currentProfit / transferLimit * 100);
                             }
-                            $("#topSecurity").find("#usePercent").text(percent + '%');
-                            $("#topSecurity").find("#currentUsePercent").text(tranferPercent + '%');
+                            $("#topSecurity").find("#usePercent").text(percent <= 0?0:percent + '%');
+                            $("#topSecurity").find("#currentUsePercent").text(tranferPercent <= 0? 0:tranferPercent + '%');
                             //1-79 safe
                             var className = "safety";
                             if (percent >= 80 && percent < 95) {

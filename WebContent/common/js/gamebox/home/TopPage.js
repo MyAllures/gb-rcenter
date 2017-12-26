@@ -75,9 +75,9 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                     _this.showErrorMessage(window.top.message.common["repeat.request.error"], undefined, true);
                 }
                 else if (_this.errorPages.indexOf(state) >= 0 && settings.comet != true) {//服务器忙
-                    //_this.doDialog({currentTarget:settings.eventTarget},{title:window.top.message.common["dialog.title.error"],target:window.top.root+"/errors/"+xhr.status+".html"});
                     if (!settings.error) {
-                        window.top.location.href = window.top.root + "/errors/" + state + ".html";
+                        _this.showErrorMessage(state+":"+settings.url);
+                        //window.top.location.href = window.top.root + "/errors/" + state + ".html";
                     }
                 }
                 else if (!settings.error && state != 200 && state != 0) {
