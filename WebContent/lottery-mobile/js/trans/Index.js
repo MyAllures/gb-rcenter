@@ -79,7 +79,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                    return ;
                }
                 var dayOfMonth = myDate.getDate();
-                myDate.setDate(dayOfMonth - 41);
+                myDate.setDate(dayOfMonth - 2001);
                if(new Date(st).getTime()<myDate.getTime()){
                    _this.toast("请重新选择时间！");
                    return;
