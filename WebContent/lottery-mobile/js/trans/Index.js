@@ -109,7 +109,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("body").on("tap", "#startTime", function () {
                 var myDate = new Date();
                 var dayOfMonth = myDate.getDate();
-                myDate.setDate(dayOfMonth - 40);
+                myDate.setDate(dayOfMonth - 2000);
                 var dtpicker = new mui.DtPicker({
                     "type": "date",
                     "value": $("#startTime").val(),
@@ -129,7 +129,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("body").on("tap", "#endTime", function () {
                 var myDate = new Date();
                 var dayOfMonth = myDate.getDate();
-                myDate.setDate(dayOfMonth - 40);
+                myDate.setDate(dayOfMonth - 2000);
                 var dtpicker = new mui.DtPicker({
                     "type": "date",
                     "value": $("#endTime").val(),
