@@ -54,11 +54,11 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             $("#user_for_agent").hide();
             $(".isDefault").hide();
 
-            //主页,线路检测
-            if(pagUrl == "/" || pagUrl == "/netLine/findLines.html"){
+            //主页,主页cname
+            if(pagUrl == "/" || pagUrl == "/index/cname.html"){
                 //是主页,绑定完成,启用,全部层级 显示默认域名选项
                 var resolveStatus = $("input[name='result.resolveStatus']").val();
-                if(pagUrl == '/' && resolveStatus=='5' && isEnable=='true'){
+                if(pagUrl == '/' && resolveStatus=='5' && isEnable=='true' ){
                     $(".isDefault").show();
                 }
                 $("#user_for_agent").show();

@@ -46,11 +46,33 @@
         $("#box_playGameDemo_iframe").css("width", ($(window).height() - $("header").height()) * widthSet + "px");
         $(".GameContainer").css("height", ($(window).height() - $("header").height()) + "px");
         $(".GameContainer").css("width", ($(window).height() - $("header").height()) * widthSet + "px");
+        //apiId=33时做特殊处理
+        if(location.search.substr(7)=="33"){
+            $(".GameContainer").css({
+                "overflowX": "hidden",
+                "overflowY": "scroll"
+            });
+            $(".GameContainer iframe").css({
+                "height": "2665px"
+            });
+        }
+
+
         $(window).bind('resize', function(e) {
             $("#box_playGameDemo_iframe").css("height", ($(window).height() - $("header").height()) + "px");
             $("#box_playGameDemo_iframe").css("width", ($(window).height() - $("header").height()) * widthSet + "px");
             $(".GameContainer").css("height", ($(window).height() - $("header").height()) + "px");
             $(".GameContainer").css("width", ($(window).height() - $("header").height()) * widthSet + "px");
+            //apiId=33时做特殊处理
+            if(location.search.substr(7)=="33"){
+                $(".GameContainer").css({
+                    "overflowX": "hidden",
+                    "overflowY": "scroll"
+                });
+                $(".GameContainer iframe").css({
+                    "height": "2665px"
+                });
+            }
         });
     });
     $(function(){

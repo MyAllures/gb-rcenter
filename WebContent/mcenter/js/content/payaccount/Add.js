@@ -55,7 +55,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                 var sta = $(this).is(':checked');
                 $("input[name='result.fullRank']").val(sta);
                 if (sta) {
-                    //$(".allRank").addClass('hide');
+                    $(".allRank").addClass('hide');
                     //$("input[name='rank']").attr('checked', true);
                     $("input[name='rank']").each(function (idx, rank) {
                         rank.checked = true;

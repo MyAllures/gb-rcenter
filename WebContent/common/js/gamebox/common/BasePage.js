@@ -187,6 +187,9 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                         if (data.startDate) {
                             optionRange.startDate = data.startDate
                         }
+                        if(data.minDate) {
+                            optionSinlge.minDate = data.minDate;
+                        }
                     }
 
 

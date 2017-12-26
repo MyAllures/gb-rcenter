@@ -192,7 +192,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
                 $(e.currentTarget).unlock();
                 return false;
             }
-            return this.changeApiStatus(e,opt);
+            return  window.top.topPage.doAjax(e, opt);
             //return true;
         },
         /**

@@ -804,6 +804,7 @@ body.has-srchbar .electronic-srch{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 .bank-selector >.ct a i.pay{background: url(images/pay-third-x.png) no-repeat;display: inline-block;width: 40px;height: 28px;vertical-align: top;}
 .bank-selector >.ct a i.pay.zfb{background-position: 2px -62px;}
 .bank-selector >.ct a i.pay.wx{background-position: 2px -92px;}
@@ -1590,22 +1591,36 @@ body.has-srchbar .electronic-srch{
 
 }
 .gb-bankcard >.ct >.ct p{
-    line-height: 23px;
     color: #333333;
     font-size: 12px;
-    margin-bottom: 0;
-    height: 28px;
+    margin-bottom: 5px;
+    text-align: left;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
 }
 .gb-bankcard >.ct >.ct p span{
     color: #999999;
+    white-space: nowrap;
+    padding-right: 5px;
+}
+.gb-bankcard >.ct >.ct p font{
+	width: 100%;
 }
 .gb-bankcard >.ct > p a.copy,.gb-bankcard >.ct >.ct p a.copy{
-    float:right;
+    float: right;
     background: #e0efff;
     padding: 0 5px;
     border-radius: 3px;
     color: #569ff1;
     font-size: 12px;
+    white-space: nowrap;
+    height: 22px;
+    line-height: 22px;
+    margin-left: 5px;
 }
 .gb-headtabs{
     margin: 11px auto;
@@ -5146,3 +5161,60 @@ div.setting {
 /*copyright*/
 .copy-right{margin-top: 7px;}
 .copy-right span{display: block;color:#7d808f}
+
+/*存款页 选择支付方式：*/
+
+.modes-payment >.ct a i.pay{background: url(images/pay_bank_b.png) no-repeat ;background-size:25px; display: inline-block;width:26px;height: 20px;vertical-align: middle;}
+.modes-payment >.ct a i.pay.zx{background-position: 3px -3px;}
+.modes-payment >.ct a i.pay.wx{background-position: 0px -26px;}
+.modes-payment >.ct a i.pay.zfb{background-position: 0px -48px;}
+.modes-payment >.ct a i.pay.zs{background-position: 3px -71px;}
+.modes-payment >.ct a i.pay.jh{background-position: 3px -93px;}
+.modes-payment >.ct a i.pay.ks{background-position: 3px -116px;}
+.modes-payment >.ct a i.pay.jd{background-position: 3px -138px;}
+.modes-payment >.ct a i.pay.bd{background-position: 3px -161px;}
+.modes-payment >.ct a i.pay.ymf{background-position: 2px -183px;}
+.modes-payment >.ct a i.pay.qq{background-position: 3px -206px;}
+.modes-payment >.ct a i.pay.gh{background-position: 3px -228px;}
+.modes-payment >.ct a i.pay.zh{background-position: 3px -250px;}
+.modes-payment >.ct a i.pay.nh{background-position: 3px -273px;}
+.modes-payment >.ct a i.pay.hx{background-position: 3px -295px;}
+.modes-payment >.ct a i.pay.yz{background-position: 3px -319px;}
+.modes-payment >.ct a i.pay.pf{background-position: 0px -340px;}
+.modes-payment >.ct a i.pay.btb{background-position: 3px -364px;}
+.modes-payment >.ct a i.pay.yl{background-position: 3px -386px;}
+
+.modes-payment >.ct a:before{ content: '';   width: 16px;   height: 16px;    background: url(../images/ex-check.png);
+    background-size: cover;    position: absolute;    top: 0;    right: 0;    display: none;}
+.modes-payment >.ct a.active:before{ display: block;}
+.modes-payment >.ct a{ height: 32px;line-height: 32px;font-size: 12px;overflow: visible;text-overflow: clip; white-space: normal;}
+.modes-payment >.ct .long span{font-size:9px;line-height:13px;width:55px;display:inline-block;text-align:left;vertical-align: middle;}
+.modes-payment >.ct li>a.active{border-color:#e2e2e2;}
+.bank-pay-btn {padding:0;position:fixed;bottom:0;left:0;right:0;width:100%;z-index:9;}
+.bank-pay-btn a{border-radius:0;}
+.modes-payment>.ct .active>a{background:url(./images/pay-active.png) right top no-repeat;background-size:18px;border:1px solid #00a8ff;}
+.c-bank-se>a {margin:0;}
+
+/*银行卡支付*/
+header.blue{background:#1766bb;}
+.ex-bank-card .gb-bankcard {width:270px;}
+.ex-bank-card .gb-bankcard .text-green{color:#555;font-family:"微软雅黑";padding-left:10px;}
+.ex-bank-card .gb-bankcard >.ct >.ct p{height:auto;padding-left:10px;}
+.gb-bankcard >.hd{padding:0 8px 0 18px;}
+/*微信支付;*/
+.ex-wechat .tit{margin:10px auto;line-height:35px;width:100px;border-radius:3px;color:#fff;text-align:center;height:35px;background:#1766bb;}
+.ex-wechat .wechat-code{text-align:center;border-top:1px solid #ddd;padding:20px 0 15px;}
+.ex-wechat .wechat-code img{width:130px;height:130px;display:inline-block;border:1px solid #eee;}
+.ex-wechat .wechat-code .tit{margin:0 auto;width:130px;height:30px;line-height:30px;border-top-left-radius:0;border-top-right-radius:0;}
+.ex-wechat .info{padding:10px 20px;font-size:13px;color:#666;line-height:28px;}
+/*比特币支付：*/
+.ex-bitcoin .ct .text-green{color:#333;background:#fff ;line-height:22px;font-size:16px;border:1px solid #ddd;width:250px;padding:10px 15px;margin-top:-15px;border-radius:3px;}
+.ex-bitcoin .ct{padding-bottom:5px;}
+.ex-bitcoin .hd{height:35px;}
+.ex-bitcoin .ct .time{width:150px;border:1px solid #ddd;text-align:center;height:30px;line-height:30px;margin-top:5px;float:right;}
+/*弹框：*/
+.succ-box .pro-btn{display:flex;}
+.succ-box .pro-btn{width:100%;}
+.copy{font-size:12px;color:#999;float:right;}
+
+
