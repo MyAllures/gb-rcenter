@@ -82,6 +82,11 @@ function goTab(obj, options) {
     var skip = options.skip;
     var dataHref = root + options.dataHref;
     var isLeft = options.isLeft;
+    //左侧进入隐藏左侧，其他地方不用隐藏
+    if (isLeft == "true") {
+        mui(".mui-off-canvas-left").offCanvas('close');
+    }
+
     if (os == 'app_ios') {
         gotoTab(skip);
     } else if (os == 'app_android') {
@@ -92,10 +97,6 @@ function goTab(obj, options) {
         } else {
             goToUrl(dataHref);
         }
-    }
-    //左侧进入隐藏左侧，其他地方不用隐藏
-    if (isLeft == "true") {
-        mui(".mui-off-canvas-left").offCanvas('close');
     }
 }
 

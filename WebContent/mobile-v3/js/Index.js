@@ -19,9 +19,11 @@ $(function () {
 
 /*轮播图*/
 function initBanner() {
-    mui('.mui-banner').slider({
-        interval: 5000 // 自动轮播时长（毫秒），为0不自动播放，默认为0；
-    });
+    if ($(".mui-banner .mui-slider-item").length > 1) {
+        mui('.mui-banner').slider({
+            interval: 5000 // 自动轮播时长（毫秒），为0不自动播放，默认为0；
+        });
+    }
 }
 
 /**
@@ -40,6 +42,7 @@ function initNotice() {
         });
         index++;
     }
+
     setInterval(topScroll, 3600);
 }
 
