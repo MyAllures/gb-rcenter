@@ -1438,7 +1438,7 @@
                         afterLogin(data,$form,callback,obj,loginText);
                     },
                     error:function(error) {
-                        if(error.responseJSON.propMessages){
+                        if(error.responseJSON){
                             window.location.href=error.responseJSON.propMessages.location;
                         }
                     },
