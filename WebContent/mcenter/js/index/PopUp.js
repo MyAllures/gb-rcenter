@@ -673,7 +673,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.date), window.top.dateFormat.daySecond);
             var content = '<a nav-target="mainFrame" name="tellerReminder" href="/lotteryResult/list.html">' + date + '&nbsp;' + msgBody.message + '</a>';
             popUp.pop(content, date, "warning");
-            window.top.popUp.playVoice(data, "draw");
+            window.top.popUp.playVoice(data, "warm");
             if ($("#timer .hd").attr("data-value") == 'refresh') {
                 $(".playerWithdrawSearch").click();
                 $(".agentWithdrawSearch").click();
