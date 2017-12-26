@@ -7,7 +7,7 @@
                 <div class="container">
                     <!--logo-->
                     <div class="logo">
-                        <a href="/"><img src="${data.configInfo.sitePath}/images/logo.png"/></a>
+                        <a href="/"><img height="51" src="${imgPath(data.configInfo.domain,data.configInfo.logo)}"></a>
                     </div>
                     <!--form-->
                     <div class="form-wrap pull-right">

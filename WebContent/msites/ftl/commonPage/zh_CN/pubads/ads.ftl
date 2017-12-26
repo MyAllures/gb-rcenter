@@ -107,23 +107,3 @@
   <div class="pagination"></div>
   <div class="btn-close"></div>
 </div>
-    <script src="../../ftl/commonPage/js/jquery/jquery-1.11.3.min.js"></script>
-    <script src="../../ftl/commonPage/js/idangerous.swiper.min.js"></script>
-    <script>
-    $(function() {
-		var mySwiper = new Swiper('.swiper-container.pubads-slide',{
-			autoplay : 3500,//可选选项，自动滑动
-			loop : true,//可选选项，开启循环
-			pagination : '.pagination',
-			paginationClickable :true,
-			autoplayDisableOnInteraction : false
-		});		
-		if(!localStorage.getItem("pubads-close")){
-			$(".pubads-slide").show();
-		}
-		$(".pubads-slide .btn-close").on('click',function(){
-			$(this).parents(".pubads-slide").hide();
-			localStorage.setItem("pubads-close", true);
-		});
-    });
-    </script>

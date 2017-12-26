@@ -235,7 +235,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
             if (!this.validateForm(e)) {
                 return false;
             }
-            return this.changeGameStatus(e,opt);
+            return  window.top.topPage.doAjax(e, opt);
         },
         /**
          * 初始化 ueditor

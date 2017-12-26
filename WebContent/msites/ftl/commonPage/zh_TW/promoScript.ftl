@@ -122,7 +122,7 @@
     function changeApplyStatus() {
         var backwaterObj = $("._vr_promo_join").parents("._vr_promo_check[data-code^='back_water'][data-type='processing']");
         backwaterObj.each(function (i, obj) {
-            $(obj).find("._vr_promo_join").text("參與中"");
+            $(obj).find("._vr_promo_join").text("參與中");
         });
         $.ajax({
             url: "/ntl/activity/getPlayerActivityIds.html",
@@ -215,7 +215,7 @@
                 return false;
 
             } else {
-                if (isRefresh) {
+                if (isRefresh&&code!='money') {
                     applyActivities(aplyObj, true);
                 } else {
                     if(code=='money'){

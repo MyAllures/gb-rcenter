@@ -9,6 +9,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
             this._super(this.formSelector);
             this.doFormData();
             this.queryCount();
+            this.doStatistics();
         },
 
         onPageLoad: function () {
@@ -29,13 +30,14 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
         /**
          * 请求数据
          */
-        doFormData: function() {
+        doFormData: function(formData) {
             var _this = this;
+            var data =(formData)?formData:$(_this.formSelector).serialize();
             window.top.topPage.ajax({
                 //loading: true,
                 url: $(_this.formSelector).attr("action"),
                 type:'POST',
-                data: $(_this.formSelector).serialize(),
+                data: data,
                 dataType: "html",
                 headers: {
                     "Soul-Requested-With":"XMLHttpRequest"
@@ -43,6 +45,39 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                 success: function (data) {
                     _this.renderData(data);
                     _this.onPageLoad();
+                },
+                error: function (data, state, msg) {
+                    window.top.topPage.showErrorMessage(data.responseText);
+                }
+            });
+        },
+
+        /**
+         * 请求统计数据
+         */
+        doStatistics: function(formData) {
+            var _this = this;
+            var data =(formData)?formData:$(_this.formSelector).serialize();
+            window.top.topPage.ajax({
+                //loading: true,
+                url: root+'/fund/deposit/company/doStatistics.html',
+                type:'POST',
+                data: data,
+                dataType: "html",
+                headers: {
+                    "Soul-Requested-With":"XMLHttpRequest"
+                },
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    if(json.isTodaySales){
+                        $("#todayTotal",_this.formSelector).text(json.todayTotal);
+                        $("#totalSumTarget",_this.formSelector).parent().parent().hide();
+                        $("#todayTotal",_this.formSelector).parent().parent().show();
+                    }else{
+                        $("#totalSumTarget",_this.formSelector).text(json.totalSum);
+                        $("#todayTotal",_this.formSelector).parent().parent().hide();
+                        $("#totalSumTarget",_this.formSelector).parent().parent().show();
+                    }
                 },
                 error: function (data, state, msg) {
                     window.top.topPage.showErrorMessage(data.responseText);
@@ -60,15 +95,6 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
             if(json.result) {
                 var html = $("#VPlayerDepositListVo",_this.formSelector).render({data:json.result});
                 $result.html(html);
-            }
-            if(json.isTodaySales){
-                $("#todayTotal",_this.formSelector).text(json.todayTotal);
-                $("#totalSumTarget",_this.formSelector).parent().parent().hide();
-                $("#todayTotal",_this.formSelector).parent().parent().show();
-            }else{
-                $("#totalSumTarget",_this.formSelector).text(json.totalSum);
-                $("#todayTotal",_this.formSelector).parent().parent().hide();
-                $("#totalSumTarget",_this.formSelector).parent().parent().show();
             }
         },
 
@@ -98,6 +124,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                         }else{
                             _this.queryCount(true);
                         }
+                        _this.doStatistics();
                     },
                     error: function (data, state, msg) {
                         window.top.topPage.showErrorMessage(data.responseText);
@@ -114,15 +141,16 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
          * 重新计算分页
          * @param e
          */
-        queryCount: function (isCounter) {
+        queryCount: function (isCounter,formData) {
             var _this = this;
+            var data =(formData)?formData:$(_this.formSelector).serialize();
             var url = root + "/fund/deposit/company/count.html";
             if (isCounter) {
                 url = url + "?isCounter=" + isCounter;
             }
             window.top.topPage.ajax({
                 url: url,
-                data: $(this.formSelector).serialize(),
+                data: data,
                 type: 'POST',
                 success: function (data) {
                     $("#companyDepositpageDiv").html(data);

@@ -6,6 +6,12 @@ define(['common/MobileBasePage'], function (Mobile) {
         init : function () {
             this._super();
             mui('.mui-scroll-wrapper').scroll({
+                scrollY: true, //是否竖向滚动
+                scrollX:false, //是否横向滚动
+                startX: 0, //初始化时滚动至x
+                startY: 0, //初始化时滚动至y
+                indicators: true, //是否显示滚动条
+                //bounce: false, //是否启用回弹
                 deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
             });
         },
@@ -27,8 +33,8 @@ define(['common/MobileBasePage'], function (Mobile) {
                     setTimeout(_this.tableScroll($table),1000);
                 }
             });
-        },
-        tableScroll: function ($table) {
+        }
+        /*tableScroll: function ($table) {
             for (var i = 0; i < $table.size(); i++) {
                 if (!($($table.get(i)).parent().attr("class") == 'mui-scroll')) {
                     //给表格添加横向滚动
@@ -41,6 +47,6 @@ define(['common/MobileBasePage'], function (Mobile) {
                     $($table.get(i)).parent().parent().css("height", scrollHeight + 2 + "px");
                 }
             }
-        }
+        }*/
     })
 });
