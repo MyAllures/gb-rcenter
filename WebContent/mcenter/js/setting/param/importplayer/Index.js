@@ -9,11 +9,11 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
 
         bindEvent: function () {
             this._super();
-            this.initSwitch();
+            var _this = this;
+            _this.initSwitch();
         },
         onPageLoad: function () {
             this._super();
-            var _this = this;
             $("#li_top_7").addClass("active");
         },
         showImportList: function (e,opt) {
