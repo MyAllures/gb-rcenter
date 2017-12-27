@@ -1808,7 +1808,7 @@
             $(".login-dialog").removeClass('hide');
             setTimeout(function () {
                 $(".login-dialog").addClass('hide');
-            }, 60000);
+            }, 10000);
         </#if>
         }
         //注册公告
@@ -1821,7 +1821,7 @@
             $(".register-dialog").removeClass('hide');
             setTimeout(function () {
                 $(".register-dialog").addClass('hide');
-            }, 60000);
+            }, 10000);
         </#if>
         }
     }
