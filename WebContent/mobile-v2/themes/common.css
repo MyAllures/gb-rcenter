@@ -5151,24 +5151,24 @@ div.setting {
 /*存款页 选择支付方式：*/
 
 .modes-payment >.ct a i.pay{background: url(images/pay_bank_b.png) no-repeat ;background-size:25px; display: inline-block;width:26px;height: 20px;vertical-align: middle;}
-.modes-payment >.ct a i.pay.zx{background-position: 3px -3px;}
+.modes-payment >.ct a i.pay.unionpay{background-position: 3px -3px;}
 .modes-payment >.ct a i.pay.wx{background-position: 0px -26px;}
 .modes-payment >.ct a i.pay.zfb{background-position: 0px -48px;}
-.modes-payment >.ct a i.pay.zs{background-position: 3px -71px;}
-.modes-payment >.ct a i.pay.jh{background-position: 3px -93px;}
+.modes-payment >.ct a i.pay.cmb{background-position: 3px -71px;}
+.modes-payment >.ct a i.pay.ccb{background-position: 3px -93px;}
 .modes-payment >.ct a i.pay.ks{background-position: 3px -116px;}
-.modes-payment >.ct a i.pay.jd{background-position: 3px -138px;}
-.modes-payment >.ct a i.pay.bd{background-position: 3px -161px;}
+.modes-payment >.ct a i.pay.jdwallet{background-position: 3px -138px;}
+.modes-payment >.ct a i.pay.bdwallet{background-position: 3px -161px;}
 .modes-payment >.ct a i.pay.ymf{background-position: 2px -183px;}
-.modes-payment >.ct a i.pay.qq{background-position: 3px -206px;}
-.modes-payment >.ct a i.pay.gh{background-position: 3px -228px;}
-.modes-payment >.ct a i.pay.zh{background-position: 3px -250px;}
-.modes-payment >.ct a i.pay.nh{background-position: 3px -273px;}
-.modes-payment >.ct a i.pay.hx{background-position: 3px -295px;}
-.modes-payment >.ct a i.pay.yz{background-position: 3px -319px;}
-.modes-payment >.ct a i.pay.pf{background-position: 0px -340px;}
-.modes-payment >.ct a i.pay.btb{background-position: 3px -364px;}
-.modes-payment >.ct a i.pay.yl{background-position: 3px -386px;}
+.modes-payment >.ct a i.pay.qqwallet{background-position: 3px -206px;}
+.modes-payment >.ct a i.pay.icbc{background-position: 3px -228px;}
+.modes-payment >.ct a i.pay.boc{background-position: 3px -250px;}
+.modes-payment >.ct a i.pay.abc{background-position: 3px -273px;}
+.modes-payment >.ct a i.pay.hxbank{background-position: 3px -295px;}
+.modes-payment >.ct a i.pay.psbc{background-position: 3px -319px;}
+.modes-payment >.ct a i.pay.spdb{background-position: 0px -340px;}
+.modes-payment >.ct a i.pay.bitcoin{background-position: 3px -364px;}
+.modes-payment >.ct a i.pay.qrcodepay{background-position: 3px -386px;}
 
 .modes-payment >.ct a:before{ content: '';   width: 16px;   height: 16px;    background: url(../images/ex-check.png);
     background-size: cover;    position: absolute;    top: 0;    right: 0;    display: none;}
