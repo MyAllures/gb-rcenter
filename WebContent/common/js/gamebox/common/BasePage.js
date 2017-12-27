@@ -566,13 +566,13 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
         bindButtonEvents: function () {
             window.top.topPage.bindButtonEvents(this, document);
         },
-        selectContainer: '<div selectdiv="{name}" value="{selected}" class="{class}" initprompt="{initprompt}" callback="{callback}">' +
+        selectContainer: '<div selectdiv="{name}" value="{selected}" style="{style}" class="{class}" initprompt="{initprompt}" callback="{callback}">' +
         '<input type="hidden" name="{name}" value="{value}" id="{id}">' +
-        '<button type="button" class="{app}" data-toggle="dropdown" style="overflow: hidden;padding-right: 10px; max-width: 536px;" aria-expanded="false">' +
+        '<button type="button" class="{app}" data-toggle="dropdown" style="overflow: hidden;padding-right: 10px; max-width: 536px;{btnStyle}" aria-expanded="false">' +
         '<span prompt="prompt" style="display:inline-block;min-width: 60px;">{initprompt}</span> ' +
         '<span class="caret"></span>' +
         '</button>' +
-        '<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">{items}</ul>' +
+        '<ul class="dropdown-menu" style="{ulStyle}" role="menu" aria-labelledby="dropdownMenu1">{items}</ul>' +
         '</div>',
         selectOption: '<li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" {data} key="{value}" style="white-space: normal;">{text}</a></li>',
         _initSelect: function ($el, change) {
@@ -595,7 +595,10 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                     .replace('{name}', $el.attr('name') || "")
                     .replace('{name}', $el.attr('name') || "")
                     .replace('{id}', $el.attr('id') || "")
-                    .replace('{app}', app);
+                    .replace('{app}', app)
+                    .replace('{style}' ,$el.attr('style'))
+                    .replace('{btnStyle}',$el.attr('btnStyle'))
+                    .replace('{ulStyle}',$el.attr('ulStyle'));
                 $("option", $el).each(function (index, opt) {
                     var data = "";
                     for (var i = 0; i < opt.attributes.length; i++) {
