@@ -1814,8 +1814,8 @@
         $(".register-close").on("click",function (e) {
             $(".register-dialog").addClass('hide');
         })
-        if(sessionStorage.is_login=="true" && sessionStorage.getItem("registerDialog") != "true"){
-            sessionStorage.setItem("registerDialog","true");
+        if(sessionStorage.is_login=="true" && sessionStorage.getItem("registerDialog") == "true"){
+            sessionStorage.setItem("registerDialog","false");
         <#if data.registerAnnouncement?has_content>
             $(".register-dialog").removeClass('hide');
             setTimeout(function () {

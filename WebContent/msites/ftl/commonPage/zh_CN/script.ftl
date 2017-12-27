@@ -1819,25 +1819,25 @@
             $(".login-dialog").addClass('hide');
         })
         if(sessionStorage.is_login=="true"){
-            <#if data.loginAnnouncement?has_content>
-                $(".login-dialog").removeClass('hide');
-                setTimeout(function () {
-                    $(".login-dialog").addClass('hide');
-                }, 10000);
-            </#if>
+        <#if data.loginAnnouncement?has_content>
+            $(".login-dialog").removeClass('hide');
+            setTimeout(function () {
+                $(".login-dialog").addClass('hide');
+            }, 10000);
+        </#if>
         }
         //注册公告
         $(".register-close").on("click",function (e) {
             $(".register-dialog").addClass('hide');
         })
-        if(sessionStorage.is_login=="true" && sessionStorage.getItem("registerDialog") != "true"){
-            sessionStorage.setItem("registerDialog","true");
-            <#if data.registerAnnouncement?has_content>
-                $(".register-dialog").removeClass('hide');
-                setTimeout(function () {
-                    $(".register-dialog").addClass('hide');
-                }, 10000);
-            </#if>
+        if(sessionStorage.is_login=="true" && sessionStorage.getItem("registerDialog") == "true"){
+            sessionStorage.setItem("registerDialog","false");
+        <#if data.registerAnnouncement?has_content>
+            $(".register-dialog").removeClass('hide');
+            setTimeout(function () {
+                $(".register-dialog").addClass('hide');
+            }, 10000);
+        </#if>
         }
     }
 

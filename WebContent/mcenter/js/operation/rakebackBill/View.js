@@ -116,28 +116,35 @@ define(['common/BaseListPage'], function (BaseListPage) {
         },
         //checkbox有勾选则不显示结算所有玩家按钮
         bindBackwaterSuccessClick: function () {
+            var _this = this;
             //绑定click方法
             $("#ichecks_0").click(function () {
                 var checked =$('#ichecks_0').is(':checked');
-                if(checked){
-                    $("#div_batchSettleRakeBack").css("display","").removeClass('show').addClass('hide');
-                }else{
-                    $("#div_batchSettleRakeBack").css("display","").removeClass('hide').addClass('show');
-                }
+                _this.hideBackwaterSuccessBtn(checked);
             });
 
             $("input[id^='ichecks_item']").on("click", function (i) {
+
                 // alert(i);
                 var existChecked = false;
+
                 $(".i-checks").each(function (node,obj) {
                     existChecked = ($(obj).is(':checked')) || existChecked;
                 });
-                if(existChecked){
-                    $("#div_batchSettleRakeBack").css("display","").removeClass('show').addClass('hide');
-                }else{
-                    $("#div_batchSettleRakeBack").css("display","").removeClass('hide').addClass('show');
-                }
+                _this.hideBackwaterSuccessBtn(existChecked);
             });
+            $(".select-records").find('a').on("click", function (i) {
+                // $("#div_batchSettleRakeBack").css("display","").removeClass('hide').addClass('show');
+                _this.hideBackwaterSuccessBtn(false);
+            });
+        },
+        hideBackwaterSuccessBtn: function (checked) {
+            //绑定click方法
+            if(checked){
+                $("#div_batchSettleRakeBack").css("display","").removeClass('show').addClass('hide');
+            }else{
+                $("#div_batchSettleRakeBack").css("display","").removeClass('hide').addClass('show');
+            }
         }
     });
 });
