@@ -2637,3 +2637,6 @@ div.scroll{
     margin-left: 0px;
     margin-right: 0px;
 }
+textarea.resize-vertical{
+    resize: vertical;
+}
