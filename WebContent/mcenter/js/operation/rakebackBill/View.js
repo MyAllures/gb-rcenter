@@ -21,28 +21,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
         onPageLoad: function (form) {
             this._super(form);
 
-            //绑定click方法
-            $("#ichecks_0").click(function () {
-                var checked =$('#ichecks_0').is(':checked');
-                if(checked){
-                    $("#div_batchSettleRakeBack").css("display","").removeClass('show').addClass('hide');
-                }else{
-                    $("#div_batchSettleRakeBack").css("display","").removeClass('hide').addClass('show');
-                }
-            });
-
-            $("input[id^='ichecks_item']").on("click", function (i) {
-                // alert(i);
-                var existChecked = false;
-                $(".i-checks").each(function (node,obj) {
-                    existChecked = ($(obj).is(':checked')) || existChecked;
-                });
-                if(existChecked){
-                    $("#div_batchSettleRakeBack").css("display","").removeClass('show').addClass('hide');
-                }else{
-                    $("#div_batchSettleRakeBack").css("display","").removeClass('hide').addClass('show');
-                }
-            });
+            //checkbox有勾选则不显示结算所有玩家按钮
+            this.bindBackwaterSuccessClick();
 
         },
         /**
@@ -131,6 +111,31 @@ define(['common/BaseListPage'], function (BaseListPage) {
                         page.showPopover(e, opt, "danger", window.top.message.operation_auto['操作失败'], true);
                     }
                     e.returnValue = true;
+                }
+            });
+        },
+        //checkbox有勾选则不显示结算所有玩家按钮
+        bindBackwaterSuccessClick: function () {
+            //绑定click方法
+            $("#ichecks_0").click(function () {
+                var checked =$('#ichecks_0').is(':checked');
+                if(checked){
+                    $("#div_batchSettleRakeBack").css("display","").removeClass('show').addClass('hide');
+                }else{
+                    $("#div_batchSettleRakeBack").css("display","").removeClass('hide').addClass('show');
+                }
+            });
+
+            $("input[id^='ichecks_item']").on("click", function (i) {
+                // alert(i);
+                var existChecked = false;
+                $(".i-checks").each(function (node,obj) {
+                    existChecked = ($(obj).is(':checked')) || existChecked;
+                });
+                if(existChecked){
+                    $("#div_batchSettleRakeBack").css("display","").removeClass('show').addClass('hide');
+                }else{
+                    $("#div_batchSettleRakeBack").css("display","").removeClass('hide').addClass('show');
                 }
             });
         }
