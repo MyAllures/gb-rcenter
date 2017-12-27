@@ -34,6 +34,8 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
                     onSwitchChange: function (e, state) {
                         var _target = e.currentTarget;
                         var id = $(_target).attr("sysParamId");
+                        var module = $(_target).attr("module");
+                        var paramType = $(_target).attr("paramType");
                         var siteId = $("#siteId").val();
                         var paramCode=$(_target).attr("paramCode");
                         var msg=state?"确认开启":"确认关闭吗？";
@@ -44,7 +46,7 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
                                 window.top.topPage.ajax({
                                     url: root + '/site/detail/updateSysParamActive.html',
                                     dataType: "json",
-                                    data: {"result.active": state, "result.siteId": siteId, "result.id": id,"result.paramCode":paramCode},
+                                    data: {"result.active": state, "result.siteId": siteId, "result.id": id,"result.paramCode":paramCode,"result.module":module,"result.paramType":paramType},
                                     success: function (data) {
                                         if (data.state) {
                                             page.showPopover(e, {
