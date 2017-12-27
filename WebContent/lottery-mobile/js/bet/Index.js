@@ -247,10 +247,13 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                             }
 
                             for (var i = 0; i < data.length; i++) {
-                                //计算投注记录额
-                                currentAmount = currentAmount + data[i].betAmount;
-                                if (data[i].payout)
-                                    payout = payout + data[i].payout;
+                                //计算投注记录额不计算已撤单已撤销
+                                if(data[i].status=="1" || data[i].status=="2"){
+                                    currentAmount = currentAmount + data[i].betAmount;
+                                    if (data[i].payout)
+                                        payout = payout + data[i].payout;
+                                }
+
                                 //时间格式转换
                                 var betTime = new Date(data[i].betTime);
                                 var betDay = betTime.getFullYear() + "-" + _this.getTen(betTime.getMonth() + 1) + "-" + _this.getTen(betTime.getDate());
