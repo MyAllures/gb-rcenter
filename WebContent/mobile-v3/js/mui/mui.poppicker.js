@@ -154,7 +154,7 @@
 				};
 				self.disposed = true;
 			}, 300);
-		}
+		},
 	});
 
 })(mui, document);

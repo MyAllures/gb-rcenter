@@ -310,12 +310,14 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
         otherBank: function (bankname, name) {
             if (bankname == 'other_bank') {
                 $("div[selectdiv='result.bankCode1']").parent().addClass("input-group-btn");
+                $("#button").css("width","285px");
                 if (!$("input[name='customBankName']").val()) {
                     $("input[name='customBankName']").val(name);
                 }
                 $("input[name='customBankName']").show();
             } else {
                 $("div[selectdiv='result.bankCode1']").parent().removeClass("input-group-btn");
+                $("#button").css("width","");
                 $("input[name='customBankName']").val("");
                 $("input[name='customBankName']").hide();
             }
