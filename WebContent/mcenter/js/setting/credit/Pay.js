@@ -98,6 +98,7 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
             $(e.currentTarget).removeClass("btn-info-hide");
             $(e.currentTarget).addClass("btn-info");
             $(e.currentTarget).unlock();
+            $("input[name='result.payAmount']").blur();
         },
         /**
          * 充值额度
