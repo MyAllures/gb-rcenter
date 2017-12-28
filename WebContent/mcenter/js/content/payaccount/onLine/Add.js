@@ -20,6 +20,14 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
                     e.currentTarget = $("a[key=" + key + "]");
                     this.bankChannel(e);
                 }
+                key = $("[name='payType']").val();
+                if (key != null && key != "") {
+                    var el = {};
+                    el.key = key;
+                    el.page = this;
+                    el.currentTarget = $("a[key=" + key + "]");
+                    this.bankChannel(el);
+                }
 
 
             }
@@ -44,6 +52,13 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
                 var _e = {'key': $(item.target).val()};
                 _this.bankChannel(_e);
             });
+            $("[name='payType']", this.formSelector).chosen({
+                no_results_text: window.top.message.fund_auto['没有找到']
+            });
+            $("[name='payType']", this.formSelector).chosen().change(function (item) {
+                var _e = {'key': $(item.target).val()};
+                _this.bankChannel(_e);
+            });
         },
         /**
          * 当前页面所有事件初始化函数
@@ -63,11 +78,10 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
                     $("input[name='rank']").prop('checked', false);
                 }
             });
-
             /**
              * 货币
              */
-            $(this.formSelector).on("validate", "#currencyStr", function (e, message) {
+           $(this.formSelector).on("validate", "#currencyStr", function (e, message) {
                 var currencyNum = $("input[name='currency']:checked").length;
                 if (!currencyNum > 0) {
                     $(".currency").formtip(message);
@@ -96,7 +110,30 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
                     e.result = false;
                 }
             });
-
+            /**
+             * 异步加载存款渠道
+             */
+            $("#payType").change(function (e, option) {
+                var payType = $("#payType").find("option:selected").val();
+                window.top.topPage.ajax({
+                    url: root + '/payAccount/loadPayType.html',
+                    dataType: "json",
+                    data: {"payType": payType},
+                    success: function (data) {
+                        if (data != null) {
+                            var $select = $("#bankCode");
+                            var html = '<option value="">'+window.top.message.content_auto["请选择存款渠道"]+'</option>';
+                            var bankList = data.bankList;
+                            for (var index = 0; index < bankList.length; index++) {
+                                var bank = bankList[index];
+                                html = html + '<option value="' + bank.bankName + '" ${command.result.bankCode==' + bank.bankName + '?"selected":""}>' + bank.interlinguaBankName+ '</option>';
+                            }
+                            $select.html(html);
+                            $select.trigger("chosen:updated"); // bind  .chosen
+                        }
+                    }
+                });
+            });
         },
         savePlayer: function (e, option) {
             var that = this;
@@ -164,7 +201,6 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
             if (!this.validateForm(e)) {
                 return;
             }
-
             return true;
         }
         ,
@@ -186,7 +222,7 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
                 dataType: "json",
                 data: {"channelCode": channel_code},
                 success: function (data) {
-                    for (var index = data.payApiParams.length - 1; index >= 0; index--) {
+                    for (var index = data.payApiParams.length - 1;index >= 0;index--){
                         var name = "channelJson";
                         var domainClass = '';
                         var hide = '';

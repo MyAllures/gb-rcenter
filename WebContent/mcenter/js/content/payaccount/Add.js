@@ -55,7 +55,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                 var sta = $(this).is(':checked');
                 $("input[name='result.fullRank']").val(sta);
                 if (sta) {
-                    //$(".allRank").addClass('hide');
+                    $(".allRank").addClass('hide');
                     //$("input[name='rank']").attr('checked', true);
                     $("input[name='rank']").each(function (idx, rank) {
                         rank.checked = true;
@@ -310,12 +310,14 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
         otherBank: function (bankname, name) {
             if (bankname == 'other_bank') {
                 $("div[selectdiv='result.bankCode1']").parent().addClass("input-group-btn");
+                $("#button").css("width","285px");
                 if (!$("input[name='customBankName']").val()) {
                     $("input[name='customBankName']").val(name);
                 }
                 $("input[name='customBankName']").show();
             } else {
                 $("div[selectdiv='result.bankCode1']").parent().removeClass("input-group-btn");
+                $("#button").css("width","");
                 $("input[name='customBankName']").val("");
                 $("input[name='customBankName']").hide();
             }

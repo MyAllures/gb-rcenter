@@ -10,6 +10,7 @@ define(['common/BaseViewPage'], function(BaseViewPage) {
          */
         onPageLoad: function () {
             this._super();
+            this.queryRemainCount();
         },
 
         /**
@@ -26,6 +27,31 @@ define(['common/BaseViewPage'], function(BaseViewPage) {
                 $(".activityTag").removeClass("btn-outline");
                 $(".activityTag").addClass("btn-outline");
                 $(this).removeClass("btn-outline");
+            });
+        },
+        queryRemainCount:function () {
+            //$("span#award_remain_count_").text();
+            var activityMessageId = $("#activityMessageId").val();
+            if(!activityMessageId){
+                return;
+            }
+            window.top.topPage.ajax({
+                url: root + "/activityMoneyAwardsRules/queryAwardRemainCount.html?search.activityMessageId="+activityMessageId,
+                type: "POST",
+                dataType: "JSON",
+                success: function (dataList) {
+                    if(dataList && dataList.length>0){
+                        var totalRemain = parseInt(0);
+                        for(var i=0;i<dataList.length;i++){
+                            var data = dataList[i];
+                            if(data.singleRemainCount!=null&&data.singleRemainCount!=""){
+                                $("span#award_remain_count_"+data.id).text(data.singleRemainCount);
+                                totalRemain += data.singleRemainCount;
+                            }
+                        }
+                        $("span#allRemainCount").text(totalRemain);
+                    }
+                }
             });
         }
     })

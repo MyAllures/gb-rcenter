@@ -140,7 +140,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                     return;
                 }
                 var dayOfMonth = myDate.getDate();
-                myDate.setDate(dayOfMonth - 41);
+                myDate.setDate(dayOfMonth - 2001);
                 if (new Date(st).getTime() < myDate.getTime()) {
                     _this.toast("请重新选择时间！");
                     return;
@@ -168,7 +168,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("body").on("tap", "#startTime", function () {
                 var myDate = new Date();
                 var dayOfMonth = myDate.getDate();
-                myDate.setDate(dayOfMonth - 40);
+                myDate.setDate(dayOfMonth-2000 );
                 var dtpicker = new mui.DtPicker({
                     "type": "date",
                     "value": $("#startTime").val(),
@@ -188,7 +188,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("body").on("tap", "#endTime", function () {
                 var myDate = new Date();
                 var dayOfMonth = myDate.getDate();
-                myDate.setDate(dayOfMonth - 40);
+                myDate.setDate(dayOfMonth - 2000);
                 var dtpicker = new mui.DtPicker({
                     "type": "date",
                     "value": $("#endTime").val(),
@@ -247,10 +247,13 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                             }
 
                             for (var i = 0; i < data.length; i++) {
-                                //计算投注记录额
-                                currentAmount = currentAmount + data[i].betAmount;
-                                if (data[i].payout)
-                                    payout = payout + data[i].payout;
+                                //计算投注记录额不计算已撤单已撤销
+                                if(data[i].status=="1" || data[i].status=="2"){
+                                    currentAmount = currentAmount + data[i].betAmount;
+                                    if (data[i].payout)
+                                        payout = payout + data[i].payout;
+                                }
+
                                 //时间格式转换
                                 var betTime = new Date(data[i].betTime);
                                 var betDay = betTime.getFullYear() + "-" + _this.getTen(betTime.getMonth() + 1) + "-" + _this.getTen(betTime.getDate());

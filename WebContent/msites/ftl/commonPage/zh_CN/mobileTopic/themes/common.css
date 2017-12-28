@@ -147,7 +147,7 @@ ul,ol{margin:0;}
 .container{position:relative;width:1024px;height:100%;margin-left:auto;margin-right:auto;}
 .top{position:fixed;top:0;left:0;width: 100%;height:140px;z-index:70;}
 /* header & menu */
-.menu{height:102px;position:relative;top:-53px;float:right;margin-left:10px;}
+.menu{height:102px;position:relative;top:12px;float:right;margin-left:10px;}
 .menu>li{width:84px;margin-right:12px;font-size:15px;}
 .menu>li>a{display:block;text-align:center;padding-top:20px;height:102px;transition:all 300ms;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX///+nxBvIAAAAAXRSTlMavYQhHAAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=);}
 .menu>li>a:hover,.menu>li.active>a{}
@@ -156,8 +156,7 @@ ul,ol{margin:0;}
 .menu>li>a:hover>small:after,.menu>li.active>a>small:after{background-repeat:no-repeat;}
 
 .header{position:relative;z-index:100;height:80px;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlNNSIvlSwAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=);}
-.header .logo{padding-top:15px;}
-.header .logo img{height:50px;min-height:100%;}
+.header .logo{height: 80px;position: absolute;	line-height: 80px;}
 /* navbar */
 .navbar{position:relative;z-index:90;height:60px;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMz/za5cAAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=);}
 .navbar>ul{height:58px;text-align:right;}

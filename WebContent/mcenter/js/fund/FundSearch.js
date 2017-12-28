@@ -91,10 +91,11 @@ define(['common/BasePage'], function (BasePage) {
                 $(".show-demand-a").toggle();
                 $(".advanced-hide").toggle();
                 $(".search_1").toggleClass("col-sm-12")
-                $(".search_1").toggleClass("col-sm-3")
+                $(".search_1").toggleClass("col-sm-6")
                 $(".search_2").toggleClass("col-sm-12")
-                $(".search_2").toggleClass("col-sm-9")
+                $(".search_2").toggleClass("col-sm-6")
                 $(".search_2").toggleClass("template-menu")
+                $(".createTime").toggleClass("col-md-4")
                 $(".checkTime").toggleClass("col-md-7")
                 $(".checkTime").toggleClass("col-md-4")
             });

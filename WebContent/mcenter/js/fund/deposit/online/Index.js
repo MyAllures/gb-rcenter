@@ -1,14 +1,83 @@
 /**
  * Created by bruce on 16-7-7.
  */
-define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPage) {
+define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function (BaseListPage,jsrender) {
 
     return BaseListPage.extend({
 
         init: function () {
             this.formSelector = "form[name='onlineDepositForm']";
             this._super(this.formSelector);
+            this.doFormData();
             this.queryCount();
+            this.doStatistics();
+        },
+
+        /**
+         * 请求数据
+         */
+        doFormData: function() {
+            var _this = this;
+            window.top.topPage.ajax({
+                //loading: true,
+                url: root + "/fund/deposit/online/doData.html",
+                type:'POST',
+                data: $(_this.formSelector).serialize(),
+                dataType: "html",
+                headers: {
+                    "Soul-Requested-With":"XMLHttpRequest"
+                },
+                success: function (data) {
+                    _this.renderData(data);
+                    _this.onPageLoad();
+                },
+                error: function (data, state, msg) {
+                    window.top.topPage.showErrorMessage(data.responseText);
+                }
+            });
+        },
+
+        /**
+         * 渲染表单数据
+         */
+        renderData:function (data) {
+            var _this=this;
+            var $result = $("#editable tbody", _this.formSelector);
+            var json = JSON.parse(data);
+            var html = $("#VPlayerOnlineDepositListVo",_this.formSelector).render({data:json.result});
+            $result.html(html);
+        },
+
+        /**
+         * 请求统计数据
+         */
+        doStatistics: function() {
+            var _this = this;
+            window.top.topPage.ajax({
+                //loading: true,
+                url: root+'/fund/deposit/online/doStatistics.html',
+                type:'POST',
+                data: $(_this.formSelector).serialize(),
+                dataType: "html",
+                headers: {
+                    "Soul-Requested-With":"XMLHttpRequest"
+                },
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    if(json.isTodaySales){
+                        $("#todayTotal",_this.formSelector).text(json.todayTotal);
+                        $("#totalSumTarget",_this.formSelector).parent().parent().hide();
+                        $("#todayTotal",_this.formSelector).parent().parent().show();
+                    }else{
+                        $("#totalSumTarget",_this.formSelector).text(json.totalSum);
+                        $("#todayTotal",_this.formSelector).parent().parent().hide();
+                        $("#totalSumTarget",_this.formSelector).parent().parent().show();
+                    }
+                },
+                error: function (data, state, msg) {
+                    window.top.topPage.showErrorMessage(data.responseText);
+                }
+            });
         },
 
         /**
@@ -22,15 +91,16 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
             if (!$form.valid || $form.valid()) {
                 window.top.topPage.ajax({
                     loading: true,
-                    url: window.top.topPage.getCurrentFormAction(event),
+                    url: root + "/fund/deposit/online/doData.html",
                     headers: {
                         "Soul-Requested-With": "XMLHttpRequest"
                     },
                     type: "post",
                     data: this.getCurrentFormData(event),
                     success: function (data) {
-                        var $result = $(".search-list-container", $form);
-                        $result.html(data);
+                        // var $result = $(".search-list-container", $form);
+                        // $result.html(data);
+                        _this.renderData(data);
                         event.page.onPageLoad();
                         $(event.currentTarget).unlock();
                         if(event.goType==undefined || event.goType==-2){
@@ -38,10 +108,12 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
                         }else{
                             _this.queryCount(true);
                         }
+                        _this.doStatistics();
                     },
                     error: function (data, state, msg) {
                         window.top.topPage.showErrorMessage(data.responseText);
                         $(event.currentTarget).unlock();
+                        _this.doStatistics();
                     }
                 });
 
@@ -88,7 +160,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
                 e.currentTarget = e.target;
                 page.showPopover(e, {}, 'success', window.top.message.fund_auto['复制成功'], true);
             });
-            if($("#todaySales").val()=='true'){
+            /*if($("#todaySales").val()=='true'){
                 $("#todayTotal").text($("#todayTotalSource").text());
                 $("#totalSumTarget").parent().parent().hide();
                 $("#todayTotal").parent().parent().show();
@@ -96,7 +168,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage'], function (BaseListPa
                 $("#totalSumTarget").text($("#totalSumSource").text());
                 $("#todayTotal").parent().parent().hide();
                 $("#totalSumTarget").parent().parent().show();
-            }
+            }*/
 
         },
         /** 声音开关 */

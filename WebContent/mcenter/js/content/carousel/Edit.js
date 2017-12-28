@@ -12,7 +12,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
             window.top.topPage.initFileWithPreview($("#uploadImageInput")[0], $("#picUrl")[0],{
                 maxFileSize:1024,
                 allowedFileExtensions:[".png",".jpg",".gif",".jpeg"]});
-            var type = $("[name='result.type']").val();
+            var type = $("[name='search.type']").val();
             if(type=='carousel_type_player_index'){
                 var apiId = $("[name='apiId']").val();
                 if(apiId=='link'){

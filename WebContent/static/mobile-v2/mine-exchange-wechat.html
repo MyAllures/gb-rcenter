@@ -9,32 +9,35 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="../../mobile-v2/themes/mui.css" />
     <link rel="stylesheet" href="../../mobile-v2/themes/style.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v2/themes/default/style.css" />
     <link rel="stylesheet" href="../../mobile-v2/themes/mui-icon-extra.css" />
 </head>
 
-<body class="gb-theme mine-page">
+<body class="gb-theme mine-page ex-wechat">
     <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
         <!-- 主页面容器 -->
         <div class="mui-inner-wrap">
-            <header class="mui-bar mui-bar-nav">
+            <header class="mui-bar mui-bar-nav blue">
                 <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
                 <h1 class="mui-title">转帐到微信</h1>
             </header>
             <div class="mui-content mui-scroll-wrapper">
                 <div class="mui-scroll">
-                    <div class="mui-row">
-                        <div class="gb-panel" style="border-bottom-color: #fff;">
-                            <div class="gb-headtabs">
-                                <div id="segmentedControl" class="mui-segmented-control">
-                                    <a href="#wechat1" class="mui-control-item mui-active">银行卡信息</a>
-                                    <a href="#wechat2" class="mui-control-item">微信二维码</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="wechat1" class="mui-control-content mui-active">
+                    <!--<div class="mui-row">-->
+                        <!--<div class="gb-panel" style="border-bottom-color: #fff;">-->
+                            <!--<div class="gb-headtabs">-->
+                                <!--<div id="segmentedControl" class="mui-segmented-control">-->
+                                    <!--<a href="#wechat1" class="mui-control-item mui-active">银行卡信息</a>-->
+                                    <!--<a href="#wechat2" class="mui-control-item">微信二维码</a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div id="wechat1" class="mui-control-content mui-active ">
                         <div class="mui-row">
                             <div class="gb-panel" style="border-top-color: #fff;">
+                                <p  class="tit">帐号信息</p>
                                 <div class="gb-bankcard">
                                     <div class="hd">
                                         <p>
@@ -42,80 +45,154 @@
                                             <i class="card1"></i>
                                         </p>
                                     </div>
-                                    <div class="ct">
-                                        <p><span class="text-green">621 483 592 128 3333</span></p>
+                                    <div class="ct"  style="padding-left:20px;">
+                                        <p><span class="text-green" style="color:#f49e2e;line-height:40px;">Angel388</span><a href="#" class="copy" style="margin-top:10px;">复制</a></p>
                                         <div class="ct">
-                                            <p><span>银行开户名:</span>
-                                                宋小宝
-                                            </p>
-                                            <p><span>开户行:</span>
-                                                招商银行
-                                            </p>
-                                            <p><span>金额:</span>
-                                                300
+                                            <p><span style="float:left;">姓名：</span>
+                                                宋小宝 <a href="#" class="copy">复制</a>
                                             </p>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="wechat-code">
+                                    <img src="" alt="">
+                                    <p class="tit">保存到手机</p>
                                 </div>
                             </div>
                         </div>
                         <div class="mui-row">
                             <div class="mui-input-group mine-form m-t-sm">
-                                <div class="mui-input-row"><label for="">微信账号</label>
+                                <div class="mui-input-row"><label for="">您的微信昵称</label>
                                     <div class="ct">
                                         <input type="text" placeholder="昵称">
                                     </div>
                                 </div>
                                 <div class="mui-input-row">
                                     <label for="">订单号后5位
-                                        <span class="small">填写“订单号”非商户订单号</span>
+                                        <span class="small">非必填</span>
                                     </label>
                                     <div class="ct">
-                                        <input type="text" placeholder="非必填">
+                                        <input type="text" placeholder="请填写“订单号”非商户订单号">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mui-row">
-                            <div class="gb-form-foot">
-                                <a href="" class="mui-btn mui-btn-primary submit">提交</a>
-                            </div>
-                        </div>
+                        <ul class="info">
+                            <li>* 请先搜索微信号或扫描二维码添加好友。</li>
+                            <li>* 为了系统快速完成转账，请输入订单号后5位，以加快系统入款速度。</li>
+                            <li>* 支付成功后，请等待几秒钟，提示[支付成功] 按确认</li>
+                        </ul>
+
                     </div>
-                    <div id="wechat2" class="mui-control-content">
-                        <div class="mui-row">
-                            <div class="gb-panel" style="border-top-color: #fff;">
-                                <div class="pays-wxcode">
-                                    <div class="ct">
-                                        <p>存款金额：<span class="text-green">￥100.00</span></p>
-                                        <p class="m-b-0"><img src="../../mobile-v2/images/qr.jpg" alt=""></p>
-                                        <p>
-                                            <a href="" class="btn mui-btn mui-btn-primary">保存到手机</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mui-row">
-                            <div class="pays-guides">
-                                <div class="ct"><label for="">安<br>卓</label>
-                                    <img src="../../mobile-v2/images/intro1.png" alt="">
-                                </div>
-                                <div class="ct"><label for="">苹<br>果</label>
-                                    <img src="../../mobile-v2/images/intro2.png" alt="">
-                                </div>
-                                <p><a href="" class="btn"></a></p>
-                            </div>
-                        </div>
-                        <div class="mui-row">
-                            <div class="gb-form-foot" style="padding-top: 0;">
-                                <p><a href="" class="btn mui-btn mui-btn-primary submit">已完成存款，提交申请</a></p>
-                            </div>
-                        </div>
+
+                    <!--<div id="wechat2" class="mui-control-content">-->
+                        <!--<div class="mui-row">-->
+                            <!--<div class="gb-panel" style="border-top-color: #fff;">-->
+                                <!--<div class="pays-wxcode">-->
+                                    <!--<div class="ct">-->
+                                        <!--<p>存款金额：<span class="text-green">￥100.00</span></p>-->
+                                        <!--<p class="m-b-0"><img src="../../mobile-v2/images/qr.jpg" alt=""></p>-->
+                                        <!--<p>-->
+                                            <!--<a href="" class="btn mui-btn mui-btn-primary">保存到手机</a>-->
+                                        <!--</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="mui-row">-->
+                            <!--<div class="pays-guides">-->
+                                <!--<div class="ct"><label for="">安<br>卓</label>-->
+                                    <!--<img src="../../mobile-v2/images/intro1.png" alt="">-->
+                                <!--</div>-->
+                                <!--<div class="ct"><label for="">苹<br>果</label>-->
+                                    <!--<img src="../../mobile-v2/images/intro2.png" alt="">-->
+                                <!--</div>-->
+                                <!--<p><a href="" class="btn"></a></p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="mui-row">-->
+                            <!--<div class="gb-form-foot" style="padding-top: 0;">-->
+                                <!--<p><a href="" class="btn mui-btn mui-btn-primary submit">已完成存款，提交申请</a></p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+
+
+                <div class="mui-row">
+                    <div class="gb-form-foot bank-pay-btn">
+                        <a href="" class="mui-btn mui-btn-primary submit">提交</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mui-off-canvas-backdrop"></div>
+
+            <!--优惠弹窗-->
+            <div class="masker" style="display:block;"></div>
+            <div class="gb-withdraw-box window-ok" style="display:block;">
+                <div class="cont">
+                    <div class="ok-box">
+                        <i class="ok-icon"></i>
+                        <span>提交成功！</span>
+                    </div>
+                    <div class="ct">
+                        <p>系统审核通过后<br>钱包余额将自动增加相应的余额
+                        </p>
+                    </div>
+                    <div class="ft">
+                        <a href="" class="btn mui-btn mui-btn-outlined">再存一次</a>
+                        <a href="" class="btn mui-btn mui-btn-outlined">返回首页</a>
                     </div>
                 </div>
             </div>
-            <div class="mui-off-canvas-backdrop"></div>
+            <div class="gb-withdraw-box pro-window succ-box"style="display:block">
+                <div  class="cont">
+                    <h3>消息</h3>
+                    <div class="cont-text">
+                        <p>存款金额：<span class="org">300元</span></p>
+                        <p>手续费：需支付<span class="org">300元</span> / 免手续费 / 返还<span class="org">300元</span></p>
+
+                    </div>
+                    <div class="text-pro">
+                        <p>优惠：</p>
+                        <ul>
+                            <li>
+                                <div class="text-warp">
+                                    <span>与优惠不参与优惠不参与优</span>
+                                    <input type="radio">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="text-warp">
+                                    <span>存100送10</span>
+                                    <input type="radio">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="text-warp">
+                                    <span>存100送10</span>
+                                    <input type="radio">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="text-warp">
+                                    <span>存100送10</span>
+                                    <input type="radio">
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="pro-btn" >
+                        <a class="next-btn">已存款，提交申请</a>
+                        <a class="agin-btn">重新填写金额</a>
+                    </div>
+                    <div class="close">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

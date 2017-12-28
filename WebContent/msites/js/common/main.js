@@ -23,7 +23,7 @@ curl = {
         }
     },
     paths : {
-        jquery : '/ftl/commonPage/js/jquery/jquery-1.11.3.min.js',
+        jquery : '/ftl/commonPage/js/jquery/jquery-1.11.3.min',
         bootstrap : 'bootstrap/bootstrap',
         "bootstrap-dialog" : "bootstrap-dialog/bootstrap-dialog",
         "jstree" : "jquery/plugins/jquery.jstree/jstree",
