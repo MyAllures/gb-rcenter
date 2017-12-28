@@ -345,8 +345,8 @@
                         if (option.search_match) {
                             if (searchText.length) {
                                 startpos = option.search_text.search(zregex);
-                                text = option.search_text.substr(0, startpos + searchText.length) + '</em>' + option.search_text.substr(startpos + searchText.length);
-                                option.search_text = text.substr(0, startpos) + '<em>' + text.substr(startpos);
+                                text = option.search_text.substr(0, startpos + searchText.length) + '</u>' + option.search_text.substr(startpos + searchText.length);
+                                option.search_text = text.substr(0, startpos) + '<u>' + text.substr(startpos);
                             }
                             if (results_group != null) {
                                 results_group.group_match = true;
