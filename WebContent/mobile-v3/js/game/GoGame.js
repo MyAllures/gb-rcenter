@@ -38,7 +38,7 @@ function readGame(){
     if (isAutoPay == 'true' || isAutoPay == true) {
         autoLoginAndTransfer();
     } else {
-        apiLogin(obj);
+        apiLogin();
     }
     if (apiId == 6 && os != 'android' && os != 'app_ios') {
         obj.newWindow = window.open("about:blank", '_blank');

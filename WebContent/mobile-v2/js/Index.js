@@ -62,6 +62,24 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
                 }
             })
             this.gotoDemo();
+            this.initDialog();
+            this.dialog();
+        },
+        /** 弹窗*/
+        initDialog:function(){
+            mui('#middlePopover').popover('toggle',document.getElementById("openPopover"));
+        },
+        dialog:function(){
+            var _this = this;
+            mui("#middlePopover").on("tap",".mui-btn.confirm-btn",function(){
+                var options= eval("(" + $(this).attr('data-rel') + ")");
+                var link = options.dataLink;
+                if(link){
+                    _this.gotoUrl(link);
+                }else{
+                    _this.initDialog();
+                }
+            });
         },
         /** 试玩 */
         gotoDemo: function () {
