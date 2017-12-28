@@ -542,3 +542,12 @@ a.btn-download {background-color: #e01a7b; border-color: #e01a7b;}
 .ball-pulse>div {background-color: rgba(224, 26, 123, 0.8) !important;}
 .game-loading .ball-white>div {background-color:rgba(224,26,123,0.8)!important;}
 .ball-pulse.api-div div {background-color: #eee!important;}
+
+/*自定义弹窗*/
+.notice-popover-wrap .mui-popup { width: 80%; max-width: 700px; }
+.notice-popover-wrap .mui-popup.mui-popup-in { width: 86%; z-index: 1000;}
+.notice-popover-wrap .mui-popup .mui-popup-title { background: #e01a7b;text-align: left; margin: -15px -15px 15px -15px; padding:0 10px; color: #fff; line-height: 60px;}
+.notice-popover-wrap .mui-popup .cont-text { text-align: left; padding: .25rem 0; font-size: .6rem; }
+.notice-popover-wrap .mui-popup .confirm-btn{ background: #e01a7b; color: #fff;}
+.notice-popover-wrap .mui-popover-arrow{display: none;}
+.notice-popover-wrap .mui-popup .mui-popup-title  .pop-close{padding: 0; font-size: 40px; color: #fff;}
