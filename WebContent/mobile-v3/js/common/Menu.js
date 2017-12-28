@@ -43,6 +43,7 @@ function lang(obj, options) {
 }
 
 function changeLanguage(obj,options){
+    mui(".mui-off-canvas-left").offCanvas('close');
     var language = options.lang;
     if(language != null && language.length > 0){
         var index = language.indexOf('-');
@@ -71,6 +72,8 @@ $('.mui-off-canvas-wrap').on('hidden', function (event) {
  * 跳转到电脑端
  * */
 function goPC() {
+    mui(".mui-off-canvas-left").offCanvas('close');
+
     setCookie('ACCESS_TERMINAL', 'pc', 0);
     window.location.replace(root + '/');
 }
@@ -82,6 +85,11 @@ function goTab(obj, options) {
     var skip = options.skip;
     var dataHref = root + options.dataHref;
     var isLeft = options.isLeft;
+    //左侧进入隐藏左侧，其他地方不用隐藏
+    if (isLeft == "true") {
+        mui(".mui-off-canvas-left").offCanvas('close');
+    }
+
     if (os == 'app_ios') {
         gotoTab(skip);
     } else if (os == 'app_android') {
@@ -93,10 +101,20 @@ function goTab(obj, options) {
             goToUrl(dataHref);
         }
     }
-    //左侧进入隐藏左侧，其他地方不用隐藏
-    if (isLeft == "true") {
+}
+
+/**
+ * 跳转到页面同时关闭左侧菜单
+ * @param obj
+ * @param options
+ */
+function goUrl(obj,options){
+    var dataHref = root + options.dataHref;
+    var isLeft  = options.isLeft;
+    if(isLeft == "true"){
         mui(".mui-off-canvas-left").offCanvas('close');
     }
+    goToUrl(dataHref);
 }
 
 function showFooter() {

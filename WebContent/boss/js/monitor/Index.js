@@ -31,7 +31,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
          */
         sorTable: function () {
             var _this=this;
-            $(_this.formSelector + '.monitordetail th').click(function(){debugger;
+            $(_this.formSelector + ' .monitordetail th').click(function(){
                 var table = $(this).parents('table').eq(0)
                 var rows = table.find('tr:gt(0)').toArray().sort(_this.comparer($(this).index()))
                 this.asc = !this.asc

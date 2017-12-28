@@ -651,16 +651,31 @@
                 }
                 transWebUrlTag($li);
             });
-            //点击关闭浮动图
-            $("._close").on("click",function(){
-                var _this = this;
-                var showEffect = $(_this).parent().hasClass("show_effect");
-                if (window.sessionStorage && !showEffect){
-                    sessionStorage.setItem("is_float_close_"+$(_this).parent().data("fp"),"true");
+        }
+
+        var showEffect = $(".hongbao-slide-wrap");
+        if(showEffect){
+            $(showEffect).each(function(i,float){
+                if(window.sessionStorage && sessionStorage.getItem("is_float_close_"+$(float).data("fp")) != "true"){
+                    sessionStorage.setItem("is_float_close_"+$(float).data("fp"),"false");
                 }
-                $(_this).parent().hide();
+                if(window.sessionStorage && sessionStorage.getItem("is_float_close_"+$(float).data("fp")) == "false"){
+                    $(float).show();
+                }
             });
         }
+
+        //点击关闭浮动图
+        $("._close").on("click",function(){
+            var _this = this;
+            var showEffect = $(_this).parent().hasClass("show_effect");
+            var fpId = $(_this).parent().data("fp")==undefined?001:$(_this).parent().data("fp");
+            if (window.sessionStorage && showEffect){
+                sessionStorage.setItem("is_float_close_"+fpId,"true");
+            }
+            $(_this).parent().hide();
+        });
+
     }
     function transWebUrlTag(tarLi){
         $(tarLi).each(function(i,tar){
@@ -1433,7 +1448,7 @@
                         afterLogin(data,$form,callback,obj,loginText);
                     },
                     error:function(error) {
-                        if(error.responseJSON.propMessages){
+                        if(error.responseJSON){
                             window.location.href=error.responseJSON.propMessages.location;
                         }
                     },
@@ -1804,25 +1819,25 @@
             $(".login-dialog").addClass('hide');
         })
         if(sessionStorage.is_login=="true"){
-            <#if data.loginAnnouncement?has_content>
-                $(".login-dialog").removeClass('hide');
-                setTimeout(function () {
-                    $(".login-dialog").addClass('hide');
-                }, 60000);
-            </#if>
+        <#if data.loginAnnouncement?has_content>
+            $(".login-dialog").removeClass('hide');
+            setTimeout(function () {
+                $(".login-dialog").addClass('hide');
+            }, 10000);
+        </#if>
         }
         //注册公告
         $(".register-close").on("click",function (e) {
             $(".register-dialog").addClass('hide');
         })
-        if(sessionStorage.is_login=="true" && sessionStorage.getItem("registerDialog") != "true"){
-            sessionStorage.setItem("registerDialog","true");
-            <#if data.registerAnnouncement?has_content>
-                $(".register-dialog").removeClass('hide');
-                setTimeout(function () {
-                    $(".register-dialog").addClass('hide');
-                }, 60000);
-            </#if>
+        if(sessionStorage.is_login=="true" && sessionStorage.getItem("registerDialog") == "true"){
+            sessionStorage.setItem("registerDialog","false");
+        <#if data.registerAnnouncement?has_content>
+            $(".register-dialog").removeClass('hide');
+            setTimeout(function () {
+                $(".register-dialog").addClass('hide');
+            }, 10000);
+        </#if>
         }
     }
 
