@@ -15,6 +15,7 @@ $(function () {
     initBanner();
     //默认打开弹窗消息
     initDialog();
+    initNotice();
 });
 
 /*轮播图*/
