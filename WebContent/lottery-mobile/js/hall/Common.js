@@ -87,7 +87,11 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             //头部选择
             mui("div.s-menu").off('tap','a').on('tap', 'a', function () {
                 mui('.middle-content.middle-content-bat').scroll().scrollTo(0,0,100);
-                _this.checkSubordinate($(this).attr("data-code"), this.classList);
+                var _thiz=this;
+
+                setTimeout(function () {
+                    _this.checkSubordinate($(_thiz).attr("data-code"), _thiz.classList);
+                },200);
 
             });
 
