@@ -95,6 +95,7 @@ define(['site/deposit/BaseDeposit'], function(BaseDeposit) {
                     document.activeElement.blur();
                 }
                 var _href = $(this).attr("data-scan");
+                console.log("扫码");
                 if(_href!=null&&_href!="") {
                     mui.ajax(_href, {
                         headers: {'Soul-Requested-With': 'XMLHttpRequest'},

@@ -218,7 +218,7 @@
     </#list>
 </#if>
 
-<div class="modal bootstrap-dialog register-dialog type-primary fade size-normal in hide" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 1050; display: block; padding-right: 17px;">
+<div class="modal bootstrap-dialog register-dialog type-warning fade size-normal in hide" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 1050; display: block; padding-right: 17px;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -249,7 +249,7 @@
     </div>
 </div>
 
-<div class="modal bootstrap-dialog login-dialog type-primary fade size-normal in hide" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 1050; display: block; padding-right: 17px;">
+<div class="modal bootstrap-dialog login-dialog type-warning fade size-normal in hide" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 1050; display: block; padding-right: 17px;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
