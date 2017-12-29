@@ -16,6 +16,8 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
                 var $obj = $($(e)[0].target).find("a");
                 window.top.topPage.customerPopover($obj, window.top.message.fund_auto['复制成功']);
             });
+            var rechargeAmount = $("input[name='result.rechargeAmount']").val().replace(/,/g, '');
+            $("input[name='result.rechargeAmount']").val(rechargeAmount);
         },
         /**
          * 当前对象事件初始化函数

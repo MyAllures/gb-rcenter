@@ -44,7 +44,7 @@ define(['common/BaseViewPage'], function(BaseViewPage) {
                         var totalRemain = parseInt(0);
                         for(var i=0;i<dataList.length;i++){
                             var data = dataList[i];
-                            if(data.singleRemainCount){
+                            if(data.singleRemainCount!=null&&data.singleRemainCount!=""){
                                 $("span#award_remain_count_"+data.id).text(data.singleRemainCount);
                                 totalRemain += data.singleRemainCount;
                             }

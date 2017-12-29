@@ -30,6 +30,7 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                             var profit = data.profit;
                             var transferLimit = data.transferLimit;
                             var currentProfit = data.currentProfit;
+                            var currentProfitNumber = data.currentProfitNumber;
                             $("#topSecurity").find("#profitLimit").text(profitLimit);
                             $("#topSecurity").find("#curProfit").text(data.profitCur);
                             $("#topSecurity").find("#transferLimit").text(transferLimit);
@@ -40,7 +41,7 @@ define(['bootstrap-dialog', 'jsrender'], function (BootstrapDialog, jsrender) {
                                 percent = Math.floor(profit / profitLimit * 100);
                             }
                             if (transferLimit > 0){
-                                tranferPercent = Math.floor(currentProfit / transferLimit * 100);
+                                tranferPercent = Math.floor(currentProfitNumber / transferLimit * 100);
                             }
                             $("#topSecurity").find("#usePercent").text(percent <= 0?0:percent + '%');
                             $("#topSecurity").find("#currentUsePercent").text(tranferPercent <= 0? 0:tranferPercent + '%');
