@@ -754,6 +754,24 @@ define(['moment'], function (moment) {
                 }
             });
         },
+
+        /**
+         *
+         * 免转登录彩票(app专用)
+         */
+        autoLoginPlByApp: function () {
+            var postData = {};
+            postData.apiId = 22;
+            var _this = this;
+            mui.ajax(root + "/transfer/auto/loginAndAutoTransfer.html", {
+                dataType: 'json',
+                data: postData,
+                type: "POST",
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        },
         signIn: function (obj) {
             // 存储API登录信息，以便登录成功后进入游戏
             if (page.isLocalStorageSupport()) {
