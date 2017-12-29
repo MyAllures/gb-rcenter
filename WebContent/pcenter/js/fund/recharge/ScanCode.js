@@ -78,74 +78,8 @@ define(['common/BaseOnlinePay'], function (BaseOnlinePay) {
          * @returns {*}
          */
         getValidateRule: function ($form) {
-            var rule = this._super($form);
-            var _this = this;
-            if (rule && rule.rules['result.rechargeAmount']) {
-                var displayFee = $("input[name=displayFee]").val();
-                rule.rules['result.rechargeAmount'].remote = {
-                    url: root + '/fund/recharge/online/checkScanCodeAmount.html',
-                    cache: false,
-                    type: 'POST',
-                    data: {
-                        'result.rechargeAmount': function () {
-                            return $("[name='result.rechargeAmount']").val();
-                        },
-                        'result.rechargeType': function () {
-                            return $("[name='result.rechargeType']:checked").val();
-                        }
-                    },
-                    complete: function (data) {
-                        if (data.responseText == "true") {
-                            var rechargeAmount = $($form).children().find("[name='result.rechargeAmount']").val();
-                            var rechargeType = $("[name='result.rechargeType']:checked").val();
-                            window.top.topPage.ajax({
-                                url: root + '/fund/recharge/online/counterFee.html',
-                                data: {"result.rechargeAmount": rechargeAmount, "type": rechargeType},
-                                dataType: 'json',
-                                success: function (data) {
-                                    var fee = data.fee;
-                                    var counterFee = data.counterFee;
-                                    var msg;
-                                    if (fee > 0) {
-                                        msg = window.top.message.fund['Recharge.recharge.returnFee'].replace("{0}", counterFee);
-                                    } else if (fee < 0) {
-                                        msg = window.top.message.fund['Recharge.recharge.needFee'].replace("{0}", counterFee);
-                                    } else if (fee == 0) {
-                                        msg = window.top.message.fund['Recharge.recharge.freeFee'];
-                                    }
-                                    if (displayFee == 'true' || fee != 0) {
-                                        $(_this.formSelector + " span.fee").html(msg);
-                                        $(_this.formSelector + " span.fee").show();
-                                    }
-
-                                    var sales = data.sales;
-                                    var len = sales.length;
-                                    if (sales && len > 0) {
-                                        var html = $("#rechargeSale").render({
-                                            sales: sales,
-                                            len: len
-                                        });
-                                        $("div.applysale").html(html);
-                                        if (sales[0].preferential != true) {
-                                            $("input[name=activityId]:eq('')").prop("checked", 'checked');
-                                        }
-                                    } else {
-                                        $("div.applysale").find("input[type=radio]").attr("disabled", true);
-                                        $("input[name=activityId]:eq('')").prop("checked", 'checked');
-                                    }
-                                    $("._submit").removeClass("disabled");
-                                },
-                                error: function () {
-                                    $("._submit").addClass("disabled");
-                                }
-                            });
-                        } else {
-                            $("._submit").addClass("disabled");
-                        }
-                    }
-                }
-            }
-            return rule;
+            var rechargeType = $("[name='result.rechargeType']:checked").val();
+            return this.changeRemoteRule($form,rechargeType);
         }
     });
 });
