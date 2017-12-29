@@ -17,6 +17,10 @@ define([], function() {
         SUBSCRIBE_TYPE : "_S_TYPE",
         /** 同步值：消息订阅 */
         SUBSCRIBE_VALUE : "R",
+        /** 同步值：消息回传 */
+        BACK_VALUE : "B",
+        /** 同步值：消息回传key */
+        BACK_KEY : "_B_COMET",
 
         url : null,
         cid : null,
@@ -33,6 +37,9 @@ define([], function() {
                 $.each(comet.subscribes,function(i,val){
                     if(val.type==subscribeType){
                         val.callBack.call(val,data);
+                        if(val.back){
+                            val.back.call(val,data);
+                        }
                         return false;
                     }
                 })
@@ -129,6 +136,7 @@ define([], function() {
                 var subscribe = {};
                 subscribe.type = subscribeObj.subscribeType;
                 subscribe.callBack = subscribeObj.callBack;
+                subscribe.back = subscribeObj.back;
                 this.subscribes.push(subscribe);
             }
         },
@@ -310,6 +318,31 @@ define([], function() {
             $.ajax({
                 type : 'GET',
                 url : _this.url,
+                data : param,
+                crossDomain : true,
+                success : function(result) {
+                    caller = caller ? caller : null;
+                    if (callback) {
+                        callback.call(caller);
+                    }
+                }
+            });
+        },
+        /**
+         * 回传消息
+         * @param userParam
+         * @param callback
+         * @param caller
+         */
+        backConnect : function(data, callback, caller) {
+            var _this = this;
+            var param = {};
+            param["_S_COMET"] = "B";
+            param["_B_COMET"] = data;
+            this.isConnect = false;
+            $.ajax({
+                type : 'GET',
+                url : mdRoot,
                 data : param,
                 crossDomain : true,
                 success : function(result) {
