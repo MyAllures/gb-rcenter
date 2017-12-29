@@ -35,10 +35,12 @@ define(['common/BaseOnlinePay'], function (BaseOnlinePay) {
          * @returns {*}
          */
         getValidateRule: function ($form) {
+
             var rule = this._super($form);
             var _this = this;
             if (rule && rule.rules['result.rechargeAmount']) {
                 var displayFee = $("input[name=displayFee]").val();
+                var account = $("[name='result.payerBank']:checked").attr("account");
                 rule.rules['result.rechargeAmount'].remote = {
                     url: root + '/fund/recharge/online/checkOnlineRechargeAmount.html',
                     cache: false,
@@ -47,8 +49,8 @@ define(['common/BaseOnlinePay'], function (BaseOnlinePay) {
                         'result.rechargeAmount': function () {
                             return $("[name='result.rechargeAmount']").val();
                         },
-                        'result.payerBank': function () {
-                            return $("[name='result.payerBank']:checked").val();
+                        'account': function () {
+                            return account;
                         }
                     },
                     complete: function (data) {

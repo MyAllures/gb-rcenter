@@ -60,10 +60,10 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
         /**
          * 显示/隐藏随机额度提示信息
          */
-        showRandomAmountMsg:function () {
+        showRandomAmountMsg: function () {
             var flag = $(this.formSelector).find("label.select input[name='result.rechargeType']").attr("randomAmount");
             $('[name="randomAmountMsg"]').addClass('tiphide');
-            if(flag=="true"){
+            if (flag == "true") {
                 $('[name="randomAmountMsg"]').removeClass('tiphide');
             }
         },
@@ -144,11 +144,12 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
          * @param $form
          * @returns {*}
          */
-        getValidateRule: function ($form) {
-            var rule = this._super($form);
+        changeRemoteRule: function ($form, type) {
+            var rule = this.getValidateRule($form);
             var _this = this;
             if (rule && rule.rules['result.rechargeAmount']) {
                 var displayFee = $("input[name=displayFee]").val();
+                var account = $("[name='result.payerBank']:checked").attr("account");
                 rule.rules['result.rechargeAmount'].remote = {
                     url: root + '/fund/recharge/online/checkOnlineRechargeAmount.html',
                     cache: false,
@@ -157,8 +158,8 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                         'result.rechargeAmount': function () {
                             return $("[name='result.rechargeAmount']").val();
                         },
-                        'result.payerBank': function () {
-                            return $("[name='result.payerBank']:checked").val();
+                        'account': function () {
+                            return account;
                         }
                     },
                     complete: function (data) {
@@ -166,7 +167,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                             var rechargeAmount = $($form).children().find("[name='result.rechargeAmount']").val();
                             window.top.topPage.ajax({
                                 url: root + '/fund/recharge/online/counterFee.html',
-                                data: {"result.rechargeAmount": rechargeAmount, "type": 'online_deposit'},
+                                data: {"result.rechargeAmount": rechargeAmount, "type": type},
                                 dataType: 'json',
                                 success: function (data) {
                                     var fee = data.fee;
