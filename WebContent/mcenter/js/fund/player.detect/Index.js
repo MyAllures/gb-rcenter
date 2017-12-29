@@ -88,6 +88,10 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
                 url: url,
                 success: function (data) {
                     $("#loginIpDiv").html(data);
+                    $('[data-toggle="popover"]',"#loginIpDiv").popover({
+                        trigger: 'hover',
+                        placement: 'top'
+                    });
                 },
                 error: function (data) {
 
@@ -254,9 +258,7 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
                 success: function (data) {
                     $(_this.formSelector + " .fund-record").html(data);
                     _this.initKnob();
-                },
-                error: function (data) {
-
+                    $(e.currentTarget).unlock();
                 }
             });
         },
