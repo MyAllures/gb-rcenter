@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* index style */
 /* api-grid */
-.api-grid { height: 400px; width: 100%; /* 彩票内页样式 */ }
+.api-grid { height: 820px; width: 100%; /* 彩票内页样式 */ }
 .api-grid > div > ul { padding: 0 5px !important; }
 .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell { padding: 5px; height: 103px; border: 0; }
 .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell a { border-radius: 6px; padding: 8px 0; }
@@ -39,8 +39,9 @@
 .api-grid .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body { margin-top: 0; font-size: 12px; }
 .api-grid ul[data-list="lottery"] .lottery-nav { display: block; height: 40px; font-size: 12px; margin: 0 0 8px; text-align: center; }
 .api-grid ul[data-list="lottery"] .lottery-nav .mui-scroll-wrapper { height: 40px; }
+.api-grid ul[data-list="lottery"] .lottery-nav .mui-scroll { width: 100%; }
 .api-grid ul[data-list="lottery"] .lottery-nav ul { height: 40px; display: block; border: 0; white-space: nowrap; text-align: center; }
-.api-grid ul[data-list="lottery"] .lottery-nav li { display: inline-block; font-size: 12px; width: 104px; }
+.api-grid ul[data-list="lottery"] .lottery-nav li { display: inline-block; font-size: 12px; width: 33.3333%; }
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item { padding: 0; height: 40px; display: block; width: 100%; line-height: 39px; padding-left: 40px; background-position: 4px center; background-size: 30px; background-repeat: no-repeat; text-align: left; }
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.api-icon-4-22-2 { background-image: url(images/icon-yzt.png); }
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.api-icon-4-22-1 { background-image: url(images/icon-lt.png); }

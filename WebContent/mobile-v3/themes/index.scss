@@ -3,7 +3,7 @@
  * */
 /* api-grid */
 .api-grid{
-    height: 400px;
+    height: 820px;
     width: 100%;
     &>div>ul{padding: 0 5px !important;}
     .mui-grid-view.mui-grid-9 .mui-table-view-cell{padding: 5px;height: 103px;border: 0;
@@ -59,9 +59,9 @@
     font-size: 12px;
     margin: 0 0 8px;text-align: center;
         .mui-scroll-wrapper{height: 40px;}
+        .mui-scroll{width: 100%;}
         ul{height: 40px;   display: block;       border: 0;white-space: nowrap;text-align: center;}
-            li{    display: inline-block;font-size: 12px;
-    width: 104px;
+            li{    display: inline-block;font-size: 12px;    width: 33.3333%;
                 .mui-tab-item{padding: 0;   height: 40px;   display: block;    width: 100%;    line-height: 39px;   padding-left: 40px;background-position: 4px center;
     background-size: 30px;
     background-repeat: no-repeat;    text-align: left;

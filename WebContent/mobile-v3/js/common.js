@@ -111,5 +111,16 @@ $(function(){
 			 bounce: true //是否启用回弹
 		});
 	});
-	
+	$(".lottery-nav li").on("tap",function(){
+		$(this).siblings("li").find("a").removeClass("mui-active");
+		$(this).find("a").addClass("mui-active");
+		$(".lottery-content .mui-control-content").removeClass("mui-active");
+		var index = $(this).index();
+		$(this).parents(".lottery-nav").next().find(".mui-control-content").eq(index).addClass("mui-active");
+	});
+	// 关闭红包
+	$("#hongbao").on("tap",".icon-close",function(e){
+		e.stopPropagation();
+		$(this).parent().hide();
+	});
 });
