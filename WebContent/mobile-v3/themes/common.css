@@ -1,13 +1,15 @@
+@charset "UTF-8";
 /* commonstyle all the pages need to include */
 body { font-size: 12px; }
 
 header.mui-bar-nav .logo { height: 20px; position: absolute; left: 44px; top: 0; bottom: 0; margin: auto; }
 header.mui-bar-nav .btn-login, header.mui-bar-nav .btn-demo, header.mui-bar-nav .btn-register { margin-left: 5px !important; padding: 4px 5px; font-size: 12px; top: 10px; }
 header.mui-bar-nav .btn-download { display: inline-block; width: 24px; height: 24px; background: url(images/icon-download.png) center/24px no-repeat; margin: 10px; float: left; }
-header.mui-bar-nav .yjym { text-align: center; height: 17px; line-height: 16px; position: absolute; top: 44px; font-size: 10px; left: 0; right: 0; }
 header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 
-.mui-bar-nav ~ .mui-content { padding-top: 61px; padding-bottom: 51px; }
+.yjym { text-align: center; height: 17px; line-height: 16px; font-size: 10px; }
+
+.mui-bar-nav ~ .mui-content { padding-top: 44px; padding-bottom: 70px; }
 
 /* banner-slide */
 .banner-slide .close-slide { background: url(./images/icon-close-with-circle.png) center/14px no-repeat; width: 24px; height: 24px; position: absolute; top: 0; right: 0; z-index: 2; }
@@ -28,16 +30,17 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 .notice-alert .mui-popup-title { background: url(images/notice-title-bg.png) no-repeat center/auto 8px; font-size: 15px; color: #333; }
 
 /* nav */
-.nav { height: 65px; }
-.nav .mui-scroll-wrapper { height: 70px; }
-.nav .mui-scroll-wrapper .mui-scroll { height: 70px; -webkit-transform: none !important; transform: none !important; -webkit-transition-duration: 0ms !important; transition-duration: 0ms !important; width: 100%; font-size: 0; }
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item { font-size: 12px; height: 61px; width: 20%; padding: 27px 0 0; line-height: 32px; }
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.mui-active { border-bottom: 0; }
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.item-live { background: url(images/icon-live.png) no-repeat center 3px/24px; }
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.item-casino { background: url(images/icon-casino.png) no-repeat center 3px/24px; }
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.item-lottery { background: url(images/icon-lottery.png) no-repeat center 3px/24px; }
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.item-sports { background: url(images/icon-sports.png) no-repeat center 3px/24px; }
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.item-fish { background: url(images/icon-fish.png) no-repeat center 3px/24px; }
+.nav { height: 65px; display: block; padding: 0 10px; }
+.nav .swiper-slide { font-size: 12px; height: 61px; width: 63px; text-align: center; padding: 27px 0 0; line-height: 32px; }
+.nav .swiper-slide > span { position: relative; z-index: 2; }
+.nav .swiper-slide.swiper-slide-active { border-bottom: 0; }
+.nav .swiper-slide.swiper-slide-active > span { color: #1279d9; }
+.nav .swiper-slide.item-live:before { content: ''; position: absolute; left: 0; top: 0; z-index: 2; width: 100%; height: 100%; background: url(images/icon-live.png) no-repeat center 3px/24px !important; }
+.nav .swiper-slide.item-casino:before { content: ''; position: absolute; left: 0; top: 0; z-index: 2; width: 100%; height: 100%; background: url(images/icon-casino.png) no-repeat center 3px/24px !important; }
+.nav .swiper-slide.item-lottery:before { content: ''; position: absolute; left: 0; top: 0; z-index: 2; width: 100%; height: 100%; background: url(images/icon-lottery.png) no-repeat center 3px/22px !important; }
+.nav .swiper-slide.item-sports:before { content: ''; position: absolute; left: 0; top: 0; z-index: 2; width: 100%; height: 100%; background: url(images/icon-sports.png) no-repeat center 3px/22px !important; }
+.nav .swiper-slide.item-fish:before { content: ''; position: absolute; left: 0; top: 0; z-index: 2; width: 100%; height: 100%; background: url(images/icon-fish.png) no-repeat center 3px/24px !important; }
+.nav .swiper-slide.item-chess-and-card:before { content: ''; position: absolute; left: 0; top: 0; z-index: 2; width: 100%; height: 100%; background: url(images/icon-chess-and-card.png) no-repeat center 4px/17px !important; }
 
 /* mui-bar-tab */
 .mui-bar-tab { height: 51px; }
@@ -96,5 +99,13 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 .lang-menu li a { display: block; width: 100%; height: 100%; font-size: 0; }
 
 .mui-bar-nav { z-index: 2008; }
+
+/* index-canvas-show 首页的侧滑菜单 */
+.index-canvas-wrap { position: absolute; top: 0; bottom: 0; z-index: 9999; left: -100%; -webkit-transition: all 0.5s  ease-in-out; transition: all 0.5s  ease-in-out; }
+.index-canvas-wrap aside { visibility: visible; }
+
+.index-canvas-show, .index-canvas-show body { height: 100%; }
+.index-canvas-show body { overflow: hidden; position: fixed; top: 0; left: 0; bottom: 0; right: 0; }
+.index-canvas-show .index-canvas-wrap { left: 0; }
 
 /*# sourceMappingURL=common.css.map */

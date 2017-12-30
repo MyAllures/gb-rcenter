@@ -193,7 +193,7 @@ height: 44px;}
 }
 /* casino-list */
 .casino-list-bar{    background-color: #efefef;border-bottom: 1px solid #ccc;}
-.mui-content-casino-list{padding-top: 44px !important;background: #efefef;
+.mui-content-casino-list{padding-top: 44px !important;background: #fff;
     .casino-wrap{padding:10px;}
     .electronic-search{position: relative;margin-bottom: 10px;
         input{margin: 0;height: 35px;font-size: 14px;border: 1px solid #ccc;padding-right: 100px;}
@@ -202,10 +202,10 @@ height: 44px;}
     }
     .casino-list{    margin-left: -5px;    margin-right: -5px;
         a{text-align: center;display: block;    padding: 0 5px;
-            p{height: 24px;line-height: 24px;background: #ccc;color: #333;font-size: 12px;white-space: nowrap;    overflow: hidden;    text-overflow: ellipsis;}
+            p{height: 24px;line-height: 24px;margin-bottom:5px;color: #333;font-size: 12px;white-space: nowrap;    overflow: hidden;    text-overflow: ellipsis;}
         }
         .img-wrap{background: #fff;padding: 8px 0;
-            img{width: 60px;height:60px;vertical-align: middle;}
+            img{width: 70px;height:70px;vertical-align: middle;}
         }
         
     }

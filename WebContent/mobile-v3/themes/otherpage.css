@@ -110,7 +110,7 @@
 /* casino-list */
 .casino-list-bar { background-color: #efefef; border-bottom: 1px solid #ccc; }
 
-.mui-content-casino-list { padding-top: 44px !important; background: #efefef; }
+.mui-content-casino-list { padding-top: 44px !important; background: #fff; }
 .mui-content-casino-list .casino-wrap { padding: 10px; }
 .mui-content-casino-list .electronic-search { position: relative; margin-bottom: 10px; }
 .mui-content-casino-list .electronic-search input { margin: 0; height: 35px; font-size: 14px; border: 1px solid #ccc; padding-right: 100px; }
@@ -118,9 +118,9 @@
 .mui-content-casino-list .electronic-search .mui-icon-clear { right: 80px; top: 8px; }
 .mui-content-casino-list .casino-list { margin-left: -5px; margin-right: -5px; }
 .mui-content-casino-list .casino-list a { text-align: center; display: block; padding: 0 5px; }
-.mui-content-casino-list .casino-list a p { height: 24px; line-height: 24px; background: #ccc; color: #333; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mui-content-casino-list .casino-list a p { height: 24px; line-height: 24px; margin-bottom: 5px; color: #333; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mui-content-casino-list .casino-list .img-wrap { background: #fff; padding: 8px 0; }
-.mui-content-casino-list .casino-list .img-wrap img { width: 60px; height: 60px; vertical-align: middle; }
+.mui-content-casino-list .casino-list .img-wrap img { width: 70px; height: 70px; vertical-align: middle; }
 
 /* about */
 .about-wrap { padding: 10px 20px; }

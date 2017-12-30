@@ -13,12 +13,372 @@
     <link rel="stylesheet" href="../../mobile-v3/themes/index.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/loading.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
-    <link rel="stylesheet" href="../../mobile-v3/themes/hongbao.css" />    
+    <link rel="stylesheet" href="../../mobile-v3/themes/hongbao.css" />  
+    <link rel="stylesheet" href="../../mobile-v3/themes/swiper.min.css" />  
 </head>
-
 <body>
+<!-- 主页面标题 -->
+<header class="mui-bar mui-bar-nav">
+	<a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+	<!--<a href="download.html" class="btn-download"></a>-->
+	<a type="button" class="mui-btn mui-btn-success mui-pull-right btn-register" href="register.html">注册</a>
+	<a type="button" class="mui-btn mui-btn-success mui-pull-right btn-login" href="login.html">登录</a>
+	<a type="button" class="mui-btn mui-btn-success mui-pull-right btn-demo">试玩</a>
+	<img src="../../mobile-v3/images/logo.png" alt="logo" class="logo" />
+
+</header>
+<div class="mui-content home-content">
+		<!-- 主界面具体展示内容 -->
+		<!--易记域名-->
+		<section class="yjym">易记域名：www.1136.mb.com</section>
+		<!--轮播-->
+		<section class="mui-slider banner-slide">
+			<div class="close-slide"></div>
+			<div class="mui-slider-group">
+				<div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
+				<div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
+				<div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
+			</div>
+			<!--轮播图加载时的样式-->
+			<div class="banner-loading">
+				<div class="loader api-loader">
+					<div class="loader-inner ball-pulse api-div">
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--公告-->
+		<section class="notice">
+			<button type="button" class="mui-btn mui-btn-primary btn-title">公告</button>
+			<div class="notice-list">
+				<marquee behavior="scroll" scrollamount="2" direction="left">
+					<p>
+						<a href="" >111尊敬的用户您好！本站于20161206进行升级！</a>
+						<a href="">222尊敬的用户您好！本站于20161206进行升级！</a>
+						<a href="">333尊敬的用户您好！本站于20161206进行升级！</a>
+						<a href="">444尊敬的用户您好！本站于20161206进行升级！</a>
+					</p>
+				</marquee>
+			</div>
+		</section>
+<section class="nav">
+  <div class="swiper-container slide-indicators">
+    <div class="swiper-wrapper">
+		<a class="swiper-slide item-live mui-active" >
+			<span>真人</span>
+		</a>
+		<a class="swiper-slide item-casino" >
+			<span>电子</span>
+		</a>
+		<a class="swiper-slide item-lottery" >
+			<span>彩票</span>
+		</a>
+		<a class="swiper-slide item-sports" >
+			<span>体育</span>
+		</a>
+		<a class="swiper-slide item-fish" >
+			<span>捕鱼</span>
+		</a>
+		<a class="swiper-slide item-chess-and-card" >
+			<span>棋牌</span>
+		</a>
+    </div>
+  </div>	
+</section>
+  <div class="swiper-container slide-content  api-grid">
+    <div class="swiper-wrapper">
+            <div class="swiper-slide slide-live" >
+        		<ul class="mui-table-view mui-grid-view mui-grid-9 active">
+					<div class="deficiency-nots">没有找到符合的游戏</div>
+					<!--api加载时的样式-->
+					<div class="api-loading">
+						<div class="loader api-loader">
+							<div class="loader-inner ball-pulse api-div">
+								<div></div>
+								<div></div>
+								<div></div>
+							</div>
+						</div>
+					</div>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-10"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">BBIN</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-24"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">OPUS</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-9"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">AG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-16"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">EBET</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-7"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">OG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-17"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">SA</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-5"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">GD</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-1"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">DS</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-sunbet"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">SUNBET</div>
+						</a>
+					</li>
+				</ul>
+            </div>
+            <div class="swiper-slide slide-casino" >
+				<ul class="mui-table-view mui-grid-view mui-grid-9 active" >
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="casino-list.html">
+							<span class="api-item api-icon-2-26"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">PNG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-20"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">BSG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-6"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">PT</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-25"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">SG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-9"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">AG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-10"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">BBIN</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-15"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">HB</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-3"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">MG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-27"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">DT</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-31"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">GNS</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-32"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">PRG</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+            <div class="swiper-slide slide-lottery" >
+				<ul class="mui-table-view mui-grid-view mui-grid-9 active" data-list="lottery">
+					<!--彩票导航-->
+					<div class="lottery-nav">
+						<div class="mui-scroll-wrapper mui-slider-indicatorcode mui-segmented-control mui-segmented-control-inverted" data-scroll="7">
+							<div class="mui-scroll">
+								<ul class="mui-list-unstyled mui-clearfix mui-bar-tab">
+									<li><a href="#lottery1" class="mui-tab-item mui-active api-icon-4-22-2">一指通彩票</a></li>
+									<li><a href="#lottery2" class="mui-tab-item api-icon-4-2">KG彩票</a></li>
+									<li><a href="#lottery3" class="mui-tab-item api-icon-4-10">BBIN彩票</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="lottery-content"><!--彩票内容切换-->
+						<div id="lottery1" class="mui-control-content mui-active">
+							<div class="deficiency-nots">没有找到符合的游戏</div>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img">
+									<div class="mui-media-body">YZT</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img">
+									<div class="mui-media-body">安徽快3</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img">
+									<div class="mui-media-body">安徽快3</div>
+								</a>
+							</li>
+						</div>
+						<div id="lottery2" class="mui-control-content">
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img">
+									<div class="mui-media-body">KG</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img">
+									<div class="mui-media-body">安徽快3</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img">
+									<div class="mui-media-body">安徽快3</div>
+								</a>
+							</li>
+						</div>
+						<div id="lottery3" class="mui-control-content">
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img">
+									<div class="mui-media-body">安徽快3</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img">
+									<div class="mui-media-body">安徽快3</div>
+								</a>
+							</li>
+						</div>
+					</div><!--彩票内容切换结束-->
+				</ul>
+			</div>
+            <div class="swiper-slide slide-sports" >
+				<ul class="mui-table-view mui-grid-view mui-grid-9 active" >
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-3-12"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">HG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-3-19"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">SHABA</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-3-4"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">IM</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+            <div class="swiper-slide slide-fish" >
+				<ul class="mui-table-view mui-grid-view mui-grid-9 active">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-28"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">GG</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+            <div class="swiper-slide slide-chess-and-card" >
+				<ul class="mui-table-view mui-grid-view mui-grid-9 active">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-5-1"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">开元棋牌</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+    </div>
+  </div>
+
+</div>  <!--mui-content 闭合标签-->
+<!--footer-->
+<footer class="mui-bar mui-bar-tab">
+	<a class="mui-tab-item">
+		<span class="mui-icon icon-deposit"></span>
+		<span class="mui-tab-label">存款</span>
+	</a>
+	<a class="mui-tab-item" href="promo.html">
+		<span class="mui-icon icon-promo"></span>
+		<span class="mui-tab-label">优惠</span>
+	</a>
+	<a class="mui-tab-item mui-active" href="index.html">
+		<span class="mui-icon icon-home"></span>
+		<span class="mui-tab-label">首页</span>
+	</a>
+	<a class="mui-tab-item">
+		<span class="mui-icon icon-service"></span>
+		<span class="mui-tab-label">客服</span>
+	</a>
+	<a class="mui-tab-item" href="mine.html">
+		<span class="mui-icon icon-mine"></span>
+		<span class="mui-tab-label">我的</span>
+	</a>
+</footer>
 <!-- 侧滑导航根容器 -->
-<div class="mui-off-canvas-wrap mui-draggable">
+<div class="mui-off-canvas-wrap index-canvas-wrap">
   <!-- 菜单容器 -->
   <aside class="mui-off-canvas-left">
     <div class="mui-scroll-wrapper side-menu-scroll-wrapper">
@@ -49,7 +409,7 @@
         		<li class="deposit"><a href="">账户存款</a></li>
         		<li class="about"><a href="about.html">关于我们</a></li>
         		<li class="question"><a href="">常见问题</a></li>
-        		<li class="service"><a href="">在线客服</a></li>
+        		<li class="service"><a href="javascript:void(0);">在线客服</a></li>
         		<li class="reg_rules"><a href="">注册条款</a></li>
         		<li class=" lang zh-CN">
         			<a href="">语言</a>
@@ -59,340 +419,19 @@
         </div>
       </div>
     </div>
+	<!--语言弹窗-->
+	<ul class="lang-menu">
+		<li class="current zh-CN"><a href="">中文</a></li><!--当前语言版本加current-->
+		<li class="en-US"><a href="">English</a></li>
+		<li class="ja-JP"><a href="">日文</a></li>
+	</ul>
   </aside>
   <!-- 主页面容器 -->
-  <div class="mui-inner-wrap">
-    <!-- 主页面标题 -->
-    <header class="mui-bar mui-bar-nav">
-      <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
-      <!--<a href="download.html" class="btn-download"></a>-->
-      <a type="button" class="mui-btn mui-btn-success mui-pull-right btn-register" href="register.html">注册</a>
-      <a type="button" class="mui-btn mui-btn-success mui-pull-right btn-login" href="login.html">登录</a>
-      <a type="button" class="mui-btn mui-btn-success mui-pull-right btn-demo">试玩</a>
-      <img src="../../mobile-v3/images/logo.png" alt="logo" class="logo" />      
-      <!--易记域名-->
-      <section class="yjym">易记域名：www.1136.mb.com</section>
-    </header>
-    <div class="mui-content mui-scroll-wrapper">
-      <div class="mui-scroll">
-        <!-- 主界面具体展示内容 -->
-        <!--轮播-->
-        <section class="mui-slider banner-slide">
-          <div class="close-slide"></div>
-		  <div class="mui-slider-group">
-		    <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
-		    <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
-		    <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
-		  </div>
-		  <!--轮播图加载时的样式-->
-		  <div class="banner-loading">
-		  	<div class="loader api-loader">
-				<div class="loader-inner ball-pulse api-div">
-					<div></div>
-					<div></div>
-					<div></div>
-				</div>
-			</div>
-		  </div>
-		</section>
-		<!--公告-->
-		<section class="notice">
-			<button type="button" class="mui-btn mui-btn-primary btn-title">公告</button>
-			<div class="notice-list">
-	            <marquee behavior="scroll" scrollamount="2" direction="left">
-	                <p>                                    	
-						<a href="" >111尊敬的用户您好！本站于20161206进行升级！</a>
-						<a href="">222尊敬的用户您好！本站于20161206进行升级！</a>
-						<a href="">333尊敬的用户您好！本站于20161206进行升级！</a>
-						<a href="">444尊敬的用户您好！本站于20161206进行升级！</a>
-	                </p>
-	            </marquee>				
-			</div>
-		</section>		
-		<!--导航-->
-		<section class="nav">
-			<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-			    <div class="mui-scroll">
-			        <a class="mui-control-item mui-active item-live" data-item="live">
-			            真人视讯
-			        </a>
-			        <a class="mui-control-item item-casino" data-item="casino">
-			            电子游艺
-			        </a>
-			        <a class="mui-control-item item-lottery" data-item="lottery">
-			            彩票投注
-			        </a>
-			        <a class="mui-control-item item-sports" data-item="sports">
-			            体育赛事
-			        </a>
-			        <a class="mui-control-item item-fish" data-item="fish">
-			            捕鱼游戏
-			        </a>
-			    </div>
-			</div>
-		</section>
-		<!--api九宫格-->
-		<section class="api-grid">  
-			<ul class="mui-table-view mui-grid-view mui-grid-9 active" data-list="live">
-				<div class="deficiency-nots">没有找到符合的游戏</div>				
-				  <!--api加载时的样式-->
-				  <div class="api-loading">
-				  	<div class="loader api-loader">
-						<div class="loader-inner ball-pulse api-div">
-							<div></div>
-							<div></div>
-							<div></div>
-						</div>
-					</div>
-				  </div>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-1-10"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">BBIN</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-1-24"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">OPUS</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-1-9"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">AG</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-1-16"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">EBET</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-1-7"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">OG</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-1-17"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">SA</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-1-5"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">GD</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-1-1"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">DS</div>
-	            	</a>
-	            </li>
-			</ul>
-			<ul class="mui-table-view mui-grid-view mui-grid-9" data-list="casino">
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="casino-list.html">
-	                    <span class="api-item api-icon-2-26"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">PNG</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-2-20"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">BSG</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-2-6"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">PT</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-2-25"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">SG</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-2-9"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">AG</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-2-10"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">BBIN</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-2-15"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">HB</div>
-	            	</a>
-	           </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-2-3"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">MG</div>
-	            	</a>
-	           </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-					<a href="#">
-						<span class="api-item api-icon-2-27"></span>  <!--根据class的不同来显示api图标-->
-						<div class="mui-media-body">DT</div>
-					</a>
-				</li>
-			</ul>
-			<ul class="mui-table-view mui-grid-view mui-grid-9" data-list="lottery">
-				<!--彩票导航-->
-				<div class="lottery-nav">
-					<div class="mui-scroll-wrapper mui-slider-indicatorcode mui-segmented-control mui-segmented-control-inverted">
-						<div class="mui-scroll">
-							<ul class="mui-list-unstyled mui-clearfix mui-bar-tab">
-								<li><a href="#lottery1" class="mui-tab-item mui-active api-icon-4-22-2">一指通彩票</a></li>
-								<li><a href="#lottery2" class="mui-tab-item api-icon-4-2">KG彩票</a></li>
-								<li><a href="#lottery3" class="mui-tab-item api-icon-4-10">BBIN彩票</a></li>
-							</ul>							
-						</div>
-					</div>
-				</div>
-				<div class="lottery-content"><!--彩票内容切换-->
-					<div id="lottery1" class="mui-control-content mui-active">
-						<div class="deficiency-nots">没有找到符合的游戏</div>
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-			            	<a href="#">
-			                    <img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img" />  
-			                    <div class="mui-media-body">YZT</div>
-			            	</a>
-			            </li>
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-			            	<a href="#">
-			                    <img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img" />  
-			                    <div class="mui-media-body">安徽快3</div>
-			            	</a>
-			            </li>
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-			            	<a href="#">
-			                    <img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img" />  
-			                    <div class="mui-media-body">安徽快3</div>
-			            	</a>
-			            </li>
-					</div>
-					<div id="lottery2" class="mui-control-content">
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-			            	<a href="#">
-			                    <img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img" />  
-			                    <div class="mui-media-body">KG</div>
-			            	</a>
-			            </li>
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-			            	<a href="#">
-			                    <img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img" />  
-			                    <div class="mui-media-body">安徽快3</div>
-			            	</a>
-			            </li>
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-			            	<a href="#">
-			                    <img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img" />  
-			                    <div class="mui-media-body">安徽快3</div>
-			            	</a>
-			            </li>				
-					</div>
-					<div id="lottery3" class="mui-control-content">
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-			            	<a href="#">
-			                    <img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img" />  
-			                    <div class="mui-media-body">BBIN</div>
-			            	</a>
-			            </li>
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-			            	<a href="#">
-			                    <img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img" />  
-			                    <div class="mui-media-body">安徽快3</div>
-			            	</a>
-			            </li>
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-			            	<a href="#">
-			                    <img src="../../mobile-v3/images/lottery/lottery-demo.png" alt="" class="lottery-img" />  
-			                    <div class="mui-media-body">安徽快3</div>
-			            	</a>
-			            </li>				
-					</div>
-				</div><!--彩票内容切换结束-->
-			</ul>
-			<ul class="mui-table-view mui-grid-view mui-grid-9" data-list="sports">
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-3-12"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">HG</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-3-19"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">SHABA</div>
-	            	</a>
-	            </li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-3-4"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">IM</div>
-	            	</a>
-	            </li>
-			</ul>
-			<ul class="mui-table-view mui-grid-view mui-grid-9" data-list="fish">
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="api-item api-icon-2-28"></span>  <!--根据class的不同来显示api图标-->
-	                    <div class="mui-media-body">GG</div>
-	            	</a>
-	            </li>
-			</ul>
-		</section>
-      </div> <!--mui-scroll 闭合标签-->
-    </div>  <!--mui-content 闭合标签-->
-	<!--footer-->
-	<footer class="mui-bar mui-bar-tab">
-	    <a class="mui-tab-item">
-	        <span class="mui-icon icon-deposit"></span>
-	        <span class="mui-tab-label">存款</span>
-	    </a>
-	    <a class="mui-tab-item" href="promo.html">
-	        <span class="mui-icon icon-promo"></span>
-	        <span class="mui-tab-label">优惠</span>
-	    </a>
-	    <a class="mui-tab-item mui-active" href="index.html">
-	        <span class="mui-icon icon-home"></span>
-	        <span class="mui-tab-label">首页</span>
-	    </a>
-	    <a class="mui-tab-item">
-	        <span class="mui-icon icon-service"></span>
-	        <span class="mui-tab-label">客服</span>
-	    </a>
-	    <a class="mui-tab-item" href="mine.html">
-	        <span class="mui-icon icon-mine"></span>
-	        <span class="mui-tab-label">我的</span>
-	    </a>
-	</footer>   
-    <div>北京时间2017-12-11 10:45:30</div>
-  </div>
 </div>
-<!--语言弹窗-->
-<ul class="lang-menu">
-	<li class="current zh-CN"><a href="">中文</a></li><!--当前语言版本加current-->
-	<li class="en-US"><a href="">English</a></li>
-	<li class="ja-JP"><a href="">日文</a></li>
-</ul>
+
     <!--红包html开始  通过改变hongbao-wrap的class来改变红包样式，一共三种（hb_type_1,hb_type_2,hb_type_3）--> 
-    <div class="hongbao-slide-wrap hongbao-wrap" id="hongbao">
-		<div class="icon-close"></div>
+    <div class="hongbao-slide-wrap hongbao-wrap" id="hongbao" style="display: none;">
+		<span class="mui-icon mui-icon-close icon-close"></span>
 		<div class="mui-slider hongbao-slider">
 		  <div class="mui-slider-group">
 			<div class="mui-slider-item hb_type_1">
@@ -468,12 +507,35 @@
     	<span class="loading-img loading-entirety"><img src="../../mobile-v3/images/oval.svg" alt></span>
     </div>-->
     <!--红包html结束-->	
+   
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
 <script src="../../mobile-v3/js/common.js"></script>
+<script src="../../mobile-v3/js/swiper.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery.nicescroll.min.js"></script>
-<script type="text/javascript">
+  <script>
+    var slideContent = new Swiper('.slide-content', {
+      loop:true,
+      loopedSlides:6
+    });
+    var slideIndicators = new Swiper('.slide-indicators', {
+      loop:true,
+      loopedSlides: 6,
+      slidesPerView: 'auto',
+      touchRatio: 0.2,
+      slideToClickedSlide: true,
+    });
+    slideContent.controller.control = slideIndicators;
+    slideIndicators.controller.control = slideContent;
+
+  </script>
+
+<script type="text/javascript">	
 	$(function(){
+		var slide = mui(".content-slide").slider();
+		mui(".mui-slider-item.mui-control-content .mui-scroll-wrapper").scroll({
+			bounce: false
+		});
 		    	/*红包脚本开始*/
     	$(function(){   		
     		/*展开右下角红包*/
