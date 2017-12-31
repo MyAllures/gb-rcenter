@@ -37,6 +37,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             //更换存款银行
             $(this.formSelector).on("click", "label.bank", function (e) {
                 _this.changeBank(e);
+
             });
             //实时监控存款金额
             $(this.formSelector).on("input", "[name='result.rechargeAmount']", function () {
