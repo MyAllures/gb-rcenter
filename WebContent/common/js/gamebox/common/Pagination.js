@@ -127,7 +127,7 @@ define([], function () {
                 pageNumber = $("[name='paging.lastPageNumber']", form).val();
             }
             var lastpageNumber = $("[name='paging.lastPageNumber']", form).val();
-            if(lastpageNumber&&parseInt(pageNumber)>parseInt(lastpageNumber)){
+            if (lastpageNumber && parseInt(pageNumber) > parseInt(lastpageNumber)) {
                 window.top.topPage.showInfoMessage("超过当前最大页数");
                 return false;
             }
@@ -196,6 +196,34 @@ define([], function () {
                         _this.gotoPage(e);
                     });
                 });
+            }
+        },
+        changeOrderColumnClass: function (page, form) {
+            //修改排序的样式
+            var sorts = $('th input[property]', form);
+            if (sorts.length > 0) {
+                for (var i = 0; i < sorts.length; i++) {
+                    var $orderHidden = $(sorts[i]);
+                    var property = $orderHidden.attr("property");
+                    var order = $orderHidden.val();
+                    if (order) {
+                        var _order = order.toUpperCase() == "DESC" ? "sorting_desc" : "sorting_asc";
+                        $orderHidden.parent().removeClass("sorting").removeClass("sorting_asc")
+                            .removeClass("sorting_desc").addClass(_order);
+                    } else {
+                        $orderHidden.parent().removeClass("sorting_asc");
+                        $orderHidden.parent().removeClass("sorting_desc");
+                        $orderHidden.parent().addClass("sorting");
+                    }
+                    var $th = $orderHidden.parent("th");
+                    $th.css("cursor", "hand");
+
+                    $th.hover(function () {
+                        $th.addClass("sorting-hover");
+                    }, function () {
+                        $th.removeClass("sorting-hover");
+                    });
+                }
             }
         },
         /**
