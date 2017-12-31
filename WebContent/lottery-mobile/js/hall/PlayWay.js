@@ -873,7 +873,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                         if (betProfit.betamount && betProfit.betamount != 0) {
                             totalBetAmount = betProfit.betamount.toFixed(2)
                         }
-                        $('#jrsy').html((betProfit.profitloss-totalBetAmount).toFixed(2));
+                        $('#jrsy').html((betProfit.profitloss-totalBetAmount+betProfit.betrebate).toFixed(2));
                     }
                 }
             })
