@@ -11,9 +11,9 @@ define(['gb/components/Comet', 'common/MobileBasePage'], function (Comet, Mobile
             param.success = function () {
                 console.info("connect successfully");
                 subscribes = [
-                    {subscribeType:"SYS_ANN",callBack:_this.announcement},
-                    {subscribeType:"SITE_ANN",callBack:_this.announcement},
-                    {subscribeType: "MSITE-Player-Announcement-Notice", callBack: _this.announcement}
+                    {subscribeType:"SYS_ANN",callBack:_this.sys_announcement},
+                    {subscribeType:"SITE_ANN",callBack:_this.site_announcement},
+                    {subscribeType: "MSITE-Player-Announcement-Notice", callBack: _this.msite_player_announcement}
                 ];
                 _this.subscribeMsgs(subscribes);
             };
@@ -22,10 +22,37 @@ define(['gb/components/Comet', 'common/MobileBasePage'], function (Comet, Mobile
             };
             this._super(param);
         },
-        announcement: function (result) {
+        sys_announcement: function (result) {
+            var _this = this;
+            var dataObj = $.parseJSON(result);
+            console.info('订阅类型为' + dataObj.subscribeType + "的订阅点收到消息，成功调用回调函数，参数值为" + result);
+            $("#unReadCount").text(parseInt($("#unReadCount").text()) + 1);
+            var msgBody = dataObj.msgBody;
+            var content = msgBody.content.replace("${user}", $('#ofullname').text().trim());
+            content = "<div style='padding: 20px'>" + content + "</div>";
+            var title = msgBody.title;
+            layer.open({
+                title: title,
+                content: content,
+                btn: [window.top.message.announcement_auto['查看消息'], window.top.message.announcement_auto['关闭']],
+                yes: function (index) {
+                    var url = root + "/message/gameNotice.html";
+                    if(window.top.page){
+                        window.top.page.gotoUrl(url)
+                    }else if(window.top.game){
+                        window.top.game.gotoUrl(url)
+                    }
+                },
+                no: function (index) {
+                    layer.close(index);
+                }
+            })
+
+        },
+        site_announcement: function (result) {
+            var _this = this;
             var dataObj = $.parseJSON(result);
             var id = dataObj.msgBody;
-            var _this = this;
             $.ajax({
                 url: root + "/operation/pAnnouncementMessage/announcementPopup.html?searchId=" + id,
                 dataType: "html",
@@ -37,15 +64,49 @@ define(['gb/components/Comet', 'common/MobileBasePage'], function (Comet, Mobile
                         content: data,
                         btn: [window.top.message.announcement_auto['查看消息'], window.top.message.announcement_auto['关闭']],
                         yes: function (index) {
-                            window.top.page.gotoUrl(root + "/message/gameNotice.html")
+                            var url = root + "/message/gameNotice.html";
+                            if(window.top.page){
+                                window.top.page.gotoUrl(url)
+                            }else if(window.top.game){
+                                window.top.game.gotoUrl(url)
+                            }
                         },
-                        bo: function (index) {
+                        no: function (index) {
                             layer.close(index);
                         }
                     })
                 }
             });
 
+        },
+        msite_player_announcement: function (result) {
+            var _this = this;
+            var dataObj = $.parseJSON(result);
+            var id = dataObj.msgBody;
+            $.ajax({
+                url: root + "/operation/pAnnouncementMessage/announcementPopup.html?searchId=" + id,
+                dataType: "html",
+                type: 'POST',
+                async: false,
+                success: function (data) {
+                    layer.open({
+                        title: window.top.message.announcement_auto['公告'],
+                        content: data,
+                        btn: [window.top.message.announcement_auto['查看消息'], window.top.message.announcement_auto['关闭']],
+                        yes: function (index) {
+                            var url = root + "/message/gameNotice.html";
+                            if(window.top.page){
+                                window.top.page.gotoUrl(url)
+                            }else if(window.top.game){
+                                window.top.game.gotoUrl(url)
+                            }
+                        },
+                        no: function (index) {
+                            layer.close(index);
+                        }
+                    })
+                }
+            });
         }
     });
 
