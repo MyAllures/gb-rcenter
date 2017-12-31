@@ -44,7 +44,7 @@ define(['gb/components/PopUp'], function (PopUp) {
             var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.date), dateFormat.daySecond);
             var content = '<a nav-target="mainFrame" name="tellerReminder" href="/lotteryResult/list.html">' + date + '&nbsp;' + msgBody.message + '</a>';
             popUp.pop(content, date, "warning");
-            window.top.voice.playVoice(data, "order");
+            window.top.voice.playVoice(data, "attack");
             $("a[name=tellerReminder]").click(function (e) {
                 $(e.currentTarget).parent().parent().parent().remove()
             });
