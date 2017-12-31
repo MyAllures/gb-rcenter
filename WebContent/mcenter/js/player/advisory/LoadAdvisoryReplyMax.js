@@ -66,6 +66,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             var formData = window.top.topPage.getCurrentFormData(e);
             var playerAdvisoryId = $(target).parent().parent().attr("id");
             var playerId = $(target).parent().parent().attr("playerId");
+            var _this = this;
 
             window.top.topPage.ajax({
                 type:"post",
@@ -87,6 +88,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                                     /*window.top.topPage.showSuccessMessage(data.msg, function () {
                                         window.top.topPage.closeDialog();
                                     });*/
+                                    _this.returnValue = true;
                                 }else{
                                     page.showPopover(e, {}, 'danger', data.msg, true);
                                     $(e.currentTarget).unlock();

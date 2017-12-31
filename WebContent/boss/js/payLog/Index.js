@@ -11,7 +11,7 @@ define(['common/BaseListPage', 'autocompleter'], function (BaseListPage) {
                 $("input[name='search.searchCondition']").val("true");
             }
             this._super("formSelector");
-
+            this.queryCount();
         },
         onPageLoad: function () {
             this._super();
