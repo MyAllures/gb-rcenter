@@ -2640,3 +2640,9 @@ div.scroll{
 textarea.resize-vertical{
     resize: vertical;
 }
+/*提示消息*/
+.msg{padding:6px 10px; background: #fff5e5;border: 1px solid #ffe6c0;}
+.msg:before{display: inline-block;vertical-align: middle;font: normal normal normal 14px/1 FontAwesome; font-size: 30px;padding: 4px;}
+.msg.msg-warning{}
+.msg.msg-warning:before{content: "\f06a";color: #ea9101;}
+.msg .msg-description{display: inline-block;vertical-align: middle;}
