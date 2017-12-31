@@ -34,7 +34,7 @@ define(['common/MobileBasePage'], function (Mobile) {
         //获取头部信息
         getHeadInfo: function () {
             var _this = this;
-            if ($(".aside-right-menu").length <= 0) {
+            if ($(".mui-pull-right").length <= 0 && $(".mui-off-canvas-left").length <= 0) {
                 return;
             }
             mui.ajax(root + "/getHeadInfo.html", {
@@ -49,11 +49,18 @@ define(['common/MobileBasePage'], function (Mobile) {
                         if (data.avatar) {
                             $(".avatar").attr("src", data.avatar);
                         }
+                        $("._leftLogin").removeClass("mui-hide");
+                        $("._leftLogout").removeClass("mui-hide");
+                        $("._leftUsername").text(data.name);
+                        $("._leftUnLogin").hide();
                         _this.loadBalance();
                     } else { //未登录
                         isLogin = 'false';
                         $(".is-login").hide();
                         $(".un-login").show();
+                        $("._leftLogin").addClass("mui-hide");
+                        $("._leftLogout").addClass("mui-hide");
+                        $("._leftUnLogin").show();
                     }
                 }
             })

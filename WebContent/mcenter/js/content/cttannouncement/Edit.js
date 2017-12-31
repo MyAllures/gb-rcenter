@@ -119,6 +119,32 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                 }
             });
 
+            //修改编辑状态
+            $(this.formSelector).on("click","a[name='tag']", function () {
+                var local=$(this).attr("local");
+                $("#curLanguage").val($(this).attr("tagIndex"));
+                $(".tab-pane").each(function(index,item){
+                    var lang = $(item).attr("lang");
+                    var flag = false;
+                    $(item).find(".field").each(function(idx,field){
+                        if($(field).val()==""){
+                            flag=true;
+                        }
+                    });
+                    if(flag){
+                        $("#span"+lang).text(window.top.message.common['switch.CloseReminder.unedited']);
+                    }else{
+                        $("#option"+lang).show();
+                        $("#span"+lang).text(window.top.message.common['switch.CloseReminder.edited']);
+                    }
+                    if(local==lang){
+                        $("#option"+lang).hide();
+                    }
+                });
+                $("#span"+local).text(window.top.message.common['switch.CloseReminder.editing']);
+
+            });
+
             $(this.formSelector).on("click","a[name='targetTag']", function () {
                 var local=$(this).attr("local");
                 $(".ann_target").hide();
