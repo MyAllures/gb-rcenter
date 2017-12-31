@@ -5,7 +5,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
 
     return BaseEditPage.extend({
         /*最多梯度*/
-        maxGrads:5,
+        maxGrads:10,
         _fieldname:null,
         init: function () {
             this._super();
@@ -67,7 +67,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 /* 填充 */
                 $tbl.append($newGrads);
             } else {
-                window.top.topPage.showInfoMessage(message.setting['rakeback.edit.maxPlan']);
+                window.top.topPage.showInfoMessage(message.setting['rebate.edit.maxPlan']);
             }
 
             $(event.currentTarget).unlock()
