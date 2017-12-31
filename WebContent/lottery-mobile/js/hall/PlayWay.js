@@ -47,6 +47,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             //开盘点击效果才有
             if(page.isOpen) {
                 mui("body").off('tap', 'div.bet-table-list td,div.bet-table-list .n-btn').on('tap', 'div.bet-table-list td,div.bet-table-list .n-btn', function () {
+                    $("input#inputMoney").blur();
                     _this.bindTdInput($(this));
                 });
             }
@@ -56,6 +57,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             });
             //投注
             mui("body").off('tap','a#show-t').on("tap", 'a#show-t', function () {
+                $("input#inputMoney").blur();
                 _this.betOrder();
             });
 
@@ -589,8 +591,10 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 $showId.show();
             }
             if(topCode !=""){
-                $("a[data-code='"+topCode+"']").addClass("mui-active");
                 $(".s-title.title1 span").text($("a[data-code='"+topCode+"'] span").text());
+                if($("div.s-menu.top a.mui-active").size() ==0){
+                    $("a[data-code='"+topCode+"']").addClass("mui-active");
+                }
             }else{
                 $(".s-title.title1 span").text(text);
             }
