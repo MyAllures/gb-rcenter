@@ -77,16 +77,18 @@ function login() {
                 "password": _password
             },
             success: function (data) {
-                if (data.success) {
-                    sessionStorage.is_login = true;
-                    window.location.href = "/index.html";
-                }
-                if (data.message) {
-                    toast(message.passport[data.message] || data.message)
-                }
-                if (data.propMessages) {
-                    if (data.propMessages["captcha"])
-                        toast(data.propMessages["captcha"]);
+                if (data != null) {
+                    if (data.success !=null && data.success) {
+                        sessionStorage.is_login = true;
+                        window.location.href = "/index.html";
+                    }
+                    if (data.message != null && data.message) {
+                        toast(message.passport[data.message] || data.message)
+                    }
+                    if (data.propMessages !=null && data.propMessages) {
+                        if (data.propMessages["captcha"])
+                            toast(data.propMessages["captcha"]);
+                    }
                 }
             },
             error: function () {
