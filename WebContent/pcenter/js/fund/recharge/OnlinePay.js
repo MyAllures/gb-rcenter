@@ -1,7 +1,7 @@
 /**
  * 线上支付
  */
-define(['common/BaseOnlinePay'], function (BaseOnlinePay) {
+define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
     return BaseOnlinePay.extend({
         realName: null,
         /**
@@ -27,6 +27,8 @@ define(['common/BaseOnlinePay'], function (BaseOnlinePay) {
             var _this = this;
             $(this.formSelector).on("change", "input[name='result.payerBank']", function (e) {
                 _this.changeValid(e);
+                _this.showRandomAmountMsg();
+                $(_this.formSelector + " input[name=account]").val($(_this.formSelector + " input[name='result.payerBank']:checked").attr("account"));
             });
         },
         /**
@@ -35,7 +37,7 @@ define(['common/BaseOnlinePay'], function (BaseOnlinePay) {
          * @returns {*}
          */
         getValidateRule: function ($form) {
-            return this.changeRemoteRule($form,'online_deposit');
+            return this.changeRemoteRule($form, 'online_deposit');
         },
         /**
          * 银行收/展

@@ -37,7 +37,6 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             //更换存款银行
             $(this.formSelector).on("click", "label.bank", function (e) {
                 _this.changeBank(e);
-
             });
             //实时监控存款金额
             $(this.formSelector).on("input", "[name='result.rechargeAmount']", function () {
@@ -62,7 +61,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
          * 显示/隐藏随机额度提示信息
          */
         showRandomAmountMsg: function () {
-            var flag = $(this.formSelector).find("label.select input[name='result.rechargeType']").attr("randomAmount");
+            var flag = $(this.formSelector).find("input[name='result.payerBank']:checked").attr("randomAmount");
             $('[name="randomAmountMsg"]').addClass('tiphide');
             if (flag == "true") {
                 $('[name="randomAmountMsg"]').removeClass('tiphide');
@@ -145,14 +144,22 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
          * @param $form
          * @returns {*}
          */
-        changeRemoteRule: function ($form, type) {
-            var rule = this.getValidateRule($form);
+        changeRemoteRule: function ($form, rechargeType) {
+            var rule;
+            var $ruleDiv = $form.find('div[id=validateRule]');
+            if ($ruleDiv.length > 0) {
+                rule = eval("({" + $ruleDiv.text() + "})");
+                rule.ignore = ".ignore";
+            }
+            if (!rule) {
+                return null;
+            }
             var _this = this;
             if (rule && rule.rules['result.rechargeAmount']) {
                 var displayFee = $("input[name=displayFee]").val();
                 var account = $("[name='result.payerBank']:checked").attr("account");
                 rule.rules['result.rechargeAmount'].remote = {
-                    url: root + '/fund/recharge/online/checkOnlineRechargeAmount.html',
+                    url: root + '/fund/recharge/online/checkRechargeAmount.html',
                     cache: false,
                     type: 'POST',
                     data: {
@@ -168,7 +175,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                             var rechargeAmount = $($form).children().find("[name='result.rechargeAmount']").val();
                             window.top.topPage.ajax({
                                 url: root + '/fund/recharge/online/counterFee.html',
-                                data: {"result.rechargeAmount": rechargeAmount, "type": type},
+                                data: {"result.rechargeAmount": rechargeAmount, "type": rechargeType},
                                 dataType: 'json',
                                 success: function (data) {
                                     var fee = data.fee;

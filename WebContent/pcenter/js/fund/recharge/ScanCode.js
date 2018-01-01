@@ -1,7 +1,7 @@
 /**
  * 扫描支付
  */
-define(['common/BaseOnlinePay'], function (BaseOnlinePay) {
+define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
     return BaseOnlinePay.extend({
         realName: null,
         /**
@@ -38,6 +38,7 @@ define(['common/BaseOnlinePay'], function (BaseOnlinePay) {
                     _this.changeSale();
                 }
                 _this.showRandomAmountMsg();
+                $(_this.formSelector+" input[name=account]").val($(_this.formSelector+" input[name='esult.rechargeType']:checked").attr("account"));
             });
         },
         /**
