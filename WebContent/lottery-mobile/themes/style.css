@@ -595,6 +595,8 @@ a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 .money-record-list .mui-table-view-cell .bet-list-time { display: inline-block; vertical-align: middle; }
 .money-record-list .mui-table-view-cell .bet-list-right { display: inline-block; width: calc(100% - 3.5rem); vertical-align: middle; line-height: 25px; padding-left: 18px; }
 
+.money-record-list .mui-table-view-cell .list-zdh{display: block;text-align: right;}
+
 /*会员中心*/
 .member-head { height: 10.8rem; }
 .middle-content.member-list { top: 10.8rem; bottom: 0; }
@@ -1222,6 +1224,8 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .middle-content.middle-content-bat.result-today{padding-bottom: 1.65rem; }
 .bar-bottom-l-h { line-height: 2.75rem; height: 2.75rem; }
 
+.middle-content-bat .mui-table-view-cell .kj-num{display: inline-block;}
+
 /*右侧菜单栏调整*/
 .mui-off-canvas-right{width:12rem;padding-top:10px;}
 .aside-right-menu{margin-top:10px;}
@@ -1688,3 +1692,4 @@ div.menu-popover {width: 120px;}
     text-align: center;
     float: left;
 }
+
