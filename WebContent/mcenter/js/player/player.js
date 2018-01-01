@@ -265,6 +265,31 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                 $("#playerRanksMemory").val(JSON.stringify(playerRanksMemory));
 
             });
+
+
+            /**
+             * 标签选中
+             */
+            $("input[name='search.tagIds']", that.formSelector).change(function (e) {
+
+                //显示勾选数量
+                var rankNum = $("input[name='search.tagIds']:checked").length;
+                if (rankNum == 0) {
+                    $(this).parents(".dropdown-menu").siblings("button").children(".rankText").text(window.top.message.player_auto['请选择']);
+                } else {
+                    $(this).parents(".dropdown-menu").siblings("button").children(".rankText").text(window.top.message.player_auto['已选'] + rankNum + window.top.message.player_auto['项']);
+                }
+                var playerRanksMemory = [];
+                //onPageLoad回填
+                $("input[name='search.tagIds']:checked").each(function () {
+                    playerRanksMemory.push($(this).val());
+                })
+
+                $("#playerRanksMemory").val(JSON.stringify(playerRanksMemory));
+
+            });
+
+
             /**
              * 绑定下拉层级事件
              */
@@ -282,6 +307,9 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                     e.cancelBubble = true;
             });
 
+            $(".tagName button[date-type-tag='all']").on('click', function () {
+                $("input[name='result.tagName']").not("input:checked").prop('checked', true).change();
+            });
             /**
              * 选中所有层级
              */
@@ -293,6 +321,18 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
              */
             $(".playerRank button[data-type='clear']").on('click', function () {
                 $("input[name='search.playerRanks']:checked").prop('checked', false).change();
+            });
+            /**
+             * 清除所有标签
+             */
+            $(".playerRank button[data-type-tag='clear']").on('click', function () {
+                $("input[name='search.tagIds']:checked").prop('checked', false).change();
+            });
+            /**
+             * 选中所有标签
+             */
+            $(".playerRank button[data-type-tag='all']").on('click', function () {
+                $("input[name='search.tagIds']").not("input:checked").prop('checked', true).change();
             });
             $(that.formSelector).on('click', function (e) {
                 $(".rank-btn").siblings(".dropdown-menu").css("display", "none");
@@ -354,6 +394,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
          * @returns {{rankId: (*|jQuery), ids: (string|*)}}
          */
         playerRankPost: function (e) {
+            var checked_tag = $(" ")
             var checked_rank = $("#player_rank ul.rank_ul li input[type='radio']:checked").val();
             var ids = this.getSelectIdsArray(e).join(",");
             return {'rankId': checked_rank, 'ids': ids};
@@ -576,6 +617,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             $("#operator3").val('');
             $("#operator4").val('');
             $('.playerRank').find("button[data-type='clear']").trigger('click');
+            $('.playerRank').find("button[data-type-tag='clear']").trigger('click');
             $("#playerRanksMemory").val('');
             $("input[name='search.rakebackId']").siblings("button").find("span[prompt='prompt']").text(window.top.message.player_auto['全部']);
             $("input[name='search.loginTimeBegin']").val('');
@@ -606,7 +648,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
         },
         getSelectIdsArray: function (e, option) {
             var checkedItems = [], counter = 0;
-            $("table tbody input[type=checkbox]", this.getCurrentForm(e)).not("[name='search.playerRanks']").each(function (node, obj) {
+            $("table tbody input[type=checkbox]", this.getCurrentForm(e)).not("[name='search.playerRanks']").not("[name='search.tagIds']").each(function (node, obj) {
                 if (obj.checked) {
                     checkedItems[counter] = obj.value;
                     counter++;
@@ -664,7 +706,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
          */
         query: function (event, option) {
             var $form = $(window.top.topPage.getCurrentForm(event));
-            var _this=this;
+            var _this = this;
             if (!$form.valid || $form.valid()) {
                 window.top.topPage.ajax({
                     loading: true,
@@ -679,9 +721,9 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                         _this.renderData(data);
                         _this.onPageLoad();
                         $(event.currentTarget).unlock();
-                        if(event.goType==undefined || event.goType==-2){
+                        if (event.goType == undefined || event.goType == -2) {
                             _this.queryCount();
-                        }else{
+                        } else {
                             _this.queryCount(true);
                         }
                     },
