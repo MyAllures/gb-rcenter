@@ -97,6 +97,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
 
             //直选复式
             mui("body").off('tap','.gfwf-playName').on('tap', '.gfwf-playName', function () {
+                $("input#inputMoney").blur();
                 _this.changePlay();
             });
 

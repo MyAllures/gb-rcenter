@@ -20,6 +20,17 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             this.doFormData();
             this.queryCount();
         },
+        /**
+         * 异步加载后需调用方法
+         */
+        synQueryPageLoad: function () {
+            //注：这里不能调用onPageLoad方法，会重复定义排序等方法
+            $('[data-toggle="popover"]', this.formSelector).popover({
+                trigger: 'hover',
+                placement: 'top'
+            });
+            this.pagination.changeOrderColumnClass();
+        },
         onPageLoad: function () {
             this._super();
             var _this = this;
@@ -49,10 +60,6 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                     $("#rakeback_list [type=radio]").prop("checked", false)
                 }
             });
-            $("#rakeback_list").on("click", function (e) {
-                e.stopPropagation();
-            });
-
             this.rewrite();
         },
 
@@ -73,7 +80,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                 },
                 success: function (data) {
                     _this.renderData(data);
-                    _this.onPageLoad();
+                    _this.synQueryPageLoad();
                 },
                 error: function (data, state, msg) {
                     window.top.topPage.showErrorMessage(data.responseText);
@@ -109,7 +116,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                 success: function (data) {
                     $("#playerPage").html(data);
                     _this.initSelect();
-                    _this.pagination.bindSelectChange(page)
+                    _this.pagination.bindSelectChange(window.top.page);
                 },
                 error: function (data) {
 
@@ -123,6 +130,9 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
         bindEvent: function () {
             this._super();
             var that = this;
+            $("#rakeback_list", this.formSelector).on("click", function (e) {
+                e.stopPropagation();
+            });
 
             /**
              * 高级搜索下拉by kobe
@@ -664,7 +674,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
          */
         query: function (event, option) {
             var $form = $(window.top.topPage.getCurrentForm(event));
-            var _this=this;
+            var _this = this;
             if (!$form.valid || $form.valid()) {
                 window.top.topPage.ajax({
                     loading: true,
@@ -677,11 +687,12 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                     data: this.getCurrentFormData(event),
                     success: function (data) {
                         _this.renderData(data);
-                        _this.onPageLoad();
                         $(event.currentTarget).unlock();
-                        if(event.goType==undefined || event.goType==-2){
+                        //注：这里不能调用onPageLoad方法，会重复定义排序等方法
+                        _this.synQueryPageLoad();
+                        if (event.goType == undefined || event.goType == -2) {
                             _this.queryCount();
-                        }else{
+                        } else {
                             _this.queryCount(true);
                         }
                     },
