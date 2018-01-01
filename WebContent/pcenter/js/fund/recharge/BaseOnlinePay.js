@@ -128,7 +128,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                     if (msg) {
                         url = url + "&msg=" + msg;
                     }
-                    var btnOption = {};
+                    var btnOption = option;
                     btnOption.text = window.top.message.fund_auto['等待支付'];
                     btnOption.target = url;
                     btnOption.callback = "back";
