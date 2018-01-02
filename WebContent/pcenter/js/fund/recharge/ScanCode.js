@@ -38,7 +38,7 @@ define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
                     _this.changeSale();
                 }
                 _this.showRandomAmountMsg();
-                $(_this.formSelector+" input[name=account]").val($(_this.formSelector+" input[name='esult.rechargeType']:checked").attr("account"));
+                $(_this.formSelector + " input[name=account]").val($(_this.formSelector + " input[name='result.rechargeType']:checked").attr("account"));
             });
         },
         /**
@@ -79,8 +79,10 @@ define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
          * @returns {*}
          */
         getValidateRule: function ($form) {
-            var rechargeType = $("[name='result.rechargeType']:checked").val();
-            return this.changeRemoteRule($form,rechargeType);
+            var $rechargeType = $("[name='result.rechargeType']:checked");
+            var rechargeType = $rechargeType.val();
+            var account = $rechargeType.attr("account");
+            return this.changeRemoteRule($form, rechargeType, account);
         }
     });
 });

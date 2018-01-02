@@ -144,7 +144,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
          * @param $form
          * @returns {*}
          */
-        changeRemoteRule: function ($form, rechargeType) {
+        changeRemoteRule: function ($form, rechargeType, account) {
             var rule;
             var $ruleDiv = $form.find('div[id=validateRule]');
             if ($ruleDiv.length > 0) {
@@ -157,7 +157,6 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             var _this = this;
             if (rule && rule.rules['result.rechargeAmount']) {
                 var displayFee = $("input[name=displayFee]").val();
-                var account = $("[name='result.payerBank']:checked").attr("account");
                 rule.rules['result.rechargeAmount'].remote = {
                     url: root + '/fund/recharge/online/checkRechargeAmount.html',
                     cache: false,

@@ -37,7 +37,8 @@ define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
          * @returns {*}
          */
         getValidateRule: function ($form) {
-            return this.changeRemoteRule($form, 'online_deposit');
+            var account = $("[name='result.payerBank']:checked").attr("account");
+            return this.changeRemoteRule($form, 'online_deposit', account);
         },
         /**
          * 银行收/展
