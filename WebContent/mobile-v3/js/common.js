@@ -16,8 +16,8 @@ $(function(){
 	/*公告弹窗*/
 	mui(".notice .notice-list").on("tap","a",function(){
 		var noticeA =noticeIndicator="";
-		$(".notice .notice-list p a").each(function(){//生成公告html和indicator
-			noticeA+="<div class='mui-slider-item'><a href='javascript:'>"+$(this).html()+"</a></div>";
+		$(".notice .notice-list .marquee a").each(function(){//生成公告html和indicator
+			noticeA+="<div class='mui-slider-item'><div class='mui-scroll-wrapper'><div class='mui-scroll'><a href='javascript:'>"+$(this).html()+"</a></div></div></div>";
 			noticeIndicator+="<div class='mui-indicator'></div>"
 		});
 		var noticeHtml = $('<div><div class="mui-slider notice-slider"><div class="mui-slider-group">'+noticeA+'</div><div class="mui-slider-indicator">'+noticeIndicator+'</div></div></div></div>');
@@ -29,6 +29,7 @@ $(function(){
 		notice.slider({
 		  interval:3000//自动轮播周期，若为0则不自动播放，默认为0；
 		});
+		mui(".notice-slider .mui-scroll-wrapper").scroll();
 		//点击公告，轮播跳转到对应的位置
 		$(".notice-slider .mui-indicator").removeClass("mui-active");
 		$(".notice-slider .mui-indicator:eq("+index+")").addClass("mui-active");
@@ -39,12 +40,9 @@ $(function(){
 		$("html").toggleClass("index-canvas-show");
 		mui('.index-canvas-wrap .mui-scroll-wrapper').scroll();
 	});
-	$(".index-canvas-wrap").on("tap",function(e){
+	$(".index-canvas-wrap").on("tap",".mui-icon-closeempty",function(e){
 		//e.preventDefault();
 		$("html").removeClass("index-canvas-show");
-	});
-	$(".index-canvas-wrap .mui-off-canvas-left").on("tap",function(e){		
-		e.stopPropagation();//首页侧滑菜单打开时，阻止冒泡，防止点击侧滑菜单里面的选项触发了侧滑菜单关闭脚本
 	});
 		/*关闭侧滑菜单*/
 	$(".mui-inner-wrap").on("tap",function(event){
@@ -90,6 +88,7 @@ $(function(){
 	// 监听tap事件，解决 a标签 不能跳转页面问题
 	mui('body').on('tap','a[href$=html]',function(){
 		document.location.href=this.href;
+		console.log(this.href);
 	});
 	// 选择器示例，展示用而已。根据业务逻辑自己定义
 	$(".mui-input-select").on("tap",function(){
@@ -117,10 +116,16 @@ $(function(){
 		$(".lottery-content .mui-control-content").removeClass("mui-active");
 		var index = $(this).index();
 		$(this).parents(".lottery-nav").next().find(".mui-control-content").eq(index).addClass("mui-active");
+		$(this).parents(".swiper-wrapper").css({// 动态计算滑动内容的高度
+			height:$(this).parents(".lottery-nav").next().find(".mui-control-content").eq(index).outerHeight()+48
+		});
 	});
 	// 关闭红包
 	$("#hongbao").on("tap",".icon-close",function(e){
 		e.stopPropagation();
 		$(this).parent().hide();
+	});
+	$(".desk").on("tap",".close",function(){
+		$(this).parents(".desk").hide();
 	});
 });

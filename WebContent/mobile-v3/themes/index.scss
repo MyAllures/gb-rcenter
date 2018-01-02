@@ -3,23 +3,22 @@
  * */
 /* api-grid */
 .api-grid{
-    height: 820px;
     width: 100%;
     &>div>ul{padding: 0 5px !important;}
-    .mui-grid-view.mui-grid-9 .mui-table-view-cell{padding: 5px;height: 103px;border: 0;
+    .mui-grid-view.mui-grid-9 .mui-table-view-cell{padding: 5px;height: 103px;border: 0;background: #fff;
         a{    border-radius: 6px;padding: 8px 0;}
     }
     .api-item{display: inline-block;width:56px;height:57px;position: relative;
         &:after{content: '';
     position: absolute;
     width: 56px;
-    height: 28px;
-    top: 4px;
-    left: -9px;z-index: 2;
+    height: 26px;
+    top: 5px;
+    left: -10px;z-index: 2;
     border-top-left-radius: 28px;
     border-top-right-radius: 28px;
-    -webkit-transform: rotateZ(-45deg);
-            transform: rotateZ(-45deg);}
+    -webkit-transform: rotateZ(-47deg);
+            transform: rotateZ(-47deg);}
         &:before{content: '';position: absolute;width: 56px;height: 56px;top: 0;left: 0;z-index: 1;background: url(images/api-sprite.png) 0 0/56px no-repeat;}
         &.api-icon-2-3:before{background-position: -7px 0;}        
         &.api-icon-1-16:before{background-position: 0 -56px;}     
@@ -29,7 +28,7 @@
         &.api-icon-1-10:before,&.api-icon-2-10:before{background-position: 0 -280px;}   
         &.api-icon-1-5:before{background-position: 0 -336px;}   
         &.api-icon-1-1:before{background-position: 0 -392px;}   
-        &.api-icon-1-sunbet:before{    background-position: 0 -1400px;}
+        &.api-icon-1-33:before{    background-position: 0 -1400px;}
         &.api-icon-2-15:before{background-position: 0 -616px;}   
         &.api-icon-2-6:before{background-position: 0 -504px;}  
         &.api-icon-3-12:before{background-position: 0 -448px;}   
@@ -50,7 +49,7 @@
         &.gns:before{background-position: 0 -1233px;}
         &.prg:before{background-position: 0 -1292px;}
     }
-    .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{margin-top: 0;    font-size: 12px;}
+    .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{margin-top: 0;    font-size: 13px;}
     /* 彩票内页样式 */
     ul[data-list="lottery"]{
         .lottery-nav{
@@ -76,9 +75,9 @@
     .lottery-content{
         li{font-size: 12px;
             .lottery-img{width: 56px;height: 56px;display: inline-block;}
-            a{background: #fff !important;}
         }
     }
+    .fish-img,.card-img{width: 56px;height: 56px;display: inline-block;}
 }
 
 /* banner-loading */
