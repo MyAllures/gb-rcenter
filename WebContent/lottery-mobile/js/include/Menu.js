@@ -124,7 +124,7 @@ define(['site/plugin/template'], function (Template) {
                 var target = $(this).data('target');
                 var dos = $(this).data('os');
                 var url = $(this).data('skip');
-                if(isLotterySite == false && target=='3'){
+                if(isLotterySite == 'false' && target=='3'){
                     page.gotoUrl(url);
                     return false;
                 }
