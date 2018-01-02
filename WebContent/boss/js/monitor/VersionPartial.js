@@ -70,7 +70,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     }
                 }
             });
-        }
+        },
         /**
          * 添加调用
          * @param e
