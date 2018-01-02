@@ -109,6 +109,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     port:opt.port,
                     appVersion:opt.appVersion,
                     versionName:opt.versionName,
+                    hostName:opt.hostName,
                     serverApp:opt.serverApp
                 },
                 type:"post",
@@ -141,6 +142,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     port:opt.port,
                     appVersion:opt.appVersion,
                     versionName:opt.versionName,
+                    hostName:opt.hostName,
                     serverApp:opt.serverApp
                 },
                 type:"post",
