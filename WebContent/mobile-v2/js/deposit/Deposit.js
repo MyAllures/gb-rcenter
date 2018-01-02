@@ -1,7 +1,7 @@
     /**
  * Created by bruce on 16-12-6.
  */
-define(['site/deposit/BaseDeposit'], function(BaseDeposit) {
+define(['site/deposit/BaseDeposit','site/deposit/BaseCompanyDeposit'], function(BaseDeposit,BaseCompanyDeposit) {
     return BaseDeposit.extend({
 
         init: function (formSelector) {
@@ -82,7 +82,7 @@ define(['site/deposit/BaseDeposit'], function(BaseDeposit) {
             if ($depositWay) {
                 var key = $("#depositWay li:first").attr("key");
                 if (key && (key == 'online_deposit' || key == 'wechatpay_scan' || key == 'alipay_scan'||key == 'qqwallet_scan')) {
-                    mui.trigger($depositWay[0],"tap");    
+                    mui.trigger($depositWay[0],"tap");
                 }
             }
         },
@@ -145,7 +145,7 @@ define(['site/deposit/BaseDeposit'], function(BaseDeposit) {
 
             mui("body").on("tap","[data-company]",function () {
                 var _href = $(this).attr("data-company");
-                _this.gotoUrl(_href);
+                _this.mySubmit(this,_this,_href);
             });
 
             mui("body").on("tap","[data-bitcoin]",function () {
@@ -155,7 +155,7 @@ define(['site/deposit/BaseDeposit'], function(BaseDeposit) {
 
             mui("body").on("tap","[data-fast]",function () {
                 var _href = $(this).attr("data-fast");
-                _this.gotoUrl(_href);
+                _this.mySubmit(this,_this,_href);
             });
 
             mui("body").on("tap","[data-fastRecharge]",function () {
@@ -177,6 +177,44 @@ define(['site/deposit/BaseDeposit'], function(BaseDeposit) {
                 else
                     _this.openWindowByMui("/mine/index.html");
             });
+        },
+        mySubmit:function(e,_this,_href,options){
+            if (document.activeElement) {
+                document.activeElement.blur();
+            }
+            var url = null;
+            if($(e).attr("data-company")){
+                url = '/wallet/deposit/company/depositCash.html';
+            }else if($(e).attr("data-fast")){
+                url = '/wallet/deposit/company/electronic/depositCash.html';
+            }
+            mui.ajax(url, {
+                headers: {'Soul-Requested-With': 'XMLHttpRequest'},
+                dataType: 'text/html',
+                type: 'post',
+                async: true,
+                success: function (data) {
+                    $("#deposit").html(data);
+                    page.formSelector = "#depositCashForm";
+                    _this.bindFormValidation();
+                    page.bindRechargeAmount($("#submitAmount"));
+                    page.submit(e,_this,_href);
+                },
+                error: function (xhr, type, errorThrown) {
+                    if(xhr.type!=null)
+                        _this.toast(window.top.message.deposit_auto['线上支付异常']);
+                }
+            });
+        },
+        submit: function (_e,_this,_href) {
+            var baseCompanyDeposit = new BaseCompanyDeposit();
+            var options = {
+                type:"company_deposit",
+                submitUrl:"/wallet/deposit/company/submit.html",
+                depositUrl:_href,
+                statusNum:1
+            };
+            baseCompanyDeposit.submit(options);
         }
     });
 });
