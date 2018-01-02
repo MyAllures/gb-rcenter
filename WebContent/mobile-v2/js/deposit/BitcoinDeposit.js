@@ -38,7 +38,7 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
 
         copyAccount: function () {
             var _this = this;
-            var cb = new Clipboard('.foobtn');
+            var cb = new Clipboard('.copy');
             cb.on('success', function (e) {
                 _this.toast(window.top.message.deposit_auto['复制成功']);
                 e.clearSelection();
@@ -140,6 +140,7 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
                         _this.reWriteAmount();
                         var html = '<div class="masker" style="display:block;"></div>' +
                             '<div class="gb-withdraw-box window-ok" style="display:block;">' +
+                            '<a _href="/wallet/deposit/index.html" class="_again"><span style="color: #999;background-color: #fff;font-size: 20px"> X &nbsp;</span></a>' +
                             '<div class="cont">' +
                             '<div class="ok-box">' +
                             '<i class="ok-icon"></i>' +
