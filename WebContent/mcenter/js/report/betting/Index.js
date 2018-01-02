@@ -232,9 +232,9 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     }
                 });
                 if (option && option.isCount) {
-                    this.queryCount();
+                    this.queryCount(null, false);
                 } else {
-                    this.queryCount("true");
+                    this.queryCount("true", false);
                 }
             } else {
                 $(event.currentTarget).unlock();
@@ -518,7 +518,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
             } else {
                 $(e.currentTarget).addClass("btn-outline");
                 $('label').children('input[type=checkbox][name=gamecheck]:checked').each(function () {
-                   if (apiTypeId.indexOf($(this).val()) > -1) {
+                    if (apiTypeId.indexOf($(this).val()) > -1) {
                         $(this).prop("checked", false);
                     }
                 });
@@ -560,7 +560,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
          * 重新计算分页
          * @param e
          */
-        queryCount: function (isCounter) {
+        queryCount: function (isCounter, isInitSelect) {
             var _this = this;
             var url = root + "/report/gameTransaction/count.html";
             if (isCounter) {
@@ -572,9 +572,11 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 type: 'POST',
                 success: function (data) {
                     $("#paginationDiv").html(data);
-                    _this.initSelect();
-                    $(_this.formSelector + " .search-wrapper [selectDiv]").attr("callback", "selectListChange");
-                    _this.pagination.processOrderColumnTag(_this);
+                    if(!isInitSelect && isInitSelect!=false) {
+                        _this.initSelect();
+                        //$(_this.formSelector + " .search-wrapper [selectDiv]").attr("callback", "selectListChange");
+                        _this.pagination.processOrderColumnTag(_this);
+                    }
                 },
                 error: function (data) {
 
