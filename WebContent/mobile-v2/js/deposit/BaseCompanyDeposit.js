@@ -23,16 +23,16 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                 if (document.activeElement) {
                     document.activeElement.blur();
                 }
-
-                var $form = $(_this.formSelector);
-                if (!$form.valid()) {
-                    return false;
+                if(!options.statusNum){
+                    var $form = $(_this.formSelector);
+                    if (!$form.valid()) {
+                        return false;
+                    }
                 }
-
                 var rechargeAmount = $("input[name='result.rechargeAmount']").val();
 
                 mui.ajax(root + options.submitUrl, {
-                    data: {"result.rechargeAmount": rechargeAmount,"result.rechargeType":options.type},
+                    data: {"result.rechargeAmount": rechargeAmount,"result.rechargeType":options.type,"statusNum":options.statusNum},
                     type: 'post',
                     async: false,
                     success: function (data) {
@@ -46,9 +46,17 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                             var pop = $("#pop").attr("pop");
                             if (pop === "true") {
                                 _this.bindReWriteAmount();
-                                _this.deposit(options.depositUrl);
+                                if(!options.statusNum){
+                                    _this.deposit(options.depositUrl);
+                                }else{
+                                    _this.gotoUrl(options.depositUrl+"&depositCash="+rechargeAmount);
+                                }
                             } else {
-                                _this.submitDeposit(options.depositUrl);
+                                if(!options.statusNum){
+                                    _this.submitDeposit(options.depositUrl);
+                                }else{
+                                    _this.gotoUrl(options.depositUrl+"&depositCash="+rechargeAmount);
+                                }
                             }
                         } else {
                             //验证提示
@@ -94,6 +102,7 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                         _this.reWriteAmount();
                         var html='<div class="masker" style="display:block;"></div>' +
                             '<div class="gb-withdraw-box window-ok" style="display:block;">' +
+                            '<a _href="/wallet/deposit/index.html" class="_again"><span style="color: #999;background-color: #fff;font-size: 20px"> X &nbsp;</span></a>' +
                             '<div class="cont">' +
                             '<div class="ok-box">' +
                             '<i class="ok-icon"></i>' +
@@ -126,7 +135,7 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
 
         depositAgain: function () {
             var _this = this;
-            mui('.cont').on('tap', '._again', function () {
+            mui('.window-ok').on('tap', '._again', function () {
                 if (_this.os == 'app_android') {
                     window.gamebox.depositAgain();
                 } else if(_this.os == 'app_ios'){
