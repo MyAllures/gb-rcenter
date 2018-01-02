@@ -106,6 +106,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 data:{
                     appKey:opt.appKey,
                     hostIp:opt.hostIp,
+                    port:opt.port,
                     appVersion:opt.appVersion,
                     versionName:opt.versionName,
                     serverApp:opt.serverApp
@@ -137,6 +138,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 data:{
                     appKey:opt.appKey,
                     hostIp:opt.hostIp,
+                    port:opt.port,
                     appVersion:opt.appVersion,
                     versionName:opt.versionName,
                     serverApp:opt.serverApp
