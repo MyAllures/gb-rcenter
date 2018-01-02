@@ -743,7 +743,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             };
             $.each(betForm.betOrders, function (index, value) {
                 ajaxData.betOrders.push({
-                    expect: value.expect,
+                    expect: $('font#expect').text(),
                     code: value.code,
                     betCode: value.betCode,
                     playCode: value.playCode,
