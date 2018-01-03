@@ -11,16 +11,46 @@
     <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
-    <link rel="stylesheet" href="../../mobile-v3/themes/black/style.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
 </head>
 
 <body>
 <!-- 侧滑导航根容器 -->
-<div class="mui-off-canvas-wrap">
+<div class="mui-off-canvas-wrap mui-draggable">
   <!-- 菜单容器 -->
   <aside class="mui-off-canvas-left">
     <div class="mui-scroll-wrapper side-menu-scroll-wrapper">
       <div class="mui-scroll">
+        <!-- 菜单具体展示内容 -->
+        <!--个人信息部分-->
+        <div class="person-info">
+        	<!--登录前-->
+        	<div class="un-login">
+        		<p>欢迎观临，请先登录</p>
+        		<a type="button" class="mui-btn mui-btn-success  btn-login">用户登录</a>
+        	</div>
+        	<!--登陆后-->
+        	<div class="login" hidden>
+        		<i class="icon-person"></i>
+        		<p>EVEN_999</p>
+        		<a type="button" class="mui-btn mui-btn-success  btn-person">个人中心</a>         		
+        	</div>
+        </div>	
+        <!--side-nav-->
+        <div class="side-nav">
+        	<ul class="mui-list-unstyled">
+        		<li class="active home"><a href="index.html">首页</a></li>
+        		<li class="question"><a href="">常见问题</a></li>
+        		<li class="reg_rules"><a href="">注册条款</a></li>
+        		<li class="about"><a href="about.html">关于我们</a></li>
+        		<li class="download"><a href="download.html">下载客户端</a></li>
+        		<li class="pc"><a href="">电脑版</a></li>
+        		<li class=" lang zh-CN">
+        			<a href="">语言</a>
+        		</li>
+        	</ul>
+        	<a type="button" class="mui-btn mui-btn-success  btn-logout">退出登录</a> 
+        </div>
       </div>
     </div>
   </aside>
@@ -58,82 +88,37 @@
                 </div>
         </div>
       </div><!--login-info end-->
-      <h1 class="mui-title">优惠记录</h1>
+      <h1 class="mui-title">优惠详情</h1>
     </header>
-    <div class="mui-content mui-scroll-wrapper content-without-notice content-without-footer">
+    <div class="mui-content mui-scroll-wrapper promo-detail-content content-without-notice content-without-footer">
       <div class="mui-scroll">
         <!-- 主界面具体展示内容 -->
-            <div class="promo-record-content">
-                <div class="promo-records-warp">
-                    <div class="mui-row">
-                        <div class="promo-box-left">
-                            <h5>最后一次红包</h5>
-                            <div class="text"><span class="sum">免稽核</span>
-                                <span class="time">2017-11-21 11:39:59</span>
-                            </div>
-                            <i class="pro-bg-left"></i>
-                        </div>
-                        <div class="promo-box-right promo-gray">
-                            <span class="num">￥2.88</span>
-                            <span class="annotation">未通过</span>
-                            <i class="pro-bg-right"></i>
-                            <div class="round radio-up"></div>
-                            <div class="round radio-dwon"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="promo-records-warp">
-                    <div class="mui-row">
-                        <div class="promo-box-left">
-                            <h5>红包w</h5>
-                            <div class="text"><span class="sum">免稽核</span>
-                                <span class="time">2017-11-20 10:48:33</span>
-                            </div>
-                            <i class="pro-bg-left"></i>
-                        </div>
-                        <div class="promo-box-right promo-green"><span class="num" >￥1.00</span>
-                            <span class="annotation">已发放</span>
-                            <i class="pro-bg-right"></i>
-                            <div class="round radio-up"></div>
-                            <div class="round radio-dwon"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="promo-records-warp">
-                    <div class="mui-row">
-                        <div class="promo-box-left">
-                            <h5>Water RedBag</h5>
-                            <div class="text"><span class="sum"><em class="org">10.00</em>倍稽核</span>
-                                <span class="time">2017-11-20 09:20:47</span>
-                            </div>
-                            <i class="pro-bg-left"></i>
-                        </div>
-                        <div class="promo-box-right promo-green"><span class="num">￥10.00</span>
-                            <span class="annotation">已发放</span>
-                            <i class="pro-bg-right"></i>
-                            <div class="round radio-up"></div>
-                            <div class="round radio-dwon"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="promo-records-warp">
-                    <div class="mui-row">
-                        <div class="promo-box-left">
-                            <h5>Water RedBag</h5>
-                            <div class="text"><span class="sum"><em class="org">10.00</em>倍稽核</span>
-                                <span class="time">2017-11-20 09:20:47</span>
-                            </div>
-                            <i class="pro-bg-left"></i>
-                        </div>
-                        <div class="promo-box-right promo-orange"><span class="num">￥10.00</span>
-                            <span class="annotation">待审核</span>
-                            <i class="pro-bg-right"></i>
-                            <div class="round radio-up"></div>
-                            <div class="round radio-dwon"></div>
-                        </div>
+		<div class="mui-row">
+            <div class="gb-select">
+                <div class="gb-imgs">
+                    <div class="ct">
+                        <ul>
+                            <li>
+                                <a href=""><img src="../../mobile-v3/images/img-sale1.jpg" alt=""></a>
+                                <div class="ct">
+                                    <h5><i></i><span>平台足够权威</span></h5>
+                                    <p>澳门永利娱乐场与BBIN集团进行技术合作，并获得GEOTRUST国际认证，确保网站公平、公正、公开。</p>
+                                    <h5><i></i><span>平台足够权威</span></h5>
+                                    <p>澳门永利娱乐场为亚洲最具公信力品牌之一，信誉领先排名，在海量娱乐城信息中独占前茅。</p>
+                                    <h5><i></i><span>平台足够权威</span></h5>
+                                    <p>澳门永利娱乐场雄厚的资金链信誉良好，大额存款无忧，资金安全有保障，免去您一切后顾之忧。</p>
+                                    <h5><i></i><span>平台足够权威</span></h5>
+                                    <p>澳门永利娱乐场24小时自由取款，取款3-5分钟火速到账，且终身免手续费。</p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            <div class="gb-form-foot" style="margin-top: -10px;">
+                <a href="" class="mui-btn mui-btn-primary submit">申请优惠</a>
+            </div>
+        </div>
       </div> <!--mui-scroll 闭合标签-->
     </div>  <!--mui-content 闭合标签-->
   
@@ -155,23 +140,6 @@
 	<li class="en-US"><a href="">English</a></li>
 	<li class="ja-JP"><a href="">日文</a></li>
 </ul>
-<div id="popover" class="mui-popover mui-popover-action mui-popover-bottom gb-popover" style="display: none;">
-    <ul class="mui-table-view">
-        <li class="mui-table-view-cell">
-            <a href="#">网银存款</a>
-        </li>
-        <li class="mui-table-view-cell">
-            <a href="#">柜员机现金存款</a>
-        </li>
-        <li class="mui-table-view-cell">
-            <a href="#">柜员机转账</a>
-        </li>
-        <li class="mui-table-view-cell">
-            <a href="#">银行柜台存款</a>
-        </li>
-    </ul>
-</div>
-</body>
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
 <script src="../../mobile-v3/js/common.js"></script>

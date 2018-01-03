@@ -146,7 +146,7 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 
 .desk div > img { width: 48px; margin-top: 6px; border-radius: 5px; }
 
-.desk .desk-text { font-size: 12px; }
+.desk .desk-text { font-size: 12px; color: #333; }
 
 .desk .desk-text em { display: inline-block; width: 27px; height: 15px; background-size: 27px auto !important; vertical-align: middle; margin: 0 5px; background: url(./images/desk.png) no-repeat top left; }
 
@@ -159,8 +159,13 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 .type-header .mui-btn:last-child { border-top-left-radius: 0; border-bottom-left-radius: 0; }
 .type-header .mui-btn.mui-active { background: #1766bb; }
 
+.mui-bar.mui-bar-blue { background-color: #1766bb; }
+
 .login-wrap, .register-wrap { position: fixed; height: 0; bottom: 0; left: 0; right: 0; z-index: 9999; overflow: hidden; transition: all 0.3s ease-in-out; }
 .login-wrap .mui-bar-nav, .register-wrap .mui-bar-nav { position: relative; }
+.login-wrap .mui-icon-arrowleft, .login-wrap .mui-title, .register-wrap .mui-icon-arrowleft, .register-wrap .mui-title { color: #fff; }
+
+.login-wrap .login-icon { background: url(./images/login-icon.png) 0 0/100%; width: 132.5px; height: 132.5px; margin: 17.5px auto 27px; }
 
 .mui-content-without-footer-address { padding: 44px 0 0 0 !important; }
 
@@ -170,11 +175,11 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 .type-content .mui-control-content .mui-input-group .mui-input-row { height: auto; }
 .type-content .mui-control-content .mui-input-group .mui-input-row:after { content: none; }
 .type-content .mui-control-content .mui-input-group .mui-input-row label, .type-content .mui-control-content .mui-input-group .mui-input-row input { float: none; }
-.type-content .mui-control-content .mui-input-group .mui-input-row label { padding: 0; width: 100px; display: block; font-size: 13px; color: #333; margin-bottom: 5px; line-height: 22px; height: 16px; }
-.type-content .mui-control-content .mui-input-group .mui-input-row input[type=text], .type-content .mui-control-content .mui-input-group .mui-input-row input[type=password] { border: 1px solid #999; width: 100%; margin: 5px 0; border-radius: 5px; padding: 0 15px; height: 35px; line-height: 35px; font-size: 13px; color: #333; }
+.type-content .mui-control-content .mui-input-group .mui-input-row label { padding: 0; width: 100px; display: block; font-size: 12px; color: #999; margin-bottom: 0; line-height: 16px; height: 16px; }
+.type-content .mui-control-content .mui-input-group .mui-input-row input[type=text], .type-content .mui-control-content .mui-input-group .mui-input-row input[type=password] { border: 1px solid #ddd; width: 100%; margin: 5px 0; border-radius: 5px; padding: 0 15px; height: 40px; line-height: 40px; font-size: 13px; color: #333; background: #fff; }
 .type-content .mui-control-content .mui-input-group .mui-input-row .mui-icon-eye, .type-content .mui-control-content .mui-input-group .mui-input-row .mui-icon-clear { top: 26px; height: 35px; line-height: 35px; }
-.type-content .mui-control-content .mui-input-group .mui-input-row .error-info { position: absolute; right: 0; top: 0; font-size: 13px; color: #999; }
-.type-content .mui-control-content .mui-input-group .mui-input-row .error-info .mui-icon-info { color: #f65d5d; font-size: 18px; }
+.type-content .mui-control-content .mui-input-group .mui-input-row .error-info { position: absolute; right: 0; top: 0; font-size: 12px; color: #333; }
+.type-content .mui-control-content .mui-input-group .mui-input-row .error-info .mui-icon-info { color: #f65d5d; font-size: 18px; margin-right: 5px; vertical-align: top; margin-top: 1px; }
 .type-content .mui-control-content .mui-input-group .mui-input-row .forget-pas { position: absolute; color: #999; right: 0; }
 .type-content .mui-control-content .mui-input-group .mui-input-row.password-input-row { height: 100px; }
 .type-content .mui-control-content .mui-input-group .mui-input-row .mui-input-select ~ .mui-icon-arrowdown { font-size: 20px; z-index: 1; right: 0; width: 38px; text-align: center; color: #999; top: 26px; height: 35px; line-height: 35px; position: absolute; }
@@ -191,5 +196,12 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 .type-content .mui-control-content .mui-input-group .icon-star { background: url(images/icon-star.png) no-repeat center/100%; display: inline-block; width: 12px; height: 12px; margin: 0 4px -1px; }
 
 .copy-right { font-size: 9px; color: #999; margin: 0 10px; text-align: center; border-top: 1px solid #efefef; padding: 10px 0 0; }
+
+/* 关于我们，注册条款 */
+[data-list="terms"], [data-list="about"] { padding: 0 5px; }
+
+/* 线上样式修复  */
+#transactionType { width: 141px; text-align: center; }
+#transactionType .mui-table-view-cell:after { right: 15px; }
 
 /*# sourceMappingURL=common.css.map */
