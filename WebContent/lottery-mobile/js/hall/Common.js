@@ -88,7 +88,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("div.s-menu").off('tap','a').on('tap', 'a', function () {
                 mui('.middle-content.middle-content-bat').scroll().scrollTo(0,0,100);
                 var _thiz=this;
-
                 setTimeout(function () {
                     _this.checkSubordinate($(_thiz).attr("data-code"), _thiz.classList);
                 },200);
