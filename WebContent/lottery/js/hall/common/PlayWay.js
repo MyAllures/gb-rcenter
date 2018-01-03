@@ -740,7 +740,6 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 _this.alertmsg("号码选择不完整，请重新选择");
                 return;
             }
-
             plSelVal=_this.checkTeshu(plSelName,plSelIndex);
 
             var obj = {};

@@ -284,6 +284,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 }
             });
         },
+
         showBetTemplate:function() {
             var _this = this;
             var contentFun = _this.getPlayPlFun_content();    // 内容算法
@@ -407,7 +408,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 _this.renderZhushu();
             });
 
-
             // 模式选择
             $(".mode_select").click(function() {
                 $(".mode_select.selected").removeClass("selected");
@@ -415,7 +415,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 // 渲染下注总额，奖金等等
                 _this.renderZhushu();
             });
-
 
             $(".beishu_add").click(function() {
                 $("#betContent_inputBeishu").val(parseInt($("#betContent_inputBeishu").val()) + 1);
@@ -432,7 +431,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 // 渲染下注总额，奖金等等
                 _this.renderZhushu();
             });
-
         },
 
         //获取注数
@@ -586,14 +584,16 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
         },
         //头部样式
         showTable : function (text,titleText,secondCode,$showId,topCode){
+            console.log(text+","+titleText+","+secondCode+","+$showId+","+topCode)
             if($showId !=""){
                 $("div.s-menu.second").hide();
                 $showId.show();
             }
             if(topCode !=""){
                 $(".s-title.title1 span").text($("a[data-code='"+topCode+"'] span").text());
-                if($("div.s-menu.top a.mui-active").size() ==0){
-                    $("a[data-code='"+topCode+"']").addClass("mui-active");
+                if (topCode != "" && $("div.s-menu.top a.mui-active").size() == 0) {
+                    $("div.s-menu").removeClass("mui-active");
+                    $("div.s-menu.top a[data-code='" + topCode + "']").addClass("mui-active");
                 }
             }else{
                 $(".s-title.title1 span").text(text);
@@ -604,7 +604,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             }
             $(".s-title.title2 span").text(text)
             $("a[data-code='"+secondCode+"']").addClass("mui-active");
-            $("a[data-code='"+secondCode+"'] span").text(text);
+            // $("a[data-code='"+secondCode+"'] span").text(text);
         },
 
         //选择大玩法，默认给一个小玩法。
@@ -743,7 +743,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             };
             $.each(betForm.betOrders, function (index, value) {
                 ajaxData.betOrders.push({
-                    expect: value.expect,
+                    expect: $('font#expect').text(),
                     code: value.code,
                     betCode: value.betCode,
                     playCode: value.playCode,

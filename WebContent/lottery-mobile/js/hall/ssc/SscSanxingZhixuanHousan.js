@@ -8,7 +8,7 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
         },
 
         getSecondText:function () {
-            return $("div#housan a.mui-active span").text()==""?"直选复式":$("div#housan a.mui-active span").text();
+            return $("div#housan a.main.mui-active span").text()==""?"直选复式":$("div#housan a.main.mui-active span").text();
         },
 
         getSecondCode:function(){
