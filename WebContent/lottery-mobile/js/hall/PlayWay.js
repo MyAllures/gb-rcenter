@@ -592,7 +592,8 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             if(topCode !=""){
                 $(".s-title.title1 span").text($("a[data-code='"+topCode+"'] span").text());
                 if (topCode != "" && $("div.s-menu.top a.mui-active").size() == 0) {
-                    $("div.s-menu.top a[data-code='" + topCode + "']").addClass("mui-active")
+                    $("div.s-menu").removeClass("mui-active");
+                    $("div.s-menu.top a[data-code='" + topCode + "']").addClass("mui-active");
                 }
             }else{
                 $(".s-title.title1 span").text(text);
