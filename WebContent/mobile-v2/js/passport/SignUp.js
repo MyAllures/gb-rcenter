@@ -77,7 +77,9 @@ function login() {
                 "password": _password
             },
             success: function (data) {
-                if(data){
+                sessionStorage.is_login = true;
+                window.location.href = "/index.html";
+                if(data != null){
                     if (data.success) {
                         sessionStorage.is_login = true;
                         window.location.href = "/index.html";

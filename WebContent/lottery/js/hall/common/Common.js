@@ -18,6 +18,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         T: null,
         //是否正在开奖中
         isOpened: null,
+        //判断是否在获取开奖号码
+        isGetOpen : null,
         //是否加载声音播放器
         isLoadSwf: null,
         //用于六合彩判断是否封盘
@@ -375,15 +377,20 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                                 _this.isOpened = setInterval(function () {
                                     _this.randomNumber(nb);
                                 }, 100);
+                                _this.isGetOpen = setInterval(function () {
+                                    _this.getOpenHistory();
+                                }, 15000);
                             }
                             // 循环读取开奖数据，15秒
-                            setTimeout(function () {
-                                _this.getOpenHistory();
-                            }, 15000);
-
+                            if (!_this.isGetOpen){
+                                _this.isGetOpen = setInterval(function () {
+                                    _this.getOpenHistory();
+                                }, 15000);
+                            }
                         } else {
                             if (_this.isOpened != null) {
                                 clearInterval(_this.isOpened);
+                                clearInterval(_this.isGetOpen);
                                 _this.isOpened = null;
                             }
                             $("#lastNumber").html($(".box1_name h2").html() + '第<var>' + open.expect + '</var>期');

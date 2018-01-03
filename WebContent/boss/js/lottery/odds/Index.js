@@ -137,6 +137,7 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
             var limit;
             var data = {};
             var rebateObj;
+            var code ;
             var cls = $("#gfwf.active");
             if (cls && cls.length>0) {
                 var rebate;
@@ -166,6 +167,12 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     minlimit = minlimit.toFixed(3);
                     betCode = String($(oddObj).find("input[name$=betCode]").val());
                     betNum = String($(oddObj).find("input[name$=betNum]").val());
+                    code = String($(oddObj).find("input[name$=code]").val());
+
+                    if (!$input.valid()|| !$rinput.valid()) {
+                        $target.unlock();
+                        return;
+                    }
                     //三星（一星，三星统一用二星的返点比例）混合组选（组六统一用组三返点比例）混合和值（统一用组三的返点比例）
                     if(("ssc_sanxing_zhixuan_hszh"==betCode && "三星"==betNum)||
                         ("ssc_sanxing_zhixuan_hszh"==betCode && "一星"==betNum)||
@@ -188,10 +195,6 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                         rebate = sameRebate2;
                     }
                     if (odd != ori || rebate !=rori) {
-                        if (!$input.valid()|| !$rinput.valid()) {
-                            $target.unlock();
-                            return;
-                        }
                         limit = $input.attr("data-limit");
                         rlimit = $rinput.attr("data-limit");
 
@@ -212,12 +215,14 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                         obj = {
                             'id': $(oddObj).find("input[name$=id]").val(),
                             'odd': odd,
-                            'betCode': null,
-                            'betNum': null,
+                            'betCode': betCode,
+                            'betNum': betNum,
                             'siteId': siteId,
-                            'code': null,
+                            'code': code,
                             'rebate':rebate,
-                            'baseNum':baseNum
+                            'baseNum':baseNum,
+                            'oldOdd':ori,
+                            'oldRebate':rori
                         };
                         array.push(obj);
                     }
@@ -292,11 +297,15 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     $input = $(oddObj).find("input.form-control");
                     odd = Number($input.val());
                     ori = Number($input.attr("data-value"));
+                    code = String($(oddObj).find("input[name$=code]").val());
+                    betNum = String($(oddObj).find("input[name$=betNum]").val());
+                    betCode = String($(oddObj).find("input[name$=betCode]").val());
+
+                    if (!$input.valid()) {
+                        $target.unlock();
+                        return;
+                    }
                     if (odd != ori) {
-                        if (!$input.valid()) {
-                            $target.unlock();
-                            return;
-                        }
                         limit = $input.attr("data-limit");
                         //超过赔率定义上限需提示
                         if (odd > limit) {
@@ -308,10 +317,11 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                         obj = {
                             'id': $(oddObj).find("input[name$=id]").val(),
                             'odd': odd,
-                            'betCode': null,
-                            'betNum': null,
+                            'betCode': betCode,
+                            'betNum': betNum,
                             'siteId': siteId,
-                            'code': null
+                            'code': code,
+                            'oldOdd':ori
                         };
                         array.push(obj);
                     }

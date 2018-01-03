@@ -67,9 +67,12 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
                 return;
             }
             var betForm = this.getBetOrder();
+            if(betForm == undefined){
+                return;
+            }
             this.betForm = betForm;
             var _this = this;
-            sessionStorage.betForm = JSON.stringify(betForm);
+            /*sessionStorage.betForm = JSON.stringify(betForm);*/
             this.placeOrder(betForm);
             $("#dingdan").addClass('mui-active');
             //重新操作表单
@@ -128,6 +131,10 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
                 quantity: 0
             };
             var count = chooseArr.length;
+            if(count>1200){
+                mui.toast("注数过大");
+                return;
+            }
             for(var i = 0; i < count; i++){
                 var value = chooseArr[i];
                 betForm.betOrders.push({
@@ -143,14 +150,24 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
                 betForm.totalMoney += betAmount;
                 betForm.quantity++;
             }
+
             return betForm;
         },
 
         //点击投注选项
         bindTdInput: function (obj) {
+            //限制三全中,四全中,三中二注数
+            var minNum = parseInt($("a.main.mui-active").attr("min-num"))+8;
+            var name = $("a.main.mui-active").attr("data-code");
             var flag = $(obj).is('.not-selected');
             if (!flag) {
                 $(obj).toggleClass('mui-active');
+                if(name=="三全中" || name=="四全中" || name=="三中二"){
+                    if($("td.mui-active").length>minNum){
+                        mui.toast("注数过大");
+                        $(obj).removeClass('mui-active');
+                    }
+                }
             }
             var arrLength = $("div.bet-table-list .mui-active").length;
             $("#quantity").text(this.combinationNum(arrLength,$("#minNum").text()));
