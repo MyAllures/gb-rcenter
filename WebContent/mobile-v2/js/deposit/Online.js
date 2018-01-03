@@ -14,7 +14,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
 
         bindEvent: function () {
             this._super();
-            $("body").on("click","ul :radio",function () {
+            $("body").on("click", "ul :radio", function () {
                 $("#activityId").val($(this).val());
             });
         },
@@ -43,7 +43,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
             if (this.os == 'app_android') {
                 this.back();//app跳转时需要刷新页面
                 this.gotoUrl(url);
-            } else if(this.os == 'app_ios') {
+            } else if (this.os == 'app_ios') {
                 this.back();
                 gotoCustom(url);
             } else {
@@ -154,6 +154,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                         document.getElementById('selectText').innerHTML = item.text;
                         document.getElementById('onlinePayMin').value = item.min;
                         document.getElementById('onlinePayMax').value = item.max;
+                        document.getElementsByName('account').value = item.account;
                     });
                 }, false);
             }
@@ -162,24 +163,29 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
 
         submit: function () {
             var _this = this;
-            
-            mui(".mui-scroll2").off("tap","#submitAmount");
+
+            mui(".mui-scroll2").off("tap", "#submitAmount");
             mui(".mui-scroll2").on("tap", "#submitAmount", function () {
                 if (document.activeElement) {
                     document.activeElement.blur();
                 }
-                
+
                 var $form = $(page.formSelector);
                 if (!$form.valid()) {
                     return false;
                 }
-                
+
                 var rechargeAmount = $("input[name='result.rechargeAmount']").val();
                 var payerBank = $("input[name='result.payerBank']").val();
                 var rechargeType = $("input[name='result.rechargeType']").val();
-
+                var account = $("input[name='account']").val();
                 mui.ajax(root + '/wallet/deposit/online/submit.html', {
-                    data: {"result.rechargeAmount": rechargeAmount, "result.payerBank": payerBank,"result.rechargeType": rechargeType},
+                    data: {
+                        "result.rechargeAmount": rechargeAmount,
+                        "result.payerBank": payerBank,
+                        "result.rechargeType": rechargeType,
+                        "account": account
+                    },
                     type: 'post',
                     async: false,
                     success: function (data) {
@@ -196,7 +202,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                                 _this.deposit();
                             } else {
                                 _this.submitDeposit();
-                            }    
+                            }
                         } else {
                             //验证提示
                             _this.toast($("#tips").attr("tips"));
@@ -219,7 +225,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
             });
         },
 
-        submitDeposit:function () {
+        submitDeposit: function () {
             var _this = this;
 
             var $form = $(page.formSelector);
@@ -228,7 +234,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
             }
 
             var data = $form.serialize();
-            if(_this.os != "app_android" && _this.os != "app_ios") {
+            if (_this.os != "app_android" && _this.os != "app_ios") {
                 var newWindow = window.open("about:blank", '_blank');
                 if (newWindow) {
                     newWindow.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");

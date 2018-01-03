@@ -17,7 +17,7 @@ define([], function () {
             //在首页用sessionStorage判断登录状态
             if ((href.indexOf('/mainIndex.') > 0 || href.indexOf('/game.') > 0) && sessionStorage.is_login != 'true') return false;
 
-            if (isLogin === 'true') _this.getAllApiBalance();
+            if (sessionStorage.is_login === 'true') _this.getAllApiBalance();
 
             mui('.mui-bar-nav').on('tap', '.menu', function () {
                 if (document.activeElement) {

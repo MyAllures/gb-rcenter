@@ -133,10 +133,10 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
             })
         },
 
-        /*reWriteAmount: function () {
+        reWriteAmount: function () {
             $("#master").remove();
             $(".pro-window").remove();
-        },*/
+        },
 
         bindReWriteAmount: function () {
             var _this = this;
