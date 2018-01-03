@@ -13,19 +13,19 @@
     }
 }
 .yjym{color: #333;background: #e2e2e2;border-top: 1px solid #c4c4c4;}
-.mui-content{background: #fff;}
+.mui-content{background: #fff;
+    &.promo-record-content{background: #f2f2f2;}
+}
 /* notice */
 .notice{background: #fff;
     .btn-title{background: #168df6;border: 1px solid #168df6;}
     .notice-list{
-        p{
             a{color: #333;}
-        }
     }
 }
 /* nav */
 .nav{background:#fff url(./images/nav-bg.png) 0 0/100% 60px repeat-x;border-top: 1px solid #d1d1d1;position: relative;
-    &:after{content: '';position: absolute;height: 1px;background: #d1d1d1;bottom: 4px;left: 0;right: 0;}
+    &:after{content: '';position: absolute;height: 1px;background: #d1d1d1;bottom: 3px;left: 0;right: 0;}
     .swiper-slide{ color: #333;position: relative;
         &.swiper-slide-active{
             &:after{    content: '';   position: absolute;   top: 0;   left: 50%;   margin-left: -32px;    z-index:1;    width: 64px;    height: 70px;    background: url(images/nav-item-active-bg.png) center top/64px 66px no-repeat;}
@@ -145,3 +145,34 @@
         img{width: 48px;}
     }
 }
+/* index-login-info */
+.login-info{
+    .money{    background: url(images/icon-wallet.png) no-repeat 0 2px/10px;}
+    .ex{
+        border: 1px solid #ccc;
+        box-shadow: -1px 1px 1px rgba(0,0,0,0.2);
+        background-color: #fff;
+        hr{    border-bottom: 1px solid #f2f2f2;}
+        table{           
+            tr{
+                td{color: #333;}
+            }
+        }
+        .bar-asset{padding-right: 0; color: #1b75d9;}
+        .bar-wallet{color: #0ec392;}
+        .zzc,.qb{background: #1b75d9;width: 40px;
+    color: #fff;display: inline-block;line-height: 1;text-align: center;
+    padding: 4px 5px;
+    border-radius: 3px;}
+        .qb{background: #0ec392;}
+        .ct{
+            p{
+                .go{
+                    &.btn-refresh{background:#1b75d9;}
+                    &.btn-deposit{background:#0ec392;}
+                }
+            }
+        }
+    }
+}
+.ball-pulse.api-div div{background-color: #333;}

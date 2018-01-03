@@ -55,10 +55,10 @@
 			<button type="button" class="mui-btn mui-btn-primary btn-title">公告</button>
 			<div class="notice-list">
 				<div class="marquee">
-					<a href="" >111尊敬的用户您好！本站于20161206进行升级！</a>
-					<a href="">222尊敬的用户您好！本站于20161206进行升级！</a>
-					<a href="">333尊敬的用户您好！本站于20161206进行升级！</a>
-					<a href="">444尊敬的用户您好！本站于20161206进行升级！</a>
+					<a href="" >111尊敬的用户您好！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！</a>
+					<a href="">222尊敬的用户您好！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！</a>
+					<a href="">333尊敬的用户您好！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！</a>
+					<a href="">444尊敬的用户您好！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！</a>
 				</div>
 			</div>
 		</section>
@@ -848,6 +848,16 @@
 <script type="text/javascript">	
 	//首页脚本
 	$(function(){
+	/*侧滑菜单脚本*/
+	$(".index-canvas-wrap").on("tap",".mui-icon-closeempty",function(e){
+		//e.preventDefault();
+		$("html").removeClass("index-canvas-show");
+	});
+	$(".index-canvas-wrap").on("tap",function(e){// 点击侧边空白隐藏侧边栏
+		if(!$(e.detail.target).parents(".mui-off-canvas-left")[0]){
+		$("html").removeClass("index-canvas-show");
+		}
+	});	
 		// api滑动
 	    var slideContent = new Swiper('.slide-content', {
 	      loop:true,
@@ -886,6 +896,13 @@
 		/* 公告初始化 */
 		$('.marquee').marquee({
 			 duration: 6000
+		});
+		// 阻止底部页面滚动
+		$(".register-wrap").on("touchstart",function(e){
+			e.preventDefault();
+		});
+		$(".login-wrap").on("touchstart",function(e){
+			e.preventDefault();
 		});
 	});
 	$(function(){		

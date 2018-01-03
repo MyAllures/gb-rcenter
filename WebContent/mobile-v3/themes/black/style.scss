@@ -9,32 +9,26 @@ header{
     a.mui-icon-bars{color: #fff;}
     .btn-login{background-color: #1dc28e;border: 1px solid #1dc28e;}
     .btn-demo{background-color: #f9b808;border: 1px solid #f9b808;}
-    .yjym{    color: #fff;  background: #353535;  border-top: 1px solid #111;}
     .btn-download { background: url(images/icon-download.png) center/24px no-repeat;  }
   }
 }
 
+.yjym{    color: #fff;  background: #353535;  border-top: 1px solid #111;}
 /* notice */
 .notice{background: #151515;
   .btn-title{background: #168df6;border: 1px solid #168df6;}
-  .notice-list{
-    p{
-      a{color: #fff;}
-    }
+  .notice-list{      
+      a{color: #fff !important;}
   }
 }
 /* nav */
-.nav{background:url(./images/nav-bg.png) 0 0/100% 56px repeat-x;border-top: 1px solid #151515;position: relative;
-  &:after{content: '';position: absolute;height: 1px;background: #252525;bottom: 7px;left: 0;right: 0;}
-  .mui-scroll-wrapper{
-    .mui-scroll{
-      .mui-control-item{ color: #fff;position: relative;
-        &.mui-active{
-          &:after{    content: '';   position: absolute;   top: 0;   left: 50%;   margin-left: -32px;    z-index: -1;    width: 64px;    height: 70px;    background: url(images/nav-item-active-bg.png) center top/64px 61px no-repeat;}
+.nav{background:#151515 url(./images/nav-bg.png) 0 0/100% 60px repeat-x;border-top: 1px solid #d1d1d1;position: relative;
+    &:after{content: '';position: absolute;height: 1px;background: #d1d1d1;bottom: 4px;left: 0;right: 0;}
+    .swiper-slide{ color: #fff;position: relative;
+        &.swiper-slide-active{
+            &:after{    content: '';   position: absolute;   top: 0;   left: 50%;   margin-left: -32px;    z-index:1;    width: 64px;    height: 70px;    background: url(images/nav-item-active-bg.png) center top/64px 66px no-repeat;}
         }
-      }
     }
-  }
 }
 /* mui-content */
 .mui-bar-nav ~ .mui-content{background-color: #151515;}

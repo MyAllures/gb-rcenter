@@ -2,6 +2,8 @@
 /* commonstyle all the pages need to include */
 body { font-size: 13px; }
 
+.mui-popup { width: 87.5%; -webkit-transform: translate3d(-50%, 0, 0) scale(0); transform: translate3d(-50%, 0, 0) scale(0); top: 10px; }
+
 header.mui-bar-nav .logo { height: 28px; position: absolute; left: 44px; top: 0; bottom: 0; margin: auto; }
 header.mui-bar-nav .btn-login, header.mui-bar-nav .btn-demo, header.mui-bar-nav .btn-register { margin-left: 5px !important; padding: 4px 5px; font-size: 12px; top: 10px; }
 header.mui-bar-nav .btn-download { display: inline-block; width: 24px; height: 24px; background: url(images/icon-download.png) center/24px no-repeat; margin: 10px; float: left; }
@@ -26,20 +28,21 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 .notice .notice-list .marquee { width: 100%; overflow: hidden; }
 .notice .notice-list .marquee a { font-size: 13px; color: #333; }
 
-.notice-slider { padding-bottom: 21px; height: 240px; }
+.notice-slider { padding-bottom: 21px; height: 320px; }
 .notice-slider .mui-slider-group { height: 100%; }
-.notice-slider .mui-slider-item a { line-height: 18px !important; font-size: 12px; color: #666; }
-.notice-slider .mui-slider-indicator { bottom: -5px; }
+.notice-slider .mui-slider-item a { line-height: 18px !important; font-size: 13px; color: #666; display: block; border-bottom: 1px dashed #666; margin-bottom: 10px; padding-bottom: 10px; }
 
-.notice-alert { border-radius: 8px; width: 87.5%; }
+.notice-alert { border-radius: 8px; }
+.notice-alert.mui-popup-in { transform: translate3d(-50%, 0, 0) scale(1); top: 10px; }
 .notice-alert .mui-popup-inner { border-radius: 0; }
+.notice-alert .mui-popup-inner .mui-popup-text { margin: 12px 0 0; }
 .notice-alert .mui-popup-button { border-radius: 0 !important; font-size: 15px; }
-.notice-alert .mui-popup-title { background: url(images/notice-title-bg.png) no-repeat center/auto 8px; font-size: 15px; color: #333; }
+.notice-alert .mui-popup-title { font-size: 15px; color: #333; height: 29px; margin: 0 -15px; border-bottom: 1px solid #0003; }
 
 /* nav */
 .nav { height: 66px; display: block; padding: 0 8px; }
 .nav .swiper-container { height: 65px; }
-.nav .swiper-slide { font-size: 13px; height: 61px; width: 63px; text-align: center; padding: 27px 0 0; line-height: 32px; }
+.nav .swiper-slide { font-size: 13px; height: 61px; display: inline-block; width: 63px; text-align: center; padding: 27px 0 0; line-height: 32px; }
 .nav .swiper-slide > span { position: relative; z-index: 2; }
 .nav .swiper-slide.swiper-slide-active { border-bottom: 0; }
 .nav .swiper-slide.swiper-slide-active > span { color: #1279d9; }
@@ -107,7 +110,7 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 .lang-menu li.ja-JP:after { background-position: 0 -32px; }
 .lang-menu li a { display: block; width: 100%; height: 100%; font-size: 0; }
 
-.mui-bar-nav { z-index: 2008; }
+.mui-bar-nav { z-index: 997; }
 
 /* index-canvas-show 首页的侧滑菜单 */
 .index-canvas-wrap { position: absolute; top: 0; bottom: 0; z-index: 9999; left: -100%; -webkit-transition: all 0.5s  ease-in-out; transition: all 0.5s  ease-in-out; }
@@ -118,8 +121,22 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 .index-canvas-show body { overflow: hidden; position: fixed; top: 0; left: 0; bottom: 0; right: 0; }
 .index-canvas-show .index-canvas-wrap { left: 0; }
 
+/* index-login-info */
+.login-info { display: inline-block; height: 24px; padding-right: 10px; margin-top: 10px; min-width: 40px; float: right; position: relative; }
+.login-info .user_name, .login-info .money { font-size: 9px; text-align: right; line-height: 13px; }
+.login-info .money { padding-left: 10px; height: 14px; line-height: 14px; }
+.login-info .ex { width: 190px; background-color: rgba(102, 102, 102, 0.98); padding-left: 20px; position: absolute; top: 34px; padding-top: 5px; -webkit-transition: all 0.3s; transition: all 0.3s; right: -205px; height: 400px; z-index: 10; border-right: 0; }
+.login-info .ex.open { right: -10px; }
+.login-info .ex hr { border-top: 0; border-bottom: 1px solid #909090; margin: 5px 0; }
+.login-info .ex table { width: 160px; }
+.login-info .ex table tr td { color: #fff; font-size: 10px; line-height: 20px; text-transform: uppercase; }
+.login-info .ex table tr td:last-child { text-align: right; }
+.login-info .ex .ct { position: absolute; bottom: 0; left: 20px; width: 150px; }
+.login-info .ex .ct p .go { display: block; height: 35px; line-height: 35px; color: #fff; font-size: 10px; background-color: #403f3f; font-size: 13px; border-radius: 5px; text-align: center; }
+.login-info .mui-scroll-wrapper.mui-assets { top: 68px; height: 230px; left: 20px; }
+
 /* 添加到桌面图标 */
-.desk { position: fixed; z-index: 9999; background: #ffffffe6; left: 50%; margin-left: -150px; width: 300px; height: 60px; border-radius: 4px; bottom: 70px; }
+.desk { position: fixed; z-index: 902; background: #ffffffe6; left: 50%; margin-left: -150px; width: 300px; height: 60px; border-radius: 4px; bottom: 70px; }
 
 .desk .logo { width: 60px; height: 60px; float: left; text-align: center; line-height: 60px; }
 

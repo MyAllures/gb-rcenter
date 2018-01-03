@@ -11,15 +11,16 @@ header.mui-bar-nav .mui-action-back { color: #666; }
 .yjym { color: #333; background: #e2e2e2; border-top: 1px solid #c4c4c4; }
 
 .mui-content { background: #fff; }
+.mui-content.promo-record-content { background: #f2f2f2; }
 
 /* notice */
 .notice { background: #fff; }
 .notice .btn-title { background: #168df6; border: 1px solid #168df6; }
-.notice .notice-list p a { color: #333; }
+.notice .notice-list a { color: #333; }
 
 /* nav */
 .nav { background: #fff url(./images/nav-bg.png) 0 0/100% 60px repeat-x; border-top: 1px solid #d1d1d1; position: relative; }
-.nav:after { content: ''; position: absolute; height: 1px; background: #d1d1d1; bottom: 4px; left: 0; right: 0; }
+.nav:after { content: ''; position: absolute; height: 1px; background: #d1d1d1; bottom: 3px; left: 0; right: 0; }
 .nav .swiper-slide { color: #333; position: relative; }
 .nav .swiper-slide.swiper-slide-active:after { content: ''; position: absolute; top: 0; left: 50%; margin-left: -32px; z-index: 1; width: 64px; height: 70px; background: url(images/nav-item-active-bg.png) center top/64px 66px no-repeat; }
 
@@ -89,5 +90,19 @@ header.mui-bar-nav .mui-action-back { color: #666; }
 .loading-wrap .loading-img img { vertical-align: middle; }
 .loading-wrap .loading-entirety { background: rgba(255, 255, 255, 0.95); width: 64px; height: 64px; line-height: 63px; border-radius: 12px; }
 .loading-wrap .loading-entirety img { width: 48px; }
+
+/* index-login-info */
+.login-info .money { background: url(images/icon-wallet.png) no-repeat 0 2px/10px; }
+.login-info .ex { border: 1px solid #ccc; box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2); background-color: #fff; }
+.login-info .ex hr { border-bottom: 1px solid #f2f2f2; }
+.login-info .ex table tr td { color: #333; }
+.login-info .ex .bar-asset { padding-right: 0; color: #1b75d9; }
+.login-info .ex .bar-wallet { color: #0ec392; }
+.login-info .ex .zzc, .login-info .ex .qb { background: #1b75d9; width: 40px; color: #fff; display: inline-block; line-height: 1; text-align: center; padding: 4px 5px; border-radius: 3px; }
+.login-info .ex .qb { background: #0ec392; }
+.login-info .ex .ct p .go.btn-refresh { background: #1b75d9; }
+.login-info .ex .ct p .go.btn-deposit { background: #0ec392; }
+
+.ball-pulse.api-div div { background-color: #333; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,3 +1,4 @@
+
 $(function(){
 		/*页面整体滚动*/
 	mui('.mui-content.mui-scroll-wrapper').scroll({
@@ -17,32 +18,28 @@ $(function(){
 	mui(".notice .notice-list").on("tap","a",function(){
 		var noticeA =noticeIndicator="";
 		$(".notice .notice-list .marquee a").each(function(){//生成公告html和indicator
-			noticeA+="<div class='mui-slider-item'><div class='mui-scroll-wrapper'><div class='mui-scroll'><a href='javascript:'>"+$(this).html()+"</a></div></div></div>";
-			noticeIndicator+="<div class='mui-indicator'></div>"
+			noticeA+="<a href='javascript:'>"+$(this).html()+"</a>";
 		});
-		var noticeHtml = $('<div><div class="mui-slider notice-slider"><div class="mui-slider-group">'+noticeA+'</div><div class="mui-slider-indicator">'+noticeIndicator+'</div></div></div></div>');
+		var noticeHtml = $('<div>' +
+			'<div class="mui-slider notice-slider">' +
+				'<div class="mui-slider-group">' +
+					'<div class="mui-slider-item">' +
+						'<div class="mui-scroll-wrapper">' +
+							'<div class="mui-scroll">'+noticeA+'</div>' +
+						'</div>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+			'</div>');
 		var alertNotice = mui.alert(noticeHtml.html(),"公告","关闭");
 		$(alertNotice.element).addClass('notice-alert');// 定义弹窗的class,方便修改样式
-		var index = $(this).index();//当前点击的公告index
-		//初始化notice-slider
-		var notice = mui('.notice-alert .mui-slider');
-		notice.slider({
-		  interval:3000//自动轮播周期，若为0则不自动播放，默认为0；
-		});
+		$(".notice-slider").css({height:$(window).height()*0.7})
 		mui(".notice-slider .mui-scroll-wrapper").scroll();
-		//点击公告，轮播跳转到对应的位置
-		$(".notice-slider .mui-indicator").removeClass("mui-active");
-		$(".notice-slider .mui-indicator:eq("+index+")").addClass("mui-active");
-		notice.slider().gotoItem(index);
 	});
 	/*侧滑菜单脚本*/
 	$(".mui-bar").on("tap",".mui-action-menu",function(){
 		$("html").toggleClass("index-canvas-show");
 		mui('.index-canvas-wrap .mui-scroll-wrapper').scroll();
-	});
-	$(".index-canvas-wrap").on("tap",".mui-icon-closeempty",function(e){
-		//e.preventDefault();
-		$("html").removeClass("index-canvas-show");
 	});
 		/*关闭侧滑菜单*/
 	$(".mui-inner-wrap").on("tap",function(event){
@@ -116,9 +113,19 @@ $(function(){
 		$(".lottery-content .mui-control-content").removeClass("mui-active");
 		var index = $(this).index();
 		$(this).parents(".lottery-nav").next().find(".mui-control-content").eq(index).addClass("mui-active");
-		$(this).parents(".swiper-wrapper").css({// 动态计算滑动内容的高度
+		// 动态计算滑动内容的高度
+		$(this).parents(".swiper-wrapper").css({
 			height:$(this).parents(".lottery-nav").next().find(".mui-control-content").eq(index).outerHeight()+48
 		});
+	});
+	// 导航点击下面滑块高度问题bug解决
+	$(".swiper-container.slide-indicators").on("tap",".swiper-slide",function(e){
+		var index = $(this).data("swiper-slide-index");
+		var targetSlide = $(".slide-content .swiper-slide[data-swiper-slide-index="+index+"]")[0];
+		console.log($(targetSlide).outerHeight());
+		setTimeout(function(){// 滑动循环最后一个有延迟，设个定时器抵消延迟的效果
+			$(".slide-content>.swiper-wrapper").css({height:$(targetSlide).outerHeight()});
+		},100);		
 	});
 	// 关闭红包
 	$("#hongbao").on("tap",".icon-close",function(e){
