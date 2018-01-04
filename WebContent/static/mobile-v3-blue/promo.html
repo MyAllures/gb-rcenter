@@ -10,8 +10,9 @@
     <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
     <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
-    <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
-    <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />  
+    <link rel="stylesheet" href="../../mobile-v3/themes/loading.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/blue/style.css" />
 </head>
 
 <body>
@@ -35,26 +36,22 @@
         		<p>EVEN_999</p>
         		<a type="button" class="mui-btn mui-btn-success  btn-person">个人中心</a>         		
         	</div>
-        </div>	
-        <!--side-nav-->
-        <div class="side-nav">
-        	<ul class="mui-list-unstyled">
-        		<li class="active home"><a href="index.html">首页</a></li>
-        		<li class="pro"><a href="promo.html">优惠活动</a></li>
-        		<li class="download"><a href="">下载客户端</a></li>
-        		<li class="pc"><a href="">电脑版</a></li>
-        		<li class="trans"><a href="">转账</a></li>
-        		<li class="deposit"><a href="">账户存款</a></li>
-        		<li class="about"><a href="">关于我们</a></li>
-        		<li class="question"><a href="">常见问题</a></li>
-        		<li class="service"><a href="">在线客服</a></li>
-        		<li class="reg_rules"><a href="">注册条款</a></li>
-        		<li class=" lang zh-CN">
-        			<a href="">语言</a>
-        		</li>
-        	</ul>
-        	<a type="button" class="mui-btn mui-btn-success  btn-logout">退出登录</a> 
         </div>
+		  <!--side-nav-->
+		  <div class="side-nav">
+			  <ul class="mui-list-unstyled">
+				  <li class="active home"><a href="index.html">首页</a></li>
+				  <li class="question"><a href="">常见问题</a></li>
+				  <li class="reg_rules"><a href="">注册条款</a></li>
+				  <li class="about"><a href="about.html">关于我们</a></li>
+				  <li class="download"><a href="download.html">下载客户端</a></li>
+				  <li class="pc"><a href="">电脑版</a></li>
+				  <li class=" lang zh-CN">
+					  <a href="">语言</a>
+				  </li>
+			  </ul>
+			  <a type="button" class="mui-btn mui-btn-success  btn-logout">退出登录</a>
+		  </div>
       </div>
     </div>
   </aside>
@@ -69,21 +66,55 @@
         <div class="ex">
             <table>
                 <tr>
-                    <td>总资产</td>
-                    <td><span class="bar-asset" style="padding-right: 0; color: #ffffff">￥0</span></td>
+                    <td><span class="zzc">总资产</span></td>
+                    <td><span class="bar-asset" >￥0</span></td>
                 </tr>
             </table>
             <hr>
             <table>
                 <tr>
-                    <td>钱包</td>
-                    <td class="bar-wallet">￥0</td>
+                    <td><span class="qb">钱包</span></td>
+                    <td class="bar-wallet" >￥0</td>
                 </tr>
             </table>
             <hr>
             <div class="mui-scroll-wrapper mui-assets">
                 <div class="mui-scroll">
-                    <table id="api-balance"><tbody><tr><td>DS 贵宾厅</td><td class="_money" id="_api_1">￥0</td></tr><tr><td>KG彩票</td><td class="_money" id="_api_2">￥0</td></tr><tr><td>MG电子</td><td class="_money" id="_api_3">￥0</td></tr><tr><td>IM体育</td><td class="_money" id="_api_4">￥0</td></tr><tr><td>GD 锦绣厅</td><td class="_money" id="_api_5">￥0</td></tr><tr><td> PT电子</td><td class="_money" id="_api_6">￥0</td></tr><tr><td>OG 东方厅</td><td class="_money" id="_api_7">￥0</td></tr><tr><td>AG大厅</td><td class="_money" id="_api_9">￥0</td></tr><tr><td>BBIN大厅</td><td class="_money" id="_api_10">￥0</td></tr><tr><td>皇冠体育</td><td class="_money" id="_api_12">￥0</td></tr><tr><td>HB电子</td><td class="_money" id="_api_15">￥0</td></tr><tr><td>Ebet如意厅</td><td class="_money" id="_api_16">￥0</td></tr><tr><td>SA澳门厅</td><td class="_money" id="_api_17">￥0</td></tr><tr><td>沙巴体育</td><td class="_money" id="_api_19">￥0</td></tr><tr><td>BSG电子</td><td class="_money" id="_api_20">￥0</td></tr><tr><td>LT彩票</td><td class="_money" id="_api_22">￥0</td></tr><tr><td>OPUS体育</td><td class="_money" id="_api_23">￥0</td></tr><tr><td>OPUS幸运厅</td><td class="_money" id="_api_24">￥0</td></tr><tr><td>SG电子</td><td class="_money" id="_api_25">￥0</td></tr><tr><td>PNG电子</td><td class="_money" id="_api_26">￥0</td></tr></tbody></table>
+                    <table id="api-balance">
+                    	<tbody>
+                    		<tr>
+                    			<td>DS 贵宾厅</td>
+                    			<td class="_money" id="_api_1">
+                    			<div class="loader api-loader">
+                    				<div class="loader-inner ball-pulse api-div">
+                    					<div></div>
+                    					<div></div>
+                    					<div></div>
+                    				</div>
+                    			</div>
+                    			</td>
+                    		</tr>
+                    		<tr><td>KG彩票</td><td class="_money" id="_api_2">￥0</td></tr>
+                    		<tr><td>MG电子</td><td class="_money" id="_api_3">￥0</td></tr>
+                    		<tr><td>IM体育</td><td class="_money" id="_api_4">￥0</td></tr>
+                    		<tr><td>GD 锦绣厅</td><td class="_money" id="_api_5">￥0</td></tr>
+                    		<tr><td> PT电子</td><td class="_money" id="_api_6">￥0</td></tr>
+                    		<tr><td>OG 东方厅</td><td class="_money" id="_api_7">￥0</td></tr>
+                    		<tr><td>AG大厅</td><td class="_money" id="_api_9">￥0</td></tr>
+                    		<tr><td>BBIN大厅</td><td class="_money" id="_api_10">￥0</td></tr>
+                    		<tr><td>皇冠体育</td><td class="_money" id="_api_12">￥0</td></tr>
+                    		<tr><td>HB电子</td><td class="_money" id="_api_15">￥0</td></tr>
+                    		<tr><td>Ebet如意厅</td><td class="_money" id="_api_16">￥0</td></tr>
+                    		<tr><td>SA澳门厅</td><td class="_money" id="_api_17">￥0</td></tr>
+                    		<tr><td>沙巴体育</td><td class="_money" id="_api_19">￥0</td></tr>
+                    		<tr><td>BSG电子</td><td class="_money" id="_api_20">￥0</td></tr>
+                    		<tr><td>LT彩票</td><td class="_money" id="_api_22">￥0</td></tr>
+                    		<tr><td>OPUS体育</td><td class="_money" id="_api_23">￥0</td></tr>
+                    		<tr><td>OPUS幸运厅</td><td class="_money" id="_api_24">￥0</td></tr>
+                    		<tr><td>SG电子</td><td class="_money" id="_api_25">￥0</td></tr>
+                    		<tr><td>PNG电子</td><td class="_money" id="_api_26">￥0</td></tr>
+                    	</tbody>
+                    </table>
                 </div>
             </div>
             <div class="ct">
@@ -93,12 +124,12 @@
         </div>
       </div><!--login-info end-->
       <h1 class="mui-title">优惠活动</h1>
-      <!--易记域名-->
-      <section class="yjym">易记域名：www.1136.mb.com</section>
     </header>
     <div class="mui-content mui-scroll-wrapper">
       <div class="mui-scroll">
         <!-- 主界面具体展示内容 -->
+      <!--易记域名-->
+      <section class="yjym">易记域名：www.1136.mb.com</section>
         <!--优惠列表-->
         <section class="promo">
         	<div class="promo-sorts">
@@ -137,16 +168,6 @@
 	        <span class="mui-tab-label">我的</span>
 	    </a>
 	</footer>   
-	<!--浮窗广告轮播-->
-	<div class="ads-slider">
-		<a href="javascript:" class="close-ads"></a>
-		<div class="mui-slider">
-		  <div class="mui-slider-group">
-		    <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/ads-banner-01.png" /></a></div>
-		    <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/ads-banner-01.png" /></a></div>
-		  </div>
-		</div>		
-	</div>
   </div>
 </div>
 <!--语言弹窗-->

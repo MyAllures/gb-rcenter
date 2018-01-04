@@ -9,6 +9,7 @@
     <link rel="bookmark" href="../../mobile-v3/favicon.ico">
     <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
     <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/swiper.min.css" />  
     <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
@@ -16,126 +17,413 @@
 
 <body>
 <!-- 侧滑导航根容器 -->
-<div class="mui-off-canvas-wrap mui-draggable">
+<div class="mui-off-canvas-wrap">
   <!-- 菜单容器 -->
-  <aside class="mui-off-canvas-left">
-    <div class="mui-scroll-wrapper side-menu-scroll-wrapper">
-      <div class="mui-scroll">
-        <!-- 菜单具体展示内容 -->
-        <!--个人信息部分-->
-        <div class="person-info">
-        	<!--登录前-->
-        	<div class="un-login">
-        		<p>欢迎观临，请先登录</p>
-        		<a type="button" class="mui-btn mui-btn-success  btn-login">用户登录</a>
-        	</div>
-        	<!--登陆后-->
-        	<div class="login" hidden>
-        		<i class="icon-person"></i>
-        		<p>EVEN_999</p>
-        		<a type="button" class="mui-btn mui-btn-success  btn-person">个人中心</a>         		
-        	</div>
-        </div>	
-        <!--side-nav-->
-        <div class="side-nav">
-        	<ul class="mui-list-unstyled">
-        		<li class="active home"><a href="index.html">首页</a></li>
-        		<li class="pro"><a href="promo.html">优惠活动</a></li>
-        		<li class="download"><a href="">下载客户端</a></li>
-        		<li class="pc"><a href="">电脑版</a></li>
-        		<li class="trans"><a href="">转账</a></li>
-        		<li class="deposit"><a href="">账户存款</a></li>
-        		<li class="about"><a href="">关于我们</a></li>
-        		<li class="question"><a href="">常见问题</a></li>
-        		<li class="service"><a href="">在线客服</a></li>
-        		<li class="reg_rules"><a href="">注册条款</a></li>
-        		<li class=" lang zh-CN">
-        			<a href="">语言</a>
-        		</li>
-        	</ul>
-        	<a type="button" class="mui-btn mui-btn-success  btn-logout">退出登录</a> 
-        </div>
-      </div>
-    </div>
-  </aside>
+
   <!-- 主页面容器 -->
   <div class="mui-inner-wrap">
     <!-- 主页面标题 -->
     <header class="mui-bar mui-bar-nav casino-list-bar">
-      <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>		
-      <a type="button" class="mui-btn mui-btn-success mui-pull-right btn-register" href="register.html">注册</a>
-      <a type="button" class="mui-btn mui-btn-success mui-pull-right btn-login" href="login.html">登录</a>
+      <a class="mui-icon  mui-icon-back mui-pull-left"></a>		
       <h1 class="mui-title">AG电子</h1>
     </header>
     <div class="mui-content mui-scroll-wrapper mui-content-casino-list">
       <div class="mui-scroll">
         <!-- 主界面具体展示内容 -->
-        <div class="casino-wrap">
-			<div class="mui-input-row">
-				<div class="electronic-search" >
-					<a id="search-game" class="btn-search">搜索</a>
-					<input type="text" id="game-name" class="mui-input-clear" placeholder="输入游戏名称">
-				</div>
-			</div>    
-			<div class="casino-list">
-				<div class="mui-row">
-					<div class="mui-col-xs-3">
-						<a href="#">
-							<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
-							<p>冰球突破</p>
-						</a>
-					</div>
-					<div class="mui-col-xs-3">
-						<a href="#">
-							<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
-							<p>冰球突破</p>
-						</a>
-					</div>
-					<div class="mui-col-xs-3">
-						<a href="#">
-							<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
-							<p>冰球突破</p>
-						</a>
-					</div>
-					<div class="mui-col-xs-3">
-						<a href="#">
-							<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
-							<p>冰球突破</p>
-						</a>
-					</div>
-					<div class="mui-col-xs-3">
-						<a href="#">
-							<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
-							<p>冰球突破</p>
-						</a>
-					</div>
-					<div class="mui-col-xs-3">
-						<a href="#">
-							<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
-							<p>冰球突破</p>
-						</a>
-					</div>
-					<div class="mui-col-xs-3">
-						<a href="#">
-							<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
-							<p>冰球突破</p>
-						</a>
-					</div>
-					<div class="mui-col-xs-3">
-						<a href="#">
-							<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
-							<p>冰球突破</p>
-						</a>
-					</div>
-					<div class="mui-col-xs-3">
-						<a href="#">
-							<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
-							<p>冰球突破</p>
-						</a>
-					</div>
-				</div>
-			</div>
-       </div>
+        <div class="electronic-search">
+			<a id="search-game" class="btn-search">搜索</a>
+			<input type="text" id="game-name" class="mui-input-clear" placeholder="输入游戏名称" data-input-clear="3"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+		</div>
+          <!-- Swiper -->
+          <div class="casino-game-type">
+			  <div class="swiper-container g-t-slide-indicators">
+			    <div class="swiper-wrapper">
+			            <div class="swiper-slide">所有游戏</div>
+			            <div class="swiper-slide">老虎机</div>
+			            <div class="swiper-slide">奖金老虎机</div>
+			            <div class="swiper-slide">累积奖池</div>
+			            <div class="swiper-slide">桌面游戏</div>
+			            <div class="swiper-slide">刮刮卡</div>
+			    </div>
+			  </div>  
+			  <div class="swiper-container g-t-slide-content">
+			    <div class="swiper-wrapper">
+			            <div class="swiper-slide">
+					        <div class="casino-wrap">   
+								<div class="casino-list">
+									<div class="mui-row">
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>所有游戏</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+									</div>
+								</div>
+					       </div>			            	
+			            </div>
+			            <div class="swiper-slide">
+					        <div class="casino-wrap">   
+								<div class="casino-list">
+									<div class="mui-row">
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>老虎机</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+									</div>
+								</div>
+					       </div>			            	
+			            </div>
+			            <div class="swiper-slide">
+					        <div class="casino-wrap">  
+								<div class="casino-list">
+									<div class="mui-row">
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>奖金老虎机</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+									</div>
+								</div>
+					       </div>			            	
+			            </div>
+			            <div class="swiper-slide">
+					        <div class="casino-wrap">   
+								<div class="casino-list">
+									<div class="mui-row">
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>累积奖池</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+									</div>
+								</div>
+					       </div>			            	
+			            </div>
+			            <div class="swiper-slide">
+					        <div class="casino-wrap">   
+								<div class="casino-list">
+									<div class="mui-row">
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>桌面游戏</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+									</div>
+								</div>
+					       </div>			            	
+			            </div>
+			            <div class="swiper-slide">
+					        <div class="casino-wrap">   
+								<div class="casino-list">
+									<div class="mui-row">
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>刮刮卡</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+										<div class="mui-col-xs-3">
+											<a href="#">
+												<div class="img-wrap"><img src="../../mobile-v3/images/game-demo01.png"/></div>
+												<p>冰球突破</p>
+											</a>
+										</div>
+									</div>
+								</div>
+					       </div>			            	
+			            </div>
+			    </div>
+			  </div>        	
+          </div>
+
       </div> <!--mui-scroll 闭合标签-->
     </div>  <!--mui-content 闭合标签-->
 	<!--footer-->
@@ -160,17 +448,7 @@
 	        <span class="mui-icon icon-mine"></span>
 	        <span class="mui-tab-label">我的</span>
 	    </a>
-	</footer>   
-	<!--浮窗广告轮播-->
-	<div class="ads-slider">
-		<a href="javascript:" class="close-ads"></a>
-		<div class="mui-slider">
-		  <div class="mui-slider-group">
-		    <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/ads-banner-01.png" /></a></div>
-		    <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/ads-banner-01.png" /></a></div>
-		  </div>
-		</div>		
-	</div>
+	</footer>
   </div>
 </div>
 <!--语言弹窗-->
@@ -181,5 +459,30 @@
 </ul>
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../mobile-v3/js/swiper.min.js"></script>
 <script src="../../mobile-v3/js/common.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		// api滑动
+	    var slideContent = new Swiper('.g-t-slide-content', {
+	      loop:true,
+	      loopedSlides:5,
+	      autoHeight: true,
+	      on:{
+	      	slideChange:function(){
+	      	}
+	      }
+	    });
+	    var slideIndicators = new Swiper('.g-t-slide-indicators', {
+	      loop:true,
+	      loopedSlides: 5,
+	      slidesPerView: 'auto',
+	      touchRatio: 0.2,
+	      slideToClickedSlide: true,
+	    });
+	    slideContent.controller.control = slideIndicators;
+	    slideIndicators.controller.control = slideContent;
+	});
+</script>
 </html>
