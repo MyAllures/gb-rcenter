@@ -21,6 +21,12 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
             var _this = this;
 
         },
+
+        loginIpException: function (e, p) {
+            var _this = this;
+            $('#loginIpException').modal('show');
+            $(e.currentTarget).unlock();
+        },
         /**
          * 重写query中onPageLoad方法，为了查询回调函数带页面初始化方法
          * @param form

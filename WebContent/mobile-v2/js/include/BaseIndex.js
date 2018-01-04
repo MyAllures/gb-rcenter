@@ -41,10 +41,9 @@ define(['common/MobileBasePage'], function (Mobile) {
                 var demo = $(this).data('demo');
                 if (demo) {
                     window.top.page.openLayer('试玩账号无权限访问');
-                } else if ((isLogin == 'false' && (_href.indexOf('lotteryResultHistory') > 0) || _href.indexOf('mainIndex.html') > 0)) {
+                } else if ((isLogin == 'false' && (_href.indexOf('lotteryResultHistory') > 0) || ( _href.indexOf('mainIndex.html') > 0 && _href!='/lottery/mainIndex.html'))) {
                     _this.gotoUrl(_href);
                 } else if (isLogin == 'false' && _href != "/") {
-
                     _this.toLogin(_href);
                 } else {
                     var auto = $(this).data("auto");
