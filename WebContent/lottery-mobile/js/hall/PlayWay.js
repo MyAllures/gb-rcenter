@@ -585,7 +585,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
         },
         //头部样式
         showTable : function (text,titleText,secondCode,$showId,topCode){
-            console.log(text+","+titleText+","+secondCode+","+$showId+","+topCode)
             if($showId !=""){
                 $("div.s-menu.second").hide();
                 $showId.show();
