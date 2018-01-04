@@ -195,7 +195,7 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 .type-content .mui-control-content .mui-input-group .tk a { color: #999; float: left; line-height: 45px; margin-left: 30px; }
 .type-content .mui-control-content .mui-input-group .icon-star { background: url(images/icon-star.png) no-repeat center/100%; display: inline-block; width: 12px; height: 12px; margin: 0 4px -1px; }
 
-.copy-right { font-size: 9px; color: #999; margin: 0 10px; text-align: center; border-top: 1px solid #efefef; padding: 10px 0 0; }
+.copy-right { font-size: 9px; color: #999; margin: 0 10px; text-align: center; border-top: 1px solid #efefef; padding: 10px 0 0; margin-top: 10px; }
 
 /* 关于我们，注册条款 */
 [data-list="terms"], [data-list="about"] { padding: 0 5px; }
