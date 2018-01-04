@@ -299,7 +299,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             if(data == -1){
                 return;
             }
-
             if (typeof data == 'undefined' || typeof zhushu == 'undefined' || zhushu <= 0) {
                 this.toast("号码选择不完整，请重新选择");
                 return;
@@ -356,40 +355,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             $("#dingdan").html(content);
             $("#dingdan").addClass('mui-active');
 
-            // 滑块事件绑定
-            $("#block-range").RangeSlider({
-                min: 0,
-                max: maxFandian,
-                step: 0.1,
-                onChange: function(obj) {
-                    // 返点比例
-                    var fandianBili = parseFloat($(obj).val()).toFixed(1); // 当前滚动条移动的比例
-                    $("#betContent_fanli").attr("data-value", fandianBili);
-                    $("#betContent_fanli").html(fandianBili + "%");    // 渲染界面中百分比部分
-
-                    // 渲染界面中赔率部分
-                    if (plAndMaxFd instanceof Array) {  // 多赔率
-                        var pl = _this.getArgNum((maxPlayPl - fandianBili * plAndMaxFd[0].baseNum/100));
-                        $("#betContent_playPl").attr("data-value", pl);
-                        var strArr = [];
-                        var zxzh  = 0;
-                        $.each(plAndMaxFd, function (index, value) {
-                            strArr.push(_this.getArgNum((value.odd - fandianBili * value.baseNum/100)).toFixed(3));
-                            zxzh = _this.getArgNum(zxzh +(value.odd - fandianBili * value.baseNum/100));
-                        });
-                        $("#betContent_playPl").html(strArr.join('|'));
-                        if(_this.checkSanxingZuhe()) {
-                            $("#betContent_playPl").attr("data-value", zxzh);
-                        }
-                    } else {
-                        var pl = _this.getArgNum((maxPlayPl - fandianBili * plAndMaxFd.baseNum/100));
-                        $("#betContent_playPl").attr("data-value", pl);
-                        $("#betContent_playPl").html(pl.toFixed(3));
-                    }
-                    // 渲染下注总额，奖金等等
-                    _this.renderZhushu();
-                }
-            });
 
             // 单注金额变化
             $("#betContent_inputMoney").keyup(function() {
@@ -431,6 +396,42 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 // 渲染下注总额，奖金等等
                 _this.renderZhushu();
             });
+
+            // 滑块事件绑定
+            $("#block-range").RangeSlider({
+                min: 0,
+                max: maxFandian,
+                step: 0.1,
+                onChange: function(obj) {
+                    // 返点比例
+                    var fandianBili = parseFloat($(obj).val()).toFixed(1); // 当前滚动条移动的比例
+                    $("#betContent_fanli").attr("data-value", fandianBili);
+                    $("#betContent_fanli").html(fandianBili + "%");    // 渲染界面中百分比部分
+
+                    // 渲染界面中赔率部分
+                    if (plAndMaxFd instanceof Array) {  // 多赔率
+                        var pl = _this.getArgNum((maxPlayPl - fandianBili * plAndMaxFd[0].baseNum/100));
+                        $("#betContent_playPl").attr("data-value", pl);
+                        var strArr = [];
+                        var zxzh  = 0;
+                        $.each(plAndMaxFd, function (index, value) {
+                            strArr.push(_this.getArgNum((value.odd - fandianBili * value.baseNum/100)).toFixed(3));
+                            zxzh = _this.getArgNum(zxzh +(value.odd - fandianBili * value.baseNum/100));
+                        });
+                        $("#betContent_playPl").html(strArr.join('|'));
+                        if(_this.checkSanxingZuhe()) {
+                            $("#betContent_playPl").attr("data-value", zxzh);
+                        }
+                    } else {
+                        var pl = _this.getArgNum((maxPlayPl - fandianBili * plAndMaxFd.baseNum/100));
+                        $("#betContent_playPl").attr("data-value", pl);
+                        $("#betContent_playPl").html(pl.toFixed(3));
+                    }
+                    // 渲染下注总额，奖金等等
+                    _this.renderZhushu();
+                }
+            });
+
         },
 
         //获取注数
