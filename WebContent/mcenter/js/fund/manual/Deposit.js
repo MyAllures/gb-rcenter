@@ -214,14 +214,21 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
          */
         submit: function (e, option) {
             var _this = this;
-            window.top.topPage.showConfirmMessage(option.msg, function (result) {
-                if (result) {
-                    _this.deposit(e, option, _this);
-                }
-                else {
+            if(!$("select[name='activityId']").val() && !$("input[name='activityName']").val()){
+                if($("input[name='activityType']").val()) {
+                    $("input[name='activityName']").formtip(window.top.message.fund_auto['活动名称不能为空']);
                     $(e.currentTarget).unlock();
                 }
-            })
+            }else {
+                window.top.topPage.showConfirmMessage(option.msg, function (result) {
+                    if (result) {
+                        _this.deposit(e, option, _this);
+                    }
+                    else {
+                        $(e.currentTarget).unlock();
+                    }
+                })
+            }
         },
         deposit: function (e, option, obj) {
             obj.formatUserNames();
