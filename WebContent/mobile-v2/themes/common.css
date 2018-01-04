@@ -5185,8 +5185,8 @@ div.setting {
 .modes-payment >.ct a i.pay.qrcodepay{background-position: 3px -386px;}
 .modes-payment >.ct a i.pay.cmbc{background-position: 3px -405px;}   /* 民生*/
 .modes-payment >.ct a i.pay.comm{background-position: 3px -435px;} /*  交通银行 */
-.modes-payment >.ct a i.pay.ceb{background-position: 0px -455px;}  /*光大*/
-.modes-payment >.ct a i.pay.spabank{background-position:0px -480px;}/* 10 平安银行 */
+.modes-payment >.ct a i.pay.ceb{background-position: 0px -857px;}  /*光大*/
+.modes-payment >.ct a i.pay.spabank{background-position:0px -455px;}/* 10 平安银行 */
 .modes-payment >.ct a i.pay.cib{background-position:2px -473px;}/* 11 兴业银行 */
 .modes-payment >.ct a i.pay.bjbank{background-position:3px -495px;}/* 12 北京银行 */
 .modes-payment >.ct a i.pay.citic{background-position:3px -519px;}/* 13 中信银行 */
