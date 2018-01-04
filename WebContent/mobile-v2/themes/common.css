@@ -5166,8 +5166,8 @@ div.setting {
 
 .modes-payment >.ct a i.pay{background: url(images/pay_bank_b.png) no-repeat ;background-size:25px; display: inline-block;width:26px;height: 20px;vertical-align: middle;}
 .modes-payment >.ct a i.pay.unionpay{background-position: 3px -3px;}
-.modes-payment >.ct a i.pay.wx{background-position: 0px -26px;}
-.modes-payment >.ct a i.pay.zfb{background-position: 0px -48px;}
+.modes-payment >.ct a i.pay.wechatpay{background-position: 0px -26px;}
+.modes-payment >.ct a i.pay.alipay{background-position: 0px -48px;}
 .modes-payment >.ct a i.pay.cmb{background-position: 3px -71px;}
 .modes-payment >.ct a i.pay.ccb{background-position: 3px -93px;}
 .modes-payment >.ct a i.pay.ks{background-position: 3px -116px;}
@@ -5183,6 +5183,26 @@ div.setting {
 .modes-payment >.ct a i.pay.spdb{background-position: 0px -340px;}
 .modes-payment >.ct a i.pay.bitcoin{background-position: 3px -364px;}
 .modes-payment >.ct a i.pay.qrcodepay{background-position: 3px -386px;}
+.modes-payment >.ct a i.pay.cmbc{background-position: 3px -405px;}   /* 民生*/
+.modes-payment >.ct a i.pay.comm{background-position: 3px -435px;} /*  交通银行 */
+.modes-payment >.ct a i.pay.ceb{background-position: 0px -455px;}  /*光大*/
+.modes-payment >.ct a i.pay.spabank{background-position:0px -480px;}/* 10 平安银行 */
+.modes-payment >.ct a i.pay.cib{background-position:2px -473px;}/* 11 兴业银行 */
+.modes-payment >.ct a i.pay.bjbank{background-position:3px -495px;}/* 12 北京银行 */
+.modes-payment >.ct a i.pay.citic{background-position:3px -519px;}/* 13 中信银行 */
+.modes-payment >.ct a i.pay.gdb{background-position:3px -542px;}/* 14 广发银行 */
+.modes-payment >.ct a i.pay.jsbank{background-position:0 -567px;}/* 16 江苏银行 */
+.modes-payment >.ct a i.pay.shbank{background-position:0 -594px;}/* 18 上海银行 */
+.modes-payment >.ct a i.pay.bohaib{background-position:0 -617px;}/* 19 渤海银行 */
+.modes-payment >.ct a i.pay.hkbea{background-position:7px -639px;}/* 20 东亚银行 */
+.modes-payment >.ct a i.pay.nbbank{background-position:0 -664px;}/* 21 宁波银行 */
+.modes-payment >.ct a i.pay.czbank{background-position:0 -694px;}/* 22 浙商银行 */
+.modes-payment >.ct a i.pay.hzcb{background-position:0 -721px;}/* 23 杭州银行 */
+.modes-payment >.ct a i.pay.gcb{background-position:0 -750px;}/* 24 广州银行 */
+.modes-payment >.ct a i.pay.fjnx{background-position:0 -779px;}/* 25 福建农商银行 */
+.modes-payment >.ct a i.pay.hangseng{background-position:0 -806px;}/* 26 恒生银行 */
+.modes-payment >.ct a i.pay.tzb{background-position:0 -835px;}/* 27 台州银行 */
+
 
 .modes-payment >.ct a:before{ content: '';   width: 16px;   height: 16px;    background: url(../images/ex-check.png);
     background-size: cover;    position: absolute;    top: 0;    right: 0;    display: none;}
