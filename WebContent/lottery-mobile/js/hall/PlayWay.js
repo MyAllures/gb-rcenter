@@ -589,6 +589,8 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 $("div.s-menu.second").hide();
                 $showId.show();
             }
+            $("div.s-menu.second a[data-code='"+secondCode+"'] span").text(text);
+            $("div.s-menu.second a[data-code='"+secondCode+"']").addClass("mui-active");
             if(topCode !=""){
                 $(".s-title.title1 span").text($("a[data-code='"+topCode+"'] span").text());
                 if (topCode != "" && $("div.s-menu.top a.mui-active").size() == 0) {
@@ -603,8 +605,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 window.gamebox.setTitle(titleText);
             }
             $(".s-title.title2 span").text(text)
-            $("a[data-code='"+secondCode+"']").addClass("mui-active");
-            // $("a[data-code='"+secondCode+"'] span").text(text);
         },
 
         //选择大玩法，默认给一个小玩法。
