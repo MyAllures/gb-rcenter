@@ -9,6 +9,7 @@
     <link rel="bookmark" href="../../mobile-v3/favicon.ico">
     <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
     <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/swiper.min.css" />  
     <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />  
     <link rel="stylesheet" href="../../mobile-v3/themes/loading.css" />
@@ -130,19 +131,41 @@
         <!-- 主界面具体展示内容 -->
       <!--易记域名-->
       <section class="yjym">易记域名：www.1136.mb.com</section>
-        <!--优惠列表-->
-        <section class="promo">
-        	<div class="promo-sorts">
-        		<a type="button" class="mui-btn btn-promo-sort active">电子</a>
-        		<a type="button" class="mui-btn btn-promo-sort">进行中</a>
-        		<a type="button" class="mui-btn btn-promo-sort">已过期</a>
-        	</div>
-        	<ul class="promo-list mui-list-unstyled">
-        		<li><a href=""><img src="../../mobile-v3/images/promo/promo01.png"/></a></li>
-        		<li><a href=""><img src="../../mobile-v3/images/promo/promo02.png"/></a></li>
-        		<li><a href=""><img src="../../mobile-v3/images/promo/promo03.png"/></a></li>
-        	</ul>
-        </section>
+       	  <!--优惠列表-->
+		  <div class="promo">
+			  <div class="swiper-container p-t-slide-indicators promo-sorts">
+			    <div class="swiper-wrapper">
+			            <a class="swiper-slide mui-btn btn-promo-sort">分类1</a>
+			            <a class="swiper-slide mui-btn btn-promo-sort">分类2</a>
+			            <a class="swiper-slide mui-btn btn-promo-sort">分类3</a>
+			            <a class="swiper-slide mui-btn btn-promo-sort">分类4</a>
+			            <a class="swiper-slide mui-btn btn-promo-sort">分类5</a>
+			    </div>
+			  </div>
+			  <div class="swiper-container p-t-slide-content promo-list">
+			    <div class="swiper-wrapper">
+			            <div class="swiper-slide">
+			            	<a href=""><img src="../../mobile-v3/images/promo/promo01.png"></a>
+			            </div>
+			            <div class="swiper-slide">
+			            	<a href=""><img src="../../mobile-v3/images/promo/promo01.png"></a>
+			            	<a href=""><img src="../../mobile-v3/images/promo/promo02.png"></a>
+			            </div>
+			            <div class="swiper-slide">
+			            	<a href=""><img src="../../mobile-v3/images/promo/promo01.png"></a>
+			            	<a href=""><img src="../../mobile-v3/images/promo/promo02.png"></a>
+			            	<a href=""><img src="../../mobile-v3/images/promo/promo03.png"></a>
+			            </div>
+			            <div class="swiper-slide">
+			            	<a href=""><img src="../../mobile-v3/images/promo/promo01.png"></a>
+			            	<a href=""><img src="../../mobile-v3/images/promo/promo02.png"></a>
+			            </div>
+			            <div class="swiper-slide">
+			            	<a href=""><img src="../../mobile-v3/images/promo/promo01.png"></a>
+			            </div>
+			    </div>
+			  </div>
+		  </div>
       </div> <!--mui-scroll 闭合标签-->
     </div>  <!--mui-content 闭合标签-->
 	<!--footer-->
@@ -178,5 +201,30 @@
 </ul>
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../mobile-v3/js/swiper.min.js"></script>
 <script src="../../mobile-v3/js/common.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		// api滑动
+	    var slideContent = new Swiper('.p-t-slide-content', {
+	      loop:true,
+	      loopedSlides:5,
+	      autoHeight: true,
+	      on:{
+	      	slideChange:function(){
+	      	}
+	      }
+	    });
+	    var slideIndicators = new Swiper('.p-t-slide-indicators', {
+	      loop:true,
+	      loopedSlides: 5,
+	      slidesPerView: 'auto',
+	      touchRatio: 0.2,
+	      slideToClickedSlide: true,
+	    });
+	    slideContent.controller.control = slideIndicators;
+	    slideIndicators.controller.control = slideContent;
+	});
+</script>
 </html>
