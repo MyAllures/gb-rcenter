@@ -20,7 +20,7 @@ header.mui-bar-nav .mui-action-back { color: #666; }
 
 /* nav */
 .nav { background: #fff url(./images/nav-bg.png) 0 0/100% 60px repeat-x; border-top: 1px solid #d1d1d1; position: relative; }
-.nav:after { content: ''; position: absolute; height: 1px; background: #d1d1d1; bottom: 3px; left: 0; right: 0; }
+.nav:after { content: ''; position: absolute; height: 1px; background: #d1d1d1; bottom: 4px; left: 0; right: 0; }
 .nav .swiper-slide { color: #333; position: relative; }
 .nav .swiper-slide.swiper-slide-active:after { content: ''; position: absolute; top: 0; left: 50%; margin-left: -32px; z-index: 1; width: 64px; height: 70px; background: url(images/nav-item-active-bg.png) center top/64px 66px no-repeat; }
 
@@ -72,7 +72,7 @@ header.mui-bar-nav .mui-action-back { color: #666; }
 
 /* mine page */
 .mine-content { background: #efefef; }
-.mine-content .user-info-wrap { background: #1766bb; }
+.mine-content .user-info-wrap { background: #f7f7f7; }
 .mine-content .user-info-wrap .gb-userinfo { background: #fff; }
 
 .mui-bar-mine { -webkit-box-shadow: none !important; box-shadow: none !important; }
@@ -107,5 +107,9 @@ header.mui-bar-nav .mui-action-back { color: #666; }
 
 .casino-game-type .g-t-slide-indicators { border-bottom: 1px solid #ddd; }
 .casino-game-type .g-t-slide-indicators .swiper-slide-active { color: #0088fe; border-bottom: 1px solid #0088fe; }
+
+.icon-message { background: url(./images/icon-message.png) no-repeat center; background-size: 20px auto; }
+
+.icon-gift { background: url(./images/icon-gift.png) no-repeat center; background-size: 20px auto; }
 
 /*# sourceMappingURL=style.css.map */

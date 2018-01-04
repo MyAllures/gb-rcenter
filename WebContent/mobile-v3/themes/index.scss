@@ -8,13 +8,13 @@
     .mui-grid-view.mui-grid-9 .mui-table-view-cell{padding: 5px;height: 114px;border: 0;background: #fff;
         a{    border-radius: 6px;padding: 8px 0;}
     }
-    .api-item{display: inline-block;width:70px;height:71px;position: relative;
+    .api-item{display: inline-block;width:70px;height:72px;position: relative;
         &:after{    content: '';
     position: absolute;
-    width: 66px;
-    height: 31px;
-    top: 8px;
-    left: -10px;
+    width: 70px;
+    height: 34px;
+    top: 6px;
+    left: -13px;
     z-index: 2;
     border-top-left-radius: 34px;
     border-top-right-radius: 34px;
