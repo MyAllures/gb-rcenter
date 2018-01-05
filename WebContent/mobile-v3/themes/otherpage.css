@@ -6,24 +6,11 @@
 .banner { text-align: center; }
 .banner img { width: 100%; }
 
-.promo { position: relative; z-index: 1; border-radius: 4px; }
-.promo .promo-list .swiper-slide a { margin-bottom: 10px; display: block; }
+.promo { margin: 10px 10px 0; position: relative; z-index: 1; border-radius: 4px; padding: 10px; }
+.promo .promo-sorts { padding-bottom: 10px; }
+.promo .btn-promo-sort { margin-right: 2px; margin-bottom: 5px; }
+.promo .promo-list li { margin-bottom: 10px; }
 .promo .promo-list img { width: 100%; vertical-align: middle; }
-
-.promo-head { height: 97px; }
-
-.promo-header { position: fixed; top: 44px; height: 53px; left: 0; right: 0; z-index: 99; background: #fff; }
-
-.btn-promo-sort { padding: 0 5px 0 0 !important; height: 34px; border: 0; border-radius: 0; margin-bottom: 10px; margin-top: 10px; }
-.btn-promo-sort span { display: block; border-radius: 3px; width: 100%; height: 34px; line-height: 34px; }
-
-.promo { height: 100%; }
-.promo .swiper-container { height: 100%; }
-.promo .swiper-container .swiper-slide .mui-scroll { padding: 10px; }
-
-.promo-content { padding-top: 97px !important; position: absolute; padding-bottom: 53px !important; top: 0; width: 100%; bottom: 0; }
-
-.promo-sorts { margin: 0 10px; }
 
 /* blue-bar */
 .mui-bar-blue { background-color: #1766bb; -webkit-box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2) !important; box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2) !important; }

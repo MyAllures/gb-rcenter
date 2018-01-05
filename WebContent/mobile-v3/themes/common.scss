@@ -84,10 +84,11 @@ header{
     padding-bottom: 10px;}
     }
 }
-.notice-alert{      
+.notice-alert{ 
+     //width: 87.5%;
      border-radius: 8px; 
      &.mui-popup-in{    transform: translate3d(-50%,0,0) scale(1);top: 10px;}
-    .mui-popup-inner{border-radius: 0;    padding: 15px 5px 15px 15px;
+    .mui-popup-inner{border-radius: 0;
         .mui-popup-text{    margin: 12px 0 0;}
     }
     .mui-popup-button{border-radius: 0 !important;font-size: 15px;}
@@ -226,7 +227,7 @@ header{
         position: absolute;
         top: 34px;
         padding-top: 5px;-webkit-transition: all 0.3s;transition: all 0.3s;
-        right: -205px; height: 400px;  z-index: 100;
+        right: -205px; height: 400px;  z-index: 10;
         border-right: 0;
         &.open{right: -10px;}
     }
@@ -417,7 +418,7 @@ header{
     margin: 0 10px;
     text-align: center;
     border-top: 1px solid #efefef;
-    padding: 10px 0 0;    margin-top: 10px;}
+    padding: 10px 0 0;}
 
 /* 关于我们，注册条款 */
 [data-list="terms"],[data-list="about"]{

@@ -25,9 +25,7 @@ $(function(){
 				'<div class="mui-slider-group">' +
 					'<div class="mui-slider-item">' +
 						'<div class="mui-scroll-wrapper">' +
-							'<div class="mui-scroll">' +
-								'<div style="padding-right: 10px;">'+noticeA+'</div>' +
-							'</div>' +
+							'<div class="mui-scroll">'+noticeA+'</div>' +
 						'</div>' +
 					'</div>' +
 				'</div>' +
@@ -121,12 +119,12 @@ $(function(){
 		});
 	});
 	// 导航点击下面滑块高度问题bug解决
-	$(".swiper-container.nav-slide-indicators").on("tap",".swiper-slide",function(e){
+	$(".swiper-container.slide-indicators").on("tap",".swiper-slide",function(e){
 		var index = $(this).data("swiper-slide-index");
-		var targetSlide = $(".nav-slide-content .swiper-slide[data-swiper-slide-index="+index+"]")[0];
+		var targetSlide = $(".slide-content .swiper-slide[data-swiper-slide-index="+index+"]")[0];
 		console.log($(targetSlide).outerHeight());
 		setTimeout(function(){// 滑动循环最后一个有延迟，设个定时器抵消延迟的效果
-			$(".nav-slide-content>.swiper-wrapper").css({height:$(targetSlide).outerHeight()});
+			$(".slide-content>.swiper-wrapper").css({height:$(targetSlide).outerHeight()});
 		},100);		
 	});
 	// 关闭红包
@@ -136,9 +134,5 @@ $(function(){
 	});
 	$(".desk").on("tap",".close",function(){
 		$(this).parents(".desk").hide();
-	});
-
-	mui('.mui-scroll-wrapper').scroll({
-		deceleration: 0.0001 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
 	});
 });

@@ -34,7 +34,7 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 
 .notice-alert { border-radius: 8px; }
 .notice-alert.mui-popup-in { transform: translate3d(-50%, 0, 0) scale(1); top: 10px; }
-.notice-alert .mui-popup-inner { border-radius: 0; padding: 15px 5px 15px 15px; }
+.notice-alert .mui-popup-inner { border-radius: 0; }
 .notice-alert .mui-popup-inner .mui-popup-text { margin: 12px 0 0; }
 .notice-alert .mui-popup-button { border-radius: 0 !important; font-size: 15px; }
 .notice-alert .mui-popup-title { font-size: 15px; color: #333; height: 29px; margin: 0 -15px; border-bottom: 1px solid #0003; }
@@ -125,7 +125,7 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 .login-info { display: inline-block; height: 24px; padding-right: 10px; margin-top: 10px; min-width: 40px; float: right; position: relative; }
 .login-info .user_name, .login-info .money { font-size: 9px; text-align: right; line-height: 13px; }
 .login-info .money { padding-left: 10px; height: 14px; line-height: 14px; }
-.login-info .ex { width: 190px; background-color: rgba(102, 102, 102, 0.98); padding-left: 20px; position: absolute; top: 34px; padding-top: 5px; -webkit-transition: all 0.3s; transition: all 0.3s; right: -205px; height: 400px; z-index: 100; border-right: 0; }
+.login-info .ex { width: 190px; background-color: rgba(102, 102, 102, 0.98); padding-left: 20px; position: absolute; top: 34px; padding-top: 5px; -webkit-transition: all 0.3s; transition: all 0.3s; right: -205px; height: 400px; z-index: 10; border-right: 0; }
 .login-info .ex.open { right: -10px; }
 .login-info .ex hr { border-top: 0; border-bottom: 1px solid #909090; margin: 5px 0; }
 .login-info .ex table { width: 160px; }
@@ -195,7 +195,7 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 .type-content .mui-control-content .mui-input-group .tk a { color: #999; float: left; line-height: 45px; margin-left: 30px; }
 .type-content .mui-control-content .mui-input-group .icon-star { background: url(images/icon-star.png) no-repeat center/100%; display: inline-block; width: 12px; height: 12px; margin: 0 4px -1px; }
 
-.copy-right { font-size: 9px; color: #999; margin: 0 10px; text-align: center; border-top: 1px solid #efefef; padding: 10px 0 0; margin-top: 10px; }
+.copy-right { font-size: 9px; color: #999; margin: 0 10px; text-align: center; border-top: 1px solid #efefef; padding: 10px 0 0; }
 
 /* 关于我们，注册条款 */
 [data-list="terms"], [data-list="about"] { padding: 0 5px; }
