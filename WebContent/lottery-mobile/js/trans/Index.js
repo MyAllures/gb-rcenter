@@ -79,7 +79,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                    return ;
                }
                 var dayOfMonth = myDate.getDate();
-                myDate.setDate(dayOfMonth - 41);
+                myDate.setDate(dayOfMonth - 2001);
                if(new Date(st).getTime()<myDate.getTime()){
                    _this.toast("请重新选择时间！");
                    return;
@@ -109,7 +109,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("body").on("tap", "#startTime", function () {
                 var myDate = new Date();
                 var dayOfMonth = myDate.getDate();
-                myDate.setDate(dayOfMonth - 40);
+                myDate.setDate(dayOfMonth - 2000);
                 var dtpicker = new mui.DtPicker({
                     "type": "date",
                     "value": $("#startTime").val(),
@@ -129,7 +129,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             mui("body").on("tap", "#endTime", function () {
                 var myDate = new Date();
                 var dayOfMonth = myDate.getDate();
-                myDate.setDate(dayOfMonth - 40);
+                myDate.setDate(dayOfMonth - 2000);
                 var dtpicker = new mui.DtPicker({
                     "type": "date",
                     "value": $("#endTime").val(),
@@ -151,7 +151,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 var typePicker = new mui.PopPicker();
                 typePicker.setData([{
                     value:'0',
-                    text: '任意'
+                    text: '全部'
                 }, {
                     value:'1',
                     text: '投注'
@@ -164,6 +164,21 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 }, {
                     value:'4',
                     text: '提款'
+                }, {
+                    value:'5',
+                    text: '返点'
+                }, {
+                    value:'6',
+                    text: '重结扣款'
+                }, {
+                    value:'7',
+                    text: '重结派彩'
+                }, {
+                    value:'8',
+                    text: '待结撤单'
+                }, {
+                    value:'9',
+                    text: '已结撤销'
                 }
                 ]);
                 typePicker.pickers[0].setSelectedIndex($("#typeValue").val());

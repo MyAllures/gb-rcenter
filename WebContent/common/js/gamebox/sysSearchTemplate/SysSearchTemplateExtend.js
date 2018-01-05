@@ -22,7 +22,9 @@ define(['gb/sysSearchTemplate/SysSearchTemplate','common/BasePage'], function (S
                     data: JSON.parse(data),
                     dataType: "html",
                     success: function (data) {
+                        var style = $("#mainFrame .return-btn").attr("style");
                         $("#mainFrame").html(data);
+                        $("#mainFrame .return-btn").attr("style",style);
                         $target.unlock();
                     }
                 });

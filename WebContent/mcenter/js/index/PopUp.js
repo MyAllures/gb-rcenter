@@ -659,10 +659,27 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                             action: function (dialog) {
                                 dialog.close();
                             }
-                        }],
+                        }]
                     })
                 }
             }
+        },
+        /**
+         * 彩票开奖结果提醒
+         * @param data
+         */
+        lotteryGatherCallback: function (data) {
+            var msgBody = $.parseJSON($.parseJSON(data).msgBody);
+            var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.date), window.top.dateFormat.daySecond);
+            var content = '<a nav-target="mainFrame" name="tellerReminder" href="/lotteryResult/list.html">' + date + '&nbsp;' + msgBody.message + '</a>';
+            popUp.pop(content, date, "warning");
+            window.top.popUp.playVoice(data, "warm");
+            if ($("#timer .hd").attr("data-value") == 'refresh') {
+                $(".playerWithdrawSearch").click();
+                $(".agentWithdrawSearch").click();
+            }
+            $("#unReadTaskCount").text(parseInt($("#unReadTaskCount").text()) + 1);
         }
+
     });
 });

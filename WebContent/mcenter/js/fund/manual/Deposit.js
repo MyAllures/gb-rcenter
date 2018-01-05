@@ -45,6 +45,37 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
             $(this.formSelector).on("change", "[name='playerFavorable.isAuditFavorable']", function (e) {
                 _this.changeFavorableAuditType();
             });
+
+            /**
+             * 异步加载活动名称
+             */
+            $("#activityType").change(function (e, option) {
+                var favorableType = $("input[name='activityType']").val();
+                var transactionNo = $("input[name='search.transactionNo']").val();
+                window.top.topPage.ajax({
+                    url: root + "/fund/manual/sales.html",
+                    dataType: "json",
+                    data: {"favorableType": favorableType},
+                    success: function (data) {
+                        $("input[name=activityName]").val('');
+                        if (data != null) {
+                            var $select = $("[name='activityId']");
+                            var html = '<option value="">'+"请选择"+'</option>';
+                            var sales = data;
+                            for (var index = 0; index < sales.length; index++) {
+                                var sale = sales[index];
+                                html = html + '<option value="'+sale.id+'">' + sale.activityName + '</option>';
+                            }
+                            $select.html(html);
+                            $select.trigger("chosen:updated");
+                        }
+                    },
+                    error:function(data){
+                        $("input[name='activityName']").val('');
+                        $("[name='activityId']").removeAttr();
+                    }
+                });
+            });
         },
         /**
          * 优惠稽核类型变更
@@ -125,28 +156,40 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
          * 类型变更
          */
         changeFavorableType: function () {
+            var _this = this;
             var favorableType = $("[name='favorableType']").val();
             if (favorableType == 'manual_favorable') {//优惠活动-优惠稽核（默认选中）
                 $("input[name='playerFavorable.isAuditFavorable'][value='true']").prop("checked", true);
                 $("#spanTips3").show();
                 $("#spanTips4").hide();
-                $("#favorableTr").show();
+                _this.changeActivityTypeAbled();
             } else if (favorableType == 'manual_rakeback') {//返水-免稽核、优惠稽核（默认选中）
                 $("input[name='playerFavorable.isAuditFavorable'][value='true']").prop("checked", true);
                 $("#spanTips3").show();
                 $("#spanTips4").hide();
-                $("#favorableTr").hide();
+                _this.changeActivityTypeDisabled();
             } else if (favorableType == 'manual_payout') {//派彩-免稽核（默认选中）、存款稽核、优惠稽核
                 $("input[name='playerFavorable.isAuditFavorable'][value='false']").prop("checked", true);
                 $("#spanTips3").hide();
                 $("#spanTips4").show();
-                $("#favorableTr").hide();
+                _this.changeActivityTypeDisabled();
             } else if (favorableType == 'manual_other') {//其他-免稽核、存款稽核（默认选中）、优惠稽核
                 $("input[name='playerFavorable.isAuditFavorable'][value='true']").prop("checked", true);
                 $("#spanTips3").hide();
                 $("#spanTips4").hide();
-                $("#favorableTr").hide();
+                _this.changeActivityTypeDisabled();
             }
+        },
+
+        changeActivityTypeAbled:function(){
+            $("input[name='activityType']").removeAttr("disabled");
+            $("#activityType").show();
+            $("#favorableTr").show();
+        },
+        changeActivityTypeDisabled:function(){
+            $("#favorableTr").hide();
+            $("#activityType").hide();
+            $("input[name='activityType']").prop("disabled", true);
         },
 
         onPageLoad: function () {
@@ -171,14 +214,21 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
          */
         submit: function (e, option) {
             var _this = this;
-            window.top.topPage.showConfirmMessage(option.msg, function (result) {
-                if (result) {
-                    _this.deposit(e, option, _this);
-                }
-                else {
+            if(!$("select[name='activityId']").val() && !$("input[name='activityName']").val()){
+                if($("input[name='activityType']").val()) {
+                    $("input[name='activityName']").formtip(window.top.message.fund_auto['活动名称不能为空']);
                     $(e.currentTarget).unlock();
                 }
-            })
+            }else {
+                window.top.topPage.showConfirmMessage(option.msg, function (result) {
+                    if (result) {
+                        _this.deposit(e, option, _this);
+                    }
+                    else {
+                        $(e.currentTarget).unlock();
+                    }
+                })
+            }
         },
         deposit: function (e, option, obj) {
             obj.formatUserNames();

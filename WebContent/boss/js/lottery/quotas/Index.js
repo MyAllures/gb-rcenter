@@ -86,7 +86,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
             }
             var $form = $(this.getCurrentForm(e));
             var $target = $(e.currentTarget);
-            var validate = $form.validate();
+            var code;
             var array = [];
             var group = $($form.find("table")[0]).find("tbody tr");
             var oddObj;
@@ -108,18 +108,29 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 ori1 = Number($($input[0]).attr("data-value"));
                 ori2 = Number($($input[1]).attr("data-value"));
                 ori3 = Number($($input[2]).attr("data-value"));
-                if (numQuota != ori1||betQuota!=ori2||playQuota!=ori3) {
-                    if (!$input.valid()) {
-                        $target.unlock();
-                        return;
-                    }
+                code=$(oddObj).find("input[name$=code]").val();
+                if (!$input.valid()) {
+                    $target.unlock();
+                    return;
+                }
+                if ('hklhc' != code && (numQuota != ori1||betQuota!=ori2||playQuota!=ori3)) {
                     obj = {
                         'id': $(oddObj).find("input[name$=id]").val(),
-                        'code':$(oddObj).find("input[name$=code]").val(),
+                        'code':code,
                         'playCode':$(oddObj).find("input[name$=playCode]").val(),
                         "numQuota":numQuota,
                         "betQuota":betQuota,
                         "playQuota":playQuota,
+                        'siteId': siteId
+                    };
+                    array.push(obj);
+                }else if('hklhc' == code && (numQuota != ori1||betQuota!=ori2)){
+                    obj = {
+                        'id': $(oddObj).find("input[name$=id]").val(),
+                        'code':code,
+                        'playCode':$(oddObj).find("input[name$=playCode]").val(),
+                        "numQuota":numQuota,
+                        "betQuota":betQuota,
                         'siteId': siteId
                     };
                     array.push(obj);

@@ -5,7 +5,7 @@ define(['site/hall/pl3/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
         screeningDigtal: new Array(),
         init: function () {
             _this = this;
-            this.showTable("一码","官方玩法-不定位","pl3_budingwei_sxym",$("#Sxymbdw"),"");
+            this.showTable("一码","官方玩法-不定位","pl3_budingwei_sxym",$("#Sxymbdw"),"Sxymbdw");
             this._super();
         },
 

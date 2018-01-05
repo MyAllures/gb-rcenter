@@ -15,6 +15,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         cur_expect: null,
         /*随机数生成器*/
         randomNumInterval: null,
+        //判断是否在获取开奖号码
+        isGetOpen : null,
         /*清除弹窗显示标志*/
         clearPopFlag: null,
         /**清除弹窗对象标识*/
@@ -64,15 +66,38 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             });
 
             /*==============================官方====================================*/
+            //游戏规则
+            mui("body").off("tap", ".game-regular .tab-wv-bar a").on("tap", ".game-regular .tab-wv-bar a", function() {
+                var code = $(this).attr("data-code");
+                console.log(code)
+                if(code =="ct"){
+                    $("#ctRules").show();
+                    $("#gfRules").hide();
+                    $("#zongze").hide();
+                }else if(code =="gf"){
+                    $("#ctRules").hide();
+                    $("#gfRules").show();
+                    $("#zongze").hide();
+                }else{
+                    $("#ctRules").hide();
+                    $("#gfRules").hide();
+                    $("#zongze").show();
+                }
+            });
             //头部选择
             mui("div.s-menu").off('tap','a').on('tap', 'a', function () {
-                mui('.mui-scroll-wrapper.middle-content').scroll().scrollTo(0,0,100);
-                _this.checkSubordinate($(this).attr("data-code"), this.classList);
+                mui('.middle-content.middle-content-bat').scroll().scrollTo(0,0,100);
+                var _thiz=this;
+
+                setTimeout(function () {
+                    _this.checkSubordinate($(_thiz).attr("data-code"), _thiz.classList);
+                },200);
 
             });
 
             //直选复式
             mui("body").off('tap','.gfwf-playName').on('tap', '.gfwf-playName', function () {
+                $("input#inputMoney").blur();
                 _this.changePlay();
             });
 
@@ -81,7 +106,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             });
 
             mui("body").off('tap','#inputMoney').on("tap", "#inputMoney", function () {
-                mui('.mui-scroll-wrapper.middle-content').scroll().refresh();
+                mui('.middle-content.middle-content-bat').scroll().refresh();
             });
         },
         //收起头部
@@ -226,18 +251,35 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                     if (data.length > 0) {
                         var open = data[0];
                         var numArr = open.openCode ? open.openCode.split(",") : [];
-                        if (numArr.length == 0) { // 是否开奖中
-                            // 循环读取开奖数据，30秒
-                            window.setTimeout(function () {
-                                _this.getOpenHistory();
-                            }, 30000);
-                        }
-                        $(".mui-pull-left .style_blue").text(open.expect);
-                        //是否展示开奖效果
-                        _this.showOpeningStyle(numArr);
-                        //展示上一期中奖号码
-                        if (numArr && numArr.length > 0) {
-                            _this.showLastOpenCode(numArr);
+                           if(!open.openCode){
+                               $(".mui-pull-left .style_blue").text(open.expect);
+                               //是否展示开奖效果
+                               if (!_this.randomNumInterval) {
+                                   _this.randomNumInterval = setInterval(function () {
+                                       _this.randomNumber();
+                                   }, 450);
+
+                                   _this.isGetOpen = setInterval(function () {
+                                       _this.getOpenHistory();
+                                   }, 30000);
+                               }
+                               // 循环读取开奖数据，30秒
+                               if (!_this.isGetOpen){
+                                   _this.isGetOpen = setInterval(function () {
+                                       _this.getOpenHistory();
+                                   }, 30000);
+                               }
+                           }else{
+                               if (_this.randomNumInterval != null) {
+                                   clearInterval(_this.randomNumInterval);
+                                   clearInterval(_this.isGetOpen);
+                                   _this.randomNumInterval = null;
+                               }
+                               //展示上一期中奖号码
+                               _this.showLastOpenCode(numArr);
+                           }
+                        if(_this.type == "ssc" || _this.type=="pl3" || _this.code=="xyft" || _this.code=="jspk10"){
+                            _this.refreshView();
                         }
                         _this.showRecentHistory(data);
                     }
@@ -247,25 +289,12 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             });
         },
 
-        /**lot
-         * 展示开奖效果
-         * @param numArr
+        /**
+         * 渲染双面长龙排行等 有需要的彩种请重写这个方法
          */
-        showOpeningStyle: function (numArr) {
-            var _this = this;
-            if (!numArr || numArr.length <= 0) {
-                if (!this.randomNumInterval) {
-                    this.randomNumInterval = setInterval(function () {
-                        _this.randomNumber();
-                    }, 450);
-                }
-                return;
-            }
-            if (this.randomNumInterval) {
-                clearInterval(_this.randomNumInterval);
-                _this.randomNumInterval = null;
-            }
+        refreshView: function () {
         },
+
         /**
          * 显示清除弹窗
          */
@@ -442,10 +471,9 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             this.code = $(this.formSelector + ' input[name=code]').val();
             this.type = $(this.formSelector + " input[name=type]").val();
             this.betCode = $(this.formSelector + " .ssc-method-list .ssc-method-label a.mui-active").attr("data-code");
-            this.getOpenHistory();
-            // this.muiInit();
-            this.iosGoBack();
-            this.init();
+            /*this.getOpenHistory();*/
+            /*this.iosGoBack();
+            this.init();*/
             if(this.os == 'pc') {
                 //已应对在h5下金额输入框不能输入
                 $("input#inputMoney").focus();

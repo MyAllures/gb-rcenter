@@ -156,9 +156,9 @@ define(['site/deposit/BaseDeposit','gb/components/Comet'], function (BaseDeposit
 
                 var rechargeAmount = $("input[name='result.rechargeAmount']").val();
                 var rechargeType = $("input[name='result.rechargeType']").val();
-
+                var account = $("input[name='account']").val();
                 mui.ajax(root + '/wallet/deposit/online/scan/submit.html', {
-                    data: {"result.rechargeAmount": rechargeAmount, "result.rechargeType": rechargeType},
+                    data: {"result.rechargeAmount": rechargeAmount, "result.rechargeType": rechargeType, "account": account},
                     type: 'post',
                     async: false,
                     success: function (data) {

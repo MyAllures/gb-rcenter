@@ -47,7 +47,7 @@ i, var { font-style: normal; }
 .col-cerise{color: #f00404;}
 /*自定义弹窗*/
 .mui-popup { width: 80%; max-width: 700px; }
-.mui-popup.mui-popup-in { width: 86%; z-index: 1000;}
+.mui-popup.mui-popup-in { width: 90%; z-index: 1000;}
 .mui-popup .mui-popup-title { background: #df3a29; margin: -15px -15px 15px -15px; padding: 0.5rem 0; color: #fff; }
 .mui-popup .recharge-dialog { }
 .mui-popup .recharge-dialog .dialog-info-1 { text-align: left; padding: .25rem 0; font-size: .6rem; }
@@ -440,7 +440,7 @@ i, var { font-style: normal; }
 .lottery-pull {display: inline-block;width: 0.6rem;margin-left: 0.2rem;text-align: center;}
 .lottery-block { display: inline-block; height: 1rem; line-height: 1rem; border: 1px solid #ddd; background-color: #ddd; text-align: center; min-width: 1rem; width: auto; margin-left: 0.1rem; }
 .inline-list-1 { height: 1rem; line-height: 1rem; display: inline-block; word-spacing: -3px;}
-.inline-list-2 { height: 1rem; line-height: 1rem; display: block; word-spacing: -3px;}
+.inline-list-2 { height: 1rem; line-height: 0; display: block; word-spacing: -3px;}
 .inline-list-2.title { height: 2.1rem; line-height: 2.1rem; }
 .inline-list-2:last-child { margin-top: 5px; }
 .inline-list-3 { height: 1rem; line-height: 1rem; display: block; }
@@ -570,7 +570,6 @@ a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 .mui-bar-tab.tab-wv-bar { top: 2.2rem; box-shadow: none; padding: 0.3rem 0.3rem; width: auto; height: 1.6rem; background: #efeff4; }
 .mui-bar-tab.tab-wv-bar .mui-tab-item { height: 1.6rem; }
 .mui-bar-tab.tab-wv-bar .mui-tab-item.mui-active { color: #fff; background: #df3a29; border-radius: 9px; }
-
 /*开奖结果*/
 .draw-list-a .draw-list-img { display: inline-block; vertical-align: middle; border-radius: 0.6rem; }
 .draw-list-a .draw-list-right { display: inline-block; vertical-align: middle; width: 97%; }
@@ -594,7 +593,9 @@ a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 /*资金记录*/
 .money-record-list .mui-table-view-cell { padding-right: 0 !important; }
 .money-record-list .mui-table-view-cell .bet-list-time { display: inline-block; vertical-align: middle; }
-.money-record-list .mui-table-view-cell .bet-list-right { display: inline-block; width: calc(100% - 90px); vertical-align: middle; line-height: 25px; padding-left: 18px; }
+.money-record-list .mui-table-view-cell .bet-list-right { display: inline-block; width: calc(100% - 3.5rem); vertical-align: middle; line-height: 25px; padding-left: 18px; }
+
+.money-record-list .mui-table-view-cell .list-zdh{display: block;text-align: right;}
 
 /*会员中心*/
 .member-head { height: 10.8rem; }
@@ -767,6 +768,7 @@ a.list-delete-btn span{ font-size: 26px; font-weight: 100; line-height: 25px;}
 	font-size: 2.2rem;
 	padding: 0;
 }
+.popup-up-diy .mui-bar-tab.tab-wv-bar{position: relative;top: 0;}
 /*时时彩投注筛选*/
 .popup-up-diy .mui-table-view{
 	border-radius: 0;
@@ -909,8 +911,8 @@ a.popup-screen-btn:visited{
 
 /*投注表格调整*/
 .bet-table-list.k3-table tbody tr td { padding: .5rem 0;position: relative;height:auto;}
-.bet-table .bet-table-list.k3-table table tbody tr td span:nth-child(1) {/* width: auto;*/ position: relative; left: initial;top: initial;}
-.bet-table .bet-table-list.k3-table table tbody tr td span:nth-child(2) {/* width: auto; */ text-align: left;  position: relative; right: initial;top: initial;}
+.bet-table .bet-table-list.k3-table table tbody tr td span:nth-child(1) { /*width: auto;*/ position: relative; left: initial;top: initial;}
+.bet-table .bet-table-list.k3-table table tbody tr td span:nth-child(2) { /*width: auto;*/ text-align: left;  position: relative; right: initial;top: initial;}
 .bet-table-list.td-left tbody tr td {text-align: left; padding-left: 0.6rem;}
 .history {
 	font-size: 12px;
@@ -1188,8 +1190,8 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .mui-bar-tab .mui-tab-item.mui-active .mui-icon.bar-buttom-icon.icon-kaijiangjilu:before{background-image:url(../images/ico2-h.png);}
 .mui-bar-tab .mui-tab-item.mui-active .mui-icon.bar-buttom-icon.icon-chongzhitikuan:before{background-image:url(../images/ico2-h.png);}
 .mui-bar-tab .mui-tab-item.mui-active .mui-icon.bar-buttom-icon.icon-goucaidating:before{background-image:url(../images/ico3-h.png);}
-.mui-bar-tab .mui-tab-item.mui-active .mui-icon.bar-buttom-icon.icon-touzhujilu:before{background-image:url(images/ico4-h.png);}
-.mui-bar-tab .mui-tab-item.mui-active .mui-icon.bar-buttom-icon.icon-huiyuanzhongxin:before{background-image:url(images/ico5-h.png);}
+.mui-bar-tab .mui-tab-item.mui-active .mui-icon.bar-buttom-icon.icon-touzhujilu:before{background-image:url(../images/ico4-h.png);}
+.mui-bar-tab .mui-tab-item.mui-active .mui-icon.bar-buttom-icon.icon-huiyuanzhongxin:before{background-image:url(../images/ico5-h.png);}
 
 
 /*.icon-cunkuan:before,.icon-chongzhitikuan:before { content: "\e674"; }
@@ -1221,6 +1223,8 @@ input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled
 .middle-content.middle-content-bat{bottom: 2.75rem; }
 .middle-content.middle-content-bat.result-today{padding-bottom: 1.65rem; }
 .bar-bottom-l-h { line-height: 2.75rem; height: 2.75rem; }
+
+.middle-content-bat .mui-table-view-cell .kj-num{display: inline-block;}
 
 /*右侧菜单栏调整*/
 .mui-off-canvas-right{width:12rem;padding-top:10px;}
@@ -1688,3 +1692,4 @@ div.menu-popover {width: 120px;}
     text-align: center;
     float: left;
 }
+

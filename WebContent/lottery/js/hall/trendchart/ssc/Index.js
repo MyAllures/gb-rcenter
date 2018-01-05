@@ -50,7 +50,7 @@ define(['site/hall/trendchart/LotteryTrendChart'],function (LotteryTrendChart) {
             },
             xAxis: [{
                 axisLabel: {
-                    rotate: -60,
+                    rotate: -90,
                     interval: 0
                 },
                 type: 'category',
@@ -61,7 +61,6 @@ define(['site/hall/trendchart/LotteryTrendChart'],function (LotteryTrendChart) {
                 trigger: 'axis',
                 formatter: function(params) {
                     var openCode = params[0].data.openCode;
-
                     var res = params[0].seriesName;
                     res += '<br/>期号：' + params[0].name;
                     res += '<br/>号码：' + params[0].data;
@@ -109,7 +108,7 @@ define(['site/hall/trendchart/LotteryTrendChart'],function (LotteryTrendChart) {
                 option.series[index].data.push(v);
             });
         });
-
+        console.log(option);
         myChart1.setOption(option);
     },
          zhexianSm : function(data) {  //折线--双面走势

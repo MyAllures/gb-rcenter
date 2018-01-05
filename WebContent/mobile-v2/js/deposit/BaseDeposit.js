@@ -47,7 +47,32 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
         bindRechargeAmount:function ($submitBtn) {
             var _this = this;
             var $btn = $submitBtn || $("#submitAmount");
-            if (document.getElementById('result.rechargeAmount')) {
+            if (document.getElementById('payerBankcard1') || document.getElementById('payerBankcard2')) {
+                var id=document.getElementById('payerBankcard1');
+                if(document.getElementById('payerBankcard2')){
+                    id=document.getElementById('payerBankcard2');
+                }
+
+                if ($(id).val()) {
+                    $btn.removeAttr("disabled");
+                }
+                id.addEventListener("input",function () {
+                    /*if (/^[0-9]*$/.test($(this).val())) {*/
+                    /*^\d+(\.\d+)?$*/
+
+                    if ($(this).val()) {
+                        $btn.removeAttr("disabled");
+                    }
+                    if (!$(this).val()) {
+                        $btn.attr("disabled", "disabled");
+                    }
+                });
+
+            } else if (document.getElementById('result.rechargeAmount')) {
+                // if($("#result.rechargeAmount").val()){
+                //     $btn.removeAttr("disabled");
+                //     return;
+                // }
                 document.getElementById('result.rechargeAmount').addEventListener("input", function () {
                     var $a = $("#chooseAmount").find("a");
                     if ($a.hasClass("active")) {
@@ -59,10 +84,11 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
                         $btn.removeAttr("disabled");
                     }
                     if (!$(this).val()) {
-                        $btn.attr("disabled","disabled");
+                        $btn.attr("disabled", "disabled");
                     }
                 });
             }
+
         },
 
         /**
@@ -115,8 +141,37 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
         bindReWriteAmount: function () {
             var _this = this;
             mui(".cont").on("tap", ".agin-btn,.close", function () {
-                _this.reWriteAmount();
+                // _this.reWriteAmount();
+                // _this.gotoPage(url);
+                var url = root+"/wallet/deposit/index.html?t="+Math.random();
+                if(os == 'android'){
+                    window.gamebox.gotoPay(url);
+                }else if(os == 'app_ios'){
+                    gotoPay(url);
+                }else{
+                    // window.open(url, "_blank");
+                    _this.gotoUrl(url);
+                }
             })
+        },
+        otoFragment: function () {
+            var _this = this;
+            mui("body").on("tap", "[data-skip]", function () {
+                var target = $(this).data('target');
+                var dos = $(this).data('os');
+                var url = $(this).data('skip');
+                if (_this.os == 'app_android' && target) {
+                    window.gamebox.gotoFragment(target);
+                } else if (dos == 'app_ios') {
+                    if (target || target == 0) {
+                        gotoTab(target);
+                    } else {
+                        gotoGame(url);
+                    }
+                } else {
+                    _this.gotoUrl(url);
+                }
+            });
         }
     });
 });
