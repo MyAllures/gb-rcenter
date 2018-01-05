@@ -87,12 +87,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             //头部选择
             mui("div.s-menu").off('tap','a').on('tap', 'a', function () {
                 mui('.middle-content.middle-content-bat').scroll().scrollTo(0,0,100);
-                var _thiz=this;
-
-                setTimeout(function () {
-                    _this.checkSubordinate($(_thiz).attr("data-code"), _thiz.classList);
-                },200);
-
+                _this.checkSubordinate($(this).attr("data-code"), this.classList);
             });
 
             //直选复式
@@ -139,7 +134,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             });
         },
 
-
         /**
          * 重置下注选项
          */
@@ -161,7 +155,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             $("a.bottom-bar-btn.btn-jixuan-gfwf").addClass("mui-active");
             $("a.bottom-bar-btn.btn-reset-gfwf").removeClass("mui-active");
         },
-
 
         /**
          * 获取期数盘口数据
@@ -200,6 +193,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 }
             })
         },
+
         /**
          * 加载倒计时
          */
@@ -240,8 +234,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
          * 获取最近开奖历史记录
          */
         getOpenHistory: function () {
-            // 是否已开奖（通常是最近一期）
-            var isOpened = null;
             var _this = this;
             mui.ajax(root + '/commonLottery/getRecent5Records.html', {
                 data: {code: _this.code},
@@ -471,9 +463,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             this.code = $(this.formSelector + ' input[name=code]').val();
             this.type = $(this.formSelector + " input[name=type]").val();
             this.betCode = $(this.formSelector + " .ssc-method-list .ssc-method-label a.mui-active").attr("data-code");
-            /*this.getOpenHistory();*/
-            /*this.iosGoBack();
-            this.init();*/
             if(this.os == 'pc') {
                 //已应对在h5下金额输入框不能输入
                 $("input#inputMoney").focus();
