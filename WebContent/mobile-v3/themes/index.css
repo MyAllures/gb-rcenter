@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* index style */
 /* api-grid */
-.api-grid { min-height: 100%; width: 100%; /* 彩票内页样式 */ }
+.api-grid { min-height: 290px; width: 100%; /* 彩票内页样式 */ }
 .api-grid > div > ul { padding: 0 5px !important; }
 .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell { padding: 5px; height: 114px; border: 0; background: #fff; margin-bottom: 5px; }
 .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell a { border-radius: 6px; padding: 8px 0; }
