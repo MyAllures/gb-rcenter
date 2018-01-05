@@ -4,7 +4,7 @@
   position: fixed;
   right: 0;
   bottom: 50px;
-  z-index: 2001;
+  z-index: 901;
   cursor: pointer;
   margin: 0;
   -webkit-transform: rotateZ(0deg);
@@ -331,7 +331,7 @@
   background-image: url(images/hongbao/icon-close-rule-hover.png);
 }
 
-.hongbao-wrap .icon-close{     background: url(images/hongbao/icon-close-1.png) 0 0 /100%;
+.hongbao-wrap .icon-close{  
   position: absolute;
   width: 24px;
   height: 24px;

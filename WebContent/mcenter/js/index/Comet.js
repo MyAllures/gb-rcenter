@@ -39,7 +39,8 @@ define(['gb/components/Comet', 'site/index/PopUp', 'cookie'], function (Comet, P
                     {subscribeType: "MCENTER_WITHDRAW_AUDIT_UPDATE_STATUS",callBack:popUp.fetchWithdrawRecord},
                     {subscribeType: "EXPORT_DOWNLOAD_REMINDER",callBack:popUp.exportDownload},
                     {subscribeType: "MESSAGE_NOTICE",callBack:popUp.playerNoticeVoice},
-                    {subscribeType:'TRANSFER_LIMIT_WARNING',callBack:popUp.transferLimit}
+                    {subscribeType:'TRANSFER_LIMIT_WARNING',callBack:popUp.transferLimit},
+                    {subscribeType:'MCENTER_LOTTREY_RESULT_REMINDER',callBack:popUp.lotteryGatherCallback}
                 ];
                 _this.subscribeMsgs(subscribes);
             };

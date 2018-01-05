@@ -79,7 +79,7 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                 repeatArr = newArr.duplicateNewPk10().uniqueArr();
                 tempArr = newArr.uniqueArr();
                 if (repeatArr.length > 0) {
-                    _this.alertmsg("已删除掉重复号: " + repeatArr.join(" "));
+                    _this.alertContext = "已删除掉重复号: " + repeatArr.join(" ");
                     $(".content_jiang .content_tex").val(tempArr.join(","));
                 }
             }

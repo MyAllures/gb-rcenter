@@ -5,7 +5,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
 
     return BaseEditPage.extend({
         /*最多梯度*/
-        maxGrads:5,
+        maxGrads:10,
         _fieldname:null,
         init: function () {
             this._super();
@@ -67,7 +67,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 /* 填充 */
                 $tbl.append($newGrads);
             } else {
-                window.top.topPage.showInfoMessage(message.setting['rakeback.edit.maxPlan']);
+                window.top.topPage.showInfoMessage(message.setting['rebate.edit.maxPlan']);
             }
 
             $(event.currentTarget).unlock()
@@ -203,12 +203,20 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             //document.all._contents.style.visibility = "visible";
         },
         insertRow:function (e, opt) {
-            //var $tbl = $('._tables table');
-            var currentTr =  $($(e.currentTarget).parent().parent());
-            var $newGrads = $("table#foolishlyTable .apiGrad").clone().removeAttr('id').removeClass("hide");
-            currentTr.before($newGrads);
-            this.resetIndex();
-            $(e.currentTarget).unlock();
+            var $tbl = $('._tables table');
+            var _table_len = $tbl.find('.apiGrad').length;
+            var canCreate = _table_len < this.maxGrads;
+            /* 可以新增梯度 */
+            if(canCreate) {
+                var currentTr = $($(e.currentTarget).parent().parent());
+                var $newGrads = $("table#foolishlyTable .apiGrad").clone().removeAttr('id').removeClass("hide");
+                currentTr.before($newGrads);
+                this.resetIndex();
+            }else {
+                window.top.topPage.showInfoMessage(message.setting['rebate.edit.maxPlan']);
+            }
+
+            $(e.currentTarget).unlock()
         }
     });
 });

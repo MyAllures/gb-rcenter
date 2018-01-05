@@ -42,7 +42,6 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             var code = $("#czCode").val();
             var expect = $("#czExpect").val();
 
-
             $("[name='result.expect']").val("");
 
             var openingTime = $("[name='result.openingTime']").val();
@@ -53,8 +52,12 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                 page:page
             };
             var option = {};
-
-
+            var $target = $(_e.currentTarget);
+            if(openingTime>closeTime || closeTime>openTime){
+                _e.page.showPopover(_e, option, 'danger', "开奖时间必须大于封盘时间,封盘时间必须大于开盘时间!", true);
+                $target.unlock();
+                return;
+            }
             window.top.topPage.ajax({
                 url: root + "/lotteryResult/updateLotteryResult.html",
                 dataType: "json",

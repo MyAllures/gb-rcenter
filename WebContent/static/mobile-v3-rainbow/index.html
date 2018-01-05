@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+    <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/swiper.min.css" />  
+    <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/index.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/loading.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/rainbow/style.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/hongbao.css" />  
+</head>
+<body>
+<!-- 主页面标题 -->
+<header class="mui-bar mui-bar-nav">
+	<a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+	<!--<a href="download.html" class="btn-download"></a>-->
+	<a type="button" class="mui-btn mui-btn-success mui-pull-right btn-register" href="javascript:void(0);">注册</a>
+	<a type="button" class="mui-btn mui-btn-success mui-pull-right btn-login" href="javascript:void(0);">登录</a>
+	<a type="button" class="mui-btn mui-btn-success mui-pull-right btn-demo">试玩</a>
+	<img src="../../mobile-v3/images/logo-golden.png" alt="logo" class="logo" />
+
+</header>
+<div class="mui-content home-content">
+		<!-- 主界面具体展示内容 -->
+		<!--易记域名-->
+		<section class="yjym">访问域名：www.wwwwww.com</section>
+		<!--轮播-->
+		<section class="mui-slider banner-slide">
+			<div class="banner-ads">更多精彩游戏，请下载客户端！<a href="#" class="btn-download">立即下载</a><div class="close-slide"></div></div>
+			<div class="mui-slider-group">
+				<div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
+				<div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
+				<div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
+			</div>
+			<!--轮播图加载时的样式-->
+			<div class="banner-loading">
+				<div class="loader api-loader">
+					<div class="loader-inner ball-pulse api-div">
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--公告-->
+		<section class="notice">
+			<button type="button" class="mui-btn mui-btn-primary btn-title">公告</button>
+			<div class="notice-list">
+				<div class="marquee">
+					<a href="" >111尊敬的用户您好！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！</a>
+					<a href="">222尊敬的用户您好！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！</a>
+					<a href="">333尊敬的用户您好！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！</a>
+					<a href="">444尊敬的用户您好！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！本站于20161206进行升级！</a>
+				</div>
+			</div>
+		</section>
+<section class="nav">
+  <div class="swiper-container nav-slide-indicators">
+    <div class="swiper-wrapper">
+		<a class="swiper-slide item-live mui-active" >
+			<span>真人</span>
+		</a>
+		<a class="swiper-slide item-casino" >
+			<span>电子</span>
+		</a>
+		<a class="swiper-slide item-lottery" >
+			<span>彩票</span>
+		</a>
+		<a class="swiper-slide item-sports" >
+			<span>体育</span>
+		</a>
+		<a class="swiper-slide item-fish" >
+			<span>捕鱼</span>
+		</a>
+		<a class="swiper-slide item-chess-and-card" >
+			<span>棋牌</span>
+		</a>
+    </div>
+  </div>	
+</section>
+  <div class="swiper-container nav-slide-content  api-grid">
+    <div class="swiper-wrapper">
+            <div class="swiper-slide slide-live">
+        		<ul class="mui-table-view mui-grid-view mui-grid-9 active">
+					<div class="deficiency-nots">没有找到符合的游戏</div>
+					<!--api加载时的样式-->
+					<div class="api-loading">
+						<div class="loader api-loader">
+							<div class="loader-inner ball-pulse api-div">
+								<div></div>
+								<div></div>
+								<div></div>
+							</div>
+						</div>
+					</div>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-10"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">BBIN</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-24"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">OPUS</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-9"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">AG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-16"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">EBET</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-7"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">OG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-17"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">SA</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-5"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">GD</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-1"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">DS</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-1-33"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">SUNBET</div>
+						</a>
+					</li>
+				</ul>
+            </div>
+            <div class="swiper-slide slide-casino" >
+				<ul class="mui-table-view mui-grid-view mui-grid-9 active" >
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="casino-list.html">
+							<span class="api-item api-icon-2-26"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">PNG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-20"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">BSG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-6"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">PT</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-25"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">SG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-9"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">AG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-10"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">BBIN</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-15"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">HB</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-3"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">MG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-27"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">DT</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-31"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">GNS</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-2-32"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">PRG</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+            <div class="swiper-slide slide-lottery" >
+				<ul class="mui-table-view mui-grid-view mui-grid-9 active" data-list="lottery">
+					<!--彩票导航-->
+					<div class="lottery-nav">
+						<div class="mui-scroll-wrapper mui-slider-indicatorcode mui-segmented-control mui-segmented-control-inverted" data-scroll="7">
+							<div class="mui-scroll">
+								<ul class="mui-list-unstyled mui-clearfix mui-bar-tab">
+									<li><a href="javascript:void(0);" class="mui-tab-item mui-active api-icon-4-22-2">一指通彩票</a></li>
+									<li><a href="javascript:void(0);" class="mui-tab-item api-icon-4-2">KG彩票</a></li>
+									<li><a href="javascript:void(0);" class="mui-tab-item api-icon-4-10">BBIN彩票</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="lottery-content"><!--彩票内容切换-->
+						<div  class="mui-control-content mui-active">
+							<div class="deficiency-nots">没有找到符合的游戏</div>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-AHfast3.png" alt="" class="lottery-img">
+									<div class="mui-media-body">安徽快3</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-BJkeno.png" alt="" class="lottery-img">
+									<div class="mui-media-body">北京快乐8</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-CQssc.png" alt="" class="lottery-img">
+									<div class="mui-media-body">重庆时时彩</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-fc3d.png" alt="" class="lottery-img">
+									<div class="mui-media-body">福彩3D</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-ffc.png" alt="" class="lottery-img">
+									<div class="mui-media-body">两分时时彩</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-GDklsf.png" alt="" class="lottery-img">
+									<div class="mui-media-body">快乐10分</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-GXfast3.png" alt="" class="lottery-img">
+									<div class="mui-media-body">广西快3</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-HBfast3.png" alt="" class="lottery-img">
+									<div class="mui-media-body">湖北快3</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-JSfast3.png" alt="" class="lottery-img">
+									<div class="mui-media-body">江苏快3</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-mark6.png" alt="" class="lottery-img">
+									<div class="mui-media-body">六合彩</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-pk10.png" alt="" class="lottery-img">
+									<div class="mui-media-body">北京PK10</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-sfc.png" alt="" class="lottery-img">
+									<div class="mui-media-body">三分时时彩</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-ssc.png" alt="" class="lottery-img">
+									<div class="mui-media-body">分分时时彩</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-tcPl3.png" alt="" class="lottery-img">
+									<div class="mui-media-body">排列3</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-TJssc.png" alt="" class="lottery-img">
+									<div class="mui-media-body">天津时时彩</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-wfc.png" alt="" class="lottery-img">
+									<div class="mui-media-body">五分时时彩</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-XJssc.png" alt="" class="lottery-img">
+									<div class="mui-media-body">新疆时时彩</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-xyFt.png" alt="" class="lottery-img">
+									<div class="mui-media-body">幸运飞艇</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/lt-xyNc.png" alt="" class="lottery-img">
+									<div class="mui-media-body">幸运农场</div>
+								</a>
+							</li>
+						</div>
+						<div class="mui-control-content">
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/kg_c6.png" alt="" class="lottery-img">
+									<div class="mui-media-body">快乐彩</div>
+								</a>
+							</li>
+						</div>
+						<div class="mui-control-content">
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c1.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c2.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c3.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c4.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c5.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c6.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c7.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c8.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c9.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c10.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c11.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c12.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c13.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c14.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c15.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<img src="../../mobile-v3/images/lottery/bb_c16.png" alt="" class="lottery-img">
+									<div class="mui-media-body">BBIN</div>
+								</a>
+							</li>
+						</div>
+					</div><!--彩票内容切换结束-->
+				</ul>
+			</div>
+            <div class="swiper-slide slide-sports" >
+				<ul class="mui-table-view mui-grid-view mui-grid-9 active" >
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-3-12"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">HG</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-3-19"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">SHABA</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<span class="api-item api-icon-3-4"></span>  <!--根据class的不同来显示api图标-->
+							<div class="mui-media-body">IM</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+            <div class="swiper-slide slide-fish" >
+				<ul class="mui-table-view mui-grid-view mui-grid-9 active">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<img src="../../mobile-v3/images/fish/f-ag.png" alt="" class="fish-img" />
+							<div class="mui-media-body">AG捕鱼</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<img src="../../mobile-v3/images/fish/f-pt.png" alt="" class="fish-img" />
+							<div class="mui-media-body">PT深海大赢家</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<img src="../../mobile-v3/images/fish/f-gns.png" alt="" class="fish-img" />
+							<div class="mui-media-body">GNS寻宝捕鱼</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<img src="../../mobile-v3/images/fish/f-gg.png" alt="" class="fish-img" />
+							<div class="mui-media-body">GG捕鱼</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<img src="../../mobile-v3/images/fish/f-bb-dr.png" alt="" class="fish-img" />
+							<div class="mui-media-body">BB捕鱼达人</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<img src="../../mobile-v3/images/fish/f-bb-ds.png" alt="" class="fish-img" />
+							<div class="mui-media-body">BB捕鱼大师</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+            <div class="swiper-slide slide-chess-and-card" >
+				<ul class="mui-table-view mui-grid-view mui-grid-9 active">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<img src="../../mobile-v3/images/card/sg.png" alt="" class="card-img" />
+							<div class="mui-media-body">三公</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<img src="../../mobile-v3/images/card/zjh.png" alt="" class="card-img" />
+							<div class="mui-media-body">扎金花</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<img src="../../mobile-v3/images/card/qznn.png" alt="" class="card-img" />
+							<div class="mui-media-body">抢庄牛牛</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<img src="../../mobile-v3/images/card/dz.png" alt="" class="card-img" />
+							<div class="mui-media-body">德州扑克</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="#">
+							<img src="../../mobile-v3/images/card/ebg.png" alt="" class="card-img" />
+							<div class="mui-media-body">二八杠</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+    </div>
+  </div>
+  <div class="copy-right">Copyright © 2004-2017 </div>
+</div>  <!--mui-content 闭合标签-->
+<!--footer-->
+<footer class="mui-bar mui-bar-tab">
+	<a class="mui-tab-item">
+		<span class="mui-icon icon-deposit"></span>
+		<span class="mui-tab-label">存款</span>
+	</a>
+	<a class="mui-tab-item" href="promo.html">
+		<span class="mui-icon icon-promo"></span>
+		<span class="mui-tab-label">优惠</span>
+	</a>
+	<a class="mui-tab-item mui-active" href="index.html">
+		<span class="mui-icon icon-home"></span>
+		<span class="mui-tab-label">首页</span>
+	</a>
+	<a class="mui-tab-item">
+		<span class="mui-icon icon-service"></span>
+		<span class="mui-tab-label">客服</span>
+	</a>
+	<a class="mui-tab-item" href="mine.html">
+		<span class="mui-icon icon-mine"></span>
+		<span class="mui-tab-label">我的</span>
+	</a>
+</footer>
+<!-- 侧滑导航根容器 -->
+<div class="mui-off-canvas-wrap index-canvas-wrap">
+  <div class="mui-icon mui-icon-closeempty"></div>
+  <!-- 菜单容器 -->
+  <aside class="mui-off-canvas-left">
+    <div class="mui-scroll-wrapper side-menu-scroll-wrapper">
+      <div class="mui-scroll">
+        <!-- 菜单具体展示内容 -->
+        <!--个人信息部分-->
+        <div class="person-info">
+        	<!--登录前-->
+        	<div class="un-login" hidden>
+        		<p>欢迎观临，请先登录</p>
+        		<a type="button" class="mui-btn mui-btn-success  btn-login">用户登录</a>
+        	</div>
+        	<!--登陆后-->
+        	<div class="login">
+        		<i class="icon-person"></i>
+        		<p>EVEN_999</p>
+        		<a type="button" class="mui-btn mui-btn-success  btn-person">个人中心</a>         		
+        	</div>
+        </div>	
+        <!--side-nav-->
+        <div class="side-nav">
+        	<ul class="mui-list-unstyled">
+        		<li class="active home"><a href="index.html">首页</a></li>
+        		<li class="question"><a href="">常见问题</a></li>
+        		<li class="reg_rules"><a href="">注册条款</a></li>
+        		<li class="about"><a href="about.html">关于我们</a></li>
+        		<li class="download"><a href="download.html">下载客户端</a></li>
+        		<li class="pc"><a href="">电脑版</a></li>
+        		<li class=" lang zh-CN">
+        			<a href="">语言</a>
+        		</li>
+        	</ul>
+        	<a type="button" class="mui-btn mui-btn-success  btn-logout">退出登录</a> 
+        </div>
+      </div>
+    </div>
+	<!--语言弹窗-->
+	<ul class="lang-menu">
+		<li class="current zh-CN"><a href="">中文</a></li><!--当前语言版本加current-->
+		<li class="en-US"><a href="">English</a></li>
+		<li class="ja-JP"><a href="">日文</a></li>
+	</ul>
+  </aside>
+  <!-- 主页面容器 -->
+</div>
+<!--添加到桌面图标-->
+<div class="desk">
+    <div class="mui-col-xs-2 logo"><img src="../../mobile-v3/images/app_icon_111.png"></div>
+    <div class="mui-col-xs-8 tip">
+        <span class="desk-text">点击下方<em></em>添加到主屏幕</span>
+    </div>
+    <div class="mui-col-xs-1 close"><i></i></div>
+</div>
+    <!--红包html开始  通过改变hongbao-wrap的class来改变红包样式，一共三种（hb_type_1,hb_type_2,hb_type_3）--> 
+    <div class="hongbao-slide-wrap hongbao-wrap" id="hongbao">
+		<span class="mui-icon mui-icon-close icon-close"></span>
+		<div class="mui-slider hongbao-slider">
+		  <div class="mui-slider-group">
+			<div class="mui-slider-item hb_type_1">
+				<div class="img"></div>
+				<div class="extra"></div>
+			</div>
+			<div class="mui-slider-item hb_type_2">
+				<div class="img"></div>
+				<div class="extra"></div>
+			</div>
+			<div class="mui-slider-item hb_type_3">
+				<div class="img"></div>
+				<div class="extra"></div>
+			</div>
+		  </div>
+		  <div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+			</div>
+		</div>
+    </div> 
+    <div id="hongbao_detail" class="hongbao_detail">
+    	<div class="hongbao_inner">
+    		<div class="icon-close"></div>
+    		<div class="hongbao"><!--未能拆时加disabled类名-->
+    			<div class="icon-open"></div>
+    			<div class="hongbao-time-txt">下次拆红包开始时间为</div>
+    			<div class="hongbao-time">2017-11-11  11:11:11</div>
+    			<a href="javascript:" class="btn-rule" id="btn-rule"></a>
+				<div class="tip-msgs" id="tip-msgs">
+					你还有<span style="font-size: 18px;padding: 0 5px;color: gold" id="ramain-count">0</span>次抽奖机会
+				</div>
+    			<!--红包规则元素-->
+    			<div class="hongbao-rule">
+    				<div class="txt">
+    					<div class="nice-wrapper">
+    						游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则
+							游戏规则游戏规则
+    					</div>    					
+    				</div>
+    				<a href="javascript:" class="icon-close-rule"></a>
+    			</div>
+    			<!--中奖时的提示-->
+    			<div class="win-hongbao tips">
+    				<div class="ttxt-1">恭喜您</div>
+    				<div class="ttxt-2">获得20元</div>
+    			</div>
+    			<!--未中奖时的提示-->
+    			<div class="lose-hongbao tips">
+    				<div class="ttxt-1">很遗憾</div>
+    				<div class="ttxt-2">还差一点就中奖了呦！</div>
+    			</div>
+    		</div>
+    		<div class="hongbao_extra"></div>
+    			<!--拆开红包时的彩带和光环-->
+			<div class="caidai"></div>
+			<div class="hongbao-light"></div>
+			<!--关闭红包继续抽奖按钮-->
+			<a href="javascript:" id="btn-ok" class="btn-ok"></a>
+    	</div>
+    </div>
+    <!--<div class="loading-wrap">
+    	<span class="loading-img loading-entirety"><img src="../../mobile-v3/images/oval.svg" alt></span>
+    </div>-->
+    <!--红包html结束-->	
+	<!--注册页层-->
+  <div class="login-wrap">
+    <!-- 主页面标题 -->
+    <header class="mui-bar mui-bar-nav mui-bar-blue">
+      <a class="mui-icon mui-icon-arrowleft mui-pull-left"></a>
+      <h1 class="mui-title">登录</h1>
+    </header>
+    <div class="mui-content mui-scroll-wrapper mui-content-without-footer-address login-content">
+      <div class="mui-scroll">
+        <!-- 主界面具体展示内容 -->
+        <!--<section class="type-header mui-segmented-control">
+        	<a href="#login_content" class="mui-control-item mui-btn mui-active ">登录</a>
+        	<a href="#register_content" class="mui-control-item mui-btn">注册</a>
+        </section>-->
+        <section class="type-content">
+        	<div class="login-icon"></div>
+        	<div id="login_content"	 class="mui-control-content mui-active login-part"><!--登录部分的内容-->
+        		<form class="mui-input-group">
+				    <div class="mui-input-row">
+				        <label class="mui-ellipsis">输入用户名</label>
+				        <span class="error-info">
+				        	<i class="mui-icon mui-icon-info"></i>输入用户名不存在
+				        </span>
+				    <input type="text" class="mui-input-clear" placeholder="输入8-20位字母数字组合">
+				    </div>
+				    <div class="mui-input-row password-input-row">
+				        <label>输入密码</label>
+				        <span class="error-info">
+				        	<i class="mui-icon mui-icon-info"></i>输入密码错误
+				        </span>
+				        <input type="password" class="mui-input-password" placeholder="输入8-20位字母数字组合">
+				        <a href="" class="forget-pas">忘记密码？</a>
+				    </div>
+				    <div class="mui-button-row">
+				        <button type="button" class="mui-btn mui-btn-block btn-ok" >立即登录</button>
+				        <button type="button" class="mui-btn mui-btn-block btn-cancel" >免费开户</button>
+				    </div>
+				</form>
+        </div>
+        </section>
+      </div> <!--mui-scroll 闭合标签-->
+    </div>  <!--mui-content 闭合标签-->
+  </div>
+  <!--注册层-->
+    <div class="register-wrap">
+    <!-- 主页面标题 -->
+    <header class="mui-bar mui-bar-nav mui-bar-blue">
+      <a class="mui-icon mui-icon-arrowleft mui-pull-left"></a>
+      <h1 class="mui-title">注册</h1>
+    </header>
+    <div class="mui-content mui-scroll-wrapper mui-content-without-footer-address login-content">
+      <div class="mui-scroll">
+        <!-- 主界面具体展示内容 -->
+       <!-- <section class="type-header mui-segmented-control">
+        	<a href="#login_content" class="mui-control-item mui-btn mui-active ">登录</a>
+        	<a href="#register_content" class="mui-control-item mui-btn">注册</a>
+        </section>-->
+        <section class="type-content">
+        	<div id="register_content" class="mui-control-content mui-active register-part"><!--注册部分的内容-->
+        		<form class="mui-input-group">
+				    <div class="mui-input-row">
+				        <label class="mui-ellipsis">输入用户名<i class="icon-star"></i></label>
+				    <input type="text" class="mui-input-clear" placeholder="输入8-20位字母数字组合">
+				    </div>
+				    <div class="mui-input-row">
+				        <label>输入密码<i class="icon-star"></i></label>
+				        <input type="password" class="mui-input-password" placeholder="输入8-20位字母数字组合">
+				    </div>
+				    <div class="mui-input-row">
+				        <label>输入确认密码<i class="icon-star"></i></label>
+				        <input type="password" class="mui-input-password" placeholder="输入8-20位字母数字组合">
+				    </div>
+				    <div class="mui-input-row">
+				        <label>输入真实姓名<i class="icon-star"></i></label>
+				        <input type="text" class="mui-input-clear" placeholder="输入与银行卡相同姓名">
+				    </div>
+				    <div class="mui-input-row">
+				        <label>输入取款密码<i class="icon-star"></i></label>
+				        <input type="password" class="mui-input-password" placeholder="输入6位数字密码">
+				    </div>
+				    <div class="mui-input-row">
+				        <label>主语言</label>
+				        <input type="text" class="mui-input-select" readonly placeholder="请选择语言">
+				        <span class="mui-icon mui-icon-arrowdown"></span>
+				    </div>
+				    <div class="mui-input-row">
+				        <label>安全问题</label>
+				        <input type="text" class="mui-input-select" readonly placeholder="请选择问题">
+				        <span class="mui-icon mui-icon-arrowdown"></span>
+				    </div>
+				    <div class="mui-input-row">
+				        <label>请输入回答</label>
+				        <input type="text" class="mui-input-clear" placeholder="请选择安全问题正确答案">
+				    </div>
+				    <div class="mui-input-row">
+				        <label>请输入验证码</label>
+				        <div class="mui-flex">
+				        	<input type="text" class="mui-input-clear" placeholder="请输入验证码">
+				        	<img src="../../mobile-v3/images/code.png"/>
+				        </div>				        
+				    </div>
+				    <div class="mui-input-row mui-checkbox mui-left tk">
+					  <a>我已满合法博彩年龄，同意各项开户条约</a>
+					  <input name="checkbox1" value="Item 1" type="checkbox" checked>
+					</div>
+				    <div class="mui-button-row">
+				        <button type="button" class="mui-btn mui-btn-block btn-ok" >立即注册</button>
+				        <button type="button" class="mui-btn mui-btn-block btn-cancel" >免费试玩</button>
+				    </div>
+				</form>        		
+        	</div>
+        </section>
+      </div> <!--mui-scroll 闭合标签-->
+    </div>  <!--mui-content 闭合标签-->
+  </div>
+<script src="../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../mobile-v3/js/common.js"></script>
+<script src="../../mobile-v3/js/swiper.min.js"></script>
+<script src="../../mobile-v3/js/jquery.marquee.min.js"></script>
+<script src="../../mobile-v3/js/jquery/jquery.nicescroll.min.js"></script>
+<script type="text/javascript">	
+	//首页脚本
+	$(function(){
+	/*侧滑菜单脚本*/
+	$(".index-canvas-wrap").on("tap",".mui-icon-closeempty",function(e){
+		//e.preventDefault();
+		$("html").removeClass("index-canvas-show");
+	});
+	$(".index-canvas-wrap").on("tap",function(e){// 点击侧边空白隐藏侧边栏
+		if(!$(e.detail.target).parents(".mui-off-canvas-left")[0]){
+		$("html").removeClass("index-canvas-show");
+		}
+	});	
+		// api滑动
+	    var slideContent = new Swiper('.nav-slide-content', {
+	      loop:true,
+	      loopedSlides:6,
+	      autoHeight: true,
+	      on:{
+	      	slideChange:function(){
+	      	}
+	      }
+	    });
+	    var slideIndicators = new Swiper('.nav-slide-indicators', {
+	      loop:true,
+	      loopedSlides: 6,
+	      slidesPerView: 'auto',
+	      touchRatio: 0.2,
+	      slideToClickedSlide: true,
+	    });
+	    slideContent.controller.control = slideIndicators;
+	    slideIndicators.controller.control = slideContent;
+		// 登录显示隐藏
+		$(".btn-login").on("tap",function(){
+			$(".login-wrap").css({height:"100%"});
+			$("body").css({height:"100%",overflow:"hidden",position:"absolute",top:"0",bottom:"0"});
+		});
+		$(".login-wrap").on("tap",".mui-icon-arrowleft",function(){
+			$(".login-wrap").css({height:"0"});			
+			$("body").removeAttr("style");
+		});
+		// 注册显示隐藏
+		$(".btn-register").on("tap",function(){
+			$(".register-wrap").css({height:"100%"});
+			$("body").css({height:"100%",overflow:"hidden",position:"absolute",top:"0",bottom:"0"});
+		});
+		$(".register-wrap").on("tap",".mui-icon-arrowleft",function(){
+			$(".register-wrap").css({height:"0"});
+			$("body").removeAttr("style");
+		});
+		/* 公告初始化 */
+		$('.marquee').marquee({
+			 duration: 6000
+		});
+		// 阻止底部页面滚动
+		$(".register-wrap").on("touchmove",function(e){
+			e.preventDefault();
+		});
+		$(".login-wrap").on("touchmove",function(e){
+			e.preventDefault();
+		});
+	});
+	$(function(){		
+		    	/*红包脚本开始*/
+    	$(function(){   		
+    		/*展开右下角红包*/
+    		$("#hongbao").on("tap",function(){
+    			$(this).addClass('hide_hongbao');    			
+    			$("#hongbao_detail").fadeIn(1000);
+    		});
+    		/*关闭红包*/
+    		$("#hongbao_detail .icon-close").on('click',function(){
+    			$(this).parents('.hongbao_detail').fadeOut(1000);
+    			$("#hongbao").removeClass('hide_hongbao');
+    		});
+    		/*打开红包规则*/
+    		$("#btn-rule").on('tap',function(){
+    			$('.hongbao-rule').show();
+    			/*自定义滚动条*/
+	    		$(".hongbao-rule .txt").niceScroll(".nice-wrapper", {
+			        cursorwidth: "12px",
+			        cursorcolor:"#c0111c",
+			        cursorborder: "1px solid #d2aa48"
+			    });
+    		});
+    		/*关闭红包规则*/
+    		$(".icon-close-rule").on('tap',function(){
+    			$(".hongbao-rule").hide();
+    		});
+    		/*打开红包*/
+    		$(".hongbao").not(".disabled").find(".icon-open").on('tap',function(){
+    			var hongbao_win = false;//是否中奖变量
+    			$(this).parents(".hongbao_inner").addClass('opened');
+    			$(this).hide();
+    			$(".btn-rule").hide();
+    			$(".hongbao-time-txt").hide();
+    			$(".hongbao-time").hide();
+    			if(hongbao_win){
+    				$(".win-hongbao.tips").show();
+    			}else{
+    				$(".lose-hongbao.tips").show();
+    			}
+    		});
+    		$("#btn-ok").on("tap",function(){
+    			$(".hongbao_inner").removeClass("opened");
+    			$(".icon-open").show();
+    			$(".btn-rule").show();
+    			$(".hongbao-time-txt").show();
+    			$(".hongbao-time").show();
+    			$(".tips").hide();
+    		});
+    	});
+    	/*红包脚本结束*/
+	});
+</script>
+</html>

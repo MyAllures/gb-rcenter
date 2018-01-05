@@ -53,3 +53,77 @@ function resetScreen() {
         }
     }
 }
+
+
+var Tools = {
+    error: function (str) {
+        if (typeof(str) == "string") {
+            alert(str);
+        }
+    },
+    success: function (str) {
+        if (typeof(str) == "string") {
+            alert(str);
+        }
+    },
+    toast: function (str) {
+        if (typeof(str) == "string") {
+            alert(str);
+        }
+    },
+    log: function (str) {
+        if (config.DEBUG) {
+            console.log(str);
+        }
+    },
+    sleep: function (numberMillis) {
+        var now = new Date();
+        var exitTime = now.getTime() + numberMillis;
+        while (true) {
+            now = new Date();
+            if (now.getTime() > exitTime)
+                return;
+        }
+    },
+    formatDate: function (str) {
+        str = parseInt(str);
+        var now = new Date(str);
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        var date = now.getDate();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+
+        money = month < 10 ? '0' + month : month;
+        date = date < 10 ? '0' + date : date;
+        hour = hour < 10 ? '0' + hour : hour;
+        minute = minute < 10 ? '0' + minute : minute;
+        second = second < 10 ? '0' + second : second;
+        return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+    },
+    formatDateChinese: function (str) {
+        str = parseInt(str);
+        var now = new Date(str);
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        var date = now.getDate();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+        return year + "年" + month + "月" + date + "日" + hour + "时" + minute + "分" + second + "秒";
+    },
+    diffDateChinese: function (time1, time2) {
+        var total = (time2 - time1) / 1000;
+        var hour = Math.floor(total / (60 * 60));
+        var minute = Math.floor((total - hour * 60 * 60) / 60);
+        var second = Math.floor(total % 60);
+        return hour + "时" + minute + "分" + second + "秒";
+    },
+    null2Str: function (str) {
+        return str || '';
+    },
+    parseInt: function (str) {
+        return parseInt(str, 10);
+    }
+}

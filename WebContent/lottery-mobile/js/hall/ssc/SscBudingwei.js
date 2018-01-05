@@ -8,7 +8,7 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
         },
 
         getSecondText:function () {
-            return $("div#budingwei a.mui-active span").text()==""?"前三一码":$("div#budingwei a.mui-active span").text();
+            return $("div#budingwei a.main.mui-active span").text()==""?"前三一码":$("div#budingwei a.main.mui-active span").text();
         },
 
         getSecondCode:function(){
@@ -41,7 +41,6 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
 
         random_q3ym :function () {
             var random_1 = parseInt(Math.random() * 10);
-
             $(" a.n-btn").removeClass("mui-active").eq(random_1).addClass("mui-active");
         },
         /**

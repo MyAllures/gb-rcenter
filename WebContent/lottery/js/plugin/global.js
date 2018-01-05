@@ -130,11 +130,17 @@ var ajaxRequest = function (obj) {
         dataType = obj.dataType;
     }
 
+    var async = true;
+    if (typeof obj.async != 'undefined') {
+        async = obj.async;
+    }
+
     requestStr += "t=" + new Date().getTime();
     $.ajax({
         type: type,
         url: requestStr,
         dataType: dataType,
+        async:async,
         data: data,
         timeout: 60000,
         success: function (json) {
@@ -172,10 +178,10 @@ var ajaxRequest = function (obj) {
                 obj.beforeSend();
             }
         },
-        complete: function () {
+        complete: function (XMLHttpRequest,textStatus) {
             Tools.log(requestStr + "-complete");
             if (typeof(obj.complete) == "function") {
-                obj.complete();
+                obj.complete(XMLHttpRequest,textStatus);
             }
         }
     });
@@ -342,7 +348,7 @@ Array.prototype.duplicateNewa = function () {
     }
     return tempArr;
 };
-function containtArr(newArr,item){
+/*function containtArr(newArr,item){
     for(var j=0;j<newArr.length;j++){
         var a=[];
         var b=[];
@@ -369,7 +375,36 @@ function containtArr(newArr,item){
         }
     }
     return false;
+}*/
+
+
+function containtArr(newArr, item) {
+    for (var j = 0; j < newArr.length; j++) {
+        var a = [];
+        var b = [];
+        a.push(newArr[j].charAt(0));
+        a.push(newArr[j].charAt(1));
+        a.push(newArr[j].charAt(2));
+        a.push(newArr[j].charAt(3));
+        a.push(newArr[j].charAt(4));
+        b.push(item.charAt(0));
+        b.push(item.charAt(1));
+        b.push(item.charAt(2));
+        b.push(item.charAt(3));
+        b.push(item.charAt(4));
+        if (item.length == 3) {
+            a.push(newArr[j].charAt(2));
+            b.push(item.charAt(2))
+        }
+        if (newArr[j].length == item.length && a.join("") == b.join("")) {
+            return true
+        }
+    }
+    return false
 }
+
+
+
 function containtArra(newArr,item){
 
     for(var j=0;j<newArr.length;j++){

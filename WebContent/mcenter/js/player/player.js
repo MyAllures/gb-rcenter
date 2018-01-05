@@ -20,9 +20,27 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             this.doFormData();
             this.queryCount();
         },
+        /**
+         * 异步加载后需调用方法
+         */
+        synQueryPageLoad: function () {
+            //注：这里不能调用onPageLoad方法，会重复定义排序等方法
+            $('[data-toggle="popover"]', this.formSelector).popover({
+                trigger: 'hover',
+                placement: 'top'
+            });
+            this.pagination.changeOrderColumnClass();
+        },
         onPageLoad: function () {
             this._super();
             var _this = this;
+
+
+
+
+
+
+
             $('[data-toggle="popover"]', _this.formSelector).popover({
                 trigger: 'hover',
                 placement: 'top'
@@ -49,13 +67,43 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                     $("#rakeback_list [type=radio]").prop("checked", false)
                 }
             });
-            $("#rakeback_list").on("click", function (e) {
-                e.stopPropagation();
-            });
-
             this.rewrite();
         },
 
+
+
+      /*  doMsgs:function () {
+            var ip=$('input[name="search.lastLoginIpv4"]').val();
+            var ip1=$('input[name="search.registerIpv4"]').val();
+            if (ip!=""){
+            window.top.topPage.ajax({
+                url: root + "/player/doMsg.html",
+                type: 'POST',
+                data:  {'search.lastLoginIpv4':ip},
+                dataType: "json",
+                success: function (data) {
+                    if (!data.state){
+                        alert("输入的登录ip不合法")
+                    }
+                },
+
+            });
+            }
+            if(ip1!=""){
+                window.top.topPage.ajax({
+                    url: root + "/player/doMsg.html",
+                    type: 'POST',
+                    data:  {'search.registerIpv4':ip1},
+                    dataType: "json",
+                    success: function (data) {
+                        if (!data.state1){
+                            alert("输入的注册ip不合法")
+                        }
+                    },
+
+                });
+            }
+        },*/
         /**
          * 请求数据
          */
@@ -73,7 +121,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                 },
                 success: function (data) {
                     _this.renderData(data);
-                    _this.onPageLoad();
+                    _this.synQueryPageLoad();
                 },
                 error: function (data, state, msg) {
                     window.top.topPage.showErrorMessage(data.responseText);
@@ -109,7 +157,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                 success: function (data) {
                     $("#playerPage").html(data);
                     _this.initSelect();
-                    _this.pagination.bindSelectChange(page)
+                    _this.pagination.bindSelectChange(window.top.page);
                 },
                 error: function (data) {
 
@@ -123,6 +171,9 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
         bindEvent: function () {
             this._super();
             var that = this;
+            $("#rakeback_list", this.formSelector).on("click", function (e) {
+                e.stopPropagation();
+            });
 
             /**
              * 高级搜索下拉by kobe
@@ -265,6 +316,31 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                 $("#playerRanksMemory").val(JSON.stringify(playerRanksMemory));
 
             });
+
+
+            /**
+             * 标签选中
+             */
+            $("input[name='search.tagIds']", that.formSelector).change(function (e) {
+
+                //显示勾选数量
+                var tagNum = $("input[name='search.tagIds']:checked").length;
+                if (tagNum == 0) {
+                    $(this).parents(".dropdown-menu").siblings("button").children(".tagText").text(window.top.message.player_auto['请选择']);
+                } else {
+                    $(this).parents(".dropdown-menu").siblings("button").children(".tagText").text(window.top.message.player_auto['已选'] + tagNum + window.top.message.player_auto['项']);
+                }
+                var playerRanksMemory = [];
+                //onPageLoad回填
+                $("input[name='search.tagIds']:checked").each(function () {
+                    playerRanksMemory.push($(this).val());
+                })
+
+                $("#playerRanksMemory").val(JSON.stringify(playerRanksMemory));
+
+            });
+
+
             /**
              * 绑定下拉层级事件
              */
@@ -294,6 +370,18 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             $(".playerRank button[data-type='clear']").on('click', function () {
                 $("input[name='search.playerRanks']:checked").prop('checked', false).change();
             });
+            /**
+             * 清除所有标签
+             */
+            $(".playerRank button[data-type-tag='clear']").on('click', function () {
+                $("input[name='search.tagIds']:checked").prop('checked', false).change();
+            });
+            /**
+             * 选中所有标签
+             */
+            $(".playerRank button[data-type-tag='all']").on('click', function () {
+                $("input[name='search.tagIds']").not("input:checked").prop('checked', true).change();
+            });
             $(that.formSelector).on('click', function (e) {
                 $(".rank-btn").siblings(".dropdown-menu").css("display", "none");
             });
@@ -310,6 +398,16 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                     $username.val($username.val().replace(/\s+/g, ""));
                 }
             });
+            /*$("[name='search.lastLoginIpv4']", this.formSelector).on("blur", function (e) {
+                if($(this).val()){
+                    that.validIp(null,null,$(this).val(),$(this));
+                }
+            });
+            $("[name='search.registerIpv4']", this.formSelector).on("blur", function (e) {
+                if($(this).val()){
+                    that.validIp(null,null,$(this).val(),$(this));
+                }
+            });*/
         },
         /**
          * 示例删除回调函数
@@ -576,6 +674,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             $("#operator3").val('');
             $("#operator4").val('');
             $('.playerRank').find("button[data-type='clear']").trigger('click');
+            $('.playerRank').find("button[data-type-tag='clear']").trigger('click');
             $("#playerRanksMemory").val('');
             $("input[name='search.rakebackId']").siblings("button").find("span[prompt='prompt']").text(window.top.message.player_auto['全部']);
             $("input[name='search.loginTimeBegin']").val('');
@@ -606,7 +705,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
         },
         getSelectIdsArray: function (e, option) {
             var checkedItems = [], counter = 0;
-            $("table tbody input[type=checkbox]", this.getCurrentForm(e)).not("[name='search.playerRanks']").each(function (node, obj) {
+            $("table tbody input[type=checkbox]", this.getCurrentForm(e)).not("[name='search.playerRanks']").not("[name='search.tagIds']").each(function (node, obj) {
                 if (obj.checked) {
                     checkedItems[counter] = obj.value;
                     counter++;
@@ -636,13 +735,49 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
          * @param e   事件对象
          * @return 验证是否通过
          */
-        validateForm: function (e) {
+        validateForm: function (e,opt) {
+            var _this = this;
             var $username = $("input[name='search.username']");
             if ($username && $username.val()) {
                 $username.val($username.val().replace(/\s+/g, ""));
             }
-            var $form = $(window.top.topPage.getCurrentForm(e));
-            return !$form.valid || $form.valid();
+            /*var lastLoginIpv4=$('input[name="search.lastLoginIpv4"]').val();
+            if(lastLoginIpv4){
+                var flag = this.validIp(e,opt,lastLoginIpv4,$('input[name="search.lastLoginIpv4"]'));
+                if(!flag){
+                    return false;
+                }
+            }
+            var registerIpv4=$('input[name="search.registerIpv4"]').val();
+            if(registerIpv4){
+                var flag = this.validIp(e,opt,registerIpv4,$('input[name="search.registerIpv4"]'));
+                if(!flag){
+                    return false;
+                }
+            }*/
+            return true;
+        },
+        validIp:function (e,opt,ip,obj) {
+            var _this = this;
+            var flag = false;
+            window.top.topPage.ajax({
+                url: root + "/player/doMsg.html",
+                type: 'POST',
+                data:  {'ip':ip},
+                dataType: "json",
+                //同步
+                async:false,
+                success: function (data) {
+                    if (data.state!=true){
+                        page.showPopover({"currentTarget":obj},{},"warning","IP不合法",true);
+                        flag = false;
+                    }else{
+                        flag = true;
+                    }
+                },
+
+            });
+            return flag;
         },
         /**
          * 玩家层级回填
@@ -664,7 +799,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
          */
         query: function (event, option) {
             var $form = $(window.top.topPage.getCurrentForm(event));
-            var _this=this;
+            var _this = this;
             if (!$form.valid || $form.valid()) {
                 window.top.topPage.ajax({
                     loading: true,
@@ -677,11 +812,12 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                     data: this.getCurrentFormData(event),
                     success: function (data) {
                         _this.renderData(data);
-                        _this.onPageLoad();
                         $(event.currentTarget).unlock();
-                        if(event.goType==undefined || event.goType==-2){
+                        //注：这里不能调用onPageLoad方法，会重复定义排序等方法
+                        _this.synQueryPageLoad();
+                        if (event.goType == undefined || event.goType == -2) {
                             _this.queryCount();
-                        }else{
+                        } else {
                             _this.queryCount(true);
                         }
                     },
