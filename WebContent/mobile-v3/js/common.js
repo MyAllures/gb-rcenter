@@ -25,7 +25,9 @@ $(function(){
 				'<div class="mui-slider-group">' +
 					'<div class="mui-slider-item">' +
 						'<div class="mui-scroll-wrapper">' +
-							'<div class="mui-scroll">'+noticeA+'</div>' +
+							'<div class="mui-scroll">' +
+								'<div style="padding-right: 10px;">'+noticeA+'</div>' +
+							'</div>' +
 						'</div>' +
 					'</div>' +
 				'</div>' +
@@ -134,5 +136,9 @@ $(function(){
 	});
 	$(".desk").on("tap",".close",function(){
 		$(this).parents(".desk").hide();
+	});
+
+	mui('.mui-scroll-wrapper').scroll({
+		deceleration: 0.0001 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
 	});
 });
