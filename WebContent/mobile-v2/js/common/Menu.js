@@ -97,7 +97,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                                     if (target || target === 0) {
                                         gotoTab(target);
                                     } else {
-                                        gotoGame(url);
+                                        gotoGame(url, postData.apiId);
                                     }
                                 } else {
                                     _this.gotoUrl(url);
@@ -130,7 +130,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                         if (target || target === 0) {
                             gotoTab(target);
                         } else {
-                            gotoGame(url);
+                            gotoGame(url, postData.apiId);
                         }
                     } else {
                         _this.gotoUrl(url);
