@@ -99,10 +99,8 @@
     background: #fff;    -webkit-box-shadow: 0 0 8px 2px rgba(11,3,6,0.1);    box-shadow: 0 0 8px 2px rgba(11,3,6,0.1);
     .promo-sorts{border-bottom: 1px solid #f0efef;}
     .btn-promo-sort{background: #e3e2e2;border: 1px solid #e3e2e2;
-        &.swiper-slide-active{background: #327fc3;border: 1px solid #327fc3;color: #fff;}
+        &.active{background: #327fc3;border: 1px solid #327fc3;color: #fff;}
     }
-    .p-t-slide-content{color: #333;}
-    .p-t-slide-content{margin: 10px 0;}
 }
 /* login and register page */
 .type-header{

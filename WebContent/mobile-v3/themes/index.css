@@ -3,7 +3,7 @@
 /* api-grid */
 .api-grid { min-height: 100%; width: 100%; /* 彩票内页样式 */ }
 .api-grid > div > ul { padding: 0 5px !important; }
-.api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell { padding: 5px; height: 114px; border: 0; background: #fff; margin-bottom: 5px; }
+.api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell { padding: 5px; height: 114px; border: 0; background: #fff; }
 .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell a { border-radius: 6px; padding: 8px 0; }
 .api-grid .api-item { display: inline-block; width: 70px; height: 72px; position: relative; }
 .api-grid .api-item:after { content: ''; position: absolute; width: 70px; height: 34px; top: 6px; left: -13px; z-index: 2; border-top-left-radius: 34px; border-top-right-radius: 34px; -webkit-transform: rotateZ(-47deg); transform: rotateZ(-47deg); }

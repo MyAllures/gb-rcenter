@@ -34,6 +34,13 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
         onPageLoad: function () {
             this._super();
             var _this = this;
+
+
+
+
+
+
+
             $('[data-toggle="popover"]', _this.formSelector).popover({
                 trigger: 'hover',
                 placement: 'top'
@@ -63,6 +70,40 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             this.rewrite();
         },
 
+
+
+      /*  doMsgs:function () {
+            var ip=$('input[name="search.lastLoginIpv4"]').val();
+            var ip1=$('input[name="search.registerIpv4"]').val();
+            if (ip!=""){
+            window.top.topPage.ajax({
+                url: root + "/player/doMsg.html",
+                type: 'POST',
+                data:  {'search.lastLoginIpv4':ip},
+                dataType: "json",
+                success: function (data) {
+                    if (!data.state){
+                        alert("输入的登录ip不合法")
+                    }
+                },
+
+            });
+            }
+            if(ip1!=""){
+                window.top.topPage.ajax({
+                    url: root + "/player/doMsg.html",
+                    type: 'POST',
+                    data:  {'search.registerIpv4':ip1},
+                    dataType: "json",
+                    success: function (data) {
+                        if (!data.state1){
+                            alert("输入的注册ip不合法")
+                        }
+                    },
+
+                });
+            }
+        },*/
         /**
          * 请求数据
          */
@@ -283,11 +324,11 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             $("input[name='search.tagIds']", that.formSelector).change(function (e) {
 
                 //显示勾选数量
-                var rankNum = $("input[name='search.tagIds']:checked").length;
-                if (rankNum == 0) {
-                    $(this).parents(".dropdown-menu").siblings("button").children(".rankText").text(window.top.message.player_auto['请选择']);
+                var tagNum = $("input[name='search.tagIds']:checked").length;
+                if (tagNum == 0) {
+                    $(this).parents(".dropdown-menu").siblings("button").children(".tagText").text(window.top.message.player_auto['请选择']);
                 } else {
-                    $(this).parents(".dropdown-menu").siblings("button").children(".rankText").text(window.top.message.player_auto['已选'] + rankNum + window.top.message.player_auto['项']);
+                    $(this).parents(".dropdown-menu").siblings("button").children(".tagText").text(window.top.message.player_auto['已选'] + tagNum + window.top.message.player_auto['项']);
                 }
                 var playerRanksMemory = [];
                 //onPageLoad回填
@@ -357,6 +398,16 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                     $username.val($username.val().replace(/\s+/g, ""));
                 }
             });
+            /*$("[name='search.lastLoginIpv4']", this.formSelector).on("blur", function (e) {
+                if($(this).val()){
+                    that.validIp(null,null,$(this).val(),$(this));
+                }
+            });
+            $("[name='search.registerIpv4']", this.formSelector).on("blur", function (e) {
+                if($(this).val()){
+                    that.validIp(null,null,$(this).val(),$(this));
+                }
+            });*/
         },
         /**
          * 示例删除回调函数
@@ -684,13 +735,49 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
          * @param e   事件对象
          * @return 验证是否通过
          */
-        validateForm: function (e) {
+        validateForm: function (e,opt) {
+            var _this = this;
             var $username = $("input[name='search.username']");
             if ($username && $username.val()) {
                 $username.val($username.val().replace(/\s+/g, ""));
             }
-            var $form = $(window.top.topPage.getCurrentForm(e));
-            return !$form.valid || $form.valid();
+            /*var lastLoginIpv4=$('input[name="search.lastLoginIpv4"]').val();
+            if(lastLoginIpv4){
+                var flag = this.validIp(e,opt,lastLoginIpv4,$('input[name="search.lastLoginIpv4"]'));
+                if(!flag){
+                    return false;
+                }
+            }
+            var registerIpv4=$('input[name="search.registerIpv4"]').val();
+            if(registerIpv4){
+                var flag = this.validIp(e,opt,registerIpv4,$('input[name="search.registerIpv4"]'));
+                if(!flag){
+                    return false;
+                }
+            }*/
+            return true;
+        },
+        validIp:function (e,opt,ip,obj) {
+            var _this = this;
+            var flag = false;
+            window.top.topPage.ajax({
+                url: root + "/player/doMsg.html",
+                type: 'POST',
+                data:  {'ip':ip},
+                dataType: "json",
+                //同步
+                async:false,
+                success: function (data) {
+                    if (data.state!=true){
+                        page.showPopover({"currentTarget":obj},{},"warning","IP不合法",true);
+                        flag = false;
+                    }else{
+                        flag = true;
+                    }
+                },
+
+            });
+            return flag;
         },
         /**
          * 玩家层级回填

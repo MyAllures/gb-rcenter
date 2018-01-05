@@ -8,8 +8,8 @@
 
 .promo { margin: 10px 10px 0; position: relative; z-index: 1; border-radius: 4px; padding: 10px; }
 .promo .promo-sorts { padding-bottom: 10px; }
-.promo .btn-promo-sort { margin-right: 5px; margin-bottom: 5px; width: 80px; }
-.promo .promo-list .swiper-slide a { margin-bottom: 10px; display: block; }
+.promo .btn-promo-sort { margin-right: 2px; margin-bottom: 5px; }
+.promo .promo-list li { margin-bottom: 10px; }
 .promo .promo-list img { width: 100%; vertical-align: middle; }
 
 /* blue-bar */

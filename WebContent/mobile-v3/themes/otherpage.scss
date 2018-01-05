@@ -9,9 +9,9 @@
     margin: 10px 10px 0;    position: relative;
     z-index: 1;    border-radius: 4px;padding: 10px;
     .promo-sorts{padding-bottom: 10px;}
-    .btn-promo-sort{margin-right: 5px;margin-bottom: 5px;    width: 80px;}
+    .btn-promo-sort{margin-right: 2px;margin-bottom: 5px;}
     .promo-list{
-        .swiper-slide a{margin-bottom: 10px;display: block;}
+        li{margin-bottom: 10px;}
         img{width: 100%;vertical-align: middle;}
     }
 }
