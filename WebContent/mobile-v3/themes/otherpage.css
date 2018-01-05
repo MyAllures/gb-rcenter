@@ -16,39 +16,6 @@
 .mui-bar-blue { background-color: #1766bb; -webkit-box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2) !important; box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2) !important; }
 .mui-bar-blue .mui-icon-arrowleft, .mui-bar-blue .mui-title, .mui-bar-blue .mui-icon { color: #fff !important; }
 
-/* login and register page */
-.type-header { padding: 15px 0; text-align: center; font-size: 0; border: 0; display: block; }
-.type-header .mui-btn { display: inline-block; width: auto; line-height: 1; padding: 7px 25px; border-radius: 4px; border-color: #1766bb; color: #1766bb; }
-.type-header .mui-btn:first-child { border-top-right-radius: 0; border-bottom-right-radius: 0; border-left-width: 1px; }
-.type-header .mui-btn:last-child { border-top-left-radius: 0; border-bottom-left-radius: 0; }
-.type-header .mui-btn.mui-active { background: #1766bb; }
-
-.type-content .mui-control-content { padding: 10px 30px; }
-.type-content .mui-control-content .mui-input-group { background-color: transparent; }
-.type-content .mui-control-content .mui-input-group:before, .type-content .mui-control-content .mui-input-group:after { content: none; }
-.type-content .mui-control-content .mui-input-group .mui-input-row { height: auto; }
-.type-content .mui-control-content .mui-input-group .mui-input-row:after { content: none; }
-.type-content .mui-control-content .mui-input-group .mui-input-row label, .type-content .mui-control-content .mui-input-group .mui-input-row input { float: none; }
-.type-content .mui-control-content .mui-input-group .mui-input-row label { padding: 0; width: 100px; display: block; font-size: 12px; color: #333; margin-bottom: 5px; line-height: 22px; height: 16px; }
-.type-content .mui-control-content .mui-input-group .mui-input-row input[type=text], .type-content .mui-control-content .mui-input-group .mui-input-row input[type=password] { border: 1px solid #999; width: 100%; margin: 5px 0; border-radius: 5px; padding: 0 15px; height: 35px; line-height: 35px; font-size: 12px; color: #333; }
-.type-content .mui-control-content .mui-input-group .mui-input-row .mui-icon-eye, .type-content .mui-control-content .mui-input-group .mui-input-row .mui-icon-clear { top: 26px; height: 35px; line-height: 35px; }
-.type-content .mui-control-content .mui-input-group .mui-input-row .error-info { position: absolute; right: 0; top: 0; font-size: 12px; color: #999; }
-.type-content .mui-control-content .mui-input-group .mui-input-row .error-info .mui-icon-info { color: #f65d5d; font-size: 18px; }
-.type-content .mui-control-content .mui-input-group .mui-input-row .forget-pas { position: absolute; color: #999; right: 0; }
-.type-content .mui-control-content .mui-input-group .mui-input-row.password-input-row { height: 100px; }
-.type-content .mui-control-content .mui-input-group .mui-input-row .mui-input-select ~ .mui-icon-arrowdown { font-size: 20px; z-index: 1; right: 0; width: 38px; text-align: center; color: #999; top: 26px; height: 35px; line-height: 35px; position: absolute; }
-.type-content .mui-control-content .mui-input-group .mui-input-row .mui-flex { display: -webkit-box; display: -ms-flexbox; display: flex; position: relative; }
-.type-content .mui-control-content .mui-input-group .mui-input-row .mui-flex input { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
-.type-content .mui-control-content .mui-input-group .mui-input-row .mui-flex .mui-icon-clear { top: 5px; right: 120px; }
-.type-content .mui-control-content .mui-input-group .mui-input-row .mui-flex img { width: 110px; height: 35px; margin: 5px; }
-.type-content .mui-control-content .mui-input-group .mui-button-row { height: auto; }
-.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block { font-size: 13px; padding: 10px 0; }
-.type-content .mui-control-content .mui-input-group .tk { height: 45px; }
-.type-content .mui-control-content .mui-input-group .tk input[type=checkbox] { left: 0; top: 9px; }
-.type-content .mui-control-content .mui-input-group .tk input[type=checkbox]:before { font-size: 24px; color: #1766bb; }
-.type-content .mui-control-content .mui-input-group .tk a { color: #999; float: left; line-height: 45px; margin-left: 30px; }
-.type-content .mui-control-content .mui-input-group .icon-star { background: url(images/icon-star.png) no-repeat center/100%; display: inline-block; width: 12px; height: 12px; margin: 0 4px -1px; }
-
 /* mine page */
 .icon-message { background: url(./images/icon-message.png) no-repeat center; background-size: 20px auto; width: 44px; height: 44px; }
 .icon-message .mui-badge { font-size: 7px; top: 9px; margin-left: -17px; padding: 1px 4px; }
@@ -94,33 +61,23 @@
 .download-content-ios .btn-install { display: block; margin: 20px auto 0; width: 165px; height: 40px; text-align: center; line-height: 40px; color: #eb0002; font-size: 15px; border: 1px solid #eb0002; border-radius: 6px; }
 .download-content-ios .down-step { width: 100%; }
 
-/* index-login-info */
-.login-info { display: inline-block; height: 24px; padding-right: 10px; margin-top: 10px; min-width: 40px; float: right; position: relative; }
-.login-info .user_name, .login-info .money { font-size: 9px; text-align: right; line-height: 13px; }
-.login-info .ex { width: 190px; background-color: rgba(102, 102, 102, 0.98); padding-left: 20px; position: absolute; top: 34px; padding-top: 5px; -webkit-transition: all 0.3s; transition: all 0.3s; right: -200px; height: 400px; z-index: 10; }
-.login-info .ex.open { right: -10px; }
-.login-info .ex hr { border-top: 0; border-bottom: 1px solid #909090; margin: 5px 0; }
-.login-info .ex table { width: 160px; }
-.login-info .ex table tr td { color: #fff; font-size: 10px; line-height: 20px; text-transform: uppercase; }
-.login-info .ex table tr td:last-child { text-align: right; }
-.login-info .ex .ct { position: absolute; bottom: 0; left: 20px; width: 150px; }
-.login-info .ex .ct p .go { display: block; height: 35px; line-height: 35px; color: #fff; font-size: 10px; background-color: #403f3f; text-align: center; }
-.login-info .mui-scroll-wrapper.mui-assets { top: 68px; height: 230px; left: 20px; }
-
 /* casino-list */
 .casino-list-bar { background-color: #efefef; border-bottom: 1px solid #ccc; }
+.casino-list-bar .mui-icon-back { color: #333; }
 
-.mui-content-casino-list { padding-top: 44px !important; background: #efefef; }
+.mui-content-casino-list { padding-top: 44px !important; background: #fff; }
 .mui-content-casino-list .casino-wrap { padding: 10px; }
-.mui-content-casino-list .electronic-search { position: relative; margin-bottom: 10px; }
+.mui-content-casino-list .electronic-search { position: relative; margin: 10px; }
 .mui-content-casino-list .electronic-search input { margin: 0; height: 35px; font-size: 14px; border: 1px solid #ccc; padding-right: 100px; }
 .mui-content-casino-list .electronic-search .btn-search { position: absolute; right: 0; top: 0; font-size: 14px; color: #333; height: 35px; line-height: 35px; text-align: center; width: 84px; background: #ccc; border-top-right-radius: 3px; border-bottom-right-radius: 3px; }
 .mui-content-casino-list .electronic-search .mui-icon-clear { right: 80px; top: 8px; }
 .mui-content-casino-list .casino-list { margin-left: -5px; margin-right: -5px; }
 .mui-content-casino-list .casino-list a { text-align: center; display: block; padding: 0 5px; }
-.mui-content-casino-list .casino-list a p { height: 24px; line-height: 24px; background: #ccc; color: #333; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mui-content-casino-list .casino-list a p { height: 24px; line-height: 24px; margin-bottom: 5px; color: #333; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mui-content-casino-list .casino-list .img-wrap { background: #fff; padding: 8px 0; }
-.mui-content-casino-list .casino-list .img-wrap img { width: 60px; height: 60px; vertical-align: middle; }
+.mui-content-casino-list .casino-list .img-wrap img { width: 70px; height: 70px; vertical-align: middle; }
+
+.casino-game-type .g-t-slide-indicators .swiper-slide { width: 80px; height: 34px; line-height: 34px; text-align: center; }
 
 /* about */
 .about-wrap { padding: 10px 20px; }
