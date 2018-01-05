@@ -66,7 +66,7 @@
                             }else{
                                 window.top.topPage.showConfirmMessage("确认关闭吗？",function (bol) {
                                     if(bol){
-                                        _this.doSaveDefault(state,siteId,id,e,_target);
+                                        _this.doUpdateDefault(state,siteId,id,e,_target);
                                     }else {
                                         _this.query(e);
                                     }
