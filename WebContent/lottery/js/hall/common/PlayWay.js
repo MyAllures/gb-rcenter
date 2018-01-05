@@ -727,6 +727,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                 return;
             }
             this.alertContext = "";
+            _this.delRrepet();
             var data = eval("_this."+contentFun + "()");
             var zhushu = eval("_this."+zhushuFun + "()");
             if (data == -1) {
@@ -738,10 +739,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
             if (typeof data == 'undefined' || typeof zhushu == 'undefined' || zhushu <= 0) {
                 _this.alertmsg("号码选择不完整，请重新选择");
                 return;
-            }else{
-                _this.delRrepet();
             }
-
             plSelVal=_this.checkTeshu(plSelName,plSelIndex);
 
             var obj = {};
