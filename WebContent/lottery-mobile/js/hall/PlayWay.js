@@ -33,7 +33,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             /** 小彩种 */
             this.code = $(this.formSelector + ' input[name=code]').val();
             this.type = $(this.formSelector + " input[name=type]").val();
-            var _this = this;
             this.muiInit();
             this.iosGoBack();
         },
@@ -75,14 +74,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             });
 
             /*==================================官方============================================*/
-            //开盘点击效果才有
-            if(page.isOpen){
-                //gfwf投注
-                mui("body").off('tap','a#show-t-gfwf').on("tap", 'a#show-t-gfwf', function () {
-                    $("#dingdan").addClass("mui-active");
-                    _this.showBetTemplate();
-                });
-            }
 
             //清除下注按钮点击事件
             mui("body").off('tap','a#del-bet').on('tap', 'a#del-bet', function () {
@@ -95,39 +86,67 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                 $("#dingdan").removeClass('mui-active');
             });
 
-
             //清
             mui(".newball-content-top").on('tap','.qing',function(){
                 var flag = $(this).attr("data-flag");
                 $("a."+flag).removeClass("mui-active");
                 _this.getZhuShu();
             });
-            //全
+
             if(page.isOpen) {
-                mui(".newball-content-top").on('tap', '.quan', function () {
-                    var flag = $(this).attr("data-flag");
-                    $("a." + flag).addClass("mui-active");
+                //gfwf投注
+                mui("body").off('tap','a#show-t-gfwf').on("tap", 'a#show-t-gfwf', function () {
+                 $("#dingdan").addClass("mui-active");
+                 _this.showBetTemplate();
+                });
+
+                //选择球
+                mui("li.screen-munber").off('tap', 'a').on('tap', 'a', function () {
+                    //判断是否为SSC包胆,K3二同号单选
+                    if(!_this.checkBaodan($(this))){
+                        this.classList.toggle('mui-active');
+                    }
+                    $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
                     _this.getZhuShu();
                 });
-            }
-            //大
-            if(page.isOpen) {
-                mui(".newball-content-top").on('tap','.da',function(){
+
+                mui("body").off('tap','.btn-jixuan-gfwf').on('tap','.btn-jixuan-gfwf',function(){
+                    _this.jixuan();
+                });
+                //机选清除
+                mui("body").off('tap','.btn-reset-gfwf').on('tap','.btn-reset-gfwf',function(){
+                    $("div.newball-content-top i.mui-control-item").removeClass("mui-active");
+                    this.classList.remove('mui-active');
+                    mui(".btn-jixuan-gfwf")[0].classList.add('mui-active');
+                    $("div.newball-item-20 a").removeClass("mui-active");
+                    _this.getZhuShu();
+                });
+
+                //偶
+                mui(".newball-content-top").on('tap', '.ou', function () {
                     var flag = $(this).attr("data-flag");
-                    $("a."+flag).removeClass("mui-active");
-                    var Aarr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-                    var Barr = [, , , , , 5, 6, 7, 8, 9];
-                    for (var i = 0; i <= Aarr.length; ++i) {
-                        if (Aarr[i] == Barr[i]) {
-                            $("a."+flag+"."+i).addClass("mui-active");
+                    $("a." + flag).removeClass("mui-active");
+                    for (var i = 0; i < 12; i++) {
+                        if (i % 2 == 0) {   //奇数
+                            $("a." + flag + "." + i).addClass("mui-active");
                         }
                     }
                     _this.getZhuShu();
                 });
-            }
 
-            //小
-            if(page.isOpen) {
+                //奇
+                mui(".newball-content-top").on('tap', '.ji', function () {
+                    var flag = $(this).attr("data-flag");
+                    $("a." + flag).removeClass("mui-active");
+                    for (var i = 0; i < 12; i++) {
+                        if (i % 2 != 0) {   //奇数
+                            $("a." + flag + "." + i).addClass("mui-active");
+                        }
+                    }
+                    _this.getZhuShu();
+                });
+
+                //小
                 mui(".newball-content-top").on('tap', '.xiao', function () {
                     var flag = $(this).attr("data-flag");
                     $("a." + flag).removeClass("mui-active");
@@ -140,59 +159,29 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                     }
                     _this.getZhuShu();
                 });
-            }
-            //奇
-            if(page.isOpen) {
-                mui(".newball-content-top").on('tap', '.ji', function () {
+
+                //大
+                mui(".newball-content-top").on('tap','.da',function(){
                     var flag = $(this).attr("data-flag");
-                    $("a." + flag).removeClass("mui-active");
-                    for (var i = 0; i < 12; i++) {
-                        if (i % 2 != 0) {   //奇数
-                            $("a." + flag + "." + i).addClass("mui-active");
+                    $("a."+flag).removeClass("mui-active");
+                    var Aarr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+                    var Barr = [, , , , , 5, 6, 7, 8, 9];
+                    for (var i = 0; i <= Aarr.length; ++i) {
+                        if (Aarr[i] == Barr[i]) {
+                            $("a."+flag+"."+i).addClass("mui-active");
                         }
                     }
                     _this.getZhuShu();
                 });
-            }
-            //偶
-            if(page.isOpen) {
-                mui(".newball-content-top").on('tap', '.ou', function () {
+
+                //全
+                mui(".newball-content-top").on('tap', '.quan', function () {
                     var flag = $(this).attr("data-flag");
-                    $("a." + flag).removeClass("mui-active");
-                    for (var i = 0; i < 12; i++) {
-                        if (i % 2 == 0) {   //奇数
-                            $("a." + flag + "." + i).addClass("mui-active");
-                        }
-                    }
+                    $("a." + flag).addClass("mui-active");
                     _this.getZhuShu();
                 });
             }
 
-            //选择球
-            if(page.isOpen) {
-                mui("li.screen-munber").off('tap', 'a').on('tap', 'a', function () {
-                    //判断是否为SSC包胆,K3二同号单选
-                    if(!_this.checkBaodan($(this))){
-                        this.classList.toggle('mui-active');
-                    }
-                    $(this).parent().parent().parent().prev().find("i.mui-control-item").removeClass("mui-active");
-                    _this.getZhuShu();
-                });
-            }
-            //开盘才有效果。
-            if(page.isOpen){
-                mui("body").off('tap','.btn-jixuan-gfwf').on('tap','.btn-jixuan-gfwf',function(){
-                    _this.jixuan();
-                });
-                //机选清除
-                mui("body").off('tap','.btn-reset-gfwf').on('tap','.btn-reset-gfwf',function(){
-                    $("div.newball-content-top i.mui-control-item").removeClass("mui-active");
-                    this.classList.remove('mui-active');
-                    mui(".btn-jixuan-gfwf")[0].classList.add('mui-active');
-                    $("div.newball-item-20 a").removeClass("mui-active");
-                    _this.getZhuShu();
-                });
-            }
 
             //清除下注按钮点击事件
             mui("body").off('tap','a#del-bet').on('tap', 'a#del-bet', function () {
@@ -308,8 +297,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             var maxFandian;  // 最大返点
             var minPl;  // 最低赔率
             var convertBlMoney;  // 每1%转换赔率
-            var plSelName = '',  //赔率名称
-                plSelIndex = 0;  //获取赔率索引
             if (plAndMaxFd instanceof Array) {  // 多赔率
                 maxPlayPl = plAndMaxFd[0].odd;  // 最高赔率
                 maxFandian = plAndMaxFd[0].rebate*100;    // 最大返点
@@ -431,7 +418,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                     _this.renderZhushu();
                 }
             });
-
         },
 
         //获取注数
@@ -445,7 +431,6 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             }
 
         },
-
 
         /**
          * 获取当前赔率内容算法
