@@ -16,6 +16,12 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         },
         onPageLoad: function () {
             this._super();
+            _this = this;
+            //Global cache
+            $("._cacheBtn").on("click",function () {
+                _this.doCacheBtn($(this));
+
+            });
         },
         //删除
         deleteMessage: function (e,option) {
@@ -30,5 +36,20 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 }
             });
         } ,
+
+        //恢复按钮失效
+        doCacheBtn : function ($this) {
+            $this.attr('disabled', true);
+            var text = $this.text();
+            $this.text(text + '...');
+            $.ajax({
+                url: root + "/operate/payApiProvider/refreshI18nVersion.html",
+                success: function (data) {
+                    alert(data == 'true' ? $this.text()+'成功！' : $this.text()+'失败，详情请查看服务器日志！');
+                    $this.attr('disabled', false);
+                    $this.text(text);
+                }
+            });
+        },
     });
 });

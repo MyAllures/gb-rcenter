@@ -394,7 +394,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                     var fandianBili = parseFloat($(obj).val()).toFixed(1); // 当前滚动条移动的比例
                     $("#betContent_fanli").attr("data-value", fandianBili);
                     $("#betContent_fanli").html(fandianBili + "%");    // 渲染界面中百分比部分
-
+                    fandianBili = parseFloat(fandianBili);
                     // 渲染界面中赔率部分
                     if (plAndMaxFd instanceof Array) {  // 多赔率
                         var pl = _this.getArgNum((maxPlayPl - fandianBili * plAndMaxFd[0].baseNum/100));

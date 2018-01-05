@@ -214,10 +214,31 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
          */
         submit: function (e, option) {
             var _this = this;
-            if(!$("select[name='activityId']").val() && !$("input[name='activityName']").val()){
-                if($("input[name='activityType']").val()) {
-                    $("input[name='activityName']").formtip(window.top.message.fund_auto['活动名称不能为空']);
+            var favorableType = $("[name='favorableType']").val();
+            if($("input[name='playerFavorable.favorable']").val() && favorableType       == 'manual_favorable'){
+                if(!$("input[name='activityType']").val()) {
+                    $("#activityType").formtip(window.top.message.fund_auto['不能为空']);
+                    $("#activityType button").addClass("error");
                     $(e.currentTarget).unlock();
+
+                }else if(!$("select[name='activityId']").val() && !$("input[name='activityName']").val()) {
+                    $("#activityType button").removeClass("error");
+                    if ($("input[name='activityType']").val()) {
+                        $("input[name='activityName']").formtip(window.top.message.fund_auto['活动名称不能为空']);
+                        $("input[name='activityName']").addClass("error");
+                        $(e.currentTarget).unlock();
+                    }else{
+                        $("input[name='activityName']").removeClass("error");
+                    }
+                }else{
+                    window.top.topPage.showConfirmMessage(option.msg, function (result) {
+                        if (result) {
+                            _this.deposit(e, option, _this);
+                        }
+                        else {
+                            $(e.currentTarget).unlock();
+                        }
+                    })
                 }
             }else {
                 window.top.topPage.showConfirmMessage(option.msg, function (result) {
