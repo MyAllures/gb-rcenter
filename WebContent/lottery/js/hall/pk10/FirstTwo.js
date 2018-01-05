@@ -126,6 +126,7 @@ define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
          * 前二直选-直选单式
          */
         content_qezxds:function () {
+            var _this=this;
         var textStr = $(".recl-1003 .content_jiang .content_tex").val();
         var newArr = [];
         var errorArr = [];
@@ -175,7 +176,7 @@ define(['site/hall/pk10/GfwfPlayWay'], function (PlayWay) {
             for (var e = 0; e < errorArr.length; e++) {
                 errorStr += errorArr[e] + ",";
             }
-            alert("被过滤掉的错误号码:" + errorStr.substring(0,errorStr.length-1));
+            _this.alertmsg("被过滤掉的错误号码: " + errorStr.substring(0,errorStr.length-1));
         }
 
         // 初始化变量
