@@ -241,11 +241,9 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                     } else {
                         arr_dsInfo[m].flag_ds = '单';
                     }
-
                     arr_res[m].content = qiContent; //存储号码和期号
                     arr_hzInfo[m].content = qiContent;
                     arr_dsInfo[m].content = qiContent;
-
                 }
 
 

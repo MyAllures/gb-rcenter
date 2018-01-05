@@ -15,7 +15,6 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
          *  全不中
          */
         getAllNoIn: function () {
-
             $(".main-left .fr .T-tab a").click(function () {
                 $(".main-left .fr .T-tab a").removeClass("active");
                 $(this).addClass("active");
@@ -115,7 +114,7 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
         xianZhiLHCZhuShu :function () {
             var code = $(".main-left .fr .T-tab a.active").attr("subCode");
             var num = parseInt($("#minNum").text());
-            var minNum = code !="lhc_eleven_no_in" && code !="lhc_twelve_no_in" && code !="lhc_ten_no_in" && code !="lhc_nine_no_in"? num+4 : num+2;
+            var minNum = code !="lhc_eleven_no_in" && code !="lhc_eight_no_in" && code !="lhc_twelve_no_in" && code !="lhc_ten_no_in" && code !="lhc_nine_no_in" && code !="lhc_seven_no_in"? num+4 : num+2;
             var len = $("td.new-ball-st.bg-yellow").length;
             if(len>minNum){
                 layer.msg('注数过大', {icon: 5});

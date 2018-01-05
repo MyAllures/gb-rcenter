@@ -51,19 +51,16 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
         //冠亚军和值大小长龙分析
         gyDxjs: function (data) {
             var arr_res = [];
-            var lieYiDongFlag = false;
             var n = 0;
             var td_col = 0;
 
             //第二选项卡中的变量值
             var arr_hzInfo = [];
-            var tab2_lieYiDongFlag = false;
             var tab2_td_col = 0;
             var tab2_n = 0;
 
             //第三个选项卡中的变量值
             var arr_dsInfo = [];
-            var tab3_lieYiDongFlag = false;
             var tab3_td_col = 0;
             var tab3_n = 0;
 
@@ -94,6 +91,12 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
 
                 var result_num = num1 + num2;
 
+                if (result_num % 2 == 0) {
+                    arr_dsInfo[m].flag_ds = '双';
+                } else {
+                    arr_dsInfo[m].flag_ds = '单';
+                }
+
                 if (result_num > 11) {
                     arr_res[m].flag_dx = '大';
                 } else {
@@ -102,11 +105,7 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
 
                 arr_hzInfo[m].flag_hz = result_num; //存储冠亚和值
 
-                if (result_num % 2 == 0) {
-                    arr_dsInfo[m].flag_ds = '双';
-                } else {
-                    arr_dsInfo[m].flag_ds = '单';
-                }
+
 
                 arr_res[m].content = qiContent; //存储号码和期号
                 arr_hzInfo[m].content = qiContent;
@@ -114,26 +113,20 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
 
             }
 
-
             //遍历冠亚和大小写入表格中
-            for (var i = 0; i < arr_res.length; i++) {
-                if (i > 0 && i < arr_res.length - 1) {
-                    if (arr_res[i].flag_dx != arr_res[i - 1].flag_dx || n==6) {
-                        td_col++; //发现前一个值不等换行 右移动一列单元格
-                        n = 0;//发现前一个值不等换行 初始化为第一行
-                        lieYiDongFlag = true;
-                    }
-
-                    if (arr_hzInfo[i].flag_hz != arr_hzInfo[i - 1].flag_hz || n==6) {
-                        tab2_td_col++;
-                        tab2_n = 0;
-                        tab2_lieYiDongFlag = true;
-                    }
-
-                    if (arr_dsInfo[i].flag_ds != arr_dsInfo[i - 1].flag_ds || n ==6) {
+            for (var i = 0; i < arr_dsInfo.length; i++) {
+                if (i > 0 && i < arr_dsInfo.length - 1) {
+                    if (arr_dsInfo[i].flag_ds != arr_dsInfo[i - 1].flag_ds || tab3_n ==6) {
                         tab3_td_col++;
                         tab3_n = 0;
-                        tab3_lieYiDongFlag = true;
+                    }
+                    if (arr_res[i].flag_dx != arr_res[i - 1].flag_dx || n ==6) {
+                        td_col++; //发现前一个值不等换行 右移动一列单元格
+                        n = 0;//发现前一个值不等换行 初始化为第一行
+                    }
+                    if (arr_hzInfo[i].flag_hz != arr_hzInfo[i - 1].flag_hz || tab2_n ==6) {
+                        tab2_td_col++;
+                        tab2_n = 0;
                     }
                 }
 
@@ -142,7 +135,6 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                     if (arr_res[i].flag_dx == '小') {
                         $("#rmTr" + n + " td").eq(td_col).addClass('dishReload_small');
                         $("#rmTr" + n + " td").eq(td_col).attr('title', arr_res[i].content);
-
                         n++;
                     } else {
                         $("#rmTr" + n + " td").eq(td_col).addClass('dishReload_da');
@@ -152,14 +144,12 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
 
                 }
 
-
                 //第二个选项卡
                 if (tab2_td_col >= 0) {
                     $("#rm2Tr" + tab2_n + " td").eq(tab2_td_col).html(arr_hzInfo[i].flag_hz);
                     $("#rm2Tr" + tab2_n + " td").eq(tab2_td_col).attr('title', arr_hzInfo[i].content);
                     tab2_n++;
                 }
-
 
                 //第三个选项卡
                 if (tab3_td_col >= 0) {
