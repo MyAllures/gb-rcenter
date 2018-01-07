@@ -34,13 +34,6 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
         onPageLoad: function () {
             this._super();
             var _this = this;
-
-
-
-
-
-
-
             $('[data-toggle="popover"]', _this.formSelector).popover({
                 trigger: 'hover',
                 placement: 'top'
@@ -68,6 +61,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                 }
             });
             this.rewrite();
+            this.rewrites();
         },
 
 
@@ -330,13 +324,13 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                 } else {
                     $(this).parents(".dropdown-menu").siblings("button").children(".tagText").text(window.top.message.player_auto['已选'] + tagNum + window.top.message.player_auto['项']);
                 }
-                var playerRanksMemory = [];
+                var playerTagsMemory = [];
                 //onPageLoad回填
                 $("input[name='search.tagIds']:checked").each(function () {
-                    playerRanksMemory.push($(this).val());
+                    playerTagsMemory.push($(this).val());
                 })
 
-                $("#playerRanksMemory").val(JSON.stringify(playerRanksMemory));
+                $("#playerTagsMemory").val(JSON.stringify(playerTagsMemory));
 
             });
 
@@ -676,6 +670,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             $('.playerRank').find("button[data-type='clear']").trigger('click');
             $('.playerRank').find("button[data-type-tag='clear']").trigger('click');
             $("#playerRanksMemory").val('');
+            $("#playerTagsMemory").val('');
             $("input[name='search.rakebackId']").siblings("button").find("span[prompt='prompt']").text(window.top.message.player_auto['全部']);
             $("input[name='search.loginTimeBegin']").val('');
             $("input[name='search.loginTimeEnd']").val('');
@@ -789,6 +784,19 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                 var playerRanksMemory = JSON.parse(playerRanksMemory);
                 $.each(playerRanksMemory, function (i, line) {
                     $("input[name='search.playerRanks'][value='" + line + "']:not(:checked)").prop("checked", true).change();
+                })
+            }
+        },
+        /**
+         * 标签回填
+         * @param e
+         */
+        rewrites: function (e) {
+            var playerTagsMemory = $("#playerTagsMemory").val();
+            if (playerTagsMemory != "") {
+                var playerTagsMemory = JSON.parse(playerTagsMemory);
+                $.each(playerTagsMemory, function (i, lines) {
+                    $("input[name='search.tagIds'][value='" + lines + "']:not(:checked)").prop("checked", true).change();
                 })
             }
         },
