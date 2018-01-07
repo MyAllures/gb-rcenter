@@ -52,16 +52,16 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
         gyDxjs: function (data) {
             var arr_res = [];
             var n = 0;
-            var td_col = 31;
+            var td_col = 34;
 
             //第二选项卡中的变量值
             var arr_hzInfo = [];
-            var tab2_td_col = 31;
+            var tab2_td_col = 34;
             var tab2_n = 0;
 
             //第三个选项卡中的变量值
             var arr_dsInfo = [];
-            var tab3_td_col = 31;
+            var tab3_td_col = 34;
             var tab3_n = 0;
 
             for (var m = 0; m < data.length; m++) {

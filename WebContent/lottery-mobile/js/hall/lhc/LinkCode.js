@@ -131,7 +131,7 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
                 quantity: 0
             };
             var count = chooseArr.length;
-            if(count>1200){
+            if(count>500){
                 mui.toast("注数过大");
                 return;
             }
@@ -157,8 +157,8 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
         //点击投注选项
         bindTdInput: function (obj) {
             //限制注数
-            var minNum = parseInt($("a.main.mui-active").attr("min-num"))+9;
-            var name = $("a.main.mui-active").attr("data-code");
+            var minNum = parseInt($("a.main.mui-active").attr("min-num"));
+            minNum = minNum !=2?minNum==4?minNum+8:minNum+12:minNum+30;
             var flag = $(obj).is('.not-selected');
             if (!flag) {
                 $(obj).toggleClass('mui-active');

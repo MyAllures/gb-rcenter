@@ -113,13 +113,26 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
         },
         xianZhiLHCZhuShu :function () {
             var code = $(".main-left .fr .T-tab a.active").attr("subCode");
-            var num = parseInt($("#minNum").text());
-            var minNum = code !="lhc_eleven_no_in" && code !="lhc_eight_no_in" && code !="lhc_twelve_no_in" && code !="lhc_ten_no_in" && code !="lhc_nine_no_in" && code !="lhc_seven_no_in"? num+4 : num+2;
-            if(code =="lhc_eight_no_in" || code =="lhc_seven_no_in"){
-                minNum =minNum+1;
+            var num = parseInt($(".main-left .fr .T-tab a.active").attr("min-num"));
+            if(code=="lhc_five_no_in"){
+                num =num+5;
+            }else if(code=="lhc_six_no_in"){
+                num =num+4;
+            }else if(code=="lhc_seven_no_in"){
+                num =num+3;
+            }else if(code=="lhc_eight_no_in"){
+                num =num+3;
+            }else if(code=="lhc_nine_no_in"){
+                num =num+2;
+            }else if(code=="lhc_ten_no_in"){
+                num =num+2;
+            }else if(code=="lhc_eleven_no_in"){
+                num =num+2;
+            }else if(code=="lhc_twelve_no_in"){
+                num =num+2;
             }
             var len = $("td.new-ball-st.bg-yellow").length;
-            if(len>minNum){
+            if(len>num){
                 layer.msg('注数过大', {icon: 5});
                 return false;
             }else{

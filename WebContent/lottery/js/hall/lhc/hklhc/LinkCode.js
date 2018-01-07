@@ -89,7 +89,7 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
                 }
             });
             var chooseArr = this.combination(betNumArr, minNum);
-            if(chooseArr.length>1200){
+            if(chooseArr.length>500){
                 layer.msg("注数过大");
                 return;
             }
@@ -122,7 +122,8 @@ define(['site/hall/lhc/hklhc/PlayWay'], function (PlayWay) {
         },
 
         xianZhiLHCZhuShu :function () {
-            var minNum = parseInt($("#minNum").text())+8;
+            var minNum = parseInt($("#minNum").text());
+            minNum = minNum !=2?minNum==4?minNum+7:minNum+11:minNum+29;
             var code = $(".main-left .fr .T-tab a").attr("subCode");
             var len = $("td.new-ball-st.bg-yellow").length;
             if(len>minNum){
