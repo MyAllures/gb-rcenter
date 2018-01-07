@@ -45,7 +45,7 @@ header .nav-part .top-link a { color: #999; }
 header .nav-part .top-link a:hover { color: #fff; }
 header .nav-part .navbar { margin-bottom: 0; }
 header .nav-part .navbar-nav { margin-top: 18px; }
-header .nav-part .navbar-nav > li { float: left; margin: 0 12px; width: 88px; font-size: 14px; height: 40px; }
+header .nav-part .navbar-nav > li { float: left; margin: 0 8px; width: 88px; font-size: 14px; height: 40px; }
 header .nav-part .navbar-nav > li > a { padding: 0; text-align: center; color: #fff; background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(white), to(#a5aaae)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 header .nav-part .navbar-nav > li.active, header .nav-part .navbar-nav > li:hover { border-bottom: 1px solid #00b5fe; }
 header .nav-part .navbar-nav > li.active > a, header .nav-part .navbar-nav > li:hover > a { color: #00b5fe; background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#03b6fa), to(#005d9e)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -100,6 +100,7 @@ header .header-form .header-panel .dropdown-menu>li{margin: 5px;}
 .apiicon.i-ebet{width:130px;height:150px;background-position:-650px -200px;}
 .apiicon.i-ds{width:130px;height:150px;background-position:-780px -200px;}
 .apiicon.i-opus-l{width:130px;height:150px;background-position:-910px -200px;}
+.apiicon.i-sun{width:130px;height:150px;background-position:-1040px -200px;}
 /*.apiicon.i-mg{width:130px;height:150px;background-position:-1300px -200px;}*/
 
 .apiicon.ssc{width:850px;background-position:0 -910px;}
@@ -122,6 +123,8 @@ header .header-form .header-panel .dropdown-menu>li{margin: 5px;}
 .apiicon.c-dt{background-position:0 -1100px;}
 .apiicon.c-gns{background-position:-280px -1100px;}
 .apiicon.c-prg{background-position:-560px -1100px;}
+.apiicon.c-by{background-position:-840px -1100px;}
+.apiicon.c-qp{background-position:0 -1250px;}
 
 .apiicon.l-chq{background-position:0 -800px;}
 .apiicon.l-bb{background-position:-280px -800px;}
@@ -245,6 +248,7 @@ header .header-form .header-panel .dropdown-menu>li{margin: 5px;}
 .game-type .game-type-wrap .blo.blo-live .shadow .d2 a:first-child + a + a .icon-game:after { background-position: 0 -798px; }
 .game-type .game-type-wrap .blo.blo-live .shadow .d3 a:first-child .icon-game:after { background-position: 0 -855px; }
 .game-type .game-type-wrap .blo.blo-live .shadow .d3 a:first-child + a .icon-game:after { background-position: 0 -1140px; }
+.game-type .game-type-wrap .blo.blo-live .shadow .d3 a:first-child + a + a .icon-game:after { background-position: 0 -1368px; }
 
 .game-type .game-type-wrap .blo.blo-live .shadow .btn-tz { left: 155px; }
 .game-type .game-type-wrap .blo.blo-live .icon-wrap { padding-left: 90px; }
@@ -501,6 +505,9 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 .carousel-inner .casino-tabs>li>a span.gui-logo-gg{background-position: 0 -460px;}
 .carousel-inner .casino-tabs>li>a span.gui-logo-gns{background-position: 0 -506px;}
 .carousel-inner .casino-tabs>li>a span.gui-logo-prg{background-position: 0 -552px;}
+.carousel-inner .casino-tabs>li>a span.gui-logo-by{background-position: 0 -598px;}
+.carousel-inner .casino-tabs>li>a span.gui-logo-qp{background-position: 0 -644px;}
+
 .carousel-inner .sports-tabs>li>a:link{height:42px;line-height: 42px;}
 .carousel-inner .lottery-tabs>li>a:link{height:70px;line-height: 70px;}
 .carousel-inner .lottery-tabs>li>a>em{margin-left:20px;font-size:24px;color:#fff;float: left;}
@@ -529,6 +536,8 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 .main-lottery .game-item .title .btn-play:hover { background: #363c4f; }
 .main-lottery .game-item .item { width: 255px; height: 218px; position: relative; display: block; overflow: hidden; background: transparent; border-radius: 3px; padding: 5px; }
 .main-lottery .game-item .item .game-img { width: 245px; height: 218px; position: absolute; overflow: hidden; z-index: 0; text-align: center; line-height: 218px; }
+
+.main-lottery .game-list{margin: 30px 0;border: 1px solid #888d9c;}
 
 /*========== promo 优惠 =================*/
 .main-promo .notice { margin-top: 0; }

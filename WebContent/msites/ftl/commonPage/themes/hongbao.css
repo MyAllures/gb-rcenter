@@ -2,7 +2,6 @@
   width: 343px;
   height: 298px;
   position: fixed;
-  right: 0;
   bottom: 0;
   z-index: 2001;
   cursor: pointer;
@@ -15,6 +14,12 @@
   transition: all 1s;
   -webkit-transform-origin: center;
   transform-origin: center;
+}
+.show-effect-left.hongbao-wrap{
+  left: 0;
+}
+.show-effect-right.hongbao-wrap{
+  right: 0;
 }
 .hongbao-wrap .extra, .hongbao-wrap .img {
   position: absolute;

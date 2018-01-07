@@ -1,3 +1,4 @@
+<#--旧版,待删除：如需引用，请引用<#include "../../commonPage/en_US/msiteCommonContent/signUp-agent.ftl">-->
 <!DOCTYPE html>
 <html lang="en">
 

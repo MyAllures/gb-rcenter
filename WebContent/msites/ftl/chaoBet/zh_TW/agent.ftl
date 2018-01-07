@@ -93,7 +93,7 @@
                         </div>
                         <div class="form-group password">
                             <input type="password" name="password" maxlength="20" class="form-control" placeholder="密碼">
-                            <a href="javascript:void(0);" class="forget openNewWindow" data-url="commonPage/forgetPwd.html">忘記?</a>
+                            <a href="javascript:void(0);" class="forget openNewWindow" data-url="commonPage/msiteCommonContent/forgetPwd.html">忘記?</a>
                         </div>
                         <div class="form-group code _vr_captcha_box" style="display: none">
                             <input type="text" class="form-control" name="captcha" maxlength="4" placeholder="驗證碼">
@@ -105,20 +105,7 @@
                 </div>
                 <!--panel-->
                 <div class="header-panel _vr_loginSuccess" style="display: none">
-                    <a href="javascript:" class="_vr_nickname"></a>
-                    <a href="${data.contextInfo.playerCenterContext}" target="_blank">玩家中心</a>
-                    <a href="${data.contextInfo.playerCenterContext}#/operation/pAnnouncementMessage/messageList.html" target="_blank">訊息 <span class="label label-info _vr_messageCount"></span></a>
-                    <a href="${data.contextInfo.playerCenterContext}#/fund/playerTransfer/transfers.html" target="_blank">額度轉換</a>
-                    <a href="${data.contextInfo.playerCenterContext}#/fund/playerRecharge/recharge.html" target="_blank">存款專區</a>
-                    <a href="${data.contextInfo.playerCenterContext}#/player/withdraw/withdrawList.html" target="_blank">取款專區</a>
-                    <div class="btn-group dropdown show-on-hover _vr_balanceBox">
-                        <a href="javascript:void(0);" class="static-btn" name="balance_show" data-toggle="dropdown">總資產 <span class="text-warning text-big _vr_player_balance"></span><span class="caret"></span></a>
-                        <a class="static-btn" name="balance_hide" style="display: none" data-toggle="dropdown"> 總資產 <span class="caret"></span></a>
-                        <ul class="dropdown-menu dropdown-menu-right members-dropdown" style="width: 166px;">
-                        <#include "../../commonPage/zh_TW/fetchBalance.ftl">
-                        </ul>
-                    </div>
-                    <a class="btn btn-link" onclick="Logout()" style="margin-top: -7px;padding: 0;">退出</a>
+                    <#include "../../commonPage/zh_TW/msiteCommonContent/loginSuccess.ftl">
                 </div>
             </div>
         </div>
@@ -129,70 +116,10 @@
     <!-- notice -->
     <#include "notice.ftl">
     <!-- Agent -->
-    <section class="agent">
-        <!-- /* Tab-Content -->
-        <div class="tab-content">
-            <!-- /* 代理首页 -->
-            <div class="agent-slide tab-pane fade active in" id="home">
-                <div class="slide">
-                    <div class="slide-indicators">
-                        <ul>
-                        </ul>
-                    </div>
-                    <div class="slide-inner">
-                        <ul>
-                            <li data-src="url(../../ftl/commonPage/images/agent-ban-01.jpg)"
-                                style="background:center 0 no-repeat;">
-                            </li>
-                            <li data-src="url(../../ftl/commonPage/images/agent-ban-02.jpg)"
-                                style="background:center 0 no-repeat;">
-                            </li>
-                            <li data-src="url(../../ftl/commonPage/images/agent-ban-03.jpg)"
-                                style="background:center 0 no-repeat;">
-                            </li>
-                        </ul>
-                    </div>
-                    <span class="prev gui gui-chevron-left"></span> <span class="next gui gui-chevron-right"></span>
-                </div>
-            </div>
-            <#list data.documents as document>
-                <#if document['parent']?exists && document['code']=="agent&cooperation">
-                    <div class="tab-pane fade agent-content-wrap" id="id_${document["id"]}" style="min-height: 600px;">
-                        <div class="container">
-                            <div class="col-1-1 agent-content">
-                                <h3 class="title">${document.title}</h3>
-                                <div style="font-size: 15px;">
-                                ${document.content}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </#if>
-            </#list>
-                <!--代理加盟子项title and content-->
-            <#list data.documents as document>
-                <#if document['parent']?exists && document['code']=="agent&cooperation">
-                    <#list data.documents as children>
-                        <#if children.parent_id = document.document_id>
-                            <div class="tab-pane fade agent-content-wrap" id="id_${children["id"]}" style="min-height: 600px;">
-                                <div class="container">
-                                    <div class="col-1-1 agent-content">
-                                        <h3 class="title">${children.title}</h3>
-                                        <div style="font-size: 15px;">
-                                        ${children.content}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </#if>
-                    </#list>
-                </#if>
-            </#list>
-        </div>
-    </section>
+    <#include "../../commonPage/commonContent/agentContent.ftl">
 </main>
 <#include "footer.ftl">
-<#include "../../commonPage/zh_TW/ads/gameAds.ftl">
+<#include "../../commonPage/commonFloat/gameAds.ftl">
 <#include "script.ftl">
 </body>
 

@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="<#if data.configInfo.apiId??&&data.configInfo.apiId=='2'>IE=9<#else>IE=edge</#if>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
-    <link rel="bookmark" href="${data.configInfo.sitePath}/images/favicon.ico">
-    <link rel="shortcut Icon" href="${data.configInfo.sitePath}/images/favicon.ico" />
+    <link rel="bookmark" href="${data.configInfo.sitePath}/images/favicon.png">
+    <link rel="shortcut Icon" href="${data.configInfo.sitePath}/images/favicon.png" />
     <title><#if data.siteInfo.title?default('')!=''>${data.siteInfo.title}<#else >${data.siteInfo.siteName}</#if></title>
     <#include "game.include.head.ftl">
     <style>
