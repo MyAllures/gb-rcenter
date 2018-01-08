@@ -672,6 +672,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             $("#playerRanksMemory").val('');
             $("#playerTagsMemory").val('');
             $("input[name='search.rakebackId']").siblings("button").find("span[prompt='prompt']").text(window.top.message.player_auto['全部']);
+            $("input[name='search.rakebackId']").val('');
             $("input[name='search.loginTimeBegin']").val('');
             $("input[name='search.loginTimeEnd']").val('');
             $("input[name='search.rechargeTotalBegin']").val('');
