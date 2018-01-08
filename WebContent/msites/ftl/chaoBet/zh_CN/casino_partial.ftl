@@ -41,6 +41,8 @@
                                startTime="<#if data.gameMapById[game.gameId?string.computer].maintainStartTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainStartTime?long?string.computer}</#if>"
                                endTime="<#if data.gameMapById[game.gameId?string.computer].maintainEndTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainEndTime?long?string.computer}</#if>">试玩</a>
                         </#if>
+                        <a href="javascript:" data-game-id="${game.gameId?string.computer}" onclick="gameCollect(this)">收藏</a>
+                        <a href="javascript:" data-game-id="${game.gameId?string.computer}" data-score="5" onclick="gameScore(this)">评分</a>
                         <a class="_vr_mt_check _vr_mt_slogan btn-play" data-api="${game.apiId?string.computer}" data-game-name="${data.siteGameI18ns[game.gameId?string.computer].name}" data-game-code="<#if data.gameMapById[game.gameId?string.computer]?has_content>${data.gameMapById[game.gameId?string.computer].code}</#if>" href="javascript:void(0)"
                            startTime="<#if data.gameMapById[game.gameId?string.computer].maintainStartTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainStartTime?long?string.computer}</#if>"
                            endTime="<#if data.gameMapById[game.gameId?string.computer].maintainEndTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainEndTime?long?string.computer}</#if>">开始游戏</a>

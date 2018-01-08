@@ -22,7 +22,7 @@
                 <!-- Api-tabs -->
                 <div id="api-tabs" class="carousel">
                     <#assign apiNumPerSlide=3>
-                    <#include "../../commonPage/zh_CN/commonLotteryApiTabs.ftl">
+                    <#include "../../commonPage/zh_CN/msiteCommonContent/commonLotteryApiTabs.ftl">
                 </div>
             </div>
         </div>
@@ -57,20 +57,9 @@
     </section>
 </main>
 <#include "footer.ftl">
-<#include "../../commonPage/zh_CN/ads/gameAds.ftl">
+<#include "../../commonPage/commonFloat/gameAds.ftl">
 <#include "script.ftl">
-<script>
-    $(function () {
-        $(".lottery-click").on("click", function (e) {
-            var _this = e.currentTarget;
-            $(".lottery-click").removeClass("active");
-            $(this).addClass("active");
-            var tabPaneSelector = ".lottery_list[data-api="+$(_this).data("api")+"]";
-            $(".lottery_list").addClass("hide");
-            $(tabPaneSelector).removeClass("hide");
-        })
-    });
-</script>
+<#include "../../commonPage/commonScript/lotteryScript.ftl">
 </body>
 
 </html>

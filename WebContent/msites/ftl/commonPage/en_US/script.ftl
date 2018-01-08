@@ -1,39 +1,7 @@
-<#include "lottery.ftl">
-<#--通用脚本-->
-<script src="${data.configInfo.ftlRootPath}commonPage/js/jquery/jquery-1.11.3.min.js"></script>
-<#--浮窗js-->
-<script src="${data.configInfo.ftlRootPath}commonPage/js/float.js"></script>
-<#--左下角广告轮播插件-->
-<script src="${data.configInfo.ftlRootPath}commonPage/js/idangerous.swiper.min.js"></script>
-<#--特定模板下需要特别处理的在该模板下覆盖同名脚本-->
-<script>
-    var fltRootPath = '${data.configInfo.ftlRootPath}';
-    var message = ${data.message};
-    //处理iframe引用的问题
-    try{window.top.language='en-US';}catch(ex){window.language='en-US';}
-    /* 检查轮播图,不在展示时间内的移除掉,由于初始化顺序，位置不可移动 By Faker */
-    $.ajax({
-        url:'/index/getUserTimeZoneDate.html',
-        dataType:"json",
-        success:function(data){
-            var nowTime = data.time;
-            $("._vr_carousels_check").each(function(){
-                var st = $(this).attr("starttime");
-                var et = $(this).attr("endtime");
-                if(st>nowTime || et<nowTime){
-                    $(this).remove();
-                }
-            })
-        }
-    });
-</script>
-<script src="${data.configInfo.ftlRootPath}commonPage/js/gui-base.js"></script>
-<script src="${data.configInfo.ftlRootPath}commonPage/js/bootstrap-dialog.min.js"></script>
-<script src="${data.configInfo.ftlRootPath}commonPage/js/jquery/jquery.super-marquee.js"></script>
-<script src="${resComRoot}/js/jquery/plugins/jquery.validate/jquery.validate.js"></script>
-<script src="${resComRoot}/js/gamebox/common/jquery.validate.extend.msites.js"></script>
-<script src="${resComRoot}/js/bootstrap-daterangepicker/moment.js"></script><#--通用脚本-->
-<link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/hb/css/pc.css">
+<#include "../common.js.include.ftl">
+
+<#--红包页面-->
+<#include "msiteCommonContent/lottery.ftl">
 
 <script>
     /*全局变量；是否显示登录验证码*/
@@ -49,38 +17,17 @@
     var PAGE_LANGUAGE = "_LANGUAGE";
     $(function () {
         openNewPopWindow();
-        /*关闭浮动图*/
-        closeFloatPic();
+        closeFloatPic();//关闭浮动图
         userTime();
         changeLoginStatus();
         enterLogin();
         balanceRefresh();
         dropdownOpen();
         maintainCheck();
-        initMenuEvents();
-        /*通用真人手风琴脚本*/
-        liveAccordion();
-        /*轮播图占位符替换*/
-        transWebUrlSlide();
-        /*浮窗判断脚本*/
-    <#if data.floatPicsInIndex??>
-        <#list data.floatPicsInIndex as pic>
-            <#if pic.location == "left">
-                <#if pic.interactivity=="scroll_with_page">
-                    if($("[data-fp='${pic.id}']").length>0){
-                    $("[data-fp='${pic.id}']").Float({ <#if pic.distanceTop??>topSide: ${pic.distanceTop?string.computer}<#else>topSide:150</#if>, floatRight: 0,<#if pic.distanceSide??>side: ${pic.distanceSide?string.computer}<#else >side:0</#if>, close: 'aside-float' });
-                    }
-                </#if>
-            </#if>
-            <#if pic.location == "right">
-                <#if pic.interactivity=="scroll_with_page">
-                    if($("[data-fp='${pic.id}']").length>0){
-                    $("[data-fp='${pic.id}']").Float({ <#if pic.distanceTop??>topSide: ${pic.distanceTop?string.computer}<#else>topSide:150</#if>, floatRight: 1,<#if pic.distanceSide??>side: ${pic.distanceSide?string.computer}<#else >side:0</#if>, close: 'aside-float' });
-                    }
-                </#if>
-            </#if>
-        </#list>
-    </#if>
+        initMenuEvents();//初始化菜单
+        liveAccordion();//通用真人手风琴脚本
+        transWebUrlSlide();//轮播图占位符替换
+        floatPics();//浮窗判断脚本添加Float效果
     });
 
     var current_language = getCookie(PAGE_LANGUAGE);
@@ -119,6 +66,28 @@
         }
     }
 
+    //浮窗判断脚本添加Float效果
+    function floatPics() {
+    <#if data.floatPicsInIndex??>
+        <#list data.floatPicsInIndex as pic>
+            <#if pic.location == "left">
+                <#if pic.interactivity=="scroll_with_page">
+                    if($("[data-fp='${pic.id}']").length>0){
+                    $("[data-fp='${pic.id}']").Float({ <#if pic.distanceTop??>topSide: ${pic.distanceTop?string.computer}<#else>topSide:150</#if>, floatRight: 0,<#if pic.distanceSide??>side: ${pic.distanceSide?string.computer}<#else >side:0</#if>, close: 'aside-float' });
+                    }
+                </#if>
+            </#if>
+            <#if pic.location == "right">
+                <#if pic.interactivity=="scroll_with_page">
+                    if($("[data-fp='${pic.id}']").length>0){
+                    $("[data-fp='${pic.id}']").Float({ <#if pic.distanceTop??>topSide: ${pic.distanceTop?string.computer}<#else>topSide:150</#if>, floatRight: 1,<#if pic.distanceSide??>side: ${pic.distanceSide?string.computer}<#else >side:0</#if>, close: 'aside-float' });
+                    }
+                </#if>
+            </#if>
+        </#list>
+    </#if>
+    }
+
     /*切换语言*/
     $(".changeLanguage").on("click",function(){
         var _this = this;
@@ -130,13 +99,15 @@
 
     //手机投注添加链接
     $(".mobileBetting").on("click", function (e) {
-        if (!!window.ActiveXObject || "ActiveXObject" in window){
-            return;
-        }else{
-            document.cookie = "ACCESS_TERMINAL=mobile;expires=0";
-            window.location.replace(window.location.origin);
-        }
-    })
+        document.cookie = "ACCESS_TERMINAL=mobile;expires=0";
+        window.location.replace(window.location.origin);
+        /* if (!!window.ActiveXObject || "ActiveXObject" in window){
+             return;
+         }else{
+             document.cookie = "ACCESS_TERMINAL=mobile;expires=0";
+             window.location.replace(window.location.origin);
+         }*/
+    });
 
     //桌面快捷
     function createDesktop() {
@@ -385,32 +356,39 @@
         if (r!=null) return r[2]; return null;
     }
 
+
     //首页弹窗
     function homeDialog(){
-        if(window.sessionStorage && sessionStorage.getItem("closeHomeDialog") != "true"){
-            sessionStorage.setItem("closeHomeDialog","false");
-        <#assign flag = true>
-        <#if data.carousels??>
-            <#list data.carousels as carousel>
-                <#if flag && carousel["type"]="carousel_type_ad_dialog">
-                    <#if .now?date gt carousel["start_time"]?date && .now?date lt carousel["end_time"]?date>
-                        <#if carousel["cover"]??><#assign imgSrc=imgPath(data.configInfo.domain,carousel["cover"])></#if>
-                        <#if carousel["name"]??><#assign imgTitl=carousel["name"]></#if>
-                        <#if carousel["link"]??><#assign link=carousel["link"]></#if>
-                        <#if carousel["content_type"]??><#assign content_type=carousel["content_type"]></#if>
-                        <#if carousel["content"]??><#assign content=carousel["content"]></#if>
-                        <#assign flag = false >
+    <#assign flag = true>
+    <#if data.carousels??>
+        <#list data.carousels as carousel>
+            <#if flag && carousel["type"]="carousel_type_ad_dialog">
+                <#if .now?date gt carousel["start_time"]?date && .now?date lt carousel["end_time"]?date>
+                    <#if carousel["cover"]??><#assign imgSrc=imgPath(data.configInfo.domain,carousel["cover"])></#if>
+                    <#if carousel["name"]??><#assign imgTitl=carousel["name"]></#if>
+                    <#if carousel["link"]??><#assign link=carousel["link"]></#if>
+                    <#if carousel["content_type"]??><#assign contentType=carousel["content_type"]></#if>
+                    <#if carousel["content"]??><#assign content=carousel["content"]></#if>
+                    <#if carousel["update_time"]??>
+                        <#assign updateTime=carousel["update_time"]?long?string.computer>
+                    <#else >
+                        <#assign updateTime=carousel["id"]?string.computer>
                     </#if>
+                    <#assign flag = false >
                 </#if>
-            </#list>
-        </#if>
-        <#if content_type?? && content_type=="1">
-            <#if imgSrc??>
-                BootstrapDialog.show({
-                    draggable: true,
-                    title: "${imgTitl}",
-                    size: 'index-modal',
-                    message: function(dialog) {
+            </#if>
+        </#list>
+    </#if>
+    <#if imgSrc??>
+        if(!localStorage.getItem("${updateTime}"+"-close-home-dialog")){// 判读缓存里是否关闭了首页弹窗
+            BootstrapDialog.show({
+                type: BootstrapDialog.TYPE_WARNING,
+                draggable: true,
+                title: "${imgTitl}",
+                size: 'index-modal',
+                message: function(dialog) {
+                    var $message = null;
+                    <#if contentType?has_content && contentType == "1">
                         var _href = "${link}";
                         if(_href!=undefined && _href!=""){
                             if(_href.indexOf("http")>-1){
@@ -424,46 +402,34 @@
                         }else{
                             _href = "javascript:void(0)";
                         }
-                        var $message = $('<a href="'+_href+'"><img src="${imgSrc}"/></a>');
-                        return $message;
-                    },
-                    buttons: [{
-                        label: '关闭后不显示',
-                        cssClass:'closeHomeDialog',
-                        action: function (dialog) {
-                            sessionStorage.setItem("closeHomeDialog","true");
-                            dialog.close();
+                        $message = $('<a href="'+_href+'"><img  src="${imgSrc}"/></a><div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>');
+                    <#elseif contentType?has_content && contentType =="2" && content?has_content>
+                        $message="${content}"+'<div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>';
+                    </#if>
+                    return $message;
+                },
+                buttons:[
+                    {
+                        id:'btn-close',
+                        label:'关闭',
+                        cssClass:'btn-close-home-dialog',
+                        action:function(dia){
+                            dia.close();
                         }
-                    }]
-                });
-                // 定时关闭
-                setTimeout(function () {
-                    $(".index-modal").modal("hide")
-                }, 60000);
-            </#if>
-        <#elseif content_type?? && content_type=="2">
-            <#if content??>
-                BootstrapDialog.show({
-                    draggable: true,
-                    title: "${imgTitl}",
-                    size: 'index-modal-content',
-                    message: "${content}",
-                    buttons: [{
-                        label: '关闭后不显示',
-                        cssClass:'closeHomeDialog',
-                        action: function (dialog) {
-                            sessionStorage.setItem("closeHomeDialog","true");
-                            dialog.close();
-                        }
-                    }]
-                });
-                // 定时关闭
-                setTimeout(function () {
-                    $(".index-modal-content").modal("hide")
-                }, 60000);
-            </#if>
-        </#if>
-        }
+                    }
+                ],
+                onhidden:function(dia){
+                    if($("#home-dialog-checkbox").is(":checked")){
+                        localStorage.setItem("${updateTime}"+"-close-home-dialog",true);
+                    }
+                }
+            });
+            // 定时关闭
+            setTimeout(function () {
+                $(".index-modal").modal("hide")
+            }, 60000);
+        }// if判断结束
+    </#if>
     }
 
     /*公共维护状态检测设置 By Faker*/
@@ -1440,6 +1406,8 @@
                     error:function(error) {
                         if(error.responseJSON){
                             window.location.href=error.responseJSON.propMessages.location;
+                        }else{
+                            window.location.href="/";
                         }
                     },
                     complete: function () {
@@ -1830,7 +1798,16 @@
         </#if>
         }
     }
+
+    $(function () {
+    <#--流量统计代码-->
+        var siteStatistics =$("#siteStatisticsDiv").attr("data");
+        setTimeout(function () {
+            $("body").append(siteStatistics);
+        },5000)
+    })
+
 </script>
 
-<#--流量统计代码-->
-<#if data.siteStatistics?has_content>${data.siteStatistics}</#if>
+<div id='siteStatisticsDiv' style="display:none" data="<#if data.siteStatistics?has_content>${data.siteStatistics}</#if>">
+</div>

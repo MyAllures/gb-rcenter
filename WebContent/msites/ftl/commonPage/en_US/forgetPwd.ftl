@@ -1,3 +1,4 @@
+<#--旧版,待删除：如需引用，请引用<#include "../../commonPage/en_US/msiteCommonContent/forgetPwd.ftl">-->
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 

@@ -1,3 +1,4 @@
+<#--旧版,待删除：如需引用，请引用<#include "../../commonPage/zh_TW/msiteCommonContent/commonSportsApiTabs.ftl">-->
 <div class="carousel-inner">
     <ul class="row item api-tabs sports-tabs active">
         <#assign api_index = 0/>
