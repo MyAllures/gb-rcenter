@@ -120,7 +120,7 @@
     </section>
 </main>
 <#include "footer.ftl">
-<#include "../../commonPage/zh_CN/ads/gameAds.ftl">
+<#include "../../commonPage/commonFloat/gameAds.ftl">
 <#include "script.ftl">
 <script>
     $(function () {

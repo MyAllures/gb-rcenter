@@ -1,3 +1,4 @@
+<#--旧版,待删除：如需引用，请引用<#include "../../commonPage/zh_CN/msiteCommonContent/regScript.ftl">-->
 <script src="${data.configInfo.ftlRootPath}commonPage/js/jquery/jquery.mailAutoComplete-4.0.js"></script>
 <script>
     var message =${data.message}
@@ -344,6 +345,7 @@
                 },
                 success: function (data) {
                     if(data.status){
+                        sessionStorage.setItem("registerDialog","true");
                         setCookie(REGSTER_SEND_EMAIL_TIME,0);
                         clearInterval(emailCheckCountBackTimer);
                         autoLogin();
