@@ -1,7 +1,6 @@
-
 $(function(){
-		/*页面整体滚动*/
-	mui('.mui-content.mui-scroll-wrapper').scroll({
+	/*页面整体滚动*/
+	mui('.mui-content').scroll({
 		 scrollY: true, //是否竖向滚动
 		 scrollX:false, //是否横向滚动
 		 startX: 0, //初始化时滚动至x
@@ -14,34 +13,44 @@ $(function(){
 	$(".banner-slide").on("tap",".close-slide",function(){
 		$(this).parent().hide();
 	});
+	/*导航滚动*/
+	mui('.nav .mui-scroll-wrapper').scroll({
+		 scrollY: false, //是否竖向滚动
+		 scrollX: false, //是否横向滚动
+		 startX: 0, //初始化时滚动至x
+		 startY: 0, //初始化时滚动至y
+		 indicators: true, //是否显示滚动条
+		 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+		 bounce: false //是否启用回弹
+	});
 	/*公告弹窗*/
 	mui(".notice .notice-list").on("tap","a",function(){
 		var noticeA =noticeIndicator="";
-		$(".notice .notice-list .marquee a").each(function(){//生成公告html和indicator
-			noticeA+="<a href='javascript:'>"+$(this).html()+"</a>";
+		$(".notice .notice-list p a").each(function(){//生成公告html和indicator
+			noticeA+="<div class='mui-slider-item'><a href='javascript:'>"+$(this).html()+"</a></div>";
+			noticeIndicator+="<div class='mui-indicator'></div>"
 		});
-		var noticeHtml = $('<div>' +
-			'<div class="mui-slider notice-slider">' +
-				'<div class="mui-slider-group">' +
-					'<div class="mui-slider-item">' +
-						'<div class="mui-scroll-wrapper">' +
-							'<div class="mui-scroll">'+noticeA+'</div>' +
-						'</div>' +
-					'</div>' +
-				'</div>' +
-			'</div>' +
-			'</div>');
+		var noticeHtml = $('<div><div class="mui-slider notice-slider"><div class="mui-slider-group">'+noticeA+'</div><div class="mui-slider-indicator">'+noticeIndicator+'</div></div></div></div>');
 		var alertNotice = mui.alert(noticeHtml.html(),"公告","关闭");
 		$(alertNotice.element).addClass('notice-alert');// 定义弹窗的class,方便修改样式
-		$(".notice-slider").css({height:$(window).height()*0.7})
-		mui(".notice-slider .mui-scroll-wrapper").scroll();
+		var index = $(this).index();//当前点击的公告index
+		//初始化notice-slider
+		var notice = mui('.mui-slider');
+		notice.slider({
+		  interval:3000//自动轮播周期，若为0则不自动播放，默认为0；
+		});
+		//点击公告，轮播跳转到对应的位置
+		$(".notice-slider .mui-indicator").removeClass("mui-active");
+		$(".notice-slider .mui-indicator:eq("+index+")").addClass("mui-active");
+		notice.slider().gotoItem(index);
 	});
-	/*侧滑菜单脚本*/
-	$(".mui-bar").on("tap",".mui-action-menu",function(){
-		$("html").toggleClass("index-canvas-show");
-		mui('.index-canvas-wrap .mui-scroll-wrapper').scroll();
+	/* 导航tab切换 */
+	$(".nav").on("tap",".mui-control-item",function(){
+		var target = $(this).data('item');
+		$(".api-grid ul").removeClass('active');
+		$(".api-grid ul[data-list='"+target+"']").addClass('active');
 	});
-		/*关闭侧滑菜单*/
+	/*关闭侧滑菜单*/
 	$(".mui-inner-wrap").on("tap",function(event){
 		if(mui('.mui-off-canvas-wrap').offCanvas().isShown('left')){
 			mui('.mui-off-canvas-wrap').offCanvas().close();
@@ -65,7 +74,16 @@ $(function(){
 		 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
 		 bounce: true //是否启用回弹
 	});
-	
+	/*彩票导航菜单滚动*/
+	mui('.lottery-nav .mui-scroll-wrapper').scroll({
+		 scrollY: false, //是否竖向滚动
+		 scrollX:true, //是否横向滚动
+		 startX: 0, //初始化时滚动至x
+		 startY: 0, //初始化时滚动至y
+		 indicators: true, //是否显示滚动条
+		 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+		 bounce: true //是否启用回弹
+	});
 	$(".lottery-nav li").on("tap",function(){
 		$(this).siblings().find("a").removeClass("mui-active");
 		$(this).find("a").addClass("mui-active");
@@ -75,7 +93,7 @@ $(function(){
 		$(this).siblings().removeClass("active");
 		$(this).addClass("active");
 		if($(this).hasClass("lang")){
-			$(".lang-menu").toggle();
+			$(".lang-menu").show();
 		}		
 	});
 	/* 关闭侧滑菜单隐藏语言弹窗 */
@@ -85,7 +103,7 @@ $(function(){
 	// 监听tap事件，解决 a标签 不能跳转页面问题
 	mui('body').on('tap','a[href$=html]',function(){
 		document.location.href=this.href;
-		console.log(this.href);
+		//plus.runtime.openURL(this.href);
 	});
 	// 选择器示例，展示用而已。根据业务逻辑自己定义
 	$(".mui-input-select").on("tap",function(){
@@ -106,33 +124,5 @@ $(function(){
 			 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
 			 bounce: true //是否启用回弹
 		});
-	});
-	$(".lottery-nav li").on("tap",function(){
-		$(this).siblings("li").find("a").removeClass("mui-active");
-		$(this).find("a").addClass("mui-active");
-		$(".lottery-content .mui-control-content").removeClass("mui-active");
-		var index = $(this).index();
-		$(this).parents(".lottery-nav").next().find(".mui-control-content").eq(index).addClass("mui-active");
-		// 动态计算滑动内容的高度
-		$(this).parents(".swiper-wrapper").css({
-			height:$(this).parents(".lottery-nav").next().find(".mui-control-content").eq(index).outerHeight()+48
-		});
-	});
-	// 导航点击下面滑块高度问题bug解决
-	$(".swiper-container.slide-indicators").on("tap",".swiper-slide",function(e){
-		var index = $(this).data("swiper-slide-index");
-		var targetSlide = $(".slide-content .swiper-slide[data-swiper-slide-index="+index+"]")[0];
-		console.log($(targetSlide).outerHeight());
-		setTimeout(function(){// 滑动循环最后一个有延迟，设个定时器抵消延迟的效果
-			$(".slide-content>.swiper-wrapper").css({height:$(targetSlide).outerHeight()});
-		},100);		
-	});
-	// 关闭红包
-	$("#hongbao").on("tap",".icon-close",function(e){
-		e.stopPropagation();
-		$(this).parent().hide();
-	});
-	$(".desk").on("tap",".close",function(){
-		$(this).parents(".desk").hide();
 	});
 });
