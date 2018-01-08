@@ -21,9 +21,9 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
         init: function () {
             var _this = this;
             this.bindNavigation();
-            this.titleFirstLevel = document.title.split("-")[2]?document.title.split("-")[2]:"";
-            this.titleSecondLevel = document.title.split("-")[1]?document.title.split("-")[1]:"";
-            this.titleThirdLevel = document.title.split("-")[0]?document.title.split("-")[0]:"";
+            this.titleFirstLevel = document.title.split("-")[2] ? document.title.split("-")[2] : "";
+            this.titleSecondLevel = document.title.split("-")[1] ? document.title.split("-")[1] : "";
+            this.titleThirdLevel = document.title.split("-")[0] ? document.title.split("-")[0] : "";
             window.onhashchange = function (e) {
                 //兼容IE的问题
                 if (e.newURL == null || e.newURL == undefined) {
@@ -76,15 +76,15 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 }
                 else if (_this.errorPages.indexOf(state) >= 0 && settings.comet != true) {//服务器忙
                     if (!settings.error) {
-                        _this.showErrorMessage(state+":"+settings.url);
+                        _this.showErrorMessage(state + ":" + settings.url);
                         //window.top.location.href = window.top.root + "/errors/" + state + ".html";
                     }
                 }
                 else if (!settings.error && state != 200 && state != 0) {
                     if (settings.comet == true) {
-                        _this.showErrorMessage(settings.url+"\r\n"+window.top.message.common["online.message.error"], undefined, true);
+                        _this.showErrorMessage(settings.url + "\r\n" + window.top.message.common["online.message.error"], undefined, true);
                     } else {
-                        _this.showErrorMessage(settings.url+"\r\n"+(xhr.responseText||state), undefined, true);
+                        _this.showErrorMessage(settings.url + "\r\n" + (xhr.responseText || state), undefined, true);
                     }
                     if (settings.eventTarget) {
                         $(settings.eventTarget).unlock();
@@ -183,7 +183,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 //按钮类型input需设置选中
                 if ($(item).attr("type") == 'radio' && $(item).is(":checked")) {
                     $("input[name='" + $(item).attr("name") + "'][checked]").removeAttr("checked");
-                    $(item).attr("checked","");
+                    $(item).attr("checked", "");
                 }
             });
             $('div.preloader').hide();
@@ -197,7 +197,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
             _this.lastHash = _oldHash;
             this.oldHash = _newHash;
             if (_newPage) {
-                $("#mainFrame").html(_newPage.content).promise().done(function(){
+                $("#mainFrame").html(_newPage.content).promise().done(function () {
                     $("html, body").animate({scrollTop: 0});
                     document.title = window.page.currentMenuTitle(location.hash.substr(1));
                     window.setTimeout(function () {
@@ -218,10 +218,10 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                         _this.hashEvent = _newPage.lastHashEvent;
                         _this.lastHash = _newPage.lastHash;
                         //$(newPage.hashEvent.currentTarget).lock();
-                        if(_newPage.lastHashEvent.hideBack==undefined || _newPage.lastHashEvent.hideBack) {
-                            $("#mainFrame .return-btn").css("display","none");
-                        }else{
-                            $("#mainFrame .return-btn").css("display","");
+                        if (_newPage.lastHashEvent.hideBack == undefined || _newPage.lastHashEvent.hideBack) {
+                            $("#mainFrame .return-btn").css("display", "none");
+                        } else {
+                            $("#mainFrame .return-btn").css("display", "");
                         }
                     }, 100);
 
@@ -261,11 +261,11 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
             });
         },
         _doNavigate: function (e) {
-            this.lastHashEvent=this.hashEvent;
-            this.hashEvent = {currentTarget: e.currentTarget,hideBack:false};
+            this.lastHashEvent = this.hashEvent;
+            this.hashEvent = {currentTarget: e.currentTarget, hideBack: false};
             //直接点上面或左边的菜单,不显示返回按钮
-            if($(e.currentTarget).parent().parent().hasClass("dropdown-menu") || $(e.currentTarget).parent().parent().parent().hasClass("sidebar-collapse") ){
-                this.hashEvent.hideBack=true;
+            if ($(e.currentTarget).parent().parent().hasClass("dropdown-menu") || $(e.currentTarget).parent().parent().parent().hasClass("sidebar-collapse")) {
+                this.hashEvent.hideBack = true;
             }
             var url = $(this.hashEvent.currentTarget).attr("data") || $(this.hashEvent.currentTarget).attr("href");
             this.pages["#" + url] = null;
@@ -354,11 +354,11 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                         var text = $("span", $obj).text();
                     }
                     else if (level == 2) {
-                        $("#" + target).html(data).promise().done(function(){
-                            if(_this.hashEvent.hideBack==undefined ||  _this.hashEvent.hideBack) {
-                                $("#" + target +" .return-btn").css("display","none");
-                            }else{
-                                $("#" + target +" .return-btn").css("display","");
+                        $("#" + target).html(data).promise().done(function () {
+                            if (_this.hashEvent.hideBack == undefined || _this.hashEvent.hideBack) {
+                                $("#" + target + " .return-btn").css("display", "none");
+                            } else {
+                                $("#" + target + " .return-btn").css("display", "");
                             }
                         });
                     }
@@ -389,7 +389,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
          * @param msg       错误信息字符串
          */
         showErrorMessage: function (msg, callback, autoClose) {
-            if(msg==null || msg==undefined || msg==""){
+            if (msg == null || msg == undefined || msg == "") {
                 return;
             }
             callback = this._showCallback(callback);
@@ -553,7 +553,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 $(e.currentTarget).lock();
                 var _target = e.currentTarget;
                 e.preventDefault();
-                var _e = {currentTarget: _target, page: e.page || page};
+                var _e = {currentTarget: _target, page: e.page || page, holder: e.page || page};
                 var btnOption = eval("(" + $(_target).data('rel') + ")");
                 if (_target.title) {
                     btnOption.text = _target.title;
@@ -798,7 +798,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                     }
                     var status = request.getResponseHeader("headerStatus") || request.status;
                     if (status != 601 && status != 608) {
-                        _this.showErrorMessage(status+":"+this.url+"\r\n"+message);
+                        _this.showErrorMessage(status + ":" + this.url + "\r\n" + message);
                     }
                 },
                 success: function (data) {
@@ -853,7 +853,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                     oldSuccess(data);
                 };
             }
-            option.cache=false;
+            option.cache = false;
             $.ajax(option);
         },
         /**
@@ -914,7 +914,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 return func.apply(null, [e, option]);
             }
             if (func.constructor == String) {
-                var page = e.page;
+                var page = e.holder;
                 var funcs = func.split(".");
                 for (var i = 0; i < funcs.length - 1; i++) {
                     page = page[funcs[i]];
@@ -922,7 +922,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 /**
                  * 替换目标操作ｐａｇｅ对象
                  */
-                e.page=page;
+                e.page = page;
                 if (funcs[funcs.length - 1] != "") {
                     var fn = page[funcs[funcs.length - 1]];
                     if (typeof fn === "function") {
@@ -965,7 +965,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
 
             var _this = this;
             btnOption.data = data;
-            if(data.state) {
+            if (data.state) {
                 e.returnValue = true;
             }
             if (data.msg) {
@@ -1004,20 +1004,20 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
         /**设置网页title By Faker*/
         currentMenuTitle: function (url) {
             var urlStart = "";
-            if (url){
+            if (url) {
                 urlStart = url.split("?")[0];
             }
-            if(url=="/home/homeIndex.html"){
+            if (url == "/home/homeIndex.html") {
                 //站长中心首页
                 this.titleThirdLevel = "首页";
-            }else if ($("._nav_title").find("[href='"+urlStart+"']").text()!=""){
-                this.titleThirdLevel = $("._nav_title").find("[href='"+urlStart+"']").text();
-            }else if ($("._nav_title").find("[data^='"+urlStart+"']").text()!=""){
-                this.titleThirdLevel = $("._nav_title").find("[data^='"+urlStart+"']").text();
-            }else if ($("._nav_title").find("[href='"+url+"']").text()!=""){
-                this.titleThirdLevel = $("._nav_title").find("[href='"+url+"']").text();
-            }else if ($("._boss_nav_title").find("[href='"+url+"']").text()!=""){
-                this.titleThirdLevel = $("._boss_nav_title").find("[href='"+url+"']>span").text();
+            } else if ($("._nav_title").find("[href='" + urlStart + "']").text() != "") {
+                this.titleThirdLevel = $("._nav_title").find("[href='" + urlStart + "']").text();
+            } else if ($("._nav_title").find("[data^='" + urlStart + "']").text() != "") {
+                this.titleThirdLevel = $("._nav_title").find("[data^='" + urlStart + "']").text();
+            } else if ($("._nav_title").find("[href='" + url + "']").text() != "") {
+                this.titleThirdLevel = $("._nav_title").find("[href='" + url + "']").text();
+            } else if ($("._boss_nav_title").find("[href='" + url + "']").text() != "") {
+                this.titleThirdLevel = $("._boss_nav_title").find("[href='" + url + "']>span").text();
             }
             return this.titleThirdLevel + (this.titleSecondLevel.length > 0 ? (" - " + this.titleSecondLevel) : "")
                 + (this.titleFirstLevel.length > 0 ? (" - " + this.titleFirstLevel) : "");
