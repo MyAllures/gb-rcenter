@@ -175,7 +175,7 @@
                 </div>
                 <!--panel-->
                 <div class="header-panel _vr_loginSuccess" style="display: none">
-                    <#--<#include "../../commonPage/zh_CN/msiteCommonContent/loginSuccess.ftl">-->
+                    <#include "../../commonPage/zh_CN/msiteCommonContent/loginSuccess.ftl">
                 </div>
             </div>
         </div>
