@@ -136,11 +136,27 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
         bindTdInput: function (obj) {
             var name = $("a.main.mui-active").attr("data-code");
             var num = parseInt($("a.main.mui-active").attr("min-num"));
-            var minNum =name !="十一不中" && name !="十二不中" && name !="十不中" && name !="九不中"? num+4 : num+3;
+            if(name=="五不中"){
+                num =num+6;
+            }else if(name=="六不中"){
+                num =num+5;
+            }else if(name=="七不中"){
+                num =num+4;
+            }else if(name=="八不中"){
+                num =num+4;
+            }else if(name=="九不中"){
+                num =num+3;
+            }else if(name=="十不中"){
+                num =num+3;
+            }else if(name=="十一不中"){
+                num =num+3;
+            }else if(name=="十二不中"){
+                num =num+3;
+            }
             var flag = $(obj).is('.not-selected');
             if (!flag) {
                 $(obj).toggleClass('mui-active');
-                if($("td.mui-active").length>minNum){
+                if($("td.mui-active").length>num){
                     mui.toast("注数过大");
                     $(obj).removeClass('mui-active');
                 }
