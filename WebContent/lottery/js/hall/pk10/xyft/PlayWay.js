@@ -52,16 +52,16 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
         gyDxjs: function (data) {
             var arr_res = [];
             var n = 0;
-            var td_col = 0;
+            var td_col = 34;
 
             //第二选项卡中的变量值
             var arr_hzInfo = [];
-            var tab2_td_col = 0;
+            var tab2_td_col = 34;
             var tab2_n = 0;
 
             //第三个选项卡中的变量值
             var arr_dsInfo = [];
-            var tab3_td_col = 0;
+            var tab3_td_col = 34;
             var tab3_n = 0;
 
             for (var m = 0; m < data.length; m++) {
@@ -117,15 +117,15 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
             for (var i = 0; i < arr_dsInfo.length; i++) {
                 if (i > 0 && i < arr_dsInfo.length - 1) {
                     if (arr_dsInfo[i].flag_ds != arr_dsInfo[i - 1].flag_ds || tab3_n ==6) {
-                        tab3_td_col++;
+                        tab3_td_col--;
                         tab3_n = 0;
                     }
                     if (arr_res[i].flag_dx != arr_res[i - 1].flag_dx || n ==6) {
-                        td_col++; //发现前一个值不等换行 右移动一列单元格
+                        td_col--; //发现前一个值不等换行 右移动一列单元格
                         n = 0;//发现前一个值不等换行 初始化为第一行
                     }
                     if (arr_hzInfo[i].flag_hz != arr_hzInfo[i - 1].flag_hz || tab2_n ==6) {
-                        tab2_td_col++;
+                        tab2_td_col--;
                         tab2_n = 0;
                     }
                 }
@@ -141,7 +141,6 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                         $("#rmTr" + n + " td").eq(td_col).attr('title', arr_res[i].content);
                         n++;
                     }
-
                 }
 
                 //第二个选项卡
