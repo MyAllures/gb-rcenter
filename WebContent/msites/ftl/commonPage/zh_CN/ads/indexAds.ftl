@@ -12,15 +12,20 @@
     <#list data.floatPicsInIndex as pic>
         <#if pic.singleMode && pic.picType=='2'>
             <#if pic.location == "left" && pic.displayInPages?contains("1")>
-            <div class="hongbao-slide-wrap hongbao-wrap" id="hongbao">
-                <div class="<#if pic.hideCloseButton?? && pic.hideCloseButton>icon-close</#if> _close"></div>
+                <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>
+                    <#assign updateTime = pic.id?string.computer/>
+                <#else >
+                    <#assign updateTime = .now?date/>
+                </#if>
+            <div data-fp="effect_${updateTime}" style="display:none;" class="show-effect-left hongbao-slide-wrap hongbao-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if>" id="hongbao">
+                <div class="<#if pic.hideCloseButton?? && pic.hideCloseButton>icon-close _close</#if>"></div>
                 <div class="slide-inner">
                     <ul>
                         <#if data.floatPicItems?exists>
                             <#list data.floatPicItems?keys as key>
                                 <#if  data.floatPicItems[key].floatPicId ==pic.id>
                                     <li class="hb_type_<#if data.floatPicItems[key].normalEffect?contains('panel-first.png')>1<#elseif data.floatPicItems[key].normalEffect?contains('panel-second.png')>2<#else>3</#if>">
-                                        <a href="javascript:void(0)" onclick="canShowLottery('${searchId}');">
+                                        <a href="javascript:void(0)" <#if data.floatPicItems[key].imgLinkType?string != 'close_btn'>onclick="canShowLottery('${searchId}');"</#if>>
                                             <div class="img"></div>
                                             <div class="extra"></div>
                                         </a>
@@ -40,15 +45,20 @@
     <#list data.floatPicsInIndex as pic>
         <#if pic.singleMode && pic.picType=='2'>
             <#if pic.location == "right" && pic.displayInPages?contains("1")>
-            <div class="hongbao-slide-wrap hongbao-wrap" id="hongbao" >
-                <div class="icon-close <#if pic.hideCloseButton?? && pic.hideCloseButton>_close</#if>"></div>
+                <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>
+                    <#assign updateTime = pic.id?string.computer/>
+                <#else >
+                    <#assign updateTime = .now?date/>
+                </#if>
+            <div data-fp="effect_${updateTime}" style="display:none;" class="show-effect-right hongbao-slide-wrap hongbao-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if>" id="hongbao" >
+                <div class="<#if pic.hideCloseButton?? && pic.hideCloseButton>icon-close _close</#if>"></div>
                 <div class="slide-inner">
                     <ul>
                         <#if data.floatPicItems?exists>
                             <#list data.floatPicItems?keys as key>
                                 <#if  data.floatPicItems[key].floatPicId ==pic.id>
                                     <li class="hb_type_<#if data.floatPicItems[key].normalEffect?contains('panel-first.png')>1<#elseif data.floatPicItems[key].normalEffect?contains('panel-second.png')>2<#else>3</#if>">
-                                        <a href="javascript:void(0)" onclick="canShowLottery('${searchId}');">
+                                        <a href="javascript:void(0)" <#if data.floatPicItems[key].imgLinkType?string != 'close_btn'>onclick="canShowLottery('${searchId}');"</#if>>
                                             <div class="img"></div>
                                             <div class="extra"></div>
                                         </a>
@@ -69,7 +79,7 @@
         <#if pic.singleMode && pic.picType=='1' || !pic.singleMode>
             <#if pic.location == "left" && pic.displayInPages?contains("1")>
                 <#if pic.interactivity=="lock_on_screen">
-                <ul data-fp="${pic.id}" class="float-services a-left aside-float list-unstyled <#if pic.showEffect?? && pic.showEffect>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>left: ${pic.distanceSide}px;</#if> <#if pic.distanceSide??>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
+                <ul data-fp="${pic.id}" class="float-services a-left aside-float list-unstyled <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>left: ${pic.distanceSide}px;</#if> <#if pic.distanceSide??>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
                     <#if data.floatPicItems?exists>
                         <#list data.floatPicItems?keys as key>
                             <#if  data.floatPicItems[key].floatPicId ==pic.id>
@@ -79,7 +89,7 @@
                                                 href="<#if data.floatPicItems[key].imgLinkType?string == 'link'><#if !data.floatPicItems[key].imgLinkValue?contains("http://")><#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if></#if></#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
                                         </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
-                                                href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
+                                                href="javascript:void(0)" <#if data.floatPicItems[key].imgLinkType?string != 'close_btn'>onclick="canShowLottery('${searchId}');"</#if>
                                     </#if>>
                                         <#if data.floatPicItems[key].mouseInEffect?? && data.floatPicItems[key].mouseInEffect!="">
                                             <img src="${imgPath(data.configInfo.domain,data.floatPicItems[key].mouseInEffect)}" alt="">
@@ -91,7 +101,7 @@
                     </#if>
                 </ul>
                 <#elseif pic.interactivity=="scroll_with_page">
-                <ul data-fp="${pic.id}" class="float-js-left float-services a-left aside-float list-unstyled <#if pic.showEffect?? && pic.showEffect>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>left: ${pic.distanceSide}px;</#if> <#if pic.distanceSide??>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
+                <ul data-fp="${pic.id}" class="float-js-left float-services a-left aside-float list-unstyled <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>left: ${pic.distanceSide}px;</#if> <#if pic.distanceSide??>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
                     <#if data.floatPicItems?exists>
                         <#list data.floatPicItems?keys as key>
                             <#if  data.floatPicItems[key].floatPicId ==pic.id>
@@ -101,7 +111,7 @@
                                                 href="<#if data.floatPicItems[key].imgLinkType?string == 'link'><#if !data.floatPicItems[key].imgLinkValue?contains("http://")><#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if></#if></#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
                                         </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
-                                                href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
+                                                href="javascript:void(0)" <#if data.floatPicItems[key].imgLinkType?string != 'close_btn'>onclick="canShowLottery('${searchId}');"</#if>
                                     </#if>>
                                         <#if data.floatPicItems[key].mouseInEffect?? && data.floatPicItems[key].mouseInEffect!="">
                                             <img src="${imgPath(data.configInfo.domain,data.floatPicItems[key].mouseInEffect)}" alt="">
@@ -113,7 +123,7 @@
                     </#if>
                 </ul>
                 <#elseif pic.interactivity=="lock_on_page">
-                <ul data-fp="${pic.id}" class="float-lock-on-page float-services a-left aside-float list-unstyled <#if pic.showEffect?? && pic.showEffect>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>left: ${pic.distanceSide}px;</#if> <#if pic.distanceSide??>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
+                <ul data-fp="${pic.id}" class="float-lock-on-page float-services a-left aside-float list-unstyled <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>left: ${pic.distanceSide}px;</#if> <#if pic.distanceSide??>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
                     <#if data.floatPicItems?exists>
                         <#list data.floatPicItems?keys as key>
                             <#if  data.floatPicItems[key].floatPicId ==pic.id>
@@ -123,7 +133,7 @@
                                                 href="<#if data.floatPicItems[key].imgLinkType?string == 'link'><#if !data.floatPicItems[key].imgLinkValue?contains("http://")><#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if></#if></#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
                                         </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
-                                                href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
+                                                href="javascript:void(0)" <#if data.floatPicItems[key].imgLinkType?string != 'close_btn'>onclick="canShowLottery('${searchId}');"</#if>
                                     </#if>>
                                         <#if data.floatPicItems[key].mouseInEffect?? && data.floatPicItems[key].mouseInEffect!="">
                                             <img src="${imgPath(data.configInfo.domain,data.floatPicItems[key].mouseInEffect)}" alt="">
@@ -145,7 +155,7 @@
         <#if pic.singleMode && pic.picType=='1' || !pic.singleMode>
             <#if pic.location == "right" && pic.displayInPages?contains("1")>
                 <#if pic.interactivity=="lock_on_screen">
-                <ul data-fp="${pic.id}" class="float-services a-right aside-float list-unstyled hidden-xs <#if pic.showEffect?? && pic.showEffect>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>right: ${pic.distanceSide}px;</#if> <#if pic.distanceSide?has_content>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
+                <ul data-fp="${pic.id}" class="float-services a-right aside-float list-unstyled hidden-xs <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>right: ${pic.distanceSide}px;</#if> <#if pic.distanceSide?has_content>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
                     <#if data.floatPicItems?exists>
                         <#list data.floatPicItems?keys as key>
                             <#if data.floatPicItems[key].floatPicId == pic.id>
@@ -155,7 +165,7 @@
                                                 href="<#if data.floatPicItems[key].imgLinkType?string == 'link'><#if !data.floatPicItems[key].imgLinkValue?contains("http://")><#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if></#if></#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
                                         </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
-                                                href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
+                                                href="javascript:void(0)" <#if data.floatPicItems[key].imgLinkType?string != 'close_btn'>onclick="canShowLottery('${searchId}');"</#if>
                                     </#if>>
                                         <#if data.floatPicItems[key].mouseInEffect?? && data.floatPicItems[key].mouseInEffect!="">
                                             <img src="${imgPath(data.configInfo.domain,data.floatPicItems[key].mouseInEffect)}" alt="">
@@ -167,7 +177,7 @@
                     </#if>
                 </ul>
                 <#elseif pic.interactivity=="scroll_with_page">
-                <ul data-fp="${pic.id}" class="float-js-right float-services a-right aside-float list-unstyled hidden-xs <#if pic.showEffect?? && pic.showEffect>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>right: ${pic.distanceSide}px;</#if> <#if pic.distanceSide?has_content>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
+                <ul data-fp="${pic.id}" class="float-js-right float-services a-right aside-float list-unstyled hidden-xs <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>right: ${pic.distanceSide}px;</#if> <#if pic.distanceSide?has_content>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
                     <#if data.floatPicItems?exists>
                         <#list data.floatPicItems?keys as key>
                             <#if data.floatPicItems[key].floatPicId == pic.id>
@@ -177,7 +187,7 @@
                                                 href="<#if data.floatPicItems[key].imgLinkType?string == 'link'><#if !data.floatPicItems[key].imgLinkValue?contains("http://")><#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if></#if></#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
                                         </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
-                                                href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
+                                                href="javascript:void(0)" <#if data.floatPicItems[key].imgLinkType?string != 'close_btn'>onclick="canShowLottery('${searchId}');"</#if>
                                     </#if>>
                                         <#if data.floatPicItems[key].mouseInEffect?? && data.floatPicItems[key].mouseInEffect!="">
                                             <img src="${imgPath(data.configInfo.domain,data.floatPicItems[key].mouseInEffect)}" alt="">
@@ -189,7 +199,7 @@
                     </#if>
                 </ul>
                 <#elseif pic.interactivity=="lock_on_page">
-                <ul data-fp="${pic.id}" class="float-lock-on-page float-services a-right aside-float list-unstyled hidden-xs <#if pic.showEffect?? && pic.showEffect>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>right: ${pic.distanceSide}px;</#if> <#if pic.distanceSide?has_content>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
+                <ul data-fp="${pic.id}" class="float-lock-on-page float-services a-right aside-float list-unstyled hidden-xs <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>right: ${pic.distanceSide}px;</#if> <#if pic.distanceSide?has_content>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
                     <#if data.floatPicItems?exists>
                         <#list data.floatPicItems?keys as key>
                             <#if data.floatPicItems[key].floatPicId == pic.id>
@@ -199,7 +209,7 @@
                                                 href="<#if data.floatPicItems[key].imgLinkType?string == 'link'><#if !data.floatPicItems[key].imgLinkValue?contains("http://")><#if data.floatPicItems[key].imgLinkProtocol?? && data.floatPicItems[key].imgLinkProtocol!="">${data.floatPicItems[key].imgLinkProtocol}<#else >'http://'</#if></#if></#if>${data.floatPicItems[key].imgLinkValue}" target="_blank"
                                         </#if>
                                     <#elseif pic.picType??&&pic.picType=='2' && searchId?has_content>
-                                                href="javascript:void(0)" onclick="canShowLottery('${searchId}');"
+                                                href="javascript:void(0)" <#if data.floatPicItems[key].imgLinkType?string != 'close_btn'>onclick="canShowLottery('${searchId}');"</#if>
                                     </#if>>
                                         <#if data.floatPicItems[key].mouseInEffect?? && data.floatPicItems[key].mouseInEffect!="">
                                             <img src="${imgPath(data.configInfo.domain,data.floatPicItems[key].mouseInEffect)}" alt="">
@@ -216,7 +226,7 @@
     </#list>
 </#if>
 
-<div class="modal bootstrap-dialog register-dialog type-warning fade size-normal in hide" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 1050; display: block; padding-right: 17px;">
+<div class="modal bootstrap-dialog register-dialog type-warning fade size-normal in hide" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 2050; display: block; padding-right: 17px;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -247,7 +257,7 @@
     </div>
 </div>
 
-<div class="modal bootstrap-dialog login-dialog type-warning fade size-normal in hide" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 1050; display: block; padding-right: 17px;">
+<div class="modal bootstrap-dialog login-dialog type-warning fade size-normal in hide" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 2050; display: block; padding-right: 17px;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

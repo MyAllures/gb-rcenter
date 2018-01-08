@@ -95,33 +95,13 @@
             </dl>
         </div>
     </section>
-    <div class="promoTip" style="display: none">
-        <div class="row"><div class="col-12-12"><h3 class="text-center text-info _fail" style="display: none">申請失敗</h3><h3 class="text-center text-info _success" style="display: none">申请成功</h3><div class="_msg"></div><p class="text-center text-muted _next" style="display: none">下次申請時間：<span class="_next" style="display: none"></span></p></div></div>
-    </div>
+<#include "../../commonPage/zh_TW/msiteCommonContent/promoTip.ftl">
 </main>
 <#include "footer.ftl">
-<#include "../../commonPage/zh_TW/ads/gameAds.ftl">
+<#include "../../commonPage/commonFloat/gameAds.ftl">
 <#include "script.ftl">
-<#include "../../commonPage/zh_TW/promoScript.ftl">
-<script>
-    $(function(){
-        $(".promo-sorts li").each(function(){
-            $(this).on("click","a",function(){
-                if(!$(this).parent().hasClass("active")){
-                    $(this).parent().siblings().removeClass("active");
-                    $(this).parent().addClass("active");
-                    var val = $(this).data("item");
-                    if (val=="_all_"){
-                        $(".actContain").show();
-                    }else {
-                        $(".actContain").hide();
-                        $("."+val).show();
-                    }
-                }
-            })
-        })
-    })
-</script>
+<#include "../../commonPage/zh_TW/msiteCommonScript/promoScript.ftl">
+<#include "../../commonPage/commonScript/promoScript.ftl">
 </body>
 
 </html>

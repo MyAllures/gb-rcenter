@@ -10,7 +10,7 @@
 
 <body>
 <#include "top.ftl">
-<#include "../../commonPage/zh_CN/topLottery.ftl">
+<#include "../../commonPage/ja_JP/topLottery.ftl">
 <main class="main-lottery">
     <div style="height: 406px;background: url(${data.configInfo.sitePath}/images/lottery-banner.jpg) no-repeat center bottom;"></div>
     <!-- notice -->
@@ -22,7 +22,7 @@
                 <!-- Api-tabs -->
                 <ul class="api-tabs lottery-tabs">
                 <#assign apiNumPerSlide=3>
-                    <#include "../../commonPage/zh_CN/commonLotteryApiTabs.ftl">
+                    <#include "../../commonPage/ja_JP/msiteCommonContent/commonLotteryApiTabs.ftl">
                 </ul>
             </div>
         </div>
@@ -55,20 +55,9 @@
     </section>
 </main>
 <#include "footer.ftl">
-<#include "../../commonPage/zh_CN/ads/gameAds.ftl">
+<#include "../../commonPage/commonFloat/gameAds.ftl">
 <#include "script.ftl">
-<script>
-    $(function () {
-        $(".lottery-click").on("click", function (e) {
-            var _this = e.currentTarget;
-            $(".lottery-click").removeClass("active");
-            $(this).addClass("active");
-            var tabPaneSelector = ".lottery_list[data-api="+$(_this).data("api")+"]";
-            $(".lottery_list").addClass("hide");
-            $(tabPaneSelector).removeClass("hide");
-        })
-    });
-</script>
+<#include "../../commonPage/commonScript/lotteryScript.ftl">
 </body>
 
 </html>

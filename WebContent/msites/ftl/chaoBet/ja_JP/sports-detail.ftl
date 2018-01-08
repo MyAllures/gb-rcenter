@@ -44,9 +44,9 @@
     </section>
 </main>
 <#include "footer.ftl">
-<#include "../../commonPage/zh_CN/ads/gameAds.ftl">
+<#include "../../commonPage/commonFloat/gameAds.ftl">
 <#include "script.ftl">
-<#include "../../commonPage/zh_CN/sportsScript.ftl">
+<#include "../../commonPage/ja_JP/msiteCommonScript/sportsScript.ftl">
 </body>
 
 </html>

@@ -472,9 +472,9 @@
     </section>
 </main>
 <#include "footer.ftl">
-<#include "../../commonPage/zh_CN/ads/registerAds.ftl">
+<#include "../../commonPage/commonFloat/registerAds.ftl">
 <#include "script.ftl">
-<#include "../../commonPage/zh_CN/regScript.ftl">
+<#include "../../commonPage/ja_JP/msiteCommonScript/regScript.ftl">
 </body>
 
 </html>

@@ -1,3 +1,4 @@
+<#--旧版,待删除：如需引用，请引用<#include "../../commonPage/zh_TW/msiteCommonContent/fetchBalance.ftl">-->
 <li>
     <a href="javascript:" onclick="balanceStatus()"><span class="eye pull-right gui gui-eye" title="残高表示隠し"></span>殘高 <span class="_vr_wallet_balance"></span></a>
     <input type="hidden" name="balanceStatus" value="0" />
