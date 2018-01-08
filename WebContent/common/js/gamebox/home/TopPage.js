@@ -914,7 +914,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 return func.apply(null, [e, option]);
             }
             if (func.constructor == String) {
-                var page = e.holder;
+                var page = e.holder || e.page;
                 var funcs = func.split(".");
                 for (var i = 0; i < funcs.length - 1; i++) {
                     page = page[funcs[i]];
