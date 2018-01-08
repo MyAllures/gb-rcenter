@@ -185,7 +185,7 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
                         var gameType = ktem.gameType;
                         if (gameType =='LiveDealer') {
                             apiTypeId = 1;
-                        } else if (gameType =='Casino') {
+                        } else if (gameType =='Casino' || gameType == 'Fish') {
                             apiTypeId = 2;
                         } else if (gameType =='Sportsbook') {
                             apiTypeId = 3;
