@@ -1,11 +1,11 @@
 /* color and special images style */
-/* blue themes */
+/* black themes */
 body {
   color: #333;
 }
 
 header.mui-bar-nav {
-  background-color: #168df6;
+  background-color: #151515;
 }
 header.mui-bar-nav a.mui-icon-bars {
   color: #fff;
@@ -19,9 +19,9 @@ header.mui-bar-nav .btn-demo {
   border: 1px solid #f9b808;
 }
 header.mui-bar-nav .yjym {
-  color: #333;
-  background: #e2e2e2;
-  border-top: 1px solid #c4c4c4;
+  color: #fff;
+  background: #353535;
+  border-top: 1px solid #111;
 }
 header.mui-bar-nav .btn-download {
   background: url(images/icon-download.png) center/24px no-repeat;
@@ -29,27 +29,27 @@ header.mui-bar-nav .btn-download {
 
 /* notice */
 .notice {
-  background: #efefef;
+  background: #151515;
 }
 .notice .btn-title {
   background: #168df6;
   border: 1px solid #168df6;
 }
 .notice .notice-list p a {
-  color: #333;
+  color: #fff;
 }
 
 /* nav */
 .nav {
-  background: #efefef url(./images/nav-bg.png) 0 0/100% 56px repeat-x;
-  border-top: 1px solid #d1d1d1;
+  background: url(./images/nav-bg.png) 0 0/100% 56px repeat-x;
+  border-top: 1px solid #151515;
   position: relative;
 }
 .nav:after {
   content: '';
   position: absolute;
   height: 1px;
-  background: #d1d1d1;
+  background: #252525;
   bottom: 7px;
   left: 0;
   right: 0;
@@ -57,9 +57,6 @@ header.mui-bar-nav .btn-download {
 .nav .mui-scroll-wrapper .mui-scroll .mui-control-item {
   color: #fff;
   position: relative;
-}
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.mui-active {
-  color: #333;
 }
 .nav .mui-scroll-wrapper .mui-scroll .mui-control-item.mui-active:after {
   content: '';
@@ -72,51 +69,36 @@ header.mui-bar-nav .btn-download {
   height: 70px;
   background: url(images/nav-item-active-bg.png) center top/64px 61px no-repeat;
 }
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.mui-active.item-live {
-  background: url(images/icon-live-2.png) no-repeat center 3px/24px;
-}
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.mui-active.item-casino {
-  background: url(images/icon-casino-2.png) no-repeat center 3px/24px;
-}
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.mui-active.item-lottery {
-  background: url(images/icon-lottery-2.png) no-repeat center 3px/24px;
-}
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.mui-active.item-sports {
-  background: url(images/icon-sports-2.png) no-repeat center 3px/24px;
-}
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.mui-active.item-fish {
-  background: url(images/icon-fish-2.png) no-repeat center 3px/24px;
-}
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.item-live {
-  background: url(images/icon-live.png) no-repeat center 3px/24px;
-}
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.item-casino {
-  background: url(images/icon-casino.png) no-repeat center 3px/24px;
-}
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.item-lottery {
-  background: url(images/icon-lottery.png) no-repeat center 3px/24px;
-}
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.item-sports {
-  background: url(images/icon-sports.png) no-repeat center 3px/24px;
-}
-.nav .mui-scroll-wrapper .mui-scroll .mui-control-item.item-fish {
-  background: url(images/icon-fish.png) no-repeat center 3px/24px;
+
+/* mui-content */
+.mui-bar-nav ~ .mui-content {
+  background-color: #151515;
 }
 
 /* api-grid */
 .api-grid .mui-grid-view.mui-grid-9 {
   border-top: 0;
   border-left: 0;
-  background-color: #efefef;
+  background-color: #151515;
 }
 .api-grid .api-item {
   background: url(./images/api-bg.png) no-repeat center/56px;
 }
 .api-grid .api-item:after {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  width: 55px;
+  height: 28px;
+  top: 5px;
+  left: -9px;
+}
+.api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell {
+  background-color: #151515;
 }
 .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell a {
-  background: #fff;
+  background: #252525;
+}
+.api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell a .mui-media-body {
+  color: #fff;
 }
 .api-grid ul[data-list="lottery"] .lottery-nav {
   color: #333;
@@ -126,17 +108,23 @@ header.mui-bar-nav .btn-download {
   background: transparent;
 }
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item {
-  color: #333;
+  color: #fff;
   border-bottom: 1px solid transparent;
 }
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.mui-active {
-  border-bottom: 1px solid #168df6;
+  border-bottom: 1px solid #666;
+}
+.api-grid .lottery-content li a {
+  background: #252525 !important;
 }
 
 /* mui-bar-footer */
 .mui-bar-tab {
-  background: #c2c2c2;
-  border-top: 1px solid #b3b3b3;
+  background: #252525;
+  border-top: 1px solid #393939;
+}
+.mui-bar-tab .mui-icon.icon-home {
+  background: #252525;
 }
 .mui-bar-tab .mui-tab-label {
   color: #666;
