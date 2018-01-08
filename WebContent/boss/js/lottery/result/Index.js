@@ -1,5 +1,5 @@
 /**
- * 资金管理-手工存取
+ * 彩票管理-开奖结果
  */
 define(['common/BaseListPage'], function (BaseListPage) {
     return BaseListPage.extend({
@@ -304,19 +304,14 @@ define(['common/BaseListPage'], function (BaseListPage) {
             });
         },
         checkOpenTime:function (e,opt) {
-            // var _e = {
-            //     currentTarget:$(opt.currentTarget),
-            //     page:page
-            // };
-            // var option = {};
-            var openTime = $("#czOpenTime").val();
+            var id = opt.objId;
             var flag = false;
             window.top.topPage.ajax({
                 url: root + "/lotteryResult/checkOpenTime.html",
                 dataType: "json",
                 async:false,
                 data: {
-                    'result.openTime': openTime,
+                    'search.id': id,
                 },
                 success: function(data) {
                     if(data.code==1){
