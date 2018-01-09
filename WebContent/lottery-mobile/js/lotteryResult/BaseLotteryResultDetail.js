@@ -53,6 +53,17 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 success: function (data) {
                     if(data.length > 0){
                         _this.assemblyData(data);
+                        for(var i = 0;i < data.length; i++){
+                            var obj = data[i];
+                            var openCodeSum = 0;
+                            if(obj.ball != undefined && obj.ball.length > 0){
+                                for(var j = 0; j < obj.ball.length; j++){
+                                    openCodeSum += parseInt(obj.ball[j]);
+                                }
+                            }
+                            obj.openCodeSum = openCodeSum;
+                            data[i] = obj;
+                        }
                         var html = Template('template_myLotteryTemplate', {list: data});
                         if(isReload)
                             $("#container").html(html);

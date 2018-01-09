@@ -83,14 +83,18 @@ define(['site/common/BasePage', 'site/plugin/template', "site/lotteryResult/Zodi
                             var sx = [];
                             if (data[i].openCode) {
                                 var spball = data[i].openCode.split(",");
+                                var openCodeSum = 0;
                                 for (var j = 0; j < spball.length; j++) {
                                     ball.push(spball[j]);
                                     if (data[i].type == "lhc") {
                                         sx.push(t.zodiac.getSxName(spball[j]));
+                                    }if(data[i].type == "xy28"){
+                                        openCodeSum += parseInt(spball[j]);
                                     }
                                 }
                                 data[i].sx = sx;
                                 data[i].ball = ball;
+                                data[i].openCodeSum = openCodeSum;
                             }
                         }
                         var html = Template('template_myLotteryTemplate', {list: data});
