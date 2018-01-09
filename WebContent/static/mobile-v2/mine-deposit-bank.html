@@ -267,7 +267,7 @@
 </body>
 
 <script src="../../mobile-v2/js/mui/mui.js"></script>
-<script src="../../mobile-v2/js/zepto/zepto.min.js"></script>
+<script src="../../mobile-v2/js/jquery/jquery-2.1.1.js"></script>
 <script src="../../mobile-v2/js/common/main.js"></script>
 
 <div id="popover" class="mui-popover mui-popover-action mui-popover-bottom gb-popover">
@@ -308,4 +308,13 @@
 </div>
 
 
+<script>
+    $(function () {// 文字超过5个显示小字
+        $(".bank-selector li span").each(function (i,e) {
+            if($(this).html().length > 5){
+                $(this).parent().addClass('long');
+            }
+        });
+    });
+</script>
 </html>
