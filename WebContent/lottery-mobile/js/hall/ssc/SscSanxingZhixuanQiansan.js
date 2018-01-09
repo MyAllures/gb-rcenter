@@ -8,7 +8,7 @@ define(['site/hall/ssc/PlayWay-gfwf', 'site/plugin/template'], function (PlayWay
         },
 
         getSecondText:function () {
-            return $("div#qiansan a.mui-active span").text()==""?"直选复式":$("div#qiansan a.mui-active span").text();
+            return $("div#qiansan a.main.mui-active span").text()==""?"直选复式":$("div#qiansan a.main.mui-active span").text();
         },
 
         getSecondCode:function(){

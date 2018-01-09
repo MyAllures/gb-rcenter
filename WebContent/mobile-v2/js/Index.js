@@ -67,36 +67,12 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
         },
         /** 弹窗*/
         initDialog:function(){
-            var options = eval("(" + $('.mui-btn.confirm-btn').attr('data-rel') + ")");
-            var time;
-            if(options!=null && options.dataUpdateTime){
-                options.dataUpdateTime = Date.now();
-                time = Date.parse(options.dataUpdateTime);
-            }
-            var updateTime = localStorage.getItem("updateTime");
-            if(updateTime != null && updateTime != time){
-                //localStorage.setItem("dialog",true);
-            }
-
-            var dialog = localStorage.getItem("dialog");
-            if(dialog == "true"){
-                mui('#middlePopover').popover('toggle',document.getElementById("openPopover"));
-            }
+            mui('#middlePopover').popover('toggle',document.getElementById("openPopover"));
         },
         dialog:function(){
             var _this = this;
             mui("#middlePopover").on("tap",".mui-btn.confirm-btn",function(){
                 var options= eval("(" + $(this).attr('data-rel') + ")");
-
-                var check = $("input:checkbox:checked").val();
-                if(check == 'checkbox'){
-                    var updateTime;
-                    if(options.dataUpdateTime){
-                        updateTime = Date.parse(options.dataUpdateTime);
-                        localStorage.setItem('updateTime', updateTime);
-                    }
-                    localStorage.setItem("dialog",true);
-                }
 
                 var link = options.dataLink;
                 if(link){
@@ -104,6 +80,10 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
                 }else{
                     _this.initDialog();
                 }
+            });
+
+            mui("#middlePopover").on("tap",".pop-close",function(){
+                _this.initDialog();
             });
         },
         /** 试玩 */
