@@ -1693,3 +1693,14 @@ div.menu-popover {width: 120px;}
     float: left;
 }
 
+/*自动消失弹窗调整*/
+.mui-toast-container{min-width: 220px;}
+
+/*注单弹窗顶部消息固定*/
+.mui-popup-inner .order-msg{
+	font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #bebebe;
+    margin-bottom: 5px;
+    margin: 0 -15px;
+}
