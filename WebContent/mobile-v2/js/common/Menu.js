@@ -81,6 +81,11 @@ define(['common/MobileBasePage'], function (Mobile) {
                 var target = $(this).data('target');
                 var dos = $(this).data('os');
                 var url = $(this).data('skip');
+                var demo = $(this).data('demo');
+                if (demo) {
+                    window.top.page.openLayer('试玩账号无权限访问');
+                    return;
+                }
                 if (isLogin == 'true' && url.indexOf('/lottery/mainIndex') > 0) {
                     var postData = {};
                     postData.apiId = 22;
