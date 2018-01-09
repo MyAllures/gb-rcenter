@@ -2,7 +2,7 @@
 .layui-layer .layui-layer-setwin:hover { transform: rotateZ(90deg); }
 .layui-layer .layui-layer-setwin .layui-layer-close { width: 35px; height: 35px; margin: 0; font-size: 30px; background: #fff; border-radius: 50%; border: 3px solid #1e9fff; text-align: center; line-height: 24px; color: #1e9fff; }
 .layui-layer .layui-layer-setwin .layui-layer-close:hover { text-decoration: none; }
-.layui-layer .layui-layer-btn a { height: 33px; line-height: 31px; min-width: 90px; border-color: #1E9FFF; background-color: #1e9fff; text-align: center; }
+.layui-layer .layui-layer-btn a { height: 33px; line-height: 31px; min-width: 90px; border-color: #1E9FFF; background-color: #1e9fff; box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1); text-align: center; }
 .layui-layer .layui-layer-btn a.layui-layer-btn1 { border: 1px solid #dedede !important; background-color: #fff !important; color: #333 !important; }
 .layui-layer .layui-layer-title { text-align: center; padding: 0 20px; font-size: 16px; }
 .layui-layer.dialog-btn-round .layui-layer-btn a { border-radius: 16px; }
@@ -28,27 +28,32 @@
 .layui-layer.layui-layer-danger .layui-layer-setwin .layui-layer-close { border: 3px solid #f44236; color: #f44236; }
 .layui-layer.layui-layer-danger .layui-layer-btn a { border-color: #f44236; background-color: #f44236; }
 .layui-layer.index-modal .layui-layer-content { padding: 0; height: auto !important; overflow: visible; }
-.layui-layer.index-modal .layui-layer-content .checkbox-wrap { position: absolute; bottom: -42px; left: 15px; }
-.layui-layer.index-modal .layui-layer-content .checkbox-wrap input[type="checkbox"] { appearance: none; -moz-appearance: none; -webkit-appearance: none; width: 18px; position: relative; height: 18px; border: 2px solid #1e9fff; vertical-align: -4px; margin-right: 5px; border-radius: 2px; }
+.layui-layer.index-modal .layui-layer-content .checkbox-wrap { position: absolute; bottom: -38px; left: 10px; }
+.layui-layer.index-modal .layui-layer-content .checkbox-wrap input[type="checkbox"] { appearance: none; cursor: pointer; -moz-appearance: none; -webkit-appearance: none; width: 18px; position: relative; height: 18px; border: 2px solid #1e9fff; vertical-align: -4px; margin-right: 5px; border-radius: 2px; }
 .layui-layer.index-modal .layui-layer-content .checkbox-wrap input[type="checkbox"]:checked { background: #1e9fff; }
 .layui-layer.index-modal .layui-layer-content .checkbox-wrap input[type="checkbox"]:checked:after { content: ''; position: absolute; width: 12px; height: 6px; border: 2px solid #fff; transform: rotate(-45deg); border-top: 0; border-right: 0; top: 3px; left: 1px; }
-.layui-layer.index-modal .layui-layer-btn0 { border-color: #f4c22b !important; background-color: #f4c22b !important; }
+.layui-layer.index-modal .layui-layer-btn { padding: 10px; border-top: 1px solid #dfdfdf; background: #f8f8f8; }
+.layui-layer.index-modal .layui-layer-btn0 { border-color: #f4c22b !important; margin: 0; background-color: #f4c22b !important; }
 .layui-layer.index-modal .layui-layer-page .layui-layer-btn { padding: 11px 15px; }
 .layui-layer.index-modal .layui-layer-page .layui-layer-btn .layui-layer-btn0 { margin-top: 0; }
 .layui-layer.index-modal-transparent { background-color: transparent; box-shadow: none; }
 .layui-layer.index-modal-transparent .layui-layer-setwin .layui-layer-close { width: 45px; height: 45px; font-size: 44px; background: #0000; border: 3px solid #fff; line-height: 28px; color: #fff; }
-.layui-layer.index-modal-transparent .layui-layer-btn0 { width: 150px; height: 45px; line-height: 45px; font-size: 18px; border-color: #f4c22b !important; background-color: transparent !important; color: #f4c22b; border-radius: 24px; }
+.layui-layer.index-modal-transparent .layui-layer-btn { border-color: transparent; background: transparent; }
+.layui-layer.index-modal-transparent .layui-layer-btn0 { width: 150px; height: 45px; line-height: 41px; font-size: 18px; border-color: #f4c22b !important; background-color: #0000 !important; color: #f4c22b; border-radius: 24px; border-width: 2px; }
 .layui-layer.index-modal-transparent .layui-layer-btn0:hover { background-color: #f4c22b !important; color: #fff; }
 .layui-layer.download-dialog .layui-layer-title { height: 100px; line-height: 1; background: #1e9fff; color: #fff; padding: 0; border-bottom: 1px solid #d9d9d9; }
 .layui-layer.download-dialog .layui-layer-title .layui-this { background-color: transparent; border: 0; }
 .layui-layer.download-dialog .layui-layer-title .layui-this:before { content: ''; position: absolute; border-left: 9px solid #0000; border-right: 9px solid #0000; border-bottom: 10px solid #fff; bottom: -1px; left: 50%; margin-left: -9px; }
-.layui-layer.download-dialog .layui-layer-title > span { width: 50%; height: 99px !important; padding: 0; max-width: 50%; text-align: center; overflow: visible; }
+.layui-layer.download-dialog .layui-layer-title > span { height: 99px !important; padding: 0; max-width: 50%; text-align: center; overflow: visible; float: none; display: inline-block; }
 .layui-layer.download-dialog .layui-layer-title > span .tit-wrap { display: inline-block; height: 99px; padding-left: 78px; text-align: left; }
 .layui-layer.download-dialog .layui-layer-title > span .tit-wrap .tit { padding-top: 36px; font-size: 16px; margin-bottom: 5px; }
 .layui-layer.download-dialog .layui-layer-title > span .tit-wrap .sub-tit { color: #dfeeff; }
-.layui-layer.download-dialog .layui-layer-title > span:first-child .tit-wrap { background: url(images/layer-dialog/icon-android.png) no-repeat 0; }
-.layui-layer.download-dialog .layui-layer-title > span:first-child:after { content: ''; position: absolute; right: -1px; height: 70px; width: 1px; background: rgba(255, 255, 255, 0.5); top: 50%; margin-top: -35px; }
-.layui-layer.download-dialog .layui-layer-title > span:first-child + span .tit-wrap { background: url(images/layer-dialog/icon-windows.png) no-repeat 0; }
+.layui-layer.download-dialog .layui-layer-title > span:first-child { margin-right: 144px; margin-left: 60px; }
+.layui-layer.download-dialog .layui-layer-title > span:first-child .tit-wrap { background: url(images/layer-dialog/icon-android-normal.png) no-repeat 0; }
+.layui-layer.download-dialog .layui-layer-title > span:first-child.layui-this .tit-wrap { background: url(images/layer-dialog/icon-android-active.png) no-repeat 0; }
+.layui-layer.download-dialog .layui-layer-title > span:first-child:after { content: ''; position: absolute; right: -83px; height: 70px; width: 1px; background: rgba(255, 255, 255, 0.5); top: 50%; margin-top: -35px; }
+.layui-layer.download-dialog .layui-layer-title > span:first-child + span .tit-wrap { background: url(images/layer-dialog/icon-windows-normal.png) no-repeat 0; }
+.layui-layer.download-dialog .layui-layer-title > span:first-child + span.layui-this .tit-wrap { background: url(images/layer-dialog/icon-windows-active.png) no-repeat 0; }
 .layui-layer.download-dialog .layui-layer-tabmain { padding: 0; margin: 0; text-align: center; background: #fff; }
 .layui-layer.download-dialog .layui-layer-tabmain .qrcode { display: inline-block; width: 158px; height: 158px; background: url(images/layer-dialog/qrcode-bg.png); text-align: center; line-height: 158px; margin: 24px 0 20px; }
 .layui-layer.download-dialog .layui-layer-tabmain .qrcode img { width: 120px; height: 120px; }
@@ -81,18 +86,23 @@
 .layui-layer.download-dialog .layui-layer-tabli .api-list li .download-btn-group a.btn-pc:before { content: ''; background: url(images/layer-dialog/icon-pc-small.png); width: 16px; height: 16px; display: inline-block; vertical-align: top; margin: 7px 4px 0 0; }
 .layui-layer.download-dialog .layui-layer-tabli .api-list li .download-btn-group a.btn-pc:hover { box-shadow: 0 10px 40px -4px #2b91f3; }
 .layui-layer.download-dialog .layui-layer-content { overflow: visible !important; }
-.layui-layer.notice-dialog .layui-layer-btn { padding: 6px 15px 9px; background: #f8f8f8; border-top: 1px solid #dfdfdf; }
+.layui-layer.notice-dialog .layui-layer-btn { padding: 10px; background: #f8f8f8; border-top: 1px solid #dfdfdf; }
 .layui-layer.notice-dialog .layui-layer-content ul { margin: 0; padding: 0; list-style: none; border: 1px solid #ddd; }
 .layui-layer.notice-dialog .layui-layer-content ul li { border-bottom: 1px solid #ddd; padding: 15px; }
 .layui-layer.notice-dialog .layui-layer-content ul li:last-child { border-bottom: 0; }
-.layui-layer.notice-dialog.notice-dialog-one-btn .layui-layer-btn0 { border-color: #f4c22b !important; background-color: #f4c22b !important; }
+.layui-layer.notice-dialog.notice-dialog-one-btn .layui-layer-btn0 { border-color: #f4c22b !important; background-color: #f4c22b !important; margin: 0; }
 .layui-layer.notice-dialog.notice-dialog-two-btn .layui-layer-btn0 { float: left; }
-.layui-layer.notice-dialog.notice-dialog-two-btn .layui-layer-btn a { border: 1px solid #dedede !important; background-color: #fff !important; color: #ccc !important; cursor: not-allowed; }
+.layui-layer.notice-dialog.notice-dialog-two-btn .layui-layer-btn a { border: 1px solid #dedede !important; margin: 0; background-color: #fff !important; color: #ccc !important; cursor: not-allowed; }
 .layui-layer.notice-dialog.notice-dialog-two-btn .layui-layer-btn a.active { border-color: #1e9fff !important; color: #fff !important; background-color: #1e9fff !important; cursor: pointer; }
+.layui-layer.notice-dialog .content-wrap { position: relative; }
+.layui-layer.notice-dialog .content-wrap:after { content: ''; position: absolute; width: 8px; height: 100%; right: 0; top: 0; background: #f5f5f5; }
 .layui-layer.register-dialog .layui-layer-btn { padding: 6px 15px 9px; background: #f8f8f8; position: relative; border-top: 1px solid #dfdfdf; }
 .layui-layer.register-dialog .layui-layer-btn .layui-layer-btn0 { width: 180px; height: 45px; line-height: 45px; font-size: 18px; color: #fff; background: #00beaa; border-radius: 4px; border-color: #00beaa; }
 .layui-layer.register-dialog .layui-layer-btn .layui-layer-btn1 { background-color: #0000 !important; border: 0 !important; position: absolute; right: 0; top: 12px; }
+.layui-layer.register-dialog .register-content-wrap { position: relative; }
+.layui-layer.register-dialog .register-content-wrap .after { position: absolute; width: 8px; height: 100%; right: 0; top: 0; background: #f5f5f5; }
 .layui-layer.login-dialog { padding: 5px; -webkit-background-clip: border-box; }
+.layui-layer.login-dialog form { text-align: right; }
 .layui-layer.login-dialog .layui-layer-title { background: url(images/layer-dialog/login-header-bg.png) no-repeat; width: 390px; height: 140px; font-size: 18px; color: #fff; text-align: left; padding: 24px 34px; }
 .layui-layer.login-dialog .layui-layer-content { height: auto !important; padding: 30px 35px; }
 .layui-layer.login-dialog .layui-layer-content form .form-group { position: relative; margin-bottom: 30px; }

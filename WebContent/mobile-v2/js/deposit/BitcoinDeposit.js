@@ -7,7 +7,7 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
         init: function (formSelector) {
             this.formSelector = "#bitcoinForm";
             this._super(this.formSelector);
-            mui('.mui-scroll-wrapper').scroll({
+            mui('.main-coutent').scroll({
                 deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
             });
         },
@@ -15,25 +15,25 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
         onPageLoad: function () {
             this._super();
             var _this = this;
-            this.bindFormValidation();
-            this.copyAccount();
-
-            document.getElementById("saveImage").addEventListener("tap", function (e) {
-                var href = $(this).attr("url");
-                if (_this.os == "app_android") {
-                    window.gamebox.saveImage(href);
-                } else if (_this.os == 'app_ios') {
-                    gotoPay(href);
-                    _this.toast(window.top.message.deposit_auto['请截屏再扫描二维码']);
-                } else {
-                    if (/.(gif|jpg|jpeg|png)$/.test(href)) {
-                        var a = document.createElement('a');
-                        a.href = href;
-                        a.download = href;
-                        a.click();
+            _this.bindFormValidation();
+            if($("#ImageQrCodeUrl").val()) {
+                document.getElementById("saveImage").addEventListener("tap", function (e) {
+                    var href = $(this).attr("url");
+                    if (_this.os == "app_android") {
+                        window.gamebox.saveImage(href);
+                    } else if (_this.os == 'app_ios') {
+                        gotoPay(href);
+                        _this.toast(window.top.message.deposit_auto['请截屏再扫描二维码']);
+                    } else {
+                        if (/.(gif|jpg|jpeg|png)$/.test(href)) {
+                            var a = document.createElement('a');
+                            a.href = href;
+                            a.download = href;
+                            a.click();
+                        }
                     }
-                }
-            });
+                });
+            }
         },
 
         copyAccount: function () {
@@ -79,8 +79,8 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
          */
         submit: function (options) {
             var _this = this;
-            mui(".mui-scroll2").off("tap", "#submitAmount");
-            mui(".mui-scroll2").on("tap", "#submitAmount", function () {
+            mui(".mui-content").off("tap", "#submitAmount");
+            mui(".mui-content").on("tap", "#submitAmount", function () {
                 if (document.activeElement) {
                     document.activeElement.blur();
                 }
@@ -106,7 +106,7 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
                                     '<input name="activityId" type="radio" value="' + sale.id + '"></div></li>';
                             }
                             html = html + '</ul></div><div class="pro-btn"><a class="next-btn">'+window.top.message.deposit_auto['已存款']+'</a><a class="agin-btn">'+window.top.message.deposit_auto['重新填写']+'</a></div><div class="close"></div></div></div>';
-                            $(".mui-content").append(html);
+                            $(".main-coutent").append(html);
                             mui(".pro-btn").on("tap", ".next-btn", function () {
                                 _this.deposit(options);
                             });
@@ -146,7 +146,7 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
                             '<i class="ok-icon"></i>' +
                             '<span>' + window.top.message.deposit_auto["提交成功"] + '</span>' +
                             '</div>' +
-                            '<div class="ct">' +
+                            '<div class="ft">' +
                             '<p>' + window.top.message.deposit_auto["等待处理"] + '</p>' +
                             '</div>' +
                             '<div class="ft">' +
@@ -155,7 +155,7 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
                             '</div> ' +
                             '</div> ' +
                             '</div>';
-                        $(".mui-content").append(html);
+                        $(".main-coutent").append(html);
                         _this.depositAgain();
                         mui("body").on("tap", "._fund", function () {
                             _this.gotoUrl("/fund/record/index.html?search.transactionType=deposit");

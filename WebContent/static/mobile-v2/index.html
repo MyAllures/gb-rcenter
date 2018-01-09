@@ -603,11 +603,48 @@
 			<a href="#bottomPopover" class="mui-btn mui-btn-link mui-pull-right pop-close"><span class="mui-icon mui-icon-closeempty"></span></a>
 			</div>
 			<div class="cont-text">
+				<div class="popup-scroll">
                 <p>新版本为<span class="red">3.0.9</span></p>
                 <p>APP全新功能正式上线</p>
                 <p>好友邀请功能上线</p>
                 <p>直播送礼功能优化</p>
                 <p>注：为了更流畅体验，请您记得更新哦！</p>
+                <p>新版本为<span class="red">3.0.9</span></p>
+                <p>APP全新功能正式上线</p>
+                <p>好友邀请功能上线</p>
+                <p>直播送礼功能优化</p>
+                <p>注：为了更流畅体验，请您记得更新哦！</p>
+                <p>新版本为<span class="red">3.0.9</span></p>
+                <p>APP全新功能正式上线</p>
+                <p>好友邀请功能上线</p>
+                <p>直播送礼功能优化</p>
+                <p>注：为了更流畅体验，请您记得更新哦！</p>
+                <p>新版本为<span class="red">3.0.9</span></p>
+                <p>APP全新功能正式上线</p>
+                <p>好友邀请功能上线</p>
+                <p>直播送礼功能优化</p>
+                <p>注：为了更流畅体验，请您记得更新哦！</p>
+                <p>新版本为<span class="red">3.0.9</span></p>
+                <p>APP全新功能正式上线</p>
+                <p>好友邀请功能上线</p>
+                <p>直播送礼功能优化</p>
+                <p>注：为了更流畅体验，请您记得更新哦！</p>
+                <p>新版本为<span class="red">3.0.9</span></p>
+                <p>APP全新功能正式上线</p>
+                <p>好友邀请功能上线</p>
+                <p>直播送礼功能优化</p>
+                <p>注：为了更流畅体验，请您记得更新哦！</p>
+                <p>新版本为<span class="red">3.0.9</span></p>
+                <p>APP全新功能正式上线</p>
+                <p>好友邀请功能上线</p>
+                <p>直播送礼功能优化</p>
+                <p>注：为了更流畅体验，请您记得更新哦！</p>
+                <p>新版本为<span class="red">3.0.9</span></p>
+                <p>APP全新功能正式上线</p>
+                <p>好友邀请功能上线</p>
+                <p>直播送礼功能优化</p>
+                <p>注：为了更流畅体验，请您记得更新哦！</p>
+                </div>
             </div>
             <button type="button" class="mui-btn mui-btn-block confirm-btn">确定</button>
 		</div>
@@ -634,6 +671,16 @@
 	mui('.a').scroll({
 		 scrollY: false, //是否竖向滚动
 		 scrollX: true, //是否横向滚动
+		 startX: 0, //初始化时滚动至x
+		 startY: 0, //初始化时滚动至y
+		 indicators: false, //是否显示滚动条
+		 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+		 bounce: true //是否启用回弹
+	});
+	/*滚动菜单*/
+	mui('.cont-text').scroll({
+		 scrollY: true, //是否竖向滚动
+		 scrollX: false, //是否横向滚动
 		 startX: 0, //初始化时滚动至x
 		 startY: 0, //初始化时滚动至y
 		 indicators: false, //是否显示滚动条

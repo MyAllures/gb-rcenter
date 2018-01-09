@@ -324,8 +324,16 @@ define(['common/BaseEditPage','jstree','css!themesCss/jquery/plugins/jquery.jstr
                                 data:{
                                     'search.id':option.post
                                 },
+                                dataType:"json",
                                 success:function(data){
-                                    that.deleteCurrentli( event , option);
+                                    if(data.state){
+                                        that.deleteCurrentli( event , option);
+                                    }else{
+                                        var msg = data.msg;
+                                        var liObj = window.top.topPage.getFirstParentByTag(event, "li");
+                                        var e = {"currentTarget":liObj};
+                                        page.showPopover(e,{},"danger",msg,true);
+                                    }
                                 }
                             });
                         }
