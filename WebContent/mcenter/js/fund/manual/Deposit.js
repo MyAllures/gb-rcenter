@@ -201,9 +201,9 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
             $('[name=activityId]', this.formSelector).chosen({
                 no_results_text: window.top.message.fund_auto['没有找到']
             });
-            $("[name=activityId]", this.formSelector).chosen().change(function (item) {
+            /*$("[name=activityId]", this.formSelector).chosen().change(function (item) {
                 $("input[name=activityName]").val($(this).find("option:selected").text());
-            });
+            });*/
             $("[name=activityId]", this.formSelector).next(".chosen-container").attr("style", "width:100%;min-width:200px;max-width=300px;");
             $("[name=activityId]", this.formSelector).next(".chosen-container").children(".chosen-single").attr("style", "height:42px;line-height:40px;");
         },
