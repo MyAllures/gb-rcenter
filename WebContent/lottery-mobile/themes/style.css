@@ -1693,3 +1693,5 @@ div.menu-popover {width: 120px;}
     float: left;
 }
 
+/*自动消失弹窗调整*/
+.mui-toast-container{min-width: 220px;}
