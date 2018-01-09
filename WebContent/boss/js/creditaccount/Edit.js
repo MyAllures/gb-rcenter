@@ -236,8 +236,11 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         onLinePay: function (e, option) {
             $("input.domainClass").val(!e.key ? "" : e.key);
         },
-        saveCallbak: function () {
-            window.top.topPage.goToLastPage(true);
+        saveCallbak: function (event) {
+            if(event.returnValue==true)
+            {
+                window.top.topPage.goToLastPage(true);
+            }
         },
         revertDepositTotal: function (e, opt) {
             var id = $("#resultId").val();

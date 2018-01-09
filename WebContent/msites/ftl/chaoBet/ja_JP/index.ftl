@@ -15,18 +15,7 @@
     <div class="slide home-slide">
         <div class="slide-inner">
             <ul>
-            <#if data.carousels??>
-                <#list data.carousels as carousel>
-                    <#if carousel["type"]="carousel_type_index" >
-                        <li class="_vr_carousels_check"
-                            starttime="<#if carousel['start_time']??>${carousel['start_time']?long?string.computer}</#if>"
-                            endtime="<#if carousel['end_time']??>${carousel['end_time']?long?string.computer}</#if>"
-                            data-src="url(${imgPath(data.configInfo.domain,carousel.cover)})" style="background:center bottom no-repeat;">
-                            <#if carousel['link']?has_content><a target="_blank" href="${carousel['link']}"></a></#if>
-                        </li>
-                    </#if>
-                </#list>
-            </#if>
+            <#include "../../commonPage/commonContent/indexCarousels.ftl">
             </ul>
         </div>
         <div class="slide-indicators">
@@ -45,24 +34,18 @@
                     <div class="tit"><span>体育竞技</span></div>
                     <div class="shadow">
                         <div class="icon-wrap">
-                            <#if data.siteApiMap["4"]??>
-                                <a class="_vr_mt_check" data-href="sports.html?apiId=4" href="javascript:void(0)" data-api="4" data-apitype="3"
-                                   <#if data.siteApiMap["4"].maintainStartTime?has_content>startTime="${data.siteApiMap["4"].maintainStartTime?long?string.computer}"</#if>
-                                   <#if data.siteApiMap["4"].maintainEndTime?has_content>endTime="${data.siteApiMap["4"].maintainEndTime?long?string.computer}"</#if>>
-                                    <span class="icon-game">IM体育</span></a>
-                            </#if>
-                            <#if data.siteApiMap["12"]??>
-                                <a class="_vr_mt_check" data-href="sports.html?apiId=12" href="javascript:void(0)" data-api="12" data-apitype="3"
-                                   <#if data.siteApiMap["12"].maintainStartTime?has_content>startTime="${data.siteApiMap["12"].maintainStartTime?long?string.computer}"</#if>
-                                   <#if data.siteApiMap["12"].maintainEndTime?has_content>endTime="${data.siteApiMap["12"].maintainEndTime?long?string.computer}"</#if>>
-                                    <span class="icon-game">皇冠体育</span></a>
-                            </#if>
-                            <#if data.siteApiMap["19"]??>
-                                <a class="_vr_mt_check" data-href="sports.html?apiId=19" href="javascript:void(0)" data-api="19" data-apitype="3"
-                                   <#if data.siteApiMap["19"].maintainStartTime?has_content>startTime="${data.siteApiMap["19"].maintainStartTime?long?string.computer}"</#if>
-                                   <#if data.siteApiMap["19"].maintainEndTime?has_content>endTime="${data.siteApiMap["19"].maintainEndTime?long?string.computer}"</#if>>
-                                    <span class="icon-game">沙巴体育</span></a>
-                            </#if>
+                        <#if data.siteApiTypeRelationMap['3']?exists>
+                            <#list data.siteApiTypeRelationMap['3'] as relationMap>
+                                <#if relationMap.apiId?string.computer!="10">
+                                    <#if data.siteApiMap["${relationMap.apiId?string.computer}"]??>
+                                        <a class="_vr_mt_check" data-href="sports.html?apiId=${relationMap.apiId}" href="javascript:void(0)" data-api="${relationMap.apiId?string.computer}" data-apitype="3"
+                                           <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?has_content>startTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?long?string.computer}"</#if>
+                                           <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?has_content>endTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?long?string.computer}"</#if>>
+                                            <span class="icon-game">${data.siteApiTypeRelationI18n['3'+relationMap.apiId?string.computer].name}</span></a>
+                                    </#if>
+                                </#if>
+                            </#list>
+                        </#if>
                         </div>
                         <a href="sports.html" class="btn-tz">立即投注</a>
                     </div>
@@ -73,41 +56,43 @@
                     <div class="shadow">
                         <div class="icon-wrap">
                             <div class="d1">
-                                <#if data.siteApiMap["10"]??>
-                                    <a class="_vr_mt_check" data-href="casino.html?apiType=2&apiId=10&gameTag=hot_game" href="javascript:void(0)" data-api="10" data-apitype="2"
-                                       <#if data.siteApiMap["10"].maintainStartTime?has_content>startTime="${data.siteApiMap["10"].maintainStartTime?long?string.computer}"</#if>
-                                       <#if data.siteApiMap["10"].maintainEndTime?has_content>endTime="${data.siteApiMap["10"].maintainEndTime?long?string.computer}"</#if>>
-                                        <span class="icon-game">BBIN</span></a>
-                                </#if>
-                                <#if data.siteApiMap["3"]??>
-                                    <a class="_vr_mt_check" data-href="casino.html?apiType=2&apiId=3&gameTag=hot_game" href="javascript:void(0)" data-api="3" data-apitype="2"
-                                       <#if data.siteApiMap["3"].maintainStartTime?has_content>startTime="${data.siteApiMap["3"].maintainStartTime?long?string.computer}"</#if>
-                                       <#if data.siteApiMap["3"].maintainEndTime?has_content>endTime="${data.siteApiMap["3"].maintainEndTime?long?string.computer}"</#if>>
-                                        <span class="icon-game">MG电子</span></a>
-                                </#if>
-                                <#if data.siteApiMap["6"]??>
-                                    <a class="_vr_mt_check" data-href="casino.html?apiType=2&apiId=6&gameTag=hot_game" href="javascript:void(0)" data-api="6" data-apitype="2"
-                                       <#if data.siteApiMap["6"].maintainStartTime?has_content>startTime="${data.siteApiMap["6"].maintainStartTime?long?string.computer}"</#if>
-                                       <#if data.siteApiMap["6"].maintainEndTime?has_content>endTime="${data.siteApiMap["6"].maintainEndTime?long?string.computer}"</#if>>
-                                        <span class="icon-game">PT电子</span></a>
-                                </#if>
+                            <#if data.siteApiTypeRelationMap['2']?exists>
+                                <#list data.siteApiTypeRelationMap['2'] as relationMap>
+                                    <#if data.siteApiMap["${relationMap.apiId?string.computer}"]?? && relationMap_index &lt; 3>
+                                        <a class="_vr_mt_check" data-href="casino.html?apiType=2&apiId=${relationMap.apiId?string.computer}&gameTag=hot_game" href="javascript:void(0)" data-api="${relationMap.apiId?string.computer}" data-apitype="2"
+                                           <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?has_content>startTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?long?string.computer}"</#if>
+                                           <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?has_content>endTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?long?string.computer}"</#if>>
+                                            <span class="icon-game">${data.siteApiTypeRelationI18n['2'+relationMap.apiId?string.computer].name}</span></a>
+                                    </#if>
+                                </#list>
+                            </#if>
                             </div>
                             <div class="d2">
-                            <#if data.siteApiMap["9"]??>
-                                <a class="_vr_mt_check" data-href="casino.html?apiType=2&apiId=9&gameTag=hot_game" href="javascript:void(0)" data-api="9" data-apitype="2"
-                                   <#if data.siteApiMap["9"].maintainStartTime?has_content>startTime="${data.siteApiMap["9"].maintainStartTime?long?string.computer}"</#if>
-                                   <#if data.siteApiMap["9"].maintainEndTime?has_content>endTime="${data.siteApiMap["9"].maintainEndTime?long?string.computer}"</#if>>
-                                    <span class="icon-game">AG电子</span></a>
+                            <#if data.siteApiTypeRelationMap['2']?exists>
+                                <#list data.siteApiTypeRelationMap['2'] as relationMap>
+                                    <#if data.siteApiMap["${relationMap.apiId?string.computer}"]?? && relationMap_index &gt; 2 && relationMap_index &lt; 6>
+                                        <a class="_vr_mt_check" data-href="casino.html?apiType=2&apiId=${relationMap.apiId?string.computer}&gameTag=hot_game" href="javascript:void(0)" data-api="${relationMap.apiId?string.computer}" data-apitype="2"
+                                           <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?has_content>startTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?long?string.computer}"</#if>
+                                           <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?has_content>endTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?long?string.computer}"</#if>>
+                                            <span class="icon-game">${data.siteApiTypeRelationI18n['2'+relationMap.apiId?string.computer].name}</span></a>
+                                    </#if>
+                                </#list>
                             </#if>
-                            <#if data.siteApiMap["15"]??>
-                                <a class="_vr_mt_check" data-href="casino.html?apiType=2&apiId=15&gameTag=hot_game" href="javascript:void(0)" data-api="15" data-apitype="2"
-                                   <#if data.siteApiMap["15"].maintainStartTime?has_content>startTime="${data.siteApiMap["15"].maintainStartTime?long?string.computer}"</#if>
-                                   <#if data.siteApiMap["15"].maintainEndTime?has_content>endTime="${data.siteApiMap["15"].maintainEndTime?long?string.computer}"</#if>>
-                                    <span class="icon-game">HB电子</span></a>
+                            </div>
+                            <div class="d3">
+                            <#if data.siteApiTypeRelationMap['2']?exists>
+                                <#list data.siteApiTypeRelationMap['2'] as relationMap>
+                                    <#if data.siteApiMap["${relationMap.apiId?string.computer}"]?? && relationMap_index &gt; 5 && relationMap_index &lt; 9>
+                                        <a class="_vr_mt_check" data-href="casino.html?apiType=2&apiId=${relationMap.apiId?string.computer}&gameTag=hot_game" href="javascript:void(0)" data-api="${relationMap.apiId?string.computer}" data-apitype="2"
+                                           <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?has_content>startTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?long?string.computer}"</#if>
+                                           <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?has_content>endTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?long?string.computer}"</#if>>
+                                            <span class="icon-game">${data.siteApiTypeRelationI18n['2'+relationMap.apiId?string.computer].name}</span></a>
+                                    </#if>
+                                </#list>
                             </#if>
                             </div>
                         </div>
-                        <a href="casino.html" class="btn-tz">立即投注</a>
+                        <a href="casino.html?apiType=2&apiId=<#list data.siteApiTypeRelationMap['2'] as relationMap><#if relationMap_index==0>${relationMap.apiId?string}</#if></#list>&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>" class="btn-tz">立即投注</a>
                     </div>
                     <div class="lig lig2"></div>
                 </div>
@@ -116,17 +101,40 @@
                     <div class="shadow">
                         <div class="icon-wrap">
                             <div class="d1">
-                                <a href="live.html"><span class="icon-game">MG真人</span></a>
-                                <a href="live.html"><span class="icon-game">BBIN</span></a>
-                                <a href="live.html"><span class="icon-game">AG真人</span></a>
+                            <#if data.siteApiTypeRelationMap['1']?exists>
+                                <#list data.siteApiTypeRelationMap['1'] as relationMap>
+                                    <#if data.siteApiMap["${relationMap.apiId?string.computer}"]?? && relationMap_index &lt; 3>
+                                        <a class="_vr_mt_check" href="javascript:void(0)" data-api="${relationMap.apiId?string.computer}" data-apitype="1"
+                                           <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?has_content>startTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?long?string.computer}"</#if>
+                                           <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?has_content>endTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?long?string.computer}"</#if>>
+                                            <span class="icon-game">${data.siteApiTypeRelationI18n['1'+relationMap.apiId?string.computer].name}</span></a>
+                                    </#if>
+                                </#list>
+                            </#if>
                             </div>
                             <div class="d2">
-                                <a href="live.html"><span class="icon-game">OG真人</span></a>
-                                <a href="live.html"><span class="icon-game">GD真人</span></a>
-                                <a href="live.html"><span class="icon-game">SA真人</span></a>
+                            <#if data.siteApiTypeRelationMap['1']?exists>
+                                <#list data.siteApiTypeRelationMap['1'] as relationMap>
+                                    <#if data.siteApiMap["${relationMap.apiId?string.computer}"]?? && relationMap_index &gt; 2 && relationMap_index &lt; 6>
+                                        <a class="_vr_mt_check" href="javascript:void(0)" data-api="${relationMap.apiId?string.computer}" data-apitype="1"
+                                           <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?has_content>startTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?long?string.computer}"</#if>
+                                           <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?has_content>endTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?long?string.computer}"</#if>>
+                                            <span class="icon-game">${data.siteApiTypeRelationI18n['1'+relationMap.apiId?string.computer].name}</span></a>
+                                    </#if>
+                                </#list>
+                            </#if>
                             </div>
                             <div class="d3">
-                                <a href="live.html"><span class="icon-game">EBET真人</span></a>
+                            <#if data.siteApiTypeRelationMap['1']?exists>
+                                <#list data.siteApiTypeRelationMap['1'] as relationMap>
+                                    <#if data.siteApiMap["${relationMap.apiId?string.computer}"]?? && relationMap_index &gt; 5 && relationMap_index &lt; 9>
+                                        <a class="_vr_mt_check" href="javascript:void(0)" data-api="${relationMap.apiId?string.computer}" data-apitype="1"
+                                           <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?has_content>startTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?long?string.computer}"</#if>
+                                           <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?has_content>endTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?long?string.computer}"</#if>>
+                                            <span class="icon-game">${data.siteApiTypeRelationI18n['1'+relationMap.apiId?string.computer].name}</span></a>
+                                    </#if>
+                                </#list>
+                            </#if>
                             </div>
                         </div>
                         <a href="live.html" class="btn-tz">立即投注</a>
@@ -137,24 +145,16 @@
                     <div class="tit"><span>彩票游戏</span></div>
                     <div class="shadow">
                         <div class="icon-wrap">
-                            <#if data.siteApiMap["2"]??>
-                                <a href="javascript:" class="_vr_mt_check" data-api="2" data-apitype="4"
-                                   <#if data.siteApiMap["2"].maintainStartTime?has_content>startTime="${data.siteApiMap["2"].maintainStartTime?long?string.computer}"</#if>
-                                   <#if data.siteApiMap["2"].maintainEndTime?has_content>endTime="${data.siteApiMap["2"].maintainEndTime?long?string.computer}"</#if>>
-                                    <span class="icon-game">KG彩票</span></a>
-                            </#if>
-                            <#if data.siteApiMap["10"]??>
-                                <a href="javascript:" class="_vr_mt_check" data-api="10" data-apitype="4"
-                                   <#if data.siteApiMap["10"].maintainStartTime?has_content>startTime="${data.siteApiMap["10"].maintainStartTime?long?string.computer}"</#if>
-                                   <#if data.siteApiMap["10"].maintainEndTime?has_content>endTime="${data.siteApiMap["10"].maintainEndTime?long?string.computer}"</#if>>
-                                    <span class="icon-game">BBIN</span></a>
-                            </#if>
-                            <#if data.siteApiMap["11"]??>
-                                <a href="javascript:" class="_vr_mt_check" data-api="11" data-apitype="4"
-                                   <#if data.siteApiMap["11"].maintainStartTime?has_content>startTime="${data.siteApiMap["11"].maintainStartTime?long?string.computer}"</#if>
-                                   <#if data.siteApiMap["11"].maintainEndTime?has_content>endTime="${data.siteApiMap["11"].maintainEndTime?long?string.computer}"</#if>>
-                                    <span class="icon-game">传奇彩票</span></a>
-                            </#if>
+                        <#if data.siteApiTypeRelationMap['4']?exists>
+                            <#list data.siteApiTypeRelationMap['4'] as relationMap>
+                                <#if data.siteApiMap["${relationMap.apiId?string.computer}"]??>
+                                    <a class="_vr_mt_check" href="javascript:void(0)" data-api="${relationMap.apiId?string.computer}" data-apitype="4"
+                                       <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?has_content>startTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainStartTime?long?string.computer}"</#if>
+                                       <#if data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?has_content>endTime="${data.siteApiMap["${relationMap.apiId?string.computer}"].maintainEndTime?long?string.computer}"</#if>>
+                                        <span class="icon-game">${data.siteApiTypeRelationI18n['4'+relationMap.apiId?string.computer].name}</span></a>
+                                </#if>
+                            </#list>
+                        </#if>
                         </div>
                         <a href="lottery.html" class="btn-tz">立即投注</a>
                     </div>
@@ -210,7 +210,7 @@
     </div>
 </main>
 <#include "footer.ftl">
-<#include "../../commonPage/zh_CN/ads/indexAds.ftl">
+<#include "../../commonPage/commonFloat/indexAds.ftl">
 <#include "script.ftl">
 <script src="${data.configInfo.sitePath}/js/typed.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/countUp/countUp.js"></script>

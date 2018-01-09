@@ -1,4 +1,4 @@
-
+<#--旧版,待删除：如需引用，请引用<#include "../../commonPage/en_US/msiteCommonContent/commonApiTabs.ftl">-->
     <div class="carousel-inner">
         <ul class="row item api-tabs casino-tabs active">
         <#if data.siteApiTypeRelationMap??>

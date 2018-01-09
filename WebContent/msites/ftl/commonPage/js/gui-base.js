@@ -350,3 +350,24 @@ $(window).on("load",function(){$('[data-ride="carousel"]').each(function(){var $
         returnDefault: false
      });
  });
+
+
+ //判断是否存在flash插件
+ var userAgent = navigator.userAgent;
+ var isChrome = userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Safari") > -1 && userAgent.indexOf("OPR/") == -1 && userAgent.indexOf("Edge") == -1; //判断Chrome浏览器
+ var myFlash = (function(){
+     if(typeof window.ActiveXObject != "undefined"){
+         return new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
+     }else{
+         return navigator.plugins['Shockwave Flash'];
+     }
+ })();
+ if(myFlash){
+     $(".header-tip").hide();
+ }else{
+     $(".header-tip").show();
+     if(!isChrome){
+         $(".header-tip .other-chr").hide();
+         $(".header-tip .dow").width(150);
+     }
+ };

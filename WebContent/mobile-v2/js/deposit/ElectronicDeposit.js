@@ -17,23 +17,25 @@ define(['site/deposit/BaseCompanyDeposit'], function (BaseCompanyDeposit) {
             var _this = this;
             this.bindFormValidation();
             this.bindRechargeAmount();
-            
-            document.getElementById("saveImage").addEventListener("tap",function (e) {
-                var href = $(this).attr("url");
-                if(_this.os == "app_android") {
-                    window.gamebox.saveImage(href);
-                }else if(_this.os == 'app_ios'){
-                    gotoPay(href);
-                    _this.toast(window.top.message.deposit_auto['请截屏再扫描二维码']);
-                } else {
-                    if (/.(gif|jpg|jpeg|png)$/.test(href)) {
-                        var a = document.createElement('a');
-                        a.href = href;
-                        a.download = href;
-                        a.click();
+
+            if($("imgQrCodeUrl").val()) {
+                document.getElementById("saveImage").addEventListener("tap", function (e) {
+                    var href = $(this).attr("url");
+                    if (_this.os == "app_android") {
+                        window.gamebox.saveImage(href);
+                    } else if (_this.os == 'app_ios') {
+                        gotoPay(href);
+                        _this.toast(window.top.message.deposit_auto['请截屏再扫描二维码']);
+                    } else {
+                        if (/.(gif|jpg|jpeg|png)$/.test(href)) {
+                            var a = document.createElement('a');
+                            a.href = href;
+                            a.download = href;
+                            a.click();
+                        }
                     }
-                }
-            })
+                })
+            }
         },
 
         bindEvent: function () {

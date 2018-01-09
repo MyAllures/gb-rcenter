@@ -523,7 +523,7 @@ define(['site/plugin/template','range','css!themesCss/jquery.range.css','css!the
                     var fandianBili = parseFloat($(".slider-input").val()).toFixed(1); // 当前滚动条移动的比例
                     $("#fandian-bfb").data("value", fandianBili);
                     $("#fandian-bfb").html(fandianBili + "%");    // 渲染界面中百分比部分
-
+                    fandianBili = parseFloat(fandianBili);
                     // 渲染界面中赔率部分
                     if (plAndMaxFd instanceof Array) {  // 多赔率
                         var pl = _this.getArgNum((maxPlayPl - fandianBili * plAndMaxFd[0].baseNum/100));

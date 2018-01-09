@@ -1,3 +1,4 @@
+<#--旧版,待删除：如需引用，请引用<#include "../../commonPage/zh_CN/msiteCommonContent/sportsScript.ftl">-->
 <script>
     $(function(){
         var apiId = getlocationParam("apiId");
