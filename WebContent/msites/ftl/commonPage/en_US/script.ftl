@@ -1800,16 +1800,7 @@
         </#if>
         }
     }
-
-    $(function () {
-    <#--流量统计代码-->
-        var siteStatistics =$("#siteStatisticsDiv").attr("data");
-        setTimeout(function () {
-            $("body").append(siteStatistics);
-        },5000)
-    })
-
 </script>
 
-<div id='siteStatisticsDiv' style="display:none" data="<#if data.siteStatistics?has_content>${data.siteStatistics}</#if>">
-</div>
+<#--流量统计代码-->
+<#if data.siteStatistics?has_content>${data.siteStatistics}</#if>
