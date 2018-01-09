@@ -333,7 +333,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             }
             //设置总盈亏
             // if (betProfit.profitloss && betProfit.profitloss != 0) {
-                $('#profitloss').html((betProfit.profitloss-totalBetAmount).toFixed(2));
+                $('#profitloss').html((betProfit.profitloss-totalBetAmount+betProfit.betrebate).toFixed(2));
             // }else{
             //     $('#profitloss').html(0);
             // }
@@ -347,7 +347,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             //设置当前盈亏
             // if (betProfit.payout && betProfit.payout != 0){
             var payout1=betProfit.payout !=undefined?betProfit.payout:0;
-                $('#payout').html((payout1-betamount).toFixed(2));
+                $('#payout').html((payout1-betamount+betProfit.betrebate).toFixed(2));
             // } else{
             //     $('#payout').html(0);
             // }
