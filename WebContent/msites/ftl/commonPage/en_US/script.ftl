@@ -388,7 +388,7 @@
                 size: 'index-modal',
                 message: function(dialog) {
                     var $message = null;
-                    <#if contentType?has_content && contentType == "1">
+                    <#if imgSrc?has_content>
                         var _href = "${link}";
                         if(_href!=undefined && _href!=""){
                             if(_href.indexOf("http")>-1){
@@ -403,8 +403,8 @@
                             _href = "javascript:void(0)";
                         }
                         $message = $('<a href="'+_href+'"><img  src="${imgSrc}"/></a><div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>');
-                    <#elseif contentType?has_content && contentType =="2" && content?has_content>
-                        $message="${content}"+'<div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>';
+                    <#elseif content?has_content>
+                        $message='${content}'+'<div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>';
                     </#if>
                     return $message;
                 },
