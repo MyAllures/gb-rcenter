@@ -1687,6 +1687,7 @@
         }
         $("#hongbao").addClass('hide_hongbao');
         $("#hongbao_detail").fadeIn(1000);
+        $(".hongbao-msg-tips").hide();
         $.ajax({
             url:"/ntl/activity/countDrawTimes.html",
             type: "POST",
@@ -1741,6 +1742,7 @@
                     }
                     return;
                 }
+                $(".hongbao-msg-tips").show();
                 //setDivCss();
                 $("[name='gb.token']").val(data.token);
                 $("#activity_message_id").val(id);
@@ -1793,16 +1795,7 @@
         </#if>
         }
     }
-
-    $(function () {
-    <#--流量统计代码-->
-        var siteStatistics =$("#siteStatisticsDiv").attr("data");
-        setTimeout(function () {
-            $("body").append(siteStatistics);
-        },5000)
-    })
-
 </script>
 
-<div id='siteStatisticsDiv' style="display:none" data="<#if data.siteStatistics?has_content>${data.siteStatistics}</#if>">
-</div>
+<#--流量统计代码-->
+<#if data.siteStatistics?has_content>${data.siteStatistics}</#if>
