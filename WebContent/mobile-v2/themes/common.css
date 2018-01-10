@@ -5238,3 +5238,5 @@ header.blue{background:#1766bb;}
 .copy{font-size:12px;color:#999;float:right;}
 
 
+/* 存款页面修复 */
+.deposit-scroll-wrapper{padding-bottom: 50px !important;}
