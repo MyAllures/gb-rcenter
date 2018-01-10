@@ -143,7 +143,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $(e.currentTarget).unlock();
         },
         queryCallBack: function (e, option) {
-            $("#mainFrame").load(root + "/operation/announcementMessage/advisoryList.html");
+            $("#mainFrame").load(root + "/operation/announcementMessage/doAdvisoryList.html");
         }
     });
 });

@@ -385,7 +385,7 @@
                 size: 'index-modal',
                 message: function(dialog) {
                     var $message = null;
-                    <#if contentType?has_content && contentType == "1">
+                    <#if imgSrc?has_content>
                         var _href = "${link}";
                         if(_href!=undefined && _href!=""){
                             if(_href.indexOf("http")>-1){
@@ -399,9 +399,9 @@
                         }else{
                             _href = "javascript:void(0)";
                         }
-                        $message = $('<a href="'+_href+'"><img  src="${imgSrc}"/></a><div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>');
-                    <#elseif contentType?has_content && contentType =="2" && content?has_content>
-                        $message="${content}"+'<div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>';
+                        $message = $('<a href="'+_href+'"><img src="${imgSrc}"/></a><div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>');
+                    <#elseif content?has_content>
+                        $message='${content}'+'<div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>';
                     </#if>
                     return $message;
                 },
@@ -1505,11 +1505,12 @@
             loginObj.getLoginPopup();
         }else{
             var gameId = $(e).data("game-id");
+            var collect = $(e).data("game-collect");
             $.ajax({
-                url: "/gameCollect/updateGameCollect.html",
+                url: "/siteGame/updateGameCollect.html",
                 dataType:"JSON",
                 type: 'POST',
-                data:{"gameId":gameId},
+                data:{"result.gameId":gameId,"isCollect":collect},
                 success: function(data) {
                     alert(data.msg);
                 },
@@ -1528,10 +1529,10 @@
             var gameId = $(e).data("game-id");
             var score = $(e).data("score");
             $.ajax({
-                url: "/gameCollect/updateGameScore.html",
+                url: "/siteGame/updateGameScore.html",
                 dataType:"JSON",
                 type: 'POST',
-                data:{"gameId":gameId,"score":score},
+                data:{"result.gameId":gameId,"result.score":score},
                 success: function(data) {
                     alert(data.msg);
                 },
@@ -1739,6 +1740,7 @@
         }
         $("#hongbao").addClass('hide_hongbao');
         $("#hongbao_detail").fadeIn(1000);
+        $(".hongbao-msg-tips").hide();
         $.ajax({
             url:"/ntl/activity/countDrawTimes.html",
             type: "POST",
@@ -1794,6 +1796,7 @@
                     }
                     return;
                 }
+                $(".hongbao-msg-tips").show();
                 //setDivCss();
                 $("[name='gb.token']").val(data.token);
                 $("#activity_message_id").val(id);
@@ -1846,18 +1849,9 @@
         </#if>
         }
     }
-
-    $(function () {
-    <#--流量统计代码-->
-        var siteStatistics =$("#siteStatisticsDiv").attr("data");
-        setTimeout(function () {
-            $("body").append(siteStatistics);
-        },5000)
-    })
-
 </script>
 
-<div id='siteStatisticsDiv' style="display:none" data="<#if data.siteStatistics?has_content>${data.siteStatistics}</#if>">
-</div>
+<#--流量统计代码-->
+<#if data.siteStatistics?has_content>${data.siteStatistics}</#if>
 
 

@@ -418,6 +418,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 data: this.getCurrentFormData(e),
                 type: 'POST',
                 eventCall: option.eventCall,
+                eventTarget: e.currentTarget,
                 success: function (data) {
                     if (data.state) {
                         var transactionNo = data.transactionNo;

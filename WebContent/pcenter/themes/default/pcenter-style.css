@@ -206,6 +206,9 @@ a{color:#2772ee}
 .banner .right .nav-menu li a.nav-menu-ico.aip-type-4-ico:before{
 	background-position: 0 -121px;
 }
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-5-ico:before{
+	background-position: 0 -182px;
+}
 .banner .right .nav-menu li a.nav-menu-ico.aip-type-promo-ico:before{
 	background-position: 0 -152px;
 }
@@ -219,16 +222,19 @@ a{color:#2772ee}
 	content: "HOME";
 }
 .banner .right .nav-menu li a.nav-menu-ico.aip-type-1-ico span:after{
-	content: "CASINO";
+	content: "LIVES";
 }
 .banner .right .nav-menu li a.nav-menu-ico.aip-type-2-ico span:after{
-	content: "LIVES";
+	content: "CASINO";
 }
 .banner .right .nav-menu li a.nav-menu-ico.aip-type-3-ico span:after{
 	content: "SPORTS";
 }
 .banner .right .nav-menu li a.nav-menu-ico.aip-type-4-ico span:after{
 	content: "LOTTERY";
+}
+.banner .right .nav-menu li a.nav-menu-ico.aip-type-5-ico span:after{
+	content: "CHESS";
 }
 .banner .right .nav-menu li a.nav-menu-ico.aip-type-promo-ico span:after{
 	content: "PROMO";

@@ -241,17 +241,23 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                             if (!betProfit) _this.bet[_this.timeCode].betProfit = betProfit = {};
                             var currentAmount = betProfit.currentAmount ? betProfit.currentAmount : 0;
                             var payout = betProfit.payout ? betProfit.payout : 0;
+                            var rebateAmount = betProfit.rebateAmount ? betProfit.rebateAmount : 0;
                             if (isReload) {
                                 currentAmount = 0;
                                 payout = 0;
+                                rebateAmount = 0;
                             }
 
                             for (var i = 0; i < data.length; i++) {
                                 //计算投注记录额不计算已撤单已撤销
                                 if(data[i].status=="1" || data[i].status=="2"){
                                     currentAmount = currentAmount + data[i].betAmount;
-                                    if (data[i].payout)
+                                    if (data[i].payout){
                                         payout = payout + data[i].payout;
+                                    }
+                                    if (data[i].rebateAmount){
+                                        rebateAmount = rebateAmount + data[i].rebateAmount;
+                                    }
                                 }
 
                                 //时间格式转换
@@ -263,6 +269,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                             }
                             _this.bet[_this.timeCode].betProfit.currentAmount = currentAmount;
                             _this.bet[_this.timeCode].betProfit.payout = payout;
+                            _this.bet[_this.timeCode].betProfit.rebateAmount = rebateAmount;
                             _this.setBetProfit();
                             //填充数据
                             var html = Template('template_myBetTemplate', {list: data});
@@ -337,12 +344,13 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             // }else{
             //     $('#profitloss').html(0);
             // }
-            //设置当前投注额
+            //设置当前投注额和当前返点$('#rebates').html(betProfit.betrebate.toFixed(2))
             if (betProfit.currentAmount && betProfit.currentAmount != 0){
                 $('#currentAmount').html(betProfit.currentAmount.toFixed(2))
                 betamount = betProfit.currentAmount.toFixed(2)
             }else{
                 $('#currentAmount').html(0);
+
             }
             //设置当前盈亏
             // if (betProfit.payout && betProfit.payout != 0){
@@ -351,6 +359,14 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             // } else{
             //     $('#payout').html(0);
             // }
+               //当前返点
+            if (betProfit.rebateAmount && betProfit.rebateAmount != 0){
+                $('#rebates').html(betProfit.rebateAmount.toFixed(2))
+            }else{
+                $('#rebates').html(0);
+
+            }
+
         },
 
         /** 手动刷新 */
