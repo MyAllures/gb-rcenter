@@ -53,6 +53,10 @@
             $(".GameContainer").css("height", ($(window).height() - $("header").height()) + "px");
             $(".GameContainer").css("width", ($(window).height() - $("header").height()) * widthSet + "px");
         });
+        var gameId = getlocationParam("gameId");
+        var gameUrl = sessionStorage.getItem(gameId)
+        var gameId = getlocationParam(gameUrl);
+
     });
     $(function(){
         var dosome = getlocationParam("do")
