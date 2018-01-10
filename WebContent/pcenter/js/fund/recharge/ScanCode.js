@@ -24,6 +24,16 @@ define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
             window.top.onlineTransactionNo = null;
         },
         /**
+         * 显示/隐藏随机额度提示信息
+         */
+        showRandomAmountMsg: function () {
+            var flag = $(this.formSelector).find("input[name='result.rechargeType']:checked").attr("randomAmount");
+            $('[name="randomAmountMsg"]').addClass('tiphide');
+            if (flag == "true") {
+                $('[name="randomAmountMsg"]').removeClass('tiphide');
+            }
+        },
+        /**
          * 当前对象事件初始化函数
          */
         bindEvent: function () {

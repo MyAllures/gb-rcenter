@@ -117,7 +117,7 @@
                     </div>
                 </div>
             </header>
-            <div class="mui-content mui-scroll-wrapper">
+            <div class="mui-content mui-scroll-wrapper deposit-scroll-wrapper">
                 <div class="mui-scroll">
                     <div class="mui-row">
                         <div class="mui-input-group mine-form">  
@@ -271,7 +271,11 @@
 </div>
 
 <script>
-    $(function () {// 文字超过5个显示小字
+    $(function () {
+        mui('.mui-scroll-wrapper').scroll({
+            deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+        });
+        // 文字超过5个显示小字
         $(".bank-selector li span").each(function (i,e) {
             if($(this).html().length > 5){
                 $(this).parent().addClass('long');

@@ -39,33 +39,57 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
                         var siteId = $("#siteId").val();
                         var paramCode=$(_target).attr("paramCode");
                         var msg=state?"确认开启":"确认关闭吗？";
+                        var paramValue= $(_target).attr("paramValue");
+                        var operate= $(_target).attr("operate");
+                        var active=$(_target).attr("active");
+                        var sysUrl=null;
+                        if(active!=null&&active!=''){
+                            sysUrl='updateSysParamActive.html';
+                        }else if(paramValue!=null&&paramValue!=''){
+                            sysUrl='updateParamValue.html';
+                        }
                         if (!$(_target).attr("isChanged")) {
                             var okLabel = window.top.message.setting['common.ok'];
                             var cancelLabel = window.top.message.setting['common.cancel'];
                             window.top.topPage.showConfirmDynamic(window.top.message.common['msg'], msg, okLabel, cancelLabel, function (confirm) {
-                                window.top.topPage.ajax({
-                                    url: root + '/site/detail/updateSysParamActive.html',
-                                    dataType: "json",
-                                    data: {"result.active": state, "result.siteId": siteId, "result.id": id,"result.paramCode":paramCode,"result.module":module,"result.paramType":paramType},
-                                    success: function (data) {
-                                        if (data.state) {
-                                            page.showPopover(e, {
-                                                "callback": function () {
-                                                    _this.query(e);
-                                                }
-                                            }, "success",data.msg, true);
-                                        } else {
-                                            page.showPopover(e, {
-                                                "callback": function () {
-                                                    _this.query(e);
-                                                }
-                                            }, "danger",data.msg, true);
+                                if (confirm && !$(_target).attr("isChanged")) {
+                                    window.top.topPage.ajax({
+                                        url: root + '/site/detail/' + sysUrl,
+                                        dataType: "json",
+                                        data: {
+                                            "result.active": state,
+                                            "result.paramValue": state,
+                                            "result.siteId": siteId,
+                                            "result.id": id,
+                                            "result.paramCode": paramCode,
+                                            "result.module": module,
+                                            "result.paramType": paramType,
+                                            "result.operate": operate
+                                        },
+                                        success: function (data) {
+                                            if (data.state) {
+                                                page.showPopover(e, {
+                                                    "callback": function () {
+                                                        _this.query(e);
+                                                    }
+                                                }, "success", data.msg, true);
+                                            } else {
+                                                page.showPopover(e, {
+                                                    "callback": function () {
+                                                        _this.query(e);
+                                                    }
+                                                }, "danger", data.msg, true);
+                                            }
                                         }
-                                    }
-                                });
+                                    });
+                                }
                                 return true;
                             })
+                        }else if($(_target).attr("isChanged")){
+                            $(_target).removeAttr("isChanged");
+                            return true;
                         }
+                        return false;
                     }
                 });
         },
