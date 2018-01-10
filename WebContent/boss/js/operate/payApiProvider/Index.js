@@ -41,7 +41,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         doCacheBtn : function ($this) {
             $this.attr('disabled', true);
             var text = $this.text();
-            $this.text(text + '...');
+            $this.text(text);
             $.ajax({
                 url: root + "/operate/payApiProvider/refreshI18nVersion.html",
                 success: function (data) {
