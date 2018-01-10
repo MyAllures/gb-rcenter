@@ -484,7 +484,7 @@ font-style: normal;
 /*搜索按钮样式*/
 .template-menu{margin-top: 10px;border-top: 1px dotted #b4b7bb;padding-top: 10px;}
 /*.template-menu .show-demand-b:focus{background:none; border-color: #b4b7bb;color: #404649;}*/
-.mediate-search-btn{ position: absolute;width:16%;left: 38%;z-index: 888;}
+.mediate-search-btn{ position: absolute;width:16%;min-width:150px;left: 38%;z-index: 888;}
 
 /*查询列表重置按钮样式*/
 .reset-condition-button {
