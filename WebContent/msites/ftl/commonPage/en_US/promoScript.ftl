@@ -1,3 +1,4 @@
+<#--旧版,待删除：如需引用，请引用<#include "../../commonPage/en_US/msiteCommonScript/promoScript.ftl">-->
 <script src="${data.configInfo.ftlRootPath}commonPage/js/jquery/jquery.countdown.js"></script>
 <script>
     $(function () {

@@ -1,13 +1,13 @@
 <#--API名称-->
-<#assign apiMap={"1":"ds","2":"kg","3":"mg","4":"im","5":"gd","6":"pt","7":"og","8":"dw","9":"ag","10":"bb","11":"chq","12":"hg","14":"nyx","15":"hb","16":"ebet","17":"sa","19":"sb","20":"bsg","21":"dwt","22":"lt","23":"opus-s","24":"opus-l","25":"sg","26":"png","27":"dt","28":"gg","31":"gns","32":"prg"}>
+<#assign apiMap={"1":"ds","2":"kg","3":"mg","4":"im","5":"gd","6":"pt","7":"og","8":"dw","9":"ag","10":"bb","11":"chq","12":"hg","14":"nyx","15":"hb","16":"ebet","17":"sa","19":"sb","20":"bsg","21":"dwt","22":"lt","23":"opus-s","24":"opus-l","25":"sg","26":"png","27":"dt","28":"gg","30":"sc","31":"gns","32":"prg","33":"shenbo","34":"ky"}>
 <#assign apiMapKeys = apiMap?keys>
 <#assign casinoDesc ={"3":"MG GAMING","6":"PT GAMING","9":"AG GAMING","10":"BB GAMING","15":"HB GAMING","20":"BSG GAMING","25":"SG GAMING","26":"PNG GAMING"}>
 <#assign casinoDescKeys = casinoDesc?keys>
 <#--API Type名称-->
-<#assign apiRelByType = {"1":"live","2":"casino","3":"sports","4":"lottery"}>
+<#assign apiRelByType = {"1":"live","2":"casino","3":"sports","4":"lottery","5":"chess"}>
 <#assign apiRelByTypeKeys=apiRelByType?keys>
 <#--API Type 链接地址-->
-<#assign apiTypeHref={"1":"live.html","2":"casino.html","3":"sports.html","4":"lottery.html"}>
+<#assign apiTypeHref={"1":"live.html","2":"casino.html","3":"sports.html","4":"lottery.html","5":"chess.html"}>
 <#assign apiTypeHrefKeys=apiTypeHref?keys>
 <#--用于拼写class-->
 <#assign apiPrefix={"1":"i","2":"c","3":"s","4":"l"}>
@@ -39,3 +39,17 @@
     <#if apiTypeId=='3'><#assign hasSports=true></#if>
     <#if apiTypeId=='4'><#assign hasLottery=true></#if>
 </#list>
+
+<div class="header-tip-box" style="display:none;">
+    <div class="alert header-tip alter">
+        <div class="container">
+                <span class="is-google">
+                系统检测到您的浏览器Adobe Flash Player插件 <span class="other-chr"> 未运行或</span>未安装，建议您
+                <#--<img src="${data.configInfo.sitePath}/images/tit-point.png">-->
+                <a href="https://get.adobe.com/cn/flashplayer/" class="dow" target="_blank" style="width:190px;"><span class="other-chr"> 开启或</span>下载安装Adobe Flash Player</a>
+                插件
+                <button type="button" class="close"  data-dismiss="alert" ><span>&times;</span></button>
+                </span>
+        </div>
+    </div>
+</div>

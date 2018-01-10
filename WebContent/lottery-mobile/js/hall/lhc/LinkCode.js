@@ -131,7 +131,7 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
                 quantity: 0
             };
             var count = chooseArr.length;
-            if(count>1200){
+            if(count>500){
                 mui.toast("注数过大");
                 return;
             }
@@ -156,17 +156,15 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
 
         //点击投注选项
         bindTdInput: function (obj) {
-            //限制三全中,四全中,三中二注数
-            var minNum = parseInt($("a.main.mui-active").attr("min-num"))+8;
-            var name = $("a.main.mui-active").attr("data-code");
+            //限制注数
+            var minNum = parseInt($("a.main.mui-active").attr("min-num"));
+            minNum = minNum !=2?minNum==4?minNum+8:minNum+12:minNum+30;
             var flag = $(obj).is('.not-selected');
             if (!flag) {
                 $(obj).toggleClass('mui-active');
-                if(name=="三全中" || name=="四全中" || name=="三中二"){
-                    if($("td.mui-active").length>minNum){
-                        mui.toast("注数过大");
-                        $(obj).removeClass('mui-active');
-                    }
+                if($("td.mui-active").length>minNum){
+                    mui.toast("注数过大");
+                    $(obj).removeClass('mui-active');
                 }
             }
             var arrLength = $("div.bet-table-list .mui-active").length;

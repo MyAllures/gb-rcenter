@@ -1,3 +1,4 @@
+<#--旧版,待删除：如需引用，请引用<#include "../../commonPage/zh_TW/msiteCommonContent/lottery.ftl">-->
 <!-- 新界面开始-->
 <#assign activityDescription></#assign>
 <#if data.activityMessage??>

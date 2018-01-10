@@ -117,7 +117,7 @@
     </section>
 </main>
 <#include "footer.ftl">
-<#include "../../commonPage/en_US/ads/gameAds.ftl">
+<#include "../../commonPage/commonFloat/gameAds.ftl">
 <#include "script.ftl">
 <script>
     $(function () {
