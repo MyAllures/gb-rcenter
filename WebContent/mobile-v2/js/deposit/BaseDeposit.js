@@ -57,9 +57,6 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
                     $btn.removeAttr("disabled");
                 }
                 id.addEventListener("input",function () {
-                    /*if (/^[0-9]*$/.test($(this).val())) {*/
-                    /*^\d+(\.\d+)?$*/
-
                     if ($(this).val()) {
                         $btn.removeAttr("disabled");
                     }
@@ -80,15 +77,23 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
                     }
                     /*if (/^[0-9]*$/.test($(this).val())) {*/
                     /*^\d+(\.\d+)?$*/
-                    if (/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/.test($(this).val())) {
-                        $btn.removeAttr("disabled");
-                    }
-                    if (!$(this).val()) {
-                        $btn.attr("disabled", "disabled");
+                    if($("input[name='result.randomCash']").val()){
+                        if(/^[0-9]*$/.test($(this).val())){
+                            $btn.removeAttr("disabled");
+                        }else{
+                            $btn.attr("disabled", "disabled");
+                        }
+                    }else {
+
+                        if (/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/.test($(this).val())) {
+                            $btn.removeAttr("disabled");
+                        }
+                        if (!$(this).val()) {
+                            $btn.attr("disabled", "disabled");
+                        }
                     }
                 });
             }
-
         },
 
         /**
