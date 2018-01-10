@@ -18,6 +18,16 @@
         <a href="javascript:void(0)" class="btn btn-search pull-left _vr_buttonSubmit">搜索</a>
     </div>
 </div>
+<div class="pull-right">
+    <div class="all_g_txt pull-left" style="color: #f00">总共<span>${data.gameCount}</span>个电子游戏&nbsp;&nbsp;</div>
+    <ul class="sort2 list-inline pull-left ">
+        <li class="active"><a href="javascript:" style="color: #ff0" data-href="casino_partial.html?apiType=2&apiId=${data.gameSearch.apiId}&maxTag=maxView" onclick="maxGameTag(this);">最受欢迎</a></li>
+        <li><a href="javascript:" style="color: #ff0" data-href="casino_partial.html?apiType=2&apiId=${data.gameSearch.apiId}&maxTag=maxLine" onclick="maxGameTag(this);">最多游戏线</a></li>
+        <li><a href="javascript:" style="color: #ff0" data-href="casino_partial.html?apiType=2&apiId=${data.gameSearch.apiId}&maxTag=maxCollect" onclick="maxGameTag(this);">最多收藏</a></li>
+        <li><a href="javascript:" style="color: #ff0" data-href="casino_partial.html?apiType=2&apiId=${data.gameSearch.apiId}&maxTag=maxScore" onclick="maxGameTag(this);">最高评分</a></li>
+        <li><a href="javascript:" style="color: #ff0" data-href="casino_partial.html?apiType=2&apiId=${data.gameSearch.apiId}&maxTag=maxRtp" onclick="maxGameTag(this);">最高赔付</a></li>
+    </ul>
+</div>
 <!-- game-list -->
 <div class="game-list">
     <div class="row row-match _vr_casino_game _vr_mt_casino_${data.gameSearch.apiId?default('')}">
@@ -26,6 +36,11 @@
             <div class="col-5-1">
                 <figure class="game-item" data_id="001">
                     <a class="_vr_mt_check item" data-api="${game.apiId?string.computer}" data-game-name="${data.siteGameI18ns[game.gameId?string.computer].name}" data-game-code="<#if data.gameMapById[game.gameId?string.computer]?has_content>${data.gameMapById[game.gameId?string.computer].code}</#if>" href="javascript:void(0)"
+                       data-game-id="${game.gameId?string.computer}"
+                       data-game-line="${game.gameLine?string.computer}"
+                       data-game-tags="<#if game.tagsList?exists><#list game.tagsList as tags>${tags}</#list></#if>"
+                       data-game-score="${game.gameScore?string.computer}"
+
                        startTime="<#if data.gameMapById[game.gameId?string.computer].maintainStartTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainStartTime?long?string.computer}</#if>"
                        endTime="<#if data.gameMapById[game.gameId?string.computer].maintainEndTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainEndTime?long?string.computer}</#if>">
                         <div class="game-img"><img src="<#if data.siteGameI18ns[game.gameId?string.computer]?has_content>${imgPath(data.configInfo.domain,data.siteGameI18ns[game.gameId?string.computer].cover)}</#if>"/></div>
@@ -41,9 +56,22 @@
                                startTime="<#if data.gameMapById[game.gameId?string.computer].maintainStartTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainStartTime?long?string.computer}</#if>"
                                endTime="<#if data.gameMapById[game.gameId?string.computer].maintainEndTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainEndTime?long?string.computer}</#if>">试玩</a>
                         </#if>
-                        <a href="javascript:" data-game-id="${game.gameId?string.computer}" onclick="gameCollect(this)">收藏</a>
+                        <a href="javascript:" data-game-id="${game.gameId?string.computer}" data-game-collect="true" onclick="gameCollect(this)">收藏</a>
                         <a href="javascript:" data-game-id="${game.gameId?string.computer}" data-score="5" onclick="gameScore(this)">评分</a>
+                        <a href="javascript:" style="color: #00e3e6">游戏线：${game.gameLine}</a>
+                        <a href="javascript:" style="color: #f8ea00">收藏量：${game.gameCollectNumber}</a>
+                        <a href="javascript:" style="color: #ff0000">评分数：${game.gameScore}</a>
+                        <#if game.tagsList?exists>
+                            <#list game.tagsList as tags>
+                                <a href="javascript:" style="color: #0033ff">${tags}</a>
+                            </#list>
+                        </#if>
                         <a class="_vr_mt_check _vr_mt_slogan btn-play" data-api="${game.apiId?string.computer}" data-game-name="${data.siteGameI18ns[game.gameId?string.computer].name}" data-game-code="<#if data.gameMapById[game.gameId?string.computer]?has_content>${data.gameMapById[game.gameId?string.computer].code}</#if>" href="javascript:void(0)"
+                           data-game-id="${game.gameId?string.computer}"
+                           data-game-line="${game.gameLine?string.computer}"
+                           data-game-tags="<#if game.tagsList?exists><#list game.tagsList as tags>${tags}</#list></#if>"
+                           data-game-score="${game.gameScore?string.computer}"
+
                            startTime="<#if data.gameMapById[game.gameId?string.computer].maintainStartTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainStartTime?long?string.computer}</#if>"
                            endTime="<#if data.gameMapById[game.gameId?string.computer].maintainEndTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainEndTime?long?string.computer}</#if>">开始游戏</a>
                     </figcaption>

@@ -401,7 +401,7 @@
                         }
                         $message = $('<a href="'+_href+'"><img src="${imgSrc}"/></a><div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>');
                     <#elseif content?has_content>
-                        $message='${content}'+'<div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>';
+                        $message='<div style="padding:10px;width:500px;">${content}</div>'+'<div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>';
                     </#if>
                     return $message;
                 },
@@ -891,6 +891,7 @@
         if(apiId == "22" && $(thiz).attr("data-lottery-code")!=undefined){
             gameCode = $(thiz).attr("data-lottery-code");
         }
+
         //未登录的时候
         if(sessionStorage.is_login!="true"){
             if (apiId == "22") {
@@ -917,8 +918,20 @@
             return;
         }
         if (apiId) {
-            var newWindow = window.open();
-            newWindow.location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
+            if(apiTypeId=="2"){
+                var gameId = $(thiz).data("game-id");
+                var gameLine = $(thiz).data("game-line");
+                var gameTags = $(thiz).data("game-tags");
+                var gameScore = $(thiz).data("game-score");
+
+                sessionStorage.setItem(gameId,"gameLine="+gameLine+"&gameTags="+gameTags+"&gameScore="+gameScore);
+
+                var newWindow = window.open();
+                newWindow.location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode+"&gameId="+gameId;
+            }else{
+                var newWindow = window.open();
+                newWindow.location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
+            }
         }
     }
 
@@ -991,7 +1004,7 @@
         }*/
     }
 
-    function apiLoginReal(apiId, gameCode, apiTypeId) {
+    function apiLoginReal(apiId, gameCode, apiTypeId,gameId) {
         $.ajax({
             type: "POST",
             url: "/api/login.html?t=" + new Date().getTime().toString(36),
@@ -1009,11 +1022,11 @@
                         /*https协议的请求*/
                         var protocol = window.location.protocol;
                         if(protocol.indexOf("https:")>-1){
-                            if (apiTypeId == "3" && apiId=="15") {
+                            if (apiTypeId == "2" && apiId=="15") {
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId+"&gameId="+gameId;
                             }else if(apiTypeId == "4" && apiId=="22"){
                                 if (window.localStorage) {
                                     localStorage.re_url_lottery = result.defaultLink;
@@ -1035,7 +1048,7 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId+"&gameId="+gameId;
                             }else if(apiTypeId == "3"){
                                 if (window.localStorage) {
                                     localStorage.re_url_sport = result.defaultLink;
@@ -1230,7 +1243,6 @@
             var statusTimer = setInterval(function(){
                 if(sessionStorage.is_login=="true"){
                     clearInterval(statusTimer);
-//                    loginAnnouncement();
                     callback && callback();
                 }
             },1000);
@@ -1543,6 +1555,19 @@
         }
     }
 
+    //最受欢迎
+    function maxGameTag(e) {
+        var _href = $(e).data("href");
+        $.ajax({
+            url:_href,
+            dataType:"html",
+            success:function(data){
+                $("._vr_itemCasino").html(data);
+                maintainCheck();
+            }
+        });
+    }
+
     //ajax请求后访问
     $(document).ajaxComplete(function (event, xhr, settings) {
         var _this = this;
@@ -1853,5 +1878,3 @@
 
 <#--流量统计代码-->
 <#if data.siteStatistics?has_content>${data.siteStatistics}</#if>
-
-

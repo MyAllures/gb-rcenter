@@ -35,6 +35,8 @@
     var apiId = getlocationParam("apiId");
     var gameCode = getlocationParam("gameCode");
     var apiTypeId = getlocationParam("apiTypeId");
+    var gameId = getlocationParam("gameId");
+
     var apiName = getApiName(apiId);
     $(".apiName").text(apiName);
 
@@ -286,7 +288,7 @@
         if(dialog!=null){
             dialog.close();
         } else{
-            apiLoginReal(apiId,gameCode,apiTypeId);
+            apiLoginReal(apiId,gameCode,apiTypeId,gameId);
         }
     }
     function setButtonStatus() {
