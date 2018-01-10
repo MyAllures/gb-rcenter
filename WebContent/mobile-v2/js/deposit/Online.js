@@ -179,12 +179,17 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                 var payerBank = $("input[name='result.payerBank']").val();
                 var rechargeType = $("input[name='result.rechargeType']").val();
                 var account = $("input[name='account']").val();
+                var randomCash = $("input[name='result.randomCash']").val();
+                if (!randomCash) {
+                    randomCash = 0;
+                }
                 mui.ajax(root + '/wallet/deposit/online/submit.html', {
                     data: {
                         "result.rechargeAmount": rechargeAmount,
                         "result.payerBank": payerBank,
                         "result.rechargeType": rechargeType,
-                        "account": account
+                        "account": account,
+                        "result.randomCash": randomCash
                     },
                     type: 'post',
                     async: false,
