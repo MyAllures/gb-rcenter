@@ -19,6 +19,11 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 }
             });
 
+            $(this.formSelector).on("click", "button[name=clearRank]", function (e) {
+                $(_this.formSelector).find("input[name=rank]").prop("checked", false);
+                $(_this.formSelector).find("input[name=allRank]").prop("checked", false);
+            });
+
             $(this.formSelector).on("click", "input[name=rank]", function (e) {
                 var isChecked = $(this).is(':checked');
                 if (isChecked == false) {
