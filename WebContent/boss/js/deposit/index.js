@@ -27,6 +27,13 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
         validateForm: function (e) {
             var $form = $(window.top.topPage.getCurrentForm(e));
             return !$form.valid || $form.valid();
+        },
+        /**
+         *
+         * @param event         事件对象
+         */
+        queryCallBack : function() {
+            $("#mainFrame").load(root + "/rechargeMonitorParam/list.html");
         }
     });
 });
