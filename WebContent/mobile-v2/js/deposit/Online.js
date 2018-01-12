@@ -169,10 +169,26 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                 if (document.activeElement) {
                     document.activeElement.blur();
                 }
-
-                var $form = $(page.formSelector);
-                if (!$form.valid()) {
+                if($("#submitAmount").attr("category") == "isNull"){
+                    _this.toast(window.top.message.deposit_auto['请输入金额']);
                     return false;
+                }else if($("#submitAmount").attr("category") == "error"){
+                    _this.toast(window.top.message.deposit_auto['金额格式不对']);
+                    return false;
+                }else if($("#submitAmount").attr("category") == "notThrough") {
+                    _this.toast(window.top.message.deposit_auto['请输入整数金额']);
+                    return false;
+                }else if($("#submitAmount").attr("category") =="excess"){
+                    var min = $("#onlinePayMin").val();
+                    var max = $("#onlinePayMax").val();
+                    _this.toast(window.top.message.deposit_auto['单笔存款金额为']+min+"~"+max);
+                    return false;
+                }else if($("#submitAmount").attr("category") !="through"){
+                    $("#submitAmount").attr("category","");
+                    var $form = $(page.formSelector);
+                    if (!$form.valid()) {
+                        return false;
+                    }
                 }
 
                 var rechargeAmount = $("input[name='result.rechargeAmount']").val();
@@ -194,8 +210,8 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                     type: 'post',
                     async: false,
                     success: function (data) {
-                        if ($(".mui-scroll2").nextAll() && $(".mui-scroll2").nextAll().length > 0) {
-                            $(".mui-scroll2").nextAll().remove();
+                        if ($("#depositSalePop").length > 0) {
+                            $("#depositSalePop").remove();
                         }
                         $(".mui-content").append(data);
                         var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");

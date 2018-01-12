@@ -12,7 +12,7 @@ define(['site/deposit/BaseCompanyDeposit','clipboard'], function (BaseCompanyDep
         onPageLoad: function () {
             this._super();
             this.bindFormValidation();
-            this.bindRechargeAmount();
+            // this.bindRechargeAmount();
             mui.ready(function () {
                 //存款类型
                 var typePick = new mui.PopPicker();
