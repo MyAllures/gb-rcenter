@@ -10,6 +10,15 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
 
         onPageLoad: function () {
             this._super();
+            mui('.mui-scroll-wrapper').scroll({
+                scrollY: true, //是否竖向滚动
+                scrollX: false, //是否横向滚动
+                startX: 0, //初始化时滚动至x
+                startY: 0, //初始化时滚动至y
+                indicators: false, //是否显示滚动条
+                deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+                bounce: false //是否启用回弹
+            });
         },
 
         bindEvent: function () {
@@ -23,12 +32,17 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                 if (document.activeElement) {
                     document.activeElement.blur();
                 }
-                if(!options.statusNum){
-                    var $form = $(_this.formSelector);
-                    if (!$form.valid()) {
-                        return false;
-                    }
+                var $form;
+                if(options.statusNum){
+                    $form = options.fromId;
+                }else{
+                    $form = $(_this.formSelector);
                 }
+
+                if (!$form.valid()) {
+                    return false;
+                }
+
                 var rechargeAmount = $("input[name='result.rechargeAmount']").val();
 
                 mui.ajax(root + options.submitUrl, {
@@ -36,8 +50,8 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                     type: 'post',
                     async: false,
                     success: function (data) {
-                        if ($(".mui-scroll2").nextAll() && $(".mui-scroll2").nextAll().length > 0) {
-                            $(".mui-scroll2").nextAll().remove();
+                        if ($("#depositSalePop") && $("#depositSalePop").length > 0) {
+                            $("#depositSalePop").remove();
                         }
                         $(".mui-content").append(data);
 
