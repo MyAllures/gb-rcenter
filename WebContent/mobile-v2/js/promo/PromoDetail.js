@@ -258,6 +258,9 @@ define(['common/MobileBasePage'], function (Mobile) {
             } else {
                 title = window.top.message.promo_auto['申请失败'];
             }
+            if(data.title){
+                title = data.title;
+            }
 
             layer.open({
                 title: title,
