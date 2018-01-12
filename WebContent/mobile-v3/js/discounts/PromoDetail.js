@@ -172,13 +172,16 @@ function showWin(data, isRefresh) {
         return false;
     }
     var title;
+    if(!data.msg){
+        data.msg = '';
+    }
     if (data.state) {
         title = window.top.message.promo_auto['申请成功'];
     } else {
         title = window.top.message.promo_auto['申请失败'];
     }
-    if(!data.msg){
-        data.msg = '';
+    if(data.title){
+       title = data.title;
     }
     var options ={
         btnArray:[window.top.message.promo_auto['查看优惠记录'], window.top.message.promo_auto['好的']],
