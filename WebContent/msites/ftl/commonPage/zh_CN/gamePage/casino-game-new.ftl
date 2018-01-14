@@ -100,11 +100,9 @@
             <div class="pull-left">
                 <div class="icon-arrow-down"></div>
                 <ul class="list-inline">
-                <#--<li><a href="javascript:" class="active" data-gametype="rec"><span class="z1"><span class="icon i-rec"></span>最新玩过</span></a></li>-->
                     <li><a href="javascript:" onclick="myCollectList(this)" data-gametype="fav"><span class="z1"><span class="icon i-fav"></span>我的收藏</span></a></a></li>
-                    <li><a <#if data.gameSearch.gameTag?default('') == "blz">class="active"</#if> href="javascript:" onclick="gameTagList(this)" data-tag="blz" data-gametype="hot"><span class="z1"><span class="icon i-hot"></span>热门游戏</span></a></a></li>
-                    <li><a <#if data.gameSearch.gameTag?default('') == "tag1">class="active"</#if> href="javascript:" onclick="gameTagList(this)" data-tag="tag1" data-gametype="sug"><span class="z1"><span class="icon i-sug"></span>推荐游戏</span></a></a></li>
-                    <li><a <#if data.gameSearch.gameTag?default('') == "6">class="active"</#if> href="javascript:" onclick="gameTagList(this)" data-tag="6" data-gametype="sam"><span class="z1"><span class="icon i-sam"></span>类似游戏</span></a></a></li>
+                    <li><a <#if data.gameSearch.gameTag?default('') == "hot_game">class="active"</#if> href="javascript:" onclick="gameTagList(this)" data-tag="hot_game" data-gametype="hot"><span class="z1"><span class="icon i-hot"></span>热门游戏</span></a></a></li>
+                    <li><a href="javascript:" onclick="gameTagList(this)" data-tag="${data.gameSearch.gameTag?default('')}" data-gametype="sam"><span class="z1"><span class="icon i-sam"></span>类似游戏</span></a></a></li>
                 </ul>
             </div>
             <div class="pull-right">
