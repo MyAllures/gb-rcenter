@@ -573,7 +573,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 success: function (data) {
                     $("#paginationDiv").html(data);
                     _this.initSelect();
-                    $(_this.formSelector + " .search-wrapper [selectDiv]").attr("callback", "selectListChange");
+                    // $(_this.formSelector + " .search-wrapper [selectDiv]").attr("callback", "selectListChange");
+                    _this.pagination.processOrderColumnTag(_this);
                 },
                 error: function (data) {
 
