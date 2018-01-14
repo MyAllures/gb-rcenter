@@ -52,8 +52,6 @@
                                startTime="<#if data.gameMapById[game.gameId?string.computer].maintainStartTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainStartTime?long?string.computer}</#if>"
                                endTime="<#if data.gameMapById[game.gameId?string.computer].maintainEndTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainEndTime?long?string.computer}</#if>">试玩</a>
                         </#if>
-                        <a href="javascript:" data-game-id="${game.gameId?string.computer}" data-game-collect="true" onclick="gameCollect(this)">收藏</a>
-                        <a href="javascript:" data-game-id="${game.gameId?string.computer}" data-score="5" onclick="gameScore(this)">评分</a>
                         <a href="javascript:" style="color: #00e3e6">游戏线：${game.gameLine}</a>
                         <a href="javascript:" style="color: #f8ea00">收藏量：${game.gameCollectNumber}</a>
                         <a href="javascript:" style="color: #ff0000">评分数：${game.gameScore}</a>
