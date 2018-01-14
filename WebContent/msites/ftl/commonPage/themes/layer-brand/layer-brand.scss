@@ -1,0 +1,11 @@
+$color-brand:#333;
+.layui-layer{    
+    &.layui-layer-brand{// brand
+        .layui-layer-title{background: $color-brand;color: #fff;}
+        .layui-layer-setwin .layui-layer-close {
+            border: 3px solid $color-brand;
+            color: $color-brand;
+        }
+        .layui-layer-btn a{border-color: $color-brand;background-color: $color-brand;}
+    }
+}

@@ -39,7 +39,7 @@
 
     var apiName = getApiName(apiId);
     $(".apiName").text(apiName);
-
+    debugger;
     $(function(){
         var isAutoPay = getCookie("isAutoPay");
         if(isAutoPay == 'true') {

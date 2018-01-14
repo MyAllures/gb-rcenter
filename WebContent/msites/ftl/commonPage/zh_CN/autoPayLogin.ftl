@@ -26,7 +26,11 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId+"&gameId="+gameId;
+                                if(gameId){
+                                    window.location="/commonPage/gamePage/casino-game-new.html?apiId="+apiId+"&gameId="+gameId;
+                                }else{
+                                    window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                }
                             }else if(apiTypeId == "4" && apiId=="22"){
                                 if (window.localStorage) {
                                     localStorage.re_url_lottery = result.defaultLink;
@@ -47,7 +51,11 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId+"&gameId="+gameId;
+                                if(gameId){
+                                    window.location="/commonPage/gamePage/casino-game-new.html?apiId="+apiId+"&gameId="+gameId;
+                                }else{
+                                    window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                }
                             }else if(apiTypeId == "3"){
                                 if (window.localStorage) {
                                     localStorage.re_url_sport = result.defaultLink;

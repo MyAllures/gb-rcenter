@@ -1,6 +1,9 @@
+.layui-layer { color: #333; font-size: 14px; background-color: transparent !important; }
+.layui-layer .layui-layer-btn { padding: 0 15px 20px; background: #fff; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; }
+.layui-layer .layui-layer-content { background-color: #fff; }
 .layui-layer .layui-layer-setwin { right: -17px; top: -17px; box-shadow: 0 0 5px #000; border-radius: 50%; transition: all 0.3s; }
 .layui-layer .layui-layer-setwin:hover { transform: rotateZ(90deg); }
-.layui-layer .layui-layer-setwin .layui-layer-close { width: 35px; height: 35px; margin: 0; font-size: 30px; background: #fff; border-radius: 50%; border: 3px solid #1e9fff; text-align: center; line-height: 24px; color: #1e9fff; }
+.layui-layer .layui-layer-setwin .layui-layer-close { width: 35px; height: 35px; margin: 0; font-size: 30px; background: transparent url(./images/layer-dialog/gui-layer-close-bg.png) center; border-radius: 50%; border: 3px solid #1e9fff; text-align: center; line-height: 24px; color: #1e9fff; position: relative; z-index: 1; }
 .layui-layer .layui-layer-setwin .layui-layer-close:hover { text-decoration: none; }
 .layui-layer .layui-layer-btn a { height: 33px; line-height: 31px; min-width: 90px; border-color: #1E9FFF; background-color: #1e9fff; box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1); text-align: center; }
 .layui-layer .layui-layer-btn a.layui-layer-btn1 { border: 1px solid #dedede !important; background-color: #fff !important; color: #333 !important; }
@@ -27,8 +30,8 @@
 .layui-layer.layui-layer-danger .layui-layer-title { background: #f44236; color: #fff; }
 .layui-layer.layui-layer-danger .layui-layer-setwin .layui-layer-close { border: 3px solid #f44236; color: #f44236; }
 .layui-layer.layui-layer-danger .layui-layer-btn a { border-color: #f44236; background-color: #f44236; }
-.layui-layer.index-modal .layui-layer-content { padding: 0; height: auto !important; overflow: visible; }
-.layui-layer.index-modal .layui-layer-content .checkbox-wrap { position: absolute; bottom: -38px; left: 10px; }
+.layui-layer.index-modal .layui-layer-content { padding: 0; height: auto !important; overflow: visible; min-width: 360px; }
+.layui-layer.index-modal .layui-layer-content .checkbox-wrap { position: absolute; bottom: -38px; left: 10px; color: #333; }
 .layui-layer.index-modal .layui-layer-content .checkbox-wrap input[type="checkbox"] { appearance: none; cursor: pointer; -moz-appearance: none; -webkit-appearance: none; width: 18px; position: relative; height: 18px; border: 2px solid #1e9fff; vertical-align: -4px; margin-right: 5px; border-radius: 2px; }
 .layui-layer.index-modal .layui-layer-content .checkbox-wrap input[type="checkbox"]:checked { background: #1e9fff; }
 .layui-layer.index-modal .layui-layer-content .checkbox-wrap input[type="checkbox"]:checked:after { content: ''; position: absolute; width: 12px; height: 6px; border: 2px solid #fff; transform: rotate(-45deg); border-top: 0; border-right: 0; top: 3px; left: 1px; }
@@ -36,6 +39,7 @@
 .layui-layer.index-modal .layui-layer-btn0 { border-color: #f4c22b !important; margin: 0; background-color: #f4c22b !important; }
 .layui-layer.index-modal .layui-layer-page .layui-layer-btn { padding: 11px 15px; }
 .layui-layer.index-modal .layui-layer-page .layui-layer-btn .layui-layer-btn0 { margin-top: 0; }
+.layui-layer.index-modal .layui-layer-title { border-bottom: 0; }
 .layui-layer.index-modal-transparent { background-color: transparent; box-shadow: none; }
 .layui-layer.index-modal-transparent .layui-layer-setwin .layui-layer-close { width: 45px; height: 45px; font-size: 44px; background: #0000; border: 3px solid #fff; line-height: 28px; color: #fff; }
 .layui-layer.index-modal-transparent .layui-layer-btn { border-color: transparent; background: transparent; }
@@ -96,29 +100,30 @@
 .layui-layer.notice-dialog.notice-dialog-two-btn .layui-layer-btn a.active { border-color: #1e9fff !important; color: #fff !important; background-color: #1e9fff !important; cursor: pointer; }
 .layui-layer.notice-dialog .content-wrap { position: relative; }
 .layui-layer.notice-dialog .content-wrap:after { content: ''; position: absolute; width: 8px; height: 100%; right: 0; top: 0; background: #f5f5f5; }
+.layui-layer.forget-dialog .layui-layer-content { overflow: visible; }
 .layui-layer.register-dialog .layui-layer-btn { padding: 6px 15px 9px; background: #f8f8f8; position: relative; border-top: 1px solid #dfdfdf; }
 .layui-layer.register-dialog .layui-layer-btn .layui-layer-btn0 { width: 180px; height: 45px; line-height: 45px; font-size: 18px; color: #fff; background: #00beaa; border-radius: 4px; border-color: #00beaa; }
-.layui-layer.register-dialog .layui-layer-btn .layui-layer-btn1 { background-color: #0000 !important; border: 0 !important; position: absolute; right: 0; top: 12px; }
-.layui-layer.register-dialog .register-content-wrap { position: relative; }
+.layui-layer.register-dialog .layui-layer-btn .layui-layer-btn1 { background-color: #0000 !important; border: 0 !important; position: absolute; right: 10px; top: 12px; }
+.layui-layer.register-dialog .register-content-wrap { position: relative; color: #333; }
 .layui-layer.register-dialog .register-content-wrap .after { position: absolute; width: 8px; height: 100%; right: 0; top: 0; background: #f5f5f5; }
-.layui-layer.login-dialog { padding: 5px; -webkit-background-clip: border-box; }
-.layui-layer.login-dialog form { text-align: right; }
-.layui-layer.login-dialog .layui-layer-title { background: url(images/layer-dialog/login-header-bg.png) no-repeat; width: 390px; height: 140px; font-size: 18px; color: #fff; text-align: left; padding: 24px 34px; }
-.layui-layer.login-dialog .layui-layer-content { height: auto !important; padding: 30px 35px; }
-.layui-layer.login-dialog .layui-layer-content form .form-group { position: relative; margin-bottom: 30px; }
-.layui-layer.login-dialog .layui-layer-content form .form-group .form-control { height: 46px; line-height: 42px; padding: 0 10px 0 48px; border: 2px solid #ccc; background-color: #fff !important; border-radius: 4px; font-size: 16px; color: #333; }
-.layui-layer.login-dialog .layui-layer-content form .form-group .form-control:focus { box-shadow: none; border-color: #1e9fff; }
-.layui-layer.login-dialog .layui-layer-content form .form-group:before { content: ''; width: 38px; height: 42px; background-color: #eee; background-repeat: no-repeat; background-position: center; position: absolute; left: 2px; top: 2px; border-top-left-radius: 4px; border-top-right-radius: 4px; }
-.layui-layer.login-dialog .layui-layer-content form .form-group.account:before { background-image: url(images/layer-dialog/icon-account.png); }
-.layui-layer.login-dialog .layui-layer-content form .form-group.password:before { background-image: url(images/layer-dialog/icon-password.png); }
-.layui-layer.login-dialog .layui-layer-content form .form-group.code:before { background-image: url(images/layer-dialog/icon-yzm.png); }
-.layui-layer.login-dialog .layui-layer-content form .form-group.code img { position: absolute; right: 2px; top: 2px; width: 100px; height: 42px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
-.layui-layer.login-dialog .layui-layer-content form .form-group.code input { padding-right: 110px; }
-.layui-layer.login-dialog .layui-layer-content form .form-group .tip { font-size: 12px; color: #a94442; position: absolute; bottom: -23px; }
-.layui-layer.login-dialog .layui-layer-content form .forget-pas { color: #333; line-height: 22px; text-align: center; text-decoration: underline; font-size: 14px; margin-right: 18px; }
-.layui-layer.login-dialog .layui-layer-content form .btn-login { display: block; color: #fff; height: 45px; width: 100%; background: #1e9fff; text-align: center; margin-bottom: 20px; line-height: 45px; font-size: 18px; border-radius: 4px; }
-.layui-layer.login-dialog .layui-layer-content form .btn-login:hover { background: #0086ea; text-decoration: none; }
-.layui-layer.login-dialog .layui-layer-content form .btn-register { display: inline-block; vertical-align: 0; color: #fff; height: 33px; width: 100px; background: #f4c22b; text-align: center; line-height: 33px; border-radius: 2px; }
-.layui-layer.login-dialog .layui-layer-content form .btn-register:hover { background: #e0ab0c; text-decoration: none; }
+.layui-layer.layui-login-dialog { padding: 5px; -webkit-background-clip: border-box; }
+.layui-layer.layui-login-dialog form { text-align: right; }
+.layui-layer.layui-login-dialog .layui-layer-title { background: url(images/layer-dialog/login-header-bg.png) no-repeat; width: 390px; height: 140px; font-size: 18px; color: #fff; text-align: left; padding: 24px 34px; }
+.layui-layer.layui-login-dialog .layui-layer-content { height: auto !important; padding: 30px 35px; }
+.layui-layer.layui-login-dialog .layui-layer-content form .form-group { position: relative; margin-bottom: 30px; }
+.layui-layer.layui-login-dialog .layui-layer-content form .form-group .form-control { height: 46px; line-height: 42px; padding: 0 10px 0 48px; border: 2px solid #ccc; background-color: #fff !important; border-radius: 4px; font-size: 16px; color: #333; }
+.layui-layer.layui-login-dialog .layui-layer-content form .form-group .form-control:focus { box-shadow: none; border-color: #1e9fff; }
+.layui-layer.layui-login-dialog .layui-layer-content form .form-group:before { content: ''; width: 38px; height: 42px; background-color: #eee; background-repeat: no-repeat; background-position: center; position: absolute; left: 2px; top: 2px; border-top-left-radius: 4px; border-top-right-radius: 4px; }
+.layui-layer.layui-login-dialog .layui-layer-content form .form-group.account:before { background-image: url(images/layer-dialog/icon-account.png); }
+.layui-layer.layui-login-dialog .layui-layer-content form .form-group.password:before { background-image: url(images/layer-dialog/icon-password.png); }
+.layui-layer.layui-login-dialog .layui-layer-content form .form-group.code:before { background-image: url(images/layer-dialog/icon-yzm.png); }
+.layui-layer.layui-login-dialog .layui-layer-content form .form-group.code img { position: absolute; right: 2px; top: 2px; width: 100px; height: 42px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
+.layui-layer.layui-login-dialog .layui-layer-content form .form-group.code input { padding-right: 110px; }
+.layui-layer.layui-login-dialog .layui-layer-content form .form-group .tip { font-size: 12px; color: #a94442; position: absolute; bottom: -23px; }
+.layui-layer.layui-login-dialog .layui-layer-content form .forget-pas { color: #333; line-height: 22px; text-align: center; text-decoration: underline; font-size: 14px; margin-right: 18px; }
+.layui-layer.layui-login-dialog .layui-layer-content form .btn-login { display: block; color: #fff; height: 45px; width: 100%; background: #1e9fff; text-align: center; margin-bottom: 20px; line-height: 45px; font-size: 18px; border-radius: 4px; }
+.layui-layer.layui-login-dialog .layui-layer-content form .btn-login:hover { background: #0086ea; text-decoration: none; }
+.layui-layer.layui-login-dialog .layui-layer-content form .btn-register { display: inline-block; vertical-align: 0; color: #fff; height: 33px; width: 100px; background: #f4c22b; text-align: center; line-height: 33px; border-radius: 2px; }
+.layui-layer.layui-login-dialog .layui-layer-content form .btn-register:hover { background: #e0ab0c; text-decoration: none; }
 
 /*# sourceMappingURL=gui-layer.css.map */
