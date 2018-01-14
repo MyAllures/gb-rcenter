@@ -76,6 +76,17 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
         bindEvent: function () {
             this._super();
             var _this = this;
+            _this.os = this.whatOs();
+            if(_this.os == 'android') {
+                window.addEventListener("resize", function() {
+                    if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
+                        window.setTimeout(function() {
+                            document.activeElement.scrollIntoViewIfNeeded();
+                        },0);
+                    }
+                })
+            }
+
             mui("body").on("tap", "[data-scan]", function () {
                 $(".bank-selector >.ct a").removeClass("active");
                 var key = $(this).parent().attr("key");
@@ -184,12 +195,12 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
             $(".bank-selector >.ct a").removeClass("active");
             var key = $(e).parent().attr("key");
             var url = null;
-            var formId = "" ;
+            var formId = "";
             if ($(e).attr("data-company")) {
-                url = '/wallet/deposit/company/depositCash.html?searchId='+key;
+                url = '/wallet/deposit/company/depositCash.html?searchId=' + key;
                 formId = "#companyCashForm";
             } else if ($(e).attr("data-fast")) {
-                url = '/wallet/deposit/company/electronic/depositCash.html?searchId='+key;
+                url = '/wallet/deposit/company/electronic/depositCash.html?searchId=' + key;
                 formId = "#electronicCashForm";
             }
             if (!map[key]) {
@@ -205,7 +216,7 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
                             page.formSelector = formId;
                             _this.bindFormValidation();
                             // page.bindRechargeAmount($("#submitAmount"));
-                            page.jumpSubmit(_this,_href);
+                            page.jumpSubmit(_this, _href);
                         }
                     },
                     error: function (xhr, type, errorThrown) {
@@ -213,16 +224,16 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
                             _this.toast(window.top.message.deposit_auto['线上支付异常']);
                     }
                 });
-            }else{
+            } else {
                 $("#deposit").html(map[key]);
                 page.formSelector = "#depositCashForm";
                 _this.bindFormValidation();
                 // page.bindRechargeAmount($("#submitAmount"));
-                page.jumpSubmit(_this,_href);
+                page.jumpSubmit(_this, _href);
             }
             $(e).addClass("active");
         },
-        jumpSubmit: function (_this,_href) {
+        jumpSubmit: function (_this, _href) {
             _this._super;
             var baseCompanyDeposit = new BaseCompanyDeposit();
             var options = {
@@ -230,7 +241,7 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
                 submitUrl: "/wallet/deposit/company/submit.html",
                 depositUrl: _href,
                 statusNum: 1,
-                fromId : $(_this.formSelector)
+                fromId: $(_this.formSelector)
             };
             baseCompanyDeposit.submit(options);
         }
