@@ -54,7 +54,7 @@ define(['site/deposit/BaseCompanyDeposit','clipboard'], function (BaseCompanyDep
             var _this = this;
             var clipboard = new Clipboard('.copy');
             clipboard.on('success',function (e) {
-                _this.toast("复制成功!");
+                _this.toast(window.top.message.deposit_auto['复制成功']);
                 e.clearSelection();
             })
         }
