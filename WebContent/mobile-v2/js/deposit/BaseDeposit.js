@@ -11,7 +11,6 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
 
         onPageLoad: function () {
             this._super();
-            // mui('.mui-scroll-wrapper').scroll();
         },
 
         bindEvent: function() {
@@ -44,57 +43,35 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
         /**
          * 实时监听输入框
          */
-        bindRechargeAmount:function ($submitBtn) {
+        bindRechargeAmount:function($submitBtn){
             var _this = this;
             var $btn = $submitBtn || $("#submitAmount");
-            if (document.getElementById('payerBankcard1') || document.getElementById('payerBankcard2')) {
-                var id=document.getElementById('payerBankcard1');
-                if(document.getElementById('payerBankcard2')){
-                    id=document.getElementById('payerBankcard2');
-                }
-
-                if ($(id).val()) {
-                    $btn.removeAttr("disabled");
-                }
-                id.addEventListener("input",function () {
-                    if ($(this).val()) {
-                        $btn.removeAttr("disabled");
-                    }
-                    if (!$(this).val()) {
-                        $btn.attr("disabled", "disabled");
-                    }
-                });
-
-            } else if (document.getElementById('result.rechargeAmount')) {
-                // if($("#result.rechargeAmount").val()){
-                //     $btn.removeAttr("disabled");
-                //     return;
-                // }
+            if (document.getElementById('result.rechargeAmount')) {
                 document.getElementById('result.rechargeAmount').addEventListener("input", function () {
-                    var $a = $("#chooseAmount").find("a");
-                    if ($a.hasClass("active")) {
-                        $a.removeClass("active");
-                    }
-                    /*if (/^[0-9]*$/.test($(this).val())) {*/
-                    /*^\d+(\.\d+)?$*/
-                    if($("input[name='result.randomCash']").val()){
-                        if(/^[0-9]*$/.test($(this).val())){
-                            $btn.removeAttr("disabled");
+                    if ($("input[name='result.randomCash']").val()) {
+                        if($(this).val() == null && $(this).val()=="") {
+                            $btn.attr("category","isNull");
+                        }else if (!/^[0-9]*$/.test($(this).val())) {
+                            $btn.attr("category","notThrough");
                         }else{
-                            $btn.attr("disabled", "disabled");
-                        }
-                    }else {
-
-                        if (/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/.test($(this).val())) {
-                            $btn.removeAttr("disabled");
-                        }
-                        if (!$(this).val()) {
-                            $btn.attr("disabled", "disabled");
+                            var min = Number($("#onlinePayMin").val());
+                            var max = Number($("#onlinePayMax").val());
+                            var amount = Number($(this).val()) + Number($("input[name='result.randomCash']").val())/100;
+                            if(/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/.test(amount+"")) {
+                                if (amount >= min && amount <= max) {
+                                    $btn.attr("category", "through");
+                                } else {
+                                    $btn.attr("category", "excess");
+                                }
+                            }else{
+                                $btn.attr("category", "error");
+                            }
                         }
                     }
                 });
             }
         },
+
 
         /**
          * 更新存款金额的远程验证提示消息
@@ -134,7 +111,7 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
                 $("#chooseAmount").find("a").removeClass("active");
                 $(this).addClass("active");
                 $("input[name='result.rechargeAmount']").val($(this).attr("money"));
-                $("#submitAmount").removeAttr("disabled");
+                // $("#submitAmount").removeAttr("disabled");
             })
         },
 

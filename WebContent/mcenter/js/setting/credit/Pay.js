@@ -2,6 +2,9 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
     return BaseEditPage.extend({
         init: function () {
             this.formSelector = "form[name=creditPayForm]";
+            if(window.top.interval){
+                window.clearInterval(window.top.interval);
+            }
             this._super(this.formSelector);
         },
         /**
@@ -26,20 +29,20 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
             });
             var leftTime = $(this.formSelector + " #leftTime[data-time]");
             if (leftTime && leftTime.length > 0) {
-                var timeStorage = 't' + (new Date()).getTime();
-                sessionStorage.setItem(timeStorage, leftTime.attr("data-time"));
-                _this.showPayLeftTime(timeStorage);
-                var interval = setInterval(function () {
-                    _this.showPayLeftTime(timeStorage,interval)
+                _this.showPayLeftTime();
+                window.top.interval = setInterval(function () {
+                    _this.showPayLeftTime(window.top.interval)
                 }, 1000);
-                if ((!leftTime || leftTime.length == 0) && interval) {
-                    window.clearInterval(interval);
-                }
             }
             _this.changeAmountMsg();
         },
-        showPayLeftTime: function (timeStorage,interval) {
-            var time = sessionStorage.getItem(timeStorage);
+        showPayLeftTime: function (interval) {
+            var leftTime = $("#leftTime[data-time]");
+            if ((!leftTime || leftTime.length == 0) && interval) {
+                window.clearInterval(interval);
+                return;
+            }
+            var time = $(leftTime).attr("data-time");
             if (time < 0 && interval) {
                 window.clearInterval(interval);
                 window.top.topPage.ajax({
@@ -69,7 +72,7 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
             $("span#hour").text(hour);
             $("span#minute").text(minute);
             $("span#second").text(second);
-            sessionStorage.setItem(timeStorage, --time);
+            $("#leftTime[data-time]").attr("data-time", --time);
         },
         /**
          * 更新支付金额的远程验证提示消息

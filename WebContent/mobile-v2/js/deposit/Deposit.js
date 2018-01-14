@@ -11,7 +11,7 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
 
         onPageLoad: function () {
             this._super();
-            mui('.mui-scroll-wrapper').scroll({});
+            mui('.mui-scroll-wrapper.deposit-scroll-wrapper').scroll({});
             var _this = this;
             (function ($$, doc) {
                 mui('.bank-selector').on('tap', 'li > a', function (e) {
@@ -91,7 +91,7 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
                             map[key] = data;
                             page.formSelector = "#scanForm";
                             _this.bindFormValidation();
-                            page.ScanCode.bindRechargeAmount($("#submitAmount"));
+                            // page.ScanCode.bindRechargeAmount($("#submitAmount"));
                             page.ScanCode.submit();
                         },
                         error: function (xhr, type, errorThrown) {
@@ -104,7 +104,7 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
                     /*$("#deposit").html(window.top.page.depositAccount.online);*/
                     page.formSelector = "#scanForm";
                     _this.bindFormValidation();
-                    page.ScanCode.bindRechargeAmount($("#submitAmount"));
+                    // page.ScanCode.bindRechargeAmount($("#submitAmount"));
                     page.ScanCode.submit();
                 }
 
@@ -148,7 +148,7 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
 
             mui("body").on("tap", "[data-company]", function () {
                 var _href = $(this).attr("data-company");
-                _this.mySubmit(this, _this, _href);
+                _this.nextStep(this, _this, _href);
             });
 
             mui("body").on("tap", "[data-bitcoin]", function () {
@@ -158,7 +158,7 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
 
             mui("body").on("tap", "[data-fast]", function () {
                 var _href = $(this).attr("data-fast");
-                _this.mySubmit(this, _this, _href);
+                _this.nextStep(this, _this, _href);
             });
 
             mui("body").on("tap", "[data-fastRecharge]", function () {
@@ -181,14 +181,17 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
                     _this.openWindowByMui("/mine/index.html");
             });
         },
-        mySubmit: function (e, _this, _href) {
+        nextStep: function (e, _this, _href) {
             $(".bank-selector >.ct a").removeClass("active");
             var key = $(e).parent().attr("key");
             var url = null;
+            var formId = "" ;
             if ($(e).attr("data-company")) {
-                url = '/wallet/deposit/company/depositCash.html';
+                url = '/wallet/deposit/company/depositCash.html?searchId='+key;
+                formId = "#companyCashForm";
             } else if ($(e).attr("data-fast")) {
-                url = '/wallet/deposit/company/electronic/depositCash.html';
+                url = '/wallet/deposit/company/electronic/depositCash.html?searchId='+key;
+                formId = "#electronicCashForm";
             }
             if (!map[key]) {
                 mui.ajax(url, {
@@ -200,10 +203,10 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
                         if (data != null) {
                             $("#deposit").html(data);
                             map[key] = data;
-                            page.formSelector = "#depositCashForm";
+                            page.formSelector = formId;
                             _this.bindFormValidation();
-                            page.bindRechargeAmount($("#submitAmount"));
-                            page.submit(_href);
+                            // page.bindRechargeAmount($("#submitAmount"));
+                            page.jumpSubmit(_this,_href);
                         }
                     },
                     error: function (xhr, type, errorThrown) {
@@ -215,18 +218,20 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
                 $("#deposit").html(map[key]);
                 page.formSelector = "#depositCashForm";
                 _this.bindFormValidation();
-                page.bindRechargeAmount($("#submitAmount"));
-                page.submit(_href);
+                // page.bindRechargeAmount($("#submitAmount"));
+                page.jumpSubmit(_this,_href);
             }
             $(e).addClass("active");
         },
-        submit: function (_href) {
+        jumpSubmit: function (_this,_href) {
+            _this._super;
             var baseCompanyDeposit = new BaseCompanyDeposit();
             var options = {
                 type: "company_deposit",
                 submitUrl: "/wallet/deposit/company/submit.html",
                 depositUrl: _href,
-                statusNum: 1
+                statusNum: 1,
+                fromId : $(_this.formSelector)
             };
             baseCompanyDeposit.submit(options);
         }
