@@ -1,6 +1,7 @@
 define(['common/MobileBasePage'], function (Mobile) {
     var url = root + "/fund/record/index.html";
-    var pageNumber = 2;
+    // var pageNumber = 2;
+    var pageNumber = 1 ;
     var beginTime="";
     var endTime="";
     var t;
