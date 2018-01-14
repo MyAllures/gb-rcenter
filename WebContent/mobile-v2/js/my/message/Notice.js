@@ -22,6 +22,19 @@ define(['common/MobileBasePage'], function (Mobile) {
         onPageLoad: function () {
             this._super();
             t = this;
+            mui.init({
+                swipeBack: true //启用右滑关闭功能
+            });
+            mui('.popover-scroll').scroll();
+            mui('body').on('shown', '.mui-popover', function(e) {
+                if(e.detail.id=='advisoryType') {
+                    $("input[name='result.advisoryTitle']").blur();
+                    $("textarea[name='result.advisoryContent']").blur();
+                    $("input[name='captcha']").blur();
+                }
+            });
+            mui('body').on('hidden', '.mui-popover', function(e) {
+            });
             //主体内容滚动条
             // mui('.mui-scroll-wrapper').scroll({
             //     deceleration: 0.0008 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
