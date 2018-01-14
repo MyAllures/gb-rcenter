@@ -18,8 +18,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
         /**
          * 当前对象事件初始化函数
          */
-        reloadWhenChangeDialog:function(){
-            window.location.href = window.location.href;
+        reloadWhenChangeDialog:function(e,opt){
+            this.query(e,opt);
         },
 
         jump:function (e) {
