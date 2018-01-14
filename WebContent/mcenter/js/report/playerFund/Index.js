@@ -84,6 +84,12 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
          */
         changeKey: function (e) {
             $('#operator').attr('name', e.key).val('');
+        },
+        downloadFile:function (e, opt) {
+            if(opt.data.state){
+                page.showPopover(e,opt,"success","导出完成",true);
+                $(e.currentTarget).unlock();
+            }
         }
     });
 });

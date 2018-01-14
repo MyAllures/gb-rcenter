@@ -161,6 +161,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                 if (!randomCash) {
                     randomCash = 0;
                 }
+                account
                 mui.ajax(root + '/wallet/deposit/online/scan/submit.html', {
                     data: {
                         "result.rechargeAmount": rechargeAmount,
@@ -171,8 +172,8 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                     type: 'post',
                     async: false,
                     success: function (data) {
-                        if ($(".mui-scroll2").nextAll() && $(".mui-scroll2").nextAll().length > 0) {
-                            $(".mui-scroll2").nextAll().remove();
+                        if ($("#depositSalePop") && $("#depositSalePop").length > 0) {
+                            $("#depositSalePop").remove();
                         }
                         $(".mui-content").append(data);
                         var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
@@ -210,7 +211,6 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
         submitDeposit: function () {
             var _this = this;
             var dataForm = $(page.formSelector).serialize();
-
             if (!$(page.formSelector).valid()) {
                 return false;
             }
@@ -222,7 +222,13 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                 }
             }
 
-            mui.ajax(root + "/wallet/deposit/online/scan/scanCodeSubmit.html", {
+            var url = null;
+            if($("input[name='result.randomCash']").val()){
+                url = "/wallet/deposit/online/scan/scanRandomCodeSubmit.html"
+            }else{
+                url = "/wallet/deposit/online/scan/scanCodeSubmit.html";
+            }
+            mui.ajax(root + url, {
                 type: 'post',
                 data: dataForm,
                 dataType: 'json',
