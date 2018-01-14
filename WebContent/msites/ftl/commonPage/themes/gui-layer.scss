@@ -4,13 +4,15 @@ $color-success:#00be74;
 $color-info:#1e9fff;
 $color-warning:#f4c22b;
 $color-danger:#f44236;
-.layui-layer{
+.layui-layer{color: #333;font-size: 14px;background-color: transparent !important;
+    .layui-layer-btn{    padding: 0 15px 20px;background: #fff;border-bottom-left-radius: 2px;border-bottom-right-radius: 2px;}
+    .layui-layer-content{background-color: #fff;}
     .layui-layer-setwin{// 关闭按钮样式
         right: -17px;
         top: -17px;  
         box-shadow: 0 0 5px #000;
         border-radius: 50%;
-        transition: all 0.3s; 
+        transition: all 0.3s;
         &:hover{
             transform: rotateZ(90deg);
         }
@@ -19,11 +21,11 @@ $color-danger:#f44236;
             height: 35px;
             margin: 0;
             font-size: 30px;
-            background: #fff;
+            background:transparent url(./images/layer-dialog/gui-layer-close-bg.png) center;
             border-radius: 50%;
             border: 3px solid #1e9fff;
             text-align: center;line-height: 24px;
-            color: #1e9fff;
+            color: #1e9fff;position:relative;z-index:1;  
             &:hover{text-decoration: none;}
         }  
     }
@@ -97,8 +99,8 @@ $color-danger:#f44236;
         .layui-layer-btn a{border-color: $color-danger;background-color: $color-danger;}
     }
     &.index-modal{// 首页弹窗
-        .layui-layer-content{padding: 0;height: auto !important;overflow: visible;
-            .checkbox-wrap{    position: absolute;    bottom: -38px;    left: 10px;
+        .layui-layer-content{padding: 0;height: auto !important;overflow: visible;min-width: 360px;
+            .checkbox-wrap{    position: absolute;    bottom: -38px;    left: 10px;color: #333;
                 input[type="checkbox"]{  appearance:none;cursor: pointer;
     -moz-appearance:none; 
     -webkit-appearance:none;
@@ -132,6 +134,7 @@ $color-danger:#f44236;
         .layui-layer-page .layui-layer-btn{padding: 11px 15px;
             .layui-layer-btn0{margin-top: 0;}
         }
+        .layui-layer-title{border-bottom: 0;}
     }
     &.index-modal-transparent{// 首页弹窗透明
             background-color: transparent;
@@ -274,21 +277,24 @@ $color-danger:#f44236;
             }
         }
     }
+    &.forget-dialog{// 忘记用户名弹窗
+     .layui-layer-content{overflow: visible;}   
+    }
     &.register-dialog{// 注册条款弹窗
         .layui-layer-btn {
             padding: 6px 15px 9px;
             background: #f8f8f8;    position: relative;
             border-top: 1px solid #dfdfdf;
             .layui-layer-btn0{width: 180px;height: 45px;line-height: 45px;font-size: 18px;color: #fff;background: #00beaa;border-radius: 4px;border-color: #00beaa;}
-            .layui-layer-btn1{    background-color: #0000 !important;    border: 0 !important;    position: absolute;    right: 0;    top: 12px;}
+            .layui-layer-btn1{    background-color: #0000 !important;    border: 0 !important;    position: absolute;    right: 10px;    top: 12px;}
         }
-        .register-content-wrap{position: relative;
+        .register-content-wrap{position: relative;color: #333;
             .after{
                 position: absolute;width: 8px;height: 100%;right: 0;top: 0;background: #f5f5f5;
             }
         }
     }
-    &.login-dialog{// 登录弹窗
+    &.layui-login-dialog{// 登录弹窗
         padding: 5px;
     -webkit-background-clip: border-box;
         form{text-align: right;}

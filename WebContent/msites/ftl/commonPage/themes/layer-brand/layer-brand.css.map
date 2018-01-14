@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGQ,iDAAkB,GAAC,UAAU,EAHxB,IAAI,EAGmC,KAAK,EAAE,IAAI;AACvD,qEAAuC,GACnC,MAAM,EAAE,cAAsB,EAC9B,KAAK,EANJ,IAAI;AAQT,iDAAkB,GAAC,YAAY,EAR1B,IAAI,EAQqC,gBAAgB,EARzD,IAAI",
+"sources": ["layer-brand.scss"],
+"names": [],
+"file": "layer-brand.css"
+}

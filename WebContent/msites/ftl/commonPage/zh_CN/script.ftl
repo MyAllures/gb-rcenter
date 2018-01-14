@@ -2,7 +2,6 @@
 
 <#--红包页面-->
 <#include "msiteCommonContent/lottery.ftl">
-
 <script>
     /*全局变量；是否显示登录验证码*/
     var isOpenCaptcha = false;
@@ -277,7 +276,15 @@
      * @param noticeId 公告id
      */
     function noticeDialog(target) {
-        var _this = target;
+        <#assign msgKey="announcementPage">
+        <#if data.pagingMap[msgKey]?exists>
+            <#if data.pagingMap[msgKey].totalCount lte 5>
+                layerDialogNotice('','最新公告','layui-layer-brand',['640px','566px'],false,false,false);
+            <#else>
+                layerDialogNotice('','最新公告','layui-layer-brand',['640px','566px'],false,false,true);
+            </#if>
+        </#if>
+        /*var _this = target;
         BootstrapDialog.show({
             title: '最新公告',
             message: function (dialog) {
@@ -293,7 +300,7 @@
             onshown: function (dialoge) {
 
             }
-        });
+        });*/
     }
 
     /**
@@ -307,7 +314,16 @@
             url: '/commonPage/modal/notice-content.html?pageNumber=' + num + "&apiType=announcementPage",
             type: "POST",
             success: function (data) {
-                $(".msgbox").html(data);
+                var btn1 = $("<div></div>").html(data).find(".layui-layer-btn0");
+                var btn2 = $("<div></div>").html(data).find(".layui-layer-btn1");
+                $("#notice-d").html($("<div></div>").html(data).find(".content-wrap"));
+                $(".notice-dialog .layui-layer-btn>*").remove();
+                $(".notice-dialog .layui-layer-btn").append(btn1).append(btn2);
+                // 内容启用滚动条
+                $(".layui-layer-content .content-wrap").niceScroll({
+                    cursorcolor:"#999",
+                    cursorwidth:"8px"
+                });
             }
         })
     }
@@ -340,11 +356,7 @@
     }
 
     function alert(message){
-        BootstrapDialog.alert({
-            message:message,
-            title:'提示信息',
-            type: BootstrapDialog.TYPE_WARNING
-        });
+        layerDialogNormal(message,'提示信息','layui-layer-brand',['360px']);
     }
 
     function getlocationParam(name){
@@ -354,8 +366,7 @@
     }
 
 
-    //首页弹窗
-    function homeDialog(){
+    //首页弹窗开始
     <#assign flag = true>
     <#if data.carousels??>
         <#list data.carousels as carousel>
@@ -376,58 +387,38 @@
             </#if>
         </#list>
     </#if>
+    <#if imgSrc?has_content>// 图片是否加链接
+        var _href = "${link}";
+        if(_href!=undefined && _href!=""){
+            if(_href.indexOf("http")>-1){
+                _href = _href;
+            }else{
+                _href = "http://"+_href;
+            }
+            if(_href.indexOf("\$\{website\}")>-1){
+                _href = _href.replace("\$\{website\}",window.location.host);
+            }
+        }else{
+            _href = "javascript:void(0)";
+        }
+        $("#index-modal-content>a").attr("href",_href);
+    </#if>
+    function homeDialog(){
     <#if imgSrc??>
-        if(!localStorage.getItem("${updateTime}"+"-close-home-dialog")){// 判读缓存里是否关闭了首页弹窗
-            BootstrapDialog.show({
-                type: BootstrapDialog.TYPE_WARNING,
-                draggable: true,
-                title: "${imgTitl}",
-                size: 'index-modal',
-                message: function(dialog) {
-                    var $message = null;
-                    <#if imgSrc?has_content>
-                        var _href = "${link}";
-                        if(_href!=undefined && _href!=""){
-                            if(_href.indexOf("http")>-1){
-                                _href = _href;
-                            }else{
-                                _href = "http://"+_href;
-                            }
-                            if(_href.indexOf("\$\{website\}")>-1){
-                                _href = _href.replace("\$\{website\}",window.location.host);
-                            }
-                        }else{
-                            _href = "javascript:void(0)";
-                        }
-                        $message = $('<a href="'+_href+'"><img src="${imgSrc}"/></a><div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>');
-                    <#elseif content?has_content>
-                        $message='<div style="padding:10px;width:500px;">${content}</div>'+'<div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>';
-                    </#if>
-                    return $message;
-                },
-                buttons:[
-                    {
-                        id:'btn-close',
-                        label:'关闭',
-                        cssClass:'btn-close-home-dialog',
-                        action:function(dia){
-                            dia.close();
-                        }
-                    }
-                ],
-                onhidden:function(dia){
-                    if($("#home-dialog-checkbox").is(":checked")){
-                        localStorage.setItem("${updateTime}"+"-close-home-dialog",true);
-                    }
-                }
-            });
-            // 定时关闭
-            setTimeout(function () {
-                $(".index-modal").modal("hide")
-            }, 60000);
+        if(!localStorage.getItem("${updateTime}-close-home-dialog")){// 判读缓存里是否关闭了首页弹窗
+            <#if imgSrc?has_content>
+                layerDialogIndex('${imgSrc}','${imgTitl}','layui-layer-brand',[],'','r');
+            <#elseif content?has_content>
+                 layerDialogIndex('<div style="padding:10px;">${content}</div><div class="checkbox-wrap"><input type="checkbox" id="home-dialog-checkbox" />关闭后，不再显示本弹窗广告</div>','${imgTitl}','layui-layer-brand',['600px'],'','r',true);
+
+            </#if>
+            setTimeout(function(){
+                layer.closeAll();
+            },60000);
         }// if判断结束
     </#if>
     }
+    // 首页弹窗结束
 
     /*公共维护状态检测设置 By Faker*/
     function maintainCheck(){
@@ -484,9 +475,9 @@
                     }else if(typeof gameCode != "undefined"){
                         //电子游戏
                         if($(this).hasClass("game-demo")){
-                            $(this).attr("onclick","apiLoginDemo("+apiId+",'"+gameCode+"',2)");
+                            $(this).attr("onclick","apiLoginDemo("+apiId+",'"+gameCode+"',2,this)");
                         }else{
-                            $(this).attr("onclick","apiLogin("+apiId+",'"+gameCode+"',2)");
+                            $(this).attr("onclick","apiLogin("+apiId+",'"+gameCode+"',2,this)");
                         }
                     }else {
                         if($(this).data("api")=="3"){
@@ -551,17 +542,19 @@
 
         //传参进来时 gameName 加了引号转成string类型了 by Faker
         if(gameName == 'undefined' || typeof gameName == 'undefined'){
-            BootstrapDialog.alert({
-                message:"<div>尊敬的客户您好：</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+apiName+" 平台将于"+transTimeZone(sessionStorage.getItem("timezone"))+" "+sTime+" - "+eTime+"进行维护，维护时间若有变动将另行通知。 给您带来的不便，请您谅解！</div>",
+            layerDialogNormal("<div>尊敬的客户您好：</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+apiName+" 平台将于"+transTimeZone(sessionStorage.getItem("timezone"))+" "+sTime+" - "+eTime+"进行维护，维护时间若有变动将另行通知。 给您带来的不便，请您谅解！</div>",'提示信息','layui-layer-warning',['360px']);
+            /*BootstrapDialog.alert({
+                message:"",
                 title:'提示信息',
                 type: BootstrapDialog.TYPE_PRIMARY
-            });
+            });*/
         }else{
-            BootstrapDialog.alert({
+            layerDialogNormal("<div>尊敬的客户您好：</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+gameName+" 游戏将于"+transTimeZone(sessionStorage.getItem("timezone"))+" "+sTime+" - "+eTime+"进行维护，维护时间若有变动将另行通知。 给您带来的不便，请您谅解！</div>",'提示信息','layui-layer-warning',['360px']);
+          /*  BootstrapDialog.alert({
                 message:"<div>尊敬的客户您好：</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+gameName+" 游戏将于"+transTimeZone(sessionStorage.getItem("timezone"))+" "+sTime+" - "+eTime+"进行维护，维护时间若有变动将另行通知。 给您带来的不便，请您谅解！</div>",
                 title:'提示信息',
                 type: BootstrapDialog.TYPE_PRIMARY
-            });
+            });*/
         }
 
     }
@@ -697,7 +690,8 @@
 
     /*找回用户名弹窗*/
     function forgetUsername(){
-        BootstrapDialog.show({
+        layerDialogForgetAccount('<div style="font-size:  16px;font-weight: bold;color:  #000;margin-bottom: 5px;">忘记账号？请联系在线客服 </div><div>客服人员将根据您提供的信息，在核实您身份之后，告知您的账号。</div>','找回会员账号','layui-layer-brand',['400px','210px'],false,false);
+        /*BootstrapDialog.show({
             type: BootstrapDialog.TYPE_PRIMARY,
             title:'找回用户名',
             message: function(dialog) {
@@ -710,7 +704,7 @@
             data: {
                 'pageToLoad': '/commonPage/modal/lost-username.html?t='+ new Date().getTime().toString(36)
             }
-        });
+        });*/
     }
 
     //技术支援弹窗
@@ -918,20 +912,13 @@
             return;
         }
         if (apiId) {
-            if(apiTypeId=="2"){
+            var gameUrl = "";
+            if($(thiz).data("game-id")!=undefined){
                 var gameId = $(thiz).data("game-id");
-                var gameLine = $(thiz).data("game-line");
-                var gameTags = $(thiz).data("game-tags");
-                var gameScore = $(thiz).data("game-score");
-
-                sessionStorage.setItem(gameId,"gameLine="+gameLine+"&gameTags="+gameTags+"&gameScore="+gameScore);
-
-                var newWindow = window.open();
-                newWindow.location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode+"&gameId="+gameId;
-            }else{
-                var newWindow = window.open();
-                newWindow.location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
+                gameUrl = "&gameId="+gameId;
             }
+            var newWindow = window.open();
+            newWindow.location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode+gameUrl;
         }
     }
 
@@ -1026,7 +1013,11 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId+"&gameId="+gameId;
+                                if(gameId){
+                                    window.location="/commonPage/gamePage/casino-game-new.html?apiId="+apiId+"&gameId="+gameId;
+                                }else{
+                                    window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                }
                             }else if(apiTypeId == "4" && apiId=="22"){
                                 if (window.localStorage) {
                                     localStorage.re_url_lottery = result.defaultLink;
@@ -1048,7 +1039,11 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId+"&gameId="+gameId;
+                                if(gameId){
+                                    window.location="/commonPage/gamePage/casino-game-new.html?apiId="+apiId+"&gameId="+gameId;
+                                }else{
+                                    window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                }
                             }else if(apiTypeId == "3"){
                                 if (window.localStorage) {
                                     localStorage.re_url_sport = result.defaultLink;
@@ -1212,31 +1207,62 @@
             if(sessionStorage.is_login=="true"){
                 return;
             }
-            loginObj.loginDialog = BootstrapDialog.show({
-                title:'会员登录',
-                type: BootstrapDialog.TYPE_WARNING,
-                message: function(dialog) {
-                    var $message = $('<div></div>');
-                    var pageToLoad = dialog.getData('pageToLoad');
-                    $message.load(pageToLoad);
+            loginObj.loginDialog = layer.open({
+                content:$("#login-dialog").html(),
+                title:"会员登录",
+                btn:"登录",
+                area:["400px","540px"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    $(".layui-layer-btn0").remove();
+                    $("#loginForm .code._vr_captcha_box").after('<a href="javascript:void(0);" class="layui-layer-btn0 btn-login dialog_login">登录</a>');
+                    // 提示框类型
+                    $(layer).addClass("layui-login-dialog");
+                    if(isOpenCaptcha){
+                        $("._vr_captcha_code","#loginForm").attr("src","${data.contextInfo.playerCenterContext}captcha/loginDialog.html?t="+ new Date().getTime().toString(36));
+                        $("._vr_captcha_box").show();
+                    }
 
-                    return $message;
+                    $("#loginForm input").keydown(function(e) {
+                        var $this = $(this);
+                        if (e.which == 13) {
+                            if($(".dialog_login",$this.parents("form")).css("pointer-events")!="none"){
+                                $(".dialog_login",$this.parents("form")).trigger("click");
+                            }
+                        }
+                    });
+                    $('#loginForm .dialog_login').on("click",function(e){
+                        var loginText = $(e.target).text();
+                        /* 阻止重复提交 By Faker */
+                        if(loginText==""){
+                            $(e.target).css("pointer-events","none");
+                        }else{
+                            $(e.target).text("登录中").css("pointer-events","none");
+                        }
+                        var $this = $(this);
+                        login($this,loginObj.closeLoginPopup,loginText);
+                    });
+
+                    $("._vr_captcha_code").on("click",function(e){
+                        var $this = $(this);
+                        var src = "${data.contextInfo.playerCenterContext}captcha/"+$this.data().code+".html?t=" + new Date().getTime().toString(36);
+                        $this.prop("src",src)
+                    });
                 },
-                onhide: function(dialogRef){
+                end:function () {
+                    console.log("关闭");
                     if(sessionStorage.is_login=="true"){
                         callback && callback();
                     }else{
                         callback && callback(true);
                     }
                     return true;
-                },
-                data: {
-                    'pageToLoad': '/commonPage/modal/system-login.html'
                 }
             });
         },
         closeLoginPopup:function(){
-            loginObj.loginDialog && loginObj.loginDialog.close();
+            loginObj.loginDialog && layer.close(loginObj.loginDialog);
         },
         doLogin:function($this,callback,loginText){
             login($this,null,loginText);
@@ -1511,63 +1537,6 @@
         }
     }
 
-    //游戏收藏
-    function gameCollect(e){
-        if (sessionStorage.is_login != "true") {
-            loginObj.getLoginPopup();
-        }else{
-            var gameId = $(e).data("game-id");
-            var collect = $(e).data("game-collect");
-            $.ajax({
-                url: "/siteGame/updateGameCollect.html",
-                dataType:"JSON",
-                type: 'POST',
-                data:{"result.gameId":gameId,"isCollect":collect},
-                success: function(data) {
-                    alert(data.msg);
-                },
-                error:function (data) {
-                    alert(data.msg);
-                }
-            });
-        }
-    }
-
-    //游戏评分
-    function gameScore(e){
-        if (sessionStorage.is_login != "true") {
-            loginObj.getLoginPopup();
-        }else{
-            var gameId = $(e).data("game-id");
-            var score = $(e).data("score");
-            $.ajax({
-                url: "/siteGame/updateGameScore.html",
-                dataType:"JSON",
-                type: 'POST',
-                data:{"result.gameId":gameId,"result.score":score},
-                success: function(data) {
-                    alert(data.msg);
-                },
-                error:function (data) {
-                    alert(data.msg);
-                }
-            });
-        }
-    }
-
-    //最受欢迎
-    function maxGameTag(e) {
-        var _href = $(e).data("href");
-        $.ajax({
-            url:_href,
-            dataType:"html",
-            success:function(data){
-                $("._vr_itemCasino").html(data);
-                maintainCheck();
-            }
-        });
-    }
-
     //ajax请求后访问
     $(document).ajaxComplete(function (event, xhr, settings) {
         var _this = this;
@@ -1743,12 +1712,7 @@
      * @param msg
      */
     function dialogMsg(msg) {
-        BootstrapDialog.alert({
-            title: '提示',
-            message: msg,
-            type: BootstrapDialog.TYPE_WARNING,
-            buttonLabel: '确定'
-        });
+        layerDialogNormal(msg,'提示','layui-layer-brand',['360px']);
     }
 
     function canShowLottery(id){
@@ -1775,7 +1739,6 @@
                 console.log(data.nextLotteryTime);
                 console.log(data.drawTimes);
                 console.log(data.isEnd);
-                $(".hongbao-msg-tips").show();
                 if(data.drawTimes&&data.drawTimes>0){
                     $(".hongbao").removeClass('disabled');
                     $("#tip-msgs").show();
@@ -1822,6 +1785,7 @@
                     }
                     return;
                 }
+                $(".hongbao-msg-tips").show();
                 //setDivCss();
                 $("[name='gb.token']").val(data.token);
                 $("#activity_message_id").val(id);
@@ -1874,7 +1838,562 @@
         </#if>
         }
     }
+
+    //电子页面 Max 标签
+    function maxGameTag(e) {
+        var _href = $(e).data("href");
+        $.ajax({
+            url:_href,
+            dataType:"html",
+            success:function(data){
+                $("._vr_itemCasino").html(data);
+                maintainCheck();
+            }
+        });
+    }
+
+    //游戏收藏
+    function gameCollect(e){
+        if (sessionStorage.is_login != "true") {
+            loginObj.getLoginPopup();
+        }else{
+            var apiId = getlocationParam("apiId");
+            var gameId = $(e).attr("data-game-id");
+            var collect = $(e).attr("data-game-collect")
+            $.ajax({
+                url: "/siteGame/updateGameCollect.html",
+                dataType:"JSON",
+                type: 'POST',
+                data:{"result.apiId":apiId,"result.gameId":gameId,"isCollect":collect},
+                success: function(data) {
+                    if(data.state){
+                        if(data.cancelCollect){
+                            $(".fav_a").removeClass("fav_ed")
+                            $(".fav_a").attr("data-game-collect","true");
+                        }else{
+                            $(".fav_a").addClass("fav_ed")
+                            $(".fav_a").attr("data-game-collect","false");
+                        }
+                    }
+                    alert(data.msg);
+                },
+                error:function (data) {
+                    alert(data.msg);
+                }
+            });
+        }
+    }
+
+    //游戏评分
+    function gameScore(e){
+        if (sessionStorage.is_login != "true") {
+            loginObj.getLoginPopup();
+        }else{
+            var gameId = $(e).data("game-id");
+            var score = $(e).data("score");
+            $.ajax({
+                url: "/siteGame/updateGameScore.html",
+                dataType:"JSON",
+                type: 'POST',
+                data:{"result.gameId":gameId,"result.score":score},
+                success: function(data) {
+                    alert(data.msg);
+                },
+                error:function (data) {
+                    alert(data.msg);
+                }
+            });
+        }
+    }
+
+    //游戏内页tag-热门游戏,推荐游戏,类似游戏
+    function gameTagList(e){
+        $(e).parent().parent().find(".active").removeClass("active");
+        $(e).addClass("active");
+        var apiId = getlocationParam("apiId");
+        var gameTag = $(e).data("tag");
+        $.ajax({
+            url: "/commonPage/gamePage/casino-game-tag.html?apiType=2&apiId="+apiId+"&gameTag="+gameTag,
+            dataType:"html",
+            success: function(data) {
+                $("._vr_casino-game-tag").html(data);
+                maintainCheck();
+            }
+        });
+    }
+
+    //游戏内页tag-我的收藏
+    function myCollectList(e){
+        $(e).parent().parent().find(".active").removeClass("active");
+        $(e).addClass("active");
+        var apiId = getlocationParam("apiId");
+        $.ajax({
+            url: "/siteGame/myCollectList.html",
+            type: 'POST',
+            dataType:"json",
+            data:{"search.apiId":apiId},
+            success: function(data) {
+                var html = $("#casinoGameTag").render({data: data});
+                $("._vr_casino-game-tag").html(html);
+                maintainCheck();
+            }
+        });
+    }
+
+    //回车搜索
+    $("._vr_gameSearch").on("keydown","input[name='gameName']",function(e) {
+        if (e.which == 13) {
+            $("._vr_gameSubmit").trigger("click");
+        }
+    });
+
+    $("._vr_gameSubmit").on("click",function (e) {
+        var apiId = $("input[name='apiId']").val()==''?'':$("input[name='apiId']").val();
+        var gameTag = $("input[name='gameTag']").val()==''?'':encodeURIComponent($("input[name='gameTag']").val());
+        var gameName = $("input[name='gameName']").val()==''?'':encodeURIComponent($("input[name='gameName']").val());
+        $.ajax({
+            url: "/commonPage/gamePage/casino-game-tag.html?apiType=2&apiId="+apiId+"&gameTag="+gameTag,
+            dataType:"html",
+            data:{gameName:gameName},
+            success: function(data) {
+                $("._vr_casino-game-tag").html(data);
+            }
+        });
+
+    })
+
+    // 新弹窗插件配置
+    $(function () {
+        // layer默认配置
+        layer.config({
+            type:0,
+            move:".layui-layer-title",
+            title:true,
+            offset:"auto",
+            btnAlign:"r",
+            closeBtn:"2",
+            shade:[0.7,"#000"],
+            shadeClose:true,
+            time:0,
+            resize:false
+        });
+    });
+    // layer弹窗函数开始
+    function layerDialogNormal(content,title,skin,area,btnRound,btnBorder){
+        /*
+         * content:弹窗的提示内容
+         * skin:主题颜色
+         * area:宽高
+         */
+        layer.open({
+            content:content,
+            title:title,
+            skin:skin,
+            area:area,
+            btn:["确定"],
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("normal-dialog");
+                // 提示框按钮类型
+                if(!!btnRound){
+                    $(layer).addClass("dialog-btn-round");
+                }
+                if(!!btnBorder){
+                    $(layer).addClass("dialog-btn-border");
+                }
+            }
+        });
+    }
+    function layerDialogIndex(imgSrc,title,skin,area,transparent,btnAlign,txtDialog){
+        /*
+         * content:弹窗的提示内容
+         * skin:主题颜色
+         * area:宽高
+         */
+        var content = '';
+        if(!!txtDialog){
+            content = imgSrc;
+            layer.open({
+                type:1,
+                content:content,
+                title:title,
+                move:move,
+                btnAlign:btnAlign,
+                skin:skin,
+                area:area,
+                btn:["关闭"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("index-modal ");
+                    // 是否透明
+                    if(!!transparent){
+                        $(layer).addClass("index-modal-transparent");
+                    }
+                },
+                cancel:function(){
+                    if($("#home-dialog-checkbox").is(":checked")){
+                        localStorage.setItem("<#if updateTime??>${updateTime}</#if>-close-home-dialog",true);
+                    }
+                },
+                yes:function(){
+                    if($("#home-dialog-checkbox").is(":checked")){
+                        localStorage.setItem("<#if updateTime??>${updateTime}</#if>-close-home-dialog",true);
+                    }
+                    layer.closeAll();
+                }
+            });
+        }else{
+            var src = imgSrc;
+            var img = new Image();
+            img.src = src;
+            img.addEventListener('load',function () {// 图片加载完后再弹出弹窗以免layer的动态计算位置出错
+                <#if link??>
+                    var _href = "${link}";
+                    if(_href!=undefined && _href!=""){
+                        if(_href.indexOf("http")>-1){
+                            _href = _href;
+                        }else{
+                            _href = "http://"+_href;
+                        }
+                        if(_href.indexOf("\$\{website\}")>-1){
+                            _href = _href.replace("\$\{website\}",window.location.host);
+                        }
+                    }else{
+                        _href = "javascript:void(0)";
+                    }
+                    img =  $("<a href='"+_href+"'></a>").append(img);
+                    content = $("<div></div>").append($(img)).append('<div class="checkbox-wrap"><input type="checkbox" id="home-dialog-checkbox" >关闭后，不再显示本弹窗广告 <div>');
+                <#else>
+                    content = $("<div></div>").append($(img)).append('<div class="checkbox-wrap"><input type="checkbox" id="home-dialog-checkbox" >关闭后，不再显示本弹窗广告 <div>');
+                </#if>
+                layer.open({
+                    type:1,
+                    content:content.html(),
+                    title:title,
+                    move:move,
+                    btnAlign:btnAlign,
+                    skin:skin,
+                    area:area,
+                    btn:["关闭"],
+                    success: function(layer){
+                        // 重写关闭按钮
+                        $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                        // 提示框类型
+                        $(layer).addClass("index-modal ");
+                        // 是否透明
+                        if(!!transparent){
+                            $(layer).addClass("index-modal-transparent");
+                        }
+                    },
+                    cancel:function(){
+                        if($("#home-dialog-checkbox").is(":checked")){
+                            localStorage.setItem("<#if updateTime??>${updateTime}</#if>-close-home-dialog",true);
+                        }
+                    },
+                    yes:function(){
+                        if($("#home-dialog-checkbox").is(":checked")){
+                            localStorage.setItem("<#if updateTime??>${updateTime}</#if>-close-home-dialog",true);
+                        }
+                        layer.closeAll();
+                    }
+                });
+            },false);// 图片监听事件结束
+        }
+        var move = '';
+        if(!!transparent){
+            move=".layui-layer-content";
+        }else{
+            move='.layui-layer-title';
+        }
+
+    }
+    function layerDialogDownload(){
+        layer.tab({
+            area: ['640px','380px'],
+            move:".layui-layer-title",
+            tab: [{
+                title: '<div class="tit-wrap"><div class="tit">手机APP下载</div><div class="sub-tit">安卓苹果通用</div></div>',
+                content: $("#download-mobile").html()
+            }, {
+                title: '<div class="tit-wrap"><div class="tit">API客户端下载</div><div class="sub-tit">桌面安装版，APP版齐全</div></div>',
+                content: $("#download-pc").html()
+            }],
+            success:function(layer){
+                // 切换时，动态计算内容框的高度
+                $('body').on("click",".download-dialog .layui-layer-title>span",function(){
+                    var index = $(this).index();
+                    $(".layui-layer-content").css({height:$(".layui-layer-tabli").eq(index).outerHeight()});
+                    $(".download-dialog").css({height:$(".layui-layer-tabli").eq(index).outerHeight()+110});
+                    // 动态计算top的值
+                    var l_h = ($(window).height()-$(layer).height())/2;
+                    $(layer).css({top:l_h});
+                });
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("download-dialog");
+            }
+        });
+    }
+    function layerDialogForgetAccount(content,title,skin,area,btnRound,btnBorder){
+        /*
+         * content:弹窗的提示内容
+         * skin:主题颜色
+         * area:宽高
+         */
+        layer.open({
+            content:content,
+            title:title,
+            skin:skin,
+            area:area,
+            btn:["立即联系客服","取消"],
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("forget-dialog");
+                // 提示框按钮类型
+                if(!!btnRound){
+                    $(layer).addClass("dialog-btn-round");
+                }
+                if(!!btnBorder){
+                    $(layer).addClass("dialog-btn-border");
+                }
+            },
+            yes:function () {
+                getCustomerService();
+            }
+        });
+    }
+    function layerDialogNotice(content,title,skin,area,btnRound,btnBorder,multiplePages){
+        /*
+         * content:弹窗的提示内容
+         * skin:主题颜色
+         * area:宽高
+         */
+        var btnText = '';
+        if(!!multiplePages){
+            btnText=["上一页","下一页"];
+        }else{
+            btnText =["关闭"];
+        }
+        // 发起ajax请求
+        $.ajax({
+            url: '/commonPage/modal/notice-content.html?pageNumber=' + 1 + "&apiType=announcementPage",
+            type: "POST",
+            success: function (data) {
+                //$(".msgbox").html(data);
+                content =$("<div></div>").append($("<div></div>").html(data).find(".content-wrap"));
+                var btn1 = $("<div></div>").html(data).find(".layui-layer-btn0");
+                var btn2 = $("<div></div>").html(data).find(".layui-layer-btn1");
+                layer.open({
+                    content:$(content).html(),
+                    title:title,
+                    skin:skin,
+                    area:area,
+                    id:"notice-d",
+                    btn:btnText,
+                    success: function(layer){
+                        // 重写关闭按钮
+                        $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                        // 提示框类型
+                        $(layer).addClass("notice-dialog");
+                        // 按钮类型
+                        if(!!multiplePages){
+                            $(layer).addClass("notice-dialog-two-btn");
+                        }else{
+                            $(layer).addClass("notice-dialog-one-btn");
+                        }
+                        // 提示框按钮类型
+                        if(!!btnRound){
+                            $(layer).addClass("dialog-btn-round");
+                        }
+                        if(!!btnBorder){
+                            $(layer).addClass("dialog-btn-border");
+                        }
+                        // 翻页逻辑
+                        if(!!multiplePages){
+                            $(".notice-dialog .layui-layer-btn>*").remove();
+                            $(".notice-dialog .layui-layer-btn").append(btn1).append(btn2);
+                        }
+                        // 内容启用滚动条
+                        $(".layui-layer-content .content-wrap").niceScroll({
+                            cursorcolor:"#999",
+                            cursorwidth:"8px"
+                        });
+                    },
+                    yes:function () {
+                        layer.closeAll();
+                    },
+                    btn2:function (index,layer) {
+                        if(!!multiplePages){
+                            return false;
+                        }
+                    }
+                });
+            }
+        });
+    }
+    function layerDialogRegister(content,title,skin,area,btnRound,btnBorder){
+        /*
+         * content:弹窗的提示内容
+         * skin:主题颜色
+         * area:宽高
+         */
+        layer.open({
+            content:content,
+            title:title,
+            skin:skin,
+            area:area,
+            shadeClose:false,
+            closeBtn: false,
+            btnAlign:'c',
+            btn:["我同意","我不同意"],
+            success: function(layer){
+                // 重写关闭按钮
+               // $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("register-dialog");
+                // 提示框按钮类型
+                if(!!btnRound){
+                    $(layer).addClass("dialog-btn-round");
+                }
+                if(!!btnBorder){
+                    $(layer).addClass("dialog-btn-border");
+                }
+                // 内容启用滚动条
+                $(".layui-layer-content .register-content-wrap").niceScroll({
+                    cursorcolor:"#999",
+                    cursorwidth:"8px"
+                });
+                $(".layui-layer-content .register-content-wrap .after").css({height:$(".layui-layer-content .register-content-wrap .col-md-12").outerHeight()})
+            },
+            btn2:function(){
+                window.location="/";
+            }
+        });
+    }
+    // layer弹窗函数结束
 </script>
 
 <#--流量统计代码-->
 <#if data.siteStatistics?has_content>${data.siteStatistics}</#if>
+
+<!--登录弹窗内容-->
+<div id="login-dialog" style="display:none;">
+    <form  id="loginForm" method="post">
+        <input type="hidden" name="type" value="dialog">
+        <div class="form-group account">
+            <input type="text" class="form-control" placeholder="账号" name="username" />
+            <div class="tip" style="display: none;">请输入账号！</div>
+        </div>
+        <div class="form-group password">
+            <input type="password" class="form-control" placeholder="密码" name="password" />
+            <div class="tip" style="display: none;">请输入密码！</div>
+        </div>
+        <div class="form-group code _vr_captcha_box" style="display: none;">
+            <input type="text" class="form-control" placeholder="验证码" name="captcha" maxlength="4" />
+            <img class="_vr_captcha_code" data-code="loginDialog">
+            <div class="tip" style="display: none;">请输入验证码！</div>
+        </div>
+        <#--<a href="javascript:void(0);" class="btn-login dialog_login">登录</a>-->
+        <a  target="_blank" href="commonPage/forgetPwd.html" class="forget-pas">忘记密码？</a>
+        <span style="font-size: 14px;color: #666;margin-right: 10px;"> 还没有账号？</span>
+        <a href="/register.html" class="btn-register">+加入会员</a>
+    </form>
+</div>
+
+<!--下载弹窗内容-->
+<div id="download-mobile" style="display:none;">
+    <div class="qrcode">
+        <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+    </div>
+    <p>使用安卓，苹果手机浏览器扫描二维码，<br />
+        即可下载APP（不可用微信扫码）
+    </p>
+</div>
+<div id="download-pc" style="display: none;">
+    <div class="tit"><span>API名称</span><span>下载</span></div>
+    <ul class="api-list">
+        <li>
+            <div class="api-name ag">
+                <div class="nam">AG客户端</div>
+                <div class="tip">登录请添加前缀dawoo_， <br />如账号：dawoo_user01</div>
+            </div>
+            <div class="download-btn-group">
+                <a href="" class="btn-android">安卓APP
+                    <div class="app-qr">
+                        <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                    </div>
+                </a>
+                <a href="" class="btn-ios">苹果APP
+                    <div class="app-qr">
+                        <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                    </div>
+                </a>
+                <a href="" class="btn-pc">电脑客户端</a>
+            </div>
+        </li>
+        <li>
+            <div class="api-name pt">
+                <div class="nam">PT客户端</div>
+                <div class="tip">登录请添加前缀dawoo_， <br />如账号：dawoo_user01</div>
+            </div>
+            <div class="download-btn-group">
+                <a href="" class="btn-android">安卓APP
+                    <div class="app-qr">
+                        <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                    </div>
+                </a>
+                <a href="" class="btn-ios">苹果APP
+                    <div class="app-qr">
+                        <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                    </div>
+                </a>
+                <a href="" class="btn-pc">电脑客户端</a>
+            </div>
+        </li>
+        <li>
+            <div class="api-name mg">
+                <div class="nam">MG客户端</div>
+                <div class="tip">登录请添加前缀dawoo_， <br />如账号：dawoo_user01</div>
+            </div>
+            <div class="download-btn-group">
+                <a href="" class="btn-android">安卓APP
+                    <div class="app-qr">
+                        <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                    </div>
+                </a>
+                <a href="" class="btn-ios">苹果APP
+                    <div class="app-qr">
+                        <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                    </div>
+                </a>
+                <a href="" class="btn-pc">电脑客户端</a>
+            </div>
+        </li>
+        <li>
+            <div class="api-name bb">
+                <div class="nam">BBIN客户端</div>
+                <div class="tip">登录请添加前缀dawoo_， <br />如账号：dawoo_user01</div>
+            </div>
+            <div class="download-btn-group">
+                <a href="" class="btn-android">安卓APP
+                    <div class="app-qr">
+                        <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                    </div>
+                </a>
+                <a href="" class="btn-ios">苹果APP
+                    <div class="app-qr">
+                        <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                    </div>
+                </a>
+                <a href="" class="btn-pc">电脑客户端</a>
+            </div>
+        </li>
+    </ul>
+</div>
