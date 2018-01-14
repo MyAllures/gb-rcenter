@@ -101,7 +101,6 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
                     });
                 } else {
                     $("#deposit").html(map[key]);
-                    /*$("#deposit").html(window.top.page.depositAccount.online);*/
                     page.formSelector = "#scanForm";
                     _this.bindFormValidation();
                     // page.ScanCode.bindRechargeAmount($("#submitAmount"));
