@@ -28,9 +28,7 @@ define(['common/MobileBasePage'], function (Mobile) {
             mui('.popover-scroll').scroll();
             mui('body').on('shown', '.mui-popover', function(e) {
                 if(e.detail.id=='advisoryType') {
-                    $("input[name='result.advisoryTitle']").blur();
-                    $("textarea[name='result.advisoryContent']").blur();
-                    $("input[name='captcha']").blur();
+                    t.changeBlur();
                 }
             });
             mui('body').on('hidden', '.mui-popover', function(e) {
