@@ -5240,3 +5240,5 @@ header.blue{background:#1766bb;}
 
 /* 存款页面修复 */
 .deposit-scroll-wrapper{padding-bottom: 50px !important;}
+/* 资金记录 类型选择下拉框调整 */
+#transactionType {   width: 170px;   text-align: center;}
