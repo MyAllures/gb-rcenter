@@ -48,6 +48,16 @@ define(['site/deposit/BaseCompanyDeposit','clipboard'], function (BaseCompanyDep
             };
             this.submit(options);
             this.copy();
+            this.os = this.whatOs();
+            if(this.os == 'android') {
+                window.addEventListener("resize", function() {
+                    if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
+                        window.setTimeout(function() {
+                            document.activeElement.scrollIntoViewIfNeeded();
+                        },0);
+                    }
+                })
+            }
         },
         //按钮复制功能
         copy :function () {
