@@ -1557,12 +1557,12 @@ div.menu-popover {width: 120px;}
     border-radius: 50%;
     box-sizing: border-box;
 }
-.waybill-wrap.pk10-gyh table td:nth-child(odd) i{
+.waybill-wrap.pk10-gyh table td.big i,.waybill-wrap.pk10-gyh table td.odd i{
 	border: 2px solid #e23b2a;
     color: #e23b2a;
     background: none;
 }
-.waybill-wrap.pk10-gyh table td:nth-child(even) i{
+.waybill-wrap.pk10-gyh table td.small i,.waybill-wrap.pk10-gyh table td.even i{
     border: 2px solid #2a85e2;
     color: #2a85e2;
     background: none;
