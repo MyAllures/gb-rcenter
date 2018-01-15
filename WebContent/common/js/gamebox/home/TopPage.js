@@ -151,7 +151,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 this.pages[this.lastHash].refresh = (refresh || false);
                 window.location.hash = this.lastHash;
             } else {
-                window.location = root;
+                window.location = root+"/";
             }
         },
         /**
