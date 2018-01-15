@@ -63,11 +63,11 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
                 });
             });
 
-            //如果第一个元素是在线支付,扫码支付默认选中
+            //如果第一个元素不是比特币支付或数字货币支付则默认选中
             var $depositWay = $("#depositWay li>a:first");
             if ($depositWay) {
                 var key = $("#depositWay li:first").attr("key");
-                if (key && (key == 'online_deposit' || key == 'wechatpay_scan' || key == 'alipay_scan' || key == 'qqwallet_scan')) {
+                if (key && (key != 'bitcoin_fast' && key != 'digiccyAccountInfo')) {
                     mui.trigger($depositWay[0], "tap");
                 }
             }
