@@ -33,6 +33,7 @@
             <div class="clearfix">
                 <div class="top-link pull-right">
                     <ul class="list-inline">
+                        <li><a href="javascript:void(0)" onclick="layerDialogDownload()"><span class="gui gui-mobile" style="font-size:  17px;vertical-align: top;margin-right: 5px;"></span>下载</a></li>
                         <li><a href="javascript:void(0)" class="mobileBetting">手机投注</a></li>
                         <li><a href="javascript:void(0)" onclick="AddFavorite()">加入收藏</a></li>
                         <li class="dropdown lang">
@@ -104,6 +105,9 @@
                                                                     <#if apiTypeId=='2'>
                                                                    data-href="casino.html?apiType=2&apiId=${relationMap.apiId?string.computer}&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>"
                                                                    data-mt-ic="_vr_mt_casino_${relationMap.apiId?string.computer}"
+                                                                        <#elseif apiTypeId=='5'>
+                                                                   data-href="casino.html?apiType=2&apiId=${relationMap.apiId?string.computer}&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>"
+                                                                   data-mt-ic="_vr_mt_casino_${relationMap.apiId?string.computer}"
                                                                     <#elseif apiTypeId=='3' && relationMap.apiId?string.computer!="10">
                                                                    data-href="sports-detail.html?apiId=${relationMap.apiId?string.computer}" data-sports="sports"
                                                                     </#if>
@@ -118,6 +122,8 @@
                                                                 <p><a class="_vr_mt_check _vr_mt_gray _vr_mt_slogan enter-link" data-api="${relationMap.apiId?string.computer}" href="javascript:void(0)" data-apitype="${apiTypeId}"
                                                                     <#if apiTypeId=='2'>
                                                                       data-href="casino.html?apiType=2&apiId=${relationMap.apiId?string.computer}&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>"
+                                                                        <#elseif apiTypeId=='5'>
+                                                                      data-href="casino.html?apiType=2&apiId=${relationMap.apiId?string.computer}&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>"
                                                                     <#elseif apiTypeId=='3' && relationMap.apiId?string.computer!="10">
                                                                       data-href="sports-detail.html?apiId=${relationMap.apiId?string.computer}" data-sports="sports"
                                                                     </#if>
@@ -131,6 +137,24 @@
                                             </#list>
                                         </#if>
                                         </ul>
+                                        <div id="cont_qipai">
+                                            <li>
+                                                <dl class="sub-box api-item">
+                                                    <dt>
+                                                        <a class="_vr_mt_check" data-api="5" href="casino.html?apiType=2&amp;apiId=5&amp;gameTag=hot_game" data-apitype="2" data-href="casino.html?apiType=2&amp;apiId=5&amp;gameTag=hot_game" data-mt-ic="_vr_mt_casino_5">
+                                                            <span class="apiicon c-qp shake shake-little"></span>
+                                                        </a>
+                                                    </dt>
+                                                    <dd>
+                                                        <p><span>最具人气的棋牌游戏</span></p>
+                                                        <p><a class="_vr_mt_check _vr_mt_gray _vr_mt_slogan enter-link" data-api="5" href="casino.html?apiType=2&amp;apiId=5&amp;gameTag=hot_game" data-apitype="2" data-href="casino.html?apiType=2&amp;apiId=5&amp;gameTag=hot_game">
+                                                            棋牌游戏</a></p>
+                                                    </dd>
+                                                </dl>
+                                            </li>
+                                        </div>
+
+
                                     </div>
                                     <#if data.siteApiTypeRelationMap['${apiTypeId}']??>
                                         <#assign apiSize = data.siteApiTypeRelationMap['${apiTypeId}']?size>
