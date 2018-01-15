@@ -55,8 +55,11 @@ define(['site/deposit/BaseCompanyDeposit','clipboard'], function (BaseCompanyDep
             var clipboard = new Clipboard('.copy');
             clipboard.on('success',function (e) {
                 _this.toast(window.top.message.deposit_auto['复制成功']);
-                e.clearSelection();
-            })
+            });
+
+            clipboard.on('error', function(e) {
+                _this.toast("复制按钮不可用，请长按文字手动复制信息");
+            });
         }
     });
 });
