@@ -1531,19 +1531,21 @@ div.menu-popover {width: 120px;}
     display: block;
     width: 19px;
     height: 19px;
-    font-style: normal;
     text-align: center;
-    line-height: 20px;
+    line-height: 16px;
     font-size: 11px;
     border-radius: 50%;
     box-sizing: border-box;
-    color: #fff;
 }
 .waybill-wrap table td:nth-child(odd) i{
-	background: #e23b2a;
+	/*background: #e23b2a;*/
+	border: 2px solid #e23b2a;
+    color: #e23b2a;
 }
 .waybill-wrap table td:nth-child(even) i{
-    background: #2a85e2;
+    /*background: #2a85e2;*/
+    border: 2px solid #2a85e2;
+    color: #2a85e2;
 }
 
 /*走势图*/
