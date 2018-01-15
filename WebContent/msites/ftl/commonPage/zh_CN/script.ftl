@@ -1745,6 +1745,7 @@
                     $("#tip-msgs").html('你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">'+data.drawTimes+'</span>次抽奖机会');
                     $(".hongbao-time-txt").hide();
                     $(".hongbao-time").hide();
+                    $(".hongbao-msg-tips").show();
                 }else if(data.drawTimes==0){
                     if(data.isEnd=="false"){
                         $(".hongbao").addClass('disabled');
@@ -1785,7 +1786,7 @@
                     }
                     return;
                 }
-                $(".hongbao-msg-tips").show();
+
                 //setDivCss();
                 $("[name='gb.token']").val(data.token);
                 $("#activity_message_id").val(id);
