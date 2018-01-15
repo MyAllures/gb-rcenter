@@ -5208,7 +5208,9 @@ div.setting {
     background-size: cover;    position: absolute;    top: 0;    right: 0;    display: none;}
 .modes-payment >.ct a.active:before{ display: block;}
 .modes-payment >.ct a{ height: 32px;line-height: 32px;font-size: 12px;overflow: visible;text-overflow: clip; white-space: normal;}
-.modes-payment >.ct .long span{font-size:9px;line-height:13px;width:55px;display:inline-block;text-align:left;vertical-align: middle;}
+.modes-payment >.ct .long span{    font-size: 10px;  line-height: 13px;  width: 55px;  display: inline-block;  text-align: left;  vertical-align: middle;   height: 26px;}
+.modes-payment >.ct a.long span .text-two-line{    overflow: hidden;  text-overflow: ellipsis;  display: -webkit-box;  -webkit-line-clamp: 2;  -webkit-box-orient: vertical;}
+.modes-payment >.ct a span .text-two-line{display: inline-block;}
 .modes-payment >.ct li>a.active{border-color:#e2e2e2;}
 .bank-pay-btn {padding:0;position:fixed;bottom:0;left:0;right:0;width:100%;z-index:9;}
 .bank-pay-btn a{border-radius:0;}
