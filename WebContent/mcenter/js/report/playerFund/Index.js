@@ -34,39 +34,39 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
          */
         reset: function (e, option) {
             $("[name='search.userTypes']").val('username');
-            var userType = $("[name='search.userTypes']").siblings('ul').find("a[key='fundSearch.playerName']").text().trim();
+            var userType = $("[name='search.userTypes']").siblings('ul').find("a[key='search.fundSearch.playerName']").text().trim();
             $("[name='search.userTypes']").siblings('button').find("span[prompt='prompt']").text(userType);
             $("#operator").val('');
 
-            $("[name='fundSearch.searchStartDate']").val('');
-            $("[name='fundSearch.searchEndDate']").val('');
+            $("[name='search.fundSearch.searchStartDate']").val('');
+            $("[name='search.fundSearch.searchEndDate']").val('');
 
-            $("[name='fundSearch.registeStartDate']").val('');
-            $("[name='fundSearch.registeEndDate']").val('');
+            $("[name='search.fundSearch.registeStartDate']").val('');
+            $("[name='search.fundSearch.registeEndDate']").val('');
 
-            $("[name='fundSearch.depositStartNum']").val('');
-            $("[name='fundSearch.depositEndNum']").val('');
+            $("[name='search.fundSearch.depositStartNum']").val('');
+            $("[name='search.fundSearch.depositEndNum']").val('');
 
-            $("[name='fundSearch.depositStartAmount']").val('');
-            $("[name='fundSearch.depositEndAmount']").val('');
+            $("[name='search.fundSearch.depositStartAmount']").val('');
+            $("[name='search.fundSearch.depositEndAmount']").val('');
 
-            $("[name='fundSearch.withdrawStartNum']").val('');
-            $("[name='fundSearch.withdrawEndNum']").val('');
+            $("[name='search.fundSearch.withdrawStartNum']").val('');
+            $("[name='search.fundSearch.withdrawEndNum']").val('');
 
-            $("[name='fundSearch.withdrawStartAmount']").val('');
-            $("[name='fundSearch.withdrawEndAmount']").val('');
+            $("[name='search.fundSearch.withdrawStartAmount']").val('');
+            $("[name='search.fundSearch.withdrawEndAmount']").val('');
 
-            $("[name='fundSearch.effectiveStartAmount']").val('');
-            $("[name='fundSearch.effectiveEndAmount']").val('');
+            $("[name='search.fundSearch.effectiveStartAmount']").val('');
+            $("[name='search.fundSearch.effectiveEndAmount']").val('');
 
-            $("[name='fundSearch.favorableStartAmount']").val('');
-            $("[name='fundSearch.favorableEndAmount']").val('');
+            $("[name='search.fundSearch.favorableStartAmount']").val('');
+            $("[name='search.fundSearch.favorableEndAmount']").val('');
 
-            $("[name='fundSearch.rakebackStartAmount']").val('');
-            $("[name='fundSearch.rakebackEndAmount']").val('');
+            $("[name='search.fundSearch.rakebackStartAmount']").val('');
+            $("[name='search.fundSearch.rakebackEndAmount']").val('');
 
-            $("[name='fundSearch.profitLossStartAmount']").val('');
-            $("[name='fundSearch.profitLossEndAmount']").val('');
+            $("[name='search.fundSearch.profitLossStartAmount']").val('');
+            $("[name='search.fundSearch.profitLossEndAmount']").val('');
 
             $(e.currentTarget).unlock();
         },
