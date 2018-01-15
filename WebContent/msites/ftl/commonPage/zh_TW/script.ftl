@@ -1656,6 +1656,7 @@
             success: function(data){
                 console.log(data.nextLotteryTime);
                 console.log(data.drawTimes);
+                $(".hongbao-msg-tips").show();
                 if(data.drawTimes&&data.drawTimes>0){
                     $(".hongbao").removeClass('disabled');
                     $("#tip-msgs").show();
@@ -1702,7 +1703,6 @@
                     }
                     return;
                 }
-                $(".hongbao-msg-tips").show();
                 //setDivCss();
                 $("[name='gb.token']").val(data.token);
                 $("#activity_message_id").val(id);
