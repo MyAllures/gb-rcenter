@@ -1546,6 +1546,29 @@ div.menu-popover {width: 120px;}
     background: #2a85e2;
 }
 
+/*pk10冠亚和 大小单双走势*/
+.waybill-wrap.pk10-gyh table td i {
+    display: block;
+    width: 19px;
+    height: 19px;
+    text-align: center;
+    line-height: 16px;
+    font-size: 11px;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.waybill-wrap.pk10-gyh table td:nth-child(odd) i{
+	border: 2px solid #e23b2a;
+    color: #e23b2a;
+    background: none;
+}
+.waybill-wrap.pk10-gyh table td:nth-child(even) i{
+    border: 2px solid #2a85e2;
+    color: #2a85e2;
+    background: none;
+}
+
+
 /*走势图*/
 .zst-cl-1{overflow:hidden}.zst-cl-1 .item{overflow:hidden}.zst-cl-1 .item span{background:initial;height:23px;line-height:23px;display:block;text-align:center}.zst-cl-1 .item:nth-child(even){background:#f9f9f9}.zst-cl-1 .item:nth-child(odd){background:#eee}.zst-cl-1 .item span{text-align:center;border-left:solid #E6E6E6 1px;display:inline-block;width:7.5%;margin:0;padding:0;float:left}.zst-cl-1{width:100%;overflow:hidden}.zst-cl-1 .item span i{margin:2px auto}.zst-cl-1 .item span:nth-child(1){border-left:none;width:25%}.zst-cl-10{height:100%;overflow:hidden}.zst-cl-10 .copyright{margin-top:0}.zst-cl-20 .item{white-space:nowrap}.zst-cl-20 .item span{width:2rem}.zst-cl-21,.zst-cl-21 span{overflow:hidden;margin:0;padding:0;height:2rem!important;line-height:2rem!important}.zst-cl-21 span i,.zst-cl-21 span var{height:1rem;line-height:1rem;margin:0!important;padding:0!important}.zst-cl-21 span i{display:inline-block;float:left}.zst-cl-50{overflow:hidden;position:relative;height:inherit}.zst-cl-51{position:absolute;left:0}.zst-cl-102{height:2rem!important;line-height:2rem!important}.cl-300{width:100%;overflow:hidden}.pcAndMobile{text-align:center;margin:15px 0}.cl-608 input{width:2.9rem}.glxq{color:#fa6200}.gonggao_title{font-size:.7rem;margin-bottom:5px;color:#fa6200}.gonggao_time{font-size:.6rem;color:#8D8D8D;margin-bottom:5px}.gonggao_content{font-size:.6rem;padding:0!important;margin:0!important}
 /*走势图样式*/
