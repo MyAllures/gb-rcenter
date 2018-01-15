@@ -48,8 +48,5 @@
             $(this).find(".enter-link").text(orgi);
         })
     }
-
-    $(".navbar-sub .sub-content:eq(1) .list-unstyled").find("li").eq(1).after($("#cont_qipai").html())
-
 </script>
 
