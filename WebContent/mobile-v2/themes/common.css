@@ -1595,12 +1595,12 @@ body.has-srchbar .electronic-srch{
     font-size: 12px;
     margin-bottom: 5px;
     text-align: left;
-    display: -webkit-box;
+/* 注释后，转账页面的文字左对齐   display: -webkit-box;
     display: -webkit-flex;
     display: flex;
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
-    justify-content: space-between;
+    justify-content: space-between;*/
 }
 .gb-bankcard >.ct >.ct p span{
     color: #999999;
