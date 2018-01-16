@@ -102,7 +102,7 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
                     url = url + "?ad=" + apiId;
                     this.gotoUrl(url);
                 } else {
-                    gotoGame(url, apiId);
+                    gotoGame(url);
                 }
             } else if (this.os === 'app_android') {
                 if (apiId == 22 && url.indexOf('/mainIndex.') == -1 && url.indexOf('/lottery/') == -1) {

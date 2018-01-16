@@ -260,10 +260,12 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                     //第一个选项卡
                     if (td_col >= 0) {
                         if (arr_res[i].flag_dx == '小') {
-                            $("#rmTr" + n + " td").eq(td_col).html("<i style='background-color:#e23b2a'>小</i>");
+                            $("#rmTr" + n + " td").eq(td_col).addClass("small");
+                            $("#rmTr" + n + " td").eq(td_col).html("<i>小</i>");
                             n++;
                         } else {
-                            $("#rmTr" + n + " td").eq(td_col).html("<i style='background-color:#2a85e2'>大</i>");
+                            $("#rmTr" + n + " td").eq(td_col).addClass("big");
+                            $("#rmTr" + n + " td").eq(td_col).html("<i>大</i>");
                             n++;
                         }
                     }
@@ -277,10 +279,12 @@ define(['site/hall/Common', 'site/plugin/template'], function (Common, Template)
                     //第三个选项卡
                     if (tab3_td_col >= 0) {
                         if (arr_dsInfo[i].flag_ds == '单') {
-                            $("#rm3Tr" + tab3_n + " td").eq(tab3_td_col).html("<i style='background-color:#e23b2a'>单</i>")
+                            $("#rm3Tr" + tab3_n + " td").eq(tab3_td_col).addClass("odd");
+                            $("#rm3Tr" + tab3_n + " td").eq(tab3_td_col).html("<i>单</i>")
                             tab3_n++;
                         } else {
-                            $("#rm3Tr" + tab3_n + " td").eq(tab3_td_col).html("<i style='background-color:#2a85e2'>双</i>");
+                            $("#rm3Tr" + tab3_n + " td").eq(tab3_td_col).addClass("even");
+                            $("#rm3Tr" + tab3_n + " td").eq(tab3_td_col).html("<i>双</i>");
                             tab3_n++;
                         }
                     }

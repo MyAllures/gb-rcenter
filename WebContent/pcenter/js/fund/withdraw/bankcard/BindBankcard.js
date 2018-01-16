@@ -139,8 +139,8 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             var data = this.getCurrentFormData(e);
             var btcAddress = $("input[name='result.bankcardNumber']").val();
             var _msgTitle = '<div class="modal-body"><h3 class="m-sm al-center">'+window.top.message.fund_auto['确认提交吗']+'</h3>'+
-                '<div class="form-group clearfix line-hi34 m-b-xxs al-center"><b>比特币钱包地址：</b>'+ btcAddress +'</div>'+
-                '<div class="rgeechar"><div class="title"><span class="tips"><i class="mark plaintsmall"></i><em class="orange">比特币钱包地址将直接影响您的正常收款，请务必再次确认！</em></span></div></div></div>';
+                '<div class="form-group clearfix line-hi34 m-b-xxs al-center"><b>'+window.top.message.fund_auto['比特币钱包地址'] +'：</b>'+ btcAddress +'</div>'+
+                '<div class="rgeechar"><div class="title"><span class="tips"><i class="mark plaintsmall"></i><em class="orange">'+window.top.message.fund_auto['比特币钱包地址将直接影响您的正常收款']+'</em></span></div></div></div>';
             window.top.topPage.showConfirmDynamic(window.top.message.fund_auto['消息'], _msgTitle, window.top.message.fund_auto['提交'], window.top.message.fund_auto['返回修改'], function (confirm) {
                 if (confirm) {
                     window.top.topPage.ajax({
