@@ -639,7 +639,14 @@ select,textarea,input[type="text"],input[type="password"],input[type="datetime"]
 .bank-paidtotal li .bankinfo{background:url("../../images/paidbg.png") no-repeat;width:339px;height:169px;margin-left:20px;padding:5px 5px 0 5px;border:0;}
 .bank-paidtotal li .bankinfo .qrcode{float:left;padding:3px 0 0 10px;}
 .bank-paidtotal li.error .bankinfo{background:url("../../images/paidbg-1.png") no-repeat;}
-.bank-paidtotal h1{padding-top:0}
+.bank-paidtotal h1{
+	padding-top: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 35px;
+}
 .bank-paidtotal li input{float:left;}
 .bank-paidtotal li .space{margin-top:80px;}
 .bank-paidtotal li .spacet{margin-top:5px;margin-right:10px;}
@@ -734,9 +741,10 @@ form > .modal-body{overflow-y:auto;overflow-x:hidden;}
 .exhibition a{color:#fff;}
 
 /*图表模式-列表*/
-.chart-table{margin-left:20px;margin-top:20px;border:1px solid #d3d8dc;border-radius:4px;margin-right:20px;}
-.chart-table th{height:37px;line-height:37px;background:#f7f8f9;text-align:left;padding:10px 0 5px 5px;}
-.chart-table td{border-bottom:1px solid #ededed;text-align:left; padding: 10px 0 8px 5px;}
+.chart-table{margin-left:20px;margin-top:20px;border:1px solid #d3d8dc;border-radius:4px;margin-right:20px;overflow-x: auto;}
+.chart-table th{height:37px;line-height:37px;background:#f7f8f9;text-align:left;padding:5px 0 5px 15px;white-space: nowrap;}
+.chart-table td{border-bottom:1px solid #ededed;text-align:left; padding: 10px 0 8px 15px; white-space: nowrap;}
+.chart-table tr:last-child td{border-bottom: 0;}
 .chart-table select{margin-top:5px}
 .on{font-weight:bold}
 
@@ -1144,7 +1152,7 @@ input.m-20,input.m-20:hover{padding-left:20px;}
 .bdtop3 .pull-left{margin:0 0 0 5px;}
 /*.pagination li:hover{border:1px solid #2772ee;}
 .pagination li.active{border:1px solid #2772ee;}*/
-.pagination li.active > a{background:#2772ee;font-weight:600;color:#fff;}
+/*.pagination li.active > a{background:#2772ee;font-weight:600;color:#fff;}*/
 
 /*清除浮动*/
 .clearfix:before,.clearfix:after,.row:before,.row:after,.control-group:before,.control-group:after{display:table;content:" ";}
@@ -1490,7 +1498,7 @@ a.hidebtn{display:none;}
 .account-info-warp .pull-left select{height:30px;}
 .account-info-warp .pull-left{margin-bottom:0;}
 .account-info-warp .control-group .control-label{width:190px;}
-.account-info-warp .control-group .controls{width:460px;}
+.account-info-warp .control-group .controls{width:460px;max-width: 520px;}
 .account-info-title{position:absolute;left:-260px;font-size:20px;top:35px;width: 260px;text-align: center;}
 .account-info-warp .controls{line-height:30px;}
 .left-ico-message{padding:20px 0;border-left:180px solid #f7f8f9;position:relative;min-height:120px;}
