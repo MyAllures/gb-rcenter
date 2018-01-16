@@ -237,7 +237,15 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
             if(this.ue[idx]){
                 return this.ue[idx].getContent();
             }
+        },
+        /**
+         *
+         * */
+        myCallbak: function (e, option) {
+            if(option.data.state){
+                this.returnValue = true;
+                window.top.topPage.closeDialog();
+            }
         }
-
     });
 });
