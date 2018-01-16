@@ -113,7 +113,7 @@ function apiLogin(obj) {
                 var result = data.gameApiResult;
                 if (apiId == 6) {
                     if (os == 'android' || os == 'app_ios') {
-                        gotoGame(result.defaultLink, apiId);
+                        gotoGame(result.defaultLink);
                     } else {
                         goToUrl(result.defaultLink);
                     }
