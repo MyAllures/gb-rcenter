@@ -37,7 +37,7 @@ var environment = {
   <script src="../../common/js/jquery/plugins/poster/poster.js"></script>
   <!--banner-背景模糊-->
   <script src="../../common/js/jquery/plugins/velocity/background-blur.min.js"></script>
-  <script src="../../common/js/jquery/plugins/velocity/velocity.min.js"></script>
+  <!--<script src="../../common/js/jquery/plugins/velocity/velocity.min.js"></script>-->
   <!--弹窗 -->
   <script>
 jQuery(document).ready(function($) {
@@ -342,63 +342,44 @@ function onInitScrollPic(){
     <div class="right">
     	  <ul class="nav-menu">
     	  	  <li>
-    	  	  	  <a href="#">
-    	  	  	   	  <i class="nav-menu-ico home-ico"></i>
-    	  	  	   	  <span>
-    	  	  	   	  	网站首页
-    	  	  	   	  	<font>HOME</font>
-    	  	  	   	  </span>
+    	  	  	  <a class="nav-menu-ico aip-type-home-ico" href="www.baidu.com">
+    	  	  	   	  <span>网站首页</span>
     	  	  	  </a>
     	  	  </li>
     	  	  <li>
-    	  	  	  <a href="#">
-    	  	  	   	  <i class="nav-menu-ico casino-ico"></i>
-    	  	  	   	  <span>
-    	  	  	   	  	电子游艺
-    	  	  	   	  	<font>CASINO</font>
-    	  	  	   	  </span>
+    	  	  	  <a class="nav-menu-ico aip-type-1-ico" href="#">
+    	  	  	  	<span>真人视讯</span>
     	  	  	  </a>
     	  	  </li>
     	  	  <li>
-    	  	  	  <a href="#">
-    	  	  	   	  <i class="nav-menu-ico lives-ico"></i>
-    	  	  	   	  <span>
-    	  	  	   	  	真人视讯
-    	  	  	   	  	<font>LIVES</font>
-    	  	  	   	  </span>
+    	  	  	  <a class="nav-menu-ico aip-type-2-ico" href="#">
+    	  	  	   	  <span>电子游艺</span>
     	  	  	  </a>
     	  	  </li>
     	  	  <li>
-    	  	  	  <a href="#">
-    	  	  	   	  <i class="nav-menu-ico sports-ico"></i>
-    	  	  	   	  <span>
-    	  	  	   	  	体育竞技
-    	  	  	   	  	<font>SPORTS</font>
-    	  	  	   	  </span>
+    	  	  	  <a class="nav-menu-ico aip-type-3-ico" href="#">
+    	  	  	   	  <span>体育竞技</span>
     	  	  	  </a>
     	  	  </li>
     	  	  <li>
-    	  	  	  <a href="#">
-    	  	  	   	  <i class="nav-menu-ico lottery-ico"></i>
-    	  	  	   	  <span>
-    	  	  	   	  	彩票游戏
-    	  	  	   	  	<font>LOTTERY</font>
-    	  	  	   	  </span>
+    	  	  	  <a class="nav-menu-ico aip-type-4-ico" href="#">
+    	  	  	   	  <span>彩票游戏</span>
     	  	  	  </a>
     	  	  </li>
     	  	  <li>
-    	  	  	  <a href="#">
-    	  	  	   	  <i class="nav-menu-ico promo-ico"></i>
-    	  	  	   	  <span>
-    	  	  	   	  	优惠活动
-    	  	  	   	  	<font>PROMO</font>
-    	  	  	   	  </span>
+    	  	  	  <a class="nav-menu-ico aip-type-5-ico" href="#">
+    	  	  	   	  <span>棋牌游戏</span>
+    	  	  	  </a>
+    	  	  </li>
+    	  	  <li>
+    	  	  	  <a class="nav-menu-ico aip-type-promo-ico" href="#">
+    	  	  	   	  <span>优惠活动</span>
     	  	  	  </a>
     	  	  </li>
     	  </ul>
     </div>
     <div class="banner-bg-t"></div>
-    <div class="banner-bg">
+    <div class="banner-bg" style="background: url(../../pcenter/images/banner-bg.png);">
     	  <img src="../../pcenter/images/banner-bg.png">
     </div>
   </div>
@@ -1209,11 +1190,11 @@ function onInitScrollPic(){
 	            var $avatar = $(this);
 	            var avatarImage = $avatar.find('img').first().attr('src');
 	            avatars.push(avatarImage);
-	            $avatar.click(function(e){
-	                e.preventDefault();
-
-	                $avatarHolderEl.backgroundBlur(avatarImage);
-	            });
+//	            $avatar.click(function(e){
+//	                e.preventDefault();
+//
+//	                $avatarHolderEl.backgroundBlur(avatarImage);
+//	            });
 	        });
 
 	        $avatarHolderEl.backgroundBlur({

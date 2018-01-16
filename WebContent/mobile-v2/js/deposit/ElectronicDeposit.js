@@ -16,9 +16,9 @@ define(['site/deposit/BaseCompanyDeposit'], function (BaseCompanyDeposit) {
             this._super();
             var _this = this;
             this.bindFormValidation();
-            this.bindRechargeAmount();
+            // this.bindRechargeAmount();
 
-            if($("imgQrCodeUrl").val()) {
+            if($("#imgQrCodeUrl").val()) {
                 document.getElementById("saveImage").addEventListener("tap", function (e) {
                     var href = $(this).attr("url");
                     if (_this.os == "app_android") {

@@ -356,8 +356,7 @@
     }
 
 
-    //首页弹窗
-    function homeDialog(){
+    //首页弹窗开始
     <#assign flag = true>
     <#if data.carousels??>
         <#list data.carousels as carousel>
@@ -378,59 +377,38 @@
             </#if>
         </#list>
     </#if>
+    <#if imgSrc?has_content>// 图片是否加链接
+    var _href = "${link}";
+    if(_href!=undefined && _href!=""){
+        if(_href.indexOf("http")>-1){
+            _href = _href;
+        }else{
+            _href = "http://"+_href;
+        }
+        if(_href.indexOf("\$\{website\}")>-1){
+            _href = _href.replace("\$\{website\}",window.location.host);
+        }
+    }else{
+        _href = "javascript:void(0)";
+    }
+    $("#index-modal-content>a").attr("href",_href);
+    </#if>
+    function homeDialog(){
     <#if imgSrc??>
         if(!localStorage.getItem("${updateTime}"+"-close-home-dialog")){// 判读缓存里是否关闭了首页弹窗
-            BootstrapDialog.show({
-                type: BootstrapDialog.TYPE_WARNING,
-                draggable: true,
-                title: "${imgTitl}",
-                size: 'index-modal',
-                message: function(dialog) {
-                    var $message = null;
-                    <#if contentType?has_content && contentType == "1">
-                        var _href = "${link}";
-                        if(_href!=undefined && _href!=""){
-                            if(_href.indexOf("http")>-1){
-                                _href = _href;
-                            }else{
-                                _href = "http://"+_href;
-                            }
-                            if(_href.indexOf("\$\{website\}")>-1){
-                                _href = _href.replace("\$\{website\}",window.location.host);
-                            }
-                        }else{
-                            _href = "javascript:void(0)";
-                        }
-                        $message = $('<a href="'+_href+'"><img  src="${imgSrc}"/></a><div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>');
-                    <#elseif contentType?has_content && contentType =="2" && content?has_content>
-                        $message="${content}"+'<div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">关闭后，不再显示本弹窗广告</div>';
-                    </#if>
-                    return $message;
-                },
-                buttons:[
-                    {
-                        id:'btn-close',
-                        label:'关闭',
-                        cssClass:'btn-close-home-dialog',
-                        action:function(dia){
-                            dia.close();
-                        }
-                    }
-                ],
-                onhidden:function(dia){
-                    if($("#home-dialog-checkbox").is(":checked")){
-                        localStorage.setItem("${updateTime}"+"-close-home-dialog",true);
-                    }
-                }
-            });
-            // 定时关闭
-            setTimeout(function () {
-                $(".index-modal").modal("hide")
-            }, 60000);
+            <#if imgSrc?has_content>
+                layerDialogIndex('#index-modal-content','${imgTitl}','layui-layer-brand',[],'','r');
+            <#elseif content?has_content>
+                layerDialogIndex('<div style="padding:10px;">${content}</div><div class="checkbox-wrap"><input type="checkbox" id="home-dialog-checkbox" />關閉後，不再顯示本彈窗廣告</div>','${imgTitl}','layui-layer-brand',['600px'],'','r',true);
+
+            </#if>
+            setTimeout(function(){
+                layer.closeAll();
+            },60000);
         }// if判断结束
     </#if>
     }
-
+    // 首页弹窗结束
     /*公共维护状态检测设置 By Faker*/
     function maintainCheck(){
         var newTime = $("._user_time").attr("time");
@@ -687,20 +665,7 @@
 
     /*找回用户名弹窗*/
     function forgetUsername(){
-        BootstrapDialog.show({
-            type: BootstrapDialog.TYPE_PRIMARY,
-            title:'找回使用者名稱',
-            message: function(dialog) {
-                var $message = $('<div></div>');
-                var pageToLoad = dialog.getData('pageToLoad');
-                $message.load(pageToLoad);
-
-                return $message;
-            },
-            data: {
-                'pageToLoad': '/commonPage/modal/lost-username.html?t='+ new Date().getTime().toString(36)
-            }
-        });
+        layerDialogForgetAccount('<div style="font-size:  16px;font-weight: bold;color:  #000;margin-bottom: 5px;">忘記賬號？請聯繫在線客服 </div><div>客服人員將根據您提供的信息，在覈實您身份之後，告知您的賬號。</div>','找回會員賬號','layui-layer-brand',['400px','210px'],false,false);
     }
 
     //技术支援
@@ -1665,12 +1630,7 @@
      * @param msg
      */
     function dialogMsg(msg) {
-        BootstrapDialog.alert({
-            title: '提示',
-            message: msg,
-            type: BootstrapDialog.TYPE_WARNING,
-            buttonLabel: '確定'
-        });
+        layerDialogNormal(msg,'提示','layui-layer-brand',['360px']);
     }
 
     function canShowLottery(id){
@@ -1687,6 +1647,7 @@
         }
         $("#hongbao").addClass('hide_hongbao');
         $("#hongbao_detail").fadeIn(1000);
+        $(".hongbao-msg-tips").hide();
         $.ajax({
             url:"/ntl/activity/countDrawTimes.html",
             type: "POST",
@@ -1695,6 +1656,7 @@
             success: function(data){
                 console.log(data.nextLotteryTime);
                 console.log(data.drawTimes);
+                $(".hongbao-msg-tips").show();
                 if(data.drawTimes&&data.drawTimes>0){
                     $(".hongbao").removeClass('disabled');
                     $("#tip-msgs").show();
@@ -1793,16 +1755,311 @@
         </#if>
         }
     }
-
+    // 新弹窗插件配置
     $(function () {
-    <#--流量统计代码-->
-        var siteStatistics =$("#siteStatisticsDiv").attr("data");
-        setTimeout(function () {
-            $("body").append(siteStatistics);
-        },5000)
-    })
+        // layer默认配置
+        layer.config({
+            type:0,
+            move:".layui-layer-title",
+            title:true,
+            offset:"auto",
+            btnAlign:"r",
+            closeBtn:"2",
+            shade:[0.7,"#000"],
+            shadeClose:true,
+            time:0,
+            resize:false
+        });
+    });
+    // layer弹窗函数开始
+    function layerDialogNormal(content,title,skin,area,btnRound,btnBorder){
+        /*
+         * content:彈窗的提示內容
+         * skin:主題顏色
+         * area:寬高
+         */
+        layer.open({
+            content:content,
+            title:title,
+            skin:skin,
+            area:area,
+            btn:["確定"],
+            success: function(layer){
+                // 重寫關閉按鈕
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框型別
+                $(layer).addClass("normal-dialog");
+                // 提示框按鈕型別
+                if(!!btnRound){
+                    $(layer).addClass("dialog-btn-round");
+                }
+                if(!!btnBorder){
+                    $(layer).addClass("dialog-btn-border");
+                }
+            }
+        });
+    }
+    function layerDialogIndex(imgSrc,title,skin,area,transparent,btnAlign,txtDialog){
+        /*
+         * content:弹窗的提示内容
+         * skin:主题颜色
+         * area:宽高
+         */
+        var content = '';
+        if(!!txtDialog){
+            content = imgSrc;
+            layer.open({
+                type:1,
+                content:content,
+                title:title,
+                move:move,
+                btnAlign:btnAlign,
+                skin:skin,
+                area:area,
+                btn:["關閉"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("index-modal ");
+                    // 是否透明
+                    if(!!transparent){
+                        $(layer).addClass("index-modal-transparent");
+                    }
+                },
+                end:function(){
+                    if($("#home-dialog-checkbox").is(":checked")){
+                        localStorage.setItem("<#if updateTime??>${updateTime}</#if>"+"-close-home-dialog",true);
+                    }
+                }
+            });
+        }else{
+            var src = imgSrc;
+            var img = new Image();
+            img.src = src;
+            img.addEventListener('load',function () {// 图片加载完后再弹出弹窗以免layer的动态计算位置出错
+            <#if link??>
+                var _href = "${link}";
+                if(_href!=undefined && _href!=""){
+                    if(_href.indexOf("http")>-1){
+                        _href = _href;
+                    }else{
+                        _href = "http://"+_href;
+                    }
+                    if(_href.indexOf("\$\{website\}")>-1){
+                        _href = _href.replace("\$\{website\}",window.location.host);
+                    }
+                }else{
+                    _href = "javascript:void(0)";
+                }
+                img =  $("<a href='"+_href+"'></a>").append(img);
+                content = $("<div></div>").append($(img)).append('<div class="checkbox-wrap"><input type="checkbox" id="home-dialog-checkbox" >關閉後，不再顯示本彈窗廣告 <div>');
+            <#else>
+                content = $("<div></div>").append($(img)).append('<div class="checkbox-wrap"><input type="checkbox" id="home-dialog-checkbox" >關閉後，不再顯示本彈窗廣告<div>');
+            </#if>
+                layer.open({
+                    type:1,
+                    content:content.html(),
+                    title:title,
+                    move:move,
+                    btnAlign:btnAlign,
+                    skin:skin,
+                    area:area,
+                    btn:["关闭"],
+                    success: function(layer){
+                        // 重写关闭按钮
+                        $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                        // 提示框类型
+                        $(layer).addClass("index-modal ");
+                        // 是否透明
+                        if(!!transparent){
+                            $(layer).addClass("index-modal-transparent");
+                        }
+                    },
+                    end:function(){
+                        if($("#home-dialog-checkbox").is(":checked")){
+                            localStorage.setItem("<#if updateTime??>${updateTime}</#if>"+"-close-home-dialog",true);
+                        }
+                    }
+                });
+            },false);// 图片监听事件结束
+        }
+        var move = '';
+        if(!!transparent){
+            move=".layui-layer-content";
+        }else{
+            move='.layui-layer-title';
+        }
 
+    }
+    function layerDialogDownload(){
+        layer.tab({
+            area: ['640px','380px'],
+            move:".layui-layer-title",
+            tab: [{
+                title: '<div class="tit-wrap"><div class="tit">手機APP下載</div><div class="sub-tit">安卓蘋果通用</div></div>',
+                content: $("#download-mobile").html()
+            }, {
+                title: '<div class="tit-wrap"><div class="tit">API客戶端下載</div><div class="sub-tit">桌面安裝版，APP版齊全</div></div>',
+                content: $("#download-pc").html()
+            }],
+            success:function(layer){
+                // 切換時，動態計算內容框的高度
+                $('body').on("click",".download-dialog .layui-layer-title>span",function(){
+                    var index = $(this).index();
+                    $(".layui-layer-content").css({height:$(".layui-layer-tabli").eq(index).outerHeight()});
+                    $(".download-dialog").css({height:$(".layui-layer-tabli").eq(index).outerHeight()+110});
+                    // 動態計算top的值
+                    var l_h = ($(window).height()-$(layer).height())/2;
+                    $(layer).css({top:l_h});
+                });
+                // 重寫關閉按鈕
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框型別
+                $(layer).addClass("download-dialog");
+            }
+        });
+    }
+    function layerDialogForgetAccount(content,title,skin,area,btnRound,btnBorder){
+        /*
+         * content:彈窗的提示內容
+         * skin:主題顏色
+         * area:寬高
+         */
+        layer.open({
+            content:content,
+            title:title,
+            skin:skin,
+            area:area,
+            btn:["立即聯絡客服","取消"],
+            success: function(layer){
+                // 重寫關閉按鈕
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框型別
+                $(layer).addClass("forget-dialog");
+                // 提示框按鈕型別
+                if(!!btnRound){
+                    $(layer).addClass("dialog-btn-round");
+                }
+                if(!!btnBorder){
+                    $(layer).addClass("dialog-btn-border");
+                }
+            },
+            yes:function () {
+                getCustomerService();
+            }
+        });
+    }
+    function layerDialogNotice(content,title,skin,area,btnRound,btnBorder,multiplePages){
+        /*
+         * content:彈窗的提示內容
+         * skin:主題顏色
+         * area:寬高
+         */
+        var btnText = '';
+        if(!!multiplePages){
+            btnText=["上一頁","下一頁"];
+        }else{
+            btnText =["關閉"];
+        }
+        layer.open({
+            content:content,
+            title:title,
+            skin:skin,
+            area:area,
+            btn:btnText,
+            success: function(layer){
+                // 重寫關閉按鈕
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框型別
+                $(layer).addClass("notice-dialog");
+                // 按鈕型別
+                if(!!multiplePages){
+                    $(layer).addClass("notice-dialog-two-btn");
+                }else{
+                    $(layer).addClass("notice-dialog-one-btn");
+                }
+                // 提示框按鈕型別
+                if(!!btnRound){
+                    $(layer).addClass("dialog-btn-round");
+                }
+                if(!!btnBorder){
+                    $(layer).addClass("dialog-btn-border");
+                }
+                // 翻頁邏輯
+                $(".layui-layer-btn1").addClass("active");
+                // 內容啟用滾動條
+                $(".layui-layer-content .content-wrap").niceScroll({
+                    cursorcolor:"#999",
+                    cursorwidth:"8px"
+                });
+            }
+        });
+    }
+    function layerDialogRegister(content,title,skin,area,btnRound,btnBorder){
+        /*
+         * content:彈窗的提示內容
+         * skin:主題顏色
+         * area:寬高
+         */
+        layer.open({
+            content:content,
+            title:title,
+            skin:skin,
+            area:area,
+            shadeClose:false,
+            closeBtn: false,
+            btnAlign:'c',
+            btn:["我同意","我不同意"],
+            success: function(layer){
+                // 重寫關閉按鈕
+                // $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框型別
+                $(layer).addClass("register-dialog");
+                // 提示框按鈕型別
+                if(!!btnRound){
+                    $(layer).addClass("dialog-btn-round");
+                }
+                if(!!btnBorder){
+                    $(layer).addClass("dialog-btn-border");
+                }
+                // 內容啟用滾動條
+                $(".layui-layer-content .register-content-wrap").niceScroll({
+                    cursorcolor:"#999",
+                    cursorwidth:"8px"
+                });
+                $(".layui-layer-content .register-content-wrap .after").css({height:$(".layui-layer-content .register-content-wrap .col-md-12").outerHeight()})
+            },
+            btn2:function(){
+                window.location="/";
+            }
+        });
+    }
+    // layer弹窗函数结束
 </script>
 
-<div id='siteStatisticsDiv' style="display:none" data="<#if data.siteStatistics?has_content>${data.siteStatistics}</#if>">
+<#--流量统计代码-->
+<#if data.siteStatistics?has_content>${data.siteStatistics}</#if>
+<!--登录弹窗内容-->
+<div id="login-dialog" style="display:none;">
+    <form  id="loginForm" method="post">
+        <input type="hidden" name="type" value="dialog">
+        <div class="form-group account">
+            <input type="text" class="form-control" placeholder="賬號" name="username" />
+            <div class="tip" style="display: none;">請輸入賬號！</div>
+        </div>
+        <div class="form-group password">
+            <input type="password" class="form-control" placeholder="密碼" name="password" />
+            <div class="tip" style="display: none;">請輸入密碼！</div>
+        </div>
+        <div class="form-group code _vr_captcha_box" style="display: none;">
+            <input type="text" class="form-control" placeholder="驗證碼" name="captcha" maxlength="4" />
+            <img class="_vr_captcha_code" data-code="loginDialog">
+            <div class="tip" style="display: none;">請輸入驗證碼！</div>
+        </div>
+        <a href="javascript:void(0);" class="btn-login dialog_login">登入</a>
+        <a  target="_blank" href="commonPage/forgetPwd.html" class="forget-pas">忘記密碼？</a>
+        <span style="font-size: 14px;color: #666;margin-right: 10px;"> 還沒有賬號？</span>
+        <a href="/register.html" class="btn-register">+加入會員</a>
+    </form>
 </div>

@@ -130,6 +130,25 @@ define(['common/BaseListPage','checkboxX'], function (BaseListPage,CheckboxX) {
             return {'search.deleteRoleIds':deleteRoleId,'search.insertRoleIds':insertRoleId,'search.sysUserIds':playerIds_obj};
 
         },
+
+        checkData:function (e, opt) {
+            var isEmpty = true;
+            $(".sys_role .role_checkbox").each(function(idx,chk){
+                var $this = $(chk);
+                var $this_value = $this.val();
+                if($this_value!='0'){
+                    isEmpty = false;
+                }
+            });
+            if(isEmpty){
+                var msg = window.top.message.common['不能为空'];
+                page.showPopover(e,{},"danger",msg,true);
+                $(e.currentTarget).unlock();
+                return false;
+            }
+            return true;
+        },
+
         deleteSubAccount:function( event , option){
             var that = this;
             var usingCount = 0;

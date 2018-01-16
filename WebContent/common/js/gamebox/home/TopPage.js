@@ -151,7 +151,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 this.pages[this.lastHash].refresh = (refresh || false);
                 window.location.hash = this.lastHash;
             } else {
-                window.location = root;
+                window.location = root+"/";
             }
         },
         /**
@@ -1106,6 +1106,8 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                                 if (e.type == 0) {
                                     if (e.eventCall && event.returnValue == true) {
                                         e.eventCall(e.eventTarget);
+                                    } else if (e.eventTarget) {
+                                        $(e.eventTarget).unlock();
                                     }
                                 }
                                 else if (e.type == 1 && e.owner.location.href == window.top.location.href) {

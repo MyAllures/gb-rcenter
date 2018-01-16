@@ -2,6 +2,9 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
     return BaseEditPage.extend({
         init: function () {
             this.formSelector = "form[name=creditPayForm]";
+            if(window.top.interval){
+                window.clearInterval(window.top.interval);
+            }
             this._super(this.formSelector);
         },
         /**
@@ -27,8 +30,8 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
             var leftTime = $(this.formSelector + " #leftTime[data-time]");
             if (leftTime && leftTime.length > 0) {
                 _this.showPayLeftTime();
-                var interval = setInterval(function () {
-                    _this.showPayLeftTime(interval)
+                window.top.interval = setInterval(function () {
+                    _this.showPayLeftTime(window.top.interval)
                 }, 1000);
             }
             _this.changeAmountMsg();

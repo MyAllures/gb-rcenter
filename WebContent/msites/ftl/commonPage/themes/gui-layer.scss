@@ -4,13 +4,15 @@ $color-success:#00be74;
 $color-info:#1e9fff;
 $color-warning:#f4c22b;
 $color-danger:#f44236;
-.layui-layer{
+.layui-layer{color: #333;font-size: 14px;background-color: transparent !important;
+    .layui-layer-btn{    padding: 0 15px 20px;background: #fff;border-bottom-left-radius: 2px;border-bottom-right-radius: 2px;}
+    .layui-layer-content{background-color: #fff;}
     .layui-layer-setwin{// 关闭按钮样式
         right: -17px;
         top: -17px;  
         box-shadow: 0 0 5px #000;
         border-radius: 50%;
-        transition: all 0.3s; 
+        transition: all 0.3s;
         &:hover{
             transform: rotateZ(90deg);
         }
@@ -19,16 +21,16 @@ $color-danger:#f44236;
             height: 35px;
             margin: 0;
             font-size: 30px;
-            background: #fff;
+            background:transparent url(./images/layer-dialog/gui-layer-close-bg.png) center;
             border-radius: 50%;
             border: 3px solid #1e9fff;
             text-align: center;line-height: 24px;
-            color: #1e9fff;
+            color: #1e9fff;position:relative;z-index:1;  
             &:hover{text-decoration: none;}
         }  
     }
     .layui-layer-btn a{// 底部按钮样式
-        height: 33px;line-height: 31px;min-width: 90px;border-color: #1E9FFF;background-color: #1e9fff;
+        height: 33px;line-height: 31px;min-width: 90px;border-color: #1E9FFF;background-color: #1e9fff;box-shadow: 0 0 10px 2px rgba(0,0,0,0.1);
         text-align: center;
         &.layui-layer-btn1{border: 1px solid #dedede !important;    background-color: #fff !important;    color: #333 !important;}
     }
@@ -97,9 +99,9 @@ $color-danger:#f44236;
         .layui-layer-btn a{border-color: $color-danger;background-color: $color-danger;}
     }
     &.index-modal{// 首页弹窗
-        .layui-layer-content{padding: 0;height: auto !important;overflow: visible;
-            .checkbox-wrap{position: absolute;  bottom: -42px;  left: 15px;
-                input[type="checkbox"]{  appearance:none;
+        .layui-layer-content{padding: 0;height: auto !important;overflow: visible;min-width: 360px;
+            .checkbox-wrap{    position: absolute;    bottom: -38px;    left: 10px;color: #333;
+                input[type="checkbox"]{  appearance:none;cursor: pointer;
     -moz-appearance:none; 
     -webkit-appearance:none;
     width: 18px;position: relative;
@@ -124,11 +126,15 @@ $color-danger:#f44236;
                 }
             }
         }
-        .layui-layer-btn0{border-color: #f4c22b !important;
+        .layui-layer-btn{    padding: 10px;
+    border-top: 1px solid #dfdfdf;
+    background: #f8f8f8;}
+        .layui-layer-btn0{border-color: #f4c22b !important;margin: 0;
     background-color: #f4c22b !important;}
         .layui-layer-page .layui-layer-btn{padding: 11px 15px;
             .layui-layer-btn0{margin-top: 0;}
         }
+        .layui-layer-title{border-bottom: 0;}
     }
     &.index-modal-transparent{// 首页弹窗透明
             background-color: transparent;
@@ -142,7 +148,16 @@ $color-danger:#f44236;
             line-height: 28px;
             color: #fff;
         }
-        .layui-layer-btn0{width: 150px;height: 45px;line-height: 45px;font-size: 18px;border-color: #f4c22b !important;background-color: transparent !important;color: #f4c22b;border-radius: 24px;
+        .layui-layer-btn{border-color: transparent;background:transparent;}
+        .layui-layer-btn0{width: 150px;
+    height: 45px;
+    line-height: 41px;
+    font-size: 18px;
+    border-color: #f4c22b !important;
+    background-color: #0000 !important;
+    color: #f4c22b;
+    border-radius: 24px;
+    border-width: 2px;
             &:hover{background-color: #f4c22b !important;color: #fff;}
         }
     }
@@ -156,19 +171,31 @@ $color-danger:#f44236;
     border-bottom: 10px solid #fff;
     bottom: -1px;
     left: 50%;
-    margin-left: -9px;}
+    margin-left: -9px;}     
             }
-            &>span{width: 50%;height: 99px !important;padding: 0;max-width: 50%;text-align: center;    overflow: visible;
+            &>span{height: 99px !important;
+    padding: 0;
+    max-width: 50%;
+    text-align: center;
+    overflow: visible;
+    float: none;    display: inline-block;
                 .tit-wrap{display: inline-block;height: 99px;padding-left: 78px;    text-align: left;
                     .tit{padding-top: 36px;font-size: 16px;margin-bottom: 5px;}
                     .sub-tit{color: #dfeeff;}
                 }
                 &:first-child{
-                    .tit-wrap{background: url(images/layer-dialog/icon-android.png) no-repeat 0;}
-                    &:after{content: '';position: absolute;right: -1px;height: 70px;width: 1px;background: rgba(255,255,255,0.5);top: 50%;margin-top: -35px;}
+                    margin-right: 144px;    margin-left: 60px;
+                    .tit-wrap{background: url(images/layer-dialog/icon-android-normal.png) no-repeat 0;}
+                    &.layui-this{
+                    .tit-wrap{background: url(images/layer-dialog/icon-android-active.png) no-repeat 0;}
+                    }
+                    &:after{content: '';position: absolute;right: -83px;height: 70px;width: 1px;background: rgba(255,255,255,0.5);top: 50%;margin-top: -35px;}
                 }
                 &:first-child+span{
-                    .tit-wrap{background: url(images/layer-dialog/icon-windows.png) no-repeat 0;}
+                    .tit-wrap{background: url(images/layer-dialog/icon-windows-normal.png) no-repeat 0;}
+                    &.layui-this{
+                    .tit-wrap{background: url(images/layer-dialog/icon-windows-active.png) no-repeat 0;}
+                    }
                 }
             }
         }
@@ -221,7 +248,7 @@ $color-danger:#f44236;
     }
     &.notice-dialog{ // 公告弹窗
         .layui-layer-btn {
-            padding:6px 15px 9px;background: #f8f8f8;border-top: 1px solid #dfdfdf;
+            padding:10px;background: #f8f8f8;border-top: 1px solid #dfdfdf;
         }
         .layui-layer-content{
             ul{margin: 0;padding: 0;list-style: none;border: 1px solid #ddd;
@@ -233,17 +260,25 @@ $color-danger:#f44236;
         &.notice-dialog-one-btn{
             .layui-layer-btn0 {
                 border-color: #f4c22b !important;
-                background-color: #f4c22b !important;
+                background-color: #f4c22b !important;margin: 0;
             }
         }
         &.notice-dialog-two-btn{
             .layui-layer-btn0{float: left;}
             .layui-layer-btn{
-                a{border: 1px solid #dedede !important;    background-color: #fff !important;    color: #ccc !important;cursor: not-allowed;
+                a{border: 1px solid #dedede !important;  margin: 0;  background-color: #fff !important;    color: #ccc !important;cursor: not-allowed;
                     &.active{    border-color: #1e9fff !important;color: #fff !important;    background-color: #1e9fff !important;cursor: pointer;}
                 }
             }
         }
+        .content-wrap{position: relative;
+            &:after{
+                content: '';position: absolute;width: 8px;height: 100%;right: 0;top: 0;background: #f5f5f5;
+            }
+        }
+    }
+    &.forget-dialog{// 忘记用户名弹窗
+     .layui-layer-content{overflow: visible;}   
     }
     &.register-dialog{// 注册条款弹窗
         .layui-layer-btn {
@@ -251,12 +286,18 @@ $color-danger:#f44236;
             background: #f8f8f8;    position: relative;
             border-top: 1px solid #dfdfdf;
             .layui-layer-btn0{width: 180px;height: 45px;line-height: 45px;font-size: 18px;color: #fff;background: #00beaa;border-radius: 4px;border-color: #00beaa;}
-            .layui-layer-btn1{    background-color: #0000 !important;    border: 0 !important;    position: absolute;    right: 0;    top: 12px;}
+            .layui-layer-btn1{    background-color: #0000 !important;    border: 0 !important;    position: absolute;    right: 10px;    top: 12px;}
+        }
+        .register-content-wrap{position: relative;color: #333;
+            .after{
+                position: absolute;width: 8px;height: 100%;right: 0;top: 0;background: #f5f5f5;
+            }
         }
     }
-    &.login-dialog{// 登录弹窗
+    &.layui-login-dialog{// 登录弹窗
         padding: 5px;
     -webkit-background-clip: border-box;
+        form{text-align: right;}
         .layui-layer-title{    background: url(images/layer-dialog/login-header-bg.png) no-repeat;
     width: 390px;
     height: 140px;

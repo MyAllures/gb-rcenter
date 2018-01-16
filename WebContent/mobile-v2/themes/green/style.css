@@ -494,7 +494,7 @@ a.btn-download {background-color: #14805e; border-color: #14805e;}
 .notice-popover-wrap .mui-popup { width: 80%; max-width: 700px; }
 .notice-popover-wrap .mui-popup.mui-popup-in { width: 86%; z-index: 1000;}
 .notice-popover-wrap .mui-popup .mui-popup-title { background: #14805e;text-align: left; margin: -15px -15px 15px -15px; padding:0 10px; color: #fff; line-height: 60px;}
-.notice-popover-wrap .mui-popup .cont-text { text-align: left; padding: .25rem 0; font-size: .6rem; }
+.notice-popover-wrap .mui-popup .cont-text { text-align: left; padding: .25rem 0; font-size: .6rem; overflow-y: hidden; max-height: 500px;}
 .notice-popover-wrap .mui-popup .confirm-btn{ background: #eda527; color: #fff;}
 .notice-popover-wrap .mui-popover-arrow{display: none;}
 .notice-popover-wrap .mui-popup .mui-popup-title  .pop-close{padding: 0; font-size: 40px; color: #fff;}

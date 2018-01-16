@@ -35,9 +35,11 @@
     var apiId = getlocationParam("apiId");
     var gameCode = getlocationParam("gameCode");
     var apiTypeId = getlocationParam("apiTypeId");
+    var gameId = getlocationParam("gameId");
+
     var apiName = getApiName(apiId);
     $(".apiName").text(apiName);
-
+    debugger;
     $(function(){
         var isAutoPay = getCookie("isAutoPay");
         if(isAutoPay == 'true') {
@@ -286,7 +288,7 @@
         if(dialog!=null){
             dialog.close();
         } else{
-            apiLoginReal(apiId,gameCode,apiTypeId);
+            apiLoginReal(apiId,gameCode,apiTypeId,gameId);
         }
     }
     function setButtonStatus() {

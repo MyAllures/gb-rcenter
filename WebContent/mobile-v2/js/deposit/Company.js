@@ -12,7 +12,7 @@ define(['site/deposit/BaseCompanyDeposit','clipboard'], function (BaseCompanyDep
         onPageLoad: function () {
             this._super();
             this.bindFormValidation();
-            this.bindRechargeAmount();
+            // this.bindRechargeAmount();
             mui.ready(function () {
                 //存款类型
                 var typePick = new mui.PopPicker();
@@ -48,15 +48,28 @@ define(['site/deposit/BaseCompanyDeposit','clipboard'], function (BaseCompanyDep
             };
             this.submit(options);
             this.copy();
+            this.os = this.whatOs();
+            if(this.os == 'android') {
+                window.addEventListener("resize", function() {
+                    if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
+                        window.setTimeout(function() {
+                            document.activeElement.scrollIntoViewIfNeeded();
+                        },0);
+                    }
+                })
+            }
         },
         //按钮复制功能
         copy :function () {
             var _this = this;
             var clipboard = new Clipboard('.copy');
             clipboard.on('success',function (e) {
-                _this.toast("复制成功!");
-                e.clearSelection();
-            })
+                _this.toast(window.top.message.deposit_auto['复制成功']);
+            });
+
+            clipboard.on('error', function(e) {
+                _this.toast("复制按钮不可用，请长按文字手动复制信息");
+            });
         }
     });
 });

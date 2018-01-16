@@ -28,7 +28,9 @@
 </script>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/gui-base.js"></script>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/bootstrap-dialog.min.js"></script>
+<script src="${data.configInfo.ftlRootPath}commonPage/js/layer.js"></script>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/jquery/jquery.super-marquee.js"></script>
+<script src="${data.configInfo.ftlRootPath}commonPage/js/jquery/jquery.nicescroll.min.js"></script>
 <script src="${resComRoot}/js/jquery/plugins/jquery.validate/jquery.validate.js"></script>
 <script src="${resComRoot}/js/gamebox/common/jquery.validate.extend.msites.js"></script>
 <script src="${resComRoot}/js/bootstrap-daterangepicker/moment.js"></script><#--通用脚本-->

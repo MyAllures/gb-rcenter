@@ -1,10 +1,10 @@
 /**
  * Created by bruce on 16-12-8.
  */
-define(['site/deposit/BaseDeposit','gb/components/Comet'], function (BaseDeposit) {
-    
+define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposit) {
+
     return BaseDeposit.extend({
-        
+
         init: function (formSelector) {
             this._super();
         },
@@ -21,7 +21,7 @@ define(['site/deposit/BaseDeposit','gb/components/Comet'], function (BaseDeposit
          * 跳转第三方支付
          * @param orderNo
          */
-        pay:function (orderNo, newWindow) {
+        pay: function (orderNo, newWindow) {
             var url = root + "/wallet/deposit/online/scan/pay.html?pay=online&search.transactionNo=" + orderNo;
             var os = this.whatOs();
             if (os == 'app_ios') {
@@ -37,12 +37,12 @@ define(['site/deposit/BaseDeposit','gb/components/Comet'], function (BaseDeposit
             }
         },
 
-        back:function () {
+        back: function () {
             var url = root + "/wallet/deposit/index.html";
-           this.gotoUrl(url);
+            this.gotoUrl(url);
         },
 
-        openWindow:function (url) {
+        openWindow: function (url) {
             mui.openWindow({
                 url: url,
                 id: url,
@@ -56,12 +56,12 @@ define(['site/deposit/BaseDeposit','gb/components/Comet'], function (BaseDeposit
                     title: window.top.message.deposit_auto["正在加载"] //等待对话框上显示的提示内容
                 }
             })
-        },  
+        },
 
         /**
          * 监听返回页面订单
          */
-        sendComm:function (transactionNo) {
+        sendComm: function (transactionNo) {
             var param = {
                 url: mdRoot,
                 localeType: language.replace("-", "_"), isImmediatelyConnect: true
@@ -82,28 +82,28 @@ define(['site/deposit/BaseDeposit','gb/components/Comet'], function (BaseDeposit
             _this.init(param);
         },
 
-        linkResult:function (data) {
+        linkResult: function (data) {
             var _this = this;
             var _href = root + '/wallet/deposit/online/scan/result.html?search.transactionNo=' + data;
             this.openWindow(_href);
-    
+
             var btnArray = [window.top.message.deposit_auto["完成付款"], window.top.message.deposit_auto["重新存款"]];
             layer.open({
                 title: window.top.message.deposit_auto["订单结果"],
                 content: '',
                 btn: btnArray,
-                yes: function(index) {
+                yes: function (index) {
                     _this.completion();
                     layer.close(index);
                 },
-                no: function(index) {
+                no: function (index) {
                     _this.back();
                     layer.close(index);
                 }
             });
         },
 
-        success:function () {
+        success: function () {
             var _this = this;
             var btnArray = [window.top.message.deposit_auto["完成付款"], window.top.message.deposit_auto["重新存款"]];
             layer.open({
@@ -111,11 +111,11 @@ define(['site/deposit/BaseDeposit','gb/components/Comet'], function (BaseDeposit
                 content: window.top.message.deposit_auto["第三方对接"],
                 btn: btnArray,
                 shadeClose: false,
-                yes: function(index) {
+                yes: function (index) {
                     _this.completion();
                     layer.close(index);
                 },
-                no: function(index) {
+                no: function (index) {
                     if (_this.os === 'app_ios') {
                         reload();
                     } else {
@@ -126,12 +126,12 @@ define(['site/deposit/BaseDeposit','gb/components/Comet'], function (BaseDeposit
             });
         },
 
-        completion:function () {
+        completion: function () {
             var url = root + "/fund/record/index.html?search.transactionType=deposit";
             if (this.os == 'app_android') {
                 this.goBack();
                 this.gotoUrl(url);
-            } else if(this.os == 'app_ios'){
+            } else if (this.os == 'app_ios') {
                 this.goBack();
                 gotoCustom(url);
             } else {
@@ -142,7 +142,7 @@ define(['site/deposit/BaseDeposit','gb/components/Comet'], function (BaseDeposit
         submit: function () {
             var _this = this;
 
-            mui(".mui-scroll2").off("tap","#submitAmount");
+            mui(".mui-scroll2").off("tap", "#submitAmount");
             mui(".mui-scroll2").on("tap", "#submitAmount", function () {
                 if (document.activeElement) {
                     document.activeElement.blur();
@@ -157,13 +157,23 @@ define(['site/deposit/BaseDeposit','gb/components/Comet'], function (BaseDeposit
                 var rechargeAmount = $("input[name='result.rechargeAmount']").val();
                 var rechargeType = $("input[name='result.rechargeType']").val();
                 var account = $("input[name='account']").val();
+                var randomCash = $("input[name='result.randomCash']").val();
+                if (!randomCash) {
+                    randomCash = 0;
+                }
+                account
                 mui.ajax(root + '/wallet/deposit/online/scan/submit.html', {
-                    data: {"result.rechargeAmount": rechargeAmount, "result.rechargeType": rechargeType, "account": account},
+                    data: {
+                        "result.rechargeAmount": rechargeAmount,
+                        "result.rechargeType": rechargeType,
+                        "account": account,
+                        "result.randomCash": randomCash
+                    },
                     type: 'post',
                     async: false,
                     success: function (data) {
-                        if ($(".mui-scroll2").nextAll() && $(".mui-scroll2").nextAll().length > 0) {
-                            $(".mui-scroll2").nextAll().remove();
+                        if ($("#depositSalePop") && $("#depositSalePop").length > 0) {
+                            $("#depositSalePop").remove();
                         }
                         $(".mui-content").append(data);
                         var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
@@ -198,22 +208,27 @@ define(['site/deposit/BaseDeposit','gb/components/Comet'], function (BaseDeposit
             });
         },
 
-        submitDeposit:function () {
+        submitDeposit: function () {
             var _this = this;
             var dataForm = $(page.formSelector).serialize();
-
             if (!$(page.formSelector).valid()) {
                 return false;
             }
-            if(_this.os != "app_android" && _this.os != "app_ios"){
-                var newWindow= window.open("about:blank", '_blank');
+            if (_this.os != "app_android" && _this.os != "app_ios") {
+                var newWindow = window.open("about:blank", '_blank');
                 if (newWindow) {
                     newWindow.document.write("<div style='text-align:center;z-index: 999;'><img style='margin-top:" +
                         document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
                 }
             }
 
-            mui.ajax(root+"/wallet/deposit/online/scan/scanCodeSubmit.html", {
+            var url = null;
+            if($("input[name='result.randomCash']").val()){
+                url = "/wallet/deposit/online/scan/scanRandomCodeSubmit.html"
+            }else{
+                url = "/wallet/deposit/online/scan/scanCodeSubmit.html";
+            }
+            mui.ajax(root + url, {
                 type: 'post',
                 data: dataForm,
                 dataType: 'json',
@@ -230,7 +245,7 @@ define(['site/deposit/BaseDeposit','gb/components/Comet'], function (BaseDeposit
                             var orderNo = data.orderNo;
                             _this.pay(orderNo, newWindow);
                             _this.sendComm(orderNo);
-                            if(newWindow || _this.os == "app_android" || _this.os == 'app_ios') {
+                            if (newWindow || _this.os == "app_android" || _this.os == 'app_ios') {
                                 _this.reWriteAmount();
                                 _this.success(data);
                             }

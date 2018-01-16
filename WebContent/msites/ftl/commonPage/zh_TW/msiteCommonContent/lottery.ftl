@@ -20,21 +20,21 @@
         <div class="hongbao"><!--未能拆时加disabled类名-->
             <div id="lotteryPages" style="margin-top: 210px;">
                 <div class="icon-open" onclick="lottery()"></div>
-                <div class="hongbao-time-txt">下次拆红包开始时间为</div>
-                <div class="hongbao-time">2017-11-11  11:11:11</div>
-                <div style="text-align: center;font-size: 18px;color: #fff;" id="tip-msgs">
+                <div class="hongbao-msg-tips hongbao-time-txt">下次拆红包开始时间为</div>
+                <div class="hongbao-msg-tips hongbao-time"></div>
+                <div class="hongbao-msg-tips" style="text-align: center;font-size: 18px;color: #fff;" id="tip-msgs">
                     你还有<span style="font-size: 22px;padding: 0 5px;color: gold" id="ramain-count">0</span>次抽奖机会
                 </div>
-                <#--<a href="javascript:" class="btn-rule" id="btn-rule" onclick="openRule()"></a>-->
+            <#--<a href="javascript:" class="btn-rule" id="btn-rule" onclick="openRule()"></a>-->
                 <!--红包规则元素-->
-                <div class="hongbao-rule">
-                    <div class="txt">
-                        <div class="nice-wrapper">
-                        ${activityDescription}
-                        </div>
+            <#--<div class="hongbao-rule">
+                <div class="txt">
+                    <div class="nice-wrapper">
+                       ${activityDescription}
                     </div>
-                    <a href="javascript:" class="icon-close-rule" onclick="closeRule()"></a>
                 </div>
+                <a href="javascript:" class="icon-close-rule" onclick="closeRule()"></a>
+            </div>-->
             </div>
             <!--中奖时的提示-->
             <div class="win-hongbao tips">

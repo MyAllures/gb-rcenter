@@ -148,14 +148,14 @@ define(['common/BasePage','site/index/PopUp'], function (BasePage,PopUp) {
                         if (task.paramValue) {
                             var param =task.paramValue;
                             //层级不足
-                            if (task.dictCode == "rankInadequate") {
+                          /*  if (task.dictCode == "rankInadequate") {
                                 if(param.onlinenames.length>1){
                                     _this.rankInadequate("onlinenames",2,param.onlineNamesCount);
                                 }
                                 if(param.companynames.length>1){
                                     _this.rankInadequate("companynames",1,param.companyNamesCount);
                                 }
-                            }
+                            }*/
                         }
                         popUp.audioplayer("task_"+tone.paramCode,tone.paramValue, false,function () {
                             _this.playAudio(tones,unTaskList,i+1);
