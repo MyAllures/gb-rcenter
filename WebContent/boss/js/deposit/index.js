@@ -25,6 +25,11 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
          * @return 验证是否通过
          */
         validateForm: function (e) {
+            var siteId = $("input[name='siteId']").val().trim();
+            if (siteId==null||siteId==''){
+                e.page.showPopover(e, {}, 'warning',"站点ID不能为空", true);
+                return false;
+            }
             var $form = $(window.top.topPage.getCurrentForm(e));
             return !$form.valid || $form.valid();
         },
