@@ -27,26 +27,38 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
 
         submit: function (options) {
             var _this = this;
-            mui(".mui-scroll2").off("tap","#submitAmount");
+            mui(".mui-scroll2").off("tap", "#submitAmount");
             mui(".mui-scroll2").on("tap", "#submitAmount", function () {
                 if (document.activeElement) {
                     document.activeElement.blur();
                 }
                 var $form;
-                if(options.statusNum){
+                if (options.statusNum) {
                     $form = options.fromId;
-                }else{
+                } else {
                     $form = $(_this.formSelector);
                 }
 
-                if (!$form.valid()) {
+                if(!$form || !$form[0]) {
+                    var $active =$("#depositWay li a.active");
+                    if($active.attr("data-fast")) {
+                        $form = $("#electronicCashForm");
+                    } else if($active.attr("data-company")) {
+                        $form = $("#companyCashForm");
+                    }
+                }
+                if ($form && !$form.valid()) {
                     return false;
                 }
 
                 var rechargeAmount = $("input[name='result.rechargeAmount']").val();
 
                 mui.ajax(root + options.submitUrl, {
-                    data: {"result.rechargeAmount": rechargeAmount,"result.rechargeType":options.type,"statusNum":options.statusNum},
+                    data: {
+                        "result.rechargeAmount": rechargeAmount,
+                        "result.rechargeType": options.type,
+                        "statusNum": options.statusNum
+                    },
                     type: 'post',
                     async: false,
                     success: function (data) {
@@ -60,16 +72,16 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                             var pop = $("#pop").attr("pop");
                             if (pop === "true") {
                                 _this.bindReWriteAmount();
-                                if(!options.statusNum){
+                                if (!options.statusNum) {
                                     _this.deposit(options.depositUrl);
-                                }else{
-                                    _this.gotoUrl(options.depositUrl+"&depositCash="+rechargeAmount);
+                                } else {
+                                    _this.gotoUrl(options.depositUrl + "&depositCash=" + rechargeAmount);
                                 }
                             } else {
-                                if(!options.statusNum){
+                                if (!options.statusNum) {
                                     _this.submitDeposit(options.depositUrl);
-                                }else{
-                                    _this.gotoUrl(options.depositUrl+"&depositCash="+rechargeAmount);
+                                } else {
+                                    _this.gotoUrl(options.depositUrl + "&depositCash=" + rechargeAmount);
                                 }
                             }
                         } else {
@@ -96,7 +108,7 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
             });
         },
 
-        submitDeposit:function (url) {
+        submitDeposit: function (url) {
             var _this = this;
 
             var $form = $(_this.formSelector);
@@ -112,9 +124,9 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                 type: 'post',
                 async: false,
                 success: function (data) {
-                    if(data.state) {
+                    if (data.state) {
                         _this.reWriteAmount();
-                        var html='<div class="masker" style="display:block;"></div>' +
+                        var html = '<div class="masker" style="display:block;"></div>' +
                             '<div class="gb-withdraw-box window-ok" style="display:block;">' +
                             '<a _href="/wallet/deposit/index.html" class="_again"><span style="color: #999;background-color: #fff;font-size: 20px"> X &nbsp;</span></a>' +
                             '<div class="cont">' +
@@ -133,7 +145,7 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                             '</div>';
                         $(".mui-content").append(html);
                         _this.depositAgain();
-                        mui("body").on("tap","._fund",function () {
+                        mui("body").on("tap", "._fund", function () {
                             _this.gotoUrl("/fund/record/index.html?search.transactionType=deposit");
                         });
                     } else {
@@ -152,8 +164,8 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
             mui('.window-ok').on('tap', '._again', function () {
                 if (_this.os == 'app_android') {
                     window.gamebox.depositAgain();
-                } else if(_this.os == 'app_ios'){
-                    if(isMobileUpgrade && isMobileUpgrade == 'true') {
+                } else if (_this.os == 'app_ios') {
+                    if (isMobileUpgrade && isMobileUpgrade == 'true') {
                         //v3存款跳转
                         gotoTab(0);
                     } else {
