@@ -244,6 +244,11 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
             });*/
         },
         refresh: function (e, option) {
+            $("#totalAssets").hide();
+            $("#walletBalance").hide();
+            $("#game").hide();
+            $(".loading-api").show();
+            $(".m-loading-icon-x").show();
             var playerId = option.playerId;
             var apiId = option.apiId;
             var url = root + "/fund/playerDetect/fundRecord.html?search.playerId=" + playerId + "&t=" + new Date().getTime();
@@ -258,6 +263,14 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
                 success: function (data) {
                     $(_this.formSelector + " .fund-record").html(data);
                     _this.initKnob();
+                    $(e.currentTarget).unlock();
+                },
+                complete: function () {
+                    $(".loading-api").hide();
+                    $(".m-loading-icon-x").hide();
+                    $("#game").show();
+                    $("#walletBalance").show();
+                    $("#totalAssets").show();
                     $(e.currentTarget).unlock();
                 }
             });
