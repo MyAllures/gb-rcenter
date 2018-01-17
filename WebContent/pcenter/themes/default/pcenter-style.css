@@ -650,7 +650,9 @@ select,textarea,input[type="text"],input[type="password"],input[type="datetime"]
 .bank-paidtotal li input{float:left;}
 .bank-paidtotal li .space{margin-top:80px;}
 .bank-paidtotal li .spacet{margin-top:5px;margin-right:10px;}
-.bank-paidtotal li .bankinfo span{display:block;padding:0 0 0 15px;text-align:left;height:32px;line-height:32px;cursor:pointer;position:relative;}
+.bank-paidtotal li .bankinfo span{display:block;padding:0 20px 0 15px;text-align:left;height:32px;line-height:32px;cursor:pointer;position:relative;overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;}
 .bank-paidtotal li .select:hover,.bank-paidtotal li span.zeroclipboard-is-hover{background:#e7eff6;}
 .bank-paidtotal li span.select:hover a.btn-copy,.bank-paidtotal li span.zeroclipboard-is-hover a.btn-copy{display:block;}
 .select .btn-copy{position:absolute!important;font-size:12px;right:5px;top:0;color:#4f86ef;font-family:"Microsoft YaHei";}
@@ -1497,7 +1499,7 @@ a.hidebtn{display:none;}
 .account-info-warp .control-grouptwo .pay-bank.bank-other{margin-right:0px;border:1px solid #cecfd0;border-radius:1px;}
 .account-info-warp .pull-left select{height:30px;}
 .account-info-warp .pull-left{margin-bottom:0;}
-.account-info-warp .control-group .control-label{width:190px;}
+.account-info-warp .control-group .control-label{width:220px;}
 .account-info-warp .control-group .controls{width:460px;max-width: 520px;}
 .account-info-title{position:absolute;left:-260px;font-size:20px;top:35px;width: 260px;text-align: center;}
 .account-info-warp .controls{line-height:30px;}
