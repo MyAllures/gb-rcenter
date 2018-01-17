@@ -246,11 +246,17 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
         refresh: function (e, option) {
             $("#totalAssets").hide();
             $("#walletBalance").hide();
-            $(".game").hide();
-            $(".loading-api").show();
-            $(".m-loading-icon-x").show();
             var playerId = option.playerId;
             var apiId = option.apiId;
+            if (apiId){
+                $(".api-"+apiId+"").hide();
+                $(".loading-"+apiId+"").show();
+            }else {
+                $(".game").hide();
+                $(".loading-api").show();
+            }
+            $(".m-loading-icon-x").show();
+
             var url = root + "/fund/playerDetect/fundRecord.html?search.playerId=" + playerId + "&t=" + new Date().getTime();
             if (apiId) {
                 url = url + "&type=api&search.apiId=" + apiId;
@@ -271,7 +277,6 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
                         $(obj[i]).next(".loading-api").hide();
                         $(obj[i]).show();
                     }
-                    $(".loading-api").hide();
                     $(".m-loading-icon-x").hide();
                     $("#walletBalance").show();
                     $("#totalAssets").show();
