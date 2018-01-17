@@ -57,7 +57,7 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
                             var min = Number($("#onlinePayMin").val());
                             var max = Number($("#onlinePayMax").val());
                             var amount = Number($(this).val()) + Number($("input[name='result.randomCash']").val())/100;
-                            if(/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/.test(amount+"")) {
+                            if(/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/.test(amount.toFixed(2))) {
                                 if (amount >= min && amount <= max) {
                                     $btn.attr("category", "through");
                                 } else {

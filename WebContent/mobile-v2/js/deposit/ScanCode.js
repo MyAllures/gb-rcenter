@@ -142,8 +142,8 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
         submit: function () {
             var _this = this;
 
-            mui(".mui-scroll2").off("tap", "#submitAmount");
-            mui(".mui-scroll2").on("tap", "#submitAmount", function () {
+            mui(".main-contents").off("tap", "#submitAmount");
+            mui(".main-contents").on("tap", "#submitAmount", function () {
                 if (document.activeElement) {
                     document.activeElement.blur();
                 }

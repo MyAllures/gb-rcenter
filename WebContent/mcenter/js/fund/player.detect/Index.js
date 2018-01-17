@@ -244,8 +244,19 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
             });*/
         },
         refresh: function (e, option) {
+            $("#totalAssets").hide();
+            $("#walletBalance").hide();
             var playerId = option.playerId;
             var apiId = option.apiId;
+            if (apiId){
+                $(".api-"+apiId+"").hide();
+                $(".loading-"+apiId+"").show();
+            }else {
+                $(".game").hide();
+                $(".loading-api").show();
+            }
+            $(".m-loading-icon-x").show();
+
             var url = root + "/fund/playerDetect/fundRecord.html?search.playerId=" + playerId + "&t=" + new Date().getTime();
             if (apiId) {
                 url = url + "&type=api&search.apiId=" + apiId;
@@ -258,6 +269,17 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
                 success: function (data) {
                     $(_this.formSelector + " .fund-record").html(data);
                     _this.initKnob();
+                    $(e.currentTarget).unlock();
+                },
+                complete: function () {
+                    var obj = $(".api-info");
+                    for (var i = 0; i < obj.length; i++) {
+                        $(obj[i]).next(".loading-api").hide();
+                        $(obj[i]).show();
+                    }
+                    $(".m-loading-icon-x").hide();
+                    $("#walletBalance").show();
+                    $("#totalAssets").show();
                     $(e.currentTarget).unlock();
                 }
             });
