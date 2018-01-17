@@ -226,7 +226,7 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
                 });
             } else {
                 $("#deposit").html(map[key]);
-                page.formSelector = "#depositCashForm";
+                page.formSelector = formId;
                 _this.bindFormValidation();
                 // page.bindRechargeAmount($("#submitAmount"));
                 page.jumpSubmit(_this, _href);
