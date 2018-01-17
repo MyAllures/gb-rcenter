@@ -244,6 +244,7 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
             });*/
         },
         refresh: function (e, option) {
+            $("#refreshTime").hide();
             $("#totalAssets").hide();
             $("#walletBalance").hide();
             var playerId = option.playerId;
@@ -280,6 +281,7 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
                     $(".m-loading-icon-x").hide();
                     $("#walletBalance").show();
                     $("#totalAssets").show();
+                    $("#refreshTime").show();
                     $(e.currentTarget).unlock();
                 }
             });
