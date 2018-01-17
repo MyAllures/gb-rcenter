@@ -246,7 +246,7 @@ define(['common/BaseEditPage', 'UE.I18N.'+window.top.language], function (BaseEd
                     url: root + "/cttDocumentI18n/persist.html",
                     dataType: 'json',
                     cache: false,
-                    type: "get",
+                    type: "POST",
                     data: data,
                     success: function (data) {
                         if (data.state) {
@@ -349,30 +349,6 @@ define(['common/BaseEditPage', 'UE.I18N.'+window.top.language], function (BaseEd
                 return false;
             }
             return true;
-        },
-        preSaveValid: function (e, opt) {
-            var _this = this;
-            _this.saveDocument();
-        },
-        saveDocument: function () {
-            var $form = $("#editForm");
-            var data = $form.serialize();
-            window.top.topPage.ajax({
-                url: root + "/cttDocumentI18n/persist.html?isPublish=true",
-                dataType: 'json',
-                cache: false,
-                type: "get",
-                data: data,
-                success: function (data) {
-                    if (data.state) {
-                        window.top.topPage.showSuccessMessage(window.top.message.common['save.success'],function(){
-                            $("#reback_btn").click();
-                        });
-                    } else {
-                        window.top.topPage.showErrorMessage(window.top.message.common['save.failed']);
-                    }
-                }
-            });
         },
         getCurContent: function () {
             var _this = this;
