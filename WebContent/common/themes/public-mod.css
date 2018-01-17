@@ -11,9 +11,11 @@
  * Update by 2017-02-12
 ================================================*/
 .pay-bank,.pay-third{width:125px;display:inline-block;height:30px;vertical-align:middle;background:url(../images/pay-bank.png) left top no-repeat;}
-.pay-bank.sm,.pay-third.sm{width:70px;display:inline-block;height:30px;vertical-align:middle;background:url(../images/pay-bank-x.png) left top no-repeat;}
+.pay-bank.sm,.pay-third.sm{width:35px;display:inline-block;height:30px;vertical-align:middle;background:url(../images/pay-bank-x.png) left top no-repeat;}
 .pay-third{background:url(../images/pay-third.png) left top no-repeat;}
 .pay-third.sm{background:url(../images/pay-third-x.png) left top no-repeat;}
+.diy-pay-title{display: inline-block;font-size:12px;width: 76px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;vertical-align: middle;}
+
 /* 银行 */
 .pay-bank.else{background-position: 0 0;}/* 其他 */
 .pay-bank.select{background-position: 0 -30px;}/* 请选择银行*/
@@ -44,6 +46,8 @@
 .pay-bank.fjnx{background-position:0 -780px;}/* 25 福建农商银行 */
 .pay-bank.hangseng{background-position:0 -810px;}/* 26 恒生银行 */
 .pay-bank.tzb{background-position:0 -840px;}/* 27 台州银行 */
+
+.sm.ceb,.sm.spdb,.sm.spabank,.sm.cib,.sm.bohaib{width: 50px;}
 /* 第三方支付 */
 .pay-third.else{background-position: 0 -0;}/* 其他 */
 .pay-third.select{background-position: 0 -30px;}/* 请选择 */
@@ -303,6 +307,10 @@
 .pay-third.onecodepay{background-position: 0 -936px;}/* 28 1码付 */
 .pay-third.bdwallet{background-position: 0 -974px;}/* 29 百度钱包 */
 .pay-third.jdwallet{background-position: 0 -1011px;}/* 30 京东钱包 */
+.pay-third.ebankpay{background-position: 0 -1050px;}/* 31 网银支付 */
+.pay-third.qrcodepay{background-position: 0 -1083px;}/* 30 扫码支付 */
+
+.sm.unionpay,.sm.chinaums,.sm.bill99,.sm.chinapnr,.sm.reapal,.sm.dinpay,.sm.kjt,.sm.mobao,.sm.upay,.sm.onecodepay{width: 50px;}
 
 /*===============================================
  * Part-02
@@ -447,7 +455,7 @@ font-style: normal;
   display: none;
   position: absolute;
   background: #fff;
-  left: 0;
+  right: 0;
   z-index: 999;
   min-width: 600px;
   width: 100%;
@@ -462,7 +470,7 @@ font-style: normal;
   content: '';
   width: 12px;
   height: 12px;
-  left: 316px;
+  right: 10px;
   top: -7px;
   background: #fff;
   border-top: 1px solid #b4b7bb;
