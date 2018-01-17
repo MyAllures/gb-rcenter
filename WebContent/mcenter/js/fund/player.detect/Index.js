@@ -246,7 +246,7 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
         refresh: function (e, option) {
             $("#totalAssets").hide();
             $("#walletBalance").hide();
-            $("#game").hide();
+            $(".game").hide();
             $(".loading-api").show();
             $(".m-loading-icon-x").show();
             var playerId = option.playerId;
@@ -266,9 +266,13 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
                     $(e.currentTarget).unlock();
                 },
                 complete: function () {
+                    var obj = $(".api-info");
+                    for (var i = 0; i < obj.length; i++) {
+                        $(obj[i]).next(".loading-api").hide();
+                        $(obj[i]).show();
+                    }
                     $(".loading-api").hide();
                     $(".m-loading-icon-x").hide();
-                    $("#game").show();
                     $("#walletBalance").show();
                     $("#totalAssets").show();
                     $(e.currentTarget).unlock();
