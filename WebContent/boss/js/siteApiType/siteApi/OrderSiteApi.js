@@ -50,12 +50,19 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
                 maxDepth:1
             });
         },
-        saveSiteApiOrder: function(e,option) {
+        saveApiOrder: function(e,option) {
             var _this = this;
             var apiTypeOrder = {};
             //cashOrder.isTakeTurns = $("[name='takeTurnsStatus']").val();
             //cashOrder.takeTurns= $("input:radio[name='takeTurns']:checked").val();
             var orderObj = [];
+            var url=null;
+            var isMobile=$("#isMobile").val();
+                if(isMobile=="true"){
+                url='/vSiteApiTypeRelation/saveMobileSiteApiOrder.html';
+            }else {
+                url='/vSiteApiTypeRelation/saveSiteApiOrder.html';
+            }
             $("tbody tr").each(function(index,obj){
                 orderObj.push({"order":index+1,"objectId":$(obj).children("[name='apiTypeId']").val()});
                 apiTypeOrder.orderList = orderObj;
@@ -66,7 +73,7 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
                 data:JSON.stringify(apiTypeOrder),
                 async:false,
                 type:"post",
-                url:root+'/vSiteApiTypeRelation/saveSiteApiOrder.html',
+                url:root+url,
                 success:function(data){
                     window.top.topPage.showSuccessMessage(window.top.message.common['save.success'], function (state) {
                         $(".return-btn").click();
