@@ -71,7 +71,7 @@ mui("#offCanvasWrapper").on("tap", "._captcha_img", function (e) {
             },
             error: function (error) {
                 var data = eval('(' + error.response + ')');
-                if(data){
+                if(data.propMessages){
                     newOpenWin(data.propMessages.location);
                 }else{
                     toast(window.top.message.passport_auto['服务忙']);
