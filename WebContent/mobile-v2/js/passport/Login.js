@@ -69,11 +69,16 @@ mui("#offCanvasWrapper").on("tap", "._captcha_img", function (e) {
                     }, 1000);
                 }
             },
-            error: function (request, state, msg) {
-                toast(window.top.message.passport_auto['服务忙']);
-                setTimeout(function () {
-                    $this.text(window.top.message.passport_auto['登录']).removeAttr("disabled");
-                }, 1000);
+            error: function (error) {
+                var data = eval('(' + error.response + ')');
+                if(data){
+                    newOpenWin(data.propMessages.location);
+                }else{
+                    toast(window.top.message.passport_auto['服务忙']);
+                    setTimeout(function () {
+                        $this.text(window.top.message.passport_auto['登录']).removeAttr("disabled");
+                    }, 1000);
+                }
             }
         })
     }
