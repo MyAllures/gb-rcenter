@@ -281,12 +281,14 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 $("#content_picture_link").removeClass("hide");
                 $(".content_word_title").addClass("hide");
                 $(".content_word").addClass("hide");//显示效果添加hide
+                $("#showModel").removeClass("hide");
             }else {
                 $("#content_picture_link").addClass("hide");//图片链接添加hide
                 $(".content_picture_title").addClass("hide");//文字模式圖片名称添加hide
                 $(".content_word_title").removeClass("hide");//文字模式內容去掉hide
                 $(".content_picture").addClass("hide");
                 $(".content_word").removeClass("hide");
+                $("#showModel").addClass("hide");
             }
             _this.resizeDialog();
         },
