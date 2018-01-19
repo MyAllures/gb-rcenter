@@ -18,7 +18,7 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
         onPageLoad: function () {
             this._super();
             this.initCaptcha();
-            $(this.formSelector + " .daterangepickers input.form-control").attr("style", "padding-left: 20px;padding-right: 2px;width:77%;")
+            $(this.formSelector + " .daterangepickers input.form-control").attr("style", "padding-left: 20px;padding-right: 2px;")
         },
         /**
          * 当前对象事件初始化函数
