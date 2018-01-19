@@ -14,7 +14,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         },
         closePageToDomain:function () {
             window.top.topPage.closeDialog();
-            window.open(root+"/operation/domainCheckData/getDomainCount.html", '_blank');
+            window.open(root+"/#/operation/domainCheckData/getDomainCount.html", '_blank');
         }
     });
 
