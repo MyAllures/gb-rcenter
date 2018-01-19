@@ -633,6 +633,13 @@ span.logo2 img{float:left;width:70px;height:30px;}
 .table > tbody > tr > td.current{color:#fff;background-color:#2095f2;}
 .table > tbody > tr > td.nextday{background:url(../../../mcenter/images/next-day.png) no-repeat 18px;}
 .table > tbody > tr > td.allsel{background:rgb(32,149,242) url(../../../mcenter/images/next-day.png) no-repeat 18px;color:#fff;}
+.contact-list .input-wrap{ display: inline-block; width: 180px; margin-left: 30px;}
+.contact-list input{width: 100%;height: 27px; outline: none;  }
+.contact-list label{text-align: right;width: 90px;  }
+.copyright-wrap>input{ height: 100%; margin-left: 30px }
+.contact-list:last-child{padding: 9px 0}
+.contact-list:last-child textarea{height: 72px;width: 264px;line-height: 16px; padding: 5px 12px;vertical-align: middle;}
+.contact-list .save-btn{  position: absolute;right: 30px;color: #fff; bottom: 3px;}
 
 /*我的账号*/
 .personalInfo_wrap{margin:20px 0;padding:0 15px;font-size:14px;color:#515b69;line-height:30px;}
