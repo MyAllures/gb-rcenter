@@ -50,21 +50,19 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
                 maxDepth:1
             });
         },
-        saveApiOrder: function(e,option) {
+        saveOrder: function(e,option) {
             var _this = this;
             var apiTypeOrder = {};
-            //cashOrder.isTakeTurns = $("[name='takeTurnsStatus']").val();
-            //cashOrder.takeTurns= $("input:radio[name='takeTurns']:checked").val();
             var orderObj = [];
             var url=null;
             var isMobile=$("#isMobile").val();
-                if(isMobile=="true"){
-                url='/vSiteApiTypeRelation/saveMobileSiteApiOrder.html';
+            if(isMobile){
+                url='/vSiteApiType/saveMobileSiteApiTypeOrder.html';
             }else {
-                url='/vSiteApiTypeRelation/saveSiteApiOrder.html';
+                url='/vSiteApiType/saveSiteApiTypeOrder.html';
             }
             $("tbody tr").each(function(index,obj){
-                orderObj.push({"order":index+1,"objectId":$(obj).children("[name='apiTypeId']").val()});
+                orderObj.push({"order":index+1,"objectId":$(obj).children("[name='Id']").val()});
                 apiTypeOrder.orderList = orderObj;
             });
             window.top.topPage.ajax({

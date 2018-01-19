@@ -27,8 +27,8 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
 
         submit: function (options) {
             var _this = this;
-            mui(".mui-scroll2").off("tap","#submitAmount");
-            mui(".mui-scroll2").on("tap", "#submitAmount", function () {
+            mui(".main-contents").off("tap","#submitAmount");
+            mui(".main-contents").on("tap", "#submitAmount", function () {
                 if (document.activeElement) {
                     document.activeElement.blur();
                 }
@@ -38,7 +38,6 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                 }else{
                     $form = $(_this.formSelector);
                 }
-
                 if (!$form.valid()) {
                     return false;
                 }
