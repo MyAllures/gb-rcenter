@@ -693,8 +693,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var btnOption = {};
             btnOption.target = root + "/operation/domainCheckResult/showPopStatusCount.html";
             // btnOption.callback = "back";
-            btnOption.text = option.text;
-            btnOption.title = option.text;
+            btnOption.text = "域名检测结果";
+            btnOption.title = "域名检测结果";
             // window.top.topPage.doDialog(e, btnOption);
             window.top.topPage.doDialog({page: this}, btnOption);
         }
