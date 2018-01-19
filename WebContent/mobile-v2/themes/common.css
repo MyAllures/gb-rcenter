@@ -5221,7 +5221,7 @@ div.setting {
 header.blue{background:#1766bb;}
 .ex-bank-card .gb-bankcard {width:270px;}
 .ex-bank-card .gb-bankcard .text-green{color:#555;font-family:"微软雅黑";padding-left:10px;letter-spacing: -0.5px;font-size:16px;}
-.ex-bank-card .gb-bankcard >.ct >.ct p{height:auto;padding-left:10px;white-space:nowrap;}
+.ex-bank-card .gb-bankcard >.ct >.ct p{height:21px;padding-left:10px;white-space:nowrap;}
 .gb-bankcard >.hd{padding:0 8px 0 18px;}
 /*微信支付;*/
 .ex-wechat .tit{margin:10px auto;line-height:35px;width:100px;border-radius:3px;color:#fff;text-align:center;height:35px;background:#1766bb;}
