@@ -540,3 +540,16 @@ color: #6b88fe;
 .notice-popover-wrap .mui-popup .confirm-btn{ background: #3c4b88; color: #fff;}
 .notice-popover-wrap .mui-popover-arrow{display: none;}
 .notice-popover-wrap .mui-popup .mui-popup-title  .pop-close{padding: 0; font-size: 40px; color: #fff;}
+
+/*弹窗警告提示框*/
+.notice-popover-wrap .mui-popup .alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.notice-popover-wrap .mui-popup .alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
