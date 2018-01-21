@@ -594,18 +594,18 @@ select,textarea,input[type="text"],input[type="password"],input[type="datetime"]
 .nosale{position:absolute;top:0;left:440px;line-height:34px;border-left:1px solid #e8e8e8;padding-left:160px;height:250px;margin-top:10px;margin-bottom:10px}
 .notsaleico{background:url(../../images/bank.png) no-repeat;width:144px;height:62px;margin-top:80px}
 
-input::-webkit-input-placeholder { /* WebKit browsers */  
-    color:    #c3c3c3;  
-}  
-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */  
-    color:    #c3c3c3;  
-}  
-input::-moz-placeholder { /* Mozilla Firefox 19+ */  
-    color:    #c3c3c3;  
-}  
-input:-ms-input-placeholder { /* Internet Explorer 10+ */  
-    color:    #c3c3c3;   
-} 
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #c3c3c3;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #c3c3c3;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #c3c3c3;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #c3c3c3;
+}
 input[type="text"]:focus,input[type="email"]:focus,input[type="password"]:focus{
   border-color: #1e90ff!important;
   box-shadow: 0 0 10px #1e90ff!important;
@@ -817,9 +817,8 @@ form > .modal-body{overflow-y:auto;overflow-x:hidden;}
 
 /*图表模式-列表*/
 .chart-table{margin-left:20px;margin-top:20px;border:1px solid #d3d8dc;border-radius:4px;margin-right:20px;overflow-x: auto;}
-.chart-table th{height:37px;line-height:37px;background:#f7f8f9;text-align:left;padding:5px 0 5px 15px; white-space: nowrap;}
+.chart-table th{height:37px;line-height:37px;background:#f7f8f9;text-align:left;padding:5px 0 5px 15px;white-space: nowrap;}
 .chart-table td{border-bottom:1px solid #ededed;text-align:left; padding: 10px 0 8px 15px; white-space: nowrap;}
-
 .chart-table tr:last-child td{border-bottom: 0;}
 .chart-table select{margin-top:5px}
 .on{font-weight:bold}
@@ -1268,10 +1267,7 @@ input.m-20,input.m-20:hover{padding-left:20px;}
 /*.pagination li:hover{border:1px solid #2772ee;}
 .pagination li.active{border:1px solid #2772ee;}*/
 /*.pagination li.active > a{background:#2772ee;font-weight:600;color:#fff;}*/
-.bdtop3 .pull-left .line-hi34{line-height: 32px;}
-.dataTables_paginate.paging_simple_numbers{margin-top: 0;}
-.dataTables_paginate.paging_simple_numbers:after{content: "";display: block;clear: both;}
-.bdtop3 .col-sm-3>.pull-left span.m-l-sm{max-width: 90px; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;display: inline-block; vertical-align: middle;margin-left: 0;}
+
 /*清除浮动*/
 .clearfix:before,.clearfix:after,.row:before,.row:after,.control-group:before,.control-group:after{display:table;content:" ";}
 .clearfix:after,.row:after,.control-group:after{clear:both;}
