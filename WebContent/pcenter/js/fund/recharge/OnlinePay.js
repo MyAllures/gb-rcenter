@@ -26,9 +26,9 @@ define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
             this._super();
             var _this = this;
             $(this.formSelector).on("change", "input[name='result.payerBank']", function (e) {
-                _this.changeValid(e);
                 _this.showRandomAmountMsg();
                 $(_this.formSelector + " input[name=account]").val($(_this.formSelector + " input[name='result.payerBank']:checked").attr("account"));
+                _this.changeValid(e);
             });
         },
         /**
@@ -37,8 +37,7 @@ define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
          * @returns {*}
          */
         getValidateRule: function ($form) {
-            var account = $("[name='result.payerBank']:checked").attr("account");
-            return this.changeRemoteRule($form, 'online_deposit', account);
+            return this.changeRemoteRule($form);
         },
         /**
          * 银行收/展
