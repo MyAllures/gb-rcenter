@@ -5222,7 +5222,7 @@ div.setting {
 header.blue{background:#1766bb;}
 .ex-bank-card .gb-bankcard {width:270px;}
 .ex-bank-card .gb-bankcard .text-green{color:#555;font-family:"微软雅黑";padding-left:10px;letter-spacing: -0.5px;font-size:16px;}
-.ex-bank-card .gb-bankcard >.ct >.ct p{height:auto;padding-left:10px;white-space:nowrap;}
+.ex-bank-card .gb-bankcard >.ct >.ct p{height:21px;padding-left:10px;white-space:nowrap;}
 .gb-bankcard >.hd{padding:0 8px 0 18px;}
 /*微信支付;*/
 .ex-wechat .tit{margin:10px auto;line-height:35px;width:100px;border-radius:3px;color:#fff;text-align:center;height:35px;background:#1766bb;}
@@ -5245,3 +5245,25 @@ header.blue{background:#1766bb;}
 .deposit-scroll-wrapper{padding-bottom: 50px !important;}
 /* 资金记录 类型选择下拉框调整 */
 #transactionType {   width: 170px;   text-align: center;}
+
+/*自定义弹窗*/
+.notice-popover-wrap .mui-popup { width: 80%; max-width: 700px; }
+.notice-popover-wrap .mui-popup.mui-popup-in { width: 86%; z-index: 1000;}
+.notice-popover-wrap .mui-popup .mui-popup-title { background: #3c4b88;text-align: left; margin: -15px -15px 15px -15px; padding:0 10px; color: #fff; line-height: 60px;}
+.notice-popover-wrap .mui-popup .cont-text { text-align: left; padding: .25rem 0; font-size: .6rem; overflow-y: hidden; max-height: 500px;}
+.notice-popover-wrap .mui-popup .confirm-btn{ background: #3c4b88; color: #fff;}
+.notice-popover-wrap .mui-popover-arrow{display: none;}
+.notice-popover-wrap .mui-popup .mui-popup-title  .pop-close{padding: 0; font-size: 40px; color: #fff;}
+
+/*弹窗警告提示框*/
+.notice-popover-wrap .mui-popup .alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.notice-popover-wrap .mui-popup .alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}

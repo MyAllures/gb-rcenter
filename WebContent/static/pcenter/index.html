@@ -74,14 +74,12 @@ function onInitScrollPic(){
 </head>
 <body>
   <!-- //* 弹窗 -->
-  <div class="theme-pop">
-    <!-- //* 弹窗标题 -->
+  <!--<div class="theme-pop">
     <div class="theme-poptitle">
       <a href="javascript:;" title="关闭" class="close">×</a>
       <h1>消息</h1>
     </div>
 
-    <!-- //* 弹窗内容 -->
     <div class="theme-popcon">
       <h2>欢迎登录，你可以申领优惠了哟！</h2>
       <div class="text">
@@ -94,7 +92,7 @@ function onInitScrollPic(){
       </form>
     </div>
   </div>
-  <div class="theme-pop-mask"></div>
+  <div class="theme-pop-mask"></div>-->
 
   <!-- //* Top -->
 
@@ -114,9 +112,9 @@ function onInitScrollPic(){
                   <div class="menu-bd box">
                     <div class="global-account-head">
                       <a href="#" class="global-account-img">
-                        <img src="images/face.png" width="39" height="39"  alt="我的头像" />
+                        <img src="../../pcenter/images/default_portrait.png" width="39" height="39"  alt="我的头像" />
                       </a>
-                      <p class="global-account-name" title="name">下午好，陈先生</p>
+                      <p class="global-account-name" title="name"><span class="_hours"></span></p>
                       <a href="account.html">账户设置</a>
                       <span class="global-top-seperator">|</span>
                       <a href="gamerecord.html">交易记录</a>
@@ -430,6 +428,14 @@ function onInitScrollPic(){
     <!--左边菜单栏-->
     <div class="sidebar-nav">
     	<div class="left-nav-title">财务中心</div>
+    	<dl>
+        <dt class="select">
+          <a href="index.html">
+            <i class="navico home select"></i>
+            额度转换
+          </a>
+        </dt>
+      </dl>
       <dl>
         <dt>
           <a href="deposit-region.html">
@@ -462,14 +468,7 @@ function onInitScrollPic(){
           </a>
         </dt>
       </dl><dl><dt><a href="sale1.html"><i class="navico sale"></i> 优惠记录</a></dt></dl>
-      <dl>
-        <dt class="select">
-          <a href="index.html">
-            <i class="navico home select"></i>
-            额度转换
-          </a>
-        </dt>
-      </dl>
+      
       <div class="left-nav-title">个人中心</div>
       <dl>
         <dt>
@@ -498,545 +497,423 @@ function onInitScrollPic(){
     </div>
   </div>
   <!--right-->
-  <div class="main-wrap">
-    <div class="notice">
-      <div class="notice-left"> <em class="title ico"></em>
-      </div>
-      <div id="notice-con" onMouseOver="iScrollAmount=0" onMouseOut="iScrollAmount=1">
-        <p>
-          <a href="#">尊敬的用户，您好！因国泰安康（00379）基金于2015年3月20、23日定期支付。</a>
-          <em class="title new"></em>
-        </p>
-        <p>
-          <a href="#">中秋佳节，祝玩家们节日快乐!</a>
-        </p>
-        <p>
-          <a href="#">尊敬的用户，您好！因国泰安康（00379）基金于2015年3月20、23日定期支付。</a>
-        </p>
-        <p>
-          <a href="#">中秋佳节，祝玩家们节日快乐!</a>
-        </p>
-        <p>
-          <a href="#">尊敬的用户，您好！因国泰安康（00379）基金于2015年3月20、23日定期支付。</a>
-        </p>
-        <p>
-          <a href="#">中秋佳节，祝玩家们节日快乐!</a>
-        </p>
-      </div>
-    </div>
-    <div class="account">
-      <div class="loading-a">
-        <div class="spiner-example">
-          <img src="images/loading-1.gif"></div>
-      </div>
-
-      <div class="property">
-        <div class="property-left">
-          总资产(RMB)
-          <em class="total-money">92,879,000.00</em>
-          <i class="ico-ask refresh"></i>
-          同步时间：2015-06-30 15:02:57
-        </div>
-        <div class="moneyhide">
-          余额隐藏
-          <i class="ico-ask show"></i>
-        </div>
-      </div>
-      <div>
-        <div class="balance">
-          <div class="wallet">
-            <dl>
-              <dt>
-                钱包余额
-                <i class="ico-ask refresh"></i>
-              </dt>
-              <dd class="orange wallet-money">67,245,000.00</dd>
-              <p class="btntotal"></p>
-
-              <button data-toggle="button" class="btn btn-big btn-gray" type="button">存款</button>
-              <button data-toggle="button" class="btn btn-big btn-gray" type="button">取款</button>
-              <button data-toggle="button" class="btn btn-blue btn-big" type="button">资金回收</button>
-              <dd class="co-gray hint-1">
-                取款处理中
-                <span class="orange">100.000.000.00</span>
-                <i class="ico-ask ask" type="button" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="若取款失败，这笔钱将返回您的钱包余额；"></i>
-              </dd>
-            </dl>
-          </div>
-          <style>
-  .api-logo-box{background: url(images/api-logo-bg.png); width: 52px; height: 52px; display: block;}
-  .game:hover .api-logo-box{background: url(images/api-logo-hover.png);}
-  .api-logo-box.active, .game:hover .active{background: url(images/api-logo-active.png);}
-</style>
-          <div class="balance-right pull-left">
-            <div class="game onmouse"  type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
-              <i class="ico-ask refresh"></i>
-              <p class="game-left api-logo-box active">
-                <i class="api-logo-1"></i></p>
-              <p class="game-right">
-                <span class="title">
-                  <a href="#">AG百乐厅</a>
-                </span>
-                <span class="blue">12023.00</span>
-              </p>
-            </div>
-            <div class="game onmouse" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
-              <i class="ico-ask refresh"></i>
-              <p class="game-left api-logo-box">
-                <i class="api-logo-2"></i></p>
-              <p class="game-right">
-                <span class="title">
-                  <a href="#">联众游戏</a>
-                </span>
-                <span class="green">12023.00</span>
-              </p>
-            </div>
-            <div class="game onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
-              <i class="ico-ask refresh"></i>
-              <p class="game-left api-logo-box">
-                <i class="api-logo-3"></i></p>
-              <p class="game-right">
-                <span class="title">
-                  <a href="#">联众游戏</a>
-                </span>
-                <span class="orange">12023.00</span>
-              </p>
-            </div>
-            <div class="game onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
-              <i class="ico-ask refresh"></i>
-              <p class="game-left api-logo-box">
-                <i class="api-logo-4"></i></p>
-              <p class="game-right">
-                <span class="title">
-                  <a href="#">联众游戏</a>
-                </span>
-                <span>12023.00</span>
-              </p>
-            </div>
-            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
-              <i class="ico-ask refresh"></i>
-              <p class="game-left api-logo-box">
-                <i class="api-logo-11"></i></p>
-              <p class="game-right">
-                <span class="title">
-                  <a href="#">联众游戏</a>
-                </span>
-                <span class="co-gray">12023.00</span>
-                <span class="maintain-in co-gray">维护中</span>
-              </p>
-            </div>
-            <div class="game  onmousestop"  title="游戏信息">
-              <a href="javascript:void(0)" class="title-ref" title="afsdsadfasdf">
-                <i class="ico-ask refresh"></i>
-              </a>
-              <p class="game-left api-logo-box">
-                <i class="api-logo-12"></i></p>
-              <p class="game-right">
-                <span class="title">
-                  <a href="#">联众游戏</a>
-                </span>
-                <span class="co-gray" title="游戏信息">数据异常</span>
-              </p>
-            </div>
-            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
-              <i class="ico-ask refresh"></i>
-              <p class="game-left api-logo-box">
-                <i class="api-logo-5"></i></p>
-              <p class="game-right">
-                <span class="title">
-                  <a href="#">游戏维护中</a>
-                </span>
-                <span class="blue">---</span>
-              </p>
-            </div>
-            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
-              <i class="ico-ask refresh"></i>
-              <p class="game-left api-logo-box">
-                <i class="api-logo-6"></i></p>
-              <p class="game-right">
-                <span class="title">
-                  <a href="#">游戏维护中</a>
-                </span>
-                <span class="blue">---</span>
-              </p>
-            </div>
-            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
-              <i class="ico-ask refresh"></i>
-              <p class="game-left api-logo-box">
-                <i class="api-logo-7"></i></p>
-              <p class="game-right">
-                <span class="title">
-                  <a href="#">游戏维护中</a>
-                </span>
-                <span class="blue">---</span>
-              </p>
-            </div>
-            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
-              <i class="ico-ask refresh"></i>
-              <p class="game-left api-logo-box">
-                <i class="api-logo-8"></i></p>
-              <p class="game-right">
-                <span class="title">
-                  <a href="#">游戏维护中</a>
-                </span>
-                <span class="blue">---</span>
-              </p>
-            </div>
-            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
-              <i class="ico-ask refresh"></i>
-              <p class="game-left api-logo-box">
-                <i class="api-logo-9"></i></p>
-              <p class="game-right">
-                <span class="title">
-                  <a href="#">游戏维护中</a>
-                </span>
-                <span class="blue">---</span>
-              </p>
-            </div>
-            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
-              <i class="ico-ask refresh"></i>
-              <p class="game-left api-logo-box">
-                <i class="api-logo-1"></i></p>
-              <p class="game-right">
-                <span class="title">
-                  <a href="#">游戏维护中</a>
-                </span>
-                <span class="blue">---</span>
-              </p>
-            </div>
-            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
-              <i class="ico-ask refresh"></i>
-              <p class="game-left api-logo-box">
-                <i class="api-logo-2"></i></p>
-              <p class="game-right">
-                <span class="title">
-                  <a href="#">游戏维护中</a>
-                </span>
-                <span class="blue">---</span>
-              </p>
-            </div>
-            <div class="game  onmousestop" type= "button" data-toggle="tooltip" data-placement="bottom" title="游戏信息">
-              <i class="ico-ask refresh"></i>
-              <p class="game-left api-logo-box">
-                <i class="api-logo-3"></i></p>
-              <p class="game-right">
-                <span class="title">
-                  <a href="#">游戏维护中</a>
-                </span>
-                <span class="blue">---</span>
-              </p>
-            </div>
-            <div class="game">
-              <p class="game-left addgame"></p>
-              <p class="text">
-                <a href="#">更多游戏</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    
-<div class="clearfix">
-    <div class="asset left-asset">
-
-      <div class="control-group">
-        <label class="control-label" for="inputEmail">转出：</label>
-        <div class="controls ">
-          <select class="selectwidth m-bigr">
-            <option>----请选择----</option>
-            <option>我的钱包</option>
-            <option>QQ游戏</option>
-            <option>联众游戏</option>
-          </select>
-          <span class="tips green">
-            <i class="mark successsmall"></i>
-          </span>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="inputEmail">转入：</label>
-        <div class="controls">
-          <select class="selectwidth m-bigr">
-            <option>----请选择----</option>
-            <option>我的钱包</option>
-            <option>QQ游戏</option>
-            <option>联众游戏</option>
-          </select>
-          <span class="tips orange">
-            <i class="mark plaintsmall"></i>
-            请选择转入账号
-          </span>
-        </div>
-      </div>
-      <div class="s-d-exchange">
-        <span class="b-tr"></span>
-        <span class="btn-exchange change"></span>
-        <span class="b-rb"></span>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="inputEmail">金额：</label>
-        <div class="controls">
-          <input type="text" id="" placeholder="" class="input input-money">元</div>
-      </div>
-
-      <div>
-        <button data-toggle="button" class="btn-blue btn large-big lar-l" id="btn-submit">确定转账</button>
-      </div>
-
-    </div>
-    <div class="asset right-asset clearfix">
-    <div class="clearfix game-n-w"><a href="#" class="game-nav"><img src="images/game-imgbbin.png"><em>波音真人</em></a><a href="#" class="game-nav"><img src="images/game-imgmg.png"><em>MG老虎机</em></a><a href="#" class="game-nav"><img src="images/game-imgim.png"><em>IM体育</em></a><a href="#" class="game-nav"><img src="images/game-imgag.png"><em>AG真人</em></a><a href="#" class="game-nav"><img src="images/game-imgdawoo.png"><em>真人现场厅</em></a><a href="#" class="game-nav"><img src="images/game-imgpt.png"><em>PT老虎机</em></a></div>
-
-    </div>
-    </div>
-
-    <div class="poster-wrap">
-      <ul class="poster" id="poster">
-        <li>
-          <a href="#" target="_blank">
-            <img src="http://192.168.0.88:93/fserver/files/carousel/10076/1463370988195.jpg_0x0.jpg"></a>
-          <span class="desc">
-            <a href="#">这是个链接</a>
-          </span>
-        </li>
-        <li>
-          <a href="#" target="_blank">
-            <img src="http://192.168.0.88:93/fserver/files/carousel/10094/1463379073819.jpg_0x0.jpg"></a>
-          <span class="desc">
-            <a href="#">MG--MG彩票广告位</a>
-          </span>
-        </li>
-        <li>
-          <a href="#" target="_blank">
-            <img src="http://192.168.0.88:93/fserver/files/carousel/10095/1463379095611.jpg_0x0.jpg"></a>
-          <span class="desc">
-            <a href="#">PT-电子游艺--四图横向滚动效果（可自动可手动）,此效果兼容所有主流浏览器</a>
-          </span>
-        </li>
-        <li>
-          <a href="#" target="_blank">
-            <img src="http://192.168.0.88:93/fserver/files/carousel/10077/1463370978943.jpg_0x0.jpg"></a>
-          <span class="desc">
-            <a href="#">IM--IM广告位</a>
-          </span>
-        </li>
-      </ul>
-      <ul class="slide">
-        <li class="prev" id="prev">
-          <a href="javascript:void(0);" title="上翻">上翻</a>
-        </li>
-        <li class="next" id="next">
-          <a href="javascript:void(0);" title="下翻">下翻</a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="asset">
-
-      <button type="button" class="btn btn-filter btn-lg real-time-btn loading-btn">Loading</button>
-
-    </div>
-
-    <!--游戏公告-->
-    <div class="gamenotice">
-      <div class="gamenotice-title">
-        <h1>游戏公告</h1>
-        <span class="more">
-          <a href="gamenotice.html">更多></a>
-        </span>
-      </div>
-      <div class="gamenotice-box">
-        <dl>
-          <dd class="clearfix">
-            <div class="item">
-              <h2 class="orange">
-                <a href="#">QQ游戏</a>
-              </h2>
-              <p>
-                由于3月17日1：00运营商网络维护，届时可能会导致部分游戏出现登录异常，或道具丢失的情况。如出现此情况，请大家稍后再尝试登录。
-                <span class="date">
-                  <i class="clock"></i>
-                  2015-08-30
-                </span>
-              </p>
-            </div>
-          </dd>
-          <p class="dottline"></p>
-          <dd class="gameback clearfix">
-            <div class="item">
-              <h2 class="orange">
-                <a href="#">联众游戏</a>
-              </h2>
-              <p>
-                由于3月17日1：00运营商网络维护，届时可能会导致部分游戏出现登录异常，或道具丢失的情况。如出现此情况，请大家稍后再尝试登录。
-                <span class="date">
-                  <i class="clock"></i>
-                  2015-08-30
-                </span>
-              </p>
-            </div>
-          </dd>
-          <p class="dottline"></p>
-          <dd class="clearfix">
-            <div class="item">
-              <h2 class="orange">
-                <a href="#">QQ游戏</a>
-              </h2>
-              <p>
-                由于3月17日1：00运营商网络维护，届时可能会导致部分游戏出现登录异常，或道具丢失的情况。如出现此情况，请大家稍后再尝试登录。
-                <span class="date">
-                  <i class="clock"></i>
-                  2015-08-30
-                </span>
-              </p>
-            </div>
-          </dd>
-        </dl>
-      </div>
-    </div>
-
-    <!--优惠活动-->
-    <div class="saleactive">
-      <div class="saleactive-title">
-        <h1>优惠活动</h1>
-        <span class="more">
-          <a href="sale.html">更多></a>
-        </span>
-      </div>
-      <div class="item">
-        <ul>
-          <li>
-            <span class="item-img">
-              <a href="#">
-                <img src="images/sale.jpg"/>
-              </a>
-            </span>
-            <h4>
-              <i class="item-title-ico goryorange">分类一</i>
-              <a href="#" class="act-title-c">象旗蓝钻专属</a>
-            </h4>
-          </li>
-          <li>
-            <span class="item-img">
-              <a href="#">
-                <img src="images/sale.jpg" />
-              </a>
-            </span>
-            <h4>
-              <i class="item-title-ico gorylightgreen">分类一</i>
-              <a href="#" class="act-title-c">象旗蓝钻专属</a>
-            </h4>
-          </li>
-          <li>
-            <span class="item-img">
-              <a href="#">
-                <img src="images/sale.jpg"/>
-              </a>
-            </span>
-            <h4>
-              <i class="item-title-ico goryred">分类一</i>
-              <a href="#" class="act-title-c">象旗蓝钻专属</a>
-            </h4>
-          </li>
-          <li>
-            <span class="item-img">
-              <a href="#">
-                <img src="images/sale.jpg"/>
-              </a>
-            </span>
-            <h4>
-              <i class="item-title-ico gorylightblue">分类一</i>
-              <a href="#" class="act-title-c">象旗蓝钻专属</a>
-            </h4>
-          </li>
-          <li>
-            <span class="item-img">
-              <a href="#">
-                <img src="images/sale.jpg"/>
-              </a>
-            </span>
-            <h4>
-              <i class="item-title-ico gorygreen">分类一</i>
-              <a href="#" class="act-title-c">象旗蓝钻专属</a>
-            </h4>
-          </li>
-          <li>
-            <span class="item-img">
-              <a href="#">
-                <img src="images/sale.jpg"/>
-              </a>
-            </span>
-            <h4>
-              <i class="item-title-ico goryblue">分类一</i>
-              <a href="#" class="act-title-c">象旗蓝钻专属</a>
-            </h4>
-          </li>
-          <li>
-            <span class="item-img">
-              <a href="#">
-                <img src="images/sale.jpg"/>
-              </a>
-            </span>
-            <h4>
-              <i class="item-title-ico gorylightgray">分类一</i>
-              <a href="#" class="act-title-c">象旗蓝钻专属象旗蓝钻专属象旗蓝钻专属象旗蓝钻专属象旗蓝钻专属</a>
-            </h4>
-          </li>
-
-        </ul>
-      </div>
-    </div>
-
-    <div class="asset">
-
-      <button type="button" class="btn btn-filter btn-lg real-time-btn" data-toggle="modal" data-target="#notice-list-1">时区弹窗</button>
-      <button type="button" class="btn btn-filter btn-lg real-time-btn" data-toggle="modal" data-target="#xitgg">公告弹窗</button>
-
-    </div>
-    <!--<div class="col-lg-12 m-t">
-      <div class="wrapper white-bg shadow">
-        <div class="sys_tab_wrap clearfix m-b-sm">
-          <div class="m-sm"> <b class="fs16">弹窗</b>
-          </div>
-        </div>
-
-        <div class="p-sm">
-          <button type="button" class="btn btn-filter help-popover" tabindex="0" role="button" data-container="body" data-toggle="popover"  data-placement="top"  data-content="用于接入第三方流量统计平台" data-template="<div class='popover success' role='tooltip'>
-            <div class='arrow'></div>
-            <h3 class='popover-title'></h3>
-            <div class='popover-content'></div>
-          </div>
-          ">提示成功
-        </button>
-        <button type="button" class="btn btn-filter help-popover" tabindex="0" role="button" data-container="body" data-toggle="popover"  data-placement="top"  data-content="用于接入第三方流量统计平台" data-template="<div class='popover danger' role='tooltip'>
-          <div class='arrow'></div>
-          <h3 class='popover-title'></h3>
-          <div class='popover-content'></div>
-        </div>
-        ">提示失败
-      </button>
-      <button type="button" class="btn btn-filter help-popover" tabindex="0" role="button" data-container="body" data-toggle="popover"  data-placement="top"  data-content="用于接入第三方流量统计平台" data-template="<div class='popover warning' role='tooltip'>
-        <div class='arrow'></div>
-        <h3 class='popover-title'></h3>
-        <div class='popover-content'></div>
-      </div>
-      ">提示警告
-    </button>
-    <button type="button" class="btn btn-filter help-popover" tabindex="0" role="button" data-container="body" data-toggle="popover"  data-placement="top"  data-content="用于接入第三方流量统计平台" data-template="<div class='popover info' role='tooltip'>
-      <div class='arrow'></div>
-      <h3 class='popover-title'></h3>
-      <div class='popover-content'></div>
-    </div>
-    ">提示信息
-  </button>
-
+  <div id="mainFrame" class="main-wrap"><form name="transferForm">
+<input type="hidden" value="" name="isRefresh">
+<div class="notice">
+<div class="notice-left"><em class="path"></em></div>
+<div class="path-right">
+<a class="cursor">额度转换</a>
 </div>
-
 </div>
-
-</div>-->
+<div class="account s2">
+<div class="loading-a">
+<div class="spiner-example">
+<img src="/010819/rcenter/pcenter/images/022b.gif">
+</div>
+</div>
+<div class="property">
+<div class="property-left">
+总资产<em class="total-money">0.00</em>
+<div class="m-loading-icon-x" style="display: none"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+<a title="刷新总资产" class="ico-ask refresh" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;getAllApiBalance&quot;,confirm:&quot;&quot;,text:&quot;&quot;,size:&quot;&quot; }">
+</a>
+</div>
+<button title="切换至手动额度转换" class="btn btn-gray btn-big btn-edzh" type="button" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;changeAutoPayCallback&quot;,post:&quot;&quot;,opType:&quot;ajax&quot;,dataType:&quot;&quot;,target:&quot;/pcenter/transfer/auto/changeAutoPay.html&quot;,confirm:&quot;&quot;,text:&quot;切换至手动额度转换&quot;,size:&quot;&quot; }">
+切换至手动额度转换
+</button>
+<button title="" class="btn btn-blue btn-big btn-money-back" type="button" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;recoveryApi&quot;,confirm:&quot;&quot;,text:&quot;&quot;,size:&quot;&quot; }">
+<i class="btn-money-back-white"></i>
+资金回收
+</button>
+</div>
+<div>
+<div class="balance">
+<div class="wallet">
+<dl>
+<dt>
+钱包余额</dt>
+<dd class="orange wallet-money">
+0.00</dd>
+<div class="m-loading-icon-x" style="display: none"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</dl>
+</div>
+<div class="balance-right pull-left">
+<div class="game onmouse api-info api-22" type="button" data-toggle="tooltip" data-placement="bottom">
+<a title="回收" class="title-ref" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;recoveryApi&quot;,confirm:&quot;&quot;,text:&quot;&quot;,size:&quot;&quot;,&quot;api&quot;:&quot;22&quot; }">
+<i class="btn-money-back-blue"></i>
+</a>
+<p class="game-left api-logo-box active">
+<i class="api-logo-22"></i>
+</p>
+<p class="game-right">
+<span class="title">一指通</span>
+<span class="blue api-money" id="api-money-22">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-22" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-15" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-15"></i>
+</p>
+<p class="game-right">
+<span class="title">HABA电子</span>
+<span class="blue api-money" id="api-money-15">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-15" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-9" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-9"></i>
+</p>
+<p class="game-right">
+<span class="title">AG大厅</span>
+<span class="blue api-money" id="api-money-9">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-9" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-4" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-4"></i>
+</p>
+<p class="game-right">
+<span class="title">IM体育</span>
+<span class="blue api-money" id="api-money-4">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-4" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-19" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-19"></i>
+</p>
+<p class="game-right">
+<span class="title">沙巴体育</span>
+<span class="blue api-money" id="api-money-19">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-19" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-25" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-25"></i>
+</p>
+<p class="game-right">
+<span class="title">SG电子</span>
+<span class="blue api-money" id="api-money-25">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-25" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-16" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-16"></i>
+</p>
+<p class="game-right">
+<span class="title">Ebet如意厅</span>
+<span class="blue api-money" id="api-money-16">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-16" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-3" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-3"></i>
+</p>
+<p class="game-right">
+<span class="title">MG电子</span>
+<span class="blue api-money" id="api-money-3">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-3" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-6" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-6"></i>
+</p>
+<p class="game-right">
+<span class="title">PT电子</span>
+<span class="blue api-money" id="api-money-6">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-6" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-1" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-1"></i>
+</p>
+<p class="game-right">
+<span class="title">DS贵宾厅</span>
+<span class="blue api-money" id="api-money-1">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-1" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-12" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-12"></i>
+</p>
+<p class="game-right">
+<span class="title">皇冠体育</span>
+<span class="blue api-money" id="api-money-12">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-12" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-7" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-7"></i>
+</p>
+<p class="game-right">
+<span class="title">OG东方厅</span>
+<span class="blue api-money" id="api-money-7">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-7" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-24" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-24"></i>
+</p>
+<p class="game-right">
+<span class="title">OPUS幸运厅</span>
+<span class="blue api-money" id="api-money-24">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-24" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-5" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-5"></i>
+</p>
+<p class="game-right">
+<span class="title">GD锦绣厅</span>
+<span class="blue api-money" id="api-money-5">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-5" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-17" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-17"></i>
+</p>
+<p class="game-right">
+<span class="title">SA澳门厅</span>
+<span class="blue api-money" id="api-money-17">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-17" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-10" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-10"></i>
+</p>
+<p class="game-right">
+<span class="title">BBIN大厅</span>
+<span class="blue api-money" id="api-money-10">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-10" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-2" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-2"></i>
+</p>
+<p class="game-right">
+<span class="title">KG彩票</span>
+<span class="blue api-money" id="api-money-2">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-2" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-28" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-28"></i>
+</p>
+<p class="game-right">
+<span class="title">GG捕鱼</span>
+<span class="blue api-money" id="api-money-28">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-28" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-27" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-27"></i>
+</p>
+<p class="game-right">
+<span class="title">DT电子</span>
+<span class="blue api-money" id="api-money-27">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-27" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-21" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-21"></i>
+</p>
+<p class="game-right">
+<span class="title">新皇冠</span>
+<span class="blue api-money" id="api-money-21">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-21" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-20" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-20"></i>
+</p>
+<p class="game-right">
+<span class="title">BSG电子</span>
+<span class="blue api-money" id="api-money-20">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-20" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-26" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-26"></i>
+</p>
+<p class="game-right">
+<span class="title">PNG电子</span>
+<span class="blue api-money" id="api-money-26">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-26" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-31" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-31"></i>
+</p>
+<p class="game-right">
+<span class="title">GNS电子</span>
+<span class="blue api-money" id="api-money-31">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-31" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-32" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-32"></i>
+</p>
+<p class="game-right">
+<span class="title">PP电子</span>
+<span class="blue api-money" id="api-money-32">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-32" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+<div class="game onmouse api-info api-33" type="button" data-toggle="tooltip" data-placement="bottom">
+<p class="game-left api-logo-box ">
+<i class="api-logo-33"></i>
+</p>
+<p class="game-right">
+<span class="title">申博</span>
+<span class="blue api-money" id="api-money-33">0.00</span>
+</p>
+</div>
+<div class="game onmouse loading-api loading-33" style="display: none;">
+<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="gameAnnouncement"><div class="gamenotice">
+<div class="gamenotice-title">
+<h1>游戏公告</h1>
+<span class="more gameMore" style="width: 60px">
+<a title="更多>" class="btn" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;moreGameAnnouncement&quot;,confirm:&quot;&quot;,text:&quot;更多>&quot;,size:&quot;&quot; }">
+更多&gt;
+</a>
+</span><sapn style=" margin-left:23.5cm"></sapn>
+<a href="javascript:;"></a>
+</div>
+<div class="gamenotice-box">
+<dl>
+<dd class="clearfix">
+<div class="item">
+<h2 class="orange">IM体育</h2>
+<p>
+<a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=a94477c640c5a7bec8a86866fa19af8b" nav-target="mainFrame">【IM体育】[足球][英格兰预备队中部联赛] "格连森林预备队 -vs- 布里斯托流浪预备队" - 09/01。赛事延迟，所有赌注将被退款。..."</a>
+<i class="date clock"></i>
+<span class="date">2018-01-10 15:19:13</span>
+</p>
+</div>
+</dd>
+<dd class="clearfix">
+<div class="item">
+<h2 class="orange">IM体育</h2>
+<p>
+<a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=cf12d187bf6dde930058ee635677063d" nav-target="mainFrame">【IM体育】[篮球] [NBA] "洛杉矶湖人&nbsp; -vs- 萨克拉门托国王" - 09/01*直播。由于直播中断，这场赛事将从客服..."</a>
+<i class="date clock"></i>
+<span class="date">2018-01-10 15:17:51</span>
+</p>
+</div>
+</dd>
+<dd class="clearfix">
+<div class="item">
+<h2 class="orange">沙巴体育</h2>
+<p>
+<a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=50bda1c504e92a1247ca85cf4ed685cc" nav-target="mainFrame">请注意:[足球] 由于赛事细节在调查当中, 赛事 "曼斯奎拉SP U20 -vs- 巴海尔 U20" [巴西圣保罗青年盃 - 9/1] 有关..."</a>
+<i class="date clock"></i>
+<span class="date">2018-01-10 13:18:59</span>
+</p>
+</div>
+</dd>
+<dd class="clearfix">
+<div class="item">
+<h2 class="orange">沙巴体育</h2>
+<p>
+<a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=6ff4d72a97d43d04df898361f8da348d" nav-target="mainFrame">【沙巴体育】[电子竞技] 由于官方宣佈该赛事 "compLexity Gaming -vs- 5 Turtles" [Dota 2 - SL..."</a>
+<i class="date clock"></i>
+<span class="date">2018-01-10 11:30:55</span>
+</p>
+</div>
+</dd>
+<dd class="clearfix">
+<div class="item">
+<h2 class="orange">AG大厅——捕鱼王</h2>
+<p>
+<a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=18d529152584a58f7c95cde1b4582ebb" nav-target="mainFrame">【AG捕鱼王临时维护通知】
+AG捕鱼王于北京时间2018年01月09日11:00—12:00（美东时间2018年01月08日23:00—00:00）进行维..."</a>
+<i class="date clock"></i>
+<span class="date">2018-01-09 09:48:47</span>
+</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</form>
+<script type="text/javascript">curl(['site/fund/transfers/auto/Index'],function(Page) {page =new Page();page.bindButtonEvents();});</script>
 </div>
 
 </div>
