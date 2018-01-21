@@ -38,8 +38,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
         },
 
         back: function () {
-            var url = root + "/wallet/deposit/index.html";
-            this.gotoUrl(url);
+           this.linkDeposit();
         },
 
         openWindow: function (url) {
