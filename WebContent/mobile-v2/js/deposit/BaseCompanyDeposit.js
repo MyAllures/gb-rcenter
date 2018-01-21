@@ -33,12 +33,11 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                     document.activeElement.blur();
                 }
                 var $form;
-                if (options.statusNum) {
+                if(options.statusNum){
                     $form = options.fromId;
-                } else {
+                }else{
                     $form = $(_this.formSelector);
                 }
-
                 if(!$form || !$form[0]) {
                     var $active =$("#depositWay li a.active");
                     if($active.attr("data-fast")) {
