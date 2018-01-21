@@ -122,8 +122,11 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
 
         bindReWriteAmount: function () {
             var _this = this;
-            mui(".cont").on("tap", ".agin-btn,.close", function () {
+            mui(".cont").on("tap", ".agin-btn", function () {
                 _this.linkDeposit();
+            })
+            mui(".cont").on("tap", ".close", function () {
+                $('#depositSalePop').remove();
             })
         },
         linkDeposit:function() {
