@@ -571,6 +571,13 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             var hcs = document.getElementsByName("activityRule.conditionType");
             var isCheckHas = $("[name='activityRule.conditionType']:checked").val();
             if(isCheckHas!="3"){
+                if(isCheckHas=='1'){
+                    $("#condition_type_1").show();
+                    $("#condition_type_2").hide();
+                }else if(isCheckHas=='2'){
+                    $("#condition_type_1").hide();
+                    $("#condition_type_2").show();
+                }
                 $("#preview_bet_count_div").hide();
                 $("#money_condition").find("tr:gt(0)").each(function (idx, item) {
                     var a1 = $(item).find("td:eq(0) input").val();
