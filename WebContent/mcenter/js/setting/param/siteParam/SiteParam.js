@@ -63,6 +63,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
              */
             this._super();
             this.bindSiteParamEvent();
+            this.qrSwitch();
         },
         /**
          * 当前页面所有事件初始化函数
@@ -70,7 +71,6 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         bindEvent: function () {
 
         },
-
         bindSiteParamEvent:function () {
             var _this = this;
             $(this.formSelector).on("click", "#traSave", function () {
@@ -519,6 +519,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         getMobileStaticValidateForm:function (e,opt) {
             return $("input,textarea","#mobileTrafficStatistics").serialize();
         },
+        getSaveContactValidateForm:function (e,opt) {
+            return $("input,textarea","#saveContact").serialize();
+        },
         /**
          * 获取统计代码表单
          * @param e
@@ -558,6 +561,120 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 return true;
             }
         },
+        /*
+        * 是否需要登录后显示二维码的控制开关
+        *
+        * */
+        qrSwitch:function () {
+            var _this = this;
+            this._super();
+            var $bootstrapSwitch = $('input[type=checkbox][name=active]');
+            this.unInitSwitch($bootstrapSwitch).bootstrapSwitch({
+                onText: window.top.message.content['floatPic.dislpay.on'],
+                offText: window.top.message.content['floatPic.display.off'],
+                onSwitchChange: function (e, state) {
+                    var $this = $(this);
+                    var _msg = "";
+                    if (state) {
+                        _msg = window.top.message.setting['confirm.open'];
+                    } else {
+                        _msg =  window.top.message.setting['confirm.close'];
+                    }
+                    $this.bootstrapSwitch('indeterminate', true);
+                    var _target = e.currentTarget;//showConfirmMessage
+                    window.top.topPage.showConfirmMessage(_msg, function (confirm) {
+                        if (confirm) {
+                            //_this._changeDisplayState(event, event.currentTarget, confirm, id, status);
+                            window.top.topPage.ajax({
+                                url: root + '/param/updateQrSwitch.html',
+                                dataType: "json",
+                                data: {"result.paramValue": state},
+                                success: function (data) {
+                                    if (data) {
+                                        $(_target).attr("isChanged", true);
+                                        $("#status").removeClass("label-success");
+                                        $("#status").addClass("label-danger");
+                                        page.showPopover({"currentTarget": $("#pcenter-msg-tips")}, {}, "success", "操作成功", true);
+                                    } else {
+                                        page.showPopover({"currentTarget": $("#pcenter-msg-tips")}, {}, "danger", "操作失败", true);
+                                    }
+                                }
+                            });
+                            $this.bootstrapSwitch('indeterminate', false);
+                        } else {
+                            $this.bootstrapSwitch('indeterminate', false);
+                            $this.bootstrapSwitch('state', !state, true);
+                        }
+                    })
+
+                }
+            });
+        },
+        copyAppDomain:function (e, opt) {
+            var tr = $("#app-domain-template").find("tr:eq(0)").clone();
+            var trlen = $("#app-domain-table").find("tr:gt(0)").length;
+            $(tr).find("input").each(function (idx, input) {
+                var name = $(input).attr("name");
+                name = name.replace("{n}",trlen);
+                $(input).attr("name",name);
+            });
+            $("#app-domain-table").append(tr);
+            $(e.currentTarget).unlock();
+
+        },
+        deleteAppDomain:function (e, opt) {
+            var _this = this;
+            var table = $($(e.currentTarget).parent().parent().parent());
+            $($(e.currentTarget).parent().parent()).remove();
+            var trLen = $(table).find("tr:gt(0)").length;
+            var tableId = $(table.parent()).attr("id");
+            $(table).find("tr:gt(0)").each(function (idx, trItem) {
+                $(trItem).find("td").each(function (ix, td) {
+                    if($(td).find("input").length>0){
+                        $(td).find("input").each(function (txtIdx, txt) {
+                            var name = $(txt).attr("name");
+                            var p = /\[.*?\]/g;
+                            name = name.replace(p,"["+idx+"]");
+                            $(txt).attr("name",name);
+                        })
+                    }
+
+                });
+            });
+            $(e.currentTarget).unlock();
+        },
+
+
+
+
+
+
+
+
+
+        /*
+        * 验证联系方式
+        *
+        * */
+        validationSettings:function (e) {
+            var reg = new RegExp("^[0-9]*$");
+            var qq=document.getElementById("qqId").value;
+            var phoneNumber=document.getElementById("phoneId").value;
+            if (!reg.test(phoneNumber)){
+                e.page.showPopover(e,{},"warning","电话号码不合法,请输入7-20位纯数字",true);
+                return false;
+            }else if(!reg.test(qq)){
+                e.page.showPopover(e,{},"warning","QQ号码不合法，请输入5-20位纯数字",true);
+                return false;
+            }else {
+                e.page.showPopover(e,{},"warning","保存成功",true);
+                return true;
+            }
+
+        },
+
+
+
         myCallBack : function (e,opt) {
             alert(opt.data.state);
         },
