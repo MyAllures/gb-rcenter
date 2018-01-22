@@ -657,24 +657,34 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         *
         * */
         validationSettings:function (e) {
-            var reg = new RegExp("^[0-9]*$");
+            var regPhone = new RegExp("^[0-9]{6,20}$");//验证电话号码
+            var regQp = new RegExp("^[0-9]{4,20}$");//验证qq号码
+            var regEmailSkyep = new RegExp("^.{0,20}$");//验证邮箱和Skyep
+            var reg = new RegExp("^.{0,200}$");//验证版权信息
+
             var qq=document.getElementById("qqId").value;
             var phoneNumber=document.getElementById("phoneId").value;
-            if (!reg.test(phoneNumber)){
+            var Email=document.getElementById("emailId").value;
+            var Skyep=document.getElementById("skyepId").value;
+            var Copyright=document.getElementById("copyrightId").value;
+
+            if (!regPhone.test(phoneNumber)){
                 e.page.showPopover(e,{},"warning","电话号码不合法,请输入7-20位纯数字",true);
                 return false;
-            }else if(!reg.test(qq)){
+            }else if(!regQp.test(qq)){
                 e.page.showPopover(e,{},"warning","QQ号码不合法，请输入5-20位纯数字",true);
                 return false;
+            }else if(!regEmailSkyep.test(Email)){
+                e.page.showPopover(e,{},"warning","邮箱不合法，请输入长度小于30个字符",true);
+            }else if(!regEmailSkyep.test(Skyep)){
+                e.page.showPopover(e,{},"warning","Skyep账号不合法，请输入长度小于30个字符",true);
+            }else if(!reg.test(Copyright)){
+                e.page.showPopover(e,{},"warning","版权信息不合法，请输入长度小于200个字符",true);
             }else {
                 e.page.showPopover(e,{},"warning","保存成功",true);
                 return true;
             }
-
         },
-
-
-
         myCallBack : function (e,opt) {
             alert(opt.data.state);
         },
