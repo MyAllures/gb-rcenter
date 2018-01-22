@@ -183,6 +183,9 @@ define(['common/BaseEditPage', 'autocompleter'], function (BaseEditPage) {
                 }
             });
             $(".autocompleter").attr("style", "border:none");
+            $("input[name='username']").blur(function(){
+                $(".autocompleter").addClass("autocompleter-closed");
+            });
         },
     });
 });

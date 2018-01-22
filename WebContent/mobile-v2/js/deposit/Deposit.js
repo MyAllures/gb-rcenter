@@ -67,7 +67,7 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
             var $depositWay = $("#depositWay li>a:first");
             if ($depositWay) {
                 var key = $("#depositWay li:first").attr("key");
-                if (key && (key != 'bitcoin_fast' && key != 'digiccyAccountInfo')) {
+                if (key && (key != 'bitcoin_fast' && key != 'digiccyAccountInfo' && key != 'isFastRecharge')) {
                     mui.trigger($depositWay[0], "tap");
                 }
             }
@@ -226,7 +226,7 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
                 });
             } else {
                 $("#deposit").html(map[key]);
-                page.formSelector = "#depositCashForm";
+                page.formSelector = formId;
                 _this.bindFormValidation();
                 // page.bindRechargeAmount($("#submitAmount"));
                 page.jumpSubmit(_this, _href);

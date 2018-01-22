@@ -68,8 +68,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
         },
 
         back: function () {
-            var url = root + "/wallet/deposit/index.html";
-            window.location.replace(url);
+           this.linkDeposit();
         },
 
         /**
@@ -164,8 +163,8 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
         submit: function () {
             var _this = this;
 
-            mui(".mui-scroll2").off("tap", "#submitAmount");
-            mui(".mui-scroll2").on("tap", "#submitAmount", function () {
+            mui(".main-contents").off("tap", "#submitAmount");
+            mui(".main-contents").on("tap", "#submitAmount", function () {
                 if (document.activeElement) {
                     document.activeElement.blur();
                 }
@@ -190,7 +189,6 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                         return false;
                     }
                 }
-
                 var rechargeAmount = $("input[name='result.rechargeAmount']").val();
                 var payerBank = $("input[name='result.payerBank']").val();
                 var rechargeType = $("input[name='result.rechargeType']").val();

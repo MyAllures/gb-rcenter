@@ -2121,3 +2121,82 @@ i.bg-01,i.bg-02,i.bg-03,i.bg-04,i.bg-05,i.bg-06,i.bg-07,i.bg-08,i.bg-09,i.bg-10{
     display: block;
     padding-top: 10px;
 }
+/*六合彩 开奖号码生肖*/
+.game_name .box2_stage .number.lhc-num-kj{
+	padding-top: 0;
+}
+.game_name .box2_stage .number.lhc-num-kj span {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+}
+.game_name .box2_stage .number.lhc-num-kj .plus {
+    line-height: 17px!important;
+    font-size: 28px!important;
+    font-family: Microsoft Yahei;
+    color: #666!important;
+    margin: 5px!important;
+    background: none!important;
+    width: 20px!important;
+    height: 20px!important;
+    margin-left: -8px!important;
+}
+.lhc-num-ball{
+	height: 30px;
+    width: 100%;
+}
+.lhc-num-ball:after{content: "";display: block;clear: both;}
+.lhc-num-kj .lhc-num-sx{
+	word-spacing: -4px;
+}
+.lhc-num-kj .lhc-num-sx .sx-ball{
+	width: 24px!important;
+    height: 24px!important;
+    line-height: 24px!important;
+    border: 1px solid #ddd!important;
+    color: #333!important;
+    text-align: center;
+    display: inline-block;
+    margin: 5px 15px 0 2px!important;
+    background: #fff!important;
+    border-radius: 4px!important;
+    float: none!important;
+    font-size: 16px!important;
+}
+/*.lhc-num-kj .lhc-num-sx .sx-ball:nth-child(7){
+	margin-left: 18px!important;
+}*/
+.lhc-num-wqkj .lhc-num-ball{
+	height: auto;
+    width: 100%;
+}
+
+/*.lhc-num-wqkj ul li .lhc-num-ball .plus {
+    line-height: 18px!important;
+    font-size: 20px!important;
+    font-family: Microsoft Yahei;
+    color: #666!important;
+    margin: 0 -5px 0 0!important;
+    background: none!important;
+    width: 20px!important;
+    height: 20px!important;
+}*/
+.lhc-num-wqkj .lhc-num-sx{margin-left:77px;word-spacing: -4px;}
+.lhc-num-wqkj .lhc-num-sx .sx-ball{
+	width: 16px!important;
+    height: 16px!important;
+    line-height: 16px!important;
+    border: 1px solid #ddd!important;
+    color: #333!important;
+    text-align: center;
+    display: inline-block;
+    margin: 5px 5px 0 2px!important;
+    background: #fff!important;
+    border-radius: 4px!important;
+    float: none!important;
+    font-size: 12px!important;
+}
+/*.lhc-num-wqkj .lhc-num-sx .sx-ball:nth-child(7){
+	margin-left: 17px!important;
+}*/

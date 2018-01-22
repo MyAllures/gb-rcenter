@@ -19,20 +19,6 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
         bindEvent: function () {
             this._super();
             var _this = this;
-            /**
-             * 链接地址添加占位符
-             *
-             * @param e
-             */
-            $(this.formSelector).on("click", "._editTags a", function(e){
-                var $tag = '$'+$(this).children().text();
-                var obj = $(e.currentTarget).parent().prev();
-                var startPos =  obj[0].selectionStart;
-                var endPos =  obj[0].selectionEnd;
-                var restoreTop = obj[0].scrollTop;
-                var newValue= obj.val().substring(0, startPos) + $tag + obj.val().substring(endPos, obj.val().length);
-                $(obj).val(newValue);
-            });
             //切换语言
             $(this.formSelector).on("click","a[name='tag']", function () {
                 $("a[name='tag']").removeClass("current");
@@ -109,40 +95,9 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
             $(".contents_textarea",_this.formSelector).each(function(idx,item){
                 _this.initUEditor(idx);
             });
-            this.unInitFileInput($('.file'))
-                .fileinput({
-                    showUpload: false,
-                    maxFileCount: 1,
-                    maxFileSize: 1024,
-                    //minImageWidth: 600,
-                    //minImageHeight: 350,
-                    //maxImageWidth: 600,
-                    //maxImageHeight: 350,
-                    mainClass: "input-group",
-                    removeLabel: window.top.message.content['floatPic.file.upload.remove'],
-                    browseLabel: window.top.message.content['floatPic.file.upload.browse'] + '&hellip;',
-                    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif'],
-                    msgInvalidFileExtension: window.top.message.content['floatPic.file.upload.msgInvalidFileExtension'],
-                    msgValidationError: window.top.message.content['floatPic.file.upload.msgValidationError'],
-                    msgSizeTooLarge: window.top.message.content['floatPic.file.upload.msgSizeTooLarge'],
-                    msgImageWidthSmall: window.top.message.setting['myAccount.file.size.widthError'],
-                    msgImageHeightSmall: window.top.message.setting['myAccount.file.size.heightError'],
-                    msgImageWidthLarge: window.top.message.setting['myAccount.file.size.widthError'],
-                    msgImageHeightLarge: window.top.message.setting['myAccount.file.size.heightError']
-                }).bind("filecleared", function (e) {
-                e.fileInput.$container.prev().show();
-                page.resizeDialog();
-            }).bind("fileloaded", function (e) {
-                e.fileInput.$container.prev().hide();
-                e.fileInput.$container.parent().removeClass("error");
-                page.resizeDialog();
-            });
             setTimeout(function () {
                 $("#oldContent").val(_this.getCurrentContent());
             },1000)
-            $(":radio[name='result.contentType']").on('change', function (e) {
-                _this._switchDisplay();
-            });
         },
 
         getCurrentContent: function () {
@@ -161,44 +116,6 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
             return contents;
         },
         /**
-         * 删除图片按钮
-         * @param e
-         * @param p
-         */
-        deletePicture:function(e,p){
-            $("input[name='result.path']").val('');
-            $('#picUrl').removeAttr('src');
-            /*清除上传文件路径*/
-            $('#uploadImageInput').val('');
-            $(e.currentTarget).unlock();
-        },
-        preSave:function( event , option ){
-            var status = $("[name='result.contentType']:checked").val();
-            if (status!=1){
-                $(".content_picture").find("input.cover").val('');
-            }else {
-                $(".content_word_title").find("textarea.word_content").val('');
-            }
-            event.objId = $('[name="search.id"]').val();
-            event.catePath = 'carousel';
-            var flag = this.uploadAllFiles( event, option);
-            if(!flag){
-                return false;
-            }
-            /*当前按钮*/
-            var $currentBtn = $(event.currentTarget);
-            var that = this;
-
-            /*未通过 表单验证*/
-            if (!that.validateForm(event)) {
-                return false;
-            }
-            if ($('.file-error-message:visible').length > 0) {
-                return false;
-            }
-            return true;
-        },
-        /**
          * 自定义表单验证，保存
          * @param e
          * @param p
@@ -207,7 +124,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
             var that = this;
             window.top.topPage.ajax({
                 type:"POST",
-                url: root+"/content/cttCarousel/dialog/persist.html",
+                url: root+"/content/cttCarousel/registerAd/persist.html",
                 data:window.top.topPage.getCurrentFormData(e),
                 error: function (request) {
 
@@ -216,11 +133,6 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                     that.closePage();
                 }
             })
-        },
-        getImg:function(images){
-            var imgSrc = images[0].src;
-            $("#picUrl").removeClass("hide").attr('src',imgSrc);
-            $("input[name='result.path']").val(images[0]._src);
         },
         closePageConfirm:function(e,p){
             //debugger;
@@ -266,31 +178,6 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 $(e.currentTarget).unlock();
             }
 
-        },
-        /**
-         * 图片、文字模式切换
-         * @private
-         */
-        _switchDisplay: function () {
-            var _this = this;
-            var contentType = $(":radio[name='result.contentType']:checked").val();
-            //圖片
-            if(contentType == '1'){
-                $(".content_picture_title").removeClass("hide");//圖片模式標題去掉hide
-                $(".content_picture").removeClass("hide");//圖片模式图片去掉hide
-                $("#content_picture_link").removeClass("hide");
-                $(".content_word_title").addClass("hide");
-                $(".content_word").addClass("hide");//显示效果添加hide
-                $("#showModel").removeClass("hide");
-            }else {
-                $("#content_picture_link").addClass("hide");//图片链接添加hide
-                $(".content_picture_title").addClass("hide");//文字模式圖片名称添加hide
-                $(".content_word_title").removeClass("hide");//文字模式內容去掉hide
-                $(".content_picture").addClass("hide");
-                $(".content_word").removeClass("hide");
-                $("#showModel").addClass("hide");
-            }
-            _this.resizeDialog();
         },
 
         /**
