@@ -1367,7 +1367,7 @@
                     },
                     error:function(error) {
                         if(error.responseJSON){
-                            window.location.href=error.responseJSON.propMessages.location;
+                            openVerify(error.responseJSON);
                         }else{
                             window.location.href="/";
                         }
@@ -1384,6 +1384,27 @@
             $this.parent().children("a").removeClass("not-active");
             $this.text(loginText).css("pointer-events","auto");
         }
+    }
+
+    /**
+     * 老玩家姓名验证登录
+     * */
+    var realNameVerifyDialog;
+    function openVerify(data) {
+        realNameVerifyDialog = BootstrapDialog.show({
+            draggable: false,
+            title:'Prompt message',
+            type: BootstrapDialog.TYPE_WARNING,
+            message: function(dialog) {
+                var $message = $('<div class="agreement" style="height: 200px;weight: 300px;"></div>');
+                var pageToLoad = dialog.getData('pageToLoad');
+                $message.load(pageToLoad);
+                return $message;
+            },
+            data: {
+                'pageToLoad': '/passport/verify/toVerifyRealName.html?search.playerAccount='+data.username+'&tempPass='+data.password
+            }
+        });
     }
 
     function dropdownOpen() {
