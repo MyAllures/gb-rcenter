@@ -668,10 +668,10 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             var Skyep=document.getElementById("skyepId").value;
             var Copyright=document.getElementById("copyrightId").value;
 
-            if (!regPhone.test(phoneNumber)){
+            if (phoneNumber!=""&&!regPhone.test(phoneNumber)){
                 e.page.showPopover(e,{},"warning","电话号码不合法,请输入7-20位纯数字",true);
                 return false;
-            }else if(!regQp.test(qq)){
+            }else if(qq!=""&&!regQp.test(qq)){
                 e.page.showPopover(e,{},"warning","QQ号码不合法，请输入5-20位纯数字",true);
                 return false;
             }else if(!regEmailSkyep.test(Email)){
