@@ -123,18 +123,18 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
         bindReWriteAmount: function () {
             var _this = this;
             mui(".cont").on("tap", ".agin-btn,.close", function () {
-                // _this.reWriteAmount();
-                // _this.gotoPage(url);
-                var url = root+"/wallet/deposit/index.html?t="+Math.random();
-                if(os == 'android'){
-                    window.gamebox.gotoPay(url);
-                }else if(os == 'app_ios'){
-                    gotoPay(url);
-                }else{
-                    // window.open(url, "_blank");
-                    _this.gotoUrl(url);
-                }
+                _this.linkDeposit();
             })
+        },
+        linkDeposit:function() {
+            var url = root + "/wallet/deposit/index.html";
+            if (this.os == 'app_android') {
+                window.gamebox.gotoFragment(1);
+            } else if (this.os == 'app_ios') {
+                gotoTab(1);
+            } else {
+                this.gotoUrl(url);
+            }
         },
         otoFragment: function () {
             var _this = this;

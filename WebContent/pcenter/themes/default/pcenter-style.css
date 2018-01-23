@@ -473,7 +473,7 @@ a{color:#2772ee}
 /*游戏公告*/
 .gamenotice,.saleactive{border:1px solid #d3d8dc;margin:35px 20px 0px 20px;border-radius:4px;position:relative;box-shadow:2px 2px 2px #f6f6f6;}
 .gamenotice .gamenotice-title h1,.saleactive .saleactive-title h1{font-size:16px;margin-left:20px;margin-top:10px;position:absolute;top:-22px;left:20px;background:#fff;display:inline-block;padding:0 8px;text-align:center;font-weight:normal;color:#333;font-weight:bold}
-.gamenotice .gamenotice-title .more,.sale .sale-title .more,.saleactive .saleactive-title .more{font-size:12px;margin-top:10px;position:absolute;top:-25px;right:20px;background:#fff;display:inline-block;width:60px;text-align:center;border:1px solid #e3e3e3;height:28px;line-height:28px;border-radius:4px}
+.gamenotice .gamenotice-title .more,.sale .sale-title .more,.saleactive .saleactive-title .more{font-size:12px;margin-top:10px;position:absolute;top:-25px;right:20px;background:#fff;display:inline-block;width:auto!important;text-align:center;border:1px solid #e3e3e3;height:28px;line-height:28px;border-radius:4px;padding: 0 6px;}
 .gamenotice-box a{color:#666}
 .gamenotice-box a:hover{color:#f88311}
 .dottline{background:url("../../images/dottline.png") repeat-x bottom;height:1px}
