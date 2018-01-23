@@ -127,10 +127,11 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 url: root+"/content/cttCarousel/registerAd/persist.html",
                 data:window.top.topPage.getCurrentFormData(e),
                 error: function (request) {
-
+                    $(e.currentTarget).unlock();
                 },
                 success: function (data) {
                     that.closePage();
+                    $(e.currentTarget).unlock();
                 }
             })
         },
@@ -195,10 +196,15 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 autoHeightEnabled:false,/*是否自动长高*/
                 maximumWords:2000,
                 toolbars: [[
-                    'fullscreen', 'source', '|', 'undo', 'redo', '|',
-                    'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
-                    'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
-                    'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|','link', 'unlink'
+                    'source','anchor', 'undo', 'redo', 'bold', 'indent', 'italic', 'underline', 'strikethrough', 'subscript', 'fontborder',
+                    'superscript', 'formatmatch', 'blockquote', 'pasteplain', 'selectall', 'preview', 'horizontal', 'removeformat', 'time',
+                    'date', 'unlink', 'insertrow', 'insertcol', 'mergeright', 'mergedown', 'deleterow', 'deletecol', 'splittorows', 'splittocols',
+                    'splittocells', 'deletecaption', 'inserttitle', 'mergecells', 'deletetable', 'cleardoc', 'insertparagraphbeforetable',
+                    'fontfamily', 'fontsize', 'paragraph', 'edittable', 'edittd', 'link', 'spechars', 'searchreplace', 'justifyleft', 'justifyright',
+                    'justifycenter', 'justifyjustify', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'fullscreen',
+                    'directionalityltr', 'directionalityrtl', 'rowspacingtop', 'rowspacingbottom', 'imagenone', 'imageleft', 'imageright',
+                    'imagecenter', 'lineheight', 'edittip ', 'customstyle', 'autotypeset', 'touppercase', 'tolowercase', 'background', 'inserttable',
+                    'simpleupload', 'insertimage'
 
                 ]]
             });
