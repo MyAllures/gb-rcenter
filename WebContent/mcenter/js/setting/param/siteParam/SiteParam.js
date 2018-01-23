@@ -657,8 +657,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         *
         * */
         validationSettings:function (e) {
-            var regPhone = new RegExp("^[0-9]{6,20}$");//验证电话号码
-            var regQp = new RegExp("^[0-9]{4,20}$");//验证qq号码
+            var regPhone = new RegExp("^[0-9]{7,20}$");//验证电话号码
+            var regQp = new RegExp("^[0-9]{5,20}$");//验证qq号码
             var regEmailSkyep = new RegExp("^.{0,20}$");//验证邮箱和Skyep
             var reg = new RegExp("^.{0,200}$");//验证版权信息
 
