@@ -657,8 +657,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         *
         * */
         validationSettings:function (e) {
-            var regPhone = new RegExp("^[0-9]{6,20}$");//验证电话号码
-            var regQp = new RegExp("^[0-9]{4,20}$");//验证qq号码
+            var regPhone = new RegExp("^[0-9]{7,20}$");//验证电话号码
+            var regQp = new RegExp("^[0-9]{5,20}$");//验证qq号码
             var regEmailSkyep = new RegExp("^.{0,20}$");//验证邮箱和Skyep
             var reg = new RegExp("^.{0,200}$");//验证版权信息
 
@@ -668,10 +668,10 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             var Skyep=document.getElementById("skyepId").value;
             var Copyright=document.getElementById("copyrightId").value;
 
-            if (!regPhone.test(phoneNumber)){
+            if (phoneNumber!=""&&!regPhone.test(phoneNumber)){
                 e.page.showPopover(e,{},"warning","电话号码不合法,请输入7-20位纯数字",true);
                 return false;
-            }else if(!regQp.test(qq)){
+            }else if(qq!=""&&!regQp.test(qq)){
                 e.page.showPopover(e,{},"warning","QQ号码不合法，请输入5-20位纯数字",true);
                 return false;
             }else if(!regEmailSkyep.test(Email)){
