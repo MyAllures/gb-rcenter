@@ -204,10 +204,12 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
             var _this = this;
             var local = option.local;
             var siteApiId = option.apiTypeId;
+            var siteId=$("#siteId").val();
+            var apiId=$("#apiId").val();
             window.top.topPage.ajax({
                 type:"POST",
                 url:root+'/siteApi/revertDefault.html',
-                data:{'result.local':local,'result.siteApiId':siteApiId},
+                data:{'result.local':local,'result.siteApiId':siteApiId,'result.siteId':siteId,'result.apiId':apiId},
                 dataType:"JSON",
                 error:function(data){
                 },

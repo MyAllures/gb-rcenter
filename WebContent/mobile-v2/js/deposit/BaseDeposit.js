@@ -48,30 +48,34 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
             var $btn = $submitBtn || $("#submitAmount");
             if (document.getElementById('result.rechargeAmount')) {
                 document.getElementById('result.rechargeAmount').addEventListener("input", function () {
-                    if ($("input[name='result.randomCash']").val()) {
-                        if($(this).val() == null && $(this).val()=="") {
-                            $btn.attr("category","isNull");
-                        }else if (!/^[0-9]*$/.test($(this).val())) {
-                            $btn.attr("category","notThrough");
-                        }else{
-                            var min = Number($("#onlinePayMin").val());
-                            var max = Number($("#onlinePayMax").val());
-                            var amount = Number($(this).val()) + Number($("input[name='result.randomCash']").val())/100;
-                            if(/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/.test(amount.toFixed(2))) {
-                                if (amount >= min && amount <= max) {
-                                    $btn.attr("category", "through");
-                                } else {
-                                    $btn.attr("category", "excess");
-                                }
-                            }else{
-                                $btn.attr("category", "error");
-                            }
-                        }
-                    }
+                    _this.verificationAmount($btn);
                 });
             }
         },
 
+        verificationAmount:function($btn){
+            var rechargeAmount = $("input[name='result.rechargeAmount']");
+            if (rechargeAmount && $("input[name='result.randomCash']").val()) {
+                if(rechargeAmount.val() == null || rechargeAmount.val()=="") {
+                    $btn.attr("category","isNull");
+                }else if (!/^[0-9]*$/.test(rechargeAmount.val())) {
+                    $btn.attr("category","notThrough");
+                }else{
+                    var min = Number($("#onlinePayMin").val());
+                    var max = Number($("#onlinePayMax").val());
+                    var amount = Number(rechargeAmount.val()) + Number($("input[name='result.randomCash']").val())/100;
+                    if(/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/.test(amount.toFixed(2))) {
+                        if (amount >= min && amount <= max) {
+                            $btn.attr("category", "through");
+                        } else {
+                            $btn.attr("category", "excess");
+                        }
+                    }else{
+                        $btn.attr("category", "error");
+                    }
+                }
+            }
+        },
 
         /**
          * 更新存款金额的远程验证提示消息
@@ -107,11 +111,12 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
 
         //快选金额
         bindChooseAmount: function () {
+            var _this = this;
             $("body").on("tap", "#chooseAmount a", function (e) {
                 $("#chooseAmount").find("a").removeClass("active");
                 $(this).addClass("active");
                 $("input[name='result.rechargeAmount']").val($(this).attr("money"));
-                // $("#submitAmount").removeAttr("disabled");
+                _this.verificationAmount($("#submitAmount"));
             })
         },
 
@@ -122,19 +127,22 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
 
         bindReWriteAmount: function () {
             var _this = this;
-            mui(".cont").on("tap", ".agin-btn,.close", function () {
-                // _this.reWriteAmount();
-                // _this.gotoPage(url);
-                var url = root+"/wallet/deposit/index.html?t="+Math.random();
-                if(os == 'android'){
-                    window.gamebox.gotoPay(url);
-                }else if(os == 'app_ios'){
-                    gotoPay(url);
-                }else{
-                    // window.open(url, "_blank");
-                    _this.gotoUrl(url);
-                }
+            mui(".cont").on("tap", ".agin-btn", function () {
+                _this.linkDeposit();
             })
+            mui(".cont").on("tap", ".close", function () {
+                $('#depositSalePop').remove();
+            })
+        },
+        linkDeposit:function() {
+            var url = root + "/wallet/deposit/index.html";
+            if (this.os == 'app_android') {
+                window.gamebox.gotoFragment(1);
+            } else if (this.os == 'app_ios') {
+                gotoTab(1);
+            } else {
+                this.gotoUrl(url);
+            }
         },
         otoFragment: function () {
             var _this = this;
