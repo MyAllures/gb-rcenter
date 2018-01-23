@@ -299,6 +299,38 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
                     $('div._apiType').html(data);
                 }
             })
+        },
+        //获取头部信息
+        getHeadInfo: function () {
+            var _this = this;
+            mui.ajax(root + "/getHeadInfo.html", {
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {
+                    if (data.isLogin == true) { //已登录
+                        $(".right_username").text(data.name);
+                        isLogin = 'true';
+                        $(".is-login").show();
+                        $(".un-login").hide();
+                        if (data.avatar) {
+                            $(".avatar").attr("src", data.avatar);
+                        }
+                        $("._leftLogin").removeClass("mui-hide");
+                        $("._leftLogout").removeClass("mui-hide");
+                        $("._leftUsername").text(data.name);
+                        $("._leftUnLogin").hide();
+                        _this.loadBalance();
+                        sessionStorage.is_login = true;
+                    } else { //未登录
+                        isLogin = 'false';
+                        $(".is-login").hide();
+                        $(".un-login").show();
+                        $("._leftLogin").addClass("mui-hide");
+                        $("._leftLogout").addClass("mui-hide");
+                        $("._leftUnLogin").show();
+                    }
+                }
+            })
         }
     });
 });
