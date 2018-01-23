@@ -4,16 +4,10 @@
 define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'css!themesCss/fileinput/fileinput'], function (BaseEditPage,fileinput) {
 
     return BaseEditPage.extend({
-        _editor:null,
-        maxRange: 30,
         ue:[],
         titleMaxLength:Number($("#titleMaxLength").val()),
         init: function () {
-            //var that = this;
             this._super();
-            window.top.topPage.initFileWithPreview($("#uploadImageInput")[0], $("#picUrl")[0],{
-                maxFileSize:1024,
-                allowedFileExtensions:[".png",".jpg",".gif",".jpeg"]});
             this.resizeDialog();
         },
         bindEvent: function () {
@@ -45,7 +39,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
             /**
              * 重写验证
              */
-            $(this.formSelector).on("validate", "input", function (e,message) {
+            /*$(this.formSelector).on("validate", "input", function (e,message) {
                 if(message && $(this).is(":hidden")){
                     var attr = $(this).attr("tt");
                     if(attr){
@@ -61,7 +55,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 else{
                     e.result=false;
                 }
-            });
+            });*/
 
             //修改编辑状态
             $(this.formSelector).on("click","a[name='tag']", function () {
@@ -89,6 +83,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 page.resizeDialog();
             });
         },
+
         onPageLoad: function () {
             var _this = this;
             this._super();
@@ -127,16 +122,15 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 url: root+"/content/cttCarousel/registerAd/persist.html",
                 data:window.top.topPage.getCurrentFormData(e),
                 error: function (request) {
-                    $(e.currentTarget).unlock();
+
                 },
                 success: function (data) {
                     that.closePage();
-                    $(e.currentTarget).unlock();
                 }
             })
+            $(e.currentTarget).unlock();
         },
         closePageConfirm:function(e,p){
-            //debugger;
             //如果有编辑内容提示
             //当前有未发布的内容，返回后内容将丢失！
             var that = this;
