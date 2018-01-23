@@ -36,27 +36,6 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 }
             });
 
-            /**
-             * 重写验证
-             */
-            /*$(this.formSelector).on("validate", "input", function (e,message) {
-                if(message && $(this).is(":hidden")){
-                    var attr = $(this).attr("tt");
-                    if(attr){
-                        $(".a_"+attr).click();
-                        $(".a_"+attr).formtip(message);
-                        e.result=true;
-                    }else{
-                        e.result=false;
-                    }
-
-
-                }
-                else{
-                    e.result=false;
-                }
-            });*/
-
             //修改编辑状态
             $(this.formSelector).on("click","a[name='tag']", function () {
                 var local=$(this).attr("local");
