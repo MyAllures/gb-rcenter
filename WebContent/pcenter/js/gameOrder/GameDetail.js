@@ -33,12 +33,17 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     var datas = eval('('+data+')');
                     if(datas.state){
                         window.open(datas.msg);
-                        $(e.currentTarget).unlock();
                     }else{
                         window.top.topPage.showWarningMessage(datas.msg);
                         return;
                     }
+                    $(e.currentTarget).unlock();
                 },
+                error: function (data){
+                    console.log('请求错误');
+                    $(e.currentTarget).unlock();
+                },
+
             })
         }
     })
