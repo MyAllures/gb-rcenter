@@ -20,7 +20,6 @@ define(['common/BaseEditPage'], function (BaseListPage) {
         detail:function (e) {
             var betId=$("#betId").val();
             var siteId=$("#siteId").val();
-            $(e.currentTarget).lock();
             window.top.topPage.ajax({
                 url: root + "/report/gameTransaction/getGameDetailLink.html?search.betId="+betId+"&siteId="+siteId,
                 type: 'GET',
@@ -28,14 +27,14 @@ define(['common/BaseEditPage'], function (BaseListPage) {
                     var datas = eval('('+data+')')
                     if(datas.state){
                         window.open(datas.msg);
-                        $(e.currentTarget).unlock();
                     }else{
                         window.top.topPage.showWarningMessage(datas.msg);
-                        $(e.currentTarget).unlock();
                         return;
                     }
+                    $(e.currentTarget).unlock();
                 },
                 error: function(data){
+                    console.log('请求错误');
                     $(e.currentTarget).unlock();
                 },
             })

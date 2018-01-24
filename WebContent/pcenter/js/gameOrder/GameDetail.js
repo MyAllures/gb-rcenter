@@ -26,7 +26,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         },
         gameDetail:function (e) {
             var betId=$("#betId").val();
-            $(e.currentTarget).lock();
             window.top.topPage.ajax({
                 url: root + "/gameOrder/GameDetailLink.html?search.betId="+betId,
                 type: 'GET',
@@ -34,14 +33,14 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     var datas = eval('('+data+')');
                     if(datas.state){
                         window.open(datas.msg);
-                        $(e.currentTarget).unlock();
                     }else{
                         window.top.topPage.showWarningMessage(datas.msg);
-                        $(e.currentTarget).unlock();
                         return;
                     }
+                    $(e.currentTarget).unlock();
                 },
                 error: function (data){
+                    console.log('请求错误');
                     $(e.currentTarget).unlock();
                 },
 
