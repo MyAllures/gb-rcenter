@@ -271,7 +271,7 @@ header{
 /* 添加到桌面图标 */
 .desk{    position: fixed;
     z-index: 902;
-    background: #ffffffe6;
+    background: rgba(255, 255, 255, 0.9);
     left: 50%;
     margin-left: -150px;
     width: 300px;
