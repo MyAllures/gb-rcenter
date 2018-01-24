@@ -447,6 +447,10 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 window.top.topPage.showPage();
             }
         },
+        /*
+        * 验证根据层级设置域名
+        *
+        * */
         validRankByDomain :function (e,opt) {
             _this=this;
             window.top.topPage.ajax({
@@ -456,6 +460,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 success: function (data) {
                     if (data.state) {
                         page.showPopover(e,opt,"success",data.msg,true);
+                        window.top.topPage.doAjax(e, opt);
                         return true;
                     } else {
                         page.showPopover(e,opt,"danger",data.msg,true);
