@@ -447,6 +447,24 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 window.top.topPage.showPage();
             }
         },
+        validRankByDomain :function (e,opt) {
+            _this=this;
+            window.top.topPage.ajax({
+                url: root + '/siteCustomerService/insertRankByDomain.html',
+                dataType: "json",
+                data: _this.getRankByDomainForm(e, opt),
+                success: function (data) {
+                    if (data.state) {
+                        page.showPopover(e,opt,"success",data.msg,true);
+                        return true;
+                    } else {
+                        page.showPopover(e,opt,"danger",data.msg,true);
+                        return false;
+                    }
+                }
+            });
+        },
+
 
         /**
          * 恢复系统默认
@@ -521,6 +539,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         },
         getSaveContactValidateForm:function (e,opt) {
             return $("input,textarea","#saveContact").serialize();
+        },
+        getRankByDomainForm:function (e,opt) {
+            return $("input,textarea","#open-period-div").serialize();
         },
         /**
          * 获取统计代码表单
@@ -666,7 +687,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             var phoneNumber=document.getElementById("phoneId").value;
             var Email=document.getElementById("emailId").value;
             var Skyep=document.getElementById("skyepId").value;
-            var Copyright=document.getElementById("copyrightId").value;
+            var Copyright=document.getElementById("copyrightId").value.length;
 
             if (phoneNumber!=""&&!regPhone.test(phoneNumber)){
                 e.page.showPopover(e,{},"warning","电话号码不合法,请输入7-20位纯数字",true);
@@ -676,10 +697,13 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 return false;
             }else if(!regEmailSkyep.test(Email)){
                 e.page.showPopover(e,{},"warning","邮箱不合法，请输入长度小于30个字符",true);
+                return false;
             }else if(!regEmailSkyep.test(Skyep)){
                 e.page.showPopover(e,{},"warning","Skyep账号不合法，请输入长度小于30个字符",true);
-            }else if(!reg.test(Copyright)){
+                return false;
+            }else if(Copyright>200){
                 e.page.showPopover(e,{},"warning","版权信息不合法，请输入长度小于200个字符",true);
+                return false;
             }else {
                 e.page.showPopover(e,{},"warning","保存成功",true);
                 return true;
