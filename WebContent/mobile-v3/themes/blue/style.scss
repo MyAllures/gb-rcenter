@@ -9,7 +9,7 @@
         .btn-login{background-color: #1dc28e;border: 1px solid #1dc28e;}
         .btn-demo{    background-color: #00BCD4;    border: 1px solid #00BCD4;}
         .btn-register{background-color: #f0af01;border: 1px solid #f0af01;}
-        .mui-action-back{color: #666;}
+        .mui-action-back{color: #fff;}
     }
 }
 .mui-bar-nav{    background: #1b75d9;-webkit-box-shadow:none;    box-shadow:none;}
@@ -170,7 +170,7 @@
         }
         .bar-asset{padding-right: 0; color: #1b75d9;}
         .bar-wallet{color: #0ec392;}
-        .zzc,.qb{background: #1b75d9;width: 40px;
+        .zzc,.qb{background: #1b75d9;white-space: nowrap;
     color: #fff;display: inline-block;line-height: 1;text-align: center;
     padding: 4px 5px;
     border-radius: 3px;}
@@ -200,3 +200,4 @@
     background: url(./images/icon-gift.png) no-repeat center;
     background-size: 20px auto;
 }
+.casino-list-bar .mui-icon-back{color: #fff;}

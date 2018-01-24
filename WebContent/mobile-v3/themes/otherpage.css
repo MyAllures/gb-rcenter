@@ -76,7 +76,7 @@
 
 /* casino-list */
 .casino-list-bar { background-color: #efefef; border-bottom: 1px solid #ccc; }
-.casino-list-bar .mui-icon-back { color: #333; }
+.casino-list-bar .mui-icon-back { color: #666; }
 
 .mui-content-casino-list { padding-top: 44px !important; background: #fff; }
 .mui-content-casino-list .casino-wrap { padding: 10px; }

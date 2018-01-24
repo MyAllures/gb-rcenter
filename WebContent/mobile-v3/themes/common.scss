@@ -226,7 +226,7 @@ header{
         position: absolute;
         top: 34px;
         padding-top: 5px;-webkit-transition: all 0.3s;transition: all 0.3s;
-        right: -205px; height: 400px;  z-index: 100;
+        right: -205px; height: 400px;  z-index: 112;
         border-right: 0;
         &.open{right: -10px;}
     }
@@ -432,3 +432,146 @@ header{
         right: 15px;
     }
 }
+/* 资金记录样式  */
+.mine-cash-record-body{
+    background: #f2f2f2;font-size: 12px;color: #333;
+    header.mui-bar{background-color: #1b75d9;}
+    footer{padding:13px 10px;background: #e3ecf7;height: 64px;border-top: 1px solid #e1e1e1;position: fixed;left: 0;bottom: 0;right: 0;z-index: 10;
+        .flex{display: flex;
+            span{width: 60px;font-size: 14px;}
+            .c{flex: 1;
+                &>div{float: left;}
+            }
+        }
+    }
+    .transactionType{width: 170px;height: 270px;
+    text-align: center}
+    .mine-table{    position: absolute;
+    top: 198px;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    bottom: 64px;}
+    .mui-input-group:before,.mui-input-group:after{height: 0;}
+    .data-filter{
+        .gb-datafilter{padding: 13px 10px;}
+        &:after{content: '';height: 1px;background: #f2f2f2;left: 10px;right: 10px;bottom: 0;}
+    }
+    .mine-cash-record-content{
+        padding-bottom: 64 !important;background: #f2f2f2;
+    }  
+    p.qkclz{padding: 8px 10px;margin-bottom: 11px !important;}
+    .cash-type-row{border-bottom: 1px solid #e2e2e2;}
+    .gb-datafilter {
+        padding: 10px;
+        .input-date {
+            display: inline-block;
+            position: relative;
+            width: 30%;
+            a {
+                display: inline-block;
+                width: 20px;
+                height: 25px;
+                background: url(./images/ico-cal.png) no-repeat center;
+                background-size: 9px auto;
+                position: absolute;
+                z-index: 1;
+                top: 1px;
+                left: 0;
+            }
+            input.date {
+                border: 1px solid #e2e2e2;
+                border-radius: 2px;
+                height: 29px;
+                line-height: 29px;
+                color: #333;
+                font-size: 12px;
+                width: 100%;
+                text-align: center;
+                position: relative;
+            }
+        }
+        .btn {
+            padding: 4px 8px;
+        }
+        .btn-kx{background: #1bd986;border-color: #1bd986;width: 43px;height: 28px;line-height: 28px;padding: 0;text-align: center;}
+        .input-drop {
+            display: inline-block;
+    border: 1px solid #e2e2e2;
+    border-radius: 3px;
+    height: 30px;
+    line-height: 28px;
+    color: #333;
+    font-size: 10px;
+    width: 100%;
+    padding: 0 10px;
+    position: relative;
+            a {
+                display: block;
+                line-height: 28px;
+                color: #999;
+                font-size: 12px;
+                .mui-icon {float: right;margin-top: 6px;
+                    color: #7a7674!important;
+                    font-size: 18px;
+                }
+            }
+        }
+    } 
+    .mine-form p {
+        font-size: 12px;
+        margin-bottom: 0;
+        color: #333;
+    }
+    .text-green, .text-success {
+        color: #f49e2e;
+    }
+    .text-green2{
+        color: #51d683;
+    }
+    .mine-table-wrapper .mine-table{
+        width: 150%;
+    }
+    .mine-table table{
+        background-color: #fff;
+        width: 100%;
+    }
+    .mine-table table tr{
+        border-bottom: 0;
+    }
+    .mine-table table tr.head{
+        border-bottom: none;
+    }
+    .mine-table table tr td{
+        padding: 5px;
+        color: #333333;
+        font-size: 10px;
+        line-height: 16px;
+        text-align: center;
+    }
+    .mine-table.lg table tr td{
+        font-size: 12px;
+        padding: 12px 0;
+    }
+    .mine-table table tr.head td{
+        background-color: #e2e2e2;
+        border-right: 1px solid #fff;
+        vertical-align: top;
+    }
+    .mine-table table tr.head td:last-child{
+        border-right: none;
+    }
+    .mine-table table tr.head.nobr td{
+        font-size: 12px;
+        padding: 12px 0;
+        border-right: none;
+    }
+    .mine-table .text-red{
+        color: #ff0000;
+    }
+    .mine-table .text-green{
+        color: #4ec545;
+    }
+}
+.money-shadow{position: fixed;top: 0;right: 0;bottom: 0;left: 0;background: rgba(0,0,0,0.3);    z-index: 111;display: none;}
+.mui-bar.promo-record{background-color: #1b75d9;}

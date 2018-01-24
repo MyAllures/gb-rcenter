@@ -8,7 +8,7 @@ header.mui-bar-nav a.mui-icon-bars { color: #666; }
 header.mui-bar-nav .btn-login { background-color: #1dc28e; border: 1px solid #1dc28e; }
 header.mui-bar-nav .btn-demo { background-color: #1279d9; border: 1px solid #1279d9; }
 header.mui-bar-nav .btn-register { background-color: #f0af01; border: 1px solid #f0af01; }
-header.mui-bar-nav .mui-action-back { color: #666; }
+header.mui-bar-nav .mui-action-back { color: #fff; }
 
 .mui-bar-nav { background: url(images/header-bg.png) 0 0/auto 44px; box-shadow: none; -webkit-box-shadow: none; }
 
@@ -107,7 +107,7 @@ header.mui-bar-nav .mui-action-back { color: #666; }
 .login-info .ex table tr td { color: #333; }
 .login-info .ex .bar-asset { padding-right: 0; color: #1b75d9; }
 .login-info .ex .bar-wallet { color: #0ec392; }
-.login-info .ex .zzc, .login-info .ex .qb { background: #1b75d9; width: 40px; color: #fff; display: inline-block; line-height: 1; text-align: center; padding: 4px 5px; border-radius: 3px; }
+.login-info .ex .zzc, .login-info .ex .qb { background: #1b75d9; white-space: nowrap; color: #fff; display: inline-block; line-height: 1; text-align: center; padding: 4px 5px; border-radius: 3px; }
 .login-info .ex .qb { background: #0ec392; }
 .login-info .ex .ct p .go.btn-refresh { background: #1b75d9; }
 .login-info .ex .ct p .go.btn-deposit { background: #0ec392; }

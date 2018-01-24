@@ -125,7 +125,7 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 .login-info { display: inline-block; height: 24px; padding-right: 10px; margin-top: 10px; min-width: 40px; float: right; position: relative; }
 .login-info .user_name, .login-info .money { font-size: 9px; text-align: right; line-height: 13px; }
 .login-info .money { padding-left: 10px; height: 14px; line-height: 14px; }
-.login-info .ex { width: 190px; background-color: rgba(102, 102, 102, 0.98); padding-left: 20px; position: absolute; top: 34px; padding-top: 5px; -webkit-transition: all 0.3s; transition: all 0.3s; right: -205px; height: 400px; z-index: 100; border-right: 0; }
+.login-info .ex { width: 190px; background-color: rgba(102, 102, 102, 0.98); padding-left: 20px; position: absolute; top: 34px; padding-top: 5px; -webkit-transition: all 0.3s; transition: all 0.3s; right: -205px; height: 400px; z-index: 112; border-right: 0; }
 .login-info .ex.open { right: -10px; }
 .login-info .ex hr { border-top: 0; border-bottom: 1px solid #909090; margin: 5px 0; }
 .login-info .ex table { width: 160px; }
@@ -203,5 +203,49 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 /* 线上样式修复  */
 #transactionType { width: 141px; text-align: center; }
 #transactionType .mui-table-view-cell:after { right: 15px; }
+
+/* 资金记录样式  */
+.mine-cash-record-body { background: #f2f2f2; font-size: 12px; color: #333; }
+.mine-cash-record-body header.mui-bar { background-color: #1b75d9; }
+.mine-cash-record-body footer { padding: 13px 10px; background: #e3ecf7; height: 64px; border-top: 1px solid #e1e1e1; position: fixed; left: 0; bottom: 0; right: 0; z-index: 10; }
+.mine-cash-record-body footer .flex { display: flex; }
+.mine-cash-record-body footer .flex span { width: 60px; font-size: 14px; }
+.mine-cash-record-body footer .flex .c { flex: 1; }
+.mine-cash-record-body footer .flex .c > div { float: left; }
+.mine-cash-record-body .transactionType { width: 170px; height: 270px; text-align: center; }
+.mine-cash-record-body .mine-table { position: absolute; top: 198px; z-index: 3; left: 0; right: 0; bottom: 64px; }
+.mine-cash-record-body .mui-input-group:before, .mine-cash-record-body .mui-input-group:after { height: 0; }
+.mine-cash-record-body .data-filter .gb-datafilter { padding: 13px 10px; }
+.mine-cash-record-body .data-filter:after { content: ''; height: 1px; background: #f2f2f2; left: 10px; right: 10px; bottom: 0; }
+.mine-cash-record-body .mine-cash-record-content { padding-bottom: 64 !important; background: #f2f2f2; }
+.mine-cash-record-body p.qkclz { padding: 8px 10px; margin-bottom: 11px !important; }
+.mine-cash-record-body .cash-type-row { border-bottom: 1px solid #e2e2e2; }
+.mine-cash-record-body .gb-datafilter { padding: 10px; }
+.mine-cash-record-body .gb-datafilter .input-date { display: inline-block; position: relative; width: 30%; }
+.mine-cash-record-body .gb-datafilter .input-date a { display: inline-block; width: 20px; height: 25px; background: url(./images/ico-cal.png) no-repeat center; background-size: 9px auto; position: absolute; z-index: 1; top: 1px; left: 0; }
+.mine-cash-record-body .gb-datafilter .input-date input.date { border: 1px solid #e2e2e2; border-radius: 2px; height: 29px; line-height: 29px; color: #333; font-size: 12px; width: 100%; text-align: center; position: relative; }
+.mine-cash-record-body .gb-datafilter .btn { padding: 4px 8px; }
+.mine-cash-record-body .gb-datafilter .btn-kx { background: #1bd986; border-color: #1bd986; width: 43px; height: 28px; line-height: 28px; padding: 0; text-align: center; }
+.mine-cash-record-body .gb-datafilter .input-drop { display: inline-block; border: 1px solid #e2e2e2; border-radius: 3px; height: 30px; line-height: 28px; color: #333; font-size: 10px; width: 100%; padding: 0 10px; position: relative; }
+.mine-cash-record-body .gb-datafilter .input-drop a { display: block; line-height: 28px; color: #999; font-size: 12px; }
+.mine-cash-record-body .gb-datafilter .input-drop a .mui-icon { float: right; margin-top: 6px; color: #7a7674 !important; font-size: 18px; }
+.mine-cash-record-body .mine-form p { font-size: 12px; margin-bottom: 0; color: #333; }
+.mine-cash-record-body .text-green, .mine-cash-record-body .text-success { color: #f49e2e; }
+.mine-cash-record-body .text-green2 { color: #51d683; }
+.mine-cash-record-body .mine-table-wrapper .mine-table { width: 150%; }
+.mine-cash-record-body .mine-table table { background-color: #fff; width: 100%; }
+.mine-cash-record-body .mine-table table tr { border-bottom: 0; }
+.mine-cash-record-body .mine-table table tr.head { border-bottom: none; }
+.mine-cash-record-body .mine-table table tr td { padding: 5px; color: #333333; font-size: 10px; line-height: 16px; text-align: center; }
+.mine-cash-record-body .mine-table.lg table tr td { font-size: 12px; padding: 12px 0; }
+.mine-cash-record-body .mine-table table tr.head td { background-color: #e2e2e2; border-right: 1px solid #fff; vertical-align: top; }
+.mine-cash-record-body .mine-table table tr.head td:last-child { border-right: none; }
+.mine-cash-record-body .mine-table table tr.head.nobr td { font-size: 12px; padding: 12px 0; border-right: none; }
+.mine-cash-record-body .mine-table .text-red { color: #ff0000; }
+.mine-cash-record-body .mine-table .text-green { color: #4ec545; }
+
+.money-shadow { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0, 0, 0, 0.3); z-index: 111; display: none; }
+
+.mui-bar.promo-record { background-color: #1b75d9; }
 
 /*# sourceMappingURL=common.css.map */

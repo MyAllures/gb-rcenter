@@ -6,7 +6,7 @@ $(function(){
 		 scrollX:false, //是否横向滚动
 		 startX: 0, //初始化时滚动至x
 		 startY: 0, //初始化时滚动至y
-		 indicators: true, //是否显示滚动条
+		 indicators: false, //是否显示滚动条
 		 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
 		 bounce: true //是否启用回弹
 	});
@@ -99,6 +99,7 @@ $(function(){
 	//登录信息点击弹出余额信息
 	$("#login-info").on("tap",function(){
 		$(this).find(".ex").toggleClass("open");
+		$(this).find(".money-shadow").toggle();
 		mui(".mui-assets").scroll({			
 			 scrollY: true, //是否竖向滚动
 			 scrollX:false, //是否横向滚动
@@ -137,8 +138,8 @@ $(function(){
 	$(".desk").on("tap",".close",function(){
 		$(this).parents(".desk").hide();
 	});
-
+	/*全局所有的scroll-wrapper默认设置滚动*/
 	mui('.mui-scroll-wrapper').scroll({
-		deceleration: 0.0001 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+		indicators: false
 	});
 });
