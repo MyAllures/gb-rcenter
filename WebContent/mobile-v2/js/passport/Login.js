@@ -25,6 +25,10 @@ function login() {
         $("#password-error-msg").text(window.top.message.passport_auto['密码不能为空']);
         $("[name='password']").focus();
         return;
+    }else if(_password.length<6){
+        $("#password-error-msg").text(window.top.message.passport_auto['密码不能少于６位']);
+        $("[name='password']").focus();
+        return;
     }else{
         $("#password-error-msg").text("");
     }
