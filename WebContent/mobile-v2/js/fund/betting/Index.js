@@ -137,6 +137,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                     var info = document.getElementById("content-list");
                     info.innerHTML = data;
                     pageNumber = 2;
+                    mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
                     mui('#refreshContainer').pullRefresh().refresh(true);
                     t.dismissProgress();
                     /*$("#totalCount").html(window.top.message.fund_auto['加载失败'].replace('{0}', $("#hiddenTotalCount").attr("value")));*/
