@@ -215,7 +215,7 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
         submit: function (e, option) {
             var _this = this;
             var favorableType = $("[name='favorableType']").val();
-            if($("input[name='playerFavorable.favorable']").val() && favorableType       == 'manual_favorable'){
+            if($("input[name='playerFavorable.favorable']").val() && favorableType == 'manual_favorable'){
                 if(!$("input[name='activityType']").val()) {
                     $("#activityType").formtip(window.top.message.fund_auto['不能为空']);
                     $("#activityType button").addClass("error");
