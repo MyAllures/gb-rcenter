@@ -26,6 +26,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         },
         gameDetail:function (e) {
             var betId=$("#betId").val();
+            $(e.currentTarget).lock();
             window.top.topPage.ajax({
                 url: root + "/gameOrder/GameDetailLink.html?search.betId="+betId,
                 type: 'GET',
@@ -36,9 +37,14 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                         $(e.currentTarget).unlock();
                     }else{
                         window.top.topPage.showWarningMessage(datas.msg);
+                        $(e.currentTarget).unlock();
                         return;
                     }
                 },
+                error: function (data){
+                    $(e.currentTarget).unlock();
+                },
+
             })
         }
     })

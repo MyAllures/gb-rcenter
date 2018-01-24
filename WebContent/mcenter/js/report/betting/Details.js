@@ -37,7 +37,7 @@ define(['common/BaseEditPage'], function (BaseListPage) {
                 },
                 error: function(data){
                     $(e.currentTarget).unlock();
-                }
+                },
             })
         }
     });
