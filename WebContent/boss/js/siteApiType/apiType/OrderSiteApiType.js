@@ -56,7 +56,7 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
             var orderObj = [];
             var url=null;
             var isMobile=$("#isMobile").val();
-            if(isMobile){
+            if(isMobile=='true'){
                 url='/vSiteApiType/saveMobileSiteApiTypeOrder.html';
             }else {
                 url='/vSiteApiType/saveSiteApiTypeOrder.html';
