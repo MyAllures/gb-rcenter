@@ -128,7 +128,7 @@ define([], function () {
             }
             var lastpageNumber = $("[name='paging.lastPageNumber']", form).val();
             if (lastpageNumber && parseInt(pageNumber) > parseInt(lastpageNumber)) {
-                window.top.topPage.showInfoMessage(window.top.message.common['超过当前最大页数']);
+                window.top.topPage.showInfoMessage(window.top.message.common_auto['超过当前最大页数']);
                 return false;
             }
             $("[name='paging.pageNumber']", form).val(pageNumber);
