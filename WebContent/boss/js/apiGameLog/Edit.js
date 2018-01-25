@@ -15,7 +15,12 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         onPageLoad: function () {
             this._super();
             var _this = this;
+        },
+        myCallBak: function (e, option) {
+            if(option.data.state){
+                this.returnValue = true;
+                window.top.topPage.closeDialog();
+            }
         }
-
 });
 });
