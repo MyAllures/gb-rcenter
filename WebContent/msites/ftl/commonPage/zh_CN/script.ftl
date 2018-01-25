@@ -1428,7 +1428,13 @@
         var $this = $(obj);
         var $form = $this.parents("form");
         var url = "/passport/login.html?t="+ new Date().getTime().toString(36);
-        if($('[name=username]',$form).val().trim() && $('[name=password]',$form).val().trim()){
+        var password = $('[name=password]',$form).val().trim();
+        if(password.length<6){
+            alert("密码长度不能小于6位!");
+            backlogin();
+            return;
+        }
+        if($('[name=username]',$form).val().trim() && password){
             if(isOpenCaptcha && !$("[name=captcha]",$form).val()){
                 alert("请输入验证码！");
                 $this.find("span").removeClass("loading gui gui-spinner gui-pulse");
@@ -1467,6 +1473,19 @@
         }
     }
 
+    function backlogin() {
+        $("._vr_login").removeAttr("style");
+        if (current_language == "zh_CN") {
+            $("._vr_login").text("立即登录");
+        } else if (current_language == "zh_TW") {
+            $("._vr_login").text("立即登錄");
+        } else if (current_language == "en_US") {
+            $("._vr_login").text("login");
+        } else if (current_language == "ja_JP") {
+            $("._vr_login").text("ログイン");
+        }
+    }
+
     /**
      * 老玩家姓名验证登录
      * */
@@ -1475,6 +1494,7 @@
         realNameVerifyDialog = BootstrapDialog.show({
             draggable: false,
             title:'提示消息',
+            closable: false,
             type: BootstrapDialog.TYPE_WARNING,
             message: function(dialog) {
                 var $message = $('<div class="agreement" style="height: 200px;weight: 300px;"></div>');
