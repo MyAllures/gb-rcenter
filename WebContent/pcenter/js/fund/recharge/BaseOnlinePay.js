@@ -144,7 +144,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
          * @param $form
          * @returns {*}
          */
-        changeRemoteRule: function ($form, rechargeType, account) {
+        changeRemoteRule: function ($form) {
             var rule;
             var $ruleDiv = $form.find('div[id=validateRule]');
             if ($ruleDiv.length > 0) {
@@ -166,12 +166,16 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                             return $("[name='result.rechargeAmount']").val();
                         },
                         'account': function () {
-                            return account;
+                            return $(_this.formSelector + " input[name=account]").val();
                         }
                     },
                     complete: function (data) {
                         if (data.responseText == "true") {
                             var rechargeAmount = $($form).children().find("[name='result.rechargeAmount']").val();
+                            var rechargeType = $("[name='result.rechargeType']:checked").val();
+                            if (!rechargeType) {
+                                rechargeType = 'online_deposit';
+                            }
                             window.top.topPage.ajax({
                                 url: root + '/fund/recharge/online/counterFee.html',
                                 data: {"result.rechargeAmount": rechargeAmount, "type": rechargeType},

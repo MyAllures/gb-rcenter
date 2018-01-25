@@ -7,7 +7,10 @@ mui("#offCanvasWrapper").on("tap", "._captcha_img", function (e) {
     var _src = $this.data("src");
     $this.attr("src", _src);
 }).on("tap", "._login", function (e) {
+    login();
+});
 
+function login() {
     var _username = $("#username").val();
     var _password = $("#password").val();
     var _captcha = $("#captcha").val();
@@ -20,6 +23,10 @@ mui("#offCanvasWrapper").on("tap", "._captcha_img", function (e) {
     }
     if(_password==""){
         $("#password-error-msg").text(window.top.message.passport_auto['密码不能为空']);
+        $("[name='password']").focus();
+        return;
+    }else if(_password.length<6){
+        $("#password-error-msg").text(window.top.message.passport_auto['密码不能少于６位']);
         $("[name='password']").focus();
         return;
     }else{
@@ -69,16 +76,20 @@ mui("#offCanvasWrapper").on("tap", "._captcha_img", function (e) {
                     }, 1000);
                 }
             },
-            error: function (request, state, msg) {
-                toast(window.top.message.passport_auto['服务忙']);
-                setTimeout(function () {
-                    $this.text(window.top.message.passport_auto['登录']).removeAttr("disabled");
-                }, 1000);
+            error: function (error) {
+                var data = eval('(' + error.response + ')');
+                if(data.propMessages){
+                    $("#middlePopover").addClass("mui-active");
+                }else{
+                    toast(window.top.message.passport_auto['服务忙']);
+                    setTimeout(function () {
+                        $this.text(window.top.message.passport_auto['登录']).removeAttr("disabled");
+                    }, 1000);
+                }
             }
         })
     }
-
-});
+}
 
 mui("body").on("tap", "[data-href]", function (e) {
     var $this = $(this);
@@ -87,6 +98,75 @@ mui("body").on("tap", "[data-href]", function (e) {
         newOpenWin(_url)
     }
 });
+
+mui("body").on("tap",".verify-name",function(){
+    var realName = $("#result_realName").val();
+    if(realName==''||realName==null){
+        toast(window.top.message.passport_auto['用户名不能为空']);
+        return;
+    }
+    var _username = $("#username").val();
+    var _password = $("#password").val();
+    $("#result_playerAccount").val(_username);
+    $("#search_playerAccount").val(_username);
+    $("#tempPass").val(_password);
+    $("#newPassword").val(_password);
+    $("._login").text(window.top.message.verify_auto['立即登录']).removeAttr("disabled");
+    verify();
+});
+
+mui("body").on("tap",".verify-cancel",function(){
+    closeVerify();
+});
+
+
+function closeVerify() {
+    $("#middlePopover").removeClass("mui-active");
+    $("#result_realName").val("");
+    $("._login").text(window.top.message.verify_auto['立即登录']).removeAttr("disabled");
+}
+function verify() {
+    $.ajax({
+        url: '/passport/verify/verifyRealName.html',
+        dataType: 'JSON',
+        type: 'POST',
+        async: false,
+        data: $(".form-horizontal").serialize(),
+        success: function (data) {
+            // 验证真实姓名通过
+            if (data.nameSame) {
+                importPlayer()
+            } else {
+                toast(window.top.message.verify_auto['真实姓名与账号不匹配']);
+            }
+        },
+        error: function (data) {
+            toast("验证失败")
+        }
+    })
+}
+
+/** 提交并导入账号 */
+function　importPlayer () {
+    var _this = this;
+    $.ajax({
+        url: '/passport/verify/importOldPlayerNew.html',
+        dataType: 'JSON',
+        type: 'POST',
+        data: $(".form-horizontal").serialize(),
+        success: function (data) {
+            if(data){
+                login();
+                closeVerify();
+            }else {
+                toast(window.top.message.newi18n['请稍后']);
+            }
+        },
+        error: function (data) {
+            toast(data);
+        }
+    })
+}
 
 mui("body").on("tap",".btn-demo",function(){
     layer.open({
@@ -113,7 +193,6 @@ mui("body").on("tap",".btn-demo",function(){
         }
     })
 });
-
 
 mui("body").on("tap","button.try",function(){
     layer.open({
