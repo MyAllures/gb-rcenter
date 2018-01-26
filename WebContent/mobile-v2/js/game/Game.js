@@ -120,7 +120,7 @@ define(['site/game/ApiLogin'], function(ApiLogin) {
         initTab: function(id) {
             var _this = this;
             var hasClass = $("#_games").hasClass('mui-active');
-            if (id < 5 && !hasClass) {
+            if (id > 0 && !hasClass) {
                 $('div#mui-refresh').find('div.mui-nav').removeClass('mui-active');
                 $('div#_games').addClass('mui-active');
             }
