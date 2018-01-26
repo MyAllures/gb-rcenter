@@ -127,7 +127,7 @@ define(['site/game/ApiLogin'], function(ApiLogin) {
             $('div.mui-container').children().removeClass('mui-show').addClass('mui-hide');
             $('div#container' + id).addClass('mui-show');
             $('#nav-type').val(id);
-            if (id == 2 || id == 4 || id == -1) {
+            if (id == 2 || id == 4 || id == -1 || id == 5) {
                 mui('#mui-refresh').pullRefresh(_this.pullRefresh).enablePullupToRefresh();
             }else
                 mui('#mui-refresh').pullRefresh(_this.pullRefresh).disablePullupToRefresh();
