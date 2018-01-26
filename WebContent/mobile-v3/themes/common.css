@@ -24,7 +24,7 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 /* notice */
 .notice { height: 28px; line-height: 28px; display: -webkit-box; display: -ms-flexbox; display: flex; overflow: hidden; }
 .notice .btn-title { padding: 0px 6px; margin: 3px 10px; font-size: 12px; }
-.notice .notice-list { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; width: 270px; }
+.notice .notice-list { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; width: 270px; margin: 0; }
 .notice .notice-list .marquee { width: 100%; overflow: hidden; }
 .notice .notice-list .marquee a { font-size: 13px; color: #333; }
 
