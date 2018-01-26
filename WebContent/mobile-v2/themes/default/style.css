@@ -57,6 +57,9 @@
     background-image: url(../../images/default/icon_index.png);background-position-y: 13px !important;
     background-size: 24px !important;
 }
+.gb-homemenu.mui-segmented-control .mui-control-item.ico11{
+    background-image: url(../../images/default/game-icon11.png);background-size: 18px auto !important;
+}
 .gb-homemenu.mui-segmented-control .mui-control-item.mui-active{
     background-color: #243a9a;
     color: #fff;
