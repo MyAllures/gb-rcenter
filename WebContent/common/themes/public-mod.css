@@ -487,8 +487,36 @@ font-style: normal;
 .mediate-search-btn{ position: absolute;width:16%;min-width:150px;left: 38%;z-index: 888;}
 
 /*查询列表重置按钮样式*/
+.audit-log-optype-login-color{
+  color: #71d14b;
+}
+.audit-log-optype-logout-color{
+  color: #75788d;
+}
 .reset-condition-button {
   right: 37%;
   position: absolute;
-  z-index: 888;
+z-index: 888;
+}
+/**日志查询页面操作类型颜色**/
+.audit-log-optype-create-color{
+color: #25a774;
+}
+.audit-log-optype-update-color{
+  color: #ff8e2e;
+}
+.audit-log-optype-delete-color{
+  color: #e13138;
+}
+.audit-log-optype-audit-color{
+  color: #00acf0;
+}
+.audit-log-optype-other-color{
+  color: #4681da;
+}
+.audit-log-optype-recharge-color{
+  color: #93d43d;
+}
+.audit-log-optype-withdraw-color{
+  color: #eb5350;
 }
