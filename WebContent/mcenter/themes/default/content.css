@@ -802,14 +802,15 @@ td.api-name-b-r{border-right: 1px solid #ddd;}*/
 .dataTables_wrapper .table-responsive .table > thead > tr > th,.dataTables_wrapper .table-responsive .table > tbody > tr > th,.dataTables_wrapper .table-responsive .table > tfoot > tr > th,.dataTables_wrapper .table-responsive .table > thead > tr > td,.dataTables_wrapper .table-responsive .table > tbody > tr > td,.dataTables_wrapper .table-responsive .table > tfoot > tr > td{line-height:1.42857;    /*text-align: left; by steven */vertical-align:middle;padding:5px 5px 5px 15px;}
 #editable_wrapper .table-responsive .table > tbody > tr > td.no-content_wrap{text-align:center;}
 .n-o-margin{margin:0;}
-#wrapper,.table-responsive{overflow-x:hidden;}
+#wrapper,.table-responsive{overflow-x:auto;}
+.table-responsive-e{overflow-x: hidden}
 /*返水/返佣*/
 .td-list{position: relative}
 .td-cont{position: absolute;top: 5px;margin-left: 5px}
 .ceiling{margin-left: 30%}
 .proportion{margin-top: 22px}
-.clearfix m{position: relative}
-.clearfix.m > .table-responsive{width: 100%;height: 300px}
+/*.clearfix m{position: relative}*/
+/*.clearfix.m > .table-responsive{width: 100%;height: 300px}*/
 .m-b-xss{margin-bottom: 4px}
 .bg-color>td>div:last-child{z-index: 0}
 
@@ -911,6 +912,7 @@ em.cardlabel{display:inline-block;padding-right:5px;width:55px!important;height:
 
 /*新增返水*/
 td > .input-group.date.content-width-limit-200 input{min-width:120px;}
+#scrollInner>td > .input-group.date.content-width-limit-200 input{min-width: 60px}
 
 /*匹配银行*/
 .gbsug{position:absolute;background:#fff;z-index:999;width:100%;top:34px;display:none;overflow:auto;max-height:120px;}
