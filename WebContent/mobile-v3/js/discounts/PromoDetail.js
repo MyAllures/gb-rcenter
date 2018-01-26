@@ -12,6 +12,7 @@ $(function () {
     };
     muiInit(options);
     onPageLoad();
+
 });
 
 function submit(obj,options){
@@ -37,6 +38,7 @@ function onPageLoad() {
     //给表格添加横向滚动
     //tableScroll();
     var isLogin = sessionStorage.getItem("isLogin");
+    $(".gb-select *").css({"background":"","margin":"","padding":""})
     if (isLogin && isLogin === "true") {
         var $submit = $(".submit");
         var options = eval("("+ $submit.attr("data-rel")+")" );
