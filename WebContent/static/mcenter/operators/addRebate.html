@@ -26,31 +26,12 @@
                 <label class="ft-bold col-sm-3 al-right line-hi34">备注：</label>
                 <div class="col-sm-5"><textarea class="form-control"></textarea></div>
             </div>
-
-            <style>
-                .td-list{position: relative}
-                .td-cont{position: absolute;top: 5px;margin-left: 5px}
-                .ceiling{margin-left: 30%}
-                .proportion{margin-top: 22px}
-
-                .clearfix m{position: relative}
-                .clearfix.m > .table-responsive{width: 100%;height: 300px}
-                tbody{position: relative}
-
-
-
-
-            </style>
-
-
-            <div class="clearfix m">
-            <div class="table-responsive">
                 <div class="clearfix m">
                     <div class="table-responsive">
 
 
                         <table class="table table-striped table-bordered table-hover dataTable m-b-none">
-                            <tr role="row" class="bg-color " style="width: 520px">
+                            <tr role="row" class="bg-color " style="width: 641px">
                                 <td rowspan="3" style="height: 197px"><button type="button" class="btn btn-w-m btn-danger">删除</button></td>
                                 <td rowspan="2" class="td-list">
 
@@ -71,7 +52,7 @@
                                 <td rowspan="2" class="td-list">
                                     <div class="td-cont"> <h3>设置返佣分摊比例</h3></div>
                                     <div class="proportion">
-                                        <div class="input-group date m-b-xs content-width-limit-200">
+                                        <div class="input-group date m-b-xss content-width-limit-200">
 
                                             <span class="input-group-addon abroder-no"><b>返水费用</b></span>
                                             <input type="text" class="form-control" placeholder="10">
@@ -81,7 +62,7 @@
                                     <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
                                 </span>
                                         </div>
-                                        <div class="input-group date m-b-xs content-width-limit-200">
+                                        <div class="input-group date m-b-xss content-width-limit-200">
 
                                             <span class="input-group-addon abroder-no"><b>优惠费用</b></span>
                                             <input type="text" class="form-control" placeholder="10">
@@ -91,7 +72,7 @@
                                     <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
                                 </span>
                                         </div>
-                                        <div class="input-group date m-b-xs content-width-limit-200">
+                                        <div class="input-group date m-b-xss content-width-limit-200">
 
                                             <span class="input-group-addon abroder-no"><b>其他费用</b></span>
                                             <input type="text" class="form-control" placeholder="10">
@@ -104,27 +85,27 @@
                                     </div>
                                 </td>
 
-                                <td colspan="6"><h3>返佣比例 <i class="fa fa-question-circle m-l-sm"></i></h3></td>
+                                <td colspan="4"><h3>返佣比例 <i class="fa fa-question-circle m-l-sm"></i></h3></td>
 
 
                             </tr>
                             <!--<tr class="bg-color"></tr>-->
-                            <tr class="bg-color"  id="thisdiv" style="float: left;width: calc(100% - 520px);overflow-x: auto">
+                            <tr class="bg-color"  id="scrollInner" style="float: left;width: calc(100% - 641px);overflow-x: hidden">
 
                                 <td style=" width: 150px">
                                     <div  class="bg-grayf"><b>API 1</b></div>
-                                    <div class="input-group date m-b-xs content-width-limit-200">
+                                    <div class="input-group date m-b-xss content-width-limit-200">
 
                                         <span class="input-group-addon abroder-no"><b>类型 1</b></span>
                                         <input type="text" class="form-control" placeholder="10">
                                         <span class="input-group-addon border-left-n">%</span>
                                         <span class="input-group-addon adjust">
-                                    <a href="javascript:void(0)" class="adjust up"><i class="fa fa-angle-up"></i></a>
-                                    <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
-                                </span>
+                                            <a href="javascript:void(0)" class="adjust up"><i class="fa fa-angle-up"></i></a>
+                                             <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
+                                        </span>
                                     </div>
 
-                                    <div class="input-group date m-b-xs content-width-limit-200">
+                                    <div class="input-group date m-b-xss content-width-limit-200">
                                         <span class="input-group-addon abroder-no"><b>类型 2</b></span>
                                         <input type="text" class="form-control" placeholder="10">
                                         <span class="input-group-addon border-left-n">%</span>
@@ -133,7 +114,7 @@
                                     <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
                                 </span>
                                     </div>
-                                    <div class="input-group date m-b-xs content-width-limit-200">
+                                    <div class="input-group date s content-width-limit-200">
                                         <span class="input-group-addon abroder-no"><b>类型 3</b></span>
                                         <input type="text" class="form-control" placeholder="10">
                                         <span class="input-group-addon border-left-n">%</span>
@@ -154,7 +135,7 @@
                                 </td>
                                 <td>
                                     <div class="bg-grays"><b>API 2</b></div>
-                                    <div class="input-group date m-b-xs content-width-limit-200">
+                                    <div class="input-group date m-b-xss content-width-limit-200">
                                         <span class="input-group-addon abroder-no"><b>类型 1</b></span>
                                         <input type="text" class="form-control" placeholder="10">
                                         <span class="input-group-addon border-left-n">%</span>
@@ -163,7 +144,7 @@
                                     <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
                                 </span>
                                     </div>
-                                    <div class="input-group date m-b-xs content-width-limit-200">
+                                    <div class="input-group date m-b-xss content-width-limit-200">
                                         <span class="input-group-addon abroder-no"><b>类型 2</b></span>
                                         <input type="text" class="form-control" placeholder="10">
                                         <span class="input-group-addon border-left-n">%</span>
@@ -184,7 +165,7 @@
                                 </td>
                                 <td>
                                     <div class="bg-grays"><b>API 3</b></div>
-                                    <div class="input-group date m-b-xs content-width-limit-200">
+                                    <div class="input-group date m-b-xss content-width-limit-200">
                                         <span class="input-group-addon abroder-no"><b>类型 1</b></span>
                                         <input type="text" class="form-control" placeholder="10">
                                         <span class="input-group-addon border-left-n">%</span>
@@ -193,7 +174,7 @@
                                     <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
                                 </span>
                                     </div>
-                                    <div class="input-group date m-b-xs content-width-limit-200">
+                                    <div class="input-group date m-b-xss content-width-limit-200">
                                         <span class="input-group-addon abroder-no"><b>类型 2</b></span>
                                         <input type="text" class="form-control" placeholder="10">
                                         <span class="input-group-addon border-left-n">%</span>
@@ -214,7 +195,7 @@
                                 </td>
                                 <td>
                                     <div class="bg-grays"><b>API 4</b></div>
-                                    <div class="input-group date m-b-xs content-width-limit-200">
+                                    <div class="input-group date m-b-xss content-width-limit-200">
                                         <span class="input-group-addon abroder-no"><b>类型 1</b></span>
                                         <input type="text" class="form-control" placeholder="10">
                                         <span class="input-group-addon border-left-n">%</span>
@@ -223,7 +204,7 @@
                                     <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
                                 </span>
                                     </div>
-                                    <div class="input-group date m-b-xs content-width-limit-200">
+                                    <div class="input-group date m-b-xss content-width-limit-200">
                                         <span class="input-group-addon abroder-no"><b>类型 2</b></span>
                                         <input type="text" class="form-control" placeholder="10">
                                         <span class="input-group-addon border-left-n">%</span>
@@ -244,8 +225,8 @@
                                 </td>
                                 <td>
                                     <div class="bg-grays"><b>API 5</b></div>
-                                    <div class="input-group date m-b-xs content-width-limit-200">
-                                        <span class="input-group-addon abroder-no"><b>类型 1</b></span>
+                                    <div class="input-group date m-b-xss content-width-limit-200">
+                                        <span class="input-group-addon asbroder-no"><b>类型 1</b></span>
                                         <input type="text" class="form-control" placeholder="10">
                                         <span class="input-group-addon border-left-n">%</span>
                                         <span class="input-group-addon adjust">
@@ -253,7 +234,7 @@
                                     <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
                                 </span>
                                     </div>
-                                    <div class="input-group date m-b-xs content-width-limit-200">
+                                    <div class="input-group date m-b-xss content-width-limit-200">
                                         <span class="input-group-addon abroder-no"><b>类型 2</b></span>
                                         <input type="text" class="form-control" placeholder="10">
                                         <span class="input-group-addon border-left-n">%</span>
@@ -274,7 +255,7 @@
                                 </td>
                                 <td>
                                     <div class="bg-grays"><b>API 6</b></div>
-                                    <div class="input-group date m-b-xs content-width-limit-200">
+                                    <div class="input-group date m-b-xss content-width-limit-200">
                                         <span class="input-group-addon abroder-no"><b>类型 1</b></span>
                                         <input type="text" class="form-control" placeholder="10">
                                         <span class="input-group-addon border-left-n">%</span>
@@ -283,7 +264,7 @@
                                     <a href="javascript:void(0)" class="adjust down"><i class="fa fa-angle-down"></i></a>
                                 </span>
                                     </div>
-                                    <div class="input-group date m-b-xs content-width-limit-200">
+                                    <div class="input-group date m-b-xss content-width-limit-200">
                                         <span class="input-group-addon abroder-no"><b>类型 2</b></span>
                                         <input type="text" class="form-control" placeholder="10">
                                         <span class="input-group-addon border-left-n">%</span>
@@ -305,11 +286,6 @@
 
                             </tr>
                         </table>
-
-
-
-
-
     </div>
                 </div><button type="button" class="btn btn-info btn-addon m-t pull-right"><i class="fa fa-plus"></i><span class="hd">新增</span></button></div>
                 <div class="operate-btn">
@@ -321,15 +297,11 @@
     $("[name='my-checkbox']").bootstrapSwitch();//switch
 
 
-    $(document).ready(
-        function() {
-            $("#thisdiv").niceScroll({
-
-                cursorcolor:"#00F"
-
-
-
-            });
-        }
-    );
+    $("#scrollInner").niceScroll({
+        cursorcolor:"#bbb5b5",  //滚动条颜色
+        cursoropacitymax:1,     //滚动条可见状态时透明度
+        cursorwidth:"7px",      //滚动条宽度
+        scrollspeed:60,         //滚动条速度
+        cursorborderradius:"5px"    //滚动条圆角半径
+    });
 </script>
