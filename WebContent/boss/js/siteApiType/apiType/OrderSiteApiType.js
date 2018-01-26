@@ -56,10 +56,11 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
             var orderObj = [];
             var url=null;
             var isMobile=$("#isMobile").val();
+            var siteId  = $("#siteId").val();
             if(isMobile=='true'){
-                url='/vSiteApiType/saveMobileSiteApiTypeOrder.html';
+                url='/vSiteApiType/saveMobileSiteApiTypeOrder.html?search.siteId='+siteId;
             }else {
-                url='/vSiteApiType/saveSiteApiTypeOrder.html';
+                url='/vSiteApiType/saveSiteApiTypeOrder.html?search.siteId='+siteId;
             }
             $("tbody tr").each(function(index,obj){
                 orderObj.push({"order":index+1,"objectId":$(obj).children("[name='Id']").val()});
