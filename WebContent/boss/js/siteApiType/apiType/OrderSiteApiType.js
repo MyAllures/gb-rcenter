@@ -58,14 +58,16 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
             var isMobile=$("#isMobile").val();
             var siteId  = $("#siteId").val();
             if(isMobile=='true'){
-                url='/vSiteApiType/saveMobileSiteApiTypeOrder.html?search.siteId='+siteId;
+                url='/vSiteApiType/saveMobileSiteApiTypeOrder.html';
             }else {
-                url='/vSiteApiType/saveSiteApiTypeOrder.html?search.siteId='+siteId;
+                url='/vSiteApiType/saveSiteApiTypeOrder.html';
             }
             $("tbody tr").each(function(index,obj){
                 orderObj.push({"order":index+1,"objectId":$(obj).children("[name='Id']").val()});
                 apiTypeOrder.orderList = orderObj;
             });
+            var search = {"siteId":siteId};
+            apiTypeOrder.search = search;
             window.top.topPage.ajax({
                 contentType: 'application/json; charset=utf-8',
                 dataType:'json',
