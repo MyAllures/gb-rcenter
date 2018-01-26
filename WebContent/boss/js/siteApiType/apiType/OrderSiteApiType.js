@@ -56,6 +56,7 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
             var orderObj = [];
             var url=null;
             var isMobile=$("#isMobile").val();
+            var siteId  = $("#siteId").val();
             if(isMobile=='true'){
                 url='/vSiteApiType/saveMobileSiteApiTypeOrder.html';
             }else {
@@ -65,6 +66,8 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
                 orderObj.push({"order":index+1,"objectId":$(obj).children("[name='Id']").val()});
                 apiTypeOrder.orderList = orderObj;
             });
+            var search = {"siteId":siteId};
+            apiTypeOrder.search = search;
             window.top.topPage.ajax({
                 contentType: 'application/json; charset=utf-8',
                 dataType:'json',

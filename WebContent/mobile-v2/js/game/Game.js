@@ -109,10 +109,10 @@ define(['site/game/ApiLogin'], function(ApiLogin) {
 
         changeTab: function(id) {
             var _this = this;
-            if (id < 5) {
+            if (id > 0) {
                 _this.showLoading(214);
                 _this.getGameByApiId(id);
-            } else if (id >= 5 && id < 9) {   // 代理,关于,条款
+            } else if (id < 0) {   // 代理,关于,条款
                 _this.loadOther(id);
             }
         },
@@ -127,7 +127,7 @@ define(['site/game/ApiLogin'], function(ApiLogin) {
             $('div.mui-container').children().removeClass('mui-show').addClass('mui-hide');
             $('div#container' + id).addClass('mui-show');
             $('#nav-type').val(id);
-            if (id == 2 || id == 4 || id == 5) {
+            if (id == 2 || id == 4 || id == -1) {
                 mui('#mui-refresh').pullRefresh(_this.pullRefresh).enablePullupToRefresh();
             }else
                 mui('#mui-refresh').pullRefresh(_this.pullRefresh).disablePullupToRefresh();
@@ -168,11 +168,11 @@ define(['site/game/ApiLogin'], function(ApiLogin) {
         /** 刷新数据 */
         refreshData: function () {
             var id = $('#nav-type').val();
-            if (id < 5) {
+            if (id > 0) {
                 window.location.replace(root + '/game.html?typeId=' + id);
-            } else if (id == 5) {   // 优惠
+            } else if (id == -1) {   // 优惠
                 game.loadOther(id);
-            } else if (id > 5 && id < 9) {   // 关于,条款
+            } else if (id < 0) {   // 关于,条款
                 game.loadOther(id);
             }
         },
@@ -180,7 +180,8 @@ define(['site/game/ApiLogin'], function(ApiLogin) {
         loadOther: function (id) {
             var _this = this;
             var other;
-            if (id == 5) {
+            //优惠
+            if (id == -1) {
                 other = 'promo';
                 _this.showLoading(214);
                 if(window.top.game&&window.top.game.promo){
@@ -188,19 +189,19 @@ define(['site/game/ApiLogin'], function(ApiLogin) {
                     mui('#mui-refresh').pullRefresh(_this.pullRefresh).enablePullupToRefresh();
                     return ;
                 }
-            } else if (id == 6) {
+            } else if (id == -2) {//代理
                 other = 'agent';
-            } else if (id == 7) {
+            } else if (id == -3) {//关于
                 other = 'about';
-            } else if (id == 8) {
+            } else if (id == -4) {//条款
                 other = 'terms';
             }
             mui('#mui-refresh').pullRefresh(_this.pullRefresh).endPulldownToRefresh();
-            if (id != 5) {
+            if (id != -1) {
                 mui('#mui-refresh').pullRefresh(_this.pullRefresh).disablePullupToRefresh();
             }
 
-            var url = root + (id == 5 ? '/promo/' + other : '/index/' + other) + '.html';
+            var url = root + (id == -1 ? '/promo/' + other : '/index/' + other) + '.html';
             mui.ajax(url, {
                 type: 'GET',
                 headers: {'Soul-Requested-With':'XMLHttpRequest'},
@@ -224,7 +225,7 @@ define(['site/game/ApiLogin'], function(ApiLogin) {
             } else if (apiTypeId == 4) {
                 apiId = $('#lottery-id').val();
                 apiType = 'lottery';
-            } else if (apiTypeId == 5) {
+            } else if (apiTypeId == -1) {
                 window.top.game.promo.loadMoreActivity();
                 return true;
             } else {
