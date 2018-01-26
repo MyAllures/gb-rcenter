@@ -151,6 +151,8 @@ define(['site/game/ApiLogin'], function(ApiLogin) {
                             window.top.game.sport.onPageLoad();
                         } else if (id == 4) {
                             window.top.game.lottery.onPageLoad();
+                        } else if (id == 5){
+                            window.top.game.chess.onPageLoad();
                         }
                         mui('.mui-slider').slider();
                     }, 1000);
