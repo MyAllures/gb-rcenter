@@ -360,7 +360,7 @@ header{
     .mui-control-content{padding: 10px 30px;
             .mui-input-group{background-color: transparent;
                 &:before,&:after{content: none;}
-                .mui-input-row{height: auto;
+                .mui-input-row{height: auto;line-height:21px; 
                     &:after{content: none;}
                     label,input{float: none;}
                     label{    padding: 0;
