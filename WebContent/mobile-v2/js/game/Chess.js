@@ -27,7 +27,7 @@ define(['site/include/BaseIndex'], function(BaseIndex) {
                 if (isLoading == 'true') {
                     _this.loadData(id);
                 } else {
-                    $('#casino-id').val(id);
+                    $('#chess-id').val(id);
                     var pageNumber = $('input#paging-' + id).val();
 
                     var totalPage = $('input#total-page-' + id).val();
@@ -65,7 +65,7 @@ define(['site/include/BaseIndex'], function(BaseIndex) {
                         'Soul-Requested-With':'XMLHttpRequest'
                     },
                     beforeSend: function () {
-                        $('div.casino-content-' + apiId).html('');
+                        $('div.chess-content-' + apiId).html('');
                         _this.showLoading(340);
                     },
                     success: function(data) {

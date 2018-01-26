@@ -199,6 +199,7 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
                         } else if (id == 4) {
                             window.top.page.lottery.onPageLoad();
                         } else if (id == 5) {
+                            window.top.page.chess.onPageLoad();
                         }
                         mui('.mui-slider').slider();
                     }, 1000);
