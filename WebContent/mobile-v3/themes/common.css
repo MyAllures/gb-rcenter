@@ -172,7 +172,7 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 .type-content .mui-control-content { padding: 10px 30px; }
 .type-content .mui-control-content .mui-input-group { background-color: transparent; }
 .type-content .mui-control-content .mui-input-group:before, .type-content .mui-control-content .mui-input-group:after { content: none; }
-.type-content .mui-control-content .mui-input-group .mui-input-row { height: auto; }
+.type-content .mui-control-content .mui-input-group .mui-input-row { height: auto; line-height: 21px; }
 .type-content .mui-control-content .mui-input-group .mui-input-row:after { content: none; }
 .type-content .mui-control-content .mui-input-group .mui-input-row label, .type-content .mui-control-content .mui-input-group .mui-input-row input { float: none; }
 .type-content .mui-control-content .mui-input-group .mui-input-row label { padding: 0; width: 100px; display: block; font-size: 12px; color: #999; margin-bottom: 0; line-height: 16px; height: 16px; }
