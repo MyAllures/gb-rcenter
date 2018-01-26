@@ -5268,3 +5268,6 @@ header.blue{background:#1766bb;}
     border-color: #ebccd1;
     color: #a94442;
 }
+/* 首页棋牌的样式 */
+.hb-block .index-block-content .game-img{display: block;    width: 48px;    height: 48px;    margin: 13px auto 8px;}
+.hb-block .index-block-content .game-img img{    width: 100%; margin: 0;}

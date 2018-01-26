@@ -26,15 +26,6 @@
 
             <div class="table-responsive">
                 <style>
-                    .td-list{position: relative}
-                    .td-cont{position: absolute;top: 5px;margin-left: 5px}
-                    .ceiling{margin-left: 30%}
-                    .proportion{margin-top: 22px}
-
-                    .clearfix m{position: relative}
-                    .clearfix.m > .table-responsive{width: 100%;height: 300px}
-                    tbody{position: relative}
-
 
 
 
@@ -42,11 +33,8 @@
 
             <div class="clearfix m">
 
-
-
-
                 <table class="table table-striped table-bordered table-hover dataTable m-b-none">
-                    <tr role="row" class="bg-color " style="width: 520px">
+                    <tr role="row" class="bg-color " style="width: 633px">
                         <td rowspan="3" style="height: 197px"><button type="button" class="btn btn-w-m btn-danger">删除</button></td>
                         <td rowspan="2" class="td-list">
 
@@ -100,12 +88,12 @@
                             </div>
                         </td>
 
-                        <td colspan="6"><h3>返佣比例 <i class="fa fa-question-circle m-l-sm"></i></h3></td>
+                        <td colspan="2"><h3>返佣比例 <i class="fa fa-question-circle m-l-sm"></i></h3></td>
 
 
                     </tr>
                     <!--<tr class="bg-color"></tr>-->
-                    <tr class="bg-color"  id="thisdiv" style="float: left;width: calc(100% - 520px);overflow-x: auto">
+                    <tr class="bg-color"  id="scrollInner" style="float: left;width: calc(100% - 633px);overflow-x: hidden">
 
                         <td style=" width: 150px">
                             <div  class="bg-grayf"><b>API 1</b></div>
@@ -311,4 +299,13 @@
 </div>
 <script>
     $("[name='my-checkbox']").bootstrapSwitch();//switch
+
+//调用niceScroll插件
+    $("#scrollInner").niceScroll({
+        cursorcolor:"#bbb5b5",  //滚动条颜色
+        cursoropacitymax:1,     //滚动条可见状态时透明度
+        cursorwidth:"7px",      //滚动条宽度
+        scrollspeed:60,         //滚动条速度
+        cursorborderradius:"5px"    //滚动条圆角半径
+    });
 </script>
