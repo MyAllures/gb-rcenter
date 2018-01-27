@@ -18,10 +18,11 @@ define(['common/BaseEditPage'], function (BaseListPage) {
             });
         },
         detail:function (e) {
-            var betId=$("#betId").val();
-            var siteId=$("#siteId").val();
+            var betId = $("#betId").val();
+            var siteId = $("#siteId").val();
+            var apiId = $("#apiId").val();
             window.top.topPage.ajax({
-                url: root + "/report/gameTransaction/getGameDetailLink.html?search.betId="+betId+"&siteId="+siteId,
+                url: root + "/report/gameTransaction/getGameDetailLink.html?search.betId="+betId+"&siteId="+siteId+"&search.apiId="+apiId,
                 type: 'GET',
                 success: function (data) {
                     var datas = eval('('+data+')')
