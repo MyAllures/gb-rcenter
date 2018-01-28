@@ -25,19 +25,21 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             });
         },
         gameDetail:function (e) {
-            var betId=$("#betId").val();
+            var betId = $("#betId").val();
+            var apiId = $("#apiId").val();
             window.top.topPage.ajax({
-                url: root + "/gameOrder/GameDetailLink.html?search.betId="+betId,
+                url: root + "/gameOrder/GameDetailLink.html?search.betId="+betId+"&search.apiId="+apiId,
                 type: 'GET',
                 success: function (data) {
                     var datas = eval('('+data+')');
                     if(datas.state){
                         window.open(datas.msg);
+                        $(e.currentTarget).unlock();
                     }else{
                         window.top.topPage.showWarningMessage(datas.msg);
+                        $(e.currentTarget).unlock();
                         return;
                     }
-                    $(e.currentTarget).unlock();
                 },
                 error: function (data){
                     console.log('请求错误');
