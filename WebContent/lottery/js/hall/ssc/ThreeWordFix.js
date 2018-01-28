@@ -11,11 +11,13 @@ define(['site/hall/ssc/PlayWay'], function (PlayWay) {
             this._super();
         },
         bindButtonEvents: function () {
+            debugger;
             this._super();
             var _this = this;
             $("div.T-tab.fix-type.clearfix a").on('click', function () {
                 $("div.T-tab.fix-type.clearfix a").removeClass('active');
                 $(this).addClass('active');
+                $("#inputMoney").val("");
                 _this.getBetOdds($(this));
             });
         },
@@ -63,16 +65,23 @@ define(['site/hall/ssc/PlayWay'], function (PlayWay) {
             var toucheck=$("#betTalble tbody tr.headtr td.bg-yellow");
             var zhcheck=$("#betTalble tbody tr.zhongtr td.bg-yellow");
             var weicheck=$("#betTalble tbody tr.weitr td.bg-yellow");
-            if (Number(toucheck.length)==0){
+            var tLen = Number(toucheck.length);
+            var zLen = Number(zhcheck.length);
+            var wLen = Number(weicheck.length);
+            if (tLen==0){
                 layer.msg("请选择");
                 return;
             }
-            if (Number(zhcheck.length)==0){
+            if (zLen==0){
                 layer.msg("请选择");
                 return;
             }
-            if (Number(weicheck.length)==0){
+            if (wLen==0){
                 layer.msg("请选择");
+                return;
+            }
+            if(tLen*zLen*wLen >500){
+                layer.msg("注数过大");
                 return;
             }
             var betAmount =$("input#inputMoney").val();

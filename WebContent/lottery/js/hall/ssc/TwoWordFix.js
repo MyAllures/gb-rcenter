@@ -16,6 +16,7 @@ define(['site/hall/ssc/PlayWay'], function (PlayWay) {
             $("div.T-tab.fix-type.clearfix a").on('click', function () {
                 $("div.T-tab.fix-type.clearfix a").removeClass('active');
                 $(this).addClass('active');
+                $("#inputMoney").val("");
                 _this.getBetOdds($(this));
             });
         },

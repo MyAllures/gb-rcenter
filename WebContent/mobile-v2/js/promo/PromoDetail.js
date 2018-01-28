@@ -5,6 +5,7 @@ define(['common/MobileBasePage'], function (Mobile) {
             this._super();
         },
         onPageLoad: function () {
+            $(".gb-select *").css({"background":"","margin":"","padding":""})
             this._super();
             t = this;
             mui(".mui-scroll-wrapper").scroll();

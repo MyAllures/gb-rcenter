@@ -22,6 +22,7 @@ define(['site/deposit/BaseCompanyDeposit','clipboard'], function (BaseCompanyDep
                 selectType.addEventListener('tap', function (event) {
                     typePick.show(function (items) {
                         var value = items[0].value;
+                        $("input[name='result.payerName']").blur();
                         document.getElementById('result.rechargeType').value = value;
                         document.getElementById("rechargeTypeText").innerHTML = items[0].text;
                         //柜台现金存款需填写交易地点，其他填写存款人
