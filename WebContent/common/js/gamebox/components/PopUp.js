@@ -5,77 +5,77 @@ define([], function () {
             //有多个js引用popUP，导致该方法被初始化多次，所以在初始化不需要加该代码，等需要的时候再引用
             //this.bindEvent();
         },
-        _getWin : function(content,date,winType){
-            var message = "<div class=\"inform-"+winType+" clearfix shadow\"><div class=\"btn-close\"><a href=\"javascript:void(0)\" class=\"\">×</a></div>"+
-                "<div class=\"in-details\"><span class=\"hint-text\">"+content+"</span>";
-            if(date){
-                message += "<span class=\"hint-time al-right\">"+date+"</span></div></div>";
+        _getWin: function (content, date, winType) {
+            var message = "<div class=\"inform-" + winType + " clearfix shadow\"><div class=\"btn-close\"><a href=\"javascript:void(0)\" class=\"\">×</a></div>" +
+                "<div class=\"in-details\"><span class=\"hint-text\">" + content + "</span>";
+            if (date) {
+                message += "<span class=\"hint-time al-right\">" + date + "</span></div></div>";
             }
             return message;
         },
-        bindEvent : function(){
-            $(".unfold").on("click",function (){
+        bindEvent: function () {
+            $(".unfold").on("click", function () {
                 // $(".max-ccc").children().first().nextAll().slideToggle(300);
                 //$(".max-ccc").children().slideToggle(300);
                 $(this).toggleClass("open");
                 var isOpen = $(this).hasClass("open");
-                if(isOpen){
+                if (isOpen) {
                     $(".max-ccc").removeClass("hide");
                     $("a[name=tellerReminder]").click(function (e) {
                         $(e.currentTarget).parent().parent().parent().remove();
                     });
-                }else{
+                } else {
                     $(".max-ccc").addClass("hide");
                 }
-                try{
+                try {
                     window.top.topPage.ajax({
-                        url: root + "/index/savePersonShowpop.html?isShow="+isOpen,
+                        url: root + "/index/savePersonShowpop.html?isShow=" + isOpen,
                         type: "post",
                         dataType: "JSON",
                         success: function (data) {
-                            console.log("操作开启关闭提醒："+data.state);
+                            console.log("操作开启关闭提醒：" + data.state);
                         },
                         error: function () {
                             console.log("==================");
                         }
                     });
-                }catch(e){
+                } catch (e) {
                     console.log(e);
                 }
             });
         },
-        pop : function(content,date,winType){
-            var win = this._getWin(content,date,winType);
-            try{
+        pop: function (content, date, winType) {
+            var win = this._getWin(content, date, winType);
+            try {
                 var isFirst = !$(".real-time-inform").hasClass("open");
                 var isShow = $(".unfold").hasClass("open");
-                this.showTipsDialog(isFirst,isShow,win,content,date);
-            }catch(e){
+                this.showTipsDialog(isFirst, isShow, win, content, date);
+            } catch (e) {
                 this.oldPop(win);
             }
         },
-        oldPop : function(win){
+        oldPop: function (win) {
             var isFirst = !$(".real-time-inform").hasClass("open");
             var isShow = $(".unfold").hasClass("open");
             if (!isShow) {
                 $(".unfold").click();
             }
-            if($(".max-ccc").children().length==0) {
+            if ($(".max-ccc").children().length == 0) {
                 $(".max-ccc").append(win);
-            }else {
+            } else {
                 $(win).insertBefore($(".max-ccc").children().first());
             }
 
-            if(isFirst){
+            if (isFirst) {
                 $(".real-time-inform").toggleClass("open");
                 $(".real-time-inform").slideToggle();
             }
-            $(".btn-close>a").on("click",function (){
+            $(".btn-close>a").on("click", function () {
                 $(this).parents(".clearfix").next().show();
                 $(this).parents(".clearfix").remove();
             });
         },
-        showTipsDialog:function (isFirst,hasShow,win) {
+        showTipsDialog: function (isFirst, hasShow, win) {
             var _this = this;
             try {
                 window.top.topPage.ajax({
@@ -118,13 +118,13 @@ define([], function () {
                         _this.oldPop(win);
                     }
                 });
-            }catch (e){
+            } catch (e) {
                 console.log(e);
             }
         },
 
 
-        showDialog :function(opt){
+        showDialog: function (opt) {
             window.top.topPage.openDialog(opt);
         },
         exportDownload: function (data) {
@@ -135,41 +135,41 @@ define([], function () {
             var status = msgBody.status;
             var date = "";
             var content = "";
-            if(status == "completed"){
-                var url = root+"/exports/download.html?id="+id;
-                if(window.top.ExportTimestamp == msgBody.exportTimestamp){
+            if (status == "completed") {
+                var url = root + "/exports/download.html?id=" + id;
+                if (window.top.ExportTimestamp == msgBody.exportTimestamp) {
                     var iframe = document.getElementById("download-export-frame");
-                    if(!iframe){
+                    if (!iframe) {
                         iframe = document.createElement("iframe");
-                        iframe.id="download-export-frame";
+                        iframe.id = "download-export-frame";
                         document.body.appendChild(iframe);
                     }
                     iframe.src = url;
                     iframe.style.display = "none";
-                }else{
+                } else {
                     console.log("不是从本页面点击的导出，不自动下载");
                 }
-                if($(".btn-export-btn").length>0){
+                if ($(".btn-export-btn").length > 0) {
                     $(".btn-export-btn").unlock();
                 }
                 return;
-            }else if(status == "maxCount"){
+            } else if (status == "maxCount") {
                 content = "导出数据量超过10万条数据！请控制在10万条以内";
-            }else if(status == "fail"){
+            } else if (status == "fail") {
                 content = "导出失败，请重新导出！";
             }
-            else if(status == "uploadFail"){
+            else if (status == "uploadFail") {
                 content = "操作完成，但上传文件失败，无法下载！";
-            }else if(status == "resultZero"){
+            } else if (status == "resultZero") {
                 content = "操作完成，导出条数为0，无法下载！";
             }
             popUp.pop(content, date, "success");
 
-            if($(".btn-export-btn").length>0){
+            if ($(".btn-export-btn").length > 0) {
                 $(".btn-export-btn").unlock();
             }
 
-            if($(".btn-export-list-search").length>0){
+            if ($(".btn-export-list-search").length > 0) {
                 $(".btn-export-list-search").click();
             }
             $("a[name=export-download-link]").click(function (e) {
@@ -183,19 +183,19 @@ define([], function () {
          * @param loop 是否循环
          * @param callback 播放结束回调
          */
-        audioplayer: function (id, file, loop,callback){
+        audioplayer: function (id, file, loop, callback) {
             var audioplayer = document.getElementById(id);
-            if(audioplayer!=null){
+            if (audioplayer != null) {
                 if (!!window.ActiveXObject || "ActiveXObject" in window) {// IE
                     var embed = document.embedPlay;
-                }else{
+                } else {
                     audioplayer.play();
-                    if(callback!=null&&callback != undefined){
+                    if (callback != null && callback != undefined) {
                         //如何判断声音播放结束
                         //update by jerry
                         setTimeout(function () {
                             callback();
-                        },3000);
+                        }, 3000);
                     }
                 }
 
@@ -203,45 +203,45 @@ define([], function () {
                 //document.body.removeChild(audioplayer);
             }
 
-            if(typeof(file)!='undefined'){
-                if (!!window.ActiveXObject || "ActiveXObject" in window){// IE
+            if (typeof(file) != 'undefined') {
+                if (!!window.ActiveXObject || "ActiveXObject" in window) {// IE
 
                     var player = document.createElement('embed');
                     $(player).addClass("hide");
                     player.id = id;
-                    player.src = resRoot + '/' +file;
+                    player.src = resRoot + '/' + file;
                     //player.setAttribute('autostart', 'true');
-                    if(loop){
+                    if (loop) {
                         player.setAttribute('loop', 'infinite');
                     }
                     $("#auto_alert").append(player);
                     var embed = document.embedPlay;
-                    if(callback!=null&&callback != undefined){
+                    if (callback != null && callback != undefined) {
                         //如何判断声音播放结束
                         setTimeout(function () {
                             callback();
-                        },3000);
+                        }, 3000);
 
                     }
-                }else{
+                } else {
                     // Other FF Chome Safari Opera
                     var player = document.createElement('audio');
                     $(player).addClass("hide");
                     player.id = id;
                     //player.setAttribute('autoplay','autoplay');
-                    if(loop){
-                        player.setAttribute('loop','loop');
+                    if (loop) {
+                        player.setAttribute('loop', 'loop');
                     }
                     $("#auto_alert").append(player);
 
                     var mp3 = document.createElement('source');
-                    mp3.src = resRoot + '/' +file;
-                    mp3.type= 'audio/mpeg';
+                    mp3.src = resRoot + '/' + file;
+                    mp3.type = 'audio/mpeg';
                     player.appendChild(mp3);
                     player.play();
-                    if(callback!=null&&callback != undefined){
-                        var is_playFinish = setInterval(function(){
-                            if(player.ended){
+                    if (callback != null && callback != undefined) {
+                        var is_playFinish = setInterval(function () {
+                            if (player.ended) {
                                 callback();
                                 window.clearInterval(is_playFinish);
                             }
@@ -249,6 +249,16 @@ define([], function () {
                     }
                 }
             }
+        },
+        /**
+         * 替换参数
+         * @returns
+         */
+        formatStr: function (msg, msgBody) {
+            $.each(msgBody, function (key, value) {
+                msg = msg.replace(key, value);
+            });
+            return msg;
         }
 
     });

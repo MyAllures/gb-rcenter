@@ -684,7 +684,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
          * 导入域名检测结果成功后提示
          * @param data
          */
-        importDomainCheckResultSuccess:function (data) {
+        importDomainCheckResultSuccess: function (data) {
             //window.top.topPage.doDialog(e,opt);
             // var id = $('input[name=id]').val();
             //var remarkContent = $('textarea[name=remarkContent]').val();
@@ -697,7 +697,19 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             btnOption.title = "域名检测结果";
             // window.top.topPage.doDialog(e, btnOption);
             window.top.topPage.doDialog({page: this}, btnOption);
+        },
+        /**
+         * 停用账号信息通知
+         * @param data
+         */
+        payAccountDisable: function (data) {
+            var msgBody = $.parseJSON($.parseJSON(data).msgBody);
+            var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.date), window.top.dateFormat.daySecond);
+            var content;
+            var msg = window.top.message.content['payAccount.disable.master.log'];
+            msg = msg.replace("{date}", date);
+            content = "<a href='javascript:;'>" + popUp.formatStr(msg, msgBody) + "</a>";
+            popUp.pop(content, date, "warning");
         }
-
     });
 });

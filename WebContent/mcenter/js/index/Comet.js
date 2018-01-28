@@ -41,6 +41,8 @@ define(['gb/components/Comet', 'site/index/PopUp', 'cookie'], function (Comet, P
                     {subscribeType: "MESSAGE_NOTICE",callBack:popUp.playerNoticeVoice},
                     {subscribeType:'TRANSFER_LIMIT_WARNING',callBack:popUp.transferLimit},
                     {subscribeType:'IMPORT_DOMAIN_CHECK_RESULT_SUCCESS',callBack:popUp.importDomainCheckResultSuccess},
+                    //自动停用账户
+                    {subscribeType:'PAY_ACCOUNT_DISABLE',callBack:popUp.payAccountDisable},
                 ];
                 _this.subscribeMsgs(subscribes);
             };
