@@ -90,7 +90,15 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             var zhonga = Number($("#betzhongli div a.mui-active").length);
             var weia = Number($("#betweili div a.mui-active").length);
             if (toua > 0 && weia > 0 && zhonga > 0) {
-                $("#quantity").text(toua * weia * zhonga);
+                if(toua * weia * zhonga>500){
+                    $(thiz).toggleClass('mui-active');
+                    mui.toast("注数过大");
+                    return;
+                }else{
+                    $("#quantity").text(toua * weia * zhonga);
+                }
+
+
             } else {
                 $("#quantity").text(0);
             }
@@ -115,6 +123,10 @@ define(['site/hall/ssc/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             var toua = $("#bettouli div a.mui-active");
             var zhonga = $("#betzhongli div a.mui-active");
             var weia = $("#betweili div a.mui-active");
+            if(toua.length*zhonga.length*weia.length>500){
+                mui.toast("注数过大");
+                return;
+            }
             for (var i = 0; i < toua.length; ++i) {
                 for (var j = 0; j < zhonga.length; ++j) {
                     for (var k = 0; k < weia.length; ++k) {
