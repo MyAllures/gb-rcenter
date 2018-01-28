@@ -62,14 +62,16 @@ function login() {
     var _password = $("[name='sysUser.password']").val();
     os = whatOs();
     if (os == 'app_android') {
-        try{
-            if(_username.contain(",") || _password.contain(",")){
-                window.gamebox.gotoLoginNew(_username,_password);
-            }else{
+        try {
+            var urlStr = _username + _password;
+            if (urlStr.indexOf(",") != -1) {
+                window.gamebox.gotoLoginNew(_username, _password);
+            } else {
                 var _href = _username + "," + _password;
                 window.gamebox.gotoLogin(_href);
             }
-        }catch(err){}
+        } catch (err) {
+        }
 
     } else if (os == 'app_ios') {
         //0表示是注册成功后调用方法实际上是未登录，需要ios那里直接调用登录
@@ -86,7 +88,7 @@ function login() {
             success: function (data) {
                 sessionStorage.is_login = true;
                 window.location.href = "/index.html";
-                if(data != null){
+                if (data != null) {
                     if (data.success) {
                         sessionStorage.is_login = true;
                         window.location.href = "/index.html";
