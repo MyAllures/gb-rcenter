@@ -227,7 +227,10 @@ define(['site/game/ApiLogin'], function(ApiLogin) {
             } else if (apiTypeId == 4) {
                 apiId = $('#lottery-id').val();
                 apiType = 'lottery';
-            } else if (apiTypeId == -1) {
+            } else if (apiTypeId == 5){
+                apiId = $('#chess-id').val();
+                apiType = 'chess';
+            }else if (apiTypeId == -1) {
                 window.top.game.promo.loadMoreActivity();
                 return true;
             } else {
