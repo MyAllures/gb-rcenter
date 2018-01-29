@@ -18,7 +18,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             //this.initPlayerViewButton();
             //this.closeView();
             this.doFormData();
-            this.queryCount();
+
         },
         /**
          * 异步加载后需调用方法
@@ -114,7 +114,9 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                     "Soul-Requested-With": "XMLHttpRequest"
                 },
                 success: function (data) {
-                    _this.renderData(data);
+                    var json = JSON.parse(data);
+                    _this.renderData(json);
+                    _this.queryCount(json);
                     _this.synQueryPageLoad();
                 },
                 error: function (data, state, msg) {
@@ -126,10 +128,9 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
         /**
          * 渲染表单数据
          */
-        renderData: function (data) {
+        renderData: function (json) {
             var _this = this;
             var $result = $("#editable tbody", _this.formSelector);
-            var json = JSON.parse(data)
             var html = $("#VUserPlayerListVo").render({data: json.result});
             $result.html(html);
         },
@@ -138,15 +139,12 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
          * 重新计算分页
          * @param e
          */
-        queryCount: function (isCounter) {
+        queryCount: function (data) {
             var _this = this;
             var url = root + "/player/count.html";
-            if (isCounter) {
-                url = url + "?isCounter=" + isCounter;
-            }
             window.top.topPage.ajax({
                 url: url,
-                data: $(this.formSelector).serialize(),
+                data: {'page':JSON.stringify(data.paging)},
                 type: 'POST',
                 success: function (data) {
                     $("#playerPage").html(data);
@@ -820,15 +818,12 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                     type: "post",
                     data: this.getCurrentFormData(event),
                     success: function (data) {
-                        _this.renderData(data);
+                        var json = JSON.parse(data);
+                        _this.renderData(json);
+                        _this.queryCount(json);
                         $(event.currentTarget).unlock();
                         //注：这里不能调用onPageLoad方法，会重复定义排序等方法
                         _this.synQueryPageLoad();
-                        if (event.goType == undefined || event.goType == -2) {
-                            _this.queryCount();
-                        } else {
-                            _this.queryCount(true);
-                        }
                     },
                     error: function (data, state, msg) {
                         window.top.topPage.showErrorMessage(data.responseText);
