@@ -45,28 +45,31 @@
 .gb-homemenu.mui-segmented-control .mui-control-item.ico4{
     background-image: url(../../images/blue/game-ico4.png);    background-position-y: 12px !important;
 }
-.gb-homemenu.mui-segmented-control .mui-control-item.ico5{
-    background-image: url(../../images/blue/game-ico5.png); background-position-y: 13px !important;
+.gb-homemenu.mui-segmented-control .mui-control-item.ico-promo{
+    background-image: url(../../images/blue/game-ico5.png);    background-position-y: 13px !important;
 }
-.gb-homemenu.mui-segmented-control .mui-control-item.ico6{
+.gb-homemenu.mui-segmented-control .mui-control-item.ico-agent{
     background-image: url(../../images/blue/game-ico6.png);background-position-y: 12px !important;
 }
-.gb-homemenu.mui-segmented-control .mui-control-item.ico7{
+.gb-homemenu.mui-segmented-control .mui-control-item.ico-about{
     background-image: url(../../images/blue/game-ico7.png);
 }
-.gb-homemenu.mui-segmented-control .mui-control-item.ico8{
+.gb-homemenu.mui-segmented-control .mui-control-item.ico-terms{
     background-image: url(../../images/blue/game-ico8.png);
 }
-.gb-homemenu.mui-segmented-control .mui-control-item.ico9{
-    background-image: url(../../images/blue/game-ico9.png);background-position-y: 15px !important;
-}
-.gb-homemenu.mui-segmented-control .mui-control-item.mui-active{
-    background-color:rgba(0, 136, 255, 0.21);
-    color: #666;
+.gb-homemenu.mui-segmented-control .mui-control-item.ico-pc{
+    background-image: url(../../images/blue/game-ico9.png);    background-position-y: 15px !important;
 }
 .gb-homemenu.mui-segmented-control .mui-control-item.ico10{
     background-image: url(../../images/blue/icon_index.png);background-position-y: 13px !important;
     background-size: 24px !important;
+}
+.gb-homemenu.mui-segmented-control .mui-control-item.ico5{
+    background-image: url(../../images/blue/game-icon11.png);background-size: 18px auto !important;
+}
+.gb-homemenu.mui-segmented-control .mui-control-item.mui-active{
+    background-color:rgba(0, 136, 255, 0.21);
+    color: #666;
 }
 .lottery-type .item{
     background-color: #fff;
