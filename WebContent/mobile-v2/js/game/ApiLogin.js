@@ -106,8 +106,13 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
                 data: {apiId: apiId},
                 type: "POST",
                 success: function (data) {
-                    _this.openLayer("尊敬的客户您好：<br>  &nbsp;&nbsp;&nbsp;&nbsp;" + data.gameName + " 平台将于北京时间" + data.maintainStartTime + "-" + data.maintainEndTime +
-                        "进行维护，维护时间若有变动将另行通知。给您带来的不便，请您谅解！");
+                    _this.openLayer(
+                        window.top.message.game_auto['尊敬的客户']
+                        + "<br>  &nbsp;&nbsp;&nbsp;&nbsp;"
+                        + data.gameName
+                        + window.top.message.game_auto['平台将于北京时间']
+                        + data.maintainStartTime + "-" + data.maintainEndTime
+                        + window.top.message.game_auto['进行维护']);
                 }
             });
         },
