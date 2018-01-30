@@ -163,7 +163,13 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
 
             mui("body").on("tap", "[data-bitcoin]", function () {
                 var _href = $(this).attr("data-bitcoin");
-                _this.gotoUrl(_href);
+                if (this.os == 'app_android') {
+                    window.gamebox.gotoFragment(1);
+                } else if (this.os == 'app_ios') {
+                    gotoTab(1);
+                } else {
+                    _this.gotoUrl(_href);
+                }
             });
 
             mui("body").on("tap", "[data-fast]", function () {
