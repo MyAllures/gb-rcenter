@@ -23,8 +23,10 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
                 obj.apiTypeId = apiTypeId;
                 obj.gameCode = code;
                 if (status == "maintain") {
-                    _this.openLayer(window.top.message.game_auto['游戏维护中']);
+                    _this.gameMaintainMsg(apiId);
+                    //_this.openLayer(window.top.message.game_auto['游戏维护中']);
                     $("[class='mui-backdrop mui-active']").remove();
+
                 } else {
                     if (isLogin == "true") {
                         //判断ｂｓｇ就直接到游戏列表，不到转账页面
@@ -85,6 +87,26 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
                     } else {
                         _this.signIn($this.data());
                     }
+                }
+            });
+        },
+        /**
+         * 游戏维护提示
+         * @param apiId
+         */
+        gameMaintainMsg: function (apiId) {
+            _this = this;
+            if (apiId == null && (typeof apiId !== 'undefined')) {
+                _this.openLayer(window.top.message.game_auto['游戏维护中']);
+                return;
+            }
+            mui.ajax(root + "/game/getApiMaintain.html", {
+                dataType: 'json',
+                data: {apiId: apiId},
+                type: "POST",
+                success: function (data) {
+                    _this.openLayer("尊敬的客户您好：<br>  " + data.gameName + " 平台将于北京时间" + data.maintainStartTime + "-" + data.maintainEndTime +
+                        "进行维护，维护时间若有变动将另行通知。给您带来的不便，请您谅解！");
                 }
             });
         },
