@@ -2046,3 +2046,264 @@ body.withdraw{
         color: #999;
     }
 }
+/* 推荐好友样式 */
+body.invite{
+     header{background: #1766bb;}
+    .mui-content{background: #f2f2f2;}
+    .mui-bar-nav .button {
+        padding: 2px 8px;
+        color: #fff;
+        font-size: 12px;
+        margin-top: 4px;
+        &:active{background: transparent;}
+    }
+    .gb-panel {
+        background-color: #fff;
+        border-top: 1px solid #e6e6e6;
+        border-bottom: 1px solid #e6e6e6;
+    }    
+    .invite-code{
+        padding: 5px 10px;
+    }
+    .invite-code p{
+        line-height: 24px;
+        margin-bottom: 0;
+    }
+    .invite-code p.p1{
+        color: #333333;
+        font-size: 12px;
+    }
+    .invite-code p.p2{
+        color: #999999;
+        font-size: 10px;
+    }
+    .invite-code p.p2 .span{
+        width: 48%;
+        display: inline-block;
+        height: 10px;
+        line-height: 10px;
+        border-right: 1px solid #999999;
+    }
+    .invite-cont{
+        padding: 10px;
+    }
+    .invite-cont .cont{
+        border-bottom: 1px dotted #e3e3e3;
+        padding-top: 10px;
+    }
+    .invite-cont .cont >p{
+        text-align: center;
+        color: #333333;
+        font-size: 12px;
+    }
+    .invite-cont .cont >p.al-left{
+        text-align: left;
+    }
+    .invite-cont .cont .link{
+        background-color: #f2f2f2;
+        border-radius: 3px;
+        padding: 5px 10px;
+        margin: 0 40px 10px;
+    }
+    .invite-cont .cont .link p{
+        line-height: 22px;
+        color: #333333;
+        font-size: 12px;
+        margin-bottom: 0;
+        word-break: break-word;
+    }
+    .invite-cont .cont >p .btn{
+        padding: 4px 50px;
+    }
+    .invite-cont .cont .tabl{
+        margin: 0 40px;
+    }
+    .invite-cont .cont .tabl table{
+        width: 100%;
+    }
+    .invite-cont .cont .tabl table tr{
+    
+    }
+    .invite-cont .cont .tabl table tr td{
+        line-height: 20px;
+        color: #333333;
+        font-size: 10px;
+        text-align: center;
+    }
+    .invite-cont .cont .tabl table tr:first-child td{
+        background-color: #e2e2e2;
+    }
+    .invite-cont .cont .tabl table tr:nth-child(odd) td{
+        background-color: #f2f2f2;
+    } 
+    .mine-table table{
+        background-color: #fff;
+        width: 100%;
+    }
+    .mine-table table tr{
+        border-bottom: 1px solid #f2f2f2;
+    }
+    .mine-table table tr.head{
+        border-bottom: none;
+    }
+    .mine-table table tr td{
+        padding: 5px;
+        color: #333333;
+        font-size: 10px;
+        line-height: 16px;
+        text-align: center;
+    }
+    .mine-table.lg table tr td{
+        font-size: 12px;
+        padding: 12px 0;
+    }
+    .mine-table table tr.head td{
+        background-color: #e2e2e2;
+        border-right: 1px solid #fff;
+        vertical-align: top;
+    }
+    .mine-table table tr.head td:last-child{
+        border-right: none;
+    }
+    .mine-table table tr.head.nobr td{
+        font-size: 12px;
+        padding: 12px 0;
+        border-right: none;
+    }      
+}
+/* 注册条款样式 */
+.register-rules-wrap{
+    color: #999;
+    padding: 10px;
+    h2{font-size: 18px;}
+}
+/* 帮助中心样式 */
+.help-center{
+     header{background: #1766bb;}
+    .mui-content{background: #f2f2f2;}
+    .mui-content{font-size: 12px;color: #333;}
+}
+.help-center{background-color: #f2f2f2;}
+.help-center .mui-content{background-color: #f2f2f2;font-size: 12px;color: #333;}
+.help-center .mui-bar-nav{    background-color: #1766bb;color: #fff;}
+.help-center .mui-title{color: #fff;}
+.help-center .mui-action-back{color: #fff;}
+.help-center .mui-content > .mui-table-view:first-child{margin-top: 0;}
+.help-center .fqa{ margin: 12px 0 ;}
+.help-center .fqa dt{height: 40px;line-height: 40px;background-color: #fff;margin-bottom: 12px;}
+.help-center .fqa dt span{display: inline-block;padding-left: 6px; height: 21px;line-height: 21px;font-size: 12px;color: #445dc2;border-left: 4px solid #445dc2;  margin-top:10px; }
+.help-center .fqa dd{margin: 0;padding: 0 10px; overflow: hidden; -webkit-transition-duration:0ms; -o-transition-duration: 0ms; transition-duration: 0ms;height:auto;}
+.help-center .fqa dd p{color: #333;font-size: 12px;line-height: 17px;margin-bottom: 17px;}
+.help-center .fqa .mui-content{display: none;}
+
+/* 银行卡 */
+body.bankcard{
+     header{background: #1766bb;}
+    .mui-content{background: #f2f2f2;}
+    .mine-form .mui-input-row >label {
+        color: #333;
+        font-size: 12px;
+        line-height: 18px;
+        position: relative;
+    }  
+    .mine-form input {
+        width: 100%;
+        text-align: right;
+        font-size: 12px;
+        padding-right: 0;
+    }
+    .mine-form .mui-input-row >label small {
+        position: absolute;
+        top: 24px;
+        left: 15px;
+        color: #999;
+        font-size: 8px;
+    } 
+    .mine-form .mui-input-row >.ct {
+        width: 65%;
+        float: right;
+        text-align: right;
+        padding-right: 10px;
+        font-size: 12px;
+        input{    font-size: 12px;
+    color: #999;}
+    }     
+    .gb-select >a {
+        color: #999;
+    }   
+    .gb-form-foot {
+        padding: 10px;
+    }
+    .gb-form-foot .submit {
+        border: 1px solid #1766bb;
+        background-color: #1766bb !important;
+    }
+    .gb-form-foot .submit {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    .gb-bankcard {
+        width: 290px;
+        margin: 10px auto 20px;
+        border: 1px solid #e2e2e2;
+        border-radius: 8px;
+        background-color: #fff;
+    }  
+    .gb-bankcard >.hd{
+        height: 32px;
+        padding: 0 18px;
+        line-height: 26px;
+        border-bottom: 1px solid #f2f2f2;
+    }
+    .gb-bankcard >.hd p{
+        color: #333333;
+        font-size: 12px;
+    }
+    .gb-bankcard >.hd p i{
+        display: inline-block;
+        width: 24px;
+        height: 9px;
+        background-size: cover;
+        vertical-align: text-top;
+    }
+    .gb-bankcard >.hd p i.card1{
+        background-image: url(./images/bank-type1.png);
+    }
+    .gb-bankcard >.ct{
+        padding: 10px 7px 15px;
+    }
+    .gb-bankcard >.ct >p{
+        color: #333333;
+        font-size: 19px;
+    }
+    .gb-bankcard >.ct >.ct{
+    
+    }
+    .gb-bankcard >.ct >.ct p{
+        color: #333333;
+        font-size: 12px;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+    .gb-bankcard >.ct >.ct p span{
+        color: #999999;
+        white-space: nowrap;
+        padding-right: 5px;
+    }
+    .gb-bankcard >.ct >.ct p font{
+        width: 100%;
+    }
+    .gb-bankcard >.ct > p a.copy,.gb-bankcard >.ct >.ct p a.copy{
+        float: right;
+        background: #e0efff;
+        padding: 0 5px;
+        border-radius: 3px;
+        color: #569ff1;
+        font-size: 12px;
+        white-space: nowrap;
+        height: 22px;
+        line-height: 22px;
+        margin-left: 5px;
+    }  
+}
