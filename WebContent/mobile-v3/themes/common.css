@@ -9,6 +9,10 @@ header.mui-bar-nav .btn-login, header.mui-bar-nav .btn-demo, header.mui-bar-nav 
 header.mui-bar-nav .btn-download { display: inline-block; width: 24px; height: 24px; background: url(images/icon-download.png) center/24px no-repeat; margin: 10px; float: left; }
 header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 
+.clearfix { clear: both; }
+
+.m-t-sm { margin-top: 10px !important; }
+
 .mui-bar .mui-icon:active { opacity: 1; }
 
 .yjym { text-align: center; height: 20px; line-height: 19px; font-size: 13px; }
@@ -637,5 +641,351 @@ body.no-backdrop .mui-backdrop { background-color: transparent !important; }
 .gb-show-help.mui-input-row .gb-input-help { margin-bottom: 0; }
 
 .gb-theme .mui-input-row label { white-space: nowrap; text-overflow: ellipsis; }
+
+/* 银行 & 第三方支付 Steven 2016-9-4 */
+.pay-bank { width: 125px; display: inline-block; height: 30px; vertical-align: middle; background: url(images/pay-bank.png) right top no-repeat; zoom: .8; margin-left: -3px; }
+
+.pay-bank.s { zoom: .5; }
+
+.pay-bank.sm, .pay-third.sm { width: 35px; display: inline-block; height: 30px; vertical-align: middle; background: url(images/pay-bank-x.png) left top no-repeat; }
+
+.sm.ceb, .sm.spdb, .sm.spabank, .sm.cib, .sm.bohaib { width: 50px; }
+
+.diy-pay-title { display: inline-block; font-size: 12px; width: 80px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; vertical-align: middle; }
+
+/* 银行 */
+.pay-bank.other_bank { background-position: 0 0; }
+
+/* 其他 */
+.pay-bank.select { background-position: 0 -30px; }
+
+/* 请选择银行*/
+.pay-bank.icbc { background-position: 0 -60px; }
+
+/* 01 中国工商银行 */
+.pay-bank.cmb { background-position: 0 -90px; }
+
+/* 02 招商银行 */
+.pay-bank.ccb { background-position: 0 -120px; }
+
+/* 03 中国建设银行 */
+.pay-bank.abc { background-position: 0 -150px; }
+
+/* 04 中国农业银行 */
+.pay-bank.boc { background-position: 0 -180px; }
+
+/* 05 中国银行 */
+.pay-bank.cmbc { background-position: 0 -210px; }
+
+/* 06 中国民生银行 */
+.pay-bank.ceb { background-position: 0 -240px; }
+
+/* 07 中国光大银行 */
+.pay-bank.comm { background-position: 0 -270px; }
+
+/* 08 交通银行 */
+.pay-bank.spdb { background-position: 0 -300px; }
+
+/* 09 浦发银行 */
+.pay-bank.spabank { background-position: 0 -330px; }
+
+/* 10 平安银行 */
+.pay-bank.cib { background-position: 0 -360px; }
+
+/* 11 兴业银行 */
+.pay-bank.bjbank { background-position: 0 -390px; }
+
+/* 12 北京银行 */
+.pay-bank.citic { background-position: 0 -420px; }
+
+/* 13 中信银行 */
+.pay-bank.gdb { background-position: 0 -450px; }
+
+/* 14 广发银行 */
+.pay-bank.psbc { background-position: 0 -480px; }
+
+/* 15 中国邮政储蓄银行 */
+.pay-bank.jsbank { background-position: 0 -510px; }
+
+/* 16 江苏银行 */
+.pay-bank.hxbank { background-position: 0 -540px; }
+
+/* 17 华夏银行 */
+.pay-bank.shbank { background-position: 0 -570px; }
+
+/* 18 上海银行 */
+.pay-bank.bohaib { background-position: 0 -600px; }
+
+/* 19 渤海银行 */
+.pay-bank.hkbea { background-position: 0 -630px; }
+
+/* 20 东亚银行 */
+.pay-bank.nbbank { background-position: 0 -660px; }
+
+/* 21 宁波银行 */
+.pay-bank.czbank { background-position: 0 -690px; }
+
+/* 22 浙商银行 */
+.pay-bank.hzcb { background-position: 0 -720px; }
+
+/* 23 杭州银行 */
+.pay-bank.gcb { background-position: 0 -750px; }
+
+/* 24 广州银行 */
+.pay-bank.fjnx { background-position: 0 -780px; }
+
+/* 25 福建农商银行 */
+.pay-bank.hangseng { background-position: 0 -810px; }
+
+/* 26 恒生银行 */
+.pay-bank.tzb { background-position: 0 -840px; }
+
+/* 27 台州银行 */
+.pay-bank.s .icbc { width: 107px; }
+
+/* 01 中国工商银行 */
+.pay-bank.s .cmb { width: 89px; }
+
+/* 02 招商银行 */
+.pay-bank.s .ccb { width: 116px; }
+
+/* 03 中国建设银行 */
+.pay-bank.s .abc { width: 111px; }
+
+/* 04 中国农业银行 */
+.pay-bank.s .boc { width: 72px; }
+
+/* 05 中国银行 */
+.pay-bank.s .cmbc { width: 99px; }
+
+/* 06 中国民生银行 */
+.pay-bank.s .ceb { width: 112px; }
+
+/* 07 中国光大银行 */
+.pay-bank.s .spdb { width: 72px; }
+
+/* 09 浦发银行 */
+.pay-bank.s .spabank { width: 104px; }
+
+/* 10 平安银行 */
+.pay-bank.s .cib { width: 107px; }
+
+/* 11 兴业银行 */
+.pay-bank.s .bjbank { width: 98px; }
+
+/* 12 北京银行 */
+.pay-bank.s .citic { width: 91px; }
+
+/* 13 中信银行 */
+.pay-bank.s .gdb { width: 115px; }
+
+/* 14 广发银行 */
+.pay-bank.s .psbc { width: 119px; }
+
+/* 15 中国邮政储蓄银行 */
+.pay-bank.s .jsbank { width: 98px; }
+
+/* 16 江苏银行 */
+.pay-bank.s .hxbank { width: 88px; }
+
+/* 17 华夏银行 */
+.pay-bank.s .shbank { width: 77px; }
+
+/* 18 上海银行 */
+.pay-bank.s .bohaib { width: 101px; }
+
+/* 19 渤海银行 */
+.pay-bank.s .hkbea { width: 114px; }
+
+/* 20 东亚银行 */
+.pay-bank.s .nbbank { width: 74px; }
+
+/* 21 宁波银行 */
+.pay-bank.s .czbank { width: 85px; }
+
+/* 22 浙商银行 */
+.pay-bank.s .hzcb { width: 71px; }
+
+/* 23 杭州银行 */
+.pay-bank.s .gcb { width: 85px; }
+
+/* 24 广州银行 */
+.pay-bank.s .fjnx { width: 94px; }
+
+/* 25 福建农商银行 */
+.pay-bank.s .hangseng { width: 97px; }
+
+/* 26 恒生银行 */
+.pay-bank.s .tzb { width: 100px; }
+
+/* 27 台州银行 */
+/*第三方支付*/
+/* 银行 & 第三方支付 Steven 2016-9-4 */
+.pay-third { width: 125px; display: inline-block; height: 30px; vertical-align: middle; background: url(../themes/images/pay-third.png) right top no-repeat; zoom: .8; margin-left: -3px; }
+
+.pay-third.sm { background: url(images/pay-third-x.png) left top no-repeat; }
+
+.sm.unionpay, .sm.chinaums, .sm.bill99, .sm.chinapnr, .sm.reapal, .sm.dinpay, .sm.kjt, .sm.mobao, .sm.upay, .sm.onecodepay { width: 50px; }
+
+/* 第三方支付 */
+.pay-third.else { background-position: 0 -0; }
+
+/* 其他 */
+.pay-third.select { background-position: 0 -30px; }
+
+/* 请选择 */
+.pay-third.alipay, .pay-third.mobao_zfb, .pay-third.rfupay_zfb, .pay-third.tonghui_zfb, .pay-third.ybpay_zfb, .pay-third.jinanpay_zfb, .pay-third.allscore_s_zfb { background-position: 0 -60px; }
+
+/* 01 支付宝 & 魔宝-支付宝 & 通汇-支付宝 & 金安付-支付宝 &银宝-支付宝&商银信-扫码支付-支付宝*/
+.pay-third.wechatpay, .pay-third.dinpay_wx, .pay-third.mobao_wx, .pay-third.jiupay_wx, .pay-third.rfupay_wx, .pay-third.tonghui_wx, .pay-third.ybpay_wx, .pay-third.jinanpay_wx, .pay-third.allscore_s_wx { background-position: 0 -90px; }
+
+/* 02 微信 & 智付-微信 &  魔宝-微信 & 久付-微信 & 锐付-微信 & 通汇-微信 & 金安付-微信 &银宝-微信& &商银信-扫码支付-微信*/
+.pay-third.tenpay { background-position: 0 -120px; }
+
+/* 03 财付通 */
+.pay-third.unionpay { background-position: 0 -150px; }
+
+/* 04 银联在线 */
+.pay-third.chinaums { background-position: 0 -180px; }
+
+/* 05 银联商务 */
+.pay-third.bill99 { background-position: 0 -210px; }
+
+/* 06 快钱 */
+.pay-third.chinapnr { background-position: 0 -240px; }
+
+/* 07 汇付天下 */
+.pay-third.yeepay { background-position: 0 -270px; }
+
+/* 08 易宝支付 */
+.pay-third.baofoo { background-position: 0 -300px; }
+
+/* 09 宝付 */
+.pay-third.ips, .pay-third.ips_3, .pay-third.ips_7 { background-position: 0 -330px; }
+
+/* 10 环迅支付 */
+.pay-third.gopay { background-position: 0 -360px; }
+
+/* 11 国付宝 */
+.pay-third.allinpay { background-position: 0 -390px; }
+
+/* 12 通联支付 */
+.pay-third.lakala { background-position: 0 -420px; }
+
+/* 13 拉卡拉 */
+.pay-third.paypal { background-position: 0 -450px; }
+
+/* 14 PayPal */
+.pay-third.reapal { background-position: 0 -480px; }
+
+/* 15 融宝 */
+.pay-third.bbpay, .pay-third.bbpay_old, .pay-third.bbpay_new { background-position: 0 -510px; }
+
+/* 16 币币支付 */
+.pay-third.dinpay { background-position: 0 -540px; }
+
+/*17 智付 */
+.pay-third.ecpss { background-position: 0 -570px; }
+
+/* 19 汇潮支付 */
+.pay-third.kjt { background-position: 0 -600px; }
+
+/* 20 快捷通 */
+.pay-third.mobao { background-position: 0 -630px; }
+
+/* 21 摩宝 */
+.pay-third.jiupay { background-position: 0 -660px; }
+
+/* 22 久付支付 */
+.pay-third.rfupay { background-position: 0 -690px; }
+
+/* 23 锐付支付 */
+.pay-third.tonghui { background-position: 0 -720px; }
+
+/* 24 通汇卡 */
+.pay-third.bitcoin, .pay-third.BTC { background-position: 0 -781px; }
+
+/* 25 比特币 */
+.pay-third.qqwallet { background-position: 0 -818px; }
+
+/* 25 QQ钱包 */
+.pay-third.zhihpay { background-position: 0 -859px; }
+
+/* 26 智汇付 */
+.pay-third.upay { background-position: 0 -896px; }
+
+/* 27 优贝支付 */
+.pay-third.onecodepay { background-position: 0 -936px; }
+
+/* 28 1码付 */
+.pay-third.bdwallet { background-position: 0 -974px; }
+
+/* 29 百度钱包 */
+.pay-third.jdwallet { background-position: 0 -1011px; }
+
+/* 30 京东钱包 */
+/* 取款样式  */
+body.withdraw header { background: #1766bb; }
+body.withdraw .mui-content { background: #f2f2f2; }
+body.withdraw .account_tab { width: 162px; margin: 10px auto; }
+body.withdraw .account_tab .mui-segmented-control { font-size: 12px; }
+body.withdraw .account_tab .mui-segmented-control .mui-control-item { border-color: #1766bb; border-left: 1px solid #1766bb; }
+body.withdraw .account_tab .mui-segmented-control .mui-control-item.mui-active { background-color: #1766bb; color: #fff; }
+body.withdraw .account_tab .mui-segmented-control { border: 1px solid #1766bb; }
+body.withdraw .account_tab .mui-segmented-control .mui-control-item { color: #1766bb; }
+body.withdraw .account_tab .mui-segmented-control .mui-control-item:first-child { border-left-width: 0; }
+body.withdraw .pay-bank.bitcoin { background: url(./images/bit_pay.png) no-repeat 4px 5px/26px; height: 40px; width: 40px; }
+body.withdraw .gb-bindcard-box.bit-pay .mui-input-row label { width: 100%; }
+body.withdraw .gb-bindcard-box.bit-pay .mine-form .mui-input-row > label small { position: static; white-space: normal; right: 15px; line-height: 10px; font-size: 10px; }
+body.withdraw .gb-bindcard-box.bit-pay .bit-address { border: 1px solid #e2e2e2; width: 100%; float: none; padding: 10px 0; background: #f2f2f2; text-align: left; text-indent: 10px; }
+body.withdraw .gb-bindcard-box.bit-pay .input-wra { padding: 0 10px; }
+body.withdraw .gb-bindcard-box.bit-pay .mui-input-group .mui-input-row:after { content: none; }
+body.withdraw .gb-bindcard-box.bit-pay .gb-form-foot { overflow: hidden; }
+body.withdraw .gb-bindcard-box.bit-pay .gb-form-foot .mui-col-xs-6 { padding: 0 5px; }
+body.withdraw .gb-bindcard-box.bit-pay .gb-form-foot .btn-reset { color: #000; border: 1px solid #e2e2e2; background-color: #e2e2e2 !important; width: 100%; padding: 10px 12px; font-size: 13px; }
+body.withdraw .gb-bindcard-box.status-success .close { color: #999; position: absolute; right: 0; top: 0; z-index: 1000; font-weight: bold; }
+body.withdraw .gb-bindcard-box.status-success .cont { padding-top: 24px; background: #fff; padding-bottom: 20px; }
+body.withdraw .gb-bindcard-box.status-success { top: 140px; border: 1px solid #e2e2e2; left: 50px; right: 50px; width: auto; }
+body.withdraw .gb-bindcard-box.status-success .mui-row { height: 30px; line-height: 30px; text-align: center; font-size: 12px; color: #999; }
+body.withdraw .gb-bindcard-box.status-success .mui-row.las { background: #f2f2f2; }
+body.withdraw .gb-bindcard-box.status-success .des { text-align: center; font-size: 12px; color: #999; padding: 20px 0; }
+body.withdraw .gb-bindcard-box.status-success .btn-return-home { display: block; width: 70px; text-align: center; line-height: 23px; height: 23px; margin: 0 auto; border: 1px solid #1766bb; font-size: 12px; color: #1766bb; border-radius: 4px; }
+body.withdraw .gb-bindcard-box.bank-car, body.withdraw .gb-bindcard-box.bit-pay { top: 30px; left: 10px; right: 10px; width: auto; }
+body.withdraw .bit_bind_wrap { margin: 10px 0; padding: 0 10px; background: #fff; }
+body.withdraw .bit_bind_wrap .tit { padding-top: 25px; font-size: 14px; padding-bottom: 5px; }
+body.withdraw .bit_bind_wrap .sub_tit { color: #666; font-size: 12px; }
+body.withdraw .bit_bind_wrap input.bit_input { background: #f2f2f2; font-size: 14px; }
+body.withdraw .bit_bind_wrap .btn_wrap { overflow: hidden; padding-bottom: 30px; padding-top: 20px; }
+body.withdraw .bit_bind_wrap .btn_wrap .mui-col-xs-6 { padding: 0 5px; }
+body.withdraw .bit_bind_wrap .btn_wrap .btn_reset, body.withdraw .bit_bind_wrap .btn_wrap .btn_bind { width: 100%; height: 40px; line-height: 40px; padding: 0; }
+body.withdraw .bit_bind_wrap .btn_wrap .btn_reset { background: #e2e2e2; border-color: #e2e2e2; }
+body.withdraw .bit_bind_wrap .btn_wrap .btn_bind { background: #1766bb; border-color: #1766bb; color: #fff; }
+body.withdraw .gb-bindcard-box.bit_addr .cont { background: #fff; margin: 0 30px; border: 1px solid #e2e2e2; }
+body.withdraw .gb-bindcard-box.bit_addr .close { color: #fff; position: absolute; right: 0; top: -70px; }
+body.withdraw .gb-bindcard-box.bit_addr { top: 90px; }
+body.withdraw .gb-bindcard-box.bit_addr .tit { text-align: center; padding: 30px 0; }
+body.withdraw .gb-bindcard-box.bit_addr .bit_addr_txt { text-align: center; font-size: 14px; color: #999; margin-bottom: 5px; }
+body.withdraw .gb-bindcard-box.bit_addr .bit_addr_code { font-size: 14px; color: #333; text-align: center; padding: 0 5px; }
+body.withdraw .gb-bindcard-box.bit_addr .btn_wrap { overflow: hidden; padding: 30px 20px; }
+body.withdraw .gb-bindcard-box.bit_addr .btn_wrap .mui-col-xs-6 { padding: 0 5px; }
+body.withdraw .gb-bindcard-box.bit_addr .btn_wrap .btn_cancel, body.withdraw .gb-bindcard-box.bit_addr .btn_wrap .btn_submit { width: 100%; height: 40px; line-height: 40px; padding: 0; }
+body.withdraw .gb-bindcard-box.bit_addr .btn_wrap .btn_cancel { background: #e2e2e2; border-color: #e2e2e2; }
+body.withdraw .gb-bindcard-box.bit_addr .btn_wrap .btn_submit { background: #1766bb; border-color: #1766bb; color: #fff; }
+body.withdraw .mine-form .bankitem > span { display: inline-block; padding: 8px 15px; color: #333; font-size: 12px; line-height: 30px; float: left; }
+body.withdraw .mine-form .mui-input-row > label { color: #333; font-size: 12px; line-height: 18px; position: relative; }
+body.withdraw .mine-form .bankitem p { color: #999; text-align: right; line-height: 30px; padding: 8px 10px; }
+body.withdraw .mine-form .mui-input-row > .ct { width: 65%; float: right; text-align: right; padding-right: 10px; font-size: 12px; }
+body.withdraw .mine-form p { font-size: 12px; margin-bottom: 0; color: #333; }
+body.withdraw .mine-form p.text-gray { color: #aeaeae; }
+body.withdraw .gb-form-foot { padding: 10px; }
+body.withdraw .gb-form-foot .text p { color: #333; font-size: 12px; }
+body.withdraw .gb-form-foot .text p a { color: #333; display: block; padding: 0 10px 5px; }
+body.withdraw .gb-form-foot .submit { width: 100%; padding: 10px 12px; font-size: 13px; }
+body.withdraw .gb-form-foot .submit { border: 1px solid #1766bb; background-color: #1766bb !important; }
+body.withdraw .gb-theme .mui-input-row label { white-space: nowrap; text-overflow: ellipsis; }
+body.withdraw .mine-form .mui-input-row > label small { position: absolute; top: 24px; left: 15px; color: #999999; font-size: 8px; }
+body.withdraw .mine-form .mui-input-row > .ct input { font-size: 12px; color: #999; }
+body.withdraw .mine-form input { width: 100%; text-align: right; font-size: 12px; padding-right: 0; }
+body.withdraw .gb-select > a { display: inline-block; font-size: 12px; color: #999; }
 
 /*# sourceMappingURL=common.css.map */
