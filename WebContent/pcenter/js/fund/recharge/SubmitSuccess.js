@@ -10,6 +10,12 @@ define(['common/BasePage'], function (BasePage) {
          */
         init: function () {
             this._super("form");
+            if ($("p#failMsg").length > 0) {
+                var msg = window.top.onlineFailMsg;
+                if (msg) {
+                    $("p#failMsg").text(msg);
+                }
+            }
         },
         /**
          * 再存一次
