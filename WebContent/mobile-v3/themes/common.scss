@@ -30,6 +30,9 @@ header{
 .m-t-sm {
     margin-top: 10px!important;
 }
+.m-r-sm {
+    margin-right: 10px!important;
+}
 .mui-bar .mui-icon:active{opacity: 1;}
     .yjym{    text-align: center;
     height: 20px;
@@ -2307,3 +2310,117 @@ body.bankcard{
         margin-left: 5px;
     }  
 }
+/* 数字货币存款 */
+body.online-pay-sz{
+     header{background: #1766bb;}
+    .mui-content{background: #f2f2f2;}
+    .bank-selector {
+        padding: 10px 0;
+    }
+    .bank-selector >.ct {
+        padding: 0 10px;
+        a {
+            display: block;
+            height: 30px;
+            border: 1px solid #e2e2e2;
+            border-radius: 3px;
+            line-height: 28px;
+            text-align: center;
+            color: #333;
+            font-size: 12px;
+            position: relative;
+            margin: 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            &.active {
+                border-color: #1766bb;
+                &:before {
+                    display: block;
+                }
+            }
+            &:before {
+                content: '';
+                width: 16px;
+                height: 16px;
+                background: url(./images/ex-check.png);
+                background-size: cover;
+                position: absolute;
+                top: 0;
+                right: 0;
+                display: none;
+            }
+        }
+    }
+    .bank-selector >.ct ul {
+        margin: 0 -5px;padding: 0;
+        li {
+            float: left;line-height: 0;
+            width: 33.33%;
+        }
+    }
+    .xzzf-wrap .title-wrap .logo{height: 30px; vertical-align: middle;margin-left: 10px;}
+    .xzzf-wrap .title-wrap .title{margin-left: 10px;color:#000;vertical-align: top;display: inline-block;max-width: 90px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+    .xzzf-wrap .title-wrap span{font-size: 14px;}
+    
+    .xzzf-wrap .title-wrap .ye-num{vertical-align: top; display:inline-block;max-width: 100px; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+    
+    .xzzf-wrap .mui-input-row .mui-btn{width: auto;padding: 6px 12px;line-height: initial;margin: 4px 0 0 5px;}
+    .xzzf-wrap .mui-input-row:after{left: 0;}
+    .xzzf-wrap .mui-input-row .list-xzzf{text-align: center;padding: 0 15px;}
+    .xzzf-wrap .mui-input-row .list-xzzf .info{margin-top: -15px;}
+    .xzzf-wrap .mui-input-row .list-xzzf .textarea{background: #eeeeee;border: 1px solid #ddd;margin-top: 11px;}
+    .mui-active .gb-withdraw-box{display: block;}
+    .d-none {display: none;}
+    .d-none.mui-active{display: block;}
+    .pro-selec{background-color: #efefef;}
+    .gb-bankcard>.ct>p>span{word-wrap: break-word;}    
+    .mine-form .mui-input-row {
+        height: auto;    color: #000;
+    }
+    .mine-form p {
+        font-size: 12px;
+        margin-bottom: 0;
+        color: #333;
+    }
+    .gb-form-foot .submit {
+        border: 1px solid #1766bb;
+        background-color: #1766bb !important;
+    }
+    .gb-form-foot .submit {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    .gb-form-foot {
+        padding: 10px;
+    }
+    .mui-content{padding-bottom: 0 !important;}
+}
+/* 404,605,606,607 */
+body.p404,body.p605,body.p606,body.p607{ 
+     header{background: #1766bb;}
+    .mui-content{background: #32374f;padding-bottom: 0 !important;}
+    .gb-error, .gb-error p {
+        color: #fff;
+    }
+}
+body.p607{
+    .gb-error .gb-time {
+        text-align: center;
+        width: 200px;
+        margin: 20px auto;
+        background-color: rgba(255, 255, 255, .1);
+        border: 1px solid #fff;
+        padding: 10px 20px;
+    }
+}
+.no-data-img {background-size: 14.75rem 9.6rem; width: 14.75rem; height: 7.7rem; margin-left: auto; margin-right: auto; margin-top: 3.875rem; background-repeat: no-repeat;}
+.no-data-txt{text-align: center;margin: 0.9rem 0;font-size: 1rem;color: #f1efef;}
+.no-data-txt-2{font-size: 12px;text-align: center; max-width: 330px; margin: 0 auto;color: #f1efef;padding: 0 10px;}
+.no-record { background-image: url(../images/error/no-record.png); }
+.no-network { background-image: url(../images/error/no-network.png); }
+.no-notice { background-image: url(../images/error/no-notice.png); }
+.no-mail { background-image: url(../images/error/no-mail.png); }
+.no-data { background-image: url(../images/error/no-data.png); }
+.kick-out { background-image: url(../images/error/kick-out.png); }
