@@ -5025,3 +5025,17 @@ input[type=number]::-webkit-outer-spin-button {
 .msg.msg-warning{}
 .msg.msg-warning:before{content: "\f06a";color: #ea9101;}
 .msg .msg-description{display: inline-block;vertical-align: middle;}
+
+/*站长中心 - 资金 - 玩家取款审核，增加易收付出款项*/
+.ck-info{width: 90%;margin: 0 auto;padding: 10px 20px 10px;}
+.warning-img-wrap{background-color: #f3f3f3;padding: 10px 10px 5px}
+.warning-imgs{width: 50px;height: 50px;margin:  0 auto;}
+
+.ysf-remittance li{margin: 10px 0; }
+.start-or{margin-right: 30px;}
+.text-align{ display: inline-block; width: 50px; text-align: justify; text-align-last:justify; margin-right: 30px; color: #3d4346;  font-weight: initial!important;font-style: normal; }
+.m-l-24{margin-left:24px }
+.star{ font-style: normal; color: red; margin-right: 20px; }
+.form-inline select{ width: 155px; outline: none; }
+#SellerNum,#PlatformNum,#EncryptionKey{ width: 270px; height:30px;color: #000 }
+.text-i-10{ text-indent: 10px; }
