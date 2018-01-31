@@ -1758,8 +1758,6 @@
             dataType: "json",
             data:{activityMessageId:id},
             success: function(data){
-                console.log(data.nextLotteryTime);
-                console.log(data.drawTimes);
                 $(".hongbao-msg-tips").show();
                 if(data.drawTimes&&data.drawTimes>0){
                     $(".hongbao").removeClass('disabled');
