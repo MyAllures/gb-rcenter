@@ -63,12 +63,9 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                 url: root+'/fund/deposit/company/doStatistics.html',
                 type:'POST',
                 data: data,
-                dataType: "html",
-                headers: {
-                    "Soul-Requested-With":"XMLHttpRequest"
-                },
+                dataType: "json",
                 success: function (data) {
-                    var json = JSON.parse(data);
+                    var json = data;
                     if(json.isTodaySales){
                         $("#todayTotal",_this.formSelector).text(json.todayTotal);
                         $("#totalSumTarget",_this.formSelector).parent().parent().hide();
