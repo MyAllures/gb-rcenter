@@ -87,9 +87,6 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
          * @returns {boolean}
          */
         uploadFile: function (e, opt) {
-            if (!this.validateForm(e)) {
-                return false;
-            }
             var id= $("[name='siteBillTemplateId']").val();
             var temp = $("[name='result.id']").val();
             var tempid;
