@@ -97,7 +97,7 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
          */
         gameMaintainMsg: function (apiId) {
             _this = this;
-            if (apiId == null && (typeof apiId !== 'undefined')) {
+            if (apiId == null || (typeof apiId == 'undefined')) {
                 _this.openLayer(window.top.message.game_auto['游戏维护中']);
                 return;
             }
