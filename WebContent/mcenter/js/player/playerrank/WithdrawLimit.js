@@ -142,7 +142,6 @@ define(['common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], function (
                 if (state) {
                     $("#withdrawTimeLimitDiv").attr("style","display:none");
                     $("#withdrawTimeLimit").attr("disabled", "disabled");
-                    // $("#withdrawTimeLimit").val("");
                 } else {
                     $("#withdrawTimeLimitDiv").attr("style","display:block");
                     $("#withdrawTimeLimit").removeAttr("disabled");
@@ -322,6 +321,17 @@ define(['common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], function (
                             $("#withdrawAdminCost").val(data.result.withdrawAdminCost);
                             $("#withdrawRelaxCredit").val(data.result.withdrawRelaxCredit);
                             $("#withdrawDiscountAudit").val(data.result.withdrawDiscountAudit);
+                            //复制０点重置按钮
+                            if (data.result.isWithdrawFeeZeroReset) {
+                                $("#isWithdrawFeeZeroReset").bootstrapSwitch('state', true, true);
+                                $("#withdrawTimeLimitDiv").attr("style","display:none");
+                                $("#withdrawTimeLimit").attr("disabled", "disabled");
+                            } else {
+                                $("#withdrawTimeLimitDiv").attr("style","display:block");
+                                $("#withdrawTimeLimit").removeAttr("disabled");
+                                $("#withdrawTimeLimit").val(data.result.withdrawTimeLimit);
+                                $("#isWithdrawFeeZeroReset").bootstrapSwitch('state', false, false);
+                            }
                         }
                     });
                 } else {
