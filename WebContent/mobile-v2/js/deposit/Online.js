@@ -147,8 +147,8 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
 
                 var selectBank = document.getElementById('selectBank');
                 selectBank.addEventListener('tap', function (event) {
+                    $("input[name='result.rechargeAmount']").blur();
                     bankPick.show(function (items) {
-                        $("input[name='result.rechargeAmount']").blur();
                         var item = items[0];
                         document.getElementById('result.payerBank').value = item.value;
                         document.getElementById('selectText').innerHTML = item.text;
