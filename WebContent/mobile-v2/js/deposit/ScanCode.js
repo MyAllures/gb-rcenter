@@ -160,7 +160,6 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                 if (!randomCash) {
                     randomCash = 0;
                 }
-                account
                 mui.ajax(root + '/wallet/deposit/online/scan/submit.html', {
                     data: {
                         "result.rechargeAmount": rechargeAmount,
