@@ -1350,7 +1350,7 @@
         var password = $('[name=password]',$form).val().trim();
         if(password.length<6){
             alert("The length of the password should not be less than 6 bits!");
-            backlogin();
+            cancelVerify();
             return;
         }
         if($('[name=username]',$form).val().trim() && password){
@@ -1408,24 +1408,92 @@
     /**
      * 老玩家姓名验证登录
      * */
-    var realNameVerifyDialog;
     function openVerify(data) {
-        realNameVerifyDialog = BootstrapDialog.show({
-            draggable: false,
-            title:'Prompt message',
-            closable: false,
-            type: BootstrapDialog.TYPE_WARNING,
-            message: function(dialog) {
-                var $message = $('<div class="agreement" style="height: 200px;weight: 300px;"></div>');
-                var pageToLoad = dialog.getData('pageToLoad');
-                $message.load(pageToLoad);
-                return $message;
-            },
-            data: {
-                'pageToLoad': '/passport/verify/toVerifyRealName.html?search.playerAccount='+data.username+'&tempPass='+data.password
+        $.ajax({
+            url: '/passport/verify/toVerifyRealName.html?search.playerAccount='+data.username+'&tempPass='+data.password,
+            dataType: 'html',
+            type: 'POST',
+            success: function(data) {
+                layer.open({
+                    time:0,
+                    content:data,
+                    title:'提示消息',
+                    area:["600px"],
+                    btn:["确定","取消"],
+                    yes:function (index, layero) {
+                        verify(index);
+                    },btn2: function(index, layero){
+                        cancelVerify();
+                        layer.close(index);
+                    },
+                    success: function(layer){
+                        // 重写关闭按钮
+                        $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                        // 提示框类型
+                        $(layer).addClass("normal-dialog");
+                    }
+                });
             }
         });
     }
+
+    function verify(index) {
+        $.ajax({
+            url: '/passport/verify/verifyRealName.html',
+            dataType: 'JSON',
+            type: 'POST',
+            async: false,
+            data: $(".form-horizontal").serialize(),
+            success: function (data) {
+                // 验证真实姓名通过
+                if (data.nameSame) {
+                    importPlayer(index)
+                } else {
+                    cancelVerify();
+                    alert(window.top.message.newi18n['真实姓名与账号不匹配']);
+                }
+            },
+            error: function (data) {
+                cancelVerify();
+                alert("验证失败")
+            }
+        })
+    };
+
+    /** 提交并导入账号 */
+    function importPlayer(index) {
+        $.ajax({
+            url: '/passport/verify/importOldPlayerNew.html',
+            dataType: 'JSON',
+            type: 'POST',
+            data: $(".form-horizontal").serialize(),
+            success: function (data) {
+                if (data) {
+                    $("._vr_login").trigger("click");
+                    layer.close(index);
+                } else {
+                    alert(window.top.message.newi18n['请稍后']);
+                }
+            },
+            error: function (data) {
+                cancelVerify();
+                alert(data);
+            }
+        })
+    };
+
+    function cancelVerify() {
+        $("._vr_login").removeAttr("style");
+        if (current_language == "zh_CN") {
+            $("._vr_login").text("立即登录");
+        } else if (current_language == "zh_TW") {
+            $("._vr_login").text("立即登錄");
+        } else if (current_language == "en_US") {
+            $("._vr_login").text("login");
+        } else if (current_language == "ja_JP") {
+            $("._vr_login").text("ログイン");
+        }
+    };
 
     function dropdownOpen() {
         var $dropdownLi = $('._vr_loginSuccess .dropdown');
