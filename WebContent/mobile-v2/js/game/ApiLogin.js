@@ -96,7 +96,7 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
          * @param apiId
          */
         gameMaintainMsg: function (apiId) {
-            _this = this;
+            var _this = this;
             if (apiId == null || (typeof apiId == 'undefined')) {
                 _this.openLayer(window.top.message.game_auto['游戏维护中']);
                 return;
@@ -107,12 +107,8 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
                 type: "POST",
                 success: function (data) {
                     _this.openLayer(
-                        window.top.message.game_auto['尊敬的客户']
-                        + "<br>  &nbsp;&nbsp;&nbsp;&nbsp;"
-                        + data.gameName
-                        + window.top.message.game_auto['平台将于北京时间']
-                        + data.maintainStartTime + "-" + data.maintainEndTime
-                        + window.top.message.game_auto['进行维护']);
+                        _this.formatStr(window.top.message.game_auto['尊敬的客户'], data.gameName, data.maintainStartTime, data.maintainEndTime)
+                    );
                 }
             });
         },
