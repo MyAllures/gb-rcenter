@@ -15,6 +15,10 @@ header.mui-bar-nav .mui-icon-bars { font-weight: bold; }
 
 .m-r-sm { margin-right: 10px !important; }
 
+ul { padding-left: 0; margin: 0; }
+
+li { list-style: none; }
+
 .mui-bar .mui-icon:active { opacity: 1; }
 
 .yjym { text-align: center; height: 20px; line-height: 19px; font-size: 13px; }
@@ -384,7 +388,7 @@ body.deposit .mine-form-nobg { background-color: transparent; border-top: 1px so
 body.deposit .mine-form-nobg:before { display: none; }
 body.deposit .mine-form-nobg:after { display: none; }
 body.deposit .mine-form-nobg .mui-icon-reload { color: #666666 !important; font-size: 18px; }
-body.deposit .modes-payment > .ct a i.pay { background: url(images/pay_bank_b.png) no-repeat; background-size: 25px; display: inline-block; width: 26px; height: 20px; vertical-align: middle; }
+body.deposit .modes-payment > .ct a i.pay { background: url(images/pay_bank_b.png) no-repeat; background-size: 25px; margin-right: 5px; display: inline-block; width: 26px; height: 20px; vertical-align: middle; }
 body.deposit .modes-payment > .ct a i.pay.unionpay { background-position: 3px -3px; }
 body.deposit .modes-payment > .ct a i.pay.wechatpay { background-position: 0px -26px; }
 body.deposit .modes-payment > .ct a i.pay.alipay { background-position: 0px -48px; }
@@ -402,6 +406,7 @@ body.deposit .modes-payment > .ct a i.pay.hxbank { background-position: 3px -295
 body.deposit .modes-payment > .ct a i.pay.psbc { background-position: 3px -319px; }
 body.deposit .modes-payment > .ct a i.pay.spdb { background-position: 0px -340px; }
 body.deposit .modes-payment > .ct a i.pay.bitcoin { background-position: 3px -364px; }
+body.deposit .modes-payment > .ct a i.pay.digitalc { background-position: 3px -880px; }
 body.deposit .modes-payment > .ct a i.pay.qrcodepay { background-position: 3px -386px; }
 body.deposit .modes-payment > .ct a i.pay.cmbc { background-position: 3px -405px; }
 body.deposit .modes-payment > .ct a i.pay.comm { background-position: 3px -435px; }
@@ -665,7 +670,7 @@ body.no-backdrop .mui-backdrop { background-color: transparent !important; }
 .pay-bank.icbc { background-position: 0 -60px; }
 
 /* 01 中国工商银行 */
-.pay-bank.cmb { background-position: 0 -90px; }
+.pay-bank.cmb { background-position: 0 -90px; width: 100px; }
 
 /* 02 招商银行 */
 .pay-bank.ccb { background-position: 0 -120px; }
@@ -823,7 +828,7 @@ body.no-backdrop .mui-backdrop { background-color: transparent !important; }
 /* 27 台州银行 */
 /*第三方支付*/
 /* 银行 & 第三方支付 Steven 2016-9-4 */
-.pay-third { width: 125px; display: inline-block; height: 30px; vertical-align: middle; background: url(../themes/images/pay-third.png) right top no-repeat; zoom: .8; margin-left: -3px; }
+.pay-third { width: 125px; display: inline-block; height: 30px; vertical-align: middle; background: url(./images/pay-third.png) right top no-repeat; zoom: .8; margin-left: -3px; }
 
 .pay-third.sm { background: url(images/pay-third-x.png) left top no-repeat; }
 
@@ -926,6 +931,13 @@ body.no-backdrop .mui-backdrop { background-color: transparent !important; }
 .pay-third.jdwallet { background-position: 0 -1011px; }
 
 /* 30 京东钱包 */
+/* 按钮  */
+.gb-form-foot { padding: 10px; }
+
+.gb-form-foot .submit { border: 1px solid #1766bb; background-color: #1766bb !important; }
+
+.gb-form-foot .submit { width: 100%; padding: 10px 12px; font-size: 13px; }
+
 /* 取款样式  */
 body.withdraw header { background: #1766bb; }
 body.withdraw .mui-content { background: #f2f2f2; }
@@ -1135,5 +1147,268 @@ body.p607 .gb-error .gb-time { text-align: center; width: 200px; margin: 20px au
 .no-data { background-image: url(../images/error/no-data.png); }
 
 .kick-out { background-image: url(../images/error/kick-out.png); }
+
+/* forget */
+body.forget { color: #000; }
+body.forget header { background: #1766bb; }
+body.forget .mui-content { background: #f2f2f2; }
+body.forget .mine-form input { width: 100%; text-align: right; font-size: 12px; padding-right: 0; }
+body.forget .mine-form .form-row > .cont { padding: 0 10px 0 15px; }
+body.forget .mine-form .form-row > .cont input[type="text"] { height: 39px; border: none; width: 100%; background: none no-repeat 0 50%; padding-left: 30px; text-align: left; }
+body.forget .mine-form .form-row > .cont input[type="text"].ico3 { background-image: url(../images/ico-mail.png); background-position-x: 0; background-size: 18px auto; }
+
+/* audit */
+body.audit { color: #000; }
+body.audit header { background: #1766bb; }
+body.audit .mui-content { background: #f2f2f2; }
+body.audit .mine-table-wrapper .mine-table { width: auto; margin-top: 10px; }
+body.audit .mine-table table { width: 100%; background-color: #353741; border: 1px solid #efeff4; }
+body.audit .mine-table table tr { border-bottom: 1px solid #f2f2f2; }
+body.audit .mine-table table tr td { padding: 5px; color: #fff; font-size: 10px; line-height: 16px; text-align: center; }
+body.audit .mine-table table tr.head td { background-color: #e2e2e2; border: 1px solid #dedede !important; vertical-align: top; color: #333; }
+body.audit .mine-table-wrapper .mui-scroll-wrapper { height: auto; overflow: visible; }
+body.audit .mine-table-wrapper .mui-scroll-wrapper .mui-scroll { height: auto; }
+body.audit .mui-slider-indicator.mui-segmented-control table tr td { border: 1px solid #dedede !important; }
+body.audit .mine-table .text-red { color: #f00; }
+body.audit .mine-table .text-green { color: #4ec545; }
+
+/* bit-wallet */
+.bit-wallet { color: #000; }
+.bit-wallet header { background: #1766bb; }
+.bit-wallet .mui-content { background: #f2f2f2; }
+.bit-wallet .bit_bind_wrap { margin: 10px 0; padding: 0 10px; background: #fff; }
+.bit-wallet .bit_bind_wrap .tit { padding-top: 25px; font-size: 14px; padding-bottom: 5px; }
+.bit-wallet .bit_bind_wrap .sub_tit { color: #666; font-size: 12px; }
+.bit-wallet .bit_bind_wrap input.bit_input { background: #f2f2f2; font-size: 14px; }
+.bit-wallet .bit_bind_wrap .btn_wrap { overflow: hidden; padding-bottom: 30px; padding-top: 20px; }
+.bit-wallet .bit_bind_wrap .btn_wrap .mui-col-xs-6 { padding: 0 5px; }
+.bit-wallet .bit_bind_wrap .btn_wrap .btn_reset, .bit-wallet .bit_bind_wrap .btn_wrap .btn_bind { width: 100%; height: 40px; line-height: 40px; padding: 0; }
+.bit-wallet .bit_bind_wrap .btn_wrap .btn_reset { background: #e2e2e2; border-color: #e2e2e2; }
+.bit-wallet .bit_bind_wrap .btn_wrap .btn_bind { background: #1766bb; border-color: #1766bb; color: #fff; }
+.bit-wallet .gb-bindcard-box.bit_addr .cont { background: #fff; margin: 0 30px; border: 1px solid #e2e2e2; }
+.bit-wallet .gb-bindcard-box.bit_addr .close { color: #fff; position: absolute; right: 0; top: -70px; }
+.bit-wallet .gb-bindcard-box.bit_addr { top: 90px; }
+.bit-wallet .gb-bindcard-box.bit_addr .tit { text-align: center; padding: 30px 0; }
+.bit-wallet .gb-bindcard-box.bit_addr .bit_addr_txt { text-align: center; font-size: 14px; color: #999; margin-bottom: 5px; }
+.bit-wallet .gb-bindcard-box.bit_addr .bit_addr_code { font-size: 14px; color: #333; text-align: center; padding: 0 5px; }
+.bit-wallet .gb-bindcard-box.bit_addr .btn_wrap { overflow: hidden; padding: 30px 20px; }
+.bit-wallet .gb-bindcard-box.bit_addr .btn_wrap .mui-col-xs-6 { padding: 0 5px; }
+.bit-wallet .gb-bindcard-box.bit_addr .btn_wrap .btn_cancel, .bit-wallet .gb-bindcard-box.bit_addr .btn_wrap .btn_submit { width: 100%; height: 40px; line-height: 40px; padding: 0; }
+.bit-wallet .gb-bindcard-box.bit_addr .btn_wrap .btn_cancel { background: #e2e2e2; border-color: #e2e2e2; }
+.bit-wallet .gb-bindcard-box.bit_addr .btn_wrap .btn_submit { background: #1766bb; border-color: #1766bb; color: #fff; }
+.bit-wallet .gb-bindcard-box { position: absolute; z-index: 1000; top: 90px; left: 0; width: 100%; }
+.bit-wallet .gb-bindcard-box.bit_addr .close { color: #fff; position: absolute; right: 0; top: -70px; }
+.bit-wallet .login-info { color: #fff; }
+
+/* changing-loginpassword */
+body.change-loginpassword { color: #000; }
+body.change-loginpassword header { background: #1766bb; }
+body.change-loginpassword .mui-content { background: #f2f2f2; }
+body.change-loginpassword .mine-form .mui-input-row > label { color: #333; font-size: 12px; line-height: 18px; position: relative; white-space: nowrap; text-overflow: ellipsis; }
+body.change-loginpassword .mine-form input { width: 100%; text-align: right; font-size: 12px; padding-right: 0; }
+body.change-loginpassword .mine-form .mui-input-row > .ct { width: 65%; float: right; text-align: right; padding-right: 10px; font-size: 12px; }
+body.change-loginpassword .mine-form .mui-input-row > .ct input { font-size: 12px; color: #999; }
+body.change-loginpassword .gb-stressed { padding-left: 15px; margin: 5px 0; }
+body.change-loginpassword .gb-stressed p { color: #999999; font-size: 12px; margin-bottom: 0; }
+body.change-loginpassword .gb-stressed p i { display: inline-block; width: 28px; height: 6px; background-color: #999999; border-radius: 3px; }
+body.change-loginpassword .gb-stressed p i.active { background-color: #1766bb; }
+
+/* mine-bet-detail */
+.mine-bet-detail { color: #000; }
+.mine-bet-detail header { background: #1766bb; }
+.mine-bet-detail .mui-content { background: #f2f2f2; padding-bottom: 0 !important; }
+.mine-bet-detail .mine-form .mui-input-row > label { color: #333; font-size: 12px; line-height: 18px; position: relative; white-space: nowrap; text-overflow: ellipsis; }
+.mine-bet-detail .mine-form .mui-input-row > .ct { width: 65%; float: right; text-align: right; padding-right: 10px; font-size: 12px; }
+.mine-bet-detail .mine-form p { font-size: 12px; margin-bottom: 0; color: #333; }
+.mine-bet-detail .mine-form p.text-gray { color: #aeaeae; }
+.mine-bet-detail .mine-form .mui-input-row { height: auto; }
+.mine-bet-detail .mine-form .panel { margin: 0 32px; border: 1px solid #e2e2e2; background-color: #f2f2f2; padding: 10px; border-radius: 3px; }
+.mine-bet-detail .mine-form .panel p { line-height: 20px; color: #333333; font-size: 12px; }
+.mine-bet-detail .mine-form .panel p .text { color: #999999; }
+
+/* cash-detail */
+body.cash-detail { color: #000; }
+body.cash-detail header { background: #1766bb; }
+body.cash-detail .mui-content { background: #f2f2f2; padding-bottom: 0 !important; }
+body.cash-detail .mine-form .mui-input-row > label { color: #333; font-size: 12px; line-height: 18px; position: relative; white-space: nowrap; text-overflow: ellipsis; }
+body.cash-detail .mine-form .mui-input-row > label.text-gray { color: #999; }
+body.cash-detail .mine-form .mui-input-row > .ct { width: 65%; float: right; text-align: right; padding-right: 10px; font-size: 12px; }
+body.cash-detail .mine-form p { font-size: 12px; margin-bottom: 0; color: #333; }
+body.cash-detail .gb-bankcard { width: 290px; margin: 10px auto 20px; border: 1px solid #e2e2e2; border-radius: 8px; background-color: #fff; }
+body.cash-detail .gb-bankcard > .hd { height: 32px; padding: 0 18px; line-height: 26px; border-bottom: 1px solid #f2f2f2; }
+body.cash-detail .gb-bankcard > .hd p { color: #333333; font-size: 12px; }
+body.cash-detail .gb-bankcard > .hd p i { display: inline-block; width: 24px; height: 9px; background-size: cover; vertical-align: text-top; }
+body.cash-detail .gb-bankcard > .hd p i.card1 { background-image: url(../images/bank-type1.png); }
+body.cash-detail .gb-bankcard > .ct { padding: 10px 7px 15px; }
+body.cash-detail .gb-bankcard > .ct > p { color: #333333; font-size: 19px; }
+body.cash-detail .gb-bankcard > .ct > .ct p { color: #333333; font-size: 12px; margin-bottom: 5px; text-align: left; }
+body.cash-detail .gb-bankcard > .ct > .ct p span { color: #999999; white-space: nowrap; padding-right: 5px; }
+body.cash-detail .gb-bankcard > .ct > .ct p font { width: 100%; }
+body.cash-detail .gb-bankcard > .ct > p a.copy, body.cash-detail .gb-bankcard > .ct > .ct p a.copy { float: right; background: #e0efff; padding: 0 5px; border-radius: 3px; color: #569ff1; font-size: 12px; white-space: nowrap; height: 22px; line-height: 22px; margin-left: 5px; }
+body.cash-detail .login-info { color: #fff; }
+
+/* exchange */
+body.exchange { color: #000; }
+body.exchange header { background: #1766bb; }
+body.exchange .mui-content { background: #f2f2f2; padding-bottom: 0 !important; }
+body.exchange .mine-form p { font-size: 12px; margin-bottom: 0; color: #333; }
+body.exchange .mine-form p.text-gray { color: #999; }
+body.exchange .mine-form p a { color: inherit; }
+body.exchange .mine-form .bankitem p { color: #999; text-align: right; padding: 8px 10px; }
+body.exchange .mine-form .mui-input-row > label { color: #333; font-size: 12px; line-height: 18px; position: relative; white-space: nowrap; text-overflow: ellipsis; }
+body.exchange .mine-form input { width: 100%; text-align: right; font-size: 12px; padding-right: 0; }
+body.exchange .gb-select > a { margin-right: 0; display: inline-block; font-size: 12px; color: #999; }
+body.exchange .gb-select > a .mui-icon { color: #7a7674 !important; font-size: 17px; vertical-align: middle; }
+body.exchange .mine-form .mui-input-row > .ct { width: 65%; float: right; text-align: right; padding-right: 10px; font-size: 12px; }
+body.exchange .mine-form .mui-input-row > .ct input { font-size: 12px; color: #999; }
+body.exchange .gb-withdraw-box > a { width: 20px; height: 20px; }
+
+/* exchange-account */
+body.exchange-account { color: #000; }
+body.exchange-account header { background: #1766bb; }
+body.exchange-account .mui-content { background: #f2f2f2; padding-bottom: 0 !important; }
+body.exchange-account .gb-panel { background-color: #ffffff; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; }
+body.exchange-account .gb-headtabs { margin: 11px auto; width: 60%; background-color: #fff; }
+body.exchange-account .gb-headtabs.span3 { width: 240px; }
+body.exchange-account .gb-headtabs .mui-segmented-control { overflow: visible; }
+body.exchange-account .gb-headtabs .mui-segmented-control .mui-control-item { line-height: 28px; color: #333; font-size: 12px; overflow: visible; position: relative; }
+body.exchange-account .gb-headtabs .mui-segmented-control .mui-control-item.mui-active { background: #1766bb; color: #fff; }
+body.exchange-account .gb-bankcard { width: 290px; margin: 10px auto 20px; border: 1px solid #e2e2e2; border-radius: 8px; background-color: #fff; }
+body.exchange-account .gb-bankcard > .hd { height: 32px; padding: 0 18px; line-height: 26px; border-bottom: 1px solid #f2f2f2; }
+body.exchange-account .gb-bankcard > .hd p { color: #333333; font-size: 12px; }
+body.exchange-account .gb-bankcard > .hd p i { display: inline-block; width: 24px; height: 9px; background-size: cover; vertical-align: text-top; }
+body.exchange-account .gb-bankcard > .hd p i.card1 { background-image: url(../images/bank-type1.png); }
+body.exchange-account .gb-bankcard > .ct { padding: 10px 7px 15px; }
+body.exchange-account .gb-bankcard > .ct > p { color: #333333; font-size: 19px; }
+body.exchange-account .gb-bankcard > .ct > .ct p { color: #333333; font-size: 12px; margin-bottom: 5px; text-align: left; }
+body.exchange-account .gb-bankcard > .ct > .ct p span { color: #999999; white-space: nowrap; padding-right: 5px; }
+body.exchange-account .gb-bankcard > .ct > .ct p font { width: 100%; }
+body.exchange-account .gb-bankcard > .ct > p a.copy, body.exchange-account .gb-bankcard > .ct > .ct p a.copy { float: right; background: #e0efff; padding: 0 5px; border-radius: 3px; color: #569ff1; font-size: 12px; white-space: nowrap; height: 22px; line-height: 22px; margin-left: 5px; }
+body.exchange-account .mine-form .mui-input-row > label { color: #333; font-size: 12px; line-height: 18px; position: relative; white-space: nowrap; text-overflow: ellipsis; }
+body.exchange-account .mine-form .mui-input-row > label span.small { color: #999; font-size: 9px; }
+body.exchange-account .mine-form input { width: 100%; text-align: right; font-size: 12px; padding-right: 0; }
+body.exchange-account .mine-form .mui-input-row > .ct { width: 65%; float: right; text-align: right; padding-right: 10px; font-size: 12px; }
+body.exchange-account .mine-form .mui-input-row > .ct .mine-form .mui-input-row > .ct input { font-size: 12px; color: #999; }
+
+/* exchange-bank,exchange-wechat */
+body.exchange-bank, body.exchange-wechat { color: #000; /*存款页面优惠弹窗*/ /*存款页面提交成功*/ }
+body.exchange-bank header, body.exchange-wechat header { background: #1766bb; }
+body.exchange-bank .mui-content, body.exchange-wechat .mui-content { background: #f2f2f2; padding-bottom: 60px !important; }
+body.exchange-bank .gb-panel, body.exchange-wechat .gb-panel { background-color: #ffffff; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; }
+body.exchange-bank .gb-bankcard, body.exchange-wechat .gb-bankcard { width: 270px; margin: 10px auto 20px; border: 1px solid #e2e2e2; border-radius: 8px; background-color: #fff; }
+body.exchange-bank .gb-bankcard > .hd, body.exchange-wechat .gb-bankcard > .hd { height: 32px; padding: 0 18px; line-height: 26px; border-bottom: 1px solid #f2f2f2; }
+body.exchange-bank .gb-bankcard > .hd p, body.exchange-wechat .gb-bankcard > .hd p { color: #333333; font-size: 12px; }
+body.exchange-bank .gb-bankcard > .hd p i, body.exchange-wechat .gb-bankcard > .hd p i { display: inline-block; width: 24px; height: 9px; background-size: cover; vertical-align: text-top; }
+body.exchange-bank .gb-bankcard > .hd p i.card1, body.exchange-wechat .gb-bankcard > .hd p i.card1 { background-image: url(../images/bank-type1.png); }
+body.exchange-bank .gb-bankcard > .ct, body.exchange-wechat .gb-bankcard > .ct { padding: 10px 7px 15px; }
+body.exchange-bank .gb-bankcard > .ct > p, body.exchange-wechat .gb-bankcard > .ct > p { color: #333333; font-size: 19px; }
+body.exchange-bank .gb-bankcard > .ct > .ct p, body.exchange-wechat .gb-bankcard > .ct > .ct p { color: #333333; font-size: 12px; margin-bottom: 5px; text-align: left; }
+body.exchange-bank .gb-bankcard > .ct > .ct p span, body.exchange-wechat .gb-bankcard > .ct > .ct p span { color: #999999; white-space: nowrap; padding-right: 5px; }
+body.exchange-bank .gb-bankcard > .ct > .ct p font, body.exchange-wechat .gb-bankcard > .ct > .ct p font { width: 100%; }
+body.exchange-bank .gb-bankcard > .ct > p a.copy, body.exchange-bank .gb-bankcard > .ct > .ct p a.copy, body.exchange-wechat .gb-bankcard > .ct > p a.copy, body.exchange-wechat .gb-bankcard > .ct > .ct p a.copy { float: right; background: #e0efff; padding: 0 5px; border-radius: 3px; color: #569ff1; font-size: 12px; white-space: nowrap; height: 22px; line-height: 22px; margin-left: 5px; }
+body.exchange-bank .mine-form .mui-input-row > label, body.exchange-wechat .mine-form .mui-input-row > label { color: #333; font-size: 12px; line-height: 18px; white-space: nowrap; text-overflow: ellipsis; position: relative; }
+body.exchange-bank .mine-form input, body.exchange-wechat .mine-form input { width: 100%; text-align: right; font-size: 12px; padding-right: 0; }
+body.exchange-bank .mine-form .mui-input-row > .ct, body.exchange-wechat .mine-form .mui-input-row > .ct { width: 65%; float: right; text-align: right; padding-right: 10px; font-size: 12px; }
+body.exchange-bank .mine-form .mui-input-row > .ct input, body.exchange-wechat .mine-form .mui-input-row > .ct input { font-size: 12px; color: #999; }
+body.exchange-bank .gb-form-foot, body.exchange-wechat .gb-form-foot { position: fixed; bottom: 0; left: 0; right: 0; background: #f2f2f2; z-index: 9; }
+body.exchange-bank .pro-window, body.exchange-wechat .pro-window { width: 320px !important; margin-top: -165px; margin-left: -160px; padding: 15px; }
+body.exchange-bank .pro-window h3, body.exchange-wechat .pro-window h3 { color: #1766bb; margin-bottom: 30px; line-height: 16px; }
+body.exchange-bank .pro-window .cont-text, body.exchange-wechat .pro-window .cont-text { line-height: 20px; font-size: 12px; color: #666; }
+body.exchange-bank .pro-window .cont-text p, body.exchange-bank .pro-window .text-pro p, body.exchange-wechat .pro-window .cont-text p, body.exchange-wechat .pro-window .text-pro p { color: #666; }
+body.exchange-bank .pro-window .org, body.exchange-wechat .pro-window .org { color: #f49e2e; font-size: 14px; }
+body.exchange-bank .pro-window .text-pro ul, body.exchange-wechat .pro-window .text-pro ul { max-height: 110px; overflow: auto; background: #e2e2e2; border-radius: 4px; }
+body.exchange-bank .pro-window .text-pro li, body.exchange-wechat .pro-window .text-pro li { padding: 0 0 0 10px; line-height: 16px; font-size: 12px; }
+body.exchange-bank .pro-window .text-pro .text-warp, body.exchange-wechat .pro-window .text-pro .text-warp { border-bottom: 1px dashed #d2d2d2; width: 100%; padding: 5px 0; position: relative; }
+body.exchange-bank .pro-window .text-pro li span, body.exchange-wechat .pro-window .text-pro li span { color: #666; display: inline-block; width: 238px; word-wrap: break-word; }
+body.exchange-bank .pro-window .text-pro li input, body.exchange-wechat .pro-window .text-pro li input { width: 16px; height: 16px; position: absolute; top: 20%; right: 15px; }
+body.exchange-bank .pro-btn, body.exchange-wechat .pro-btn { margin: 20px 0; width: 280px; display: flex; justify-content: space-around; }
+body.exchange-bank .pro-btn a, body.exchange-wechat .pro-btn a { font-size: 14px; margin: 0 5px; color: #fff; width: 120px; height: 32px; border-radius: 4px; line-height: 32px; text-align: center; display: inline-block; }
+body.exchange-bank .pro-btn .next-btn, body.exchange-wechat .pro-btn .next-btn { background: #1766bb; }
+body.exchange-bank .pro-btn .agin-btn, body.exchange-wechat .pro-btn .agin-btn { background: #e2e2e2; color: #666; }
+body.exchange-bank .pro-window .close, body.exchange-wechat .pro-window .close { position: absolute; top: 5px; right: 5px; background: url(../images/close.png) no-repeat center center; width: 48px; height: 48px; zoom: 0.7; }
+body.exchange-bank .window-ok, body.exchange-wechat .window-ok { padding: 0 20px; height: 255px; }
+body.exchange-bank .window-ok .ok-box, body.exchange-wechat .window-ok .ok-box { text-align: center; }
+body.exchange-bank .window-ok .ok-box .ok-icon, body.exchange-wechat .window-ok .ok-box .ok-icon { width: 57px; height: 57px; background: url(../images/ok.png) no-repeat top left; display: block; background-size: cover; margin: 20px auto 10px auto; }
+body.exchange-bank .window-ok .ok-box span, body.exchange-wechat .window-ok .ok-box span { font-size: 16px; font-weight: bold; color: #00d623; }
+body.exchange-bank .window-ok .ct, body.exchange-wechat .window-ok .ct { margin: 10px 0 !important; }
+body.exchange-bank .window-ok .ft a, body.exchange-wechat .window-ok .ft a { display: block; margin-top: 5px; }
+body.exchange-bank .tit, body.exchange-wechat .tit { margin: 10px auto; line-height: 35px; width: 100px; border-radius: 3px; color: #fff; text-align: center; height: 35px; background: #1766bb; }
+body.exchange-bank .wechat-code, body.exchange-wechat .wechat-code { text-align: center; border-top: 1px solid #ddd; padding: 20px 0 15px; }
+body.exchange-bank .wechat-code img, body.exchange-wechat .wechat-code img { width: 130px; height: 130px; display: inline-block; border: 1px solid #eee; }
+body.exchange-bank .wechat-code .tit, body.exchange-wechat .wechat-code .tit { margin: 0 auto; width: 130px; height: 30px; line-height: 30px; border-top-left-radius: 0; border-top-right-radius: 0; }
+body.exchange-bank .info, body.exchange-wechat .info { padding: 10px 20px; font-size: 13px; color: #666; line-height: 28px; }
+body.exchange-bank .mine-form input, body.exchange-wechat .mine-form input { width: 100%; text-align: right; font-size: 12px; padding-right: 0; }
+body.exchange-bank .mine-form .mui-input-row > .ct, body.exchange-wechat .mine-form .mui-input-row > .ct { width: 65%; float: right; text-align: right; padding-right: 10px; font-size: 12px; }
+body.exchange-bank .mine-form .mui-input-row > .ct input, body.exchange-wechat .mine-form .mui-input-row > .ct input { font-size: 12px; color: #999; }
+body.exchange-bank .mine-form .mui-input-row > label span.small, body.exchange-wechat .mine-form .mui-input-row > label span.small { color: #999; font-size: 9px; }
+
+body.exchange-bitcoin { color: #000; }
+body.exchange-bitcoin header { background: #1766bb; }
+body.exchange-bitcoin .mui-content { background: #f2f2f2; padding-bottom: 60px !important; }
+body.exchange-bitcoin .gb-panel { background-color: #ffffff; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; }
+body.exchange-bitcoin .gb-bankcard { width: 290px; margin: 10px auto 20px; border: 1px solid #e2e2e2; border-radius: 8px; background-color: #fff; }
+body.exchange-bitcoin .gb-bankcard > .hd { height: 32px; padding: 0 18px; line-height: 26px; border-bottom: 1px solid #f2f2f2; }
+body.exchange-bitcoin .gb-bankcard > .hd p { color: #333333; font-size: 12px; }
+body.exchange-bitcoin .gb-bankcard > .hd p i { display: inline-block; width: 24px; height: 9px; background-size: cover; vertical-align: text-top; }
+body.exchange-bitcoin .gb-bankcard > .hd p i.card1 { background-image: url(../images/bank-type1.png); }
+body.exchange-bitcoin .gb-bankcard > .ct { padding: 10px 7px 15px; }
+body.exchange-bitcoin .gb-bankcard > .ct > p { color: #333333; font-size: 19px; }
+body.exchange-bitcoin .gb-bankcard > .ct > p.text-green { color: #f49e2e; background: #fff; line-height: 22px; font-size: 16px; border: 1px solid #ddd; width: 250px; padding: 10px 15px; border-radius: 3px; }
+body.exchange-bitcoin .gb-bankcard > .ct > .ct p { color: #333333; font-size: 12px; margin-bottom: 5px; text-align: left; }
+body.exchange-bitcoin .gb-bankcard > .ct > .ct p span { color: #999999; white-space: nowrap; padding-right: 5px; }
+body.exchange-bitcoin .gb-bankcard > .ct > .ct p font { width: 100%; }
+body.exchange-bitcoin .gb-bankcard > .ct > p a.copy, body.exchange-bitcoin .gb-bankcard > .ct > .ct p a.copy { float: right; background: #e0efff; padding: 0 5px; border-radius: 3px; color: #569ff1; font-size: 12px; white-space: nowrap; height: 22px; line-height: 22px; margin-left: 5px; }
+body.exchange-bitcoin .mine-form .mui-input-row > label { color: #333; font-size: 12px; line-height: 18px; white-space: nowrap; text-overflow: ellipsis; position: relative; }
+body.exchange-bitcoin .mine-form input { width: 100%; text-align: right; font-size: 12px; padding-right: 0; }
+body.exchange-bitcoin .mine-form .mui-input-row > .ct { width: 65%; float: right; text-align: right; padding-right: 10px; font-size: 12px; }
+body.exchange-bitcoin .mine-form .mui-input-row > .ct input { font-size: 12px; color: #999; }
+body.exchange-bitcoin .mine-form .mui-input-row > .ct .time { width: 150px; border: 1px solid #ddd; text-align: center; height: 30px; line-height: 30px; margin-top: 5px; float: right; }
+body.exchange-bitcoin .gb-form-foot { position: fixed; bottom: 0; left: 0; right: 0; background: #f2f2f2; z-index: 9; }
+body.exchange-bitcoin .mine-form input { width: 100%; text-align: right; font-size: 12px; padding-right: 0; }
+body.exchange-bitcoin .mine-form .mui-input-row > .ct { width: 65%; float: right; text-align: right; padding-right: 10px; font-size: 12px; }
+body.exchange-bitcoin .mine-form .mui-input-row > .ct input { font-size: 12px; color: #999; }
+body.exchange-bitcoin .mine-form .mui-input-row > label span.small { color: #999; font-size: 9px; }
+body.exchange-bitcoin .tit { margin: 10px auto; line-height: 35px; width: 100px; border-radius: 3px; color: #fff; text-align: center; height: 35px; background: #1766bb; }
+body.exchange-bitcoin .wechat-code { text-align: center; border-top: 1px solid #ddd; padding: 20px 0 15px; }
+body.exchange-bitcoin .wechat-code img { width: 130px; height: 130px; display: inline-block; border: 1px solid #eee; }
+body.exchange-bitcoin .wechat-code .tit { margin: 0 auto; width: 130px; height: 30px; line-height: 30px; border-top-left-radius: 0; border-top-right-radius: 0; }
+body.exchange-bitcoin .info { padding: 10px 20px; font-size: 13px; color: #666; line-height: 28px; }
+
+/* mine-notice */
+.mine-notice { color: #000; }
+.mine-notice header { background: #1766bb; }
+.mine-notice .mui-content { background: #fff; padding-bottom: 0 !important; }
+.mine-notice .gb-panel { background-color: #fff; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; }
+.mine-notice .gb-headtabs { margin: 11px auto; width: 60%; background-color: #fff; }
+.mine-notice .gb-headtabs.span3 { width: 240px; }
+.mine-notice .gb-headtabs .mui-segmented-control { border: 1px solid #1766bb; }
+.mine-notice .gb-headtabs .mui-segmented-control .mui-control-item { line-height: 28px; color: #333; font-size: 12px; overflow: visible; position: relative; }
+.mine-notice .gb-headtabs .mui-segmented-control .mui-control-item.mui-active { background: #1766bb; color: #fff; }
+.mine-notice .gb-datafilter { padding: 10px; color: #333; font-size: 10px; }
+.mine-notice .gb-datafilter .input-drop { display: inline-block; border: 1px solid #e2e2e2; border-radius: 2px; height: 25px; line-height: 23px; color: #333; font-size: 10px; width: 100%; text-align: center; position: relative; }
+.mine-notice .gb-datafilter .input-drop a { display: block; line-height: 23px; color: #999; font-size: 12px; }
+.mine-notice .gb-datafilter .input-drop a .mui-icon { color: #7a7674 !important; font-size: 18px; vertical-align: sub; }
+.mine-notice .gb-datafilter .input-date { display: inline-block; position: relative; width: 30%; }
+.mine-notice .gb-datafilter .input-date a { display: inline-block; width: 20px; height: 25px; background: url(../images/ico-cal.png) no-repeat center; background-size: 9px auto; position: absolute; z-index: 1; top: 0; left: 0; }
+.mine-notice .gb-datafilter .input-date input.date { border: 1px solid #e2e2e2; border-radius: 2px; height: 25px; line-height: 23px; color: #333; font-size: 10px; width: 100%; text-align: center; position: relative; }
+.mine-notice .gb-datafilter .btn { padding: 2px 8px; background-color: #1766bb; border-color: #1766bb; }
+.mine-notice .gb-checkbox2 { display: inline-block; width: 12px; height: 12px; background: url(../images/checkbox.png); background-size: 100% 100%; vertical-align: text-top; margin-right: 5px; }
+.mine-notice .gb-checkbox2.on { background-image: url(../images/checkbox-on.png); }
+.mine-notice .gb-radio { display: inline-block; width: 30px; height: 30px; background: url(../images/radio.png); background-size: 100% 100%; vertical-align: text-top; margin-right: 5px; }
+.mine-notice .gb-radio.on { background-image: url(../images/radio-on.png); }
+.mine-notice .notice-form { margin: 10px; border: 2px solid #e2e2e2; }
+.mine-notice .notice-form .mui-input-group:before { display: none; }
+.mine-notice .notice-form .mui-input-group:after { display: none; }
+.mine-notice .notice-form .mui-input-group .mui-input-row:after { left: 0; }
+.mine-notice .notice-form .mui-input-group .mui-input-row:last-child:after { display: none; }
+.mine-notice .notice-form .mui-input-group textarea { border: 1px solid #e2e2e2; color: #999999; font-size: 12px; padding: 5px 10px; height: 150px; }
+.mine-notice .mui-input-group .mui-input-row { height: auto; }
+.mine-notice .mine-form .mui-input-row > label { color: #333; font-size: 12px; line-height: 18px; position: relative; white-space: nowrap; text-overflow: ellipsis; }
+.mine-notice .mine-form .mui-input-row > .ct { width: 65%; float: right; text-align: right; padding-right: 10px; font-size: 12px; }
+.mine-notice .gb-select { display: inline-block; }
+.mine-notice .gb-select > a { color: #999; display: inline-block; font-size: 12px; margin-right: 15px; }
+.mine-notice .gb-select > a .mui-icon { color: #7a7674 !important; font-size: 18px; vertical-align: middle; }
+.mine-notice .mine-form input { width: 100%; text-align: right; font-size: 12px; padding-right: 0; }
+.mine-notice .mine-form .mui-input-row > .ct input { font-size: 12px; color: #999; }
 
 /*# sourceMappingURL=common.css.map */
