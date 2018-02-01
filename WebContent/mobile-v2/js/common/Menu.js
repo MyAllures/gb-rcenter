@@ -34,9 +34,9 @@ define(['common/MobileBasePage'], function (Mobile) {
         //获取头部信息
         getHeadInfo: function () {
             var _this = this;
-            if ($(".mui-pull-right").length <= 0 && $(".mui-off-canvas-left").length <= 0) {
+           /* if ($(".mui-pull-right").length <= 0 && $(".mui-off-canvas-left").length <= 0 && sessionStorage.is_login!='false') {
                 return;
-            }
+            }*/
             mui.ajax(root + "/getHeadInfo.html", {
                 dataType: 'json',
                 type: 'POST',
@@ -54,6 +54,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                         $("._leftUsername").text(data.name);
                         $("._leftUnLogin").hide();
                         _this.loadBalance();
+                        sessionStorage.is_login = true;
                     } else { //未登录
                         isLogin = 'false';
                         $(".is-login").hide();
