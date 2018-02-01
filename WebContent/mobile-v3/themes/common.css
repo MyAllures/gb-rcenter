@@ -1397,6 +1397,9 @@ body.exchange-bitcoin .wechat-code { text-align: center; border-top: 1px solid #
 body.exchange-bitcoin .wechat-code img { width: 130px; height: 130px; display: inline-block; border: 1px solid #eee; }
 body.exchange-bitcoin .wechat-code .tit { margin: 0 auto; width: 130px; height: 30px; line-height: 30px; border-top-left-radius: 0; border-top-right-radius: 0; }
 body.exchange-bitcoin .info { padding: 10px 20px; font-size: 13px; color: #666; line-height: 28px; }
+body.exchange-bitcoin .mui-input-row.bitcoin-addr-row { height: auto; }
+body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct { line-height: 0; }
+body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea { font-size: 12px; color: #999; }
 
 /* mine-notice */
 .mine-notice { color: #000; }
