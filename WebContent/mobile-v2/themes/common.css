@@ -5186,6 +5186,7 @@ div.setting {
 .modes-payment >.ct a i.pay.psbc{background-position: 0px -319px;}
 .modes-payment >.ct a i.pay.spdb{background-position: 0px -340px;}  /* 浦发银行*/
 .modes-payment >.ct a i.pay.bitcoin{background-position: 0px -364px;}
+.modes-payment >.ct a i.pay.digitalc{    background-position: 3px -880px;}
 .modes-payment >.ct a i.pay.qrcodepay{background-position: 0px -386px;}
 .modes-payment >.ct a i.pay.cmbc{background-position: 0px -405px;}   /* 民生*/
 .modes-payment >.ct a i.pay.comm{background-position: 0px -435px;} /*  交通银行 */
