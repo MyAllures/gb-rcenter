@@ -13,8 +13,8 @@ define(['common/BaseEditPage', 'site/fund/recharge/SubmitSuccess'], function (Ba
             this.submitSuccess = new SubmitSuccess();
             this.formSelector = "form";
             this._super(this.formSelector);
-            $("input[name='result.payerName']").val(window.top.topPage.online_payName);
-            window.top.topPage.online_payName = null;
+            $("input[name='result.payerName']").val(window.top.topPage.payerName);
+            window.top.topPage.payerName = null;
             $("input[name='result.payerBankcard']").val(window.top.topPage.payerBankcard);
             window.top.topPage.payerBankcard = null;
             $("input[name='result.rechargeAddress']").val(window.top.topPage.rechargeAddress);
