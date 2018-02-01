@@ -48,6 +48,64 @@ li{
 .mui-bar-nav~.mui-content {
     padding-top: 44px;    padding-bottom: 70px;
 }
+/* 公共的样式 */
+.mine-form .mui-input-row >label {
+    color: #333;
+    font-size: 12px;
+    line-height: 18px;
+    position: relative;    white-space: nowrap;
+    text-overflow: ellipsis;
+} 
+.mine-form .mui-input-row >.ct {
+    width: 65%;
+    float: right;
+    text-align: right;
+    padding-right: 10px;
+    font-size: 12px;
+}
+.mine-form p {
+    font-size: 12px;
+    margin-bottom: 0;
+    color: #333;
+    &.text-gray {
+        color: #aeaeae;
+    }
+}
+.gb-form-notice p em {
+    font-style: normal;
+    color: #f65d5d;
+}
+.gb-form-notice p img {
+    vertical-align: middle;
+}
+.mine-form .mui-input-row >.ct input {
+    font-size: 12px;
+    color: #999;
+}
+.mine-form input {
+    width: 100%;
+    text-align: right;
+    font-size: 12px;
+    padding-right: 0;
+}
+.gb-select{
+    display: inline-block;
+}
+.gb-select >a{
+    display: inline-block;
+    font-size: 12px;
+    margin-right: 15px;
+}
+.gb-select >a .mui-icon{
+    color: #7a7674 !important;
+    font-size: 18px;
+    vertical-align: sub;
+}
+.gb-select >a .mui-icon{
+    color: #7a7674 !important;
+    font-size: 17px;
+    vertical-align: middle;
+}
 /* banner-slide */
 .banner-slide{position: relative;
     .banner-ads{    font-size: 12px;
@@ -1347,8 +1405,8 @@ body.deposit{
 }
 .gb-password-box >a{
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     background: url(../images/close.png);
     background-size: cover;
     position: absolute;
@@ -3412,4 +3470,18 @@ body.exchange-bitcoin{color: #000;
         font-size: 12px;
         color: #999;
     }    
+}
+/* mine-user */
+body.mine-user{color: #000;
+     header{background: #1766bb;}
+    .mui-content{background: #f2f2f2;padding-bottom: 0 !important;} 
+    .gb-form-notice p {
+        margin: 0 10px;
+        color: #666;
+        font-size: 10px;
+        padding: 5px 0;
+    }   
+    .gb-select >a {
+        color: #999;
+    }
 }
