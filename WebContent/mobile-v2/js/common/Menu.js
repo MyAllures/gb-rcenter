@@ -24,7 +24,7 @@ define(['common/MobileBasePage'], function (Mobile) {
             $("._download").on("tap", function (e) {
                 var isLogin = sessionStorage.is_login;
                 var url = $(this).data("download");
-                if (isLogin != true) {
+                if (isLogin != true && isLogin != "true") {
                     _this.toast("请登入下载");
                     window.setTimeout(function () {
                         _this.gotoUrl(url)
