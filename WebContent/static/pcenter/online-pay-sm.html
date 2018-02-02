@@ -29,9 +29,6 @@ var environment = {
   <script src="../../common/js/bootstrap/bootstrap.min.js"></script>
   <!--项部下拉弹出 -->
   <script type="text/javascript" src="../../common/js/pcenterJS/head.js"></script>
-  <!--banner-背景模糊-->
-  <script src="../../common/js/jquery/plugins/velocity/background-blur.min.js"></script>
-  <script src="../../common/js/jquery/plugins/velocity/velocity.min.js"></script>
   <title>玩家中心首页</title>
 </head>
 <body>
@@ -159,62 +156,38 @@ var environment = {
   </div>
 
   <!--banner-->
-<div class="banner">
+  <div class="banner">
     <div class="logo"></div>
     <div class="right">
     	  <ul class="nav-menu">
     	  	  <li>
-    	  	  	  <a href="#">
-    	  	  	   	  <i class="nav-menu-ico home-ico"></i>
-    	  	  	   	  <span>
-    	  	  	   	  	网站首页
-    	  	  	   	  	<font>HOME</font>
-    	  	  	   	  </span>
+    	  	  	  <a class="nav-menu-ico aip-type-home-ico" href="#">
+    	  	  	   	  <span>网站首页</span>
     	  	  	  </a>
     	  	  </li>
     	  	  <li>
-    	  	  	  <a href="#">
-    	  	  	   	  <i class="nav-menu-ico casino-ico"></i>
-    	  	  	   	  <span>
-    	  	  	   	  	电子游艺
-    	  	  	   	  	<font>CASINO</font>
-    	  	  	   	  </span>
+    	  	  	  <a class="nav-menu-ico aip-type-1-ico" href="#">
+    	  	  	  	<span>真人视讯</span>
     	  	  	  </a>
     	  	  </li>
     	  	  <li>
-    	  	  	  <a href="#">
-    	  	  	   	  <i class="nav-menu-ico lives-ico"></i>
-    	  	  	   	  <span>
-    	  	  	   	  	真人视讯
-    	  	  	   	  	<font>LIVES</font>
-    	  	  	   	  </span>
+    	  	  	  <a class="nav-menu-ico aip-type-2-ico" href="#">
+    	  	  	   	  <span>电子游艺</span>
     	  	  	  </a>
     	  	  </li>
     	  	  <li>
-    	  	  	  <a href="#">
-    	  	  	   	  <i class="nav-menu-ico sports-ico"></i>
-    	  	  	   	  <span>
-    	  	  	   	  	体育竞技
-    	  	  	   	  	<font>SPORTS</font>
-    	  	  	   	  </span>
+    	  	  	  <a class="nav-menu-ico aip-type-3-ico" href="#">
+    	  	  	   	  <span>体育竞技</span>
     	  	  	  </a>
     	  	  </li>
     	  	  <li>
-    	  	  	  <a href="#">
-    	  	  	   	  <i class="nav-menu-ico lottery-ico"></i>
-    	  	  	   	  <span>
-    	  	  	   	  	彩票游戏
-    	  	  	   	  	<font>LOTTERY</font>
-    	  	  	   	  </span>
+    	  	  	  <a class="nav-menu-ico aip-type-4-ico" href="#">
+    	  	  	   	  <span>彩票游戏</span>
     	  	  	  </a>
     	  	  </li>
     	  	  <li>
-    	  	  	  <a href="#">
-    	  	  	   	  <i class="nav-menu-ico promo-ico"></i>
-    	  	  	   	  <span>
-    	  	  	   	  	优惠活动
-    	  	  	   	  	<font>PROMO</font>
-    	  	  	   	  </span>
+    	  	  	  <a class="nav-menu-ico aip-type-promo-ico" href="#">
+    	  	  	   	  <span>优惠活动</span>
     	  	  	  </a>
     	  	  </li>
     	  </ul>
@@ -310,117 +283,158 @@ var environment = {
           <a href="infonotice.html">存款专区</a>
         </div>
       </div>
-      <!--存款-->
+      <!--扫码支付-->
       
-    <div class="account-info-warp">
-<div class="titleline"><h2>请选择存款方式</h2></div></div>
+    <div class="deposit-info-warp  clearfix">
+<div class="titleline pull-left">
+	<div class="btn-group table-desc-right-t-dropdown bank-down-menu" initprompt="10条" callback="query">
+                            <input type="hidden" name="" value="">
+                    <button type="button" class="btn btn btn-default" data-toggle="dropdown" aria-expanded="false">
+                        <i class="pay-third wechatpay"></i> <span class="carat"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="online-pay1.html" key="10"><i class="pay-third unionpay"></i></a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="20"><i class="pay-third ebankpay"></i></a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)" key="30"><i class="pay-third wechatpay"></i></a>
+                        </li>
+                    </ul>
+                </div>
+</div><a href="deposit-region.html" class="btn-gray btn btn-big pull-right">返回上一级</a></div>
 
-<div class="deposit-select-wrap">
-  <div class="deposit-tab01">
-  <a href="online-pay.html"><img src="images/deposit-tab-img1.png">
-  <span class="pay-title orange-t-bg"><em>在线支付</em><i class="pay-title-tips">范例</i></span>
-  </a>
-  </div>
-  <div class="deposit-tab01">
-     <a href="online-pay1.html"><img src="images/deposit-tab-img2.png">
-     <span class="pay-title blue-t-bg"><em>网银存款</em><i class="pay-title-tips">范例</i></span></a>
-  </div>
-  <div class="deposit-tab01">
-     <a href="online-pay2.html"><img src="images/deposit-tab-img3.png">
-     <span class="pay-title green-t-bg"><em>微信支付</em><i class="pay-title-tips">范例</i></span></a>
-  </div>
-  <div class="deposit-tab01">
-     <a href="online-pay3.html"><img src="images/deposit-tab-img4.png">
-     <span class="pay-title cyan-t-bg"><em>支付宝支付</em><i class="pay-title-tips">范例</i></span></a>
-  </div>
-  <div class="deposit-tab01">
-     <a href="online-pay4.html"><img src="images/deposit-tab-img7.png">
-     <span class="pay-title sea-t-bg"><em>QQ支付</em><i class="pay-title-tips">范例</i></span></a>
-  </div>
-  <div class="deposit-tab01">
-     <a href="online-pay5.html"><img src="images/deposit-tab-img5.png">
-     <span class="pay-title red-t-bg"><em>京东支付</em><i class="pay-title-tips">范例</i></span></a>
-  </div>
-  <div class="deposit-tab01">
-     <a href="online-pay5.html"><img src="images/deposit-tab-img6.png">
-     <span class="pay-title pink-t-bg"><em>百度支付</em><i class="pay-title-tips">范例</i></span></a>
-  </div>
-  <div class="deposit-tab01">
-     <a href="online-pay5.html"><img src="images/deposit-tab-img8.png">
-     <span class="pay-title yellow-t-bg"><em>比特币支付</em></span></a>
-  </div>
-  <div class="deposit-tab01">
-     <a href="online-pay-sz.html"><img src="images/deposit-tab-img9.png">
-     <span class="pay-title prasinous-t-bg"><em>数字货币支付</em></span></a>
-  </div>
-  <div class="deposit-tab01">
-     <a href="online-pay-sz.html"><img src="images/deposit-tab-img10.png">
-     <span class="pay-title dark-green-t-bg"><em>数字货币支付</em></span></a>
-  </div>
-  <div class="deposit-tab01">
-<a href="online-pay-sm.html" nav-target="mainFrame">
-<img src="images/deposit-tab-img3.png">
-</a>
-<span class="pay-title">
-<em data-href="/fund/recharge/online/scanCode.html" class="showPage" style="cursor: pointer;">扫码支付</em>
-<i class="pay-title-tips" style="cursor: pointer;">帮助</i>
+ <div class="account-list account-info-warp">
+   <div class="left-ico-message">
+   <h4>选择支付方式：</h4>
+     <span class="deposit-info-title">步骤1<img src="images/online-pay1.png"></span>
+       
+      <div class="bank-deposit">
+<div class="bank-total">
+<label class="bank select">
+<span class="radio">
+<input name="result.rechargeType" randomamount="false" account="7d626f8a6ac742ef3617479830827afd" value="wechatpay_scan" type="radio" checked="">
 </span>
+<span class="radio-bank" title="微信支付"><i class="pay-third sm wechatpay"></i><font class="diy-pay-title">微信反扫</font></span>
+<span class="bank-logo-name">微信支付</span>
+<input type="hidden" class="onlinePayMax" value="99,999,999.00">
+<input type="hidden" class="onlinePayMin" value="0.01">
+</label>
+<label class="bank ">
+<span class="radio">
+<input name="result.rechargeType" randomamount="false" account="7066400520af8baa885fd81b377775a3" value="qqwallet_scan" type="radio">
+</span>
+<span class="radio-bank" title="QQ钱包"><i class="pay-third sm qqwallet"></i><font class="diy-pay-title">QQ反扫</font></span>
+<span class="bank-logo-name">QQ钱包</span>
+<input type="hidden" class="onlinePayMax" value="99,999,999.00">
+<input type="hidden" class="onlinePayMin" value="0.01">
+</label>
+<label class="bank ">
+<span class="radio">
+<input name="result.rechargeType" randomamount="false" account="2baaf4a56552609ce667c88ad1171f3f" value="union_pay_scan" type="radio">
+</span>
+<span class="radio-bank" title=""><i class="pay-third sm alipay"></i><font class="diy-pay-title">支付宝反扫</font></span>
+<span class="bank-logo-name"></span>
+<input type="hidden" class="onlinePayMax" value="99,999,999.00">
+<input type="hidden" class="onlinePayMin" value="0.01">
+</label>
+</div>
+<div class="clear"></div>
+</div>
+                    
+
+        </div>                        
+      </div>
+      <div class="account-list account-info-warp">
+<div class="left-ico-message">
+<h4>请填写存款金额：</h4>
+<span class="deposit-info-title">步骤2<img src="images/online-pay2.png"></span>
+<form>
+<div class="control-group">
+ <label class="control-label" for="inputEmail">存款帐号：</label>
+ <div class="controls"> HASDFJASF192
+   </div>
+  </div>
+<div class="control-group">
+
+ <label class="control-label" for="inputEmail">存款金额：</label>
+ <div class="controls">
+   <input type="text"  class="input" placeholder="">
+   <span class="right-decimals">.66</span>
+   </div>
+  </div>
+<div class="control-group">
+
+ <label class="control-label" for="inputEmail">申请优惠：</label>
+ <div class="controls">
+    <div><span class="radiotwo">
+      <input name="bankcode" type="radio"></span><i class="item-title-ico goryorange">分类一</i> 满500送50，满1000送200…&nbsp;&nbsp;
+                                    <a href="#">收起其他优惠</a><i class="bank-arrico up"></i></div>
+                                    <div><span class="radiotwo">
+  <input name="bankcode" type="radio"></span><i class="item-title-ico gorylightblue">分类一</i> 满500送50，满1000送200…
+                                    <a href="#"></a></div>
+   </div>
+  </div>
+  
+ 
+  
+  
+    <div class=" control-group">
+ <label class="control-label"></label> 
+ <button type="button" class="btn-blue btn large-big">立即存款</button>
+  </div>  
+  <div class="applysale">
+                    <ul class="transfer-tips">
+                    	<li>支付成功后，请等待几秒钟，提示[<span class="red">支付成功</span>]后按确认件后再关闭支付窗口。</li>
+                    	<li>如充值后未到账，请联系在线客服。<a href="#">点击联系在线客服</a>  </li>
+                    </ul>
+                    </div>
+  
+ <div>
+ </div>
+ 
+   </form>
+   
+   <div class="fansao-wrap">
+   	<div class="fansao-title">微信支付反扫教程</div>
+   	<div class="fansao-img"><img src="../../pcenter/images/wxzf-fs.png"></div>
+   </div>
+   
+   <div class="fansao-wrap">
+   	<div class="fansao-title">QQ钱包反扫教程</div>
+   	<div class="fansao-img"><img src="../../pcenter/images/qqqb-fs.png"></div>
+   </div>
+   
+   <div class="fansao-wrap">
+   	<div class="fansao-title">支付宝反扫教程</div>
+   	<div class="fansao-img"><img src="../../pcenter/images/zfb-fs.png"></div>
+   </div>
+ </div>
+  </div>
+
+
+
+  <div class="account-list account-info-warp">
+<div class="left-ico-message">
+<span class="deposit-info-title">注意事项<img src="images/online-pay3.png"></span>
+<ul class="attention-list">
+<li>1、请正确填写金额。</li>
+<li>2、单笔储值最低<em class="red">CNY</em><em class="red" id="depositMin">0.01</em>，最高为<em class="red">CNY</em><em class="red" id="depositMax">99,999,999</em>，并须视各家银行转款上限而定。</li>
+<div name="randomAmountMsg" class="tiphide">
+<li>3、为了提高对账速度及成功率，当前支付方式已开启随机额度，整数存款金额将随机增加0.11~0.99元。</li>
+</div>
+</ul>
+<div>
+</div>
 </div>
 </div>
    
 
-<div class="rgeechar">
-                        <div class="title deposit-hint">
-                            <span class="tips"><i class="mark plaintsmall"></i> 支付系统升级中，如需存款，请 <a href="#">联系客服</a>！</span></div>
-                    </div>
-
-<!-- 注意事项 -->
-<div class="gamenotice">
-      <div class="gamenotice-title">
-        <h1>注意事项</h1>
-       <!--  <span class="more">
-         <a href="gamenotice.html">更多&gt;</a>
-       </span> -->
-      </div>
-      <div class="gamenotice-box">
-      <ul class="deposit-notice">
-       <li> 每次存款前，请先至本页面查看最新的收款账户。请勿自行存款至旧有账户，若存款至旧有账户，本公司将无法查收，恕不负责。</li>
-        <li> 请务必使用同行存款，跨行务必加急，方便系统加快您的入款速度。</li>
-         <li class="red"> 请您务必依照网页上的存款金额进行充值。例如：200.18，方便系统加快您的充值速度。</li>
-     </ul>
-      </div>
-    </div>
 
 
-<!-- 银行维护公告 -->
-<div class="gamenotice">
-      <div class="gamenotice-title">
-        <h1>银行维护公告</h1>
-       <!--  <span class="more">
-         <a href="gamenotice.html">更多&gt;</a>
-       </span> -->
-      </div>
-      <div class="gamenotice-box">
-     <dl class="bank-notice-l">
-          <dd class="clearfix">
-            <div class="item">
-              <p>
-                ★ 澳门永利娱乐场入款账号【建设-郝文莉】将在北京时间5月30号5:30暂时停止汇款业务，请广大玩家务必在入款时进入公司网站点击线上存款-选择方式A-获取最新银行入款，谢谢！如存入废弃账号，公司概不负责，谢谢合作！
-              
-              </p>
-            </div>
-          </dd>
-          <p class="dottline"></p>
-          <dd class="clearfix">
-            <div class="item">
-              <p>
-                ★ 澳门永利娱乐场入款账号【建设-郝文莉】将在北京时间5月30号5:30暂时停止汇款业务，请广大玩家务必在入款时进入公司网站点击线上存款-选择方式A-获取最新银行入款，谢谢！如存入废弃账号，公司概不负责，谢谢合作！
-              </p>
-            </div>
-          </dd>
-        </dl>
-      </div>
-    </div>
+
 
 
 
@@ -443,57 +457,55 @@ var environment = {
 <a href="#">玩家游戏</a>
 </div>
 <!--弹窗1-->
-<div class="modal inmodal in" id="notice-list-1" tabindex="-1" role="dialog" aria-hidden="false" >
+<div class="modal inmodal in" id="notice-list-1" tabindex="-1" role="dialog">
     <div class="modal-dialog">
-        <div class="modal-content animated bounceInRight family">
-            <div class="modal-header">
-                <span class="filter">修改登录密码</span>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span> </button>
-            </div>
-            <div class="modal-body">
-               <div class="form-group clearfix line-hi34 m-b-xxs">
-                  <label class="col-xs-3 al-right" for="inputEmail">当前密码：</label>
-                  <div class="col-xs-8 p-x">
-                    <input type="password" id="" placeholder="" class="input">
-                    <span class="tips green">
-                      <i class="mark successsmall"></i>
-                    </span>
-                    <div class="co-grayc2 m-t-xxs">忘记密码?</div>
-                  </div>
-                </div>
-                 <div class="form-group clearfix line-hi34 m-b-xxs">
-                  <label class="col-xs-3 al-right">新密码：</label>
-                  <div class="col-xs-8 p-x">
-                    <input type="password" id="" placeholder="" class="input">
-                    <span class="tips green">
-                      <i class="mark successsmall"></i>
-                    </span>
-                  </div>
-                </div>
-                <div class="form-group clearfix line-hi34 m-b-xxs">
-                  <label class="col-xs-3 al-right">密码强度：</label>
-                  <div class="col-xs-8 p-x controls">
-                    <em class="passafe passafegreen"></em>
-                    <em class="passafe"></em>
-                    <em class="passafe"></em>
-                  </div>
-                </div>
-                 <div class="form-group clearfix line-hi34 m-b-xxs">
-                  <label class="col-xs-3 al-right">确认密码：</label>
-                  <div class="col-xs-8 p-x">
-                    <input type="password" id="" placeholder="" class="input">
-                    <span class="tips green">
-                      <i class="mark successsmall"></i>
-                    </span>
-                  </div>
-                </div>
-                
+<div class="modal-content animated bounceInRight family">
+<div class="modal-header">
+<span class="filter">完成存款，提交申请</span>
+<button type="button" class="close" data-dismiss="modal">
+  <span aria-hidden="true">×</span>
+  <span class="sr-only">关闭</span>
+</button>
 </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline btn-filter">修改</button>
-            </div>
-        </div>
-    </div>
+<div class="modal-body">
+<div class="withdraw-not text-15p">
+
+<div class="form-group clearfix line-hi45 m-b-xxs">
+  <label class="col-xs-5 al-right bold">存款金额：</label>
+  <div class="col-xs-6 p-x  f-size26">
+   
+322.00
+  </div>
+</div>
+<div class="form-group clearfix line-hi45 m-b-xxs">
+  <label class="col-xs-5 al-right bold">手续费/返手续费：</label>
+  <div class="col-xs-6 p-x">
+   
+    <em class="red  f-size26">+322.00</em>
+    <em class="green m-l  f-size26">-2.00</em>
+  </div>
+</div>
+<div class="form-group clearfix line-hi45 m-b-xxs">
+  <label class="col-xs-5 al-right bold">实际到账：</label>
+  <div class="col-xs-6 p-x">
+   
+    <em class="red  f-size26">320.00</em>
+  </div>
+</div>
+  </div>
+<div class="clearfix bg-gray p-t-xs al-center">
+  <div class="clearfix line-hi25 p-sm caution-pop">
+  <em><i class="mark plaintsmall"></i> 系统审核通过后，您的钱包余额将增加相应的“实际到账”金额。</em>
+  </div>
+</div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-filter">已存款，确认提交</button>
+<button type="button" class="btn btn-outline btn-filter">取消提交</button>
+</div>
+</div>
+</div>
 </div>
 
 <!-- 弹窗2 -->
@@ -655,33 +667,7 @@ var environment = {
     </div>
 </div>
 
-<script>
-	    // Scripts for demo page
-	    $( document ).ready(function() {
-	        var $avatarEl = $('.banner');
-	        var $avatarHolderEl = $('.banner-bg');
-	        var images = [];
-	        var avatars = [];
-	       
-	        // Avatar - based backgrounds
-	        $avatarEl.each(function(){
-	            var $avatar = $(this);
-	            var avatarImage = $avatar.find('img').first().attr('src');
-	            avatars.push(avatarImage);
-	            $avatar.click(function(e){
-	                e.preventDefault();
 
-	                $avatarHolderEl.backgroundBlur(avatarImage);
-	            });
-	        });
-
-	        $avatarHolderEl.backgroundBlur({
-	            imageURL : avatars[0], // URL to the image that will be used for blurring
-	            blurAmount : 10, // Amount of blur (higher amount degrades browser performance)
-	            imageClass : 'avatar-blur' // CSS class that will be applied to the image and to the SVG element,
-	        });
-        });
-</script>
 
 <!-- //* 语言版本切换 #select-lang* -->
 <script type="text/javascript">
