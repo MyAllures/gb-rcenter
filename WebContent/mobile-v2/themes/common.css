@@ -4241,7 +4241,8 @@ div.tab-2 a.mui-active span {
 .pay-third.tonghui_zfb,
 .pay-third.ybpay_zfb,
 .pay-third.jinanpay_zfb,
-.pay-third.allscore_s_zfb{background-position: 0 -60px;}/* 01 支付宝 & 魔宝-支付宝 & 通汇-支付宝 & 金安付-支付宝 &银宝-支付宝&商银信-扫码支付-支付宝*/
+.pay-third.allscore_s_zfb,
+.pay-third.alipay_micropay{background-position: 0 -60px;}/* 01 支付宝 & 魔宝-支付宝 & 通汇-支付宝 & 金安付-支付宝 &银宝-支付宝&商银信-扫码支付-支付宝*/
 .pay-third.wechatpay,
 .pay-third.dinpay_wx,
 .pay-third.mobao_wx,
@@ -4250,7 +4251,8 @@ div.tab-2 a.mui-active span {
 .pay-third.tonghui_wx,
 .pay-third.ybpay_wx,
 .pay-third.jinanpay_wx,
-.pay-third.allscore_s_wx{background-position: 0 -90px;}/* 02 微信 & 智付-微信 &  魔宝-微信 & 久付-微信 & 锐付-微信 & 通汇-微信 & 金安付-微信 &银宝-微信& &商银信-扫码支付-微信*/
+.pay-third.allscore_s_wx,
+.pay-third.wechat_micropay{background-position: 0 -90px;}/* 02 微信 & 智付-微信 &  魔宝-微信 & 久付-微信 & 锐付-微信 & 通汇-微信 & 金安付-微信 &银宝-微信& &商银信-扫码支付-微信*/
 .pay-third.tenpay {background-position: 0 -120px;}/* 03 财付通 */
 .pay-third.unionpay{background-position: 0 -150px;}/* 04 银联在线 */
 .pay-third.chinaums{background-position: 0 -180px;}/* 05 银联商务 */
@@ -4279,7 +4281,8 @@ div.tab-2 a.mui-active span {
 .pay-third.bitcoin,
 .pay-third.BTC
 {background-position: 0 -781px;}/* 25 比特币 */
-.pay-third.qqwallet{background-position: 0 -818px;}/* 25 QQ钱包 */
+.pay-third.qqwallet,
+.pay-third.qq_micropay{background-position: 0 -818px;}/* 25 QQ钱包 */
 .pay-third.zhihpay{background-position: 0 -859px;}/* 26 智汇付 */
 .pay-third.upay{background-position: 0 -896px;}/* 27 优贝支付 */
 .pay-third.onecodepay{background-position: 0 -936px;}/* 28 1码付 */
@@ -5170,15 +5173,18 @@ div.setting {
 .modes-payment >.ct a i.pay{background: url(images/pay_bank_b.png) no-repeat ;background-size:25px; display: inline-block;width:26px;height: 20px;vertical-align: middle;}
 .modes-payment >.ct a i.pay.unionpay{background-position: 0 -3px;}
 .modes-payment >.ct a i.pay.onlinepay{background-position: 0 -3px;}
-.modes-payment >.ct a i.pay.wechatpay{background-position: 0px -26px;}
-.modes-payment >.ct a i.pay.alipay{background-position: 0px -48px;}
+.modes-payment >.ct a i.pay.wechatpay,
+.modes-payment >.ct a i.pay.wechat_micropay{background-position: 0px -26px;}
+.modes-payment >.ct a i.pay.alipay,
+.modes-payment >.ct a i.pay.alipay_micropay{background-position: 0px -48px;}
 .modes-payment >.ct a i.pay.cmb{background-position: 0px -71px;}
 .modes-payment >.ct a i.pay.ccb{background-position: 0px -94px;}
 .modes-payment >.ct a i.pay.ks{background-position: 0 -116px;}
 .modes-payment >.ct a i.pay.jdwallet{background-position: -1px -138px;}
 .modes-payment >.ct a i.pay.bdwallet{background-position: 0px -161px;}
 .modes-payment >.ct a i.pay.ymf{background-position: 0px -183px;}
-.modes-payment >.ct a i.pay.qqwallet{background-position: 0px -206px;}
+.modes-payment >.ct a i.pay.qqwallet,
+.modes-payment >.ct a i.pay.qq_micropay{background-position: 0px -206px;}
 .modes-payment >.ct a i.pay.icbc{background-position: 0px -228px;}
 .modes-payment >.ct a i.pay.boc{background-position: 0px -250px;}
 .modes-payment >.ct a i.pay.abc{background-position: 0px -273px;}
