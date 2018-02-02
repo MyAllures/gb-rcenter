@@ -22,7 +22,11 @@ define(['site/deposit/BaseCompanyDeposit'], function (BaseCompanyDeposit) {
                 document.getElementById("saveImage").addEventListener("tap", function (e) {
                     var href = $(this).attr("url");
                     if (_this.os == "app_android") {
-                        window.gamebox.saveImage(href);
+                        try {
+                            window.gamebox.saveImage(href);
+                        }catch (err){
+                            _this.toast(window.top.message.deposit_auto['保存图片失败请截屏']);
+                        }
                     } else if (_this.os == 'app_ios') {
                         gotoPay(href);
                         _this.toast(window.top.message.deposit_auto['请截屏再扫描二维码']);

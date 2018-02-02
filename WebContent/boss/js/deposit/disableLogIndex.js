@@ -21,7 +21,8 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
             var _this = this ;
             $(".notify-action").click(function(){
                 var _href = $(this).attr("data-action");
-                _this.notifyStationmaster(_this,_href);
+                var _data = $(this).attr("data-value");
+                _this.notifyStationmaster(this,_href,_data);
             });
         },
 
@@ -46,18 +47,19 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
          * @param e
          * @param opt
          */
-        notifyStationmaster:function (e,_href) {
+        notifyStationmaster:function (e,_href,_data) {
             var _this =this;
             window.top.topPage.ajax({
                 dataType:'json',
-                data:null,
+                data:{"search.id":_data},
                 type:"post",
                 url:_href,
                 success:function(data){
+                    var obj = {currentTarget:$(e)};
                     if(data && data==true){
-                        // _this.page.showPopover(_this, {}, 'success',"信息发送成功", true);
+                        page.showPopover(obj,{},"success",'信息发送成功',true);
                     }else{
-                        // _this.page.showPopover(_this, {}, 'warning',"信息发送失败", true);
+                        page.showPopover(obj,{},"danger",'信息发送失败',true);
                     }
                 }
             });
