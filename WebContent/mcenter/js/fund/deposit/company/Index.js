@@ -38,10 +38,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                 url: $(_this.formSelector).attr("action"),
                 type:'POST',
                 data: data,
-                dataType: "html",
-                headers: {
-                    "Soul-Requested-With":"XMLHttpRequest"
-                },
+                dataType: "json",
                 success: function (data) {
                     _this.renderData(data);
                     _this.onPageLoad();
@@ -89,7 +86,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
             var _this=this;
             var $result = $("#editable tbody", _this.formSelector);
             try {
-                var json = JSON.parse(data);
+                var json = data;
                 if(json.result) {
                     var html = $("#VPlayerDepositListVo",_this.formSelector).render({data:json.result});
                     $result.html(html);
@@ -111,11 +108,12 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                 window.top.topPage.ajax({
                     loading: true,
                     url: window.top.topPage.getCurrentFormAction(event),
-                    headers: {
+                    /*headers: {
                         "Soul-Requested-With": "XMLHttpRequest"
-                    },
+                    },*/
                     type: "post",
                     data: this.getCurrentFormData(event),
+                    dataType:"json",
                     success: function (data) {
                         _this.renderData(data);
                         event.page.onPageLoad();
