@@ -22,6 +22,13 @@ define(['common/MobileBasePage'], function (Mobile) {
                 mui('.mui-off-canvas-wrap').offCanvas('toggle');
             });
             $("._download").on("tap", function (e) {
+
+                var isLogin = sessionStorage.is_login;
+
+                if (isLogin != true) {
+                    _this.toast("请登入下载");
+                    window.setTimeout(_this.gotoUrl($(this).data("download")),3000);
+                }
                 _this.gotoUrl($(this).data("download"));
             });
             mui("body").on('tap', "button.user-login", function () {
