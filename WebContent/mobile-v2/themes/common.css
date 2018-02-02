@@ -953,6 +953,9 @@ body.has-srchbar .electronic-srch{
 .mine-form .form-row >.cont input::-webkit-input-placeholder{
     color: #aeaeae;
 }
+textarea::-webkit-input-placeholder{
+    color: #aeaeae;
+}
 .mine-form .form-row >.cont input[type="text"].ico1{
     background-image: url(../images/ico-user.png);
     background-position-x: 3px;
@@ -5186,6 +5189,7 @@ div.setting {
 .modes-payment >.ct a i.pay.psbc{background-position: 0px -319px;}
 .modes-payment >.ct a i.pay.spdb{background-position: 0px -340px;}  /* 浦发银行*/
 .modes-payment >.ct a i.pay.bitcoin{background-position: 0px -364px;}
+.modes-payment >.ct a i.pay.digitalc{    background-position: 3px -880px;}
 .modes-payment >.ct a i.pay.qrcodepay{background-position: 0px -386px;}
 .modes-payment >.ct a i.pay.cmbc{background-position: 0px -405px;}   /* 民生*/
 .modes-payment >.ct a i.pay.comm{background-position: 0px -435px;} /*  交通银行 */
@@ -5274,3 +5278,8 @@ header.blue{background:#1766bb;}
 /* 首页棋牌的样式 */
 .hb-block .index-block-content .game-img{display: block;    width: 48px;    height: 48px;    margin: 13px auto 8px;}
 .hb-block .index-block-content .game-img img{    width: 100%; margin: 0;}
+
+/* bit币转账页面样式 */
+.mui-input-row.bticonin-row{height: auto;}
+.mui-input-row.bticonin-row>.ct{padding-right: 0;padding-bottom: 0;    line-height: 0;}
+.mui-input-row.bticonin-row>.ct textarea{padding: 10px;font-size: 12px;color: #999;text-align: right;}
