@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+    <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+</head>
+
+<body class="help-center">
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">帮助中心</h1>
+</header>
+<div class="mui-content mui-scroll-wrapper">
+    <div class="mui-scroll">
+        <dl class="fqa mui-collapse">
+            <dt class="mui-control-item">
+                <span>钱包余额是什么?</span>
+            </dt>
+            <dd class="mui-content">
+                <p>钱包余额显示的是玩家可用于取款的总额，或可转入第三
+                    方游戏进行投注的金额。玩家所有新的存款交易都将立刻
+                    于钱包余额中显示。</p>
+                <p>钱包余额支持玩家将钱包金额转至任意游戏账户中，并支
+                    持游戏金额秒速回转至钱包，即时实现资金二次分配或取
+                    款	</p>
+            </dd>
+            <dt class="mui-control-item">
+                <span>什么是转账？如何使用？</span>
+            </dt>
+            <dd class="mui-content">
+                <p>转账功能是指从钱包向某款游戏转账，或反之；具体操作流程如下所示：
+
+                    (1)选择资金转入/转出账户；
+
+                    (2)输入转账金额；
+
+                    (3)点击“确认转账”后即完成操作。</p>
+            </dd>
+            <dt class="mui-control-item">
+                <span>为什么游戏前要先进行转账？</span>
+            </dt>
+            <dd class="mui-content">
+                <p>我公司配备有高层级的安保防御体系，将金额存入中心钱包，再转入游戏账户，可最大限度保障资金在交易过程中的安全。同时，您可任意将额度转至多个游戏账户中，体验不同游戏的欢乐与刺激！</p>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+</body>
+
+
+<script src="../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../mobile-v3/js/common.js"></script>
+<script>
+    $(function () {
+        $('.fqa dt:first-child+.mui-content').show();
+        $('.fqa dt').click(function(){
+            $('.fqa dt').not(this).next('dd').slideUp('fast');
+            $(this).next('dd').slideToggle();
+        });
+    });
+</script>
+</html>

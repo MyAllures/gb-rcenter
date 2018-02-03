@@ -21,8 +21,8 @@
 <header class="mui-bar mui-bar-nav">
 	<a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
 	<!--<a href="download.html" class="btn-download"></a>-->
-	<a type="button" class="mui-btn mui-btn-success mui-pull-right btn-register" href="javascript:void(0);">注册</a>
-	<a type="button" class="mui-btn mui-btn-success mui-pull-right btn-login" href="javascript:void(0);">登录</a>
+	<a type="button" class="mui-btn mui-btn-success mui-pull-right btn-register" href="register.html">注册</a>
+	<a type="button" class="mui-btn mui-btn-success mui-pull-right btn-login" href="login.html">登录</a>
 	<a type="button" class="mui-btn mui-btn-success mui-pull-right btn-demo">试玩</a>
 	<img src="../../mobile-v3/images/logo.png" alt="logo" class="logo" />
 
@@ -584,7 +584,7 @@
 </div>  <!--mui-content 闭合标签-->
 <!--footer-->
 <footer class="mui-bar mui-bar-tab">
-	<a class="mui-tab-item">
+	<a class="mui-tab-item" href="mine-deposit.html">
 		<span class="mui-icon icon-deposit"></span>
 		<span class="mui-tab-label">存款</span>
 	</a>
@@ -631,8 +631,8 @@
         <div class="side-nav">
         	<ul class="mui-list-unstyled">
         		<li class="active home"><a href="index.html">首页</a></li>
-        		<li class="question"><a href="">常见问题</a></li>
-        		<li class="reg_rules"><a href="">注册条款</a></li>
+        		<li class="question"><a href="help-center-01.html">常见问题</a></li>
+        		<li class="reg_rules"><a href="register-rules.html">注册条款</a></li>
         		<li class="about"><a href="about.html">关于我们</a></li>
         		<li class="download"><a href="download.html">下载客户端</a></li>
         		<li class="pc"><a href="">电脑版</a></li>
@@ -739,121 +739,7 @@
     	<span class="loading-img loading-entirety"><img src="../../mobile-v3/images/oval.svg" alt></span>
     </div>-->
     <!--红包html结束-->	
-	<!--注册页层-->
-  <div class="login-wrap">
-    <!-- 主页面标题 -->
-    <header class="mui-bar mui-bar-nav mui-bar-blue">
-      <a class="mui-icon mui-icon-arrowleft mui-pull-left"></a>
-      <h1 class="mui-title">登录</h1>
-    </header>
-    <div class="mui-content mui-scroll-wrapper mui-content-without-footer-address login-content">
-      <div class="mui-scroll">
-        <!-- 主界面具体展示内容 -->
-        <!--<section class="type-header mui-segmented-control">
-        	<a href="#login_content" class="mui-control-item mui-btn mui-active ">登录</a>
-        	<a href="#register_content" class="mui-control-item mui-btn">注册</a>
-        </section>-->
-        <section class="type-content">
-        	<div class="login-icon"></div>
-        	<div id="login_content"	 class="mui-control-content mui-active login-part"><!--登录部分的内容-->
-        		<form class="mui-input-group">
-				    <div class="mui-input-row">
-				        <label class="mui-ellipsis">输入用户名</label>
-				        <span class="error-info">
-				        	<i class="mui-icon mui-icon-info"></i>输入用户名不存在
-				        </span>
-				    <input type="text" class="mui-input-clear" placeholder="输入8-20位字母数字组合">
-				    </div>
-				    <div class="mui-input-row password-input-row">
-				        <label>输入密码</label>
-				        <span class="error-info">
-				        	<i class="mui-icon mui-icon-info"></i>输入密码错误
-				        </span>
-				        <input type="password" class="mui-input-password" placeholder="输入8-20位字母数字组合">
-				        <a href="" class="forget-pas">忘记密码？</a>
-				    </div>
-				    <div class="mui-button-row">
-				        <button type="button" class="mui-btn mui-btn-block btn-ok" >立即登录</button>
-				        <button type="button" class="mui-btn mui-btn-block btn-cancel" >免费开户</button>
-				    </div>
-				</form>
-        </div>
-        </section>
-      </div> <!--mui-scroll 闭合标签-->
-    </div>  <!--mui-content 闭合标签-->
-  </div>
-  <!--注册层-->
-    <div class="register-wrap">
-    <!-- 主页面标题 -->
-    <header class="mui-bar mui-bar-nav mui-bar-blue">
-      <a class="mui-icon mui-icon-arrowleft mui-pull-left"></a>
-      <h1 class="mui-title">注册</h1>
-    </header>
-    <div class="mui-content mui-scroll-wrapper mui-content-without-footer-address login-content">
-      <div class="mui-scroll">
-        <!-- 主界面具体展示内容 -->
-       <!-- <section class="type-header mui-segmented-control">
-        	<a href="#login_content" class="mui-control-item mui-btn mui-active ">登录</a>
-        	<a href="#register_content" class="mui-control-item mui-btn">注册</a>
-        </section>-->
-        <section class="type-content">
-        	<div id="register_content" class="mui-control-content mui-active register-part"><!--注册部分的内容-->
-        		<form class="mui-input-group">
-				    <div class="mui-input-row">
-				        <label class="mui-ellipsis">输入用户名<i class="icon-star"></i></label>
-				    <input type="text" class="mui-input-clear" placeholder="输入8-20位字母数字组合">
-				    </div>
-				    <div class="mui-input-row">
-				        <label>输入密码<i class="icon-star"></i></label>
-				        <input type="password" class="mui-input-password" placeholder="输入8-20位字母数字组合">
-				    </div>
-				    <div class="mui-input-row">
-				        <label>输入确认密码<i class="icon-star"></i></label>
-				        <input type="password" class="mui-input-password" placeholder="输入8-20位字母数字组合">
-				    </div>
-				    <div class="mui-input-row">
-				        <label>输入真实姓名<i class="icon-star"></i></label>
-				        <input type="text" class="mui-input-clear" placeholder="输入与银行卡相同姓名">
-				    </div>
-				    <div class="mui-input-row">
-				        <label>输入取款密码<i class="icon-star"></i></label>
-				        <input type="password" class="mui-input-password" placeholder="输入6位数字密码">
-				    </div>
-				    <div class="mui-input-row">
-				        <label>主语言</label>
-				        <input type="text" class="mui-input-select" readonly placeholder="请选择语言">
-				        <span class="mui-icon mui-icon-arrowdown"></span>
-				    </div>
-				    <div class="mui-input-row">
-				        <label>安全问题</label>
-				        <input type="text" class="mui-input-select" readonly placeholder="请选择问题">
-				        <span class="mui-icon mui-icon-arrowdown"></span>
-				    </div>
-				    <div class="mui-input-row">
-				        <label>请输入回答</label>
-				        <input type="text" class="mui-input-clear" placeholder="请选择安全问题正确答案">
-				    </div>
-				    <div class="mui-input-row">
-				        <label>请输入验证码</label>
-				        <div class="mui-flex">
-				        	<input type="text" class="mui-input-clear" placeholder="请输入验证码">
-				        	<img src="../../mobile-v3/images/code.png"/>
-				        </div>				        
-				    </div>
-				    <div class="mui-input-row mui-checkbox mui-left tk">
-					  <a>我已满合法博彩年龄，同意各项开户条约</a>
-					  <input name="checkbox1" value="Item 1" type="checkbox" checked>
-					</div>
-				    <div class="mui-button-row">
-				        <button type="button" class="mui-btn mui-btn-block btn-ok" >立即注册</button>
-				        <button type="button" class="mui-btn mui-btn-block btn-cancel" >免费试玩</button>
-				    </div>
-				</form>        		
-        	</div>
-        </section>
-      </div> <!--mui-scroll 闭合标签-->
-    </div>  <!--mui-content 闭合标签-->
-  </div>
+
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
 <script src="../../mobile-v3/js/common.js"></script>
@@ -892,34 +778,10 @@
 	    });
 	    slideContent.controller.control = slideIndicators;
 	    slideIndicators.controller.control = slideContent;
-		// 登录显示隐藏
-		$(".btn-login").on("tap",function(){
-			$(".login-wrap").css({height:"100%"});
-			$("body").css({height:"100%",overflow:"hidden",position:"absolute",top:"0",bottom:"0"});
-		});
-		$(".login-wrap").on("tap",".mui-icon-arrowleft",function(){
-			$(".login-wrap").css({height:"0"});			
-			$("body").removeAttr("style");
-		});
-		// 注册显示隐藏
-		$(".btn-register").on("tap",function(){
-			$(".register-wrap").css({height:"100%"});
-			$("body").css({height:"100%",overflow:"hidden",position:"absolute",top:"0",bottom:"0"});
-		});
-		$(".register-wrap").on("tap",".mui-icon-arrowleft",function(){
-			$(".register-wrap").css({height:"0"});
-			$("body").removeAttr("style");
-		});
+
 		/* 公告初始化 */
 		$('.marquee').marquee({
 			 duration: 6000
-		});
-		// 阻止底部页面滚动
-		$(".register-wrap").on("touchmove",function(e){
-			e.preventDefault();
-		});
-		$(".login-wrap").on("touchmove",function(e){
-			e.preventDefault();
 		});
 	});
 	$(function(){		
