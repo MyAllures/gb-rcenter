@@ -24,7 +24,9 @@ define(['common/MobileBasePage'], function (Mobile) {
             $("._download").on("tap", function (e) {
                 var isLogin = sessionStorage.is_login;
                 var url = $(this).data("download");
-                if (isLogin != true && isLogin != "true") {
+
+                var isShowQrCode = $("#isShowQrCode").val(); //获取二维码开关
+                if (isLogin != true && isLogin != "true" && (isShowQrCode == true || isShowQrCode == "true")) {
                     _this.toast("请登入下载");
                     window.setTimeout(function () {
                         _this.gotoUrl(url)
