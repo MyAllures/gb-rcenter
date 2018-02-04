@@ -108,9 +108,9 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                 window.top.topPage.ajax({
                     loading: true,
                     url: window.top.topPage.getCurrentFormAction(event),
-                    /*headers: {
+                    headers: {
                         "Soul-Requested-With": "XMLHttpRequest"
-                    },*/
+                    },
                     type: "post",
                     data: this.getCurrentFormData(event),
                     dataType:"json",

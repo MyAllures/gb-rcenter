@@ -6,64 +6,48 @@
     img{width: 100%;}
 }
 .promo{
-    margin: 10px 10px 0;    position: relative;
-    z-index: 1;    border-radius: 4px;padding: 10px;
-    .promo-sorts{padding-bottom: 10px;}
-    .btn-promo-sort{margin-right: 2px;margin-bottom: 5px;}
+        position: relative;
+    z-index: 1;    border-radius: 4px;
     .promo-list{
-        li{margin-bottom: 10px;}
+        .swiper-slide a{margin-bottom: 10px;display: block;}
         img{width: 100%;vertical-align: middle;}
     }
+    .p-t-slide-content{
+        .swiper-slide{ } 
+    }
 }
+.promo-head{height: 97px;}
+.promo-header{      position: fixed;
+    top: 44px;
+    height: 53px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: #fff;}
+.btn-promo-sort{
+        padding: 0 5px 0 0 !important;height: 34px;border: 0;
+    border-radius: 0;
+        span{display: block;border-radius: 3px;
+    width:100%;height: 34px;line-height: 34px;
+    }
+    margin-bottom: 10px;
+    margin-top: 10px;}
+
+.promo{height: 100%;
+    .swiper-container{height: 100%;
+        .swiper-slide .mui-scroll{padding: 10px;}
+    }
+}
+.promo-content{    padding-top: 97px !important;
+    position: absolute;padding-bottom: 53px !important;
+    top: 0;width: 100%;
+    bottom: 0;}
+.promo-sorts{ margin: 0 10px;}
 /* blue-bar */
 .mui-bar-blue{background-color: #1766bb;-webkit-box-shadow: 0 0 8px 2px rgba(0,0,0,0.2) !important;box-shadow: 0 0 8px 2px rgba(0,0,0,0.2) !important;
     .mui-icon-arrowleft,.mui-title,.mui-icon{color: #fff !important;}
 }
-/* login and register page */
-.type-header{
-    padding: 15px 0;text-align: center;font-size: 0;    border: 0;display: block;
-    .mui-btn{display: inline-block;width: auto;line-height: 1;    padding: 7px 25px;border-radius:4px; border-color: #1766bb;color: #1766bb;        
-        &:first-child{border-top-right-radius: 0;border-bottom-right-radius:0;border-left-width: 1px;}
-        &:last-child{border-top-left-radius: 0;border-bottom-left-radius: 0;}
-        &.mui-active{background: #1766bb;}
-    }
-}
-.type-content{
-    .mui-control-content{padding: 10px 30px;
-            .mui-input-group{background-color: transparent;
-                &:before,&:after{content: none;}
-                .mui-input-row{height: auto;
-                    &:after{content: none;}
-                    label,input{float: none;}
-                    label{padding: 0;    width: 100px;    display: block;    font-size: 12px;    color: #333;    margin-bottom: 5px;    line-height: 22px;    height: 16px;}
-                    input[type=text],input[type=password]{    border: 1px solid #999;    width: 100%;    margin: 5px 0;    border-radius: 5px;    padding: 0 15px;    height: 35px;   line-height: 35px;    font-size: 12px;    color: #333;}
-                    .mui-icon-eye,.mui-icon-clear{    top: 26px;    height: 35px;    line-height: 35px;}     
-                    .error-info{position: absolute;right: 0;top: 0;font-size: 12px;color: #999;
-                        .mui-icon-info{color: #f65d5d;font-size: 18px;}
-                    }
-                    .forget-pas{position: absolute;color: #999;right: 0;}
-                    &.password-input-row{height: 100px;}
-                    .mui-input-select~.mui-icon-arrowdown{font-size: 20px;    z-index: 1;    right: 0;    width: 38px;    text-align: center;    color: #999;    top: 26px;    height: 35px;    line-height: 35px;    position: absolute;}
-                    .mui-flex{display: -webkit-box;display: -ms-flexbox;display: flex;position: relative;
-                        input{-webkit-box-flex: 1;-ms-flex: 1;flex: 1;}
-                        .mui-icon-clear{    top: 5px; right: 120px;}
-                        img{width: 110px;  height: 35px;  margin: 5px;}
-                    }
-                }
-                .mui-button-row{height: auto;           
-                    .mui-btn-block{    font-size: 13px;    padding: 10px 0;                    
-                    }                
-                }
-                .tk{height: 45px;
-                    input[type=checkbox]{    left: 0;   top: 9px;
-                        &:before{font-size: 24px;    color: #1766bb;}
-                    }
-                    a{color: #999;float: left;line-height: 45px;margin-left: 30px;}
-                }
-                .icon-star{    background: url(images/icon-star.png) no-repeat center/100%;    display: inline-block;    width: 12px;    height: 12px;    margin: 0 4px -1px;}
-            }
-    }
-}
+
 
 /* mine page */
 .icon-message{    background: url(./images/icon-message.png) no-repeat center;
@@ -133,81 +117,33 @@ height: 44px;}
     .btn-install{display:block;margin:20px auto 0;width: 165px;height: 40px;text-align: center;line-height: 40px;color: #eb0002;font-size: 15px;border: 1px solid #eb0002;border-radius: 6px;}
     .down-step{width: 100%;}
 }
-/* index-login-info */
-.login-info{
-    display: inline-block;
-    height: 24px;
-    padding-right: 10px;
-    margin-top: 10px;
-    min-width: 40px;
-    float: right;
-    position: relative;
-    .user_name,.money{font-size: 9px;text-align: right;line-height: 13px;}
-    //login-pop-window
-    .ex {
-        width: 190px;
-        background-color: rgba(102,102,102,.98);
-        padding-left: 20px;
-        position: absolute;
-        top: 34px;
-        padding-top: 5px;-webkit-transition: all 0.3s;transition: all 0.3s;
-        right: -200px; height: 475px;  z-index: 10;
-        &.open{right: -10px;}
-    }
-    .ex hr {
-        border-top: 0;
-        border-bottom: 1px solid #909090;
-        margin: 5px 0
-    }
-    .ex table {
-        width: 160px
-    }
-    .ex table tr td {
-        color: #fff;
-        font-size: 10px;
-        line-height: 20px;
-        text-transform: uppercase
-    }
-    .ex table tr td:last-child {
-        text-align: right
-    }
-    .ex .ct {
-        position: absolute;
-        bottom: 0; 
-        left: 20px;
-        width: 150px
-    }
-    .ex .ct p .go {
-        display: block;
-        height: 35px;
-        line-height: 35px;
-        color: #fff; 
-        font-size: 10px;
-        background-color: #403f3f;
-        text-align: center
-    }   
-     .mui-scroll-wrapper.mui-assets {
-        top: 68px;height: 308px;
-        left: 20px;
-    }
-}
+
 /* casino-list */
-.casino-list-bar{    background-color: #efefef;border-bottom: 1px solid #ccc;}
-.mui-content-casino-list{padding-top: 44px !important;background: #efefef;
+.casino-list-bar{    background-color: #efefef;border-bottom: 1px solid #ccc;
+    .mui-icon-back{color: #666;}
+}
+.mui-content-casino-list{padding-top: 44px !important;background: #fff;
     .casino-wrap{padding:10px;}
-    .electronic-search{position: relative;margin-bottom: 10px;
+    .electronic-search{position: relative;margin: 10px;
         input{margin: 0;height: 35px;font-size: 14px;border: 1px solid #ccc;padding-right: 100px;}
         .btn-search{position: absolute;right: 0;top: 0;font-size: 14px;color: #333;height: 35px;line-height: 35px;text-align: center;width: 84px;background: #ccc;border-top-right-radius: 3px;    border-bottom-right-radius: 3px;}
         .mui-icon-clear{right: 80px;    top: 8px;}
     }
     .casino-list{    margin-left: -5px;    margin-right: -5px;
         a{text-align: center;display: block;    padding: 0 5px;
-            p{height: 24px;line-height: 24px;background: #ccc;color: #333;font-size: 12px;white-space: nowrap;    overflow: hidden;    text-overflow: ellipsis;}
+            p{height: 24px;line-height: 24px;margin-bottom:5px;color: #333;font-size: 12px;white-space: nowrap;    overflow: hidden;    text-overflow: ellipsis;}
         }
         .img-wrap{background: #fff;padding: 8px 0;
-            img{width: 60px;height:60px;vertical-align: middle;}
+            img{width: 70px;height:70px;vertical-align: middle;}
         }
         
+    }
+}
+.casino-game-type{
+    .g-t-slide-indicators{
+        .swiper-slide{width: 80px;    height: 34px;
+    line-height: 34px;
+    text-align: center;}
     }
 }
 /* about */
