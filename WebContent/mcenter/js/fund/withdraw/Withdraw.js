@@ -437,6 +437,14 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
                     $(e.currentTarget).unlock();
                 }
             })
+        },
+        /**
+         *保存出款账户后刷新页面
+         */
+        reloadMainFrame:function (e,opt) {
+            if (e.returnValue == true) {
+                $("#mainFrame").load(root + "/fund/withdraw/withdrawList.html");
+            }
         }
     });
 });
