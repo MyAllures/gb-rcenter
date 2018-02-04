@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+    <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/index.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/hongbao.css" />
+    <style type="text/css">
+        .nav .swiper-slide{width: 15.5%;}
+    </style>
+</head>
+
+<body>
+<!-- 侧滑导航根容器 -->
+<div class="mui-off-canvas-wrap mui-draggable">
+    <!-- 菜单容器 -->
+    <aside class="mui-off-canvas-left">
+        <div class="mui-scroll-wrapper side-menu-scroll-wrapper">
+            <div class="mui-scroll">
+                <!-- 菜单具体展示内容 -->
+                <!--个人信息部分-->
+                <div class="person-info">
+                    <!--登录前-->
+                    <div class="un-login" hidden>
+                        <p>欢迎观临，请先登录</p>
+                        <a type="button" class="mui-btn mui-btn-success  btn-login">用户登录</a>
+                    </div>
+                    <!--登陆后-->
+                    <div class="login">
+                        <i class="icon-person"></i>
+                        <p>EVEN_999</p>
+                        <a type="button" class="mui-btn mui-btn-success  btn-person">个人中心</a>
+                    </div>
+                </div>
+                <!--side-nav-->
+                <div class="side-nav">
+                    <ul class="mui-list-unstyled">
+                        <li class="active home"><a href="index.html">首页</a></li>
+                        <li class="question"><a href="">常见问题</a></li>
+                        <li class="reg_rules"><a href="">注册条款</a></li>
+                        <li class="about"><a href="about.html">关于我们</a></li>
+                        <li class="download"><a href="download.html">下载客户端</a></li>
+                        <li class="pc"><a href="">电脑版</a></li>
+                        <li class=" lang zh-CN">
+                            <a href="">语言</a>
+                        </li>
+                    </ul>
+                    <a type="button" class="mui-btn mui-btn-success  btn-logout">退出登录</a>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- 主页面容器 -->
+    <div class="mui-inner-wrap">
+        <!-- 主页面标题 -->
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+            <!--<a href="download.html" class="btn-download"></a>-->
+            <a type="button" class="mui-btn mui-btn-success mui-pull-right btn-register" href="register.html">注册</a>
+            <a type="button" class="mui-btn mui-btn-success mui-pull-right btn-login" href="login.html">登录</a>
+            <a type="button" class="mui-btn mui-btn-success mui-pull-right btn-demo">试玩</a>
+            <img src="../../mobile-v3/images/logo.png" alt="logo" class="logo" />
+        </header>
+        <div class="mui-content mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <!-- 主界面具体展示内容 -->
+                <!--易记域名-->
+                <section class="yjym">易记域名：www.1136.mb.com</section>
+                <!--轮播-->
+                <section class="mui-slider banner-slide">
+                    <div class="close-slide"></div>
+                    <div class="mui-slider-group">
+                        <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
+                        <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
+                        <div class="mui-slider-item"><a href="#"><img src="../../mobile-v3/images/banner-01.jpg" /></a></div>
+                    </div>
+                </section>
+                <!--公告-->
+                <section class="notice">
+                    <button type="button" class="mui-btn mui-btn-primary btn-title">公告</button>
+                    <div class="notice-list">
+                        <marquee behavior="scroll" scrollamount="2" direction="left">
+                            <p>
+                                <a href="" >111尊敬的用户您好！本站于20161206进行升级！</a>
+                                <a href="">222尊敬的用户您好！本站于20161206进行升级！</a>
+                                <a href="">333尊敬的用户您好！本站于20161206进行升级！</a>
+                                <a href="">444尊敬的用户您好！本站于20161206进行升级！</a>
+                            </p>
+                        </marquee>
+                    </div>
+                </section>
+                <!--导航-->
+                <section class="nav">
+                    <div class="swiper-container slide-indicators">
+                        <div class="swiper-wrapper">
+                            <a class="swiper-slide item-live mui-active" >
+                                <span>真人</span>
+                            </a>
+                            <a class="swiper-slide item-casino" >
+                                <span>电子</span>
+                            </a>
+                            <a class="swiper-slide item-lottery" >
+                                <span>彩票</span>
+                            </a>
+                            <a class="swiper-slide item-sports" >
+                                <span>体育</span>
+                            </a>
+                            <a class="swiper-slide item-fish" >
+                                <span>捕鱼</span>
+                            </a>
+                            <a class="swiper-slide item-chess-and-card" >
+                                <span>棋牌</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                <div class="register-rules-wrap" data-list="rules">
+                    <p><strong><span>玩家注册服务条款</span></strong></p><h2><span>一、基本条款</span></h2><ol start="1" class=" list-paddingleft-2" type="1"><li><p><span>为避免于本网站投注时之争议，请会员务必于进入网站前详阅本娱乐场所定之各项规则，客户一经“我同意”进入本网站进行投注时，即被视为已接受本娱乐场的所有协议与规则；</span></p></li><li><p><span>会员有责任确保自己的帐户以及登入资料的保密性，以会员帐号及密码进行的任何网上投注，将被视为有效；敬请不定时做密码变更之动作；若帐号密码被盗用，进行的投注，本公司一概不负赔偿责任；</span></p></li><li><p><span>本公司保留不定时更改本协定或游戏规则或保密条例，更改之条款将从更改发生后指定之日起生效，并保留一切有争议事项及最后的决策权；</span></p></li><li><p><span>用户须达到居住地国家法律规定之合法年龄方可使用线上娱乐场或网站；</span></p></li><li><p><span>网上投注如未能成功提交，投注将被视为无效；</span></p></li><li><p><span>凡玩家于出牌途中且尚无结果前自动或强制断线时，并不影响比赛之结果；</span></p></li><li><p><span>如遇发生不可抗拒之灾害，骇客入侵，网络问题造成数据丢失的情况，以本公司公告为最终方案；</span></p></li><li><p><span>特此声明，本公司将会对所有的电子交易进行记录，如有任何争议，本公司将会以注单记录为准；</span></p></li><li><p><span>本公司保留更改、修改现有条款或增加任何适当条款的权利，而条款改动后将会在会员端跑马灯上公布；</span></p></li><li><p><span>无论在任何情况下，本公司具有最终的解释权；</span></p></li><li><p><span>若经本公司发现会员以不正当手法&lt;利用外挂程式&gt;进行投注或以任何非正常方式进行的个人、团体投注有损公司利益之投注事情发生，本公司保留权利取消该类注单以及注单产生之红利，并停用该会员帐号；<!--利用外挂程式--><!--利用外挂程式--><!--利用外挂程式--><!--利用外挂程式--><!--利用外挂程式--><!--利用外挂程式--></span></p></li><li><p><span>无风险投注包括在百家乐同时投注的庄闲，单双，大小；龙虎斗中同时投注龙虎，龙双龙单，虎双虎单；在轮盘同时投注黑红，单双，大小等相反的下注，本公司保留权利取消所有优惠、该注单以及单注产生之红利，并停用该会员账号之权利，本公司不承担对此做出任何说明及解释之责任；</span></p></li></ol><p><span>若本公司发现会员有重复申请帐号行为时，保留取消、收回会员所有优惠红利，以及优惠红利所产生的盈利之权利；每位玩家、每一电子邮箱、每一电话号码、每一收款银行账号，以及共享电脑环境(例如:网吧、其他公共用电脑等)只能够拥有一个会员帐号，各项优惠只适用于每位客户在本公司唯一的帐户。</span></p><h2><span>二、真人娱乐条款</span></h2><ol start="1" class=" list-paddingleft-2" type="1"><li><p><span>当您下注后，请等待显示“您共下注XXXX元”，这个讯息在中间的讯息窗口可以看见；</span></p></li><li><p><span>开牌后，若您已有下注，请确认您的输赢金额，这个讯息在中间的讯息窗口可以看见；</span></p></li><li><p><span>您的“总下注金额”及“赢得金额”亦会每局显示于右上角的视窗中，请会员详加确认；</span></p></li><li><p><span>当会员在游戏中途发生网路问题而断线，所有已被确定的投注仍然有效；会员再重新登入时，就可以查询游戏端内的“下注记录”查询发牌结果，会员的额度也会随着当局的输赢增加或减少；</span></p></li><li><p><span>如果您在讯息窗口看到“开牌”的话，而您的游戏画面未显示投注金额，这代表该局您的投注不成功，这有可能下注的时间太迟或是因为网路问题而没有被系统接受；</span></p></li><li><p><span>百家乐游戏在本网内设计为每手牌局前不销牌；</span></p></li><li><p><span>当会员进入游戏，超过5局没下注会有提示；若您连续10局未下注的时候将会被游戏弹出至首页，请会员重新登入；若会员于下注开牌期间强行登出，帐号将被系统锁住三分钟，请会员稍后再重新登入；</span></p></li><li><p><span>本网上游戏是在现场把牌通过扫描后将牌例显示在会员端荧幕上，故若牌没扫描到必将重新扫描一遍，若还是没有感应则把牌翻开由现场公务输入牌卡数码，牌例便会显示在会员端荧幕上；</span></p></li><li><p><span>当荷官不小心同时从牌靴中抽出两张牌，而扫描到的不是按顺序正确的那张牌：<br> &nbsp; &nbsp; &nbsp;（a）若牌局已开牌，而结果不符，系统将根据现况决定牌的先后摆放顺序之开牌结果进行手动开牌，并换上新牌靴开始新局；<br> &nbsp; &nbsp; &nbsp;（b）若牌局未开牌，则由现场公务决定牌的先后摆放顺序，牌局会如常继续；</span></p></li><li><p><span>在洗牌或将牌放入牌靴过程中，有牌不慎曝光，荷官会把牌叠起并重新洗牌，牌局将重新开始；</span></p></li><li><p><span>牌局进行中，未扬牌前(该张牌未于视讯显示点数花色前)，牌不慎离开台面，牌丢落地上，或离开视讯范围，则该牌局予以注销作废，所有下注本金退回；</span></p></li><li><p><span>若该牌已经过扫描且已扬牌后，该牌不慎离开台面，牌丢落地上，或离开视讯范围，因其不影响游戏之正确结果，牌由现场工务摆回后，该牌局正常行其结果仍视为有效；</span></p></li><li><p><span>派错牌例（已不须补牌，荷官仍补牌）现场工务会把多补的那张牌放到牌靴底，牌局结果依视讯显示为准，牌局将如常进行；若该张多补的牌已亮开，公务将在做完以上同样程序后换上新牌靴，牌局会重新开始；</span></p></li><li><p><span>荷官未依闲、庄发牌正确顺序将牌放错位置，由工务将牌依正确顺序摆放回位置后牌局将照常继续；</span></p></li><li><p><span>开牌过程中，牌有感应但无显示，荷官已亮牌（如:已派出数张牌，但第一张牌有感应但未显示，至第二、三张牌显示在错误的闲、庄位置上），现场工务会依牌的正确次序输入代码，牌局将如常继续；</span></p></li><li><p><span>同一张牌，扫描了一次出现2张（闲、庄位置各一张）<br> &nbsp; &nbsp; &nbsp;（a）若牌局已开牌，而结果不符，系统将根据视讯荷官完成该局之正确结果进行手动开牌，牌局也将在牌路无误的情况下如常继续；<br> &nbsp; &nbsp; &nbsp;（b）若牌局未开牌，荷官避开扫描如常开牌后，工务将输入牌之正确数码，并修正不符那张牌的花色、点数，牌局会如常继续；</span></p></li><li><p><span>电脑、扫描器出现异常、牌局中断、牌无法扫描又无法输入牌卡数码时，那一个牌局便会作废，所有程式将被关闭，并重开程式，牌局将重新开始；但若荷官发牌视讯已有结果，则以视讯开牌为主，会由系统完成开配；</span></p></li><li><p><span>有关例行性维护、网路问题、视讯中断、牌局作废、注销情况等事宜，皆可于会员端左上角处公告栏上得知最新讯息；</span></p></li><li><p><span>发牌视讯仅保留三日，若有异议请于游戏当日起三日内提出，三日后恕不受理；</span></p></li><li><p><span>本娱乐场之视讯为真人直播，故该局游戏若因国际线路传输问题出现争议，将以视讯看到牌局结果决定输赢；</span></p></li><li><p><span>本娱乐场所提供之牌路仅供参考，若因国际线路问题或其他因素造成牌路显示有误，所有游戏结果将以视讯开牌及游戏记录为主；</span></p></li><li><p><span>本公司保留一切有争议事项的修正及最后的决策；</span></p></li><li><p><span>本娱乐场保留随时更改、修订或删除游戏、游戏规则（包括机率及赔率）及协议条款的权利而无须作事先通知；</span></p></li><li><p><span>本娱乐场保留随时修订、撤销或中止任何投注的权利而无须作事先通知，亦无须作任何解释；</span></p></li><li><p><span>本娱乐场记录每一项于本网站伺服器内执行的交易及投注功能；若会员认为向本娱乐场提供的资料与本网站资料库中的资料记录之间出现了任何声称的差异，一切均以本网站资料库的资料为准；</span></p></li><li><p><span>当会员已于本娱乐场之游戏厅内下注，而电脑出现连线异常导致牌局中断时，会员最后押住仍视为有效，本娱乐场将以会员于本网站资料库的交易记录为准；</span></p></li><li><p><span>会员在本娱乐场之游戏厅内任何游戏的押注记录均视为有效，会员需自行承担下注后的风险；</span></p></li></ol><p><span>若经本公司发现会员以不正当手法&lt;利用外挂程式&gt;进行投注或以任何非正常方式进行的个人、团体投注有损公司利益之投注事情发生，本公司保留取消该类注单之权利。<!--利用外挂程式--><!--利用外挂程式--><!--利用外挂程式--><!--利用外挂程式--><!--利用外挂程式--><!--利用外挂程式--></span></p><h2><span>三、体育投注条款</span></h2><ol start="1" class=" list-paddingleft-2" type="1"><li><p><span>当您在下注之后，请等待显示下注成功信息；</span></p></li><li><p><span>为了避免出现争论，您必须在下注之后检查下注状况；</span></p></li><li><p><span>任何[体育投注]的投诉必须在开赛之前提出，本公司不会受理任何开赛之后的投诉；</span></p></li><li><p><span>所有赛事投注项目(包括滚球)，出现任何打字错误或非人为故意失误之注单，一律取消；</span></p></li><li><p><span>除滚球外，开赛后接受的投注，将被视为“无效”；</span></p></li><li><p><span>倘若发生不可抗拒之灾害或骇客入侵破坏行为，造成网站故障或资料毁损等情况，以本公司网站公告讯息为最后处理模式，请各会员投注后列印资料本公司才接受投诉！</span></p></li><li><p><span>即日起任何异常或争议之注单，将不计算结果；并转移至当日历史帐户于结果栏位注明"已注销"；</span></p></li><li><p><span>下注时出现同时同分同秒及内容相同2笔以上之注单，本公司只承认一笔有效注单，其余一律注销；</span></p></li><li><p><span>由于走地时系统资料处理繁忙，如发现刻意于“走地进球后之交易资料一律取消，不便之处，敬请见谅！</span></p></li><li><p><span>走地进球后，如因网页系统或线路状况..等问题而导致比分或赔率无法更新，所有相关交易资料“一律取消”；</span></p></li><li><p><span>滚球注单下注过程中若显示[等待中]，该注单尚未被本公司确认接受；客户可至下注状况与帐户历史确认，若该滚球注单确定未被本公司接受，可至帐户历史查看该注单结果会显示[未接受]并且画横线！！</span></p></li><li><p><span>在赛事开赛前,比赛队伍之主场或中立场若有任何更改,本公司将依据盘口与行情差距而保留更改前的注单是否有效之权利,所有判决将于走马灯公告上公布!</span></p></li><li><p><span>早餐取消之注单可于"下注状况"查询,当日以前(含当日)取消之注单将放于"帐户历史"并于结果栏位注明"取消",敬请各会员查询后重新交易!</span></p></li></ol><p><span>若经本公司发现会员以不正当手法&lt;利用外挂程式&gt;进行投注或以任何非正常方式进行的个人、团体投注有损公司利益之投注事情发生，本公司保留取消该类注单之权利，并于注单取消时，备注此注单为『非法下注』或『系统注销』(含完赛后之注单)。<!--利用外挂程式--><!--利用外挂程式--><!--利用外挂程式--><!--利用外挂程式--><!--利用外挂程式--><!--利用外挂程式--></span></p><h2><span>四、其他游戏条款</span></h2><p><span>l<span>&nbsp; </span></span><span>彩票类游戏</span></p><ul class=" list-paddingleft-2" type="disc"><ol start="1" class=" list-paddingleft-2" type="1"><li><p><span>当您在下注之后，请等待显示“下注成功”资讯；</span></p></li><li><p><span>为了避免出现争论，您必须在下注之后检查“下注状况”；</span></p></li><li><p><span>任何的投诉必须在开彩之前提出，本公司不会受理任何开彩之后的投诉；</span></p></li><li><p><span>所有投注项目，公布赔率时出现的任何打字错误或非故意人为失误，本公司保留改正错误和按正确赔率结算投注的权力；</span></p></li><li><p><span>开彩后的投注，将被视为“无效”；所有赔率将不时浮动，派彩时的赔率将以确认投注时之赔率为准；</span></p></li><li><p><span>所有赛果以官方网站公布的结果为依据，若因官网延迟、错误或取消；本公司保留对已下注注单的裁决权；</span></p></li><li><p><span>若发生两颗球同时吸起，将依照在结果区之号码球为主；</span></p></li><li><p><span>在游戏尚未完成开配之前，若因机器问题而导致有结果产生，该局将一律注销；</span></p></li><li><p><span>在下注时间尚未结束之前，若因任何因素导致有结果产生，该局将一律注销；</span></p></li><li><p><span>若该局己有结果但与实际结果不符，系统将根据视讯完成该局之正确结果进行手动开牌；</span></p></li></ol></ul><p><span>l<span>&nbsp; </span></span><span>电子游艺</span></p><ul class=" list-paddingleft-2" type="disc"><ol start="1" class=" list-paddingleft-2" type="1"><li><p><span>电子游戏中奖画面与派彩结果不符时，本公司将以资料库最终结果为依据；</span></p></li><li><p><span>彩池金额是以满注中奖结果显示，玩家中奖系以押注比例分配彩池金额；</span></p></li><li><p><span>老虎机游戏过程中如遇断线情况将以资料库最终结果为依据，本公司保留对已下注注单的裁决权；</span></p></li><li><p><span>21</span><span>点游戏补牌中如遇玩家断线，则视玩家为不补牌；游戏结果将视为有效；</span></p></li><li><p><span>红狗游戏过程中如遇断线情况将视为玩家不加注进行补牌，完成该局游戏结果。q</span></p></li></ol></ul><p><br></p>
+                </div>
+            </div> <!--mui-scroll 闭合标签-->
+        </div>  <!--mui-content 闭合标签-->
+        <!--footer-->
+        <footer class="mui-bar mui-bar-tab">
+            <a class="mui-tab-item">
+                <span class="mui-icon icon-deposit"></span>
+                <span class="mui-tab-label">存款</span>
+            </a>
+            <a class="mui-tab-item" href="promo.html">
+                <span class="mui-icon icon-promo"></span>
+                <span class="mui-tab-label">优惠</span>
+            </a>
+            <a class="mui-tab-item mui-active" href="index.html">
+                <span class="mui-icon icon-home"></span>
+                <span class="mui-tab-label">首页</span>
+            </a>
+            <a class="mui-tab-item">
+                <span class="mui-icon icon-service"></span>
+                <span class="mui-tab-label">客服</span>
+            </a>
+            <a class="mui-tab-item" href="mine.html">
+                <span class="mui-icon icon-mine"></span>
+                <span class="mui-tab-label">我的</span>
+            </a>
+        </footer>
+
+    </div>
+</div>
+<!--语言弹窗-->
+<ul class="lang-menu">
+    <li class="current zh-CN"><a href="">中文</a></li><!--当前语言版本加current-->
+    <li class="en-US"><a href="">English</a></li>
+    <li class="ja-JP"><a href="">日文</a></li>
+</ul>
+<script src="../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../mobile-v3/js/common.js"></script>
+<script src="../../mobile-v3/js/swiper.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var slideIndicators = new Swiper('.slide-indicators', {
+            slidesPerView: 'auto',
+            touchRatio: 0.2,
+            slideToClickedSlide: true,
+        });
+        // 去除后台编辑器自定义的样式
+        $('.register-rules-wrap *').removeAttr('style');
+    });
+</script>
+</html>
