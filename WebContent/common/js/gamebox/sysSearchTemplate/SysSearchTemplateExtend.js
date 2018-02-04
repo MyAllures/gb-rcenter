@@ -15,10 +15,15 @@ define(['gb/sysSearchTemplate/SysSearchTemplate','common/BasePage'], function (S
             var selectVal = $target.attr("key");
             if (selectVal && selectVal != '') {
                 var data = $target.parents().find("#content_" + selectVal).text();
+                var $form = $(window.top.topPage.getCurrentForm(e));
                 var selectName = $target.text();
+                var url = $form.attr("templateUrl");
+                if(!url) {
+                    url = _this.getFirstFromAction(e);
+                }
                 window.top.topPage.ajax({
                     loading: true,
-                    url: _this.getFirstFromAction(e),
+                    url: url,
                     type: "post",
                     data: JSON.parse(data),
                     dataType: "html",
