@@ -138,7 +138,8 @@
 .pay-third.huitong_zfb,
 .pay-third.jiefuda_zfb,
 .pay-third.ufu_zfb,
-.pay-third.hengtong_zfb{background-position: 0 -60px;}/* 01 支付宝 & 魔宝-支付宝 & 通汇-支付宝 & 金安付-支付宝 & 商银信-扫码支付-支付宝*/
+.pay-third.hengtong_zfb,
+.pay-third.alipay_micropay{background-position: 0 -60px;}/* 01 支付宝 & 魔宝-支付宝 & 通汇-支付宝 & 金安付-支付宝 & 商银信-扫码支付-支付宝*/
 .pay-third.wechatpay,
 .pay-third.dinpay_wx,
 .pay-third.mobao_wx,
@@ -227,7 +228,8 @@
 .pay-third.huitong_wx,
 .pay-third.jiefuda_wx,
 .pay-third.ufu_wx,
-.pay-third.hengtong_wx{background-position: 0 -90px;}/* 02 微信 & 智付-微信 &  魔宝-微信 & 久付-微信 & 锐付-微信 & 通汇-微信 & 金安付-微信 &商银信-扫码支付-微信*/
+.pay-third.hengtong_wx,
+.pay-third.wechat_micropay{background-position: 0 -90px;}/* 02 微信 & 智付-微信 &  魔宝-微信 & 久付-微信 & 锐付-微信 & 通汇-微信 & 金安付-微信 &商银信-扫码支付-微信*/
 .pay-third.tenpay {background-position: 0 -120px;}/* 03 财付通 */
 .pay-third.unionpay{background-position: 0 -150px;}/* 04 银联在线 */
 .pay-third.chinaums{background-position: 0 -180px;}/* 05 银联商务 */
@@ -301,7 +303,8 @@
 .pay-third.amx_qq,
 .pay-third.yishou_qq,
 .pay-third.gaotong_qq,
-.pay-third.zhih_qq{background-position: 0 -818px;}/* 25 QQ钱包 */
+.pay-third.zhih_qq,
+.pay-third.qq_micropay{background-position: 0 -818px;}/* 25 QQ钱包 */
 .pay-third.zhihpay{background-position: 0 -859px;}/* 26 智汇付 */
 .pay-third.upay{background-position: 0 -896px;}/* 27 优贝支付 */
 .pay-third.onecodepay{background-position: 0 -936px;}/* 28 1码付 */
@@ -487,8 +490,36 @@ font-style: normal;
 .mediate-search-btn{ position: absolute;width:16%;min-width:150px;left: 38%;z-index: 888;}
 
 /*查询列表重置按钮样式*/
+.audit-log-optype-login-color{
+  color: #71d14b;
+}
+.audit-log-optype-logout-color{
+  color: #75788d;
+}
 .reset-condition-button {
   right: 37%;
   position: absolute;
-  z-index: 888;
+z-index: 888;
+}
+/**日志查询页面操作类型颜色**/
+.audit-log-optype-create-color{
+color: #25a774;
+}
+.audit-log-optype-update-color{
+  color: #ff8e2e;
+}
+.audit-log-optype-delete-color{
+  color: #e13138;
+}
+.audit-log-optype-audit-color{
+  color: #00acf0;
+}
+.audit-log-optype-other-color{
+  color: #4681da;
+}
+.audit-log-optype-recharge-color{
+  color: #93d43d;
+}
+.audit-log-optype-withdraw-color{
+  color: #eb5350;
 }

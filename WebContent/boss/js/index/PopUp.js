@@ -164,6 +164,19 @@ define(['gb/components/PopUp'], function (PopUp) {
             var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.date), dateFormat.daySecond);
             var content = '<a nav-target="mainFrame" name="tellerReminder" href="/largeTransactionMonitor/list.html?search.transactionNo=' + msgBody.transactionNo + '">' + '站点[' + msgBody.siteId + ']玩家' + msgBody.name + '于' + date + '新增大额交易&nbsp;' + msgBody.amount + '!,交易号为' + msgBody.transactionNo + '&nbsp;</a>';
             popUp.pop(content, date, "warning");
+        },
+        /**
+         * 停用账号信息通知
+         * @param data
+         */
+        payAccountDisable: function (data) {
+            var msgBody = $.parseJSON($.parseJSON(data).msgBody);
+            var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.date), window.top.dateFormat.daySecond);
+            var content;
+            var msg = window.top.message.content['payAccount.disable.master.log'];
+            msg = msg.replace("{date}", date);
+            content = "<a href='javascript:;'>" + popUp.formatStr(msg, msgBody) + "</a>";
+            popUp.pop(content, date, "warning");
         }
     });
 });

@@ -53,11 +53,11 @@ define(['common/BaseListPage'], function(BaseListPage) {
                 } else {
                     $(this).siblings(".dropdown-menu").css("display", "none");
                 }
-                //阻止事件冒泡
+                /*//阻止事件冒泡
                 if (e.stopPropagation)
                     e.stopPropagation();
                 else
-                    e.cancelBubble = true;
+                    e.cancelBubble = true;*/
             });
             /**
              * 选中所有层级
@@ -73,6 +73,14 @@ define(['common/BaseListPage'], function(BaseListPage) {
             });
             $(_this.formSelector).on('click', function (e) {
                 $(".rank-btn").siblings(".dropdown-menu").css("display", "none");
+            });
+
+            $(".playerRank", _this.formSelector).parent().on('click', function (e) {
+                //阻止事件冒泡
+                if (e.stopPropagation)
+                    e.stopPropagation();
+                else
+                    e.cancelBubble = true;
             });
         },
         /**

@@ -87,7 +87,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             btnOption.target = url;
             btnOption.callback = "back";
             window.top.topPage.doDialog(e, btnOption);
-            window.top.topPage.online_payName = $("input[name='result.payerName']").val();
+            window.top.topPage.payerName = $("input[name='result.payerName']").val();
             window.top.topPage.payerBankcard = payerBankcard;
             window.top.topPage.rechargeAddress = $("input[name='result.rechargeAddress']").val();
         }

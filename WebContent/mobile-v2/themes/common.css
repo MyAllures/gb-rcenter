@@ -953,6 +953,9 @@ body.has-srchbar .electronic-srch{
 .mine-form .form-row >.cont input::-webkit-input-placeholder{
     color: #aeaeae;
 }
+textarea::-webkit-input-placeholder{
+    color: #aeaeae;
+}
 .mine-form .form-row >.cont input[type="text"].ico1{
     background-image: url(../images/ico-user.png);
     background-position-x: 3px;
@@ -5271,3 +5274,8 @@ header.blue{background:#1766bb;}
 /* 首页棋牌的样式 */
 .hb-block .index-block-content .game-img{display: block;    width: 48px;    height: 48px;    margin: 13px auto 8px;}
 .hb-block .index-block-content .game-img img{    width: 100%; margin: 0;}
+
+/* bit币转账页面样式 */
+.mui-input-row.bticonin-row{height: auto;}
+.mui-input-row.bticonin-row>.ct{padding-right: 0;padding-bottom: 0;    line-height: 0;}
+.mui-input-row.bticonin-row>.ct textarea{padding: 10px;font-size: 12px;color: #999;text-align: right;}

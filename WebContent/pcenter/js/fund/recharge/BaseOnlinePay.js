@@ -125,9 +125,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                         _window.close();
                     }
                     var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
-                    if (msg) {
-                        url = url + "&msg=" + msg;
-                    }
+                    window.top.onlineFailMsg = msg;
                     var btnOption = option;
                     btnOption.text = window.top.message.fund_auto['等待支付'];
                     btnOption.target = url;
@@ -139,6 +137,14 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                 }
             });
         },
+
+        asciiToUnicode: function (content) {
+            var result = '';
+            for (var i = 0; i < content.length; i++)
+                result += '&#' + content.charCodeAt(i) + ';';
+            return result
+        },
+
         /**
          * 更改存款规则-更改存款金额的remote规则
          * @param $form
@@ -223,7 +229,8 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                 }
             }
             return rule;
-        },
+        }
+        ,
         /**
          * 支付后回调
          * @param e
@@ -241,14 +248,16 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                 $current.parent().addClass("select");
                 $("#mainFrame").load(option.backUrl);
             }
-        },
+        }
+        ,
         /**
          * 更改验证消息
          */
         bindFormValidation: function () {
             this._super();
             this.changeAmountMsg();
-        },
+        }
+        ,
         /**
          * 更新存款金额的远程验证提示消息
          */
@@ -276,7 +285,8 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             }
             this.extendValidateMessage({"result.rechargeAmount": {remote: msg}});
             this.extendValidateMessage({"result.rechargeAmount": {max: msg}});
-        },
+        }
+        ,
 
         /**
          * 银行收/展
@@ -298,7 +308,8 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                 $(text).text(window.top.message.fund['Recharge.onlinePay.showMoreBank']);
             }
             $target.unlock();
-        },
+        }
+        ,
         /**
          * 展开其它优惠
          * @param e
@@ -309,5 +320,6 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             $(e.currentTarget).hide();
             $(e.currentTarget).unlock();
         }
-    });
+    })
+        ;
 });

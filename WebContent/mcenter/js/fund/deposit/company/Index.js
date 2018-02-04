@@ -38,10 +38,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                 url: $(_this.formSelector).attr("action"),
                 type:'POST',
                 data: data,
-                dataType: "html",
-                headers: {
-                    "Soul-Requested-With":"XMLHttpRequest"
-                },
+                dataType: "json",
                 success: function (data) {
                     _this.renderData(data);
                     _this.onPageLoad();
@@ -63,12 +60,9 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                 url: root+'/fund/deposit/company/doStatistics.html',
                 type:'POST',
                 data: data,
-                dataType: "html",
-                headers: {
-                    "Soul-Requested-With":"XMLHttpRequest"
-                },
+                dataType: "json",
                 success: function (data) {
-                    var json = JSON.parse(data);
+                    var json = data;
                     if(json.isTodaySales){
                         $("#todayTotal",_this.formSelector).text(json.todayTotal);
                         $("#totalSumTarget",_this.formSelector).parent().parent().hide();
@@ -91,10 +85,14 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
         renderData:function (data) {
             var _this=this;
             var $result = $("#editable tbody", _this.formSelector);
-            var json = JSON.parse(data);
-            if(json.result) {
-                var html = $("#VPlayerDepositListVo",_this.formSelector).render({data:json.result});
-                $result.html(html);
+            try {
+                var json = data;
+                if(json.result) {
+                    var html = $("#VPlayerDepositListVo",_this.formSelector).render({data:json.result});
+                    $result.html(html);
+                }
+            }catch(err) {
+                console.info(err);
             }
         },
 
@@ -110,11 +108,12 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                 window.top.topPage.ajax({
                     loading: true,
                     url: window.top.topPage.getCurrentFormAction(event),
-                    headers: {
+                    /*headers: {
                         "Soul-Requested-With": "XMLHttpRequest"
-                    },
+                    },*/
                     type: "post",
                     data: this.getCurrentFormData(event),
+                    dataType:"json",
                     success: function (data) {
                         _this.renderData(data);
                         event.page.onPageLoad();

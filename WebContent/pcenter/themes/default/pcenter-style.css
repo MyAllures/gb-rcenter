@@ -2114,3 +2114,10 @@ div.scroll{overflow-x:hidden;overflow-y:hidden;white-space:pre-wrap;word-wrap:br
     border:0;
     padding: 0;
 }
+
+/*反扫教程*/
+
+.fansao-wrap{padding: 10px 20px; position: relative;}
+.fansao-wrap .fansao-title{font-weight: 600;margin-bottom: 15px;}
+.fansao-wrap .fansao-img{position: relative;}
+.fansao-wrap .fansao-img img{width: 100%;}

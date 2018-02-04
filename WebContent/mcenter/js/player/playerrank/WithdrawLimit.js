@@ -136,6 +136,17 @@ define(['common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], function (
                     $("#withdrawExcessCheckNum").val("");
                 }
             });
+            //启用，每日00:00重置取款手续费相关设置，时限输入框withdrawTimeLimit不可用，否则可用
+            $(this.formSelector).on("switchChange.bootstrapSwitch", "#isWithdrawFeeZeroReset", function (event, state) {
+                $("input[name='result.isWithdrawFeeZeroReset']").val(state);
+                if (state) {
+                    $("#withdrawTimeLimitDiv").attr("style","display:none");
+                    $("#withdrawTimeLimit").attr("disabled", "disabled");
+                } else {
+                    $("#withdrawTimeLimitDiv").attr("style","display:block");
+                    $("#withdrawTimeLimit").removeAttr("disabled");
+                }
+            });
             //复选框
             //switch
             this.unInitSwitch($("[name='my-checkbox']"))
@@ -170,6 +181,8 @@ define(['common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], function (
             //时限跟免手续费次数需都设置后才能生效；
             var withdrawTimeLimit = $("#withdrawTimeLimit").val();
             var withdrawFreeCount = $("#withdrawFreeCount").val();
+            var isWithdrawFeeZeroReset = $("#isWithdrawFeeZeroReset").val();
+
 
             //手续费收费相关判断和保存
             var withdrawMaxFee = $("#withdrawMaxFee").val();
@@ -183,10 +196,14 @@ define(['common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], function (
             $("input[name='result.isWithdrawLimit']").val($("#isWithdrawLimit").is(":checked"));
             $("input[name='result.withdrawCheckStatus']").val($("#withdrawCheckStatus").is(":checked"));
             $("input[name='result.withdrawExcessCheckStatus']").val($("#withdrawExcessCheckStatus").is(":checked"));
+            $("input[name='result.isWithdrawFeeZeroReset']").val($("#isWithdrawFeeZeroReset").is(":checked"));
            if (!this.validateForm(e)) {
                 return false;
             }
-            if ((!withdrawTimeLimit&&withdrawFreeCount)||(withdrawTimeLimit&&!withdrawFreeCount)) {
+            //withdrawTimeLimit和isWithdrawFeeZeroReset不同时存在，有一个为true就不用判空
+            var timeBlank = withdrawTimeLimit||isWithdrawFeeZeroReset;
+
+            if ((!timeBlank&&withdrawFreeCount)||(timeBlank&&!withdrawFreeCount)) {
                 if (_this.parentTarget == undefined || $(e.currentTarget).attr("isContinue") != 1) {
                     window.top.topPage.bootstrapDialog.show({
                         type: BootstrapDialog.TYPE_PRIMARY,
@@ -304,6 +321,17 @@ define(['common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], function (
                             $("#withdrawAdminCost").val(data.result.withdrawAdminCost);
                             $("#withdrawRelaxCredit").val(data.result.withdrawRelaxCredit);
                             $("#withdrawDiscountAudit").val(data.result.withdrawDiscountAudit);
+                            //复制０点重置按钮
+                            if (data.result.isWithdrawFeeZeroReset) {
+                                $("#isWithdrawFeeZeroReset").bootstrapSwitch('state', true, true);
+                                $("#withdrawTimeLimitDiv").attr("style","display:none");
+                                $("#withdrawTimeLimit").attr("disabled", "disabled");
+                            } else {
+                                $("#withdrawTimeLimitDiv").attr("style","display:block");
+                                $("#withdrawTimeLimit").removeAttr("disabled");
+                                $("#withdrawTimeLimit").val(data.result.withdrawTimeLimit);
+                                $("#isWithdrawFeeZeroReset").bootstrapSwitch('state', false, false);
+                            }
                         }
                     });
                 } else {

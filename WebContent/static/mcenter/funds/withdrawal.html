@@ -244,16 +244,72 @@
                             <a href="javascript:void(0)" class="del-template"><span class="fa fa-times"></span></a><a role="menuitem" tabindex="-1" href="javascript:void(0)" key="10" class="text-template">模板1</a>
                         </li>
                     </ul>
+
                 </div>
+                              <button type="button" class="btn btn-filter btn-outline radius-right-none" data-toggle="modal" data-target="#add-logos">易收付出款</button>
                         </span>
                     </div>
                     </div>
-                    
+
                         </div>
 
 
             </div>
             </div>
+            <div class="modal inmodal" id="add-logos" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content animated bounceInRight unstyled family">
+                        <div class="modal-header">
+
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span> </button>
+                        </div>
+
+                        <div class="modal-body m-md">
+                           <div class="ck-info">
+                               <div class="list-group-item warning-img-wrap">
+                                   <div class="warning-imgs">
+                                       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAqFBMVEUAAADqkQDqkwPqlgvwzZTrmRPtr0ruvGry5tLy6tvwz5jx2bLx4sjrmBDspTLuuGDuv3Dvyo3w0p/w16vrnBrrnR3roCTroSfsqj7trUbuwnnvyYnx3bvx3r7x4cXy5M3y6NbrmhbsqDntsVDttFbvxIDy5M7qkQDz8/PqlQrvzZTx2LHuvGrtr0nrmRXy5tLy5M3rnBzrmRPqkwXw0J3vxoTttlvsqj0Mjb8ZAAAAJ3RSTlMA39zUS8yVdQ4ERy0Xz66Bb1JBNMbCu7iimWZXJSEbEgnJp4+JYBLeswtWAAABDklEQVQ4y4WT2XKDMAxFZZul7NmTptm6qiQt0KTL//9ZDWMzMsTkvF3p2CPPWGByJwEb05VgDJEx4W2gz8MjwxY2n3Ta8ZKhAV8FtD9JsMdsCy2OUMW8kOQqJFE7ne6fq3fJSRuzGBqCFBVFaQh4Dw0j1OQnU+Dj5gFuRzhiyzJQF9iESyiF1CLoKXbukDA/QIhDQh7BmsTLdy38ICEEn8ZjLXwgwbktjG4Jjk3QQ0Y5yV+fkjMpuG8QLHCAFAAykn+rsqz+SGEthY2wz+DGIPHsgg81O9cmLNTHHfPrgpiCwuf0mQX5T5pMGRT+auyV6LRZ0tmt/RM3jj9Dj60nmDotXiwrvncyz/PDAxD+AcYFb5mFcVifAAAAAElFTkSuQmCC">
+                                   </div>
+                                   <div>
+                                       <p>应用后，出款审核列表将显示出款相关信息及选项;</p>
+                                       <p>玩家点击入口并进行存款行为，系统将自动判断存款是否成功;</p>
+                                   </div>
+                               </div>
+                               <div class="list-group-item ysf-remittance">
+                                    <ul>
+                                        <li>
+                                            <p class="m-l-24"><span  class="start-or" >是否启用:</span><input type="checkbox" name="my-checkbox" data-size="mini" checked></p>
+                                        </li>
+                                        <li>
+                                            <form class="form-inline">
+                                                <div class="m-l-24">
+                                                    <span>出款渠道:</span>
+                                                    <select class=" m-l-24">
+                                                        <option value="">易收付自动出款</option>
+                                                        <option value="">易收付自动出款</option>
+                                                        <option value="">易收付自动出款</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <label for="SellerNum"><i class="star">*</i><span class="text-align">商户号:</span><input type="text" id="SellerNum"></label>
+                                        </li>
+                                        <li>
+                                            <label for="PlatformNum"><i class="star">*</i><span class="text-align">平台号:</span><input type="text" id="PlatformNum"></label>
+                                        </li>
+                                        <li>
+                                            <label for="EncryptionKey"><i class="star">*</i><span class="text-align">密 钥:</span><input type="text" id="EncryptionKey"></label>
+                                        </li>
+                                    </ul>
+                               </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <!--表格内容-->
             <div id="editable_wrapper" class="dataTables_wrapper" role="grid">
                 <div class="table-responsive">
@@ -279,6 +335,9 @@
                                 </th>
                                 <th>审核人</th>
                                 <th>审核时间</th>
+                                <th>出款确认</th>
+                                <th>确认人</th>
+                                <th>确认时间</th>
                                 <th>操作</th>
                                 <th>备注</th>
                             </tr>
@@ -301,6 +360,15 @@
                                 <td>--</td>
                                 <td><span class="co-grayc2">15分钟前</span></td>
                                 <td>
+                                    <p class="text-i-10">- -</p>
+                                </td>
+                                <td>
+                                  <p>- -</p>
+                                </td>
+                                <td>
+                                    <p class="hoursColor">- -</p>
+                                </td>
+                                <td>
                                     <a href="funds/withdrawal-detail.html" nav-target="mainFrame" class="co-blue">详细</a>
                                 </td>
                                 <td>我是备注</td>
@@ -320,6 +388,15 @@
                                 <td><a data-toggle="modal" data-target="#withdrawal-audit" class="co-blue"><span class="label label-danger p-x-md">失败</span></a></td>
                                 <td>jack</td>
                                 <td><span class="co-grayc2">1小时前</span></td>
+                                <td>
+                                    <p class="text-i-10">- -</p>
+                                </td>
+                                <td>
+                                   <p>jack</p>
+                                </td>
+                                <td>
+                                    <p class="hoursColor">3小时前</p>
+                                </td>
                                 <td>
                                     <a href="funds/withdrawal-detail.html" nav-target="mainFrame" class="co-blue">详细</a>
                                 </td>
@@ -341,6 +418,15 @@
                                 <td>admin</td>
                                 <td><span class="co-grayc2">2小时前</span></td>
                                 <td>
+                                    <p class="text-i-10">- -</p>
+                                </td>
+                                <td>
+                                    <p>jack</p>
+                                </td>
+                                <td>
+                                    <p class="hoursColor">3小时前</p>
+                                </td>
+                                <td>
                                     <a href="funds/withdrawal-detail.html" nav-target="mainFrame" class="co-blue">详细</a>
                                 </td>
                                 <td>我是超级长的备注</td>
@@ -361,6 +447,15 @@
                                 <td>xunsing</td>
                                 <td><span class="co-grayc2">3小时前</span></td>
                                 <td>
+                                    <button  type="button" class="btn btn-info btn-sm">出款</button>
+                                </td>
+                                <td>
+                                    <p>jack</p>
+                                </td>
+                                <td>
+                                    <p class="hoursColor">3小时前</p>
+                                </td>
+                                <td>
                                     <a href="funds/withdrawal-detail.html" nav-target="mainFrame" class="co-blue">详细</a>
                                 </td>
                                 <td>你们都没有我长</td>
@@ -380,6 +475,15 @@
                                 <td><a data-toggle="modal" data-target="#withdrawal-audit" class="co-blue"><span class="label label-success p-x-md">成功</span></a></td>
                                 <td>admin</td>
                                 <td><span class="co-grayc2">3小时前</span></td>
+                                <td>
+                                    <button  type="button" class="btn btn-info btn-sm">出款</button>
+                                </td>
+                                <td>
+                                    <p>jack</p>
+                                </td>
+                                <td>
+                                    <p class="hoursColor">3小时前</p>
+                                </td>
                                 <td>
                                     <a href="funds/withdrawal-detail.html" nav-target="mainFrame" class="co-blue">详细</a>
                                 </td>
@@ -1108,6 +1212,9 @@
     </div>
 </div>
 <script type="text/javascript">
+
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+
 $('.time-tooltip [data-toggle="tooltip"]').tooltip();
  $(".show-demand-b").click(function(){
       $(this).toggleClass("open")
@@ -1124,3 +1231,5 @@ $(".type-search-btn").click(function(){
       $(this).parents(".input-group").next(".type-search").toggle()
     });
 </script>
+
+

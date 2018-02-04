@@ -172,10 +172,10 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
 
         changeTab: function (id) {
             var _this = this;
-            if (id < 5) {
+            if (id > 0) {
                 _this.showLoading(214);
                 _this.getGameByApiId(id);
-            } else if (id >= 5 && id < 9) {   // 代理,关于,条款
+            } else if (id < 0) {   // 代理,关于,条款
                 _this.loadOther(id);
             }
         },
@@ -198,6 +198,8 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
                             window.top.page.sport.onPageLoad();
                         } else if (id == 4) {
                             window.top.page.lottery.onPageLoad();
+                        } else if (id == 5) {
+                            window.top.page.chess.onPageLoad();
                         }
                         mui('.mui-slider').slider();
                     }, 1000);
@@ -215,11 +217,11 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
         /** 刷新数据 */
         refreshData: function () {
             var id = $('#nav-type').val();
-            if (id < 5) {
+            if (id > 0) {
                 window.location.replace(root + '/index.html?typeId=' + id);
-            } else if (id == 5) {   // 优惠
+            } else if (id == -1) {   // 优惠
                 page.loadOther(id);
-            } else if (id > 5 && id < 9) {   // 关于,条款
+            } else if (id < 0) {   // 关于,条款
                 page.loadOther(id);
             } else {
                 window.location.replace('/mainIndex.html');

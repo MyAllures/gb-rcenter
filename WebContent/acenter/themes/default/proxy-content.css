@@ -59,6 +59,7 @@ div.dataTables_paginate > div button{height:28px;line-height:13px;}
 
 /*search*/
 .filter-wraper{padding:15px 15px 10px 15px;border-bottom:1px solid #ddd;}
+.filter-wrap-no-border{padding:15px 15px 10px 15px;}
 .filter-wraper>button{float:left;margin:0 10px 5px 0;}
 .filter-wraper>a.btn{float:left;margin:0 10px 5px 0;}
 .filter-wraper .btn-group{float:left;margin:0 10px 0 0;}

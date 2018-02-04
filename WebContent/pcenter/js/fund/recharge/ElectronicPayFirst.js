@@ -228,9 +228,9 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                 $("label[for='result.payerBankcard']").text(text);
                 var isTitle = $target.find("input[name='result.payAccountId']:checked").attr("data-title");
                 if (isTitle == 'true') {
-                    $("div[name='payerBankcard'] .controls .controls").show();
+                    $("div[name='payerName']").show();
                 } else {
-                    $("div[name='payerBankcard'] .controls .controls").hide();
+                    $("div[name='payerName']").hide();
                 }
                 $("div[name='payerBankcard']").show();
             } else {

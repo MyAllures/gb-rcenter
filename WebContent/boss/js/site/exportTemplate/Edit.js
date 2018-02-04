@@ -70,9 +70,9 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
              */
             $(this.formSelector).on("validate", "input", function (e,message) {
                 if(message && $(this).is(":hidden")){
-                    var attr = $(this).attr("tt");
-                    $(".a_"+attr).formtip(message);
-                    $(".a_"+attr).click();
+                    var attr = $(this).attr("name");
+                    $("[selectdiv=\'"+attr+"\']").formtip(message);
+                    $("[selectdiv=\'"+attr+"\']").click();
                     e.result=true;
                 }
                 else{
@@ -87,9 +87,6 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
          * @returns {boolean}
          */
         uploadFile: function (e, opt) {
-            if (!this.validateForm(e)) {
-                return false;
-            }
             var id= $("[name='siteBillTemplateId']").val();
             var temp = $("[name='result.id']").val();
             var tempid;
