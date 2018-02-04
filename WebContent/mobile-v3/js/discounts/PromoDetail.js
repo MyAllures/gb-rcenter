@@ -8,13 +8,13 @@ $(function () {
         /*禁用侧滑手势指定样式*/
         disabledHandSlip: ['.mui-off-canvas-left'],
         /*表格添加横向滚动*/
-        horizontalScroll: ['li .ct']
+        horizontalScroll:['li .ct']
     };
     muiInit(options);
     onPageLoad();
 });
 
-function submit(obj, options) {
+function submit(obj,options){
     var isLogin = sessionStorage.getItem("isLogin");
     if (isLogin && isLogin === "true") {
         var isDemo = options.isDemo;
@@ -23,11 +23,11 @@ function submit(obj, options) {
         } else {
             joinPromo(obj);
         }
-    } else {
-        if (os == 'app_android') {
+    }else{
+        if (os == 'app_android'){
             window.gamebox.goLogin();
-        } else {
-            login("/");
+        }else{
+           login("/");
         }
     }
 }
@@ -37,14 +37,14 @@ function onPageLoad() {
     $(".gb-select *").css({"background": "", "margin": "", "padding": ""});
     if (isLogin && isLogin === "true") {
         var $submit = $(".submit");
-        var options = eval("(" + $submit.attr("data-rel") + ")");
+        var options = eval("("+ $submit.attr("data-rel")+")" );
         var code = options.dataCode;
         var isDemo = options.isDemo;
         //var code = $submit.data("code");
         if (code === 'content') {
             $submit.text(window.top.message.promo_auto['立即加入']);
             $submit.on("tap", function () {
-                goToUrl(root + "/message/gameNotice.html?isSendMessage=true");
+                goToUrl(root+"/message/gameNotice.html?isSendMessage=true");
             })
         } else if (code === 'back_water') {
             $submit.text(window.top.message.promo_auto['参与中']);

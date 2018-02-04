@@ -4244,7 +4244,8 @@ div.tab-2 a.mui-active span {
 .pay-third.tonghui_zfb,
 .pay-third.ybpay_zfb,
 .pay-third.jinanpay_zfb,
-.pay-third.allscore_s_zfb{background-position: 0 -60px;}/* 01 支付宝 & 魔宝-支付宝 & 通汇-支付宝 & 金安付-支付宝 &银宝-支付宝&商银信-扫码支付-支付宝*/
+.pay-third.allscore_s_zfb,
+.pay-third.alipay_micropay{background-position: 0 -60px;}/* 01 支付宝 & 魔宝-支付宝 & 通汇-支付宝 & 金安付-支付宝 &银宝-支付宝&商银信-扫码支付-支付宝*/
 .pay-third.wechatpay,
 .pay-third.dinpay_wx,
 .pay-third.mobao_wx,
@@ -4253,7 +4254,8 @@ div.tab-2 a.mui-active span {
 .pay-third.tonghui_wx,
 .pay-third.ybpay_wx,
 .pay-third.jinanpay_wx,
-.pay-third.allscore_s_wx{background-position: 0 -90px;}/* 02 微信 & 智付-微信 &  魔宝-微信 & 久付-微信 & 锐付-微信 & 通汇-微信 & 金安付-微信 &银宝-微信& &商银信-扫码支付-微信*/
+.pay-third.allscore_s_wx,
+.pay-third.wechat_micropay{background-position: 0 -90px;}/* 02 微信 & 智付-微信 &  魔宝-微信 & 久付-微信 & 锐付-微信 & 通汇-微信 & 金安付-微信 &银宝-微信& &商银信-扫码支付-微信*/
 .pay-third.tenpay {background-position: 0 -120px;}/* 03 财付通 */
 .pay-third.unionpay{background-position: 0 -150px;}/* 04 银联在线 */
 .pay-third.chinaums{background-position: 0 -180px;}/* 05 银联商务 */
@@ -4282,7 +4284,8 @@ div.tab-2 a.mui-active span {
 .pay-third.bitcoin,
 .pay-third.BTC
 {background-position: 0 -781px;}/* 25 比特币 */
-.pay-third.qqwallet{background-position: 0 -818px;}/* 25 QQ钱包 */
+.pay-third.qqwallet,
+.pay-third.qq_micropay{background-position: 0 -818px;}/* 25 QQ钱包 */
 .pay-third.zhihpay{background-position: 0 -859px;}/* 26 智汇付 */
 .pay-third.upay{background-position: 0 -896px;}/* 27 优贝支付 */
 .pay-third.onecodepay{background-position: 0 -936px;}/* 28 1码付 */
@@ -4821,6 +4824,9 @@ span.api-icon.api-icon-1-5 {
 span.api-icon.api-icon-1-1 {
     background-position-y: -768px;
 }
+span.api-icon.api-icon-1-33 {
+    background-position-y: -1584px;
+}
 span.api-icon.api-icon-1-24{    background-position-y: -1200px;
 }
 span.api-icon.api-icon-2-6 {
@@ -5170,15 +5176,18 @@ div.setting {
 .modes-payment >.ct a i.pay{background: url(images/pay_bank_b.png) no-repeat ;background-size:25px; display: inline-block;width:26px;height: 20px;vertical-align: middle;}
 .modes-payment >.ct a i.pay.unionpay{background-position: 0 -3px;}
 .modes-payment >.ct a i.pay.onlinepay{background-position: 0 -3px;}
-.modes-payment >.ct a i.pay.wechatpay{background-position: 0px -26px;}
-.modes-payment >.ct a i.pay.alipay{background-position: 0px -48px;}
+.modes-payment >.ct a i.pay.wechatpay,
+.modes-payment >.ct a i.pay.wechat_micropay{background-position: 0px -26px;}
+.modes-payment >.ct a i.pay.alipay,
+.modes-payment >.ct a i.pay.alipay_micropay{background-position: 0px -48px;}
 .modes-payment >.ct a i.pay.cmb{background-position: 0px -71px;}
 .modes-payment >.ct a i.pay.ccb{background-position: 0px -94px;}
 .modes-payment >.ct a i.pay.ks{background-position: 0 -116px;}
 .modes-payment >.ct a i.pay.jdwallet{background-position: -1px -138px;}
 .modes-payment >.ct a i.pay.bdwallet{background-position: 0px -161px;}
 .modes-payment >.ct a i.pay.ymf{background-position: 0px -183px;}
-.modes-payment >.ct a i.pay.qqwallet{background-position: 0px -206px;}
+.modes-payment >.ct a i.pay.qqwallet,
+.modes-payment >.ct a i.pay.qq_micropay{background-position: 0px -206px;}
 .modes-payment >.ct a i.pay.icbc{background-position: 0px -228px;}
 .modes-payment >.ct a i.pay.boc{background-position: 0px -250px;}
 .modes-payment >.ct a i.pay.abc{background-position: 0px -273px;}
@@ -5186,6 +5195,7 @@ div.setting {
 .modes-payment >.ct a i.pay.psbc{background-position: 0px -319px;}
 .modes-payment >.ct a i.pay.spdb{background-position: 0px -340px;}  /* 浦发银行*/
 .modes-payment >.ct a i.pay.bitcoin{background-position: 0px -364px;}
+.modes-payment >.ct a i.pay.digitalc{    background-position: 3px -880px;}
 .modes-payment >.ct a i.pay.qrcodepay{background-position: 0px -386px;}
 .modes-payment >.ct a i.pay.cmbc{background-position: 0px -405px;}   /* 民生*/
 .modes-payment >.ct a i.pay.comm{background-position: 0px -435px;} /*  交通银行 */
@@ -5279,3 +5289,127 @@ header.blue{background:#1766bb;}
 .mui-input-row.bticonin-row{height: auto;}
 .mui-input-row.bticonin-row>.ct{padding-right: 0;padding-bottom: 0;    line-height: 0;}
 .mui-input-row.bticonin-row>.ct textarea{padding: 10px;font-size: 12px;color: #999;text-align: right;}
+
+
+/*存款教程:*/
+.depositHelp {
+  line-height: 40px;
+  color: #1766bb;
+  padding: 0 15px 0;
+  margin-top: 10px;
+}
+.depositHelp span {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  border-radius: 100%;
+  background: #999;
+  color: #fff;
+  line-height: 15px;
+  text-align: center;
+  margin-top: 7px;
+}
+.depositHelpBox {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+.depositHelpBox .swiper-container {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+.depositHelpBox .swiper-slide {
+  padding: 16%;
+  position: relative;
+}
+.depositHelpBox .swiper-slide img {
+  width: 100%;
+}
+ .depositHelpBox .swiper-pagination-bullet {
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  opacity: 1;
+}
+.depositHelpBox .swiper-pagination-bullet-active {
+  background: #fdbe00;
+}
+.depositHelpBox .swiper-pagination {
+  bottom: 20px;
+}
+.depositHelpBox .closeHelpBox {
+  width: 30px;
+  height: 30px;
+  font-size: 50px;
+  z-index: 1100;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  color: rgba(225, 225, 225, 0.8);
+}
+.depositHelpBox .circle {
+  padding: 15px;
+  background: rgba(253, 0, 0, 0.8);
+  border-radius: 100%;
+  position: absolute;
+  animation: changeSize 0.5s infinite;
+}
+@keyframes changeSize {
+  0% {
+    transform: scale(0.9);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+.depositHelpBox .qq-fansao .step-1 .circle {
+  top: 42.5%;
+  left: 28.5%;
+}
+.depositHelpBox .qq-fansao .step-2 .circle {
+  bottom: 27%;
+  left: 47%;
+}
+ .depositHelpBox .qq-fansao .step-3 .circle {
+  top: 32.5%;
+  left: 44%;
+}
+.depositHelpBox .wechat-fansao .step-1 .circle {
+  top: 34.5%;
+  left: 31%;
+}
+ .depositHelpBox .wechat-fansao .step-2 .circle {
+  bottom: 67%;
+  left: 28%;
+}
+.depositHelpBox .wechat-fansao .step-3 .circle {
+  top: 34%;
+  left: 45%;
+}
+ .depositHelpBox .alipay-fansao .step-1 .circle {
+  top: 25%;
+  left: 39%;
+}
+.depositHelpBox .alipay-fansao .step-2 .circle {
+  bottom: 62%;
+  left: 44%;
+}
+
+.deposit-next {
+  position: relative;
+  margin: 20px;
+  width: auto;
+  border-radius: 5px;
+  overflow: hidden;
+}
