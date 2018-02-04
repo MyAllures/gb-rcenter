@@ -11,6 +11,57 @@
     ::-webkit-scrollbar-thumb:hover{background-color: #c1c1c1}
     ::-webkit-scrollbar-thumb:active{background-color: #c1c1c1}
 
+    #scrollInner{
+        float: left;width: calc(100% - 831px);overflow-x: scroll
+    }
+    /* >1920*/
+    @media screen and (min-width: 1920px) {
+        #scrollInner{
+            float: left;width: calc(100% - 320px);overflow-x: scroll
+        }
+    }
+
+    /*1680 - 1920*/
+    @media only screen and (min-width: 1680px) and (max-width: 1920px) {
+        #scrollInner{
+            float: left;width: calc(100% - 330px);overflow-x: scroll
+        }
+
+    }
+
+    /*1440 - 1680*/
+    @media only screen and (min-width: 1440px) and (max-width: 1680px) {
+        #scrollInner{
+            float: left;width: calc(100% - 560px);overflow-x: scroll
+        }
+
+    }
+
+    /*1366 - 1440*/
+    @media only screen and (min-width: 1366px) and (max-width: 1440px) {
+        #scrollInner{
+            float: left;width: calc(100% - 800px);overflow-x: scroll
+        }
+
+    }
+
+
+    /*1280 - 1366*/
+    @media only screen and (min-width: 1280px) and (max-width: 1366px) {
+        #scrollInner{
+            float: left;width: calc(100% - 883px);overflow-x: scroll
+        }
+
+    }
+
+    /*1024- 1280*/
+    /* @media only screen and (min-width: 1024px) and (max-width: 1280px) {
+         #scrollInner{
+             float: left;width: calc(100% - 883px);overflow-x: scroll
+         }
+
+     }*/
+
 
 </style>
 <div class="row">
@@ -103,7 +154,7 @@
 
                         </tr>
                         <!--<tr class="bg-color"></tr>-->
-                        <tr class="bg-color"  id="scrollInner" style="float: left;width: calc(100% - 25%);overflow-x: scroll">
+                        <tr class="bg-color"  id="scrollInner">
 
                             <td style=" width: 150px;position: relative" >
                                 <!--<div style="width: 13px;height: 186px;background:#dddada;position: absolute;top: 0px;left:0;z-index: 9999;line-height: 186px"> <span  class="glyphicon glyphicon glyphicon glyphicon-chevron-left" ></span></div>-->
