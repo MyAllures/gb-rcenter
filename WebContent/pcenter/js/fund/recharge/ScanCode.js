@@ -41,6 +41,18 @@ define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
             var _this = this;
 
             $(this.formSelector).on("change", "input[name='result.rechargeType']", function (e) {
+                var isAuthCode = $(this).attr("isAuthCode");
+                if (isAuthCode == 'true') {
+                    $("#tutorial .fansao-title").text($(this).attr("tutorial"));
+                    $("#tutorial .fansao-img img").attr("src", resRoot + "/images/" + $(this).attr("tutorialImg") + ".png");
+                    $("#authCode").show();
+                    $("input[name='isAuthCode']").val(isAuthCode);
+                    $("#tutorial").show();
+                } else {
+                    $("#authCode").hide();
+                    $("input[name='isAuthCode']").val(false);
+                    $("#tutorial").hide();
+                }
                 $(_this.formSelector + " input[name=account]").val($(_this.formSelector + " input[name='result.rechargeType']:checked").attr("account"));
                 $('[name="result.rechargeAmount"]').val('');
                 var amount = $(_this.formSelector).find("input[name='result.rechargeAmount']").val();

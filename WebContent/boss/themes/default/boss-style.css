@@ -2657,3 +2657,8 @@ textarea.resize-vertical{
 .msg.msg-warning{}
 .msg.msg-warning:before{content: "\f06a";color: #ea9101;}
 .msg .msg-description{display: inline-block;vertical-align: middle;}
+.open-dialog-95p .modal-dialog{
+    max-width: 85%;
+    min-width: 500px;
+    width: 100%;
+}
