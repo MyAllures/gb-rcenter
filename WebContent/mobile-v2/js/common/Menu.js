@@ -28,7 +28,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                     _this.toast("请登入下载");
                     window.setTimeout(function () {
                         _this.gotoUrl(url)
-                    },3000);
+                    },1500);
                 } else {
                     _this.gotoUrl($(this).data("download"));
                 }
