@@ -43,8 +43,9 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 return;
             }
             var code=$("#code").val();
+            var queryEndDate = $("#queryEndDate").val();
             mui.ajax(root + "/lotteryResultHistory/getLotteryResultDetail.html",{
-                data:{'search.code': code, "paging.pageNumber" : _this.paging++},
+                data:{'search.code': code, "paging.pageNumber" : _this.paging++ ,"search.queryEndDate":queryEndDate},
                 type:"post",
                 dataType:"json",
                 beforeSend: function () {

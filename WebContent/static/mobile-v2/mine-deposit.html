@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../mobile-v2/themes/common.css" />
     <link rel="stylesheet" href="../../mobile-v2/themes/mui-icon-extra.css" />
     <link rel="stylesheet" href="../../mobile-v2/themes/default/style.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/swiper.min.css" />
 </head>
 
 <body class="gb-theme mine-page no-backdrop">
@@ -145,8 +146,18 @@
                                         <li><a href=""><i class="pay digitalc"></i><span>比特币支付</span></a></li>
                                         <li><a href=""><i class="pay qrcodepay"></i><span> <div class="text-two-line">银联码码码码码码码码码码</div></span></a></li>
                                         <!--<li><a href="">其它支付</a></li>-->
+                                        <li><a href=""><i class="pay qqwallet"></i><span>QQ反扫</span></a></li>
+                                        <li><a href=""><i class="pay wechatpay"></i><span>微信反扫</span></a></li>
+                                        <li><a href=""><i class="pay alipay"></i><span>支付宝反扫</span></a></li>
                                     </ul>
                                     <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <p class="depositHelp">存款教程 <span>?</span></p>
+
+                            <div class="mui-row">
+                                <div class="gb-form-foot bank-pay-btn deposit-next">
+                                    <a href="" class="mui-btn mui-btn-primary submit">下一步</a>
                                 </div>
                             </div>
                         </div>
@@ -156,13 +167,37 @@
                 </div>
                 <div style="height:40px;"></div>
 
-                <div class="mui-row">
-                    <div class="gb-form-foot bank-pay-btn">
-                        <a href="" class="mui-btn mui-btn-primary submit">下一步</a>
+            </div>
+
+
+
+            <!--存款帮助：-->
+            <div class="depositHelpBox" style="display:none;">
+                <div class="swiper-container">
+                    <!--qq反扫：-->
+                    <div class="swiper-wrapper qq-fansao" style="">
+                        <div class="swiper-slide step-1"><img src="../../mobile-v3/images/qq-step-1.png" alt="" /><div class="circle"></div></div>
+                        <div class="swiper-slide step-2"><img src="../../mobile-v3/images/qq-step-2.png" alt="" /><div class="circle"></div></div>
+                        <div class="swiper-slide step-3"><img src="../../mobile-v3/images/qq-step-3.png" alt="" /><div class="circle"></div></div>
                     </div>
+                    <!--微信反扫：-->
+                    <!--<div class="swiper-wrapper wechat-fansao" style="">
+                        <div class="swiper-slide step-1"><img src="../../mobile-v3/images/wechat-step-1.png" alt="" /><div class="circle"></div></div>
+                        <div class="swiper-slide step-2"><img src="../../mobile-v3/images/wechat-step-2.png" alt="" /><div class="circle"></div></div>
+                        <div class="swiper-slide step-3"><img src="../../mobile-v3/images/wechat-step-3.png" alt="" /><div class="circle"></div></div>
+                    </div>-->
+                    <!--支付宝反扫：-->
+                    <!--<div class="swiper-wrapper alipay-fansao">
+                        <div class="swiper-slide step-1"><img src="../../mobile-v3/images/alipay-step-1.png" alt="" /><div class="circle"></div></div>
+                        <div class="swiper-slide step-2"><img src="../../mobile-v3/images/alipay-step-2.png" alt="" /><div class="circle"></div></div>
+                    </div>-->
+                    <div class="swiper-pagination"></div>
+                    <div class="closeHelpBox">+</div>
                 </div>
             </div>
-            <div class="gb-withdraw-box window-ok" style="display:none;">
+
+
+                <div class="gb-withdraw-box window-ok" style="display:none;">
                 <div class="cont">
                     <div class="ok-box">
                         <i class="ok-icon"></i>
@@ -230,9 +265,12 @@
     </div>
 </body>
 
+
 <script src="../../mobile-v2/js/mui/mui.js"></script>
 <script src="../../mobile-v2/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../mobile-v3/js/swiper.min.js"></script>
 <script src="../../mobile-v2/js/common/main.js"></script>
+
 
 <div id="popover" class="mui-popover mui-popover-action mui-popover-bottom gb-popover">
     <ul class="mui-table-view">
@@ -273,6 +311,7 @@
 
 <script>
     $(function () {
+
         mui('.mui-scroll-wrapper').scroll({
             deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
         });
@@ -282,6 +321,25 @@
                 $(this).parents("a").addClass('long');
             }
         });
+
+
+        //        存款教程弹框：
+        var mySwiper = new Swiper ('.swiper-container', {
+            observer:true,
+            observeParents:true,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+        mySwiper.init();
+        $('.closeHelpBox').click(function(){
+            $(".depositHelpBox").hide(100);
+        });
+        $('.depositHelp').click(function(){
+            $(".depositHelpBox").show(100);
+        });
+
+
     });
 </script>
 
