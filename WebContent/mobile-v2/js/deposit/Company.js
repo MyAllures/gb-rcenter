@@ -20,6 +20,7 @@ define(['site/deposit/BaseCompanyDeposit','clipboard'], function (BaseCompanyDep
                 typePick.setData(JSON.parse(typeList));
                 var selectType = document.getElementById('rechargeType');
                 selectType.addEventListener('tap', function (event) {
+                    $("input[name='result.payerName']").blur();
                     typePick.show(function (items) {
                         var value = items[0].value;
                         document.getElementById('result.rechargeType').value = value;

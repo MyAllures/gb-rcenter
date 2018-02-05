@@ -33,10 +33,8 @@ function submit(obj,options){
 }
 
 function onPageLoad() {
-    //mui(".mui-scroll-wrapper").scroll();
-    //给表格添加横向滚动
-    //tableScroll();
     var isLogin = sessionStorage.getItem("isLogin");
+    $(".gb-select *").css({"background": "", "margin": "", "padding": ""});
     if (isLogin && isLogin === "true") {
         var $submit = $(".submit");
         var options = eval("("+ $submit.attr("data-rel")+")" );
@@ -57,43 +55,18 @@ function onPageLoad() {
             }
         }
         changeApplyStatus();
-    } else {
-        /*$("body").on("tap", "a.submit", function () {
-            //t.toLogin("/game.html?typeId=5");
-            login(root+"/discounts/index.html?skip=1");
-        });*/
     }
-    // if (submit.data("states") == "processing" || submit.data("code") == "back_water") {
-    //     submit.text(window.top.message.promo_auto['参与中']);
-    // }
-    //t.promoCheck();
 }
 
-/*function tableScroll (value) {
-    var $table = $(".ct table");
-    for (var i = 0; i <= $table.size(); i++) {
-        if (!($($table.get(i)).parent().attr("class") == 'mui-scroll')) {
-            //给表格添加横向滚动
-            $($table.get(i)).wrap("<div class=' mui-scroll-wrapper scroll2 mui-slider-indicator mui-segmented-control " +
-                "mui-segmented-control-inverted'> " +
-                "<div class='mui-scroll'></div></div>");
-            mui(".scroll2").scroll();
-
-            var scrollHeight = $($table.get(i)).height();
-            $($table.get(i)).parent().parent().css("height", scrollHeight + 2 + "px");
-        }
-    }
-}*/
-
 function changeApplyStatus() {
-    var url=root+"/promo/getPlayerActivityIds.html";
-    var options ={
-        url:url,
-        success:function(data){
+    var url = root + "/promo/getPlayerActivityIds.html";
+    var options = {
+        url: url,
+        success: function (data) {
             filterActyByPlayer(data);
         }
-    }
-    mui.ajax(options);
+    };
+    muiAjax(options);
 }
 
 function joinPromo(aplyObj, isRefresh) {
@@ -107,36 +80,36 @@ function joinPromo(aplyObj, isRefresh) {
         return;
     }
 
-    var options = eval("("+$(aplyObj).attr("data-rel")+")");
+    var options = eval("(" + $(aplyObj).attr("data-rel") + ")");
     var code = options.dataCode;//$(aplyObj).data("code");
     if (code == "back_water" || code == "first_deposit" || code == "deposit_send") {
         /*if (isRefresh) {
-            showWarningMsg(window.top.message.promo_auto['提示'],window.top.message.promo_auto['参与中'],function(){window.location.reload();});
-            /!*mui("body").alert({
-                title: window.top.message.promo_auto['提示'],
-                message: window.top.message.promo_auto['参与中'],
-                callback: function () {
-                    window.location.reload();
-                }
-            });*!/
-        }*/
+         showWarningMsg(window.top.message.promo_auto['提示'],window.top.message.promo_auto['参与中'],function(){window.location.reload();});
+         /!*mui("body").alert({
+         title: window.top.message.promo_auto['提示'],
+         message: window.top.message.promo_auto['参与中'],
+         callback: function () {
+         window.location.reload();
+         }
+         });*!/
+         }*/
         showWarningMsg(
             window.top.message.promo_auto['提示'],
             window.top.message.promo_auto['参与中'],
-            function(){
+            function () {
                 //window.location.reload();
             }
-            );
+        );
         return;
     } else {
         if (isRefresh) {
             applyActivities(aplyObj, true);
         } else {
-            if(code === 'money') {
+            if (code === 'money') {
                 var searchId = options.dataSearchId;// $(aplyObj).data("searchid");
                 canShowLottery(searchId);
                 $(aplyObj).removeAttr("disabled");
-            }else{
+            } else {
                 applyActivities(aplyObj);
             }
         }
@@ -145,7 +118,7 @@ function joinPromo(aplyObj, isRefresh) {
 
 function applyActivities(aplyObj, isRefresh) {
     var _this = this;
-    var options = eval("("+$(aplyObj).attr("data-rel")+")");
+    var options = eval("(" + $(aplyObj).attr("data-rel") + ")");
     var code = options.dataCode;//$(aplyObj).data("code");
     var searchId = options.dataSearchId;//$(aplyObj).data("searchid");
     mui.ajax({
@@ -160,7 +133,7 @@ function applyActivities(aplyObj, isRefresh) {
             showWin(data, isRefresh);
             $(aplyObj).removeAttr("disabled");
         },
-        error : function (xhr) {
+        error: function (xhr) {
             toast(window.top.message.promo_auto['申请失败']);
             $(aplyObj).removeAttr("disabled");
         }
@@ -172,37 +145,40 @@ function showWin(data, isRefresh) {
         return false;
     }
     var title;
+    if (!data.msg) {
+        data.msg = '';
+    }
     if (data.state) {
         title = window.top.message.promo_auto['申请成功'];
     } else {
         title = window.top.message.promo_auto['申请失败'];
     }
-    if(!data.msg){
-        data.msg = '';
+    if (data.title) {
+        title = data.title;
     }
-    var options ={
-        btnArray:[window.top.message.promo_auto['查看优惠记录'], window.top.message.promo_auto['好的']],
-        title:title,
-        confirm:data.msg,
-        func:doWin
+    var options = {
+        btnArray: [window.top.message.promo_auto['查看优惠记录'], window.top.message.promo_auto['好的']],
+        title: title,
+        confirm: data.msg,
+        func: doWin
     };
     showConfirmMsg(options);
 
     /*layer.open({
-        title: title,
-        content: data.msg,
-        btn: [window.top.message.promo_auto['查看优惠记录'], window.top.message.promo_auto['好的']],
-        yes: function() {
-            goToUrl("/promo/myPromo.html");
-        },
-        no: function () {
-            window.location.reload();
-        }
-    });*/
+     title: title,
+     content: data.msg,
+     btn: [window.top.message.promo_auto['查看优惠记录'], window.top.message.promo_auto['好的']],
+     yes: function() {
+     goToUrl("/promo/myPromo.html");
+     },
+     no: function () {
+     window.location.reload();
+     }
+     });*/
 }
 
-function doWin(){
-    goToUrl(root+"/promo/myPromo.html");
+function doWin() {
+    goToUrl(root + "/promo/myPromo.html");
 }
 
 function filterActyByPlayer(data) {
@@ -213,7 +189,7 @@ function filterActyByPlayer(data) {
     oldClass = typeof oldClass == "undefined" ? "" : oldClass;
     var newClass = $obj.data("newClass");
     newClass = typeof newClass == "undefined" ? "" : newClass;
-    var options = eval("("+$obj.attr("data-rel")+")");
+    var options = eval("(" + $obj.attr("data-rel") + ")");
     var code = options.dataCode;
     var rankid = options.dataRankId;
     var searchid = options.dataSearchId;

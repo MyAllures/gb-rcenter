@@ -306,7 +306,7 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
                 initialFrameWidth:width,/*初始化编辑器宽度($(window.document).width() *.8)*/
                 initialFrameHeight:200,/*初始化编辑器宽度*/
                 autoHeightEnabled:false,/*是否自动长高*/
-                maximumWords:2000,
+                maximumWords:1000,
                 toolbars: [[
                     'fullscreen', 'source', '|', 'undo', 'redo', '|',
                     'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',

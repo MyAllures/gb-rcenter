@@ -24,6 +24,8 @@ define(['gb/components/Comet', 'site/index/PopUp', 'cookie'], function (Comet, P
                     {subscribeType: "BOSS_CREDIT_PAY_REMINDER", callBack: popUp.creditPayReminder},
                     {subscribeType:'TRANSFER_LIMIT_WARNING',callBack:popUp.transferLimit},
                     {subscribeType:'LARGE_TRANSACTION_MONITOR',callBack:popUp.largeTransactionMonitor},
+                    //自动停用账户
+                    {subscribeType:'PAY_ACCOUNT_DISABLE',callBack:popUp.payAccountDisable},
                 ];
                 _this.subscribeMsgs(subscribes);
             };

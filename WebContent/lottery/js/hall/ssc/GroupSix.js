@@ -16,6 +16,7 @@ define(['site/hall/ssc/PlayWay'], function (PlayWay) {
             $('.comb-type a').on('click', function () {
                 $('.comb-type>a').removeClass('active');
                 $(this).addClass('active');
+                $("#inputMoney").val("");
                 _this.getoddsa();
             })
             $("#subContent .btns .btn-2").click(function () {
