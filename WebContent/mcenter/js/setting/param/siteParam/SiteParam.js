@@ -459,7 +459,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 data: _this.getRankByDomainForm(e, opt),
                 success: function (data) {
                     if (data.state) {
-                        page.showPopover(e,opt,"success",data.msg,true);
+                        //page.showPopover(e,opt,"success",data.msg,true);
                         window.top.topPage.doAjax(e, opt);
                         return true;
                     } else {
@@ -710,7 +710,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 e.page.showPopover(e,{},"warning","版权信息不合法，请输入长度小于200个字符",true);
                 return false;
             }else {
-                e.page.showPopover(e,{},"warning","保存成功",true);
+                e.page.showPopover(e,{},"success","保存成功",true);
                 return true;
             }
         },
