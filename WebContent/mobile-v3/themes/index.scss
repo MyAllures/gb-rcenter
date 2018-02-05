@@ -2,52 +2,55 @@
  index style
  * */
 /* api-grid */
-.api-grid{
-    padding: 0 5px 15px;
-    .mui-grid-view.mui-grid-9 .mui-table-view-cell{padding: 5px;height: 103px;border: 0;
+.api-grid{min-height: 290px;
+    width: 100%;
+    &>div>ul{padding: 0 5px !important;}
+    .mui-grid-view.mui-grid-9 .mui-table-view-cell{padding: 5px;height: 114px;border: 0;background: #fff;margin-bottom: 5px;
         a{    border-radius: 6px;padding: 8px 0;}
     }
-    .api-item{display: inline-block;width:56px;height:57px;position: relative;
-        &:after{content: '';
+    .api-item{display: inline-block;width:70px;height:72px;position: relative;
+        &:after{    content: '';
     position: absolute;
-    width: 56px;
-    height: 28px;
-    top: 4px;
-    left: -9px;z-index: 2;
-    border-top-left-radius: 28px;
-    border-top-right-radius: 28px;
-    -webkit-transform: rotateZ(-45deg);
-            transform: rotateZ(-45deg);}
-        &:before{content: '';position: absolute;width: 56px;height: 56px;top: 0;left: 0;z-index: 1;background: url(images/api-sprite.png) 0 0/56px no-repeat;}
-        &.api-icon-2-3:before{background-position: -7px 0;}        
-        &.api-icon-1-16:before{background-position: 0 -56px;}     
-        &.api-icon-1-7:before{background-position: 0 -112px;}    
-        &.api-icon-1-17:before{background-position: 0 -168px;}    
-        &.api-icon-1-9:before,&.api-icon-2-9:before{background-position: 0 -224px;}     
-        &.api-icon-1-10:before,&.api-icon-2-10:before{background-position: 0 -280px;}   
-        &.api-icon-1-5:before{background-position: 0 -336px;}   
-        &.api-icon-1-1:before{background-position: 0 -392px;}   
-        &.api-icon-2-15:before{background-position: 0 -616px;}   
-        &.api-icon-2-6:before{background-position: 0 -504px;}  
-        &.api-icon-3-12:before{background-position: 0 -448px;}   
-        &.api-icon-3-19:before{background-position: 0 -560px;}   
-        &.api-icon-2-26:before{background-position: 0 -672px;}   
-        &.api-icon-2-20:before{background-position: 0 -728px;}   
-        &.api-icon-1-24:before,&.api-icon-3-24:before{background-position: 0 -784px;}   
-        &.api-icon-2-25:before{background-position: 0 -840px;}  
-        &.api-icon-3-4:before{background-position: 0 -896px;}  
-        &.api-icon-2-27:before{background-position: 0 -952px;}  
-        &.api-icon-1-2:before{background-position: 0 -1008px;}  
-        &.api-icon-2-28:before{background-position: 0 -1064px;} 
-        &.lt:before{background-position: 0 -1120px;}
-        &.yzt:before{background-position: 0 -1176px;}
-        &.gns:before{background-position: 0 -1233px;}
-        &.prg:before{background-position: 0 -1292px;}
+    width: 70px;
+    height: 34px;
+    top: 6px;
+    left: -13px;
+    z-index: 2;
+    border-top-left-radius: 34px;
+    border-top-right-radius: 34px;
+    -webkit-transform: rotateZ(-47deg);
+    transform: rotateZ(-47deg);}
+        &:before{content: '';position: absolute;width: 70px;height: 70px;top: 0;left: 0;z-index: 1;background: url(images/api-sprite.png) 0 0/70px no-repeat;}
+        &.api-icon-2-3:before{background-position: (-7px/0.8) 0;}        
+        &.api-icon-1-16:before{background-position: 0 -70px;}     
+        &.api-icon-1-7:before{background-position: 0 -140px;}    
+        &.api-icon-1-17:before{background-position: 0 -210px;}    
+        &.api-icon-1-9:before,&.api-icon-2-9:before{background-position: 0 -280px;}     
+        &.api-icon-1-10:before,&.api-icon-2-10:before{background-position: 0 -350px;}   
+        &.api-icon-1-5:before{background-position: 0 -420px;}   
+        &.api-icon-1-1:before{background-position: 0 -490px;}   
+        &.api-icon-1-33:before{    background-position: 0 -1750px;}
+        &.api-icon-2-15:before{background-position: 0 -770px;}   
+        &.api-icon-2-6:before{background-position: 0 -630px;}  
+        &.api-icon-3-12:before{background-position: 0 -560px;}   
+        &.api-icon-3-19:before{background-position: 0 -700px;}   
+        &.api-icon-2-26:before{background-position: 0 (-672px/0.8);}   
+        &.api-icon-2-20:before{background-position: 0 (-728px/0.8);}   
+        &.api-icon-1-24:before,&.api-icon-3-24:before{background-position: 0 (-784px/0.8);}   
+        &.api-icon-2-25:before{background-position: 0 (-840px/0.8);}    
+        &.api-icon-2-31:before{background-position: 0 (-1345px/0.8);}    
+        &.api-icon-2-32:before{background-position: 0 (-1290px/0.8);}  
+        &.api-icon-3-4:before{background-position: 0 (-896px/0.8);}  
+        &.api-icon-2-27:before{background-position: 0 (-952px/0.8);}  
+        &.api-icon-1-2:before{background-position: 0 (-1008px/0.8);}  
+        &.api-icon-2-28:before{background-position: 0 (-1064px/0.8);} 
+        &.api-icon-5-1:before{background-position: 0 (-1233px/0.8);} 
+        &.lt:before{background-position: 0 (-1120px/0.8);}
+        &.yzt:before{background-position: 0 (-1176px/0.8);}
+        &.gns:before{background-position: 0 (-1233px/0.8);}
+        &.prg:before{background-position: 0 (-1292px/0.8);}
     }
-    .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{margin-top: 0;    font-size: 12px;}
-    .mui-table-view{display: none;
-        &.active{display: block;}
-    }
+    .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{margin-top: 0;    font-size: 13px;}
     /* 彩票内页样式 */
     ul[data-list="lottery"]{
         .lottery-nav{
@@ -56,9 +59,9 @@
     font-size: 12px;
     margin: 0 0 8px;text-align: center;
         .mui-scroll-wrapper{height: 40px;}
+        .mui-scroll{width: 100%;}
         ul{height: 40px;   display: block;       border: 0;white-space: nowrap;text-align: center;}
-            li{    display: inline-block;font-size: 12px;
-    width: 104px;
+            li{    display: inline-block;font-size: 12px;    width: 33.3333%;
                 .mui-tab-item{padding: 0;   height: 40px;   display: block;    width: 100%;    line-height: 39px;   padding-left: 40px;background-position: 4px center;
     background-size: 30px;
     background-repeat: no-repeat;    text-align: left;
@@ -72,34 +75,10 @@
     }
     .lottery-content{
         li{font-size: 12px;
-            .lottery-img{width: 56px;height: 56px;display: inline-block;}
-            a{background: #fff !important;}
+            .lottery-img{width: 70px;height: 70px;display: inline-block;}
         }
     }
-}
-/* iphone6 style fixed */
-@media screen and (min-width:375px){
-     .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell{height: 119px;
-        a{padding: 16px 0;}
-     }     
-     .nav{
-        .mui-scroll-wrapper{
-            .mui-scroll{
-                .mui-control-item{ height: 62px;
-                    &.mui-active{
-                        &:after{content: '';    position: absolute;    top: 0;    left: 50%;    margin-left: -38px !important;    z-index: -1;    width: 75px !important;    height: 70px;    background-size: 75px 61px !important;}
-                    }
-                }
-            }
-        }
-    }
-    .api-grid ul[data-list="lottery"] .lottery-nav li{width: 134px;}
-}
-/* ipad style fixed */
-@media screen and (min-width:768px){
-     .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell{height: 120px;
-        a{padding: 18px 0;}
-     }     
+    .fish-img,.card-img{width: 70px;height: 70px;display: inline-block;}
 }
 
 /* banner-loading */
@@ -113,4 +92,7 @@
         background-color: #666;
         vertical-align: middle;
     }
+}
+.content-slide{
+    &.mui-slider .mui-slider-group{height: 400px;}
 }

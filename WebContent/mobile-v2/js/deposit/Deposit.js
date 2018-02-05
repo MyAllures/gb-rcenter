@@ -1,7 +1,7 @@
 /**
  * Created by bruce on 16-12-6.
  */
-define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function (BaseDeposit, BaseCompanyDeposit) {
+define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit', 'site/plugin/swiper.min.js'], function (BaseDeposit, BaseCompanyDeposit, Swiper) {
     var map = {};
     return BaseDeposit.extend({
         init: function (formSelector) {
@@ -71,18 +71,30 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
                     mui.trigger($depositWay[0], "tap");
                 }
             }
+
+            var mySwiper = new Swiper ('.swiper-container', {
+                observer:true,
+                observeParents:true,
+                pagination: {
+                    el: '.swiper-pagination'
+                }
+            });
+            for(var i=0;i<mySwiper.length;i++) {
+                mySwiper[i].init();
+            }
+
         },
 
         bindEvent: function () {
             this._super();
             var _this = this;
             _this.os = this.whatOs();
-            if(_this.os == 'android') {
-                window.addEventListener("resize", function() {
-                    if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
-                        window.setTimeout(function() {
+            if (_this.os == 'android') {
+                window.addEventListener("resize", function () {
+                    if (document.activeElement.tagName == "INPUT" || document.activeElement.tagName == "TEXTAREA") {
+                        window.setTimeout(function () {
                             document.activeElement.scrollIntoViewIfNeeded();
-                        },0);
+                        }, 0);
                     }
                 })
             }
@@ -195,6 +207,10 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit'], function
                     goBack();
                 else
                     _this.openWindowByMui("/mine/index.html");
+            });
+
+            mui("body").on("tap", "div.closeHelpBox", function () {
+                $("div.depositHelpBox").hide();
             });
         },
         nextStep: function (e, _this, _href) {

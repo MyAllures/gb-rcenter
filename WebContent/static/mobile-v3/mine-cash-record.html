@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+    <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.picker.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.dtpicker.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />  
+    <link rel="stylesheet" href="../../mobile-v3/themes/loading.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+</head>
+
+<body class="mine-cash-record-body">
+    <!-- 主页面标题 -->
+    <header class="mui-bar mui-bar-nav mine-cash-record-header">
+      <a class="mui-icon  mui-icon-back mui-pull-left"></a>
+      <h1 class="mui-title">资金记录</h1>
+    </header>
+    <div class="mui-content mine-cash-record-content">
+        <!-- 主界面具体展示内容 -->
+		<div class="mui-row">
+		    <div class="mui-input-group mine-form data-filter">
+		        <div class="gb-datafilter">
+		            创建日期:
+		            <span class="input-date" ><a href=""></a>
+		                <input type="datetime" class="date"
+		                       value="2018-01-18"
+		                       id="beginTime" minDate="2018-01-18">
+		            </span>
+		            ~
+		            <span class="input-date"><a href=""></a>
+		                <input type="datetime" class="date"
+		                       value="2018-01-24" id="endTime"
+		                       endTime="2018-01-24"
+		                       minDate="2018-01-18">
+		            </span>
+		            <a href="#selectDate" class="btn mui-btn mui-btn-primary btn-kx" style="width: 15%;">快选</a>
+		            <div class="clearfix"></div>
+		        </div>
+		
+		    </div>
+		</div>
+		<div class="mui-row">
+		    <div class="mui-input-group mine-form">
+		        <div class="gb-datafilter cash-type-row">
+		            <div class="mui-pull-right" style="width: 49%;">
+		                <a href="javascript:" class="btn mui-btn mui-btn-primary query" style="width: 100%;">搜索</a>
+		            </div>
+		            <span class="input-drop" style="width: 49%;">
+		                    <a href="#transactionType">
+		                        <span id="displayType" value="">
+		                            类型</span>
+		                        <i class="mui-icon mui-icon-arrowdown"></i>
+		                    </a>
+		                </span>
+		        </div>
+		    </div>
+		</div>
+		<div class="mui-row">
+		    <div class="mui-input-group mine-form">
+		        <p class="qkclz">
+		            <span class="mui-pull-right">
+		                转账处理中：
+		                <span class="text-green transferSum">￥0.00</span>
+		            </span>
+		            取款处理中：
+		            <span class="text-green withdrawSum">￥0.00</span>
+		        </p>
+		    </div>
+		</div>
+        <div class="mine-table lg">
+        	<div class="mui-scroll-wrapper">
+        		<div class="mui-scroll">
+	                <table>
+	                        <tbody><tr data-href="mine-cash-detail.html">
+	                            <td><span class="text-gray">2016-10-29</span></td>
+	                            <td><span class="text-green2">+100.00</span></td>
+	                            <td>存款</td>
+	                            <td><span class="text-success">超时</span></td>
+	                        </tr>
+	                        <tr>
+	                            <td><span class="text-gray">2016-10-29</span></td>
+	                            <td><span class="text-green2">+100.00</span></td>
+	                            <td>存款</td>
+	                            <td><span class="text-success">超时</span></td>
+	                        </tr>
+	                        <tr>
+	                            <td><span class="text-gray">2016-10-29</span></td>
+	                            <td><span class="text-green2">+100.00</span></td>
+	                            <td>存款</td>
+	                            <td><span class="text-success">超时</span></td>
+	                        </tr>
+	                        <tr>
+	                            <td><span class="text-gray">2016-10-29</span></td>
+	                            <td><span class="text-green2">+100.00</span></td>
+	                            <td>存款</td>
+	                            <td><span class="text-success">超时</span></td>
+	                        </tr>
+	                        <tr>
+	                            <td><span class="text-gray">2016-10-29</span></td>
+	                            <td><span class="text-green2">+100.00</span></td>
+	                            <td>存款</td>
+	                            <td><span class="text-success">超时</span></td>
+	                        </tr>
+	                        <tr>
+	                            <td><span class="text-gray">2016-10-29</span></td>
+	                            <td><span class="text-green2">+100.00</span></td>
+	                            <td>存款</td>
+	                            <td><span class="text-success">超时</span></td>
+	                        </tr>
+	                        <tr>
+	                            <td><span class="text-gray">2016-10-29</span></td>
+	                            <td><span class="text-green2">+100.00</span></td>
+	                            <td>存款</td>
+	                            <td><span class="text-success">超时</span></td>
+	                        </tr>
+	                        <tr>
+	                            <td><span class="text-gray">2016-10-29</span></td>
+	                            <td><span class="text-green2">+100.00</span></td>
+	                            <td>存款</td>
+	                            <td><span class="text-success">超时</span></td>
+	                        </tr>
+	                        <tr>
+	                            <td><span class="text-gray">2016-10-29</span></td>
+	                            <td><span class="text-green2">+100.00</span></td>
+	                            <td>存款</td>
+	                            <td><span class="text-success">超时</span></td>
+	                        </tr>
+	                    </tbody>
+	                </table>
+        		</div>
+        	</div>
+        </div>   
+    </div>  <!--mui-content 闭合标签-->
+	<footer>
+		<div class="flex">
+			<span>合计：</span>
+			<div class="c">
+				<div style="width: 50%;">充值总额：100.00</div>
+				<div style="width:50%">提现总额：100.00</div>
+				<div style="width: 50%;">优惠总额：5678.00</div>
+				<div style="width:50%">返水总额：5678.00</div>
+			</div>
+		</div>
+	</footer>
+<div id="transactionType" class="mui-popover transactionType">
+    <div class="mui-scroll-wrapper fund-type-scroll" >
+        <div class="mui-scroll">
+            <ul class="mui-table-view">
+                <li class="mui-table-view-cell"><a href="#" value="">所有</a></li>
+                <li class="mui-table-view-cell">
+                        <a href="#" value="deposit">存款</a>
+                    </li>
+                <li class="mui-table-view-cell">
+                        <a href="#" value="withdrawals">取款</a>
+                    </li>
+                <li class="mui-table-view-cell">
+                        <a href="#" value="transfers">转账</a>
+                    </li>
+                <li class="mui-table-view-cell">
+                        <a href="#" value="favorable">优惠</a>
+                    </li>
+                <li class="mui-table-view-cell">
+                        <a href="#" value="backwater">返水</a>
+                    </li>
+                <li class="mui-table-view-cell">
+                        <a href="#" value="recommend">推荐</a>
+                    </li>
+                </ul>
+        </div>
+    </div>
+</div>
+<script src="../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../mobile-v3/js/mui/mui.picker.min.js"></script>
+<script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../mobile-v3/js/common.js"></script>
+<script type="text/javascript">
+    mui("body").on("tap", "#beginTime", function() {
+        var dtpicker = new mui.DtPicker({
+            type: "date",
+            value: $("#beginTime").val(),
+            beginDate: new Date($("#beginTime").attr("minDate")),
+            endDate: new Date($("#endTime").attr("endTime"))            
+        });
+        dtpicker.show(function(e) {
+            var day = _this.formatDateTime(new Date(e.value), format);
+            $("#beginTime").val(day);
+            if (new Date($("#endTime").val()).getTime() < new Date(e.value).getTime()) {
+                $("#endTime").val(day)
+            }
+            dtpicker.dispose()
+        })
+    });
+    mui("body").on("tap", "#endTime", function() {
+        var dtpicker = new mui.DtPicker({
+            type: "date",
+            value: $("#endTime").val(),
+            beginDate: new Date($("#beginTime").val()),
+            endDate: new Date($("#endTime").attr("endTime"))          
+        });
+        dtpicker.show(function(e) {
+            $("#endTime").val(_this.formatDateTime(new Date(e.value), format));
+            dtpicker.dispose()
+        })
+    });
+</script>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+    <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+</head>
+
+<body class="exchange-wechat">
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">转账到微信</h1>
+</header>
+<div class="mui-content mui-scroll-wrapper">
+    <div class="mui-scroll">
+
+        <div class="mui-row">
+            <div class="gb-panel" style="border-top-color: #fff;">
+                <p class="tit">帐号信息</p>
+                <div class="gb-bankcard">
+                    <div class="hd">
+                        <p>
+                            <span class="pay-third allscore_s_wx"></span>
+
+                        </p>
+                    </div>
+                    <div class="ct" style="padding-left:20px;">
+                        <p><span class="text-green" style="color:#f49e2e;line-height:40px;">Angel388</span><a href="#" class="copy" style="margin-top:10px;">复制</a></p>
+                        <div class="ct">
+                            <p><span style="float:left;">姓名：</span>
+                                宋小宝 <a href="#" class="copy">复制</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wechat-code">
+                    <img src="../../mobile-v3/images/qcode.png" alt="">
+                    <p class="tit">保存到手机</p>
+                </div>
+            </div>
+        </div>
+        <div class="mui-row">
+            <div class="mui-input-group mine-form m-t-sm">
+                <div class="mui-input-row"><label for="">您的微信昵称</label>
+                    <div class="ct">
+                        <input type="text" placeholder="昵称">
+                    </div>
+                </div>
+                <div class="mui-input-row">
+                    <label for="">订单号后5位
+                        <span class="small">非必填</span>
+                    </label>
+                    <div class="ct">
+                        <input type="text" placeholder="请填写“订单号”非商户订单号">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="info">
+            <li>* 请先搜索微信号或扫描二维码添加好友。</li>
+            <li>* 为了系统快速完成转账，请输入订单号后5位，以加快系统入款速度。</li>
+            <li>* 支付成功后，请等待几秒钟，提示[支付成功] 按确认</li>
+        </ul>
+    </div>
+</div>
+<div class="mui-row">
+    <div class="gb-form-foot bank-pay-btn">
+        <a href="" class="mui-btn mui-btn-primary submit">提交</a>
+    </div>
+</div>
+<!--优惠弹窗-->
+<div class="masker" style="display:block;"></div>
+<div class="gb-withdraw-box window-ok" style="display:block;">
+    <div class="cont">
+        <div class="ok-box">
+            <i class="ok-icon"></i>
+            <span>提交成功！</span>
+        </div>
+        <div class="ct">
+            <p>系统审核通过后<br>钱包余额将自动增加相应的余额
+            </p>
+        </div>
+        <div class="ft">
+            <a href="" class="btn mui-btn mui-btn-outlined">再存一次</a>
+            <a href="" class="btn mui-btn mui-btn-outlined">返回首页</a>
+        </div>
+    </div>
+</div>
+<div class="gb-withdraw-box pro-window succ-box" style="display:block">
+    <div class="cont">
+        <h3>消息</h3>
+        <div class="cont-text">
+            <p>存款金额：<span class="org">300元</span></p>
+            <p>手续费：需支付<span class="org">300元</span> / 免手续费 / 返还<span class="org">300元</span></p>
+
+        </div>
+        <div class="text-pro">
+            <p>优惠：</p>
+            <ul>
+                <li>
+                    <div class="text-warp">
+                        <span>与优惠不参与优惠不参与优</span>
+                        <input type="radio">
+                    </div>
+                </li>
+                <li>
+                    <div class="text-warp">
+                        <span>存100送10</span>
+                        <input type="radio">
+                    </div>
+                </li>
+                <li>
+                    <div class="text-warp">
+                        <span>存100送10</span>
+                        <input type="radio">
+                    </div>
+                </li>
+                <li>
+                    <div class="text-warp">
+                        <span>存100送10</span>
+                        <input type="radio">
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="pro-btn">
+            <a class="next-btn">已存款，提交申请</a>
+            <a class="agin-btn">重新填写金额</a>
+        </div>
+        <div class="close">
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../mobile-v3/js/common.js"></script>
+<script>
+    $(function () {
+        $('.pro-window .close').on('tap',function () {
+            $(this).parents('.gb-withdraw-box').hide();
+        });
+        $('.window-ok .btn').on('tap',function () {
+            $('.masker').hide();
+            $(this).parents('.gb-withdraw-box').hide();
+        });
+    });
+</script>
+</html>
