@@ -9,16 +9,11 @@ define([], function () {
     return Class.extend({
         init: function () {
             this.onPageLoad();
+            this.bindEvent();
         },
 
-        onPageLoad: function () {
+        bindEvent: function () {
             var _this = this;
-            var href = window.location.href;
-            //在首页用sessionStorage判断登录状态
-            if ((href.indexOf('/mainIndex.') > 0 || href.indexOf('/game.') > 0) && sessionStorage.is_login != 'true') return false;
-
-            if (sessionStorage.is_login === 'true') _this.getAllApiBalance();
-
             mui('.mui-bar-nav').on('tap', '.menu', function () {
                 if (document.activeElement) {
                     document.activeElement.blur();
@@ -27,17 +22,11 @@ define([], function () {
                 $('body').addClass('has-menu-ex');
                 return false;
             });
-
             mui('body').on('tap', '.mui-hide-bar', function () {
                 $(this).hide();
                 $('body').removeClass('has-menu-ex');
                 return false;
             });
-            $('.mui-bar-nav .menu .ex').height(function () {
-                return $(window).height() - 49 - $('nav').height();
-            });
-
-
             mui('header').on('tap', '.btn-refresh', function () {
                 var loading = '<div class="loader api-loader"><div class="loader-inner ball-pulse api-div"><div></div><div></div><div></div></div></div>';
                 $('.bar-wallet').html(loading);
@@ -74,9 +63,9 @@ define([], function () {
              */
             mui('header').on('tap', 'a[data-url]', function () {
                 var url = $(this).attr("data-url");
-                if($(this).parent().find(".btn-deposit").size()>0 && os == 'app_ios'){
+                if ($(this).parent().find(".btn-deposit").size() > 0 && os == 'app_ios') {
                     gotoIndex(1);
-                }else {
+                } else {
                     if (window.top.page)
                         window.top.page.gotoUrl(url);
                     else if (window.top.game)
@@ -92,6 +81,15 @@ define([], function () {
                 _this.recovery();
             });
         },
+        onPageLoad: function () {
+            var _this = this;
+            var href = window.location.href;
+            if (sessionStorage.is_login == 'true' || isLogin == 'true') _this.getAllApiBalance();
+
+            $('.mui-bar-nav .menu .ex').height(function () {
+                return $(window).height() - 49 - $('nav').height();
+            });
+        },
 
         initScroll: function () {
             $('.mui-assets').height($(window).height() - 210 - $('nav').height());
@@ -103,7 +101,7 @@ define([], function () {
             })
         },
         recovery: function (obj) {
-            if(isAutoPay == false) {
+            if (isAutoPay == false) {
                 this.toast(window.top.message.common_auto["无免转"]);
                 return;
             }
@@ -209,7 +207,7 @@ define([], function () {
                     $('table#api-balance').html('');
                 },
                 success: function (data) {
-                    if(data) {
+                    if (data) {
                         var d = eval('(' + data + ')');
                         $('#bar-username').html(d.username);
                         $('.bar-wallet').html(d.currSign + d.playerWallet);
@@ -225,12 +223,12 @@ define([], function () {
                             $('table#api-balance').append(html);
                         }
                         _this.initScroll();
-                    }else {
+                    } else {
                         sessionStorage.is_login = "false";
                     }
                 },
                 error: function (xhr) {
-                    if(xhr.status == '600')
+                    if (xhr.status == '600')
                         sessionStorage.is_login = "false";
                 }
             });
