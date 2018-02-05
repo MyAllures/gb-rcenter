@@ -53,18 +53,17 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
         saveApiOrder: function(e,option) {
             var _this = this;
             var apiTypeOrder = {};
-            //cashOrder.isTakeTurns = $("[name='takeTurnsStatus']").val();
-            //cashOrder.takeTurns= $("input:radio[name='takeTurns']:checked").val();
             var orderObj = [];
             var url=null;
             var isMobile=$("#isMobile").val();
-                if(isMobile=="true"){
+            var siteId=$("#searchSiteId").val();
+            if(isMobile=="true"){
                 url='/vSiteApiTypeRelation/saveMobileSiteApiOrder.html';
             }else {
                 url='/vSiteApiTypeRelation/saveSiteApiOrder.html';
             }
             $("tbody tr").each(function(index,obj){
-                orderObj.push({"order":index+1,"objectId":$(obj).children("[name='apiTypeId']").val()});
+                orderObj.push({"order":index+1,"objectId":$(obj).children("[name='apiTypeId']").val(),"siteId":siteId});
                 apiTypeOrder.orderList = orderObj;
             });
             window.top.topPage.ajax({

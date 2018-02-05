@@ -22,7 +22,16 @@ define(['common/MobileBasePage'], function (Mobile) {
                 mui('.mui-off-canvas-wrap').offCanvas('toggle');
             });
             $("._download").on("tap", function (e) {
-                _this.gotoUrl($(this).data("download"));
+                var isLogin = sessionStorage.is_login;
+                var url = $(this).data("download");
+                if (isLogin != true && isLogin != "true") {
+                    _this.toast("请登入下载");
+                    window.setTimeout(function () {
+                        _this.gotoUrl(url)
+                    },3000);
+                } else {
+                    _this.gotoUrl($(this).data("download"));
+                }
             });
             mui("body").on('tap', "button.user-login", function () {
                 var _href = "/index.html";

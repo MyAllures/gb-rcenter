@@ -136,7 +136,7 @@ define(['moment'], function (moment) {
         /**
          * 隐藏页面loading效果
          */
-        hidePageLoading:function() {
+        hidePageLoading: function () {
             if ($(".loading-wrap").length > 0) {
                 $(".loading-wrap").remove();
             }
@@ -874,6 +874,15 @@ define(['moment'], function (moment) {
                     $("[name='gb.token']").val(data.token);
                     $("#activity_message_id").val(id);
                 }
+            });
+        },
+        formatStr: function () {
+            var ary = [];
+            for (var i = 1; i < arguments.length; i++) {
+                ary.push(arguments[i]);
+            }
+            return arguments[0].replace(/\{(\d+)\}/g, function (m, i) {
+                return ary[i];
             });
         }
     });

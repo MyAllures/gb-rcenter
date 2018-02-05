@@ -127,17 +127,14 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
 
         bindReWriteAmount: function () {
             var _this = this;
-            mui(".cont").on("tap", ".agin-btn", function () {
-                _this.linkDeposit();
-            })
-            mui(".cont").on("tap", ".close", function () {
+            mui(".cont").on("tap", ".agin-btn, .close", function () {
                 $('#depositSalePop').remove();
             })
         },
         linkDeposit:function() {
             var url = root + "/wallet/deposit/index.html";
             if (this.os == 'app_android') {
-                window.gamebox.gotoFragment(1);
+                window.gamebox.refreshPage();
             } else if (this.os == 'app_ios') {
                 gotoTab(1);
             } else {

@@ -85,10 +85,14 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
         renderData:function (data) {
             var _this=this;
             var $result = $("#editable tbody", _this.formSelector);
-            var json = JSON.parse(data);
-            if(json.result) {
-                var html = $("#VPlayerWithdrawListVo",_this.formSelector).render({data:json.result});
-                $result.html(html);
+            try {
+                var json = JSON.parse(data);
+                if(json.result) {
+                    var html = $("#VPlayerWithdrawListVo",_this.formSelector).render({data:json.result});
+                    $result.html(html);
+                }
+            }catch (err){
+                console.info(err);
             }
         },
 

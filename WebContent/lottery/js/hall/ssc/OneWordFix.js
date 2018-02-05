@@ -16,6 +16,7 @@ define(['site/hall/ssc/PlayWay'], function (PlayWay) {
             $('.fix-type a').on('click', function () {
                 $('.fix-type>a').removeClass('active');
                 $(this).addClass('active');
+                $("#inputMoney").val("");
                 var $totalSum = $('table.total-sum');
                 var betCode = $(this).data('code');
                 if (betCode === 'ten_thousand') {

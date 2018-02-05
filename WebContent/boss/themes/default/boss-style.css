@@ -2641,9 +2641,24 @@ div.scroll{
 textarea.resize-vertical{
     resize: vertical;
 }
+.form-group.h-line-a ul li input{vertical-align: middle;}
+.h-line-a .right-btn-down{
+    border: 1px solid #b4b7bb!important;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.input-group .form-control:last-child {
+    border-top-left-radius: 0!important;
+    border-bottom-left-radius: 0!important;
+}
 /*提示消息*/
 .msg{padding:6px 10px; background: #fff5e5;border: 1px solid #ffe6c0;}
 .msg:before{display: inline-block;vertical-align: middle;font: normal normal normal 14px/1 FontAwesome; font-size: 30px;padding: 4px;}
 .msg.msg-warning{}
 .msg.msg-warning:before{content: "\f06a";color: #ea9101;}
 .msg .msg-description{display: inline-block;vertical-align: middle;}
+.open-dialog-95p .modal-dialog{
+    max-width: 85%;
+    min-width: 500px;
+    width: 100%;
+}
