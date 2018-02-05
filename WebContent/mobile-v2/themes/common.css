@@ -5289,3 +5289,127 @@ header.blue{background:#1766bb;}
 .mui-input-row.bticonin-row{height: auto;}
 .mui-input-row.bticonin-row>.ct{padding-right: 0;padding-bottom: 0;    line-height: 0;}
 .mui-input-row.bticonin-row>.ct textarea{padding: 10px;font-size: 12px;color: #999;text-align: right;}
+
+
+/*存款教程:*/
+.depositHelp {
+  line-height: 40px;
+  color: #1766bb;
+  padding: 0 15px 0;
+  margin-top: 10px;
+}
+.depositHelp span {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  border-radius: 100%;
+  background: #999;
+  color: #fff;
+  line-height: 15px;
+  text-align: center;
+  margin-top: 7px;
+}
+.depositHelpBox {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+.depositHelpBox .swiper-container {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+.depositHelpBox .swiper-slide {
+  padding: 16%;
+  position: relative;
+}
+.depositHelpBox .swiper-slide img {
+  width: 100%;
+}
+ .depositHelpBox .swiper-pagination-bullet {
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  opacity: 1;
+}
+.depositHelpBox .swiper-pagination-bullet-active {
+  background: #fdbe00;
+}
+.depositHelpBox .swiper-pagination {
+  bottom: 20px;
+}
+.depositHelpBox .closeHelpBox {
+  width: 30px;
+  height: 30px;
+  font-size: 50px;
+  z-index: 1100;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  color: rgba(225, 225, 225, 0.8);
+}
+.depositHelpBox .circle {
+  padding: 15px;
+  background: rgba(253, 0, 0, 0.8);
+  border-radius: 100%;
+  position: absolute;
+  animation: changeSize 0.5s infinite;
+}
+@keyframes changeSize {
+  0% {
+    transform: scale(0.9);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+.depositHelpBox .qq-fansao .step-1 .circle {
+  top: 42.5%;
+  left: 28.5%;
+}
+.depositHelpBox .qq-fansao .step-2 .circle {
+  bottom: 27%;
+  left: 47%;
+}
+ .depositHelpBox .qq-fansao .step-3 .circle {
+  top: 32.5%;
+  left: 44%;
+}
+.depositHelpBox .wechat-fansao .step-1 .circle {
+  top: 34.5%;
+  left: 31%;
+}
+ .depositHelpBox .wechat-fansao .step-2 .circle {
+  bottom: 67%;
+  left: 28%;
+}
+.depositHelpBox .wechat-fansao .step-3 .circle {
+  top: 34%;
+  left: 45%;
+}
+ .depositHelpBox .alipay-fansao .step-1 .circle {
+  top: 25%;
+  left: 39%;
+}
+.depositHelpBox .alipay-fansao .step-2 .circle {
+  bottom: 62%;
+  left: 44%;
+}
+
+.deposit-next {
+  position: relative;
+  margin: 20px;
+  width: auto;
+  border-radius: 5px;
+  overflow: hidden;
+}
