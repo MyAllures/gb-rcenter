@@ -43,9 +43,9 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 return;
             }
             var code=$("#code").val();
-            var minOpenTime = $("#minOpenTime").val();
+            var queryEndDate = $("#queryEndDate").val();
             mui.ajax(root + "/lotteryResultHistory/getLotteryResultDetail.html",{
-                data:{'search.code': code, "paging.pageNumber" : _this.paging++ ,"search.openTime":minOpenTime},
+                data:{'search.code': code, "paging.pageNumber" : _this.paging++ ,"search.queryEndDate":queryEndDate},
                 type:"post",
                 dataType:"json",
                 beforeSend: function () {
@@ -64,9 +64,6 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                             }
                             obj.openCodeSum = openCodeSum;
                             data[i] = obj;
-                            if(i == data.length-1){
-                                $("#minOpenTime").val(data[i].openTime);
-                            }
                         }
                         var html = Template('template_myLotteryTemplate', {list: data});
                         if(isReload)
