@@ -15,6 +15,12 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
 
         bindEvent: function () {
             this._super();
+            //获取授权码教程
+            mui("body").on("tap", "p.depositHelp", function () {
+                var accountType = $(this).attr("accountType");
+                var depositHelpBox = $("div#depositHelpBox" + accountType);
+                depositHelpBox.show();
+            });
         },
 
         /**
@@ -38,7 +44,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
         },
 
         back: function () {
-           this.linkDeposit();
+            this.linkDeposit();
         },
 
         openWindow: function (url) {
@@ -221,9 +227,9 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
             }
 
             var url = null;
-            if($("input[name='result.randomCash']").val()){
+            if ($("input[name='result.randomCash']").val()) {
                 url = "/wallet/deposit/online/scan/scanRandomCodeSubmit.html"
-            }else{
+            } else {
                 url = "/wallet/deposit/online/scan/scanCodeSubmit.html";
             }
             mui.ajax(root + url, {
