@@ -262,48 +262,37 @@ function transferBack(data) {
     }
 }
 
-/**
- * 提交转账
- */
-// mui("#mui-content-padded").on("tap", "#transfersMoney", function () {
-//     var $form = $('#transferForm');
-//     var $this = $(this);
-//
-//     if (!$form.valid()) {
-//         return false;
-//     }
-//
-//     mui.ajax(root + '/transfer/transfersMoney.html', {
-//         dataType: 'json',
-//         data: $form.serialize(),
-//         type: 'post',
-//         async: true,
-//         beforeSend:function(){
-//             $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
-//         },
-//         success: function (data) {
-//             transferBack(data);
-//             $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
-//         },
-//         error: function (xhr, type, errorThrown) {
-//             $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
-//         }
-//     });
-// });
-
 
 /**
  * 提交转账
  */
-function submitTransactionMoney(obj, options) {
-    alert(options.data);
-    alert("wadaw");
+function submitTransactionMoney() {
     toast("提交");
+    var $form = $('#transferForm');
+    var $this = $(this);
+
+    if (!$form.valid()) {
+        return false;
+    }
+
+    var options = {
+        url: root + '/transfer/transfersMoney.html',
+        data: $form.serialize(),
+        type: 'post',
+        beforeSend:function(){
+            $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
+        },
+        success: function (data) {
+            transferBack(data);
+            $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
+        },
+    };
+    muiAjax(options)
 }
 
 
 (function (mui, doc) {
-    $('.mui-inner-wrap').height();
+    muiInit();
     mui.init();
     mui.ready(function () {
         /**
