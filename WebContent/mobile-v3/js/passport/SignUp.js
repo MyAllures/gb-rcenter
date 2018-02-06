@@ -5,11 +5,13 @@ $(function () {
         containerScroll: '.mui-content.mui-scroll-wrapper'
     };
     muiInit(options);
+    //加载验证码
+    $("img.captcha_img").attr("src", $("img.captcha_img").attr("data-src") + "?t=" + random)
 });
 
 //请求验证码
 function captchaImg(obj, options) {
-    $(".captcha_img").attr("src", options.src + "?_t" + Math.random());
+    $(".captcha_img").attr("src", options.src + "?_t" + random);
 }
 
 //注册条款选项改变
