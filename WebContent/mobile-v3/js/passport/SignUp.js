@@ -23,7 +23,7 @@ $(function () {
  * 性别
  */
 function sex() {
-    var sexButton = doc.getElementById('sexButton');
+    var sexButton = document.getElementById('sexButton');
     if (sexButton) {
         var options = {
             url: root + '/signUp/optionText.html?option=sex',
@@ -33,7 +33,7 @@ function sex() {
                         var sexPick = new $.PopPicker();
                         sexPick.setData(data);
                         sexPick.show(function (items) {
-                            doc.getElementById("sysUser.sex").value = items[0].value;
+                            document.getElementById("sysUser.sex").value = items[0].value;
                             sexButton.innerText = items[0].text;
                             sexPick.dispose();
                             sexPick = null;
@@ -50,7 +50,7 @@ function sex() {
  * 主货币
  */
 function currency() {
-    var currencyButton = doc.getElementById('currencyButton');
+    var currencyButton = document.getElementById('currencyButton');
     if (currencyButton) {
         var options = {
             url: root + '/signUp/optionText.html?option=mainCurrency',
@@ -60,7 +60,7 @@ function currency() {
                         var currencyPick = new $.PopPicker();
                         currencyPick.setData(data);
                         currencyPick.show(function (items) {
-                            doc.getElementById('sysUser.defaultCurrency').value = items[0].value;
+                            document.getElementById('sysUser.defaultCurrency').value = items[0].value;
                             currencyButton.innerText = items[0].text;
                             currencyPick.dispose();
                             currencyPick = null;
@@ -77,7 +77,7 @@ function currency() {
  * 主语言
  */
 function locale() {
-    var localeButton = doc.getElementById('localeButton');
+    var localeButton = document.getElementById('localeButton');
     if (localeButton) {
         var options = {
             url: root + '/signUp/optionText.html?option=defaultLocale',
@@ -87,7 +87,7 @@ function locale() {
                         var localePick = new $.PopPicker();
                         localePick.setData(data);
                         localePick.show(function (items) {
-                            doc.getElementById("sysUser.defaultLocale").value = items[0].value;
+                            document.getElementById("sysUser.defaultLocale").value = items[0].value;
                             localeButton.innerText = items[0].text;
                             localePick.dispose();
                             localePick = null;
@@ -104,7 +104,7 @@ function locale() {
  * 安全问题
  */
 function question() {
-    var questionButton = doc.getElementById('questionButton');
+    var questionButton = document.getElementById('questionButton');
     if (questionButton) {
         var options = {
             url: root + '/signUp/optionText.html?option=securityIssues',
@@ -114,7 +114,7 @@ function question() {
                         var questionPick = new $.PopPicker();
                         questionPick.setData(data);
                         questionPick.show(function (items) {
-                            doc.getElementById("sysUserProtection.question1").value = items[0].value;
+                            document.getElementById("sysUserProtection.question1").value = items[0].value;
                             questionButton.innerText = items[0].text;
                             questionPick.dispose();
                             questionPick = null;
@@ -131,7 +131,7 @@ function question() {
  * 生日
  */
 function birthday() {
-    var dateButton = doc.getElementById('dateButton');
+    var dateButton = document.getElementById('dateButton');
     if (dateButton) {
         var optionsJson = dateButton.getAttribute('data-options') || '{}';
         var options = JSON.parse(optionsJson);
@@ -140,7 +140,7 @@ function birthday() {
             var id = this.getAttribute('id');
             datePick.show(function (rs) {
                 dateButton.innerText = rs.text;
-                doc.getElementById("sysUser.birthday").value = rs.text;
+                document.getElementById("sysUser.birthday").value = rs.text;
                 datePick.dispose();
                 datePick = null;
             });
