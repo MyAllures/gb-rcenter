@@ -35,26 +35,40 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         onPageLoad: function () {
             this._super();
         },
-        validateForm: function (e) {
-            var a6 = $("#sysParam6").val();
-            var a2 = $("#sysParam2").val();
-            var a5 = $("#sysParam5").val();
-            var a3 = $("#sysParam3").val();
-            var a7 = $("#sysParam7").val();
-            var a4 = $("#sysParam4").val();
-            var r1 = parseFloat(a6) + parseFloat(a2);
-            var r2 = parseFloat(a5) + parseFloat(a3);
-            var r3 = parseFloat(a7) + parseFloat(a4);
-            var b = true;
-            if(r1>100 || r2>100 || r3>100){
-                b=false
-            }
-            if(!b){
-                page.showPopover(e, {}, 'warning', window.top.message.player_auto['代理和总代分摊之和不能超过100!'], true);
-                return false;
-            }
-            var $form = $(window.top.topPage.getCurrentForm(e));
-            return !$form.valid || $form.valid();
+        validateForm: function (e, opt) {
+            var rakebackFee = $("#sysParam6").val();
+            var favorableFee = $("#sysParam5").val();
+            var otherFee = $("#sysParam7").val();
+            window.top.topPage.ajax({
+                url: root+'/rebateSet/checkFee.html?rakebackFee='+rakebackFee+'&favorableFee='+favorableFee+'&otherFee='+otherFee,
+                dataType: "json",
+                success: function (data) {
+                    if (!data.state){
+                        if (data.code == 1){
+                            var obj = {currentTarget:$("#sysParam6")};
+                            var msg = window.top.message.fund_auto['返水费用分摊比例不能超过100%'].replace('{0}', data.radio);
+                            page.showPopover(obj, {}, 'success', msg, true);
+                        }else if(data.code == 2){
+                            var msg = window.top.message.fund_auto['优惠费用分摊比例不能超过100%'].replace('{0}', data.radio);
+                            var obj = {currentTarget:$("#sysParam5")};
+                            page.showPopover(obj, {}, 'success', msg, true);
+                        }else if(data.code == 3){
+                            var msg = window.top.message.fund_auto['其他费用分摊比例不能超过100%'].replace('{0}', data.radio);
+                            var obj = {currentTarget:$("#sysParam7")};
+                            page.showPopover(obj, {}, 'success', msg, true);
+                        }
+                        return false;
+                    }
+                    var $form = $(window.top.topPage.getCurrentForm(e));
+                    if (!$form.valid || $form.valid()) {
+                        window.top.topPage.doAjax(e, opt);
+                    }
+                },
+                error: function (data) {
+                    return false;
+                }
+            });
+            $(e.currentTarget).unlock();
         }
 
     });
