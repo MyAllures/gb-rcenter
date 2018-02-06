@@ -288,7 +288,7 @@ function goToUrl(url, isExternalLink, targetUrl) {
     if (url.indexOf("commonLogin.html") > 0) {
         login(targetUrl);
         return;
-    } else if(url.indexOf("/deposit/index.html")>0) { //存款页面
+    } else if (url.indexOf("/deposit/index.html") > 0) { //存款页面
         deposit(url);
         return;
     }
@@ -473,7 +473,7 @@ function login(targetUrl) {
         nativeLogin();
     } else {
         var url = '/login/commonLogin.html?v=' + rcVersion;
-        if(targetUrl) {
+        if (targetUrl) {
             //登录成功后跳转页面
             sessionStorage.login.targetUrl = targetUrl;
         }
@@ -485,7 +485,7 @@ function login(targetUrl) {
  * 统一存款入口
  */
 function deposit(url) {
-    if(isNative) {
+    if (isNative) {
         nativeGotoDepositPage();
     } else {
         openWindow(url);
@@ -542,4 +542,18 @@ function getCookie(name) {
         return unescape(arr[2]);
     }
     return null;
+}
+
+/**
+ * 绑定表单验证规则
+ * @private
+ */
+function bindFormValidation($form) {
+    var rule = this.getValidateRule($form);
+    if (rule) {
+        if ($.data($form[0], "validator")) {
+            $.data($form[0], "validator", null);
+        }
+        $form.validate(rule);
+    }
 }
