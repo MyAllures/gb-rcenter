@@ -549,7 +549,15 @@ function getCookie(name) {
  * @private
  */
 function bindFormValidation($form) {
-    var rule = this.getValidateRule($form);
+    if (!$form) {
+        return;
+    }
+    var $ruleDiv = $form.find('div[id=validateRule]');
+    var rule;
+    if ($ruleDiv.length > 0) {
+        rule = eval("({" + $ruleDiv.text() + "})");
+        rule.ignore = ".ignore";
+    }
     if (rule) {
         if ($.data($form[0], "validator")) {
             $.data($form[0], "validator", null);
