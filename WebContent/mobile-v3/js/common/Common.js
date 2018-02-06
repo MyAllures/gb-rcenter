@@ -6,8 +6,6 @@ var isNative = isNative();
 var muiDefaultOptions = {
     /*主页面滚动指定容器，可自行指定范围*/
     containerScroll: '.mui-content.mui-scroll-wrapper',
-    /*左侧菜单上下滚动，可自行指定范围*/
-    leftMenuScroll: '.mui-scroll-wrapper.side-menu-scroll-wrapper',
     /*右侧菜单上下滚动，可自行指定范围*/
     rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
     /*禁用侧滑手势指定样式*/
@@ -59,10 +57,6 @@ function muiInit(options) {
     //主页面内容上下滚动
     if (options.containerScroll) {
         muiScrollY(options.containerScroll);
-    }
-    /*左侧菜单上下滚动*/
-    if (options.leftMenuScroll) {
-        muiScrollY(options.leftMenuScroll);
     }
     /*右侧菜单上下滚动*/
     if (options.rightMenuScroll) {
@@ -168,9 +162,9 @@ function muiAjaxError() {
     mui.ajaxSettings.error = function (error, type, xhr, settings) {
         var status = error.getResponseHeader("headerStatus") || error.status;
         if (status == 600) {//Session过期 跳转登录页面
-            window.top.location.href = window.top.root + "/login/commonLogin.html";
+            goToUrl(root + "/login/commonLogin.html");
         } else if (status == 606) {// 踢出
-            gotoUrl(root + "/errors/" + status + ".html");
+            goToUrl(root + "/errors/" + status + ".html");
         } else if (status == 608) {
             toast(window.top.message.common["repeat.request.error"]);
         } else if (status >= 0 && settings && settings.comet != true) { //606、403、404、605等状态码跳转页面
@@ -293,6 +287,9 @@ function goToUrl(url, isExternalLink, targetUrl) {
     //登录页面
     if (url.indexOf("commonLogin.html") > 0) {
         login(targetUrl);
+        return;
+    } else if(url.indexOf("/deposit/index.html")>0) { //存款页面
+        deposit(url);
         return;
     }
     openWindow(url);
@@ -476,8 +473,21 @@ function login(targetUrl) {
         nativeLogin();
     } else {
         var url = '/login/commonLogin.html?v=' + rcVersion;
-        //登录成功后跳转页面
-        sessionStorage.login.targetUrl = targetUrl;
+        if(targetUrl) {
+            //登录成功后跳转页面
+            sessionStorage.login.targetUrl = targetUrl;
+        }
+        openWindow(url);
+    }
+}
+
+/**
+ * 统一存款入口
+ */
+function deposit(url) {
+    if(isNative) {
+        nativeGotoDepositPage();
+    } else {
         openWindow(url);
     }
 }

@@ -2,12 +2,11 @@
  * 涉及调用app原生方法js
  */
 
-
 /**
  * 原生自动登录方法
  */
-function nativeAutoLogin() {
-
+function nativeAutoLogin(username, password) {
+    window.gamebox.nativeAutoLogin(username, password);
 }
 
 /**

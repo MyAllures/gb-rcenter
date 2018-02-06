@@ -199,7 +199,7 @@ function autoLogin() {
     var _username = $("[name='sysUser.username']").val();
     var _password = $("[name='sysUser.password']").val();
     if (isNative) { //调用原生方法
-        nativeAutoLogin();
+        nativeAutoLogin(_username, _password);
     } else {
         var options = {
             type: "POST",
@@ -213,13 +213,13 @@ function autoLogin() {
                 if (data != null) {
                     if (data.success) {
                         sessionStorage.is_login = true;
-                        goToUrl("/mainIndex.html");
+                        goToUrl(root + "/mainIndex.html");
                     } else if (data.message) {
                         toast(message.passport[data.message] || data.message)
                     }
                 } else {
                     sessionStorage.is_login = true;
-                    goToUrl("/mainIndex.html");
+                    goToUrl(root + "/mainIndex.html");
                 }
             }
         };
