@@ -6,8 +6,147 @@ $(function () {
     };
     muiInit(options);
     //加载验证码
-    $("img.captcha_img").attr("src", $("img.captcha_img").attr("data-src") + "?t=" + random)
+    $("img.captcha_img").attr("src", $("img.captcha_img").attr("data-src") + "?t=" + random);
+    //加载性别下拉
+    sex();
+    //加载货币下拉
+    currency();
+    //语言
+    locale();
+    //安全问题
+    question();
+    //生日
+    birthday();
 });
+
+/**
+ * 性别
+ */
+function sex() {
+    var sexButton = document.getElementById('sexButton');
+    if (sexButton) {
+        var options = {
+            url: root + '/signUp/optionText.html?option=sex',
+            success: function (data) {
+                if (data) {
+                    sexButton.addEventListener('tap', function (event) {
+                        var sexPick = new $.PopPicker();
+                        sexPick.setData(data);
+                        sexPick.show(function (items) {
+                            document.getElementById("sysUser.sex").value = items[0].value;
+                            sexButton.innerText = items[0].text;
+                            sexPick.dispose();
+                            sexPick = null;
+                        });
+                    }, false);
+                }
+            }
+        };
+        muiAjax(options);
+    }
+}
+
+/**
+ * 主货币
+ */
+function currency() {
+    var currencyButton = document.getElementById('currencyButton');
+    if (currencyButton) {
+        var options = {
+            url: root + '/signUp/optionText.html?option=mainCurrency',
+            success: function (data) {
+                if (data) {
+                    currencyButton.addEventListener('tap', function (event) {
+                        var currencyPick = new $.PopPicker();
+                        currencyPick.setData(data);
+                        currencyPick.show(function (items) {
+                            document.getElementById('sysUser.defaultCurrency').value = items[0].value;
+                            currencyButton.innerText = items[0].text;
+                            currencyPick.dispose();
+                            currencyPick = null;
+                        });
+                    }, false);
+                }
+            }
+        };
+        muiAjax(options);
+    }
+}
+
+/**
+ * 主语言
+ */
+function locale() {
+    var localeButton = document.getElementById('localeButton');
+    if (localeButton) {
+        var options = {
+            url: root + '/signUp/optionText.html?option=defaultLocale',
+            success: function (data) {
+                if (data) {
+                    localeButton.addEventListener('tap', function (event) {
+                        var localePick = new $.PopPicker();
+                        localePick.setData(data);
+                        localePick.show(function (items) {
+                            document.getElementById("sysUser.defaultLocale").value = items[0].value;
+                            localeButton.innerText = items[0].text;
+                            localePick.dispose();
+                            localePick = null;
+                        });
+                    }, false);
+                }
+            }
+        };
+        muiAjax(options);
+    }
+}
+
+/**
+ * 安全问题
+ */
+function question() {
+    var questionButton = document.getElementById('questionButton');
+    if (questionButton) {
+        var options = {
+            url: root + '/signUp/optionText.html?option=securityIssues',
+            success: function (data) {
+                if (data) {
+                    questionButton.addEventListener('tap', function (event) {
+                        var questionPick = new $.PopPicker();
+                        questionPick.setData(data);
+                        questionPick.show(function (items) {
+                            document.getElementById("sysUserProtection.question1").value = items[0].value;
+                            questionButton.innerText = items[0].text;
+                            questionPick.dispose();
+                            questionPick = null;
+                        });
+                    }, false);
+                }
+            }
+        };
+        muiAjax(options);
+    }
+}
+
+/**
+ * 生日
+ */
+function birthday() {
+    var dateButton = document.getElementById('dateButton');
+    if (dateButton) {
+        var optionsJson = dateButton.getAttribute('data-options') || '{}';
+        var options = JSON.parse(optionsJson);
+        dateButton.addEventListener('tap', function (event) {
+            var datePick = new $.DtPicker(options);
+            var id = this.getAttribute('id');
+            datePick.show(function (rs) {
+                dateButton.innerText = rs.text;
+                document.getElementById("sysUser.birthday").value = rs.text;
+                datePick.dispose();
+                datePick = null;
+            });
+        }, false);
+    }
+}
 
 //请求验证码
 function captchaImg(obj, options) {
@@ -29,7 +168,6 @@ function register(obj, options) {
     if (!$form.valid()) {
         return;
     }
-
     var data = $form.serialize();
     options = {
         data: data,
@@ -37,35 +175,31 @@ function register(obj, options) {
         type: 'post',
         url: root + '/signUp/save.html',
         beforeSend: function () {
-            $(".btn-ok").text(window.top.message.passport_auto['提交中']).attr("disabled", "disabled");
+            $(obj).text(window.top.message.passport_auto['提交中']).attr("disabled", "disabled");
         },
         success: function (data) {
             if (data.state == false) {
                 toast(data.msg);
-                $(".btn-ok").text(window.top.message.passport_auto['立即注册']).removeAttr("disabled");
             } else {
                 toast(data.msg);
-                login();
+                autoLogin();
             }
         },
-        error: function () {
-            $(".btn-ok").text(window.top.message.passport_auto['立即注册']).removeAttr("disabled");
+        complete: function () {
+            $(obj).text(window.top.message.passport_auto['立即注册']).removeAttr("disabled");
         }
-    }
+    };
     muiAjax(options);
 }
 
 /**
  * 登陆
  */
-function login() {
+function autoLogin() {
     var _username = $("[name='sysUser.username']").val();
     var _password = $("[name='sysUser.password']").val();
-    if (os == 'app_android') {
-        window.gamebox.gotoLoginNew(_username, _password);
-    } else if (os == 'app_ios') {
-        //0表示是注册成功后调用方法实际上是未登录，需要ios那里直接调用登录
-        loginSucc(_username, _password, 0);
+    if (isNative) { //调用原生方法
+        nativeAutoLogin(_username, _password);
     } else {
         var options = {
             type: "POST",
@@ -76,26 +210,17 @@ function login() {
                 "password": _password
             },
             success: function (data) {
-                sessionStorage.is_login = true;
-                window.location.href = "/index.html";
                 if (data != null) {
                     if (data.success) {
                         sessionStorage.is_login = true;
-                        window.location.href = "/index.html";
-                    }
-                    if (data.message) {
+                        goToUrl(root + "/mainIndex.html");
+                    } else if (data.message) {
                         toast(message.passport[data.message] || data.message)
                     }
-                    if (data.propMessages) {
-                        if (data.propMessages["captcha"])
-                            toast(data.propMessages["captcha"]);
-                    }
                 } else {
-                    window.location.href = "/index.html";
+                    sessionStorage.is_login = true;
+                    goToUrl(root + "/mainIndex.html");
                 }
-            },
-            error: function () {
-                toast(window.top.message.passport_auto['服务忙']);
             }
         };
         muiAjax(options);
@@ -174,140 +299,3 @@ function wait(t, obj, interval) {
         }
     }, 1000);
 }
-
-
-(function ($, doc) {
-    $.init();
-    $.ready(function () {
-        /**
-         * 性别
-         */
-        var sexButton = doc.getElementById('sexButton');
-        if (sexButton) {
-            mui.ajax(root + '/signUp/optionText.html?option=sex', {
-                dataType: 'json',
-                type: 'post',
-                async: true,
-                success: function (data) {
-                    if (data) {
-                        sexButton.addEventListener('tap', function (event) {
-                            var sexPick = new $.PopPicker();
-                            sexPick.setData(data);
-                            sexPick.show(function (items) {
-                                doc.getElementById("sysUser.sex").value = items[0].value;
-                                sexButton.innerText = items[0].text;
-                                sexPick.dispose();
-                                sexPick = null;
-                            });
-                        }, false);
-                    }
-                },
-                error: function (xhr, type, errorThrown) {
-                }
-            });
-        }
-
-        /**
-         * 主货币
-         */
-        var currencyButton = doc.getElementById('currencyButton');
-        if (currencyButton) {
-            mui.ajax(root + '/signUp/optionText.html?option=mainCurrency', {
-                dataType: 'json',
-                type: 'post',
-                async: true,
-                success: function (data) {
-                    if (data) {
-                        currencyButton.addEventListener('tap', function (event) {
-                            var currencyPick = new $.PopPicker();
-                            currencyPick.setData(data);
-                            currencyPick.show(function (items) {
-                                doc.getElementById('sysUser.defaultCurrency').value = items[0].value;
-                                currencyButton.innerText = items[0].text;
-                                currencyPick.dispose();
-                                currencyPick = null;
-                            });
-                        }, false);
-                    }
-                },
-                error: function (xhr, type, errorThrown) {
-                }
-            });
-        }
-
-        /**
-         * 主语言
-         */
-        var localeButton = doc.getElementById('localeButton');
-        if (localeButton) {
-            mui.ajax(root + '/signUp/optionText.html?option=defaultLocale', {
-                dataType: 'json',
-                type: 'post',
-                async: true,
-                success: function (data) {
-                    if (data) {
-                        localeButton.addEventListener('tap', function (event) {
-                            var localePick = new $.PopPicker();
-                            localePick.setData(data);
-                            localePick.show(function (items) {
-                                doc.getElementById("sysUser.defaultLocale").value = items[0].value;
-                                localeButton.innerText = items[0].text;
-                                localePick.dispose();
-                                localePick = null;
-                            });
-                        }, false);
-                    }
-                },
-                error: function (xhr, type, errorThrown) {
-                }
-            });
-        }
-
-        /**
-         * 安全问题
-         */
-        var questionButton = doc.getElementById('questionButton');
-        if (questionButton) {
-            mui.ajax(root + '/signUp/optionText.html?option=securityIssues', {
-                dataType: 'json',
-                type: 'post',
-                async: true,
-                success: function (data) {
-                    if (data) {
-                        questionButton.addEventListener('tap', function (event) {
-                            var questionPick = new $.PopPicker();
-                            questionPick.setData(data);
-                            questionPick.show(function (items) {
-                                doc.getElementById("sysUserProtection.question1").value = items[0].value;
-                                questionButton.innerText = items[0].text;
-                                questionPick.dispose();
-                                questionPick = null;
-                            });
-                        }, false);
-                    }
-                },
-                error: function (xhr, type, errorThrown) {
-                }
-            });
-        }
-
-        /**
-         * 生日
-         */
-        var dateButton = doc.getElementById('dateButton');
-        if (dateButton) {
-            var optionsJson = dateButton.getAttribute('data-options') || '{}';
-            var options = JSON.parse(optionsJson);
-            dateButton.addEventListener('tap', function (event) {
-                var datePick = new $.DtPicker(options);
-                var id = this.getAttribute('id');
-                datePick.show(function (rs) {
-                    dateButton.innerText = rs.text;
-                    doc.getElementById("sysUser.birthday").value = rs.text;
-                    datePick.dispose();
-                    datePick = null;
-                });
-            }, false);
-        }
-    });
-})(mui, document);

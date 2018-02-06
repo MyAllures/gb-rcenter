@@ -4,36 +4,26 @@ var isLogin = false;
 var RECOVER_TIME_INTERVAL = 10;
 
 $(function () {
-    //只有h5需要刷新头部信息，安卓 ios会自己调用方法刷新头部信息
     headInfo();
-    //安卓去掉头部部分
-    hideHeader();
-    //侧滑菜单
-    leftAside();
+    //左侧菜单滚动
+    var leftMenuScroller = mui(".index-canvas-wrap.side-menu-scroll-wrapper");
+    if (leftMenuScroller && leftMenuScroller.length > 0) {
+        muiScrollY(leftMenuScroller);
+    }
+    closeLeftMenu();
 });
 
 /**
- * 左侧菜单侧滑
+ *  点击侧边空白隐藏侧边栏
  */
-function leftAside() {
-    //实现ios平台的侧滑关闭页面；
-    if (mui.os.plus && mui.os.ios) {
-        //侧滑容器父节点
-        var offCanvasWrapper = mui('div.mui-off-canvas-wrap');
-        if (offCanvasWrapper.length > 0) {
-            offCanvasWrapper[0].addEventListener('shown', function (e) { //菜单显示完成事件
-                plus.webview.currentWebview().setStyle({
-                    'popGesture': 'none'
-                });
-            });
-            offCanvasWrapper[0].addEventListener('hidden', function (e) { //菜单关闭完成事件
-                plus.webview.currentWebview().setStyle({
-                    'popGesture': 'close'
-                });
-            });
+function closeLeftMenu() {
+    $(".index-canvas-wrap").on("tap", function (e) {// 点击侧边空白隐藏侧边栏
+        if (!$(e.detail.target).parents(".mui-off-canvas-left")[0]) {
+            $("html").toggleClass("index-canvas-show");
         }
-    }
+    });
 }
+
 /**
  * 点击右侧玩家信息展示玩家api金额
  */
@@ -59,14 +49,9 @@ function headInfo() {
                 $("#login-info").addClass("mui-hidden");
                 isLogin = false;
                 sessionStorage.setItem("isLogin", isLogin);
-                sessionStorage.removeItem("")
             } else {
                 $("#notLogin").hide();
                 $(".user_name").text(data.name);
-                //设置头像
-                if (data.avatar) {
-                    $('#avatarImg').attr('src', data.avatar);
-                }
                 //左侧菜单用户信息显示
                 $("div.login p").text(data.name);
                 $("div.login").show();
@@ -87,12 +72,7 @@ function headInfo() {
  * 打开左侧菜单
  */
 function leftMenu(obj) {
-    if (mui('.mui-off-canvas-wrap').offCanvas().isShown('left')) {
-        mui('.mui-off-canvas-wrap').offCanvas().close();
-        $(".lang-menu").hide();
-    } else {
-        mui('.mui-off-canvas-wrap').offCanvas().show();
-    }
+    $("html").toggleClass("index-canvas-show");
     $(obj).unlock();
 }
 
@@ -157,20 +137,4 @@ function refreshApi() {
         }
     };
     muiAjax(options);
-}
-
-/**
- * android隐藏头部
- */
-function hideHeader() {
-    if (os == 'app_android') {
-        if ($(".mui-bar-nav ~ .mui-content").hasClass("content-without-notice")) { //其他页面含有这个样式导致出现头部空白
-            $(".mui-bar-nav ~ .mui-content").removeClass("content-without-notice");
-            $(".mui-bar-nav ~ .mui-content").attr("style", "padding-top: 0px;");
-            $('header.mui-bar-nav').hide();
-        } else if (!$(".mui-bar-nav ~ .mui-content").hasClass("mine-content")) {//我的 页面头部直接用h5不需要隐藏
-            $(".mui-bar-nav ~ .mui-content").attr("style", "padding-top: 0px;");
-            $('header.mui-bar-nav').hide();
-        }
-    }
 }

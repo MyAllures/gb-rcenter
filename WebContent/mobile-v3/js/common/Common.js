@@ -1,11 +1,11 @@
 /**终端标志*/
 var os = whatOs();
+/*是否原生*/
+var isNative = isNative();
 /*mui 初始化配置选项*/
 var muiDefaultOptions = {
     /*主页面滚动指定容器，可自行指定范围*/
     containerScroll: '.mui-content.mui-scroll-wrapper',
-    /*左侧菜单上下滚动，可自行指定范围*/
-    leftMenuScroll: '.mui-scroll-wrapper.side-menu-scroll-wrapper',
     /*右侧菜单上下滚动，可自行指定范围*/
     rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
     /*禁用侧滑手势指定样式*/
@@ -14,7 +14,6 @@ var muiDefaultOptions = {
     horizontalScroll: [''],
     /**支持横向纵向样式*/
     horizontalVerticalScroll: ['']
-
 };
 /**
  * mui 向下拉默认参数配置
@@ -58,10 +57,6 @@ function muiInit(options) {
     //主页面内容上下滚动
     if (options.containerScroll) {
         muiScrollY(options.containerScroll);
-    }
-    /*左侧菜单上下滚动*/
-    if (options.leftMenuScroll) {
-        muiScrollY(options.leftMenuScroll);
     }
     /*右侧菜单上下滚动*/
     if (options.rightMenuScroll) {
@@ -167,9 +162,9 @@ function muiAjaxError() {
     mui.ajaxSettings.error = function (error, type, xhr, settings) {
         var status = error.getResponseHeader("headerStatus") || error.status;
         if (status == 600) {//Session过期 跳转登录页面
-            window.top.location.href = window.top.root + "/login/commonLogin.html";
+            goToUrl(root + "/login/commonLogin.html");
         } else if (status == 606) {// 踢出
-            gotoUrl(root + "/errors/" + status + ".html");
+            goToUrl(root + "/errors/" + status + ".html");
         } else if (status == 608) {
             toast(window.top.message.common["repeat.request.error"]);
         } else if (status >= 0 && settings && settings.comet != true) { //606、403、404、605等状态码跳转页面
@@ -256,6 +251,19 @@ function whatOs() {
 }
 
 /**
+ * 是否原生
+ * @returns {*}
+ */
+function isNative() {
+    var ua = navigator.userAgent;
+    if (/(is_native)/i.test(ua)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
  * 关闭加载loading
  */
 function hideLoading() {
@@ -266,28 +274,25 @@ function hideLoading() {
 
 /**
  * 统一请求跳转页面
- * @param url
- *
+ * @param url 跳转链接
+ * isExternalLink 是否是外部链接，外部链接无需加版本号
+ * targetUrl 登录成功后跳转链接
  */
-function goToUrl(url) {
-    if (url.indexOf("?") < 0) {
+function goToUrl(url, isExternalLink, targetUrl) {
+    if (isExternalLink != true && url.indexOf("?") < 0) {
         url = url + "?v=" + rcVersion;
-    } else {
+    } else if (isExternalLink != true) {
         url = url + "&v=" + rcVersion;
     }
     //登录页面
     if (url.indexOf("commonLogin.html") > 0) {
-        login(url);
+        login(targetUrl);
+        return;
+    } else if (url.indexOf("/deposit/index.html") > 0) { //存款页面
+        deposit(url);
         return;
     }
-    //todo::终端标识，以判断ｕrl走什么入口
-    if (os == 'app_ios') {
-        gotoCustom(url);
-    } else if (os == 'app_android') {
-        window.gamebox.gotoActivity(url);
-    } else {
-        openWindow(url);
-    }
+    openWindow(url);
 }
 
 function openWindow(url) {
@@ -425,12 +430,7 @@ function doAjax(obj, options) {
  * @param msg
  */
 function toast(msg) {
-    var os = whatOs();
-    if (os == 'app_android') {
-        window.gamebox.toast(msg);
-    } else {
-        mui.toast(msg);
-    }
+    mui.toast(msg);
 }
 
 /**
@@ -468,13 +468,26 @@ function showWarningMsg(title, msg, callback) {
  * 统一登录入口
  * @param url
  */
-function login(url) {
-    if (os == 'app_ios') {
-        gotoCustom("/login/commonLogin.html");
-    } else if (os == 'app_android') {
-        window.gamebox.gotoLogin(url);
+function login(targetUrl) {
+    if (isNative) {
+        nativeLogin();
     } else {
-        url = '/login/commonLogin.html?v=' + rcVersion;
+        var url = '/login/commonLogin.html?v=' + rcVersion;
+        if (targetUrl) {
+            //登录成功后跳转页面
+            sessionStorage.login.targetUrl = targetUrl;
+        }
+        openWindow(url);
+    }
+}
+
+/**
+ * 统一存款入口
+ */
+function deposit(url) {
+    if (isNative) {
+        nativeGotoDepositPage();
+    } else {
         openWindow(url);
     }
 }
@@ -486,35 +499,15 @@ function logout(e, options) {
     sessionStorage.is_login = false;
     isLogin = false;
     sessionStorage.setItem("isLogin", isLogin);
-    if (os == 'app_ios') {
-        var ajaxOption = {
-            url: root + "/passport/logout.html",
-            headers: {
-                "Soul-Requested-With": "XMLHttpRequest"
-            },
-            success: function (data) {
-                if (data) {
-                    loginOut();
-                }
-            }
-        };
-        muiAjax(ajaxOption);
-    } else if (os == 'app_android') {
-        window.gamebox.logout();
-    } else
-        goToUrl("/passport/logout.html");
+    goToUrl("/passport/logout.html");
 }
 
 /**
  * 返回上一页
- * @param e
- * @param option
  */
-function goToLastPage(e, option) {
-    if (os == 'app_ios') {
-        goBack();
-    } else if (os == 'app_android') {
-        window.history.go(-1);
+function goToLastPage() {
+    if (isNative) {
+        nativeGoBackPage();
     } else {
         mui.back();
     }
@@ -544,9 +537,31 @@ function setCookie(name, value, time) {
  * @param name
  */
 function getCookie(name) {
-    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-    if(arr=document.cookie.match(reg)) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+    if (arr = document.cookie.match(reg)) {
         return unescape(arr[2]);
     }
     return null;
+}
+
+/**
+ * 绑定表单验证规则
+ * @private
+ */
+function bindFormValidation($form) {
+    if (!$form) {
+        return;
+    }
+    var $ruleDiv = $form.find('div[id=validateRule]');
+    var rule;
+    if ($ruleDiv.length > 0) {
+        rule = eval("({" + $ruleDiv.text() + "})");
+        rule.ignore = ".ignore";
+    }
+    if (rule) {
+        if ($.data($form[0], "validator")) {
+            $.data($form[0], "validator", null);
+        }
+        $form.validate(rule);
+    }
 }
