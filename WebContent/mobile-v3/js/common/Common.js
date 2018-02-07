@@ -571,6 +571,7 @@ function bindFormValidation($form) {
  */
 function lazyLoadImg(self) {
     var lazyLoadApi =  mui(self).imageLazyload({
+        autoDestroy: false,
         placeholder: ''
     });
     return lazyLoadApi;

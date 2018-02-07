@@ -29,10 +29,6 @@ function slideHeight(obj, options) {
     setTimeout(function () {// 滑动循环最后一个有延迟，设个定时器抵消延迟的效果
         $(".nav-slide-content>.swiper-wrapper").css({height: $(targetSlide).outerHeight()});
     }, 100);
-    //处理图片延迟加载
-    if ($(targetSlide).find("img[data-lazyload]").length > 0) {
-        lazyLoadApi.refresh(true);
-    }
 }
 
 /**
@@ -61,7 +57,15 @@ function swiper() {
         loopedSlides: 6,
         slidesPerView: 'auto',
         touchRatio: 0.2,
-        slideToClickedSlide: true
+        slideToClickedSlide: true,
+        on: {
+            slideChangeTransitionEnd: function () {
+                //处理图片延迟加载
+                if ($(".nav-slide-content .swiper-slide-active").find("img[data-lazyload]").length > 0) {
+                    lazyLoadApi.refresh(true);
+                }
+            }
+        }
     });
     slideContent.controller.control = slideIndicators;
     slideIndicators.controller.control = slideContent;
@@ -142,7 +146,11 @@ function changeNavGame(obj, options) {
     var apiId = options.apiId;
     var apiTypeId = options.apiTypeId;
     $("div[name='nav-content-" + apiTypeId + "'] .mui-active").removeClass("mui-active");
-    $('div#nav-' + apiTypeId + '-' + apiId).addClass("mui-active");
-    lazyLoadApi.refresh(true);
+    var navTarget = $('div#nav-' + apiTypeId + '-' + apiId);
+    navTarget.addClass("mui-active");
+    //处理图片延迟加载
+    if ($(navTarget).find("img[data-lazyload]").length > 0) {
+        lazyLoadApi.refresh(true);
+    }
     $(obj).unlock();
 }
