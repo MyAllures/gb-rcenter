@@ -1,3 +1,5 @@
+//图片懒加载对象，避免重复加载
+var imgLazyloadApi = null;
 $(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
@@ -7,9 +9,7 @@ $(function () {
         /*右侧菜单上下滚动，可自行指定范围*/
         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
         /*禁用侧滑手势指定样式*/
-        disabledHandSlip: ['mui-off-canvas-left'],
-        /*游戏分类api tab横向滚动*/
-        horizontalScroll: ['.lottery-nav .mui-scroll-wrapper']
+        disabledHandSlip: ['mui-off-canvas-left']
     };
     muiInit(options);
     initBanner();
@@ -18,15 +18,36 @@ $(function () {
     initNotice();
     //初始化api nav滑动
     swiper();
-    //延迟加载图片
-    lazyLoadImg();
 });
+
+/**
+ * 导航点击下面滑块高度问题bug解决
+ */
+function slideHeight(obj, options) {
+    var index = $(obj).data("swiper-slide-index");
+    var targetSlide = $(".nav-slide-content .swiper-slide[data-swiper-slide-index=" + index + "]")[0];
+    setTimeout(function () {// 滑动循环最后一个有延迟，设个定时器抵消延迟的效果
+        $(".nav-slide-content>.swiper-wrapper").css({height: $(targetSlide).outerHeight()});
+    }, 100);
+    //处理图片延迟加载
+    $(targetSlide)
+}
+
+/**
+ * 关闭下载提示
+ */
+function closeDownLoad() {
+    $(".banner-ads").hide();
+}
 
 /**
  * 延迟加载图片
  */
-function lazyLoadImg() {
-    $(document).imageLazyload({
+function lazyLoadImg(self) {
+    if (imgLazyloadApi != null) {
+        imgLazyloadApi.destroy();
+    }
+    imgLazyloadApi = mui(self).imageLazyload({
         placeholder: ''
     });
 }
@@ -37,16 +58,16 @@ function lazyLoadImg() {
 function swiper() {
     // api滑动
     var slideContent = new Swiper('.nav-slide-content', {
-        loop:true,
-        loopedSlides:6,
+        loop: true,
+        loopedSlides: 6,
         autoHeight: true,
-        on:{
-            slideChange:function(){
+        on: {
+            slideChange: function () {
             }
         }
     });
     var slideIndicators = new Swiper('.nav-slide-indicators', {
-        loop:true,
+        loop: true,
         loopedSlides: 6,
         slidesPerView: 'auto',
         touchRatio: 0.2,
@@ -69,20 +90,10 @@ function initBanner() {
  * 公告滚动
  */
 function initNotice() {
-    var index = 0;
-    var len = $("section.notice .notice-list p").length;
-
-    function topScroll() {
-        if (index >= len) {
-            index = 0
-        }
-        $("section.notice .notice-list").css({
-            "transform": "translate3d(0px, " + index * -28 + "px, 0px)"
-        });
-        index++;
-    }
-
-    setInterval(topScroll, 3600);
+    /* 公告初始化 */
+    $('.marquee').marquee({
+        duration: 6000
+    });
 }
 
 /*消息弹窗*/
@@ -136,10 +147,12 @@ function showNotice(obj, options) {
  * @param options
  */
 function changeNavGame(obj, options) {
-    $(".lottery-nav li a.mui-tab-item.mui-active").removeClass("mui-active");
-    $(".lottery-content .mui-control-content.mui-active").removeClass("mui-active");
+    $(obj).parent().parent().find(".mui-active").removeClass("mui-active");
     $(obj).addClass("mui-active");
     var apiId = options.apiId;
     var apiTypeId = options.apiTypeId;
+    $("div[name='nav-content-" + apiTypeId + "'] .mui-active").removeClass("mui-active");
     $('div#nav-' + apiTypeId + '-' + apiId).addClass("mui-active");
+    lazyLoadImg($('div#nav-' + apiTypeId + '-' + apiId));
+    $(obj).unlock();
 }
