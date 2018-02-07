@@ -473,7 +473,7 @@ function login(targetUrl) {
         nativeLogin();
     } else {
         var url = '/login/commonLogin.html?v=' + rcVersion;
-        if (targetUrl && targetUrl!='/') {
+        if (targetUrl && targetUrl != '/') {
             //登录成功后跳转页面
             sessionStorage.loginTargetUrl = targetUrl;
         }
@@ -564,4 +564,14 @@ function bindFormValidation($form) {
         }
         $form.validate(rule);
     }
+}
+
+/**
+ * 延迟加载图片
+ */
+function lazyLoadImg(self) {
+    var lazyLoadApi =  mui(self).imageLazyload({
+        placeholder: ''
+    });
+    return lazyLoadApi;
 }

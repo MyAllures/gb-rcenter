@@ -1,5 +1,4 @@
-//图片懒加载对象，避免重复加载
-var imgLazyloadApi = null;
+var lazyLoadApi;
 $(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
@@ -18,6 +17,7 @@ $(function () {
     initNotice();
     //初始化api nav滑动
     swiper();
+    lazyLoadApi = lazyLoadImg("body");
 });
 
 /**
@@ -30,7 +30,9 @@ function slideHeight(obj, options) {
         $(".nav-slide-content>.swiper-wrapper").css({height: $(targetSlide).outerHeight()});
     }, 100);
     //处理图片延迟加载
-    $(targetSlide)
+    if ($(targetSlide).find("img[data-lazyload]").length > 0) {
+        lazyLoadApi.refresh(true);
+    }
 }
 
 /**
@@ -38,18 +40,6 @@ function slideHeight(obj, options) {
  */
 function closeDownLoad() {
     $(".banner-ads").hide();
-}
-
-/**
- * 延迟加载图片
- */
-function lazyLoadImg(self) {
-    if (imgLazyloadApi != null) {
-        imgLazyloadApi.destroy();
-    }
-    imgLazyloadApi = mui(self).imageLazyload({
-        placeholder: ''
-    });
 }
 
 /**
@@ -153,6 +143,6 @@ function changeNavGame(obj, options) {
     var apiTypeId = options.apiTypeId;
     $("div[name='nav-content-" + apiTypeId + "'] .mui-active").removeClass("mui-active");
     $('div#nav-' + apiTypeId + '-' + apiId).addClass("mui-active");
-    lazyLoadImg($('div#nav-' + apiTypeId + '-' + apiId));
+    lazyLoadApi.refresh(true);
     $(obj).unlock();
 }
