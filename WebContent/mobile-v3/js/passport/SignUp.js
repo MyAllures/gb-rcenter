@@ -212,13 +212,13 @@ function autoLogin() {
             success: function (data) {
                 if (data != null) {
                     if (data.success) {
-                        sessionStorage.is_login = true;
+                        sessionStorage.setItem("isLogin", true);
                         goToUrl(root + "/mainIndex.html");
                     } else if (data.message) {
                         toast(message.passport[data.message] || data.message)
                     }
                 } else {
-                    sessionStorage.is_login = true;
+                    sessionStorage.setItem("isLogin", true);
                     goToUrl(root + "/mainIndex.html");
                 }
             }

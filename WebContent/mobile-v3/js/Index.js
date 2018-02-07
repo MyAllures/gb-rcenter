@@ -2,6 +2,8 @@ $(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
         containerScroll: '.mui-content.mui-scroll-wrapper',
+        /*左侧菜单上下滚动，可自行指定范围*/
+        leftMenuScroll: '.mui-scroll-wrapper.side-menu-scroll-wrapper',
         /*右侧菜单上下滚动，可自行指定范围*/
         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
         /*禁用侧滑手势指定样式*/
@@ -14,7 +16,45 @@ $(function () {
     //默认打开弹窗消息
     initDialog();
     initNotice();
+    //初始化api nav滑动
+    swiper();
+    //延迟加载图片
+    lazyLoadImg();
 });
+
+/**
+ * 延迟加载图片
+ */
+function lazyLoadImg() {
+    $(document).imageLazyload({
+        placeholder: ''
+    });
+}
+
+/**
+ * 初始化api nav滑动
+ */
+function swiper() {
+    // api滑动
+    var slideContent = new Swiper('.nav-slide-content', {
+        loop:true,
+        loopedSlides:6,
+        autoHeight: true,
+        on:{
+            slideChange:function(){
+            }
+        }
+    });
+    var slideIndicators = new Swiper('.nav-slide-indicators', {
+        loop:true,
+        loopedSlides: 6,
+        slidesPerView: 'auto',
+        touchRatio: 0.2,
+        slideToClickedSlide: true
+    });
+    slideContent.controller.control = slideIndicators;
+    slideIndicators.controller.control = slideContent;
+}
 
 /*轮播图*/
 function initBanner() {
@@ -46,15 +86,15 @@ function initNotice() {
 }
 
 /*消息弹窗*/
-function initDialog(){
-    mui('.mui-popover').popover('toggle',document.getElementById("openPopover"));
+function initDialog() {
+    mui('.mui-popover').popover('toggle', document.getElementById("openPopover"));
 }
 
-function dialog(obj,options){
+function dialog(obj, options) {
     var link = options.dataLink;
-    if(link){
+    if (link) {
         goToUrl(link);
-    }else{
+    } else {
         initDialog();
     }
 }
@@ -91,25 +131,15 @@ function showNotice(obj, options) {
 }
 
 /**
- * 导航游戏分类切换
- */
-function changeApiTypeTab(obj, options) {
-    $(".api-grid ul").removeClass('active');
-    $(".api-grid div").removeClass('active');
-    var item = options.item;
-    $(".api-grid ul[data-list='" + item + "']").addClass('active');
-}
-
-/**
  * 彩票切换
  * @param obj
  * @param options
  */
-function changeLottery(obj, options) {
+function changeNavGame(obj, options) {
     $(".lottery-nav li a.mui-tab-item.mui-active").removeClass("mui-active");
     $(".lottery-content .mui-control-content.mui-active").removeClass("mui-active");
     $(obj).addClass("mui-active");
     var apiId = options.apiId;
-    $('#lottery-id').val(apiId);
-    $('div#lottery-' + apiId).addClass("mui-active");
+    var apiTypeId = options.apiTypeId;
+    $('div#nav-' + apiTypeId + '-' + apiId).addClass("mui-active");
 }
