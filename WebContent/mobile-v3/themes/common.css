@@ -76,7 +76,7 @@ li { list-style: none; }
 /* nav */
 .nav { height: 66px; display: block; padding: 0 8px; }
 .nav .swiper-container { height: 65px; }
-.nav .swiper-slide { font-size: 13px; height: 61px; display: inline-block; width: 63px; text-align: center; padding: 27px 0 0; line-height: 32px; }
+.nav .swiper-slide { font-size: 13px; height: 61px; display: inline-block; width: 74px; text-align: center; padding: 27px 0 0; line-height: 32px; }
 .nav .swiper-slide > span { position: relative; z-index: 2; }
 .nav .swiper-slide.swiper-slide-active { border-bottom: 0; }
 .nav .swiper-slide.swiper-slide-active > span { color: #1279d9; }
