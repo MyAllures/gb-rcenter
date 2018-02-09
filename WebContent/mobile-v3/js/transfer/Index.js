@@ -2,7 +2,6 @@
  * Created by fei on 16-10-15.
  */
 
-mui.init({});
 
 //主体内容滚动条
 mui('.mui-scroll-wrapper').scroll();
@@ -36,6 +35,35 @@ function changeMsg() {
     var validate = $form.validate();
     $.extend(true, validate.settings.messages, {"result.transferAmount": {remote: msg}});
 }
+
+function resetScreen() {
+    var sm = this.orient();
+    if (sm == 'landscape') {
+        if ($('.ori-mask').length == 0) {
+            var tip = '<div class="ori-mask"></div>';
+            $('body').append(tip);
+        }
+    } else {
+        if ($('.ori-mask').length > 0) {
+            $('.ori-mask').remove();
+        }
+    }
+}
+
+function orient() {
+    var orient = window.orientation;
+    if (typeof orient === 'undefined') {
+        return (window.innerWidth > window.innerHeight) ? "landscape" : "portrait";
+    } else {
+        if (orient == 90 || orient == -90) {
+            return 'landscape';
+        } else if (orient == 0 || orient == 180) {
+            return 'portrait';
+        }
+    }
+}
+
+
 
 /**
  * 转账金额验证（在每次更换转入转出对象时，需重新验证转账金额）
@@ -234,10 +262,12 @@ function transferBack(data) {
     }
 }
 
+
 /**
  * 提交转账
  */
-mui("#mui-content-padded").on("tap", "#transfersMoney", function () {
+function submitTransactionMoney() {
+    toast("提交");
     var $form = $('#transferForm');
     var $this = $(this);
 
@@ -245,11 +275,10 @@ mui("#mui-content-padded").on("tap", "#transfersMoney", function () {
         return false;
     }
 
-    mui.ajax(root + '/transfer/transfersMoney.html', {
-        dataType: 'json',
+    var options = {
+        url: root + '/transfer/transfersMoney.html',
         data: $form.serialize(),
         type: 'post',
-        async: true,
         beforeSend:function(){
             $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
         },
@@ -257,13 +286,13 @@ mui("#mui-content-padded").on("tap", "#transfersMoney", function () {
             transferBack(data);
             $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
         },
-        error: function (xhr, type, errorThrown) {
-            $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
-        }
-    });
-});
+    };
+    muiAjax(options)
+}
+
 
 (function (mui, doc) {
+    muiInit();
     mui.init();
     mui.ready(function () {
         /**

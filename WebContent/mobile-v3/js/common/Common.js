@@ -473,9 +473,9 @@ function login(targetUrl) {
         nativeLogin();
     } else {
         var url = '/login/commonLogin.html?v=' + rcVersion;
-        if (targetUrl) {
+        if (targetUrl && targetUrl != '/') {
             //登录成功后跳转页面
-            sessionStorage.login.targetUrl = targetUrl;
+            sessionStorage.loginTargetUrl = targetUrl;
         }
         openWindow(url);
     }
@@ -564,4 +564,15 @@ function bindFormValidation($form) {
         }
         $form.validate(rule);
     }
+}
+
+/**
+ * 延迟加载图片
+ */
+function lazyLoadImg(self) {
+    var lazyLoadApi =  mui(self).imageLazyload({
+        autoDestroy: false,
+        placeholder: ''
+    });
+    return lazyLoadApi;
 }

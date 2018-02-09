@@ -32,7 +32,7 @@
     &:after{content: '';position: absolute;height: 1px;background: #d1d1d1;bottom: 4px;left: 0;right: 0;}
     .swiper-slide{ color: #333;position: relative;
         &.swiper-slide-active{
-            &:after{    content: '';   position: absolute;   top: 0;   left: 50%;   margin-left: -32px;    z-index:1;    width: 64px;    height: 70px;    background: url(images/nav-item-active-bg.png) center top/64px 66px no-repeat;}
+            &:after{    content: '';   position: absolute;   top: 0;   left: 50%;   margin-left: -37px;    z-index:1;    width: 74px;    height: 70px;    background: url(images/nav-item-active-bg.png) center top/74px 66px no-repeat;}
         }
     }
 }
