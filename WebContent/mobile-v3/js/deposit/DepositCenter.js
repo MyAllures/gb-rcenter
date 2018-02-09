@@ -2,6 +2,7 @@
 var depositMap = {};
 
 $(function(){
+    copy();
     muiInit(muiDefaultOptions);
     //如果第一个元素不是比特币支付或数字货币支付则默认选中
     var $depositWay = $("#payList li>a:first");

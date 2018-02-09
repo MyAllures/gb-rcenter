@@ -1,5 +1,4 @@
 $(function(){
-    copy();
 });
 /**选择日期组件*/
 function selectionDate() {
