@@ -1327,7 +1327,7 @@ body.exchange-account .gb-bankcard > .hd p i { display: inline-block; width: 24p
 body.exchange-account .gb-bankcard > .hd p i.card1 { background-image: url(../images/bank-type1.png); }
 body.exchange-account .gb-bankcard > .ct { padding: 10px 7px 15px; }
 body.exchange-account .gb-bankcard > .ct > p { color: #333333; font-size: 19px; }
-body.exchange-account .gb-bankcard > .ct > .ct p { color: #333333; font-size: 12px; margin-bottom: 5px; text-align: left; }
+body.exchange-account .gb-bankcard > .ct > .ct p { color: #333333; font-size: 12px; margin-bottom: 5px; text-align: left; overflow: hidden; }
 body.exchange-account .gb-bankcard > .ct > .ct p span { color: #999999; white-space: nowrap; padding-right: 5px; }
 body.exchange-account .gb-bankcard > .ct > .ct p font { width: 100%; }
 body.exchange-account .gb-bankcard > .ct > p a.copy, body.exchange-account .gb-bankcard > .ct > .ct p a.copy { float: right; background: #e0efff; padding: 0 5px; border-radius: 3px; color: #569ff1; font-size: 12px; white-space: nowrap; height: 22px; line-height: 22px; margin-left: 5px; }
@@ -1349,7 +1349,7 @@ body.exchange-bank .gb-bankcard > .hd p i, body.exchange-wechat .gb-bankcard > .
 body.exchange-bank .gb-bankcard > .hd p i.card1, body.exchange-wechat .gb-bankcard > .hd p i.card1 { background-image: url(../images/bank-type1.png); }
 body.exchange-bank .gb-bankcard > .ct, body.exchange-wechat .gb-bankcard > .ct { padding: 10px 7px 15px; }
 body.exchange-bank .gb-bankcard > .ct > p, body.exchange-wechat .gb-bankcard > .ct > p { color: #333333; font-size: 19px; }
-body.exchange-bank .gb-bankcard > .ct > .ct p, body.exchange-wechat .gb-bankcard > .ct > .ct p { color: #333333; font-size: 12px; margin-bottom: 5px; text-align: left; }
+body.exchange-bank .gb-bankcard > .ct > .ct p, body.exchange-wechat .gb-bankcard > .ct > .ct p { color: #333333; font-size: 12px; margin-bottom: 5px; overflow: hidden; text-align: left; }
 body.exchange-bank .gb-bankcard > .ct > .ct p span, body.exchange-wechat .gb-bankcard > .ct > .ct p span { color: #999999; white-space: nowrap; padding-right: 5px; }
 body.exchange-bank .gb-bankcard > .ct > .ct p font, body.exchange-wechat .gb-bankcard > .ct > .ct p font { width: 100%; }
 body.exchange-bank .gb-bankcard > .ct > p a.copy, body.exchange-bank .gb-bankcard > .ct > .ct p a.copy, body.exchange-wechat .gb-bankcard > .ct > p a.copy, body.exchange-wechat .gb-bankcard > .ct > .ct p a.copy { float: right; background: #e0efff; padding: 0 5px; border-radius: 3px; color: #569ff1; font-size: 12px; white-space: nowrap; height: 22px; line-height: 22px; margin-left: 5px; }
@@ -1401,7 +1401,7 @@ body.exchange-bitcoin .gb-bankcard > .hd p i.card1 { background-image: url(../im
 body.exchange-bitcoin .gb-bankcard > .ct { padding: 10px 7px 15px; }
 body.exchange-bitcoin .gb-bankcard > .ct > p { color: #333333; font-size: 19px; }
 body.exchange-bitcoin .gb-bankcard > .ct > p.text-green { color: #f49e2e; background: #fff; line-height: 22px; font-size: 16px; border: 1px solid #ddd; width: 250px; padding: 10px 15px; border-radius: 3px; }
-body.exchange-bitcoin .gb-bankcard > .ct > .ct p { color: #333333; font-size: 12px; margin-bottom: 5px; text-align: left; }
+body.exchange-bitcoin .gb-bankcard > .ct > .ct p { color: #333333; font-size: 12px; margin-bottom: 5px; text-align: left; overflow: hidden; }
 body.exchange-bitcoin .gb-bankcard > .ct > .ct p span { color: #999999; white-space: nowrap; padding-right: 5px; }
 body.exchange-bitcoin .gb-bankcard > .ct > .ct p font { width: 100%; }
 body.exchange-bitcoin .gb-bankcard > .ct > p a.copy, body.exchange-bitcoin .gb-bankcard > .ct > .ct p a.copy { float: right; background: #e0efff; padding: 0 5px; border-radius: 3px; color: #569ff1; font-size: 12px; white-space: nowrap; height: 22px; line-height: 22px; margin-left: 5px; }

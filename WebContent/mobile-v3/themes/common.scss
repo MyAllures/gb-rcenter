@@ -2965,7 +2965,7 @@ body.exchange-account{color: #000;
         color: #333333;
         font-size: 12px;
         margin-bottom: 5px;
-        text-align: left;
+        text-align: left;overflow: hidden;
     }
     .gb-bankcard >.ct >.ct p span{
         color: #999999;
@@ -3065,7 +3065,7 @@ body.exchange-bank,body.exchange-wechat{color: #000;
     .gb-bankcard >.ct >.ct p{
         color: #333333;
         font-size: 12px;
-        margin-bottom: 5px;
+        margin-bottom: 5px;overflow: hidden;
         text-align: left;
     }
     .gb-bankcard >.ct >.ct p span{
@@ -3235,7 +3235,7 @@ body.exchange-bitcoin{color: #000;
         color: #333333;
         font-size: 12px;
         margin-bottom: 5px;
-        text-align: left;
+        text-align: left;overflow: hidden;
     }
     .gb-bankcard >.ct >.ct p span{
         color: #999999;
