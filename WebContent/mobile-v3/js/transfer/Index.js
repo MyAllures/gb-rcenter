@@ -70,9 +70,6 @@ $(window).bind( 'orientationchange', function(e){
     resetScreen();
 });
 
-mui.back = function(){
-    gotoUrl("/mine/index.html");
-};
 
 /**
  * 变换提示消息
