@@ -5,6 +5,62 @@
 $(function () {
     //主体内容滚动条
     muiInit(muiDefaultOptions);
+
+        mui.ready(function () {
+            /**
+             * 初始化转入/转出下拉对象
+             */
+            var options = {
+                url: root + '/transfer/queryApis.html',
+                dataType: 'json',
+                type: 'post',
+                async: true,
+                success: function (data) {
+                    //普通示例
+                    $("a.turn").each(function (obj) {
+                        var _this = this;
+                        var transferPicker = new mui.PopPicker();
+                        transferPicker.setData(data);
+                        if (this != null) {
+                            this.addEventListener('tap', function (event) {
+                                transferPicker.show(function (items) {
+                                    var text = items[0].text;
+                                    var value = items[0].value;
+
+                                    var toggleId = _this.dataset.value;
+                                    var toggleObj = document.getElementById(toggleId);
+                                    var toggleInput = toggleObj.children[1];
+
+                                    //另外一个已是 我的钱包
+                                    if (toggleInput.defaultValue == 'wallet') {
+                                        if (value == 'wallet') {
+                                            toggleInput.defaultValue = '';
+                                            toggleObj.children[0].innerHTML = window.top.message.transfer_auto['请选择'];
+                                        }
+                                    } else {
+                                        //另外一个不是 我的钱包
+                                        if (value != 'wallet') {
+                                            toggleInput.defaultValue = 'wallet';
+                                            toggleObj.children[0].innerHTML = window.top.message.transfer_auto['我的钱包'];
+                                        }
+                                    }
+                                    _this.children[0].innerHTML = text;
+                                    _this.children[1].defaultValue = value;
+                                    changeMsg();
+                                    amountValid();
+                                });
+                            }, false);
+                        }
+                    });
+                },
+                error: function (xhr, type, errorThrown) {
+                    //异常处理；
+                    console.log(type);
+                }
+            };
+            muiAjax(options)
+        });
+    (mui, document);
 });
     
 
@@ -302,65 +358,7 @@ function submitTransactionMoney() {
 }
 
 
-(function (mui, doc) {
-    muiInit();
-    mui.init();
-    mui.ready(function () {
-        /**
-         * 初始化转入/转出下拉对象
-         */
-        var options = {
-            url: root + '/transfer/queryApis.html',
-            dataType: 'json',
-            type: 'post',
-            async: true,
-            success: function (data) {
-                //普通示例
-                $("a.turn").each(function (obj) {
-                    var _this = this;
-                    var transferPicker = new mui.PopPicker();
-                    transferPicker.setData(data);
-                    if (this != null) {
-                        this.addEventListener('tap', function (event) {
-                            transferPicker.show(function (items) {
-                                var text = items[0].text;
-                                var value = items[0].value;
 
-                                var toggleId = _this.dataset.value;
-                                var toggleObj = document.getElementById(toggleId);
-                                var toggleInput = toggleObj.children[1];
-
-                                //另外一个已是 我的钱包
-                                if (toggleInput.defaultValue == 'wallet') {
-                                    if (value == 'wallet') {
-                                        toggleInput.defaultValue = '';
-                                        toggleObj.children[0].innerHTML = window.top.message.transfer_auto['请选择'];
-                                    }
-                                } else {
-                                    //另外一个不是 我的钱包
-                                    if (value != 'wallet') {
-                                        toggleInput.defaultValue = 'wallet';
-                                        toggleObj.children[0].innerHTML = window.top.message.transfer_auto['我的钱包'];
-                                    }
-                                }
-                                _this.children[0].innerHTML = text;
-                                _this.children[1].defaultValue = value;
-                                changeMsg();
-                                amountValid();
-                            });
-                        }, false);
-                    }
-                });
-            },
-            error: function (xhr, type, errorThrown) {
-                //异常处理；
-                console.log(type);
-            }
-        };
-        muiAjax(options)
-    });
-})
-(mui, document);
 
 /**
  * 刷新单个api余额
