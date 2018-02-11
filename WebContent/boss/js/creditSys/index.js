@@ -19,22 +19,25 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
         bindEvent : function() {
             this._super();
         },
-        getSelectIdsArray:function(e,option)
+        getSiteIds:function(e,option)
         {
-            var checkedItems = [],counter = 0;
+            var siteIds;
             $("table tbody input[type=checkbox]",this.getCurrentForm(e)).not("[name=my-checkbox]").each(function(node,obj) {
                 if(obj.checked) {
-                    checkedItems[counter] = obj.value;
-                    counter++;
+                    siteIds = obj.value + ',';
                 }
             });
 
-            return checkedItems;
         },
-
-        getSelectIds:function(e,option)
-        {
-            return {ids:this.getSelectIdsArray(e,option).join(",")};
+        editDefultProfit:function(e,option){
+            var siteIds = this.getSelectIdsArray(e);
+            window.top.topPage.doDialog({page:this},{text:"默认额度管理",target: root + "/vSysCredit/editDefaultProfit.html?siteIds="+siteIds,callback:"query"});
+            $(e.currentTarget).unlock();
+        },
+        editMaxProfit:function(e,option){
+            var siteIds = this.getSelectIdsArray(e);
+            window.top.topPage.doDialog({page:this},{text:"额度上线管理",target: root + "/vSysCredit/editMaxProfit.html?siteIds="+siteIds,callback:"query"});
+            $(e.currentTarget).unlock();
         },
 
         /**
