@@ -68,4 +68,12 @@ function nativeGotoPromoRecordPage() {
     window.gamebox.gotoPromoRecordPage();
 }
 
+/**
+ * 原生保存图片到手机
+ * @param url
+ */
+function nativeSaveImage(url) {
+    window.gamebox.saveImage(url);
+}
+
 
