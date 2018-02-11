@@ -188,37 +188,31 @@ function onlinePaySubmit(depositChannel){
 /**存款成功后弹窗提示*/
 function success() {
     var btnArray = [window.top.message.deposit_auto["完成付款"], window.top.message.deposit_auto["重新存款"]];
-    layer.open({
-        title: window.top.message.deposit_auto["提交订单"],
-        content: window.top.message.deposit_auto["第三方对接"],
-        btn: btnArray,
-        shadeClose: false,
-        yes: function (index) {
+    var options = {
+        title : window.top.message.deposit_auto["提交订单"],
+        confirm : window.top.message.deposit_auto["第三方对接"]
+    };
+    mui.confirm(options.confirm, options.title, btnArray, function (e) {
+        if (e.index == 0) {
             goToUrl(root + "/fund/record/index.html?search.transactionType=deposit");
-            layer.close(index);
-        },
-        no: function (index) {
+        }else{
             goToUrl(root + "/wallet/deposit/index.html");
-            layer.close(index);
         }
     });
-    $(".layermchild.layermanim").attr("style","color: #333333");
 }
 
 function linkResult(data) {
     goToUrl(root + '/wallet/deposit/online/result.html?search.transactionNo=' + data);
     var btnArray = [window.top.message.deposit_auto["完成付款"], window.top.message.deposit_auto["重新存款"]];
-    layer.open({
-        title: window.top.message.deposit_auto["订单结果"],
-        content: '',
-        btn: btnArray,
-        yes: function (index) {
+    var options = {
+        title : window.top.message.deposit_auto["订单结果"],
+        confirm : ''
+    };
+    mui.confirm(options.confirm, options.title, btnArray, function (e) {
+        if (e.index == 0) {
             goToUrl(root + "/fund/record/index.html?search.transactionType=deposit");
-            layer.close(index);
-        },
-        no: function (index) {
+        }else{
             goToUrl(root + "/wallet/deposit/index.html");
-            layer.close(index);
         }
     });
 }
