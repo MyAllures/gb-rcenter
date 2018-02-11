@@ -45,7 +45,7 @@ function swiper() {
     // api滑动
     var slideContent = new Swiper('.nav-slide-content', {
         loop: true,
-        loopedSlides: 6,
+        loopedSlides: 5,
         autoHeight: true,
         on: {
             slideChange: function () {
@@ -54,7 +54,7 @@ function swiper() {
     });
     var slideIndicators = new Swiper('.nav-slide-indicators', {
         loop: true,
-        loopedSlides: 6,
+        loopedSlides: 5,
         slidesPerView: 'auto',
         touchRatio: 0.2,
         slideToClickedSlide: true,
