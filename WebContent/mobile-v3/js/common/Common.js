@@ -98,6 +98,7 @@ function muiInit(options) {
     bindButtonEvent();
 }
 
+
 /**
  * 默认纵向滚动配置
  * @param obj
