@@ -570,7 +570,7 @@ function bindFormValidation($form) {
  * 延迟加载图片
  */
 function lazyLoadImg(self) {
-    var lazyLoadApi =  mui(self).imageLazyload({
+    var lazyLoadApi = mui(self).imageLazyload({
         autoDestroy: false,
         placeholder: ''
     });

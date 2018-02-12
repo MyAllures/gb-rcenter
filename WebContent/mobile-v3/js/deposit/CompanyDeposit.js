@@ -147,7 +147,7 @@ function seachDiscount(obj , options) {
                 var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
                 if (unCheckSuccess === "true") {
                     var pop = $("#pop").attr("pop");
-                    if (pop === "true") {
+                    if (pop == "true") {
                         $("#activityId").val($("input[type=radio]:checked").val());
                         $("#successMasker").attr("style","display:block;");
                     }else if(options.statusNum){

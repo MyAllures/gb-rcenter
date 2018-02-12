@@ -137,8 +137,7 @@ function onlinePaySubmit(depositChannel){
     if (!$form || !$form.valid()) {
         return false;
     }
-    var os = whatOs();
-    if (os != "app_android" && os != "app_ios") {
+    if (!isNative) {
         var newWindow = window.open("about:blank", '_blank');
         if (newWindow) {
             newWindow.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/oval.svg'></div>");
@@ -162,13 +161,18 @@ function onlinePaySubmit(depositChannel){
                 $("input[name='gb.token']").val(data.token);
                 if (state == true) {
                     var orderNo = data.orderNo;
+                    var payUrl = href + orderNo;
                     if(newWindow){
-                        newWindow.location = href + orderNo ;
+                        newWindow.location = payUrl ;
                     } else {
-                        deposit(href + orderNo);
+                        if(isNative) {
+                            nativeOpenWindow(payUrl);
+                        } else {
+                            goToUrl(payUrl)
+                        }
                     }
                     sendComm(orderNo);
-                    if (newWindow || os == "app_android" || os == "app_ios") {
+                    if (newWindow) {
                         success();
                     }
 
@@ -194,11 +198,22 @@ function success() {
     };
     mui.confirm(options.confirm, options.title, btnArray, function (e) {
         if (e.index == 0) {
-            goToUrl(root + "/fund/record/index.html?search.transactionType=deposit");
+            goToFundRecord();
         }else{
             goToUrl(root + "/wallet/deposit/index.html");
         }
     });
+}
+
+/**
+ * 跳转资金记录
+ */
+function goToFundRecord() {
+    if(isNative) { //原生
+        nativeGotoTransactionRecordPage();
+    } else {
+        goToUrl(root + "/fund/record/index.html?search.transactionType=deposit");
+    }
 }
 
 function linkResult(data) {
@@ -210,7 +225,7 @@ function linkResult(data) {
     };
     mui.confirm(options.confirm, options.title, btnArray, function (e) {
         if (e.index == 0) {
-            goToUrl(root + "/fund/record/index.html?search.transactionType=deposit");
+            goToFundRecord();
         }else{
             goToUrl(root + "/wallet/deposit/index.html");
         }
