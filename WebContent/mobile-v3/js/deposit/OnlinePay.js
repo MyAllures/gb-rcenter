@@ -67,10 +67,11 @@ function confirmDeposit(obj, payType) {
             }
             $(".mui-content").append(data);
             var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
-            if (unCheckSuccess === "true") {
+            if (unCheckSuccess == "true") {
                 var pop = $("#pop").attr("pop");
                 if (pop === "true") {
                     $("#activityId").val($("input[type=radio]:checked").val());
+                    muiScrollY(".gb-withdraw-box .mui-scroll-wrapper");
                 } else {
                     onlinePaySubmit(payType);
                 }
