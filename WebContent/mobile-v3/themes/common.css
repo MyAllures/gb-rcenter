@@ -1236,10 +1236,6 @@ body.deposit {
     padding-bottom: 0px !important; }
   body.deposit .m-t-sm {
     margin-top: 10px !important; }
-  body.deposit ul {
-    padding-left: 0;
-    overflow: hidden;
-    margin: 0; }
   body.deposit li {
     list-style: none; }
   body.deposit .bank-selector {
