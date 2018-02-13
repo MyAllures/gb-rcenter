@@ -180,7 +180,7 @@ function onlinePaySubmit(depositChannel) {
                         newWindow.location = payUrl;
                     } else {
                         if (isNative) {
-                            nativeOpenWindow(payUrl);
+                            nativeOpenWindow(payUrl, '0');
                         } else {
                             goToUrl(payUrl)
                         }
