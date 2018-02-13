@@ -120,3 +120,11 @@ function savePicture(obj, options) {
     }
 }
 
+function goToHome() {
+    if (isNative) {
+        gotoHomePage();
+    } else {
+        goToUrl(root + '/mainIndex.html');
+    }
+}
+
