@@ -5,71 +5,57 @@
 $(function () {
     //主体内容滚动条
     muiInit(muiDefaultOptions);
+    //初始化转入转出的api
+    initApi();
+});
 
-        mui.ready(function () {
-            /**
-             * 初始化转入/转出下拉对象
-             */
-            var options = {
-                url: root + '/transfer/queryApis.html',
-                dataType: 'json',
-                type: 'post',
-                async: true,
-                success: function (data) {
-                    //普通示例
-                    $("a.turn").each(function (obj) {
-                        var _this = this;
-                        var transferPicker = new mui.PopPicker();
-                        transferPicker.setData(data);
-                        if (this != null) {
-                            this.addEventListener('tap', function (event) {
-                                transferPicker.show(function (items) {
-                                    var text = items[0].text;
-                                    var value = items[0].value;
+/**
+ * 初始化转入/转出下拉对象
+ */
+function initApi(){
+    var options = {
+        url: root + '/transfer/queryApis.html',
+        dataType: 'json',
+        type: 'post',
+        async: true,
+        success: function (data) {
+            //普通示例
+            $("a.turn").each(function () {
+                var transferPicker = new mui.PopPicker();
+                transferPicker.setData(data);
+                this.addEventListener('tap', function (event) {
+                    transferPicker.show(function (items) {
+                        var text = items[0].text;
+                        var value = items[0].value;
 
-                                    var toggleId = _this.dataset.value;
-                                    var toggleObj = document.getElementById(toggleId);
-                                    var toggleInput = toggleObj.children[1];
+                        var toggleId = _this.dataset.value;
+                        var toggleObj = document.getElementById(toggleId);
+                        var toggleInput = toggleObj.children[1];
 
-                                    //另外一个已是 我的钱包
-                                    if (toggleInput.defaultValue == 'wallet') {
-                                        if (value == 'wallet') {
-                                            toggleInput.defaultValue = '';
-                                            toggleObj.children[0].innerHTML = window.top.message.transfer_auto['请选择'];
-                                        }
-                                    } else {
-                                        //另外一个不是 我的钱包
-                                        if (value != 'wallet') {
-                                            toggleInput.defaultValue = 'wallet';
-                                            toggleObj.children[0].innerHTML = window.top.message.transfer_auto['我的钱包'];
-                                        }
-                                    }
-                                    _this.children[0].innerHTML = text;
-                                    _this.children[1].defaultValue = value;
-                                    changeMsg();
-                                    amountValid();
-                                });
-                            }, false);
+                        //另外一个已是 我的钱包
+                        if (toggleInput.defaultValue == 'wallet') {
+                            if (value == 'wallet') {
+                                toggleInput.defaultValue = '';
+                                toggleObj.children[0].innerHTML = window.top.message.transfer_auto['请选择'];
+                            }
+                        } else {
+                            //另外一个不是 我的钱包
+                            if (value != 'wallet') {
+                                toggleInput.defaultValue = 'wallet';
+                                toggleObj.children[0].innerHTML = window.top.message.transfer_auto['我的钱包'];
+                            }
                         }
+                        _this.children[0].innerHTML = text;
+                        _this.children[1].defaultValue = value;
+                        changeMsg();
+                        amountValid();
                     });
-                },
-                error: function (xhr, type, errorThrown) {
-                    //异常处理；
-                    console.log(type);
-                }
-            };
-            muiAjax(options)
-        });
-    (mui, document);
-});
-    
-
-
-resetScreen();
-$(window).bind( 'orientationchange', function(e){
-    resetScreen();
-});
-
+                }, false);
+            });
+        }
+    };
+    muiAjax(options);
+}
 
 /**
  * 变换提示消息
@@ -86,35 +72,6 @@ function changeMsg() {
     var validate = $form.validate();
     $.extend(true, validate.settings.messages, {"result.transferAmount": {remote: msg}});
 }
-
-function resetScreen() {
-    var sm = this.orient();
-    if (sm == 'landscape') {
-        if ($('.ori-mask').length == 0) {
-            var tip = '<div class="ori-mask"></div>';
-            $('body').append(tip);
-        }
-    } else {
-        if ($('.ori-mask').length > 0) {
-            $('.ori-mask').remove();
-        }
-    }
-}
-
-function orient() {
-    var orient = window.orientation;
-    if (typeof orient === 'undefined') {
-        return (window.innerWidth > window.innerHeight) ? "landscape" : "portrait";
-    } else {
-        if (orient == 90 || orient == -90) {
-            return 'landscape';
-        } else if (orient == 0 || orient == 180) {
-            return 'portrait';
-        }
-    }
-}
-
-
 
 /**
  * 转账金额验证（在每次更换转入转出对象时，需重新验证转账金额）
@@ -142,10 +99,6 @@ function refreshApi(apiId, type) {
 
     var options = {
         url: url,
-        type: 'post',
-        timeout: 10000,
-        dataType: "json",
-
         success: function (data) {
             var apiId = data.apiId;
             var apiMoney = data.apiMoney;
@@ -207,11 +160,6 @@ function refreshAllApiBalance() {
     muiAjax(options);
 }
 
-
-function refreshAllBalance() {
-    refreshAllApiBalance();
-}
-
 /**
  * 重新初始化转账form表单
  */
@@ -260,12 +208,7 @@ function reconnectAgain(orderId) {
         async: true,
         success: function (data) {
             transferBack(data);
-        },
-        error: function (xhr, type, errorThrown) {
-            //异常处理；
-            console.log(type);
         }
-
     };
     muiAjax(options);
 }
@@ -342,14 +285,13 @@ function submitTransactionMoney() {
     var options = {
         url: root + '/transfer/transfersMoney.html',
         data: $form.serialize(),
-        type: 'post',
         beforeSend:function(){
             $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
         },
         success: function (data) {
             transferBack(data);
             $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
-        },
+        }
     };
     muiAjax(options)
 }
