@@ -2,24 +2,74 @@
  * Created by fei on 16-10-15.
  */
 
-mui.init({});
+$(function () {
+    //主体内容滚动条
+    muiInit(muiDefaultOptions);
 
-//主体内容滚动条
-mui('.mui-scroll-wrapper').scroll();
-//切换页面
-mui("body").on("tap", "[data-href]", function () {
-    var _href = $(this).data('href');
-    gotoUrl(_href);
+        mui.ready(function () {
+            /**
+             * 初始化转入/转出下拉对象
+             */
+            var options = {
+                url: root + '/transfer/queryApis.html',
+                dataType: 'json',
+                type: 'post',
+                async: true,
+                success: function (data) {
+                    //普通示例
+                    $("a.turn").each(function (obj) {
+                        var _this = this;
+                        var transferPicker = new mui.PopPicker();
+                        transferPicker.setData(data);
+                        if (this != null) {
+                            this.addEventListener('tap', function (event) {
+                                transferPicker.show(function (items) {
+                                    var text = items[0].text;
+                                    var value = items[0].value;
+
+                                    var toggleId = _this.dataset.value;
+                                    var toggleObj = document.getElementById(toggleId);
+                                    var toggleInput = toggleObj.children[1];
+
+                                    //另外一个已是 我的钱包
+                                    if (toggleInput.defaultValue == 'wallet') {
+                                        if (value == 'wallet') {
+                                            toggleInput.defaultValue = '';
+                                            toggleObj.children[0].innerHTML = window.top.message.transfer_auto['请选择'];
+                                        }
+                                    } else {
+                                        //另外一个不是 我的钱包
+                                        if (value != 'wallet') {
+                                            toggleInput.defaultValue = 'wallet';
+                                            toggleObj.children[0].innerHTML = window.top.message.transfer_auto['我的钱包'];
+                                        }
+                                    }
+                                    _this.children[0].innerHTML = text;
+                                    _this.children[1].defaultValue = value;
+                                    changeMsg();
+                                    amountValid();
+                                });
+                            }, false);
+                        }
+                    });
+                },
+                error: function (xhr, type, errorThrown) {
+                    //异常处理；
+                    console.log(type);
+                }
+            };
+            muiAjax(options)
+        });
+    (mui, document);
 });
+    
+
 
 resetScreen();
 $(window).bind( 'orientationchange', function(e){
     resetScreen();
 });
 
-mui.back = function(){
-    gotoUrl("/mine/index.html");
-};
 
 /**
  * 变换提示消息
@@ -36,6 +86,35 @@ function changeMsg() {
     var validate = $form.validate();
     $.extend(true, validate.settings.messages, {"result.transferAmount": {remote: msg}});
 }
+
+function resetScreen() {
+    var sm = this.orient();
+    if (sm == 'landscape') {
+        if ($('.ori-mask').length == 0) {
+            var tip = '<div class="ori-mask"></div>';
+            $('body').append(tip);
+        }
+    } else {
+        if ($('.ori-mask').length > 0) {
+            $('.ori-mask').remove();
+        }
+    }
+}
+
+function orient() {
+    var orient = window.orientation;
+    if (typeof orient === 'undefined') {
+        return (window.innerWidth > window.innerHeight) ? "landscape" : "portrait";
+    } else {
+        if (orient == 90 || orient == -90) {
+            return 'landscape';
+        } else if (orient == 0 || orient == 180) {
+            return 'portrait';
+        }
+    }
+}
+
+
 
 /**
  * 转账金额验证（在每次更换转入转出对象时，需重新验证转账金额）
@@ -60,9 +139,13 @@ function refreshApi(apiId, type) {
     if (type) {
         url = url + "&type=" + type;
     }
-    mui.ajax(url, {
+
+    var options = {
+        url: url,
+        type: 'post',
         timeout: 10000,
         dataType: "json",
+
         success: function (data) {
             var apiId = data.apiId;
             var apiMoney = data.apiMoney;
@@ -96,7 +179,8 @@ function refreshApi(apiId, type) {
             mui("#refreshContainer").pullRefresh().endPullupToRefresh();
             toast(window.top.message.transfer_auto['暂无更多数据']);
         }
-    });
+    };
+    muiAjax(options);
 }
 
 /**
@@ -104,8 +188,10 @@ function refreshApi(apiId, type) {
  */
 function refreshAllApiBalance() {
     $("#refreshAllApiBalance").attr("disabled","disabled");
-    mui.ajax(root + "/transfer/refreshAllApiBalance.html", {
-        type:'post',
+
+    var options = {
+        url:root + "/transfer/refreshAllApiBalance.html",
+        type: 'post',
         dataType: 'text/html',
         success: function (data) {
             $("#apiBalance").html(data);
@@ -117,18 +203,22 @@ function refreshAllApiBalance() {
             mui("#refreshContainer").pullRefresh().endPullupToRefresh();
             toast(window.top.message.transfer_auto['刷新游戏余额失败']);
         }
-    });
+    };
+    muiAjax(options);
 }
 
-mui("body").on('tap', '#refreshAllApiBalance', function () {
+
+function refreshAllBalance() {
     refreshAllApiBalance();
-});
+}
 
 /**
  * 重新初始化转账form表单
  */
 function initTransfer() {
-    mui.ajax(root + '/transfer/transferBack.html', {
+
+    var options = {
+        url:root + '/transfer/transferBack.html',
         dataType: 'json',
         type: 'post',
         async: true,
@@ -141,10 +231,9 @@ function initTransfer() {
             $transferInto.children("span").text($transferInto.attr("default"));
             $("input[name='result.transferAmount']").val("");
             $("[name='gb.token']").val(data.token);
-            /*changeMsg();
-             amountValid();*/
         }
-    });
+    };
+    muiAjax(options);
 }
 
 /**
@@ -164,7 +253,8 @@ function successBack(data) {
  * 再试一次
  */
 function reconnectAgain(orderId) {
-    mui.ajax(root + '/transfer/reconnectTransfer.html?search.transactionNo=' + orderId, {
+    var options = {
+        url:root + '/transfer/reconnectTransfer.html?search.transactionNo='+ orderId,
         dataType: 'json',
         type: 'post',
         async: true,
@@ -175,7 +265,9 @@ function reconnectAgain(orderId) {
             //异常处理；
             console.log(type);
         }
-    });
+
+    };
+    muiAjax(options);
 }
 
 /**
@@ -234,10 +326,12 @@ function transferBack(data) {
     }
 }
 
+
 /**
  * 提交转账
  */
-mui("#mui-content-padded").on("tap", "#transfersMoney", function () {
+function submitTransactionMoney() {
+    toast("提交");
     var $form = $('#transferForm');
     var $this = $(this);
 
@@ -245,11 +339,10 @@ mui("#mui-content-padded").on("tap", "#transfersMoney", function () {
         return false;
     }
 
-    mui.ajax(root + '/transfer/transfersMoney.html', {
-        dataType: 'json',
+    var options = {
+        url: root + '/transfer/transfersMoney.html',
         data: $form.serialize(),
         type: 'post',
-        async: true,
         beforeSend:function(){
             $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
         },
@@ -257,89 +350,17 @@ mui("#mui-content-padded").on("tap", "#transfersMoney", function () {
             transferBack(data);
             $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
         },
-        error: function (xhr, type, errorThrown) {
-            $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
-        }
-    });
-});
+    };
+    muiAjax(options)
+}
 
-(function (mui, doc) {
-    mui.init();
-    mui.ready(function () {
-        /**
-         * 初始化转入/转出下拉对象
-         */
-        mui.ajax(root + '/transfer/queryApis.html', {
-            dataType: 'json',
-            type: 'post',
-            async: true,
-            success: function (data) {
-                //普通示例
-                $("a.turn").each(function (obj) {
-                    var _this = this;
-                    var transferPicker = new mui.PopPicker();
-                    transferPicker.setData(data);
-                    if (this != null) {
-                        this.addEventListener('tap', function (event) {
-                            transferPicker.show(function (items) {
-                                var text = items[0].text;
-                                var value = items[0].value;
 
-                                var toggleId = _this.dataset.value;
-                                var toggleObj = document.getElementById(toggleId);
-                                var toggleInput = toggleObj.children[1];
 
-                                //另外一个已是 我的钱包
-                                if (toggleInput.defaultValue == 'wallet') {
-                                    if (value == 'wallet') {
-                                        toggleInput.defaultValue = '';
-                                        toggleObj.children[0].innerHTML = window.top.message.transfer_auto['请选择'];
-                                    }
-                                } else {
-                                    //另外一个不是 我的钱包
-                                    if (value != 'wallet') {
-                                        toggleInput.defaultValue = 'wallet';
-                                        toggleObj.children[0].innerHTML = window.top.message.transfer_auto['我的钱包'];
-                                    }
-                                }
-                                _this.children[0].innerHTML = text;
-                                _this.children[1].defaultValue = value;
-                                changeMsg();
-                                amountValid();
-                            });
-                        }, false);
-                    }
-                });
-            },
-            error: function (xhr, type, errorThrown) {
-                //异常处理；
-                console.log(type);
-            }
-        });
-
-    });
-})(mui, document);
 
 /**
  * 刷新单个api余额
  */
-mui("body").on('tap', '._refresh_api', function () {
-    var apiId = $(this).attr("data-value");
+function freshApi(obj, options) {
+    var apiId = options.dataApiId;
     refreshApi(apiId);
-});
-
-function gotoUrl(_href) {
-    mui.openWindow({
-        url: _href,
-        id: _href,
-        extras: {},
-        createNew: false,
-        show: {
-            autoShow: true
-        },
-        waiting: {
-            autoShow: true,
-            title: window.top.message.transfer_auto['正在加载']
-        }
-    })
 }

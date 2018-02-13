@@ -5,7 +5,6 @@ var gameCode;
 var status;
 var isAutoPay;
 var gameId;
-var isLogin = sessionStorage.getItem("isLogin");
 
 /*点击游戏（电子类、彩票类）进入*/
 function goGame(obj, options) {
@@ -19,8 +18,7 @@ function goGame(obj, options) {
     if (status == 'maintain' || status == 'disable') {
         showWarningMsg(window.top.message.game_auto['提示'], window.top.message.game_auto['游戏维护中']);
     } else {
-        isLogin = sessionStorage.getItem("isLogin");
-        if (isLogin == true || isLogin == 'true') {
+        if (sessionStorage.getItem("isLogin") == 'true') {
             var options = {
                 title: window.top.message.game_auto['提示'],
                 confirm: window.top.message.game_auto['是否进入游戏'],
@@ -63,8 +61,7 @@ function goApiGame(obj, options) {
     if (status == "maintain") {
         showWarningMsg(window.top.message.game_auto['提示'], window.top.message.game_auto['游戏维护中']);
     } else {
-        isLogin = sessionStorage.getItem("isLogin");
-        if (isLogin == true || isLogin == 'true') {
+        if (sessionStorage.getItem("isLogin") == 'true') {
             //判断ｂｓｇ就直接到游戏列表，不到转账页面
             if (apiId == '20') {
                 goToUrl("/game/apiGames.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);

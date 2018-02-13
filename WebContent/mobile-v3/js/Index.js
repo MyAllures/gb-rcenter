@@ -1,3 +1,4 @@
+var lazyLoadApi;
 $(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
@@ -7,16 +8,68 @@ $(function () {
         /*右侧菜单上下滚动，可自行指定范围*/
         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
         /*禁用侧滑手势指定样式*/
-        disabledHandSlip: ['mui-off-canvas-left'],
-        /*游戏分类api tab横向滚动*/
-        horizontalScroll: ['.lottery-nav .mui-scroll-wrapper']
+        disabledHandSlip: ['mui-off-canvas-left']
     };
     muiInit(options);
     initBanner();
     //默认打开弹窗消息
     initDialog();
     initNotice();
+    //初始化api nav滑动
+    swiper();
+    lazyLoadApi = lazyLoadImg("body");
 });
+
+/**
+ * 导航点击下面滑块高度问题bug解决
+ */
+function slideHeight(obj, options) {
+    var index = $(obj).data("swiper-slide-index");
+    var targetSlide = $(".nav-slide-content .swiper-slide[data-swiper-slide-index=" + index + "]")[0];
+    setTimeout(function () {// 滑动循环最后一个有延迟，设个定时器抵消延迟的效果
+        $(".nav-slide-content>.swiper-wrapper").css({height: $(targetSlide).outerHeight()});
+    }, 100);
+}
+
+/**
+ * 关闭下载提示
+ */
+function closeDownLoad() {
+    $(".banner-ads").hide();
+}
+
+/**
+ * 初始化api nav滑动
+ */
+function swiper() {
+    // api滑动
+    var slideContent = new Swiper('.nav-slide-content', {
+        loop: true,
+        loopedSlides: 5,
+        autoHeight: true,
+        on: {
+            slideChange: function () {
+            }
+        }
+    });
+    var slideIndicators = new Swiper('.nav-slide-indicators', {
+        loop: true,
+        loopedSlides: 5,
+        slidesPerView: 'auto',
+        touchRatio: 0.2,
+        slideToClickedSlide: true,
+        on: {
+            slideChangeTransitionEnd: function () {
+                //处理图片延迟加载
+                if ($(".nav-slide-content .swiper-slide-active").find("img[data-lazyload]").length > 0) {
+                    lazyLoadApi.refresh(true);
+                }
+            }
+        }
+    });
+    slideContent.controller.control = slideIndicators;
+    slideIndicators.controller.control = slideContent;
+}
 
 /*轮播图*/
 function initBanner() {
@@ -31,32 +84,22 @@ function initBanner() {
  * 公告滚动
  */
 function initNotice() {
-    var index = 0;
-    var len = $("section.notice .notice-list p").length;
-
-    function topScroll() {
-        if (index >= len) {
-            index = 0
-        }
-        $("section.notice .notice-list").css({
-            "transform": "translate3d(0px, " + index * -28 + "px, 0px)"
-        });
-        index++;
-    }
-
-    setInterval(topScroll, 3600);
+    /* 公告初始化 */
+    $('.marquee').marquee({
+        duration: 6000
+    });
 }
 
 /*消息弹窗*/
-function initDialog(){
-    mui('.mui-popover').popover('toggle',document.getElementById("openPopover"));
+function initDialog() {
+    mui('.mui-popover').popover('toggle', document.getElementById("openPopover"));
 }
 
-function dialog(obj,options){
+function dialog(obj, options) {
     var link = options.dataLink;
-    if(link){
+    if (link) {
         goToUrl(link);
-    }else{
+    } else {
         initDialog();
     }
 }
@@ -93,25 +136,21 @@ function showNotice(obj, options) {
 }
 
 /**
- * 导航游戏分类切换
- */
-function changeApiTypeTab(obj, options) {
-    $(".api-grid ul").removeClass('active');
-    $(".api-grid div").removeClass('active');
-    var item = options.item;
-    $(".api-grid ul[data-list='" + item + "']").addClass('active');
-}
-
-/**
  * 彩票切换
  * @param obj
  * @param options
  */
-function changeLottery(obj, options) {
-    $(".lottery-nav li a.mui-tab-item.mui-active").removeClass("mui-active");
-    $(".lottery-content .mui-control-content.mui-active").removeClass("mui-active");
+function changeNavGame(obj, options) {
+    $(obj).parent().parent().find(".mui-active").removeClass("mui-active");
     $(obj).addClass("mui-active");
     var apiId = options.apiId;
-    $('#lottery-id').val(apiId);
-    $('div#lottery-' + apiId).addClass("mui-active");
+    var apiTypeId = options.apiTypeId;
+    $("div[name='nav-content-" + apiTypeId + "'] .mui-active").removeClass("mui-active");
+    var navTarget = $('div#nav-' + apiTypeId + '-' + apiId);
+    navTarget.addClass("mui-active");
+    //处理图片延迟加载
+    if ($(navTarget).find("img[data-lazyload]").length > 0) {
+        lazyLoadApi.refresh(true);
+    }
+    $(obj).unlock();
 }

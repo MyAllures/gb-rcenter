@@ -22,7 +22,7 @@ header.mui-bar-nav .mui-action-back { color: #666; }
 .nav { background: #fff url(./images/nav-bg.png) 0 0/100% 60px repeat-x; border-top: 1px solid #d1d1d1; position: relative; }
 .nav:after { content: ''; position: absolute; height: 1px; background: #d1d1d1; bottom: 4px; left: 0; right: 0; }
 .nav .swiper-slide { color: #333; position: relative; }
-.nav .swiper-slide.swiper-slide-active:after { content: ''; position: absolute; top: 0; left: 50%; margin-left: -32px; z-index: 1; width: 64px; height: 70px; background: url(images/nav-item-active-bg.png) center top/64px 66px no-repeat; }
+.nav .swiper-slide.swiper-slide-active:after { content: ''; position: absolute; top: 0; left: 50%; margin-left: -37px; z-index: 1; width: 74px; height: 70px; background: url(images/nav-item-active-bg.png) center top/74px 66px no-repeat; }
 
 /* api-grid */
 .api-grid .mui-grid-view.mui-grid-9 { padding: 0 5px; border-top: 0; border-left: 0; background-color: #fff; }
