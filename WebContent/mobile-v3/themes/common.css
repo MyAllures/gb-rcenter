@@ -1236,10 +1236,6 @@ body.deposit {
     padding-bottom: 0px !important; }
   body.deposit .m-t-sm {
     margin-top: 10px !important; }
-  body.deposit ul {
-    padding-left: 0;
-    overflow: hidden;
-    margin: 0; }
   body.deposit li {
     list-style: none; }
   body.deposit .bank-selector {
@@ -2984,10 +2980,12 @@ html.new-invite {
     background: #08081c;
     height: 100%; }
   html.new-invite .mui-content {
-    background: #08081c url(images/share-to-friend-bg.png) no-repeat center top/375px;
-    background-attachment: scroll; }
+    background: #08081c;
+    padding-top: 0; }
+    html.new-invite .mui-content > .mui-scroll {
+      background: #08081c url(images/share-to-friend-bg.png) no-repeat center -22px/375px; }
   html.new-invite .mui-bar {
-    background-color: transparent; }
+    background-color: rgba(8, 8, 28, 0.4); }
   html.new-invite .btn-question {
     background: url(images/icon-question.png) no-repeat center/7.5px;
     width: 22.5px;
@@ -2998,7 +2996,7 @@ html.new-invite {
     right: 10px;
     top: 10px; }
   html.new-invite .panel1 {
-    margin: 172px 10px 10px;
+    margin: 200px 10px 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
     font-size: 12px;
