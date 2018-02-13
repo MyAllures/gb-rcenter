@@ -97,6 +97,39 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     }else{
                         window.top.topPage.showErrorMessage("操作失败!");
                     }
+                    $(e.currentTarget).unlock();
+                }
+            });
+        },
+        enableMonitorData:function (e, opt) {
+            var _this =this
+            window.top.topPage.ajax({
+                dataType:'json',
+                type:"post",
+                url:root+'/Monitor/enableMonitorData.html',
+                success:function(data){
+                    if(data==true) {
+                        window.top.topPage.showSuccessMessage("操作成功!");
+                    }else{
+                        window.top.topPage.showErrorMessage("操作失败!");
+                    }
+                    $(e.currentTarget).unlock();
+                }
+            });
+        },
+        disableMonitorData:function (e, opt) {
+            var _this =this
+            window.top.topPage.ajax({
+                dataType:'json',
+                type:"post",
+                url:root+'/Monitor/disableMonitorData.html',
+                success:function(data){
+                    if(data==true) {
+                        window.top.topPage.showSuccessMessage("操作成功!");
+                    }else{
+                        window.top.topPage.showErrorMessage("操作失败!");
+                    }
+                    $(e.currentTarget).unlock();
                 }
             });
         },
