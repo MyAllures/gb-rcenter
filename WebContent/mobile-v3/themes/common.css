@@ -1232,8 +1232,6 @@ body.deposit {
     background: #1766bb; }
   body.deposit .mui-content {
     background: #f2f2f2; }
-  body.deposit .deposit-content {
-    padding-bottom: 0px !important; }
   body.deposit .m-t-sm {
     margin-top: 10px !important; }
   body.deposit li {
@@ -1733,12 +1731,6 @@ body.deposit {
     width: 100%;
     padding: 10px 12px;
     font-size: 13px; }
-  body.deposit .deposit-next {
-    position: relative;
-    margin: 20px;
-    width: auto;
-    border-radius: 5px;
-    overflow: hidden; }
   body.deposit .pro-window {
     width: 320px !important;
     margin-top: -165px;
@@ -1758,8 +1750,9 @@ body.deposit {
     color: #f49e2e;
     font-size: 14px; }
   body.deposit .pro-window .text-pro ul {
-    max-height: 110px;
-    overflow: auto;
+    height: 110px;
+    overflow: hidden;
+    position: relative;
     background: #e2e2e2;
     border-radius: 4px; }
   body.deposit .pro-window .text-pro li {
