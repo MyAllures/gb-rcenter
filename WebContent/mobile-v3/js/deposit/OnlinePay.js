@@ -113,7 +113,7 @@ function verificationAmount(rechargeAmount) {
 
 /**展示所有存款银行*/
 function showBankList() {
-  /*  if (!bankPick) {
+    if (!bankPick) {
         initOnlineBankList();
     }
     bankPick.show(function (items) {
@@ -126,55 +126,8 @@ function showBankList() {
         document.getElementById('onlinePayMax').value = max;
         document.getElementsByName('account').value = item.account;
         document.getElementById('result.rechargeAmount').setAttribute("placeholder", "" + siteCurrencySign + Number(min).toFixed(2) + "~" + siteCurrencySign + Number(max).toFixed(2));
-    });*/
-    test();
+    });
 }
-
-function test(){
-    //普通示例
-    var userPicker = new mui.PopPicker();
-    userPicker.setData([{
-        value: 'ywj',
-        text: '董事长 叶文洁'
-    }, {
-        value: 'aaa',
-        text: '总经理 艾AA'
-    }, {
-        value: 'lj',
-        text: '罗辑'
-    }, {
-        value: 'ymt',
-        text: '云天明'
-    }, {
-        value: 'shq',
-        text: '史强'
-    }, {
-        value: 'zhbh',
-        text: '章北海'
-    }, {
-        value: 'zhy',
-        text: '庄颜'
-    }, {
-        value: 'gyf',
-        text: '关一帆'
-    }, {
-        value: 'zhz',
-        text: '智子'
-    }, {
-        value: 'gezh',
-        text: '歌者'
-    }]);
-    var showUserPickerButton = doc.getElementById('showUserPicker');
-    var userResult = doc.getElementById('userResult');
-    showUserPickerButton.addEventListener('tap', function(event) {
-        userPicker.show(function(items) {
-            userResult.innerText = JSON.stringify(items[0]);
-            //返回 false 可以阻止选择框的关闭
-            //return false;
-        });
-    }, false);
-}
-
 /**线上支付提交存款*/
 function onlinePaySubmit(depositChannel) {
     var $form;
