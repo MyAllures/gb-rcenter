@@ -4,8 +4,7 @@
  *   */
 body{    font-size: 13px;} 
 
-.mui-popup{width: 87.5%;    -webkit-transform: translate3d(-50%,0,0) scale(0);
-    transform: translate3d(-50%,0,0) scale(0);top:10px;}// 解决弹窗卡一下的问题，初始宽度设为想要的宽度
+//.mui-popup{width: 87.5%;    -webkit-transform: translate3d(-50%,0,0) scale(0);transform: translate3d(-50%,0,0) scale(0);top:10px;} 解决弹窗卡一下的问题，初始宽度设为想要的宽度
 header{
     &.mui-bar-nav{
         .logo{height: 28px;
@@ -2167,6 +2166,179 @@ body.withdraw{
     }
 }
 /* 推荐好友样式 */
+html.new-invite{height: 100%;
+    body{background: #08081c;height: 100%;}    
+    .mui-content{background: #08081c url(images/share-to-friend-bg.png) no-repeat center top/375px;background-attachment: scroll;}
+    .mui-bar{background-color: transparent;}
+    .btn-question{    background: url(images/icon-question.png) no-repeat center/7.5px;
+    width: 22.5px;
+    height: 22.5px;
+    position: absolute;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    right: 10px;
+    top: 10px;}
+    .panel1{margin: 172px 10px 10px;border-radius: 5px;border: 1px solid #ddd;font-size: 12px;color: #333;
+        .row1,.row2{display: flex;    padding: 0 20px;
+             &>div{flex: 1;line-height:40px;                 
+                &:first-child+div{text-align: right;}
+             }             
+        }
+        .row1{background: #fff;
+            span{color: #1b75d9;}
+        }
+        .row2{background: #f2f2f2;
+            span{color: #f09402;}
+        }
+    }
+    .panel2{margin: 0 10px 10px;border-radius: 5px;border: 1px solid #ddd;font-size: 12px;color: #333;padding: 15px;
+        background: #f2f2f2;
+        .input-wrap{display: flex;margin-top: 13px;
+            input{flex: 1;height: 35px;line-height: 30px;padding: 0 10px;font-size: 12px;color: #333;border-radius: 5px;border: 1px solid #ccc;margin: 0;}
+            .btn-copy{background:#1b75d9;margin-left:10px;display: block;width: 76px;height: 35px;line-height: 35px;text-align: center;font-size: 12px;color: #fff;border-radius: 5px;}
+        }
+    }
+    .panel3{margin: 0 10px 10px;border-radius: 5px;border: 1px solid #ddd;font-size: 12px;color: #333;padding: 15px;background: #f2f2f2;
+        .mui-segmented-control{width: 153px;height: 30px;line-height: 30px;margin: 0 auto 10px;font-size: 14px;color: #333;
+            .mui-control-item{line-height: 30px;color: #333;
+                &.mui-active{color: #fff;}
+            }
+        }
+        .mui-control-content{height: 320px;
+            .pan{margin: 15px 0;border: 1px solid #ccc;border-radius: 5px;position: relative;font-size: 14px;color: #333;line-height: 20px;text-align: center;padding: 15px;
+                .tit{color: #1b75d9;font-weight: bold;    position: absolute;    top: -15px;    left: 50%;    transform: translateX(-50%);    padding: 5px 10px;    background: #f2f2f2;}
+                .table1{width: 100%;border: 1px solid #fff;margin-top: 12px;line-height: 38px;
+                    td, th {
+                        border: 1px solid #fff;
+                    }
+                    th{background: #e4f7e7;font-weight: normal;}
+                    td{background: #e4ebf7;}
+                }
+            }
+            &.share-record-wrap{margin: 0 -5px;
+                .mui-scroll-wrapper{top: 49px;}
+                .filter-p{padding: 10px;background: #fff;border-radius: 5px;box-shadow: 0 2px 2px #e2e2e2;
+                        .gb-datafilter {
+                            .input-date {
+                                display: inline-block;
+                                position: relative;
+                                width: 30%;
+                                a {
+                                    display: inline-block;
+                                    width: 20px;
+                                    height: 25px;
+                                    background: url(./images/ico-cal.png) no-repeat center;
+                                    background-size: 9px auto;
+                                    position: absolute;
+                                    z-index: 1;
+                                    top: 1px;
+                                    left: 0;
+                                }
+                                input.date {
+                                    border: 1px solid #e2e2e2;
+                                    border-radius: 2px;
+                                    height: 29px;
+                                    line-height: 29px;
+                                    color: #333;
+                                    font-size: 12px;
+                                    width: 100%;
+                                    text-align: center;
+                                    position: relative;margin-bottom: 0;
+                                }
+                            }
+                            .btn {
+                                padding: 4px 8px;
+                            }
+                            .btn-kx{background: #1b75d9;border-color: #1b75d9;width: 43px;height: 28px;line-height: 28px;padding: 0;text-align: center;}
+                            .input-drop {
+                                display: inline-block;
+                        border: 1px solid #e2e2e2;
+                        border-radius: 3px;
+                        height: 30px;
+                        line-height: 28px;
+                        color: #333;
+                        font-size: 10px;
+                        width: 100%;
+                        padding: 0 10px;
+                        position: relative;
+                                a {
+                                    display: block;
+                                    line-height: 28px;
+                                    color: #999;
+                                    font-size: 12px;
+                                    .mui-icon {float: right;margin-top: 6px;
+                                        color: #7a7674!important;
+                                        font-size: 18px;
+                                    }
+                                }
+                            }
+                        } 
+                }
+            }
+            .table2{width: 100%;border: 1px solid #fff;margin-top: 12px;line-height: 38px;text-align: center;
+                    td, th {
+                        border: 1px solid #fff;
+                    }
+                    th{background: #e4f7e7;font-weight: normal;}
+                    td{background: #e4ebf7;}
+                    tbody{
+                        tr:nth-child(odd){
+                            td{background: #fff;}
+                        }
+                    }
+                    .red{color: #f00;}
+            }
+        }
+    }
+    .mui-popup{
+        width: auto;
+        left: 10px;
+        right: 10px;
+        -webkit-transform: translate3d(0,-50%,0) scale(0);transform: translate3d(0,-50%,0) scale(0);
+        &.act-popup{
+            
+            &.mui-popup-in{
+                -webkit-transform: translate3d(0,-50%,0) scale(1);transform: translate3d(0,-50%,0) scale(1);
+            }
+            .mui-popup-inner {
+                border-radius: 10px;padding: 0;background: #fff;
+                .mui-popup-title{    height: 43px;
+    line-height: 43px;
+    background: #f2f2f2;
+    font-size: 14px;
+    color: #333;
+                    &+.mui-popup-text{margin: 0;}
+                }
+            }
+            .mui-popup-buttons {height: 73px;padding-top: 23px;
+                .mui-popup-button{  display: none;}
+            }
+            .btn-close{font-size: 0;    width: 50px;
+    height: 50px;position: relative;
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid #1b75d9;
+                &:before,&:after{    content: '';
+    position: absolute;
+    width: 20px;
+    height: 1px;
+    background: #1b75d9;
+    transform: rotateZ(45deg);
+    top: 24px;
+    left: 15px;}
+                &:after{
+                transform: rotateZ(-45deg);
+                }   
+            }
+            .activity-content{position: relative;height: 300px;
+                .ext-cont{padding: 15px 30px;font-size: 12px;color: #333;text-align: left;
+                *{color: inherit;}
+                }                    
+            }
+        }
+    } 
+}
+/* 推荐记录样式 */
 body.invite{
      header{background: #1766bb;}
     .mui-content{background: #f2f2f2;}
