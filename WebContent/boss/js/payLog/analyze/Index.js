@@ -136,15 +136,18 @@ define(['common/BaseListPage', 'autocompleter'], function (BaseListPage) {
         reset:function (event) {
             $("[name='search.channelCode']").val('');
             $("[name='search.siteId']").val('');
-            $("[name='search.terminal']:checked").val('');
-            $("[name='search.description']").val('');
-            $("[name='search.errorType']").val('');
-            $("[name='search.startTime']").val('');
-            $("[name='search.endTime']").val('');
+            $("input[name='search.terminal'][value='']").prop("checked", true);
+            $("input[name='search.description']").siblings("button").find("span[prompt='prompt']").text("请选择");
+            $("input[name='search.errorType']").siblings("button").find("span[prompt='prompt']").text("请选择");
+            $("input[name='search.startTime']").val('');
+            $("input[name='search.endTime']").val('');
             $("#channelCode").prop('checked',false);
             $("#siteId").prop('checked',false);
             $("#terminal").prop('checked',false);
             $("#description").prop('checked',false);
+            $("#merchantCode").prop('checked',false);
+
+            $(event.currentTarget).unlock();
         }
 
 
