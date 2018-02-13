@@ -12,7 +12,7 @@ $(function () {
 /**
  * 初始化转入/转出下拉对象
  */
-function initApi(){
+function initApi() {
     var options = {
         url: root + '/transfer/queryApis.html',
         dataType: 'json',
@@ -21,6 +21,7 @@ function initApi(){
         success: function (data) {
             //普通示例
             $("a.turn").each(function () {
+                var _this = this;
                 var transferPicker = new mui.PopPicker();
                 transferPicker.setData(data);
                 this.addEventListener('tap', function (event) {
@@ -113,18 +114,17 @@ function refreshApi(apiId, type) {
 
             //玩家余额
             var player = data.player;
-            if(player.walletBalance) {
+            if (player.walletBalance) {
                 $("#walletBalance").text(player.currencySign + player.walletBalance);
             }
-            if(player.freezingBalance) {
+            if (player.freezingBalance) {
                 $("#freezingBalance").text(player.currencySign + player.freezingBalance);
             } else {
                 $("#freezingBalance").text(player.currencySign + '0.00');
             }
             $(refreshApi).removeClass("gb-spin");
             if (!type) {
-                // toast(window.top.message.transfer_auto['刷新成功']);
-                toast("mobile-v3刷新成功");
+                toast(window.top.message.transfer_auto['刷新成功']);
             }
         },
         error: function (e) {
@@ -140,10 +140,10 @@ function refreshApi(apiId, type) {
  * 刷新所有api余额
  */
 function refreshAllApiBalance() {
-    $("#refreshAllApiBalance").attr("disabled","disabled");
+    $("#refreshAllApiBalance").attr("disabled", "disabled");
 
     var options = {
-        url:root + "/transfer/refreshAllApiBalance.html",
+        url: root + "/transfer/refreshAllApiBalance.html",
         type: 'post',
         dataType: 'text/html',
         success: function (data) {
@@ -166,7 +166,7 @@ function refreshAllApiBalance() {
 function initTransfer() {
 
     var options = {
-        url:root + '/transfer/transferBack.html',
+        url: root + '/transfer/transferBack.html',
         dataType: 'json',
         type: 'post',
         async: true,
@@ -191,7 +191,7 @@ function successBack(data) {
     var apiId = data.apiId;
     var type = true;
     var os = whatOs();
-    if(os == 'app_android')
+    if (os == 'app_android')
         window.gamebox.refreshApiBalance(apiId);
     refreshApi(apiId, type);
     initTransfer();
@@ -202,7 +202,7 @@ function successBack(data) {
  */
 function reconnectAgain(orderId) {
     var options = {
-        url:root + '/transfer/reconnectTransfer.html?search.transactionNo='+ orderId,
+        url: root + '/transfer/reconnectTransfer.html?search.transactionNo=' + orderId,
         dataType: 'json',
         type: 'post',
         async: true,
@@ -217,7 +217,7 @@ function reconnectAgain(orderId) {
  * 转账回调
  */
 function transferBack(data) {
-    if (!data){
+    if (!data) {
         toast(window.top.message.transfer_auto["转账异常"]);
         initTransfer();
     } else if (data.state == true && data.result == 0) {
@@ -225,9 +225,9 @@ function transferBack(data) {
         layer.open({
             title: window.top.message.transfer_auto['转账成功'],
             content: window.top.message.transfer_auto['转账成功2'],
-            btn: [window.top.message.transfer_auto['好的'],''],
-            shadeClose:false,
-            yes: function(index) {
+            btn: [window.top.message.transfer_auto['好的'], ''],
+            shadeClose: false,
+            yes: function (index) {
                 successBack(data);
                 getSiteApi();
                 layer.close(index);
@@ -238,9 +238,9 @@ function transferBack(data) {
         layer.open({
             title: window.top.message.transfer_auto['转账失败'],
             content: window.top.message.transfer_auto['转账已失败'],
-            btn: [window.top.message.transfer_auto['确定'],''],
-            shadeClose:false,
-            yes: function(index) {
+            btn: [window.top.message.transfer_auto['确定'], ''],
+            shadeClose: false,
+            yes: function (index) {
                 successBack(data);
                 getSiteApi();
                 layer.close(index);
@@ -253,12 +253,12 @@ function transferBack(data) {
             title: window.top.message.transfer_auto['转账超时'],
             content: window.top.message.transfer_auto['订单已超时'],
             btn: btnArray,
-            shadeClose:false,
-            yes: function(index) {
+            shadeClose: false,
+            yes: function (index) {
                 successBack(data);
                 layer.close(index);
             },
-            no: function(index) {
+            no: function (index) {
                 reconnectAgain(orderId);
                 layer.close(index);
             }
@@ -285,7 +285,7 @@ function submitTransactionMoney() {
     var options = {
         url: root + '/transfer/transfersMoney.html',
         data: $form.serialize(),
-        beforeSend:function(){
+        beforeSend: function () {
             $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
         },
         success: function (data) {
@@ -295,8 +295,6 @@ function submitTransactionMoney() {
     };
     muiAjax(options)
 }
-
-
 
 
 /**
