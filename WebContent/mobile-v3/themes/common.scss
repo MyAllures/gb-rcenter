@@ -2168,8 +2168,10 @@ body.withdraw{
 /* 推荐好友样式 */
 html.new-invite{height: 100%;
     body{background: #08081c;height: 100%;}    
-    .mui-content{background: #08081c url(images/share-to-friend-bg.png) no-repeat center top/375px;background-attachment: scroll;}
-    .mui-bar{background-color: transparent;}
+    .mui-content{background: #08081c;padding-top: 0;
+        &>.mui-scroll{background: #08081c url(images/share-to-friend-bg.png) no-repeat center -22px/375px;}
+    }
+    .mui-bar{    background-color: rgba(8, 8, 28,0.4);}
     .btn-question{    background: url(images/icon-question.png) no-repeat center/7.5px;
     width: 22.5px;
     height: 22.5px;
@@ -2178,7 +2180,7 @@ html.new-invite{height: 100%;
     border-radius: 50%;
     right: 10px;
     top: 10px;}
-    .panel1{margin: 172px 10px 10px;border-radius: 5px;border: 1px solid #ddd;font-size: 12px;color: #333;
+    .panel1{margin: 200px 10px 10px;border-radius: 5px;border: 1px solid #ddd;font-size: 12px;color: #333;
         .row1,.row2{display: flex;    padding: 0 20px;
              &>div{flex: 1;line-height:40px;                 
                 &:first-child+div{text-align: right;}
