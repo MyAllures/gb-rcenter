@@ -69,11 +69,20 @@ function nativeGotoPromoRecordPage() {
 }
 
 /**
+ * 原生跳转至首页
+ */
+function gotoHomePage() {
+    window.gamebox.gotoHomePage();
+}
+
+/**
  * 原生保存图片到手机
  * @param url
  */
 function nativeSaveImage(url) {
     window.gamebox.saveImage(url);
 }
+
+
 
 

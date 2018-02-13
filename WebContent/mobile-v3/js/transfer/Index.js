@@ -5,71 +5,58 @@
 $(function () {
     //主体内容滚动条
     muiInit(muiDefaultOptions);
+    //初始化转入转出的api
+    initApi();
+});
 
-        mui.ready(function () {
-            /**
-             * 初始化转入/转出下拉对象
-             */
-            var options = {
-                url: root + '/transfer/queryApis.html',
-                dataType: 'json',
-                type: 'post',
-                async: true,
-                success: function (data) {
-                    //普通示例
-                    $("a.turn").each(function (obj) {
-                        var _this = this;
-                        var transferPicker = new mui.PopPicker();
-                        transferPicker.setData(data);
-                        if (this != null) {
-                            this.addEventListener('tap', function (event) {
-                                transferPicker.show(function (items) {
-                                    var text = items[0].text;
-                                    var value = items[0].value;
+/**
+ * 初始化转入/转出下拉对象
+ */
+function initApi() {
+    var options = {
+        url: root + '/transfer/queryApis.html',
+        dataType: 'json',
+        type: 'post',
+        async: true,
+        success: function (data) {
+            //普通示例
+            $("a.turn").each(function () {
+                var _this = this;
+                var transferPicker = new mui.PopPicker();
+                transferPicker.setData(data);
+                this.addEventListener('tap', function (event) {
+                    transferPicker.show(function (items) {
+                        var text = items[0].text;
+                        var value = items[0].value;
 
-                                    var toggleId = _this.dataset.value;
-                                    var toggleObj = document.getElementById(toggleId);
-                                    var toggleInput = toggleObj.children[1];
+                        var toggleId = _this.dataset.value;
+                        var toggleObj = document.getElementById(toggleId);
+                        var toggleInput = toggleObj.children[1];
 
-                                    //另外一个已是 我的钱包
-                                    if (toggleInput.defaultValue == 'wallet') {
-                                        if (value == 'wallet') {
-                                            toggleInput.defaultValue = '';
-                                            toggleObj.children[0].innerHTML = window.top.message.transfer_auto['请选择'];
-                                        }
-                                    } else {
-                                        //另外一个不是 我的钱包
-                                        if (value != 'wallet') {
-                                            toggleInput.defaultValue = 'wallet';
-                                            toggleObj.children[0].innerHTML = window.top.message.transfer_auto['我的钱包'];
-                                        }
-                                    }
-                                    _this.children[0].innerHTML = text;
-                                    _this.children[1].defaultValue = value;
-                                    changeMsg();
-                                    amountValid();
-                                });
-                            }, false);
+                        //另外一个已是 我的钱包
+                        if (toggleInput.defaultValue == 'wallet') {
+                            if (value == 'wallet') {
+                                toggleInput.defaultValue = '';
+                                toggleObj.children[0].innerHTML = window.top.message.transfer_auto['请选择'];
+                            }
+                        } else {
+                            //另外一个不是 我的钱包
+                            if (value != 'wallet') {
+                                toggleInput.defaultValue = 'wallet';
+                                toggleObj.children[0].innerHTML = window.top.message.transfer_auto['我的钱包'];
+                            }
                         }
+                        _this.children[0].innerHTML = text;
+                        _this.children[1].defaultValue = value;
+                        changeMsg();
+                        amountValid();
                     });
-                },
-                error: function (xhr, type, errorThrown) {
-                    //异常处理；
-                    console.log(type);
-                }
-            };
-            muiAjax(options)
-        });
-    (mui, document);
-});
-    
-
-
-resetScreen();
-$(window).bind( 'orientationchange', function(e){
-    resetScreen();
-});
-
+                }, false);
+            });
+        }
+    };
+    muiAjax(options);
+}
 
 /**
  * 变换提示消息
@@ -86,35 +73,6 @@ function changeMsg() {
     var validate = $form.validate();
     $.extend(true, validate.settings.messages, {"result.transferAmount": {remote: msg}});
 }
-
-function resetScreen() {
-    var sm = this.orient();
-    if (sm == 'landscape') {
-        if ($('.ori-mask').length == 0) {
-            var tip = '<div class="ori-mask"></div>';
-            $('body').append(tip);
-        }
-    } else {
-        if ($('.ori-mask').length > 0) {
-            $('.ori-mask').remove();
-        }
-    }
-}
-
-function orient() {
-    var orient = window.orientation;
-    if (typeof orient === 'undefined') {
-        return (window.innerWidth > window.innerHeight) ? "landscape" : "portrait";
-    } else {
-        if (orient == 90 || orient == -90) {
-            return 'landscape';
-        } else if (orient == 0 || orient == 180) {
-            return 'portrait';
-        }
-    }
-}
-
-
 
 /**
  * 转账金额验证（在每次更换转入转出对象时，需重新验证转账金额）
@@ -142,10 +100,6 @@ function refreshApi(apiId, type) {
 
     var options = {
         url: url,
-        type: 'post',
-        timeout: 10000,
-        dataType: "json",
-
         success: function (data) {
             var apiId = data.apiId;
             var apiMoney = data.apiMoney;
@@ -160,18 +114,17 @@ function refreshApi(apiId, type) {
 
             //玩家余额
             var player = data.player;
-            if(player.walletBalance) {
+            if (player.walletBalance) {
                 $("#walletBalance").text(player.currencySign + player.walletBalance);
             }
-            if(player.freezingBalance) {
+            if (player.freezingBalance) {
                 $("#freezingBalance").text(player.currencySign + player.freezingBalance);
             } else {
                 $("#freezingBalance").text(player.currencySign + '0.00');
             }
             $(refreshApi).removeClass("gb-spin");
             if (!type) {
-                // toast(window.top.message.transfer_auto['刷新成功']);
-                toast("mobile-v3刷新成功");
+                toast(window.top.message.transfer_auto['刷新成功']);
             }
         },
         error: function (e) {
@@ -187,10 +140,10 @@ function refreshApi(apiId, type) {
  * 刷新所有api余额
  */
 function refreshAllApiBalance() {
-    $("#refreshAllApiBalance").attr("disabled","disabled");
+    $("#refreshAllApiBalance").attr("disabled", "disabled");
 
     var options = {
-        url:root + "/transfer/refreshAllApiBalance.html",
+        url: root + "/transfer/refreshAllApiBalance.html",
         type: 'post',
         dataType: 'text/html',
         success: function (data) {
@@ -207,18 +160,13 @@ function refreshAllApiBalance() {
     muiAjax(options);
 }
 
-
-function refreshAllBalance() {
-    refreshAllApiBalance();
-}
-
 /**
  * 重新初始化转账form表单
  */
 function initTransfer() {
 
     var options = {
-        url:root + '/transfer/transferBack.html',
+        url: root + '/transfer/transferBack.html',
         dataType: 'json',
         type: 'post',
         async: true,
@@ -243,7 +191,7 @@ function successBack(data) {
     var apiId = data.apiId;
     var type = true;
     var os = whatOs();
-    if(os == 'app_android')
+    if (os == 'app_android')
         window.gamebox.refreshApiBalance(apiId);
     refreshApi(apiId, type);
     initTransfer();
@@ -254,18 +202,13 @@ function successBack(data) {
  */
 function reconnectAgain(orderId) {
     var options = {
-        url:root + '/transfer/reconnectTransfer.html?search.transactionNo='+ orderId,
+        url: root + '/transfer/reconnectTransfer.html?search.transactionNo=' + orderId,
         dataType: 'json',
         type: 'post',
         async: true,
         success: function (data) {
             transferBack(data);
-        },
-        error: function (xhr, type, errorThrown) {
-            //异常处理；
-            console.log(type);
         }
-
     };
     muiAjax(options);
 }
@@ -274,7 +217,7 @@ function reconnectAgain(orderId) {
  * 转账回调
  */
 function transferBack(data) {
-    if (!data){
+    if (!data) {
         toast(window.top.message.transfer_auto["转账异常"]);
         initTransfer();
     } else if (data.state == true && data.result == 0) {
@@ -282,9 +225,9 @@ function transferBack(data) {
         layer.open({
             title: window.top.message.transfer_auto['转账成功'],
             content: window.top.message.transfer_auto['转账成功2'],
-            btn: [window.top.message.transfer_auto['好的'],''],
-            shadeClose:false,
-            yes: function(index) {
+            btn: [window.top.message.transfer_auto['好的'], ''],
+            shadeClose: false,
+            yes: function (index) {
                 successBack(data);
                 getSiteApi();
                 layer.close(index);
@@ -295,9 +238,9 @@ function transferBack(data) {
         layer.open({
             title: window.top.message.transfer_auto['转账失败'],
             content: window.top.message.transfer_auto['转账已失败'],
-            btn: [window.top.message.transfer_auto['确定'],''],
-            shadeClose:false,
-            yes: function(index) {
+            btn: [window.top.message.transfer_auto['确定'], ''],
+            shadeClose: false,
+            yes: function (index) {
                 successBack(data);
                 getSiteApi();
                 layer.close(index);
@@ -310,12 +253,12 @@ function transferBack(data) {
             title: window.top.message.transfer_auto['转账超时'],
             content: window.top.message.transfer_auto['订单已超时'],
             btn: btnArray,
-            shadeClose:false,
-            yes: function(index) {
+            shadeClose: false,
+            yes: function (index) {
                 successBack(data);
                 layer.close(index);
             },
-            no: function(index) {
+            no: function (index) {
                 reconnectAgain(orderId);
                 layer.close(index);
             }
@@ -342,19 +285,16 @@ function submitTransactionMoney() {
     var options = {
         url: root + '/transfer/transfersMoney.html',
         data: $form.serialize(),
-        type: 'post',
-        beforeSend:function(){
+        beforeSend: function () {
             $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
         },
         success: function (data) {
             transferBack(data);
             $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
-        },
+        }
     };
     muiAjax(options)
 }
-
-
 
 
 /**
