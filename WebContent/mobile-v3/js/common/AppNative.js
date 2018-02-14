@@ -41,10 +41,15 @@ function nativeGoBackPage() {
 
 /**
  * 原生新打开页面
+ *
  * @param url
+ * type 0 代表支付  1代表游戏  2 其它
  */
-function nativeOpenWindow(url) {
-    window.gamebox.startNewWebView(url);
+function nativeOpenWindow(url, type) {
+    if (!type) {
+        type = '2';
+    }
+    window.gamebox.startNewWebView(url, type);
 }
 
 /**
@@ -69,11 +74,20 @@ function nativeGotoPromoRecordPage() {
 }
 
 /**
+ * 原生跳转至首页
+ */
+function gotoHomePage() {
+    window.gamebox.gotoHomePage();
+}
+
+/**
  * 原生保存图片到手机
  * @param url
  */
 function nativeSaveImage(url) {
     window.gamebox.saveImage(url);
 }
+
+
 
 

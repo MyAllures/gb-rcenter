@@ -79,6 +79,11 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     } else {
                         $("#actualRecharge").text(0);
                     }
+                    if (data.artificial) {
+                        $("#artificial").text(data.artificial);
+                    }else {
+                        $("#artificial").text(0);
+                    }
                 }
             })
         }

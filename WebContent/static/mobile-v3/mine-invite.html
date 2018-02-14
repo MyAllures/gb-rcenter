@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="new-invite">
 <head>
     <meta charset="utf-8">
     <title>Dawoo</title>
@@ -9,85 +9,158 @@
     <link rel="bookmark" href="../../mobile-v3/favicon.ico">
     <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
     <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.picker.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.dtpicker.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
     <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
 </head>
 
-<body class="invite">
+<body>
 <header class="mui-bar mui-bar-nav">
     <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
     <h1 class="mui-title">推荐好友</h1>
-    <a href="mine-invite-records.html" class="button mui-btn mui-btn-outlined mui-pull-right" data-href="mine-invite-records.html">推荐记录</a>
+    <a href="javascript:void(0);" class="btn-question" id="question" ></a>
 </header>
 <div class="mui-content mui-scroll-wrapper invite-content">
     <div class="mui-scroll">
-        <div class="mui-row">
-            <div class="gb-panel">
-                <div class="invite-code">
-                    <p class="p1">您的专属推荐码：<span class="text-green">CHFA7ZWVX5G</span></p>
-                    <p class="p2">
-                                    <span class="mui-pull-right">
-                                        获得红利：<span class="text-green">￥20.00</span>
-                                    </span>
-                                    <span class="span">
-                                        您已推荐好友：<span class="text-green">2名</span>
-                                    </span>
-                    </p>
-                </div>
+        <div class="panel1">
+            <div class="row1">
+                <div>我分享的好友数 <span>56</span>人</div>
+                <div>我的分享奖励 <span>256</span> 元</div>
+            </div>
+            <div class="row2">
+                <div>好友互惠达成数 <span>56</span> 人</div>
+                <div>我的分享红利 <span>256</span> 元</div>
             </div>
         </div>
-        <div class="mui-row">
-            <div class="gb-panel m-t-sm">
-                <div class="invite-cont">
-                    <div class="cont">
-                        <p>这是您的专属邀请码<br>复制以下文字通过QQ等方式发送给好友</p>
-                        <div class="link">
-                            <p>test2.hongtubet.com:80/register.html?c=CHFA7ZWVX5G</p>
+        <div class="panel2">
+            您的专属链接，<br>
+            复制后通过微信、QQ等方式发送给好友
+            <div class="input-wrap">
+                <input type="text"> <a href="javascript:void(0)" class="btn-copy">复制</a>
+            </div>
+        </div>
+        <div class="panel3">
+            <div class="mui-segmented-control">
+                <a class="mui-control-item mui-active" href="#item1">
+                    奖励规则
+                </a>
+                <a class="mui-control-item" href="#item2">
+                    分享记录
+                </a>
+            </div>
+            <div id="item1" class="mui-control-content mui-active">
+                <div id="scroll" class="mui-scroll-wrapper">
+                    <div class="mui-scroll">
+                        <div class="pan">
+                            <div class="tit">互惠奖励</div>
+                            推荐好友成功注册并存款满500元 <br>
+                            双方各获20元奖励
                         </div>
-                        <p class="mui-text-center">
-                            <a href="" class="btn mui-btn mui-btn-primary">复制</a>
-                        </p>
-                    </div>
-                    <div class="cont">
-                        <p><span class="text-blue">推荐奖励</span></p>
-                        <p>推荐好友成功注册并存款满￥30， 双方各获<span class="text-green">￥6</span>奖励。</p>
-                    </div>
-                    <div class="cont">
-                        <p><span class="text-blue">推荐红利</span></p>
-                        <div class="tabl">
-                            <table>
-                                <tbody><tr>
-                                    <td>推荐玩家数量</td>
-                                    <td>推荐红利比例</td>
+                        <div class="pan">
+                            <div class="tit">分享红利</div>
+                            红利=分享好友的有效投注额*分享红利比例
+                            <table class="table1">
+                                <thead>
+                                <tr>
+                                    <th>分享好友有效投注人数</th>
+                                    <th>分享红利比例</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1以上</td>
+                                    <td>0.02%</td>
                                 </tr>
                                 <tr>
-                                    <td>1</td>
-                                    <td>5%</td>
+                                    <td>3以上</td>
+                                    <td>0.05%</td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>10%</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>15%</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>20%</td>
-                                </tr>
-                                </tbody></table>
+                                </tbody>
+                            </table>
                         </div>
-                        <p></p>
                     </div>
-                    <div class="cont">
-                        <p><span class="text-blue">活动细则</span></p>
-                        <p class="al-left">1. 新用户通过您的邀请链接进行注册、绑定手机后，将立即获得5元红包。您将在第二天获得5元红包。
-                        </p><p class="al-left">2. 新用户的手机号码必须是在平安游戏使用过的。</p>
-                        <p class="al-left">3. 新用户的手机号码所在地须是平安游戏覆盖城市。</p>
-                        <p class="al-left">4. 同一手机号码只在第一次被绑定时赠送红包。每部手机仅限第一次注册时有效。</p>
-                        <p class="al-left">5. 如对本活动规则有疑问请联系平安游戏客服。</p>
+                </div>
+            </div>
+            <div id="item2" class="mui-control-content share-record-wrap">
+                <div class="filter-p">
+                    <div class="gb-datafilter">
+                        创建日期:
+		            <span class="input-date" ><a href=""></a>
+		                <input type="datetime" class="date"
+                               value="2018-01-18"
+                               id="beginTime" minDate="2018-01-18">
+		            </span>
+                        ~
+		            <span class="input-date"><a href=""></a>
+		                <input type="datetime" class="date"
+                               value="2018-01-24" id="endTime"
+                               endTime="2018-01-24"
+                               minDate="2018-01-18">
+		            </span>
+                        <a href="#selectDate" class="btn mui-btn mui-btn-primary btn-kx" style="width: 15%;">快选</a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div  class="mui-scroll-wrapper">
+                    <div class="mui-scroll">
+                        <div class="sha-wra">
+                            <table class="table2">
+                                <thead>
+                                <tr>
+                                    <th>好友账号</th>
+                                    <th>有效投注</th>
+                                    <th>红利</th>
+                                    <th>互惠奖励</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>jac***456</td>
+                                    <td>123405</td>
+                                    <td>33</td>
+                                    <td>已获得</td>
+                                </tr>
+                                <tr>
+                                    <td>jac***456</td>
+                                    <td>123405</td>
+                                    <td>33</td>
+                                    <td><span class="red">为达到条件</span></td>
+                                </tr>
+                                <tr>
+                                    <td>jac***456</td>
+                                    <td>123405</td>
+                                    <td>33</td>
+                                    <td>已获得</td>
+                                </tr>
+                                <tr>
+                                    <td>jac***456</td>
+                                    <td>123405</td>
+                                    <td>33</td>
+                                    <td><span class="red">为达到条件</span></td>
+                                </tr>
+                                <tr>
+                                    <td>jac***456</td>
+                                    <td>123405</td>
+                                    <td>33</td>
+                                    <td>已获得</td>
+                                </tr>
+                                <tr>
+                                    <td>jac***456</td>
+                                    <td>123405</td>
+                                    <td>33</td>
+                                    <td><span class="red">为达到条件</span></td>
+                                </tr>
+                                <tr>
+                                    <td>jac***456</td>
+                                    <td>123405</td>
+                                    <td>33</td>
+                                    <td>已获得</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -98,10 +171,53 @@
 
 
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../mobile-v3/js/mui/mui.picker.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
 <script src="../../mobile-v3/js/common.js"></script>
-<script>
+<script type="text/javascript">
+    mui("body").on("tap", "#beginTime", function() {
+        var dtpicker = new mui.DtPicker({
+            type: "date",
+            value: $("#beginTime").val(),
+            beginDate: new Date($("#beginTime").attr("minDate")),
+            endDate: new Date($("#endTime").attr("endTime"))
+        });
+        dtpicker.show(function(e) {
+            var day = _this.formatDateTime(new Date(e.value), format);
+            $("#beginTime").val(day);
+            if (new Date($("#endTime").val()).getTime() < new Date(e.value).getTime()) {
+                $("#endTime").val(day)
+            }
+            dtpicker.dispose()
+        })
+    });
+    mui("body").on("tap", "#endTime", function() {
+        var dtpicker = new mui.DtPicker({
+            type: "date",
+            value: $("#endTime").val(),
+            beginDate: new Date($("#beginTime").val()),
+            endDate: new Date($("#endTime").attr("endTime"))
+        });
+        dtpicker.show(function(e) {
+            $("#endTime").val(_this.formatDateTime(new Date(e.value), format));
+            dtpicker.dispose()
+        })
+    });
     $(function () {
+        var info = document.getElementById("question");
+        document.getElementById("question").addEventListener('tap', function() {
+            mui.alert('<div class="activity-content"><div class="mui-scroll-wrapper"><div class="mui-scroll"><div class="ext-cont"></div></div></div></div>', '活动介绍');
+            // 弹窗内容
+            $('.activity-content .ext-cont').html('<p>1. 有效玩家指的是玩家当天的有效投注额需达到10001.有效玩家指的是玩家当天的有效投注额需达到1000元或以上，才算为有效玩家。</p><p>2. 所有优惠以人民币(CNY)为结算金额，以美东时间为计时区间，计时周期 为1天。</p><p>3. 每位玩家﹑每一住址 、每一电子邮箱地址﹑每一电话号码﹑相同支付方式(相同借记卡/信用卡/微信/支付宝等) 及同一IP地址只能当做一个推荐好友；若会员有重复申请账号行为，公司保留取消或收回会员优惠彩金的权利。</p><p>4. 澳门新葡京的所有优惠特为玩家而设，如发现任何团体或个人，以不诚实方式套取红利或任何威胁、滥用公司优惠等行为，公司保留冻结、取消该团体或个人账户及账户结余的权利。</p><p>5.若会员对活动有争议时，为确保双方利益，杜绝身份盗用行为，澳门新葡京有权要求会员向我们提供充足有效的文件，用以确认是否享有该优惠的资格。 </p><p>6.当参与优惠会员未能完全遵守、或违反、或滥用任何有关公司优惠或推广的条款，又或任何团队或个人投下一连串的关联赌注，籍以造成无论赛果怎样都可以确保从该存款红利或其他推广活动提供的优惠获利，澳门新葡京保留权利向此团队或个人停止、取消优惠或索回已支付的全部优惠红利。此外，公司亦保留权利向这些客户扣取相当于优惠红利价值的行政费用，以补偿我们的行政成本。</p><p>7.澳门新葡京保留对活动的最终解释权；以及在无通知玩家的情况下修改、终止活动的权利；适用于所有优惠。元或以上，才算为有效玩家。 </p>')
+            $('.activity-content').parents('.mui-popup').addClass('act-popup');
+            $('.act-popup .mui-popup-buttons').append($('<div class="btn-close"></div>'));
+            $('.act-popup .btn-close').on('click', function () {
+               mui.closePopup();
+            });
+            mui('.activity-content .mui-scroll-wrapper').scroll({
+                indicators: false
+            });
+        });
     });
 </script>
 </html>

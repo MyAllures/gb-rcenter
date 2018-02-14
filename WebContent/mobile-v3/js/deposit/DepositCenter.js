@@ -120,3 +120,14 @@ function savePicture(obj, options) {
     }
 }
 
+/**
+ * 返回至首页
+ */
+function goToHome() {
+    if (isNative) {
+        gotoHomePage();
+    } else {
+        goToUrl(root + '/mainIndex.html');
+    }
+}
+
