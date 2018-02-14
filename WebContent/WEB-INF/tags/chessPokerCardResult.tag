@@ -86,7 +86,10 @@
             闲${pokerIndex.index+1}：&nbsp;&nbsp;&nbsp;(
             </span>
             <c:forEach items="${pokerList}" var="poker">
-                <gb:poker poker="${poker}"/>
+                <c:if test="${poker==0}">--</c:if>
+                <c:if test="${poker!=0}">
+                    <gb:poker poker="${poker}"/>
+                </c:if>
             </c:forEach>
             <span style="vertical-align: 10px">
               )
