@@ -221,7 +221,7 @@
             if (!img.tagName || img.tagName.toLowerCase() != 'img' && !img.getAttribute("src") || !img.src) return;
 
             var wordImgFlag = img.getAttribute("word_img"),
-                src = wordImgFlag ? wordImgFlag.replace("&amp;", "&") : (img.getAttribute('_src') || img.getAttribute("src", 2).replace("&amp;", "&")),
+                src = wordImgFlag ? wordImgFlag.replace("&amp;", "&") : (img.getAttribute("src", 2).replace("&amp;", "&") || img.getAttribute('_src')),
                 align = editor.queryCommandValue("imageFloat");
 
             /* 防止onchange事件循环调用 */
