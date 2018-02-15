@@ -1,7 +1,7 @@
 /**
  * 线上支付
  */
-define(['site/fund/recharge/BaseEditPage'], function (BaseEditPage) {
+define(['common/BaseEditPage'], function (BaseEditPage) {
     return BaseEditPage.extend({
         realName: null,
         /**
@@ -28,14 +28,23 @@ define(['site/fund/recharge/BaseEditPage'], function (BaseEditPage) {
             /**
              * 切换账号
              */
-            $(this.formSelector).on("click", "input[name=account]", function (e) {
-                _this.changeAccount(e);
-            })
+            $(this.formSelector).on("click", "label.bank", function (e) {
+                _this.changeAccount($(this));
+            });
+            /**
+             * 金额监控
+             */
+            $(this.formSelector).on("input", "input[name=rechargeAmount]", function () {
+                $(_this.formSelector + " span.fee").hide();
+
+            });
         },
-        changeAccount: function (e) {
-            var $target = $(e.currentTarget);
+        changeAccount: function (obj) {
+            var $target = $(obj).find("input[name=account]");
             var rechargeType = $target.attr("rechargeType");
             $("[name='result.rechargeType']").val(rechargeType);
+            $("label.bank").removeClass("select");
+            $(obj).addClass("select");
             //存款金额范围提示
             var amountLimit = $target.attr("amountLimit");
             $("input[name='result.rechargeAmount']").attr("placeholder", amountLimit);
@@ -55,6 +64,51 @@ define(['site/fund/recharge/BaseEditPage'], function (BaseEditPage) {
                 $("[name=authCode]").hide();
                 $("input[name=isAuthCode]").val("false");
             }
+            //展示电子支付账户信息
+            var isThird = $target.attr("isThird");
+            if (isThird == 'true') {
+                var bankName = $target.attr("bankName");
+                var accountCode = $target.attr("accountCode");
+                var bankNum = $target.attr("bankNum");
+                $("#accountCode").text(accountCode);
+                $("#bankNum").text(bankNum);
+                $("#bankName").text(bankName);
+                $("[name=electronicElement]").show();
+                $("#step").text(3);
+                $("[name=scanElement]").hide();
+            } else {
+                $("[name=electronicElement]").hide();
+                $("#step").text(2);
+                $("[name=scanElement]").show();
+            }
+        },
+        /**
+         * 更新存款金额的远程验证提示消息
+         */
+        changeAmountMsg: function (min, max) {
+            var $target = $(this.formSelector + " label.bank.select");
+            var max = $target.find("input.onlinePayMax").val();
+            var min = $target.find("input.onlinePayMin").val();
+            if (!min || min == 0) {
+                min = '0.01';
+            }
+            if (!max || max == 0) {
+                max = '99,999,999.00';
+            }
+
+            var minInt = parseInt(min.replace(/,/g, ""));
+            var maxInt = parseInt(max.replace(/,/g, ""));
+            var rechargeAmount = $(this.formSelector + " input[name='result.rechargeAmount']").val();
+            var msg;
+            if (rechargeAmount && minInt <= rechargeAmount && rechargeAmount <= maxInt) {
+                msg = window.top.message.fund['rechargeForm.rechargeAmountLTFee'];
+            } else {
+                msg = window.top.message.fund['rechargeForm.rechargeAmountOver'];
+                msg = msg.replace("{0}", min);
+                msg = msg.replace("{1}", max);
+            }
+            this.extendValidateMessage({"result.rechargeAmount": {remote: msg}});
+            this.extendValidateMessage({"result.rechargeAmount": {max: msg}});
         },
         /**
          * 更改存款规则-更改存款金额的remote规则
@@ -147,7 +201,18 @@ define(['site/fund/recharge/BaseEditPage'], function (BaseEditPage) {
          * @param options
          */
         submit: function (e, options) {
+            window.top.topPage.ajax({
+                url: root + "/fund/recharge/ScanElectronic/submit.html",
+                data: this.getCurrentFormData(e),
+                dataType: 'json',
+                success: function (data) {
+                    if (data.state == false) {
 
+                    } else {
+
+                    }
+                }
+            })
         }
     });
 });
