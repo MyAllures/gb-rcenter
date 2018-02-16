@@ -82,7 +82,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 }
                 else if (!settings.error && state != 200 && state != 0) {
                     if (settings.comet == true) {
-                        _this.showErrorMessage(settings.url + "\r\n" + window.top.message.common["online.message.error"], undefined, true);
+                        // _this.showErrorMessage(settings.url + "\r\n" + window.top.message.common["online.message.error"], undefined, true);
                     } else {
                         _this.showErrorMessage(settings.url + "\r\n" + (xhr.responseText || state), undefined, true);
                     }

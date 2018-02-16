@@ -224,6 +224,7 @@ define(['common/BasePage','site/index/PopUp'], function (BasePage,PopUp) {
         refreshTaskNum:function () {
             window.top.topPage.ajax({
                 type: "post",
+                comet : true,
                 url: root + "/index/taskNum.html",
                 dataType: "json",
                 success: function (data) {
