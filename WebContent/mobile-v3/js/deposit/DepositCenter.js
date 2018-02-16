@@ -5,8 +5,8 @@ $(function () {
     copy();
     muiInit(muiDefaultOptions);
     //原生返回按钮不展示
-    if(isNative) {
-        $("#depositBack").hide();
+    if(!isNative) {
+        $("#depositBack").show();
     }
     //如果第一个元素不是比特币支付或数字货币支付则默认选中
     var $depositWay = $("#payList li>a:first");
