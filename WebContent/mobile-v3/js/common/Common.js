@@ -104,11 +104,15 @@ function muiInit(options) {
  * 页面重新适应行，键盘在输入框下面
  */
 function resizeKeyboard() {
-    window.addEventListener("resize", function() {
-        if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
-            document.activeElement.scrollIntoViewIfNeeded();
-        }
-    })
+    if (/Android/gi.test(navigator.userAgent)) {
+        window.addEventListener('resize', function () {
+            if (document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
+                window.setTimeout(function () {
+                    document.activeElement.scrollIntoViewIfNeeded();
+                }, 0);
+            }
+        })
+    }
 }
 
 /**
