@@ -96,8 +96,20 @@ function muiInit(options) {
     muiAjaxError();
     //绑定事件
     bindButtonEvent();
+    //键盘适应性
+    resizeKeyboard();
 }
 
+/**
+ * 页面重新适应行，键盘在输入框下面
+ */
+function resizeKeyboard() {
+    window.addEventListener("resize", function() {
+        if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
+            document.activeElement.scrollIntoViewIfNeeded();
+        }
+    })
+}
 
 /**
  * 默认纵向滚动配置
