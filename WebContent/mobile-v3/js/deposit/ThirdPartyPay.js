@@ -1,4 +1,11 @@
 $(function(){
+    window.addEventListener("resize", function() {
+        if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
+            window.setTimeout(function() {
+                document.activeElement.scrollIntoViewIfNeeded();
+            },0);
+        }
+    })
 });
 
 /**数字货币支付 切换币种*/
@@ -124,6 +131,7 @@ function sale(transactionNo){
         url : root + '/wallet/deposit/digiccy/sale.html?search.transactionNo=' + transactionNo,
         success: function (data) {
             $("#applySale").html(data);
+            muiScrollY(".gb-withdraw-box .mui-scroll-wrapper");
             $("#applySale").addClass("mui-active");
         },
         error: function () {

@@ -20,6 +20,18 @@ $(function () {
 });
 
 /**
+ * 注册条款
+ */
+function terms() {
+    var url = root + "/getRegisterRules.html";
+    if (isNative) {
+        nativeOpenWindow(url);
+    } else {
+        goToUrl(url);
+    }
+}
+
+/**
  * 性别
  */
 function sex() {
