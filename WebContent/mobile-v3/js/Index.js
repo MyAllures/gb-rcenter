@@ -17,6 +17,7 @@ $(function () {
     initNotice();
     //初始化api nav滑动
     swiper();
+    //图片懒加载
     lazyLoadApi = lazyLoadImg("body");
 });
 
@@ -26,6 +27,16 @@ $(function () {
 function slideHeight(obj, options) {
     var index = $(obj).data("swiper-slide-index");
     var targetSlide = $(".nav-slide-content .swiper-slide[data-swiper-slide-index=" + index + "]")[0];
+    setTimeout(function () {// 滑动循环最后一个有延迟，设个定时器抵消延迟的效果
+        $(".nav-slide-content>.swiper-wrapper").css({height: $(targetSlide).outerHeight()});
+    }, 100);
+}
+
+/**
+ * 滑动后重设高度
+ */
+function resizeSlideHeight() {
+    var targetSlide = $(".nav-slide-content .swiper-slide-active");
     setTimeout(function () {// 滑动循环最后一个有延迟，设个定时器抵消延迟的效果
         $(".nav-slide-content>.swiper-wrapper").css({height: $(targetSlide).outerHeight()});
     }, 100);
@@ -48,7 +59,8 @@ function swiper() {
         loopedSlides: 5,
         autoHeight: true,
         on: {
-            slideChange: function () {
+            slideChangeTransitionEnd: function () {
+
             }
         }
     });
@@ -61,9 +73,13 @@ function swiper() {
         on: {
             slideChangeTransitionEnd: function () {
                 //处理图片延迟加载
-                if ($(".nav-slide-content .swiper-slide-active").find("img[data-lazyload]").length > 0) {
+                if ($(".nav-slide-content .swiper-slide-active").find("img[data-lazyload]").length > 0 || $(".nav-slide-content .swiper-slide-active").find("img[data-lazyload-id]").length > 0) {
+                    if(!lazyLoadApi) {
+                       lazyLoadApi = lazyLoadImg("body");
+                    }
                     lazyLoadApi.refresh(true);
                 }
+                resizeSlideHeight();
             }
         }
     });
@@ -152,5 +168,6 @@ function changeNavGame(obj, options) {
     if ($(navTarget).find("img[data-lazyload]").length > 0) {
         lazyLoadApi.refresh(true);
     }
+    resizeSlideHeight();
     $(obj).unlock();
 }

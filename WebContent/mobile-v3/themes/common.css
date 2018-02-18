@@ -1231,7 +1231,9 @@ body.deposit {
   body.deposit header {
     background: #1766bb; }
   body.deposit .mui-content {
-    background: #f2f2f2; }
+    background: #f2f2f2;
+    bottom: 40px;
+    padding-bottom: 0; }
   body.deposit .m-t-sm {
     margin-top: 10px !important; }
   body.deposit li {

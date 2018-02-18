@@ -4,6 +4,10 @@ var depositMap = {};
 $(function () {
     copy();
     muiInit(muiDefaultOptions);
+    //原生返回按钮不展示
+    if(!isNative) {
+        $("#depositBack").show();
+    }
     //如果第一个元素不是比特币支付或数字货币支付则默认选中
     var $depositWay = $("#payList li>a:first");
     if ($depositWay) {
@@ -13,6 +17,19 @@ $(function () {
         }
     }
 });
+/**
+ * 跳转快充
+ * @param obj
+ * @param options
+ */
+function fastRecharge(obj, options) {
+    var url = options.url;
+    if (isNative) {
+        nativeOpenWindow(url, '1');
+    } else {
+        goToUrl(url, true);
+    }
+}
 
 /**加载存款金额输入框*/
 function amountInput(obj, options) {
