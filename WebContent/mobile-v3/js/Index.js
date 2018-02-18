@@ -33,6 +33,16 @@ function slideHeight(obj, options) {
 }
 
 /**
+ * 滑动后重设高度
+ */
+function resizeSlideHeight() {
+    var targetSlide = $(".nav-slide-content .swiper-slide-active");
+    setTimeout(function () {// 滑动循环最后一个有延迟，设个定时器抵消延迟的效果
+        $(".nav-slide-content>.swiper-wrapper").css({height: $(targetSlide).outerHeight()});
+    }, 100);
+}
+
+/**
  * 关闭下载提示
  */
 function closeDownLoad() {
@@ -49,7 +59,8 @@ function swiper() {
         loopedSlides: 5,
         autoHeight: true,
         on: {
-            slideChange: function () {
+            slideChangeTransitionEnd: function () {
+
             }
         }
     });
@@ -68,6 +79,7 @@ function swiper() {
                     }
                     lazyLoadApi.refresh(true);
                 }
+                resizeSlideHeight();
             }
         }
     });
@@ -156,5 +168,6 @@ function changeNavGame(obj, options) {
     if ($(navTarget).find("img[data-lazyload]").length > 0) {
         lazyLoadApi.refresh(true);
     }
+    resizeSlideHeight();
     $(obj).unlock();
 }
