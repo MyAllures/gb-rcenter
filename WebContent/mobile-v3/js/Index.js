@@ -15,10 +15,10 @@ $(function () {
     //默认打开弹窗消息
     initDialog();
     initNotice();
-    //图片懒加载
-    lazyLoadApi = lazyLoadImg("body");
     //初始化api nav滑动
     swiper();
+    //图片懒加载
+    lazyLoadApi = lazyLoadImg("body");
 });
 
 /**
@@ -62,7 +62,10 @@ function swiper() {
         on: {
             slideChangeTransitionEnd: function () {
                 //处理图片延迟加载
-                if ($(".nav-slide-content .swiper-slide-active").find("img[data-lazyload]").length > 0) {
+                if ($(".nav-slide-content .swiper-slide-active").find("img[data-lazyload]").length > 0 || $(".nav-slide-content .swiper-slide-active").find("img[data-lazyload-id]").length > 0) {
+                    if(!lazyLoadApi) {
+                       lazyLoadApi = lazyLoadImg("body");
+                    }
                     lazyLoadApi.refresh(true);
                 }
             }
