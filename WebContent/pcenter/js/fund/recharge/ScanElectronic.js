@@ -36,7 +36,14 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
              */
             $(this.formSelector).on("input", "input[name=rechargeAmount]", function () {
                 $(_this.formSelector + " span.fee").hide();
-
+                var rechargeAmount = $("input[name=rechargeAmount]").val();
+                var $account = $("input[name=account]:checked");
+                var isRandomAmount = $account.attr("randomAmount");
+                if (isRandomAmount == 'true') {
+                    var rechargeDecimals = $("input[name=rechargeDecimals]").val();
+                    rechargeAmount = rechargeAmount + "." + rechargeDecimals;
+                }
+                $(_this.formSelector + " input[name='result.rechargeAmount']").val(rechargeAmount);
             });
         },
         changeAccount: function (obj) {
@@ -47,7 +54,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             $(obj).addClass("select");
             //存款金额范围提示
             var amountLimit = $target.attr("amountLimit");
-            $("input[name='result.rechargeAmount']").attr("placeholder", amountLimit);
+            $("input[name='rechargeAmount']").attr("placeholder", amountLimit);
             //随机额度
             var isRandomAmount = $target.attr("randomAmount");
             if (isRandomAmount == 'true') {
@@ -81,14 +88,16 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 $("#step").text(2);
                 $("[name=scanElement]").show();
             }
+            this.changeAmountMsg();
         },
         /**
          * 更新存款金额的远程验证提示消息
          */
-        changeAmountMsg: function (min, max) {
+        changeAmountMsg: function () {
             var $target = $(this.formSelector + " label.bank.select");
-            var max = $target.find("input.onlinePayMax").val();
-            var min = $target.find("input.onlinePayMin").val();
+            var $account = $target.find("input[name=account]");
+            var max = $account.attr("payMax");
+            var min = $account.attr("payMin");
             if (!min || min == 0) {
                 min = '0.01';
             }
@@ -109,6 +118,11 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             }
             this.extendValidateMessage({"result.rechargeAmount": {remote: msg}});
             this.extendValidateMessage({"result.rechargeAmount": {max: msg}});
+            var ele = $(this.formSelector).find("input[name='result.rechargeAmount']");
+            $.data(ele[0], "previousValue", null);
+            if ($(ele).val()) {
+                ele.valid();
+            }
         },
         /**
          * 更改存款规则-更改存款金额的remote规则
@@ -201,15 +215,43 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          * @param options
          */
         submit: function (e, options) {
+            var $account = $("input[name=account]:checked");
+            var isThird = $account.attr("isThird");
+            var _window;
+            if (isThird != 'true') {
+                _window = window.open("", '_blank');
+                _window.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
+            }
             window.top.topPage.ajax({
                 url: root + "/fund/recharge/ScanElectronic/submit.html",
                 data: this.getCurrentFormData(e),
                 dataType: 'json',
                 success: function (data) {
-                    if (data.state == false) {
-
-                    } else {
-
+                    var state = data.state;
+                    if (state == false) {
+                        if (_window) {
+                            _window.close();
+                        }
+                    } else if (state == true) {
+                        if (data.isThird) {
+                            $("#confirmRechargeAmount").text(data.rechargeAmount);
+                            $("#confirmFee").text(data.fee);
+                            $("#confirmRechargeTotal").text(data.rechargeTotal);
+                            $("#ElectronicDialog").show();
+                        } else {
+                            var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
+                            window.top.onlineFailMsg = msg;
+                            var btnOption = option;
+                            btnOption.text = window.top.message.fund_auto['等待支付'];
+                            btnOption.target = url;
+                            btnOption.callback = "back";
+                            window.top.topPage.doDialog(e, btnOption);
+                        }
+                    }
+                },
+                error: function () {
+                    if (_window) {
+                        _window.close();
                     }
                 }
             })
