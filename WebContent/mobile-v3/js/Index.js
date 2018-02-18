@@ -15,9 +15,10 @@ $(function () {
     //默认打开弹窗消息
     initDialog();
     initNotice();
+    //图片懒加载
+    lazyLoadApi = lazyLoadImg("body");
     //初始化api nav滑动
     swiper();
-    lazyLoadApi = lazyLoadImg("body");
 });
 
 /**
