@@ -55,6 +55,10 @@ function confirmDeposit(obj, payType) {
     if (!$form || !$form.valid()) {
         return false;
     }
+    var activityId = $("input[name=activityId][type=radio]:checked").val();
+    if (activityId) {
+        $form.find("input[name=activityId]").val(activityId);
+    }
     var options = {
         url: root + href,
         data: $form.serialize(),
