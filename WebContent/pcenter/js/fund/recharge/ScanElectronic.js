@@ -228,31 +228,42 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 dataType: 'json',
                 success: function (data) {
                     var state = data.state;
-                    if (state == false) {
-                        if (_window) {
-                            _window.close();
-                        }
-                    } else if (state == true) {
-                        if (data.isThird) {
-                            $("#confirmRechargeAmount").text(data.rechargeAmount);
-                            $("#confirmFee").text(data.fee);
-                            $("#confirmRechargeTotal").text(data.rechargeTotal);
-                            $("#ElectronicDialog").show();
-                        } else {
-                            var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
-                            window.top.onlineFailMsg = msg;
-                            var btnOption = option;
-                            btnOption.text = window.top.message.fund_auto['等待支付'];
-                            btnOption.target = url;
-                            btnOption.callback = "back";
-                            window.top.topPage.doDialog(e, btnOption);
-                        }
+                    if (state == false && _window) {
+                        _window.close();
+                    }
+                    var msg = data.msg;
+                    if (state == true && data.isThird == true) {
+                        $("#confirmRechargeAmount").text(data.rechargeAmount);
+                        $("#confirmFee").text(data.fee);
+                        $("#confirmRechargeTotal").text(data.rechargeTotal);
+                        $("#ElectronicDialog").show();
+                    } else if (data.isThird != true) {
+                        var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
+                        window.top.onlineFailMsg = msg;
+                        var btnOption = option;
+                        btnOption.text = window.top.message.fund_auto['等待支付'];
+                        btnOption.target = url;
+                        btnOption.callback = "back";
+                        window.top.topPage.doDialog(e, btnOption);
                     }
                 },
                 error: function () {
                     if (_window) {
                         _window.close();
                     }
+                }
+            })
+        },
+        electronicSubmit: function (e, options) {
+            var $account = $("input[name=account]:checked");
+            var isThird = $account.attr("isThird");
+            window.top.topPage.ajax({
+                url: root + "/fund/recharge/company/electronicPaySubmit.html",
+                data: this.getCurrentFormData(e),
+                dataType: 'html',
+                type: 'POST',
+                success: function (data) {
+
                 }
             })
         }
