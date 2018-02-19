@@ -55,10 +55,6 @@ function confirmDeposit(obj, payType) {
     if (!$form || !$form.valid()) {
         return false;
     }
-    var activityId = $("input[name=activityId][type=radio]:checked").val();
-    if (activityId) {
-        $form.find("input[name=activityId]").val(activityId);
-    }
     var options = {
         url: root + href,
         data: $form.serialize(),
@@ -161,7 +157,10 @@ function onlinePaySubmit(depositChannel) {
             newWindow.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/oval.svg'></div>");
         }
     }
-
+    var activityId = $("input[name=activityId][type=radio]:checked").val();
+    if (activityId) {
+        $form.find("input[name=activityId]").val(activityId);
+    }
     var options = {
         url: url,
         dataType: 'json',

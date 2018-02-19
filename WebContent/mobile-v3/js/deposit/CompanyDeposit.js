@@ -187,7 +187,10 @@ function companyDepositSubmit(depositChannel) {
     if (!$form || !$form.valid()) {
         return false;
     }
-
+    var activityId = $("input[name=activityId][type=radio]:checked").val();
+    if (activityId) {
+        $form.find("input[name=activityId]").val(activityId);
+    }
     var optiolns = {
         url: root + url,
         data: $form.serialize(),
