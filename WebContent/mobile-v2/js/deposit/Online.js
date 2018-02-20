@@ -144,17 +144,20 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                 var bankPick = new mui.PopPicker();
                 var bankList = document.getElementById('bankJson').value;
                 bankPick.setData(JSON.parse(bankList));
-
                 var selectBank = document.getElementById('selectBank');
+                var siteCurrencySign = document.getElementById('siteCurrencySign').value ;
                 selectBank.addEventListener('tap', function (event) {
                     $("input[name='result.rechargeAmount']").blur();
                     bankPick.show(function (items) {
                         var item = items[0];
+                        var min = isNaN(item.min) ? 0.01 : item.min ;
+                        var max = isNaN(item.max) ? 99999999 : item.max;
                         document.getElementById('result.payerBank').value = item.value;
                         document.getElementById('selectText').innerHTML = item.text;
-                        document.getElementById('onlinePayMin').value = item.min;
-                        document.getElementById('onlinePayMax').value = item.max;
+                        document.getElementById('onlinePayMin').value = min;
+                        document.getElementById('onlinePayMax').value = max;
                         document.getElementsByName('account').value = item.account;
+                        document.getElementById('result.rechargeAmount').setAttribute("placeholder",""+siteCurrencySign+Number(min).toFixed(2)+"~"+siteCurrencySign+Number(max).toFixed(2));
                     });
                 }, false);
             }
@@ -262,7 +265,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
             }
             mui.ajax(root + '/wallet/deposit/online/deposit.html', {
                 dataType: 'json',
-                data: data,
+                data: data ,
                 type: 'post',
                 async: false,
                 success: function (data) {

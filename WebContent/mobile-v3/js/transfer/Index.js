@@ -2,24 +2,61 @@
  * Created by fei on 16-10-15.
  */
 
-mui.init({});
-
-//主体内容滚动条
-mui('.mui-scroll-wrapper').scroll();
-//切换页面
-mui("body").on("tap", "[data-href]", function () {
-    var _href = $(this).data('href');
-    gotoUrl(_href);
+$(function () {
+    //主体内容滚动条
+    muiInit(muiDefaultOptions);
+    //初始化转入转出的api
+    initApi();
 });
 
-resetScreen();
-$(window).bind( 'orientationchange', function(e){
-    resetScreen();
-});
+/**
+ * 初始化转入/转出下拉对象
+ */
+function initApi() {
+    var options = {
+        url: root + '/transfer/queryApis.html',
+        dataType: 'json',
+        type: 'post',
+        async: true,
+        success: function (data) {
+            //普通示例
+            $("a.turn").each(function () {
+                var _this = this;
+                var transferPicker = new mui.PopPicker();
+                transferPicker.setData(data);
+                this.addEventListener('tap', function (event) {
+                    transferPicker.show(function (items) {
+                        var text = items[0].text;
+                        var value = items[0].value;
 
-mui.back = function(){
-    gotoUrl("/mine/index.html");
-};
+                        var toggleId = _this.dataset.value;
+                        var toggleObj = document.getElementById(toggleId);
+                        var toggleInput = toggleObj.children[1];
+
+                        //另外一个已是 我的钱包
+                        if (toggleInput.defaultValue == 'wallet') {
+                            if (value == 'wallet') {
+                                toggleInput.defaultValue = '';
+                                toggleObj.children[0].innerHTML = window.top.message.transfer_auto['请选择'];
+                            }
+                        } else {
+                            //另外一个不是 我的钱包
+                            if (value != 'wallet') {
+                                toggleInput.defaultValue = 'wallet';
+                                toggleObj.children[0].innerHTML = window.top.message.transfer_auto['我的钱包'];
+                            }
+                        }
+                        _this.children[0].innerHTML = text;
+                        _this.children[1].defaultValue = value;
+                        changeMsg();
+                        amountValid();
+                    });
+                }, false);
+            });
+        }
+    };
+    muiAjax(options);
+}
 
 /**
  * 变换提示消息
@@ -60,9 +97,9 @@ function refreshApi(apiId, type) {
     if (type) {
         url = url + "&type=" + type;
     }
-    mui.ajax(url, {
-        timeout: 10000,
-        dataType: "json",
+
+    var options = {
+        url: url,
         success: function (data) {
             var apiId = data.apiId;
             var apiMoney = data.apiMoney;
@@ -77,18 +114,17 @@ function refreshApi(apiId, type) {
 
             //玩家余额
             var player = data.player;
-            if(player.walletBalance) {
+            if (player.walletBalance) {
                 $("#walletBalance").text(player.currencySign + player.walletBalance);
             }
-            if(player.freezingBalance) {
+            if (player.freezingBalance) {
                 $("#freezingBalance").text(player.currencySign + player.freezingBalance);
             } else {
                 $("#freezingBalance").text(player.currencySign + '0.00');
             }
             $(refreshApi).removeClass("gb-spin");
             if (!type) {
-                // toast(window.top.message.transfer_auto['刷新成功']);
-                toast("mobile-v3刷新成功");
+                toast(window.top.message.transfer_auto['刷新成功']);
             }
         },
         error: function (e) {
@@ -96,16 +132,19 @@ function refreshApi(apiId, type) {
             mui("#refreshContainer").pullRefresh().endPullupToRefresh();
             toast(window.top.message.transfer_auto['暂无更多数据']);
         }
-    });
+    };
+    muiAjax(options);
 }
 
 /**
  * 刷新所有api余额
  */
 function refreshAllApiBalance() {
-    $("#refreshAllApiBalance").attr("disabled","disabled");
-    mui.ajax(root + "/transfer/refreshAllApiBalance.html", {
-        type:'post',
+    $("#refreshAllApiBalance").attr("disabled", "disabled");
+
+    var options = {
+        url: root + "/transfer/refreshAllApiBalance.html",
+        type: 'post',
         dataType: 'text/html',
         success: function (data) {
             $("#apiBalance").html(data);
@@ -117,18 +156,17 @@ function refreshAllApiBalance() {
             mui("#refreshContainer").pullRefresh().endPullupToRefresh();
             toast(window.top.message.transfer_auto['刷新游戏余额失败']);
         }
-    });
+    };
+    muiAjax(options);
 }
-
-mui("body").on('tap', '#refreshAllApiBalance', function () {
-    refreshAllApiBalance();
-});
 
 /**
  * 重新初始化转账form表单
  */
 function initTransfer() {
-    mui.ajax(root + '/transfer/transferBack.html', {
+
+    var options = {
+        url: root + '/transfer/transferBack.html',
         dataType: 'json',
         type: 'post',
         async: true,
@@ -141,10 +179,9 @@ function initTransfer() {
             $transferInto.children("span").text($transferInto.attr("default"));
             $("input[name='result.transferAmount']").val("");
             $("[name='gb.token']").val(data.token);
-            /*changeMsg();
-             amountValid();*/
         }
-    });
+    };
+    muiAjax(options);
 }
 
 /**
@@ -154,7 +191,7 @@ function successBack(data) {
     var apiId = data.apiId;
     var type = true;
     var os = whatOs();
-    if(os == 'app_android')
+    if (os == 'app_android')
         window.gamebox.refreshApiBalance(apiId);
     refreshApi(apiId, type);
     initTransfer();
@@ -164,25 +201,23 @@ function successBack(data) {
  * 再试一次
  */
 function reconnectAgain(orderId) {
-    mui.ajax(root + '/transfer/reconnectTransfer.html?search.transactionNo=' + orderId, {
+    var options = {
+        url: root + '/transfer/reconnectTransfer.html?search.transactionNo=' + orderId,
         dataType: 'json',
         type: 'post',
         async: true,
         success: function (data) {
             transferBack(data);
-        },
-        error: function (xhr, type, errorThrown) {
-            //异常处理；
-            console.log(type);
         }
-    });
+    };
+    muiAjax(options);
 }
 
 /**
  * 转账回调
  */
 function transferBack(data) {
-    if (!data){
+    if (!data) {
         toast(window.top.message.transfer_auto["转账异常"]);
         initTransfer();
     } else if (data.state == true && data.result == 0) {
@@ -190,9 +225,9 @@ function transferBack(data) {
         layer.open({
             title: window.top.message.transfer_auto['转账成功'],
             content: window.top.message.transfer_auto['转账成功2'],
-            btn: [window.top.message.transfer_auto['好的'],''],
-            shadeClose:false,
-            yes: function(index) {
+            btn: [window.top.message.transfer_auto['好的'], ''],
+            shadeClose: false,
+            yes: function (index) {
                 successBack(data);
                 getSiteApi();
                 layer.close(index);
@@ -203,9 +238,9 @@ function transferBack(data) {
         layer.open({
             title: window.top.message.transfer_auto['转账失败'],
             content: window.top.message.transfer_auto['转账已失败'],
-            btn: [window.top.message.transfer_auto['确定'],''],
-            shadeClose:false,
-            yes: function(index) {
+            btn: [window.top.message.transfer_auto['确定'], ''],
+            shadeClose: false,
+            yes: function (index) {
                 successBack(data);
                 getSiteApi();
                 layer.close(index);
@@ -218,12 +253,12 @@ function transferBack(data) {
             title: window.top.message.transfer_auto['转账超时'],
             content: window.top.message.transfer_auto['订单已超时'],
             btn: btnArray,
-            shadeClose:false,
-            yes: function(index) {
+            shadeClose: false,
+            yes: function (index) {
                 successBack(data);
                 layer.close(index);
             },
-            no: function(index) {
+            no: function (index) {
                 reconnectAgain(orderId);
                 layer.close(index);
             }
@@ -234,10 +269,12 @@ function transferBack(data) {
     }
 }
 
+
 /**
  * 提交转账
  */
-mui("#mui-content-padded").on("tap", "#transfersMoney", function () {
+function submitTransactionMoney() {
+    toast("提交");
     var $form = $('#transferForm');
     var $this = $(this);
 
@@ -245,101 +282,25 @@ mui("#mui-content-padded").on("tap", "#transfersMoney", function () {
         return false;
     }
 
-    mui.ajax(root + '/transfer/transfersMoney.html', {
-        dataType: 'json',
+    var options = {
+        url: root + '/transfer/transfersMoney.html',
         data: $form.serialize(),
-        type: 'post',
-        async: true,
-        beforeSend:function(){
+        beforeSend: function () {
             $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
         },
         success: function (data) {
             transferBack(data);
             $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
-        },
-        error: function (xhr, type, errorThrown) {
-            $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
         }
-    });
-});
+    };
+    muiAjax(options)
+}
 
-(function (mui, doc) {
-    mui.init();
-    mui.ready(function () {
-        /**
-         * 初始化转入/转出下拉对象
-         */
-        mui.ajax(root + '/transfer/queryApis.html', {
-            dataType: 'json',
-            type: 'post',
-            async: true,
-            success: function (data) {
-                //普通示例
-                $("a.turn").each(function (obj) {
-                    var _this = this;
-                    var transferPicker = new mui.PopPicker();
-                    transferPicker.setData(data);
-                    if (this != null) {
-                        this.addEventListener('tap', function (event) {
-                            transferPicker.show(function (items) {
-                                var text = items[0].text;
-                                var value = items[0].value;
-
-                                var toggleId = _this.dataset.value;
-                                var toggleObj = document.getElementById(toggleId);
-                                var toggleInput = toggleObj.children[1];
-
-                                //另外一个已是 我的钱包
-                                if (toggleInput.defaultValue == 'wallet') {
-                                    if (value == 'wallet') {
-                                        toggleInput.defaultValue = '';
-                                        toggleObj.children[0].innerHTML = window.top.message.transfer_auto['请选择'];
-                                    }
-                                } else {
-                                    //另外一个不是 我的钱包
-                                    if (value != 'wallet') {
-                                        toggleInput.defaultValue = 'wallet';
-                                        toggleObj.children[0].innerHTML = window.top.message.transfer_auto['我的钱包'];
-                                    }
-                                }
-                                _this.children[0].innerHTML = text;
-                                _this.children[1].defaultValue = value;
-                                changeMsg();
-                                amountValid();
-                            });
-                        }, false);
-                    }
-                });
-            },
-            error: function (xhr, type, errorThrown) {
-                //异常处理；
-                console.log(type);
-            }
-        });
-
-    });
-})(mui, document);
 
 /**
  * 刷新单个api余额
  */
-mui("body").on('tap', '._refresh_api', function () {
-    var apiId = $(this).attr("data-value");
+function freshApi(obj, options) {
+    var apiId = options.dataApiId;
     refreshApi(apiId);
-});
-
-function gotoUrl(_href) {
-    mui.openWindow({
-        url: _href,
-        id: _href,
-        extras: {},
-        createNew: false,
-        show: {
-            autoShow: true
-        },
-        waiting: {
-            autoShow: true,
-            title: window.top.message.transfer_auto['正在加载']
-        }
-    })
 }

@@ -239,10 +239,6 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                     location.reload(true);
                 }
             }
-            //如果有设置任务管理对象，调用刷新任务条数
-            if (_this.taskManager && _this.taskManager.refreshTaskNum) {
-                taskManager.refreshTaskNum();
-            }
         },
         /**
          * 自动绑定Button标签的所有按钮事件
@@ -716,10 +712,6 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                         }
                     } catch (ex) {
 
-                    }
-                    //如果有设置任务管理对象，调用刷新任务条数
-                    if (_this.taskManager && _this.taskManager.refreshTaskNum) {
-                        taskManager.refreshTaskNum();
                     }
                     _this._callbackDialog(e, btnOption)
                 }
