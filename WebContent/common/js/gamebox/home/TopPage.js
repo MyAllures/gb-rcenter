@@ -79,12 +79,11 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                         _this.showErrorMessage(state + ":" + settings.url);
                         //window.top.location.href = window.top.root + "/errors/" + state + ".html";
                     }
-                }
-                else if (!settings.error && state != 200 && state != 0) {
+                } else if (!settings.error && state != 200 && state != 0) {
                     if (settings.comet == true) {
-                        _this.showErrorMessage(settings.url + "\r\n" + window.top.message.common["online.message.error"], undefined, true);
+                        // _this.showErrorMessage(settings.url + "\r\n" + window.top.message.common["online.message.error"], undefined, true);
                     } else {
-                        _this.showErrorMessage(settings.url + "\r\n" + (xhr.responseText || state), undefined, true);
+                        _this.showErrorMessage(settings.url + "<br>" + (xhr.responseText || state), undefined, true);
                     }
                     if (settings.eventTarget) {
                         $(settings.eventTarget).unlock();
@@ -400,7 +399,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                     var _this = BootstrapDialog.dialogs[this.id];
                     window.setTimeout(function () {
                         _this.close();
-                    }, 2000)
+                    }, 4000)
                 };
             }
             BootstrapDialog.show(option);

@@ -10154,7 +10154,7 @@ UE.plugins['defaultfilter'] = function () {
                         break;
                     case 'img':
                         if (val = node.getAttr('_src')) {
-                            if(node.getAttr('_src').substr(0,4)!="http") {
+                            if(val.substr(0,4) != "http" && val.substr(0,8) != "/fserver") {
                                 node.setAttr('onload', "this.src=window.top.imgRoot+'/files/" + node.getAttr('_src') + "'");
                             }
                         }
