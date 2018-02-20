@@ -61,8 +61,16 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
                 }else if (!/^[0-9]*$/.test(rechargeAmount.val())) {
                     $btn.attr("category","notThrough");
                 }else{
-                    var min = Number($("#onlinePayMin").val());
-                    var max = Number($("#onlinePayMax").val());
+                    var onlineMin = $("#onlinePayMin").val();
+                    if(isNaN(onlineMin)) {
+                        onlineMin = onlineMin.replace(",","");
+                    }
+                    var min = Number(onlineMin);
+                    var onlinePayMax = $("#onlinePayMax").val();
+                    if(isNaN(onlinePayMax)) {
+                        onlinePayMax = onlinePayMax.replace(",","");
+                    }
+                    var max = Number(onlinePayMax);
                     var amount = Number(rechargeAmount.val()) + Number($("input[name='result.randomCash']").val())/100;
                     if(/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/.test(amount.toFixed(2))) {
                         if (amount >= min && amount <= max) {
