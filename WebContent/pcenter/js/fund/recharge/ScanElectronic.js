@@ -18,6 +18,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         onPageLoad: function () {
             this._super();
+            this.changeSale();
         },
         /**
          * 当前对象事件初始化函数
@@ -44,6 +45,8 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     rechargeAmount = rechargeAmount + "." + rechargeDecimals;
                 }
                 $(_this.formSelector + " input[name='result.rechargeAmount']").val(rechargeAmount);
+                $(_this.formSelector + " span.fee").hide();
+                _this.changeAmountMsg();
             });
         },
         changeAccount: function (obj) {
@@ -158,9 +161,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                         if (data.responseText == "true") {
                             var rechargeAmount = $("[name='result.rechargeAmount']").val();
                             var rechargeType = $("[name='result.rechargeType']").val();
-                            if (!rechargeType) {
-                                rechargeType = 'online_deposit';
-                            }
                             window.top.topPage.ajax({
                                 url: root + '/fund/recharge/ScanElectronic/counterFee.html',
                                 data: {"result.rechargeAmount": rechargeAmount, "type": rechargeType},
@@ -212,9 +212,9 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         /**
          * 立即存款
          * @param e
-         * @param options
+         * @param option
          */
-        submit: function (e, options) {
+        submit: function (e, option) {
             var $account = $("input[name=account]:checked");
             var isThird = $account.attr("isThird");
             var _window;
@@ -226,6 +226,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 url: root + "/fund/recharge/ScanElectronic/submit.html",
                 data: this.getCurrentFormData(e),
                 dataType: 'json',
+                type: 'POST',
                 success: function (data) {
                     var state = data.state;
                     if (state == false && _window) {
@@ -234,10 +235,25 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     var msg = data.msg;
                     if (state == true && data.isThird == true) {
                         $("#confirmRechargeAmount").text(data.rechargeAmount);
-                        $("#confirmFee").text(data.fee);
+                        $("#confirmFee").text(data.formatFee);
+                        if (data.fee > 0) {
+                            $("#confirmFee").addClass("green m-l");
+                            $("#confirmFee").removeClass("red");
+                        } else {
+                            $("#confirmFee").addClass("red");
+                            $("#confirmFee").removeClass("green m-l");
+                        }
                         $("#confirmRechargeTotal").text(data.rechargeTotal);
-                        $("#ElectronicDialog").show();
+                        $("#electronicDialog").show();
+                        $("#backdrop").show();
+                    } else if (state == false && data.isThird == true) {
+                        $("#backdrop").show();
+                        $("#electronicFailDialog").show();
                     } else if (data.isThird != true) {
+                        if (state == true) {
+                            window.top.onlineTransactionNo = data.transactionNo;
+                            _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
+                        }
                         var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
                         window.top.onlineFailMsg = msg;
                         var btnOption = option;
@@ -246,26 +262,98 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                         btnOption.callback = "back";
                         window.top.topPage.doDialog(e, btnOption);
                     }
-                },
-                error: function () {
-                    if (_window) {
-                        _window.close();
+                    $(e.currentTarget).unlock();
+                }
+            })
+        },
+        back: function (e, option) {
+            if (e.returnValue == true) {
+                var $select = $(".sidebar-nav .select", window.top.document);
+                $select.removeClass("select");
+                var $current = $(".sidebar-nav a[data^='/fund/transaction/list.html']", window.top.document);
+                $current.parent().addClass("select");
+                $current.click();
+            } else {
+                var $current = $(".sidebar-nav a[data^='/fund/playerRecharge/recharge.html']", window.top.document);
+                $current.parent().addClass("select");
+                var hash = window.top.location.hash;
+                if (hash.startsWith("#")) {
+                    hash = hash.substring(1, hash.length);
+                }
+                $("#mainFrame").load(root + hash);
+            }
+        },
+        /**
+         * 电子支付确认提交
+         * @param e
+         * @param option
+         */
+        electronicSubmit: function (e, option) {
+            var $account = $("input[name=account]:checked");
+            var isThird = $account.attr("isThird");
+            var _this = this;
+            window.top.topPage.ajax({
+                url: root + "/fund/recharge/ScanElectronic/electronicSubmit.html",
+                data: this.getCurrentFormData(e),
+                dataType: 'json',
+                type: "post",
+                success: function (data) {
+                    _this.closeElectronicDialog(e, option);
+                    $("#backdrop").show();
+                    if (data.state == true) {
+                        $("#electronicSuccessDialog").show();
+                    } else {
+                        $("#electronicFailDialog").show();
+                    }
+                    $(e.currentTarget).unlock();
+                }
+            })
+        },
+        /**
+         * 更换优惠
+         */
+        changeSale: function () {
+            var amount = $("input[name='result.rechargeAmount']").val();
+            var rechargeType = $("[name='result.rechargeType']").val();
+            var url = root + "/fund/recharge/online/changeScanType.html?rechargeType=" + rechargeType;
+            if (amount) {
+                url = url + "&amount=" + amount;
+            }
+            window.top.topPage.ajax({
+                url: url,
+                dataType: 'json',
+                success: function (data) {
+                    if (data && data.length > 0) {
+                        var len = data.length;
+                        var html = $("#rechargeSale").render({
+                            sales: data,
+                            len: len,
+                            isChecked: data[0].preferential
+                        });
+                        $("div#applysale").html(html);
+                    } else {
+                        $("div#applysale").find("input[type=radio]").attr("disabled", true);
+                        $("input[name=activityId]:eq('')").attr("checked", 'checked');
                     }
                 }
             })
         },
-        electronicSubmit: function (e, options) {
-            var $account = $("input[name=account]:checked");
-            var isThird = $account.attr("isThird");
-            window.top.topPage.ajax({
-                url: root + "/fund/recharge/company/electronicPaySubmit.html",
-                data: this.getCurrentFormData(e),
-                dataType: 'html',
-                type: 'POST',
-                success: function (data) {
-
-                }
-            })
+        /**
+         * 关闭弹窗
+         */
+        closeElectronicDialog: function (e, option) {
+            $("#electronicDialog").hide();
+            $("#backdrop").hide();
+            $(e.currentTarget).unlock();
+        },
+        /**
+         * 查看资金记录
+         * @param e
+         * @param option
+         */
+        viewRecharge: function (e, option) {
+            e.returnValue = true;
+            this.back(e, option);
         }
     });
 });
