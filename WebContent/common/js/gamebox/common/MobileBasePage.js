@@ -491,6 +491,7 @@ define(['moment'], function (moment) {
                     },
                     success: function (data) {
                         var info = document.getElementById(contentId);
+                        scrollView.pullRefresh().enablePullupToRefresh();
                         if (isReload) {
                             info.innerHTML = data;
                             scrollView.pullRefresh().endPullupToRefresh(false);
@@ -499,20 +500,21 @@ define(['moment'], function (moment) {
                         }
                         if (document.getElementById(lastPageNumberId).value == pagenumber) {
                             scrollView.pullRefresh().endPullupToRefresh(true);
-                            // return pagenumber;
+                            // return pagenumber;/
                         } else {
                             scrollView.pullRefresh().endPullupToRefresh(false);
                             // return pagenumber+1;
                         }
-                        t.dismissProgress();
+                       // t.dismissProgress();
                     },
                     error: function (e) {
                         t.toast("加载失败");
+                        scrollView.pullRefresh().enablePullupToRefresh();
                         scrollView.pullRefresh().endPullupToRefresh(true);
                         //异常处理；
                         console.log(e);
-                        t.dismissProgress();
-                    },
+                        //t.dismissProgress();
+                    }
                 });
                 return pagenumber + 1;
             } else {
@@ -525,8 +527,8 @@ define(['moment'], function (moment) {
                 window.gamebox.showPro();
         },
         dismissProgress: function () {
-            if (this.os == 'app_android')
-                window.gamebox.disPro();
+          /*  if (this.os == 'app_android')
+                window.gamebox.disPro();*/
         },
         /**
          * 日期快选
