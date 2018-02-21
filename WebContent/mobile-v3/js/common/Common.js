@@ -463,6 +463,11 @@ function showConfirmMsg(options, obj) {
             if (func) {
                 applyFunction(func, options, obj);
             }
+        } else if(e.index == 1) {
+            var func = options.cancelFunc;
+            if(func) {
+                applyFunction(func, options, obj);
+            }
         }
     })
 }
