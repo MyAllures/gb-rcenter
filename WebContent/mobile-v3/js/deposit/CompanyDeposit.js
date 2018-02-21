@@ -102,6 +102,7 @@ function depositDiscount(obj, options) {
                     '<div class="close" data-rel={"opType":"function","target":"closeProWindow"}></div></div></div>';
                 $("boby").append(html);
                 $("#successMasker").attr("style", "display: block;");
+                $(".gb-withdraw-box.window-ok").show();
             } else { //无优惠
                 companyDepositSubmit($("input[name='depositChannel']").val());
             }
@@ -187,7 +188,10 @@ function companyDepositSubmit(depositChannel) {
     if (!$form || !$form.valid()) {
         return false;
     }
-
+    var activityId = $("input[name=activityId][type=radio]:checked").val();
+    if (activityId) {
+        $form.find("input[name=activityId]").val(activityId);
+    }
     var optiolns = {
         url: root + url,
         data: $form.serialize(),
