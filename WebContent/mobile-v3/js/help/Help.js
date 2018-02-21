@@ -22,7 +22,7 @@ function chooseQuestion(obj,options) {
         $(".fqa dd").hide();
         var $table = $(this).next().find("table");
         if($table.size()>0){
-            setTimeout(_this.tableScroll($table),1000);
+            setTimeout(tableScroll($table),1000);
         }
         $next.show();
 
@@ -34,6 +34,24 @@ function chooseQuestion(obj,options) {
         $(".fqa dd").hide();
     }
 
+}
+
+function tableScroll(value) {
+
+        var $table = $(value).parent().find("table");
+        for (var i = 0; i <= $table.size(); i++) {
+            if (!($($table.get(i)).parent().attr("class") == 'mui-scroll')) {
+                //给表格添加横向滚动
+                $($table.get(i)).wrap("<div class=' mui-scroll-wrapper scroll2 mui-slider-indicator mui-segmented-control " +
+                    "mui-segmented-control-inverted'> " +
+                    "<div class='mui-scroll'></div></div>");
+                mui(".scroll2").scroll();
+
+                var scrollHeight = $($table.get(i)).height();
+                $($table.get(i)).parent().parent().css("height", scrollHeight + 2 + "px");
+            }
+        }
+    
 }
 
 
