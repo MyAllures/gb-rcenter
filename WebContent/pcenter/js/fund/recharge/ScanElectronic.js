@@ -1,7 +1,7 @@
 /**
- * 线上支付
+ * 第三方支付、电子支付
  */
-define(['common/BaseEditPage'], function (BaseEditPage) {
+define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
     return BaseEditPage.extend({
         realName: null,
         /**
@@ -244,11 +244,11 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                             $("#confirmFee").removeClass("green m-l");
                         }
                         $("#confirmRechargeTotal").text(data.rechargeTotal);
-                        $("#electronicDialog").show();
+                        $("#confirmDialog").show();
                         $("#backdrop").show();
                     } else if (state == false && data.isThird == true) {
                         $("#backdrop").show();
-                        $("#electronicFailDialog").show();
+                        $("#failDialog").show();
                     } else if (data.isThird != true) {
                         if (state == true) {
                             window.top.onlineTransactionNo = data.transactionNo;
@@ -266,29 +266,12 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 }
             })
         },
-        back: function (e, option) {
-            if (e.returnValue == true) {
-                var $select = $(".sidebar-nav .select", window.top.document);
-                $select.removeClass("select");
-                var $current = $(".sidebar-nav a[data^='/fund/transaction/list.html']", window.top.document);
-                $current.parent().addClass("select");
-                $current.click();
-            } else {
-                var $current = $(".sidebar-nav a[data^='/fund/playerRecharge/recharge.html']", window.top.document);
-                $current.parent().addClass("select");
-                var hash = window.top.location.hash;
-                if (hash.startsWith("#")) {
-                    hash = hash.substring(1, hash.length);
-                }
-                $("#mainFrame").load(root + hash);
-            }
-        },
         /**
          * 电子支付确认提交
          * @param e
          * @param option
          */
-        electronicSubmit: function (e, option) {
+        companyConfirmSubmit: function (e, option) {
             var $account = $("input[name=account]:checked");
             var isThird = $account.attr("isThird");
             var _this = this;
@@ -298,12 +281,12 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 dataType: 'json',
                 type: "post",
                 success: function (data) {
-                    _this.closeElectronicDialog(e, option);
+                    _this.closeConfirmDialog(e, option);
                     $("#backdrop").show();
                     if (data.state == true) {
-                        $("#electronicSuccessDialog").show();
+                        $("#successDialog").show();
                     } else {
-                        $("#electronicFailDialog").show();
+                        $("#failDialog").show();
                     }
                     $(e.currentTarget).unlock();
                 }
@@ -337,23 +320,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     }
                 }
             })
-        },
-        /**
-         * 关闭弹窗
-         */
-        closeElectronicDialog: function (e, option) {
-            $("#electronicDialog").hide();
-            $("#backdrop").hide();
-            $(e.currentTarget).unlock();
-        },
-        /**
-         * 查看资金记录
-         * @param e
-         * @param option
-         */
-        viewRecharge: function (e, option) {
-            e.returnValue = true;
-            this.back(e, option);
         }
     });
 });

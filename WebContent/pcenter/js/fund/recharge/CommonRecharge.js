@@ -16,7 +16,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         bindEvent: function () {
             this._super();
-            $(this.formSelector).on("click",".openPage",function() {
+            $(this.formSelector).on("click", ".openPage", function () {
                 var iWidth = 850;                          //弹出窗口的宽度;
                 var iHeight = 850;                       //弹出窗口的高度;
                 //获得窗口的垂直位置
@@ -90,6 +90,47 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             window.top.topPage.payerName = $("input[name='result.payerName']").val();
             window.top.topPage.payerBankcard = payerBankcard;
             window.top.topPage.rechargeAddress = $("input[name='result.rechargeAddress']").val();
+        },
+        back: function (e, option) {
+            if (e.returnValue == true) {
+                var $select = $(".sidebar-nav .select", window.top.document);
+                $select.removeClass("select");
+                var $current = $(".sidebar-nav a[data^='/fund/transaction/list.html']", window.top.document);
+                $current.parent().addClass("select");
+                $current.click();
+            } else {
+                var $current = $(".sidebar-nav a[data^='/fund/playerRecharge/recharge.html']", window.top.document);
+                $current.parent().addClass("select");
+                var hash = window.top.location.hash;
+                if (hash.startsWith("#")) {
+                    hash = hash.substring(1, hash.length);
+                }
+                $("#mainFrame").load(root + hash);
+            }
+        },
+        closeConfirmDialog: function (e, option) {
+            $("#confirmDialog").hide();
+            $("#backdrop").hide();
+            $(e.currentTarget).unlock();
+        },
+        /**
+         * 查看资金记录
+         * @param e
+         * @param option
+         */
+        viewRecharge: function (e, option) {
+            e.returnValue = true;
+            this.back(e, option);
+        },
+        /**
+         * 关闭错误弹窗
+         * @param e
+         * @param option
+         */
+        closeConFailDialog: function (e, option) {
+            $("#failDialog").hide();
+            $("#backdrop").hide();
+            $(e.currentTarget).unlock();
         }
     });
 });

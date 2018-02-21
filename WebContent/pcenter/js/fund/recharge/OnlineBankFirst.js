@@ -1,8 +1,8 @@
 /**
  * 管理首页-首页js
  */
-define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEditPage, RealName) {
-    return BaseEditPage.extend({
+define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], function (CommonRecharge, RealName) {
+    return CommonRecharge.extend({
         realName: null,
         /**
          * 初始化及构造函数，在子类中采用
@@ -49,8 +49,34 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
 
             $(this.formSelector).on("click", "label.bank", function (e) {
                 $("label.bank.select").removeClass("select");
+                var $account = $(this).find("input[name='account']");
+                var bankCode = $account.attr("bankCode");
+                var account = $account.attr("account");
+                $(".accountInfo").hide();
+                $("[name=accountInfo" + bankCode + account + "]").show();
                 $(this).addClass("select");
             })
+        },
+        /**
+         * 展开网上银行
+         * @param e
+         * @param option
+         */
+        expendBanks: function (e, option) {
+            $("#expendBanks").toggle();
+            var $target = $(e.currentTarget);
+            var text = $target.children("span");
+            var arr = $target.children(".bank-arrico");
+            if ($(arr).hasClass("down")) {
+                $(arr).removeClass("down");
+                $(arr).addClass("up");
+                $(text).text(window.top.message.fund_auto['收缩部分网上银行']);
+            } else {
+                $(arr).removeClass("up");
+                $(arr).addClass("down");
+                $(text).text(window.top.message.fund_auto['查看更多网上银行']);
+            }
+            $target.unlock();
         },
         /**
          * 立即存款
@@ -59,16 +85,54 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
          */
         submit: function (e, option) {
             window.top.topPage.ajax({
-                url: root + "/fund/recharge/company/onlineBankSecond.html",
+                url: root + "/fund/recharge/company/onlineBankConfirm.html",
                 data: this.getCurrentFormData(e),
-                headers: {
-                    "Soul-Requested-With": "XMLHttpRequest"
-                },
                 type: "post",
+                dataType: 'json',
                 success: function (data) {
-                    $("#mainFrame").html(data);
+                    $("#backdrop").show();
+                    if (data.state == true) {
+                        $("#confirmRechargeAmount").text(data.rechargeAmount);
+                        $("#confirmFee").text(data.formatFee);
+                        if (data.fee > 0) {
+                            $("#confirmFee").addClass("green m-l");
+                            $("#confirmFee").removeClass("red");
+                        } else {
+                            $("#confirmFee").addClass("red");
+                            $("#confirmFee").removeClass("green m-l");
+                        }
+                        $("#confirmRechargeTotal").text(data.rechargeTotal);
+                        $("#confirmDialog").show();
+                    } else {
+                        $("#failDialog").show();
+                    }
+                    $(e.currentTarget).unlock();
                 }
             });
+        },
+        /**
+         * 确认存款提交
+         * @param e
+         * @param options
+         */
+        companyConfirmSubmit: function (e, option) {
+            var _this = this;
+            window.top.topPage.ajax({
+                url: root + "/fund/recharge/company/onlineBankSubmit.html",
+                data: this.getCurrentFormData(e),
+                dataType: 'json',
+                type: "post",
+                success: function (data) {
+                    _this.closeConfirmDialog(e, option);
+                    $("#backdrop").show();
+                    if (data.state == true) {
+                        $("#successDialog").show();
+                    } else {
+                        $("#failDialog").show();
+                    }
+                    $(e.currentTarget).unlock();
+                }
+            })
         },
         /**
          * 更改存款规则-更改存款金额的remote规则
@@ -120,12 +184,12 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                                             sales: sales,
                                             len: len
                                         });
-                                        $("div.applysale").html(html);
+                                        $("div#applysale").html(html);
                                         if (sales[0].preferential != true) {
                                             $("input[name=activityId]:eq('')").prop("checked", 'checked');
                                         }
                                     } else {
-                                        $("div.applysale").find("input[type=radio]").attr("disabled", true);
+                                        $("div#pplysale").find("input[type=radio]").attr("disabled", true);
                                         $("input[name=activityId]:eq('')").prop("checked", 'checked');
                                     }
                                     $("._submit").removeClass("disabled");
@@ -141,14 +205,6 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                 }
             }
             return rule;
-        },
-        /**
-         * 支付后回调
-         * @param e
-         * @param option
-         */
-        back: function (e, option) {
-            $("#mainFrame").load(root + "/fund/recharge/company/onlineBankFirst.html");
         },
         /**
          * 更改验证消息
@@ -193,6 +249,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             $("tr.expendSales").show();
             $(e.currentTarget).hide();
             $(e.currentTarget).unlock();
-        }
+        },
+
     });
 });
