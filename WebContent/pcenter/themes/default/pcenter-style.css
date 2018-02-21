@@ -1697,22 +1697,24 @@ ul.deposit-notice{list-style-type:decimal;margin:20px 15px;}
 .deposit-tab01{position:relative;}
 .deposit-tab01 img{width:100%;height:100%;border-radius:4px;}
 .deposit-tab01 .pay-title{position:absolute;bottom:0px;left:-1px;background:#2987e7;width:100%;color:#fff;padding:7px 1px;display:block;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
-.deposit-tab01:nth-child(1) .pay-title{background:#f06c00;}
-.deposit-tab01:nth-child(2) .pay-title{background:#1286fd;}
-.deposit-tab01:nth-child(3) .pay-title{background:#24bd28;}
-.deposit-tab01:nth-child(4) .pay-title{background:#0098dc;}
-.deposit-tab01:nth-child(5) .pay-title{background:#2987e7;}
-.deposit-tab01:nth-child(6) .pay-title{background:#c6292e;}
-.deposit-tab01:nth-child(7) .pay-title{background:#e51b2b;}
-.deposit-tab01:nth-child(8) .pay-title{background:#ed9023;}
-.deposit-tab01:nth-child(9) .pay-title{background:#40b170;}
-.deposit-tab01:nth-child(10) .pay-title{background:#189ca6;}
-.deposit-tab01:nth-child(11) .pay-title{background:#638aa5;}
+.deposit-tab01.zxzf-bg .pay-title{background:#f06c00;}
+.deposit-tab01.wyck-bg .pay-title{background:#1286fd;}
+.deposit-tab01.wxzf-bg .pay-title{background:#24bd28;}
+.deposit-tab01.zfb-bg .pay-title{background:#0098dc;}
+.deposit-tab01.qqzf-bg .pay-title{background:#2987e7;}
+.deposit-tab01.jdzf-bg .pay-title{background:#c6292e;}
+.deposit-tab01.bdzf-bg .pay-title{background:#e51b2b;}
+.deposit-tab01.btb-bg .pay-title{background:#ed9023;}
+.deposit-tab01.ymf-bg .pay-title{background:#40b170;}
+.deposit-tab01.szhb-bg .pay-title{background:#189ca6;}
+.deposit-tab01.ysf-bg .pay-title{background:#0d55ac;}
+.deposit-tab01.gtck-bg .pay-title{background:#7491a5;}
+.deposit-tab01.ylzf-bg .pay-title{background:#007b84;}
 
 
 .deposit-tab01 .pay-title em{margin-left:10px;font-size:17px;}
 .deposit-tab01 .pay-title small{font-size:12px;float:right;padding:5px 20px 0 0;color:#eee;}
-.deposit-tab01 .pay-title .pay-title-tips{padding:2px 7px;background:#5758587d;float:right;margin-right:10px;border-radius:3px;}
+.deposit-tab01 .pay-title .pay-title-tips{padding:2px 7px;background:rgba(0,0,0,0.25);float:right;margin-right:10px;border-radius:3px;}
 .bank-paidtotal li .bankinfo-m{background:url("../../images/paidbg-m.png") no-repeat;width:339px;height:130px;margin-left:-13px;}
 .bank-paidtotal li .linbankinfo-m{background:url("../../images/paidbg-l.png") no-repeat;width:339px;height:195px;margin-left:-13px;}
 .left-ico-message .left-warp{width:390px;float:left;}

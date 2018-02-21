@@ -311,7 +311,11 @@
 .pay-third.bdwallet{background-position: 0 -974px;}/* 29 百度钱包 */
 .pay-third.jdwallet{background-position: 0 -1011px;}/* 30 京东钱包 */
 .pay-third.ebankpay{background-position: 0 -1050px;}/* 31 网银支付 */
-.pay-third.qrcodepay{background-position: 0 -1083px;}/* 30 扫码支付 */
+.pay-third.qrcodepay{background-position: 0 -1083px;}/* 32 扫码支付 */
+.pay-third.szhb{background-position: 0 -1119px;}/* 33 数字货币 */
+.pay-third.gyjgt{background-position: 0 -1155px;}/* 34 柜员机柜台 */
+.pay-third.ysfpay{background-position: 0 -1195px;}/* 35 易收付 */
+.pay-third.quickpay{background-position: 0 -1234px;}/* 36 快速充值 */
 
 .sm.unionpay,.sm.chinaums,.sm.bill99,.sm.chinapnr,.sm.reapal,.sm.dinpay,.sm.kjt,.sm.mobao,.sm.upay,.sm.onecodepay{width: 50px;}
 
