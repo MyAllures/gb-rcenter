@@ -127,7 +127,7 @@ function savePicture(obj, options) {
     var imgUrl = options.url;
     if (imgUrl) {
         if (isNative) {
-            nativeSaveImage(url);
+            nativeSaveImage(imgUrl);
         } else if (/.(gif|jpg|jpeg|png)$/.test(imgUrl)) {
             var a = document.createElement('a');
             a.href = imgUrl;
