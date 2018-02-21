@@ -102,6 +102,7 @@ function depositDiscount(obj, options) {
                     '<div class="close" data-rel={"opType":"function","target":"closeProWindow"}></div></div></div>';
                 $("boby").append(html);
                 $("#successMasker").attr("style", "display: block;");
+                $(".gb-withdraw-box.window-ok").show();
             } else { //无优惠
                 companyDepositSubmit($("input[name='depositChannel']").val());
             }
