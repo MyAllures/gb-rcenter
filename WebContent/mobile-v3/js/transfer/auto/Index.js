@@ -1,20 +1,17 @@
 /**
  * Created by legend on 18-2-18.
  */
+/*单个api回收时间间隔*/
+var API_RECOVERY_TIME_INTERVAL = 3;
+/*一键回收时间间隔*/
+var RECOVER_TIME_INTERVAL = 10;
+
 $(function () {
     // //主体内容滚动条
     muiInit(muiDefaultOptions);
-
-    onPageLoad();
-
 });
 
-
 function recovery(obj) {
-    /*if(isAutoPay == false) {
-        this.toast(window.top.message.transfer_auto["无免转"]);
-        return;
-    }*/
     if (!this.isAllowRecovery(obj)) {
         this.toast(window.top.message.transfer_auto["太频繁"]);
         return;
@@ -27,10 +24,8 @@ function recovery(obj) {
     if (apiId) {
         url = url + "?search.apiId=" + apiId;
     }
-
     var options = {
         url: url,
-        dataType:'json',
         success: function (data) {
             if (data) {
                 if (data.msg) {
@@ -63,22 +58,8 @@ function recovery(obj) {
             $(obj).text(title);
             $(obj).attr('lastTime', new Date().getTime());
         }
-    }
-
+    };
     muiAjax(options);
-}
-
-
-/**
- * 页面刷新
- */
-function onPageLoad() {
-
-    recovery();
-
-    mui('body').on('tap', '.reload', function () {
-        window.location.reload();
-    });
 }
 
 /**
@@ -88,12 +69,9 @@ function reload() {
     window.location.reload();
 }
 
-
-
 /**
  * 是否允许回收
  */
-
 function isAllowRecovery(obj) {
     var apiId = $(obj).attr("apiId");
     var lastTime = $(obj).attr("lastTime");
@@ -117,17 +95,18 @@ function recoveryCallback(obj, apiId) {
     if (!apiId) {
         window.location.reload();
     } else {
-        mui.ajax(root + "/transfer/auto/getApiBalance.html?apiId=" + apiId, {
-            dataType: 'json',
+        var options = {
+            url: root + "/transfer/auto/getApiBalance.html?apiId=" + apiId,
             success: function (data) {
                 $("._apiMoney_" + apiId).text(data.money);
                 $("#bar-asset").text(data.playerAssets);
                 $("header .bar-wallet").text(data.playerWallet);
                 $("header #_api_" + apiId).text(data.money);
-            },
-            error: function (data) {
-                console.log(data);
             }
-        });
+        };
+        muiAjax(options);
+    }
+    if (isNative) {
+        nativeAccountChange();
     }
 }

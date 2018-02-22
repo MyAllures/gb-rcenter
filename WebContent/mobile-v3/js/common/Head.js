@@ -1,7 +1,5 @@
 /**是否登录标识*/
 var isLogin = false;
-/*一键回收时间间隔*/
-var RECOVER_TIME_INTERVAL = 10;
 
 $(function () {
     headInfo();

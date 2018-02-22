@@ -101,7 +101,6 @@ function refreshApi(apiId, type) {
     var options = {
         url: url,
         success: function (data) {
-            var apiId = data.apiId;
             var apiMoney = data.apiMoney;
             var status = data.status;
             var msg = '';
@@ -129,7 +128,6 @@ function refreshApi(apiId, type) {
         },
         error: function (e) {
             $(refreshApi).removeClass("gb-spin");
-            mui("#refreshContainer").pullRefresh().endPullupToRefresh();
             toast(window.top.message.transfer_auto['暂无更多数据']);
         }
     };
@@ -153,7 +151,6 @@ function refreshAllApiBalance() {
         },
         error: function (e) {
             $("#refreshAllApiBalance").removeAttr("disabled");
-            mui("#refreshContainer").pullRefresh().endPullupToRefresh();
             toast(window.top.message.transfer_auto['刷新游戏余额失败']);
         }
     };
@@ -164,7 +161,6 @@ function refreshAllApiBalance() {
  * 重新初始化转账form表单
  */
 function initTransfer() {
-
     var options = {
         url: root + '/transfer/transferBack.html',
         dataType: 'json',
@@ -191,8 +187,9 @@ function successBack(data) {
     var apiId = data.apiId;
     var type = true;
     var os = whatOs();
-    if (os == 'app_android')
-        window.gamebox.refreshApiBalance(apiId);
+    if (isNative) {
+        nativeAccountChange();
+    }
     refreshApi(apiId, type);
     initTransfer();
 }
@@ -213,6 +210,11 @@ function reconnectAgain(orderId) {
     muiAjax(options);
 }
 
+function transferCallBack(data) {
+    successBack(data);
+    getSiteApi();
+}
+
 /**
  * 转账回调
  */
@@ -222,47 +224,58 @@ function transferBack(data) {
         initTransfer();
     } else if (data.state == true && data.result == 0) {
         //转账成功
-        layer.open({
-            title: window.top.message.transfer_auto['转账成功'],
-            content: window.top.message.transfer_auto['转账成功2'],
-            btn: [window.top.message.transfer_auto['好的'], ''],
-            shadeClose: false,
-            yes: function (index) {
-                successBack(data);
-                getSiteApi();
-                layer.close(index);
-            }
-        })
+        showWarningMsg(window.top.message.transfer_auto['转账成功'], window.top.message.transfer_auto['转账成功2'], transferCallBack(data));
+        /*layer.open({
+         title: window.top.message.transfer_auto['转账成功'],
+         content: window.top.message.transfer_auto['转账成功2'],
+         btn: [window.top.message.transfer_auto['好的'], ''],
+         shadeClose: false,
+         yes: function (index) {
+         successBack(data);
+         getSiteApi();
+         layer.close(index);
+         }
+         })*/
     } else if (data.state == true && data.result == 1) {
         //转账失败
-        layer.open({
-            title: window.top.message.transfer_auto['转账失败'],
-            content: window.top.message.transfer_auto['转账已失败'],
-            btn: [window.top.message.transfer_auto['确定'], ''],
-            shadeClose: false,
-            yes: function (index) {
-                successBack(data);
-                getSiteApi();
-                layer.close(index);
-            }
-        })
+        showWarningMsg(window.top.message.transfer_auto['转账失败'], window.top.message.transfer_auto['转账已失败'], transferCallBack(data));
+        /*
+         layer.open({
+         title: window.top.message.transfer_auto['转账失败'],
+         content: window.top.message.transfer_auto['转账已失败'],
+         btn: [window.top.message.transfer_auto['确定'], ''],
+         shadeClose: false,
+         yes: function (index) {
+         successBack(data);
+         getSiteApi();
+         layer.close(index);
+         }
+         })*/
     } else if (data.state == true && data.result) {
         var orderId = data.orderId;
         var btnArray = [window.top.message.transfer_auto['返回'], window.top.message.transfer_auto['再试一次']];
-        layer.open({
+        var confirmOption = {
+            btnArray: btnArray,
             title: window.top.message.transfer_auto['转账超时'],
-            content: window.top.message.transfer_auto['订单已超时'],
-            btn: btnArray,
-            shadeClose: false,
-            yes: function (index) {
-                successBack(data);
-                layer.close(index);
-            },
-            no: function (index) {
-                reconnectAgain(orderId);
-                layer.close(index);
-            }
-        })
+            confirm: window.top.message.transfer_auto['订单已超时'],
+            func: successBack(data),
+            cancelFunc: reconnectAgain(orderId)
+        };
+        showConfirmMsg(confirmOption);
+        /* layer.open({
+         title: window.top.message.transfer_auto['转账超时'],
+         content: window.top.message.transfer_auto['订单已超时'],
+         btn: btnArray,
+         shadeClose: false,
+         yes: function (index) {
+         successBack(data);
+         layer.close(index);
+         },
+         no: function (index) {
+         reconnectAgain(orderId);
+         layer.close(index);
+         }
+         })*/
     } else {
         toast(data.msg);
         $("[name='gb.token']").val(data.token);
@@ -281,7 +294,6 @@ function submitTransactionMoney() {
     if (!$form.valid()) {
         return false;
     }
-
     var options = {
         url: root + '/transfer/transfersMoney.html',
         data: $form.serialize(),
