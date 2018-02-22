@@ -131,6 +131,14 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             $("#failDialog").hide();
             $("#backdrop").hide();
             $(e.currentTarget).unlock();
+        },
+        /**
+         * 客服访问
+         * @param e
+         * @param option
+         */
+        customerService: function (e, option) {
+            window.top.topPage.customerService();
         }
     });
 });
