@@ -183,10 +183,10 @@ function initTransfer() {
 /**
  *转账成功后回调（更新玩家余额、api余额）
  */
-function successBack(data) {
+function successBack(obj, option) {
+    var data = option.data;
     var apiId = data.apiId;
     var type = true;
-    var os = whatOs();
     if (isNative) {
         nativeAccountChange();
     }
@@ -210,8 +210,8 @@ function reconnectAgain(orderId) {
     muiAjax(options);
 }
 
-function transferCallBack(data) {
-    successBack(data);
+function transferCallBack(obj, option) {
+    successBack(obj, option);
     getSiteApi();
 }
 
@@ -224,7 +224,7 @@ function transferBack(data) {
         initTransfer();
     } else if (data.state == true && data.result == 0) {
         //转账成功
-        showWarningMsg(window.top.message.transfer_auto['转账成功'], window.top.message.transfer_auto['转账成功2'], transferCallBack(data));
+        showWarningMsg(window.top.message.transfer_auto['转账成功'], window.top.message.transfer_auto['转账成功2'], transferCallBack);
         /*layer.open({
          title: window.top.message.transfer_auto['转账成功'],
          content: window.top.message.transfer_auto['转账成功2'],
@@ -238,7 +238,7 @@ function transferBack(data) {
          })*/
     } else if (data.state == true && data.result == 1) {
         //转账失败
-        showWarningMsg(window.top.message.transfer_auto['转账失败'], window.top.message.transfer_auto['转账已失败'], transferCallBack(data));
+        showWarningMsg(window.top.message.transfer_auto['转账失败'], window.top.message.transfer_auto['转账已失败'], transferCallBack);
         /*
          layer.open({
          title: window.top.message.transfer_auto['转账失败'],
@@ -258,8 +258,8 @@ function transferBack(data) {
             btnArray: btnArray,
             title: window.top.message.transfer_auto['转账超时'],
             confirm: window.top.message.transfer_auto['订单已超时'],
-            func: successBack(data),
-            cancelFunc: reconnectAgain(orderId)
+            func: successBack,
+            cancelFunc: reconnectAgain
         };
         showConfirmMsg(confirmOption);
         /* layer.open({
