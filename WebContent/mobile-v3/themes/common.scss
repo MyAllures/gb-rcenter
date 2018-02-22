@@ -827,7 +827,7 @@ body.deposit{
     }
     
     header{background: #1766bb;}
-    .mui-content{background: #f2f2f2;bottom: 40px;padding-bottom: 0;}
+    .mui-content{background: #f2f2f2;bottom: 0;padding-bottom: 40px;}
     .m-t-sm {
         margin-top: 10px!important;
     }
@@ -1320,7 +1320,7 @@ body.deposit{
     }
 
     .modes-payment >.ct li>a.active{border-color:#e2e2e2;}
-    .bank-pay-btn {padding:0;position:fixed;bottom:0;left:0;right:0;width:100%;z-index:9;}
+    .bank-pay-btn {padding:0;position:fixed;bottom:0;left:0;right:0;width:100%;z-index:998;}
     .bank-pay-btn a{border-radius:0;}
     .modes-payment>.ct .active>a{background:url(./images/pay-active.png) right top no-repeat;background-size:18px;border:1px solid #00a8ff;}
     .c-bank-se>a {margin:0;}
