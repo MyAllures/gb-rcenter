@@ -249,7 +249,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
             $("tr.expendSales").show();
             $(e.currentTarget).hide();
             $(e.currentTarget).unlock();
-        },
+        }
 
     });
 });
