@@ -1232,8 +1232,8 @@ body.deposit {
     background: #1766bb; }
   body.deposit .mui-content {
     background: #f2f2f2;
-    bottom: 40px;
-    padding-bottom: 0; }
+    bottom: 0;
+    padding-bottom: 40px; }
   body.deposit .m-t-sm {
     margin-top: 10px !important; }
   body.deposit li {
@@ -1717,7 +1717,7 @@ body.deposit {
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 9; }
+    z-index: 998; }
   body.deposit .bank-pay-btn a {
     border-radius: 0; }
   body.deposit .modes-payment > .ct .active > a {
@@ -2189,6 +2189,9 @@ body.no-backdrop .mui-backdrop {
 .text-orange,
 .text-warning {
   color: #f0ad4e; }
+
+.text-blue {
+  color: #007aff; }
 
 .text-red,
 .text-danger {
