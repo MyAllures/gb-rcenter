@@ -53,10 +53,11 @@ function closeDownLoad() {
  * 初始化api nav滑动
  */
 function swiper() {
+    var siledSize = $(".nav .swiper-container a.swiper-slide").length;
     // api滑动
     var slideContent = new Swiper('.nav-slide-content', {
         loop: true,
-        loopedSlides: 5,
+        loopedSlides: siledSize,
         autoHeight: true,
         on: {
             slideChangeTransitionEnd: function () {
@@ -66,7 +67,7 @@ function swiper() {
     });
     var slideIndicators = new Swiper('.nav-slide-indicators', {
         loop: true,
-        loopedSlides: 5,
+        loopedSlides: siledSize,
         slidesPerView: 'auto',
         touchRatio: 0.2,
         slideToClickedSlide: true,
@@ -74,8 +75,8 @@ function swiper() {
             slideChangeTransitionEnd: function () {
                 //处理图片延迟加载
                 if ($(".nav-slide-content .swiper-slide-active").find("img[data-lazyload]").length > 0 || $(".nav-slide-content .swiper-slide-active").find("img[data-lazyload-id]").length > 0) {
-                    if(!lazyLoadApi) {
-                       lazyLoadApi = lazyLoadImg("body");
+                    if (!lazyLoadApi) {
+                        lazyLoadApi = lazyLoadImg("body");
                     }
                     lazyLoadApi.refresh(true);
                 }
