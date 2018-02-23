@@ -197,14 +197,20 @@ function successBack(obj, option) {
 /**
  * 再试一次
  */
-function reconnectAgain(orderId) {
+function reconnectAgain(obj, option) {
+    if (!option.data || !option.data.orderId) {
+        toast(window.top.message.transfer_auto['转账超时']);
+        return;
+    }
+    var orderId = option.data.orderId;
     var options = {
         url: root + '/transfer/reconnectTransfer.html?search.transactionNo=' + orderId,
         dataType: 'json',
         type: 'post',
         async: true,
         success: function (data) {
-            transferBack(data);
+            option.data = data;
+            transferBack(obj, option);
         }
     };
     muiAjax(options);
@@ -218,39 +224,17 @@ function transferCallBack(obj, option) {
 /**
  * 转账回调
  */
-function transferBack(data) {
+function transferBack(obj, option) {
+    var data = option.data;
     if (!data) {
         toast(window.top.message.transfer_auto["转账异常"]);
         initTransfer();
     } else if (data.state == true && data.result == 0) {
         //转账成功
-        showWarningMsg(window.top.message.transfer_auto['转账成功'], window.top.message.transfer_auto['转账成功2'], transferCallBack);
-        /*layer.open({
-         title: window.top.message.transfer_auto['转账成功'],
-         content: window.top.message.transfer_auto['转账成功2'],
-         btn: [window.top.message.transfer_auto['好的'], ''],
-         shadeClose: false,
-         yes: function (index) {
-         successBack(data);
-         getSiteApi();
-         layer.close(index);
-         }
-         })*/
+        showWarningMsg(window.top.message.transfer_auto['转账成功'], window.top.message.transfer_auto['转账成功2'], transferCallBack, option);
     } else if (data.state == true && data.result == 1) {
         //转账失败
-        showWarningMsg(window.top.message.transfer_auto['转账失败'], window.top.message.transfer_auto['转账已失败'], transferCallBack);
-        /*
-         layer.open({
-         title: window.top.message.transfer_auto['转账失败'],
-         content: window.top.message.transfer_auto['转账已失败'],
-         btn: [window.top.message.transfer_auto['确定'], ''],
-         shadeClose: false,
-         yes: function (index) {
-         successBack(data);
-         getSiteApi();
-         layer.close(index);
-         }
-         })*/
+        showWarningMsg(window.top.message.transfer_auto['转账失败'], window.top.message.transfer_auto['转账已失败'], transferCallBack, option);
     } else if (data.state == true && data.result) {
         var orderId = data.orderId;
         var btnArray = [window.top.message.transfer_auto['返回'], window.top.message.transfer_auto['再试一次']];
@@ -261,21 +245,8 @@ function transferBack(data) {
             func: successBack,
             cancelFunc: reconnectAgain
         };
+        confirmOption.data = data;
         showConfirmMsg(confirmOption);
-        /* layer.open({
-         title: window.top.message.transfer_auto['转账超时'],
-         content: window.top.message.transfer_auto['订单已超时'],
-         btn: btnArray,
-         shadeClose: false,
-         yes: function (index) {
-         successBack(data);
-         layer.close(index);
-         },
-         no: function (index) {
-         reconnectAgain(orderId);
-         layer.close(index);
-         }
-         })*/
     } else {
         toast(data.msg);
         $("[name='gb.token']").val(data.token);
@@ -286,7 +257,7 @@ function transferBack(data) {
 /**
  * 提交转账
  */
-function submitTransactionMoney() {
+function submitTransactionMoney(obj, option) {
     toast("提交");
     var $form = $('#transferForm');
     var $this = $(this);
@@ -301,7 +272,8 @@ function submitTransactionMoney() {
             $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
         },
         success: function (data) {
-            transferBack(data);
+            option.data = data;
+            transferBack(obj, option);
             $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
         }
     };

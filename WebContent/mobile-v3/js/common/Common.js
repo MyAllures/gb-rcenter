@@ -463,9 +463,9 @@ function showConfirmMsg(options, obj) {
             if (func) {
                 applyFunction(func, options, obj);
             }
-        } else if(e.index == 1) {
+        } else if (e.index == 1) {
             var func = options.cancelFunc;
-            if(func) {
+            if (func) {
                 applyFunction(func, options, obj);
             }
         }
@@ -478,10 +478,10 @@ function showConfirmMsg(options, obj) {
  * @param msg 提示信息
  * @param callback 回调函数
  */
-function showWarningMsg(title, msg, callback) {
+function showWarningMsg(title, msg, callback, options) {
     mui.alert(msg, title, function () {
         if (callback) {
-            applyFunction(callback);
+            applyFunction(callback, options);
         }
     });
 }
