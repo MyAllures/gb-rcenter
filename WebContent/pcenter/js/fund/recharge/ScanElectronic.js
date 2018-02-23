@@ -86,6 +86,13 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 $("[name=electronicElement]").show();
                 $("#step").text(3);
                 $("[name=scanElement]").hide();
+                var qrCodeUrl = $target.attr("qrCodeUrl");
+                if (qrCodeUrl) {
+                    $("#qrCodeUrl .two-dimension").children("img").attr("src", qrCodeUrl);
+                    $("#qrCodeUrl").show();
+                } else {
+                    $("#qrCodeUrl").hide();
+                }
             } else {
                 $("[name=electronicElement]").hide();
                 $("#step").text(2);
