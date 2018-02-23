@@ -138,7 +138,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          * @param option
          */
         customerService: function (e, option) {
-            window.top.topPage.customerService();
+            window.top.topPage.customerService(e, option);
         }
     });
 });
