@@ -172,3 +172,8 @@ function changeNavGame(obj, options) {
     resizeSlideHeight();
     $(obj).unlock();
 }
+
+//添加到桌面图标
+function closeDesk(obj, options) {
+    $("#deskTip").hide();
+}
