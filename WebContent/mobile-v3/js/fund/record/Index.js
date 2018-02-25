@@ -13,7 +13,6 @@ $(function(){
     };
     muiInit(options);
     recordPulldownRefresh(true);
-    muiInit(muiDefaultOptions);
 
 });
 
