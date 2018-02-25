@@ -144,6 +144,16 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         customerService: function (e, option) {
             window.top.topPage.customerService(e, option);
+        },
+        /**
+         * 展开其它优惠
+         * @param e
+         * @param option
+         */
+        expendSale: function (e, option) {
+            $("tr.expendSales").show();
+            $(e.currentTarget).hide();
+            $(e.currentTarget).unlock();
         }
     });
 });

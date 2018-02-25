@@ -290,16 +290,6 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                 $(text).text(window.top.message.fund['Recharge.onlinePay.showMoreBank']);
             }
             $target.unlock();
-        },
-        /**
-         * 展开其它优惠
-         * @param e
-         * @param option
-         */
-        expendSale: function (e, option) {
-            $("tr.expendSales").show();
-            $(e.currentTarget).hide();
-            $(e.currentTarget).unlock();
         }
     });
 });
