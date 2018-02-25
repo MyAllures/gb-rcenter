@@ -2,20 +2,21 @@
  * Created by legend on 18-2-19.
  */
 $(function(){
-    // clickEndTime();
-    /*var options = {
-        /!*主页面滚动指定容器，可自行指定范围*!/
-        containerScroll: '.mui-content.mui-scroll-wrapper.invite-content',
-        /!*右侧菜单上下滚动，可自行指定范围*!/
+    var options = {
+        /*主页面滚动指定容器，可自行指定范围*/
+        containerScroll: '.mui-scroll-wrapper.fund-type-scroll',
+        /*右侧菜单上下滚动，可自行指定范围*/
         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
-        /!*禁用侧滑手势指定样式*!/
+        rightMenuScroll: '.mui-scroll-wrapper',
+        /*禁用侧滑手势指定样式*/
         disabledHandSlip: ['mui-off-canvas-left']
     };
-    muiInit(options);*/
+    muiInit(options);
     recordPulldownRefresh(true);
-    muiInit(muiDefaultOptions);
 
 });
+
+var globalTransactionType=""; //资金类型
 
 //设置开始时间选择器
 function clickBeginTime() {
@@ -27,7 +28,6 @@ function clickBeginTime() {
         labels: [window.top.message.fund_auto['年'], window.top.message.fund_auto['月'], window.top.message.fund_auto['日']]//设置默认标签区域提示语
     });
     dtpicker.show(function (e) {
-        // var day = formatDateTime(new Date(e.value),format);
         $("#beginTime").val(e.value);
         //结束时间不能小于开始时间
         if(new Date($("#endTime").val()).getTime()<new Date(e.value).getTime())
@@ -49,7 +49,6 @@ function clickEndTime() {
         labels: [window.top.message.fund_auto['年'], window.top.message.fund_auto['月'], window.top.message.fund_auto['日']]//设置默认标签区域提示语
     });
     dtpicker.show(function (e) {
-        // $("#endTime").val(_this.formatDateTime(new Date(e.value),format));
         $("#endTime").val(e.value);
         dtpicker.dispose();
     })
@@ -62,21 +61,30 @@ function chooseValue(obj) {
     var _this = $("#selectDiv");
     var dateValue = obj.getAttribute("value");
     var dateTime=getDatePopover(dateValue).split("&");
-    if(new Date(dateTime[0]).getTime()>new Date($("#beginTime").attr("minDate")).getTime()){
+    /*if(new Date(dateTime[0]).getTime()>new Date($("#beginTime").attr("minDate")).getTime()){
         dateTime[0] = $("#beginTime").attr("minDate");
         toast(window.top.message.fund_auto['最近7天']);
-    }
+    }*/
     if(new Date(dateTime[1]).getTime()<new Date($("#endTime").attr("minDate")).getTime())
         dateTime[1] = $("#beginTime").attr("minDate");
     $("#beginTime").val(dateTime[0]);
     $("#endTime").val(dateTime[1]);
 }
 
+/**
+ * 格式化日期
+ * @param value
+ * @returns {string}
+ */
 function dateFmt(value) {
 
     var year = value.getFullYear();
-    var month = value.getMonth() + 1; //js日期
+    var month = ("0" + (value.getMonth() + 1)).slice(-2);//js日期是从0开始的,并且讲日期变成两位数
     var day = value.getDate();
+    if (day < 10) {//如果当前天是个位数则变为两位数
+        day = "0"+day;
+    }
+
     return year+"-"+month+"-"+day;
 }
 
@@ -92,7 +100,6 @@ function getDatePopover(dateValue) {
     var t = this;
     var currentDate = new Date();
     var format = dateFormat.day;
-    // var currentDate = this.formatDateTime(date, format);
 
     if (dateValue == "today") {
         startTime = dateFmt(currentDate);
@@ -141,19 +148,20 @@ function chooseType(obj) {
     transactionType=obj.getAttribute('value');
     displayType.innerText=obj.innerHTML;
     displayType.setAttribute("value",transactionType);
-
+    globalTransactionType = transactionType;
     mui('#transactionType').popover('toggle');
 }
 
-
-mui("body").on("tap", ".query", function () {
-    beginTime = $("#beginTime").val();
-    endTime = $("#endTime").val();
-    // recordPulldownRefresh(true);
+/**
+ * 搜索按钮
+ */
+function searchObj() {
     handleRefresh();
-});
+}
 
-
+/**
+ *正在处理中金额，取款转账
+ */
 function handleRefresh() {
     var options = {
         url:"/fund/record/handleRefresh.html",
@@ -170,6 +178,7 @@ function handleRefresh() {
                 $(".withdrawSum").text(data.currency + data.withdrawSum);
                 $(".transferSum").text(data.currency + data.transferSum);
             }
+            recordPulldownRefresh(true);
         },
         error: function (e) {
             t.toast(window.top.message.fund_auto['加载失败']);
@@ -183,41 +192,35 @@ function handleRefresh() {
 }
 
 
-
+/**
+ * 加载获取资金记录数据
+ * @param isReLoad
+ */
 function recordPulldownRefresh(isReLoad) {
+    var displayType=document.getElementById("displayType");
     if(isReLoad)
         pageNumber = 1;
-    /*var data = {
-        "paging.pageNumber": pageNumber,
-        "search.beginCreateTime": beginTime,
-        "search.endCreateTime": endTime,
-        "search.transactionType": transactionType
-    };*/
 
     var beginTime = $("#beginTime").val();
     var endTime = $("#endTime").val();
     var options = {
-        url:"/fund/record/index.html?paging.pageNumber"+pageNumber+"&search.beginCreateTime="+beginTime+"&search.endCreateTime="+endTime,
+        url:"/fund/record/index.html?paging.pageNumber="+pageNumber+"&search.beginCreateTime="+beginTime+"&search.endCreateTime="+endTime+"&search.transactionType="+globalTransactionType,
         type: 'post',//HTTP请求类型
         timeout: 10000,//超时时间设置为10秒；
-        /*data:data,*/
-        dataType:"json",
+        dataType:"html",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Soul-Requested-With': 'XMLHttpRequest'
         },
         success: function (data) {
-            /* if(data){
-             $("#beginTime").text(data.currency + data.withdrawSum);
-             $(".transferSum").text(data.currency + data.transferSum);
-             }*/
+            $("#tBody").html("");//每次获取data前，先清空div元素的东西
+            $("#tBody").append(data);
+        },
+        error: function (e) {
+            toast(window.top.message.fund_auto['加载失败']);
         }
     };
     muiAjax(options);
 
-
-
-   /* pageNumber = t.pullRefreshUp(url, "content", pageNumber, "lastPageNumber", mui("#refreshContainer"), data, isReLoad);
-    $(".mui-pull-bottom-pocket").remove();*/
 }
 

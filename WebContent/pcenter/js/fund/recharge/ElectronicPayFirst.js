@@ -45,18 +45,6 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                 $(_this.formSelector + " span.fee").hide();
                 _this.changeAmountMsg();
             });
-
-            //修改验证码提示信息的地方
-            $(this.formSelector).on("validate", "[name='code']", function (e, message) {
-                if (message) {
-                    $(_this.formSelector + " span[name=codeTitle]").html("<span class=\"tips orange\"><i class=\"mark plaintsmall\"></i>" + message + "</span>");
-                    e.result = true;
-                } else {
-                    $(_this.formSelector + " span[name=codeTitle]").html("<i class='mark successsmall'></i>");
-                    $(_this.formSelector + " [name='code']").removeClass("error");
-                    e.result = false;
-                }
-            });
         },
         /**
          * 更换优惠
