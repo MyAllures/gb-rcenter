@@ -38,18 +38,6 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
             $(this.formSelector).on("click", "label.bank", function (e) {
                 _this.changeBank(e);
             });
-
-            //修改验证码提示信息的地方
-            $(this.formSelector).on("validate", "[name='code']", function (e, message) {
-                if (message) {
-                    $(_this.formSelector + " span[name=codeTitle]").html("<span class=\"tips orange\"><i class=\"mark plaintsmall\"></i>" + message + "</span>");
-                    e.result = true;
-                } else {
-                    $(_this.formSelector + " span[name=codeTitle]").html("<i class='mark successsmall'></i>");
-                    $(_this.formSelector + " [name='code']").removeClass("error");
-                    e.result = false;
-                }
-            });
         },
 
         /**
@@ -290,16 +278,6 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                 $(text).text(window.top.message.fund['Recharge.onlinePay.showMoreBank']);
             }
             $target.unlock();
-        },
-        /**
-         * 展开其它优惠
-         * @param e
-         * @param option
-         */
-        expendSale: function (e, option) {
-            $("tr.expendSales").show();
-            $(e.currentTarget).hide();
-            $(e.currentTarget).unlock();
         }
     });
 });

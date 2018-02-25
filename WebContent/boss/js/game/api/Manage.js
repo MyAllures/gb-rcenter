@@ -143,6 +143,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
                     }else if(status=="normal"){
                         if($(this).val()=="maintain"){
                             $("#confirmDiv").addClass("hide");
+                            $("#developTipsDiv").addClass("hide");
                             $("#maintainDiv").removeClass("hide");
                             $("#previewBtnDiv").removeClass("hide");
                             $("#normalTipsDiv").addClass("hide");
@@ -150,13 +151,22 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
                         }else if($(this).val()=="disable"){
                             $("#previewBtnDiv").addClass("hide");
                             $("#maintainDiv").addClass("hide");
+                            $("#developTipsDiv").addClass("hide");
                             $(".confirm-btn").html(window.top.message.common['continueStop']);
                             $("#confirmDiv").removeClass("hide");
                             $("#disableTipsDiv").removeClass("hide");
+                        }else if($(this).val()=="develop"){
+                            $("#previewBtnDiv").addClass("hide");
+                            $("#maintainDiv").addClass("hide");
+                            $("#disableTipsDiv").addClass("hide");
+                            $(".confirm-btn").html(window.top.message.common['continueStop']);
+                            $("#confirmDiv").removeClass("hide");
+                            $("#developTipsDiv").removeClass("hide");
                         }else{
                             $(".confirm-btn").html(window.top.message.serve['apiManage.OK']);
                             $("#previewBtnDiv").addClass("hide");
                             $("#maintainDetailDiv").addClass("hide");
+                            $("#developTipsDiv").addClass("hide");
                             $("#maintainDiv").addClass("hide");
                             $("#confirmDiv").addClass("hide");
                             $("#disableTipsDiv").addClass("hide");
