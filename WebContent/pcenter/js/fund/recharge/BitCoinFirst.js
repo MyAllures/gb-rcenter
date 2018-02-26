@@ -20,6 +20,14 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
             window.top.onlineTransactionNo = null;
         },
         /**
+         * 页面加载和异步加载时需要重新初始化的工作
+         */
+        onPageLoad: function () {
+            this._super();
+            this.initCaptcha();
+            $(this.formSelector + " .daterangepickers input.form-control").attr("style", "padding-left: 20px;padding-right: 2px;")
+        },
+        /**
          * 当前对象事件初始化函数
          */
         bindEvent: function () {
@@ -47,14 +55,6 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
             var payAccount = $("input[name='result.payAccountId']:checked").val();
             var url = root + "/fund/recharge/company/bitCoinSecond.html?result.payAccountId=" + payAccount;
             $("#mainFrame").load(url);
-        },
-        /**
-         * 客户服务
-         * @param e
-         * @param option
-         */
-        customerService: function (e, option) {
-            window.top.topPage.customerService(e, option);
         }
     });
 });
