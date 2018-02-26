@@ -152,6 +152,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
                             $("#previewBtnDiv").addClass("hide");
                             $("#maintainDiv").addClass("hide");
                             $("#developTipsDiv").addClass("hide");
+                            $("#normalTipsDiv").addClass("hide");
                             $(".confirm-btn").html(window.top.message.common['continueStop']);
                             $("#confirmDiv").removeClass("hide");
                             $("#disableTipsDiv").removeClass("hide");
@@ -159,6 +160,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
                             $("#previewBtnDiv").addClass("hide");
                             $("#maintainDiv").addClass("hide");
                             $("#disableTipsDiv").addClass("hide");
+                            $("#normalTipsDiv").addClass("hide");
                             $(".confirm-btn").html(window.top.message.common['continueStop']);
                             $("#confirmDiv").removeClass("hide");
                             $("#developTipsDiv").removeClass("hide");
@@ -170,6 +172,8 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
                             $("#maintainDiv").addClass("hide");
                             $("#confirmDiv").addClass("hide");
                             $("#disableTipsDiv").addClass("hide");
+                            $("#normalTipsDiv").removeClass("hide");
+                            $("#confirmDiv").removeClass("hide");
                         }
                     }else{
                         if($(this).val()=="normal"){
