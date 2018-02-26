@@ -161,7 +161,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
                             $("#maintainDiv").addClass("hide");
                             $("#disableTipsDiv").addClass("hide");
                             $("#normalTipsDiv").addClass("hide");
-                            $(".confirm-btn").html(window.top.message.common['continueStop']);
+                            $(".confirm-btn").html(window.top.message.common['OK']);
                             $("#confirmDiv").removeClass("hide");
                             $("#developTipsDiv").removeClass("hide");
                         }else{
