@@ -115,7 +115,7 @@
     }
 
     function showRecharge(data){
-        var dialog = BootstrapDialog.show({
+        dialog = BootstrapDialog.show({
             title: '余额提醒',
             draggable: true,
             type:  BootstrapDialog.TYPE_WARNING,

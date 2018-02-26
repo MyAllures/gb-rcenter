@@ -114,7 +114,7 @@
     }
 
     function showRecharge(data){
-        var dialog = BootstrapDialog.show({
+        dialog = BootstrapDialog.show({
             title: '殘高に注意する',
             draggable: true,
             type:  BootstrapDialog.TYPE_WARNING,
