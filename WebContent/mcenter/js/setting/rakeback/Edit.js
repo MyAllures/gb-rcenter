@@ -8,9 +8,16 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         maxGrads:50,
         init: function () {
             this._super();
+            this.resetApiDivWidth();
+        },
+        resetApiDivWidth:function () {
+            var tdWidth = $($(".scrollInner").parent()).width();
+            $(".scrollInner").css("width",tdWidth + "px");
+            $(".scrollInner").removeClass("hide");
         },
         bindEvent: function () {
             this._super();
+            var _this = this;
             $(document).click(function (e) {
                 if($(".ratio_area").has(e.target).length==0 && !$(e.target).hasClass("batch_ratio") && $("#_contents").is(":visible")){
                     e.preventDefault();
@@ -18,6 +25,10 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     $(".ratio_area").html("");
                     return false;
                 }
+            });
+            $(window).resize(function () {          //当浏览器大小变化时
+                $(".scrollInner").addClass("hide");
+                _this.resetApiDivWidth();
             });
         },
         onPageLoad: function () {
@@ -45,7 +56,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          * @param option
          */
         createPlan: function(event, option) {
-            var $tbl = $('._tables table');
+            var $tbl = $('._tables .dataTable');
             var _table_len = $tbl.find('.apiGrad').length;
             var canCreate = _table_len < this.maxGrads;
             /* 可以新增梯度 */

@@ -258,7 +258,6 @@ function transferBack(obj, option) {
  * 提交转账
  */
 function submitTransactionMoney(obj, option) {
-    toast("提交");
     var $form = $('#transferForm');
     var $this = $(this);
 
