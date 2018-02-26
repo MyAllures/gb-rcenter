@@ -52,9 +52,55 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
             $("#payAccount" + id).show();
         },
         submit: function (e, option) {
-            var payAccount = $("input[name='result.payAccountId']:checked").val();
-            var url = root + "/fund/recharge/company/bitCoinSecond.html?result.payAccountId=" + payAccount;
-            $("#mainFrame").load(url);
+            window.top.topPage.ajax({
+                url: root + "/fund/recharge/company/bitCoinConfirm.html",
+                data: this.getCurrentFormData(e),
+                type: "post",
+                dataType: 'json',
+                success: function (data) {
+                    $("#backdrop").show();
+                    if (data.state == true) {
+                        $("#confirmRechargeAmount").text(data.rechargeAmount);
+                        $("#confirmFee").text(data.formatFee);
+                        if (data.fee > 0) {
+                            $("#confirmFee").addClass("green m-l");
+                            $("#confirmFee").removeClass("red");
+                        } else {
+                            $("#confirmFee").addClass("red");
+                            $("#confirmFee").removeClass("green m-l");
+                        }
+                        $("#confirmRechargeTotal").text(data.rechargeTotal);
+                        $("#confirmDialog").show();
+                    } else {
+                        $("#failDialog").show();
+                    }
+                    $(e.currentTarget).unlock();
+                }
+            });
+        },
+        /**
+         * 确认存款提交
+         * @param e
+         * @param options
+         */
+        companyConfirmSubmit: function (e, option) {
+            var _this = this;
+            window.top.topPage.ajax({
+                url: root + "/fund/recharge/company/bitCoinSubmit.html",
+                data: this.getCurrentFormData(e),
+                dataType: 'json',
+                type: "post",
+                success: function (data) {
+                    _this.closeConfirmDialog(e, option);
+                    $("#backdrop").show();
+                    if (data.state == true) {
+                        $("#successDialog").show();
+                    } else {
+                        $("#failDialog").show();
+                    }
+                    $(e.currentTarget).unlock();
+                }
+            })
         }
     });
 });
