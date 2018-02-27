@@ -90,6 +90,8 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                             $("#confirmFee").removeClass("green m-l");
                         }
                         $("#confirmRechargeTotal").text(data.rechargeTotal);
+                        $("[name=bitcoinRecharge]").hide();
+                        $("[name=companyRecharge]").show();
                         $("#confirmDialog").show();
                     } else {
                         $("#failDialog").show();

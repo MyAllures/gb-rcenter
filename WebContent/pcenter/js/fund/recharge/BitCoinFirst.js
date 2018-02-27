@@ -60,16 +60,9 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
                 success: function (data) {
                     $("#backdrop").show();
                     if (data.state == true) {
-                        $("#confirmRechargeAmount").text(data.rechargeAmount);
-                        $("#confirmFee").text(data.formatFee);
-                        if (data.fee > 0) {
-                            $("#confirmFee").addClass("green m-l");
-                            $("#confirmFee").removeClass("red");
-                        } else {
-                            $("#confirmFee").addClass("red");
-                            $("#confirmFee").removeClass("green m-l");
-                        }
-                        $("#confirmRechargeTotal").text(data.rechargeTotal);
+                        $("#bitAmount").text(data.bitAmount);
+                        $("[name=bitcoinRecharge]").show();
+                        $("[name=companyRecharge]").hide();
                         $("#confirmDialog").show();
                     } else {
                         $("#failDialog").show();

@@ -261,6 +261,8 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                             $("#confirmFee").removeClass("green m-l");
                         }
                         $("#confirmRechargeTotal").text(data.rechargeTotal);
+                        $("[name=bitcoinRecharge]").hide();
+                        $("[name=companyRecharge]").show();
                         $("#confirmDialog").show();
                         $("#backdrop").show();
                     } else if (state == false && data.isThird == true) {
