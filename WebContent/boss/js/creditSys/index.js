@@ -36,7 +36,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
         },
         editMaxProfit:function(e,option){
             var siteIds = this.getSelectIdsArray(e);
-            window.top.topPage.doDialog({page:this},{text:"额度上线管理",target: root + "/vSysCredit/editMaxProfit.html?siteIds="+siteIds,callback:"query"});
+            window.top.topPage.doDialog({page:this},{text:"额度上限管理",target: root + "/vSysCredit/editMaxProfit.html?siteIds="+siteIds,callback:"query"});
             $(e.currentTarget).unlock();
         },
 
