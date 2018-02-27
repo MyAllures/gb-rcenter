@@ -21,11 +21,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         onPageLoad: function () {
             this._super();
             var _this=this;
-            var clip = new ZeroClipboard($('[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                var $obj = $($(e)[0].target);
-                window.top.topPage.customerPopover($obj, window.top.message.fund_auto['复制成功']);
-            });
             $('[data-toggle="popover"]',_this.formSelector).popover({
                 trigger: 'hover',
                 html: true
@@ -36,6 +31,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         bindEvent: function () {
             this._super();
+            this.copyText('[name="copy"]');
         },
         /**
          * 审核通过
