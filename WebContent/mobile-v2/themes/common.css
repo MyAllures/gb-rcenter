@@ -4291,6 +4291,7 @@ div.tab-2 a.mui-active span {
 .pay-third.onecodepay{background-position: 0 -936px;}/* 28 1码付 */
 .pay-third.bdwallet{background-position: 0 -974px;}/* 29 百度钱包 */
 .pay-third.jdwallet{background-position: 0 -1011px;}/* 30 京东钱包 */
+.pay-third.easy_pay{background-position: 0 -1195px;}/* 35 易收付 */
 .gb-foot p{
     text-align: center;
     color: #fff;

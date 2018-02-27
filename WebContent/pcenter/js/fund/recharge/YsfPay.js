@@ -10,7 +10,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
          * 调用
          */
         init: function () {
-            this.formSelector = "form[name=scanElectronicForm]";
+            this.formSelector = "form[name=ysfForm]";
             this._super(this.formSelector);
         },
         /**
@@ -51,8 +51,6 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
         },
         changeAccount: function (obj) {
             var $target = $(obj).find("input[name=account]");
-            var rechargeType = $target.attr("rechargeType");
-            $("[name='result.rechargeType']").val(rechargeType);
             $("label.bank").removeClass("select");
             $(obj).addClass("select");
             //存款金额范围提示
@@ -64,49 +62,6 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 $("#rechargeDecimals").show();
             } else {
                 $("#rechargeDecimals").hide();
-            }
-            //授权码
-            var isAuthCode = $target.attr("isAuthCode");
-            if (isAuthCode == 'true') {
-                $("[name=authCode]").show();
-                $("input[name=isAuthCode]").val("true");
-            } else {
-                $("[name=authCode]").hide();
-                $("input[name=isAuthCode]").val("false");
-            }
-            //展示电子支付账户信息
-            var isThird = $target.attr("isThird");
-            if (isThird == 'true') {
-                var bankName = $target.attr("bankName");
-                var accountCode = $target.attr("accountCode");
-                var bankNum = $target.attr("bankNum");
-                $("#accountCode").text(accountCode);
-                $("#bankNum").text(bankNum);
-                $("#bankName").text(bankName);
-                $("[name=electronicElement]").show();
-                $("#step").text(3);
-                $("[name=scanElement]").hide();
-                //二维码图皮
-                var qrCodeUrl = $target.attr("qrCodeUrl");
-                if (qrCodeUrl) {
-                    $("#qrCodeUrl .two-dimension").children("img").attr("src", qrCodeUrl);
-                    $("#qrCodeUrl").show();
-                } else {
-                    $("#qrCodeUrl").hide();
-                }
-
-                //收款账号说明
-                var accountRemark = $target.attr("accountRemark");
-                if(accountRemark) {
-                    $("#accountRemark").text(accountRemark);
-                    $("#accountRemark").show();
-                } else {
-                    $("#accountRemark").hide();
-                }
-            } else {
-                $("[name=electronicElement]").hide();
-                $("#step").text(2);
-                $("[name=scanElement]").show();
             }
             this.changeAmountMsg();
         },
@@ -163,7 +118,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
             if (rule && rule.rules['result.rechargeAmount']) {
                 var displayFee = $("input[name=displayFee]").val();
                 rule.rules['result.rechargeAmount'].remote = {
-                    url: root + '/fund/recharge/ScanElectronic/checkRechargeAmount.html',
+                    url: root + '/fund/recharge/online/checkRechargeAmount.html',
                     cache: false,
                     type: 'POST',
                     data: {
@@ -179,7 +134,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                             var rechargeAmount = $("[name='result.rechargeAmount']").val();
                             var rechargeType = $("[name='result.rechargeType']").val();
                             window.top.topPage.ajax({
-                                url: root + '/fund/recharge/ScanElectronic/counterFee.html',
+                                url: root + '/fund/recharge/online/counterFee.html',
                                 data: {"result.rechargeAmount": rechargeAmount, "type": rechargeType},
                                 dataType: 'json',
                                 success: function (data) {
@@ -233,14 +188,11 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
          */
         submit: function (e, option) {
             var $account = $("input[name=account]:checked");
-            var isThird = $account.attr("isThird");
-            var _window;
-            if (isThird != 'true') {
-                _window = window.open("", '_blank');
-                _window.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
-            }
+            var _window = window.open("", '_blank');
+            _window.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
+
             window.top.topPage.ajax({
-                url: root + "/fund/recharge/ScanElectronic/submit.html",
+                url: root + "/fund/recharge/online/ysfSubmit.html",
                 data: this.getCurrentFormData(e),
                 dataType: 'json',
                 type: 'POST',
@@ -250,63 +202,17 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                         _window.close();
                     }
                     var msg = data.msg;
-                    if (state == true && data.isThird == true) {
-                        $("#confirmRechargeAmount").text(data.rechargeAmount);
-                        $("#confirmFee").text(data.formatFee);
-                        if (data.fee > 0) {
-                            $("#confirmFee").addClass("green m-l");
-                            $("#confirmFee").removeClass("red");
-                        } else {
-                            $("#confirmFee").addClass("red");
-                            $("#confirmFee").removeClass("green m-l");
-                        }
-                        $("#confirmRechargeTotal").text(data.rechargeTotal);
-                        $("[name=bitcoinRecharge]").hide();
-                        $("[name=companyRecharge]").show();
-                        $("#confirmDialog").show();
-                        $("#backdrop").show();
-                    } else if (state == false && data.isThird == true) {
-                        $("#backdrop").show();
-                        $("#failDialog").show();
-                    } else if (data.isThird != true) {
-                        if (state == true) {
-                            window.top.onlineTransactionNo = data.transactionNo;
-                            _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
-                        }
-                        var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
-                        window.top.onlineFailMsg = msg;
-                        var btnOption = option;
-                        btnOption.text = window.top.message.fund_auto['等待支付'];
-                        btnOption.target = url;
-                        btnOption.callback = "back";
-                        window.top.topPage.doDialog(e, btnOption);
+                    if (state == true) {
+                        window.top.onlineTransactionNo = data.transactionNo;
+                        _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
                     }
-                    $(e.currentTarget).unlock();
-                }
-            })
-        },
-        /**
-         * 电子支付确认提交
-         * @param e
-         * @param option
-         */
-        companyConfirmSubmit: function (e, option) {
-            var $account = $("input[name=account]:checked");
-            var isThird = $account.attr("isThird");
-            var _this = this;
-            window.top.topPage.ajax({
-                url: root + "/fund/recharge/ScanElectronic/electronicSubmit.html",
-                data: this.getCurrentFormData(e),
-                dataType: 'json',
-                type: "post",
-                success: function (data) {
-                    _this.closeConfirmDialog(e, option);
-                    $("#backdrop").show();
-                    if (data.state == true) {
-                        $("#successDialog").show();
-                    } else {
-                        $("#failDialog").show();
-                    }
+                    var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
+                    window.top.onlineFailMsg = msg;
+                    var btnOption = option;
+                    btnOption.text = window.top.message.fund_auto['等待支付'];
+                    btnOption.target = url;
+                    btnOption.callback = "back";
+                    window.top.topPage.doDialog(e, btnOption);
                     $(e.currentTarget).unlock();
                 }
             })

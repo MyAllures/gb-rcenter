@@ -215,6 +215,12 @@ function recordPulldownRefresh(isReLoad) {
         success: function (data) {
             $("#tBody").html("");//每次获取data前，先清空div元素的东西
             $("#tBody").append(data);
+
+            $("#depositTotal").text("充值总额："+$("#deposit").val()); //存款总额
+            $("#withdrawTotal").text("提现总额："+$("#withdraw").val()); //取款总额
+            $("#promoTotal").text("优惠总额："+$("#promo").val()); //优惠总额
+            $("#backwaterTotal").val("返水总额："+$("#backwater").val()); //返水总额
+
         },
         error: function (e) {
             toast(window.top.message.fund_auto['加载失败']);
@@ -223,4 +229,3 @@ function recordPulldownRefresh(isReLoad) {
     muiAjax(options);
 
 }
-
