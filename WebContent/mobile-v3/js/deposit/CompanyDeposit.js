@@ -100,9 +100,8 @@ function depositDiscount(obj, options) {
                 html = html + '</ul></div><div class="pro-btn"><a class="next-btn" data-rel={"opType":"function","target":"submitDeposit"}>' + window.top.message.deposit_auto['已存款'] + '</a>' +
                     '<a class="agin-btn" data-rel={"opType":"function","target":"closeProWindow"}>' + window.top.message.deposit_auto['重新填写'] + '</a></div>' +
                     '<div class="close" data-rel={"opType":"function","target":"closeProWindow"}></div></div></div>';
-                $("boby").append(html);
+                $("body").append(html);
                 $("#successMasker").attr("style", "display: block;");
-                $(".gb-withdraw-box.window-ok").show();
             } else { //无优惠
                 companyDepositSubmit($("input[name='depositChannel']").val());
             }

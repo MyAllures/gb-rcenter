@@ -1,5 +1,5 @@
 //模板页面
-define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEditPage) {
+define(['common/BaseEditPage', 'bootstrapswitch', 'jschosen'], function (BaseEditPage) {
 
     return BaseEditPage.extend({
         /**
@@ -57,7 +57,7 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
             });
             $("[name='payType']", this.formSelector).chosen().change(function (item) {
                 var _e = {'key': $(item.target).val()};
-                _this.bankChannel(_e);
+                _this.loadPayType();
             });
         },
         /**
@@ -81,7 +81,7 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
             /**
              * 货币
              */
-           $(this.formSelector).on("validate", "#currencyStr", function (e, message) {
+            $(this.formSelector).on("validate", "#currencyStr", function (e, message) {
                 var currencyNum = $("input[name='currency']:checked").length;
                 if (!currencyNum > 0) {
                     $(".currency").formtip(message);
@@ -110,29 +110,29 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
                     e.result = false;
                 }
             });
-            /**
-             * 异步加载存款渠道
-             */
-            $("#payType").change(function (e, option) {
-                var payType = $("#payType").find("option:selected").val();
-                window.top.topPage.ajax({
-                    url: root + '/payAccount/loadPayType.html',
-                    dataType: "json",
-                    data: {"payType": payType},
-                    success: function (data) {
-                        if (data != null) {
-                            var $select = $("#bankCode");
-                            var html = '<option value="">'+window.top.message.content_auto["请选择存款渠道"]+'</option>';
-                            var bankList = data.bankList;
-                            for (var index = 0; index < bankList.length; index++) {
-                                var bank = bankList[index];
-                                html = html + '<option value="' + bank.bankName + '" ${command.result.bankCode==' + bank.bankName + '?"selected":""}>' + bank.interlinguaBankName+ '</option>';
-                            }
-                            $select.html(html);
-                            $select.trigger("chosen:updated"); // bind  .chosen
+        },
+        /**
+         * 根据方式加载渠道
+         */
+        loadPayType: function () {
+            var payType = $("#payType").find("option:selected").val();
+            window.top.topPage.ajax({
+                url: root + '/payAccount/loadPayType.html',
+                dataType: "json",
+                data: {"payType": payType},
+                success: function (data) {
+                    if (data != null) {
+                        var $select = $("#bankCode");
+                        var html = '<option value="">' + window.top.message.content_auto["请选择存款渠道"] + '</option>';
+                        var bankList = data.bankList;
+                        for (var index = 0; index < bankList.length; index++) {
+                            var bank = bankList[index];
+                            html = html + '<option value="' + bank.bankName + '" ${command.result.bankCode==' + bank.bankName + '?"selected":""}>' + bank.interlinguaBankName + '</option>';
                         }
+                        $select.html(html);
+                        $select.trigger("chosen:updated"); // bind  .chosen
                     }
-                });
+                }
             });
         },
         savePlayer: function (e, option) {
@@ -176,10 +176,10 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
                 var val = $("#val" + index).val();
                 var view = $("#view" + index).val();
                 if (!val) {
-                    if(column=="payDomain"){
+                    if (column == "payDomain") {
                         validate.settings.highlight.call(validate, $("#onLinePay"), validate.settings.errorClass, validate.settings.validClass);
                         $("#onLinePay").formtip('不能为空');
-                    }else {
+                    } else {
                         validate.settings.highlight.call(validate, $("#val" + index), validate.settings.errorClass, validate.settings.validClass);
                         $("#val" + index).formtip('不能为空');
                     }
@@ -222,7 +222,7 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
                 dataType: "json",
                 data: {"channelCode": channel_code},
                 success: function (data) {
-                    for (var index = data.payApiParams.length - 1;index >= 0;index--){
+                    for (var index = data.payApiParams.length - 1; index >= 0; index--) {
                         var name = "channelJson";
                         var domainClass = '';
                         var hide = '';
@@ -352,8 +352,8 @@ define(['common/BaseEditPage','bootstrapswitch', 'jschosen'], function (BaseEdit
                 }
             });
         },
-        initSwitch:function(){
-            var _this=this;
+        initSwitch: function () {
+            var _this = this;
             var $bootstrapSwitch = $("[name='my-checkbox']");
             this.unInitSwitch($bootstrapSwitch)
                 .bootstrapSwitch({

@@ -27,8 +27,27 @@ define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
             var _this = this;
             $(this.formSelector).on("change", "input[name='result.payerBank']", function (e) {
                 _this.showRandomAmountMsg();
-                $(_this.formSelector + " input[name=account]").val($(_this.formSelector + " input[name='result.payerBank']:checked").attr("account"));
-                _this.changeValid(e);
+                var $payBank = $(_this.formSelector + " input[name='result.payerBank']:checked");
+                $(_this.formSelector + " input[name=account]").val($payBank.attr("account"));
+                var limitTip = $payBank.attr("amountLimit");
+                $("input[name=rechargeAmount]").attr("placeholder", limitTip);
+                _this.changeValid();
+            });
+            /**
+             * 金额监控
+             */
+            $(this.formSelector).on("input", "input[name=rechargeAmount]", function () {
+                $(_this.formSelector + " span.fee").hide();
+                var rechargeAmount = $("input[name=rechargeAmount]").val();
+                var $account = $("input[name=account]:checked");
+                var isRandomAmount = $account.attr("randomAmount");
+                if (isRandomAmount == 'true') {
+                    var rechargeDecimals = $("input[name=rechargeDecimals]").val();
+                    rechargeAmount = rechargeAmount + "." + rechargeDecimals;
+                }
+                $(_this.formSelector + " input[name='result.rechargeAmount']").val(rechargeAmount);
+                $(_this.formSelector + " span.fee").hide();
+                _this.changeValid();
             });
         },
         /**

@@ -157,6 +157,11 @@ height: 44px;}
 
 /* promo-detail */
 .promo-detail-content{
+    table{    color: #333;
+    border: 1px solid #666;
+        td{    border: 1px solid #666;}
+    }
+    .gb-select{display: block;}
     .gb-imgs >.ct {
         padding: 10px;
         ul{padding: 0;margin: 0;list-style: none;
