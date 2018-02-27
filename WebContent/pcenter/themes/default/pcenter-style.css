@@ -621,13 +621,13 @@ input[type="text"]:focus,input[type="email"]:focus,input[type="password"]:focus{
 .controls img{vertical-align:top}
 
 /* bank */
-.bank{float:left;cursor:pointer;border:2px solid #e2e2e2;margin-right:8px;display:inline-block;margin-top:8px;width:148px;height:32px;padding:8px 0px 6px 8px;margin-left:0;border-radius: 4px;}
+.bank{float:left;cursor:pointer;border:2px solid #e2e2e2;margin-right:8px;display:inline-block;margin-top:8px;width:160px;height:32px;padding:8px 0px 6px 8px;margin-left:0;border-radius: 4px;}
 .pay-bank{cursor:pointer;vertical-align:middle;}
 .moneydetail .pay-bank{margin-top:10px;vertical-align:top;}
 .bank-logo-name{line-height:0;overflow:hidden;display:block}
 .radio{cursor:pointer;}
-.bank:hover,.bank.select{border:2px solid #2772ee;cursor:pointer;width:148px;height:32px;}
-.bank.select{background:url("../../images/selectbank.png") no-repeat 139px 29px;}
+.bank:hover,.bank.select{border:2px solid #2772ee;cursor:pointer;width:160px;height:32px;}
+.bank.select{background:url("../../images/selectbank.png") no-repeat 152px 29px;}
 .code{margin-top:10px}
 .bank-spreadout{text-align:right;margin-right:117px;font-size:13px;}
 .bank-arrico{display:inline-block;margin-left:5px;vertical-align:middle;width:9px;height:5px;background:url(../../images/updown.png) no-repeat top left;cursor:pointer;}
