@@ -7,8 +7,6 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
          * this._super();
          * 调用
          */
-        sw:true,
-        ue:[],
         init: function (title) {
             this.formSelector = "form";
             this._super();
@@ -32,7 +30,23 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             this._super();
             var _this = this;
 
-        }
+        },
+    filterNum:function (e) {
+        window.top.topPage.ajax({
+                url : root + "/lotteryKillrate/filterNum.html",
+                type : "post",
+                dataType: "json",
+                data : this.getCurrentFormData(e),
+                success: function (data) {
+                    $("#rule").val(JSON.stringify(data));
+                    $(e.currentTarget).unlock();
+                },
+                error : function(err) {
+                    $("#rule").val("");
+                    $(e.currentTarget).unlock();
+                }
+            });
+    }
 
     });
 });
