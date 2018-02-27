@@ -31,20 +31,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         onPageLoad: function () {
             this._super();
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                var opt = {};
-                if($(e.target).attr("id")=="transactionNo-copy"){
-                    opt.placement = "left";
-                }else{
-                    opt.placement = "right";
-                }
-                page.showPopover(e, opt, 'success', window.top.message.fund_auto['复制成功'], true);
-            });
-           /* ZeroClipboard.destroy();
-            $(".global-zeroclipboard-container").remove();
-            new ZeroClipboard($('a[name="copy"]'));*/
         },
         /**
          * 当前对象事件初始化函数
@@ -52,6 +38,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         bindEvent: function () {
             this._super();
             var _this = this;
+            this.copyText('a[name="copy"]');
 
             //添加备注或者取消备注
             $(".addNotes a").click(function () {
