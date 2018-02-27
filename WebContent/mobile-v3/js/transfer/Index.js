@@ -216,11 +216,6 @@ function reconnectAgain(obj, option) {
     muiAjax(options);
 }
 
-function transferCallBack(obj, option) {
-    successBack(obj, option);
-    getSiteApi();
-}
-
 /**
  * 转账回调
  */
@@ -231,10 +226,10 @@ function transferBack(obj, option) {
         initTransfer();
     } else if (data.state == true && data.result == 0) {
         //转账成功
-        showWarningMsg(window.top.message.transfer_auto['转账成功'], window.top.message.transfer_auto['转账成功2'], transferCallBack, option);
+        showWarningMsg(window.top.message.transfer_auto['转账成功'], window.top.message.transfer_auto['转账成功2'], successBack, option);
     } else if (data.state == true && data.result == 1) {
         //转账失败
-        showWarningMsg(window.top.message.transfer_auto['转账失败'], window.top.message.transfer_auto['转账已失败'], transferCallBack, option);
+        showWarningMsg(window.top.message.transfer_auto['转账失败'], window.top.message.transfer_auto['转账已失败'], successBack, option);
     } else if (data.state == true && data.result) {
         var orderId = data.orderId;
         var btnArray = [window.top.message.transfer_auto['返回'], window.top.message.transfer_auto['再试一次']];
