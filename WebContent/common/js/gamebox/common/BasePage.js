@@ -996,7 +996,12 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
             clip.on('success', function (e) {
                 e.clearSelection();
                 e.currentTarget = e.trigger;
-                page.showPopover(e, {}, 'success', window.top.message.fund_auto['复制成功'], true);
+                var opt = {};
+                var placement = $(e.currentTarget).attr("data-clipboard-placement");
+                if (placement) {
+                    opt.placement = placement;
+                }
+                page.showPopover(e, opt, 'success', window.top.message.fund_auto['复制成功'], true);
             });
 
             clip.on('error', function (e) {

@@ -13,6 +13,7 @@ define(['common/BasePage'], function(BasePage) {
          */
         bindEvent : function() {
             this._super();
+            this.copyText('a[name="copy"]');
         },
         playerHasNoEmail:function( event ,option){
         //    该玩家未验证邮箱，请选择其他方式重置登录密码
@@ -151,11 +152,6 @@ define(['common/BasePage'], function(BasePage) {
                 success: function (data) {
                     $("#reset-pwd-div").hide();
                     $(".modal-body").append(data);
-                    var clip = new ZeroClipboard($('a[name="copy"]'));
-                    clip.on('aftercopy', function (e) {
-                        e.currentTarget = e.target;
-                        page.showPopover(e, {}, 'success', window.top.message.player_auto['复制成功'], true);
-                    });
                     page.resizeDialog();
                 }
             });

@@ -23,22 +23,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         bindEvent : function() {
             this._super();
             //复制按钮
-            var clip = new clipboard('a[name="copy"]');
-            clip.on('success', function (e) {
-                e.clearSelection();
-                e.currentTarget = e.trigger;
-                var opt = {};
-                if($(e.currentTarget).attr("id")=="transactionNo-copy"){
-                    opt.placement = "left";
-                }else{
-                    opt.placement = "right";
-                }
-                page.showPopover(e, opt, 'success', window.top.message.fund_auto['复制成功'], true);
-            });
-
-            clip.on('error', function (e) {
-                console.error('复制失败:', e.action);
-            });
+           this.copyText('a[name="copy"]');
             //刷新
             $(".fa-refresh").on("click", function (e) {
                 window.location.reload();
