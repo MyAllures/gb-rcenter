@@ -339,6 +339,10 @@ function bindButtonEvent(selector) {
      */
     selector = selector || "body";
     mui(selector).on("tap", "[data-rel]", function (e) {
+        //防止提交事件软键盘弹出
+        if (document.activeElement) {
+            document.activeElement.blur();
+        }
         var $target = $(this);
         var isLocked = $target.isLocked();
         if (isLocked) {

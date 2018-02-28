@@ -530,74 +530,92 @@
       color: #999ba4; }
   .content-casino-transfer .api-item {
     display: inline-block;
-    width: 56px;
-    height: 57px;
+    width: 70px;
+    height: 72px;
     position: relative; }
     .content-casino-transfer .api-item:after {
       content: '';
       position: absolute;
-      width: 56px;
-      height: 28px;
-      top: 4px;
-      left: -9px;
+      width: 70px;
+      height: 34px;
+      top: 6px;
+      left: -13px;
       z-index: 2;
-      border-top-left-radius: 28px;
-      border-top-right-radius: 28px;
-      -webkit-transform: rotateZ(-45deg);
-      transform: rotateZ(-45deg); }
+      border-top-left-radius: 34px;
+      border-top-right-radius: 34px;
+      -webkit-transform: rotateZ(-47deg);
+      transform: rotateZ(-47deg); }
     .content-casino-transfer .api-item:before {
       content: '';
       position: absolute;
-      width: 56px;
-      height: 56px;
+      width: 70px;
+      height: 70px;
       top: 0;
       left: 0;
       z-index: 1;
-      background: url(images/api-sprite.png) 0 0/56px no-repeat; }
+      background: url(images/api-sprite.png) 0 0/70px no-repeat; }
     .content-casino-transfer .api-item.api-icon-2-3:before {
-      background-position: -7px 0; }
+      background-position: -8.75px 0; }
     .content-casino-transfer .api-item.api-icon-1-16:before {
-      background-position: 0 -56px; }
+      background-position: 0 -70px; }
     .content-casino-transfer .api-item.api-icon-1-7:before {
-      background-position: 0 -112px; }
+      background-position: 0 -140px; }
     .content-casino-transfer .api-item.api-icon-1-17:before {
-      background-position: 0 -168px; }
+      background-position: 0 -210px; }
     .content-casino-transfer .api-item.api-icon-1-9:before, .content-casino-transfer .api-item.api-icon-2-9:before {
-      background-position: 0 -224px; }
-    .content-casino-transfer .api-item.api-icon-1-10:before, .content-casino-transfer .api-item.api-icon-2-10:before {
       background-position: 0 -280px; }
+    .content-casino-transfer .api-item.api-icon-1-10:before, .content-casino-transfer .api-item.api-icon-2-10:before, .content-casino-transfer .api-item.api-icon-3-10:before {
+      background-position: 0 -350px; }
     .content-casino-transfer .api-item.api-icon-1-5:before {
-      background-position: 0 -336px; }
+      background-position: 0 -420px; }
     .content-casino-transfer .api-item.api-icon-1-1:before {
-      background-position: 0 -392px; }
+      background-position: 0 -490px; }
+    .content-casino-transfer .api-item.api-icon-1-33:before, .content-casino-transfer .api-item.api-icon-3-33:before {
+      background-position: 0 -1750px; }
     .content-casino-transfer .api-item.api-icon-2-15:before {
-      background-position: 0 -616px; }
+      background-position: 0 -770px; }
     .content-casino-transfer .api-item.api-icon-2-6:before {
-      background-position: 0 -504px; }
+      background-position: 0 -630px; }
     .content-casino-transfer .api-item.api-icon-3-12:before {
-      background-position: 0 -448px; }
-    .content-casino-transfer .api-item.api-icon-3-19:before {
       background-position: 0 -560px; }
+    .content-casino-transfer .api-item.api-icon-3-19:before {
+      background-position: 0 -700px; }
     .content-casino-transfer .api-item.api-icon-2-26:before {
-      background-position: 0 -672px; }
-    .content-casino-transfer .api-item.api-icon-2-20:before {
-      background-position: 0 -728px; }
-    .content-casino-transfer .api-item.api-icon-1-24:before, .content-casino-transfer .api-item.api-icon-3-24:before {
-      background-position: 0 -784px; }
-    .content-casino-transfer .api-item.api-icon-2-25:before {
       background-position: 0 -840px; }
+    .content-casino-transfer .api-item.api-icon-2-20:before {
+      background-position: 0 -910px; }
+    .content-casino-transfer .api-item.api-icon-1-24:before, .content-casino-transfer .api-item.api-icon-3-23:before {
+      background-position: 0 -980px; }
+    .content-casino-transfer .api-item.api-icon-2-25:before {
+      background-position: 0 -1050px; }
+    .content-casino-transfer .api-item.api-icon-2-31:before {
+      background-position: 0 -1681.25px; }
+    .content-casino-transfer .api-item.api-icon-2-32:before {
+      background-position: 0 -1612.5px; }
     .content-casino-transfer .api-item.api-icon-3-4:before {
-      background-position: 0 -896px; }
-    .content-casino-transfer .api-item.api-icon-2-27:before {
-      background-position: 0 -952px; }
-    .content-casino-transfer .api-item.api-icon-1-2:before {
-      background-position: 0 -1008px; }
-    .content-casino-transfer .api-item.api-icon-2-28:before {
-      background-position: 0 -1064px; }
-    .content-casino-transfer .api-item.lt:before {
       background-position: 0 -1120px; }
+    .content-casino-transfer .api-item.api-icon-2-27:before {
+      background-position: 0 -1190px; }
+    .content-casino-transfer .api-item.api-icon-1-2:before {
+      background-position: 0 -1260px; }
+    .content-casino-transfer .api-item.api-icon-2-28:before {
+      background-position: 0 -1330px; }
+    .content-casino-transfer .api-item.api-icon-5-1:before {
+      background-position: 0 -1541.25px; }
+    .content-casino-transfer .api-item.api-icon-2-35:before {
+      background-position: 0 -1820px; }
+    .content-casino-transfer .api-item.api-icon-3-21:before {
+      background-position: 0 -1890px; }
+    .content-casino-transfer .api-item.api-icon-3-36:before {
+      background-position: 0 -1960px; }
+    .content-casino-transfer .api-item.lt:before {
+      background-position: 0 -1400px; }
     .content-casino-transfer .api-item.yzt:before {
-      background-position: 0 -1176px; }
+      background-position: 0 -1470px; }
+    .content-casino-transfer .api-item.gns:before {
+      background-position: 0 -1541.25px; }
+    .content-casino-transfer .api-item.prg:before {
+      background-position: 0 -1615px; }
   .content-casino-transfer .e-btn-group {
     text-align: center;
     padding: 0 10px;
