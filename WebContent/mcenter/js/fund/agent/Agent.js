@@ -25,7 +25,7 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
                     $(".btn-query-css").click();
                 }
             });
-
+            this.copyText('a[name="copy"]');
         },
         /** 声音开关 */
         toneSwitch: function (e) {
@@ -58,11 +58,6 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
             $('[data-toggle="popover"]',_this.formSelector).popover({
                 trigger: 'hover',
                 html: true
-            });
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', window.top.message.fund_auto['复制成功'], true);
             });
             if($("#todaySales").val()=='true'){
                 $("#todayTotal").text($("#todayTotalSource").text());
