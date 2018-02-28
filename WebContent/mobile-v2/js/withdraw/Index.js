@@ -75,7 +75,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                     return;
                 }
                 if (!_this.checkAmout()) {
-                   return;
+                    return;
                 }
                 var errMsg = _this.errorMap.get('errMsg');
                 if (!errMsg) {
@@ -266,14 +266,25 @@ define(['common/MobileBasePage'], function (Mobile) {
         hasBank: function () {
             var $target = $(".account_tab .mui-segmented-control a.mui-active[data]");
             var id = $target.attr("data");
-            if (id == 'bank_account') {
+            if ($target.length==0) {
+                var noBank = $("input[name=noBank]").val();
+                if (noBank == 'true') {
+                    this.noBankLayer();
+                    return false;
+                }
+                var noBtc = $("input[name=noBtc]").val();
+                if (noBtc == 'true') {
+                    this.noBtcLayer();
+                    return false;
+                }
+            } else if (id == 'bank_account') {
                 $("input[name=remittanceWay]").val("1");
                 var noBank = $("input[name=noBank]").val();
                 if (noBank == 'true') {
                     this.noBankLayer();
                     return false;
                 }
-            } else {
+            } else if (id == 'bit_account') {
                 $("input[name=remittanceWay]").val("2");
                 var noBtc = $("input[name=noBtc]").val();
                 if (noBtc == 'true') {

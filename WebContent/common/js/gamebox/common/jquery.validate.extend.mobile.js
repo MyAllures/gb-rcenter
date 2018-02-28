@@ -172,10 +172,15 @@
                         if(prev.attr('for') == elementName) {
                             errorMsg = errorMsg.replace(/{}/g, prev.text());
                         } else {
-                            var lbl = $form.find("label[for='" + elementName + "']");
+                            var span = $form.find("label span[for='" + elementName + "']");
                             var name = "";
-                            if(lbl.length != 0) {
-                                name = lbl.text().trim().replace(/[:：]$/, '').replace(/^\*/, "").trim();
+                            if (span.length != 0) {
+                                name = span.text().trim().replace(/[:：]$/, '').replace(/^\*/, "").trim();
+                            } else {
+                                var lbl = $form.find("label[for='" + elementName + "']");
+                                if (lbl.length != 0) {
+                                    name = lbl.text().trim().replace(/[:：]$/, '').replace(/^\*/, "").trim();
+                                }
                             }
                             errorMsg = errorMsg.replace(/{}/g, name);
                         }
