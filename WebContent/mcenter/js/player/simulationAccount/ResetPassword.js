@@ -13,14 +13,10 @@ define(['common/BaseListPage','common/BaseEditPage'], function(BaseListPage,Base
         bindEvent:function()
         {
             this._super();
+            this.copyText('[name="copy"]')
         },
         onPageLoad: function () {
             this._super();
-            var clip = new ZeroClipboard($('[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                var $obj = $($(e)[0].target);
-                window.top.topPage.customerPopover($obj, window.top.message.report_auto['复制成功']);
-            });
         },
     });
 });

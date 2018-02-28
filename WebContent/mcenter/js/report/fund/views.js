@@ -23,6 +23,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         bindEvent: function () {
             this._super();
+            this.copyText('a[name="copy"]')
         },
 
         /**
@@ -35,11 +36,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             $('[data-toggle="popover"]',_this.formSelector).popover({
                 trigger: 'hover',
                 html: true
-            });
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', window.top.message.report_auto['复制成功'], true);
             });
         },
         queryGameOrder: function (event,option) {
