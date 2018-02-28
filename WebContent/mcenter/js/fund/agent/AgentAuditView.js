@@ -28,7 +28,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 e.clearSelection();
                 e.currentTarget = e.trigger;
                 var opt = {};
-                if($(e.target).attr("id")=="transactionNo-copy"){
+                if($(e.currentTarget).attr("id")=="transactionNo-copy"){
                     opt.placement = "left";
                 }else{
                     opt.placement = "right";
