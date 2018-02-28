@@ -15,7 +15,6 @@ define(['common/MobileBasePage'], function (Mobile) {
                 decimal: false,
                 intSize: 9
             });
-            this.checkForm();
             var _this = this;
             mui.back = function () {
                 if (os != 'app_ios')
@@ -70,43 +69,77 @@ define(['common/MobileBasePage'], function (Mobile) {
                     _this.gotoUrl(url);
                 }, 100);
             });
-
-            mui("form").on('tap', 'button.submit', function () {
+            //确认提交取款订单
+            mui("form").on('tap', 'a#submitWithdraw', function () {
                 if (!_this.hasBank()) {
                     return;
                 }
-                if (_this.checkAmout()) {
-                    var errMsg = _this.errorMap.get('errMsg');
-                    if (!errMsg) {
-                        window.top.page.security.checkSecurityPassword(function () {
-                            _this.submitWithdraw();
-                        });
-                    } else {
-                        _this.toast(errMsg);
-                        $('[name=withdrawAmount]').focus();
-                    }
+                if (!_this.checkAmout()) {
+                   return;
                 }
-            })
-        },
-        checkForm: function () {
-            var _this = this;
-            $('[name=withdrawAmount]').bind('input propertychange', function () {
-                var min = parseFloat($(this).attr('min'));
-                var max = parseFloat($(this).attr('max'));
-                var amount = parseFloat($(this).val());
-                if (amount < min) {
-                    $('.submit').attr('disabled', 'disabled');
-                }
-                if (amount >= min) {
-                    $('.submit').removeAttr('disabled');
-                    if (_this.checkAmout())
-                        _this.calcFee(amount);
+                var errMsg = _this.errorMap.get('errMsg');
+                if (!errMsg) {
+                    window.top.page.security.checkSecurityPassword(function () {
+                        _this.submitWithdraw();
+                    });
                 } else {
-                    _this.recoverAmount();
+                    _this.toast(errMsg);
                 }
             });
-        },
+            //重新填写金额
+            mui("form").on("tap", "[name=closeConfirmDialog]", function () {
+                $("#confirmWithdrawDialog").hide();
+                $(".masker").hide();
+            });
+            //确认取款弹窗
+            mui("form").on("tap", "button#confirmWithdraw", function () {
+                if (!_this.checkAmout()) {
+                    return;
+                }
+                var amount = parseFloat($("input[name='withdrawAmount']").val());
+                // 计算各种费
+                mui.ajax(root + '/wallet/withdraw/withdrawFee.html', {
+                    dataType: 'json',
+                    data: {"withdrawAmount": amount},
+                    type: 'post',
+                    success: function (data) {
+                        if (data) {
+                            if (data.legalNum) {    // 不在规定范围内
+                                _this.toast(data.legalNum);
+                                return false;
+                            }
+                            var sign = $('#sign').val();
+                            $("#confirmWithdrawAmount").text(amount);
+                            // 手续费
+                            var poundage = data.poundage;
+                            if (poundage > 0) {
+                                $("#confirmWithdrawFee").text(-poundage);
+                            } else {
+                                $("#confirmWithdrawFee").text('0.00');
+                            }
+                            // 实际可取款金额
+                            var actualWithdraw = data.actualWithdraw;
+                            $("#confirmWithdrawActualAmount").text(actualWithdraw);
 
+                            var tooSmall = data.amountTooSmall;
+                            var actualLess0 = data.actualLess0;
+                            if (tooSmall == "true") {
+                                _this.errorMap.put('errMsg', window.top.message.withdraw_auto['取款金额需大于手续费']);
+                            } else if (actualLess0) {
+                                _this.errorMap.put('errMsg', window.top.message.withdraw_auto['实际取款金额需大于0']);
+                            } else {
+                                _this.errorMap.put('errMsg', "");
+                            }
+                            $(".masker").show();
+                            $("#confirmWithdrawDialog").show();
+                        } else {
+                            _this.toast("网络忙，请稍候再试！");
+                            return false;
+                        }
+                    }
+                });
+            })
+        },
         recoverAmount: function () {
             $('span.poundage').html($('[name="poundageHide"]').val());
             $('span.actual').html($('[name="actualHide"]').val());

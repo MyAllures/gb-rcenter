@@ -33,11 +33,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 trigger: 'hover',
                 placement: 'top'
             });
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', window.top.message.player_auto['复制成功'], true);
-            });
             this.querySingleAndEffective();
 
         },
@@ -129,6 +124,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         bindEvent: function () {
             this._super();
             var _this = this;
+            this.copyText('a[name="copy"]');
         },
         queryView: function (e) {
             var _this = this;

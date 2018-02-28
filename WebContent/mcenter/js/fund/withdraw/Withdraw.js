@@ -443,6 +443,19 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
             })
         },
         /**
+         * 出款详情页面
+         */
+        withdrawStatusView: function (e, option) {
+            var btnOption = {};
+            var id = option.dataId;
+            btnOption.target = root + "/fund/withdraw/withdrawStatusView.html?search.id=" + id;
+            btnOption.callback = option.callback;
+            btnOption.text = "易收付出款审核";
+            btnOption.size = "size-wide";
+            window.top.topPage.doDialog(e, btnOption);
+
+        },
+        /**
          *保存出款账户后刷新页面
          */
         reloadMainFrame:function (e,opt) {

@@ -5,6 +5,7 @@ mui.init({});
 mui('.mui-scroll-wrapper').scroll();
 
 $(function () {
+    muiInit();
     displayToIndex();
 });
 
@@ -18,7 +19,7 @@ function displayToIndex() {
     }
 }
 
-mui(document.body).on('tap', '#welcome', function () {
+function clickWelcome() {
     setTimeout(function () {
         var $bg = $('div.load-bg');
         $bg.fadeOut();
@@ -26,7 +27,8 @@ mui(document.body).on('tap', '#welcome', function () {
             $bg.remove();
         }, 1000);
     }, 1000);
-});
+}
+
 
 function lazy2Index(isOpen) {
     var b = "_OPEN_SPLASH";

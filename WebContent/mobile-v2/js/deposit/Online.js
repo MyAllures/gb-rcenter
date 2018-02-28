@@ -184,6 +184,12 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                 }else if($("#submitAmount").attr("category") =="excess"){
                     var min = $("#onlinePayMin").val();
                     var max = $("#onlinePayMax").val();
+                    if(!min) {
+                        min = 0.01;
+                    }
+                    if(!max) {
+                        max = 99999999;
+                    }
                     _this.toast(window.top.message.deposit_auto['单笔存款金额为']+min+"~"+max);
                     return false;
                 }else if($("#submitAmount").attr("category") !="through"){
