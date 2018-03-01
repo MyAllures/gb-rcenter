@@ -1698,8 +1698,9 @@ body.deposit {
     width: 55px;
     display: inline-block;
     text-align: left;
-    vertical-align: middle;
-    height: 26px; }
+    vertical-align: top;
+    height: 26px;
+    margin-top: 4px; }
   body.deposit .modes-payment > .ct a.long span .text-two-line {
     overflow: hidden;
     text-overflow: ellipsis;
