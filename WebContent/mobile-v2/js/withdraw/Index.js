@@ -25,6 +25,7 @@ define(['common/MobileBasePage'], function (Mobile) {
             this.hasBank();
             this.initPage();
             this.gotoFragment();
+            $('._userAsset').removeClass('mui-hide');
         },
         /**
          * 无银行卡弹窗提示

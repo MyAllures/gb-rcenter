@@ -91,8 +91,6 @@ define([], function () {
             $('.mui-bar-nav .menu .ex').height(function () {
                 return $(window).height() - 49 - $('nav').height();
             });
-
-            $("#mui-asset").removeClass("mui-hide");
         },
 
         initScroll: function () {
