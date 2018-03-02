@@ -26,13 +26,6 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
              * 控件的初始化
              */
             this._super();
-
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            //复制
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', window.top.message.home_auto['复制成功'], true);
-            });
             //查询所有订单，链接到“角色管理”->“代理管理”->“资金”页面判断标识 add by eagle on 20151203
             //var extendLinks = $("#funds").attr("data-link");
             //if(extendLinks == 'yes') {
@@ -67,6 +60,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
              * 事件的初始化
              */
             this._super();
+            this.copyText('a[name="copy"]');
             $(this.formSelector).on("click", ".propormpt", function () {
                 alert("该链接内容开发中！");
             });
