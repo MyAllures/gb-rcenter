@@ -187,6 +187,7 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
         bindEvent: function () {
             this._super();
             var that = this;
+            this.copyText('a[name="copy"]');
             this.initShowDetail();
             $("#searchtext").keydown(function (event) {
                 if(event.keyCode==13){
@@ -265,11 +266,6 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
             $('[data-toggle="popover"]',_this.formSelector).popover({
                 trigger: 'hover',
                 html: true
-            });
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', window.top.message.fund_auto['复制成功'], true);
             });
             $("[name='fund-withdraw']").on("click", function () {
                 $('[role="tooltip"]').hide();

@@ -69,7 +69,6 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
         bindEvent: function () {
             this._super();
             var _this = this;
-            this.copyText('a[name="copy"]');
             //切换语言
             $(this.formSelector).on("click","a[name='tag']", function () {
                 $("a[name='tag']").removeClass("current");

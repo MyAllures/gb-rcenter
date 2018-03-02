@@ -1,5 +1,4 @@
-define(['common/BaseEditPage','zeroClipboard'], function(BaseEditPage,ZeroClipboard) {
-    var _this=this;
+define(['common/BaseEditPage'], function(BaseEditPage) {
     return BaseEditPage.extend({
         /**
          * 初始化及构造函数，在子类中采用
@@ -9,7 +8,6 @@ define(['common/BaseEditPage','zeroClipboard'], function(BaseEditPage,ZeroClipbo
         init: function (title) {
             this.formSelector = "#mainFrame form";
             this._super();
-
         },
         /**
          * 页面加载事件函数
@@ -32,7 +30,7 @@ define(['common/BaseEditPage','zeroClipboard'], function(BaseEditPage,ZeroClipbo
         bindEvent: function () {
             this._super();
             //复制按钮
-            var clip = new ZeroClipboard($('a[name="copy"]'));
+            this.copyText('a[name="copy"]');
             $("ul li a","#mainFrame .panel").on("click",function(e){
                 var $href = $(this).attr("data-href");
                 $(".tab-content").load(root+$href);

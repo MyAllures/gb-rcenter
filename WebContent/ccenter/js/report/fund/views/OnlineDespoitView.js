@@ -1,7 +1,7 @@
 /**
  * Created by bruce on 16-7-11.
  */
-define(['common/BaseEditPage','zeroClipboard'], function (BaseEditPage,ZeroClipboard) {
+define(['common/BaseEditPage'], function (BaseEditPage) {
 
     return BaseEditPage.extend({
 
@@ -16,11 +16,7 @@ define(['common/BaseEditPage','zeroClipboard'], function (BaseEditPage,ZeroClipb
 
         bindEvent: function () {
             this._super();
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', '复制成功', true);
-            });
+            this.copyText('a[name="copy"]');
         }
 
     });
