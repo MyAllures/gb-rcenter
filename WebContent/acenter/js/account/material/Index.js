@@ -21,11 +21,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 this.parent().parent().next().children("span").text("尺寸："+height+"*"+width);
             });*/
             //复制按钮
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', window.top.message.account_auto['复制成功'], true);
-            });
+            this.copyText('a[name="copy"]');
 
             $("a.download").on("click",function(){
                 var _this = this;
