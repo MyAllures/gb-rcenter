@@ -176,6 +176,8 @@ mui("body").on("tap",".btn-demo",function(){
         yes: function (index) {
             layer.close(index);
             sessionStorage.is_login = true;
+            sessionStorage.isLogin = true;
+            sessionStorage.isDemo = true;
             if (os === 'app_ios') {
                 demoEnter();
             } else {
