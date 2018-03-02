@@ -367,6 +367,8 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             $(".edit-btn-css").removeClass("hide");
             $(".save-btn-css").addClass("hide");
             $(".cancel-btn-css").addClass("hide");
+            var checkRemark = $("input[name=checkRemark]").val();
+            $("[name='remarkContent']").val(checkRemark);
             $("[name='remarkContent']").attr("readonly", "readonly");
             $(e.currentTarget).unlock();
         },
@@ -374,6 +376,8 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             var _this = this;
             var status = $("[name='withdrawStatus']").val();
             if (opt.data.state) {
+                var checkRemark = $("textarea[name='remarkContent']").val();
+                $("input[name=checkRemark]").val(checkRemark);
                 if(status=='1'){
                     opt.callback= function () {
 
