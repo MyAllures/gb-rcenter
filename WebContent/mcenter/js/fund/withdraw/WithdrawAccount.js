@@ -45,6 +45,37 @@ define(['common/BaseEditPage','bootstrapswitch'], function (BaseEditPage) {
                         }
                     }
                 );
+        },
+        accountValidateForm: function (e,opt) {
+            var isSwitch = $("[name='result.isSwitch']").val();
+            var withdrawChannel=$("#withdrawChannel").val();
+            var merchantCode=$("#merchantCode").val();
+            var platformId=$("#platformId").val();
+            var key=$("#key").val();
+            if(isSwitch=="true"){
+                if (withdrawChannel==null||withdrawChannel==""){
+                    page.showPopover(e,opt,"danger","出款渠道不能为空",true);
+                    return false;
+                }else if (merchantCode==null||merchantCode==""){
+                    page.showPopover(e,opt,"danger","商户号不能为空",true);
+                    return false;
+                }else if (key==null||key==""){
+                    page.showPopover(e,opt,"danger","秘钥不能为空",true);
+                    return false;
+                }
+            }
+            return true;
+        },
+        /**
+         * 示例删除回调函数
+         * @param e             事件对象
+         * @param option        Button标签的参数
+         */
+        saveCallbak: function (e, option) {
+            if (e.returnValue == true) {
+                this.returnValue=true;
+                window.top.topPage.closeDialog();
+            }
         }
 
     });
