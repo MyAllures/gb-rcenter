@@ -50,6 +50,7 @@ function login() {
             success: function (data) {
                 if (data.success) {
                     sessionStorage.is_login = true;
+                    sessionStorage.isDemo = false;
                     if(os == 'app_ios'){
                         loginSucc(_username,_password,1);
                     }else{

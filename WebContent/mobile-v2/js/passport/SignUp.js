@@ -60,6 +60,7 @@ mui(".mui-content").on("tap", "._register", function () {
 function login() {
     var _username = $("[name='sysUser.username']").val();
     var _password = $("[name='sysUser.password']").val();
+    sessionStorage.isDemo = false;
     os = whatOs();
     if (os == 'app_android') {
         try {

@@ -13,13 +13,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             this._super();
             this.setContent();
             this.setFeeList();
-            //复制按钮
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                var opt = {};
-                page.showPopover(e, opt, 'success', window.top.message.fund_auto['复制成功'], true);
-            });
             $(".btn-withdraw-result-btn").focus();
         },
         /**
@@ -37,7 +30,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     $(".btn-withdraw-result-btn").click();
                 }
             });
-
+            this.copyText('a[name="copy"]');
         },
         setContent: function () {
             var content = window.top.topPage.remarkContent;

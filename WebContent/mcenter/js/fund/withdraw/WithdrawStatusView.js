@@ -20,19 +20,9 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         bindEvent: function () {
             this._super();
-            var _this=this;
+            var _this = this;
             //复制按钮
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                var opt = {};
-                if($(e.target).attr("id")=="transactionNo-copy"){
-                    opt.placement = "left";
-                }else{
-                    opt.placement = "right";
-                }
-                page.showPopover(e, opt, 'success', window.top.message.fund_auto['复制成功'], true);
-            });
+            this.copyText('a[name="copy"]');
 
             $("[about='playerAccount']").click(function () {
                 if ($(this).next().attr('style') != 'display: block;') {
@@ -41,7 +31,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     $(this).next().removeAttr('style');
                 }
             });
-            $('[data-toggle="popover"]',_this.formSelector).popover({
+            $('[data-toggle="popover"]', _this.formSelector).popover({
                 trigger: 'hover',
                 html: true
             });
@@ -69,12 +59,12 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             if (opt.data.state) {
                 var checkRemark = $("textarea[name='remarkContent']").val();
                 $("input[name=checkRemark]").val(checkRemark);
-                if(status=='1'){
-                    opt.callback= function () {
+                if (status == '1') {
+                    opt.callback = function () {
 
                     };
-                }else{
-                    opt.callback='cancelEdit';
+                } else {
+                    opt.callback = 'cancelEdit';
                 }
 
                 e.page.showPopover(e, opt, 'success', window.top.message.common['operation.success'], true);
@@ -82,14 +72,14 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 e.page.showPopover(e, opt, 'danger', window.top.message.common['operation.fail'], true);
             }
         },
-        userDetail: function (e){
+        userDetail: function (e) {
             var origin = window.location.origin;
             var playerId = $("input[name='playerId']").val();
             var url = origin + "/mcenter/#/player/playerView.html?search.id=" + playerId;
             window.open(url);
             $(e.currentTarget).unlock();
         },
-        agentDetail: function (e){
+        agentDetail: function (e) {
             var origin = window.location.origin;
             var agentId = $("input[name='agentId']").val();
             var url = origin + "/mcenter/#/userAgent/agent/detail.html?search.id=" + agentId;
@@ -102,7 +92,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          * @param opt
          */
         refreshBack: function (e, opt) {
-            if(e.returnValue) {
+            if (e.returnValue) {
                 window.location.reload();
             }
         }
