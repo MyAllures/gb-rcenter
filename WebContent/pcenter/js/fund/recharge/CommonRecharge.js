@@ -10,17 +10,13 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         init: function () {
             this._super();
-            var clip = new ZeroClipboard($('[name="copy"]'));
-            clip.on('copy', function (e) {
-                var $obj = $($(e)[0].target).find("a");
-                window.top.topPage.customerPopover($obj, window.top.message.fund_auto['复制成功']);
-            });
         },
         /**
          * 当前对象事件初始化函数
          */
         bindEvent: function () {
             this._super();
+            this.copyText('a[name="copy"]');
             $(this.formSelector).on("click", ".openPage", function () {
                 var iWidth = 850;                          //弹出窗口的宽度;
                 var iHeight = 850;                       //弹出窗口的高度;

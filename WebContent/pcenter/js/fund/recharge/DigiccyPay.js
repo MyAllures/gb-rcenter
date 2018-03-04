@@ -8,15 +8,17 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             this._super(this.formSelector);
         },
         /**
+         * 当前对象事件初始化函数
+         */
+        bindEvent: function () {
+            this._super();
+            this.copyText('a[name="copy"]');
+        },
+        /**
          * 页面加载后加载
          */
         onPageLoad: function () {
             this._super();
-            var clip = new ZeroClipboard($('button[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', window.top.message.fund_auto['复制成功'], true);
-            });
         },
         /**
          * 生成地址
@@ -52,11 +54,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             $("#" + currency).html(html);
             var $currencyInfo = $("div[name=account" + currency + "]");
             $currencyInfo.find(".s-yue").show();
-            var clip = new ZeroClipboard($('button[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', window.top.message.fund_auto['复制成功'], true);
-            });
         },
         /**
          * 兑换
