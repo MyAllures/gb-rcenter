@@ -91,6 +91,10 @@ define(['site/hall/pl3/PlayWay'], function (PlayWay) {
                 betForm.totalMoney = add(betForm.totalMoney, betAmount);
                 betForm.quantity = add(betForm.quantity, 1);
             }
+            if(betForm.quantity>500){
+                layer.msg("注数过大");
+                return;
+            }
             return betForm;
         },
         getAllGroup:function(){

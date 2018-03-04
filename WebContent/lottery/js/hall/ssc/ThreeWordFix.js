@@ -11,7 +11,6 @@ define(['site/hall/ssc/PlayWay'], function (PlayWay) {
             this._super();
         },
         bindButtonEvents: function () {
-            debugger;
             this._super();
             var _this = this;
             $("div.T-tab.fix-type.clearfix a").on('click', function () {
