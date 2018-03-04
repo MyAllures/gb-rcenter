@@ -30,18 +30,11 @@ define(['common/BaseListPage', 'site/home/include/Chart', 'site/home/include/Tab
             this._super();
             var _this = this;
             //这里初始化所有的事件
-            var clip = new ZeroClipboard($('a[name="copy"]'));
             $(window).resize(function(){
                 _this.gameDataDaySize();
             });
             //复制
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', window.top.message.home_auto['复制成功'], true);
-            });
-            /*clip.on('copy', function (e) {
-                window.top.topPage.showInfoMessage(window.top.message.home_auto['复制成功']);
-            });*/
+            this.copyText('a[name="copy"]');
         },
         /**
          * 游戏盈亏日期宽度自适应

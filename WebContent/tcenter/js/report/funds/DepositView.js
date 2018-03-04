@@ -13,17 +13,12 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         },
 
         onPageLoad: function () {
-
             this._super();
         },
 
         bindEvent: function () {
             this._super();
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', window.top.message.report_auto['复制成功'], true);
-            });
+            this.copyText('a[name="copy"]');
         },
 
         /**
