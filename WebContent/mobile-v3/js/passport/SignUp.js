@@ -42,11 +42,11 @@ function sex() {
             success: function (data) {
                 if (data) {
                     sexButton.addEventListener('tap', function (event) {
-                        var sexPick = new $.PopPicker();
+                        var sexPick = new mui.PopPicker();
                         sexPick.setData(data);
                         sexPick.show(function (items) {
                             document.getElementById("sysUser.sex").value = items[0].value;
-                            sexButton.innerText = items[0].text;
+                            sexButton.value = items[0].text;
                             sexPick.dispose();
                             sexPick = null;
                         });
@@ -69,11 +69,11 @@ function currency() {
             success: function (data) {
                 if (data) {
                     currencyButton.addEventListener('tap', function (event) {
-                        var currencyPick = new $.PopPicker();
+                        var currencyPick = new mui.PopPicker();
                         currencyPick.setData(data);
                         currencyPick.show(function (items) {
                             document.getElementById('sysUser.defaultCurrency').value = items[0].value;
-                            currencyButton.innerText = items[0].text;
+                            currencyButton.value = items[0].text;
                             currencyPick.dispose();
                             currencyPick = null;
                         });
@@ -96,11 +96,11 @@ function locale() {
             success: function (data) {
                 if (data) {
                     localeButton.addEventListener('tap', function (event) {
-                        var localePick = new $.PopPicker();
+                        var localePick = new mui.PopPicker();
                         localePick.setData(data);
                         localePick.show(function (items) {
                             document.getElementById("sysUser.defaultLocale").value = items[0].value;
-                            localeButton.innerText = items[0].text;
+                            localeButton.value = items[0].text;
                             localePick.dispose();
                             localePick = null;
                         });
@@ -123,11 +123,11 @@ function question() {
             success: function (data) {
                 if (data) {
                     questionButton.addEventListener('tap', function (event) {
-                        var questionPick = new $.PopPicker();
+                        var questionPick = new mui.PopPicker();
                         questionPick.setData(data);
                         questionPick.show(function (items) {
                             document.getElementById("sysUserProtection.question1").value = items[0].value;
-                            questionButton.innerText = items[0].text;
+                            questionButton.value = items[0].text;
                             questionPick.dispose();
                             questionPick = null;
                         });
@@ -148,10 +148,10 @@ function birthday() {
         var optionsJson = dateButton.getAttribute('data-options') || '{}';
         var options = JSON.parse(optionsJson);
         dateButton.addEventListener('tap', function (event) {
-            var datePick = new $.DtPicker(options);
+            var datePick = new mui.DtPicker(options);
             var id = this.getAttribute('id');
             datePick.show(function (rs) {
-                dateButton.innerText = rs.text;
+                dateButton.value = rs.text;
                 document.getElementById("sysUser.birthday").value = rs.text;
                 datePick.dispose();
                 datePick = null;
