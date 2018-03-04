@@ -254,6 +254,7 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
                 else
                     e.cancelBubble = true;
             });
+            this.copyText('a[name="copy"]');
         },
 
         /**

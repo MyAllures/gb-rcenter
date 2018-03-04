@@ -13,8 +13,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             this._super();
             this.setContent();
             this.setFeeList();
-            //复制按钮
-            this.copyText('a[name="copy"]');
             $(".btn-withdraw-result-btn").focus();
         },
         /**
@@ -32,7 +30,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     $(".btn-withdraw-result-btn").click();
                 }
             });
-
+            this.copyText('a[name="copy"]');
         },
         setContent: function () {
             var content = window.top.topPage.remarkContent;

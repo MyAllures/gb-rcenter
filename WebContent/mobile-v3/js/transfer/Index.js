@@ -231,6 +231,7 @@ function transferBack(obj, option) {
         //转账失败
         showWarningMsg(window.top.message.transfer_auto['转账失败'], window.top.message.transfer_auto['转账已失败'], successBack, option);
     } else if (data.state == true && data.result) {
+        $("[name='gb.token']").val(data.token);
         var orderId = data.orderId;
         var btnArray = [window.top.message.transfer_auto['返回'], window.top.message.transfer_auto['再试一次']];
         var confirmOption = {
@@ -244,7 +245,7 @@ function transferBack(obj, option) {
         showConfirmMsg(confirmOption);
     } else {
         toast(data.msg);
-        $("[name='gb.token']").val(data.token);
+        initTransfer();
     }
 }
 

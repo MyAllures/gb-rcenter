@@ -11,15 +11,15 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         allFee: null,
         init: function () {
-            this.formSelector="form[name=withdrawViewForm]";
+            this.formSelector = "form[name=withdrawViewForm]";
             this._super(this.formSelector);
             this.allFee = this.getAllFee();
-            $("#mainFrame .return-btn").css("display","");
+            $("#mainFrame .return-btn").css("display", "");
         },
         onPageLoad: function () {
             this._super();
-            var _this=this;
-            $('[data-toggle="popover"]',_this.formSelector).popover({
+            var _this = this;
+            $('[data-toggle="popover"]', _this.formSelector).popover({
                 trigger: 'hover',
                 html: true
             });
@@ -31,6 +31,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             this._super();
             //复制按钮
             this.copyText('a[name="copy"]');
+
             $("[about='playerAccount']").click(function () {
                 if ($(this).next().attr('style') != 'display: block;') {
                     $(this).next().attr('style', 'display: block;');
@@ -100,7 +101,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     opt.placement = 'right';
                     if (data == true) {
                         e.returnValue = true;
-                        _this.refreshBack(e,opt,id);
+                        _this.refreshBack(e, opt, id);
                         //page.showPopover(e, opt, 'success', window.top.message.common['operation.success'], true);
                     } else {
                         page.showPopover(e, opt, 'danger', '本条订单已被其他管理员锁定！', true);
@@ -124,7 +125,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     opt.placement = 'right';
                     if (data == true) {
                         e.returnValue = true;
-                        _this.refreshBack(e,opt,id);
+                        _this.refreshBack(e, opt, id);
                         //opt.callback = "refreshBack";
                         //page.showPopover(e, opt, 'success', window.top.message.common['operation.success'], true);
                     } else {
@@ -138,8 +139,8 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          * @param e
          * @param opt
          */
-        refreshBack: function (e, opt,id) {
-            if(e.returnValue) {
+        refreshBack: function (e, opt, id) {
+            if (e.returnValue) {
                 //var id = $("input[name='search.id']").val();
                 $("#mainFrame").load(root + "/fund/withdraw/withdrawAuditView.html?search.id=" + id + "&pageType=detail");
             }
@@ -212,9 +213,9 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                             window.top.topPage.feeList = data.feeList;
                         } else {
                             window.top.topPage.showConfirmMessage("确定审核失败吗？", function (state) {
-                                if(state){
+                                if (state) {
                                     _this.confirmFailure(e, opt);
-                                } else{
+                                } else {
                                     $(e.currentTarget).unlock();
                                 }
                             });
@@ -275,9 +276,9 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                             window.top.topPage.feeList = data.feeList;
                         } else {
                             window.top.topPage.showConfirmMessage("确认审核拒绝吗？", function (state) {
-                                if(state){
+                                if (state) {
                                     _this.confirmReject(e, opt);
-                                } else{
+                                } else {
                                     $(e.currentTarget).unlock();
                                 }
                             });
@@ -367,12 +368,12 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             if (opt.data.state) {
                 var checkRemark = $("textarea[name='remarkContent']").val();
                 $("input[name=checkRemark]").val(checkRemark);
-                if(status=='1'){
-                    opt.callback= function () {
+                if (status == '1') {
+                    opt.callback = function () {
 
                     };
-                }else{
-                    opt.callback='cancelEdit';
+                } else {
+                    opt.callback = 'cancelEdit';
                 }
                 e.page.showPopover(e, opt, 'success', window.top.message.common['operation.success'], true);
             } else {
@@ -385,19 +386,19 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         getTextValue: function (name) {
             return $("[name='" + name + "']").val();
         },
-        setAuditFee: function (id, formatVal,realVal) {
+        setAuditFee: function (id, formatVal, realVal) {
             $("#" + id).html(formatVal);
-            if(id=="actual-amount-div"){
-                $(".amount-copy-data").attr("data-clipboard-text",realVal);
+            if (id == "actual-amount-div") {
+                $(".amount-copy-data").attr("data-clipboard-text", realVal);
             }
         },
         getCounterFee: function () {
             return $("[name='counterFee']").val();
         },
         gotoGameOrder: function (e, opt) {
-            if(e.returnValue){
-                var url = "/report/gameTransaction/list.html?isLink=true&outer=-1&search.username="+$("#username").val()+"&searchKey=search.username&"+ e.returnValue;
-                $("#toGameOrder").attr("href",url);
+            if (e.returnValue) {
+                var url = "/report/gameTransaction/list.html?isLink=true&outer=-1&search.username=" + $("#username").val() + "&searchKey=search.username&" + e.returnValue;
+                $("#toGameOrder").attr("href", url);
                 $("#toGameOrder").click();
             }
         },
@@ -407,49 +408,49 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         playerWithdraw: function (e) {
             var data = {
-                date:new Date(),
-                'search.transactionWays':'player_withdraw',
-                'search.usernames':$("#username").val(),
-                'search.userTypes':'username',
-                'search.outer':'-1'
+                date: new Date(),
+                'search.transactionWays': 'player_withdraw',
+                'search.usernames': $("#username").val(),
+                'search.userTypes': 'username',
+                'search.outer': '-1'
             };
-            this.gotoFundsRecord(e,data);
+            this.gotoFundsRecord(e, data);
         },
         /**
          * 所有失败订单
          */
         playerWithdrawFail: function (e) {
             var data = {
-                date:new Date(),
-                'search.transactionWays':'player_withdraw',
-                'search.usernames':$("#username").val(),
-                'search.userTypes':'username',
-                'search.outer':'-1',
-                'search.status':'failure'
+                date: new Date(),
+                'search.transactionWays': 'player_withdraw',
+                'search.usernames': $("#username").val(),
+                'search.userTypes': 'username',
+                'search.outer': '-1',
+                'search.status': 'failure'
             };
-            this.gotoFundsRecord(e,data);
+            this.gotoFundsRecord(e, data);
         },
         /**
          * 所有拒绝订单
          */
         playerWithdrawReject: function (e) {
             var data = {
-                date:new Date(),
-                'search.transactionWays':'player_withdraw',
-                'search.usernames':$("#username").val(),
-                'search.userTypes':'username',
-                'search.outer':'-1',
-                'search.status':'reject'
+                date: new Date(),
+                'search.transactionWays': 'player_withdraw',
+                'search.usernames': $("#username").val(),
+                'search.userTypes': 'username',
+                'search.outer': '-1',
+                'search.status': 'reject'
             };
-            this.gotoFundsRecord(e,data);
+            this.gotoFundsRecord(e, data);
         },
         /**
          * 公共跳转资金记录方法
          */
-        gotoFundsRecord: function (e,data) {
+        gotoFundsRecord: function (e, data) {
             window.top.topPage.ajax({
                 loading: true,
-                url: root+"/report/vPlayerFundsRecord/fundsLog.html",
+                url: root + "/report/vPlayerFundsRecord/fundsLog.html",
                 type: "post",
                 data: data,
                 dataType: "html",
