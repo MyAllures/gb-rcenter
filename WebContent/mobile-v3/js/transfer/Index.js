@@ -254,21 +254,22 @@ function transferBack(obj, option) {
  * 提交转账
  */
 function submitTransactionMoney(obj, option) {
+    $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
     var $form = $('#transferForm');
-    var $this = $(this);
+    var $this = $(obj);
 
     if (!$form.valid()) {
+        $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
         return false;
     }
     var options = {
         url: root + '/transfer/transfersMoney.html',
         data: $form.serialize(),
-        beforeSend: function () {
-            $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
-        },
         success: function (data) {
             option.data = data;
             transferBack(obj, option);
+        },
+        complete: function () {
             $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
         }
     };
