@@ -1838,9 +1838,15 @@
         if(sessionStorage.is_login=="true"){
         <#if data.loginAnnouncement?has_content>
             $(".login-dialog").removeClass('hide');
-            setTimeout(function () {
-                $(".login-dialog").addClass('hide');
-            }, 10000);
+            <#if data.loginAnnouncementTime?has_content>
+                setTimeout(function () {
+                    $(".login-dialog").addClass('hide');
+                }, ${data.loginAnnouncementTime});
+            <#else >
+                setTimeout(function () {
+                    $(".login-dialog").addClass('hide');
+                }, 10000);
+            </#if>
         </#if>
         }
         //注册公告
