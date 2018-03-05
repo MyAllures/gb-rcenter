@@ -145,7 +145,7 @@ function applyActivities(aplyObj, isRefresh) {
             $(aplyObj).removeAttr("disabled");
         }
     };
-    muiAjax(options);
+    muiAjax(ajaxOption);
 }
 
 function showWin(data, isRefresh) {
