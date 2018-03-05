@@ -308,7 +308,7 @@ function goToUrl(url, isExternalLink, targetUrl) {
     } else if (url.indexOf("/deposit/index.html") > 0) { //存款页面
         deposit(url);
         return;
-    } else if (url.indexOf("/mainIndex.html") > 0) { //首页
+    } else if (url.indexOf(root + "/mainIndex.html") > 0) { //首页
         goToHome(url);
     }
     openWindow(url);
