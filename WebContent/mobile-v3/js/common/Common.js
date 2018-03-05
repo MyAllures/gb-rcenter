@@ -308,6 +308,8 @@ function goToUrl(url, isExternalLink, targetUrl) {
     } else if (url.indexOf("/deposit/index.html") > 0) { //存款页面
         deposit(url);
         return;
+    } else if (url.indexOf("/mainIndex.html") > 0) { //首页
+        goToHome(url);
     }
     openWindow(url);
 }
@@ -503,6 +505,17 @@ function login(targetUrl) {
             //登录成功后跳转页面
             sessionStorage.loginTargetUrl = targetUrl;
         }
+        openWindow(url);
+    }
+}
+
+/**
+ * 统一首页入口
+ */
+function goToHome(url) {
+    if (isNative) {
+        gotoHomePage();
+    } else {
         openWindow(url);
     }
 }
