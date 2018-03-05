@@ -42,6 +42,9 @@ ul {
 
 li {
   list-style: none; }
+li.mui-table-view-cell {
+  color: #000!important;
+}
 
 .mui-bar .mui-icon:active {
   opacity: 1; }
