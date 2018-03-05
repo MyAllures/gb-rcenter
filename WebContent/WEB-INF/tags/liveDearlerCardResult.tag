@@ -305,3 +305,19 @@
         --
     </c:if>
 </c:if>
+<%--炸金花--%>
+<c:if test="${betType eq 'ZJH'}">
+    <c:if test="${!empty porkerList && !empty porkerListSet}">
+        龙：
+        <c:forEach items="${porkerList}" var="poker">
+            ${poker}
+        </c:forEach>
+        <br/>
+        凤：
+        <c:forEach items="${porkerListSet}" var="pokerList">
+            <c:forEach items="${pokerList}" var="poker">
+                ${poker}
+            </c:forEach>
+        </c:forEach>
+    </c:if>
+</c:if>
