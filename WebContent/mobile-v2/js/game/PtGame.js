@@ -5,7 +5,7 @@ iapiConf = {
     "clientType": "casino",
     "clientPlatform": "mobile",
     "clientVersion": null,
-    "systemId": "697",
+    "systemId": "424",
     "serviceType": "GamePlay",
     "loginDomainRetryCount": "2",
     "loginDomainRequestTimeout": "30",
