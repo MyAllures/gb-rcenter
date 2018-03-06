@@ -254,10 +254,9 @@ function transferBack(obj, option) {
  * 提交转账
  */
 function submitTransactionMoney(obj, option) {
+    var $this = $(obj);
     $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
     var $form = $('#transferForm');
-    var $this = $(obj);
-
     if (!$form.valid()) {
         $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
         return false;

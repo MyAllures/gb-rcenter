@@ -145,7 +145,7 @@ function applyActivities(aplyObj, isRefresh) {
             $(aplyObj).removeAttr("disabled");
         }
     };
-    muiAjax(options);
+    muiAjax(ajaxOption);
 }
 
 function showWin(data, isRefresh) {
@@ -174,7 +174,11 @@ function showWin(data, isRefresh) {
 }
 
 function doWin() {
-    goToUrl(root + "/promo/myPromo.html");
+    if(isNative) {
+        nativeGotoPromoRecordPage();
+    } else {
+        goToUrl(root + "/promo/myPromo.html");
+    }
 }
 
 function filterActyByPlayer(data) {

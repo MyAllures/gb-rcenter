@@ -357,8 +357,9 @@ define([], function () {
 
         iosGoBack: function () {
             var sos = this.whatOs();
-            if (sos == 'app_ios' && window.history.length == 1) {
+            if (sos == 'app_ios') {
                 $('header').on('tap', '.mui-action-back', function () {
+                    this.toast("!!!！");
                     var canvasRight = $('.mui-off-canvas-right').hasClass('mui-active');
                     if (canvasRight) {
                         mui('.mui-off-canvas-right').offCanvas('close');
