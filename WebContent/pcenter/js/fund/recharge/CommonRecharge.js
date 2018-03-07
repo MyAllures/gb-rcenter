@@ -133,6 +133,25 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             $("#backdrop").hide();
             $(e.currentTarget).unlock();
         },
+
+        /**
+         * 关闭多次错误提示弹窗
+         * @param e
+         * @param option
+         */
+        continueDeposit: function (e, option) {
+            $("#manyFailures").hide();
+            if ($("#bitAmount").text()) {
+                $("[name=bitcoinRecharge]").show();
+                $("[name=companyRecharge]").hide();
+            } else {
+                $("[name=bitcoinRecharge]").hide();
+                $("[name=companyRecharge]").show();
+            }
+            $("#confirmDialog").show();
+            $(e.currentTarget).unlock();
+        },
+
         /**
          * 客服访问
          * @param e
