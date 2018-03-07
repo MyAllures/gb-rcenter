@@ -2,6 +2,8 @@
  * 线上公共js支付
  */
 define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], function (CommonRecharge, RealName) {
+    var btnOption;
+    var node;
     return CommonRecharge.extend({
         realName: null,
         /**
@@ -38,6 +40,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
             $(this.formSelector).on("click", "label.bank", function (e) {
                 _this.changeBank(e);
             });
+            $("#onlineContinueDeposit").click(function(e){_this.onlineContinueDeposit(e);});
         },
 
         /**
@@ -91,6 +94,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                 success: function (data) {
                     var state = data.state;
                     var msg = data.msg;
+                    var failureCount = data.failureCount;
                     if (state) {
                         window.top.onlineTransactionNo = data.transactionNo;
                         _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
@@ -99,16 +103,32 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                     }
                     var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
                     window.top.onlineFailMsg = msg;
-                    var btnOption = option;
+                    btnOption = option;
                     btnOption.text = window.top.message.fund_auto['等待支付'];
                     btnOption.target = url;
                     btnOption.callback = "back";
-                    window.top.topPage.doDialog(e, btnOption);
+                    node = e;
+                    if(failureCount >= 3){
+                        $("#onlineManyFailures").show();
+                        $("#backdrop").show();
+                    }else{
+                        window.top.topPage.doDialog(e, btnOption);
+                    }
                 },
                 error: function (data) {
                     _window.close();
                 }
             });
+        },
+
+        /**
+         * 失败多次后仍继续存款
+         */
+        onlineContinueDeposit:function(e){
+            $("#onlineManyFailures").hide();
+            $("#backdrop").hide();
+            $(e.currentTarget).unlock();
+            window.top.topPage.doDialog(node, btnOption);
         },
 
         asciiToUnicode: function (content) {
