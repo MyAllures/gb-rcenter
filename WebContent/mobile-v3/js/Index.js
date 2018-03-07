@@ -17,8 +17,10 @@ $(function () {
     initNotice();
     //初始化api nav滑动
     swiper();
-    //图片懒加载
-    lazyLoadApi = lazyLoadImg("body");
+    if(!lazyLoadApi) {
+        //图片懒加载
+        lazyLoadApi = lazyLoadImg("body");
+    }
 });
 
 /**

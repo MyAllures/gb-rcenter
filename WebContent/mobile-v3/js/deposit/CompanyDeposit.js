@@ -58,9 +58,11 @@ function showPayTypeList() {
         document.getElementById("rechargeTypeText").setAttribute("placeholder", items[0].text);
         //柜台现金存款需填写交易地点，其他填写存款人
         if (value == 'atm_money') {
+            document.getElementById('result.payerName').value = '';
             document.getElementById('address').style.display = "block";
             document.getElementById('payerName').style.display = "none";
         } else {
+            document.getElementById('result.rechargeAddress').value = '';
             document.getElementById('address').style.display = "none";
             document.getElementById('payerName').style.display = "block";
         }
