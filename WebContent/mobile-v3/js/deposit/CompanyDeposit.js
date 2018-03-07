@@ -114,6 +114,7 @@ function depositDiscount(obj, options) {
     };
     muiAjax(ajaxoptions);
 }
+var ajaxMap = {};
 
 /**查询是否有优惠*/
 function seachDiscount(obj, options) {
@@ -145,22 +146,17 @@ function seachDiscount(obj, options) {
                 if ($("#depositSalePop").length > 0) {
                     $("#depositSalePop").remove();
                 }
-                $("body").append(data);
-                var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
-                if (unCheckSuccess === "true") {
-                    var pop = $("#pop").attr("pop");
-                    if (pop == "true") {
-                        $("#activityId").val($("input[type=radio]:checked").val());
-                        $("#successMasker").attr("style", "display:block;");
-                    } else if (options.statusNum) {
-                        var rechargeAmount = $("input[name='result.rechargeAmount']").val();
-                        goToUrl(options.href + "&depositCash=" + rechargeAmount + "&t=" + random);
-                    } else {
-                        companyDepositSubmit(depositChannel);
-                    }
-                } else {
-                    //验证提示
-                    toast($("#tips").attr("tips"));
+                ajaxMap["data"] = data;
+                ajaxMap["options"] = options;
+                var failureCount = $(data).find("#failureCount").attr("failureCount");
+                var unCheckSuccess = $(data).find("#unCheckSuccess").attr("unCheckSuccess");
+                if(unCheckSuccess == "true" && options.statusNum && failureCount >= 3){
+                    $("#failureHints").show();
+                    $("#failureHintsMasker").show();
+                    $("#channel").val(depositChannel);
+                }else{
+                    $("#channel").val("");
+                    companyContinueDeposit(depositChannel);
                 }
             }
         },
@@ -169,6 +165,29 @@ function seachDiscount(obj, options) {
         }
     };
     muiAjax(ajaxoptions);
+}
+
+/**多次支付失败仍然继续*/
+function companyContinueDeposit(depositChannel){
+    var data = ajaxMap["data"];
+    var options = ajaxMap["options"];
+    $("body").append(data);
+    var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
+    if (unCheckSuccess === "true") {
+        var pop = $("#pop").attr("pop");
+        if (pop == "true") {
+            $("#activityId").val($("input[type=radio]:checked").val());
+            $("#successMasker").attr("style", "display:block;");
+        } else if (options.statusNum) {
+            var rechargeAmount = $("input[name='result.rechargeAmount']").val();
+            goToUrl(options.href + "&depositCash=" + rechargeAmount + "&t=" + random);
+        } else {
+            companyDepositSubmit(depositChannel);
+        }
+    } else {
+        //验证提示
+        toast($("#tips").attr("tips"));
+    }
 }
 
 /**公司入款提交存款*/

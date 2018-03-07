@@ -156,3 +156,18 @@ function goToDepositPage(){
         goToUrl(root + '/wallet/deposit/index.html?v=' + Math.random());
     }
 }
+
+/**
+ * 连续失败后仍继续选择该渠道
+ */
+function continueDeposit(e,option){
+    $("#failureHints").hide();
+    $("#failureHintsMasker").hide();
+    var channel = $("#channel").val();
+    if(channel == "online" || channel == "scan"){
+        onlineContinueDeposit(channel);
+    }else if(channel == "company" || channel == "electronic"){
+        companyContinueDeposit(channel);
+    }
+
+}
