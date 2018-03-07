@@ -23,7 +23,7 @@ $(function () {
  * 注册条款
  */
 function terms() {
-    var url = root + "/getRegisterRules.html";
+    var url = root + "/getRegisterRules.html?path=protocol";
     if (isNative) {
         nativeOpenWindow(url);
     } else {
