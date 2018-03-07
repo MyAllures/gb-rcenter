@@ -6,7 +6,12 @@
         //活动类型为content的不显示申请按钮
         $("div [data-code=content] ._vr_promo_join").remove();
 
-               // 优惠手风琴
+        //判断优惠活动是否显示历史优惠按钮
+        if($("._vr_promo_check.historyActivitys").length>0){
+            $(".hisActivityButton").removeClass("hide");
+        }
+
+        // 优惠手风琴
         $(".sidePromo dd").fadeOut(0);
         $(".sidePromo dt").click(function() {
             $(".sidePromo dd").not($(this).next()).slideUp('fast');

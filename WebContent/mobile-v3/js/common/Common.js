@@ -608,10 +608,13 @@ function bindFormValidation($form) {
 /**
  * 延迟加载图片
  */
-function lazyLoadImg(self) {
+function lazyLoadImg(self, placeholder) {
+    if (!placeholder) {
+        placeholder = '';
+    }
     var lazyLoadApi = mui(self).imageLazyload({
         autoDestroy: false,
-        placeholder: ''
+        placeholder: placeholder
     });
     return lazyLoadApi;
 }
