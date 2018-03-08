@@ -69,9 +69,14 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                             $("#confirmFee").removeClass("green m-l");
                         }
                         $("#confirmRechargeTotal").text(data.rechargeTotal);
-                        $("[name=bitcoinRecharge]").hide();
-                        $("[name=companyRecharge]").show();
-                        $("#confirmDialog").show();
+                        var failureCount = data.failureCount;
+                        if(failureCount >= 3){
+                            $("#manyFailures").show();
+                        }else{
+                            $("[name=bitcoinRecharge]").hide();
+                            $("[name=companyRecharge]").show();
+                            $("#confirmDialog").show();
+                        }
                     } else {
                         $("#failDialog").show();
                     }
@@ -79,6 +84,11 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                 }
             });
         },
+
+        notThirdContinueDeposit:function(e,option){
+            this.continueDeposit(e,option);
+        },
+
         /**
          * 确认存款提交
          * @param e
