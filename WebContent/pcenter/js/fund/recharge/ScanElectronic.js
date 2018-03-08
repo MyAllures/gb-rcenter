@@ -20,6 +20,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
         onPageLoad: function () {
             this._super();
             this.changeSale();
+            this.rechargeAmountMsg();
         },
         /**
          * 当前对象事件初始化函数
@@ -33,6 +34,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
              */
             $(this.formSelector).on("click", "label.bank", function (e) {
                 _this.changeAccount($(this));
+                _this.rechargeAmountMsg();
             });
             /**
              * 金额监控
@@ -50,6 +52,13 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 $(_this.formSelector + " span.fee").hide();
                 _this.changeAmountMsg();
             });
+        },
+        rechargeAmountMsg:function () {
+            var $account = $("input[name=account]:checked");
+            var payMax = $account.attr("payMax");
+            var payMin = $account.attr("payMin");
+            $("#payMin").html(payMin);
+            $("#payMax").html(payMax);
         },
         changeAccount: function (obj) {
             var $target = $(obj).find("input[name=account]");

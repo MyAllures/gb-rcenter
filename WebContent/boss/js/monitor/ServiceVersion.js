@@ -16,6 +16,14 @@ define(['common/BaseListPage'], function (BaseListPage) {
          */
         bindEvent: function () {
             this._super();
+            var _this = this;
+
+            $("#appUl li a").on("click", function (e) {
+                var $href = $(this).attr("data-href");
+                $("#appDiv .tab-content").addClass("hide");
+                $("#appDiv #tab-content" + $(this).attr("index")).load(root + $href);
+                $("#appDiv #tab-content" + $(this).attr("index")).removeClass("hide");
+            });
         },
         /**
          * 刷新版本数据
