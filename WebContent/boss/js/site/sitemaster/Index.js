@@ -107,6 +107,43 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
                 var $href = $(this).data("href");
                 $("#mainFrame").load(root+$href);
             });*/
+            var $bootstrapSwitchs = $('input[type=checkbox][name=my-checkboxstatus]');
+            this.unInitSwitch($bootstrapSwitchs)
+                .bootstrapSwitch({
+                        onSwitchChange: function (e, state) {
+                            if (state==true){
+                              var  status=1;
+                            }else if (state==false){
+                              var  status=2;
+                            }
+                            var $this = $(this);
+                            var _target = e.currentTarget;
+                            var id = $(_target).attr("Id");
+                            var okLabel = window.top.message.setting['common.ok'];
+                            var cancelLabel = window.top.message.setting['common.cancel'];
+                                    window.top.topPage.ajax({
+                                        url: root + '/vSysSiteManage/setStatus.html',
+                                        dataType: "json",
+                                        data: {"result.id": id,"result.status":status},
+                                        success: function (data) {
+                                            if (data) {
+                                                $(_target).attr("isChanged", true);
+                                                $("#status").removeClass("label-success");
+                                                $("#status").addClass("label-danger");
+                                                _this.query(e);
+                                            } else {
+                                                page.showPopover(e, {
+                                                    "callback": function () {
+                                                        _this.query(e);
+                                                    }
+                                                }, "danger", "操作失败", true);
+                                            }
+
+                                        }
+                                    });
+                        }
+
+                    })
         },
         /**
          * 当前对象事件初始化函数
