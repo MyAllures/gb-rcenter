@@ -9,7 +9,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
          * 调用
          */
         init: function () {
-            this._super(this.formSelector);
+            this.formSelector = "#mainFrame form";
+            this._super();
         },
         /**
          * 当前对象事件初始化函数
@@ -18,11 +19,18 @@ define(['common/BaseListPage'], function (BaseListPage) {
             this._super();
             var _this = this;
 
-            $("ul li a", "#mainFrame div.panel").on("click", function (e) {
+            $("#serviceUl li a").on("click", function (e) {
                 var $href = $(this).attr("data-href");
-                $(".tab-content").addClass("hide");
-                $("#tab-content" + $(this).attr("index")).load(root + $href);
-                $("#tab-content" + $(this).attr("index")).removeClass("hide");
+                $("#serviceDiv .tab-content").addClass("hide");
+                $("#serviceDiv #tab-content" + $(this).attr("index")).load(root + $href);
+                $("#serviceDiv #tab-content" + $(this).attr("index")).removeClass("hide");
+            });
+
+            $("#appUl li a").on("click", function (e) {
+                var $href = $(this).attr("data-href");
+                $("#appDiv .tab-content").addClass("hide");
+                $("#appDiv #tab-content" + $(this).attr("index")).load(root + $href);
+                $("#appDiv #tab-content" + $(this).attr("index")).removeClass("hide");
             });
 
             $(this.formSelector).on("click", "table thead input[type=checkbox]", function (e) {
@@ -54,9 +62,16 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 url:root+'/Version/refresh.html',
                 success:function(data){
                     if(data==true){
-                        window.setTimeout(function () {
+                       /* window.setTimeout(function () {
                             _this.query(e, opt);
-                        },1000);
+                        },1000);*/
+                        window.top.topPage.ajax({
+                            url: root + '/Monitor/Version.html',
+                            success: function (data) {
+                                $("#mainFrame", this.formSelector).html(data);
+                                $(e.currentTarget).unlock();
+                            }
+                        });
                     }
                 },
                 error:function(data) {
@@ -156,6 +171,19 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     }else{
                         window.top.topPage.showErrorMessage("操作失败!");
                     }
+                }
+            });
+        },
+        /**
+         * 搜索按钮
+         * @param e
+         */
+        queryView: function (e) {
+            window.top.topPage.ajax({
+                url: root + '/Monitor/Version.html',
+                success: function (data) {
+                    $("#mainFrame", this.formSelector).html(data);
+                    $(e.currentTarget).unlock();
                 }
             });
         }
