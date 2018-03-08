@@ -5,7 +5,7 @@ iapiConf = {
     "clientType": "casino",
     "clientPlatform": "mobile",
     "clientVersion": null,
-    "systemId": "697",
+    "systemId": "424",
     "serviceType": "GamePlay",
     "loginDomainRetryCount": "2",
     "loginDomainRequestTimeout": "30",
@@ -1461,7 +1461,7 @@ function askTempandLaunchGame(type, game) {
     currentgame = game;
     gametype = type;
     var realMode = 1;
-    iapiRequestTemporaryToken(realMode, '698', 'GamePlay');
+    iapiRequestTemporaryToken(realMode, iapiConf.systemId, 'GamePlay');
 }
 
 function launchMobileClient(temptoken) {
