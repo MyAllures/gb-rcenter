@@ -2,6 +2,7 @@
  * Created by fei on 16-10-15.
  */
 define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposit) {
+    var ajaxMap = {};
     return BaseDeposit.extend({
 
         init: function (formSelector) {
@@ -221,20 +222,17 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                         if ($("#depositSalePop").length > 0) {
                             $("#depositSalePop").remove();
                         }
-                        $(".mui-content").append(data);
-                        var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
-                        if (unCheckSuccess === "true") {
-                            var pop = $("#pop").attr("pop");
-                            if (pop === "true") {
-                                $("#activityId").val($("input[type=radio]:checked").val());
-                                _this.bindReWriteAmount();
-                                _this.deposit();
-                            } else {
-                                _this.submitDeposit();
-                            }
-                        } else {
-                            //验证提示
-                            _this.toast($("#tips").attr("tips"));
+                        var failureCount = $(data).find("#failureCount").attr("failureCount");
+                        var unCheckSuccess = $(data).find("#unCheckSuccess").attr("unCheckSuccess");
+                        ajaxMap["ajaxData"] = data;
+                        ajaxMap["_this"] = _this;
+                        if(unCheckSuccess == "true" && failureCount >= 3){
+                            $("#failureHints").show();
+                            $("#failureHintsMasker").show();
+                            $("#channel").val("online");
+                        }else{
+                            $("#channel").val("");
+                            _this.onlineContinueDeposit();
                         }
                     },
                     error: function (xhr, type, errorThrown) {
@@ -242,6 +240,26 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                     }
                 });
             });
+        },
+
+        onlineContinueDeposit:function(){
+            var ajaxData = ajaxMap["ajaxData"];
+            var _this = ajaxMap["_this"];
+            $(".mui-content").append(ajaxData);
+            var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
+            if (unCheckSuccess === "true") {
+                var pop = $("#pop").attr("pop");
+                if (pop === "true") {
+                    $("#activityId").val($("input[type=radio]:checked").val());
+                    _this.bindReWriteAmount();
+                    _this.deposit();
+                } else {
+                    _this.submitDeposit();
+                }
+            } else {
+                //验证提示
+                _this.toast($("#tips").attr("tips"));
+            }
         },
 
         deposit: function () {
