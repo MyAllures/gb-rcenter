@@ -12,8 +12,6 @@ $(function () {
     muiInit(options);
     //初始化swiper
     initSwiper();
-    //图片懒加载
-    lazyLoadApi = lazyLoadImg("body");
 });
 
 function initSwiper() {
@@ -38,7 +36,8 @@ function initSwiper() {
                 //处理图片延迟加载
                 if ($(".swiper-container .swiper-slide-active").find("img[data-lazyload]").length > 0 || $(".nav-slide-content .swiper-slide-active").find("img[data-lazyload-id]").length > 0) {
                     if (!lazyLoadApi) {
-                        lazyLoadApi = lazyLoadImg("body");
+                        var defaultSaleImg = $("input[name=defaultSaleImg]").val();
+                        lazyLoadApi = lazyLoadImg("body", defaultSaleImg);
                     }
                     lazyLoadApi.refresh(true);
                 }

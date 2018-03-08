@@ -2,6 +2,7 @@
  * 第三方支付、电子支付
  */
 define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
+    var ajaxMap = {};
     return BaseEditPage.extend({
         realName: null,
         /**
@@ -19,6 +20,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
         onPageLoad: function () {
             this._super();
             this.changeSale();
+            this.rechargeAmountMsg();
         },
         /**
          * 当前对象事件初始化函数
@@ -32,6 +34,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
              */
             $(this.formSelector).on("click", "label.bank", function (e) {
                 _this.changeAccount($(this));
+                _this.rechargeAmountMsg();
             });
             /**
              * 金额监控
@@ -49,6 +52,13 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 $(_this.formSelector + " span.fee").hide();
                 _this.changeAmountMsg();
             });
+        },
+        rechargeAmountMsg:function () {
+            var $account = $("input[name=account]:checked");
+            var payMax = $account.attr("payMax");
+            var payMin = $account.attr("payMin");
+            $("#payMin").html(payMin);
+            $("#payMax").html(payMax);
         },
         changeAccount: function (obj) {
             var $target = $(obj).find("input[name=account]");
@@ -251,6 +261,8 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                         _window.close();
                     }
                     var msg = data.msg;
+                    var failureCount = data.failureCount;
+                    $("#backdrop").show();
                     if (state == true && data.isThird == true) {
                         $("#confirmRechargeAmount").text(data.rechargeAmount);
                         $("#confirmFee").text(data.formatFee);
@@ -262,30 +274,75 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                             $("#confirmFee").removeClass("green m-l");
                         }
                         $("#confirmRechargeTotal").text(data.rechargeTotal);
-                        $("[name=bitcoinRecharge]").hide();
-                        $("[name=companyRecharge]").show();
-                        $("#confirmDialog").show();
-                        $("#backdrop").show();
+                        ajaxMap["ajaxIsThird"] = false;
+                        if(failureCount >= 3){
+                            $("#manyFailures").show();
+                        }else{
+                            $("[name=bitcoinRecharge]").hide();
+                            $("[name=companyRecharge]").show();
+                            $("#confirmDialog").show();
+                        }
                     } else if (state == false && data.isThird == true) {
                         $("#backdrop").show();
                         $("#failDialog").show();
                     } else if (data.isThird != true) {
-                        if (state == true) {
-                            window.top.onlineTransactionNo = data.transactionNo;
-                            _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
+                        if(failureCount >= 3){
+                            ajaxMap["ajaxE"] = e;
+                            ajaxMap["ajaxOption"] = option ;
+                            ajaxMap["ajaxData"] = data;
+                            ajaxMap["ajaxIsThird"] = true;
+                            ajaxMap["_window"] = _window;
+                            $("#manyFailures").show();
+                        }else {
+                            ajaxMap["ajaxIsThird"] = false;
+                            if (state == true) {
+                                window.top.onlineTransactionNo = data.transactionNo;
+                                _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
+                            }
+                            var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
+                            window.top.onlineFailMsg = msg;
+                            var btnOption = option;
+                            btnOption.text = window.top.message.fund_auto['等待支付'];
+                            btnOption.target = url;
+                            btnOption.callback = "back";
+                            window.top.topPage.doDialog(e, btnOption);
                         }
-                        var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
-                        window.top.onlineFailMsg = msg;
-                        var btnOption = option;
-                        btnOption.text = window.top.message.fund_auto['等待支付'];
-                        btnOption.target = url;
-                        btnOption.callback = "back";
-                        window.top.topPage.doDialog(e, btnOption);
                     }
                     $(e.currentTarget).unlock();
+
                 }
             })
         },
+
+        /**
+         * 非第三方存款多次错误提示
+         */
+        notThirdContinueDeposit:function(e, option){
+            var ajaxE = ajaxMap["ajaxE"];
+            var ajaxOption = ajaxMap["ajaxOption"];
+            var ajaxData = ajaxMap["ajaxData"];
+            var ajaxIsThird = ajaxMap["ajaxIsThird"];
+            var _window = ajaxMap["_window"];
+            if(ajaxIsThird){
+                if (ajaxData.state == true) {
+                    window.top.onlineTransactionNo = ajaxData.transactionNo;
+                    _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + ajaxData.transactionNo;
+                }
+                $("#manyFailures").hide();
+                $("#backdrop").hide();
+                $(e.currentTarget).unlock();
+                var url = root + "/fund/recharge/online/onlinePending.html?state=" + ajaxData.state;
+                window.top.onlineFailMsg = ajaxData.msg;
+                var btnOption = ajaxOption;
+                btnOption.text = window.top.message.fund_auto['等待支付'];
+                btnOption.target = url;
+                btnOption.callback = "back";
+                window.top.topPage.doDialog(ajaxE, btnOption);
+            }else{
+                this.continueDeposit(e,option);
+            }
+        },
+
         /**
          * 电子支付确认提交
          * @param e

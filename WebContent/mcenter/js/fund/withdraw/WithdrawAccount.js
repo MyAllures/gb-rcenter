@@ -41,18 +41,18 @@ define(['common/BaseEditPage','bootstrapswitch'], function (BaseEditPage) {
                         onText: window.top.message.common['enable'],
                         offText: window.top.message.common['forbidden'],
                         onSwitchChange: function (e, state) {
-                            $("[name='result.isSwitch']").val(state);
+                            $("[name='result.active']").val(state);
                         }
                     }
                 );
         },
         accountValidateForm: function (e,opt) {
-            var isSwitch = $("[name='result.isSwitch']").val();
+            var isActive = $("[name='result.active']").val();
             var withdrawChannel=$("#withdrawChannel").val();
             var merchantCode=$("#merchantCode").val();
             var platformId=$("#platformId").val();
             var key=$("#key").val();
-            if(isSwitch=="true"){
+            if(isActive=="true"){
                 if (withdrawChannel==null||withdrawChannel==""){
                     page.showPopover(e,opt,"danger","出款渠道不能为空",true);
                     return false;

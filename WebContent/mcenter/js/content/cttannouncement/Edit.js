@@ -265,8 +265,10 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                 $(".targetContent"+language).val(content);
             });
 
-            var loginAnnouncementTime = $("[name='paramValue']").val();
-            $("#loginAnnouncementTime").text(loginAnnouncementTime+"s");
+            if($("[name='countdown']")!=undefined){
+                var countdown = $("[name='countdown']").val();
+                $("#countdown").text(countdown+"s");
+            }
 
             var type = $("[name='announcementType']").attr('title');
             $("#targetType").text(type);
