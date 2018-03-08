@@ -265,9 +265,7 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
                 type: "POST",
                 success: function (data) {
                     var taskCount = data.taskCount;
-                    if (taskCount) {
-                        $("#unReadTaskCount").text(taskCount);
-                    }
+                    $("#unReadTaskCount").text(taskCount);
                     var tasks = data.tasks;
                     var voices = data.taskVoice;
                     if (tasks && voices) {
