@@ -212,18 +212,59 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit', 'site/plu
             mui("body").on("tap", "div.closeHelpBox", function () {
                 $("div.depositHelpBox").hide();
             });
+            //联系客服
+            mui("body").on('tap', '#loadCustomerId', function () {
+                page.footer.loadCustomerService();
+                var url = $('.customer').attr('data-skip');
+                _this.gotoUrl(url);
+            });
+            //绑定关闭失败提示弹窗事件
+            mui("body").on('tap', '#continueDeposit', function () {
+                $("#failureHints").hide();
+                $("#failureHintsMasker").hide();
+                var channel = $("#channel").val();
+                if(channel == "online"){
+                    page.Online.onlineContinueDeposit();
+                }else if(channel == "scanCode"){
+                    page.ScanCode.scanContinueDeposit();
+                }else if(channel == "company" || channel == "electronic"){
+                    var baseCompanyDeposit = new BaseCompanyDeposit();
+                    baseCompanyDeposit.companyContinueDeposit();
+                }
+
+
+            });
+            //绑定失败提示弹窗重新存款事件
+            mui("body").on('tap', '#goToDepositPage', function () {
+                if (_this.os == 'app_android') {
+                    window.gamebox.depositAgain();
+                } else if (_this.os == 'app_ios') {
+                    if (isMobileUpgrade && isMobileUpgrade == 'true') {
+                        //v3存款跳转
+                        gotoTab(0);
+                    } else {
+                        gotoIndex(1);
+                    }
+                } else {
+                    _this.gotoUrl($(this).attr('_href'));
+                }
+            });
+
         },
         nextStep: function (e, _this, _href) {
             $(".bank-selector >.ct a").removeClass("active");
             var key = $(e).parent().attr("key");
             var url = null;
             var formId = "";
+            var depositType = "";
             if ($(e).attr("data-company")) {
                 url = '/wallet/deposit/company/depositCash.html?searchId=' + key;
                 formId = "#companyCashForm";
+                depositType = "company";
             } else if ($(e).attr("data-fast")) {
                 url = '/wallet/deposit/company/electronic/depositCash.html?searchId=' + key;
                 formId = "#electronicCashForm";
+                depositType = "electronic";
             }
             if (!map[key]) {
                 mui.ajax(url, {
@@ -238,7 +279,7 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit', 'site/plu
                             page.formSelector = formId;
                             _this.bindFormValidation();
                             // page.bindRechargeAmount($("#submitAmount"));
-                            page.jumpSubmit(_this, _href);
+                            page.jumpSubmit(_this, _href,depositType);
                         }
                     },
                     error: function (xhr, type, errorThrown) {
@@ -255,7 +296,7 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit', 'site/plu
             }
             $(e).addClass("active");
         },
-        jumpSubmit: function (_this, _href) {
+        jumpSubmit: function (_this, _href ,depositType) {
             _this._super;
             var baseCompanyDeposit = new BaseCompanyDeposit();
             var options = {
@@ -263,7 +304,8 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit', 'site/plu
                 submitUrl: "/wallet/deposit/company/submit.html",
                 depositUrl: _href,
                 statusNum: 1,
-                fromId: $(_this.formSelector)
+                fromId: $(_this.formSelector),
+                depositType:depositType
             };
             baseCompanyDeposit.submit(options);
         }

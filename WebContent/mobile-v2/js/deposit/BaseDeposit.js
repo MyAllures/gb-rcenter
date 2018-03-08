@@ -62,12 +62,12 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
                     $btn.attr("category","notThrough");
                 }else{
                     var onlineMin = $("#onlinePayMin").val();
-                    if(isNaN(onlineMin)) {
+                    if(onlineMin && isNaN(onlineMin)) {
                         onlineMin = onlineMin.replace(",","");
                     }
                     var min = Number(onlineMin);
                     var onlinePayMax = $("#onlinePayMax").val();
-                    if(isNaN(onlinePayMax)) {
+                    if(onlinePayMax && isNaN(onlinePayMax)) {
                         onlinePayMax = onlinePayMax.replace(",","");
                     }
                     var max = Number(onlinePayMax);
