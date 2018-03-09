@@ -79,7 +79,7 @@ function confirmDeposit(obj, payType) {
             }
         },
         error: function (xhr) {
-            toast(xhr);
+            toast(window.top.message.deposit_auto['提交失败请刷新']);
             goToHome(root+"/wallet/deposit/index.html?v="+Math.random());
         }
     };
