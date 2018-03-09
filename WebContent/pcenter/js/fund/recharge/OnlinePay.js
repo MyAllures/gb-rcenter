@@ -78,6 +78,10 @@ define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
                 $(text).text(window.top.message.fund['Recharge.onlinePay.showMoreBank']);
             }
             $target.unlock();
-        }
+        },
+        onlinePayContinueDeposit:function(e,option){
+            var _this = this;
+            _this.onlineContinueDeposit(e,option);
+        },
     });
 });
