@@ -110,6 +110,7 @@ function depositDiscount(obj, options) {
         },
         error: function () {
             toast(window.top.message.deposit_auto['网络繁忙']);
+            goToHome(root+"/wallet/deposit/index.html?v="+Math.random());
         }
     };
     muiAjax(ajaxoptions);
@@ -162,6 +163,7 @@ function seachDiscount(obj, options) {
         },
         error: function () {
             toast(window.top.message.deposit_auto['网络繁忙']);
+            goToHome(root+"/wallet/deposit/index.html?v="+Math.random());
         }
     };
     muiAjax(ajaxoptions);

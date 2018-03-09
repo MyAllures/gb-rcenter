@@ -80,7 +80,7 @@ function confirmDeposit(obj, payType) {
         },
         error: function (xhr) {
             toast(xhr);
-            toast(window.top.message.deposit_auto['网络繁忙']);
+            goToHome(root+"/wallet/deposit/index.html?v="+Math.random());
         }
     };
     muiAjax(options);
