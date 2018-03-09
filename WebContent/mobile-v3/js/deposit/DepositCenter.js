@@ -42,7 +42,7 @@ function amountInput(obj, options) {
     $(obj).addClass("active");
     var key = $(obj).parent().attr("key");
     if (_url && _url != "undefined" && !depositMap[key]) {
-        var options = {
+        var ajaxOptions = {
             url: root + _url,
             headers: {'Soul-Requested-With': 'XMLHttpRequest'},
             dataType: 'text/html',
@@ -56,7 +56,7 @@ function amountInput(obj, options) {
                 toast(window.top.message.deposit_auto['网络繁忙']);
             }
         };
-        muiAjax(options);
+        muiAjax(ajaxOptions);
     } else {
         $("#depositInput").html(depositMap[key]);
     }
@@ -148,3 +148,26 @@ function goToHome() {
     }
 }
 
+/**跳转到存款页面*/
+function goToDepositPage(){
+    if (isNative) {
+        nativeGotoDepositPage();
+    } else {
+        goToUrl(root + '/wallet/deposit/index.html?v=' + Math.random());
+    }
+}
+
+/**
+ * 连续失败后仍继续选择该渠道
+ */
+function continueDeposit(e,option){
+    $("#failureHints").hide();
+    $("#failureHintsMasker").hide();
+    var channel = $("#channel").val();
+    if(channel == "online" || channel == "scan"){
+        onlineContinueDeposit(channel);
+    }else if(channel == "company" || channel == "electronic"){
+        companyContinueDeposit(channel);
+    }
+
+}

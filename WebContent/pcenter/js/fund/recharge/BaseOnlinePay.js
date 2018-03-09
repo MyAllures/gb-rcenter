@@ -2,6 +2,7 @@
  * 线上公共js支付
  */
 define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], function (CommonRecharge, RealName) {
+    var ajaxMap = {};
     return CommonRecharge.extend({
         realName: null,
         /**
@@ -80,8 +81,6 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
          * @param option
          */
         submit: function (e, option) {
-            var _window = window.open("", '_blank');
-            _window.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
             var _this = this;
             window.top.topPage.ajax({
                 url: option.url,
@@ -89,26 +88,45 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                 data: this.getCurrentFormData(e),
                 dataType: 'json',
                 success: function (data) {
-                    var state = data.state;
-                    var msg = data.msg;
-                    if (state) {
-                        window.top.onlineTransactionNo = data.transactionNo;
-                        _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
-                    } else {
-                        _window.close();
+                    ajaxMap["ajaxData"] = data ;
+                    var failureCount = data.failureCount;
+                    if(failureCount >= 3){
+                        $("#manyFailures").show();
+                        $("#backdrop").show();
+                    }else {
+                        _this.onlineContinueDeposit(e,option);
                     }
-                    var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
-                    window.top.onlineFailMsg = msg;
-                    var btnOption = option;
-                    btnOption.text = window.top.message.fund_auto['等待支付'];
-                    btnOption.target = url;
-                    btnOption.callback = "back";
-                    window.top.topPage.doDialog(e, btnOption);
                 },
                 error: function (data) {
                     _window.close();
                 }
             });
+        },
+
+        /**
+         * 失败多次后仍继续存款
+         */
+        onlineContinueDeposit:function(e,option){
+            $("#manyFailures").hide();
+            $("#backdrop").hide();
+            var data = ajaxMap["ajaxData"];
+            var _window = window.open("", '_blank');
+            _window.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
+            var state = data.state;
+            var msg = data.msg;
+            if (state) {
+                window.top.onlineTransactionNo = data.transactionNo;
+                _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
+            } else {
+                _window.close();
+            }
+            var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
+            window.top.onlineFailMsg = msg;
+            var btnOption = option;
+            btnOption.text = window.top.message.fund_auto['等待支付'];
+            btnOption.target = url;
+            btnOption.callback = "back";
+            window.top.topPage.doDialog(e, btnOption);
         },
 
         asciiToUnicode: function (content) {

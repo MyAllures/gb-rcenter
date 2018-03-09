@@ -308,6 +308,8 @@ function goToUrl(url, isExternalLink, targetUrl) {
     } else if (url.indexOf("/deposit/index.html") > 0) { //存款页面
         deposit(url);
         return;
+    } else if (url.indexOf(root + "/mainIndex.html") > 0) { //首页
+        goToHome(url);
     }
     openWindow(url);
 }
@@ -508,6 +510,17 @@ function login(targetUrl) {
 }
 
 /**
+ * 统一首页入口
+ */
+function goToHome(url) {
+    if (isNative) {
+        gotoHomePage();
+    } else {
+        openWindow(url);
+    }
+}
+
+/**
  * 统一存款入口
  */
 function deposit(url) {
@@ -595,10 +608,13 @@ function bindFormValidation($form) {
 /**
  * 延迟加载图片
  */
-function lazyLoadImg(self) {
+function lazyLoadImg(self, placeholder) {
+    if (!placeholder) {
+        placeholder = '';
+    }
     var lazyLoadApi = mui(self).imageLazyload({
         autoDestroy: false,
-        placeholder: ''
+        placeholder: placeholder
     });
     return lazyLoadApi;
 }

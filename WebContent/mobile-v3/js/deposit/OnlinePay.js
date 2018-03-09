@@ -32,6 +32,7 @@ function initMySwiper() {
     }
 }
 
+var ajaxData = null ;
 /**线上支付确认存款，查询是否有优惠*/
 function confirmDeposit(obj, payType) {
     //验证存款金额
@@ -65,27 +66,43 @@ function confirmDeposit(obj, payType) {
             if ($("#depositSalePop").length > 0) {
                 $("#depositSalePop").remove();
             }
-            $(".mui-content").append(data);
-            var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
-            if (unCheckSuccess == "true") {
-                var pop = $("#pop").attr("pop");
-                if (pop === "true") {
-                    $("#activityId").val($("input[type=radio]:checked").val());
-                    muiScrollY(".gb-withdraw-box .mui-scroll-wrapper");
-                } else {
-                    onlinePaySubmit(payType);
-                }
-            } else {
-                //验证提示
-                toast($("#tips").attr("tips"));
+            ajaxData = data;
+            var failureCount = $(data).find("#failureCount").attr("failureCount");
+            var unCheckSuccess = $(data).find("#unCheckSuccess").attr("unCheckSuccess");
+            if(unCheckSuccess == "true" && failureCount >= 3){
+                $("#failureHints").show();
+                $("#failureHintsMasker").show();
+                $("#channel").val(payType);
+            }else{
+                $("#channel").val("");
+                onlineContinueDeposit(payType);
             }
         },
         error: function (xhr) {
             toast(xhr);
-            toast(window.top.message.deposit_auto['网络繁忙']);
+            goToHome(root+"/wallet/deposit/index.html?v="+Math.random());
         }
     };
     muiAjax(options);
+}
+
+/**线上支付关闭失败提示弹窗*/
+function onlineContinueDeposit(payType){
+    $("#channel").val("");
+    $(".mui-content").append(ajaxData);
+    var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
+    if (unCheckSuccess == "true") {
+        var pop = $("#pop").attr("pop");
+        if (pop === "true") {
+            $("#activityId").val($("input[type=radio]:checked").val());
+            muiScrollY(".gb-withdraw-box .mui-scroll-wrapper");
+        } else {
+            onlinePaySubmit(payType);
+        }
+    } else {
+        //验证提示
+        toast($("#tips").attr("tips"));
+    }
 }
 
 /**当玩家开启随机额度提交时，对金额进行前台验证*/

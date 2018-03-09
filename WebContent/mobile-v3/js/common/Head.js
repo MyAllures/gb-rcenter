@@ -47,6 +47,7 @@ function headInfo() {
                 $("#login-info").addClass("mui-hidden");
                 isLogin = false;
                 sessionStorage.setItem("isLogin", isLogin);
+                $(".side-nav .btn-logout").hide();
             } else {
                 $("#notLogin").hide();
                 $(".user_name").text(data.name);

@@ -107,6 +107,58 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
                 var $href = $(this).data("href");
                 $("#mainFrame").load(root+$href);
             });*/
+            var $bootstrapSwitchs = $('input[type=checkbox][name=my-checkboxstatus]');
+            this.unInitSwitch($bootstrapSwitchs)
+                .bootstrapSwitch({
+                    onText: window.top.message.content['floatPic.dislpay.on'],
+                    offText: window.top.message.content['floatPic.display.off'],
+                        onSwitchChange: function (e, state) {
+                            var $this = $(this);
+                            $this.bootstrapSwitch('indeterminate', true);
+                            var _target = e.currentTarget;
+                            var id = $(_target).attr("Id");
+                            var _msg = "";
+                            if (state) {
+                                _msg ="确认启用"+id+"站点";
+                            } else {
+                                _msg = "确认禁用"+id+"站点";
+                            }
+                            if (state==true){
+                              var  status=1;
+                            }else if (state==false){
+                              var  status=2;
+                            }
+                            window.top.topPage.showConfirmMessage(_msg, function (confirm) {
+                                if (confirm) {
+                                    window.top.topPage.ajax({
+                                        url: root + '/vSysSiteManage/setStatus.html',
+                                        dataType: "json",
+                                        data: {"result.id": id, "result.status": status},
+                                        success: function (data) {
+                                            if (data) {
+                                                $(_target).attr("isChanged", true);
+                                                $("#status").removeClass("label-success");
+                                                $("#status").addClass("label-danger");
+                                                _this.query(e);
+                                            } else {
+                                                page.showPopover(e, {
+                                                    "callback": function () {
+                                                        _this.query(e);
+                                                    }
+                                                }, "danger", "操作失败", true);
+                                            }
+
+                                        }
+                                    });
+                                    $this.bootstrapSwitch('indeterminate', false);
+                                }else {
+                                    $this.bootstrapSwitch('indeterminate', false);
+                                    $this.bootstrapSwitch('state', !state, true);
+                                }
+                            })
+                        }
+
+                })
         },
         /**
          * 当前对象事件初始化函数
