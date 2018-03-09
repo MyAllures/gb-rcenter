@@ -360,7 +360,7 @@ define([], function () {
             this.toast(sos);
             if (sos == 'app_ios' && window.history.length == 1) {
                 $('header').on('tap', '.mui-action-back', function () {
-                    this.toast("!!!!");
+                    //this.toast("!!!!");
                     var canvasRight = $('.mui-off-canvas-right').hasClass('mui-active');
                     if (canvasRight) {
                         mui('.mui-off-canvas-right').offCanvas('close');
