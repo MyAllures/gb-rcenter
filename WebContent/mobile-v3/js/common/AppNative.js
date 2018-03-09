@@ -91,7 +91,7 @@ function nativeSaveImage(url) {
 /**
  * 原生跳转至客户
  */
-function gotoCustomer(){
+function nativeGoToCustomerPage(){
     window.gamebox.gotoCustomerPage();
 }
 

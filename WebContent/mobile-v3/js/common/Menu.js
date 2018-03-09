@@ -5,7 +5,7 @@
  */
 function loadCustomer(obj, options) {
     if (isNative) {
-        gotoCustomer();
+        nativeGoToCustomerPage();
     }else{
         var url = options.url;
         if (!url) {
