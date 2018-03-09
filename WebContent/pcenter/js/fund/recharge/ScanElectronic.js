@@ -55,6 +55,15 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
         },
         rechargeAmountMsg:function () {
             var $account = $("input[name=account]:checked");
+            var depositType = $account.attr("depositType");
+            if(depositType == "scan"){
+                $("#electronicDocument").hide();
+                $("#scanDocument").show();
+            }else{
+                $("#electronicDocument").show();
+                $("#scanDocument").hide();
+            }
+
             var payMax = $account.attr("payMax");
             var payMin = $account.attr("payMin");
             $("#payMin").html(payMin);
@@ -237,79 +246,28 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
             }
             return rule;
         },
+
         /**
          * 立即存款
          * @param e
          * @param option
          */
         submit: function (e, option) {
-            var $account = $("input[name=account]:checked");
-            var isThird = $account.attr("isThird");
-            var _window;
-            if (isThird != 'true') {
-                _window = window.open("", '_blank');
-                _window.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
-            }
+            var _this = this;
             window.top.topPage.ajax({
                 url: root + "/fund/recharge/ScanElectronic/submit.html",
                 data: this.getCurrentFormData(e),
                 dataType: 'json',
                 type: 'POST',
                 success: function (data) {
-                    var state = data.state;
-                    if (state == false && _window) {
-                        _window.close();
-                    }
-                    var msg = data.msg;
+                    ajaxMap["ajaxData"] = data ;
                     var failureCount = data.failureCount;
-                    $("#backdrop").show();
-                    if (state == true && data.isThird == true) {
-                        $("#confirmRechargeAmount").text(data.rechargeAmount);
-                        $("#confirmFee").text(data.formatFee);
-                        if (data.fee > 0) {
-                            $("#confirmFee").addClass("green m-l");
-                            $("#confirmFee").removeClass("red");
-                        } else {
-                            $("#confirmFee").addClass("red");
-                            $("#confirmFee").removeClass("green m-l");
-                        }
-                        $("#confirmRechargeTotal").text(data.rechargeTotal);
-                        ajaxMap["ajaxIsThird"] = false;
-                        if(failureCount >= 3){
-                            $("#manyFailures").show();
-                        }else{
-                            $("[name=bitcoinRecharge]").hide();
-                            $("[name=companyRecharge]").show();
-                            $("#confirmDialog").show();
-                        }
-                    } else if (state == false && data.isThird == true) {
+                    if(failureCount >= 3){
+                        $("#manyFailures").show();
                         $("#backdrop").show();
-                        $("#failDialog").show();
-                    } else if (data.isThird != true) {
-                        if(failureCount >= 3){
-                            ajaxMap["ajaxE"] = e;
-                            ajaxMap["ajaxOption"] = option ;
-                            ajaxMap["ajaxData"] = data;
-                            ajaxMap["ajaxIsThird"] = true;
-                            ajaxMap["_window"] = _window;
-                            $("#manyFailures").show();
-                        }else {
-                            ajaxMap["ajaxIsThird"] = false;
-                            if (state == true) {
-                                window.top.onlineTransactionNo = data.transactionNo;
-                                _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
-                            }
-                            var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
-                            window.top.onlineFailMsg = msg;
-                            var btnOption = option;
-                            btnOption.text = window.top.message.fund_auto['等待支付'];
-                            btnOption.target = url;
-                            btnOption.callback = "back";
-                            window.top.topPage.doDialog(e, btnOption);
-                        }
+                    }else {
+                        _this.scanElectronicContinueDeposit(e, option);
                     }
-                    $(e.currentTarget).unlock();
-
                 }
             })
         },
@@ -317,30 +275,54 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
         /**
          * 非第三方存款多次错误提示
          */
-        notThirdContinueDeposit:function(e, option){
-            var ajaxE = ajaxMap["ajaxE"];
-            var ajaxOption = ajaxMap["ajaxOption"];
-            var ajaxData = ajaxMap["ajaxData"];
-            var ajaxIsThird = ajaxMap["ajaxIsThird"];
-            var _window = ajaxMap["_window"];
-            if(ajaxIsThird){
-                if (ajaxData.state == true) {
-                    window.top.onlineTransactionNo = ajaxData.transactionNo;
-                    _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + ajaxData.transactionNo;
+        scanElectronicContinueDeposit:function(e, option){
+            $("#manyFailures").hide();
+            $("#backdrop").hide();
+            var data = ajaxMap["ajaxData"];
+            var $account = $("input[name=account]:checked");
+            var isThird = $account.attr("isThird");
+            var _window;
+            if (isThird != 'true') {
+                _window = window.open("", '_blank');
+                _window.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
+            }
+            var state = data.state;
+            if (state == false && _window) {
+                _window.close();
+            }
+            var msg = data.msg;
+            if (state == true && data.isThird == true) {
+                $("#confirmRechargeAmount").text(data.rechargeAmount);
+                $("#confirmFee").text(data.formatFee);
+                if (data.fee > 0) {
+                    $("#confirmFee").addClass("green m-l");
+                    $("#confirmFee").removeClass("red");
+                } else {
+                    $("#confirmFee").addClass("red");
+                    $("#confirmFee").removeClass("green m-l");
                 }
-                $("#manyFailures").hide();
-                $("#backdrop").hide();
-                $(e.currentTarget).unlock();
-                var url = root + "/fund/recharge/online/onlinePending.html?state=" + ajaxData.state;
-                window.top.onlineFailMsg = ajaxData.msg;
-                var btnOption = ajaxOption;
+                $("#confirmRechargeTotal").text(data.rechargeTotal);
+                $("[name=bitcoinRecharge]").hide();
+                $("[name=companyRecharge]").show();
+                $("#confirmDialog").show();
+                $("#backdrop").show();
+            } else if (state == false && data.isThird == true) {
+                $("#backdrop").show();
+                $("#failDialog").show();
+            } else if (data.isThird != true) {
+                if (state == true) {
+                    window.top.onlineTransactionNo = data.transactionNo;
+                    _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
+                }
+                var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
+                window.top.onlineFailMsg = msg;
+                var btnOption = option;
                 btnOption.text = window.top.message.fund_auto['等待支付'];
                 btnOption.target = url;
                 btnOption.callback = "back";
-                window.top.topPage.doDialog(ajaxE, btnOption);
-            }else{
-                this.continueDeposit(e,option);
+                window.top.topPage.doDialog(e, btnOption);
             }
+            $(e.currentTarget).unlock();
         },
 
         /**
