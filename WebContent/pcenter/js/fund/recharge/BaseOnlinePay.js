@@ -122,6 +122,9 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
             }
             var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
             window.top.onlineFailMsg = msg;
+            if(!option){
+                option = {};
+            }
             var btnOption = option;
             btnOption.text = window.top.message.fund_auto['等待支付'];
             btnOption.target = url;
