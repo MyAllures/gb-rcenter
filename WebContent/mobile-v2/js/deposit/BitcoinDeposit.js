@@ -67,6 +67,12 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
                     dtpicker.dispose();
                 })
             });
+            //联系客服
+            mui("body").on('tap', '#loadCustomerId', function () {
+                page.footer.loadCustomerService();
+                var url = $('.customer').attr('data-skip');
+                _this.gotoUrl(url);
+            });
 
             var type = $("input[name='result.rechargeType']").val();
             var options = {
