@@ -368,9 +368,8 @@ define([], function () {
             }, 1000);
         },
 
-            iosGoBack: function () {
+        iosGoBack: function () {
             var sos = this.whatOs();
-            mui.toast("sos:"+sos+"  length:"+window.history.length+" sessionStorage.currentLength:"+sessionStorage.currentLength);
             if (sos == 'app_ios' && sessionStorage.currentLength == "1") {
                 $('header').on('tap', '.mui-action-back', function () {
                     var canvasRight = $('.mui-off-canvas-right').hasClass('mui-active');
