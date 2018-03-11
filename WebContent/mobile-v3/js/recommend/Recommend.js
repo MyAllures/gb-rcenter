@@ -11,8 +11,6 @@ $(function(){
         disabledHandSlip: ['mui-off-canvas-left']
     };
     muiInit(options);
-    copyCode();
-
 });
 
 

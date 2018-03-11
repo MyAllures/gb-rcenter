@@ -1513,6 +1513,7 @@
                     sessionStorage.is_login = false;
                     sessionStorage.demoModel = null;
                     sessionStorage.registerDialog = false;
+                    sessionStorage.loginDialogNoShow = false;
                 }
                 window.location.href="/";
             }
@@ -1842,9 +1843,10 @@
         $(".login-close").on("click",function (e) {
             $(".login-dialog").addClass('hide');
         })
-        if(sessionStorage.is_login=="true"){
+        if(sessionStorage.is_login=="true" && sessionStorage.getItem("loginDialogNoShow")!="true"){
         <#if data.loginAnnouncement?has_content>
             $(".login-dialog").removeClass('hide');
+            sessionStorage.setItem("loginDialogNoShow",true);
             <#if data.loginAnnouncementTime?has_content>
                 setTimeout(function () {
                     $(".login-dialog").addClass('hide');

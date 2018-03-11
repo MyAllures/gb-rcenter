@@ -88,6 +88,11 @@ function nativeSaveImage(url) {
     window.gamebox.saveImage(url);
 }
 
-
+/**
+ * 原生跳转至客户
+ */
+function nativeGoToCustomerPage(){
+    window.gamebox.gotoCustomerPage();
+}
 
 

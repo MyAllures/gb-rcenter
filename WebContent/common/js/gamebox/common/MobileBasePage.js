@@ -673,7 +673,6 @@ define(['moment'], function (moment) {
          */
         goBack: function () {
             var _this = this;
-            this.toast(_this.os +"goBack");
             if (_this.os == 'app_ios') {
                 mui("body").on("tap", "[class*='mui-action-back']", function () {
                     goBack();
