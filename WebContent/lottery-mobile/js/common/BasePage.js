@@ -7,6 +7,13 @@ define([], function () {
         os: null,
 
         init: function (formSelector) {
+            if(sessionStorage.returnFlag == undefined || sessionStorage.returnFlag == 'false'){
+                if(!sessionStorage.currentLength){
+                    sessionStorage.currentLength=0
+                }
+                sessionStorage.currentLength = parseInt(sessionStorage.currentLength)+1;
+            }
+            sessionStorage.returnFlag=false;
             this.formSelector = formSelector || this.formSelector;
             this.onPageLoad();
             this.bindButtonEvents();
@@ -47,7 +54,13 @@ define([], function () {
          * mui初始化
          */
         muiInit: function () {
-            mui.init();
+            mui.init({
+                    beforeback: function() {
+                        sessionStorage.currentLength = parseInt(sessionStorage.currentLength)-1;
+                        sessionStorage.returnFlag = true;
+                        return true;
+                    }
+                });
             //禁用侧滑手势
             if (document.querySelector('.mui-inner-wrap')) {
                 document.querySelector('.mui-inner-wrap').addEventListener('drag', function (e) {
@@ -357,7 +370,7 @@ define([], function () {
 
         iosGoBack: function () {
             var sos = this.whatOs();
-            if (sos == 'app_ios' && window.history.length == 1) {
+            if (sos == 'app_ios' && sessionStorage.currentLength == "1") {
                 $('header').on('tap', '.mui-action-back', function () {
                     var canvasRight = $('.mui-off-canvas-right').hasClass('mui-active');
                     if (canvasRight) {
