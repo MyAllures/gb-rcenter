@@ -35,11 +35,11 @@ function searchGame(){
     $(".casino-list .mui-row").html('');
 
     loadData(apiId,pageNumber,name);
-    if(name !=null && name.length != 0){
+    /*if(name !=null && name.length != 0){
         mui('#pullfresh').pullRefresh().endPullupToRefresh(true);
     }else{
         mui('#pullfresh').pullRefresh().refresh(true);
-    }
+    }*/
 }
 
 function loadData(apiId,pageNumber,name) {
@@ -47,9 +47,9 @@ function loadData(apiId,pageNumber,name) {
     if(name !=null && name != ""){
        tempName = '&search.name='+name;
     }
-    var options = {
-        url:root + '/game/getCasinoGameByApiId.html?search.apiId='+apiId+'&search.apiTypeId=2&paging.pageNumber='+pageNumber + tempName,
-        type:'GET',
+    var options = {//var url = "Validate.jsp?id=" + encodeURI(encodeURI(idField.value));
+        url:root + '/game/getCasinoGameByApiId.html?search.apiId='+apiId+'&search.apiTypeId=2&paging.pageNumber='+pageNumber + tempName,//转码
+        type:'POST',
         headers:{
             'Content-Type': 'application/json',
             'Soul-Requested-With': 'XMLHttpRequest'

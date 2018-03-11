@@ -55,10 +55,15 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
                 success: function (data) {
                     $("#backdrop").show();
                     if (data.state == true) {
+                        var failureCount = data.failureCount;
                         $("#bitAmount").text(data.bitAmount);
-                        $("[name=bitcoinRecharge]").show();
-                        $("[name=companyRecharge]").hide();
-                        $("#confirmDialog").show();
+                        if(failureCount >= 3){
+                            $("#manyFailures").show();
+                        }else{
+                            $("[name=bitcoinRecharge]").show();
+                            $("[name=companyRecharge]").hide();
+                            $("#confirmDialog").show();
+                        }
                     } else {
                         $("#failDialog").show();
                     }
@@ -66,6 +71,11 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
                 }
             });
         },
+
+        notThirdContinueDeposit:function(e,option){
+            this.continueDeposit(e,option);
+        },
+
         /**
          * 确认存款提交
          * @param e

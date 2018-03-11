@@ -42,6 +42,9 @@ ul {
 
 li {
   list-style: none; }
+li.mui-table-view-cell {
+  color: #000!important;
+}
 
 .mui-bar .mui-icon:active {
   opacity: 1; }
@@ -4768,5 +4771,8 @@ body.mine-user {
   background: #999;
   color: #fff;
   font-size: 12px; }
+.content-casino-transfer .game-item .game-detail h1{color: #fff!important;}
+.content-casino-transfer .game-item .game-detail .g-money{color: #fff!important;}
+.content-casino-transfer .game-description p{color: #fff!important;}
 
 /*# sourceMappingURL=common.css.map */

@@ -10,7 +10,7 @@ define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
          * 调用
          */
         init: function () {
-            this.formSelector = "form[name=onlineForm]";
+            this.formSelector = "form/fund/recharge/OnlinePay[name=onlineForm]";
             this._super(this.formSelector);
         },
         /**
@@ -32,6 +32,16 @@ define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
                 var limitTip = $payBank.attr("amountLimit");
                 $("input[name=rechargeAmount]").attr("placeholder", limitTip);
                 _this.changeValid();
+            });
+            $("#onlineContinueDeposit").click(function(e,option){
+                _this.onlineContinueDeposit(e,option);
+            });
+            $("#againDeposit").click(function(e,option){
+                $("#manyFailures").hide();
+                $("#backdrop").hide();
+                $(e.currentTarget).unlock();
+                $("#onlineForm").load(root+"/fund/recharge/online/onlinePay.html?t"+Math.random());
+                // window.top.gotoUrl(root+"/#/fund/playerRecharge/recharge.html?t"+Math.random());
             });
             /**
              * 金额监控
@@ -78,6 +88,10 @@ define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
                 $(text).text(window.top.message.fund['Recharge.onlinePay.showMoreBank']);
             }
             $target.unlock();
-        }
+        },
+        // onlineContinueDeposit:function(e,option) {
+        //     onlineContinueDeposit(e, option);
+        // }
+
     });
 });
