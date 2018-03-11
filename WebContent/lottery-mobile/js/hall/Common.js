@@ -270,12 +270,13 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                                //展示上一期中奖号码
                                $(".mui-pull-left .style_blue").text(open.expect);
                                _this.showLastOpenCode(numArr);
-                               if(_this.type == "ssc" || _this.type=="pl3" || _this.code=="xyft" || _this.code=="jspk10"){
-                                   _this.refreshView();
-                               }
                            }
+                        if(_this.type == "ssc" || _this.type=="pl3" || _this.code=="xyft" || _this.code=="jspk10"){
+                            _this.refreshView();
+                        }
                         _this.showRecentHistory(data);
                     }
+
                 },
                 error: function (e) {
                 }
