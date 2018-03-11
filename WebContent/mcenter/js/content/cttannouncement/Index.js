@@ -13,6 +13,8 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         },
         bindEvent: function () {
             this._super();
+            //回车提交
+            this.enterSubmit(".enter-submit");
         },
         getSelectIds:function(e,option)
         {
