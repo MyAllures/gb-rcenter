@@ -26,6 +26,8 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
                 }
             });
             this.copyText('a[name="copy"]');
+            //回车提交
+            this.enterSubmit(".enter-submit");
         },
         /** 声音开关 */
         toneSwitch: function (e) {

@@ -17,6 +17,8 @@ define(['common/BasePage'], function (BasePage) {
          */
         bindEvent: function () {
             this._super();
+            //回车提交
+            this.enterSubmit(".enter-submit");
         },
         /**
          * 跳转人工存入
