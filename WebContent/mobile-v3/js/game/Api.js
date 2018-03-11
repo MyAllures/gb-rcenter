@@ -180,6 +180,9 @@ function transferBack(data) {
         if (_this.os == 'app_android') {
             window.gamebox.backRefresh();
         }
+        if (isNative) {
+            nativeAccountChange();
+        }
         //转账成功
         layer.open({
             title: window.top.message.game_auto['转账成功'],
