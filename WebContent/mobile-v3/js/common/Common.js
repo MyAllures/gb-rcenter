@@ -176,7 +176,7 @@ function muiScrollXY(obj, options) {
  * mui ajax请求失败统一处理
  */
 function muiAjaxError() {
-    mui.ajaxSettings.error = function (error, type, xhr, settings) {
+    mui.ajaxSettings.complete = function (error, type, xhr, settings) {
         var status = error.getResponseHeader("headerStatus") || error.status;
         if (status == 600) {//Session过期 跳转登录页面
             goToUrl(root + "/login/commonLogin.html");
