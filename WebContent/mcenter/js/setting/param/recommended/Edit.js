@@ -51,8 +51,6 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
         bindEvent: function () {
             this._super();
             var _this = this;
-            //回车提交
-            this.enterSubmit("._enter_submit");
             //这里初始化所有的事件
             $(this.formSelector).on("change", "#isRewardActive", function () {
                 var stat=$(this).is(":checked");
