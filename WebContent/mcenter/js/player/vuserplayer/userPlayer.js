@@ -311,6 +311,41 @@ define(['common/BaseEditPage','mailAutoComplete'], function (BaseEditPage) {
             })
         },
 
+        //保存风控标识
+        saveRiskLabel:function (e,option) {
+
+            //收集数据
+            var selectVal = "";
+            var Selected = $("#playerSelectTag").children();
+            $(Selected).each(function (index,item) {
+                var $item = $(item);
+                var tagid = $item.attr("tagid");
+                selectVal = selectVal+';'+tagid;
+            });
+            $('#riskDataType').attr('value', selectVal);
+
+            //发送请求
+            window.top.topPage.ajax({
+                url: root+"/player/saveRiskLabel.html",
+                dataType: 'json',
+                data: this.getCurrentFormData(e),
+                success: function (data) {
+                    if (data.status) {
+                        var msgType = data.status == true ? 'success' : 'danger';
+                        if (data.status) {
+                            option.callback = 'saveCallbak';
+                            e.page.showPopover(e, option, msgType, data.msg, true);
+                        }
+                    }else{
+                        e.page.showPopover(e, option, 'danger', window.top.message.common['save.failed'], true);
+                    }
+                },
+                error: function (data) {
+                    e.page.showPopover(e, option, 'danger', window.top.message.common['save.failed'], true);
+                }
+            })
+        },
+
 
 
 
