@@ -1008,6 +1008,19 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                 console.error('复制失败:', e.action);
             });
 
+        },
+        /**
+         * enter回车提交
+         * @param obj
+         */
+        enterSubmit: function (obj) {
+            $(document).unbind('keyup');
+            $(document).keyup(function(event){
+                if(event.keyCode ==13 && $(obj+":visible")[0]!=undefined){
+                    $(obj+":visible")[0].focus();
+                    $(obj+":visible")[0].click();
+                }
+            });
         }
     });
 

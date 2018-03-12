@@ -100,6 +100,8 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 var bankName = $target.attr("bankName");
                 var accountCode = $target.attr("accountCode");
                 var bankNum = $target.attr("bankNum");
+                var customBankName = $target.attr("customBankName");
+                $("#customBankName").text(customBankName);
                 $("#accountCode").text(accountCode);
                 $("#bankNum").text(bankNum);
                 $("#bankName").text(bankName);

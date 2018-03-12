@@ -177,23 +177,10 @@ function transferBack(data) {
     if (!data) {
         toast(window.top.message.game_auto["转账异常2"]);
     } else if (data.state == true && data.result == 0) {
-        if (_this.os == 'app_android') {
-            window.gamebox.backRefresh();
-        }
         if (isNative) {
             nativeAccountChange();
         }
         //转账成功
-        /*layer.open({
-            title: window.top.message.game_auto['转账成功'],
-            content: '',
-            btn: [window.top.message.game_auto['好的'], ''],
-            shadeClose: false,
-            yes: function (index) {
-                window.location.replace("/api/detail.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
-                layer.close(index);
-            }
-        })*/
         var obj = $(".btn-in");
         var options = {
             confirm:"",
@@ -205,17 +192,6 @@ function transferBack(data) {
 
     } else if (data.state == true && data.result == 1) {
         //转账失败
-        /*layer.open({
-            title: window.top.message.game_auto['转账失败'],
-            content: window.top.message.game_auto['失败提示'],
-            btn: [window.top.message.game_auto['确定'], ''],
-            shadeClose: false,
-            yes: function (index) {
-                window.location.replace("/api/detail.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
-                layer.close(index);
-            }
-        })*/
-
         var obj = $(".btn-in");
         var options = {
             confirm:window.top.message.game_auto['失败提示'],
@@ -226,23 +202,6 @@ function transferBack(data) {
         showConfirmMsg(options,obj);
 
     } else if (data.state == true && data.result) {
-        /*var orderId = data.orderId;
-        var btnArray = [window.top.message.game_auto['返回'], window.top.message.game_auto['再试一次']];
-        layer.open({
-            title: window.top.message.game_auto['转账超时'],
-            content: window.top.message.game_auto['订单超时'],
-            btn: btnArray,
-            shadeClose: false,
-            yes: function (index) {
-                window.location.replace("/api/detail.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
-                layer.close(index);
-            },
-            no: function (index) {
-                window.location.replace("/api/detail.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
-                layer.close(index);
-            }
-        })*/
-
         var obj = $(".btn-in");
         var options = {
             confirm:window.top.message.game_auto['订单超时'],
