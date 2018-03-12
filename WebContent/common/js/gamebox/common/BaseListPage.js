@@ -35,6 +35,7 @@ define(['common/BasePage', 'common/Pagination', 'validate','validateExtend'], fu
             var _this=this;
             //回车提交
             this.enterSubmit("._enter_submit");
+
             //绑定所有table的列头选择事件
             $(this.formSelector).on("click","table thead input[type=checkbox]", function (e) {
                 e.page=_this;
