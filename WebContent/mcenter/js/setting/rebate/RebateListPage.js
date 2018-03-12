@@ -5,8 +5,6 @@
 define(['common/BaseListPage'], function (BaseListPage) {
 
     return BaseListPage.extend({
-
-
         /**
          * 批量删除
          * @param e

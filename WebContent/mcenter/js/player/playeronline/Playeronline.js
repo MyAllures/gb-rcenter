@@ -25,9 +25,6 @@ define(['common/BaseListPage'], function(BaseListPage) {
         bindEvent : function() {
             this._super();
             var _this=this;
-            //回车提交
-            this.enterSubmit(".enter-submit");
-
             $("#searchtext").keydown(function (event) {
                 if(event.keyCode==13){
                     $(".btn-query-css").click();
