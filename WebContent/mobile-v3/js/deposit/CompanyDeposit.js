@@ -78,6 +78,12 @@ function depositDiscount(obj, options) {
     if (document.activeElement) {
         document.activeElement.blur();
     }
+    var bitAmount = $("input[name='result.bitAmount']").val();
+    if(bitAmount　&& !/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,8})?$/.test(bitAmount)){
+        toast(window.top.message.deposit_auto['比特币数量']);
+        return false;
+    }
+
     bindFormValidation($form);
     if (!$form || !$form.valid()) {
         return false;

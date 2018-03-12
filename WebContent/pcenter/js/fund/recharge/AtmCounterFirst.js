@@ -69,14 +69,14 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                             $("#confirmFee").removeClass("green m-l");
                         }
                         $("#confirmRechargeTotal").text(data.rechargeTotal);
-                        var failureCount = data.failureCount;
-                        if(failureCount >= 3){
-                            $("#manyFailures").show();
-                        }else{
+                        // var failureCount = data.failureCount;
+                        // if(failureCount >= 3){
+                        //     $("#manyFailures").show();
+                        // }else{
                             $("[name=bitcoinRecharge]").hide();
                             $("[name=companyRecharge]").show();
                             $("#confirmDialog").show();
-                        }
+                        // }
                     } else {
                         $("#failDialog").show();
                     }
