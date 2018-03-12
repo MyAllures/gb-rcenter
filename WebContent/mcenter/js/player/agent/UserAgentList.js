@@ -19,9 +19,6 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage) {
          */
         bindEvent : function() {
             this._super();
-            //回车提交
-            this.enterSubmit("._enter_submit");
-
             $("#searchtext").keydown(function (event) {
                 if(event.keyCode==13){
                     $(".btn-query-css").click();

@@ -19,9 +19,6 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
         bindEvent: function () {
             this._super();
             var _this = this;
-            //回车提交
-            this.enterSubmit("._enter_submit");
-
             //玩家api刷新按钮显示
             $(this.formSelector).on('mouseover', "dl.funds-wrap dd", function () {
                 $(this).children("a.refresh").show();

@@ -195,8 +195,6 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
             var that = this;
             //复制按钮
             this.copyText("a[name=copy]");
-            //回车提交
-            this.enterSubmit("._enter_submit");
             $("#searchtext").keydown(function (event) {
                 if(event.keyCode==13){
                     $(".btn-query-css").click();
