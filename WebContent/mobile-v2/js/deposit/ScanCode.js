@@ -162,6 +162,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                 var rechargeAmount = $("input[name='result.rechargeAmount']").val();
                 var rechargeType = $("input[name='result.rechargeType']").val();
                 var account = $("input[name='account']").val();
+                var bankCode = $("input[name='bankCode']").val();
                 var randomCash = $("input[name='result.randomCash']").val();
                 if (!randomCash) {
                     randomCash = 0;
@@ -171,7 +172,8 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                         "result.rechargeAmount": rechargeAmount,
                         "result.rechargeType": rechargeType,
                         "account": account,
-                        "result.randomCash": randomCash
+                        "result.randomCash": randomCash,
+                        "result.payerBank":bankCode
                     },
                     type: 'post',
                     async: false,

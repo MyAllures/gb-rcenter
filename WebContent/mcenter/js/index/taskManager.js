@@ -38,7 +38,7 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
             _this.showMenu();
             setTimeout(function () {
                 // _this.queryPendingDealRecord();
-                _this.timingCountTask();
+                _this.countTaskNum();
             }, 2000);
             _this.playerNumTimer();
         },
@@ -255,7 +255,7 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
         },
 
         /**
-         * 定时计算任务数量　声音提醒
+         * 定时计算任务数量　声音提醒 共用方法
          */
         timingCountTask: function () {
             var _this = this;
@@ -286,12 +286,17 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
                             popUp.playVoice('', 'notice');
                         }
                     }
-                    //没分钟定时查询一次
-                    setTimeout(function () {
-                        _this.timingCountTask();
-                    }, 60 * 1000);
+
                 }
             })
+        },
+        countTaskNum:function () {
+            var _this = this;
+            _this.timingCountTask();
+            //没分钟定时查询一次
+            setTimeout(function () {
+                _this.countTaskNum();
+            }, 120 * 1000);
         },
 
         queryPendingDealRecord: function () {
