@@ -57,12 +57,14 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                 }
 
                 var rechargeAmount = $("input[name='result.rechargeAmount']").val();
+                // var bankCode = options.statusNum ? $("input[name='bankCode']").val() : "";
 
                 mui.ajax(root + options.submitUrl, {
                     data: {
                         "result.rechargeAmount": rechargeAmount,
                         "result.rechargeType": options.type,
                         "statusNum": options.statusNum
+                        // "result.payerBank":bankCode
                     },
                     type: 'post',
                     async: false,

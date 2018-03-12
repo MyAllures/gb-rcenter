@@ -1,5 +1,5 @@
 /**
- * 资金管理-手工存取
+ *
  */
 define(['common/BaseListPage'], function (BaseListPage) {
     return BaseListPage.extend({

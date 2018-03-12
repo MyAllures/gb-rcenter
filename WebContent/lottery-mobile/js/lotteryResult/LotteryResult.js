@@ -7,12 +7,26 @@ define(['site/common/BasePage', 'site/plugin/template', "site/lotteryResult/Zodi
         zodiac: null,
         pageNum:null,
         init: function (formSelector) {
+            if(sessionStorage.returnFlag == undefined || sessionStorage.returnFlag == 'false'){
+                if(!sessionStorage.currentLength){
+                    sessionStorage.currentLength=0
+                }
+                sessionStorage.currentLength = parseInt(sessionStorage.currentLength)+1;
+            }
+            sessionStorage.returnFlag=false;
             this.zodiac = new Zodiac();
             t = this;
             this.onPageLoad();
             this.bindEvent();
         },
         onPageLoad: function () {
+            mui.init({
+                beforeback: function() {
+                    sessionStorage.currentLength = parseInt(sessionStorage.currentLength)-1;
+                    sessionStorage.returnFlag = true;
+                    return true;
+                }
+            });
             var _this = this;
             this.iosGoBack();
             //禁用侧滑手势
