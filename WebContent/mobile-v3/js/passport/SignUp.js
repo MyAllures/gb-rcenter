@@ -35,19 +35,19 @@ function terms() {
  * 性别
  */
 function sex() {
-    var sexButton = document.getElementById('sexButton');
+    var sexButton = document.getElementById('sexDiv');
     if (sexButton) {
         var options = {
             url: root + '/signUp/optionText.html?option=sex',
             success: function (data) {
                 if (data) {
                     sexButton.addEventListener('tap', function (event) {
+                        pickerBlur();
                         var sexPick = new mui.PopPicker();
                         sexPick.setData(data);
-                        pickerBlur();
                         sexPick.show(function (items) {
                             document.getElementById("sysUser.sex").value = items[0].value;
-                            sexButton.value = items[0].text;
+                            document.getElementById('sexButton').value = items[0].text;
                             sexPick.dispose();
                             sexPick = null;
                         });
