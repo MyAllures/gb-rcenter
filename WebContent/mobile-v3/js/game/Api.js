@@ -180,8 +180,11 @@ function transferBack(data) {
         if (_this.os == 'app_android') {
             window.gamebox.backRefresh();
         }
+        if (isNative) {
+            nativeAccountChange();
+        }
         //转账成功
-        layer.open({
+        /*layer.open({
             title: window.top.message.game_auto['转账成功'],
             content: '',
             btn: [window.top.message.game_auto['好的'], ''],
@@ -190,10 +193,19 @@ function transferBack(data) {
                 window.location.replace("/api/detail.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
                 layer.close(index);
             }
-        })
+        })*/
+        var obj = $(".btn-in");
+        var options = {
+            confirm:"",
+            title:window.top.message.game_auto['转账成功'],
+            btnArray:[window.top.message.game_auto['好的']],
+            func:successBack
+        };
+        showConfirmMsg(options,obj);
+
     } else if (data.state == true && data.result == 1) {
         //转账失败
-        layer.open({
+        /*layer.open({
             title: window.top.message.game_auto['转账失败'],
             content: window.top.message.game_auto['失败提示'],
             btn: [window.top.message.game_auto['确定'], ''],
@@ -202,9 +214,19 @@ function transferBack(data) {
                 window.location.replace("/api/detail.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
                 layer.close(index);
             }
-        })
+        })*/
+
+        var obj = $(".btn-in");
+        var options = {
+            confirm:window.top.message.game_auto['失败提示'],
+            title:window.top.message.game_auto['转账失败'],
+            btnArray:[window.top.message.game_auto['确定']],
+            func:successBack
+        };
+        showConfirmMsg(options,obj);
+
     } else if (data.state == true && data.result) {
-        var orderId = data.orderId;
+        /*var orderId = data.orderId;
         var btnArray = [window.top.message.game_auto['返回'], window.top.message.game_auto['再试一次']];
         layer.open({
             title: window.top.message.game_auto['转账超时'],
@@ -219,10 +241,27 @@ function transferBack(data) {
                 window.location.replace("/api/detail.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
                 layer.close(index);
             }
-        })
+        })*/
+
+        var obj = $(".btn-in");
+        var options = {
+            confirm:window.top.message.game_auto['订单超时'],
+            title:window.top.message.game_auto['转账超时'],
+            btnArray:[window.top.message.game_auto['返回'], window.top.message.game_auto['再试一次']],
+            func:successBack
+        };
+        showConfirmMsg(options,obj);
+
     } else {
         toast(data.msg);
         $("[name='gb.token']").val(data.token);
     }
+}
+
+/**
+ * 转账完成后提示处理
+ */
+function successBack(){
+    window.location.replace("/api/detail.html?apiId=" + $("#apiId").val() + "&apiTypeId=" + $("#apiTypeId").val());
 }
 
