@@ -50,6 +50,7 @@ function login() {
             success: function (data) {
                 if (data.success) {
                     sessionStorage.is_login = true;
+                    sessionStorage.isDemo = false;
                     if(os == 'app_ios'){
                         loginSucc(_username,_password,1);
                     }else{
@@ -176,6 +177,8 @@ mui("body").on("tap",".btn-demo",function(){
         yes: function (index) {
             layer.close(index);
             sessionStorage.is_login = true;
+            sessionStorage.isLogin = true;
+            sessionStorage.isDemo = true;
             if (os === 'app_ios') {
                 demoEnter();
             } else {

@@ -1,8 +1,8 @@
 /**
  * 柜员机存款
  */
-define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEditPage, RealName) {
-    return BaseEditPage.extend({
+define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], function (CommonRecharge, RealName) {
+    return CommonRecharge.extend({
         realName: null,
         /**
          * 初始化及构造函数，在子类中采用
@@ -29,83 +29,21 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
         bindEvent: function () {
             this._super();
             var _this = this;
-            //更换支付方式
+            this.copyText('a[name="copy"]');
             $(this.formSelector).on("click", "label.bank", function (e) {
-                _this.changeType(e);
+                $("label.bank.select").removeClass("select");
+                var $account = $(this).find("input[name='account']");
+                var bankCode = $account.attr("bankCode");
+                var account = $account.attr("account");
+                $(".accountInfo").hide();
+                $("[name=accountInfo" + bankCode + account + "]").show();
+                $(this).addClass("select");
             });
 
             $(this.formSelector).on("input", "[name='result.rechargeAmount']", function () {
                 $(_this.formSelector + " span.fee").hide();
                 _this.changeAmountMsg();
             });
-
-            /**
-             * 更改银行
-             */
-            $(this.formSelector).on("click", "[name='result.payerBank']", function (e) {
-                var payerBank = $("[name='result.payerBank']").val();
-                var type = $("input[name='result.rechargeType']:checked").val();
-                $(".tail-number").hide();
-                if (type == 'atm_money' && $("#accountMap" + payerBank + " option").length > 1) {
-                    $('#accountMap' + payerBank).show();
-                }
-                if (payerBank) {
-                    var payAccountId = $('#accountMap' + payerBank).val();
-                    $("input[name='result.payAccountId']").val(payAccountId);
-                } else {
-                    $("input[name='result.payAccountId']").val("");
-                }
-            });
-
-            /**
-             * 更改尾号
-             */
-            $(this.formSelector).on("click", "select.tail-number", function (e) {
-                var payAccountId = $(e.currentTarget).val();
-                $("input[name='result.payAccountId']").val(payAccountId);
-            });
-
-            //修改验证码提示信息的地方
-            $(this.formSelector).on("validate", "[name='code']", function (e, message) {
-                if (message) {
-                    $(_this.formSelector + " span[name=codeTitle]").html("<span class=\"tips orange\"><i class=\"mark plaintsmall\"></i>" + message + "</span>");
-                    e.result = true;
-                } else {
-                    $(_this.formSelector + " span[name=codeTitle]").html("<i class='mark successsmall'></i>");
-                    $(_this.formSelector + " [name='code']").removeClass("error");
-                    e.result = false;
-                }
-            });
-
-            //修改选择尾号提示信息的地方
-            $(this.formSelector).on("validate", "input[name='result.payAccountId']", function (e, message) {
-                if (message) {
-                    $("span[name=payAccountIdMsg]").html("<span class=\"tips orange\"><i class=\"mark plaintsmall\"></i>" + message + "</span>");
-                    $("span[name=payAccountIdMsg]").show();
-                    e.result = true;
-                }
-                else {
-                    $("div[name=payAccountIdMsg]").hide();
-                    e.result = false;
-                }
-            });
-        },
-        /**
-         *更换支付方式
-         */
-        changeType: function (e) {
-            $(this.formSelector + " label.bank").removeClass("select");
-            var $target = $(e.currentTarget);
-            $target.addClass("select");
-            var type = $("input[name='result.rechargeType']:checked").val();
-            $(".tail-number").hide();
-            var payerBank = $("[name='result.payerBank']").val();
-            var payAccountId = $("#accountMap" + payerBank + " option:nth-child(1)").val();
-            if (type == 'atm_money' && $("#accountMap" + payerBank + " option").length > 1) {
-                $('#accountMap' + payerBank).show();
-            }
-            $("#accountMap" + payerBank).val(payAccountId);
-            $("input[name='result.payAccountId']").val(payAccountId);
         },
         /**
          * 立即存款
@@ -113,20 +51,67 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
          * @param option
          */
         submit: function (e, option) {
-            var amount = $("input[name='result.rechargeAmount']").val();
-            var activityId = $("input[name=activityId]:checked").val();
-            var payAccountId = $("input[name='result.payAccountId']").val();
-            var code = $("input[name='code']").val();
-            var rechargeType = $("input[name='result.rechargeType']:checked").val();
-            var payerBank = $("input[name='result.payerBank']").val();
-            var url = root + "/fund/recharge/company/atmCounterSecond.html?result.rechargeAmount=" + amount + "&result.rechargeType=" + rechargeType + "&result.payerBank=" + payerBank + "&result.payAccountId=" + payAccountId;
-            if (activityId) {
-                url = url + "&activityId=" + activityId;
-            }
-            if (code) {
-                url = url + "&code=" + code;
-            }
-            $("#mainFrame").load(url);
+            window.top.topPage.ajax({
+                url: root + "/fund/recharge/company/atmCounterConfirm.html",
+                data: this.getCurrentFormData(e),
+                type: "post",
+                dataType: 'json',
+                success: function (data) {
+                    $("#backdrop").show();
+                    if (data.state == true) {
+                        $("#confirmRechargeAmount").text(data.rechargeAmount);
+                        $("#confirmFee").text(data.formatFee);
+                        if (data.fee > 0) {
+                            $("#confirmFee").addClass("green m-l");
+                            $("#confirmFee").removeClass("red");
+                        } else {
+                            $("#confirmFee").addClass("red");
+                            $("#confirmFee").removeClass("green m-l");
+                        }
+                        $("#confirmRechargeTotal").text(data.rechargeTotal);
+                        // var failureCount = data.failureCount;
+                        // if(failureCount >= 3){
+                        //     $("#manyFailures").show();
+                        // }else{
+                            $("[name=bitcoinRecharge]").hide();
+                            $("[name=companyRecharge]").show();
+                            $("#confirmDialog").show();
+                        // }
+                    } else {
+                        $("#failDialog").show();
+                    }
+                    $(e.currentTarget).unlock();
+                }
+            });
+        },
+
+        notThirdContinueDeposit:function(e,option){
+            this.continueDeposit(e,option);
+        },
+
+        /**
+         * 确认存款提交
+         * @param e
+         * @param options
+         */
+        companyConfirmSubmit: function (e, option) {
+            var _this = this;
+            window.top.topPage.ajax({
+                url: root + "/fund/recharge/company/atmCounterSubmit.html",
+                data: this.getCurrentFormData(e),
+                dataType: 'json',
+                type: "post",
+                success: function (data) {
+                    _this.closeConfirmDialog(e, option);
+                    $("#backdrop").show();
+                    if (data.state == true) {
+                        $("#successDialog").show();
+                    } else {
+                        $("#failDialog").show();
+                    }
+                    $(e.currentTarget).unlock();
+                }
+            })
         },
         /**
          * 更改存款规则-更改存款金额的remote规则
@@ -177,12 +162,12 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                                             sales: sales,
                                             len: len
                                         });
-                                        $("div.applysale").html(html);
+                                        $("div#applysale").html(html);
                                         if (sales[0].preferential != true) {
                                             $("input[name=activityId]:eq('')").prop("checked", 'checked');
                                         }
                                     } else {
-                                        $("div.applysale").find("input[type=radio]").attr("disabled", true);
+                                        $("div#applysale").find("input[type=radio]").attr("disabled", true);
                                         $("input[name=activityId]:eq('')").prop("checked", 'checked');
                                     }
                                     $("._submit").removeClass("disabled");
@@ -198,14 +183,6 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                 }
             }
             return rule;
-        },
-        /**
-         * 支付后回调
-         * @param e
-         * @param option
-         */
-        back: function (e, option) {
-            $("#mainFrame").load(root + "/fund/recharge/online/onlinePay.html");
         },
         /**
          * 更改验证消息

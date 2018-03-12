@@ -277,7 +277,8 @@ function gotoGameUrl(url, apiId) {
                 url = url + "?ad=" + apiId
             }
         }
-        window.gamebox.gotoGame(url);
+        //window.gamebox.gotoGame(url);
+        window.location.href = url;
     } else {
         goToUrl(url);
     }

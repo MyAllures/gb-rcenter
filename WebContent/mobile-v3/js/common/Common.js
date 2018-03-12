@@ -176,7 +176,7 @@ function muiScrollXY(obj, options) {
  * mui ajax请求失败统一处理
  */
 function muiAjaxError() {
-    mui.ajaxSettings.error = function (error, type, xhr, settings) {
+    mui.ajaxSettings.complete = function (error, type, xhr, settings) {
         var status = error.getResponseHeader("headerStatus") || error.status;
         if (status == 600) {//Session过期 跳转登录页面
             goToUrl(root + "/login/commonLogin.html");
@@ -308,6 +308,8 @@ function goToUrl(url, isExternalLink, targetUrl) {
     } else if (url.indexOf("/deposit/index.html") > 0) { //存款页面
         deposit(url);
         return;
+    } else if (url.indexOf(root + "/mainIndex.html") > 0) { //首页
+        goToHome(url);
     }
     openWindow(url);
 }
@@ -339,6 +341,10 @@ function bindButtonEvent(selector) {
      */
     selector = selector || "body";
     mui(selector).on("tap", "[data-rel]", function (e) {
+        //防止提交事件软键盘弹出
+        if (document.activeElement) {
+            document.activeElement.blur();
+        }
         var $target = $(this);
         var isLocked = $target.isLocked();
         if (isLocked) {
@@ -463,6 +469,11 @@ function showConfirmMsg(options, obj) {
             if (func) {
                 applyFunction(func, options, obj);
             }
+        } else if (e.index == 1) {
+            var func = options.cancelFunc;
+            if (func) {
+                applyFunction(func, options, obj);
+            }
         }
     })
 }
@@ -473,10 +484,10 @@ function showConfirmMsg(options, obj) {
  * @param msg 提示信息
  * @param callback 回调函数
  */
-function showWarningMsg(title, msg, callback) {
+function showWarningMsg(title, msg, callback, options) {
     mui.alert(msg, title, function () {
         if (callback) {
-            applyFunction(callback);
+            applyFunction(callback, options);
         }
     });
 }
@@ -494,6 +505,17 @@ function login(targetUrl) {
             //登录成功后跳转页面
             sessionStorage.loginTargetUrl = targetUrl;
         }
+        openWindow(url);
+    }
+}
+
+/**
+ * 统一首页入口
+ */
+function goToHome(url) {
+    if (isNative) {
+        gotoHomePage();
+    } else {
         openWindow(url);
     }
 }
@@ -586,10 +608,13 @@ function bindFormValidation($form) {
 /**
  * 延迟加载图片
  */
-function lazyLoadImg(self) {
+function lazyLoadImg(self, placeholder) {
+    if (!placeholder) {
+        placeholder = '';
+    }
     var lazyLoadApi = mui(self).imageLazyload({
         autoDestroy: false,
-        placeholder: ''
+        placeholder: placeholder
     });
     return lazyLoadApi;
 }

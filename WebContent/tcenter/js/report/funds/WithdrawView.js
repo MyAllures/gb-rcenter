@@ -29,19 +29,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
          */
         bindEvent: function () {
             this._super();
-            //复制按钮
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                var opt = {};
-                if ($(e.target).attr("id") == "transactionNo-copy") {
-                    opt.placement = "left";
-                } else {
-                    opt.placement = "right";
-                }
-                page.showPopover(e, opt, 'success', window.top.message.report_auto['复制成功'], true);
-            });
-
+            this.copyText('a[name="copy"]');
             $("[about='playerAccount']").click(function () {
                 if ($(this).next().attr('style') != 'display: block;') {
                     $(this).next().attr('style', 'display: block;');
@@ -49,7 +37,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     $(this).next().removeAttr('style');
                 }
             });
-
             //查看稽核记录
             $(".audit-records .chak").click(function () {
                 $(this).hide();

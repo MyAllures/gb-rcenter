@@ -91,6 +91,17 @@ define(['site/include/BaseIndex', '../js/template', '../js/Zodiac'], function (B
                     window.location.replace(root + '/');
                 }
             });
+            mui(".ads-slider").on("tap",".float_idx",function () {
+                var isDemo =  sessionStorage.isDemo;
+                if(isDemo == 'true') {
+                    window.top.page.openLayer('试玩账号无权限访问');
+                    return;
+                }
+                var activityId = $(this).attr("objectId");
+                if(activityId){
+                    _this.canShowLottery(activityId);
+                }
+            })
         },
 
         /** 刷新数据 */
@@ -199,6 +210,8 @@ define(['site/include/BaseIndex', '../js/template', '../js/Zodiac'], function (B
                     yes: function (index) {
                         layer.close(index);
                         sessionStorage.is_login = true;
+                        sessionStorage.isLogin = true;
+                        sessionStorage.isDemo = true;
                          if (_this.os === 'app_ios') {
                             demoEnter();
                          } else {
@@ -234,11 +247,13 @@ define(['site/include/BaseIndex', '../js/template', '../js/Zodiac'], function (B
                         $('.is-login').show();
                         $('.un-login').hide();
                         _this.getBalance();
+                        sessionStorage.isDemo = data.isDemo;
                     } else { //未登录
                         $("._rightLogin").hide();
                         $("._rightUnLogin").show();
                         $('.is-login').hide();
                         $('.un-login').show();
+                        sessionStorage.isDemo = false;
                     }
                 }
             })

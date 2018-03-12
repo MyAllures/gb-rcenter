@@ -1,7 +1,7 @@
 /**
  * Created by fei on 16-12-11.
  */
-define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
+define(['site/include/BaseIndex'], function (BaseIndex, PromoDetail) {
     var isload = false;
     return BaseIndex.extend({
         init: function () {
@@ -52,12 +52,12 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
             // 刷新页面后获取容器高度，解决IOS设备刷新时出现空白页问题
             $('.mui-inner-wrap').height();
             /* 关闭浮窗广告 */
-            mui(".ads-slider").on("tap",".icon-close",function(){
+            mui(".ads-slider").on("tap", ".icon-close", function () {
                 $(".ads-slider").hide();
             });
-            mui(".ads-slider").on("tap",".float_idx",function () {
+            mui(".ads-slider").on("tap", ".float_idx", function () {
                 var activityId = $(this).attr("objectId");
-                if(activityId){
+                if (activityId) {
                     _this.canShowLottery(activityId);
                 }
             })
@@ -66,23 +66,23 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
             this.dialog();
         },
         /** 弹窗*/
-        initDialog:function(){
-            mui('#middlePopover').popover('toggle',document.getElementById("openPopover"));
+        initDialog: function () {
+            mui('#middlePopover').popover('toggle', document.getElementById("openPopover"));
         },
-        dialog:function(){
+        dialog: function () {
             var _this = this;
-            mui("#middlePopover").on("tap",".mui-btn.confirm-btn",function(){
-                var options= eval("(" + $(this).attr('data-rel') + ")");
+            mui("#middlePopover").on("tap", ".mui-btn.confirm-btn", function () {
+                var options = eval("(" + $(this).attr('data-rel') + ")");
 
                 var link = options.dataLink;
-                if(link){
+                if (link) {
                     _this.gotoUrl(link);
-                }else{
+                } else {
                     _this.initDialog();
                 }
             });
 
-            mui("#middlePopover").on("tap",".pop-close",function(){
+            mui("#middlePopover").on("tap", ".pop-close", function () {
                 _this.initDialog();
             });
         },
@@ -227,7 +227,7 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
                 window.location.replace('/mainIndex.html');
             }
         },
-        
+
         getActivity: function () {
             mui.ajax(root + '/promo/promo.html', {
                 type: 'POST',
@@ -278,10 +278,10 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
                     _this.loadingShow('white', '._banner', height);
                 },
                 success: function (data) {
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $('div._banner').html(data);
                         _this.initBanner();
-                        setTimeout(function() {
+                        setTimeout(function () {
                             var h = $('.c_banner')[0].height + 50 + "px";
                             if (store.has('c_banner_height')) {
                                 store.remove('c_banner_height');
@@ -323,6 +323,7 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
                         $("._leftUnLogin").hide();
                         _this.loadBalance();
                         sessionStorage.is_login = true;
+                        sessionStorage.isDemo = data.isDemo;
                     } else { //未登录
                         isLogin = 'false';
                         $(".is-login").hide();
@@ -330,6 +331,7 @@ define(['site/include/BaseIndex'], function (BaseIndex,PromoDetail) {
                         $("._leftLogin").addClass("mui-hide");
                         $("._leftLogout").addClass("mui-hide");
                         $("._leftUnLogin").show();
+                        sessionStorage.isDemo = false;
                     }
                 }
             })

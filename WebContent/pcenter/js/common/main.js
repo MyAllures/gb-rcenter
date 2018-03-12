@@ -188,7 +188,8 @@ curl = {
                 requires: ['jquery']
             }
 
-        }
+        },
+        clipboard: 'dist/clipboard'
     },
 
     preloads: ['bootstrap','common/ClassTool']

@@ -154,16 +154,6 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
         onPageLoad: function () {
             this._super();
             var _this=this;
-            $('[data-toggle="popover"]',_this.formSelector).popover({
-                trigger: 'hover',
-                html: true
-            })
-            //复制按钮
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', window.top.message.fund_auto['复制成功'], true);
-            });
             /*if($("#todaySales").val()=='true'){
                 $("#todayTotal").text($("#todayTotalSource").text());
                 $("#totalSumTarget").parent().parent().hide();
@@ -173,6 +163,10 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                 $("#todayTotal").parent().parent().hide();
                 $("#totalSumTarget").parent().parent().show();
             }*/
+            $('[data-toggle="popover"]',_this.formSelector).popover({
+                trigger: 'hover',
+                html: true
+            });
 
         },
         /** 声音开关 */
@@ -199,6 +193,8 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
         bindEvent: function () {
             this._super();
             var that = this;
+            //复制按钮
+            this.copyText("a[name=copy]");
             $("#searchtext").keydown(function (event) {
                 if(event.keyCode==13){
                     $(".btn-query-css").click();

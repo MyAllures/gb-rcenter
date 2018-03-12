@@ -1,7 +1,5 @@
 /**是否登录标识*/
 var isLogin = false;
-/*一键回收时间间隔*/
-var RECOVER_TIME_INTERVAL = 10;
 
 $(function () {
     headInfo();
@@ -49,6 +47,7 @@ function headInfo() {
                 $("#login-info").addClass("mui-hidden");
                 isLogin = false;
                 sessionStorage.setItem("isLogin", isLogin);
+                $(".side-nav .btn-logout").hide();
             } else {
                 $("#notLogin").hide();
                 $(".user_name").text(data.name);

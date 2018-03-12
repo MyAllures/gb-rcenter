@@ -25,12 +25,7 @@ define(['common/BasePage', 'site/home/include/Chart', 'site/home/include/Table',
             $(window).resize(function(){
                 _this.gameDataDaySize();
             });
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            //复制
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', window.top.message.home_auto['复制成功'], true);
-            });
+            this.copyText('a[name="copy"]');
         },
         onPageLoad: function() {
             this._super();

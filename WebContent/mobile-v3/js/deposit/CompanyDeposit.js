@@ -58,9 +58,11 @@ function showPayTypeList() {
         document.getElementById("rechargeTypeText").setAttribute("placeholder", items[0].text);
         //柜台现金存款需填写交易地点，其他填写存款人
         if (value == 'atm_money') {
+            document.getElementById('result.payerName').value = '';
             document.getElementById('address').style.display = "block";
             document.getElementById('payerName').style.display = "none";
         } else {
+            document.getElementById('result.rechargeAddress').value = '';
             document.getElementById('address').style.display = "none";
             document.getElementById('payerName').style.display = "block";
         }
@@ -76,6 +78,12 @@ function depositDiscount(obj, options) {
     if (document.activeElement) {
         document.activeElement.blur();
     }
+    var bitAmount = $("input[name='result.bitAmount']").val();
+    if(bitAmount　&& !/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,8})?$/.test(bitAmount)){
+        toast(window.top.message.deposit_auto['比特币数量']);
+        return false;
+    }
+
     bindFormValidation($form);
     if (!$form || !$form.valid()) {
         return false;
@@ -100,7 +108,7 @@ function depositDiscount(obj, options) {
                 html = html + '</ul></div><div class="pro-btn"><a class="next-btn" data-rel={"opType":"function","target":"submitDeposit"}>' + window.top.message.deposit_auto['已存款'] + '</a>' +
                     '<a class="agin-btn" data-rel={"opType":"function","target":"closeProWindow"}>' + window.top.message.deposit_auto['重新填写'] + '</a></div>' +
                     '<div class="close" data-rel={"opType":"function","target":"closeProWindow"}></div></div></div>';
-                $("boby").append(html);
+                $("body").append(html);
                 $("#successMasker").attr("style", "display: block;");
             } else { //无优惠
                 companyDepositSubmit($("input[name='depositChannel']").val());
@@ -108,10 +116,12 @@ function depositDiscount(obj, options) {
         },
         error: function () {
             toast(window.top.message.deposit_auto['网络繁忙']);
+            //goToHome(root+"/wallet/deposit/index.html?v="+Math.random());
         }
     };
     muiAjax(ajaxoptions);
 }
+var ajaxMap = {};
 
 /**查询是否有优惠*/
 function seachDiscount(obj, options) {
@@ -143,30 +153,49 @@ function seachDiscount(obj, options) {
                 if ($("#depositSalePop").length > 0) {
                     $("#depositSalePop").remove();
                 }
-                $("body").append(data);
-                var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
-                if (unCheckSuccess === "true") {
-                    var pop = $("#pop").attr("pop");
-                    if (pop == "true") {
-                        $("#activityId").val($("input[type=radio]:checked").val());
-                        $("#successMasker").attr("style", "display:block;");
-                    } else if (options.statusNum) {
-                        var rechargeAmount = $("input[name='result.rechargeAmount']").val();
-                        goToUrl(options.href + "&depositCash=" + rechargeAmount + "&t=" + random);
-                    } else {
-                        companyDepositSubmit(depositChannel);
-                    }
-                } else {
-                    //验证提示
-                    toast($("#tips").attr("tips"));
+                ajaxMap["data"] = data;
+                ajaxMap["options"] = options;
+                var failureCount = $(data).find("#failureCount").attr("failureCount");
+                var unCheckSuccess = $(data).find("#unCheckSuccess").attr("unCheckSuccess");
+                if(unCheckSuccess == "true" && options.statusNum && failureCount >= 3){
+                    $("#failureHints").show();
+                    $("#failureHintsMasker").show();
+                    $("#channel").val(depositChannel);
+                }else{
+                    $("#channel").val("");
+                    companyContinueDeposit(depositChannel);
                 }
             }
         },
         error: function () {
             toast(window.top.message.deposit_auto['网络繁忙']);
+            //goToHome(root+"/wallet/deposit/index.html?v="+Math.random());
         }
     };
     muiAjax(ajaxoptions);
+}
+
+/**多次支付失败仍然继续*/
+function companyContinueDeposit(depositChannel){
+    var data = ajaxMap["data"];
+    var options = ajaxMap["options"];
+    $("body").append(data);
+    var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
+    if (unCheckSuccess === "true") {
+        var pop = $("#pop").attr("pop");
+        if (pop == "true") {
+            $("#activityId").val($("input[type=radio]:checked").val());
+            $("#successMasker").attr("style", "display:block;");
+        } else if (options.statusNum) {
+            var rechargeAmount = $("input[name='result.rechargeAmount']").val();
+            goToUrl(options.href + "&depositCash=" + rechargeAmount + "&t=" + random);
+        } else {
+            companyDepositSubmit(depositChannel);
+        }
+    } else {
+        //验证提示
+        toast($("#tips").attr("tips"));
+    }
 }
 
 /**公司入款提交存款*/

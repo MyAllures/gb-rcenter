@@ -66,6 +66,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                         $("._leftUnLogin").hide();
                         _this.loadBalance();
                         sessionStorage.is_login = true;
+                        sessionStorage.isDemo = data.isDemo;
                     } else { //未登录
                         isLogin = 'false';
                         $(".is-login").hide();
@@ -73,6 +74,7 @@ define(['common/MobileBasePage'], function (Mobile) {
                         $("._leftLogin").addClass("mui-hide");
                         $("._leftLogout").addClass("mui-hide");
                         $("._leftUnLogin").show();
+                        sessionStorage.isDemo = false;
                     }
                 }
             })

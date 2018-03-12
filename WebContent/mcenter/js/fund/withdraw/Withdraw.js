@@ -187,6 +187,7 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
         bindEvent: function () {
             this._super();
             var that = this;
+            this.copyText('a[name="copy"]');
             this.initShowDetail();
             $("#searchtext").keydown(function (event) {
                 if(event.keyCode==13){
@@ -253,6 +254,7 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
                 else
                     e.cancelBubble = true;
             });
+            this.copyText('a[name="copy"]');
         },
 
         /**
@@ -265,11 +267,6 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
             $('[data-toggle="popover"]',_this.formSelector).popover({
                 trigger: 'hover',
                 html: true
-            });
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', window.top.message.fund_auto['复制成功'], true);
             });
             $("[name='fund-withdraw']").on("click", function () {
                 $('[role="tooltip"]').hide();
@@ -441,6 +438,19 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
                     $(e.currentTarget).unlock();
                 }
             })
+        },
+        /**
+         * 出款详情页面
+         */
+        withdrawStatusView: function (e, option) {
+            var btnOption = {};
+            var id = option.dataId;
+            btnOption.target = root + "/fund/withdraw/withdrawStatusView.html?search.id=" + id;
+            btnOption.callback = option.callback;
+            btnOption.text = "易收付出款审核";
+            btnOption.size = "size-wide";
+            window.top.topPage.doDialog(e, btnOption);
+
         },
         /**
          *保存出款账户后刷新页面

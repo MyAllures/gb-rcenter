@@ -2,6 +2,7 @@
  * Created by bruce on 17-1-30.
  */
 define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
+    var ajaxMap = {};
     return BaseDeposit.extend({
 
         init: function (formSelector) {
@@ -38,25 +39,32 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                 }else{
                     $form = $(_this.formSelector);
                 }
+                var channel = "";
                 if(!$form || !$form[0]) {
                     var $active =$("#depositWay li a.active");
                     if($active.attr("data-fast")) {
                         $form = $("#electronicCashForm");
+                        channel = "electronic";
                     } else if($active.attr("data-company")) {
                         $form = $("#companyCashForm");
+                        channel = "company";
                     }
+                }else{
+                    channel = options.depositType;
                 }
                 if ($form && !$form.valid()) {
                     return false;
                 }
 
                 var rechargeAmount = $("input[name='result.rechargeAmount']").val();
+                // var bankCode = options.statusNum ? $("input[name='bankCode']").val() : "";
 
                 mui.ajax(root + options.submitUrl, {
                     data: {
                         "result.rechargeAmount": rechargeAmount,
                         "result.rechargeType": options.type,
                         "statusNum": options.statusNum
+                        // "result.payerBank":bankCode
                     },
                     type: 'post',
                     async: false,
@@ -64,28 +72,19 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                         if ($("#depositSalePop") && $("#depositSalePop").length > 0) {
                             $("#depositSalePop").remove();
                         }
-                        $(".mui-content").append(data);
-
-                        var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
-                        if (unCheckSuccess === "true") {
-                            var pop = $("#pop").attr("pop");
-                            if (pop === "true") {
-                                _this.bindReWriteAmount();
-                                if (!options.statusNum) {
-                                    _this.deposit(options.depositUrl);
-                                } else {
-                                    _this.gotoUrl(options.depositUrl + "&depositCash=" + rechargeAmount);
-                                }
-                            } else {
-                                if (!options.statusNum) {
-                                    _this.submitDeposit(options.depositUrl);
-                                } else {
-                                    _this.gotoUrl(options.depositUrl + "&depositCash=" + rechargeAmount);
-                                }
-                            }
-                        } else {
-                            //验证提示
-                            _this.toast($("#tips").attr("tips"));
+                        var failureCount = $(data).find("#failureCount").attr("failureCount");
+                        var unCheckSuccess = $(data).find("#unCheckSuccess").attr("unCheckSuccess");
+                        ajaxMap["ajaxData"] = data;
+                        ajaxMap["_this"] = _this;
+                        ajaxMap["ajaxOptions"] = options;
+                        ajaxMap["rechargeAmount"] = rechargeAmount;
+                        if(unCheckSuccess == "true" && options.statusNum && failureCount >= 3){
+                            $("#failureHints").show();
+                            $("#failureHintsMasker").show();
+                            $("#channel").val(channel);
+                        }else{
+                            $("#channel").val("");
+                            _this.companyContinueDeposit();
                         }
                     },
                     error: function (xhr, type, errorThrown) {
@@ -95,6 +94,35 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
 
 
             });
+        },
+
+        companyContinueDeposit:function(){
+            var ajaxData = ajaxMap["ajaxData"];
+            var _this = ajaxMap["_this"];
+            var options = ajaxMap["ajaxOptions"];
+            var rechargeAmount = ajaxMap["rechargeAmount"];
+            $(".mui-content").append(ajaxData);
+            var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
+            if (unCheckSuccess === "true") {
+                var pop = $("#pop").attr("pop");
+                if (pop === "true") {
+                    _this.bindReWriteAmount();
+                    if (!options.statusNum) {
+                        _this.deposit(options.depositUrl);
+                    } else {
+                        _this.gotoUrl(options.depositUrl + "&depositCash=" + rechargeAmount);
+                    }
+                } else {
+                    if (!options.statusNum) {
+                        _this.submitDeposit(options.depositUrl);
+                    } else {
+                        _this.gotoUrl(options.depositUrl + "&depositCash=" + rechargeAmount);
+                    }
+                }
+            } else {
+                //验证提示
+                _this.toast($("#tips").attr("tips"));
+            }
         },
 
         deposit: function (url) {

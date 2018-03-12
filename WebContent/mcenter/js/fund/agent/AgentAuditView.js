@@ -15,17 +15,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             this.resizeDialog();//自动弹窗iframe高度
         },
         onPageLoad: function () {
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                var opt = {};
-                if($(e.target).attr("id")=="transactionNo-copy"){
-                    opt.placement = "left";
-                }else{
-                    opt.placement = "right";
-                }
-                page.showPopover(e, opt, 'success', window.top.message.fund_auto['复制成功'], true);
-            });
+           this._super();
         },
         /**
          * 当前对象事件初始化函数
@@ -33,7 +23,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         bindEvent : function() {
             this._super();
             //复制按钮
-
+           this.copyText('a[name="copy"]');
             //刷新
             $(".fa-refresh").on("click", function (e) {
                 window.location.reload();

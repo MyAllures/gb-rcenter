@@ -11,6 +11,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         bindEvent: function () {
             this._super();
             var that = this;
+            this.copyText('a[name="copy"]');
             $('._changePasswordType').on("click",function(){
                 var $this = $(this);
                 var data = $this.data();
@@ -21,12 +22,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             });
             $("[name=sysUserStatus]").on("click",function(){
                 $("[name='sysUser.status']").val($(this).val());
-            });
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                var opt = {};
-                opt.placement = "right";
-                page.showPopover(e, opt, 'success', '复制成功', true);
             });
         },
         onPageLoad: function () {

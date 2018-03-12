@@ -48,6 +48,7 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
             });
             //投注
             mui("body").off('tap','a#show-t').on("tap", 'a#show-t', function () {
+                $("input#inputMoney").blur();
                 _this.betOrder();
             });
 
@@ -87,7 +88,13 @@ define(['site/hall/pl3/PlayWay-xywf'], function (PlayWay) {
                 zhonga=0;
             }
             if (toua > 0 && weia > 0 && zhonga > 0) {
-                $("#quantity").text(toua * weia * zhonga);
+                if(toua * weia * zhonga>500){
+                    $(thiz).toggleClass('mui-active');
+                    mui.toast("注数过大");
+                    return;
+                }else{
+                    $("#quantity").text(toua * weia * zhonga);
+                }
             } else {
                 $("#quantity").text(0);
             }

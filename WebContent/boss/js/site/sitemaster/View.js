@@ -32,7 +32,7 @@ define(['common/BaseEditPage','zeroClipboard'], function(BaseEditPage,ZeroClipbo
         bindEvent: function () {
             this._super();
             //复制按钮
-            var clip = new ZeroClipboard($('a[name="copy"]'));
+            this.copyText('a[name="copy"]');
             $("ul li a","#mainFrame .panel").on("click",function(e){
                 var $href = $(this).attr("data-href");
                 $(".tab-content").load(root+$href);

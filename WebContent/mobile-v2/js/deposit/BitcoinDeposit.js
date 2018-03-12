@@ -67,6 +67,12 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
                     dtpicker.dispose();
                 })
             });
+            //联系客服
+            mui("body").on('tap', '#loadCustomerId', function () {
+                page.footer.loadCustomerService();
+                var url = $('.customer').attr('data-skip');
+                _this.gotoUrl(url);
+            });
 
             var type = $("input[name='result.rechargeType']").val();
             var options = {
@@ -107,7 +113,7 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
                                     '<input name="activityId" type="radio" value="' + sale.id + '"></div></li>';
                             }
                             html = html + '</ul></div><div class="pro-btn"><a class="next-btn">'+window.top.message.deposit_auto['已存款']+'</a><a class="agin-btn">'+window.top.message.deposit_auto['重新填写']+'</a></div><div class="close"></div></div></div>';
-                            $(".main-coutent").append(html);
+                            $(".mui-content").append(html);
                             mui(".pro-btn").on("tap", ".next-btn", function () {
                                 _this.deposit(options);
                             });
@@ -156,7 +162,7 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
                             '</div> ' +
                             '</div> ' +
                             '</div>';
-                        $(".main-coutent").append(html);
+                        $(".mui-content").append(html);
                         _this.depositAgain();
                         mui("body").on("tap", "._fund", function () {
                             _this.gotoUrl("/fund/record/index.html?search.transactionType=deposit");

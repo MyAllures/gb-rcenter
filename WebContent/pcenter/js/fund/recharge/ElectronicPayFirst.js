@@ -12,11 +12,6 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
         init: function () {
             this.formSelector = "form";
             this._super("form");
-            var clip = new ZeroClipboard($('[name="copy"]'));
-            clip.on('copy', function (e) {
-                var $obj = $($(e)[0].target).find("a");
-                window.top.topPage.customerPopover($obj, window.top.message.fund_auto['复制成功']);
-            });
             this.realName = new RealName();
             this.realName.realName();
             window.top.onlineTransactionNo = null;
@@ -33,7 +28,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
         bindEvent: function () {
             this._super();
             var _this = this;
-
+            this.copyText('a[name="copy"]');
             //更换收款账号
             $(this.formSelector).on("click", "label.bank", function (e) {
                 _this.changeBank(e);
@@ -44,18 +39,6 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             $(this.formSelector).on("input", "[name='result.rechargeAmount']", function () {
                 $(_this.formSelector + " span.fee").hide();
                 _this.changeAmountMsg();
-            });
-
-            //修改验证码提示信息的地方
-            $(this.formSelector).on("validate", "[name='code']", function (e, message) {
-                if (message) {
-                    $(_this.formSelector + " span[name=codeTitle]").html("<span class=\"tips orange\"><i class=\"mark plaintsmall\"></i>" + message + "</span>");
-                    e.result = true;
-                } else {
-                    $(_this.formSelector + " span[name=codeTitle]").html("<i class='mark successsmall'></i>");
-                    $(_this.formSelector + " [name='code']").removeClass("error");
-                    e.result = false;
-                }
             });
         },
         /**

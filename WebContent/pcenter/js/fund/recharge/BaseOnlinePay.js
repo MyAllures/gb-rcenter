@@ -1,8 +1,9 @@
 /**
  * 线上公共js支付
  */
-define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEditPage, RealName) {
-    return BaseEditPage.extend({
+define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], function (CommonRecharge, RealName) {
+    var ajaxMap = {};
+    return CommonRecharge.extend({
         realName: null,
         /**
          * 初始化及构造函数，在子类中采用
@@ -38,23 +39,6 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             $(this.formSelector).on("click", "label.bank", function (e) {
                 _this.changeBank(e);
             });
-            //实时监控存款金额
-            $(this.formSelector).on("input", "[name='result.rechargeAmount']", function () {
-                $(_this.formSelector + " span.fee").hide();
-                _this.changeAmountMsg();
-            });
-
-            //修改验证码提示信息的地方
-            $(this.formSelector).on("validate", "[name='code']", function (e, message) {
-                if (message) {
-                    $(_this.formSelector + " span[name=codeTitle]").html("<span class=\"tips orange\"><i class=\"mark plaintsmall\"></i>" + message + "</span>");
-                    e.result = true;
-                } else {
-                    $(_this.formSelector + " span[name=codeTitle]").html("<i class='mark successsmall'></i>");
-                    $(_this.formSelector + " [name='code']").removeClass("error");
-                    e.result = false;
-                }
-            });
         },
 
         /**
@@ -62,9 +46,10 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
          */
         showRandomAmountMsg: function () {
             var flag = $(this.formSelector).find("input[name='result.payerBank']:checked").attr("randomAmount");
-            $('[name="randomAmountMsg"]').addClass('tiphide');
             if (flag == "true") {
-                $('[name="randomAmountMsg"]').removeClass('tiphide');
+               $("#rechargeDecimals").show();
+            } else {
+                $("#rechargeDecimals").hide();
             }
         },
 
@@ -77,17 +62,6 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             $target.addClass("select");
         },
         changeValid: function (e) {
-            var $target = $(e.currentTarget).parent().parent();
-            var max = $target.find("input.onlinePayMax").val();
-            var min = $target.find("input.onlinePayMin").val();
-            if (!min) {
-                min = 1;
-            }
-            if (!max) {
-                max = '99,999,999';
-            }
-            $(this.formSelector + " #depositMin").text(min);
-            $(this.formSelector + " #depositMax").text(max);
             this.changeAmountMsg();
             $(this.formSelector + " span.fee").hide();
             var ele = $(this.formSelector).find("input[name='result.rechargeAmount']");
@@ -107,8 +81,6 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
          * @param option
          */
         submit: function (e, option) {
-            var _window = window.open("", '_blank');
-            _window.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
             var _this = this;
             window.top.topPage.ajax({
                 url: option.url,
@@ -116,26 +88,48 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                 data: this.getCurrentFormData(e),
                 dataType: 'json',
                 success: function (data) {
-                    var state = data.state;
-                    var msg = data.msg;
-                    if (state) {
-                        window.top.onlineTransactionNo = data.transactionNo;
-                        _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
-                    } else {
-                        _window.close();
+                    ajaxMap["ajaxData"] = data ;
+                    var failureCount = data.failureCount;
+                    if(failureCount >= 3){
+                        $("#manyFailures").show();
+                        $("#backdrop").show();
+                    }else {
+                        _this.onlineContinueDeposit(e,option);
                     }
-                    var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
-                    window.top.onlineFailMsg = msg;
-                    var btnOption = option;
-                    btnOption.text = window.top.message.fund_auto['等待支付'];
-                    btnOption.target = url;
-                    btnOption.callback = "back";
-                    window.top.topPage.doDialog(e, btnOption);
                 },
                 error: function (data) {
                     _window.close();
                 }
             });
+        },
+
+        /**
+         * 失败多次后仍继续存款
+         */
+        onlineContinueDeposit:function(e,option){
+            $("#manyFailures").hide();
+            $("#backdrop").hide();
+            var data = ajaxMap["ajaxData"];
+            var _window = window.open("", '_blank');
+            _window.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
+            var state = data.state;
+            var msg = data.msg;
+            if (state) {
+                window.top.onlineTransactionNo = data.transactionNo;
+                _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
+            } else {
+                _window.close();
+            }
+            var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
+            window.top.onlineFailMsg = msg;
+            if(!option){
+                option = {};
+            }
+            var btnOption = option;
+            btnOption.text = window.top.message.fund_auto['等待支付'];
+            btnOption.target = url;
+            btnOption.callback = "back";
+            window.top.topPage.doDialog(e, btnOption);
         },
 
         asciiToUnicode: function (content) {
@@ -208,12 +202,12 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                                             sales: sales,
                                             len: len
                                         });
-                                        $("div.applysale").html(html);
+                                        $("div#applysale").html(html);
                                         if (sales[0].preferential != true) {
                                             $("input[name=activityId]:eq('')").prop("checked", 'checked');
                                         }
                                     } else {
-                                        $("div.applysale").find("input[type=radio]").attr("disabled", true);
+                                        $("div#applysale").find("input[type=radio]").attr("disabled", true);
                                         $("input[name=activityId]:eq('')").prop("checked", 'checked');
                                     }
                                     $("._submit").removeClass("disabled");
@@ -229,8 +223,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                 }
             }
             return rule;
-        }
-        ,
+        },
         /**
          * 支付后回调
          * @param e
@@ -248,23 +241,22 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
                 $current.parent().addClass("select");
                 $("#mainFrame").load(option.backUrl);
             }
-        }
-        ,
+        },
         /**
          * 更改验证消息
          */
         bindFormValidation: function () {
             this._super();
             this.changeAmountMsg();
-        }
-        ,
+        },
         /**
          * 更新存款金额的远程验证提示消息
          */
         changeAmountMsg: function () {
             var $target = $(this.formSelector + " label.bank.select");
-            var max = $target.find("input.onlinePayMax").val();
-            var min = $target.find("input.onlinePayMin").val();
+            var $account = $target.find("input[name='result.payerBank']");
+            var max = $account.attr("payMax");
+            var min = $account.attr("payMin");
             if (!min || min == 0) {
                 min = '0.01';
             }
@@ -285,8 +277,7 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             }
             this.extendValidateMessage({"result.rechargeAmount": {remote: msg}});
             this.extendValidateMessage({"result.rechargeAmount": {max: msg}});
-        }
-        ,
+        },
 
         /**
          * 银行收/展
@@ -309,17 +300,5 @@ define(['common/BaseEditPage', 'site/fund/recharge/RealName'], function (BaseEdi
             }
             $target.unlock();
         }
-        ,
-        /**
-         * 展开其它优惠
-         * @param e
-         * @param option
-         */
-        expendSale: function (e, option) {
-            $("tr.expendSales").show();
-            $(e.currentTarget).hide();
-            $(e.currentTarget).unlock();
-        }
-    })
-        ;
+    });
 });

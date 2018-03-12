@@ -12,12 +12,15 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
         init: function () {
             this.formSelector = "form";
             this._super("form");
-            var clip = new ZeroClipboard($('[name="copy"]'));
-            clip.on('copy', function (e) {
-                var $obj = $($(e)[0].target).find("a");
-                window.top.topPage.customerPopover($obj, window.top.message.fund_auto['复制成功']);
-            });
             window.top.onlineTransactionNo = null;
+        },
+        /**
+         * 页面加载和异步加载时需要重新初始化的工作
+         */
+        onPageLoad: function () {
+            this._super();
+            this.initCaptcha();
+            $(this.formSelector + " .daterangepickers input.form-control").attr("style", "padding-left: 20px;padding-right: 2px;")
         },
         /**
          * 当前对象事件初始化函数
@@ -25,7 +28,7 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
         bindEvent: function () {
             this._super();
             var _this = this;
-
+            this.copyText('a[name="copy"]');
             //更换收款账号
             $(this.formSelector).on("click", "label.bank", function (e) {
                 _this.changeBank(e);
@@ -44,17 +47,58 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
             $("#payAccount" + id).show();
         },
         submit: function (e, option) {
-            var payAccount = $("input[name='result.payAccountId']:checked").val();
-            var url = root + "/fund/recharge/company/bitCoinSecond.html?result.payAccountId=" + payAccount;
-            $("#mainFrame").load(url);
+            window.top.topPage.ajax({
+                url: root + "/fund/recharge/company/bitCoinConfirm.html",
+                data: this.getCurrentFormData(e),
+                type: "post",
+                dataType: 'json',
+                success: function (data) {
+                    $("#backdrop").show();
+                    if (data.state == true) {
+                        // var failureCount = data.failureCount;
+                        $("#bitAmount").text(data.bitAmount);
+                        // if(failureCount >= 3){
+                        //     $("#manyFailures").show();
+                        // }else{
+                            $("[name=bitcoinRecharge]").show();
+                            $("[name=companyRecharge]").hide();
+                            $("#confirmDialog").show();
+                        // }
+                    } else {
+                        $("#failDialog").show();
+                    }
+                    $(e.currentTarget).unlock();
+                }
+            });
         },
+
+        notThirdContinueDeposit:function(e,option){
+            this.continueDeposit(e,option);
+        },
+
         /**
-         * 客户服务
+         * 确认存款提交
          * @param e
-         * @param option
+         * @param options
          */
-        customerService: function (e, option) {
-            window.top.topPage.customerService(e, option);
+        companyConfirmSubmit: function (e, option) {
+            var _this = this;
+            window.top.topPage.ajax({
+                url: root + "/fund/recharge/company/bitCoinSubmit.html",
+                data: this.getCurrentFormData(e),
+                dataType: 'json',
+                type: "post",
+                success: function (data) {
+                    _this.closeConfirmDialog(e, option);
+                    $("#backdrop").show();
+                    if (data.state == true) {
+                        $("#successDialog").show();
+                    } else {
+                        $("#failDialog").show();
+                    }
+                    $(e.currentTarget).unlock();
+                }
+            })
         }
     });
 });

@@ -24,11 +24,7 @@ define(['common/BaseListPage', 'Util'], function (BaseListPage) {
          */
         bindEvent: function () {
             this._super();
-            var clip = new ZeroClipboard($('button[name="copy"]'));
-            clip.on('aftercopy', function (e) {
-                e.currentTarget = e.target;
-                page.showPopover(e, {}, 'success', window.top.message.recommend_auto['复制成功'], true);
-            });
+            this.copyText('a[name="copy"]');
         },
         /**
          * 切换推荐菜单

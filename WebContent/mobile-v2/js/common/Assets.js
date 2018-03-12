@@ -84,7 +84,9 @@ define([], function () {
         onPageLoad: function () {
             var _this = this;
             var href = window.location.href;
-            if (sessionStorage.is_login == 'true' || isLogin == 'true') _this.getAllApiBalance();
+            if (sessionStorage.is_login == 'true' || isLogin == 'true'){
+                _this.getAllApiBalance();
+            }
 
             $('.mui-bar-nav .menu .ex').height(function () {
                 return $(window).height() - 49 - $('nav').height();

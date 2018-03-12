@@ -69,16 +69,16 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
          * @param btnOption
          */
         /*showPopoverCountDown: function (e, btnOption) {
-            var $obj = $(e.currentTarget);
-            var timeNext = new Date();
-            timeNext.setTime(timeNext.getTime() + 1500);
-            $obj.countdown(timeNext).on('finish.countdown', function () {
-                $obj.popover("destroy");
-                if (btnOption && btnOption.callback) {
-                    window.top.topPage.doPageFunction(e, btnOption.callback, btnOption);
-                }
-            });
-        },*/
+         var $obj = $(e.currentTarget);
+         var timeNext = new Date();
+         timeNext.setTime(timeNext.getTime() + 1500);
+         $obj.countdown(timeNext).on('finish.countdown', function () {
+         $obj.popover("destroy");
+         if (btnOption && btnOption.callback) {
+         window.top.topPage.doPageFunction(e, btnOption.callback, btnOption);
+         }
+         });
+         },*/
         /**
          * 初始化日期选择控件
          * @param ojb
@@ -95,7 +95,7 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                 var optionEnd = {};
                 var optionSinlge = {};
 
-                var option={};
+                var option = {};
                 option.autoApply = true;
                 option.utcOffSet = window.top.utcOffSet;
                 option.timeZone = window.top.utcOffSet;
@@ -115,10 +115,10 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                 } else {
                     option.opens = data.opens;
                 }
-                optionStart=$.extend(optionStart, option);
-                optionEnd=$.extend(optionEnd, option);
-                optionSinlge=$.extend(optionSinlge, option);
-                optionRange=$.extend(optionRange, option);
+                optionStart = $.extend(optionStart, option);
+                optionEnd = $.extend(optionEnd, option);
+                optionSinlge = $.extend(optionSinlge, option);
+                optionRange = $.extend(optionRange, option);
 
                 if (data) {
 
@@ -136,58 +136,58 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
 
                         if (data.today == true) {
                             optionRange.ranges[window.top.message.common["daterange.Today"]] =
-                                [momentToday.startOf('day').format(data.format), momentToday.clone().subtract(-1,"days").startOf('day').format(data.format)];
+                                [momentToday.startOf('day').format(data.format), momentToday.clone().subtract(-1, "days").startOf('day').format(data.format)];
                         }
                         if (data.yesterday == true) {
                             optionRange.ranges[window.top.message.common["daterange.Yesterday"]] =
-                                [momentYesterday.startOf('day').format(data.format), momentYesterday.clone().subtract(-1,"days").startOf('day').format(data.format)];
+                                [momentYesterday.startOf('day').format(data.format), momentYesterday.clone().subtract(-1, "days").startOf('day').format(data.format)];
                         }
                         if (data.beforeYesterday == true) {
                             optionRange.ranges[window.top.message.common["daterange.TheDayBeforeYesterday"]] =
-                                [momentTDBYesterday.startOf('day').format(data.format), momentTDBYesterday.clone().subtract(-1,"days").startOf('day').format(data.format)];
+                                [momentTDBYesterday.startOf('day').format(data.format), momentTDBYesterday.clone().subtract(-1, "days").startOf('day').format(data.format)];
                         }
                         if (data.thisWeek == true) {
                             optionRange.ranges[window.top.message.common["daterange.ThisWeek"]] =
-                                [momentThisWeek.startOf('week').format(data.format), momentThisWeek.clone().subtract(-1,"week").startOf('day').format(data.format)];
+                                [momentThisWeek.startOf('week').format(data.format), momentThisWeek.clone().subtract(-1, "week").startOf('day').format(data.format)];
                         }
                         if (data.lastWeek == true) {
                             optionRange.ranges[window.top.message.common["daterange.LastWeek"]] =
-                                [momentLastWeek.startOf('week').format(data.format), momentLastWeek.clone().subtract(-1,"week").startOf('day').format(data.format)];
+                                [momentLastWeek.startOf('week').format(data.format), momentLastWeek.clone().subtract(-1, "week").startOf('day').format(data.format)];
                         }
                         if (data.thisMonth == true) {
                             optionRange.ranges[window.top.message.common["daterange.ThisMonth"]] =
-                                [momentThisMonth.startOf('month').format(data.format), momentThisMonth.clone().subtract(-1,"month").startOf('day').format(data.format)];
+                                [momentThisMonth.startOf('month').format(data.format), momentThisMonth.clone().subtract(-1, "month").startOf('day').format(data.format)];
                         }
                         if (data.lastMonth == true) {
                             optionRange.ranges[window.top.message.common["daterange.LastMonth"]] =
-                                [momentLastMonth.startOf('month').format(data.format), momentLastMonth.clone().subtract(-1,"month").startOf('day').format(data.format)];
+                                [momentLastMonth.startOf('month').format(data.format), momentLastMonth.clone().subtract(-1, "month").startOf('day').format(data.format)];
                         }
                         if (data.last7Days == true) {
                             optionRange.ranges[window.top.message.common["daterange.Last7Days"]] =
-                                [momentLast7Days.startOf('day').format(data.format), (data.useToday ? momentToday.clone().subtract(-1,"days").startOf('day').format(data.format)
-                                    : momentYesterday.clone().subtract(-1,"days").startOf('day').format(data.format))];
+                                [momentLast7Days.startOf('day').format(data.format), (data.useToday ? momentToday.clone().subtract(-1, "days").startOf('day').format(data.format)
+                                    : momentYesterday.clone().subtract(-1, "days").startOf('day').format(data.format))];
                         }
                         if (data.last30Days == true) {
                             optionRange.ranges[window.top.message.common["daterange.Last30Days"]] =
-                                [momentLast30Days.startOf('day').format(data.format), (data.useToday ? momentToday.clone().subtract(-1,"days").startOf('day').format(data.format)
-                                    : momentYesterday.clone().subtract(-1,"days").startOf('day').format(data.format))];
+                                [momentLast30Days.startOf('day').format(data.format), (data.useToday ? momentToday.clone().subtract(-1, "days").startOf('day').format(data.format)
+                                    : momentYesterday.clone().subtract(-1, "days").startOf('day').format(data.format))];
                         }
 
                         if (data.useToday == true) {
                             optionRange.ranges[window.top.message.common["daterange.Today"]];
                         }
 
-                        if(Object.keys(optionRange.ranges).length>0) {
+                        if (Object.keys(optionRange.ranges).length > 0) {
                             optionRange.startDate = optionRange.ranges[Object.keys(optionRange.ranges)[0]][0];
                             optionRange.endDate = optionRange.ranges[Object.keys(optionRange.ranges)[0]][1];
                         }
-                        optionRange.startDateElement=$("input[name='" + data.startName + "']");
-                        optionRange.endDateElement=$("input[name='" + data.endName + "']");
+                        optionRange.startDateElement = $("input[name='" + data.startName + "']");
+                        optionRange.endDateElement = $("input[name='" + data.endName + "']");
                     } else {
                         if (data.startDate) {
                             optionRange.startDate = data.startDate
                         }
-                        if(data.minDate) {
+                        if (data.minDate) {
                             optionSinlge.minDate = data.minDate;
                         }
                     }
@@ -202,19 +202,19 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                             startField.prop("value", startField.val());
                             endField.prop("value", endField.val());
                         }
-                        if(data.startName==$text.attr("name")) {
-                            optionStart.isStart=true;
-                            optionStart.showDropdowns=data.showDropdowns;
-                            optionStart.startDateElement=$("input[name='" + data.startName + "']");
-                            optionStart.endDateElement=$("input[name='" + data.endName + "']");
-                            optionStart.startDate=function(){
-                                var startDate=$("input[name='" + data.startName + "']");
-                                if(startDate.val()){
+                        if (data.startName == $text.attr("name")) {
+                            optionStart.isStart = true;
+                            optionStart.showDropdowns = data.showDropdowns;
+                            optionStart.startDateElement = $("input[name='" + data.startName + "']");
+                            optionStart.endDateElement = $("input[name='" + data.endName + "']");
+                            optionStart.startDate = function () {
+                                var startDate = $("input[name='" + data.startName + "']");
+                                if (startDate.val()) {
                                     return startDate.val();
-                                }else {
+                                } else {
                                     if (data.startDate) {
                                         return data.startDate;
-                                    }else{
+                                    } else {
                                         return "";
                                     }
                                 }
@@ -241,38 +241,38 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                                 }
                             });
                         }
-                        if(data.endName==$text.attr("name")) {
-                            optionEnd.isEnd=true;
-                            optionEnd.showDropdowns=data.showDropdowns;
-                            optionEnd.startDateElement=$("input[name='" + data.startName + "']");
-                            optionEnd.endDateElement=$("input[name='" + data.endName + "']");
-                            optionEnd.minDate = function(){
-                                var startDate=$("input[name='" + data.startName + "']");
-                                if(startDate.val()){
+                        if (data.endName == $text.attr("name")) {
+                            optionEnd.isEnd = true;
+                            optionEnd.showDropdowns = data.showDropdowns;
+                            optionEnd.startDateElement = $("input[name='" + data.startName + "']");
+                            optionEnd.endDateElement = $("input[name='" + data.endName + "']");
+                            optionEnd.minDate = function () {
+                                var startDate = $("input[name='" + data.startName + "']");
+                                if (startDate.val()) {
                                     return startDate.val();
-                                }else {
+                                } else {
                                     if (data.minDate) {
                                         return data.minDate;
-                                    }else{
+                                    } else {
                                         return "";
                                     }
                                 }
                             };
                             var quickSelect = $item.next();
-                            if(quickSelect.hasClass("daterangepickers")){
-                                if(data.minDate) {
+                            if (quickSelect.hasClass("daterangepickers")) {
+                                if (data.minDate) {
                                     optionRange.minDate = data.minDate;
                                 }
                                 optionRange.singleDatePicker = false;
                                 quickSelect.daterangepicker(optionRange);
                                 quickSelect.bind("apply.daterangepicker", function (e, picker) {
                                     var start = picker.startDate;
-                                    if(start._i){
-                                        picker.startDateElement.attr("value",start.format(picker.locale.format));
+                                    if (start._i) {
+                                        picker.startDateElement.attr("value", start.format(picker.locale.format));
                                     }
                                     var end = picker.endDate;
-                                    if(end._i){
-                                        picker.endDateElement.attr("value",end.format(picker.locale.format));
+                                    if (end._i) {
+                                        picker.endDateElement.attr("value", end.format(picker.locale.format));
                                     }
 
                                     $text.attr("data-rel", JSON.stringify(data).replace(/"/g, "'"));
@@ -311,7 +311,7 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                         }
                     } else {
                         $text.prop("value", $text.val());
-                        optionSinlge.showDropdowns=data.showDropdowns;
+                        optionSinlge.showDropdowns = data.showDropdowns;
                         $text.daterangepicker(optionSinlge);
                         $text.bind("apply.daterangepicker", function (e, picker) {
                             var start = picker.startDate;
@@ -383,7 +383,7 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                 $target.unbind("mouseover").bind("mouseover", function (event) {
                     $target.popover({
                         trigger: 'hover',
-                        content: window.top.message.common['last_refresh_time'] + window.top.topPage.formatToMyDateTime(timenow,window.top.dateFormat.daySecond)
+                        content: window.top.message.common['last_refresh_time'] + window.top.topPage.formatToMyDateTime(timenow, window.top.dateFormat.daySecond)
                     });
                 });
             });
@@ -416,7 +416,7 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
          * 调用
          */
         init: function (formSelector) {
-            var _this=this;
+            var _this = this;
             //window.ZeroClipboard=ZeroClipboard;
             this.formSelector = formSelector || this.formSelector;
             //this.bindButtonEvents();
@@ -430,7 +430,7 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
             };
             this.bindEvent();
             this.onPageLoad();
-            if(window.top.topPage){
+            if (window.top.topPage) {
                 window.top.topPage.hashEvent.page = this;
             }
 
@@ -451,18 +451,17 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
             this.initContentWidth();
             //解决IE浏览器,IFrame关闭失去焦点,无法输入问题-alvin on 2016-12-26.
             var fd = $(this.formSelector + " textarea,input:not('[name=\"paging.pageNumberText\"]'):not('.daterangepickers input'):not('[readonly]'):not('[type=radio]'):input:visible:enabled:first")[0];
-            if (fd)
-            {
+            if (fd) {
                 var value = $(fd).val();
                 $(fd).focus().val(value);
             }
 
             $("html,body").scrollTop(0);
             //页面中点击？文案提示
-            $('.help-popover',_this.formSelector).popover({
-                trigger:'hover'
+            $('.help-popover', _this.formSelector).popover({
+                trigger: 'hover'
             });
-            $('.popover',_this.formSelector).popover();
+            $('.popover', _this.formSelector).popover();
         },
         /**
          * 前进后退清除内容，以便重新初始化
@@ -556,7 +555,7 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                 // Remove all inline style from jquery fadeIn function to reset menu state
                 $('#side-menu').removeAttr('style');
                 $('#side-menu > [data-toggle="tooltip"]').tooltip({
-                    placement:right
+                    placement: right
                 });
             }
         },
@@ -596,8 +595,8 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                     .replace('{name}', $el.attr('name') || "")
                     .replace('{id}', $el.attr('id') || "")
                     .replace('{app}', app)
-                    .replace('{btnStyle}',$el.attr('btnStyle'))
-                    .replace('{ulStyle}',$el.attr('ulStyle'));
+                    .replace('{btnStyle}', $el.attr('btnStyle'))
+                    .replace('{ulStyle}', $el.attr('ulStyle'));
                 $("option", $el).each(function (index, opt) {
                     var data = "";
                     for (var i = 0; i < opt.attributes.length; i++) {
@@ -872,28 +871,28 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
             $(e.currentTarget).unlock();
         },
         initContentWidth: function () {
-            $("div.elli").each(function (idx,item) {
+            $("div.elli").each(function (idx, item) {
                 var width = $($(item).parent()).width();
-                $(item).css("width",(width)+"px");
-                if($(item).attr("class").indexOf("hide")>-1){
+                $(item).css("width", (width) + "px");
+                if ($(item).attr("class").indexOf("hide") > -1) {
                     $(item).removeClass("hide");
-                    $(item).css("display",'');
-                }else{
-                    $(item).css("display",'');
+                    $(item).css("display", '');
+                } else {
+                    $(item).css("display", '');
                 }
-                if($(item).children().length==0){
-                    $(item).attr("title",$(item).html());
-                }else{
+                if ($(item).children().length == 0) {
+                    $(item).attr("title", $(item).html());
+                } else {
                     //超长异常信息有会有generated标签
-                    if($(item).children()[0].localName=='generated'){
-                        $(item).attr("title",$(item).html());
+                    if ($(item).children()[0].localName == 'generated') {
+                        $(item).attr("title", $(item).html());
                     }
                 }
             });
 
             $("div.scroll").each(function (idx, item) {
                 var width = $($(item).parent()).width();
-                $(item).css("width",(width)+"px");
+                $(item).css("width", (width) + "px");
                 $(item).text($(item).text().trim());
             });
         },
@@ -902,9 +901,9 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
          * @param formValues
          * @returns
          */
-        convertToJson:function(formValues) {
+        convertToJson: function (formValues) {
             var result = {};
-            for(var formValue,j=0;j<formValues.length;j++) {
+            for (var formValue, j = 0; j < formValues.length; j++) {
                 formValue = formValues[j];
                 var name = formValue.name;
                 var value = formValue.value;
@@ -915,7 +914,7 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                     var simpleNames = name.split('.');
                     // 构建命名空间
                     var obj = result;
-                    for ( var i = 0; i < simpleNames.length - 1; i++) {
+                    for (var i = 0; i < simpleNames.length - 1; i++) {
                         var simpleName = simpleNames[i];
                         if (simpleName.indexOf('[') < 0) {
                             if (obj[simpleName] == null) {
@@ -939,10 +938,10 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                         }
                     }
 
-                    if(obj[simpleNames[simpleNames.length - 1]] ) {
+                    if (obj[simpleNames[simpleNames.length - 1]]) {
                         var temp = obj[simpleNames[simpleNames.length - 1]];
                         obj[simpleNames[simpleNames.length - 1]] = temp;
-                    }else {
+                    } else {
                         obj[simpleNames[simpleNames.length - 1]] = value;
                     }
 
@@ -978,13 +977,49 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
             }
             return ""
         },
-        formatStr:function(){
+        formatStr: function () {
             var ary = [];
-            for(var i = 1 ; i < arguments.length ; i++){
+            for (var i = 1; i < arguments.length; i++) {
                 ary.push(arguments[i]);
             }
-            return arguments[0].replace(/\{(\d+)\}/g,function(m ,i){
+            return arguments[0].replace(/\{(\d+)\}/g, function (m, i) {
                 return ary[i];
+            });
+        },
+        /**
+         * 复制文本
+         * @param copyObj
+         */
+        copyText: function (copyObj) {
+            //复制按钮
+            var clip = new clipboard(copyObj);
+            clip.on('success', function (e) {
+                e.clearSelection();
+                e.currentTarget = e.trigger;
+                var opt = {};
+                var placement = $(e.currentTarget).attr("data-clipboard-placement");
+                if (placement) {
+                    opt.placement = placement;
+                }
+                page.showPopover(e, opt, 'success', window.top.message.fund_auto['复制成功'], true);
+            });
+
+            clip.on('error', function (e) {
+                console.error('复制失败:', e.action);
+            });
+
+        },
+        /**
+         * enter回车提交
+         * @param obj
+         */
+        enterSubmit: function (obj) {
+            $(document).unbind('keyup');
+            $(document).keyup(function(event){
+                if(event.keyCode ==13 && $(obj+":visible")[0]!=undefined){
+                    $(obj+":visible")[0].focus();
+                    $(obj+":visible")[0].click();
+                }
             });
         }
     });

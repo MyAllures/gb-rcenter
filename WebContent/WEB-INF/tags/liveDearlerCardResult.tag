@@ -305,3 +305,29 @@
         --
     </c:if>
 </c:if>
+<%--炸金花--%>
+<c:if test="${betType eq 'ZJH'}">
+    <c:if test="${!empty porkerList && !empty porkerListSet}">
+       <span style="vertical-align: 10px">
+        龙：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(
+         </span>
+        <c:forEach items="${porkerList}" var="poker">
+            <gb:poker poker="${poker}"/>
+        </c:forEach>
+        <span style="vertical-align: 10px">
+            )
+        </span>
+        <br/>
+        <span style="vertical-align: 10px">
+        凤：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(
+         </span>
+        <c:forEach items="${porkerListSet}" var="pokerList">
+            <c:forEach items="${pokerList}" var="poker">
+                <gb:poker poker="${poker}"/>
+            </c:forEach>
+        </c:forEach>
+        <span style="vertical-align: 10px">
+            )
+        </span>
+    </c:if>
+</c:if>

@@ -42,6 +42,9 @@ ul {
 
 li {
   list-style: none; }
+li.mui-table-view-cell {
+  color: #000!important;
+}
 
 .mui-bar .mui-icon:active {
   opacity: 1; }
@@ -1232,8 +1235,8 @@ body.deposit {
     background: #1766bb; }
   body.deposit .mui-content {
     background: #f2f2f2;
-    bottom: 40px;
-    padding-bottom: 0; }
+    bottom: 0;
+    padding-bottom: 40px; }
   body.deposit .m-t-sm {
     margin-top: 10px !important; }
   body.deposit li {
@@ -1698,8 +1701,9 @@ body.deposit {
     width: 55px;
     display: inline-block;
     text-align: left;
-    vertical-align: middle;
-    height: 26px; }
+    vertical-align: top;
+    height: 26px;
+    margin-top: 4px; }
   body.deposit .modes-payment > .ct a.long span .text-two-line {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1717,7 +1721,7 @@ body.deposit {
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 9; }
+    z-index: 998; }
   body.deposit .bank-pay-btn a {
     border-radius: 0; }
   body.deposit .modes-payment > .ct .active > a {
@@ -2189,6 +2193,9 @@ body.no-backdrop .mui-backdrop {
 .text-orange,
 .text-warning {
   color: #f0ad4e; }
+
+.text-blue {
+  color: #007aff; }
 
 .text-red,
 .text-danger {
@@ -4764,5 +4771,8 @@ body.mine-user {
   background: #999;
   color: #fff;
   font-size: 12px; }
+.content-casino-transfer .game-item .game-detail h1{color: #fff!important;}
+.content-casino-transfer .game-item .game-detail .g-money{color: #fff!important;}
+.content-casino-transfer .game-description p{color: #fff!important;}
 
 /*# sourceMappingURL=common.css.map */

@@ -11,11 +11,6 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
         init: function () {
             this.formSelector = "form";
             this._super("form");
-            var clip = new ZeroClipboard($('[name="copy"]'));
-            clip.on('copy', function (e) {
-                var $obj = $($(e)[0].target).find("a");
-                window.top.topPage.customerPopover($obj, window.top.message.fund_auto['复制成功']);
-            });
             var rechargeAmount = $("input[name='result.rechargeAmount']").val().replace(/,/g, '');
             $("input[name='result.rechargeAmount']").val(rechargeAmount);
         },
@@ -24,6 +19,7 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
          */
         bindEvent: function () {
             this._super();
+            this.copyText('a[name="copy"]');
         },
         /**
          * 返回上一步

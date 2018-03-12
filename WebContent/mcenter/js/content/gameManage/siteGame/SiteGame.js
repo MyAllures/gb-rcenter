@@ -69,11 +69,6 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
         bindEvent: function () {
             this._super();
             var _this = this;
-            //复制按钮
-            var clip = new ZeroClipboard($('a[name="copy"]'));
-            /*clip.on('copy', function (e) {
-                window.top.topPage.showWarningMessage(window.top.message.content_auto['复制成功']);
-            });*/
             //切换语言
             $(this.formSelector).on("click","a[name='tag']", function () {
                 $("a[name='tag']").removeClass("current");

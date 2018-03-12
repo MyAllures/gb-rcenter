@@ -168,8 +168,8 @@ a{color:#2772ee}
 .fontsbig{font-size:17px}
 
 /* 头部图片 */
-.banner{background:url(../../images/bannerbg.jpg) no-repeat;width:1200px;height:95px;margin:0 auto;}
-.banner .logo{width:162px!important;float:left;background:url(../../images/logo.png) no-repeat center;background-size: 100%; height:90px;margin:5px 0 0 28px;}
+.banner{/*background:url(../../images/bannerbg.jpg) no-repeat;*/width:1200px;height:95px;margin:0 auto;}
+.banner .logo{width:162px!important;float:left;background-position: center;background-repeat: no-repeat;background-size: 100%; height:90px;margin:5px 0 0 28px;}
 .banner .right{width:100%;height:95px;}
 .banner .banner-bg-t{background: url(../../images/banner-bg-after.png);width: 100%; min-width: 1200px; height: 221px; position: absolute; left: 0; top: 33px; z-index: -1;}
 .banner .banner-bg{width: 100%; min-width: 1200px; height: 220px; position: absolute; left: 0; top: 33px; z-index: -2; overflow: hidden;}
@@ -621,13 +621,13 @@ input[type="text"]:focus,input[type="email"]:focus,input[type="password"]:focus{
 .controls img{vertical-align:top}
 
 /* bank */
-.bank{float:left;cursor:pointer;border:2px solid #e2e2e2;margin-right:8px;display:inline-block;margin-top:8px;width:148px;height:32px;padding:8px 0px 6px 8px;margin-left:0;border-radius: 4px;}
+.bank{float:left;cursor:pointer;border:2px solid #e2e2e2;margin-right:8px;display:inline-block;margin-top:8px;width:166px;height:32px;padding:8px 0px 6px 8px;margin-left:0;border-radius: 4px;}
 .pay-bank{cursor:pointer;vertical-align:middle;}
 .moneydetail .pay-bank{margin-top:10px;vertical-align:top;}
 .bank-logo-name{line-height:0;overflow:hidden;display:block}
 .radio{cursor:pointer;}
-.bank:hover,.bank.select{border:2px solid #2772ee;cursor:pointer;width:148px;height:32px;}
-.bank.select{background:url("../../images/selectbank.png") no-repeat 139px 29px;}
+.bank:hover,.bank.select{border:2px solid #2772ee;cursor:pointer;width:166px;height:32px;}
+.bank.select{background:url("../../images/selectbank.png") no-repeat 156px 29px;}
 .code{margin-top:10px}
 .bank-spreadout{text-align:right;margin-right:117px;font-size:13px;}
 .bank-arrico{display:inline-block;margin-left:5px;vertical-align:middle;width:9px;height:5px;background:url(../../images/updown.png) no-repeat top left;cursor:pointer;}
@@ -1697,22 +1697,24 @@ ul.deposit-notice{list-style-type:decimal;margin:20px 15px;}
 .deposit-tab01{position:relative;}
 .deposit-tab01 img{width:100%;height:100%;border-radius:4px;}
 .deposit-tab01 .pay-title{position:absolute;bottom:0px;left:-1px;background:#2987e7;width:100%;color:#fff;padding:7px 1px;display:block;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
-.deposit-tab01:nth-child(1) .pay-title{background:#f06c00;}
-.deposit-tab01:nth-child(2) .pay-title{background:#1286fd;}
-.deposit-tab01:nth-child(3) .pay-title{background:#24bd28;}
-.deposit-tab01:nth-child(4) .pay-title{background:#0098dc;}
-.deposit-tab01:nth-child(5) .pay-title{background:#2987e7;}
-.deposit-tab01:nth-child(6) .pay-title{background:#c6292e;}
-.deposit-tab01:nth-child(7) .pay-title{background:#e51b2b;}
-.deposit-tab01:nth-child(8) .pay-title{background:#ed9023;}
-.deposit-tab01:nth-child(9) .pay-title{background:#40b170;}
-.deposit-tab01:nth-child(10) .pay-title{background:#189ca6;}
-.deposit-tab01:nth-child(11) .pay-title{background:#638aa5;}
-
+.deposit-tab01.zxzf-bg .pay-title{background:#f06c00;}
+.deposit-tab01.wyck-bg .pay-title{background:#1286fd;}
+.deposit-tab01.wxzf-bg .pay-title{background:#24bd28;}
+.deposit-tab01.zfb-bg .pay-title{background:#0098dc;}
+.deposit-tab01.qqzf-bg .pay-title{background:#2987e7;}
+.deposit-tab01.jdzf-bg .pay-title{background:#c6292e;}
+.deposit-tab01.bdzf-bg .pay-title{background:#e51b2b;}
+.deposit-tab01.btb-bg .pay-title{background:#ed9023;}
+.deposit-tab01.ymf-bg .pay-title{background:#40b170;}
+.deposit-tab01.szhb-bg .pay-title{background:#0058d1;}
+.deposit-tab01.ysf-bg .pay-title{background:#0d55ac;}
+.deposit-tab01.gtck-bg .pay-title{background:#7491a5;}
+.deposit-tab01.ylzf-bg .pay-title{background:#007b84;}
+.deposit-tab01.czzx-bg .pay-title{background:#007d86;}
 
 .deposit-tab01 .pay-title em{margin-left:10px;font-size:17px;}
 .deposit-tab01 .pay-title small{font-size:12px;float:right;padding:5px 20px 0 0;color:#eee;}
-.deposit-tab01 .pay-title .pay-title-tips{padding:2px 7px;background:#5758587d;float:right;margin-right:10px;border-radius:3px;}
+.deposit-tab01 .pay-title .pay-title-tips{padding:2px 7px;background:rgba(0,0,0,0.25);float:right;margin-right:10px;border-radius:3px;}
 .bank-paidtotal li .bankinfo-m{background:url("../../images/paidbg-m.png") no-repeat;width:339px;height:130px;margin-left:-13px;}
 .bank-paidtotal li .linbankinfo-m{background:url("../../images/paidbg-l.png") no-repeat;width:339px;height:195px;margin-left:-13px;}
 .left-ico-message .left-warp{width:390px;float:left;}

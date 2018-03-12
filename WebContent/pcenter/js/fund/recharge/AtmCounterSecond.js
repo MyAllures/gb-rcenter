@@ -11,11 +11,6 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
         init: function () {
             this.formSelector = "form";
             this._super(this.formSelector);
-            var clip = new ZeroClipboard($('[name="copy"]'));
-            clip.on('copy', function (e) {
-                var $obj = $($(e)[0].target).find("a");
-                window.top.topPage.customerPopover($obj, window.top.message.fund_auto['复制成功']);
-            });
         },
         /**
          * 页面加载和异步加载时需要重新初始化的工作
@@ -28,6 +23,7 @@ define(['site/fund/recharge/CommonRecharge'], function (CommonRecharge) {
          */
         bindEvent: function () {
             this._super();
+            this.copyText('a[name="copy"]');
         },
         /**
          * 支付后回调

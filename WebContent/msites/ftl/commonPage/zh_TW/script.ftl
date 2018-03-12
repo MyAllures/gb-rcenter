@@ -1512,6 +1512,7 @@
                     sessionStorage.is_login = false;
                     sessionStorage.demoModel = null;
                     sessionStorage.registerDialog = false;
+                    sessionStorage.loginDialogNoShow = false;
                 }
                 window.location.href="/";
             }
@@ -1840,12 +1841,19 @@
         $(".login-close").on("click",function (e) {
             $(".login-dialog").addClass('hide');
         })
-        if(sessionStorage.is_login=="true"){
+        if(sessionStorage.is_login=="true" && sessionStorage.getItem("loginDialogNoShow")!="true"){
         <#if data.loginAnnouncement?has_content>
             $(".login-dialog").removeClass('hide');
-            setTimeout(function () {
-                $(".login-dialog").addClass('hide');
-            }, 10000);
+            sessionStorage.setItem("loginDialogNoShow",true);
+            <#if data.loginAnnouncementTime?has_content>
+                setTimeout(function () {
+                    $(".login-dialog").addClass('hide');
+                }, ${data.loginAnnouncementTime});
+            <#else >
+                setTimeout(function () {
+                    $(".login-dialog").addClass('hide');
+                }, 10000);
+            </#if>
         </#if>
         }
         //注册公告
