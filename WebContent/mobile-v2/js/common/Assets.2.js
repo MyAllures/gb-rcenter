@@ -78,7 +78,7 @@ mui('header').on('tap', '.btn-refresh', function () {
                     if (apis[i].status == 'maintain') {
                         html = '<span class="text-red" style="font-size: 10px;">' + window.top.message.common_auto["游戏维护中"] + '</span>';
                     } else {
-                        html = data.currSign + apis[i].balance;
+                        html = d.currSign + apis[i].balance;
                     }
                     $('td#_api_' + apis[i].apiId).html(html);
                 }

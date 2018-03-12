@@ -26,6 +26,8 @@ define(['common/BasePage', 'validate', 'validateExtend'], function (BasePage) {
          */
         bindEvent: function () {
             this._super();
+            //回车提交
+            this.enterSubmit("._enter_submit");
         },
 
         /**

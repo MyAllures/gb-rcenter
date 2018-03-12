@@ -15,7 +15,6 @@ define(['common/BaseListPage','common/BaseEditPage'], function(BaseListPage,Base
             this._super();
             // 列表详情事件绑定
             this.initShowDetail();
-
         },
         onPageLoad: function () {
             this._super();

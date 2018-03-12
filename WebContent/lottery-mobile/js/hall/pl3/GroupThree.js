@@ -25,6 +25,7 @@ define(['site/hall/pl3/PlayWay-xywf', 'site/plugin/template'], function (PlayWay
             });
             //投注
             mui("body").off('tap','a#show-t').on("tap", 'a#show-t', function () {
+                $("input#inputMoney").blur();
                 _this.betOrder();
             });
 
