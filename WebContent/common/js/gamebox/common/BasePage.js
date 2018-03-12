@@ -1014,6 +1014,7 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
          * @param obj
          */
         enterSubmit: function (obj) {
+            $(document).unbind('keyup');
             $(document).keyup(function(event){
                 if(event.keyCode ==13){
                     $(obj+":visible")[0].focus();
