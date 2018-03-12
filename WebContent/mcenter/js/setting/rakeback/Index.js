@@ -9,6 +9,8 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         },
         bindEvent:function () {
             this._super();
+            //回车提交
+            this.enterSubmit("._enter_submit");
         },
         onPageLoad:function () {
             this._super();

@@ -164,7 +164,7 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             this._super();
             var that = this;
             //回车提交
-            this.enterSubmit(".enter-submit");
+            this.enterSubmit("._enter_submit");
 
             $("#rakeback_list", this.formSelector).on("click", function (e) {
                 e.stopPropagation();

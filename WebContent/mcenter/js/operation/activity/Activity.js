@@ -11,6 +11,8 @@ define(['common/BaseListPage', 'bootstrapswitch'], function (BaseListPage,bootst
         },
         bindEvent: function () {
             var _this = this;
+            //回车提交
+            this.enterSubmit("._enter_submit");
             $(this.formSelector).on("switchChange.bootstrapSwitch", 'input[name="my-checkbox"]',function(event , status) {
                 var $this = $(this);
                 var id = $this.attr('pid');

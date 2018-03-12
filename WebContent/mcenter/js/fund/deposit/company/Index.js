@@ -182,7 +182,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
             var that = this;
             this.copyText('a[name="copy"]');
             //回车提交
-            this.enterSubmit(".enter-submit");
+            this.enterSubmit("._enter_submit");
             //复制按钮
             $("#searchtext").keydown(function (event) {
                 if(event.keyCode==13){

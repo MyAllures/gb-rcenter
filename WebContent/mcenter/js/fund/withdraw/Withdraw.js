@@ -189,7 +189,7 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
             var that = this;
             this.copyText('a[name="copy"]');
             //回车提交
-            this.enterSubmit(".enter-submit");
+            this.enterSubmit("._enter_submit");
             this.initShowDetail();
             $("#searchtext").keydown(function (event) {
                 if(event.keyCode==13){

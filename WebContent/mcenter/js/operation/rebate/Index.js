@@ -18,7 +18,7 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
         bindEvent:function () {
             this._super();
             //回车提交
-            this.enterSubmit(".enter-submit");
+            this.enterSubmit("._enter_submit");
             $(this.formSelector).on("click",".dropdown-menu-stop", function (event) {
                 event.stopPropagation();//阻止事件向上冒泡
             });

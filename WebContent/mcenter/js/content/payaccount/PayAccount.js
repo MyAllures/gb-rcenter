@@ -110,6 +110,8 @@ define(['common/BaseListPage','site/content/payaccount/RankTag','bootstrapswitch
             this._super();
             // 列表详情事件绑定
             this.initShowDetail();
+            //回车提交
+            this.enterSubmit("._enter_submit");
             //跳转到层级充值页面
             $("#rankManage").on("click",function(e){
                 /* var val = $('input[name="rank_id"]:checked').val();*/

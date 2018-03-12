@@ -20,7 +20,7 @@ define(['common/BaseListPage', 'knob'], function (BaseListPage) {
             this._super();
             var _this = this;
             //回车提交
-            this.enterSubmit(".enter-submit");
+            this.enterSubmit("._enter_submit");
 
             //玩家api刷新按钮显示
             $(this.formSelector).on('mouseover', "dl.funds-wrap dd", function () {

@@ -5,7 +5,14 @@
 define(['common/BaseListPage'], function (BaseListPage) {
 
     return BaseListPage.extend({
-
+        init:function () {
+            this._super();
+        },
+        bindEvent:function () {
+            this._super();
+            //回车提交
+            this.enterSubmit("._enter_submit");
+        }
 
         /**
          * 批量删除

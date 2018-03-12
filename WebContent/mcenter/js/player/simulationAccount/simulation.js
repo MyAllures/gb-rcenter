@@ -16,7 +16,7 @@ define(['common/BaseListPage','common/BaseEditPage'], function(BaseListPage,Base
             // 列表详情事件绑定
             this.initShowDetail();
             //回车提交
-            this.enterSubmit(".enter-submit");
+            this.enterSubmit("._enter_submit");
         },
         onPageLoad: function () {
             this._super();
