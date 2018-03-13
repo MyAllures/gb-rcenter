@@ -268,7 +268,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                     var $account = $("input[name=account]:checked");
                     var bankCode = $account.attr("bankCode");
                     if ("easy_pay" == bankCode) {
-                        _this.scanElectronicContinueDeposit(e, option);
+                        _this.scanElectronicContinueDeposit(e, option,_window);
                     } else if (failureCount >= 3) {
                         _window.close();
                         $("#manyFailures").show();
