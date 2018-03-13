@@ -263,17 +263,21 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 dataType: 'json',
                 type: 'POST',
                 success: function (data) {
-                    ajaxMap["ajaxData"] = data ;
+                    ajaxMap["ajaxData"] = data;
                     var failureCount = data.failureCount;
-                    if(failureCount >= 3){
+                    var $account = $("input[name=account]:checked");
+                    var bankCode = $account.attr("bankCode");
+                    if ("easy_pay" == bankCode) {
+                        _this.scanElectronicContinueDeposit(e, option);
+                    } else if (failureCount >= 3) {
                         _window.close();
                         $("#manyFailures").show();
                         $("#backdrop").show();
-                    }else {
+                    } else {
                         _this.scanElectronicContinueDeposit(e, option,_window);
                     }
                 }
-            })
+            });
         },
         createWin:function () {
             var $account = $("input[name=account]:checked");
