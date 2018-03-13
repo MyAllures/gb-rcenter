@@ -376,6 +376,14 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             }
             return true;
         },
+        hasBankcard: function (e, opt) {
+            var bankcardList = $("#bankcard-list");
+            if (bankcardList.length <= 0) {
+                page.showPopover(e, {}, "warning", window.top.message.player_auto['尚未设置银行卡'], true);
+                return false;
+            }
+            return true;
+        },
         hideBankcardList: function (e, opt) {
             $(e.currentTarget).addClass("hide");
             var data = opt.data;
