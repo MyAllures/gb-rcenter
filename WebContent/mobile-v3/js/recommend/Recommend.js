@@ -22,25 +22,28 @@ function searchBydate() {
 
     var options = {
         url:"/recommend.html?search.startTime="+beginTime + "&" +"search.endTime="+endTime,
+        type: 'post',//HTTP请求类型
         timeout:5000,//超时时间为5秒
-        data:beginTime,
-        data:endTime,
-        dataType:"json",
+       /* data:beginTime,
+        data:endTime,*/
+        dataType:"html",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Soul-Requested-With': 'XMLHttpRequest'
         },
         success: function (data) {
-            if(data){
+            $("tbody").html("");
+            $("tbody").append(data);
+            /*if(data){
 
-            }
+            }*/
         },
         error: function (e) {
             toast(window.top.message.fund_auto['加载失败']);
-            scrollView.pullRefresh().endPullupToRefresh(true);
+            // scrollView.pullRefresh().endPullupToRefresh(true);
             //异常处理；
             console.log(e);
-            t.dismissProgress();
+            // t.dismissProgress();
         }
     };
     muiAjax(options);
