@@ -256,6 +256,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
          */
         submit: function (e, option) {
             var _this = this;
+            var _window = this.createWin();
             window.top.topPage.ajax({
                 url: root + "/fund/recharge/ScanElectronic/submit.html",
                 data: this.getCurrentFormData(e),
@@ -265,28 +266,35 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                     ajaxMap["ajaxData"] = data ;
                     var failureCount = data.failureCount;
                     if(failureCount >= 3){
+                        _window.close();
                         $("#manyFailures").show();
                         $("#backdrop").show();
                     }else {
-                        _this.scanElectronicContinueDeposit(e, option);
+                        _this.scanElectronicContinueDeposit(e, option,_window);
                     }
                 }
             })
         },
-
-        /**
-         * 非第三方存款多次错误提示
-         */
-        scanElectronicContinueDeposit:function(e, option){
-            $("#manyFailures").hide();
-            $("#backdrop").hide();
-            var data = ajaxMap["ajaxData"];
+        createWin:function () {
             var $account = $("input[name=account]:checked");
             var isThird = $account.attr("isThird");
             var _window;
             if (isThird != 'true') {
                 _window = window.open("", '_blank');
                 _window.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
+            }
+            return _window;
+        },
+
+        /**
+         * 非第三方存款多次错误提示
+         */
+        scanElectronicContinueDeposit:function(e, option,_window){
+            $("#manyFailures").hide();
+            $("#backdrop").hide();
+            var data = ajaxMap["ajaxData"];
+            if(!_window){
+                _window = this.createWin();
             }
             var state = data.state;
             if (state == false && _window) {
