@@ -103,12 +103,13 @@ $(function () {
 });
 
 function copyCode() {
-    var clipboard = new Clipboard('.btn-copy');
-    clipboard.on('success',function (e) {
+    var clipboard = new Clipboard("a.copy");
+    clipboard.onClick({delegateTarget:$("a.copy")[0]});
+    toast(window.top.message.deposit_auto['复制成功']);
+    /*clipboard.on('success', function (e) {
         toast(window.top.message.deposit_auto['复制成功']);
     });
-
-    clipboard.on('error', function(e) {
-        toast("复制按钮不可用，请长按文字手动复制信息");
-    });
+    clipboard.on('error', function (e) {
+        toast(window.top.message.deposit_auto['复制失败']);
+    });*/
 }
