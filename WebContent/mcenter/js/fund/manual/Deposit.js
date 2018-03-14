@@ -2,6 +2,8 @@
  * 资金管理-手工存取
  */
 define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
+    //金额正则
+    var regexp = /^(([1-9]\d*)(\.\d{1,2})?)$|(0\.0?([1-9]\d?))$/;
     return BaseEditPage.extend({
         /**
          * 初始化及构造函数，在子类中采用
@@ -45,6 +47,14 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
             $(this.formSelector).on("change", "[name='playerFavorable.isAuditFavorable']", function (e) {
                 _this.changeFavorableAuditType();
             });
+            //存款金额改变事件
+            $(this.formSelector).on("blur", "[name='result.rechargeAmount']", function (e) {
+                _this.showSaleAmount();
+            });
+            //自动计算优惠改变事件
+            $(this.formSelector).on("blur", "#discountRatio", function (e) {
+                _this.reckonSaleAmount();
+            });
 
             /**
              * 异步加载活动名称
@@ -76,6 +86,55 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
                     }
                 });
             });
+        },
+        /**
+         * 显示隐藏优惠比例输入框
+         */
+        showSaleAmount:function(){
+            var rechargeAmount = $("input[name='result.rechargeAmount']").val();
+            if(rechargeAmount && regexp.test(rechargeAmount) && rechargeAmount <= 99999999){
+                $("#discountRatio").attr("disabled",false);
+                if($("#discountRatio").val()){
+                    this.reckonSaleAmount();
+                }
+            }else{
+                $("#discountRatio").attr("disabled",true);
+                $("#discountRatio").val('');
+                $("input[name='playerFavorable.favorable']").removeAttr("readonly");
+                $("input[name='playerFavorable.favorable']").val('');
+                $("#favorableTypeDiv button:first").attr("disabled",false);
+            }
+        },
+
+        /**
+         * 自动计算优惠金额和选中优惠类型
+         */
+        reckonSaleAmount:function(){
+            var discount =  $("#discountRatio").val();
+            //验证优惠比例
+
+            if(!discount){
+                $("input[name='playerFavorable.favorable']").val('');
+                $("input[name='playerFavorable.favorable']").removeAttr("readonly");
+                $("#favorableTypeDiv button:first").attr("disabled",false);
+                return;
+            }else if(!(discount && regexp.test(discount) && discount <= 100)){
+                return;
+            }
+
+            var rechargeAmount = $("input[name='result.rechargeAmount']").val();
+            var saleSum = (discount/100) * rechargeAmount ;
+            var favorable = Math.floor(Number(saleSum) * 100) / 100;
+            if(favorable <=0){
+                $("input[name='playerFavorable.favorable']").val('');
+                return;
+            }
+            $("input[name='playerFavorable.favorable']").val(favorable);
+            $("input[name='playerFavorable.favorable']").attr("readonly",true);
+            $("[selectdiv='favorableType']").attr("value","manual_favorable");
+            select.setValue($("[selectdiv='favorableType']"), "manual_favorable");
+            this.changeFavorableType();
+            $("#favorableTypeDiv button:first").attr("disabled",true);
         },
         /**
          * 优惠稽核类型变更
