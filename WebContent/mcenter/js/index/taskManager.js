@@ -98,6 +98,12 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
             $('.tasks').children('a').click(function () {
                 var href = $(this).attr("data-href");
                 if ($(this).attr("aria-expanded") != 'true') {
+                    if(href.indexOf("?_t")>-1){
+                        var arr = href.split("?");
+                        href = arr[0] + "?_t=" + new Date().getTime();
+                    }else{
+                        href = href + "?_t=" + new Date().getTime();
+                    }
                     $(this).parent().find('dl').load(href);
                 }
             });
