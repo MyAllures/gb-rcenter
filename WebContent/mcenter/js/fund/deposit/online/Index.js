@@ -154,6 +154,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
         onPageLoad: function () {
             this._super();
             var _this=this;
+            _this.rewrite();
             /*if($("#todaySales").val()=='true'){
                 $("#todayTotal").text($("#todayTotalSource").text());
                 $("#totalSumTarget").parent().parent().hide();
@@ -221,6 +222,9 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                 $("#playerRanksMemory").val(JSON.stringify(playerRanksMemory));
 
             });
+
+
+
             /**
              * 绑定下拉层级事件
              */
@@ -260,6 +264,54 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                 else
                     e.cancelBubble = true;
             });
+        },
+        /**
+         * 获取勾选玩家id
+         * @param e
+         * @param opt
+         * @returns {boolean}
+         */
+        getSelectPlayerIds: function (e, opt) {
+            var ids = this.getSelectIdsArray(e).join(",");
+            opt.target = opt.target.replace('{playerIds}', ids);
+            return true;
+        },
+        /**
+         * 获取层级选项的value
+         * @param e
+         * @returns {{rankId: (*|jQuery), ids: (string|*)}}
+         */
+        playerRankPost: function (e) {
+            var checked_rank = $("#player_rank ul.rank_ul li input[type='radio']:checked").val();
+            var ids = this.getSelectIdsArray(e).join(",");
+            return {'rankId': checked_rank, 'ids': ids};
+        },
+
+        /**
+         * 获取层级选项的value
+         * @param e
+         * @returns {{rankId: (*|jQuery), ids: (string|*)}}
+         */
+        playerRekebackPost: function (event, option) {
+            var rakebackId = $("#player_rakeback li input[type='radio']:checked").val();
+            var ids = this.getSelectIdsArray(event).join(",");
+            if (rakebackId === '0') {
+                return {'ids': ids}
+            }
+            return {'rakebackId': rakebackId, 'ids': ids};
+        },
+        /**
+         * 玩家层级回填
+         * @param e
+         */
+        rewrite: function (e) {
+            var playerRanksMemory = $("#playerRanksMemory").val();
+            if (playerRanksMemory != "") {
+                var playerRanksMemory = JSON.parse(playerRanksMemory);
+                $.each(playerRanksMemory, function (i, line) {
+                    $("input[name='search.rankIds'][value='" + line + "']:not(:checked)").prop("checked", true).change();
+                })
+            }
         },
 
         selectListChange : function (e) {
