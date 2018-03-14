@@ -28,7 +28,7 @@ function initSwiper() {
     var slideIndicators = new Swiper('.p-t-slide-indicators', {
         loop: true,
         loopedSlides: siledSize,
-        slidesPerView: '4',
+        slidesPerView: 'auto',
         touchRatio: 0.2,
         slideToClickedSlide: true,
         on: {
