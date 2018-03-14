@@ -330,9 +330,9 @@ define(['common/BaseEditPage','mailAutoComplete'], function (BaseEditPage) {
                 dataType: 'json',
                 data: this.getCurrentFormData(e),
                 success: function (data) {
-                    if (data.status) {
-                        var msgType = data.status == true ? 'success' : 'danger';
-                        if (data.status) {
+                    if (data.state) {
+                        var msgType = data.state == true ? 'success' : 'danger';
+                        if (data.state) {
                             option.callback = 'saveCallbak';
                             e.page.showPopover(e, option, msgType, data.msg, true);
                         }
