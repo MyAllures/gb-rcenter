@@ -212,3 +212,14 @@ function filterActyByPlayer(data) {
         $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").text(window.top.message.promo_auto['参与中']);
     }
 }
+
+/**
+ * 跳到优惠记录
+ */
+function goPromoDetail(obj,options){
+    if(isNative){
+        nativeGotoPromoRecordPage();
+    }else{
+        goToUrl(options.src);
+    }
+}
