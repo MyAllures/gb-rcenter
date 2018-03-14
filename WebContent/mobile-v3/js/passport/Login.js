@@ -8,6 +8,15 @@ $(function () {
 });
 
 /**
+ * 请求验证码
+ * @param obj
+ * @param options
+ */
+function captchaChange(obj,options){
+    obj.src = obj.src;
+}
+
+/**
  * 立即登录
  */
 function loginOk(obj,options){
@@ -35,7 +44,7 @@ function loginOk(obj,options){
     $("#loginForm").submit();
     var $this = $(this);
     if (_username && _password) {
-        /*mui.ajax(root + "/passport/login.html", {
+        mui.ajax(root + "/passport/login.html", {
             type: "POST",
             async: false,
             dataType: "json",
@@ -69,7 +78,9 @@ function loginOk(obj,options){
                         if (data.propMessages["captcha"]) {
                             $('._pass').removeClass('final');
                             $('._captcha').addClass('final');
-                            toast(data.propMessages["captcha"]);
+                            $("#captcha-error-msg").html('<i class="mui-icon mui-icon-info"></i>' + data.propMessages["captcha"]);
+                        }else{
+                            $("#captcha-error-msg").html("");
                         }
                     }
                     setTimeout(function () {
@@ -88,6 +99,6 @@ function loginOk(obj,options){
                     }, 1000);
                 }
             }
-        })*/
+        })
     }
 }
