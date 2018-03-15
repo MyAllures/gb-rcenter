@@ -55,19 +55,27 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
         },
         rechargeAmountMsg:function () {
             var $account = $("input[name=account]:checked");
-            var depositType = $account.attr("depositType");
-            if(depositType == "scan"){
+            var bankCode = $account.attr("bankCode");
+            if ("easy_pay" == bankCode) {
                 $("#electronicDocument").hide();
-                $("#scanDocument").show();
-            }else{
-                $("#electronicDocument").show();
                 $("#scanDocument").hide();
+                $("#easyPayDocument").show();
+            }else {
+                var depositType = $account.attr("depositType");
+                if(depositType == "scan"){
+                    $("#electronicDocument").hide();
+                    $("#scanDocument").show();
+                    $("#easyPayDocument").hide();
+                }else{
+                    $("#electronicDocument").show();
+                    $("#scanDocument").hide();
+                    $("#easyPayDocument").hide();
+                }
+                var payMax = $account.attr("payMax");
+                var payMin = $account.attr("payMin");
+                $("#payMin").html(payMin);
+                $("#payMax").html(payMax);
             }
-
-            var payMax = $account.attr("payMax");
-            var payMin = $account.attr("payMin");
-            $("#payMin").html(payMin);
-            $("#payMax").html(payMax);
         },
         changeAccount: function (obj) {
             var $target = $(obj).find("input[name=account]");
