@@ -16,7 +16,16 @@ define(['common/BasePage'],function(BasePage) {
        showMsg : function() {
            $('.informations').children('a').click(function(){
                var href = $(this).attr("data-href");
-               $(this).parent().find('dl').load(href);
+               if ($(this).attr("aria-expanded") != 'true') {
+                   if(href.indexOf("?_t")>-1){
+                       var arr = href.split("?");
+                       href = arr[0] + "?_t=" + new Date().getTime();
+                   }else{
+                       href = href + "?_t=" + new Date().getTime();
+                   }
+                   $(this).parent().find('dl').load(href);
+               }
+
                $(this).unlock();
            });
        },
