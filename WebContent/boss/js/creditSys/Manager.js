@@ -26,10 +26,10 @@ define(['common/BaseEditPage', 'jqFileInput', 'css!themesCss/fileinput/fileinput
                         var type = $(_target).attr("mold");
                         var msg = "";
                         if (state) {
-                            msg = "该站点将开启转账,确认开启吗？"
+                            msg = "该站点将关闭转账,确认关闭吗？"
                         }
                         else {
-                            msg = "该站点将关闭转账,确认关闭吗？"
+                            msg = "该站点将开启转账,确认开启吗？"
                         }
                         var okLabel = window.top.message.setting['common.ok'];
                         var cancelLabel = window.top.message.setting['common.cancel'];
