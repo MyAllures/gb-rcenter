@@ -240,7 +240,7 @@ function companyDepositSubmit(depositChannel) {
             }
         },
         error: function () {
-            toast(window.top.message.deposit_auto['提交失败']);
+            toast(window.top.message.deposit_auto['提交失败请刷新']);
         }
     };
     muiAjax(optiolns);

@@ -154,7 +154,7 @@ function confirmSale(obj , options){
             if (data.state == true) {
                 toast(window.top.message.deposit_auto['提交成功']);
             } else if (!data.state == false) {
-                toast(window.top.message.deposit_auto['提交失败']);
+                toast(window.top.message.deposit_auto['提交失败请刷新']);
             }
             $("#applySale").removeClass("mui-active");
             $("#applySale").html("");

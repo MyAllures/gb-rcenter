@@ -82,6 +82,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
          */
         submit: function (e, option) {
             var _this = this;
+            var _window = this.createWin();
             window.top.topPage.ajax({
                 url: option.url,
                 loading: true,
@@ -91,10 +92,11 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                     ajaxMap["ajaxData"] = data ;
                     var failureCount = data.failureCount;
                     if(failureCount >= 3){
+                        _window.close();
                         $("#manyFailures").show();
                         $("#backdrop").show();
                     }else {
-                        _this.onlineContinueDeposit(e,option);
+                        _this.onlineContinueDeposit(e, option,_window);
                     }
                 },
                 error: function (data) {
@@ -103,15 +105,27 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
             });
         },
 
+        createWin:function () {
+            var $account = $("input[name=account]:checked");
+            var isThird = $account.attr("isThird");
+            var _window;
+            if (isThird != 'true') {
+                _window = window.open("", '_blank');
+                _window.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
+            }
+            return _window;
+        },
+
         /**
          * 失败多次后仍继续存款
          */
-        onlineContinueDeposit:function(e,option){
+        onlineContinueDeposit:function(e,option,_window){
             $("#manyFailures").hide();
             $("#backdrop").hide();
             var data = ajaxMap["ajaxData"];
-            var _window = window.open("", '_blank');
-            _window.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
+            if(!_window){
+                _window = this.createWin();
+            }
             var state = data.state;
             var msg = data.msg;
             if (state) {
