@@ -135,7 +135,7 @@ function closeBanner(obj, options) {
 /*公告弹窗*/
 function showNotice(obj, options) {
     var noticeA = noticeIndicator = "";
-    $(".notice .notice-list p a").each(function () {//生成公告html和indicator
+    $(".notice .notice-list a").each(function () {//生成公告html和indicator
         noticeA += "<div class='mui-slider-item'><a href='javascript:'>" + $(this).html() + "</a></div>";
         noticeIndicator += "<div class='mui-indicator'></div>"
     });

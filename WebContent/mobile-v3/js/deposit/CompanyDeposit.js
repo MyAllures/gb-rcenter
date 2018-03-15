@@ -188,7 +188,12 @@ function companyContinueDeposit(depositChannel){
             $("#successMasker").attr("style", "display:block;");
         } else if (options.statusNum) {
             var rechargeAmount = $("input[name='result.rechargeAmount']").val();
-            goToUrl(options.href + "&depositCash=" + rechargeAmount + "&t=" + random);
+            if(isNative){
+                var url = options.href + "&depositCash=" + rechargeAmount + "&t=" + random;
+                nativeOpenWindow(url,0);
+            }else{
+                goToUrl(options.href + "&depositCash=" + rechargeAmount + "&t=" + random);
+            }
         } else {
             companyDepositSubmit(depositChannel);
         }
@@ -235,8 +240,19 @@ function companyDepositSubmit(depositChannel) {
             }
         },
         error: function () {
-            toast(window.top.message.deposit_auto['提交失败']);
+            toast(window.top.message.deposit_auto['提交失败请刷新']);
         }
     };
     muiAjax(optiolns);
+}
+
+/***/
+function bitcoinPage(obj,option){
+    var url = option.url;
+    if(isNative){
+        var url = url +"&t="+ Math.random();
+        nativeOpenWindow(url,0);
+    }else{
+        goToUrl(url );
+    }
 }
