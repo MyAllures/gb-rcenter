@@ -161,8 +161,8 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                             if(state){
                                 if(isFee=='isFee'){
                                     $("#box_return").attr("checked",false);
-                                    $("#box_return").bootstrapSwitch("state",false);
-                                    $("#isReturnFee").val('');
+                                    //$("#box_return").bootstrapSwitch("state",false);
+                                    //$("#isReturnFee").val('');
                                     $(".maxFee").attr("disabled",state);
                                     if($("#maxFee").val()>0){
                                         $(".maxFeeRadio").attr("disabled",false);
@@ -171,8 +171,8 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                                     }
                                 }else if(isFee=='isReturnFee'){
                                     $("#box_fee").attr("checked",false);
-                                    $("#box_fee").bootstrapSwitch("state",false);
-                                    $("#isFee").val('');
+                                    //$("#box_fee").bootstrapSwitch("state",false);
+                                    //$("#isFee").val('');
                                     $(".fee_txt").attr("disabled",state);
                                     if($("#maxReturnFee").val()>0){
                                         $(".returnTypeRadio").attr("disabled",false);
@@ -182,9 +182,9 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                                 }
                             }else{
                                 if(isFee=='isFee'){
-                                    $("#box_return").attr("checked",true);
-                                    $("#box_return").bootstrapSwitch("state",true);
-                                    $("#isReturnFee").val(true);
+                                    //$("#box_return").attr("checked",true);
+                                    //$("#box_return").bootstrapSwitch("state",true);
+                                    //$("#isReturnFee").val(true);
                                     $("input[name='result.feeTime']").val("");
                                     $("input[name='result.freeCount']").val("");
                                     $("input[name='result.maxFee']").val("");
@@ -193,9 +193,9 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
                                     $("#editForm").validate().resetForm();
                                    //$(".feeStatus").val("");
                                 }else if(isFee=='isReturnFee'){
-                                    $("#box_fee").attr("checked",true);
-                                    $("#box_fee").bootstrapSwitch("state",true);
-                                    $("#isFee").val(true);
+                                    //$("#box_fee").attr("checked",true);
+                                    //$("#box_fee").bootstrapSwitch("state",true);
+                                    //$("#isFee").val(true);
                                     $("input[name='result.reachMoney']").val("");
                                     $("input[name='result.maxReturnFee']").val("");
                                     $("input[name='result.returnTime']").val("");
@@ -247,9 +247,9 @@ define(['gb/common/BaseEditPage', 'bootstrap-dialog','bootstrapswitch'], functio
 
             var isFee = $("#box_fee").bootstrapSwitch("state");
             var  isReturn=$("#box_return").bootstrapSwitch("state");
-            //不能同时为true或者false
-            if ((isFee && isReturn) || (!(isFee || isReturn))) {
-                var _msg = window.top.message.player_auto['收取返还不能同时启用或者同时禁用'];
+            //不能同时为true
+            if ((isFee && isReturn)) {
+                var _msg = window.top.message.player_auto['收取返还不能同时启用'];
                 window.top.topPage.showErrorMessage(_msg);
                 return;
             }
