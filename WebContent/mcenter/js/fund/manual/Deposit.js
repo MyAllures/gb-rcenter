@@ -127,6 +127,7 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
             var favorable = Math.floor(Number(saleSum) * 100) / 100;
             if(favorable <=0){
                 $("input[name='playerFavorable.favorable']").val('');
+                $("input[name='playerFavorable.favorable']").attr("readonly",true);
                 return;
             }
             $("input[name='playerFavorable.favorable']").val(favorable);
