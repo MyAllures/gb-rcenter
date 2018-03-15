@@ -379,15 +379,15 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         },
         validSmsInterface: function (e, opt) {
             var opt = {};
-            var flag = this.validDataVal($("[name='sms.fullName']"),false,64,window.top.message.setting_auto['接口名称'],opt);
+            var flag = this.validDataVal($("[name='sms.id']"),false,24,window.top.message.setting_auto['接口名称'],opt);
             if(flag){
-                flag = this.validDataVal($("[name='sms.extJson']"),false,500,window.top.message.setting_auto['请求扩展参数'],opt);
+                flag = this.validDataVal($("[name='sms.username']"),false,20,window.top.message.setting_auto['接口用户名'],opt);
                 if(flag){
-                    flag = this.validDataVal($("[name='sms.username']"),false,20,window.top.message.setting_auto['接口用户名'],opt);
+                    flag = this.validDataVal($("[name='sms.password']"),false,20,window.top.message.setting_auto['接口密码'],opt);
                     if(flag){
-                        flag = this.validDataVal($("[name='sms.password']"),false,20,window.top.message.setting_auto['接口密码'],opt);
+                        flag = this.validDataVal($("[name='sms.dataKey']"),false,120,window.top.message.setting_auto['接口密钥长度'],opt);
                         if(flag){
-                            flag = this.validDataVal($("[name='sms.dataKey']"),true,64,window.top.message.setting_auto['接口密钥长度'],opt);
+                            flag = this.validDataVal($("[name='sms.requestUrl']"),false,240,window.top.message.setting_auto['请求接口地址'],opt);
                         }
                     }
                 }
@@ -547,6 +547,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         },
         getRankByDomainForm:function (e,opt) {
             return $("input,textarea","#open-period-div").serialize();
+        },
+        getSmsInterfaceDateForm:function (e,opt) {
+            return $("input,textarea","#smsInterface").serialize();
         },
         /**
          * 获取统计代码表单
