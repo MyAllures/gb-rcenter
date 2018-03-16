@@ -404,8 +404,12 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             var account;
             if (accountType == '1') {
                 account = $("input[name='account1']").val();
+                $("#accountPrompt").hide();
+                $("#accountInformation").hide();
             } else {
                 account = $("input[name='account2']").val();
+                $("#accountPrompt").show();
+                $("#accountInformation").show();
             }
             if ((accountType == '1' ? true : customBankName.length > 0)
                 && payName.length > 0
