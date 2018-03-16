@@ -212,6 +212,9 @@ function onlinePaySubmit(depositChannel) {
 
                 } else {
                     toast(data.msg);
+                    if (newWindow) {
+                        newWindow.close();
+                    }
                 }
             }
 
