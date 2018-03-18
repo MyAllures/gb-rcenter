@@ -135,6 +135,7 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
             $("[selectdiv='favorableType']").attr("value","manual_favorable");
             select.setValue($("[selectdiv='favorableType']"), "manual_favorable");
             this.changeFavorableType();
+            this.changeFavorableAuditType();
             $("#favorableTypeDiv button:first").attr("disabled",true);
         },
         /**
