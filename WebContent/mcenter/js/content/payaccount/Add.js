@@ -67,7 +67,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             });
             $(this.formSelector).on("click", "input[name='rank']", function () {
                 _this.test(this);
-            })
+            });
             //银行充值
             $(this.formSelector).on("click", "a[name='bankList']", function () {
                 var bankName = $(this).attr('bankName');
@@ -408,8 +408,13 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                 $("#accountInformation").hide();
             } else {
                 account = $("input[name='account2']").val();
-                $("#accountPrompt").show();
-                $("#accountInformation").show();
+                if(bankCode != "onecodepay" && bankCode != "bitcoin"){
+                    $("#accountPrompt").show();
+                    $("#accountInformation").show();
+                }else{
+                    $("#accountPrompt").hide();
+                    $("#accountInformation").hide();
+                }
             }
             if ((accountType == '1' ? true : customBankName.length > 0)
                 && payName.length > 0
