@@ -178,6 +178,11 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                     } else {
                         _this.toast(data.msg);
                         $("input[name='gb.token']").val(data.token);
+                        if(data.accountNotUsing){
+                            setTimeout(function(){
+                                _this.linkDeposit();
+                            },2000);
+                        }
                     }
                 },
                 error: function (xhr, type, errorThrown) {
