@@ -185,7 +185,7 @@ function closeDesk(obj, options) {
 
 //判断desk是否需要隐藏
 function hideDesk(){
-    if(localStorage.getItem("destHide")){
+    if(os != 'app_ios' || localStorage.getItem("destHide")){
         $("#deskTip").hide();
     }
 }
