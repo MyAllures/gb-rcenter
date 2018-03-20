@@ -62,23 +62,8 @@ function bindBtc() {
             if (data.state) {
                 toast(data.msg);
                 setTimeout(function () {
-                    if (data.action == 'withdraw') {
-                        var _href = root + '/wallet/withdraw/index.html';
-                        if (os == 'android' || os == 'app_android') {
-                            window.gamebox.finishActivity();
-                        } else {
-                            _this.gotoUrl(_href);
-                        }
-                    } else {
-                        if (os == 'android' || os == 'app_android') {
-                            //window.history.go(-1);
-                            window.gamebox.finishActivity();
-                        } else if (os == 'app_ios') {
-                            goBack();
-                        } else {
-                            mui.back();
-                        }
-                    }
+                    mui.back();
+
                 }, 1000);
             } else {
                 toast(data.msg);

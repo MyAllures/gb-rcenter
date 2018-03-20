@@ -66,7 +66,11 @@ function recovery(obj) {
  * 一键刷新
  */
 function reload() {
-    window.location.reload();
+    if(isNative){
+        nativeRefreshPage();
+    }else{
+        window.location.reload();
+    }
 }
 
 /**
