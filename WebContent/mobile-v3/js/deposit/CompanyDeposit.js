@@ -239,6 +239,11 @@ function companyDepositSubmit(depositChannel) {
             } else {
                 toast(data.msg);
                 $("input[name='gb.token']").val(data.token);
+                if(data.accountNotUsing){
+                    setTimeout(function(){
+                        this.goToDepositPage();
+                    },2000);
+                }
             }
         },
         error: function () {

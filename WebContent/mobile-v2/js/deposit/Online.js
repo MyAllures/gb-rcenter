@@ -259,6 +259,12 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
             } else {
                 //验证提示
                 _this.toast($("#tips").attr("tips"));
+                var accountNotUsing = $("#accountNotUsing").attr("accountNotUsing");
+                if("true" === accountNotUsing){
+                    setTimeout(function(){
+                        _this.linkDeposit();
+                    },2000);
+                }
             }
         },
 
@@ -313,6 +319,11 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                             _this.toast(data.msg);
                             if (newWindow) {
                                 newWindow.close();
+                            }
+                            if(data.accountNotUsing){
+                                setTimeout(function(){
+                                    _this.linkDeposit();
+                                },2000);
                             }
                         }
                     }
