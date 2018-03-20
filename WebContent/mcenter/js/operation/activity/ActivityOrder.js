@@ -13,6 +13,7 @@ define(['common/BaseListPage', 'nestable','css!themesCss/jquery/plugins/jquery.n
 
         onPageLoad: function () {
             this._super();
+            this.initNestable();
         },
         /**
          * 当前页面所有事件初始化函数
@@ -40,10 +41,13 @@ define(['common/BaseListPage', 'nestable','css!themesCss/jquery/plugins/jquery.n
             var _this = this;
             var apiTypeOrder = {};
             var orderObj = [];
+            var search = {};
             $("tbody tr").each(function(index,obj){
-                orderObj.push({"orderNum":index+1,"id":$(obj).children("[name='activityId']").val()});
+                orderObj.push({"classifyOrderNum":index+1,"orderNum":index+1,"id":$(obj).children("[name='activityId']").val()});
             });
             apiTypeOrder.orderList = orderObj;
+            search.activityClassifyKey=$("input[name='search.activityClassifyKey']").val();//类别
+            apiTypeOrder.search = search;
             window.top.topPage.ajax({
                 contentType: 'application/json; charset=utf-8',
                 dataType:'json',
