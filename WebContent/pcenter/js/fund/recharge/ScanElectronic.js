@@ -126,9 +126,10 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 }
 
                 //收款账号说明
-                var accountRemark = $target.attr("accountRemark");
-                if(accountRemark) {
-                    $("#accountRemark").text(accountRemark);
+                var accountId = $target.attr("accountId");
+                var remark = $(".remark"+accountId).html();
+                if(remark) {
+                    $("#accountRemark").html(remark);
                     $("#accountRemark").show();
                 } else {
                     $("#accountRemark").hide();

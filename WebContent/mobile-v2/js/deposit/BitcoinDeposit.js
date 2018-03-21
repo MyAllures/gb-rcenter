@@ -109,8 +109,10 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
                                 '<span>'+window.top.message.deposit_auto['不参与优惠']+'</span><input name="activityId" type="radio" value="" checked="checked/"></div></li>';
                             for (var i = 0; i < data.length; i++) {
                                 var sale = data[i];
-                                html = html + '<li><div class="text-warp"><span>' + sale.activityName + '</span>' +
-                                    '<input name="activityId" type="radio" value="' + sale.id + '"></div></li>';
+                                if(sale.preferential){
+                                    html = html + '<li><div class="text-warp"><span>' + sale.activityName + '</span>' +
+                                        '<input name="activityId" type="radio" value="' + sale.id + '"></div></li>';
+                                }
                             }
                             html = html + '</ul></div><div class="pro-btn"><a class="next-btn">'+window.top.message.deposit_auto['已存款']+'</a><a class="agin-btn">'+window.top.message.deposit_auto['重新填写']+'</a></div><div class="close"></div></div></div>';
                             $(".mui-content").append(html);
@@ -170,6 +172,11 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
                     } else {
                         _this.toast(data.msg);
                         $("input[name='gb.token']").val(data.token);
+                        if(data.accountNotUsing){
+                            setTimeout(function(){
+                                _this.linkDeposit();
+                            },2000);
+                        }
                     }
                 },
                 error: function (xhr, type, errorThrown) {
