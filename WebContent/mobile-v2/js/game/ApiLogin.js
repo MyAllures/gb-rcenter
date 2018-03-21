@@ -106,8 +106,14 @@ define(['site/include/BaseIndex'], function (BaseIndex) {
                 data: {apiId: apiId},
                 type: "POST",
                 success: function (data) {
+                    var zoneText;
+                    if(data.timeZone == "GMT-04:00"){
+                        zoneText = window.top.message.game_auto['美东']
+                    }else{
+                        zoneText = window.top.message.game_auto['北京']
+                    }
                     _this.openLayer(
-                        _this.formatStr(window.top.message.game_auto['尊敬的客户'], data.gameName, data.maintainStartTime, data.maintainEndTime)
+                        _this.formatStr(window.top.message.game_auto['尊敬的客户'], data.gameName, zoneText, data.maintainStartTime, data.maintainEndTime)
                     );
                 }
             });
