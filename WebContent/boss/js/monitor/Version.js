@@ -131,12 +131,9 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 url:root+'/Monitor/addInvoke.html',
                 success:function(data){
                     if(data==true){
-                        window.top.topPage.showSuccessMessage("操作成功!");
-                        window.setTimeout(function () {
-                            _this.refreshData(e, opt);
-                        },2000);
+                        console.log("操作成功!");
                     }else{
-                        window.top.topPage.showErrorMessage("操作失败!");
+                        console.log("操作失败!");
                     }
                 }
             });
@@ -164,12 +161,9 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 url:root+'/Monitor/removeInvoke.html',
                 success:function(data){
                     if(data==true){
-                        window.top.topPage.showSuccessMessage("操作成功!");
-                        window.setTimeout(function () {
-                            _this.refreshData(e, opt);
-                        },2000);
+                        console.log("操作成功!");
                     }else{
-                        window.top.topPage.showErrorMessage("操作失败!");
+                        console.log("操作失败!");
                     }
                 }
             });
