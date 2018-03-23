@@ -1034,14 +1034,14 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
             if(!window.top.topPage.isNull(crypt) && crypt == false){
                 op = "dial";
             }
-            var url = "http://"+domain+"/atstar/index.php/status-op?op="+op+"&ext_no="+zxNo+"&dia_num="+phoneNumber;
+            var url = domain + "?op="+op+"&ext_no="+zxNo+"&dia_num="+phoneNumber;//"http://"+domain+"/atstar/index.php/status-op?op="+op+"&ext_no="+zxNo+"&dia_num="+phoneNumber;
             window.top.topPage.doGet(url);
         },
         callPlayer:function (e, opt) {
             var _this = this;
             var playerId = opt.playerId;
             if(window.top.topPage.isNull(playerId)){
-                page.showPopover(e,{},"warnning","玩家没有设置电话号码",true);
+                page.showPopover(e,{},"warnning",window.top.message.player_auto["玩家没有设置电话号码"],true);
                 return;
             }
             window.top.topPage.ajax({
@@ -1054,15 +1054,15 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                     var zxNo = data.zxNo;
                     var phoneNumber = data.phoneNumber;
                     if(window.top.topPage.isNull(phoneNumber)){
-                        page.showPopover(e,{},"warning","玩家没有设置电话号码",true);
+                        page.showPopover(e,{},"warning",window.top.message.player_auto["玩家没有设置电话号码"],true);
                         return;
                     }
                     if(window.top.topPage.isNull(zxNo)){
-                        page.showPopover(e,{},"warning","您没有相关电话配置",true);
+                        page.showPopover(e,{},"warning",window.top.message.player_auto["您没有相关电话配置"],true);
                         return;
                     }
                     if(window.top.topPage.isNull(domain)){
-                        page.showPopover(e,{},"warning","您的系统还未配置电销系统",true);
+                        page.showPopover(e,{},"warning",window.top.message.player_auto['您的系统还未配置电销系统'],true);
                         return;
                     }
                     _this.phoneCall(phoneNumber,domain,zxNo,true);
