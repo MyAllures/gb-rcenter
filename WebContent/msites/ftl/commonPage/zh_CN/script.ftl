@@ -918,7 +918,7 @@
                 gameUrl = "&gameId="+gameId;
             }
             var newWindow = window.open();
-            newWindow.location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode+gameUrl;
+            newWindow.location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiType="+apiTypeId+"&gameCode="+gameCode+gameUrl;
         }
     }
 

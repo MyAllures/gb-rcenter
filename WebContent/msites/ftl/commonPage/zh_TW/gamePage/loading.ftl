@@ -34,7 +34,7 @@
 <script>
     var apiId = getlocationParam("apiId");
     var gameCode = getlocationParam("gameCode");
-    var apiTypeId = getlocationParam("apiTypeId");
+    var apiTypeId = getlocationParam("apiType");
     var apiName = getApiName(apiId);
     $(".apiName").text(apiName);
 
@@ -68,7 +68,7 @@
 
     function fetchBalance(){
         $.ajax({
-            url:"/ntl/getWalletBalanceAndApiBalance.html?apiId="+apiId+"&apiId="+apiTypeId+"&t="+ new Date().getTime().toString(36),
+            url:"/ntl/getWalletBalanceAndApiBalance.html?apiId="+apiId+"&t="+ new Date().getTime().toString(36),
             type:"get",
             dataType:"JSON",
             success:function(data){

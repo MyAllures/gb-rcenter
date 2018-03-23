@@ -1021,7 +1021,60 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                     $(obj+":visible")[0].click();
                 }
             });
+        },
+        /**
+         * 比邻方式拔打电话
+         * @param phoneNumber 电话号码 （crypt=true:phoneNumber需要加密)
+         * @param domain 呼叫中心域名地址
+         * @param zxNo 座席号
+         * @param crypt 是否加密
+         */
+        phoneCall:function (phoneNumber,domain,zxNo,crypt) {
+            var op = "dialv2";
+            if(!window.top.topPage.isNull(crypt) && crypt == false){
+                op = "dial";
+            }
+            var url = "http://"+domain+"/atstar/index.php/status-op?op="+op+"&ext_no="+zxNo+"&dia_num="+phoneNumber;
+            window.top.topPage.doGet(url);
+        },
+        callPlayer:function (e, opt) {
+            var _this = this;
+            var playerId = opt.playerId;
+            if(window.top.topPage.isNull(playerId)){
+                page.showPopover(e,{},"warnning","玩家没有设置电话号码",true);
+                return;
+            }
+            window.top.topPage.ajax({
+                url: root + "/player/fetchPlayerPhoneNumber.html",
+                type: 'POST',
+                data:  {'search.id':playerId},
+                dataType: "json",
+                success: function (data) {
+                    var domain = data.domain;
+                    var zxNo = data.zxNo;
+                    var phoneNumber = data.phoneNumber;
+                    if(window.top.topPage.isNull(phoneNumber)){
+                        page.showPopover(e,{},"warning","玩家没有设置电话号码",true);
+                        return;
+                    }
+                    if(window.top.topPage.isNull(zxNo)){
+                        page.showPopover(e,{},"warning","您没有相关电话配置",true);
+                        return;
+                    }
+                    if(window.top.topPage.isNull(domain)){
+                        page.showPopover(e,{},"warning","您的系统还未配置电销系统",true);
+                        return;
+                    }
+                    _this.phoneCall(phoneNumber,domain,zxNo,true);
+                    $(e.currentTarget).unlock();
+                },
+                error:function () {
+                    $(e.currentTarget).unlock();
+                }
+
+            });
         }
+
     });
 
 });

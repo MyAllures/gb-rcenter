@@ -1319,6 +1319,106 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                     document.title = _this.currentMenuTitle();
                 }
             });
+        },
+        isNull:function (v) {
+            /**
+             * 判断变量是否空值 undefined, null, '', [], {} 均返回true，否则返回false
+             */
+            switch (typeof v) {
+                case 'undefined':
+                    return true;
+                case 'string':
+                    if (null == v || "" == v) {
+                        return true;
+                    }
+                    break;
+                case 'object':
+                    if (null === v)
+                        return true;
+                    if (undefined !== v.length && v.length == 0)
+                        return true;
+
+                    for ( var k in v) {
+                        return false;
+                    }
+                    return true;
+                    break;
+            }
+            return false;
+        },
+        /**
+         * post 异步提交
+         */
+        doPost:function(url, jpara, fn_callback, fn_error) {
+            if (typeof (fn_callback) != 'function') {
+                fn_callback = function() {
+                };
+            }
+
+            if (typeof (fn_error) != 'function') {
+                fn_error = function() {
+                };
+            }
+
+            $.ajax({
+                url : url,
+                type : "POST",
+                data : JSON.stringify(jpara),
+                success : function(jdata) {
+                    fn_callback(jdata);
+                },
+                dataType : "json",
+                contentType : "application/json;charset=utf-8",
+                error : function(jdata) {
+                    if (jdata.status == 600) {
+                        fn_callback(jdata.responseJSON);
+                    } else {
+                        fn_error(jdata);
+                    }
+                }
+            });
+
+        },
+        doGet:function (url, jpara, fn_callback, fn_error) {
+            if (typeof (fn_callback) != 'function') {
+                fn_callback = function() {
+                };
+            }
+
+            if (typeof (fn_error) != 'function') {
+                fn_error = function() {
+                };
+            }
+
+            var names = '';
+            if (!this.isNull(jpara)) {
+                for ( var name in jpara) {
+                    names += name + "=" + jpara[name] + "&";
+                }
+                names = names.substring(0, names.length - 1);
+            }
+            if (names.length > 0) {
+                url = url.indexOf("?") > 0 ? url + "&" + names : url + "?" + names;
+            }
+            $.ajax({
+                url : url,
+                type : "GET",
+                // data: JSON.stringify(jpara),
+                success : function(jdata) {
+
+                    fn_callback(jdata);
+
+                },
+                dataType : "json",
+                contentType : "application/json;charset=utf-8",
+                error : function(jdata) {
+                    if (jdata.status == 600) {
+                        fn_callback(jdata.responseJSON);
+                    } else {
+                        fn_error(jdata);
+                    }
+                }
+            });
         }
     });
 
