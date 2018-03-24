@@ -1029,13 +1029,22 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
          * @param zxNo 座席号
          * @param crypt 是否加密
          */
-        phoneCall:function (phoneNumber,domain,zxNo,crypt) {
+        phoneCall:function (e,phoneNumber,domain,zxNo,crypt) {
             var op = "dialv2";
             if(!window.top.topPage.isNull(crypt) && crypt == false){
                 op = "dial";
             }
             var url = domain + "?op="+op+"&ext_no="+zxNo+"&dia_num="+phoneNumber;//"http://"+domain+"/atstar/index.php/status-op?op="+op+"&ext_no="+zxNo+"&dia_num="+phoneNumber;
-            window.top.topPage.doGet(url);
+            window.top.topPage.doGet(url,null,function (jsdata) {
+                //成功或失败的回调
+                page.showPopover(e,{},"success",window.top.message.player_auto["电话接通中"],true);
+                return;
+            },function (jdata) {
+                if(jdata.statusText == 'error'){
+                    page.showPopover(e,{},"warning",window.top.message.player_auto["请确认通话设备已经开启"],true);
+                    return;
+                }
+            });
         },
         callPlayer:function (e, opt) {
             var _this = this;
@@ -1065,7 +1074,7 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                         page.showPopover(e,{},"warning",window.top.message.player_auto['您的系统还未配置电销系统'],true);
                         return;
                     }
-                    _this.phoneCall(phoneNumber,domain,zxNo,true);
+                    _this.phoneCall(e,phoneNumber,domain,zxNo,true);
                     $(e.currentTarget).unlock();
                 },
                 error:function () {
