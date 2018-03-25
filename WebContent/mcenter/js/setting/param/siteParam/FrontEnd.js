@@ -64,6 +64,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this._super();
             this.bindSiteParamEvent();
             this.qrSwitch();
+            // this.personalInformation();
         },
         /**
          * 当前页面所有事件初始化函数
@@ -582,14 +583,15 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 return true;
             }
         },
+
         /*
-        * 是否需要登录后显示二维码的控制开关
+        * 个人信息展示开关
         *
         * */
         qrSwitch:function () {
             var _this = this;
             this._super();
-            var $bootstrapSwitch = $('input[type=checkbox][name=active]');
+            var $bootstrapSwitch = $('input[type=checkbox][name^="show"]');
             this.unInitSwitch($bootstrapSwitch).bootstrapSwitch({
                 onText: window.top.message.content['floatPic.dislpay.on'],
                 offText: window.top.message.content['floatPic.display.off'],
@@ -597,39 +599,28 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                     var $this = $(this);
                     var _msg = "";
                     if (state) {
-                        _msg = window.top.message.setting['confirm.open'];
+                        $(e.currentTarget).val(1);
                     } else {
-                        _msg =  window.top.message.setting['confirm.close'];
+                        $(e.currentTarget).val(0);
                     }
-                    $this.bootstrapSwitch('indeterminate', true);
-                    var _target = e.currentTarget;//showConfirmMessage
-                    window.top.topPage.showConfirmMessage(_msg, function (confirm) {
-                        if (confirm) {
-                            //_this._changeDisplayState(event, event.currentTarget, confirm, id, status);
-                            window.top.topPage.ajax({
-                                url: root + '/param/updateQrSwitch.html',
-                                dataType: "json",
-                                data: {"result.paramValue": state},
-                                success: function (data) {
-                                    if (data) {
-                                        $(_target).attr("isChanged", true);
-                                        $("#status").removeClass("label-success");
-                                        $("#status").addClass("label-danger");
-                                        page.showPopover({"currentTarget": $("#pcenter-msg-tips")}, {}, "success", "操作成功", true);
-                                    } else {
-                                        page.showPopover({"currentTarget": $("#pcenter-msg-tips")}, {}, "danger", "操作失败", true);
-                                    }
-                                }
-                            });
-                            $this.bootstrapSwitch('indeterminate', false);
-                        } else {
-                            $this.bootstrapSwitch('indeterminate', false);
-                            $this.bootstrapSwitch('state', !state, true);
-                        }
-                    })
+                    //$this.bootstrapSwitch('indeterminate', true);
 
+                    var _target = e.currentTarget;//showConfirmMessage
                 }
             });
+        },
+        getPlayerItemForm:function (e, opt) {
+            var items = $("._player_item_message");
+            var data = {};
+            data.showRealName = items[0].value;
+            data.showMainLanguage = items[1].value
+            data.showSex=items[2].value;
+            data.showBirthday=items[3].value;
+            data.showMobilePhone=items[4].value;
+            data.showMail=items[5].value;
+            data.showWechat=items[6].value;
+            data.showQq=items[7].value;
+            return data;
         },
         copyAppDomain:function (e, opt) {
             var tr = $("#app-domain-template").find("tr:eq(0)").clone();
