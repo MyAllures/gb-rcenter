@@ -92,13 +92,11 @@ define([], function() {
             }
             _this.userParam[_this.SYNCHRONIZE_KEY] = _this.CONNECTION_VALUE;
             if(_this.isImmediatelyConnect){
-                _this.last_active_time=new Date().getTime();
                 _this.connection();
             }
             //增加守护线程,防止异常终止
             window.setInterval(function () {
                if(new Date().getTime()-_this.last_active_time>80000){
-                   _this.last_active_time=new Date().getTime();
                    _this.connection();
                }
             },10000);
