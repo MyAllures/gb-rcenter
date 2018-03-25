@@ -1022,26 +1022,19 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                 }
             });
         },
-        /**
-         * 比邻方式拔打电话
-         * @param phoneNumber 电话号码 （crypt=true:phoneNumber需要加密)
-         * @param domain 呼叫中心域名地址
-         * @param zxNo 座席号
-         * @param crypt 是否加密
-         */
-        phoneCall:function (phoneNumber,domain,zxNo,crypt) {
-            var op = "dialv2";
-            if(!window.top.topPage.isNull(crypt) && crypt == false){
-                op = "dial";
-            }
-            var url = domain + "?op="+op+"&ext_no="+zxNo+"&dia_num="+phoneNumber;//"http://"+domain+"/atstar/index.php/status-op?op="+op+"&ext_no="+zxNo+"&dia_num="+phoneNumber;
-            window.top.topPage.doGet(url);
+        openEditRemark:function (e, opt) {
+            var url = root + "/playerRemark/editPlayerRemark.html?search.entityUserId="+opt.playerId+"&search.model=player&search.remarkType=remark";
+            var btnOption = {};
+            btnOption.target = url;
+            btnOption.text=window.top.message.playerTag['remark'];
+            btnOption.type="post";
+            window.top.topPage.doDialog({}, btnOption);
         },
         callPlayer:function (e, opt) {
             var _this = this;
             var playerId = opt.playerId;
             if(window.top.topPage.isNull(playerId)){
-                page.showPopover(e,{},"warnning",window.top.message.player_auto["玩家没有设置电话号码"],true);
+                page.showPopover(e,{},"warning",window.top.message.player_auto["玩家没有设置电话号码"],true);
                 return;
             }
             window.top.topPage.ajax({
@@ -1050,22 +1043,26 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                 data:  {'search.id':playerId},
                 dataType: "json",
                 success: function (data) {
-                    var domain = data.domain;
-                    var zxNo = data.zxNo;
-                    var phoneNumber = data.phoneNumber;
-                    if(window.top.topPage.isNull(phoneNumber)){
-                        page.showPopover(e,{},"warning",window.top.message.player_auto["玩家没有设置电话号码"],true);
+                    if(data.state){
+                        console.log(data.resultCode);
+                        var resultCode =data.resultCode;
+                        if(resultCode){
+                            if(resultCode=="+OK"){
+                                _this.openEditRemark(e,opt);
+                            }else{
+                                if(resultCode.indexOf("Invalid ext number")>-1){
+                                    page.showPopover(e,{},"warning","分机号未开启",true);
+                                }
+
+                            }
+                        }
+
+
+                    }else{
+                        var msg = data.msg;
+                        page.showPopover(e,{},"warning",msg,true);
                         return;
                     }
-                    if(window.top.topPage.isNull(zxNo)){
-                        page.showPopover(e,{},"warning",window.top.message.player_auto["您没有相关电话配置"],true);
-                        return;
-                    }
-                    if(window.top.topPage.isNull(domain)){
-                        page.showPopover(e,{},"warning",window.top.message.player_auto['您的系统还未配置电销系统'],true);
-                        return;
-                    }
-                    _this.phoneCall(phoneNumber,domain,zxNo,true);
                     $(e.currentTarget).unlock();
                 },
                 error:function () {
