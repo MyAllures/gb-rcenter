@@ -92,12 +92,12 @@ define([], function() {
             }
             this.userParam[this.SYNCHRONIZE_KEY] = this.CONNECTION_VALUE;
             if(this.isImmediatelyConnect){
-                this.last_active_time=new Date().getTime();
                 this.connection();
             }
             //增加守护线程,防止异常终止
             window.setInterval(function () {
                if(new Date().getTime()-_this.last_active_time>120000){
+                   this.last_active_time=new Date().getTime();
                    _this.connection();
                }
             },10000);
