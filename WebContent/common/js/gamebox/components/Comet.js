@@ -21,7 +21,7 @@ define([], function() {
         BACK_VALUE : "B",
         /** 同步值：消息回传key */
         BACK_KEY : "_B_COMET",
-
+        last_active_time:null,
         url : null,
         cid : null,
         accept : function(data) {
@@ -67,6 +67,7 @@ define([], function() {
          * @param props 参数对象
          */
         init : function(props) {
+            var _this=this;
             this.url = props.url;
             if(props.async != undefined) {
                 this.async = props.async;
@@ -91,8 +92,15 @@ define([], function() {
             }
             this.userParam[this.SYNCHRONIZE_KEY] = this.CONNECTION_VALUE;
             if(this.isImmediatelyConnect){
+                this.last_active_time=new Date().getTime();
                 this.connection();
             }
+            //增加守护线程,防止异常终止
+            window.setInterval(function () {
+               if(new Date().getTime()-_this.last_active_time>120000){
+                   _this.connection();
+               }
+            },10000);
         },
 
         /**
@@ -248,6 +256,7 @@ define([], function() {
                 data : param,
                 crossDomain : true,
                 success : function(result) {
+                    _this.last_active_time=new Date().getTime();
                     if(result && result!="") {
                         var datas = eval("(" + result + ")");
                         _this.acceptDatas(datas);
