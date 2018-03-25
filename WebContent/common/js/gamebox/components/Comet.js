@@ -68,37 +68,37 @@ define([], function() {
          */
         init : function(props) {
             var _this=this;
-            this.url = props.url;
+            _this.url = props.url;
             if(props.async != undefined) {
-                this.async = props.async;
+                _this.async = props.async;
             }
             if(props.accept != undefined) {
-                this.accept = props.accept;
+                _this.accept = props.accept;
             }
             if(props.success != undefined) {
-                this.successCallBack = props.success;
+                _this.successCallBack = props.success;
             }
             if(props.failure != undefined) {
-                this.failureCallBack = props.failure;
+                _this.failureCallBack = props.failure;
             }
             if(props.failure != undefined) {
-                this.isImmediatelyConnect = props.isImmediatelyConnect;
+                _this.isImmediatelyConnect = props.isImmediatelyConnect;
             }
             if(props.localeType != undefined) {
-                this.userParam[this.LOCALE_TYPE] = props.localeType;
+                _this.userParam[_this.LOCALE_TYPE] = props.localeType;
             }
             if(props.sessionKey != undefined) {
-                this.userParam[this.SESSION_KEY] = props.sessionKey;
+                _this.userParam[_this.SESSION_KEY] = props.sessionKey;
             }
-            this.userParam[this.SYNCHRONIZE_KEY] = this.CONNECTION_VALUE;
-            if(this.isImmediatelyConnect){
-                this.last_active_time=new Date().getTime();
-                this.connection();
+            _this.userParam[_this.SYNCHRONIZE_KEY] = _this.CONNECTION_VALUE;
+            if(_this.isImmediatelyConnect){
+                _this.last_active_time=new Date().getTime();
+                _this.connection();
             }
             //增加守护线程,防止异常终止
             window.setInterval(function () {
                if(new Date().getTime()-_this.last_active_time>80000){
-                   this.last_active_time=new Date().getTime();
+                   _this.last_active_time=new Date().getTime();
                    _this.connection();
                }
             },10000);
@@ -206,6 +206,7 @@ define([], function() {
          */
         connection : function(caller) {
             var _this = this;
+            _this.last_active_time=new Date().getTime();
             $.ajax({
                 type : 'POST',
                 url : _this.url,
@@ -214,7 +215,6 @@ define([], function() {
                 crossDomain : true,
                 comet:true,
                 success : function(result) {
-                    this.last_active_time=new Date().getTime();
                     if(result){
                         var data = eval("(" + result + ")");
                         var cid = data[_this.CONNECTIONID_KEY];
@@ -272,6 +272,7 @@ define([], function() {
                 error : function(param){
                     //连接失败后重试，10秒一次
                     setTimeout(function(){
+                        _this.userParam[_this.CONNECTIONID_KEY] = cid;
                         _this.connection();
                     }, 10000);
                 }
