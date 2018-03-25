@@ -1029,19 +1029,39 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
          * @param zxNo 座席号
          * @param crypt 是否加密
          */
-        phoneCall:function (phoneNumber,domain,zxNo,crypt) {
+        phoneCall:function (e,opt) {
+            var crypt = opt.crypt;
             var op = "dialv2";
             if(!window.top.topPage.isNull(crypt) && crypt == false){
                 op = "dial";
             }
-            var url = domain + "?op="+op+"&ext_no="+zxNo+"&dia_num="+phoneNumber;//"http://"+domain+"/atstar/index.php/status-op?op="+op+"&ext_no="+zxNo+"&dia_num="+phoneNumber;
-            window.top.topPage.doGet(url);
+            //"http://"+domain+"/atstar/index.php/status-op?op="+op+"&ext_no="+zxNo+"&dia_num="+phoneNumber;
+            var url = opt.domain + "?op="+op+"&ext_no="+opt.zxNo+"&dia_num="+opt.phoneNumber;
+            window.top.topPage.doGet(url/*,null,function (jsdata) {
+                //成功或失败的回调
+                page.showPopover(e,{"callback":function () {
+                    //playerRemark/editPlayerRemark.html?search.id=${remark.id}&search.entityUserId=${command.result.id}&search.model=player&search.remarkType=remark
+
+                }},"success",window.top.message.player_auto["电话接通中"],true);
+                return;
+            },function (jdata) {
+                if(jdata.statusText == 'error'){
+                    page.showPopover(e,{},"warning",window.top.message.player_auto["请确认通话设备已经开启"],true);
+                    return;
+                }
+            }*/);
+            var url = root + "/playerRemark/editPlayerRemark.html?search.entityUserId="+opt.playerId+"&search.model=player&search.remarkType=remark";
+            var btnOption = {};
+            btnOption.target = url;
+            btnOption.text=window.top.message.playerTag['remark'];
+            btnOption.type="post";
+            window.top.topPage.doDialog({}, btnOption);
         },
         callPlayer:function (e, opt) {
             var _this = this;
             var playerId = opt.playerId;
             if(window.top.topPage.isNull(playerId)){
-                page.showPopover(e,{},"warnning",window.top.message.player_auto["玩家没有设置电话号码"],true);
+                page.showPopover(e,{},"warning",window.top.message.player_auto["玩家没有设置电话号码"],true);
                 return;
             }
             window.top.topPage.ajax({
@@ -1053,6 +1073,7 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                     var domain = data.domain;
                     var zxNo = data.zxNo;
                     var phoneNumber = data.phoneNumber;
+
                     if(window.top.topPage.isNull(phoneNumber)){
                         page.showPopover(e,{},"warning",window.top.message.player_auto["玩家没有设置电话号码"],true);
                         return;
@@ -1065,7 +1086,10 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                         page.showPopover(e,{},"warning",window.top.message.player_auto['您的系统还未配置电销系统'],true);
                         return;
                     }
-                    _this.phoneCall(phoneNumber,domain,zxNo,true);
+                    opt.domain = domain;
+                    opt.zxNo = zxNo;
+                    opt.phoneNumber=phoneNumber;
+                    _this.phoneCall(e,opt);
                     $(e.currentTarget).unlock();
                 },
                 error:function () {
