@@ -1319,32 +1319,6 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                     document.title = _this.currentMenuTitle();
                 }
             });
-        },
-        isNull:function (v) {
-            /**
-             * 判断变量是否空值 undefined, null, '', [], {} 均返回true，否则返回false
-             */
-            switch (typeof v) {
-                case 'undefined':
-                    return true;
-                case 'string':
-                    if (null == v || "" == v) {
-                        return true;
-                    }
-                    break;
-                case 'object':
-                    if (null === v)
-                        return true;
-                    if (undefined !== v.length && v.length == 0)
-                        return true;
-
-                    for ( var k in v) {
-                        return false;
-                    }
-                    return true;
-                    break;
-            }
-            return false;
         }
     });
 
