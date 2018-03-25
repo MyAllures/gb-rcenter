@@ -270,15 +270,10 @@ define([], function() {
                     }
                 },
                 error : function(param){
-                    //本地连接超时，继续轮询
-                    //TODO Mark 此处无法判断状态值是否是504,503连接超时，待处理
-                    if(param.status==504 || param.status==503){
-                        _this.polling();
-                    }else {
-                        //服务器连接不上，重新建立连接
-                        _this.userParam[_this.CONNECTIONID_KEY] = cid;
+                    //连接失败后重试，10秒一次
+                    setTimeout(function(){
                         _this.connection();
-                    }
+                    }, 10000);
                 }
             });
         },
