@@ -92,11 +92,12 @@ define([], function() {
             }
             this.userParam[this.SYNCHRONIZE_KEY] = this.CONNECTION_VALUE;
             if(this.isImmediatelyConnect){
+                this.last_active_time=new Date().getTime();
                 this.connection();
             }
             //增加守护线程,防止异常终止
             window.setInterval(function () {
-               if(new Date().getTime()-_this.last_active_time>120000){
+               if(new Date().getTime()-_this.last_active_time>80000){
                    this.last_active_time=new Date().getTime();
                    _this.connection();
                }
@@ -213,6 +214,7 @@ define([], function() {
                 crossDomain : true,
                 comet:true,
                 success : function(result) {
+                    this.last_active_time=new Date().getTime();
                     if(result){
                         var data = eval("(" + result + ")");
                         var cid = data[_this.CONNECTIONID_KEY];
