@@ -30,7 +30,21 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
             that.awardAmountEvent();
             that.awardCountEvent();
             that.buildOtherEvent();
-
+            /**
+             * kobe----却换pc和手机终端
+             */
+            $("#pc-terminal").on("click", function (e) {
+                $(".pc").show();
+                $(".mb").hide();
+                $("#pc-terminal").addClass("disabled");
+                $("#mb-terminal").removeClass("disabled");
+            });
+            $("#mb-terminal").on("click", function (e) {
+                $(".pc").hide();
+                $(".mb").show();
+                $("#mb-terminal").addClass("disabled");
+                $("#pc-terminal").removeClass("disabled");
+            });
 
         },
 
