@@ -11,7 +11,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this.formSelector = "form";
             this._super();
             //switch
-
+            this.unInitSwitch($("._switch")).bootstrapSwitch();
             //this.basicSettingIndex();
         },
         basicSettingIndex:function (e,opt) {
@@ -71,7 +71,32 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
          * 当前页面所有事件初始化函数
          */
         bindEvent: function () {
+            //短信开关
+            $('input[name="sms-switch"]').on('switchChange.bootstrapSwitch', function(event, state) {
+                $("#smsSwitch").val(state);
+                if(state){
+                    $(".smsTips0").remove();
+                    $(".smsTips1").addClass("hidden");
+                    $(".smsTips2").removeClass("hidden");
+                    $("._smsSwitchIsShow").show();
+                }else{
+                    $(".smsTips0").remove();
+                    $(".smsTips1").removeClass("hidden");
+                    $(".smsTips2").addClass("hidden");
+                    $("._smsSwitchIsShow").hide();
+                }
+            });
 
+            //手机验证：开启显示隐藏信息
+            $('input[name="sms-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+                var type=$(this).attr("typeName");
+                $("#"+type).val(state);
+                if(state){
+                    $("#isShow"+type).show();
+                }else{
+                    $("#isShow"+type).hide();
+                }
+            });
         },
         bindSiteParamEvent:function () {
             var _this = this;
@@ -379,14 +404,12 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             }
             return false;
         },
-        validSmsInterface: function (e, opt) {
-            var opt = {};
-            var flag = this.validDataVal($("[name='sms.id']"),false,24,window.top.message.setting_auto['接口名称'],opt);
-            if(flag){
-                flag = this.validDataVal($("[name='sms.dataKey']"),false,120,window.top.message.setting_auto['接口密钥长度'],opt);
-            }
-
-            if(flag){
+        validSmsInterfaceParam: function (e, opt) {
+            var smsSwitch = $("#smsSwitch").val();
+            if(smsSwitch!="" && JSON.parse(smsSwitch)){
+                return true;
+            }else{
+                $("#phoneParam").val(false);
                 return true;
             }
             return false;
@@ -542,8 +565,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         getRankByDomainForm:function (e,opt) {
             return $("input,textarea","#open-period-div").serialize();
         },
-        getSmsInterfaceDateForm:function (e,opt) {
-            return $("input,textarea","#smsInterface").serialize();
+        getSmsInterfaceParamDateForm:function (e,opt) {
+            return $("input,textarea","#smsSetting").serialize();
         },
         /**
          * 获取统计代码表单
