@@ -65,6 +65,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this.bindSiteParamEvent();
             this.qrSwitch();
             this.electricPin();
+            this.encryptionSwitch();
         },
         /**
          * 当前页面所有事件初始化函数
@@ -628,7 +629,54 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 }
             });
         },
+        /**
+         * 电销号码加密
+         */
+        encryptionSwitch:function () {
+            var _this = this;
+            this._super();
+            var $bootstrapSwitchs = $('input[type=checkbox][name=encryption_switch]');
+            this.unInitSwitch($bootstrapSwitchs).bootstrapSwitch({
+                onText: window.top.message.content['floatPic.dislpay.on'],
+                offText: window.top.message.content['floatPic.display.off'],
+                onSwitchChange: function (e, state) {
+                    var $this = $(this);
+                    var _msg = "";
+                    if (state) {
+                        _msg = window.top.message.setting['confirm.open'];
+                    } else {
+                        _msg =  window.top.message.setting['confirm.close'];
+                    }
+                    $this.bootstrapSwitch('indeterminate', true);
+                    var _target = e.currentTarget;//showConfirmMessage
+                    window.top.topPage.showConfirmMessage(_msg, function (confirm) {
+                        if (confirm) {
+                            //_this._changeDisplayState(event, event.currentTarget, confirm, id, status);
+                            window.top.topPage.ajax({
+                                url: root + '/param/encryptionSwitch.html',
+                                dataType: "json",
+                                data: {"result.paramValue": state},
+                                success: function (data) {
+                                    if (data) {
+                                        $(_target).attr("isChanged", true);
+                                        $("#status").removeClass("label-success");
+                                        $("#status").addClass("label-danger");
+                                        page.showPopover({"currentTarget": $("#pcenter-msg-tips")}, {}, "success", "操作成功", true);
+                                    } else {
+                                        page.showPopover({"currentTarget": $("#pcenter-msg-tips")}, {}, "danger", "操作失败", true);
+                                    }
+                                }
+                            });
+                            $this.bootstrapSwitch('indeterminate', false);
+                        } else {
+                            $this.bootstrapSwitch('indeterminate', false);
+                            $this.bootstrapSwitch('state', !state, true);
+                        }
+                    })
 
+                }
+            });
+        },
 
         /*
         * 是否需要登录后显示二维码的控制开关
