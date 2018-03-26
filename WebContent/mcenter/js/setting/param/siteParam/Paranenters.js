@@ -97,6 +97,12 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                     $("#isShow"+type).hide();
                 }
             });
+
+            //找回密码开关
+            $('.recoverPasswordParam').on('switchChange.bootstrapSwitch', function(event, state) {
+                $("#recoverPasswordParam").val(state);
+            });
+
         },
         bindSiteParamEvent:function () {
             var _this = this;
@@ -410,6 +416,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 return true;
             }else{
                 $("#phoneParam").val(false);
+                $("#recoverPasswordParam").val(false);
                 return true;
             }
             return false;
