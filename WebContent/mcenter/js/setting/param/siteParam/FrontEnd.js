@@ -593,8 +593,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this._super();
             var $bootstrapSwitch = $('input[type=checkbox][name^="show"]');
             this.unInitSwitch($bootstrapSwitch).bootstrapSwitch({
-                onText: window.top.message.content['floatPic.dislpay.on'],
-                offText: window.top.message.content['floatPic.display.off'],
+                onText: window.top.message.content['floatPic.display.show'],
+                offText: window.top.message.content['floatPic.display.notshow'],
                 onSwitchChange: function (e, state) {
                     var $this = $(this);
                     var _msg = "";
