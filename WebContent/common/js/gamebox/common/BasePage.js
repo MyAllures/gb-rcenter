@@ -1083,6 +1083,8 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                                 }
 
                             }
+                        }else{
+                            page.showPopover(e,{},"warning",window.top.message.player_auto["拔打失败"],true);
                         }
                     }else{
                         var msg = data.msg;
