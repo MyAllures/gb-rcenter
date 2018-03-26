@@ -97,17 +97,6 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                     $("#isShow"+type).hide();
                 }
             });
-
-            //设置短信接口
-            $(".settingSmsInterface").on("click",function (e) {
-                window.top.topPage.ajax({
-                    url: root + "/param/saveTrafficStatistics.html",
-                    data:{"result.trafficStatistics":$("#trafficStatistics").val(),"result.id":$("#mstId").val()},
-                    dataType: 'json',
-                    success: function (data) {
-                    }
-                });
-            })
         },
         bindSiteParamEvent:function () {
             var _this = this;
@@ -417,7 +406,10 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         },
         validSmsInterfaceParam: function (e, opt) {
             var smsSwitch = $("#smsSwitch").val();
-            if(smsSwitch){
+            if(smsSwitch!="" && JSON.parse(smsSwitch)){
+                return true;
+            }else{
+                $("#phoneParam").val(false);
                 return true;
             }
             return false;
