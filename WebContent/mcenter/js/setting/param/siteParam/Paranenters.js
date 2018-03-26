@@ -78,12 +78,12 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                     $(".smsTips0").remove();
                     $(".smsTips1").addClass("hidden");
                     $(".smsTips2").removeClass("hidden");
-                    $("._smsSwitchIsShow").show();
+                    $("._smsSwitchIsShow").removeClass("hidden");
                 }else{
                     $(".smsTips0").remove();
                     $(".smsTips1").removeClass("hidden");
                     $(".smsTips2").addClass("hidden");
-                    $("._smsSwitchIsShow").hide();
+                    $("._smsSwitchIsShow").addClass("hidden");
                 }
             });
 
