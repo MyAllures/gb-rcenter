@@ -607,6 +607,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 return true;
             }
         },
+        /**
+         * 电销开关
+         */
         electricPin:function () {
             var _this = this;
             this._super();
@@ -660,8 +663,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this._super();
             var $bootstrapSwitchs = $('input[type=checkbox][name=encryption_switch]');
             this.unInitSwitch($bootstrapSwitchs).bootstrapSwitch({
-                onText: window.top.message.content['floatPic.dislpay.on'],
-                offText: window.top.message.content['floatPic.display.off'],
+                onText: window.top.message.content['floatPic.display.yes'],
+                offText: window.top.message.content['floatPic.display.no'],
                 onSwitchChange: function (e, state) {
                     var $this = $(this);
                     var _msg = "";
