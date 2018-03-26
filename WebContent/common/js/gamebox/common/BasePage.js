@@ -1049,7 +1049,7 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
             return false;
         },
         openEditRemark:function (e, opt) {
-            var url = root + "/playerRemark/editPlayerRemark.html?search.entityUserId="+opt.playerId+"&search.model=player&search.remarkType=remark";
+            var url = root + "/playerRemark/editPlayerRemark.html?search.entityUserId="+opt.playerId+"&search.model=player&search.remarkType=remark&comeFrom=phoneCall";
             var btnOption = {};
             btnOption.target = url;
             btnOption.text=window.top.message.playerTag['remark'];
