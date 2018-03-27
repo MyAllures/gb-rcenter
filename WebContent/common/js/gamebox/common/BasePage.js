@@ -1064,7 +1064,7 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                 return;
             }
             window.top.topPage.ajax({
-                url: root + "/feedBack/fetchPlayerPhoneNumber.html",
+                url: root + "/index/phoneCallPlayer.html",
                 type: 'POST',
                 data:  {'search.id':playerId},
                 dataType: "json",
