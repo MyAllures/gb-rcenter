@@ -645,6 +645,11 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                                     }
                                 }
                             });
+                            if(state==true){
+                                $("._swElectric").removeClass("hidden");
+                            }else{
+                                $("._swElectric").addClass("hidden");
+                            }
                             $this.bootstrapSwitch('indeterminate', false);
                         } else {
                             $this.bootstrapSwitch('indeterminate', false);
