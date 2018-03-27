@@ -66,6 +66,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this.qrSwitch();
             this.electricPin();
             this.encryptionSwitch();
+            this.playerStationmaster();
         },
         /**
          * 当前页面所有事件初始化函数
@@ -652,6 +653,11 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                                     }
                                 }
                             });
+                            if(state==true){
+                                $("._swElectric").removeClass("hidden");
+                            }else{
+                                $("._swElectric").addClass("hidden");
+                            }
                             $this.bootstrapSwitch('indeterminate', false);
                         } else {
                             $this.bootstrapSwitch('indeterminate', false);
@@ -662,6 +668,55 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 }
             });
         },
+        /**
+         * 玩家联系站长
+         */
+        playerStationmaster:function () {
+            var _this = this;
+            this._super();
+            var $bootstrapSwitchs = $('input[type=checkbox][name=player_stationmaster]');
+            this.unInitSwitch($bootstrapSwitchs).bootstrapSwitch({
+                onText: window.top.message.content['floatPic.display.yes'],
+                offText: window.top.message.content['floatPic.display.no'],
+                onSwitchChange: function (e, state) {
+                    var $this = $(this);
+                    var _msg = "";
+                    if (state) {
+                        _msg = window.top.message.setting['confirm.open'];
+                    } else {
+                        _msg =  window.top.message.setting['confirm.close'];
+                    }
+                    $this.bootstrapSwitch('indeterminate', true);
+                    var _target = e.currentTarget;//showConfirmMessage
+                    window.top.topPage.showConfirmMessage(_msg, function (confirm) {
+                        if (confirm) {
+                            //_this._changeDisplayState(event, event.currentTarget, confirm, id, status);
+                            window.top.topPage.ajax({
+                                url: root + '/param/playerStationMaster.html',
+                                dataType: "json",
+                                data: {"result.paramValue": state},
+                                success: function (data) {
+                                    if (data) {
+                                        $(_target).attr("isChanged", true);
+                                        $("#status").removeClass("label-success");
+                                        $("#status").addClass("label-danger");
+                                        page.showPopover({"currentTarget": $("#pcenter-msg-tips")}, {}, "success", "操作成功", true);
+                                    } else {
+                                        page.showPopover({"currentTarget": $("#pcenter-msg-tips")}, {}, "danger", "操作失败", true);
+                                    }
+                                }
+                            });
+                            $this.bootstrapSwitch('indeterminate', false);
+                        } else {
+                            $this.bootstrapSwitch('indeterminate', false);
+                            $this.bootstrapSwitch('state', !state, true);
+                        }
+                    })
+
+                }
+            });
+        },
+
         /**
          * 电销号码加密
          */
