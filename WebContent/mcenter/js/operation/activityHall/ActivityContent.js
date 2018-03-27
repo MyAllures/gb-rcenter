@@ -3,7 +3,7 @@
  */
 define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.' + window.top.language, 'css!themesCss/fileinput/fileinput'], function (Money, fileinput) {
     return Money.extend({
-        maxRange: 30,
+        maxRange: 5,
         ue: null,
         init: function () {
             this._super();
@@ -88,11 +88,15 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
                     $(".fd_regularHandsel").attr("disabled", false);
                     $("#preferentialAmountLimit").css("display", "none");
                     $("input[data-name='percentageHandsel[{n}].preferentialValue']").removeClass("error");
+                    $(".fd_regularHandsel_column").removeClass('hide');
+                    $(".fd_percentageHandsel_column").addClass('hide');
                 } else {
                     $(".fd_percentageHandsel").attr("disabled", false);
                     $(".fd_regularHandsel").attr("disabled", true);
                     $("#preferentialAmountLimit").css("display", "");
                     $("input[data-name='regularHandsel[{n}].preferentialValue").removeClass("error");
+                    $(".fd_regularHandsel_column").addClass('hide');
+                    $(".fd_percentageHandsel_column").removeClass('hide');
                 }
             });
 
@@ -278,12 +282,16 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
                 $("#preferentialAmountLimit").css("display", "");
                 $(".fd_regularHandsel").attr("disabled", true);
                 $(".fd_percentageHandsel").attr("disabled", false);
+                $(".fd_regularHandsel_column").addClass('hide');
+                $(".fd_percentageHandsel_column").removeClass('hide');
             }
             if ($(".fd_regularHandsel").val() != "") {
                 $("#regularHandsel").attr("checked", "checked")
                 $(".fd_percentageHandsel").attr("disabled", true);
                 $("#preferentialAmountLimit").css("display", "none");
                 $(".fd_regularHandsel").attr("disabled", false);
+                $(".fd_regularHandsel_column").removeClass('hide');
+                $(".fd_percentageHandsel_column").addClass('hide');
             }
         },
 
@@ -741,34 +749,34 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
          * @param option
          */
         addActivityRule: function (e, option) {
-            var _tr_len = $("#first_deposit").find("tr").length - 2;
+            var _tr_len = $("#first_deposit").find("tr").length - 1;
             var canCreate = _tr_len < this.maxRange;
             if (canCreate) {
                 /*tr clone*/
-                var _tr = $("#first_deposit").find("tr:eq(2)").clone(true);
+                var _tr = $("#first_deposit").find("tr:eq(1)").clone(true);
                 _tr.find("button").removeClass("disabled");
                 _tr.find("input").val("");
                 _tr = this.resetIndex(_tr, _tr_len)
                 $("#first_deposit").find("tr:last").after(_tr);
             } else {
-                var _message = window.top.message.operation_auto['最多10个区间'];
+                var _message = window.top.message.operation_auto['最多5个区间'];
                 window.top.topPage.showInfoMessage(_message);
             }
             $(e.currentTarget).unlock();
         },
 
         addActivityRule2: function (e, option) {
-            var _tr_len = $("#loss").find("tr").length - 2;
+            var _tr_len = $("#loss").find("tr").length - 1;
             var canCreate = _tr_len < this.maxRange;
             if (canCreate) {
                 /*tr clone*/
-                var _tr = $("#loss").find("tr:eq(2)").clone(true);
+                var _tr = $("#loss").find("tr:eq(1)").clone(true);
                 _tr.find("button").removeClass("disabled");
                 _tr.find("input").val("");
                 _tr = this.resetIndex2(_tr, _tr_len)
                 $("#loss").find("tr:last").after(_tr);
             } else {
-                var _message = window.top.message.operation_auto['最多10个区间'];
+                var _message = window.top.message.operation_auto['最多5个区间'];
                 window.top.topPage.showInfoMessage(_message);
             }
             $(e.currentTarget).unlock();
