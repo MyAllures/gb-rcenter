@@ -21,7 +21,7 @@ define([], function() {
         BACK_VALUE : "B",
         /** 同步值：消息回传key */
         BACK_KEY : "_B_COMET",
-
+        last_active_time:null,
         url : null,
         cid : null,
         accept : function(data) {
@@ -67,32 +67,39 @@ define([], function() {
          * @param props 参数对象
          */
         init : function(props) {
-            this.url = props.url;
+            var _this=this;
+            _this.url = props.url;
             if(props.async != undefined) {
-                this.async = props.async;
+                _this.async = props.async;
             }
             if(props.accept != undefined) {
-                this.accept = props.accept;
+                _this.accept = props.accept;
             }
             if(props.success != undefined) {
-                this.successCallBack = props.success;
+                _this.successCallBack = props.success;
             }
             if(props.failure != undefined) {
-                this.failureCallBack = props.failure;
+                _this.failureCallBack = props.failure;
             }
             if(props.failure != undefined) {
-                this.isImmediatelyConnect = props.isImmediatelyConnect;
+                _this.isImmediatelyConnect = props.isImmediatelyConnect;
             }
             if(props.localeType != undefined) {
-                this.userParam[this.LOCALE_TYPE] = props.localeType;
+                _this.userParam[_this.LOCALE_TYPE] = props.localeType;
             }
             if(props.sessionKey != undefined) {
-                this.userParam[this.SESSION_KEY] = props.sessionKey;
+                _this.userParam[_this.SESSION_KEY] = props.sessionKey;
             }
-            this.userParam[this.SYNCHRONIZE_KEY] = this.CONNECTION_VALUE;
-            if(this.isImmediatelyConnect){
-                this.connection();
+            _this.userParam[_this.SYNCHRONIZE_KEY] = _this.CONNECTION_VALUE;
+            if(_this.isImmediatelyConnect){
+                _this.connection();
             }
+            //增加守护线程,防止异常终止
+            window.setInterval(function () {
+               if(new Date().getTime()-_this.last_active_time>80000){
+                   _this.connection();
+               }
+            },10000);
         },
 
         /**
@@ -197,6 +204,7 @@ define([], function() {
          */
         connection : function(caller) {
             var _this = this;
+            _this.last_active_time=new Date().getTime();
             $.ajax({
                 type : 'POST',
                 url : _this.url,
@@ -248,6 +256,7 @@ define([], function() {
                 data : param,
                 crossDomain : true,
                 success : function(result) {
+                    _this.last_active_time=new Date().getTime();
                     if(result && result!="") {
                         var datas = eval("(" + result + ")");
                         _this.acceptDatas(datas);
@@ -259,15 +268,11 @@ define([], function() {
                     }
                 },
                 error : function(param){
-                    //本地连接超时，继续轮询
-                    //TODO Mark 此处无法判断状态值是否是504,503连接超时，待处理
-                    if(param.status==504 || param.status==503){
-                        _this.polling();
-                    }else {
-                        //服务器连接不上，重新建立连接
+                    //连接失败后重试，10秒一次
+                    setTimeout(function(){
                         _this.userParam[_this.CONNECTIONID_KEY] = cid;
                         _this.connection();
-                    }
+                    }, 10000);
                 }
             });
         },
