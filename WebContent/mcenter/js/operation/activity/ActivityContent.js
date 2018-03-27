@@ -30,21 +30,7 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
             that.awardAmountEvent();
             that.awardCountEvent();
             that.buildOtherEvent();
-            /**
-             * kobe----却换pc和手机终端
-             */
-            $("#pc-terminal").on("click", function (e) {
-                $(".pc").show();
-                $(".mb").hide();
-                $("#pc-terminal").addClass("disabled");
-                $("#mb-terminal").removeClass("disabled");
-            });
-            $("#mb-terminal").on("click", function (e) {
-                $(".pc").hide();
-                $(".mb").show();
-                $("#mb-terminal").addClass("disabled");
-                $("#pc-terminal").removeClass("disabled");
-            });
+
 
         },
 
@@ -217,7 +203,7 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
                 index = $(e.currentTarget).attr("bbb");
             }
             var title_val = $("#title" + index).val();
-            var img2 = $("[name='activityMessageI18ns[" + index + "].activityCover']").val();
+            var img2 = $("[name='activityMessageI18ns[" + index + "].activityAffiliated']").val();
             var activityDescription_val = UE.getEditor('editContent' + index).hasContents();
             if (title_val.trim() && img2.trim() && activityDescription_val) {
                 $tab_span.text(window.top.message.operation_auto['已编辑']);
@@ -412,20 +398,20 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
         activityRulePre: function (e) {
 
             for (i = 0; i < languageCounts; i++) {
-                if ($("#previewActivityAffiliatedImg" + i).html() != "") {
-                    if ($("#previewActivityAffiliatedImg" + i + ' ' + "img").attr("src").indexOf("http") != -1) {
-                        $("#activityAffiliatedImage" + i).append(($("#previewActivityAffiliatedImg" + i + ' ' + "img")));
+                /*if ($("#previewImg" + i).html() != "") {
+                    if ($("#previewImg" + i + ' ' + "img").attr("src").indexOf("http") != -1) {
+                        $("#activityContentImage" + i).append(($("#previewImg" + i + ' ' + "img")));
                     } else {
-                        $("#activityAffiliatedImg" + i).append(($("#previewActivityAffiliatedImg" + i + ' ' + "img")));
+                        $("#activityContentImg" + i).append(($("#previewImg" + i + ' ' + "img")));
                         $("#aa_" + i).css("display", "none");
                     }
-                }
+                }*/
 
-                if ($("#previewActivityCoverImg" + i).html() != "") {
-                    if ($("#previewActivityCoverImg" + i + ' ' + "img").attr("src").indexOf("http") != -1) {
-                        $("#activityContentImage" + i).append(($("#previewActivityCoverImg" + i + ' ' + "img")));
+                if ($("#previewActivityAffiliateImg" + i).html() != "") {
+                    if ($("#previewActivityAffiliateImg" + i + ' ' + "img").attr("src").indexOf("http") != -1) {
+                        $("#activityAffiliatedImage" + i).append(($("#previewActivityAffiliateImg" + i + ' ' + "img")));
                     } else {
-                        $("#activityContentImg" + i).append(($("#previewActivityCoverImg" + i + ' ' + "img")));
+                        $("#activityAffiliatedImg" + i).append(($("#previewActivityAffiliateImg" + i + ' ' + "img")));
                         $("#dd_" + i).css("display", "none");
                     }
                 }
@@ -674,24 +660,25 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
                 $("#previewActivityName" + i).text($("[name='activityMessageI18ns[" + i + "].activityName']").val());
 
                 /*附图*/
-                if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
-                    $("#previewActivityAffiliatedImg" + i).append(($("#main" + i + ' ' + "img")[0]));
+                /*if ($("#activityContentImg" + i + ' ' + "img").attr("src") == "") {
+                    $("#previewImg" + i).append(($("#main" + i + ' ' + "img")[0]));
                 } else {
-                    if ($("#activityAffiliatedImage" + i).html().trim() == "") {
-                        $("#previewActivityAffiliatedImg" + i).append(($("#main" + i + ' ' + "img")[1]));
+                    if ($("#activityContentImage" + i).html().trim() == "") {
+                        $("#previewImg" + i).append(($("#main" + i + ' ' + "img")[1]));
                     } else {
-                        $("#previewActivityAffiliatedImg" + i).append(($("#main" + i + ' ' + "img")[2]));
+                        $("#previewImg" + i).append(($("#main" + i + ' ' + "img")[2]));
                     }
                     $("#aa_" + i).css("display", "block");
                 }
+*/
                 /*主图*/
-                if ($("#activityContentImg" + i + ' ' + "img").attr("src") == "") {
-                    $("#previewActivityCoverImg" + i).append(($("#main" + i + ' ' + "img")[0]));
+                if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
+                    $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[0]));
                 } else {
-                    if ($("#activityContentImage" + i).html().trim() == "") {
-                        $("#previewActivityCoverImg" + i).append(($("#main" + i + ' ' + "img")[1]));
+                    if ($("#activityAffiliatedImage" + i).html().trim() == "") {
+                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[1]));
                     } else {
-                        $("#previewActivityCoverImg" + i).append(($("#main" + i + ' ' + "img")[2]));
+                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[2]));
                     }
                     $("#dd_" + i).css("display", "block");
                 }
@@ -948,25 +935,13 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
             for (i = 0; i < languageCounts; i++) {
                 $("#previewActivityName" + i).text($("[name='activityMessageI18ns[" + i + "].activityName']").val());
 
-                /*附图*/
                 if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
-                    $("#previewActivityAffiliatedImg" + i).append(($("#main" + i + ' ' + "img")[0]));
+                    $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[0]));
                 } else {
                     if ($("#activityAffiliatedImage" + i).html().trim() == "") {
-                        $("#previewActivityAffiliatedImg" + i).append(($("#main" + i + ' ' + "img")[1]));
+                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[1]));
                     } else {
-                        $("#previewActivityAffiliatedImg" + i).append(($("#main" + i + ' ' + "img")[2]));
-                    }
-                    $("#aa_" + i).css("display", "block");
-                }
-                /*主图*/
-                if ($("#activityContentImg" + i + ' ' + "img").attr("src") == "") {
-                    $("#previewActivityCoverImg" + i).append(($("#main" + i + ' ' + "img")[0]));
-                } else {
-                    if ($("#activityContentImage" + i).html().trim() == "") {
-                        $("#previewActivityCoverImg" + i).append(($("#main" + i + ' ' + "img")[1]));
-                    } else {
-                        $("#previewActivityCoverImg" + i).append(($("#main" + i + ' ' + "img")[2]));
+                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[2]));
                     }
                     $("#dd_" + i).css("display", "block");
                 }
@@ -985,13 +960,13 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
             for (i = 0; i < languageCounts; i++) {
 
                 //附图
-                if ($("#activityContentImg" + i + ' ' + "img").attr("src") == "") {
-                    $("#previewActivityCoverImg" + i).append(($("#main" + i + ' ' + "img")[0]));
+                if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
+                    $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[0]));
                 } else {
-                    if ($("#activityContentImage" + i).html().trim() == "") {
-                        $("#previewActivityCoverImg" + i).append(($("#main" + i + ' ' + "img")[1]));
+                    if ($("#activityAffiliatedImage" + i).html().trim() == "") {
+                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[1]));
                     } else {
-                        $("#previewActivityCoverImg" + i).append(($("#main" + i + ' ' + "img")[2]));
+                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[2]));
                     }
                     $("#dd_" + i).css("display", "block");
                 }
