@@ -1662,11 +1662,11 @@ a.hidebtn{display:none;}
 .account-info-warp .pull-left{margin-bottom:0;}
 .account-info-warp .control-group .control-label{width:220px;}
 .account-info-warp .control-group .controls{width:460px;max-width: 520px;}
-.account-info-title{position:absolute;left:-260px;font-size:20px;top:35px;width: 260px;text-align: center;}
+.account-info-title{position:absolute;left:-170px;font-size:20px;top:35px;width: 160px;text-align: center;}
 .account-info-warp .controls{line-height:30px;}
 .left-ico-message{padding:20px 0;border-left:180px solid #f7f8f9;position:relative;min-height:120px;}
 .account-info-warp hr{border-top:1px solid #d3d8dc;}
-.account-info-title img{position:absolute;left:85px;top:40px;opacity:0.2;}
+.account-info-title img{/*position:absolute;left:85px;top:40px;*/margin-top:20px;opacity:0.2;}
 .account-info-warp .titleline{border-top:1px solid #e7ecee;margin:0 20px;position:relative;margin-top:40px;margin-bottom:30px;}
 .account-info-warp .titleline h2{font-size:18px;font-weight:normal;position:absolute;background:#fff;margin-left:10px;top:-15px;text-align:center;font-weight:bold;padding:0 10px;}
 .form-group .controls .passafe{background:#e8ecef;border-radius:15px;width:50px;height:11px;display:inline-block;margin-right:5px;}
@@ -1686,9 +1686,9 @@ ul.deposit-notice{list-style-type:decimal;margin:20px 15px;}
 .deposit-info-warp .titleline{margin:0 20px;position:relative;margin-top:20px;}
 .deposit-info-warp .titleline h2{font-size:18px;}
 .deposit-info-warp .btn{margin:17px 20px 0 0;}
-.deposit-info-title{position:absolute;left:-132px;font-size:20px;top:20px;text-align:center;width:83px;}
+.deposit-info-title{position:absolute;left:-170px;font-size:20px;top:20px;text-align:center;width:160px;}
 .info-top-no{top:0;}
-.deposit-info-title img{position:absolute;left:-4px;top:40px;opacity:0.2;}
+.deposit-info-title img{/*position:absolute;left:-4px;top:40px;*/display: block;margin-left: auto; margin-right: auto;margin-top: 20px; opacity:0.2;}
 .account-info-warp h4{margin-left:20px;color:#2772ee;}
 .attention-list{margin:20px 20px;}
 .attention-list li{margin-bottom:8px;}
