@@ -555,8 +555,11 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         getAppDomainFormData:function (e,opt) {
             return $("input,textarea","#appDownloadDomain").serialize();
         },
-        getAccessDomainFormData:function (e,opt) {
-            return $("input,textarea","#accessDomain").serialize();
+        getPhoneNumber:function (e,opt) {
+            return $("input","#phone").serialize();
+        },
+        getPhoneNumberFormData:function (e,opt) {
+            return $("input,textarea","#phone").serialize();
         },
         getMobileFormData:function (e,opt) {
             return $("input,textarea","#mobileCustomService").serialize();
@@ -583,6 +586,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
          * @returns {{[result.trafficStatistics]: (*|jQuery)}}
          */
         getStaticValidateForm:function (e,opt) {
+            return {"result.trafficStatistics":$("[name='result.trafficStatistics']").val()};
+        },
+        getPhoneValidateForm:function (e,opt) {
             return {"result.trafficStatistics":$("[name='result.trafficStatistics']").val()};
         },
         /**
