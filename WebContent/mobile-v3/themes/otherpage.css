@@ -269,7 +269,8 @@
       height: 35px;
       font-size: 14px;
       border: 1px solid #ccc;
-      padding-right: 100px; }
+      padding-right: 100px;
+      color: #333; }
     .mui-content-casino-list .electronic-search .btn-search {
       position: absolute;
       right: 0;
