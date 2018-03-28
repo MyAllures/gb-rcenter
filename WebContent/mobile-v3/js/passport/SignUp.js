@@ -307,7 +307,7 @@ function sendPhoneCode() {
             success: function (data) {
                 if (data) {
                     var phoneInterval;
-                    wait(60, obj, phoneInterval);
+                    wait(90, obj, phoneInterval);
                 }
             },
             error: function () {
@@ -336,7 +336,7 @@ function sendEmailCode() {
             success: function (data) {
                 if (data) {
                     var emailInterval;
-                    wait(60, obj, emailInterval);
+                    wait(90, obj, emailInterval);
                 }
             },
             error: function () {
