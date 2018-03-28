@@ -76,8 +76,10 @@
 					element: element,
 					uri: uri
 				});
+                //如果图片加载失败就用默认图片
+                element.src = self.options.placeholder;
 			};
-			img.src = uri;
+            img.src = uri;
 			element.removeAttribute('data-lazyload'); //只尝试一次，后续可能支持多次尝试
 		},
 		handle: function(element, key) {
