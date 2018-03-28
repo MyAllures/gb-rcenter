@@ -418,28 +418,6 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
          * @param e
          */
         activityRulePre: function (e) {
-
-            for (i = 0; i < languageCounts; i++) {
-                /*if ($("#previewImg" + i).html() != "") {
-                    if ($("#previewImg" + i + ' ' + "img").attr("src").indexOf("http") != -1) {
-                        $("#activityContentImage" + i).append(($("#previewImg" + i + ' ' + "img")));
-                    } else {
-                        $("#activityContentImg" + i).append(($("#previewImg" + i + ' ' + "img")));
-                        $("#aa_" + i).css("display", "none");
-                    }
-                }*/
-
-                /*kobe注释if ($("#previewActivityAffiliateImg" + i).html() != "") {
-                    if ($("#previewActivityAffiliateImg" + i + ' ' + "img").attr("src").indexOf("http") != -1) {
-                        $("#activityAffiliatedImage" + i).append(($("#previewActivityAffiliateImg" + i + ' ' + "img")));
-                    } else {
-                        $("#activityAffiliatedImg" + i).append(($("#previewActivityAffiliateImg" + i + ' ' + "img")));
-                        $("#dd_" + i).css("display", "none");
-                    }
-                }*/
-
-            }
-
             var code = $("#code").val();
             window.top.topPage.ajax({
                 type: "Get",
@@ -680,31 +658,14 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
             // 活动名称，图片，内容
             for (i = 0; i < languageCounts; i++) {
                 $("#previewActivityName" + i).text($("[name='activityMessageI18ns[" + i + "].activityName']").val());
-
-                /*附图*/
-                /*if ($("#activityContentImg" + i + ' ' + "img").attr("src") == "") {
-                    $("#previewImg" + i).append(($("#main" + i + ' ' + "img")[0]));
-                } else {
-                    if ($("#activityContentImage" + i).html().trim() == "") {
-                        $("#previewImg" + i).append(($("#main" + i + ' ' + "img")[1]));
-                    } else {
-                        $("#previewImg" + i).append(($("#main" + i + ' ' + "img")[2]));
-                    }
-                    $("#aa_" + i).css("display", "block");
-                }
-*/
                 /*主图*/
-                if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
-                    $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[0]));
+                if ($("#activityContentImg" + i + ' ' + "img").attr("src") == "") {
+                    var src1 = $("#activityContentImage" + i + ' ' + "img").attr('src');
+                    $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src1);
                 } else {
-                    if ($("#activityAffiliatedImage" + i).html().trim() == "") {
-                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[1]));
-                    } else {
-                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[2]));
-                    }
-                    $("#dd_" + i).css("display", "block");
+                 var src2 = $("#activityContentImg" + i + ' ' + "img").attr('src');
+                 $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src2);
                 }
-
                 $("#previewActivityDesc" + i).html($("[name='activityMessageI18ns[" + i + "].activityDescription']").val());
             }
             $(e.currentTarget).unlock();
@@ -956,18 +917,14 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
             // 活动名称，图片，内容
             for (i = 0; i < languageCounts; i++) {
                 $("#previewActivityName" + i).text($("[name='activityMessageI18ns[" + i + "].activityName']").val());
-
-                if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
-                    $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[0]));
+                /*主图*/
+                if ($("#activityContentImg" + i + ' ' + "img").attr("src") == "") {
+                    var src1 = $("#activityContentImage" + i + ' ' + "img").attr('src');
+                    $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src1);
                 } else {
-                    if ($("#activityAffiliatedImage" + i).html().trim() == "") {
-                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[1]));
-                    } else {
-                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[2]));
-                    }
-                    $("#dd_" + i).css("display", "block");
+                    var src2 = $("#activityContentImg" + i + ' ' + "img").attr('src');
+                    $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src2);
                 }
-
                 $("#previewActivityDesc" + i).html($("[name='activityMessageI18ns[" + i + "].activityDescription']").val());
             }
             $(e.currentTarget).unlock();
@@ -978,22 +935,6 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
          * @param e
          */
         activityContentTypePreviewPre: function (e) {
-
-            for (i = 0; i < languageCounts; i++) {
-
-                //附图
-                if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
-                    $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[0]));
-                } else {
-                    if ($("#activityAffiliatedImage" + i).html().trim() == "") {
-                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[1]));
-                    } else {
-                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[2]));
-                    }
-                    $("#dd_" + i).css("display", "block");
-                }
-            }
-
             var code = $("#code").val();
             window.top.topPage.ajax({
                 type: "Get",
