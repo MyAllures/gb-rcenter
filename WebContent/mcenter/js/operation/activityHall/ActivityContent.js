@@ -5,8 +5,8 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
     return Money.extend({
         maxRange: 5,
         ue: null,
-        systemRecommendCaseNum:4,
-        systemRecommendData:null,
+        system_recommend_case_num:4,
+        system_recommend_data:null,
 
         init: function () {
             this._super();
@@ -1055,19 +1055,37 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var that = this;
             //元素长度判断，加足4个，
             var line_number = $("#first_deposit").find("tr").length - 1
-            while (line_number < that.systemRecommendCaseNum) {
+            while (line_number < that.system_recommend_case_num) {
                 that.addActivityRule(e, option);
                 line_number = $("#first_deposit").find("tr").length - 1
             }
 
+            //活动类型
             var activityType = $("input[name='result.code']").val();
-            $.each(this.systemRecommendData[activityType], function (i, value) {
+            //系统推荐数据
+            var first_deposit_data = this.system_recommend_data[activityType];
+            //设置优惠条件
+            $.each(first_deposit_data['first_deposit_array'], function (i, item) {
                 var tr_index = i + 1;
-                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(0)').val(value.depositAmountGe);
-                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(1)').val(value.percentageHandsel);
-                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(2)').val(value.regularHandsel);
-                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(3)').val(value.preferentialAudits);
+                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(0)').val(item.depositAmountGe);
+                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(1)').val(item.percentageHandsel);
+                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(2)').val(item.regularHandsel);
+                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(3)').val(item.preferentialAudits);
             });
+            //设置领取方式
+            var is_audit = first_deposit_data.isAudit;
+            $("input[name='activityRule.isAudit']").val(is_audit);//设置input值
+            var is_audit_text = $("[selectdiv='activityRule.isAudit']").find("a[key=" + is_audit + "]").html();
+            $("[selectdiv='activityRule.isAudit']").find("span[prompt='prompt']").html(is_audit_text);//设置显示
+            //设置日期
+            var claim_period = first_deposit_data.claimPeriod;
+            $("input[name='activityRule.claimPeriod']").val(claim_period);//设置input值
+            var claim_period_text = $("[selectdiv='activityRule.claimPeriod']").find("a[key=" + claim_period + "]").html();
+            $("[selectdiv='activityRule.claimPeriod']").find("span[prompt='prompt']").html(claim_period_text);//设置显示
+            //最高彩金
+            $("input[name='activityRule.preferentialAmountLimit']").val(first_deposit_data.preferentialAmountLimit);
+
+
         },
         /**
          * 系统推荐方案数据初始化
@@ -1076,12 +1094,14 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
          */
         initSystemRecommendData: function () {
 
-            this.systemRecommendData = {};
-            var first_deposit = [{
+            this.system_recommend_data = {};
+
+            var first_deposit_array = [{
                 depositAmountGe: 100,
                 percentageHandsel: 5,
                 regularHandsel: 5,
                 preferentialAudits: 1
+
             }, {
                 depositAmountGe: 200,
                 percentageHandsel: 10,
@@ -1098,73 +1118,98 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 regularHandsel: 900,
                 preferentialAudits: 1
             }];
-            var second_deposit = [{
+
+            var second_deposit_array = [{
                 depositAmountGe: 100,
-                percentageHandsel: 5,
-                regularHandsel: 5,
+                percentageHandsel: 3,
+                regularHandsel: 3,
                 preferentialAudits: 1
             }, {
                 depositAmountGe: 200,
-                percentageHandsel: 10,
-                regularHandsel: 20,
+                percentageHandsel: 8,
+                regularHandsel: 16,
                 preferentialAudits: 1
             }, {
                 depositAmountGe: 800,
-                percentageHandsel: 20,
-                regularHandsel: 160,
+                percentageHandsel: 15,
+                regularHandsel: 120,
                 preferentialAudits: 1
             }, {
                 depositAmountGe: 3000,
-                percentageHandsel: 30,
-                regularHandsel: 900,
+                percentageHandsel: 20,
+                regularHandsel: 600,
                 preferentialAudits: 1
             }];
-            var third_deposit = [{
+            var third_deposit_array = [{
                 depositAmountGe: 100,
-                percentageHandsel: 5,
-                regularHandsel: 5,
+                percentageHandsel: 3,
+                regularHandsel: 3,
                 preferentialAudits: 1
             }, {
                 depositAmountGe: 200,
-                percentageHandsel: 10,
-                regularHandsel: 20,
+                percentageHandsel: 5,
+                regularHandsel: 10,
                 preferentialAudits: 1
             }, {
                 depositAmountGe: 800,
-                percentageHandsel: 20,
-                regularHandsel: 160,
+                percentageHandsel: 15,
+                regularHandsel: 450,
                 preferentialAudits: 1
             }, {
                 depositAmountGe: 3000,
-                percentageHandsel: 30,
-                regularHandsel: 900,
+                percentageHandsel: 15,
+                regularHandsel: 450,
                 preferentialAudits: 1
             }];
-            var every_first_deposit = [{
+            var everyday_first_deposit_array = [{
                 depositAmountGe: 100,
-                percentageHandsel: 5,
-                regularHandsel: 5,
+                percentageHandsel: 3,
+                regularHandsel: 3,
                 preferentialAudits: 1
             }, {
                 depositAmountGe: 200,
-                percentageHandsel: 10,
-                regularHandsel: 20,
+                percentageHandsel: 5,
+                regularHandsel: 10,
                 preferentialAudits: 1
             }, {
                 depositAmountGe: 800,
-                percentageHandsel: 20,
-                regularHandsel: 160,
+                percentageHandsel: 10,
+                regularHandsel: 80,
                 preferentialAudits: 1
             }, {
                 depositAmountGe: 3000,
-                percentageHandsel: 30,
-                regularHandsel: 900,
+                percentageHandsel: 15,
+                regularHandsel: 450,
                 preferentialAudits: 1
             }];
-            this.systemRecommendData['first_deposit'] = first_deposit;
-            this.systemRecommendData['second_deposit'] = second_deposit;
-            this.systemRecommendData['third_deposit'] = third_deposit;
-            this.systemRecommendData['every_first_deposit'] = every_first_deposit;
+            var first_deposit={};
+            first_deposit['first_deposit_array']=first_deposit_array;
+            first_deposit['preferentialAmountLimit']=1888;
+            first_deposit['isAudit']=true;
+            first_deposit['claimPeriod']='1';
+
+            var second_deposit={};
+            second_deposit['second_deposit_array']=second_deposit_array;
+            second_deposit['preferentialAmountLimit']=1888;
+            second_deposit['isAudit']=true;
+            second_deposit['claimPeriod']=1;
+
+            var third_deposit={};
+            third_deposit['third_deposit_array']=third_deposit_array;
+            third_deposit['preferentialAmountLimit']=1888;
+            third_deposit['isAudit']=true;
+            third_deposit['claimPeriod']=1;
+
+            var everyday_first_deposit={};
+            everyday_first_deposit['everyday_first_deposit_array']=everyday_first_deposit_array;
+            everyday_first_deposit['preferentialAmountLimit']=1888;
+            everyday_first_deposit['isAudit']=true;
+            everyday_first_deposit['claimPeriod']=1;
+
+            this.system_recommend_data['first_deposit'] = first_deposit;
+            this.system_recommend_data['second_deposit'] = second_deposit;
+            this.system_recommend_data['third_deposit'] = third_deposit;
+            this.system_recommend_data['everyday_first_deposit'] = everyday_first_deposit;
         },
     });
 });
