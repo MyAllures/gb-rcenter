@@ -682,8 +682,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this._super();
             var $bootstrapSwitchs = $('input[type=checkbox][name=player_stationmaster]');
             this.unInitSwitch($bootstrapSwitchs).bootstrapSwitch({
-                onText: window.top.message.content['floatPic.display.yes'],
-                offText: window.top.message.content['floatPic.display.no'],
+                onText: window.top.message.content['confirm.open'],
+                offText: window.top.message.content['confirm.close'],
                 onSwitchChange: function (e, state) {
                     var $this = $(this);
                     var _msg = "";
@@ -731,8 +731,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this._super();
             var $bootstrapSwitchs = $('input[type=checkbox][name=encryption_switch]');
             this.unInitSwitch($bootstrapSwitchs).bootstrapSwitch({
-                onText: window.top.message.content['floatPic.display.yes'],
-                offText: window.top.message.content['floatPic.display.no'],
+                onText: window.top.message.content['confirm.open'],
+                offText: window.top.message.content['confirm.close'],
                 onSwitchChange: function (e, state) {
                     var $this = $(this);
                     var _msg = "";
