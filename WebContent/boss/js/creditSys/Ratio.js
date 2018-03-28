@@ -20,7 +20,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
             if(!this.validateForm(e)){
                 return false;
             }
-            window.top.topPage.showConfirmMessage("确定调整站点默认额度吗?",function (state) {
+            window.top.topPage.showConfirmMessage("确定调整站点兑换比例吗?",function (state) {
                 if(state){
                     window.top.topPage.doAjax(e,opt);
                 }
