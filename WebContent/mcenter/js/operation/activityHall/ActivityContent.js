@@ -42,12 +42,18 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $(".mb").hide();
                 $("#pc-terminal").addClass("disabled");
                 $("#mb-terminal").removeClass("disabled");
+                $(".mb .tab-pane").removeClass('active');
+                var tab = $(".pc li.active a").attr('href');
+                $(tab).addClass('active');
             });
             $("#mb-terminal").on("click", function (e) {
                 $(".pc").hide();
                 $(".mb").show();
                 $("#mb-terminal").addClass("disabled");
                 $("#pc-terminal").removeClass("disabled");
+                $(".pc .tab-pane").removeClass('active');
+                var tab = $(".mb li.active a").attr('href');
+                $(tab).addClass('active');
             });
 
         },
@@ -60,7 +66,12 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $(that.formSelector).on("validate", ".title,.activityContentFile,.activityAffiliated,.contents", function (e, message) {
                 if (message) {
                     if (!$(this).parents('.tab-pane').hasClass('active')) {
-                        $("#a_" + $(this).attr("bbb")).formtip(message);
+                        if ($(this).parents('.terminal').hasClass('pc')){
+                            $("#pc-terminal").formtip(message);
+                        }else {
+                            $("#mb-terminal").formtip(message);
+                        }
+                        /*$("#a_" + $(this).attr("bbb")).formtip(message);*/
                         e.result = true;
                     }
                 }
