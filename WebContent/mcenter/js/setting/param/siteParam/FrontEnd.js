@@ -700,6 +700,10 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 return true;
             }
         },
+
+        save:function (e,opt) {
+            $(e.currentTarget).unlock();
+        },
         myCallBack : function (e,opt) {
             alert(opt.data.state);
         },

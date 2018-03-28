@@ -855,6 +855,11 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             $(e.currentTarget).unlock();
         },
 
+        save:function (e,opt) {
+            $(e.currentTarget).unlock();
+        },
+
+
         /*
         * 验证联系方式
         *
