@@ -1,12 +1,16 @@
 /**
  * Created by eagle on 15-10-12.
  */
-define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.' + window.top.language, 'css!themesCss/fileinput/fileinput'], function (Money, fileinput) {
+define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.' + window.top.language, 'css!themesCss/fileinput/fileinput'], function (Money, fileinput) {
     return Money.extend({
         maxRange: 5,
         ue: null,
+        systemRecommendCaseNum:4,
+        systemRecommendData:null,
+
         init: function () {
             this._super();
+            this.initSystemRecommendData();
         },
 
         bindEvent: function () {
@@ -981,7 +985,127 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
                 });
             }
         }
+        ,
 
+        /**
+         * 系统推荐方案设置
+         * @param e
+         * @param option
+         */
+        systemRecommendCase: function (e, option) {
+            var that = this;
+            //元素长度判断，加足4个，
+            var line_number = $("#first_deposit").find("tr").length - 1
+            while (line_number < that.systemRecommendCaseNum) {
+                that.addActivityRule(e, option);
+                line_number = $("#first_deposit").find("tr").length - 1
+            }
 
+            var activityType = $("input[name='result.code']").val();
+            $.each(this.systemRecommendData[activityType], function (i, value) {
+                var tr_index = i + 1;
+                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(0)').val(value.depositAmountGe);
+                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(1)').val(value.percentageHandsel);
+                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(2)').val(value.regularHandsel);
+                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(3)').val(value.preferentialAudits);
+            });
+        },
+        /**
+         * 系统推荐方案数据初始化
+         * @param e
+         * @param option
+         */
+        initSystemRecommendData: function () {
+
+            this.systemRecommendData = {};
+            var first_deposit = [{
+                depositAmountGe: 100,
+                percentageHandsel: 5,
+                regularHandsel: 5,
+                preferentialAudits: 1
+            }, {
+                depositAmountGe: 200,
+                percentageHandsel: 10,
+                regularHandsel: 20,
+                preferentialAudits: 1
+            }, {
+                depositAmountGe: 800,
+                percentageHandsel: 20,
+                regularHandsel: 160,
+                preferentialAudits: 1
+            }, {
+                depositAmountGe: 3000,
+                percentageHandsel: 30,
+                regularHandsel: 900,
+                preferentialAudits: 1
+            }];
+            var second_deposit = [{
+                depositAmountGe: 100,
+                percentageHandsel: 5,
+                regularHandsel: 5,
+                preferentialAudits: 1
+            }, {
+                depositAmountGe: 200,
+                percentageHandsel: 10,
+                regularHandsel: 20,
+                preferentialAudits: 1
+            }, {
+                depositAmountGe: 800,
+                percentageHandsel: 20,
+                regularHandsel: 160,
+                preferentialAudits: 1
+            }, {
+                depositAmountGe: 3000,
+                percentageHandsel: 30,
+                regularHandsel: 900,
+                preferentialAudits: 1
+            }];
+            var third_deposit = [{
+                depositAmountGe: 100,
+                percentageHandsel: 5,
+                regularHandsel: 5,
+                preferentialAudits: 1
+            }, {
+                depositAmountGe: 200,
+                percentageHandsel: 10,
+                regularHandsel: 20,
+                preferentialAudits: 1
+            }, {
+                depositAmountGe: 800,
+                percentageHandsel: 20,
+                regularHandsel: 160,
+                preferentialAudits: 1
+            }, {
+                depositAmountGe: 3000,
+                percentageHandsel: 30,
+                regularHandsel: 900,
+                preferentialAudits: 1
+            }];
+            var every_first_deposit = [{
+                depositAmountGe: 100,
+                percentageHandsel: 5,
+                regularHandsel: 5,
+                preferentialAudits: 1
+            }, {
+                depositAmountGe: 200,
+                percentageHandsel: 10,
+                regularHandsel: 20,
+                preferentialAudits: 1
+            }, {
+                depositAmountGe: 800,
+                percentageHandsel: 20,
+                regularHandsel: 160,
+                preferentialAudits: 1
+            }, {
+                depositAmountGe: 3000,
+                percentageHandsel: 30,
+                regularHandsel: 900,
+                preferentialAudits: 1
+            }];
+            this.systemRecommendData['first_deposit'] = first_deposit;
+            this.systemRecommendData['second_deposit'] = second_deposit;
+            this.systemRecommendData['third_deposit'] = third_deposit;
+            this.systemRecommendData['every_first_deposit'] = every_first_deposit;
+        },
     });
 });
