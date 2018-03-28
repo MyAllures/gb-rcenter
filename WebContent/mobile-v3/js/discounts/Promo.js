@@ -25,10 +25,11 @@ function initSwiper() {
             }
         }
     });
+    var slidesPerView = siledSize >= 4 ? '4' : siledSize;
     var slideIndicators = new Swiper('.p-t-slide-indicators', {
         loop: true,
         loopedSlides: siledSize,
-        slidesPerView: 'auto',
+        slidesPerView: slidesPerView,
         touchRatio: 0.2,
         slideToClickedSlide: true,
         on: {
