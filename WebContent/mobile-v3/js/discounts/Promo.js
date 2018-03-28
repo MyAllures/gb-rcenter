@@ -36,8 +36,8 @@ function initSwiper() {
             slideChangeTransitionEnd: function () {
                 //处理图片延迟加载
                 if ($(".swiper-container .swiper-slide-active").find("img[data-lazyload]").length > 0 || $(".nav-slide-content .swiper-slide-active").find("img[data-lazyload-id]").length > 0) {
+                    var defaultSaleImg = $("input[name=defaultSaleImg]").val();
                     if (!lazyLoadApi) {
-                        var defaultSaleImg = $("input[name=defaultSaleImg]").val();
                         lazyLoadApi = lazyLoadImg("body", defaultSaleImg);
                     }
                     lazyLoadApi.refresh(true);
