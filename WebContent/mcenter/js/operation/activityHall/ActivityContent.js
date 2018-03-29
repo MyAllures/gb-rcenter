@@ -608,7 +608,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
 
                 });
             }
-            if (code == 'first_deposit' || code == 'deposit_send') {//首存送 存就送
+            if ( this.is123Deposit(code) || code == 'deposit_send') {//首存送 存就送
                 var aa;
                 if ($("[name='ｍosaicGold']:checked").val() == 'true') {
                     aa = window.top.message.operation_auto['按比例赠送彩金'];
@@ -617,7 +617,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 }
                 $("#firstAndDeposit").find("tr:gt(0)").remove();
                 $("#firstAndDeposit").append("<tr><td>".concat(window.top.message.operation_auto['存款金额CNY']).concat("</td><td>").concat(aa).concat("</td><td>").concat(window.top.message.operation_auto['优惠稽核']).concat("</td></tr>"));
-                $("#first_deposit").find("tr:gt(1)").each(function (index, item) {
+                $("#first_deposit").find("tr:gt(0)").each(function (index, item) {
                     var a1 = $(item).find("td:eq(0) input").val();
                     var a2;
                     if ($("[name='ｍosaicGold']:checked").val() == 'true') {
@@ -1163,6 +1163,21 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             this.system_recommend_data['second_deposit'] = second_deposit;
             this.system_recommend_data['third_deposit'] = third_deposit;
             this.system_recommend_data['everyday_first_deposit'] = everyday_first_deposit;
+        },
+        /**
+         * 是否首存，次存，三存，每日首存
+         * @param e
+         * @param option
+         */
+        is123Deposit: function (code) {
+            if(code == 'first_deposit' || code == 'second_deposit' || code == 'third_deposit' || code == 'everyday_first_deposit'){
+                return true;
+            }else{
+                return false;
+            }
+
+
+
         },
     });
 });
