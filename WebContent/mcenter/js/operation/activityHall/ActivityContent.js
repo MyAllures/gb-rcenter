@@ -1031,10 +1031,10 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var is_audit_text = $("[selectdiv='activityRule.isAudit']").find("a[key=" + is_audit + "]").html();
             $("[selectdiv='activityRule.isAudit']").find("span[prompt='prompt']").html(is_audit_text);//设置显示
             //设置日期
-            var claim_period = deposit_data.claimPeriod;
-            $("input[name='activityRule.claimPeriod']").val(claim_period);//设置input值
-            var claim_period_text = $("[selectdiv='activityRule.claimPeriod']").find("a[key=" + claim_period + "]").html();
-            $("[selectdiv='activityRule.claimPeriod']").find("span[prompt='prompt']").html(claim_period_text);//设置显示
+            var claim_period = deposit_data.effectiveTime;
+            $("input[name='activityRule.effectiveTime']").val(claim_period);//设置input值
+            var claim_period_text = $("[selectdiv='activityRule.effectiveTime']").find("a[key=" + claim_period + "]").html();
+            $("[selectdiv='activityRule.effectiveTime']").find("span[prompt='prompt']").html(claim_period_text);//设置显示
             //最高彩金
             $("input[name='activityRule.preferentialAmountLimit']").val(deposit_data.preferentialAmountLimit);
 
@@ -1139,25 +1139,25 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             first_deposit['first_deposit_array']=first_deposit_array;
             first_deposit['preferentialAmountLimit']=1888;
             first_deposit['isAudit']=true;
-            first_deposit['claimPeriod']='OneDay';
+            first_deposit['effectiveTime']='OneDay';
 
             var second_deposit={};
             second_deposit['second_deposit_array']=second_deposit_array;
             second_deposit['preferentialAmountLimit']=1888;
             second_deposit['isAudit']=true;
-            second_deposit['claimPeriod']='OneDay';
+            second_deposit['effectiveTime']='OneDay';
 
             var third_deposit={};
             third_deposit['third_deposit_array']=third_deposit_array;
             third_deposit['preferentialAmountLimit']=1888;
             third_deposit['isAudit']=true;
-            third_deposit['claimPeriod']='OneDay';
+            third_deposit['effectiveTime']='OneDay';
 
             var everyday_first_deposit={};
             everyday_first_deposit['everyday_first_deposit_array']=everyday_first_deposit_array;
             everyday_first_deposit['preferentialAmountLimit']=1888;
             everyday_first_deposit['isAudit']=true;
-            everyday_first_deposit['claimPeriod']='OneDay';
+            everyday_first_deposit['effectiveTime']='OneDay';
 
             this.system_recommend_data['first_deposit'] = first_deposit;
             this.system_recommend_data['second_deposit'] = second_deposit;
