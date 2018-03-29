@@ -416,8 +416,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             if(smsSwitch!="" && JSON.parse(smsSwitch)){
                 return true;
             }else{
-                $("#phoneParam").val(false);
-                $("#recoverPasswordParam").val(false);
+                $("#playerCall").val(false);
+                $("#callMunber").val(false);
                 return true;
             }
             return false;
@@ -555,11 +555,11 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         getAppDomainFormData:function (e,opt) {
             return $("input,textarea","#appDownloadDomain").serialize();
         },
+        getAccessDomainFormData:function (e,opt) {
+            return $("input,textarea","#accessDomain").serialize();
+        },
         getPhoneNumber:function (e,opt) {
             return $("input","#phone").serialize();
-        },
-        getPhoneNumberFormData:function (e,opt) {
-            return $("input,textarea","#phone").serialize();
         },
         getMobileFormData:function (e,opt) {
             return $("input,textarea","#mobileCustomService").serialize();
@@ -855,12 +855,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             $(e.currentTarget).unlock();
         },
 
-
-
-
-
-
-
+        save:function (e,opt) {
+            $(e.currentTarget).unlock();
+        },
 
 
         /*
