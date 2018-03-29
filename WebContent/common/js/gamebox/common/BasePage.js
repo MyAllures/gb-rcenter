@@ -1063,6 +1063,8 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                 page.showPopover(e,{},"warning",window.top.message.player_auto["玩家没有设置电话号码"],true);
                 return;
             }
+            var origin = opt.origin;
+
             window.top.topPage.ajax({
                 url: root + "/index/phoneCallPlayer.html",
                 type: 'POST',
@@ -1074,7 +1076,9 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                         var resultCode =data.resultCode;
                         if(resultCode){
                             if(resultCode=="+OK"){
-                                _this.openEditRemark(e,opt);
+                                if(this.isNull(origin)){
+                                    _this.openEditRemark(e,opt);
+                                }
                             }else{
                                 if(resultCode.indexOf("Invalid ext number")>-1 || resultCode.indexOf("USER_NOT_REGISTERED")>-1){
                                     page.showPopover(e,{},"warning",window.top.message.player_auto["网络电话或IP号机未开启"],true);
