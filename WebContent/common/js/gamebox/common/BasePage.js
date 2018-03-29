@@ -1076,7 +1076,7 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                         var resultCode =data.resultCode;
                         if(resultCode){
                             if(resultCode=="+OK"){
-                                if(this.isNull(origin)){
+                                if(_this.isNull(origin)){
                                     _this.openEditRemark(e,opt);
                                 }
                             }else{
