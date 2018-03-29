@@ -100,6 +100,33 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     }
                 }
             });
+        },
+        /**
+         * 移除调用
+         * @param e
+         * @param opt
+         */
+        appSwitch:function (e, opt) {
+            var _this =this;
+            window.top.topPage.ajax({
+                dataType:'json',
+                data:{
+                    hostIp:opt.hostIp,
+                    hostName:opt.hostName,
+                    version:opt.version,
+                    isServer:opt.isServer,
+                    applicationName:opt.applicationName
+                },
+                type:"post",
+                url:root+'/Monitor/appSwitch.html',
+                success:function(data){
+                    if(data==true){
+                        console.log("操作成功!");
+                    }else{
+                        console.log("操作失败!");
+                    }
+                }
+            });
         }
     });
 });
