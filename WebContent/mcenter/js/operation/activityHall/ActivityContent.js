@@ -1139,25 +1139,25 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             first_deposit['first_deposit_array']=first_deposit_array;
             first_deposit['preferentialAmountLimit']=1888;
             first_deposit['isAudit']=true;
-            first_deposit['claimPeriod']='1';
+            first_deposit['claimPeriod']='OneDay';
 
             var second_deposit={};
             second_deposit['second_deposit_array']=second_deposit_array;
             second_deposit['preferentialAmountLimit']=1888;
             second_deposit['isAudit']=true;
-            second_deposit['claimPeriod']=1;
+            second_deposit['claimPeriod']='OneDay';
 
             var third_deposit={};
             third_deposit['third_deposit_array']=third_deposit_array;
             third_deposit['preferentialAmountLimit']=1888;
             third_deposit['isAudit']=true;
-            third_deposit['claimPeriod']=1;
+            third_deposit['claimPeriod']='OneDay';
 
             var everyday_first_deposit={};
             everyday_first_deposit['everyday_first_deposit_array']=everyday_first_deposit_array;
             everyday_first_deposit['preferentialAmountLimit']=1888;
             everyday_first_deposit['isAudit']=true;
-            everyday_first_deposit['claimPeriod']=1;
+            everyday_first_deposit['claimPeriod']='OneDay';
 
             this.system_recommend_data['first_deposit'] = first_deposit;
             this.system_recommend_data['second_deposit'] = second_deposit;
