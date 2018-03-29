@@ -10,47 +10,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
          */
         init: function (title) {
             this.formSelector = "form";
-            this._super();//
-
-            this.initSelectEvent();
-        },
-
-        initSelectEvent: function () {
-            var length = $('#float_template_list_div li:visible', this.formSelector).length;
-            $('#float_template_list_div li:visible', this.formSelector).each(function (imgIndex, ele) {
-                if (imgIndex + 1 < length) {
-                    var $divcontent = $(ele).find(".select_float_pic_link_type");
-                    $divcontent.change(function (e) {
-                        var key = $(this).find(".float_pic_list_item_link_type").attr("value");
-                        var v = '';
-                        if (key == 'link') {
-                            $(this).find(".float_pic_list_item_service_value").addClass("hide");
-                            $(this).find(".float_pic_list_item_http").removeClass("hide");
-                            $(this).find(".float_pic_list_item_link_value").removeClass("hide");
-                            $(this).find("[name=float_pic_list_item_placeholder]").removeClass("hide");
-                            $(this).find(".setting").addClass("hide");
-                            v = $(this).find(".float_pic_list_item_link_value").val();
-                            $(this).find(".float_pic_list_item_link_type_value").val(v);
-                        } else if (key == 'customer_service') {
-                            $(this).find(".float_pic_list_item_service_value").removeClass("hide");
-                            $(this).find(".float_pic_list_item_http").addClass("hide");
-                            $(this).find(".float_pic_list_item_link_value").addClass("hide");
-                            $(this).find("[name=float_pic_list_item_placeholder]").addClass("hide");
-                            v = $(this).find(".float_pic_list_item_service_value").attr("value");
-                            $(this).find(".float_pic_list_item_link_type_value").val(v);
-                            $(this).find(".setting").removeClass("hide");
-                        } else {
-                            $(this).find(".float_pic_list_item_service_value").addClass("hide");
-                            $(this).find(".float_pic_list_item_http").addClass("hide");
-                            $(this).find(".float_pic_list_item_link_type_value").val("");
-                            $(this).find(".float_pic_list_item_link_value ").addClass("hide");
-                            $(this).find("[name=float_pic_list_item_placeholder]").addClass("hide");
-                            $(this).find(".setting").addClass("hide");
-                        }
-                    });
-
-                }
-            });
+            this._super();
         },
 
         /**
@@ -100,7 +60,16 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             });
 
             $(":radio[name='result.picType']").on('change', function (e) {
-                _this._switchDisplay();
+                var picType = $(":radio[name='result.picType']:checked").val();
+                if (picType == '2') {
+                    $("#singleMode_promo_pic").removeClass("hide");
+                    $("#singleMode_service_pic").addClass("hide");
+                    $("[name='templateType']").prop('checked', false);
+                }else if(picType == '3') {
+                    $("#singleMode_promo_pic").addClass("hide");
+                    $("#singleMode_service_pic").removeClass("hide");
+                    $("[name='templateType']").prop('checked', false);
+                }
             });
 
             this.initEditTagsEvent();
@@ -153,49 +122,14 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
          */
         _switchDisplay: function () {
             var singleMode = $(":radio[name='result.singleMode']:checked").val();
-            var floatType = $(":radio[name='result.picType']:checked").val();
             //单图
             if (singleMode == 'true') {
-                if(floatType == '1'){
-                    $("#content_float_pic_single_link_div").removeClass("hide");//单图模式链接去掉hide
-                    $("#singleMode_templateType_div").removeClass("hide");//单图模式图片去掉hide
-                    $("#singleMode_service_pic").removeClass("hide");
-                    $("#singleMode_promo_pic").addClass("hide");
-                    $("#pic_showEffect").addClass("hide");//显示效果添加hide
-                    $("#float_template_list_div").addClass("hide");//多图模式添加hide
-                    $("[name='templateType'][value='1']").prop("checked", true);
-                }else {
-                    $("#content_float_pic_single_link_div").addClass("hide");//单图模式链接添加hide
-                    $("#singleMode_templateType_div").removeClass("hide");//单图模式图片去掉hide
-                    $("#singleMode_service_pic").addClass("hide");
-                    $("#singleMode_promo_pic").removeClass("hide");
-                    $("#pic_showEffect").removeClass("hide");//显示效果移除hide
-                    $("#float_template_list_div").addClass("hide");//多图模式添加hide
-                    $("[name='templateType'][value='7']").prop("checked", true);
-                }
-
+                $("#singleMode_templateType_div").removeClass("hide");//单图模式图片去掉hide
+                $("#float_template_list_div").addClass("hide");//多图模式添加hide
             } else {
                 //列表
-                if(floatType == '1'){
-                    $("#float_template_list_div").removeClass("hide");//列表模式移除hide
-                    $("#content_float_pic_single_link_div").addClass("hide");//单图链接添加hide
-                    $("#singleMode_templateType_div").addClass("hide");//单图模式图片添加hide
-                    $(".select_float_pic_link_type").removeClass("hide");//列表模式链接移除hide
-                    $("#pic_showEffect").addClass("hide");//显示效果添加hide
-
-                    $("[name='templateType'][value='1']").prop("checked", true);
-                }else {
-                    $("#float_template_list_div").removeClass("hide");//列表模式移除hide
-                    $("#content_float_pic_single_link_div").addClass("hide");//单图链接添加hide
-                    $("#singleMode_templateType_div").addClass("hide");//单图模式图片添加hide
-                    $(".select_float_pic_link_type").removeClass("hide");//列表模式链接添加hide
-                    $("#pic_showEffect").removeClass("hide");//显示效果移除hide
-                    $(".show_page_1").siblings().addClass('hide');
-                    $(".show_page_span_1").removeClass('hide');
-
-                    $("[name='templateType'][value='7']").prop("checked", true);
-                }
-                this.initSelectEvent();
+                $("#float_template_list_div").removeClass("hide");//列表模式移除hide
+                $("#singleMode_templateType_div").addClass("hide");//单图模式图片添加hide
                 //鼠标移入效果
                 if ($("input[name=mouseInEffect]:checked").val()) {
                     $(".mouseInEffectDiv").removeClass("hide");
@@ -374,7 +308,6 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                 $($(newContent).find("#content_float_pic_type_http1 input")[0]).attr('name',"itemList["+(imgIndex)+"].imgLinkProtocol");
 
                 this._initFile($('[type=file]', newContent));
-                this.initSelectEvent();
                 this.initEditTagsEvent();
             } catch (e) {
 
