@@ -292,7 +292,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
          * 编辑功能的时候初始化默认选中单选框
          */
         checkHandsel: function () {
-            if ($(".fd_percentageHandsel").val() != "") {
+            if ($(".fd_percentageHandsel").val() != "" || $(".fd_regularHandsel").val() == "") {
                 $("#percentageHandsel").attr("checked", "checked")
                 $("#preferentialAmountLimit").css("display", "");
                 $(".fd_regularHandsel").attr("disabled", true);
@@ -608,7 +608,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
 
                 });
             }
-            if (code == 'first_deposit' || code == 'deposit_send') {//首存送 存就送
+            if ( this.is123Deposit(code) || code == 'deposit_send') {//首存送 存就送
                 var aa;
                 if ($("[name='ｍosaicGold']:checked").val() == 'true') {
                     aa = window.top.message.operation_auto['按比例赠送彩金'];
@@ -617,7 +617,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 }
                 $("#firstAndDeposit").find("tr:gt(0)").remove();
                 $("#firstAndDeposit").append("<tr><td>".concat(window.top.message.operation_auto['存款金额CNY']).concat("</td><td>").concat(aa).concat("</td><td>").concat(window.top.message.operation_auto['优惠稽核']).concat("</td></tr>"));
-                $("#first_deposit").find("tr:gt(1)").each(function (index, item) {
+                $("#first_deposit").find("tr:gt(0)").each(function (index, item) {
                     var a1 = $(item).find("td:eq(0) input").val();
                     var a2;
                     if ($("[name='ｍosaicGold']:checked").val() == 'true') {
@@ -1015,9 +1015,10 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             //活动类型
             var activityType = $("input[name='result.code']").val();
             //系统推荐数据
-            var first_deposit_data = this.system_recommend_data[activityType];
+            var deposit_data = this.system_recommend_data[activityType];
+            var deposit_array = activityType+'_array';
             //设置优惠条件
-            $.each(first_deposit_data['first_deposit_array'], function (i, item) {
+            $.each(deposit_data[deposit_array], function (i, item) {
                 var tr_index = i + 1;
                 $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(0)').val(item.depositAmountGe);
                 $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(1)').val(item.percentageHandsel);
@@ -1025,17 +1026,17 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(3)').val(item.preferentialAudits);
             });
             //设置领取方式
-            var is_audit = first_deposit_data.isAudit;
+            var is_audit = deposit_data.isAudit;
             $("input[name='activityRule.isAudit']").val(is_audit);//设置input值
             var is_audit_text = $("[selectdiv='activityRule.isAudit']").find("a[key=" + is_audit + "]").html();
             $("[selectdiv='activityRule.isAudit']").find("span[prompt='prompt']").html(is_audit_text);//设置显示
             //设置日期
-            var claim_period = first_deposit_data.claimPeriod;
+            var claim_period = deposit_data.claimPeriod;
             $("input[name='activityRule.claimPeriod']").val(claim_period);//设置input值
             var claim_period_text = $("[selectdiv='activityRule.claimPeriod']").find("a[key=" + claim_period + "]").html();
             $("[selectdiv='activityRule.claimPeriod']").find("span[prompt='prompt']").html(claim_period_text);//设置显示
             //最高彩金
-            $("input[name='activityRule.preferentialAmountLimit']").val(first_deposit_data.preferentialAmountLimit);
+            $("input[name='activityRule.preferentialAmountLimit']").val(deposit_data.preferentialAmountLimit);
 
 
         },
@@ -1052,87 +1053,87 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 depositAmountGe: 100,
                 percentageHandsel: 5,
                 regularHandsel: 5,
-                preferentialAudits: 1
+                preferentialAudits: 15
 
             }, {
                 depositAmountGe: 200,
                 percentageHandsel: 10,
                 regularHandsel: 20,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 800,
                 percentageHandsel: 20,
                 regularHandsel: 160,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 3000,
                 percentageHandsel: 30,
                 regularHandsel: 900,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }];
 
             var second_deposit_array = [{
                 depositAmountGe: 100,
                 percentageHandsel: 3,
                 regularHandsel: 3,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 200,
                 percentageHandsel: 8,
                 regularHandsel: 16,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 800,
                 percentageHandsel: 15,
                 regularHandsel: 120,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 3000,
                 percentageHandsel: 20,
                 regularHandsel: 600,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }];
             var third_deposit_array = [{
                 depositAmountGe: 100,
                 percentageHandsel: 3,
                 regularHandsel: 3,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 200,
                 percentageHandsel: 5,
                 regularHandsel: 10,
-                preferentialAudits: 1
+                preferentialAudits: 155
             }, {
                 depositAmountGe: 800,
                 percentageHandsel: 15,
                 regularHandsel: 450,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 3000,
                 percentageHandsel: 15,
                 regularHandsel: 450,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }];
             var everyday_first_deposit_array = [{
                 depositAmountGe: 100,
                 percentageHandsel: 3,
                 regularHandsel: 3,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 200,
                 percentageHandsel: 5,
                 regularHandsel: 10,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 800,
                 percentageHandsel: 10,
                 regularHandsel: 80,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 3000,
                 percentageHandsel: 15,
                 regularHandsel: 450,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }];
             var first_deposit={};
             first_deposit['first_deposit_array']=first_deposit_array;
@@ -1162,6 +1163,21 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             this.system_recommend_data['second_deposit'] = second_deposit;
             this.system_recommend_data['third_deposit'] = third_deposit;
             this.system_recommend_data['everyday_first_deposit'] = everyday_first_deposit;
+        },
+        /**
+         * 是否首存，次存，三存，每日首存
+         * @param e
+         * @param option
+         */
+        is123Deposit: function (code) {
+            if(code == 'first_deposit' || code == 'second_deposit' || code == 'third_deposit' || code == 'everyday_first_deposit'){
+                return true;
+            }else{
+                return false;
+            }
+
+
+
         },
     });
 });
