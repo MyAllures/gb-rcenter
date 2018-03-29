@@ -21,7 +21,7 @@ define([], function() {
         BACK_VALUE : "B",
         /** 同步值：消息回传key */
         BACK_KEY : "_B_COMET",
-        last_active_time:null,
+        last_active_time:new Date().getTime(),
         url : null,
         cid : null,
         accept : function(data) {
@@ -97,6 +97,7 @@ define([], function() {
             //增加守护线程,防止异常终止
             window.setInterval(function () {
                if(new Date().getTime()-_this.last_active_time>80000){
+                   _this.userParam[_this.CONNECTIONID_KEY] = cid;
                    _this.connection();
                }
             },10000);
