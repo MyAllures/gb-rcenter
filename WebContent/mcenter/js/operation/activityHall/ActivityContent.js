@@ -999,7 +999,35 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
         ,
 
         /**
-         * 系统推荐方案设置
+         * 注册送系统推荐方案设置
+         * @param e
+         * @param option
+         */
+        registSystemRecommendCase: function (e, option) {
+            //系统推荐数据
+            var activityType = 'registe_send';
+            var deposit_data = this.system_recommend_data[activityType];
+            var deposit_array = activityType+'_array';
+            //设置优惠条件
+            $.each(deposit_data[deposit_array], function (i, item) {
+                var tr_index = i + 2;
+                $("#regist_send").find("tr:eq(" + tr_index + ")").find('input:eq(0)').val(item.depositAmountGe);
+                $("#regist_send").find("tr:eq(" + tr_index + ")").find('input:eq(1)').val(item.preferentialAudits);
+            });
+            //设置领取方式
+            var is_audit = deposit_data.isAudit;
+            $("input[name='activityRule.isAudit']").val(is_audit);//设置input值
+            var is_audit_text = $("[selectdiv='activityRule.isAudit']").find("a[key=" + is_audit + "]").html();
+            $("[selectdiv='activityRule.isAudit']").find("span[prompt='prompt']").html(is_audit_text);//设置显示
+            //有效期
+            var effective_time = deposit_data.effectiveTime;
+            $("input[name='activityRule.effectiveTime']").val(effective_time);//设置input值
+            var effective_time_text = $("[selectdiv='activityRule.effectiveTime']").find("a[key=" + effective_time + "]").html();
+            $("[selectdiv='activityRule.effectiveTime']").find("span[prompt='prompt']").html(effective_time_text);//设置显示
+        },
+
+        /**
+         * 存送系统推荐方案设置
          * @param e
          * @param option
          */
@@ -1030,15 +1058,13 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $("input[name='activityRule.isAudit']").val(is_audit);//设置input值
             var is_audit_text = $("[selectdiv='activityRule.isAudit']").find("a[key=" + is_audit + "]").html();
             $("[selectdiv='activityRule.isAudit']").find("span[prompt='prompt']").html(is_audit_text);//设置显示
-            //设置日期
-            var claim_period = deposit_data.effectiveTime;
-            $("input[name='activityRule.effectiveTime']").val(claim_period);//设置input值
-            var claim_period_text = $("[selectdiv='activityRule.effectiveTime']").find("a[key=" + claim_period + "]").html();
-            $("[selectdiv='activityRule.effectiveTime']").find("span[prompt='prompt']").html(claim_period_text);//设置显示
+            //有效期
+            var effective_time = deposit_data.effectiveTime;
+            $("input[name='activityRule.effectiveTime']").val(effective_time);//设置input值
+            var effective_time_text = $("[selectdiv='activityRule.effectiveTime']").find("a[key=" + effective_time + "]").html();
+            $("[selectdiv='activityRule.effectiveTime']").find("span[prompt='prompt']").html(effective_time_text);//设置显示
             //最高彩金
             $("input[name='activityRule.preferentialAmountLimit']").val(deposit_data.preferentialAmountLimit);
-
-
         },
         /**
          * 系统推荐方案数据初始化
@@ -1135,6 +1161,10 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 regularHandsel: 450,
                 preferentialAudits: 15
             }];
+            var registe_send_array = [{
+                depositAmountGe: 18,
+                preferentialAudits: 5
+            }];
             var first_deposit={};
             first_deposit['first_deposit_array']=first_deposit_array;
             first_deposit['preferentialAmountLimit']=1888;
@@ -1159,10 +1189,18 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             everyday_first_deposit['isAudit']=true;
             everyday_first_deposit['effectiveTime']='OneDay';
 
+            var registe_send={};
+            registe_send['registe_send_array']=registe_send_array;
+            registe_send['isAudit']=true;
+            registe_send['effectiveTime']='OneDay';
+
+
             this.system_recommend_data['first_deposit'] = first_deposit;
             this.system_recommend_data['second_deposit'] = second_deposit;
             this.system_recommend_data['third_deposit'] = third_deposit;
             this.system_recommend_data['everyday_first_deposit'] = everyday_first_deposit;
+            this.system_recommend_data['registe_send'] = registe_send;
+
         },
         /**
          * 是否首存，次存，三存，每日首存
