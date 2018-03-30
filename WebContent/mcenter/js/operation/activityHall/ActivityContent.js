@@ -308,6 +308,9 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $(".fd_regularHandsel_column").removeClass('hide');
                 $(".fd_percentageHandsel_column").addClass('hide');
             }
+            //如果是注册送,默认勾选所有有效条件
+            //
+
         },
 
         /**
