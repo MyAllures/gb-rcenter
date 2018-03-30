@@ -153,12 +153,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             if (singleMode == 'true') {
                     $("#content_float_pic_single_link_div").removeClass("hide");//单图模式链接去掉hide
                     $("#singleMode_templateType_div").removeClass("hide");//单图模式图片去掉hide
-                    $("#singleMode_service_pic").removeClass("hide");
-                    $("#singleMode_promo_pic").addClass("hide");
-                    $("#pic_showEffect").addClass("hide");//显示效果添加hide
                     $("#float_template_list_div").addClass("hide");//多图模式添加hide
-                    $(".show_page_1").siblings().removeClass('hide');
-                    $(".show_page_1").siblings('input').attr("checked", false);
                     $("[name='templateType'][value='1']").prop("checked", true);
 
             } else {
@@ -166,13 +161,6 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                 $("#float_template_list_div").removeClass("hide");//列表模式移除hide
                 $("#content_float_pic_single_link_div").addClass("hide");//单图链接添加hide
                 $("#singleMode_templateType_div").addClass("hide");//单图模式图片添加hide
-                $(".select_float_pic_link_type").removeClass("hide");//列表模式链接移除hide
-                $("#pic_showEffect").addClass("hide");//显示效果添加hide
-
-                $(".show_page_1").siblings().removeClass('hide');
-                $(".show_page_1").siblings('input').attr("checked", false);
-                $("[name='templateType'][value='1']").prop("checked", true);
-
                 this.initSelectEvent();
                 //鼠标移入效果
                 if ($("input[name=mouseInEffect]:checked").val()) {
