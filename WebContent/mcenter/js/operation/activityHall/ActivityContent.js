@@ -1024,6 +1024,10 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $("input[name='activityRule.effectiveTime']").val(effective_time);//设置input值
             var effective_time_text = $("[selectdiv='activityRule.effectiveTime']").find("a[key=" + effective_time + "]").html();
             $("[selectdiv='activityRule.effectiveTime']").find("span[prompt='prompt']").html(effective_time_text);//设置显示
+            //有效条件全勾选
+            $("input[name$='preferentialCode']").filter("[name^='effectiveCondition']").each(function () {
+                $(this).attr("checked",'checked');
+            })
         },
 
         /**
