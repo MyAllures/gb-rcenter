@@ -84,6 +84,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                     $(".smsTips0").remove();
                     $(".smsTips1").removeClass("hidden");
                     $(".smsTips2").addClass("hidden");
+                    //短信开关关闭，默认关闭下面的所有短信验证
+                    $("#phoneParam").val(false);
+                    $("#recoverPasswordParam").val(false);
                     $("._smsSwitchIsShow").addClass("hidden");
                 }
             });
