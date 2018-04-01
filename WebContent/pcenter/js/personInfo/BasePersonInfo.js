@@ -8,7 +8,7 @@
 define(['common/BaseEditPage','mailAutoComplete'], function(BaseEditPage,MailAutoComplete) {
 
     return BaseEditPage.extend({
-        delayTime:100,
+        delayTime:90,
         timer:'',
 
         init: function (title) {
