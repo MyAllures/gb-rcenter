@@ -128,12 +128,12 @@ define(['gb/components/PopUp'], function (PopUp) {
             var stopRate = Number(msgBody.stopRate);
             var msg;
             if (rate >= stopRate) { //立即停止
-                msg = "站点【${siteId}】${siteName}转账上限已使用${rate},已停止玩家转账！";
+                msg = "站点【${siteId}】${siteName}转账上限已使用${rate}%,已停止玩家转账！";
             } /*else if (rate >= warnRate) {
                 msg = "站点【${siteId}】${siteName}转账上限已使用${rate},需提醒站点在${date}之前充值，请及时关注！";
             }*/
             else {
-                msg = "站点【${siteId}】${siteName}转账上限已使用${rate},需提醒站点注意已使用额度，及时充值！";
+                msg = "站点【${siteId}】${siteName}转账上限已使用${rate}%,需提醒站点注意已使用额度，及时充值！";
             }
             if (msg) {
                 msg = msg.replace("${siteId}", msgBody.siteId);
