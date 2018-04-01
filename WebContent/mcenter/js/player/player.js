@@ -724,6 +724,27 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                 }
             });
         },
+        /***
+         * 重置前三存送
+         * @param e
+         * @param opt
+         */
+        resetStorage: function (e, opt) {
+            var data = this.getSelectIds(e, opt);
+            var _this = this;
+            window.top.topPage.ajax({
+                url: root + '/player/resetStorage.html',
+                data: data,
+                dataType: 'json',
+                type: "POST",
+                success: function (data) {
+                  /*  if (data.state) {
+                        _this.query(e,opt);
+                    }*/
+                    $(e.currentTarget).unlock();
+                }
+            });
+        },
         /**
          * 保存或更新前验证
          * @param e   事件对象
