@@ -84,6 +84,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                     $(".smsTips0").remove();
                     $(".smsTips1").removeClass("hidden");
                     $(".smsTips2").addClass("hidden");
+                    //短信开关关闭，默认关闭下面的所有短信验证
+                    $("#phoneParam").val(false);
+                    $("#recoverPasswordParam").val(false);
                     $("._smsSwitchIsShow").addClass("hidden");
                 }
             });
@@ -416,8 +419,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             if(smsSwitch!="" && JSON.parse(smsSwitch)){
                 return true;
             }else{
-                $("#phoneParam").val(false);
-                $("#recoverPasswordParam").val(false);
+                $("#playerCall").val(false);
+                $("#callMunber").val(false);
                 return true;
             }
             return false;
@@ -558,6 +561,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         getAccessDomainFormData:function (e,opt) {
             return $("input,textarea","#accessDomain").serialize();
         },
+        getPhoneNumber:function (e,opt) {
+            return $("input","#phone").serialize();
+        },
         getMobileFormData:function (e,opt) {
             return $("input,textarea","#mobileCustomService").serialize();
         },
@@ -583,6 +589,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
          * @returns {{[result.trafficStatistics]: (*|jQuery)}}
          */
         getStaticValidateForm:function (e,opt) {
+            return {"result.trafficStatistics":$("[name='result.trafficStatistics']").val()};
+        },
+        getPhoneValidateForm:function (e,opt) {
             return {"result.trafficStatistics":$("[name='result.trafficStatistics']").val()};
         },
         /**
@@ -676,8 +685,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this._super();
             var $bootstrapSwitchs = $('input[type=checkbox][name=player_stationmaster]');
             this.unInitSwitch($bootstrapSwitchs).bootstrapSwitch({
-                onText: window.top.message.content['floatPic.display.yes'],
-                offText: window.top.message.content['floatPic.display.no'],
+                onText: window.top.message.content['confirm.open'],
+                offText: window.top.message.content['confirm.close'],
                 onSwitchChange: function (e, state) {
                     var $this = $(this);
                     var _msg = "";
@@ -725,8 +734,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this._super();
             var $bootstrapSwitchs = $('input[type=checkbox][name=encryption_switch]');
             this.unInitSwitch($bootstrapSwitchs).bootstrapSwitch({
-                onText: window.top.message.content['floatPic.display.yes'],
-                offText: window.top.message.content['floatPic.display.no'],
+                onText: window.top.message.content['confirm.open'],
+                offText: window.top.message.content['confirm.close'],
                 onSwitchChange: function (e, state) {
                     var $this = $(this);
                     var _msg = "";
@@ -849,12 +858,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             $(e.currentTarget).unlock();
         },
 
-
-
-
-
-
-
+        save:function (e,opt) {
+            $(e.currentTarget).unlock();
+        },
 
 
         /*

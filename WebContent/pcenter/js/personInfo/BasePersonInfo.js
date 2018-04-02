@@ -8,7 +8,7 @@
 define(['common/BaseEditPage','mailAutoComplete'], function(BaseEditPage,MailAutoComplete) {
 
     return BaseEditPage.extend({
-        delayTime:100,
+        delayTime:90,
         timer:'',
 
         init: function (title) {
@@ -34,7 +34,7 @@ define(['common/BaseEditPage','mailAutoComplete'], function(BaseEditPage,MailAut
             $(e.currentTarget).text(window.top.message.personInfo_auto['几秒后重新获取'].replace("{0}",that.delayTime));
             if(that.delayTime==1) {
                 that.timer='';
-                that.delayTime = 100;
+                that.delayTime = 90;
                 $(e.currentTarget).text(window.top.message.personInfo_auto['免费获取验证码']);
                 $(e.currentTarget).removeClass("disable-gray");
                 $(e.currentTarget).unlock();
@@ -112,7 +112,7 @@ define(['common/BaseEditPage','mailAutoComplete'], function(BaseEditPage,MailAut
                         $(e.currentTarget).unlock();
                         return;
                     }
-                    $(e.currentTarget).text(window.top.message.personInfo_auto['100秒后重新获取']);
+                    $(e.currentTarget).text(window.top.message.personInfo_auto['90秒后重新获取']);
                     $(e.currentTarget).addClass("disable-gray");
                     setTimeout(function() {
                         _this.countDown(_this,e);
