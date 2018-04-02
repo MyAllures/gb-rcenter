@@ -12,6 +12,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             this._super();
             this.initSystemRecommendData();
             this.initGameNum();
+            this.initPreferential();
         },
 
         bindEvent: function () {
@@ -64,6 +65,22 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $("."+mark).text(num);
             });
 
+            $(this.formSelector).on("change", ".profit", function (e){
+                var flag = $(".profit").prop("checked");
+                if (flag) {
+                    $("#profit_preferential").show();
+                }else {
+                    $("#profit_preferential").hide();
+                }
+            });
+            $(this.formSelector).on("change", ".loss", function (e){
+                var flag = $(".loss").prop("checked");
+                if (flag) {
+                    $("#loss_preferential").show();
+                }else {
+                    $("#loss_preferential").hide();
+                }
+            });
         },
 
         buildOtherEvent:function () {
@@ -740,7 +757,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var canCreate = _tr_len < this.maxRange;
             if (canCreate) {
                 /*tr clone*/
-                var _tr = $("#first_deposit").find("tr:eq(1)").clone(true);
+                var _tr = $("#first_deposit").find("tr:eq(2)").clone(true);
                 _tr.find("button").removeClass("disabled");
                 _tr.find("input").val("");
                 _tr = this.resetIndex(_tr, _tr_len)
@@ -1241,6 +1258,24 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 var num = $(target).children("input.game:checked").length;
                 var mark = $(target).attr("aaa");
                 $("."+mark).text(num);
+            }
+        },
+        /**
+         * 初始话盈亏送显示
+         * @param null
+         */
+        initPreferential: function(){
+            var profit = $(".profit").prop("checked");
+            var loss = $(".loss").prop("checked");
+            if (profit) {
+                $("#profit_preferential").show();
+            }else {
+                $("#profit_preferential").hide();
+            }
+            if (loss) {
+                $("#loss_preferential").show();
+            }else {
+                $("#loss_preferential").hide();
             }
         },
     });
