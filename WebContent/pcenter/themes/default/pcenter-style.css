@@ -1613,14 +1613,19 @@ iframe body{background:#fff!important;}
 .api-logo-21{background-position: 0 -1200px;}/*皇家体育*/
 .api-logo-22{background-position: 0 -1260px;}/*龙头彩票*/
 .api-logo-23{background-position: 0 -1320px;}/* OPUS体育 */
-.api-logo-24{background-position: 0 -1380px;}/* OPUS真人 */
-.api-logo-25{background-position: 0 -1440px;}/* 新霸电子 */
-.api-logo-26{background-position: 0 -1500px;}/* png电子 */
-.api-logo-27{background-position: 0 -1560px;}/* dt */
-.api-logo-28{background-position: 0 -1620px;}/* gg */
-.api-logo-31{background-position: 0 -1680px;}/* gns电子 */
-.api-logo-32{background-position: 0 -1740px;}/* pp电子 */
-.api-logo-33{background-position: 0 -1800px;}/* 申博 */
+.api-logo-24{background-position: 0 -1320px;}/* OPUS真人 */
+.api-logo-25{background-position: 0 -1380px;}/* 新霸电子 */
+.api-logo-26{background-position: 0 -1440px;}/* png电子 */
+.api-logo-27{background-position: 0 -1500px;}/* dt */
+.api-logo-28{background-position: 0 -1560px;}/* gg */
+.api-logo-31{background-position: 0 -1620px;}/* gns电子 */
+.api-logo-32{background-position: 0 -1680px;}/* pp电子 */
+.api-logo-33{background-position: 0 -1740px;}/* 申博 */
+.api-logo-34{background-position: 0 -1800px;}/* 开元 */
+.api-logo-36{background-position: 0 -1920px;}/* YSB体育 */
+.api-logo-37{background-position: 0 -1860px;}/* BC体育 */
+.api-logo-37.site119{background: url("../../images/api-logo-bc-119.png") no-repeat;}/* UED体育 */
+.api-logo-37.site270{background: url("../../images/api-logo-bc-270.png") no-repeat;}/* LOVEBET体育 */
 
 .game:hover .api-logo-box{background:url(../../images/api-logo-hover.png);}
 .api-logo-box.active,.game:hover .active{background:url(../../images/api-logo-active.png);}
