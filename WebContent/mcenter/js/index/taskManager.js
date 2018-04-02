@@ -298,7 +298,7 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
         },
         countTaskNum: function () {
             var _this = this;
-            var taskNumberLastTime = window.sessionStorage.taskNumberLastTime;
+            var taskNumberLastTime = window.top.topPage.taskNumberLastTime;
             var time = new Date().getTime();
             if (taskNumberLastTime && (time - taskNumberLastTime) < 120 * 1000) {
                 console.log("任务数量更新：还未到刷新时间,上一次刷新时间:" + taskNumberLastTime);
@@ -309,7 +309,7 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
                 }
             } else {
                 _this.timingCountTask();
-                window.sessionStorage.taskNumberLastTime = time;
+                window.top.topPage.taskNumberLastTime = time;
             }
 
             //2分钟定时查询一次
@@ -346,7 +346,7 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
         },
         playerNumTimer: function () {
             var _this = this;
-            var playerNumberLastTime = window.sessionStorage.playerNumberLastTime;
+            var playerNumberLastTime = window.top.topPage.playerNumberLastTime;
             var time = new Date().getTime();
             if (playerNumberLastTime && (time - playerNumberLastTime) < 60 * 1000) {
                 console.log("在线玩家数：还未到刷新时间,上一次刷新时间" + playerNumberLastTime);
@@ -355,7 +355,7 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
                     return;
                 }
             } else {
-                window.sessionStorage.playerNumberLastTime = new Date().getTime();
+                window.top.topPage.playerNumberLastTime = new Date().getTime();
                 window.top.topPage.ajax({
                     url: root + "/home/playerNum.html",
                     type: "POST",
