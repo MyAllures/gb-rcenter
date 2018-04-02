@@ -34,7 +34,9 @@
 					this.onload = null;
 				};
 				self.onPlaceHolder(function(placeholder) {
-					self._set(element, placeholder);
+					if(placeholder) {
+						self._set(element, placeholder);
+					}
 				});
 			} else {
 				element.style.backgroundImage = "url(" + self.options.placeholder + ")";
