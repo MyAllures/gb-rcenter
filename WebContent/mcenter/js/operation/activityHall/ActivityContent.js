@@ -11,6 +11,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
         init: function () {
             this._super();
             this.initSystemRecommendData();
+            this.initGameNum();
         },
 
         bindEvent: function () {
@@ -37,7 +38,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             /**
              * kobe----却换pc和手机终端
              */
-            $("#pc-terminal").on("click", function (e) {
+            $(this.formSelector).on("click", "#pc-terminal", function(e) {
                 $(".pc").show();
                 $(".mb").hide();
                 $("#pc-terminal").addClass("disabled");
@@ -46,7 +47,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 var tab = $(".pc li.active a").attr('href');
                 $(tab).addClass('active');
             });
-            $("#mb-terminal").on("click", function (e) {
+            $(this.formSelector).on("click", "#mb-terminal", function(e){
                 $(".pc").hide();
                 $(".mb").show();
                 $("#mb-terminal").addClass("disabled");
@@ -54,6 +55,13 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $(".pc .tab-pane").removeClass('active');
                 var tab = $(".mb li.active a").attr('href');
                 $(tab).addClass('active');
+            });
+
+            $(this.formSelector).on("change", ".game", function (e){
+                var target = e.target;
+                var num = $(target).parent().children("input.game:checked").length;
+                var mark = $(target).attr("aaa");
+                $("."+mark).text(num);
             });
 
         },
@@ -1220,9 +1228,20 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             }else{
                 return false;
             }
-
-
-
+        },
+        /**
+         * 初始化游戏选中数量
+         * @param null
+         */
+        initGameNum: function(){
+            var gameTypeList = $(".game_div");
+            var size = gameTypeList.length;
+            for (var i=0; i<size; i++) {
+                var target = gameTypeList[i];
+                var num = $(target).children("input.game:checked").length;
+                var mark = $(target).attr("aaa");
+                $("."+mark).text(num);
+            }
         },
     });
 });
