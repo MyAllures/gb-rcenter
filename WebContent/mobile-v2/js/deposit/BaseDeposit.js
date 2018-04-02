@@ -142,7 +142,7 @@ define(['common/MobileBasePage','validate'], function(Mobile) {
         linkDeposit:function() {
             var url = root + "/wallet/deposit/index.html";
             if (this.os == 'app_android') {
-                window.gamebox.refreshPage();
+                window.gamebox.gotoFragment(1);
             } else if (this.os == 'app_ios') {
                 gotoTab(1);
             } else {

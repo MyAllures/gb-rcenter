@@ -17,10 +17,6 @@ $(function () {
     initNotice();
     //初始化api nav滑动
     swiper();
-    if(!lazyLoadApi) {
-        //图片懒加载
-        lazyLoadApi = lazyLoadImg("body");
-    }
     //判断desk是否需要隐藏
     hideDesk();
 });
