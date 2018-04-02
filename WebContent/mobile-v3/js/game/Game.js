@@ -28,18 +28,21 @@ function pullfresh() {
     }, 0);
 }
 
+/**
+ * 名称搜索
+ */
 function searchGame(){
-    var apiId = $("#api").attr("apiId");
-    var pageNumber = parseInt(1);
     var name = $("#game-name").val();
-    $(".casino-list .mui-row").html('');
-
-    loadData(apiId,pageNumber,name);
-    /*if(name !=null && name.length != 0){
-        mui('#pullfresh').pullRefresh().endPullupToRefresh(true);
-    }else{
-        mui('#pullfresh').pullRefresh().refresh(true);
-    }*/
+    $(".swiper-slide-active .mui-col-xs-3").each(function(){
+        var apiName = $(this).attr("apiName");
+        if(apiName){
+            if(apiName.indexOf(name) != -1){
+                $(this).css("display","");
+            }else{
+                $(this).css("display","none");
+            }
+        }
+    });
 }
 
 function loadData(apiId,pageNumber,name) {

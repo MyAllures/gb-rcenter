@@ -113,8 +113,8 @@ define(['common/MobileBasePage'], function (Mobile) {
                             $("#confirmWithdrawAmount").text(amount);
                             // 手续费
                             var poundage = data.poundage;
-                            if (poundage > 0) {
-                                $("#confirmWithdrawFee").text(-poundage);
+                            if (poundage && poundage != '0.00') {
+                                $("#confirmWithdrawFee").text('-' + poundage);
                             } else {
                                 $("#confirmWithdrawFee").text('0.00');
                             }
@@ -267,7 +267,7 @@ define(['common/MobileBasePage'], function (Mobile) {
         hasBank: function () {
             var $target = $(".account_tab .mui-segmented-control a.mui-active[data]");
             var id = $target.attr("data");
-            if ($target.length==0) {
+            if ($target.length == 0) {
                 var noBank = $("input[name=noBank]").val();
                 if (noBank == 'true') {
                     this.noBankLayer();

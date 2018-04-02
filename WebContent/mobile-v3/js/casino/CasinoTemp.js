@@ -6,11 +6,10 @@ var lazyLoadApi;
 $(function(){
 
     var siledSize = $(".swiper-container div.swiper-slide").length;
-    console.log(siledSize);
     // api滑动
     var slideContent = new Swiper('.g-t-slide-content', {
         loop:true,
-        loopedSlides:18,
+        loopedSlides: siledSize,
         slidesPerView: 'auto',
         autoHeight: true,
         on:{
@@ -20,20 +19,20 @@ $(function(){
     });
     var slideIndicators = new Swiper('.g-t-slide-indicators', {
         loop:true,
-        loopedSlides: 18,
+        loopedSlides: siledSize,
         slidesPerView: 'auto',
         touchRatio: 0.2,
         slideToClickedSlide: true,
         on:{
             slideChangeTransitionEnd: function () {
                 //处理图片延迟加载
-                if ($(".swiper-slide-active").find("img[data-lazyload]").length > 0 || $(".nav-slide-content .swiper-slide-active").find("img[data-lazyload-id]").length > 0) {
+                if ($(".swiper-slide-active").find("img[data-lazyload]").length > 0 || $(".g-t-slide-content .swiper-slide-active").find("img[data-lazyload-id]").length > 0) {
                     if (!lazyLoadApi) {
                         lazyLoadApi = lazyLoadImg("body");
                     }
                     lazyLoadApi.refresh(true);
                 }
-
+                resizeSlideHeight();
             }
         }
     });
@@ -41,8 +40,18 @@ $(function(){
     slideIndicators.controller.control = slideContent;
 
 
-    if(!lazyLoadApi) {
+    /*if(!lazyLoadApi) {
         //图片懒加载
         lazyLoadApi = lazyLoadImg("body");
-    }
+    }*/
 });
+
+/**
+ * 滑动后重设高度
+ */
+function resizeSlideHeight() {
+    var targetSlide = $(".g-t-slide-content .swiper-slide-active");
+    setTimeout(function () {// 滑动循环最后一个有延迟，设个定时器抵消延迟的效果
+        $(".g-t-slide-content>.swiper-wrapper").css({height: $(targetSlide).outerHeight()});
+    }, 100);
+}
