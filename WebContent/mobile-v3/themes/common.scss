@@ -1341,7 +1341,7 @@ body.deposit{
     .pro-window .cont-text{line-height:20px;font-size: 12px;color:#666;}
     .pro-window .cont-text p,.pro-window .text-pro p{color:#666;}
     .pro-window .org{color:#f49e2e;font-size: 14px;}
-    .pro-window .text-pro ul{height:110px;overflow-y: scroll;position:relative;background:#e2e2e2;border-radius: 4px;}
+    .pro-window .text-pro ul{height:110px;overflow: hidden;position:relative;background:#e2e2e2;border-radius: 4px;}
     .pro-window .text-pro li{padding:0 0 0 10px;line-height:16px;font-size: 12px;}
     .pro-window .text-pro .text-warp{border-bottom: 1px dashed #d2d2d2;width: 100%;padding:5px 0;position: relative;}
     .pro-window .text-pro li span{color:#666;display:inline-block;width:238px;word-wrap: break-word}
