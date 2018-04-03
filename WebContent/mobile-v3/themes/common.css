@@ -3708,13 +3708,13 @@ body.audit {
     margin-top: 10px; }
   body.audit .mine-table table {
     width: 100%;
-    background-color: #353741;
+    background-color: #fff;
     border: 1px solid #efeff4; }
   body.audit .mine-table table tr {
     border-bottom: 1px solid #f2f2f2; }
   body.audit .mine-table table tr td {
     padding: 5px;
-    color: #fff;
+    color: #333;
     font-size: 10px;
     line-height: 16px;
     text-align: center; }
