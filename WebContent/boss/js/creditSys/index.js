@@ -39,7 +39,16 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
             window.top.topPage.doDialog({page:this},{text:"额度上限管理",target: root + "/vSysCredit/editMaxProfit.html?siteIds="+siteIds,callback:"query"});
             $(e.currentTarget).unlock();
         },
-
+        creditLine:function(e,option){
+            var siteIds = this.getSelectIdsArray(e);
+            window.top.topPage.doDialog({page:this},{text:"授信额度管理",target: root + "/vSysCredit/creditLine.html?siteIds="+siteIds,callback:"query"});
+            $(e.currentTarget).unlock();
+        },
+        editRatio:function(e,option){
+            var siteIds = this.getSelectIdsArray(e);
+            window.top.topPage.doDialog({page:this},{text:"兑换比例管理",target: root + "/vSysCredit/editRatio.html?siteIds="+siteIds,callback:"query"});
+            $(e.currentTarget).unlock();
+        },
         /**
          * 重写query中onPageLoad方法，为了查询回调函数带上下拉框样式
          * @param form

@@ -55,7 +55,7 @@ function headInfo() {
                 $("div.login p").text(data.name);
                 $("div.login").show();
                 $("div.un-login").hide();
-                $(".money").text(data.totalAssert);
+                $(".money").text(data.currencySign + data.totalAssert);
                 //右上角显示用户信息
                 $("#login-info").removeClass("mui-hidden");
                 isLogin = true;
@@ -85,7 +85,7 @@ function getSiteApi() {
             if (data) {
                 var d = eval(data);
                 //$('#bar-username').html(d.username);
-                $(".money").text(d.playerAssets);
+                $(".money").text(d.currSign + d.playerAssets);
                 $('.bar-wallet').html(d.currSign + d.playerWallet);
                 $('.bar-asset').html(d.currSign + d.playerAssets);
                 var apis = d.apis;

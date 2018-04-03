@@ -178,10 +178,16 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                     } else {
                         _this.toast(data.msg);
                         $("input[name='gb.token']").val(data.token);
+                        if(data.accountNotUsing){
+                            setTimeout(function(){
+                                _this.linkDeposit();
+                            },2000);
+                        }
                     }
                 },
                 error: function (xhr, type, errorThrown) {
                     _this.toast(window.top.message.deposit_auto['提交失败']);
+                    _this.linkDeposit();
                 }
             });
         },
@@ -192,12 +198,7 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                 if (_this.os == 'app_android') {
                     window.gamebox.depositAgain();
                 } else if (_this.os == 'app_ios') {
-                    if (isMobileUpgrade && isMobileUpgrade == 'true') {
-                        //v3存款跳转
-                        gotoTab(0);
-                    } else {
-                        gotoIndex(1);
-                    }
+                    gotoIndex(1);
                 } else {
                     _this.gotoUrl($(this).attr('_href'));
                 }

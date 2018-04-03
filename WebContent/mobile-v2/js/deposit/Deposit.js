@@ -239,12 +239,7 @@ define(['site/deposit/BaseDeposit', 'site/deposit/BaseCompanyDeposit', 'site/plu
                 if (_this.os == 'app_android') {
                     window.gamebox.depositAgain();
                 } else if (_this.os == 'app_ios') {
-                    if (isMobileUpgrade && isMobileUpgrade == 'true') {
-                        //v3存款跳转
-                        gotoTab(0);
-                    } else {
-                        gotoIndex(1);
-                    }
+                    gotoIndex(1);
                 } else {
                     _this.gotoUrl($(this).attr('_href'));
                 }

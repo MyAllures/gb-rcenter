@@ -126,9 +126,10 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 }
 
                 //收款账号说明
-                var accountRemark = $target.attr("accountRemark");
-                if(accountRemark) {
-                    $("#accountRemark").text(accountRemark);
+                var accountId = $target.attr("accountId");
+                var remark = $(".remark"+accountId).html();
+                if(remark) {
+                    $("#accountRemark").html(remark);
                     $("#accountRemark").show();
                 } else {
                     $("#accountRemark").hide();
@@ -168,6 +169,22 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
             }
             this.extendValidateMessage({"result.rechargeAmount": {remote: msg}});
             this.extendValidateMessage({"result.rechargeAmount": {max: msg}});
+            //展示自定义账号信息
+            var accountInformation = $account.attr("accountInformation");
+            var accountPrompt = $account.attr("accountPrompt");
+            var $accountLabelId = $("#accountLabelId");
+            if(accountInformation){
+                $("#payerBankcardLabel").html(accountInformation+'：');
+            }else{
+                $("#payerBankcardLabel").html($accountLabelId.val()+'：');
+            }
+
+            if(accountPrompt){
+                document.getElementById("result.payerBankcard").setAttribute("placeholder",accountPrompt);
+            }else{
+                document.getElementById("result.payerBankcard").setAttribute("placeholder",$accountLabelId.attr("prompt"));
+            }
+
             var ele = $(this.formSelector).find("input[name='result.rechargeAmount']");
             $.data(ele[0], "previousValue", null);
             if ($(ele).val()) {

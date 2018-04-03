@@ -71,36 +71,6 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 }
             });
         },
-        /**
-         * 添加调用
-         * @param e
-         * @param opt
-         */
-        addInvoke:function (e, opt) {
-            var _this =this;
-            window.top.topPage.ajax({
-                dataType:'json',
-                data:{
-                    appKey:opt.appKey,
-                    hostIp:opt.hostIp,
-                    appVersion:opt.appVersion,
-                    versionName:opt.versionName,
-                    serverApp:opt.serverApp
-                },
-                type:"post",
-                url:root+'/Monitor/addInvoke.html',
-                success:function(data){
-                    if(data==true){
-                        window.top.topPage.showSuccessMessage("操作成功!");
-                        window.setTimeout(function () {
-                            _this.refreshData(e, opt);
-                        },2000);
-                    }else{
-                        window.top.topPage.showErrorMessage("操作失败!");
-                    }
-                }
-            });
-        },
 
         /**
          * 移除调用
@@ -116,18 +86,44 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     hostIp:opt.hostIp,
                     appVersion:opt.appVersion,
                     versionName:opt.versionName,
-                    serverApp:opt.serverApp
+                    serverApp:opt.serverApp,
+                    port:opt.port,
+                    applicationName:opt.applicationName
                 },
                 type:"post",
                 url:root+'/Monitor/removeInvoke.html',
                 success:function(data){
                     if(data==true){
-                        window.top.topPage.showSuccessMessage("操作成功!");
-                        window.setTimeout(function () {
-                            _this.refreshData(e, opt);
-                        },2000);
+                        console.log("操作成功!");
                     }else{
-                        window.top.topPage.showErrorMessage("操作失败!");
+                        console.log("操作失败!");
+                    }
+                }
+            });
+        },
+        /**
+         * 移除调用
+         * @param e
+         * @param opt
+         */
+        appSwitch:function (e, opt) {
+            var _this =this;
+            window.top.topPage.ajax({
+                dataType:'json',
+                data:{
+                    hostIp:opt.hostIp,
+                    hostName:opt.hostName,
+                    version:opt.version,
+                    isServer:opt.isServer,
+                    applicationName:opt.applicationName
+                },
+                type:"post",
+                url:root+'/Monitor/appSwitch.html',
+                success:function(data){
+                    if(data==true){
+                        console.log("操作成功!");
+                    }else{
+                        console.log("操作失败!");
                     }
                 }
             });

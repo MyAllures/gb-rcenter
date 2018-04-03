@@ -31,6 +31,16 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
                 this.query(event,option);
             }
         },
-
+        /**
+         * 示例删除回调函数
+         * @param e             事件对象
+         * @param option        Button标签的参数
+         */
+        saveCallbak: function (e, option) {
+            if (e.returnValue){
+                this.returnValue=true;
+                window.top.topPage.closeDialog();
+            }
+        }
     });
 });

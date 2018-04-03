@@ -218,6 +218,12 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
             } else {
                 //验证提示
                 _this.toast($("#tips").attr("tips"));
+                var accountNotUsing = $("#accountNotUsing").attr("accountNotUsing");
+                if("true" === accountNotUsing){
+                    setTimeout(function(){
+                        _this.linkDeposit();
+                    },2000);
+                }
             }
         },
 
@@ -257,10 +263,11 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                 dataType: 'json',
                 success: function (data) {
                     if (!data) {
-                        _this.toast(window.top.message.deposit_auto["提交失败"], _this.back());
+                        _this.toast(window.top.message.deposit_auto["提交失败"]);
                         if (newWindow) {
                             newWindow.close();
                         }
+                        _this.linkDeposit();
                     } else {
                         var state = data.state;
                         $("input[name='gb.token']").val(data.token);
@@ -276,6 +283,11 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                             _this.toast(data.msg);
                             if (newWindow) {
                                 newWindow.close();
+                            }
+                            if(data.accountNotUsing){
+                                setTimeout(function(){
+                                    _this.linkDeposit();
+                                },2000);
                             }
                         }
                     }

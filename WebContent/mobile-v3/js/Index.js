@@ -17,10 +17,8 @@ $(function () {
     initNotice();
     //初始化api nav滑动
     swiper();
-    if(!lazyLoadApi) {
-        //图片懒加载
-        lazyLoadApi = lazyLoadImg("body");
-    }
+    //判断desk是否需要隐藏
+    hideDesk();
 });
 
 /**
@@ -178,4 +176,12 @@ function changeNavGame(obj, options) {
 //添加到桌面图标
 function closeDesk(obj, options) {
     $("#deskTip").hide();
+    localStorage.setItem("destHide", true);
+}
+
+//判断desk是否需要隐藏
+function hideDesk(){
+    if(os != 'app_ios' || localStorage.getItem("destHide")){
+        $("#deskTip").hide();
+    }
 }
