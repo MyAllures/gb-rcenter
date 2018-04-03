@@ -54,7 +54,7 @@ define(['common/BaseListPage', 'nestable','css!themesCss/jquery/plugins/jquery.n
                 data:JSON.stringify(apiTypeOrder),
                 async:false,
                 type:"post",
-                url:root+'/operation/activity/order/saveOrder.html',
+                url:root+'/activityHall/activity/order/saveOrder.html',
                 success:function(data){
                     window.top.topPage.showSuccessMessage(window.top.message.common['save.success'], function (state) {
                         if(state){
