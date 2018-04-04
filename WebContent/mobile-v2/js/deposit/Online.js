@@ -234,9 +234,6 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                             $("#channel").val("");
                             _this.onlineContinueDeposit();
                         }
-                    },
-                    error: function (xhr, type, errorThrown) {
-                        console.log('提交失败');
                     }
                 });
             });
@@ -245,11 +242,12 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
         onlineContinueDeposit: function () {
             var ajaxData = ajaxMap["ajaxData"];
             var _this = ajaxMap["_this"];
-            $(".mui-content").append(ajaxData);
+            $("body").append(ajaxData);
             var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
             if (unCheckSuccess === "true") {
                 var pop = $("#pop").attr("pop");
                 if (pop === "true") {
+                    mui(".applysale .mui-scroll-wrapper").scroll({scrollY: true, deceleration: 0.0005});
                     $("#activityId").val($("input[type=radio]:checked").val());
                     _this.bindReWriteAmount();
                     _this.deposit();
