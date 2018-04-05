@@ -609,6 +609,8 @@ function bindFormValidation($form) {
  * 延迟加载图片
  */
 function lazyLoadImg(self, placeholder) {
+    //为了解决重新加载页面的时候，原先加载的图片无法重新加载
+    document.body.removeAttribute('data-imagelazyload');
     if (!placeholder) {
         placeholder = '';
     }

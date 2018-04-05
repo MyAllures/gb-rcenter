@@ -1021,7 +1021,91 @@ define(['poshytip', 'bootstrap-dialog', 'eventlock', 'jqcountdown', 'daterangepi
                     $(obj+":visible")[0].click();
                 }
             });
+        },
+        isNull:function (v) {
+            /**
+             * 判断变量是否空值 undefined, null, '', [], {} 均返回true，否则返回false
+             */
+            switch (typeof v) {
+                case 'undefined':
+                    return true;
+                case 'string':
+                    if (null == v || "" == v) {
+                        return true;
+                    }
+                    break;
+                case 'object':
+                    if (null === v)
+                        return true;
+                    if (undefined !== v.length && v.length == 0)
+                        return true;
+
+                    for ( var k in v) {
+                        return false;
+                    }
+                    return true;
+                    break;
+            }
+            return false;
+        },
+        openEditRemark:function (e, opt) {
+            var url = root + "/playerRemark/editPlayerRemark.html?search.entityUserId="+opt.playerId+"&search.model=player&search.remarkType=remark&comeFrom=phoneCall";
+            var btnOption = {};
+            btnOption.target = url;
+            btnOption.text=window.top.message.playerTag['remark'];
+            btnOption.type="post";
+            window.top.topPage.doDialog({}, btnOption);
+        },
+        callPlayer:function (e, opt) {
+            var _this = this;
+            var playerId = opt.playerId;
+            if(this.isNull(playerId)){
+                page.showPopover(e,{},"warning",window.top.message.player_auto["玩家没有设置电话号码"],true);
+                return;
+            }
+            var origin = opt.origin;
+
+            window.top.topPage.ajax({
+                url: root + "/index/phoneCallPlayer.html",
+                type: 'POST',
+                data:  {'search.id':playerId},
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    if(data.state){
+                        var resultCode =data.resultCode;
+                        if(resultCode){
+                            if(resultCode=="+OK"){
+                                if(_this.isNull(origin)){
+                                    _this.openEditRemark(e,opt);
+                                }
+                            }else{
+                                if(resultCode.indexOf("Invalid ext number")>-1 || resultCode.indexOf("USER_NOT_REGISTERED")>-1){
+                                    page.showPopover(e,{},"warning",window.top.message.player_auto["网络电话或IP号机未开启"],true);
+                                }else if(resultCode.indexOf("空号")>-1){
+
+                                }else{
+                                    page.showPopover(e,{},"warning",resultCode,true);
+                                }
+
+                            }
+                        }else{
+                            page.showPopover(e,{},"warning",window.top.message.player_auto["拨打失败"],true);
+                        }
+                    }else{
+                        var msg = data.msg;
+                        page.showPopover(e,{},"warning",msg,true);
+                        return;
+                    }
+                    $(e.currentTarget).unlock();
+                },
+                error:function () {
+                    $(e.currentTarget).unlock();
+                }
+
+            });
         }
+
     });
 
 });

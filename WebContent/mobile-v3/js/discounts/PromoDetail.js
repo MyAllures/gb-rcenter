@@ -6,12 +6,13 @@ $(function () {
         /*右侧菜单上下滚动，可自行指定范围*/
         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
         /*禁用侧滑手势指定样式*/
-        disabledHandSlip: ['.mui-off-canvas-left'],
+        disabledHandSlip: ['.mui-off-canvas-left']
         /*表格添加横向滚动*/
-        horizontalScroll: ['li .ct']
+        //horizontalScroll: ['li .ct']
     };
     muiInit(options);
     onPageLoad();
+    tableScroll('li .ct');
 });
 
 function onPageLoad() {
@@ -210,5 +211,16 @@ function filterActyByPlayer(data) {
         $obj.removeClass(oldClass).addClass(newClass + " mui-disabled").text(window.top.message.promo_auto['存款时申请']);
     } else if (code == "regist_send" || code == "relief_fund" || code == "profit_loss" || code == "effective_transaction") {
         $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").text(window.top.message.promo_auto['参与中']);
+    }
+}
+
+/**
+ * 跳到优惠记录
+ */
+function goPromoDetail(obj,options){
+    if(isNative){
+        nativeGotoPromoRecordPage();
+    }else{
+        goToUrl(options.src);
     }
 }

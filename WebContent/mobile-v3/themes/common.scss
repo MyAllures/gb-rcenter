@@ -2750,7 +2750,7 @@ body.audit{color: #000;
         width: auto;margin-top: 10px;
     }    
     .mine-table table {
-        width: 100%;background-color: #353741;
+        width: 100%;background-color: #fff;
         border: 1px solid #efeff4;
     }    
     .mine-table table tr {
@@ -2758,7 +2758,7 @@ body.audit{color: #000;
     }
     .mine-table table tr td {
         padding: 5px;
-        color: #fff;
+        color: #333;
         font-size: 10px;
         line-height: 16px;
         text-align: center;
@@ -3767,4 +3767,8 @@ body.mine-user{color: #000;
         color: #fff;
         font-size: 12px
     }
+}
+// app头部空白修复
+.mui-app{
+    .app-fix-top{height: 20px;top: -20px;position: fixed;left: 0;right: 0;z-index: 997;background: #1766bb;}
 }

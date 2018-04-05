@@ -42,9 +42,6 @@ ul {
 
 li {
   list-style: none; }
-li.mui-table-view-cell {
-  color: #000!important;
-}
 
 .mui-bar .mui-icon:active {
   opacity: 1; }
@@ -3711,13 +3708,13 @@ body.audit {
     margin-top: 10px; }
   body.audit .mine-table table {
     width: 100%;
-    background-color: #353741;
+    background-color: #fff;
     border: 1px solid #efeff4; }
   body.audit .mine-table table tr {
     border-bottom: 1px solid #f2f2f2; }
   body.audit .mine-table table tr td {
     padding: 5px;
-    color: #fff;
+    color: #333;
     font-size: 10px;
     line-height: 16px;
     text-align: center; }
@@ -4771,8 +4768,14 @@ body.mine-user {
   background: #999;
   color: #fff;
   font-size: 12px; }
-.content-casino-transfer .game-item .game-detail h1{color: #fff!important;}
-.content-casino-transfer .game-item .game-detail .g-money{color: #fff!important;}
-.content-casino-transfer .game-description p{color: #fff!important;}
+
+.mui-app .app-fix-top {
+  height: 20px;
+  top: -20px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 997;
+  background: #1766bb; }
 
 /*# sourceMappingURL=common.css.map */

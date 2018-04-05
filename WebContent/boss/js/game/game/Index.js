@@ -24,6 +24,22 @@ define(['common/BaseListPage'], function (BaseListPage) {
         },
         getIds: function () {
             return selectIds;
+        },
+        saveSync:function () {
+            window.alert(this);
+            window.top.topPage.ajax({
+                url: root+'gameI18n/saveSync.html',
+                cache: false,
+                type: "GET",
+                success: function (data) {
+                    window.alert(data.msg);
+                    $(e.currentTarget).unlock();
+                },
+                error: function (data) {
+                    $(e.currentTarget).unlock();
+                }
+            });
+            $(e.currentTarget).unlock();
         }
     })
 })
