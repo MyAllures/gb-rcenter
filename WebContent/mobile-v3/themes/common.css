@@ -431,7 +431,7 @@ body.deposit .mine-form-nobg { background-color: transparent; border-top: 1px so
 body.deposit .mine-form-nobg:before { display: none; }
 body.deposit .mine-form-nobg:after { display: none; }
 body.deposit .mine-form-nobg .mui-icon-reload { color: #666666 !important; font-size: 18px; }
-body.deposit .modes-payment > .ct a i.pay { background: url(images/pay_bank_b.png) no-repeat; background-size: 25px; display: inline-block; width: 26px; height: 20px; vertical-align: middle; }
+body.deposit .modes-payment > .ct a i.pay { background: url(images/pay_bank_b.png) no-repeat; background-size: 25px; display: inline-block; width: 26px; height: 20px; vertical-align: top; margin-top: 8px; }
 body.deposit .modes-payment > .ct a i.pay.unionpay { background-position: 0 -3px; }
 body.deposit .modes-payment > .ct a i.pay.onlinepay { background-position: 0 -3px; }
 body.deposit .modes-payment > .ct a i.pay.wechatpay { background-position: 0px -26px; }
