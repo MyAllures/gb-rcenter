@@ -1352,6 +1352,9 @@ body.cash-detail .gb-bankcard > .ct > .ct p span { color: #999999; white-space: 
 body.cash-detail .gb-bankcard > .ct > .ct p font { width: 100%; }
 body.cash-detail .gb-bankcard > .ct > p a.copy, body.cash-detail .gb-bankcard > .ct > .ct p a.copy { float: right; background: #e0efff; padding: 0 5px; border-radius: 3px; color: #569ff1; font-size: 12px; white-space: nowrap; height: 22px; line-height: 22px; margin-left: 5px; }
 body.cash-detail .login-info { color: #fff; }
+body.cash-detail .fail-reason.mui-input-row { height: auto; }
+body.cash-detail .fail-reason.mui-input-row > label { float: none; }
+body.cash-detail .fail-reason.mui-input-row > .ct { float: none; width: auto; text-align: left; margin: 0 15px; padding: 0; }
 
 /* exchange */
 body.exchange { color: #000; }

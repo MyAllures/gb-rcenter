@@ -3013,6 +3013,12 @@ body.cash-detail{color: #000;
         margin-left: 5px;
     }    
     .login-info{color: #fff;}   
+    .fail-reason{
+        &.mui-input-row{height: auto;
+            &>label{float: none;}
+            &>.ct{float: none;   width: auto;    text-align: left;    margin: 0 15px;    padding: 0;}
+        }
+    }
 }
 /* exchange */
 body.exchange{color: #000;
