@@ -105,6 +105,20 @@ define(['common/BaseListPage', 'autocompleter'], function (BaseListPage) {
             }
         },
         /**
+         * 重置表单
+         * @param event
+         */
+        reset:function (event) {
+            $("[name='search.siteId']").val('');
+            $("[name='search.OrderId']").val('')
+            $("[name='search.objectParams']").val('')
+            $("input[name='search.description']").siblings("button").find("span[prompt='prompt']").text("请选择");
+            $("input[name='search.startTime']").val('');
+            $("input[name='search.endTime']").val('');
+            $(event.currentTarget).unlock();
+            this.query();
+        },
+        /**
          * 重新计算分页
          * @param e
          */
