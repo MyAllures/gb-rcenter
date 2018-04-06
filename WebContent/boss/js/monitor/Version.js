@@ -22,31 +22,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $("#serviceUl li a").on("click", function (e) {
                 var $href = $(this).attr("data-href");
                 $("#serviceDiv .tab-content").addClass("hide");
-                $("#serviceDiv #tab-content" + $(this).attr("index")).load(root + $href);
+                //$("#serviceDiv #tab-content" + $(this).attr("index")).load(root + $href);
                 $("#serviceDiv #tab-content" + $(this).attr("index")).removeClass("hide");
-            });
-
-            $("#appUl li a").on("click", function (e) {
-                var $href = $(this).attr("data-href");
-                $("#appDiv .tab-content").addClass("hide");
-                $("#appDiv #tab-content" + $(this).attr("index")).load(root + $href);
-                $("#appDiv #tab-content" + $(this).attr("index")).removeClass("hide");
-            });
-
-            $(this.formSelector).on("click", "table thead input[type=checkbox]", function (e) {
-                e.page = _this;
-                $("tbody input[type=checkbox]", _this.getFirstParentByTag(e, "table")).each(function (node, obj) {
-                    var $this = $(obj);
-                    if (e.currentTarget.checked && !$this.prop("disabled")) {
-                        $this.parents('tr').addClass('open');
-                    }
-                    else {
-                        $this.parents('tr').removeClass('open');
-                    }
-                    if (!$this.prop("disabled")) {
-                        obj.checked = e.currentTarget.checked;
-                    }
-                });
             });
         },
         /**
