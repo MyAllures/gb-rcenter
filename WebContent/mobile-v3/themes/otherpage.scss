@@ -425,5 +425,9 @@ height: 44px;}
             }
         }
 }
-.allgame-popover{width: 160px;}
+.allgame-popover{width: 160px;
+    .mui-table-view-cell{
+        a{color: #333;}
+    }
+}
 .allgame-scroll{height: 300px;margin: 0 !important;    background: #fff;}

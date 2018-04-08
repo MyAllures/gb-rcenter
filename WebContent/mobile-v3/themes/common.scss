@@ -480,7 +480,9 @@ li{
                     input[type=checkbox]{    left: 0;   top: 9px;
                         &:before{font-size: 24px;    color: #1766bb;}
                     }
-                    a{color: #999;float: left;line-height: 45px;margin-left: 30px;}
+                    a{color: #999;float: left;line-height: 45px;margin-left: 30px;
+                        &.link{    text-decoration: underline;color: #007aff;float: none;  margin-left: 5px;}
+                    }
                 }
                 .icon-star{    background: url(images/icon-star.png) no-repeat center/100%;    display: inline-block;    width: 12px;    height: 12px;    margin: 0 4px -1px;}
             }
@@ -1252,7 +1254,7 @@ body.deposit{
         
     /*存款页 选择支付方式：*/
     
-    .modes-payment >.ct a i.pay{background: url(images/pay_bank_b.png) no-repeat ;background-size:25px;display: inline-block;width:26px;height: 20px;vertical-align: middle;}
+    .modes-payment >.ct a i.pay{background: url(images/pay_bank_b.png) no-repeat ;background-size:25px;display: inline-block;width:26px;height: 20px;    vertical-align: top;   margin-top: 8px;}
     .modes-payment >.ct a i.pay.unionpay{background-position: 0 -3px;} 
     .modes-payment >.ct a i.pay.onlinepay{background-position: 0 -3px;}
     .modes-payment >.ct a i.pay.wechatpay{background-position: 0px -26px;}
@@ -3011,6 +3013,12 @@ body.cash-detail{color: #000;
         margin-left: 5px;
     }    
     .login-info{color: #fff;}   
+    .fail-reason{
+        &.mui-input-row{height: auto;
+            &>label{float: none;}
+            &>.ct{float: none;   width: auto;    text-align: left;    margin: 0 15px;    padding: 0;}
+        }
+    }
 }
 /* exchange */
 body.exchange{color: #000;
