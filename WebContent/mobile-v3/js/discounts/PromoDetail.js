@@ -57,7 +57,7 @@ function submitPromo(obj, options) {
 
 function promoCheck(obj, options) {
     var nowTime = new Date($("._now_time").attr("value")).getTime();
-    var $obj = $("button.submit");
+    var $obj = $(".submit");
     // var st = $obj.parent().parent().find("._vr_promo_ostart").attr("value");
     var st = $("._vr_promo_ostart").attr("value");
     var et = $("._vr_promo_oend").attr("value");
@@ -183,7 +183,7 @@ function doWin() {
 }
 
 function filterActyByPlayer(data) {
-    var $obj = $("button.submit");
+    var $obj = $(".submit");
     var startTimeObj = $('.mui-row ._vr_promo_ostart');
     var flag = new Date(startTimeObj.attr("value")) < new Date();
     var oldClass = $obj.data("oldClass");
