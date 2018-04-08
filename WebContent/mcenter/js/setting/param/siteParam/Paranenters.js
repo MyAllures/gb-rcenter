@@ -85,7 +85,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                     $(".smsTips1").removeClass("hidden");
                     $(".smsTips2").addClass("hidden");
                     //短信开关关闭，默认关闭下面的所有短信验证
-                    $("#phoneParam").val(false);
+                    $("#playerPhoneParam").val(false);
+                    $("#agentPhoneParam").val(false);
                     $("#recoverPasswordParam").val(false);
                     $("._smsSwitchIsShow").addClass("hidden");
                 }
@@ -95,11 +96,11 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             $('input[name="sms-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
                 var type=$(this).attr("typeName");
                 $("#"+type).val(state);
-                if(state){
+                /*if(state){
                     $("#isShow"+type).show();
                 }else{
                     $("#isShow"+type).hide();
-                }
+                }*/
             });
 
             //找回密码开关
