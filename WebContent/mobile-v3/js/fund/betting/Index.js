@@ -19,46 +19,45 @@ $(function () {
     getStatisticsData();
 });
 
+//搜索
+function selectData() {
+    pullfresh();
+}
+
 /*上拉请求数据*/
 function pullfresh() {
-    /*setTimeout(function () {
-        mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
-        var apiId = $("#api").attr("apiId");
-        var pageNumber = parseInt($("#api").attr("pageNumber"));
-        var lastPageNumber = parseInt($("#api").val());
-
-        if (pageNumber == lastPageNumber) {
-            mui('#pullfresh').pullRefresh().endPullupToRefresh(true);
-        }else{
-            loadData(apiId,pageNumber + 1,'');
-        }
-    }, 0);*/
-
-    var data = {
-        "paging.pageNumber": pageNumber,
-        "search.beginBetTime": beginTime,
-        "search.endBetTime": endTime
-    };
-    //pageNumber = t.pullRefreshUp(url, "content-list", pageNumber, "lastPageNumber", mui("#refreshContainer"), data, isReload);
-    var options = {
-        url:url,
-        type:'post',
-        data:data,
-        headers:{
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Soul-Requested-With': 'XMLHttpRequest'
-        },
-        success:function(data){
-            var info = document.getElementById("content-list");
-            info.innerHTML = data;
-
-        }
-    };
-    muiAjax(options);
+    beginTime = $("#beginTime").val();
+    endTime = $("#endTime").val();
+    var total = parseInt($("#hiddenTotalCount").val());
+    if (total <= pageNumber) {
+        mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
+        $(".mui-pull-bottom-pocket").addClass("mui-hidden");
+    } else {
+        var data = {
+            "paging.pageNumber": pageNumber,
+            "search.beginBetTime": beginTime,
+            "search.endBetTime": endTime
+        };
+        var options = {
+            url: url,
+            type: 'post',
+            data: data,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Soul-Requested-With': 'XMLHttpRequest'
+            },
+            success: function (data) {
+                var info = document.getElementById("content-list");
+                info.innerHTML = data;
+                pageNumber = pageNumber + 1;
+            }
+        };
+        muiAjax(options);
+    }
 }
 
 //开始时间
-function loadBeginTime(){
+function loadBeginTime() {
     var dtpicker = new mui.DtPicker({
         type: "date",
         value: $("#beginTime").val(),
@@ -74,7 +73,8 @@ function loadBeginTime(){
         dtpicker.dispose()
     })
 }
-function loadEndTime(){
+//结束时间
+function loadEndTime() {
     var dtpicker = new mui.DtPicker({
         type: "date",
         value: $("#endTime").val(),
@@ -86,20 +86,21 @@ function loadEndTime(){
         dtpicker.dispose()
     })
 }
-
+//时间格式化
 function formatDateTime(date, format) {
     var theMoment = moment();
     theMoment._d = date;
     return theMoment.format(format);
 }
 
-function loadData(){
+function loadData() {
     beginTime = $("#beginTime").val();
     endTime = $("#endTime").val();
     getStatisticsData();
-    mui.ajax(url, {
-        type: 'post',//HTTP请求类型
-        timeout: 10000,//超时时间设置为10秒；
+    var options = {
+        url: url,
+        type: 'post',
+        timeout: 10000,
         data: {"search.beginBetTime": beginTime, "search.endBetTime": endTime},
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -117,11 +118,13 @@ function loadData(){
             //异常处理；
             console.log(e);
         }
-    })
+    };
+    muiAjax(options);
 }
 
 function getStatisticsData() {
-    mui.ajax(root + "/fund/betting/statisticsData.html", {
+    var options = {
+        url: root + "/fund/betting/statisticsData.html",
         type: 'post',//HTTP请求类型
         timeout: 20000,//超时时间设置为10秒；
         data: {"search.beginBetTime": beginTime, "search.endBetTime": endTime},
@@ -148,5 +151,6 @@ function getStatisticsData() {
         error: function (e) {
             toast(window.top.message.fund_auto['加载失败']);
         }
-    })
+    };
+    muiAjax(options);
 }
