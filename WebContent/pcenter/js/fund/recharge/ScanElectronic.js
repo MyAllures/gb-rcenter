@@ -53,20 +53,20 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 _this.changeAmountMsg();
             });
         },
-        rechargeAmountMsg:function () {
+        rechargeAmountMsg: function () {
             var $account = $("input[name=account]:checked");
             var bankCode = $account.attr("bankCode");
             if ("easy_pay" == bankCode) {
                 $("#electronicDocument").hide();
                 $("#scanDocument").hide();
                 $("#easyPayDocument").show();
-            }else {
+            } else {
                 var depositType = $account.attr("depositType");
-                if(depositType == "scan"){
+                if (depositType == "scan") {
                     $("#electronicDocument").hide();
                     $("#scanDocument").show();
                     $("#easyPayDocument").hide();
-                }else{
+                } else {
                     $("#electronicDocument").show();
                     $("#scanDocument").hide();
                     $("#easyPayDocument").hide();
@@ -127,8 +127,8 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
 
                 //收款账号说明
                 var accountId = $target.attr("accountId");
-                var remark = $(".remark"+accountId).html();
-                if(remark) {
+                var remark = $(".remark" + accountId).html();
+                if (remark) {
                     $("#accountRemark").html(remark);
                     $("#accountRemark").show();
                 } else {
@@ -173,16 +173,16 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
             var accountInformation = $account.attr("accountInformation");
             var accountPrompt = $account.attr("accountPrompt");
             var $accountLabelId = $("#accountLabelId");
-            if(accountInformation){
-                $("#payerBankcardLabel").html(accountInformation+'：');
-            }else{
-                $("#payerBankcardLabel").html($accountLabelId.val()+'：');
+            if (accountInformation) {
+                $("#payerBankcardLabel").html(accountInformation + '：');
+            } else {
+                $("#payerBankcardLabel").html($accountLabelId.val() + '：');
             }
 
-            if(accountPrompt){
-                document.getElementById("result.payerBankcard").setAttribute("placeholder",accountPrompt);
-            }else{
-                document.getElementById("result.payerBankcard").setAttribute("placeholder",$accountLabelId.attr("prompt"));
+            if (accountPrompt) {
+                $("#result.payerBankcard").attr("placeholder", accountPrompt);
+            } else {
+                $("#result.payerBankcard").attr("placeholder", $accountLabelId.attr("prompt"));
             }
 
             var ele = $(this.formSelector).find("input[name='result.rechargeAmount']");
@@ -293,18 +293,18 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                     var $account = $("input[name=account]:checked");
                     var bankCode = $account.attr("bankCode");
                     if ("easy_pay" == bankCode) {
-                        _this.scanElectronicContinueDeposit(e, option,_window);
+                        _this.scanElectronicContinueDeposit(e, option, _window);
                     } else if (failureCount >= 3) {
                         _window.close();
                         $("#manyFailures").show();
                         $("#backdrop").show();
                     } else {
-                        _this.scanElectronicContinueDeposit(e, option,_window);
+                        _this.scanElectronicContinueDeposit(e, option, _window);
                     }
                 }
             });
         },
-        createWin:function () {
+        createWin: function () {
             var $account = $("input[name=account]:checked");
             var isThird = $account.attr("isThird");
             var _window;
@@ -318,11 +318,11 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
         /**
          * 非第三方存款多次错误提示
          */
-        scanElectronicContinueDeposit:function(e, option,_window){
+        scanElectronicContinueDeposit: function (e, option, _window) {
             $("#manyFailures").hide();
             $("#backdrop").hide();
             var data = ajaxMap["ajaxData"];
-            if(!_window){
+            if (!_window) {
                 _window = this.createWin();
             }
             var state = data.state;

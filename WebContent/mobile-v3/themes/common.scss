@@ -480,7 +480,9 @@ li{
                     input[type=checkbox]{    left: 0;   top: 9px;
                         &:before{font-size: 24px;    color: #1766bb;}
                     }
-                    a{color: #999;float: left;line-height: 45px;margin-left: 30px;}
+                    a{color: #999;float: left;line-height: 45px;margin-left: 30px;
+                        &.link{    text-decoration: underline;color: #007aff;float: none;  margin-left: 5px;}
+                    }
                 }
                 .icon-star{    background: url(images/icon-star.png) no-repeat center/100%;    display: inline-block;    width: 12px;    height: 12px;    margin: 0 4px -1px;}
             }
@@ -1252,7 +1254,7 @@ body.deposit{
         
     /*存款页 选择支付方式：*/
     
-    .modes-payment >.ct a i.pay{background: url(images/pay_bank_b.png) no-repeat ;background-size:25px;display: inline-block;width:26px;height: 20px;vertical-align: middle;}
+    .modes-payment >.ct a i.pay{background: url(images/pay_bank_b.png) no-repeat ;background-size:25px;display: inline-block;width:26px;height: 20px;    vertical-align: top;   margin-top: 8px;}
     .modes-payment >.ct a i.pay.unionpay{background-position: 0 -3px;} 
     .modes-payment >.ct a i.pay.onlinepay{background-position: 0 -3px;}
     .modes-payment >.ct a i.pay.wechatpay{background-position: 0px -26px;}
@@ -2599,6 +2601,22 @@ body.bankcard{
         line-height: 22px;
         margin-left: 5px;
     }  
+    /*存款页面优惠弹窗*/
+    .pro-window{width:320px !important; margin-top:-165px;margin-left:-160px;padding:15px;}
+    .pro-window h3{color:#1766bb;margin-bottom:30px;line-height: 16px;}
+    .pro-window .cont-text{line-height:20px;font-size: 12px;color:#666;}
+    .pro-window .cont-text p,.pro-window .text-pro p{color:#666;}
+    .pro-window .org{color:#f49e2e;font-size: 14px;}
+    .pro-window .text-pro ul{height:110px;overflow: hidden;position:relative;background:#e2e2e2;border-radius: 4px;}
+    .pro-window .text-pro li{padding:0 0 0 10px;line-height:16px;font-size: 12px;}
+    .pro-window .text-pro .text-warp{border-bottom: 1px dashed #d2d2d2;width: 100%;padding:5px 0;position: relative;}
+    .pro-window .text-pro li span{color:#666;display:inline-block;width:238px;word-wrap: break-word}
+    .pro-window .text-pro li input{width: 16px;height: 16px;position:absolute;top:20%;right:15px;}
+    .pro-btn{margin: 20px 0 0 10px;width:280px;}
+    .pro-btn a{font-size: 14px; margin: 0 5px; color: #fff; width:120px;height: 32px;border-radius: 4px;line-height: 32px;text-align: center;display: inline-block}
+    .pro-btn .next-btn{background:#1766bb;}
+    .pro-btn .agin-btn{background:#e2e2e2;color: #666;}
+    .pro-window .close{position:absolute;top:5px;right:5px;background:url(./images/close.png)no-repeat center center;width: 48px;height:48px;zoom:0.7;}    
 }
 /* 数字货币存款 */
 body.online-pay-sz{
@@ -3011,6 +3029,12 @@ body.cash-detail{color: #000;
         margin-left: 5px;
     }    
     .login-info{color: #fff;}   
+    .fail-reason{
+        &.mui-input-row{height: auto;
+            &>label{float: none;}
+            &>.ct{float: none;   width: auto;    text-align: left;    margin: 0 15px;    padding: 0;}
+        }
+    }
 }
 /* exchange */
 body.exchange{color: #000;
