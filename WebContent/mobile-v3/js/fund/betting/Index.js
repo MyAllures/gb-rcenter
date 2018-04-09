@@ -19,28 +19,22 @@ $(function () {
     getStatisticsData();
 });
 
-//搜索
-function selectData() {
-    pullfresh();
-}
-
 /*上拉请求数据*/
 function pullfresh() {
     beginTime = $("#beginTime").val();
     endTime = $("#endTime").val();
-    var total = parseInt($("#hiddenTotalCount").val());
-    if (total <= pageNumber) {
-        mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
-        $(".mui-pull-bottom-pocket").addClass("mui-hidden");
+    var total = parseInt($("#lastPageNumber").val());
+    if (total < pageNumber) {
+        //mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
     } else {
         var data = {
             "paging.pageNumber": pageNumber,
             "search.beginBetTime": beginTime,
             "search.endBetTime": endTime
         };
-        var options = {
-            url: url,
-            type: 'post',
+        mui.ajax(url, {
+            type: 'post',//HTTP请求类型
+            timeout: 10000,//超时时间设置为10秒；
             data: data,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -48,12 +42,33 @@ function pullfresh() {
             },
             success: function (data) {
                 var info = document.getElementById("content-list");
+                info.innerHTML = info.innerHTML + data;
+                pageNumber = pageNumber + 1;
+            },
+            error: function (e) {
+                mui.toast(window.top.message.fund_auto['加载失败']);
+                //异常处理；
+                console.log(e);
+            }
+        });
+        /*
+        var options = {
+            url: url,
+            type: 'POST',
+            data: data,
+            headers: {
+                "Soul-Requested-With":"XMLHttpRequest"
+            },
+            success: function (data) {
+                var info = document.getElementById("content-list");
                 info.innerHTML = data;
                 pageNumber = pageNumber + 1;
             }
         };
-        muiAjax(options);
+        muiAjax(options);*/
     }
+    $(".mui-pull-bottom-pocket").addClass("mui-hidden");
+    mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
 }
 
 //开始时间
@@ -94,6 +109,7 @@ function formatDateTime(date, format) {
 }
 
 function loadData() {
+    mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
     beginTime = $("#beginTime").val();
     endTime = $("#endTime").val();
     getStatisticsData();
