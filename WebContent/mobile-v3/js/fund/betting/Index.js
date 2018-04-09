@@ -97,10 +97,9 @@ function loadData() {
     beginTime = $("#beginTime").val();
     endTime = $("#endTime").val();
     getStatisticsData();
-    var options = {
-        url: url,
-        type: 'post',
-        timeout: 10000,
+    mui.ajax(url, {
+        type: 'post',//HTTP请求类型
+        timeout: 10000,//超时时间设置为10秒；
         data: {"search.beginBetTime": beginTime, "search.endBetTime": endTime},
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -110,16 +109,13 @@ function loadData() {
             var info = document.getElementById("content-list");
             info.innerHTML = data;
             pageNumber = 2;
-            //mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
-            //mui('#refreshContainer').pullRefresh().refresh(true);
         },
         error: function (e) {
-            toast(window.top.message.fund_auto['加载失败']);
+            mui.toast(window.top.message.fund_auto['加载失败']);
             //异常处理；
             console.log(e);
         }
-    };
-    muiAjax(options);
+    });
 }
 
 function getStatisticsData() {
