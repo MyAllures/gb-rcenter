@@ -92,7 +92,6 @@ define(['site/personInfo/BasePersonInfo'], function(BasePersonInfo) {
          */
         mySaveCallBack:function(e,options){
             var _this = this;
-            _this.closePage();
             var url = root+'/personInfo/index.html';
             window.top.topPage.ajax({
                 type: "POST",
@@ -100,9 +99,11 @@ define(['site/personInfo/BasePersonInfo'], function(BasePersonInfo) {
                 success: function(data) {
                     $("#mainFrame",window.top.document).html(data);
                     $(e.currentTarget).unlock();
+                    _this.closePage();
                 },
                 error: function(data) {
                     $(e.currentTarget).unlock();
+                    _this.closePage();
                 }
             });
         },

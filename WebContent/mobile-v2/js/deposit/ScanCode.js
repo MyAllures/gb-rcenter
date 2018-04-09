@@ -204,11 +204,12 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
         scanContinueDeposit:function(){
             var ajaxData = ajaxMap["ajaxData"];
             var _this = ajaxMap["_this"];
-            $(".mui-content").append(ajaxData);
+            $("body").append(ajaxData);
             var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
             if (unCheckSuccess === "true") {
                 var pop = $("#pop").attr("pop");
-                if (pop === "true") {
+                if (pop == "true") {
+                    mui(".applysale .mui-scroll-wrapper").scroll({scrollY: true, deceleration: 0.0005});
                     $("#activityId").val($("input[type=radio]:checked").val());
                     _this.bindReWriteAmount();
                     _this.deposit();
@@ -263,10 +264,11 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                 dataType: 'json',
                 success: function (data) {
                     if (!data) {
-                        _this.toast(window.top.message.deposit_auto["提交失败"], _this.back());
+                        _this.toast(window.top.message.deposit_auto["提交失败"]);
                         if (newWindow) {
                             newWindow.close();
                         }
+                        _this.linkDeposit();
                     } else {
                         var state = data.state;
                         $("input[name='gb.token']").val(data.token);

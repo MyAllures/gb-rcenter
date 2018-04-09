@@ -573,6 +573,8 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                 var restoreTop = obj[0].scrollTop;
                 var newValue= obj.val().substring(0, startPos) + $tag + obj.val().substring(endPos, obj.val().length);
                 $(obj).val(newValue);
+                var next = $(e.currentTarget).parent().next(".float_pic_list_item_link_type_value");
+                $(next).val(newValue);
             })
         },
 

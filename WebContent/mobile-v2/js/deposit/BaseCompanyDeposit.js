@@ -187,6 +187,7 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
                 },
                 error: function (xhr, type, errorThrown) {
                     _this.toast(window.top.message.deposit_auto['提交失败']);
+                    _this.linkDeposit();
                 }
             });
         },
