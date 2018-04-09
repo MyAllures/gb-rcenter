@@ -478,7 +478,7 @@ color: #6b88fe;
 .activity-content-bg{background-color: #32374f !important;}
 /*h5优惠页面*/
 .activity-content-bg.mui-content .gb-imgs h4{background-color: #4d87c5;color:#fff;padding: 5px 5px;border-radius: 5px;display: inline-block;}
-.activity-content-bg.mui-content .gb-imgs table{width:100%;}
+
 .activity-content-bg.mui-content .gb-imgs table th{color:#4d87c5;}
 .activity-content-bg.mui-content .gb-imgs table td{color:#ffffff;}
 .activity-content-bg.mui-content .gb-imgs table th,
