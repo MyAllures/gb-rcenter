@@ -1,0 +1,1181 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>:::疯狂水果盘:::</title>
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.base.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.cust.css">
+
+</head>
+<body class=cust>
+
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/custom-scrollbar/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_theme.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_yellow_theme.css"><nav class="navbar navbar-default navbar-fixed-top navbar-theme">
+    <div class="container-fluid">
+        <div id="header "><span class="pull-right rule-logo"> <img src="./ipl/images/game/rule/5058/gamelogo.png" height="50px"></span> <span class="mceNonEditable dict rule-header" title="GAME_HEADER"><span class="pull-left rule-title"><span class="tw">游戏说明</span><span class="en">Game Rule</span></span></span> <span class="pull-right rule-name rule-title tw mceNonEditable">疯狂水果盘</span></div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="main-box">
+    <div class="pull-right langSelect lang-select">
+        <select class="form-control select-lang" name="select-lang">
+            <option value='tw'> 繁中 </option>
+            <option value='cn'> 簡中 </option>
+            <option value='vn'> Vietnam </option>
+            <option value='th'> คนไทย </option>
+            <option value='kr'> 한국어 </option>
+            <option value='jp'> 日本語 </option>
+            <option value='id'> Indonesia </option>
+            <option value='es'> español </option>
+            <option value='us'> English </option>
+        </select>
+    </div>
+
+    <div class="container content"><span class="mceNonEditable dict" title="GAME_INFSTRUCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏玩法 </span><span class="title2">GAME INSTRUCTION </span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_RULE">游戏说明</span></h5>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[2]">疯狂水果盘为简单又容易上手的水果盘，联机方式分为单一联机、ALL全盘、ANY 777、ANY 7、ANY 777&7、第1线联机。 </span></p>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[13]">当游戏符合某些条件时，可进入樱桃游戏、SuperBAR游戏或耶诞钟游戏，获得联机分数。 </span></p>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[19]">并搭配POOL与EX.BONUS分数，使玩家获得更的多分数。</span></p>
+        <h5><span class="mceNonEditable dict" title="GAME_PROCEDURE">游戏流程</span></h5>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[5]">每次押注依序对8条联机产生作用，押注起押40分，满注80分；按开始后会个别转动，当全部停止后，符合赔率表即为中奖。</span></p>
+        <span class="btn btn-default pull-right top"><span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="ODDS"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">赔率表 </span><span class="title2">ODDS </span></span>
+        <h5><span class="mceNonEditable dict" title="SLINGLE_LINE">单一联机</span></h5>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[30]">(得分以每线押分× 赔率计算)</span></p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered rwd-table">
+                <thead>
+                <tr>
+                    <th class="text-center col-xs-5"><span class="mceNonEditable dict" title="SLINGLE_LINE">单一联机</span></th>
+                    <th class="text-center col-xs-2"><span class="mceNonEditable dict" title="TH_ODDS">赔率</span></th>
+                    <th class="text-center col-xs-5"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images1.gif" alt=""><img src="./ipl/images/5058/images1.gif"><img src="./ipl/images/5058/images1.gif" alt=""></p>
+                    </td>
+                    <td class="text-center">
+                        <p>400</p>
+                    </td>
+                    <td rowspan="15">
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[25]">当出现图形符合左方赔率表图标，可获得单一联机的赔率。</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[0]">若联机方式为3个相同之组件，即可进入SuperBAR游戏 ，会依联机数给予SuperBAR游戏的次数。若联机组件为BAR 1，则加送7次的 SuperBAR游戏。</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images1.gif"><img src="./ipl/images/5058/images1.gif"><img src="./ipl/images/5058/images2.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>252</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images1.gif"><img src="./ipl/images/5058/images2.gif"><img src="./ipl/images/5058/images2.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>250</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images2.gif" alt=""><img src="./ipl/images/5058/images2.gif"><img src="./ipl/images/5058/images2.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>200</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images3.gif"><img src="./ipl/images/5058/images3.gif"><img src="./ipl/images/5058/images3.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>100</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images4.gif"><img src="./ipl/images/5058/images4.gif"><img src="./ipl/images/5058/images4.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>50</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images5.gif"><img src="./ipl/images/5058/images5.gif"><img src="./ipl/images/5058/images5.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>30</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images6.gif"><img src="./ipl/images/5058/images6.gif"><img src="./ipl/images/5058/images6.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>20</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images7.gif"><img src="./ipl/images/5058/images7.gif"><img src="./ipl/images/5058/images7.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>18</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images8.gif"><img src="./ipl/images/5058/images8.gif"><img src="./ipl/images/5058/images8.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>14</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images9.gif"><img src="./ipl/images/5058/images9.gif"><img src="./ipl/images/5058/images9.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>10</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images155.gif"><img src="./ipl/images/5058/images157.gif"><img src="./ipl/images/5058/images156.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>10</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images10.gif"><img src="./ipl/images/5058/images10.gif"><img src="./ipl/images/5058/images10.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>10</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images10.gif"><img src="./ipl/images/5058/images10.gif"><img src="./ipl/images/5043/imagesany.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>5</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images10.gif"><img src="./ipl/images/5043/imagesany.gif"><img src="./ipl/images/5043/imagesany.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>2</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5><span class="mceNonEditable dict" title="ALL">ALL全盘</span></h5>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[32]">(得分以总押分 × 赔率计算)</span></p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered rwd-table">
+                <thead>
+                <tr>
+                    <th class="text-center col-xs-5"><span class="mceNonEditable dict" title="ALL">ALL全盘</span></th>
+                    <th class="text-center col-xs-2"><span class="mceNonEditable dict" title="TH_ODDS">赔率</span></th>
+                    <th class="text-center col-xs-5"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images3.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>500</p>
+                    </td>
+                    <td rowspan="11"><br>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[27]">当九宫格出现全部相同组件时，可获得ALL全盘的赔率。</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[17]">当九宫格为不同水果组件组成时，可获得 All Fruits 的赔率。</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images4.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>400</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images10.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>400</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images5.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>300</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images6.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>300</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images7.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>200</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images8.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>100</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images9.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>50</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images155.gif"><img src="./ipl/images/5058/images157.gif"><img src="./ipl/images/5058/images156.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>50</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><span>All Fruits</span><img src="./ipl/images/5058/images153.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>15</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><span>All Color</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>50</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5>ANY 777</h5>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[32]">(得分以总押分 × 赔率计算)</span></p>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[6]">(当ANY 777、ANY 7、ANY 777 & 7 奖项重复时，将取最高奖金为中奖项目)</span></p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered rwd-table">
+                <thead>
+                <tr>
+                    <th class="text-center col-xs-5"><span>ANY 777</span></th>
+                    <th class="text-center col-xs-2"><span class="mceNonEditable dict" title="TH_ODDS">赔率</span></th>
+                    <th class="text-center col-xs-5"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images1.gif" alt=""><span class="greenfont"> X 9</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>1200</p>
+                    </td>
+                    <td rowspan="8"><br>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[21]">当出现2个以上的777时，可获得ANY 777的赔率。</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 8</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>512</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 7</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>256</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 6</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>128</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 5</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>64</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 4</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>32</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 3</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>10</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 2</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>4</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5>ANY 7</h5>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[32]">(得分以总押分 × 赔率计算)</span></span></p>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[6]">(当ANY 777、ANY 7、ANY 777 & 7 奖项重复时，将取最高奖金为中奖项目)</span></p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered rwd-table">
+                <thead>
+                <tr>
+                    <th class="text-center col-xs-5"><span>ANY 7</span></th>
+                    <th class="text-center col-xs-2"><span class="mceNonEditable dict" title="TH_ODDS">赔率</span></th>
+                    <th class="text-center col-xs-5"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images2.gif" alt=""><span class="greenfont"> X 9</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>1000</p>
+                    </td>
+                    <td rowspan="8"><br>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[28]">当出现2个以上的7时，即可获得 ANY 7的赔率。</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 8</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>400</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 7</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>200</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 6</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>100</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 5</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>50</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 4</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>20</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 3</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>5</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 2</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>2</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5>ANY 777 &amp; 7</h5>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[32]">(得分以总押分 × 赔率计算)</span></span></p>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[6]">(当ANY 777、ANY 7、ANY 777 & 7 奖项重复时，将取最高奖金为中奖项目)</span></p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered rwd-table">
+                <thead>
+                <tr>
+                    <th class="text-center col-md-6">ANY 777 &amp; 7</th>
+                    <th class="text-center col-xs-2"><span class="mceNonEditable dict" title="TH_ODDS">赔率</span></th>
+                    <th class="text-center col-xs-5"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 8</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 1</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>1100</p>
+                    </td>
+                    <td rowspan="36"><br>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[8]">当出现2个以上的777和7组合时，即可获得　ANY 777& 7 对应的赔率。</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 7</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 2</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>1085</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 6</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 3</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>1060</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 5</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 4</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>1050</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 4</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 5</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>1040</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 3</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 6</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>1030</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 2</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 7</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>1020</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 1</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 8</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>1010</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 7</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 1</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>450</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 6</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 2</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>440</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 5</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 3</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>430</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 4</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 4</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>420</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 3</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 5</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>410</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 2</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 6</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>405</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 1</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 7</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>401</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 6</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 1</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>230</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 5</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 2</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>225</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 4</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 3</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>220</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 3</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 4</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>215</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 2</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 5</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>206</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 1</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 6</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>201</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 5</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 1</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>120</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 4</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 2</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>115</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 3</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 3</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>110</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 2</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 4</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>105</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 1</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 5</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>101</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 4</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 1</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>60</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 3</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 2</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>57</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 2</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 3</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>54</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 1</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 4</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>51</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 3</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 1</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>25</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 2</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 2</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>23</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 1</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 3</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>21</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 2</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 1</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>7</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 1</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 2</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>6</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p>&nbsp;</p>
+                        <div><img src="./ipl/images/5058/images1.gif"><span class="greenfont"> X 1</span><img src="./ipl/images/5058/images2.gif"><span class="greenfont"> X 1</span></div>
+                        <p>&nbsp;</p>
+                    </td>
+                    <td class="text-center">
+                        <p>3</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[40]">第1线联机</span></span></h5>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[18]">若中第1线联机，且联机组合为3个相同之组件。即可获得下方对应的分数： </span></span></p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered rwd-table">
+                <thead>
+                <tr>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span><span class="mceNonEditable rule_txt" id="rule_txt[46]">/押注</span></th>
+                    <th class="text-center">40</th>
+                    <th class="text-center">48</th>
+                    <th class="text-center">56</th>
+                    <th class="text-center">64</th>
+                    <th class="text-center">72</th>
+                    <th class="text-center">80</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images1.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>1500</p>
+                    </td>
+                    <td class="text-center">
+                        <p>1800</p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>2100</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>2400</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>2700</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>3000</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images2.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>1000</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>1200</p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>1400</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>1600</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>1800</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>2000</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images3.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>500</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>600</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>700</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>800</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>900</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>1000</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images4.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>400</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>480</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>560</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>640</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>720</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>800</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images6.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p><span>300</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>360</p>
+                    </td>
+                    <td class="text-center">
+                        <p>420</p>
+                    </td>
+                    <td class="text-center">
+                        <p>480</p>
+                    </td>
+                    <td class="text-center">
+                        <p>540</p>
+                    </td>
+                    <td class="text-center">
+                        <p>600</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images8.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>200</p>
+                    </td>
+                    <td class="text-center">
+                        <p>240</p>
+                    </td>
+                    <td class="text-center">
+                        <p>280</p>
+                    </td>
+                    <td class="text-center">
+                        <p>320</p>
+                    </td>
+                    <td class="text-center">
+                        <p>360</p>
+                    </td>
+                    <td class="text-center">
+                        <p>400</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5058/images9.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>100</p>
+                    </td>
+                    <td class="text-center">
+                        <p>120</p>
+                    </td>
+                    <td class="text-center">
+                        <p>140</p>
+                    </td>
+                    <td class="text-center">
+                        <p>160</p>
+                    </td>
+                    <td class="text-center">
+                        <p>180</p>
+                    </td>
+                    <td class="text-center">
+                        <p>200</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[44]">特别奖项</span></span></h5>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[23]">BET≧40时，且符合下方条件。即可进入对应的游戏： </span></span></p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered sp-table">
+                <thead>
+                <tr>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></th>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5058/jackpot1.jpg"></p>
+                    </td>
+                    <td class="text-left">
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[37]">樱桃+ANY联机</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[12]">当联机方式如左图时，最前方的数字会减1；当前方数字为0时，即获得联机分数与1次樱桃游戏。</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5058/jackpot2.jpg"></p>
+                    </td>
+                    <td class="text-left">
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[43]">樱桃联机</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[15]">当联机方式如左图时，即获得联机分数与1次SuperBAR游戏、1次樱桃游戏。</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5058/jackpot3.jpg"></p>
+                    </td>
+                    <td class="text-left">
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[41]">耶诞钟联机</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[4]">当联机方式如左图时，最前方的数字会减1；当前方数字为0时，即获得联机分数与1次SuperBAR游戏、2次耶诞钟游戏。</span></p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default table-responsive table-flowfix">
+            <table class="table table-bordered rwd-table">
+                <thead>
+                <tr>
+                    <th class="text-center" colspan="4"><span class="mceNonEditable dict" title="JACKPOT_SYMBOL">彩金标记(Jackpot)</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center" rowspan="4"><img src="./ipl/images/5058/imagesjp.gif" alt="image"></td>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/slot/grand9.gif" alt="image"></p>
+                        <p>Grand</p>
+                    </td>
+                    <td class="text-left" colspan="2" rowspan="4">
+                        <p><span class="mceNonEditable dict" title="JACKPOT_15">联机位置由左而右连续出现2个以上的彩金标记 → 获得Jackpot彩金。</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/slot/major9.gif" alt="image"></p>
+                        <p>Major</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/slot/minor9.gif" alt="image"></p>
+                        <p>Minor</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/slot/mini9.gif" alt="image"></p>
+                        <p>Mini</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5><span>POOL</span></h5>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[35]">分数初始值：330分(可累积)</span></span></p>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[39]">累积方式：</span></span></p>
+        <ul>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[9]">押满80分时，777出现在正中央的位置，且无其他777或7出现在其他位置，POOL+20分。 </span></li>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[11]">押满80分时，7出现在正中央的位置，且无其他7或777出现在其他位置，POOL+10分。</span></li>
+        </ul>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[42]">得奖方式：</span></span></p>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[7]">当特别奖项画面上的耶诞钟联机数字为0，且押满80分时，即可获得POOL。 得奖后，POOL回到初始值。</span></span></p>
+        <h5><span>EX.BONUS</span></h5>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[31]">分数初始值：500分(不可累积)</span></span></p>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[42]">得奖方式：</span></span></p>
+        <ul>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[10]">拉中All Fruits联机，且押满80分时，EX.BONUS画面的FRUITS次数即减1。 </span></li>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[3]">当EX.BONUS画面上的FRUIT数字为0，且押满80分时，即可获得EX.BONUS。 得奖后，FRUIT数字回到2。</span></li>
+        </ul>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[45]">樱桃游戏</span></span></h5>
+        <p><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[22]">(FREE Game，游戏会自动开始，且画面为粉红色)</span></span></p>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[16]">游戏组件：BAR 1 ~ 3、777、7、﹙背景﹚COLOR、樱桃</span></span></p>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[34]">说明： 游戏结束后，数字回到3。</span></span></p>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[36]">SuperBAR游戏</span></span></h5>
+        <p><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[24]">(FREE Game，游戏会自动开始，且画面为绿色)</span></span></p>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[14]">游戏组件：BAR 1 ~ 3、777、7、﹙背景﹚COLOR、SuperBAR</span></span></p>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[1]">特殊组件分数计算方式：SuperBAR的分数为10分。SuperBAR可与BAR 1 ~ 3构成联机，得分以 [单一联机] 的ANY BAR计算。 </span></span></p>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[38]">耶诞钟游戏</span></span></h5>
+        <p><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[26]">(FREE Game，游戏会自动开始，且画面为蓝色)</span></span></p>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[20]">游戏组件：BAR 1 ~ 3、777、7、﹙背景﹚COLOR、耶诞钟</span></span></p>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[29]">特殊组件分数计算方式：耶诞钟的分数为10分。</span></span></p>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[33]">说明：游戏结束后，数字回到2。</span></span></p>
+        <span class="btn btn-default pull-right top"><span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span><span class="sr-only"></span></span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="GAME_INTERFACE"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">介面说明 </span><span class="title2">GAME INTERFACE</span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_SCREEN">游戏画面</span></h5>
+        <p><img class="bigSizeimg" src="./ipl/images/game/rule/5058/cn/game_subpic03.jpg" alt="image"></p>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[45]">樱桃游戏</span></span></h5>
+        <p><img class="bigSizeimg" src="./ipl/images/game/rule/5058/cn/pink.png" alt="image"></p>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[36]">SuperBAR游戏</span></span></h5>
+        <p><img class="bigSizeimg" src="./ipl/images/game/rule/5058/cn/green.png" alt="image"></p>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[38]">耶诞钟游戏</span></span></h5>
+        <p><img class="bigSizeimg" src="./ipl/images/game/rule/5058/cn/blue.png" alt="image"></p>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="GAME_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏功能 </span><span class="title2">GAME FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_TOTAL_BET"><span class="orangefont base">下注分数(TOTAL BET) : </span>本局下注分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_LINE_BET_3"><span class="orangefont base">每线押注(LINE BET) : </span>每线押的分数，最多达10分</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_WIN"><span class="orangefont base">赢得分数(WIN) : </span>本局赢得分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_CREDIT"><span class="orangefont base">可用分数(CREDITS) : </span>显示目前可以游戏的分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXCHANGE_RATIO"><span class="orangefont base">分数兑换(CREDIT EXCHANGE) : </span>选择比例大小、开分和洗分</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_BETMAX_8"><span class="orangefont base">满线满注(MAX BET) : </span>直接押满8线，每线10分</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_AUTO_PLAY"><span class="orangefont base">自动开始(AUTO PLAY)/停止自动开始(STOP AUTO PLAY) : </span>选择自动开始或是停止自动开始</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SPIN"><span class="orangefont base">开始(SPIN)/停止(STOP) : </span>开始或是停止</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="BASIC_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">基本功能 </span><span class="title2">BASIC FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SN"><span class="orangefont base">局号(SN) : </span>游戏局号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_ID"><span class="orangefont base">会员帐号(USER ID) : </span>显示会员登入帐号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_DEPOSIT"><span class="orangefont base">存款(DEPOSIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_deposit.png" width="23" height="24" /> 钮，开启会员中心的存款功能</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SOUND"><span class="orangefont base">音效(SOUND) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_mute.png" width="23" height="24" /> 钮，启动或停止音效</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_MUSIC"><span class="orangefont base">音乐(MUSIC) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_bgm.png" width="23" height="24" /> 钮，启动或停止背景音乐</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HISTORY"><span class="orangefont base">历史纪录(HISTORY) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_history.png" width="23" height="24" /> 钮，历史下注纪录</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HELP"><span class="orangefont base">帮助(HELP) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_help.png" width="23" height="24" /> 钮，规则说明</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXIT"><span class="orangefont base">离开(EXIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_exit.png" width="23" height="24" /> 钮，离开本游戏，跳大厅窗口</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr></div>
+</div>
+<script src="./ipl/assets/vendor/jquery/jquery.min.js"></script>
+<script src="./ipl/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./ipl/assets/vendor/custom-scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./ipl/script/game/game_rule.js"></script>
+
+</body>
+</html>

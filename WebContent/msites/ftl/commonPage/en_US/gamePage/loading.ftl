@@ -37,6 +37,7 @@
     var apiTypeId = getlocationParam("apiType");
     var apiName = getApiName(apiId);
     $(".apiName").text(apiName);
+    var gameId = getlocationParam("gameId");
 
     $(function(){
         var isAutoPay = getCookie("isAutoPay");
@@ -82,11 +83,11 @@
             }
         })
     }
-    var dialog;
+    /*var dialog;*/
     function showTransferWin(data){
         //快速转账弹窗，待处理：转账成功后续请求
         var apiName = data.apiName;
-        dialog = BootstrapDialog.show({
+        /*dialog = BootstrapDialog.show({
             title: apiName + ' 快速转账',
             //closable: false, // <-- Default value is false
             draggable: true,
@@ -110,11 +111,29 @@
                 apiLoginReal(apiId,gameCode,apiTypeId);
                 //enterToGame();
             }
+        });*/
+        var apiName = layer.open({
+            content:'<div style="width: 400px;margin: 0 auto 10px;"><span style="color: #466488;">transfer out</span> <span style="background: #466488;color: #fff;width: 90px; display:  inline-block;text-align:  center;height:  33px;line-height: 33px;">my wallet</span><span id="walletBalance-value" style="background: #ddd;color: #00b7a4;display:  inline-block;width: 180px;text-align:  center;height:  33px;line-height: 33px;">'+data.walletBalance+'</span> <a href="javascript:refreshWalletBalance()"><span class=" gui gui-refresh" id="wallet-refresh-span"></span></a><a style="float:  right;" class="btn btn-primary" data-win-size="2" target="_blank" href="${data.contextInfo.playerCenterContext}#/fund/playerRecharge/recharge.html">deposit</a></div>' +
+            '<div style="width: 400px;margin: 0 auto 10px;"><span style="color: #466488;">transfer in</span>  <span id="api-name-div" style="background: #466488;color: #fff;width: 90px; display:  inline-block;text-align:  center;height:  33px;line-height: 33px;">'+data.apiName+'</span><span id="apiBalance-value" style="background: #ddd;color: #00b7a4;display:  inline-block;width: 180px;text-align:  center;height:  33px;line-height: 33px;">'+data.apiBalance+'</span> <a href="javascript:refreshApiBalance()"><span class="gui gui-refresh" id="api-refresh-span"></span></a></div>' +
+            '<div style="width: 400px;margin: 0 auto 10px;"><span style="background: #466488;color: #fff;width: 90px; display:  inline-block;text-align:  center;margin-left: 31px;height:  33px;line-height: 33px;">￥</span><input style="background: #ddd;color: #00b7a4;display:  inline-block;width: 180px;text-align:  center;vertical-align:  top;border:  0;height:  33px;line-height: 33px;" type="text" class="form-control" id="transferAmount" name="transferAmount" placeholder="Please enter an integer amount."> <span></span><input type="hidden" name="gb.token" id="token"></div>' +
+            '<div style="text-align:  center;width:400px;margin: 0 auto 10px;"><button class="btn btn-primary btn-block" type="button" id="confirm-btn" onclick="confirmTransction()"> <span class="gui gui-check-square-o"></span> transfer account         </button></div>' +
+            '<div style="text-align:  center;width: 400px;margin: 0 auto 10px;"><button class="btn btn-success btn-block" type="button" onclick="enterToGame()"><span class="gui gui-share"></span> enter game</button></div>'+
+            '<input type="hidden" name="gb.token" id="token">',
+            title:apiName + ' fast transfer',
+            area:['600px','285px'],
+            skin:'layui-layer-brand',
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("normal-dialog");
+                $("#token").val(data.token);
+            }
         });
     }
 
     function showRecharge(data){
-        dialog = BootstrapDialog.show({
+        /*dialog = BootstrapDialog.show({
             title: '余额提醒',
             draggable: true,
             type:  BootstrapDialog.TYPE_WARNING,
@@ -130,6 +149,23 @@
             onhide: function(dialogRef){
                 apiLoginReal(apiId,gameCode,apiTypeId);
                 //enterToGame();
+            }
+        });*/
+        var dialog = layer.open({
+            content:'<div style="width: 400px;margin: 0 auto 10px;"><span style="background: #466488;color: #fff;width: 90px;display:  inline-block;text-align:  center;height:  33px;line-height: 33px;">Your balance </span><span id="walletBalance-value" style="background: #ddd;color: #00b7a4;display:  inline-block;width: 280px;text-align:  center;height: 33px;line-height: 33px;">'+data.allBalance+'</span><a href="javascript:refreshWalletBalance()"><span class="gui gui-refresh pull-right" style="color: #337ab7;" id="wallet-refresh-span"></span></a></div>' +
+            '<div style="width: 400px;margin: 0 auto 10px;"><a  id="confirm-btn" class="btn btn-primary btn-block" target="_blank" href="${data.contextInfo.playerCenterContext}#/fund/playerRecharge/recharge.html"> <span class="gui gui-check-square-o"></span> deposit </a></div> '+
+            '<div style="width: 400px;margin: 0 auto 10px;"><button class="btn btn-success btn-block" type="button" onclick="autoPayLogin()"><span class="gui gui-share"></span> enter game</button></div>',
+            title:'balance remind',
+            area:['600px','285px'],
+            skin:'layui-layer-brand',
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("normal-dialog");
+            },
+            end: function () {
+                apiLoginReal(apiId,gameCode,apiTypeId);
             }
         });
     }
@@ -226,7 +262,7 @@
     }
 
     function tryAgain(data){
-        var bdDialog = BootstrapDialog.show({
+        /*var bdDialog = BootstrapDialog.show({
             title:'订单超时',
             type: BootstrapDialog.TYPE_WARNING,
             message: '非常抱歉，由于网络连接异常，本次订单已超时，建议您稍后再试！',
@@ -243,6 +279,34 @@
                     $("#confirm-btn").html('<span class="gui gui-check-square-o"></span> 确认转账');
                 }
             }]
+        });*/
+        var dialog =  layer.open({
+            content:'I am very sorry that this order has been timed out due to the abnormal network connection. I suggest you try again later!',
+            title:'order timeout',
+            skin:'layui-layer-brand',
+            area:['360px'],
+            btn:['try again','cancel'],
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("normal-dialog");
+                // 提示框按钮类型
+                if(!!btnRound){
+                    $(layer).addClass("dialog-btn-round");
+                }
+                if(!!btnBorder){
+                    $(layer).addClass("dialog-btn-border");
+                }
+            },
+            yes:function () {
+                layer.close(dialog);
+                reconnectTransfer(data.transactionNo);
+            },
+            btn2:function(){
+                layer.close(dialog);
+                $("#confirm-btn").html('<span class="gui gui-check-square-o"></span> 确认转账');
+            }
         });
     }
 

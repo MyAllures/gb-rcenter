@@ -100,15 +100,18 @@ header .header-form .header-panel .dropdown-menu>li{margin: 5px;}
 .apiicon.i-ebet{width:130px;height:150px;background-position:-650px -200px;}
 .apiicon.i-ds{width:130px;height:150px;background-position:-780px -200px;}
 .apiicon.i-opus-l{width:130px;height:150px;background-position:-910px -200px;}
-.apiicon.i-sun{width:130px;height:150px;background-position:-1040px -200px;}
+.apiicon.i-shenbo{width:130px;height:150px;background-position:-1040px -200px;}
 /*.apiicon.i-mg{width:130px;height:150px;background-position:-1300px -200px;}*/
 
 .apiicon.ssc{width:850px;background-position:0 -910px;}
 .apiicon.s-im{background-position:0 -350px;}
 .apiicon.s-hg{background-position:-280px -350px;}
 .apiicon.s-bb{background-position:-560px -350px;}
+.apiicon.s-rs{background-position:-840px -1247px;}
 .apiicon.s-sb{background-position:-840px -350px;}
 .apiicon.s-opus-s{background-position:0 -950px;}
+.apiicon.s-ysb{background-position:-560px -1250px;}
+
 .apiicon.s-xhg,.apiicon.s-dwt{background-position:-280px -950px;}
 .apiicon.c-pt{background-position:0 -500px;}
 .apiicon.c-bb{background-position:-280px -500px;}
@@ -123,8 +126,10 @@ header .header-form .header-panel .dropdown-menu>li{margin: 5px;}
 .apiicon.c-dt{background-position:0 -1100px;}
 .apiicon.c-gns{background-position:-280px -1100px;}
 .apiicon.c-prg{background-position:-560px -1100px;}
+.apiicon.c-mw{background-position:-280px -1250px;}
 .apiicon.c-by{background-position:-840px -1100px;}
 .apiicon.c-qp{background-position:0 -1250px;}
+.apiicon.-ky{background-position:0 -1250px;}
 
 .apiicon.l-chq{background-position:0 -800px;}
 .apiicon.l-bb{background-position:-280px -800px;}
@@ -388,6 +393,7 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 .main-sports1 .ball:first-child + .ball + .ball .s-icon { background-position: 0 -124px; }
 .main-sports1 .ball:first-child + .ball + .ball + .ball .s-icon { background-position: 0 -186px; }
 .main-sports1 .ball:first-child + .ball + .ball + .ball + .ball .s-icon { background-position: 0 -246px; }
+.main-sports1 .ball:first-child + .ball + .ball + .ball + .ball + .ball .s-icon { background-position: 0 -308px; }
 
 .main-sports1 .ball-wrap{display: table;table-layout: fixed;width: 100%;margin-top: 378px;}
 .main-sports1 .txt{font-size: 14px;color: #e2e2e2;margin-top: 117px;}
@@ -429,7 +435,7 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 .main-live .btn-live > span.gui { display: block; }
 
 /* game-item */
-.game-item { display: inline-block; width: 204px; height: 220px; margin: 0 auto 10px; background: #10101a; border-radius: 3px 3px 0 0; }
+.game-item { display: inline-block; width: 204px; height: 220px; margin: 0 auto 10px; border-radius: 3px 3px 0 0; }
 .game-item:hover .item .game-img img { -webkit-transform: scale(1.1); -ms-transform: scale(1.1); transform: scale(1.1); }
 
 .game-item .item { width: 204px; height: 143px; position: relative; display: block; overflow: hidden; background: #121212; border-radius: 3px; padding: 5px; }
@@ -460,34 +466,6 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 /*========== casino 电子 =================*/
 .main-casino .notice { margin-top: 0; }
 .main-casino .notice .title { margin-top: -10px; background: url(images/notice-tit-bg.png) center 4px no-repeat; }
-.main-casino .api-tabs { background: #10101a url(images/api-bg.png) repeat-x; padding: 0; border: 0; height: 70px; }
-.main-casino .api-tabs > li.active,.main-casino .api-tabs > li:hover  { background: #2a2e39; border: 0; }
-.main-casino .casino { background: url(images/api-bg.png) repeat-x; }
-.main-casino .game-list { padding: 26px 0; }
-.main-casino .game-list .row-match{margin: 0 10px;}
-.main-casino .casino-box { background: #2a2e39; }
-.main-casino .game-banner { height: 200px; }
-.main-casino .btn-search { background: #16559b; color: #fff; width: 63px; height: 40px; padding: 0; line-height: 40px; margin-right: 20px; }
-.main-casino .btn-search:hover { background: #1c6dc8; }
-.main-casino .casino-sorts { height: 44px; }
-.main-casino .casino-tabs .icon { background: url(images/casino-spri.png) no-repeat; display: inline-block; }
-.main-casino .casino-tabs .icon.mg { width: 134px; height: 46px; background-position: 0 0; }
-.main-casino .casino-tabs .icon.pt { width: 134px; height: 46px; background-position: 0 -44px; }
-.main-casino .casino-tabs .icon.ag { width: 134px; height: 46px; background-position: 0 -90px; }
-.main-casino .casino-tabs .icon.nyx { width: 134px; height: 46px; background-position: 0 -140px; }
-.main-casino .casino-tabs .icon.bb { width: 134px; height: 46px; background-position: 0 -182px; }
-.main-casino .casino-tabs .icon.hb { width: 134px; height: 46px; background-position: 0 -227px; }
-.main-casino .casino-tabs .icon.bsg { width: 134px; height: 46px; background-position: 0 -273px; }
-.main-casino .casino-tabs .icon.sg { width: 134px; height: 46px; background-position: 0 -319px; }
-.main-casino .casino-tabs .icon.png { width: 134px; height: 46px; background-position: 0 -368px; }
-.main-casino .casino-tabs .icon.gg { width: 134px; height: 46px; background-position: 0 -414px; }
-.main-casino .casino-tabs .icon.dt { width: 134px; height: 46px; background-position: 0 -460px; }
-
-.main-casino .casino-sorts .nav-tabs { float: left; border: none; }
-.main-casino .casino-sorts .nav-tabs > li > a { color: #fff; padding: 8px 15px; width: 98px; height: 40px; padding: 0; text-align: center; line-height: 40px; font-size: 14px; }
-.main-casino .casino-sorts .nav-tabs > li > a:hover, .main-casino .casino-sorts .nav-tabs > li.active > a { border-color: transparent; color: #fff; background-color: #16559b; }
-.main-casino .casino-sorts .search-box { float: right; margin-top: 4px; }
-.main-casino .casino-sorts .form-control { width: 200px; height: 40px; color: #fff; background-color: #999; border: 0; }
 
 .carousel-inner .api-tabs>li>a:link{height:68px;line-height: 68px;}
 .carousel-inner .casino-tabs>li>a span{background: url(images/casino-spri.png) center no-repeat; width: 134px; height: 46px;display:inline-block;margin: 0 auto;}
@@ -538,14 +516,14 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 .main-lottery .game-item .item .game-img { width: 245px; height: 218px; position: absolute; overflow: hidden; z-index: 0; text-align: center; line-height: 218px; }
 
 .main-lottery .game-list{margin: 30px 0;border: 1px solid #888d9c;}
-
+.main-lottery .carousel-inner .api-tabs>li>a:link,.main-lottery .api-tabs>li>a:visited,.main-lottery .api-tabs>.disabled:hover>a {    height: 65px;    line-height: 65px;}
 /*========== promo 优惠 =================*/
 .main-promo .notice { margin-top: 0; }
 .main-promo .notice .title { margin-top: -10px; background: url(images/notice-tit-bg.png) center 4px no-repeat; }
 .main-promo .promo .container { background: #212531; padding: 20px; margin-bottom: 40px; }
-.main-promo .promo-sorts { margin-bottom: 20px; border-bottom: 1px solid #343b4e; padding-bottom: 20px; }
+.main-promo .promo-sorts { margin-bottom: 20px; border-bottom: 1px solid #343b4e; padding-bottom: 20px; };}
 .main-promo .promo-sorts li + li { padding: 0; }
-.main-promo .promo-sorts a { display: block; height: 40px; padding: 0 20px; line-height: 40px; font-size: 16px; color: #fefefe; width: 150px; text-align: center; }
+.main-promo .promo-sorts a { display: block; height: 40px; line-height: 40px; font-size: 16px; color: #fefefe; width: 160px;padding: 0 20px; text-align: center;text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
 .main-promo .promo-sorts a:hover, .main-promo .promo-sorts .active a { background-color: #18579c; color: #fefefe; border-radius: 20px; }
 .main-promo .promo .promo-summary { margin-bottom: 10px; background-color: #242424; background-color: rgba(17, 17, 17, 0.6); }
 .main-promo .promo .promo-summary .subtitle { font-size: 24px; padding: 5px 0; }
@@ -795,3 +773,105 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 	96%{transform:translate(0px,-1px) rotate(-0.5deg)}
 	98%{transform:translate(0px,-1px) rotate(-0.5deg)}
 }
+
+
+.main-promo { padding: 20px; width: 1200px; margin: 0 auto; }
+.main-promo a { text-decoration: none; }
+.main-promo.theme-black { background: #111; }
+.main-promo.theme-black .promo-top-bar { background: #2e2e2e; }
+.main-promo.theme-black .promo-top-bar > ul li a { color: #a1a1a1; }
+.main-promo.theme-black .promo-top-bar > ul li:hover { background: #373737; }
+.main-promo.theme-black .promo-top-bar > ul li.active { background: #1e9fff; }
+.main-promo.theme-black .promo-top-bar > ul li.active a { color: #fff; }
+.main-promo.theme-black .promo-top-bar > ul li.active:after { border-top: 5px solid #1e9fff; }
+.main-promo.theme-black .promo-top-bar .search-bar .input-wrap { background: #252525; border: 1px solid #5c5c5c; }
+.main-promo.theme-black .promo-top-bar .search-bar .input-wrap input { color: #fff; }
+.main-promo.theme-black .promo-top-bar .search-bar .input-wrap .icon-search { background: url(images/black/icon-search.png) no-repeat; }
+.main-promo.theme-black .promo-top-bar .search-bar .btn-search { background: #1ac07e; border: 1px solid #12ad63; }
+.main-promo.theme-black .list-type1 .promo-item { background: #1f1f1f; border: 1px solid #313131; }
+.main-promo.theme-black .list-type1 .promo-item .shadow { background: rgba(0, 0, 0, 0.8); }
+.main-promo.theme-black .list-type1 .promo-item .shadow .btn-detail { color: #fff; }
+.main-promo.theme-black .list-type1 .promo-item .shadow .btn-detail .icon-detail { background: url(images/black/icon-detail.png); }
+.main-promo.theme-black .list-type1 .promo-item .shadow .btn-txt { color: #fff; }
+.main-promo.theme-black .list-type2 .promo-item { background: #1f1f1f; border: 1px solid #313131; }
+.main-promo.theme-black .list-type2 .promo-item .shadow { background: url(images/black/shadow-bg.png); }
+.main-promo.theme-black .list-type2 .promo-item .shadow .btn-detail { color: #fff; }
+.main-promo.theme-black .list-type2 .promo-item .shadow .btn-detail .icon-detail { background: url(images/black/icon-detail.png); }
+.main-promo.theme-black .list-type2 .promo-item .shadow .btn-detail.open .icon-detail { background: url(images/black/icon-detail-open.png); }
+.main-promo.theme-black .list-type2 .promo-item .shadow .btn-txt { color: #fff; }
+.main-promo.theme-black .list-type2 .promo-item .promo-detail { background: #313131; }
+.main-promo.theme-black .list-type2 .promo-item .promo-detail .tit { color: #d6d6d6; border-bottom: 1px solid #404040; }
+.main-promo.theme-black .list-type2 .promo-item .promo-detail .content { color: #a1a1a1; }
+.main-promo.theme-white { background: #fff; }
+.main-promo.theme-white .promo-top-bar { background: #f2f2f2; border: 1px solid #ddd; }
+.main-promo.theme-white .promo-top-bar > ul li a { color: #a1a1a1; }
+.main-promo.theme-white .promo-top-bar > ul li:hover { background: #e3e3e3; }
+.main-promo.theme-white .promo-top-bar > ul li.active { background: #1e9fff; }
+.main-promo.theme-white .promo-top-bar > ul li.active a { color: #fff; }
+.main-promo.theme-white .promo-top-bar > ul li.active:after { border-top: 5px solid #1e9fff; }
+.main-promo.theme-white .promo-top-bar .search-bar .input-wrap { background: #fff; border: 1px solid #c7c7c7; }
+.main-promo.theme-white .promo-top-bar .search-bar .input-wrap input { color: #fff; }
+.main-promo.theme-white .promo-top-bar .search-bar .input-wrap .icon-search { background: url(images/black/icon-search.png) no-repeat; }
+.main-promo.theme-white .promo-top-bar .search-bar .btn-search { background: #1ac07e; border: 1px solid #12ad63; }
+.main-promo.theme-white .list-type1 .promo-item { background: #fff; border: 1px solid #ddd; }
+.main-promo.theme-white .list-type1 .promo-item .shadow { background: rgba(255, 255, 255, 0.85); }
+.main-promo.theme-white .list-type1 .promo-item .shadow .btn-detail { color: #666; }
+.main-promo.theme-white .list-type1 .promo-item .shadow .btn-detail .icon-detail { background: url(images/white/icon-detail.png); }
+.main-promo.theme-white .list-type1 .promo-item .shadow .btn-txt { color: #1e9fff; }
+.main-promo.theme-white .list-type2 .promo-item { background: #fff; border: 1px solid #ddd; }
+.main-promo.theme-white .list-type2 .promo-item .shadow { background: url(images/black/shadow-bg.png); }
+.main-promo.theme-white .list-type2 .promo-item .shadow .btn-detail { color: #666; }
+.main-promo.theme-white .list-type2 .promo-item .shadow .btn-detail .icon-detail { background: url(images/white/icon-detail.png); }
+.main-promo.theme-white .list-type2 .promo-item .shadow .btn-detail.open .icon-detail { background: url(images/white/icon-detail-open.png); }
+.main-promo.theme-white .list-type2 .promo-item .shadow .btn-txt { color: #fff; }
+.main-promo.theme-white .list-type2 .promo-item .promo-detail { background: #fff; }
+.main-promo.theme-white .list-type2 .promo-item .promo-detail .tit { color: #333; border-bottom: 1px solid #ebebeb; }
+.main-promo.theme-white .list-type2 .promo-item .promo-detail .content { color: #666; }
+.main-promo .promo-top-bar { height: 50px; font-size: 14px; margin-bottom: 18px; }
+.main-promo .promo-top-bar > ul { display: inline-block; margin: 0; padding: 4px; height: 100%; }
+.main-promo .promo-top-bar > ul li { display: inline-block; height: 100%; line-height: 42px; border-radius: 2px; padding: 0 15px; position: relative; }
+.main-promo .promo-top-bar > ul li a { text-decoration: none; }
+.main-promo .promo-top-bar > ul li.active:after { content: ''; border-left: 5px solid transparent; border-right: 5px solid transparent; position: absolute; bottom: -5px; left: 50%; margin-left: -5px; }
+.main-promo .promo-top-bar .search-bar { float: right; margin-top: 9px; margin-right: 10px; }
+.main-promo .promo-top-bar .search-bar .input-wrap { display: inline-block; width: 158px; height: 30px; border-radius: 4px; padding-right: 24px; position: relative; }
+.main-promo .promo-top-bar .search-bar .input-wrap input { -webkit-appearance: none; outline: 0; width: 100%; height: 100%; background: transparent; padding: 0 10px; border: 0; }
+.main-promo .promo-top-bar .search-bar .input-wrap .icon-search { width: 18px; height: 18px; position: absolute; right: 4px; top: 50%; margin-top: -9px; }
+.main-promo .promo-top-bar .search-bar .btn-search { display: inline-block; width: 80px; height: 32px; text-align: center; line-height: 30px; border-radius: 4px; font-size: 14px; color: #fff; text-decoration: none; }
+.main-promo .list-type1 .row { margin: 0 -8px; }
+.main-promo .list-type1 .row .col-3-1 { padding: 0 8px; }
+.main-promo .list-type1 .promo-item { padding: 3px; position: relative; margin-bottom: 22px; }
+.main-promo .list-type1 .promo-item img { width: 367px; height: 262px; }
+.main-promo .list-type1 .promo-item .promo-status { width: 92px; height: 26px; font-size: 14px; color: #fff; border-top-left-radius: 13px; border-bottom-left-radius: 13px; padding-left: 26px; position: absolute; top: 14px; right: 0; line-height: 26px; text-align: center; }
+.main-promo .list-type1 .promo-item .promo-status .icon-clock { display: inline-block; background: url(images/icon-clock.png); width: 22px; height: 22px; position: absolute; left: 2px; top: 2px; }
+.main-promo .list-type1 .promo-item .promo-status.processing { background: #1ac07e; }
+.main-promo .list-type1 .promo-item .promo-status.over { background: #b2b2b2; }
+.main-promo .list-type1 .promo-item .promo-status.noyet { background: #f4c22b; }
+.main-promo .list-type1 .promo-item .shadow { height: 64px; position: absolute; bottom: 3px; left: 3px; right: 3px; transition: all 0.3s; }
+.main-promo .list-type1 .promo-item .shadow .btn-apply { width: 99px; height: 34px; text-align: center; line-height: 34px; background: #1e9fff; color: #fff; font-size: 14px; position: absolute; bottom: 15px; left: 50%; margin-left: -50px; border-radius: 6px; cursor: pointer; }
+.main-promo .list-type1 .promo-item .shadow .btn-detail { display: none; width: 57px; height: 36px; position: absolute; top: 50%; margin-top: -18px; left: 50%; margin-left: -28px; padding-top: 24px; }
+.main-promo .list-type1 .promo-item .shadow .btn-detail .icon-detail { width: 19px; height: 14px; display: inline-block; position: absolute; top: 0; left: 50%; margin-left: -10px; }
+.main-promo .list-type1 .promo-item .shadow .btn-txt { position: absolute; left: 0; right: 0; text-align: center; bottom: 22px; }
+.main-promo .list-type1 .promo-item .promo-detail { display: none; }
+.main-promo .list-type1 .promo-item:hover .btn-detail { display: block; }
+.main-promo .list-type1 .promo-item:hover .shadow { height: 262px; }
+.main-promo .list-type2 .row { margin: 0 -8px; }
+.main-promo .list-type2 .row .col-3-1 { width: 100%; }
+.main-promo .list-type2 .promo-item { padding: 3px; position: relative; margin-bottom: 22px; }
+.main-promo .list-type2 .promo-item img { width: 100%; height: 162px; }
+.main-promo .list-type2 .promo-item .promo-status { width: 92px; height: 26px; font-size: 14px; color: #fff; border-top-left-radius: 13px; border-bottom-left-radius: 13px; padding-left: 26px; position: absolute; z-index: 2; top: 14px; right: 0; line-height: 26px; text-align: center; }
+.main-promo .list-type2 .promo-item .promo-status .icon-clock { display: inline-block; background: url(images/icon-clock.png); width: 22px; height: 22px; position: absolute; left: 2px; top: 2px; }
+.main-promo .list-type2 .promo-item .promo-status.processing { background: #1ac07e; }
+.main-promo .list-type2 .promo-item .promo-status.over { background: #b2b2b2; }
+.main-promo .list-type2 .promo-item .promo-status.noyet { background: #f4c22b; }
+.main-promo .list-type2 .promo-item .shadow { width: 226px; height: 162px; position: absolute; right: 0; top: 3px; }
+.main-promo .list-type2 .promo-item .shadow .btn-apply { width: 99px; height: 34px; text-align: center; line-height: 34px; background: #1e9fff; color: #fff; font-size: 14px; position: absolute; right: 22px; top: 50%; margin-top: -17px; border-radius: 6px; cursor: pointer; }
+.main-promo .list-type2 .promo-item .shadow .btn-detail { display: block; width: 86px; height: 22px; position: absolute; right: 30px; bottom: 36px; padding-left: 30px; }
+.main-promo .list-type2 .promo-item .shadow .btn-detail .icon-detail { width: 19px; height: 14px; display: inline-block; position: absolute; left: 6px; top: 4px; }
+.main-promo .list-type2 .promo-item .shadow .btn-detail.open .icon-detail { width: 12px; height: 14px; }
+.main-promo .list-type2 .promo-item .shadow .btn-txt { position: absolute; right: 20px; text-align: center; z-index: 2; top: 50%; margin-top: -10px; }
+.main-promo .list-type2 .promo-item .promo-detail { margin: 3px -3px -3px; padding: 30px 26px; display: none; }
+.main-promo .list-type2 .promo-item .promo-detail .tit { font-size: 22px; padding-bottom: 30px; margin-bottom: 26px; }
+.main-promo .list-type2 .promo-item .promo-detail .content { font-size: 14px; }
+.main-promo .list-type2 .promo-item .promo-detail .content p { margin-bottom: 22px; text-indent: 2em; }
+.main-promo .list-type2 .promo-item .promo-detail .content p:last-child { margin-bottom: 0; }
+

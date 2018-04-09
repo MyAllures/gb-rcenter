@@ -51,7 +51,7 @@
                         <h4>Automate device identification by simply opening the URL on your mobile device</h4>
                         <h5>Mobile Device Browser Enter URL:</h5>
                         <h3 class="url-text"></h3>
-                        <h5>Support：iPhone 5 / 5s / 6 / 6s / 7 / iPad / iPad Air</h5>
+                        <h5>Support：iPhone 6 / 6s / 7 / 8 / iPhoneX / iPad / iPad Air</h5>
                         <h5>millet / Meizu / Samsung / hammer / Huawei / ZTE / HTC / LG</h5>
                     </div>
                 </div>
@@ -70,7 +70,16 @@
                         <h1><#if data.siteInfo.siteName??>${data.siteInfo.siteName}</#if> mobile Android version</h1>
                         <h4>To provide you with the best quality Android client, easy betting, quick access</h4>
                         <h5>Download two-dimensional code (please use android phone sweep code )</h5>
-                        <div class="img"><span id="android_qr_code"></span></div>
+                        <div class="img">
+                            <div class="qcode-wrap">
+                                <span id="android_qr_code"></span>
+                                <div class="txt">
+                                    <div class="txt1">For Android</div>
+                                    <div class="txt2">请登入下载</div>
+                                </div>
+                                <a href="/"><img class="qcode-blur" src="${data.configInfo.ftlRootPath}commonPage/zh_CN/mobileTopic/images/qcode-blur.png"></a>
+                            </div>
+                        </div>
                         <h5>Support：millet / Meizu / Samsung / hammer / Huawei / ZTE / HTC / LG</h5>
                     </div>
                 </div>
@@ -85,8 +94,17 @@
                         <h1><#if data.siteInfo.siteName??>${data.siteInfo.siteName}</#if> mobile iOS</h1>
                         <h4>For the ultimate born iOS client, mobile accompanying, easy bet</h4>
                         <h5>Scan two-dimensional code</h5>
-                        <div class="img"><span id="ios_qr_code"></span></div>
-                        <h5>Support：iPhone 5 / 5s / 6 / 6s / 7 / iPad / iPad Air</h5>
+                        <div class="img">
+                            <div class="qcode-wrap">
+                                <span id="ios_qr_code"></span>
+                                <div class="txt">
+                                    <div class="txt1">For iOS</div>
+                                    <div class="txt2">请登入下载</div>
+                                </div>
+                                <a href="/"><img class="qcode-blur" src="${data.configInfo.ftlRootPath}commonPage/zh_CN/mobileTopic/images/qcode-blur.png"></a>
+                            </div>
+                        </div>
+                        <h5>Support：iPhone 6 / 6s / 7 / 8 / iPhoneX / iPad / iPad Air</h5>
                     </div>
                 </div>
                 <div class="right right7">
@@ -164,6 +182,19 @@
             }
         })
         $("#ios_qr_code").append("<img src="+ios_url+">");
+
+        // 判读是否登录
+        var isLogin = sessionStorage.is_login;
+        //后台设置是否登录后才能显示二维码
+        <#if data.loginShowQrCode?string("true","false") == 'true'>
+            if(isLogin=="true"){
+                $('.download-page').addClass("login");
+            }else{
+                $('.download-page').addClass("unlogin");
+            }
+        <#else>
+            $('.download-page').addClass("login");
+        </#if>
     });
     </script>
 </body>

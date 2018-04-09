@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>:::斗牛:::</title>
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.base.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.cust.css">
+
+</head>
+<body class=cust>
+
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/custom-scrollbar/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_theme.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_yellow_theme.css"><nav class="navbar navbar-default navbar-fixed-top navbar-theme">
+    <div class="container-fluid">
+        <div id="header "><span class="pull-right rule-logo"> <img src="./ipl/images/game/rule/5704/gamelogo.png" height="50px"></span> <span class="mceNonEditable dict rule-header" title="GAME_HEADER"><span class="pull-left rule-title"><span class="tw">游戏说明</span><span class="en">Game Rule</span></span></span> <span class="pull-right rule-name rule-title tw mceNonEditable">斗牛</span></div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="main-box">
+    <div class="pull-right langSelect lang-select">
+        <select class="form-control select-lang" name="select-lang">
+            <option value='tw'> 繁中 </option>
+            <option value='cn'> 簡中 </option>
+            <option value='vn'> Vietnam </option>
+            <option value='th'> คนไทย </option>
+            <option value='kr'> 한국어 </option>
+            <option value='jp'> 日本語 </option>
+            <option value='id'> Indonesia </option>
+            <option value='es'> español </option>
+            <option value='us'> English </option>
+        </select>
+    </div>
+
+    <div class="container content"><span class="mceNonEditable dict" title="GAME_INFSTRUCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏玩法 </span><span class="title2">GAME INSTRUCTION </span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_FEATURES">游戏特色</span></h5>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[0]">「斗牛」是一款结合扑克游戏牛牛的刮刮乐游戏。游戏结合一般刮刮乐兑奖玩法及独创的四层累积彩金分数，玩法简单、高达50,000奖额分数！</span></p>
+        <h5><span class="mceNonEditable dict" title="GAME_CONTENT">游戏内容</span></h5>
+        <ul>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[11]">游戏玩法：「斗牛」共有1种玩法：</span></li>
+        </ul>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle sp-table">
+                <thead>
+                <tr>
+                    <th class="text-center">&nbsp;</th>
+                    <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[30]">刮区</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[24]">说明</span></td>
+                    <td>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[12]">玩法：「比大小」</span></p>
+                        <span class="mceNonEditable rule_txt" id="rule_txt[2]">若刮出任一副『您的牌』大于庄家的牌，即得其对应奖额分数。</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[29]">图示 </span></td>
+                    <td><img src="./ipl/images/game/rule/5704/M001.png" alt="image"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[14]">彩金标记：</span></li>
+        </ul>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle sp-table">
+                <thead>
+                <tr>
+                    <th class="text-center" colspan="3"><span class="mceNonEditable rule_txt" id="rule_txt[18]">彩金标记</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5704/p_grand.png"></td>
+                    <td class="text-center">Grand</td>
+                    <td rowspan="4"><span class="mceNonEditable rule_txt" id="rule_txt[10]">刮出彩金标记 → 获得Jackpot彩金。</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5704/p_major.png" alt="image"></td>
+                    <td class="text-center">Major</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5704/p_minor.png" alt="image"></td>
+                    <td class="text-center">Minor</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5704/p_mini.png" alt="image"></td>
+                    <td class="text-center">Mini</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5><span class="mceNonEditable rule_txt" id="rule_txt[16]">游戏流程</span></h5>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[13]">步骤1：选择张数</span></p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle sp-table">
+                <thead>
+                <tr class="text-center">
+                    <th><span class="mceNonEditable rule_txt" id="rule_txt[26]">1张 </span></th>
+                    <th><span class="mceNonEditable rule_txt" id="rule_txt[25]">2张 </span></th>
+                    <th><span class="mceNonEditable rule_txt" id="rule_txt[28]">4张</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="text-center">
+                    <td><img src="./ipl/images/game/rule/5704/cn/game_subpic01.jpg"></td>
+                    <td><img src="./ipl/images/game/rule/5704/cn/game_subpic02.jpg"></td>
+                    <td><img src="./ipl/images/game/rule/5704/cn/game_subpic03.jpg"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[7]">步骤2：点击「开始」或是「自动开始」进行刮奖动作。</span></p>
+        <p><img src="./ipl/images/game/rule/5704/cn/game_subpic04.jpg"></p>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[8]">步骤3：选择「开始」，会员可手动进行刮开兑奖。</span></p>
+        <p><img src="./ipl/images/game/rule/5704/cn/game_subpic05.jpg"></p>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[5]">步骤4：点击「刮开兑奖」，则游戏自动帮您刮开全部刮区。</span></p>
+        <p><img src="./ipl/images/game/rule/5704/cn/game_subpic06.jpg"></p>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[1]">步骤5：选择「自动开始」，则由游戏自动帮会员刮除全部刮区。</span></p>
+        <p><img src="./ipl/images/game/rule/5704/cn/game_subpic07.jpg"></p>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[3]">※无论选择张数多少，都可以利用「自动开始」进行刮奖动作。 </span></p>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[4]">※刮开过程若遇断线、注销等状况，游戏将自动帮会员刮开。</span></p>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[6]">※张数为2或4张时，点击开始后游戏会自动帮会员刮开。</span></p>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="GAME_INTERFACE"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">介面说明 </span><span class="title2">GAME INTERFACE</span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_SCREEN">游戏画面</span></h5>
+        <ul>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[9]">主游戏画面(Main Game Screen)</span></li>
+        </ul>
+        <p><img src="./ipl/images/game/rule/5704/cn/game_subpic08.jpg" alt="image" width="534"></p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle sp-table">
+                <thead>
+                <tr class="text-center">
+                    <th><span class="mceNonEditable rule_txt" id="rule_txt[27]">区域</span></th>
+                    <th><span class="mceNonEditable rule_txt" id="rule_txt[24]">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="text-center">
+                    <td>A</td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[17]">游戏彩金</span></td>
+                </tr>
+                <tr class="text-center">
+                    <td>B</td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[22]">刮区1</span></td>
+                </tr>
+                <tr class="text-center">
+                    <td>C</td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[23]">刮区2</span></td>
+                </tr>
+                <tr class="text-center">
+                    <td>D</td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[21]">张数选择</span></td>
+                </tr>
+                <tr class="text-center">
+                    <td>E</td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[19]">游戏功能</span></td>
+                </tr>
+                <tr class="text-center">
+                    <td>F</td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[20]">基本信息</span></td>
+                </tr>
+                <tr class="text-center">
+                    <td>G</td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[15]">基本功能</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="GAME_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏功能 </span><span class="title2">GAME FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXCHANGE"><span class="orangefont base">分数兑换(CREDIT EXCHANGE) : </span>可在此选择开分与洗分</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_WIN"><span class="orangefont base">赢得分数(WIN) : </span>本局赢得分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_CREDIT"><span class="orangefont base">可用分数(CREDITS) : </span>显示目前可以游戏的分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_AUTO_PLAY_2"><span class="orangefont base">自动开始(AUTO)/停止自动开始(STOP AUTO) : </span>选择自动开始或是停止自动开始</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_START_SCRATCH_ALL"><span class="orangefont base">开始(START)/刮开兑奖(SCRATCH ALL) : </span>开始进行刮开与兑奖</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="BASIC_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">基本功能 </span><span class="title2">BASIC FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SN"><span class="orangefont base">局号(SN) : </span>游戏局号</span><span></span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_ID"><span class="orangefont base">会员帐号(USER ID) : </span>显示会员登入帐号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_DEPOSIT_3"><span class="orangefont base">存款(DEPOSIT) : </span>按下 <img src="./ipl/images/game/rule/btn/icon2_w2.jpg" width="23" height="24" /> 钮，开启会员中心的存款功能</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SOUND_3"><span class="orangefont base">音效(SOUND) : </span>按下 <img src="./ipl/images/game/rule/btn/icon2_w1.jpg" width="23" height="24" /> 钮，启动或停止音效</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_MUSIC_3"><span class="orangefont base">音乐(MUSIC) : </span>按下 <img src="./ipl/images/game/rule/btn/icon2_w6.jpg" width="23" height="24" /> 钮，启动或停止背景音乐</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HISTORY_3"><span class="orangefont base">历史纪录(HISTORY) : </span>按下 <img src="./ipl/images/game/rule/btn/icon2_w3.jpg" width="23" height="24" /> 钮，历史下注纪录</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HELP_3"><span class="orangefont base">帮助(HELP) : </span>按下 <img src="./ipl/images/game/rule/btn/icon2_w5.jpg" width="23" height="24" /> 钮，规则说明</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXIT_3"><span class="orangefont base">离开(EXIT) : </span>按下 <img src="./ipl/images/game/rule/btn/icon2_w8.jpg" width="23" height="24" /> 钮，离开本游戏，跳大厅窗口</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"><span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"><br></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr>
+    </div>
+</div>
+<script src="./ipl/assets/vendor/jquery/jquery.min.js"></script>
+<script src="./ipl/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./ipl/assets/vendor/custom-scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./ipl/script/game/game_rule.js"></script>
+
+
+</body>
+</html>

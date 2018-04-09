@@ -1,0 +1,1159 @@
+@charset "UTF-8";
+
+/* ==================== 覆蓋bootstrap css begin ==================== */
+
+body {
+    font-family: Arial, Helvetica, sans-serif, '微軟正黑體', '新細明體';
+}
+
+h1 {
+    font-size: 28px;
+    margin: 0;
+    line-height: 2em;
+}
+
+select.form-control {
+    font-size: 1.1em;
+    font-family: Verdana,Arial,sans-serif;
+}
+
+.table-bordered tbody > tr > td {
+    vertical-align: middle;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    z-index: 0;
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+.breadcrumb.hierarchy > li + li::before {
+    content: "\276F\00a0";
+    padding: 0;
+}
+
+.panel-default > .table > tbody > tr:first-child > td,
+.panel-default > .table > tbody > tr:first-child > th,
+.panel-default > .table > tfoot > tr:first-child > td,
+.panel-default > .table > tfoot > tr:first-child > th,
+.panel-default > .table > thead > tr:first-child > td,
+.panel-default > .table > thead > tr:first-child > th {
+    border-top: none;
+}
+
+/* ==================== 覆蓋bootstrap css end ==================== */
+
+
+/* ==================== 覆蓋jquery ui css begin ==================== */
+
+.ui-datepicker td .ui-state-highlight {
+    border: 1px solid #d3d3d3;
+    background: #e6e6e6 url("../../vendor/jquery-ui/images/ui-bg_glass_75_e6e6e6_1x400.png") 50% 50% repeat-x;
+}
+
+.ui-datepicker td .ui-state-active {
+    border: 1px solid #aaa;
+    background: #fff url("../../vendor/jquery-ui/images/ui-bg_glass_65_ffffff_1x400.png") 50% 50% repeat-x;
+    font-weight: normal;
+    color: #212121;
+}
+
+.ui-widget {
+    font-family: Arial, sans-serif;
+}
+
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+    font-family: Arial, sans-serif;
+}
+
+.ui-dialog {
+    overflow: visible;
+}
+
+
+/* ==================== 覆蓋jquery ui css end ==================== */
+
+
+/* ==================== 共用 css begin ==================== */
+
+
+/* 區塊靠左 */
+
+.col {
+    float: left;
+    margin: 5px 5px 5px 0;
+    line-height: 38px;
+}
+
+
+/* 修正下拉選單過高問題 */
+
+.col select {
+    margin-top: 3px;
+}
+
+
+/* 區塊靠左 */
+
+.fl {
+    float: left;
+}
+
+.form_table {
+    margin-bottom: 0;
+}
+
+
+/* 強制垂直置中 */
+
+.form_table > tbody > tr > th,
+.form_table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.form_table > tfoot > tr > td {
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+
+/* 按鈕說明-滑鼠樣式 */
+
+.explain_modal .icon36 {
+    cursor: default;
+}
+
+
+/* 修正顯示與footer重疊問題 */
+
+#footer-fix {
+    height: 40px;
+}
+
+
+/* alert 小間距 */
+
+.alert-minpadding {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+
+/* alert區塊的文字間距 */
+
+.alert-minpadding .text-label {
+    line-height: 32px;
+}
+
+
+/* 表格置中 */
+
+table.text-center th,
+table.text-center td,
+tr.text-center > th,
+tr.text-center > td {
+    text-align: center;
+}
+
+
+/* table 標題垂直置中 */
+
+.text-middle > thead > tr > th,
+.text-middle > tbody > tr > th,
+.text-middle > tfoot > tr > th,
+.text-middle > thead > tr > td,
+.text-middle > tbody > tr > td,
+.text-middle > tfoot > tr > td {
+    vertical-align: middle;
+}
+
+.panel:last-child {
+    margin-bottom: 0;
+}
+
+
+/* loading相關 */
+
+.loading_overlay {
+    background-color: #000000;
+    opacity: 0.3;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.loading_icon {
+    background-image: url("images/loader.gif");
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin: -50px 0 0 -50px;
+}
+
+.pagination-all {
+    text-align: right;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.tab-content {
+    display: table;
+    width: 100%;
+}
+
+
+/* ==================== 共用 css end ==================== */
+
+
+/* ================================== 圖示 begin ============================================ */
+
+a.icon36 {
+    outline: none;
+}
+
+.icon36 {
+    background-color: transparent;
+    background-image: url(images/icons_36x36.png);
+    display: inline-block;
+    border: none;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    cursor: pointer;
+    text-indent: -2000em;
+}
+
+.icon36-freeze {
+    background-position: 0px -40px;
+}
+
+.icon36-freeze:hover,
+.icon36-freeze-hover {
+    background-position: 0px 0px;
+}
+
+.icon36-unfreeze {
+    background-position: -40px -40px;
+}
+
+.icon36-unfreeze:hover,
+.icon36-unfreeze-hover {
+    background-position: -40px 0px;
+}
+
+.icon36-otp-disable {
+    background-position: -80px -40px;
+}
+
+.icon36-otp-disable:hover,
+.icon36-otp-disable-hover {
+    background-position: -80px 0px;
+}
+
+.icon36-otp-enable {
+    background-position: -120px -40px;
+}
+
+.icon36-otp-enable:hover,
+.icon36-otp-enable-hover {
+    background-position: -120px 0px;
+}
+
+.icon36-privilege {
+    background-position: -160px -40px;
+}
+
+.icon36-privilege:hover,
+.icon36-privilege-hover {
+    background-position: -160px 0px;
+}
+
+.icon36-payment {
+    background-position: -200px -40px;
+}
+
+.icon36-payment:hover,
+.icon36-payment-hover {
+    background-position: -200px 0px;
+}
+
+.icon36-api-enable {
+    background-position: -240px -40px;
+}
+
+.icon36-api-enable:hover,
+.icon36-api-enable-hover {
+    background-position: -240px 0px;
+}
+
+.icon36-api-disable {
+    background-position: -280px -40px;
+}
+
+.icon36-api-disable:hover,
+.icon36-api-disable-hover {
+    background-position: -280px 0px;
+}
+
+.icon36-enable {
+    background-position: -320px -40px;
+}
+
+.icon36-enable:hover,
+.icon36-enable-hover {
+    background-position: -320px 0px;
+}
+
+.icon36-disable {
+    background-position: -360px -40px;
+}
+
+.icon36-disable:hover,
+.icon36-disable-hover {
+    background-position: -360px 0px;
+}
+
+.icon36-edit {
+    background-position: -400px -40px;
+}
+
+.icon36-edit:hover,
+.icon36-edit-hover {
+    background-position: -400px 0px;
+}
+
+.icon36-detail {
+    background-position: -440px -40px;
+}
+
+.icon36-detail:hover,
+.icon36-detail-hover {
+    background-position: -440px 0px;
+}
+
+.icon36-ctl-record {
+    background-position: -480px -40px;
+}
+
+.icon36-ctl-record:hover,
+.icon36-ctl-record-hover {
+    background-position: -480px 0px;
+}
+
+.icon36-bet-record {
+    background-position: -520px -40px;
+}
+
+.icon36-bet-record:hover,
+.icon36-bet-record-hover {
+    background-position: -520px 0px;
+}
+
+.icon36-account-transfer {
+    background-position: -560px -40px;
+}
+
+.icon36-account-transfer:hover,
+.icon36-account-transfer-hover {
+    background-position: -560px 0px;
+}
+
+.icon36-delete {
+    background-position: -600px -40px;
+}
+
+.icon36-delete:hover,
+.icon36-delete-hover {
+    background-position: -600px 0px;
+}
+
+.icon36-qrcode {
+    background-position: -640px -40px;
+}
+
+.icon36-qrcode:hover,
+.icon36-qrcode-hover {
+    background-position: -640px 0px;
+}
+
+.icon36-password {
+    background-position: -680px -40px;
+}
+
+.icon36-password:hover,
+.icon36-password-hover {
+    background-position: -680px 0px;
+}
+
+.icon36-card-save {
+    background-position: -720px -40px;
+}
+
+.icon36-card-save:hover,
+.icon36-card-save-hover {
+    background-position: -720px 0px;
+}
+
+.icon36-stop-bet {
+    background-position: -760px -40px;
+}
+
+.icon36-stop-bet:hover,
+.icon36-stop-bet-hover {
+    background-position: -760px 0px;
+}
+
+.icon36-logout {
+    background-position: -800px -40px;
+}
+
+.icon36-logout:hover,
+.icon36-logout-hover {
+    background-position: -800px 0px;
+}
+
+.icon36-suspension {
+    background-position: -840px -40px;
+}
+
+.icon36-suspension:hover,
+.icon36-suspension-hover {
+    background-position: -840px 0px;
+}
+
+.icon36-remove-suspension {
+    background-position: -880px -40px;
+}
+
+.icon36-remove-suspension:hover,
+.icon36-remove-suspension-hover {
+    background-position: -880px 0px;
+}
+
+.icon36-bb-sport {
+    background-position: -920px -40px;
+}
+
+.icon36-bb-sport:hover,
+.icon36-bb-sport-hover {
+    background-position: -920px 0px;
+}
+
+.icon36-agent-data {
+    background-position: -960px -40px;
+}
+
+.icon36-agent-data:hover,
+.icon36-agent-data-hover {
+    background-position: -960px 0px;
+}
+
+.icon36-member-data {
+    background-position: -1000px -40px;
+}
+
+.icon36-member-data:hover,
+.icon36-member-data-hover {
+    background-position: -1000px 0px;
+}
+
+.icon36-card-save-record {
+    background-position: -1040px -40px;
+}
+
+.icon36-card-save-record:hover,
+.icon36-card-save-record-hover {
+    background-position: -1040px 0px;
+}
+
+.icon36-close-case {
+    background-position: -1080px -40px;
+}
+
+.icon36-close-case:hover,
+.icon36-close-case-hover {
+    background-position: -1080px 0px;
+}
+
+.icon36-recast {
+    background-position: -1120px -40px;
+}
+
+.icon36-recast:hover,
+.icon36-recast-hover {
+    background-position: -1120px 0px;
+}
+
+.icon36-switch-score {
+    background-position: -1160px -40px;
+}
+
+.icon36-switch-score:hover,
+.icon36-switch-score-hover {
+    background-position: -1160px 0px;
+}
+
+.icon36-switch-money {
+    background-position: -1200px -40px;
+}
+
+.icon36-switch-money:hover,
+.icon36-switch-money-hover {
+    background-position: -1200px 0px;
+}
+
+.icon36-bbcash {
+    background-position: -1240px -40px;
+}
+
+.icon36-bbcash:hover,
+.icon36-bbcash-hover {
+    background-position: -1240px 0px;
+}
+
+.icon36-managectl {
+    background-position: -1280px -40px;
+}
+
+.icon36-managectl:hover,
+.icon36-managectl-hover {
+    background-position: -1280px 0px;
+}
+
+.icon36-bulletin {
+    background-position: -1320px -40px;
+}
+
+.icon36-bulletin:hover,
+.icon36-bulletin-hover {
+    background-position: -1320px 0px;
+}
+
+.icon36-oddsset {
+    background-position: -1360px -40px;
+}
+
+.icon36-oddsset:hover,
+.icon36-oddsset-hover {
+    background-position: -1360px 0px;
+}
+
+.icon36-betjump {
+    background-position: -1400px -40px;
+}
+
+.icon36-betjump:hover,
+.icon36-betjump-hover {
+    background-position: -1400px 0px;
+}
+.icon36-modify-result{
+    background-position: -1440px -40px;
+}
+.icon36-modify-result:hover,
+.icon36-modify-result-hover{
+    background-position: -1440px 0px;
+}
+.icon36-cancel-wager{
+    background-position: -1480px -40px;
+}
+.icon36-cancel-wager:hover,
+.icon36-cancel-wager-hover{
+    background-position: -1480px 0px;
+}
+.icon36-serial-video{
+    background-position: -1520px -40px;
+}
+.icon36-serial-video:hover,
+.icon36-serial-video-hover{
+    background-position: -1520px 0px;
+}
+.icon36-junket{
+    background-position: -1560px -40px;
+}
+.icon36-junket:hover,
+.icon36-junket-hover{
+    background-position: -1560px 0px;
+}
+.icon36-cash-chip{
+    background-position: -1600px -40px;
+}
+.icon36-cash-chip:hover,
+.icon36-cash-chip-hover{
+    background-position: -1600px 0px;
+}
+a.icon48 {
+    outline: none;
+}
+
+.icon48 {
+    background-color: transparent;
+    background-image: url(images/icons_48x48.png);
+    border: none;
+    padding: 0;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    cursor: pointer;
+    text-indent: -2000em;
+}
+
+.icon48-freeze {
+    background-position: 0px -50px;
+}
+
+.icon48-freeze:hover,
+.icon48-freeze-hover {
+    background-position: 0px 0px;
+}
+
+.icon48-unfreeze {
+    background-position: -50px -50px;
+}
+
+.icon48-unfreeze:hover,
+.icon48-unfreeze-hover {
+    background-position: -50px 0px;
+}
+
+.icon48-otp-enable {
+    background-position: -100px -50px;
+}
+
+.icon48-otp-enable:hover,
+.icon48-otp-enable-hover {
+    background-position: -100px 0px;
+}
+
+.icon48-otp-disable {
+    background-position: -150px -50px;
+}
+
+.icon48-otp-disable:hover,
+.icon48-otp-disable-hover {
+    background-position: -150px 0px;
+}
+
+.icon48-privilege {
+    background-position: -200px -50px;
+}
+
+.icon48-privilege:hover,
+.icon48-privilege-hover {
+    background-position: -200px 0px;
+}
+
+.icon48-payment {
+    background-position: -250px -50px;
+}
+
+.icon48-payment:hover,
+.icon48-payment-hover {
+    background-position: -250px 0px;
+}
+
+.icon48-api-enable {
+    background-position: -300px -50px;
+}
+
+.icon48-api-enable:hover,
+.icon48-api-enable-hover {
+    background-position: -300px 0px;
+}
+
+.icon48-api-disable {
+    background-position: -350px -50px;
+}
+
+.icon48-api-disable:hover,
+.icon48-api-disable-hover {
+    background-position: -350px 0px;
+}
+
+.icon48-enable {
+    background-position: -400px -50px;
+}
+
+.icon48-enable:hover,
+.icon48-enable-hover {
+    background-position: -400px 0px;
+}
+
+.icon48-disable {
+    background-position: -450px -50px;
+}
+
+.icon48-disable:hover,
+.icon48-disable-hover {
+    background-position: -450px 0px;
+}
+
+.icon48-edit {
+    background-position: -500px -50px;
+}
+
+.icon48-edit:hover,
+.icon48-edit-hover {
+    background-position: -500px 0px;
+}
+
+.icon48-detial {
+    background-position: -550px -50px;
+}
+
+.icon48-detial:hover,
+.icon48-detial-hover {
+    background-position: -550px 0px;
+}
+
+.icon48-ctl-record {
+    background-position: -600px -50px;
+}
+
+.icon48-ctl-record:hover,
+.icon48-ctl-record-hover {
+    background-position: -600px 0px;
+}
+
+.icon48-bet-record {
+    background-position: -650px -50px;
+}
+
+.icon48-bet-record:hover,
+.icon48-bet-record-hover {
+    background-position: -650px 0px;
+}
+
+.icon48-account-transfer {
+    background-position: -700px -50px;
+}
+
+.icon48-account-transfer:hover,
+.icon48-account-transfer-hover {
+    background-position: -700px 0px;
+}
+
+.icon48-delete {
+    background-position: -750px -50px;
+}
+
+.icon48-delete:hover,
+.icon48-delete-hover {
+    background-position: -750px 0px;
+}
+
+.icon48-qrcode {
+    background-position: -800px -50px;
+}
+
+.icon48-qrcode:hover,
+.icon48-qrcode-hover {
+    background-position: -800px 0px;
+}
+
+.icon48-password {
+    background-position: -850px -50px;
+}
+
+.icon48-password:hover,
+.icon48-password-hover {
+    background-position: -850px 0px;
+}
+
+.icon48-card-save {
+    background-position: -900px -50px;
+}
+
+.icon48-card-save:hover,
+.icon48-card-save-hover {
+    background-position: -900px 0px;
+}
+
+.icon48-stop-bet {
+    background-position: -950px -50px;
+}
+
+.icon48-stop-bet:hover,
+.icon48-stop-bet-hover {
+    background-position: -950px 0px;
+}
+
+.icon48-logout {
+    background-position: -1000px -50px;
+}
+
+.icon48-logout:hover,
+.icon48-logout-hover {
+    background-position: -1000px 0px;
+}
+
+.icon48-suspension {
+    background-position: -1050px -50px;
+}
+
+.icon48-suspension:hover,
+.icon48-suspension-hover {
+    background-position: -1050px 0px;
+}
+
+.icon48-remove-suspension {
+    background-position: -1100px -50px;
+}
+
+.icon48-remove-suspension:hover,
+.icon48-remove-suspension-hover {
+    background-position: -1100px 0px;
+}
+
+.icon48-bb-sport {
+    background-position: -1150px -50px;
+}
+
+.icon48-bb-sport:hover,
+.icon48-bb-sport-hover {
+    background-position: -1150px 0px;
+}
+
+.icon48-agent-data {
+    background-position: -1200px -50px;
+}
+
+.icon48-agent-data:hover,
+.icon48-agent-data-hover {
+    background-position: -1200px 0px;
+}
+
+.icon48-member-data {
+    background-position: -1250px -50px;
+}
+
+.icon48-member-data:hover,
+.icon48-member-data-hover {
+    background-position: -1250px 0px;
+}
+
+.icon48-card-save-record {
+    background-position: -1300px -50px;
+}
+
+.icon48-card-save-record:hover,
+.icon48-card-save-record-hover {
+    background-position: -1300px 0px;
+}
+
+.icon48-close-case {
+    background-position: -1350px -50px;
+}
+
+.icon48-close-case:hover,
+.icon48-close-case-hover {
+    background-position: -1350px 0px;
+}
+
+.icon48-recast {
+    background-position: -1400px -50px;
+}
+
+.icon48-recast:hover,
+.icon48-recast-hover {
+    background-position: -1400px 0px;
+}
+
+.icon48-switch-score {
+    background-position: -1450px 0px;
+}
+
+.icon48-switch-score:hover,
+.icon48-switch-score-hover {
+    background-position: -1500px 0px;
+}
+
+.icon48-switch-money {
+    background-position: -1500px 0px;
+}
+
+.icon48-switch-money:hover,
+.icon48-switch-money-hover {
+    background-position: -1450px 0px;
+}
+
+.icon48-bbcash {
+    background-position: -1550px -50px;
+}
+
+.icon48-bbcash:hover,
+.icon48-bbcash-hover {
+    background-position: -1550px 0px;
+}
+
+.icon48-managectl {
+    background-position: -1600px -50px;
+}
+
+.icon48-managectl:hover,
+.icon48-managectl-hover {
+    background-position: -1600px 0px;
+}
+
+.icon48-bulletin {
+    background-position: -1650px -50px;
+}
+
+.icon48-bulletin:hover,
+.icon48-bulletin-hover {
+    background-position: -1650px 0px;
+}
+
+.icon48-oddsset {
+    background-position: -1700px -50px;
+}
+
+.icon48-oddsset:hover,
+.icon48-oddsset-hover {
+    background-position: -1700px 0px;
+}
+
+.icon48-betjump {
+    background-position: -1750px -50px;
+}
+
+.icon48-betjump:hover,
+.icon48-betjump-hover {
+    background-position: -1750px 0px;
+}
+.icon48-modify-result{
+    background-position: -1800px -50px;
+}
+.icon48-modify-result:hover,
+.icon48-modify-result-hover{
+    background-position: -1800px 0px;
+}
+.icon48-cancel-wager{
+    background-position: -1850px -50px;
+}
+.icon48-cancel-wager:hover,
+.icon48-cancel-wager-hover{
+    background-position: -1850px 0px;
+}
+.icon48-serial-video{
+    background-position: -1900px -50px;
+}
+.icon48-serial-video:hover,
+.icon48-serial-video-hover{
+    background-position: -1900px 0px;
+}
+.icon48-junket{
+    background-position: -1950px -50px;
+}
+.icon48-junket:hover,
+.icon48-junket-hover{
+    background-position: -1950px 0px;
+}
+.icon48-cash-chip{
+    background-position: -2000px -50px;
+}
+.icon48-cash-chip:hover,
+.icon48-cash-chip-hover{
+    background-position: -2000px 0px;
+}
+.icon36-loading,
+.icon36-loading:hover,
+.icon36-loading:focus,
+.icon36-loading:active {
+    background-color: #fff;
+    background-image: url(images/ajax-loading.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    color: #fff;
+    cursor: progress;
+    display: inline-block;
+    outline: none;
+    text-indent: -2000em;
+    height: 36px;
+    width: 36px;
+}
+
+.btn.icon36-loading {
+    cursor: progress;
+    box-shadow: none;
+    outline: none;
+}
+
+.icon16-loading {
+    background-image: url(images/icon_16_loading.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: progress;
+    display: inline-block;
+    outline: none;
+    text-indent: -2000em;
+    height: 16px;
+    width: 16px;
+}
+
+/* ================================== 圖示 end ============================================ */
+
+
+/* ================================== combobox begin ============================================ */
+
+.custom-combobox {
+    position: relative;
+    display: inline-block;
+    padding-right: 2.4em;
+}
+
+.custom-combobox-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    padding: 0;
+}
+
+.custom-combobox-input {
+    margin: 0;
+    padding: 5px 10px;
+}
+
+.ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding to account for vertical scrollbar */
+    padding-bottom: 1px;
+}
+
+
+/* 選取項目CSS */
+
+.ui-menu .ui-state-active-cust {
+    border: 1px solid #999;
+    background: #dadada url("../../vendor/jquery-ui/images/ui-bg_glass_75_dadada_1x400.png") 50% 50% repeat-x;
+    font-weight: normal;
+    color: #212121;
+    margin: -1px;
+}
+
+
+/* ================================== combobox end ============================================ */
+
+
+/* ================================== timepicker begin ============================================ */
+
+.ui-timepicker-div .ui-widget-header {
+    margin-bottom: 8px;
+}
+
+.ui-timepicker-div dl {
+    text-align: left;
+}
+
+.ui-timepicker-div dl dt {
+    float: left;
+    clear: left;
+    padding: 0 0 0 5px;
+}
+
+.ui-timepicker-div dl dd {
+    margin: 0 10px 10px 45%;
+}
+
+.ui-timepicker-div td {
+    font-size: 90%;
+}
+
+.ui-tpicker-grid-label {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ui-timepicker-rtl {
+    direction: rtl;
+}
+
+.ui-timepicker-rtl dl {
+    text-align: right;
+    padding: 0 5px 0 0;
+}
+
+.ui-timepicker-rtl dl dt {
+    float: right;
+    clear: right;
+}
+
+.ui-timepicker-rtl dl dd {
+    margin: 0 45% 10px 10px;
+}
+
+
+/* ================================== timepicker end ============================================ */
+
+
+/* ================================== UserCard begin ============================================ */
+
+
+.btn-user-card {
+    background: url("images/icon_edit.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    background-position: 0px -16px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-user-card:hover,
+.btn-user-card-hover {
+    background-position: 0px 0px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.text-red {
+    color:red;
+}
+
+.text-blue {
+    color:blue;
+}
+
+.text-bg-disable {
+    background-color:#ff0000;
+}
+
+.text-bg-block {
+    background-color:#64FFFF;
+}
+
+.text-bg-bankrupt {
+    background-color:#8000FF;
+    color:#eee;
+}
+
+.text-bg-yellow {
+    background-color:yellow;
+}
+/* ================================== UserCard end ============================================ */

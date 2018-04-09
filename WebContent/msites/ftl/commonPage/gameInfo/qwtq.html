@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>:::趣味台球:::</title>
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.base.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.cust.css">
+
+</head>
+<body class=cust>
+
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/custom-scrollbar/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_theme.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_yellow_theme.css"><nav class="navbar navbar-default navbar-fixed-top navbar-theme">
+    <div class="container-fluid">
+        <div id="header "><span class="pull-right rule-logo"> <img src="./ipl/images/game/rule/5907/gamelogo.png" height="50px"></span> <span class="mceNonEditable dict rule-header" title="GAME_HEADER"><span class="pull-left rule-title"><span class="tw">游戏说明</span><span class="en">Game Rule</span></span></span> <span class="pull-right rule-name rule-title tw mceNonEditable">趣味台球</span></div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="main-box">
+    <div class="pull-right langSelect lang-select">
+        <select class="form-control select-lang" name="select-lang">
+            <option value='tw'> 繁中 </option>
+            <option value='cn'> 簡中 </option>
+            <option value='vn'> Vietnam </option>
+            <option value='th'> คนไทย </option>
+            <option value='kr'> 한국어 </option>
+            <option value='jp'> 日本語 </option>
+            <option value='id'> Indonesia </option>
+            <option value='es'> español </option>
+            <option value='us'> English </option>
+        </select>
+    </div>
+
+    <div class="container content"><span class="mceNonEditable dict" title="GAME_INFSTRUCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏玩法 </span><span class="title2">GAME INSTRUCTION </span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_FEATURES">游戏特色</span></h5>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[2]">趣味台球是一款简单趣味的消除游戏、快速连续消除的玩法，加上特殊游戏，让玩家获得高额的分数。</span></span></p>
+        <h5><span class="mceNonEditable dict" title="GAME_RULE">游戏说明</span></h5>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[1]">在5*5的方形区域，随机派发相对应的台球，分别有1号球、3号球、6号球、10号球、12号球和1种特殊8号球。</span></span></p>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[0]">相同台球只要相连5个以上即可消除获得分数，同时相连的台球消失，剩余台球依次下移之后，游戏自动补充台球，以此类推，直到当前无符合规则的相连台球为止。</span></span></p>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[5]">派发后，若有8号球，先消除8号球，待游戏补上球之后，剩余台球再依规则消除。</span></span></p>
+        <p>&nbsp;</p>
+        <h5><span class="mceNonEditable rule_txt" id="rule_txt[8]">分数计算方式为派彩分数=使用分数/10 X 台球赔率</span></h5>
+        <p>&nbsp;</p>
+        <h5><span class="mceNonEditable dict" title="SUB_ODDS">赔率说明</span></h5>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle text-nowarp">
+                <thead>
+                <tr>
+                    <th class="text-center" colspan="7"><span><span class="mceNonEditable rule_txt" id="rule_txt[12]">以使用10分计算，使用其他积分按比例翻倍</span></span></th>
+                </tr>
+                </thead>
+                <tbody class="text-center">
+                <tr>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[42]">中奖条件</span></td>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5907/m_001.png" alt="images"></td>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5907/m_002.png" alt="images"></td>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5907/m_003.png" alt="images"></td>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5907/m_005.png" alt="images"></td>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5907/m_006.png" alt="images"></td>
+                </tr>
+                <tr>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[44]">连续5个</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[65]">1分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[66]">5分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[67]">6分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[56]">15分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[55]">50分</span></td>
+                </tr>
+                <tr>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[53]">连续6个</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[68]">2分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[67]">6分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[64]">8分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[62]">30分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[60]">60分</span></td>
+                </tr>
+                <tr>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[43]">连续7个</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[66]">5分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[64]">8分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[61]">10分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[57]">40分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[58]">80分</span></td>
+                </tr>
+                <tr>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[41]">连续8个</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[64]">8分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[61]">10分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[59]">20分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[55]">50分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[45]">100分</span></td>
+                </tr>
+                <tr>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[50]">连续9个</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[61]">10分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[59]">20分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[62]">30分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[45]">100分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[47]">200分</span></td>
+                </tr>
+                <tr>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[37]">连续10个</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[59]">20分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[62]">30分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[55]">50分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[47]">200分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[51]">500分</span></td>
+                </tr>
+                <tr>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[39]">连续11个</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[62]">30分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[55]">50分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[58]">80分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[48]">300分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[38]">1000分</span></td>
+                </tr>
+                <tr>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[40]">连续12个</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[55]">50分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[58]">80分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[45]">100分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[51]">500分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[36]">5000分</span></td>
+                </tr>
+                <tr>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[35]">连续13个</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[58]">80分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[45]">100分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[47]">200分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[38]">1000分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[31]">10000分</span></td>
+                </tr>
+                <tr>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[34]">连续14个</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[45]">100分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[47]">200分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[49]">600分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[36]">5000分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[29]">50000分</span></td>
+                </tr>
+                <tr>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[25]">连续15~20个</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[47]">200分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[51]">500分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[38]">1000分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[31]">10000分</span></td>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[28]">100000分</span></td>
+                </tr>
+                <tr>
+                    <td><span class="mceNonEditable rule_txt" id="rule_txt[24]">连续21个及以上</span></td>
+                    <td colspan="5"><span class="mceNonEditable rule_txt" id="rule_txt[20]">获得Jackpot彩金</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle sp-table">
+                <thead>
+                <tr>
+                    <th class="text-center" colspan="2"><span><span class="mceNonEditable rule_txt" id="rule_txt[52]">特殊游戏</span></span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center"><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></td>
+                    <td class="text-center"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5907/ball_8.jpg" alt="images"></td>
+                    <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[14]">进入条件：消除20颗8号球即可进入。</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5><span class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[54]">彩金说明</span></span></h5>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[4]">出现21个及以上相连的相同颜色台球时，获得Jackpot彩金，派彩后结束此局。</span></p>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"><br></span></span>
+        <div class="clearfix">
+            <h5>※<span>Jackpot：</span><span class="mceNonEditable rule_txt" id="rule_txt[16]">彩金的该次消除，不会获得消除分数。</span></h5>
+        </div>
+        <hr><span class="mceNonEditable dict" title="GAME_INTERFACE"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">介面说明 </span><span class="title2">GAME INTERFACE</span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_SCREEN">游戏画面</span></h5>
+        <ul>
+            <li>
+                <p><span class="mceNonEditable dict" title="MAIN_GAME_SCREEN">主游戏画面(Main Game Screen)</span></p>
+            </li>
+        </ul>
+        <p><img src="./ipl/images/game/rule/5907/cn/game_subpic01.jpg" alt="images"></p>
+        <ul>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[52]">特殊游戏</span></li>
+        </ul>
+        <p><img src="./ipl/images/game/rule/5907/cn/game_subpic02.jpg" alt="images"></p>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"><br></span></span>
+        <div class="clearfix">
+            <p><span class="mceNonEditable rule_txt" id="rule_txt[6]">进入特殊游戏后，若15秒内玩家无点击「击球」，游戏将自动进行特殊游戏。</span></p>
+        </div>
+        <hr><span class="mceNonEditable dict" title="GAME_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏功能 </span><span class="title2">GAME FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[17]">账户游戏积分(CREDITS)：</span></span><span class="mceNonEditable rule_txt" id="rule_txt[30]">玩家剩余分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[15]">8号球(MAGIC 8-BALL)：</span></span><span class="mceNonEditable rule_txt" id="rule_txt[27]">显示目前累积进度</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[23]">菜单(MENU)：</span></span><span class="mceNonEditable rule_txt" id="rule_txt[26]">开启基本功能选单</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[11]">分数兑换(CREDIT EXCHANGE)：</span></span><span class="mceNonEditable rule_txt" id="rule_txt[33]">开分和洗分</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[22]">使用分数(BET)：</span></span><span class="mceNonEditable rule_txt" id="rule_txt[32]">调整下注分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[19]">开始游戏(START)：</span></span><span class="mceNonEditable rule_txt" id="rule_txt[63]">开始</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[9]">托管(AUTO)/取消托管( STOP AUTO)：</span></span><span class="mceNonEditable rule_txt" id="rule_txt[21]">自动开始或停止自动开始</span></li>
+        </ul>
+        <h5><span class=""><span class="mceNonEditable rule_txt" id="rule_txt[46]">历史纪录</span></span></h5>
+        <ul>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[7]">曲线为近10次玩家游玩的历程记录，最右边为最新一次纪录，反之为最旧。</span></li>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[3]">白色表示未中奖、黄色表示中奖分数小于1倍、橘色表示1倍≦分数≦3倍、红色表示分数>3倍。</span></li>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[10]">联机中断、重载或离开游戏曲线图将不保留纪录。</span></li>
+        </ul>
+        <p><img src="./ipl/images/game/rule/5907/image04.jpg" alt="image"></p>
+        <h5><span class=""><span class="mceNonEditable dict" title="QUIT_GAME">退出游戏</span></span></h5>
+        <ul>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[13]">选择「确定」可保留当前黑球累积数量。</span></li>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[18]">选择「取消」则返回游戏画面。</span></li>
+        </ul>
+        <p><img src="./ipl/images/game/rule/5907/image03.jpg" alt="image"></p>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span><span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="BASIC_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">基本功能 </span><span class="title2">BASIC FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SN"><span class="orangefont base">局号(SN) : </span>游戏局号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_ID"><span class="orangefont base">会员帐号(USER ID) : </span>显示会员登入帐号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_DEPOSIT_7"><span class="orangefont base">存款(DEPOSIT) : </span>按下 <img src="./ipl/images/game/rule/btn/icon_01.png"/> 钮，开启会员中心的存款功能(此功能仅于PC版有)</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_MUSIC_6"><span class="orangefont base">音乐(MUSIC) : </span>按下 <img src="./ipl/images/game/rule/btn/icon_02.png"/> 钮，启动或停止背景音乐</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HISTORY_6"><span class="orangefont base">历史纪录(HISTORY) : </span>按下 <img src="./ipl/images/game/rule/btn/icon_03.png"/> 钮，历史下注纪录</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HELP_6"><span class="orangefont base">帮助(HELP) : </span>按下 <img src="./ipl/images/game/rule/btn/icon_04.png"/> 钮，规则说明</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXIT_6"><span class="orangefont base">离开(EXIT) : </span>按下 <img src="./ipl/images/game/rule/btn/icon_05.png"/> 钮，离开本游戏，跳大厅窗口</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+    </div>
+</div>
+<script src="./ipl/assets/vendor/jquery/jquery.min.js"></script>
+<script src="./ipl/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./ipl/assets/vendor/custom-scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./ipl/script/game/game_rule.js"></script>
+
+</body>
+</html>

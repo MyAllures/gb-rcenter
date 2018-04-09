@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>:::皇家德州扑克:::</title>
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.base.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.cust.css">
+
+</head>
+<body class=cust>
+
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/custom-scrollbar/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_theme.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_yellow_theme.css"><nav class="navbar navbar-default navbar-fixed-top navbar-theme">
+    <div class="container-fluid">
+        <div id="header "><span class="pull-right rule-logo"> <img src="./ipl/images/game/rule/5131/gamelogo.png" height="50px"></span> <span class="mceNonEditable dict rule-header" title="GAME_HEADER"><span class="pull-left rule-title"><span class="tw">游戏说明</span><span class="en">Game Rule</span></span></span> <span class="pull-right rule-name rule-title tw mceNonEditable">皇家德州扑克</span></div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="main-box">
+    <div class="pull-right langSelect lang-select">
+        <select class="form-control select-lang" name="select-lang">
+            <option value='tw'> 繁中 </option>
+            <option value='cn'> 簡中 </option>
+            <option value='vn'> Vietnam </option>
+            <option value='th'> คนไทย </option>
+            <option value='kr'> 한국어 </option>
+            <option value='jp'> 日本語 </option>
+            <option value='id'> Indonesia </option>
+            <option value='es'> español </option>
+            <option value='us'> English </option>
+        </select>
+    </div>
+
+    <div class="container-fluid">
+        <div class="container content"><span class="mceNonEditable dict" title="GAME_INFSTRUCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏玩法 </span><span class="title2">GAME INSTRUCTION </span></span>
+            <h5><span><span class="mceNonEditable dict" title="GAME_RULE">游戏说明</span></span></h5>
+            <p><span class="mceNonEditable rule_txt" id="rule_txt[0]">皇家德州扑克Royal Texas Hold'em，使用10、J、Q、K、ACE共20张扑克牌，玩法利用2张底牌与牌桌上5张公牌取3张组成最佳牌组。 闲家单纯与庄家比拚牌型大小而不用考虑花色，是一款考验智力与运气的扑克游戏。 </span></p>
+            <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[40]">游戏玩法</span></span></h5>
+            <ol>
+                <li><span class="mceNonEditable rule_txt" id="rule_txt[4]">闲家下底注后，庄家与闲家轮流分配2张底牌，再依赌桌上5张公牌分次下注，最后庄家开牌与闲家依照牌型组合大小定胜负。</span></li>
+                <li><span class="mceNonEditable rule_txt" id="rule_txt[3]">闲家下底注同时可选择下注Bonus，闲家当局底牌拿到符合Bonus下注的牌型时，可依照牌型组合获得5~45倍奖金。</span></li>
+            </ol>
+            <h5><span><span class="mceNonEditable dict" title="PAYLINES">联机规则</span></span></h5>
+            <ol>
+                <li><span class="mceNonEditable rule_txt" id="rule_txt[17]">牌局开始，闲家下底注：</span></li>
+            </ol>
+            <div class="panel panel-default table-responsive">
+                <table class="table table-bordered text-middle">
+                    <thead>
+                    <tr bgcolor="#ffff99">
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[51]">下注</span></th>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[55]">注额</span></th>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[54]">说明</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center"><span><span class="mceNonEditable rule_txt" id="rule_txt[50]">底注Ante</span></span>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td><span class="mceNonEditable rule_txt" id="rule_txt[13]">底注的下注金额需符合单注最大与最小下注。</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><span><span class="mceNonEditable rule_txt" id="rule_txt[49]">翻牌Flop</span></span>
+                        </td>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[32]">2倍底注</span></td>
+                        <td><span class="mceNonEditable rule_txt" id="rule_txt[8]"> 可加注或弃牌，弃牌则输掉底注，加注后庄家在赌桌上分配3张公牌。</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><span><span class="mceNonEditable rule_txt" id="rule_txt[57]">转牌Turn</span></span>
+                        </td>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[33]">1倍底注</span></td>
+                        <td><span class="mceNonEditable rule_txt" id="rule_txt[6]">可跟注或过牌，过牌不需再下注，跟注或过牌后庄家在赌桌上分配第4张公牌。</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><span><span class="mceNonEditable rule_txt" id="rule_txt[48]">河牌River</span></span>
+                        </td>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[33]">1倍底注</span></td>
+                        <td><span class="mceNonEditable rule_txt" id="rule_txt[7]">可跟注或过牌，过牌不需再下注，跟注或庄家在赌桌上分配第5张公牌并摊牌。</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ol start="2">
+                <li><span class="mceNonEditable rule_txt" id="rule_txt[5]">摊牌后，闲家与庄家以自己的2张底牌加上桌面5张公牌取3张，以最大的5张牌型组合决定胜负。</span></li>
+            </ol>
+            <ul>
+                <li>
+                    <h5><span class="mceNonEditable rule_txt" id="rule_txt[1]">若牌型组合在四条以上(含四条)，获胜时可取得Ante、Flop、Turn、River个别1：1的下注赔率奖金；若牌型组合在葫芦以下(含葫芦)，获胜时可取得Flop、Turn、River个别1：1的下注赔率奖金。</span></h5></li>
+            </ul>
+            <ul>
+                <li><span class="mceNonEditable rule_txt" id="rule_txt[2]">庄家与闲家牌型组合相同时将取牌组中扑克数字最大的定胜负，若数字依然相同时则为和局，闲家将拿回所有下注金额，不包含Bonus。</span></li>
+            </ul>
+            <div class="clearfix"><span class="btn btn-default pull-right top"><span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span><span class="sr-only"></span></span>
+                <div class="clearfix">&nbsp;</div>
+                <hr>
+            </div>
+            <span class="mceNonEditable dict" title="BONUS_PAYOUTS"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">Bonus赔率表 </span><span class="title2">BONUS PAYOUTS</span></span>
+            <p><span class="mceNonEditable rule_txt" id="rule_txt[9]">底牌牌型组合将依照下注金额与赔率获得奖金，无论当局结果输赢。 </span></p>
+            <div class="panel panel-default table-responsive">
+                <table class="table table-bordered text-middle">
+                    <thead>
+                    <tr>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[41]">牌型组合</span></th>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[45]">赔率</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[15]">A - K (相同花色)</span></td>
+                        <td class="text-center">1 ：45</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[28]">A - A</span></td>
+                        <td class="text-center">1 ：30</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">10 - 10</td>
+                        <td class="text-center">1 ：30</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[11]">A - Q or A - J (相同花色)</span></td>
+                        <td class="text-center">1 ：20</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[16]">A - K (不同花色)</span></td>
+                        <td class="text-center">1 ：15</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[10]">K - K or Q - Q or J - J</span></td>
+                        <td class="text-center">1 ：10</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[12]">A - Q or A - J (不同花色)</span></td>
+                        <td class="text-center">1 ：5</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="clearfix"><span class="btn btn-default pull-right top"><span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span><span class="sr-only"></span></span>
+                <div class="clearfix">&nbsp;</div>
+                <hr>
+            </div>
+            <span class="mceNonEditable dict" title="WINNING_COMBINATION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">获胜组合 </span><span class="title2">WINNING COMBINATION </span></span>
+            <div class="panel panel-default table-responsive">
+                <table class="table table-bordered text-middle sp-table">
+                    <thead>
+                    <tr>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[26]">牌型组合大小</span></th>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[38]">牌型说明</span></th>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[47]">图解</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[42]">同花大顺</span></td>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[14]">10 ~ ACE花色相同的顺子</span></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5131/Royal%20Flush.png"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[53]">四条</span></td>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[20]">有4张数字相同的牌</span></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5131/Four%20of%20a%20Kind.png"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[58]">葫芦</span></td>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[18]">三条与一对组合的牌</span></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5131/Full%20House.png"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[56]">顺子</span></td>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[23]">5张数字相连的牌</span></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5131/Straight.png" width="114" height="102"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[46]">三条</span></td>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[19]">有3张数字相同的牌</span></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5131/Three%20of%20a%20Kind.png" width="113" height="106"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[52]">两对</span></td>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[24]">有2组一对的牌</span></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5131/Two%20Pairs.png" alt="2pair" width="113" height="103"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="clearfix"><span class="btn btn-default pull-right top"><span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span><span class="sr-only"></span></span>
+                <div class="clearfix">&nbsp;</div>
+                <hr><span class="mceNonEditable dict" title="GAME_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏功能 </span><span class="title2">GAME FUNCTION </span></span>
+                <ul class="fa-ul">
+                    <li><span class="fa fa-caret-right fa-2x"></span><span><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[34]">确定 :</span> </span><span class="mceNonEditable rule_txt" id="rule_txt[44]">确认下注</span></span>
+                    </li>
+                    <li><span class="fa fa-caret-right fa-2x"></span><span><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[35]">清除 :</span> </span><span class="mceNonEditable rule_txt" id="rule_txt[31]">清除下注</span></span>
+                    </li>
+                    <li><span class="fa fa-caret-right fa-2x"></span><span><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[29]">加注 :</span> </span><span class="mceNonEditable rule_txt" id="rule_txt[30]">追加下注</span></span>
+                    </li>
+                    <li><span class="fa fa-caret-right fa-2x"></span><span><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[36]">弃牌 :</span> </span><span class="mceNonEditable rule_txt" id="rule_txt[37]">放弃该局</span></span>
+                    </li>
+                    <li><span class="fa fa-caret-right fa-2x"></span><span><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[43]">过牌 : </span> </span><span class="mceNonEditable rule_txt" id="rule_txt[27]">不追加下注</span></span>
+                    </li>
+                    <li><span class="fa fa-caret-right fa-2x"></span><span><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[25]">重复下注 :</span> </span><span class="mceNonEditable rule_txt" id="rule_txt[22]">重复上局下注筹码</span></span>
+                    </li>
+                    <li><span class="fa fa-caret-right fa-2x"></span><span><span class="orangefont base"><span class="mceNonEditable rule_txt" id="rule_txt[39]">新局 :</span> </span><span class="mceNonEditable rule_txt" id="rule_txt[21]">重新选择下注筹码</span></span>
+                    </li>
+                    <li><span><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_WIN"><span class="orangefont base">赢得分数(WIN) : </span>本局赢得分数</span><span></span></span>
+                    </li>
+                    <li><span><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_CREDIT"><span class="orangefont base">可用分数(CREDITS) : </span>显示目前可以游戏的分数</span><span></span></span>
+                    </li>
+                </ul>
+                <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+                <div class="clearfix">&nbsp;</div>
+                <hr><span class="mceNonEditable dict" title="BASIC_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">基本功能 </span><span class="title2">BASIC FUNCTION </span></span>
+                <ul class="fa-ul">
+                    <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SN"><span class="orangefont base">局号(SN) : </span>游戏局号</span><span></span><span></span></li>
+                    <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_ID"><span class="orangefont base">会员帐号(USER ID) : </span>显示会员登入帐号</span></li>
+                    <li><span class="fa fa-caret-right fa-2x"></span>&nbsp;<span class="mceNonEditable dict" title="FUNC_DEPOSIT"><span class="orangefont base">存款(DEPOSIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_deposit.png" width="23" height="24" /> 钮，开启会员中心的存款功能</span></li>
+                    <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_WIN"><span class="orangefont base">赢得分数(WIN) : </span>本局赢得分数</span></li>
+                    <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SOUND"><span class="orangefont base">音效(SOUND) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_mute.png" width="23" height="24" /> 钮，启动或停止音效</span></li>
+                    <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_MUSIC"><span class="orangefont base">音乐(MUSIC) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_bgm.png" width="23" height="24" /> 钮，启动或停止背景音乐</span></li>
+                    <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HISTORY"><span class="orangefont base">历史纪录(HISTORY) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_history.png" width="23" height="24" /> 钮，历史下注纪录</span></li>
+                    <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HELP"><span class="orangefont base">帮助(HELP) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_help.png" width="23" height="24" /> 钮，规则说明</span></li>
+                    <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXIT"><span class="orangefont base">离开(EXIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_exit.png" width="23" height="24" /> 钮，离开本游戏，跳大厅窗口</span></li>
+                </ul>
+                <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+                <div class="clearfix">&nbsp;</div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./ipl/assets/vendor/jquery/jquery.min.js"></script>
+<script src="./ipl/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./ipl/assets/vendor/custom-scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./ipl/script/game/game_rule.js"></script>
+
+
+</body>
+</html>

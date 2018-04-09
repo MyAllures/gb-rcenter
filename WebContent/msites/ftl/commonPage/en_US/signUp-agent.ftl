@@ -482,34 +482,51 @@
     }
     // Modal 模态框
     $("#login-agreement").click(function() {
+        /*BootstrapDialog.show({
+                   title:'代理注册协议',
+                   type: 'default',
+                   closable: false,
+                   message: function(dialog) {
+                       var $message = $('<div style="overflow-y: auto; overflow-x:hidden; height: 600px;"></div>');
+                       var pageToLoad = dialog.getData('pageToLoad');
+                       $message.load(pageToLoad);
 
-        BootstrapDialog.show({
-            title:'Agent Registration Agreement',
-            type: 'default',
-            closable: false,
-            message: function(dialog) {
-                var $message = $('<div style="overflow-y: auto; overflow-x:hidden; height: 600px;"></div>');
-                var pageToLoad = dialog.getData('pageToLoad');
-                $message.load(pageToLoad);
-
-                return $message;
-            },
-            buttons: [{
-                label: 'I disagree',
-                action: function(){
-                    window.location ="/agent.html";
-                }
-            }, {
-                label: 'I agree ',
-                cssClass: 'btn-success',
-                action:function(dialogItself){
-                    dialogItself.close();
-                }
-            }],
-            data: {
-                'pageToLoad': '/commonPage/modal/agent-agreement.html'
-            }
-        });
+                       return $message;
+                   },
+                   buttons: [{
+                       label: '我不同意',
+                       action: function(){
+                           window.location ="/agent.html";
+                       }
+                   }, {
+                       label: '我同意',
+                       cssClass: 'btn-success',
+                       action:function(dialogItself){
+                           dialogItself.close();
+                       }
+                   }],
+                   data: {
+                       'pageToLoad': '/commonPage/modal/agent-agreement.html'
+                   }
+               });*/
+        var loAgree = layer.open({
+            content:;<#if data.agentValidateRegisterMap.regProtocol??> ${data.agentValidateRegisterMap.regProtocol.value} </#if>,
+        title:'Proxy registration agreement',
+                skin:'layui-layer-brand',
+                btn:["I disagree","I agree"],
+                success: function(layer){
+            // 重写关闭按钮
+            $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+            // 提示框类型
+            $(layer).addClass("normal-dialog");
+        },
+        yes: function(){
+            window.location ="/agent.html";
+        },
+        btn2: function () {
+            layer.close(loAgree);
+        }
+    });
     });
 
     var $form = $('#regForm');
@@ -635,21 +652,36 @@
                 },
                 success: function (data) {
                     if(data){
-                        BootstrapDialog.show({
-                            title:'Prompt',
-                            type: BootstrapDialog.TYPE_PRIMARY,
-                            closable: false,
-                            message: function(dialog) {
-                                var $message = "注册成功，请等待审核！";
-                                return $message;
+                        /*BootstrapDialog.show({
+                             title:'提示',
+                             type: BootstrapDialog.TYPE_PRIMARY,
+                             closable: false,
+                             message: function(dialog) {
+                                 var $message = "注册成功，请等待审核！";
+                                 return $message;
+                             },
+                             buttons: [{
+                                 label: '确定',
+                                 cssClass: 'btn-success',
+                                 action:function(dialogItself){
+                                     window.location.href ="/agent.html";
+                                 }
+                             }]
+                         });*/
+                        layer.open({
+                            content:'Registration is successful, please wait for review！',
+                            title:'Tips',
+                            skin:'layui-layer-brand',
+                            btn:["ok"],
+                            success: function(layer){
+                                // 重写关闭按钮
+                                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                                // 提示框类型
+                                $(layer).addClass("normal-dialog");
                             },
-                            buttons: [{
-                                label: 'OK',
-                                cssClass: 'btn-success',
-                                action:function(dialogItself){
-                                    window.location.href ="/agent.html";
-                                }
-                            }]
+                            yes: function () {
+                                window.location.href ="/agent.html";
+                            }
                         });
                     }
                 },
@@ -706,13 +738,49 @@
         var cookie = getCookie(REGSTER_SEND_EMAIL_TIME);
         cookie = Number(cookie);
         if(!email){
-            BootstrapDialog.alert({message:'Please enter mail first！',title:'Prompt information '});
+            /*BootstrapDialog.alert({message:'请先输入邮箱！',title:'提示信息'});*/
+            layer.open({
+                content:'Please enter email account',
+                title:'Tips inform',
+                skin:'layui-layer-brand',
+                btn:["ok"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }else if($email.parents(".form-group").hasClass("has-error")){
-            BootstrapDialog.alert({message:'Please enter correct mail！',title:'Prompt information '});
+            /*BootstrapDialog.alert({message:'请输入正确的邮箱！',title:'提示信息'});*/
+            layer.open({
+                content:'Please enter correct email account！',
+                title:'Tips inform',
+                skin:'layui-layer-brand',
+                btn:["ok"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }else if(cookie){
-            BootstrapDialog.alert({message:'The sending interval is not reached！',title:'Prompt information '});
+            /*BootstrapDialog.alert({message:'发送间隔时间未到！',title:'提示信息'});*/
+            layer.open({
+                content:'The sending interval is not available！！',
+                title:'Tips inform',
+                skin:'layui-layer-brand',
+                btn:["ok"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }
         function setCookie(c_name,value,expiredays){

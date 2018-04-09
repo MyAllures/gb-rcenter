@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>:::百家乐大转轮:::</title>
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.base.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.cust.css">
+
+</head>
+<body class=cust>
+
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/custom-scrollbar/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_theme.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_yellow_theme.css"><nav class="navbar navbar-default navbar-fixed-top navbar-theme">
+    <div class="container-fluid">
+        <div id="header "><span class="pull-right rule-logo"> <img src="./ipl/images/game/rule/5073/gamelogo.png" height="50px"></span> <span class="mceNonEditable dict rule-header" title="GAME_HEADER"><span class="pull-left rule-title"><span class="tw">游戏说明</span><span class="en">Game Rule</span></span></span> <span class="pull-right rule-name rule-title tw mceNonEditable">百家乐大转轮</span></div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="main-box">
+    <div class="pull-right langSelect lang-select">
+        <select class="form-control select-lang" name="select-lang">
+            <option value='tw'> 繁中 </option>
+            <option value='cn'> 簡中 </option>
+            <option value='vn'> Vietnam </option>
+            <option value='th'> คนไทย </option>
+            <option value='kr'> 한국어 </option>
+            <option value='jp'> 日本語 </option>
+            <option value='id'> Indonesia </option>
+            <option value='es'> español </option>
+            <option value='us'> English </option>
+        </select>
+    </div>
+
+    <div class="container content"><span class="mceNonEditable dict" title="GAME_INFSTRUCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏玩法 </span><span class="title2">GAME INSTRUCTION </span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_FEATURES">游戏特色</span></h5>
+        <p>「百家乐大转轮」是款极具独家设计性的转轮游戏，将传统百家乐增加变化，配合转轮呈现新的游戏方式，带给会员更耳目一新的娱乐感。</p>
+        <h5><span class="mceNonEditable dict" title="GAME_RULES">游戏规则</span></h5>
+        <ul>
+            <li>
+                <p>大转轮由内盘与外盘组合而成。</p>
+                <p>外盘显示为：庄丶闲丶和，共分为28等份。</p>
+                <p>内盘显示为：A丶2丶3丶4丶5丶6丶7丶8丶9丶10丶J丶Q丶K丶对丶百家乐，共分为28等份。</p>
+            </li>
+            <li>
+                <p>游戏采内盘顺时针转动，外盘逆时针转动，转轮停止後以开奖球落到的位置即为当局开奖依据。</p>
+            </li>
+            <li>
+                <p>开奖方式以内外盘的开奖球停驻位置组合後作为开奖依据。</p>
+                <p>例：内盘停驻位置为K，外盘停驻位置为庄，则开奖结果为庄及庄大。</p>
+            </li>
+            <li>
+                <p>FreeGame：内盘的球落在『百家乐』，即触发百家乐FreeGame转轮，中间的转盘会翻转过来变成FreeGame次数指针转盘。</p>
+                <p>接着游戏会自动开始转动指针根据停止位置决定给予的FreeGame次数。</p>
+            </li>
+            <li>计分方式：个别下注分数 x 奖项赔率</li>
+        </ul>
+        <h5>赔率 / 下注说明</span></h5>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle">
+                <thead>
+                <tr>
+                    <th class="text-center">下注项目</th>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_ODDS">赔率</span></th>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center"><img style="width: 65px;" src="./ipl/images/game/rule/5073/cn/game_subtitle01.png" alt="image"></td>
+                    <td class="text-center redfont">X2</td>
+                    <td class="text-left">外盘开奖球落入『庄』，即算中奖。</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img style="width: 65px;" src="./ipl/images/game/rule/5073/cn/game_subtitle02.png" alt="image"></td>
+                    <td class="text-center redfont">X56</td>
+                    <td class="text-left">外盘开奖球落入『庄』，内盘开奖球落入『对』即算中奖。</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img style="width: 65px;" src="./ipl/images/game/rule/5073/cn/game_subtitle03.png" alt="image"></td>
+                    <td class="text-center redfont">X13</td>
+                    <td class="text-left">外盘开奖球落入『和』，即算中奖。</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img style="width: 65px;" src="./ipl/images/game/rule/5073/cn/game_subtitle04.png" alt="image"></td>
+                    <td class="text-center redfont">X2</td>
+                    <td class="text-left">外盘开奖球落入『闲』，即算中奖。</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img style="width: 65px;" src="./ipl/images/game/rule/5073/cn/game_subtitle05.png" alt="image"></td>
+                    <td class="text-center redfont">X56</td>
+                    <td class="text-left">外盘开奖球落入『闲』，内盘开奖球落入『对』即算中奖。</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img style="width: 65px;" src="./ipl/images/game/rule/5073/cn/game_subtitle06.png" alt="image"></td>
+                    <td class="text-center redfont">X4.5</td>
+                    <td class="text-left">外盘开奖球落入『庄』，内盘开奖球落入『8至K 』即算中奖。</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img style="width: 65px;" src="./ipl/images/game/rule/5073/cn/game_subtitle07.png" alt="image"></td>
+                    <td class="text-center redfont">X4.5</td>
+                    <td class="text-left">外盘开奖球落入『庄』，内盘开奖球落入『A至6』即算中奖。</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img style="width: 65px;" src="./ipl/images/game/rule/5073/cn/game_subtitle08.png" alt="image"></td>
+                    <td class="text-center redfont">X26</td>
+                    <td class="text-left">外盘开奖球落入『庄』，内盘开奖球落入『7』即算中奖。</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img style="width: 65px;" src="./ipl/images/game/rule/5073/cn/game_subtitle09.png" alt="image"></td>
+                    <td class="text-center redfont">X360</td>
+                    <td class="text-left">外盘开奖球落入『和』，内盘开奖球落入『对』即算中奖。</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img style="width: 65px;" src="./ipl/images/game/rule/5073/cn/game_subtitle10.png" alt="image"></td>
+                    <td class="text-center redfont">X4.5</td>
+                    <td class="text-left">外盘开奖球落入『闲』，内盘开奖球落入『8至K 』即算中奖。</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img style="width: 65px;" src="./ipl/images/game/rule/5073/cn/game_subtitle11.png" alt="image"></td>
+                    <td class="text-center redfont">X4.5</td>
+                    <td class="text-left">外盘开奖球落入『闲』，内盘开奖球落入『A至6』即算中奖。</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img style="width: 65px;" src="./ipl/images/game/rule/5073/cn/game_subtitle12.png" alt="image"></td>
+                    <td class="text-center redfont">X26</td>
+                    <td class="text-left">外盘开奖球落入『闲』，内盘开奖球落入『7』即算中奖。</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="redfont">注：单局押注最高上限额度为1000</p>
+        <hr><span class="mceNonEditable dict" title="GAME_INTERFACE"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">介面说明 </span><span class="title2">GAME INTERFACE</span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_SCREEN">游戏画面</span></h5>
+        <p><img src="./ipl/images/game/rule/5073/cn/game_subtitle13.jpg" alt="image"></p>
+        <div class="panel panel-default">
+            <table class="table table-bordered rwd-table">
+                <thead>
+                <tr>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_AREA">区域</span></th>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">A</td>
+                    <td class="text-left">转轮区</td>
+                </tr>
+                <tr>
+                    <td class="text-center">B</td>
+                    <td class="text-left">下注及筹码选择区</td>
+                </tr>
+                <tr>
+                    <td class="text-center">C</td>
+                    <td class="text-left">基本资讯与游戏功能</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p><span class="mceNonEditable dict" title="FREE_GAME_V2">免费游戏(Free Game)</span></p>
+        <p><img src="./ipl/images/game/rule/5073/cn/game_subtitle14.jpg" alt="image"></p>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr><span class="mceNonEditable dict" title="GAME_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏功能 </span><span class="title2">GAME FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_TOTAL_BET"><span class="orangefont base">下注分数(TOTAL BET) : </span>本局下注分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_WIN"><span class="orangefont base">赢得分数(WIN) : </span>本局赢得分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_CREDIT"><span class="orangefont base">可用分数(CREDITS) : </span>显示目前可以游戏的分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXCHANGE"><span class="orangefont base">分数兑换(CREDIT EXCHANGE) : </span>可在此选择开分与洗分</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_AUTO_PLAY"><span class="orangefont base">自动开始(AUTO PLAY)/停止自动开始(STOP AUTO PLAY) : </span>选择自动开始或是停止自动开始</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="CLEAR_REBET"><span class="orangefont base">清除下注(CLEAR)/重复下注(REBET)：</span>清除所有押注或是重复上次押注</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="SPIN_ROLL"><span class="orangefont base">开始(SPIN)：</span>下注後按开始，启动转轮</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr><span class="mceNonEditable dict" title="BASIC_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">基本功能 </span><span class="title2">BASIC FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SN"><span class="orangefont base">局号(SN) : </span>游戏局号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_ID"><span class="orangefont base">会员帐号(USER ID) : </span>显示会员登入帐号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_DEPOSIT"><span class="orangefont base">存款(DEPOSIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_deposit.png" width="23" height="24" /> 钮，开启会员中心的存款功能</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SOUND"><span class="orangefont base">音效(SOUND) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_mute.png" width="23" height="24" /> 钮，启动或停止音效</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_MUSIC"><span class="orangefont base">音乐(MUSIC) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_bgm.png" width="23" height="24" /> 钮，启动或停止背景音乐</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HISTORY"><span class="orangefont base">历史纪录(HISTORY) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_history.png" width="23" height="24" /> 钮，历史下注纪录</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HELP"><span class="orangefont base">帮助(HELP) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_help.png" width="23" height="24" /> 钮，规则说明</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXIT"><span class="orangefont base">离开(EXIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_exit.png" width="23" height="24" /> 钮，离开本游戏，跳大厅窗口</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr>
+    </div>
+</div>
+<script src="./ipl/assets/vendor/jquery/jquery.min.js"></script>
+<script src="./ipl/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./ipl/assets/vendor/custom-scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./ipl/script/game/game_rule.js"></script>
+
+
+</body>
+</html>

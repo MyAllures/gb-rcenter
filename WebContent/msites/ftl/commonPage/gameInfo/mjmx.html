@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>:::秘境冒险:::</title>
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.base.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.cust.css">
+
+</head>
+<body class=cust>
+
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/custom-scrollbar/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_theme.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_yellow_theme.css"><nav class="navbar navbar-default navbar-fixed-top navbar-theme">
+    <div class="container-fluid">
+        <div id="header "><span class="pull-right rule-logo"> <img src="./ipl/images/game/rule/5601/gamelogo.png" height="50px"></span> <span class="mceNonEditable dict rule-header" title="GAME_HEADER"><span class="pull-left rule-title"><span class="tw">游戏说明</span><span class="en">Game Rule</span></span></span> <span class="pull-right rule-name rule-title tw mceNonEditable">秘境冒险</span></div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="main-box">
+    <div class="pull-right langSelect lang-select">
+        <select class="form-control select-lang" name="select-lang">
+            <option value='tw'> 繁中 </option>
+            <option value='cn'> 簡中 </option>
+            <option value='vn'> Vietnam </option>
+            <option value='th'> คนไทย </option>
+            <option value='kr'> 한국어 </option>
+            <option value='jp'> 日本語 </option>
+            <option value='id'> Indonesia </option>
+            <option value='es'> español </option>
+            <option value='us'> English </option>
+        </select>
+    </div>
+
+    <div class="container content"> <span class="mceNonEditable dict" title="GAME_INFSTRUCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏玩法 </span><span class="title2">GAME INSTRUCTION </span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_FEATURES">游戏特色</span></h5>
+        <p><span>突破传统的老虎机设计，「秘境冒险」是一款新型态的迷宫寻宝游戏。透过角色在丛林迷宫里的探索丶挖掘宝藏丶以及在遗迹神庙里的奇遇，让会员充分感受寻宝的乐趣，为自己获得大量的财富。</span></p>
+        <h5><span class="mceNonEditable dict" title="GAME_RULE">游戏说明</span></h5>
+        <p>游戏是由3 x 5 共15格的迷宫路径所组成，并结合了彩金游戏(Bonus Game)丶免费游戏(Free Game)丶彩金标记 (Jackpot)等游戏。</p>
+        <p>游戏进行方式：</p>
+        <p>由左开始出现3格以上连续路径，角色向前行进至端点进行挖掘动作。挖掘後可获得宝箱或是出现地洞进入彩金游戏。形成特殊路径时可进入免费游戏或是获得彩金分数。</p>
+        <p></p>
+        <p>特殊物件：地洞，特殊路径。 </p>
+        <p>一般物件：1~7号路径。</p>
+        <p>彩金游戏：寻找珍宝(FIND THE TREASURE)丶免费游戏(Free Game)。</p>
+        <h5>宝箱分数计算说明</h5>
+        <ul>
+            <li><strong>得分由左开始，连续行进3格(含3格)以上开始计算。</strong></li>
+            <li><strong>3格~12格所得宝箱设有固定赔率，12格以上以最大赔率200倍计算。</strong></li>
+            <li><strong>押注分数：每个角色最少5分，最大25分，每局皆需押注3个角色。每回总押注分数=押注分数x 3(15~75)。</strong></li>
+            <li><strong>角色所得分数=角色行走路径格数赔率x押注分数；每局总得分=各角色分数的总和。</strong></li>
+            <li><strong>角色行走路径经过相同格数时，可重复计算格数。</strong></li>
+        </ul>
+        <h5>物件与赔率说明</h5>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle">
+                <thead>
+                <tr>
+                    <th class="text-center" colspan="1"><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></th>
+                    <th class="text-center" colspan="3"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center td-theme" colspan="4"><span class="mceNonEditable dict" title="BONUS_SYMBOL">奖金标记</span>1</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5601/M009.png" alt="image"></td>
+                    <td class="text-left" colspan="3">
+                        <div>
+                            <p>挖掘後出现地洞 → 找寻珍宝(FIND THE TREASURE)</p>
+                            <p>方式：游戏时间内点击问号雕像，找出指定雕像可获得奖金分数，共3回合。</p>
+                            <p><span class="redfont">※当该条路径进入彩金游戏时，该路径不计分。</span></p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme" colspan="4"><span class="mceNonEditable dict" title="BONUS_SYMBOL">奖金标记</span>2</td>
+                </tr>
+                <tr>
+                    <td class="text-left" colspan="4">
+                        <p>出现指定路径 → 免费游戏</p>
+                        <ul>
+                            <li>当进入免费游戏（Free Game）时，可随机获得5丶10丶15次等共3种免费游戏次数。</li>
+                            <li>不同免费游戏次数都有其对应的额外连线倍率奖励，倍率如下：</li>
+                        </ul>
+                        <table class="table table-bordered text-middle rwd-table">
+                            <thead>
+                            <tr>
+                                <th class="text-center">免费游戏次数</th>
+                                <th class="text-center">倍率奖励</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-center info">15次</td>
+                                <td class="text-center">X 1</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center info">10次</td>
+                                <td class="text-center">X 2</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center info">5次</td>
+                                <td class="text-center">X 3</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <ul>
+                            <li>Free Game指定路径如下：</li>
+                        </ul>
+                        <div class="text-center"><img class="imagesize" src="./ipl/app/rule/images/5601/M00_Free2.jpg" alt="image"></div>
+                        <p class="redfont">※出现免费游戏路径时，角色不会移动，且该路径将不计分。</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme" colspan="4"><span><span class="mceNonEditable dict" title="JACKPOT_SYMBOL">彩金标记(Jackpot)</span></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5601/jackpot_grand2.png" alt="image"></p>
+                        <p>Grand</p>
+                    </td>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5601/jackpot_major2.png" alt="image"></p>
+                        <p>Major</p>
+                    </td>
+                    <td class="text-left" colspan="2" rowspan="2">
+                        <p>一般路径围成特殊方形路径→获得Jackpot彩金。</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5601/jackpot_minor2.png" alt="image"></p>
+                        <p>Minor</p>
+                    </td>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5601/jackpot_mini2.png" alt="image"></p>
+                        <p>Mini</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle">
+                <thead>
+                <tr>
+                    <th class="text-center" colspan="2"><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></th>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_ODDS">赔率</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">1号路径</td>
+                    <td class="text-center">2号路径</td>
+                    <td class="text-center" rowspan="8">
+                        <p><span class="redfont odds">12↑</span> <span class="greenfont odds"> X 200</span></p>
+                        <p><span class="redfont odds">12&nbsp </span> <span class="greenfont odds"> X 200</span></p>
+                        <p><span class="redfont odds">11&nbsp </span> <span class="greenfont odds"> X 100</span></p>
+                        <p><span class="redfont odds">10&nbsp </span> <span class="greenfont odds"> X&nbsp50 &nbsp</span></p>
+                        <p><span class="redfont odds"> &nbsp9&nbsp </span> <span class="greenfont odds"> X&nbsp30&nbsp</span></p>
+                        <p><span class="redfont odds"> &nbsp8&nbsp </span> <span class="greenfont odds"> X&nbsp20&nbsp</span></p>
+                        <p><span class="redfont odds"> &nbsp7&nbsp </span> <span class="greenfont odds"> X&nbsp15&nbsp</span></p>
+                        <p><span class="redfont odds"> &nbsp6&nbsp </span> <span class="greenfont odds"> X&nbsp10&nbsp</span></p>
+                        <p><span class="redfont odds"> 5&nbsp </span> <span class="greenfont odds"> X &nbsp7&nbsp</span></p>
+                        <p><span class="redfont odds"> 4&nbsp </span> <span class="greenfont odds"> X &nbsp5&nbsp</span></p>
+                        <p><span class="redfont odds"> 3&nbsp </span> <span class="greenfont odds"> X &nbsp3&nbsp</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5601/M001.png" alt="image"></td>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5601/M002.png" alt="image"></td>
+                </tr>
+                <tr>
+                    <td class="text-center">3号路径</td>
+                    <td class="text-center">4号路径</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5601/M003.png" alt="image"></td>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5601/M004.png" alt="image"></td>
+                </tr>
+                <tr>
+                    <td class="text-center">5号路径</td>
+                    <td class="text-center">6号路径</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5601/M005.png" alt="image"></td>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5601/M006.png" alt="image"></td>
+                </tr>
+                <tr>
+                    <td class="text-center">7号路径</td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5601/M008.png" alt="image"></td>
+                    <td class="text-center">
+                        <p class="redfont">※7号路径为上下两层设计，</p>
+                        <p class="redfont">上层为东西向桥梁设计，</p>
+                        <p class="redfont">下层为南北向通道设计，</p>
+                        <p class="redfont">两不相通。</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <span class="btn btn-default pull-right top">    <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr> <span class="mceNonEditable dict" title="GAME_INTERFACE"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">介面说明 </span><span class="title2">GAME INTERFACE</span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_SCREEN">游戏画面</span></h5>
+        <ul>
+            <li> <span class="mceNonEditable dict" title="MAIN_GAME_SCREEN">主游戏画面(Main Game Screen)</span></li>
+        </ul>
+        <p><img src="./ipl/images/game/rule/5601/cn/game_subpic01.jpg" alt="image"></p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered rwd-table">
+                <thead>
+                <tr>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_AREA">区域</span></th>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">A</td>
+                    <td class="text-center"><span class="mceNonEditable dict" title="JP_INFO">游戏彩金</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center">B</td>
+                    <td class="text-center"><span class="mceNonEditable dict" title="GAME_SCREEN">游戏画面</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center">C</td>
+                    <td class="text-center"><span class="mceNonEditable dict" title="GAME_FUNC">游戏功能</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center">D</td>
+                    <td class="text-center"><span class="mceNonEditable dict" title="PLAYER_INFO">基本资讯</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center">E</td>
+                    <td class="text-center"><span class="mceNonEditable dict" title="BASIC_FUNC">基本功能</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul>
+            <li><span>找寻珍宝( FIND THE TREASURE)</span></li>
+        </ul>
+        <p>游戏时间内，从3个问号雕像中随机点击1个，找出指定雕像可获得奖金分数，共3回合。</p>
+        <p><img src="./ipl/images/game/rule/5601/cn/game_subpic02.jpg" alt="image"></p>
+        <ul>
+            <li><span>免费游戏(Free Game)</span></li>
+        </ul>
+        <p><img src="./ipl/images/game/rule/5601/cn/game_subpic03.jpg" alt="image"></p>
+        <span class="btn btn-default pull-right top">    <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <hr> <span class="mceNonEditable dict" title="GAME_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏功能 </span><span class="title2">GAME FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_TOTAL_BET"><span class="orangefont base">下注分数(TOTAL BET) : </span>本局下注分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_WIN"><span class="orangefont base">赢得分数(WIN) : </span>本局赢得分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_CREDIT"><span class="orangefont base">可用分数(CREDITS) : </span>显示目前可以游戏的分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXCHANGE"><span class="orangefont base">分数兑换(CREDIT EXCHANGE) : </span>可在此选择开分与洗分</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="BET_ONE2"><span class="orangefont base">押注(SELECT BET) :  </span>投注押注，有5种选项可供选择，最多为25</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_BETMAX_25_3"><span class="orangefont base">满注(MAX BET) : </span>直接押满 25 x 3(角色) = 75</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_AUTO_PLAY"><span class="orangefont base">自动开始(AUTO PLAY)/停止自动开始(STOP AUTO PLAY) : </span>选择自动开始或是停止自动开始</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SPIN"><span class="orangefont base">开始(SPIN)/停止(STOP) : </span>开始或是停止</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top">    <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr> <span class="mceNonEditable dict" title="BASIC_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">基本功能 </span><span class="title2">BASIC FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SN"><span class="orangefont base">局号(SN) : </span>游戏局号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_ID"><span class="orangefont base">会员帐号(USER ID) : </span>显示会员登入帐号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_DEPOSIT"><span class="orangefont base">存款(DEPOSIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_deposit.png" width="23" height="24" /> 钮，开启会员中心的存款功能</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SOUND"><span class="orangefont base">音效(SOUND) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_mute.png" width="23" height="24" /> 钮，启动或停止音效</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_MUSIC"><span class="orangefont base">音乐(MUSIC) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_bgm.png" width="23" height="24" /> 钮，启动或停止背景音乐</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HISTORY"><span class="orangefont base">历史纪录(HISTORY) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_history.png" width="23" height="24" /> 钮，历史下注纪录</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HELP"><span class="orangefont base">帮助(HELP) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_help.png" width="23" height="24" /> 钮，规则说明</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXIT"><span class="orangefont base">离开(EXIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_exit.png" width="23" height="24" /> 钮，离开本游戏，跳大厅窗口</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top">    <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr>
+    </div>
+</div>
+<script src="./ipl/assets/vendor/jquery/jquery.min.js"></script>
+<script src="./ipl/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./ipl/assets/vendor/custom-scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./ipl/script/game/game_rule.js"></script>
+
+
+</body>
+</html>

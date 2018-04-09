@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>:::爆骰:::</title>
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.base.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.cust.css">
+
+</head>
+<body class=cust>
+
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/custom-scrollbar/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_theme.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_yellow_theme.css"><nav class="navbar navbar-default navbar-fixed-top navbar-theme">
+    <div class="container-fluid">
+        <div id="header "><span class="pull-right rule-logo"> <img src="./ipl/images/game/rule/5054/gamelogo.png" height="50px"></span> <span class="mceNonEditable dict rule-header" title="GAME_HEADER"><span class="pull-left rule-title"><span class="tw">游戏说明</span><span class="en">Game Rule</span></span></span> <span class="pull-right rule-name rule-title tw mceNonEditable">爆骰</span></div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="main-box">
+    <div class="pull-right langSelect lang-select">
+        <select class="form-control select-lang" name="select-lang">
+            <option value='tw'> 繁中 </option>
+            <option value='cn'> 簡中 </option>
+            <option value='vn'> Vietnam </option>
+            <option value='th'> คนไทย </option>
+            <option value='kr'> 한국어 </option>
+            <option value='jp'> 日本語 </option>
+            <option value='id'> Indonesia </option>
+            <option value='es'> español </option>
+            <option value='us'> English </option>
+        </select>
+    </div>
+
+    <div class="container content"><span class="mceNonEditable dict" title="GAME_INFSTRUCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏玩法 </span><span class="title2">GAME INSTRUCTION </span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_FEATURES">游戏特色</span></h5>
+        <p>《爆骰》（英语：Six Shooter）是一款新型态的桌上游戏，突破骰子类不外乎猜数字或斗大的玩法。以掷骰的点数将庄家所掷的点数抵消，好处在不用太多思考丶速战速决。让会员充分感受快速的刺激，为自己博取大量的财富。</p>
+        <h5><span class="mceNonEditable dict" title="GAME_RULE">游戏说明</span></h5>
+        <p>《爆骰》（英：Six Shooter）是由庄家先掷骰子决定骰子的点数，再让闲家掷骰进行「爆骰[1]」来决定输赢的新形态桌上博奕游戏。</p>
+        <p></p>
+        <h5>注：[1] 当闲家掷出骰子点数与庄家掷出的相同时，即可抵消与庄家相同的点数，反之则无法抵消；此为爆骰。</h5>
+        <p></p>
+        <h5><span class="mceNonEditable dict" title="GAME_RULES">游戏规则</span></h5>
+        <ol>
+            <li>最小下注为1，底注限额为1,000。</li>
+            <li>下注後方可开局，庄家会先掷六颗骰子，决定该局的骰子点数。</li>
+            <li>闲家需在三回合内以每一回合掷出三颗骰子的方式，将庄家的骰子点数完全抵消；如果该回合掷出与庄家骰子点数相同的点数时，其庄家的骰子点数将会被抵消，若未掷出相同点数时，则该回合流失进行下回合，直到三回合结束。</li>
+            <li>三回合结束，闲家若无法将庄家的点数完全抵消，则判定闲家输掉此局，反之为赢；给予完全抵消回合的对应赔率。</li>
+        </ol>
+        <h5>爆骰规则</h5>
+        <p>该范例结果为闲家在第三回合获胜：</p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle text-center sp-table">
+                <thead>
+                <tr>
+                    <th class="col-xs-2">庄家点数</th>
+                    <th class="col-xs-2">回合数</th>
+                    <th class="col-xs-3">闲家点数</th>
+                    <th class="col-xs-5">状态说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="col-xs-2" rowspan="3">
+                        <p><img src="./ipl/images/game/rule/5054/image04.png" alt="image"> <img src="./ipl/images/game/rule/5054/image06.png" alt="image"></p>
+                        <p><img src="./ipl/images/game/rule/5054/image04.png" alt="image"> <img src="./ipl/images/game/rule/5054/image06.png" alt="image"></p>
+                        <p><img src="./ipl/images/game/rule/5054/image01.png" alt="image"> <img src="./ipl/images/game/rule/5054/image04.png" alt="image"></p>
+                    </td>
+                    <td>第一回合</td>
+                    <td class="col-xs-3"><img src="./ipl/images/game/rule/5054/image04_2.png" alt="image"> <img src="./ipl/images/game/rule/5054/image05_2.png" alt="image"> <img src="./ipl/images/game/rule/5054/image02_2.png" alt="image"></td>
+                    <td>庄家的三颗四，被闲家的一颗四给全部抵消；爆骰成功。</td>
+                </tr>
+                <tr>
+                    <td>第二回合</td>
+                    <td><img src="./ipl/images/game/rule/5054/image01_2.png" alt="image"> <img src="./ipl/images/game/rule/5054/image05_2.png" alt="image"> <img src="./ipl/images/game/rule/5054/image05_2.png" alt="image"></td>
+                    <td>庄家的一颗一，被闲家的一颗一给抵消；爆骰成功。</td>
+                </tr>
+                <tr>
+                    <td>第三回合</td>
+                    <td><img src="./ipl/images/game/rule/5054/image03_2.png" alt="image"> <img src="./ipl/images/game/rule/5054/image06_2.png" alt="image"> <img src="./ipl/images/game/rule/5054/image02_2.png" alt="image"></td>
+                    <td>庄家的两颗六，被闲家的一颗六给全部抵消；爆骰成功。</td>
+                </tr>
+                <tr>
+                    <td>该局结果</td>
+                    <td colspan="3">在第三回合将庄家点数完全抵消，判定闲家赢得此局，派发第三回合赔率的彩金。</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>该局范例为庄家赢：</p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle text-center sp-table">
+                <thead>
+                <tr>
+                    <th class="col-xs-2">庄家点数</th>
+                    <th class="col-xs-2">回合数</th>
+                    <th class="col-xs-3">闲家点数</th>
+                    <th class="col-xs-5">状态说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="col-xs-2" rowspan="3">
+                        <p><img src="./ipl/images/game/rule/5054/image04.png" alt="image"> <img src="./ipl/images/game/rule/5054/image06_3.png" alt="image"></p>
+                        <p><img src="./ipl/images/game/rule/5054/image04.png" alt="image"> <img src="./ipl/images/game/rule/5054/image06_3.png" alt="image"></p>
+                        <p><img src="./ipl/images/game/rule/5054/image01.png" alt="image"> <img src="./ipl/images/game/rule/5054/image04.png" alt="image"></p>
+                    </td>
+                    <td>第一回合</td>
+                    <td class="col-xs-3"><img src="./ipl/images/game/rule/5054/image04_2.png" alt="image"> <img src="./ipl/images/game/rule/5054/image05_2.png" alt="image"> <img src="./ipl/images/game/rule/5054/image02_2.png" alt="image"></td>
+                    <td>庄家的三颗四，被闲家的一颗四给全部抵消；爆骰成功。</td>
+                </tr>
+                <tr>
+                    <td>第二回合</td>
+                    <td><img src="./ipl/images/game/rule/5054/image01_2.png" alt="image"> <img src="./ipl/images/game/rule/5054/image05_2.png" alt="image"> <img src="./ipl/images/game/rule/5054/image05_2.png" alt="image"></td>
+                    <td>庄家的一颗一，被闲家的一颗一给抵消；爆骰成功。</td>
+                </tr>
+                <tr>
+                    <td>第三回合</td>
+                    <td><img src="./ipl/images/game/rule/5054/image03_2.png" alt="image"> <img src="./ipl/images/game/rule/5054/image02_2.png" alt="image"> <img src="./ipl/images/game/rule/5054/image02_2.png" alt="image"></td>
+                    <td>闲家没有掷出与庄家相同点数的骰子，未达到抵消的条件，该回合流失；爆骰失败。</td>
+                </tr>
+                <tr>
+                    <td>该局结果</td>
+                    <td colspan="3">在三回合内无法将庄家的点数给完全抵消光，判定闲家输掉此局，并没收注额。</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5>赔率说明</h5>
+        <div class="panel panel-default">
+            <table class="table table-bordered text-middle text-center sp-table">
+                <thead>
+                <tr>
+                    <th>获胜回合</th>
+                    <th><span class="mceNonEditable dict" title="TH_ODDS">赔率</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>第一回合获胜</td>
+                    <td>1：12</td>
+                </tr>
+                <tr>
+                    <td>第二回合获胜</td>
+                    <td>1：1.8</td>
+                </tr>
+                <tr>
+                    <td>第三回合获胜</td>
+                    <td>1：1</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr><span class="mceNonEditable dict" title="GAME_INTERFACE"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">介面说明 </span><span class="title2">GAME INTERFACE</span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_SCREEN">游戏画面</span></h5>
+        <p><span class="mceNonEditable dict" title="MAIN_GAME_SCREEN">主游戏画面(Main Game Screen)</span></p>
+        <p><img src="./ipl/images/game/rule/5054/cn/image07.jpg" alt="image"></p>
+        <div class="panel panel-default">
+            <table class="table table-bordered text-middle text-center sp-table">
+                <thead>
+                <tr>
+                    <th><span class="mceNonEditable dict" title="TH_AREA">区域</span></th>
+                    <th><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><span>A</span></td>
+                    <td><span class="mceNonEditable dict" title="GAME_SCREEN">游戏画面</span></td>
+                </tr>
+                <tr>
+                    <td><span>B</span></td>
+                    <td><span>赔率表 </span></td>
+                </tr>
+                <tr>
+                    <td><span>C</span></td>
+                    <td><span>游戏资讯 </span></td>
+                </tr>
+                <tr>
+                    <td><span>D</span></td>
+                    <td><span class="mceNonEditable dict" title="GAME_FUNC">游戏功能</span></td>
+                </tr>
+                <tr>
+                    <td><span>E</span></td>
+                    <td>基本资讯与功能</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr><span class="mceNonEditable dict" title="GAME_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏功能 </span><span class="title2">GAME FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_TOTAL_BET"><span class="orangefont base">下注分数(TOTAL BET) : </span>本局下注分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_WIN"><span class="orangefont base">赢得分数(WIN) : </span>本局赢得分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_CREDIT"><span class="orangefont base">可用分数(CREDITS) : </span>显示目前可以游戏的分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXCHANGE"><span class="orangefont base">分数兑换(CREDIT EXCHANGE) : </span>可在此选择开分与洗分</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="orangefont base">掷骰(ROLL)/重复下注(REBET)： </span><span>庄家掷骰或玩家掷骰/重复上局下注筹码 </span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="orangefont base">清除下注(CLEAR)： </span><span>清除桌面所有下注分数 </span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_AUTO_PLAY"><span class="orangefont base">自动开始(AUTO PLAY)/停止自动开始(STOP AUTO PLAY) : </span>选择自动开始或是停止自动开始</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr><span class="mceNonEditable dict" title="BASIC_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">基本功能 </span><span class="title2">BASIC FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SN"><span class="orangefont base">局号(SN) : </span>游戏局号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_ID"><span class="orangefont base">会员帐号(USER ID) : </span>显示会员登入帐号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_DEPOSIT"><span class="orangefont base">存款(DEPOSIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_deposit.png" width="23" height="24" /> 钮，开启会员中心的存款功能</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SOUND"><span class="orangefont base">音效(SOUND) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_mute.png" width="23" height="24" /> 钮，启动或停止音效</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_MUSIC"><span class="orangefont base">音乐(MUSIC) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_bgm.png" width="23" height="24" /> 钮，启动或停止背景音乐</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HISTORY"><span class="orangefont base">历史纪录(HISTORY) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_history.png" width="23" height="24" /> 钮，历史下注纪录</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HELP"><span class="orangefont base">帮助(HELP) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_help.png" width="23" height="24" /> 钮，规则说明</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXIT"><span class="orangefont base">离开(EXIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_exit.png" width="23" height="24" /> 钮，离开本游戏，跳大厅窗口</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr></div>
+</div>
+<script src="./ipl/assets/vendor/jquery/jquery.min.js"></script>
+<script src="./ipl/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./ipl/assets/vendor/custom-scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./ipl/script/game/game_rule.js"></script>
+
+</body>
+</html>

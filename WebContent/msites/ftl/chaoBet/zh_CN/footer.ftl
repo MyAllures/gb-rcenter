@@ -67,8 +67,14 @@
             </div>
             <!--copy-right-->
             <div class="footer-copyright text-center">
-                <p>ChaoBet持有菲律宾政府PAGCOR (Philippine Amusement and Gaming Corporation) 颁发的离岸博彩许可证并受其监督
-                    (c) 2010-2017 ChaoBet.com版权所有 </p>
+                <p>
+                    <#if data.copyrightInformation?has_content>
+                        ${data.copyrightInformation}
+                    <#else >
+                        ChaoBet持有菲律宾政府PAGCOR (Philippine Amusement and Gaming Corporation) 颁发的离岸博彩许可证并受其监督
+                        (c) 2010-2017 ChaoBet.com版权所有
+                    </#if>
+                </p>
             </div>
         </div>
     </div>

@@ -72,6 +72,9 @@
                             <li>
                                 <a class="partner sa"><span></span></a>
                             </li>
+                            <li>
+                                <a class="partner opus"><span></span></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -98,7 +101,7 @@
                                 <a class="partner im"><span></span></a>
                             </li>
                             <li>
-                                <a class="partner bb"><span></span></a>
+                                <a class="partner opus"><span></span></a>
                             </li>
                         </ul>
                     </div>
@@ -128,7 +131,25 @@
                                 <a class="partner mg"><span></span></a>
                             </li>
                             <li>
+                                <a class="partner og"><span></span></a>
+                            </li>
+                            <li>
                                 <a class="partner pt"><span></span></a>
+                            </li>
+                            <li>
+                                <a class="partner sg"><span></span></a>
+                            </li>
+                            <li>
+                                <a class="partner png"><span></span></a>
+                            </li>
+                            <li>
+                                <a class="partner gd"><span></span></a>
+                            </li>
+                            <li>
+                                <a class="partner pp"><span></span></a>
+                            </li>
+                            <li>
+                                <a class="partner haha"><span></span></a>
                             </li>
                             <li>
                                 <a class="partner ag"><span></span></a>
@@ -137,13 +158,10 @@
                                 <a class="partner bb"><span></span></a>
                             </li>
                             <li>
-                                <a class="partner bs"><span></span></a>
+                                <a class="partner gg"><span></span></a>
                             </li>
                             <li>
-                                <a class="partner hb"><span></span></a>
-                            </li>
-                            <li>
-                                <a class="partner nyx"><span></span></a>
+                                <a class="partner dt"><span></span></a>
                             </li>
                         </ul>
                     </div>
@@ -167,7 +185,7 @@
                                 <a class="partner bb"><span></span></a>
                             </li>
                             <li>
-                                <a class="partner dw"><span></span></a>
+                                <a class="partner lt"><span></span></a>
                             </li>
                         </ul>
                     </div>

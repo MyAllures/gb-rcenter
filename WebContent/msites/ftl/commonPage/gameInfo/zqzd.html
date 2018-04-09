@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>:::蒸气炸弹:::</title>
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.base.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.cust.css">
+
+</head>
+<body class=cust>
+
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/custom-scrollbar/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_theme.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_yellow_theme.css"><nav class="navbar navbar-default navbar-fixed-top navbar-theme">
+    <div class="container-fluid">
+        <div id="header "><span class="pull-right rule-logo"> <img src="./ipl/images/game/rule/5904/gamelogo.png" height="50px"></span> <span class="mceNonEditable dict rule-header" title="GAME_HEADER"><span class="pull-left rule-title"><span class="tw">游戏说明</span><span class="en">Game Rule</span></span></span> <span class="pull-right rule-name rule-title tw mceNonEditable">蒸气炸弹</span></div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="main-box">
+    <div class="pull-right langSelect lang-select">
+        <select class="form-control select-lang" name="select-lang">
+            <option value='tw'> 繁中 </option>
+            <option value='cn'> 簡中 </option>
+            <option value='vn'> Vietnam </option>
+            <option value='th'> คนไทย </option>
+            <option value='kr'> 한국어 </option>
+            <option value='jp'> 日本語 </option>
+            <option value='id'> Indonesia </option>
+            <option value='es'> español </option>
+            <option value='us'> English </option>
+        </select>
+    </div>
+
+    <div class="container content"><span class="mceNonEditable dict" title="GAME_INFSTRUCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏玩法 </span><span class="title2">GAME INSTRUCTION </span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_RULE">游戏说明</span></h5>
+        <p>蒸气炸弹(POP BOMBER)是一款轻松活泼的消除游戏、配合各式各样道具，可以获得更多分数。</p>
+        <ul>
+            <li>主打符号连消，期待多重奖励。</li>
+            <li>消除补上符号，特殊道具符号，累积拼图送分及无敌爆破模式。</li>
+            <li>4个Jackpot累积彩金：Mini／Minor／Major／Grand.</li>
+            <li>相同符号只要相邻三个以上即可消除。</li>
+            <li>可同时消除多种符号。</li>
+            <li>每个符号有各自赔率，消除越多分数越高！</li>
+            <li>派彩分数=中奖颗数*单颗赔率*押注等级（1〜10）。</li>
+        </ul>
+        <h5><span class="mceNonEditable dict" title="SUB_ODDS">赔率说明</span></h5>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle text-center sp-table text-nowrap">
+                <thead>
+                <tr>
+                    <th colspan="1"><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></th>
+                    <th colspan="3"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center td-theme" colspan="4">拼图送分（Pattern）</td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><img src="./ipl/images/game/rule/5904/pattern.png" alt="image"></p>
+                    </td>
+                    <td colspan="3">
+                        <p>进入条件：只要消除的符号有对应图案图形的位置即可触发。</p>
+                        <p>玩家累积至符合模式图形的框格收集完毕即可获得奖金分数：</p>
+                        <p>收集完成赠送1〜3倍押注分数。</p>
+                        <p>假设更换下注分数，拼图会被重新置换。</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme" colspan="4">无敌爆破模式(Fever)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><img src="./ipl/images/game/rule/5904/fever2.png" alt="image" height="100"></p>
+                    </td>
+                    <td colspan="3" rowspan="2">
+                        <p>进入条件：同一局符号连续消除5次以上即可触发。
+                            <br>消除第5次后分数X2倍
+                            <br>消除第10次后分数X3倍</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><img src="./ipl/images/game/rule/5904/fever3.png" alt="image" height="100px"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme" colspan="4">彩金标记(Jackpot)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><img src="./ipl/images/game/rule/5904/jackpot.png" alt="image"></p>
+                    </td>
+                    <td colspan="3">
+                        <p>牌组中出现3〜6个彩金标记即获得头奖彩金，派彩后结束此局。</p>
+                        <p>Mini → 相邻3颗</p>
+                        <p>Minor → 相邻4颗</p>
+                        <p>Major → 相邻5颗</p>
+                        <p>Grand → 相邻6颗</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5><span>一般游戏赔率</span></h5>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle text-center text-nowrap">
+                <thead>
+                <tr>
+                    <th><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></th>
+                    <td>
+                        <p><img src="./ipl/images/5904/images1.gif" alt="image" height="70"></p>
+                    </td>
+                    <td>
+                        <p><img src="./ipl/images/5904/images2.gif" alt="image" height="70"></p>
+                    </td>
+                    <td>
+                        <p><img src="./ipl/images/5904/images3.gif" alt="image" height="70"></p>
+                    </td>
+                    <td>
+                        <p><img src="./ipl/images/5904/images4.gif" alt="image" height="70"></p>
+                    </td>
+                    <td>
+                        <p><img src="./ipl/images/5904/images5.gif" alt="image" height="70"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>单颗赔率</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>4</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <th><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></th>
+                    <td class="headingcolor">
+                        <p><img src="./ipl/images/5904/images6.gif" alt="image" height="70"></p>
+                    </td>
+                    <td>
+                        <p><img src="./ipl/images/5904/images7.gif" alt="image" height="70"></p>
+                    </td>
+                    <td>
+                        <p><img src="./ipl/images/5904/images8.gif" alt="image" height="70"></p>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>单颗赔率</th>
+                    <td>8</td>
+                    <td>8</td>
+                    <td>10</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <h5><span>特殊道具</span></h5>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle text-center sp-table text-nowrap">
+                <thead>
+                <tr>
+                    <th><strong>道具</strong></th>
+                    <th><strong><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></strong></th>
+                    <th><strong><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></strong></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong>再一次</strong></td>
+                    <td>
+                        <p><img src="./ipl/images/5904/images13.gif" alt="image" height="70"></p>
+                    </td>
+                    <td>将牌组上的符号重洗一次。</td>
+                </tr>
+                <tr>
+                    <td><strong>四周消除</strong></td>
+                    <td>
+                        <p><img src="./ipl/images/5904/images12.gif" alt="image" height="70"></p>
+                    </td>
+                    <td>随机消除道具周围1-4个炸弹（上下左右）。</td>
+                </tr>
+                <tr>
+                    <td><strong>随机消除</strong></td>
+                    <td>
+                        <p><img src="./ipl/images/5904/images11.gif" alt="image" height="70"></p>
+                    </td>
+                    <td>随机消除牌组上1-6个炸弹。</td>
+                </tr>
+                <tr>
+                    <td><strong>十字消除</strong></td>
+                    <td>
+                        <p><img src="./ipl/images/5904/images10.gif" alt="image" height="70"></p>
+                    </td>
+                    <td>消除道具同一行和列上所有的炸弹。</td>
+                </tr>
+                <tr>
+                    <td><strong>2x2的消除</strong></td>
+                    <td>
+                        <p><img src="./ipl/images/5904/images9.gif" alt="image" height="70"></p>
+                    </td>
+                    <td>随机消除1处2X2方格。</td>
+                </tr >
+                </tbody>
+            </table>
+        </div>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr><span class="mceNonEditable dict" title="GAME_INTERFACE"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">介面说明 </span><span class="title2">GAME INTERFACE</span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_SCREEN">游戏画面</span></h5>
+        <ul>
+            <li>主游戏画面</li>
+        </ul>
+        <p class="table-responsive" ><img src="./ipl/images/game/rule/5904/cn/gamemenu_1.JPG" alt="image"></p>
+        <ul>
+            <li>无敌爆破模式(Fever)</li>
+        </ul>
+        <p class="table-responsive"><img src="./ipl/images/game/rule/5904/cn/gamemenu_2.JPG" alt="image" ></p>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr><span class="mceNonEditable dict" title="GAME_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏功能 </span><span class="title2">GAME FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_TOTAL_BET"><span class="orangefont base">下注分数(TOTAL BET) : </span>本局下注分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_WIN"><span class="orangefont base">赢得分数(WIN) : </span>本局赢得分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_CREDIT"><span class="orangefont base">可用分数(CREDITS) : </span>显示目前可以游戏的分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="orangefont base">押注等级（BET LEVEL） ： </span>共等级1〜10，每个等级50分</li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="orangefont base">满注（MAX BET） ： </span>押注等级= 10</li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="orangefont base">自动开始(AUTO PLAY)/停止自动开始(STOP AUTO) :  </span>选择自动开始或是停止自动开始</li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="orangefont base">开始（SPIN） ： </span> 开始</li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXCHANGE"><span class="orangefont base">分数兑换(CREDIT EXCHANGE) : </span>可在此选择开分与洗分</span><span></span><span></span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr><span class="mceNonEditable dict" title="BASIC_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">基本功能 </span><span class="title2">BASIC FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SN"><span class="orangefont base">局号(SN) : </span>游戏局号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_ID"><span class="orangefont base">会员帐号(USER ID) : </span>显示会员登入帐号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_DEPOSIT"><span class="orangefont base">存款(DEPOSIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_deposit.png" width="23" height="24" /> 钮，开启会员中心的存款功能</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SOUND"><span class="orangefont base">音效(SOUND) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_mute.png" width="23" height="24" /> 钮，启动或停止音效</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_MUSIC"><span class="orangefont base">音乐(MUSIC) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_bgm.png" width="23" height="24" /> 钮，启动或停止背景音乐</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HISTORY"><span class="orangefont base">历史纪录(HISTORY) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_history.png" width="23" height="24" /> 钮，历史下注纪录</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HELP"><span class="orangefont base">帮助(HELP) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_help.png" width="23" height="24" /> 钮，规则说明</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXIT"><span class="orangefont base">离开(EXIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_exit.png" width="23" height="24" /> 钮，离开本游戏，跳大厅窗口</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr>
+    </div>
+</div>
+<script src="./ipl/assets/vendor/jquery/jquery.min.js"></script>
+<script src="./ipl/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./ipl/assets/vendor/custom-scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./ipl/script/game/game_rule.js"></script>
+
+
+</body>
+</html>

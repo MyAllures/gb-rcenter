@@ -1,5 +1,59 @@
 <script>
     $(function () {
+        // api轮播
+        var apiSwiper = new Swiper('.swiper-container',{
+            loop: true,
+            slidesPerView : 6,
+            simulateTouch : false,
+            autoplay:2500,
+            autoplayDisableOnInteraction : false,
+            onSlideClick: function(swiper){
+                // console.log('事件触发了;'+apiSwiper.clickedSlideIndex);
+            }
+        });
+        $('.swiper-contro.next').on('click',function(e){
+            e.preventDefault()
+            apiSwiper.swipeNext()
+        });
+        $('.swiper-contro.prev').on('click',function(e){
+            e.preventDefault()
+            apiSwiper.swipePrev()
+        });
+        // api-tab奇偶数区分
+        $(".api-nav .swiper-slide:odd").addClass("odd");
+        // 点击当前api设置当前api为active
+        $('body').on('click','.api-nav .swiper-slide',function () {
+            var api = $(this).find('a').data('api');
+            $('.api-nav .swiper-slide').removeClass('active');
+            $('.api-nav .swiper-slide a[data-api="'+api+'"]').parent().addClass('active');
+        });
+        // 从缓存读取api的显示方式
+        if(sessionStorage.getItem('api-style')){
+            if(sessionStorage.getItem('api-style') === 'api-slide'){
+                $('.toggle-api').removeClass('a-all');
+                $(".api-nav-slide").show();
+                $(".api-nav-all").hide();
+                apiSwiper.reInit();
+            }
+        }
+        // api显示方式切换
+        $("body").on("click",".toggle-api",function(){
+            $(this).toggleClass("a-all");
+            if($(this).hasClass("a-all")){
+                sessionStorage.setItem('api-style','api-all')
+                $(".api-nav-slide").slideUp();
+                $(".api-nav-all").slideDown();
+            }else{
+                sessionStorage.setItem('api-style','api-slide')
+                $(".api-nav-slide").slideDown();
+                $(".api-nav-all").slideUp();
+                apiSwiper.reInit();
+            }
+        });
+        // 为捕鱼api时， 用获取地址栏字段的方法添加active
+        if(location.search.indexOf("Fish") > -1){
+            $('.gui-logo-fish').parents('.swiper-slide').addClass('active');
+        }
         //回车搜索
         $("._vr_casinoSearch").on("keydown",".search input[name='gameName']",function(e) {
             if (e.which == 13) {

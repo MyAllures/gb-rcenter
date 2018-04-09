@@ -1,0 +1,18 @@
+@charset "UTF-8";
+.navbar-theme{
+    background-color: #e5e500;
+    border-color: yellow;
+}
+.table thead tr > th {
+    background: #e5e500 !important;
+    color: #000000 !important;
+}
+.td-theme{
+    background: #f7f7b2 !important;
+    color: #000000 !important;
+}
+.fa-arrow-circle-o-up,
+.fa-caret-right,
+.fa-arrow-circle-right {
+    color: #e5e500;
+}

@@ -447,8 +447,8 @@
     // Modal 模态框
     $("#login-agreement").click(function() {
 
-        BootstrapDialog.show({
-            title:'登録プロトコル',
+        /*BootstrapDialog.show({
+            title:'代理注册协议',
             type: 'default',
             closable: false,
             message: function(dialog) {
@@ -459,12 +459,12 @@
                 return $message;
             },
             buttons: [{
-                label: '同意しません',
+                label: '我不同意',
                 action: function(){
                     window.location ="/agent.html";
                 }
             }, {
-                label: '同意します',
+                label: '我同意',
                 cssClass: 'btn-success',
                 action:function(dialogItself){
                     dialogItself.close();
@@ -473,7 +473,26 @@
             data: {
                 'pageToLoad': '/commonPage/modal/agent-agreement.html'
             }
-        });
+        });*/
+        var loAgree = layer.open({
+            content:;<#if data.agentValidateRegisterMap.regProtocol??> ${data.agentValidateRegisterMap.regProtocol.value} </#if>,
+        title:'エージェント登録プロトコル',
+                skin:'layui-layer-brand',
+                btn:["わたしは反対だ","わたしは同意する"],
+                success: function(layer){
+            // 重写关闭按钮
+            $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+            // 提示框类型
+            $(layer).addClass("normal-dialog");
+        },
+        yes: function(){
+            window.location ="/agent.html";
+        },
+        btn2: function () {
+            layer.close(loAgree);
+        }
+    });
+
     });
 
     var $form = $('#regForm');
@@ -599,21 +618,36 @@
                 },
                 success: function (data) {
                     if(data){
-                        BootstrapDialog.show({
-                            title:'ヒント',
+                        /*BootstrapDialog.show({
+                            title:'提示',
                             type: BootstrapDialog.TYPE_PRIMARY,
                             closable: false,
                             message: function(dialog) {
-                                var $message = "登録が成功、審査を待ってください！";
+                                var $message = "注册成功，请等待审核！";
                                 return $message;
                             },
                             buttons: [{
-                                label: '確定',
+                                label: '确定',
                                 cssClass: 'btn-success',
                                 action:function(dialogItself){
                                     window.location.href ="/agent.html";
                                 }
                             }]
+                        });*/
+                        layer.open({
+                            content:'登録が成功したので,審査を待ってください。！',
+                            title:'プロンプト',
+                            skin:'layui-layer-brand',
+                            btn:["落し着けるかくてい"],
+                            success: function(layer){
+                                // 重写关闭按钮
+                                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                                // 提示框类型
+                                $(layer).addClass("normal-dialog");
+                            },
+                            yes: function () {
+                                window.location.href ="/agent.html";
+                            }
                         });
                     }
                 },
@@ -670,13 +704,49 @@
         var cookie = getCookie(REGSTER_SEND_EMAIL_TIME);
         cookie = Number(cookie);
         if(!email){
-            BootstrapDialog.alert({message:'メールアドレスをご入力ください！',title:'インフォメーション'});
+            /*BootstrapDialog.alert({message:'请先输入邮箱！',title:'提示信息'});*/
+            layer.open({
+                content:'先にメールを入力してください。',
+                title:'プロンプトメッセージ',
+                skin:'layui-layer-brand',
+                btn:["落し着けるかくてい"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }else if($email.parents(".form-group").hasClass("has-error")){
-            BootstrapDialog.alert({message:'メールアドレスが正しくありません！',title:'インフォメーション'});
+            /*BootstrapDialog.alert({message:'请输入正确的邮箱！',title:'提示信息'});*/
+            layer.open({
+                content:'正しいメールアドレスを入力してください。！',
+                title:'プロンプトメッセージ',
+                skin:'layui-layer-brand',
+                btn:["落し着けるかくてい"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }else if(cookie){
-            BootstrapDialog.alert({message:'送信中！',title:'インフォメーション'});
+            /*BootstrapDialog.alert({message:'发送间隔时间未到！',title:'提示信息'});*/
+            layer.open({
+                content:'送信間隔はまだ決まっていない。！！',
+                title:'プロンプトメッセージ',
+                skin:'layui-layer-brand',
+                btn:["落し着けるかくてい"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }
         function setCookie(c_name,value,expiredays){

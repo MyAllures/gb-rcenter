@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>:::美式轮盘:::</title>
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.base.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.cust.css">
+
+</head>
+<body class=cust>
+
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/custom-scrollbar/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_theme.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_yellow_theme.css"><nav class="navbar navbar-default navbar-fixed-top navbar-theme">
+    <div class="container-fluid">
+        <div id="header "><span class="pull-right rule-logo"> <img src="./ipl/images/game/rule/5107/gamelogo.png" height="50px"></span> <span class="mceNonEditable dict rule-header" title="GAME_HEADER"><span class="pull-left rule-title"><span class="tw">游戏说明</span><span class="en">Game Rule</span></span></span> <span class="pull-right rule-name rule-title tw mceNonEditable">美式轮盘</span></div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="main-box">
+    <div class="pull-right langSelect lang-select">
+        <select class="form-control select-lang" name="select-lang">
+            <option value='tw'> 繁中 </option>
+            <option value='cn'> 簡中 </option>
+            <option value='vn'> Vietnam </option>
+            <option value='th'> คนไทย </option>
+            <option value='kr'> 한국어 </option>
+            <option value='jp'> 日本語 </option>
+            <option value='id'> Indonesia </option>
+            <option value='es'> español </option>
+            <option value='us'> English </option>
+        </select>
+    </div>
+
+    <div class="container content"><span class="mceNonEditable dict" title="INTRODUCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">简介 </span><span class="title2">INTRODUCTION</span></span>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[0]">我们提供的是美式轮盘，转轮有38个槽，号码为00、0及1到36。玩法相当简单，玩家决定下注区之后，计算机随机开出一号码，若有中奖再依中奖区的赔率给分，若无中奖即判定玩家输掉此局。 </span></p>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="GAME_INFSTRUCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏玩法 </span><span class="title2">GAME INSTRUCTION </span></span>
+        <ol>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[1]">开始新局后，请玩家在桌面不同的方格内或方格的边界上押放筹码。 </span></li>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[2]">压启动（Spin）后，轮盘开始转动。当轮盘停止后，滚球落入00或0-36其中一个细沟，该细沟外测所显示的号码即为开球号码。 </span></li>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[3]">若有中奖，依中奖区的赔率给分；若无中奖，即判定玩家输掉此局。 </span></li>
+        </ol>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="THROW_RULES"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">掷球规则 </span><span class="title2">THROW RULES</span></span>
+        <ol>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[4]">本游戏进行方式为最接近实境赌场之设置，若有发生特殊情形将依本公司公告之办法处理。 </span></li>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[5]">游戏进行中因线路问题造成游戏中断: </span>
+                <ul>
+                    <li><span class="mceNonEditable rule_txt" id="rule_txt[6]">(a)若圆球已落入号码框格内，则该局游戏视为有效并由系统进行开配。 </span></li>
+                    <li><span class="mceNonEditable rule_txt" id="rule_txt[7]">(b)若圆球在旋转中尚未落入号码框格内，玩家中断联机，则由计算机自行随机开启一颗球号，做为此局开球号码。 </span></li>
+                </ul>
+            </li>
+            <li><span class="mceNonEditable rule_txt" id="rule_txt[8]">本公司所提供之每局计算机画面游戏结果与历史赛果纪录仅供参考。 </span></li>
+        </ol>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="BET_TYPES"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">投注种类 </span><span class="title2">BET TYPES</span></span>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[9]">轮盘的投注方式有 12个种类，详细说明如下: </span></p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle">
+                <thead>
+                <tr>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TYPES">名称</span></th>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center text-nowrap"><span class="mceNonEditable dict" title="ROULETTE">直接注</span></td>
+                    <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[10]">您可以投注包括 0在内的任意一个数字。下注时将筹码放到那个数字的中心 (如8、23或35)。 </span></td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme text-nowrap"><span class="mceNonEditable dict" title="ROULETTE_2">分注</span></td>
+                    <td class="text-center td-theme"><span class="mceNonEditable rule_txt" id="rule_txt[11]">您可以投注于两个号码之间的网格线上 (如2和3，或13和16，0和00)。 </span></td>
+                </tr>
+                <tr>
+                    <td class="text-center text-nowrap"><span class="mceNonEditable dict" title="ROULETTE_3">街注</span></td>
+                    <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[12]">您可以投注三个号码。将筹码押在轮盘桌上有三个数字那一行顶部边线上即可 (如7、8和9)。 </span></td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme text-nowrap"><span class="mceNonEditable dict" title="ROULETTE_4">三数</span></td>
+                    <td class="text-center td-theme"><span class="mceNonEditable rule_txt" id="rule_txt[13]">下注于三个号码。仅有(0,1,2)、(0,00,2)或(2,3,00)可下注。 </span></td>
+                </tr>
+                <tr>
+                    <td class="text-center text-nowrap"><span class="mceNonEditable dict" title="ROULETTE_5">角注</span></td>
+                    <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[14]">您也可以将筹码放到四个数字方框交叉的那个角区以下注那四个数字 (如19、20、22和23)。 </span></td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme text-nowrap"><span class="mceNonEditable dict" title="_FIVE">五个号码</span></td>
+                    <td class="text-center td-theme"><span class="mceNonEditable rule_txt" id="rule_txt[15]">在最上方区格中的五个数字（0，00，1，2，3)。 </span></td>
+                </tr>
+                <tr>
+                    <td class="text-center text-nowrap"><span class="mceNonEditable dict" title="ROULETTE_7">线注</span></td>
+                    <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[16]">您可将筹码下注到两行相交的最顶部的交点处 ， 您可以赌两个街注，也就是两行的六个数字。 (如28、29、30及31、32、33便组成一条Line)。 </span></td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme text-nowrap"><span class="mceNonEditable dict" title="ROULETTE_8">列注</span></td>
+                    <td class="text-center td-theme"><span class="mceNonEditable rule_txt" id="rule_txt[17]">桌上每列数字底部都有带 "2 to 1" 字样的方框，一共有三个。 (如：3、6、9、12、15、18、21、24、27、30、33、36)。这种赌区不包括 0及00， 若开0及00则通杀。</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center text-nowrap"><span class="mceNonEditable dict" title="ROULETTE_9">下注一打数字</span></td>
+                    <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[18]">您可以将筹码下到有 "1st 12" ， "2nd 12" 和 "3rd 12" 字样的赌区以同时下注 12个数字。(分别为1-12、13-24及25-36)。 (若开0及00则通杀)。 </span></td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme text-nowrap"><span class="mceNonEditable dict" title="ROULETTE_10">红色 /黑色</span></td>
+                    <td class="text-center td-theme"><span class="mceNonEditable rule_txt" id="rule_txt[19]">投注中彩号码将为红色或是黑色的，共投注十八个数字。 (若开0及00则通杀)。 </span></td>
+                </tr>
+                <tr>
+                    <td class="text-center text-nowrap"><span class="mceNonEditable dict" title="ROULETTE_11">双数 / 单数</span></td>
+                    <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[20]">投注中彩号码将为单数或是双数，共投注十八个数字。 (若开0及00则通杀)。 </span></td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme text-nowrap"><span class="mceNonEditable dict" title="ROULETTE_12">低注 / 高注</span></td>
+                    <td class="text-center td-theme"><span class="mceNonEditable rule_txt" id="rule_txt[21]">投注中彩号码将算低 (1-18)或是算高(19-36)，共十八个数字。 (若开0及00则通杀)。</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="PAYOFF"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">派彩 </span><span class="title2">PAYOFF </span></span>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle">
+                <thead>
+                <tr>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TYPES">名称</span></th>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_ODDS">赔率</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center"><span class="mceNonEditable dict" title="ROULETTE">直接注</span></td>
+                    <td class="text-center">1:36</td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme"><span class="mceNonEditable dict" title="ROULETTE_2">分注</span></td>
+                    <td class="text-center td-theme">1:18</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><span class="mceNonEditable dict" title="ROULETTE_3">街注</span></td>
+                    <td class="text-center">1:12</td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme"><span class="mceNonEditable dict" title="ROULETTE_4">三数</span></td>
+                    <td class="text-center td-theme">1:12</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><span class="mceNonEditable dict" title="ROULETTE_5">角注</span></td>
+                    <td class="text-center">1:9</td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme"><span class="mceNonEditable dict" title="_FIVE">五个号码</span></td>
+                    <td class="text-center td-theme">1:7</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><span class="mceNonEditable dict" title="ROULETTE_7">线注</span></td>
+                    <td class="text-center">1:6</td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme"><span class="mceNonEditable dict" title="ROULETTE_8">列注</span></td>
+                    <td class="text-center td-theme">1:3</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><span class="mceNonEditable dict" title="ROULETTE_9">下注一打数字</span></td>
+                    <td class="text-center">1:3</td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme"><span class="mceNonEditable dict" title="ROULETTE_10">红色 /黑色</span></td>
+                    <td class="text-center td-theme">1:2</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><span class="mceNonEditable dict" title="ROULETTE_11">双数 / 单数</span></td>
+                    <td class="text-center">1:2</td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme"><span class="mceNonEditable dict" title="ROULETTE_12">低注 / 高注</span></td>
+                    <td class="text-center td-theme">1:2</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr>
+    </div>
+
+</div>
+<script src="./ipl/assets/vendor/jquery/jquery.min.js"></script>
+<script src="./ipl/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./ipl/assets/vendor/custom-scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./ipl/script/game/game_rule.js"></script>
+
+</body>
+</html>

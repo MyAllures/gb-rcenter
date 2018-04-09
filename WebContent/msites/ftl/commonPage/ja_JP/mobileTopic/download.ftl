@@ -51,7 +51,7 @@
                         <h4>モバイル自動識別！最適なブラウザを自動起動！</h4>
                         <h5>ブラウザに次のURLを入れてください。URL：</h5>
                         <h3 class="url-text"></h3>
-                        <h5>サポート：iPhone 5 / 5s / 6 / 6s / 7 / iPad / iPad Air</h5>
+                        <h5>サポート：iPhone 6 / 6s / 7 / 8 / iPhoneX / iPad / iPad Air</h5>
                         <h5>Huawei、サムスン、HTC、ZTE等</h5>
                     </div>
                 </div>
@@ -70,7 +70,16 @@
                         <h1><#if data.siteInfo.siteName??>${data.siteInfo.siteName}</#if> 移动Android版</h1>
                         <h4>最新版のアンドロイドバージョン、楽々遊んじゃお！</h4>
                         <h5>QRコードをスキャンしてください</h5>
-                        <div class="img"><span id="android_qr_code"></span></div>
+                        <div class="img">
+                            <div class="qcode-wrap">
+                                <span id="android_qr_code"></span>
+                                <div class="txt">
+                                    <div class="txt1">For Android</div>
+                                    <div class="txt2">请登入下载</div>
+                                </div>
+                                <a href="/"><img class="qcode-blur" src="${data.configInfo.ftlRootPath}commonPage/zh_CN/mobileTopic/images/qcode-blur.png"></a>
+                            </div>
+                        </div>
                         <h5>サポート：Huawei、サムスン、HTC、ZTE等</h5>
                     </div>
                 </div>
@@ -85,8 +94,17 @@
                         <h1><#if data.siteInfo.siteName??>${data.siteInfo.siteName}</#if> モバイルiOSバージョン</h1>
                         <h4>iOS対応、楽々ゲーミング</h4>
                         <h5>QRコードをダウンロード</h5>
-                        <div class="img"><span id="ios_qr_code"></span></div>
-                        <h5>サポート：iPhone 5 / 5s / 6 / 6s / 7 / iPad / iPad Air</h5>
+                        <div class="img">
+                            <div class="qcode-wrap">
+                                <span id="ios_qr_code"></span>
+                                <div class="txt">
+                                    <div class="txt1">For iOS</div>
+                                    <div class="txt2">请登入下载</div>
+                                </div>
+                                <a href="/"><img class="qcode-blur" src="${data.configInfo.ftlRootPath}commonPage/zh_CN/mobileTopic/images/qcode-blur.png"></a>
+                            </div>
+                        </div>
+                        <h5>サポート：iPhone 6 / 6s / 7 / 8 / iPhoneX / iPad / iPad Air</h5>
                     </div>
                 </div>
                 <div class="right right7">
@@ -164,6 +182,19 @@
             }
         })
         $("#ios_qr_code").append("<img src="+ios_url+">");
+
+        // 判读是否登录
+        var isLogin = sessionStorage.is_login;
+        //后台设置是否登录后才能显示二维码
+        <#if data.loginShowQrCode?string("true","false") == 'true'>
+            if(isLogin=="true"){
+                $('.download-page').addClass("login");
+            }else{
+                $('.download-page').addClass("unlogin");
+            }
+        <#else>
+            $('.download-page').addClass("login");
+        </#if>
     });
     </script>
 </body>

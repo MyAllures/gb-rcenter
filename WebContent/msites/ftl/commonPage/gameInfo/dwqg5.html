@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>:::动物奇观五:::</title>
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.base.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.cust.css">
+
+</head>
+<body class=cust>
+
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/custom-scrollbar/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_theme.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_yellow_theme.css"><nav class="navbar navbar-default navbar-fixed-top navbar-theme">
+    <div class="container-fluid">
+        <div id="header "><span class="pull-right rule-logo"> <img src="./ipl/images/game/rule/5060/gamelogo.png" height="50px"></span> <span class="mceNonEditable dict rule-header" title="GAME_HEADER"><span class="pull-left rule-title"><span class="tw">游戏说明</span><span class="en">Game Rule</span></span></span> <span class="pull-right rule-name rule-title tw mceNonEditable">动物奇观五</span></div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="main-box">
+    <div class="pull-right langSelect lang-select">
+        <select class="form-control select-lang" name="select-lang">
+            <option value='tw'> 繁中 </option>
+            <option value='cn'> 簡中 </option>
+            <option value='vn'> Vietnam </option>
+            <option value='th'> คนไทย </option>
+            <option value='kr'> 한국어 </option>
+            <option value='jp'> 日本語 </option>
+            <option value='id'> Indonesia </option>
+            <option value='es'> español </option>
+            <option value='us'> English </option>
+        </select>
+    </div>
+
+    <div class="container content"><span class="mceNonEditable dict" title="GAME_INFSTRUCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏玩法 </span><span class="title2">GAME INSTRUCTION </span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_RULE">游戏说明</span></h5>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[0]">动物奇观五代综合四代所有优点，联机方式分为单一联机、ALL全盘、ANY恐龙。 </span></p>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[1]">此外还有机会额外获得特殊彩金、BONUS、JP游戏、CROSS(十字)游戏、JP时间的分数。</span></p>
+        <h5><span class="mceNonEditable dict" title="GAME_PROCEDURE">游戏流程</span></h5>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[2]">每次押注依序对8条联机产生作用，押注起押40分，满注80分；按开始后会个别转动，当全部停止后，符合赔率表即为中奖。</span></p>
+        <span class="btn btn-default pull-right top"><span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="ODDS"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">赔率表 </span><span class="title2">ODDS </span></span>
+        <h5><span class="mceNonEditable dict" title="SLINGLE_LINE">单一联机</span></h5>
+        <p>(<span class="mceNonEditable rule_txt" id="rule_txt[3]">得分以押分 × 赔率计算</span>)</p>
+        <div class="panel panel-default  table-responsive">
+            <table class="table table-bordered rwd-table">
+                <thead>
+                <tr>
+                    <th class="text-center col-xs-5"><span class="mceNonEditable dict" title="SLINGLE_LINE">单一联机</span></th>
+                    <th class="text-center col-xs-2"><span class="mceNonEditable dict" title="TH_ODDS">赔率</span></th>
+                    <th class="text-center col-xs-5"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images1.gif" alt=""><img src="./ipl/images/5060/images1.gif"><img src="./ipl/images/5060/images1.gif" alt=""></p>
+                    </td>
+                    <td class="text-center">
+                        <p>300</p>
+                    </td>
+                    <td rowspan="12">
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[4]">当出现图形符合左方赔率表图标，可获得单一联机的赔率。</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[5]">若为同一种冰淇淋或恐龙联机时，则可再获得 BONUS的分数。</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images2.gif"><img src="./ipl/images/5060/images2.gif"><img src="./ipl/images/5060/images2.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>200</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images3.gif"><img src="./ipl/images/5060/images3.gif"><img src="./ipl/images/5060/images3.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>100</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images4.gif"><img src="./ipl/images/5060/images4.gif"><img src="./ipl/images/5060/images4.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>50</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images5.gif"><img src="./ipl/images/5060/images5.gif"><img src="./ipl/images/5060/images5.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>20</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images6.gif"><img src="./ipl/images/5060/images6.gif"><img src="./ipl/images/5060/images6.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>18</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images7.gif"><img src="./ipl/images/5060/images7.gif"><img src="./ipl/images/5060/images7.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>14</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images8.gif"><img src="./ipl/images/5060/images8.gif"><img src="./ipl/images/5060/images8.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>10</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5060/ice1_a.jpg" width="80px" height="80px"><img src="./ipl/images/game/rule/5060/ice2_a.jpg" width="80px" height="80px"><img src="./ipl/images/game/rule/5060/ice3_a.jpg" width="80px" height="80px"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>10</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images9.gif"><img src="./ipl/images/5060/images9.gif"><img src="./ipl/images/5060/images9.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>10</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images9.gif"><img src="./ipl/images/5060/images9.gif"><img src="./ipl/images/5043/imagesany.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>5</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images9.gif"><img src="./ipl/images/5043/imagesany.gif"><img src="./ipl/images/5043/imagesany.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>2</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5><span class="mceNonEditable dict" title="ALL">ALL全盘</span></h5>
+        <p>(<span><span class="mceNonEditable rule_txt" id="rule_txt[45]">得分以总押分 × 赔率计算</span></span>)</p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered rwd-table">
+                <thead>
+                <tr>
+                    <th class="text-center col-xs-5"><span class="mceNonEditable dict" title="ALL">ALL全盘</span></th>
+                    <th class="text-center col-xs-2"><span class="mceNonEditable dict" title="TH_ODDS">赔率</span></th>
+                    <th class="text-center col-xs-5"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images2.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>150</p>
+                    </td>
+                    <td rowspan="10"><br>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[6]">当九宫格出现全部相同组件时，可获得ALL全盘的赔率。</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[7]">当九宫格为不同动物组件组成时，可获得 All Animals的赔率。</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images3.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>140</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images9.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>130</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images4.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>120</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images5.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>100</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images6.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>100</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images7.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>100</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images8.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>100</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5060/ice1_b.jpg"><img src="./ipl/images/game/rule/5060/ice2_b.jpg"><img src="./ipl/images/game/rule/5060/ice3_b.jpg"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>100</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><span class="greenfont">All Animals</span><img src="./ipl/images/5060/images10.gif"></p>
+                    </td>
+                    <td class="text-center">
+                        <p>15</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5><span class="mceNonEditable rule_txt" id="rule_txt[8]">ANY 恐龙</span></h5>
+        <p>(<span><span class="mceNonEditable rule_txt" id="rule_txt[45]">得分以总押分 × 赔率计算</span></span>)</p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered rwd-table">
+                <thead>
+                <tr>
+                    <th class="text-center col-xs-5"><span><span class="mceNonEditable rule_txt" id="rule_txt[8]">ANY 恐龙</span></span></th>
+                    <th class="text-center col-xs-2"><span class="mceNonEditable dict" title="TH_ODDS">赔率</span></th>
+                    <th class="text-center col-xs-5"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images1.gif" alt=""><span class="greenfont"> X 9</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>3000</p>
+                    </td>
+                    <td rowspan="8"><br>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[9]">当出现2只以上的恐龙时，可获得ANY恐龙的赔率。</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images1.gif"><span class="greenfont"> X 8</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>2000</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images1.gif"><span class="greenfont"> X 7</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>1000</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images1.gif"><span class="greenfont"> X 6</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>500</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images1.gif"><span class="greenfont"> X 5</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>100</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images1.gif"><span class="greenfont"> X 4</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>20</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images1.gif"><span class="greenfont"> X 3</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>5</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/5060/images1.gif"><span class="greenfont"> X 2</span></p>
+                    </td>
+                    <td class="text-center">
+                        <p>2</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[10]">特殊彩金</span></span></h5>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[11]">押满(80分)时，拉中下列奖项，则可获得全额特殊彩金；未押满(≧40分)时，拉中下列奖项，仅获得一半特殊彩金。 </span></span></p>
+        <p><span class="redfont"><span class="mceNonEditable rule_txt" id="rule_txt[12]">(特殊彩金奖项重复时，将取最高奖金为中奖项目)</span></span></p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered sp-table">
+                <thead>
+                <tr>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></th>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5060/jackpot1.gif"></p>
+                    </td>
+                    <td class="text-left">
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[13]">清一色动物联机</span></p>
+                        <ol>
+                            <li><span class="mceNonEditable rule_txt" id="rule_txt[14]">9只相同动物并等同押注之动物，彩金90000分。</span></li>
+                            <li><span class="mceNonEditable rule_txt" id="rule_txt[15]">9只相同动物，彩金15000分。</span></li>
+                        </ol>
+                        <p class="redfont"><span class="mceNonEditable rule_txt" id="rule_txt[16]">※并可进入JP游戏</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5060/jackpot2.gif"></p>
+                    </td>
+                    <td class="text-left">
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[17]">5只以上恐龙</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[18]">出现5只6只7只8只的恐龙</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[19]">彩金5000分</span></p>
+                        <p class="redfont"><span class="mceNonEditable rule_txt" id="rule_txt[16]">※并可进入JP游戏</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5060/jackpot3.gif"></p>
+                    </td>
+                    <td class="text-left">
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[20]">3只恐龙联机</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[21]">出现3只恐龙的联机</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[22]">彩金2500分</span></p>
+                        <p class="redfont"><span class="mceNonEditable rule_txt" id="rule_txt[16]">※并可进入JP游戏</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5060/jackpot4.gif"></p>
+                    </td>
+                    <td class="text-left">
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[23]">十字动物联机</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[24]">十字联机时，其余位置的组件，不可与联机组件相同，彩金2000分。 若押注动物为联机动物，联机彩金再乘以3倍。</span></p>
+                        <p class="redfont"><span class="mceNonEditable rule_txt" id="rule_txt[25]">※并可进入CROSS(十字)游戏</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5060/jackpot5_2.gif"></p>
+                    </td>
+                    <td class="text-left">
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[26]">耶诞钟联机</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[27]">联机方式如左图，十字联机或交叉联机，且联机时其余位置的组件，不可与联机组件相同。</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[28]">彩金2000分</span></p>
+                        <p class="redfont"><span class="mceNonEditable rule_txt" id="rule_txt[25]">※并可进入CROSS(十字)游戏</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/5060/jackpot5.gif"></p>
+                    </td>
+                    <td class="text-left">
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[29]">冰淇淋联机</span></p>
+                        <p><span class="mceNonEditable rule_txt" id="rule_txt[30]">联机方式如左图，出现3支冰淇淋的组件联机，彩金2000分。</span></p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered sp-table">
+                <thead>
+                <tr>
+                    <th class="text-center" colspan="4"><span class="mceNonEditable dict" title="JACKPOT_SYMBOL">彩金标记(Jackpot)</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center" rowspan="4"><img src="./ipl/images/5060/imagesjp.gif" alt="image"></td>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/slot/grand9.gif" alt="image"></p>
+                        <p>Grand</p>
+                    </td>
+                    <td class="text-left" colspan="2" rowspan="4">
+                        <p><span class="mceNonEditable dict" title="JACKPOT_9">依特定位置出现2个或以上彩金标记 → 获得Jackpot彩金。</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/slot/major9.gif" alt="image"></p>
+                        <p>Major</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/slot/minor9.gif" alt="image"></p>
+                        <p>Minor</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/slot/mini9.gif" alt="image"></p>
+                        <p>Mini</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5><span>BONUS</span></h5>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[31]">即获得 BONUS 30分。</span></span></p>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[32]">JP游戏</span></span></h5>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[33]">即获得JP游戏彩金分数。 </span></span></p>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[34]">分数计算方式：将游戏画面平行的数字×垂直的数字×100＝JP游戏彩金分数。(JP游戏会自动进行，不扣BET)</span></span></p>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[35]">CROSS(十字)游戏</span></span></h5>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[36]">即获得3 ~ 6次免费游戏的机会。 </span></span></p>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[37]">若免费游戏画面出现与十字动物联机、耶诞钟联机相同的组件，则可获得游戏画面上组件显示的分数。</span></span></p>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[38]">JP时间</span></span></h5>
+        <p><span><span class="mceNonEditable rule_txt" id="rule_txt[39]">在JP时间内若拉中单一联机，彩金分数有机会再乘以两倍或三倍。(必须押满80分，才有机会进入JP时间)</span></span></p>
+        <span class="btn btn-default pull-right top"><span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span><span class="sr-only"></span></span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="GAME_INTERFACE"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">介面说明 </span><span class="title2">GAME INTERFACE</span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_SCREEN">游戏画面</span></h5>
+        <p><img src="./ipl/images/game/rule/5060/cn/game_subpic02.jpg" alt="image"></p>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[40]">特殊彩金画面：由上到下依序为清一色动物联机彩金、5只以上恐龙彩金、3只恐龙联机、十字动物联机、耶诞钟联机、冰淇淋联机的彩金分数。</span></p>
+        <p><span class="mceNonEditable rule_txt" id="rule_txt[41]">押注动物画面：可选择押注动物为龟、猪、狗、鸟。</span></p>
+        <p>&nbsp;</p>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[42]">JP游戏画面</span></span></h5>
+        <p><img src="./ipl/images/game/rule/5060/cn/game_subpic03.jpg" alt="image"></p>
+        <h5>&nbsp;</h5>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[43]">CROSS(十字)游戏画面</span></span></h5>
+        <p><img src="./ipl/images/game/rule/5060/cn/game_subpic04_1.jpg" alt="image"></p>
+        <p><img src="./ipl/images/game/rule/5060/cn/game_subpic04_2.jpg" alt="image"></p>
+        <h5>&nbsp;</h5>
+        <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[44]">JP时间画面</span></span></h5>
+        <p><img src="./ipl/images/game/rule/5060/cn/game_subpic05.jpg" alt="image"></p>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="GAME_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏功能 </span><span class="title2">GAME FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_TOTAL_BET"><span class="orangefont base">下注分数(TOTAL BET) : </span>本局下注分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_WIN"><span class="orangefont base">赢得分数(WIN) : </span>本局赢得分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXCHANGE_RATIO"><span class="orangefont base">分数兑换(CREDIT EXCHANGE) : </span>选择比例大小、开分和洗分</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_BET"><span class="orangefont base">押注(BET) : </span>选择下注分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_AUTO_PLAY"><span class="orangefont base">自动开始(AUTO PLAY)/停止自动开始(STOP AUTO PLAY) : </span>选择自动开始或是停止自动开始</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SPIN"><span class="orangefont base">开始(SPIN)/停止(STOP) : </span>开始或是停止</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr><span class="mceNonEditable dict" title="BASIC_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">基本功能 </span><span class="title2">BASIC FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SN"><span class="orangefont base">局号(SN) : </span>游戏局号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_ID"><span class="orangefont base">会员帐号(USER ID) : </span>显示会员登入帐号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_DEPOSIT"><span class="orangefont base">存款(DEPOSIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_deposit.png" width="23" height="24" /> 钮，开启会员中心的存款功能</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SOUND"><span class="orangefont base">音效(SOUND) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_mute.png" width="23" height="24" /> 钮，启动或停止音效</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_MUSIC"><span class="orangefont base">音乐(MUSIC) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_bgm.png" width="23" height="24" /> 钮，启动或停止背景音乐</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HISTORY"><span class="orangefont base">历史纪录(HISTORY) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_history.png" width="23" height="24" /> 钮，历史下注纪录</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HELP"><span class="orangefont base">帮助(HELP) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_help.png" width="23" height="24" /> 钮，规则说明</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXIT"><span class="orangefont base">离开(EXIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_exit.png" width="23" height="24" /> 钮，离开本游戏，跳大厅窗口</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix">&nbsp;</div>
+        <hr></div>
+</div>
+<script src="./ipl/assets/vendor/jquery/jquery.min.js"></script>
+<script src="./ipl/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./ipl/assets/vendor/custom-scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./ipl/script/game/game_rule.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,517 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>:::象棋大转轮:::</title>
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.base.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.cust.css">
+
+</head>
+<body class=cust>
+
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/custom-scrollbar/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_theme.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_yellow_theme.css"><nav class="navbar navbar-default navbar-fixed-top navbar-theme">
+    <div class="container-fluid">
+        <div id="header "><span class="pull-right rule-logo"> <img src="./ipl/images/game/rule/5078/gamelogo.png" height="50px"></span> <span class="mceNonEditable dict rule-header" title="GAME_HEADER"><span class="pull-left rule-title"><span class="tw">游戏说明</span><span class="en">Game Rule</span></span></span> <span class="pull-right rule-name rule-title tw mceNonEditable">象棋大转轮</span></div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="main-box">
+    <div class="pull-right langSelect lang-select">
+        <select class="form-control select-lang" name="select-lang">
+            <option value='tw'> 繁中 </option>
+            <option value='cn'> 簡中 </option>
+            <option value='vn'> Vietnam </option>
+            <option value='th'> คนไทย </option>
+            <option value='kr'> 한국어 </option>
+            <option value='jp'> 日本語 </option>
+            <option value='id'> Indonesia </option>
+            <option value='es'> español </option>
+            <option value='us'> English </option>
+        </select>
+    </div>
+
+    <div class="container-fluid">
+        <div class="container content"><span class="mceNonEditable dict" title="GAME_INFSTRUCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏玩法 </span><span class="title2">GAME INSTRUCTION </span></span>
+            <h5><span class="mceNonEditable dict" title="GAME_RULE">游戏说明</span></h5>
+            <p><span class="mceNonEditable rule_txt" id="rule_txt[0]">中国象棋流传千年深具东方文化色彩，每一步的运筹帷幄更是绝妙不可言语，象棋大转轮结合暗棋与象棋游戏特色。</span></p>
+            <p><span class="mceNonEditable rule_txt" id="rule_txt[12]">下注玩法共分：各别下注、组合下注、吃棋下注三种。 </span></p>
+            <p><span class="mceNonEditable rule_txt" id="rule_txt[37]">主要对象：</span></p>
+            <div class="panel panel-default table-responsive">
+                <table class="table table-bordered text-middle">
+                    <tbody>
+                    <tr>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[52]">红棋：</span></td>
+                        <td><img src="./ipl/images/game/rule/5078/sm011.gif"> <img src="./ipl/images/game/rule/5078/sm013.gif"> <img src="./ipl/images/game/rule/5078/sm014.gif"> <img src="./ipl/images/game/rule/5078/sm010.gif"> <img src="./ipl/images/game/rule/5078/sm012.gif"> <img src="./ipl/images/game/rule/5078/sm009.gif"> <img src="./ipl/images/game/rule/5078/sm008.gif"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[49]">黑棋：</span></td>
+                        <td><img src="./ipl/images/game/rule/5078/sm003.gif"> <img src="./ipl/images/game/rule/5078/sm005.gif"> <img src="./ipl/images/game/rule/5078/sm006.gif"> <img src="./ipl/images/game/rule/5078/sm002.gif"> <img src="./ipl/images/game/rule/5078/sm004.gif"> <img src="./ipl/images/game/rule/5078/sm001.gif"> <img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h5><span class="mceNonEditable dict" title="GAME_FEATURES">游戏特色</span></h5>
+            <p><span class="mceNonEditable rule_txt" id="rule_txt[11]">1. 中奖区依暗棋规则，两兵相交依棋阶大小吃棋。</span></p>
+            <p><span class="mceNonEditable rule_txt" id="rule_txt[68]">※</span><img src="./ipl/images/game/rule/5078/sm009.gif"><img src="./ipl/images/game/rule/5078/sm001.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[17]">在此无须隔棋，即可依棋阶大小吃棋。 </span></p>
+            <p><span class="mceNonEditable rule_txt" id="rule_txt[18]">※当两军皆为相同棋阶时则为和棋。</span></p>
+            <p>2. <img src="./ipl/images/game/rule/5078/sm009.gif"><img src="./ipl/images/game/rule/5078/sm001.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[3]">触发奖金特区时，依象棋规则过河飞吃，被吃的棋为增加「个别区」中奖的棋子(</span> <img src="./ipl/images/game/rule/5078/sm009.gif"><img src="./ipl/images/game/rule/5078/sm001.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[20]">不计入「吃棋区」派彩)。</span></p>
+            <p>3. <img src="./ipl/images/game/rule/5078/sm010.gif"><img src="./ipl/images/game/rule/5078/sm002.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[4]">触发奖金特区时，依象棋规则过河冲吃，被吃的棋为增加「个别区」中奖的棋子( </span> <img src="./ipl/images/game/rule/5078/sm010.gif"><img src="./ipl/images/game/rule/5078/sm002.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[20]">不计入「吃棋区」派彩)。</span></p>
+            <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[40]">吃棋规则 </span></span></h5>
+            <div class="panel panel-default table-responsive">
+                <table class="table table-bordered text-middle">
+                    <thead>
+                    <tr>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[65]">棋子</span></th>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[62]">棋数</span></th>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[39]">可吃棋子</span></th>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[65]">棋子</span></th>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[62]">棋数</span></th>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[39]">可吃棋子</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm011.gif"></td>
+                        <td class="text-center">1</td>
+                        <td><img src="./ipl/images/game/rule/5078/sm005.gif"> <img src="./ipl/images/game/rule/5078/sm006.gif"> <img src="./ipl/images/game/rule/5078/sm002.gif"> <img src="./ipl/images/game/rule/5078/sm004.gif"> <img src="./ipl/images/game/rule/5078/sm001.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm003.gif"></td>
+                        <td class="text-center">1</td>
+                        <td><img src="./ipl/images/game/rule/5078/sm013.gif"> <img src="./ipl/images/game/rule/5078/sm014.gif"> <img src="./ipl/images/game/rule/5078/sm010.gif"> <img src="./ipl/images/game/rule/5078/sm012.gif"> <img src="./ipl/images/game/rule/5078/sm009.gif"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm013.gif"></td>
+                        <td class="text-center">2</td>
+                        <td><img src="./ipl/images/game/rule/5078/sm006.gif"> <img src="./ipl/images/game/rule/5078/sm002.gif"> <img src="./ipl/images/game/rule/5078/sm004.gif"> <img src="./ipl/images/game/rule/5078/sm001.gif"> <img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm005.gif"></td>
+                        <td class="text-center">2</td>
+                        <td><img src="./ipl/images/game/rule/5078/sm014.gif"> <img src="./ipl/images/game/rule/5078/sm010.gif"> <img src="./ipl/images/game/rule/5078/sm012.gif"> <img src="./ipl/images/game/rule/5078/sm009.gif"> <img src="./ipl/images/game/rule/5078/sm008.gif"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm014.gif"></td>
+                        <td class="text-center">2</td>
+                        <td><img src="./ipl/images/game/rule/5078/sm002.gif"> <img src="./ipl/images/game/rule/5078/sm004.gif"> <img src="./ipl/images/game/rule/5078/sm001.gif"> <img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm006.gif"></td>
+                        <td class="text-center">2</td>
+                        <td><img src="./ipl/images/game/rule/5078/sm010.gif"> <img src="./ipl/images/game/rule/5078/sm012.gif"> <img src="./ipl/images/game/rule/5078/sm009.gif"> <img src="./ipl/images/game/rule/5078/sm008.gif"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm010.gif"></td>
+                        <td class="text-center">2</td>
+                        <td><img src="./ipl/images/game/rule/5078/sm004.gif"> <img src="./ipl/images/game/rule/5078/sm001.gif"> <img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm002.gif"></td>
+                        <td class="text-center">2</td>
+                        <td><img src="./ipl/images/game/rule/5078/sm012.gif"> <img src="./ipl/images/game/rule/5078/sm009.gif"> <img src="./ipl/images/game/rule/5078/sm008.gif"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm012.gif"></td>
+                        <td class="text-center">2</td>
+                        <td><img src="./ipl/images/game/rule/5078/sm001.gif"> <img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm004.gif"></td>
+                        <td class="text-center">2</td>
+                        <td><img src="./ipl/images/game/rule/5078/sm009.gif"> <img src="./ipl/images/game/rule/5078/sm008.gif"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm009.gif"></td>
+                        <td class="text-center">2</td>
+                        <td><img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm001.gif"></td>
+                        <td class="text-center">2</td>
+                        <td><img src="./ipl/images/game/rule/5078/sm008.gif"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm008.gif"></td>
+                        <td class="text-center">5</td>
+                        <td><img src="./ipl/images/game/rule/5078/sm003.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                        <td class="text-center">5</td>
+                        <td><img src="./ipl/images/game/rule/5078/sm011.gif"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[42]">接口说明 </span></span></h5>
+            <p><img src="./ipl/images/game/rule/5078/cn/game_subpic01.jpg"></p>
+            <p><span><span class="mceNonEditable rule_txt" id="rule_txt[36]">A. 组合区 </span> </span>
+            </p>
+            <p><span><span class="mceNonEditable rule_txt" id="rule_txt[35]">B. 个别区 </span> </span>
+            </p>
+            <p><span><span class="mceNonEditable rule_txt" id="rule_txt[32]">C. 吃棋区 </span> </span>
+            </p>
+            <p><span><span class="mceNonEditable rule_txt" id="rule_txt[28]">D. 筹码选择区 </span> </span>
+            </p>
+            <p><span><span class="mceNonEditable rule_txt" id="rule_txt[34]">E. 中奖区 </span> </span>
+            </p>
+            <p><span><span class="mceNonEditable rule_txt" id="rule_txt[29]">F. 奖金特区，</span> </span><img src="./ipl/images/game/rule/5078/sm009.gif"><span> </span><img src="./ipl/images/game/rule/5078/sm001.gif"><span> </span><img src="./ipl/images/game/rule/5078/sm010.gif"><span> </span><img src="./ipl/images/game/rule/5078/sm002.gif"><span> <span class="mceNonEditable rule_txt" id="rule_txt[15]">符合条件时将触发奖金特区增加中奖机会 </span> </span>
+            </p>
+            <p><span><span class="mceNonEditable rule_txt" id="rule_txt[10]">G. 游戏启动、清除下注分数兑换与个人资料显示区</span></span>
+            </p>
+            <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[38]">押注区说明 </span></span></h5>
+            <div class="panel panel-default table-responsive">
+                <table class="table table-bordered text-middle sp-table">
+                    <thead>
+                    <tr>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[58]">下注区</span></th>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[61]">说明</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/cn/game_subpic02.jpg"></td>
+                        <td>
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[44]">组合区：</span></p>
+                            <span class="mceNonEditable rule_txt" id="rule_txt[14]">预测转轮启动后红棋与黑棋的开奖组合结果。</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/cn/game_subpic03.jpg"></td>
+                        <td>
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[46]">个别区：</span></p>
+                            <span class="mceNonEditable rule_txt" id="rule_txt[16]">预测转轮启动后红棋或黑棋的开奖结果。</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/cn/game_subpic04.jpg"></td>
+                        <td>
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[45]">吃棋区：</span></p>
+                            <span class="mceNonEditable rule_txt" id="rule_txt[9]">预测转轮启动后红棋与黑棋的吃棋结果，依暗棋吃棋规则。</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" bgcolor="#ffffff">
+                            <p><span><span class="mceNonEditable rule_txt" id="rule_txt[27]">※单局限额1000</span></span>
+                            </p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[22]">奖金特区说明与游戏画面</span> </span></h5>
+            <div class="panel panel-default table-responsive">
+                <table class="table table-bordered text-middle sp-table">
+                    <thead>
+                    <tr>
+                        <th class="text-center" colspan="2"><img src="./ipl/images/game/rule/5078/sm009.gif"> <img src="./ipl/images/game/rule/5078/sm001.gif"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center text-center td-theme"><span class="mceNonEditable rule_txt" id="rule_txt[63]">物件</span></td>
+                        <td class="text-center text-center td-theme"><span class="mceNonEditable rule_txt" id="rule_txt[61]">说明</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center" rowspan="2"><img src="./ipl/images/game/rule/5078/cn/pic_game002.png"></td>
+                        <td>
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[23]">转轮四个奖金特区出现</span><img src="./ipl/images/game/rule/5078/sm009.gif"><img src="./ipl/images/game/rule/5078/sm001.gif"><span class="mceNonEditable rule_txt" id="rule_txt[8]">，依象棋规则过河飞吃，被吃的棋为增加个别区中奖的棋子。</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="text-center">
+                                <tbody>
+                                <tr>
+                                    <td><img src="./ipl/images/game/rule/5078/sm009.gif"><span class="mceNonEditable rule_txt" id="rule_txt[43]">可吃棋：</span></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm003.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm005.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm006.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm002.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm004.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm001.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="./ipl/images/game/rule/5078/sm001.gif"><span class="mceNonEditable rule_txt" id="rule_txt[43]">可吃棋：</span></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm011.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm013.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm014.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm010.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm012.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm009.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm008.gif"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center" colspan="2"><img src="./ipl/images/game/rule/5078/cn/game_subpic05.jpg"></td>
+                    </tr>
+                    </tbody>
+                    <thead>
+                    <tr>
+                        <th class="text-center" colspan="2"><img src="./ipl/images/game/rule/5078/sm010.gif"> <img src="./ipl/images/game/rule/5078/sm002.gif"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center text-center td-theme"><span class="mceNonEditable rule_txt" id="rule_txt[63]">物件</span></td>
+                        <td class="text-center text-center td-theme"><span class="mceNonEditable rule_txt" id="rule_txt[61]">说明</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center" rowspan="2"><img src="./ipl/images/game/rule/5078/cn/pic_game001.png"></td>
+                        <td>
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[19]">转轮两个奖金特区左上、右下出现</span> <img src="./ipl/images/game/rule/5078/sm010.gif"><img src="./ipl/images/game/rule/5078/sm002.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[7]">，依象棋规则过河冲吃，被吃的棋为增加个别区中奖的棋子。</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="text-center">
+                                <tbody>
+                                <tr>
+                                    <td><img src="./ipl/images/game/rule/5078/sm010.gif"><span class="mceNonEditable rule_txt" id="rule_txt[43]">可吃棋：</span></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm003.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm005.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm006.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm002.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm004.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm001.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="./ipl/images/game/rule/5078/sm002.gif"><span class="mceNonEditable rule_txt" id="rule_txt[43]">可吃棋：</span></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm011.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm013.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm014.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm010.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm012.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm009.gif"></td>
+                                    <td><img src="./ipl/images/game/rule/5078/sm008.gif"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center" colspan="2">
+                            <p><img src="./ipl/images/game/rule/5078/cn/game_subpic06.jpg"></p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p><span class="mceNonEditable rule_txt" id="rule_txt[5]">※奖金特区增加的中奖与开奖区结果相同时，以单一中奖派彩一次计算。</span></p>
+            <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[33]">奖金特区示范 </span></span></h5>
+            <div class="panel panel-default table-responsive">
+                <table class="table table-bordered text-middle sp-table">
+                    <thead>
+                    <tr>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[66]">图示</span></th>
+                        <th class="text-center"><span class="mceNonEditable rule_txt" id="rule_txt[61]">说明</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/cn/game_subpic07.jpg"></td>
+                        <td class="text-left">
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[6]">a、b、c、d为奖金特区位置，触发时将增加个别区的中奖奖项：</span></p>
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[67]">※当</span><img src="./ipl/images/game/rule/5078/sm001.gif"><img src="./ipl/images/game/rule/5078/sm009.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[2]">停留在a、b、c、d任一位置时，将对对角的棋子发动攻击，被攻击的棋子即为个别区增加的奖项。</span></p>
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[67]">※当</span><img src="./ipl/images/game/rule/5078/sm002.gif"><img src="./ipl/images/game/rule/5078/sm010.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[1]">停留在a和d时(交迭两圈的上位)，将对对向的棋子发动攻击，被攻击的棋子即为个别区增加的奖项。</span> <img src="./ipl/images/game/rule/5078/sm002.gif"><img src="./ipl/images/game/rule/5078/sm010.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[21]">在b和c时则没有作用。</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/cn/game_subpic08.jpg"></td>
+                        <td class="text-left">
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[60]">A范例 </span></p>
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[30]">个别区会增加「</span> <img src="./ipl/images/game/rule/5078/sm001.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[69]">与</span> <img src="./ipl/images/game/rule/5078/sm009.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[31]">」的中奖 (</span><img src="./ipl/images/game/rule/5078/sm001.gif"><img src="./ipl/images/game/rule/5078/sm009.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[13]">没有上下位的问题，所以进入四个位置都可触发)</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/cn/game_subpic09.jpg"></td>
+                        <td class="text-left">
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[59]">B范例</span></p>
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[30]">个别区会增加「</span> <img src="./ipl/images/game/rule/5078/sm010.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[69]">与</span> <img src="./ipl/images/game/rule/5078/sm005.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[41]">」的中奖</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/cn/game_subpic10.jpg"></td>
+                        <td class="text-left">
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[50]">C范例 </span></p>
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[30]">个别区会增加「</span> <img src="./ipl/images/game/rule/5078/sm005.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[31]">」的中奖 (</span> <img src="./ipl/images/game/rule/5078/sm002.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[26]">在下位不能发动攻击)</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/cn/game_subpic11.jpg"></td>
+                        <td class="text-left">
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[47]">D范例 </span></p>
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[30]">个别区会增加「</span> <img src="./ipl/images/game/rule/5078/sm012.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[69]">与</span> <img src="./ipl/images/game/rule/5078/sm004.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[31]">」的中奖 (</span><img src="./ipl/images/game/rule/5078/sm002.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[69]">与</span> <img src="./ipl/images/game/rule/5078/sm010.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[24]">上位会个别发动攻击)</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/cn/game_subpic12.jpg"></td>
+                        <td class="text-left">
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[56]">E范例</span></p>
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[30]">个别区会增加「</span> <img src="./ipl/images/game/rule/5078/sm010.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[31]">」的中奖 (</span> <img src="./ipl/images/game/rule/5078/sm002.gif"> <span class="mceNonEditable rule_txt" id="rule_txt[25]">在上位才能发动攻击)</span></p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h5><span><span class="mceNonEditable rule_txt" id="rule_txt[53]">赔率表 </span></span></h5>
+            <div class="panel panel-default table-responsive">
+                <table class="table table-bordered text-middle sp-table">
+                    <thead>
+                    <tr>
+                        <th class="text-center" colspan="7"><span class="mceNonEditable rule_txt" id="rule_txt[57]">个别区 </span></th>
+                        <th class="text-center" colspan="3"><span class="mceNonEditable rule_txt" id="rule_txt[54]">吃棋区</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center text-center td-theme">
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[64]">赔率</span> <strong>1:11.0</strong></p>
+                        </td>
+                        <td class="text-center text-center td-theme" colspan="5">
+                            <p><span class="mceNonEditable rule_txt" id="rule_txt[64]">赔率</span> <strong>1:5.5</strong></p>
+                        </td>
+                        <td class="text-center text-center td-theme"><span class="mceNonEditable rule_txt" id="rule_txt[64]">赔率</span> <strong>1:2.2</strong></td>
+                        <td class="text-center text-center td-theme" colspan="2"><span class="mceNonEditable rule_txt" id="rule_txt[64]">赔率</span> <strong>1:2.3</strong></td>
+                        <td class="text-center text-center td-theme"><span class="mceNonEditable rule_txt" id="rule_txt[64]">赔率</span> <strong>1:5.2</strong></dt>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm011.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm013.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm014.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm010.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm012.gif"></td>
+                        <td class="text-center"><span><img src="./ipl/images/game/rule/5078/sm009.gif"></span></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm008.gif"></td>
+                        <td class="text-center" rowspan="2"><span class="mceNonEditable rule_txt" id="rule_txt[51]">红吃黑</span></td>
+                        <td class="text-center" rowspan="2"><span class="mceNonEditable rule_txt" id="rule_txt[55]">黑吃红</span></td>
+                        <td class="text-center" rowspan="2"><span class="mceNonEditable rule_txt" id="rule_txt[70]">和</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm003.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm005.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm006.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm002.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm004.gif"></td>
+                        <td class="text-center"><span><img src="./ipl/images/game/rule/5078/sm001.gif"></span></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel panel-default table-responsive">
+                <table class="table table-bordered text-middle sp-table">
+                    <thead>
+                    <tr>
+                        <th class="text-center" colspan="12"><span><strong><span class="mceNonEditable rule_txt" id="rule_txt[48]">组合区</span></strong>
+                            </span>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center text-center td-theme"><span class="mceNonEditable rule_txt" id="rule_txt[64]">赔率</span> <strong>1:243.2</strong></td>
+                        <td class="text-center text-center td-theme" colspan="5"><span class="mceNonEditable rule_txt" id="rule_txt[64]">赔率</span> <strong>1:121.6</strong></td>
+                        <td class="text-center text-center td-theme"><span class="mceNonEditable rule_txt" id="rule_txt[64]">赔率</span> <strong>1:48.6</strong></td>
+                        <td class="text-center text-center td-theme" colspan="5"><span class="mceNonEditable rule_txt" id="rule_txt[64]">赔率</span> <strong>1:60.8</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center" rowspan="2"><img src="./ipl/images/game/rule/5078/sm011.gif"><img src="./ipl/images/game/rule/5078/sm003.gif"></td>
+                        <td class="text-center text-nowrap"><img src="./ipl/images/game/rule/5078/sm011.gif"><img src="./ipl/images/game/rule/5078/sm005.gif"></td>
+                        <td class="text-center text-nowrap"><img src="./ipl/images/game/rule/5078/sm011.gif"><img src="./ipl/images/game/rule/5078/sm006.gif"></td>
+                        <td class="text-center text-nowrap"><img src="./ipl/images/game/rule/5078/sm011.gif"><img src="./ipl/images/game/rule/5078/sm002.gif"></td>
+                        <td class="text-center text-nowrap"><img src="./ipl/images/game/rule/5078/sm011.gif"><img src="./ipl/images/game/rule/5078/sm004.gif"></td>
+                        <td class="text-center text-nowrap"><img src="./ipl/images/game/rule/5078/sm011.gif"><span><img src="./ipl/images/game/rule/5078/sm001.gif"></span></td>
+                        <td class="text-center text-nowrap"><img src="./ipl/images/game/rule/5078/sm011.gif"><img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                        <td class="text-center text-nowrap"><img src="./ipl/images/game/rule/5078/sm013.gif"><img src="./ipl/images/game/rule/5078/sm005.gif"></td>
+                        <td class="text-center text-nowrap"><img src="./ipl/images/game/rule/5078/sm013.gif"><img src="./ipl/images/game/rule/5078/sm006.gif"></td>
+                        <td class="text-center text-nowrap"><img src="./ipl/images/game/rule/5078/sm013.gif"><img src="./ipl/images/game/rule/5078/sm002.gif"></td>
+                        <td class="text-center text-nowrap"><img src="./ipl/images/game/rule/5078/sm013.gif"><img src="./ipl/images/game/rule/5078/sm004.gif"></td>
+                        <td class="text-center text-nowrap"><img src="./ipl/images/game/rule/5078/sm013.gif"><span><img src="./ipl/images/game/rule/5078/sm001.gif"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm013.gif"><img src="./ipl/images/game/rule/5078/sm003.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm014.gif"><img src="./ipl/images/game/rule/5078/sm003.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm010.gif"><img src="./ipl/images/game/rule/5078/sm003.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm012.gif"><img src="./ipl/images/game/rule/5078/sm003.gif"></td>
+                        <td class="text-center"><span><img src="./ipl/images/game/rule/5078/sm009.gif"></span><img src="./ipl/images/game/rule/5078/sm003.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm008.gif"><img src="./ipl/images/game/rule/5078/sm003.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm014.gif"><img src="./ipl/images/game/rule/5078/sm005.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm014.gif"><img src="./ipl/images/game/rule/5078/sm006.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm014.gif"><img src="./ipl/images/game/rule/5078/sm002.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm014.gif"><img src="./ipl/images/game/rule/5078/sm004.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm014.gif"><span><img src="./ipl/images/game/rule/5078/sm001.gif"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-center td-theme" colspan="5"><span class="mceNonEditable rule_txt" id="rule_txt[64]">赔率</span> <strong>1:24.3</strong></td>
+                        <td class="text-center text-center td-theme" colspan="2"><span class="mceNonEditable rule_txt" id="rule_txt[64]">赔率</span> <strong>1:9.7</strong></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm010.gif"><img src="./ipl/images/game/rule/5078/sm005.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm010.gif"><img src="./ipl/images/game/rule/5078/sm006.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm010.gif"><img src="./ipl/images/game/rule/5078/sm002.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm010.gif"><img src="./ipl/images/game/rule/5078/sm004.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm010.gif"><span><img src="./ipl/images/game/rule/5078/sm001.gif"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm008.gif"><img src="./ipl/images/game/rule/5078/sm005.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm008.gif"><img src="./ipl/images/game/rule/5078/sm006.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm008.gif"><img src="./ipl/images/game/rule/5078/sm002.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm008.gif"><img src="./ipl/images/game/rule/5078/sm004.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm008.gif"><span><img src="./ipl/images/game/rule/5078/sm001.gif"></span></td>
+                        <td class="text-center" colspan="2" rowspan="2"><img src="./ipl/images/game/rule/5078/sm008.gif"><img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm012.gif"><img src="./ipl/images/game/rule/5078/sm005.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm012.gif"><img src="./ipl/images/game/rule/5078/sm006.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm012.gif"><img src="./ipl/images/game/rule/5078/sm002.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm012.gif"><img src="./ipl/images/game/rule/5078/sm004.gif"></td>
+                        <td class="text-center"><img src="./ipl/images/game/rule/5078/sm012.gif"><span><img src="./ipl/images/game/rule/5078/sm001.gif"></span></td>
+                    </tr>
+                    <tr>
+                        <td align="center" bgcolor="#FFFFFF"><img src="./ipl/images/game/rule/5078/sm013.gif"><img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                        <td align="center" bgcolor="#FFFFFF"><img src="./ipl/images/game/rule/5078/sm014.gif"><img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                        <td align="center" bgcolor="#FFFFFF"><img src="./ipl/images/game/rule/5078/sm010.gif"><img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                        <td align="center" bgcolor="#FFFFFF"><img src="./ipl/images/game/rule/5078/sm012.gif"><img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                        <td align="center" bgcolor="#FFFFFF"><span><img src="./ipl/images/game/rule/5078/sm009.gif"></span><img src="./ipl/images/game/rule/5078/sm007.gif"></td>
+                        <td align="center" bgcolor="#FFFFFF"><span><img src="./ipl/images/game/rule/5078/sm009.gif"></span><img src="./ipl/images/game/rule/5078/sm005.gif"></td>
+                        <td align="center" bgcolor="#FFFFFF"><span><img src="./ipl/images/game/rule/5078/sm009.gif"><img src="./ipl/images/game/rule/5078/sm006.gif"></span></td>
+                        <td align="center" bgcolor="#FFFFFF"><span><img src="./ipl/images/game/rule/5078/sm009.gif"><img src="./ipl/images/game/rule/5078/sm002.gif"></span></td>
+                        <td align="center" bgcolor="#FFFFFF"><span><img src="./ipl/images/game/rule/5078/sm009.gif"><img src="./ipl/images/game/rule/5078/sm004.gif"></span></td>
+                        <td align="center" bgcolor="#FFFFFF"><span><img src="./ipl/images/game/rule/5078/sm009.gif"><img src="./ipl/images/game/rule/5078/sm001.gif"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+            <div class="clearfix">&nbsp;</div>
+            <hr><span class="mceNonEditable dict" title="GAME_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏功能 </span><span class="title2">GAME FUNCTION </span></span>
+            <ul class="fa-ul">
+                <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_CREDIT"><span class="orangefont base">可用分数(CREDITS) : </span>显示目前可以游戏的分数</span></li>
+                <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_WIN"><span class="orangefont base">赢得分数(WIN) : </span>本局赢得分数</span></li>
+                <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_TOTAL_BET"><span class="orangefont base">下注分数(TOTAL BET) : </span>本局下注分数</span></li>
+                <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="CLEAR_REBET"><span class="orangefont base">清除下注(CLEAR)/重复下注(REBET)：</span>清除所有押注或是重复上次押注</span></li>
+                <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="SPIN_ROLL"><span class="orangefont base">开始(SPIN)：</span>下注後按开始，启动转轮</span></li>
+            </ul>
+            <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+            <div class="clearfix">&nbsp;</div>
+            <hr><span class="mceNonEditable dict" title="BASIC_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">基本功能 </span><span class="title2">BASIC FUNCTION </span></span>
+            <ul class="fa-ul">
+                <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SN"><span class="orangefont base">局号(SN) : </span>游戏局号</span></li>
+                <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_ID"><span class="orangefont base">会员帐号(USER ID) : </span>显示会员登入帐号</span><span></span><span></span></li>
+                <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_DEPOSIT"><span class="orangefont base">存款(DEPOSIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_deposit.png" width="23" height="24" /> 钮，开启会员中心的存款功能</span></li>
+                <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SOUND"><span class="orangefont base">音效(SOUND) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_mute.png" width="23" height="24" /> 钮，启动或停止音效</span></li>
+                <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_MUSIC"><span class="orangefont base">音乐(MUSIC) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_bgm.png" width="23" height="24" /> 钮，启动或停止背景音乐</span></li>
+                <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HISTORY"><span class="orangefont base">历史纪录(HISTORY) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_history.png" width="23" height="24" /> 钮，历史下注纪录</span></li>
+                <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HELP"><span class="orangefont base">帮助(HELP) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_help.png" width="23" height="24" /> 钮，规则说明</span></li>
+                <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXIT"><span class="orangefont base">离开(EXIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_exit.png" width="23" height="24" /> 钮，离开本游戏，跳大厅窗口</span></li>
+            </ul>
+            <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+            <div class="clearfix">&nbsp;</div>
+            <hr>
+        </div>
+    </div>
+</div>
+<script src="./ipl/assets/vendor/jquery/jquery.min.js"></script>
+<script src="./ipl/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./ipl/assets/vendor/custom-scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./ipl/script/game/game_rule.js"></script>
+
+
+</body>
+</html>

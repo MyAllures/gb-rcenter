@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>:::开心消消乐:::</title>
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.base.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.cust.css">
+
+</head>
+<body class=cust>
+
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/custom-scrollbar/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_theme.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_yellow_theme.css"><nav class="navbar navbar-default navbar-fixed-top navbar-theme">
+    <div class="container-fluid">
+        <div id="header "><span class="pull-right rule-logo"> <img src="./ipl/images/game/rule/5909/gamelogo.png" height="50px"></span> <span class="mceNonEditable dict rule-header" title="GAME_HEADER"><span class="pull-left rule-title"><span class="tw">游戏说明</span><span class="en">Game Rule</span></span></span> <span class="pull-right rule-name rule-title tw mceNonEditable">开心消消乐</span></div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="main-box">
+    <div class="pull-right langSelect lang-select">
+        <select class="form-control select-lang" name="select-lang">
+            <option value='tw'> 繁中 </option>
+            <option value='cn'> 簡中 </option>
+            <option value='vn'> Vietnam </option>
+            <option value='th'> คนไทย </option>
+            <option value='kr'> 한국어 </option>
+            <option value='jp'> 日本語 </option>
+            <option value='id'> Indonesia </option>
+            <option value='es'> español </option>
+            <option value='us'> English </option>
+        </select>
+    </div>
+
+    <div class="container content"><span class="mceNonEditable dict" title="GAME_INFSTRUCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏玩法 </span><span class="title2">GAME INSTRUCTION </span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_RULE">游戏说明</span></h5>
+        <ul>
+            <li><span>「开心消消乐」是一款新型态、新玩法的游戏，各种可爱小动物，趣味登场。画面精美，上手简单，跟着动物一起拿高分!</span></li>
+        </ul>
+        <h5><span class="mceNonEditable dict" title="GAME_FEATURES">游戏特色</span></h5>
+        <ul>
+            <li><span>可爱小动物在六边形的盘面出现，4个邻近相同的对象即可消除，有三个特殊标记、彩金标记以及一个奖金游戏。</span></li>
+        </ul>
+        分数计算方式
+        <ul>
+            <li>每局总得分为押注分数*个数赔率/50</li>
+        </ul>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle text-center sp-table text-nowrap">
+                <thead>
+                <tr>
+                    <th><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></th>
+                    <th><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><img src="./ipl/images/game/rule/5909/pop01.jpg" alt="image"></td>
+                    <td>左图为中奖</td>
+                </tr>
+                <tr>
+                    <td><img src="./ipl/images/game/rule/5909/pop02.png" alt="image"></td>
+                    <td>左图为没有中奖</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5><span class="mceNonEditable dict" title="SUB_ODDS">赔率说明</span></h5>
+        <div class="panel panel-default table-responsive ">
+            <table class="table table-bordered text-middle sp-table text-nowrap">
+                <thead>
+                <tr>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></th>
+                    <th class="text-center" colspan="3"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center td-theme" colspan="3"><span class="mceNonEditable dict" title="BONUS_SYMBOL">奖金标记</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5909/m_009.png" alt="image"></td>
+                    <td colspan="3">
+                        <ul>
+                            <li><span>盘面任意出现3个时，即可进入奖金游戏</span></li>
+                            <li><span>方式:让四个以上的同色动物，横竖相连即可消除达成任务，获取分数</span></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme" colspan="3"><span>特殊标记1</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5909/m_010.png" alt="image"></td>
+                    <td colspan="3">
+                        <ul>
+                            <li><span>随机转换成一般符号、转换完后的符号，场上该符号则一起消除</span></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme" colspan="3"><span>特殊标记2</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5909/any02.png" alt="image"></td>
+                    <td colspan="3">
+                        <ul>
+                            <li><span>标记自身周围最少3个，最多6个符号一同消除</span></li>
+                            <li>
+                                <h5><span>*Any代表每个符号都有机会出现</span></h5>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme" colspan="3"><span>特殊标记3</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/game/rule/5909/any01.png" alt="image"></td>
+                    <td colspan="2">
+                        <ul>
+                            <li><span>该横排，立即转变为该符号</span></li>
+                            <li>
+                                <h5><span>*Any代表每个符号都有机会出现</span></h5>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme" colspan="3"><span class="mceNonEditable dict" title="JACKPOT_SYMBOL">彩金标记(Jackpot)</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center" rowspan="4"><img src="./ipl/images/game/rule/5909/m_011.png" alt="image"></td>
+                    <td class="text-center">4个Grand</td>
+                    <td rowspan="4">
+                        <ul>
+                            <li><span>牌组中出现1~4个彩金标记即获得 Jackpot彩金，派彩后结束此局。</span></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center" colspan="1">3个Major</td>
+                </tr>
+                <tr>
+                    <td class="text-center" colspan="1">2个Minor</td>
+                </tr>
+                <tr>
+                    <td class="text-center" colspan="1">1个Mini</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-center text-middle sp-table text-nowrap">
+                <thead>
+                <tr>
+                    <th>符号个数</th>
+                    <th><img src="./ipl/images/game/rule/5909/m_001.png" alt="image" height="70"></th>
+                    <th><img src="./ipl/images/game/rule/5909/m_002.png" alt="image" height="70"></th>
+                    <th><img src="./ipl/images/game/rule/5909/m_003.png" alt="image" height="70"></th>
+                    <th><img src="./ipl/images/game/rule/5909/m_004.png" alt="image" height="70"></th>
+                    <th><img src="./ipl/images/game/rule/5909/m_005.png" alt="image" height="70"></th>
+                    <th><img src="./ipl/images/game/rule/5909/m_006.png" alt="image" height="70"></th>
+                    <th><img src="./ipl/images/game/rule/5909/m_007.png" alt="image" height="70"></th>
+                    <th><img src="./ipl/images/game/rule/5909/m_008.png" alt="image" height="70"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>邻近4个</td>
+                    <td>75</td>
+                    <td>50</td>
+                    <td>25</td>
+                    <td>25</td>
+                    <td>15</td>
+                    <td>15</td>
+                    <td>10</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>邻近5个</td>
+                    <td>100</td>
+                    <td>75</td>
+                    <td>50</td>
+                    <td>50</td>
+                    <td>25</td>
+                    <td>25</td>
+                    <td>15</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>邻近6个</td>
+                    <td>150</td>
+                    <td>100</td>
+                    <td>75</td>
+                    <td>75</td>
+                    <td>35</td>
+                    <td>35</td>
+                    <td>25</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>邻近7个</td>
+                    <td>200</td>
+                    <td>150</td>
+                    <td>100</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>50</td>
+                    <td>35</td>
+                    <td>35</td>
+                </tr>
+                <tr>
+                    <td>邻近8个</td>
+                    <td>250</td>
+                    <td>200</td>
+                    <td>150</td>
+                    <td>150</td>
+                    <td>75</td>
+                    <td>75</td>
+                    <td>50</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>邻近9个</td>
+                    <td>300</td>
+                    <td>250</td>
+                    <td>200</td>
+                    <td>200</td>
+                    <td>100</td>
+                    <td>100</td>
+                    <td>75</td>
+                    <td>75</td>
+                </tr>
+                <tr>
+                    <td>邻近10个</td>
+                    <td>400</td>
+                    <td>300</td>
+                    <td>250</td>
+                    <td>250</td>
+                    <td>150</td>
+                    <td>150</td>
+                    <td>100</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>邻近11个</td>
+                    <td>500</td>
+                    <td>400</td>
+                    <td>300</td>
+                    <td>300</td>
+                    <td>200</td>
+                    <td>200</td>
+                    <td>150</td>
+                    <td>150</td>
+                </tr>
+                <tr>
+                    <td>邻近12个</td>
+                    <td>600</td>
+                    <td>500</td>
+                    <td>400</td>
+                    <td>400</td>
+                    <td>250</td>
+                    <td>250</td>
+                    <td>200</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>邻近13个</td>
+                    <td>750</td>
+                    <td>600</td>
+                    <td>500</td>
+                    <td>500</td>
+                    <td>300</td>
+                    <td>300</td>
+                    <td>250</td>
+                    <td>250</td>
+                </tr>
+                <tr>
+                    <td>邻近14个</td>
+                    <td>1000</td>
+                    <td>750</td>
+                    <td>600</td>
+                    <td>600</td>
+                    <td>350</td>
+                    <td>350</td>
+                    <td>300</td>
+                    <td>300</td>
+                </tr>
+                <tr>
+                    <td>邻近15个</td>
+                    <td>1500</td>
+                    <td>1000</td>
+                    <td>700</td>
+                    <td>700</td>
+                    <td>400</td>
+                    <td>400</td>
+                    <td>350</td>
+                    <td>350</td>
+                </tr>
+                <tr>
+                    <td>邻近16个</td>
+                    <td>2000</td>
+                    <td>1500</td>
+                    <td>800</td>
+                    <td>800</td>
+                    <td>500</td>
+                    <td>500</td>
+                    <td>400</td>
+                    <td>400</td>
+                </tr>
+                <tr>
+                    <td>邻近17个</td>
+                    <td>2500</td>
+                    <td>2000</td>
+                    <td>900</td>
+                    <td>900</td>
+                    <td>600</td>
+                    <td>600</td>
+                    <td>450</td>
+                    <td>450</td>
+                </tr>
+                <tr>
+                    <td>邻近18个</td>
+                    <td>5000</td>
+                    <td>2500</td>
+                    <td>1000</td>
+                    <td>1000</td>
+                    <td>750</td>
+                    <td>750</td>
+                    <td>500</td>
+                    <td>500</td>
+                </tr>
+                <tr>
+                    <td>邻近19个</td>
+                    <td>10000</td>
+                    <td>5000</td>
+                    <td>2000</td>
+                    <td>2000</td>
+                    <td>1500</td>
+                    <td>1500</td>
+                    <td>1000</td>
+                    <td>1000</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="clearfix"><span class="btn btn-default pull-right top"><span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span><span class="sr-only"></span></span>
+            <div class="clearfix"></div>
+            <hr></div>
+        <div class="clearfix"><span class="mceNonEditable dict" title="GAME_INTERFACE"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">介面说明 </span><span class="title2">GAME INTERFACE</span></span></div>
+        <div class="clearfix"><span class="mceNonEditable dict" title="GAME_SCREEN">游戏画面</span></div>
+        <ul>
+            <li><span class="mceNonEditable dict" title="MAIN_GAME_SCREEN">主游戏画面(Main Game Screen)</span></li>
+        </ul>
+        <p class="table-responsive"><img src="./ipl/images/game/rule/5909/cn/game_subpic01.jpg" alt="image" width="850px" height="610px"></p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-center text-middle sp-table text-nowrap">
+                <thead>
+                <tr>
+                    <th><span class="mceNonEditable dict" title="TH_AREA">区域</span></th>
+                    <th><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>A</td>
+                    <td><span class="mceNonEditable dict" title="GAME_SCREEN">游戏画面</span></td>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td><span class="mceNonEditable dict" title="GAME_FUNC">游戏功能</span></td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td><span class="mceNonEditable dict" title="PLAYER_INFO">基本资讯</span></td>
+                </tr>
+                <tr>
+                    <td>D</td>
+                    <td><span class="mceNonEditable dict" title="BASIC_FUNC">基本功能</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul>
+            <li><span>奖金游戏(Bonus Game)</span></li>
+        </ul>
+        <p class="table-responsive"><img src="./ipl/images/game/rule/5909/cn/game_subpic02.jpg" alt="image" width="850px" height="610px"></p>
+        <div class="clearfix"><span class="btn btn-default pull-right top"><span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span><span class="sr-only"></span></span>
+            <div class="clearfix"></div>
+            <hr></div>
+        <span class="mceNonEditable dict" title="GAME_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏功能 </span><span class="title2">GAME FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_TOTAL_BET"><span class="orangefont base">下注分数(TOTAL BET) : </span>本局下注分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_WIN"><span class="orangefont base">赢得分数(WIN) : </span>本局赢得分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_CREDIT"><span class="orangefont base">可用分数(CREDITS) : </span>显示目前可以游戏的分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span><span class="orangefont base">选择押注(SELECT BET) : </span>共10注，1注50分</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span><span class="orangefont base">满注(MAX BET) : </span>满注500分</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_AUTO_PLAY_2"><span class="orangefont base">自动开始(AUTO)/停止自动开始(STOP AUTO) : </span>选择自动开始或是停止自动开始</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span><span class="orangefont base">开始(SPIN) :</span> 开始</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXCHANGE_RATIO_DEPOSIT"><span class="orangefont base">分数兑换(CREDIT EXCHANGE) : </span>选择比例大小、开分和洗分，游戏中可以直接点选比例进行更换</span></li>
+        </ul>
+        <div class="clearfix"><span class="btn btn-default pull-right top"><span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span><span class="sr-only"></span></span>
+            <div class="clearfix"></div>
+            <hr></div>
+        <span class="mceNonEditable dict" title="BASIC_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">基本功能 </span><span class="title2">BASIC FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SN"><span class="orangefont base">局号(SN) : </span>游戏局号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_ID"><span class="orangefont base">会员帐号(USER ID) : </span>显示会员登入帐号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_DEPOSIT"><span class="orangefont base">存款(DEPOSIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_deposit.png" width="23" height="24" /> 钮，开启会员中心的存款功能</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SOUND"><span class="orangefont base">音效(SOUND) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_mute.png" width="23" height="24" /> 钮，启动或停止音效</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_MUSIC"><span class="orangefont base">音乐(MUSIC) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_bgm.png" width="23" height="24" /> 钮，启动或停止背景音乐</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HISTORY"><span class="orangefont base">历史纪录(HISTORY) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_history.png" width="23" height="24" /> 钮，历史下注纪录</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HELP"><span class="orangefont base">帮助(HELP) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_help.png" width="23" height="24" /> 钮，规则说明</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXIT"><span class="orangefont base">离开(EXIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_exit.png" width="23" height="24" /> 钮，离开本游戏，跳大厅窗口</span></li>
+        </ul>
+        <div class="clearfix"><span class="btn btn-default pull-right top"><span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span><span class="sr-only"></span></span>
+            <div class="clearfix"></div>
+            <hr></div>
+    </div>
+</div>
+<script src="./ipl/assets/vendor/jquery/jquery.min.js"></script>
+<script src="./ipl/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./ipl/assets/vendor/custom-scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./ipl/script/game/game_rule.js"></script>
+
+</body>
+</html>

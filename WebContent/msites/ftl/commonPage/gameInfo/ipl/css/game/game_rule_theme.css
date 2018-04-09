@@ -1,0 +1,496 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'JaneAusten';
+    font-style: normal;
+    font-weight: normal;
+    src: local('JaneAusten'), url('../../assets/vendor/font/JaneAust.woff') format('woff');
+}
+.main-box {
+    position: fixed;
+}
+
+h5 {
+    color: #FF0000;
+    font-weight: bold;
+}
+
+.odds {
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.bluefont {
+    color: #428bca;
+}
+
+.redfont {
+    color: #FF0000;
+}
+
+.greenfont {
+    color: #900;
+}
+
+.orangefont {
+    color: #f60;
+}
+
+.base {
+    margin-left: 5px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.title2 {
+    /*/font-family: serif;*/
+    font-size: 20px;
+    color: #FFBB00;
+}
+
+.rule-logo {
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+}
+
+.rule-title {
+    margin-top: 3px;
+    font-size: 30px;
+}
+
+.tw {
+    font-weight: bold;
+    font-family: "Microsoft JhengHei";
+}
+
+.en {
+    font-family: 'JaneAusten';
+}
+
+.lines201 {
+    height: 55px;
+    background: url('../../images/game/rule/slot/lines20.gif') 0px 0px;
+    background-repeat: no-repeat;
+}
+
+.lines251 {
+    height: 30px;
+    width: 220px;
+    background: url('../../images/game/rule/slot/lines25.gif') -8px 0px;
+    background-repeat: no-repeat;
+}
+
+.lines252 {
+    height: 30px;
+    width: 220px;
+    background: url('../../images/game/rule/slot/lines25.gif') -229px 0px;
+    background-repeat: no-repeat;
+}
+
+.lines253 {
+    height: 30px;
+    width: 220px;
+    background: url('../../images/game/rule/slot/lines25.gif') -449px 0px;
+    background-repeat: no-repeat;
+}
+
+.lines254 {
+    height: 30px;
+    width: 220px;
+    background: url('../../images/game/rule/slot/lines25.gif') -670px 0px;
+    background-repeat: no-repeat;
+}
+
+.lines255 {
+    height: 30px;
+    width: 220px;
+    background: url('../../images/game/rule/slot/lines25.gif') -890px 0px;
+    background-repeat: no-repeat;
+}
+
+.lines401 {
+    height: 55px;
+    background: url('../../images/game/rule/slot/lines40.gif') 0px 0px;
+    background-repeat: no-repeat;
+}
+
+.lines501 {
+    height: 186px;
+    background: url('../../images/game/rule/slot/lines50.png') 0px 0px;
+    background-repeat: no-repeat;
+    background-size: 546px 186px;
+}
+
+.lines202,
+.lines203,
+.lines204,
+.lines402,
+.lines403,
+.lines404,
+.lines405,
+.lines406,
+.lines407,
+.lines408,
+.lines502,
+.lines503,
+.lines504,
+.lines505,
+.lines506,
+.lines507,
+.lines508,
+.lines509,
+.lines5010 {
+    height: 0px;
+}
+
+table img:not(.imagesize) {
+    max-width: 106px;
+}
+
+.table-flowfix {
+    overflow-y: hidden;
+}
+
+.sp-table img:not(.imagesize) {
+    max-width: none;
+}
+
+.imagesize {
+    max-width: 450px;
+    min-width: 450px;
+}
+
+.minImg{
+    max-width: 50px !important;
+}
+
+@media screen and (max-width: 1024px) {
+    table img:not(.imagesize) {
+        max-width: 80px;
+    }
+    .sp-table img:not(.imagesize) {
+        max-width: 200px;
+    }
+    .livePoker {
+        min-width: 106px;
+    }
+    .odds {
+        font-size: 14px;
+        min-width: 156px;
+    }
+    .imagesize {
+        max-width: 350px;
+        min-width: 350px;
+    }
+    .lines201 {
+        height: 30px;
+        width: 290px;
+        background: url('../../images/game/rule/slot/lines20.gif') -4px 0px;
+        background-repeat: no-repeat;
+    }
+    .lines202 {
+        height: 30px;
+        width: 290px;
+        background: url('../../images/game/rule/slot/lines20.gif') -290px 0px;
+        background-repeat: no-repeat;
+    }
+    .lines203 {
+        height: 30px;
+        width: 290px;
+        background: url('../../images/game/rule/slot/lines20.gif') -4px -30px;
+        background-repeat: no-repeat;
+    }
+    .lines204 {
+        height: 30px;
+        width: 290px;
+        background: url('../../images/game/rule/slot/lines20.gif') -290px -30px;
+        background-repeat: no-repeat;
+    }
+    .lines401 {
+        height: 25px;
+        width: 425px;
+        background: url('') 0px 0px;
+        background-repeat: no-repeat;
+    }
+    .lines402 {
+        height: 25px;
+        width: 425px;
+        background: url('../../images/game/rule/slot/lines40.gif') -425px 0px;
+        background-repeat: no-repeat;
+    }
+    .lines403 {
+        height: 25px;
+        width: 425px;
+        background: url('../../images/game/rule/slot/lines40.gif') 0px -25px;
+        background-repeat: no-repeat;
+    }
+    .lines404 {
+        height: 25px;
+        width: 425px;
+        background: url('../../images/game/rule/slot/lines40.gif') -425px -25px;
+        background-repeat: no-repeat;
+    }
+    .lines405 {
+        height: 0px;
+    }
+    .lines406 {
+        height: 0px;
+    }
+    .lines407 {
+        height: 0px;
+    }
+    .lines408 {
+        height: 0px;
+    }
+    .lines501 {
+        width: 275px;
+        height: 32px;
+        background: url('./ipl/images/game/rule/slot/lines50.png') 0px 0px;
+        background-repeat: no-repeat;
+        background-size: 546px 186px;
+    }
+    .lines502 {
+        width: 275px;
+        height: 32px;
+        background: url('./ipl/images/game/rule/slot/lines50.png') -280px 0px;
+        background-repeat: no-repeat;
+        background-size: 546px 186px;
+    }
+    .lines503 {
+        width: 275px;
+        height: 32px;
+        background: url('./ipl/images/game/rule/slot/lines50.png') 0px -32px;
+        background-repeat: no-repeat;
+        background-size: 546px 186px;
+    }
+    .lines504 {
+        width: 275px;
+        height: 32px;
+        background: url('./ipl/images/game/rule/slot/lines50.png') -280px -32px;
+        background-repeat: no-repeat;
+        background-size: 546px 186px;
+    }
+    .lines505 {
+        width: 275px;
+        height: 32px;
+        background: url('./ipl/images/game/rule/slot/lines50.png') 0px -68px;
+        background-repeat: no-repeat;
+        background-size: 546px 186px;
+    }
+    .lines506 {
+        width: 275px;
+        height: 32px;
+        background: url('./ipl/images/game/rule/slot/lines50.png') -280px -68px;
+        background-repeat: no-repeat;
+        background-size: 546px 186px;
+    }
+    .lines507 {
+        width: 275px;
+        height: 32px;
+        background: url('./ipl/images/game/rule/slot/lines50.png') 0px -106px;
+        background-repeat: no-repeat;
+        background-size: 546px 186px;
+    }
+    .lines508 {
+        width: 275px;
+        height: 32px;
+        background: url('./ipl/images/game/rule/slot/lines50.png') -280px -106px;
+        background-repeat: no-repeat;
+        background-size: 546px 186px;
+    }
+    .lines509 {
+        width: 275px;
+        height: 32px;
+        background: url('./ipl/images/game/rule/slot/lines50.png') 0px -140px;
+        background-repeat: no-repeat;
+        background-size: 546px 186px;
+    }
+    .lines5010 {
+        width: 275px;
+        height: 32px;
+        background: url('./ipl/images/game/rule/slot/lines50.png') -280px -140px;
+        background-repeat: no-repeat;
+        background-size: 546px 186px;
+    }
+    .rule-title {
+        font-weight: bold;
+        font-size: 24px;
+    }
+}
+@media screen and (max-width: 700px) and (min-width: 560px)  {
+
+    .bigSizeimg {
+        max-width: 550px;
+    }
+}
+@media screen and (max-width: 560px) {
+    img:not(.imagesize) {
+        max-width: 375px;
+    }
+    table img:not(.imagesize) {
+        max-width: 60px;
+    }
+    .livePoker {
+        min-width: 106px;
+    }
+    .sp-table img:not(.imagesize) {
+        max-width: 150px;
+    }
+    .odds {
+        font-size: 10px;
+        min-width: 140px;
+    }
+    .rule-title {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .imagesize {
+        max-width: 280px;
+        min-width: 280px;
+    }
+    .title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .title2 {
+        /*/font-family: serif;*/
+        font-size: 20px;
+        color: #FFBB00;
+    }
+    .lines401 {
+        height: 25px;
+        width: 425px;
+        background: url('../../images/game/rule/slot/lines40.gif') 0px 0px;
+        background-repeat: no-repeat;
+    }
+    .lines402 {
+        height: 25px;
+        width: 425px;
+        background: url('../../images/game/rule/slot/lines40.gif') -425px 0px;
+        background-repeat: no-repeat;
+    }
+    .lines403 {
+        height: 25px;
+        width: 425px;
+        background: url('../../images/game/rule/slot/lines40.gif') 0px -25px;
+        background-repeat: no-repeat;
+    }
+    .lines404 {
+        height: 25px;
+        width: 425px;
+        background: url('../../images/game/rule/slot/lines40.gif') -425px -25px;
+        background-repeat: no-repeat;
+    }
+    .lines405,
+    .lines406,
+    .lines407,
+    .lines408 {
+        height: 0px;
+    }
+}
+
+
+/*header最低解析寬320*/
+
+@media screen and (max-width: 425px ) {
+    .odds {
+        font-size: 10px;
+        min-width: 100px;
+    }
+    .livePoker {
+        min-width: 106px;
+    }
+    .sp-table img:not(.imagesize) {
+        max-width: 120px;
+    }
+    .lines401 {
+        height: 25px;
+        width: 214px;
+        background: url('../../images/game/rule/slot/lines40.gif') 0px 0px;
+        background-repeat: no-repeat;
+    }
+    .lines402 {
+        height: 25px;
+        width: 214px;
+        background: url('../../images/game/rule/slot/lines40.gif') -212px 0px;
+        background-repeat: no-repeat;
+    }
+    .lines403 {
+        height: 25px;
+        width: 214px;
+        background: url('../../images/game/rule/slot/lines40.gif') -424px 0px;
+        background-repeat: no-repeat;
+    }
+    .lines404 {
+        height: 25px;
+        width: 214px;
+        background: url('../../images/game/rule/slot/lines40.gif') -638px 0px;
+        background-repeat: no-repeat;
+    }
+    .lines405 {
+        height: 25px;
+        width: 214px;
+        background: url('../../images/game/rule/slot/lines40.gif') 0px -25px;
+        background-repeat: no-repeat;
+    }
+    .lines406 {
+        height: 25px;
+        width: 214px;
+        background: url('../../images/game/rule/slot/lines40.gif') -212px -25px;
+        background-repeat: no-repeat;
+    }
+    .lines407 {
+        height: 25px;
+        width: 214px;
+        background: url('../../images/game/rule/slot/lines40.gif') -424px -25px;
+        background-repeat: no-repeat;
+    }
+    .lines408 {
+        height: 25px;
+        width: 214px;
+        background: url('../../images/game/rule/slot/lines40.gif') -638px -25px;
+        background-repeat: no-repeat;
+    }
+    .imagesize {
+        max-width: 220px;
+        min-width: 220px;
+    }
+    img:not(.imagesize) {
+        max-width: 300px;
+    }
+    table img:not(.imagesize) {
+        max-width: 40px;
+    }
+
+    .rule-title {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .title {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .title2 {
+        /*/font-family: serif;*/
+        font-size: 16px;
+        color: #FFBB00;
+    }
+}
+
+
+/*header最低解析寬320*/
+
+@media screen and (max-width: 335px) {
+    .table>thead>tr>th,
+    .table>tbody>tr>th,
+    .table>tfoot>tr>th,
+    .table>thead>tr>td,
+    .table>tbody>tr>td,
+    .table>tfoot>tr>td {
+        padding: 0px !important;
+    }
+}

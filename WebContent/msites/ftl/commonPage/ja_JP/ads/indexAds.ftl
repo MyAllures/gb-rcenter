@@ -7,71 +7,73 @@
         </#if>
     </#list>
 </#if>
-
-<#if data.floatPicsInIndex??>
-    <#list data.floatPicsInIndex as pic>
-        <#if pic.singleMode && pic.picType=='2'>
-            <#if pic.location == "left" && pic.displayInPages?contains("1")>
-                <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>
-                    <#assign updateTime = pic.id?string.computer/>
-                <#else >
-                    <#assign updateTime = .now?date/>
-                </#if>
-            <div data-fp="effect_${updateTime}" style="display:none;" class="show-effect-left hongbao-slide-wrap hongbao-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if>" id="hongbao">
-                <div class="<#if pic.hideCloseButton?? && pic.hideCloseButton>icon-close _close</#if>"></div>
-                <div class="slide-inner">
-                    <ul>
-                        <#if data.floatPicItems?exists>
-                            <#list data.floatPicItems?keys as key>
-                                <#if  data.floatPicItems[key].floatPicId ==pic.id>
-                                    <li class="hb_type_<#if data.floatPicItems[key].normalEffect?contains('panel-first.png')>1<#elseif data.floatPicItems[key].normalEffect?contains('panel-second.png')>2<#else>3</#if>">
-                                        <a href="javascript:void(0)" <#if data.floatPicItems[key].imgLinkType?string != 'close_btn'>onclick="canShowLottery('${searchId}');"</#if>>
-                                            <div class="img"></div>
-                                            <div class="extra"></div>
-                                        </a>
-                                    </li>
-                                </#if>
-                            </#list>
-                        </#if>
-                    </ul>
+<#--红包Id为空，不展示红包-->
+<#if searchId?? && searchId?has_content>
+    <#if data.floatPicsInIndex??>
+        <#list data.floatPicsInIndex as pic>
+            <#if pic.singleMode && pic.picType=='2'>
+                <#if pic.location == "left" && pic.displayInPages?contains("1")>
+                    <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>
+                        <#assign updateTime = pic.id?string.computer/>
+                    <#else >
+                        <#assign updateTime = .now?date/>
+                    </#if>
+                <div data-fp="effect_${updateTime}" style="display:none;" class="show-effect-left hongbao-slide-wrap hongbao-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if>" id="hongbao">
+                    <div class="<#if pic.hideCloseButton?? && pic.hideCloseButton>icon-close _close</#if>"></div>
+                    <div class="slide-inner">
+                        <ul>
+                            <#if data.floatPicItems?exists>
+                                <#list data.floatPicItems?keys as key>
+                                    <#if  data.floatPicItems[key].floatPicId ==pic.id>
+                                        <li class="hb_type_<#if data.floatPicItems[key].normalEffect?contains('panel-first.png')>1<#elseif data.floatPicItems[key].normalEffect?contains('panel-second.png')>2<#else>3</#if>">
+                                            <a href="javascript:void(0)" <#if data.floatPicItems[key].imgLinkType?string != 'close_btn'>onclick="canShowLottery('${searchId}');"</#if>>
+                                                <div class="img"></div>
+                                                <div class="extra"></div>
+                                            </a>
+                                        </li>
+                                    </#if>
+                                </#list>
+                            </#if>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            </#if>
-        </#if>
-    </#list>
-</#if>
-
-<#if data.floatPicsInIndex??>
-    <#list data.floatPicsInIndex as pic>
-        <#if pic.singleMode && pic.picType=='2'>
-            <#if pic.location == "right" && pic.displayInPages?contains("1")>
-                <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>
-                    <#assign updateTime = pic.id?string.computer/>
-                <#else >
-                    <#assign updateTime = .now?date/>
                 </#if>
-            <div data-fp="effect_${updateTime}" style="display:none;" class="show-effect-right hongbao-slide-wrap hongbao-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if>" id="hongbao" >
-                <div class="<#if pic.hideCloseButton?? && pic.hideCloseButton>icon-close _close</#if>"></div>
-                <div class="slide-inner">
-                    <ul>
-                        <#if data.floatPicItems?exists>
-                            <#list data.floatPicItems?keys as key>
-                                <#if  data.floatPicItems[key].floatPicId ==pic.id>
-                                    <li class="hb_type_<#if data.floatPicItems[key].normalEffect?contains('panel-first.png')>1<#elseif data.floatPicItems[key].normalEffect?contains('panel-second.png')>2<#else>3</#if>">
-                                        <a href="javascript:void(0)" <#if data.floatPicItems[key].imgLinkType?string != 'close_btn'>onclick="canShowLottery('${searchId}');"</#if>>
-                                            <div class="img"></div>
-                                            <div class="extra"></div>
-                                        </a>
-                                    </li>
-                                </#if>
-                            </#list>
-                        </#if>
-                    </ul>
-                </div>
-            </div>
             </#if>
-        </#if>
-    </#list>
+        </#list>
+    </#if>
+
+    <#if data.floatPicsInIndex??>
+        <#list data.floatPicsInIndex as pic>
+            <#if pic.singleMode && pic.picType=='2'>
+                <#if pic.location == "right" && pic.displayInPages?contains("1")>
+                    <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>
+                        <#assign updateTime = pic.id?string.computer/>
+                    <#else >
+                        <#assign updateTime = .now?date/>
+                    </#if>
+                <div data-fp="effect_${updateTime}" style="display:none;" class="show-effect-right hongbao-slide-wrap hongbao-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if>" id="hongbao" >
+                    <div class="<#if pic.hideCloseButton?? && pic.hideCloseButton>icon-close _close</#if>"></div>
+                    <div class="slide-inner">
+                        <ul>
+                            <#if data.floatPicItems?exists>
+                                <#list data.floatPicItems?keys as key>
+                                    <#if  data.floatPicItems[key].floatPicId ==pic.id>
+                                        <li class="hb_type_<#if data.floatPicItems[key].normalEffect?contains('panel-first.png')>1<#elseif data.floatPicItems[key].normalEffect?contains('panel-second.png')>2<#else>3</#if>">
+                                            <a href="javascript:void(0)" <#if data.floatPicItems[key].imgLinkType?string != 'close_btn'>onclick="canShowLottery('${searchId}');"</#if>>
+                                                <div class="img"></div>
+                                                <div class="extra"></div>
+                                            </a>
+                                        </li>
+                                    </#if>
+                                </#list>
+                            </#if>
+                        </ul>
+                    </div>
+                </div>
+                </#if>
+            </#if>
+        </#list>
+    </#if>
 </#if>
 
 <#if data.floatPicsInIndex??>

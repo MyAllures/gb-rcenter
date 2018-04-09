@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn"  class="game-detail">
 
 <head>
     <meta charset="UTF-8">

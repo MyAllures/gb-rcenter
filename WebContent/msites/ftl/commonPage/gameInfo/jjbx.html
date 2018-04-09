@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>:::金鸡报喜:::</title>
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.base.css">
+    <link rel="stylesheet" type="text/css" href="./ipl/assets/lib/cust/bootstrap.cust.css">
+
+</head>
+<body class=cust>
+
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/assets/vendor/custom-scrollbar/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_theme.css">
+<link rel="stylesheet" type="text/css" href="./ipl/css/game/game_rule_yellow_theme.css"><nav class="navbar navbar-default navbar-fixed-top navbar-theme">
+    <div class="container-fluid">
+        <div id="header "><span class="pull-right rule-logo"> <img src="./ipl/images/game/rule/5090/gamelogo.png" height="50px"></span> <span class="mceNonEditable dict rule-header" title="GAME_HEADER"><span class="pull-left rule-title"><span class="tw">游戏说明</span><span class="en">Game Rule</span></span></span> <span class="pull-right rule-name rule-title tw mceNonEditable">金鸡报喜</span></div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="main-box">
+    <div class="pull-right langSelect lang-select">
+        <select class="form-control select-lang" name="select-lang">
+            <option value='tw'> 繁中 </option>
+            <option value='cn'> 簡中 </option>
+            <option value='vn'> Vietnam </option>
+            <option value='th'> คนไทย </option>
+            <option value='kr'> 한국어 </option>
+            <option value='jp'> 日本語 </option>
+            <option value='id'> Indonesia </option>
+            <option value='es'> español </option>
+            <option value='us'> English </option>
+        </select>
+    </div>
+
+    <div class="container content"><span class="mceNonEditable dict" title="GAME_INFSTRUCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏玩法 </span><span class="title2">GAME INSTRUCTION </span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_RULE">游戏说明</span></h5>
+        <p><span>“金鸡报喜”是一款25线的拉霸游戏，以新年为主题搭配中国各种春节图像，让玩家进入中国新年世界。</span></p>
+        <p><span>25条联机 ：</span><span class="redfont">※附第6轴加倍转轴</span></p>
+        <div id="lines" class="lines251"></div>
+        <div id="lines" class="lines252"></div>
+        <div id="lines" class="lines253"></div>
+        <div id="lines" class="lines254"></div>
+        <div id="lines" class="lines255"></div>
+        <h5><span class="mceNonEditable dict" title="GAME_FEATURES">游戏特色</span></h5>
+        <ul>
+            <li><span class="mceNonEditable dict" title="PAYLINES_4JACKPOT">4个Jackpot累积彩金：Mini/Minor/Major/Grand.</span></li>
+            <li><span class="">最高3600倍的倍数奖金</span></li>
+            <li><span class="mceNonEditable dict" title="COUNT_LEFT">得分由每条押注线的左边开始计算。</span></li>
+            <li>分散标记、可变标记和免费联机游戏。</li>
+        </ul>
+        <h5><span class="mceNonEditable dict" title="SUB_ODDS">赔率说明</span></h5>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle sp-table">
+                <thead>
+                <tr>
+                    <th class="text-center" colspan="1"><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></th>
+                    <th class="text-center" colspan="3"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center td-theme" colspan="4"><span class="mceNonEditable dict" title="SCATTER_SYMBOL">分散标记(Scatter)</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/5090/images12.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="redfont">3个</span><span class="greenfont"> X 10次</span></p>
+                    </td>
+                    <td class="text-left" colspan="2">
+                        <p><span>出现3个 → 免费联机游戏（Free Game）<br>Free Game : 10~A依序替换为爆竹、灯笼、蟾蜍、鲤鱼、狮子。<br></span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme" colspan="4"><span class="mceNonEditable dict" title="WILD_SYMBOL">可变标记(Wild)</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/5090/images13.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="redfont">5</span> <span class="greenfont"> X 400</span></p>
+                        <p><span class="redfont">4</span> <span class="greenfont"> X 70</span></p>
+                        <p><span class="redfont">3</span> <span class="greenfont"> X 25</span></p>
+                    </td>
+                    <td class="text-left" colspan="2">
+                        <p><span>『可变标记』为可变性的，这意味着它具替代性，可与其它标志完成赢取的组合，但不包含分散标记。<br>若转轴中间的对象为可变标记，则该轴另外2个对象，皆会被可变标记取代。</span><br> <img class="imagesize" src="./ipl/images/game/rule/5090/changeable.png" alt="image"></p>
+                        <p><span class="redfont">同一联机中，同时符合Wild联机与其它可替代对象联机，以较高赔率为得分。</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center td-theme" colspan="4"><span class="mceNonEditable dict" title="JACKPOT_SYMBOL">彩金标记(Jackpot)</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center" rowspan="4"><img src="./ipl/images/5090/imagesjp.gif" alt="image"></td>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/slot/jp5.gif" alt="image"></p>
+                        <p>Grand</p>
+                    </td>
+                    <td class="text-left" colspan="2" rowspan="4">
+                        <p><span class="mceNonEditable dict" title="JACKPOT_15">联机位置由左而右连续出现2个以上的彩金标记 → 获得Jackpot彩金。</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/slot/jp4.gif" alt="image"></p>
+                        <p>Major</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/slot/jp3.gif" alt="image"></p>
+                        <p>Minor</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <p><img src="./ipl/images/game/rule/slot/jp2.gif" alt="image"></p>
+                        <p>Mini</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle sp-table">
+                <thead>
+                <tr>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></th>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_ODDS">赔率</span></th>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></th>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_ODDS">赔率</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/5090/images6.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="redfont">5</span> <span class="greenfont"> X 75</span></p>
+                        <p><span class="redfont">4</span> <span class="greenfont"> X 35</span></p>
+                        <p><span class="redfont">3</span> <span class="greenfont"> X 5</span></p>
+                    </td>
+                    <td class="text-center"><img src="./ipl/images/5090/images1.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="redfont">5</span> <span class="greenfont"> X 400</span></p>
+                        <p><span class="redfont">4</span> <span class="greenfont"> X 70</span></p>
+                        <p><span class="redfont">3</span> <span class="greenfont"> X 25</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/5090/images7.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="redfont">5</span> <span class="greenfont"> X 50</span></p>
+                        <p><span class="redfont">4</span> <span class="greenfont"> X 30</span></p>
+                        <p><span class="redfont">3</span> <span class="greenfont"> X 5</span></p>
+                    </td>
+                    <td class="text-center"><img src="./ipl/images/5090/images2.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="redfont">5</span> <span class="greenfont"> X 250</span></p>
+                        <p><span class="redfont">4</span> <span class="greenfont"> X 50</span></p>
+                        <p><span class="redfont">3</span> <span class="greenfont"> X 20</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/5090/images8.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="redfont">5</span> <span class="greenfont"> X 40</span></p>
+                        <p><span class="redfont">4</span> <span class="greenfont"> X 25</span></p>
+                        <p><span class="redfont">3</span> <span class="greenfont"> X 4</span></p>
+                    </td>
+                    <td class="text-center"><img src="./ipl/images/5090/images3.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="redfont">5</span> <span class="greenfont"> X 200</span></p>
+                        <p><span class="redfont">4</span> <span class="greenfont"> X 45</span></p>
+                        <p><span class="redfont">3</span> <span class="greenfont"> X 15</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/5090/images9.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="redfont">5</span> <span class="greenfont"> X 30</span></p>
+                        <p><span class="redfont">4</span> <span class="greenfont"> X 20</span></p>
+                        <p><span class="redfont">3</span> <span class="greenfont"> X 3</span></p>
+                    </td>
+                    <td class="text-center"><img src="./ipl/images/5090/images5.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="redfont">5</span> <span class="greenfont"> X 150</span></p>
+                        <p><span class="redfont">4</span> <span class="greenfont"> X 40</span></p>
+                        <p><span class="redfont">3</span> <span class="greenfont"> X 10</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/5090/images10.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="redfont">5</span> <span class="greenfont">X 25</span></p>
+                        <p><span class="redfont">4</span> <span class="greenfont">X 15</span></p>
+                        <p><span class="redfont">3</span> <span class="greenfont">X 3</span></p>
+                    </td>
+                    <td class="text-center"><img src="./ipl/images/5090/images4.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="redfont">5</span> <span class="greenfont">X 100</span></p>
+                        <p><span class="redfont">4</span> <span class="greenfont">X 35</span></p>
+                        <p><span class="redfont">3</span> <span class="greenfont">X 10</span></p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h5><span class="redfont">加倍标记(第六轴)</span></h5>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle sp-table">
+                <thead>
+                <tr>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></th>
+                    <th class="text-center"><span>加倍分数</span></th>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_PATTERNS">图片</span></th>
+                    <th class="text-center"><span>加倍分数</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/5090/images14.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="greenfont">联机得分X1</span></p>
+                    </td>
+                    <td class="text-center"><img src="./ipl/images/5090/images15.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="greenfont">联机得分X2</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/5090/images16.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="greenfont">联机得分X3</span></p>
+                    </td>
+                    <td class="text-center"><img src="./ipl/images/5090/images17.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="greenfont">联机得分X4</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/5090/images18.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="greenfont">联机得分X5</span></p>
+                    </td>
+                    <td class="text-center"><img src="./ipl/images/5090/images19.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="greenfont">联机得分X6</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/5090/images20.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="greenfont">联机得分X7</span></p>
+                    </td>
+                    <td class="text-center"><img src="./ipl/images/5090/images21.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="greenfont">联机得分X8</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center"><img src="./ipl/images/5090/images22.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="greenfont">联机得分X9</span></p>
+                    </td>
+                    <td class="text-center"><img src="./ipl/images/5090/images11.gif" alt="image"></td>
+                    <td class="text-left odds">
+                        <p><span class="greenfont">前五轴各随机放置一个可变标记。</span></p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr><span class="mceNonEditable dict" title="GAME_INTERFACE"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">介面说明 </span><span class="title2">GAME INTERFACE</span></span>
+        <h5><span class="mceNonEditable dict" title="GAME_SCREEN">游戏画面</span></h5>
+        <ul>
+            <li><span class="mceNonEditable dict" title="MAIN_GAME_SCREEN">主游戏画面(Main Game Screen)</span></li>
+        </ul>
+        <p><img src="./ipl/images/game/rule/5090/cn/gamePic1.png" alt="image"></p>
+        <div class="panel panel-default table-responsive">
+            <table class="table table-bordered text-middle sp-table">
+                <thead>
+                <tr>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_AREA">区域</span></th>
+                    <th class="text-center"><span class="mceNonEditable dict" title="TH_INSTRUCTIONS">说明</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">A</td>
+                    <td class="text-center"><span class="mceNonEditable dict" title="JP_INFO">游戏彩金</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center">B</td>
+                    <td class="text-center"><span class="mceNonEditable dict" title="GAME_SCREEN">游戏画面</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center">C</td>
+                    <td class="text-center"><span class="mceNonEditable dict" title="GAME_FUNC">游戏功能</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center">D</td>
+                    <td class="text-center"><span class="mceNonEditable dict" title="PLAYER_INFO">基本资讯</span></td>
+                </tr>
+                <tr>
+                    <td class="text-center">E</td>
+                    <td class="text-center"><span class="mceNonEditable dict" title="BASIC_FUNC">基本功能</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul>
+            <li><span><span class="mceNonEditable dict" title="FREE_GAME_V2">免费游戏(Free Game)</span></span></li>
+        </ul>
+        <p>Free Game : 10~A依序替换为爆竹、灯笼、蟾蜍、鲤鱼、狮子。</p>
+        <p><img src="./ipl/images/game/rule/5090/cn/gamePic2.png" alt="image"></p>
+        <ul>
+            <li><span>金鸡到</span></li>
+        </ul>
+        <p><span>前五轴各随机放置一个可变标记。</span></p>
+        <p><img src="./ipl/images/game/rule/5090/cn/gamePic3.png" alt="image"></p>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr><span class="mceNonEditable dict" title="GAME_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">游戏功能 </span><span class="title2">GAME FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_TOTAL_BET"><span class="orangefont base">下注分数(TOTAL BET) : </span>本局下注分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_LINE_BET"><span class="orangefont base">每线押注(LINE BET) : </span>每线押注分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_WIN"><span class="orangefont base">赢得分数(WIN) : </span>本局赢得分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_CREDIT"><span class="orangefont base">可用分数(CREDITS) : </span>显示目前可以游戏的分数</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXCHANGE_RATIO_DEPOSIT"><span class="orangefont base">分数兑换(CREDIT EXCHANGE) : </span>选择比例大小、开分和洗分，游戏中可以直接点选比例进行更换</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_AUTO_PLAY"><span class="orangefont base">自动开始(AUTO PLAY)/停止自动开始(STOP AUTO PLAY) : </span>选择自动开始或是停止自动开始</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SPIN_STOP_2"><span class="orangefont base">开始(SPIN)/得分(SCORE)/停止(STOP) : </span>开始或是得分、停止</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr><span class="mceNonEditable dict" title="BASIC_FUNCTION"><span class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></span><span class="title">基本功能 </span><span class="title2">BASIC FUNCTION </span></span>
+        <ul class="fa-ul">
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SN"><span class="orangefont base">局号(SN) : </span>游戏局号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_ID"><span class="orangefont base">会员帐号(USER ID) : </span>显示会员登入帐号</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_DEPOSIT"><span class="orangefont base">存款(DEPOSIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_deposit.png" width="23" height="24" /> 钮，开启会员中心的存款功能</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_SOUND"><span class="orangefont base">音效(SOUND) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_mute.png" width="23" height="24" /> 钮，启动或停止音效</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_MUSIC"><span class="orangefont base">音乐(MUSIC) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_bgm.png" width="23" height="24" /> 钮，启动或停止背景音乐</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HISTORY"><span class="orangefont base">历史纪录(HISTORY) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_history.png" width="23" height="24" /> 钮，历史下注纪录</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_HELP"><span class="orangefont base">帮助(HELP) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_help.png" width="23" height="24" /> 钮，规则说明</span></li>
+            <li><span class="fa fa-caret-right fa-2x"></span><span class="mceNonEditable dict" title="FUNC_EXIT"><span class="orangefont base">离开(EXIT) : </span>按下 <img src="./ipl/images/game/rule/btn/btn_exit.png" width="23" height="24" /> 钮，离开本游戏，跳大厅窗口</span></li>
+        </ul>
+        <span class="btn btn-default pull-right top"> <span class="fa fa-arrow-circle-o-up fa-lg" title="TOP"></span> <span class="sr-only"></span> </span>
+        <div class="clearfix"></div>
+        <hr></div>
+</div>
+<script src="./ipl/assets/vendor/jquery/jquery.min.js"></script>
+<script src="./ipl/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./ipl/assets/vendor/custom-scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./ipl/script/game/game_rule.js"></script>
+
+</body>
+</html>
