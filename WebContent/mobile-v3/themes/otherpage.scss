@@ -161,7 +161,9 @@ height: 44px;}
     border: 1px solid #666;
         td{    border: 1px solid #666;}
     }
-    .gb-select{display: block;}
+    .gb-select{display: block;
+        img{max-width: 100%;}
+    }
     .gb-imgs >.ct {
         padding: 10px;
         ul{padding: 0;margin: 0;list-style: none;
