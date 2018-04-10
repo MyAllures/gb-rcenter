@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+		<link rel="stylesheet" href="css/swiper.min.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1,maximum-scale=1">
+		<title>整体走势-实时统计</title>
+	    <script src="js/jquery-3.2.1.min.js"></script>
+	    <script src="js/swiper.min.js"></script>
+	    <script src="js/Popper.js"></script>
+	    <script src="js/bootstrap.js"></script>
+	    <script src="js/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8"></script>	    	       
+	    <script src="js/highcharts.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="js/jqPaginator.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js"></script>
+	</head>
+	<body>  
+    <div class="container xinzengwanjia-page">
+        <div class="menu _menu">
+        	<nav>
+            	<h1 class="name">捷报系统中心 <font>statement system</font></h1>
+            	<ul class="list-group">
+                	<li class="list-group-item active">
+                		<p class="tit"><i class="gaikuang"></i><a href="#">站点日常数据</a></p> 
+	                	<ul class="hideMenu">
+	                		<li ><a href="index.html">经营走势</a></li>    
+	                		<li class="active"><a href="TimeStatistics.html">实时总览</a></li>
+	                		<li><a href="ActivePlayer.html">活跃玩家</a></li>
+	                		<li><a href="PlayerRetained .html">玩家留存</a></li>
+	                		<li><a href="NewPlayer.html">新增玩家</a></li>
+	                	</ul>
+                	</li>
+					<li class="list-group-item"><p class="tit"><i class="player"></i><a href="#">战点市场数据</a></p></li>
+               		<li class="list-group-item"><p class="tit"><i class="deposit"></i><a href="#">玩家分析</a></p></li>
+               		<li class="list-group-item"><p class="tit"><i class="game"></i><a href="#">付费分析</a></p></li>
+               		<li class="list-group-item"><p class="tit"><i class="deposit"></i><a href="#">活动数据分析</a></p></li>
+               		<li class="list-group-item"><p class="tit"><i class="player"></i><a href="#">API用户细分</a></p></li>
+           		</ul>        
+            </nav>           
+        </div>
+        <div class="main-content _mainContent">
+        	<div class="_drawer-mask"></div>
+        	<!--头部信息：-->
+        	<div class="top-info text-right">
+	            <div class="icon-menu _showMenu"></div>
+	            <ul>
+	            	<li class="time"><span></span><p id="nowTime"></p></li>
+	            	<li class="webName"><span></span>
+		                <div class="chooseSite _chooseSite">
+		                	<a class="btn dropdown-toggle"  id="dropdownSite" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">站点A</a>
+		                	<div class="dropdown-menu" aria-labelledby="dropdownSite">
+			                    <a class="dropdown-item" href="#">站点A</a>
+			                    <a class="dropdown-item" href="#">站点B</a>
+			                    <a class="dropdown-item" href="#">站点C</a>
+		                  	</div>
+		                </div> 
+	              	</li>
+	              	<li class="username"><span></span>
+	                	<div class="chooseAdmin">
+		                	<a class="btn dropdown-toggle"  id="dropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+		                	<div class="dropdown-menu" aria-labelledby="dropdownAdmin">
+			                    <a class="dropdown-item" href="#">退出</a>
+			                    <a class="dropdown-item" href="#">重新登录</a>
+	                    	</div>
+	                	</div>
+	                </li>
+	            </ul>
+        	</div>
+        	<!--内容区域：-->
+    		<div class="content">
+	        	<div class="run-title">
+	            	<h1 class="float-left">实时总览 <span>更新时间  2017-02-32 23:12:12</span></h1>
+	            	<div class="group float-right _addPrimary">
+	                	<button type="button" class="btn btn-default btn-primary btnAll">全部</button>
+		                <button type="button" class="btn btn-default btnPc">PC端</button>
+		                <button type="button" class="btn btn-default btnCell">手机端</button>
+	               	</div>
+	        	</div>          
+		        <div class="dataBox">	
+	               <div class="swiper-container swiper-info">
+		                 <div class="swiper-wrapper">
+		                   <div class="swiper-slide btn-primary">
+		                      <p class="info-1"><i class="what">?</i><b>访客数</b></p>
+		                      <p class="info-2">100</p>
+		                      <p class="info-3">较昨日同时段</p>
+		                      <p class='info-4'>↓100%</p>
+		                   </div>
+		                   <div class="swiper-slide">
+		                      <p class="info-1"><i class="what">?</i><b>访客数</b></p>
+		                      <p class="info-2">100</p>
+		                      <p class="info-3">较昨日同时段</p>
+		                      <p class='info-4'>↓100%</p>
+		                   </div>
+		                   <div class="swiper-slide">
+		                      <p class="info-1"><i class="what">?</i><b>访客数</b></p>
+		                      <p class="info-2">100</p>
+		                      <p class="info-3">较昨日同时段</p>
+		                      <p class='info-4'>↓100%</p>
+		                   </div>
+		                   <div class="swiper-slide">
+		                      <p class="info-1"><i class="what">?</i><b>访客数</b></p>
+		                      <p class="info-2">100</p>
+		                      <p class="info-3">较昨日同时段</p>
+		                      <p class='info-4'>↓100%</p>
+		                   </div>
+		                   <div class="swiper-slide">
+		                      <p class="info-1"><i class="what">?</i><b>访客数</b></p>
+		                      <p class="info-2">100</p>
+		                      <p class="info-3">较昨日同时段</p>
+		                      <p class='info-4'>↓100%</p>
+		                   </div>
+		                   <div class="swiper-slide">
+		                      <p class="info-1"><i class="what">?</i><b>访客数</b></p>
+		                      <p class="info-2">100</p>
+		                      <p class="info-3">较昨日同时段</p>
+		                      <p class='info-4'>↓100%</p>
+		                   </div>
+		                   <div class="swiper-slide">
+		                      <p class="info-1"><i class="what">?</i><b>访客数</b></p>
+		                      <p class="info-2">100</p>
+		                      <p class="info-3">较昨日同时段</p>
+		                      <p class='info-4'>↓100%</p>
+		                   </div>
+		                   <div class="swiper-slide btn">
+		                      <p class="info-1"><i class="what">?</i><b>访客数</b></p>
+		                      <p class="info-2">100</p>
+		                      <p class="info-3">较昨日同时段</p>
+		                      <p class='info-4'>↓100%</p>
+		                   </div>
+		                 </div>
+		                 <div class="swiper-button-next" ></div>
+		                 <div class="swiper-button-prev"></div>
+	               </div>
+	               <div id="curveTable" style=" height: 300px;min-width:370px;margin: 0 auto;padding-top: 30px;"; ></div> 
+		        </div>		        	
+		           <!--曲线图-->
+		                
+        
+	        	<div class="tableBox">
+		            <div class="top">
+		            	<h3>数据明细</h3>
+		                <!--<a class="btn btn-default export" href="#">导出数据</a>--> 
+		            </div>          
+		            <table class="reportTab table-hover" id="Searchresult">
+						<!--动态生成数据表格-->
+		            </table>	             
+            		<div class="page">
+            			<div class="pageNum"><span class="txt">每页显示</span>
+		                  	<div class="chooseNum _chooseNum">
+			                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+			                    	10条
+			                    </button>
+			                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="choseNum">
+			                    	<a class="dropdown-item" href="##">10条</a>
+			                    	<a class="dropdown-item" href="##">15条</a>
+			                    	<a class="dropdown-item" href="##">20条</a>
+			                    </div>
+		                	</div> 
+            				<span class="allCot"></span>
+            			</div>         
+		                <ul class="pagination float-right" id="pagination">
+		                	<!--动态生成分页器-->
+		                </ul>
+        			</div>           
+		    	</div>        
+			</div>       
+		</div>     
+	</div>    
+	</body>
+</html>
+<script>
+	 $(function(){    
+	    var swiper = new Swiper('.swiper-info', {
+	     	slidesPerView: 6,
+	    	spaceBetween: 15,
+        	nextButton: '.swiper-button-next',
+        	prevButton: '.swiper-button-prev',
+        	//direction: 'vertical',
+        	//loop: true
+	    });
+	  })
+</script>
+<script src="js/TimeStatistics.js" type="text/javascript" charset="utf-8"></script>
