@@ -42,13 +42,14 @@ function submitPromo(obj, options) {
     //判断是否是试玩账号，试玩账号无权参与
     var isDemo = sessionStorage.isDemo;
     if (isDemo == 'true') {
-        toast('试玩账号无权限参与活动');
+        toast(window.top.message.promo_auto['试玩账号无权限参与活动']);
         return;
     }
     var code = options.dataCode;
     if (code == 'content') {
         if(isNative){
-            nativeGoToApplyPromoPage();
+            //nativeGoToApplyPromoPage();
+            toast(window.top.message.promo_auto['请到申请优惠中申请']);
         }else{
             goToUrl(root + "/message/gameNotice.html?isSendMessage=true");
         }
