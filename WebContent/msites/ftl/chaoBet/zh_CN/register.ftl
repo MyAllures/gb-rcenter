@@ -39,9 +39,16 @@
                 </div>
                 <div class="col-5-4">
                     <div class="page-content">
-                        <!-- Register -->
+                        <!-- Register test -->
                         <div class="register-box">
                             <form id="regForm" class="form-horizontal">
+                                <#if data.carousels??>
+                                    <#list data.carousels as carousel>
+                                        <#if carousel["type"]="carousel_type_ad_register">
+                                            <#if carousel.content??>${carousel.content}</#if>
+                                        </#if>
+                                    </#list>
+                                </#if>
                                 <fieldset>
                                     <h2 class="account-info"></h2>
                                 <#--密码 强度-->

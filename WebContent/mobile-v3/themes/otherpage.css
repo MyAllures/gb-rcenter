@@ -199,6 +199,7 @@
 .content-casino-transfer .game-description p { color: #333; font-size: 12px; line-height: 18px; }
 
 .allgame-popover { width: 160px; }
+.allgame-popover .mui-table-view-cell a { color: #333; }
 
 .allgame-scroll { height: 300px; margin: 0 !important; background: #fff; }
 

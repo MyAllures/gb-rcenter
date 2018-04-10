@@ -1,7 +1,13 @@
-.CasinoGameOverlay{position:fixed;display:block;left:0;top:55px;z-index:999;width:100%;height:100%;background-repeat:no-repeat;cursor:progress;background-position:center top;background-size:100% auto;background-color:#000;}
+.CasinoGameOverlay{position:fixed;display:block;left:0;top:55px;z-index:999;width:100%;height:100%;background-repeat:no-repeat;cursor:progress;background-position:center top;background-size:100% auto;}
 .GameBody{position:relative;display:block;left:auto;margin:0 auto;min-height:150px;padding:0 5%;z-index:1;}
 .GameContainer{position:relative;display:block;border:0;margin:0 auto;background:#000;z-index:1;}
 .GameContainer .GameTips{position:absolute;left:-130px;bottom:0;min-width:120px;min-height:180px;height:auto;color:#eee;background:#333;text-align:center;}
-.GameContainer #box_playGameDemo_iframe{border:0;border-radius:4px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;height:100%;margin:0;min-height:150px;width:100%;background:#fff;}
+.GameContainer #box_playGameDemo_iframe{border:0;border-radius:4px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;height:100%;margin:0;min-height:150px;width:100%;background:#111;}
 .GameContainer .ExtraGame{position:absolute;width:30px;margin-top:0;margin-right:2px;right:-40px;top:0;}
 .gameIconsInner{width:30px;height:30px;cursor:pointer;border:1px transparent;box-sizing:border-box;border-radius:0;margin:0 3px 10px;}
+.wrapper{position: relative;display: block;margin: 0 auto;z-index: 1;border: 10px solid #fff6;width: 100%;border-radius: 10px;}
+
+html.fullscreen .CasinoGameOverlay{top:0;}
+html.fullscreen .CasinoGameOverlay .GameBody{padding: 0;   height: 100%;}
+html.fullscreen .CasinoGameOverlay .GameBody .wrapper{height: 100% !important;border: 0;    border-radius: 0;}
+html.fullscreen .game_side,html.fullscreen .game_bottom{display: none;}

@@ -28,6 +28,7 @@
                         </li>
                     </#list>
                 </#if>
+                <li class="hisActivityButton hide"><a href="javascript:void(0)" data-item="historyActivitys">历史优惠</a></li>
             </ul>
             <dl class="sidePromo">
             <#if data.activityMessage??>
@@ -37,6 +38,7 @@
                              data-type="processing" data-code="${am.code}" data-searchid="${am.searchId}"
                              data-rank-id="<#if am.allRank?? && am.allRank>all<#elseif am.code=="back_water">backwater<#else >${am.rankid}</#if>">
                             <dt>
+                                <span class="_vr_promo_end" data-format="yyyy年MM月dd日" style="color: #fff;"></span>
                                 <img src="${imgPath(data.configInfo.domain,am.activityAffiliated)}">
                             <div class="status"></div>
                             </dt>
@@ -60,23 +62,24 @@
                     </#if>
                 </#list>
             </#if>
-            <#if data.activityMessage??>
-                <#list data.activityMessage as am>
-                    <#if am.states="finished">
-                        <div id="cos_${am.id}" class="_vr_promo_check actContain ${am.activityClassifyKey}"
-                             data-type="over" data-code="${am.code}" data-searchid="${am.searchId}"
-                             data-rank-id="<#if am.allRank?? && am.allRank>all<#elseif am.code=="back_water">backwater<#else >${am.rankid}</#if>">
+            <#if data.historyActivityMessage??>
+                <#list data.historyActivityMessage as his>
+                    <#if his.states="finished">
+                        <div id="cos_${his.id}" class="_vr_promo_check <#if his.isDisplay?string('true','false')=='true'>historyActivitys</#if> actContain"
+                             data-type="over" data-code="${his.code}" data-searchid="${his.searchId}"
+                             data-rank-id="<#if his.allRank?? && his.allRank>all<#elseif his.code=="back_water">backwater<#else >${his.rankid}</#if>">
                             <dt class="status-over">
-                                <img src="${imgPath(data.configInfo.domain,am.activityAffiliated)}">
+                                <span class="_vr_promo_end" data-format="yyyy年MM月dd日" style="color: #fff;"></span>
+                                <img src="${imgPath(data.configInfo.domain,his.activityAffiliated)}">
                             <div class="status"></div>
                             </dt>
                             <dd class="promo-content status-over">
                                 <!-- 优惠系统设置 -->
                                 <div class="row promo-summary">
                                     <div class="col-12-10">
-                                        <input class="_vr_promo_ostart" type="hidden" value="${am.startTime?long?string.computer}">
-                                        <input class="_vr_promo_oend" type="hidden" value="${am.endTime?long?string.computer}">
-                                        <div class="subtitle">${am.activityName}</div>
+                                        <input class="_vr_promo_ostart" type="hidden" value="${his.startTime?long?string.computer}">
+                                        <input class="_vr_promo_oend" type="hidden" value="${his.endTime?long?string.computer}">
+                                        <div class="subtitle">${his.activityName}</div>
                                     </div>
                                     <div class="col-12-2 text-center">
                                         <a class="btn-play btn-join" href="javascript:void(0);">已结束</a>
@@ -84,7 +87,7 @@
                                 </div>
                                 <!-- 优惠内容 -->
                                 <div style="word-break: break-all;">
-                                ${am.activityDescription}
+                                ${his.activityDescription}
                                 </div>
                             </dd>
                         </div>

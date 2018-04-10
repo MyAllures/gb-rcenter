@@ -208,11 +208,26 @@
         if (sessionStorage.is_login == "true") {
             if (code == "back_water" || code == "first_deposit" || code == "deposit_send") {
                 if (isRefresh) {
-                    BootstrapDialog.alert({
+                   /* BootstrapDialog.alert({
                         title: "提示",
                         type: BootstrapDialog.TYPE_WARNING,
                         message: "参与中",
                         callback: function () {
+                            window.location.href = "/promo.html";
+                        }
+                    });*/
+                    layer.open({
+                        content:'参与中',
+                        title:'提示',
+                        skin:'layui-layer-brand',
+                        btn:["确定"],
+                        success: function(layer){
+                            // 重写关闭按钮
+                            $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                            // 提示框类型
+                            $(layer).addClass("normal-dialog");
+                        },
+                        yes: function () {
                             window.location.href = "/promo.html";
                         }
                     });
@@ -281,7 +296,7 @@
 
         $("._msg").html('<p class="text-center">' + data.msg + '</p>');
 
-        var dialog = BootstrapDialog.show({
+       /* var dialog = BootstrapDialog.show({
             type: BootstrapDialog.TYPE_WARNING,
             message: function (dialog) {
                 var $content = $(".promoTip").html();
@@ -310,6 +325,32 @@
                     );
                 }
             }]
+        });*/
+        var dialog = layer.open({
+            content:$(".promoTip").html(),
+            title:'消息',
+            skin:'layui-layer-brand',
+            btn:["好的","查看优惠记录"],
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("normal-dialog");
+            },
+            yes: function () {
+                if (isRefresh) {
+                    layer.close(dialog);
+                    window.location.href = "/promo.html";
+                } else {
+                    layer.close(dialog);
+                }
+            },
+            btn2: function () {
+                window.open(
+                        '${data.contextInfo.playerCenterContext}#/preferential/list.html',
+                        '_blank' // <- This is what makes it open in a new window.
+                );
+            }
         });
     }
 

@@ -21,44 +21,58 @@ $(function () {
 
 /*上拉请求数据*/
 function pullfresh() {
-    /*setTimeout(function () {
-        mui('#pullfresh').pullRefresh().endPullupToRefresh(false);
-        var apiId = $("#api").attr("apiId");
-        var pageNumber = parseInt($("#api").attr("pageNumber"));
-        var lastPageNumber = parseInt($("#api").val());
-
-        if (pageNumber == lastPageNumber) {
-            mui('#pullfresh').pullRefresh().endPullupToRefresh(true);
-        }else{
-            loadData(apiId,pageNumber + 1,'');
-        }
-    }, 0);*/
-
-    var data = {
-        "paging.pageNumber": pageNumber,
-        "search.beginBetTime": beginTime,
-        "search.endBetTime": endTime
-    };
-    //pageNumber = t.pullRefreshUp(url, "content-list", pageNumber, "lastPageNumber", mui("#refreshContainer"), data, isReload);
-    var options = {
-        url:url,
-        type:'post',
-        data:data,
-        headers:{
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Soul-Requested-With': 'XMLHttpRequest'
-        },
-        success:function(data){
-            var info = document.getElementById("content-list");
-            info.innerHTML = data;
-
-        }
-    };
-    muiAjax(options);
+    beginTime = $("#beginTime").val();
+    endTime = $("#endTime").val();
+    var total = parseInt($("#lastPageNumber").val());
+    if (total < pageNumber) {
+        //mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
+    } else {
+        var data = {
+            "paging.pageNumber": pageNumber,
+            "search.beginBetTime": beginTime,
+            "search.endBetTime": endTime
+        };
+        mui.ajax(url, {
+            type: 'post',//HTTP请求类型
+            timeout: 10000,//超时时间设置为10秒；
+            data: data,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Soul-Requested-With': 'XMLHttpRequest'
+            },
+            success: function (data) {
+                var info = document.getElementById("content-list");
+                info.innerHTML = info.innerHTML + data;
+                pageNumber = pageNumber + 1;
+            },
+            error: function (e) {
+                mui.toast(window.top.message.fund_auto['加载失败']);
+                //异常处理；
+                console.log(e);
+            }
+        });
+        /*
+        var options = {
+            url: url,
+            type: 'POST',
+            data: data,
+            headers: {
+                "Soul-Requested-With":"XMLHttpRequest"
+            },
+            success: function (data) {
+                var info = document.getElementById("content-list");
+                info.innerHTML = data;
+                pageNumber = pageNumber + 1;
+            }
+        };
+        muiAjax(options);*/
+    }
+    $(".mui-pull-bottom-pocket").addClass("mui-hidden");
+    mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
 }
 
 //开始时间
-function loadBeginTime(){
+function loadBeginTime() {
     var dtpicker = new mui.DtPicker({
         type: "date",
         value: $("#beginTime").val(),
@@ -74,7 +88,8 @@ function loadBeginTime(){
         dtpicker.dispose()
     })
 }
-function loadEndTime(){
+//结束时间
+function loadEndTime() {
     var dtpicker = new mui.DtPicker({
         type: "date",
         value: $("#endTime").val(),
@@ -86,14 +101,15 @@ function loadEndTime(){
         dtpicker.dispose()
     })
 }
-
+//时间格式化
 function formatDateTime(date, format) {
     var theMoment = moment();
     theMoment._d = date;
     return theMoment.format(format);
 }
 
-function loadData(){
+function loadData() {
+    mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
     beginTime = $("#beginTime").val();
     endTime = $("#endTime").val();
     getStatisticsData();
@@ -109,19 +125,18 @@ function loadData(){
             var info = document.getElementById("content-list");
             info.innerHTML = data;
             pageNumber = 2;
-            //mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
-            //mui('#refreshContainer').pullRefresh().refresh(true);
         },
         error: function (e) {
-            toast(window.top.message.fund_auto['加载失败']);
+            mui.toast(window.top.message.fund_auto['加载失败']);
             //异常处理；
             console.log(e);
         }
-    })
+    });
 }
 
 function getStatisticsData() {
-    mui.ajax(root + "/fund/betting/statisticsData.html", {
+    var options = {
+        url: root + "/fund/betting/statisticsData.html",
         type: 'post',//HTTP请求类型
         timeout: 20000,//超时时间设置为10秒；
         data: {"search.beginBetTime": beginTime, "search.endBetTime": endTime},
@@ -148,5 +163,6 @@ function getStatisticsData() {
         error: function (e) {
             toast(window.top.message.fund_auto['加载失败']);
         }
-    })
+    };
+    muiAjax(options);
 }

@@ -11,16 +11,16 @@
 .layui-layer.dialog-btn-round .layui-layer-btn a { border-radius: 16px; }
 .layui-layer.dialog-btn-border .layui-layer-btn a { border-radius: 16px; background: #fff; color: #1e9fff; }
 .layui-layer.dialog-btn-border.layui-layer-brand .layui-layer-btn a { background-color: #fff; color: #333; }
-.layui-layer.dialog-btn-border.layui-layer-success .layui-layer-btn a { background-color: #fff; color: #00be74; }
+.layui-layer.dialog-btn-border.layui-layer-success .layui-layer-btn a { background-color: #fff; color: #00beaa; }
 .layui-layer.dialog-btn-border.layui-layer-info .layui-layer-btn a { background-color: #fff; color: #1e9fff; }
 .layui-layer.dialog-btn-border.layui-layer-warning .layui-layer-btn a { background-color: #fff; color: #f4c22b; }
 .layui-layer.dialog-btn-border.layui-layer-danger .layui-layer-btn a { background-color: #fff; color: #f44236; }
 .layui-layer.layui-layer-brand .layui-layer-title { background: #333; color: #fff; }
 .layui-layer.layui-layer-brand .layui-layer-setwin .layui-layer-close { border: 3px solid #333; color: #333; }
 .layui-layer.layui-layer-brand .layui-layer-btn a { border-color: #333; background-color: #333; }
-.layui-layer.layui-layer-success .layui-layer-title { background: #00be74; color: #fff; }
-.layui-layer.layui-layer-success .layui-layer-setwin .layui-layer-close { border: 3px solid #00be74; color: #00be74; }
-.layui-layer.layui-layer-success .layui-layer-btn a { border-color: #00be74; background-color: #00be74; }
+.layui-layer.layui-layer-success .layui-layer-title { background: #00beaa; color: #fff; }
+.layui-layer.layui-layer-success .layui-layer-setwin .layui-layer-close { border: 3px solid #00beaa; color: #00beaa; }
+.layui-layer.layui-layer-success .layui-layer-btn a { border-color: #00beaa; background-color: #00beaa; }
 .layui-layer.layui-layer-info .layui-layer-title { background: #1e9fff; color: #fff; }
 .layui-layer.layui-layer-info .layui-layer-setwin .layui-layer-close { border: 3px solid #1e9fff; color: #1e9fff; }
 .layui-layer.layui-layer-info .layui-layer-btn a { border-color: #1e9fff; background-color: #1e9fff; }
@@ -41,6 +41,7 @@
 .layui-layer.index-modal .layui-layer-page .layui-layer-btn .layui-layer-btn0 { margin-top: 0; }
 .layui-layer.index-modal .layui-layer-title { border-bottom: 0; }
 .layui-layer.index-modal-transparent { background-color: transparent; box-shadow: none; }
+.layui-layer.index-modal-transparent .layui-layer-content { background: transparent; }
 .layui-layer.index-modal-transparent .layui-layer-setwin .layui-layer-close { width: 45px; height: 45px; font-size: 44px; background: #0000; border: 3px solid #fff; line-height: 28px; color: #fff; }
 .layui-layer.index-modal-transparent .layui-layer-btn { border-color: transparent; background: transparent; }
 .layui-layer.index-modal-transparent .layui-layer-btn0 { width: 150px; height: 45px; line-height: 41px; font-size: 18px; border-color: #f4c22b !important; background-color: #0000 !important; color: #f4c22b; border-radius: 24px; border-width: 2px; }
@@ -125,5 +126,84 @@
 .layui-layer.layui-login-dialog .layui-layer-content form .btn-login:hover { background: #0086ea; text-decoration: none; }
 .layui-layer.layui-login-dialog .layui-layer-content form .btn-register { display: inline-block; vertical-align: 0; color: #fff; height: 33px; width: 100px; background: #f4c22b; text-align: center; line-height: 33px; border-radius: 2px; }
 .layui-layer.layui-login-dialog .layui-layer-content form .btn-register:hover { background: #e0ab0c; text-decoration: none; }
+.layui-layer.normal-dialog .layui-layer-content { padding: 10px; height: auto !important; }
+.layui-layer.fullscreen-tip { border: 0; }
+.layui-layer.fullscreen-tip .layui-layer-content { filter: alpha(opacity=90); background-color: rgba(0, 0, 0, 0.9); color: #fff; }
+.layui-layer.promo_success { background-color: #fff !important; }
+.layui-layer.promo_success .layui-layer-btn { padding: 6px 15px 10px; position: absolute; left: 0; bottom: 0; right: 0; border-top: 1px solid #dfdfdf; text-align: left; }
+.layui-layer.promo_success .layui-layer-btn .layui-layer-btn0 { width: 110px; height: 33px; font-size: 13px; color: #333; border: 1px solid #ccc; background-color: #fff; border-radius: 6px; }
+.layui-layer.promo_success .layui-layer-content { height: 297px !important; padding: 40px 20px 40px 110px; }
+.layui-layer.promo_success .layui-layer-content .icon-success { background: url(images/promo/icon-success.png); width: 60px; height: 60px; position: absolute; left: 26px; top: 40px; }
+.layui-layer.promo_success .layui-layer-content .tit { font-size: 18px; color: #666; margin-bottom: 12px; }
+.layui-layer.promo_success .layui-layer-content .subs-txt { font-size: 14px; color: #666; line-height: 20px; margin-bottom: 20px; }
+.layui-layer.promo_success .layui-layer-content .ext-inf { font-size: 16px; color: #00beaa; }
+.layui-layer.promo_failure { background-color: #fff !important; }
+.layui-layer.promo_failure .color-green { color: #1ac07e; }
+.layui-layer.promo_failure .color-red { color: #f44236; }
+.layui-layer.promo_failure .layui-layer-btn { padding: 6px 15px 10px; position: absolute; left: 0; bottom: 0; right: 0; border-top: 1px solid #dfdfdf; text-align: left; }
+.layui-layer.promo_failure .layui-layer-btn .layui-layer-btn0 { width: 110px; height: 33px; font-size: 13px; color: #333; border: 1px solid #ccc; background-color: #fff; border-radius: 6px; }
+.layui-layer.promo_failure .layui-layer-content { height: 297px !important; padding: 40px 20px 40px 110px; }
+.layui-layer.promo_failure .layui-layer-content .icon-success { background: url(images/promo/icon-failure.png); width: 60px; height: 60px; position: absolute; left: 26px; top: 40px; }
+.layui-layer.promo_failure .layui-layer-content .tit { font-size: 18px; color: #666; margin-bottom: 12px; }
+.layui-layer.promo_failure .layui-layer-content .subs-txt { font-size: 14px; color: #666; line-height: 20px; margin-bottom: 20px; height: 40px; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-success-with-bar { padding-left: 30px; position: relative; width: 390px; margin-bottom: 20px; color: #666; font-size: 14px; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-success-with-bar .txt { overflow: hidden; margin-bottom: 10px; line-height: 1; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-success-with-bar .bar { height: 10px; border-radius: 5px; background: #eee; position: relative; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-success-with-bar .bar .bar-inner { position: absolute; border-radius: 5px; top: 0; left: 0; bottom: 0; right: 0; background: #1ac07e; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-with-bar { padding-left: 30px; position: relative; width: 390px; margin-bottom: 20px; color: #666; font-size: 14px; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-with-bar .txt { overflow: hidden; margin-bottom: 10px; line-height: 1; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-with-bar .bar { height: 10px; border-radius: 5px; background: #eee; position: relative; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-with-bar .bar .bar-inner { position: absolute; border-radius: 5px; top: 0; left: 0; bottom: 0; background: #f44236; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-success-without-bar { padding-left: 30px; position: relative; width: 390px; margin-bottom: 10px; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-success-without-bar .txt { color: #1ac07e; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-success-without-bar .icon-pass { bottom: 3px; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-without-bar { padding-left: 30px; position: relative; width: 390px; margin-bottom: 10px; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-without-bar .txt { color: #f44236; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-without-bar .icon-fail { bottom: 3px; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .icon-pass { background: url(images/promo/icon-pass.png); width: 18px; height: 18px; position: absolute; left: 0; bottom: -4px; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .icon-fail { background: url(images/promo/icon-fail.png); width: 18px; height: 18px; position: absolute; left: 0; bottom: -4px; }
+.layui-layer.promo_may_apply { background-color: #fff !important; }
+.layui-layer.promo_may_apply .color-green { color: #1ac07e; }
+.layui-layer.promo_may_apply .color-red { color: #f44236; }
+.layui-layer.promo_may_apply .layui-layer-btn { padding: 6px 15px 10px; position: absolute; left: 0; bottom: 0; right: 0; border-top: 1px solid #dfdfdf; text-align: left; }
+.layui-layer.promo_may_apply .layui-layer-btn .layui-layer-btn0 { width: 110px; height: 33px; font-size: 13px; color: #333; border: 1px solid #ccc; background-color: #fff; border-radius: 6px; }
+.layui-layer.promo_may_apply .layui-layer-content { height: 297px !important; padding: 40px 20px 40px 110px; }
+.layui-layer.promo_may_apply .layui-layer-content .icon-danger { background: url(images/promo/icon-danger.png); width: 60px; height: 60px; position: absolute; left: 26px; top: 40px; }
+.layui-layer.promo_may_apply .layui-layer-content .tit { font-size: 18px; color: #666; margin-bottom: 12px; }
+.layui-layer.promo_may_apply .layui-layer-content .subs-txt { font-size: 14px; color: #666; line-height: 20px; margin-bottom: 20px; height: 40px; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-success-with-bar { padding-left: 30px; position: relative; width: 424px; margin-bottom: 20px; color: #666; font-size: 14px; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-success-with-bar .txt { overflow: hidden; margin-bottom: 10px; line-height: 1; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-success-with-bar .bar { height: 10px; border-radius: 5px; background: #eee; position: relative; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-success-with-bar .bar .bar-inner { position: absolute; border-radius: 5px; top: 0; left: 0; bottom: 0; right: 0; background: #1ac07e; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-success-with-bar .wrap1, .layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-success-with-bar .wrap2 { display: inline-block; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-success-with-bar .wrap1 { width: 295px; margin-right: 14px; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-success-with-bar .wrap2 button { -webkit-appearance: none; width: 80px; height: 30px; border-radius: 6px; line-height: 28px; text-align: center; border: 1px solid #ccc; font-size: 14px; color: #666; background: #fff; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-failure-with-bar { padding-left: 30px; position: relative; width: 424px; margin-bottom: 20px; color: #666; font-size: 14px; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-failure-with-bar .txt { overflow: hidden; margin-bottom: 10px; line-height: 1; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-failure-with-bar .bar { height: 10px; border-radius: 5px; background: #eee; position: relative; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-failure-with-bar .bar .bar-inner { position: absolute; border-radius: 5px; top: 0; left: 0; bottom: 0; background: #f44236; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-failure-with-bar .wrap1, .layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-failure-with-bar .wrap2 { display: inline-block; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-failure-with-bar .wrap1 { width: 295px; margin-right: 14px; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-failure-with-bar .wrap2 button { -webkit-appearance: none; width: 80px; height: 30px; border-radius: 6px; line-height: 28px; text-align: center; border: 1px solid #ccc; font-size: 14px; color: #bdbdbd; background: #f2f2f2; cursor: not-allowed; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-success-without-bar { padding-left: 30px; position: relative; width: 390px; margin-bottom: 10px; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-success-without-bar .txt { color: #1ac07e; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-success-without-bar .icon-pass { bottom: 3px; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-failure-without-bar { padding-left: 30px; position: relative; width: 390px; margin-bottom: 10px; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-failure-without-bar .txt { color: #f44236; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .item-failure-without-bar .icon-fail { bottom: 3px; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .icon-pass { background: url(images/promo/icon-pass.png); width: 18px; height: 18px; position: absolute; left: 0; bottom: -4px; }
+.layui-layer.promo_may_apply .layui-layer-content .failure-reason .icon-fail { background: url(images/promo/icon-fail.png); width: 18px; height: 18px; position: absolute; left: 0; bottom: -4px; }
+.layui-layer.promo_detail { background-color: #fff !important; }
+.layui-layer.promo_detail .layui-layer-btn { padding: 6px 15px 10px; position: absolute; left: 0; bottom: 0; right: 0; border-top: 1px solid #dfdfdf; }
+.layui-layer.promo_detail .layui-layer-content { height: 432px !important; padding: 5px; }
+.layui-layer.promo_detail .layui-layer-content .promo-img { width: 100%; height: 130px; margin-bottom: 10px; }
+.layui-layer.promo_detail .layui-layer-content .promo-content { height: 282px; padding: 0 15px; }
+.layui-layer.promo_detail .layui-layer-content .promo-content .tit { font-size: 18px; color: #666; margin-bottom: 30px; }
+.layui-layer.promo_detail .layui-layer-content .promo-content .content { font-size: 14px; color: #666; }
+.layui-layer.promo_detail .layui-layer-content .promo-content .content p { margin-bottom: 20px; text-indent: 2em; }
+.layui-layer.promo_detail .layui-layer-content .promo-content .content p:last-child { margin-bottom: 0; }
+.layui-layer.promo_detail .layui-layer-content .promo-content .icon-goUp { background: url(images/promo/icon-goUp.png); width: 40px; height: 40px; position: absolute; bottom: 20px; right: 20px; cursor: pointer; display: none; }
 
+.game-detail-open .casino-detail-iframe .layui-layer-close2 { display: block !important; }
 
+/*# sourceMappingURL=gui-layer.css.map */

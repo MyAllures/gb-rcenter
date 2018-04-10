@@ -49,6 +49,11 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage,bootstr
             window.top.topPage.doDialog({page:this},{text:"兑换比例管理",target: root + "/vSysCredit/editRatio.html?siteIds="+siteIds,callback:"query"});
             $(e.currentTarget).unlock();
         },
+        resetTransferQuota:function(e,option){
+            var siteIds = this.getSelectIdsArray(e);
+            window.top.topPage.doDialog({page:this},{text:"重置转账当前已使用额度",target: root + "/vSysCredit/resetTransferQuota.html?siteIds="+siteIds,callback:"query"});
+            $(e.currentTarget).unlock();
+        },
         /**
          * 重写query中onPageLoad方法，为了查询回调函数带上下拉框样式
          * @param form

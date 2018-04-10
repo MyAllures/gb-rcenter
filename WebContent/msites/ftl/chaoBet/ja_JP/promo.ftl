@@ -29,6 +29,7 @@
                         </li>
                     </#list>
                 </#if>
+                <li class="hisActivityButton hide"><a href="javascript:void(0)" data-item="historyActivitys">歴史特恵</a></li>
             </ul>
             <dl class="sidePromo">
             <#if data.activityMessage??>
@@ -61,10 +62,10 @@
                     </#if>
                 </#list>
             </#if>
-            <#if data.activityMessage??>
-                <#list data.activityMessage as am>
+            <#if data.historyActivityMessage??>
+                <#list data.historyActivityMessage as am>
                     <#if am.states="finished">
-                        <div id="cos_${am.id}" class="_vr_promo_check actContain ${am.activityClassifyKey}"
+                        <div id="cos_${am.id}" class="_vr_promo_check actContain <#if his.isDisplay?string('true','false')=='true'>historyActivitys</#if>"
                              data-type="over" data-code="${am.code}" data-searchid="${am.searchId}"
                              data-rank-id="<#if am.allRank?? && am.allRank>all<#elseif am.code=="back_water">backwater<#else >${am.rankid}</#if>">
                             <dt class="status-over">

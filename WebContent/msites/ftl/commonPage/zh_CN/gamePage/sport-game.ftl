@@ -8,6 +8,9 @@
     <meta name="renderer" content="webkit">
     <title><#if data.siteInfo.title?default('')!=''>${data.siteInfo.title}<#else >${data.siteInfo.siteName}</#if></title>
 <#include "game.include.head.ftl">
+    <style>
+        .GameBody {padding: 0;}
+    </style>
 </head>
 
 <body>
@@ -32,21 +35,24 @@
 <script>
     // PlayGameDemo iframe
     $(document).ready(function() {
-        var appWidth = 1020;
+        var appWidth = "1020px";
         var apiId=getParamValuesByName("apiId");
         if(apiId=="12"){
-            appWidth = 1060;
+            appWidth = "1060px";
+        }
+        if(apiId=="37"){
+            appWidth = "100%";
         }
         document.getElementById('box_playGameDemo_iframe').setAttribute('src',localStorage.re_url_sport);
         $("#box_playGameDemo_iframe").css("height", ($(window).height() - $("header").height()) + "px");
         $("#box_playGameDemo_iframe").css("width", "100%");
         $(".GameContainer").css("height", ($(window).height() - $("header").height()) + "px");
-        $(".GameContainer").css("width", appWidth + "px");
+        $(".GameContainer").css("width", appWidth);
         $(window).bind('resize', function(e) {
             $("#box_playGameDemo_iframe").css("height", ($(window).height() - $("header").height()) + "px");
             $("#box_playGameDemo_iframe").css("width", "100%");
             $(".GameContainer").css("height", ($(window).height() - $("header").height()) + "px");
-            $(".GameContainer").css("width", appWidth + "px");
+            $(".GameContainer").css("width", appWidth);
         });
 
 
