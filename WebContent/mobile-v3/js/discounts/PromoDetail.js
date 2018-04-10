@@ -47,7 +47,11 @@ function submitPromo(obj, options) {
     }
     var code = options.dataCode;
     if (code == 'content') {
-        goToUrl(root + "/message/gameNotice.html?isSendMessage=true");
+        if(isNative){
+            nativeGoToApplyPromoPage();
+        }else{
+            goToUrl(root + "/message/gameNotice.html?isSendMessage=true");
+        }
     } else if (code == 'back_water') {
         toast(window.top.message.promo_auto['参与中']);
     } else {
