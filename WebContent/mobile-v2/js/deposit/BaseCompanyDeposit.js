@@ -11,14 +11,10 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
 
         onPageLoad: function () {
             this._super();
-            mui('.mui-scroll-wrapper').scroll({
+            mui('.deposit-scroll-wrapper.mui-scroll-wrapper').scroll({
                 scrollY: true, //是否竖向滚动
                 scrollX: false, //是否横向滚动
-                startX: 0, //初始化时滚动至x
-                startY: 0, //初始化时滚动至y
-                indicators: false, //是否显示滚动条
-                deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
-                bounce: false //是否启用回弹
+                deceleration: 0.0005, //阻尼系数,系数越小滑动越灵敏
             });
         },
 
@@ -106,6 +102,7 @@ define(['site/deposit/BaseDeposit'], function (BaseDeposit) {
             if (unCheckSuccess === "true") {
                 var pop = $("#pop").attr("pop");
                 if (pop === "true") {
+                    mui(".applysale .mui-scroll-wrapper").scroll({scrollY: true, deceleration: 0.0005});
                     _this.bindReWriteAmount();
                     if (!options.statusNum) {
                         _this.deposit(options.depositUrl);
