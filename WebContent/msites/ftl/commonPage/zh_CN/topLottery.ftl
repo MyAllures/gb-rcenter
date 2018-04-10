@@ -33,7 +33,9 @@
             'lt-happy10.png':{"name":'快乐10分',"type":"sfc","code":"gdkl10"},
             'lt-beijing-happy8.png':{"name":'北京快乐8',"type":"keno","code":"bjkl8"},
             'lt-FC3d.png':{"name":'福彩3D',"type":"pl3","code":"fc3d"},
-            'lt-PL3.png':{"name":'排列3',"type":"pl3","code":"tcpl3"}
+            'lt-PL3.png':{"name":'排列3',"type":"pl3","code":"tcpl3"},
+            'lt-ssc.png':{"name":'分分时时彩',"type":"ssc","code":"ffssc"},
+            'lt-jspk10.png':{"name":'极速pk10',"type":"pk10","code":"jspk10"}
             }>
         </#if>
     </#list>

@@ -59,7 +59,7 @@
                                 </#list>
                             </#if>
                         </div>
-                        <a href="sports.html?apiId=<#list data.siteApiTypeRelationMap['3'] as relationMap><#if relationMap_index==0>${relationMap.apiId?string.computer}</#if></#list>" class="btn-tz">立即投注</a>
+                        <a href="sports.html?apiId=<#if data.siteApiTypeRelationMap['3']?exists><#list data.siteApiTypeRelationMap['3'] as relationMap><#if relationMap_index==0>${relationMap.apiId?string.computer}</#if></#list></#if>" class="btn-tz">立即投注</a>
                     </div>
                     <div class="lig lig1"></div>
                 </div>
@@ -104,7 +104,7 @@
                                 </#if>
                             </div>
                         </div>
-                        <a href="casino.html?apiType=2&apiId=<#list data.siteApiTypeRelationMap['2'] as relationMap><#if relationMap_index==0>${relationMap.apiId?string}</#if></#list>&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>" class="btn-tz">立即投注</a>
+                        <a href="casino.html?apiType=2&apiId=<#if data.siteApiTypeRelationMap['2']?exists><#list data.siteApiTypeRelationMap['2'] as relationMap><#if relationMap_index==0>${relationMap.apiId?string}</#if></#list>&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list></#if>" class="btn-tz">立即投注</a>
                     </div>
                     <div class="lig lig2"></div>
                 </div>
@@ -260,6 +260,9 @@
         });
     });
 </script>
+
+<#--公共电子游戏弹窗-->
+<#include "../../commonPage/zh_CN/gamePage/gamePage.ftl">
 </body>
 
 </html>

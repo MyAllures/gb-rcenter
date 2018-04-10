@@ -24,7 +24,7 @@
         var apiId = data.apiId;
         var apiName = data.apiName;
         var wd = data.width;
-        dialog = BootstrapDialog.show({
+        /*dialog = BootstrapDialog.show({
             title: apiName + ' 快速转账',
             //closable: false, // <-- Default value is false
             draggable: true,
@@ -49,6 +49,27 @@
                 $(".enter-btn").hide();
             },
             onhide: function () {
+                $("#box_playGameDemo_iframe").css("width",wd);
+            }
+        });*/
+        dialog = layer.open({
+            content:'<div style="width: 400px;margin: 0 auto 10px;"><span style="color: #466488;">轉出</span> <span style="background: #466488;color: #fff;width: 90px; display:  inline-block;text-align:  center;height:  33px;line-height: 33px;">我的錢包</span><span id="walletBalance-value" style="background: #ddd;color: #00b7a4;display:  inline-block;width: 180px;text-align:  center;height:  33px;line-height: 33px;">'+data.walletBalance+'</span> <a href="javascript:refreshWalletBalance()"><span class=" gui gui-refresh" id="wallet-refresh-span"></span></a><a style="float:  right;" class="btn btn-primary" data-win-size="2" target="_blank" href="${data.contextInfo.playerCenterContext}#/fund/playerRecharge/recharge.html">去存款</a></div>' +
+            '<div style="width: 400px;margin: 0 auto 10px;"><span style="color: #466488;">轉入</span>  <span id="api-name-div" style="background: #466488;color: #fff;width: 90px; display:  inline-block;text-align:  center;height:  33px;line-height: 33px;">'+apiName+'</span><span id="apiBalance-value" style="background: #ddd;color: #00b7a4;display:  inline-block;width: 180px;text-align:  center;height:  33px;line-height: 33px;">'+data.apiBalance+'</span> <a href="javascript:refreshApiBalance()"><span class="gui gui-refresh" id="api-refresh-span"></span></a></div>' +
+            '<div style="width: 400px;margin: 0 auto 10px;"><span style="background: #466488;color: #fff;width: 90px; display:  inline-block;text-align:  center;margin-left: 31px;height:  33px;line-height: 33px;">￥</span><input style="background: #ddd;color: #00b7a4;display:  inline-block;width: 180px;text-align:  center;vertical-align:  top;border:  0;height:  33px;line-height: 33px;" type="text" class="form-control" id="transferAmount" name="transferAmount" placeholder="請輸入整數金額"> <span></span><input type="hidden" name="gb.token" id="token"></div>' +
+            '<div style="text-align:  center;width:400px;margin: 0 auto 10px;"><button class="btn btn-primary btn-block" type="button" id="confirm-btn" onclick="confirmTransction()"> <span class="gui gui-check-square-o"></span> 確認轉賬         </button></div>' +
+            '<div style="text-align:  center;width: 400px;margin: 0 auto 10px;"><button class="btn btn-success btn-block" type="button" onclick="enterToGame()"><span class="gui gui-share"></span> 進入遊戲</button></div>'+
+            '<input type="hidden" name="gb.token" id="token">',
+            title:apiName + ' 快速轉賬',
+            skin:'layui-layer-brand',
+            btn:["確定"],
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("normal-dialog");
+                $(".enter-btn").hide();
+            },
+            end:function () {
                 $("#box_playGameDemo_iframe").css("width",wd);
             }
         });
@@ -124,23 +145,51 @@
         });
     }
     function tryAgain(data){
-        var bdDialog = BootstrapDialog.show({
-            title:'订单超时',
-            type: BootstrapDialog.TYPE_WARNING,
-            message: '非常抱歉，由于网络连接异常，本次订单已超时，建议您重新发起请求！',
-            buttons: [{
-                label: '再试一次',
-                action: function(dialog) {
-                    reconnectTransfer(data.transactionNo);
-                    bdDialog.close();
+        /*  var bdDialog = BootstrapDialog.show({
+              title:'订单超时',
+              type: BootstrapDialog.TYPE_WARNING,
+              message: '非常抱歉，由于网络连接异常，本次订单已超时，建议您重新发起请求！',
+              buttons: [{
+                  label: '再试一次',
+                  action: function(dialog) {
+                      reconnectTransfer(data.transactionNo);
+                      bdDialog.close();
+                  }
+              }, {
+                  label: '取消',
+                  action: function(dialog) {
+                      bdDialog.close();
+                      $("#confirm-btn").html('<span class="gui gui-check-square-o"></span> 确认转账');
+                  }
+              }]
+          });*/
+        var dialog =  layer.open({
+            content:'非常抱歉，由於網路連線異常，本次訂單已超時，建議您稍後再試！',
+            title:'訂單超時',
+            skin:'layui-layer-brand',
+            area:['360px'],
+            btn:['再試一次','取消'],
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("normal-dialog");
+                // 提示框按钮类型
+                if(!!btnRound){
+                    $(layer).addClass("dialog-btn-round");
                 }
-            }, {
-                label: '取消',
-                action: function(dialog) {
-                    bdDialog.close();
-                    $("#confirm-btn").html('<span class="gui gui-check-square-o"></span> 确认转账');
+                if(!!btnBorder){
+                    $(layer).addClass("dialog-btn-border");
                 }
-            }]
+            },
+            yes:function () {
+                layer.close(dialog);
+                reconnectTransfer(data.transactionNo);
+            },
+            btn2:function(){
+                layer.close(dialog);
+                $("#confirm-btn").html('<span class="gui gui-check-square-o"></span> 确认转账');
+            }
         });
     }
     /**

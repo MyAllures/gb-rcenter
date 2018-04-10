@@ -96,7 +96,7 @@
                             <#--<form class="form-horizontal" id="" method="post" action="#">-->
                                 <div class="list-group findTypeGroup">
                                     <#--//add by Bruce.Q-->
-                                    <a href="javascript:" class="list-group-item _phoneCanUse" style="display: none"  data-find-type="phone">
+                                    <a href="javascript:" class="list-group-item _phoneCanUse" style="display: none" data-find-type="phone">
                                         <h4 class="list-group-item-heading text-info">手机验证</h4>
                                         <p class="list-group-item-text">若您账户绑定的手机号码<span class="text-info"  player-phone=""></span>仍在正常使用中，请选择此验证方式。</p>
                                     </a>
@@ -268,6 +268,7 @@
 <script src="${data.configInfo.ftlRootPath}commonPage/js/bootstrap.min.js"></script>
 <script src="${resComRoot}/js/jquery/plugins/jquery.validate/jquery.validate.js"></script>
 <script src="${resComRoot}/js/gamebox/common/jquery.validate.extend.msites.js"></script>
+<script src="${data.configInfo.ftlRootPath}commonPage/js/layer.js"></script>
 <script>
     $(document).ready(function() {
         //Wizard
@@ -512,12 +513,14 @@
         }
     }
 
-    var FIND_PASSWORD_SEND_PHONE_COOKIE_KEY = "findPasswordSendPhoneCookieKey";
     var findPasswordSendPhoneTimerId;
     function sendVerificationCode() {
-        var sendPhoneIntervalSec = getCookie(FIND_PASSWORD_SEND_PHONE_COOKIE_KEY);
+        var sendPhoneIntervalSec = getCookie("sms_verification_end_time");
         sendPhoneIntervalSec = Number(sendPhoneIntervalSec);
-        if(!sendPhoneIntervalSec){
+        if(sendPhoneIntervalSec>0){
+            sendPhoneIntervalSec = sendPhoneIntervalSec-new Date().getTime();
+        }
+        if(!sendPhoneIntervalSec || sendPhoneIntervalSec<0){
             $.ajax({
                 url:"/forgetPassword/getPhoneVerificationCode.html",
                 data:{
@@ -527,36 +530,57 @@
                 dataType:"JSON",
                 success:function(data){
                     if(data){
-                        setCookie(FIND_PASSWORD_SEND_PHONE_COOKIE_KEY,${data.sendEmailIntervalSeconds});
+                        var startTime = new Date().getTime();
+                        var endTime = Number(startTime)+(Number(${data.sendEmailIntervalSeconds})*1000);
+                        setCookie("sms_verification_end_time",endTime);
                         findPasswordSendPhoneTimer();
                     }
                 }
             })
         }else{
-            findPasswordSendPhoneTimer();
+            layer.open({
+                content:'发送间隔时间未到！',
+                title:'提示信息',
+                skin:'layui-layer-brand',
+                btn:["确定"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                },
+                end:function () {
+                    findPasswordSendPhoneTimer();
+                }
+            });
+            return;
         }
     }
 
     function findPasswordSendPhoneTimer(){
+        var getSmsEndTime = getCookie("sms_verification_end_time");
+        var sendPhoneIntervalSec = Number(getSmsEndTime);
+        sendPhoneIntervalSec = parseInt((sendPhoneIntervalSec-new Date().getTime())/1000);
+        setCookie("sms_end_seconds",sendPhoneIntervalSec);
+
         var $resendPhoneBtn = $("#resendPhoneBtn");
         findPasswordSendPhoneTimerId = setInterval(
-                function(){
-                    var sendPhoneIntervalSec = getCookie(FIND_PASSWORD_SEND_PHONE_COOKIE_KEY);
-                    sendPhoneIntervalSec = Number(sendPhoneIntervalSec);
-                    sendPhoneIntervalSec = --sendPhoneIntervalSec;
-                    if(!sendPhoneIntervalSec || sendPhoneIntervalSec<0){
-                        clearInterval(findPasswordSendPhoneTimerId);
-                        $resendPhoneBtn.prop("disabled",false);
-                        $resendPhoneBtn.removeClass('disabled');
-                        $resendPhoneBtn.text("重新发送")
-                    }else{
-                        $resendPhoneBtn.prop("disabled",true);
-                        $resendPhoneBtn.addClass('disabled')
-                        $resendPhoneBtn.text("重新发送("+sendPhoneIntervalSec+")")
-                    }
-                    setCookie(FIND_PASSWORD_SEND_PHONE_COOKIE_KEY,sendPhoneIntervalSec);
-                },
-                1000
+            function(){
+                var smsTimeDesc = getCookie("sms_end_seconds");
+                smsTimeDesc = --smsTimeDesc;
+                if(!smsTimeDesc || smsTimeDesc<0){
+                    clearInterval(findPasswordSendPhoneTimerId);
+                    $resendPhoneBtn.prop("disabled",false);
+                    $resendPhoneBtn.removeClass('disabled');
+                    $resendPhoneBtn.text("重新发送");
+                }else{
+                    $resendPhoneBtn.prop("disabled",true);
+                    $resendPhoneBtn.addClass('disabled');
+                    $resendPhoneBtn.text("重新发送("+smsTimeDesc+")");
+                }
+                setCookie("sms_end_seconds",smsTimeDesc);
+            },
+            1000
         )
     }
 
