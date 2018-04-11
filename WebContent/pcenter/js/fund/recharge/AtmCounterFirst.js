@@ -29,7 +29,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
         bindEvent: function () {
             this._super();
             var _this = this;
-            this.copyText('a[name="copy"]');
+            this.copyText('[name="copy"]');
             $(this.formSelector).on("click", "label.bank", function (e) {
                 $("label.bank.select").removeClass("select");
                 var $account = $(this).find("input[name='account']");
