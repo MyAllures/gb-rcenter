@@ -27,8 +27,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
          * 跳转第三方支付
          * @param orderNo
          */
-        pay: function (orderNo, newWindow) {
-            var url = root + "/wallet/deposit/online/scan/pay.html?pay=online&search.transactionNo=" + orderNo;
+        pay: function (url, newWindow) {
             var os = this.whatOs();
             if (os == 'app_ios') {
                 gotoPay(url);
@@ -274,7 +273,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                         $("input[name='gb.token']").val(data.token);
                         if (state == true) {
                             var orderNo = data.orderNo;
-                            _this.pay(orderNo, newWindow);
+                            _this.pay(data.payUrl, newWindow);
                             _this.sendComm(orderNo);
                             if (newWindow || _this.os == "app_android" || _this.os == 'app_ios') {
                                 _this.reWriteAmount();

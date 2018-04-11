@@ -2,7 +2,6 @@
  * 线上公共js支付
  */
 define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], function (CommonRecharge, RealName) {
-    var ajaxMap = {};
     return CommonRecharge.extend({
         realName: null,
         /**
@@ -47,7 +46,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
         showRandomAmountMsg: function () {
             var flag = $(this.formSelector).find("input[name='result.payerBank']:checked").attr("randomAmount");
             if (flag == "true") {
-               $("#rechargeDecimals").show();
+                $("#rechargeDecimals").show();
             } else {
                 $("#rechargeDecimals").hide();
             }
@@ -89,14 +88,15 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                 data: this.getCurrentFormData(e),
                 dataType: 'json',
                 success: function (data) {
-                    ajaxMap["ajaxData"] = data ;
                     var failureCount = data.failureCount;
-                    if(failureCount >= 3){
+                    if (failureCount >= 3) {
                         _window.close();
+                        window.top.topPage.onlineSubmitData = data;
                         $("#manyFailures").show();
                         $("#backdrop").show();
-                    }else {
-                        _this.onlineContinueDeposit(e, option,_window);
+                    } else {
+                        option.data = data;
+                        _this.onlineContinueDeposit(e, option, _window);
                     }
                 },
                 error: function (data) {
@@ -105,7 +105,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
             });
         },
 
-        createWin:function () {
+        createWin: function () {
             var $account = $("input[name=account]:checked");
             var isThird = $account.attr("isThird");
             var _window;
@@ -119,24 +119,28 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
         /**
          * 失败多次后仍继续存款
          */
-        onlineContinueDeposit:function(e,option,_window){
+        onlineContinueDeposit: function (e, option, _window) {
             $("#manyFailures").hide();
             $("#backdrop").hide();
-            var data = ajaxMap["ajaxData"];
-            if(!_window){
+            var data = option.data;
+            if (!data) {
+                data = window.top.topPage.onlineSubmitData;
+                window.top.topPage.onlineSubmitData = null;
+            }
+            if (!_window) {
                 _window = this.createWin();
             }
             var state = data.state;
             var msg = data.msg;
             if (state) {
                 window.top.onlineTransactionNo = data.transactionNo;
-                _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
+                _window.location = data.payUrl;
             } else {
                 _window.close();
             }
             var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
             window.top.onlineFailMsg = msg;
-            if(!option){
+            if (!option) {
                 option = {};
             }
             var btnOption = option;
