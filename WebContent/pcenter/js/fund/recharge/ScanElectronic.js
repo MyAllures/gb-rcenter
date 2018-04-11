@@ -2,7 +2,6 @@
  * 第三方支付、电子支付
  */
 define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
-    var ajaxMap = {};
     return BaseEditPage.extend({
         realName: null,
         /**
@@ -288,7 +287,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 dataType: 'json',
                 type: 'POST',
                 success: function (data) {
-                    ajaxMap["ajaxData"] = data;
+                    option.data = data;
                     var failureCount = data.failureCount;
                     var $account = $("input[name=account]:checked");
                     var bankCode = $account.attr("bankCode");
@@ -298,6 +297,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                         _window.close();
                         $("#manyFailures").show();
                         $("#backdrop").show();
+                        window.top.topPage.onlineSubmitData = data;
                     } else {
                         _this.scanElectronicContinueDeposit(e, option, _window);
                     }
@@ -321,7 +321,11 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
         scanElectronicContinueDeposit: function (e, option, _window) {
             $("#manyFailures").hide();
             $("#backdrop").hide();
-            var data = ajaxMap["ajaxData"];
+            var data = option.data;
+            if (!data) {
+                data = window.top.topPage.onlineSubmitData;
+                window.top.topPage.onlineSubmitData = null;
+            }
             if (!_window) {
                 _window = this.createWin();
             }
@@ -351,7 +355,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
             } else if (data.isThird != true) {
                 if (state == true) {
                     window.top.onlineTransactionNo = data.transactionNo;
-                    _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
+                    _window.location = data.payUrl;
                 }
                 var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
                 window.top.onlineFailMsg = msg;

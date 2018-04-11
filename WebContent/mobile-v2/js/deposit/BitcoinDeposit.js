@@ -13,7 +13,7 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
             this._super();
             var _this = this;
             _this.bindFormValidation();
-            if($("#ImageQrCodeUrl").val()) {
+            if($("#ImageQrCodeUrl").val() == 'true') {
                 document.getElementById("saveImage").addEventListener("tap", function (e) {
                     var href = $(this).attr("url");
                     if (_this.os == "app_android") {

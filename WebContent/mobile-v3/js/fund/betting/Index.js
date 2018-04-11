@@ -12,7 +12,7 @@ $(function () {
         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
         /*禁用侧滑手势指定样式*/
         disabledHandSlip: ['.mui-off-canvas-left'],
-        init: pullUpRefreshOption('#refreshContainer', pullfresh, true)
+        init: pullUpRefreshOption('#refreshContainer', pullfresh, false)
     };
     muiInit(options);
     loadData();
@@ -151,19 +151,22 @@ function getStatisticsData() {
             if (data.winning != null){
                 $("#statisticalDataWinning").text(window.top.message.fund_auto['彩池奖金'] + ":" + currency + data.winning.toFixed(2)).text;
             }
-            //有效投注额
             if (data.effective != null){
-                $("#statisticalDataEffective").html(window.top.message.fund_auto['有效投注额'] + ":" +currency + data.effective.toFixed(2));
+                //投注总额
+                $("#statisticalTotalAmount").html(window.top.message.fund_auto['投注总额'] + ":" + currency + data.effective.toFixed(2));
             }
             //投注额
             if (data.single != null){
-                $("#statisticalDataSingle").html(currency + data.single.toFixed(2));
+                //$("#statisticalDataSingle").html(currency + data.single.toFixed(2));
+                //有效投注额
+                $("#statisticalDataEffective").html(window.top.message.fund_auto['有效投注额'] + ":" +currency + data.single.toFixed(2));
             }
             //派彩
             if (data.profit != null){
-                $("#statisticalDataProfit").html(currency + data.profit.toFixed(2));
+                //$("#statisticalDataProfit").html(currency + data.profit.toFixed(2));
+                //彩池奖金
+                $("#statisticalProfit").html(window.top.message.fund_auto['彩池奖金'] + ":" +currency + data.profit.toFixed(2));
             }
-            //投注总额
         },
         error: function (e) {
             toast(window.top.message.fund_auto['加载失败']);
