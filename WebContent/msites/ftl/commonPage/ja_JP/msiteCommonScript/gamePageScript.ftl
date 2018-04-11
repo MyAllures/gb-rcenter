@@ -195,6 +195,7 @@
         $('.closeCasinoGame').on('click',function(){
             $(this).parents('html').removeClass('game-detail-open');
             $('.game-info').removeClass('hide_G');
+            document.getElementById('box_playGameDemo_iframe').setAttribute('src', "");
             exitFullscreen();
         });
 
