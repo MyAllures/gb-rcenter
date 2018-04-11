@@ -47,7 +47,11 @@ function submitPromo(obj, options) {
     }
     var code = options.dataCode;
     if (code == 'content') {
-        goToUrl(root + "/message/gameNotice.html?isSendMessage=true");
+        if(isNative){
+            nativeGoToApplyPromoPage();
+        }else{
+            goToUrl(root + "/message/gameNotice.html?isSendMessage=true");
+        }
     } else if (code == 'back_water') {
         toast(window.top.message.promo_auto['参与中']);
     } else {
@@ -211,6 +215,8 @@ function filterActyByPlayer(data) {
         $obj.removeClass(oldClass).addClass(newClass + " mui-disabled").text(window.top.message.promo_auto['存款时申请']);
     } else if (code == "regist_send" || code == "relief_fund" || code == "profit_loss" || code == "effective_transaction") {
         $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").text(window.top.message.promo_auto['参与中']);
+    } else if(code == "content"){
+        $obj.addClass("mui-hidden");
     }
 }
 
