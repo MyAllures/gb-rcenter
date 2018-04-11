@@ -297,6 +297,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                         _window.close();
                         $("#manyFailures").show();
                         $("#backdrop").show();
+                        window.top.topPage.onlineSubmitData = data;
                     } else {
                         _this.scanElectronicContinueDeposit(e, option, _window);
                     }
@@ -321,6 +322,10 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
             $("#manyFailures").hide();
             $("#backdrop").hide();
             var data = option.data;
+            if (!data) {
+                data = window.top.topPage.onlineSubmitData;
+                window.top.topPage.onlineSubmitData = null;
+            }
             if (!_window) {
                 _window = this.createWin();
             }
