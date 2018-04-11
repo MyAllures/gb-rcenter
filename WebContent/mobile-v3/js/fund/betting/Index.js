@@ -118,6 +118,12 @@ function loadData() {
             var info = document.getElementById("content-list");
             info.innerHTML = data;
             pageNumber = 2;
+
+            //投注笔数
+            var totalCount = $('#hiddenTotalCount').val();
+            if(totalCount != null){
+                $("#statisticalTotalPage").html(window.top.message.fund_auto['投注笔数'] + ":" + totalCount + window.top.message.fund_auto['笔']);
+            }
         },
         error: function (e) {
             mui.toast(window.top.message.fund_auto['加载失败']);
@@ -158,7 +164,6 @@ function getStatisticsData() {
                 $("#statisticalDataProfit").html(currency + data.profit.toFixed(2));
             }
             //投注总额
-            //投注笔数
         },
         error: function (e) {
             toast(window.top.message.fund_auto['加载失败']);

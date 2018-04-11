@@ -266,7 +266,6 @@ function submitTransactionMoney(obj, option) {
         data: $form.serialize(),
         success: function (data) {
             option.data = data;
-            $("[name='gb.token']").val(data.token);
             transferBack(obj, option);
         },
         complete: function () {
