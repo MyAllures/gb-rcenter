@@ -3,45 +3,47 @@
 /* default themes */
 body { color: #fff; background: #151515; }
 
-.mui-bar { background-color: #14805e; box-shadow: none; }
+.mui-bar { background-color: #C82721; box-shadow: none; }
 
 header.mui-bar-nav a.mui-icon-bars { color: #fff; }
 header.mui-bar-nav .btn-login { background-color: #1dc28e; border: 1px solid #1dc28e; }
-header.mui-bar-nav .btn-demo { background-color: #00BCD4; border: 1px solid #00BCD4; }
+header.mui-bar-nav .btn-demo { background-color: #1279d9; border: 1px solid #1279d9; }
 header.mui-bar-nav .btn-register { background-color: #f0af01; border: 1px solid #f0af01; }
 header.mui-bar-nav .mui-action-back { color: #fff; }
 
-.yjym { color: #fff; background: #14805e; border-top: 1px solid #46a98a; }
+.yjym { color: #fff; background: #63120f; border-top: 1px solid #151515; }
 
-.mui-content { background: #151515; }
+.mui-content { background: #454545; }
+.mui-content.home-content { background: #151515; }
 .mui-content.promo-record-content { background: #f2f2f2; }
+.mui-content.promo-content { background: #fff; }
 
 /* notice */
 .notice { background: #151515; }
-.notice .btn-title { background: #14805e; border: 1px solid #14805e; }
+.notice .btn-title { background: #c82721; border: 1px solid #c82721; }
 .notice .notice-list a { color: #fff !important; }
 
 /* nav */
 .nav { background: #151515 url(./images/nav-bg.png) 0 0/100% 60px repeat-x; border-top: 0; position: relative; }
 .nav:after { content: ''; position: absolute; height: 1px; background: transparent; bottom: 3px; left: 0; right: 0; }
 .nav .swiper-slide { color: #fff; position: relative; }
-.nav .swiper-slide.swiper-slide-active span { color: #fff; }
+.nav .swiper-slide.swiper-slide-active span { color: #c82721; }
 .nav .swiper-slide.swiper-slide-active:after { content: ''; position: absolute; top: 0; left: 50%; margin-left: -37px; z-index: 1; width: 74px; height: 70px; background: url(images/nav-item-active-bg.png) center top/74px 65px no-repeat; }
 
 /* api-grid */
 .api-grid .mui-grid-view.mui-grid-9 { padding: 0 5px; border-top: 0; border-left: 0; background-color: #151515; }
-.api-grid .api-item { background: url(./images/api-bg.png) no-repeat center 1px/70px; }
+.api-grid .api-item { background: url(./images/api-bg.png) no-repeat center/70px; }
 .api-grid .api-item:after { background: url(images/api-bg-shadow.png) no-repeat 0 0/100%; }
 .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell a { background: #252525; }
 .api-grid ul[data-list="lottery"] .lottery-nav { color: #333; border-bottom: 1px solid #fff; }
 .api-grid ul[data-list="lottery"] .lottery-nav ul { background: transparent; }
-.api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item { color: #333; border-bottom: 1px solid transparent; }
+.api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item { color: #fff; border-bottom: 1px solid transparent; }
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.mui-active { border-bottom: 1px solid #168df6; }
 
 /* mui-bar-footer */
 .mui-bar-tab { background: #252525; border-top: 1px solid #393939; }
 .mui-bar-tab .mui-tab-label { color: #666; }
-.mui-bar-tab .mui-active .mui-tab-label { color: #01bc81; }
+.mui-bar-tab .mui-active .mui-tab-label { color: #c82721; }
 
 /* mui-off-canvas-left */
 .mui-off-canvas-left { background: #444; }
@@ -63,7 +65,7 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .promo .p-t-slide-content .swiper-slide { background: #fff; }
 
 .btn-promo-sort span { background: #e3e2e2; border: 1px solid #e3e2e2; }
-.btn-promo-sort.swiper-slide-active span { background: #14805e; border: 1px solid #14805e; color: #fff; }
+.btn-promo-sort.swiper-slide-active span { background: #c82721; border: 1px solid #c82721; color: #fff; }
 
 .promo-header { border-bottom: 1px solid #ccc; }
 
@@ -79,7 +81,7 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 
 /* mine page */
 .mine-content { background: #efefef; }
-.mine-content .user-info-wrap { background: #14805e; }
+.mine-content .user-info-wrap { background: #c82721; }
 .mine-content .user-info-wrap .gb-userinfo { background: #fff; }
 
 .mui-bar-mine { -webkit-box-shadow: none !important; box-shadow: none !important; }
@@ -109,12 +111,14 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .login-info .ex .qb { background: #0ec392; }
 .login-info .ex .ct p .go.btn-refresh { background: #1b75d9; }
 .login-info .ex .ct p .go.btn-deposit { background: #0ec392; }
+.login-info .ex .loader.api-loader { background: #fff; }
+.login-info .ex .loader.api-loader .ball-pulse.api-div div { background-color: #252525 !important; }
 
 /* 修补样式 */
 .ball-pulse.api-div div { background-color: #fff !important; }
 
 .casino-game-type .g-t-slide-indicators { border-bottom: 1px solid #393939; }
-.casino-game-type .g-t-slide-indicators .swiper-slide-active { color: #0088fe; border-bottom: 1px solid #0088fe; }
+.casino-game-type .g-t-slide-indicators .swiper-slide-active { color: #c82721; border-bottom: 1px solid #c82721; }
 
 .loader.api-loader { background: #151515; }
 
@@ -138,11 +142,19 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 
 .api-grid .api-item:before { background-image: url(./images/api-sprite-black.png); }
 
-.api-grid .api-item:after { content: ''; position: absolute; width: 56px; height: 59px; top: 2px; left: 1px; z-index: 2; -webkit-transform: rotateZ(0); transform: rotateZ(0); border-radius: 0; }
+.api-grid .api-item:after { content: ''; position: absolute; width: 56px; height: 59px; top: 1px; left: 1px; z-index: 2; -webkit-transform: rotateZ(0); transform: rotateZ(0); border-radius: 0; }
 
 .nav .swiper-slide.item-live:before { background: url(images/icon-live.png) no-repeat center 5px/22px !important; }
 
 .nav .swiper-slide.item-casino:before { background: url(images/icon-casino.png) no-repeat center 4px/22px !important; }
+
+.content-casino-transfer .game-description p { color: #fff; }
+
+.content-casino-transfer .game-item .game-detail h1 { color: #fff; }
+
+.content-casino-transfer .game-item .game-detail .g-money { color: #fff; }
+
+.notice-alert .mui-popup-button { color: #C82721; }
 
 /* ui-bar-tab */
 .mui-bar-tab .mui-icon, .mui-bar-tab .mui-icon:active { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; }

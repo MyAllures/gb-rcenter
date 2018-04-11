@@ -1,37 +1,40 @@
  @charset "UTF-8";
   /* color and special images style */ 
-  /* white themes */ 
+  /* default themes */ 
  
- body{color: #333;background:url(images/content-bg.png) no-repeat center 44px;background-attachment: fixed;}
- .mui-inner-wrap{background:url(images/content-bg.png) no-repeat center 44px;background-attachment: fixed;}
+ body{color: #fff;background: #151515;}
+.mui-bar{background-color: #C82721;box-shadow: none;}    
  header{
     &.mui-bar-nav{
-        a.mui-icon-bars{color: #666;} 
+        a.mui-icon-bars{color: #fff;} 
         .btn-login{background-color: #1dc28e;border: 1px solid #1dc28e;}
         .btn-demo{background-color: #1279d9;border: 1px solid #1279d9;}
         .btn-register{background-color: #f0af01;border: 1px solid #f0af01;}
         .mui-action-back{color: #fff;}
     }
 }
-.mui-bar-nav{background: url(images/header-bg.png) 0 0/100% 44px;box-shadow: none;-webkit-box-shadow: none;}
-.login-wrap .mui-icon-arrowleft, .login-wrap .mui-title, .register-wrap .mui-icon-arrowleft, .register-wrap .mui-title{color: #333;}
-.yjym{color: #333;}
-.mui-content{background: transparent;
+.yjym{    color: #fff;    background: #63120f;    border-top: 1px solid #151515;}
+.mui-content{background: #454545;
+    &.home-content{background: #151515;}
     &.promo-record-content{background: #f2f2f2;}
+    &.promo-content{background: #fff;}
 }
 /* notice */
-.notice{background: transparent;
-    .btn-title{background: #168df6;border: 1px solid #168df6;}
+.notice{background: #151515;
+    .btn-title{    background: #c82721;    border: 1px solid #c82721;}
     .notice-list{
-            a{color: #333;}
+            a{color: #fff !important;}
     }
 }
 /* nav */
-.nav{background:transparent url(./images/nav-bg.png) 0 0/100% 60px repeat-x;border-top: 1px solid #fff;position: relative;
-    &:after{content: '';position: absolute;height: 1px;background: #fff;bottom: 4px;left: 0;right: 0;}
-    .swiper-slide{ color: #333;position: relative;
+.nav{background: #151515 url(./images/nav-bg.png) 0 0/100% 60px repeat-x;
+    border-top: 0;
+    position: relative;
+    &:after{content: '';position: absolute;height: 1px;background:transparent;bottom: 3px;left: 0;right: 0;}
+    .swiper-slide{ color: #fff;position: relative;
         &.swiper-slide-active{
-            &:after{    content: '';   position: absolute;   top: 0;   left: 50%;   margin-left: -37px;    z-index:1;    width: 74px;    height: 70px;    background: url(images/nav-item-active-bg.png) center top/74px 67px no-repeat;}
+            span{color: #c82721;}
+            &:after{    content: '';   position: absolute;   top: 0;   left: 50%;   margin-left: -37px;    z-index:1;    width: 74px;    height: 70px;    background: url(images/nav-item-active-bg.png) center top/74px 65px no-repeat;}
         }
     }
 }
@@ -39,18 +42,18 @@
 .api-grid{
     .mui-grid-view.mui-grid-9{    padding: 0 5px;    border-top: 0;
     border-left: 0;
-    background-color: transparent;}
-    .api-item{background: url(./images/api-bg.png) no-repeat center/(56px/0.8);
-        &:after{  background: rgba(255, 255,255, 0.3);}
+    background-color: #151515;}
+    .api-item{background: url(./images/api-bg.png) no-repeat center/70px;
+        &:after{   background:url(images/api-bg-shadow.png) no-repeat 0 0 /100%;}
     }
     .mui-grid-view.mui-grid-9 .mui-table-view-cell {
-        a{    background:rgba(255,255,255,0.4);border: 1px solid #f0e8d5;}
+        a{    background: #252525;}
     }
     ul[data-list="lottery"]{
         .lottery-nav{    color: #333; border-bottom: 1px solid #fff;
         ul{ background:transparent;}
             li{
-                .mui-tab-item{color: #333;border-bottom: 1px solid transparent;
+                .mui-tab-item{color: #fff;border-bottom: 1px solid transparent;
                     &.mui-active{border-bottom: 1px solid #168df6;}
                 }
             }
@@ -59,10 +62,11 @@
 }
 /* mui-bar-footer */
 .mui-bar-tab{
-    background: #252525;border-top: 1px solid #252525;
+    background: #252525;
+    border-top: 1px solid #393939;
     .mui-tab-label{color: #666;}
     .mui-active{
-        .mui-tab-label{color: #007aff;}
+        .mui-tab-label{color: #c82721;}
     }
 }
 /* mui-off-canvas-left */
@@ -101,10 +105,12 @@
         span{background: #e3e2e2;border: 1px solid #e3e2e2;}
         
         &.swiper-slide-active{
-            span{background: #327fc3;border: 1px solid #327fc3;color: #fff;}
+            span{    background: #c82721;
+    border: 1px solid #c82721;
+    color: #fff;}
             }
     }
-.promo-header{border-bottom: 1px solid #ccc;}  
+.promo-header{border-bottom: 1px solid #ccc;}    
 /* login and register page */
 .type-header{
     border-bottom: 1px solid #fff;
@@ -130,7 +136,7 @@
 /* mine page */
 .mine-content{
     background: #efefef;
-    .user-info-wrap{background: #f7f7f7;
+    .user-info-wrap{background: #c82721;
         .gb-userinfo{background: #fff;}
     }
 }
@@ -141,7 +147,7 @@
 
 /* nots deficiency */
 .deficiency-nots{
-    background: #fff;text-align: center;padding:15px 10px;margin: 5px;border-radius: 6px;word-break: break-word;font-size: 14px;
+    background: #454545;text-align: center;padding:15px 10px;margin: 5px;border-radius: 6px;word-break: break-word;font-size: 14px;
 }
 /* loading */
 .loading-wrap{
@@ -182,41 +188,78 @@
                 }
             }
         }
+        .loader.api-loader{background: #fff;
+            .ball-pulse.api-div div{background-color: #252525 !important;}
+        }
     }
 }
-.ball-pulse.api-div div{background-color: #333;}
+/* 修补样式 */
+.ball-pulse.api-div div{background-color: #fff !important;}
 .casino-game-type{
     .g-t-slide-indicators{
-        border-bottom: 1px solid #ddd;
-        .swiper-slide-active{    color: #fff; border-bottom: 1px solid #fff;}
+        border-bottom: 1px solid #393939;
+        .swiper-slide-active{    color: #c82721;  border-bottom: 1px solid #c82721;}
     }
 }
-
+.loader.api-loader {    background: #151515;}
+.api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell{background: #151515;}
+.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{color: #fff;}
+.copy-right {    border-top: 1px solid #333;}
+.mui-bar-tab .mui-icon.icon-home, .mui-bar-tab .mui-icon:active.icon-home {  background: #252525;}
+.mui-title{color: #fff;}
+.mui-bar .mui-icon-back{color: #fff;}
+.mui-content-casino-list .casino-list a p{color: #fff;}
+.casino-list-bar {    border-bottom: 1px solid #393939;}
+.mui-content-casino-list .casino-list .img-wrap {background: #151515;}
+.api-grid .api-item:before {  background-image: url(./images/api-sprite-black.png);}
+.api-grid .api-item:after {
+    content: '';
+    position: absolute;
+    width: 56px;
+    height: 59px;
+    top: 1px;
+    left: 1px;
+    z-index: 2;
+    -webkit-transform: rotateZ(0);
+    transform: rotateZ(0);
+    border-radius: 0;
+}
 .nav .swiper-slide.item-live:before {
     background: url(images/icon-live.png) no-repeat center 5px/22px !important;
 }
 .nav .swiper-slide.item-casino:before {
     background: url(images/icon-casino.png) no-repeat center 4px/22px !important;
 }
-.icon-message {
-    background: url(./images/icon-message.png) no-repeat center;
-    background-size: 20px auto;
+// 样式修复
+.content-casino-transfer .game-description p {
+    color: #fff;
 }
-.icon-gift {
-    background: url(./images/icon-gift.png) no-repeat center;
-    background-size: 20px auto;
+.content-casino-transfer .game-item .game-detail h1 {
+    color: #fff;
 }
-.api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell{background: transparent;height: 115px;}
-
-.copy-right{color: #fff;}
-.banner-loading .ball-pulse.api-div div, .api-loading .ball-pulse.api-div div{background-color: #fff;}
-
-.mui-bar-tab .mui-icon.icon-home, .mui-bar-tab .mui-icon:active.icon-home{    background: #252525;}
-
-.mui-content-casino-list .casino-list .img-wrap{background: transparent;}
-
-.nav .swiper-container{height: 67px;}
-.nav .swiper-slide.swiper-slide-active > span{color: inherit;}
-.mui-title{color: #fff;}
-/* index-login-info */
-.login-info{ background: url(images/icon-open-offcanvas.png) no-repeat right center/5px;color: #fff;}
+.content-casino-transfer .game-item .game-detail .g-money {
+    color: #fff;
+}
+.notice-alert .mui-popup-button {
+    color: #C82721;
+}
+/* ui-bar-tab */
+.mui-bar-tab{
+    .mui-icon,.mui-icon:active{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;
+        &.icon-deposit{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -9px -4px;}
+        &.icon-promo{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -49px -5px;}
+        &.icon-home{      width: 46px;    height: 46px;    position: absolute;    left: 50%;    margin-left: -23px;    top: -13px;    background: #252525;    border-radius: 23px;
+            &+.mui-tab-label{margin-top: 31px;}
+            &:after{    content: '';    width: 36px;    height: 36px;    background: url(images/footer-nav-icon.png) no-repeat -83px -2px/auto 80px;    position: absolute;    left: 5px;    top: 5px;}
+        }
+        &.icon-service{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -129px -5px;}
+        &.icon-mine{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -168px -5px;}        
+    }
+    .mui-active{
+        .mui-icon{background-position-y: -45px;
+            &.icon-home{
+                &:after{    background: url(images/footer-nav-icon.png) no-repeat -83px -43px/auto 80px;}
+            }
+        }            
+    }
+}
