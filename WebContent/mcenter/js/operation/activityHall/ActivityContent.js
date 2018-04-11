@@ -42,8 +42,8 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $(this.formSelector).on("click", "#pc-terminal", function(e) {
                 $(".pc").show();
                 $(".mb").hide();
-                $("#pc-terminal").addClass("disabled");
-                $("#mb-terminal").removeClass("disabled");
+                $("#pc-terminal").removeClass("btn-default");
+                $("#mb-terminal").addClass("btn-default");
                 $(".mb .tab-pane").removeClass('active');
                 var tab = $(".pc li.active a").attr('href');
                 $(tab).addClass('active');
@@ -51,8 +51,8 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $(this.formSelector).on("click", "#mb-terminal", function(e){
                 $(".pc").hide();
                 $(".mb").show();
-                $("#mb-terminal").addClass("disabled");
-                $("#pc-terminal").removeClass("disabled");
+                $("#mb-terminal").removeClass("btn-default");
+                $("#pc-terminal").addClass("btn-default");
                 $(".pc .tab-pane").removeClass('active');
                 var tab = $(".mb li.active a").attr('href');
                 $(tab).addClass('active');
