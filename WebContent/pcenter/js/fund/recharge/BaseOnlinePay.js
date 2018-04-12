@@ -91,6 +91,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                     var failureCount = data.failureCount;
                     if (failureCount >= 3) {
                         _window.close();
+                        window.top.topPage.onlineSubmitData = data;
                         $("#manyFailures").show();
                         $("#backdrop").show();
                     } else {
@@ -122,6 +123,10 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
             $("#manyFailures").hide();
             $("#backdrop").hide();
             var data = option.data;
+            if (!data) {
+                data = window.top.topPage.onlineSubmitData;
+                window.top.topPage.onlineSubmitData = null;
+            }
             if (!_window) {
                 _window = this.createWin();
             }

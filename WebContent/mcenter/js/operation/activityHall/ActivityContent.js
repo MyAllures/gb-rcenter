@@ -3,9 +3,9 @@
  */
 define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.' + window.top.language, 'css!themesCss/fileinput/fileinput'], function (Money, fileinput) {
     return Money.extend({
-        maxRange: 5,
+        maxRange: 6,
         ue: null,
-        system_recommend_case_num:4,
+        system_recommend_case_num:5,
         system_recommend_data:null,
 
         init: function () {
@@ -1079,7 +1079,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var deposit_array = activityType+'_array';
             //设置优惠条件
             $.each(deposit_data[deposit_array], function (i, item) {
-                var tr_index = i + 1;
+                var tr_index = i+2 ;
                 $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(0)').val(item.depositAmountGe);
                 $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(1)').val(item.percentageHandsel);
                 $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(2)').val(item.regularHandsel);
