@@ -3,9 +3,9 @@
  */
 define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.' + window.top.language, 'css!themesCss/fileinput/fileinput'], function (Money, fileinput) {
     return Money.extend({
-        maxRange: 5,
+        maxRange: 6,
         ue: null,
-        system_recommend_case_num:4,
+        system_recommend_case_num:5,
         system_recommend_data:null,
 
         init: function () {
@@ -42,8 +42,8 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $(this.formSelector).on("click", "#pc-terminal", function(e) {
                 $(".pc").show();
                 $(".mb").hide();
-                $("#pc-terminal").addClass("disabled");
-                $("#mb-terminal").removeClass("disabled");
+                $("#pc-terminal").removeClass("btn-default");
+                $("#mb-terminal").addClass("btn-default");
                 $(".mb .tab-pane").removeClass('active');
                 var tab = $(".pc li.active a").attr('href');
                 $(tab).addClass('active');
@@ -51,8 +51,8 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $(this.formSelector).on("click", "#mb-terminal", function(e){
                 $(".pc").hide();
                 $(".mb").show();
-                $("#mb-terminal").addClass("disabled");
-                $("#pc-terminal").removeClass("disabled");
+                $("#mb-terminal").removeClass("btn-default");
+                $("#pc-terminal").addClass("btn-default");
                 $(".pc .tab-pane").removeClass('active');
                 var tab = $(".mb li.active a").attr('href');
                 $(tab).addClass('active');
@@ -484,6 +484,15 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $(e.currentTarget).click();
                 return false;
             }
+            if (opt.code == 'profit_loss') {
+                var message = window.top.message.common['盈利和亏损不能同时为空'];
+                var profit = $(".profit").prop("checked");
+                var loss = $(".loss").prop("checked");
+                if (!profit && !loss) {
+                    $(".profit").formtip(message);
+                    return false;
+                }
+            }
             if(opt.code=='money'){
 
                 var rpb = that.getRemainProbability();
@@ -573,10 +582,10 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $("#previewPlacesNumber").text($("[name='activityRule.placesNumber']").val());
             }
             //是否审核
-            if ($("[name='activityRule.isAudit']").val() == 'true') {//前端展示
-                $("#previewIsAudit").text(window.top.message.operation_auto['是']);
+            if ($("[name='activityRule.isAudit']").val() == 'true') {//是否审核
+                $("#previewIsAudit").text(window.top.message.operation_auto['审核']);
             } else {
-                $("#previewIsAudit").text(window.top.message.operation_auto['否']);
+                $("#previewIsAudit").text(window.top.message.operation_auto['免审']);
             }
             //是否申请
             if ($("[name='activityRule.isNeedApply']").val() == 'true') {//前端展示
@@ -774,7 +783,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var canCreate = _tr_len < this.maxRange;
             if (canCreate) {
                 /*tr clone*/
-                var _tr = $("#loss").find("tr:eq(1)").clone(true);
+                var _tr = $("#loss").find("tr:eq(2)").clone(true);
                 _tr.find("button").removeClass("disabled");
                 _tr.find("input").val("");
                 _tr = this.resetIndex2(_tr, _tr_len)
@@ -1079,7 +1088,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var deposit_array = activityType+'_array';
             //设置优惠条件
             $.each(deposit_data[deposit_array], function (i, item) {
-                var tr_index = i + 1;
+                var tr_index = i+2 ;
                 $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(0)').val(item.depositAmountGe);
                 $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(1)').val(item.percentageHandsel);
                 $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(2)').val(item.regularHandsel);

@@ -64,7 +64,7 @@ define(['common/BaseListPage', 'bootstrapswitch'], function (BaseListPage,bootst
             var _this=this;
             if (confirm) {
                 window.top.topPage.ajax({
-                    url: root + "/activityHall/changeDisplayStatus.html",
+                    url: root + "/activityHall/activity/changeDisplayStatus.html",
                     type: "post",
                     dataType: "json",
                     data: {"result.id": id, "result.isDisplay": isDisplay},

@@ -130,6 +130,9 @@
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
                 $("#token").val(data.token);
+            },
+            end: function () {
+                apiLoginReal(apiId,gameCode,apiTypeId);
             }
         });
     }

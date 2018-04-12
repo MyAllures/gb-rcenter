@@ -34,13 +34,27 @@ define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
                 _this.changeValid();
             });
             $("#onlineContinueDeposit").click(function(e,option){
-                _this.onlineContinueDeposit(e,option);
+                _this.submit(e,option);
             });
             $("#againDeposit").click(function(e,option){
                 $("#manyFailures").hide();
                 $("#backdrop").hide();
-                $(e.currentTarget).unlock();
-                $("#onlineForm").load(root+"/fund/recharge/online/onlinePay.html?t"+Math.random());
+                var _window = window.top.topPage.newWindow ;
+                if (_window) {
+                    _window.close();
+                    window.top.topPage.newWindow = null;
+                }
+                if(!option){
+                    option = window.top.topPage.onlneSubmitOption;
+                    window.top.topPage.onlneSubmitOption = null ;
+                }
+                if(!e){
+                    e = window.top.topPage.onlneSubmitE;
+                    window.top.topPage.onlneSubmitE = null ;
+                }
+                _this.back(e,option);
+                // $("#onlineForm").load(root+"/fund/recharge/online/onlinePay.html?t"+Math.random());
+                // $(e.currentTarget).unlock();
                 // window.top.gotoUrl(root+"/#/fund/playerRecharge/recharge.html?t"+Math.random());
             });
             /**
