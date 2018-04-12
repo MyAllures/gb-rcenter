@@ -774,7 +774,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var canCreate = _tr_len < this.maxRange;
             if (canCreate) {
                 /*tr clone*/
-                var _tr = $("#loss").find("tr:eq(1)").clone(true);
+                var _tr = $("#loss").find("tr:eq(2)").clone(true);
                 _tr.find("button").removeClass("disabled");
                 _tr.find("input").val("");
                 _tr = this.resetIndex2(_tr, _tr_len)
