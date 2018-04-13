@@ -582,10 +582,10 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $("#previewPlacesNumber").text($("[name='activityRule.placesNumber']").val());
             }
             //是否审核
-            if ($("[name='activityRule.isAudit']").val() == 'true') {//前端展示
-                $("#previewIsAudit").text(window.top.message.operation_auto['是']);
+            if ($("[name='activityRule.isAudit']").val() == 'true') {//是否审核
+                $("#previewIsAudit").text(window.top.message.operation_auto['审核']);
             } else {
-                $("#previewIsAudit").text(window.top.message.operation_auto['否']);
+                $("#previewIsAudit").text(window.top.message.operation_auto['免审']);
             }
             //是否申请
             if ($("[name='activityRule.isNeedApply']").val() == 'true') {//前端展示
