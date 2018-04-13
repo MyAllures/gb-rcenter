@@ -152,7 +152,7 @@ function showNotice(obj, options) {
         '</div>');
     var alertNotice = mui.alert(noticeHtml.html(),"公告","关闭");
     $(alertNotice.element).addClass('notice-alert');// 定义弹窗的class,方便修改样式
-    $(".notice-slider").css({height:$(window).height()*0.5})
+    $(".notice-slider").css({height:$(window).height()*0.3})
     mui(".notice-slider .mui-scroll-wrapper").scroll();
 }
 
