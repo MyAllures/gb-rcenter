@@ -97,8 +97,8 @@ define([], function() {
             //增加守护线程,防止异常终止
             window.setInterval(function () {
                if(new Date().getTime()-_this.last_active_time>80000){
-                   if(cid) {
-                       _this.userParam[_this.CONNECTIONID_KEY] = cid;
+                   if(this.cid!=undefined && this.cid!=null){
+                       _this.userParam[_this.CONNECTIONID_KEY] = this.cid;
                    }
                    _this.connection();
                }
