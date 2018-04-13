@@ -3,7 +3,7 @@
  */
 define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.' + window.top.language, 'css!themesCss/fileinput/fileinput'], function (Money, fileinput) {
     return Money.extend({
-        maxRange: 6,
+        maxRange: 5,
         ue: null,
         system_recommend_case_num:5,
         system_recommend_data:null,
@@ -762,7 +762,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
          * @param option
          */
         addActivityRule: function (e, option) {
-            var _tr_len = $("#first_deposit").find("tr").length - 1;
+            var _tr_len = $("#first_deposit").find("tr").length - 2;
             var canCreate = _tr_len < this.maxRange;
             if (canCreate) {
                 /*tr clone*/
@@ -779,7 +779,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
         },
 
         addActivityRule2: function (e, option) {
-            var _tr_len = $("#loss").find("tr").length - 1;
+            var _tr_len = $("#loss").find("tr").length - 2;
             var canCreate = _tr_len < this.maxRange;
             if (canCreate) {
                 /*tr clone*/
