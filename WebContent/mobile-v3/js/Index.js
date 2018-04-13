@@ -133,27 +133,24 @@ function closeBanner(obj, options) {
 
 /*公告弹窗*/
 function showNotice(obj, options) {
-    var noticeA =noticeIndicator="";
-    $(".notice .notice-list .marquee a").each(function(){//生成公告html和indicator
-        noticeA+="<a href='javascript:'>"+$(this).html()+"</a>";
+    var noticeA = noticeIndicator = "";
+    $(".notice .notice-list a").each(function () {//生成公告html和indicator
+        noticeA += "<div class='mui-slider-item'><a href='javascript:'>" + $(this).html() + "</a></div>";
+        noticeIndicator += "<div class='mui-indicator'></div>"
     });
-    var noticeHtml = $('<div>' +
-        '<div class="mui-slider notice-slider">' +
-        '<div class="mui-slider-group">' +
-        '<div class="mui-slider-item">' +
-        '<div class="mui-scroll-wrapper">' +
-        '<div class="mui-scroll">' +
-        '<div style="padding-right: 10px;">'+noticeA+'</div>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '</div>');
-    var alertNotice = mui.alert(noticeHtml.html(),"公告","关闭");
+    var noticeHtml = $('<div><div class="mui-slider notice-slider"><div class="mui-slider-group">' + noticeA + '</div><div class="mui-slider-indicator">' + noticeIndicator + '</div></div></div></div>');
+    var alertNotice = mui.alert(noticeHtml.html(), "公告", "关闭");
     $(alertNotice.element).addClass('notice-alert');// 定义弹窗的class,方便修改样式
-    $(".notice-slider").css({height:$(window).height()*0.3})
-    mui(".notice-slider .mui-scroll-wrapper").scroll();
+    var index = options.idx;//当前点击的公告index
+    //初始化notice-slider
+    var notice = mui('.mui-slider');
+    notice.slider({
+        //interval: 3000//自动轮播周期，若为0则不自动播放，默认为0；
+    });
+    //点击公告，轮播跳转到对应的位置
+    $(".notice-slider .mui-indicator").removeClass("mui-active");
+    $(".notice-slider .mui-indicator:eq(" + index + ")").addClass("mui-active");
+    notice.slider().gotoItem(index);
 }
 
 /**
