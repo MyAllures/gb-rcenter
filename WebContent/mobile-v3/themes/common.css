@@ -1545,4 +1545,22 @@ body.mine-user .gb-select > a { color: #999; }
 
 .window-ok .ft a { display: block; margin-top: 5px; }
 
+.withdraw-out { margin: 20px; }
+
+.withdraw-not { margin: 0 auto; background: #f9fafd; padding: 20px; border: 1px solid #e8ecef; border-radius: 3px; text-align: center; }
+
+.withdraw-not h1 { margin: 0; }
+
+.withdraw-not .tiptext { margin: 10px 0; line-height: 25px; }
+
+.withdraw-not .tiptext p { margin: 0; }
+
+.tipbig { display: inline-block; padding-right: 5px; vertical-align: middle; width: 52px; height: 52px; background: url(../images/tipbig.png) no-repeat top left; cursor: pointer; }
+
+.tipbig.success { background-position: -15px -8px; }
+
+.tipbig.fail { background-position: -80px -8px; }
+
+.tipbig.cry { background-position: -146px -8px; }
+
 /*# sourceMappingURL=common.css.map */
