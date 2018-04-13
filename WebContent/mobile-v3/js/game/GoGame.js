@@ -171,55 +171,62 @@ function fishGameLogin(obj,options){
     if (apiTypeId) {
         postData.apiTypeId = apiTypeId;
     }
-    var options = {
-        url: root + "/api/login.html",
-        type: "POST",
-        dataType: "json",
-        data: postData,
-        success: function (data) {
-            hideLoading();
-            if (data.loginSuccess) {
-                var result = data.gameApiResult;
-                if (apiId == 6) {
-                    if (os == 'android' || os == 'app_ios') {
-                        gotoGame(result.defaultLink, apiId);
+    isAutoPay = sessionStorage.getItem("isAutoPay");
+    if ((isAutoPay == 'true' && apiTypeId != "2")) {
+        //判断是否免转，如果免转,则直接登陆游戏，不跳到游戏中转页面
+        autoLoginAndTransfer();
+    } else {
+        var options = {
+            url: root + "/api/login.html",
+            type: "POST",
+            dataType: "json",
+            data: postData,
+            success: function (data) {
+                hideLoading();
+                if (data.loginSuccess) {
+                    var result = data.gameApiResult;
+                    if (apiId == 6) {
+                        if (os == 'android' || os == 'app_ios') {
+                            gotoGame(result.defaultLink, apiId);
+                        } else {
+                            goToUrl(result.defaultLink);
+                        }
                     } else {
-                        goToUrl(result.defaultLink);
+                        if (result.defaultLink) {
+                            gotoGameUrl(result.defaultLink, apiId);
+                        } else {
+                            gotoGameUrl(result.links[apiTypeId], apiId)
+                        }
                     }
                 } else {
-                    if (result.defaultLink) {
-                        gotoGameUrl(result.defaultLink, apiId);
+                    if (!data.loginSuccess && ( data.errMsg == '' || data.errMsg == null)) {
+                        if (data.maintain) {
+                            showWarningMsg(window.top.message.game_auto['提示'], window.top.message.game_auto['游戏维护中']);
+                        } else {
+                            toast(window.top.message.game_auto['无法登录']);
+                        }
                     } else {
-                        gotoGameUrl(result.links[apiTypeId], apiId)
+                        toast(data.errMsg);
                     }
+                    //reload();
                 }
-            } else {
-                if (!data.loginSuccess && ( data.errMsg == '' || data.errMsg == null)) {
-                    if (data.maintain) {
-                        showWarningMsg(window.top.message.game_auto['提示'], window.top.message.game_auto['游戏维护中']);
-                    } else {
-                        toast(window.top.message.game_auto['无法登录']);
-                    }
+            },
+            error: function (error) {
+                if (error.status === 600) {
+                    signIn(obj);
+                } else if (error.status === 606) {
+                    goToUrl(root + '/errors/606.html');
                 } else {
-                    toast(data.errMsg);
+                    toast('暂时无法登录游戏！');
                 }
-                //reload();
+            },
+            complete: function () {
+                hideLoading();
             }
-        },
-        error: function (error) {
-            if (error.status === 600) {
-                signIn(obj);
-            } else if (error.status === 606) {
-                goToUrl(root + '/errors/606.html');
-            } else {
-                toast('暂时无法登录游戏！');
-            }
-        },
-        complete: function () {
-            hideLoading();
-        }
-    };
-    muiAjax(options);
+        };
+        muiAjax(options);
+    }
+
 }
 
 /**

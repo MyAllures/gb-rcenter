@@ -54,6 +54,7 @@ function closeDownLoad() {
  */
 function swiper() {
     var siledSize = $(".nav .swiper-container a.swiper-slide").length;
+    var apiTypeLength = $("#apiTypeLength").val();
     // api滑动
     var slideContent = new Swiper('.nav-slide-content', {
         loop: true,
@@ -68,7 +69,7 @@ function swiper() {
     var slideIndicators = new Swiper('.nav-slide-indicators', {
         loop: true,
         loopedSlides: siledSize,
-        slidesPerView: 'auto',
+        slidesPerView: apiTypeLength,
         touchRatio: 0.2,
         slideToClickedSlide: true,
         on: {
