@@ -8,6 +8,7 @@ define(['common/BasePage'], function (BasePage) {
 		 * 初使化
          */
 		init: function () {
+            this.formSelector = "form";
             this._super();
         },
 
@@ -30,7 +31,7 @@ define(['common/BasePage'], function (BasePage) {
             $('.list-group li').click(function() {
                 window.event.cancelBubble = true;
                 $(this).children().filter('.hideMenu').stop().slideToggle()
-            })
+            });
         }
     });
 });
