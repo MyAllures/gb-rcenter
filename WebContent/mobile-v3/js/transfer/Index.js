@@ -161,23 +161,13 @@ function refreshAllApiBalance() {
  * 重新初始化转账form表单
  */
 function initTransfer() {
-    var options = {
-        url: root + '/transfer/transferBack.html',
-        dataType: 'json',
-        type: 'post',
-        async: true,
-        success: function (data) {
-            var $transferOut = $("#transferOut");
-            var $transferInto = $("#transferInto");
-            $("input[name=transferInto]").val('');
-            $("input[name=transferOut]").val($transferOut.attr("defaultValue"));
-            $transferOut.children("span").text($transferOut.attr("default"));
-            $transferInto.children("span").text($transferInto.attr("default"));
-            $("input[name='result.transferAmount']").val("");
-            $("[name='gb.token']").val(data.token);
-        }
-    };
-    muiAjax(options);
+    var $transferOut = $("#transferOut");
+    var $transferInto = $("#transferInto");
+    $("input[name=transferInto]").val('');
+    $("input[name=transferOut]").val($transferOut.attr("defaultValue"));
+    $transferOut.children("span").text($transferOut.attr("default"));
+    $transferInto.children("span").text($transferInto.attr("default"));
+    $("input[name='result.transferAmount']").val("");
 }
 
 /**
@@ -221,6 +211,9 @@ function reconnectAgain(obj, option) {
  */
 function transferBack(obj, option) {
     var data = option.data;
+    if(data && data.token) {
+        $("[name='gb.token']").val(data.token);
+    }
     if (!data) {
         toast(window.top.message.transfer_auto["转账异常"]);
         initTransfer();
