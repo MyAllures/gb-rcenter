@@ -7,6 +7,7 @@ CACHE MANIFEST
 /mainIndex.html
 /discounts/index.html?skip=1
 /mine/index.html?channel=mine&skip=4
+/app/download.html
 /downLoad/downLoad.html
 /downLoad/downLoadIOS.html
 /mainIndex.html?path=about
