@@ -7,6 +7,14 @@
             loginObj.getLoginPopup();
             return;
         }
+        //游戏显示比例
+        if(window.screen.width<1920){
+            $(".wrapper").attr("data-width",4);
+            $(".wrapper").attr("data-height",3);
+        }else{
+            $(".wrapper").attr("data-width",16);
+            $(".wrapper").attr("data-height",9);
+        }
 
         $("html").addClass("game-detail-open");
 
