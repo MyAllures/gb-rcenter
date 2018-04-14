@@ -673,33 +673,37 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             }
             if (code == 'profit_loss') {//盈亏送
                 //盈利
+                if ($(".profit").prop("checked")) {
+                    $("#previewprofit").show();
+                }else {
+                    $("#previewprofit").hide();
+                }
                 $("#previewprofit").find("tr:gt(1)").remove();
                 $("#first_deposit").find("tr:gt(1)").each(function (index, item) {
                     var a1 = $(item).find("td:eq(0) input").val();
                     var a2 = $(item).find("td:eq(1) input").val();
                     var a3 = $(item).find("td:eq(2) input").val();
-
-                    if (a3 != "") {
-                        $("#previewprofit").append("<tr><td>满" + a1 + "以上</td><td>送" + a2 + "</td><td>" + a3 + "倍</td></tr>");
-                    } else {
+                    if (a3 == "") {
                         a3 = "---";
-                        $("#previewprofit").append("<tr><td>满" + a1 + "以上</td><td>送" + a2 + "</td><td>" + a3 + "</td></tr>");
                     }
+                    $("#previewprofit").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
 
                 });
                 //亏损
+                if ($(".loss").prop("checked")) {
+                    $("#previewloss").show();
+                }else {
+                    $("#previewloss").hide();
+                }
                 $("#previewloss").find("tr:gt(1)").remove();
                 $("#loss").find("tr:gt(1)").each(function (index, item) {
                     var a1 = $(item).find("td:eq(0) input").val();
                     var a2 = $(item).find("td:eq(1) input").val();
                     var a3 = $(item).find("td:eq(2) input").val();
-                    if (a3 != "") {
-                        $("#previewloss").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
-                    } else {
+                    if (a3 == "") {
                         a3 = "---";
-                        $("#previewloss").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
                     }
-
+                    $("#previewloss").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
                 });
             }
             if(code=="money"){
