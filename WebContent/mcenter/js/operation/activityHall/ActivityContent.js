@@ -635,12 +635,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                     var a2 = $(item).find("td:eq(1) input").val();
                     var a3 = $(item).find("td:eq(2) input").val();
                     var a4 = $(item).find("td:eq(3) input").val();
-                    var a5 = $(item).find("td:eq(4) input").val();
-                    if (a5 != "") {
-                        $("#reliefund").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['剩余以下'].replace("[0]",a2)).concat("</td><td>").concat(window.top.message.operation_auto['达以上'].replace("[0]",a3)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a4).concat("</td><td>").concat(a5).concat(window.top.message.operation_auto['送']).concat("</td></tr>"));
+                    if (a4 != "") {
+                        $("#reliefund").append("<tr><td>".concat(window.top.message.operation_auto['剩余以下'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['达以上'].replace("[0]",a2)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a3).concat("</td><td>").concat(a4).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
                     } else {
-                        a5 = "---";
-                        $("#reliefund").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['剩余以下'].replace("[0]",a2)).concat("</td><td>").concat(window.top.message.operation_auto['达以上'].replace("[0]",a3)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a4).concat("</td><td>").concat(a5).concat(window.top.message.operation_auto['送']).concat("</td></tr>"));
+                        a4 = "---";
+                        $("#reliefund").append("<tr><td>".concat(window.top.message.operation_auto['剩余以下'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['达以上'].replace("[0]",a2)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a3).concat("</td><td>").concat(a4).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
                     }
 
                 });
