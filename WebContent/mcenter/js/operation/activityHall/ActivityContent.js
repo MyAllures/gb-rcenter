@@ -654,7 +654,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 }
                 $("#firstAndDeposit").find("tr:gt(0)").remove();
                 $("#firstAndDeposit").append("<tr><td>".concat(window.top.message.operation_auto['存款金额CNY']).concat("</td><td>").concat(aa).concat("</td><td>").concat(window.top.message.operation_auto['优惠稽核']).concat("</td></tr>"));
-                $("#first_deposit").find("tr:gt(0)").each(function (index, item) {
+                $("#first_deposit").find("tr:gt(1)").each(function (index, item) {
                     var a1 = $(item).find("td:eq(0) input").val();
                     var a2;
                     if ($("[name='ｍosaicGold']:checked").val() == 'true') {
