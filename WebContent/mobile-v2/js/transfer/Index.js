@@ -231,8 +231,9 @@ function transferBack(data) {
 mui("#mui-content-padded").on("tap", "#transfersMoney", function () {
     var $form = $('#transferForm');
     var $this = $(this);
-    
+    $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
     if (!$form.valid()) {
+        $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
         return false;
     }
 
@@ -241,14 +242,10 @@ mui("#mui-content-padded").on("tap", "#transfersMoney", function () {
         data: $form.serialize(),
         type: 'post',
         async: true,
-        beforeSend:function(){
-            $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
-        },
         success: function (data) {
             transferBack(data);
-            $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
         },
-        error: function (xhr, type, errorThrown) {
+        complete:function() {
             $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
         }
     });
