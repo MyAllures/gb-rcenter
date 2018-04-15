@@ -320,7 +320,7 @@ li { list-style: none; }
 .mine-bet-record-body .bet-record-no-data { background: url(images/bet-record-no-data.png) no-repeat center top/100%; width: 171px; height: 129px; margin: 105px auto 20px; }
 
 /* 存款样式  */
-body.deposit { /*存款页 选择支付方式：*/ /* 浦发银行*/ /* 民生*/ /*  交通银行 */ /*光大*/ /* 10 平安银行 */ /* 11 兴业银行 */ /* 12 北京银行 */ /* 13 中信银行 */ /* 14 广发银行 */ /* 16 江苏银行 */ /* 18 上海银行 */ /* 19 渤海银行 */ /* 20 东亚银行 */ /* 21 宁波银行 */ /* 22 浙商银行 */ /* 23 杭州银行 */ /* 24 广州银行 */ /* 25 福建农商银行 */ /* 26 恒生银行 */ /* 27 台州银行 */ /*存款页面优惠弹窗*/ /*存款页面提交成功*/ }
+body.deposit { /*存款页 选择支付方式：*/ /* 浦发银行*/ /* 民生*/ /*  交通银行 */ /*光大*/ /* 10 平安银行 */ /* 11 兴业银行 */ /* 12 北京银行 */ /* 13 中信银行 */ /* 14 广发银行 */ /* 16 江苏银行 */ /* 18 上海银行 */ /* 19 渤海银行 */ /* 20 东亚银行 */ /* 21 宁波银行 */ /* 22 浙商银行 */ /* 23 杭州银行 */ /* 24 广州银行 */ /* 25 福建农商银行 */ /* 26 恒生银行 */ /* 27 台州银行 */ }
 body.deposit .depositHelp { line-height: 40px; color: #1766bb; padding: 0 15px 0; margin-top: 10px; }
 body.deposit .depositHelp span { width: 15px; height: 15px; display: inline-block; border-radius: 100%; background: #999; color: #fff; line-height: 15px; text-align: center; margin-top: 7px; }
 body.deposit .depositHelpBox { position: absolute; bottom: 0; top: 0; left: 0; right: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 999; }
@@ -483,27 +483,6 @@ body.deposit .modes-payment > .ct .active > a { background: url(./images/pay-act
 body.deposit .c-bank-se > a { margin: 0; }
 body.deposit .gb-form-foot .submit { border: 1px solid #1766bb; background-color: #1766bb !important; }
 body.deposit .gb-form-foot .submit { width: 100%; padding: 10px 12px; font-size: 13px; }
-body.deposit .pro-window { width: 320px !important; margin-top: -165px; margin-left: -160px; padding: 15px; }
-body.deposit .pro-window h3 { color: #1766bb; margin-bottom: 30px; line-height: 16px; }
-body.deposit .pro-window .cont-text { line-height: 20px; font-size: 12px; color: #666; }
-body.deposit .pro-window .cont-text p, body.deposit .pro-window .text-pro p { color: #666; }
-body.deposit .pro-window .org { color: #f49e2e; font-size: 14px; }
-body.deposit .pro-window .text-pro ul { height: 110px; overflow: hidden; position: relative; background: #e2e2e2; border-radius: 4px; }
-body.deposit .pro-window .text-pro li { padding: 0 0 0 10px; line-height: 16px; font-size: 12px; }
-body.deposit .pro-window .text-pro .text-warp { border-bottom: 1px dashed #d2d2d2; width: 100%; padding: 5px 0; position: relative; }
-body.deposit .pro-window .text-pro li span { color: #666; display: inline-block; width: 238px; word-wrap: break-word; }
-body.deposit .pro-window .text-pro li input { width: 16px; height: 16px; position: absolute; top: 20%; right: 15px; }
-body.deposit .pro-btn { margin: 20px 0 0 10px; width: 280px; }
-body.deposit .pro-btn a { font-size: 14px; margin: 0 5px; color: #fff; width: 120px; height: 32px; border-radius: 4px; line-height: 32px; text-align: center; display: inline-block; }
-body.deposit .pro-btn .next-btn { background: #1766bb; }
-body.deposit .pro-btn .agin-btn { background: #e2e2e2; color: #666; }
-body.deposit .pro-window .close { position: absolute; top: 5px; right: 5px; background: url(./images/close.png) no-repeat center center; width: 48px; height: 48px; zoom: 0.7; }
-body.deposit .window-ok { padding: 0 20px; height: 255px; }
-body.deposit .window-ok .ok-box { text-align: center; }
-body.deposit .window-ok .ok-box .ok-icon { width: 57px; height: 57px; background: url(./images/ok.png) no-repeat top left; display: block; background-size: cover; margin: 20px auto 10px auto; }
-body.deposit .window-ok .ok-box span { font-size: 16px; font-weight: bold; color: #00d623; }
-body.deposit .window-ok .ct { margin: 10px 0 !important; }
-body.deposit .window-ok .ft a { display: block; margin-top: 5px; }
 body.deposit .gb-promo .gb-panel { background-color: #3e445c; border-top: 1px solid #3e445c; border-bottom: 1px solid #3e445d; }
 body.deposit .gb-promo .gb-panel .activity-detail { padding: 10px; background-color: #32374f; color: #fff; }
 body.deposit .gb-promo .gb-panel .activity-detail > p { color: #fff; }
@@ -1174,7 +1153,6 @@ body.invite .mine-table table tr.head.nobr td { font-size: 12px; padding: 12px 0
 .help-center .fqa .mui-content { display: none; }
 
 /* 银行卡 */
-body.bankcard { /*存款页面优惠弹窗*/ }
 body.bankcard header { background: #1766bb; }
 body.bankcard .mui-content { background: #f2f2f2; }
 body.bankcard .mine-form .mui-input-row > label { color: #333; font-size: 12px; line-height: 18px; position: relative; }
@@ -1197,21 +1175,6 @@ body.bankcard .gb-bankcard > .ct > .ct p { color: #333333; font-size: 12px; marg
 body.bankcard .gb-bankcard > .ct > .ct p span { color: #999999; white-space: nowrap; padding-right: 5px; }
 body.bankcard .gb-bankcard > .ct > .ct p font { width: 100%; }
 body.bankcard .gb-bankcard > .ct > p a.copy, body.bankcard .gb-bankcard > .ct > .ct p a.copy { float: right; background: #e0efff; padding: 0 5px; border-radius: 3px; color: #569ff1; font-size: 12px; white-space: nowrap; height: 22px; line-height: 22px; margin-left: 5px; }
-body.bankcard .pro-window { width: 320px !important; margin-top: -165px; margin-left: -160px; padding: 15px; }
-body.bankcard .pro-window h3 { color: #1766bb; margin-bottom: 30px; line-height: 16px; }
-body.bankcard .pro-window .cont-text { line-height: 20px; font-size: 12px; color: #666; }
-body.bankcard .pro-window .cont-text p, body.bankcard .pro-window .text-pro p { color: #666; }
-body.bankcard .pro-window .org { color: #f49e2e; font-size: 14px; }
-body.bankcard .pro-window .text-pro ul { height: 110px; overflow: hidden; position: relative; background: #e2e2e2; border-radius: 4px; }
-body.bankcard .pro-window .text-pro li { padding: 0 0 0 10px; line-height: 16px; font-size: 12px; }
-body.bankcard .pro-window .text-pro .text-warp { border-bottom: 1px dashed #d2d2d2; width: 100%; padding: 5px 0; position: relative; }
-body.bankcard .pro-window .text-pro li span { color: #666; display: inline-block; width: 238px; word-wrap: break-word; }
-body.bankcard .pro-window .text-pro li input { width: 16px; height: 16px; position: absolute; top: 20%; right: 15px; }
-body.bankcard .pro-btn { margin: 20px 0 0 10px; width: 280px; }
-body.bankcard .pro-btn a { font-size: 14px; margin: 0 5px; color: #fff; width: 120px; height: 32px; border-radius: 4px; line-height: 32px; text-align: center; display: inline-block; }
-body.bankcard .pro-btn .next-btn { background: #1766bb; }
-body.bankcard .pro-btn .agin-btn { background: #e2e2e2; color: #666; }
-body.bankcard .pro-window .close { position: absolute; top: 5px; right: 5px; background: url(./images/close.png) no-repeat center center; width: 48px; height: 48px; zoom: 0.7; }
 
 /* 数字货币存款 */
 body.online-pay-sz header { background: #1766bb; }
@@ -1416,7 +1379,7 @@ body.exchange-account .mine-form .mui-input-row > .ct { width: 65%; float: right
 body.exchange-account .mine-form .mui-input-row > .ct .mine-form .mui-input-row > .ct input { font-size: 12px; color: #999; }
 
 /* exchange-bank,exchange-wechat */
-body.exchange-bank, body.exchange-wechat { color: #000; /*存款页面优惠弹窗*/ /*存款页面提交成功*/ }
+body.exchange-bank, body.exchange-wechat { color: #000; }
 body.exchange-bank header, body.exchange-wechat header { background: #1766bb; }
 body.exchange-bank .mui-content, body.exchange-wechat .mui-content { background: #f2f2f2; padding-bottom: 60px !important; }
 body.exchange-bank .gb-panel, body.exchange-wechat .gb-panel { background-color: #ffffff; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; }
@@ -1436,27 +1399,6 @@ body.exchange-bank .mine-form input, body.exchange-wechat .mine-form input { wid
 body.exchange-bank .mine-form .mui-input-row > .ct, body.exchange-wechat .mine-form .mui-input-row > .ct { width: 65%; float: right; text-align: right; padding-right: 10px; font-size: 12px; }
 body.exchange-bank .mine-form .mui-input-row > .ct input, body.exchange-wechat .mine-form .mui-input-row > .ct input { font-size: 12px; color: #999; }
 body.exchange-bank .gb-form-foot, body.exchange-wechat .gb-form-foot { position: fixed; bottom: 0; left: 0; right: 0; background: #f2f2f2; z-index: 9; }
-body.exchange-bank .pro-window, body.exchange-wechat .pro-window { width: 320px !important; margin-top: -165px; margin-left: -160px; padding: 15px; }
-body.exchange-bank .pro-window h3, body.exchange-wechat .pro-window h3 { color: #1766bb; margin-bottom: 30px; line-height: 16px; }
-body.exchange-bank .pro-window .cont-text, body.exchange-wechat .pro-window .cont-text { line-height: 20px; font-size: 12px; color: #666; }
-body.exchange-bank .pro-window .cont-text p, body.exchange-bank .pro-window .text-pro p, body.exchange-wechat .pro-window .cont-text p, body.exchange-wechat .pro-window .text-pro p { color: #666; }
-body.exchange-bank .pro-window .org, body.exchange-wechat .pro-window .org { color: #f49e2e; font-size: 14px; }
-body.exchange-bank .pro-window .text-pro ul, body.exchange-wechat .pro-window .text-pro ul { max-height: 110px; overflow: auto; background: #e2e2e2; border-radius: 4px; }
-body.exchange-bank .pro-window .text-pro li, body.exchange-wechat .pro-window .text-pro li { padding: 0 0 0 10px; line-height: 16px; font-size: 12px; }
-body.exchange-bank .pro-window .text-pro .text-warp, body.exchange-wechat .pro-window .text-pro .text-warp { border-bottom: 1px dashed #d2d2d2; width: 100%; padding: 5px 0; position: relative; }
-body.exchange-bank .pro-window .text-pro li span, body.exchange-wechat .pro-window .text-pro li span { color: #666; display: inline-block; width: 238px; word-wrap: break-word; }
-body.exchange-bank .pro-window .text-pro li input, body.exchange-wechat .pro-window .text-pro li input { width: 16px; height: 16px; position: absolute; top: 20%; right: 15px; }
-body.exchange-bank .pro-btn, body.exchange-wechat .pro-btn { margin: 20px 0; width: 280px; display: flex; justify-content: space-around; }
-body.exchange-bank .pro-btn a, body.exchange-wechat .pro-btn a { font-size: 14px; margin: 0 5px; color: #fff; width: 120px; height: 32px; border-radius: 4px; line-height: 32px; text-align: center; display: inline-block; }
-body.exchange-bank .pro-btn .next-btn, body.exchange-wechat .pro-btn .next-btn { background: #1766bb; }
-body.exchange-bank .pro-btn .agin-btn, body.exchange-wechat .pro-btn .agin-btn { background: #e2e2e2; color: #666; }
-body.exchange-bank .pro-window .close, body.exchange-wechat .pro-window .close { position: absolute; top: 5px; right: 5px; background: url(../images/close.png) no-repeat center center; width: 48px; height: 48px; zoom: 0.7; }
-body.exchange-bank .window-ok, body.exchange-wechat .window-ok { padding: 0 20px; height: 255px; }
-body.exchange-bank .window-ok .ok-box, body.exchange-wechat .window-ok .ok-box { text-align: center; }
-body.exchange-bank .window-ok .ok-box .ok-icon, body.exchange-wechat .window-ok .ok-box .ok-icon { width: 57px; height: 57px; background: url(../images/ok.png) no-repeat top left; display: block; background-size: cover; margin: 20px auto 10px auto; }
-body.exchange-bank .window-ok .ok-box span, body.exchange-wechat .window-ok .ok-box span { font-size: 16px; font-weight: bold; color: #00d623; }
-body.exchange-bank .window-ok .ct, body.exchange-wechat .window-ok .ct { margin: 10px 0 !important; }
-body.exchange-bank .window-ok .ft a, body.exchange-wechat .window-ok .ft a { display: block; margin-top: 5px; }
 body.exchange-bank .tit, body.exchange-wechat .tit { margin: 10px auto; line-height: 35px; width: 100px; border-radius: 3px; color: #fff; text-align: center; height: 35px; background: #1766bb; }
 body.exchange-bank .wechat-code, body.exchange-wechat .wechat-code { text-align: center; border-top: 1px solid #ddd; padding: 20px 0 15px; }
 body.exchange-bank .wechat-code img, body.exchange-wechat .wechat-code img { width: 130px; height: 130px; display: inline-block; border: 1px solid #eee; }
@@ -1558,5 +1500,67 @@ body.mine-user .gb-select > a { color: #999; }
 .loading-page.load-bg .load-bar-middle .btn-back { border: 1px solid #e2e2e2; border-radius: 4px; padding: 5px 15px; background: #999; color: #fff; font-size: 12px; }
 
 .mui-app .app-fix-top { height: 20px; top: -20px; position: fixed; left: 0; right: 0; z-index: 997; background: #1766bb; }
+
+/*存款页面优惠弹窗*/
+.pro-window { width: 320px !important; margin-top: -165px; margin-left: -160px; padding: 15px; }
+
+.pro-window h3 { color: #1766bb; margin-bottom: 30px; line-height: 16px; }
+
+.pro-window .cont-text { line-height: 20px; font-size: 12px; color: #666; }
+
+.pro-window .cont-text p, .pro-window .text-pro p { color: #666; }
+
+.pro-window .org { color: #f49e2e; font-size: 14px; }
+
+.pro-window .text-pro ul { height: 110px; overflow: hidden; position: relative; background: #e2e2e2; border-radius: 4px; }
+
+.pro-window .text-pro li { padding: 0 0 0 10px; line-height: 16px; font-size: 12px; }
+
+.pro-window .text-pro .text-warp { border-bottom: 1px dashed #d2d2d2; width: 100%; padding: 5px 0; position: relative; }
+
+.pro-window .text-pro li span { color: #666; display: inline-block; width: 238px; word-wrap: break-word; }
+
+.pro-window .text-pro li input { width: 16px; height: 16px; position: absolute; top: 20%; right: 15px; }
+
+.pro-btn { margin: 20px 0 0 10px; width: 280px; }
+
+.pro-btn a { font-size: 14px; margin: 0 5px; color: #fff; width: 120px; height: 32px; border-radius: 4px; line-height: 32px; text-align: center; display: inline-block; }
+
+.pro-btn .next-btn { background: #1766bb; }
+
+.pro-btn .agin-btn { background: #e2e2e2; color: #666; }
+
+.pro-window .close { position: absolute; top: 5px; right: 5px; background: url(./images/close.png) no-repeat center center; width: 48px; height: 48px; zoom: 0.7; }
+
+/*存款页面提交成功*/
+.window-ok { padding: 0 20px; height: 255px; }
+
+.window-ok .ok-box { text-align: center; }
+
+.window-ok .ok-box .ok-icon { width: 57px; height: 57px; background: url(./images/ok.png) no-repeat top left; display: block; background-size: cover; margin: 20px auto 10px auto; }
+
+.window-ok .ok-box span { font-size: 16px; font-weight: bold; color: #00d623; }
+
+.window-ok .ct { margin: 10px 0 !important; }
+
+.window-ok .ft a { display: block; margin-top: 5px; }
+
+.withdraw-out { margin: 20px; }
+
+.withdraw-not { margin: 0 auto; background: #f9fafd; padding: 20px; border: 1px solid #e8ecef; border-radius: 3px; text-align: center; }
+
+.withdraw-not h1 { margin: 0; }
+
+.withdraw-not .tiptext { margin: 10px 0; line-height: 25px; }
+
+.withdraw-not .tiptext p { margin: 0; }
+
+.tipbig { display: inline-block; padding-right: 5px; vertical-align: middle; width: 52px; height: 52px; background: url(../images/tipbig.png) no-repeat top left; cursor: pointer; }
+
+.tipbig.success { background-position: -15px -8px; }
+
+.tipbig.fail { background-position: -80px -8px; }
+
+.tipbig.cry { background-position: -146px -8px; }
 
 /*# sourceMappingURL=common.css.map */

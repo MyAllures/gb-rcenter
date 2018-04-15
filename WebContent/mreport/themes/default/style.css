@@ -39,7 +39,8 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .menu .list-group .active .tit { background: rgba(255, 255, 255, 0.3); }
 .menu .list-group .active .tit:hover { background: rgba(255, 255, 255, 0.3); }
 .menu .list-group .hideMenu { padding: 10px; display: none; }
-.menu .list-group .hideMenu li a { line-height: 30px; font-size: 1rem; color: #b5d9fe; }
+.menu .list-group .hideMenu li a { line-height: 30px; font-size: 1.5rem; color: #b5d9fe; }
+.menu .list-group .hideMenu li a:hover { line-height: 30px; font-size: 1.5rem; font-weight: bold; color: #fff; }
 .menu .list-group .hideMenu li.active a { font-weight: bold; color: #fff; }
 
 .dataBox { width: 100%; }
@@ -200,5 +201,39 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .xinzengwanjia-page .tableBox table tr th:first-child, .activePlayer-page .tableBox table tr th:first-child, .effectPlayer-page .tableBox table tr th:first-child, .remain-page .tableBox table tr th:first-child { width: auto; }
 
 .remain-page .tableBox .time-tr { background: #dbe2e9; color: #4c789f; font-weight: bold; }
+
+.m-b-sm {
+  margin-bottom: 10px;
+}
+.fs24 {
+  font-size: 24px;
+}
+em {
+  font-size: 14px;
+  width: 30px;
+  margin: 0;
+  display: inline-block;
+  text-align: center;
+  color: #515d6e;
+}
+.btn-filter {
+  background-color: #2095f2;
+  color: #fff;
+}
+input[type="password"] {
+  -webkit-text-security: disc;
+}
+.form-control, .single-line {
+  background-color: #FFFFFF;
+  background-image: none;
+  border: 1px solid #b4b7bb;
+  border-radius: 1px;
+  color: inherit;
+  display: block;
+  padding: 6px 12px;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+  width: 100%;
+  font-size: 14px;
+}
 
 /*# sourceMappingURL=style.css.map */
