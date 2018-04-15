@@ -27,7 +27,8 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
         bindEvent: function () {
             this._super();
             var _this = this;
-            this.copyText('a[name="copy"]');
+            this.copyText('[name="copy"]');
+
             /**
              * 切换账号
              */

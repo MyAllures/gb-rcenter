@@ -42,7 +42,7 @@ function submitPromo(obj, options) {
     //判断是否是试玩账号，试玩账号无权参与
     var isDemo = sessionStorage.isDemo;
     if (isDemo == 'true') {
-        alert('试玩账号无权限参与活动');
+        toast('试玩账号无权限参与活动');
         return;
     }
     var code = options.dataCode;

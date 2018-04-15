@@ -135,4 +135,9 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 
 .mui-content-casino-list .casino-list .img-wrap { background: transparent; }
 
+.mui-title { color: #fff; }
+
+/* index-login-info */
+.login-info { background: url(images/icon-open-offcanvas.png) no-repeat right center/5px; color: #fff; }
+
 /*# sourceMappingURL=style.css.map */
