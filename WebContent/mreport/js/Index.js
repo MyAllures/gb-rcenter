@@ -10,6 +10,14 @@ define(['common/BasePage'], function (BasePage) {
 		init: function () {
             this.formSelector = "form";
             this._super();
+            var defaultIndex = "/daily/realTimeSummary.html";
+            if(window.top.location.hash!="") {
+                window.top.topPage.showPage(window.top.location.hash.substr(1));
+                this.lightUp();
+            } else {
+                window.top.location.hash = defaultIndex;
+                this.lightUp();
+            }
         },
 
         /**
@@ -31,6 +39,24 @@ define(['common/BasePage'], function (BasePage) {
             $('.list-group li').click(function() {
                 window.event.cancelBubble = true;
                 $(this).children().filter('.hideMenu').stop().slideToggle()
+            });
+
+            //菜单被点击后点亮
+            $('a[nav-target]').click(function() {
+
+            });
+        },
+
+        /**
+         * 点亮菜单
+         */
+        lightUp: function () {
+            var currentPage = window.top.location.hash.substr(1);
+            $("a[nav-target]").each(function() {
+                if($(this).attr("href").indexOf(currentPage)>=0) {
+                    $(this).parent().addClass('active');
+                    return false;
+                }
             });
         }
     });
