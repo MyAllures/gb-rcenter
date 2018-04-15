@@ -17,50 +17,36 @@
             $(this).next().slideToggle(400);
         });
 
-        //我能参加的活动
-        $(".getMyRankActivity").on("click", function () {
-            getMyRankActivity();
-            if (sessionStorage.is_login == "true") {
-                $(this).parent().hide();
-            }
+        //优惠类型切换
+        $("._vr_promo li").each(function(){
+            $(this).on("click","a",function(){
+                if(!$(this).parent().hasClass("active")){
+                    $(this).parent().siblings().removeClass("active");
+                    $(this).parent().addClass("active");
+                    var val = $(this).data("item");
+                    if (val=="_all_"){
+                        $("._vr_all").removeClass("hide");
+                        $("._vr_process").addClass("hide");
+                    }else {
+                        $("._vr_all").addClass("hide");
+                        $("._vr_process").removeClass("hide");
+                        $("._vr_actContain").addClass("hide");
+                        $("."+val).removeClass("hide");
+                    }
+                }
+            })
         });
-        //选择分类
-        $(".changeType").change(function (e) {
-            var val = $(e.target).val();
-            var type = $(e.target).data("type");
-            var commonSelector = "._vr_promo_check[data-type^='" + type + "']";
-            var typeSelector = "." + val + "[data-type^='" + type + "']";
-            if (val == "_all_") {
-                $(commonSelector).show();
-            } else {
-                $(commonSelector).hide();
-                $(typeSelector).show();
-            }
-        });
+
+        //初始化活动
         promoCheck();
+
+        //登录后改变申请状态
         if (sessionStorage.is_login == "true") {
             changeApplyStatus();
         }
-
-        //异步获取活动内容数据
-        $(".messageContent").on("click",function (e) {
-            if($(this).attr("disContent")==undefined || $(this).attr("disContent").indexOf("disContent")<0){
-                var promoId = $(this).parents("div").attr("id");
-                var id = promoId.substring(4,promoId.length);
-                $.ajax({
-                    url:"/ntl/activity/getByIdApplyActivity.html",
-                    type: "POST",
-                    dataType: "json",
-                    data:{searchId:id},
-                    success: function (data) {
-                        $(".messageContent_"+id).html(data.activityMessage);
-                    }
-                })
-                $(this).attr("disContent","disContent");
-            }
-
-        })
     });
+
+
 
     function promoCheck() {
         var nowTime = $("._user_time").attr("time");
@@ -108,21 +94,6 @@
         })
     }
 
-    function getMyRankActivity() {
-        if (sessionStorage.is_login == "true") {
-            $(".notfit").each(function (i, btn) {
-                $(btn).parents("._vr_promo_check").hide();
-            });
-            $('body,html').animate({scrollTop: 0}, 1000);
-
-        } else {
-            loginObj.getLoginPopup(function (bol) {
-                if (sessionStorage.is_login == "true") {
-                    window.location.href = "/promo.html";
-                }
-            });
-        }
-    }
 
     function changeApplyStatus() {
         var backwaterObj = $("._vr_promo_join").parents("._vr_promo_check[data-code^='back_water'][data-type='processing']");
@@ -208,14 +179,6 @@
         if (sessionStorage.is_login == "true") {
             if (code == "back_water" || code == "first_deposit" || code == "deposit_send") {
                 if (isRefresh) {
-                   /* BootstrapDialog.alert({
-                        title: "提示",
-                        type: BootstrapDialog.TYPE_WARNING,
-                        message: "参与中",
-                        callback: function () {
-                            window.location.href = "/promo.html";
-                        }
-                    });*/
                     layer.open({
                         content:'参与中',
                         title:'提示',
@@ -256,12 +219,7 @@
             });
         }
     }
-    function setDivCss() {
-        $('#containerOut').css({
-            "height": function () { return $(document).height(); },
-            "width": function () { return $(document).width(); }
-        });
-    }
+
 
     function applyActivities(aplyObj, isRefresh) {
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
@@ -296,36 +254,6 @@
 
         $("._msg").html('<p class="text-center">' + data.msg + '</p>');
 
-       /* var dialog = BootstrapDialog.show({
-            type: BootstrapDialog.TYPE_WARNING,
-            message: function (dialog) {
-                var $content = $(".promoTip").html();
-                return $content;
-            },
-            title: "消息",
-            closable: 'true',
-            buttons: [{
-                label: '好的',
-                cssClass: 'btn btn-info',
-                action: function (dialogItself) {
-                    if (isRefresh) {
-                        dialogItself.close();
-                        window.location.href = "/promo.html";
-                    } else {
-                        dialogItself.close();
-                    }
-                }
-            }, {
-                label: '查看优惠记录',
-                cssClass: 'btn btn-default',
-                action: function () {
-                    window.open(
-                            '${data.contextInfo.playerCenterContext}#/preferential/list.html',
-                            '_blank' // <- This is what makes it open in a new window.
-                    );
-                }
-            }]
-        });*/
         var dialog = layer.open({
             content:$(".promoTip").html(),
             title:'消息',
@@ -354,6 +282,7 @@
         });
     }
 
+    //进入对应的活动
     $(function(){
         var hash = window.location.hash;
         if(hash!=undefined){
