@@ -110,7 +110,7 @@
 .promo-detail-content .gb-imgs > .ct ul { padding: 0; margin: 0; list-style: none; }
 .promo-detail-content .gb-imgs > .ct ul li > a { width: 100%; line-height: 0; display: inline-block; }
 .promo-detail-content .gb-imgs > .ct ul li > a img { width: 100%; }
-.promo-detail-content .gb-imgs > .ct ul li > .ct { background-color: #fff; padding: 5px 15px; border-radius: 5px; margin-top: 5px; }
+.promo-detail-content .gb-imgs > .ct ul li > .ct {/* background-color: #fff;*/ padding: 5px 15px; border-radius: 5px; margin-top: 5px; }
 .promo-detail-content .gb-imgs > .ct ul li > .ct h5 { font-size: 14px; font-weight: normal; color: #8f8f94; position: relative; text-align: center; }
 .promo-detail-content .gb-imgs > .ct ul li > .ct h5 > i { display: block; border-bottom: 1px dashed #e2e2e2; position: absolute; top: 50%; left: 0; right: 0; }
 .promo-detail-content .gb-imgs > .ct ul li > .ct h5 span { display: inline-block; height: 23px; padding: 0 7px; border-radius: 3px; line-height: 23px; color: #fff; background-color: #1766bb; font-size: 12px; position: relative; z-index: 1; }
