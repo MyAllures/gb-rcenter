@@ -217,3 +217,9 @@
 }
 
 .casino-list-bar .mui-icon-back{color: #fff;}
+// 加载页样式
+.load-body{    background:#f2205f;
+    .mui-progressbar.mui-progressbar-infinite:before {
+        background: #f2205f;
+    }
+}

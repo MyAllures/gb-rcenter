@@ -115,4 +115,10 @@ header.mui-bar-nav .mui-action-back { color: #666; }
 
 .icon-gift { background: url(./images/icon-gift.png) no-repeat center; background-size: 20px auto; }
 
+.load-body { background: #fff; }
+.load-body .loading-page.load-bg .load-bar p { color: #333; }
+.load-body .loading-page.load-bg .load-bar-middle .btn-back { border: 1px solid #333; color: #333; }
+.load-body .loading-page.load-bg .load-bar-bottom .copy-right { color: #333; }
+.load-body .loading-page.load-bg .load-bar-bottom .tech-support { color: #333; }
+
 /*# sourceMappingURL=style.css.map */

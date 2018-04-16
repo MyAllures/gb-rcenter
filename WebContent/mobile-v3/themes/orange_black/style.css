@@ -168,4 +168,7 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .mui-bar-tab .mui-active .mui-icon { background-position-y: -45px; }
 .mui-bar-tab .mui-active .mui-icon.icon-home:after { background: url(images/footer-nav-icon.png) no-repeat -83px -43px/auto 80px; }
 
+.load-body { background: #ff7700; }
+.load-body .mui-progressbar.mui-progressbar-infinite:before { background: #ff7700; }
+
 /*# sourceMappingURL=style.css.map */
