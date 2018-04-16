@@ -2,7 +2,6 @@
  * 线上公共js支付
  */
 define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], function (CommonRecharge, RealName) {
-    var ajaxMap = {};
     return CommonRecharge.extend({
         realName: null,
         /**
@@ -47,7 +46,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
         showRandomAmountMsg: function () {
             var flag = $(this.formSelector).find("input[name='result.payerBank']:checked").attr("randomAmount");
             if (flag == "true") {
-               $("#rechargeDecimals").show();
+                $("#rechargeDecimals").show();
             } else {
                 $("#rechargeDecimals").hide();
             }
@@ -70,11 +69,46 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                 ele.valid();
             }
         },
+
         /**
-         * 立即存款
+         * 线上支付-统计存款失败次数
          * @param e
          * @param option
          */
+        sumFailureCount: function (e, option) {
+            var _this = this;
+            var _window = this.createWin();
+            window.top.topPage.newWindow = _window;
+            window.top.topPage.onlneSubmitOption = option ;
+            window.top.topPage.onlneSubmitE = e ;
+            window.top.topPage.ajax({
+                url: root + "/fund/recharge/online/sumFailureCount.html",
+                loading: true,
+                data: this.getCurrentFormData(e),
+                dataType: 'json',
+                success: function (data) {
+                    var failureCount = data.failureCount;
+                    if (failureCount >= 3) {
+                        $("#manyFailures").show();
+                        $("#backdrop").show();
+                        if (_window) {
+                            _window.close();
+                            window.top.topPage.newWindow = null;
+                        }
+                    }else{
+                        _this.submit(e, option);
+                    }
+                    $(e.currentTarget).unlock();
+                },
+                error: function () {
+                    if (_window) {
+                        _window.close();
+                        window.top.topPage.newWindow = null;
+                    }
+                }
+            });
+        },
+
         /**
          * 线上支付-立即存款
          * @param e
@@ -82,30 +116,56 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
          */
         submit: function (e, option) {
             var _this = this;
-            var _window = this.createWin();
+            if(!option){
+                option = window.top.topPage.onlneSubmitOption;
+                window.top.topPage.onlneSubmitOption = null ;
+            }
+            if(!e){
+                e = window.top.topPage.onlneSubmitE;
+                window.top.topPage.onlneSubmitE = null ;
+            }
+            var _window = window.top.topPage.newWindow ;
+            window.top.topPage.newWindow = null;
+            if (!_window) {
+                _window = _this.createWin();
+            }
             window.top.topPage.ajax({
                 url: option.url,
                 loading: true,
                 data: this.getCurrentFormData(e),
                 dataType: 'json',
                 success: function (data) {
-                    ajaxMap["ajaxData"] = data ;
-                    var failureCount = data.failureCount;
-                    if(failureCount >= 3){
+                    $("#manyFailures").hide();
+                    $("#backdrop").hide();
+                    var state = data.state;
+                    var msg = data.msg;
+                    if (state) {
+                        window.top.onlineTransactionNo = data.transactionNo;
+                        _window.location = data.payUrl;
+                    } else {
                         _window.close();
-                        $("#manyFailures").show();
-                        $("#backdrop").show();
-                    }else {
-                        _this.onlineContinueDeposit(e, option,_window);
                     }
+                    var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
+                    window.top.onlineFailMsg = msg;
+                    if (!option) {
+                        option = {};
+                    }
+                    var btnOption = option;
+                    btnOption.text = window.top.message.fund_auto['等待支付'];
+                    btnOption.target = url;
+                    btnOption.callback = "back";
+                    window.top.topPage.doDialog(e, btnOption);
                 },
-                error: function (data) {
-                    _window.close();
+                error: function () {
+                    if (_window) {
+                        _window.close();
+                        window.top.topPage.newWindow = null;
+                    }
                 }
             });
         },
 
-        createWin:function () {
+        createWin: function () {
             var $account = $("input[name=account]:checked");
             var isThird = $account.attr("isThird");
             var _window;
@@ -119,33 +179,6 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
         /**
          * 失败多次后仍继续存款
          */
-        onlineContinueDeposit:function(e,option,_window){
-            $("#manyFailures").hide();
-            $("#backdrop").hide();
-            var data = ajaxMap["ajaxData"];
-            if(!_window){
-                _window = this.createWin();
-            }
-            var state = data.state;
-            var msg = data.msg;
-            if (state) {
-                window.top.onlineTransactionNo = data.transactionNo;
-                _window.location = root + "/fund/recharge/online/pay.html?search.transactionNo=" + data.transactionNo;
-            } else {
-                _window.close();
-            }
-            var url = root + "/fund/recharge/online/onlinePending.html?state=" + state;
-            window.top.onlineFailMsg = msg;
-            if(!option){
-                option = {};
-            }
-            var btnOption = option;
-            btnOption.text = window.top.message.fund_auto['等待支付'];
-            btnOption.target = url;
-            btnOption.callback = "back";
-            window.top.topPage.doDialog(e, btnOption);
-        },
-
         asciiToUnicode: function (content) {
             var result = '';
             for (var i = 0; i < content.length; i++)

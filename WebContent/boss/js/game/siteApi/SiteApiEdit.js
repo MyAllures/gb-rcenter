@@ -128,6 +128,16 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
                 page.resizeDialog();
             });
 
+            $(".input-group input").on("click",function (e) {
+                var _val = $(this).val();
+                if(_val=="maintain"){
+                    $(".statusMaintain").removeClass("hide");
+                }else{
+                    $(".statusMaintain").addClass("hide");
+                    $(".statusMaintain input[name='siteApi.maintainStartTime']").val("");
+                    $(".statusMaintain input[name='siteApi.maintainEndTime']").val("");
+                }
+            });
 
         },
         changeCurrentLang:function(e,p){
@@ -192,8 +202,13 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
             if (!this.validateForm(e)) {
                 return false;
             }
+            window.top.topPage.showConfirmDynamic("消息","是否确认修改？","确认","取消",function (state) {
+                if(state){
+                    window.top.topPage.doAjax(e,opt);
+                }
+            });
 
-            return true;//this.changeApiTypeStatus(e,opt);
+            return false;//this.changeApiTypeStatus(e,opt);
         },
         /**
          * 自定义名称恢复默认

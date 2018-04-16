@@ -7,6 +7,14 @@
             loginObj.getLoginPopup();
             return;
         }
+        //游戏显示比例
+        if(window.screen.width<1920){
+            $(".wrapper").attr("data-width",4);
+            $(".wrapper").attr("data-height",3);
+        }else{
+            $(".wrapper").attr("data-width",16);
+            $(".wrapper").attr("data-height",9);
+        }
 
         $("html").addClass("game-detail-open");
 
@@ -195,6 +203,7 @@
         $('.closeCasinoGame').on('click',function(){
             $(this).parents('html').removeClass('game-detail-open');
             $('.game-info').removeClass('hide_G');
+            document.getElementById('box_playGameDemo_iframe').setAttribute('src', "");
             exitFullscreen();
         });
 
@@ -735,7 +744,105 @@
             }
         })
     }
-
+    function apiLoginReal(apiId, gameCode, apiTypeId) {
+        $.ajax({
+            type: "POST",
+            url: "/api/login.html?t=" + new Date().getTime().toString(36),
+            dataType: "JSON",
+            data: {
+                apiId: apiId,
+                gameCode: gameCode,
+                apiTypeId: apiTypeId,
+                gamesHall: window.location.href
+            },
+            success: function(data) {
+                if (data.loginSuccess) {
+                    var result = data.gameApiResult;
+                    if (result.defaultLink) {
+                        /*https协议的请求*/
+                        var protocol = window.location.protocol;
+                        if(protocol.indexOf("https:")>-1){
+                            if (apiTypeId == "2" || apiTypeId == "5") {
+                                if (window.localStorage) {
+                                    localStorage.re_url_casino = result.defaultLink;
+                                }
+                                document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
+                            }else if(apiTypeId == "4" && apiId=="22"){
+                                if (window.localStorage) {
+                                    localStorage.re_url_lottery = result.defaultLink;
+                                }
+                                window.location="/commonPage/gamePage/lottery-game.html?apiId="+apiId;
+                            }else{
+                                //处理https不兼容的情况
+                                /*游戏调转链接不支持https，所以不能嵌套在对应的-game.ftl里面*/
+                                window.location=result.defaultLink;
+                                return;
+                            }
+                        }else{
+                            /*http协议的请求*/
+                            if(apiTypeId == "3" && apiId =="10"){//BBIN 跳转特殊处理 跳转会不对应游戏类型
+                                window.location=result.defaultLink;
+                                return;
+                            }
+                            if (apiTypeId == "2" || apiTypeId == "5") {
+                                if (window.localStorage) {
+                                    localStorage.re_url_casino = result.defaultLink;
+                                }
+                                document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
+                            }else if(apiTypeId == "3"){
+                                if (window.localStorage) {
+                                    localStorage.re_url_sport = result.defaultLink;
+                                }
+                                window.location="/commonPage/gamePage/sport-game.html?apiId="+apiId;
+                            }else if(apiTypeId == "1"){
+                                if (window.localStorage) {
+                                    localStorage.re_url_live = result.defaultLink;
+                                }
+                                window.location="/commonPage/gamePage/live-game.html?apiId="+apiId;
+                            }else if(apiTypeId == "4"){
+                                if (window.localStorage) {
+                                    localStorage.re_url_lottery = result.defaultLink;
+                                }
+                                window.location="/commonPage/gamePage/lottery-game.html?apiId="+apiId;
+                            }
+                        }
+                    } else {
+                        var redirectUrl = result.links[apiTypeId];
+                        if (apiTypeId != "3") {
+                            redirectUrl = "/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                            if (window.localStorage) {
+                                localStorage.re_url = result.links[apiTypeId];
+                            }
+                        } else {
+                            redirectUrl = "/commonPage/gamePage/sport-game.html?apiId="+apiId;
+                            if (window.localStorage) {
+                                localStorage.re_url = result.links[apiTypeId];
+                            }
+                        }
+                        window.location=redirectUrl;
+                    }
+                    layer.closeAll();
+                } else {
+                    if (!data.loginSuccess &&( data.errMsg =='' || data.errMsg == null)){
+                        closeIframeAlert("游戏暂时无法登录，请稍候再试！");
+                        $("html",window.parent.document).removeClass("game-detail-open");//去除样式显示滚动条
+                    }else {
+                        closeIframeAlert(data.errMsg);
+                        $("html",window.parent.document).removeClass("game-detail-open");//去除样式显示滚动条
+                    }
+                }
+            },
+            error: function(error) {
+                if (error.status === 600) {
+                    window.close();
+                    loginObj.getLoginPopup();
+                }else {
+                    closeIframeAlert("游戏暂时无法登录，请稍候再试！");
+                    $("html",window.parent.document).removeClass("game-detail-open");//去除样式显示滚动条
+                }
+            }
+        });
+    }
 
     //底部游戏滚动效果
     function gameSlide() {

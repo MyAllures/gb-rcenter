@@ -159,10 +159,8 @@ function onlinePaySubmit(depositChannel) {
     var href = ""; //第三方支付页面路径
     if (depositChannel == "online") {
         url = "/wallet/deposit/online/deposit.html";
-        href = root + "/wallet/deposit/online/pay.html?pay=online&search.transactionNo=";
         $form = $("#onlineForm");
     } else {
-        href = root + "/wallet/deposit/online/scan/pay.html?pay=online&search.transactionNo=";
         $form = $("#scanForm");
         if ($("input[name='result.randomCash']").val()) {
             url = "/wallet/deposit/online/scan/scanRandomCodeSubmit.html"
@@ -201,7 +199,7 @@ function onlinePaySubmit(depositChannel) {
                 $("input[name='gb.token']").val(data.token);
                 if (state == true) {
                     var orderNo = data.orderNo;
-                    var payUrl = href + orderNo;
+                    var payUrl = data.payUrl;
                     if (newWindow) {
                         newWindow.location = payUrl;
                     } else {

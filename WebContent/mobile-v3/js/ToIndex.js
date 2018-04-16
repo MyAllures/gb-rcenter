@@ -10,13 +10,8 @@ $(function () {
 });
 
 function displayToIndex() {
-    var isOpen = $("input[name=isOpen]").val();
-    if(os != 'app_ios' && os !='app_android') {
-        $('div.load-bg').fadeIn();
-        toIndex(isOpen);
-    } else {
-        lazy2Index(isOpen);
-    }
+    $('div.load-bg').show();
+    toIndex();
 }
 
 function clickWelcome() {
@@ -30,35 +25,11 @@ function clickWelcome() {
 }
 
 
-function lazy2Index(isOpen) {
-    var b = "_OPEN_SPLASH";
-    var a = getCookie(b);
-    if (!a) {
-        $("div.load-bg").fadeIn();
-        setCookie(b, true, 0);
-        setTimeout(function () {
-            toIndex(isOpen);
-        }, 1000);
-    } else {
-        $("div.load-bg").fadeOut();
-        toIndex(isOpen);
-    }
-}
-
-/**
- * isOpen: 是否未开站
- */
-function toIndex(isOpen) {
-    var openTime = '2017-07-18 23:59:59';
-    var openTs = new Date(openTime.replace(/-/g, '/')).getTime();
-    var nowTs = new Date().getTime();
-    if (isOpen == 'true' && openTs >= nowTs) {
-        document.cookie = "ACCESS_TERMINAL=pc;expires=0";
-        window.location.replace(root + '/');
-    } else {
+function toIndex() {
+    setTimeout(function () {
         document.cookie = "ACCESS_TERMINAL=mobile;expires=0";
-        window.location.replace(root + '/mainIndex.html');
-    }
+        goToUrl(root + '/mainIndex.html');
+    }, 500);
 }
 
 window.addEventListener('load', function(e) {
