@@ -196,3 +196,20 @@
     background: url(./images/icon-gift.png) no-repeat center;
     background-size: 20px auto;
 }
+
+// 加载页样式
+.load-body{      background: #fff;
+    .loading-page.load-bg .load-bar p {
+        color: #333;
+    }
+    .loading-page.load-bg .load-bar-middle .btn-back {
+        border: 1px solid #333;
+        color: #333;
+    }
+    .loading-page.load-bg .load-bar-bottom .copy-right {
+        color: #333;
+    }
+    .loading-page.load-bg .load-bar-bottom .tech-support {
+        color: #333;
+    }
+}

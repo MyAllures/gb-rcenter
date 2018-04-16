@@ -121,4 +121,7 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 
 .casino-list-bar .mui-icon-back { color: #fff; }
 
+.load-body { background: #1b75d9; }
+.load-body .mui-progressbar.mui-progressbar-infinite:before { background: #1b75d9; }
+
 /*# sourceMappingURL=style.css.map */
