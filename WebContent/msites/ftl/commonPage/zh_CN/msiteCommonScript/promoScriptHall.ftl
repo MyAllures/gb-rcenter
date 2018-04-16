@@ -101,7 +101,7 @@
             $(obj).find("._vr_promo_join").text("参与中");
         });
         $.ajax({
-            url: "/ntl/activity/getPlayerActivityIds.html",
+            url: "/ntl/activityHall/getPlayerActivityIds.html",
             type: "POST",
             dataType: "json",
             success: function (data) {
@@ -225,7 +225,7 @@
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
         var searchId = $(aplyObj).parents("._vr_promo_check").data("searchid");
         $.ajax({
-            url: "/ntl/activity/applyActivities.html",
+            url: "/ntl/activityHall/applyActivities.html",
             type: "POST",
             dataType: "json",
             data: {
