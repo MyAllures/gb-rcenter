@@ -234,3 +234,9 @@
         }            
     }
 }
+// 加载页样式
+.load-body{    background:#14805e;
+    .mui-progressbar.mui-progressbar-infinite:before {
+        background: #14805e;
+    }
+}
