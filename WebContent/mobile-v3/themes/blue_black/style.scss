@@ -244,3 +244,9 @@
 .notice-alert .mui-popup-button {
     color: #1766bb;
 }
+// 加载页样式
+.load-body{background: #1b75d9;
+    .mui-progressbar.mui-progressbar-infinite:before {
+        background: #1b75d9;
+    }
+}

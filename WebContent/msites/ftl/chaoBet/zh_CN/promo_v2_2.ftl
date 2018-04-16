@@ -36,12 +36,6 @@
                 <li class="hisActivityButton hide"><a href="javascript:void(0)" data-item="historyActivitys">历史优惠</a>
                 </li>
             </ul>
-        <#-- <div class="search-bar">
-             <form>
-                 <div class="input-wrap"><input type="text" /><i class="icon-search"></i></div>
-                 <a href="javascript:void(0);" class="btn-search">搜索</a>
-             </form>
-         </div>-->
         </div>
         <div class="list-type2"> <!--列表类型二-->
             <div class="row">
@@ -52,7 +46,7 @@
                             <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain _vr_all promo-item ${am.activityClassifyKey}"
                                  data-type="processing" data-code="${am.code}" data-searchid="${am.searchId}"
                                  data-rank-id="<#if am.allRank?? && am.allRank>all<#elseif am.code=="back_water">backwater<#else >${am.rankid}</#if>">
-                                <img src="${imgPath(data.configInfo.domain,am.activityAffiliated)}"/>
+                                <img src="${imgPath(data.configInfo.domain,am.activityCover)}"/>
                                 <div class="promo-status processing"><i class="icon-clock"></i>进行中</div>
                                 <div class="shadow">
                                     <input class="_vr_promo_ostart" type="hidden" value="${am.startTime?long?string.computer}">
@@ -88,7 +82,7 @@
                             <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain _vr_process hide promo-item ${am.activityClassifyKey}"
                                  data-type="processing" data-code="${am.code}" data-searchid="${am.searchId}"
                                  data-rank-id="<#if am.allRank?? && am.allRank>all<#elseif am.code=="back_water">backwater<#else >${am.rankid}</#if>">
-                                <img src="${imgPath(data.configInfo.domain,am.activityAffiliated)}"/>
+                                <img src="${imgPath(data.configInfo.domain,am.activityCover)}"/>
                                 <div class="promo-status processing"><i class="icon-clock"></i>进行中</div>
                                 <div class="shadow">
                                     <input class="_vr_promo_ostart" type="hidden" value="${am.startTime?long?string.computer}">
@@ -124,7 +118,7 @@
                             <div id="cos_${his.id}" class="_vr_promo_check _vr_actContain promo-item <#if his.isDisplay?string('true','false')=='true'>historyActivitys</#if> actContain"
                                  data-type="over" data-code="${his.code}" data-searchid="${his.searchId}"
                                  data-rank-id="<#if his.allRank?? && his.allRank>all<#elseif his.code=="back_water">backwater<#else >${his.rankid}</#if>">
-                                <img src="${imgPath(data.configInfo.domain,his.activityAffiliated)}"/>
+                                <img src="${imgPath(data.configInfo.domain,his.activityCover)}"/>
                                 <div class="promo-status over"><i class="icon-clock"></i>已结束</div>
                                 <div class="shadow">
                                     <input class="_vr_promo_ostart" type="hidden" value="${his.startTime?long?string.computer}">
@@ -152,7 +146,7 @@
 <#include "footer.ftl">
 <#include "../../commonPage/commonFloat/gameAds.ftl">
 <#include "script.ftl">
-<#include "../../commonPage/zh_CN/msiteCommonScript/promoScript.ftl">
+<#include "../../commonPage/zh_CN/msiteCommonScript/promoScriptHall.ftl">
 <script>
     $(function(){
         $("._vr_promo li").each(function(){
