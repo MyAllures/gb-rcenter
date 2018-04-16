@@ -3691,7 +3691,7 @@ body.mine-user{color: #000;
     &.load-bg .load-bar-bottom .copy-right {
         font-size: 8px;
         color: #dcdcdd;
-        line-height: 20px;margin: 0;
+        line-height: 20px;margin: 20px 0 0 0;
     padding: 0;
     border: 0;
     }
@@ -3703,11 +3703,14 @@ body.mine-user{color: #000;
     }
     
     &.load-bg .load-bar-bottom .tech-support .icon-tech-support {
-        background: url(./images/tech-support.png) 0 0/50px;
+       background: url(./images/tech-support.png) 0 0/auto 20px no-repeat;
         display: inline-block;
-        width: 50px;
-        height: 11px;
-        vertical-align: middle
+        width: 80px;
+        height: 20px;
+        vertical-align: middle;
+        &.bdo{
+       background: url(./images/tech-support-bdo.png) 0 0/auto 20px no-repeat;
+        }
     }
     
     &.load-bg .load-bar-middle {
