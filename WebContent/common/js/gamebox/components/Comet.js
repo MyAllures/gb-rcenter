@@ -212,6 +212,9 @@ define([], function () {
                         }, 10000);
                     }
                 });
+            }else{
+                userParam[_this.LOCALE_TYPE] = _this.userParam[_this.LOCALE_TYPE];
+                _this.websocket.send(JSON.stringify(userParam));
             }
 
         },
@@ -413,12 +416,6 @@ define([], function () {
                 outThis.successCallBack.call();
             }
             outThis.isConnect = true;
-
-            var userParameter = {};
-            userParameter[outThis.SYNCHRONIZE_KEY] = outThis.SUBSCRIBE_VALUE;
-            userParameter[outThis.SUBSCRIBE_TYPE] = outThis.getSubscribeTypes();
-            userParameter[outThis.LOCALE_TYPE] = outThis.userParam[outThis.LOCALE_TYPE];
-            outThis.websocket.send(JSON.stringify(userParameter));
 
         },
         onWebsocketMessage: function (event) {
