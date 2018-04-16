@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <title><#if data.siteInfo.title?default('')!=''>${data.siteInfo.title}<#else >${data.siteInfo.siteName}</#if></title>
-<#include "head.include.ftl">
+    <#include "head.include.ftl">
     <style type="text/css">
         body {
             background: url("themes/promo/images/bg.png");
@@ -20,28 +20,27 @@
 <main class="main-promo">
     <div style="height: 410px;background: url(${data.configInfo.sitePath}/images/promo-banner.jpg) no-repeat center bottom;"></div>
     <!-- notice -->
-<#include "notice.ftl">
+    <#include "notice.ftl">
     <!-- Promo -->
     <section class="main-promo theme-white"> <!--主题切换 theme-black,theme-white-->
         <div class="promo-top-bar">
             <ul class="_vr_promo">
                 <li class="active"><a href="javascript:void(0);" data-item="_all_">所有活动</a></li>
-            <#if data.activityClassify??>
-                <#list data.activityClassify as classifies>
-                    <li data-filter="${classifies.key}" value="${classifies.key}">
-                        <a href="javascript:void(0);" data-item="${classifies.key}">${classifies.value}</a>
-                    </li>
-                </#list>
-            </#if>
-                <li class="hisActivityButton hide"><a href="javascript:void(0)" data-item="historyActivitys">历史优惠</a>
-                </li>
+                <#if data.activityClassify??>
+                    <#list data.activityClassify as classifies>
+                        <li data-filter="${classifies.key}" value="${classifies.key}">
+                            <a href="javascript:void(0);" data-item="${classifies.key}">${classifies.value}</a>
+                        </li>
+                    </#list>
+                </#if>
+                <li class="hisActivityButton hide"><a href="javascript:void(0)" data-item="historyActivitys">历史优惠</a></li>
             </ul>
         </div>
         <div class="list-type2"> <!--列表类型二-->
             <div class="row">
             <#if data.activityMessage??>
                 <#list data.activityMessage as am>
-                    <#if am.states!="finished" || (am.code=="back_water" && am.states!="finished")>
+                    <#if am.states!="finished">
                         <div class="col-3-1">
                             <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain _vr_all promo-item ${am.activityClassifyKey}"
                                  data-type="processing" data-code="${am.code}" data-searchid="${am.searchId}"
@@ -67,7 +66,7 @@
                                     </a>
                                 </div>
                                 <div class="promo-detail">
-                                ${am.activityDescription}
+                                    ${am.activityDescription}
                                 </div>
                             </div>
                         </div>

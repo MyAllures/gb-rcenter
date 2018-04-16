@@ -10,7 +10,7 @@
             $(".hisActivityButton").removeClass("hide");
         }
 
-        // 优惠手风琴
+        // 优惠手风琴-----活动大厅不用了
         $(".sidePromo dd").fadeOut(0);
         $(".sidePromo dt").click(function() {
             $(".sidePromo dd").not($(this).next()).slideUp('fast');
@@ -37,17 +37,17 @@
             })
         });
 
-        //初始化活动
+        //根据时间来初始化活动的按钮展现和状态
         promoCheck();
 
-        //登录后改变申请状态
+        //登录后改变按钮展现和状态
         if (sessionStorage.is_login == "true") {
             changeApplyStatus();
         }
     });
 
 
-
+    //根据时间来初始化活动的按钮等展现,还没有层级的概念
     function promoCheck() {
         var nowTime = $("._user_time").attr("time");
         $("._vr_promo_check").each(function () {
@@ -56,6 +56,7 @@
             var et = $this.find("._vr_promo_oend").val();
             var sTime = moment(Number(st)).utcOffset(sessionStorage.getItem("timezone"));
             var eTime = moment(Number(et)).utcOffset(sessionStorage.getItem("timezone"));
+            //填充小标题那里的开始时间和结束时间
             $this.find("._vr_promo_start").each(function () {
                 $(this).text(sTime.format($(this).data("format")));
             })
@@ -74,6 +75,7 @@
                 $this.find("._vr_promo_nostart").hide();
                 $this.find("._vr_promo_over").hide();
                 $this.find("._vr_promo_join").text("立即申请");
+                //倒计时
                 var endTimeVal = new Date(parseInt(et));
                 $this.find("._vr_promo_countdown").ccountdown(endTimeVal.getFullYear(), endTimeVal.getMonth() + 1, endTimeVal.getDate(), endTimeVal.getHours() + ':' + endTimeVal.getSeconds());
             } else if (nowTime > eTime) {
@@ -110,6 +112,7 @@
         });
     }
 
+    //该层级不能参加的活动添加disable属性和改变按钮提示
     function filterActyByPlayer(data) {
         var rankActvyObj = $("._vr_promo_check[data-rank-id][data-type='processing']");
         rankActvyObj.each(function (j, actObj) {
