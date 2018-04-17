@@ -380,6 +380,11 @@ function doEvent(obj, options) {
     } else if (opType == 'href') {
         goToUrl(options.target);
         $target.unlock();
+    } else if (opType == 'openWindow') { //新打开弹窗页面
+        var win = window.open(options.target);
+        if (!win) {
+            window.location.href = options.target;
+        }
     }
 }
 
