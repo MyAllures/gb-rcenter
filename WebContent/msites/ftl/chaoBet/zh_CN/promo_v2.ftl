@@ -134,7 +134,7 @@
                                  data-type="over" data-code="${his.code}" data-searchid="${his.searchId}"
                                  data-rank-id="<#if his.allRank?? && his.allRank>all<#elseif his.code=="back_water">backwater<#else >${his.rankid}</#if>">
                                 <img src="${imgPath(data.configInfo.domain,his.activityCover)}"/>
-                                <img class="promo-img" style="display: none;" src="${imgPath(data.configInfo.domain,am.activityAffiliated)}"/>
+                                <img class="promo-img" style="display: none;" src="${imgPath(data.configInfo.domain,his.activityAffiliated)}"/>
                                 <div class="promo-status over"><i class="icon-clock"></i>已结束</div>
                                 <div class="shadow">
                                     <input class="_vr_promo_ostart" type="hidden" value="${his.startTime?long?string.computer}">
@@ -146,9 +146,9 @@
                                     </a>
                                 </div>
                                 <div class="promo-detail">
-                                    <div class="tit">${am.activityName}</div>
+                                    <div class="tit">${his.activityName}</div>
                                     <div class="content">
-                                        ${am.activityDescription}
+                                        ${his.activityDescription}
                                     </div>
                                 </div>
                             </div>
