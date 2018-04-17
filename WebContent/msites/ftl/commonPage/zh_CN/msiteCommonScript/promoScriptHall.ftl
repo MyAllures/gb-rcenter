@@ -10,11 +10,19 @@
             $(".hisActivityButton").removeClass("hide");
         }
 
-        // 优惠手风琴-----活动大厅不用了
-        $(".sidePromo dd").fadeOut(0);
-        $(".sidePromo dt").click(function() {
-            $(".sidePromo dd").not($(this).next()).slideUp('fast');
-            $(this).next().slideToggle(400);
+        // 优惠手风琴
+        $(".list-type2 .btn-detail").on('click', function () {
+            $(this).toggleClass('open');
+            $(this).parents(".promo-item").find(".promo-detail").stop().slideToggle();
+        });
+
+        //切换主题
+        $("#toggleThemes").on('click', function () {
+            if ($('.main-promo').hasClass("theme-white")) {
+                $('.main-promo').removeClass("theme-white").addClass('theme-black');
+            } else {
+                $('.main-promo').removeClass("theme-black").addClass('theme-white');
+            }
         });
 
         //优惠类型切换
@@ -36,6 +44,13 @@
                 }
             })
         });
+
+        //进入对应的活动
+        var hash = window.location.hash;
+        if(hash!=undefined){
+            var id = hash.substr(1);
+            $("#"+id).find("img").trigger("click");
+        };
 
         //根据时间来初始化活动的按钮展现和状态
         promoCheck();
@@ -122,46 +137,24 @@
             oldClass = typeof oldClass=="undefined"?"":oldClass;
             var newClass = $(actObj).find("._vr_promo_join").data("newClass");
             newClass = typeof newClass=="undefined"?"":newClass;
-            if (($(actObj).data("code") == "first_deposit" || $(actObj).data("code") == "deposit_send") && flag) {
-                if (data.length < 1) {
-                    if ($(actObj).data("rankId") === "all") {
-                        $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " disabled").text("存款时申请");
-                    } else {
-                        $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " disabled notfit").text("未满足条件");
-                    }
-                } else {
-                    var isContain = false;
-                    for (var j = 0; j < data.length; j++) {
-                        if ($(actObj).data("searchid") === data[j]) {
-                            isContain = true;
-                        }
-                    }
-                    if (isContain || $(actObj).data("rankId") === "all") {
-                        $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " disabled").text("存款时申请");
-                    } else {
-                        $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " disabled notfit").text("未满足条件");
-                    }
+
+            if (data.length < 1) {
+                if ($(actObj).data("rankId") != "all" && flag) {
+                    $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " disabled notfit").text("未满足条件");
                 }
             }
-            if ($(actObj).data("code") == "regist_send" || $(actObj).data("code") == "relief_fund" || $(actObj).data("code") == "profit_loss"
-                    || $(actObj).data("code") == "effective_transaction"|| $(actObj).data("code") == "money") {
-                if (data.length < 1) {
-                    if ($(actObj).data("rankId") != "all" && flag) {
-                        $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " disabled notfit").text("未满足条件");
+            if (data.length > 0 && $(actObj).data("rankId") != "all" && flag) {
+                var isContain = false;
+                for (var j = 0; j < data.length; j++) {
+                    if ($(actObj).data("searchid") === data[j]) {
+                        isContain = true;
                     }
                 }
-                if (data.length > 0 && $(actObj).data("rankId") != "all" && flag) {
-                    var isContain = false;
-                    for (var j = 0; j < data.length; j++) {
-                        if ($(actObj).data("searchid") === data[j]) {
-                            isContain = true;
-                        }
-                    }
-                    if (!isContain) {
-                        $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " disabled notfit").text("未满足条件");
-                    }
+                if (!isContain) {
+                    $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " disabled notfit").text("未满足条件");
                 }
             }
+
         });
     }
 
@@ -180,7 +173,7 @@
             return false;
         }
         if (sessionStorage.is_login == "true") {
-            if (code == "back_water" || code == "first_deposit" || code == "deposit_send") {
+            if (code == "back_water") {
                 if (isRefresh) {
                     layer.open({
                         content:'参与中',
@@ -247,21 +240,28 @@
         if (typeof data.state == "undefined") {
             return false;
         }
+        var content;
+        var title;
+        var skin;
+        var area = ['640px', '397px'];
         if (data.state) {
-            $("._fail").hide();
-            $("._success").show();
+            content = $(".promoSuccessTip").html();
+            title = "申请成功";
+            skin = "layui-layer-success";
         } else {
-            $("._success").hide();
-            $("._fail").show();
+            content = $(".promoFailureTip").html();
+            title = "申请失败";
+            skin =  "layui-layer-danger";
         }
 
         $("._msg").html('<p class="text-center">' + data.msg + '</p>');
 
         var dialog = layer.open({
-            content:$(".promoTip").html(),
-            title:'消息',
-            skin:'layui-layer-brand',
-            btn:["好的","查看优惠记录"],
+            content:content,
+            title:title,
+            skin:skin,
+            area: area,
+            btn:["联系客服","查看优惠记录"],
             success: function(layer){
                 // 重写关闭按钮
                 $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
@@ -285,12 +285,4 @@
         });
     }
 
-    //进入对应的活动
-    $(function(){
-        var hash = window.location.hash;
-        if(hash!=undefined){
-        var id = hash.substr(1);
-        $("#"+id).find("img").trigger("click");
-        }
-    })
 </script>

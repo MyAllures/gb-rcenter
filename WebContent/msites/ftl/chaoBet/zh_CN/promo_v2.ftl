@@ -48,12 +48,13 @@
             <div class="row">
             <#if data.activityMessage??>
                 <#list data.activityMessage as am>
-                    <#if am.states!="finished" || (am.code=="back_water" && am.states!="finished")>
+                    <#if am.states!="finished">
                         <div class="col-3-1">
                             <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain _vr_all promo-item ${am.activityClassifyKey}"
                                  data-type="processing" data-code="${am.code}" data-searchid="${am.searchId}"
                                  data-rank-id="<#if am.allRank?? && am.allRank>all<#elseif am.code=="back_water">backwater<#else >${am.rankid}</#if>">
                                 <img src="${imgPath(data.configInfo.domain,am.activityCover)}"/>
+                                <img class="promo-img" style="display: none;" src="${imgPath(data.configInfo.domain,am.activityAffiliated)}"/>
                                 <div class="promo-status processing"><i class="icon-clock"></i>进行中</div>
                                 <div class="shadow">
                                     <input class="_vr_promo_ostart" type="hidden" value="${am.startTime?long?string.computer}">
@@ -74,7 +75,10 @@
                                     </a>
                                 </div>
                                 <div class="promo-detail">
-                                ${am.activityDescription}
+                                    <div class="tit">${am.activityName}</div>
+                                    <div class="content">
+                                        ${am.activityDescription}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -84,12 +88,13 @@
 
             <#if data.processActivityMessage??>
                 <#list data.processActivityMessage as am>
-                    <#if am.states!="finished" || (am.code=="back_water" && am.states!="finished")>
+                    <#if am.states!="finished">
                         <div class="col-3-1">
                             <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain _vr_process hide promo-item ${am.activityClassifyKey}"
                                  data-type="processing" data-code="${am.code}" data-searchid="${am.searchId}"
                                  data-rank-id="<#if am.allRank?? && am.allRank>all<#elseif am.code=="back_water">backwater<#else >${am.rankid}</#if>">
                                 <img src="${imgPath(data.configInfo.domain,am.activityCover)}"/>
+                                <img class="promo-img" style="display: none;" src="${imgPath(data.configInfo.domain,am.activityAffiliated)}"/>
                                 <div class="promo-status processing"><i class="icon-clock"></i>进行中</div>
                                 <div class="shadow">
                                     <input class="_vr_promo_ostart" type="hidden" value="${am.startTime?long?string.computer}">
@@ -110,7 +115,10 @@
                                     </a>
                                 </div>
                                 <div class="promo-detail">
-                                ${am.activityDescription}
+                                    <div class="tit">${am.activityName}</div>
+                                    <div class="content">
+                                        ${am.activityDescription}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -126,6 +134,7 @@
                                  data-type="over" data-code="${his.code}" data-searchid="${his.searchId}"
                                  data-rank-id="<#if his.allRank?? && his.allRank>all<#elseif his.code=="back_water">backwater<#else >${his.rankid}</#if>">
                                 <img src="${imgPath(data.configInfo.domain,his.activityCover)}"/>
+                                <img class="promo-img" style="display: none;" src="${imgPath(data.configInfo.domain,am.activityAffiliated)}"/>
                                 <div class="promo-status over"><i class="icon-clock"></i>已结束</div>
                                 <div class="shadow">
                                     <input class="_vr_promo_ostart" type="hidden" value="${his.startTime?long?string.computer}">
@@ -137,7 +146,10 @@
                                     </a>
                                 </div>
                                 <div class="promo-detail">
-                                ${his.activityDescription}
+                                    <div class="tit">${am.activityName}</div>
+                                    <div class="content">
+                                        ${am.activityDescription}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -198,6 +210,13 @@
             } else {
                 $('.main-promo').removeClass("theme-black").addClass('theme-white');
             }
+        });
+        $(".list-type1 .btn-detail").on("click", function () {
+            var $detail = $(this).parents('.promo-item').find('.promo-detail');
+            var img = $(this).parents('.promo-item').find('.promo-img').attr('src');
+            var cont = $detail.html();
+            var content = '<img class="promo-img" src=' + img + '/>' + '<div class="promo-content" id="promo-content">' + cont + '<i class="icon-goUp"></i></div>';
+            dialogPromoDetail(content, '活动详细', 'layui-layer-info', ['640px', '530px'], false, true)
         });
         // 默认配置
         layer.config({
@@ -295,13 +314,6 @@
                     '</div>' +
                     '</div>';
             mayApply(content, '提示', 'layui-layer-warning', ['640px', '397px'], false, true);
-        });
-        $(".list-type1 .btn-detail").on("click", function () {
-            var $detail = $(this).parents('.promo-item').find('.promo-detail');
-            var img = $(this).parents('.promo-item').find('.promo-img').attr('src');
-            var cont = $detail.html();
-            var content = '<img class="promo-img" src=' + img + '/>' + '<div class="promo-content" id="promo-content">' + cont + '<i class="icon-goUp"></i></div>';
-            dialogPromoDetail(content, '活动详细', 'layui-layer-info', ['640px', '530px'], false, true)
         });
     });
 
