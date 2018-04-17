@@ -181,10 +181,6 @@
 <script>
 
     $(function () {
-        $(".list-type2 .btn-detail").on('click', function () {
-            $(this).toggleClass('open');
-            $(this).parents(".promo-item").find(".promo-detail").stop().slideToggle();
-        });
         $("#toggleThemes").on('click', function () {
             if ($('.main-promo').hasClass("theme-white")) {
                 $('.main-promo').removeClass("theme-white").addClass('theme-black');
