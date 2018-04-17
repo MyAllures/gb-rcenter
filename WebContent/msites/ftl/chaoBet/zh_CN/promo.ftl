@@ -34,7 +34,7 @@
             <#if data.activityMessage??>
                 <#list data.activityMessage as am>
                     <#if am.states!="finished">
-                        <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain actContain"
+                        <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain actContain ${am.activityClassifyKey}"
                              data-type="processing" data-code="${am.code}" data-searchid="${am.searchId}"
                              data-rank-id="<#if am.allRank?? && am.allRank>all<#elseif am.code=="back_water">backwater<#else >${am.rankid}</#if>">
                             <dt>
