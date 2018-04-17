@@ -276,7 +276,7 @@
                 resultId: searchId
             },
             success: function (data) {
-                showWin(data, isRefresh);
+                showApplyActivityResult(data, isRefresh);
                 $(aplyObj).removeAttr("disabled");
 
             },
@@ -286,10 +286,11 @@
         })
     }
 
-    function showWin(data, isRefresh) {
+    function showApplyActivityResult(data, isRefresh) {
         if (typeof data.state == "undefined") {
             return false;
         }
+        $("._msg").html('<p class="text-center">' + data.msg + '</p>');
         var content;
         var title;
         var skin;
@@ -303,8 +304,6 @@
             title = "申请失败";
             skin =  "layui-layer-danger";
         }
-
-        $("._msg").html('<p class="text-center">' + data.msg + '</p>');
 
         var dialog = layer.open({
             content:content,
