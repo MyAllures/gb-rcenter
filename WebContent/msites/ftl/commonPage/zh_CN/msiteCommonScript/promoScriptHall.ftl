@@ -261,7 +261,6 @@
             title:title,
             skin:skin,
             area: area,
-            btn:["联系客服","查看优惠记录"],
             success: function(layer){
                 // 重写关闭按钮
                 $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
