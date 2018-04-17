@@ -165,7 +165,7 @@
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
             },
-            end: function () {
+            yes: function () {
                 apiLoginReal(apiId,gameCode,apiTypeId);
             }
         });
