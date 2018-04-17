@@ -192,6 +192,8 @@
                 }
                 return false;
 
+            }else if (code == 'effective_transaction' || code == 'profit_loss') {
+                fetchActivityProcess(aplyObj, isRefresh);
             } else {
                 if (isRefresh&&code!='money') {
                     applyActivities(aplyObj, true);
@@ -215,6 +217,52 @@
         }
     }
 
+
+    function fetchActivityProcess(aplyObj, isRefresh) {
+        var code = $(aplyObj).parents("._vr_promo_check").data("code");
+        var searchId = $(aplyObj).parents("._vr_promo_check").data("searchid");
+        $.ajax({
+            url: "/ntl/activityHall/fetchActivityProcess.html",
+            type: "POST",
+            dataType: "json",
+            data: {
+                code: code,
+                resultId: searchId
+            },
+            success: function (data) {
+                showActivityProcessDialog(aplyObj, isRefresh);
+                $(aplyObj).removeAttr("disabled");
+            }
+        });
+
+    }
+
+    function showActivityProcessDialog(aplyObj, isRefresh) {
+        var dialog = layer.open({
+            content:"有效投注額或者盈虧送",
+            title:"信息",
+            skin:"layui-layer-danger",
+            area: ['640px', '500px'],
+            btn: ["聯系客服","申請活動"],
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("normal-dialog");
+            },
+            yes: function () {
+                if (isRefresh) {
+                    layer.close(dialog);
+                    window.location.href = "/promo.html";
+                } else {
+                    layer.close(dialog);
+                }
+            },
+            btn2: function () {
+                applyActivities(aplyObj, isRefresh);
+            }
+        });
+    }
 
     function applyActivities(aplyObj, isRefresh) {
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
