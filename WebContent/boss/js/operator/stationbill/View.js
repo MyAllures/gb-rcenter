@@ -64,7 +64,7 @@ define(['common/BaseListPage'], function(BaseListPage) {
                                 }
                                 $("#API_"+data.apiTypeId+data.apiId).html("<b>-["+data.profitLoss.toFixed(2)+"]</b>");
                                 var orgin_val = $("#ORGIN_"+data.apiTypeId+data.apiId).text();
-                                var orginVal = parseFloat(orgin_val);
+                                var orginVal = parseFloat(orgin_val.replace(/,/g,""));
                                 var diff  = dataVal - orginVal;
                                 $("#DIFF_"+data.apiTypeId+data.apiId).html("<b>="+diff.toFixed(2)+"</b>");
                             }else{
