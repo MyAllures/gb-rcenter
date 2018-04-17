@@ -215,7 +215,7 @@
             var $detail = $(this).parents('.promo-item').find('.promo-detail');
             var img = $(this).parents('.promo-item').find('.promo-img').attr('src');
             var cont = $detail.html();
-            var content = '<img class="promo-img" src=' + img + '/>' + '<div class="promo-content" id="promo-content">' + cont + '<i class="icon-goUp"></i></div>';
+            var content = '<img class="promo-img" src=' + img + '>' + '<div class="promo-content" id="promo-content">' + cont + '<i class="icon-goUp"></i></div>';
             dialogPromoDetail(content, '活动详细', 'layui-layer-info', ['640px', '530px'], false, true)
         });
         // 默认配置
