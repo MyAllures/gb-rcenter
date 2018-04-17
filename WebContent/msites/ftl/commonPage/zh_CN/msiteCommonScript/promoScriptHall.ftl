@@ -38,8 +38,8 @@
                     }else {
                         $("._vr_all").addClass("hide");
                         $("._vr_process").removeClass("hide");
-                        $("._vr_actContain").addClass("hide");
-                        $("."+val).removeClass("hide");
+                        $("._vr_actContain").parent().addClass("hide");
+                        $("."+val).parent().removeClass("hide");
                     }
                 }
             })
