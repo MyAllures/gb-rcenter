@@ -166,7 +166,6 @@
         }
         if(code!='money'){
             ctime++;
-
         }
         var nowTime = $("._user_time").attr("time");
         if ($(aplyObj).parents("._vr_promo_check").find("._vr_promo_ostart").val() > nowTime || $(aplyObj).parents("._vr_promo_check").find("._vr_promo_oend").val() < nowTime) {
@@ -231,6 +230,9 @@
             success: function (data) {
                 showWin(data, isRefresh);
                 $(aplyObj).removeAttr("disabled");
+
+            },
+            error: function () {
                 ctime--;
             }
         })
