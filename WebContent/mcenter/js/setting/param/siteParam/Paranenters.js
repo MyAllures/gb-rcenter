@@ -583,6 +583,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         getSmsInterfaceParamDateForm:function (e,opt) {
             return $("input,textarea","#smsSetting").serialize();
         },
+        getIdCard:function (e,opt) {
+            return $("input","#idCard").serialize();
+        },
         /**
          * 获取统计代码表单
          * @param e
@@ -897,6 +900,20 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 return false;
             }else {
                 e.page.showPopover(e,{},"success","保存成功",true);
+                return true;
+            }
+        },
+        /*
+         * 验证联系方式
+         *
+         * */
+        validationIdcard:function (e) {
+            var reg = new RegExp("^[0-9]{0,20}$");//验证电话号码
+            var idcard=$("input[name='result.idcard']").val();
+            if (idcard!=""&&!reg.test(idcard)){
+                e.page.showPopover(e,{},"warning","坐席号不合法,请输入0-20位纯数字",true);
+                return false;
+            }else {
                 return true;
             }
         },

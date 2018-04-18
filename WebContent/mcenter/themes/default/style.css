@@ -582,6 +582,14 @@ font-weight: bold; */
   padding-right: 6px;
   text-shadow: none;
 }
+.btn-filter.btn-outline .badge{
+  background-color: #2095f2;
+  color: #FFFFFF;
+}
+.btn-filter.btn-outline:hover .badge,.btn-filter .badge{
+  background-color: #FFFFFF;
+  color: #2095f2;
+}
 .label-primary,
 .badge-primary {
   background-color: #2095f2;
