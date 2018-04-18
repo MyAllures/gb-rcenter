@@ -293,6 +293,7 @@
     }
 
     function applyActivities(aplyObj, isRefresh) {
+       /* var transactionNo = $('[name="transactionNos"]').val();*/
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
         var searchId = $(aplyObj).parents("._vr_promo_check").data("searchid");
         $.ajax({
