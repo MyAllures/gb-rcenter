@@ -202,13 +202,13 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
                 });
             data.map(obj => {
                 chart.guide().text({
-                position: [ obj.title, 0 ],
-                content: obj.title + ' ',
-                style: {
-                    textAlign: 'right'
-                }
+                    position: [ obj.title, 0 ],
+                    content: obj.title + ' ',
+                    style: {
+                        textAlign: 'right'
+                    }
+                });
             });
-        });
             chart.render();
         },
 
