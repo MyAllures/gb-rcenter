@@ -1,5 +1,5 @@
 var customerUrl;
-
+var verifyCallBack;
 
 /**
  * 修改安全码
@@ -310,7 +310,7 @@ function setRealName() {
             }
         };
         muiAjax(options);
-    }else{
+    } else {
         return false;
     }
 }
@@ -342,21 +342,6 @@ function setSecurityPassword(callback, obj) {
     var content = '<input type="password" name="pwd1" placeholder="' + window.top.message.passport_auto['输入安全密码'] + '" maxlength="6">'
         + '<input type="password" name="pwd2" placeholder="' + window.top.message.passport_auto['确认安全密码'] + '" maxlength="6">';
 
-    /* layer.open({
-     title: window.top.message.passport_auto['设置安全密码'],
-     content: content,
-     btn: [window.top.message.passport_auto['确定'], window.top.message.passport_auto['取消']],
-     yes: function (index) {
-     var pwd1 = $('[name="pwd1"]').val();
-     var pwd2 = $('[name="pwd2"]').val();
-     var isOk = checkSecurityPasswordForm(pwd1, pwd2);
-     if (isOk) {
-     saveSecurityPassword(pwd1, callback);
-     layer.close(index);
-     }
-     }
-     });*/
-
     var options = {//创建一个div
         title: window.top.message.passport_auto['设置安全密码'],
         confirm: content,
@@ -384,8 +369,8 @@ function securityCode() {
 /**
  * 验证安全密码
  */
-function verifySecurityPassword (captcha, callback) {
-    var _this = this;
+function verifySecurityPassword(captcha, callback) {
+    verifyCallBack = callback;
     var hideCode = captcha ? 'mui-show' : 'mui-hide';
     var content = '<input type="password" id="perPwd" autofocus="" placeholder="'
         + window.top.message.passport_auto['请输入安全密码'] + '" maxlength="6">'
@@ -394,67 +379,16 @@ function verifySecurityPassword (captcha, callback) {
         + '<img class="code" src="' + root + '/captcha/privilege.html?t="' + new Date().getTime() + '></div>'
         + '<input type="hidden" name="needCaptcha" value="' + captcha + '">';
 
-    layer.open({
+    var options = {
+        confirm: content,
         title: window.top.message.passport_auto['安全密码'],
-        content: content,
-        btn: [window.top.message.passport_auto['确定'], window.top.message.passport_auto['取消']],
-        yes: function(index) {
-            var pwd = $('#perPwd').val();
-            var code = $('#perCode').val();
-
-            if (_this.checkPasswordForm(pwd, code)) {
-                mui.ajax(root + '/passport/securityPassword/verifySecurityPassword.html', {
-                    dataType: 'json',
-                    data: {'pwd': pwd, 'code': code},
-                    type: 'post',
-                    beforeSend: function () {
-                        _this.disableBtn();
-                    },
-                    success: function (data) {
-                        var state = data.state;
-                        var captcha = data.captcha;
-                        if (state == '100') {
-                            if(callback && callback instanceof Function) {
-                                callback();
-                            }
-                            layer.close(index);
-                        } else if (state == '99') {
-                            layer.close(index);
-                            _this.freezeTip(data);
-                        } else if (state == '98') {
-                            var times = data.times;
-                            $('#perPwd').focus();
-                            if (times > 3)
-                                _this.toast(window.top.message.passport_auto['密码错误1']);
-                            else
-                                _this.toast(window.top.message.passport_auto['密码错误2'].replace('{0}', times));
-
-                            $('#perPwd').val('').select();
-                            if (captcha) {
-                                $('.pop_code').removeClass('mui-hide').addClass('mui-show');
-                                $('[name=needCaptcha]').val(true);
-                            }
-                        } else if (state == '97') {
-                            _this.toast(window.top.message.passport_auto['验证码错误']);
-                            $('#perCode').focus();
-                            $('img.code').attr('src', _this.genCode());
-                            $('#perCode').val('').select();
-                        }
-                    },
-                    complete: function () {
-                        _this.enableBtn();
-                    }
-                });
-            }
-        },
-        no: function(index) {
-            layer.close(index);
-        }
-    });
+        btnArray: [window.top.message.passport_auto['确定'], window.top.message.passport_auto['取消']],
+        func: verifySuccess
+    };
+    showConfirmMsg(options);
 
     inputNumber.init($('#perPwd'), {negative: false, decimal: false, intSize: 6});
-
-    if (_this.os == 'android') {
+    if (os == 'android') {
         $('img.code').css({'margin-top': '-1px'});
         var ua = navigator.userAgent;
         if (/(UCBrowser)/i.test(ua)) {
@@ -462,10 +396,129 @@ function verifySecurityPassword (captcha, callback) {
             $('img.code').css({'margin-top': '1px'});
         }
     }
-
     mui(".layermcont").on('tap', 'img.code', function (e) {
-        $(this).attr('src', _this.genCode());
+        $(this).attr('src', genCode());
     });
+}
+
+function checkPasswordForm(pwd, code) {
+    if (pwd == null || pwd.trim().length == 0) {
+        toast(window.top.message.passport_auto['请输入安全密码']);
+        $('#perPwd').focus();
+        return false;
+    } else if (pwd.trim().length < 6) {
+        toast(window.top.message.passport_auto['安全密码长度']);
+        $('#perPwd').focus();
+        return false;
+    }
+
+    var captcha = $('[name=needCaptcha]').val();
+    if (captcha == 'true') {
+        if (code == null || code.trim().length == 0) {
+            toast(window.top.message.passport_auto['请输入验证码']);
+            $('#perCode').focus();
+            return false;
+        } else if (code.trim().length < 4) {
+            toast(window.top.message.passport_auto['请输入正确的验证码']);
+            $('#perCode').focus();
+            return false;
+        }
+    }
+    return true;
+}
+
+function verifySuccess(callback) {
+    callback = verifyCallBack;
+    var pwd = $('#perPwd').val();
+    var code = $('#perCode').val();
+
+    if (checkPasswordForm(pwd, code)) {
+        var options = {
+            url: root + '/passport/securityPassword/verifySecurityPassword.html',
+            dataType: 'json',
+            data: {'pwd': pwd, 'code': code},
+            type: 'post',
+            success: function (data) {
+                var state = data.state;
+                var captcha = data.captcha;
+                if (state == '100') {
+                    if (callback && callback instanceof Function) {
+                        callback();
+                    }
+                    //layer.close(index);
+                } else if (state == '99') {
+                    //layer.close(index);
+                    freezeTip(data);
+                } else if (state == '98') {
+                    var times = data.times;
+                    $('#perPwd').focus();
+                    if (times > 3) {
+                        toast(window.top.message.passport_auto['密码错误1']);
+                    }
+                    else {
+                        toast(window.top.message.passport_auto['密码错误2'].replace('{0}', times));
+                    }
+                    $('#perPwd').val('').select();
+                    if (captcha) {
+                        $('.pop_code').removeClass('mui-hide').addClass('mui-show');
+                        $('[name=needCaptcha]').val(true);
+                    }
+                } else if (state == '97') {
+                    toast(window.top.message.passport_auto['验证码错误']);
+                    $('#perCode').focus();
+                    $('img.code').attr('src', genCode());
+                    $('#perCode').val('').select();
+                }
+            }
+        };
+        muiAjax(options);
+        /*mui.ajax(root + '/passport/securityPassword/verifySecurityPassword.html', {
+         dataType: 'json',
+         data: {'pwd': pwd, 'code': code},
+         type: 'post',
+         beforeSend: function () {
+         _this.disableBtn();
+         },
+         success: function (data) {
+         var state = data.state;
+         var captcha = data.captcha;
+         if (state == '100') {
+         if (callback && callback instanceof Function) {
+         callback();
+         }
+         layer.close(index);
+         } else if (state == '99') {
+         layer.close(index);
+         _this.freezeTip(data);
+         } else if (state == '98') {
+         var times = data.times;
+         $('#perPwd').focus();
+         if (times > 3)
+         _this.toast(window.top.message.passport_auto['密码错误1']);
+         else
+         _this.toast(window.top.message.passport_auto['密码错误2'].replace('{0}', times));
+
+         $('#perPwd').val('').select();
+         if (captcha) {
+         $('.pop_code').removeClass('mui-hide').addClass('mui-show');
+         $('[name=needCaptcha]').val(true);
+         }
+         } else if (state == '97') {
+         _this.toast(window.top.message.passport_auto['验证码错误']);
+         $('#perCode').focus();
+         $('img.code').attr('src', _this.genCode());
+         $('#perCode').val('').select();
+         }
+         },
+         complete: function () {
+         _this.enableBtn();
+         }
+         });*/
+    }
+}
+
+function genCode() {
+    return root + '/captcha/privilege.html';
 }
 
 function checkSecurityPasswordForm(pwd1, pwd2) {
@@ -542,6 +595,35 @@ function saveSecurityPassword(pwd) {
                 }, 2000);
             } else {
                 toast(window.top.message.passport_auto['连接超时']);
+            }
+        }
+    };
+    muiAjax(options);
+}
+
+/** 检测安全密码状态 */
+function checkSecurityPassword(callback) {
+    var options = {
+        url: root + '/passport/securityPassword/checkSecurityPassword.html',
+        type: 'POST',
+        success: function (data) {
+            var d = eval('(' + JSON.stringify(data) + ')');
+            var state = d.state;
+            switch (state) {
+                case "96":
+                    setSecurityPassword(callback);
+                    break;
+                case "99":
+                    freezeTip(d);
+                    break;
+                case "100":
+                    if (callback && callback instanceof Function) {
+                        callback();
+                    }
+                    break;
+                default:
+                    verifySecurityPassword(typeof d.captcha == 'undefined' ? false : d.captcha, callback);
+                    break;
             }
         }
     };

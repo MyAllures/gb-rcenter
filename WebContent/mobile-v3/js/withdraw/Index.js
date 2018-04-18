@@ -225,10 +225,9 @@ function submitWithdraw() {
     var errMsg = errorMap.get('errMsg');
     if (!errMsg) {
         closeConfirmDialog();
-        /*window.top.page.security.checkSecurityPassword(function () {
+        checkSecurityPassword(function () {
             comitWithdraw();
-        });*/
-        comitWithdraw();
+        });
     } else {
         toast(errMsg);
     }
