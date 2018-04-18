@@ -11,9 +11,9 @@
 <c:set var="views" value='<%=I18nTool.getI18nMap(SessionManagerCommon.getLocale().toString()).get("views") %>'/>
 
 <c:set var="key" value="betType.${apiId}.${fn:replace(betType, ' ', '')}"/>
-<if test="${empty views.sportsbook[key]}">
+<c:if test="${empty views.sportsbook[key]}">
     ${betType}
-</if>
+</c:if>
 ${views.sportsbook[key]}
 <br/>
 <c:set var="key" value="oddsType.${oddsType}"/>

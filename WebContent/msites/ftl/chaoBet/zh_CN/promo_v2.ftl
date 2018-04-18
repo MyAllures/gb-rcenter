@@ -49,12 +49,12 @@
             <#if data.activityMessage??>
                 <#list data.activityMessage as am>
                     <#if am.states!="finished">
-                        <div class="col-3-1">
-                            <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain _vr_all promo-item ${am.activityClassifyKey}"
+                        <div class="col-3-1 _vr_all">
+                            <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain promo-item"
                                  data-type="processing" data-code="${am.code}" data-searchid="${am.searchId}"
                                  data-rank-id="<#if am.allRank?? && am.allRank>all<#elseif am.code=="back_water">backwater<#else >${am.rankid}</#if>">
-                                <img src="${imgPath(data.configInfo.domain,am.activityCover)}"/>
-                                <img class="promo-img" style="display: none;" src="${imgPath(data.configInfo.domain,am.activityAffiliated)}"/>
+                                <img src="${imgPath(data.configInfo.domain,am.activityAffiliated)}"/>
+                                <img class="promo-img" style="display: none;" src="${imgPath(data.configInfo.domain,am.activityCover)}"/>
                                 <div class="promo-status processing"><i class="icon-clock"></i>进行中</div>
                                 <div class="shadow">
                                     <input class="_vr_promo_ostart" type="hidden" value="${am.startTime?long?string.computer}">
@@ -89,12 +89,12 @@
             <#if data.processActivityMessage??>
                 <#list data.processActivityMessage as am>
                     <#if am.states!="finished">
-                        <div class="col-3-1">
-                            <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain _vr_process hide promo-item ${am.activityClassifyKey}"
+                        <div class="col-3-1 _vr_process hide">
+                            <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain promo-item ${am.activityClassifyKey}"
                                  data-type="processing" data-code="${am.code}" data-searchid="${am.searchId}"
                                  data-rank-id="<#if am.allRank?? && am.allRank>all<#elseif am.code=="back_water">backwater<#else >${am.rankid}</#if>">
-                                <img src="${imgPath(data.configInfo.domain,am.activityCover)}"/>
-                                <img class="promo-img" style="display: none;" src="${imgPath(data.configInfo.domain,am.activityAffiliated)}"/>
+                                <img src="${imgPath(data.configInfo.domain,am.activityAffiliated)}"/>
+                                <img class="promo-img" style="display: none;" src="${imgPath(data.configInfo.domain,am.activityCover)}"/>
                                 <div class="promo-status processing"><i class="icon-clock"></i>进行中</div>
                                 <div class="shadow">
                                     <input class="_vr_promo_ostart" type="hidden" value="${am.startTime?long?string.computer}">
@@ -130,11 +130,11 @@
                 <#list data.historyActivityMessage as his>
                     <#if his.states="finished">
                         <div class="col-3-1">
-                            <div id="cos_${his.id}" class="_vr_promo_check _vr_actContain promo-item <#if his.isDisplay?string('true','false')=='true'>historyActivitys</#if> actContain"
+                            <div id="cos_${his.id}" class="_vr_promo_check _vr_actContain promo-item <#if his.isDisplay?string('true','false')=='true'>historyActivitys</#if>"
                                  data-type="over" data-code="${his.code}" data-searchid="${his.searchId}"
                                  data-rank-id="<#if his.allRank?? && his.allRank>all<#elseif his.code=="back_water">backwater<#else >${his.rankid}</#if>">
-                                <img src="${imgPath(data.configInfo.domain,his.activityCover)}"/>
-                                <img class="promo-img" style="display: none;" src="${imgPath(data.configInfo.domain,his.activityAffiliated)}"/>
+                                <img src="${imgPath(data.configInfo.domain,his.activityAffiliated)}"/>
+                                <img class="promo-img" style="display: none;" src="${imgPath(data.configInfo.domain,his.activityCover)}"/>
                                 <div class="promo-status over"><i class="icon-clock"></i>已结束</div>
                                 <div class="shadow">
                                     <input class="_vr_promo_ostart" type="hidden" value="${his.startTime?long?string.computer}">
@@ -179,8 +179,8 @@
                     }else {
                         $("._vr_all").addClass("hide");
                         $("._vr_process").removeClass("hide");
-                        $("._vr_actContain").addClass("hide");
-                        $("."+val).removeClass("hide");
+                        $("._vr_actContain").parent().addClass("hide");
+                        $("."+val).parent().removeClass("hide");
                     }
                 }
             })
@@ -195,6 +195,7 @@
     <li><a style="color: #000;" href="javascript:void(0);" id="apply_fail2">优惠申请失败（带进度条错误提示）</a></li>
     <li><a style="color: #000;" href="javascript:void(0);" id="apply_fail3">优惠申请失败（纯文字错误提示）</a></li>
     <li><a style="color: #000;" href="javascript:void(0);" id="may_apply">有可申请的优惠</a></li>
+    <li><a style="color: #000;" href="javascript:void(0);" id="may_apply2">存就送活动</a></li>
 </ul>
 
 <script>
@@ -210,13 +211,6 @@
             } else {
                 $('.main-promo').removeClass("theme-black").addClass('theme-white');
             }
-        });
-        $(".list-type1 .btn-detail").on("click", function () {
-            var $detail = $(this).parents('.promo-item').find('.promo-detail');
-            var img = $(this).parents('.promo-item').find('.promo-img').attr('src');
-            var cont = $detail.html();
-            var content = '<img class="promo-img" src=' + img + '/>' + '<div class="promo-content" id="promo-content">' + cont + '<i class="icon-goUp"></i></div>';
-            dialogPromoDetail(content, '活动详细', 'layui-layer-info', ['640px', '530px'], false, true)
         });
         // 默认配置
         layer.config({
@@ -314,6 +308,30 @@
                     '</div>' +
                     '</div>';
             mayApply(content, '提示', 'layui-layer-warning', ['640px', '397px'], false, true);
+        });
+        $("#may_apply2").on("click",function(){ // 有可申请的优惠
+            var tit = "《正宗莞式服务，买一送一》您有可申请的奖励！";
+            var subsTxt = "您可以选择申请已满足要求的闯关阶梯，建议您查看活动细则后，再决定是否立即申请。"
+            var content = '<i class="icon-danger"></i> <div class="tit">'+ tit +'</div>'+
+                    '<div class="subs-txt">'+ subsTxt +'</div>'+
+                    '<div class="tab_wrap">' +
+                    '<table>' +
+                    '<tr><th>选择</th><th>存款订单号</th><th>订单成功时间</th><th>订单金额</th><th>优惠金</th></tr>' +
+                    '<tr><td><label class="checkbox_wrap"><input type="checkbox"><span class="checkbox_icon"></span></label></td><td>323232323</td><td>20180305 10:46:21</td><td>￥200,000.00</td><td>￥100</td></tr>' +
+                    '<tr><td><label class="checkbox_wrap"><input type="checkbox"><span class="checkbox_icon"></span></label></td><td>323232323</td><td>20180305 10:46:21</td><td>￥200,000.00</td><td>￥100</td></tr>' +
+                    '<tr><td><label class="checkbox_wrap"><input type="checkbox"><span class="checkbox_icon"></span></label></td><td>323232323</td><td>20180305 10:46:21</td><td>￥200,000.00</td><td>￥100</td></tr>' +
+                    '<tr><td><label class="checkbox_wrap"><input type="checkbox"><span class="checkbox_icon"></span></label></td><td>323232323</td><td>20180305 10:46:21</td><td>￥200,000.00</td><td>￥100</td></tr>' +
+                    '<tr><td><label class="checkbox_wrap"><input type="checkbox"><span class="checkbox_icon"></span></label></td><td>323232323</td><td>20180305 10:46:21</td><td>￥200,000.00</td><td>￥100</td></tr>' +
+                    '</table>'	+
+                    '</div>';
+            mayApply2(content,'提示','layui-layer-warning',['640px','397px'],false,true);
+        });
+        $(".list-type1 .btn-detail").on("click", function () {
+            var $detail = $(this).parents('.promo-item').find('.promo-detail');
+            var img = $(this).parents('.promo-item').find('.promo-img').attr('src');
+            var cont = $detail.html();
+            var content = '<img class="promo-img" src=' + img + '>' + '<div class="promo-content" id="promo-content">' + cont + '<i class="icon-goUp"></i></div>';
+            dialogPromoDetail(content, '活动详细', 'layui-layer-info', ['640px', '530px'], false, true)
         });
     });
 
@@ -465,6 +483,41 @@
             },
             yes: function (index) {
                 layer.close(index);
+            }
+        });
+    }
+    function mayApply2(content,title,skin,area,btnRound,btnBorder){ // 有可申请的弹窗
+        /*
+         * content:弹窗的提示内容
+         * skin:主题颜色
+         * area:宽高
+         */
+        layer.open({
+            content:content,
+            title:title,
+            skin:skin,
+            area:area,
+            btn:["申请奖励","联系客服"],
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("normal-dialog");
+                $(layer).addClass("promo_CJS");
+                // 内容启用滚动条
+                $(layer).find(".layui-layer-content .tab_wrap").niceScroll({
+                    cursorcolor:"#999",
+                    cursorwidth:"8px"
+                });
+                $(layer).find(".layui-layer-content .tab_wrap tr:even").addClass('even')
+            },
+            yes:function(index) {
+                console.log('申请奖励')
+                layer.close(index);
+            },
+            btn2: function (index) {
+                console.log('联系客服')
+                layer.close(index)
             }
         });
     }
