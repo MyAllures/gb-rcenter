@@ -240,8 +240,27 @@
     }
 
     function showActivityProcessDialog(data, aplyObj, isRefresh) {
+        if (data.effectivetransaction) {
+            $(".profit").text(data.effectivetransaction);
+            $(".profit_loss").show();
+        }
+        if (data.profitloss) {
+            $(".effective").text(data.profitloss);
+            $(".effective_transaction").show();
+        }
+        if (data.content) {
+            var contents = data.content;
+            $(".deposit_sent_transactionNo").html('');
+            for (j = 0; j<contents.length; j++) {
+                var transactionNo = contents[j].transactionNo;
+                var item = '<input type="checkbox" name="transactionNos"' + 'value=' +transactionNo + '>' + transactionNo + '<br>';
+                $(".deposit_sent_transactionNo").append(item);
+            }
+            $(".deposit_send").show();
+        }
+        var content = $(".activityProcess").html();
         var dialog = layer.open({
-            content:"有效投注額或者盈虧送",
+            content:content,
             title:"提示信息",
             skin:"layui-layer-warning",
             area: ['640px', '397px'],
@@ -299,7 +318,7 @@
         if (typeof data.state == "undefined") {
             return false;
         }
-        $("._msg").html('<p class="text-center">' + data.msg + '</p>');
+        $("._msg").html(data.msg);
         var content;
         var title;
         var skin;
