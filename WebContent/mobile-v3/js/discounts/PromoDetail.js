@@ -143,6 +143,10 @@ function applyActivities(aplyObj, isRefresh) {
         url: root + "/promo/applyActivities.html",
         data: {code: code, resultId: searchId},
         success: function (data) {
+            if(data == null){
+                toast(window.top.message.promo_auto['用户活动申请还在处理中']);
+                return;
+            }
             showWin(data, isRefresh);
             $(aplyObj).removeAttr("disabled");
         },

@@ -43,7 +43,7 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
             chart.interval()
                 .position('title*percent')
                 .color('numerical', '#BAE7FF-#1890FF')
-                .tooltip('numerical', val => {
+                .tooltip('numerical', function(val) {
                     return {
                         name: '昨日',
                         value: val + '元'
@@ -52,7 +52,7 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
                 .label('numerical', {
                     offset: -5
                 });
-            data.map(obj => {
+            data.map(function(obj) {
                 chart.guide().text({
                     position: [ obj.title, 0 ],
                     content: obj.title + ' ',
@@ -117,16 +117,16 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
             chart.interval()
                 .position('title*percent')
                 .color('numerical', '#BAE7FF-#1890FF')
-                .tooltip('numerical', val => {
+                .tooltip('numerical', function(val) {
                     return {
                         name: '昨日',
                         value: val + '元'
                     };
-            })
-            .label('numerical', {
-                offset: -5
-            });
-            data.map(obj => {
+                })
+                .label('numerical', {
+                    offset: -5
+                });
+            data.map(function(obj) {
                 chart.guide().text({
                     position: [ obj.title, 0 ],
                     content: obj.title + ' ',
@@ -191,7 +191,7 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
             chart.interval()
                 .position('title*percent')
                 .color('numerical', '#BAE7FF-#1890FF')
-                .tooltip('numerical', val => {
+                .tooltip('numerical', function (val) {
                     return {
                         name: '昨日',
                         value: val + '元'
@@ -200,15 +200,15 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
                 .label('numerical', {
                     offset: -5
                 });
-            data.map(obj => {
+            data.map(function(obj) {
                 chart.guide().text({
-                position: [ obj.title, 0 ],
-                content: obj.title + ' ',
-                style: {
-                    textAlign: 'right'
-                }
+                    position: [ obj.title, 0 ],
+                    content: obj.title + ' ',
+                    style: {
+                        textAlign: 'right'
+                    }
+                });
             });
-        });
             chart.render();
         },
 
