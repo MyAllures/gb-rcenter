@@ -127,7 +127,7 @@
         });
     }
 
-    //该层级不能参加的活动添加disable属性和改变按钮提示
+    //根据该层级不能参加的活动添加disable属性和改变按钮提示
     function filterActyByPlayer(data) {
         var rankActvyObj = $("._vr_promo_check[data-rank-id][data-type='processing']");
         rankActvyObj.each(function (j, actObj) {
@@ -158,17 +158,19 @@
         });
     }
 
+    //参加优惠点击事件
     function joinPromo(aplyObj, isRefresh) {
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
         $(aplyObj).attr("disabled","disabled");
-        if(ctime > 0){
+        /*if(ctime > 0){
             return false;
-        }
+        }*/
         if(code!='money'){
             ctime++;
         }
         var nowTime = $("._user_time").attr("time");
-        if ($(aplyObj).parents("._vr_promo_check").find("._vr_promo_ostart").val() > nowTime || $(aplyObj).parents("._vr_promo_check").find("._vr_promo_oend").val() < nowTime) {
+        if ($(aplyObj).parents("._vr_promo_check").find("._vr_promo_ostart").val() > nowTime
+                || $(aplyObj).parents("._vr_promo_check").find("._vr_promo_oend").val() < nowTime) {
             return false;
         }
         if (sessionStorage.is_login == "true") {
@@ -192,7 +194,7 @@
                 }
                 return false;
 
-            }else if (code == 'effective_transaction' || code == 'profit_loss') {
+            }else if (code == 'effective_transaction' || code == 'profit_loss' || code == 'deposit_send') {
                 fetchActivityProcess(aplyObj, isRefresh);
             } else {
                 if (isRefresh&&code!='money') {
@@ -230,36 +232,43 @@
                 resultId: searchId
             },
             success: function (data) {
-                showActivityProcessDialog(aplyObj, isRefresh);
+                showActivityProcessDialog(data, aplyObj, isRefresh);
                 $(aplyObj).removeAttr("disabled");
             }
         });
 
     }
 
-    function showActivityProcessDialog(aplyObj, isRefresh) {
+    function showActivityProcessDialog(data, aplyObj, isRefresh) {
         var dialog = layer.open({
             content:"有效投注額或者盈虧送",
-            title:"信息",
-            skin:"layui-layer-danger",
-            area: ['640px', '500px'],
-            btn: ["聯系客服","申請活動"],
+            title:"提示信息",
+            skin:"layui-layer-warning",
+            area: ['640px', '397px'],
+            btn: ["申请奖励","联系客服"],
             success: function(layer){
                 // 重写关闭按钮
                 $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
+                $(layer).addClass("promo_CJS");
+                // 内容启用滚动条
+                $(layer).find(".layui-layer-content .tab_wrap").niceScroll({
+                    cursorcolor:"#999",
+                    cursorwidth:"8px"
+                });
+                $(layer).find(".layui-layer-content .tab_wrap tr:even").addClass('even')
             },
             yes: function () {
+                applyActivities(aplyObj, isRefresh);
+            },
+            btn2: function () {
                 if (isRefresh) {
                     layer.close(dialog);
                     window.location.href = "/promo.html";
                 } else {
                     layer.close(dialog);
                 }
-            },
-            btn2: function () {
-                applyActivities(aplyObj, isRefresh);
             }
         });
     }
