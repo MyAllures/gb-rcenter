@@ -124,7 +124,7 @@ define(['common/BaseEditPage', 'jschosen'], function (BaseEditPage) {
 
             var rechargeAmount = $("input[name='result.rechargeAmount']").val();
             var saleSum = (discount/100) * rechargeAmount ;
-            var favorable = Math.floor(Number(saleSum) * 100) / 100;
+            var favorable = Number(saleSum).toFixed(2);
             if(favorable <=0){
                 $("input[name='playerFavorable.favorable']").val('');
                 $("input[name='playerFavorable.favorable']").attr("readonly",true);

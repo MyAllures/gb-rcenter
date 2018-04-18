@@ -42,6 +42,22 @@
                         <!-- Register -->
                         <div class="register-box">
                             <form id="regForm" class="form-horizontal">
+                            <#assign content></#assign>
+                            <#if data.carousels??>
+                                <#list data.carousels as carousel>
+                                    <#if carousel["type"]="carousel_type_ad_register">
+                                        <#if carousel["content"]??><#assign content=carousel["content"]>
+                                        </#if>
+                                    <#else>
+                                        <#assign content="false">
+                                    </#if>
+                                </#list>
+                            </#if>
+                            <#if content == "false">
+                            <#--<h2></h2>-->
+                            <#else>
+                            ${content}
+                            </#if>
                                 <fieldset>
                                     <h2 class="account-info"></h2>
                                 <#--密碼 强度-->

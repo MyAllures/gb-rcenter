@@ -13,7 +13,7 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
             this._super();
             var _this = this;
             _this.bindFormValidation();
-            if($("#ImageQrCodeUrl").val()) {
+            if($("#ImageQrCodeUrl").val() == 'true') {
                 document.getElementById("saveImage").addEventListener("tap", function (e) {
                     var href = $(this).attr("url");
                     if (_this.os == "app_android") {
@@ -181,6 +181,7 @@ define(['site/deposit/BaseCompanyDeposit', 'clipboard'], function (BaseCompanyDe
                 },
                 error: function (xhr, type, errorThrown) {
                     _this.toast(window.top.message.deposit_auto['提交失败']);
+                    _this.linkDeposit();
                 }
             });
         },

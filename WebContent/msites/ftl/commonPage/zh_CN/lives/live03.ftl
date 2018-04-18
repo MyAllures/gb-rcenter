@@ -26,10 +26,10 @@
 <#--  当前api_type_id = 1 -->
 <#assign apiType = "1">
 <#-- api图片路径 -->
-<#assign bgCover ={"1":"ftl/commonPage/images/lives/live-item-bg-ds.jpg","3":"ftl/commonPage/images/lives/live-item-bg-mg.jpg","5":"ftl/commonPage/images/lives/live-item-bg-gd.jpg","7":"ftl/commonPage/images/lives/live-item-bg-og.jpg","8":"ftl/commonPage/images/lives/live-item-bg-slc.jpg","9":"ftl/commonPage/images/lives/live-item-bg-ag.jpg","10":"ftl/commonPage/images/lives/live-item-bg-bb.jpg","16":"ftl/commonPage/images/lives/live-item-bg-ebet.jpg","17":"ftl/commonPage/images/lives/live-item-bg-sa.jpg","24":"ftl/commonPage/images/lives/live-item-bg-opus.jpg"}>
+<#assign bgCover ={"1":"ftl/commonPage/images/lives/live-item-bg-ds.jpg","3":"ftl/commonPage/images/lives/live-item-bg-mg.jpg","5":"ftl/commonPage/images/lives/live-item-bg-gd.jpg","7":"ftl/commonPage/images/lives/live-item-bg-og.jpg","8":"ftl/commonPage/images/lives/live-item-bg-slc.jpg","9":"ftl/commonPage/images/lives/live-item-bg-ag.jpg","10":"ftl/commonPage/images/lives/live-item-bg-bb.jpg","16":"ftl/commonPage/images/lives/live-item-bg-ebet.jpg","17":"ftl/commonPage/images/lives/live-item-bg-sa.jpg","24":"ftl/commonPage/images/lives/live-item-bg-opus.jpg","33":"ftl/commonPage/images/lives/live-item-bg-shenbo.jpg"}>
 <#assign bgCoverKeys = bgCover?keys>
 <#--api logo-->
-<#assign apiLogo ={"1":"ftl/commonPage/images/lives/live-logo-ds.png","3":"ftl/commonPage/images/lives/live-logo-mg.png","5":"ftl/commonPage/images/lives/live-logo-gd.png","7":"ftl/commonPage/images/lives/live-logo-og.png","8":"ftl/commonPage/images/lives/live-logo-slc.png","9":"ftl/commonPage/images/lives/live-logo-ag.png","10":"ftl/commonPage/images/lives/live-logo-bb.png","16":"ftl/commonPage/images/lives/live-logo-ebet.png","17":"ftl/commonPage/images/lives/live-logo-sa.png","24":"ftl/commonPage/images/lives/live-logo-opus.png"}>
+<#assign apiLogo ={"1":"ftl/commonPage/images/lives/live-logo-ds.png","3":"ftl/commonPage/images/lives/live-logo-mg.png","5":"ftl/commonPage/images/lives/live-logo-gd.png","7":"ftl/commonPage/images/lives/live-logo-og.png","8":"ftl/commonPage/images/lives/live-logo-slc.png","9":"ftl/commonPage/images/lives/live-logo-ag.png","10":"ftl/commonPage/images/lives/live-logo-bb.png","16":"ftl/commonPage/images/lives/live-logo-ebet.png","17":"ftl/commonPage/images/lives/live-logo-sa.png","24":"ftl/commonPage/images/lives/live-logo-opus.png","33":"ftl/commonPage/images//lives/live-logo-shenbo.png"}>
 <#assign logoKeys = apiLogo?keys>
 
 <#--9-->
@@ -62,10 +62,13 @@
 <#--10-->
 <#assign api10 ={'lineSize':[4,4,4],'game':{"百家乐":"poker1","骰宝":"dice1","龙虎斗":"poker2","牛牛":"spade-fill","无限21点":"chip2","番摊":"coin-cny","三公":"poker1","二八杠":"dice1","轮盘":"roulette3","色碟":"chip1","德州扑克":"poker2","温州牌九":"dice1"}}>
 <#assign api10Keys = api10?keys>
+<#--33-->
+<#assign api33 ={'lineSize':[3,4],'game':{"百家乐":"poker1","星级百家乐":"poker2","互动多合一":"roulette4","龙虎":"dragon-tiger","轮盘":"roulette3","三公":"poker1","骰宝":"dice1"}}>
+<#assign api33Keys = api33?keys>
 
-<#assign liveApis={"1":api1,"3":api3,"5":api5,"7":api7,"8":api8,"9":api9,"10":api10,"16":api16,"17":api17,"24":api24}>
-<#assign liveLogos = {"1":"ds","5":"gd","7":"og","9":"ag","10":"bb","16":"ebet","17":"sa","24":"opus-l"}>
-<#assign liveLogoDescs = {"1":"服务至上的亚洲线上赌场","3":"VIP贵宾厅，至尊享受","5":"全球口碑最好平台之一","7":"东南亚最大赌场","9":"全球唯一女优发牌","10":"亚洲最知名游戏平台","16":"亚洲技术领先的新晋赌场","17":"亚洲服务最好娱乐平台","24":"欧洲最流行的线上娱乐平台"}>
+<#assign liveApis={"1":api1,"3":api3,"5":api5,"7":api7,"8":api8,"9":api9,"10":api10,"16":api16,"17":api17,"24":api24,"33":api33}>
+<#assign liveLogos = {"1":"ds","5":"gd","7":"og","9":"ag","10":"bb","16":"ebet","17":"sa","24":"opus-l","33":"shenbo"}>
+<#assign liveLogoDescs = {"1":"服务至上的亚洲线上赌场","3":"VIP贵宾厅，至尊享受","5":"全球口碑最好平台之一","7":"东南亚最大赌场","9":"全球唯一女优发牌","10":"亚洲最知名游戏平台","16":"亚洲技术领先的新晋赌场","17":"亚洲服务最好娱乐平台","24":"欧洲最流行的线上娱乐平台","33":"全球娱乐领先博彩之一"}>
 <#assign liveScript02=true>
 
 <div class="row row-match">

@@ -228,3 +228,13 @@
 .nav .swiper-slide.item-casino:before {
     background: url(images/icon-casino.png) no-repeat center 4px/22px !important;
 }
+// 样式修复
+.content-casino-transfer .game-description p {
+    color: #fff;
+}
+.content-casino-transfer .game-item .game-detail h1 {
+    color: #fff;
+}
+.content-casino-transfer .game-item .game-detail .g-money {
+    color: #fff;
+}

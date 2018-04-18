@@ -84,6 +84,10 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                     $(".smsTips0").remove();
                     $(".smsTips1").removeClass("hidden");
                     $(".smsTips2").addClass("hidden");
+                    //短信开关关闭，默认关闭下面的所有短信验证
+                    $("#playerPhoneParam").val(false);
+                    $("#agentPhoneParam").val(false);
+                    $("#recoverPasswordParam").val(false);
                     $("._smsSwitchIsShow").addClass("hidden");
                 }
             });
@@ -92,11 +96,11 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             $('input[name="sms-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
                 var type=$(this).attr("typeName");
                 $("#"+type).val(state);
-                if(state){
+                /*if(state){
                     $("#isShow"+type).show();
                 }else{
                     $("#isShow"+type).hide();
-                }
+                }*/
             });
 
             //找回密码开关
@@ -416,8 +420,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             if(smsSwitch!="" && JSON.parse(smsSwitch)){
                 return true;
             }else{
-                $("#phoneParam").val(false);
-                $("#recoverPasswordParam").val(false);
+                $("#playerCall").val(false);
+                $("#callMunber").val(false);
                 return true;
             }
             return false;
@@ -558,6 +562,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         getAccessDomainFormData:function (e,opt) {
             return $("input,textarea","#accessDomain").serialize();
         },
+        getPhoneNumber:function (e,opt) {
+            return $("input","#phone").serialize();
+        },
         getMobileFormData:function (e,opt) {
             return $("input,textarea","#mobileCustomService").serialize();
         },
@@ -576,6 +583,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         getSmsInterfaceParamDateForm:function (e,opt) {
             return $("input,textarea","#smsSetting").serialize();
         },
+        getIdCard:function (e,opt) {
+            return $("input","#idCard").serialize();
+        },
         /**
          * 获取统计代码表单
          * @param e
@@ -583,6 +593,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
          * @returns {{[result.trafficStatistics]: (*|jQuery)}}
          */
         getStaticValidateForm:function (e,opt) {
+            return {"result.trafficStatistics":$("[name='result.trafficStatistics']").val()};
+        },
+        getPhoneValidateForm:function (e,opt) {
             return {"result.trafficStatistics":$("[name='result.trafficStatistics']").val()};
         },
         /**
@@ -676,8 +689,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this._super();
             var $bootstrapSwitchs = $('input[type=checkbox][name=player_stationmaster]');
             this.unInitSwitch($bootstrapSwitchs).bootstrapSwitch({
-                onText: window.top.message.content['floatPic.display.yes'],
-                offText: window.top.message.content['floatPic.display.no'],
+                onText: window.top.message.content['confirm.open'],
+                offText: window.top.message.content['confirm.close'],
                 onSwitchChange: function (e, state) {
                     var $this = $(this);
                     var _msg = "";
@@ -725,8 +738,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this._super();
             var $bootstrapSwitchs = $('input[type=checkbox][name=encryption_switch]');
             this.unInitSwitch($bootstrapSwitchs).bootstrapSwitch({
-                onText: window.top.message.content['floatPic.display.yes'],
-                offText: window.top.message.content['floatPic.display.no'],
+                onText: window.top.message.content['confirm.open'],
+                offText: window.top.message.content['confirm.close'],
                 onSwitchChange: function (e, state) {
                     var $this = $(this);
                     var _msg = "";
@@ -849,12 +862,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             $(e.currentTarget).unlock();
         },
 
-
-
-
-
-
-
+        save:function (e,opt) {
+            $(e.currentTarget).unlock();
+        },
 
 
         /*
@@ -890,6 +900,20 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 return false;
             }else {
                 e.page.showPopover(e,{},"success","保存成功",true);
+                return true;
+            }
+        },
+        /*
+         * 验证联系方式
+         *
+         * */
+        validationIdcard:function (e) {
+            var reg = new RegExp("^[0-9]{0,20}$");//验证电话号码
+            var idcard=$("input[name='result.idcard']").val();
+            if (idcard!=""&&!reg.test(idcard)){
+                e.page.showPopover(e,{},"warning","坐席号不合法,请输入0-20位纯数字",true);
+                return false;
+            }else {
                 return true;
             }
         },

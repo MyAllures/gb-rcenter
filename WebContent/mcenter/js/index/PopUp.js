@@ -587,7 +587,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         }
                     }],
                 });
-            } else if (rate >= warnRate) {
+            }/*else if (rate >= warnRate) {
                 var msg = window.top.message.setting_auto['您站点的额度已用'];
                 msg = msg.replace("${rate}", rate);
                 msg = msg.replace("${leftTime}", date);
@@ -662,6 +662,28 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         }]
                     })
                 }
+            }*/
+            else {
+                var msg = window.top.message.setting_auto['您站点的转账上限使用提醒'];
+                msg = msg.replace("${rate}", rate);
+                var html = '<div class="clearfix m-md">' + msg + '</div>';
+                var dialog = BootstrapDialog.show({
+                    title: window.top.message.setting_auto['消息'],
+                    message: html,
+                    buttons: [{
+                        label: window.top.message.setting_auto['去充值'],
+                        action: function (dialog) {
+                            dialog.close();
+                            $("#mainFrame").load(root + "/credit/pay/pay.html");
+                        }
+                    }, {
+                        label: window.top.message.setting_auto['取消'],
+                        cssClass: 'btn-primary',
+                        action: function (dialog) {
+                            dialog.close();
+                        }
+                    }],
+                });
             }
         },
         /**

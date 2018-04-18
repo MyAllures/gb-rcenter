@@ -117,27 +117,57 @@
                     }
                 } else {
                     if(data.msg) {
-                        BootstrapDialog.alert({
-                            title: 'prompt',
+                        /*BootstrapDialog.alert({
+                            title: '提示',
                             message: data.msg,
                             type: BootstrapDialog.TYPE_WARNING,
-                            buttonLabel: 'ok',
+                            buttonLabel: '确定',
                             callback: function(result) {
                                 if (result){
                                     window.close();
                                 }
                             }
+                        });*/
+                        layer.open({
+                            content:data.msg,
+                            title:'Tips',
+                            skin:'layui-layer-brand',
+                            btn:["ok"],
+                            success: function(layer){
+                                // 重写关闭按钮
+                                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                                // 提示框类型
+                                $(layer).addClass("normal-dialog");
+                            },
+                            yes:function () {
+                                window.close();
+                            }
                         });
                     } else {
-                        BootstrapDialog.alert({
-                            title: 'prompt',
-                            message: 'The game is temporarily unable to login, please try again later！',
-                            type: BootstrapDialog.TYPE_WARNING,
-                            buttonLabel: 'ok',
-                            callback: function(result) {
-                                if (result){
-                                    window.close();
-                                }
+                        /*BootstrapDialog.alert({
+                             title: '提示',
+                             message: '游戏暂时无法登录，请稍候再试！',
+                             type: BootstrapDialog.TYPE_WARNING,
+                             buttonLabel: '确定',
+                             callback: function(result) {
+                                 if (result){
+                                     window.close();
+                                 }
+                             }
+                         });*/
+                        layer.open({
+                            content:'The game is temporarily unable to log in, please try again later!',
+                            title:'Tips',
+                            skin:'layui-layer-brand',
+                            btn:["ok"],
+                            success: function(layer){
+                                // 重写关闭按钮
+                                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                                // 提示框类型
+                                $(layer).addClass("normal-dialog");
+                            },
+                            yes:function () {
+                                window.close();
                             }
                         });
                     }
@@ -148,15 +178,30 @@
                     window.close();
                     loginObj.getLoginPopup();
                 } else {
-                    BootstrapDialog.alert({
-                        title: 'prompt',
-                        message: 'The game is temporarily unable to login, please try again later！',
-                        type: BootstrapDialog.TYPE_WARNING,
-                        buttonLabel: 'ok',
-                        callback: function(result) {
-                            if (result){
-                                window.close();
-                            }
+                    /* BootstrapDialog.alert({
+                         title: '提示',
+                         message: '游戏暂时无法登录，请稍候再试！',
+                         type: BootstrapDialog.TYPE_WARNING,
+                         buttonLabel: '确定',
+                         callback: function(result) {
+                             if (result){
+                                 window.close();
+                             }
+                         }
+                     });*/
+                    layer.open({
+                        content:'The game is temporarily unable to log in, please try again later!',
+                        title:'Tips',
+                        skin:'layui-layer-brand',
+                        btn:["ok"],
+                        success: function(layer){
+                            // 重写关闭按钮
+                            $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                            // 提示框类型
+                            $(layer).addClass("normal-dialog");
+                        },
+                        yes:function () {
+                            window.close();
                         }
                     });
                 }

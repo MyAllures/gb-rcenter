@@ -380,6 +380,11 @@ function doEvent(obj, options) {
     } else if (opType == 'href') {
         goToUrl(options.target);
         $target.unlock();
+    } else if (opType == 'openWindow') { //新打开弹窗页面
+        var win = window.open(options.target);
+        if (!win) {
+            window.location.href = options.target;
+        }
     }
 }
 
@@ -609,6 +614,8 @@ function bindFormValidation($form) {
  * 延迟加载图片
  */
 function lazyLoadImg(self, placeholder) {
+    //为了解决重新加载页面的时候，原先加载的图片无法重新加载
+    document.body.removeAttribute('data-imagelazyload');
     if (!placeholder) {
         placeholder = '';
     }

@@ -69,7 +69,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
         },
 
         back: function () {
-           this.linkDeposit();
+            this.linkDeposit();
         },
 
         /**
@@ -77,8 +77,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
          * @param orderNo
          * @param newWindow
          */
-        pay: function (orderNo, newWindow) {
-            var url = root + "/wallet/deposit/online/pay.html?pay=online&search.transactionNo=" + orderNo;
+        pay: function (url, newWindow) {
             var os = this.whatOs();
             if (os == 'app_ios') {
                 gotoPay(url);
@@ -146,19 +145,19 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                 var bankList = document.getElementById('bankJson').value;
                 bankPick.setData(JSON.parse(bankList));
                 var selectBank = document.getElementById('selectBank');
-                var siteCurrencySign = document.getElementById('siteCurrencySign').value ;
+                var siteCurrencySign = document.getElementById('siteCurrencySign').value;
                 selectBank.addEventListener('tap', function (event) {
                     $("input[name='result.rechargeAmount']").blur();
                     bankPick.show(function (items) {
                         var item = items[0];
-                        var min = isNaN(item.min) ? 0.01 : item.min ;
+                        var min = isNaN(item.min) ? 0.01 : item.min;
                         var max = isNaN(item.max) ? 99999999 : item.max;
                         document.getElementById('result.payerBank').value = item.value;
                         document.getElementById('selectText').innerHTML = item.text;
                         document.getElementById('onlinePayMin').value = min;
                         document.getElementById('onlinePayMax').value = max;
                         document.getElementsByName('account').value = item.account;
-                        document.getElementById('result.rechargeAmount').setAttribute("placeholder",""+siteCurrencySign+Number(min).toFixed(2)+"~"+siteCurrencySign+Number(max).toFixed(2));
+                        document.getElementById('result.rechargeAmount').setAttribute("placeholder", "" + siteCurrencySign + Number(min).toFixed(2) + "~" + siteCurrencySign + Number(max).toFixed(2));
                     });
                 }, false);
             }
@@ -173,28 +172,28 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                 if (document.activeElement) {
                     document.activeElement.blur();
                 }
-                if($("#submitAmount").attr("category") == "isNull"){
+                if ($("#submitAmount").attr("category") == "isNull") {
                     _this.toast(window.top.message.deposit_auto['请输入金额']);
                     return false;
-                }else if($("#submitAmount").attr("category") == "error"){
+                } else if ($("#submitAmount").attr("category") == "error") {
                     _this.toast(window.top.message.deposit_auto['金额格式不对']);
                     return false;
-                }else if($("#submitAmount").attr("category") == "notThrough") {
+                } else if ($("#submitAmount").attr("category") == "notThrough") {
                     _this.toast(window.top.message.deposit_auto['请输入整数金额']);
                     return false;
-                }else if($("#submitAmount").attr("category") =="excess"){
+                } else if ($("#submitAmount").attr("category") == "excess") {
                     var min = $("#onlinePayMin").val();
                     var max = $("#onlinePayMax").val();
-                    if(!min) {
+                    if (!min) {
                         min = 0.01;
                     }
-                    if(!max) {
+                    if (!max) {
                         max = 99999999;
                     }
-                    _this.toast(window.top.message.deposit_auto['单笔存款金额为']+min+"~"+max);
+                    _this.toast(window.top.message.deposit_auto['单笔存款金额为'] + min + "~" + max);
                     return false;
-                }else if($("#submitAmount").attr("category") !="through"){
-                    $("#submitAmount").attr("category","");
+                } else if ($("#submitAmount").attr("category") != "through") {
+                    $("#submitAmount").attr("category", "");
                     var $form = $(page.formSelector);
                     if (!$form.valid()) {
                         return false;
@@ -226,30 +225,28 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                         var unCheckSuccess = $(data).find("#unCheckSuccess").attr("unCheckSuccess");
                         ajaxMap["ajaxData"] = data;
                         ajaxMap["_this"] = _this;
-                        if(unCheckSuccess == "true" && failureCount >= 3){
+                        if (unCheckSuccess == "true" && failureCount >= 3) {
                             $("#failureHints").show();
                             $("#failureHintsMasker").show();
                             $("#channel").val("online");
-                        }else{
+                        } else {
                             $("#channel").val("");
                             _this.onlineContinueDeposit();
                         }
-                    },
-                    error: function (xhr, type, errorThrown) {
-                        console.log('提交失败');
                     }
                 });
             });
         },
 
-        onlineContinueDeposit:function(){
+        onlineContinueDeposit: function () {
             var ajaxData = ajaxMap["ajaxData"];
             var _this = ajaxMap["_this"];
-            $(".mui-content").append(ajaxData);
+            $("body").append(ajaxData);
             var unCheckSuccess = $("#unCheckSuccess").attr("unCheckSuccess");
             if (unCheckSuccess === "true") {
                 var pop = $("#pop").attr("pop");
                 if (pop === "true") {
+                    mui(".applysale .mui-scroll-wrapper").scroll({scrollY: true, deceleration: 0.0005});
                     $("#activityId").val($("input[type=radio]:checked").val());
                     _this.bindReWriteAmount();
                     _this.deposit();
@@ -260,10 +257,10 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                 //验证提示
                 _this.toast($("#tips").attr("tips"));
                 var accountNotUsing = $("#accountNotUsing").attr("accountNotUsing");
-                if("true" === accountNotUsing){
-                    setTimeout(function(){
+                if ("true" === accountNotUsing) {
+                    setTimeout(function () {
                         _this.linkDeposit();
-                    },2000);
+                    }, 2000);
                 }
             }
         },
@@ -295,21 +292,22 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
             }
             mui.ajax(root + '/wallet/deposit/online/deposit.html', {
                 dataType: 'json',
-                data: data ,
+                data: data,
                 type: 'post',
                 async: false,
                 success: function (data) {
                     if (!data) {
-                        _this.toast("提交失败！", _this.back());
+                        _this.toast("提交失败！");
                         if (newWindow) {
                             newWindow.close();
                         }
+                        _this.back();
                     } else {
                         var state = data.state;
                         $("input[name='gb.token']").val(data.token);
                         if (state == true) {
                             var orderNo = data.orderNo;
-                            _this.pay(orderNo, newWindow);
+                            _this.pay(data.payUrl, newWindow);
                             _this.sendComm(orderNo);
                             if (newWindow || _this.os == "app_android" || _this.os == "app_ios") {
                                 _this.reWriteAmount();
@@ -320,10 +318,10 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                             if (newWindow) {
                                 newWindow.close();
                             }
-                            if(data.accountNotUsing){
-                                setTimeout(function(){
+                            if (data.accountNotUsing) {
+                                setTimeout(function () {
                                     _this.linkDeposit();
-                                },2000);
+                                }, 2000);
                             }
                         }
                     }
@@ -334,6 +332,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                     if (newWindow) {
                         newWindow.close();
                     }
+                    _this.back();
                 }
             });
         }

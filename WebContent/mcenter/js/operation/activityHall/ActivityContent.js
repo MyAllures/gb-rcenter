@@ -5,12 +5,14 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
     return Money.extend({
         maxRange: 5,
         ue: null,
-        systemRecommendCaseNum:4,
-        systemRecommendData:null,
+        system_recommend_case_num:5,
+        system_recommend_data:null,
 
         init: function () {
             this._super();
             this.initSystemRecommendData();
+            this.initGameNum();
+            this.initPreferential();
         },
 
         bindEvent: function () {
@@ -37,19 +39,48 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             /**
              * kobe----却换pc和手机终端
              */
-            $("#pc-terminal").on("click", function (e) {
+            $(this.formSelector).on("click", "#pc-terminal", function(e) {
                 $(".pc").show();
                 $(".mb").hide();
-                $("#pc-terminal").addClass("disabled");
-                $("#mb-terminal").removeClass("disabled");
+                $("#pc-terminal").removeClass("btn-default");
+                $("#mb-terminal").addClass("btn-default");
+                $(".mb .tab-pane").removeClass('active');
+                var tab = $(".pc li.active a").attr('href');
+                $(tab).addClass('active');
             });
-            $("#mb-terminal").on("click", function (e) {
+            $(this.formSelector).on("click", "#mb-terminal", function(e){
                 $(".pc").hide();
                 $(".mb").show();
-                $("#mb-terminal").addClass("disabled");
-                $("#pc-terminal").removeClass("disabled");
+                $("#mb-terminal").removeClass("btn-default");
+                $("#pc-terminal").addClass("btn-default");
+                $(".pc .tab-pane").removeClass('active');
+                var tab = $(".mb li.active a").attr('href');
+                $(tab).addClass('active');
             });
 
+            $(this.formSelector).on("change", ".game", function (e){
+                var target = e.target;
+                var num = $(target).parent().children("input.game:checked").length;
+                var mark = $(target).attr("aaa");
+                $("."+mark).text(num);
+            });
+
+            $(this.formSelector).on("change", ".profit", function (e){
+                var flag = $(".profit").prop("checked");
+                if (flag) {
+                    $("#profit_preferential").show();
+                }else {
+                    $("#profit_preferential").hide();
+                }
+            });
+            $(this.formSelector).on("change", ".loss", function (e){
+                var flag = $(".loss").prop("checked");
+                if (flag) {
+                    $("#loss_preferential").show();
+                }else {
+                    $("#loss_preferential").hide();
+                }
+            });
         },
 
         buildOtherEvent:function () {
@@ -60,7 +91,12 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $(that.formSelector).on("validate", ".title,.activityContentFile,.activityAffiliated,.contents", function (e, message) {
                 if (message) {
                     if (!$(this).parents('.tab-pane').hasClass('active')) {
-                        $("#a_" + $(this).attr("bbb")).formtip(message);
+                        if ($(this).parents('.terminal').hasClass('pc')){
+                            $("#pc-terminal").formtip(message);
+                        }else {
+                            $("#mb-terminal").formtip(message);
+                        }
+                        /*$("#a_" + $(this).attr("bbb")).formtip(message);*/
                         e.result = true;
                     }
                 }
@@ -281,7 +317,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
          * 编辑功能的时候初始化默认选中单选框
          */
         checkHandsel: function () {
-            if ($(".fd_percentageHandsel").val() != "") {
+            if ($(".fd_percentageHandsel").val() != "" || $(".fd_regularHandsel").val() == "") {
                 $("#percentageHandsel").attr("checked", "checked")
                 $("#preferentialAmountLimit").css("display", "");
                 $(".fd_regularHandsel").attr("disabled", true);
@@ -297,6 +333,9 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $(".fd_regularHandsel_column").removeClass('hide');
                 $(".fd_percentageHandsel_column").addClass('hide');
             }
+            //如果是注册送,默认勾选所有有效条件
+            //
+
         },
 
         /**
@@ -445,6 +484,15 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $(e.currentTarget).click();
                 return false;
             }
+            if (opt.code == 'profit_loss') {
+                var message = window.top.message.common['盈利和亏损不能同时为空'];
+                var profit = $(".profit").prop("checked");
+                var loss = $(".loss").prop("checked");
+                if (!profit && !loss) {
+                    $(".profit").formtip(message);
+                    return false;
+                }
+            }
             if(opt.code=='money'){
 
                 var rpb = that.getRemainProbability();
@@ -534,10 +582,10 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $("#previewPlacesNumber").text($("[name='activityRule.placesNumber']").val());
             }
             //是否审核
-            if ($("[name='activityRule.isAudit']").val() == 'true') {//前端展示
-                $("#previewIsAudit").text(window.top.message.operation_auto['是']);
+            if ($("[name='activityRule.isAudit']").val() == 'true') {//是否审核
+                $("#previewIsAudit").text(window.top.message.operation_auto['审核']);
             } else {
-                $("#previewIsAudit").text(window.top.message.operation_auto['否']);
+                $("#previewIsAudit").text(window.top.message.operation_auto['免审']);
             }
             //是否申请
             if ($("[name='activityRule.isNeedApply']").val() == 'true') {//前端展示
@@ -587,17 +635,16 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                     var a2 = $(item).find("td:eq(1) input").val();
                     var a3 = $(item).find("td:eq(2) input").val();
                     var a4 = $(item).find("td:eq(3) input").val();
-                    var a5 = $(item).find("td:eq(4) input").val();
-                    if (a5 != "") {
-                        $("#reliefund").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['剩余以下'].replace("[0]",a2)).concat("</td><td>").concat(window.top.message.operation_auto['达以上'].replace("[0]",a3)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a4).concat("</td><td>").concat(a5).concat(window.top.message.operation_auto['送']).concat("</td></tr>"));
+                    if (a4 != "") {
+                        $("#reliefund").append("<tr><td>".concat(window.top.message.operation_auto['剩余以下'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['达以上'].replace("[0]",a2)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a3).concat("</td><td>").concat(a4).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
                     } else {
-                        a5 = "---";
-                        $("#reliefund").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['剩余以下'].replace("[0]",a2)).concat("</td><td>").concat(window.top.message.operation_auto['达以上'].replace("[0]",a3)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a4).concat("</td><td>").concat(a5).concat(window.top.message.operation_auto['送']).concat("</td></tr>"));
+                        a4 = "---";
+                        $("#reliefund").append("<tr><td>".concat(window.top.message.operation_auto['剩余以下'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['达以上'].replace("[0]",a2)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a3).concat("</td><td>").concat(a4).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
                     }
 
                 });
             }
-            if (code == 'first_deposit' || code == 'deposit_send') {//首存送 存就送
+            if ( this.is123Deposit(code) || code == 'deposit_send') {//首存送 存就送
                 var aa;
                 if ($("[name='ｍosaicGold']:checked").val() == 'true') {
                     aa = window.top.message.operation_auto['按比例赠送彩金'];
@@ -626,33 +673,37 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             }
             if (code == 'profit_loss') {//盈亏送
                 //盈利
+                if ($(".profit").prop("checked")) {
+                    $("#previewprofit").show();
+                }else {
+                    $("#previewprofit").hide();
+                }
                 $("#previewprofit").find("tr:gt(1)").remove();
                 $("#first_deposit").find("tr:gt(1)").each(function (index, item) {
                     var a1 = $(item).find("td:eq(0) input").val();
                     var a2 = $(item).find("td:eq(1) input").val();
                     var a3 = $(item).find("td:eq(2) input").val();
-
-                    if (a3 != "") {
-                        $("#previewprofit").append("<tr><td>满" + a1 + "以上</td><td>送" + a2 + "</td><td>" + a3 + "倍</td></tr>");
-                    } else {
+                    if (a3 == "") {
                         a3 = "---";
-                        $("#previewprofit").append("<tr><td>满" + a1 + "以上</td><td>送" + a2 + "</td><td>" + a3 + "</td></tr>");
                     }
+                    $("#previewprofit").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
 
                 });
                 //亏损
+                if ($(".loss").prop("checked")) {
+                    $("#previewloss").show();
+                }else {
+                    $("#previewloss").hide();
+                }
                 $("#previewloss").find("tr:gt(1)").remove();
                 $("#loss").find("tr:gt(1)").each(function (index, item) {
                     var a1 = $(item).find("td:eq(0) input").val();
                     var a2 = $(item).find("td:eq(1) input").val();
                     var a3 = $(item).find("td:eq(2) input").val();
-                    if (a3 != "") {
-                        $("#previewloss").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
-                    } else {
+                    if (a3 == "") {
                         a3 = "---";
-                        $("#previewloss").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
                     }
-
+                    $("#previewloss").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
                 });
             }
             if(code=="money"){
@@ -663,11 +714,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             for (i = 0; i < languageCounts; i++) {
                 $("#previewActivityName" + i).text($("[name='activityMessageI18ns[" + i + "].activityName']").val());
                 /*主图*/
-                if ($("#activityContentImg" + i + ' ' + "img").attr("src") == "") {
-                    var src1 = $("#activityContentImage" + i + ' ' + "img").attr('src');
+                if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
+                    var src1 = $("#activityAffiliatedImage" + i + ' ' + "img").attr('src');
                     $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src1);
                 } else {
-                 var src2 = $("#activityContentImg" + i + ' ' + "img").attr('src');
+                 var src2 = $("#activityAffiliatedImg" + i + ' ' + "img").attr('src');
                  $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src2);
                 }
                 $("#previewActivityDesc" + i).html($("[name='activityMessageI18ns[" + i + "].activityDescription']").val());
@@ -714,11 +765,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
          * @param option
          */
         addActivityRule: function (e, option) {
-            var _tr_len = $("#first_deposit").find("tr").length - 1;
+            var _tr_len = $("#first_deposit").find("tr").length - 2;
             var canCreate = _tr_len < this.maxRange;
             if (canCreate) {
                 /*tr clone*/
-                var _tr = $("#first_deposit").find("tr:eq(1)").clone(true);
+                var _tr = $("#first_deposit").find("tr:eq(2)").clone(true);
                 _tr.find("button").removeClass("disabled");
                 _tr.find("input").val("");
                 _tr = this.resetIndex(_tr, _tr_len)
@@ -731,11 +782,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
         },
 
         addActivityRule2: function (e, option) {
-            var _tr_len = $("#loss").find("tr").length - 1;
+            var _tr_len = $("#loss").find("tr").length - 2;
             var canCreate = _tr_len < this.maxRange;
             if (canCreate) {
                 /*tr clone*/
-                var _tr = $("#loss").find("tr:eq(1)").clone(true);
+                var _tr = $("#loss").find("tr:eq(2)").clone(true);
                 _tr.find("button").removeClass("disabled");
                 _tr.find("input").val("");
                 _tr = this.resetIndex2(_tr, _tr_len)
@@ -988,7 +1039,39 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
         ,
 
         /**
-         * 系统推荐方案设置
+         * 注册送系统推荐方案设置
+         * @param e
+         * @param option
+         */
+        registSystemRecommendCase: function (e, option) {
+            //系统推荐数据
+            var activityType = 'registe_send';
+            var deposit_data = this.system_recommend_data[activityType];
+            var deposit_array = activityType+'_array';
+            //设置优惠条件
+            $.each(deposit_data[deposit_array], function (i, item) {
+                var tr_index = i + 2;
+                $("#regist_send").find("tr:eq(" + tr_index + ")").find('input:eq(0)').val(item.depositAmountGe);
+                $("#regist_send").find("tr:eq(" + tr_index + ")").find('input:eq(1)').val(item.preferentialAudits);
+            });
+            //设置领取方式
+            var is_audit = deposit_data.isAudit;
+            $("input[name='activityRule.isAudit']").val(is_audit);//设置input值
+            var is_audit_text = $("[selectdiv='activityRule.isAudit']").find("a[key=" + is_audit + "]").html();
+            $("[selectdiv='activityRule.isAudit']").find("span[prompt='prompt']").html(is_audit_text);//设置显示
+            //有效期
+            var effective_time = deposit_data.effectiveTime;
+            $("input[name='activityRule.effectiveTime']").val(effective_time);//设置input值
+            var effective_time_text = $("[selectdiv='activityRule.effectiveTime']").find("a[key=" + effective_time + "]").html();
+            $("[selectdiv='activityRule.effectiveTime']").find("span[prompt='prompt']").html(effective_time_text);//设置显示
+            //有效条件全勾选
+            $("input[name$='preferentialCode']").filter("[name^='effectiveCondition']").each(function () {
+                $(this).attr("checked",'checked');
+            })
+        },
+
+        /**
+         * 存送系统推荐方案设置
          * @param e
          * @param option
          */
@@ -996,19 +1079,36 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var that = this;
             //元素长度判断，加足4个，
             var line_number = $("#first_deposit").find("tr").length - 1
-            while (line_number < that.systemRecommendCaseNum) {
+            while (line_number < that.system_recommend_case_num) {
                 that.addActivityRule(e, option);
                 line_number = $("#first_deposit").find("tr").length - 1
             }
 
+            //活动类型
             var activityType = $("input[name='result.code']").val();
-            $.each(this.systemRecommendData[activityType], function (i, value) {
-                var tr_index = i + 1;
-                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(0)').val(value.depositAmountGe);
-                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(1)').val(value.percentageHandsel);
-                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(2)').val(value.regularHandsel);
-                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(3)').val(value.preferentialAudits);
+            //系统推荐数据
+            var deposit_data = this.system_recommend_data[activityType];
+            var deposit_array = activityType+'_array';
+            //设置优惠条件
+            $.each(deposit_data[deposit_array], function (i, item) {
+                var tr_index = i+2 ;
+                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(0)').val(item.depositAmountGe);
+                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(1)').val(item.percentageHandsel);
+                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(2)').val(item.regularHandsel);
+                $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(3)').val(item.preferentialAudits);
             });
+            //设置领取方式
+            var is_audit = deposit_data.isAudit;
+            $("input[name='activityRule.isAudit']").val(is_audit);//设置input值
+            var is_audit_text = $("[selectdiv='activityRule.isAudit']").find("a[key=" + is_audit + "]").html();
+            $("[selectdiv='activityRule.isAudit']").find("span[prompt='prompt']").html(is_audit_text);//设置显示
+            //有效期
+            var effective_time = deposit_data.effectiveTime;
+            $("input[name='activityRule.effectiveTime']").val(effective_time);//设置input值
+            var effective_time_text = $("[selectdiv='activityRule.effectiveTime']").find("a[key=" + effective_time + "]").html();
+            $("[selectdiv='activityRule.effectiveTime']").find("span[prompt='prompt']").html(effective_time_text);//设置显示
+            //最高彩金
+            $("input[name='activityRule.preferentialAmountLimit']").val(deposit_data.preferentialAmountLimit);
         },
         /**
          * 系统推荐方案数据初始化
@@ -1017,95 +1117,178 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
          */
         initSystemRecommendData: function () {
 
-            this.systemRecommendData = {};
-            var first_deposit = [{
+            this.system_recommend_data = {};
+
+            var first_deposit_array = [{
                 depositAmountGe: 100,
                 percentageHandsel: 5,
                 regularHandsel: 5,
-                preferentialAudits: 1
+                preferentialAudits: 15
+
             }, {
                 depositAmountGe: 200,
                 percentageHandsel: 10,
                 regularHandsel: 20,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 800,
                 percentageHandsel: 20,
                 regularHandsel: 160,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 3000,
                 percentageHandsel: 30,
                 regularHandsel: 900,
-                preferentialAudits: 1
+                preferentialAudits: 15
             }];
-            var second_deposit = [{
+
+            var second_deposit_array = [{
                 depositAmountGe: 100,
-                percentageHandsel: 5,
-                regularHandsel: 5,
-                preferentialAudits: 1
+                percentageHandsel: 3,
+                regularHandsel: 3,
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 200,
-                percentageHandsel: 10,
-                regularHandsel: 20,
-                preferentialAudits: 1
+                percentageHandsel: 8,
+                regularHandsel: 16,
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 800,
-                percentageHandsel: 20,
-                regularHandsel: 160,
-                preferentialAudits: 1
+                percentageHandsel: 15,
+                regularHandsel: 120,
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 3000,
-                percentageHandsel: 30,
-                regularHandsel: 900,
-                preferentialAudits: 1
+                percentageHandsel: 20,
+                regularHandsel: 600,
+                preferentialAudits: 15
             }];
-            var third_deposit = [{
+            var third_deposit_array = [{
                 depositAmountGe: 100,
-                percentageHandsel: 5,
-                regularHandsel: 5,
-                preferentialAudits: 1
+                percentageHandsel: 3,
+                regularHandsel: 3,
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 200,
-                percentageHandsel: 10,
-                regularHandsel: 20,
-                preferentialAudits: 1
+                percentageHandsel: 5,
+                regularHandsel: 10,
+                preferentialAudits: 155
             }, {
                 depositAmountGe: 800,
-                percentageHandsel: 20,
-                regularHandsel: 160,
-                preferentialAudits: 1
+                percentageHandsel: 15,
+                regularHandsel: 450,
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 3000,
-                percentageHandsel: 30,
-                regularHandsel: 900,
-                preferentialAudits: 1
+                percentageHandsel: 15,
+                regularHandsel: 450,
+                preferentialAudits: 15
             }];
-            var every_first_deposit = [{
+            var everyday_first_deposit_array = [{
                 depositAmountGe: 100,
-                percentageHandsel: 5,
-                regularHandsel: 5,
-                preferentialAudits: 1
+                percentageHandsel: 3,
+                regularHandsel: 3,
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 200,
-                percentageHandsel: 10,
-                regularHandsel: 20,
-                preferentialAudits: 1
+                percentageHandsel: 5,
+                regularHandsel: 10,
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 800,
-                percentageHandsel: 20,
-                regularHandsel: 160,
-                preferentialAudits: 1
+                percentageHandsel: 10,
+                regularHandsel: 80,
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 3000,
-                percentageHandsel: 30,
-                regularHandsel: 900,
-                preferentialAudits: 1
+                percentageHandsel: 15,
+                regularHandsel: 450,
+                preferentialAudits: 15
             }];
-            this.systemRecommendData['first_deposit'] = first_deposit;
-            this.systemRecommendData['second_deposit'] = second_deposit;
-            this.systemRecommendData['third_deposit'] = third_deposit;
-            this.systemRecommendData['every_first_deposit'] = every_first_deposit;
+            var registe_send_array = [{
+                depositAmountGe: 18,
+                preferentialAudits: 5
+            }];
+            var first_deposit={};
+            first_deposit['first_deposit_array']=first_deposit_array;
+            first_deposit['preferentialAmountLimit']=1888;
+            first_deposit['isAudit']=true;
+            first_deposit['effectiveTime']='OneDay';
+
+            var second_deposit={};
+            second_deposit['second_deposit_array']=second_deposit_array;
+            second_deposit['preferentialAmountLimit']=1888;
+            second_deposit['isAudit']=true;
+            second_deposit['effectiveTime']='OneDay';
+
+            var third_deposit={};
+            third_deposit['third_deposit_array']=third_deposit_array;
+            third_deposit['preferentialAmountLimit']=1888;
+            third_deposit['isAudit']=true;
+            third_deposit['effectiveTime']='OneDay';
+
+            var everyday_first_deposit={};
+            everyday_first_deposit['everyday_first_deposit_array']=everyday_first_deposit_array;
+            everyday_first_deposit['preferentialAmountLimit']=1888;
+            everyday_first_deposit['isAudit']=true;
+            everyday_first_deposit['effectiveTime']='OneDay';
+
+            var registe_send={};
+            registe_send['registe_send_array']=registe_send_array;
+            registe_send['isAudit']=true;
+            registe_send['effectiveTime']='OneDay';
+
+
+            this.system_recommend_data['first_deposit'] = first_deposit;
+            this.system_recommend_data['second_deposit'] = second_deposit;
+            this.system_recommend_data['third_deposit'] = third_deposit;
+            this.system_recommend_data['everyday_first_deposit'] = everyday_first_deposit;
+            this.system_recommend_data['registe_send'] = registe_send;
+
+        },
+        /**
+         * 是否首存，次存，三存，每日首存
+         * @param e
+         * @param option
+         */
+        is123Deposit: function (code) {
+            if(code == 'first_deposit' || code == 'second_deposit' || code == 'third_deposit' || code == 'everyday_first_deposit'){
+                return true;
+            }else{
+                return false;
+            }
+        },
+        /**
+         * 初始化游戏选中数量
+         * @param null
+         */
+        initGameNum: function(){
+            var gameTypeList = $(".game_div");
+            var size = gameTypeList.length;
+            for (var i=0; i<size; i++) {
+                var target = gameTypeList[i];
+                var num = $(target).children("input.game:checked").length;
+                var mark = $(target).attr("aaa");
+                $("."+mark).text(num);
+            }
+        },
+        /**
+         * 初始话盈亏送显示
+         * @param null
+         */
+        initPreferential: function(){
+            var profit = $(".profit").prop("checked");
+            var loss = $(".loss").prop("checked");
+            if (profit) {
+                $("#profit_preferential").show();
+            }else {
+                $("#profit_preferential").hide();
+            }
+            if (loss) {
+                $("#loss_preferential").show();
+            }else {
+                $("#loss_preferential").hide();
+            }
         },
     });
 });

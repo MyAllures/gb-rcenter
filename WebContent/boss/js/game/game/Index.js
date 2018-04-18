@@ -11,7 +11,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
 
         bindEvent: function () {
             this._super();
-
+            var _this=this;
         },
         onPageLoad: function () {
             this._super();

@@ -98,7 +98,24 @@ define(['common/BaseListPage','bootstrapswitch'], function(BaseListPage,Bootstra
          */
         bindEvent: function () {
             this._super();
-        }
 
+        },
+
+        updateMobileBackgroundColor:function (e, opt) {
+            var siteId=$("#siteId").val();
+            var paramValue=$("#paramValue option:selected").val();
+            var _this=this;
+            window.top.topPage.ajax({
+                url: root+"/site/detail/updateMobileBackgroundColor.html?result.siteId="+siteId+"&result.paramValue="+paramValue,
+                success: function (data) {
+                    if(data){
+                        window.top.topPage.showSuccessMessage("保存成功");
+                    }else{
+                        window.top.topPage.showErrorMessage("保存失败");
+                    }
+                    $(e.currentTarget).unlock();
+                }
+            });
+        }
     });
 });

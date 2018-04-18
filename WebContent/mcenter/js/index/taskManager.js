@@ -98,10 +98,10 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
             $('.tasks').children('a').click(function () {
                 var href = $(this).attr("data-href");
                 if ($(this).attr("aria-expanded") != 'true') {
-                    if(href.indexOf("?_t")>-1){
+                    if (href.indexOf("?_t") > -1) {
                         var arr = href.split("?");
                         href = arr[0] + "?_t=" + new Date().getTime();
-                    }else{
+                    } else {
                         href = href + "?_t=" + new Date().getTime();
                     }
                     $(this).parent().find('dl').load(href);
@@ -251,7 +251,7 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
         refreshTaskNum: function () {
             window.top.topPage.ajax({
                 type: "post",
-                comet : true,
+                comet: true,
                 url: root + "/index/taskNum.html",
                 dataType: "json",
                 success: function (data) {
@@ -293,16 +293,33 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
                         }
                     }
 
+                },
+                error: function (event, xhr, settings) {
+                    console.log(xhr);
                 }
             })
         },
-        countTaskNum:function () {
+        countTaskNum: function () {
             var _this = this;
-            _this.timingCountTask();
-            //没分钟定时查询一次
-            setTimeout(function () {
+            var taskNumberLastTime = window.top.topPage.taskNumberLastTime;
+            var time = new Date().getTime();
+            if (taskNumberLastTime && (time - taskNumberLastTime) < 120 * 1000) {
+                console.log("任务数量更新：还未到刷新时间,上一次刷新时间:" + taskNumberLastTime);
+                //任务调度器　已存在不重复添加
+                var taskNumTimer = window.top.topPage.taskNumTimer;
+                if (taskNumTimer) {
+                    return;
+                }
+            } else {
+                _this.timingCountTask();
+                window.top.topPage.taskNumberLastTime = time;
+            }
+
+            //2分钟定时查询一次
+            var taskNumTimer = setTimeout(function () {
                 _this.countTaskNum();
             }, 120 * 1000);
+            window.top.topPage.taskNumTimer = taskNumTimer;
         },
 
         queryPendingDealRecord: function () {
@@ -327,25 +344,42 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
                             _this.queryPendingDealRecord();
                         }, 60 * 1000)
                     }
+                },
+                error: function (event, xhr, settings) {
+                    console.log(xhr);
                 }
             });
         },
         playerNumTimer: function () {
             var _this = this;
-            $.ajax({
-                url: root + "/home/playerNum.html",
-                type: "POST",
-                dataType: "json",
-                success: function (data) {
-                    $("#onlinePlayerNum").text(data.onlineplayernum);
-                    //$("#activePlayerNum").attr("data-content",_this.formatStr(window.top.message.home_auto['今日活跃'],typeof (data.activePlayerNum)=='undefined'?'0':data.activePlayerNum));
-                    $("#activePlayerNum").text(data.activeplayernum);
-                    setTimeout(function () {
-                        _this.playerNumTimer();
-                    }, 60 * 1000)
+            var playerNumberLastTime = window.top.topPage.playerNumberLastTime;
+            var time = new Date().getTime();
+            if (playerNumberLastTime && (time - playerNumberLastTime) < 60 * 1000) {
+                console.log("在线玩家数：还未到刷新时间,上一次刷新时间" + playerNumberLastTime);
+                var playerNumberTimer = window.top.topPage.playerNumberTimer;
+                if (playerNumberTimer) {
+                    return;
                 }
-            });
-
+            } else {
+                window.top.topPage.playerNumberLastTime = new Date().getTime();
+                window.top.topPage.ajax({
+                    url: root + "/home/playerNum.html",
+                    type: "POST",
+                    dataType: "json",
+                    success: function (data) {
+                        $("#onlinePlayerNum").text(data.onlineplayernum);
+                        //$("#activePlayerNum").attr("data-content",_this.formatStr(window.top.message.home_auto['今日活跃'],typeof (data.activePlayerNum)=='undefined'?'0':data.activePlayerNum));
+                        $("#activePlayerNum").text(data.activeplayernum);
+                    },
+                    error: function (event, xhr, settings) {
+                        console.log(xhr);
+                    }
+                });
+            }
+            var playerNumberTimer = setTimeout(function () {
+                _this.playerNumTimer();
+            }, 60 * 1000);
+            window.top.topPage.playerNumberTimer = playerNumberTimer;
         }
 
     });

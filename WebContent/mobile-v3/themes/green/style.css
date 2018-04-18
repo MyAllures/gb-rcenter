@@ -9,7 +9,7 @@ header.mui-bar-nav a.mui-icon-bars { color: #fff; }
 header.mui-bar-nav .btn-login { background-color: #1dc28e; border: 1px solid #1dc28e; }
 header.mui-bar-nav .btn-demo { background-color: #00BCD4; border: 1px solid #00BCD4; }
 header.mui-bar-nav .btn-register { background-color: #f0af01; border: 1px solid #f0af01; }
-header.mui-bar-nav .mui-action-back { color: #666; }
+header.mui-bar-nav .mui-action-back { color: #fff; }
 
 .yjym { color: #fff; background: #14805e; border-top: 1px solid #46a98a; }
 
@@ -155,5 +155,8 @@ header.mui-bar-nav .mui-action-back { color: #666; }
 .mui-bar-tab .mui-icon.icon-mine, .mui-bar-tab .mui-icon:active.icon-mine { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; background-position: -168px -5px; }
 .mui-bar-tab .mui-active .mui-icon { background-position-y: -45px; }
 .mui-bar-tab .mui-active .mui-icon.icon-home:after { background: url(images/footer-nav-icon.png) no-repeat -83px -43px/auto 80px; }
+
+.load-body { background: #14805e; }
+.load-body .mui-progressbar.mui-progressbar-infinite:before { background: #14805e; }
 
 /*# sourceMappingURL=style.css.map */

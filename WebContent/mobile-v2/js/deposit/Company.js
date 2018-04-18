@@ -25,15 +25,6 @@ define(['site/deposit/BaseCompanyDeposit','clipboard'], function (BaseCompanyDep
                         var value = items[0].value;
                         document.getElementById('result.rechargeType').value = value;
                         document.getElementById("rechargeTypeText").innerHTML = items[0].text;
-                        //柜台现金存款需填写交易地点，其他填写存款人
-                        if (value == 'atm_money') {
-                            document.getElementById('address').style.display="block";
-                            document.getElementById('payerName').style.display="none";
-                        } else {
-                            document.getElementById('address').style.display="none";
-                            document.getElementById('payerName').style.display="block";
-                        }
-
                     });
                 }, false);
             });

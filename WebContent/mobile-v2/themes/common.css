@@ -4891,11 +4891,24 @@ span.api-icon.api-icon-4-22-2 {
 /* 2017-11-30 */
 span.api-icon.api-icon-2-31{    background-position-y: -1489px;}
 span.api-icon.api-icon-2-32{    background-position-y: -1537px;}
-span.api-icon.api-icon-2-35{    background-position-y: -2619px;}
+span.api-icon.api-icon-2-35{    background-position-y: -1632px;}
 span.api-icon.api-icon-2-26 { background-position-y: -1392px;}
 span.api-icon.api-icon-2-27{background-position-y: -1344px;}
 span.api-icon.api-icon-2-28{    background-position-y: -1296px;}
 span.api-icon.api-icon-5-34{    background-position-y: -1680px;}
+/* 2018-03-29 */
+span.api-icon.api-icon-3-36 {
+    background-position-y: -1776px;
+}
+span.api-icon.api-icon-3-37 {
+    background-position-y: -1728px;
+}
+span.api-icon.api-icon-3-37.site119 {
+    background-image: url(../images/api/round/3-37-119.png);background-repeat: no-repeat;background-size: 100%;background-position-y:0;
+}
+span.api-icon.api-icon-3-37.site270 {
+    background-image: url(../images/api/round/3-37-270.png);background-repeat: no-repeat;background-size: 100%;background-position-y:0;
+}
 
 @media only screen and (min-width:768px ) {
     .hb-block .index-block-content .api-icon,.hb-block .index-block-content .game-img {
