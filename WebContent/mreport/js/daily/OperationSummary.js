@@ -10,20 +10,20 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
         init: function () {
             this._super();
 
-            this.drawLastDifference();
+            /*this.drawLastDifference();
             this.drawMultiDifference();
 
             this.drawLastEffective();
             this.drawMultiEffective();
 
             this.drawLastProfitLoss();
-            this.drawMultiProfitLoss();
+            this.drawMultiProfitLoss();*/
         },
 
         /**
          * 上一个周期存取差额
          */
-        drawLastDifference: function() {
+        /*drawLastDifference: function() {
             var jsonStr = $("#lastDifferenceData").html();
             const data = $.parseJSON(jsonStr);
             const chart = new G2.Chart({
@@ -64,9 +64,9 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
             chart.render();
         },
 
-        /**
+        /!**
          * 最近多个周期的存取差额
-         */
+         *!/
         drawMultiDifference: function() {
             const data = [
                 { name:'存款金额', '4.9': 18.9, '4.10': 28.8, '4.11' :39.3, '4.12': 81.4, '4.13': 47, '4.14': 20.3, '4.15': 24, '4.16': 35.6 },
@@ -94,9 +94,9 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
             chart.render();
         },
 
-        /**
+        /!**
          * 上一个周期有效投注额
-         */
+         *!/
         drawLastEffective: function() {
             var jsonStr = $("#lastDifferenceData").html();
             const data = $.parseJSON(jsonStr);
@@ -138,9 +138,9 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
             chart.render();
         },
 
-        /**
+        /!**
          * 最近多个周期的有效投注额
-         */
+         *!/
         drawMultiEffective: function() {
             const data = [
                 { name:'London', '4.9': 18.9, '4.10': 28.8, '4.11' :39.3, '4.12': 81.4, '4.13': 47, '4.14': 20.3, '4.15': 24, '4.16': 35.6 },
@@ -168,9 +168,9 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
             chart.render();
         },
 
-        /**
+        /!**
          * 上一个周期损益
-         */
+         *!/
         drawLastProfitLoss: function() {
             var jsonStr = $("#lastDifferenceData").html();
             const data = $.parseJSON(jsonStr);
@@ -212,9 +212,9 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
             chart.render();
         },
 
-        /**
+        /!**
          * 最近多个周期的损益
-         */
+         *!/
         drawMultiProfitLoss: function() {
             const data = [
                 { name:'London', '4.9': 18.9, '4.10': 28.8, '4.11' :39.3, '4.12': 81.4, '4.13': 47, '4.14': 20.3, '4.15': 24, '4.16': 35.6 },
@@ -240,6 +240,6 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
                 marginRatio: 1 / 32
             }]);
             chart.render();
-        }
+        }*/
     });
 });
