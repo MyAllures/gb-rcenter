@@ -19,6 +19,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
                 trigger: 'hover',
                 html: true
             });
+            _this.rewrite();
         },
 
         /**
@@ -249,6 +250,54 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
             });
         },
 
+        /**
+         * 获取勾选玩家id
+         * @param e
+         * @param opt
+         * @returns {boolean}
+         */
+        getSelectPlayerIds: function (e, opt) {
+            var ids = this.getSelectIdsArray(e).join(",");
+            opt.target = opt.target.replace('{playerIds}', ids);
+            return true;
+        },
+        /**
+         * 获取层级选项的value
+         * @param e
+         * @returns {{rankId: (*|jQuery), ids: (string|*)}}
+         */
+        playerRankPost: function (e) {
+            var checked_rank = $("#player_rank ul.rank_ul li input[type='radio']:checked").val();
+            var ids = this.getSelectIdsArray(e).join(",");
+            return {'rankId': checked_rank, 'ids': ids};
+        },
+
+        /**
+         * 获取层级选项的value
+         * @param e
+         * @returns {{rankId: (*|jQuery), ids: (string|*)}}
+         */
+        playerRekebackPost: function (event, option) {
+            var rakebackId = $("#player_rakeback li input[type='radio']:checked").val();
+            var ids = this.getSelectIdsArray(event).join(",");
+            if (rakebackId === '0') {
+                return {'ids': ids}
+            }
+            return {'rakebackId': rakebackId, 'ids': ids};
+        },
+        /**
+         * 玩家层级回填
+         * @param e
+         */
+        rewrite: function (e) {
+            var playerRanksMemory = $("#playerRanksMemory").val();
+            if (playerRanksMemory != "") {
+                var playerRanksMemory = JSON.parse(playerRanksMemory);
+                $.each(playerRanksMemory, function (i, line) {
+                    $("input[name='search.rankIds'][value='" + line + "']:not(:checked)").prop("checked", true).change();
+                })
+            }
+        },
         /** 确认审核成功 */
         confirmCheckPass: function (e, option) {
             var btnOption = {};

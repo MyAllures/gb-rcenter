@@ -99,7 +99,7 @@ height: 44px;}
 } 
 /* download page */
 .download-content{ 
-    background: url(images/appBg.jpg) no-repeat center 0/100%;
+    background: url(images/appBg.jpg) no-repeat center 0/100% !important;
     .app-logo{width: 100px;height: 100px;margin: 40px auto 0;display: block;}
     .tit{font-size: 24px;color: #fff;margin-top: 10px;text-align: center;line-height: 24px;}
     .des{font-size: 12px;color: #fff;text-align: center;line-height: 24px;}
@@ -111,7 +111,7 @@ height: 44px;}
         }
     }
 }
-.download-content-ios{background: #fff;
+.download-content-ios{background: #fff !important;
     .h-bg{width: 100%;}
     .app-logo{width: 100px;height: 100px;position: absolute;top: 40px;left: 50%;margin-left: -50px;}
     .btn-install{display:block;margin:20px auto 0;width: 165px;height: 40px;text-align: center;line-height: 40px;color: #eb0002;font-size: 15px;border: 1px solid #eb0002;border-radius: 6px;}
@@ -125,7 +125,7 @@ height: 44px;}
 .mui-content-casino-list{padding-top: 44px !important;background: #fff;
     .casino-wrap{padding:10px;}
     .electronic-search{position: relative;margin: 10px;
-        input{margin: 0;height: 35px;font-size: 14px;border: 1px solid #ccc;padding-right: 100px;}
+        input{margin: 0;height: 35px;font-size: 14px;border: 1px solid #ccc;padding-right: 100px;color: #333;}
         .btn-search{position: absolute;right: 0;top: 0;font-size: 14px;color: #333;height: 35px;line-height: 35px;text-align: center;width: 84px;background: #ccc;border-top-right-radius: 3px;    border-bottom-right-radius: 3px;}
         .mui-icon-clear{right: 80px;    top: 8px;}
     }
@@ -161,7 +161,9 @@ height: 44px;}
     border: 1px solid #666;
         td{    border: 1px solid #666;}
     }
-    .gb-select{display: block;}
+    .gb-select{display: block;
+        img{max-width: 100%;}
+    }
     .gb-imgs >.ct {
         padding: 10px;
         ul{padding: 0;margin: 0;list-style: none;
@@ -425,5 +427,9 @@ height: 44px;}
             }
         }
 }
-.allgame-popover{width: 160px;}
+.allgame-popover{width: 160px;
+    .mui-table-view-cell{
+        a{color: #333;}
+    }
+}
 .allgame-scroll{height: 300px;margin: 0 !important;    background: #fff;}

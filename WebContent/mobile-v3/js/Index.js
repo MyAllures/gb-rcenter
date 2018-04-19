@@ -17,10 +17,8 @@ $(function () {
     initNotice();
     //初始化api nav滑动
     swiper();
-    if(!lazyLoadApi) {
-        //图片懒加载
-        lazyLoadApi = lazyLoadImg("body");
-    }
+    //判断desk是否需要隐藏
+    hideDesk();
 });
 
 /**
@@ -56,38 +54,41 @@ function closeDownLoad() {
  */
 function swiper() {
     var siledSize = $(".nav .swiper-container a.swiper-slide").length;
-    // api滑动
-    var slideContent = new Swiper('.nav-slide-content', {
-        loop: true,
-        loopedSlides: siledSize,
-        autoHeight: true,
-        on: {
-            slideChangeTransitionEnd: function () {
+    if(siledSize >1){
+        var apiTypeLength = $("#apiTypeLength").val();
+        // api滑动
+        var slideContent = new Swiper('.nav-slide-content', {
+            loop: true,
+            loopedSlides: siledSize,
+            autoHeight: true,
+            on: {
+                slideChangeTransitionEnd: function () {
 
-            }
-        }
-    });
-    var slideIndicators = new Swiper('.nav-slide-indicators', {
-        loop: true,
-        loopedSlides: siledSize,
-        slidesPerView: 'auto',
-        touchRatio: 0.2,
-        slideToClickedSlide: true,
-        on: {
-            slideChangeTransitionEnd: function () {
-                //处理图片延迟加载
-                if ($(".nav-slide-content .swiper-slide-active").find("img[data-lazyload]").length > 0 || $(".nav-slide-content .swiper-slide-active").find("img[data-lazyload-id]").length > 0) {
-                    if (!lazyLoadApi) {
-                        lazyLoadApi = lazyLoadImg("body");
-                    }
-                    lazyLoadApi.refresh(true);
                 }
-                resizeSlideHeight();
             }
-        }
-    });
-    slideContent.controller.control = slideIndicators;
-    slideIndicators.controller.control = slideContent;
+        });
+        var slideIndicators = new Swiper('.nav-slide-indicators', {
+            loop: true,
+            loopedSlides: siledSize,
+            slidesPerView: apiTypeLength,
+            touchRatio: 0.2,
+            slideToClickedSlide: true,
+            on: {
+                slideChangeTransitionEnd: function () {
+                    //处理图片延迟加载
+                    if ($(".nav-slide-content .swiper-slide-active").find("img[data-lazyload]").length > 0 || $(".nav-slide-content .swiper-slide-active").find("img[data-lazyload-id]").length > 0) {
+                        if (!lazyLoadApi) {
+                            lazyLoadApi = lazyLoadImg("body");
+                        }
+                        lazyLoadApi.refresh(true);
+                    }
+                    resizeSlideHeight();
+                }
+            }
+        });
+        slideContent.controller.control = slideIndicators;
+        slideIndicators.controller.control = slideContent;
+    }
 }
 
 /*轮播图*/
@@ -135,7 +136,7 @@ function closeBanner(obj, options) {
 /*公告弹窗*/
 function showNotice(obj, options) {
     var noticeA = noticeIndicator = "";
-    $(".notice .notice-list p a").each(function () {//生成公告html和indicator
+    $(".notice .notice-list a").each(function () {//生成公告html和indicator
         noticeA += "<div class='mui-slider-item'><a href='javascript:'>" + $(this).html() + "</a></div>";
         noticeIndicator += "<div class='mui-indicator'></div>"
     });
@@ -178,4 +179,12 @@ function changeNavGame(obj, options) {
 //添加到桌面图标
 function closeDesk(obj, options) {
     $("#deskTip").hide();
+    localStorage.setItem("destHide", true);
+}
+
+//判断desk是否需要隐藏
+function hideDesk(){
+    if(os != 'app_ios' || localStorage.getItem("destHide")){
+        $("#deskTip").hide();
+    }
 }

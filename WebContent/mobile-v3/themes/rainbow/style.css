@@ -8,7 +8,7 @@ header.mui-bar-nav a.mui-icon-bars { color: #666; }
 header.mui-bar-nav .btn-login { background-color: #1dc28e; border: 1px solid #1dc28e; }
 header.mui-bar-nav .btn-demo { background-color: #1279d9; border: 1px solid #1279d9; }
 header.mui-bar-nav .btn-register { background-color: #f0af01; border: 1px solid #f0af01; }
-header.mui-bar-nav .mui-action-back { color: #666; }
+header.mui-bar-nav .mui-action-back { color: #fff; }
 
 .mui-bar-nav { background: url(images/header-bg.png) 0 0/100% 44px; box-shadow: none; -webkit-box-shadow: none; }
 
@@ -138,5 +138,12 @@ header.mui-bar-nav .mui-action-back { color: #666; }
 .nav .swiper-container { height: 67px; }
 
 .nav .swiper-slide.swiper-slide-active > span { color: inherit; }
+
+.mui-title { color: #fff; }
+
+/* index-login-info */
+.login-info { background: url(images/icon-open-offcanvas.png) no-repeat right center/5px; color: #fff; }
+
+.load-body { background: #b3b9b1; }
 
 /*# sourceMappingURL=style.css.map */

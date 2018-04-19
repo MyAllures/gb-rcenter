@@ -95,4 +95,11 @@ function nativeGoToCustomerPage(){
     window.gamebox.gotoCustomerPage();
 }
 
+/**
+ * 优惠详情点申请跳转到申请优惠
+ */
+function nativeGoToApplyPromoPage(){
+    window.gamebox.gotoApplyPromoPage();
+}
+
 

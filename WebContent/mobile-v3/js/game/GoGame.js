@@ -151,6 +151,84 @@ function apiLogin(obj) {
     muiAjax(options);
 }
 
+//捕鱼和棋牌游戏登录
+function fishGameLogin(obj,options){
+    apiId = options.dataApiId;
+    apiTypeId = options.dataApiTypeId;
+    status = options.dataStatus;
+    gameCode = options.dataGameCode;
+    gameId = options.dataGameId;
+    var postData = {};
+    if (apiId) {
+        postData.apiId = apiId;
+    }
+    if (gameId && gameId != 0) {
+        postData.gameId = gameId;
+    }
+    if (gameCode) {
+        postData.gameCode = gameCode;
+    }
+    if (apiTypeId) {
+        postData.apiTypeId = apiTypeId;
+    }
+    isAutoPay = sessionStorage.getItem("isAutoPay");
+    if ((isAutoPay == 'true' && apiTypeId != "2")) {
+        //判断是否免转，如果免转,则直接登陆游戏，不跳到游戏中转页面
+        autoLoginAndTransfer();
+    } else {
+        var options = {
+            url: root + "/api/login.html",
+            type: "POST",
+            dataType: "json",
+            data: postData,
+            success: function (data) {
+                hideLoading();
+                if (data.loginSuccess) {
+                    var result = data.gameApiResult;
+                    if (apiId == 6) {
+                        if (os == 'android' || os == 'app_ios') {
+                            gotoGame(result.defaultLink, apiId);
+                        } else {
+                            goToUrl(result.defaultLink);
+                        }
+                    } else {
+                        if (result.defaultLink) {
+                            gotoGameUrl(result.defaultLink, apiId);
+                        } else {
+                            gotoGameUrl(result.links[apiTypeId], apiId)
+                        }
+                    }
+                } else {
+                    if (!data.loginSuccess && ( data.errMsg == '' || data.errMsg == null)) {
+                        if (data.maintain) {
+                            showWarningMsg(window.top.message.game_auto['提示'], window.top.message.game_auto['游戏维护中']);
+                        } else {
+                            toast(window.top.message.game_auto['无法登录']);
+                        }
+                    } else {
+                        toast(data.errMsg);
+                    }
+                    //reload();
+                }
+            },
+            error: function (error) {
+                if (error.status === 600) {
+                    signIn(obj);
+                } else if (error.status === 606) {
+                    goToUrl(root + '/errors/606.html');
+                } else {
+                    toast('暂时无法登录游戏！');
+                }
+            },
+            complete: function () {
+                hideLoading();
+            }
+        };
+        muiAjax(options);
+    }
+
+}
+
 /**
  * 自动转账和登陆游戏
  * @param obj

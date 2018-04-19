@@ -6,12 +6,13 @@ $(function () {
         /*右侧菜单上下滚动，可自行指定范围*/
         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
         /*禁用侧滑手势指定样式*/
-        disabledHandSlip: ['.mui-off-canvas-left'],
+        disabledHandSlip: ['.mui-off-canvas-left']
         /*表格添加横向滚动*/
-        horizontalScroll: ['li .ct']
+        //horizontalScroll: ['li .ct']
     };
     muiInit(options);
     onPageLoad();
+    tableScroll('li .ct');
 });
 
 function onPageLoad() {
@@ -41,12 +42,17 @@ function submitPromo(obj, options) {
     //判断是否是试玩账号，试玩账号无权参与
     var isDemo = sessionStorage.isDemo;
     if (isDemo == 'true') {
-        alert('试玩账号无权限参与活动');
+        toast('试玩账号无权限参与活动');
         return;
     }
     var code = options.dataCode;
     if (code == 'content') {
-        goToUrl(root + "/message/gameNotice.html?isSendMessage=true");
+        if(isNative){
+            //nativeGoToApplyPromoPage();
+            toast('请到申请优惠中申请');
+        }else{
+            goToUrl(root + "/message/gameNotice.html?isSendMessage=true");
+        }
     } else if (code == 'back_water') {
         toast(window.top.message.promo_auto['参与中']);
     } else {
@@ -56,7 +62,7 @@ function submitPromo(obj, options) {
 
 function promoCheck(obj, options) {
     var nowTime = new Date($("._now_time").attr("value")).getTime();
-    var $obj = $("button.submit");
+    var $obj = $(".submit");
     // var st = $obj.parent().parent().find("._vr_promo_ostart").attr("value");
     var st = $("._vr_promo_ostart").attr("value");
     var et = $("._vr_promo_oend").attr("value");
@@ -182,7 +188,7 @@ function doWin() {
 }
 
 function filterActyByPlayer(data) {
-    var $obj = $("button.submit");
+    var $obj = $(".submit");
     var startTimeObj = $('.mui-row ._vr_promo_ostart');
     var flag = new Date(startTimeObj.attr("value")) < new Date();
     var oldClass = $obj.data("oldClass");
@@ -208,7 +214,18 @@ function filterActyByPlayer(data) {
         $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").text(window.top.message.promo_auto['未满足条件']);
     } else if (code == "first_deposit" || code == "deposit_send") {
         $obj.removeClass(oldClass).addClass(newClass + " mui-disabled").text(window.top.message.promo_auto['存款时申请']);
-    } else if (code == "regist_send" || code == "relief_fund" || code == "profit_loss" || code == "effective_transaction") {
-        $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").text(window.top.message.promo_auto['参与中']);
+    } else if(code == "content"){
+        $obj.addClass("mui-hidden");
+    }
+}
+
+/**
+ * 跳到优惠记录
+ */
+function goPromoDetail(obj,options){
+    if(isNative){
+        nativeGotoPromoRecordPage();
+    }else{
+        goToUrl(options.src);
     }
 }

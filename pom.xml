@@ -23,7 +23,7 @@
         <jstl.version>1.2</jstl.version>
         <jsp.api.version>2.2.1-b03</jsp.api.version>
         <geronimo.servlet_3_0.version>1.0</geronimo.servlet_3_0.version>
-        <springframework.version>4.1.5.RELEASE</springframework.version>
+        <springframework.version>4.3.10.RELEASE</springframework.version>
         <springside.version>4.3.0-SNAPSHOT</springside.version>
         <cas.client.core.version>3.3.3</cas.client.core.version>
     </properties>
@@ -127,7 +127,11 @@
                         <exclude>mobile-v2/js/mui/**</exclude>
                         <exclude>mobile-v2/js/zepto/**</exclude>
                         <exclude>mobile-v2/js/plugin/**</exclude>
-                        <exclude>mobile-v3/**</exclude>
+                        <exclude>mobile-v3/themes/**</exclude>
+                        <exclude>mobile-v3/js/mui/**</exclude>
+                        <exclude>mobile-v3/js/swiper.min.js</exclude>
+                        <exclude>mobile-v3/js/jquery.marquee.min.js</exclude>
+                        <exclude>mobile-v3/js/jquery/**</exclude>
 
                         <exclude>lottery-mobile/js/mui/**</exclude>
                         <exclude>lottery-mobile/js/plugin/**</exclude>

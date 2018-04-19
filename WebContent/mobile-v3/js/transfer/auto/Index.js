@@ -31,7 +31,7 @@ function recovery(obj) {
                 if (data.msg) {
                     toast(data.msg);
                 } else if (!apiId) {
-                    toast(window.top.message.transfer_auto["正在回收"]);
+                    toast(window.top.message.transfer_auto["没有可回收"]);
                 } else if (data.resultStatus) {
                     if (data.resultStatus == 'SUCCESS') {
                         toast(window.top.message.transfer_auto["回收成功"]);
@@ -66,7 +66,11 @@ function recovery(obj) {
  * 一键刷新
  */
 function reload() {
-    window.location.reload();
+    if(isNative){
+        nativeRefreshPage();
+    }else{
+        window.location.reload();
+    }
 }
 
 /**

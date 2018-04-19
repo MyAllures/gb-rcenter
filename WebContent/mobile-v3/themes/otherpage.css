@@ -1,656 +1,207 @@
 /* style of other pages */
 /* mui-content-without-footer-address */
-.mui-content-without-footer-address {
-  padding: 44px 0 0 0 !important; }
+.mui-content-without-footer-address { padding: 44px 0 0 0 !important; }
 
 /* page promo */
-.banner {
-  text-align: center; }
-  .banner img {
-    width: 100%; }
+.banner { text-align: center; }
+.banner img { width: 100%; }
 
-.promo {
-  position: relative;
-  z-index: 1;
-  border-radius: 4px; }
-  .promo .promo-list .swiper-slide a {
-    margin-bottom: 10px;
-    display: block; }
-  .promo .promo-list img {
-    width: 100%;
-    vertical-align: middle; }
+.promo { position: relative; z-index: 1; border-radius: 4px; }
+.promo .promo-list .swiper-slide a { margin-bottom: 10px; display: block; }
+.promo .promo-list img { width: 100%; vertical-align: middle; }
 
-.promo-head {
-  height: 97px; }
+.promo-head { height: 97px; }
 
-.promo-header {
-  position: fixed;
-  top: 44px;
-  height: 53px;
-  left: 0;
-  right: 0;
-  z-index: 99;
-  background: #fff; }
+.promo-header { position: fixed; top: 44px; height: 53px; left: 0; right: 0; z-index: 99; background: #fff; }
 
-.btn-promo-sort {
-  padding: 0 5px 0 0 !important;
-  height: 34px;
-  border: 0;
-  border-radius: 0;
-  margin-bottom: 10px;
-  margin-top: 10px; }
-  .btn-promo-sort span {
-    display: block;
-    border-radius: 3px;
-    width: 100%;
-    height: 34px;
-    line-height: 34px; }
+.btn-promo-sort { padding: 0 5px 0 0 !important; height: 34px; border: 0; border-radius: 0; margin-bottom: 10px; margin-top: 10px; }
+.btn-promo-sort span { display: block; border-radius: 3px; width: 100%; height: 34px; line-height: 34px; }
 
-.promo {
-  height: 100%; }
-  .promo .swiper-container {
-    height: 100%; }
-    .promo .swiper-container .swiper-slide .mui-scroll {
-      padding: 10px; }
+.promo { height: 100%; }
+.promo .swiper-container { height: 100%; }
+.promo .swiper-container .swiper-slide .mui-scroll { padding: 10px; }
 
-.promo-content {
-  padding-top: 97px !important;
-  position: absolute;
-  padding-bottom: 53px !important;
-  top: 0;
-  width: 100%;
-  bottom: 0; }
+.promo-content { padding-top: 97px !important; position: absolute; padding-bottom: 53px !important; top: 0; width: 100%; bottom: 0; }
 
-.promo-sorts {
-  margin: 0 10px; }
+.promo-sorts { margin: 0 10px; }
 
 /* blue-bar */
-.mui-bar-blue {
-  background-color: #1766bb;
-  -webkit-box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2) !important;
-  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2) !important; }
-  .mui-bar-blue .mui-icon-arrowleft, .mui-bar-blue .mui-title, .mui-bar-blue .mui-icon {
-    color: #fff !important; }
+.mui-bar-blue { background-color: #1766bb; -webkit-box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2) !important; box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2) !important; }
+.mui-bar-blue .mui-icon-arrowleft, .mui-bar-blue .mui-title, .mui-bar-blue .mui-icon { color: #fff !important; }
 
 /* mine page */
-.icon-message {
-  background: url(./images/icon-message.png) no-repeat center;
-  background-size: 20px auto;
-  width: 44px;
-  height: 44px; }
-  .icon-message .mui-badge {
-    font-size: 7px;
-    top: 9px;
-    margin-left: -17px;
-    padding: 1px 4px; }
+.icon-message { background: url(./images/icon-message.png) no-repeat center; background-size: 20px auto; width: 44px; height: 44px; }
+.icon-message .mui-badge { font-size: 7px; top: 9px; margin-left: -17px; padding: 1px 4px; }
 
-.icon-gift {
-  background: url(./images/icon-gift.png) no-repeat center;
-  background-size: 20px auto;
-  width: 44px;
-  margin-right: -10px !important;
-  margin-left: 0 !important;
-  height: 44px; }
+.icon-gift { background: url(./images/icon-gift.png) no-repeat center; background-size: 20px auto; width: 44px; margin-right: -10px !important; margin-left: 0 !important; height: 44px; }
 
-.mine-content {
-  padding-bottom: 63px !important; }
-  .mine-content .user-info-wrap {
-    height: 60px;
-    position: relative;
-    margin-bottom: 50px; }
-    .mine-content .user-info-wrap .gb-userinfo {
-      position: absolute;
-      height: 100px;
-      left: 10px;
-      right: 10px;
-      -webkit-box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
-      box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
-      border-radius: 5px; }
-      .mine-content .user-info-wrap .gb-userinfo .ct {
-        overflow: hidden;
-        border-bottom: 1px solid #efefef;
-        height: 56px;
-        padding: 13px 10px 0;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex; }
-        .mine-content .user-info-wrap .gb-userinfo .ct .avatar {
-          width: 34px;
-          height: 34px; }
-        .mine-content .user-info-wrap .gb-userinfo .ct p {
-          -webkit-box-flex: 1;
-          -ms-flex: 1;
-          flex: 1;
-          line-height: 34px;
-          padding: 0 10px;
-          color: #666; }
-        .mine-content .user-info-wrap .gb-userinfo .ct .user-logout {
-          height: 32px; }
-      .mine-content .user-info-wrap .gb-userinfo .money-info {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        height: 44px;
-        margin: 0;
-        line-height: 44px; }
-        .mine-content .user-info-wrap .gb-userinfo .money-info .span {
-          -webkit-box-flex: 1;
-          -ms-flex: 1;
-          flex: 1;
-          text-align: center; }
-          .mine-content .user-info-wrap .gb-userinfo .money-info .span + .span {
-            border-left: 1px solid #efefef; }
-        .mine-content .user-info-wrap .gb-userinfo .money-info .green {
-          color: #35b386; }
-        .mine-content .user-info-wrap .gb-userinfo .money-info .orange {
-          color: #e9a400; }
-  .mine-content .list-mine-item {
-    margin: 0 0 10px;
-    background: #fff;
-    overflow: hidden; }
-    .mine-content .list-mine-item li {
-      float: left;
-      text-align: center;
-      font-size: 14px;
-      color: #333;
-      height: 98px;
-      border-right: 1px solid #efefef; }
-      .mine-content .list-mine-item li a {
-        color: inherit;
-        padding-top: 15px;
-        display: block; }
-        .mine-content .list-mine-item li a p {
-          color: inherit;
-          margin-top: 8px;
-          margin-bottom: 0;
-          line-height: 16px; }
-        .mine-content .list-mine-item li a .ext-info {
-          color: #999;
-          font-size: 10px; }
-          .mine-content .list-mine-item li a .ext-info.with-icon {
-            padding-left: 50px; }
-          .mine-content .list-mine-item li a .ext-info.icon-bank1 {
-            background: url(images/banks-1.png) no-repeat 0/auto 11px; }
-      .mine-content .list-mine-item li:nth-child(3) {
-        border-right: 0; }
-      .mine-content .list-mine-item li .item-img-wrap {
-        height: 31px;
-        display: block;
-        position: relative; }
-      .mine-content .list-mine-item li .mine-item-img {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: auto;
-        -webkit-transform: scale(0.5);
-        transform: scale(0.5); }
+.mine-content { padding-bottom: 63px !important; }
+.mine-content .user-info-wrap { height: 60px; position: relative; margin-bottom: 50px; }
+.mine-content .user-info-wrap .gb-userinfo { position: absolute; height: 100px; left: 10px; right: 10px; -webkit-box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1); box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1); border-radius: 5px; }
+.mine-content .user-info-wrap .gb-userinfo .ct { overflow: hidden; border-bottom: 1px solid #efefef; height: 56px; padding: 13px 10px 0; display: -webkit-box; display: -ms-flexbox; display: flex; }
+.mine-content .user-info-wrap .gb-userinfo .ct .avatar { width: 34px; height: 34px; }
+.mine-content .user-info-wrap .gb-userinfo .ct p { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; line-height: 34px; padding: 0 10px; color: #666; }
+.mine-content .user-info-wrap .gb-userinfo .ct .user-logout { height: 32px; }
+.mine-content .user-info-wrap .gb-userinfo .money-info { display: -webkit-box; display: -ms-flexbox; display: flex; height: 44px; margin: 0; line-height: 44px; }
+.mine-content .user-info-wrap .gb-userinfo .money-info .span { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; text-align: center; }
+.mine-content .user-info-wrap .gb-userinfo .money-info .span + .span { border-left: 1px solid #efefef; }
+.mine-content .user-info-wrap .gb-userinfo .money-info .green { color: #35b386; }
+.mine-content .user-info-wrap .gb-userinfo .money-info .orange { color: #e9a400; }
+.mine-content .list-mine-item { margin: 0 0 10px; background: #fff; overflow: hidden; }
+.mine-content .list-mine-item li { float: left; text-align: center; font-size: 14px; color: #333; height: 98px; border-right: 1px solid #efefef; }
+.mine-content .list-mine-item li a { color: inherit; padding-top: 15px; display: block; }
+.mine-content .list-mine-item li a p { color: inherit; margin-top: 8px; margin-bottom: 0; line-height: 16px; }
+.mine-content .list-mine-item li a .ext-info { color: #999; font-size: 10px; }
+.mine-content .list-mine-item li a .ext-info.with-icon { padding-left: 50px; }
+.mine-content .list-mine-item li a .ext-info.icon-bank1 { background: url(images/banks-1.png) no-repeat 0/auto 11px; }
+.mine-content .list-mine-item li:nth-child(3) { border-right: 0; }
+.mine-content .list-mine-item li .item-img-wrap { height: 31px; display: block; position: relative; }
+.mine-content .list-mine-item li .mine-item-img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto; -webkit-transform: scale(0.5); transform: scale(0.5); }
 
 /* download page */
-.download-content {
-  background: url(images/appBg.jpg) no-repeat center 0/100%; }
-  .download-content .app-logo {
-    width: 100px;
-    height: 100px;
-    margin: 40px auto 0;
-    display: block; }
-  .download-content .tit {
-    font-size: 24px;
-    color: #fff;
-    margin-top: 10px;
-    text-align: center;
-    line-height: 24px; }
-  .download-content .des {
-    font-size: 12px;
-    color: #fff;
-    text-align: center;
-    line-height: 24px; }
-  .download-content .btn-wrap {
-    margin-top: 60px; }
-    .download-content .btn-wrap .btn-download {
-      width: 238px;
-      height: 44px;
-      line-height: 44px;
-      font-size: 17px;
-      color: #fff;
-      display: block;
-      margin: 0 auto 20px;
-      border: 1px solid #fff;
-      border-radius: 6px;
-      padding-left: 74px; }
-      .download-content .btn-wrap .btn-download.android {
-        background: url(images/icon-android.png) no-repeat 40px/24px; }
-      .download-content .btn-wrap .btn-download.ios {
-        background: url(images/icon-ios.png) no-repeat 40px/24px; }
+.download-content { background: url(images/appBg.jpg) no-repeat center 0/100% !important; }
+.download-content .app-logo { width: 100px; height: 100px; margin: 40px auto 0; display: block; }
+.download-content .tit { font-size: 24px; color: #fff; margin-top: 10px; text-align: center; line-height: 24px; }
+.download-content .des { font-size: 12px; color: #fff; text-align: center; line-height: 24px; }
+.download-content .btn-wrap { margin-top: 60px; }
+.download-content .btn-wrap .btn-download { width: 238px; height: 44px; line-height: 44px; font-size: 17px; color: #fff; display: block; margin: 0 auto 20px; border: 1px solid #fff; border-radius: 6px; padding-left: 74px; }
+.download-content .btn-wrap .btn-download.android { background: url(images/icon-android.png) no-repeat 40px/24px; }
+.download-content .btn-wrap .btn-download.ios { background: url(images/icon-ios.png) no-repeat 40px/24px; }
 
-.download-content-ios {
-  background: #fff; }
-  .download-content-ios .h-bg {
-    width: 100%; }
-  .download-content-ios .app-logo {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    margin-left: -50px; }
-  .download-content-ios .btn-install {
-    display: block;
-    margin: 20px auto 0;
-    width: 165px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    color: #eb0002;
-    font-size: 15px;
-    border: 1px solid #eb0002;
-    border-radius: 6px; }
-  .download-content-ios .down-step {
-    width: 100%; }
+.download-content-ios { background: #fff !important; }
+.download-content-ios .h-bg { width: 100%; }
+.download-content-ios .app-logo { width: 100px; height: 100px; position: absolute; top: 40px; left: 50%; margin-left: -50px; }
+.download-content-ios .btn-install { display: block; margin: 20px auto 0; width: 165px; height: 40px; text-align: center; line-height: 40px; color: #eb0002; font-size: 15px; border: 1px solid #eb0002; border-radius: 6px; }
+.download-content-ios .down-step { width: 100%; }
 
 /* casino-list */
-.casino-list-bar {
-  background-color: #efefef;
-  border-bottom: 1px solid #ccc; }
-  .casino-list-bar .mui-icon-back {
-    color: #666; }
+.casino-list-bar { background-color: #efefef; border-bottom: 1px solid #ccc; }
+.casino-list-bar .mui-icon-back { color: #666; }
 
-.mui-content-casino-list {
-  padding-top: 44px !important;
-  background: #fff; }
-  .mui-content-casino-list .casino-wrap {
-    padding: 10px; }
-  .mui-content-casino-list .electronic-search {
-    position: relative;
-    margin: 10px; }
-    .mui-content-casino-list .electronic-search input {
-      margin: 0;
-      height: 35px;
-      font-size: 14px;
-      border: 1px solid #ccc;
-      padding-right: 100px; }
-    .mui-content-casino-list .electronic-search .btn-search {
-      position: absolute;
-      right: 0;
-      top: 0;
-      font-size: 14px;
-      color: #333;
-      height: 35px;
-      line-height: 35px;
-      text-align: center;
-      width: 84px;
-      background: #ccc;
-      border-top-right-radius: 3px;
-      border-bottom-right-radius: 3px; }
-    .mui-content-casino-list .electronic-search .mui-icon-clear {
-      right: 80px;
-      top: 8px; }
-  .mui-content-casino-list .casino-list {
-    margin-left: -5px;
-    margin-right: -5px; }
-    .mui-content-casino-list .casino-list a {
-      text-align: center;
-      display: block;
-      padding: 0 5px; }
-      .mui-content-casino-list .casino-list a p {
-        height: 24px;
-        line-height: 24px;
-        margin-bottom: 5px;
-        color: #333;
-        font-size: 12px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis; }
-    .mui-content-casino-list .casino-list .img-wrap {
-      background: #fff;
-      padding: 8px 0; }
-      .mui-content-casino-list .casino-list .img-wrap img {
-        width: 70px;
-        height: 70px;
-        vertical-align: middle; }
+.mui-content-casino-list { padding-top: 44px !important; background: #fff; }
+.mui-content-casino-list .casino-wrap { padding: 10px; }
+.mui-content-casino-list .electronic-search { position: relative; margin: 10px; }
+.mui-content-casino-list .electronic-search input { margin: 0; height: 35px; font-size: 14px; border: 1px solid #ccc; padding-right: 100px; color: #333; }
+.mui-content-casino-list .electronic-search .btn-search { position: absolute; right: 0; top: 0; font-size: 14px; color: #333; height: 35px; line-height: 35px; text-align: center; width: 84px; background: #ccc; border-top-right-radius: 3px; border-bottom-right-radius: 3px; }
+.mui-content-casino-list .electronic-search .mui-icon-clear { right: 80px; top: 8px; }
+.mui-content-casino-list .casino-list { margin-left: -5px; margin-right: -5px; }
+.mui-content-casino-list .casino-list a { text-align: center; display: block; padding: 0 5px; }
+.mui-content-casino-list .casino-list a p { height: 24px; line-height: 24px; margin-bottom: 5px; color: #333; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mui-content-casino-list .casino-list .img-wrap { background: #fff; padding: 8px 0; }
+.mui-content-casino-list .casino-list .img-wrap img { width: 70px; height: 70px; vertical-align: middle; }
 
-.casino-game-type .g-t-slide-indicators .swiper-slide {
-  width: 80px;
-  height: 34px;
-  line-height: 34px;
-  text-align: center; }
+.casino-game-type .g-t-slide-indicators .swiper-slide { width: 80px; height: 34px; line-height: 34px; text-align: center; }
 
 /* about */
-.about-wrap {
-  padding: 10px 20px; }
-  .about-wrap p {
-    font-size: 12px;
-    color: #333; }
+.about-wrap { padding: 10px 20px; }
+.about-wrap p { font-size: 12px; color: #333; }
 
 /* content style */
-.content-without-notice {
-  padding-top: 44px !important; }
+.content-without-notice { padding-top: 44px !important; }
 
-.content-without-footer {
-  padding-bottom: 0 !important; }
+.content-without-footer { padding-bottom: 0 !important; }
 
 /* promo-detail */
-.promo-detail-content table {
-  color: #333;
-  border: 1px solid #666; }
-  .promo-detail-content table td {
-    border: 1px solid #666; }
-.promo-detail-content .gb-select {
-  display: block; }
-.promo-detail-content .gb-imgs > .ct {
-  padding: 10px; }
-  .promo-detail-content .gb-imgs > .ct ul {
-    padding: 0;
-    margin: 0;
-    list-style: none; }
-    .promo-detail-content .gb-imgs > .ct ul li > a {
-      width: 100%;
-      line-height: 0;
-      display: inline-block; }
-      .promo-detail-content .gb-imgs > .ct ul li > a img {
-        width: 100%; }
-    .promo-detail-content .gb-imgs > .ct ul li > .ct {
-      background-color: #fff;
-      padding: 5px 15px;
-      border-radius: 5px;
-      margin-top: 5px; }
-      .promo-detail-content .gb-imgs > .ct ul li > .ct h5 {
-        font-size: 14px;
-        font-weight: normal;
-        color: #8f8f94;
-        position: relative;
-        text-align: center; }
-        .promo-detail-content .gb-imgs > .ct ul li > .ct h5 > i {
-          display: block;
-          border-bottom: 1px dashed #e2e2e2;
-          position: absolute;
-          top: 50%;
-          left: 0;
-          right: 0; }
-        .promo-detail-content .gb-imgs > .ct ul li > .ct h5 span {
-          display: inline-block;
-          height: 23px;
-          padding: 0 7px;
-          border-radius: 3px;
-          line-height: 23px;
-          color: #fff;
-          background-color: #1766bb;
-          font-size: 12px;
-          position: relative;
-          z-index: 1; }
-      .promo-detail-content .gb-imgs > .ct ul li > .ct p {
-        padding: 5px 0;
-        line-height: 18px;
-        color: #999;
-        font-size: 12px;
-        margin-bottom: 0; }
-.promo-detail-content .gb-form-foot {
-  padding: 10px; }
-  .promo-detail-content .gb-form-foot .submit {
-    border: 1px solid #1766bb;
-    background-color: #1766bb;
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 13px; }
+.promo-detail-content table { color: #333; border: 1px solid #666; }
+.promo-detail-content table td { border: 1px solid #666; }
+.promo-detail-content .gb-select { display: block; }
+.promo-detail-content .gb-select img { max-width: 100%; }
+.promo-detail-content .gb-imgs > .ct { padding: 10px; }
+.promo-detail-content .gb-imgs > .ct ul { padding: 0; margin: 0; list-style: none; }
+.promo-detail-content .gb-imgs > .ct ul li > a { width: 100%; line-height: 0; display: inline-block; }
+.promo-detail-content .gb-imgs > .ct ul li > a img { width: 100%; }
+.promo-detail-content .gb-imgs > .ct ul li > .ct { background-color: #fff; padding: 5px 15px; border-radius: 5px; margin-top: 5px; }
+.promo-detail-content .gb-imgs > .ct ul li > .ct h5 { font-size: 14px; font-weight: normal; color: #8f8f94; position: relative; text-align: center; }
+.promo-detail-content .gb-imgs > .ct ul li > .ct h5 > i { display: block; border-bottom: 1px dashed #e2e2e2; position: absolute; top: 50%; left: 0; right: 0; }
+.promo-detail-content .gb-imgs > .ct ul li > .ct h5 span { display: inline-block; height: 23px; padding: 0 7px; border-radius: 3px; line-height: 23px; color: #fff; background-color: #1766bb; font-size: 12px; position: relative; z-index: 1; }
+.promo-detail-content .gb-imgs > .ct ul li > .ct p { padding: 5px 0; line-height: 18px; color: #999; font-size: 12px; margin-bottom: 0; }
+.promo-detail-content .gb-form-foot { padding: 10px; }
+.promo-detail-content .gb-form-foot .submit { border: 1px solid #1766bb; background-color: #1766bb; width: 100%; padding: 10px 12px; font-size: 13px; }
 
 /* promo-records */
-.promo-record-content .promo-records-warp {
-  padding: 0 10px;
-  margin-top: 10px;
-  height: 85px; }
-  .promo-record-content .promo-records-warp i {
-    display: block;
-    width: 4px;
-    height: 85px;
-    position: absolute;
-    top: 0;
-    left: -3px;
-    background-repeat: repeat-y;
-    background: url(../images/pro-bg.png); }
-  .promo-record-content .promo-records-warp .pro-bg-left {
-    background-position: 0 0; }
-  .promo-record-content .promo-records-warp .pro-bg-right {
-    background-position: right top;
-    left: -1px; }
-.promo-record-content .promo-box-left {
-  background: #fff;
-  padding: 10px 10px;
-  height: 85px;
-  width: 68%;
-  float: left;
-  position: relative; }
-  .promo-record-content .promo-box-left h5 {
-    font-size: 12px;
-    color: #333;
-    line-height: 15px;
-    text-overflow: -o-ellipsis-lastline;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    margin-top: 0;
-    margin-bottom: 7px;
-    min-height: 45px; }
-  .promo-record-content .promo-box-left .text {
-    font-size: 10px !important;
-    color: #999;
-    line-height: 16px; }
-    .promo-record-content .promo-box-left .text .sum {
-      float: left; }
-    .promo-record-content .promo-box-left .text .time {
-      display: inline-block;
-      float: right;
-      margin-right: 20px; }
-.promo-record-content .promo-box-right {
-  border-radius: 4px;
-  position: relative;
-  padding: 10px 10px;
-  color: #fff;
-  line-height: 16px;
-  height: 85px;
-  width: 32%;
-  float: left; }
-  .promo-record-content .promo-box-right.promo-gray {
-    background: #7b7b7b; }
-  .promo-record-content .promo-box-right.promo-blue {
-    background: #3488e7; }
-  .promo-record-content .promo-box-right.promo-green {
-    background: #1fbd66; }
-  .promo-record-content .promo-box-right.promo-orange {
-    background: #f07e11; }
-  .promo-record-content .promo-box-right span {
-    display: block;
-    font-size: 12px;
-    text-align: center; }
-  .promo-record-content .promo-box-right .num {
-    font-size: 20px;
-    margin-top: 15px; }
-  .promo-record-content .promo-box-right .annotation {
-    line-height: 16px;
-    margin-top: 10px;
-    font-size: 10px; }
-  .promo-record-content .promo-box-right .round {
-    position: absolute;
-    z-index: 999;
-    width: 10px;
-    height: 10px;
-    border-radius: 10px;
-    background: #f2f2f2; }
-  .promo-record-content .promo-box-right .radio-up {
-    left: -3px;
-    top: -5px; }
-  .promo-record-content .promo-box-right .radio-dwon {
-    left: -3px;
-    bottom: -5px; }
-.promo-record-content .org {
-  color: #f1aa4d; }
+.promo-record-content .promo-records-warp { padding: 0 10px; margin-top: 10px; height: 85px; }
+.promo-record-content .promo-records-warp i { display: block; width: 4px; height: 85px; position: absolute; top: 0; left: -3px; background-repeat: repeat-y; background: url(../images/pro-bg.png); }
+.promo-record-content .promo-records-warp .pro-bg-left { background-position: 0 0; }
+.promo-record-content .promo-records-warp .pro-bg-right { background-position: right top; left: -1px; }
+.promo-record-content .promo-box-left { background: #fff; padding: 10px 10px; height: 85px; width: 68%; float: left; position: relative; }
+.promo-record-content .promo-box-left h5 { font-size: 12px; color: #333; line-height: 15px; text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; margin-top: 0; margin-bottom: 7px; min-height: 45px; }
+.promo-record-content .promo-box-left .text { font-size: 10px !important; color: #999; line-height: 16px; }
+.promo-record-content .promo-box-left .text .sum { float: left; }
+.promo-record-content .promo-box-left .text .time { display: inline-block; float: right; margin-right: 20px; }
+.promo-record-content .promo-box-right { border-radius: 4px; position: relative; padding: 10px 10px; color: #fff; line-height: 16px; height: 85px; width: 32%; float: left; }
+.promo-record-content .promo-box-right.promo-gray { background: #7b7b7b; }
+.promo-record-content .promo-box-right.promo-blue { background: #3488e7; }
+.promo-record-content .promo-box-right.promo-green { background: #1fbd66; }
+.promo-record-content .promo-box-right.promo-orange { background: #f07e11; }
+.promo-record-content .promo-box-right span { display: block; font-size: 12px; text-align: center; }
+.promo-record-content .promo-box-right .num { font-size: 20px; margin-top: 15px; }
+.promo-record-content .promo-box-right .annotation { line-height: 16px; margin-top: 10px; font-size: 10px; }
+.promo-record-content .promo-box-right .round { position: absolute; z-index: 999; width: 10px; height: 10px; border-radius: 10px; background: #f2f2f2; }
+.promo-record-content .promo-box-right .radio-up { left: -3px; top: -5px; }
+.promo-record-content .promo-box-right .radio-dwon { left: -3px; bottom: -5px; }
+.promo-record-content .org { color: #f1aa4d; }
 
 /* casino-transfer */
-.link-all-game.mui-icon {
-  color: #fff;
-  font-size: 14px;
-  line-height: 44px;
-  padding: 0 10px; }
+.link-all-game.mui-icon { color: #fff; font-size: 14px; line-height: 44px; padding: 0 10px; }
 
-.header-casino-transfer {
-  background: transparent;
-  position: fixed; }
-  .header-casino-transfer.mui-bar-nav .mui-action-back {
-    color: #fff; }
+.header-casino-transfer { background: transparent; position: fixed; }
+.header-casino-transfer.mui-bar-nav .mui-action-back { color: #fff; }
 
-.content-casino-transfer {
-  padding-top: 0 !important; }
-  .content-casino-transfer .mui-hide {
-    display: none !important; }
-  .content-casino-transfer .game-item {
-    padding: 15px 10px; }
-    .content-casino-transfer .game-item .game-detail {
-      margin-left: 13px; }
-      .content-casino-transfer .game-item .game-detail h1 {
-        font-size: 18px;
-        color: #333;
-        font-weight: normal; }
-      .content-casino-transfer .game-item .game-detail .g-money {
-        font-size: 15px;
-        color: #333;
-        margin-top: 8px; }
-        .content-casino-transfer .game-item .game-detail .g-money .rmb-c {
-          font-size: 12px;
-          color: #999ba4;
-          margin-right: 5px; }
-      .content-casino-transfer .game-item .game-detail .icon-refresh {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        vertical-align: middle; }
-    .content-casino-transfer .game-item .unlogin-status a {
-      font-size: 12px;
-      color: #999ba4; }
-  .content-casino-transfer .api-item {
-    display: inline-block;
-    width: 70px;
-    height: 72px;
-    position: relative; }
-    .content-casino-transfer .api-item:after {
-      content: '';
-      position: absolute;
-      width: 70px;
-      height: 34px;
-      top: 6px;
-      left: -13px;
-      z-index: 2;
-      border-top-left-radius: 34px;
-      border-top-right-radius: 34px;
-      -webkit-transform: rotateZ(-47deg);
-      transform: rotateZ(-47deg); }
-    .content-casino-transfer .api-item:before {
-      content: '';
-      position: absolute;
-      width: 70px;
-      height: 70px;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      background: url(images/api-sprite.png) 0 0/70px no-repeat; }
-    .content-casino-transfer .api-item.api-icon-2-3:before {
-      background-position: -8.75px 0; }
-    .content-casino-transfer .api-item.api-icon-1-16:before {
-      background-position: 0 -70px; }
-    .content-casino-transfer .api-item.api-icon-1-7:before {
-      background-position: 0 -140px; }
-    .content-casino-transfer .api-item.api-icon-1-17:before {
-      background-position: 0 -210px; }
-    .content-casino-transfer .api-item.api-icon-1-9:before, .content-casino-transfer .api-item.api-icon-2-9:before {
-      background-position: 0 -280px; }
-    .content-casino-transfer .api-item.api-icon-1-10:before, .content-casino-transfer .api-item.api-icon-2-10:before, .content-casino-transfer .api-item.api-icon-3-10:before {
-      background-position: 0 -350px; }
-    .content-casino-transfer .api-item.api-icon-1-5:before {
-      background-position: 0 -420px; }
-    .content-casino-transfer .api-item.api-icon-1-1:before {
-      background-position: 0 -490px; }
-    .content-casino-transfer .api-item.api-icon-1-33:before, .content-casino-transfer .api-item.api-icon-3-33:before {
-      background-position: 0 -1750px; }
-    .content-casino-transfer .api-item.api-icon-2-15:before {
-      background-position: 0 -770px; }
-    .content-casino-transfer .api-item.api-icon-2-6:before {
-      background-position: 0 -630px; }
-    .content-casino-transfer .api-item.api-icon-3-12:before {
-      background-position: 0 -560px; }
-    .content-casino-transfer .api-item.api-icon-3-19:before {
-      background-position: 0 -700px; }
-    .content-casino-transfer .api-item.api-icon-2-26:before {
-      background-position: 0 -840px; }
-    .content-casino-transfer .api-item.api-icon-2-20:before {
-      background-position: 0 -910px; }
-    .content-casino-transfer .api-item.api-icon-1-24:before, .content-casino-transfer .api-item.api-icon-3-23:before {
-      background-position: 0 -980px; }
-    .content-casino-transfer .api-item.api-icon-2-25:before {
-      background-position: 0 -1050px; }
-    .content-casino-transfer .api-item.api-icon-2-31:before {
-      background-position: 0 -1681.25px; }
-    .content-casino-transfer .api-item.api-icon-2-32:before {
-      background-position: 0 -1612.5px; }
-    .content-casino-transfer .api-item.api-icon-3-4:before {
-      background-position: 0 -1120px; }
-    .content-casino-transfer .api-item.api-icon-2-27:before {
-      background-position: 0 -1190px; }
-    .content-casino-transfer .api-item.api-icon-1-2:before {
-      background-position: 0 -1260px; }
-    .content-casino-transfer .api-item.api-icon-2-28:before {
-      background-position: 0 -1330px; }
-    .content-casino-transfer .api-item.api-icon-5-1:before {
-      background-position: 0 -1541.25px; }
-    .content-casino-transfer .api-item.api-icon-2-35:before {
-      background-position: 0 -1820px; }
-    .content-casino-transfer .api-item.api-icon-3-21:before {
-      background-position: 0 -1890px; }
-    .content-casino-transfer .api-item.api-icon-3-36:before {
-      background-position: 0 -1960px; }
-    .content-casino-transfer .api-item.lt:before {
-      background-position: 0 -1400px; }
-    .content-casino-transfer .api-item.yzt:before {
-      background-position: 0 -1470px; }
-    .content-casino-transfer .api-item.gns:before {
-      background-position: 0 -1541.25px; }
-    .content-casino-transfer .api-item.prg:before {
-      background-position: 0 -1615px; }
-  .content-casino-transfer .e-btn-group {
-    text-align: center;
-    padding: 0 10px;
-    background: #929292;
-    border-top: 1px solid #efeff4;
-    border-bottom: 1px solid #efeff4;
-    color: #fff;
-    font-size: 12px; }
-    .content-casino-transfer .e-btn-group a {
-      color: #fff; }
-    .content-casino-transfer .e-btn-group .e-btn {
-      display: inline-block;
-      width: 55px;
-      height: 55px;
-      background: url(images/e-btn-group.png) 0 0/174px no-repeat;
-      margin-top: 12px; }
-      .content-casino-transfer .e-btn-group .e-btn.btn-in {
-        background-position-x: 0; }
-      .content-casino-transfer .e-btn-group .e-btn.btn-start-game {
-        background-position-x: -60px; }
-      .content-casino-transfer .e-btn-group .e-btn.btn-out {
-        background-position-x: -119px; }
-  .content-casino-transfer .game-description {
-    padding: 27px 10px; }
-    .content-casino-transfer .game-description p {
-      color: #333;
-      font-size: 12px;
-      line-height: 18px; }
+.content-casino-transfer { padding-top: 0 !important; }
+.content-casino-transfer .mui-hide { display: none !important; }
+.content-casino-transfer .game-item { padding: 15px 10px; }
+.content-casino-transfer .game-item .game-detail { margin-left: 13px; }
+.content-casino-transfer .game-item .game-detail h1 { font-size: 18px; color: #333; font-weight: normal; }
+.content-casino-transfer .game-item .game-detail .g-money { font-size: 15px; color: #333; margin-top: 8px; }
+.content-casino-transfer .game-item .game-detail .g-money .rmb-c { font-size: 12px; color: #999ba4; margin-right: 5px; }
+.content-casino-transfer .game-item .game-detail .icon-refresh { display: inline-block; width: 24px; height: 24px; vertical-align: middle; }
+.content-casino-transfer .game-item .unlogin-status a { font-size: 12px; color: #999ba4; }
+.content-casino-transfer .api-item { display: inline-block; width: 70px; height: 72px; position: relative; }
+.content-casino-transfer .api-item:after { content: ''; position: absolute; width: 70px; height: 34px; top: 6px; left: -13px; z-index: 2; border-top-left-radius: 34px; border-top-right-radius: 34px; -webkit-transform: rotateZ(-47deg); transform: rotateZ(-47deg); }
+.content-casino-transfer .api-item:before { content: ''; position: absolute; width: 70px; height: 70px; top: 0; left: 0; z-index: 1; background: url(images/api-sprite.png) 0 0/70px no-repeat; }
+.content-casino-transfer .api-item.api-icon-2-3:before { background-position: -8.75px 0; }
+.content-casino-transfer .api-item.api-icon-1-16:before { background-position: 0 -70px; }
+.content-casino-transfer .api-item.api-icon-1-7:before { background-position: 0 -140px; }
+.content-casino-transfer .api-item.api-icon-1-17:before { background-position: 0 -210px; }
+.content-casino-transfer .api-item.api-icon-1-9:before, .content-casino-transfer .api-item.api-icon-2-9:before { background-position: 0 -280px; }
+.content-casino-transfer .api-item.api-icon-1-10:before, .content-casino-transfer .api-item.api-icon-2-10:before, .content-casino-transfer .api-item.api-icon-3-10:before { background-position: 0 -350px; }
+.content-casino-transfer .api-item.api-icon-1-5:before { background-position: 0 -420px; }
+.content-casino-transfer .api-item.api-icon-1-1:before { background-position: 0 -490px; }
+.content-casino-transfer .api-item.api-icon-1-33:before, .content-casino-transfer .api-item.api-icon-3-33:before { background-position: 0 -1750px; }
+.content-casino-transfer .api-item.api-icon-2-15:before { background-position: 0 -770px; }
+.content-casino-transfer .api-item.api-icon-2-6:before { background-position: 0 -630px; }
+.content-casino-transfer .api-item.api-icon-3-12:before { background-position: 0 -560px; }
+.content-casino-transfer .api-item.api-icon-3-19:before { background-position: 0 -700px; }
+.content-casino-transfer .api-item.api-icon-2-26:before { background-position: 0 -840px; }
+.content-casino-transfer .api-item.api-icon-2-20:before { background-position: 0 -910px; }
+.content-casino-transfer .api-item.api-icon-1-24:before, .content-casino-transfer .api-item.api-icon-3-23:before { background-position: 0 -980px; }
+.content-casino-transfer .api-item.api-icon-2-25:before { background-position: 0 -1050px; }
+.content-casino-transfer .api-item.api-icon-2-31:before { background-position: 0 -1681.25px; }
+.content-casino-transfer .api-item.api-icon-2-32:before { background-position: 0 -1612.5px; }
+.content-casino-transfer .api-item.api-icon-3-4:before { background-position: 0 -1120px; }
+.content-casino-transfer .api-item.api-icon-2-27:before { background-position: 0 -1190px; }
+.content-casino-transfer .api-item.api-icon-1-2:before { background-position: 0 -1260px; }
+.content-casino-transfer .api-item.api-icon-2-28:before { background-position: 0 -1330px; }
+.content-casino-transfer .api-item.api-icon-5-1:before { background-position: 0 -1541.25px; }
+.content-casino-transfer .api-item.api-icon-2-35:before { background-position: 0 -1820px; }
+.content-casino-transfer .api-item.api-icon-3-21:before { background-position: 0 -1890px; }
+.content-casino-transfer .api-item.api-icon-3-36:before { background-position: 0 -1960px; }
+.content-casino-transfer .api-item.lt:before { background-position: 0 -1400px; }
+.content-casino-transfer .api-item.yzt:before { background-position: 0 -1470px; }
+.content-casino-transfer .api-item.gns:before { background-position: 0 -1541.25px; }
+.content-casino-transfer .api-item.prg:before { background-position: 0 -1615px; }
+.content-casino-transfer .e-btn-group { text-align: center; padding: 0 10px; background: #929292; border-top: 1px solid #efeff4; border-bottom: 1px solid #efeff4; color: #fff; font-size: 12px; }
+.content-casino-transfer .e-btn-group a { color: #fff; }
+.content-casino-transfer .e-btn-group .e-btn { display: inline-block; width: 55px; height: 55px; background: url(images/e-btn-group.png) 0 0/174px no-repeat; margin-top: 12px; }
+.content-casino-transfer .e-btn-group .e-btn.btn-in { background-position-x: 0; }
+.content-casino-transfer .e-btn-group .e-btn.btn-start-game { background-position-x: -60px; }
+.content-casino-transfer .e-btn-group .e-btn.btn-out { background-position-x: -119px; }
+.content-casino-transfer .game-description { padding: 27px 10px; }
+.content-casino-transfer .game-description p { color: #333; font-size: 12px; line-height: 18px; }
 
-.allgame-popover {
-  width: 160px; }
+.allgame-popover { width: 160px; }
+.allgame-popover .mui-table-view-cell a { color: #333; }
 
-.allgame-scroll {
-  height: 300px;
-  margin: 0 !important;
-  background: #fff; }
+.allgame-scroll { height: 300px; margin: 0 !important; background: #fff; }
 
 /*# sourceMappingURL=otherpage.css.map */

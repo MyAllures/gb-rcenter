@@ -102,6 +102,12 @@ function onlineContinueDeposit(payType){
     } else {
         //验证提示
         toast($("#tips").attr("tips"));
+        var accountNotUsing = $("#accountNotUsing").attr("accountNotUsing");
+        if("true" === accountNotUsing){
+            setTimeout(function(){
+                this.goToDepositPage();
+            },2000);
+        }
     }
 }
 
@@ -212,6 +218,14 @@ function onlinePaySubmit(depositChannel) {
 
                 } else {
                     toast(data.msg);
+                    if (newWindow) {
+                        newWindow.close();
+                    }
+                    if(data.accountNotUsing){
+                        setTimeout(function(){
+                            this.goToDepositPage();
+                        },2000);
+                    }
                 }
             }
 

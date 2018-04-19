@@ -446,7 +446,7 @@
                                     $(this).attr("onclick","apiLogin("+apiId+",'',"+$(this).data("apitype")+")");
                                 }
                             }else{
-                                if(apiId=="23"){
+                                if(apiId=="23" || apiId=="37"){
                                     $(this).attr("href","javascript:");
                                     $(this).attr("onclick","apiLogin("+apiId+",'',"+$(this).data("apitype")+")");
                                 }else{

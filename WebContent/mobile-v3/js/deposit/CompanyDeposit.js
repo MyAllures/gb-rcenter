@@ -56,17 +56,6 @@ function showPayTypeList() {
         var value = items[0].value;
         document.getElementById('result.rechargeType').value = value;
         document.getElementById("rechargeTypeText").setAttribute("placeholder", items[0].text);
-        //柜台现金存款需填写交易地点，其他填写存款人
-        if (value == 'atm_money') {
-            document.getElementById('result.payerName').value = '';
-            document.getElementById('address').style.display = "block";
-            document.getElementById('payerName').style.display = "none";
-        } else {
-            document.getElementById('result.rechargeAddress').value = '';
-            document.getElementById('address').style.display = "none";
-            document.getElementById('payerName').style.display = "block";
-        }
-
     });
 
 
@@ -102,8 +91,10 @@ function depositDiscount(obj, options) {
                     '<span>' + window.top.message.deposit_auto['不参与优惠'] + '</span><input name="activityId" type="radio" value="" checked="checked/"></div></li>';
                 for (var i = 0; i < data.length; i++) {
                     var sale = data[i];
-                    html = html + '<li><div class="text-warp"><span>' + sale.activityName + '</span>' +
-                        '<input name="activityId" type="radio" value="' + sale.id + '"></div></li>';
+                    if(sale.preferential){
+                        html = html + '<li><div class="text-warp"><span>' + sale.activityName + '</span>' +
+                            '<input name="activityId" type="radio" value="' + sale.id + '"></div></li>';
+                    }
                 }
                 html = html + '</ul></div><div class="pro-btn"><a class="next-btn" data-rel={"opType":"function","target":"submitDeposit"}>' + window.top.message.deposit_auto['已存款'] + '</a>' +
                     '<a class="agin-btn" data-rel={"opType":"function","target":"closeProWindow"}>' + window.top.message.deposit_auto['重新填写'] + '</a></div>' +
@@ -186,9 +177,15 @@ function companyContinueDeposit(depositChannel){
         if (pop == "true") {
             $("#activityId").val($("input[type=radio]:checked").val());
             $("#successMasker").attr("style", "display:block;");
+            muiScrollY(".gb-withdraw-box .mui-scroll-wrapper");
         } else if (options.statusNum) {
             var rechargeAmount = $("input[name='result.rechargeAmount']").val();
-            goToUrl(options.href + "&depositCash=" + rechargeAmount + "&t=" + random);
+            if(isNative){
+                var url = options.href + "&depositCash=" + rechargeAmount + "&t=" + random;
+                nativeOpenWindow(url,0);
+            }else{
+                goToUrl(options.href + "&depositCash=" + rechargeAmount + "&t=" + random);
+            }
         } else {
             companyDepositSubmit(depositChannel);
         }
@@ -232,11 +229,27 @@ function companyDepositSubmit(depositChannel) {
             } else {
                 toast(data.msg);
                 $("input[name='gb.token']").val(data.token);
+                if(data.accountNotUsing){
+                    setTimeout(function(){
+                        this.goToDepositPage();
+                    },2000);
+                }
             }
         },
         error: function () {
-            toast(window.top.message.deposit_auto['提交失败']);
+            toast(window.top.message.deposit_auto['提交失败请刷新']);
         }
     };
     muiAjax(optiolns);
+}
+
+/***/
+function bitcoinPage(obj,option){
+    var url = option.url;
+    if(isNative){
+        var url = url +"&t="+ Math.random();
+        nativeOpenWindow(url,0);
+    }else{
+        goToUrl(url );
+    }
 }

@@ -31,7 +31,7 @@
 <script>
     var apiId = getlocationParam("apiId");
     var gameCode = getlocationParam("gameCode");
-    var apiTypeId = getlocationParam("apiTypeId");
+    var apiTypeId = getlocationParam("apiType");
     var apiName = getApiName(apiId);
     $(".apiName").text(apiName);
 
