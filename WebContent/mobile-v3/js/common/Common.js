@@ -235,7 +235,8 @@ function muiAjax(options) {
         success: options.success,
         error: options.error,
         complete: options.complete,
-        beforeSend: options.beforeSend
+        beforeSend: options.beforeSend,
+        async:options.async
     };
     mui.ajax(options.url, settings);
 }
@@ -472,12 +473,12 @@ function showConfirmMsg(options, obj) {
         if (e.index == 0) {
             var func = options.func;
             if (func) {
-                applyFunction(func, options, obj);
+                return applyFunction(func, options, obj);
             }
         } else if (e.index == 1) {
             var func = options.cancelFunc;
             if (func) {
-                applyFunction(func, options, obj);
+                return applyFunction(func, options, obj);
             }
         }
     })

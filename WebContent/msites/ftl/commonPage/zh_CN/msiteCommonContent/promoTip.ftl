@@ -15,7 +15,7 @@
 
 <div class="promoFailureTip" style="display: none">
     <i class="icon-success"></i>
-    <div class="tit">正宗莞式服务，买一送一</div>
+    <div class="tip_tit"></div>
     <div class="subs-txt">您所提交的申请失败！如有问题，请与客服人员联系。</div>
     <div class="ext-inf"></div>
 </div>
@@ -24,12 +24,13 @@
 
 <div class="promoSuccessTip" style="display: none">
     <i class="icon-success"></i>
-    <div class="tit">正宗莞式服务，买一送一</div>
+    <div class="tip_tit"></div>
     <div class="subs-txt">您所提交的申请已成功，请及时跟进申请状况。如有问题，请与客服人员联系。</div>
     <div class="ext-inf"></div>
 </div>
 
 <div class="activityProcess" style="display: none;">
+    <div class="tip_tit"></div>
     <div class="effective_transaction" style="display: none;">
         <lable>有效投注额:</lable>
         <span class="effective"></span>

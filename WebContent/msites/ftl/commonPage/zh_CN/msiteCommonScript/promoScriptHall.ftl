@@ -240,18 +240,21 @@
     }
 
     function showActivityProcessDialog(data, aplyObj, isRefresh) {
+        var code = $(aplyObj).parents("._vr_promo_check").data("code");
+        var title = $(aplyObj).parents("._vr_promo_check").find(".tit").text();
+        $(".tip_tit").text(title);
         $(".profit_loss").hide();
         $(".effective_transaction").hide();
         $(".deposit_send").hide();
-        if (data.effectivetransaction) {
-            $(".profit").text(data.effectivetransaction);
-            $(".profit_loss").show();
-        }
-        if (data.profitloss) {
-            $(".effective").text(data.profitloss);
+        if (code == 'effective_transaction' || code == 'profit_loss') {
+            $(".effective").text(data.effectivetransaction);
             $(".effective_transaction").show();
         }
-        if (data.content) {
+        if (code == 'profit') {
+            $(".profit").text(data.profitloss);
+            $(".profit_loss").show();
+        }
+        if (code == 'deposit_send' && data.content) {
             var contents = data.content;
             $(".deposit_sent_transactionNo").html('');
             for (j = 0; j<contents.length; j++) {
@@ -296,17 +299,26 @@
     }
 
     function applyActivities(aplyObj, isRefresh) {
-       /* var transactionNo = $('[name="transactionNos"]').val();*/
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
         var searchId = $(aplyObj).parents("._vr_promo_check").data("searchid");
+        var transactionNos;
+        var tansactionObj = [];
+        if (code == 'deposit_send') {//存就送时需要组装订单号.
+            transactionNos = $("input[name='transactionNos']:checked");
+            for (j = 0; j<transactionNos.length; j++) {
+                tansactionObj.push($(transactionNos[j]).val());
+            }
+        }
+        var dataParam = {};
+        dataParam.code=code;
+        dataParam.resultId=searchId;
+        dataParam.transactionNos=tansactionObj;
         $.ajax({
+            contentType: 'application/json; charset=utf-8',
             url: "/ntl/activityHall/applyActivities.html",
             type: "POST",
             dataType: "json",
-            data: {
-                code: code,
-                resultId: searchId
-            },
+            data: JSON.stringify(dataParam),
             success: function (data) {
                 showApplyActivityResult(data, isRefresh);
                 $(aplyObj).removeAttr("disabled");
