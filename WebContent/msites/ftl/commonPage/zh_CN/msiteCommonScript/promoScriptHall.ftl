@@ -322,19 +322,22 @@
         if (typeof data.state == "undefined") {
             return false;
         }
-        $("._msg").html(data.msg);
+        $(".ext-inf").html(data.msg);
         var content;
         var title;
         var skin;
         var area = ['640px', 'auto'];
+        var icon;
         if (data.state) {
             content = $(".promoSuccessTip").html();
             title = "申请成功";
             skin = "layui-layer-success";
+            icon = "promo_success";
         } else {
             content = $(".promoFailureTip").html();
             title = "申请失败";
             skin =  "layui-layer-danger";
+            icon="promo_failure";
         }
 
         var dialog = layer.open({
@@ -347,6 +350,7 @@
                 $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
+                $(layer).addClass(icon);
             },
             yes: function () {
                 if (isRefresh) {
