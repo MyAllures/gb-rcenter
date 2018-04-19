@@ -240,6 +240,9 @@
     }
 
     function showActivityProcessDialog(data, aplyObj, isRefresh) {
+        $(".profit_loss").hide();
+        $(".effective_transaction").hide();
+        $(".deposit_send").hide();
         if (data.effectivetransaction) {
             $(".profit").text(data.effectivetransaction);
             $(".profit_loss").show();
@@ -263,7 +266,7 @@
             content:content,
             title:"提示信息",
             skin:"layui-layer-warning",
-            area: ['640px', '397px'],
+            area: ['640px', 'auto'],
             btn: ["申请奖励","联系客服"],
             success: function(layer){
                 // 重写关闭按钮
@@ -323,7 +326,7 @@
         var content;
         var title;
         var skin;
-        var area = ['640px', '397px'];
+        var area = ['640px', 'auto'];
         if (data.state) {
             content = $(".promoSuccessTip").html();
             title = "申请成功";
