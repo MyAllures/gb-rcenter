@@ -117,6 +117,18 @@
 <#include "notice.ftl">
     <!-- Agent -->
 <#include "../../commonPage/commonContent/agentContent.ftl">
+    <section class="agent-contact">
+        <div class="container">
+            <ul class="list-inline agent-contact-list">
+                <li>联系方式:</li>
+                <li style="color: #ffbb01;"><span class="gui gui-2x gui-mobile"></span>&nbsp;<#if data.phoneNumber?has_content>${data.phoneNumber}<#else >+639267022999</#if></li>
+                <li style="color: #0081eb;"><span class="gui gui-2x gui-qq"></span>&nbsp;<#if data.qq?has_content>${data.qq}<#else >71123340</#if></li>
+                <li style="color: #fff;"><span class="gui gui-2x gui-envelope"></span>&nbsp;<#if data.email?has_content>${data.email}<#else >ag@yl7.com</#if></li>
+                <li style="color: #fff;"><span class="gui gui-2x gui-skype"></span>&nbsp;<#if data.skype?has_content>${data.skype}<#else >agSkype@yl7.com</#if></li>
+                <li>工作时间：周一至周五 11:00-21:00 <i style="font-style: normal;" class="timezone"></i></li>
+            </ul>
+        </div>
+    </section>
 </main>
 <#include "footer.ftl">
 <#include "../../commonPage/commonFloat/gameAds.ftl">

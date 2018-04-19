@@ -6,6 +6,7 @@
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <title><#if data.siteInfo.title?default('')!=''>${data.siteInfo.title}<#else >${data.siteInfo.siteName}</#if></title>
 <#include "head.include.ftl">
+<#include "../../commonPage/casinoCss/casinoV2Css.ftl"><#--新版电子页面需要引用的样式-->
 </head>
 
 <body>
@@ -14,20 +15,14 @@
 <main class="main-casino">
     <div style="height: 408px;background: url(${data.configInfo.sitePath}/images/casino-banner.jpg) no-repeat center bottom;"></div>
     <!-- notice -->
-    <#include "notice.ftl">
+<#include "notice.ftl">
     <div class="clearfix"></div>
     <!-- Casino -->
-    <section class="casino _vr_casinoSearch">
-        <div class="container">
-            <div class="casino-box">
-                <!-- Api-tabs -->
-                <div id="api-tabs" class="carousel auto" data-ride="carousel" data-shift="1" data-interval="2000">
-                    <#assign apiNumPerSlide=6>
-                    <#include "../../commonPage/zh_CN/msiteCommonContent/commonApiTabs.ftl">
-                </div>
-                <div class="game-list _vr_itemCasino">
-                    <#include "casino_partial.ftl">
-                </div>
+    <section class="casino theme-black _vr_casinoSearch"> <#--主题配置{theme-black:黑色主题，theme-white：白色主题}-->
+        <div class="container gutter-20"><!--排水沟大小-->
+        <#include "../../commonPage/commonContent/casinoV2ApiTabs.ftl"> <#--新版电子apitab切换-->
+            <div class="game-list _vr_itemCasino">
+            <#include "casino_partial.ftl">
             </div>
         </div>
     </section>
@@ -36,6 +31,9 @@
 <#include "../../commonPage/commonFloat/gameAds.ftl">
 <#include "script.ftl">
 <#include "../../commonPage/zh_CN/msiteCommonScript/casinoScript.ftl">
+<#--公共电子游戏弹窗-->
+<#include "../../commonPage/zh_CN/gamePage/gamePage.ftl">
+
 </body>
 
 </html>

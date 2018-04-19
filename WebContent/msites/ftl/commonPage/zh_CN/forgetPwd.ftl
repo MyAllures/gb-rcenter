@@ -513,12 +513,14 @@
         }
     }
 
-    var FIND_PASSWORD_SEND_PHONE_COOKIE_KEY = "findPasswordSendPhoneCookieKey";
     var findPasswordSendPhoneTimerId;
     function sendVerificationCode() {
-        var sendPhoneIntervalSec = getCookie(FIND_PASSWORD_SEND_PHONE_COOKIE_KEY);
+        var sendPhoneIntervalSec = getCookie("sms_verification_end_time");
         sendPhoneIntervalSec = Number(sendPhoneIntervalSec);
-        if(!sendPhoneIntervalSec){
+        if(sendPhoneIntervalSec>0){
+            sendPhoneIntervalSec = sendPhoneIntervalSec-new Date().getTime();
+        }
+        if(!sendPhoneIntervalSec || sendPhoneIntervalSec<0){
             $.ajax({
                 url:"/forgetPassword/getPhoneVerificationCode.html",
                 data:{
@@ -528,34 +530,55 @@
                 dataType:"JSON",
                 success:function(data){
                     if(data){
-                        setCookie(FIND_PASSWORD_SEND_PHONE_COOKIE_KEY,${data.sendEmailIntervalSeconds});
+                        var startTime = new Date().getTime();
+                        var endTime = Number(startTime)+(Number(${data.sendPhoneIntervalSeconds})*1000);
+                        setCookie("sms_verification_end_time",endTime);
                         findPasswordSendPhoneTimer();
                     }
                 }
             })
         }else{
-            findPasswordSendPhoneTimer();
+            layer.open({
+                content:'发送间隔时间未到！',
+                title:'提示信息',
+                skin:'layui-layer-brand',
+                btn:["确定"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                },
+                end:function () {
+                    findPasswordSendPhoneTimer();
+                }
+            });
+            return;
         }
     }
 
     function findPasswordSendPhoneTimer(){
+        var getSmsEndTime = getCookie("sms_verification_end_time");
+        var sendPhoneIntervalSec = Number(getSmsEndTime);
+        sendPhoneIntervalSec = parseInt((sendPhoneIntervalSec-new Date().getTime())/1000);
+        setCookie("sms_end_seconds",sendPhoneIntervalSec);
+
         var $resendPhoneBtn = $("#resendPhoneBtn");
         findPasswordSendPhoneTimerId = setInterval(
                 function(){
-                    var sendPhoneIntervalSec = getCookie(FIND_PASSWORD_SEND_PHONE_COOKIE_KEY);
-                    sendPhoneIntervalSec = Number(sendPhoneIntervalSec);
-                    sendPhoneIntervalSec = --sendPhoneIntervalSec;
-                    if(!sendPhoneIntervalSec || sendPhoneIntervalSec<0){
+                    var smsTimeDesc = getCookie("sms_end_seconds");
+                    smsTimeDesc = --smsTimeDesc;
+                    if(!smsTimeDesc || smsTimeDesc<0){
                         clearInterval(findPasswordSendPhoneTimerId);
                         $resendPhoneBtn.prop("disabled",false);
                         $resendPhoneBtn.removeClass('disabled');
-                        $resendPhoneBtn.text("重新发送")
+                        $resendPhoneBtn.text("重新发送");
                     }else{
                         $resendPhoneBtn.prop("disabled",true);
-                        $resendPhoneBtn.addClass('disabled')
-                        $resendPhoneBtn.text("重新发送("+sendPhoneIntervalSec+")")
+                        $resendPhoneBtn.addClass('disabled');
+                        $resendPhoneBtn.text("重新发送("+smsTimeDesc+")");
                     }
-                    setCookie(FIND_PASSWORD_SEND_PHONE_COOKIE_KEY,sendPhoneIntervalSec);
+                    setCookie("sms_end_seconds",smsTimeDesc);
                 },
                 1000
         )

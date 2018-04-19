@@ -209,11 +209,26 @@
         if (sessionStorage.is_login == "true") {
             if (code == "back_water" || code == "first_deposit" || code == "deposit_send") {
                 if (isRefresh) {
-                    BootstrapDialog.alert({
-                        title: "Prompt",
-                        type: BootstrapDialog.TYPE_WARNING,
-                        message: "Joining",
-                        callback: function () {
+                    /*BootstrapDialog.alert({
+                       title: "提示",
+                       type: BootstrapDialog.TYPE_WARNING,
+                       message: "参与中",
+                       callback: function () {
+                           window.location.href = "/promo.html";
+                       }
+                   });*/
+                    layer.open({
+                        content:'participating',
+                        title:'Tips',
+                        skin:'layui-layer-brand',
+                        btn:["ok"],
+                        success: function(layer){
+                            // 重写关闭按钮
+                            $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                            // 提示框类型
+                            $(layer).addClass("normal-dialog");
+                        },
+                        yes: function () {
                             window.location.href = "/promo.html";
                         }
                     });
@@ -282,16 +297,16 @@
 
         $("._msg").html('<p class="text-center">' + data.msg + '</p>');
 
-        var dialog = BootstrapDialog.show({
+        /*var dialog = BootstrapDialog.show({
             type: BootstrapDialog.TYPE_WARNING,
             message: function (dialog) {
                 var $content = $(".promoTip").html();
                 return $content;
             },
-            title: "Message",
+            title: "消息",
             closable: 'true',
             buttons: [{
-                label: 'OK',
+                label: '好的',
                 cssClass: 'btn btn-info',
                 action: function (dialogItself) {
                     if (isRefresh) {
@@ -302,7 +317,7 @@
                     }
                 }
             }, {
-                label: 'View offer record',
+                label: '查看优惠记录',
                 cssClass: 'btn btn-default',
                 action: function () {
                     window.open(
@@ -311,6 +326,32 @@
                     );
                 }
             }]
+        });*/
+        var dialog = layer.open({
+            content:$(".promoTip").html(),
+            title:'Message',
+            skin:'layui-layer-brand',
+            btn:["ok","check promo record"],
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("normal-dialog");
+            },
+            yes: function () {
+                if (isRefresh) {
+                    layer.close(dialog);
+                    window.location.href = "/promo.html";
+                } else {
+                    layer.close(dialog);
+                }
+            },
+            btn2: function () {
+                window.open(
+                        '${data.contextInfo.playerCenterContext}#/preferential/list.html',
+                        '_blank' // <- This is what makes it open in a new window.
+                );
+            }
         });
     }
 

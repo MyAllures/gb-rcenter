@@ -293,6 +293,9 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
                         }
                     }
 
+                },
+                error: function (event, xhr, settings) {
+                    console.log(xhr);
                 }
             })
         },
@@ -341,6 +344,9 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
                             _this.queryPendingDealRecord();
                         }, 60 * 1000)
                     }
+                },
+                error: function (event, xhr, settings) {
+                    console.log(xhr);
                 }
             });
         },
@@ -364,6 +370,9 @@ define(['common/BasePage', 'site/index/PopUp'], function (BasePage, PopUp) {
                         $("#onlinePlayerNum").text(data.onlineplayernum);
                         //$("#activePlayerNum").attr("data-content",_this.formatStr(window.top.message.home_auto['今日活跃'],typeof (data.activePlayerNum)=='undefined'?'0':data.activePlayerNum));
                         $("#activePlayerNum").text(data.activeplayernum);
+                    },
+                    error: function (event, xhr, settings) {
+                        console.log(xhr);
                     }
                 });
             }

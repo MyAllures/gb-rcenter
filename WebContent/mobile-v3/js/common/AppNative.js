@@ -101,5 +101,3 @@ function nativeGoToCustomerPage(){
 function nativeGoToApplyPromoPage(){
     window.gamebox.gotoApplyPromoPage();
 }
-
-

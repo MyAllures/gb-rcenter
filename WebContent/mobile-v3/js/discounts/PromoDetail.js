@@ -48,8 +48,7 @@ function submitPromo(obj, options) {
     var code = options.dataCode;
     if (code == 'content') {
         if(isNative){
-            //nativeGoToApplyPromoPage();
-            toast('请到申请优惠中申请');
+            nativeGoToApplyPromoPage();
         }else{
             goToUrl(root + "/message/gameNotice.html?isSendMessage=true");
         }

@@ -4,8 +4,8 @@
         <#assign api_index = 0>
     <#if data.siteApiTypeRelationMap??>
         <#list data.siteApiTypeRelationMap["3"] as relationMap>
-            <#if (api_index<apiNumPerSlide)&&relationMap.apiId?string.computer!="10">
-                <li class="col-${apiNumPerSlide}-1 <#if relationMap.apiId?string.computer == data.gameSearch.apiId?default('')>active</#if>">
+            <#if relationMap.apiId?string.computer!="10">
+                <li class="<#if relationMap.apiId?string.computer == data.gameSearch.apiId?default('')>active</#if>">
                     <a href="javascript:void(0)" class="_vr_mt_check lottery_btn_${relationMap.apiId?string.computer}"
                        data-api="${relationMap.apiId?string.computer}" data-apitype="3"
                        <#if detailAddress??>data-href="sports-detail.html?apiId=${relationMap.apiId?string.computer}"<#else>data-href="sports.html?apiId=${relationMap.apiId?string.computer}" </#if>
