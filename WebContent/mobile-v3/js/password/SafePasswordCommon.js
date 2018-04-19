@@ -214,10 +214,11 @@ function securityCode() {
  */
 function verifySecurityPassword(captcha, callback) {
     verifyCallBack = callback;
-    var hideCode = captcha ? 'mui-show' : 'mui-hide';
+    //var hideCode = captcha ? 'mui-show' : 'mui-hide';
+    var hideCode = captcha ? 'mui-show' : 'display:none';
     var content = '<input type="password" id="perPwd" autofocus="" placeholder="'
         + window.top.message.passport_auto['请输入安全密码'] + '" maxlength="6">'
-        + '<div class="pop_code ' + hideCode + '"><input type="text" id="perCode" class="code" placeholder="'
+        + '<div class="pop_code" style="'+hideCode+'"><input type="text" id="perCode" class="code" placeholder="'
         + window.top.message.passport_auto['请输入验证码'] + '" maxlength="4">'
         + '<img class="code" src="' + root + '/captcha/privilege.html?t=' + new Date().getTime() + '"></div>'
         + '<input type="hidden" name="needCaptcha" value="' + captcha + '">';
