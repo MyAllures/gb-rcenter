@@ -33,7 +33,7 @@ function pullfresh() {
  */
 function searchGame(){
     var name = $("#game-name").val();
-    $(".swiper-slide-active .mui-col-xs-3").each(function(){
+    $(".swiper-slide .mui-col-xs-3").each(function(){
         var apiName = $(this).attr("apiName");
         if(apiName){
             if(apiName.indexOf(name) != -1){
@@ -43,6 +43,18 @@ function searchGame(){
             }
         }
     });
+
+    resizeSlideHeight();
+}
+
+/**
+ * 滑动后重设高度
+ */
+function resizeSlideHeight() {
+    var targetSlide = $(".g-t-slide-content .swiper-slide-active");
+    setTimeout(function () {// 滑动循环最后一个有延迟，设个定时器抵消延迟的效果
+        $(".g-t-slide-content>.swiper-wrapper").css({height: $(targetSlide).outerHeight()});
+    }, 100);
 }
 
 function loadData(apiId,pageNumber,name) {
