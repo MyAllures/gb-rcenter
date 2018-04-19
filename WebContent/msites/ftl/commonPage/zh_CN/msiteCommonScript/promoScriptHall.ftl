@@ -240,11 +240,33 @@
     }
 
     function showActivityProcessDialog(data, aplyObj, isRefresh) {
+        $(".profit_loss").hide();
+        $(".effective_transaction").hide();
+        $(".deposit_send").hide();
+        if (data.effectivetransaction) {
+            $(".profit").text(data.effectivetransaction);
+            $(".profit_loss").show();
+        }
+        if (data.profitloss) {
+            $(".effective").text(data.profitloss);
+            $(".effective_transaction").show();
+        }
+        if (data.content) {
+            var contents = data.content;
+            $(".deposit_sent_transactionNo").html('');
+            for (j = 0; j<contents.length; j++) {
+                var transactionNo = contents[j].transactionNo;
+                var item = '<input type="checkbox" name="transactionNos"' + 'value=' +transactionNo + '>' + transactionNo + '<br>';
+                $(".deposit_sent_transactionNo").append(item);
+            }
+            $(".deposit_send").show();
+        }
+        var content = $(".activityProcess").html();
         var dialog = layer.open({
-            content:"有效投注額或者盈虧送",
+            content:content,
             title:"提示信息",
             skin:"layui-layer-warning",
-            area: ['640px', '397px'],
+            area: ['640px', 'auto'],
             btn: ["申请奖励","联系客服"],
             success: function(layer){
                 // 重写关闭按钮
@@ -274,6 +296,7 @@
     }
 
     function applyActivities(aplyObj, isRefresh) {
+       /* var transactionNo = $('[name="transactionNos"]').val();*/
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
         var searchId = $(aplyObj).parents("._vr_promo_check").data("searchid");
         $.ajax({
@@ -299,19 +322,22 @@
         if (typeof data.state == "undefined") {
             return false;
         }
-        $("._msg").html('<p class="text-center">' + data.msg + '</p>');
+        $(".ext-inf").html(data.msg);
         var content;
         var title;
         var skin;
-        var area = ['640px', '397px'];
+        var area = ['640px', 'auto'];
+        var icon;
         if (data.state) {
             content = $(".promoSuccessTip").html();
             title = "申请成功";
             skin = "layui-layer-success";
+            icon = "promo_success";
         } else {
             content = $(".promoFailureTip").html();
             title = "申请失败";
             skin =  "layui-layer-danger";
+            icon="promo_failure";
         }
 
         var dialog = layer.open({
@@ -324,6 +350,7 @@
                 $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
+                $(layer).addClass(icon);
             },
             yes: function () {
                 if (isRefresh) {

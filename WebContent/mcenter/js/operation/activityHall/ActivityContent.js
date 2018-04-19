@@ -65,6 +65,12 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $("."+mark).text(num);
             });
 
+            $(this.formSelector).on("click", ".gameTypeButton", function (e) {
+                var target = e.target;
+                $(target).removeClass('btn-outline');
+                $(target).siblings("button").addClass('btn-outline');
+            });
+
             $(this.formSelector).on("change", ".profit", function (e){
                 var flag = $(".profit").prop("checked");
                 if (flag) {
@@ -247,12 +253,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
 
             this.initUEditor();
             this.checkHandsel();
-
         },
 
         //未编辑,已编辑
         updateText: function (e, index) {
-            var $current_tab = $('[aria-expanded=true]');
+            var $current_tab = $('a[aria-expanded=true]');
             var $tab_span = $current_tab.find("span");
             var index;
             if (e == 'contentchange') {
