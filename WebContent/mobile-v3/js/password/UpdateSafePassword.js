@@ -376,7 +376,7 @@ function verifySecurityPassword(captcha, callback) {
         + window.top.message.passport_auto['请输入安全密码'] + '" maxlength="6">'
         + '<div class="pop_code ' + hideCode + '"><input type="text" id="perCode" class="code" placeholder="'
         + window.top.message.passport_auto['请输入验证码'] + '" maxlength="4">'
-        + '<img class="code" src="' + root + '/captcha/privilege.html?t="' + new Date().getTime() + '></div>'
+        + '<img class="code" src="' + root + '/captcha/privilege.html?t=' + new Date().getTime() + '"></div>'
         + '<input type="hidden" name="needCaptcha" value="' + captcha + '">';
 
     var options = {
@@ -388,15 +388,10 @@ function verifySecurityPassword(captcha, callback) {
     showConfirmMsg(options);
 
     inputNumber.init($('#perPwd'), {negative: false, decimal: false, intSize: 6});
-    if (os == 'android') {
-        $('img.code').css({'margin-top': '-1px'});
-        var ua = navigator.userAgent;
-        if (/(UCBrowser)/i.test(ua)) {
-            // _this.toast('ucdd');
-            $('img.code').css({'margin-top': '1px'});
-        }
-    }
-    mui(".layermcont").on('tap', 'img.code', function (e) {
+    $("#perCode").css({'width': '154px', 'margin': '0px 1px 0px -5px', 'padding': '0px 9px'});
+    $('img.code').css({'margin': '-15px -18px -10px 0px', 'width': '95px', 'height': '40px'});
+
+    mui(".pop_code").on('tap', 'img.code', function (e) {
         $(this).attr('src', genCode());
     });
 }
@@ -472,48 +467,6 @@ function verifySuccess(callback) {
             }
         };
         muiAjax(options);
-        /*mui.ajax(root + '/passport/securityPassword/verifySecurityPassword.html', {
-         dataType: 'json',
-         data: {'pwd': pwd, 'code': code},
-         type: 'post',
-         beforeSend: function () {
-         _this.disableBtn();
-         },
-         success: function (data) {
-         var state = data.state;
-         var captcha = data.captcha;
-         if (state == '100') {
-         if (callback && callback instanceof Function) {
-         callback();
-         }
-         layer.close(index);
-         } else if (state == '99') {
-         layer.close(index);
-         _this.freezeTip(data);
-         } else if (state == '98') {
-         var times = data.times;
-         $('#perPwd').focus();
-         if (times > 3)
-         _this.toast(window.top.message.passport_auto['密码错误1']);
-         else
-         _this.toast(window.top.message.passport_auto['密码错误2'].replace('{0}', times));
-
-         $('#perPwd').val('').select();
-         if (captcha) {
-         $('.pop_code').removeClass('mui-hide').addClass('mui-show');
-         $('[name=needCaptcha]').val(true);
-         }
-         } else if (state == '97') {
-         _this.toast(window.top.message.passport_auto['验证码错误']);
-         $('#perCode').focus();
-         $('img.code').attr('src', _this.genCode());
-         $('#perCode').val('').select();
-         }
-         },
-         complete: function () {
-         _this.enableBtn();
-         }
-         });*/
     }
 }
 
