@@ -66,7 +66,8 @@
                                     </a>
                                 </div>
                                 <div class="promo-detail">
-                                    ${am.activityDescription}
+                                    <div class="tit">${am.activityName}</div>
+                                    <div class="content">${am.activityDescription}</div>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +103,8 @@
                                     </a>
                                 </div>
                                 <div class="promo-detail">
-                                ${am.activityDescription}
+                                    <div class="tit">${am.activityName}</div>
+                                    <div class="content">${am.activityDescription}</div>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +131,8 @@
                                     </a>
                                 </div>
                                 <div class="promo-detail">
-                                ${his.activityDescription}
+                                    <div class="tit">${his.activityName}</div>
+                                    <div class="content">${his.activityDescription}</div>
                                 </div>
                             </div>
                         </div>

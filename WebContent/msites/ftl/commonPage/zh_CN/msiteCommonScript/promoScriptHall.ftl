@@ -241,6 +241,8 @@
 
     function showActivityProcessDialog(data, aplyObj, isRefresh) {
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
+        var title = $(aplyObj).parents("._vr_promo_check").find(".tit").text();
+        $(".tip_tit").text(title);
         $(".profit_loss").hide();
         $(".effective_transaction").hide();
         $(".deposit_send").hide();
