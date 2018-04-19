@@ -417,9 +417,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     $(this).parents('td').siblings("td").find("input").prop("checked", true);
                 } else {
                     var m = $(this).parent().siblings().find("input:checked");
-                    if (m.length > 0) {
-                        return;
-                    } else {
+                    if (m.length == 0) {
                         $(this).parents('td').siblings("td").find("input").prop("checked", false);
                     }
                 }
@@ -535,7 +533,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                                 apiGameTypeRelation.apiId = apiId;
                             });
                             //当前行已选的gametype
-                            apiGameTypeRelation.apiType = gameTypes;
+                            apiGameTypeRelation.gameType = gameTypes;
                             selectedList.push(apiGameTypeRelation);
                             gameTypes = [];
                         }
