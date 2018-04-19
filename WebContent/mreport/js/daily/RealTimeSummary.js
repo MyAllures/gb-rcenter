@@ -54,7 +54,7 @@ define(['common/BasePage','site/swiper.min','site/g2.min','site/data-set.min'], 
             $("#mountNode").html(null);
             const data = this.setData(realtimeType);
             const ds = new DataSet();
-            let keys = Object.keys(data[0]);
+            var keys = Object.keys(data[0]);
             keys.splice(0,1);
             const chart = new G2.Chart({
                 container: 'mountNode',
@@ -127,9 +127,9 @@ define(['common/BasePage','site/swiper.min','site/g2.min','site/data-set.min'], 
         setData: function(realtimeType){
             var profilesJson = $.parseJSON($("#profilesJson").val());
             var array = [];
-            for(let i = 1; i<=profilesJson.length; i++) {
-                let profile = profilesJson[i-1];
-                let data = {};
+            for(var i = 1; i<=profilesJson.length; i++) {
+                var profile = profilesJson[i-1];
+                var data = {};
                 data['time'] = i < 10 ? '0'+i+':00': (i > 23 ? '23:59' : i + ':00');
                 if ('visitor' == realtimeType) {
                     data['访客量(全部)'] = profile.countVisitor;
