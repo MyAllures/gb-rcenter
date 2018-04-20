@@ -510,7 +510,7 @@
                    }
                });*/
         var loAgree = layer.open({
-            content:;<#if data.agentValidateRegisterMap.regProtocol??> ${data.agentValidateRegisterMap.regProtocol.value} </#if>,
+            content:'<#if data.agentValidateRegisterMap.regProtocol??> ${data.agentValidateRegisterMap.regProtocol.value} </#if>',
         title:'Proxy registration agreement',
                 skin:'layui-layer-brand',
                 btn:["I disagree","I agree"],
