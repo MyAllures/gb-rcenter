@@ -153,10 +153,11 @@ function securityCode() {
  */
 function verifySecurityPassword(captcha, callback) {
     verifyCallBack = callback;
-    var hideCode = captcha ? 'mui-show' : 'mui-hide';
+    //var hideCode = captcha ? 'mui-show' : 'mui-hide';
+    var hideCode = captcha ? 'mui-show' : 'display:none';
     var content = '<input type="password" id="perPwd" autofocus="" placeholder="'
         + window.top.message.passport_auto['请输入安全密码'] + '" maxlength="6">'
-        + '<div class="pop_code ' + hideCode + '"><input type="text" id="perCode" class="code" placeholder="'
+        + '<div class="pop_code" style="' + hideCode + '"><input type="text" id="perCode" class="code" placeholder="'
         + window.top.message.passport_auto['请输入验证码'] + '" maxlength="4">'
         + '<img class="code" src="' + root + '/captcha/privilege.html?t=' + new Date().getTime() + '"></div>'
         + '<input type="hidden" name="needCaptcha" value="' + captcha + '">';
@@ -209,6 +210,7 @@ function verifySuccess(callback) {
     var pwd = $('#perPwd').val();
     var code = $('#perCode').val();
 
+    var result;
     if (checkPasswordForm(pwd, code)) {
         var options = {
             url: root + '/passport/securityPassword/verifySecurityPassword.html',
@@ -240,16 +242,21 @@ function verifySuccess(callback) {
                         $('.pop_code').removeClass('mui-hide').addClass('mui-show');
                         $('[name=needCaptcha]').val(true);
                     }
+                    result = false;
                 } else if (state == '97') {
                     toast(window.top.message.passport_auto['验证码错误']);
                     $('#perCode').focus();
                     $('img.code').attr('src', genCode());
                     $('#perCode').val('').select();
+                    result = false;
                 }
             }
         };
         muiAjax(options);
+    } else {
+        result = false;
     }
+    return result;
 }
 
 function genCode() {
