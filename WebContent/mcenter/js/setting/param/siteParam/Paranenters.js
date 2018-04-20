@@ -67,6 +67,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this.electricPin();
             this.encryptionSwitch();
             this.playerStationmaster();
+            this.appDownloadUrlSwitch();
         },
         /**
          * 当前页面所有事件初始化函数
@@ -825,6 +826,44 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                         }
                     })
 
+                }
+            });
+        },
+
+        /**
+         * app自定义下载URL开关
+         */
+        appDownloadUrlSwitch:function(){
+            this._super();
+            var $bootstrapSwitch = $('input[type=checkbox][name=downloadUrl]');
+            this.unInitSwitch($bootstrapSwitch).bootstrapSwitch({
+                onText: window.top.message.content['floatPic.dislpay.on'],
+                offText: window.top.message.content['floatPic.display.off'],
+                onSwitchChange:function(e,state){
+                    var $this = $(this);
+                    var _msg = "";
+                    if (state) {
+                        _msg = window.top.message.setting['confirm.open'];
+                    } else {
+                        _msg =  window.top.message.setting['confirm.close'];
+                    }
+                    $this.bootstrapSwitch('indeterminate', true);
+                    window.top.topPage.showConfirmMessage(_msg, function (confirm) {
+                        if (confirm) {
+                           if(state){
+                               $(".downloadUrl").css('display','');
+                               $("#appDomain").css("display","none");
+                           }else{
+                               $(".downloadUrl").css('display','none');
+                               $("#appDomain").css("display","");
+                               $('[name=downloadAddress]').val('');
+                           }
+                            $this.bootstrapSwitch('indeterminate', false);
+                        } else {
+                            $this.bootstrapSwitch('indeterminate', false);
+                            $this.bootstrapSwitch('state', !state, true);
+                        }
+                    })
                 }
             });
         },
