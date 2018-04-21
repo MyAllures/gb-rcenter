@@ -38,13 +38,6 @@ function readGame() {
     } else {
         apiLogin();
     }
-    if (apiId == 6 && os != 'android' && os != 'app_ios') {
-        obj.newWindow = window.open("about:blank", '_blank');
-        if (obj.newWindow) {
-            obj.newWindow.document.write("<div style='text-align:center;'><img style='margin-top:" +
-                document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
-        }
-    }
 }
 
 function goApiGame(obj, options) {
@@ -108,18 +101,10 @@ function apiLogin(obj) {
             hideLoading();
             if (data.loginSuccess) {
                 var result = data.gameApiResult;
-                if (apiId == 6) {
-                    if (os == 'android' || os == 'app_ios') {
-                        gotoGame(result.defaultLink, apiId);
-                    } else {
-                        goToUrl(result.defaultLink);
-                    }
+                if (result.defaultLink) {
+                    gotoGameUrl(result.defaultLink, apiId);
                 } else {
-                    if (result.defaultLink) {
-                        gotoGameUrl(result.defaultLink, apiId);
-                    } else {
-                        gotoGameUrl(result.links[apiTypeId], apiId)
-                    }
+                    gotoGameUrl(result.links[apiTypeId], apiId)
                 }
             } else {
                 if (!data.loginSuccess && ( data.errMsg == '' || data.errMsg == null)) {
@@ -152,7 +137,7 @@ function apiLogin(obj) {
 }
 
 //捕鱼和棋牌游戏登录
-function fishGameLogin(obj,options){
+function fishGameLogin(obj, options) {
     apiId = options.dataApiId;
     apiTypeId = options.dataApiTypeId;
     status = options.dataStatus;
@@ -172,7 +157,7 @@ function fishGameLogin(obj,options){
         postData.apiTypeId = apiTypeId;
     }
     isAutoPay = sessionStorage.getItem("isAutoPay");
-    if ((isAutoPay == 'true' && apiTypeId != "2")) {
+    if (isAutoPay == 'true') {
         //判断是否免转，如果免转,则直接登陆游戏，不跳到游戏中转页面
         autoLoginAndTransfer();
     } else {
@@ -182,21 +167,12 @@ function fishGameLogin(obj,options){
             dataType: "json",
             data: postData,
             success: function (data) {
-                hideLoading();
                 if (data.loginSuccess) {
                     var result = data.gameApiResult;
-                    if (apiId == 6) {
-                        if (os == 'android' || os == 'app_ios') {
-                            gotoGame(result.defaultLink, apiId);
-                        } else {
-                            goToUrl(result.defaultLink);
-                        }
+                    if (result.defaultLink) {
+                        gotoGameUrl(result.defaultLink, apiId);
                     } else {
-                        if (result.defaultLink) {
-                            gotoGameUrl(result.defaultLink, apiId);
-                        } else {
-                            gotoGameUrl(result.links[apiTypeId], apiId)
-                        }
+                        gotoGameUrl(result.links[apiTypeId], apiId)
                     }
                 } else {
                     if (!data.loginSuccess && ( data.errMsg == '' || data.errMsg == null)) {
@@ -251,23 +227,13 @@ function autoLoginAndTransfer() {
             data: postData,
             type: "POST",
             success: function (data) {
-                hideLoading();
                 if (data) {
                     if (data.isSuccess == true) {
                         var result = data.gameApiResult;
-                        if (apiId == 6) {
-                            if (os == 'android' || os == 'app_ios') {
-                                gotoGameUrl(result.defaultLink, apiId);
-                            } else {
-                                //newWindow.location.href = result.defaultLink;
-                                goToUrl(result.defaultLink);
-                            }
+                        if (result.defaultLink) {
+                            gotoGameUrl(result.defaultLink, apiId);
                         } else {
-                            if (result.defaultLink) {
-                                gotoGameUrl(result.defaultLink, apiId);
-                            } else {
-                                gotoGameUrl(result.links[apiTypeId], apiId);
-                            }
+                            gotoGameUrl(result.links[apiTypeId], apiId);
                         }
                     } else if (data.msg) {
                         showWarningMsg(window.top.message.game_auto['提示'], data.msg);
