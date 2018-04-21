@@ -20,7 +20,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
             if(!this.validateForm(e)){
                 return false;
             }
-            window.top.topPage.showConfirmMessage("确定调整站点的授信额度吗?",function (state) {
+            window.top.topPage.showConfirmMessage("确定调整站点的额度上限吗?",function (state) {
                 if(state){
                     window.top.topPage.doAjax(e,opt);
                 }
