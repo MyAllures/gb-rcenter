@@ -50,7 +50,6 @@
     });
 
     function fetchAllBalance(){
-        var title ='cch';
         $.ajax({
             url: "/ntl/getWalletBalanceAndAllApiBalance.html?t="+ new Date().getTime().toString(36),
             type: "get",

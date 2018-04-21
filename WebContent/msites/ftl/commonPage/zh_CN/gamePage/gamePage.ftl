@@ -15,71 +15,73 @@
         <a href="javascript:" data-api="i-sports"><span class="icon i-sports"></span><span class="txt">体育</span></a>
         <a href="javascript:" data-api="i-lottery"><span class="icon i-lottery"></span><span class="txt">彩票</span></a>
     </div>
-    <div class="g-s-api-content" data-api="i-fish">
-    <#assign FishGames=[{'id':'280001','api':'28'},{'id':'280002','api':'28'},{'id':'280003','api':'28'},{'id':'100380','api':'10'},{'id':'100382','api':'10'},{'id':'350001','api':'35'},{'id':'310177','api':'31'},{'id':'90013','api':'9'},{'id':'60368','api':'6'}]>
-        <ul class="list-unstyled">
-        <#list FishGames as game>
-            <#if data.siteGameI18ns[game.id]?? && data.gameMapById[game.id]??>
-                <li>
-                    <a class="_game_open" href="javascript:void(0);"
-                       <#if data.gameMapById[game.id].gameLine?? && data.gameMapById[game.id].gameLine?c?number &gt; 0>data-game-line="${data.gameMapById[game.id].gameLine?string.computer}"</#if> data-game-score="<#if data.gameMapById[game.id].gameScore??>${data.gameMapById[game.id].gameScore?string.computer}</#if>"
-                       data-api="${game.api}" data-game-name="<#if data.siteGameI18ns[game.id].name??></#if>${data.siteGameI18ns[game.id].name}"
-                        <#if data.siteGameI18ns[game.id].introduceStatus?has_content && data.siteGameI18ns[game.id].introduceStatus=="normal" && data.siteGameI18ns[game.id].gameIntroduce?has_content>
-                       data-game-introduce="${data.siteGameI18ns[game.id].gameIntroduce}"
-                        </#if>
-                       data-game-code="<#if data.gameMapById[game.id].code??>${data.gameMapById[game.id].code}</#if>"
-                       data-game-id="${game.id}" data-apitype="2"
-                       data-game-img="<#if data.siteGameI18ns[game.id]?has_content>${imgPath(data.configInfo.domain,data.siteGameI18ns[game.id].cover)}</#if>"
-                       data-api-name="<#if data.siteApiTypeRelationI18n["2"+game.api]??>${data.siteApiTypeRelationI18n["2"+game.api].name}"</#if>
-                       data-api-name-abb="<#list apiMapKeys as key><#if key == game.api>${apiMap[key]}</#if></#list>"
-                       startTime="<#if data.gameMapById[game.id]?has_content && data.gameMapById[game.id].maintainStartTime?has_content>${data.gameMapById[game.id].maintainStartTime?long?string.computer}</#if>"
-                       endTime="<#if data.gameMapById[game.id]?has_content && data.gameMapById[game.id].maintainEndTime?has_content>${data.gameMapById[game.id].maintainEndTime?long?string.computer}</#if>">
+    <div class="g-s-tab-wrap" id="g-s-tab-wrap">
+        <div class="g-s-api-content" data-api="i-fish">
+        <#assign FishGames=[{'id':'280001','api':'28'},{'id':'280002','api':'28'},{'id':'280003','api':'28'},{'id':'100380','api':'10'},{'id':'100382','api':'10'},{'id':'350001','api':'35'},{'id':'310177','api':'31'},{'id':'90013','api':'9'},{'id':'60368','api':'6'}]>
+            <ul class="list-unstyled">
+            <#list FishGames as game>
+                <#if data.siteGameI18ns[game.id]?? && data.gameMapById[game.id]??>
+                    <li>
+                        <a class="_game_open" href="javascript:void(0);"
+                           <#if data.gameMapById[game.id].gameLine?? && data.gameMapById[game.id].gameLine?c?number &gt; 0>data-game-line="${data.gameMapById[game.id].gameLine?string.computer}"</#if> data-game-score="<#if data.gameMapById[game.id].gameScore??>${data.gameMapById[game.id].gameScore?string.computer}</#if>"
+                           data-api="${game.api}" data-game-name="<#if data.siteGameI18ns[game.id].name??></#if>${data.siteGameI18ns[game.id].name}"
+                            <#if data.siteGameI18ns[game.id].introduceStatus?has_content && data.siteGameI18ns[game.id].introduceStatus=="normal" && data.siteGameI18ns[game.id].gameIntroduce?has_content>
+                           data-game-introduce="${data.siteGameI18ns[game.id].gameIntroduce}"
+                            </#if>
+                           data-game-code="<#if data.gameMapById[game.id].code??>${data.gameMapById[game.id].code}</#if>"
+                           data-game-id="${game.id}" data-apitype="2"
+                           data-game-img="<#if data.siteGameI18ns[game.id]?has_content>${imgPath(data.configInfo.domain,data.siteGameI18ns[game.id].cover)}</#if>"
+                                data-api-name="<#if data.siteApiTypeRelationI18n["2"+game.api]??>${data.siteApiTypeRelationI18n["2"+game.api].name}"</#if>
+                           data-api-name-abb="<#list apiMapKeys as key><#if key == game.api>${apiMap[key]}</#if></#list>"
+                           startTime="<#if data.gameMapById[game.id]?has_content && data.gameMapById[game.id].maintainStartTime?has_content>${data.gameMapById[game.id].maintainStartTime?long?string.computer}</#if>"
+                           endTime="<#if data.gameMapById[game.id]?has_content && data.gameMapById[game.id].maintainEndTime?has_content>${data.gameMapById[game.id].maintainEndTime?long?string.computer}</#if>">
                             <span class="icon icon-fish"><img
                                     src="<#if data.siteGameI18ns[game.id]?has_content>${imgPath(data.configInfo.domain,data.siteGameI18ns[game.id].cover)}</#if>"></span>
-                        <span class="txt">${data.siteGameI18ns[game.id].name}</span>
-                    </a>
-                </li>
-            </#if>
-        </#list>
-        </ul>
-    </div>
-<#list data.siteApiTypeI18n?keys as apiTypeId>
-    <div class="g-s-api-content <#if apiTypeId == "2">active</#if>"
-         data-api="i-<#if apiRelByType[apiTypeId]??>${apiRelByType[apiTypeId]}</#if>">
-        <ul class="list-unstyled">
-            <#if data.siteApiTypeRelationMap['${apiTypeId}']??>
-                <#list data.siteApiTypeRelationMap['${apiTypeId}'] as relationMap>
-                    <#if apiTypeId!="3" || relationMap.apiId?string.computer!="10">
-                        <li>
-                            <a class="_vr_mt_check"
-                               data-api="${relationMap.apiId?string.computer}" href="javascript:void(0)"
-                               data-apitype="${apiTypeId}"
-                                <#if apiTypeId=='2'>
-                               data-href="/casino.html?apiType=2&apiId=${relationMap.apiId?string.computer}"
-                                <#elseif apiTypeId=='3' && relationMap.apiId?string.computer!="10">
-                               data-href="/sports.html?apiId=${relationMap.apiId?string.computer}"
-                               data-sports="sports"
-                                </#if>
-                               <#if data.siteApiMap[relationMap.apiId?string.computer]?? && data.siteApiMap[relationMap.apiId?string.computer].maintainEndTime?has_content>startTime="${data.siteApiMap[relationMap.apiId?string.computer].maintainStartTime?long?string.computer}"</#if>
-                               <#if data.siteApiMap[relationMap.apiId?string.computer]?? && data.siteApiMap[relationMap.apiId?string.computer].maintainEndTime?has_content>endTime="${data.siteApiMap[relationMap.apiId?string.computer].maintainEndTime?long?string.computer}"</#if>>
-                                <span class="icon c-<#list apiMapKeys as key><#if relationMap.apiId?string.computer==key && apiMap[key]??>${apiMap[key]}</#if></#list>"></span>
-                                <span class="txt">${data.siteApiTypeRelationI18n['${apiTypeId}'+relationMap.apiId?string.computer].name}</span>
-                            </a>
-                        </li>
-                    </#if>
-                </#list>
-                <#if apiTypeId=="2">
-                    <li>
-                        <a class="_vr_mt_check" data-api="34" href="/casino.html?apiType=2&amp;apiId=34" data-apitype="5" data-href="/casino.html?apiType=5&amp;apiId=34">
-                            <span class="icon c-ky"></span>
-                            <span class="txt">开元棋牌</span>
+                            <span class="txt">${data.siteGameI18ns[game.id].name}</span>
                         </a>
                     </li>
                 </#if>
-            </#if>
-        </ul>
+            </#list>
+            </ul>
+        </div>
+    <#list data.siteApiTypeI18n?keys as apiTypeId>
+        <div class="g-s-api-content <#if apiTypeId == "2">active</#if>"
+             data-api="i-<#if apiRelByType[apiTypeId]??>${apiRelByType[apiTypeId]}</#if>">
+            <ul class="list-unstyled">
+                <#if data.siteApiTypeRelationMap['${apiTypeId}']??>
+                    <#list data.siteApiTypeRelationMap['${apiTypeId}'] as relationMap>
+                        <#if apiTypeId!="3" || relationMap.apiId?string.computer!="10">
+                            <li>
+                                <a class="_vr_mt_check"
+                                   data-api="${relationMap.apiId?string.computer}" href="javascript:void(0)"
+                                   data-apitype="${apiTypeId}"
+                                    <#if apiTypeId=='2'>
+                                   data-href="/casino.html?apiType=2&apiId=${relationMap.apiId?string.computer}"
+                                    <#elseif apiTypeId=='3' && relationMap.apiId?string.computer!="10">
+                                   data-href="/sports.html?apiId=${relationMap.apiId?string.computer}"
+                                   data-sports="sports"
+                                    </#if>
+                                   <#if data.siteApiMap[relationMap.apiId?string.computer]?? && data.siteApiMap[relationMap.apiId?string.computer].maintainEndTime?has_content>startTime="${data.siteApiMap[relationMap.apiId?string.computer].maintainStartTime?long?string.computer}"</#if>
+                                   <#if data.siteApiMap[relationMap.apiId?string.computer]?? && data.siteApiMap[relationMap.apiId?string.computer].maintainEndTime?has_content>endTime="${data.siteApiMap[relationMap.apiId?string.computer].maintainEndTime?long?string.computer}"</#if>>
+                                    <span class="icon c-<#list apiMapKeys as key><#if relationMap.apiId?string.computer==key && apiMap[key]??>${apiMap[key]}</#if></#list>"></span>
+                                    <span class="txt">${data.siteApiTypeRelationI18n['${apiTypeId}'+relationMap.apiId?string.computer].name}</span>
+                                </a>
+                            </li>
+                        </#if>
+                    </#list>
+                    <#if apiTypeId=="2">
+                        <li>
+                            <a class="_vr_mt_check" data-api="34" href="/casino.html?apiType=2&amp;apiId=34" data-apitype="5" data-href="/casino.html?apiType=5&amp;apiId=34">
+                                <span class="icon c-ky"></span>
+                                <span class="txt">开元棋牌</span>
+                            </a>
+                        </li>
+                    </#if>
+                </#if>
+            </ul>
+        </div>
+    </#list>
     </div>
-</#list>
 </div>
 <!--游戏内页底部tag-->
 <div class="game_bottom">
@@ -114,13 +116,14 @@
 <div class="game-detail">
     <div class="body">
         <a href="javascript:void(0);" title="退出全屏" class="exit-fullscreen" onclick="exitFullscreen();"></a>
-        <a href="javascritp:" class="closeCasinoGame"></a>
+        <a href="javascript:void(0);" class="closeCasinoGame"></a>
         <!-- Panel -->
         <div class="header-panel game-panel _vr_loginSuccess" style="display: none">
         <#include "../msiteCommonContent/loginSuccess.ftl">
         </div>
 
         <div class="wrapper" data-width="16" data-height="9">
+            <div class="loading-area"><span class="gui gui-2x gui-spinner gui-spin"></span></div> <#--加载层-->
             <iframe id="box_playGameDemo_iframe" width="100%" height="100%" scrolling="no" frameborder="0" allowtransparency="true" src=""></iframe>
 
             <div class="game-info">
@@ -134,7 +137,7 @@
                         <div class="tags"><!--标签-->
 
                         </div>
-                        <img src="images/casino/game-deom.jpg"/>
+                        <img class="zhanwei"/>
                         <div class="game-item-tit">
                             <div class="g_line1">
                                 <a class="g_title"></a>
@@ -180,6 +183,7 @@
 </div>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/layer.js"></script>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/jquery.raty.js"></script>
+<script src="${data.configInfo.ftlRootPath}commonPage/js/jquery/jquery.nicescroll.min.js"></script>
 <#--内容模板需要用到的js-->
 <script src="${data.configInfo.ftlRootPath}commonPage/js/jsrender/jsrender.js"></script>
 <#--我的收藏内容模板-->
