@@ -475,7 +475,7 @@
             }
         });*/
         var loAgree = layer.open({
-            content:;<#if data.agentValidateRegisterMap.regProtocol??> ${data.agentValidateRegisterMap.regProtocol.value} </#if>,
+            content:'<#if data.agentValidateRegisterMap.regProtocol??> ${data.agentValidateRegisterMap.regProtocol.value} </#if>',
         title:'エージェント登録プロトコル',
                 skin:'layui-layer-brand',
                 btn:["わたしは反対だ","わたしは同意する"],

@@ -535,7 +535,7 @@
             }
         });*/
         var loAgree = layer.open({
-            content:;<#if data.agentValidateRegisterMap.regProtocol??> ${data.agentValidateRegisterMap.regProtocol.value} </#if>,
+            content:'<#if data.agentValidateRegisterMap.regProtocol??> ${data.agentValidateRegisterMap.regProtocol.value} </#if>',
             title:'代理注册协议',
             skin:'layui-layer-brand',
             btn:["我不同意","我同意"],

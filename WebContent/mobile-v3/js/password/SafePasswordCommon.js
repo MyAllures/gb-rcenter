@@ -9,17 +9,6 @@ function initInput() {
     window.inputNumber.init($('[name=pwd2]'), {negative: false, decimal: false, initSize: 6});
 }
 
-function showCaptcha(data, tip) {
-    $('[name=originPwd]').select();
-    toast(tip);
-    if (data.captcha) {
-        $('._pass').removeClass('final');
-        $('._captcha').removeClass('mui-hide');
-        $('._times').text(data.times);
-        $('[name=needCaptcha]').val(true);
-    }
-}
-
 function freezeTip(data, obj) {
     var options = {
         title: window.top.message.passport_auto['提示'],
@@ -38,7 +27,7 @@ function freezeTip(data, obj) {
  * 跳到个人信息界面
  */
 function cancelRealName() {
-    location.replace(root + '/mine/index.html');
+    goToUrl(root + '/mine/index.html');
 }
 
 function frezzYes() {
@@ -65,49 +54,6 @@ function checkRealNameForm(realName) {
     return isOk;
 }
 
-function checkCaptcha() {
-
-    var needCaptcha = $('[name=needCaptcha]').val();
-    if (needCaptcha == 'false') {
-        return true;
-    }
-
-    var $captcha = $('[name=code]');
-    var captcha = $captcha.val();
-
-    if (captcha == null || captcha.trim().length == 0) {
-        toast(window.top.message.passport_auto['请输入验证码']);
-        $captcha.focus();
-        return false;
-    }
-
-    return true;
-}
-
-
-/*function checkPasswordStrength(pwd1) {
- var isOk = false;
- /!*mui.ajax(root + '/passport/securityPassword/checkPwdStrength.html', {
- type: 'POST',
- data: {'pwd': pwd1},
- async: false,
- success: function (data) {
- isOk = data;
- }
- });*!/
- var options = {
- url: root + '/passport/securityPassword/checkPwdStrength.html',
- type: 'POST',
- data: {'pwd': pwd1},
- async: false,
- success: function (data) {
- isOk = data;
- }
- };
- muiAjax(options);
- return isOk;
- }*/
-
 /**
  * 判断是否存在真实姓名
  */
@@ -126,13 +72,6 @@ function checkHasRealName(obj) {
         showConfirmMsg(options, obj);
     }
 }
-
-/**
- * 跳到个人信息界面
- */
-/*function cancelRealName() {
- goToUrl(root + '/mine/index.html');
- }*/
 
 /**
  * 异步添加名字
