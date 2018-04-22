@@ -244,26 +244,43 @@
         var title = $(aplyObj).parents("._vr_promo_check").find(".tit").text();
         $(".tip_tit").text('《' + title + '》');
         var content;
-        $(".profit_loss").hide();
-        $(".effective_transaction").hide();
-        if (code == 'effective_transaction' || code == 'profit_loss') {
-            $(".effective").text(data.effectivetransaction);
-            $(".effective_transaction").show();
-        }
-        if (code == 'profit') {
-            $(".profit").text(data.profitloss);
-            $(".profit_loss").show();
-        }
-        content = $(".activityProcess").html();
-        if (code == 'deposit_send' && data.content) {
+        var addClass;
+
+        if (code == 'deposit_send' && data.transactions) {
             $(".deposit_send_transaction").remove();
-            var contents = data.content;
-            for (j = 0; j<contents.length; j++) {
-                var item = '<tr class="deposit_send_transaction"><td><label class="checkbox_wrap"><input type="checkbox"><span class="checkbox_icon"></span></label></td><td>' + contents[j].transactionNo + '</td><td>' +
-                        contents[j].completionTime + '</td><td>' + contents[j].transactionMoney + '</td></tr>';
+            var transactions = data.transactions;
+            for (j = 0; j<transactions.length; j++) {
+                var item = '<tr class="deposit_send_transaction"><td><label class="checkbox_wrap"><input type="checkbox" name="transactionNos" value=' + transactions[j].transactionNo + '><span class="checkbox_icon"></span></label></td><td>' + transactions[j].transactionNo + '</td><td>' +
+                        transactions[j].completionTime + '</td><td>' + transactions[j].transactionMoney + '</td></tr>';
                 $(".deposit_sent_transactionNo").append(item);
             }
             content = $(".deposit_send").html();
+            addClass = 'promo_CJS';
+        } else {
+            $(".process").remove();
+            var preferentialRelations = data.preferentialRelations;
+            var item;
+            var icon;
+            for (j = 0; j<preferentialRelations.length; j++) {
+
+                if (data.effectivetransaction > preferentialRelations[j].preferentialValue){
+                    icon = '<i class="icon-pass"></i>';
+                } else {
+                    icon = '<i class="icon-fail"></i>';
+                }
+
+                if (preferentialRelations[j].preferentialCode == 'total_transaction_ge') {
+                    item = '<div class="item-success-with-bar">'+ icon + '<div class="txt process"><span>有效投注额' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.effectivetransaction +
+                            '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
+                    $(".effective_transaction").append(item);
+                }else if (preferentialRelations[j].preferentialCode == 'profit_ge') {
+                    item = '<div class="item-success-with-bar">'+ icon + '<div class="txt process"><span>盈利' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.effectivetransaction +
+                            '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
+                    $(".profit_loss").append(item);
+                }
+            }
+            content = $(".activityProcess").html();
+            addClass = 'promo_may_apply';
         }
         var dialog = layer.open({
             content:content,
@@ -276,7 +293,7 @@
                 $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
-                $(layer).addClass("promo_CJS");
+                $(layer).addClass(addClass);
                 // 内容启用滚动条
                 $(layer).find(".layui-layer-content .tab_wrap").niceScroll({
                     cursorcolor:"#999",

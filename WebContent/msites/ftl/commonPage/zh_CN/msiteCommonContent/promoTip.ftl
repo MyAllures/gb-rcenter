@@ -29,16 +29,12 @@
 
 <#--有效投注额和盈亏送提示-->
 <div class="activityProcess" style="display: none;">
-    <i class="icon-danger">
-    <div class="effective_transaction" style="display: none;">
-        <div class="tip_tit"></div>
-        <lable>有效投注额:</lable>
-        <span class="effective"></span>
-    </div>
-    <div class="profit_loss" style="display: none;">
-        <div class="tip_tit"></div>
-        <lable>盈亏:</lable>
-        <span class="profit"></span>
+    <i class="icon-danger"></i>
+    <div class="tip_tit"></div>
+    <div class="subs-txt">进度进度进度进度进度进度进度进度进度进度进度进度进度进度进度</div>
+    <div class="failure-reason">
+        <div class="effective_transaction"></div>
+        <div class="profit_loss wrap1"></div>
     </div>
 </div>
 
