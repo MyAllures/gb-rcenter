@@ -1,7 +1,7 @@
 /**
  * Created by snake on 18-4-17.
  */
-
+var customerUrl;
 $(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
@@ -56,6 +56,32 @@ function submitSafePassword() {
     }
 }
 
+function freezeTip(data, obj) {
+    var options = {
+        title: window.top.message.passport_auto['提示'],
+        confirm: '<b>' + window.top.message.passport_auto["已达上限"]
+        + '</b><br/><span class="assist">' + window.top.message.passport_auto["冻结3小时"] + '<br/>'
+        + window.top.message.passport_auto["冻结时间"] + '：' + data.force + '</span>',
+        btnArray: [window.top.message.passport_auto['联系客服'], window.top.message.passport_auto['返回我的']],
+        func: frezzYes,
+        cancelFunc: cancelRealName //cancelFunc代表点取消做的操作
+    };
+    showConfirmMsg(options, obj);
+
+}
+
+/* */
+function frezzYes() {
+    goToUrl(customerUrl);
+}
+
+/*验证码点击刷新*/
+function refreshCode(obj,options){
+    // var src = $(".spcode img").attr("src");
+    // $(".spcode img").attr("src",src);
+    $(obj).attr("src",options.code);
+}
+
 /*展示验证码*/
 function showCaptcha(data, tip) {
     $('[name=originPwd]').select();
@@ -74,7 +100,7 @@ function checkForm() {
         && checkNewPwd() && checkCaptcha();
 }
 
-/*验证码是否规范*/
+/*验证码是否有值*/
 function checkCaptcha() {
 
     var needCaptcha = $('[name=needCaptcha]').val();

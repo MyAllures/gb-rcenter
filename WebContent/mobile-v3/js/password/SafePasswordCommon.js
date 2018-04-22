@@ -1,4 +1,3 @@
-var customerUrl;
 var verifyCallBack;
 
 
@@ -9,29 +8,11 @@ function initInput() {
     window.inputNumber.init($('[name=pwd2]'), {negative: false, decimal: false, initSize: 6});
 }
 
-function freezeTip(data, obj) {
-    var options = {
-        title: window.top.message.passport_auto['提示'],
-        content: '<b>' + window.top.message.passport_auto["已达上限"]
-        + '</b><br/><span class="assist">' + window.top.message.passport_auto["冻结3小时"] + '<br/>'
-        + window.top.message.passport_auto["冻结时间"] + '：' + data.force + '</span>',
-        btn: [window.top.message.passport_auto['联系客服'], window.top.message.passport_auto['返回我的']],
-        func: frezzYes,
-        cancelFunc: cancelRealName //cancelFunc代表点取消做的操作
-    };
-    showConfirmMsg(options, obj);
-
-}
-
 /**
  * 跳到个人信息界面
  */
 function cancelRealName() {
     goToUrl(root + '/mine/index.html');
-}
-
-function frezzYes() {
-    goToUrl(customerUrl);
 }
 
 /**
@@ -227,6 +208,7 @@ function verifySuccess(callback) {
                     //layer.close(index);
                 } else if (state == '99') {
                     //layer.close(index);
+                    customerUrl = data.customer;
                     freezeTip(data);
                 } else if (state == '98') {
                     var times = data.times;
