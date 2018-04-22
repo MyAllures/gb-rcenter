@@ -16,8 +16,8 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
             this.drawEffectiveBarChart();
             this.drawEffectiveColumnChart();
 
-            this.drawLastProfitLoss();
-            this.drawMultiProfitLoss();
+            this.drawProfitLossBarChart();
+            this.drawProfitLossColumnChart();
         },
 
         /**
@@ -56,13 +56,13 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
         drawEffectiveColumnChart: function() {
             var jsonStr = $("#operationSummaryData").html();
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z2', data, 'effectiveTransactionAll', 'staticDayStr*effectiveTransactionAll');
+            this.drawBasicColumnChart('z2', data, 'effectiveTransactionAll', 'staticDay*effectiveTransactionAll', '有效投注额');
         },
 
         /**
          * 上一个周期损益
          */
-        drawLastProfitLoss: function() {
+        drawProfitLossBarChart: function() {
             var jsonStr = $("#effectiveBarChartData").html();
             const data = $.parseJSON(jsonStr);
             this.drawBarChart('c3', data, '#6363FF-#FF6363');
@@ -71,12 +71,10 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
         /**
          * 最近多个周期的损益
          */
-        drawMultiProfitLoss: function() {
-            var jsonStr = $("#balanceSummaryData").html();
-            var fieldStr = $("#columnsDateFieldList").html();
+        drawProfitLossColumnChart: function() {
+            var jsonStr = $("#operationSummaryData").html();
             const data = $.parseJSON(jsonStr);
-            const fieldSet = $.parseJSON(fieldStr);
-            this.drawGroupColumnChart('z3', data, fieldSet);
+            this.drawBasicColumnChart('z3', data, 'transactionProfitLoss', 'staticDay*transactionProfitLoss', '损益');
         },
 
         /**
@@ -162,7 +160,7 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
         /**
          * 基础柱状图
          */
-        drawBasicColumnChart: function(containerName, data, scale, position) {
+        drawBasicColumnChart: function(containerName, data, scale, position, tips) {
             const chart = new G2.Chart({
                 container: containerName,
                 forceFit: true,
@@ -171,9 +169,16 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
             });
             chart.source(data);
             chart.scale(scale, {
-                tickInterval: 2000
+                //tickInterval: 1000  // 数字间隔,如果不指定则自动设置间隔值
             });
-            chart.interval().position(position);
+            chart.interval()
+                .position(position)
+                .tooltip(scale, function(val) {
+                    return {
+                        name: tips,
+                        value: val + ' 元',
+                    };
+                });
             chart.render();
         }
     });
