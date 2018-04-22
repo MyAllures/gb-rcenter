@@ -270,11 +270,11 @@
                 }
 
                 if (preferentialRelations[j].preferentialCode == 'total_transaction_ge') {
-                    item = '<div class="item-success-with-bar">'+ icon + '<div class="txt process"><span>有效投注额' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.effectivetransaction +
+                    item = '<div class="item-success-with-bar process">'+ icon + '<div class="txt"><span>有效投注额' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.effectivetransaction +
                             '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
                     $(".effective_transaction").append(item);
                 }else if (preferentialRelations[j].preferentialCode == 'profit_ge') {
-                    item = '<div class="item-success-with-bar">'+ icon + '<div class="txt process"><span>盈利' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.effectivetransaction +
+                    item = '<div class="item-success-with-bar process">'+ icon + '<div class="txt"><span>盈利' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.effectivetransaction +
                             '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
                     $(".profit_loss").append(item);
                 }
