@@ -242,10 +242,10 @@
     function showActivityProcessDialog(data, aplyObj, isRefresh) {
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
         var title = $(aplyObj).parents("._vr_promo_check").find(".tit").text();
-        $(".tip_tit").text(title);
+        var content;
+        $(".tip_tit").text('《' + title + '》');
         $(".profit_loss").hide();
         $(".effective_transaction").hide();
-        $(".deposit_send").hide();
         if (code == 'effective_transaction' || code == 'profit_loss') {
             $(".effective").text(data.effectivetransaction);
             $(".effective_transaction").show();
@@ -254,20 +254,20 @@
             $(".profit").text(data.profitloss);
             $(".profit_loss").show();
         }
+        content = $(".activityProcess").html();
         if (code == 'deposit_send' && data.content) {
+            $(".deposit_send_transaction").remove();
             var contents = data.content;
-            $(".deposit_sent_transactionNo").html('');
             for (j = 0; j<contents.length; j++) {
-                var transactionNo = contents[j].transactionNo;
-                var item = '<input type="checkbox" name="transactionNos"' + 'value=' +transactionNo + '>' + transactionNo + '<br>';
+                var item = '<tr class="deposit_send_transaction"><td><label class="checkbox_wrap"><input type="checkbox"><span class="checkbox_icon"></span></label></td><td>' + contents[j].transactionNo + '</td><td>' +
+                        contents[j].completionTime + '</td><td>' + contents[j].transactionMoney + '</td></tr>';
                 $(".deposit_sent_transactionNo").append(item);
             }
-            $(".deposit_send").show();
+            content = $(".deposit_send").html();
         }
-        var content = $(".activityProcess").html();
         var dialog = layer.open({
             content:content,
-            title:"提示信息",
+            title:"提示",
             skin:"layui-layer-warning",
             area: ['640px', 'auto'],
             btn: ["申请奖励","联系客服"],
@@ -320,7 +320,7 @@
             dataType: "json",
             data: JSON.stringify(dataParam),
             success: function (data) {
-                showApplyActivityResult(data, isRefresh);
+                showApplyActivityResult(data, isRefresh, code);
                 $(aplyObj).removeAttr("disabled");
 
             },
@@ -330,11 +330,16 @@
         })
     }
 
-    function showApplyActivityResult(data, isRefresh) {
+    function showApplyActivityResult(data, isRefresh, code) {
         if (typeof data.state == "undefined") {
             return false;
         }
-        $(".ext-inf").html(data.msg);
+        if (code == 'first_deposit' || code == 'second_deposit' || code =='third_deposit' || code == 'everyday_first_deposit') {
+            var msg = window.top.message.common_auto[data.msg];
+            $(".ext-inf").html(msg);
+        }else {
+            $(".ext-inf").html(data.msg);
+        }
         var content;
         var title;
         var skin;
