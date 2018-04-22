@@ -391,7 +391,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
             });
         },
         /**
-         * checkbox回填 数据格式 [{"apiId":"1","apiType":["01"]},{"apiId":"3","apiType":["01"]}]
+         * checkbox回填 数据格式 [{"apiId":"1","gameType":["01"]},{"apiId":"3","gameType":["01"]}]
          */
         reWrite: function () {
             var selectedJson = $("#apitypeList", parent.document).val();
@@ -410,8 +410,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
                             /*回选api*/
                             $(_that).find("input[name='apicheck']").prop("checked", true);
                             var apiName = $(_that).find("span.search-game-title b").text();
-                            $.each(line.apiType, function (k, v) {
-                                /*回选api下的apiType*/
+                            $.each(line.gameType, function (k, v) {
+                                /*回选api下的gameType*/
                                 $(_that).next().children().children("input[type=checkbox]").each(function () {
                                     var gameType = this;
                                     if ($(gameType).val() == v) {
@@ -502,7 +502,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                                 apiGameTypeRelation.apiId = apiId;
                             });
                             //当前行已选的gametype
-                            apiGameTypeRelation.apiType = gameTypes;
+                            apiGameTypeRelation.gameType = gameTypes;
                             selectedList.push(apiGameTypeRelation);
                             gameTypes = [];
                         }

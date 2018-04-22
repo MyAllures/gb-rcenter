@@ -6,7 +6,7 @@
         <#if data.siteApiTypeRelationMap??>
             <#list data.siteApiTypeRelationMap[apiType] as relationMap>
                 <div class="swiper-slide <#if relationMap.apiId?string.computer == data.gameSearch.apiId?default('')>active</#if>" data-slide="<#if apiMap[relationMap.apiId?string.computer]??>${apiMap[relationMap.apiId?string.computer]}</#if>">
-                    <a href="javascript:" class="_vr_getGames" data-api="${relationMap.apiId?string.computer}" data-href="casino_partial.html?apiType=${apiType}&apiId=${relationMap.apiId?string.computer}">
+                    <a href="javascript:" class="_vr_getGames" data-api="${relationMap.apiId?string.computer}" data-href="casino_partial.html?apiType=${apiType}&apiId=${relationMap.apiId?string.computer}&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>">
                         <span class="gui gui-logo-<#list apiMapKeys as key><#if key == relationMap.apiId?string.computer>${apiMap[key]}</#if></#list>"></span>
                         <em>${data.siteApiTypeRelationI18n[apiType+relationMap.apiId?string.computer].name}</em>
                     </a>
@@ -38,7 +38,7 @@
         <#if data.siteApiTypeRelationMap??>
             <#list data.siteApiTypeRelationMap[apiType] as relationMap>
                 <div class="swiper-slide <#if relationMap.apiId?string.computer == data.gameSearch.apiId?default('')>active</#if>" data-slide="<#if apiMap[relationMap.apiId?string.computer]??>${apiMap[relationMap.apiId?string.computer]}</#if>">
-                    <a href="javascript:" class="_vr_getGames" data-api="${relationMap.apiId?string.computer}" data-href="casino_partial.html?apiType=${apiType}&apiId=${relationMap.apiId?string.computer}">
+                    <a href="javascript:" class="_vr_getGames" data-api="${relationMap.apiId?string.computer}" data-href="casino_partial.html?apiType=${apiType}&apiId=${relationMap.apiId?string.computer}&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>">
                         <span class="gui gui-logo-<#list apiMapKeys as key><#if key == relationMap.apiId?string.computer>${apiMap[key]}</#if></#list>"></span>
                         <em>${data.siteApiTypeRelationI18n[apiType+relationMap.apiId?string.computer].name}</em>
                     </a>

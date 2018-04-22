@@ -7,6 +7,23 @@
             loginObj.getLoginPopup();
             return;
         }
+        var apiId = $(_this).attr("data-api");
+        var gameCode = $(_this).attr("data-game-Code");
+        var apiTypeId = $(_this).attr("data-apitype");
+        var gameId = $(_this).attr("data-game-id");
+
+        //判断电子游戏是否试玩
+        if ($(_this).hasClass("game-demo")) {
+            demoPayLogin(apiId, gameCode, apiTypeId);
+        } else {
+            var isAutoPay = getCookie("isAutoPay");
+            if (isAutoPay == 'true') {
+                fetchAllBalance(apiId, gameCode, apiTypeId);
+            } else {
+                fetchBalance(apiId, gameCode, apiTypeId);
+            }
+        }
+
         //游戏显示比例
         if(window.screen.width<1920){
             $(".wrapper").attr("data-width",4);
@@ -15,13 +32,6 @@
             $(".wrapper").attr("data-width",16);
             $(".wrapper").attr("data-height",9);
         }
-
-        $("html").addClass("game-detail-open");
-
-        var apiId = $(_this).attr("data-api");
-        var gameCode = $(_this).attr("data-game-Code");
-        var apiTypeId = $(_this).attr("data-apitype");
-        var gameId = $(_this).attr("data-game-id");
 
         var len_rat=$(".wrapper").data("width")/$(".wrapper").data("height");// 获取宽高比
         var w_width=$(".wrapper").css("width");// 当前游戏iframe的宽度
@@ -116,7 +126,9 @@
         $("#star").raty({starType: 'i',half: true,score: _gameScore});
         //页面底部的tag ；默认点击
         $(".game_bottom .list-inline li a").attr("data-api",apiId);
-        $(".game_bottom .list-inline li:eq(0) a").click();
+        $(".game_bottom .list-inline li:eq(0) a").click(function (e) {
+            e.stopPropagation()
+        });
         //判断当前游戏是否已经收藏
         $.ajax({
             url: "/siteGame/isCollect.html",
@@ -179,7 +191,9 @@
             $(this).addClass('active');
             $(".g-s-api-content").removeClass("active");
             $(".g-s-api-content[data-api="+$(this).data("api")+"]").addClass("active");
+            $("#g-s-tab-wrap").getNiceScroll().resize();// 切换内容时重新初始化下nicescroll
         });
+        $('.g-s-tab-wrap').niceScroll({cursorcolor: '#333',cursorborder: '1px solid #191919'}) // 右侧内容超出滚动
         // ie新窗口打开时配合的代码
         var fullscreen = location.search.substr(1);
         if(fullscreen=="fullscreen"){
@@ -199,6 +213,16 @@
         },function () {
             $(this).removeClass('open');
         });
+        $('.game_bottom .small-bar .list-inline a').on('mouseleave',function(){ // 解决点击底部选项的时候会触发父元素的mouseleave事件
+            return false;
+        });
+        // 底部栏点击选项卡或者搜索按钮时弹出
+        $(".game_bottom .small-bar li").on("click", function () {
+            $(this).parents('.game_bottom').addClass("open");
+        })
+        $(".game_bottom .search-box .btn-search").on("click", function () {
+            $(this).parents('.game_bottom').addClass("open");
+        })
         //关闭弹窗
         $('.closeCasinoGame').on('click',function(){
             $(this).parents('html').removeClass('game-detail-open');
@@ -231,6 +255,7 @@
         $.ajax({
             url: url,
             dataType: 'json',
+            async:false,
             success: function(data) {
                 if (data.isSuccess == true) {
                     var result = data.gameApiResult;
@@ -247,7 +272,13 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
+                                layer.close(layer.index);
+                                if (result.defaultLink.indexOf("https:") > -1) {
+                                    document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
+                                    $("html").addClass("game-detail-open");
+                                } else {
+                                    window.open(result.defaultLink);
+                                }
                             }else if(apiTypeId == "4" && apiId=="22"){
                                 if (window.localStorage) {
                                     localStorage.re_url_lottery = result.defaultLink;
@@ -268,7 +299,9 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
+                                layer.close(layer.index);
                                 document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
+                                $("html").addClass("game-detail-open");
                             }else if(apiTypeId == "3"){
                                 if (window.localStorage) {
                                     localStorage.re_url_sport = result.defaultLink;
@@ -371,6 +404,7 @@
             url: "/ntl/getWalletBalanceAndAllApiBalance.html?t="+ new Date().getTime().toString(36),
             type: "get",
             dataType: "JSON",
+            async:false,
             success:function(data){
                 if(!data.allBalance>0&&apiId!='20'){
                     showRecharge(data,apiId,gameCode,apiTypeId);
@@ -388,6 +422,7 @@
         $.ajax({
             url:"/ntl/getWalletBalanceAndApiBalance.html?apiId="+apiId+"&t="+ new Date().getTime().toString(36),
             type:"get",
+            async:false,
             dataType:"JSON",
             success:function(data){
                 if((data.apiBalance==null||data.apiBalance<100)&&apiId!='20'){
@@ -654,6 +689,7 @@
         $.ajax({
             url: url,
             dataType: 'json',
+            async:false,
             success: function(data) {
                 if (data.isSuccess == true) {
                     var result = data.gameApiResult;
@@ -670,7 +706,13 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
+                                layer.close(layer.index);
+                                if (result.defaultLink.indexOf("https:") > -1) {
+                                    document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
+                                    $("html").addClass("game-detail-open");
+                                } else {
+                                    window.open(result.defaultLink);
+                                }
                             }else if(apiTypeId == "4" && apiId=="22"){
                                 if (window.localStorage) {
                                     localStorage.re_url_lottery = result.defaultLink;
@@ -691,7 +733,9 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
+                                layer.close(layer.index);
                                 document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
+                                $("html").addClass("game-detail-open");
                             }else if(apiTypeId == "3"){
                                 if (window.localStorage) {
                                     localStorage.re_url_sport = result.defaultLink;
@@ -749,6 +793,7 @@
             type: "POST",
             url: "/api/login.html?t=" + new Date().getTime().toString(36),
             dataType: "JSON",
+            async:false,
             data: {
                 apiId: apiId,
                 gameCode: gameCode,
@@ -766,7 +811,13 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
+                                layer.close(layer.index);
+                                if (result.defaultLink.indexOf("https:") > -1) {
+                                    document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
+                                    $("html").addClass("game-detail-open");
+                                } else {
+                                    window.open(result.defaultLink);
+                                }
                             }else if(apiTypeId == "4" && apiId=="22"){
                                 if (window.localStorage) {
                                     localStorage.re_url_lottery = result.defaultLink;
@@ -788,7 +839,9 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
+                                layer.close(layer.index);
                                 document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
+                                $("html").addClass("game-detail-open");
                             }else if(apiTypeId == "3"){
                                 if (window.localStorage) {
                                     localStorage.re_url_sport = result.defaultLink;

@@ -299,7 +299,7 @@ $color-danger:#f44236;
         padding: 5px;
     -webkit-background-clip: border-box;
         form{text-align: right;}
-        .layui-layer-title{    background: url(images/layer-dialog/login-header-bg.png) no-repeat;
+        .layui-layer-title{    background: url(images/layer-dialog/login_header.png) no-repeat;
     width: 390px;
     height: 140px;
     font-size: 18px;
@@ -496,6 +496,40 @@ $color-danger:#f44236;
                     }
                 }
                 .icon-goUp{background: url(images/promo/icon-goUp.png);width: 40px;height: 40px;position: absolute;bottom: 20px;right: 20px;cursor: pointer;display: none;}
+            }
+        }
+    }
+    &.promo_CJS{// 存就送优惠活动弹窗
+        .layui-layer-btn1{float: left;}
+        .layui-layer-btn{ padding: 6px 15px 10px;    position: absolute;    left: 0;    bottom: 0;    right: 0;    border-top: 1px solid #dfdfdf;                   
+        }
+        .layui-layer-content{height: 300px !important;padding: 40px 20px 40px 0;overflow: hidden;
+            .icon-danger{    background: url(images/promo/icon-danger.png);    width: 60px;    height: 60px;    position: absolute;    left: 26px;    top: 40px;}
+            .tit{padding-left:110px;font-size: 18px;color: #666;margin-bottom: 12px;}
+            .subs-txt{padding-left:110px;font-size: 14px;color: #666;line-height: 20px;margin-bottom: 20px;height: 40px;}
+        }
+        .tab_wrap{margin-right: -20px;border-top: 1px solid #dfdfdf;height: 162px;
+            table{width: 100%;line-height: 37px;font-size: 14px;color: #666;
+                th{font-weight: normal;text-align: center;}
+                td{text-align: center;}
+                tr.even{background: #f2f2f2;}
+                .checkbox_wrap{
+                    width: 16px;height: 16px;display: inline-block;vertical-align: middle;position: relative;border: 1px solid #ddd;border-radius: 2px;box-shadow: inset 2px 2px 4px rgba(0,0,0,0.15);
+                    input{opacity: 0;position: absolute;top: 0;right: 0;bottom: 0;left: 0;cursor: pointer;
+                        &:checked{
+                            &+.checkbox_icon{width: 8px;height: 5px;border-bottom: 1px solid #666;border-left: 1px solid #666;position: absolute;transform: rotateZ(-45deg);    top: 3px; left: 4px;}
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.forget-password-dialog{// 忘记登陆密码弹窗
+        .layui-layer-btn{border-top: 1px solid #dfdfdf;    padding: 5px 10px 10px;
+            .layui-layer-btn1{float: left;
+            }
+            .layui-layer-btn0{
+                &.btn-login{background: #00beaa;border-color: #00beaa;}
             }
         }
     }

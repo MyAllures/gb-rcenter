@@ -25,7 +25,7 @@ define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage) {
              */
             this._super();
             this.cdnSwitch();
-            this.selectValue();
+            // this.selectValue();
         },
         /**
          * 当前对象事件初始化函数
@@ -51,79 +51,67 @@ define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage) {
                     onSwitchChange: function (e, state) {
                         var $this = $(this);
                         var _target = e.currentTarget;
-                        var id = $(_target).attr("sysParamId");
-                        var module = $(_target).attr("module");
-                        var paramType = $(_target).attr("paramType");
-                        var siteId = $("#siteId").val();
-                        var paramCode=$(_target).attr("paramCode");
-                        var msg=state?"确认开启":"确认关闭吗？";
-                        var paramValue= $(_target).attr("paramValue");
-                        $this.bootstrapSwitch('indeterminate', true);
+                        // $this.bootstrapSwitch('indeterminate', true);
                         if (!$(_target).attr("isChanged")) {
-                            window.top.topPage.showConfirmMessage(msg, function (confirm) {
-                                if (confirm) {
-                                    window.top.topPage.ajax({
-                                        url: root + '/site/detail/updateParamValue.html',
-                                        dataType: "json",
-                                        data: {
-                                            "result.paramValue": state,
-                                            "result.siteId": siteId,
-                                            "result.id": id,
-                                            "result.paramCode": paramCode,
-                                            "result.module": module,
-                                            "result.paramType": paramType
-                                        },
-                                        success: function (data) {
-                                            if (data.state) {
-                                                page.showPopover(e, {}, "success", data.msg, true);
-                                            } else {
-                                                page.showPopover(e, {}, "danger", data.msg, true);
-                                            }
-                                        }
-                                    });
-                                    $this.bootstrapSwitch('indeterminate', false);
-                                } else {
-                                    $this.bootstrapSwitch('indeterminate', false);
-                                    $this.bootstrapSwitch('state', !state, true);
-                                }
-                            })
+                            $("#cdnSwitchState").val(state);
                         }else {
                             $(_target).removeAttr("isChanged");
-                            return true;
+                            return false;
                         }
                     }
                 });
         },
+
         selectValue:function () {
             var cdnUrlValue=$("#cdnUrlSelected").val();
             $("#cdnUrlValue").val(cdnUrlValue);
         },
+
         /**
-         * 更新cdn url
+         * 更新cdn url和开关
          */
-        updateCdnUrl:function (e) {
+        updateCdnParam:function (e) {
             var _this=this;
+            //开关参数
+            var id = $("#cdnSwitch").attr("sysParamId");
+            var module = $("#cdnSwitch").attr("module");
+            var paramType = $("#cdnSwitch").attr("paramType");
             var siteId = $("#siteId").val();
-            var id = $("#cdnUrlValue").attr("sysParamId");
-            var module = $("#cdnUrlValue").attr("module");
-            var paramType = $("#cdnUrlValue").attr("paramType");
-            var paramCode=$("#cdnUrlValue").attr("paramCode");
-            var paramValue= $("#cdnUrlValue").val();
-            if (paramValue==null||paramValue==""){
-                page.showPopover(e,{},"warning","CDN URL不能为空",true);
-                $(e.currentTarget).unlock();
-                return;
+            var paramCode=$("#cdnSwitch").attr("paramCode");
+            var state = $("#cdnSwitchState").val();
+            var paramValue= state;
+
+            //url参数
+            var url_siteId = $("#siteId").val();
+            var url_id = $("#cdnUrlValue").attr("sysParamId");
+            var url_module = $("#cdnUrlValue").attr("module");
+            var url_paramType = $("#cdnUrlValue").attr("paramType");
+            var url_paramCode=$("#cdnUrlValue").attr("paramCode");
+            var url_paramValue= $("#cdnUrlValue").val();
+            var cdnSwitchState=$("#cdnSwitchState").val();
+            if (cdnSwitchState=='true'){
+                if (url_paramValue==null||url_paramValue==""){
+                    page.showPopover(e,{},"warning","CDN URL不能为空",true);
+                    $(e.currentTarget).unlock();
+                    return;
+                }
             }
             window.top.topPage.ajax({
-                url: root + '/site/detail/updateCdnUrl.html',
+                url: root + '/site/detail/updateCdnParam.html',
                 dataType: "json",
                 data: {
-                    "result.siteId": siteId,
-                    "result.id": id,
-                    "result.paramCode": paramCode,
-                    "result.module": module,
-                    "result.paramType": paramType,
-                    "result.paramValue": paramValue
+                    "search.siteId": siteId,
+                    "search.id": id,
+                    "search.paramCode": paramCode,
+                    "search.module": module,
+                    "search.paramType": paramType,
+                    "search.paramValue": paramValue,
+                    "result.siteId": url_siteId,
+                    "result.id": url_id,
+                    "result.paramCode": url_paramCode,
+                    "result.module": url_module,
+                    "result.paramType": url_paramType,
+                    "result.paramValue": url_paramValue
                 },
                 success: function (data) {
                     if (data.state) {
@@ -132,8 +120,12 @@ define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage) {
                         page.showPopover(e,{},"warning","保存失败",true);
                     }
                     $(e.currentTarget).unlock();
+                },error:function () {
+                    $(e.currentTarget).unlock();
                 }
+
             });
-        }
+            $(e.currentTarget).unlock();
+        },
     });
 });

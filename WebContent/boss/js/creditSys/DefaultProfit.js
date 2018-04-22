@@ -20,11 +20,27 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
             if(!this.validateForm(e)){
                 return false;
             }
-            window.top.topPage.showConfirmMessage("确定调整站点默认额度吗?",function (state) {
-                if(state){
-                    window.top.topPage.doAjax(e,opt);
-                }
-            })
+            var defaultProfit = $("input[name='result.defaultProfit']").val();
+            var defaultTransferLimit = $("input[name='result.defaultTransferLimit']").val();
+            if((defaultProfit==null||defaultProfit=="")&&(defaultTransferLimit==null||defaultTransferLimit=="")){
+                // window.top.topPage.showWarningMessage("买分默认额度和转账默认额度不能同时为空");
+                page.showPopover(e, {}, 'warning', "买分默认额度和转账默认额度不能同时为空", true);
+                return false;
+            }
+            var ids = $("textarea[name='siteIds']").val();
+            if (ids == null||ids=='') {
+                window.top.topPage.showConfirmMessage("确定调整所有站点默认额度吗?", function (state) {
+                    if (state) {
+                        window.top.topPage.doAjax(e, opt);
+                    }
+                })
+            } else {
+                window.top.topPage.showConfirmMessage("确定调整站点"+ids+"默认额度吗?", function (state) {
+                    if (state) {
+                        window.top.topPage.doAjax(e, opt);
+                    }
+                })
+            }
         }
     });
 });

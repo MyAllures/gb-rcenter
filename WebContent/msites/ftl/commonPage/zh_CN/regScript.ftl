@@ -207,7 +207,7 @@
 
     // Modal 模态框
     $("#login-agreement").on("click",function() {
-        layerDialogRegister('<div class="register-content-wrap" style="overflow: hidden;outline: none;height:  100%;padding-right:  8px;margin-right: -8px;"><div class="col-md-12"><#if data.playerValidateRegisterMap.regProtocol??> ${data.playerValidateRegisterMap.regProtocol.value}</#if></div><div class="after"></div></div>','会员注册协议','layui-layer-brand',['640px','582px'],false,false);
+        layerDialogRegister('<div class="register-content-wrap" style="overflow: hidden;outline: none;height:  100%;padding-right:  8px;margin-right: -8px;"><div class="col-md-12"><#if data.playerValidateRegisterMap.regProtocol??> ${data.playerValidateRegisterMap.regProtocol.value?replace('\n','')?replace('\r','')}</#if></div><div class="after"></div></div>','会员注册协议','layui-layer-brand',['640px','582px'],false,false);
     });
 
     $('[name=birthdayMon],[name=birthdayYear]').on("change",function(){

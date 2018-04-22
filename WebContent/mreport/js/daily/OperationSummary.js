@@ -10,174 +10,87 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
         init: function () {
             this._super();
 
-            this.drawLastDifference();
-            this.drawMultiDifference();
+            this.drawBalanceBarChart();
+            this.drawBalanceColumnChart();
 
-            this.drawLastEffective();
-            this.drawMultiEffective();
+            this.drawEffectiveBarChart();
+            this.drawEffectiveColumnChart();
 
             this.drawLastProfitLoss();
             this.drawMultiProfitLoss();
         },
 
         /**
-         * 上一个周期存取差额
+         * 存取差额玉珏图表展示
          */
-        drawLastDifference: function() {
-            var jsonStr = $("#lastDifferenceData").html();
+        drawBalanceBarChart: function() {
+            var jsonStr = $("#balanceBarChartData").html();
             const data = $.parseJSON(jsonStr);
-            const chart = new G2.Chart({
-                container: 'c1',
-                forceFit: true,
-                height: 350,
-            });
-
-            chart.source(data, {
-                'percent': { min: 0, max: 1 },
-            });
-            chart.tooltip({
-                title: 'title'
-            });
-            chart.legend(false);
-            chart.coord('polar', { innerRadius: 0.6 }).transpose();
-            chart.interval()
-                .position('title*percent')
-                .color('numerical', '#BAE7FF-#1890FF')
-                .tooltip('numerical', function(val) {
-                    return {
-                        name: '昨日',
-                        value: val + '元'
-                    };
-                })
-                .label('numerical', {
-                    offset: -5
-                });
-            data.map(function(obj) {
-                chart.guide().text({
-                    position: [ obj.title, 0 ],
-                    content: obj.title + ' ',
-                    style: {
-                        textAlign: 'right'
-                    }
-                });
-            });
-            chart.render();
+            this.drawBarChart('c1', data, '#6363FF-#FF6363');
         },
 
         /**
-         * 最近多个周期的存取差额
+         * 存取差额分组柱状图展示
+         * 展示最近七个周期的存取差额
          */
-        drawMultiDifference: function() {
-            const data = [
-                { name:'存款金额', '4.9': 18.9, '4.10': 28.8, '4.11' :39.3, '4.12': 81.4, '4.13': 47, '4.14': 20.3, '4.15': 24, '4.16': 35.6 },
-                { name:'取现金额', '4.9': 12.4, '4.10': 23.2, '4.11' :34.5, '4.12': 99.7, '4.13': 52.6, '4.14': 35.5, '4.15': 37.4, '4.16': 42.4}
-            ];
-            const ds = new DataSet();
-            const dv = ds.createView().source(data);
-            dv.transform({
-                type: 'fold',
-                fields: [ '4.9','4.10','4.11','4.12','4.13','4.14','4.15','4.16' ], // 展开字段集
-                key: '月份', // key字段
-                value: '月均降雨量', // value字段
-            });
-
-            const chart = new G2.Chart({
-                container: 'z1',
-                forceFit: true,
-                height: 350
-            });
-            chart.source(dv);
-            chart.interval().position('月份*月均降雨量').color('name').adjust([{
-                type: 'dodge',
-                marginRatio: 1 / 32
-            }]);
-            chart.render();
+        drawBalanceColumnChart: function() {
+            var jsonStr = $("#balanceSummaryData").html();
+            var fieldStr = $("#columnsDateFieldList").html();
+            const data = $.parseJSON(jsonStr);
+            const fieldSet = $.parseJSON(fieldStr);
+            this.drawGroupColumnChart('z1', data, fieldSet);
         },
 
         /**
-         * 上一个周期有效投注额
+         * 最近两个周期的有效投注额
          */
-        drawLastEffective: function() {
-            var jsonStr = $("#lastDifferenceData").html();
+        drawEffectiveBarChart: function() {
+            var jsonStr = $("#effectiveBarChartData").html();
             const data = $.parseJSON(jsonStr);
-            const chart = new G2.Chart({
-                container: 'c2',
-                forceFit: true,
-                height: 350,
-            });
-
-            chart.source(data, {
-                'percent': { min: 0, max: 1 },
-            });
-            chart.tooltip({
-                title: 'title'
-            });
-            chart.legend(false);
-            chart.coord('polar', { innerRadius: 0.6 }).transpose();
-            chart.interval()
-                .position('title*percent')
-                .color('numerical', '#BAE7FF-#1890FF')
-                .tooltip('numerical', function(val) {
-                    return {
-                        name: '昨日',
-                        value: val + '元'
-                    };
-                })
-                .label('numerical', {
-                    offset: -5
-                });
-            data.map(function(obj) {
-                chart.guide().text({
-                    position: [ obj.title, 0 ],
-                    content: obj.title + ' ',
-                    style: {
-                        textAlign: 'right'
-                    }
-                });
-            });
-            chart.render();
+            this.drawBarChart('c2', data, '#00CC00-#FF6600');
         },
 
         /**
          * 最近多个周期的有效投注额
          */
-        drawMultiEffective: function() {
-            const data = [
-                { name:'London', '4.9': 18.9, '4.10': 28.8, '4.11' :39.3, '4.12': 81.4, '4.13': 47, '4.14': 20.3, '4.15': 24, '4.16': 35.6 },
-                { name:'Berlin', '4.9': 12.4, '4.10': 23.2, '4.11' :34.5, '4.12': 99.7, '4.13': 52.6, '4.14': 35.5, '4.15': 37.4, '4.16': 42.4}
-            ];
-            const ds = new DataSet();
-            const dv = ds.createView().source(data);
-            dv.transform({
-                type: 'fold',
-                fields: [ '4.9','4.10','4.11','4.12','4.13','4.14','4.15','4.16' ], // 展开字段集
-                key: '月份', // key字段
-                value: '月均降雨量', // value字段
-            });
-
-            const chart = new G2.Chart({
-                container: 'z2',
-                forceFit: true,
-                height: 350
-            });
-            chart.source(dv);
-            chart.interval().position('月份*月均降雨量').color('name').adjust([{
-                type: 'dodge',
-                marginRatio: 1 / 32
-            }]);
-            chart.render();
+        drawEffectiveColumnChart: function() {
+            var jsonStr = $("#operationSummaryData").html();
+            const data = $.parseJSON(jsonStr);
+            this.drawBasicColumnChart('z2', data, 'effectiveTransactionAll', 'staticDayStr*effectiveTransactionAll');
         },
 
         /**
          * 上一个周期损益
          */
         drawLastProfitLoss: function() {
-            var jsonStr = $("#lastDifferenceData").html();
+            var jsonStr = $("#effectiveBarChartData").html();
             const data = $.parseJSON(jsonStr);
+            this.drawBarChart('c3', data, '#6363FF-#FF6363');
+        },
+
+        /**
+         * 最近多个周期的损益
+         */
+        drawMultiProfitLoss: function() {
+            var jsonStr = $("#balanceSummaryData").html();
+            var fieldStr = $("#columnsDateFieldList").html();
+            const data = $.parseJSON(jsonStr);
+            const fieldSet = $.parseJSON(fieldStr);
+            this.drawGroupColumnChart('z3', data, fieldSet);
+        },
+
+        /**
+         * 画玉珏图
+         * @param containerName
+         * @param data
+         * @param color
+         */
+        drawBarChart: function(containerName, data, color) {
             const chart = new G2.Chart({
-                container: 'c3',
+                container: containerName,
                 forceFit: true,
-                height: 350,
+                height: 300,
+                padding: [40,30,40,0]
             });
 
             chart.source(data, {
@@ -186,19 +99,27 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
             chart.tooltip({
                 title: 'title'
             });
-            chart.legend(true);
+            chart.legend(false);
             chart.coord('polar', { innerRadius: 0.6 }).transpose();
             chart.interval()
                 .position('title*percent')
-                .color('numerical', '#BAE7FF-#1890FF')
-                .tooltip('numerical', function (val) {
+                .color('numerical', color)
+                .tooltip(['numerical','tips'], function(val, tips) {
                     return {
-                        name: '昨日',
+                        name: tips,
                         value: val + '元'
                     };
                 })
                 .label('numerical', {
-                    offset: -5
+                    offset: 3,
+                    textStyle: {
+                        textAlign: 'end', // 文本对齐方向，可取值为： start center end
+                        fill: '#000000', // 文本的颜色
+                        fontSize: '12', // 文本大小
+                        fontWeight: 'normal', // 文本粗细
+                        rotate: 30,
+                        textBaseline: 'top' // 文本基准线，可取 top middle bottom，默认为middle
+                    }
                 });
             data.map(function(obj) {
                 chart.guide().text({
@@ -213,32 +134,46 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
         },
 
         /**
-         * 最近多个周期的损益
+         * 分组柱状图
          */
-        drawMultiProfitLoss: function() {
-            const data = [
-                { name:'London', '4.9': 18.9, '4.10': 28.8, '4.11' :39.3, '4.12': 81.4, '4.13': 47, '4.14': 20.3, '4.15': 24, '4.16': 35.6 },
-                { name:'Berlin', '4.9': 12.4, '4.10': 23.2, '4.11' :34.5, '4.12': 99.7, '4.13': 52.6, '4.14': 35.5, '4.15': 37.4, '4.16': 42.4}
-            ];
+        drawGroupColumnChart: function(containerName, data, fieldSet) {
             const ds = new DataSet();
             const dv = ds.createView().source(data);
             dv.transform({
                 type: 'fold',
-                fields: [ '4.9','4.10','4.11','4.12','4.13','4.14','4.15','4.16' ], // 展开字段集
-                key: '月份', // key字段
-                value: '月均降雨量', // value字段
+                fields: fieldSet, // 展开字段集
+                key: '周期', // key字段
+                value: '存取差额', // value字段
             });
-
             const chart = new G2.Chart({
-                container: 'z3',
+                container: containerName,
                 forceFit: true,
-                height: 350
+                height: 300,
+                padding: [20, 5, 65, 50]
             });
             chart.source(dv);
-            chart.interval().position('月份*月均降雨量').color('name').adjust([{
+            chart.interval().position('周期*存取差额').color('name').adjust([{
                 type: 'dodge',
                 marginRatio: 1 / 32
             }]);
+            chart.render();
+        },
+
+        /**
+         * 基础柱状图
+         */
+        drawBasicColumnChart: function(containerName, data, scale, position) {
+            const chart = new G2.Chart({
+                container: containerName,
+                forceFit: true,
+                height: 300,
+                padding: [20, 5, 35, 50]
+            });
+            chart.source(data);
+            chart.scale(scale, {
+                tickInterval: 2000
+            });
+            chart.interval().position(position);
             chart.render();
         }
     });

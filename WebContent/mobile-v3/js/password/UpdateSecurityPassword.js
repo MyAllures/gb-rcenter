@@ -1,7 +1,7 @@
 /**
  * Created by snake on 18-4-17.
  */
-
+var customerUrl;
 $(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
@@ -27,11 +27,7 @@ function submitSafePassword() {
             type: 'POST',
             dataType: 'json',
             data: $('#updateSecurityPwd').serialize(),
-            beforeSend: function () {
-                window.top.pd.show();
-            },
             success: function (data) {
-                window.top.pd.hide();
                 switch (data.state) {
                     case '94':
                         $('[name=realName]').select();
@@ -51,7 +47,7 @@ function submitSafePassword() {
                     case '100':
                         toast(window.top.message.passport_auto['修改成功']);
                         setTimeout(function () {
-                            gotoUrl(root + '/mine/index.html');
+                            cancelRealName();
                         }, 800);
                 }
             }
@@ -60,10 +56,69 @@ function submitSafePassword() {
     }
 }
 
+function freezeTip(data, obj) {
+    var options = {
+        title: window.top.message.passport_auto['提示'],
+        confirm: '<b>' + window.top.message.passport_auto["已达上限"]
+        + '</b><br/><span class="assist">' + window.top.message.passport_auto["冻结3小时"] + '<br/>'
+        + window.top.message.passport_auto["冻结时间"] + '：' + data.force + '</span>',
+        btnArray: [window.top.message.passport_auto['联系客服'], window.top.message.passport_auto['返回我的']],
+        func: frezzYes,
+        cancelFunc: cancelRealName //cancelFunc代表点取消做的操作
+    };
+    showConfirmMsg(options, obj);
+
+}
+
+/* */
+function frezzYes() {
+    goToUrl(customerUrl);
+}
+
+/*验证码点击刷新*/
+function refreshCode(obj,options){
+    // var src = $(".spcode img").attr("src");
+    // $(".spcode img").attr("src",src);
+    $(obj).attr("src",options.code);
+}
+
+/*展示验证码*/
+function showCaptcha(data, tip) {
+    $('[name=originPwd]').select();
+    toast(tip);
+    if (data.captcha) {
+        $('._pass').removeClass('final');
+        $('._captcha').css('display', '');
+        $('._times').text(data.times);
+        $('[name=needCaptcha]').val(true);
+    }
+}
+
+/*表单验证*/
 function checkForm() {
     return checkRealNameForm($('[name=realName]').val()) && checkOriginPwd()
         && checkNewPwd() && checkCaptcha();
 }
+
+/*验证码是否有值*/
+function checkCaptcha() {
+
+    var needCaptcha = $('[name=needCaptcha]').val();
+    if (needCaptcha == 'false') {
+        return true;
+    }
+
+    var $captcha = $('[name=code]');
+    var captcha = $captcha.val();
+
+    if (captcha == null || captcha.trim().length == 0) {
+        toast(window.top.message.passport_auto['请输入验证码']);
+        $captcha.focus();
+        return false;
+    }
+    return true;
+}
+
 
 /** 检测原密码 */
 function checkOriginPwd() {
@@ -124,82 +179,3 @@ function checkNewPwd() {
 
     return true;
 }
-
-/*效验提交安全码*/
-/*function checkSecurityPasswordForm(pwd1, pwd2) {
-    var reg = /^[0-9]{6}$/;
-
-    if (pwd1 == null || pwd1.trim().length == 0) {
-        toast(window.top.message.passport_auto['请输入安全密码']);
-        $('[name=pwd1]').focus();
-        return false;
-    } else if (!reg.test(pwd1)) {
-        toast(window.top.message.passport_auto['安全密码长度2']);
-        $('[name=pwd1]').focus();
-        return false;
-    } else if (checkPasswordStrength(pwd1) == false) {
-        toast(window.top.message.passport_auto['安全密码过于简单']);
-        $('[name=pwd1]').focus();
-        return false;
-    }
-
-    if (pwd2 == null || pwd2.trim().length == 0) {
-        toast(window.top.message.passport_auto['请再次输入安全密码']);
-        $('[name=pwd2]').focus();
-        return false;
-    } else if (pwd1 != pwd2) {
-        toast(window.top.message.passport_auto['两次密码不一致']);
-        $('[name=pwd2]').focus();
-        return false;
-    }
-
-    return true;
-}*/
-
-/*检查密码强度*/
-/*function checkPasswordStrength(pwd1) {
-    var isOk = false;
-    var options = {
-        url: root + '/passport/securityPassword/checkPwdStrength.html',
-        type: 'POST',
-        data: {'pwd': pwd1},
-        async: false,
-        success: function (data) {
-            isOk = data;
-        }
-    };
-    muiAjax(options);
-    /!*mui.ajax(root + '/passport/securityPassword/checkPwdStrength.html', {
-     type: 'POST',
-     data: {'pwd': pwd1},
-     async: false,
-     success: function (data) {
-     isOk = data;
-     }
-     });*!/
-    return isOk;
-}*/
-
-/**
- * 异步添加名字
- */
-/*function setRealName() {
-    var realName = $('[name=realName]').val();
-    if (checkRealNameForm(realName)) {
-        var options = {
-            url: root + '/passport/securityPassword/setRealName.html',
-            type: 'POST',
-            data: {'realName': realName},
-            dataType: 'json',
-            success: function (data) {
-                if (data == 'true' || data == true) {
-                    $('[name=hasName]').val('true');
-                    toast(window.top.message.passport_auto['成功']);
-                }
-            }
-        };
-        muiAjax(options);
-    } else {
-        return false;
-    }
-}*/
