@@ -242,8 +242,8 @@
     function showActivityProcessDialog(data, aplyObj, isRefresh) {
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
         var title = $(aplyObj).parents("._vr_promo_check").find(".tit").text();
-        var content;
         $(".tip_tit").text('《' + title + '》');
+        var content;
         $(".profit_loss").hide();
         $(".effective_transaction").hide();
         if (code == 'effective_transaction' || code == 'profit_loss') {
@@ -320,7 +320,7 @@
             dataType: "json",
             data: JSON.stringify(dataParam),
             success: function (data) {
-                showApplyActivityResult(data, isRefresh, code);
+                showApplyActivityResult(data, isRefresh, aplyObj);
                 $(aplyObj).removeAttr("disabled");
 
             },
@@ -330,10 +330,13 @@
         })
     }
 
-    function showApplyActivityResult(data, isRefresh, code) {
+    function showApplyActivityResult(data, isRefresh, aplyObj) {
         if (typeof data.state == "undefined") {
             return false;
         }
+        var code = $(aplyObj).parents("._vr_promo_check").data("code");
+        var title = $(aplyObj).parents("._vr_promo_check").find(".tit").text();
+        $(".tip_tit").text('《' + title + '》');
         if (code == 'first_deposit' || code == 'second_deposit' || code =='third_deposit' || code == 'everyday_first_deposit') {
             var msg = window.top.message.common_auto[data.msg];
             $(".ext-inf").html(msg);
