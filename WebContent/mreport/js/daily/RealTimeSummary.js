@@ -53,6 +53,7 @@ define(['common/BasePage','site/swiper.min','site/g2.min','site/data-set.min'], 
         initG2:function(realtimeType){
             $("#mountNode").html(null);
             const data = this.setData(realtimeType);
+            if(data == null || data.length < 1) return;
             const ds = new DataSet();
             var keys = Object.keys(data[0]);
             keys.splice(0,1);
@@ -127,6 +128,9 @@ define(['common/BasePage','site/swiper.min','site/g2.min','site/data-set.min'], 
         setData: function(realtimeType){
             var profilesJson = $.parseJSON($("#profilesJson").val());
             var array = [];
+            if(profilesJson == null && profilesJson.length < 1){
+                return array;
+            }
             for(var i = 1; i<=profilesJson.length; i++) {
                 var profile = profilesJson[i-1];
                 var data = {};
