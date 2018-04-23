@@ -141,7 +141,7 @@
                         <div class="game-item-tit">
                             <div class="g_line1">
                                 <a class="g_title"></a>
-                                <div class="g_tx hidden"></div>
+                                <#--<div class="g_tx hidden"></div>-->
                             </div>
                         </div>
                     </div>

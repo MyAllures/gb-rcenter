@@ -1315,6 +1315,8 @@
                         sessionStorage.is_login = true;
                     }
                     isOpenCaptcha = false;
+                    //登录后隐藏试玩按钮
+                    $(".game-demo").addClass("hide");
                 }else{
                     var dataPage = window.location.pathname.split("/")[3];
                     if(dataPage=='loading.html'){
@@ -1333,7 +1335,8 @@
                     if(window.sessionStorage){
                         sessionStorage.is_login = "false";
                     }
-
+                    //未登录显示试玩按钮
+                    $(".game-demo").removeClass("hide");
                     /*是否显示验证码*/
                     if(data.isOpenCaptcha){
                         /*显示验证码*/
