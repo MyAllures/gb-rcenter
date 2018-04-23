@@ -54,14 +54,14 @@ define(['common/BasePage','site/swiper.min','site/g2.min','site/data-set.min'], 
             $("#mountNode").html(null);
             const data = this.setData(realtimeType);
             if(data == null || data.length < 1) return;
+
             const ds = new DataSet();
             var keys = Object.keys(data[0]);
             keys.splice(0,1);
             const chart = new G2.Chart({
                 container: 'mountNode',
                 forceFit: true,
-                width: 500,
-                height: 500
+                width: 500
             });
             if('realtimeProfitLoss' == realtimeType){
                 chart.source(data);
@@ -131,9 +131,14 @@ define(['common/BasePage','site/swiper.min','site/g2.min','site/data-set.min'], 
             if(profilesJson == null && profilesJson.length < 1){
                 return array;
             }
-            for(var i = 1; i<=profilesJson.length; i++) {
-                var profile = profilesJson[i-1];
+            for(var i = 1; i<=24; i++) {
                 var data = {};
+                if( i > profilesJson.length){
+                    data['time'] = i < 10 ? '0'+i+':00': (i > 23 ? '23:59' : i + ':00');
+                    array.push(data);
+                    continue;
+                }
+                var profile = profilesJson[i-1];
                 data['time'] = i < 10 ? '0'+i+':00': (i > 23 ? '23:59' : i + ':00');
                 if ('visitor' == realtimeType) {
                     data['访客量(全部)'] = profile.countVisitor;
