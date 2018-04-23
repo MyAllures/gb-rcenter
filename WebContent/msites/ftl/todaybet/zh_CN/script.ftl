@@ -77,8 +77,6 @@
                     if (window.sessionStorage) {
                         sessionStorage.is_login = true;
                     }
-                    //登录后隐藏试玩按钮
-                    $(".game-demo").addClass("hide");
                 } else {
                     /*强制踢出*/
                     if (data.isKickOut) {

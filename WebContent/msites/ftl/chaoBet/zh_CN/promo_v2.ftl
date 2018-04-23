@@ -36,12 +36,6 @@
                 <li class="hisActivityButton hide"><a href="javascript:void(0)" data-item="historyActivitys">历史优惠</a>
                 </li>
             </ul>
-        <#-- <div class="search-bar">
-             <form>
-                 <div class="input-wrap"><input type="text" /><i class="icon-search"></i></div>
-                 <a href="javascript:void(0);" class="btn-search">搜索</a>
-             </form>
-         </div>-->
         </div>
         <!--列表区域-->
         <div class="list-type1"> <!--列表类型一-->
@@ -164,7 +158,7 @@
 <#include "footer.ftl">
 <#include "../../commonPage/commonFloat/gameAds.ftl">
 <#include "script.ftl">
-<#include "../../commonPage/zh_CN/msiteCommonScript/promoScript.ftl">
+<#include "../../commonPage/zh_CN/msiteCommonScript/promoScriptHall.ftl">
 <script>
     $(function(){
         $("._vr_promo li").each(function(){
