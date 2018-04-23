@@ -16,7 +16,7 @@ $MainColor: #e4edf7;
         .content{ padding:0 20px; box-shadow:inset 0 4px 10px #dae3ec;}
     }
 //  左侧导航：
-     .menu{width:230px;padding:0 10px;background:url('../../images/nav-bg.png') top no-repeat;min-height:800px;float:left;
+     .menu{width:230px;padding:0 10px;background:url('../images/nav-bg.png') top no-repeat;min-height:800px;float:left;
             .name{font-size:1.5rem;color:#dbf8fd;text-align:center;padding:70px 0 25px 0;
                 font{font-size:11px;display:block;text-transform:uppercase;letter-spacing: 0.5px;}
             }
@@ -26,14 +26,14 @@ $MainColor: #e4edf7;
                     .tit:hover{background:#1c89f3;}    
                     a{font-size:1.1rem;color:#b5d9fe}
                     i{width:24px;height:22px;float:left;margin-top:7px;}
-                    i.gaikuang{background:url(../../images/menu-left-1.png) center no-repeat;}
-                    i.player{background:url(../../images/menu-left-2.png) center no-repeat;}
-                    i.deposit{background:url(../../images/menu-left-3.png) center no-repeat;}
-                    i.game{background:url(../../images/menu-left-4.png) center no-repeat;}
-                    &:after{content: "";display:block;width:17px;height:17px;background:url(../../images/menu-right-2.png) center no-repeat;position:absolute;right:10px;top:8px;}
+                    i.gaikuang{background:url(../images/menu-left-1.png) center no-repeat;}
+                    i.player{background:url(../images/menu-left-2.png) center no-repeat;}
+                    i.deposit{background:url(../images/menu-left-3.png) center no-repeat;}
+                    i.game{background:url(../images/menu-left-4.png) center no-repeat;}
+                    &:after{content: "";display:block;width:17px;height:17px;background:url(../images/menu-right-2.png) center no-repeat;position:absolute;right:10px;top:8px;}
                 }
                 .active{
-                    &:after{background:url(../../images/menu-right-1.png)}
+                    &:after{background:url(../images/menu-right-1.png)}
                     .tit{ background:rgba(#fff,0.3); }
                     .tit:hover{ background:rgba(#fff,0.3); }   
                 }
@@ -60,7 +60,7 @@ $MainColor: #e4edf7;
         }
 //      右侧头部样式：    
         .top-info{height:50px;background:#fff;padding-right:20px;display:flex;
-            .icon-menu{width:70px;background:url(../../images/menu.png) center no-repeat;display:none;}
+            .icon-menu{width:70px;background:url(../images/menu.png) center no-repeat;display:none;}
             ul{flex:1;}
             li{display:inline-block;margin-left:11px;height:36px;line-height:36px;border-radius:17px;background-color:$MainColor;margin-top:8px;overflow:hidden;white-space: nowrap;
                 width:auto;transition: width 0.3s ease-in-out;
@@ -69,9 +69,9 @@ $MainColor: #e4edf7;
                 p{display:inline-block;overflow:hidden;white-space: nowrap;padding-right:15px;}
             }
             
-            li.time span{background:url(../../images/top-1.png) no-repeat center /100%;}
-            li.webName span{background:url(../../images/top-2.png) no-repeat center /100%;}
-            li.username span{background:url(../../images/top-3.png) no-repeat center /100%;}
+            li.time span{background:url(../images/top-1.png) no-repeat center /100%;}
+            li.webName span{background:url(../images/top-2.png) no-repeat center /100%;}
+            li.username span{background:url(../images/top-3.png) no-repeat center /100%;}
             .chooseSite,.chooseAdmin{display:inline-block;padding-right:30px;
                 .dropdown-toggle{cursor:pointer;position:relative;padding:0;
                     &:after{display:none}
@@ -168,7 +168,7 @@ $MainColor: #e4edf7;
             .btn{width:30px;height:30px;border-radius:100%;text-align: center;padding:0;}
         }
         .date{height:30px;border:1px solid #e2e2e2;border-radius:15px;display: inline-block;vertical-align: middle;overflow:hidden;
-            padding:0 10px 0 30px;background:url(../../images/date.png) 10px center no-repeat;line-height: 30px;color:#999;
+            padding:0 10px 0 30px;background:url(../images/date.png) 10px center no-repeat;line-height: 30px;color:#999;
             input{height:31px;vertical-align: top;border:none;width:85px;text-align: center;color:#999;cursor: pointer;}
         }
     }
@@ -180,10 +180,10 @@ $MainColor: #e4edf7;
             top: 1px;
             display: inline-block;
             width:20px;height:20px;
-            background:url(../../images/data-go-left.png) center no-repeat;
+            background:url(../images/data-go-left.png) center no-repeat;
         }
         .fa-chevron-right{
-            background:url(../../images/data-go-right.png) center no-repeat;
+            background:url(../images/data-go-right.png) center no-repeat;
         }
     }
     .daterangepicker.opensright:last-child{
