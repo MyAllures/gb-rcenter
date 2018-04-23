@@ -169,13 +169,7 @@
                 }
             })
         });
-        $("#toggleThemes").on('click', function () {
-            if ($('.main-promo').hasClass("theme-white")) {
-                $('.main-promo').removeClass("theme-white").addClass('theme-black');
-            } else {
-                $('.main-promo').removeClass("theme-black").addClass('theme-white');
-            }
-        });
+
         // 默认配置
         layer.config({
             type: 0,

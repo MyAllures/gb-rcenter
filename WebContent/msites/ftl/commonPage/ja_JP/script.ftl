@@ -1350,7 +1350,7 @@
                     }
                     isOpenCaptcha = false;
                     //登录后隐藏试玩按钮
-                    $(".game-demo").addClass("hide");
+                    game_demo();
                 }else{
                     var dataPage = window.location.pathname.split("/")[3];
                     if(dataPage=='loading.html'){
@@ -1370,7 +1370,7 @@
                         sessionStorage.is_login = "false";
                     }
                     //未登录显示试玩按钮
-                    $(".game-demo").removeClass("hide");
+                    game_demo();
                     /*是否显示验证码*/
                     if(data.isOpenCaptcha){
                         /*显示验证码*/
@@ -1396,6 +1396,17 @@
             }
 
         });
+    }
+
+    //是否显示游戏试玩按钮
+    function game_demo() {
+        if(sessionStorage.is_login=="true"){
+            //登录后隐藏试玩按钮
+            $(".game-demo").addClass("hide");
+        }else{
+            //未登录显示试玩按钮
+            $(".game-demo").removeClass("hide");
+        }
     }
     /*
       * @param data 登录成功后的参数
