@@ -38,13 +38,6 @@ function readGame() {
     } else {
         apiLogin();
     }
-    if (apiId == 6 && !isNative) {
-        obj.newWindow = window.open("about:blank", '_blank');
-        if (obj.newWindow) {
-            obj.newWindow.document.write("<div style='text-align:center;'><img style='margin-top:" +
-                document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
-        }
-    }
 }
 
 function goApiGame(obj, options) {
@@ -145,7 +138,7 @@ function fishGameLogin(obj, options) {
         postData.apiTypeId = apiTypeId;
     }
     isAutoPay = sessionStorage.getItem("isAutoPay");
-    if ((isAutoPay == 'true' && apiTypeId != "2")) {
+    if ((isAutoPay == 'true')) {
         //判断是否免转，如果免转,则直接登陆游戏，不跳到游戏中转页面
         autoLoginAndTransfer();
     } else {
@@ -182,18 +175,10 @@ function gameLogin(data, apiId) {
     hideLoading();
     if (data.loginSuccess) {
         var result = data.gameApiResult;
-        if (apiId == 6) {
-            if (isNative) {
-                gotoGame(result.defaultLink, apiId);
-            } else {
-                goToUrl(result.defaultLink);
-            }
+        if (result.defaultLink) {
+            gotoGameUrl(result.defaultLink, apiId);
         } else {
-            if (result.defaultLink) {
-                gotoGameUrl(result.defaultLink, apiId);
-            } else {
-                gotoGameUrl(result.links[apiTypeId], apiId)
-            }
+            gotoGameUrl(result.links[apiTypeId], apiId)
         }
     } else {
         if (!data.loginSuccess && ( data.errMsg == '' || data.errMsg == null)) {
@@ -234,19 +219,10 @@ function autoLoginAndTransfer() {
                 if (data) {
                     if (data.isSuccess == true) {
                         var result = data.gameApiResult;
-                        if (apiId == 6) {
-                            if (isNative) {
-                                gotoGameUrl(result.defaultLink, apiId);
-                            } else {
-                                //newWindow.location.href = result.defaultLink;
-                                goToUrl(result.defaultLink);
-                            }
+                        if (result.defaultLink) {
+                            gotoGameUrl(result.defaultLink, apiId);
                         } else {
-                            if (result.defaultLink) {
-                                gotoGameUrl(result.defaultLink, apiId);
-                            } else {
-                                gotoGameUrl(result.links[apiTypeId], apiId);
-                            }
+                            gotoGameUrl(result.links[apiTypeId], apiId);
                         }
                     } else if (data.msg) {
                         showWarningMsg(window.top.message.game_auto['提示'], data.msg);
