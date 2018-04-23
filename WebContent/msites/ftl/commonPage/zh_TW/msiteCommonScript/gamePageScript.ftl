@@ -13,6 +13,11 @@
         var apiTypeId = $(_this).attr("data-apitype");
         var gameId = $(_this).attr("data-game-id");
 
+        if(apiId=="3"){
+            $(".loading-area").addClass("hide");
+        }else{
+            $(".loading-area").removeClass("hide");
+        }
         //判断电子游戏是否试玩
         if ($(_this).hasClass("game-demo")) {
             demoPayLogin(apiId, gameCode, apiTypeId);

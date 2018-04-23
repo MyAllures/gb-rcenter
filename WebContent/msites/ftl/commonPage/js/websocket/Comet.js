@@ -74,7 +74,7 @@ MSiteComet.prototype = {
      * 构造器
      * @param props 参数对象
      */
-    initParameter:function(){
+    initParameter: function () {
         var param = {
             url: null,
             localeType: language.replace("-", "_"), isImmediatelyConnect: true
@@ -110,9 +110,13 @@ MSiteComet.prototype = {
         var props = _this.initParameter();
         _this.websocket = null;
         _this.url = props.url;
-        _this.url_websocket = "ws://" + document.domain + options.wsRoot + "?localeType=" + props.localeType;
 
-        if (! 'WebSocket' in window) {
+        var wsProtocol = 'https:' == document.location.protocol ? "wss://" : "ws://";
+        var wsPort = document.location.port != ""?(":"+document.location.port):"";
+
+        _this.url_websocket = wsProtocol + document.domain + wsPort + wsRoot + "?localeType=" + props.localeType;
+
+        if (!'WebSocket' in window) {
             return;
         }
 
@@ -147,7 +151,7 @@ MSiteComet.prototype = {
         //增加守护线程,防止异常终止
         window.setInterval(function () {
             var intervalTime = 80000;
-            if(sessionStorage.is_login=="false" || _this.websocket == null)
+            if (sessionStorage.is_login == "false" || _this.websocket == null)
                 intervalTime = 8000;
 
             if (new Date().getTime() - _this.last_active_time > intervalTime) {
@@ -255,7 +259,7 @@ MSiteComet.prototype = {
                     }, 10000);
                 }
             });
-        }else{
+        } else {
             userParam[_this.LOCALE_TYPE] = _this.userParam[_this.LOCALE_TYPE];
             _this.websocket.send(JSON.stringify(userParam));
         }
@@ -274,7 +278,7 @@ MSiteComet.prototype = {
         var _this = this;
         _this.last_active_time = new Date().getTime();
 
-        if(sessionStorage.is_login=="false"){
+        if (sessionStorage.is_login == "false") {
             return;
         }
 

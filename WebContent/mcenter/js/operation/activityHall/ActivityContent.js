@@ -60,7 +60,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
 
             $(this.formSelector).on("change", ".game", function (e){
                 var target = e.target;
-                var num = $(target).parent().children("input.game:checked").length;
+                var num = $(target).parents(".game_div").find("input.game:checked").length;
                 var mark = $(target).attr("aaa");
                 $("."+mark).text(num);
             });
@@ -1272,7 +1272,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var size = gameTypeList.length;
             for (var i=0; i<size; i++) {
                 var target = gameTypeList[i];
-                var num = $(target).children("input.game:checked").length;
+                var num = $(target).find("input.game:checked").length;
                 var mark = $(target).attr("aaa");
                 $("."+mark).text(num);
             }

@@ -296,10 +296,10 @@ $(function(){
 			returnTab(series1,series2,series3)//点击传入全部数据
 		})
 		$('.btnCell').click(function(){
-			returnTab(series1,series5,series6,)//传入手机端数据
+			returnTab(series1,series5,series6)//传入手机端数据
 		})
 		$('.btnPc').click(function(){
-			returnTab(series4,series2,series3,)//传入PC端数据
+			returnTab(series4,series2,series3)//传入PC端数据
 		})
 		function returnTab(obj){
 			series = [];//清空数据

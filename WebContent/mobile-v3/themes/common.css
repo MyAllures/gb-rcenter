@@ -1293,6 +1293,9 @@ body.change-loginpassword .mine-form .mui-input-row > label { color: #333; font-
 body.change-loginpassword .mine-form input { width: 100%; text-align: right; font-size: 12px; padding-right: 0; }
 body.change-loginpassword .mine-form .mui-input-row > .ct { width: 65%; float: right; text-align: right; padding-right: 10px; font-size: 12px; }
 body.change-loginpassword .mine-form .mui-input-row > .ct input { font-size: 12px; color: #999; }
+body.change-loginpassword .mine-form .mui-input-row > .ct.spcode { display: flex; }
+body.change-loginpassword .mine-form .mui-input-row > .ct.spcode input { padding: 10px; }
+body.change-loginpassword .mine-form .mui-input-row > .ct.spcode img { width: 90px; height: 40px; }
 body.change-loginpassword .gb-stressed { padding-left: 15px; margin: 5px 0; }
 body.change-loginpassword .gb-stressed p { color: #999999; font-size: 12px; margin-bottom: 0; }
 body.change-loginpassword .gb-stressed p i { display: inline-block; width: 28px; height: 6px; background-color: #999999; border-radius: 3px; }
@@ -1458,10 +1461,11 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea { font-size
 .mine-notice .gb-datafilter .input-drop { display: inline-block; border: 1px solid #e2e2e2; border-radius: 2px; height: 25px; line-height: 23px; color: #333; font-size: 10px; width: 100%; text-align: center; position: relative; }
 .mine-notice .gb-datafilter .input-drop a { display: block; line-height: 23px; color: #999; font-size: 12px; }
 .mine-notice .gb-datafilter .input-drop a .mui-icon { color: #7a7674 !important; font-size: 18px; vertical-align: sub; }
-.mine-notice .gb-datafilter .input-date { display: inline-block; position: relative; width: 30%; }
+.mine-notice .gb-datafilter .input-date { display: inline-block; position: relative; width: 90px; }
 .mine-notice .gb-datafilter .input-date a { display: inline-block; width: 20px; height: 25px; background: url(../images/ico-cal.png) no-repeat center; background-size: 9px auto; position: absolute; z-index: 1; top: 0; left: 0; }
 .mine-notice .gb-datafilter .input-date input.date { border: 1px solid #e2e2e2; border-radius: 2px; height: 25px; line-height: 23px; color: #333; font-size: 10px; width: 100%; text-align: center; position: relative; }
 .mine-notice .gb-datafilter .btn { padding: 2px 8px; background-color: #1766bb; border-color: #1766bb; }
+.mine-notice .gb-datafilter .btn.btn-sec { color: #fff; margin-right: 5px; }
 .mine-notice .gb-checkbox2 { display: inline-block; width: 12px; height: 12px; background: url(../images/checkbox.png); background-size: 100% 100%; vertical-align: text-top; margin-right: 5px; }
 .mine-notice .gb-checkbox2.on { background-image: url(../images/checkbox-on.png); }
 .mine-notice .gb-radio { display: inline-block; width: 30px; height: 30px; background: url(../images/radio.png); background-size: 100% 100%; vertical-align: text-top; margin-right: 5px; }
