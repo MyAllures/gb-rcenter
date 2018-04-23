@@ -344,3 +344,5 @@
   transform: rotateZ(90deg);
 }
 .hongbao_detail .tip-msgs{text-align: center;font-size: 18px;color: rgb(255, 255, 255);display: block;position: absolute;top: 263px;right: 0;left: 0;}
+
+.hongbao-wrap .mui-slider-item img{width: 68px !important;  margin: 0 auto;  display: block;}

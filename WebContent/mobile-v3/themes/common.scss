@@ -3535,7 +3535,7 @@ body.exchange-bitcoin{color: #000;
         .input-date {
             display: inline-block;
             position: relative;
-            width: 30%;
+            width: 90px;
             a {
                 display: inline-block;
                 width: 20px;
@@ -3563,6 +3563,7 @@ body.exchange-bitcoin{color: #000;
     .gb-datafilter .btn {
         padding: 2px 8px;    background-color: #1766bb;
     border-color: #1766bb;
+        &.btn-sec{    color: #fff; margin-right: 5px;}
     } 
     .gb-checkbox2 {
         display: inline-block;
