@@ -251,7 +251,7 @@
             var transactions = data.transactions;
             for (j = 0; j<transactions.length; j++) {
                 var item = '<tr class="deposit_send_transaction"><td><label class="checkbox_wrap"><input type="checkbox" name="transactionNos" value=' + transactions[j].transactionNo + '><span class="checkbox_icon"></span></label></td><td>' + transactions[j].transactionNo + '</td><td>' +
-                        transactions[j].completionTime + '</td><td>' + transactions[j].transactionMoney + '</td></tr>';
+                        transactions[j].checkTime + '</td><td>' + transactions[j].rechargeAmount + '</td></tr>';
                 $(".deposit_sent_transactionNo").append(item);
             }
             content = $(".deposit_send").html();

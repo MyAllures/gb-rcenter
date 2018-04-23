@@ -60,7 +60,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
 
             $(this.formSelector).on("change", ".game", function (e){
                 var target = e.target;
-                var num = $(target).parent().children("input.game:checked").length;
+                var num = $(target).parent().find("input.game:checked").length;
                 var mark = $(target).attr("aaa");
                 $("."+mark).text(num);
             });
