@@ -127,7 +127,7 @@
         });
     }
 
-    //该层级不能参加的活动添加disable属性和改变按钮提示
+    //根据该层级不能参加的活动添加disable属性和改变按钮提示
     function filterActyByPlayer(data) {
         var rankActvyObj = $("._vr_promo_check[data-rank-id][data-type='processing']");
         rankActvyObj.each(function (j, actObj) {
@@ -158,17 +158,19 @@
         });
     }
 
+    //参加优惠点击事件
     function joinPromo(aplyObj, isRefresh) {
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
         $(aplyObj).attr("disabled","disabled");
-        if(ctime > 0){
+        /*if(ctime > 0){
             return false;
-        }
+        }*/
         if(code!='money'){
             ctime++;
         }
         var nowTime = $("._user_time").attr("time");
-        if ($(aplyObj).parents("._vr_promo_check").find("._vr_promo_ostart").val() > nowTime || $(aplyObj).parents("._vr_promo_check").find("._vr_promo_oend").val() < nowTime) {
+        if ($(aplyObj).parents("._vr_promo_check").find("._vr_promo_ostart").val() > nowTime
+                || $(aplyObj).parents("._vr_promo_check").find("._vr_promo_oend").val() < nowTime) {
             return false;
         }
         if (sessionStorage.is_login == "true") {
@@ -192,7 +194,7 @@
                 }
                 return false;
 
-            }else if (code == 'effective_transaction' || code == 'profit_loss') {
+            }else if (code == 'effective_transaction' || code == 'profit_loss' || code == 'deposit_send') {
                 fetchActivityProcess(aplyObj, isRefresh);
             } else {
                 if (isRefresh&&code!='money') {
@@ -230,36 +232,85 @@
                 resultId: searchId
             },
             success: function (data) {
-                showActivityProcessDialog(aplyObj, isRefresh);
+                showActivityProcessDialog(data, aplyObj, isRefresh);
                 $(aplyObj).removeAttr("disabled");
             }
         });
 
     }
 
-    function showActivityProcessDialog(aplyObj, isRefresh) {
+    function showActivityProcessDialog(data, aplyObj, isRefresh) {
+        var code = $(aplyObj).parents("._vr_promo_check").data("code");
+        var title = $(aplyObj).parents("._vr_promo_check").find(".tit").text();
+        $(".tip_tit").text('《' + title + '》');
+        var content;
+        var addClass;
+
+        if (code == 'deposit_send' && data.transactions) {
+            $(".deposit_send_transaction").remove();
+            var transactions = data.transactions;
+            for (j = 0; j<transactions.length; j++) {
+                var item = '<tr class="deposit_send_transaction"><td><label class="checkbox_wrap"><input type="checkbox" name="transactionNos" value=' + transactions[j].transactionNo + '><span class="checkbox_icon"></span></label></td><td>' + transactions[j].transactionNo + '</td><td>' +
+                        transactions[j].completionTime + '</td><td>' + transactions[j].transactionMoney + '</td></tr>';
+                $(".deposit_sent_transactionNo").append(item);
+            }
+            content = $(".deposit_send").html();
+            addClass = 'promo_CJS';
+        } else {
+            $(".process").remove();
+            var preferentialRelations = data.preferentialRelations;
+            var item;
+            var icon;
+            for (j = 0; j<preferentialRelations.length; j++) {
+
+                if (data.effectivetransaction > preferentialRelations[j].preferentialValue){
+                    icon = '<i class="icon-pass"></i>';
+                } else {
+                    icon = '<i class="icon-fail"></i>';
+                }
+
+                if (preferentialRelations[j].preferentialCode == 'total_transaction_ge') {
+                    item = '<div class="item-success-with-bar process">'+ icon + '<div class="txt"><span>有效投注额' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.effectivetransaction +
+                            '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
+                    $(".effective_transaction").append(item);
+                }else if (preferentialRelations[j].preferentialCode == 'profit_ge') {
+                    item = '<div class="item-success-with-bar process">'+ icon + '<div class="txt"><span>盈利' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.effectivetransaction +
+                            '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
+                    $(".profit_loss").append(item);
+                }
+            }
+            content = $(".activityProcess").html();
+            addClass = 'promo_may_apply';
+        }
         var dialog = layer.open({
-            content:"有效投注額或者盈虧送",
-            title:"信息",
-            skin:"layui-layer-danger",
-            area: ['640px', '500px'],
-            btn: ["聯系客服","申請活動"],
+            content:content,
+            title:"提示",
+            skin:"layui-layer-warning",
+            area: ['640px', 'auto'],
+            btn: ["申请奖励","联系客服"],
             success: function(layer){
                 // 重写关闭按钮
                 $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
+                $(layer).addClass(addClass);
+                // 内容启用滚动条
+                $(layer).find(".layui-layer-content .tab_wrap").niceScroll({
+                    cursorcolor:"#999",
+                    cursorwidth:"8px"
+                });
+                $(layer).find(".layui-layer-content .tab_wrap tr:even").addClass('even')
             },
             yes: function () {
+                applyActivities(aplyObj, isRefresh);
+            },
+            btn2: function () {
                 if (isRefresh) {
                     layer.close(dialog);
                     window.location.href = "/promo.html";
                 } else {
                     layer.close(dialog);
                 }
-            },
-            btn2: function () {
-                applyActivities(aplyObj, isRefresh);
             }
         });
     }
@@ -267,16 +318,26 @@
     function applyActivities(aplyObj, isRefresh) {
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
         var searchId = $(aplyObj).parents("._vr_promo_check").data("searchid");
+        var transactionNos;
+        var tansactionObj = [];
+        if (code == 'deposit_send') {//存就送时需要组装订单号.
+            transactionNos = $("input[name='transactionNos']:checked");
+            for (j = 0; j<transactionNos.length; j++) {
+                tansactionObj.push($(transactionNos[j]).val());
+            }
+        }
+        var dataParam = {};
+        dataParam.code=code;
+        dataParam.resultId=searchId;
+        dataParam.transactionNos=tansactionObj;
         $.ajax({
+            contentType: 'application/json; charset=utf-8',
             url: "/ntl/activityHall/applyActivities.html",
             type: "POST",
             dataType: "json",
-            data: {
-                code: code,
-                resultId: searchId
-            },
+            data: JSON.stringify(dataParam),
             success: function (data) {
-                showWin(data, isRefresh);
+                showApplyActivityResult(data, isRefresh, aplyObj);
                 $(aplyObj).removeAttr("disabled");
 
             },
@@ -286,25 +347,35 @@
         })
     }
 
-    function showWin(data, isRefresh) {
+    function showApplyActivityResult(data, isRefresh, aplyObj) {
         if (typeof data.state == "undefined") {
             return false;
+        }
+        var code = $(aplyObj).parents("._vr_promo_check").data("code");
+        var title = $(aplyObj).parents("._vr_promo_check").find(".tit").text();
+        $(".tip_tit").text('《' + title + '》');
+        if (code == 'first_deposit' || code == 'second_deposit' || code =='third_deposit' || code == 'everyday_first_deposit') {
+            var msg = window.top.message.common_auto[data.msg];
+            $(".ext-inf").html(msg);
+        }else {
+            $(".ext-inf").html(data.msg);
         }
         var content;
         var title;
         var skin;
-        var area = ['640px', '397px'];
+        var area = ['640px', 'auto'];
+        var icon;
         if (data.state) {
             content = $(".promoSuccessTip").html();
             title = "申请成功";
             skin = "layui-layer-success";
+            icon = "promo_success";
         } else {
             content = $(".promoFailureTip").html();
             title = "申请失败";
             skin =  "layui-layer-danger";
+            icon="promo_failure";
         }
-
-        $("._msg").html('<p class="text-center">' + data.msg + '</p>');
 
         var dialog = layer.open({
             content:content,
@@ -316,6 +387,7 @@
                 $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
+                $(layer).addClass(icon);
             },
             yes: function () {
                 if (isRefresh) {
