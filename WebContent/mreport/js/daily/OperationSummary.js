@@ -130,7 +130,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * 最近两个周期损益对比
          */
         profitLossGaugeChart: function() {
-            var jsonStr = $("#effectiveGaugeChartData").html();
+            var jsonStr = $("#profitLossGaugeChartData").html();
             const data = $.parseJSON(jsonStr);
             this.drawGaugeChart('c3', data);
         },
