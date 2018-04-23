@@ -1,7 +1,7 @@
 /**
  * 数据中心 - 运营日常统计
  */
-define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePage, G2, DataSet) {
+define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, G2, DataSet) {
     return BasePage.extend({
 
         /**
@@ -10,14 +10,14 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
         init: function () {
             this._super();
 
-            this.drawBalanceBarChart();
-            this.drawBalanceColumnChart();
+            this.balanceGuageChart();
+            this.balanceColumnChart();
 
-            this.drawEffectiveBarChart();
-            this.drawEffectiveColumnChart();
+            this.effectiveGaugeChart();
+            this.effectiveColumnChart();
 
-            this.drawLastProfitLoss();
-            this.drawMultiProfitLoss();
+            this.profitLossGaugeChart();
+            this.profitLossColumnChart();
 
             this.activeUser();
 
@@ -32,6 +32,7 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
          * 绑定事件函数
          */
         bindEvent:function(){
+            this._super();
             var _this = this;
             //活跃用户和登录次数切换事件
             $("._addPrimary.active-user .btn").click(function(){
@@ -89,62 +90,58 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
         },
 
         /**
-         * 存取差额玉珏图表展示
+         * 最近两个周期的存取差额对比
          */
-        drawBalanceBarChart: function() {
-            var jsonStr = $("#balanceBarChartData").html();
+        balanceGuageChart: function() {
+            var jsonStr = $("#balanceGaugeChartData").html();
             const data = $.parseJSON(jsonStr);
-            this.drawBarChart('c1', data, '#6363FF-#FF6363');
+            this.drawGaugeChart('c1', data);
         },
 
         /**
          * 存取差额分组柱状图展示
          * 展示最近七个周期的存取差额
          */
-        drawBalanceColumnChart: function() {
-            var jsonStr = $("#balanceSummaryData").html();
-            var fieldStr = $("#columnsDateFieldList").html();
+        balanceColumnChart: function() {
+            var jsonStr = $("#operationSummaryData").html();
             const data = $.parseJSON(jsonStr);
-            const fieldSet = $.parseJSON(fieldStr);
-            this.drawGroupColumnChart('z1', data, fieldSet,null);
+            this.drawBasicColumnChart('z1', data, 'balanceAmount', 'staticDay*balanceAmount', 300);
         },
 
         /**
-         * 最近两个周期的有效投注额
+         * 最近两个周期的有效投注额对比
          */
-        drawEffectiveBarChart: function() {
-            var jsonStr = $("#effectiveBarChartData").html();
+        effectiveGaugeChart: function() {
+            var jsonStr = $("#effectiveGaugeChartData").html();
             const data = $.parseJSON(jsonStr);
-            this.drawBarChart('c2', data, '#00CC00-#FF6600');
+            this.drawGaugeChart('c2', data);
         },
 
         /**
          * 最近多个周期的有效投注额
          */
-        drawEffectiveColumnChart: function() {
+        effectiveColumnChart: function() {
             var jsonStr = $("#operationSummaryData").html();
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z2', data, 'effectiveTransactionAll', 'staticDayStr*effectiveTransactionAll',300);
+            this.drawBasicColumnChart('z2', data, 'effectiveTransactionAll', 'staticDay*effectiveTransactionAll', 300);
         },
 
         /**
-         * 上一个周期损益
+         * 最近两个周期损益对比
          */
-        drawLastProfitLoss: function() {
-            var jsonStr = $("#effectiveBarChartData").html();
+        profitLossGaugeChart: function() {
+            var jsonStr = $("#effectiveGaugeChartData").html();
             const data = $.parseJSON(jsonStr);
-            this.drawBarChart('c3', data, '#6363FF-#FF6363');
+            this.drawGaugeChart('c3', data);
         },
 
         /**
          * 最近多个周期的损益
          */
-        drawMultiProfitLoss: function() {
-            var jsonStr = $("#balanceSummaryData").html();
-            var fieldStr = $("#columnsDateFieldList").html();
+        profitLossColumnChart: function() {
+            var jsonStr = $("#operationSummaryData").html();
             const data = $.parseJSON(jsonStr);
-            const fieldSet = $.parseJSON(fieldStr);
-            this.drawGroupColumnChart('z3', data, fieldSet,null);
+            this.drawBasicColumnChart('z3', data, 'transactionProfitLoss', 'staticDay*transactionProfitLoss', 300);
         },
 
         /**
@@ -259,10 +256,8 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
                 // jsonStr = $("#rakebackCash").html();
                 this.drawBasicColumnChart('b7', array, '反水金额', 'staticDayStr*反水金额',356);
             }
-
-
-
         },
+
         /**
          * 画玉珏图
          * @param containerName
@@ -353,7 +348,7 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
         /**
          * 基础柱状图
          */
-        drawBasicColumnChart: function(containerName, data, scale, position,height) {
+        drawBasicColumnChart: function(containerName, data, scale, position, height) {
             const chart =  new G2.Chart({
                 container: containerName,
                 forceFit: true,
@@ -362,11 +357,12 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
             });
             chart.source(data);
             chart.scale(scale, {
-                tickInterval: 2000
+                //tickInterval: 2000
             });
             chart.interval().position(position);
             chart.render();
         },
+
         /**
          * 折线图
          */
@@ -411,6 +407,140 @@ define(['common/BasePage', 'site/g2.min', 'site/data-set.min'], function (BasePa
                     type: 'line'
                 }
             });
+            chart.render();
+        },
+
+        /**
+         * 仪表图
+         * @param containerName
+         * @param data
+         */
+        drawGaugeChart: function(containerName, data) {
+            var startNum, endNum;
+            if(data[0].numerical>=0 && data[1].numerical>=0) {
+                startNum = 0;
+                if(data[0].numerical >= data[1].numerical) {
+                    endNum = data[0].numerical;
+                } else {
+                    endNum = data[1].numerical;
+                }
+            } else {
+                if(Math.abs(data[0].numerical) >= Math.abs(data[1].numerical)) {
+                    startNum = -(Math.abs(data[0].numerical));
+                    endNum = Math.abs(data[0].numerical);
+                } else {
+                    startNum = -(Math.abs(data[1].numerical));
+                    endNum = Math.abs(data[1].numerical);
+                }
+            }
+            const Shape = G2.Shape;
+            // 自定义Shape 部分
+            Shape.registerShape('point', 'pointer', {
+                drawShape(cfg, group) {
+                    let point = cfg.points[0]; // 获取第一个标记点
+                    point = this.parsePoint(point);
+                    const center = this.parsePoint({ // 获取极坐标系下画布中心点
+                        x: 0,
+                        y: 0
+                    });
+                }
+            });
+            const chart = new G2.Chart({
+                container: containerName,
+                forceFit: true,
+                height: 280,
+                padding: [ 0, 0, 20, 30 ]
+            });
+            chart.source(data);
+
+            chart.coord('polar', {
+                startAngle: -9 / 8 * Math.PI,
+                endAngle: 1 / 8 * Math.PI,
+                radius: 0.75
+            });
+            chart.scale('numerical', {
+                min: startNum,
+                max: endNum,
+                tickInterval: endNum/10,
+                nice: false
+            });
+
+            chart.axis('1', false);
+            chart.axis('numerical', {
+                zIndex: 2,
+                line: null,
+                label: {
+                    offset: -8,
+                    textStyle: {
+                        fontSize: 12,
+                        textAlign: 'center',
+                        textBaseline: 'middle'
+                    }
+                },
+                subTickCount: 4,
+                subTickLine: {
+                    length: -8,
+                    stroke: '#fff',
+                    strokeOpacity: 1
+                },
+                tickLine: {
+                    length: -17,
+                    stroke: '#fff',
+                    strokeOpacity: 1
+                },
+                grid: null
+            });
+            chart.legend(false);
+            chart.point({
+                generatePoints: true
+            }).position('numerical*1')
+                .shape('pointer')
+                .color('#1890FF')
+                .active(false);
+
+            // 绘制仪表盘背景
+            chart.guide().arc({
+                zIndex: 0,
+                top: false,
+                start: [ startNum, 0.98 ],
+                end: [ endNum, 0.98 ],
+                style: { // 底灰色
+                    stroke: '#CBCBCB',
+                    lineWidth: 2,
+                }
+            });
+
+            // 绘制昨天的指标
+            chart.guide().arc({
+                zIndex: 1,
+                start: [ data[0].numerical>=0 ? 0 : data[0].numerical, 1.07 ],
+                end: [ data[0].numerical>=0 ? data[0].numerical : 0, 1.07 ],
+                style: {
+                    stroke: '#1890FF',
+                    lineWidth: 12,
+                }
+            });
+
+            // 绘制前天指标
+            chart.guide().arc({
+                zIndex: 2,
+                start: [ data[1].numerical>=0 ? 0 : data[1].numerical, 1.19 ],
+                end: [ data[1].numerical>=0 ? data[1].numerical : 0, 1.19 ],
+                style: {
+                    stroke: 'red',
+                    lineWidth: 12,
+                }
+            });
+
+            // 绘制指标数字
+            chart.guide().html({
+                position: [ '50%', '95%' ],
+                html: '<div style="width: 300px;text-align: center; padding-bottom: 80px; border:0px solid red;">'
+                + '<p style="font-size: 15px; color: #545454;margin: 0;">增长</p>'
+                + '<p style="font-size: 18px; color: #545454;margin: 0;">' + data[0].numerical * 10  + '%</p>'
+                + '</div>'
+            });
+
             chart.render();
         }
     });

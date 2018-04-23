@@ -1,7 +1,7 @@
 /**
  * 数据中心首页-首页js
  */
-define(['common/BasePage','site/swiper.min','site/g2.min','site/data-set.min'], function (BasePage,Swiper,G2,DataSet) {
+define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], function (BasePage,Swiper,G2,DataSet) {
     return BasePage.extend({
         /**
          * 初使化
