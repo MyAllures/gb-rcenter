@@ -78,7 +78,6 @@ define([], function () {
 
             var wsProtocol = 'https:' == document.location.protocol ? "wss://" : "ws://";
             var wsPort = document.location.port != ""?(":"+document.location.port):"";
-
             _this.url_websocket = wsProtocol + document.domain + wsPort + wsRoot + "?localeType=" + props.localeType;
 
             if ('WebSocket' in window) {
