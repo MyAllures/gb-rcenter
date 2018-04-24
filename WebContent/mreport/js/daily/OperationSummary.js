@@ -340,14 +340,14 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 container: containerName,
                 height: 400,
                 width:width,
-                padding: [20, 5, 65, 50]
+                padding: [20, 12, 95, 50]
             })
                 :
             new G2.Chart({
                 container: containerName,
                 forceFit: true,
                 height: 300,
-                padding: [20, 5, 65, 50]
+                padding: [20, 12, 95, 50]
             });
             chart.source(dv);
             chart.interval().position('time*sum').color('name').adjust([{
@@ -387,7 +387,8 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 container: containerName,
                 // forceFit: true,
                 height: 400,
-                width:476
+                width:476,
+                padding: [20, 8, 95, 50]
             });
             const dv = ds.createView().source(data);
             dv.transform({
