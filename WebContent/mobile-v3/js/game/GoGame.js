@@ -311,5 +311,7 @@ function gotoGameUrl(url, apiId) {
     if (url.indexOf('http') === -1) {
         url = window.location.origin + url;
     }
-    goToUrl(url);
+    //goToUrl(url);
+    //游戏中带v版本的游戏会找不到地址
+    openWindow(url);
 }
