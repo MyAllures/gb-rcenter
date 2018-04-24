@@ -95,7 +95,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         balanceGaugeChart: function() {
             var jsonStr = $("#balanceGaugeChartData").html();
             const data = $.parseJSON(jsonStr);
-            this.drawGaugeChart('c1', data);
+            this.drawGaugeChart('c1', data, '#FF6363', '#6363FF');
         },
 
         /**
@@ -105,7 +105,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         balanceColumnChart: function() {
             var jsonStr = $("#operationSummaryData").html();
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z1', data, 'balanceAmount', 'staticDay*balanceAmount', 300);
+            this.drawBasicColumnChart('z1', data, 'balanceAmount', 'staticDay*balanceAmount',　'存取差额', 300);
         },
 
         /**
@@ -114,7 +114,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         effectiveGaugeChart: function() {
             var jsonStr = $("#effectiveGaugeChartData").html();
             const data = $.parseJSON(jsonStr);
-            this.drawGaugeChart('c2', data);
+            this.drawGaugeChart('c2', data, '#FF6363', '#6363FF');
         },
 
         /**
@@ -123,7 +123,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         effectiveColumnChart: function() {
             var jsonStr = $("#operationSummaryData").html();
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z2', data, 'effectiveTransactionAll', 'staticDay*effectiveTransactionAll', 300);
+            this.drawBasicColumnChart('z2', data, 'effectiveTransactionAll', 'staticDay*effectiveTransactionAll',　'有效投注', 300);
         },
 
         /**
@@ -132,7 +132,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         profitLossGaugeChart: function() {
             var jsonStr = $("#profitLossGaugeChartData").html();
             const data = $.parseJSON(jsonStr);
-            this.drawGaugeChart('c3', data);
+            this.drawGaugeChart('c3', data, '#FF6363', '#6363FF');
         },
 
         /**
@@ -141,7 +141,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         profitLossColumnChart: function() {
             var jsonStr = $("#operationSummaryData").html();
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z3', data, 'transactionProfitLoss', 'staticDay*transactionProfitLoss', 300);
+            this.drawBasicColumnChart('z3', data, 'transactionProfitLoss', 'staticDay*transactionProfitLoss', '损益', 300);
         },
 
         /**
@@ -152,7 +152,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             var loginCountData = $.parseJSON(jsonStr);
             var fieldStr = $("#columnsDateFieldList").html();
             const fieldSet = $.parseJSON(fieldStr);
-            this.drawGroupColumnChart('f4', loginCountData, fieldSet,476);
+            this.drawGroupColumnChart('f4', loginCountData, fieldSet, 476);
         },
 
         /**
@@ -181,7 +181,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         /**
          * 安装量和卸载量 折线图
          */
-        installAndUninstall:function(isinstall){
+        installAndUninstall:function(isinstall)　{
             var jsonStr = $("#operationSummaryData").html();
             var operationSummarys = $.parseJSON(jsonStr);
             if(operationSummarys == null || operationSummarys.length < 1) return ;
@@ -231,30 +231,18 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             this.foldlineDiagram('p6', array);
         },
 
-        rakebackTrend:function(rakebackType){
+        /**
+         * 返水走势
+         * @param rakebackType
+         */
+        rakebackTrend:function(rakebackType) {
             var jsonStr = $("#operationSummaryData").html();
-            if(!jsonStr) return ;
-            const resultData = $.parseJSON(jsonStr);
-            var array = [];
-            for(var i = 0;i < resultData.length ; i ++ ){
-                var result = resultData[i];
-                var data = {
-                    'staticDayStr':result.staticDayStr
-                };
-                if('rakeback-men' == rakebackType){
-                    data['反水人数'] = result.rakebackPlayer;
-                }else if('rakeback-cash' == rakebackType){
-                    // jsonStr = $("#rakebackCash").html();
-                    data['反水金额'] = result.rakebackAmount;
-                }
-                array.push(data);
-            }
-
-            if('rakeback-men' == rakebackType){
-                this.drawBasicColumnChart('b7', array, '反水人数', 'staticDayStr*反水人数',379);
-            }else if('rakeback-cash' == rakebackType){
-                // jsonStr = $("#rakebackCash").html();
-                this.drawBasicColumnChart('b7', array, '反水金额', 'staticDayStr*反水金额',356);
+            if(!jsonStr) return;
+            const data = $.parseJSON(jsonStr);
+            if('rakeback-men' == rakebackType) {
+                this.drawBasicColumnChart('b7', data, 'rakebackPlayer', 'staticDay*rakebackPlayer', '返水人数', 379);
+            } else if('rakeback-cash' == rakebackType) {
+                this.drawBasicColumnChart('b7', data, 'rakebackAmount', 'staticDay*rakebackAmount', '返水金额', 356);
             }
         },
 
@@ -348,18 +336,21 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         /**
          * 基础柱状图
          */
-        drawBasicColumnChart: function(containerName, data, scale, position, height) {
+        drawBasicColumnChart: function(containerName, data, scale, position, tips, height) {
             const chart =  new G2.Chart({
                 container: containerName,
                 forceFit: true,
                 height: height,
-                padding: [20, 5, 35, 50]
+                padding: [20, 12, 45, 50]
             });
             chart.source(data);
-            chart.scale(scale, {
-                //tickInterval: 2000
-            });
-            chart.interval().position(position);
+            chart.interval().position(position)
+                .tooltip(scale, function(val) {
+                    return {
+                        name: tips,
+                        value: val
+                    };
+                });
             chart.render();
         },
 
@@ -415,7 +406,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * @param containerName
          * @param data
          */
-        drawGaugeChart: function(containerName, data) {
+        drawGaugeChart: function(containerName, data, colorm, colorn) {
             var startNum, endNum;
             if(data[0].numerical>=0 && data[1].numerical>=0) {
                 startNum = 0;
@@ -446,20 +437,19 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             const chart = new G2.Chart({
                 container: containerName,
                 forceFit: true,
-                height: 280,
-                padding: [ 0, 0, 20, 30 ]
+                height: 320,
+                padding: [ 0, 15, 30, 10 ]
             });
             chart.source(data);
 
             chart.coord('polar', {
                 startAngle: -9 / 8 * Math.PI,
                 endAngle: 1 / 8 * Math.PI,
-                radius: 0.75
+                radius: 0.80 //设置仪表图在画框中占比(即在固定画框中的大小)
             });
             chart.scale('numerical', {
                 min: startNum,
                 max: endNum,
-                tickInterval: endNum/10,
                 nice: false
             });
 
@@ -514,7 +504,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 start: [ data[0].numerical>=0 ? 0 : data[0].numerical, 1.07 ],
                 end: [ data[0].numerical>=0 ? data[0].numerical : 0, 1.07 ],
                 style: {
-                    stroke: '#1890FF',
+                    stroke: colorm,
                     lineWidth: 12,
                 }
             });
@@ -525,17 +515,26 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 start: [ data[1].numerical>=0 ? 0 : data[1].numerical, 1.19 ],
                 end: [ data[1].numerical>=0 ? data[1].numerical : 0, 1.19 ],
                 style: {
-                    stroke: 'red',
+                    stroke: colorn,
                     lineWidth: 12,
                 }
             });
 
             // 绘制指标数字
             chart.guide().html({
-                position: [ '50%', '95%' ],
-                html: '<div style="width: 300px;text-align: center; padding-bottom: 80px; border:0px solid red;">'
+                position: [ '50%', '60%' ],
+                html: '<div style="width: 300px;text-align: center; border:0px solid red;">'
                 + '<p style="font-size: 15px; color: #545454;margin: 0;">增长</p>'
                 + '<p style="font-size: 18px; color: #545454;margin: 0;">' + data[0].numerical * 10  + '%</p>'
+                + '</div>'
+            });
+
+            // 自定义标题
+            chart.guide().html({
+                position: [ '50%', '95%' ],
+                html: '<div style="width: 300px;text-align: center; border:0px solid red;">'
+                + '<span style="background-color: '+colorm+'; width: 15px; height: 15px; border-radius: 50%; border: 1px solid rgb(255, 255, 255); display: inline-block; margin-right: 8px;"></span>' + data[0].title
+                + '<span style="background-color: '+colorn+'; width: 15px; height: 15px; border-radius: 50%; border: 1px solid rgb(255, 255, 255); display: inline-block; margin: 0px 8px 0px 20px;"></span>' + data[1].title
                 + '</div>'
             });
 
