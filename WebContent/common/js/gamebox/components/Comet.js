@@ -75,7 +75,10 @@ define([], function () {
             var _this = this;
             _this.websocket = null;
             _this.url = props.url;
-            _this.url_websocket = "ws://" + document.domain + wsRoot+"?localeType="+props.localeType;
+
+            var wsProtocol = 'https:' == document.location.protocol ? "wss://" : "ws://";
+            var wsPort = document.location.port != ""?(":"+document.location.port):"";
+            _this.url_websocket = wsProtocol + document.domain + wsPort + wsRoot + "?localeType=" + props.localeType;
 
             if ('WebSocket' in window) {
                 _this.isUseWebsocket = true;
@@ -108,13 +111,13 @@ define([], function () {
             }
             //增加守护线程,防止异常终止
             window.setInterval(function () {
-               if(new Date().getTime()-_this.last_active_time>80000){
-                   if(this.cid!=undefined && this.cid!=null){
-                       _this.userParam[_this.CONNECTIONID_KEY] = this.cid;
-                   }
-                   _this.connection();
-               }
-            },10000);
+                if (new Date().getTime() - _this.last_active_time > 80000) {
+                    if (this.cid != undefined && this.cid != null) {
+                        _this.userParam[_this.CONNECTIONID_KEY] = this.cid;
+                    }
+                    _this.connection();
+                }
+            }, 10000);
         },
 
         /**
@@ -172,8 +175,8 @@ define([], function () {
                 subscribeArr.push(
                     {
                         subscribeType: "ECHO", callBack: function (data) {
-                        console.info(data)
-                    }
+                            console.info(data)
+                        }
                     }
                 );
             }
@@ -212,7 +215,7 @@ define([], function () {
                         }, 10000);
                     }
                 });
-            }else{
+            } else {
                 userParam[_this.LOCALE_TYPE] = _this.userParam[_this.LOCALE_TYPE];
                 _this.websocket.send(JSON.stringify(userParam));
             }

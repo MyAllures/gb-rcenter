@@ -20,11 +20,20 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput',
             if(!this.validateForm(e)){
                 return false;
             }
-            window.top.topPage.showConfirmMessage("确定调整站点兑换比例吗?",function (state) {
-                if(state){
-                    window.top.topPage.doAjax(e,opt);
-                }
-            })
+            var ids = $("textarea[name='siteIds']").val();
+            if (ids == null||ids=='') {
+                window.top.topPage.showConfirmMessage("确定调整所有站点兑换比例吗?", function (state) {
+                    if (state) {
+                        window.top.topPage.doAjax(e, opt);
+                    }
+                })
+            } else {
+                window.top.topPage.showConfirmMessage("确定调整站点"+ids+"兑换比例吗?", function (state) {
+                    if (state) {
+                        window.top.topPage.doAjax(e, opt);
+                    }
+                })
+            }
         }
     });
 });

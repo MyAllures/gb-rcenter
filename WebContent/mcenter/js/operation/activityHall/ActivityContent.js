@@ -60,9 +60,15 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
 
             $(this.formSelector).on("change", ".game", function (e){
                 var target = e.target;
-                var num = $(target).parent().children("input.game:checked").length;
+                var num = $(target).parents(".game_div").find("input.game:checked").length;
                 var mark = $(target).attr("aaa");
                 $("."+mark).text(num);
+            });
+
+            $(this.formSelector).on("click", ".gameTypeButton", function (e) {
+                var target = e.target;
+                $(target).removeClass('btn-outline');
+                $(target).siblings("button").addClass('btn-outline');
             });
 
             $(this.formSelector).on("change", ".profit", function (e){
@@ -247,12 +253,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
 
             this.initUEditor();
             this.checkHandsel();
-
         },
 
         //未编辑,已编辑
         updateText: function (e, index) {
-            var $current_tab = $('[aria-expanded=true]');
+            var $current_tab = $('a[aria-expanded=true]');
             var $tab_span = $current_tab.find("span");
             var index;
             if (e == 'contentchange') {
@@ -714,11 +719,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             for (i = 0; i < languageCounts; i++) {
                 $("#previewActivityName" + i).text($("[name='activityMessageI18ns[" + i + "].activityName']").val());
                 /*主图*/
-                if ($("#activityContentImg" + i + ' ' + "img").attr("src") == "") {
-                    var src1 = $("#activityContentImage" + i + ' ' + "img").attr('src');
+                if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
+                    var src1 = $("#activityAffiliatedImage" + i + ' ' + "img").attr('src');
                     $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src1);
                 } else {
-                 var src2 = $("#activityContentImg" + i + ' ' + "img").attr('src');
+                 var src2 = $("#activityAffiliatedImg" + i + ' ' + "img").attr('src');
                  $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src2);
                 }
                 $("#previewActivityDesc" + i).html($("[name='activityMessageI18ns[" + i + "].activityDescription']").val());
@@ -1267,7 +1272,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var size = gameTypeList.length;
             for (var i=0; i<size; i++) {
                 var target = gameTypeList[i];
-                var num = $(target).children("input.game:checked").length;
+                var num = $(target).find("input.game:checked").length;
                 var mark = $(target).attr("aaa");
                 $("."+mark).text(num);
             }

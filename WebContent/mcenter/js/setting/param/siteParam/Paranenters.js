@@ -67,6 +67,7 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
             this.electricPin();
             this.encryptionSwitch();
             this.playerStationmaster();
+            this.appDownloadUrlSwitch();
         },
         /**
          * 当前页面所有事件初始化函数
@@ -583,6 +584,9 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
         getSmsInterfaceParamDateForm:function (e,opt) {
             return $("input,textarea","#smsSetting").serialize();
         },
+        getIdCard:function (e,opt) {
+            return $("input","#idCard").serialize();
+        },
         /**
          * 获取统计代码表单
          * @param e
@@ -825,6 +829,44 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 }
             });
         },
+
+        /**
+         * app自定义下载URL开关
+         */
+        appDownloadUrlSwitch:function(){
+            this._super();
+            var $bootstrapSwitch = $('input[type=checkbox][name=downloadUrl]');
+            this.unInitSwitch($bootstrapSwitch).bootstrapSwitch({
+                onText: window.top.message.content['floatPic.dislpay.on'],
+                offText: window.top.message.content['floatPic.display.off'],
+                onSwitchChange:function(e,state){
+                    var $this = $(this);
+                    var _msg = "";
+                    if (state) {
+                        _msg = window.top.message.setting['confirm.open'];
+                    } else {
+                        _msg =  window.top.message.setting['confirm.close'];
+                    }
+                    $this.bootstrapSwitch('indeterminate', true);
+                    window.top.topPage.showConfirmMessage(_msg, function (confirm) {
+                        if (confirm) {
+                           if(state){
+                               $(".downloadUrl").css('display','');
+                               $("#appDomain").css("display","none");
+                           }else{
+                               $(".downloadUrl").css('display','none');
+                               $("#appDomain").css("display","");
+                               $('[name=downloadAddress]').val('');
+                           }
+                            $this.bootstrapSwitch('indeterminate', false);
+                        } else {
+                            $this.bootstrapSwitch('indeterminate', false);
+                            $this.bootstrapSwitch('state', !state, true);
+                        }
+                    })
+                }
+            });
+        },
         copyAppDomain:function (e, opt) {
             var tr = $("#app-domain-template").find("tr:eq(0)").clone();
             var trlen = $("#app-domain-table").find("tr:gt(0)").length;
@@ -897,6 +939,20 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 return false;
             }else {
                 e.page.showPopover(e,{},"success","保存成功",true);
+                return true;
+            }
+        },
+        /*
+         * 验证联系方式
+         *
+         * */
+        validationIdcard:function (e) {
+            var reg = new RegExp("^[0-9]{0,20}$");//验证电话号码
+            var idcard=$("input[name='result.idcard']").val();
+            if (idcard!=""&&!reg.test(idcard)){
+                e.page.showPopover(e,{},"warning","坐席号不合法,请输入0-20位纯数字",true);
+                return false;
+            }else {
                 return true;
             }
         },

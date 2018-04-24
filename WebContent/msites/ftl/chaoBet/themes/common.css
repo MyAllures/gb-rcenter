@@ -398,7 +398,7 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 .main-sports1 .ball-wrap{display: table;table-layout: fixed;width: 100%;margin-top: 378px;}
 .main-sports1 .txt{font-size: 14px;color: #e2e2e2;margin-top: 117px;}
 
-.main-sports2 { padding-top: 130px; background: #212531 url(images/sports2-bg.png) no-repeat center top; }
+.main-sports2 { padding-top: 130px;}
 .main-sports2 .notice { margin-top: 0; }
 .main-sports2 .sports { padding: 10px 0; }
 .main-sports2 .sports-box { width: 1023px; margin: 0 auto; min-height: 768px; text-align: center; background: #161616; }
@@ -521,7 +521,7 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 .main-promo .notice { margin-top: 0; }
 .main-promo .notice .title { margin-top: -10px; background: url(images/notice-tit-bg.png) center 4px no-repeat; }
 .main-promo .promo .container { background: #212531; padding: 20px; margin-bottom: 40px; }
-.main-promo .promo-sorts { margin-bottom: 20px; border-bottom: 1px solid #343b4e; padding-bottom: 20px; };}
+.main-promo .promo-sorts { margin-bottom: 20px; border-bottom: 1px solid #343b4e; padding-bottom: 20px; }
 .main-promo .promo-sorts li + li { padding: 0; }
 .main-promo .promo-sorts a { display: block; height: 40px; line-height: 40px; font-size: 16px; color: #fefefe; width: 160px;padding: 0 20px; text-align: center;text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
 .main-promo .promo-sorts a:hover, .main-promo .promo-sorts .active a { background-color: #18579c; color: #fefefe; border-radius: 20px; }
@@ -774,7 +774,6 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 	98%{transform:translate(0px,-1px) rotate(-0.5deg)}
 }
 
-
 .main-promo { padding: 20px; width: 1200px; margin: 0 auto; }
 .main-promo a { text-decoration: none; }
 .main-promo.theme-black { background: #111; }
@@ -827,9 +826,9 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 .main-promo.theme-white .list-type2 .promo-item .promo-detail { background: #fff; }
 .main-promo.theme-white .list-type2 .promo-item .promo-detail .tit { color: #333; border-bottom: 1px solid #ebebeb; }
 .main-promo.theme-white .list-type2 .promo-item .promo-detail .content { color: #666; }
-.main-promo .promo-top-bar { height: 50px; font-size: 14px; margin-bottom: 18px; }
-.main-promo .promo-top-bar > ul { display: inline-block; margin: 0; padding: 4px; height: 100%; }
-.main-promo .promo-top-bar > ul li { display: inline-block; height: 100%; line-height: 42px; border-radius: 2px; padding: 0 15px; position: relative; }
+.main-promo .promo-top-bar { font-size: 14px; margin-bottom: 18px; }
+.main-promo .promo-top-bar > ul { display: inline-block; margin: 0; padding: 4px; height: 100%; width: 900px; }
+.main-promo .promo-top-bar > ul li { display: inline-block; height: 100%; line-height: 42px; border-radius: 2px; padding: 0 15px; position: relative; margin-bottom: 4px; }
 .main-promo .promo-top-bar > ul li a { text-decoration: none; }
 .main-promo .promo-top-bar > ul li.active:after { content: ''; border-left: 5px solid transparent; border-right: 5px solid transparent; position: absolute; bottom: -5px; left: 50%; margin-left: -5px; }
 .main-promo .promo-top-bar .search-bar { float: right; margin-top: 9px; margin-right: 10px; }
@@ -874,4 +873,6 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 .main-promo .list-type2 .promo-item .promo-detail .content { font-size: 14px; }
 .main-promo .list-type2 .promo-item .promo-detail .content p { margin-bottom: 22px; text-indent: 2em; }
 .main-promo .list-type2 .promo-item .promo-detail .content p:last-child { margin-bottom: 0; }
+
+
 

@@ -26,7 +26,11 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                if (result.defaultLink.indexOf("https:") > -1) {
+                                    window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                } else {
+                                    window.location=result.defaultLink;
+                                }
                             }else if(apiTypeId == "4" && apiId=="22"){
                                 if (window.localStorage) {
                                     localStorage.re_url_lottery = result.defaultLink;

@@ -5,9 +5,9 @@ define(['common/BasePage'], function (BasePage) {
     return BasePage.extend({
 
         /**
-		 * 初使化
+         * 初使化
          */
-		init: function () {
+        init: function () {
             this.formSelector = "form";
             this._super();
             var defaultIndex = "/daily/realTimeSummary.html";

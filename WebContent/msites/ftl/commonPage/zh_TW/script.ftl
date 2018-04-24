@@ -687,6 +687,18 @@
         if (apiId == '23')  return  '<#if data.siteApiI18nMap['23']??>${data.siteApiI18nMap['23'].name}</#if>';
         if (apiId == '24')  return  '<#if data.siteApiI18nMap['24']??>${data.siteApiI18nMap['24'].name}</#if>';
         if (apiId == '25')  return  '<#if data.siteApiI18nMap['25']??>${data.siteApiI18nMap['25'].name}</#if>';
+        if (apiId == '26')  return  '<#if data.siteApiI18nMap['26']??>${data.siteApiI18nMap['26'].name}</#if>';
+        if (apiId == '27')  return  '<#if data.siteApiI18nMap['27']??>${data.siteApiI18nMap['27'].name}</#if>';
+        if (apiId == '28')  return  '<#if data.siteApiI18nMap['28']??>${data.siteApiI18nMap['28'].name}</#if>';
+        if (apiId == '30')  return  '<#if data.siteApiI18nMap['30']??>${data.siteApiI18nMap['30'].name}</#if>';
+        if (apiId == '31')  return  '<#if data.siteApiI18nMap['31']??>${data.siteApiI18nMap['31'].name}</#if>';
+        if (apiId == '32')  return  '<#if data.siteApiI18nMap['32']??>${data.siteApiI18nMap['32'].name}</#if>';
+        if (apiId == '33')  return  '<#if data.siteApiI18nMap['33']??>${data.siteApiI18nMap['33'].name}</#if>';
+        if (apiId == '34')  return  '<#if data.siteApiI18nMap['34']??>${data.siteApiI18nMap['34'].name}</#if>';
+        if (apiId == '35')  return  '<#if data.siteApiI18nMap['35']??>${data.siteApiI18nMap['35'].name}</#if>';
+        if (apiId == '36')  return  '<#if data.siteApiI18nMap['36']??>${data.siteApiI18nMap['36'].name}</#if>';
+        if (apiId == '37')  return  '<#if data.siteApiI18nMap['37']??>${data.siteApiI18nMap['37'].name}</#if>';
+        if (apiId == '38')  return  '<#if data.siteApiI18nMap['38']??>${data.siteApiI18nMap['38'].name}</#if>';
     }
 
     /*新开弹窗*/
@@ -1000,11 +1012,15 @@
                                     localStorage.re_url_live = result.defaultLink;
                                 }
                                 window.location="/commonPage/gamePage/live-game.html?apiId="+apiId;
-                            }else if (apiTypeId == "2" && apiId=="15") {
+                            }else if (apiTypeId == "2" || apiTypeId == "5") {
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                if (result.defaultLink.indexOf("https:") > -1) {
+                                    window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                } else {
+                                    window.location=result.defaultLink;
+                                }
                             }else if(apiTypeId == "4" && apiId=="22"){
                                 if (window.localStorage) {
                                     localStorage.re_url_lottery = result.defaultLink;
@@ -1175,8 +1191,19 @@
                     $("#loginForm .code._vr_captcha_box").after('<a href="javascript:void(0);" class="layui-layer-btn0 btn-login dialog_login">登录</a>');
                     // 提示框类型
                     $(layer).addClass("layui-login-dialog");
+                    $.ajax({// 发起请求，如果登陆窗口背景图存在，调用，否则调用默认的
+                        url:'${data.configInfo.sitePath}/images/login_header.png',
+                        success: function () {
+                            $(layer).find(".layui-layer-title").css({
+                                background:"url(${data.configInfo.sitePath}/images/login_header.png) no-repeat"
+                            })
+                        },
+                        error: function (e) {
+                            console.log('登录框背景图不存在');
+                        }
+                    });
                     if(isOpenCaptcha){
-                        $("._vr_captcha_code","#loginForm").attr("src","${data.contextInfo.playerCenterContext}captcha/loginDialog.html?t="+ new Date().getTime().toString(36));
+                        $("._vr_captcha_code.test").attr("src","${data.contextInfo.playerCenterContext}captcha/loginDialog.html?t="+ new Date().getTime().toString(36));
                         $("._vr_captcha_box").show();
                     }
 
@@ -1297,6 +1324,8 @@
                         sessionStorage.is_login = true;
                     }
                     isOpenCaptcha = false;
+                    //登录后隐藏试玩按钮
+                    game_demo();
                 }else{
                     var dataPage = window.location.pathname.split("/")[3];
                     if(dataPage=='loading.html'){
@@ -1316,7 +1345,8 @@
                     if(window.sessionStorage){
                         sessionStorage.is_login = "false";
                     }
-
+                    //未登录显示试玩按钮
+                    game_demo();
                     /*是否显示验证码*/
                     if(data.isOpenCaptcha){
                         /*显示验证码*/
@@ -1342,6 +1372,17 @@
             }
 
         });
+    }
+
+    //是否显示游戏试玩按钮
+    function game_demo() {
+        if(sessionStorage.is_login=="true"){
+            //登录后隐藏试玩按钮
+            $(".game-demo").addClass("hide");
+        }else{
+            //未登录显示试玩按钮
+            $(".game-demo").removeClass("hide");
+        }
     }
     /*
       * @param data 登录成功后的参数
@@ -2208,6 +2249,7 @@
 
     }
     function layerDialogDownload(){
+        qrcode();
         layer.tab({
             area: ['640px','380px'],
             move:".layui-layer-title",
@@ -2351,6 +2393,24 @@
         });
     }
     // layer弹窗函数结束
+
+    function qrcode(){
+        //手机下载二维码
+        var android_url = "";
+        $.ajax({
+            url:"/index/getAppsUrl.html",
+            type:"get",
+            data:{"device":"android"},
+            async:false,
+            success:function (data) {
+                var data = eval('('+data+')');
+                var android_download=data.app;
+                android_url = "data:image/png;base64,"+android_download;
+                $("#download-mobile-qrcode").append("<img src="+android_url+">");
+            }
+        })
+
+    }
 </script>
 
 <#--流量统计代码-->
@@ -2369,7 +2429,7 @@
         </div>
         <div class="form-group code _vr_captcha_box" style="display: none;">
             <input type="text" class="form-control" placeholder="驗證碼" name="captcha" maxlength="4" />
-            <img class="_vr_captcha_code" data-code="loginDialog">
+            <img class="_vr_captcha_code test" data-code="loginDialog">
             <div class="tip" style="display: none;">請輸入驗證碼！</div>
         </div>
         <a href="javascript:void(0);" class="btn-login dialog_login">登入</a>
@@ -2378,3 +2438,109 @@
         <a href="/register.html" class="btn-register">+加入會員</a>
     </form>
 </div>
+
+<!--下载弹窗内容-->
+<div id="download-mobile" style="display:none;">
+    <div class="qrcode" id="download-mobile-qrcode">
+    </div>
+    <p>使用安卓，蘋果手機瀏覽器掃描二維碼，<br />
+        即可下載APP（不可用微信掃碼）
+    </p>
+</div>
+<div id="download-pc" style="display: none;">
+    <div style="padding: 60px;font-size: 24px;">敬請期待！</div>
+    <div style="display: none;">
+        <div class="tit"><span>API名稱</span><span>下載</span></div>
+        <ul class="api-list">
+            <li>
+                <div class="api-name ag">
+                    <div class="nam">AG客戶端</div>
+                    <div class="tip">登入請新增字首dawoo_， <br />如賬號：dawoo_user01</div>
+                </div>
+                <div class="download-btn-group">
+                    <a href="" class="btn-android">安卓APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-ios">蘋果APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-pc">電腦客戶端</a>
+                </div>
+            </li>
+            <li>
+                <div class="api-name pt">
+                    <div class="nam">PT客戶端</div>
+                    <div class="tip">登入請新增字首dawoo_， <br />如賬號：dawoo_user01</div>
+                </div>
+                <div class="download-btn-group">
+                    <a href="" class="btn-android">安卓APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-ios">蘋果APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-pc">電腦客戶端</a>
+                </div>
+            </li>
+            <li>
+                <div class="api-name mg">
+                    <div class="nam">MG客戶端</div>
+                    <div class="tip">登入請新增字首dawoo_， <br />如賬號：dawoo_user01</div>
+                </div>
+                <div class="download-btn-group">
+                    <a href="" class="btn-android">安卓APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-ios">蘋果APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-pc">電腦客戶端</a>
+                </div>
+            </li>
+            <li>
+                <div class="api-name bb">
+                    <div class="nam">BBIN客戶端</div>
+                    <div class="tip">登入請新增字首dawoo_， <br />如賬號：dawoo_user01</div>
+                </div>
+                <div class="download-btn-group">
+                    <a href="" class="btn-android">安卓APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-ios">蘋果APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-pc">電腦客戶端</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<#--
+<!--首页弹窗内容&ndash;&gt;
+<div id="index-modal-content" style="display: none;">
+    <img  src="./images/index-modal-img.jpg">
+    <div class="checkbox-wrap">
+        <input type="checkbox"  />關閉後，不再顯示本彈窗廣告
+    </div>
+</div>
+<!--首页透明弹窗内容&ndash;&gt;
+<div id="index-modal-transparent-content" style="display:none;">
+    <img src="./images/index-modal-transparent.png"/>
+</div>-->

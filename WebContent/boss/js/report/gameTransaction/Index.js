@@ -349,13 +349,16 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $("#selectGame").text(window.top.message.report['operate.list.all']);
             $("input[name=gamecheck]").prop("checked", obj);
             $("input[name=apicheck]").prop("checked", obj);
-            $("input[name='search.apitypeList']").val("");
+            $("input[name='search.apiTypeList']").val("");
             if (obj) {
                 $("#chooseGameType").children("div.input-group").find("span[prompt=prompt]").text("已选全部");
+                this.chooseGameType(e,obj);
+                $(e.currentTarget).unlock();
             } else {
                 $("#chooseGameType").children("div.input-group").find("span[prompt=prompt]").text("请选择");
+                $("input[name='search.apiTypeList']").val("");
+                $(e.currentTarget).unlock();
             }
-            $(e.currentTarget).unlock();
         },
         /**
          * 选择游戏类型绑定事件
@@ -380,9 +383,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     $(this).parents('td').siblings("td").find("input").prop("checked", true);
                 } else {
                     var m = $(this).parent().siblings().find("input:checked");
-                    if (m.length > 0) {
-                        return;
-                    } else {
+                    if (m.length == 0) {
                         $(this).parents('td').siblings("td").find("input").prop("checked", false);
                     }
                 }
@@ -390,7 +391,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
             });
         },
         /**
-         * checkbox回填 数据格式 [{"apiId":"1","apiType":["01"]},{"apiId":"3","apiType":["01"]}]
+         * checkbox回填 数据格式 [{"apiId":"1","gameType":["01"]},{"apiId":"3","gameType":["01"]}]
          */
         reWrite: function () {
             var selectedJson = $("#apitypeList", parent.document).val();
@@ -409,8 +410,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
                             /*回选api*/
                             $(_that).find("input[name='apicheck']").prop("checked", true);
                             var apiName = $(_that).find("span.search-game-title b").text();
-                            $.each(line.apiType, function (k, v) {
-                                /*回选api下的apiType*/
+                            $.each(line.gameType, function (k, v) {
+                                /*回选api下的gameType*/
                                 $(_that).next().children().children("input[type=checkbox]").each(function () {
                                     var gameType = this;
                                     if ($(gameType).val() == v) {
@@ -501,7 +502,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                                 apiGameTypeRelation.apiId = apiId;
                             });
                             //当前行已选的gametype
-                            apiGameTypeRelation.apiType = gameTypes;
+                            apiGameTypeRelation.gameType = gameTypes;
                             selectedList.push(apiGameTypeRelation);
                             gameTypes = [];
                         }

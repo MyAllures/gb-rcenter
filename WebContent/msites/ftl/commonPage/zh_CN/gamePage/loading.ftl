@@ -50,7 +50,6 @@
     });
 
     function fetchAllBalance(){
-        var title ='cch';
         $.ajax({
             url: "/ntl/getWalletBalanceAndAllApiBalance.html?t="+ new Date().getTime().toString(36),
             type: "get",
@@ -131,7 +130,7 @@
                 $(layer).addClass("normal-dialog");
                 $("#token").val(data.token);
             },
-            end: function () {
+            yes: function () {
                 apiLoginReal(apiId,gameCode,apiTypeId);
             }
         });
@@ -169,7 +168,7 @@
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
             },
-            end: function () {
+            yes: function () {
                 apiLoginReal(apiId,gameCode,apiTypeId);
             }
         });

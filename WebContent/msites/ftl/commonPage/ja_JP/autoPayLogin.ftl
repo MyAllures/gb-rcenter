@@ -22,14 +22,14 @@
                                     localStorage.re_url_live = result.defaultLink;
                                 }
                                 window.location="/commonPage/gamePage/live-game.html?apiId="+apiId;
-                            }else if (apiTypeId == "2" && apiId=="15") {
+                            }else if (apiTypeId == "2" || apiTypeId == "5") {
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                if(gameId){
-                                    window.location="/commonPage/gamePage/casino-game-new.html?apiId="+apiId+"&gameId="+gameId;
-                                }else{
+                                if (result.defaultLink.indexOf("https:") > -1) {
                                     window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                } else {
+                                    window.location=result.defaultLink;
                                 }
                             }else if(apiTypeId == "4" && apiId=="22"){
                                 if (window.localStorage) {
@@ -51,11 +51,7 @@
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                if(gameId){
-                                    window.location="/commonPage/gamePage/casino-game-new.html?apiId="+apiId+"&gameId="+gameId;
-                                }else{
-                                    window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
-                                }
+                                window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
                             }else if(apiTypeId == "3"){
                                 if (window.localStorage) {
                                     localStorage.re_url_sport = result.defaultLink;

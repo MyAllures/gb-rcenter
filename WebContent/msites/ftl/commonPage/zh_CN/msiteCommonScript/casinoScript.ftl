@@ -40,7 +40,11 @@
 
                 jackpot_num_S = jackpot_num_N.toLocaleString();
                 for(var i = 0;i<jackpot_num_S.length;i++){
-                    jackpot_html_S+= "<span class='j_num'>"+jackpot_num_S[i]+"</span> "
+                    if(jackpot_num_S[i] === ',' || jackpot_num_S[i] === '.'){
+                        jackpot_html_S+= "<span class='j_dot'>"+jackpot_num_S[i]+"</span> "
+                    } else {
+                        jackpot_html_S+= "<span class='j_num'>"+jackpot_num_S[i]+"</span> "
+                    }
                 }
 
                 $("#jackpot_"+apiId).html(jackpot_html_S);
@@ -117,7 +121,10 @@
             sessionStorage.setItem('api-style','api-slide')
             $(".api-nav-slide").slideDown();
             $(".api-nav-all").slideUp();
-            apiSwiper.reInit();
+            apiSwiper.reInit();// 解决默认为全部展开时，点击切换后api轮播不滚动的问题
+            setTimeout(function () { // api轮播的重新滚动起来
+                apiSwiper.swipeNext();
+            }, 500)
         }
     });
     // 为捕鱼api时， 用获取地址栏字段的方法添加active

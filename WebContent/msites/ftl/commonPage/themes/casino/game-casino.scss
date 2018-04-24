@@ -20,7 +20,7 @@
     .casino{font-family: "微软雅黑";
         a{text-decoration: none;}
         &.theme-white{// 白色主题
-            background: url(./images/bg2.jpg) repeat-y center top;
+           // background: url(./images/bg2.jpg) repeat-y center top;
             &>.container{background:#f7f7f7;}
             .api-nav{// api-tab样式
                 .swiper-container{background: #eee;   
@@ -128,7 +128,7 @@
         }        
         }// 白色主题结束
         &.theme-black{// 黑色主题
-            background: url(./images/bg1.jpg) repeat-y center top;
+            // background: url(./images/bg1.jpg) repeat-y center top;
             &>.container{background:#111111;}
             .api-nav{
                 .swiper-container{background: #222222;  
@@ -441,8 +441,11 @@
             &.sg{  background: url(./images/api-bg/sg_bg.jpg) center top no-repeat;}
         }
         &,.body{height: 100%;width: 100%;overflow: hidden;}
-        .wrapper{border: 10px solid rgba(255,255,255,0.4);width: 100%;border-radius: 10px;position: relative;
-            iframe{border: 0;}
+        .wrapper{border: 10px solid rgba(255,255,255,0.4);width: 100%;border-radius: 10px;position: relative;max-height: 830px;
+            .loading-area{    position: absolute; z-index: 1;   left: 0;    right: 0;    bottom: 0;    top: 0;    text-align: center;    line-height: 505px;    background: rgba(0,0,0,0.7);
+                .gui-spinner{    color: #fff;   width: 24px;    height: 24px;    position: absolute;    top: 0;    left: 0;    right: 0;    bottom: 0;    margin: auto;}
+            }
+            iframe{border: 0;position: relative;z-index: 2;}
     }
         // 关闭按钮样式
         .closeCasinoGame{     background: url(images/icon-close-game.png) no-repeat;
@@ -457,7 +460,7 @@
             transform: rotateZ(-90deg);
         } 
         .game-info{// 右边游戏详情弹层
-            width: 240px;position: absolute;right: 0;top: 0;bottom: 0;background: rgba(0,0,0,0.6);transition:all 0.3s;
+            width: 240px;position: absolute;z-index:3;right: 0;top: 0;bottom: 0;background: rgba(0,0,0,0.6);transition:all 0.3s;
             &.hide_G{width: 0;
                 .hide-btn{    right: -50px; border-top-right-radius: 8px;  border-bottom-right-radius: 8px;  border-top-left-radius: 0;  border-bottom-left-radius: 0;  background-color: rgba(0,0,0,0.5);}
                 .game-info-content{display: none;}
@@ -588,7 +591,7 @@
         display: none;padding: 0 12px;color: #fff;
         &.active{display: block;}
         ul{
-            margin-bottom: 0;
+            margin-bottom: 0;overflow: hidden;
             li{float: left;width: 33.333%;border-bottom: 1px dashed #333;height: 127px;
                 a{color: #fff;text-align: center;display: block;text-decoration: none;
                     .icon{display: block;   height: 100px;background: url(images/side-api-sprite.png) no-repeat;line-height: 100px;
@@ -629,8 +632,12 @@
             }
         }
     }
+    .g-s-tab-wrap{
+        position: absolute;top: 270px;left: 0;bottom: 0;right: 0;
+    }
 }
 .game_bottom{ // 底部浮层的样式
+    &:before{content:'';position: absolute;top: -30px;left: 0;right: 0;height: 30px;}
    display: none; position: fixed;left: 0;right: 0;height: 187px;bottom:-140px;z-index: 1001;background:#fff;transition: all 0.3s; 
     .small-bar{height: 47px;border-top: 3px solid rgba(255,255,255,0.2);background: rgba(0,0,0,0.9);
        .icon-arrow-down{width: 44px;height: 44px;background: #333333 url(images/icon-arrow-down2.png) no-repeat center; display: inline-block;vertical-align: top;}
@@ -686,7 +693,7 @@
 html.fullscreen{// 游戏全屏时候的样式
     .game-detail{z-index: 1002;}
     .body{padding: 0 !important;
-        .wrapper{    height: 100% !important;  width: 100%;  border: 0;
+        .wrapper{    height: 100% !important;  width: 100%;  border: 0;max-height: 100%;
             iframe{width: 100% !important;}
         }
     }

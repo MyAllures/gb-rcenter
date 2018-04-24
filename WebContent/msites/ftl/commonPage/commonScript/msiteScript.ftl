@@ -63,17 +63,4 @@
             $("#api-tabs li a[data-api='"+$dataApi+"']").parent().addClass("active");
         }
     });
-
-
 </script>
-
-<script src="${data.configInfo.ftlRootPath}commonPage/js/websocket/Comet.js"></script>
-<script src="${data.configInfo.ftlRootPath}commonPage/js/websocket//PopUp.js"></script>
-<script type="application/javascript">
-    $(function () {
-        var wsRoot="${wsRoot}";
-        var options = {wsRoot:wsRoot};
-        var mSiteComet = new MSiteComet();
-        mSiteComet.init(options);
-    });
-</script> 
