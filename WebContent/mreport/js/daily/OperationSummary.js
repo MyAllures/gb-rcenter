@@ -148,11 +148,22 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * 总登录次数
          */
         loginCount:function(){
-            var jsonStr = $("#loginCountData").html();
-            var loginCountData = $.parseJSON(jsonStr);
-            var fieldStr = $("#columnsDateFieldList").html();
-            const fieldSet = $.parseJSON(fieldStr);
-            this.drawGroupColumnChart('f4', loginCountData, fieldSet,476);
+            var jsonStr = $("#operationSummaryData").html();
+            var operationSummarys = $.parseJSON(jsonStr);
+            if(operationSummarys == null || operationSummarys.length < 1) return ;
+            var array = [];
+            for(var i = 0 ;i < operationSummarys.length ; i++ ){
+                var data = {};
+                var operationSummary = operationSummarys[i];
+                data['time'] = operationSummary.staticDay;
+                data['登录次数(全部)'] = operationSummary.loginNumPc + operationSummary.loginNumPhone;
+                data['登录次数(PC端)'] = operationSummary.loginNumPc;
+                data['登录次数(手机端)'] = operationSummary.loginNumPhone;
+                array.push(data);
+            }
+            var keys = Object.keys(array[0]);
+            keys.splice(0,1);
+            this.drawGroupColumnChart('f4', array, keys,476);
         },
 
         /**
@@ -166,7 +177,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             for(var i = 0 ;i < operationSummarys.length ; i++ ){
                 var data = {};
                 var operationSummary = operationSummarys[i];
-                data['time'] = operationSummary.staticDayStr;
+                data['time'] = operationSummary.staticDay;
                 data['活跃用户(全部)'] = operationSummary.countActive;
                 data['活跃用户(PC端)'] = operationSummary.activePc;
                 data['活跃用户(安卓App)'] = operationSummary.activeAndroid;
@@ -189,7 +200,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             for(var i = 0 ;i < operationSummarys.length ; i++ ){
                 var data = {};
                 var operationSummary = operationSummarys[i];
-                data['time'] = operationSummary.staticDayStr;
+                data['time'] = operationSummary.staticDay;
                 if('install' == isinstall){
                     data['安装量(全部)'] = operationSummary.installIos + operationSummary.installAndroid;
                     data['安装量(安卓App)'] = operationSummary.installAndroid;
@@ -215,7 +226,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             for(var i = 0 ;i < operationSummarys.length ; i++ ){
                 var data = {};
                 var operationSummary = operationSummarys[i];
-                data['time'] = operationSummary.staticDayStr;
+                data['time'] = operationSummary.staticDay;
                 if('new-deposit-player' == newPlayerType){
                     data['新增玩家存款人数'] = operationSummary.newPlayerDeposit;
                 }else if('new-player' == newPlayerType){
@@ -239,7 +250,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             for(var i = 0;i < resultData.length ; i ++ ){
                 var result = resultData[i];
                 var data = {
-                    'staticDayStr':result.staticDayStr
+                    'staticDay':result.staticDay
                 };
                 if('rakeback-men' == rakebackType){
                     data['反水人数'] = result.rakebackPlayer;
@@ -251,10 +262,10 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             }
 
             if('rakeback-men' == rakebackType){
-                this.drawBasicColumnChart('b7', array, '反水人数', 'staticDayStr*反水人数',379);
+                this.drawBasicColumnChart('b7', array, '反水人数', 'staticDay*反水人数',379);
             }else if('rakeback-cash' == rakebackType){
                 // jsonStr = $("#rakebackCash").html();
-                this.drawBasicColumnChart('b7', array, '反水金额', 'staticDayStr*反水金额',356);
+                this.drawBasicColumnChart('b7', array, '反水金额', 'staticDay*反水金额',356);
             }
         },
 
@@ -316,13 +327,14 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * 分组柱状图
          */
         drawGroupColumnChart: function(containerName, data, fieldSet,width) {
+            if(data == null || data.length < 1) return;
             const ds = new DataSet();
             const dv = ds.createView().source(data);
             dv.transform({
                 type: 'fold',
                 fields: fieldSet, // 展开字段集
-                key: '周期', // key字段
-                value: '存取差额', // value字段
+                key: 'name', // key字段
+                value: 'sum' // value字段
             });
             const chart = width ? new G2.Chart({
                 container: containerName,
@@ -338,7 +350,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 padding: [20, 5, 65, 50]
             });
             chart.source(dv);
-            chart.interval().position('周期*存取差额').color('name').adjust([{
+            chart.interval().position('time*sum').color('name').adjust([{
                 type: 'dodge',
                 marginRatio: 1 / 32
             }]);
@@ -357,7 +369,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             });
             chart.source(data);
             chart.scale(scale, {
-                //tickInterval: 2000
+                // tickInterval: 2000
             });
             chart.interval().position(position);
             chart.render();
