@@ -6,7 +6,7 @@
 function loadCustomer(obj, options) {
     if (isNative) {
         nativeGoToCustomerPage();
-    }else{
+    } else {
         var url = options.url;
         if (!url) {
             var ajaxOpt = {
@@ -44,7 +44,7 @@ function downLoadApp(obj, options) {
                     login(targetUrl);
                 }, 1500);
             } else {
-                goToUrl(targetUrl);
+                goToUrl(targetUrl, null, targetUrl);
             }
         }
     };
