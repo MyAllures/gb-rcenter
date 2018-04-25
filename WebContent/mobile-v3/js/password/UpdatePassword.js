@@ -94,7 +94,8 @@ function updatePassword(obj, options) {
             // var datas = eval("("+data+")");
             if (data.state) {
                 toast(data.msg);
-                mui.back(); //如果修改登录密码成功则返回到我的页面
+                //mui.back(); //如果修改登录密码成功则返回到我的页面
+                logout();
             } else {
                 toast(data.msg);
                 saveCallbak(data);

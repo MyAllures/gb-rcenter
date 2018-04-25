@@ -326,13 +326,16 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $("#selectGame").text(window.top.message.report['operate.list.all']);
             $("input[name=gamecheck]").prop("checked", obj);
             $("input[name=apicheck]").prop("checked", obj);
-            $("input[name='search.apitypeList']").val("");
+            $("input[name='search.apiTypeList']").val("");
             if (obj) {
                 $("#chooseGameType").children("div.input-group").find("span[prompt=prompt]").text(window.top.message.report_auto['已选全部']);
+                this.chooseGameType(e,obj);
+                $(e.currentTarget).unlock();
             } else {
                 $("#chooseGameType").children("div.input-group").find("span[prompt=prompt]").text(window.top.message.report_auto['请选择']);
+                $("input[name='search.apiTypeList']").val("");
+                $(e.currentTarget).unlock();
             }
-            $(e.currentTarget).unlock();
         },
         /**
          * 选择游戏类型绑定事件

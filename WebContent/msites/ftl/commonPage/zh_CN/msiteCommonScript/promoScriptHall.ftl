@@ -140,7 +140,7 @@
 
             if (data.length < 1) {
                 if ($(actObj).data("rankId") != "all" && flag) {
-                    $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " disabled notfit").text("未满足条件");
+                    $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " notfit").attr("onclick","").text("未满足条件");
                 }
             }
             if (data.length > 0 && $(actObj).data("rankId") != "all" && flag) {
@@ -151,7 +151,7 @@
                     }
                 }
                 if (!isContain) {
-                    $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " disabled notfit").text("未满足条件");
+                    $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " notfit").attr("onclick","").text("未满足条件");
                 }
             }
 
@@ -161,7 +161,7 @@
     //参加优惠点击事件
     function joinPromo(aplyObj, isRefresh) {
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
-        $(aplyObj).attr("disabled","disabled");
+        $(aplyObj).attr("onclick","");
         /*if(ctime > 0){
             return false;
         }*/
@@ -203,7 +203,7 @@
                     if(code=='money'){
                         var searchId = $(aplyObj).parents("._vr_promo_check").data("searchid");
                         canShowLottery(searchId);
-                        $(aplyObj).removeAttr("disabled");
+                        $(aplyObj).attr("onclick","joinPromo(this)");
                     }else{
                         applyActivities(aplyObj);
                     }
@@ -233,7 +233,7 @@
             },
             success: function (data) {
                 showActivityProcessDialog(data, aplyObj, isRefresh);
-                $(aplyObj).removeAttr("disabled");
+                $(aplyObj).attr("onclick","joinPromo(this)");
             }
         });
 
@@ -338,7 +338,7 @@
             data: JSON.stringify(dataParam),
             success: function (data) {
                 showApplyActivityResult(data, isRefresh, aplyObj);
-                $(aplyObj).removeAttr("disabled");
+                $(aplyObj).attr("onclick","joinPromo(this)");
 
             },
             error: function () {
