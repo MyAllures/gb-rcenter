@@ -738,9 +738,11 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
                 dataType: 'json',
                 type: "POST",
                 success: function (data) {
-                  /*  if (data.state) {
-                        _this.query(e,opt);
-                    }*/
+                    if (data.state) {
+                        page.showPopover(e,{},"success",window.top.message.common['save.success'],true);
+                    }else {
+                        page.showPopover(e,{},"warning",window.top.message.common['save.failed'],true);
+                    }
                     $(e.currentTarget).unlock();
                 }
             });
