@@ -150,7 +150,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 this.pages[this.lastHash].refresh = (refresh || false);
                 window.location.hash = this.lastHash;
             } else {
-                window.location = root+"/";
+                window.location = root + "/";
             }
         },
         /**
@@ -1320,14 +1320,18 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 }
             });
         },
-        showCustomerWin:function(){
+        showCustomerWin: function (status) {
             var btnOption = {};
             btnOption.target = root + "/customer/view.html";
             btnOption.text = '在线客服';
             btnOption.callback = function (e, opt) {
 
             };
-            this.doDialog({},btnOption);
+            this.doDialog({
+                page: {
+                    status: status
+                }
+            }, btnOption);
         }
     });
 

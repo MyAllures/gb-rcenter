@@ -88,7 +88,6 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
             }
         },
         socketCallBack: function (message) {
-            debugger;
             console.log(message);
         },
         appendMessage: function (message) {

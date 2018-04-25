@@ -10,6 +10,7 @@ define(['gb/components/Comet','site/index/PopUp','cookie'], function(Comet,PopUp
             param.success = function () {
                 console.info(window.top.message.index_auto['连接成功']);
                 subscribes = [
+                    {subscribeType: "IM", callBack: popUp.imCallBack},
                     {subscribeType:"PCENTER-popUp-Notice",callBack:popUp.popUpCallBack},
                     {subscribeType:"SYS_ANN",callBack:popUp.dialogCallBack},
                     {subscribeType:"SITE_ANN",callBack:popUp.dialogCallBack},

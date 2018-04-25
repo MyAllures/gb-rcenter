@@ -13,6 +13,9 @@ define(['gb/components/PopUp'], function (PopUp) {
             var date = msgBody.title;
             popUp.pop(content, date, "success");
         },
+        imCallBack : function(data){
+            console.info("订阅类型为MCENTER-popUp-im的订阅点收到消息，成功调用回调函数，参数值为" + data);
+        },
         dialogCallBack: function (data) {
             var dataObj = $.parseJSON(data);
             console.info(window.top.message.index_auto['订阅类型为'] + dataObj.subscribeType + "的订阅点收到消息，成功调用回调函数，参数值为" + data);

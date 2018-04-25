@@ -19,9 +19,8 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
         comet: window.top.comet,
         init: function () {
             var vm = this;
-            vm.comet.subscribeMsg("IM", vm.socketCallBack);
-            vm.els.ConnectionSatateEl.html('正在连接...');
-            vm.els.ConnectionSatateEl.addClass('connect');
+            var status = openPage.status;
+            vm.setStatus(status);
             /*if (vm.comet.isConnect) {
                 vm.els.ConnectionSatateEl.html('连接成功');
                 vm.els.ConnectionSatateEl.removeClass('unConnected').addClass('connected');
@@ -49,6 +48,17 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
         },
         onPageLoad: function () {
             this._super();
+        },
+        setStatus : function(status){
+            var _this = this;
+            if(!status){
+                _this.els.ConnectionSatateEl.html('正在连接...');
+            }else{
+                switch (status) {
+                    case 'accepted' : _this.status = status;_this.els.ConnectionSatateEl.html('等待响应');_this.els.ConnectionSatateEl.removeClass('unConnected').addClass('connected');break;
+                    case 'connected' : _this.status = status;_this.els.ConnectionSatateEl.html('连接成功');_this.els.ConnectionSatateEl.removeClass('unConnected').addClass('connected');break;
+                }
+            }
         },
         html: function () {
             var vm = this;
