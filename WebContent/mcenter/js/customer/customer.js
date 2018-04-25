@@ -9,6 +9,7 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
             ConnectionSatateEl: $('#connection-state-el')
         },
         status : 'connect',
+        defaultMessage : '您好，请问有什么可以帮您？',
         data: {
             sendMessageData: {
                 sendMessageText: '',
@@ -18,10 +19,14 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
         },
         comet: window.top.comet,
         init: function () {
-            var vm = this;
-            vm.setStatus();
-            vm._super();
-            vm.comet.websocket.send(JSON.stringify(vm.createSendVo()));
+            var _this = this;
+            _this.setStatus();
+            _this._super();
+            if(_this.status == 'normal'){
+
+            }else {
+                _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
+            }
             /*if (vm.data.messages.length == 0) {
                 vm.data.messages.push({
                     type: 1,
@@ -51,7 +56,7 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
             }else{
                 switch (status) {
                     case 'accepted' : _this.status = status;_this.els.ConnectionSatateEl.html('正在连接...');break;
-                    case 'connected' : _this.status = status;_this.els.ConnectionSatateEl.html('连接成功');_this.els.ConnectionSatateEl.removeClass('unConnected').addClass('connected');break;
+                    case 'normal' : _this.status = status;_this.els.ConnectionSatateEl.html('连接成功');_this.els.ConnectionSatateEl.removeClass('unConnected').addClass('connected');break;
                 }
             }
         },
@@ -88,18 +93,31 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
                     status: _this.status,
                     receiveUserId :imMessage ? imMessage.sendUserId : null,
                     receiveUserName :imMessage ? imMessage.sendUserName : null,
+                    receiveUserSiteId : imMessage ? imMessage.sendUserSiteId : null,
                     messageBody: {
                         messageType: 'text',
-                        textBody: text
+                        textBody: text ? text : _this.defaultMessage
                     }
                 })
             }
         },
         socketCallBack: function (data) {
-            debugger;
+            var _this = this;
             console.log(data);
+            if(data.imMessage.status == 'connected'){
+                data.imMessage.status = 'normal';
+                _this.els.btnEL.attr('disabled',false);
+            }else if(data.imMessage.status == 'normal'){
+                var imMessage = data.imMessage;
+                _this.appendMessage({
+                    message : imMessage.messageBody.textBody ? imMessage.messageBody.textBody : '',
+                    time : new Date(),
+                    name : imMessage.sendUserName,
+                    type : 1
+                });
+            }
             openPage.imMessage = data.imMessage;
-            setStatus();
+            _this.setStatus();
         },
         appendMessage: function (message) {
             var vm = this;
@@ -109,11 +127,11 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
         },
         getHtmlString: function (data) {
             var html = data.type == 1 ?
-                '<div class="service-person" ><p>客服<span>' + window.top.topPage.formatDateTime(data.time) + '</span></p>' +
+                '<div class="service-person" ><p>客服<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
                 '<div class="customer_message">' + data.message + '</div>' +
                 '</div>'
                 :
-                '<div class="guest-person" ><p>我<span>' + window.top.topPage.formatDateTime(data.time) + '</span></p>' +
+                '<div class="guest-person" ><p>我<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
                 '<div class="customer_message">' + data.message + '</div>' +
                 '</div>';
             return html;

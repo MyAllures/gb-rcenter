@@ -1,4 +1,4 @@
-define(['gb/components/PopUp'], function (PopUp) {
+define(['gb/components/PopUp','bootstrap-dialog'], function (PopUp,BootstrapDialog) {
 
     return PopUp.extend({
         init: function () {
@@ -17,8 +17,9 @@ define(['gb/components/PopUp'], function (PopUp) {
             console.info("订阅类型为MCENTER-popUp-im的订阅点收到消息，成功调用回调函数，参数值为" + data);
             data = JSON.parse(data);
             var userId = data.imMessage.sendUserId;
-            var dialogs = BootstrapDialog.dialogs;
-            $("iframe", dialog[0].$modalContent)[0].contentWindow.socketCallBack(data);
+            var dialogs = BootstrapDialog.dialogsArray;
+            var dialog = dialogs[0];
+            $('iframe',dialog.$modalContent)[0].contentWindow.page.socketCallBack(data);
         },
         dialogCallBack: function (data) {
             var dataObj = $.parseJSON(data);

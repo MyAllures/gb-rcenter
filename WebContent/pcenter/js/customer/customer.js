@@ -66,6 +66,7 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
                     status: _this.status,
                     receiveUserId :imMessage ? imMessage.sendUserId : null,
                     receiveUserName :imMessage ? imMessage.sendUserName : null,
+                    receiveUserSiteId : imMessage ? imMessage.sendUserSiteId : null,
                     messageBody: {
                         messageType: 'text',
                         textBody: text
@@ -73,7 +74,7 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
                 })
             }
         },
-        setStatus : function(status){
+        setStatus : function(){
             var status;
             var imMessage = openPage.imMessage;
             if(imMessage) status = imMessage.status;
@@ -83,16 +84,24 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
             }else{
                 switch (status) {
                     case 'accepted' : _this.status = status;_this.els.ConnectionSatateEl.html('正在连接...');break;
-                    case 'connected' : _this.status = status;_this.els.ConnectionSatateEl.html('连接成功');_this.els.ConnectionSatateEl.removeClass('unConnected').addClass('connected');break;
+                    case 'normal' : _this.status = status;_this.els.ConnectionSatateEl.html('连接成功');_this.els.ConnectionSatateEl.removeClass('unConnected').addClass('connected');break;
                 }
             }
         },
         socketCallBack: function (data) {
             var _this = this;
-            console.log(data);
             if(data.imMessage.status == 'accepted'){
-                _this.status = 'connected';
+                data.imMessage.status = 'normal';
+                _this.els.btnEL.attr('disabled',false);
             }
+            var imMessage = openPage.imMessage = data.imMessage;
+            _this.setStatus();
+            _this.appendMessage({
+                message : imMessage.messageBody.textBody ? imMessage.messageBody.textBody : '',
+                time : new Date(),
+                name : imMessage.sendUserName,
+                type : 1
+            });
         },
         appendMessage: function (message) {
             var vm = this;
@@ -102,11 +111,11 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
         },
         getHtmlString: function (data) {
             var html = data.type == 1 ?
-                '<div class="service-person" ><p>客服<span>' + window.top.topPage.formatDateTime(data.time) + '</span></p>' +
+                '<div class="service-person" ><p>'+data.name+'<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
                 '<div class="customer_message">' + data.message + '</div>' +
                 '</div>'
                 :
-                '<div class="guest-person" ><p>我<span>' + window.top.topPage.formatDateTime(data.time) + '</span></p>' +
+                '<div class="guest-person" ><p>我<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
                 '<div class="customer_message">' + data.message + '</div>' +
                 '</div>';
             return html;
