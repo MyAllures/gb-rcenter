@@ -404,7 +404,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 // forceFit: true,
                 height: 400,
                 width:476,
-                padding: [20, 8, 95, 50]
+                padding: [20, 26, 105, 50]
             });
             const dv = ds.createView().source(data);
             dv.transform({
@@ -417,6 +417,13 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 label: {
                     formatter: function(val) {
                         return val;
+                    }
+                }
+            });
+            chart.axis('time', {
+                label: {
+                    formatter: function(time) {
+                        return time + ' ';
                     }
                 }
             });
