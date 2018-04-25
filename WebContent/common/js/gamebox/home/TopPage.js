@@ -1319,6 +1319,19 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                     document.title = _this.currentMenuTitle();
                 }
             });
+        },
+        showCustomerWin:function(){
+              /*this.openDialog({
+                  title:'在线客服',
+                  message:'dawdwadaw'
+              });*/
+            var btnOption = {};
+            btnOption.target = root + "/customer/view.html";
+            btnOption.text = '在线客服';
+            btnOption.callback = function (e, opt) {
+
+            };
+            this.doDialog({},btnOption);
         }
     });
 
