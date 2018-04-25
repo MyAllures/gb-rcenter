@@ -1321,10 +1321,6 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
             });
         },
         showCustomerWin:function(){
-              /*this.openDialog({
-                  title:'在线客服',
-                  message:'dawdwadaw'
-              });*/
             var btnOption = {};
             btnOption.target = root + "/customer/view.html";
             btnOption.text = '在线客服';

@@ -14,6 +14,27 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var date = msgBody.date;
             popUp.pop(content, date, "success");
         },
+        imCallBack : function(data){
+            console.info("订阅类型为MCENTER-popUp-im的订阅点收到消息，成功调用回调函数，参数值为" + data);
+            var $textAndPic = $('<div></div>');
+            $textAndPic.append('nick');
+            $textAndPic.append('<div>您好！</div>');
+            window.top.popUp.openDialog({
+                title: '您收到新的客户消息',
+                message: $textAndPic,
+                buttons: [{
+                    label: '接收',
+                    action: function(dialogRef){
+                        dialogRef.close();
+                    }
+                }, {
+                    label: '繁忙',
+                    action: function(dialogRef){
+                        dialogRef.close();
+                    }
+                }]
+            });
+        },
         dialogCallBack: function (data) {
             console.info("订阅类型为MCENTER-dialog-Notice的订阅点收到消息，成功调用回调函数，参数值为" + data);
             var msgBody = $.parseJSON($.parseJSON(data).msgBody);
