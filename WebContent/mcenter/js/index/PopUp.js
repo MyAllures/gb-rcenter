@@ -15,7 +15,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             popUp.pop(content, date, "success");
         },
         imCallBack : function(data){
-            console.info("订阅类型为IM的订阅点收到消息，成功调用回调函数，参数值为" + data);
+            //console.info("订阅类型为IM的订阅点收到消息，成功调用回调函数，参数值为" + data);
             data = JSON.parse(data);
             if(data.imMessage.status == 'connect') {
                 var $textAndPic = $('<div style="margin: 5px 10px 30px;"></div>');

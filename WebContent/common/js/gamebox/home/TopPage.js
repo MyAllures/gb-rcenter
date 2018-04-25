@@ -1328,6 +1328,9 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
             btnOption.callback = function (e, opt) {
                 $('iframe',opt.dialogRef.$modalContent)[0].contentWindow.page.disConnect();
             };
+            if(!imMessage){
+                $(".customer-button").attr('disabled',true);
+            }
             this.doDialog({
                 page: {
                     imMessage: imMessage

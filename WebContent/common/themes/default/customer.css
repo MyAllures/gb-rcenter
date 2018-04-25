@@ -22,6 +22,10 @@
     cursor: pointer;
 }
 
+.customer-affix[disabled]{
+    background: rgba(125, 125, 125, 0.9) !important;
+}
+
 .center {
     text-align: center;
 }
