@@ -34,6 +34,31 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         bindEvent:function(){
             this._super();
             var _this = this;
+
+            /**
+             * 存取差额周期切换事件
+             */
+            $(".balanceBtn .btn").click(function() {
+                $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
+                _this.loadEffectiveData($(this).attr('value'));
+            });
+
+            /**
+             * 有效投注周期切换事件
+             */
+            $(".effectiveBtn .btn").click(function() {
+                $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
+                _this.loadEffectiveData($(this).attr('value'));
+            });
+
+            /**
+             * 损益周期切换事件
+             */
+            $(".profitLossBtn .btn").click(function() {
+                $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
+                _this.loadEffectiveData($(this).attr('value'));
+            });
+
             //活跃用户和登录次数切换事件
             $("._addPrimary.active-user .btn").click(function(){
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
@@ -141,7 +166,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         profitLossColumnChart: function() {
             var jsonStr = $("#operationSummaryData").html();
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z3', data, 'transactionProfitLoss', 'staticDay*transactionProfitLoss', 300);
+            this.drawBasicColumnChart('z3', data, 'transactionProfitLoss', 'staticDay*transactionProfitLoss', '损益', 300);
         },
 
         /**
@@ -552,6 +577,13 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             });
 
             chart.render();
+        },
+
+        /**
+         * 异步加截有效投注数据
+         * @param type
+         */
+        loadEffectiveData: function(type) {
         }
     });
 });
