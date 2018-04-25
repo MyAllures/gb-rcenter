@@ -15,14 +15,14 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             popUp.pop(content, date, "success");
         },
         imCallBack : function(data){
-            console.info("订阅类型为MCENTER-popUp-im的订阅点收到消息，成功调用回调函数，参数值为" + data);
+            console.info("订阅类型为IM的订阅点收到消息，成功调用回调函数，参数值为" + data);
             data = JSON.parse(data);
             if(data.imMessage.status == 'connect') {
                 var $textAndPic = $('<div style="margin: 5px 10px 30px;"></div>');
                 var $personMessage = $('<div class="service-person"></div>');
                 $personMessage.append('<p>' + data.imMessage.sendUserName + '<span>' + window.top.topPage.formatDateTime(new Date(), "yyyy-MM-dd HH:mm") + '</span></p>');
                 var text = data.imMessage.messageBody.textBody;
-                if (!text) text = '我需要您的帮助';
+                if (!text) text = '我需要你的帮助';
                 $personMessage.append('<div class="customer_message">' + text + '</div>');
                 $textAndPic.append($personMessage);
                 popUp.showDialog({

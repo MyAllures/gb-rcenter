@@ -1,12 +1,12 @@
 define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
 
     return BaseEditPage.extend({
-        //comet : new Comet(),
         els: {
             contontEl: $('.ivu-scroll-content'),
             btnEL: $('#submitMessageBtn'),
             textEl: $('#messageTextArea'),
-            ConnectionSatateEl: $('#connection-state-el')
+            ConnectionSatateEl: $('#connection-state-el'),
+            scrollEl:$('.ivu-scroll-container')
         },
         status : 'connect',
         data: {
@@ -32,6 +32,22 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
         },
         onPageLoad: function () {
             this._super();
+        },
+        setStatus : function(){
+            var status;
+            var imMessage = openPage.imMessage;
+            if(imMessage) status = imMessage.status;
+            var _this = this;
+            if(!status){
+                _this.els.ConnectionSatateEl.html('等待连接...');
+            }else{
+                switch (status) {
+                    case 'accepted' : _this.status = status;_this.els.ConnectionSatateEl.html('正在连接...');break;
+                    case 'normal' : _this.status = status;_this.els.ConnectionSatateEl.html('连接成功');_this.els.ConnectionSatateEl.removeClass('unConnected').addClass('connected');break;
+                    case 'closed' : _this.status = status;_this.els.ConnectionSatateEl.html('连接已断开');_this.els.ConnectionSatateEl.removeClass('connected').addClass('unConnected');break;
+                    default: break;
+                }
+            }
         },
         html: function () {
             var vm = this;
@@ -74,20 +90,6 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
                 })
             }
         },
-        setStatus : function(){
-            var status;
-            var imMessage = openPage.imMessage;
-            if(imMessage) status = imMessage.status;
-            var _this = this;
-            if(!status){
-                _this.els.ConnectionSatateEl.html('等待连接...');
-            }else{
-                switch (status) {
-                    case 'accepted' : _this.status = status;_this.els.ConnectionSatateEl.html('正在连接...');break;
-                    case 'normal' : _this.status = status;_this.els.ConnectionSatateEl.html('连接成功');_this.els.ConnectionSatateEl.removeClass('unConnected').addClass('connected');break;
-                }
-            }
-        },
         socketCallBack: function (data) {
             var _this = this;
             if(data.imMessage.status == 'accepted'){
@@ -107,7 +109,7 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
             var vm = this;
             vm.data.messages.push(message);
             $(vm.getHtmlString(message)).appendTo(vm.els.contontEl);
-
+            _this.els.scrollEl.scrollTop(_this.els.contontEl.height());
         },
         getHtmlString: function (data) {
             var html = data.type == 1 ?
@@ -119,6 +121,9 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
                 '<div class="customer_message">' + data.message + '</div>' +
                 '</div>';
             return html;
+        },
+        disConnect:function(){
+
         }
     });
 });

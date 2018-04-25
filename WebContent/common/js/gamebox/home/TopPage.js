@@ -721,6 +721,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                     if (_this.taskManager && _this.taskManager.timingCountTask) {
                         taskManager.timingCountTask();
                     }
+                    btnOption.dialogRef = dialog;
                     _this._callbackDialog(e, btnOption)
                 }
             };
@@ -1325,7 +1326,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
             btnOption.target = root + "/customer/view.html";
             btnOption.text = '在线客服';
             btnOption.callback = function (e, opt) {
-
+                $('iframe',opt.dialogRef.$modalContent)[0].contentWindow.page.disConnect();
             };
             this.doDialog({
                 page: {
