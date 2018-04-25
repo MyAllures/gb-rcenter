@@ -95,6 +95,12 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             if (e.returnValue) {
                 window.location.reload();
             }
+        },
+        closePageAndRefresh:function (e) {
+            if (e.returnValue) {
+                this.returnValue=true;
+                this.closePage();
+            }
         }
     });
 });
