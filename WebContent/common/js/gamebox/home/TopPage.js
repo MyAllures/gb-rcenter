@@ -1320,7 +1320,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 }
             });
         },
-        showCustomerWin: function (status) {
+        showCustomerWin: function (imMessage) {
             var btnOption = {};
             btnOption.target = root + "/customer/view.html";
             btnOption.text = '在线客服';
@@ -1329,7 +1329,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
             };
             this.doDialog({
                 page: {
-                    status: status
+                    imMessage: imMessage
                 }
             }, btnOption);
         }

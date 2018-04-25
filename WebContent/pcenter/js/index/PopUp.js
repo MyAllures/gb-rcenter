@@ -15,6 +15,10 @@ define(['gb/components/PopUp'], function (PopUp) {
         },
         imCallBack : function(data){
             console.info("订阅类型为MCENTER-popUp-im的订阅点收到消息，成功调用回调函数，参数值为" + data);
+            data = JSON.parse(data);
+            var userId = data.imMessage.sendUserId;
+            var dialogs = BootstrapDialog.dialogs;
+            $("iframe", dialog[0].$modalContent)[0].contentWindow.socketCallBack(data);
         },
         dialogCallBack: function (data) {
             var dataObj = $.parseJSON(data);

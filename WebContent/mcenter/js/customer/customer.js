@@ -19,15 +19,7 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
         comet: window.top.comet,
         init: function () {
             var vm = this;
-            var status = openPage.status;
-            vm.setStatus(status);
-            /*if (vm.comet.isConnect) {
-                vm.els.ConnectionSatateEl.html('连接成功');
-                vm.els.ConnectionSatateEl.removeClass('unConnected').addClass('connected');
-            } else {
-                vm.els.ConnectionSatateEl.html('连接失败');
-                vm.els.ConnectionSatateEl.removeClass('connected').addClass('unConnected');
-            }*/
+            vm.setStatus();
             vm._super();
             vm.comet.websocket.send(JSON.stringify(vm.createSendVo()));
             /*if (vm.data.messages.length == 0) {
@@ -49,13 +41,16 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
         onPageLoad: function () {
             this._super();
         },
-        setStatus : function(status){
+        setStatus : function(){
+            var status;
+            var imMessage = openPage.imMessage;
+            if(imMessage) status = imMessage.status;
             var _this = this;
             if(!status){
-                _this.els.ConnectionSatateEl.html('正在连接...');
+                _this.els.ConnectionSatateEl.html('等待连接...');
             }else{
                 switch (status) {
-                    case 'accepted' : _this.status = status;_this.els.ConnectionSatateEl.html('等待响应');_this.els.ConnectionSatateEl.removeClass('unConnected').addClass('connected');break;
+                    case 'accepted' : _this.status = status;_this.els.ConnectionSatateEl.html('正在连接...');break;
                     case 'connected' : _this.status = status;_this.els.ConnectionSatateEl.html('连接成功');_this.els.ConnectionSatateEl.removeClass('unConnected').addClass('connected');break;
                 }
             }
@@ -86,10 +81,13 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
         },
         createSendVo: function (text) {
             var _this = this;
+            var imMessage = openPage.imMessage;
             return {
                 _S_COMET: 'IM',
                 message: JSON.stringify({
                     status: _this.status,
+                    receiveUserId :imMessage ? imMessage.sendUserId : null,
+                    receiveUserName :imMessage ? imMessage.sendUserName : null,
                     messageBody: {
                         messageType: 'text',
                         textBody: text
@@ -97,9 +95,11 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
                 })
             }
         },
-        socketCallBack: function (type,message) {
+        socketCallBack: function (data) {
             debugger;
-            console.log(message);
+            console.log(data);
+            openPage.imMessage = data.imMessage;
+            setStatus();
         },
         appendMessage: function (message) {
             var vm = this;
