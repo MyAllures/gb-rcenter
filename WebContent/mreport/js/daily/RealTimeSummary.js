@@ -52,6 +52,11 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
 
         initG2:function(realtimeType){
             $("#mountNode").html(null);
+            if( 'deposit' == realtimeType || 'effcTransaction' == realtimeType || 'realtimeProfitLoss' == realtimeType){
+                $("#explainText").html("以日合计 单位(￥)");
+            }else{
+                $("#explainText").html("以日合计 单位(个)");
+            }
             const data = this.setData(realtimeType);
             if(data == null || data.length < 1) return;
 
@@ -61,7 +66,8 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
             const chart = new G2.Chart({
                 container: 'mountNode',
                 forceFit: true,
-                width: 500
+                width: 500,
+                padding: [38, 36, 88, 78]
             });
             if('realtimeProfitLoss' == realtimeType){
                 chart.source(data);
