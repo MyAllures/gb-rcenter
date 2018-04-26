@@ -37,7 +37,8 @@ function downLoadApp(obj, options) {
     var ajaxOption = {
         url: root + '/downLoad/downLoadShowQrcode.html',
         success: function (data) {
-            var targetUrl = root + "/downLoad/downLoad.html";
+            var userAgent = whatOs();
+            var targetUrl = root + "/downLoad/downLoad.html?userAgent=" + userAgent;
             if (data.showQrCode == true && data.isLogin != true) {
                 toast("请登入下载");
                 window.setTimeout(function () {
