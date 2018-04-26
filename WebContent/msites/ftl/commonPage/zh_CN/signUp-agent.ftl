@@ -8,10 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
     <title><#if data.siteInfo.title?default('')!=''>${data.siteInfo.title}<#else >${data.siteInfo.siteName}</#if></title>
+    <link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/gui-base.css">
     <link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/common.css" type="text/css" />
     <link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/style.css" type="text/css" />
     <link rel="icon" type="image/png" href="${data.configInfo.sitePath}/images/favicon.png" sizes="32x32">
+    <style>
+        .layui-layer.normal-dialog.signAgent-dialog .layui-layer-content{height: 400px !important;}
+        .layui-layer.normal-dialog.signAgent-dialog .layui-layer-btn { padding: 10px 15px 10px;}
+    </style>
 </head>
 
 <body class="main-jumbotron login-jumbotron">
@@ -193,7 +198,31 @@
                                 <input class="form-control" type="text" name="phone.contactValue" placeholder="请输入正确的手机号">
                             </div>
                         </div>
+                        <#--<#if data.agentValidateRegisterMap['isAgentPhoneValid']?exists && data.playerValidateRegisterMap['isAgentPhoneValid']>
+                            <input name="checkPhone" value="checkPhone" type="hidden">
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-12-3 control-label">
+                                    手机验证码
+                                    <#if data.playerRequiredJson?contains(field.name)>
+                                        <span class="text-danger">*</span>
+                                    </#if>
+                                </label>
+                                <div class="col-12-6">
+                                    <div class="input-group">
+                                        <input type="hidden" value="11" name="phone.status">
+                                        <input type="text" class="form-control error" name="phoneCode" maxlength="6" placeholder="" aria-required="true" aria-invalid="true">
+                                        <span class="input-group-btn">
+                                                                    <a href="javascript:void(0)" type="button" class="btn btn-info btn-block" onclick="validateCellPhone(this)">
+                                                                        发送验证码
+                                                                    </a>
+                                                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </#if>-->
                     </#if>
+
+
                     <#if field.name == '201'>
                         <div class="form-group">
                             <label for="" class="col-sm-2 control-label">邮箱</label>
@@ -401,12 +430,29 @@
     window.top.language = "en-US";
 </script>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/jquery/jquery-1.11.3.min.js"></script>
+<script src="${data.configInfo.ftlRootPath}commonPage/js/layer.js"></script>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/bootstrap.min.js"></script>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/bootstrap-dialog.min.js"></script>
 <script src="${resComRoot}/js/jquery/plugins/jquery.validate/jquery.validate.js"></script>
 <script src="${resComRoot}/js/gamebox/common/jquery.validate.extend.msites.js"></script>
 
 <script>
+    // 新弹窗插件配置
+    $(function () {
+        // layer默认配置
+        layer.config({
+            type:0,
+            move:".layui-layer-title",
+            title:true,
+            offset:"auto",
+            btnAlign:"r",
+            closeBtn:"2",
+            shade:[0.7,"#000"],
+            shadeClose:true,
+            time:0,
+            resize:false
+        });
+    });
     $(function () {
         resetLocal();
         $("._captcha_code","#regForm").attr("src","${data.contextInfo.playerCenterContext}captcha/apcregister.html?t="+ new Date().getTime().toString(36));
@@ -483,7 +529,7 @@
     // Modal 模态框
     $("#login-agreement").click(function() {
 
-        BootstrapDialog.show({
+        /*BootstrapDialog.show({
             title:'代理注册协议',
             type: 'default',
             closable: false,
@@ -509,7 +555,27 @@
             data: {
                 'pageToLoad': '/commonPage/modal/agent-agreement.html'
             }
+        });*/
+        var loAgree = layer.open({
+            content:'<#if data.agentValidateRegisterMap.regProtocol??> ${data.agentValidateRegisterMap.regProtocol.value} </#if>',
+            title:'代理注册协议',
+            skin:'layui-layer-brand',
+            btn:["我不同意","我同意"],
+            area: ['640px','500px'],
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("normal-dialog").addClass("signAgent-dialog");
+            },
+            yes: function(){
+                window.location ="/agent.html";
+            },
+            btn2: function () {
+                layer.close(loAgree);
+            }
         });
+
     });
 
     var $form = $('#regForm');
@@ -635,7 +701,7 @@
                 },
                 success: function (data) {
                     if(data){
-                        BootstrapDialog.show({
+                        /*BootstrapDialog.show({
                             title:'提示',
                             type: BootstrapDialog.TYPE_PRIMARY,
                             closable: false,
@@ -650,6 +716,21 @@
                                     window.location.href ="/agent.html";
                                 }
                             }]
+                        });*/
+                        layer.open({
+                            content:'注册成功，请等待审核！',
+                            title:'提示',
+                            skin:'layui-layer-brand',
+                            btn:["确定"],
+                            success: function(layer){
+                                // 重写关闭按钮
+                                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                                // 提示框类型
+                                $(layer).addClass("normal-dialog");
+                            },
+                            yes: function () {
+                                window.location.href ="/agent.html";
+                            }
                         });
                     }
                 },
@@ -706,13 +787,49 @@
         var cookie = getCookie(REGSTER_SEND_EMAIL_TIME);
         cookie = Number(cookie);
         if(!email){
-            BootstrapDialog.alert({message:'请先输入邮箱！',title:'提示信息'});
+            /*BootstrapDialog.alert({message:'请先输入邮箱！',title:'提示信息'});*/
+            layer.open({
+                content:'请先输入邮箱',
+                title:'提示信息',
+                skin:'layui-layer-brand',
+                btn:["确定"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }else if($email.parents(".form-group").hasClass("has-error")){
-            BootstrapDialog.alert({message:'请输入正确的邮箱！',title:'提示信息'});
+            /*BootstrapDialog.alert({message:'请输入正确的邮箱！',title:'提示信息'});*/
+            layer.open({
+                content:'请输入正确的邮箱！',
+                title:'提示信息',
+                skin:'layui-layer-brand',
+                btn:["确定"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }else if(cookie){
-            BootstrapDialog.alert({message:'发送间隔时间未到！',title:'提示信息'});
+            /*BootstrapDialog.alert({message:'发送间隔时间未到！',title:'提示信息'});*/
+            layer.open({
+                content:'发送间隔时间未到！！',
+                title:'提示信息',
+                skin:'layui-layer-brand',
+                btn:["确定"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }
         function setCookie(c_name,value,expiredays){

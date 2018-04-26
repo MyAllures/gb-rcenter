@@ -5,7 +5,7 @@
             <#list data.siteApiTypeRelationMap[apiType] as relationMap>
                 <#if relationMap_index<apiNumPerSlide>
                     <li class="col-${apiNumPerSlide}-1 <#if relationMap.apiId?string.computer == data.gameSearch.apiId?default('')>active</#if>">
-                        <a href="javascript:" class="_vr_getGames" data-api="${relationMap.apiId?string.computer}" data-href="casino_partial.html?apiType=${apiType}&apiId=${relationMap.apiId?string.computer}&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>">
+                        <a href="javascript:" class="_vr_getGames" data-api="${relationMap.apiId?string.computer}" data-href="casino_partial.html?apiType=${apiType}&apiId=${relationMap.apiId?string.computer}">
                             <span class="gui gui-logo-<#list apiMapKeys as key><#if key == relationMap.apiId?string.computer>${apiMap[key]}</#if></#list>"></span>
                             <em>${data.siteApiTypeRelationI18n[apiType+relationMap.apiId?string.computer].name}</em>
                         </a>
@@ -19,7 +19,7 @@
             <#list data.siteApiTypeRelationMap[apiType] as relationMap>
                 <#if (relationMap_index>=apiNumPerSlide&&relationMap_index<(apiNumPerSlide*2))>
                     <li class="col-${apiNumPerSlide}-1 <#if relationMap.apiId?string.computer == data.gameSearch.apiId?default('')>active</#if>">
-                        <a href="javascript:" class="_vr_getGames" data-api="${relationMap.apiId?string.computer}" data-href="casino_partial.html?apiType=${apiType}&apiId=${relationMap.apiId?string.computer}&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>">
+                        <a href="javascript:" class="_vr_getGames" data-api="${relationMap.apiId?string.computer}" data-href="casino_partial.html?apiType=${apiType}&apiId=${relationMap.apiId?string.computer}">
                             <span class="gui gui-logo-<#list apiMapKeys as key><#if key == relationMap.apiId?string.computer>${apiMap[key]}</#if></#list>"></span>
                             <em>${data.siteApiTypeRelationI18n[apiType+relationMap.apiId?string.computer].name}</em>
                         </a>
@@ -34,7 +34,7 @@
                     <#list data.siteApiTypeRelationMap[apiType] as relationMap>
                         <#if (relationMap_index>=(apiNumPerSlide*2))>
                             <li class="col-${apiNumPerSlide}-1 <#if relationMap.apiId?string.computer == data.gameSearch.apiId?default('')>active</#if>">
-                                <a href="javascript:" class="_vr_getGames" data-api="${relationMap.apiId?string.computer}" data-href="casino_partial.html?apiType=${apiType}&apiId=${relationMap.apiId?string.computer}&gameTag=<#list data.gameTagsOfApiType as tag><#if tag_index == 0>${tag.key}</#if></#list>">
+                                <a href="javascript:" class="_vr_getGames" data-api="${relationMap.apiId?string.computer}" data-href="casino_partial.html?apiType=${apiType}&apiId=${relationMap.apiId?string.computer}">
                                     <span class="gui gui-logo-<#list apiMapKeys as key><#if key == relationMap.apiId?string.computer>${apiMap[key]}</#if></#list>"></span>
                                     <em>${data.siteApiTypeRelationI18n[apiType+relationMap.apiId?string.computer].name}</em>
                                 </a>

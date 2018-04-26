@@ -1,4 +1,8 @@
 var lazyLoadApi;
+//api滑动
+var apiSlideContent;
+//api分类滑动
+var apiTypeSlideIndicators;
 $(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
@@ -54,38 +58,41 @@ function closeDownLoad() {
  */
 function swiper() {
     var siledSize = $(".nav .swiper-container a.swiper-slide").length;
-    // api滑动
-    var slideContent = new Swiper('.nav-slide-content', {
-        loop: true,
-        loopedSlides: siledSize,
-        autoHeight: true,
-        on: {
-            slideChangeTransitionEnd: function () {
+    if(siledSize >1){
+        var apiTypeLength = $("#apiTypeLength").val();
+        // api滑动
+        apiSlideContent = new Swiper('.nav-slide-content', {
+            loop: true,
+            loopedSlides: siledSize,
+            autoHeight: true,
+            on: {
+                slideChangeTransitionEnd: function () {
 
-            }
-        }
-    });
-    var slideIndicators = new Swiper('.nav-slide-indicators', {
-        loop: true,
-        loopedSlides: siledSize,
-        slidesPerView: 'auto',
-        touchRatio: 0.2,
-        slideToClickedSlide: true,
-        on: {
-            slideChangeTransitionEnd: function () {
-                //处理图片延迟加载
-                if ($(".nav-slide-content .swiper-slide-active").find("img[data-lazyload]").length > 0 || $(".nav-slide-content .swiper-slide-active").find("img[data-lazyload-id]").length > 0) {
-                    if (!lazyLoadApi) {
-                        lazyLoadApi = lazyLoadImg("body");
-                    }
-                    lazyLoadApi.refresh(true);
                 }
-                resizeSlideHeight();
             }
-        }
-    });
-    slideContent.controller.control = slideIndicators;
-    slideIndicators.controller.control = slideContent;
+        });
+        apiTypeSlideIndicators = new Swiper('.nav-slide-indicators', {
+            loop: true,
+            loopedSlides: siledSize,
+            slidesPerView: apiTypeLength,
+            touchRatio: 0.2,
+            slideToClickedSlide: true,
+            on: {
+                slideChangeTransitionEnd: function () {
+                    //处理图片延迟加载
+                    if ($(".nav-slide-content .swiper-slide-active").find("img[data-lazyload]").length > 0 || $(".nav-slide-content .swiper-slide-active").find("img[data-lazyload-id]").length > 0) {
+                        if (!lazyLoadApi) {
+                            lazyLoadApi = lazyLoadImg("body");
+                        }
+                        lazyLoadApi.refresh(true);
+                    }
+                    resizeSlideHeight();
+                }
+            }
+        });
+        apiSlideContent.controller.control = apiTypeSlideIndicators;
+        apiTypeSlideIndicators.controller.control = apiSlideContent;
+    }
 }
 
 /*轮播图*/

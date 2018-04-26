@@ -56,10 +56,6 @@ header.mui-bar-nav .mui-action-back { color: #666; }
 
 /* page promo */
 .promo .p-t-slide-content { color: #333; }
-.promo .p-t-slide-content .swiper-slide { background: #fff; }
-
-.btn-promo-sort span { background: #e3e2e2; border: 1px solid #e3e2e2; }
-.btn-promo-sort.swiper-slide-active span { background: #327fc3; border: 1px solid #327fc3; color: #fff; }
 
 .promo-header { border-bottom: 1px solid #ccc; }
 
@@ -114,5 +110,11 @@ header.mui-bar-nav .mui-action-back { color: #666; }
 .icon-message { background: url(./images/icon-message.png) no-repeat center; background-size: 20px auto; }
 
 .icon-gift { background: url(./images/icon-gift.png) no-repeat center; background-size: 20px auto; }
+
+.load-body { background: #fff; }
+.load-body .loading-page.load-bg .load-bar p { color: #333; }
+.load-body .loading-page.load-bg .load-bar-middle .btn-back { border: 1px solid #333; color: #333; }
+.load-body .loading-page.load-bg .load-bar-bottom .copy-right { color: #333; }
+.load-body .loading-page.load-bg .load-bar-bottom .tech-support { color: #333; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,726 @@
+// 禁用响应式 
+@media (min-width: 990px) { .container { width: 1200px; } }
+@media (min-width: 1200px) { .container { width: 1200px; } }
+.screen-lg .container { width: 1200px; }
+ 
+.container { width: 1200px; padding: 0; position: relative; overflow: visible; }
+// 重置插件样式 
+.imghvr-push-down:hover>img { 
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+}
+[class*=" imghvr-flip-"] img, [class^=imghvr-flip-] img {
+    backface-visibility: visible;
+}
+.col-gudin{width: 193px;}
+.main-casino{
+    .casino{font-family: "微软雅黑";
+        a{text-decoration: none;}
+        &.theme-white{// 白色主题
+           // background: url(./images/bg2.jpg) repeat-y center top;
+            &>.container{background:#f7f7f7;}
+            .api-nav{// api-tab样式
+                .swiper-container{background: #eee;   
+                    .swiper-slide{    border-top: 3px solid #dadada;text-align: center;font-size: 16px;
+                        &.odd{    background: #e0dfdf;}
+                        &:hover{  border-top: 3px solid #005aff;    background: #fff;  }
+                        &.active{    border-top: 3px solid #005aff;    background: #fff;
+                            .gui{}
+                        }                        
+                        a{    display: block;
+                            .gui{display: block;height: 54px;background-position-y: -54px !important;
+                            }
+                            em{display: block;    height: 24px;    line-height: 24px;     color: #c8c8c8;font-style: normal;   font-size: 14px;}
+                        }
+                    }
+                }
+                .swiper-contro{
+                    display: inline-block;
+                    color: transparent;
+                    overflow: hidden;position: absolute;top: 0;bottom: 0;
+                    text-shadow: none;height: 100%;
+                    -webkit-transition: all .3s ease-in-out;
+                    transition: all .3s ease-in-out;
+                    width: 30px;z-index:2;font-size:20px; 
+                    opacity: 0.9;
+                    filter: alpha(opacity=90);
+                    &:hover,&:focus{opacity: 1;    filter: alpha(opacity=100);
+                        &:after{box-shadow: 0 0 30px 0 rgba(0,0,0,0.7);}
+                    }
+                    &:before{color: #666; text-align: center;  font-family: 'gui';   position: absolute;   top: 50%;   -webkit-transform: translateY(-50%);    transform: translateY(-50%);    width: 30px;}
+                    &:after{border-radius: 50%;    box-shadow: 0 0 0 0 rgba(0,0,0,0.7);    content: '';    height: 60%;    position: absolute;    top: 50%;    -webkit-transform: translateY(-50%);    transform: translateY(-50%);    -webkit-transition: all .3s ease-in-out;    transition: all .3s ease-in-out;    width: 100%;}
+                    &.prev{
+                        left:0; 
+                        &:before{    content: '\f053';}
+                        &:after{right: -100%;}
+                    }
+                    &.next{
+                        right: 0;
+                        &:before{    content: '\f054';}
+                        &:after{    left: -100%;}
+                    }
+                }
+                &.api-nav-all{
+                    height: auto;
+                    .swiper-container{overflow: visible;height: auto;
+                        .swiper-wrapper{font-size: 0;}
+                        .swiper-slide{float: none;width: 232px;display: inline-block;}
+                    }
+                }
+            }
+            .casino-sorts{//游戏分类
+                .toggle-api{  cursor: pointer;  background: url(images/toggle-api.png);   width: 32px;   height: 38px;   float: left;   font-size: 12px;   color: #333;  text-align: center;  line-height: 13px;  padding-top: 9px;position: relative;
+                    &:before{content: '';background: url(images/arrows-double.png);width: 5px;height: 6px;position: absolute;top: 0;left: 50%;margin-left: -3px;}
+                    .txt1{display: block;}
+                    .txt2{display: none;}
+                    &.a-all{
+                       .txt1{display:none ;}
+                       .txt2{display:block ;} 
+                       &:before{background-position: right 0;}
+                    }
+                }
+                border-bottom: 5px solid #c7c7c7;background: #fff;
+                 .nav-tabs{
+                     &>li{  
+                         &>a{    color: #000; 
+                         }
+                         &.active{
+                             &:hover{background: transparent;
+                                a{color: #fff;}
+                             }
+                             &>a{background: #005aff;color: #fff;}
+                         }
+                         &:hover{background: #eeeeee;
+                            a{color: #005aff;}
+                         }
+                     }
+                 }
+                 .search-box{ 
+                    .gui-search{  color: #c7c7c7;}
+                 .form-control{
+                color: #000;
+                background-color: #fff;}
+                 }
+            }
+            .game-list-header{// 游戏列表头部
+                .jackpot{
+                    .j_num{background: url(images/j_num_bg1.png) no-repeat 0 0;}
+                    .j_dot{color: #333;}
+                }
+                .sort2{
+                    li{    border: 1px solid #ddd;    background: #fff;
+                        a{color: #111;}
+                    }
+                }
+            }
+            .casino-game-list{// 游戏列表
+                .game-item{box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.8);
+                    .game-info .g_title {
+                        color: #333;
+                    }
+                }
+            }
+            
+            .g_loading{color: #333;       
+        }        
+        }// 白色主题结束
+        &.theme-black{// 黑色主题
+            // background: url(./images/bg1.jpg) repeat-y center top;
+            &>.container{background:#111111;}
+            .api-nav{
+                .swiper-container{background: #222222;  
+                    .swiper-slide{    border-top: 3px solid #3d3d3d;text-align: center;font-size: 16px;
+                        &.odd{    background: #292929;}
+                        &:hover{   
+                            .gui{background-position-y: -54px !important;}
+                        }
+                        &.active{    border-top: 3px solid #005aff;    background: #373737;
+                            .gui{background-position-y: -54px !important;}
+                        }                        
+                        a{line-height: 1;    display: block;
+                            .gui{display: inline-block;
+                            }
+                            em{display: inline-block;     line-height: 57px;     color: #c8c8c8;font-style: normal;   font-size: 14px;vertical-align: top;}
+                        }
+                    }
+                }
+                .swiper-contro{
+                    display: inline-block;
+                    color: transparent;
+                    overflow: hidden;position: absolute;top: 0;bottom: 0;
+                    text-shadow: none;height: 100%;
+                    -webkit-transition: all .3s ease-in-out;
+                    transition: all .3s ease-in-out;
+                    width: 30px;z-index:2;font-size:20px; 
+                    opacity: 0.9;
+                    filter: alpha(opacity=90);
+                    &:hover,&:focus{opacity: 1;    filter: alpha(opacity=100);
+                        &:after{box-shadow: 0 0 30px 0 rgba(0,0,0,0.7);}
+                    }
+                    &:before{color: #666; text-align: center;  font-family: 'gui';   position: absolute;   top: 50%;   -webkit-transform: translateY(-50%);    transform: translateY(-50%);    width: 30px;}
+                    &:after{border-radius: 50%;    box-shadow: 0 0 0 0 rgba(0,0,0,0.7);    content: '';    height: 60%;    position: absolute;    top: 50%;    -webkit-transform: translateY(-50%);    transform: translateY(-50%);    -webkit-transition: all .3s ease-in-out;    transition: all .3s ease-in-out;    width: 100%;}
+                    &.prev{
+                        left:0; 
+                        &:before{    content: '\f053';}
+                        &:after{right: -100%;}
+                    }
+                    &.next{
+                        right: 0;
+                        &:before{    content: '\f054';}
+                        &:after{    left: -100%;}
+                    }
+                }
+                &.api-nav-all{
+                    height: auto;
+                    .swiper-container{overflow: visible;height: auto;
+                        .swiper-wrapper{font-size: 0;}
+                        .swiper-slide{float: none;width: 232px;display: inline-block;}
+                    }
+                }
+            }
+            .casino-sorts{//游戏分类
+                .toggle-api{  cursor: pointer;  background: url(images/toggle-api2.png);   width: 32px;   height: 38px;   float: left;   font-size: 12px;   color: #9c9c9c;  text-align: center;  line-height: 13px;  padding-top: 9px;position: relative;
+                    &:before{content: '';background: url(images/arrows-double.png);width: 5px;height: 6px;position: absolute;top: 0;left: 50%;margin-left: -3px;}
+                    .txt1{display: block;}
+                    .txt2{display: none;}
+                    &.a-all{
+                       .txt1{display:none ;}
+                       .txt2{display:block ;} 
+                       &:before{background-position: right 0;}
+                    }
+                }
+                border-bottom: 5px solid #2a2a2a;    background: #373737;
+                 .nav-tabs{
+                     &>li{  
+                         &>a{    color: #eee !important; 
+                         }
+                         &.active{
+                             &:hover{background: transparent;
+                                a{color: #fff !important;}
+                             }
+                             &>a{background: #005aff;color: #fff;}
+                         }
+                         &:hover{background: #323232;
+                            a{color: #005aff !important;}
+                         }
+                     }
+                 }
+                 .search-box{ 
+                    .gui-search{  color: #c7c7c7;}
+                 .form-control{    color: #eee;    border: 1px solid #5c5c5c;
+        background-color: #252525;}
+                 }
+            }
+            .game-list-header{// 游戏列表头部
+                .jackpot{
+                    .j_num{background: url(images/j_num_bg2.png) no-repeat 0 0;}
+                    .j_dot{color: #898989;}
+                }
+                .sort2{
+                    li{    border: 1px solid #3b3b3b;    background: #222;
+                        a{color: #eee;}
+                    }
+                }
+            }
+            .casino-game-list{// 游戏列表
+                .game-item{box-shadow:none;background: #333;  
+                .game-info .g_title {
+                    color: #fff;
+                }
+                }
+            }
+            
+            .g_loading{color: #fff !important;       
+        }        
+    }// 黑色主题结束    
+        
+        &>.container{// 通用主题样式
+            &.gutter-20{
+                padding: 20px;
+            }
+            .api-nav{height: 54px;position: relative;// api-tab样式
+                .swiper-container{   height: 54px;
+                    .swiper-slide{   height: 54px;text-align: center;font-size: 16px;                        
+                        a{height: 54px;line-height: 1;    display: block;
+                            .gui{display: inline-block;height: 54px;background: url(./images/api-tabs-sprite.png) center 0 no-repeat;
+                                &:before{content: none;}
+                                &.gui-logo-mg { background-position-x: 0 !important; width: 44px;}
+                                &.gui-logo-pt { background-position-x: -44px !important;width: 50px; }
+                                &.gui-logo-bb { background-position-x: -94px !important; width: 70px;}
+                                &.gui-logo-ag { background-position-x: -164px !important; width: 60px;}
+                                &.gui-logo-hb { background-position-x: -224px !important; width: 40px;}
+                                &.gui-logo-bsg { background-position-x: -262px !important;     width: 90px;}
+                                &.gui-logo-sg { background-position-x: -354px !important;width: 40px; }
+                                &.gui-logo-png { background-position-x: -394px !important;width: 90px; }
+                                &.gui-logo-gns { background-position-x: -482px !important;     width: 40px;}
+                                &.gui-logo-prg ,&.gui-logo-pp { background-position-x: -524px !important;    width: 90px; }
+                                &.gui-logo-dt { background-position-x: -614px !important;width: 50px; }
+                                &.gui-logo-gg { background-position-x: -664px !important; width: 50px;}
+                                &.gui-logo-chess{background-position-x: -714px!important;    width: 90px;}
+                                &.gui-logo-fish{background-position-x: -802px!important;    width: 90px;}
+                                &.gui-logo-mw{background-position-x: -892px!important;width: 80px;}
+                            }
+                            em{display: inline-block;     line-height: 57px;    font-style: normal;   font-size: 14px;vertical-align: top;}
+                        }
+                    }
+                }
+                &.api-nav-slide{display: none;}
+                .api-tabs{min-height: 81px;border: 0;
+                    &>li{text-shadow: none;padding: 0;margin: 0;height: 81px;border: 0;border-top: 3px solid transparent;
+                        &>a{
+                            &>em{display: block;height: 24px;line-height: 24px;font-size: 14px;}
+                            .gui{height: 54px;  font-size: 0;width: 100%;}
+                        }
+                    }
+                }
+                
+                &.api-nav-all{
+                    height: auto;
+                    ul{margin-bottom: 0;}
+                }
+            }
+            .casino-sorts{// 游戏分类
+                 height: 54px; 
+                 .nav-tabs{float: left; border: none; 
+                     &>li{    height: 49px;    line-height: 49px;
+                         &>a{    color: #000; padding: 6px 15px;  font-size: 14px;    margin: 9px 0 0;    border: 0;
+                     }
+                     }
+                 }
+                 .search-box{ width: 250px; float: right; margin-top: 10px;position: relative;    margin-right: 10px;
+                    .gui-search{    position: absolute;    right: 100px;    top: 9px;}
+                 .form-control{width: 160px;
+                height: 32px;
+                margin-right: 10px;padding-right: 30px;
+                border-radius: 3px;} 
+                    .btn-search{width: 80px;height: 32px;background: #1ac07e;border-radius: 3px;border: 1px solid #12ad63;color: #fff;}               
+                 }
+            }
+            .game-list-header{// 游戏列表头部
+                height: 52px;overflow: hidden;padding-top: 10px;
+                .jackpot{overflow: hidden;
+                    .j_txt{margin-right: 10px;font-size: 14px;color: #666;line-height: 1;
+                        .t_rmb{text-align: right;}
+                        .t_g_name{
+                            span{color: #005aff;}
+                        }
+                    }
+                    .j_num{width: 22px;height: 32px;display: inline-block;vertical-align: top;font-size: 28px;color: #fff;    line-height: 1;    text-align: center;}
+                    .j_dot{  display: inline-block;    vertical-align: top;    font-size: 25px;    line-height: 35px;    height: 32px;}
+                }
+                .all_g_txt{color: #666;line-height:28px;font-size: 12px;margin-right: 10px;
+                    span{color: #005aff;}
+                }
+                .list-inline{    margin: 0 1px 0 0;}
+                .sort2{height: 28px;line-height: 28px;font-size: 0;
+                    li{font-size: 12px;margin-right: -1px;
+                        &:after{content: '';width: 7px;height: 10px;display: inline-block;vertical-align: top;background: url(images/icon-arrow-down.png) no-repeat 0 0;margin: 10px 2px 0 5px;}
+                        &.active{background: #005aff;border: 1px solid #005aff;
+                            &:after{background-position: 0 bottom;}
+                            a{color: #fff;}
+                        }
+                    }
+                }
+            }
+            .casino-game-list{// 游戏列表
+                .col-5-1{
+                    .s_border{
+                        figure{
+                            &>img{width: 210px;height: 147px;}
+                        }
+                    }
+                }
+                .game-item{    margin-bottom: 20px;    position: relative;    display: block;    width: auto;    height: auto;    margin: 0 0 20px;    border-radius: 0;
+                    figure{vertical-align: top;
+                        &:hover{
+                            .jiangchi{display: none;}
+                            &>img{opacity: 1;}
+                            .tag-info{display: block;}
+                        }
+                    }
+                    [class*=" imghvr-"] figcaption, [class^=imghvr-] figcaption{background:url(images/hover-shadow.png);}
+                    [class*=" imghvr-reveal-"]:before, [class^=imghvr-reveal-]:before {  background-color:rgba(0, 0, 0, 0.2);}
+                    [class*=" imghvr-"], [class^=imghvr-] {    background-color: #000c;}
+                    [class^=imghvr-reveal]:before{    background-color: rgba(0, 0, 0, 0.8);}
+                    [class^=imghvr-reveal] figcaption{background: transparent;}
+                    .tags{position: absolute;top: -5px;left: 0;right: 0;text-align: right;    z-index: 2;
+                        a{display: inline-block;width: 28px;height: 28px;margin-right: 1px;
+                            &.tag-hot{background: url(images/tag-hot.png);}
+                            &.tag-3d{background: url(images/tag-3d.png);}
+                            &.tag-new{background: url(images/tag-new.png);}
+                            &.tag-mobile{background: url(images/tag-mobile.png);}
+                            &.tag-fav{background: url(images/tag-fav.png);width: 35px;height: 35px;float: left;margin-top: 5px;}
+                        }
+                    }
+                    .tag-info{    background: url(images/tag-info.png); display: none;   width: 33px;    height: 26px;    position: absolute;    top: 100%;    z-index: 2;    right: 0;    margin-top: -31px;}
+                    figcaption{padding: 0;}
+                    .table_div{display: table;table-layout: fixed;width: 100%;height: 100%;text-align: center;
+                        .table_cell_div{display: table-cell;vertical-align: middle;
+                            a+a{margin-top: 20px;}
+                        }
+                    }
+                    .btn-enter,.btn-try{width: 100px;height: 30px;line-height: 30px;display: block;margin: 0 auto;font-size: 14px;color: #fff;border-radius: 3px;position: static;}
+                    .btn-enter{background: #dc0032;
+                        &:hover{background: #fff;color:#dc0032;}
+                    }
+                    .btn-try{background: #ff6f12;
+                        &:hover{background: #fff;color:#ff6f12;}
+                    }
+                    .jiangchi{background: url(images/jianchi_bg.png);font-size: 14px; line-height: 30px;   width: 215px;    height: 30px;    position: absolute;    bottom: 5px;    left: 5px;}
+                    .game-info{// 游戏信息
+                        padding: 12px 8px;
+                        .g_line1,.g_line2{overflow: hidden;}
+                        .g_title{    font-size: 14px;  white-space: nowrap;  overflow: hidden;  text-overflow: ellipsis;  width: 100%;   display: block;}
+                        .g_line1{position: relative;margin-bottom: 10px;
+                            .g_tx{position: absolute;right:6px;top: 0;height: 17px;line-height: 17px;font-size: 12px;color: #fff;background: #1ac07e;
+                                &:before,&:after{content: '';position: absolute;width: 6px;height: 17px;}
+                                &:before{background: url(images/g_line_before.png);left: -6px;}
+                                &:after{background: url(images/g_line_after.png);right: -6px;}
+                                
+                            }
+                        }
+                        .g_line2{font-size: 12px;color: #aaa;
+                            span{color: #005aff;margin-left: 4px;}
+                            .fav_n{   
+                                .fav_a{display: inline-block;cursor:pointer;vertical-align: top;width: 20px;height: 18px;background: url(images/icon-heart2.png) no-repeat 0 bottom;
+                                    &.fav_ed{background-position: 0 2px;}
+                                }
+                                
+                            }
+                        }
+                    }
+                    &.s_border{// 边框样式
+                        border: 3px solid #444444;box-shadow: none;
+                        &:hover{border-color: #005aff;}
+                        .tags {
+                            top: -8px;
+                            left: -3px;
+                        }
+                    }
+                    &.s_radius{// 圆角样式
+                        border-radius: 6px;
+                        figure{border-top-left-radius: 6px;border-top-right-radius: 6px;}
+                        .game-info{border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;}
+                    }
+                    &.s_padding{// 内边距样式
+                        padding: 4px;
+                        .game-info {
+                            padding: 12px 4px 8px;
+                        }
+                    }
+                }
+            }
+            .g_loading,.g_all_game_loaded,.g_no_result{text-align: center;}
+            .g_loading{display: none;text-align:center;height: 40px;line-height: 40px;font-size: 16px;
+                .gui-spinner{color: #2d66ce;}            
+            }
+            .g_all_game_loaded,.g_no_result{font-size: 14px;color: #666;}
+            .g_all_game_loaded{display: none;}
+        }// 通用主题样式结束
+    } 
+}
+
+// 游戏详情页的样式
+.game-detail{    
+        opacity: 0;left: 100%;position: fixed;transition: left 0.3s;z-index: 1000;   top: 0;  bottom: 0;  right: 0;
+        .body{    background: url(./images/game-bg1.jpg) center top no-repeat;    padding: 60px 80px 50px;    
+            &.ag{  background: url(./images/api-bg/ag_bg.jpg) center top no-repeat;}  
+            &.bb{  background: url(./images/api-bg/bb_bg.jpg) center top no-repeat;}  
+            &.bsg{  background: url(./images/api-bg/bsg_bg.jpg) center top no-repeat;}  
+            &.dt{  background: url(./images/api-bg/dt_bg.jpg) center top no-repeat;}  
+            &.gg{  background: url(./images/api-bg/gg_bg.jpg) center top no-repeat;}  
+            &.gns{  background: url(./images/api-bg/gns_bg.jpg) center top no-repeat;}  
+            &.hb{  background: url(./images/api-bg/hb_bg.jpg) center top no-repeat;}  
+            &.mg{  background: url(./images/api-bg/mg_bg.jpg) center top no-repeat;}  
+            &.png{  background: url(./images/api-bg/png_bg.jpg) center top no-repeat;}  
+            &.pp{  background: url(./images/api-bg/pp_bg.jpg) center top no-repeat;}  
+            &.pt{  background: url(./images/api-bg/pt_bg.jpg) center top no-repeat;}  
+            &.sg{  background: url(./images/api-bg/sg_bg.jpg) center top no-repeat;}
+        }
+        &,.body{height: 100%;width: 100%;overflow: hidden;}
+        .wrapper{border: 10px solid rgba(255,255,255,0.4);width: 100%;border-radius: 10px;position: relative;max-height: 830px;
+            .loading-area{    position: absolute; z-index: 1;   left: 0;    right: 0;    bottom: 0;    top: 0;    text-align: center;    line-height: 505px;    background: rgba(0,0,0,0.7);
+                .gui-spinner{    color: #fff;   width: 24px;    height: 24px;    position: absolute;    top: 0;    left: 0;    right: 0;    bottom: 0;    margin: auto;}
+            }
+            iframe{border: 0;position: relative;z-index: 2;}
+    }
+        // 关闭按钮样式
+        .closeCasinoGame{     background: url(images/icon-close-game.png) no-repeat;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            border: 0;
+            border-radius: 0;
+            right: 150px;
+            top: 20px;
+            position: fixed;
+            transform: rotateZ(-90deg);
+        } 
+        .game-info{// 右边游戏详情弹层
+            width: 240px;position: absolute;z-index:3;right: 0;top: 0;bottom: 0;background: rgba(0,0,0,0.6);transition:all 0.3s;
+            &.hide_G{width: 0;
+                .hide-btn{    right: -50px; border-top-right-radius: 8px;  border-bottom-right-radius: 8px;  border-top-left-radius: 0;  border-bottom-left-radius: 0;  background-color: rgba(0,0,0,0.5);}
+                .game-info-content{display: none;}
+                .time{display: none !important;}
+            }
+            .game-info-content{
+                color: #fff;
+                .info-header{text-align: center;padding-top: 34px;
+                    .info-api-name{font-size: 18px;color: #c8c8c8;margin-top: 14px;}
+                    .info-btn-group{height: 50px;overflow: hidden;background:rgba(255,255,255,0.2);
+                        .try{line-height: 50px;font-size: 14px;color: #ff6f12;padding: 0 10px;}
+                        .btn-register{width: 100px;height: 30px;line-height: 30px;text-align: center;border-radius: 5px;color: #fff;background: #005aff;text-decoration: none;margin: 10px;
+                            &:hover{background: #fff;color: #005aff;}
+                        }
+                    }
+                }
+                .game-item{ // 游戏框
+                    position: relative;margin:10px;        display: block;    width: auto;    height: auto;    border: 0;
+                    &>img{width: 100%;height: 168px;}
+                    .tags{position: absolute;    top: -5px;    left: 0;    right: 0;    text-align: right;    z-index: 2;                    
+                        a{display: inline-block;width: 28px;height: 28px;margin-right: 1px;
+                            &.tag-hot{background: url(images/tag-hot.png);}
+                            &.tag-3d{background: url(images/tag-3d.png);}
+                            &.tag-new{background: url(images/tag-new.png);}
+                            &.tag-mobile{background: url(images/tag-mobile.png);}
+                            &.tag-fav{background: url(images/tag-fav.png);width: 35px;height: 35px;float: left;margin-top: 5px;}
+                        }
+                    }
+                    .game-item-tit{padding: 12px 8px;background: rgba(0,0,0,0.4);                    
+                        .g_title{color: #fff;text-decoration: none;}
+                        .g_line1{position: relative;
+                            .g_tx{position: absolute;right:6px;top: 0;height: 17px;line-height: 17px;font-size: 12px;color: #fff;background: #1ac07e;
+                                &:before,&:after{content: '';position: absolute;width: 6px;height: 17px;}
+                                &:before{background: url(images/g_line_before.png);left: -6px;}
+                                &:after{background: url(images/g_line_after.png);right: -6px;}
+                                
+                            }
+                        }
+                    }
+                }
+                .game-extra-info{ // 额外信息框
+                    background: rgba(0,0,0,0.4) url(images/x-y-line.png) no-repeat center;margin: 10px;border-radius: 5px;height: 120px;overflow: hidden;
+                    .extra-item{float: left;width: 50%;height: 60px;text-align: center;color: #c8c8c8;font-size: 12px;padding-top: 10px;}
+                    .icon{display: block;height: 24px;                     
+                        .fav_a{display: inline-block;cursor:pointer;vertical-align: top;width: 20px;height: 18px;background: url(images/icon-heart2.png) no-repeat 0 bottom;
+                            &.fav_ed{background-position: 0 2px;}
+                        }
+                        .full_screen{display: inline-block;width: 16px;height: 16px;background: url(images/icon-fullscreen.png) no-repeat;}
+                        .icon-info{display: inline-block;width: 20px;height: 20px;background: url(images/icon-info.png) no-repeat;}
+                        .icon-star-gray{display: inline-block;width: 100px;height: 15px;background: url(images/icon-star-gray.png) no-repeat;position: relative;    margin-top: 4px;
+                            .icon-star-yellow{
+                                width: 100px;height: 15px;background: url(images/icon-star-yellow.png) no-repeat;position: absolute;top: 0;left: 0;
+                                &[star="1"]{
+                                    width: 20px;
+                                }
+                                &[star="2"]{
+                                    width: 40px;
+                                }
+                                &[star="3"]{
+                                    width: 60px;
+                                }
+                                &[star="4"]{
+                                    width: 80px;
+                                }
+                                &[star="5"]{
+                                    width: 100px;
+                                }
+                            }
+                        }  
+                        .star{
+                            i{font-size: 16px;color: #ff8000;}
+                        }                      
+                    }
+                    .txt{
+                        span{color: #005aff;}
+                    }
+                }
+            }
+            .time{     background: rgba(0, 0, 0, 0.4) ;    margin: 10px;    border-radius: 5px;color: #c8c8c8;font-size: 12px;text-align: center;padding: 5px 0;    position: absolute;   bottom: 0;   left: 0;   right: 0;}
+            .hide-btn{width: 40px;height: 40px;background: url(images/icon-close-hide.png) no-repeat;position: absolute;top: 40px;right: 0;cursor: pointer;    border-top-left-radius: 8px;}
+        }
+        .exit-fullscreen{background: url(images/icon-exit-fullscreen.png);width: 40px;height: 40px;position: fixed;top: -40px;left: 0;transition: all 0.3s;z-index: 100;}
+}
+.game-detail-open{ // 游戏弹窗后的样式
+        overflow: hidden;
+        .layui-layer-setwin .layui-layer-close2,.layui-layer-setwin .layui-layer-close2:hover{
+            background: url(images/icon-close-game.png) no-repeat;width: 40px;height: 40px;cursor: pointer;
+        }
+        .game_side{display: block;
+            .icon-hide-side{display: block;
+            }
+        }
+        .game_bottom{display: block;
+            .small-bar{display: block;}
+        }
+        .game-detail{opacity: 1;left: 0;
+        }
+}
+.game_side{ // 左边浮层的样式
+   display: none; position: fixed;width: 300px;top: 0;left: -300px;bottom: 0;background: rgba(0,0,0,0.9);z-index: 1001;transition: all 0.3s;    border-right: 3px solid rgba(255,255,255,0.2);
+    .icon-hide-side{background: url(images/icon-hide-side.png);width: 50px;height: 60px;position: absolute;right: -53px;top: 80px;}
+    &:hover{
+        left: 0;   z-index: 19891020;   
+    }
+    .g-s-logo{text-align: center;padding: 10px 0;}
+    .g-s-banner{
+        img{width: 100%;height: 111px;}
+    }
+    .g-s-api-tab{
+        height: 80px;background: rgba(255,255,255,0.15);
+        &>a{display: block;width: 20%;float: left;text-align: center;font-size: 16px;color: #fff;height: 80px;text-decoration: none;position: relative;
+            &.active{
+                &:before{content: '';position: absolute;width: 50px;height: 80px;left: 50%;margin-left: -25px;top: 0;background: #005aff;z-index: 1;}
+                &:after{content: '';    border-left: 6px solid #0000;    border-right: 6px solid #0000;    border-top: 7px solid #005aff;    position: absolute;    bottom: -7px;    left: 50%;    margin-left: -6px;}
+                .icon{background: url(images/g-s-api-sprite-act.png) no-repeat;}
+            }
+            .icon{display: block;height: 40px;background: url(images/g-s-api-sprite.png) no-repeat;position: relative;z-index: 2;
+                &.i-casino{background-position:16px 8px;}
+                &.i-fish{background-position:-36px 8px;}
+                &.i-live{background-position:-94px 8px;}
+                &.i-sports{background-position:-147px 8px;}
+                &.i-lottery{background-position:-204px 8px;}
+            }
+            .txt{height: 40px;line-height: 40px;display: block;position: relative;z-index: 2;}
+        }
+    }
+    .g-s-api-content{
+        display: none;padding: 0 12px;color: #fff;
+        &.active{display: block;}
+        ul{
+            margin-bottom: 0;overflow: hidden;
+            li{float: left;width: 33.333%;border-bottom: 1px dashed #333;height: 127px;
+                a{color: #fff;text-align: center;display: block;text-decoration: none;
+                    .icon{display: block;   height: 100px;background: url(images/side-api-sprite.png) no-repeat;line-height: 100px;
+                        &.c-ag{background-position: 0 0;}
+                        &.c-bsg{background-position: 0 -100px;}
+                        &.c-sg{background-position: 0 -200px;}
+                        &.c-bb{background-position: 0 -300px;}
+                        &.c-pt{background-position: 0 -400px;}
+                        &.c-mg{background-position: 0 -500px;}
+                        &.c-hb{background-position: 0 -600px;}
+                        &.c-prg,&.c-pp{background-position: 0 -700px;}
+                        &.c-gns{background-position: 0 -800px;}
+                        &.c-png{background-position: 0 -900px;}
+                        &.c-gg{background-position: 0 -1000px;}
+                        &.c-dt{background-position: 0 -1100px;}
+                        &.c-gd{background-position: 0 -1200px;}
+                        &.c-ds{background-position: 0 -1300px;}
+                        &.c-og{background-position: 0 -1400px;}
+                        &.c-opus-l,&.c-opus-s{background-position: 0 -1500px;}
+                        &.c-ebet{background-position: 0 -1600px;}
+                        &.c-sa{background-position: 0 -1700px;}
+                        &.c-hg{background-position: 0 -1800px;}
+                        &.c-sb{background-position: 0 -1900px;}
+                        &.c-dwt{background-position: 0 -2000px;}
+                        &.c-lt{background-position: 0 -2100px;}
+                        &.c-kg{background-position: 0 -2200px;}
+                        &.c-mw{background-position: 0 -2300px;}
+                        &.c-ysb{background-position: 0 -2400px;}
+                        &.c-ky{background-position: 0 -2500px;}
+                        &.icon-fish{
+                            img{width: 70px;    vertical-align: middle;}
+                        }
+                    }
+                }
+                &:hover{
+                    a{color: #005aff;}
+                }
+            }
+        }
+    }
+    .g-s-tab-wrap{
+        position: absolute;top: 270px;left: 0;bottom: 0;right: 0;
+    }
+}
+.game_bottom{ // 底部浮层的样式
+    &:before{content:'';position: absolute;top: -30px;left: 0;right: 0;height: 30px;}
+   display: none; position: fixed;left: 0;right: 0;height: 187px;bottom:-140px;z-index: 1001;background:#fff;transition: all 0.3s; 
+    .small-bar{height: 47px;border-top: 3px solid rgba(255,255,255,0.2);background: rgba(0,0,0,0.9);
+       .icon-arrow-down{width: 44px;height: 44px;background: #333333 url(images/icon-arrow-down2.png) no-repeat center; display: inline-block;vertical-align: top;}
+       .list-inline{display: inline-block;margin-bottom: 0;
+        li{padding: 0;
+            a{height: 44px;line-height: 44px;color: #fff;width: 136px;display: inline-block;vertical-align: top;text-decoration: none;text-align: center;position: relative;
+                &.active{
+                    span.icon{background: url(images/game-type-sprite-active.png) no-repeat;}
+                    &:before{content: '';height: 47px;width: 100%;background: #005aff;position: absolute;  top: -3px;left: 0;}
+                   &:after{content: '';    border-left: 6px solid #0000;    border-right: 6px solid #0000;    border-top: 7px solid #005aff;    position: absolute;    bottom: -7px;    left: 50%;    margin-left: -6px;}
+                }
+                span.icon{display: inline-block;background: url(images/game-type-sprite.png) no-repeat;width: 40px;height: 44px;vertical-align: top;
+                    &.i-rec{background-position: 10px center;}
+                    &.i-fav{background-position: -150px center;}
+                    &.i-hot{background-position: -310px center;}
+                    &.i-sug{background-position: -480px center;}
+                    &.i-sam{background-position: -650px center;}
+                }
+                .z1{position: relative;z-index: 2;}
+            }
+        }
+       }
+       
+         .search-box{ width: 250px; float: right; margin-top: 6px;position: relative;    margin-right: 10px;
+            .gui-search{  color: #6b6868;  position: absolute;    right: 100px;    top: 9px;}
+         .form-control{width: 160px;    background: #1e1f1e;border: 1px solid #5c5c5c;
+        height: 32px;padding-right: 30px;
+        margin-right: 10px;color: #fff;
+        border-radius: 3px;} 
+            .btn-search{width: 80px;height: 32px;background: #1ac07e;border-radius: 3px;border: 1px solid #12ad63;color: #fff;}               
+         }
+    } 
+    &.open{
+        bottom: 0; 
+    }
+    .g-b-content{display: none;
+        &.active{display: block;}
+        .b-g-slide{
+             padding: 0 40px;position: relative;
+            .prev,.next{position: absolute;top: 60px;font-size: 20px;color: #999;text-decoration: none;}
+            .prev{left: 15px;}
+            .next{right: 15px;}
+            ul{padding: 0;margin: 0;list-style: none;}
+            li{width: 140px;float: left;padding-top: 10px;
+                img{width: 100%;height: 84px;}
+                a{display: block;text-align: center;color: #000;margin: 0 10px;text-decoration: none;
+                    span{    display: block;    line-height: 46px;    height: 46px;}
+                }
+            }
+        }
+    }
+}
+html.fullscreen{// 游戏全屏时候的样式
+    .game-detail{z-index: 1002;}
+    .body{padding: 0 !important;
+        .wrapper{    height: 100% !important;  width: 100%;  border: 0;max-height: 100%;
+            iframe{width: 100% !important;}
+        }
+    }
+    .exit-fullscreen{top: 0;}
+    .layui-layer-hui{    background-color: #000;
+    filter: alpha(opacity=60);
+    background-color: rgba(0,0,0,.6) !important;}
+    .layui-layer .layui-layer-content{background-color: transparent;}
+}
+// 登录后的状态
+        .header-panel{
+            &.game-panel{width: 810px;position: absolute;top: 0;left: 50%;margin-left: -405px;
+               height: 40px;
+                right: 0;line-height: 35px;
+                font-size: 13px;
+                text-align: center;
+                border: 5px solid rgba(255,255,255,0.4);
+                border-top: 0;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;background: rgba(0,0,0,0.6);-webkit-background-clip: content-box;
+                a{color: #999;padding: 0 15px;text-decoration: none;
+                    &:hover{color: #005aff;}
+                }
+                .dropdown{vertical-align: top;
+                    &:hover{
+                        .dropdown-menu{display: block;}
+                    }
+                }
+                .dropdown-menu{     background: rgba(0, 0, 0, 0.6);margin-top: 0;border-color: transparent;}  
+            }
+                
+        }   

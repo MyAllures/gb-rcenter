@@ -12,15 +12,13 @@
             var protocol = window.location.protocol;
             if(protocol.indexOf("https:")>-1){
                 //https协议支持体育嵌套
-                if (apiId=="4" || apiId=="19" || apiId=="12") {
+                if (apiId=="4" || apiId=="19" || apiId=="12" || apiId=="21" || apiId=="37") {
                     if(bool){
                         $(".bulk-frame").find("span").val("维护中");
                     }else {
                         beforeSendPage(apiId);
                     }
                     getApiUrl(apiId,'',3,bool);
-                }else if (apiId=="21"){
-                    window.open("http://sports-hg.com");
                 }
             }else{
                 if(bool) {
@@ -55,10 +53,12 @@
             document.getElementById('sportFrame').contentWindow.location.replace("https://hyxu36.uv178.com/whb/view.php");
         }else if(apiId=="19"){
             document.getElementById('sportFrame').contentWindow.location.replace("https://mkt.ampinplayopt0matrix.com?lang=cs");
+        }else if(apiId=="21"){
+            document.getElementById('sportFrame').contentWindow.location.replace("https://pocdesignother0.com");
+        }else if(apiId=="37"){
+            document.getElementById('sportFrame').contentWindow.location.replace("https://bc.ampinplayopt0matrix.com/#/sport/?lang=zhh");
         }/*else if(apiId=="23"){
             document.getElementById('sportFrame').contentWindow.location.replace("http://opussport.ampinplayopt0matrix.com/sports.aspx");
-        }else if(apiId=="21"){
-            document.getElementById('sportFrame').contentWindow.location.replace("http://sports-hg.com");
         }*/
     }
 
@@ -106,7 +106,7 @@
                         var protocol = window.location.protocol;
                         if(protocol.indexOf("https:")>-1){
                             //https协议支持体育嵌套
-                            if (apiTypeId == "3" && apiId=="4" || apiId=="19" || apiId=="12") {
+                            if (apiTypeId == "3" && apiId=="4" || apiId=="19" || apiId=="12" || apiId=="21" || apiId=="37") {
                                 if (window.localStorage) {
                                     localStorage.re_url = result.defaultLink;
                                 }
@@ -167,7 +167,7 @@
                         var protocol = window.location.protocol;
                         if(protocol.indexOf("https:")>-1){
                             //https协议支持体育嵌套
-                            if (apiTypeId == "3" && apiId=="4" || apiId=="19" || apiId=="12") {
+                            if (apiTypeId == "3" && apiId=="4" || apiId=="19" || apiId=="12" || apiId=="21" || apiId=="37") {
                                 if (window.localStorage) {
                                     localStorage.re_url = result.defaultLink;
                                 }

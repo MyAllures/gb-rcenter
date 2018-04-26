@@ -6,11 +6,11 @@
  .mui-inner-wrap{background:url(images/content-bg.png) no-repeat center 44px;background-attachment: fixed;}
  header{
     &.mui-bar-nav{
-        a.mui-icon-bars{color: #666;} 
+        a.mui-icon-bars{color: #fff;} 
         .btn-login{background-color: #1dc28e;border: 1px solid #1dc28e;}
         .btn-demo{background-color: #1279d9;border: 1px solid #1279d9;}
         .btn-register{background-color: #f0af01;border: 1px solid #f0af01;}
-        .mui-action-back{color: #666;}
+        .mui-action-back{color: #fff;}
     }
 }
 .mui-bar-nav{background: url(images/header-bg.png) 0 0/100% 44px;box-shadow: none;-webkit-box-shadow: none;}
@@ -94,16 +94,9 @@
 /* page promo */
 .promo{
     .p-t-slide-content{color: #333;
-        .swiper-slide{background: #fff;}
     }
 }
-    .btn-promo-sort{
-        span{background: #e3e2e2;border: 1px solid #e3e2e2;}
-        
-        &.swiper-slide-active{
-            span{background: #327fc3;border: 1px solid #327fc3;color: #fff;}
-            }
-    }
+.promo-head.mui-bar-blue{background-image: none;}
 .promo-header{border-bottom: 1px solid #ccc;}  
 /* login and register page */
 .type-header{
@@ -217,3 +210,10 @@
 
 .nav .swiper-container{height: 67px;}
 .nav .swiper-slide.swiper-slide-active > span{color: inherit;}
+.mui-title{color: #fff;}
+/* index-login-info */
+.login-info{ background: url(images/icon-open-offcanvas.png) no-repeat right center/5px;color: #fff;}
+
+// 加载页样式
+.load-body{      background: #b3b9b1;
+}

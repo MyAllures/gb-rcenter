@@ -24,10 +24,10 @@
 <#--  当前api_type_id = 1 -->
 <#assign apiType = "1">
 <#-- api图片路径 -->
-<#assign bgCover ={"1":"ftl/commonPage/images/live-item-ds.jpg","3":"ftl/commonPage/images/live-item-mg.jpg","5":"ftl/commonPage/images/live-item-gd.jpg","7":"ftl/commonPage/images/live-item-og.jpg","8":"ftl/commonPage/images/live-item-slc.jpg","9":"ftl/commonPage/images/live-item-ag.jpg","10":"ftl/commonPage/images/live-item-bb.jpg","16":"ftl/commonPage/images/live-item-ebet.jpg","17":"ftl/commonPage/images/live-item-sa.jpg","24":"ftl/commonPage/images/live-item-opus.jpg"}>
+<#assign bgCover ={"1":"ftl/commonPage/images/live-item-ds.jpg","3":"ftl/commonPage/images/live-item-mg.jpg","5":"ftl/commonPage/images/live-item-gd.jpg","7":"ftl/commonPage/images/live-item-og.jpg","8":"ftl/commonPage/images/live-item-slc.jpg","9":"ftl/commonPage/images/live-item-ag.jpg","10":"ftl/commonPage/images/live-item-bb.jpg","16":"ftl/commonPage/images/live-item-ebet.jpg","17":"ftl/commonPage/images/live-item-sa.jpg","24":"ftl/commonPage/images/live-item-opus.jpg","33":"ftl/commonPage/images/live-item-shenbo.jpg"}>
 <#assign bgCoverKeys = bgCover?keys>
 <#--api logo-->
-<#assign apiLogo ={"1":"ftl/commonPage/images/live-logo-ds.png","3":"ftl/commonPage/images/live-logo-mg.png","5":"ftl/commonPage/images/live-logo-gd.png","7":"ftl/commonPage/images/live-logo-og.png","8":"ftl/commonPage/images/live-logo-slc.png","9":"ftl/commonPage/images/live-logo-ag.png","10":"ftl/commonPage/images/live-logo-bb.png","16":"ftl/commonPage/images/live-logo-ebet.png","17":"ftl/commonPage/images/live-logo-sa.png","24":"ftl/commonPage/images/live-logo-opus.png"}>
+<#assign apiLogo ={"1":"ftl/commonPage/images/live-logo-ds.png","3":"ftl/commonPage/images/live-logo-mg.png","5":"ftl/commonPage/images/live-logo-gd.png","7":"ftl/commonPage/images/live-logo-og.png","8":"ftl/commonPage/images/live-logo-slc.png","9":"ftl/commonPage/images/live-logo-ag.png","10":"ftl/commonPage/images/live-logo-bb.png","16":"ftl/commonPage/images/live-logo-ebet.png","17":"ftl/commonPage/images/live-logo-sa.png","24":"ftl/commonPage/images/live-logo-opus.png","33":"ftl/commonPage/images/live-logo-shenbo.png"}>
 <#assign logoKeys = apiLogo?keys>
 <#--10-->
 <#assign api10 ={'lineSize':[4,4,4],'game':{"百家乐":"poker1","骰宝":"dice1","龙虎斗":"poker2","牛牛":"spade-fill","无限21点":"chip2","番摊":"coin-cny","三公":"poker1","二八杠":"dice1","轮盘":"roulette3","色碟":"chip1","德州扑克":"poker2","温州牌九":"dice1"}}>
@@ -59,8 +59,11 @@
 <#--24-->
 <#assign api24 ={'lineSize':[2,2],'game':{"七喜百家乐":"poker1","骰宝":"dice1","龙虎":"dragon-tiger","轮盘":"roulette3"}}>
 <#assign api24Keys = api24?keys>
+<#--33-->
+<#assign api33 ={'lineSize':[3,4],'game':{"百家乐":"poker1","星级百家乐":"poker2","互动多合一":"roulette4","龙虎":"dragon-tiger","轮盘":"roulette3","三公":"poker1","骰宝":"dice1"}}>
+<#assign api33Keys = api33?keys>
 
-<#assign liveApis={"1":api1,"3":api3,"5":api5,"7":api7,"8":api8,"9":api9,"10":api10,"16":api16,"17":api17,"24":api24}>
+<#assign liveApis={"1":api1,"3":api3,"5":api5,"7":api7,"8":api8,"9":api9,"10":api10,"16":api16,"17":api17,"24":api24,"33":api33}>
 
 <#assign liveScript01=true>
 

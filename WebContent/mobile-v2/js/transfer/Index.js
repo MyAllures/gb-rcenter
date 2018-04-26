@@ -127,23 +127,13 @@ mui("body").on('tap', '#refreshAllApiBalance', function () {
  * 重新初始化转账form表单
  */
 function initTransfer() {
-    mui.ajax(root + '/transfer/transferBack.html', {
-        dataType: 'json',
-        type: 'post',
-        async: true,
-        success: function (data) {
-            var $transferOut = $("#transferOut");
-            var $transferInto = $("#transferInto");
-            $("input[name=transferInto]").val('');
-            $("input[name=transferOut]").val($transferOut.attr("defaultValue"));
-            $transferOut.children("span").text($transferOut.attr("default"));
-            $transferInto.children("span").text($transferInto.attr("default"));
-            $("input[name='result.transferAmount']").val("");
-            $("[name='gb.token']").val(data.token);
-            /*changeMsg();
-            amountValid();*/
-        }
-    });
+    var $transferOut = $("#transferOut");
+    var $transferInto = $("#transferInto");
+    $("input[name=transferInto]").val('');
+    $("input[name=transferOut]").val($transferOut.attr("defaultValue"));
+    $transferOut.children("span").text($transferOut.attr("default"));
+    $transferInto.children("span").text($transferInto.attr("default"));
+    $("input[name='result.transferAmount']").val("");
 }
 
 /**
@@ -181,6 +171,9 @@ function reconnectAgain(orderId) {
  * 转账回调
  */
 function transferBack(data) {
+    if(data && data.token) {
+        $("[name='gb.token']").val(data.token);
+    }
     if (!data){
         toast(window.top.message.transfer_auto["转账异常"]);
         initTransfer();
@@ -229,7 +222,6 @@ function transferBack(data) {
         })
     } else {
         toast(data.msg);
-        $("[name='gb.token']").val(data.token);
     }
 }
 
@@ -239,8 +231,9 @@ function transferBack(data) {
 mui("#mui-content-padded").on("tap", "#transfersMoney", function () {
     var $form = $('#transferForm');
     var $this = $(this);
-    
+    $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
     if (!$form.valid()) {
+        $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
         return false;
     }
 
@@ -249,14 +242,10 @@ mui("#mui-content-padded").on("tap", "#transfersMoney", function () {
         data: $form.serialize(),
         type: 'post',
         async: true,
-        beforeSend:function(){
-            $this.attr("disabled", "disabled").text(window.top.message.transfer_auto['提交中']);
-        },
         success: function (data) {
             transferBack(data);
-            $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
         },
-        error: function (xhr, type, errorThrown) {
+        complete:function() {
             $this.text(window.top.message.transfer_auto['确认提交']).removeAttr("disabled");
         }
     });

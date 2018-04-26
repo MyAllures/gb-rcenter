@@ -9,17 +9,20 @@
         position: relative;
     z-index: 1;    border-radius: 4px;
     .promo-list{
-        .swiper-slide a{margin-bottom: 10px;display: block;}
+        .swiper-slide .promo-item{margin-bottom: 10px;display: block;border-radius: 8px;border: 1px solid #e3e2e2;
+            .img-wrap{padding: 12px;background: #fff;border-top-left-radius: 8px;border-top-right-radius: 8px;}
+            .pro-txt{height: 30px;line-height: 30px;background: #f2f2f2;border-bottom-left-radius: 8px;border-bottom-right-radius: 8px;padding: 0 12px;}
+        }
         img{width: 100%;vertical-align: middle;}
     }
     .p-t-slide-content{
         .swiper-slide{ } 
     }
 }
-.promo-head{height: 97px;}
+.promo-head{height: 86px;}
 .promo-header{      position: fixed;
     top: 44px;
-    height: 53px;
+    height: 42px;
     left: 0;
     right: 0;
     z-index: 99;
@@ -27,18 +30,25 @@
 .btn-promo-sort{
         padding: 0 5px 0 0 !important;height: 34px;border: 0;
     border-radius: 0;
-        span{display: block;border-radius: 3px;
-    width:100%;height: 34px;line-height: 34px;
+        span{display: block;border-radius: 0;
+    width:100%;height: 34px;line-height: 34px;    background: transparent;
+    border: 0;
+    border-bottom: 2px solid transparent;
     }
     margin-bottom: 10px;
-    margin-top: 10px;}
+    margin-top: 10px;        
+    }
+    .btn-promo-sort.swiper-slide-active span {
+        color: #327fc3;
+        border-bottom: 2px solid #327fc3;
+    }
 
 .promo{height: 100%;
     .swiper-container{height: 100%;
         .swiper-slide .mui-scroll{padding: 10px;}
     }
 }
-.promo-content{    padding-top: 97px !important;
+.promo-content{    padding-top: 86px !important;background: #fff !important;
     position: absolute;padding-bottom: 53px !important;
     top: 0;width: 100%;
     bottom: 0;}
@@ -62,7 +72,18 @@ height: 44px;
 .icon-gift{   background: url(./images/icon-gift.png) no-repeat center;
 background-size: 20px auto;
 width: 44px;margin-right: -10px !important;margin-left: 0 !important;
-height: 44px;}
+height: 44px;
+    i {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: url(./images/ico-gift.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+}
 .mine-content{padding-bottom: 63px !important;
     .user-info-wrap{height: 60px;position: relative;    margin-bottom: 50px;
         .gb-userinfo{position: absolute;height: 100px;left: 10px;right: 10px;    -webkit-box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);border-radius: 5px;
@@ -157,11 +178,14 @@ height: 44px;}
 
 /* promo-detail */
 .promo-detail-content{
+    &.mui-content{padding-bottom: 45px;    background: #f2f2f2;}
     table{    color: #333;
     border: 1px solid #666;
         td{    border: 1px solid #666;}
     }
-    .gb-select{display: block;}
+    .gb-select{display: block;
+        img{max-width: 100%;}
+    }
     .gb-imgs >.ct {
         padding: 10px;
         ul{padding: 0;margin: 0;list-style: none;
@@ -182,12 +206,40 @@ height: 44px;}
             }
         }
     }
-    .gb-form-foot {  padding: 10px;
-        .submit {    border: 1px solid #1766bb;    background-color: #1766bb;    width: 100%;    padding: 10px 12px;    font-size: 13px;}
+    .gb-form-foot {    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;padding: 0; z-index: 10;
+         .mui-btn{float: left;width: 50%;
+    border-radius: 0; font-size: 14px;padding: 0; 
+    height: 45px;
+    line-height: 45px;
+            &.btn-deposit{background: #1766bb;border-color: #1766bb;}
+            &.btn-apply{background: #0ec392;border-color: #0ec392;}
+         }
     }
+    
 }
 /* promo-records */
+.mui-bar-nav.promo-record{
+    .top-info{float: right;font-size: 10px;
+    line-height: 15px;color: #fff;
+    padding-top: 10px;text-align: right;
+        .mone{display: inline-block;padding-left: 18px;background: url(images/promo/icon-money.png) no-repeat 0/12px;}
+    }
+}
 .promo-record-content{
+    .promo-nav{
+        height: 42px;background: #fff;padding: 0 10px;line-height: 42px;
+        .mui-segmented-control{border: 0;    border-radius: 0;
+            .mui-control-item{font-size: 14px;color: #333;border: 0;border-bottom: 2px solid transparent;border-radius: 0;
+                &.mui-active{color: #317ec2;border-color: #317ec2;background-color: transparent;}
+            }
+        }
+    }
+    .promo-cont.mui-scroll-wrapper{top: 87px;
+        .mui-control-content{padding-bottom: 10px;}
+    }
     .promo-records-warp {
         padding: 0 10px;
         margin-top: 10px;
@@ -217,33 +269,9 @@ height: 44px;}
         width: 68%;
         float: left;
         position: relative;
-        h5 {
-            font-size: 12px;
-            color: #333;
-            line-height: 15px;
-            text-overflow: -o-ellipsis-lastline;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            margin-top: 0;
-            margin-bottom: 7px;
-            min-height: 45px;
-        }    
-        .text {
-            font-size: 10px!important;
-            color: #999;
-            line-height: 16px;
-            .sum {
-                float: left;
-            }
-            .time {
-                display: inline-block;
-                float: right;
-                margin-right: 20px;
-            }
-        }    
+        font-size: 12px;
+        color: #333;  line-height: 17px;
+        .tit{color: #666;}
     }
     .promo-box-right {
         border-radius: 4px;
@@ -278,7 +306,7 @@ height: 44px;}
         .annotation {
             line-height: 16px;
             margin-top: 10px;
-            font-size: 10px;
+            font-size: 14px;
         }
         .round {
             position: absolute;
@@ -299,6 +327,79 @@ height: 44px;}
     }
     .org {
         color: #f1aa4d;
+    }
+    .no-promo {
+        display: block;
+        text-align: center;
+        padding: 50px 0;
+        border: 1px solid #e2e2e2;
+        background: #fff;
+        border-radius: 3px;
+        font-size: 14px;
+        color: #979797;
+        margin: 10px;
+    }
+}
+// 活动申请页面
+.promo-apply-content{
+    &.mui-content{
+        background: #f2f2f2;font-size: 12px;color: #666;
+    }
+    .top_title{padding: 10px;background: #fff;margin-bottom: 10px;
+        .sub_tit{font-size: 10px;color: #999;}
+        .tit{font-size: 15px;color: #317ec2;}
+    }
+    .promo_con_list{
+        font-size: 14px;
+        color: #666;
+        .mui-table-view:before,.mui-table-view:after{content: none;}
+        .mui-table-view-cell{padding: 15px;
+            .icon-pass,.icon-fail,.icon-pass-disa{    position: absolute;
+    top: 50%;
+    right: 15px;width: (37px/2);height: (37px/2);background-size: 100%;background-repeat: no-repeat;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);}            
+            .icon-pass{background-image: url(images/promo/icon-pass.png);}
+            .icon-fail{background-image: url(images/promo/icon-fail.png);}
+            .icon-pass-disa{background-image: url(images/promo/icon-pass-disa.png);}
+            &:after{left: 0;}
+        }
+    }
+    .promo_status{padding: 45px 10px 10px;text-align: center;
+        .icon-success{display: block;width: (139px/2);height: (139px/2);margin:0 auto 10px;background: url(images/promo/icon-success.png) no-repeat center /100%;}
+        .suc_tip{font-size: 15px;color: #317ec2;margin-bottom: 15px;}
+        p{font-size: 12px;color: #666;margin-bottom: 0;}
+        .btn_cust_serv{margin-top: 50px; margin-bottom: 0;  padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #317ec2;    border-color: #317ec2;}
+        .fai_tip{font-size: 15px;color: #333;line-height: 22px;}
+        .icon-failure{display: block;width: (114px/2);height: (131px/2);margin: 0 auto 10px;background: url(images/promo/icon-failure.png) no-repeat center /100%;}
+    }
+    // 申请活动2的页面样式
+    &.promo-apply2-content{
+        padding-bottom: 40px;
+        .promo_item_list{
+            .promo_item{padding: 10px;position: relative;font-size: 12px;color: #333;background: #fff;margin-bottom: 10px;
+                .ti{color: #666;}
+                .promo_item_sta{width: 100px;position: absolute;right: 0;top: 0;bottom: 0;color: #fff;text-align: center;line-height: 104px;font-size: 14px;
+                    &.suc{background: #1fbd66;}
+                    &.awa{background: #f07e11;}
+                    &.fai{background: #999;    line-height: 24px;padding-top: 25px;}
+                    &.proc{background: #317ec2;}
+                }
+            }
+        }
+        .btn_cust_serv{position: fixed;z-index: 10; bottom: 0;    left: 0;    right: 0;border-radius: 0;    margin: 0;padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #317ec2;    border-color: #317ec2;}
+    }
+    // 申请活动3的页面样式
+    &.promo-apply3-content{
+        .promo_con_list{margin-bottom: 10px;}
+        .pro_mone{padding: 10px;overflow: hidden;background: #fff;font-size: 14px;color: #333;}
+        .btn_apply{margin: 32px 10px 12px;  width: auto;padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #317ec2;    border-color: #317ec2;
+            &.disabled{background: #e2e2e2;color: #999;border-color: #e2e2e2;}
+        }
+        .color-green{color: #1f9316;}
+        .color-gray{color: #666;}
+        .color-blue{color: #317ec2;}
+        .app_num{font-size: 12px;color: #999;text-align: center;}
     }
 }
 /* casino-transfer */
@@ -431,3 +532,19 @@ height: 44px;}
     }
 }
 .allgame-scroll{height: 300px;margin: 0 !important;    background: #fff;}
+
+.mui-popup{
+    &.app_suc{
+        .mui-popup-buttons{display: none;}
+        .mui-popup-inner{width: (434px/2);height: (382px/2);padding: 0;border-radius: 10px;    margin: 0 auto;padding-top: 24px;}
+        .icon-sus{display:block;background: url(images/promo/icon-suc1.png) no-repeat center / 100%;width: (195px/2);height: (195px/2);margin: 0 auto;}
+        .tips{    font-size: 15px;    color: #333;    margin-top: 5px;}
+        .p_tim{    font-size: 15px;    color: #666;    margin-top: 5px;}
+    }
+}
+.mui-toast-container{
+    &.app_fai{top: 50%;    bottom: auto;    transform: translateY(-50%);
+        .mui-toast-message{background: #fff;color: #333;font-size: 13px;padding: 11px 5px;}
+    }
+}
+

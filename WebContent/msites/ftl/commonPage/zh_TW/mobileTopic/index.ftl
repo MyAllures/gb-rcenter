@@ -44,11 +44,18 @@
                 <div class="left0-3"><img src="${data.configInfo.ftlRootPath}commonPage/zh_TW/mobileTopic/images/index-03.png" class="img-left0-3"></div>
                 <div class="left0-4"><img src="${data.configInfo.ftlRootPath}commonPage/zh_TW/mobileTopic/images/index-04.png" class="img-left0-4"></div>
                 <div class="left0-5"><img src="${data.configInfo.ftlRootPath}commonPage/zh_TW/mobileTopic/images/index-05.png" class="img-left0-5"></div>
-                <div class="left0-6 flash2">
-                <#--<img src="${data.configInfo.ftlRootPath}commonPage/zh_TW/mobileTopic/images/qcode.png">-->
-                    <div id="qcode"></div>
-                    <p>手機掃碼 立即下載</p>
-                    <p>全新APP 即刻精彩</p>
+                <div class="left0-6">
+                    <div id="qcode" class="qcode">
+                        <a href="/"><img class="qcode-blur" src="${data.configInfo.ftlRootPath}commonPage/zh_CN/mobileTopic/images/qcode-blur.png"></a>
+                    </div>
+                    <div class="txt">
+                        <div class="txt1">For iOS & Android</div>
+                        <div class="txt2">請登入下載</div>
+                        <div class="txt3">
+                            <p>【下載APP】拿起手機，一掃即安裝</p>
+                            <p>【開啟APP】啟用賬號，再掃即繫結</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="right right0">
@@ -93,31 +100,41 @@
 <script src="${data.configInfo.ftlRootPath}commonPage/zh_TW/mobileTopic/js/jquery.fullPage.min.js"></script>
 <script src="${data.configInfo.ftlRootPath}commonPage/zh_TW/mobileTopic/js/TweenMax.min.js"></script>
 <script src="${data.configInfo.ftlRootPath}commonPage/zh_TW/mobileTopic/js/jquery-parallax.js"></script>
-<script src="${data.configInfo.ftlRootPath}commonPage/js/kaelQrcode.min.js"></script>
 <script>
     $(function() {
-        var cu_url = window.location.origin;
-        var q_code = new KaelQrcode();
-        q_code.init(document.getElementById("qcode"), {
-            text : cu_url+"/app/download.html",
-            size: 140
-        });
+        //android二维码
+        var android_download = "";
+        var android_url = "";
+        $.ajax({
+            url:"/index/getAppsUrl.html",
+            type:"get",
+            data:{"device":"android"},
+            async:false,
+            success:function (data) {
+                var data = eval('('+data+')');
+                android_download=data.app;
+                android_url = "data:image/png;base64,"+android_download;
+            }
+        })
+        $("#qcode").append("<img src="+android_url+">");
 
         // 全屏滾動
         $('.myFullPage').fullpage({
             verticalCentered: false, //垂直居中
             css3: true //CSS3 transforms滾動
         });
-        // 掃碼按鈕
-        $(".left0-6").hover(function() {
-            if ($(this).hasClass("flash2")) {
-                $(this).removeClass("flash2");
-            } else if ($(this).hasClass("flash22")) {
-                $(this).removeClass("flash22");
-            } else {
-                $(this).addClass("flash22");
+        // 判读是否登录
+        var isLogin = sessionStorage.is_login;
+        //后台设置是否登录后才能显示二维码
+        <#if data.loginShowQrCode?string("true","false") == 'true'>
+            if(isLogin=="true"){
+                $('.left0-6').addClass("login");
+            }else{
+                $('.left0-6').addClass("unlogin");
             }
-        });
+        <#else>
+            $('.left0-6').addClass("login");
+        </#if>
     });
     $(document).mousemove(function(e) {
         $('.img-left0').parallax(-40, e);

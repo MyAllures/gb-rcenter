@@ -414,7 +414,7 @@ li{
     }
 }
 // 注册登录样式
-.mui-bar.mui-bar-blue{    background-color: #1766bb;}
+.mui-bar.mui-bar-blue{    background-color: #1766bb;    background-image: none;}
 .login-wrap,.register-wrap{
         position: fixed;
     height: 0;
@@ -650,7 +650,6 @@ li{
     }
 }
 .money-shadow{position: fixed;top: 0;right: 0;bottom: 0;left: 0;background: rgba(0,0,0,0.3);    z-index: 111;display: none;}
-.mui-bar.promo-record{background-color: #1b75d9;}
 /* 投注记录 */
 .mine-bet-record-body{
     
@@ -1337,31 +1336,6 @@ body.deposit{
         font-size: 13px;
     }
     
-    /*存款页面优惠弹窗*/
-    .pro-window{width:320px !important; margin-top:-165px;margin-left:-160px;padding:15px;}
-    .pro-window h3{color:#1766bb;margin-bottom:30px;line-height: 16px;}
-    .pro-window .cont-text{line-height:20px;font-size: 12px;color:#666;}
-    .pro-window .cont-text p,.pro-window .text-pro p{color:#666;}
-    .pro-window .org{color:#f49e2e;font-size: 14px;}
-    .pro-window .text-pro ul{height:110px;overflow: hidden;position:relative;background:#e2e2e2;border-radius: 4px;}
-    .pro-window .text-pro li{padding:0 0 0 10px;line-height:16px;font-size: 12px;}
-    .pro-window .text-pro .text-warp{border-bottom: 1px dashed #d2d2d2;width: 100%;padding:5px 0;position: relative;}
-    .pro-window .text-pro li span{color:#666;display:inline-block;width:238px;word-wrap: break-word}
-    .pro-window .text-pro li input{width: 16px;height: 16px;position:absolute;top:20%;right:15px;}
-    .pro-btn{margin: 20px 0 0 10px;width:280px;}
-    .pro-btn a{font-size: 14px; margin: 0 5px; color: #fff; width:120px;height: 32px;border-radius: 4px;line-height: 32px;text-align: center;display: inline-block}
-    .pro-btn .next-btn{background:#1766bb;}
-    .pro-btn .agin-btn{background:#e2e2e2;color: #666;}
-    .pro-window .close{position:absolute;top:5px;right:5px;background:url(./images/close.png)no-repeat center center;width: 48px;height:48px;zoom:0.7;}
-
-    /*存款页面提交成功*/
-    .window-ok{padding:0 20px;height: 255px;}
-    .window-ok .ok-box{text-align: center;}
-    .window-ok .ok-box .ok-icon{width: 57px;height: 57px;background:url(./images/ok.png)no-repeat top left;display:block;background-size: cover;margin:20px auto 10px auto;}
-    .window-ok .ok-box span{font-size: 16px;font-weight:bold;color:#00d623;}
-    .window-ok .ct{margin:10px 0 !important;}
-    .window-ok .ft a{display: block;margin-top:5px;}
-
     .gb-promo .gb-panel {
         background-color: #3e445c;
         border-top: 1px solid #3e445c;
@@ -2600,23 +2574,7 @@ body.bankcard{
         height: 22px;
         line-height: 22px;
         margin-left: 5px;
-    }  
-    /*存款页面优惠弹窗*/
-    .pro-window{width:320px !important; margin-top:-165px;margin-left:-160px;padding:15px;}
-    .pro-window h3{color:#1766bb;margin-bottom:30px;line-height: 16px;}
-    .pro-window .cont-text{line-height:20px;font-size: 12px;color:#666;}
-    .pro-window .cont-text p,.pro-window .text-pro p{color:#666;}
-    .pro-window .org{color:#f49e2e;font-size: 14px;}
-    .pro-window .text-pro ul{height:110px;overflow: hidden;position:relative;background:#e2e2e2;border-radius: 4px;}
-    .pro-window .text-pro li{padding:0 0 0 10px;line-height:16px;font-size: 12px;}
-    .pro-window .text-pro .text-warp{border-bottom: 1px dashed #d2d2d2;width: 100%;padding:5px 0;position: relative;}
-    .pro-window .text-pro li span{color:#666;display:inline-block;width:238px;word-wrap: break-word}
-    .pro-window .text-pro li input{width: 16px;height: 16px;position:absolute;top:20%;right:15px;}
-    .pro-btn{margin: 20px 0 0 10px;width:280px;}
-    .pro-btn a{font-size: 14px; margin: 0 5px; color: #fff; width:120px;height: 32px;border-radius: 4px;line-height: 32px;text-align: center;display: inline-block}
-    .pro-btn .next-btn{background:#1766bb;}
-    .pro-btn .agin-btn{background:#e2e2e2;color: #666;}
-    .pro-window .close{position:absolute;top:5px;right:5px;background:url(./images/close.png)no-repeat center center;width: 48px;height:48px;zoom:0.7;}    
+    }      
 }
 /* 数字货币存款 */
 body.online-pay-sz{
@@ -2872,6 +2830,11 @@ body.change-loginpassword{color: #000;
         input {
             font-size: 12px;
             color: #999;
+        }
+        &.spcode{
+            display: flex;
+            input{    padding: 10px;}
+            img{width: 90px;height: 40px;}
         }
     }  
     .gb-stressed{
@@ -3313,31 +3276,7 @@ body.exchange-bank,body.exchange-wechat{color: #000;
     bottom: 0;
     left: 0;
     right: 0;    background: #f2f2f2;
-    z-index: 9;}   
-    /*存款页面优惠弹窗*/ 
-    .pro-window{width:320px !important; margin-top:-165px;margin-left:-160px;padding:15px;}
-    .pro-window h3{color:#1766bb;margin-bottom:30px;line-height: 16px;}
-    .pro-window .cont-text{line-height:20px;font-size: 12px;color:#666;}
-    .pro-window .cont-text p,.pro-window .text-pro p{color:#666;}
-    .pro-window .org{color:#f49e2e;font-size: 14px;}
-    .pro-window .text-pro ul{max-height:110px;overflow: auto;background:#e2e2e2;border-radius: 4px;}
-    .pro-window .text-pro li{padding:0 0 0 10px;line-height:16px;font-size: 12px;}
-    .pro-window .text-pro .text-warp{border-bottom: 1px dashed #d2d2d2;width: 100%;padding:5px 0;position: relative;}
-    .pro-window .text-pro li span{color:#666;display:inline-block;width:238px;word-wrap: break-word}
-    .pro-window .text-pro li input{width: 16px;height: 16px;position:absolute;top:20%;right:15px;}
-    .pro-btn{margin: 20px 0;width:280px;    display: flex;
-    justify-content: space-around;}
-    .pro-btn a{font-size: 14px; margin: 0 5px; color: #fff; width:120px;height: 32px;border-radius: 4px;line-height: 32px;text-align: center;display: inline-block}
-    .pro-btn .next-btn{background:#1766bb;}
-    .pro-btn .agin-btn{background:#e2e2e2;color: #666;}
-    .pro-window .close{position:absolute;top:5px;right:5px;background:url(../images/close.png)no-repeat center center;width: 48px;height:48px;zoom:0.7;}
-     /*存款页面提交成功*/   
-    .window-ok{padding:0 20px;height: 255px;}
-    .window-ok .ok-box{text-align: center;}
-    .window-ok .ok-box .ok-icon{width: 57px;height: 57px;background:url(../images/ok.png)no-repeat top left;display:block;background-size: cover;margin:20px auto 10px auto;}
-    .window-ok .ok-box span{font-size: 16px;font-weight:bold;color:#00d623;}
-    .window-ok .ct{margin:10px 0 !important;}
-    .window-ok .ft a{display: block;margin-top:5px;}           
+    z-index: 9;}             
     .tit {
         margin: 10px auto;
         line-height: 35px;
@@ -3595,7 +3534,7 @@ body.exchange-bitcoin{color: #000;
         .input-date {
             display: inline-block;
             position: relative;
-            width: 30%;
+            width: 90px;
             a {
                 display: inline-block;
                 width: 20px;
@@ -3623,6 +3562,7 @@ body.exchange-bitcoin{color: #000;
     .gb-datafilter .btn {
         padding: 2px 8px;    background-color: #1766bb;
     border-color: #1766bb;
+        &.btn-sec{    color: #fff; margin-right: 5px;}
     } 
     .gb-checkbox2 {
         display: inline-block;
@@ -3756,7 +3696,7 @@ body.mine-user{color: #000;
     &.load-bg .load-bar-bottom .copy-right {
         font-size: 8px;
         color: #dcdcdd;
-        line-height: 20px;margin: 0;
+        line-height: 20px;margin: 20px 0 0 0;
     padding: 0;
     border: 0;
     }
@@ -3768,11 +3708,14 @@ body.mine-user{color: #000;
     }
     
     &.load-bg .load-bar-bottom .tech-support .icon-tech-support {
-        background: url(./images/tech-support.png) 0 0/50px;
+       background: url(./images/tech-support.png) 0 0/auto 20px no-repeat;
         display: inline-block;
-        width: 50px;
-        height: 11px;
-        vertical-align: middle
+        width: 80px;
+        height: 20px;
+        vertical-align: middle;
+        &.bdo{
+       background: url(./images/tech-support-bdo.png) 0 0/auto 20px no-repeat;
+        }
     }
     
     &.load-bg .load-bar-middle {
@@ -3795,4 +3738,77 @@ body.mine-user{color: #000;
 // app头部空白修复
 .mui-app{
     .app-fix-top{height: 20px;top: -20px;position: fixed;left: 0;right: 0;z-index: 997;background: #1766bb;}
+}
+/*存款页面优惠弹窗*/
+.pro-window{width:320px !important; margin-top:-165px;margin-left:-160px;padding:15px;}
+.pro-window h3{color:#1766bb;margin-bottom:30px;line-height: 16px;}
+.pro-window .cont-text{line-height:20px;font-size: 12px;color:#666;}
+.pro-window .cont-text p,.pro-window .text-pro p{color:#666;}
+.pro-window .org{color:#f49e2e;font-size: 14px;}
+.pro-window .text-pro ul{height:110px;overflow: hidden;position:relative;background:#e2e2e2;border-radius: 4px;}
+.pro-window .text-pro li{padding:0 0 0 10px;line-height:16px;font-size: 12px;}
+.pro-window .text-pro .text-warp{border-bottom: 1px dashed #d2d2d2;width: 100%;padding:5px 0;position: relative;}
+.pro-window .text-pro li span{color:#666;display:inline-block;width:238px;word-wrap: break-word}
+.pro-window .text-pro li input{width: 16px;height: 16px;position:absolute;top:20%;right:15px;}
+.pro-btn{margin: 20px 0 0 10px;width:280px;}
+.pro-btn a{font-size: 14px; margin: 0 5px; color: #fff; width:120px;height: 32px;border-radius: 4px;line-height: 32px;text-align: center;display: inline-block}
+.pro-btn .next-btn{background:#1766bb;}
+.pro-btn .agin-btn{background:#e2e2e2;color: #666;}
+.pro-window .close{position:absolute;top:5px;right:5px;background:url(./images/close.png)no-repeat center center;width: 48px;height:48px;zoom:0.7;}
+
+/*存款页面提交成功*/
+.window-ok{padding:0 20px;height: 255px;}
+.window-ok .ok-box{text-align: center;}
+.window-ok .ok-box .ok-icon{width: 57px;height: 57px;background:url(./images/ok.png)no-repeat top left;display:block;background-size: cover;margin:20px auto 10px auto;}
+.window-ok .ok-box span{font-size: 16px;font-weight:bold;color:#00d623;}
+.window-ok .ct{margin:10px 0 !important;}
+.window-ok .ft a{display: block;margin-top:5px;}
+
+// 取款页面的状态提示样式
+.withdraw-out {
+    margin: 20px
+}
+
+.withdraw-not {
+    margin: 0 auto;
+    background: #f9fafd;
+    padding: 20px;
+    border: 1px solid #e8ecef;
+    border-radius: 3px;
+    text-align: center
+}
+
+.withdraw-not h1 {
+    margin: 0
+}
+
+.withdraw-not .tiptext {
+    margin: 10px 0;
+    line-height: 25px
+}
+
+.withdraw-not .tiptext p {
+    margin: 0
+}
+
+.tipbig {
+    display: inline-block;
+    padding-right: 5px;
+    vertical-align: middle;
+    width: 52px;
+    height: 52px;
+    background: url(../images/tipbig.png) no-repeat top left;
+    cursor: pointer
+}
+
+.tipbig.success {
+    background-position: -15px -8px
+}
+
+.tipbig.fail {
+    background-position: -80px -8px
+}
+
+.tipbig.cry {
+    background-position: -146px -8px
 }

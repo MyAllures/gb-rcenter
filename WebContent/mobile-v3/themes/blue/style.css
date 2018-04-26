@@ -60,10 +60,6 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 
 /* page promo */
 .promo .p-t-slide-content { color: #333; }
-.promo .p-t-slide-content .swiper-slide { background: #fff; }
-
-.btn-promo-sort span { background: #e3e2e2; border: 1px solid #e3e2e2; }
-.btn-promo-sort.swiper-slide-active span { background: #327fc3; border: 1px solid #327fc3; color: #fff; }
 
 .promo-header { border-bottom: 1px solid #ccc; }
 
@@ -120,5 +116,8 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .icon-gift { background: url(./images/icon-gift.png) no-repeat center; background-size: 20px auto; }
 
 .casino-list-bar .mui-icon-back { color: #fff; }
+
+.load-body { background: #1b75d9; }
+.load-body .mui-progressbar.mui-progressbar-infinite:before { background: #1b75d9; }
 
 /*# sourceMappingURL=style.css.map */

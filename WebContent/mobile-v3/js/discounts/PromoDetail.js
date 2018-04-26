@@ -42,12 +42,16 @@ function submitPromo(obj, options) {
     //判断是否是试玩账号，试玩账号无权参与
     var isDemo = sessionStorage.isDemo;
     if (isDemo == 'true') {
-        alert('试玩账号无权限参与活动');
+        toast('试玩账号无权限参与活动');
         return;
     }
     var code = options.dataCode;
     if (code == 'content') {
-        goToUrl(root + "/message/gameNotice.html?isSendMessage=true");
+        if(isNative){
+            nativeGoToApplyPromoPage();
+        }else{
+            goToUrl(root + "/message/gameNotice.html?isSendMessage=true");
+        }
     } else if (code == 'back_water') {
         toast(window.top.message.promo_auto['参与中']);
     } else {
@@ -139,6 +143,10 @@ function applyActivities(aplyObj, isRefresh) {
         url: root + "/promo/applyActivities.html",
         data: {code: code, resultId: searchId},
         success: function (data) {
+            if(data == null){
+                toast(window.top.message.promo_auto['用户活动申请还在处理中']);
+                return;
+            }
             showWin(data, isRefresh);
             $(aplyObj).removeAttr("disabled");
         },
@@ -209,8 +217,8 @@ function filterActyByPlayer(data) {
         $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").text(window.top.message.promo_auto['未满足条件']);
     } else if (code == "first_deposit" || code == "deposit_send") {
         $obj.removeClass(oldClass).addClass(newClass + " mui-disabled").text(window.top.message.promo_auto['存款时申请']);
-    } else if (code == "regist_send" || code == "relief_fund" || code == "profit_loss" || code == "effective_transaction") {
-        $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").text(window.top.message.promo_auto['参与中']);
+    } else if(code == "content"){
+        $obj.addClass("mui-hidden");
     }
 }
 

@@ -6,7 +6,7 @@
  .mui-inner-wrap{background:url(images/content-bg.png) no-repeat center 44px;background-attachment: fixed;}
  header{
     &.mui-bar-nav{
-        a.mui-icon-bars{color: #666;} 
+        a.mui-icon-bars{color: #fff;} 
         .btn-login{background-color: #1dc28e;border: 1px solid #1dc28e;}
         .btn-demo{background-color: #1279d9;border: 1px solid #1279d9;}
         .btn-register{background-color: #f0af01;border: 1px solid #f0af01;}
@@ -94,16 +94,9 @@
 /* page promo */
 .promo{
     .p-t-slide-content{color: #333;
-        .swiper-slide{background: #fff;}
     }
 }
-    .btn-promo-sort{
-        span{background: #e3e2e2;border: 1px solid #e3e2e2;}
-        
-        &.swiper-slide-active{
-            span{background: #e8c464;    border: 1px solid #e8c96d;    color: #fff;}
-            }
-    }
+.promo-head.mui-bar-blue{background-image: none;}
 .promo-header{border-bottom: 1px solid #ccc;}  
 /* login and register page */
 .type-header{
@@ -214,3 +207,14 @@
 .mui-bar-tab .mui-icon.icon-home, .mui-bar-tab .mui-icon:active.icon-home{    background: #252525;}
 
 .mui-content-casino-list .casino-list .img-wrap{background: transparent;}
+
+.mui-title{color: #fff;}
+/* index-login-info */
+.login-info{ background: url(images/icon-open-offcanvas.png) no-repeat right center/5px;color: #fff;}
+
+// 加载页样式
+.load-body{    background: url(./images/content-bg.png) no-repeat center 0;}
+.btn-promo-sort.swiper-slide-active span {
+    color: #e7bf5c;
+    border-bottom: 2px solid #e7bf5c;
+}

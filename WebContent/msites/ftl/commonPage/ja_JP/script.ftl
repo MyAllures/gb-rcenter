@@ -68,24 +68,24 @@
 
     //浮窗判断脚本添加Float效果
     function floatPics() {
-        <#if data.floatPicsInIndex??>
-            <#list data.floatPicsInIndex as pic>
-                <#if pic.location == "left">
-                    <#if pic.interactivity=="scroll_with_page">
-                        if($("[data-fp='${pic.id}']").length>0){
-                        $("[data-fp='${pic.id}']").Float({ <#if pic.distanceTop??>topSide: ${pic.distanceTop?string.computer}<#else>topSide:150</#if>, floatRight: 0,<#if pic.distanceSide??>side: ${pic.distanceSide?string.computer}<#else >side:0</#if>, close: 'aside-float' });
-                        }
-                    </#if>
+    <#if data.floatPicsInIndex??>
+        <#list data.floatPicsInIndex as pic>
+            <#if pic.location == "left">
+                <#if pic.interactivity=="scroll_with_page">
+                    if($("[data-fp='${pic.id}']").length>0){
+                    $("[data-fp='${pic.id}']").Float({ <#if pic.distanceTop??>topSide: ${pic.distanceTop?string.computer}<#else>topSide:150</#if>, floatRight: 0,<#if pic.distanceSide??>side: ${pic.distanceSide?string.computer}<#else >side:0</#if>, close: 'aside-float' });
+                    }
                 </#if>
-                <#if pic.location == "right">
-                    <#if pic.interactivity=="scroll_with_page">
-                        if($("[data-fp='${pic.id}']").length>0){
-                        $("[data-fp='${pic.id}']").Float({ <#if pic.distanceTop??>topSide: ${pic.distanceTop?string.computer}<#else>topSide:150</#if>, floatRight: 1,<#if pic.distanceSide??>side: ${pic.distanceSide?string.computer}<#else >side:0</#if>, close: 'aside-float' });
-                        }
-                    </#if>
+            </#if>
+            <#if pic.location == "right">
+                <#if pic.interactivity=="scroll_with_page">
+                    if($("[data-fp='${pic.id}']").length>0){
+                    $("[data-fp='${pic.id}']").Float({ <#if pic.distanceTop??>topSide: ${pic.distanceTop?string.computer}<#else>topSide:150</#if>, floatRight: 1,<#if pic.distanceSide??>side: ${pic.distanceSide?string.computer}<#else >side:0</#if>, close: 'aside-float' });
+                    }
                 </#if>
-            </#list>
-        </#if>
+            </#if>
+        </#list>
+    </#if>
     }
     /*切换语言*/
     $(".changeLanguage").on("click",function(){
@@ -341,7 +341,11 @@
     }
 
     function alert(message){
-        layerDialogNormal(message,'インフォメーション','layui-layer-brand',['360px']);
+        BootstrapDialog.alert({
+            message:message,
+            title:'インフォメーション',
+            type: BootstrapDialog.TYPE_WARNING
+        });
     }
 
     function getlocationParam(name){
@@ -350,7 +354,9 @@
         if (r!=null) return r[2]; return null;
     }
 
-    //首页弹窗开始
+
+    //首页弹窗
+    function homeDialog(){
     <#assign flag = true>
     <#if data.carousels??>
         <#list data.carousels as carousel>
@@ -371,38 +377,58 @@
             </#if>
         </#list>
     </#if>
-    <#if imgSrc?has_content>// 图片是否加链接
-    var _href = "${link}";
-    if(_href!=undefined && _href!=""){
-        if(_href.indexOf("http")>-1){
-            _href = _href;
-        }else{
-            _href = "http://"+_href;
-        }
-        if(_href.indexOf("\$\{website\}")>-1){
-            _href = _href.replace("\$\{website\}",window.location.host);
-        }
-    }else{
-        _href = "javascript:void(0)";
-    }
-    $("#index-modal-content>a").attr("href",_href);
-    </#if>
-    function homeDialog(){
     <#if imgSrc??>
         if(!localStorage.getItem("${updateTime}"+"-close-home-dialog")){// 判读缓存里是否关闭了首页弹窗
-            <#if imgSrc?has_content>
-                layerDialogIndex('#index-modal-content','${imgTitl}','layui-layer-brand',[],'','r');
-            <#elseif content?has_content>
-                layerDialogIndex('<div style="padding:10px;">${content}</div><div class="checkbox-wrap"><input type="checkbox" id="home-dialog-checkbox" />关闭后，不再显示本弹窗广告</div>','${imgTitl}','layui-layer-brand',['600px'],'','r',true);
-
-            </#if>
-            setTimeout(function(){
-                layer.closeAll();
-            },60000);
+            BootstrapDialog.show({
+                type: BootstrapDialog.TYPE_WARNING,
+                draggable: true,
+                title: "${imgTitl}",
+                size: 'index-modal',
+                message: function(dialog) {
+                    var $message = null;
+                    <#if imgSrc?has_content>
+                        var _href = "${link}";
+                        if(_href!=undefined && _href!=""){
+                            if(_href.indexOf("http")>-1){
+                                _href = _href;
+                            }else{
+                                _href = "http://"+_href;
+                            }
+                            if(_href.indexOf("\$\{website\}")>-1){
+                                _href = _href.replace("\$\{website\}",window.location.host);
+                            }
+                        }else{
+                            _href = "javascript:void(0)";
+                        }
+                        $message = $('<a href="'+_href+'"><img  src="${imgSrc}"/></a><div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">閉じられると、このポップアップ広告は表示されなくなります</div>');
+                    <#elseif content?has_content>
+                        $message='<div style="padding:10px;width:500px;">${content}</div>'+'<div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">閉じられると、このポップアップ広告は表示されなくなります</div>';
+                    </#if>
+                    return $message;
+                },
+                buttons:[
+                    {
+                        id:'btn-close',
+                        label:'关闭',
+                        cssClass:'btn-close-home-dialog',
+                        action:function(dia){
+                            dia.close();
+                        }
+                    }
+                ],
+                onhidden:function(dia){
+                    if($("#home-dialog-checkbox").is(":checked")){
+                        localStorage.setItem("${updateTime}"+"-close-home-dialog",true);
+                    }
+                }
+            });
+            // 定时关闭
+            setTimeout(function () {
+                $(".index-modal").modal("hide")
+            }, 60000);
         }// if判断结束
     </#if>
     }
-    // 首页弹窗结束
 
     /*公共维护状态检测设置 By Faker*/
     function maintainCheck(){
@@ -439,14 +465,14 @@
                             var protocol = window.location.protocol;
                             if(protocol.indexOf("https:")>-1){
                                 //https协议支持体育嵌套
-                                if(apiId=="4" || apiId=="19" || apiId=="12"){
+                                if(apiId=="4" || apiId=="19" || apiId=="12" || apiId=="21" || apiId=="37"){
                                     $(this).attr("href",$(this).data("href"));
                                 }else{
                                     $(this).attr("href","javascript:");
                                     $(this).attr("onclick","apiLogin("+apiId+",'',"+$(this).data("apitype")+")");
                                 }
                             }else{
-                                if(apiId=="23" || apiId=="37"){
+                                if(apiId=="23"){
                                     $(this).attr("href","javascript:");
                                     $(this).attr("onclick","apiLogin("+apiId+",'',"+$(this).data("apitype")+")");
                                 }else{
@@ -458,16 +484,38 @@
                         }
                     }else if(typeof gameCode != "undefined"){
                         //电子游戏
-                        $(this).attr("onclick","apiLogin("+apiId+",'"+gameCode+"',2)");
+                        if($(this).hasClass("game-demo")){
+                            var apiType = $(this).data("apitype");
+                            if(apiType!=null && apiType!=undefined){
+                                $(this).attr("onclick","apiLoginDemo("+apiId+",'"+gameCode+"',"+$(this).data("apitype")+",this)");
+                            }else{
+                                $(this).attr("onclick","apiLoginDemo("+apiId+",'"+gameCode+"',2,this)");
+                            }
+                        }else{
+                            var apiType = $(this).data("apitype");
+                            if(apiType!=null && apiType!=undefined){
+                                $(this).attr("onclick","apiLogin("+apiId+",'"+gameCode+"',"+$(this).data("apitype")+",this)");
+                            }else{
+                                $(this).attr("onclick","apiLogin("+apiId+",'"+gameCode+"',2,this)");
+                            }
+                        }
                     }else {
                         if($(this).data("api")=="3"){
-                            $(this).attr("onclick","apiLogin("+apiId+",'SPPlayboy',"+$(this).data("apitype")+")");
-                        }else {
-                            if($(this).data("api")=="22"){
-                                //添加this，彩票站要根据单个彩种进入相应的投注页面
-                                $(this).attr("onclick","apiLogin("+apiId+",'',"+$(this).data("apitype")+",this)");
+                            if($(this).hasClass("game-demo")){
+                                $(this).attr("onclick","apiLoginDemo("+apiId+",'SPPlayboy',"+$(this).data("apitype")+")");
                             }else{
-                                $(this).attr("onclick","apiLogin("+apiId+",'',"+$(this).data("apitype")+")");
+                                $(this).attr("onclick","apiLogin("+apiId+",'SPPlayboy',"+$(this).data("apitype")+")");
+                            }
+                        }else {
+                            if($(this).hasClass("game-demo")){
+                                $(this).attr("onclick","apiLoginDemo("+apiId+",'',"+$(this).data("apitype")+")");
+                            }else{
+                                if($(this).data("api")=="22"){
+                                    //添加this，彩票站要根据单个彩种进入相应的投注页面
+                                    $(this).attr("onclick","apiLogin("+apiId+",'',"+$(this).data("apitype")+",this)");
+                                }else{
+                                    $(this).attr("onclick","apiLogin("+apiId+",'',"+$(this).data("apitype")+")");
+                                }
                             }
                         }
                     }
@@ -639,6 +687,18 @@
         if (apiId == '23')  return  '<#if data.siteApiI18nMap['23']??>${data.siteApiI18nMap['23'].name}</#if>';
         if (apiId == '24')  return  '<#if data.siteApiI18nMap['24']??>${data.siteApiI18nMap['24'].name}</#if>';
         if (apiId == '25')  return  '<#if data.siteApiI18nMap['25']??>${data.siteApiI18nMap['25'].name}</#if>';
+        if (apiId == '26')  return  '<#if data.siteApiI18nMap['26']??>${data.siteApiI18nMap['26'].name}</#if>';
+        if (apiId == '27')  return  '<#if data.siteApiI18nMap['27']??>${data.siteApiI18nMap['27'].name}</#if>';
+        if (apiId == '28')  return  '<#if data.siteApiI18nMap['28']??>${data.siteApiI18nMap['28'].name}</#if>';
+        if (apiId == '30')  return  '<#if data.siteApiI18nMap['30']??>${data.siteApiI18nMap['30'].name}</#if>';
+        if (apiId == '31')  return  '<#if data.siteApiI18nMap['31']??>${data.siteApiI18nMap['31'].name}</#if>';
+        if (apiId == '32')  return  '<#if data.siteApiI18nMap['32']??>${data.siteApiI18nMap['32'].name}</#if>';
+        if (apiId == '33')  return  '<#if data.siteApiI18nMap['33']??>${data.siteApiI18nMap['33'].name}</#if>';
+        if (apiId == '34')  return  '<#if data.siteApiI18nMap['34']??>${data.siteApiI18nMap['34'].name}</#if>';
+        if (apiId == '35')  return  '<#if data.siteApiI18nMap['35']??>${data.siteApiI18nMap['35'].name}</#if>';
+        if (apiId == '36')  return  '<#if data.siteApiI18nMap['36']??>${data.siteApiI18nMap['36'].name}</#if>';
+        if (apiId == '37')  return  '<#if data.siteApiI18nMap['37']??>${data.siteApiI18nMap['37'].name}</#if>';
+        if (apiId == '38')  return  '<#if data.siteApiI18nMap['38']??>${data.siteApiI18nMap['38'].name}</#if>';
     }
 
     /*新开弹窗*/
@@ -659,7 +719,20 @@
 
     /*找回用户名弹窗*/
     function forgetUsername(){
-        layerDialogForgetAccount('<div style="font-size:  16px;font-weight: bold;color:  #000;margin-bottom: 5px;">忘记账号？请联系在线客服 </div><div>客服人员将根据您提供的信息，在核实您身份之后，告知您的账号。</div>','找回会员账号','layui-layer-brand',['400px','210px'],false,false);
+        BootstrapDialog.show({
+            type: BootstrapDialog.TYPE_PRIMARY,
+            title:'ID',
+            message: function(dialog) {
+                var $message = $('<div></div>');
+                var pageToLoad = dialog.getData('pageToLoad');
+                $message.load(pageToLoad);
+
+                return $message;
+            },
+            data: {
+                'pageToLoad': '/commonPage/modal/lost-username.html?t='+ new Date().getTime().toString(36)
+            }
+        });
     }
 
     //技术支援
@@ -851,8 +924,6 @@
                         if(logined){
                             if(apiTypeId == "3" && apiId=="19"){
                                 window.open("https://mkt.ampinplayopt0matrix.com?lang=cs");
-                            }else if(apiTypeId == "3" && apiId=="21"){
-                                window.open("http://sports-hg.com");
                             }else{
                                 currentPage(apiId);
                             }
@@ -866,7 +937,7 @@
         }
         if (apiId) {
             var newWindow = window.open();
-            newWindow.location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
+            newWindow.location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiType="+apiTypeId+"&gameCode="+gameCode;
         }
     }
     //试玩登录
@@ -932,10 +1003,12 @@
             document.getElementById('sportFrame').contentWindow.location.replace("https://hyxu36.uv178.com/whb/view.php");
         }else if(apiId=="19"){
             document.getElementById('sportFrame').contentWindow.location.replace("https://mkt.ampinplayopt0matrix.com?lang=cs");
+        }else if(apiId=="21"){
+            document.getElementById('sportFrame').contentWindow.location.replace("https://pocdesignother0.com");
+        }else if(apiId=="37"){
+            document.getElementById('sportFrame').contentWindow.location.replace("https://bc.ampinplayopt0matrix.com/#/sport/?lang=zhh");
         }/*else if(apiId=="23"){
             document.getElementById('sportFrame').contentWindow.location.replace("http://opussport.ampinplayopt0matrix.com/sports.aspx");
-        }else if(apiId=="21"){
-            document.getElementById('sportFrame').contentWindow.location.replace("http://sports-hg.com");
         }*/
     }
 
@@ -962,11 +1035,15 @@
                                     localStorage.re_url_live = result.defaultLink;
                                 }
                                 window.location="/commonPage/gamePage/live-game.html?apiId="+apiId;
-                            }else if (apiTypeId == "2" && apiId=="15") {
+                            }else if (apiTypeId == "2" || apiTypeId == "5") {
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                if (result.defaultLink.indexOf("https:") > -1) {
+                                    window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                } else {
+                                    window.location=result.defaultLink;
+                                }
                             }else if(apiTypeId == "4" && apiId=="22"){
                                 if (window.localStorage) {
                                     localStorage.re_url_lottery = result.defaultLink;
@@ -984,7 +1061,7 @@
                                 window.location=result.defaultLink;
                                 return;
                             }
-                            if (apiTypeId == "2") {
+                            if (apiTypeId == "2" || apiTypeId == "5") {
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
@@ -1021,31 +1098,14 @@
                         }
                         window.location=redirectUrl;
                     }
+                    layer.closeAll();
                 } else {
                     if (!data.loginSuccess &&( data.errMsg =='' || data.errMsg == null)){
-                        BootstrapDialog.alert({
-                            title: 'ヒント',
-                            message: 'ゲームに入れません。時間が経ってから再度お試しください！',
-                            type: BootstrapDialog.TYPE_WARNING,
-                            buttonLabel: '確定',
-                            callback: function(result) {
-                                if (result){
-                                    window.close();
-                                }
-                            }
-                        });
+                        closeIframeAlert("ゲームに入れません。時間が経ってから再度お試しください！");
+                        $("html",window.parent.document).removeClass("game-detail-open");//去除样式显示滚动条
                     }else {
-                        BootstrapDialog.alert({
-                            title: 'ヒント',
-                            message: data.errMsg,
-                            type: BootstrapDialog.TYPE_WARNING,
-                            buttonLabel: '確定',
-                            callback: function(result) {
-                                if (result){
-                                    window.close();
-                                }
-                            }
-                        });
+                        closeIframeAlert(data.errMsg);
+                        $("html",window.parent.document).removeClass("game-detail-open");//去除样式显示滚动条
                     }
                 }
             },
@@ -1054,17 +1114,8 @@
                     window.close();
                     loginObj.getLoginPopup();
                 }else {
-                    BootstrapDialog.alert({
-                        title: 'ヒント',
-                        message: 'ゲームに入れません。時間が経ってから再度お試しください！',
-                        type: BootstrapDialog.TYPE_WARNING,
-                        buttonLabel: '確定',
-                        callback: function(result) {
-                            if (result){
-                                window.close();
-                            }
-                        }
-                    });
+                    closeIframeAlert("ゲームに入れません。時間が経ってから再度お試しください！");
+                    $("html",window.parent.document).removeClass("game-detail-open");//去除样式显示滚动条
                 }
             }
         });
@@ -1143,6 +1194,7 @@
         });
     }
 
+
     /**
      * 登录弹出框
      */
@@ -1152,31 +1204,73 @@
             if(sessionStorage.is_login=="true"){
                 return;
             }
-            loginObj.loginDialog = BootstrapDialog.show({
-                title:'会員登録',
-                type: BootstrapDialog.TYPE_WARNING,
-                message: function(dialog) {
-                    var $message = $('<div></div>');
-                    var pageToLoad = dialog.getData('pageToLoad');
-                    $message.load(pageToLoad);
+            loginObj.loginDialog = layer.open({
+                content:$("#login-dialog").html(),
+                title:"メンバーログイン",
+                btn:"ログイン",
+                area:["400px","540px"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    $(".layui-layer-btn0").remove();
+                    $("#loginForm .code._vr_captcha_box").after('<a href="javascript:void(0);" class="layui-layer-btn0 btn-login dialog_login">ログイン</a>');
+                    // 提示框类型
+                    $(layer).addClass("layui-login-dialog");
+                    $.ajax({// 发起请求，如果登陆窗口背景图存在，调用，否则调用默认的
+                        url:'${data.configInfo.sitePath}/images/login_header.png',
+                        success: function () {
+                            $(layer).find(".layui-layer-title").css({
+                                background:"url(${data.configInfo.sitePath}/images/login_header.png) no-repeat"
+                            })
+                        },
+                        error: function (e) {
+                            console.log('登录框背景图不存在');
+                        }
+                    });
+                    if(isOpenCaptcha){
+                        $("._vr_captcha_code.test").attr("src","${data.contextInfo.playerCenterContext}captcha/loginDialog.html?t="+ new Date().getTime().toString(36));
+                        $("._vr_captcha_box").show();
+                    }
 
-                    return $message;
+                    $("#loginForm input").keydown(function(e) {
+                        var $this = $(this);
+                        if (e.which == 13) {
+                            if($(".dialog_login",$this.parents("form")).css("pointer-events")!="none"){
+                                $(".dialog_login",$this.parents("form")).trigger("click");
+                            }
+                        }
+                    });
+                    $('#loginForm .dialog_login').on("click",function(e){
+                        var loginText = $(e.target).text();
+                        /* 阻止重复提交 By Faker */
+                        if(loginText==""){
+                            $(e.target).css("pointer-events","none");
+                        }else{
+                            $(e.target).text("ログイン").css("pointer-events","none");
+                        }
+                        var $this = $(this);
+                        login($this,loginObj.closeLoginPopup,loginText);
+                    });
+
+                    $("._vr_captcha_code").on("click",function(e){
+                        var $this = $(this);
+                        var src = "${data.contextInfo.playerCenterContext}captcha/"+$this.data().code+".html?t=" + new Date().getTime().toString(36);
+                        $this.prop("src",src)
+                    });
                 },
-                onhide: function(dialogRef){
+                end:function () {
+                    console.log("关闭");
                     if(sessionStorage.is_login=="true"){
                         callback && callback();
                     }else{
                         callback && callback(true);
                     }
                     return true;
-                },
-                data: {
-                    'pageToLoad': '/commonPage/modal/system-login.html'
                 }
             });
         },
         closeLoginPopup:function(){
-            loginObj.loginDialog && loginObj.loginDialog.close();
+            loginObj.loginDialog && layer.close(loginObj.loginDialog);
         },
         doLogin:function($this,callback,loginText){
             login($this,null,loginText);
@@ -1255,6 +1349,8 @@
                         sessionStorage.is_login = true;
                     }
                     isOpenCaptcha = false;
+                    //登录后隐藏试玩按钮
+                    game_demo();
                 }else{
                     var dataPage = window.location.pathname.split("/")[3];
                     if(dataPage=='loading.html'){
@@ -1273,7 +1369,8 @@
                     if(window.sessionStorage){
                         sessionStorage.is_login = "false";
                     }
-
+                    //未登录显示试玩按钮
+                    game_demo();
                     /*是否显示验证码*/
                     if(data.isOpenCaptcha){
                         /*显示验证码*/
@@ -1299,6 +1396,17 @@
             }
 
         });
+    }
+
+    //是否显示游戏试玩按钮
+    function game_demo() {
+        if(sessionStorage.is_login=="true"){
+            //登录后隐藏试玩按钮
+            $(".game-demo").addClass("hide");
+        }else{
+            //未登录显示试玩按钮
+            $(".game-demo").removeClass("hide");
+        }
     }
     /*
       * @param data 登录成功后的参数
@@ -1735,7 +1843,12 @@
      * @param msg
      */
     function dialogMsg(msg) {
-        layerDialogNormal(msg,'ヒント','layui-layer-brand',['360px']);
+        BootstrapDialog.alert({
+            title: 'ヒント',
+            message: msg,
+            type: BootstrapDialog.TYPE_WARNING,
+            buttonLabel: '確定'
+        });
     }
 
     function canShowLottery(id){
@@ -1865,6 +1978,168 @@
         </#if>
         }
     }
+
+    //电子页面 Max 标签
+    function maxGameTag(e) {
+        $(e).parent().parent().find(".active").removeClass("active");
+        $(e).parent().addClass("active");
+        var _href = $(e).data("href");
+        $.ajax({
+            url:_href,
+            dataType:"html",
+            success:function(data){
+                $("._vr_itemCasino").html(data);
+                maintainCheck();
+                gameJackPot();
+            }
+        });
+    }
+
+    //游戏收藏
+    function gameCollect(e){
+        if (sessionStorage.is_login != "true") {
+            loginObj.getLoginPopup();
+        }else{
+            var apiId = getlocationParam("apiId");
+            var gameId = $(e).attr("data-game-id");
+            var collect = $(e).attr("data-game-collect")
+            $.ajax({
+                url: "/siteGame/updateGameCollect.html",
+                dataType:"JSON",
+                type: 'POST',
+                data:{"result.apiId":apiId,"result.gameId":gameId,"isCollect":collect},
+                success: function(data) {
+                    if(data.state){
+                        if(data.cancelCollect){
+                            $(".fav_a").removeClass("fav_ed")
+                            $(".fav_a").attr("data-game-collect","true");
+                        }else{
+                            $(".fav_a").addClass("fav_ed")
+                            $(".fav_a").attr("data-game-collect","false");
+                        }
+                    }
+                    alert(data.msg);
+                },
+                error:function (data) {
+                    alert(data.msg);
+                }
+            });
+        }
+    }
+
+    //游戏评分
+    function gameScore(e){
+        if (sessionStorage.is_login != "true") {
+            loginObj.getLoginPopup();
+        }else{
+            var gameId = $(e).data("game-id");
+            var score = $(e).data("score");
+            $.ajax({
+                url: "/siteGame/updateGameScore.html",
+                dataType:"JSON",
+                type: 'POST',
+                data:{"result.gameId":gameId,"result.score":score},
+                success: function(data) {
+                    alert(data.msg);
+                },
+                error:function (data) {
+                    alert(data.msg);
+                }
+            });
+        }
+    }
+
+    //游戏内页tag-热门游戏,推荐游戏,类似游戏
+    function gameTagList(e){
+        $(e).parent().parent().find(".active").removeClass("active");
+        $(e).addClass("active");
+        var apiId = getlocationParam("apiId");
+        var gameTag = $(e).data("tag");
+        $.ajax({
+            url: "/commonPage/gamePage/casino-game-tag.html?apiType=2&apiId="+apiId+"&gameTag="+gameTag,
+            dataType:"html",
+            success: function(data) {
+                $("._vr_casino-game-tag").html(data);
+                $("._vr_casino-game-tag").removeClass("hide");
+                gameSlide();
+                maintainCheck();
+            }
+        });
+    }
+
+    //游戏内页tag-我的收藏
+    function myCollectList(e){
+        $(e).parent().parent().find(".active").removeClass("active");
+        $(e).addClass("active");
+        var apiId = getlocationParam("apiId");
+        $.ajax({
+            url: "/siteGame/myCollectList.html",
+            type: 'POST',
+            data:{"search.apiId":apiId},
+            success: function(data) {
+                if(data!="" && data!=null){
+                    var json = JSON.parse(data)
+                    var html = $("#casinoGameTag").render({data: json});
+                    $("._vr_casino-game-tag").html(html);
+                    $("._vr_casino-game-tag").removeClass("hide");
+                    $("._vr_gameNoContent").addClass("hide");
+                    maintainCheck();
+                }else{
+                    $("._vr_casino-game-tag").addClass("hide");
+                    $("._vr_gameNoContent").removeClass("hide");
+                }
+            }
+        });
+    }
+
+    //游戏内页tag-最近玩过
+    function myRecentlyList(e) {
+        $(e).parent().parent().find(".active").removeClass("active");
+        $(e).addClass("active");
+        var apiId = getlocationParam("apiId");
+        $.ajax({
+            url: "/siteGame/myRecentlyList.html",
+            type: 'POST',
+            data:{"search.apiId":apiId},
+            success: function(data) {
+                if(data!="" && data!=null){
+                    var json = JSON.parse(data)
+                    var html = $("#casinoGameTag").render({data: json});
+                    $("._vr_casino-game-tag").html(html);
+                    $("._vr_casino-game-tag").removeClass("hide");
+                    $("._vr_gameNoContent").addClass("hide");
+                    maintainCheck();
+                }else{
+                    $("._vr_casino-game-tag").addClass("hide");
+                    $("._vr_gameNoContent").removeClass("hide");
+                }
+            }
+        });
+    }
+
+    //游戏内页-回车搜索
+    $("._vr_gameSearch").on("keydown","input[name='gameName']",function(e) {
+        if (e.which == 13) {
+            $("._vr_gameSubmit").trigger("click");
+        }
+    });
+
+    $("._vr_gameSubmit").on("click",function (e) {
+        var apiId = $("input[name='apiId']").val()==''?'':$("input[name='apiId']").val();
+        var gameTag = $("input[name='gameTag']").val()==''?'':encodeURIComponent($("input[name='gameTag']").val());
+        var gameName = $("input[name='gameName']").val()==''?'':encodeURIComponent($("input[name='gameName']").val());
+        $.ajax({
+            url: "/commonPage/gamePage/casino-game-tag.html?apiType=2&apiId="+apiId+"&gameTag="+gameTag,
+            dataType:"html",
+            data:{gameName:gameName},
+            success: function(data) {
+                $("._vr_casino-game-tag").html(data);
+                maintainCheck();
+            }
+        });
+
+    })
+
     // 新弹窗插件配置
     $(function () {
         // layer默认配置
@@ -2003,6 +2278,7 @@
 
     }
     function layerDialogDownload(){
+        qrcode();
         layer.tab({
             area: ['640px','380px'],
             move:".layui-layer-title",
@@ -2146,32 +2422,155 @@
         });
     }
     // layer弹窗函数结束
+
+    function qrcode(){
+        //手机下载二维码
+        var android_url = "";
+        $.ajax({
+            url:"/index/getAppsUrl.html",
+            type:"get",
+            data:{"device":"android"},
+            async:false,
+            success:function (data) {
+                var data = eval('('+data+')');
+                var android_download=data.app;
+                android_url = "data:image/png;base64,"+android_download;
+                $("#download-mobile-qrcode").append("<img src="+android_url+">");
+            }
+        })
+
+    }
 </script>
 
 <#--流量统计代码-->
 <#if data.siteStatistics?has_content>${data.siteStatistics}</#if>
+
 <!--登录弹窗内容-->
 <div id="login-dialog" style="display:none;">
     <form  id="loginForm" method="post">
         <input type="hidden" name="type" value="dialog">
         <div class="form-group account">
-            <input type="text" class="form-control" placeholder="账号" name="username" />
-            <div class="tip" style="display: none;">请输入账号！</div>
+            <input type="text" class="form-control" placeholder="口座番号" name="username" />
+            <div class="tip" style="display: none;">あなたのアカウント番号を入力してください！</div>
         </div>
         <div class="form-group password">
-            <input type="password" class="form-control" placeholder="密码" name="password" />
-            <div class="tip" style="display: none;">请输入密码！</div>
+            <input type="password" class="form-control" placeholder="パスワード" name="password" />
+            <div class="tip" style="display: none;">パスワードを入力してください！</div>
         </div>
         <div class="form-group code _vr_captcha_box" style="display: none;">
-            <input type="text" class="form-control" placeholder="验证码" name="captcha" maxlength="4" />
-            <img class="_vr_captcha_code" data-code="loginDialog">
-            <div class="tip" style="display: none;">请输入验证码！</div>
+            <input type="text" class="form-control" placeholder="確認コード" name="captcha" maxlength="4" />
+            <img class="_vr_captcha_code test" data-code="loginDialog">
+            <div class="tip" style="display: none;">確認コードを入力してください！</div>
         </div>
-        <a href="javascript:void(0);" class="btn-login dialog_login">登录</a>
-        <a  target="_blank" href="commonPage/forgetPwd.html" class="forget-pas">忘记密码？</a>
-        <span style="font-size: 14px;color: #666;margin-right: 10px;"> 还没有账号？</span>
-        <a href="/register.html" class="btn-register">+加入会员</a>
+    <#--<a href="javascript:void(0);" class="btn-login dialog_login">登录</a>-->
+        <a  target="_blank" href="commonPage/forgetPwd.html" class="forget-pas">パスワードを忘れた？</a>
+        <span style="font-size: 14px;color: #666;margin-right: 10px;"> まだアカウントがありません？</span>
+        <a href="/register.html" class="btn-register">+メンバーシップに参加する</a>
     </form>
 </div>
 
+<!--下载弹窗内容-->
+<div id="download-mobile" style="display:none;">
+    <div class="qrcode" id="download-mobile-qrcode">
+    </div>
+    <p>Androidを使用すると、Apple Mobile BrowserはQRコードをスキャンします，<br />
+        APPをダウンロードできます（WeChatスキャンでは使用できません）
+    </p>
+</div>
+<div id="download-pc" style="display: none;">
+    <div style="padding: 60px;font-size: 24px;">お待ちください！</div>
+    <div style="display: none;">
+        <div class="tit"><span>API名</span><span>ダウンロード</span></div>
+        <ul class="api-list">
+            <li>
+                <div class="api-name ag">
+                    <div class="nam">AGクライアント</div>
+                    <div class="tip">ログインdawoo_という接頭辞を追加してください， <br />例：dawoo_user01</div>
+                </div>
+                <div class="download-btn-group">
+                    <a href="" class="btn-android">Android APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-ios">Ios APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-pc">コンピュータクライアント</a>
+                </div>
+            </li>
+            <li>
+                <div class="api-name pt">
+                    <div class="nam">PTクライアント</div>
+                    <div class="tip">ログインdawoo_という接頭辞を追加してください， <br />例：dawoo_user01</div>
+                </div>
+                <div class="download-btn-group">
+                    <a href="" class="btn-android">Android APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-ios">Ios APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-pc">コンピュータクライアント</a>
+                </div>
+            </li>
+            <li>
+                <div class="api-name mg">
+                    <div class="nam">MGクライアント</div>
+                    <div class="tip">ログインdawoo_という接頭辞を追加してください， <br />例：dawoo_user01</div>
+                </div>
+                <div class="download-btn-group">
+                    <a href="" class="btn-android">Android APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-ios">Ios APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-pc">コンピュータクライアント</a>
+                </div>
+            </li>
+            <li>
+                <div class="api-name bb">
+                    <div class="nam">BBINクライアント</div>
+                    <div class="tip">ログインdawoo_という接頭辞を追加してください， <br />例：dawoo_user01</div>
+                </div>
+                <div class="download-btn-group">
+                    <a href="" class="btn-android">Android APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-ios">Ios APP
+                        <div class="app-qr">
+                            <img src="${data.configInfo.ftlRootPath}commonPage/images/qrcode-example.png"/>
+                        </div>
+                    </a>
+                    <a href="" class="btn-pc">コンピュータクライアント</a>
+                </div>
+            </li>
+        </ul>
+    </div>
 
+</div>
+<#--
+<!--首页弹窗内容&ndash;&gt;
+<div id="index-modal-content" style="display: none;">
+    <img  src="./images/index-modal-img.jpg">
+    <div class="checkbox-wrap">
+        <input type="checkbox"  />閉じると、このポップアップウィンドウの広告は表示されなくなります
+    </div>
+</div>
+<!--首页透明弹窗内容&ndash;&gt;
+<div id="index-modal-transparent-content" style="display:none;">
+    <img src="./images/index-modal-transparent.png"/>
+</div>-->

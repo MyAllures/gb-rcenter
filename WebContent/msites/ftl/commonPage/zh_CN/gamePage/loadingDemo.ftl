@@ -62,11 +62,15 @@
                                     localStorage.re_url_live = result.defaultLink;
                                 }
                                 window.location="/commonPage/gamePage/live-game.html?apiId="+apiId;
-                            }else if (apiTypeId == "2" && apiId=="15") {
+                            }else if (apiTypeId == "2" || apiTypeId == "5") {
                                 if (window.localStorage) {
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
-                                window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                if (result.defaultLink.indexOf("https:") > -1) {
+                                    window.location="/commonPage/gamePage/casino-game.html?apiId="+apiId;
+                                } else {
+                                    window.location=result.defaultLink;
+                                }
                             }else{
                                 /*游戏调转链接不支持https，所以不能嵌套在对应的-game.ftl里面*/
                                 window.location=result.defaultLink;
@@ -117,7 +121,7 @@
                     }
                 } else {
                     if(data.msg) {
-                        BootstrapDialog.alert({
+                        /*BootstrapDialog.alert({
                             title: '提示',
                             message: data.msg,
                             type: BootstrapDialog.TYPE_WARNING,
@@ -127,9 +131,24 @@
                                     window.close();
                                 }
                             }
+                        });*/
+                        layer.open({
+                            content:data.msg,
+                            title:'提示',
+                            skin:'layui-layer-brand',
+                            btn:["确定"],
+                            success: function(layer){
+                                // 重写关闭按钮
+                                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                                // 提示框类型
+                                $(layer).addClass("normal-dialog");
+                            },
+                            yes:function () {
+                                window.close();
+                            }
                         });
                     } else {
-                        BootstrapDialog.alert({
+                        /*BootstrapDialog.alert({
                             title: '提示',
                             message: '游戏暂时无法登录，请稍候再试！',
                             type: BootstrapDialog.TYPE_WARNING,
@@ -138,6 +157,21 @@
                                 if (result){
                                     window.close();
                                 }
+                            }
+                        });*/
+                        layer.open({
+                            content:'游戏暂时无法登录，请稍候再试！',
+                            title:'提示',
+                            skin:'layui-layer-brand',
+                            btn:["确定"],
+                            success: function(layer){
+                                // 重写关闭按钮
+                                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                                // 提示框类型
+                                $(layer).addClass("normal-dialog");
+                            },
+                            yes:function () {
+                                window.close();
                             }
                         });
                     }
@@ -148,7 +182,7 @@
                     window.close();
                     loginObj.getLoginPopup();
                 } else {
-                    BootstrapDialog.alert({
+                   /* BootstrapDialog.alert({
                         title: '提示',
                         message: '游戏暂时无法登录，请稍候再试！',
                         type: BootstrapDialog.TYPE_WARNING,
@@ -157,6 +191,21 @@
                             if (result){
                                 window.close();
                             }
+                        }
+                    });*/
+                    layer.open({
+                        content:'游戏暂时无法登录，请稍候再试！',
+                        title:'提示',
+                        skin:'layui-layer-brand',
+                        btn:["确定"],
+                        success: function(layer){
+                            // 重写关闭按钮
+                            $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                            // 提示框类型
+                            $(layer).addClass("normal-dialog");
+                        },
+                        yes:function () {
+                            window.close();
                         }
                     });
                 }

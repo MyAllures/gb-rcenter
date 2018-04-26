@@ -1,0 +1,242 @@
+ @charset "UTF-8";
+  /* color and special images style */ 
+  /* default themes */ 
+ 
+ body{color: #fff;background: #151515;}
+.mui-bar{background-color: #1766bb;box-shadow: none;}    
+ header{
+    &.mui-bar-nav{
+        a.mui-icon-bars{color: #fff;} 
+        .btn-login{background-color: #1dc28e;border: 1px solid #1dc28e;}
+        .btn-demo{background-color: #1279d9;border: 1px solid #1279d9;}
+        .btn-register{background-color: #f0af01;border: 1px solid #f0af01;}
+        .mui-action-back{color: #fff;}
+    }
+}
+.yjym{     color: #fff; background: #0f3a69;  border-top: 1px solid #151515;}
+.mui-content{background: #454545;
+    &.home-content{background: #151515;}
+    &.promo-record-content{background: #f2f2f2;}
+    &.promo-content{background: #fff;}
+}
+/* notice */
+.notice{background: #151515;
+    .btn-title{     background: #1766bb;  border: 1px solid #1766bb;}
+    .notice-list{
+            a{color: #fff !important;}
+    }
+}
+/* nav */
+.nav{background: #151515 url(./images/nav-bg.png) 0 0/100% 60px repeat-x;
+    border-top: 0;
+    position: relative;
+    &:after{content: '';position: absolute;height: 1px;background:transparent;bottom: 3px;left: 0;right: 0;}
+    .swiper-slide{ color: #fff;position: relative;
+        &.swiper-slide-active{
+            span{color: #1766bb;}
+            &:after{    content: '';   position: absolute;   top: 0;   left: 50%;   margin-left: -37px;    z-index:1;    width: 74px;    height: 70px;    background: url(images/nav-item-active-bg.png) center top/74px 65px no-repeat;}
+        }
+    }
+}
+/* api-grid */
+.api-grid{
+    .mui-grid-view.mui-grid-9{    padding: 0 5px;    border-top: 0;
+    border-left: 0;
+    background-color: #151515;}
+    .api-item{background: url(./images/api-bg.png) no-repeat center/70px;
+        &:after{   background:url(images/api-bg-shadow.png) no-repeat 0 0 /100%;}
+    }
+    .mui-grid-view.mui-grid-9 .mui-table-view-cell {
+        a{    background: #252525;}
+    }
+    ul[data-list="lottery"]{
+        .lottery-nav{    color: #333; border-bottom: 1px solid #fff;
+        ul{ background:transparent;}
+            li{
+                .mui-tab-item{color: #fff;border-bottom: 1px solid transparent;
+                    &.mui-active{border-bottom: 1px solid #168df6;}
+                }
+            }
+        }
+    }
+}
+/* mui-bar-footer */
+.mui-bar-tab{
+    background: #252525;
+    border-top: 1px solid #393939;
+    .mui-tab-label{color: #666;}
+    .mui-active{
+        .mui-tab-label{color: #1766bb;}
+    }
+}
+/* mui-off-canvas-left */
+.mui-off-canvas-left{
+    background: #444;
+    .person-info{background: url(./images/off-canvas-sep.png) center bottom/100% 1px no-repeat;
+        .un-login{
+            p{color: #fff;}
+        .btn-login{background: #eda527;border: 1px solid #eda527;}
+        }
+        .login{
+                p{color: #fff; }
+        }
+        .btn-person{background: #31955e;border: 1px solid #31955e;}
+        
+    }
+    .side-nav{
+        li{border-left: 3px solid transparent;background: transparent;
+            &.active{border-left: 3px solid #445dc2;background: #333;}
+            a{color: #fff;}
+        }
+    }
+    .btn-logout{    background: #eda527;
+    border: 1px solid #eda527;}
+}
+
+/* lang-menu */
+.lang-menu{    background: #333;}
+/* page promo */
+.promo{
+    .p-t-slide-content{color: #333;
+    }
+}
+.promo-header{border-bottom: 1px solid #ccc;}    
+/* login and register page */
+.type-header{
+    border-bottom: 1px solid #fff;
+}
+.login-content{background: #f2f2f2;}
+.type-content{
+    .mui-control-content{
+            .mui-input-group{
+                .mui-button-row{    
+                    .mui-btn-block{  
+                        &.btn-ok{background: #1766bb;border: 1px solid #1766bb;color: #fff;
+                            &:active{background: darken(#1766bb,10%);}
+                        }                   
+                        &.btn-cancel{
+                            background: #f2f2f2;border: 1px solid #1766bb;color: #1766bb;
+                            &:active{background: darken(#f2f2f2,10%);}
+                        }
+                    }                
+                }
+        }
+    }
+}
+/* mine page */
+.mine-content{
+    background: #efefef;
+    .user-info-wrap{background: #1766bb;
+        .gb-userinfo{background: #fff;}
+    }
+}
+.mui-bar-mine{-webkit-box-shadow: none !important;box-shadow: none !important;}
+
+/* index-login-info */
+.login-info{ background: url(images/icon-open-offcanvas.png) no-repeat right center/5px;}
+
+/* nots deficiency */
+.deficiency-nots{
+    background: #454545;text-align: center;padding:15px 10px;margin: 5px;border-radius: 6px;word-break: break-word;font-size: 14px;
+}
+/* loading */
+.loading-wrap{
+    background: fff;
+    &:after{content: "";display: block;position: absolute;top:0; bottom:0; left: 0; right: 0;background: rgba(0,0,0,0.5);z-index: 2002;}
+    .loading-img{position: absolute;z-index: 2003;left:50%; top:50%; text-align: center; -webkit-transform: translate3d(-50%,-50%,0) scale(1);transform: translate3d(-50%,-50%,0) scale(1);
+        img{vertical-align: middle;}
+    }
+    .loading-entirety{background: rgba(255,255,255,0.95); width: 64px; height: 64px;line-height: 63px;border-radius: 12px;
+        img{width: 48px;}
+    }
+}
+/* index-login-info */
+.login-info{
+    .money{    background: url(images/icon-wallet.png) no-repeat 0 2px/10px;}
+    .ex{
+        border: 1px solid #ccc;
+        box-shadow: -1px 1px 1px rgba(0,0,0,0.2);
+        background-color: #fff;
+        hr{    border-bottom: 1px solid #f2f2f2;}
+        table{           
+            tr{
+                td{color: #333;}
+            }
+        }
+        .bar-asset{padding-right: 0; color: #1b75d9;}
+        .bar-wallet{color: #0ec392;}
+        .zzc,.qb{background: #1b75d9;white-space: nowrap;
+    color: #fff;display: inline-block;line-height: 1;text-align: center;
+    padding: 4px 5px;
+    border-radius: 3px;}
+        .qb{background: #0ec392;}
+        .ct{
+            p{
+                .go{
+                    &.btn-refresh{background:#1b75d9;}
+                    &.btn-deposit{background:#0ec392;}
+                }
+            }
+        }
+        .loader.api-loader{background: #fff;
+            .ball-pulse.api-div div{background-color: #252525 !important;}
+        }
+    }
+}
+/* 修补样式 */
+.ball-pulse.api-div div{background-color: #fff !important;}
+.casino-game-type{
+    .g-t-slide-indicators{
+        border-bottom: 1px solid #393939;
+        .swiper-slide-active{    color: #1766bb;
+    border-bottom: 1px solid #1766bb;}
+    }
+}
+.loader.api-loader {    background: #151515;}
+.api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell{background: #151515;}
+.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{color: #fff;}
+.copy-right {    border-top: 1px solid #333;}
+.mui-bar-tab .mui-icon.icon-home, .mui-bar-tab .mui-icon:active.icon-home {  background: #252525;}
+.mui-title{color: #fff;}
+.mui-bar .mui-icon-back{color: #fff;}
+.mui-content-casino-list .casino-list a p{color: #fff;}
+.casino-list-bar {    border-bottom: 1px solid #393939;}
+.mui-content-casino-list .casino-list .img-wrap {background: #151515;}
+.api-grid .api-item:before {  background-image: url(./images/api-sprite-black.png);}
+.api-grid .api-item:after {
+    content: '';
+    position: absolute;
+    width: 56px;
+    height: 59px;
+    top: 1px;
+    left: 1px;
+    z-index: 2;
+    -webkit-transform: rotateZ(0);
+    transform: rotateZ(0);
+    border-radius: 0;
+}
+.nav .swiper-slide.item-live:before {
+    background: url(images/icon-live.png) no-repeat center 5px/22px !important;
+}
+.nav .swiper-slide.item-casino:before {
+    background: url(images/icon-casino.png) no-repeat center 4px/22px !important;
+}
+// 样式修复
+.content-casino-transfer .game-description p {
+    color: #fff;
+}
+.content-casino-transfer .game-item .game-detail h1 {
+    color: #fff;
+}
+.content-casino-transfer .game-item .game-detail .g-money {
+    color: #fff;
+}
+.notice-alert .mui-popup-button {
+    color: #1766bb;
+}
+// 加载页样式
+.load-body{background: #1b75d9;
+    .mui-progressbar.mui-progressbar-infinite:before {
+        background: #1b75d9;
+    }
+}

@@ -19,40 +19,46 @@ $(function () {
     getStatisticsData();
 });
 
-//搜索
-function selectData() {
-    pullfresh();
-}
-
 /*上拉请求数据*/
 function pullfresh() {
     beginTime = $("#beginTime").val();
     endTime = $("#endTime").val();
-    var total = parseInt($("#hiddenTotalCount").val());
-    if (total <= pageNumber) {
-        mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
-        $(".mui-pull-bottom-pocket").addClass("mui-hidden");
-    } else {
-        var data = {
-            "paging.pageNumber": pageNumber,
-            "search.beginBetTime": beginTime,
-            "search.endBetTime": endTime
-        };
+    var total = parseInt($("#lastPageNumber").val());
+    pageNumber = pullRefreshUp(total);
+    $(".mui-pull-bottom-pocket").addClass("mui-hidden");
+    mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
+}
+
+function pullRefreshUp(total) {
+    if (pageNumber <= total) {
         var options = {
             url: url,
-            type: 'post',
-            data: data,
+            type: 'post',//HTTP请求类型
+            timeout: 10000,//超时时间设置为10秒；
+            data: {
+                "paging.pageNumber": pageNumber,
+                "search.beginBetTime": beginTime,
+                "search.endBetTime": endTime
+            },
+            dataType: 'html',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Soul-Requested-With': 'XMLHttpRequest'
             },
             success: function (data) {
                 var info = document.getElementById("content-list");
-                info.innerHTML = data;
-                pageNumber = pageNumber + 1;
+                info.innerHTML = info.innerHTML + data;
+            },
+            error: function (e) {
+                mui.toast(window.top.message.fund_auto['加载失败']);
+                //异常处理；
+                console.log(e);
             }
         };
         muiAjax(options);
+        return pageNumber + 1;
+    } else {
+        return pageNumber;
     }
 }
 
@@ -94,27 +100,33 @@ function formatDateTime(date, format) {
 }
 
 function loadData() {
+    mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
     beginTime = $("#beginTime").val();
     endTime = $("#endTime").val();
     getStatisticsData();
     var options = {
         url: url,
-        type: 'post',
-        timeout: 10000,
+        type: 'post',//HTTP请求类型
+        timeout: 10000,//超时时间设置为10秒；
         data: {"search.beginBetTime": beginTime, "search.endBetTime": endTime},
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Soul-Requested-With': 'XMLHttpRequest'
         },
+        dataType: 'html',
         success: function (data) {
             var info = document.getElementById("content-list");
             info.innerHTML = data;
             pageNumber = 2;
-            //mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
-            //mui('#refreshContainer').pullRefresh().refresh(true);
+
+            //投注笔数
+            var totalCount = $('#hiddenTotalCount').val();
+            if(totalCount != null){
+                $("#statisticalTotalPage").html(window.top.message.fund_auto['投注笔数'] + ":" + totalCount + window.top.message.fund_auto['笔']);
+            }
         },
         error: function (e) {
-            toast(window.top.message.fund_auto['加载失败']);
+            mui.toast(window.top.message.fund_auto['加载失败']);
             //异常处理；
             console.log(e);
         }
@@ -126,7 +138,7 @@ function getStatisticsData() {
     var options = {
         url: root + "/fund/betting/statisticsData.html",
         type: 'post',//HTTP请求类型
-        timeout: 20000,//超时时间设置为10秒；
+        timeout: 10000,//超时时间设置为10秒；
         data: {"search.beginBetTime": beginTime, "search.endBetTime": endTime},
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -136,17 +148,25 @@ function getStatisticsData() {
         success: function (data) {
             var currency = data.currency;
             //彩池奖金
-            if (data.winning != null)
-                $("#statisticalDataWinning").text(currency + data.winning.toFixed(2)).text;
-            //有效投注额
-            if (data.effective != null)
-                $("#statisticalDataEffective").html(currency + data.effective.toFixed(2));
+            if (data.winning != null){
+                $("#statisticalDataWinning").text(window.top.message.fund_auto['彩池奖金'] + ":" + currency + data.winning.toFixed(2)).text;
+            }
+            if (data.effective != null){
+                //投注总额
+                $("#statisticalTotalAmount").html(window.top.message.fund_auto['投注总额'] + ":" + currency + data.effective.toFixed(2));
+            }
             //投注额
-            if (data.single != null)
-                $("#statisticalDataSingle").html(currency + data.single.toFixed(2));
+            if (data.single != null){
+                //$("#statisticalDataSingle").html(currency + data.single.toFixed(2));
+                //有效投注额
+                $("#statisticalDataEffective").html(window.top.message.fund_auto['有效投注额'] + ":" +currency + data.single.toFixed(2));
+            }
             //派彩
-            if (data.profit != null)
-                $("#statisticalDataProfit").html(currency + data.profit.toFixed(2));
+            if (data.profit != null){
+                //$("#statisticalDataProfit").html(currency + data.profit.toFixed(2));
+                //彩池奖金
+                $("#statisticalProfit").html(window.top.message.fund_auto['彩池奖金'] + ":" +currency + data.profit.toFixed(2));
+            }
         },
         error: function (e) {
             toast(window.top.message.fund_auto['加载失败']);

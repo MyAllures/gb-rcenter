@@ -35,7 +35,7 @@
             <ul class="container list-inline navbar-list">
                 <li data-menuanchor="h5" class="active"><a href="#h5"><span class="itemIcon h5"></span>移動H5版本<em>無需下載即可玩，支援移動支付</em></a></li>
                 <li data-menuanchor="android"><a href="#android"><span class="itemIcon android"></span>移動Android版<em>最優質安卓客戶端，輕鬆投注</em></a></li>
-                <li data-menuanchor="ios"><a href="#ios"><span class="itemIcon ios"></span>移動iOS版<em>極致面生的iOS客戶端，移動隨行</em></a></li>
+                <li data-menuanchor="ios"><a href="#ios"><span class="itemIcon ios"></span>移動iOS版<em>極致而生的iOS客戶端，移動隨行</em></a></li>
                 <li data-menuanchor="iosHelp"><a href="#iosHelp">iOS安裝教程</a></li>
             </ul>
         </div>
@@ -51,7 +51,7 @@
                         <h4>自動進行裝置識別，您只需在移動裝置開啟網址即可訪問</h4>
                         <h5>移動裝置瀏覽器輸入網址：</h5>
                         <h3 class="url-text"></h3>
-                        <h5>支援：iPhone 5 / 5s / 6 / 6s / 7 / iPad / iPad Air</h5>
+                        <h5>支援：iPhone 6 / 6s / 7 / 8 / iPhoneX / iPad / iPad Air</h5>
                         <h5>小米 / 魅族 / 三星 / 錘子 / 華為 / 中興 / HTC / LG</h5>
                     </div>
                 </div>
@@ -70,7 +70,16 @@
                         <h1><#if data.siteInfo.siteName??>${data.siteInfo.siteName}</#if> 移動Android版</h1>
                         <h4>為您提供最優質Android客戶端，輕鬆投注，快捷存取款</h4>
                         <h5>下載二維碼（請使用安卓手機掃碼）</h5>
-                        <div class="img"><span id="android_qr_code"></span></div>
+                        <div class="img">
+                            <div class="qcode-wrap">
+                                <span id="android_qr_code"></span>
+                                <div class="txt">
+                                    <div class="txt1">For Android</div>
+                                    <div class="txt2">请登入下载</div>
+                                </div>
+                                <a href="/"><img class="qcode-blur" src="${data.configInfo.ftlRootPath}commonPage/zh_CN/mobileTopic/images/qcode-blur.png"></a>
+                            </div>
+                        </div>
                         <h5>支援：小米 / 魅族 / 三星 / 錘子 / 華為 / 中興 / HTC / LG</h5>
                     </div>
                 </div>
@@ -85,8 +94,17 @@
                         <h1><#if data.siteInfo.siteName??>${data.siteInfo.siteName}</#if> 移動iOS版</h1>
                         <h4>為極致而生的iOS客戶端，移動隨行，輕鬆投注</h4>
                         <h5>下載二維碼</h5>
-                        <div class="img"><span id="ios_qr_code"></span></div>
-                        <h5>支援：iPhone 5 / 5s / 6 / 6s / 7 / iPad / iPad Air</h5>
+                        <div class="img">
+                            <div class="qcode-wrap">
+                                <span id="ios_qr_code"></span>
+                                <div class="txt">
+                                    <div class="txt1">For iOS</div>
+                                    <div class="txt2">请登入下载</div>
+                                </div>
+                                <a href="/"><img class="qcode-blur" src="${data.configInfo.ftlRootPath}commonPage/zh_CN/mobileTopic/images/qcode-blur.png"></a>
+                            </div>
+                        </div>
+                        <h5>支援：iPhone 6 / 6s / 7 / 8 / iPhoneX / iPad / iPad Air</h5>
                     </div>
                 </div>
                 <div class="right right7">
@@ -164,6 +182,19 @@
             }
         })
         $("#ios_qr_code").append("<img src="+ios_url+">");
+
+        // 判读是否登录
+        var isLogin = sessionStorage.is_login;
+        //后台设置是否登录后才能显示二维码
+        <#if data.loginShowQrCode?string("true","false") == 'true'>
+            if(isLogin=="true"){
+                $('.download-page').addClass("login");
+            }else{
+                $('.download-page').addClass("unlogin");
+            }
+        <#else>
+            $('.download-page').addClass("login");
+        </#if>
     });
     </script>
 </body>

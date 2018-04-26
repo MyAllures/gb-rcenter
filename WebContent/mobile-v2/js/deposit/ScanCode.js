@@ -27,8 +27,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
          * 跳转第三方支付
          * @param orderNo
          */
-        pay: function (orderNo, newWindow) {
-            var url = root + "/wallet/deposit/online/scan/pay.html?pay=online&search.transactionNo=" + orderNo;
+        pay: function (url, newWindow) {
             var os = this.whatOs();
             if (os == 'app_ios') {
                 gotoPay(url);
@@ -62,31 +61,6 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                 }
             })
         },
-
-        /**
-         * 监听返回页面订单
-         */
-        sendComm: function (transactionNo) {
-            var param = {
-                url: mdRoot,
-                localeType: language.replace("-", "_"), isImmediatelyConnect: true
-            };
-            var _this = this;
-            param.success = function () {
-                _this.subscribeMsg("MSITE-ONLINERECHARGE", function (data) {
-                    var result = eval("(" + eval("(" + data + ")").msgBody + ")");
-                    var orderId = result.orderId;
-                    if (orderId == transactionNo) {
-                        _this.linkResult(orderId);
-                    }
-                });
-            };
-            param.failure = function () {
-                console.info('连接失败');
-            };
-            _this.init(param);
-        },
-
         linkResult: function (data) {
             var _this = this;
             var _href = root + '/wallet/deposit/online/scan/result.html?search.transactionNo=' + data;
@@ -274,8 +248,7 @@ define(['site/deposit/BaseDeposit', 'gb/components/Comet'], function (BaseDeposi
                         $("input[name='gb.token']").val(data.token);
                         if (state == true) {
                             var orderNo = data.orderNo;
-                            _this.pay(orderNo, newWindow);
-                            _this.sendComm(orderNo);
+                            _this.pay(data.payUrl, newWindow);
                             if (newWindow || _this.os == "app_android" || _this.os == 'app_ios') {
                                 _this.reWriteAmount();
                                 _this.success(data);

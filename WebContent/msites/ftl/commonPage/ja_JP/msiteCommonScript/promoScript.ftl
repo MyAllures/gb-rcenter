@@ -208,11 +208,26 @@
         if (sessionStorage.is_login == "true") {
             if (code == "back_water" || code == "first_deposit" || code == "deposit_send") {
                 if (isRefresh) {
-                    BootstrapDialog.alert({
-                        title: "ヒント",
-                        type: BootstrapDialog.TYPE_WARNING,
-                        message: "参加中",
-                        callback: function () {
+                    /* BootstrapDialog.alert({
+                       title: "提示",
+                       type: BootstrapDialog.TYPE_WARNING,
+                       message: "参与中",
+                       callback: function () {
+                           window.location.href = "/promo.html";
+                       }
+                   });*/
+                    layer.open({
+                        content:'参加中',
+                        title:'プロンプト',
+                        skin:'layui-layer-brand',
+                        btn:["落し着けるかくてい"],
+                        success: function(layer){
+                            // 重写关闭按钮
+                            $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                            // 提示框类型
+                            $(layer).addClass("normal-dialog");
+                        },
+                        yes: function () {
                             window.location.href = "/promo.html";
                         }
                     });
@@ -281,35 +296,61 @@
 
         $("._msg").html('<p class="text-center">' + data.msg + '</p>');
 
-        var dialog = BootstrapDialog.show({
-            type: BootstrapDialog.TYPE_WARNING,
-            message: function (dialog) {
-                var $content = $(".promoTip").html();
-                return $content;
-            },
-            title: "メッセージ",
-            closable: 'true',
-            buttons: [{
-                label: '良い',
-                cssClass: 'btn btn-info',
-                action: function (dialogItself) {
-                    if (isRefresh) {
-                        dialogItself.close();
-                        window.location.href = "/promo.html";
-                    } else {
-                        dialogItself.close();
-                    }
-                }
-            }, {
-                label: 'キャンペーン履歴',
-                cssClass: 'btn btn-default',
-                action: function () {
-                    window.open(
-                            '${data.contextInfo.playerCenterContext}#/preferential/list.html',
+        /* var dialog = BootstrapDialog.show({
+             type: BootstrapDialog.TYPE_WARNING,
+             message: function (dialog) {
+                 var $content = $(".promoTip").html();
+                 return $content;
+             },
+             title: "消息",
+             closable: 'true',
+             buttons: [{
+                 label: '好的',
+                 cssClass: 'btn btn-info',
+                 action: function (dialogItself) {
+                     if (isRefresh) {
+                         dialogItself.close();
+                         window.location.href = "/promo.html";
+                     } else {
+                         dialogItself.close();
+                     }
+                 }
+             }, {
+                 label: '查看优惠记录',
+                 cssClass: 'btn btn-default',
+                 action: function () {
+                     window.open(
+                             '${data.contextInfo.playerCenterContext}#/preferential/list.html',
                             '_blank' // <- This is what makes it open in a new window.
                     );
                 }
             }]
+        });*/
+        var dialog = layer.open({
+            content:$(".promoTip").html(),
+            title:'じょうほう',
+            skin:'layui-layer-brand',
+            btn:["グーだ","割引記録を調べる"],
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("normal-dialog");
+            },
+            yes: function () {
+                if (isRefresh) {
+                    layer.close(dialog);
+                    window.location.href = "/promo.html";
+                } else {
+                    layer.close(dialog);
+                }
+            },
+            btn2: function () {
+                window.open(
+                        '${data.contextInfo.playerCenterContext}#/preferential/list.html',
+                        '_blank' // <- This is what makes it open in a new window.
+                );
+            }
         });
     }
 

@@ -1,7 +1,7 @@
 <#--API名称-->
-<#assign apiMap={"1":"ds","2":"kg","3":"mg","4":"im","5":"gd","6":"pt","7":"og","8":"dw","9":"ag","10":"bb","11":"chq","12":"hg","14":"nyx","15":"hb","16":"ebet","17":"sa","19":"sb","20":"bsg","21":"dwt","22":"lt","23":"opus-s","24":"opus-l","25":"sg","26":"png","27":"dt","28":"gg","30":"sc","31":"gns","32":"prg","33":"shenbo","34":"ky"}>
+<#assign apiMap={"1":"ds","2":"kg","3":"mg","4":"im","5":"gd","6":"pt","7":"og","8":"dw","9":"ag","10":"bb","11":"chq","12":"hg","14":"nyx","15":"hb","16":"ebet","17":"sa","19":"sb","20":"bsg","21":"rs","22":"lt","23":"opus-s","24":"opus-l","25":"sg","26":"png","27":"dt","28":"gg","30":"sc","31":"gns","32":"prg","33":"shenbo","34":"ky","35":"mw","36":"ysb","37":"bc","38":"prg"}>
 <#assign apiMapKeys = apiMap?keys>
-<#assign casinoDesc ={"3":"MG GAMING","6":"PT GAMING","9":"AG GAMING","10":"BB GAMING","15":"HB GAMING","20":"BSG GAMING","25":"SG GAMING","26":"PNG GAMING"}>
+<#assign casinoDesc ={"3":"MG GAMING","6":"PT GAMING","9":"AG GAMING","10":"BB GAMING","15":"HB GAMING","20":"BSG GAMING","25":"SG GAMING","26":"PNG GAMING","27":"DT GAMING","28":"GG GAMING","31":"GNS GAMING","32":"PP GAMING","38":"PP GAMING"}>
 <#assign casinoDescKeys = casinoDesc?keys>
 <#--API Type名称-->
 <#assign apiRelByType = {"1":"live","2":"casino","3":"sports","4":"lottery","5":"chess"}>

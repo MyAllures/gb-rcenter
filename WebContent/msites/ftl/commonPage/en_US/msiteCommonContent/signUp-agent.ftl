@@ -7,10 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
     <title><#if data.siteInfo.title?default('')!=''>${data.siteInfo.title}<#else >${data.siteInfo.siteName}</#if></title>
+    <link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/gui-base.css">
     <link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/common.css" type="text/css" />
     <link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/style.css" type="text/css" />
     <link rel="icon" type="image/png" href="${data.configInfo.sitePath}/images/favicon.png" sizes="32x32">
+    <style>
+        .layui-layer.normal-dialog.signAgent-dialog .layui-layer-content{height: 400px !important;}
+        .layui-layer.normal-dialog.signAgent-dialog .layui-layer-btn { padding: 10px 15px 10px;}
+    </style>
 </head>
 
 <body class="main-jumbotron login-jumbotron">
@@ -400,12 +405,29 @@
     window.top.language = "en-US";
 </script>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/jquery/jquery-1.11.3.min.js"></script>
+<script src="${data.configInfo.ftlRootPath}commonPage/js/layer.js"></script>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/bootstrap.min.js"></script>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/bootstrap-dialog.min.js"></script>
 <script src="${resComRoot}/js/jquery/plugins/jquery.validate/jquery.validate.js"></script>
 <script src="${resComRoot}/js/gamebox/common/jquery.validate.extend.msites.js"></script>
 
 <script>
+    // 新弹窗插件配置
+    $(function () {
+        // layer默认配置
+        layer.config({
+            type:0,
+            move:".layui-layer-title",
+            title:true,
+            offset:"auto",
+            btnAlign:"r",
+            closeBtn:"2",
+            shade:[0.7,"#000"],
+            shadeClose:true,
+            time:0,
+            resize:false
+        });
+    });
     $(function () {
         resetLocal();
         $("._captcha_code","#regForm").attr("src","${data.contextInfo.playerCenterContext}captcha/apcregister.html?t="+ new Date().getTime().toString(36));
@@ -481,9 +503,8 @@
     }
     // Modal 模态框
     $("#login-agreement").click(function() {
-
-        BootstrapDialog.show({
-            title:'Agent Registration Agreement',
+        /*BootstrapDialog.show({
+            title:'代理注册协议',
             type: 'default',
             closable: false,
             message: function(dialog) {
@@ -494,12 +515,12 @@
                 return $message;
             },
             buttons: [{
-                label: 'I disagree',
+                label: '我不同意',
                 action: function(){
                     window.location ="/agent.html";
                 }
             }, {
-                label: 'I agree ',
+                label: '我同意',
                 cssClass: 'btn-success',
                 action:function(dialogItself){
                     dialogItself.close();
@@ -508,7 +529,26 @@
             data: {
                 'pageToLoad': '/commonPage/modal/agent-agreement.html'
             }
-        });
+        });*/
+        var loAgree = layer.open({
+            content:<#if data.agentValidateRegisterMap.regProtocol??> ${data.agentValidateRegisterMap.regProtocol.value} </#if>,
+            title:'Proxy registration agreement',
+            area: ['640px','500px'],
+            skin:'layui-layer-brand',
+            btn:["I disagree","I agree"],
+            success: function(layer){
+            // 重写关闭按钮
+            $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+            // 提示框类型
+            $(layer).addClass("normal-dialog").addClass("signAgent-dialog");
+        },
+        yes: function(){
+            window.location ="/agent.html";
+        },
+        btn2: function () {
+            layer.close(loAgree);
+        }
+    });
     });
 
     var $form = $('#regForm');
@@ -634,8 +674,8 @@
                 },
                 success: function (data) {
                     if(data){
-                        BootstrapDialog.show({
-                            title:'Prompt',
+                        /*BootstrapDialog.show({
+                            title:'提示',
                             type: BootstrapDialog.TYPE_PRIMARY,
                             closable: false,
                             message: function(dialog) {
@@ -643,12 +683,27 @@
                                 return $message;
                             },
                             buttons: [{
-                                label: 'OK',
+                                label: '确定',
                                 cssClass: 'btn-success',
                                 action:function(dialogItself){
                                     window.location.href ="/agent.html";
                                 }
                             }]
+                        });*/
+                        layer.open({
+                            content:'Registration is successful, please wait for review!',
+                            title:'Tips',
+                            skin:'layui-layer-brand',
+                            btn:["ok"],
+                            success: function(layer){
+                                // 重写关闭按钮
+                                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                                // 提示框类型
+                                $(layer).addClass("normal-dialog");
+                            },
+                            yes: function () {
+                                window.location.href ="/agent.html";
+                            }
                         });
                     }
                 },
@@ -705,13 +760,49 @@
         var cookie = getCookie(REGSTER_SEND_EMAIL_TIME);
         cookie = Number(cookie);
         if(!email){
-            BootstrapDialog.alert({message:'Please enter mail first！',title:'Prompt information '});
+            /*BootstrapDialog.alert({message:'请先输入邮箱！',title:'提示信息'});*/
+            layer.open({
+                content:'Please enter email account',
+                title:'Tips inform',
+                skin:'layui-layer-brand',
+                btn:["ok"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }else if($email.parents(".form-group").hasClass("has-error")){
-            BootstrapDialog.alert({message:'Please enter correct mail！',title:'Prompt information '});
+            /*BootstrapDialog.alert({message:'请输入正确的邮箱！',title:'提示信息'});*/
+            layer.open({
+                content:'Please enter correct email account！',
+                title:'Tips inform',
+                skin:'layui-layer-brand',
+                btn:["ok"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }else if(cookie){
-            BootstrapDialog.alert({message:'The sending interval is not reached！',title:'Prompt information '});
+            /*BootstrapDialog.alert({message:'发送间隔时间未到！',title:'提示信息'});*/
+            layer.open({
+                content:'The sending interval is not available.！！',
+                title:'Tips inform',
+                skin:'layui-layer-brand',
+                btn:["ok"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }
         function setCookie(c_name,value,expiredays){

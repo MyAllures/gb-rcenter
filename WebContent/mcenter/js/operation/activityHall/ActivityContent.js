@@ -5,7 +5,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
     return Money.extend({
         maxRange: 5,
         ue: null,
-        system_recommend_case_num:4,
+        system_recommend_case_num:5,
         system_recommend_data:null,
 
         init: function () {
@@ -42,8 +42,8 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $(this.formSelector).on("click", "#pc-terminal", function(e) {
                 $(".pc").show();
                 $(".mb").hide();
-                $("#pc-terminal").addClass("disabled");
-                $("#mb-terminal").removeClass("disabled");
+                $("#pc-terminal").removeClass("btn-default");
+                $("#mb-terminal").addClass("btn-default");
                 $(".mb .tab-pane").removeClass('active');
                 var tab = $(".pc li.active a").attr('href');
                 $(tab).addClass('active');
@@ -51,8 +51,8 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $(this.formSelector).on("click", "#mb-terminal", function(e){
                 $(".pc").hide();
                 $(".mb").show();
-                $("#mb-terminal").addClass("disabled");
-                $("#pc-terminal").removeClass("disabled");
+                $("#mb-terminal").removeClass("btn-default");
+                $("#pc-terminal").addClass("btn-default");
                 $(".pc .tab-pane").removeClass('active');
                 var tab = $(".mb li.active a").attr('href');
                 $(tab).addClass('active');
@@ -60,9 +60,15 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
 
             $(this.formSelector).on("change", ".game", function (e){
                 var target = e.target;
-                var num = $(target).parent().children("input.game:checked").length;
+                var num = $(target).parents(".game_div").find("input.game:checked").length;
                 var mark = $(target).attr("aaa");
                 $("."+mark).text(num);
+            });
+
+            $(this.formSelector).on("click", ".gameTypeButton", function (e) {
+                var target = e.target;
+                $(target).removeClass('btn-outline');
+                $(target).siblings("button").addClass('btn-outline');
             });
 
             $(this.formSelector).on("change", ".profit", function (e){
@@ -247,12 +253,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
 
             this.initUEditor();
             this.checkHandsel();
-
         },
 
         //未编辑,已编辑
         updateText: function (e, index) {
-            var $current_tab = $('[aria-expanded=true]');
+            var $current_tab = $('a[aria-expanded=true]');
             var $tab_span = $current_tab.find("span");
             var index;
             if (e == 'contentchange') {
@@ -484,6 +489,15 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $(e.currentTarget).click();
                 return false;
             }
+            if (opt.code == 'profit_loss') {
+                var message = window.top.message.common['盈利和亏损不能同时为空'];
+                var profit = $(".profit").prop("checked");
+                var loss = $(".loss").prop("checked");
+                if (!profit && !loss) {
+                    $(".profit").formtip(message);
+                    return false;
+                }
+            }
             if(opt.code=='money'){
 
                 var rpb = that.getRemainProbability();
@@ -573,10 +587,10 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $("#previewPlacesNumber").text($("[name='activityRule.placesNumber']").val());
             }
             //是否审核
-            if ($("[name='activityRule.isAudit']").val() == 'true') {//前端展示
-                $("#previewIsAudit").text(window.top.message.operation_auto['是']);
+            if ($("[name='activityRule.isAudit']").val() == 'true') {//是否审核
+                $("#previewIsAudit").text(window.top.message.operation_auto['审核']);
             } else {
-                $("#previewIsAudit").text(window.top.message.operation_auto['否']);
+                $("#previewIsAudit").text(window.top.message.operation_auto['免审']);
             }
             //是否申请
             if ($("[name='activityRule.isNeedApply']").val() == 'true') {//前端展示
@@ -626,12 +640,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                     var a2 = $(item).find("td:eq(1) input").val();
                     var a3 = $(item).find("td:eq(2) input").val();
                     var a4 = $(item).find("td:eq(3) input").val();
-                    var a5 = $(item).find("td:eq(4) input").val();
-                    if (a5 != "") {
-                        $("#reliefund").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['剩余以下'].replace("[0]",a2)).concat("</td><td>").concat(window.top.message.operation_auto['达以上'].replace("[0]",a3)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a4).concat("</td><td>").concat(a5).concat(window.top.message.operation_auto['送']).concat("</td></tr>"));
+                    if (a4 != "") {
+                        $("#reliefund").append("<tr><td>".concat(window.top.message.operation_auto['剩余以下'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['达以上'].replace("[0]",a2)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a3).concat("</td><td>").concat(a4).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
                     } else {
-                        a5 = "---";
-                        $("#reliefund").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['剩余以下'].replace("[0]",a2)).concat("</td><td>").concat(window.top.message.operation_auto['达以上'].replace("[0]",a3)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a4).concat("</td><td>").concat(a5).concat(window.top.message.operation_auto['送']).concat("</td></tr>"));
+                        a4 = "---";
+                        $("#reliefund").append("<tr><td>".concat(window.top.message.operation_auto['剩余以下'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['达以上'].replace("[0]",a2)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a3).concat("</td><td>").concat(a4).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
                     }
 
                 });
@@ -645,7 +658,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 }
                 $("#firstAndDeposit").find("tr:gt(0)").remove();
                 $("#firstAndDeposit").append("<tr><td>".concat(window.top.message.operation_auto['存款金额CNY']).concat("</td><td>").concat(aa).concat("</td><td>").concat(window.top.message.operation_auto['优惠稽核']).concat("</td></tr>"));
-                $("#first_deposit").find("tr:gt(0)").each(function (index, item) {
+                $("#first_deposit").find("tr:gt(1)").each(function (index, item) {
                     var a1 = $(item).find("td:eq(0) input").val();
                     var a2;
                     if ($("[name='ｍosaicGold']:checked").val() == 'true') {
@@ -665,33 +678,37 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             }
             if (code == 'profit_loss') {//盈亏送
                 //盈利
+                if ($(".profit").prop("checked")) {
+                    $("#previewprofit").show();
+                }else {
+                    $("#previewprofit").hide();
+                }
                 $("#previewprofit").find("tr:gt(1)").remove();
                 $("#first_deposit").find("tr:gt(1)").each(function (index, item) {
                     var a1 = $(item).find("td:eq(0) input").val();
                     var a2 = $(item).find("td:eq(1) input").val();
                     var a3 = $(item).find("td:eq(2) input").val();
-
-                    if (a3 != "") {
-                        $("#previewprofit").append("<tr><td>满" + a1 + "以上</td><td>送" + a2 + "</td><td>" + a3 + "倍</td></tr>");
-                    } else {
+                    if (a3 == "") {
                         a3 = "---";
-                        $("#previewprofit").append("<tr><td>满" + a1 + "以上</td><td>送" + a2 + "</td><td>" + a3 + "</td></tr>");
                     }
+                    $("#previewprofit").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
 
                 });
                 //亏损
+                if ($(".loss").prop("checked")) {
+                    $("#previewloss").show();
+                }else {
+                    $("#previewloss").hide();
+                }
                 $("#previewloss").find("tr:gt(1)").remove();
                 $("#loss").find("tr:gt(1)").each(function (index, item) {
                     var a1 = $(item).find("td:eq(0) input").val();
                     var a2 = $(item).find("td:eq(1) input").val();
                     var a3 = $(item).find("td:eq(2) input").val();
-                    if (a3 != "") {
-                        $("#previewloss").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
-                    } else {
+                    if (a3 == "") {
                         a3 = "---";
-                        $("#previewloss").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
                     }
-
+                    $("#previewloss").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
                 });
             }
             if(code=="money"){
@@ -702,11 +719,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             for (i = 0; i < languageCounts; i++) {
                 $("#previewActivityName" + i).text($("[name='activityMessageI18ns[" + i + "].activityName']").val());
                 /*主图*/
-                if ($("#activityContentImg" + i + ' ' + "img").attr("src") == "") {
-                    var src1 = $("#activityContentImage" + i + ' ' + "img").attr('src');
+                if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
+                    var src1 = $("#activityAffiliatedImage" + i + ' ' + "img").attr('src');
                     $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src1);
                 } else {
-                 var src2 = $("#activityContentImg" + i + ' ' + "img").attr('src');
+                 var src2 = $("#activityAffiliatedImg" + i + ' ' + "img").attr('src');
                  $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src2);
                 }
                 $("#previewActivityDesc" + i).html($("[name='activityMessageI18ns[" + i + "].activityDescription']").val());
@@ -753,7 +770,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
          * @param option
          */
         addActivityRule: function (e, option) {
-            var _tr_len = $("#first_deposit").find("tr").length - 1;
+            var _tr_len = $("#first_deposit").find("tr").length - 2;
             var canCreate = _tr_len < this.maxRange;
             if (canCreate) {
                 /*tr clone*/
@@ -770,11 +787,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
         },
 
         addActivityRule2: function (e, option) {
-            var _tr_len = $("#loss").find("tr").length - 1;
+            var _tr_len = $("#loss").find("tr").length - 2;
             var canCreate = _tr_len < this.maxRange;
             if (canCreate) {
                 /*tr clone*/
-                var _tr = $("#loss").find("tr:eq(1)").clone(true);
+                var _tr = $("#loss").find("tr:eq(2)").clone(true);
                 _tr.find("button").removeClass("disabled");
                 _tr.find("input").val("");
                 _tr = this.resetIndex2(_tr, _tr_len)
@@ -1079,7 +1096,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var deposit_array = activityType+'_array';
             //设置优惠条件
             $.each(deposit_data[deposit_array], function (i, item) {
-                var tr_index = i + 1;
+                var tr_index = i+2 ;
                 $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(0)').val(item.depositAmountGe);
                 $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(1)').val(item.percentageHandsel);
                 $("#first_deposit").find("tr:eq(" + tr_index + ")").find('input:eq(2)').val(item.regularHandsel);
@@ -1255,7 +1272,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             var size = gameTypeList.length;
             for (var i=0; i<size; i++) {
                 var target = gameTypeList[i];
-                var num = $(target).children("input.game:checked").length;
+                var num = $(target).find("input.game:checked").length;
                 var mark = $(target).attr("aaa");
                 $("."+mark).text(num);
             }

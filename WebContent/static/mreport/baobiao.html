@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../mreport/themes/default/bootstrap.css"/>
+		<link rel="stylesheet" href="../../mreport/themes/default/style.css" />
+		<link rel="stylesheet" href="../../mreport/themes/default/swiper.min.css" />
+		<link rel="stylesheet" href="../../mreport/themes/default/daterangepicker.css" />
+		 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<title>整体走势-报表</title>
+	</head>
+	<body>
+    
+    <div class="container baobiao-page">
+        <div class="menu _menu">
+          <nav>
+            <h1 class="name">捷报系统中心 <font>statement system</font></h1>
+            <ul class="list-group">
+              <li class="list-group-item active"><p class="tit"><i class="gaikuang"></i>概况</p> 
+                 <ul class="hideMenu">
+                   <li class="active"><a href="#">实时统计</a></li>    
+                   <li><a href="#">整体走势</a></li>
+                 </ul>
+              </li>
+              <li class="list-group-item"><p class="tit"><i class="player"></i><a href="#">玩家分析</a></p></li>
+              <li class="list-group-item"><p class="tit"><i class="deposit"></i><a href="#">存款分析</a></p></li>
+              <li class="list-group-item"><p class="tit"><i class="game"></i><a href="#">游戏分析</a></p></li>
+            </ul>
+             
+          </nav>
+            
+        </div>
+        <div class="main-content _mainContent">
+          <div class="_drawer-mask"></div>
+          <!--头部信息：-->
+          <div class="top-info text-right">
+            <div class="icon-menu _showMenu"></div>
+            <ul>
+              <li class="time"><span></span><p>GMT+8 2018-2-20 15:30:30</p></li>
+              <li class="webName"><span></span>
+                <div class="chooseSite _chooseSite">
+                  <a class="btn dropdown-toggle"  id="dropdownSite" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">站点A</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownSite">
+                    <a class="dropdown-item" href="#">站点A</a>
+                    <a class="dropdown-item" href="#">站点B</a>
+                    <a class="dropdown-item" href="#">站点C</a>
+                  </div>
+                </div> 
+              </li>
+              <li class="username"><span></span>
+                <div class="chooseAdmin">
+                  <a class="btn dropdown-toggle"  id="dropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownAdmin">
+                      <a class="dropdown-item" href="#">退出</a>
+                      <a class="dropdown-item" href="#">重新登录</a>
+                    </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!--内容区域：-->
+          <div class="content">
+            <div class="run-title">
+              <h1 class="float-left">经营走势</h1>
+              <div class="group float-right _addPrimary">
+                <button type="button" class="btn btn-default">报表呈现</button>
+                <button type="button" class="btn btn-default btn-primary">显示数据</button>
+                <button type="button" class="btn btn-default">导出数据</button>
+              </div>
+            </div>
+            
+            <div class="tableBox">
+              <div class="top">
+                  <h3>用户走势</h3>
+                  <div class="date-box">
+                    <div class="group public-date-group">
+                      <button type="" class="btn btn-default btn-success">日</button>
+                      <button type="" class="btn btn-default">月</button>
+                      <button type="" class="btn btn-default">年</button>
+                    </div>
+                    <div class="date">
+                      <input id="startDate" readonly="readonly" value="" /> 至 <input id="endDate" readonly="readonly"/>
+                    </div>
+                  </div>
+              </div>
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <table class="swiper-slide">
+                  	<tr>
+                  	  <th>时间</th><th>新增代理</th>
+                  	  <th>新增玩家</th><th>新增存款玩家</th>
+                  	  <th>活跃玩家</th><th><i class="what">？</i>存款人数</th>
+                  	  <th>投注人数</th><th>取款人数</th>
+                  	  <th>返水人数</th>
+                  	</tr>
+                  	<tr>
+                  	  <td>2018-2-6</td>
+                  	  <td>19</td><td>19</td><td>19</td><td>19</td>
+                  	  <td>19</td><td>19</td><td>19</td><td>19</td>
+                  	</tr>
+                  	<tr>
+                      <td>2018-2-6</td>
+                      <td>19</td><td>19</td><td>19</td><td>19</td>
+                      <td>19</td><td>19</td><td>19</td><td>19</td>
+                    </tr>
+                    <tr>
+                      <td>2018-2-6</td>
+                      <td>19</td><td>19</td><td>19</td><td>19</td>
+                      <td>19</td><td>19</td><td>19</td><td>19</td>
+                    </tr>
+                    <tr>
+                      <td>2018-2-6</td>
+                      <td>19</td><td>19</td><td>19</td><td>19</td>
+                      <td>19</td><td>19</td><td>19</td><td>19</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              
+              
+              <div class="page">
+                <div class="pageNum"><span class="txt">每页显示</span>
+                  <div class="chooseNum _chooseNum">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      5条
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">10条</a>
+                      <a class="dropdown-item" href="#">15条</a>
+                      <a class="dropdown-item" href="#">20条</a>
+                    </div>
+                  </div> 
+                  <span class="txt">共30条</span>
+                </div>
+                <ul class="pagination float-right">
+                  <li class="page-item"><a class="page-link first-page" href="#"></a></li>
+                  <li class="page-item"><a class="page-link previous" href="#" aria-label="Previous"></a></li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">···</a></li>
+                  <li class="page-item"><a class="page-link next" href="#" aria-label="Next"></a></li>
+                  <li class="page-item"><a class="page-link last-page" href="#"></a></li>
+                  <li class="page-item"><input class="page-link num" type="num" placeholder="1"/></li>
+                  <li class="page-item"><a class="page-link jump" href="#"></a></li>
+                </ul>
+                
+              </div>
+              
+            </div>
+            
+             <div class="tableBox">
+              <div class="top">
+                  <h3>存取走势</h3>
+                  <div class="date-box">
+                    <div class="group public-date-group">
+                      <button type="" class="btn btn-default btn-success">日</button>
+                      <button type="" class="btn btn-default">月</button>
+                      <button type="" class="btn btn-default">年</button>
+                    </div>
+                    <div class="date">
+                      <span>2017-08-23</span> 至 <span>2018-08-23</span>
+                    </div>
+                  </div>
+              </div>
+              
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <table class="swiper-slide">
+                    <tr>
+                      <th>时间</th><th>新增代理</th>
+                      <th>新增玩家</th><th>新增存款玩家</th>
+                      <th>活跃玩家</th><th><i class="what">？</i>存款人数</th>
+                      <th>投注人数</th><th>取款人数</th>
+                      <th>返水人数</th>
+                    </tr>
+                    <tr>
+                      <td>2018-2-6</td>
+                      <td>19</td><td>19</td><td>19</td><td>19</td>
+                      <td>19</td><td>19</td><td>19</td><td>19</td>
+                    </tr>
+                    <tr>
+                      <td>2018-2-6</td>
+                      <td>19</td><td>19</td><td>19</td><td>19</td>
+                      <td>19</td><td>19</td><td>19</td><td>19</td>
+                    </tr>
+                    <tr>
+                      <td>2018-2-6</td>
+                      <td>19</td><td>19</td><td>19</td><td>19</td>
+                      <td>19</td><td>19</td><td>19</td><td>19</td>
+                    </tr>
+                    <tr>
+                      <td>2018-2-6</td>
+                      <td>19</td><td>19</td><td>19</td><td>19</td>
+                      <td>19</td><td>19</td><td>19</td><td>19</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              
+              <div class="page">
+                <div class="pageNum"><span class="txt">每页显示</span>
+                  <div class="chooseNum _chooseNum">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      5条
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">10条</a>
+                      <a class="dropdown-item" href="#">15条</a>
+                      <a class="dropdown-item" href="#">20条</a>
+                    </div>
+                  </div> 
+                  <span class="txt">共30条</span>
+                </div>
+                <ul class="pagination float-right">
+                  <li class="page-item"><a class="page-link first-page" href="#"></a></li>
+                  <li class="page-item"><a class="page-link previous" href="#" aria-label="Previous"></a></li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">···</a></li>
+                  <li class="page-item"><a class="page-link next" href="#" aria-label="Next"></a></li>
+                  <li class="page-item"><a class="page-link last-page" href="#"></a></li>
+                  <li class="page-item"><input class="page-link num" type="num" placeholder="1"/></li>
+                  <li class="page-item"><a class="page-link jump" href="#"></a></li>
+                </ul>
+                
+              </div>
+              
+            </div>
+            
+          </div>
+          
+        </div>
+      
+    </div>
+    
+    <script src="../../mreport/js/jquery-3.2.1.min.js"></script>
+    <script src="../../mreport/js/popper.js"></script>
+    <script src="../../mreport/js/bootstrap.js"></script>
+    <script src="../../mreport/js/swiper.min.js"></script>
+    <script src="../../mreport/js/moment.min.js"></script>
+    <script src="../../mreport/js/daterangepicker.js"></script>
+    <script src="../../mreport/js/index.js"></script>
+    
+    <script>
+    
+      $(function(){
+        var mySwiper = new Swiper ('.swiper-container', {
+          freeMode: true,
+        });
+      })
+      
+    </script>
+    
+	</body>
+</html>

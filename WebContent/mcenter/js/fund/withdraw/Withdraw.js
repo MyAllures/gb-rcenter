@@ -494,7 +494,7 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
             var btnOption = {};
             var id = option.dataId;
             btnOption.target = root + "/fund/withdraw/withdrawStatusView.html?search.id=" + id;
-            btnOption.callback = option.callback;
+            btnOption.callback = "viewCallback";
             btnOption.text = "易收付出款审核";
             btnOption.size = "size-wide";
             window.top.topPage.doDialog(e, btnOption);
@@ -506,6 +506,11 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
         reloadMainFrame:function (e,opt) {
             if (e.returnValue == true) {
                 $("#mainFrame").load(root + "/fund/withdraw/withdrawList.html");
+            }
+        },
+        viewCallback:function (e,opt) {
+            if(e.returnValue){
+                this.query(e,opt);
             }
         }
     });

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../mreport/themes/default/bootstrap.css"/>
+		<link rel="stylesheet" href="../../mreport/themes/default/style.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <script src="../../mreport/js/jquery-3.2.1.min.js"></script>
+	    <script src="../../mreport/js/bootstrap.js"></script>
+	    <script src="../../mreport/js/Popper.js"></script>
+	    <script src="../../mreport/js/echarts.common.min.js"></script>
+	    <script src="../../mreport/js/moment.min.js"></script>
+	    <script src="../../mreport/js/bootstrap-datetimepicker.min.js"></script>
+	    <script src="https://gw.alipayobjects.com/os/antv/assets/g2/3.0.5-beta.5/g2.min.js"></script>
+	    <script src="../../mreport/js/highcharts.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="../../mreport/js/index.js"></script>
+		<title>整体走势-图表</title>
+	</head>
+	<body>
+    
+    <div class="container gaikuang-page">
+        <div class="menu _menu">
+          <nav>
+            <h1 class="name">捷报系统中心 <font>statement system</font></h1>
+            	<ul class="list-group">
+                	<li class="list-group-item active"><p class="tit"><i class="gaikuang"></i><a href="#">站点日常数据</a></p> 
+                	<ul class="hideMenu">
+                		<li class="active"><a href="index.html">经营走势</a></li>    
+                		<li><a href="TimeStatistics.html">实时总览</a></li>
+                		<li><a href="ActivePlayer.html">活跃玩家</a></li>
+                		<li><a href="PlayerRetained .html">玩家留存</a></li>
+                		<li ><a href="NewPlayer.html">新增玩家</a></li>
+                	</ul></li>
+					<li class="list-group-item"><p class="tit"><i class="player"></i><a href="#">战点市场数据</a></p></li>
+               		<li class="list-group-item"><p class="tit"><i class="deposit"></i><a href="#">玩家分析</a></p></li>
+               		<li class="list-group-item"><p class="tit"><i class="game"></i><a href="#">付费分析</a></p></li>
+               		<li class="list-group-item"><p class="tit"><i class="deposit"></i><a href="#">活动数据分析</a></p></li>
+               		<li class="list-group-item"><p class="tit"><i class="player"></i><a href="#">API用户细分</a></p></li>
+           		</ul>
+             
+          </nav>
+            
+        </div>
+        <div class="main-content _mainContent">
+          <div class="_drawer-mask"></div>
+          <!--头部信息：-->
+          <div class="top-info text-right">
+            <div class="icon-menu _showMenu"></div>
+            <ul>
+              <li class="time"><span></span><p>GMT+8 2018-2-20 15:30:30</p></li>
+              <li class="webName"><span></span>
+                <div class="chooseSite _chooseSite">
+                  <a class="btn dropdown-toggle"  id="dropdownSite" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">站点A</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownSite">
+                    <a class="dropdown-item" href="#">站点A</a>
+                    <a class="dropdown-item" href="#">站点B</a>
+                    <a class="dropdown-item" href="#">站点C</a>
+                  </div>
+                </div> 
+              </li>
+              <li class="username"><span></span>
+                <div class="chooseAdmin">
+                  <a class="btn dropdown-toggle"  id="dropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownAdmin">
+                      <a class="dropdown-item" href="#">退出</a>
+                      <a class="dropdown-item" href="#">重新登录</a>
+                    </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <!--内容区域：-->
+          <div class="content">
+            <div class="run-title">
+              <h1 class="float-left">经营走势</h1>
+              <div class="group float-right _addPrimary">
+                <button type="button" class="btn btn-default">报表呈现</button>
+                <button type="button" class="btn btn-default btn-primary">显示数据</button>
+                <button type="button" class="btn btn-default">导出数据</button>
+              </div>
+            </div>
+            
+            <div class="row dataBox1">
+              <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 list tableCir">
+                <div class="cont">
+                  <h2>存取差额 <span>本月:121,696,321.00</span></h2>
+                  <div class="public-btn-group _addPrimary">
+                    <button class="btn btn-primary">日</button>
+                    <button class="btn">周</button>
+                    <button class="btn">月</button>
+                  </div>
+                  <div id="c1"> </div>
+                  <div id="z1"></div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 list tableCir">
+                <div class="cont">
+                  <h2>有效投注 <span>本月:121,696,321.00</span></h2>
+                  <div class="public-btn-group _addPrimary">
+                    <button class="btn btn-primary">日</button>
+                    <button class="btn">周</button>
+                    <button class="btn">月</button>
+                  </div>
+                  <div id="c2"> </div>
+                  <div id="z2"></div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 list tableCir">
+                <div class="cont">
+                  <h2>损益 <span>本月:121,696,321.00</span></h2>
+                  <div class="public-btn-group _addPrimary">
+                    <button class="btn btn-primary">日</button>
+                    <button class="btn">周</button>
+                    <button class="btn">月</button>
+                  </div>
+                  <div id="c3"></div>
+                  <div id="z3"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row dataBox2">
+              <div class="col-lg list tableList">
+                <div class="cont">
+                  <h2>损益 <span>本月:121,696,321.00</span></h2>
+                  <div class="public-btn-group group _addPrimary tableBut">
+                    <button class="btn btn-primary">存款金额</button>
+                    <button class="btn">存款人数</button>
+                  </div>
+                  <div id="mountNode1" style=" height: 300px; margin: 0 auto"> </div>
+                </div>
+              </div>
+              <div class="col-lg list tableList">
+                <div class="cont">
+                  <h2>损益 <span>本月:121,696,321.00</span></h2>
+                  <div class="public-btn-group group _addPrimary tableBut">
+                    <button class="btn btn-primary">新增玩家</button>
+                    <button class="btn">新增存款玩家</button>
+                    <button class="btn">活跃玩家</button>
+                    <button class="btn">投注玩家</button>
+                    <button class="btn">新增玩家</button>
+                  </div>
+                  <div id="mountNode2" style=" height: 300px; margin: 0 auto"></div>
+                </div>
+              </div>
+            </div>                   
+          </div>     
+        </div>
+    </div>
+    <script>
+
+     $(function(){
+  
+//      玉钰图:
+        function yuyutu (id,color1,color2){
+          function getRectPath(points) {
+            const path = [];
+            for (let i = 0; i < points.length; i++) {
+              const point = points[i];
+              if (point) {
+                const action = i === 0 ? 'M' : 'L';
+                path.push([ action, point.x, point.y ]);
+              }
+            }
+            const first = points[0];
+            path.push([ 'L', first.x, first.y ]);
+            path.push([ 'z' ]);
+            return path;
+          }
+          G2.Shape.registerShape('interval', 'roundedRect', {
+            draw(cfg, container) {
+              const points = cfg.points;
+              let path = getRectPath(cfg.points);
+              const r = (path[2][1] - path[1][1]) / 2;
+              path = this.parsePath(path); // 将 0 - 1 的值转换为画布坐标
+              const temp = [];
+              temp.push(path[0]);
+              temp.push(path[1]);
+              temp.push([ 'A', r, r, 1, 0, 0, path[2][1], path[2][2] ]);
+              temp.push(path[3]);
+              temp.push([ 'A', r, r, 1, 0, 0, path[4][1], path[4][2] ]);
+              return container.addShape('path', {
+                attrs: {
+                  path: temp,
+                  fill: cfg.color,
+                  fillOpacity: cfg.opacity,
+                }
+              });
+            }
+          });
+          const userData = [
+            { type: '活动', value: 0 },
+            { type: '活', value: 0 },
+            { type: '锻炼', value: 100 },
+            { type: '站立', value: 150 }
+          ];
+          const chart = new G2.Chart({
+            id: id,
+            width: 280,
+            height: 280,
+            padding: 50
+          });
+          chart.coord('polar', {
+            innerRadius: 0.25,
+          }).transpose();
+          chart.legend('cate', false);
+          
+          const userView = chart.view();
+          userView.source(userData, {
+            value: {
+              max: 200,
+            }
+          });
+          userView.interval()
+            .position('type*value')
+            .color('type', [ '#fff', '#fff', color1, color2])
+            .opacity(1)
+            .size(10)
+            .shape('roundedRect');
+          chart.render();
+                
+        }  
+          
+          yuyutu(c1,'#0072ff','#02c16e');
+          yuyutu(c2,'#0072ff','#ff4e4e');
+          yuyutu(c3,'#0072ff','#02c16e');
+          
+        
+//      柱状图:
+        function zhuzhuangtu (id){
+            const Shape = G2.Shape;
+          Shape.registerShape('interval', 'borderRadius', {
+            draw(cfg, container) {
+              const points = cfg.points;
+              let path = [];
+              path.push(['M', points[0].x, points[0].y]);
+              path.push(['L', points[1].x, points[1].y]);
+              path.push(['L', points[2].x, points[2].y]);
+              path.push(['L', points[3].x, points[3].y]);
+              path.push('Z');
+              path = this.parsePath(path); // 将 0 - 1 转化为画布坐标
+              return container.addShape('rect', {
+                attrs: {
+                  x: path[1][1], // 矩形起始点为左上角
+                  y: path[1][2],
+                  width: path[2][1] - path[1][1],
+                  height: path[0][2] - path[1][2],
+                  fill: cfg.color,
+                  radius: (path[2][1] - path[1][1]) / 2,
+                }
+              });
+            },
+          });         
+          const data = [
+            { genre:'Sports', sold:27500 },
+            { genre:'Strategy', sold:11500 },
+            { genre:'Action', sold:6000 },
+            { genre:'Shooter', sold:3500 },
+            { genre:'Other', sold:1500 }
+          ];    
+          const chart = new G2.Chart({
+            container: id,
+            forceFit: true,
+            height: 350,
+            padding: [ 20, 80, 95, 80 ]
+          });       
+          chart.source(data);
+          chart.interval().position('genre*sold').color('genre').shape('borderRadius');
+          chart.render();         
+        }         
+        zhuzhuangtu(z1);
+        zhuzhuangtu(z2);
+        zhuzhuangtu(z3);
+        //曲线图
+        var options = {
+		    chart: {//图形形状
+		        type: 'line'
+		    },
+		    title: {//主标题
+		        text: ''
+		    },
+		    subtitle: {//副标题
+		        text: ''
+		    },
+		    xAxis: {//X坐标
+		        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+		    },
+		    yAxis: {//Y坐标
+		        title: {
+		            text: ''
+		        }
+		    },
+		    /*
+			tooltip: {//数据提示框
+			    backgroundColor: '#FCFFC5',   // 背景颜色
+			    borderColor: 'black',         // 边框颜色
+			    borderRadius: 100,             // 边框圆角
+			    borderWidth: 300,               // 边框宽度
+			    shadow: true,                 // 是否显示阴影
+			    animation: true               // 是否启用动画效果
+			    style: {                      // 文字内容相关样式
+			        color: "#ff0000",
+			        fontSize: "12px",
+			        fontWeight: "blod",
+			        fontFamily: "Courir new"
+			    }
+			},	*/	    
+		    legend:{
+		    	itemStyle: { cursor: 'pointer', fontSize: "120px"}
+		    },
+		    plotOptions: {//标识表 鼠标移动到图形区域
+		        line: {
+		            dataLabels: {
+		                enabled: false//不显示标识图数据
+		            },
+		            enableMouseTracking: true//鼠标移动到标识图显示数据
+		        }
+		    },
+	        credits: {  
+	            enabled: false     //不显示LOGO 
+	        },		    
+		    series: []
+		    /*
+		    {
+		        name: '',
+		        color:'#0072ff',
+		        data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+		        showInLegend: false//不显示图例
+		    }, {
+		        name: '',
+		        color:'#02c16e',
+		        data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8],
+		        showInLegend: false//不显示图例
+		    }*/
+		    
+     	}
+        // 图表 初始化 函数
+        
+        var series1 = {
+		        name: '',
+		        color:'#0072ff',
+		        data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+		        showInLegend: false//不显示图例        	
+        }
+        var series2 = {
+		        name: '',
+		        color:'#02c16e',
+		        data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8],
+		        showInLegend: false//不显示图例      	
+        }        
+        
+        options.series.push(series1,series2);
+        var chart = Highcharts.chart('mountNode1', options); 
+        var chart2 = Highcharts.chart('mountNode2', options);
+        
+      })
+    </script>
+    
+	</body>
+</html>

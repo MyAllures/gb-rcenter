@@ -9,7 +9,7 @@
         .btn-login{background-color: #1dc28e;border: 1px solid #1dc28e;}
         .btn-demo{background-color: #1279d9;border: 1px solid #1279d9;}
         .btn-register{background-color: #f0af01;border: 1px solid #f0af01;}
-        .mui-action-back{color: #666;}
+        .mui-action-back{color: #fff;}
     }
 }
 .mui-bar-nav{background: #f2205f;box-shadow: none;-webkit-box-shadow: none;}
@@ -96,18 +96,8 @@
 /* page promo */
 .promo{
     .p-t-slide-content{color: #333;
-        .swiper-slide{background: #fff;}
     }
 }
-    .btn-promo-sort{
-        span{background: #e3e2e2;border: 1px solid #e3e2e2;}
-        
-        &.swiper-slide-active{
-            span{    background: #f2205f;
-    border: 1px solid #f2205f;
-    color: #fff;}
-            }
-    }
 .promo-header{border-bottom: 1px solid #ccc;}  
 /* login and register page */
 .type-header{
@@ -217,3 +207,9 @@
 }
 
 .casino-list-bar .mui-icon-back{color: #fff;}
+// 加载页样式
+.load-body{    background:#f2205f;
+    .mui-progressbar.mui-progressbar-infinite:before {
+        background: #f2205f;
+    }
+}

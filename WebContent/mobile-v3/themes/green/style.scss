@@ -11,7 +11,7 @@
         .btn-demo{background-color: #00BCD4;
     border: 1px solid #00BCD4;}
         .btn-register{background-color: #f0af01;border: 1px solid #f0af01;}
-        .mui-action-back{color: #666;}
+        .mui-action-back{color: #fff;}
     }
 }
 .yjym{     color: #fff;
@@ -100,18 +100,8 @@
 /* page promo */
 .promo{
     .p-t-slide-content{color: #333;
-        .swiper-slide{background: #fff;}
     }
 }
-    .btn-promo-sort{
-        span{background: #e3e2e2;border: 1px solid #e3e2e2;}
-        
-        &.swiper-slide-active{
-            span{    background: #14805e;
-    border: 1px solid #14805e;
-    color: #fff;}
-            }
-    }
 .promo-header{border-bottom: 1px solid #ccc;}  
 /* login and register page */
 .type-header{
@@ -248,4 +238,14 @@
             }
         }            
     }
+}
+// 加载页样式
+.load-body{    background:#14805e;
+    .mui-progressbar.mui-progressbar-infinite:before {
+        background: #14805e;
+    }
+}
+.btn-promo-sort.swiper-slide-active span {
+    color: #14805e;
+    border-bottom: 2px solid #14805e;
 }

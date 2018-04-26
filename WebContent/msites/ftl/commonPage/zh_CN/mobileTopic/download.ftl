@@ -37,7 +37,7 @@
 支持移动支付</em></a></li>
                 <li data-menuanchor="android"><a href="#android"><span class="itemIcon android"></span>移动Android版<em>最优质安卓客户端，
 轻松投注</em></a></li>
-                <li data-menuanchor="ios"><a href="#ios"><span class="itemIcon ios"></span>移动iOS版<em>极致面生的iOS客户端，
+                <li data-menuanchor="ios"><a href="#ios"><span class="itemIcon ios"></span>移动iOS版<em>极致而生的iOS客户端，
 移动随行</em></a></li>
                 <li data-menuanchor="iosHelp"><a href="#iosHelp">iOS安装教程</a></li>
             </ul>
@@ -54,7 +54,7 @@
                         <h4>自动进行设备识别，您只需在移动设备打开网址即可访问</h4>
                         <h5>移动设备浏览器输入网址：</h5>
                         <h3 class="url-text"></h3>
-                        <h5>支持：iPhone 5 / 5s / 6 / 6s / 7 / iPad / iPad Air</h5>
+                        <h5>支持：iPhone 6 / 6s / 7 / 8 / iPhoneX / iPad / iPad Air</h5>
                         <h5>小米 / 魅族 / 三星 / 锤子 / 华为 / 中兴 / HTC / LG</h5>
                     </div>
                 </div>
@@ -73,7 +73,16 @@
                         <h1><#if data.siteInfo.siteName??>${data.siteInfo.siteName}</#if> 移动Android版</h1>
                         <h4>为您提供最优质Android客户端，轻松投注，快捷存取款</h4>
                         <h5>扫描二维码（请使用安卓手机扫码）</h5>
-                        <div class="img"><span id="android_qr_code"></span></div>
+                        <div class="img">
+                            <div class="qcode-wrap">
+                                <span id="android_qr_code"></span>
+                                <div class="txt">
+                                    <div class="txt1">For Android</div>
+                                    <div class="txt2">请登入下载</div>
+                                </div>
+                                <a href="/"><img class="qcode-blur" src="${data.configInfo.ftlRootPath}commonPage/zh_CN/mobileTopic/images/qcode-blur.png"></a>
+                            </div>
+                        </div>
                         <h5>支持：小米 / 魅族 / 三星 / 锤子 / 华为 / 中兴 / HTC / LG</h5>
                     </div>
                 </div>
@@ -88,8 +97,17 @@
                         <h1><#if data.siteInfo.siteName??>${data.siteInfo.siteName}</#if> 移动iOS版</h1>
                         <h4>为极致而生的iOS客户端，移动随行，轻松投注</h4>
                         <h5>扫描二维码</h5>
-                        <div class="img"><span id="ios_qr_code"></span></div>
-                        <h5>支持：iPhone 5 / 5s / 6 / 6s / 7 / iPad / iPad Air</h5>
+                        <div class="img">
+                            <div class="qcode-wrap">
+                                <span id="ios_qr_code"></span>
+                                <div class="txt">
+                                    <div class="txt1">For iOS</div>
+                                    <div class="txt2">请登入下载</div>
+                                </div>
+                                <a href="/"><img class="qcode-blur" src="${data.configInfo.ftlRootPath}commonPage/zh_CN/mobileTopic/images/qcode-blur.png"></a>
+                            </div>
+                        </div>
+                        <h5>支持：iPhone 6 / 6s / 7 / 8 / iPhoneX / iPad / iPad Air</h5>
                     </div>
                 </div>
                 <div class="right right7">
@@ -167,6 +185,19 @@
             }
         })
         $("#ios_qr_code").append("<img src="+ios_url+">");
+
+        // 判读是否登录
+        var isLogin = sessionStorage.is_login;
+        //后台设置是否登录后才能显示二维码
+        <#if data.loginShowQrCode?string("true","false") == 'true'>
+            if(isLogin=="true"){
+                $('.download-page').addClass("login");
+            }else{
+                $('.download-page').addClass("unlogin");
+            }
+        <#else>
+            $('.download-page').addClass("login");
+        </#if>
     });
     </script>
 </body>

@@ -37,27 +37,64 @@
             window.location.href = "/";
         });
     });
-    function validateCellPhone(obj) {
 
-        var sendPhoneIntervalSeconds = ${data.sendPhoneIntervalSeconds};
-        var $this = $(obj);
+    function validateCellPhone(obj) {
         var $phone = $('[name="phone.contactValue"]');
         var phone = $phone.val();
-        var cookie = getCookie(REGSTER_SEND_PHONE_TIME);
+        var cookie = getCookie("register_sms_verification_end_time");
         cookie = Number(cookie);
+        if(cookie>0){
+            cookie = cookie-new Date().getTime();
+        }
+
         if(!phone){
-            BootstrapDialog.alert({message:'请先输入手机号！',title:'提示信息'});
+            layer.open({
+                content:'请先输入手机号！',
+                title:'提示信息',
+                skin:'layui-layer-brand',
+                btn:["确定"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }else if($phone.parents(".form-group").hasClass("has-error")){
-            BootstrapDialog.alert({message:'请输入正确的手机号！',title:'提示信息'});
+            layer.open({
+                content:'请输入正确的手机号！',
+                title:'提示信息',
+                skin:'layui-layer-brand',
+                btn:["确定"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
-        }else if(cookie){
-            BootstrapDialog.alert({message:'发送间隔时间未到！',title:'提示信息'});
+        }else if(cookie>0){
+            layer.open({
+                content:'发送间隔时间未到！',
+                title:'提示信息',
+                skin:'layui-layer-brand',
+                btn:["确定"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                },
+                end:function () {
+                    checkPasswordSendPhoneTimer(obj);
+                }
+            });
             return;
         }
 
-        if(phone && !cookie){
-
+        if(phone && !cookie || cookie<0){
             $.ajax({
                 url:"/verificationCode/getPhoneVerificationCode.html",
                 type: "POST",
@@ -65,32 +102,41 @@
                 data:{"phone":phone},
                 success:function(data){
                     if(data){
-                        setCookie(REGSTER_SEND_PHONE_TIME,sendPhoneIntervalSeconds);
-                        phoneCheckCountBackTimer = setInterval(
-                                function(){
-                                    var sendPhoneIntervalSec = getCookie(REGSTER_SEND_PHONE_TIME);
-                                    sendPhoneIntervalSec = Number(sendPhoneIntervalSec);
-                                    sendPhoneIntervalSec = --sendPhoneIntervalSec;
-                                    if(!sendPhoneIntervalSec){
-                                        clearInterval(phoneCheckCountBackTimer);
-                                        $this.prop("disabled",false);
-                                        $this.text("重新发送")
-                                    }else{
-                                        $this.prop("disabled",true);
-                                        $this.text(sendPhoneIntervalSec+"秒后重新发送")
-                                    }
-                                    setCookie(REGSTER_SEND_PHONE_TIME,sendPhoneIntervalSec);
-                                },
-                                1000
-                        )
+                        var startTime = new Date().getTime();
+                        var endTime = Number(startTime)+(Number(${data.sendPhoneIntervalSeconds})*1000);
+                        setCookie("register_sms_verification_end_time",endTime);
+                        checkPasswordSendPhoneTimer(obj);
                     }
-                },
-                error:function(error){
-
                 }
             })
         }
+    }
 
+    var phoneCheckCountBackTimer;
+    function checkPasswordSendPhoneTimer(obj){
+        var $this = $(obj);
+        var getSmsEndTime = getCookie("register_sms_verification_end_time");
+        var sendPhoneIntervalSec = Number(getSmsEndTime);
+        sendPhoneIntervalSec = parseInt((sendPhoneIntervalSec-new Date().getTime())/1000);
+        setCookie(REGSTER_SEND_PHONE_TIME,sendPhoneIntervalSec);
+
+        phoneCheckCountBackTimer = setInterval(
+            function(){
+                var sendPhoneIntervalSec = getCookie(REGSTER_SEND_PHONE_TIME);
+                sendPhoneIntervalSec = Number(sendPhoneIntervalSec);
+                sendPhoneIntervalSec = --sendPhoneIntervalSec;
+                if(!sendPhoneIntervalSec || sendPhoneIntervalSec<0){
+                    clearInterval(phoneCheckCountBackTimer);
+                    $this.prop("disabled",false);
+                    $this.text("重新发送")
+                }else{
+                    $this.prop("disabled",true);
+                    $this.text(sendPhoneIntervalSec+"秒后重新发送")
+                }
+                setCookie(REGSTER_SEND_PHONE_TIME,sendPhoneIntervalSec);
+            },
+            1000
+        )
     }
 
     /**
@@ -160,7 +206,7 @@
 
     // Modal 模态框
     $("#login-agreement").on("click",function() {
-        BootstrapDialog.show({
+        /*BootstrapDialog.show({
             title:'会员注册协议',
             type: BootstrapDialog.TYPE_WARNING,
             closable: false,
@@ -186,7 +232,8 @@
             data: {
                 'pageToLoad': '/commonPage/modal/system-agreement.html'
             }
-        });
+        });*/
+        layerDialogRegister('<div class="register-content-wrap" style="overflow: hidden;outline: none;height:  100%;padding-right:  8px;margin-right: -8px;"><div class="col-md-12"><#if data.playerValidateRegisterMap.regProtocol??> ${data.playerValidateRegisterMap.regProtocol.value?replace('\n','')?replace('\r','')}</#if></div><div class="after"></div></div>','会员注册协议','layui-layer-brand',['640px','582px'],false,false);
     });
 
     $('[name=birthdayMon],[name=birthdayYear]').on("change",function(){
@@ -386,13 +433,49 @@
         var cookie = getCookie(REGSTER_SEND_EMAIL_TIME);
         cookie = Number(cookie);
         if(!email){
-            BootstrapDialog.alert({message:'请先输入邮箱！',title:'提示信息'});
+            /*BootstrapDialog.alert({message:'请先输入邮箱！',title:'提示信息'});*/
+            layer.open({
+                content:'请先输入邮箱！',
+                title:'提示信息',
+                skin:'layui-layer-brand',
+                btn:["确定"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }else if($email.parents(".form-group").hasClass("has-error")){
-            BootstrapDialog.alert({message:'请输入正确的邮箱！',title:'提示信息'});
+            /*BootstrapDialog.alert({message:'请输入正确的邮箱！',title:'提示信息'});*/
+            layer.open({
+                content:'请输入正确的邮箱！',
+                title:'提示信息',
+                skin:'layui-layer-brand',
+                btn:["确定"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }else if(cookie){
-            BootstrapDialog.alert({message:'发送间隔时间未到！',title:'提示信息'});
+            /*BootstrapDialog.alert({message:'发送间隔时间未到！',title:'提示信息'});*/
+            layer.open({
+                content:'发送间隔时间未到',
+                title:'提示信息',
+                skin:'layui-layer-brand',
+                btn:["确定"],
+                success: function(layer){
+                    // 重写关闭按钮
+                    $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                    // 提示框类型
+                    $(layer).addClass("normal-dialog");
+                }
+            });
             return;
         }
 

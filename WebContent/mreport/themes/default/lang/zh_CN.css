@@ -1,0 +1,20 @@
+/*
+ * 简体中文
+ * */
+/*
+ * 
+ * */
+@media (max-width:1366px){
+/*.top{position:fixed;overflow:hidden;top:0;z-index:1002;}*/
+.top .top-account-menu{top:15px;}
+.top-navigation .navbar{top:0px;}
+#page-wrapper{margin:0 0 56px 166px;}
+.navbar-default.navbar-static-side{top:63px;}
+}
+@media (max-width:768px){
+#page-wrapper {
+    position: inherit;
+    margin: 0 0 0 0px;
+    min-height: 1000px;
+}
+}

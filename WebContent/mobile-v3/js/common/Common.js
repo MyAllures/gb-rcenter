@@ -179,7 +179,13 @@ function muiAjaxError() {
     mui.ajaxSettings.complete = function (error, type, xhr, settings) {
         var status = error.getResponseHeader("headerStatus") || error.status;
         if (status == 600) {//Session过期 跳转登录页面
-            goToUrl(root + "/login/commonLogin.html");
+            var targetUrl = window.location.href;
+            var index = targetUrl.indexOf("&v=");
+            if (index <= 0) {
+                index = targetUrl.indexOf("?v=");
+            }
+            targetUrl = targetUrl.substr(0, index);
+            login(targetUrl);
         } else if (status == 606) {// 踢出
             goToUrl(root + "/errors/" + status + ".html");
         } else if (status == 608) {
@@ -235,7 +241,8 @@ function muiAjax(options) {
         success: options.success,
         error: options.error,
         complete: options.complete,
-        beforeSend: options.beforeSend
+        beforeSend: options.beforeSend,
+        async:options.async
     };
     mui.ajax(options.url, settings);
 }
@@ -310,6 +317,7 @@ function goToUrl(url, isExternalLink, targetUrl) {
         return;
     } else if (url.indexOf(root + "/mainIndex.html") > 0) { //首页
         goToHome(url);
+        return;
     }
     openWindow(url);
 }
@@ -380,6 +388,11 @@ function doEvent(obj, options) {
     } else if (opType == 'href') {
         goToUrl(options.target);
         $target.unlock();
+    } else if (opType == 'openWindow') { //新打开弹窗页面
+        var win = window.open(options.target);
+        if (!win) {
+            window.location.href = options.target;
+        }
     }
 }
 
@@ -467,12 +480,12 @@ function showConfirmMsg(options, obj) {
         if (e.index == 0) {
             var func = options.func;
             if (func) {
-                applyFunction(func, options, obj);
+                return applyFunction(func, options, obj);
             }
         } else if (e.index == 1) {
             var func = options.cancelFunc;
             if (func) {
-                applyFunction(func, options, obj);
+                return applyFunction(func, options, obj);
             }
         }
     })
@@ -503,7 +516,7 @@ function login(targetUrl) {
         var url = '/login/commonLogin.html?v=' + rcVersion;
         if (targetUrl && targetUrl != '/') {
             //登录成功后跳转页面
-            sessionStorage.loginTargetUrl = targetUrl;
+            sessionStorage.setItem("loginTargetUrl", targetUrl);
         }
         openWindow(url);
     }
@@ -537,7 +550,7 @@ function deposit(url) {
 function logout(e, options) {
     sessionStorage.is_login = false;
     isLogin = false;
-    sessionStorage.setItem("isLogin", isLogin);
+    sessionStorage.setItem("isLogin", false);
     goToUrl("/passport/logout.html");
 }
 

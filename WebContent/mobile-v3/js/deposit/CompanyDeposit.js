@@ -177,6 +177,7 @@ function companyContinueDeposit(depositChannel){
         if (pop == "true") {
             $("#activityId").val($("input[type=radio]:checked").val());
             $("#successMasker").attr("style", "display:block;");
+            muiScrollY(".gb-withdraw-box .mui-scroll-wrapper");
         } else if (options.statusNum) {
             var rechargeAmount = $("input[name='result.rechargeAmount']").val();
             if(isNative){

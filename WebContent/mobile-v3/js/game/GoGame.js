@@ -5,6 +5,30 @@ var gameCode;
 var status;
 var isAutoPay;
 var gameId;
+//sessionStorage存放api相关对象 用来登录后直接进入游戏
+var SESSION_API_OBJ = "api_object";
+
+//初始化
+$(function () {
+    var apiObj = sessionStorage.getItem(SESSION_API_OBJ);
+    //从游戏跳转未登录直接进入游戏
+    if (apiObj && apiObj != 'undefined') {
+        sessionStorage.removeItem(SESSION_API_OBJ);
+        var data = JSON.parse(apiObj);
+        if (data) {
+            apiId = data.apiId;
+            apiTypeId = data.apiTypeId;
+            gameCode = data.gameCode;
+            var targetName = data.targetName;
+            if (targetName && apiTypeSlideIndicators) {
+                var target = $("a[name='" + targetName + "']")[0];
+                var index = $(target).attr("data-swiper-slide-index");
+                apiTypeSlideIndicators.slideTo(index);
+            }
+            readGame();
+        }
+    }
+});
 
 /*点击游戏（电子类、彩票类）进入*/
 function goGame(obj, options) {
@@ -27,9 +51,24 @@ function goGame(obj, options) {
             };
             showConfirmMsg(options, obj);
         } else {
-            signIn(obj);
+            var postData = getApiLoginPostData(apiTypeId, apiId, gameCode);
+            signIn(postData);
         }
     }
+}
+
+function getApiLoginPostData(apiTypeId, apiId, gameCode) {
+    var postData = {};
+    if (apiId) {
+        postData.apiId = apiId;
+    }
+    if (gameCode) {
+        postData.gameCode = gameCode;
+    }
+    if (apiTypeId) {
+        postData.apiTypeId = apiTypeId;
+    }
+    return postData;
 }
 
 function readGame() {
@@ -37,13 +76,6 @@ function readGame() {
         autoLoginAndTransfer();
     } else {
         apiLogin();
-    }
-    if (apiId == 6 && os != 'android' && os != 'app_ios') {
-        obj.newWindow = window.open("about:blank", '_blank');
-        if (obj.newWindow) {
-            obj.newWindow.document.write("<div style='text-align:center;'><img style='margin-top:" +
-                document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/022b.gif'></div>");
-        }
     }
 }
 
@@ -54,10 +86,6 @@ function goApiGame(obj, options) {
     status = options.dataStatus;
     gameCode = options.dataGameCode;
     isAutoPay = sessionStorage.getItem("isAutoPay");
-    var obj = {};
-    obj.apiId = apiId;
-    obj.apiTypeId = apiTypeId;
-    obj.gameCode = gameCode;
     if (status == "maintain") {
         showWarningMsg(window.top.message.game_auto['提示'], window.top.message.game_auto['游戏维护中']);
     } else {
@@ -65,15 +93,15 @@ function goApiGame(obj, options) {
             //判断ｂｓｇ就直接到游戏列表，不到转账页面
             if (apiId == '20') {
                 goToUrl("/game/apiGames.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
-            } else if ((isAutoPay == 'true' && apiTypeId != "2")) {
+            } else if ((isAutoPay == 'true')) {
                 //判断是否免转，如果免转,则直接登陆游戏，不跳到游戏中转页面
                 autoLoginAndTransfer();
             } else {
                 goToUrl(root + "/api/detail.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
             }
-
         } else {
-            login("/");
+            var postData = getApiLoginPostData(apiId, apiTypeId, gameCode);
+            signIn(postData);
         }
     }
 }
@@ -85,63 +113,22 @@ function apiLogin(obj) {
         apiTypeId = obj.apiTypeId;
         gameCode = obj.gameCode;
     }
-    var postData = {};
-    if (apiId) {
-        postData.apiId = apiId;
-    }
-    if (gameId && gameId != 0) {
-        postData.gameId = gameId;
-    }
-    if (gameCode) {
-        postData.gameCode = gameCode;
-    }
-    if (apiTypeId) {
-        postData.apiTypeId = apiTypeId;
-    }
-
+    var postData = getApiLoginPostData(apiTypeId, apiId, gameCode);
     var options = {
         url: root + "/api/login.html",
         type: "POST",
         dataType: "json",
         data: postData,
         success: function (data) {
-            hideLoading();
-            if (data.loginSuccess) {
-                var result = data.gameApiResult;
-                if (apiId == 6) {
-                    if (os == 'android' || os == 'app_ios') {
-                        gotoGame(result.defaultLink, apiId);
-                    } else {
-                        goToUrl(result.defaultLink);
-                    }
-                } else {
-                    if (result.defaultLink) {
-                        gotoGameUrl(result.defaultLink, apiId);
-                    } else {
-                        gotoGameUrl(result.links[apiTypeId], apiId)
-                    }
-                }
-            } else {
-                if (!data.loginSuccess && ( data.errMsg == '' || data.errMsg == null)) {
-                    if (data.maintain) {
-                        showWarningMsg(window.top.message.game_auto['提示'], window.top.message.game_auto['游戏维护中']);
-                    } else {
-                        toast(window.top.message.game_auto['无法登录']);
-                    }
-                } else {
-                    toast(data.errMsg);
-                }
-                //reload();
-            }
+            gameLogin(data, apiId);
         },
         error: function (error) {
             if (error.status === 600) {
-                signIn(obj);
+                signIn(postData);
             } else if (error.status === 606) {
                 goToUrl(root + '/errors/606.html');
             } else {
                 toast('暂时无法登录游戏！');
-                //reload();
             }
         },
         complete: function () {
@@ -152,7 +139,7 @@ function apiLogin(obj) {
 }
 
 //捕鱼和棋牌游戏登录
-function fishGameLogin(obj,options){
+function fishGameLogin(obj, options) {
     apiId = options.dataApiId;
     apiTypeId = options.dataApiTypeId;
     status = options.dataStatus;
@@ -171,55 +158,60 @@ function fishGameLogin(obj,options){
     if (apiTypeId) {
         postData.apiTypeId = apiTypeId;
     }
-    var options = {
-        url: root + "/api/login.html",
-        type: "POST",
-        dataType: "json",
-        data: postData,
-        success: function (data) {
-            hideLoading();
-            if (data.loginSuccess) {
-                var result = data.gameApiResult;
-                if (apiId == 6) {
-                    if (os == 'android' || os == 'app_ios') {
-                        gotoGame(result.defaultLink, apiId);
-                    } else {
-                        goToUrl(result.defaultLink);
-                    }
+    isAutoPay = sessionStorage.getItem("isAutoPay");
+    if ((isAutoPay == 'true')) {
+        //判断是否免转，如果免转,则直接登陆游戏，不跳到游戏中转页面
+        autoLoginAndTransfer();
+    } else {
+        var options = {
+            url: root + "/api/login.html",
+            type: "POST",
+            dataType: "json",
+            data: postData,
+            success: function (data) {
+                gameLogin(data, apiId);
+            },
+            error: function (error) {
+                if (error.status === 600) {
+                    signIn(postData);
+                } else if (error.status === 606) {
+                    goToUrl(root + '/errors/606.html');
                 } else {
-                    if (result.defaultLink) {
-                        gotoGameUrl(result.defaultLink, apiId);
-                    } else {
-                        gotoGameUrl(result.links[apiTypeId], apiId)
-                    }
+                    toast('暂时无法登录游戏！');
                 }
-            } else {
-                if (!data.loginSuccess && ( data.errMsg == '' || data.errMsg == null)) {
-                    if (data.maintain) {
-                        showWarningMsg(window.top.message.game_auto['提示'], window.top.message.game_auto['游戏维护中']);
-                    } else {
-                        toast(window.top.message.game_auto['无法登录']);
-                    }
-                } else {
-                    toast(data.errMsg);
-                }
-                //reload();
+            },
+            complete: function () {
+                hideLoading();
             }
-        },
-        error: function (error) {
-            if (error.status === 600) {
-                signIn(obj);
-            } else if (error.status === 606) {
-                goToUrl(root + '/errors/606.html');
-            } else {
-                toast('暂时无法登录游戏！');
-            }
-        },
-        complete: function () {
-            hideLoading();
+        };
+        muiAjax(options);
+    }
+}
+
+/**
+ * 请求成功后进入游戏
+ * @param data
+ */
+function gameLogin(data, apiId) {
+    hideLoading();
+    if (data.loginSuccess) {
+        var result = data.gameApiResult;
+        if (result.defaultLink) {
+            gotoGameUrl(result.defaultLink, apiId);
+        } else {
+            gotoGameUrl(result.links[apiTypeId], apiId)
         }
-    };
-    muiAjax(options);
+    } else {
+        if (!data.loginSuccess && ( data.errMsg == '' || data.errMsg == null)) {
+            if (data.maintain) {
+                showWarningMsg(window.top.message.game_auto['提示'], window.top.message.game_auto['游戏维护中']);
+            } else {
+                toast(window.top.message.game_auto['无法登录']);
+            }
+        } else {
+            toast(data.errMsg);
+        }
+    }
 }
 
 /**
@@ -248,19 +240,10 @@ function autoLoginAndTransfer() {
                 if (data) {
                     if (data.isSuccess == true) {
                         var result = data.gameApiResult;
-                        if (apiId == 6) {
-                            if (os == 'android' || os == 'app_ios') {
-                                gotoGameUrl(result.defaultLink, apiId);
-                            } else {
-                                //newWindow.location.href = result.defaultLink;
-                                goToUrl(result.defaultLink);
-                            }
+                        if (result.defaultLink) {
+                            gotoGameUrl(result.defaultLink, apiId);
                         } else {
-                            if (result.defaultLink) {
-                                gotoGameUrl(result.defaultLink, apiId);
-                            } else {
-                                gotoGameUrl(result.links[apiTypeId], apiId);
-                            }
+                            gotoGameUrl(result.links[apiTypeId], apiId);
                         }
                     } else if (data.msg) {
                         showWarningMsg(window.top.message.game_auto['提示'], data.msg);
@@ -271,7 +254,7 @@ function autoLoginAndTransfer() {
             },
             error: function (error) {
                 if (error.status === 600) {
-                    signIn();
+                    signIn(postData);
                 } else if (error.status === 606) {
                     goToUrl(root + '/errors/606.html');
                 } else {
@@ -286,27 +269,24 @@ function autoLoginAndTransfer() {
     }
 }
 
-function signIn(obj) {
-    // 存储API登录信息，以便登录成功后进入游戏
-    /*if (isLocalStorageSupport()) {
-     //如果为空不组成数值，以防解析json报错(gameId与gamecode可能为空)
-     var objKey = '{"status":"' + status + '",';
-     if (gameId) {
-     objKey = objKey + '"gameId":' + gameId + ',';
-     }
-     if (gameCode) {
-     objKey = objKey + '"gameCode":"' + gameCode + '",';
-     }
-     objKey = objKey + '"apiId":' + apiId + ', "apiTypeId":' + apiTypeId + '}';
-     localStorage.setItem('api_object', objKey);
-     }*/
-    if (os == 'ios') {
-        goToUrl('/login/commonLogin.html');
-    } else if (os == 'app_android') {
-        window.gamebox.gotoLogin('/index.html');
-    } else {
-        goToUrl('/login/commonLogin.html');
+function signIn(data) {
+    if (isNative) {
+        nativeLogin();
+        return;
     }
+    // 存储API登录信息，以便登录成功后进入游戏
+    if (data) {
+        data.targetName = $("div.nav-slide-indicators a.swiper-slide-active").attr("name");
+        sessionStorage.setItem(SESSION_API_OBJ, JSON.stringify(data));
+    }
+    //用来记录跳转页面
+    var targetUrl = window.location.href;
+    var index = targetUrl.indexOf("&v=");
+    if (index <= 0) {
+        index = targetUrl.indexOf("?v=");
+    }
+    targetUrl = targetUrl.substr(0, index);
+    login(targetUrl);
 }
 
 /** 是否支持本地存储（Safari非无痕模式） */
@@ -331,26 +311,7 @@ function gotoGameUrl(url, apiId) {
     if (url.indexOf('http') === -1) {
         url = window.location.origin + url;
     }
-    if (os === 'app_ios') {
-        if (apiId == 22) {
-            url = url + "?ad=" + apiId;
-            goToUrl(url);
-        } else {
-            gotoGame(url, apiId);
-        }
-    } else if (os === 'app_android') {
-        if (apiId == 22 && url.indexOf('/mainIndex.') == -1 && url.indexOf('/lottery/') == -1) {
-            url = url + "mainIndex.html?ad=22";
-        } else {
-            if (url.indexOf('?') > 0) {
-                url = url + "&ad=" + apiId
-            } else {
-                url = url + "?ad=" + apiId
-            }
-        }
-        //window.gamebox.gotoGame(url);
-        window.location.href = url;
-    } else {
-        goToUrl(url);
-    }
+    //goToUrl(url);
+    //游戏中带v版本的游戏会找不到地址
+    openWindow(url);
 }

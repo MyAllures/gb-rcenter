@@ -302,7 +302,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
         confirmCheckPass: function (e, option) {
             var btnOption = {};
             btnOption.target = root + "/fund/deposit/check/checkSuccessPop.html?search.id=" + option.deposit_id;
-            btnOption.callback = "query";
+            btnOption.callback = "checkCallback";
             btnOption.text = option.text;
             window.top.topPage.doDialog(e, btnOption);
         },
@@ -310,7 +310,7 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
         checkFailure: function (e, option) {
             var btnOption = {};
             btnOption.target = root + "/fund/deposit/check/checkFailurePop.html?search.id=" + option.deposit_id;
-            btnOption.callback = "query";
+            btnOption.callback = "checkCallback";
             btnOption.text = option.text;
             window.top.topPage.doDialog(e, btnOption);
         },
@@ -344,6 +344,11 @@ define(['common/BaseListPage', 'gb/share/ListFiltersPage','jsrender'], function 
             var target = $(e.currentTarget).parent().parent().parent().parent().next();
             $(target).attr("name", e.key);
             $(target).attr("placeholder", e.key == 'search.username'?"多个账号，用半角逗号隔开":e.value);
+        },
+        checkCallback:function (e,option) {
+            if (e.returnValue){
+                this.query(e, option);
+            }
         }
     });
 });
