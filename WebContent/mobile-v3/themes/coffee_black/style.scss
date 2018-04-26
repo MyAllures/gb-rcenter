@@ -98,18 +98,8 @@
 /* page promo */
 .promo{
     .p-t-slide-content{color: #333;
-        .swiper-slide{background: #fff;}
     }
 }
-    .btn-promo-sort{
-        span{background: #e3e2e2;border: 1px solid #e3e2e2;}
-        
-        &.swiper-slide-active{
-            span{     background: #7b340d;
-    border: 1px solid #7b340d;
-    color: #fff;}
-            }
-    }
 .promo-header{border-bottom: 1px solid #ccc;}    
 /* login and register page */
 .type-header{
@@ -269,4 +259,8 @@
     .mui-progressbar.mui-progressbar-infinite:before {
         background: #7b340d;
     }
+}
+.btn-promo-sort.swiper-slide-active span {
+    color: #7b340d;
+    border-bottom: 2px solid #7b340d;
 }

@@ -161,7 +161,7 @@
     //参加优惠点击事件
     function joinPromo(aplyObj, isRefresh) {
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
-        $(aplyObj).attr("onclick","");
+        /*$(aplyObj).attr("onclick","");*/
         /*if(ctime > 0){
             return false;
         }*/
