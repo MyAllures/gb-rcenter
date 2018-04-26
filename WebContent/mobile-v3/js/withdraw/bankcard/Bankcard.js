@@ -68,12 +68,15 @@ function submitBankCard() {
             if (data.state) {
                 toast(data.msg);
                 setTimeout(function () {
-
-                    mui.back();
-
+                    if (data.action == 'withdraw') {
+                        var _href = root + '/wallet/withdraw/index.html';
+                        goToUrl(_href);
+                    } else {
+                        goToLastPage();
+                    }
                 }, 1000);
             } else {
-                _this.toast(data.msg);
+                toast(data.msg);
                 $(document).find("input[name='gb.token']").val(data.token);
             }
         },

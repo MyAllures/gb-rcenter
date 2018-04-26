@@ -179,7 +179,13 @@ function muiAjaxError() {
     mui.ajaxSettings.complete = function (error, type, xhr, settings) {
         var status = error.getResponseHeader("headerStatus") || error.status;
         if (status == 600) {//Session过期 跳转登录页面
-            goToUrl(root + "/login/commonLogin.html");
+            var targetUrl = window.location.href;
+            var index = targetUrl.indexOf("&v=");
+            if (index <= 0) {
+                index = targetUrl.indexOf("?v=");
+            }
+            targetUrl = targetUrl.substr(0, index);
+            login(targetUrl);
         } else if (status == 606) {// 踢出
             goToUrl(root + "/errors/" + status + ".html");
         } else if (status == 608) {
@@ -311,6 +317,7 @@ function goToUrl(url, isExternalLink, targetUrl) {
         return;
     } else if (url.indexOf(root + "/mainIndex.html") > 0) { //首页
         goToHome(url);
+        return;
     }
     openWindow(url);
 }
@@ -509,7 +516,7 @@ function login(targetUrl) {
         var url = '/login/commonLogin.html?v=' + rcVersion;
         if (targetUrl && targetUrl != '/') {
             //登录成功后跳转页面
-            sessionStorage.loginTargetUrl = targetUrl;
+            sessionStorage.setItem("loginTargetUrl", targetUrl);
         }
         openWindow(url);
     }
@@ -543,7 +550,7 @@ function deposit(url) {
 function logout(e, options) {
     sessionStorage.is_login = false;
     isLogin = false;
-    sessionStorage.setItem("isLogin", isLogin);
+    sessionStorage.setItem("isLogin", false);
     goToUrl("/passport/logout.html");
 }
 

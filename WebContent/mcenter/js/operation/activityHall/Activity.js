@@ -27,10 +27,10 @@ define(['common/BaseListPage', 'bootstrapswitch'], function (BaseListPage,bootst
                 } else {
                     _msg=window.top.message.operation_auto['关闭后将不在玩家中心展示'];
                 }
-                if(code=='money'){
+                if(code!='deposit_send'){//活动大厅disco新的需求,只有存就送才有多个,其他都只一个
                     if(oldDisplay == "false"){
                         if (status) {
-                            _msgTitle="<h3 class='al-center'>".concat(window.top.message.operation_auto['确认继续开启吗']).concat("</h3><div class='al-center'>").concat(window.top.message.operation['activityMoneySaveDisplayTips']).concat("</div>");
+                            _msgTitle="<h3 class='al-center'>".concat(window.top.message.operation_auto['确认继续开启吗']).concat("</h3><div class='al-center'>").concat(window.top.message.operation['activitySaveDisplayTips']).concat("</div>");
                         }
                     }else{
                         _msgTitle="<h3 class='al-center'>".concat(window.top.message.operation_auto['确认继续关闭吗']).concat("</h3><div class='al-center'>").concat(_msg).concat("</div>");

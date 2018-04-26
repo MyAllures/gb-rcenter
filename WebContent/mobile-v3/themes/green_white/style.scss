@@ -95,18 +95,8 @@
 /* page promo */
 .promo{
     .p-t-slide-content{color: #333;
-        .swiper-slide{background: #fff;}
     }
 }
-    .btn-promo-sort{
-        span{background: #e3e2e2;border: 1px solid #e3e2e2;}
-        
-        &.swiper-slide-active{
-            span{    background: #14805e;
-    border: 1px solid #14805e;
-    color: #fff;}
-            }
-    }
 .promo-header{border-bottom: 1px solid #ccc;}  
 /* login and register page */
 .type-header{

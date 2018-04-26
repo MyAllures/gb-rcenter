@@ -10,14 +10,14 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         init: function () {
             this._super();
 
-            this.balanceGaugeChart();
-            this.balanceColumnChart();
+            this.balanceGaugeChart('D');
+            this.balanceColumnChart('D');
 
-            this.effectiveGaugeChart();
-            this.effectiveColumnChart();
+            this.effectiveGaugeChart('D');
+            this.effectiveColumnChart('D');
 
-            this.profitLossGaugeChart();
-            this.profitLossColumnChart();
+            this.profitLossGaugeChart('D');
+            this.profitLossColumnChart('D');
 
             this.activeUser();
 
@@ -34,6 +34,49 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         bindEvent:function(){
             this._super();
             var _this = this;
+
+            /**
+             * 存取差额周期切换事件
+             */
+            $(".balanceBtn .btn").click(function() {
+                $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
+                var rangeType = $(this).attr('value');
+                if($(_this.getKey("#operationSummaryData", rangeType)).html()==="") {
+                    _this.asnycLoadOperationData('balance', rangeType);
+                } else {
+                    _this.balanceGaugeChart(rangeType);
+                    _this.balanceColumnChart(rangeType);
+                }
+            });
+
+            /**
+             * 有效投注周期切换事件
+             */
+            $(".effectiveBtn .btn").click(function() {
+                $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
+                var rangeType = $(this).attr('value');
+                if($(_this.getKey("#operationSummaryData", rangeType)).html()==="") {
+                    _this.asnycLoadOperationData('effective', rangeType);
+                } else {
+                    _this.effectiveGaugeChart(rangeType);
+                    _this.effectiveColumnChart(rangeType);
+                }
+            });
+
+            /**
+             * 损益周期切换事件
+             */
+            $(".profitLossBtn .btn").click(function() {
+                $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
+                var rangeType = $(this).attr('value');
+                if($(_this.getKey("#operationSummaryData", rangeType)).html()==="") {
+                    _this.asnycLoadOperationData('profitLoss', rangeType);
+                } else {
+                    _this.profitLossGaugeChart(rangeType);
+                    _this.profitLossColumnChart(rangeType);
+                }
+            });
+
             //活跃用户和登录次数切换事件
             $("._addPrimary.active-user .btn").click(function(){
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
@@ -90,65 +133,93 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         },
 
         /**
+         * 获取对应周期图表数据的Key
+         * @param prefix
+         * @param rangeType
+         * @returns {string}
+         */
+        getKey: function(prefix, rangeType) {
+            if ('M'===rangeType) {
+                return prefix + 'OfMonth';
+            } else if('W'===rangeType) {
+                return prefix + 'OfWeek';
+            } else {
+                return prefix + 'OfDay';
+            }
+        },
+
+        /**
          * 最近两个周期的存取差额对比
          */
-        balanceGaugeChart: function() {
-            var jsonStr = $("#balanceGaugeChartData").html();
+        balanceGaugeChart: function(rangeType) {
+            var dataKey = this.getKey("#balanceGaugeChartData", rangeType);
+            var jsonStr = $(dataKey).html();
+            if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawGaugeChart('c1', data);
+            this.drawGaugeChart('c1', data, '#FF6363', '#6363FF');
         },
 
         /**
          * 存取差额分组柱状图展示
          * 展示最近七个周期的存取差额
          */
-        balanceColumnChart: function() {
-            var jsonStr = $("#operationSummaryData").html();
+        balanceColumnChart: function(rangeType) {
+            var dataKey = this.getKey("#operationSummaryData", rangeType);
+            var jsonStr = $(dataKey).html();
+            if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z1', data, 'balanceAmount', 'staticDay*balanceAmount', 300);
+            this.drawBasicColumnChart('z1', data, 'balanceAmount', 'staticDay*balanceAmount',　'存取差额', 300);
         },
 
         /**
          * 最近两个周期的有效投注额对比
          */
-        effectiveGaugeChart: function() {
-            var jsonStr = $("#effectiveGaugeChartData").html();
+        effectiveGaugeChart: function(rangeType) {
+            var dataKey = this.getKey("#effectiveGaugeChartData", rangeType);
+            var jsonStr = $(dataKey).html();
+            if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawGaugeChart('c2', data);
+            this.drawGaugeChart('c2', data, '#FF6363', '#6363FF');
         },
 
         /**
          * 最近多个周期的有效投注额
          */
-        effectiveColumnChart: function() {
-            var jsonStr = $("#operationSummaryData").html();
+        effectiveColumnChart: function(rangeType) {
+            var dataKey = this.getKey("#operationSummaryData", rangeType);
+            var jsonStr = $(dataKey).html();
+            if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z2', data, 'effectiveTransactionAll', 'staticDay*effectiveTransactionAll', 300);
+            this.drawBasicColumnChart('z2', data, 'effectiveTransactionAll', 'staticDay*effectiveTransactionAll',　'有效投注', 300);
         },
 
         /**
          * 最近两个周期损益对比
          */
-        profitLossGaugeChart: function() {
-            var jsonStr = $("#profitLossGaugeChartData").html();
+        profitLossGaugeChart: function(rangeType) {
+            var dataKey = this.getKey("#profitLossGaugeChartData", rangeType);
+            var jsonStr = $(dataKey).html();
+            if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawGaugeChart('c3', data);
+            this.drawGaugeChart('c3', data, '#FF6363', '#6363FF');
         },
 
         /**
          * 最近多个周期的损益
          */
-        profitLossColumnChart: function() {
-            var jsonStr = $("#operationSummaryData").html();
+        profitLossColumnChart: function(rangeType) {
+            var dataKey = this.getKey("#operationSummaryData", rangeType);
+            var jsonStr = $(dataKey).html();
+            if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z3', data, 'transactionProfitLoss', 'staticDay*transactionProfitLoss', 300);
+            this.drawBasicColumnChart('z3', data, 'transactionProfitLoss', 'staticDay*transactionProfitLoss', '损益', 300);
         },
 
         /**
          * 总登录次数
          */
-        loginCount:function(){
-            var jsonStr = $("#operationSummaryData").html();
+        loginCount:function()　{
+            var jsonStr = $("#operationSummaryDataOfDay").html();
             var operationSummarys = $.parseJSON(jsonStr);
             if(operationSummarys == null || operationSummarys.length < 1) return ;
             var array = [];
@@ -170,7 +241,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * 活跃用户数
          */
         activeUser:function(){
-            var jsonStr = $("#operationSummaryData").html();
+            var jsonStr = $("#operationSummaryDataOfDay").html();
             var operationSummarys = $.parseJSON(jsonStr);
             if(operationSummarys == null || operationSummarys.length < 1) return ;
             var array = [];
@@ -193,7 +264,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * 安装量和卸载量 折线图
          */
         installAndUninstall:function(isinstall){
-            var jsonStr = $("#operationSummaryData").html();
+            var jsonStr = $("#operationSummaryDataOfDay").html();
             var operationSummarys = $.parseJSON(jsonStr);
             if(operationSummarys == null || operationSummarys.length < 1) return ;
             var array = [];
@@ -219,7 +290,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * 新增玩家和新增存款玩家 折线图
          */
         playerTrend:function(newPlayerType){
-            var jsonStr = $("#operationSummaryData").html();
+            var jsonStr = $("#operationSummaryDataOfDay").html();
             var operationSummarys = $.parseJSON(jsonStr);
             if(operationSummarys == null || operationSummarys.length < 1) return ;
             var array = [];
@@ -242,30 +313,18 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             this.foldlineDiagram('p6', array);
         },
 
-        rakebackTrend:function(rakebackType){
-            var jsonStr = $("#operationSummaryData").html();
-            if(!jsonStr) return ;
-            const resultData = $.parseJSON(jsonStr);
-            var array = [];
-            for(var i = 0;i < resultData.length ; i ++ ){
-                var result = resultData[i];
-                var data = {
-                    'staticDay':result.staticDay
-                };
-                if('rakeback-men' == rakebackType){
-                    data['反水人数'] = result.rakebackPlayer;
-                }else if('rakeback-cash' == rakebackType){
-                    // jsonStr = $("#rakebackCash").html();
-                    data['反水金额'] = result.rakebackAmount;
-                }
-                array.push(data);
-            }
-
-            if('rakeback-men' == rakebackType){
-                this.drawBasicColumnChart('b7', array, '反水人数', 'staticDay*反水人数',379);
-            }else if('rakeback-cash' == rakebackType){
-                // jsonStr = $("#rakebackCash").html();
-                this.drawBasicColumnChart('b7', array, '反水金额', 'staticDay*反水金额',356);
+        /**
+         * 返水走势
+         * @param rakebackType
+         */
+        rakebackTrend:function(rakebackType) {
+            var jsonStr = $("#operationSummaryDataOfDay").html();
+            if(!jsonStr) return;
+            const data = $.parseJSON(jsonStr);
+            if('rakeback-men' == rakebackType) {
+                this.drawBasicColumnChart('b7', data, 'rakebackPlayer', 'staticDay*rakebackPlayer', '返水人数', 379);
+            } else if('rakeback-cash' == rakebackType) {
+                this.drawBasicColumnChart('b7', data, 'rakebackAmount', 'staticDay*rakebackAmount', '返水金额', 356);
             }
         },
 
@@ -340,14 +399,14 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 container: containerName,
                 height: 400,
                 width:width,
-                padding: [20, 5, 65, 50]
+                padding: [20, 12, 95, 50]
             })
                 :
             new G2.Chart({
                 container: containerName,
                 forceFit: true,
                 height: 300,
-                padding: [20, 5, 65, 50]
+                padding: [20, 12, 95, 50]
             });
             chart.source(dv);
             chart.interval().position('time*sum').color('name').adjust([{
@@ -360,18 +419,24 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         /**
          * 基础柱状图
          */
-        drawBasicColumnChart: function(containerName, data, scale, position, height) {
+        drawBasicColumnChart: function(containerName, data, scale, position, tips, height) {
+            //清空原有内容
+            $("#"+containerName).empty();
+
             const chart =  new G2.Chart({
                 container: containerName,
                 forceFit: true,
                 height: height,
-                padding: [20, 5, 35, 50]
+                padding: [20, 35, 45, 50]
             });
             chart.source(data);
-            chart.scale(scale, {
-                // tickInterval: 2000
-            });
-            chart.interval().position(position);
+            chart.interval().position(position)
+                .tooltip(scale, function(val) {
+                    return {
+                        name: tips,
+                        value: val
+                    };
+                });
             chart.render();
         },
 
@@ -387,7 +452,8 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 container: containerName,
                 // forceFit: true,
                 height: 400,
-                width:476
+                width:476,
+                padding: [20, 26, 105, 50]
             });
             const dv = ds.createView().source(data);
             dv.transform({
@@ -400,6 +466,13 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 label: {
                     formatter: function(val) {
                         return val;
+                    }
+                }
+            });
+            chart.axis('time', {
+                label: {
+                    formatter: function(time) {
+                        return time + ' ';
                     }
                 }
             });
@@ -427,7 +500,10 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * @param containerName
          * @param data
          */
-        drawGaugeChart: function(containerName, data) {
+        drawGaugeChart: function(containerName, data, colorm, colorn) {
+            //清空原有内容
+            $("#"+containerName).empty();
+
             var startNum, endNum;
             if(data[0].numerical>=0 && data[1].numerical>=0) {
                 startNum = 0;
@@ -458,20 +534,19 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             const chart = new G2.Chart({
                 container: containerName,
                 forceFit: true,
-                height: 280,
-                padding: [ 0, 0, 20, 30 ]
+                height: 320,
+                padding: [ 0, 15, 30, 10 ]
             });
             chart.source(data);
 
             chart.coord('polar', {
                 startAngle: -9 / 8 * Math.PI,
                 endAngle: 1 / 8 * Math.PI,
-                radius: 0.75
+                radius: 0.80 //设置仪表图在画框中占比(即在固定画框中的大小)
             });
             chart.scale('numerical', {
                 min: startNum,
-                max: endNum,
-                tickInterval: endNum/10,
+                max: (startNum===0 && endNum===0) ? 100 : endNum,
                 nice: false
             });
 
@@ -526,7 +601,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 start: [ data[0].numerical>=0 ? 0 : data[0].numerical, 1.07 ],
                 end: [ data[0].numerical>=0 ? data[0].numerical : 0, 1.07 ],
                 style: {
-                    stroke: '#1890FF',
+                    stroke: colorm,
                     lineWidth: 12,
                 }
             });
@@ -537,21 +612,68 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 start: [ data[1].numerical>=0 ? 0 : data[1].numerical, 1.19 ],
                 end: [ data[1].numerical>=0 ? data[1].numerical : 0, 1.19 ],
                 style: {
-                    stroke: 'red',
+                    stroke: colorn,
                     lineWidth: 12,
                 }
             });
 
             // 绘制指标数字
             chart.guide().html({
-                position: [ '50%', '95%' ],
-                html: '<div style="width: 300px;text-align: center; padding-bottom: 80px; border:0px solid red;">'
+                position: [ '50%', '60%' ],
+                html: '<div style="width: 300px;text-align: center; border:0px solid red;">'
                 + '<p style="font-size: 15px; color: #545454;margin: 0;">增长</p>'
                 + '<p style="font-size: 18px; color: #545454;margin: 0;">' + data[0].numerical * 10  + '%</p>'
                 + '</div>'
             });
 
+            // 自定义标题
+            chart.guide().html({
+                position: [ '50%', '95%' ],
+                html: '<div style="width: 300px;text-align: center; border:0px solid red;">'
+                + '<span style="background-color: '+colorm+'; width: 15px; height: 15px; display: inline-block; margin-right: 8px;"></span>' + data[0].title
+                + '<span style="background-color: '+colorn+'; width: 15px; height: 15px; display: inline-block; margin: 0px 8px 0px 20px;"></span>' + data[1].title
+                + '</div>'
+            });
+
             chart.render();
+        },
+
+        /**
+         * 异步加截运营统计数据(按天/周/月)
+         * @param rangeType
+         */
+        asnycLoadOperationData: function(chart, rangeType) {
+            var _this = this;
+            var url = root + '/daily/asyncLoadOperationSummary.html?queryDateRange='+rangeType;
+            $.ajax({
+                type: "GET",
+                url: url,
+                timeout: 60000,
+                success: function (data) {
+                    var jsonData = $.parseJSON(data);
+                    $(_this.getKey("#balanceGaugeChartData",    rangeType)).html(JSON.stringify(jsonData.balanceGaugeChartData));
+                    $(_this.getKey("#effectiveGaugeChartData",  rangeType)).html(JSON.stringify(jsonData.effectiveGaugeChartData));
+                    $(_this.getKey("#profitLossGaugeChartData", rangeType)).html(JSON.stringify(jsonData.profitLossGaugeChartData));
+                    $(_this.getKey("#operationSummaryData",     rangeType)).html(JSON.stringify(jsonData.operationSummaryData));
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                },
+                beforeSend: function () {
+                    //_this.showLoading();
+                },
+                complete: function () {
+                    if ('balance'===chart) {
+                        _this.balanceGaugeChart(rangeType);
+                        _this.balanceColumnChart(rangeType);
+                    } else if('effective'===chart) {
+                        _this.effectiveGaugeChart(rangeType);
+                        _this.effectiveColumnChart(rangeType);
+                    } else if('profitLoss'===chart) {
+                        _this.profitLossGaugeChart(rangeType);
+                        _this.profitLossColumnChart(rangeType);
+                    }
+                }
+            });
         }
     });
 });
