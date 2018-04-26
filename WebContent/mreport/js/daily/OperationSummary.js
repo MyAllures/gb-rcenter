@@ -40,7 +40,13 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
              */
             $(".balanceBtn .btn").click(function() {
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
-                _this.asnycLoadOperationData('balance', $(this).attr('value'));
+                var rangeType = $(this).attr('value');
+                if($(_this.getKey("#operationSummaryData", rangeType)).html()==="") {
+                    _this.asnycLoadOperationData('balance', rangeType);
+                } else {
+                    _this.balanceGaugeChart(rangeType);
+                    _this.balanceColumnChart(rangeType);
+                }
             });
 
             /**
@@ -48,7 +54,13 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
              */
             $(".effectiveBtn .btn").click(function() {
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
-                _this.asnycLoadOperationData('effective', $(this).attr('value'));
+                var rangeType = $(this).attr('value');
+                if($(_this.getKey("#operationSummaryData", rangeType)).html()==="") {
+                    _this.asnycLoadOperationData('effective', rangeType);
+                } else {
+                    _this.effectiveGaugeChart(rangeType);
+                    _this.effectiveColumnChart(rangeType);
+                }
             });
 
             /**
@@ -56,7 +68,13 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
              */
             $(".profitLossBtn .btn").click(function() {
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
-                _this.asnycLoadOperationData('profitLoss', $(this).attr('value'));
+                var rangeType = $(this).attr('value');
+                if($(_this.getKey("#operationSummaryData", rangeType)).html()==="") {
+                    _this.asnycLoadOperationData('profitLoss', rangeType);
+                } else {
+                    _this.profitLossGaugeChart(rangeType);
+                    _this.profitLossColumnChart(rangeType);
+                }
             });
 
             //活跃用户和登录次数切换事件
@@ -409,7 +427,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 container: containerName,
                 forceFit: true,
                 height: height,
-                padding: [20, 12, 45, 50]
+                padding: [20, 35, 45, 50]
             });
             chart.source(data);
             chart.interval().position(position)
@@ -528,7 +546,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             });
             chart.scale('numerical', {
                 min: startNum,
-                max: endNum,
+                max: (startNum===0 && endNum===0) ? 100 : endNum,
                 nice: false
             });
 
