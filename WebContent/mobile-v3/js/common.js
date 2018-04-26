@@ -138,8 +138,4 @@ $(function(){
 	$(".desk").on("tap",".close",function(){
 		$(this).parents(".desk").hide();
 	});
-	/*全局所有的scroll-wrapper默认设置滚动*/
-	mui('.mui-scroll-wrapper').scroll({
-		indicators: false
-	});
 });

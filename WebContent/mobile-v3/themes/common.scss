@@ -414,7 +414,7 @@ li{
     }
 }
 // 注册登录样式
-.mui-bar.mui-bar-blue{    background-color: #1766bb;}
+.mui-bar.mui-bar-blue{    background-color: #1766bb;    background-image: none;}
 .login-wrap,.register-wrap{
         position: fixed;
     height: 0;
@@ -650,7 +650,6 @@ li{
     }
 }
 .money-shadow{position: fixed;top: 0;right: 0;bottom: 0;left: 0;background: rgba(0,0,0,0.3);    z-index: 111;display: none;}
-.mui-bar.promo-record{background-color: #1b75d9;}
 /* 投注记录 */
 .mine-bet-record-body{
     
