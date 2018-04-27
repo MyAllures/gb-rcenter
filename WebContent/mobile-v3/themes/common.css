@@ -191,7 +191,7 @@ li { list-style: none; }
 .type-header .mui-btn:last-child { border-top-left-radius: 0; border-bottom-left-radius: 0; }
 .type-header .mui-btn.mui-active { background: #1766bb; }
 
-.mui-bar.mui-bar-blue { background-color: #1766bb; }
+.mui-bar.mui-bar-blue { background-color: #1766bb; background-image: none; }
 
 .login-wrap, .register-wrap { position: fixed; height: 0; bottom: 0; left: 0; right: 0; z-index: 9999; overflow: hidden; transition: all 0.3s ease-in-out; }
 .login-wrap .mui-bar-nav, .register-wrap .mui-bar-nav { position: relative; }
@@ -278,8 +278,6 @@ li { list-style: none; }
 .mine-cash-record-body .mine-table .text-green { color: #4ec545; }
 
 .money-shadow { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0, 0, 0, 0.3); z-index: 111; display: none; }
-
-.mui-bar.promo-record { background-color: #1b75d9; }
 
 /* 投注记录 */
 .mine-bet-record-body { background: #f2f2f2; font-size: 12px; color: #333; }

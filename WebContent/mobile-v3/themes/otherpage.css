@@ -19,11 +19,13 @@
 .btn-promo-sort { padding: 0 5px 0 0 !important; height: 34px; border: 0; border-radius: 0; margin-bottom: 10px; margin-top: 10px; }
 .btn-promo-sort span { display: block; border-radius: 0; width: 100%; height: 34px; line-height: 34px; background: transparent; border: 0; border-bottom: 2px solid transparent; }
 
+.btn-promo-sort.swiper-slide-active span { color: #327fc3; border-bottom: 2px solid #327fc3; }
+
 .promo { height: 100%; }
 .promo .swiper-container { height: 100%; }
 .promo .swiper-container .swiper-slide .mui-scroll { padding: 10px; }
 
-.promo-content { padding-top: 86px !important; position: absolute; padding-bottom: 53px !important; top: 0; width: 100%; bottom: 0; }
+.promo-content { padding-top: 86px !important; background: #fff !important; position: absolute; padding-bottom: 53px !important; top: 0; width: 100%; bottom: 0; }
 
 .promo-sorts { margin: 0 10px; }
 
@@ -36,6 +38,7 @@
 .icon-message .mui-badge { font-size: 7px; top: 9px; margin-left: -17px; padding: 1px 4px; }
 
 .icon-gift { background: url(./images/icon-gift.png) no-repeat center; background-size: 20px auto; width: 44px; margin-right: -10px !important; margin-left: 0 !important; height: 44px; }
+.icon-gift i { display: inline-block; width: 12px; height: 12px; background: url(./images/ico-gift.png); background-size: cover; position: absolute; bottom: 10px; right: 10px; }
 
 .mine-content { padding-bottom: 63px !important; }
 .mine-content .user-info-wrap { height: 60px; position: relative; margin-bottom: 50px; }
@@ -104,6 +107,7 @@
 .content-without-footer { padding-bottom: 0 !important; }
 
 /* promo-detail */
+.promo-detail-content.mui-content { padding-bottom: 45px; background: #f2f2f2; }
 .promo-detail-content table { color: #333; border: 1px solid #666; }
 .promo-detail-content table td { border: 1px solid #666; }
 .promo-detail-content .gb-select { display: block; }
@@ -117,19 +121,27 @@
 .promo-detail-content .gb-imgs > .ct ul li > .ct h5 > i { display: block; border-bottom: 1px dashed #e2e2e2; position: absolute; top: 50%; left: 0; right: 0; }
 .promo-detail-content .gb-imgs > .ct ul li > .ct h5 span { display: inline-block; height: 23px; padding: 0 7px; border-radius: 3px; line-height: 23px; color: #fff; background-color: #1766bb; font-size: 12px; position: relative; z-index: 1; }
 .promo-detail-content .gb-imgs > .ct ul li > .ct p { padding: 5px 0; line-height: 18px; color: #999; font-size: 12px; margin-bottom: 0; }
-.promo-detail-content .gb-form-foot { padding: 10px; }
-.promo-detail-content .gb-form-foot .submit { border: 1px solid #1766bb; background-color: #1766bb; width: 100%; padding: 10px 12px; font-size: 13px; }
+.promo-detail-content .gb-form-foot { position: fixed; bottom: 0; left: 0; right: 0; padding: 0; z-index: 10; }
+.promo-detail-content .gb-form-foot .mui-btn { float: left; width: 50%; border-radius: 0; font-size: 14px; padding: 0; height: 45px; line-height: 45px; }
+.promo-detail-content .gb-form-foot .mui-btn.btn-deposit { background: #1766bb; border-color: #1766bb; }
+.promo-detail-content .gb-form-foot .mui-btn.btn-apply { background: #0ec392; border-color: #0ec392; }
 
 /* promo-records */
+.mui-bar-nav.promo-record .top-info { float: right; font-size: 10px; line-height: 15px; color: #fff; padding-top: 10px; text-align: right; }
+.mui-bar-nav.promo-record .top-info .mone { display: inline-block; padding-left: 18px; background: url(images/promo/icon-money.png) no-repeat 0/12px; }
+
+.promo-record-content .promo-nav { height: 42px; background: #fff; padding: 0 10px; line-height: 42px; }
+.promo-record-content .promo-nav .mui-segmented-control { border: 0; border-radius: 0; }
+.promo-record-content .promo-nav .mui-segmented-control .mui-control-item { font-size: 14px; color: #333; border: 0; border-bottom: 2px solid transparent; border-radius: 0; }
+.promo-record-content .promo-nav .mui-segmented-control .mui-control-item.mui-active { color: #317ec2; border-color: #317ec2; background-color: transparent; }
+.promo-record-content .promo-cont.mui-scroll-wrapper { top: 87px; }
+.promo-record-content .promo-cont.mui-scroll-wrapper .mui-control-content { padding-bottom: 10px; }
 .promo-record-content .promo-records-warp { padding: 0 10px; margin-top: 10px; height: 85px; }
 .promo-record-content .promo-records-warp i { display: block; width: 4px; height: 85px; position: absolute; top: 0; left: -3px; background-repeat: repeat-y; background: url(../images/pro-bg.png); }
 .promo-record-content .promo-records-warp .pro-bg-left { background-position: 0 0; }
 .promo-record-content .promo-records-warp .pro-bg-right { background-position: right top; left: -1px; }
-.promo-record-content .promo-box-left { background: #fff; padding: 10px 10px; height: 85px; width: 68%; float: left; position: relative; }
-.promo-record-content .promo-box-left h5 { font-size: 12px; color: #333; line-height: 15px; text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; margin-top: 0; margin-bottom: 7px; min-height: 45px; }
-.promo-record-content .promo-box-left .text { font-size: 10px !important; color: #999; line-height: 16px; }
-.promo-record-content .promo-box-left .text .sum { float: left; }
-.promo-record-content .promo-box-left .text .time { display: inline-block; float: right; margin-right: 20px; }
+.promo-record-content .promo-box-left { background: #fff; padding: 10px 10px; height: 85px; width: 68%; float: left; position: relative; font-size: 12px; color: #333; line-height: 17px; }
+.promo-record-content .promo-box-left .tit { color: #666; }
 .promo-record-content .promo-box-right { border-radius: 4px; position: relative; padding: 10px 10px; color: #fff; line-height: 16px; height: 85px; width: 32%; float: left; }
 .promo-record-content .promo-box-right.promo-gray { background: #7b7b7b; }
 .promo-record-content .promo-box-right.promo-blue { background: #3488e7; }
@@ -137,11 +149,49 @@
 .promo-record-content .promo-box-right.promo-orange { background: #f07e11; }
 .promo-record-content .promo-box-right span { display: block; font-size: 12px; text-align: center; }
 .promo-record-content .promo-box-right .num { font-size: 20px; margin-top: 15px; }
-.promo-record-content .promo-box-right .annotation { line-height: 16px; margin-top: 10px; font-size: 10px; }
+.promo-record-content .promo-box-right .annotation { line-height: 16px; margin-top: 10px; font-size: 14px; }
 .promo-record-content .promo-box-right .round { position: absolute; z-index: 999; width: 10px; height: 10px; border-radius: 10px; background: #f2f2f2; }
 .promo-record-content .promo-box-right .radio-up { left: -3px; top: -5px; }
 .promo-record-content .promo-box-right .radio-dwon { left: -3px; bottom: -5px; }
 .promo-record-content .org { color: #f1aa4d; }
+.promo-record-content .no-promo { display: block; text-align: center; padding: 50px 0; border: 1px solid #e2e2e2; background: #fff; border-radius: 3px; font-size: 14px; color: #979797; margin: 10px; }
+
+.promo-apply-content.mui-content { background: #f2f2f2; font-size: 12px; color: #666; }
+.promo-apply-content .top_title { padding: 10px; background: #fff; margin-bottom: 10px; }
+.promo-apply-content .top_title .sub_tit { font-size: 10px; color: #999; }
+.promo-apply-content .top_title .tit { font-size: 15px; color: #317ec2; }
+.promo-apply-content .promo_con_list { font-size: 14px; color: #666; }
+.promo-apply-content .promo_con_list .mui-table-view:before, .promo-apply-content .promo_con_list .mui-table-view:after { content: none; }
+.promo-apply-content .promo_con_list .mui-table-view-cell { padding: 15px; }
+.promo-apply-content .promo_con_list .mui-table-view-cell .icon-pass, .promo-apply-content .promo_con_list .mui-table-view-cell .icon-fail, .promo-apply-content .promo_con_list .mui-table-view-cell .icon-pass-disa { position: absolute; top: 50%; right: 15px; width: 18.5px; height: 18.5px; background-size: 100%; background-repeat: no-repeat; -webkit-transform: translateY(-50%); transform: translateY(-50%); }
+.promo-apply-content .promo_con_list .mui-table-view-cell .icon-pass { background-image: url(images/promo/icon-pass.png); }
+.promo-apply-content .promo_con_list .mui-table-view-cell .icon-fail { background-image: url(images/promo/icon-fail.png); }
+.promo-apply-content .promo_con_list .mui-table-view-cell .icon-pass-disa { background-image: url(images/promo/icon-pass-disa.png); }
+.promo-apply-content .promo_con_list .mui-table-view-cell:after { left: 0; }
+.promo-apply-content .promo_status { padding: 45px 10px 10px; text-align: center; }
+.promo-apply-content .promo_status .icon-success { display: block; width: 69.5px; height: 69.5px; margin: 0 auto 10px; background: url(images/promo/icon-success.png) no-repeat center/100%; }
+.promo-apply-content .promo_status .suc_tip { font-size: 15px; color: #317ec2; margin-bottom: 15px; }
+.promo-apply-content .promo_status p { font-size: 12px; color: #666; margin-bottom: 0; }
+.promo-apply-content .promo_status .btn_cust_serv { margin-top: 50px; margin-bottom: 0; padding: 0; height: 40px; line-height: 40px; font-size: 15px; color: #fff; background: #317ec2; border-color: #317ec2; }
+.promo-apply-content .promo_status .fai_tip { font-size: 15px; color: #333; line-height: 22px; }
+.promo-apply-content .promo_status .icon-failure { display: block; width: 57px; height: 65.5px; margin: 0 auto 10px; background: url(images/promo/icon-failure.png) no-repeat center/100%; }
+.promo-apply-content.promo-apply2-content { padding-bottom: 40px; }
+.promo-apply-content.promo-apply2-content .promo_item_list .promo_item { padding: 10px; position: relative; font-size: 12px; color: #333; background: #fff; margin-bottom: 10px; }
+.promo-apply-content.promo-apply2-content .promo_item_list .promo_item .ti { color: #666; }
+.promo-apply-content.promo-apply2-content .promo_item_list .promo_item .promo_item_sta { width: 100px; position: absolute; right: 0; top: 0; bottom: 0; color: #fff; text-align: center; line-height: 104px; font-size: 14px; }
+.promo-apply-content.promo-apply2-content .promo_item_list .promo_item .promo_item_sta.suc { background: #1fbd66; }
+.promo-apply-content.promo-apply2-content .promo_item_list .promo_item .promo_item_sta.awa { background: #f07e11; }
+.promo-apply-content.promo-apply2-content .promo_item_list .promo_item .promo_item_sta.fai { background: #999; line-height: 24px; padding-top: 25px; }
+.promo-apply-content.promo-apply2-content .promo_item_list .promo_item .promo_item_sta.proc { background: #317ec2; }
+.promo-apply-content.promo-apply2-content .btn_cust_serv { position: fixed; z-index: 10; bottom: 0; left: 0; right: 0; border-radius: 0; margin: 0; padding: 0; height: 40px; line-height: 40px; font-size: 15px; color: #fff; background: #317ec2; border-color: #317ec2; }
+.promo-apply-content.promo-apply3-content .promo_con_list { margin-bottom: 10px; }
+.promo-apply-content.promo-apply3-content .pro_mone { padding: 10px; overflow: hidden; background: #fff; font-size: 14px; color: #333; }
+.promo-apply-content.promo-apply3-content .btn_apply { margin: 32px 10px 12px; width: auto; padding: 0; height: 40px; line-height: 40px; font-size: 15px; color: #fff; background: #317ec2; border-color: #317ec2; }
+.promo-apply-content.promo-apply3-content .btn_apply.disabled { background: #e2e2e2; color: #999; border-color: #e2e2e2; }
+.promo-apply-content.promo-apply3-content .color-green { color: #1f9316; }
+.promo-apply-content.promo-apply3-content .color-gray { color: #666; }
+.promo-apply-content.promo-apply3-content .color-blue { color: #317ec2; }
+.promo-apply-content.promo-apply3-content .app_num { font-size: 12px; color: #999; text-align: center; }
 
 /* casino-transfer */
 .link-all-game.mui-icon { color: #fff; font-size: 14px; line-height: 44px; padding: 0 10px; }
@@ -205,5 +255,14 @@
 .allgame-popover .mui-table-view-cell a { color: #333; }
 
 .allgame-scroll { height: 300px; margin: 0 !important; background: #fff; }
+
+.mui-popup.app_suc .mui-popup-buttons { display: none; }
+.mui-popup.app_suc .mui-popup-inner { width: 217px; height: 191px; padding: 0; border-radius: 10px; margin: 0 auto; padding-top: 24px; }
+.mui-popup.app_suc .icon-sus { display: block; background: url(images/promo/icon-suc1.png) no-repeat center/100%; width: 97.5px; height: 97.5px; margin: 0 auto; }
+.mui-popup.app_suc .tips { font-size: 15px; color: #333; margin-top: 5px; }
+.mui-popup.app_suc .p_tim { font-size: 15px; color: #666; margin-top: 5px; }
+
+.mui-toast-container.app_fai { top: 50%; bottom: auto; transform: translateY(-50%); }
+.mui-toast-container.app_fai .mui-toast-message { background: #fff; color: #333; font-size: 13px; padding: 11px 5px; }
 
 /*# sourceMappingURL=otherpage.css.map */

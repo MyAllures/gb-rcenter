@@ -62,9 +62,6 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 
 /* page promo */
 .promo .p-t-slide-content { color: #333; }
-.promo .p-t-slide-content .swiper-slide { background: #fff; }
-
-.btn-promo-sort.swiper-slide-active span { color: #327fc3; border-bottom: 2px solid #327fc3; }
 
 .promo-header { border-bottom: 1px solid #ccc; }
 
