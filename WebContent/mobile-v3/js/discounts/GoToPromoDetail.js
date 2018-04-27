@@ -90,7 +90,7 @@ function changeApplyStatus() {
  */
 function filterActyByPlayer(data) {
     var $obj = $(".submit");
-    var startTimeObj = $('.mui-row ._vr_promo_ostart');
+    var startTimeObj = $('._vr_promo_ostart');
     var flag = new Date(startTimeObj.attr("value")) < new Date();
     var oldClass = $obj.data("oldClass");
     oldClass = typeof oldClass == "undefined" ? "" : oldClass;
@@ -115,7 +115,7 @@ function filterActyByPlayer(data) {
         $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").text(window.top.message.promo_auto['未满足条件']);
     } else if (code == "first_deposit" || code == "deposit_send") {
         $obj.removeClass(oldClass).addClass(newClass + " mui-disabled").text(window.top.message.promo_auto['存款时申请']);
-    } else if(code == "content"){
+    } else if (code == "content") {
         $obj.addClass("mui-hidden");
     }
 }
@@ -146,47 +146,57 @@ function submitPromo(obj, options) {
     }
 }
 
+/**
+ * 申请活动
+ * @param aplyObj
+ * @param isRefresh
+ */
 function joinPromo(aplyObj, isRefresh) {
     $(aplyObj).attr("disabled", "disabled");
     var nowTime = new Date($("._now_time").attr("value")).getTime();
-    var st = new Date($('.mui-row ._vr_promo_ostart').attr('value')).getTime();
-    var et = new Date($('.mui-row ._vr_promo_oend').attr('value')).getTime();
+    var st = new Date($('._vr_promo_ostart').attr('value')).getTime();
+    var et = new Date($('._vr_promo_oend').attr('value')).getTime();
     //活动未开始
     if (st > nowTime || et < nowTime) {
         toast(window.top.message.activity['apply.tip.unstart']);
         return;
     }
     var options = eval("(" + $(aplyObj).attr("data-rel") + ")");
-    var code = options.dataCode;//$(aplyObj).data("code");
-    if (code == "back_water" || code == "first_deposit" || code == "deposit_send") {
+    var code = options.dataCode;
+    if (code == "back_water") {
         showWarningMsg(window.top.message.promo_auto['提示'], window.top.message.promo_auto['参与中']);
-    }else if(code == ''){//存就送,有效投注额,盈亏送fetchActivityProcess applyActivities
-
     } else if (isRefresh) {
         applyActivities(aplyObj, true);
     } else if (code == 'money') {
-        var searchId = options.dataSearchId;// $(aplyObj).data("searchid");
+        var searchId = options.dataSearchId;
         canShowLottery(searchId);
         $(aplyObj).removeAttr("disabled");
-    } else {
+    } else {//存就送,有效投注额,盈亏送fetchActivityProcess applyActivities
         applyActivities(aplyObj);
     }
 }
 
+function render(){
+
+}
+
 function applyActivities(aplyObj, isRefresh) {
     var options = eval("(" + $(aplyObj).attr("data-rel") + ")");
-    var code = options.dataCode;//$(aplyObj).data("code");
-    var searchId = options.dataSearchId;//$(aplyObj).data("searchid");
+    var code = options.dataCode;
+    var searchId = options.dataSearchId;
     var ajaxOption = {
-        url: root + "/promo/applyActivities.html",
+        url: root + "/ntl/activityHall/applyActivities.html",
         data: {code: code, resultId: searchId},
+        dataType: 'json',
+        type: 'POST',
         success: function (data) {
-            if(data == null){
-                toast(window.top.message.promo_auto['用户活动申请还在处理中']);
-                return;
-            }
-            showWin(data, isRefresh);
-            $(aplyObj).removeAttr("disabled");
+            /*if (data == null) {
+             toast(window.top.message.promo_auto['用户活动申请还在处理中']);
+             return;
+             }*/
+            /*showWin(data, isRefresh);
+             $(aplyObj).removeAttr("disabled");*/
+            goToUrl(root+'/promo/applyPromoDetail.html');
         },
         complete: function () {
             $(aplyObj).removeAttr("disabled");
@@ -221,7 +231,7 @@ function showWin(data, isRefresh) {
 }
 
 function doWin() {
-    if(isNative) {
+    if (isNative) {
         nativeGotoPromoRecordPage();
     } else {
         goToUrl(root + "/promo/myPromo.html");
@@ -231,10 +241,10 @@ function doWin() {
 /**
  * 跳到优惠记录
  */
-function goPromoDetail(obj,options){
-    if(isNative){
+function goPromoDetail(obj, options) {
+    if (isNative) {
         nativeGotoPromoRecordPage();
-    }else{
+    } else {
         goToUrl(options.src);
     }
 }
@@ -244,10 +254,10 @@ function goPromoDetail(obj,options){
  * @param obj
  * @param options
  */
-function goRegister(obj,options){
-    if(isNative){
+function goRegister(obj, options) {
+    if (isNative) {
         nativeGoToRegisterPage();
-    }else{
+    } else {
         goToUrl(options.src);
     }
 }
