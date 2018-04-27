@@ -19,13 +19,13 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             this.profitLossGaugeChart('D');
             this.profitLossColumnChart('D');
 
-            this.activeUser();
+            this.activeUser('D');
 
-            this.installAndUninstall('install'); //默认展示安装量
+            this.installAndUninstall('install','D'); //默认展示近七天安装量
 
-            this.playerTrend('new-player'); //默认展示新增玩家
+            this.playerTrend('new-player','D'); //默认展示近七天新增玩家
 
-            this.rakebackTrend('rakeback-men'); //默认展示反水人数
+            this.rakebackTrend('rakeback-men','D'); //默认展示近七天反水人数
         },
 
         /**
@@ -77,14 +77,31 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 }
             });
 
+            /**
+             * 活跃用户、总登录次数、安装量、卸载量、新增玩家、新增存款玩家、返回人数、反水金额周期切换事件
+             */
+            $(".cycleChangeBtn .btn").click(function() {
+                $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
+                _this.asnycLoadOperationData($(this).attr("statisticsDataType"), $(this).attr('value'));
+            });
+
+            /**
+             *自选时间段查询
+             */
+            $(".cycleChangeOFdaysBtn .btn").click(function() {
+                var stateTime =  $(this).attr("stateTime");
+                var endTime = $(this).attr("endTime");
+                _this.asnycLoadOfDays($(this).attr("statisticsDataType"),$(this).attr('value'),stateTime,endTime);
+            });
+
             //活跃用户和登录次数切换事件
             $("._addPrimary.active-user .btn").click(function(){
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
                 $("#f4").html(null);
                 if($(this).hasClass('login-count')){
-                    _this.loginCount();
+                    _this.loginCount('D');
                 }else{
-                    _this.activeUser();
+                    _this.activeUser('D');
                 }
 
             });
@@ -94,9 +111,9 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
                 $("#i5").html(null);
                 if($(this).hasClass('uninstall')){
-                    _this.installAndUninstall('uninstall');
+                    _this.installAndUninstall('uninstall','D');
                 }else{
-                    _this.installAndUninstall('install');
+                    _this.installAndUninstall('install','D');
                 }
 
             });
@@ -106,9 +123,9 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
                 $("#p6").html(null);
                 if($(this).hasClass('new-deposit-player')){
-                    _this.playerTrend('new-deposit-player');
+                    _this.playerTrend('new-deposit-player','D');
                 }else{
-                    _this.playerTrend('new-player');
+                    _this.playerTrend('new-player','D');
                 }
 
             });
@@ -119,10 +136,10 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 $("#b7").html(null);
                 if($(this).hasClass('rakeback-cash')){
                     $("#api-choice").show();
-                    _this.rakebackTrend('rakeback-cash');
+                    _this.rakebackTrend('rakeback-cash','D');
                 }else{
                     $("#api-choice").hide();
-                    _this.rakebackTrend('rakeback-men');
+                    _this.rakebackTrend('rakeback-men','D');
                 }
             });
 
@@ -143,6 +160,8 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 return prefix + 'OfMonth';
             } else if('W'===rangeType) {
                 return prefix + 'OfWeek';
+            }else if('C' === rangeType){
+                return prefix + 'OfChoiceDays';
             } else {
                 return prefix + 'OfDay';
             }
@@ -218,20 +237,24 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         /**
          * 总登录次数
          */
-        loginCount:function()　{
-            var jsonStr = $("#operationSummaryDataOfDay").html();
+        loginCount:function(rangeType)　{
+            var dataKey = this.getKey("#operationSummaryData", rangeType);
+            var jsonStr = $(dataKey).html();
             var operationSummarys = $.parseJSON(jsonStr);
             if(operationSummarys == null || operationSummarys.length < 1) return ;
             var array = [];
+            var pc = {"name":"登录次数(PC端)"};
+            var phone = {"name":"登录次数(手机端)"};
+            var all = {"name":"登录次数(全部)"};
             for(var i = 0 ;i < operationSummarys.length ; i++ ){
-                var data = {};
                 var operationSummary = operationSummarys[i];
-                data['time'] = operationSummary.staticDay;
-                data['登录次数(全部)'] = operationSummary.loginNumPc + operationSummary.loginNumPhone;
-                data['登录次数(PC端)'] = operationSummary.loginNumPc;
-                data['登录次数(手机端)'] = operationSummary.loginNumPhone;
-                array.push(data);
+                pc[operationSummary.staticDay] = operationSummary.loginNumPc;
+                phone[operationSummary.staticDay] = operationSummary.loginNumPhone;
+                all[operationSummary.staticDay] = operationSummary.loginNumPc + operationSummary.loginNumPhone;
             }
+            array.push(pc);
+            array.push(phone);
+            array.push(all);
             var keys = Object.keys(array[0]);
             keys.splice(0,1);
             this.drawGroupColumnChart('f4', array, keys,476);
@@ -240,8 +263,9 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         /**
          * 活跃用户数
          */
-        activeUser:function(){
-            var jsonStr = $("#operationSummaryDataOfDay").html();
+        activeUser:function(rangeType){
+            var dataKey = this.getKey("#operationSummaryData", rangeType);
+            var jsonStr = $(dataKey).html();
             var operationSummarys = $.parseJSON(jsonStr);
             if(operationSummarys == null || operationSummarys.length < 1) return ;
             var array = [];
@@ -263,8 +287,9 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         /**
          * 安装量和卸载量 折线图
          */
-        installAndUninstall:function(isinstall){
-            var jsonStr = $("#operationSummaryDataOfDay").html();
+        installAndUninstall:function(isinstall,rangeType){
+            var dataKey = this.getKey("#operationSummaryData", rangeType);
+            var jsonStr = $(dataKey).html();
             var operationSummarys = $.parseJSON(jsonStr);
             if(operationSummarys == null || operationSummarys.length < 1) return ;
             var array = [];
@@ -289,8 +314,9 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         /**
          * 新增玩家和新增存款玩家 折线图
          */
-        playerTrend:function(newPlayerType){
-            var jsonStr = $("#operationSummaryDataOfDay").html();
+        playerTrend:function(newPlayerType,rangeType){
+            var dataKey = this.getKey("#operationSummaryData", rangeType);
+            var jsonStr = $(dataKey).html();
             var operationSummarys = $.parseJSON(jsonStr);
             if(operationSummarys == null || operationSummarys.length < 1) return ;
             var array = [];
@@ -317,8 +343,9 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * 返水走势
          * @param rakebackType
          */
-        rakebackTrend:function(rakebackType) {
-            var jsonStr = $("#operationSummaryDataOfDay").html();
+        rakebackTrend:function(rakebackType,rangeType) {
+            var dataKey = this.getKey("#operationSummaryData", rangeType);
+            var jsonStr = $(dataKey).html();
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
             if('rakeback-men' == rakebackType) {
@@ -387,12 +414,13 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          */
         drawGroupColumnChart: function(containerName, data, fieldSet,width) {
             if(data == null || data.length < 1) return;
+            $("#"+containerName).html(null);
             const ds = new DataSet();
             const dv = ds.createView().source(data);
             dv.transform({
                 type: 'fold',
                 fields: fieldSet, // 展开字段集
-                key: 'name', // key字段
+                key: 'time', // key字段
                 value: 'sum' // value字段
             });
             const chart = width ? new G2.Chart({
@@ -445,6 +473,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          */
         foldlineDiagram:function(containerName, data){
             if(data == null || data.length < 1) return;
+            $("#"+containerName).empty();
             const ds = new DataSet();
             var keys = Object.keys(data[0]);
             keys.splice(0,1);
@@ -453,7 +482,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 // forceFit: true,
                 height: 400,
                 width:476,
-                padding: [20, 26, 105, 50]
+                padding: [20, 30, 105, 50]
             });
             const dv = ds.createView().source(data);
             dv.transform({
@@ -472,7 +501,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             chart.axis('time', {
                 label: {
                     formatter: function(time) {
-                        return time + ' ';
+                        return time + '    ';
                     }
                 }
             });
@@ -671,6 +700,52 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                     } else if('profitLoss'===chart) {
                         _this.profitLossGaugeChart(rangeType);
                         _this.profitLossColumnChart(rangeType);
+                    } else if('activeUser'===chart) {
+                        var statisticsDataType = $("._addPrimary.active-user .btn.btn-primary").attr("value");
+                       'login-count' == statisticsDataType ? _this.loginCount(rangeType) : _this.activeUser(rangeType);
+                    } else if('installAndUninstall'===chart) {
+                        var statisticsDataType = $("._addPrimary.install .btn.btn-primary").attr("value");
+                        _this.installAndUninstall(statisticsDataType,rangeType);
+                    } else if('playerTrend'===chart) {
+                        var statisticsDataType = $("._addPrimary.player-trend .btn.btn-primary").attr("value");
+                        _this.playerTrend(statisticsDataType,rangeType);
+                    } else if('rakebackTrend'===chart) {
+                        var statisticsDataType = $("._addPrimary.rakeback-trend .btn.btn-primary").attr("value");
+                        _this.rakebackTrend(statisticsDataType,rangeType);
+                    }
+                }
+            });
+        },
+
+        asnycLoadOfDays:function(chart, rangeType,stateTime,endTime){
+            var _this = this;
+            var url = root + '/daily/operationSummaryDataOfChoiceDays.html?search.staticTime='+stateTime+"&search.staticTimeEnd="+endTime;
+            $.ajax({
+                type: "GET",
+                url: url,
+                timeout: 60000,
+                success: function (data) {
+                    var jsonData = $.parseJSON(data);
+                    $("#operationSummaryDataOfChoiceDays").html(JSON.stringify(jsonData));
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                },
+                beforeSend: function () {
+                    //_this.showLoading();
+                },
+                complete: function () {
+                    if('activeUser'===chart) {
+                        var statisticsDataType = $("._addPrimary.active-user .btn.btn-primary").attr("value");
+                        'login-count' == statisticsDataType ? _this.loginCount(rangeType) : _this.activeUser(rangeType);
+                    } else if('installAndUninstall'===chart) {
+                        var statisticsDataType = $("._addPrimary.install .btn.btn-primary").attr("value");
+                        _this.installAndUninstall(statisticsDataType,rangeType);
+                    } else if('playerTrend'===chart) {
+                        var statisticsDataType = $("._addPrimary.player-trend .btn.btn-primary").attr("value");
+                        _this.playerTrend(statisticsDataType,rangeType);
+                    } else if('rakebackTrend'===chart) {
+                        var statisticsDataType = $("._addPrimary.rakeback-trend .btn.btn-primary").attr("value");
+                        _this.rakebackTrend(statisticsDataType,rangeType);
                     }
                 }
             });
