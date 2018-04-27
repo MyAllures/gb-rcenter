@@ -97,9 +97,9 @@ function filterActyByPlayer(data) {
     var newClass = $obj.data("newClass");
     newClass = typeof newClass == "undefined" ? "" : newClass;
     var options = eval("(" + $obj.attr("data-rel") + ")");
-    var code = options.dataCode;
-    var rankid = options.dataRankId;
-    var searchid = options.dataSearchId;
+    var code = (options != null) ? options.dataCode : '';
+    var rankid = (options != null) ? options.dataRankId : '';
+    var searchid = (options != null) ? options.dataSearchId : '';
     //判断用户是否可以参与该活动
     var isContain = false;
     if (rankid == 'all') {
@@ -113,8 +113,6 @@ function filterActyByPlayer(data) {
     }
     if (isContain == false) {
         $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").text(window.top.message.promo_auto['未满足条件']);
-    } else if (code == "first_deposit" || code == "deposit_send") {
-        $obj.removeClass(oldClass).addClass(newClass + " mui-disabled").text(window.top.message.promo_auto['存款时申请']);
     } else if (code == "content") {
         $obj.addClass("mui-hidden");
     }
@@ -176,27 +174,26 @@ function joinPromo(aplyObj, isRefresh) {
     }
 }
 
-function render(){
-
-}
-
 function applyActivities(aplyObj, isRefresh) {
     var options = eval("(" + $(aplyObj).attr("data-rel") + ")");
-    var code = options.dataCode;
-    var searchId = options.dataSearchId;
+    var dataParam = {};
+    dataParam.code = options.dataCode;
+    dataParam.resultId = options.dataSearchId;
+    //dataParam.transactionNos = tansactionObj;
     var ajaxOption = {
         url: root + "/ntl/activityHall/applyActivities.html",
-        data: {code: code, resultId: searchId},
+        data: JSON.stringify(dataParam),
         dataType: 'json',
         type: 'POST',
+        contentType: 'application/json; charset=utf-8',
         success: function (data) {
-            /*if (data == null) {
-             toast(window.top.message.promo_auto['用户活动申请还在处理中']);
-             return;
-             }*/
+            if (data == null) {
+                toast(window.top.message.promo_auto['用户活动申请还在处理中']);
+                return;
+            }
             /*showWin(data, isRefresh);
              $(aplyObj).removeAttr("disabled");*/
-            goToUrl(root+'/promo/applyPromoDetail.html');
+            goToUrl(root + '/promo/applyPromoDetail.html');
         },
         complete: function () {
             $(aplyObj).removeAttr("disabled");
