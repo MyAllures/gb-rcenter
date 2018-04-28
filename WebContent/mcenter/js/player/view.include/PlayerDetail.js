@@ -740,6 +740,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             if (toRecovery){
                 window.top.topPage.ajax({
                     url: root + "/playerFunds/recovery.html?search.playerId="+id,
+                    dataType: "JSON",
                     success: function (data) {
                         if (data.state) {
                             _this.getUserPlayer();
