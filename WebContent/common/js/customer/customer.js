@@ -1,6 +1,11 @@
-define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
+/**
+ * createBy:nick
+ * createDate:2018/04/25
+ * 用户聊天窗口demo版
+ */
+define(['common/BasePage'], function (BasePage) {
 
-    return BaseEditPage.extend({
+    return BasePage.extend({
         els: {
             $contentEl: $('.ivu-scroll-content'),
             $sendTextBtnEL: $('#submitMessageBtn'),
@@ -11,7 +16,6 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
             $imgFileInputEl: $('#imgFileInput')
         },
         status: 'connect',
-        defaultMessage: '您好，请问有什么可以帮您？',
         data: {
             sendMessageData: {
                 sendMessageText: '',
@@ -92,24 +96,6 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
                 $(_this.getHtmlString(data)).appendTo(_this.els.$contentEl);
             });
         },
-        sendText: function () {
-            var _this = this;
-            var text = _this.els.$textEl.val();
-            if ($.trim(text) != '') {
-                var createO = _this.createSendVo('text', text);
-                _this.comet.websocket.send(JSON.stringify(createO));
-                var message = {
-                    type: 2,
-                    time: new Date(),
-                    message: text,
-                    messageType: 'text'
-                }
-                _this.appendMessage(message);
-                _this.els.$textEl.val('');
-            } else {
-
-            }
-        },
         createSendVo: function (type, body) {
             type = type ? type : 'text';
             var _this = this;
@@ -131,27 +117,33 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
         },
         socketCallBack: function (data) {
             var _this = this;
-            if (data.imMessage.status == 'accepted') {
-                _this.status = 'accepted';
-                _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
-            } else if (data.imMessage.status == 'connected') {
-                _this.stopTimer();
-                data.imMessage.status = 'normal';
-                _this.els.$sendTextBtnEL.attr('disabled', false);
-                _this.els.$sendImgBtnEL.attr('disabled', false);
-            } else if (data.imMessage.status == 'normal') {
-                var imMessage = data.imMessage;
-                _this.appendMessage({
-                    message: imMessage.messageBody.textBody ? imMessage.messageBody.textBody : '',
-                    time: new Date(),
-                    messageType: imMessage.messageBody.messageType,
-                    name: imMessage.sendUserName,
-                    type: 1
-                });
-            } else if (data.imMessage.status == 'close') {
-                data.imMessage.status = 'closed';
-                _this.els.$sendTextBtnEL.attr('disabled', true);
-                _this.els.$sendImgBtnEL.attr('disabled', true);
+            switch(data.imMessage.status){
+                case 'accepted' :
+                    _this.status = 'accepted';
+                    _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
+                    break;
+                case 'connected' :
+                    _this.stopTimer();
+                    data.imMessage.status = 'normal';
+                    _this.els.$sendTextBtnEL.attr('disabled', false);
+                    _this.els.$sendImgBtnEL.attr('disabled', false);
+                    break;
+                case 'normal':
+                    var imMessage = data.imMessage;
+                    _this.appendMessage({
+                        message: imMessage.messageBody.textBody ? imMessage.messageBody.textBody : '',
+                        time: new Date(),
+                        messageType: imMessage.messageBody.messageType,
+                        name: imMessage.sendUserName,
+                        type: 1
+                    });
+                    break;
+                case 'close':
+                    data.imMessage.status = 'closed';
+                    _this.els.$sendTextBtnEL.attr('disabled', true);
+                    _this.els.$sendImgBtnEL.attr('disabled', true);
+                    break;
+                default : break;
             }
             openPage.imMessage = data.imMessage;
             _this.setStatus();
@@ -179,6 +171,10 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
             _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
             //this.comet.disConnect();
         },
+        /**
+         * 连接超时功能
+         * 开启倒计时
+         */
         createTimer: function () {
             var _this = this;
             _this.timer = setTimeout(
@@ -190,10 +186,28 @@ define(['common/BaseEditPage', 'validate'], function (BaseEditPage, validate) {
         stopTimer: function () {
             clearTimeout(this.timer);
         },
+        sendText: function () {
+            var _this = this;
+            var text = _this.els.$textEl.val();
+            if ($.trim(text) != '') {
+                var createO = _this.createSendVo('text', text);
+                _this.comet.websocket.send(JSON.stringify(createO));
+                var message = {
+                    type: 2,
+                    time: new Date(),
+                    message: text,
+                    messageType: 'text'
+                }
+                _this.appendMessage(message);
+                _this.els.$textEl.val('');
+            } else {
+
+            }
+        },
         sendImg: function () {
             var _this = this;
             _this.els.$imgFileInputEl.click();
-            _this.els.$imgFileInputEl.change(function (input) {
+            _this.els.$imgFileInputEl.change(function () {
                 var reader = new FileReader();
                 var file = this.files[0];
                 if (file) {

@@ -1,7 +1,7 @@
 /**
  * createBy:nick
  * createDate:2018/04/26
- * 多用户聊天窗口v0.1版
+ * 多用户聊天窗口demo版
  */
 define(['common/BasePage'], function (BasePage) {
     return BasePage.extend({
@@ -38,7 +38,7 @@ define(['common/BasePage'], function (BasePage) {
                 var $id = $(this).attr("data-target");
                 $($id).modal({backdrop: false, keyboard: false});
             });
-            $(".modalMinimize").on("click", function (e) {
+            $(".modalMinimize").unbind('click').on("click", function (e) {
                 e.preventDefault();
                _this.els.$modalCon = $(this).closest(".mymodal").attr("id");
                 _this.els.$modal = "#" + _this.els.$modalCon;
@@ -62,17 +62,15 @@ define(['common/BasePage'], function (BasePage) {
                 }
                 else {
                     $('#customerGroupModal').removeClass('min');
-                    $('.mymodal .modal-body').show();
+                    $('#customerGroupModal .modal-body').show();
                     $(".minmaxCon").hide();
                     _this.height = _this.els.$userChatDivUl.height();
                 }
                 ;
             });
             $("button[data-dismiss='modal']").click(function () {
-                $('.mymodal .modal-body').show();
-                $(this).closest(".mymodal").removeClass("min");
-                $(".container").removeClass(_this.els.$apnData);
-                $(this).next('.modalMinimize').find("i").removeClass('fa fa-folder-open').addClass('fa fa-minus');
+                $(".minmaxCon").hide();
+                $('#customerGroupModal').modal('hide');
             });
             $('.mymodal').on('shown.bs.modal', function (e) {
                 //_this.data.users =  [];
@@ -89,7 +87,7 @@ define(['common/BasePage'], function (BasePage) {
                     _this.addUserWin(options.data.imMessage);
                 }
             });
-            $('.mymodal').on('hidden.bs.modal', function (e) {
+            $('.mymodal').unbind('hidden.bs.modal').on('hidden.bs.modal', function (e) {
                 var _iframes = _this.els.$userChatDivUl.find('iframe');
                 _iframes.each(function(index,ifr){
                     ifr.contentWindow.page.disConnect();
