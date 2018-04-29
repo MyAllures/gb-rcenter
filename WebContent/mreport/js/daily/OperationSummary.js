@@ -13,8 +13,8 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             this.balanceGaugeChart('D');
             this.balanceColumnChart('D');
 
-            this.effectiveGaugeChart('D');
-            this.effectiveColumnChart('D');
+            this.effectiveGaugeChart('D', 'all');
+            this.effectiveColumnChart('D', 'all');
 
             this.profitLossGaugeChart('D');
             this.profitLossColumnChart('D');
@@ -58,9 +58,21 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 if($(_this.getKey("#operationSummaryData", rangeType)).html()==="") {
                     _this.asnycLoadOperationData('effective', rangeType);
                 } else {
-                    _this.effectiveGaugeChart(rangeType);
-                    _this.effectiveColumnChart(rangeType);
+                    _this.effectiveGaugeChart(rangeType, 'all');
+                    _this.effectiveColumnChart(rangeType, 'all');
                 }
+            });
+
+            /**
+             * 有效投注终端切换
+             */
+            $(".effectiveTerminal .btn").click(function() {
+                $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
+                var terminal = $(this).attr('value');
+                var btn = $(".effectiveBtn").find(".btn-primary");
+                var rangeType = $(btn).attr('value');
+                _this.effectiveGaugeChart(rangeType, terminal);
+                _this.effectiveColumnChart(rangeType, terminal);
             });
 
             /**
@@ -185,11 +197,11 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * 最近两个周期的存取差额对比
          */
         balanceGaugeChart: function(rangeType) {
-            var dataKey = this.getKey("#balanceGaugeChartData", rangeType);
+            var dataKey = this.getKey("#operationSummaryData", rangeType);
             var jsonStr = $(dataKey).html();
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawGaugeChart('c1', data, '#FF6363', '#6363FF');
+            this.drawGaugeChart('c1', data, '#FF6363', '#6363FF', 'balanceAmount');
         },
 
         /**
@@ -206,35 +218,52 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
 
         /**
          * 最近两个周期的有效投注额对比
+         * @param rangeType
+         * @param terminal
          */
-        effectiveGaugeChart: function(rangeType) {
-            var dataKey = this.getKey("#effectiveGaugeChartData", rangeType);
-            var jsonStr = $(dataKey).html();
-            if(!jsonStr) return;
-            const data = $.parseJSON(jsonStr);
-            this.drawGaugeChart('c2', data, '#FF6363', '#6363FF');
-        },
-
-        /**
-         * 最近多个周期的有效投注额
-         */
-        effectiveColumnChart: function(rangeType) {
+        effectiveGaugeChart: function(rangeType, terminal) {
             var dataKey = this.getKey("#operationSummaryData", rangeType);
             var jsonStr = $(dataKey).html();
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z2', data, 'effectiveTransactionAll', 'staticDay*effectiveTransactionAll',　'有效投注', 300);
+            if('phone'===terminal) {
+                this.drawGaugeChart('c2', data, '#FF6363', '#6363FF', 'effectiveTransactionPhone');
+            } else if('pc'===terminal) {
+                this.drawGaugeChart('c2', data, '#FF6363', '#6363FF', 'effectiveTransactionPc');
+            } else {
+                this.drawGaugeChart('c2', data, '#FF6363', '#6363FF', 'effectiveTransactionAll');
+            }
+        },
+
+        /**
+         * 最近多个周期的有效投注额
+         * @param rangeType
+         * @param terminal
+         */
+        effectiveColumnChart: function(rangeType, terminal) {
+            var dataKey = this.getKey("#operationSummaryData", rangeType);
+            var jsonStr = $(dataKey).html();
+            if(!jsonStr) return;
+            const data = $.parseJSON(jsonStr);
+            if('phone'===terminal) {
+                this.drawBasicColumnChart('z2', data, 'effectiveTransactionPhone', 'staticDay*effectiveTransactionPhone',　'有效投注', 300);
+            } else if('pc'===terminal) {
+                this.drawBasicColumnChart('z2', data, 'effectiveTransactionPc', 'staticDay*effectiveTransactionPc',　'有效投注', 300);
+            } else {
+                this.drawBasicColumnChart('z2', data, 'effectiveTransactionAll', 'staticDay*effectiveTransactionAll',　'有效投注', 300);
+            }
+
         },
 
         /**
          * 最近两个周期损益对比
          */
         profitLossGaugeChart: function(rangeType) {
-            var dataKey = this.getKey("#profitLossGaugeChartData", rangeType);
+            var dataKey = this.getKey("#operationSummaryData", rangeType);
             var jsonStr = $(dataKey).html();
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawGaugeChart('c3', data, '#FF6363', '#6363FF');
+            this.drawGaugeChart('c3', data, '#FF6363', '#6363FF', 'transactionProfitLoss');
         },
 
         /**
@@ -545,29 +574,39 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         },
 
         /**
-         * 仪表图
+         * 绘制双环仪表图
          * @param containerName
          * @param data
+         * @param colorm
+         * @param colorn
+         * @param column
          */
-        drawGaugeChart: function(containerName, data, colorm, colorn) {
+        drawGaugeChart: function(containerName, data, colorm, colorn, column) {
             //清空原有内容
             $("#"+containerName).empty();
 
+            // 获取最近两个周期的值
+            var numerical0 = $(data[data.length-1]).attr(column);
+            var numerical1 = $(data[data.length-2]).attr(column);
+            var staticDay0 = $(data[data.length-1]).attr('staticDay');
+            var staticDay1 = $(data[data.length-2]).attr('staticDay');
+            $("#"+containerName+"_title").html(staticDay0+" : "+numerical0);
+
             var startNum, endNum;
-            if(data[0].numerical>=0 && data[1].numerical>=0) {
+            if(numerical0>=0 && numerical1>=0) {
                 startNum = 0;
-                if(data[0].numerical >= data[1].numerical) {
-                    endNum = data[0].numerical;
+                if(numerical0 >= numerical1) {
+                    endNum = numerical0;
                 } else {
-                    endNum = data[1].numerical;
+                    endNum = numerical1;
                 }
             } else {
-                if(Math.abs(data[0].numerical) >= Math.abs(data[1].numerical)) {
-                    startNum = -(Math.abs(data[0].numerical));
-                    endNum = Math.abs(data[0].numerical);
+                if(Math.abs(numerical0) >= Math.abs(numerical1)) {
+                    startNum = -(Math.abs(numerical0));
+                    endNum = Math.abs(numerical0);
                 } else {
-                    startNum = -(Math.abs(data[1].numerical));
-                    endNum = Math.abs(data[1].numerical);
+                    startNum = -(Math.abs(numerical1));
+                    endNum = Math.abs(numerical1);
                 }
             }
             const Shape = G2.Shape;
@@ -584,7 +623,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 container: containerName,
                 forceFit: true,
                 height: 320,
-                padding: [ 0, 15, 30, 10 ]
+                padding: [ 0, 10, 30, 10 ]
             });
             chart.source(data);
 
@@ -647,8 +686,8 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             // 绘制昨天的指标
             chart.guide().arc({
                 zIndex: 1,
-                start: [ data[0].numerical>=0 ? 0 : data[0].numerical, 1.07 ],
-                end: [ data[0].numerical>=0 ? data[0].numerical : 0, 1.07 ],
+                start: [ numerical0>=0 ? 0 : numerical0, 1.07 ],
+                end: [ numerical0>=0 ? numerical0 : 0, 1.07 ],
                 style: {
                     stroke: colorm,
                     lineWidth: 12,
@@ -658,8 +697,8 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             // 绘制前天指标
             chart.guide().arc({
                 zIndex: 2,
-                start: [ data[1].numerical>=0 ? 0 : data[1].numerical, 1.19 ],
-                end: [ data[1].numerical>=0 ? data[1].numerical : 0, 1.19 ],
+                start: [ numerical1>=0 ? 0 : numerical1, 1.19 ],
+                end: [ numerical1>=0 ? numerical1 : 0, 1.19 ],
                 style: {
                     stroke: colorn,
                     lineWidth: 12,
@@ -670,8 +709,9 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             chart.guide().html({
                 position: [ '50%', '60%' ],
                 html: '<div style="width: 300px;text-align: center; border:0px solid red;">'
-                + '<p style="font-size: 15px; color: #545454;margin: 0;">增长</p>'
-                + '<p style="font-size: 18px; color: #545454;margin: 0;">' + data[0].numerical * 10  + '%</p>'
+                + '<p style="margin: 0; font-weight:bold;">' + this.getGaugePercent(numerical0, numerical1) + '</p>'
+                + '<p style="font-size:15px; color: #545454;margin: 0;">' + staticDay1 + '</p>'
+                + '<p style="font-size:14px; font-weight:bold; color:#d2b0ff;margin: 0;">' + numerical1 + '</p>'
                 + '</div>'
             });
 
@@ -679,8 +719,8 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             chart.guide().html({
                 position: [ '50%', '95%' ],
                 html: '<div style="width: 300px;text-align: center; border:0px solid red;">'
-                + '<span style="background-color: '+colorm+'; width: 15px; height: 15px; display: inline-block; margin-right: 8px;"></span>' + data[0].title
-                + '<span style="background-color: '+colorn+'; width: 15px; height: 15px; display: inline-block; margin: 0px 8px 0px 20px;"></span>' + data[1].title
+                + '<span style="background-color: '+colorm+'; width: 15px; height: 15px; display: inline-block; margin-right: 8px;"></span>' + staticDay0
+                + '<span style="background-color: '+colorn+'; width: 15px; height: 15px; display: inline-block; margin: 0px 8px 0px 20px;"></span>' + staticDay1
                 + '</div>'
             });
 
@@ -689,6 +729,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
 
         /**
          * 异步加截运营统计数据(按天/周/月)
+         * @param chart
          * @param rangeType
          */
         asnycLoadOperationData: function(chart, rangeType) {
@@ -700,10 +741,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 timeout: 60000,
                 success: function (data) {
                     var jsonData = $.parseJSON(data);
-                    $(_this.getKey("#balanceGaugeChartData",    rangeType)).html(JSON.stringify(jsonData.balanceGaugeChartData));
-                    $(_this.getKey("#effectiveGaugeChartData",  rangeType)).html(JSON.stringify(jsonData.effectiveGaugeChartData));
-                    $(_this.getKey("#profitLossGaugeChartData", rangeType)).html(JSON.stringify(jsonData.profitLossGaugeChartData));
-                    $(_this.getKey("#operationSummaryData",     rangeType)).html(JSON.stringify(jsonData.operationSummaryData));
+                    $(_this.getKey("#operationSummaryData", rangeType)).html(JSON.stringify(jsonData.operationSummaryData));
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                 },
@@ -737,7 +775,28 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             });
         },
 
-        asnycLoadOfDays:function(chart, rangeType,stateTime,endTime){
+        getGaugePercent: function(numerical1, numerical2) {
+            if(numerical1===0) {
+                numerical1 = 0.0;
+            }
+            var percent = Number([1-(numerical1/numerical2)]*10).toFixed(2);
+            if (percent>0) {
+                return '<font color="red" size="30">↑</font><font color="#d2b0ff" size="30">'+percent+'%</font>';
+            } else if(percent<0) {
+                return '<font color="green" size="30">↓</font><font color="#d2b0ff" size="30">'+Math.abs(percent)+'%</font>';
+            } else {
+                return '<font color="#d2b0ff" size="30">'+percent+'%</font>';
+            }
+        },
+
+        /**
+         * 异步加载数据
+         * @param chart
+         * @param rangeType
+         * @param stateTime
+         * @param endTime
+         */
+        asnycLoadOfDays:function(chart, rangeType, stateTime, endTime) {
             var _this = this;
             var url = root + '/daily/operationSummaryDataOfChoiceDays.html?search.staticTime='+stateTime+"&search.staticTimeEnd="+endTime;
             $.ajax({

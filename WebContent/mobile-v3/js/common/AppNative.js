@@ -101,3 +101,10 @@ function nativeGoToCustomerPage(){
 function nativeGoToApplyPromoPage(){
     window.gamebox.gotoApplyPromoPage();
 }
+
+/**
+ * 原生跳转到注册页面
+ */
+function nativeGoToRegisterPage(){
+    window.gamebox.gotoRegisterPage();
+}

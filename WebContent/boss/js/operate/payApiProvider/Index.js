@@ -65,21 +65,35 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 })
         },
 
-        changeEdit:function (e,opt) {
+        updatePayHostName:function (e,opt) {
             var _target = e.currentTarget;
-            var hostName =$("input[name='hostName']").val();
-            var id=$("#trId").children("td").eq(0).text();
-            window.top.topPage.ajax({
-                url: root + '/operate/payApiProvider/changeEdit.html',
-                dataType: "json",
-                data: {"result.id": id, "result.hostName": hostName},
+            var hostName=e.key;
+            var id=$("td .i-checks", $(_target).parents("tr")).val()
+            if (hostName==""||id==""){
+                window.top.topPage.showErrorMessage("请选择正确的hostName");
+            }else {
 
-            })
+                window.top.topPage.ajax({
+                    url: root + '/operate/payApiProvider/updatePayHostName.html',
+                    dataType: "json",
+                    data: {"id": id, "hostName": hostName},
+                })
+            }
         },
+        updateQueryHostName:function (e,opt) {
+            var _target = e.currentTarget;
+            var hostName=e.key;
+            var id = $("td .i-checks", $(_target).parents("tr")).val()
+            if (hostName==""||id=="") {
+                window.top.topPage.showErrorMessage("请选择正确的hostName");
+            }
+                window.top.topPage.ajax({
+                    url: root + '/operate/payApiProvider/updateQueryHostName.html',
+                    dataType: "json",
+                    data: {"id": id, "hostName": hostName},
+                })
 
-
-
-
+        },
 
 
 
@@ -96,8 +110,6 @@ define(['common/BaseListPage','bootstrapswitch'], function (BaseListPage) {
                 }
             });
         } ,
-
-
 
     });
 });

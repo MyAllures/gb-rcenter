@@ -242,7 +242,8 @@ function muiAjax(options) {
         error: options.error,
         complete: options.complete,
         beforeSend: options.beforeSend,
-        async:options.async
+        async: options.async,
+        contentType: options.contentType,
     };
     mui.ajax(options.url, settings);
 }
