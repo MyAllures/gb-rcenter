@@ -69,6 +69,7 @@ define(['common/BasePage'], function (BasePage) {
                 ;
             });
             $("button[data-dismiss='modal']").click(function () {
+                //TODO 需判断：若客服有未读的消息或有用户在线，则不允许关闭
                 $(".minmaxCon").hide();
                 $('#customerGroupModal').modal('hide');
             });
@@ -98,9 +99,6 @@ define(['common/BasePage'], function (BasePage) {
                 $(this).find('.modal-content').html('');
                 $(this).remove();
                 _this._appendModal();
-
-                //_this.distory();
-
             })
         },
         onPageLoad: function () {

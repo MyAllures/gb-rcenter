@@ -23,6 +23,7 @@ define(['common/BasePage'], function (BasePage) {
             },
             messages: []
         },
+        defaultMessage : '您好，请问有什么可以帮您？',
         timeout: 10000,
         timer: null,//计时器
         comet: window.top.comet,
@@ -30,7 +31,6 @@ define(['common/BasePage'], function (BasePage) {
             var _this = this;
             _this.setStatus();
             _this._super();
-            //openPage.returnValue = _this.disConnect();
             if (_this.status == 'normal') {
 
             } else {
@@ -124,9 +124,21 @@ define(['common/BasePage'], function (BasePage) {
                     break;
                 case 'connected' :
                     _this.stopTimer();
+
                     data.imMessage.status = 'normal';
                     _this.els.$sendTextBtnEL.attr('disabled', false);
                     _this.els.$sendImgBtnEL.attr('disabled', false);
+                    if(data.imMessage.isCustomer){
+                        var imMessage = data.imMessage;
+                        _this.appendMessage({
+                            message: _this.defaultMessage,
+                            time: new Date(),
+                            messageType: 'text',
+                            name: imMessage.sendUserName,
+                            type: 1
+                        });
+
+                    }
                     break;
                 case 'normal':
                     var imMessage = data.imMessage;
