@@ -165,7 +165,7 @@ function getStatisticsData() {
             if (data.profit != null){
                 //$("#statisticalDataProfit").html(currency + data.profit.toFixed(2));
                 //彩池奖金
-                $("#statisticalProfit").html(window.top.message.fund_auto['彩池奖金'] + ":" +currency + data.profit.toFixed(2));
+                $("#statisticalProfit").html("派彩:" +currency + data.profit.toFixed(2));
             }
         },
         error: function (e) {
