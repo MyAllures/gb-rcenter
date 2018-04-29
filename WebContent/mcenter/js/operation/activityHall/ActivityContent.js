@@ -978,11 +978,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             for (i = 0; i < languageCounts; i++) {
                 $("#previewActivityName" + i).text($("[name='activityMessageI18ns[" + i + "].activityName']").val());
                 /*主图*/
-                if ($("#activityContentImg" + i + ' ' + "img").attr("src") == "") {
-                    var src1 = $("#activityContentImage" + i + ' ' + "img").attr('src');
+                if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
+                    var src1 = $("#activityAffiliatedImage" + i + ' ' + "img").attr('src');
                     $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src1);
                 } else {
-                    var src2 = $("#activityContentImg" + i + ' ' + "img").attr('src');
+                    var src2 = $("#activityAffiliatedImg" + i + ' ' + "img").attr('src');
                     $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src2);
                 }
                 $("#previewActivityDesc" + i).html($("[name='activityMessageI18ns[" + i + "].activityDescription']").val());
