@@ -15,6 +15,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             popUp.pop(content, date, "success");
         },
         imCallBack : function(data){
+            var _this = this;
             //console.info("订阅类型为IM的订阅点收到消息，成功调用回调函数，参数值为" + data);
             data = JSON.parse(data);
             if(data.imMessage.status == 'connect') {
@@ -32,7 +33,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         label: '接收',
                         action: function (dialogRef) {
                             data.imMessage.status = 'accepted';
-                            window.top.topPage.showCustomerWin(data.imMessage);
+                            popUp._openCustomerWin(data);
                             dialogRef.close();
                         }
                     }, {
@@ -42,12 +43,32 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         }
                     }]
                 });
-            }else{
-                var dialogs = BootstrapDialog.dialogsArray;
-                var dialog = dialogs[1];
-                //debugger;
-                $('iframe',dialog.$modalContent)[0].contentWindow.page.socketCallBack(data);
+            }else if(data.imMessage.status != 'closed'){
+                popUp._openCustomerWin(data);
             }
+        },
+        _openCustomerWin : function(data){
+            /*var dialogs = BootstrapDialog.dialogsArray;
+            var hasDialog = false,btnDialog = null;
+            $.each(dialogs,function(i,dialog){
+                if(dialog.opened) {
+                    var userId = dialog.options.data.sendUserId;
+                    var sendUserId = data.imMessage.sendUserId;
+                    if (userId && userId == sendUserId) {
+                        hasDialog = true;
+                        $('iframe', dialog.$modalContent)[0].contentWindow.page.socketCallBack(data);
+                    }
+                    if (userId && userId == 'btn') btnDialog = dialog;
+                }
+            });
+            if(!hasDialog) {
+                if (btnDialog) {
+                    $('iframe', btnDialog.$modalContent)[0].contentWindow.page.socketCallBack(data);
+                } else {
+                    window.top.topPage.showCustomerWin(data.imMessage);
+                }
+            }*/
+            window.top.topPage.showCustomerGroupWin(data,false);
         },
         dialogCallBack: function (data) {
             console.info("订阅类型为MCENTER-dialog-Notice的订阅点收到消息，成功调用回调函数，参数值为" + data);

@@ -696,6 +696,8 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
             var _this = this;
             var option = {
                 title: btnOption.text,
+                data: btnOption.data,
+                buttons: btnOption.buttons,
                 closable: btnOption.closable == "false" ? false : btnOption.closable,
                 message: function (dialog) {
                     if (dialog.options.closable == false) {
@@ -1321,21 +1323,58 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 }
             });
         },
-        showCustomerWin: function (imMessage) {
+        /**
+         * 显示客服弹窗
+         * @param imMessage  监听服务返回的消息体
+         * @param btnClk  是否是由按钮触发
+         */
+        showCustomerWin: function (imMessage, btnClk) {
             var btnOption = {};
             btnOption.target = root + "/customer/view.html";
             btnOption.text = '在线客服';
+            btnOption.data = {sendUserId: imMessage ? imMessage.sendUserId : 'btn'};
             btnOption.callback = function (e, opt) {
-                $('iframe',opt.dialogRef.$modalContent)[0].contentWindow.page.disConnect();
+                var page = $('iframe', opt.dialogRef.$modalContent)[0].contentWindow.page;
+                if (page.status != 'closed')
+                    page.disConnect();
+                if (e.page.isButtonClick) {
+                    $(".customer-button").attr('disabled', false);
+                }
             };
-            if(!imMessage){
-                $(".customer-button").attr('disabled',true);
+            if (btnClk) {
+                $(".customer-button").attr('disabled', true);
             }
             this.doDialog({
                 page: {
-                    imMessage: imMessage
+                    imMessage: imMessage,
+                    isButtonClick: btnClk
                 }
             }, btnOption);
+        },
+
+        /**
+         * 显示客服弹窗
+         * @param imMessage  监听服务返回的消息体
+         * @param btnClk  是否是由按钮触发
+         */
+        showCustomerGroupWin: function (data, btnClk) {
+            console.log(window.top.customerGroupView)
+            console.log(window.top.customerGroupView == null)
+            if (window.top.customerGroupView == null) {
+                if(data && (data.imMessage.status == 'close' || data.imMessage.status == 'closed')) return;
+                var modal = $('#customerGroupModal');
+                var modalContent = modal.find('.modal-content');
+                modalContent.load(root + '/customer/groupView.html', function () {
+                    modal.modal({
+                        keyboard: false,
+                        backdrop: false,
+                        data: data,
+                        btnClk: btnClk
+                    });
+                });
+            }else{
+                data ? window.top.customerGroupView.setData(data) : window.top.customerGroupView.addDefaultWin();
+            }
         }
     });
 
