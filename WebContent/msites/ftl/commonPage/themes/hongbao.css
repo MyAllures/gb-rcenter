@@ -347,8 +347,8 @@
     position: absolute;
     width: 32px;
     height: 32px;
-    left: 0;
-    top: 0;transition: all 0.3s;
+    left: -32px;
+    top: -32px;transition: all 0.3s;
     cursor: pointer;}
 .hongbao-wrap .icon-close:hover{
 	transform: rotateZ(90deg);
