@@ -169,9 +169,40 @@ function joinPromo(aplyObj, isRefresh) {
         var searchId = options.dataSearchId;
         canShowLottery(searchId);
         $(aplyObj).removeAttr("disabled");
-    } else {//存就送,有效投注额,盈亏送fetchActivityProcess applyActivities
+    } else if(code == 'deposit_send' || code == 'effective_transaction' || code == 'profit_loss'){
+        fetchActivityProcess(aplyObj);
+    } else {// applyActivities
         applyActivities(aplyObj);
     }
+}
+
+//存就送,有效投注额,盈亏送fetchActivityProcess
+function fetchActivityProcess(aplyObj){
+    var options = eval("(" + $(aplyObj).attr("data-rel") + ")");
+    var ajaxOption = {
+        url: root + "/ntl/activityHall/fetchActivityProcess.html",
+        type: "POST",
+        dataType: "json",
+        data: {
+            code: options.dataCode,
+            resultId: options.dataSearchId
+        },
+        success: function (data) {
+            if (data == null) {
+                toast(window.top.message.promo_auto['用户活动申请还在处理中']);
+                return;
+            }
+            var url = root + '/promo/applyPromoDetail.html?msg=' + encodeURI(encodeURI(data.msg))
+                + '&state=' + data.state
+                + '&error=' + data.error
+                + '&activityName=' + encodeURI(encodeURI(options.activityName));
+            goToUrl(url);
+        },
+        complete: function () {
+            $(aplyObj).removeAttr("disabled");
+        }
+    };
+    muiAjax(ajaxOption);
 }
 
 function applyActivities(aplyObj, isRefresh) {
@@ -193,7 +224,10 @@ function applyActivities(aplyObj, isRefresh) {
             }
             /*showWin(data, isRefresh);
              $(aplyObj).removeAttr("disabled");*/
-            var url = root + '/promo/applyPromoDetail.html?msg=' + encodeURI(encodeURI(data.msg)) + '&state=' + data.state + '&error=' + data.error;
+            var url = root + '/promo/applyPromoDetail.html?msg=' + encodeURI(encodeURI(data.msg))
+                    + '&state=' + data.state
+                    + '&error=' + data.error
+                    + '&activityName=' + encodeURI(encodeURI(options.activityName));
             goToUrl(url);
         },
         complete: function () {
