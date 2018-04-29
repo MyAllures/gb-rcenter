@@ -664,10 +664,10 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
                 /*主图*/
                 if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
                     var src1 = $("#activityAffiliatedImage" + i + ' ' + "img").attr('src');
-                    $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src1);
+                    $("#previewActivityAffiliateImg" + i + ' ' + "img").attr('src', src1);
                 } else {
                     var src2 = $("#activityAffiliatedImg" + i + ' ' + "img").attr('src');
-                    $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src2);
+                    $("#previewActivityAffiliateImg" + i + ' ' + "img").attr('src', src2);
                 }
                 $("#previewActivityDesc" + i).html($("[name='activityMessageI18ns[" + i + "].activityDescription']").val());
             }
@@ -923,10 +923,10 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
                 /*主图*/
                 if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
                     var src1 = $("#activityAffiliatedImage" + i + ' ' + "img").attr('src');
-                    $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src1);
+                    $("#previewActivityAffiliateImg" + i + ' ' + "img").attr('src', src1);
                 } else {
                     var src2 = $("#activityAffiliatedImg" + i + ' ' + "img").attr('src');
-                    $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src2);
+                    $("#previewActivityAffiliateImg" + i + ' ' + "img").attr('src', src2);
                 }
                 $("#previewActivityDesc" + i).html($("[name='activityMessageI18ns[" + i + "].activityDescription']").val());
             }
@@ -938,22 +938,6 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
          * @param e
          */
         activityContentTypePreviewPre: function (e) {
-
-            for (i = 0; i < languageCounts; i++) {
-
-                //附图
-                if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
-                    $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[0]));
-                } else {
-                    if ($("#activityAffiliatedImage" + i).html().trim() == "") {
-                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[1]));
-                    } else {
-                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[2]));
-                    }
-                    $("#dd_" + i).css("display", "block");
-                }
-            }
-
             var code = $("#code").val();
             window.top.topPage.ajax({
                 type: "Get",
