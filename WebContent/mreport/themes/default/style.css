@@ -82,13 +82,15 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .run-title h1 span { font-weight: normal; color: #999999; }
 .run-title .group .btn { border-radius: 7px; margin-left: 5px; }
 
-.public-btn-group { margin: 0 auto; background: #e4edf7; display: flex; border-radius: 15px; }
+.last-amount { font-weight: bold !important; margin-left: 5px;}
+
+.public-btn-group { margin: 0 auto; background: #e4edf7; display: flex; border-radius: 15px;}
 .public-btn-group .btn { height: 30px; border-radius: 15px; flex: 1; background: transparent; color: #999999; }
 .public-btn-group .btn-primary { background: linear-gradient(to right, #00c6ff, #0072ff); color: #fff; }
 
-.terminal-btn-group {margin: 5 auto; display: flex; border-radius: 15px;}
-.terminal-btn-group .btn { height: 20px; margin-right: 15px; border-radius: 15px; flex: 1; background: transparent; color: #999999; }
-.terminal-btn-group .btn-primary { background: linear-gradient(to right, #00c6ff, #0072ff); color: #fff; }
+.terminal-btn-group { margin-top: 5px !important; position: fixed; z-index: 5;}
+.terminal-btn-group .btn { height: 22px; margin-right: 15px; font-size:12px; border-radius: 15px; background-color: #989898 !important; color:#fff; line-height:10px;}
+.terminal-btn-group .btn-primary { background: linear-gradient(to right, #FF9900, #FF9900); }
 
 .page { text-align: center; height: 55px; }
 .page .pageNum { display: inline-block; margin: 20px 50px 0 15px; color: #666; float: left; }
@@ -141,7 +143,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
   .menu { width: 180px; }
   .main-content.drawer-body { transform: translateX(180px); }
   .container .content { margin: 0 10px; }
-  .run-title { height: 50px; line-height: 50px; }
+  .run-title { height: 50px; line-height: 50px; border:1px solid red !important; border: 1px solid red;}
   .gaikuang-page .dataBox1, .gaikuang-page .dataBox2 { margin: 0; }
   .gaikuang-page .dataBox1 .list, .gaikuang-page .dataBox2 .list { margin-bottom: 10px; }
   .gaikuang-page .dataBox1 .list h2, .gaikuang-page .dataBox2 .list h2 { line-height: 45px; }
