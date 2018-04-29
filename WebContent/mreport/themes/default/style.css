@@ -86,6 +86,10 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .public-btn-group .btn { height: 30px; border-radius: 15px; flex: 1; background: transparent; color: #999999; }
 .public-btn-group .btn-primary { background: linear-gradient(to right, #00c6ff, #0072ff); color: #fff; }
 
+.terminal-btn-group {margin: 5 auto; display: flex; border-radius: 15px;}
+.terminal-btn-group .btn { height: 20px; margin-right: 15px; border-radius: 15px; flex: 1; background: transparent; color: #999999; }
+.terminal-btn-group .btn-primary { background: linear-gradient(to right, #00c6ff, #0072ff); color: #fff; }
+
 .page { text-align: center; height: 55px; }
 .page .pageNum { display: inline-block; margin: 20px 50px 0 15px; color: #666; float: left; }
 .page ul { margin: 15px 15px 0 0; }
