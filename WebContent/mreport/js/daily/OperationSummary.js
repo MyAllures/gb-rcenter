@@ -532,6 +532,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         drawGaugeChart: function(containerName, data, colorm, colorn) {
             //清空原有内容
             $("#"+containerName).empty();
+            $("#"+containerName+"_title").html(data[0].title+" : "+data[0].numerical);
 
             var startNum, endNum;
             if(data[0].numerical>=0 && data[1].numerical>=0) {
@@ -564,7 +565,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 container: containerName,
                 forceFit: true,
                 height: 320,
-                padding: [ 0, 15, 30, 10 ]
+                padding: [ 0, 10, 30, 10 ]
             });
             chart.source(data);
 
