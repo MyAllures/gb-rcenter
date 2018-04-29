@@ -106,6 +106,20 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 _this.asnycLoadOfDays($(this).attr("statisticsDataType"),$(this).attr('value'),stateTime,endTime);
             });
 
+            /**
+             * 根据api查询反水金额
+             * */
+            $(".queryRakebackcashByApi .btn.btn-primary").click(function() {
+                var apis = $(this).attr("apis");
+                var gameTypes = $(this).attr("gameTypes");
+                var rangeType = 'D';
+                var stateTime = $(this).attr("stateTime");
+                var endTime = $(this).attr("endTime");
+                // _this.queryRakebackcashOfApi(apis,gameTypes, rangeType,null,null);
+                _this.queryRakebackcashOfApi(apis,gameTypes, rangeType,stateTime,endTime);
+            });
+
+
             //活跃用户和登录次数切换事件
             $("._addPrimary.active-user .btn").click(function(){
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
@@ -373,7 +387,13 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * @param rakebackType
          */
         rakebackTrend:function(rakebackType,rangeType) {
-            var dataKey = this.getKey("#operationSummaryData", rangeType);
+            var dataKey;
+            if('API' === rakebackType){
+                dataKey = '#rakebackCashListByApis';
+                rakebackType = 'rakeback-cash';
+            }else{
+                dataKey = this.getKey("#operationSummaryData", rangeType);
+            }
             var jsonStr = $(dataKey).html();
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
@@ -806,6 +826,31 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                         var statisticsDataType = $("._addPrimary.rakeback-trend .btn.btn-primary").attr("value");
                         _this.rakebackTrend(statisticsDataType,rangeType);
                     }
+                }
+            });
+        },
+
+        queryRakebackcashOfApi:function(apis,gameTypes,rangeType,stateTime,endTime){
+            var _this = this;
+            var url = root + '/daily/queryRakebackCashByApi.html';
+            $.ajax({
+                url: url,
+                type: "POST",
+                data:{
+                    "rakebackAmountApis":apis,
+                    "rakebackAmountGameTypes":gameTypes,
+                    "queryDateRange":rangeType,
+                    "result.staticTime":stateTime,
+                    "result.staticTimeEnd":endTime
+                },
+                success: function (data) {
+                    if(data) {
+                        var jsonData = $.parseJSON(data);
+                        $("#rakebackCashListByApis").html(JSON.stringify(jsonData));
+                        _this.rakebackTrend('API', rangeType);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
                 }
             });
         }
