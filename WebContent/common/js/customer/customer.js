@@ -200,8 +200,6 @@ define(['common/BasePage'], function (BasePage) {
                 }
                 _this.appendMessage(message);
                 _this.els.$textEl.val('');
-            } else {
-
             }
         },
         sendImg: function () {
@@ -213,7 +211,7 @@ define(['common/BasePage'], function (BasePage) {
                 if (file) {
                     reader.readAsDataURL(file);
                 }
-                reader.addEventListener("load", function () {
+                reader && reader.addEventListener("load", function () {
                     _this.comet.websocket.send(JSON.stringify(_this.createSendVo('picture', reader.result)));
                     var message = {
                         type: 2,
