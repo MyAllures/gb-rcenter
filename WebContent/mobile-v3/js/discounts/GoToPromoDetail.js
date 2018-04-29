@@ -193,7 +193,8 @@ function applyActivities(aplyObj, isRefresh) {
             }
             /*showWin(data, isRefresh);
              $(aplyObj).removeAttr("disabled");*/
-            goToUrl(root + '/promo/applyPromoDetail.html');
+            var url = root + '/promo/applyPromoDetail.html?msg=' + encodeURI(encodeURI(data.msg)) + '&state=' + data.state + '&error=' + data.error;
+            goToUrl(url);
         },
         complete: function () {
             $(aplyObj).removeAttr("disabled");
