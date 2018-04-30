@@ -184,7 +184,7 @@ define(['site/MReport'], function (MReport) {
                 if($(this).val()==='report') {
                     $("#operationChart").hide();
                     $("#operationReport").show();
-                    _this.playerTrendList();
+                    _this.asnycOperationSummaryOfDays('2018-04-20', '2018-04-30');
                 } else {
                     $("#operationChart").show();
                     $("#operationReport").hide();
@@ -534,28 +534,91 @@ define(['site/MReport'], function (MReport) {
                         _this.rakebackTrend('API', rangeType);
                     }
                 },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                }
+                error: function (XMLHttpRequest, textStatus, errorThrown) {}
+            });
+        },
+
+        /**
+         * 异步按天加载用户走势数据
+         * @param stateTime
+         * @param endTime
+         */
+        asnycOperationSummaryOfDays: function(stateTime, endTime) {
+            var _this = this;
+            var url = root + '/daily/operationSummaryDataOfChoiceDays.html?search.staticTime='+stateTime+"&search.staticTimeEnd="+endTime;
+            $.ajax({
+                type: "GET",
+                url: url,
+                timeout: 60000,
+                success: function (data) {
+                    var jsonData = $.parseJSON(data);
+                    _this.playerTrendList(jsonData);
+                    _this.depositTrendList(jsonData);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {}
             });
         },
 
         /**
          * 用户走势数据加载
          */
-        playerTrendList: function() {
-            var jsonStr = $("#operationSummaryDataOfDay").html();
-            if(!jsonStr) return;
-            const data = $.parseJSON(jsonStr);
+        playerTrendList: function(data) {
             $('#playerListResult').empty();
             var html;
             $(data).each(function(i) {
-                html += '<tr><td>'+data[i].staticDay+'</td><td>'+data[i].balanceAmount+'</td><td>'+data[i].balanceAmount+'</td><td>'+data[i].balanceAmount+'</td></tr>';
+                html += '<tr><td>'+data[i].staticDateStr + '</td>'
+                        + '<td>' + data[i].newPlayerAll + '</td>'
+                        + '<td>' + data[i].newPlayerDeposit + '</td>'
+                        + '<td>' + data[i].paymentRate + '%</td>'
+                        + '<td>' + data[i].activePc + '</td>'
+                        + '<td>' + data[i].activePhone + '</td>'
+                        + '<td>' + data[i].installIos + '</td>'
+                        + '<td>' + data[i].installAndroid + '</td></tr>';
             });
             $("#playerListResult").html(html);
             $('#playerListResult').prepend('<tr><th>时间</th><th>新增玩家</th><th>新增存款玩家</th><th>付费率</th><th>活跃用户(PC端)</th><th>活跃用户(手机端)</th><th>安装量(IOS)</th><th>安装量(Android)</th></tr>')//添加表头tr th
 
             //分页
-            $.jqPaginator('#pagination', {
+            $.jqPaginator('#playerListPagination', {
+                totalPages: 5,//总共多少页
+                pageSize:10,//分页条目
+                visiblePages: 3,//显示多少分页按钮
+                currentPage: 1,//当前在第几页
+                first:'<li class="page-item"><a class="page-link first-page" href="javascript:;"></a></li>',
+                prev: '<li class="page-item"><a class="page-link previous" href="javascript:;" aria-label="Previous"></a></li>',
+                next: '<li class="page-item"><a class="page-link next" href="javascript:;" aria-label="Next"></a></li>',
+                last: '<li class="page-item"><a class="page-link last-page" href="javascript:;"></a></li>',
+                page: '<li class="page page-item"><a class="page-link" href="javascript:;">{{page}}</a></li>',
+                onPageChange: function (num) {
+                    /*nowpage = num;
+                     howPage();
+                     if(!run){return false}//控制没有时页面还跳动情况*/
+                }
+            });
+        },
+
+        /**
+         * 存取款走势
+         */
+        depositTrendList: function(data) {
+            $('#depositWithdrawResult').empty();
+            var html;
+            $(data).each(function(i) {
+                html += '<tr><td>'+data[i].staticDateStr+'</td>'
+                    + '<td>' + data[i].depositAmount + '</td>'
+                    + '<td>' + data[i].withdrawalAmount + '</td>'
+                    + '<td>' + data[i].balanceAmount + '</td>'
+                    + '<td>' + data[i].refuseWithdrawalAmount + '</td>'
+                    + '<td>' + data[i].transactionProfitLoss + '</td>'
+                    + '<td>' + data[i].rakebackPlayer + '</td>'
+                    + '<td>' + data[i].rakebackAmount + '</td>'
+                    + '<td>' + data[i].installAndroid + '</td></tr>';
+            });
+            $("#depositWithdrawResult").html(html);
+            $('#depositWithdrawResult').prepend('<tr><th>时间</th><th>存款金额(全部)</th><th>取款金额(全部)</th><th>存取差额(全部)</th><th>被拒取款金额</th><th>损益(全部)</th><th>返水人数</th><th>返水金额</th><th>平均存款</th></tr>')//添加表头tr th
+
+            //分页
+            $.jqPaginator('#depositWithdrawPagination', {
                 totalPages: 5,//总共多少页
                 pageSize:10,//分页条目
                 visiblePages: 3,//显示多少分页按钮
