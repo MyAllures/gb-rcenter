@@ -182,6 +182,40 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 var ids = id_array.join(',');
                 $("input[name='rank']").val(ids);
             });
+
+
+            /**
+             * 存款方式全选
+             */
+            $("#allDepositWay").click(function (e, opt) {
+                var id_array = new Array();
+                $("#deposit_ways_div input[type='checkbox']").each(function (item, obj) {
+                    if (!$(this).prop("disabled")) {
+                        obj.checked = e.currentTarget.checked;
+                    }
+                });
+            });
+
+            /**
+             * 全选后点击某个存款方式的checkbox 去掉全选选中
+             */
+            $("[name='activityRule.depositWay']").on("click", function (e) {
+                if (!this.checked) {
+                    $("#allDepositWay").attr("checked", false);
+                }else{
+                    //如果全部勾选，全选按钮勾选
+                    var allDepositWayState = true;
+                    $("[name='activityRule.depositWay']").each(function (item, obj) {
+                        if (!obj.checked){
+                            allDepositWayState = false;
+                        }
+                    });
+                    $("#allDepositWay").prop("checked",allDepositWayState);
+                }
+
+            });
+
+
         },
 
         onPageLoad: function () {
@@ -535,7 +569,9 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $("#previewDepositWay").remove();
             $("#preDepositWay").append('<div class="col-sm-5" id="previewDepositWay"></div>');
             $("[name='activityRule.depositWay']:checked").each(function (index, item) {//存款方式
-                $("#previewDepositWay").append($(this).parent().text() + '&nbsp;');
+                if (!$(this).prop("disabled")) {
+                    $("#previewDepositWay").append($(this).parent().text() + '&nbsp;');
+                }
             });
 
             $("#previewRank").remove();
