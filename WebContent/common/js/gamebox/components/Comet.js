@@ -441,12 +441,14 @@ define([], function () {
         },
         onWebsocketClose: function () {
             console.log("socket close");
+            this.isConnect = false;
             var outThis = this.outThis;
             setTimeout(function () {
                 outThis.connection();
             }, 2000);
         },
         onWebsocketError: function () {
+            this.isConnect = false;
             console.log("socket error");
         },
         onWebsocketBeforeUnload: function () {

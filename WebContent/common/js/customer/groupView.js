@@ -22,7 +22,9 @@ define(['common/BasePage'], function (BasePage) {
         },
         height: 0,
         openRef: 'btn',
+        validConnectTimer : null,
         currentImMessage: null,
+        comet: window.top.comet,
         init: function () {
             var _this = this;
             _this._super();
@@ -64,6 +66,7 @@ define(['common/BasePage'], function (BasePage) {
                     $('#customerGroupModal').removeClass('min');
                     $('#customerGroupModal .modal-body').show();
                     $(".minmaxCon").hide();
+                    $(".minmaxCon .modal-header").removeClass('has-unread-message');
                     _this.height = _this.els.$userChatDivUl.height();
                 }
                 ;
@@ -87,6 +90,7 @@ define(['common/BasePage'], function (BasePage) {
                 } else {
                     _this.addUserWin(options.data.imMessage);
                 }
+                _this._validConnect();
             });
             $('.mymodal').unbind('hidden.bs.modal').on('hidden.bs.modal', function (e) {
                 var _iframes = _this.els.$userChatDivUl.find('iframe');
@@ -154,6 +158,7 @@ define(['common/BasePage'], function (BasePage) {
             if (_this_iframe.is(":hidden")) {
                 this.els.$groupUserUl.find('li').not(_this_li).removeClass('click');
                 this.els.$userChatDivUl.find('iframe').not(_this_iframe).hide();
+                _this_li.removeClass('has-unread-message');
                 _this_li.addClass('click');
                 _this_iframe.show();
             }
@@ -192,11 +197,35 @@ define(['common/BasePage'], function (BasePage) {
         setCurrentImMessage: function (imMessage) {
             this.currentImMessage = imMessage;
         },
+        /**
+         * 窗口是否已存在
+         * @param userId
+         * @returns {*}
+         */
         hasUserWin: function (userId) {
             var li = this.els.$groupUserUl.find('li[id=' + userId + this._sep_Li + ']');
             if (li.length > 0) return li;
             return null;
         },
+        /**
+         * 未读消息闪动提醒
+         * @param userId
+         */
+        andUnReadMessageClass:function(userId){
+            if(!$('.minmaxCon').is(':hidden')){
+                $('.minmaxCon .modal-header').addClass('has-unread-message');
+            }else{
+                var _this_li = this.els.$groupUserUl.find('li[id=' + userId + this._sep_Li + ']');
+                if(!_this_li.hasClass('click')) _this_li.addClass('has-unread-message');
+            }
+        },
+        /**
+         * 添加左侧用户列表
+         * @param id
+         * @param name
+         * @returns {Mixed|jQuery|HTMLElement}
+         * @private
+         */
         _andUserLi: function (id, name) {
             var _this = this;
             name = name ? name : '正在获取客服信息';
@@ -210,6 +239,12 @@ define(['common/BasePage'], function (BasePage) {
             }).appendTo(this.els.$groupUserUl);
             return $(li);
         },
+        /**
+         * 添加iframe聊天窗口
+         * @param id
+         * @param e
+         * @private
+         */
         _andUserIframe: function (id, e) {
             var _this = this;
             var iframe = '<iframe id="' + id + this._sep_Iframe + '" frameborder="0" scrolling="no" width="100%" style="display:none;overflow: visible;height:' + this.height + 'px;" src="/mcenter/customer/view.html"></iframe>';
@@ -217,6 +252,10 @@ define(['common/BasePage'], function (BasePage) {
                 this.contentWindow.openPage = e.page;
             }).appendTo(this.els.$userChatDivUl);
         },
+        /**
+         * 显示分组窗口
+         * @private
+         */
         _showGroupWin: function () {
             var _this = this;
             if (!$(_this.els.$modal).hasClass("min")) {
@@ -226,6 +265,10 @@ define(['common/BasePage'], function (BasePage) {
             }
             ;
         },
+        /**
+         * 用于modal元素清除时重新添加
+         * @private
+         */
         _appendModal: function () {
             $('<div class="modal fade mymodal" id="customerGroupModal" trole="dialog">\n' +
                 '    <div class="modal-dialog modal-lg" role="document">\n' +
@@ -233,6 +276,12 @@ define(['common/BasePage'], function (BasePage) {
                 '    </div>\n' +
                 '</div>').appendTo($(document.body));
         },
+        /**
+         * 判断userId是否已存在
+         * @param userId
+         * @returns {boolean}
+         * @private
+         */
         _constainsUserId: function(userId){
             var contain = false;
             $.each(this.data.users,function(i,id){
@@ -240,6 +289,13 @@ define(['common/BasePage'], function (BasePage) {
             });
             return contain;
         },
+        /**
+         * 替换userid
+         * @param oldUserId
+         * @param newUserId
+         * @param newUserName
+         * @private
+         */
         _updateUserIdByEls:function(oldUserId,newUserId,newUserName){
             var li = this.els.$groupUserUl.find('li[id=' + oldUserId + this._sep_Li + ']');
             var iframe = this.els.$userChatDivUl.find('iframe[id="' + oldUserId + this._sep_Iframe + '"]');
@@ -247,9 +303,28 @@ define(['common/BasePage'], function (BasePage) {
             iframe.attr('id',newUserId + this._sep_Iframe);
             li.find('span').html(newUserName);
         },
+        /**
+         * 监控socket是否已断开
+         * 断开则变更聊天窗口状态
+         * @private
+         */
+        _validConnect:function(){
+            var _this = this;
+            _this.validConnectTimer = setInterval(function () {
+                if (new Date().getTime() - _this.last_active_time > 80000) {
+                    if (!_this.comet.isConnect) {
+                        var _iframes = _this.els.$userChatDivUl.find('iframe');
+                        _iframes.each(function(index,ifr){
+                            ifr.contentWindow.page.socketIsCloseFn();
+                        });
+                    }
+                }
+            }, 20000);
+        },
         destory: function () {
             //delete this.data;
             this.data.users = [];
+            clearInterval(this.validConnectTimer);
         }
     });
 });
