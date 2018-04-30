@@ -182,6 +182,38 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 var ids = id_array.join(',');
                 $("input[name='rank']").val(ids);
             });
+
+
+            /**
+             * 存款方式全选
+             */
+            $("#allDepositWay").click(function (e, opt) {
+                var id_array = new Array();
+                $("#deposit_ways_div input[type='checkbox']").each(function (item, obj) {
+                    if (!$(this).prop("disabled")) {
+                        obj.checked = e.currentTarget.checked;
+                    }
+                });
+            });
+
+            /**
+             * 全选后点击某个存款方式的checkbox 去掉全选选中
+             */
+            $("[name='activityRule.depositWay']").on("click", function (e) {
+                if (!this.checked) {
+                    $("#allDepositWay").attr("checked", false);
+                }
+                //如果全部勾选，全选按钮勾选
+                // var allDepositWayState = true;
+                // $("[name='activityRule.depositWay']").each(function (item, obj) {
+                //     if (!obj.checked){
+                //         allDepositWayState = false;
+                //     }
+                // });
+                // $("#allDepositWay").checked =allDepositWayState;
+            });
+
+
         },
 
         onPageLoad: function () {
@@ -721,10 +753,10 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 /*主图*/
                 if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
                     var src1 = $("#activityAffiliatedImage" + i + ' ' + "img").attr('src');
-                    $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src1);
+                    $("#previewActivityAffiliateImg" + i + ' ' + "img").attr('src', src1);
                 } else {
                  var src2 = $("#activityAffiliatedImg" + i + ' ' + "img").attr('src');
-                 $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src2);
+                 $("#previewActivityAffiliateImg" + i + ' ' + "img").attr('src', src2);
                 }
                 $("#previewActivityDesc" + i).html($("[name='activityMessageI18ns[" + i + "].activityDescription']").val());
             }
@@ -980,10 +1012,10 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 /*主图*/
                 if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
                     var src1 = $("#activityAffiliatedImage" + i + ' ' + "img").attr('src');
-                    $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src1);
+                    $("#previewActivityAffiliateImg" + i + ' ' + "img").attr('src', src1);
                 } else {
                     var src2 = $("#activityAffiliatedImg" + i + ' ' + "img").attr('src');
-                    $("#previewActivityCoverImg" + i + ' ' + "img").attr('src', src2);
+                    $("#previewActivityAffiliateImg" + i + ' ' + "img").attr('src', src2);
                 }
                 $("#previewActivityDesc" + i).html($("[name='activityMessageI18ns[" + i + "].activityDescription']").val());
             }

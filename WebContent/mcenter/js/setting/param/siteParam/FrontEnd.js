@@ -713,8 +713,32 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 data.append(file.name, file.files[0]);
             });
             return data;
+        },
+        savePlayerItem:function (e) {
+            var _this = this;
+            var data = _this.getPlayerItemForm();
+            window.top.topPage.ajax({
+                url: root + "/param/savePlayerItem.html",
+                type: "POST",
+                dataType: "JSON",
+                data:data,
+                success: function (data) {
+                    if (data.state){
+                        page.showPopover(e,{},"success","保存成功",true);
+                    }else if(data.active) {
+                        page.showPopover(e,{},"warning","保存失败,您已启用短信开关，禁用后方可不显示手机",true);
+                    }else {
+                        page.showPopover(e,{},"warning","保存失败",true);
+                    }
+                    _this.saveBack();
+                    $(e.currentTarget).unlock();
+                }
+            });
+        },
+        saveBack:function () {
+            setTimeout(function () {
+                $("#mainFrame").load(root + "/param/frontEnd.html");
+            },1000);
         }
-
-
     });
 });
