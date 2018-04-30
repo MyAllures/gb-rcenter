@@ -202,15 +202,17 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $("[name='activityRule.depositWay']").on("click", function (e) {
                 if (!this.checked) {
                     $("#allDepositWay").attr("checked", false);
+                }else{
+                    //如果全部勾选，全选按钮勾选
+                    var allDepositWayState = true;
+                    $("[name='activityRule.depositWay']").each(function (item, obj) {
+                        if (!obj.checked){
+                            allDepositWayState = false;
+                        }
+                    });
+                    $("#allDepositWay").prop("checked",allDepositWayState);
                 }
-                //如果全部勾选，全选按钮勾选
-                // var allDepositWayState = true;
-                // $("[name='activityRule.depositWay']").each(function (item, obj) {
-                //     if (!obj.checked){
-                //         allDepositWayState = false;
-                //     }
-                // });
-                // $("#allDepositWay").checked =allDepositWayState;
+
             });
 
 
@@ -567,7 +569,9 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $("#previewDepositWay").remove();
             $("#preDepositWay").append('<div class="col-sm-5" id="previewDepositWay"></div>');
             $("[name='activityRule.depositWay']:checked").each(function (index, item) {//存款方式
-                $("#previewDepositWay").append($(this).parent().text() + '&nbsp;');
+                if (!$(this).prop("disabled")) {
+                    $("#previewDepositWay").append($(this).parent().text() + '&nbsp;');
+                }
             });
 
             $("#previewRank").remove();
