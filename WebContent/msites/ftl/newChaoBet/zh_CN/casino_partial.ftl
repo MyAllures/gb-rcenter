@@ -47,7 +47,7 @@
                     </a>
                     <figcaption class="title">
                         <a href="javascript:">${data.siteGameI18ns[game.gameId?string.computer].name}</a>
-                        <#if game.canTry?has_content>
+                        <#if game.canTry?? && game.canTry?string("true","false")=="true">
                             <a href="javascript:" class="_vr_mt_check _vr_mt_slogan game-demo" data-api="${game.apiId?string.computer}" data-game-name="${data.siteGameI18ns[game.gameId?string.computer].name}" data-game-code="<#if data.gameMapById[game.gameId?string.computer]?has_content>${data.gameMapById[game.gameId?string.computer].code}</#if>"
                                startTime="<#if data.gameMapById[game.gameId?string.computer].maintainStartTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainStartTime?long?string.computer}</#if>"
                                endTime="<#if data.gameMapById[game.gameId?string.computer].maintainEndTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainEndTime?long?string.computer}</#if>">试玩</a>
