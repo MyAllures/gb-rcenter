@@ -31,12 +31,14 @@ define(['common/BasePage'], function (BasePage) {
         init: function () {
             var _this = this;
             _this._super();
-            if (_this.status == 'normal') {
-            } else {
-                _this.comet.isConnect && _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
-            }
-            if (_this.status == 'connect') _this.createTimer();
             _this.setStatus();
+            if (_this.status == 'normal') {
+            }
+            //else {
+            //    _this.comet.isConnect && _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
+            //}
+            if (_this.status == 'connect') _this.createTimer();
+
         },
         bindEvent: function () {
             var _this = this;
@@ -59,6 +61,7 @@ define(['common/BasePage'], function (BasePage) {
             if (!status) {
                 if (_this.status == 'connect') {
                     _this.els.$connectionStateEl.html('等待连接...');
+                    _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
                 } else if (_this.status == 'timeout') {
                     _this.els.$connectionStateEl.html('连接超时');
                     _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
