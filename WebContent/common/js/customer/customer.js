@@ -74,7 +74,7 @@ define(['common/BasePage'], function (BasePage) {
                         break;
                     case 'connected' :
                         _this.stopTimer();
-                        imMessage.status = 'normal';
+                        _this.status = 'normal';
                         _this.els.$sendTextBtnEL.attr('disabled', false);
                         _this.els.$sendImgBtnEL.attr('disabled', false);
                         if (data.imMessage.isCustomer) {
