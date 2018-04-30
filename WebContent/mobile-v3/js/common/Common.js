@@ -189,6 +189,10 @@ function muiAjaxError() {
         } else if (status == 606) {// 踢出
             goToUrl(root + "/errors/" + status + ".html");
         } else if (status == 608) {
+            var token = error.getResponseHeader("gb.token");
+            if(token) {
+                $("[name='gb.token']").val(token);
+            }
             toast(window.top.message.common["repeat.request.error"]);
         } else if (status >= 0 && settings && settings.comet != true) { //606、403、404、605等状态码跳转页面
             window.top.location.href = window.top.root + "/errors/" + status + ".html";
