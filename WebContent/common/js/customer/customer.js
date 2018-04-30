@@ -80,6 +80,10 @@ define(['common/BasePage'], function (BasePage) {
                         _this.status = 'normal';
                         _this.els.$sendTextBtnEL.attr('disabled', false);
                         _this.els.$sendImgBtnEL.attr('disabled', false);
+                        _this.els.$connectionStateEl.html('连接成功');
+                        _this.els.$connectionStateEl.removeClass('unConnected').addClass('connected');
+                        window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'online');
+                        window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId);
                         if (imMessage.isCustomer) {
                             //var imMessage = data.imMessage;
                             _this.appendMessage({
