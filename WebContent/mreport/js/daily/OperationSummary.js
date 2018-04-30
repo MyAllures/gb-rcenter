@@ -612,7 +612,7 @@ define(['site/MReport'], function (MReport) {
                     + '<td>' + data[i].transactionProfitLoss + '</td>'
                     + '<td>' + data[i].rakebackPlayer + '</td>'
                     + '<td>' + data[i].rakebackAmount + '</td>'
-                    + '<td>' + data[i].installAndroid + '</td></tr>';
+                    + '<td>' + data[i].averageDeposit + '</td></tr>';
             });
             $("#depositWithdrawResult").html(html);
             $('#depositWithdrawResult').prepend('<tr><th>时间</th><th>存款金额(全部)</th><th>取款金额(全部)</th><th>存取差额(全部)</th><th>被拒取款金额</th><th>损益(全部)</th><th>返水人数</th><th>返水金额</th><th>平均存款</th></tr>')//添加表头tr th

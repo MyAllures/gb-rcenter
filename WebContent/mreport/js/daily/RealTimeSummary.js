@@ -136,15 +136,11 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
             var profilesStr = $("#profilesJson").val();
             if(!profilesStr) return array;
             var profilesJson = $.parseJSON(profilesStr);
-            for(var i = 1; i<=24; i++) {
+            for(var i = 0; i<profilesJson.length; i++) {
+                if(i > 23)continue;
                 var data = {};
-                if( i > profilesJson.length){
-                    data['time'] = i < 10 ? '0'+i+':00': (i > 23 ? '23:59' : i + ':00');
-                    array.push(data);
-                    continue;
-                }
-                var profile = profilesJson[i-1];
-                data['time'] = i < 10 ? '0'+i+':00': (i > 23 ? '23:59' : i + ':00');
+                var profile = profilesJson[i];
+                data['time'] = i = 23 ? '23:59' : profile.realTime;
                 if ('visitor' == realtimeType) {
                     data['访客量(全部)'] = profile.countVisitor;
                     data['访客量(PC端)'] = profile.visitorPc;
