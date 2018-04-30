@@ -786,19 +786,24 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                         var statisticsDataType = $("._addPrimary.active-user .btn.btn-primary").attr("value");
                        'login-count' == statisticsDataType ? _this.loginCount(rangeType) : _this.activeUser(rangeType);
                     } else if('installAndUninstall'===chart) {
-                        var statisticsDataType = $("._addPrimary.install .btn.btn-primary").attr("value");
-                        _this.installAndUninstall(statisticsDataType,rangeType);
+                        _this.installAndUninstall(rangeType);
+
                     } else if('playerTrend'===chart) {
-                        var statisticsDataType = $("._addPrimary.player-trend .btn.btn-primary").attr("value");
-                        _this.playerTrend(statisticsDataType,rangeType);
+                        _this.playerTrend(rangeType);
+
                     } else if('rakebackTrend'===chart) {
-                        var statisticsDataType = $("._addPrimary.rakeback-trend .btn.btn-primary").attr("value");
-                        _this.rakebackTrend(statisticsDataType,rangeType);
+                        _this.rakebackTrend(rangeType);
                     }
                 }
             });
         },
 
+        /**
+         * 上涨和下跌百分比
+         * @param numerical1
+         * @param numerical2
+         * @returns {string}
+         */
         getGaugePercent: function(numerical1, numerical2) {
             if(numerical1===0) {
                 numerical1 = 0.0;
@@ -840,15 +845,16 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                     if('activeUser'===chart) {
                         var statisticsDataType = $("._addPrimary.active-user .btn.btn-primary").attr("value");
                         'login-count' == statisticsDataType ? _this.loginCount(rangeType) : _this.activeUser(rangeType);
+
                     } else if('installAndUninstall'===chart) {
-                        var statisticsDataType = $("._addPrimary.install .btn.btn-primary").attr("value");
-                        _this.installAndUninstall(statisticsDataType,rangeType);
+                        _this.installAndUninstall(rangeType);
+
                     } else if('playerTrend'===chart) {
-                        var statisticsDataType = $("._addPrimary.player-trend .btn.btn-primary").attr("value");
-                        _this.playerTrend(statisticsDataType,rangeType);
+                        _this.playerTrend(rangeType);
+
                     } else if('rakebackTrend'===chart) {
-                        var statisticsDataType = $("._addPrimary.rakeback-trend .btn.btn-primary").attr("value");
-                        _this.rakebackTrend(statisticsDataType,rangeType);
+                        _this.rakebackTrend(rangeType);
+
                     }
                 }
             });
