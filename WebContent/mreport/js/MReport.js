@@ -347,18 +347,18 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         /**
          * 上涨和下跌百分比
          * @author martin
+         * @param numerical0
          * @param numerical1
-         * @param numerical2
          * @returns {string}
          */
-        getGaugePercent: function(numerical1, numerical2) {
-            if(numerical1===0) {
-                numerical1 = 0.0;
+        getGaugePercent: function(numerical0, numerical1) {
+            if(numerical0===0) {
+                numerical0 = 0.0;
             }
-            var percent = Number([1-(numerical1/numerical2)]*10).toFixed(2);
-            if (percent>0) {
+            var percent = Number([(numerical0-numerical1)/Math.abs(numerical1)]*100).toFixed(2);
+            if (numerical0>numerical1) {
                 return '<font color="red" size="30">↑</font><font color="#d2b0ff" size="30">'+percent+'%</font>';
-            } else if(percent<0) {
+            } else if(numerical0<numerical1) {
                 return '<font color="green" size="30">↓</font><font color="#d2b0ff" size="30">'+Math.abs(percent)+'%</font>';
             } else {
                 return '<font color="#d2b0ff" size="30">'+percent+'%</font>';
