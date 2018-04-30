@@ -4,7 +4,6 @@
 define([], function () {
 
     return Class.extend({
-
         /** 请求参数名：同步 */
         SYNCHRONIZE_KEY: "_S_COMET",
         /** 同步值：创建连接 */
@@ -63,10 +62,14 @@ define([], function () {
         /**连接失败后的回调函数**/
         failureCallBack: function () {
         },
+        /**连接失败后的回调函数**/
+        socketCloseCallBack: function () {
+        },
         /**实例化后是否立即执行连接操作**/
         isImmediatelyConnect: false,
         /**是否使用websocket**/
         isUseWebsocket: false,
+        websocket : null,
         /**
          * 构造器
          * @param props 参数对象
@@ -243,8 +246,10 @@ define([], function () {
                 ) {
                     return;
                 }
-
+                var id = "websockid:" + Math.random() * 1000;
+                console.log("***************"+id);
                 _this.websocket = new WebSocket(_this.url_websocket);
+                _this.websocket.id = id;
                 _this.websocket.onopen = _this.onWebsocketOpen;
                 _this.websocket.onclose = _this.onWebsocketClose;
                 _this.websocket.onmessage = _this.onWebsocketMessage;
@@ -413,7 +418,6 @@ define([], function () {
             });
         },
         onWebsocketOpen: function () {
-            // current postion "this" = websocket
             var outThis = this.outThis;
             if (outThis.successCallBack) {
                 outThis.successCallBack.call();
@@ -424,7 +428,6 @@ define([], function () {
         onWebsocketMessage: function (event) {
             var outThis = this.outThis;
             var data = eval("(" + event.data + ")");
-
             // 订阅返回消息
             if (data[outThis.SYNCHRONIZE_KEY] == outThis.SUBSCRIBE_VALUE) {
                 if (data.result == "success") {
@@ -440,9 +443,11 @@ define([], function () {
 
         },
         onWebsocketClose: function () {
-            console.log("socket close");
-            this.isConnect = false;
+            //this.isConnect = false;
             var outThis = this.outThis;
+            if (outThis.socketCloseCallBack) {
+                outThis.socketCloseCallBack.call();
+            }
             setTimeout(function () {
                 outThis.connection();
             }, 2000);

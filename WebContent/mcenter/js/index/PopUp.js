@@ -14,11 +14,11 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var date = msgBody.date;
             popUp.pop(content, date, "success");
         },
-        imCallBack : function(data){
+        imCallBack: function (data) {
             var _this = this;
             //console.info("订阅类型为IM的订阅点收到消息，成功调用回调函数，参数值为" + data);
             data = JSON.parse(data);
-            if(data.imMessage.status == 'connect') {
+            if (data.imMessage.status == 'connect') {
                 var $textAndPic = $('<div style="margin: 5px 10px 30px;"></div>');
                 var $personMessage = $('<div class="service-person"></div>');
                 $personMessage.append('<p>' + data.imMessage.sendUserName + '<span>' + window.top.topPage.formatDateTime(new Date(), "yyyy-MM-dd HH:mm") + '</span></p>');
@@ -33,7 +33,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         label: '接收',
                         action: function (dialogRef) {
                             data.imMessage.status = 'accepted';
-                            popUp._openCustomerWin(data);
+                            popUp._validAccepted(data);
                             dialogRef.close();
                         }
                     }, {
@@ -43,11 +43,26 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         }
                     }]
                 });
-            }else if(data.imMessage.status != 'closed'){
+            } else if (data.imMessage.status == 'acceptFailed') {
+                BootstrapDialog.show({
+                    message: '已被其他客服接入'
+                });
+            } else if (data.imMessage.status != 'closed') {
                 popUp._openCustomerWin(data);
             }
         },
-        _openCustomerWin : function(data){
+        _validAccepted: function (data) {
+            window.top.comet.websocket.send(JSON.stringify({
+                _S_COMET: 'IM',
+                message: JSON.stringify({
+                    status: 'accepted',
+                    receiveUserId: data.imMessage.sendUserId,
+                    receiveUserName: data.imMessage.sendUserName,
+                    receiveUserSiteId: data.imMessage.sendUserSiteId
+                })
+            }));
+        },
+        _openCustomerWin: function (data) {
             /*var dialogs = BootstrapDialog.dialogsArray;
             var hasDialog = false,btnDialog = null;
             $.each(dialogs,function(i,dialog){
@@ -68,7 +83,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     window.top.topPage.showCustomerWin(data.imMessage);
                 }
             }*/
-            window.top.topPage.showCustomerGroupWin(data,false);
+
+            window.top.topPage.showCustomerGroupWin(data, false);
         },
         dialogCallBack: function (data) {
             console.info("订阅类型为MCENTER-dialog-Notice的订阅点收到消息，成功调用回调函数，参数值为" + data);

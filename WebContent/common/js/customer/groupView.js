@@ -14,7 +14,7 @@ define(['common/BasePage'], function (BasePage) {
             $apnData: null,
             $modalCon: null,
             $mainModal: null,
-            $minModal : null
+            $minModal: null
         },
         data: {
             imMessage: null,
@@ -22,7 +22,7 @@ define(['common/BasePage'], function (BasePage) {
         },
         height: 0,
         openRef: 'btn',
-        validConnectTimer : null,
+        validConnectTimer: null,
         currentImMessage: null,
         comet: window.top.comet,
         init: function () {
@@ -31,6 +31,10 @@ define(['common/BasePage'], function (BasePage) {
             _this.els.$groupUserUl = $('#group-user-ul');
             _this.els.$userChatDivUl = $('#user-chat-div');
             _this.els.$mainModal = $('.mymodal');
+            /*监听socket关闭事件*/
+            _this.comet.socketCloseCallBack = function () {
+                _this._disConnect();
+            }
         },
         bindEvent: function () {
             var _this = this;
@@ -42,22 +46,22 @@ define(['common/BasePage'], function (BasePage) {
             });
             $(".modalMinimize").unbind('click').on("click", function (e) {
                 e.preventDefault();
-               _this.els.$modalCon = $(this).closest(".mymodal").attr("id");
+                _this.els.$modalCon = $(this).closest(".mymodal").attr("id");
                 _this.els.$modal = "#" + _this.els.$modalCon;
                 $(".modal-backdrop").addClass("display-none");
                 $(_this.els.$modal).toggleClass("min");
                 if ($(_this.els.$modal).hasClass("min")) {
                     _this.els.$apnData = $(this).closest(".mymodal");
                     //$(this).find("i").toggleClass('fa-minus').toggleClass('fa-folder-open');
-                    $('.mymodal .modal-body').css('display','none');
-                    if(!_this.els.$minModal){
-                        _this.els.$minModal  =  _this.els.$minModal == null ? $($('#customerGroupModal')[0].outerHTML) : _this.els.$minModal;
+                    $('.mymodal .modal-body').css('display', 'none');
+                    if (!_this.els.$minModal) {
+                        _this.els.$minModal = _this.els.$minModal == null ? $($('#customerGroupModal')[0].outerHTML) : _this.els.$minModal;
                         _this.els.$minModal.find('.modal-body').html('');
-                        _this.els.$minModal.attr('id','customerGroupModal_min');
+                        _this.els.$minModal.attr('id', 'customerGroupModal_min');
                         _this.els.$minModal.find(".modalMinimize i").toggleClass('fa-minus').toggleClass('fa-folder-open');
                         $(".minmaxCon").append(_this.els.$minModal);
                         $(this).unbind('click');
-                    }else{
+                    } else {
                         $('#customerGroupModal_min').addClass('min');
                         $(".minmaxCon").show();
                     }
@@ -90,11 +94,10 @@ define(['common/BasePage'], function (BasePage) {
                 } else {
                     _this.addUserWin(options.data.imMessage);
                 }
-                _this._validConnect();
             });
             $('.mymodal').unbind('hidden.bs.modal').on('hidden.bs.modal', function (e) {
                 var _iframes = _this.els.$userChatDivUl.find('iframe');
-                _iframes.each(function(index,ifr){
+                _iframes.each(function (index, ifr) {
                     ifr.contentWindow.page.disConnect();
                 });
                 _this.destory();
@@ -162,7 +165,6 @@ define(['common/BasePage'], function (BasePage) {
                 _this_li.addClass('click');
                 _this_iframe.show();
             }
-            //TODO 清除当前userid相关未读消息
         },
         /**关闭当前窗口**/
         closeUserWin: function () {
@@ -174,7 +176,7 @@ define(['common/BasePage'], function (BasePage) {
             li.find('.fa-circle').removeClass(function (index, className) {
                 return (className.match(/(^|\s)onlineStatus_\S+/g) || []).join(' ');
             }).addClass('onlineStatus_' + status);
-            if(status == 'timeout'){
+            if (status == 'timeout') {
                 li.find('span').html('');
             }
         },
@@ -182,15 +184,14 @@ define(['common/BasePage'], function (BasePage) {
             var _this = this;
             _this.setCurrentImMessage(data.imMessage);
             var userId = data.imMessage.sendUserId;
-            if(data.imMessage.isCustomer){
-                _this._updateUserIdByEls('customer',userId,data.imMessage.sendUserName);
+            if (data.imMessage.isCustomer) {
+                _this._updateUserIdByEls('customer', userId, data.imMessage.sendUserName);
             }
             var li = _this.hasUserWin(userId);
             if (li && data.imMessage.status != 'closed') {
-                //TODO （li隐藏状态 || modal最小化）时需增加未读消息提示
                 this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]')[0].contentWindow.page.socketCallBack(data);
             } else {
-                if (data.imMessage.status != 'close' )
+                if (!li && data.imMessage.status != 'close')
                     this.addUserWin(data.imMessage);
             }
         },
@@ -211,12 +212,12 @@ define(['common/BasePage'], function (BasePage) {
          * 未读消息闪动提醒
          * @param userId
          */
-        andUnReadMessageClass:function(userId){
-            if(!$('.minmaxCon').is(':hidden')){
+        andUnReadMessageClass: function (userId) {
+            if (!$('.minmaxCon').is(':hidden')) {
                 $('.minmaxCon .modal-header').addClass('has-unread-message');
-            }else{
+            } else {
                 var _this_li = this.els.$groupUserUl.find('li[id=' + userId + this._sep_Li + ']');
-                if(!_this_li.hasClass('click')) _this_li.addClass('has-unread-message');
+                if (!_this_li.hasClass('click')) _this_li.addClass('has-unread-message');
             }
         },
         /**
@@ -282,10 +283,10 @@ define(['common/BasePage'], function (BasePage) {
          * @returns {boolean}
          * @private
          */
-        _constainsUserId: function(userId){
+        _constainsUserId: function (userId) {
             var contain = false;
-            $.each(this.data.users,function(i,id){
-                if(userId == id) contain = true;
+            $.each(this.data.users, function (i, id) {
+                if (userId == id) contain = true;
             });
             return contain;
         },
@@ -296,11 +297,11 @@ define(['common/BasePage'], function (BasePage) {
          * @param newUserName
          * @private
          */
-        _updateUserIdByEls:function(oldUserId,newUserId,newUserName){
+        _updateUserIdByEls: function (oldUserId, newUserId, newUserName) {
             var li = this.els.$groupUserUl.find('li[id=' + oldUserId + this._sep_Li + ']');
             var iframe = this.els.$userChatDivUl.find('iframe[id="' + oldUserId + this._sep_Iframe + '"]');
-            li.attr('id',newUserId + this._sep_Li);
-            iframe.attr('id',newUserId + this._sep_Iframe);
+            li.attr('id', newUserId + this._sep_Li);
+            iframe.attr('id', newUserId + this._sep_Iframe);
             li.find('span').html(newUserName);
         },
         /**
@@ -308,18 +309,12 @@ define(['common/BasePage'], function (BasePage) {
          * 断开则变更聊天窗口状态
          * @private
          */
-        _validConnect:function(){
+        _disConnect: function () {
             var _this = this;
-            _this.validConnectTimer = setInterval(function () {
-                if (new Date().getTime() - _this.last_active_time > 80000) {
-                    if (!_this.comet.isConnect) {
-                        var _iframes = _this.els.$userChatDivUl.find('iframe');
-                        _iframes.each(function(index,ifr){
-                            ifr.contentWindow.page.socketIsCloseFn();
-                        });
-                    }
-                }
-            }, 20000);
+            var _iframes = _this.els.$userChatDivUl.find('iframe');
+            _iframes.each(function (index, ifr) {
+                ifr.contentWindow.page.socketIsCloseFn();
+            });
         },
         destory: function () {
             //delete this.data;
