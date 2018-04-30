@@ -28,22 +28,13 @@ define(['common/BasePage'], function (BasePage) {
 
             //左侧一级导航收起/展开图切换
             $('.list-group li').click(function() {
-                if ($(this).hasClass('active')) {
-                    $(this).removeClass('active');
-                } else {
-                    $(this).addClass('active');
-                }
+                $(this).addClass("active").siblings().removeClass("active");
             });
 
             //左侧二级导航
             $('.list-group li').click(function() {
                 window.event.cancelBubble = true;
                 $(this).children().filter('.hideMenu').stop().slideToggle()
-            });
-
-            //菜单被点击后点亮
-            $('a[nav-target]').click(function() {
-
             });
         },
 

@@ -14,7 +14,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             this.balanceColumnChart('D');
 
             this.effectiveGaugeChart('D', 'all');
-            this.effectiveColumnChart('D', 'all');
+            this.effectiveColumnChart('D','all');
 
             this.profitLossGaugeChart('D');
             this.profitLossColumnChart('D');
@@ -54,6 +54,8 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
              */
             $(".effectiveBtn .btn").click(function() {
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
+                var terminalAll = $(".terminal-btn-group").find("button[value='all']");
+                $(terminalAll).addClass("btn-primary").siblings().removeClass("btn-primary");
                 var rangeType = $(this).attr('value');
                 if($(_this.getKey("#operationSummaryData", rangeType)).html()==="") {
                     _this.asnycLoadOperationData('effective', rangeType);
@@ -170,8 +172,23 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             });
 
             //反水金额选择API
-            $("#api-choice").click(function(){
+            $("#api-choice").click(function() {
 
+            });
+
+            /**
+             * 图表与报表的切换
+             */
+            $("._addPrimary .btn").click(function() {
+                $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
+                if($(this).val()==='report') {
+                    $("#operationChart").hide();
+                    $("#operationReport").show();
+                    _this.playerTrendList();
+                } else {
+                    $("#operationChart").show();
+                    $("#operationReport").hide();
+                }
             });
         },
 
@@ -195,6 +212,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
 
         /**
          * 最近两个周期的存取差额对比
+         * @param rangeType
          */
         balanceGaugeChart: function(rangeType) {
             var dataKey = this.getKey("#operationSummaryData", rangeType);
@@ -207,6 +225,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         /**
          * 存取差额分组柱状图展示
          * 展示最近七个周期的存取差额
+         * @param rangeType
          */
         balanceColumnChart: function(rangeType) {
             var dataKey = this.getKey("#operationSummaryData", rangeType);
@@ -257,6 +276,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
 
         /**
          * 最近两个周期损益对比
+         * @param rangeType
          */
         profitLossGaugeChart: function(rangeType) {
             var dataKey = this.getKey("#operationSummaryData", rangeType);
@@ -268,6 +288,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
 
         /**
          * 最近多个周期的损益
+         * @param rangeType
          */
         profitLossColumnChart: function(rangeType) {
             var dataKey = this.getKey("#operationSummaryData", rangeType);
@@ -330,7 +351,8 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         /**
          * 安装量和卸载量 折线图
          */
-        installAndUninstall:function(isinstall,rangeType){
+        installAndUninstall:function(rangeType) {
+            var isinstall = $("._addPrimary.install .btn.btn-primary").attr("value");
             var dataKey = this.getKey("#operationSummaryData", rangeType);
             var jsonStr = $(dataKey).html();
             var operationSummarys = $.parseJSON(jsonStr);
@@ -357,7 +379,8 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         /**
          * 新增玩家和新增存款玩家 折线图
          */
-        playerTrend:function(newPlayerType,rangeType){
+        playerTrend: function(rangeType) {
+            var newPlayerType = $("._addPrimary.player-trend .btn.btn-primary").attr("value");
             var dataKey = this.getKey("#operationSummaryData", rangeType);
             var jsonStr = $(dataKey).html();
             var operationSummarys = $.parseJSON(jsonStr);
@@ -384,9 +407,10 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
 
         /**
          * 返水走势
-         * @param rakebackType
+         * @param rangeType
          */
         rakebackTrend:function(rakebackType,rangeType) {
+            var rakebackType = $("._addPrimary.rakeback-trend .btn.btn-primary").attr("value");
             var dataKey;
             if('API' === rakebackType){
                 dataKey = '#rakebackCashListByApis';
@@ -590,7 +614,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             var numerical1 = $(data[data.length-2]).attr(column);
             var staticDay0 = $(data[data.length-1]).attr('staticDay');
             var staticDay1 = $(data[data.length-2]).attr('staticDay');
-            $("#"+containerName+"_title").html(staticDay0+" : "+numerical0);
+            $("#"+containerName+"_title").html(staticDay0+": "+numerical0);
 
             var startNum, endNum;
             if(numerical0>=0 && numerical1>=0) {
@@ -762,19 +786,24 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                         var statisticsDataType = $("._addPrimary.active-user .btn.btn-primary").attr("value");
                        'login-count' == statisticsDataType ? _this.loginCount(rangeType) : _this.activeUser(rangeType);
                     } else if('installAndUninstall'===chart) {
-                        var statisticsDataType = $("._addPrimary.install .btn.btn-primary").attr("value");
-                        _this.installAndUninstall(statisticsDataType,rangeType);
+                        _this.installAndUninstall(rangeType);
+
                     } else if('playerTrend'===chart) {
-                        var statisticsDataType = $("._addPrimary.player-trend .btn.btn-primary").attr("value");
-                        _this.playerTrend(statisticsDataType,rangeType);
+                        _this.playerTrend(rangeType);
+
                     } else if('rakebackTrend'===chart) {
-                        var statisticsDataType = $("._addPrimary.rakeback-trend .btn.btn-primary").attr("value");
-                        _this.rakebackTrend(statisticsDataType,rangeType);
+                        _this.rakebackTrend(rangeType);
                     }
                 }
             });
         },
 
+        /**
+         * 上涨和下跌百分比
+         * @param numerical1
+         * @param numerical2
+         * @returns {string}
+         */
         getGaugePercent: function(numerical1, numerical2) {
             if(numerical1===0) {
                 numerical1 = 0.0;
@@ -816,15 +845,16 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                     if('activeUser'===chart) {
                         var statisticsDataType = $("._addPrimary.active-user .btn.btn-primary").attr("value");
                         'login-count' == statisticsDataType ? _this.loginCount(rangeType) : _this.activeUser(rangeType);
+
                     } else if('installAndUninstall'===chart) {
-                        var statisticsDataType = $("._addPrimary.install .btn.btn-primary").attr("value");
-                        _this.installAndUninstall(statisticsDataType,rangeType);
+                        _this.installAndUninstall(rangeType);
+
                     } else if('playerTrend'===chart) {
-                        var statisticsDataType = $("._addPrimary.player-trend .btn.btn-primary").attr("value");
-                        _this.playerTrend(statisticsDataType,rangeType);
+                        _this.playerTrend(rangeType);
+
                     } else if('rakebackTrend'===chart) {
-                        var statisticsDataType = $("._addPrimary.rakeback-trend .btn.btn-primary").attr("value");
-                        _this.rakebackTrend(statisticsDataType,rangeType);
+                        _this.rakebackTrend(rangeType);
+
                     }
                 }
             });
@@ -851,6 +881,40 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
+                }
+            });
+        },
+
+        /**
+         * 用户走势数据加载
+         */
+        playerTrendList: function() {
+            var jsonStr = $("#operationSummaryDataOfDay").html();
+            if(!jsonStr) return;
+            const data = $.parseJSON(jsonStr);
+            $('#playerListResult').empty();
+            var html;
+            $(data).each(function(i) {
+                html += '<tr><td>'+data[i].staticDay+'</td><td>'+data[i].balanceAmount+'</td><td>'+data[i].balanceAmount+'</td><td>'+data[i].balanceAmount+'</td></tr>';
+            });
+            $("#playerListResult").html(html);
+            $('#playerListResult').prepend('<tr><th>时间</th><th>新增玩家</th><th>新增存款玩家</th><th>付费率</th><th>活跃用户(PC端)</th><th>活跃用户(手机端)</th><th>安装量(IOS)</th><th>安装量(Android)</th></tr>')//添加表头tr th
+
+            //分页
+            $.jqPaginator('#pagination', {
+                totalPages: 5,//总共多少页
+                pageSize:10,//分页条目
+                visiblePages: 3,//显示多少分页按钮
+                currentPage: 1,//当前在第几页
+                first:'<li class="page-item"><a class="page-link first-page" href="javascript:;"></a></li>',
+                prev: '<li class="page-item"><a class="page-link previous" href="javascript:;" aria-label="Previous"></a></li>',
+                next: '<li class="page-item"><a class="page-link next" href="javascript:;" aria-label="Next"></a></li>',
+                last: '<li class="page-item"><a class="page-link last-page" href="javascript:;"></a></li>',
+                page: '<li class="page page-item"><a class="page-link" href="javascript:;">{{page}}</a></li>',
+                onPageChange: function (num) {
+                    /*nowpage = num;
+                     howPage();
+                     if(!run){return false}//控制没有时页面还跳动情况*/
                 }
             });
         }
