@@ -77,8 +77,8 @@ define(['common/BasePage'], function (BasePage) {
                         _this.status = 'normal';
                         _this.els.$sendTextBtnEL.attr('disabled', false);
                         _this.els.$sendImgBtnEL.attr('disabled', false);
-                        if (data.imMessage.isCustomer) {
-                            var imMessage = data.imMessage;
+                        if (imMessage.isCustomer) {
+                            //var imMessage = data.imMessage;
                             _this.appendMessage({
                                 message: _this.defaultMessage,
                                 time: new Date(),
