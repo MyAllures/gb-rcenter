@@ -44,7 +44,7 @@
             <#if !pic.singleMode && pic.picType=='2'>
                 <#if pic.displayInPages?contains("1")>
                     <#if pic.interactivity=="lock_on_screen">
-                        <ul data-fp="${pic.id}" class="float-services a-${pic.location} aside-float list-unstyled hongbao-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>${pic.location}: ${pic.distanceSide}px;</#if> <#if pic.distanceSide??>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
+                        <ul data-fp="${pic.id}" class="float-services a-${pic.location} aside-float list-unstyled hongbao-custom-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>${pic.location}: ${pic.distanceSide}px;</#if> <#if pic.distanceSide??>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
                             <#if data.floatPicItems?exists>
                                 <#list data.floatPicItems?keys as key>
                                     <#if  data.floatPicItems[key].floatPicId ==pic.id>
@@ -61,7 +61,7 @@
                             </#if>
                         </ul>
                     <#elseif pic.interactivity=="scroll_with_page">
-                        <ul data-fp="${pic.id}" class="float-js-${pic.location} float-services a-${pic.location} aside-float list-unstyled hongbao-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>${pic.location}: ${pic.distanceSide}px;</#if>">
+                        <ul data-fp="${pic.id}" class="float-js-${pic.location} float-services a-${pic.location} aside-float list-unstyled hongbao-custom-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>${pic.location}: ${pic.distanceSide}px;</#if>">
                             <#if data.floatPicItems?exists>
                                 <#list data.floatPicItems?keys as key>
                                     <#if  data.floatPicItems[key].floatPicId ==pic.id>
@@ -78,7 +78,7 @@
                             </#if>
                         </ul>
                     <#elseif pic.interactivity=="lock_on_page">
-                        <ul data-fp="${pic.id}" class="float-lock-on-page float-services a-${pic.location} aside-float list-unstyled hongbao-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>${pic.location}: ${pic.distanceSide}px;</#if> <#if pic.distanceSide??>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
+                        <ul data-fp="${pic.id}" class="float-lock-on-page float-services a-${pic.location} aside-float list-unstyled hongbao-custom-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if> <#if pic.hideCloseButton?? && pic.hideCloseButton>hasClose</#if>" style="display:none;<#if pic.distanceTop??>top: ${pic.distanceTop}px;</#if> <#if pic.distanceSide??>${pic.location}: ${pic.distanceSide}px;</#if> <#if pic.distanceSide??>bottom: <#if pic.distanceBottom??>${pic.distanceBottom}</#if>px</#if>">
                             <#if data.floatPicItems?exists>
                                 <#list data.floatPicItems?keys as key>
                                     <#if  data.floatPicItems[key].floatPicId ==pic.id>
