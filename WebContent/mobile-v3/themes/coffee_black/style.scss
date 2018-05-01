@@ -196,7 +196,6 @@
 .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell{background: #151515;}
 .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{color: #fff;}
 .copy-right {    border-top: 1px solid #333;}
-.mui-bar-tab .mui-icon.icon-home, .mui-bar-tab .mui-icon:active.icon-home {  background: #252525;}
 .mui-title{color: #fff;}
 .mui-bar .mui-icon-back{color: #fff;}
 .mui-content-casino-list .casino-list a p{color: #fff;}
@@ -235,24 +234,11 @@
     color: #7b340d;
 }
 /* ui-bar-tab */
-.mui-bar-tab{
-    .mui-icon,.mui-icon:active{background: url(./images/footer-nav-icon.png) no-repeat center/auto 80px;
-        &.icon-deposit{background: url(./images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -9px -4px;}
-        &.icon-promo{background: url(./images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -49px -5px;}
-        &.icon-home{      width: 46px;    height: 46px;    position: absolute;    left: 50%;    margin-left: -23px;    top: -13px;    background: #252525;    border-radius: 23px;
-            &+.mui-tab-label{margin-top: 31px;}
-            &:after{    content: '';    width: 36px;    height: 36px;    background: url(./images/footer-nav-icon.png) no-repeat -83px -2px/auto 80px;    position: absolute;    left: 5px;    top: 5px;}
-        }
-        &.icon-service{background: url(./images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -129px -5px;}
-        &.icon-mine{background: url(./images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -168px -5px;}        
-    }
-    .mui-active{
-        .mui-icon{background-position-y: -45px;
-            &.icon-home{
-                &:after{    background: url(./images/footer-nav-icon.png) no-repeat -83px -43px/auto 80px;}
-            }
-        }            
-    }
+.mui-bar-tab .mui-icon, .mui-bar-tab .mui-icon:active {
+    background-image: url(./images/footer-nav-icon.png);
+    background-repeat: no-repeat;
+    background-size: auto 48px;
+    background-position-y: 0;
 }
 // 加载页样式
 .load-body{background: #7b340d;
@@ -263,4 +249,8 @@
 .btn-promo-sort.swiper-slide-active span {
     color: #7b340d;
     border-bottom: 2px solid #7b340d;
+}
+.deposit_2 .btn_wrap .btn_submit {
+    background: #7b340d;
+    border-color: #7b340d;
 }
