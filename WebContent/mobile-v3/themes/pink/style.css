@@ -112,20 +112,13 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .casino-game-type .g-t-slide-indicators .swiper-slide-active { color: #0088fe; border-bottom: 1px solid #0088fe; }
 
 /* ui-bar-tab */
-.mui-bar-tab .mui-icon, .mui-bar-tab .mui-icon:active { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; }
-.mui-bar-tab .mui-icon.icon-deposit, .mui-bar-tab .mui-icon:active.icon-deposit { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; background-position: -9px -4px; }
-.mui-bar-tab .mui-icon.icon-promo, .mui-bar-tab .mui-icon:active.icon-promo { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; background-position: -49px -5px; }
-.mui-bar-tab .mui-icon.icon-home, .mui-bar-tab .mui-icon:active.icon-home { width: 46px; height: 46px; position: absolute; left: 50%; margin-left: -23px; top: -13px; background: #c2c2c2; border-radius: 23px; }
-.mui-bar-tab .mui-icon.icon-home + .mui-tab-label, .mui-bar-tab .mui-icon:active.icon-home + .mui-tab-label { margin-top: 31px; }
-.mui-bar-tab .mui-icon.icon-home:after, .mui-bar-tab .mui-icon:active.icon-home:after { content: ''; width: 36px; height: 36px; background: url(images/footer-nav-icon.png) no-repeat -83px -2px/auto 80px; position: absolute; left: 5px; top: 5px; }
-.mui-bar-tab .mui-icon.icon-service, .mui-bar-tab .mui-icon:active.icon-service { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; background-position: -129px -5px; }
-.mui-bar-tab .mui-icon.icon-mine, .mui-bar-tab .mui-icon:active.icon-mine { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; background-position: -168px -5px; }
-.mui-bar-tab .mui-active .mui-icon { background-position-y: -45px; }
-.mui-bar-tab .mui-active .mui-icon.icon-home:after { background: url(images/footer-nav-icon.png) no-repeat -83px -43px/auto 80px; }
+.mui-bar-tab .mui-icon, .mui-bar-tab .mui-icon:active { background-image: url(./images/footer-nav-icon.png); background-repeat: no-repeat; background-size: auto 48px; background-position-y: 0; }
 
 .casino-list-bar .mui-icon-back { color: #fff; }
 
 .load-body { background: #f2205f; }
 .load-body .mui-progressbar.mui-progressbar-infinite:before { background: #f2205f; }
+
+.deposit_2 .btn_wrap .btn_submit { background: #ff3d77; border-color: #ff3d77; }
 
 /*# sourceMappingURL=style.css.map */

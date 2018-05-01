@@ -186,30 +186,20 @@
     }
 }
 /* ui-bar-tab */
-.mui-bar-tab{
-    .mui-icon,.mui-icon:active{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;
-        &.icon-deposit{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -9px -4px;}
-        &.icon-promo{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -49px -5px;}
-        &.icon-home{      width: 46px;    height: 46px;    position: absolute;    left: 50%;    margin-left: -23px;    top: -13px;    background: #c2c2c2;    border-radius: 23px;
-            &+.mui-tab-label{margin-top: 31px;}
-            &:after{    content: '';    width: 36px;    height: 36px;    background: url(images/footer-nav-icon.png) no-repeat -83px -2px/auto 80px;    position: absolute;    left: 5px;    top: 5px;}
-        }
-        &.icon-service{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -129px -5px;}
-        &.icon-mine{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -168px -5px;}        
-    }
-    .mui-active{
-        .mui-icon{background-position-y: -45px;
-            &.icon-home{
-                &:after{    background: url(images/footer-nav-icon.png) no-repeat -83px -43px/auto 80px;}
-            }
-        }            
-    }
+.mui-bar-tab .mui-icon, .mui-bar-tab .mui-icon:active {
+    background-image: url(./images/footer-nav-icon.png);
+    background-repeat: no-repeat;
+    background-size: auto 48px;
+    background-position-y: 0;
 }
-
 .casino-list-bar .mui-icon-back{color: #fff;}
 // 加载页样式
 .load-body{    background:#f2205f;
     .mui-progressbar.mui-progressbar-infinite:before {
         background: #f2205f;
     }
+}
+.deposit_2 .btn_wrap .btn_submit {
+    background: #ff3d77;
+    border-color: #ff3d77;
 }
