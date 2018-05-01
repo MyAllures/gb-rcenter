@@ -24,7 +24,7 @@ define(['common/BasePage'], function (BasePage) {
             messages: []
         },
         defaultMessage: '您好，请问有什么可以帮您？',
-        timeout: 180,//超时时间,单位：秒
+        timeout: 30,//超时时间,单位：秒
         timer: null,//计时器
         comet: window.top.comet,
         init: function () {
@@ -55,11 +55,11 @@ define(['common/BasePage'], function (BasePage) {
             if (imMessage) status = imMessage.status;
             var _this = this;
             if (!status) {
-                if (_this.status == 'connect') {
+                if (_this.status === 'connect') {
                     _this.els.$connectionStateEl.html('等待连接...');
                     _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
                     _this.createTimer();
-                } else if (_this.status == 'timeout') {
+                } else if (_this.status === 'timeout') {
                     _this.els.$connectionStateEl.html('客服繁忙');
                     _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
                     var userId = imMessage ? imMessage.sendUserId : 'customer';
@@ -157,13 +157,13 @@ define(['common/BasePage'], function (BasePage) {
             _this.els.$scrollEl.scrollTop(_this.els.$contentEl.height());
         },
         getHtmlString: function (data) {
-            var html = data.type == 1 ?
+            var html = data.type === 1 ?
                 '<div class="service-person" ><p>' + data.name + '<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
-                '<div class="customer_message">' + (data.messageType == 'text' ? data.message : '<img src="' + data.message + '"/>') + '</div>' +
+                '<div class="customer_message">' + (data.messageType === 'text' ? data.message : '<img src="' + data.message + '"/>') + '</div>' +
                 '</div>'
                 :
                 '<div class="guest-person" ><p>我<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
-                '<div class="customer_message">' + (data.messageType == 'text' ? data.message : '<img src="' + data.message + '"/>') + '</div>' +
+                '<div class="customer_message">' + (data.messageType === 'text' ? data.message : '<img src="' + data.message + '"/>') + '</div>' +
                 '</div>';
             return html;
         },
@@ -202,7 +202,7 @@ define(['common/BasePage'], function (BasePage) {
             var _this = this;
             var text = _this.els.$textEl.val();
             //TODO 需设置文本内容长度
-            if ($.trim(text) != '') {
+            if ($.trim(text) !== '') {
                 var createO = _this.createSendVo('text', text);
                 console.log('webSocket:' + _this.comet.websocket.id);
                 _this.comet.websocket.send(JSON.stringify(createO));

@@ -1,4 +1,4 @@
-define(['gb/components/PopUp'], function (PopUp) {
+define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDialog) {
 
     return PopUp.extend({
         tones: null,
@@ -52,15 +52,15 @@ define(['gb/components/PopUp'], function (PopUp) {
                             dialogRef.close();
                         }
                     }],
-                    onshown : function(dialogRef){
-                        _this.imTimer = setInterval(function(){
+                    onshown: function (dialogRef) {
+                        _this.imTimer = setInterval(function () {
                             var time = Number($('#accept_ok_time').html());
-                            if(time == 1){
+                            if (time == 1) {
                                 clearInterval(_this.imTimer);
                                 dialogRef.close();
                             }
                             $('#accept_ok_time').html(--time);
-                        },1000);
+                        }, 1000);
                     }
                 });
             } else if (data.imMessage.status == 'acceptFailed') {
@@ -212,7 +212,7 @@ define(['gb/components/PopUp'], function (PopUp) {
                 msg = "站点【${siteId}】${siteName}转账上限已使用${rate}%,已停止玩家转账！";
             } /*else if (rate >= warnRate) {
                 msg = "站点【${siteId}】${siteName}转账上限已使用${rate}%,需提醒站点在${date}之前充值，请及时关注！";
-            }*/else {
+            }*/ else {
                 msg = "站点【${siteId}】${siteName}转账上限已使用${rate}%,需提醒站点注意已使用额度，及时充值！";
             }
             if (msg) {
