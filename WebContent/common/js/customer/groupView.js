@@ -71,12 +71,6 @@ define(['common/BasePage'], function (BasePage) {
                 }
                 ;
             });
-            //$("button[data-dismiss='modal']").click(function (e) {
-                //TODO 需判断：若客服有未读的消息或有用户在线，则不允许关闭
-                //debugger;
-                //$(".minmaxCon").hide();
-                //$('#customerGroupModal').modal('hide');
-            //});
             $('.mymodal').on('shown.bs.modal', function (e) {
                 e.preventDefault();
                 _this.data.imMessage = null;
@@ -117,7 +111,7 @@ define(['common/BasePage'], function (BasePage) {
              */
             if (!_this._constainsUserId('customer')) {
                 _this.data.users.push('customer');
-                _this._andUserLi('customer',null,true);
+                _this._andUserLi('customer', null, true);
                 _this._andUserIframe('customer', {
                     page: {
                         imMessage: null,
@@ -134,7 +128,7 @@ define(['common/BasePage'], function (BasePage) {
             var userId = imMessage.sendUserId;
             if (!_this._constainsUserId(userId)) {
                 _this.data.users.push(userId);
-                var li = _this._andUserLi(imMessage.sendUserId, imMessage.sendUserName,imMessage.isCustomer);
+                var li = _this._andUserLi(imMessage.sendUserId, imMessage.sendUserName, imMessage.isCustomer);
                 _this._andUserIframe(imMessage.sendUserId, {
                     page: {
                         imMessage: _this.currentImMessage,
@@ -164,16 +158,20 @@ define(['common/BasePage'], function (BasePage) {
             }
         },
         /**关闭当前窗口**/
-        closeUserWin: function ($li) {
+        closeUserWin: function ($li, noSendClose) {
             var _this = this;
-            var userId = $li.attr('id').replace(this._sep_Li, '');;
-
-            var $iframe = this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]');
-            $iframe[0].contentWindow.page.disConnect();
-            _this.data.users.remove(userId);
-            $li.remove();
-            $iframe.remove();
             //TODO 删除li和iframe (注意：如果由未读聊天记录不允许关闭）
+            var userId = $li.attr('id').replace(this._sep_Li, '');
+            var $iframe = this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]');
+            if (!noSendClose) $iframe[0].contentWindow.page.disConnect();
+            _this._removeUserId(userId);
+            if (_this.data.users.length == 0) {
+                $(".minmaxCon").hide();
+                $('#customerGroupModal').modal('hide');
+            } else {
+                $li.remove();
+                $iframe.remove();
+            }
         },
         updateStatus: function (userId, status) {
             var li = this.els.$groupUserUl.find('li[id=' + userId + this._sep_Li + ']');
@@ -188,11 +186,16 @@ define(['common/BasePage'], function (BasePage) {
             var _this = this;
             _this.setCurrentImMessage(data.imMessage);
             var userId = data.imMessage.sendUserId;
+            var li = _this.hasUserWin(userId);
             if (data.imMessage.status == 'accepted') {
                 data.imMessage.isCustomer = true;
-                _this._updateUserIdByEls('customer', userId, data.imMessage.sendUserName);
+                if (!li) {
+                    _this._updateUserIdByEls('customer', userId, data.imMessage.sendUserName);
+                } else {
+                    _this.closeUserWin(_this.hasUserWin('customer'),true);
+                }
             }
-            var li = _this.hasUserWin(userId);
+            li = _this.hasUserWin(userId);
             if (li && data.imMessage.status != 'closed') {
                 this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]')[0].contentWindow.page.socketCallBack(data);
             } else {
@@ -218,12 +221,11 @@ define(['common/BasePage'], function (BasePage) {
          * @param userId
          */
         andUnReadMessageClass: function (userId) {
-            if (!$('.minmaxCon').is(':hidden')) {
+            if ($('.minmaxCon').children().length > 0 && !$('.minmaxCon').is(':hidden')) {
                 $('.minmaxCon .modal-header').addClass('has-unread-message');
-            } else {
-                var _this_li = this.els.$groupUserUl.find('li[id=' + userId + this._sep_Li + ']');
-                if (!_this_li.hasClass('click')) _this_li.addClass('has-unread-message');
             }
+            var _this_li = this.els.$groupUserUl.find('li[id=' + userId + this._sep_Li + ']');
+            if (!_this_li.hasClass('click')) _this_li.addClass('has-unread-message');
         },
         /**
          * 添加左侧用户列表
@@ -232,15 +234,15 @@ define(['common/BasePage'], function (BasePage) {
          * @returns {Mixed|jQuery|HTMLElement}
          * @private
          */
-        _andUserLi: function (id, name,isCustomer) {
+        _andUserLi: function (id, name, isCustomer) {
             var _this = this;
             name = name ? name : '';
-            var $li = $('<li class="clearfix click" id="' + id + _this._sep_Li + '" '+ (isCustomer ? ' isCustomer = true style="border-bottom: 1px solid #fff;"' : '') +' >' +
+            var $li = $('<li class="clearfix click" id="' + id + _this._sep_Li + '" ' + (isCustomer ? ' isCustomer = true style="border-bottom: 1px solid #fff;"' : '') + ' >' +
                 '          <div class="about">' +
                 '                 <div class="name"><i class="fa fa-circle"></i><span style="padding-left:4px;">' + name + '</span></div>' +
                 '          </div>' +
                 '     </li>');
-            if(isCustomer) {
+            if (isCustomer) {
                 var $closeButton = $('<button type="button" class="close"><i class="fa fa-times fa-close-li"></i></button>');
                 $closeButton.bind("click", function (e) {
                     e.preventDefault();
@@ -250,7 +252,7 @@ define(['common/BasePage'], function (BasePage) {
             $li.bind("click", function () {
                 _this.showUserWin(null, this);
             });
-            isCustomer ? this.els.$groupUserUl.prepend($li)  :  $li.appendTo(this.els.$groupUserUl)
+            isCustomer ? this.els.$groupUserUl.prepend($li) : $li.appendTo(this.els.$groupUserUl)
             return $li;
         },
         /**
@@ -304,6 +306,16 @@ define(['common/BasePage'], function (BasePage) {
             return contain;
         },
         /**
+         * 删除userid
+         * @param userId
+         * @private
+         */
+        _removeUserId: function (userId) {
+            this.data.users = jQuery.grep(this.data.users, function (value) {
+                return value != userId;
+            });
+        },
+        /**
          * 替换userid
          * @param oldUserId
          * @param newUserId
@@ -311,11 +323,14 @@ define(['common/BasePage'], function (BasePage) {
          * @private
          */
         _updateUserIdByEls: function (oldUserId, newUserId, newUserName) {
-            var li = this.els.$groupUserUl.find('li[id=' + oldUserId + this._sep_Li + ']');
-            var iframe = this.els.$userChatDivUl.find('iframe[id="' + oldUserId + this._sep_Iframe + '"]');
+            var _this = this;
+            var li = _this.els.$groupUserUl.find('li[id=' + oldUserId + _this._sep_Li + ']');
+            var iframe = _this.els.$userChatDivUl.find('iframe[id="' + oldUserId + _this._sep_Iframe + '"]');
             li.attr('id', newUserId + this._sep_Li);
             iframe.attr('id', newUserId + this._sep_Iframe);
             li.find('span').html(newUserName);
+            _this._removeUserId(oldUserId);
+            _this.data.users.push(newUserId);
         },
         destory: function () {
             //delete this.data;

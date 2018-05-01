@@ -14,17 +14,7 @@ define(['gb/components/PopUp','bootstrap-dialog'], function (PopUp,BootstrapDial
             popUp.pop(content, date, "success");
         },
         imCallBack : function(data){
-            data = JSON.parse(data);
-            var dialogs = BootstrapDialog.dialogsArray;
-            $.each(dialogs,function(i,dialog){
-                if(dialog.opened){
-                    if (data.imMessage.status == 'accepted'){
-                        data.imMessage.isCustomer = true;
-                    }
-                    var iframe = $('iframe',dialog.$modalContent)[0];
-                    iframe.contentWindow.page.socketCallBack(data);
-                }
-            });
+            window.top.topPage.showCustomerGroupWin(JSON.parse(data),false);
         },
         dialogCallBack: function (data) {
             var dataObj = $.parseJSON(data);

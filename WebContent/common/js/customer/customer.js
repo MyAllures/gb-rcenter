@@ -75,7 +75,8 @@ define(['common/BasePage'], function (BasePage) {
                         _this.els.$sendImgBtnEL.attr('disabled', false);
                         _this.els.$connectionStateEl.html('连接成功');
                         _this.els.$connectionStateEl.removeClass('unConnected').addClass('connected');
-                        window.top.customerGroupView && window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'online') && window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId);
+                        if(window.top.customerGroupView)
+                            window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'online'),window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId);
                         if (imMessage.isCustomer) {
                             _this.appendMessage({
                                 message: _this.defaultMessage,
@@ -95,7 +96,7 @@ define(['common/BasePage'], function (BasePage) {
                             name: imMessage.sendUserName,
                             type: 1
                         });
-                        window.top.customerGroupView && window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId);
+                        if(window.top.customerGroupView) window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId);
                         break;
                     case 'close' :
                         _this.els.$sendTextBtnEL.attr('disabled', true);
@@ -103,7 +104,7 @@ define(['common/BasePage'], function (BasePage) {
                         _this.status = status;
                         _this.els.$connectionStateEl.html('对方已下线');
                         _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
-                        window.top.customerGroupView && window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
+                        if(window.top.customerGroupView) window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
                         break;
                     case 'closeSocket' :
                         _this.status = status;
@@ -111,7 +112,7 @@ define(['common/BasePage'], function (BasePage) {
                         _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
                         _this.els.$sendTextBtnEL.attr('disabled', true);
                         _this.els.$sendImgBtnEL.attr('disabled', true);
-                        window.top.customerGroupView && window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
+                        if(window.top.customerGroupView) window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
                         break;
                     default:
                         break;
@@ -170,7 +171,6 @@ define(['common/BasePage'], function (BasePage) {
             var _this = this;
             _this.status = 'close';
             var vo = _this.createSendVo();
-            debugger;
             _this.comet.websocket.send(JSON.stringify(vo));
         },
         /**
