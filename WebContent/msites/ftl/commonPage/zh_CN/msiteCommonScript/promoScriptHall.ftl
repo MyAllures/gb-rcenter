@@ -263,7 +263,7 @@
             var icon;
             for (j = 0; j<preferentialRelations.length; j++) {
 
-                if (data.effectivetransaction > preferentialRelations[j].preferentialValue){
+                if (data.effectivetransaction >= preferentialRelations[j].preferentialValue){
                     icon = '<i class="icon-pass"></i>';
                 } else {
                     icon = '<i class="icon-fail"></i>';
