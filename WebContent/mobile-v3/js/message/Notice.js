@@ -139,7 +139,7 @@ function advisorySubmit() {
                     } else
                         toast(window.top.message.my_auto["提交失败"]);
                 }
-                var captcha_img = $('._captcha_img');
+                var captcha_img = $('#_captcha_img');
                 var _src = captcha_img.data("src");
                 captcha_img.attr("src", _src);
                 if (data.isOpenCaptcha) {
