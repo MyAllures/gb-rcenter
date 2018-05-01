@@ -149,7 +149,7 @@ function submitPromo(obj, options) {
  * @param aplyObj
  * @param isRefresh
  */
-function joinPromo(aplyObj, isRefresh) {
+function joinPromo(aplyObj) {
     $(aplyObj).attr("disabled", "disabled");
     var nowTime = new Date($("._now_time").attr("value")).getTime();
     var st = new Date($('._vr_promo_ostart').attr('value')).getTime();
@@ -163,78 +163,24 @@ function joinPromo(aplyObj, isRefresh) {
     var code = options.dataCode;
     if (code == "back_water") {
         showWarningMsg(window.top.message.promo_auto['提示'], window.top.message.promo_auto['参与中']);
-    } else if (isRefresh) {
-        applyActivities(aplyObj, true);
     } else if (code == 'money') {
         var searchId = options.dataSearchId;
         canShowLottery(searchId);
         $(aplyObj).removeAttr("disabled");
-    } else if(code == 'deposit_send' || code == 'effective_transaction' || code == 'profit_loss'){
-        fetchActivityProcess(aplyObj);
+    } else if (code == 'deposit_send' || code == 'effective_transaction' || code == 'profit_loss') {//存就送,有效投注额,盈亏送fetchActivityProcess
+        applyActivities(aplyObj, 'fetch');
     } else {// applyActivities
-        applyActivities(aplyObj);
+        applyActivities(aplyObj, 'apply');
     }
 }
 
-//存就送,有效投注额,盈亏送fetchActivityProcess
-function fetchActivityProcess(aplyObj){
+function applyActivities(aplyObj, type) {
     var options = eval("(" + $(aplyObj).attr("data-rel") + ")");
-    var ajaxOption = {
-        url: root + "/ntl/activityHall/fetchActivityProcess.html",
-        type: "POST",
-        dataType: "json",
-        data: {
-            code: options.dataCode,
-            resultId: options.dataSearchId
-        },
-        success: function (data) {
-            if (data == null) {
-                toast(window.top.message.promo_auto['用户活动申请还在处理中']);
-                return;
-            }
-            var url = root + '/promo/applyPromoDetail.html?msg=' + encodeURI(encodeURI(data.msg))
-                + '&state=' + data.state
-                + '&error=' + data.error
-                + '&activityName=' + encodeURI(encodeURI(options.activityName));
-            goToUrl(url);
-        },
-        complete: function () {
-            $(aplyObj).removeAttr("disabled");
-        }
-    };
-    muiAjax(ajaxOption);
-}
-
-function applyActivities(aplyObj, isRefresh) {
-    var options = eval("(" + $(aplyObj).attr("data-rel") + ")");
-    var dataParam = {};
-    dataParam.code = options.dataCode;
-    dataParam.resultId = options.dataSearchId;
-    //dataParam.transactionNos = tansactionObj;
-    var ajaxOption = {
-        url: root + "/ntl/activityHall/applyActivities.html",
-        data: JSON.stringify(dataParam),
-        dataType: 'json',
-        type: 'POST',
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-            if (data == null) {
-                toast(window.top.message.promo_auto['用户活动申请还在处理中']);
-                return;
-            }
-            /*showWin(data, isRefresh);
-             $(aplyObj).removeAttr("disabled");*/
-            var url = root + '/promo/applyPromoDetail.html?msg=' + encodeURI(encodeURI(data.msg))
-                    + '&state=' + data.state
-                    + '&error=' + data.error
-                    + '&activityName=' + encodeURI(encodeURI(options.activityName));
-            goToUrl(url);
-        },
-        complete: function () {
-            $(aplyObj).removeAttr("disabled");
-        }
-    };
-    muiAjax(ajaxOption);
+    var url = root + '/promo/applyPromoDetail.html?resultId=' + options.dataSearchId
+        + '&activityName=' + encodeURI(encodeURI(options.activityName))
+        + '&code=' + options.dataCode
+        + '&type=' + type;
+    goToUrl(url);
 }
 
 function showWin(data, isRefresh) {
