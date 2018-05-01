@@ -13,6 +13,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             this.initSystemRecommendData();
             this.initGameNum();
             this.initPreferential();
+            this.changeKey();
         },
 
         bindEvent: function () {
@@ -1344,6 +1345,22 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $("#loss_preferential").show();
             }else {
                 $("#loss_preferential").hide();
+            }
+        },
+        /**
+         * 活动周期描述切换
+         * @param null
+         */
+        changeKey: function () {
+            var value = $('[name="activityRule.claimPeriod"]').val();
+            if (value == 'NaturalDay') {
+                $(".claimPeriodDetail").text('以活动开启时间为起点，顺延24小时为1个结算周期，可以多次查询当前投注额，派奖以结算时为准。')
+            }else if (value == 'NaturalWeek') {
+                $(".claimPeriodDetail").text('以活动开启时间为起点，顺延7*24小时为1个结算周期，可以多次查询当前投注额，派奖以结算时为准。');
+            }else if (value == 'NaturalMonth') {
+                $(".claimPeriodDetail").text('以活动开启时间为起点，顺延30*24小时为1个结算周期，可以多次查询当前投注额，派奖以结算时为准。');
+            }else {
+                $(".claimPeriodDetail").text('每个周期内，每人默认只能申请一次。');
             }
         },
     });
