@@ -88,9 +88,15 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .public-btn-group .btn { height: 30px; border-radius: 15px; flex: 1; background: transparent; color: #999999; }
 .public-btn-group .btn-primary { background: linear-gradient(to right, #00c6ff, #0072ff); color: #fff; }
 
-.terminal-btn-group { margin-top: 5px !important; position: fixed; z-index: 5;}
+.terminal-btn-group {margin-top: 5px !important; position: fixed;}
 .terminal-btn-group .btn { height: 22px; margin-right: 15px; font-size:12px; border-radius: 15px; background-color: #989898 !important; color:#fff; line-height:10px;}
 .terminal-btn-group .btn-primary { background: linear-gradient(to right, #FF9900, #FF9900); }
+
+.range-box { margin: 12px 0 0 145px !important; position: fixed;}
+.range-box .public-range-group { display: inline !important; }
+.range-box .public-range-group .btn { width: 28px; height: 28px; border-radius: 100%; text-align: center; padding: 0; }
+.range-box .date { height: 30px; border: 1px solid #e2e2e2; border-radius: 15px; display: inline-block; vertical-align: middle; overflow: hidden; padding: 0 10px 0 28px; background: url(../images/date.png) 10px center no-repeat; line-height: 30px; color: #999; }
+.range-box .date input { height: 31px; vertical-align: top; border: none; width: 80px; text-align: center; color: #999; cursor: pointer; }
 
 .page { text-align: center; height: 55px; }
 .page .pageNum { display: inline-block; margin: 20px 50px 0 15px; color: #666; float: left; }
@@ -113,7 +119,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .page .jump:before { display: inline-block; content: ''; width: 8px; height: 5px; border-left: 2px solid #727c87; border-bottom: 2px solid #727c87; position: absolute; top: 50%; margin-top: -4px; }
 .page .jump:after { display: inline-block; content: ''; width: 0; height: 0; border-top: 5px solid transparent; border-left: 8px solid #727c87; border-bottom: 5px solid transparent; margin: 1px 0 0 7px; }
 
-.tableBox { background: #fff; border-radius: 8px; margin-bottom: 15px; }
+.tableBox { background: #fff; border-radius: 8px; margin-bottom: 15px; display: none;}
 .tableBox .top { border-bottom: 1px solid #eee; padding: 0 15px; display: flex; align-items: center; height: 50px; line-height: 50px; }
 .tableBox .top h3 { font-size: 1.15rem; color: #4c789f; font-weight: bold; }
 .tableBox table { table-layout: fixed; width: 100%; text-align: center; color: #666666; }
