@@ -19,6 +19,69 @@ define(['gb/components/PopUp'], function (PopUp) {
                 $(e.currentTarget).parent().parent().parent().remove()
             });
         },
+        imCallBack: function (data) {
+            var _this = this;
+            //console.info("订阅类型为IM的订阅点收到消息，成功调用回调函数，参数值为" + data);
+            data = JSON.parse(data);
+            if (data.imMessage.status == 'connect') {
+                var $textAndPic = $('<div style="margin: 5px 10px 30px;"></div>');
+                var $personMessage = $('<div class="service-person"></div>');
+                $personMessage.append('<p>' + data.imMessage.sendUserName + '<span>' + window.top.topPage.formatDateTime(new Date(), "yyyy-MM-dd HH:mm") + '</span></p>');
+                var text = data.imMessage.messageBody.textBody;
+                if (!text) text = '我需要你的帮助';
+                $personMessage.append('<div class="customer_message">' + text + '</div>');
+                $textAndPic.append($personMessage);
+                popUp.showDialog({
+                    title: '您收到新的客户消息',
+                    message: $textAndPic,
+                    buttons: [{
+                        label: '接收<span id="accept_ok_time" style="padding-left:3px;">30</span>',
+                        id: 'accept_ok',
+                        action: function (dialogRef) {
+                            clearInterval(_this.imTimer);
+                            data.imMessage.status = 'accepted';
+                            popUp._validAccepted(data);
+                            dialogRef.close();
+                        }
+                    }, {
+                        label: '繁忙',
+                        action: function (dialogRef) {
+                            clearInterval(_this.imTimer);
+                            data.imMessage.status = 'refuse';
+                            popUp._validAccepted(data);
+                            dialogRef.close();
+                        }
+                    }],
+                    onshown : function(dialogRef){
+                        _this.imTimer = setInterval(function(){
+                            var time = Number($('#accept_ok_time').html());
+                            if(time == 1){
+                                clearInterval(_this.imTimer);
+                                dialogRef.close();
+                            }
+                            $('#accept_ok_time').html(--time);
+                        },1000);
+                    }
+                });
+            } else if (data.imMessage.status == 'acceptFailed') {
+                BootstrapDialog.show({
+                    message: '已被其他客服接入'
+                });
+            } else {
+                window.top.topPage.showCustomerGroupWin(data, false);
+            }
+        },
+        _validAccepted: function (data) {
+            window.top.comet.websocket.send(JSON.stringify({
+                _S_COMET: 'IM',
+                message: JSON.stringify({
+                    status: data.imMessage.status,
+                    receiveUserId: data.imMessage.sendUserId,
+                    receiveUserName: data.imMessage.sendUserName,
+                    receiveUserSiteId: data.imMessage.sendUserSiteId
+                })
+            }));
+        },
 
         /**
          * 转账监控提醒

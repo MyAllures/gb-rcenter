@@ -2,6 +2,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
 
     return PopUp.extend({
         tones: null,
+        imTimer:null,
         init: function () {
             this._super();
             this.queryTones();
@@ -30,8 +31,10 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     title: '您收到新的客户消息',
                     message: $textAndPic,
                     buttons: [{
-                        label: '接收',
+                        label: '接收<span id="accept_ok_time" style="padding-left:3px;">30</span>',
+                        id: 'accept_ok',
                         action: function (dialogRef) {
+                            clearInterval(_this.imTimer);
                             data.imMessage.status = 'accepted';
                             popUp._validAccepted(data);
                             dialogRef.close();
@@ -39,52 +42,41 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     }, {
                         label: '繁忙',
                         action: function (dialogRef) {
+                            clearInterval(_this.imTimer);
+                            data.imMessage.status = 'refuse';
+                            popUp._validAccepted(data);
                             dialogRef.close();
                         }
-                    }]
+                    }],
+                    onshown : function(dialogRef){
+                        _this.imTimer = setInterval(function(){
+                            var time = Number($('#accept_ok_time').html());
+                            if(time == 1){
+                                clearInterval(_this.imTimer);
+                                dialogRef.close();
+                            }
+                            $('#accept_ok_time').html(--time);
+                        },1000);
+                    }
                 });
             } else if (data.imMessage.status == 'acceptFailed') {
                 BootstrapDialog.show({
                     message: '已被其他客服接入'
                 });
-            } else if (data.imMessage.status != 'closed') {
-                popUp._openCustomerWin(data);
+            } else {
+                window.top.topPage.showCustomerGroupWin(data, false);
             }
         },
         _validAccepted: function (data) {
             window.top.comet.websocket.send(JSON.stringify({
                 _S_COMET: 'IM',
                 message: JSON.stringify({
-                    status: 'accepted',
+                    status: data.imMessage.status,
                     receiveUserId: data.imMessage.sendUserId,
                     receiveUserName: data.imMessage.sendUserName,
                     receiveUserSiteId: data.imMessage.sendUserSiteId
                 })
             }));
-        },
-        _openCustomerWin: function (data) {
-            /*var dialogs = BootstrapDialog.dialogsArray;
-            var hasDialog = false,btnDialog = null;
-            $.each(dialogs,function(i,dialog){
-                if(dialog.opened) {
-                    var userId = dialog.options.data.sendUserId;
-                    var sendUserId = data.imMessage.sendUserId;
-                    if (userId && userId == sendUserId) {
-                        hasDialog = true;
-                        $('iframe', dialog.$modalContent)[0].contentWindow.page.socketCallBack(data);
-                    }
-                    if (userId && userId == 'btn') btnDialog = dialog;
-                }
-            });
-            if(!hasDialog) {
-                if (btnDialog) {
-                    $('iframe', btnDialog.$modalContent)[0].contentWindow.page.socketCallBack(data);
-                } else {
-                    window.top.topPage.showCustomerWin(data.imMessage);
-                }
-            }*/
-
-            window.top.topPage.showCustomerGroupWin(data, false);
         },
         dialogCallBack: function (data) {
             console.info("订阅类型为MCENTER-dialog-Notice的订阅点收到消息，成功调用回调函数，参数值为" + data);

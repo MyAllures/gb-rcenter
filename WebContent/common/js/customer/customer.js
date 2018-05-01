@@ -24,21 +24,17 @@ define(['common/BasePage'], function (BasePage) {
             messages: []
         },
         defaultMessage: '您好，请问有什么可以帮您？',
-        timeout: 10000,
+        timeout: 180,//超时时间,单位：秒
         timer: null,//计时器
         comet: window.top.comet,
-        last_active_time: new Date().getTime(),
         init: function () {
             var _this = this;
             _this._super();
             _this.setStatus();
-            if (_this.status == 'normal') {
+            /*监听socket关闭事件*/
+            _this.comet.socketCloseCallBack = function () {
+                _this._socketColsed();
             }
-            //else {
-            //    _this.comet.isConnect && _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
-            //}
-            if (_this.status == 'connect') _this.createTimer();
-
         },
         bindEvent: function () {
             var _this = this;
@@ -62,19 +58,16 @@ define(['common/BasePage'], function (BasePage) {
                 if (_this.status == 'connect') {
                     _this.els.$connectionStateEl.html('等待连接...');
                     _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
+                    _this.createTimer();
                 } else if (_this.status == 'timeout') {
-                    _this.els.$connectionStateEl.html('连接超时');
+                    _this.els.$connectionStateEl.html('客服繁忙');
                     _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
                     var userId = imMessage ? imMessage.sendUserId : 'customer';
-                    window.top.customerGroupView.updateStatus(userId, 'timeout');
+                    window.top.customerGroupView && window.top.customerGroupView.updateStatus(userId, 'timeout');
                 }
             } else {
                 switch (status) {
-                    case 'accepted' :
-                        _this.status = status;
-                        _this.els.$connectionStateEl.html('正在接通...');
-                        _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
-                        break;
+                    case 'accepted':  //勿删
                     case 'connected' :
                         _this.stopTimer();
                         _this.status = 'normal';
@@ -82,10 +75,8 @@ define(['common/BasePage'], function (BasePage) {
                         _this.els.$sendImgBtnEL.attr('disabled', false);
                         _this.els.$connectionStateEl.html('连接成功');
                         _this.els.$connectionStateEl.removeClass('unConnected').addClass('connected');
-                        window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'online');
-                        window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId);
+                        window.top.customerGroupView && window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'online') && window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId);
                         if (imMessage.isCustomer) {
-                            //var imMessage = data.imMessage;
                             _this.appendMessage({
                                 message: _this.defaultMessage,
                                 time: new Date(),
@@ -97,24 +88,30 @@ define(['common/BasePage'], function (BasePage) {
                         break;
                     case 'normal' :
                         _this.status = status;
-                        _this.els.$connectionStateEl.html('连接成功');
-                        _this.els.$connectionStateEl.removeClass('unConnected').addClass('connected');
-                        window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'online');
-                        window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId);
+                        _this.appendMessage({
+                            message: imMessage.messageBody.textBody ? imMessage.messageBody.textBody : '',
+                            time: new Date(),
+                            messageType: imMessage.messageBody.messageType,
+                            name: imMessage.sendUserName,
+                            type: 1
+                        });
+                        window.top.customerGroupView && window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId);
                         break;
-                    case 'closed' :
+                    case 'close' :
+                        _this.els.$sendTextBtnEL.attr('disabled', true);
+                        _this.els.$sendImgBtnEL.attr('disabled', true);
                         _this.status = status;
                         _this.els.$connectionStateEl.html('对方已下线');
                         _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
-                        window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
+                        window.top.customerGroupView && window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
                         break;
                     case 'closeSocket' :
                         _this.status = status;
-                        _this.els.$connectionStateEl.html('由于您长时间未操作，该连接已关闭');
+                        _this.els.$connectionStateEl.html('由于您长时间未操作，连接已关闭');
                         _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
                         _this.els.$sendTextBtnEL.attr('disabled', true);
                         _this.els.$sendImgBtnEL.attr('disabled', true);
-                        window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
+                        window.top.customerGroupView && window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
                         break;
                     default:
                         break;
@@ -149,31 +146,6 @@ define(['common/BasePage'], function (BasePage) {
         },
         socketCallBack: function (data) {
             var _this = this;
-            switch (data.imMessage.status) {
-                case 'accepted' :
-                    _this.status = 'accepted';
-                    break;
-                case 'connected' :
-                    _this.status = 'connected';
-                    break;
-                case 'normal':
-                    var imMessage = data.imMessage;
-                    _this.appendMessage({
-                        message: imMessage.messageBody.textBody ? imMessage.messageBody.textBody : '',
-                        time: new Date(),
-                        messageType: imMessage.messageBody.messageType,
-                        name: imMessage.sendUserName,
-                        type: 1
-                    });
-                    break;
-                case 'close':
-                    data.imMessage.status = 'closed';
-                    _this.els.$sendTextBtnEL.attr('disabled', true);
-                    _this.els.$sendImgBtnEL.attr('disabled', true);
-                    break;
-                default :
-                    break;
-            }
             openPage.imMessage = data.imMessage;
             _this.setStatus();
         },
@@ -198,7 +170,16 @@ define(['common/BasePage'], function (BasePage) {
             var _this = this;
             _this.status = 'close';
             _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
-            //this.comet.disConnect();
+        },
+        /**
+         * 监控socket是否已断开
+         * 断开则变更聊天窗口状态
+         * @private
+         */
+        _socketColsed: function () {
+            if (openPage.imMessage)
+                openPage.imMessage.status = 'closeSocket',
+                    this.setStatus();
         },
         /**
          * 连接超时功能
@@ -210,7 +191,7 @@ define(['common/BasePage'], function (BasePage) {
                 function () {
                     _this.status = "timeout";
                     _this.setStatus();
-                }, _this.timeout);
+                }, _this.timeout * 1000);
         },
         stopTimer: function () {
             clearTimeout(this.timer);
@@ -255,10 +236,6 @@ define(['common/BasePage'], function (BasePage) {
                     _this.els.$textEl.val('');
                 }, false);
             });
-        },
-        socketIsCloseFn: function () {
-            openPage.imMessage.status = 'closeSocket';
-            this.setStatus();
         }
     });
 });

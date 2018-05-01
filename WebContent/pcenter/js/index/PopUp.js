@@ -14,23 +14,17 @@ define(['gb/components/PopUp','bootstrap-dialog'], function (PopUp,BootstrapDial
             popUp.pop(content, date, "success");
         },
         imCallBack : function(data){
-            //console.info("订阅类型为MCENTER-popUp-im的订阅点收到消息，成功调用回调函数，参数值为" + data);
             data = JSON.parse(data);
-            /*var dialogs = BootstrapDialog.dialogsArray;
+            var dialogs = BootstrapDialog.dialogsArray;
             $.each(dialogs,function(i,dialog){
                 if(dialog.opened){
                     if (data.imMessage.status == 'accepted'){
-                        data.imMessage.status = 'connected';
+                        data.imMessage.isCustomer = true;
                     }
                     var iframe = $('iframe',dialog.$modalContent)[0];
                     iframe.contentWindow.page.socketCallBack(data);
                 }
-            });*/
-            if (data.imMessage.status == 'accepted'){
-                data.imMessage.status = 'connected';
-                data.imMessage.isCustomer = true; //是否是客服响应的accepted
-            }
-            window.top.topPage.showCustomerGroupWin(data,false);
+            });
         },
         dialogCallBack: function (data) {
             var dataObj = $.parseJSON(data);

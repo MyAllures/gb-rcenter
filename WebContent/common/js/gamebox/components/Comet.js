@@ -189,6 +189,7 @@ define([], function () {
             });
             _this._subscribeMsg();
         },
+
         _subscribeMsg: function () {
             var subscribeTypes = this.getSubscribeTypes();
             var userParam = {};
@@ -246,10 +247,8 @@ define([], function () {
                 ) {
                     return;
                 }
-                var id = "websockid:" + Math.random() * 1000;
-                console.log("***************"+id);
                 _this.websocket = new WebSocket(_this.url_websocket);
-                _this.websocket.id = id;
+                //_this.websocket.id = id;
                 _this.websocket.onopen = _this.onWebsocketOpen;
                 _this.websocket.onclose = _this.onWebsocketClose;
                 _this.websocket.onmessage = _this.onWebsocketMessage;

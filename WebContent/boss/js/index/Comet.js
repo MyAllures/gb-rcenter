@@ -12,6 +12,7 @@ define(['gb/components/Comet', 'site/index/PopUp', 'cookie'], function (Comet, P
             param.success = function () {
                 console.info("连接成功!");
                 subscribes = [
+                    {subscribeType: "IM", callBack: popUp.imCallBack},
                     {subscribeType: "BOSS_TRANSFER_REMINDER", callBack: popUp.transferCallback},
                     {subscribeType: "BOSS_API_TRANS_REMINDER", callBack: popUp.transMonitorCallback},
                     {subscribeType: "BOSS_API_ORDER_REMINDER", callBack: popUp.apiOrderCallback},

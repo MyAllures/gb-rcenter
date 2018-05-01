@@ -31,10 +31,6 @@ define(['common/BasePage'], function (BasePage) {
             _this.els.$groupUserUl = $('#group-user-ul');
             _this.els.$userChatDivUl = $('#user-chat-div');
             _this.els.$mainModal = $('.mymodal');
-            /*监听socket关闭事件*/
-            _this.comet.socketCloseCallBack = function () {
-                _this._disConnect();
-            }
         },
         bindEvent: function () {
             var _this = this;
@@ -75,13 +71,14 @@ define(['common/BasePage'], function (BasePage) {
                 }
                 ;
             });
-            $("button[data-dismiss='modal']").click(function () {
+            //$("button[data-dismiss='modal']").click(function (e) {
                 //TODO 需判断：若客服有未读的消息或有用户在线，则不允许关闭
-                $(".minmaxCon").hide();
-                $('#customerGroupModal').modal('hide');
-            });
+                //debugger;
+                //$(".minmaxCon").hide();
+                //$('#customerGroupModal').modal('hide');
+            //});
             $('.mymodal').on('shown.bs.modal', function (e) {
-                //_this.data.users =  [];
+                e.preventDefault();
                 _this.data.imMessage = null;
                 var options = $(this).data('bs.modal').options;
                 if (options.data != null) {
@@ -167,8 +164,9 @@ define(['common/BasePage'], function (BasePage) {
             }
         },
         /**关闭当前窗口**/
-        closeUserWin: function () {
+        closeUserWin: function ($li) {
             var _this = this;
+            debugger;
             //TODO 删除li和iframe (注意：如果由未读聊天记录不允许关闭）
         },
         updateStatus: function (userId, status) {
@@ -184,7 +182,8 @@ define(['common/BasePage'], function (BasePage) {
             var _this = this;
             _this.setCurrentImMessage(data.imMessage);
             var userId = data.imMessage.sendUserId;
-            if (data.imMessage.isCustomer) {
+            if (data.imMessage.status == 'accepted') {
+                data.imMessage.isCustomer = true;
                 _this._updateUserIdByEls('customer', userId, data.imMessage.sendUserName);
             }
             var li = _this.hasUserWin(userId);
@@ -229,16 +228,20 @@ define(['common/BasePage'], function (BasePage) {
          */
         _andUserLi: function (id, name) {
             var _this = this;
-            name = name ? name : '正在获取客服信息';
-            var li = '<li class="clearfix click" id="' + id + _this._sep_Li + '">' +
+            name = name ? name : '';
+            var $li = $('<li class="clearfix click" id="' + id + _this._sep_Li + '">' +
                 '          <div class="about">' +
                 '                 <div class="name"><i class="fa fa-circle"></i><span style="padding-left:4px;">' + name + '</span></div>' +
                 '          </div>' +
-                '      </li>';
-            $(li).bind("click", function () {
+                '     </li>');
+            var $closeButton = $('<button type="button" class="close"><i class="fa fa-times fa-close-li"></i></button>');
+            $closeButton.bind("click", function () {
+                _this.closeUserWin($(this).closest('li'));
+            });
+            $li.bind("click", function () {
                 _this.showUserWin(null, this);
-            }).appendTo(this.els.$groupUserUl);
-            return $(li);
+            }).appendTo(this.els.$groupUserUl).append($closeButton);
+            return $li;
         },
         /**
          * 添加iframe聊天窗口
@@ -248,7 +251,7 @@ define(['common/BasePage'], function (BasePage) {
          */
         _andUserIframe: function (id, e) {
             var _this = this;
-            var iframe = '<iframe id="' + id + this._sep_Iframe + '" frameborder="0" scrolling="no" width="100%" style="display:none;overflow: visible;height:' + this.height + 'px;" src="/mcenter/customer/view.html"></iframe>';
+            var iframe = '<iframe id="' + id + this._sep_Iframe + '" frameborder="0" scrolling="no" width="100%" style="display:none;overflow: visible;height:' + this.height + 'px;" src="' + root + '/customer/view.html"></iframe>';
             $(iframe).bind("load", function () {
                 this.contentWindow.openPage = e.page;
             }).appendTo(this.els.$userChatDivUl);
@@ -303,18 +306,6 @@ define(['common/BasePage'], function (BasePage) {
             li.attr('id', newUserId + this._sep_Li);
             iframe.attr('id', newUserId + this._sep_Iframe);
             li.find('span').html(newUserName);
-        },
-        /**
-         * 监控socket是否已断开
-         * 断开则变更聊天窗口状态
-         * @private
-         */
-        _disConnect: function () {
-            var _this = this;
-            var _iframes = _this.els.$userChatDivUl.find('iframe');
-            _iframes.each(function (index, ifr) {
-                ifr.contentWindow.page.socketIsCloseFn();
-            });
         },
         destory: function () {
             //delete this.data;
