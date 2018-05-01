@@ -117,7 +117,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 container: containerName,
                 forceFit: true,
                 height: height,
-                padding: [20, 35, 45, 50]
+                padding: [20, 40, 45, 50]
             });
             chart.source(data);
             chart.interval().position(position)
