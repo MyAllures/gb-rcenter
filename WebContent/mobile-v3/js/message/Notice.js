@@ -47,7 +47,7 @@ function segmentedControl1(obj, options) {
     var href = obj.getAttribute("data-href");
     changeBlur();
     $(".mui-control-content[name=notice]").removeClass("mui-active");
-    $("#" + href).addClass("mui-active")
+    $("#" + href).addClass("mui-active");
     if (href == "noticeSite") {//站点消息
         if (!item3) {
             site1Notice();
@@ -71,7 +71,6 @@ function segmentedControl1(obj, options) {
 //点击二级选项卡时切换页面
 function segmentedControl2(obj, options) {
     var href = obj.getAttribute("data-href");
-    var controlItems = document.getElementsByClassName("mui-control-content");
     $(".mui-control-content[name=noticeSite]").removeClass("mui-active");
     changeBlur();
     $("#" + href).addClass("mui-active");
@@ -160,21 +159,6 @@ function deleteSysMessage(obj, options) {
         if (ids == '') {
             toast(window.top.message.my_auto["请选择需要删除的记录"]);
         } else {
-            /*mui.ajax({
-                type: "post",
-                url: root + "/message/deleteNoticeReceived.html",
-                data: {"ids": ids},
-                dataType: 'json',
-                success: function (data) {
-                    if (data.state) {
-                        toast(window.top.message.my_auto['删除成功']);
-                        unReadCount();
-                        var data = {"paging.pageNumber": 1};
-                        pageNumberSite1 = pullRefreshUp(root + "/message/messageList.html", "noticeSite1Partial",
-                            1, "site1LastPageNumber", mui("#noticeSite1Scroll"), data, true);
-                    }
-                }
-            });*/
             var options = {
                 type: "post",
                 url: root + "/message/deleteNoticeReceived.html",
@@ -197,21 +181,6 @@ function deleteSysMessage(obj, options) {
         if (ids == '') {
             toast(window.top.message.my_auto["请选择消息记录"]);
         } else {
-            /*mui.ajax({
-                type: "post",
-                url: root + "/message/systemMessageEditStatus.html",
-                data: {"ids": ids},
-                dataType: 'json',
-                success: function (data) {
-                    if (data.state) {
-                        toast(window.top.message.my_auto['标记成功']);
-                        unReadCount();
-                        var data = {"paging.pageNumber": 1};
-                        pageNumberSite1 = pullRefreshUp(root + "/message/messageList.html", "noticeSite1Partial",
-                            1, "site1LastPageNumber", mui("#noticeSite1Scroll"), data, true);
-                    }
-                }
-            });*/
             var options = {
                 type: "post",
                 url: root + "/message/systemMessageEditStatus.html",
@@ -240,7 +209,7 @@ function deleteMyMessage(obj, options) {
         if (ids == '') {
             toast(window.top.message.my_auto["请选择需要删除的记录"]);
         } else {
-            mui.ajax({
+            var options = {
                 type: "post",
                 url: root + "/message/deleteAdvisoryMessage.html",
                 data: {"ids": ids},
@@ -254,14 +223,15 @@ function deleteMyMessage(obj, options) {
                             1, "site2LastPageNumber", mui("#noticeSite2Scroll"), data, true);
                     }
                 }
-            });
+            }
+            muiAjax(options);
         }
     } else if (obj.getAttribute("name") == "editStatus") {
         var ids = getSelectIdsArray("site2_check").join(",");
         if (ids == '') {
             toast(window.top.message.my_auto["请选择消息记录"]);
         } else {
-            mui.ajax({
+            var options = {
                 type: "post",
                 url: root + "/message/getSelectAdvisoryMessageIds.html",
                 data: {"ids": ids},
@@ -275,7 +245,8 @@ function deleteMyMessage(obj, options) {
                             1, "site2LastPageNumber", mui("#noticeSite2Scroll"), data, true);
                     }
                 }
-            });
+            }
+            muiAjax(options);
         }
     }
 }
