@@ -132,7 +132,8 @@ height: 44px;
         }
     }
 }
-.download-content-ios{background: #fff !important;
+.download-content-ios{background: #fff !important;position: relative;
+    margin-top: 44px;
     .h-bg{width: 100%;}
     .app-logo{width: 100px;height: 100px;position: absolute;top: 40px;left: 50%;margin-left: -50px;}
     .btn-install{display:block;margin:20px auto 0;width: 165px;height: 40px;text-align: center;line-height: 40px;color: #eb0002;font-size: 15px;border: 1px solid #eb0002;border-radius: 6px;}
@@ -547,4 +548,117 @@ height: 44px;
         .mui-toast-message{background: #fff;color: #333;font-size: 13px;padding: 11px 5px;}
     }
 }
+/* 忘记密码样式  */
+body.forget-password{
+    .mui-content{background: #efefef;}
+    .a-block{display: block;}
+    .diy-list{
+        font-size: 14px;color: #666;display: flex;height: 55px;line-height: 54px;border-top: 1px solid #f2f2f2;background: #fff;
+        .label{width: 46px;text-align: center;
+            &.label_txt{    width: 100px;    text-align: left;    padding-left: 10px;}
+        }
+        .input{flex: 1;
+            .txt{padding: 0 10px;}
+            input[type="text"],input[type="password"]{border: 0;margin: 0;height: 54px;line-height: 54px;padding: 0 10px;font-size: 12px;color: #333;vertical-align: top;
+                &.text-right{text-align: right;}
+            }
+        }
+        .ext{
+            padding-right: 10px;
+            .txt{font-size: 12px;color: #666;}
+        }
+    }
+    .btn-wrap{margin: 40px 10px 10px;
+        .btn-blo{padding: 0;line-height: 40px;height: 40px;background: #1766bb;color: #fff;border-radius: 5px;font-size: 14px;border-color: #1766bb;}
+    }
+    .account_input{
+        background: #fff;padding: 30px 0;
+        input{margin:0 auto;display:block;width: 250px;height: 50px;line-height: 50px;outline: 0;border-radius: 5px;background: #f2f2f2;border: 1px solid #e2e2e2;padding: 0 10px;font-size: 14px;color: #333;}
+    }
+    .code-txt{text-align: center;background: #fff;font-size: 14px;color: #333;padding: 30px 0;
+        span{display: block;color: #1766bb;}
+    }
+}
+.not_bind_phone_dialog{// 未绑定手机弹窗
+    &.mui-popup{
+        .mui-popup-inner{padding: 0;
+            .mui-popup-title{font-size: 14px;color: #333;padding: 15px 0;}
+            .mui-popup-text{margin: 0;
+                .cont{font-size: 12px;color: #333;}
+            }
+            .btn_wra{height: 41px;line-height: 40px;border-top: 1px solid #e2e2e2;margin-top: 15px;
+                a{display: block;font-size: 14px;color: #1766bb;width: 50%;float: left;
+                    &+a{border-left: 1px solid #e2e2e2;}
+                }
+            }
+        }
+        .mui-popup-buttons{display: none;}
+    }
+}
+.password_set_success_dialog{// 密码设置成功弹窗
+    &.mui-popup{
+        .mui-popup-inner{padding: 0;border-radius: 13px;background: #fff;}
+        .mui-popup-text{margin-top: 0;overflow: hidden;
+            .icon-gongxi{background: url(./images/icon-gongxi.png) no-repeat center /100%;width: (232px/2);height: (212px/2);margin: 55px auto 35px;}   
+            .txt{font-size: 14px;color: #333;margin-bottom: 70px;}
+        }
+        .mui-popup-buttons{
+            height: 80px;line-height: 80px;
+        }
+        .mui-popup-button{background: transparent;height: 80px;line-height: 80px;
+            .mui-icon{    background: #fff;  border-radius: 50%;  width: 50px;  height: 50px;  vertical-align: top;   margin-top: 24px;    font-size: 63px;
+                &:before{    position: absolute;    left: 50%;    margin-left: -31px;    top: 17px;}
+            }
+        }
+    }
+}
 
+
+//绑定手机号码：
+body.bind-mobile{font-size:14px;
+    //  绑定手机号码， step-1
+    .mui-content{background: #efefef;}
+    .input{background:#fff;font-size:14px;padding:10px;  
+        input{border:none; font-size:14px;display:inline-block;margin-bottom:5px;color:#666;padding:0 5px;}
+        .mobile,.yzm{display:flex;}
+        .yzm{
+          input{margin-bottom:0;}
+          a{white-space: nowrap;line-height: 40px;display:inline-block;}  
+        }
+        i.icon-mobile{width:37px;display:inline-block;height:40px;background:url(../images/phone.png) center no-repeat/ 12px;}
+        i.icon-yzm{width:45px;display:inline-block;height:40px;background:url(../images/safe.png) center no-repeat/ 16px;}
+    }
+    .btn-wrap{margin: 40px 10px 10px;
+        .btn-blo{padding: 0;line-height: 40px;height: 40px;background: #1766bb;color: #fff;border-radius: 5px;font-size: 14px;border-color: #1766bb;}
+    }
+    .cue{font-size:12px;color:#666;padding:20px 10px 0;line-height: 22px;}
+    
+    //  绑定成功：
+    .bind-success{text-align:center;color:#444;line-height:26px;padding:25px 0;background:#fff;font-size:14px; }
+    
+}
+
+
+//登录页面：
+.login{
+    .mui-content{background: #f2f2f2;}
+    .user-img{background:url(../images/login-user.png) center no-repeat/100px,linear-gradient(#1767bd,#1767bd);width:100px;height:100px;
+        border-radius: 100%; box-shadow:  3px 5px 15px 6px rgba(#1767bd,0.25); margin: 50px auto;}
+    .login-form{padding:0 35px;color:#666;
+        .password,.username{position:relative;
+            label{line-height:30px;}
+            input{font-size:14px;border-color:#ddd;}
+        }
+        .warn{color:#333;font-size:12px;position:absolute;right:0;top:5px;
+            .icon-warn{width:14px;height:14px;display:inline-block;border-radius: 100%;background:#f65d5d;color:#fff;text-align:center;line-height:14px;font-style:normal;margin-right:3px;}
+        }
+        .forget-pas{text-align:right;
+            a{color:#666;}
+        }
+        a.btn{display:block;text-align: center;height:40px;line-height: 40px;border-radius:2px;}
+        .btn-login{background:#1766bb;color:#fff;margin-bottom:15px;}
+        .btn-regist{color:#445dc2;border:1px solid #445dc2;}
+        
+    }
+    
+}
