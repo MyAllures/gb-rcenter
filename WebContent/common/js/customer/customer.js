@@ -169,7 +169,9 @@ define(['common/BasePage'], function (BasePage) {
         disConnect: function () {
             var _this = this;
             _this.status = 'close';
-            _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
+            var vo = _this.createSendVo();
+            debugger;
+            _this.comet.websocket.send(JSON.stringify(vo));
         },
         /**
          * 监控socket是否已断开

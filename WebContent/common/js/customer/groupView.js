@@ -117,7 +117,7 @@ define(['common/BasePage'], function (BasePage) {
              */
             if (!_this._constainsUserId('customer')) {
                 _this.data.users.push('customer');
-                _this._andUserLi('customer');
+                _this._andUserLi('customer',null,true);
                 _this._andUserIframe('customer', {
                     page: {
                         imMessage: null,
@@ -134,7 +134,7 @@ define(['common/BasePage'], function (BasePage) {
             var userId = imMessage.sendUserId;
             if (!_this._constainsUserId(userId)) {
                 _this.data.users.push(userId);
-                var li = _this._andUserLi(imMessage.sendUserId, imMessage.sendUserName);
+                var li = _this._andUserLi(imMessage.sendUserId, imMessage.sendUserName,imMessage.isCustomer);
                 _this._andUserIframe(imMessage.sendUserId, {
                     page: {
                         imMessage: _this.currentImMessage,
@@ -166,7 +166,13 @@ define(['common/BasePage'], function (BasePage) {
         /**关闭当前窗口**/
         closeUserWin: function ($li) {
             var _this = this;
-            debugger;
+            var userId = $li.attr('id').replace(this._sep_Li, '');;
+
+            var $iframe = this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]');
+            $iframe[0].contentWindow.page.disConnect();
+            _this.data.users.remove(userId);
+            $li.remove();
+            $iframe.remove();
             //TODO 删除li和iframe (注意：如果由未读聊天记录不允许关闭）
         },
         updateStatus: function (userId, status) {
@@ -226,21 +232,25 @@ define(['common/BasePage'], function (BasePage) {
          * @returns {Mixed|jQuery|HTMLElement}
          * @private
          */
-        _andUserLi: function (id, name) {
+        _andUserLi: function (id, name,isCustomer) {
             var _this = this;
             name = name ? name : '';
-            var $li = $('<li class="clearfix click" id="' + id + _this._sep_Li + '">' +
+            var $li = $('<li class="clearfix click" id="' + id + _this._sep_Li + '" '+ (isCustomer ? ' isCustomer = true style="border-bottom: 1px solid #fff;"' : '') +' >' +
                 '          <div class="about">' +
                 '                 <div class="name"><i class="fa fa-circle"></i><span style="padding-left:4px;">' + name + '</span></div>' +
                 '          </div>' +
                 '     </li>');
-            var $closeButton = $('<button type="button" class="close"><i class="fa fa-times fa-close-li"></i></button>');
-            $closeButton.bind("click", function () {
-                _this.closeUserWin($(this).closest('li'));
-            });
+            if(isCustomer) {
+                var $closeButton = $('<button type="button" class="close"><i class="fa fa-times fa-close-li"></i></button>');
+                $closeButton.bind("click", function (e) {
+                    e.preventDefault();
+                    _this.closeUserWin($(this).closest('li'));
+                }).appendTo($li);
+            }
             $li.bind("click", function () {
                 _this.showUserWin(null, this);
-            }).appendTo(this.els.$groupUserUl).append($closeButton);
+            });
+            isCustomer ? this.els.$groupUserUl.prepend($li)  :  $li.appendTo(this.els.$groupUserUl)
             return $li;
         },
         /**
