@@ -103,7 +103,7 @@ function fetchActivityProcess() {
                         '<span class="ti">存款金额：</span> ¥' + transactions[j].rechargeAmount,
                         '</div>',
                         '<div class="ite">',
-                        '<span class="ti">公司入款：</span> 公司入款',
+                        '<span class="ti">入款方式：</span> 公司入款',
                         '</div>',
                         '<div class="promo_item_sta awa">',
                         '申请奖励',
