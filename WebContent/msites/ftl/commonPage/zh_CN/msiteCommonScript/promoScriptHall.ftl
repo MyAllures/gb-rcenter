@@ -351,15 +351,18 @@
         if (typeof data.state == "undefined") {
             return false;
         }
+        $(".tip_tit").text('');
+        $(".ext-inf").text('');
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
         var title = $(aplyObj).parents("._vr_promo_check").find(".tit").text();
         $(".tip_tit").text('《' + title + '》');
+        var msg;
         if (code == 'first_deposit' || code == 'second_deposit' || code =='third_deposit' || code == 'everyday_first_deposit') {
-            var msg = window.top.message.common_auto[data.msg];
-            $(".ext-inf").html(msg);
+           msg = window.top.message.apply_activity[data.msg];
         }else {
-            $(".ext-inf").html(data.msg);
+            msg = data.msg;
         }
+        $(".ext-inf").text(msg);
         var content;
         var title;
         var skin;
