@@ -25,16 +25,18 @@ define(['common/BasePage'], function (BasePage) {
          */
         bindEvent: function () {
             this._super();
+            _this = this;
 
-            //左侧一级导航收起/展开图切换
-            $('.list-group li').click(function() {
-                $(this).addClass("active").siblings().removeClass("active");
-            });
-
-            //左侧二级导航
-            $('.list-group li').click(function() {
-                window.event.cancelBubble = true;
-                $(this).children().filter('.hideMenu').stop().slideToggle()
+            // 左侧菜单切换
+            $('.list-group-item').click(function() {
+                if($(this).hasClass("active")) {
+                    $(this).removeClass("active");
+                    $(this).children().filter('.hideMenu').stop().slideUp();
+                } else {
+                    $(this).addClass("active").siblings().removeClass("active");
+                    $('.hideMenu').stop().slideUp();
+                    $(this).children().filter('.hideMenu').stop().slideDown();
+                }
             });
         },
 
