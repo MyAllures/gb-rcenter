@@ -32,6 +32,7 @@
     <i class="icon-danger"></i>
     <div class="tip_tit tit"></div>
     <div class="subs-txt">以下是您当前投注额,统计周期请查看活动细则,加油吧</div>
+    <div class="subs-txt deadlineTime"></div>
     <div class="failure-reason">
         <div class="effective_transaction"></div>
         <div class="profit_loss wrap1 profit"></div>
