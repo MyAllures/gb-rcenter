@@ -11,6 +11,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
         init: function (title) {
             this.formSelector = "form";
             this._super();
+            this.initSelectEvent();
         },
 
         /**
@@ -20,6 +21,44 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
         singleModeChange: function (e) {
             var _this = this;
             var useTemplate = $(':radio[name=chooseTemplate]:checked').val();
+        },
+
+        initSelectEvent: function () {
+            var length = $('#float_template_list_div li:visible', this.formSelector).length;
+            $('#float_template_list_div li:visible', this.formSelector).each(function (imgIndex, ele) {
+                if (imgIndex + 1 < length) {
+                    var $divcontent = $(ele).find(".select_float_pic_link_type");
+                    $divcontent.change(function (e) {
+                        var key = $(this).find(".float_pic_list_item_link_type").attr("value");
+                        var v = '';
+                        if (key == 'link') {
+                            $(this).find(".float_pic_list_item_service_value").addClass("hide");
+                            $(this).find(".float_pic_list_item_http").removeClass("hide");
+                            $(this).find(".float_pic_list_item_link_value").removeClass("hide");
+                            $(this).find("[name=float_pic_list_item_placeholder]").removeClass("hide");
+                            $(this).find(".setting").addClass("hide");
+                            v = $(this).find(".float_pic_list_item_link_value").val();
+                            $(this).find(".float_pic_list_item_link_type_value").val(v);
+                        } else if (key == 'customer_service') {
+                            $(this).find(".float_pic_list_item_service_value").removeClass("hide");
+                            $(this).find(".float_pic_list_item_http").addClass("hide");
+                            $(this).find(".float_pic_list_item_link_value").addClass("hide");
+                            $(this).find("[name=float_pic_list_item_placeholder]").addClass("hide");
+                            v = $(this).find(".float_pic_list_item_service_value").attr("value");
+                            $(this).find(".float_pic_list_item_link_type_value").val(v);
+                            $(this).find(".setting").removeClass("hide");
+                        } else {
+                            $(this).find(".float_pic_list_item_service_value").addClass("hide");
+                            $(this).find(".float_pic_list_item_http").addClass("hide");
+                            $(this).find(".float_pic_list_item_link_type_value").val("");
+                            $(this).find(".float_pic_list_item_link_value ").addClass("hide");
+                            $(this).find("[name=float_pic_list_item_placeholder]").addClass("hide");
+                            $(this).find(".setting").addClass("hide");
+                        }
+                    });
+
+                }
+            });
         },
 
         /**
@@ -139,6 +178,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                     $(".mouseInEffectDiv").hide();
                 }
             }
+            this.initSelectEvent();
         },
 
         showConfirm: function (e,option,msg) {
@@ -308,6 +348,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                 $($(newContent).find("#content_float_pic_type_http1 input")[0]).attr('name',"itemList["+(imgIndex)+"].imgLinkProtocol");
 
                 this._initFile($('[type=file]', newContent));
+                this.initSelectEvent();
                 this.initEditTagsEvent();
             } catch (e) {
 

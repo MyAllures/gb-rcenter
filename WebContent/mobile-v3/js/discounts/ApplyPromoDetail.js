@@ -58,7 +58,7 @@ function applyActivity() {
                 $('.status_failure').removeClass('mui-hidden');
                 $('.btn_cust_serv').removeClass('mui-hidden');
                 if (data.msg) {
-                    var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activitity[data.msg],
+                    var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.msg],
                         '<span class="icon-fail"></span>',
                         '</li>'].join("");
                     $('.promo_con_list .mui-table-view').append(html);
@@ -91,8 +91,15 @@ function fetchActivityProcess() {
             }
             if (code == 'deposit_send' && data.transactions) {
                 var transactions = data.transactions;
-                for (j = 0; j < transactions.length; j++) {
-                    var html = ['<div class="promo_item">',
+                var text;
+                for (var j = 0; j < transactions.length; j++) {
+                    if (transactions[j].rechargeType == 'online_bank' || transactions[j].rechargeType == 'online_deposit') {
+                        text = window.top.message.common['bankname.' + transactions[j].payerBank];
+                    } else {
+                        text = window.top.message.common['recharge_type.' + transactions[j].rechargeType];
+                    }
+
+                    var html = ['<div class="promo_item" data-rel=\'{"target":"applyDepositSend","opType":"function","code":"' + code + '","resultId":"' + resultId + '","trancNo":"' + transactions[j].transactionNo + '"}\'>',
                         '<div class="ite">',
                         '<span class="ti">存款订单号：</span>' + transactions[j].transactionNo,
                         '</div>',
@@ -103,7 +110,7 @@ function fetchActivityProcess() {
                         '<span class="ti">存款金额：</span> ¥' + transactions[j].rechargeAmount,
                         '</div>',
                         '<div class="ite">',
-                        '<span class="ti">入款方式：</span> 公司入款',
+                        '<span class="ti">公司入款：</span> ' + text,
                         '</div>',
                         '<div class="promo_item_sta awa">',
                         '申请奖励',
@@ -116,7 +123,7 @@ function fetchActivityProcess() {
                 var preferentialRelations = data.preferentialRelations;
                 var icon;
                 var text;
-                for (j = 0; j < preferentialRelations.length; j++) {
+                for (var j = 0; j < preferentialRelations.length; j++) {
                     if (data.effectivetransaction > preferentialRelations[j].preferentialValue) {
                         icon = 'icon-pass';
                     } else {
@@ -138,6 +145,36 @@ function fetchActivityProcess() {
             } else {
                 $('.status_failure').removeClass('mui-hidden');
                 $('.btn_cust_serv').removeClass('mui-hidden');
+            }
+        }
+    };
+    muiAjax(ajaxOption);
+}
+
+/**
+ * 存就送活动申请
+ */
+function applyDepositSend(obj, options) {
+    var dataParam = {};
+    dataParam.code = options.code;
+    dataParam.resultId = options.resultId;
+    var tansactionObj = [];
+    tansactionObj.push(options.trancNo);
+    dataParam.transactionNos = tansactionObj;
+    var ajaxOption = {
+        url: root + "/ntl/activityHall/applyActivities.html",
+        data: JSON.stringify(dataParam),
+        dataType: 'json',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            if(data.state){
+                $(obj).removeAttr('data-rel');
+                $(obj).find('.promo_item_sta').removeClass('awa');
+                $(obj).find('.promo_item_sta').addClass('suc');
+                $(obj).find('.promo_item_sta').html("申请成功");
+            }else{
+                toast(window.top.message.apply_activity[data.msg]);
             }
         }
     };

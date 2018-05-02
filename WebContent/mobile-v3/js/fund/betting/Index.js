@@ -151,21 +151,21 @@ function getStatisticsData() {
             if (data.winning != null){
                 $("#statisticalDataWinning").text(window.top.message.fund_auto['彩池奖金'] + ":" + currency + data.winning.toFixed(2)).text;
             }
-            if (data.effective != null){
+            if (data.single != null){
                 //投注总额
-                $("#statisticalTotalAmount").html(window.top.message.fund_auto['投注总额'] + ":" + currency + data.effective.toFixed(2));
+                $("#statisticalTotalAmount").html(window.top.message.fund_auto['投注总额'] + ":" + currency + data.single.toFixed(2));
             }
             //投注额
-            if (data.single != null){
+            if (data.effective != null){
                 //$("#statisticalDataSingle").html(currency + data.single.toFixed(2));
                 //有效投注额
-                $("#statisticalDataEffective").html(window.top.message.fund_auto['有效投注额'] + ":" +currency + data.single.toFixed(2));
+                $("#statisticalDataEffective").html(window.top.message.fund_auto['有效投注额'] + ":" +currency + data.effective.toFixed(2));
             }
             //派彩
             if (data.profit != null){
                 //$("#statisticalDataProfit").html(currency + data.profit.toFixed(2));
                 //彩池奖金
-                $("#statisticalProfit").html(window.top.message.fund_auto['彩池奖金'] + ":" +currency + data.profit.toFixed(2));
+                $("#statisticalProfit").html("派彩:" +currency + data.profit.toFixed(2));
             }
         },
         error: function (e) {

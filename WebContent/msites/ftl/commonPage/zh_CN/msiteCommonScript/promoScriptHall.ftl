@@ -246,13 +246,20 @@
         var content;
         var addClass;
 
-        if (code == 'deposit_send' && data.transactions) {
+        if (code == 'deposit_send') {
             $(".deposit_send_transaction").remove();
             var transactions = data.transactions;
-            for (j = 0; j<transactions.length; j++) {
-                var item = '<tr class="deposit_send_transaction"><td><label class="checkbox_wrap"><input type="checkbox" name="transactionNos" value=' + transactions[j].transactionNo + '><span class="checkbox_icon"></span></label></td><td>' + transactions[j].transactionNo + '</td><td>' +
-                        transactions[j].checkTime + '</td><td>' + transactions[j].rechargeAmount + '</td></tr>';
-                $(".deposit_sent_transactionNo").append(item);
+            if (transactions) {
+                for (j = 0; j<transactions.length; j++) {
+                    var item = '<tr class="deposit_send_transaction"><td><label class="checkbox_wrap"><input type="checkbox" name="transactionNos" value=' + transactions[j].transactionNo + '><span class="checkbox_icon"></span></label></td><td>' + transactions[j].transactionNo + '</td><td>' +
+                            transactions[j].checkTime + '</td><td>' + transactions[j].rechargeAmount + '</td></tr>';
+                    $(".deposit_sent_transactionNo").append(item);
+                }
+                $(".tip_noTransaction").hide();
+                $(".tab_wrap").show();
+            } else {
+                $(".tip_noTransaction").show();
+                $(".tab_wrap").hide();
             }
             content = $(".deposit_send").html();
             addClass = 'promo_CJS';
@@ -351,15 +358,18 @@
         if (typeof data.state == "undefined") {
             return false;
         }
+        $(".tip_tit").text('');
+        $(".ext-inf").text('');
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
         var title = $(aplyObj).parents("._vr_promo_check").find(".tit").text();
         $(".tip_tit").text('《' + title + '》');
+        var msg;
         if (code == 'first_deposit' || code == 'second_deposit' || code =='third_deposit' || code == 'everyday_first_deposit') {
-            var msg = window.top.message.common_auto[data.msg];
-            $(".ext-inf").html(msg);
+           msg = window.top.message.apply_activity[data.msg];
         }else {
-            $(".ext-inf").html(data.msg);
+            msg = data.msg;
         }
+        $(".ext-inf").text(msg);
         var content;
         var title;
         var skin;
