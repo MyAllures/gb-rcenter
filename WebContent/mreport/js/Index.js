@@ -27,7 +27,7 @@ define(['common/BasePage'], function (BasePage) {
             this._super();
             _this = this;
 
-            // 左侧菜单切换
+            // 左侧一级菜单收缩
             $('.list-group-item').click(function() {
                 if($(this).hasClass("active")) {
                     $(this).removeClass("active");
@@ -37,6 +37,12 @@ define(['common/BasePage'], function (BasePage) {
                     $('.hideMenu').stop().slideUp();
                     $(this).children().filter('.hideMenu').stop().slideDown();
                 }
+            });
+
+            // 左侧二级菜单点亮
+            $('.hideMenu a').click(function(e) {
+                $(this).parent().addClass("active").siblings().removeClass("active");
+                e.stopPropagation();//阻止事件冒泡
             });
         },
 
