@@ -55,7 +55,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     onshown: function (dialogRef) {
                         _this.imTimer = setInterval(function () {
                             var time = Number($('#accept_ok_time').html());
-                            if (time == 1) {
+                            if (time === 1) {
                                 clearInterval(_this.imTimer);
                                 dialogRef.close();
                             }
@@ -63,8 +63,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         }, 1000);
                     }
                 });
-            } else if (data.imMessage.status == 'acceptFailed') {
-                BootstrapDialog.show({
+            } else if (data.imMessage.status === 'acceptFailed') {
+                BootstrapDialog.alert({
                     message: '已被其他客服接入'
                 });
             } else {

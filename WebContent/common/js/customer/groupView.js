@@ -116,7 +116,8 @@ define(['common/BasePage'], function (BasePage) {
                 _this._andUserIframe('customer', {
                     page: {
                         imMessage: null,
-                        isButtonClick: true
+                        isButtonClick: true,
+                        isCustomer:true
                     }
                 });
                 r = 'customer';
@@ -134,7 +135,8 @@ define(['common/BasePage'], function (BasePage) {
                 _this._andUserIframe(imMessage.sendUserId, {
                     page: {
                         imMessage: _this.currentImMessage,
-                        isButtonClick: false
+                        isButtonClick: false,
+                        isCustomer:imMessage.isCustomer
                     }
                 });
             }
@@ -315,7 +317,7 @@ define(['common/BasePage'], function (BasePage) {
          */
         _removeUserId: function (userId) {
             this.data.users = jQuery.grep(this.data.users, function (value) {
-                return value !== userId;
+                return value != userId;
             });
         },
         /**

@@ -13,7 +13,8 @@ define(['common/BasePage'], function (BasePage) {
             $textEl: $('#messageTextArea'),
             $connectionStateEl: $('#connection-state-el'),
             $scrollEl: $('.ivu-scroll-container'),
-            $imgFileInputEl: $('#imgFileInput')
+            $imgFileInputEl: $('#imgFileInput'),
+            $closeOrderBtnEl : $('#closeOrderBtn')
         },
         status: 'connect',
         data: {
@@ -35,6 +36,9 @@ define(['common/BasePage'], function (BasePage) {
             _this.comet.socketCloseCallBack = function () {
                 _this._socketColsed();
             }
+            if(!openPage.isCustomer){
+                _this.els.$closeOrderBtnEl.css('display','inline-block');
+            }
         },
         bindEvent: function () {
             var _this = this;
@@ -45,6 +49,10 @@ define(['common/BasePage'], function (BasePage) {
             _this.els.$sendImgBtnEL.on("click", function () {
                 _this.sendImg();
             });
+            _this.els.$closeOrderBtnEl.on("click", function () {
+                _this.closeOrder();
+            });
+
         },
         onPageLoad: function () {
             this._super();
@@ -197,6 +205,9 @@ define(['common/BasePage'], function (BasePage) {
         },
         stopTimer: function () {
             clearTimeout(this.timer);
+        },
+        closeOrder:function(){
+            var imMessage = openPage.imMessage;
         },
         sendText: function () {
             var _this = this;
