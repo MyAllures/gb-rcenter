@@ -14,7 +14,8 @@ define(['common/BasePage'], function (BasePage) {
             $connectionStateEl: $('#connection-state-el'),
             $scrollEl: $('.ivu-scroll-container'),
             $imgFileInputEl: $('#imgFileInput'),
-            $closeOrderBtnEl : $('#closeOrderBtn')
+            $closeOrderBtnEl : $('#closeOrderBtn'),
+            countTextNumEL : $('#countText')
         },
         status: 'connect',
         data: {
@@ -27,6 +28,7 @@ define(['common/BasePage'], function (BasePage) {
         defaultMessage: '您好，请问有什么可以帮您？',
         timeout: 30,//超时时间,单位：秒
         timer: null,//计时器
+        maxTextLength : 300,
         comet: window.top.comet,
         init: function () {
             var _this = this;
@@ -51,6 +53,15 @@ define(['common/BasePage'], function (BasePage) {
             });
             _this.els.$closeOrderBtnEl.on("click", function () {
                 _this.closeOrder();
+            });
+            _this.els.$textEl.on("keyup",function(){
+                 var text = _this.els.$textEl.val(),count = text.length;
+                 if(count > _this.maxTextLength){
+                    //保留前300位
+                     _this.els.$textEl.val(text.substring(0,300));
+                     count = 300;
+                 }
+                 _this.els.countTextNumEL.html(count);
             });
 
         },
@@ -89,7 +100,7 @@ define(['common/BasePage'], function (BasePage) {
                             _this.appendMessage({
                                 message: _this.defaultMessage,
                                 time: new Date(),
-                                messageType: 'text',
+                                messageBodyType: 'text',
                                 name: imMessage.sendUserName,
                                 type: 1
                             });
@@ -100,7 +111,7 @@ define(['common/BasePage'], function (BasePage) {
                         _this.appendMessage({
                             message: imMessage.messageBody.textBody ? imMessage.messageBody.textBody : '',
                             time: new Date(),
-                            messageType: imMessage.messageBody.messageType,
+                            messageBodyType: imMessage.messageBody.messageBodyType,
                             name: imMessage.sendUserName,
                             type: 1
                         });
@@ -117,6 +128,15 @@ define(['common/BasePage'], function (BasePage) {
                     case 'closeSocket' :
                         _this.status = status;
                         _this.els.$connectionStateEl.html('由于您长时间未操作，连接已关闭');
+                        _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
+                        _this.els.$sendTextBtnEL.attr('disabled', true);
+                        _this.els.$sendImgBtnEL.attr('disabled', true);
+                        if(window.top.customerGroupView) window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
+                        break;
+                    case 'closeOrder' :
+                        _this.status = status;
+                        _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
+                        _this.els.$connectionStateEl.html('工单完结');
                         _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
                         _this.els.$sendTextBtnEL.attr('disabled', true);
                         _this.els.$sendImgBtnEL.attr('disabled', true);
@@ -146,7 +166,7 @@ define(['common/BasePage'], function (BasePage) {
                     receiveUserName: imMessage ? imMessage.sendUserName : null,
                     receiveUserSiteId: imMessage ? imMessage.sendUserSiteId : null,
                     messageBody: {
-                        messageType: type,
+                        messageBodyType: type,
                         textBody: body
                         //byteBody : type == 'picture'  || type == 'video' ? body : null
                     }
@@ -167,11 +187,11 @@ define(['common/BasePage'], function (BasePage) {
         getHtmlString: function (data) {
             var html = data.type === 1 ?
                 '<div class="service-person" ><p>' + data.name + '<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
-                '<div class="customer_message">' + (data.messageType === 'text' ? data.message : '<img src="' + data.message + '"/>') + '</div>' +
+                '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message : '<img src="' + data.message + '"/>') + '</div>' +
                 '</div>'
                 :
                 '<div class="guest-person" ><p>我<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
-                '<div class="customer_message">' + (data.messageType === 'text' ? data.message : '<img src="' + data.message + '"/>') + '</div>' +
+                '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message : '<img src="' + data.message + '"/>') + '</div>' +
                 '</div>';
             return html;
         },
@@ -207,7 +227,9 @@ define(['common/BasePage'], function (BasePage) {
             clearTimeout(this.timer);
         },
         closeOrder:function(){
-            var imMessage = openPage.imMessage;
+            //TODO 关闭工单状态
+            openPage.imMessage.status = '';
+            this.setStatus();
         },
         sendText: function () {
             var _this = this;
@@ -221,7 +243,7 @@ define(['common/BasePage'], function (BasePage) {
                     type: 2,
                     time: new Date(),
                     message: text,
-                    messageType: 'text'
+                    messageBodyType: 'text'
                 }
                 _this.appendMessage(message);
                 _this.els.$textEl.val('');
@@ -243,7 +265,7 @@ define(['common/BasePage'], function (BasePage) {
                         type: 2,
                         time: new Date(),
                         message: reader.result,
-                        messageType: 'picture'
+                        messageBodyType: 'picture'
                     }
                     _this.appendMessage(message);
                     _this.els.$textEl.val('');
