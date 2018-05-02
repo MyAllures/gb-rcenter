@@ -87,7 +87,8 @@ define(['common/BasePage'], function (BasePage) {
                 }
             } else {
                 switch (status) {
-                    case 'accepted':  //勿删
+                    case 'reconnected' :
+                    case 'accepted' :  //勿删
                     case 'connected' :
                          if(imMessage.workOrderId) _this.data.workerOrderId = imMessage.workOrderId;
                         _this.stopTimer();
@@ -152,7 +153,6 @@ define(['common/BasePage'], function (BasePage) {
         html: function () {
             var _this = this;
             $.each(_this.data.messages, function (index, data) {
-                //_this.appendMessage(data);
                 $(_this.getHtmlString(data)).appendTo(_this.els.$contentEl);
             });
         },
@@ -256,6 +256,7 @@ define(['common/BasePage'], function (BasePage) {
             var _this = this;
             _this.els.$imgFileInputEl.click();
             _this.els.$imgFileInputEl.change(function () {
+                //转Base64编码
                 var reader = new FileReader();
                 var file = this.files[0];
                 if (file) {
