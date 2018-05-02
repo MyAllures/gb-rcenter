@@ -48,6 +48,7 @@
             <tr class="deposit_sent_transactionNo"><th>选择</th><th>存款订单号</th><th>订单成功时间</th><th>订单金额</th></tr>
         </table>
     </div>
+    <div class="tip_noTransaction" style="text-align: center;">无订单可申请存就送</div>
 </div>
 
 
