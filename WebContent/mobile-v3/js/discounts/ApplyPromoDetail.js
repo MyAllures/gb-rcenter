@@ -139,7 +139,6 @@ function fetchActivityProcess() {
                         proMoneText = '当前盈活亏损';
                     }
 
-
                     var html = ['<li class="mui-table-view-cell">条件' + preferentialRelations[j].orderColumn + ":" + text + preferentialRelations[j].preferentialValue + '元',
                         '<span class="' + icon + '"></span>',
                         '</li>'].join("");
@@ -203,35 +202,44 @@ function applyProfit(obj, options) {
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-
+            if (data.state) {
+                successShow(data.msg);
+            } else {
+                defailShow(data.msg);
+            }
         }
     };
     muiAjax(ajaxOption);
 }
 
-/*
- $(function () {// 申请成功弹窗
- var t = 3, timer1 = null;
- mui.alert('<i class="icon-sus"></i><div class="tips">您已申请成功！</div><div class="p_tim">(<span class="tim"></span>s)</div>', ' ', null);
- $('.mui-popup').addClass('app_suc');
- $('.tim').html(t)
- timer1 = setInterval(function () {
- t--;
- $('.tim').html(t)
- if (t === 0) {
- mui.closePopup();
- clearInterval(timer1);
- }
- }, 1000);
- });
- $(function () {// 申请失败
- $('#test').on('tap', function () {
- mui.toast('网络异常，请稍后重试', {duration: 2000});
- $('.mui-toast-container').addClass('app_fai');
- var mask = mui.createMask();//callback为用户点击蒙版时自动执行的回调；
- mask.show();//显示遮罩
- setTimeout(function () {
- mask.close();//关闭遮罩
- }, 2000)
- });
- })*/
+/**
+ * 申请成功弹窗
+ */
+function successShow(msg) {
+    var t = 3, timer1 = null;
+    mui.alert('<i class="icon-sus"></i><div class="tips">您已申请成功！</div><div class="p_tim">(<span class="tim"></span>s)</div>',' ',null);
+    $('.mui-popup').addClass('app_suc');
+    $('.tim').html(t)
+    timer1 = setInterval(function () {
+        t--;
+        $('.tim').html(t)
+        if (t === 0) {
+            mui.closePopup();
+            clearInterval(timer1);
+            goToLastPage();
+        }
+    }, 1000);
+}
+
+/**
+ * 申请失败
+ */
+function defailShow(msg) {
+    toast(msg, {duration: 2000});
+    $('.mui-toast-container').addClass('app_fai');
+    var mask = mui.createMask();//callback为用户点击蒙版时自动执行的回调；
+    mask.show();//显示遮罩
+    setTimeout(function () {
+        mask.close();//关闭遮罩
+    }, 2000);
+}
