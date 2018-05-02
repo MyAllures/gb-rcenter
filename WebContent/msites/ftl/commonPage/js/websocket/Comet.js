@@ -159,6 +159,7 @@ MSiteComet.prototype = {
                 }
                 if (_this.websocket != null &&　_this.websocket.readyState == _this.websocket.OPEN) {
                     _this.websocket.send("");
+                    _this.last_active_time=new Date().getTime();
                 }else {
                     _this.connection();
                 }
