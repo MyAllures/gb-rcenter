@@ -123,25 +123,31 @@ function fetchActivityProcess() {
                 var preferentialRelations = data.preferentialRelations;
                 var icon;
                 var text;
+                var proMoneText;
                 for (var j = 0; j < preferentialRelations.length; j++) {
-                    if (data.effectivetransaction > preferentialRelations[j].preferentialValue) {
+                    if (data.effectivetransaction >= preferentialRelations[j].preferentialValue) {
                         icon = 'icon-pass';
                     } else {
                         icon = 'icon-fail';
                     }
 
                     if (preferentialRelations[j].preferentialCode == 'total_transaction_ge') {
-                        text = '有效投注额';
+                        text = '有效投注额满';
+                        proMoneText = '有效投注额';
                     } else if (preferentialRelations[j].preferentialCode == 'profit_ge') {
                         text = '盈利';
+                        proMoneText = '当前盈活亏损';
                     }
 
-                    var html = ['<li class="mui-table-view-cell">' + text + data.effectivetransaction,
+
+                    var html = ['<li class="mui-table-view-cell">条件' + preferentialRelations[j].orderColumn + ":" + text + preferentialRelations[j].preferentialValue + '元',
                         '<span class="' + icon + '"></span>',
                         '</li>'].join("");
                     $('.promo_con_list .mui-table-view').append(html);
                     html = '';
                 }
+                $('.pro_mone .mui-pull-left').html(proMoneText + '：<span class="color-gray">¥ ' + data.effectivetransaction + '</span>');
+                $('#unCommit').removeClass('mui-hidden');
             } else {
                 $('.status_failure').removeClass('mui-hidden');
                 $('.btn_cust_serv').removeClass('mui-hidden');
@@ -168,14 +174,36 @@ function applyDepositSend(obj, options) {
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-            if(data.state){
+            if (data.state) {
                 $(obj).removeAttr('data-rel');
                 $(obj).find('.promo_item_sta').removeClass('awa');
                 $(obj).find('.promo_item_sta').addClass('suc');
                 $(obj).find('.promo_item_sta').html("申请成功");
-            }else{
+            } else {
                 toast(window.top.message.apply_activity[data.msg]);
             }
+        }
+    };
+    muiAjax(ajaxOption);
+}
+
+/**
+ * 盈亏送，有效投注额申请
+ */
+function applyProfit(obj, options) {
+    resultId = $('#resultId').val();
+    code = $('#code').val();
+    var dataParam = {};
+    dataParam.code = code;
+    dataParam.resultId = resultId;
+    var ajaxOption = {
+        url: root + "/ntl/activityHall/applyActivities.html",
+        data: JSON.stringify(dataParam),
+        dataType: 'json',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+
         }
     };
     muiAjax(ajaxOption);
