@@ -23,6 +23,7 @@ define(['common/BasePage'], function (BasePage) {
                 sendMessageText: '',
                 sendMessageImg: ''
             },
+            workerOrderId : null,
             messages: []
         },
         defaultMessage: '您好，请问有什么可以帮您？',
@@ -88,6 +89,7 @@ define(['common/BasePage'], function (BasePage) {
                 switch (status) {
                     case 'accepted':  //勿删
                     case 'connected' :
+                         if(imMessage.workOrderId) _this.data.workerOrderId = imMessage.workOrderId;
                         _this.stopTimer();
                         _this.status = 'normal';
                         _this.els.$sendTextBtnEL.attr('disabled', false);
@@ -162,6 +164,7 @@ define(['common/BasePage'], function (BasePage) {
                 _S_COMET: 'IM',
                 message: JSON.stringify({
                     status: _this.status,
+                    workOrderId : _this.data.workerOrderId,
                     receiveUserId: imMessage ? imMessage.sendUserId : null,
                     receiveUserName: imMessage ? imMessage.sendUserName : null,
                     receiveUserSiteId: imMessage ? imMessage.sendUserSiteId : null,
