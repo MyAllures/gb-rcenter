@@ -44,6 +44,14 @@ define(['common/BasePage'], function (BasePage) {
                 $(this).parent().addClass("active").siblings().removeClass("active");
                 e.stopPropagation();//阻止事件冒泡
             });
+
+            $('.dropdown-toggle').click(function(e) {
+                $(this).next('.dropdown-menu').stop().slideToggle();
+                $(this).focus();
+                $(this).blur(function() {
+                    $(this).next('.dropdown-menu').stop().slideUp();
+                });
+            });
         },
 
         /**
