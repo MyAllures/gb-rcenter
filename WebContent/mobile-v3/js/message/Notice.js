@@ -279,7 +279,7 @@ function dateFastSelection(obj) {
     }
 }
 
-//全选
+//单选/全选
 function siteCheck(obj, options) {
     var name = obj.name;
     if ("site2_check" == name) {//单选
@@ -288,7 +288,13 @@ function siteCheck(obj, options) {
             $(obj).addClass("on");
         } else {
             $(obj).removeClass("on");
-
+        }
+    } else if ("site1_check" == name) {
+        $(obj).removeClass("ui-button-disable");
+        if (obj.className == "gb-radio") {
+            $(obj).addClass("on");
+        } else {
+            $(obj).removeClass("on");
         }
     } else if ("site2_allCheck" == name) {
         if ($(obj).find("span").attr("class") == "gb-checkbox2") {
@@ -298,7 +304,7 @@ function siteCheck(obj, options) {
             changeStatus("site2_check", false);
             $(obj).find("span").removeClass("on");
         }
-    } else if (name == "site1_allCheck") {
+    } else if ("site1_allCheck" == name) {
         if (obj.firstChild.className == "gb-checkbox2") {
             changeStatus("site1_check", true);
             $(obj).find("span").addClass("on");

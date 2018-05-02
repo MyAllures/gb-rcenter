@@ -123,25 +123,30 @@ function fetchActivityProcess() {
                 var preferentialRelations = data.preferentialRelations;
                 var icon;
                 var text;
+                var proMoneText;
                 for (var j = 0; j < preferentialRelations.length; j++) {
-                    if (data.effectivetransaction > preferentialRelations[j].preferentialValue) {
+                    if (data.effectivetransaction >= preferentialRelations[j].preferentialValue) {
                         icon = 'icon-pass';
                     } else {
                         icon = 'icon-fail';
                     }
 
                     if (preferentialRelations[j].preferentialCode == 'total_transaction_ge') {
-                        text = '有效投注额';
+                        text = '有效投注额满';
+                        proMoneText = '有效投注额';
                     } else if (preferentialRelations[j].preferentialCode == 'profit_ge') {
                         text = '盈利';
+                        proMoneText = '当前盈活亏损';
                     }
 
-                    var html = ['<li class="mui-table-view-cell">' + text + data.effectivetransaction,
+                    var html = ['<li class="mui-table-view-cell">条件' + preferentialRelations[j].orderColumn + ":" + text + preferentialRelations[j].preferentialValue + '元',
                         '<span class="' + icon + '"></span>',
                         '</li>'].join("");
                     $('.promo_con_list .mui-table-view').append(html);
                     html = '';
                 }
+                $('.pro_mone .mui-pull-left').html(proMoneText + '：<span class="color-gray">¥ ' + data.effectivetransaction + '</span>');
+                $('#unCommit').removeClass('mui-hidden');
             } else {
                 $('.status_failure').removeClass('mui-hidden');
                 $('.btn_cust_serv').removeClass('mui-hidden');
@@ -168,12 +173,12 @@ function applyDepositSend(obj, options) {
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-            if(data.state){
+            if (data.state) {
                 $(obj).removeAttr('data-rel');
                 $(obj).find('.promo_item_sta').removeClass('awa');
                 $(obj).find('.promo_item_sta').addClass('suc');
                 $(obj).find('.promo_item_sta').html("申请成功");
-            }else{
+            } else {
                 toast(window.top.message.apply_activity[data.msg]);
             }
         }
@@ -181,29 +186,60 @@ function applyDepositSend(obj, options) {
     muiAjax(ajaxOption);
 }
 
-/*
- $(function () {// 申请成功弹窗
- var t = 3, timer1 = null;
- mui.alert('<i class="icon-sus"></i><div class="tips">您已申请成功！</div><div class="p_tim">(<span class="tim"></span>s)</div>', ' ', null);
- $('.mui-popup').addClass('app_suc');
- $('.tim').html(t)
- timer1 = setInterval(function () {
- t--;
- $('.tim').html(t)
- if (t === 0) {
- mui.closePopup();
- clearInterval(timer1);
- }
- }, 1000);
- });
- $(function () {// 申请失败
- $('#test').on('tap', function () {
- mui.toast('网络异常，请稍后重试', {duration: 2000});
- $('.mui-toast-container').addClass('app_fai');
- var mask = mui.createMask();//callback为用户点击蒙版时自动执行的回调；
- mask.show();//显示遮罩
- setTimeout(function () {
- mask.close();//关闭遮罩
- }, 2000)
- });
- })*/
+/**
+ * 盈亏送，有效投注额申请
+ */
+function applyProfit(obj, options) {
+    resultId = $('#resultId').val();
+    code = $('#code').val();
+    var dataParam = {};
+    dataParam.code = code;
+    dataParam.resultId = resultId;
+    var ajaxOption = {
+        url: root + "/ntl/activityHall/applyActivities.html",
+        data: JSON.stringify(dataParam),
+        dataType: 'json',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            if (data.state) {
+                successShow(data.msg);
+            } else {
+                defailShow(data.msg);
+            }
+        }
+    };
+    muiAjax(ajaxOption);
+}
+
+/**
+ * 申请成功弹窗
+ */
+function successShow(msg) {
+    var t = 3, timer1 = null;
+    mui.alert('<i class="icon-sus"></i><div class="tips">您已申请成功！</div><div class="p_tim">(<span class="tim"></span>s)</div>',' ',null);
+    $('.mui-popup').addClass('app_suc');
+    $('.tim').html(t)
+    timer1 = setInterval(function () {
+        t--;
+        $('.tim').html(t)
+        if (t === 0) {
+            mui.closePopup();
+            clearInterval(timer1);
+            goToLastPage();
+        }
+    }, 1000);
+}
+
+/**
+ * 申请失败
+ */
+function defailShow(msg) {
+    toast(msg, {duration: 2000});
+    $('.mui-toast-container').addClass('app_fai');
+    var mask = mui.createMask();//callback为用户点击蒙版时自动执行的回调；
+    mask.show();//显示遮罩
+    setTimeout(function () {
+        mask.close();//关闭遮罩
+    }, 2000);
+}
