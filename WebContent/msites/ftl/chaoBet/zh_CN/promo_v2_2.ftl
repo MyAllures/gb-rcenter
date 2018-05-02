@@ -55,7 +55,7 @@
                                             <#if key == am.frontParticipateStates>
                                                 <div class="btn-apply">
                                                     <a href="javascript:" onclick="joinPromo(this)"
-                                                       class="btn-play btn-join _vr_promo_join">${status[key]}</a>
+                                                       class="btn-play btn-join _vr_promo_join" style="display: block;">${status[key]}</a>
                                                 </div>
                                             </#if>
                                         </#list>
@@ -92,7 +92,7 @@
                                             <#if key == am.frontParticipateStates>
                                                 <div class="btn-apply">
                                                     <a href="javascript:" onclick="joinPromo(this)"
-                                                       class="btn-play btn-join _vr_promo_join">${status[key]}</a>
+                                                       class="btn-play btn-join _vr_promo_join" style="display: block;">${status[key]}</a>
                                                 </div>
                                             </#if>
                                         </#list>
