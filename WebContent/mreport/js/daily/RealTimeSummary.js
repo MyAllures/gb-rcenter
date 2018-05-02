@@ -52,16 +52,22 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
 
         initG2:function(realtimeType){
             $("#mountNode").html(null);
+            if( 'deposit' == realtimeType || 'effcTransaction' == realtimeType || 'realtimeProfitLoss' == realtimeType){
+                $("#explainText").html("以日合计 单位(￥)");
+            }else{
+                $("#explainText").html("以日合计 单位(个)");
+            }
             const data = this.setData(realtimeType);
-            if(data == null || data.length < 1) return;
-
-            const ds = new DataSet();
+            if(data.length < 1) return;
             var keys = Object.keys(data[0]);
             keys.splice(0,1);
+            if(keys == null || keys.length < 1) return;
+            const ds = new DataSet();
             const chart = new G2.Chart({
                 container: 'mountNode',
                 forceFit: true,
-                width: 500
+                width: 500,
+                padding: [38, 36, 88, 78]
             });
             if('realtimeProfitLoss' == realtimeType){
                 chart.source(data);
@@ -126,11 +132,10 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
 
         /**组装统计图数据*/
         setData: function(realtimeType){
-            var profilesJson = $.parseJSON($("#profilesJson").val());
             var array = [];
-            if(profilesJson == null && profilesJson.length < 1){
-                return array;
-            }
+            var profilesStr = $("#profilesJson").val();
+            if(!profilesStr) return array;
+            var profilesJson = $.parseJSON(profilesStr);
             for(var i = 1; i<=24; i++) {
                 var data = {};
                 if( i > profilesJson.length){
