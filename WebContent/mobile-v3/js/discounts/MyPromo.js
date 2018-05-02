@@ -2,19 +2,20 @@
 $(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
-        /*containerScroll: '.mui-content.mui-scroll-wrapper',
-         /!*右侧菜单上下滚动，可自行指定范围*!/
+        containerScroll: '.mui-content.mui-scroll-wrapper',
+         /*右侧菜单上下滚动，可自行指定范围*/
          rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
-         /!*禁用侧滑手势指定样式*!/
-         disabledHandSlip: ['mui-off-canvas-left'],*/
+         /*禁用侧滑手势指定样式*/
+         disabledHandSlip: ['mui-off-canvas-left'],
         init: pullUpRefreshOption('#refreshContainer', pullfresh, false)
     };
     muiInit(options);
     promoInfo(1);
 
     //android隐藏头部
-    // hideHeader();
+    hideHeader();
 });
+var pageNumberType = "AllPageNumber";
 
 function promotionCategory(obj, options) {
     var name = options.code;
@@ -22,36 +23,20 @@ function promotionCategory(obj, options) {
         var _this = $(".promo-records-warp[name="+name+"]");
     }
     $(".promo-records-warp").css("display","none");
-    if (name == "awarded"){//已派奖
-        // $(".promo-records-warp[name=awarded]").css("display","");
-        _this.css("display","");
-    }else if (name == "didNotPass"){//未通过
-        // $(".promo-records-warp[name=didNotPass]").css("display","");
-        _this.css("display","");
-    }else if(name == "unaudited"){//未审核
-        // $(".promo-records-warp[name=unaudited]").css("display","");
+    if (name == "awarded" || name == "didNotPass" ||name == "unaudited"){
+        pageNumberType = name+"PageNumber";
         _this.css("display","");
     }else{//全部
+        pageNumberType = "AllPageNumber";
         $(".promo-records-warp").css("display","");
     }
-    /*$(".promo-records-warp .mui-row").each(function () {
-        var apiName = $(this).attr("name");
-        if (apiName) {
-            if (apiName.indexOf(name) != -1) {
-                $(this).css("display", "")
-            } else {
-                $(this).css("display", "none")
-            }
-        }
-    });*/
-
 }
 
 /*上拉请求数据*/
 function pullfresh() {
     setTimeout(function () {
         mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
-        var pageNumber = parseInt($("#pageNumber").val());
+        var pageNumber = parseInt($("#"+pageNumberType).val());
         var lastPageNumber = parseInt($("#lastPageNumber").val());
         if (pageNumber == lastPageNumber) {
             mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
@@ -63,10 +48,18 @@ function pullfresh() {
 
 /*获取正在进行中的类型和活动*/
 function promoInfo(pageNumber) {
-    var url = root + "/promo/myPromo.html";
-    var data = {"paging.pageNumber": pageNumber};
+    var data ;
+    if (pageNumberType == "AllPageNumber"){
+        data = {"paging.pageNumber": pageNumber};
+    }else if (pageNumberType == "awardedPageNumber"){
+        data = {"paging.pageNumber": pageNumber,"search.checkState":"2"};
+    }else if (pageNumberType == "didNotPassPageNumber"){
+        data = {"paging.pageNumber": pageNumber,"search.checkState":"4"};
+    }else if (pageNumberType == "unauditedPageNumber"){
+        data = {"paging.pageNumber": pageNumber,"search.checkState":"1"};
+    }
     var options = {
-        url: url,
+        url: root + "/promo/myPromo.html",
         type: 'post',
         timeout: 10000,
         data: data,
@@ -78,7 +71,7 @@ function promoInfo(pageNumber) {
         success: function (data) {
             if (data != null) {
                 $("#content").append(data);
-                $("#pageNumber").val(pageNumber);
+                $("#"+pageNumberType).val(pageNumber);
             }
         },
         error: function (e) {

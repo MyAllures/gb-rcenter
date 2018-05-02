@@ -247,6 +247,7 @@
         var addClass;
         var item;
         var icon;
+        var btn;
         if (code == 'deposit_send') {
             $(".deposit_send_transaction").remove();
             var transactions = data.transactions;
@@ -258,9 +259,11 @@
                 }
                 $(".tip_noTransaction").hide();
                 $(".tab_wrap").show();
+                btn = ["联系客服","申请奖励"];
             } else {
                 $(".tip_noTransaction").show();
                 $(".tab_wrap").hide();
+                btn = ["申请奖励"];
             }
             content = $(".deposit_send").html();
             addClass = 'promo_CJS';
@@ -277,6 +280,14 @@
                             data.effectivetransaction + '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner" style="' + 'width:'+ width + '%' + '"></div></div></div>';
                 }
                 $(".effective_transaction").append(item);
+            }
+            if (data.hasApply) {
+                btn = ["联系客服"];
+                var time = moment(Number(data.deadLineTime)).utcOffset(sessionStorage.getItem("timezone"));
+                $(".deadlineTime").html('派奖时间:' + '<span>' + time.format() + '</span>');
+            } else {
+                btn = ["联系客服","申请奖励"];
+                $(".deadlineTime").html('参加活动人数:' + '<span>' + data.ApplyNum + '</span>');
             }
             content = $(".activityProcess").html();
             addClass = 'promo_may_apply';
@@ -307,18 +318,29 @@
                     $(".profit_loss.loss").append(item);
                 }
             }
+            if (data.hasApply) {
+                btn = ["联系客服"];
+                var time = moment(Number(data.deadLineTime)).utcOffset(sessionStorage.getItem("timezone"));
+                $(".deadlineTime").html('派奖时间:' + '<span>' + time.format() + '</span>');
+            } else {
+                btn = ["联系客服","申请奖励"];
+                $(".deadlineTime").html('当前报名人数:' + '<span>' + data.ApplyNum + '</span>');
+            }
             content = $(".activityProcess").html();
             addClass = 'promo_may_apply';
         } else {
             content = '<div>本次操作异常,请稍后再试</div>';
             addClass = 'promo_may_apply';
+            btn = ["联系客服"];
         }
+        var url =  $(".openNewWindow").data("url");
         var dialog = layer.open({
             content:content,
             title:"提示",
             skin:"layui-layer-warning",
             area: ['640px', 'auto'],
-            btn: ["申请奖励","联系客服"],
+            btn: btn,
+            url: url,
             success: function(layer){
                 // 重写关闭按钮
                 $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
@@ -333,15 +355,14 @@
                 $(layer).find(".layui-layer-content .tab_wrap tr:even").addClass('even')
             },
             yes: function () {
-                applyActivities(aplyObj, isRefresh);
+                window.open(
+                         url,
+                        'NewWindow',
+                        'width=960,height=600,top=50,left=50'
+                );
             },
             btn2: function () {
-                if (isRefresh) {
-                    layer.close(dialog);
-                    window.location.href = "/promo.html";
-                } else {
-                    layer.close(dialog);
-                }
+                applyActivities(aplyObj, isRefresh);
             }
         });
     }
