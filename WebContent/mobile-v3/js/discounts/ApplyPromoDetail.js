@@ -146,7 +146,14 @@ function fetchActivityProcess() {
                     html = '';
                 }
                 $('.pro_mone .mui-pull-left').html(proMoneText + '：<span class="color-gray">¥ ' + data.effectivetransaction + '</span>');
-                $('#unCommit').removeClass('mui-hidden');
+                $('#join .app_num').html('派奖时间：<span class="color-blue">' + formatDate(data.deadLineTime) + '</span>');
+                $('#unCommit .app_num').html('已有 <span class="color-blue">' + addApplyNum(data.ApplyNum) + '</span>人，报名成功');
+                if (data.hasApply) {
+                    $('#unCommit').removeClass('mui-hidden');
+                } else {
+                    $('#join').removeClass('mui-hidden');
+                }
+
             } else {
                 $('.status_failure').removeClass('mui-hidden');
                 $('.btn_cust_serv').removeClass('mui-hidden');
@@ -217,7 +224,7 @@ function applyProfit(obj, options) {
  */
 function successShow(msg) {
     var t = 3, timer1 = null;
-    mui.alert('<i class="icon-sus"></i><div class="tips">您已申请成功！</div><div class="p_tim">(<span class="tim"></span>s)</div>',' ',null);
+    mui.alert('<i class="icon-sus"></i><div class="tips">您已申请成功！</div><div class="p_tim">(<span class="tim"></span>s)</div>', ' ', null);
     $('.mui-popup').addClass('app_suc');
     $('.tim').html(t)
     timer1 = setInterval(function () {
@@ -242,4 +249,28 @@ function defailShow(msg) {
     setTimeout(function () {
         mask.close();//关闭遮罩
     }, 2000);
+}
+
+//格式化时间
+function formatDate(time) {
+    var date = new Date(time);
+    var str = date.getFullYear() + "年";
+    str += ((date.getMonth() + 1) < 10 ? ("0" + (date.getMonth() + 1)) : (date.getMonth() + 1)) + "月";
+    str += (date.getDate() < 10 ? ("0" + date.getDate()) : date.getDate()) + "日 ";
+    str += (date.getHours() < 10 ? ("0" + date.getHours()) : date.getHours()) + "时";
+    str += (date.getMinutes() < 10 ? ("0" + date.getMinutes()) : date.getMinutes()) + "分";
+    str += (date.getSeconds() < 10 ? ("0" + date.getSeconds()) : date.getSeconds()) + "秒";
+    return str;
+}
+
+/**
+ * 参与人数
+ * @param num
+ */
+function addApplyNum(num) {
+    if (typeof num == "undefined") {
+        num = 0;
+    }
+    num = num + 1000;
+    return num;
 }
