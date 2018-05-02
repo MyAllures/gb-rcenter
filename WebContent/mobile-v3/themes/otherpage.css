@@ -303,4 +303,32 @@ body.forget-password .code-txt span { display: block; color: #1766bb; }
 .password_set_success_dialog.mui-popup .mui-popup-button .mui-icon { background: #fff; border-radius: 50%; width: 50px; height: 50px; vertical-align: top; margin-top: 24px; font-size: 63px; }
 .password_set_success_dialog.mui-popup .mui-popup-button .mui-icon:before { position: absolute; left: 50%; margin-left: -31px; top: 17px; }
 
+body.bind-mobile { font-size: 14px; }
+body.bind-mobile .mui-content { background: #efefef; }
+body.bind-mobile .input { background: #fff; font-size: 14px; padding: 10px; }
+body.bind-mobile .input input { border: none; font-size: 14px; display: inline-block; margin-bottom: 5px; color: #666; padding: 0 5px; }
+body.bind-mobile .input .mobile, body.bind-mobile .input .yzm { display: flex; }
+body.bind-mobile .input .yzm input { margin-bottom: 0; }
+body.bind-mobile .input .yzm a { white-space: nowrap; line-height: 40px; display: inline-block; }
+body.bind-mobile .input i.icon-mobile { width: 37px; display: inline-block; height: 40px; background: url(../images/phone.png) center no-repeat/12px; }
+body.bind-mobile .input i.icon-yzm { width: 45px; display: inline-block; height: 40px; background: url(../images/safe.png) center no-repeat/16px; }
+body.bind-mobile .btn-wrap { margin: 40px 10px 10px; }
+body.bind-mobile .btn-wrap .btn-blo { padding: 0; line-height: 40px; height: 40px; background: #1766bb; color: #fff; border-radius: 5px; font-size: 14px; border-color: #1766bb; }
+body.bind-mobile .cue { font-size: 12px; color: #666; padding: 20px 10px 0; line-height: 22px; }
+body.bind-mobile .bind-success { text-align: center; color: #444; line-height: 26px; padding: 25px 0; background: #fff; font-size: 14px; }
+
+.login .mui-content { background: #f2f2f2; }
+.login .user-img { background: url(../images/login-user.png) center no-repeat/100px, linear-gradient(#1767bd, #1767bd); width: 100px; height: 100px; border-radius: 100%; box-shadow: 3px 5px 15px 6px rgba(23, 103, 189, 0.25); margin: 50px auto; }
+.login .login-form { padding: 0 35px; color: #666; }
+.login .login-form .password, .login .login-form .username { position: relative; }
+.login .login-form .password label, .login .login-form .username label { line-height: 30px; }
+.login .login-form .password input, .login .login-form .username input { font-size: 14px; border-color: #ddd; }
+.login .login-form .warn { color: #333; font-size: 12px; position: absolute; right: 0; top: 5px; }
+.login .login-form .warn .icon-warn { width: 14px; height: 14px; display: inline-block; border-radius: 100%; background: #f65d5d; color: #fff; text-align: center; line-height: 14px; font-style: normal; margin-right: 3px; }
+.login .login-form .forget-pas { text-align: right; }
+.login .login-form .forget-pas a { color: #666; }
+.login .login-form a.btn { display: block; text-align: center; height: 40px; line-height: 40px; border-radius: 2px; }
+.login .login-form .btn-login { background: #1766bb; color: #fff; margin-bottom: 15px; }
+.login .login-form .btn-regist { color: #445dc2; border: 1px solid #445dc2; }
+
 /*# sourceMappingURL=otherpage.css.map */

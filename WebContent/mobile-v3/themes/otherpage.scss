@@ -612,3 +612,53 @@ body.forget-password{
         }
     }
 }
+
+
+//绑定手机号码：
+body.bind-mobile{font-size:14px;
+    //  绑定手机号码， step-1
+    .mui-content{background: #efefef;}
+    .input{background:#fff;font-size:14px;padding:10px;  
+        input{border:none; font-size:14px;display:inline-block;margin-bottom:5px;color:#666;padding:0 5px;}
+        .mobile,.yzm{display:flex;}
+        .yzm{
+          input{margin-bottom:0;}
+          a{white-space: nowrap;line-height: 40px;display:inline-block;}  
+        }
+        i.icon-mobile{width:37px;display:inline-block;height:40px;background:url(../images/phone.png) center no-repeat/ 12px;}
+        i.icon-yzm{width:45px;display:inline-block;height:40px;background:url(../images/safe.png) center no-repeat/ 16px;}
+    }
+    .btn-wrap{margin: 40px 10px 10px;
+        .btn-blo{padding: 0;line-height: 40px;height: 40px;background: #1766bb;color: #fff;border-radius: 5px;font-size: 14px;border-color: #1766bb;}
+    }
+    .cue{font-size:12px;color:#666;padding:20px 10px 0;line-height: 22px;}
+    
+    //  绑定成功：
+    .bind-success{text-align:center;color:#444;line-height:26px;padding:25px 0;background:#fff;font-size:14px; }
+    
+}
+
+
+//登录页面：
+.login{
+    .mui-content{background: #f2f2f2;}
+    .user-img{background:url(../images/login-user.png) center no-repeat/100px,linear-gradient(#1767bd,#1767bd);width:100px;height:100px;
+        border-radius: 100%; box-shadow:  3px 5px 15px 6px rgba(#1767bd,0.25); margin: 50px auto;}
+    .login-form{padding:0 35px;color:#666;
+        .password,.username{position:relative;
+            label{line-height:30px;}
+            input{font-size:14px;border-color:#ddd;}
+        }
+        .warn{color:#333;font-size:12px;position:absolute;right:0;top:5px;
+            .icon-warn{width:14px;height:14px;display:inline-block;border-radius: 100%;background:#f65d5d;color:#fff;text-align:center;line-height:14px;font-style:normal;margin-right:3px;}
+        }
+        .forget-pas{text-align:right;
+            a{color:#666;}
+        }
+        a.btn{display:block;text-align: center;height:40px;line-height: 40px;border-radius:2px;}
+        .btn-login{background:#1766bb;color:#fff;margin-bottom:15px;}
+        .btn-regist{color:#445dc2;border:1px solid #445dc2;}
+        
+    }
+    
+}
