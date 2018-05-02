@@ -245,56 +245,102 @@
         $(".tip_tit").text('《' + title + '》');
         var content;
         var addClass;
-
+        var item;
+        var icon;
+        var btn;
         if (code == 'deposit_send') {
             $(".deposit_send_transaction").remove();
             var transactions = data.transactions;
             if (transactions) {
                 for (j = 0; j<transactions.length; j++) {
-                    var item = '<tr class="deposit_send_transaction"><td><label class="checkbox_wrap"><input type="checkbox" name="transactionNos" value=' + transactions[j].transactionNo + '><span class="checkbox_icon"></span></label></td><td>' + transactions[j].transactionNo + '</td><td>' +
+                    item = '<tr class="deposit_send_transaction"><td><label class="checkbox_wrap"><input type="checkbox" name="transactionNos" value=' + transactions[j].transactionNo + '><span class="checkbox_icon"></span></label></td><td>' + transactions[j].transactionNo + '</td><td>' +
                             transactions[j].checkTime + '</td><td>' + transactions[j].rechargeAmount + '</td></tr>';
                     $(".deposit_sent_transactionNo").append(item);
                 }
                 $(".tip_noTransaction").hide();
                 $(".tab_wrap").show();
+                btn = ["联系客服","申请奖励"];
             } else {
                 $(".tip_noTransaction").show();
                 $(".tab_wrap").hide();
+                btn = ["申请奖励"];
             }
             content = $(".deposit_send").html();
             addClass = 'promo_CJS';
-        } else {
+        } else if (code == 'effective_transaction') {
             $(".process").remove();
             var preferentialRelations = data.preferentialRelations;
-            var item;
-            var icon;
             for (j = 0; j<preferentialRelations.length; j++) {
-
+                var width = (data.effectivetransaction/preferentialRelations[j].preferentialValue)*100;
                 if (data.effectivetransaction >= preferentialRelations[j].preferentialValue){
-                    icon = '<i class="icon-pass"></i>';
+                    item = '<div class="item-success-with-bar process">'+ '<i class="icon-pass"></i>' + '<div class="txt"><span>有效投注额' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' +
+                            data.effectivetransaction + '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
                 } else {
-                    icon = '<i class="icon-fail"></i>';
+                    item = '<div class="item-failure-with-bar process">'+ '<i class="icon-fail"></i>' + '<div class="txt"><span>有效投注额' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' +
+                            data.effectivetransaction + '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner" style="' + 'width:'+ width + '%' + '"></div></div></div>';
                 }
-
-                if (preferentialRelations[j].preferentialCode == 'total_transaction_ge') {
-                    item = '<div class="item-success-with-bar process">'+ icon + '<div class="txt"><span>有效投注额' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.effectivetransaction +
-                            '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
-                    $(".effective_transaction").append(item);
-                }else if (preferentialRelations[j].preferentialCode == 'profit_ge') {
-                    item = '<div class="item-success-with-bar process">'+ icon + '<div class="txt"><span>盈利' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.effectivetransaction +
-                            '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
-                    $(".profit_loss").append(item);
-                }
+                $(".effective_transaction").append(item);
+            }
+            if (data.hasApply) {
+                btn = ["联系客服"];
+                var time = moment(Number(data.deadLineTime)).utcOffset(sessionStorage.getItem("timezone"));
+                $(".deadlineTime").html('派奖时间:' + '<span>' + time.format() + '</span>');
+            } else {
+                btn = ["联系客服","申请奖励"];
+                $(".deadlineTime").html('参加活动人数:' + '<span>' + data.ApplyNum + '</span>');
             }
             content = $(".activityProcess").html();
             addClass = 'promo_may_apply';
+        } else if (code == 'profit_loss') {
+            $(".process").remove();
+            var preferentialRelations = data.preferentialRelations;
+            for (j = 0; j<preferentialRelations.length; j++) {
+                if (preferentialRelations[j].preferentialCode == 'profit_ge' && data.profitloss>=0) {//盈利时只展示盈利
+                    var width = (data.profitloss/preferentialRelations[j].preferentialValue)*100;//计算进度
+                    if (data.profitloss >= preferentialRelations[j].preferentialValue){
+                        item = '<div class="item-success-with-bar process">'+ '<i class="icon-pass"></i>' + '<div class="txt"><span>盈利' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.profitloss +
+                                '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
+                    } else {
+                        item = '<div class="item-failure-with-bar process">'+ '<i class="icon-fail"></i>' + '<div class="txt"><span>盈利' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.profitloss +
+                                '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner" style="' + 'width:'+ width + '%' + '"></div></div></div>';
+                    }
+                    $(".profit_loss.profit").append(item);
+                }else if (preferentialRelations[j].preferentialCode == 'loss_ge' && preferentialRelations[j].orderColumn == '1' && data.profitloss < 0) {//亏损时只展示亏损
+                    if (Math.abs(data.profitloss) >= preferentialRelations[j].preferentialValue && data.profitloss < 0){
+                        icon = '<i class="icon-pass"></i>';
+                    } else {
+                        icon = '<i class="icon-fail"></i>';
+                    }
+                    item = '<div class="item-success-without-bar process">'+
+                            icon +
+                            '<div class="txt"><span>亏损金额:'  + data.profitloss  +'</span></div>'+
+                            '</div>';
+                    $(".profit_loss.loss").append(item);
+                }
+            }
+            if (data.hasApply) {
+                btn = ["联系客服"];
+                var time = moment(Number(data.deadLineTime)).utcOffset(sessionStorage.getItem("timezone"));
+                $(".deadlineTime").html('派奖时间:' + '<span>' + time.format() + '</span>');
+            } else {
+                btn = ["联系客服","申请奖励"];
+                $(".deadlineTime").html('当前报名人数:' + '<span>' + data.ApplyNum + '</span>');
+            }
+            content = $(".activityProcess").html();
+            addClass = 'promo_may_apply';
+        } else {
+            content = '<div>本次操作异常,请稍后再试</div>';
+            addClass = 'promo_may_apply';
+            btn = ["联系客服"];
         }
+        var url =  $(".openNewWindow").data("url");
         var dialog = layer.open({
             content:content,
             title:"提示",
             skin:"layui-layer-warning",
             area: ['640px', 'auto'],
-            btn: ["申请奖励","联系客服"],
+            btn: btn,
+            url: url,
             success: function(layer){
                 // 重写关闭按钮
                 $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
@@ -309,15 +355,14 @@
                 $(layer).find(".layui-layer-content .tab_wrap tr:even").addClass('even')
             },
             yes: function () {
-                applyActivities(aplyObj, isRefresh);
+                window.open(
+                         url,
+                        'NewWindow',
+                        'width=960,height=600,top=50,left=50'
+                );
             },
             btn2: function () {
-                if (isRefresh) {
-                    layer.close(dialog);
-                    window.location.href = "/promo.html";
-                } else {
-                    layer.close(dialog);
-                }
+                applyActivities(aplyObj, isRefresh);
             }
         });
     }

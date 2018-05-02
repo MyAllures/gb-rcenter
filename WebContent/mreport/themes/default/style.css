@@ -65,16 +65,18 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .top-info .chooseSite .dropdown-toggle, .top-info .chooseAdmin .dropdown-toggle { cursor: pointer; position: relative; padding: 0; }
 .top-info .chooseSite .dropdown-toggle:after, .top-info .chooseAdmin .dropdown-toggle:after { display: none; }
 .top-info .chooseSite .dropdown-toggle:before, .top-info .chooseAdmin .dropdown-toggle:before { display: inline-block; content: ""; width: 7px; height: 7px; border-left: 1px solid #666; border-bottom: 1px solid #666; transform: rotate(-45deg); position: absolute; right: -15px; top: 5px; }
-.top-info .chooseSite .dropdown-menu, .top-info .chooseAdmin .dropdown-menu { min-width: 8rem; }
-.top-info .chooseSite .dropdown-menu.show, .top-info .chooseAdmin .dropdown-menu.show { margin: 10px 0 0 -40px; }
+
+.dropdown-menu { min-width: 8rem; position:absolute;}
+.top-info .chooseSite .dropdown-menu {top: 48px; left: 865px;}
+.top-info .chooseAdmin .dropdown-menu {top: 48px; left: 990px;}
 .top-info .chooseSite .dropdown-menu .dropdown-item, .top-info .chooseAdmin .dropdown-menu .dropdown-item { text-align: center; padding: 0; width: 85%; margin: 0 auto; border-radius: 1.5rem; color: #999; }
 .top-info .chooseSite .dropdown-menu .dropdown-item:hover, .top-info .chooseAdmin .dropdown-menu .dropdown-item:hover { background: #e4edf7; color: #666; }
-.top-info .chooseAdmin .dropdown-menu.show { margin-left: -35px; }
+#playerPagination .dropdown-menu, #depositPagination .dropdown-menu{left: 75px; margin-top: -140px;}
 
 ._drawer-mask { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transition: opacity .38s ease-in-out,visibility .38s ease-in-out; background: rgba(0, 0, 0, 0.4); visibility: hidden; z-index: 999; opacity: 0; }
 ._drawer-mask.active { visibility: visible; opacity: 1; }
 
-.main-content { background: #e4edf7; padding: 0; flex: 1; max-width: 1125px; transition: transform .38s ease-in-out,visibility .38s; transform: translateX(0px); }
+.main-content {background: #e4edf7; padding: 0; flex: 1; max-width: 1125px; transition: transform .38s ease-in-out,visibility .38s; transform: translateX(0px); position:relative; }
 .main-content.drawer-body { transform: translateX(230px); visibility: visible; }
 
 .run-title { height: 55px; line-height: 55px; overflow: hidden; }
@@ -214,3 +216,91 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .remain-page .tableBox .time-tr { background: #dbe2e9; color: #4c789f; font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+
+
+/*新添加*/
+.apiBut{margin: 10px 0;}
+.termina{
+  margin: 10px 0 0 10px ;
+  display: inline-block;
+  height: 30px;
+  width: 80px;
+  border-radius: 15px;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 0.3s ease-in-out;
+  border:solid 1px #e2e2e2;
+}
+.termina .dropdown-toggle{line-height: 18px;}
+input:checked{background-color: #FFFFFF;}
+@media (max-width: 767px) {
+  /*在小于768像素的屏幕里,这里的样式才生效*/
+  .api_chose{width: 300px;}
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  /*在768和991像素之间的屏幕里,这里的样式才生效*/
+  .api_chose{width: 500px;}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .api_chose{width: 650px;}
+  /*在992和1199像素之间的屏幕里,这里的样式才生效*/
+}
+@media (min-width: 1200px) {
+  .api_chose{width: 800px;}
+  /*在大于1200像素的屏幕里,这里的样式才生效*/
+}
+.api_chose{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  min-height: 400px;
+  margin-top: -200px;
+  background: #FFFFFF;
+  display: block;
+  box-shadow: 0px 0px 12px rgba(0,0,0,0.5);
+}
+.api_chose .close{
+  width: 32px;
+  height: 32px;
+  border: solid 2px #0078ff;
+  border-radius: 50%;
+  position: absolute;
+  right: -16px;top: -16px;
+  outline: none;
+}
+.api_chose .close span{font-size: 32px;line-height: 20px;color:#0078ff ;}
+.api_chose h5{background: #1291fa; color:#fff; height: 42px;line-height: 42px;border-bottom: solid 1px #c8d9ec;}
+.api_chose .check_api{
+  height: 303px;
+  padding: 20px 0 20px 15px;
+}
+
+.check_api{overflow-y: scroll;}
+.check_api .allCheck{padding-left: 10px;}
+.check_api .api_box>div{padding-left: 10px;margin-right: 10px;}
+.check_api input{
+  position: relative;
+  top: 2px;left: -2px;
+  background-color: #fffff;
+  width: 16px;height: 16px;
+  border-radius: 5px;
+  display: inline-block;
+}
+.check_api .api_box span{vertical-align: baseline;display: inline-block;}
+.check_api .api_tlt{height: 32px;line-height: 32px;background: #f2f2f2;}
+.check_api .classification div{min-width: 145px;float: left;}
+
+.sub{height: 50px;border-top: solid 1px #c8d9ec;position: relative;background: #FFFFFF;}
+.sub button{
+  float: right;
+  width: 90px;
+  height: 30px;
+  line-height: 15px;
+  text-align: center;
+  margin: 10px 20px 0 0;
+  outline: none;
+  border-radius: 8px;
+}
