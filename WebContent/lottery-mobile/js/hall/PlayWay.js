@@ -35,6 +35,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             this.type = $(this.formSelector + " input[name=type]").val();
             this.muiInit();
             this.iosGoBack();
+            this.setLtToken();
         },
         /**
          * 绑定事件
