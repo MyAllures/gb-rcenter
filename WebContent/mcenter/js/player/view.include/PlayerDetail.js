@@ -743,7 +743,9 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     dataType: "JSON",
                     success: function (data) {
                         if (data.state) {
-                            _this.getUserPlayer();
+                            setTimeout(function () {
+                                _this.getUserPlayer();
+                            },1000);
                         }
                     }
                 });
