@@ -232,7 +232,7 @@ define(['site/MReport'], function (MReport) {
             var jsonStr = $(dataKey).html();
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z1', data, 'balanceAmount', 'staticDay*balanceAmount',　'存取差额', 300);
+            this.drawBasicColumnChart('z1', data, 'staticDay', 'balanceAmount',　'存取差额', 300);
         },
 
         /**
@@ -265,11 +265,11 @@ define(['site/MReport'], function (MReport) {
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
             if('phone'===terminal) {
-                this.drawBasicColumnChart('z2', data, 'effectiveTransactionPhone', 'staticDay*effectiveTransactionPhone',　'有效投注', 300);
+                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionPhone',　'有效投注', 300);
             } else if('pc'===terminal) {
-                this.drawBasicColumnChart('z2', data, 'effectiveTransactionPc', 'staticDay*effectiveTransactionPc',　'有效投注', 300);
+                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionPc',　'有效投注', 300);
             } else {
-                this.drawBasicColumnChart('z2', data, 'effectiveTransactionAll', 'staticDay*effectiveTransactionAll',　'有效投注', 300);
+                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionAll',　'有效投注', 300);
             }
 
         },
@@ -295,7 +295,7 @@ define(['site/MReport'], function (MReport) {
             var jsonStr = $(dataKey).html();
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z3', data, 'transactionProfitLoss', 'staticDay*transactionProfitLoss', '损益', 300);
+            this.drawBasicColumnChart('z3', data, 'staticDay', 'transactionProfitLoss', '损益', 300);
         },
 
         /**
@@ -422,9 +422,9 @@ define(['site/MReport'], function (MReport) {
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
             if('rakeback-men' == rakebackType) {
-                this.drawBasicColumnChart('b7', data, 'rakebackPlayer', 'staticDay*rakebackPlayer', '返水人数', 379);
+                this.drawBasicColumnChart('b7', data, 'staticDay', 'rakebackPlayer', '返水人数', 379);
             } else if('rakeback-cash' == rakebackType) {
-                this.drawBasicColumnChart('b7', data, 'rakebackAmount', 'staticDay*rakebackAmount', '返水金额', 356);
+                this.drawBasicColumnChart('b7', data, 'staticDay', 'rakebackAmount', '返水金额', 356);
             }
         },
 
