@@ -149,9 +149,9 @@ function fetchActivityProcess() {
                 $('#join .app_num').html('派奖时间：<span class="color-blue">' + formatDate(data.deadLineTime) + '</span>');
                 $('#unCommit .app_num').html('已有 <span class="color-blue">' + addApplyNum(data.ApplyNum) + '</span>人，报名成功');
                 if (data.hasApply) {
-                    $('#unCommit').removeClass('mui-hidden');
-                } else {
                     $('#join').removeClass('mui-hidden');
+                } else {
+                    $('#unCommit').removeClass('mui-hidden');
                 }
 
             } else {
