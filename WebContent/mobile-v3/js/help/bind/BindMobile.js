@@ -1,7 +1,7 @@
 /**
  * Created by snake on 18-5-2.
  */
-$(function(){
+$(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
         containerScroll: '.mui-content.mui-scroll-wrapper',
@@ -10,43 +10,42 @@ $(function(){
     };
     muiInit(options);
 });
-var delayTime=90;
+var delayTime = 90;
 
 /**
  * 倒计时
  * @param that
  * @param e
  */
-function countDown(that,e) {
+function countDown(that, e) {
     that.delayTime--;
-    $(e.currentTarget).text(window.top.message.personInfo_auto['几秒后重新获取'].replace("{0}",that.delayTime));
-    if(that.delayTime==1) {
-        that.timer='';
+    $(e.currentTarget).text(window.top.message.personInfo_auto['几秒后重新获取'].replace("{0}", that.delayTime));
+    if (that.delayTime == 1) {
+        that.timer = '';
         that.delayTime = 90;
         $(e.currentTarget).text(window.top.message.personInfo_auto['免费获取验证码']);
         $(e.currentTarget).removeClass("disable-gray");
         $(e.currentTarget).unlock();
     } else {
-        that.timer = setTimeout(function() {
-            that.countDown(that,e);
-        },1000);
+        that.timer = setTimeout(function () {
+            that.countDown(that, e);
+        }, 1000);
     }
 }
 
 //发送手机验证码
-function sendPhoneCode(obj,options) {
-    var $phone = $("[name=phone]");
+function sendPhoneCode() {
+    var $phone = $("[name='phone.contactValue']");
     var obj = $("#sendPhoneCode");
-    var phone = $phone.val();
-    if (!phone) {
+    if ($phone.val() == "") {
         toast(window.top.message.passport_auto['请输入手机号']);
         return;
     } else if ($phone.valid()) {
         var options = {
             type: "POST",
-            url: root + "/forgetPassword/getPhoneVerificationCode.html",
+            url: root + "/verificationCode/getPhoneVerificationCode.html",
             dataType: "json",
-            data: {"phone": phone},
+            data: {"phone": $phone.val()},
             success: function (data) {
                 if (data) {
                     var phoneInterval;
@@ -60,46 +59,6 @@ function sendPhoneCode(obj,options) {
         muiAjax(options);
     }
 }
-
-/**
- * 手机验证码
- * @param e
- */
-/*function sendPhoneCode (e) {
-    var _this = this;
-    var phone = $("[name='phone.contactValue']").val();
-    window.top.topPage.ajax({
-        type:"POST",
-        dataType:"json",
-        url:root+'/personInfo/getPhoneVerificationCode.html',
-        data:{"phone":phone,"t":Math.random()},
-        loading:true,
-        success: function (data) {
-            if(!data.state) {
-                // window.top.topPage.showWarningMessage(data.msg);
-                $("[name='phone.contactValue']").addClass("error");
-                if($(".phone").parent().children().hasClass("tips")){
-                    $(".phone").parent().find(".tips").remove();
-                }
-                if($(".phone").parent().children().hasClass("mark")){
-                    $(".phone").parent().find(".mark").remove();
-                }
-                $(".phone").after("<span class=\"tips orange\"><i class=\"mark plaintsmall\"></i>"+window.top.message.personInfo_auto['请输入手机号']+"</span>");
-                $(e.currentTarget).unlock();
-                return;
-            }
-            $(e.currentTarget).text(window.top.message.personInfo_auto['90秒后重新获取']);
-            $(e.currentTarget).addClass("disable-gray");
-            setTimeout(function() {
-                _this.countDown(_this,e);
-            },1000);
-        },
-
-        error:function(data){
-            $(e.currentTarget).unlock();
-        }
-    });
-}*/
 
 //发送短信，邮箱等待
 function wait(t, obj, interval) {
@@ -116,9 +75,39 @@ function wait(t, obj, interval) {
         }
     }, 1000);
 }
-function bindMobile (){
-    //验证手机号码和验证码
-    var options = {
-        url:root + '/forgetPassword/getPhoneVerificationCode.html'
+
+function bindMobile(obj) {
+    var $phone = $("[name='phone.contactValue']");
+    var $phoneCode = $("#phoneCode");
+    if ($phone.val() == "") {
+        toast(window.top.message.passport_auto['请输入手机号']);
+        return;
+    } else if ($phoneCode.val() == "") {
+        toast("请输入验证码");
+        return;
+    } else if ($phone.valid() && $phoneCode.valid()) {
+        var data = {'search.contactValue': $phone.val(), 'code': $phoneCode.val()}
+        var options = {
+            data: data,
+            dataType: 'json',
+            type: 'post',
+            url: root + '/help/savePhone.html',
+            beforeSend: function () {
+                $(obj).text(window.top.message.passport_auto['提交中']).attr("disabled", "disabled");
+            },
+            success: function (data) {
+                if (data.state == false) {
+                    toast(data.msg);
+                } else {
+                    toast(data.msg);
+                    goToUrl(root + '/help/updataMobile.html');
+                }
+            },
+            complete: function () {
+                $(obj).text("立即绑定").removeAttr("disabled");
+            }
+        };
+        muiAjax(options);
+
     }
 }
