@@ -743,9 +743,11 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                     dataType: "JSON",
                     success: function (data) {
                         if (data.state) {
+                            $("#total-asset").text(window.top.message.player_auto['回收中']);
+                            $("#wallet-balance").text(window.top.message.player_auto['回收中']);
                             setTimeout(function () {
                                 _this.getUserPlayer();
-                            },1000);
+                            },10000);
                         }
                     }
                 });
