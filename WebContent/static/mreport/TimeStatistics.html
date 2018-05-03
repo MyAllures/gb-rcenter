@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="../../mreport/themes/default/bootstrap.css"/>
-		<link rel="stylesheet" href="../../mreport/themes/default/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../mreport/themes/default/style.css" />
 		<link rel="stylesheet" type="text/css" href="../../mreport/themes/default/bootstrap-datetimepicker.min.css"/>
-		<link rel="stylesheet" href="../../mreport/themes/default/swiper.min.css" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1,maximum-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../mreport/themes/default/swiper.min.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>整体走势-实时统计</title>
 	    <script src="js/jquery-3.2.1.min.js"></script>
 	    <script src="js/swiper.min.js"></script>
@@ -17,7 +17,7 @@
 	    <script src="js/jqPaginator.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/Index.js"></script>
 	</head>
-	<body>  
+	<body>
     <div class="container xinzengwanjia-page">
         <div class="menu _menu">
         	<nav>
@@ -41,7 +41,7 @@
            		</ul>        
             </nav>           
         </div>
-        <div class="main-content _mainContent">
+        <div class="main-content _mainContent" style="min-width: 1024px;">
         	<div class="_drawer-mask"></div>
         	<!--头部信息：-->
         	<div class="top-info text-right">
@@ -172,14 +172,14 @@
 	</body>
 </html>
 <script>
-	 $(function(){    
+	 $(function(){
 	    var swiper = new Swiper('.swiper-info', {
 	     	slidesPerView: 6,
 	    	spaceBetween: 15,
         	nextButton: '.swiper-button-next',
         	prevButton: '.swiper-button-prev',
         	//direction: 'vertical',
-        	//loop: true
+        	loop: true
 	    });
 	  })
 </script>
