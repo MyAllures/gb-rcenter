@@ -5,16 +5,14 @@ var gameCode;
 var status;
 var isAutoPay;
 var gameId;
-//sessionStorage存放api相关对象 用来登录后直接进入游戏
-var SESSION_API_OBJ = "api_object";
 
 //初始化
 $(function () {
     var apiObj = sessionStorage.getItem(SESSION_API_OBJ);
     //从游戏跳转未登录直接进入游戏
     if (apiObj && apiObj != 'undefined') {
-        sessionStorage.removeItem(SESSION_API_OBJ);
         var data = JSON.parse(apiObj);
+        sessionStorage.removeItem(SESSION_API_OBJ);
         if (data) {
             apiId = data.apiId;
             apiTypeId = data.apiTypeId;
@@ -311,7 +309,6 @@ function gotoGameUrl(url, apiId) {
     if (url.indexOf('http') === -1) {
         url = window.location.origin + url;
     }
-    //goToUrl(url);
     //游戏中带v版本的游戏会找不到地址
     openWindow(url);
 }
