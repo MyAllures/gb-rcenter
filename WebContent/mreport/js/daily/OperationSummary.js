@@ -184,7 +184,7 @@ define(['site/MReport'], function (MReport) {
                 if($(this).val()==='report') {
                     $("#operationChart").hide();
                     $("#operationReport").show();
-                    _this.playerTrendList();
+                    _this.asnycOperationSummaryOfDays(null, 'initReportList');
                 } else {
                     $("#operationChart").show();
                     $("#operationReport").hide();
@@ -534,41 +534,178 @@ define(['site/MReport'], function (MReport) {
                         _this.rakebackTrend('API', rangeType);
                     }
                 },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                }
+                error: function (XMLHttpRequest, textStatus, errorThrown) {}
             });
+        },
+
+        /**
+         * 异步按天加载用户走势数据
+         * @param beginTime
+         * @param endTime
+         */
+        asnycOperationSummaryOfDays: function(condition, tag) {
+            var _this = this;
+            var url = root + '/daily/searchOperationSummaryByDays.html?'+condition;
+            $.ajax({
+                type: "GET",
+                url: url,
+                timeout: 60000,
+                success: function (data) {
+                    var jsonData = $.parseJSON(data);
+                    if (tag==='playerHowPage') {
+                        _this.iterationPlayerList(jsonData.entities);
+                    } else if(tag==='depositHowPage') {
+                        _this.iterationDepositList(jsonData.entities);
+                    } else {
+                        _this.initPlayerList(jsonData);
+                        _this.initDepositList(jsonData);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {}
+            });
+        },
+
+        /**
+         * 玩家走势列表翻页
+         * @param pageNo
+         */
+        playerListHowPage: function(pageSize, pageNo) {
+            var condition = "pageSize="+pageSize+"&pageNo="+pageNo;
+            _this.asnycOperationSummaryOfDays(condition, 'playerHowPage');
+        },
+
+        /**
+         * 存取走势列表翻页
+         * @param pageNo
+         */
+        depositListHowPage: function(pageSize, pageNo) {
+            var condition = "pageSize="+pageSize+"&pageNo="+pageNo;
+            _this.asnycOperationSummaryOfDays(condition, 'depositHowPage');
+        },
+
+        /**
+         * 迭代用户走势数据
+         * @param items
+         */
+        iterationPlayerList: function(items) {
+            $('#playerListResult').empty();
+            $(items).each(function(i) {
+                $('#playerListResult').append(
+                    '<tr><td>' + items[i].staticDateStr + '</td>'
+                    + '<td>' + items[i].newPlayerAll + '</td>'
+                    + '<td>' + items[i].newPlayerDeposit + '</td>'
+                    + '<td>' + items[i].paymentRate + '%</td>'
+                    + '<td>' + items[i].activePc + '</td>'
+                    + '<td>' + items[i].activePhone + '</td>'
+                    + '<td>' + items[i].installIos + '</td>'
+                    + '<td>' + items[i].installAndroid + '</td></tr>');
+            });
+            $('#playerListResult').prepend(
+                '<tr><th>时间</th><th>新增玩家</th>'
+                +'<th>新增存款玩家</th><th>付费率</th>'
+                +'<th>活跃用户(PC端)</th><th>活跃用户(手机端)</th>'
+                +'<th>安装量(IOS)</th><th>安装量(Android)</th></tr>');//添加表头tr th
+        },
+
+        /**
+         * 迭代存取走势数据
+         * @param items
+         */
+        iterationDepositList: function(items) {
+            $('#depositWithdrawResult').empty();
+            $(items).each(function(i) {
+                $('#depositWithdrawResult').append(
+                    '<tr><td>'+items[i].staticDateStr+'</td>'
+                    + '<td>' + items[i].depositAmount + '</td>'
+                    + '<td>' + items[i].withdrawalAmount + '</td>'
+                    + '<td>' + items[i].balanceAmount + '</td>'
+                    + '<td>' + items[i].refuseWithdrawalAmount + '</td>'
+                    + '<td>' + items[i].transactionProfitLoss + '</td>'
+                    + '<td>' + items[i].rakebackPlayer + '</td>'
+                    + '<td>' + items[i].rakebackAmount + '</td>'
+                    + '<td>' + items[i].averageDeposit + '</td></tr>');
+            });
+            $('#depositWithdrawResult').prepend(
+                '<tr><th>时间</th><th>存款金额(全部)</th>'
+                +'<th>取款金额(全部)</th><th>存取差额(全部)</th>'
+                +'<th>被拒取款金额</th><th>损益(全部)</th><th>返水人数</th>'
+                +'<th>返水金额</th><th>平均存款</th></tr>');//添加表头tr th
         },
 
         /**
          * 用户走势数据加载
          */
-        playerTrendList: function() {
-            var jsonStr = $("#operationSummaryDataOfDay").html();
-            if(!jsonStr) return;
-            const data = $.parseJSON(jsonStr);
-            $('#playerListResult').empty();
-            var html;
-            $(data).each(function(i) {
-                html += '<tr><td>'+data[i].staticDay+'</td><td>'+data[i].balanceAmount+'</td><td>'+data[i].balanceAmount+'</td><td>'+data[i].balanceAmount+'</td></tr>';
+        initPlayerList: function(data) {
+            _this = this;
+            _this.iterationPlayerList(data.entities);
+
+            /*$('#dropdownMenuBtnA').click(function(e) {
+                $(this).next('.dropdown-menu').stop().slideToggle();
+                $(this).focus();
+                $(this).blur(function() {
+                    $(this).next('.dropdown-menu').stop().slideUp();
+                });
             });
-            $("#playerListResult").html(html);
-            $('#playerListResult').prepend('<tr><th>时间</th><th>新增玩家</th><th>新增存款玩家</th><th>付费率</th><th>活跃用户(PC端)</th><th>活跃用户(手机端)</th><th>安装量(IOS)</th><th>安装量(Android)</th></tr>')//添加表头tr th
+
+            //选择一页显示多少
+            $('#choseNum .dropdown-item').click(function() {
+                var pageSize = parseInt(this.text)//取值，该页面显示多少条
+                _this.playerListHowPage(pageSize, 1);
+                //$("#dropdownMenuBtnA").html(this.text);
+            });*/
 
             //分页
-            $.jqPaginator('#pagination', {
-                totalPages: 5,//总共多少页
-                pageSize:10,//分页条目
+            $.jqPaginator('#playerListPagination', {
+                totalPages: data.totalPages,//总共多少页
+                pageSize: data.pageSize,//分页条目
                 visiblePages: 3,//显示多少分页按钮
-                currentPage: 1,//当前在第几页
+                currentPage: data.pageNo,//当前在第几页
                 first:'<li class="page-item"><a class="page-link first-page" href="javascript:;"></a></li>',
                 prev: '<li class="page-item"><a class="page-link previous" href="javascript:;" aria-label="Previous"></a></li>',
                 next: '<li class="page-item"><a class="page-link next" href="javascript:;" aria-label="Next"></a></li>',
                 last: '<li class="page-item"><a class="page-link last-page" href="javascript:;"></a></li>',
                 page: '<li class="page page-item"><a class="page-link" href="javascript:;">{{page}}</a></li>',
                 onPageChange: function (num) {
-                    /*nowpage = num;
-                     howPage();
-                     if(!run){return false}//控制没有时页面还跳动情况*/
+                    _this.playerListHowPage(data.pageSize, num);
+                }
+            });
+        },
+
+        /**
+         * 存取款走势
+         */
+        initDepositList: function(data) {
+            _this = this;
+            _this.iterationDepositList(data.entities);
+
+            /*$('#dropdownMenuBtnB').click(function(e) {
+                $(this).next('.dropdown-menu').stop().slideToggle();
+                $(this).focus();
+                $(this).blur(function() {
+                    $(this).next('.dropdown-menu').stop().slideUp();
+                });
+            });
+
+            // 选择一页显示多少
+            $('#choseNum .dropdown-item').click(function() {
+                var pageSize = parseInt(this.text)//取值，该页面显示多少条
+                _this.depositListHowPage(pageSize, 1);
+                //$("#dropdownMenuBtnB").html(this.text);
+            });*/
+
+            //分页
+            $.jqPaginator('#depositWithdrawPagination', {
+                totalPages: data.totalPages,//总共多少页
+                pageSize: data.pageSize,//分页条目
+                visiblePages: 3,//显示多少分页按钮
+                currentPage: data.pageNo,//当前在第几页
+                first:'<li class="page-item"><a class="page-link first-page" href="javascript:;"></a></li>',
+                prev: '<li class="page-item"><a class="page-link previous" href="javascript:;" aria-label="Previous"></a></li>',
+                next: '<li class="page-item"><a class="page-link next" href="javascript:;" aria-label="Next"></a></li>',
+                last: '<li class="page-item"><a class="page-link last-page" href="javascript:;"></a></li>',
+                page: '<li class="page page-item"><a class="page-link" href="javascript:;">{{page}}</a></li>',
+                onPageChange: function (num) {
+                    _this.depositListHowPage(data.pageSize, num);
                 }
             });
         }

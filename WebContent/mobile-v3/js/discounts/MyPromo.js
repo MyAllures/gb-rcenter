@@ -3,10 +3,10 @@ $(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
         containerScroll: '.mui-content.mui-scroll-wrapper',
-        /*右侧菜单上下滚动，可自行指定范围*/
-        rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
-        /*禁用侧滑手势指定样式*/
-        disabledHandSlip: ['mui-off-canvas-left'],
+         /*右侧菜单上下滚动，可自行指定范围*/
+         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
+         /*禁用侧滑手势指定样式*/
+         disabledHandSlip: ['mui-off-canvas-left'],
         init: pullUpRefreshOption('#refreshContainer', pullfresh, false)
     };
     muiInit(options);
@@ -15,17 +15,32 @@ $(function () {
     //android隐藏头部
     hideHeader();
 });
+var pageNumberType = "AllPageNumber";
 
+function promotionCategory(obj, options) {
+    var name = options.code;
+    if (name){
+        var _this = $(".promo-records-warp[name="+name+"]");
+    }
+    $(".promo-records-warp").css("display","none");
+    if (name == "awarded" || name == "didNotPass" ||name == "unaudited"){
+        pageNumberType = name+"PageNumber";
+        _this.css("display","");
+    }else{//全部
+        pageNumberType = "AllPageNumber";
+        $(".promo-records-warp").css("display","");
+    }
+}
 
 /*上拉请求数据*/
 function pullfresh() {
     setTimeout(function () {
         mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
-        var pageNumber = parseInt($("#pageNumber").val());
+        var pageNumber = parseInt($("#"+pageNumberType).val());
         var lastPageNumber = parseInt($("#lastPageNumber").val());
         if (pageNumber == lastPageNumber) {
             mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
-        }else{
+        } else {
             promoInfo(pageNumber + 1);
         }
     }, 0);
@@ -33,25 +48,33 @@ function pullfresh() {
 
 /*获取正在进行中的类型和活动*/
 function promoInfo(pageNumber) {
-    var url = root + "/promo/myPromo.html";
-    var data= {"paging.pageNumber": pageNumber};
+    var data ;
+    if (pageNumberType == "AllPageNumber"){
+        data = {"paging.pageNumber": pageNumber};
+    }else if (pageNumberType == "awardedPageNumber"){
+        data = {"paging.pageNumber": pageNumber,"search.checkState":"2"};
+    }else if (pageNumberType == "didNotPassPageNumber"){
+        data = {"paging.pageNumber": pageNumber,"search.checkState":"4"};
+    }else if (pageNumberType == "unauditedPageNumber"){
+        data = {"paging.pageNumber": pageNumber,"search.checkState":"1"};
+    }
     var options = {
-        url:url,
-        type:'post',
-        timeout:10000,
-        data:data,
+        url: root + "/promo/myPromo.html",
+        type: 'post',
+        timeout: 10000,
+        data: data,
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Soul-Requested-With': 'XMLHttpRequest'
         },
-        dataType:'html',
-        success:function(data){
-            if(data != null){
+        dataType: 'html',
+        success: function (data) {
+            if (data != null) {
                 $("#content").append(data);
-                $("#pageNumber").val(pageNumber);
+                $("#"+pageNumberType).val(pageNumber);
             }
         },
-        error:function(e){
+        error: function (e) {
             toast("加载失败");
         }
     };

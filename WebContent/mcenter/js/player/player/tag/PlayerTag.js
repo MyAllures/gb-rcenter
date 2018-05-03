@@ -244,6 +244,7 @@ define(['common/BasePage','checkboxX'], function(BasePage,checkboxX) {
         },
 
         saveTag:function (e,option) {
+            var _this = this;
             window.top.topPage.ajax({
                 url: root+"/playerTag/saveTag.html",
                 dataType: 'json',
@@ -261,7 +262,9 @@ define(['common/BasePage','checkboxX'], function(BasePage,checkboxX) {
                     }
                     e.page.showPopover(e, option, msgType, data.msg, true);*/
                     $(e.currentTarget).unlock();
-                    window.top.topPage.showSuccessMessage(data.msg,this.playerTagSaveCallBack);
+                    window.top.topPage.showSuccessMessage(data.msg,function (state) {
+                        _this.playerTagSaveCallBack();
+                    });
                 },
                 error: function (data) {
                     // e.page.showPopover(e, option, 'danger', window.top.message.common['save.failed'], true);

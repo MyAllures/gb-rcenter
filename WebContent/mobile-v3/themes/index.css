@@ -100,12 +100,16 @@
       background-position: 0 -1960px; }
       .api-grid .api-item.api-icon-3-37:before {
       background-position: 0 -2030px; }
+      .api-grid .api-item.api-icon-3-40:before {
+      background-position: 0 -2100px; }
       .api-grid .api-item.api-icon-3-37.site119:before {
       background: url(images/api-icon-3-37-site119.png) 0 0/70px no-repeat;}
       .api-grid .api-item.api-icon-3-37.site270:before {
       background: url(images/api-icon-3-37-site270.png) 0 0/70px no-repeat;}
       .api-grid .api-item.api-icon-3-37.site209:before {
       background: url(images/api-icon-3-37-site209.png) 0 0/70px no-repeat;}
+      .api-grid .api-item.api-icon-3-40.site322:before {
+      background: url(images/api-icon-3-40-site322.png) 0 0/70px no-repeat;}
     .api-grid .api-item.lt:before {
       background-position: 0 -1400px; }
     .api-grid .api-item.yzt:before {

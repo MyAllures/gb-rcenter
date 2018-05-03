@@ -13,6 +13,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             this.initSystemRecommendData();
             this.initGameNum();
             this.initPreferential();
+            this.changeKey();
         },
 
         bindEvent: function () {
@@ -182,6 +183,55 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 var ids = id_array.join(',');
                 $("input[name='rank']").val(ids);
             });
+
+
+            /**
+             * 存款方式全选
+             */
+            $("#allDepositWay").click(function (e, opt) {
+                var id_array = new Array();
+                $("#deposit_ways_div input[type='checkbox']").each(function (item, obj) {
+                    if (!$(this).prop("disabled")) {
+                        obj.checked = e.currentTarget.checked;
+                        if (e.currentTarget.checked) {
+                            id_array.push($(this).val());
+                        }
+                    }
+                    var ids = id_array.join(',');
+                    $("input[name='depositWayStr']").val(ids);
+                });
+            });
+
+            /**
+             * 全选后点击某个存款方式的checkbox 去掉全选选中
+             */
+            $("[name='activityRule.depositWay']").on("click", function (e) {
+                if (!this.checked) {
+                    $("#allDepositWay").attr("checked", false);
+                }
+                var id_array = new Array();
+                //如果全部勾选，全选按钮勾选
+                //收集存款方式的值
+                var allDepositWayState = true;
+                $("[name='activityRule.depositWay']").each(function (item, obj) {
+                    if (!obj.checked){
+                        allDepositWayState = false;
+                    }
+                    //收集存款方式的值
+                    if (!$(this).prop("disabled")) {
+                        if (obj.checked) {
+                            id_array.push($(this).val());
+                        }
+                    }
+                    var ids = id_array.join(',');
+                    $("input[name='depositWayStr']").val(ids);
+                });
+                $("#allDepositWay").prop("checked",allDepositWayState);
+
+
+            });
+
+
         },
 
         onPageLoad: function () {
@@ -535,7 +585,9 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $("#previewDepositWay").remove();
             $("#preDepositWay").append('<div class="col-sm-5" id="previewDepositWay"></div>');
             $("[name='activityRule.depositWay']:checked").each(function (index, item) {//存款方式
-                $("#previewDepositWay").append($(this).parent().text() + '&nbsp;');
+                if (!$(this).prop("disabled")) {
+                    $("#previewDepositWay").append($(this).parent().text() + '&nbsp;');
+                }
             });
 
             $("#previewRank").remove();
@@ -556,11 +608,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
 
             var claimPeriod = $("[name='activityRule.claimPeriod']").val();
             if (claimPeriod == 'NaturalDay') {
-                $("#previewClaimPeriod").text(window.top.message.operation_auto['自然日']);//申领周期
+                $("#previewClaimPeriod").text(window.top.message.operation_auto['一日']);//申领周期
             } else if (claimPeriod == 'NaturalWeek') {
-                $("#previewClaimPeriod").text(window.top.message.operation_auto['自然周']);
+                $("#previewClaimPeriod").text(window.top.message.operation_auto['一周']);
             } else if (claimPeriod == 'NaturalMonth') {
-                $("#previewClaimPeriod").text(window.top.message.operation_auto['自然月']);
+                $("#previewClaimPeriod").text(window.top.message.operation_auto['一月']);
             } else if (claimPeriod == 'ActivityCycle') {
                 $("#previewClaimPeriod").text(window.top.message.operation_auto['活动周期']);
             }
@@ -1293,6 +1345,22 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 $("#loss_preferential").show();
             }else {
                 $("#loss_preferential").hide();
+            }
+        },
+        /**
+         * 活动周期描述切换
+         * @param null
+         */
+        changeKey: function () {
+            var value = $('[name="activityRule.claimPeriod"]').val();
+            if (value == 'NaturalDay') {
+                $(".claimPeriodDetail").text('以活动开启时间为起点，顺延24小时为1个结算周期，可以多次查询当前投注额，派奖以结算时为准。')
+            }else if (value == 'NaturalWeek') {
+                $(".claimPeriodDetail").text('以活动开启时间为起点，顺延7*24小时为1个结算周期，可以多次查询当前投注额，派奖以结算时为准。');
+            }else if (value == 'NaturalMonth') {
+                $(".claimPeriodDetail").text('以活动开启时间为起点，顺延30*24小时为1个结算周期，可以多次查询当前投注额，派奖以结算时为准。');
+            }else {
+                $(".claimPeriodDetail").text('每个周期内，每人默认只能申请一次。');
             }
         },
     });
