@@ -1,17 +1,27 @@
 <script src="${data.configInfo.ftlRootPath}commonPage/js/jquery/jquery.countdown.js"></script>
 <script>
     $(function () {
+        // 默认配置
+        layer.config({
+            type: 0,
+            move: ".layui-layer-title",
+            title: true,
+            offset: "auto",
+            btnAlign: "r",
+            closeBtn: "2",
+            shade: [0.7, "#000"],
+            shadeClose: true,
+            time: 0,
+            resize: false
+        });
+
         ctime = 0;
+
         //活动类型为content的不显示申请按钮
         $("div [data-code=content] ._vr_promo_join").remove();
 
-        //判断优惠活动是否显示历史优惠按钮
-        if($("._vr_promo_check.historyActivitys").length>0){
-            $(".hisActivityButton").removeClass("hide");
-        }
-
         // 优惠手风琴
-        $(".list-type2 .btn-detail").on('click', function () {
+        $(".list-type2 .promo-item>img").on('click',function(){
             $(this).toggleClass('open');
             $(this).parents(".promo-item").find(".promo-detail").stop().slideToggle();
         });
@@ -67,46 +77,40 @@
         var nowTime = $("._user_time").attr("time");
         $("._vr_promo_check").each(function () {
             var $this = $(this);
+            var code = $this.data('code');
+            //根据时间处理小标题和申请按钮
             var st = $this.find("._vr_promo_ostart").val();
             var et = $this.find("._vr_promo_oend").val();
             var sTime = moment(Number(st)).utcOffset(sessionStorage.getItem("timezone"));
             var eTime = moment(Number(et)).utcOffset(sessionStorage.getItem("timezone"));
-            //填充小标题那里的开始时间和结束时间
+            //填充小标题那里的开始时间和结束时间--暂时没用
             $this.find("._vr_promo_start").each(function () {
                 $(this).text(sTime.format($(this).data("format")));
-            })
+            });
             $this.find("._vr_promo_end").each(function () {
                 $(this).text(eTime.format($(this).data("format")));
-            })
-            if (nowTime < sTime) {
-                //未开始
-                $this.find("._vr_promo_processing").hide();
-                $this.find("._vr_promo_nostart").show();
-                $this.find("._vr_promo_over").hide();
-                $this.find("._vr_promo_join").text("未开始");
-            } else if (nowTime > sTime && nowTime < eTime) {
-                //进行中
-                $this.find("._vr_promo_processing").show();
-                $this.find("._vr_promo_nostart").hide();
-                $this.find("._vr_promo_over").hide();
-                $this.find("._vr_promo_join").text("立即申请");
-                //倒计时
-                var endTimeVal = new Date(parseInt(et));
-                $this.find("._vr_promo_countdown").ccountdown(endTimeVal.getFullYear(), endTimeVal.getMonth() + 1, endTimeVal.getDate(), endTimeVal.getHours() + ':' + endTimeVal.getSeconds());
-            } else if (nowTime > eTime) {
-                //已结束
-                $this.attr("data-type", "over");
-                $this.children("dt").addClass("status-over");
-                $this.find("._vr_promo_over").show();
-                $this.find("._vr_promo_processing").hide();
-                $this.find("._vr_promo_nostart").hide();
-                if(typeof  $this.find("._vr_promo_join").attr("join-over-hide")!="undefined"){
-                    $this.find("_vr_promo_join").hide();
+            });
+            if (nowTime < sTime) {//未开始
+                $this.find(".noyet").show();
+                $this.find(".processing").hide();
+                $this.find(".over").hide();
+                $this.find(".shadow").html('');
+            } else if (nowTime > sTime && nowTime < eTime) {//进行中
+                $this.find(".noyet").hide();
+                $this.find(".processing").show();
+                $this.find(".over").hide();
+                $this.find(".shadow").html('<div class="btn-apply _vr_promo_join" onclick="joinPromo(this)">' + '立即加入' + '</div>');
+                //根据活动内容处理申请按钮
+                if (code == 'back_water' || code == 'content') {
+                    $this.find('.shadow').html('<div class="btn-txt">该活动无需申请</div>');
+                } else if (code == 'money') {
+                    $this.find('._vr_promo_join').text('试试手气');
                 }
-                var oldClass = $this.find("._vr_promo_join").data("oldClass");
-                var newClass = $this.find("._vr_promo_join").data("newClass");
-                $this.find("._vr_promo_join").removeClass(typeof oldClass=="undefined"?"":oldClass).addClass(typeof newClass=="undefined"?"":newClass).attr("onclick", "").text("已结束");
-                $("._vr_promo_overparent").append($this);
+            } else if (nowTime > eTime) {//已结束
+                $this.find(".noyet").hide();
+                $this.find(".processing").hide();
+                $this.find(".over").show();
+                $this.find(".shadow").html('');
             }
         })
     }
@@ -129,32 +133,26 @@
 
     //根据该层级不能参加的活动添加disable属性和改变按钮提示
     function filterActyByPlayer(data) {
-        var rankActvyObj = $("._vr_promo_check[data-rank-id][data-type='processing']");
-        rankActvyObj.each(function (j, actObj) {
-            var startTimeObj = $(actObj).find("._vr_promo_ostart");
-            var flag = new Date(parseInt(startTimeObj.val())) < new Date();
-            var oldClass = $(actObj).find("._vr_promo_join").data("oldClass");
-            oldClass = typeof oldClass=="undefined"?"":oldClass;
-            var newClass = $(actObj).find("._vr_promo_join").data("newClass");
-            newClass = typeof newClass=="undefined"?"":newClass;
-
+        promoCheck();
+        var ActvyObj = $("._vr_promo_join");
+        ActvyObj.each(function (j, actObj) {
+            var actObjParent = $(actObj).parents("._vr_promo_check");
             if (data.length < 1) {
-                if ($(actObj).data("rankId") != "all" && flag) {
-                    $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " notfit").attr("onclick","").text("未满足条件");
+                if ($(actObjParent).data("rankId") != "all") {
+                    $(actObj).addClass(" notfit").attr("onclick","").text("未满足条件");
                 }
             }
-            if (data.length > 0 && $(actObj).data("rankId") != "all" && flag) {
+            if (data.length > 0 && $(actObjParent).data("rankId") != "all") {
                 var isContain = false;
                 for (var j = 0; j < data.length; j++) {
-                    if ($(actObj).data("searchid") === data[j]) {
+                    if ($(actObjParent).data("searchid") === data[j]) {
                         isContain = true;
                     }
                 }
                 if (!isContain) {
-                    $(actObj).find("._vr_promo_join").removeClass(oldClass).addClass(newClass + " notfit").attr("onclick","").text("未满足条件");
+                    $(actObj).addClass(" notfit").attr("onclick","").text("未满足条件");
                 }
             }
-
         });
     }
 
@@ -295,7 +293,7 @@
             $(".process").remove();
             var preferentialRelations = data.preferentialRelations;
             for (j = 0; j<preferentialRelations.length; j++) {
-                if (preferentialRelations[j].preferentialCode == 'profit_ge' && data.profitloss>=0) {//盈利时只展示盈利
+                if (preferentialRelations[j].preferentialCode == 'profit_ge') {//盈利时只展示盈利
                     var width = (data.profitloss/preferentialRelations[j].preferentialValue)*100;//计算进度
                     if (data.profitloss >= preferentialRelations[j].preferentialValue){
                         item = '<div class="item-success-with-bar process">'+ '<i class="icon-pass"></i>' + '<div class="txt"><span>盈利' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.profitloss +
@@ -305,17 +303,31 @@
                                 '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner" style="' + 'width:'+ width + '%' + '"></div></div></div>';
                     }
                     $(".profit_loss.profit").append(item);
-                }else if (preferentialRelations[j].preferentialCode == 'loss_ge' && preferentialRelations[j].orderColumn == '1' && data.profitloss < 0) {//亏损时只展示亏损
+                }else if (preferentialRelations[j].preferentialCode == 'loss_ge' && preferentialRelations[j].orderColumn == '1') {//亏损时只展示亏损
                     if (Math.abs(data.profitloss) >= preferentialRelations[j].preferentialValue && data.profitloss < 0){
                         icon = '<i class="icon-pass"></i>';
                     } else {
                         icon = '<i class="icon-fail"></i>';
                     }
+                    var lossMoney = data.profitloss;
+                    if (lossMoney > 0) {
+                        lossMoney = 0;
+                    }
                     item = '<div class="item-success-without-bar process">'+
                             icon +
-                            '<div class="txt"><span>亏损金额:'  + data.profitloss  +'</span></div>'+
+                            '<div class="txt"><span>亏损金额:'  + lossMoney  +'</span></div>'+
                             '</div>';
                     $(".profit_loss.loss").append(item);
+                }
+            }
+            //盈亏送都存在时,根据盈亏控制展现
+            var profitHtml = $(".profit_loss.profit").html();
+            var lossHtml = $(".profit_loss.loss").html();
+            if (profitHtml != "" && lossHtml != "") {
+                if (data.profitloss >= 0) {
+                    $(".profit_loss.loss").html('');
+                }else {
+                    $(".profit_loss.profit").html('');
                 }
             }
             if (data.hasApply) {
