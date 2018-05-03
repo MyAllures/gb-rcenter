@@ -743,7 +743,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                     if (a3 == "") {
                         a3 = "---";
                     }
-                    $("#previewprofit").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
+                    $("#previewprofit").append("<tr><td style='width: 33%'>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td style='width: 33%'>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td style='width: 33%'>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
 
                 });
                 //亏损
@@ -760,7 +760,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                     if (a3 == "") {
                         a3 = "---";
                     }
-                    $("#previewloss").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
+                    $("#previewloss").append("<tr><td style='width: 33%'>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td style='width: 33%'>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td style='width: 33%'>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
                 });
             }
             if(code=="money"){
