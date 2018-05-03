@@ -1,7 +1,7 @@
 /**
  * 数据中心
  */
-define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, G2, DataSet) {
+define(['common/BasePage', 'g2/g2', 'g2/data-set.min'], function (BasePage, G2, DataSet) {
     return BasePage.extend({
 
         /**
@@ -104,15 +104,17 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * @author martin
          * @param containerName
          * @param data
-         * @param scale
+         * @param xField
+         * @param yField
          * @param position
          * @param tips
          * @param height
          */
-        drawBasicColumnChart: function(containerName, data, scale, position, tips, height) {
+        drawBasicColumnChart: function(containerName, data, xField, yField, tips, height) {
             //清空原有内容
             $("#"+containerName).empty();
 
+            const position = xField + '*' + yField;
             const chart =  new G2.Chart({
                 container: containerName,
                 forceFit: true,
@@ -121,7 +123,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             });
             chart.source(data);
             chart.interval().position(position)
-                .tooltip(scale, function(val) {
+                .tooltip(yField, function(val) {
                     return {
                         name: tips,
                         value: val
@@ -239,8 +241,8 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             const chart = new G2.Chart({
                 container: containerName,
                 forceFit: true,
-                height: 320,
-                padding: [ 0, 10, 30, 10 ]
+                height: 300,
+                padding: [ 40, 10, 50, 10 ]
             });
             chart.source(data);
 
@@ -334,7 +336,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
 
             // 自定义标题
             chart.guide().html({
-                position: [ '50%', '95%' ],
+                position: [ '50%', '110%' ],
                 html: '<div style="width: 300px;text-align: center; border:0px solid red;">'
                 + '<span style="background-color: '+colorm+'; width: 15px; height: 15px; display: inline-block; margin-right: 8px;"></span>' + staticDay0
                 + '<span style="background-color: '+colorn+'; width: 15px; height: 15px; display: inline-block; margin: 0px 8px 0px 20px;"></span>' + staticDay1
