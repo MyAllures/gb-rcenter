@@ -157,6 +157,7 @@ function fetchActivityProcess() {
             } else {
                 $('.status_failure').removeClass('mui-hidden');
                 $('.btn_cust_serv').removeClass('mui-hidden');
+                $('.promo-apply-content').removeClass('promo-apply2-content');
             }
         }
     };
