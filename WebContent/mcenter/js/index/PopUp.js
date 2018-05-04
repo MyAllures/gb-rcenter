@@ -2,7 +2,6 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
 
     return PopUp.extend({
         tones: null,
-        imTimer:null,
         init: function () {
             this._super();
             this.queryTones();
@@ -17,7 +16,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
         },
         imCallBack: function (data) {
             var _this = this;
-            //console.info("订阅类型为IM的订阅点收到消息，成功调用回调函数，参数值为" + data);
+            console.info("订阅类型为IM的订阅点收到消息，成功调用回调函数，参数值为" + data);
             data = JSON.parse(data);
             if (data.imMessage.status == 'connect') {
                 var $textAndPic = $('<div style="margin: 5px 10px 30px;"></div>');
@@ -27,14 +26,15 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 if (!text) text = '我需要你的帮助';
                 $personMessage.append('<div class="customer_message">' + text + '</div>');
                 $textAndPic.append($personMessage);
+                var accept_id = "accept_ok_time_" + Math.random().toString(36).substr(2);
                 popUp.showDialog({
                     title: '您收到新的客户消息',
                     message: $textAndPic,
                     buttons: [{
-                        label: '接收<span id="accept_ok_time" style="padding-left:3px;">30</span>',
+                        label: '接收<span id="'+accept_id+'" style="padding-left:3px;">30</span>',
                         id: 'accept_ok',
                         action: function (dialogRef) {
-                            clearInterval(_this.imTimer);
+                            clearInterval(dialogRef.imTimer);
                             data.imMessage.status = 'accepted';
                             popUp._validAccepted(data);
                             dialogRef.close();
@@ -42,20 +42,20 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     }, {
                         label: '繁忙',
                         action: function (dialogRef) {
-                            clearInterval(_this.imTimer);
+                            clearInterval(dialogRef.imTimer);
                             data.imMessage.status = 'refuse';
                             popUp._validAccepted(data);
                             dialogRef.close();
                         }
                     }],
                     onshown : function(dialogRef){
-                        _this.imTimer = setInterval(function(){
-                            var time = Number($('#accept_ok_time').html());
+                        dialogRef.imTimer = setInterval(function(){
+                            var time = Number($('#'+accept_id).html());
                             if(time == 1){
-                                clearInterval(_this.imTimer);
+                                clearInterval(dialogRef.imTimer);
                                 dialogRef.close();
                             }
-                            $('#accept_ok_time').html(--time);
+                            $('#'+accept_id).html(--time);
                         },1000);
                     }
                 });

@@ -14,22 +14,25 @@ define(['common/BasePage'], function (BasePage) {
             $connectionStateEl: $('#connection-state-el'),
             $scrollEl: $('.ivu-scroll-container'),
             $imgFileInputEl: $('#imgFileInput'),
-            $closeOrderBtnEl : $('#closeOrderBtn'),
-            countTextNumEL : $('#countText')
+            $closeOrderBtnEl: $('#closeOrderBtn'),
+            $historyImMessageBtnEl: $('#historyImMessageBtn'),
+            countTextNumEL: $('#countText')
         },
         status: 'connect',
+        messageType: null, //目前只用于关闭工单操作
         data: {
             sendMessageData: {
                 sendMessageText: '',
                 sendMessageImg: ''
             },
-            workerOrderId : null,
-            messages: []
+            workerOrderId: null,
+            messages: [],
+            historyLastTime: null
         },
         defaultMessage: '您好，请问有什么可以帮您？',
         timeout: 30,//超时时间,单位：秒
         timer: null,//计时器
-        maxTextLength : 300,
+        maxTextLength: 300,
         comet: window.top.comet,
         init: function () {
             var _this = this;
@@ -39,8 +42,8 @@ define(['common/BasePage'], function (BasePage) {
             _this.comet.socketCloseCallBack = function () {
                 _this._socketColsed();
             }
-            if(!openPage.isCustomer){
-                _this.els.$closeOrderBtnEl.css('display','inline-block');
+            if (!openPage.isCustomer) {
+                _this.els.$closeOrderBtnEl.css('display', 'inline-block');
             }
         },
         bindEvent: function () {
@@ -52,17 +55,20 @@ define(['common/BasePage'], function (BasePage) {
             _this.els.$sendImgBtnEL.on("click", function () {
                 _this.sendImg();
             });
+            _this.els.$historyImMessageBtnEl.on("click", function () {
+                _this.sendHistoryMessage();
+            });
             _this.els.$closeOrderBtnEl.on("click", function () {
                 _this.closeOrder();
             });
-            _this.els.$textEl.on("keyup",function(){
-                 var text = _this.els.$textEl.val(),count = text.length;
-                 if(count > _this.maxTextLength){
+            _this.els.$textEl.on("keyup", function () {
+                var text = _this.els.$textEl.val(), count = text.length;
+                if (count > _this.maxTextLength) {
                     //保留前300位
-                     _this.els.$textEl.val(text.substring(0,300));
-                     count = 300;
-                 }
-                 _this.els.countTextNumEL.html(count);
+                    _this.els.$textEl.val(text.substring(0, 300));
+                    count = 300;
+                }
+                _this.els.countTextNumEL.html(count);
             });
 
         },
@@ -88,17 +94,19 @@ define(['common/BasePage'], function (BasePage) {
             } else {
                 switch (status) {
                     case 'reconnected' :
-                    case 'accepted' :  //勿删
+                    case 'accepted' :
                     case 'connected' :
-                         if(imMessage.workOrderId) _this.data.workerOrderId = imMessage.workOrderId;
+                        if (imMessage.workOrderId) _this.data.workerOrderId = imMessage.workOrderId;
                         _this.stopTimer();
                         _this.status = 'normal';
                         _this.els.$sendTextBtnEL.attr('disabled', false);
-                        _this.els.$sendImgBtnEL.attr('disabled', false);
+                        _this.els.$sendImgBtnEL.attr('disabled', false); //$historyImMessageBtnEl
+                        _this.els.$historyImMessageBtnEl.attr('disabled', false);
                         _this.els.$connectionStateEl.html('连接成功');
                         _this.els.$connectionStateEl.removeClass('unConnected').addClass('connected');
-                        if(window.top.customerGroupView)
-                            window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'online'),window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId);
+                        if (window.top.customerGroupView)
+                            window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'online'), window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId),
+                                window.top.customerGroupView.setWokerOrderId(imMessage.sendUserId,_this.data.workerOrderId);
                         if (imMessage.isCustomer) {
                             _this.appendMessage({
                                 message: _this.defaultMessage,
@@ -111,22 +119,33 @@ define(['common/BasePage'], function (BasePage) {
                         break;
                     case 'normal' :
                         _this.status = status;
-                        _this.appendMessage({
-                            message: imMessage.messageBody.textBody ? imMessage.messageBody.textBody : '',
-                            time: new Date(),
-                            messageBodyType: imMessage.messageBody.messageBodyType,
-                            name: imMessage.sendUserName,
-                            type: 1
-                        });
-                        if(window.top.customerGroupView) window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId);
+                        var messageType = imMessage.messageType;
+                        switch (messageType) {
+                            case 'workorderClose' :
+                                alert('弹出评价窗口demo');
+                                _this.els.$connectionStateEl.html('工单已完结');
+                                _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
+                                window.top.customerGroupView && window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
+                                break;
+                            default :
+                                _this.appendMessage({
+                                    message: imMessage.messageBody.textBody ? imMessage.messageBody.textBody : '',
+                                    time: new Date(),
+                                    messageBodyType: imMessage.messageBody.messageBodyType,
+                                    name: imMessage.sendUserName,
+                                    type: 1
+                                });
+                                break;
+                        }
+                        if (window.top.customerGroupView) window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId);
                         break;
                     case 'close' :
                         _this.els.$sendTextBtnEL.attr('disabled', true);
                         _this.els.$sendImgBtnEL.attr('disabled', true);
                         _this.status = status;
-                        _this.els.$connectionStateEl.html('对方已下线');
+                        _this.els.$connectionStateEl.html('对方已离线');
                         _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
-                        if(window.top.customerGroupView) window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
+                        if (window.top.customerGroupView) window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
                         break;
                     case 'closeSocket' :
                         _this.status = status;
@@ -134,16 +153,26 @@ define(['common/BasePage'], function (BasePage) {
                         _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
                         _this.els.$sendTextBtnEL.attr('disabled', true);
                         _this.els.$sendImgBtnEL.attr('disabled', true);
-                        if(window.top.customerGroupView) window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
+                        if (window.top.customerGroupView) window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
                         break;
                     case 'closeOrder' :
-                        _this.status = status;
-                        _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
-                        _this.els.$connectionStateEl.html('工单完结');
+                        _this.els.$connectionStateEl.html('工单已完结');
                         _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
+                        //如果处于正常聊天状态则推送
+                        if (_this.status === 'normal') {
+                            _this.comet.websocket.send(JSON.stringify(_this.createSendVo()));
+                        }
+                        if (window.top.customerGroupView) window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'closeOrder');
+                        break;
+                    case 'offlineMessage' :
                         _this.els.$sendTextBtnEL.attr('disabled', true);
                         _this.els.$sendImgBtnEL.attr('disabled', true);
-                        if(window.top.customerGroupView) window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
+                        _this.els.$closeOrderBtnEl.attr('disabled', true);
+                        _this.status = status;
+                        _this.els.$connectionStateEl.html('离线消息');
+                        _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
+                        _this.appendOffline(imMessage);
+                        if (window.top.customerGroupView) window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId);
                         break;
                     default:
                         break;
@@ -164,10 +193,11 @@ define(['common/BasePage'], function (BasePage) {
                 _S_COMET: 'IM',
                 message: JSON.stringify({
                     status: _this.status,
-                    workOrderId : _this.data.workerOrderId,
+                    workOrderId: _this.data.workerOrderId,
                     receiveUserId: imMessage ? imMessage.sendUserId : null,
                     receiveUserName: imMessage ? imMessage.sendUserName : null,
                     receiveUserSiteId: imMessage ? imMessage.sendUserSiteId : null,
+                    messageType: _this.messageType,
                     messageBody: {
                         messageBodyType: type,
                         textBody: body
@@ -181,11 +211,17 @@ define(['common/BasePage'], function (BasePage) {
             openPage.imMessage = data.imMessage;
             _this.setStatus();
         },
-        appendMessage: function (message) {
+        appendMessage: function (message,isFirst) {
             var _this = this;
             _this.data.messages.push(message);
-            $(_this.getHtmlString(message)).appendTo(_this.els.$contentEl);
-            _this.els.$scrollEl.scrollTop(_this.els.$contentEl.height());
+            if(isFirst) {
+                //TODO 注意调整数据排序
+                $(_this.getHtmlString(message)).prependTo(_this.els.$contentEl);
+                _this.els.$scrollEl.scrollTop(0);
+            }else {
+                $(_this.getHtmlString(message)).appendTo(_this.els.$contentEl);
+                _this.els.$scrollEl.scrollTop(_this.els.$contentEl.height());
+            }
         },
         getHtmlString: function (data) {
             var html = data.type === 1 ?
@@ -203,6 +239,39 @@ define(['common/BasePage'], function (BasePage) {
             _this.status = 'close';
             var vo = _this.createSendVo();
             _this.comet.websocket.send(JSON.stringify(vo));
+        },
+        /**
+         * 循环生成历史记录html
+         * @param userId 当前登录账号的userid
+         * @param histories 历史记录
+         */
+        appendHistory : function(userId,histories){
+            var _this = this;
+            //TODO 没有获取到历史数据需提示
+            $.each(histories,function(i,history){
+                var type = userId == history.sendUserId ? 2 : 1; //2:发送者 1 接收者
+                var message = {
+                    type: type,
+                    name: type == 1 ? history.sendUserName : history.receiveUserName,
+                    time: new Date(Number(history.createTimeLong)),
+                    message:history.messageBody.textBody,
+                    messageBodyType: history.messageBody.messageBodyType
+                }
+                _this.appendMessage(message,true);
+                if(i == histories.length - 1){
+                    _this.data.historyLastTime = history.createTimeLong;
+                }
+            });
+        },
+        //加载离线消息
+        appendOffline: function(message){
+            this.appendMessage({
+                type: 1,
+                name: message.sendUserName,
+                time: new Date(Number(message.createTimeLong)),
+                message:message.messageBody.textBody,
+                messageBodyType: message.messageBody.messageBodyType
+            },true);
         },
         /**
          * 监控socket是否已断开
@@ -229,18 +298,53 @@ define(['common/BasePage'], function (BasePage) {
         stopTimer: function () {
             clearTimeout(this.timer);
         },
-        closeOrder:function(){
-            //TODO 关闭工单状态
-            openPage.imMessage.status = '';
-            this.setStatus();
+        closeOrder: function () {
+            var _this = this;
+            var orderId = _this.data.workerOrderId; //工单ID
+            window.top.topPage.openDialog({
+                message: '关闭工单业务处理页</br>...</br>...',
+                buttons: [{
+                    id: 'close_order_btn',
+                    label: '确定',
+                    action: function (dialogRef) {
+                        //TODO 关闭工单业务callback处理
+                        //业务callback后修改状态
+                        openPage.imMessage.status = 'closeOrder';
+                        _this.messageType = 'workorderClose';//待客户评价
+                        _this.setStatus();
+                        dialogRef.close();
+                        _this.els.$closeOrderBtnEl.attr('disabled', true);
+                    }
+                }, {
+                    label: '取消',
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                    }
+                }]
+            });
+        },
+        /**请求历史记录**/
+        sendHistoryMessage: function () {
+            var _this = this;
+            _this.comet.websocket.send(JSON.stringify({
+                _S_COMET: 'IM',
+                message: JSON.stringify({
+                    status: 'command',
+                    workOrderId: _this.data.workerOrderId,
+                    messageType: 'historyMessage',
+                    messageBody: {
+                        other: {
+                            'KEY_TIME_POINT': _this.data.historyLastTime
+                        }
+                    }
+                })
+            }));
         },
         sendText: function () {
             var _this = this;
             var text = _this.els.$textEl.val();
-            //TODO 需设置文本内容长度
             if ($.trim(text) !== '') {
                 var createO = _this.createSendVo('text', text);
-                console.log('webSocket:' + _this.comet.websocket.id);
                 _this.comet.websocket.send(JSON.stringify(createO));
                 var message = {
                     type: 2,
@@ -262,7 +366,7 @@ define(['common/BasePage'], function (BasePage) {
                 if (file) {
                     reader.readAsDataURL(file);
                 }
-                //TODO 需判断文件大小
+                //TODO 需校验文件大小
                 reader && reader.addEventListener("load", function () {
                     _this.comet.websocket.send(JSON.stringify(_this.createSendVo('picture', reader.result)));
                     var message = {

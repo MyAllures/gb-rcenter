@@ -31,14 +31,14 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 if (!text) text = '我需要你的帮助';
                 $personMessage.append('<div class="customer_message">' + text + '</div>');
                 $textAndPic.append($personMessage);
+                var accept_id = "accept_ok_time_" + Math.random().toString(36).substr(2);
                 popUp.showDialog({
                     title: '您收到新的客户消息',
                     message: $textAndPic,
                     buttons: [{
-                        label: '接收<span id="accept_ok_time" style="padding-left:3px;">30</span>',
-                        id: 'accept_ok',
+                        label: '接收<span id="'+accept_id+'" style="padding-left:3px;">30</span>',
                         action: function (dialogRef) {
-                            clearInterval(_this.imTimer);
+                            clearInterval(dialogRef.imTimer);
                             data.imMessage.status = 'accepted';
                             popUp._validAccepted(data);
                             dialogRef.close();
@@ -46,25 +46,25 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     }, {
                         label: '繁忙',
                         action: function (dialogRef) {
-                            clearInterval(_this.imTimer);
+                            clearInterval(dialogRef.imTimer);
                             data.imMessage.status = 'refuse';
                             popUp._validAccepted(data);
                             dialogRef.close();
                         }
                     }],
                     onshown: function (dialogRef) {
-                        _this.imTimer = setInterval(function () {
-                            var time = Number($('#accept_ok_time').html());
+                        dialogRef.imTimer = setInterval(function () {
+                            var time = Number($('#'+accept_id).html());
                             if (time === 1) {
-                                clearInterval(_this.imTimer);
+                                clearInterval(dialogRef.imTimer);
                                 dialogRef.close();
                             }
-                            $('#accept_ok_time').html(--time);
+                            $('#'+accept_id).html(--time);
                         }, 1000);
                     }
                 });
             } else if (data.imMessage.status === 'acceptFailed') {
-                BootstrapDialog.alert({
+                BootstrapDialog.show({
                     message: '已被其他客服接入'
                 });
             } else {

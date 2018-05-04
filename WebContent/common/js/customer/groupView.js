@@ -23,7 +23,6 @@ define(['common/BasePage'], function (BasePage) {
         height: 0,
         openRef: 'btn',
         validConnectTimer: null,
-        currentImMessage: null,
         comet: window.top.comet,
         init: function () {
             var _this = this;
@@ -77,13 +76,17 @@ define(['common/BasePage'], function (BasePage) {
                 var options = $(this).data('bs.modal').options;
                 if (options.data != null) {
                     _this.openRef = 'user';
-                    _this.setCurrentImMessage(options.data.imMessage);
                 }
                 _this.height = _this.els.$userChatDivUl.height();
                 if (_this.openRef === 'btn') {
                     _this.addDefaultWin();
                 } else {
                     _this.addUserWin(options.data.imMessage);
+                }
+                //发送获取离线消息通知
+                if(options.btnClk) {
+                    _this.sendOffineMessage(true); //获取客服留言
+                    _this.sendOffineMessage(false); //获取用户留言
                 }
             });
             $('.mymodal').unbind('hidden.bs.modal').on('hidden.bs.modal', function (e) {
@@ -117,7 +120,7 @@ define(['common/BasePage'], function (BasePage) {
                     page: {
                         imMessage: null,
                         isButtonClick: true,
-                        isCustomer:true
+                        isCustomer: true
                     }
                 });
                 r = 'customer';
@@ -134,9 +137,9 @@ define(['common/BasePage'], function (BasePage) {
                 var li = _this._andUserLi(imMessage.sendUserId, imMessage.sendUserName, imMessage.isCustomer);
                 _this._andUserIframe(imMessage.sendUserId, {
                     page: {
-                        imMessage: _this.currentImMessage,
+                        imMessage: imMessage,
                         isButtonClick: false,
-                        isCustomer:imMessage.isCustomer
+                        isCustomer: imMessage.isCustomer
                     }
                 });
             }
@@ -145,7 +148,7 @@ define(['common/BasePage'], function (BasePage) {
         },
         /**显示当前窗口**/
         showUserWin: function (userIdOrLi) {
-            var _this = this,_this_li,userId;
+            var _this = this, _this_li, userId;
             if ("object" === typeof(userIdOrLi)) {
                 _this_li = userIdOrLi;
                 userId = _this_li.attr('id').replace(_this._sep_Li, '');
@@ -178,38 +181,54 @@ define(['common/BasePage'], function (BasePage) {
                 $iframe.remove();
             }
         },
+        /**
+         * 修改li状态
+         * @param userId
+         * @param status
+         */
         updateStatus: function (userId, status) {
-            var li = this.els.$groupUserUl.find('li[id=' + userId + this._sep_Li + ']');
-            li.find('.fa-circle').removeClass(function (index, className) {
+            var _this = this,$li = _this.els.$groupUserUl.find('li[id=' + userId + _this._sep_Li + ']');
+            $li.find('.fa-circle').removeClass(function (index, className) {
                 return (className.match(/(^|\s)onlineStatus_\S+/g) || []).join(' ');
             }).addClass('onlineStatus_' + status);
-            if (status === 'timeout') {
-                li.find('span').html('');
+            switch (status) {
+                case 'timeout':
+                    $li.find('span').html('');
+                    break;
+                case 'offLine':
+                    _this._addCloseButton($li);
+                    break;
+                case 'online':
+                    break;
+                case 'closeOrder':
+                    break;
+                default:
+                    break;
             }
         },
         setData: function (data) {
-            var _this = this;
-            _this.setCurrentImMessage(data.imMessage);
-            var userId = data.imMessage.sendUserId;
-            var li = _this.hasUserWin(userId);
-            if (data.imMessage.status === 'accepted') {
-                data.imMessage.isCustomer = true;
-                if (!li) {
-                    _this._updateUserIdByEls('customer', userId, data.imMessage.sendUserName);
-                } else {
-                    _this.closeUserWin(_this.hasUserWin('customer'),true);
+            var _this = this,li,userId;
+            if(data.imMessage.status === 'normal'){
+                if(data.imMessage.messageType === 'historyMessage') {
+                    var workOrderId = data.imMessage.workOrderId;
+                    li = this.els.$groupUserUl.find('li[workOrderId=' + workOrderId + ']');
+                    userId = li.attr('id').replace(this._sep_Li, "");
+                    this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]')[0].contentWindow.page.appendHistory(data.imMessage.sendUserId, data.imMessage.messageBody.other.historyMessage);
                 }
+                if(data.imMessage.messageType === 'offlineMessage') {
+                    _this._addOffineWin(data.imMessage.client,data.imMessage.messageBody.other.offlineMessage);
+                }
+            }else {
+                userId = data.imMessage.sendUserId;
+                li = _this.hasUserWin(userId);
+                if (data.imMessage.status === 'accepted') {
+                    data.imMessage.isCustomer = true;
+                    li ? _this.closeUserWin(_this.hasUserWin('customer'), true) : _this._updateUserIdByEls('customer', userId, data.imMessage.sendUserName);
+                }
+                li = _this.hasUserWin(userId);
+                if (li) _this._removeCloseButton(li), this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]')[0].contentWindow.page.socketCallBack(data);
+                else data.imMessage.status !== 'close' ? this.addUserWin(data.imMessage) : '';
             }
-            li = _this.hasUserWin(userId);
-            if (li && data.imMessage.status !== 'closed') {
-                this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]')[0].contentWindow.page.socketCallBack(data);
-            } else {
-                if (!li && data.imMessage.status !== 'close')
-                    this.addUserWin(data.imMessage);
-            }
-        },
-        setCurrentImMessage: function (imMessage) {
-            this.currentImMessage = imMessage;
         },
         /**
          * 窗口是否已存在
@@ -232,6 +251,9 @@ define(['common/BasePage'], function (BasePage) {
             var _this_li = this.els.$groupUserUl.find('li[id=' + userId + this._sep_Li + ']');
             if (!_this_li.hasClass('click')) _this_li.addClass('has-unread-message');
         },
+        setWokerOrderId : function(userId,workOrderId){
+            this.els.$groupUserUl.find('li[id=' + userId + this._sep_Li + ']').attr('workOrderId',workOrderId);
+        },
         /**
          * 添加左侧用户列表
          * @param id
@@ -242,23 +264,70 @@ define(['common/BasePage'], function (BasePage) {
         _andUserLi: function (id, name, isCustomer) {
             var _this = this;
             name = name ? name : '';
-            var $li = $('<li class="clearfix click" id="' + id + _this._sep_Li + '" ' + (isCustomer ? ' isCustomer = true style="border-bottom: 1px solid #fff;"' : '') + ' >' +
+            var $li = $('<li class="clearfix" id="' + id + _this._sep_Li + '" ' + (isCustomer ? ' isCustomer = true style="border-bottom: 1px solid #fff;"' : '') + ' workOrderId="" >' +
                 '          <div class="about">' +
                 '                 <div class="name"><i class="fa fa-circle"></i><span style="padding-left:4px;">' + name + '</span></div>' +
                 '          </div>' +
                 '     </li>');
             if (isCustomer) {
-                var $closeButton = $('<button type="button" class="close"><i class="fa fa-times fa-close-li"></i></button>');
-                $closeButton.bind("click", function (e) {
-                    e.preventDefault();
-                    _this.closeUserWin($(this).closest('li'));
-                }).appendTo($li);
+                $li = _this._addCloseButton($li);
             }
             $li.bind("click", function () {
                 _this.showUserWin($(this));
             });
             isCustomer ? this.els.$groupUserUl.prepend($li) : $li.appendTo(this.els.$groupUserUl)
             return $li;
+        },
+        _addCloseButton: function ($li) {
+            var _this = this;
+            if (!$li.hasClass('close-button-customer'))
+                $('<button type="button" class="close close-button-customer"><i class="fa fa-times fa-close-li"></i></button>').bind("click", function (e) {
+                    e.preventDefault();
+                    _this.closeUserWin($(this).closest('li'));
+                }).appendTo($li);
+            return $li;
+        },
+        _removeCloseButton: function ($li) {
+            $li.find('.close-button-customer').unbind('click').remove();
+        },
+        /**
+         * 获取离线消息
+         * @param isClient
+         */
+        sendOffineMessage : function(isClient){
+            window.top.comet.websocket.send(JSON.stringify({
+                _S_COMET: 'IM',
+                message: JSON.stringify({
+                    status: 'command',
+                    messageType: 'offlineMessage',
+                    client : isClient
+                })
+            }));
+        },
+        /**
+         * 添加离线消息展示窗口
+         * @param isClient
+         * @param messages
+         * @private
+         */
+        _addOffineWin : function(isClient,messages){
+            var _this = this;
+            $.each(messages,function(i,msg){
+                var userId = msg.sendUserId;
+                if(!_this._constainsUserId(userId)) {
+                    msg.status = 'offlineMessage';
+                    _this.data.users.push(userId);
+                    _this._andUserLi(userId, msg.sendUserName, !!isClient);
+                    _this._andUserIframe(userId, {
+                        page: {
+                            imMessage: msg,
+                            isCustomer: !!isClient
+                        }
+                    });
+                }else{
+                   this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]').appendOffline(msg);
+                }
+            });
         },
         /**
          * 添加iframe聊天窗口
@@ -279,10 +348,11 @@ define(['common/BasePage'], function (BasePage) {
          */
         _showGroupWin: function () {
             var _this = this;
-            if (!$(_this.els.$modal).hasClass("min")) {
+            if ($(_this.els.$modal).hasClass("min")) {
                 $('.mymodal .modal-body').show();
                 $(".container").append(_this.els.$apnData);
                 $(this).find("i").toggleClass('fa-folder-open').toggleClass('fa-minus');
+
             }
             ;
         },
@@ -337,13 +407,13 @@ define(['common/BasePage'], function (BasePage) {
             _this._removeUserId(oldUserId);
             _this.data.users.push(newUserId);
         },
-        _hasCustomerWin : function(){
+        _hasCustomerWin: function () {
             var _this = this;
             var _li = _this.els.$groupUserUl.find('li[iscustomer="true"]');
-            if(_li && _li.find('.name i').hasClass('onlineStatus_online')){
+            if (_li && _li.find('.name i').hasClass('onlineStatus_online')) {
                 return _li;
             }
-            if(_this._constainsUserId('customer')){
+            if (_this._constainsUserId('customer')) {
                 return 'customer';
             }
             return null;

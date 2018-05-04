@@ -1358,6 +1358,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
          * @param btnClk  是否是由按钮触发
          */
         showCustomerGroupWin: function (data, btnClk) {
+            var _this = this;
             if (window.top.customerGroupView == null) {
                 if(data && (data.imMessage.status == 'close' || data.imMessage.status == 'closed')) return;
                 var modal = $('#customerGroupModal');
