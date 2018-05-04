@@ -6,7 +6,6 @@
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <title><#if data.siteInfo.title?default('')!=''>${data.siteInfo.title}<#else >${data.siteInfo.siteName}</#if></title>
     <#include "head.include.ftl">
-    <link rel="stylesheet" href="${data.configInfo.ftlRootPath}commonPage/themes/promo.css">
     <style type="text/css">
         body {
             background: url("themes/promo/images/bg.png");
@@ -36,6 +35,12 @@
                 </#if>
                 <li class="hisActivityButton hide"><a href="javascript:void(0)" data-item="historyActivitys">历史优惠</a></li>
             </ul>
+            <div class="search-bar">
+                <form>
+                    <div class="input-wrap"><input type="text" id="search-input"/><i class="icon-search"></i></div>
+                    <a onclick="searchActivity(this)" href="javascript:" class="btn-search">搜索</a>
+                </form>
+            </div>
         </div>
         <div class="list-type2"> <!--列表类型二-->
             <div class="row">
@@ -43,7 +48,7 @@
                 <#list data.activityMessage as am>
                     <div class="col-3-1 _vr_all">
                         <div class="list_type2_item_tit">${am.activityName}</div>
-                        <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain promo-item"
+                        <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain promo-item" data-activityName="${am.activityName}"
                              data-type="processing" data-code="${am.code}" data-searchid="${am.searchId}"
                              data-rank-id="<#if am.allRank?? && am.allRank>all<#elseif am.code=="back_water">backwater<#else >${am.rankid}</#if>">
                             <img src="${imgPath(data.configInfo.domain,am.activityAffiliated)}"/>

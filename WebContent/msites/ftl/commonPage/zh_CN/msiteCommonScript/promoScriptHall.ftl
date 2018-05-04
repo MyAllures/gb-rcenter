@@ -26,6 +26,12 @@
             $(this).parents(".promo-item").find(".promo-detail").stop().slideToggle();
         });
 
+        /*$("#search-input").keydown(function(e) {
+            if (e.which == 13) {
+                $(".btn-search").trigger("click");
+            }
+        });*/
+
         //切换主题
         $("#toggleThemes").on('click', function () {
             if ($('.main-promo').hasClass("theme-white")) {
@@ -154,6 +160,26 @@
                 }
             }
         });
+    }
+
+    function searchActivity(obj) {
+        $('[data-item="_all_"]').trigger('click');
+        var value = $("#search-input").val();
+        if (typeof value != "undefined") {
+            $("._vr_all .promo-item").each(function (j, actObj) {
+                var activityName = $(actObj).data("activityname");
+                if (activityName.indexOf(value) != -1) {
+                    $(actObj).show();
+                    $(actObj).siblings('.list_type2_item_tit').show();
+                } else {
+                    $(actObj).hide();
+                    $(actObj).siblings('.list_type2_item_tit').hide();
+                }
+            });
+        } else {
+            $("._vr_all .promo-item").show();
+            $("._vr_all .list_type2_item_tit").show();
+        }
     }
 
     //参加优惠点击事件
