@@ -50,7 +50,10 @@ function wait(t, obj, interval) {
         }
     }, 1000);
 }
+function updataMobile(){
+    var oldPhone = $("[name='search.oldPhone']");
 
+}
 //绑定手机号提交
 function bindMobile(obj, options) {
     var $form = $('#regForm');
@@ -71,7 +74,7 @@ function bindMobile(obj, options) {
                     toast("验证码错误");
                 } else {
                     toast("绑定成功");
-                    goToUrl(root + '/mine/index.html');
+                    goToUrl(root + 'help/phoneNumber.html');
                 }
             },
             complete: function () {
