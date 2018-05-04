@@ -252,18 +252,6 @@ function defailShow(msg) {
     }, 2000);
 }
 
-//格式化时间
-function formatDate(time) {
-    var date = new Date(time);
-    var str = date.getFullYear() + "年";
-    str += ((date.getMonth() + 1) < 10 ? ("0" + (date.getMonth() + 1)) : (date.getMonth() + 1)) + "月";
-    str += (date.getDate() < 10 ? ("0" + date.getDate()) : date.getDate()) + "日 ";
-    str += (date.getHours() < 10 ? ("0" + date.getHours()) : date.getHours()) + "时";
-    str += (date.getMinutes() < 10 ? ("0" + date.getMinutes()) : date.getMinutes()) + "分";
-    str += (date.getSeconds() < 10 ? ("0" + date.getSeconds()) : date.getSeconds()) + "秒";
-    return str;
-}
-
 /**
  * 参与人数
  * @param num
