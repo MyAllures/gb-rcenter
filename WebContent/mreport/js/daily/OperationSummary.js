@@ -350,7 +350,7 @@ define(['site/MReport'], function (MReport) {
             var jsonStr = $(dataKey).html();
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z1', data, 'balanceAmount', 'staticDay*balanceAmount',　'存取差额', 300);
+            this.drawBasicColumnChart('z1', data, 'staticDay', 'balanceAmount',　'存取差额', 300);
         },
 
         /**
@@ -383,11 +383,11 @@ define(['site/MReport'], function (MReport) {
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
             if('phone'===terminal) {
-                this.drawBasicColumnChart('z2', data, 'effectiveTransactionPhone', 'staticDay*effectiveTransactionPhone',　'有效投注', 300);
+                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionPhone',　'有效投注', 300);
             } else if('pc'===terminal) {
-                this.drawBasicColumnChart('z2', data, 'effectiveTransactionPc', 'staticDay*effectiveTransactionPc',　'有效投注', 300);
+                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionPc',　'有效投注', 300);
             } else {
-                this.drawBasicColumnChart('z2', data, 'effectiveTransactionAll', 'staticDay*effectiveTransactionAll',　'有效投注', 300);
+                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionAll',　'有效投注', 300);
             }
 
         },
@@ -413,7 +413,7 @@ define(['site/MReport'], function (MReport) {
             var jsonStr = $(dataKey).html();
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z3', data, 'transactionProfitLoss', 'staticDay*transactionProfitLoss', '损益', 300);
+            this.drawBasicColumnChart('z3', data, 'staticDay', 'transactionProfitLoss', '损益', 300);
         },
 
         /**
@@ -557,9 +557,9 @@ define(['site/MReport'], function (MReport) {
 
             }
             if('rakeback-men' == rakebackType) {
-                this.drawBasicColumnChart('b7', operationSummarys, 'rakebackPlayer', 'staticDay*rakebackPlayer', '返水人数', 379);
+                this.drawBasicColumnChart('b7', operationSummarys, 'staticDay', 'rakebackPlayer', '返水人数', 379);
             } else if('rakeback-cash' == rakebackType) {
-                this.drawBasicColumnChart('b7', operationSummarys, 'rakebackAmount', 'staticDay*rakebackAmount', '返水金额', 356);
+                this.drawBasicColumnChart('b7', operationSummarys, 'staticDay', 'rakebackAmount', '返水金额', 356);
             }
         },
 
@@ -741,7 +741,11 @@ define(['site/MReport'], function (MReport) {
                     + '<td>' + items[i].installIos + '</td>'
                     + '<td>' + items[i].installAndroid + '</td></tr>');
             });
-            $('#playerListResult').prepend('<tr><th>时间</th><th>新增玩家</th><th>新增存款玩家</th><th>付费率</th><th>活跃用户(PC端)</th><th>活跃用户(手机端)</th><th>安装量(IOS)</th><th>安装量(Android)</th></tr>')//添加表头tr th
+            $('#playerListResult').prepend(
+                '<tr><th>时间</th><th>新增玩家</th>'
+                +'<th>新增存款玩家</th><th>付费率</th>'
+                +'<th>活跃用户(PC端)</th><th>活跃用户(手机端)</th>'
+                +'<th>安装量(IOS)</th><th>安装量(Android)</th></tr>');//添加表头tr th
         },
 
         /**
@@ -762,7 +766,11 @@ define(['site/MReport'], function (MReport) {
                     + '<td>' + items[i].rakebackAmount + '</td>'
                     + '<td>' + items[i].averageDeposit + '</td></tr>');
             });
-            $('#depositWithdrawResult').prepend('<tr><th>时间</th><th>存款金额(全部)</th><th>取款金额(全部)</th><th>存取差额(全部)</th><th>被拒取款金额</th><th>损益(全部)</th><th>返水人数</th><th>返水金额</th><th>平均存款</th></tr>')//添加表头tr th
+            $('#depositWithdrawResult').prepend(
+                '<tr><th>时间</th><th>存款金额(全部)</th>'
+                +'<th>取款金额(全部)</th><th>存取差额(全部)</th>'
+                +'<th>被拒取款金额</th><th>损益(全部)</th><th>返水人数</th>'
+                +'<th>返水金额</th><th>平均存款</th></tr>');//添加表头tr th
         },
 
         /**
@@ -772,11 +780,20 @@ define(['site/MReport'], function (MReport) {
             _this = this;
             _this.iterationPlayerList(data.entities);
 
+            /*$('#dropdownMenuBtnA').click(function(e) {
+                $(this).next('.dropdown-menu').stop().slideToggle();
+                $(this).focus();
+                $(this).blur(function() {
+                    $(this).next('.dropdown-menu').stop().slideUp();
+                });
+            });
+
             //选择一页显示多少
             $('#choseNum .dropdown-item').click(function() {
                 var pageSize = parseInt(this.text)//取值，该页面显示多少条
                 _this.playerListHowPage(pageSize, 1);
-            });
+                //$("#dropdownMenuBtnA").html(this.text);
+            });*/
 
             //分页
             $.jqPaginator('#playerListPagination', {
@@ -802,11 +819,20 @@ define(['site/MReport'], function (MReport) {
             _this = this;
             _this.iterationDepositList(data.entities);
 
-            //选择一页显示多少
+            /*$('#dropdownMenuBtnB').click(function(e) {
+                $(this).next('.dropdown-menu').stop().slideToggle();
+                $(this).focus();
+                $(this).blur(function() {
+                    $(this).next('.dropdown-menu').stop().slideUp();
+                });
+            });
+
+            // 选择一页显示多少
             $('#choseNum .dropdown-item').click(function() {
                 var pageSize = parseInt(this.text)//取值，该页面显示多少条
                 _this.depositListHowPage(pageSize, 1);
-            });
+                //$("#dropdownMenuBtnB").html(this.text);
+            });*/
 
             //分页
             $.jqPaginator('#depositWithdrawPagination', {
