@@ -61,7 +61,7 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
             if(data.length < 1) return;
             var keys = Object.keys(data[0]);
             keys.splice(0,1);
-            if(keys == null || keys.length < 1) return;
+            if(keys == null || keys.length < 1 || !$("#mountNode").length) return;
             const ds = new DataSet();
             const chart = new G2.Chart({
                 container: 'mountNode',
@@ -100,8 +100,8 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
                         }
                     }
                 });
-				/*,[ '#0072ff', '#02c16e', '#ff5050' ]*/
-				/*,[ '#0072ff', '#02c16e', '#ff5050' ]*/
+                /*,[ '#0072ff', '#02c16e', '#ff5050' ]*/
+                /*,[ '#0072ff', '#02c16e', '#ff5050' ]*/
                 chart.line().position('time*sum').color('name').shape('smooth');
                 chart.point().position('time*sum').color('name').size(4).shape('circle').style({
                     stroke: '#fff',
@@ -140,7 +140,7 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
                 if(i > 23)continue;
                 var data = {};
                 var profile = profilesJson[i];
-                data['time'] = i = 23 ? '23:59' : profile.realTime;
+                data['time'] = i > 22 ? '23:59' : profile.realTime;
                 if ('visitor' == realtimeType) {
                     data['访客量(全部)'] = profile.countVisitor;
                     data['访客量(PC端)'] = profile.visitorPc;
