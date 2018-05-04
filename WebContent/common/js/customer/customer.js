@@ -172,7 +172,7 @@ define(['common/BasePage'], function (BasePage) {
                         _this.els.$connectionStateEl.html('离线消息');
                         _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
                         _this.appendOffline(imMessage);
-                        if (window.top.customerGroupView) window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId);
+                        if (window.top.customerGroupView) window.top.customerGroupView.andUnReadMessageClass(imMessage.sendUserId),window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
                         break;
                     default:
                         break;
@@ -252,13 +252,13 @@ define(['common/BasePage'], function (BasePage) {
                 var type = userId == history.sendUserId ? 2 : 1; //2:发送者 1 接收者
                 var message = {
                     type: type,
-                    name: type == 1 ? history.sendUserName : history.receiveUserName,
+                    name: type === 1 ? history.sendUserName : history.receiveUserName,
                     time: new Date(Number(history.createTimeLong)),
                     message:history.messageBody.textBody,
                     messageBodyType: history.messageBody.messageBodyType
                 }
                 _this.appendMessage(message,true);
-                if(i == histories.length - 1){
+                if(i === histories.length - 1){
                     _this.data.historyLastTime = history.createTimeLong;
                 }
             });

@@ -22,7 +22,6 @@ define(['common/BasePage'], function (BasePage) {
         },
         height: 0,
         openRef: 'btn',
-        validConnectTimer: null,
         comet: window.top.comet,
         init: function () {
             var _this = this;
@@ -423,7 +422,6 @@ define(['common/BasePage'], function (BasePage) {
         destory: function () {
             //delete this.data;
             this.data.users = [];
-            clearInterval(this.validConnectTimer);
         }
     });
 });
