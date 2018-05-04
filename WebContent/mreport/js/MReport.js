@@ -1,7 +1,7 @@
 /**
  * 数据中心
  */
-define(['common/BasePage', 'g2/g2', 'g2/data-set.min'], function (BasePage, G2, DataSet) {
+define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, G2, DataSet) {
     return BasePage.extend({
 
         /**
