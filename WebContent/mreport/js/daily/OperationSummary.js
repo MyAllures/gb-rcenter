@@ -19,21 +19,99 @@ define(['site/MReport'], function (MReport) {
             this.profitLossGaugeChart('D');
             this.profitLossColumnChart('D');
 
-            this.activeUser('D');
+            this.activeUser('D',null);
 
-            this.installAndUninstall('install','D'); //默认展示近七天安装量
+            this.installAndUninstall('D',null); //默认展示近七天安装量
 
-            this.playerTrend('new-player','D'); //默认展示近七天新增玩家
+            this.playerTrend('D',null); //默认展示近七天新增玩家
 
-            this.rakebackTrend('rakeback-men','D'); //默认展示近七天反水人数
+            this.rakebackTrend('D',null); //默认展示近七天反水人数
+
+            this.initDatePick($(".daterangepickers"));//初始化日历插件
+
         },
 
+        onPageLoad:function () {
+            $('.api_chose').css({"margin-left":-$('.api_chose').width()/2});
+            $('.api_chose').css({"margin-top":-$('.api_chose').height()/2});
+            $(window).resize(function(){
+                var domw = $(window).width();
+                var domh = $(window).height();
+                var h = $('.api_chose').height();
+                var w = $('.api_chose').width();
+                $('.api_chose').css({"margin-left":-w/2});
+                $('.api_chose').css({"margin-top":-h/2});
+            });
+
+            //API
+            //点击API出现窗口
+            $('.apiBut button').click(function(){
+                $('#api_chose').show()
+            });
+
+            //全选
+            var x = 0;
+            var lens = $('.api_box input').length;
+            var n = 0;
+            function allChose(){
+                $('.api_box input').each(function(i,val){
+                    if($(this).prop("checked")){n++}
+                });
+                if(n == lens){
+                    $('#allCheck input').prop("checked",true)
+                }
+                else{
+                    $('#allCheck input').prop("checked",false)
+                }
+            }
+            //全总选
+            if($('#allCheck input').prop("checked") ==  true){
+                $('.api_box input').prop("checked",true);
+                window.top.topPage.apiAllCheck = true;
+            }else{
+                window.top.topPage.apiAllCheck = false;
+            }
+            $('#allCheck input').click(function(){
+                $(this).prop("checked") == true?$('.api_box input').prop("checked",true):$('.api_box input').prop("checked",false)
+            });
+            //类总选
+            $(".api_box .api_tlt input").click(function(){
+                var prop = $(this).prop("checked")//本身checked值
+                var olo = $(this).parent().parent().find('input');
+                olo.prop("checked",prop)//赋值全选
+                allChose();
+                n=0
+            });
+            //分选
+            $(".classification input").click(function(){
+                var len = $(this).parent().parent().find('input').length;
+                var ipt = $(this).parent().parent().find('input');
+                var all = $(this).parent().parent().parent().find('.api_tlt input');
+
+                $(ipt).each(function(i,val){
+                    if($(this).prop("checked")){x++}
+                });
+                x==len?all.prop("checked",true):all.prop("checked",false);
+                allChose();
+                x=0;
+                n=0;
+            })
+        },
         /**
          * 绑定事件函数
          */
         bindEvent: function() {
             this._super();
             var _this = this;
+
+            //关闭X
+            $('#closeAPi').click(function(){
+                $("#mask-api").hide();
+                if(!$(".singleAPI:checked").length){
+                    $('#allCheck input').prop("checked",true);
+                    $('.api_box input').prop("checked",true);
+                }
+            });
 
             /**
              * 存取差额周期切换事件
@@ -95,41 +173,37 @@ define(['site/MReport'], function (MReport) {
              * 活跃用户、总登录次数、安装量、卸载量、新增玩家、新增存款玩家、返回人数、反水金额周期切换事件
              */
             $(".cycleChangeBtn .btn").click(function() {
-                $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
-                _this.asnycLoadOperationData($(this).attr("statisticsDataType"), $(this).attr('value'));
-            });
+                $(this).addClass("btn-success").siblings().removeClass("btn-success");
+                var chart = $(this).attr("statisticsDataType");
+                var rangeType = $(this).attr('value');
+                if('D' === rangeType){
+                    /* var loadDatePick =
+                     '<div class="input-group daterangepickers" >'+
+                     ' <gb:dateRange format="${DateFormat.DAY}" style="width:80px;" inputStyle="width:80px" useToday="true" useRange="true"'+
+                     ' position="down" lastMonth="false" hideQuick="true" opens="true" callback="End"  id="'+chart+'"'+
+                     ' startDate="${lastdate}" endDate="${yesterDay}"  maxDate="${yesterDay}"'+
+                     'startName="'+chart+'-beginTime" endName="'+chart+'-endTime" thisMonth="true"/>'+
+                     ' </div>';
+                     $(".date."+chart).html(loadDatePick);*/
+                    $(".date."+chart).show();
 
-            /**
-             *自选时间段查询
-             */
-            $(".cycleChangeOFdaysBtn .btn").click(function() {
-                var stateTime =  $(this).attr("stateTime");
-                var endTime = $(this).attr("endTime");
-                _this.asnycLoadOfDays($(this).attr("statisticsDataType"),$(this).attr('value'),stateTime,endTime);
-            });
+                }else{
+                    /* $(".date."+chart).empty();*/
+                    $(".date."+chart).hide();
+                }
 
-            /**
-             * 根据api查询反水金额
-             * */
-            $(".queryRakebackcashByApi .btn.btn-primary").click(function() {
-                var apis = $(this).attr("apis");
-                var gameTypes = $(this).attr("gameTypes");
-                var rangeType = 'D';
-                var stateTime = $(this).attr("stateTime");
-                var endTime = $(this).attr("endTime");
-                // _this.queryRakebackcashOfApi(apis,gameTypes, rangeType,null,null);
-                _this.queryRakebackcashOfApi(apis,gameTypes, rangeType,stateTime,endTime);
+                _this.asnycLoadOperationData(chart,rangeType);
             });
-
 
             //活跃用户和登录次数切换事件
             $("._addPrimary.active-user .btn").click(function(){
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
                 $("#f4").html(null);
+                var date = $(".cycleChangeBtn.activeUser .btn.btn-success").attr("value");
                 if($(this).hasClass('login-count')){
-                    _this.loginCount('D');
+                    _this.loginCount(date,null);
                 }else{
-                    _this.activeUser('D');
+                    _this.activeUser(date,null);
                 }
 
             });
@@ -138,43 +212,69 @@ define(['site/MReport'], function (MReport) {
             $("._addPrimary.install .btn").click(function(){
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
                 $("#i5").html(null);
-                if($(this).hasClass('uninstall')){
-                    _this.installAndUninstall('uninstall','D');
-                }else{
-                    _this.installAndUninstall('install','D');
-                }
-
+                var date = $(".cycleChangeBtn.installAndUninstall .btn.btn-success").attr("value");
+                _this.installAndUninstall(date,null);
             });
 
             //新增玩家和新增存款玩家切换事件
             $("._addPrimary.player-trend .btn").click(function(){
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
                 $("#p6").html(null);
-                if($(this).hasClass('new-deposit-player')){
-                    _this.playerTrend('new-deposit-player','D');
-                }else{
-                    _this.playerTrend('new-player','D');
-                }
-
+                var date = $(".cycleChangeBtn.playerTrend .btn.btn-success").attr("value");
+                _this.playerTrend(date,null);
             });
 
             //反水人数和反水金额切换事件
             $("._addPrimary.rakeback-trend .btn").click(function(){
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
                 $("#b7").html(null);
+                var date = $(".cycleChangeBtn.rakebackTrend .btn.btn-success").attr("value");
                 if($(this).hasClass('rakeback-cash')){
                     $("#api-choice").show();
-                    _this.rakebackTrend('rakeback-cash','D');
                 }else{
                     $("#api-choice").hide();
-                    _this.rakebackTrend('rakeback-men','D');
                 }
+                _this.rakebackTrend(date,null);
             });
 
             //反水金额选择API
             $("#api-choice").click(function() {
+                if($("#mask-api").length) {
+                    $("#mask-api").show();
+                }
+            });
 
+            //API弹窗保存按钮
+            $("#submitApi").click(function(){
+                //是否全选
+                if($("#apiAllCheckInput").prop('checked')){
+                    window.top.topPage.apiAllCheck = true;
+                }else{
+                    window.top.topPage.apiAllCheck = false;
+                }
 
+                if(!$(".singleAPI:checked").length){
+                    window.top.alert('请至少选择一项');
+                    window.top.topPage.apiIdArray = null;
+                    window.top.topPage.gameTypes = null;
+                    window.top.topPage.apiAllCheck = true;
+                }else{
+                    var apiIdArray = [];
+                    var gameTypes = [];
+                    $(".singleAPI:checked").each(function(i,val){
+                        var apiId = $(val).val();
+                        var gameType = $(val).attr("gameType");
+                        apiIdArray.push(Number(apiId));
+                        if(gameTypes.indexOf(gameType) == -1){
+                            gameTypes.push(gameType);
+                        }
+                    });
+                    window.top.topPage.apiIdArray = apiIdArray;
+                    window.top.topPage.gameTypes = gameTypes;
+                    $("#mask-api").hide();
+                    var date = $(".cycleChangeBtn.rakebackTrend .btn.btn-success").attr("value");
+                    _this.rakebackTrend(date,null);
+                }
             });
 
             /**
@@ -191,6 +291,23 @@ define(['site/MReport'], function (MReport) {
                     $("#operationReport").hide();
                 }
             });
+        },
+
+        /**
+         *自选时间段查询
+         */
+        End:function(obj,option){
+            var $current = $(obj.currentTarget.outerHTML);
+            var targetId = $current.attr("id");
+            var $chartName = $("#"+targetId).parent().parent();
+            var StartDate = $chartName.find("input[name='"+targetId+"-beginTime']").val();
+            var EndDate = $chartName.find("input[name='"+targetId+"-endTime']").val();
+            var rakebackType = $("._addPrimary.rakeback-trend .btn.btn-primary").attr("value");
+            if('rakebackTrend' == targetId && rakebackType == 'rakeback-cash'){
+                this.queryRakebackcashOfApi(window.top.topPage.apiIdArray, window.top.topPage.gameTypes,'D',StartDate,EndDate);
+                return ;
+            }
+            this.asnycLoadOfDays(targetId,StartDate,EndDate);
         },
 
         /**
@@ -302,10 +419,12 @@ define(['site/MReport'], function (MReport) {
         /**
          * 总登录次数
          */
-        loginCount:function(rangeType)　{
-            var dataKey = this.getKey("#operationSummaryData", rangeType);
-            var jsonStr = $(dataKey).html();
-            var operationSummarys = $.parseJSON(jsonStr);
+        loginCount:function(rangeType,operationSummarys)　{
+            if(!operationSummarys) {
+                var dataKey = this.getKey("#operationSummaryData", rangeType);
+                var jsonStr = $(dataKey).html();
+                operationSummarys = $.parseJSON(jsonStr);
+            }
             if(operationSummarys == null || operationSummarys.length < 1) return ;
             var array = [];
             var pc = {"name":"登录次数(PC端)"};
@@ -328,10 +447,12 @@ define(['site/MReport'], function (MReport) {
         /**
          * 活跃用户数
          */
-        activeUser:function(rangeType){
-            var dataKey = this.getKey("#operationSummaryData", rangeType);
-            var jsonStr = $(dataKey).html();
-            var operationSummarys = $.parseJSON(jsonStr);
+        activeUser:function(rangeType,operationSummarys){
+            if(!operationSummarys) {
+                var dataKey = this.getKey("#operationSummaryData", rangeType);
+                var jsonStr = $(dataKey).html();
+                operationSummarys = $.parseJSON(jsonStr);
+            }
             if(operationSummarys == null || operationSummarys.length < 1) return ;
             var array = [];
             for(var i = 0 ;i < operationSummarys.length ; i++ ){
@@ -352,11 +473,13 @@ define(['site/MReport'], function (MReport) {
         /**
          * 安装量和卸载量 折线图
          */
-        installAndUninstall:function(rangeType) {
+        installAndUninstall:function(rangeType,operationSummarys) {
             var isinstall = $("._addPrimary.install .btn.btn-primary").attr("value");
-            var dataKey = this.getKey("#operationSummaryData", rangeType);
-            var jsonStr = $(dataKey).html();
-            var operationSummarys = $.parseJSON(jsonStr);
+            if(!operationSummarys) {
+                var dataKey = this.getKey("#operationSummaryData", rangeType);
+                var jsonStr = $(dataKey).html();
+                operationSummarys = $.parseJSON(jsonStr);
+            }
             if(operationSummarys == null || operationSummarys.length < 1) return ;
             var array = [];
             for(var i = 0 ;i < operationSummarys.length ; i++ ){
@@ -380,11 +503,13 @@ define(['site/MReport'], function (MReport) {
         /**
          * 新增玩家和新增存款玩家 折线图
          */
-        playerTrend: function(rangeType) {
+        playerTrend: function(rangeType,operationSummarys) {
             var newPlayerType = $("._addPrimary.player-trend .btn.btn-primary").attr("value");
-            var dataKey = this.getKey("#operationSummaryData", rangeType);
-            var jsonStr = $(dataKey).html();
-            var operationSummarys = $.parseJSON(jsonStr);
+            if(!operationSummarys) {
+                var dataKey = this.getKey("#operationSummaryData", rangeType);
+                var jsonStr = $(dataKey).html();
+                operationSummarys = $.parseJSON(jsonStr);
+            }
             if(operationSummarys == null || operationSummarys.length < 1) return ;
             var array = [];
             for(var i = 0 ;i < operationSummarys.length ; i++ ){
@@ -410,22 +535,31 @@ define(['site/MReport'], function (MReport) {
          * 返水走势
          * @param rangeType
          */
-        rakebackTrend:function(rakebackType,rangeType) {
+        rakebackTrend:function(rangeType,operationSummarys) {
             var rakebackType = $("._addPrimary.rakeback-trend .btn.btn-primary").attr("value");
-            var dataKey;
-            if('API' === rakebackType){
-                dataKey = '#rakebackCashListByApis';
-                rakebackType = 'rakeback-cash';
-            }else{
-                dataKey = this.getKey("#operationSummaryData", rangeType);
+            if(!operationSummarys) {
+                if(window.top.topPage.apiAllCheck || 'rakeback-men' == rakebackType){
+                    var dataKey = this.getKey("#operationSummaryData", rangeType);
+                    var jsonStr = $(dataKey).html();
+                    if (!jsonStr) return;
+                    operationSummarys = $.parseJSON(jsonStr);
+                }else{
+                    var apiIdArray = window.top.topPage.apiIdArray;
+                    var gameTypes = window.top.topPage.gameTypes;
+                    if(!apiIdArray.length && !gameTypes.length) {
+                        window.top.topPage.apiAllCheck = true;
+                        return this.rakebackTrend(rangeType, operationSummarys);
+                    }else{
+                        this.queryRakebackcashOfApi(apiIdArray,gameTypes,rangeType,null,null);
+                        return;
+                    }
+                }
+
             }
-            var jsonStr = $(dataKey).html();
-            if(!jsonStr) return;
-            const data = $.parseJSON(jsonStr);
             if('rakeback-men' == rakebackType) {
-                this.drawBasicColumnChart('b7', data, 'staticDay', 'rakebackPlayer', '返水人数', 379);
+                this.drawBasicColumnChart('b7', operationSummarys, 'staticDay', 'rakebackPlayer', '返水人数', 379);
             } else if('rakeback-cash' == rakebackType) {
-                this.drawBasicColumnChart('b7', data, 'staticDay', 'rakebackAmount', '返水金额', 356);
+                this.drawBasicColumnChart('b7', operationSummarys, 'staticDay', 'rakebackAmount', '返水金额', 356);
             }
         },
 
@@ -462,28 +596,28 @@ define(['site/MReport'], function (MReport) {
                         _this.profitLossColumnChart(rangeType);
                     } else if('activeUser'===chart) {
                         var statisticsDataType = $("._addPrimary.active-user .btn.btn-primary").attr("value");
-                       'login-count' == statisticsDataType ? _this.loginCount(rangeType) : _this.activeUser(rangeType);
+                        'login-count' == statisticsDataType ? _this.loginCount(rangeType,null) : _this.activeUser(rangeType,null);
                     } else if('installAndUninstall'===chart) {
-                        _this.installAndUninstall(rangeType);
+                        _this.installAndUninstall(rangeType,null);
 
                     } else if('playerTrend'===chart) {
-                        _this.playerTrend(rangeType);
+                        _this.playerTrend(rangeType,null);
 
                     } else if('rakebackTrend'===chart) {
-                        _this.rakebackTrend(rangeType);
+                        _this.rakebackTrend(rangeType,null);
                     }
                 }
             });
         },
 
         /**
-         * 异步加载数据
+         * 异步加载数据(自选天数查询)
          * @param chart
          * @param rangeType
          * @param stateTime
          * @param endTime
          */
-        asnycLoadOfDays:function(chart, rangeType, stateTime, endTime) {
+        asnycLoadOfDays:function(chart, stateTime, endTime) {
             var _this = this;
             var url = root + '/daily/operationSummaryDataOfChoiceDays.html?search.staticTime='+stateTime+"&search.staticTimeEnd="+endTime;
             $.ajax({
@@ -492,47 +626,52 @@ define(['site/MReport'], function (MReport) {
                 timeout: 60000,
                 success: function (data) {
                     var jsonData = $.parseJSON(data);
-                    $("#operationSummaryDataOfChoiceDays").html(JSON.stringify(jsonData));
+                    if('activeUser'===chart) {
+                        var statisticsDataType = $("._addPrimary.active-user .btn.btn-primary").attr("value");
+                        'login-count' == statisticsDataType ? _this.loginCount('D',jsonData) : _this.activeUser('D',jsonData);
+
+                    } else if('installAndUninstall'===chart) {
+                        _this.installAndUninstall('D',jsonData);
+
+                    } else if('playerTrend'===chart) {
+                        _this.playerTrend('D',jsonData);
+
+                    } else if('rakebackTrend'===chart) {
+                        _this.rakebackTrend('D',jsonData);
+
+                    }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                 },
-                complete: function () {
-                    if('activeUser'===chart) {
-                        var statisticsDataType = $("._addPrimary.active-user .btn.btn-primary").attr("value");
-                        'login-count' == statisticsDataType ? _this.loginCount(rangeType) : _this.activeUser(rangeType);
-
-                    } else if('installAndUninstall'===chart) {
-                        _this.installAndUninstall(rangeType);
-
-                    } else if('playerTrend'===chart) {
-                        _this.playerTrend(rangeType);
-
-                    } else if('rakebackTrend'===chart) {
-                        _this.rakebackTrend(rangeType);
-
-                    }
-                }
             });
         },
 
+        /**
+         *根据Api查询反水金额
+         * @param apis
+         * @param gameTypes
+         * @param rangeType
+         * @param stateTime
+         * @param endTime
+         */
         queryRakebackcashOfApi:function(apis,gameTypes,rangeType,stateTime,endTime){
             var _this = this;
             var url = root + '/daily/queryRakebackCashByApi.html';
+            var dataParam = {};
+            dataParam.rakebackAmountApis = apis;
+            dataParam.rakebackAmountGameTypes = gameTypes;
+            dataParam.queryDateRange = rangeType;
+            dataParam.beginTime = stateTime;
+            dataParam.endTime = endTime;
             $.ajax({
                 url: url,
                 type: "POST",
-                data:{
-                    "rakebackAmountApis":apis,
-                    "rakebackAmountGameTypes":gameTypes,
-                    "queryDateRange":rangeType,
-                    "result.staticTime":stateTime,
-                    "result.staticTimeEnd":endTime
-                },
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data:JSON.stringify(dataParam),
                 success: function (data) {
                     if(data) {
-                        var jsonData = $.parseJSON(data);
-                        $("#rakebackCashListByApis").html(JSON.stringify(jsonData));
-                        _this.rakebackTrend('API', rangeType);
+                        _this.rakebackTrend(rangeType,data);
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {}
@@ -551,6 +690,7 @@ define(['site/MReport'], function (MReport) {
                 type: "GET",
                 url: url,
                 timeout: 60000,
+                dataType : 'json',
                 success: function (data) {
                     var jsonData = $.parseJSON(data);
                     if (tag==='playerHowPage') {
