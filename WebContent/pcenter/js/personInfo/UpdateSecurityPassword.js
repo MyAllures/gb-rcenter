@@ -45,7 +45,10 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
         saveCallbak:function (e,options) {
 
             $("#editForm").find(".successsmall").remove();
-            var _this=this;
+
+            window.location.reload();
+
+            /*var _this=this;
             var result = options.data;
             var PrivilegeStatusEnum = {ALLOW_ACCESS:100,LOCKED:99,WRONG_VALICODE:97};
             if (result.stateCode == PrivilegeStatusEnum.ALLOW_ACCESS) {
@@ -61,7 +64,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                 }
             }
             $(e.currentTarget).unlock();
-            return false;
+            return false;*/
         },
         
         showCode:function (times) {
