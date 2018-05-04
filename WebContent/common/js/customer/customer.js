@@ -354,6 +354,7 @@ define(['common/BasePage'], function (BasePage) {
                 }
                 _this.appendMessage(message);
                 _this.els.$textEl.val('');
+                console.log(111)
             }
         },
         sendImg: function () {

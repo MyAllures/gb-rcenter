@@ -84,7 +84,7 @@ define(['common/BasePage'], function (BasePage) {
                     _this.addUserWin(options.data.imMessage);
                 }
                 //发送获取离线消息通知
-                if(options.btnClk) {
+                if (options.btnClk) {
                     _this.sendOffineMessage(true); //获取客服留言
                     _this.sendOffineMessage(false); //获取用户留言
                 }
@@ -187,7 +187,7 @@ define(['common/BasePage'], function (BasePage) {
          * @param status
          */
         updateStatus: function (userId, status) {
-            var _this = this,$li = _this.els.$groupUserUl.find('li[id=' + userId + _this._sep_Li + ']');
+            var _this = this, $li = _this.els.$groupUserUl.find('li[id=' + userId + _this._sep_Li + ']');
             $li.find('.fa-circle').removeClass(function (index, className) {
                 return (className.match(/(^|\s)onlineStatus_\S+/g) || []).join(' ');
             }).addClass('onlineStatus_' + status);
@@ -207,28 +207,30 @@ define(['common/BasePage'], function (BasePage) {
             }
         },
         setData: function (data) {
-            var _this = this,li,userId;
-            if(data.imMessage.status === 'normal'){
-                if(data.imMessage.messageType === 'historyMessage') {
+            var _this = this, li, userId;
+            if (data.imMessage.status === 'normal') {
+                if (data.imMessage.messageType === 'historyMessage') {
                     var workOrderId = data.imMessage.workOrderId;
                     li = this.els.$groupUserUl.find('li[workOrderId=' + workOrderId + ']');
                     userId = li.attr('id').replace(this._sep_Li, "");
                     this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]')[0].contentWindow.page.appendHistory(data.imMessage.sendUserId, data.imMessage.messageBody.other.historyMessage);
+                    return;
                 }
-                if(data.imMessage.messageType === 'offlineMessage') {
-                    _this._addOffineWin(data.imMessage.client,data.imMessage.messageBody.other.offlineMessage);
+                if (data.imMessage.messageType === 'offlineMessage') {
+                    _this._addOffineWin(data.imMessage.client, data.imMessage.messageBody.other.offlineMessage);
+                    return;
                 }
-            }else {
-                userId = data.imMessage.sendUserId;
-                li = _this.hasUserWin(userId);
-                if (data.imMessage.status === 'accepted') {
-                    data.imMessage.isCustomer = true;
-                    li ? _this.closeUserWin(_this.hasUserWin('customer'), true) : _this._updateUserIdByEls('customer', userId, data.imMessage.sendUserName);
-                }
-                li = _this.hasUserWin(userId);
-                if (li) _this._removeCloseButton(li), this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]')[0].contentWindow.page.socketCallBack(data);
-                else data.imMessage.status !== 'close' ? this.addUserWin(data.imMessage) : '';
             }
+            userId = data.imMessage.sendUserId;
+            li = _this.hasUserWin(userId);
+            if (data.imMessage.status === 'accepted') {
+                data.imMessage.isCustomer = true;
+                li ? _this.closeUserWin(_this.hasUserWin('customer'), true) : _this._updateUserIdByEls('customer', userId, data.imMessage.sendUserName);
+            }
+            li = _this.hasUserWin(userId);
+            if (li) _this._removeCloseButton(li), this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]')[0].contentWindow.page.socketCallBack(data);
+            else data.imMessage.status !== 'close' ? this.addUserWin(data.imMessage) : '';
+
         },
         /**
          * 窗口是否已存在
@@ -251,8 +253,8 @@ define(['common/BasePage'], function (BasePage) {
             var _this_li = this.els.$groupUserUl.find('li[id=' + userId + this._sep_Li + ']');
             if (!_this_li.hasClass('click')) _this_li.addClass('has-unread-message');
         },
-        setWokerOrderId : function(userId,workOrderId){
-            this.els.$groupUserUl.find('li[id=' + userId + this._sep_Li + ']').attr('workOrderId',workOrderId);
+        setWokerOrderId: function (userId, workOrderId) {
+            this.els.$groupUserUl.find('li[id=' + userId + this._sep_Li + ']').attr('workOrderId', workOrderId);
         },
         /**
          * 添加左侧用户列表
@@ -294,13 +296,13 @@ define(['common/BasePage'], function (BasePage) {
          * 获取离线消息
          * @param isClient
          */
-        sendOffineMessage : function(isClient){
+        sendOffineMessage: function (isClient) {
             window.top.comet.websocket.send(JSON.stringify({
                 _S_COMET: 'IM',
                 message: JSON.stringify({
                     status: 'command',
                     messageType: 'offlineMessage',
-                    client : isClient
+                    client: isClient
                 })
             }));
         },
@@ -310,11 +312,11 @@ define(['common/BasePage'], function (BasePage) {
          * @param messages
          * @private
          */
-        _addOffineWin : function(isClient,messages){
+        _addOffineWin: function (isClient, messages) {
             var _this = this;
-            $.each(messages,function(i,msg){
+            $.each(messages, function (i, msg) {
                 var userId = msg.sendUserId;
-                if(!_this._constainsUserId(userId)) {
+                if (!_this._constainsUserId(userId)) {
                     msg.status = 'offlineMessage';
                     _this.data.users.push(userId);
                     _this._andUserLi(userId, msg.sendUserName, !!isClient);
@@ -324,8 +326,8 @@ define(['common/BasePage'], function (BasePage) {
                             isCustomer: !!isClient
                         }
                     });
-                }else{
-                   this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]').appendOffline(msg);
+                } else {
+                    this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]').appendOffline(msg);
                 }
             });
         },
