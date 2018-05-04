@@ -307,8 +307,7 @@
             }
             if (data.hasApply) {
                 btn = ["联系客服"];
-                var time = moment(Number(data.deadLineTime)).utcOffset(sessionStorage.getItem("timezone"));
-                $(".deadlineTime").html('派奖时间:' + '<span>' + time.format() + '</span>');
+                $(".deadlineTime").html('派奖时间:' + '<span>' + data.deadLineTime + '</span>');
             } else {
                 btn = ["联系客服","申请奖励"];
                 $(".deadlineTime").html('参加活动人数:' + '<span>' + data.ApplyNum + '</span>');
@@ -358,8 +357,7 @@
             }
             if (data.hasApply) {
                 btn = ["联系客服"];
-                var time = moment(Number(data.deadLineTime)).utcOffset(sessionStorage.getItem("timezone"));
-                $(".deadlineTime").html('派奖时间:' + '<span>' + time.format() + '</span>');
+                $(".deadlineTime").html('派奖时间:' + '<span>' + data.deadLineTime + '</span>');
             } else {
                 btn = ["联系客服","申请奖励"];
                 $(".deadlineTime").html('当前报名人数:' + '<span>' + data.ApplyNum + '</span>');
