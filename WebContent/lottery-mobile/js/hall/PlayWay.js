@@ -262,8 +262,9 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             _this.saveBetOrderAll(betForm);
         },
         setLtToken : function(){
-            mui.ajax(root + "/commonLottery/getLtToken.html", {
+            mui.ajax(root + "/commonLottery/getLtToken.html?t=" + new Date().getTime(), {
                 async:false,
+                type:"post",
                 dataType:"text",
                 success: function (data) {
                     if(data){

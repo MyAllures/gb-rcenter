@@ -2,6 +2,11 @@
 var os = whatOs();
 /*是否原生*/
 var isNative = isNative();
+/*登录跳转后地址*/
+var LOGIN_TARGET_URL = "loginTargetUrl";
+//sessionStorage存放api相关对象 用来登录后直接进入游戏
+var SESSION_API_OBJ = "api_object";
+
 /*mui 初始化配置选项*/
 var muiDefaultOptions = {
     /*主页面滚动指定容器，可自行指定范围*/
@@ -98,6 +103,24 @@ function muiInit(options) {
     bindButtonEvent();
     //键盘适应性
     resizeKeyboard();
+    //重写返回方法，以适应登录后直接跳转页面。
+    muiBack();
+}
+
+/**
+ * 重写返回方法，以适应登录后直接跳转页面。
+ */
+function muiBack() {
+    mui.back = function () {
+        sessionStorage.removeItem(SESSION_API_OBJ);
+        sessionStorage.removeItem(LOGIN_TARGET_URL);
+        if (typeof mui.options.beforeback === 'function') {
+            if (mui.options.beforeback() === false) {
+                return;
+            }
+        }
+        mui.doAction('backs');
+    }
 }
 
 /**
@@ -190,7 +213,7 @@ function muiAjaxError() {
             goToUrl(root + "/errors/" + status + ".html");
         } else if (status == 608) {
             var token = error.getResponseHeader("gb.token");
-            if(token) {
+            if (token) {
                 $("[name='gb.token']").val(token);
             }
             toast(window.top.message.common["repeat.request.error"]);
@@ -637,4 +660,14 @@ function lazyLoadImg(self, placeholder) {
         placeholder: placeholder
     });
     return lazyLoadApi;
+}
+
+/**
+ * 只是跳转到首页，不进行游戏跳转，
+ * 为了处理跳转登录后返回之前一个页面点击首页，就一直跳回到登录页面
+ */
+function goToHomePageOnly() {
+    sessionStorage.removeItem(SESSION_API_OBJ);
+    sessionStorage.removeItem(LOGIN_TARGET_URL);
+    goToHome(root + "/mainIndex.html");
 }

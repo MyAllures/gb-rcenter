@@ -60,11 +60,11 @@ function loginOk(obj, options) {
                 if (data.success) {
                     sessionStorage.is_login = true;
                     sessionStorage.isDemo = false;
-                    var url = sessionStorage.getItem("loginTargetUrl");
+                    var url = sessionStorage.getItem(LOGIN_TARGET_URL);
                     if (!url || url == 'null' || url.indexOf("mine/index.html") > 0) {
                         url = root + '/mainIndex.html';
                     }
-                    sessionStorage.removeItem("loginTargetUrl");
+                    sessionStorage.removeItem(LOGIN_TARGET_URL);
                     goToUrl(url);
                 } else {
                     if (data.isOpenCaptcha) {

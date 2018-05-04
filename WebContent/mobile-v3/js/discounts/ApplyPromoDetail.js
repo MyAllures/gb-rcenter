@@ -146,10 +146,18 @@ function fetchActivityProcess() {
                     html = '';
                 }
                 $('.pro_mone .mui-pull-left').html(proMoneText + '：<span class="color-gray">¥ ' + data.effectivetransaction + '</span>');
-                $('#unCommit').removeClass('mui-hidden');
+                $('#join .app_num').html('派奖时间：<span class="color-blue">' + data.deadLineTime + '</span>');
+                $('#unCommit .app_num').html('已有 <span class="color-blue">' + addApplyNum(data.ApplyNum) + '</span>人，报名成功');
+                if (data.hasApply) {
+                    $('#join').removeClass('mui-hidden');
+                } else {
+                    $('#unCommit').removeClass('mui-hidden');
+                }
+
             } else {
                 $('.status_failure').removeClass('mui-hidden');
                 $('.btn_cust_serv').removeClass('mui-hidden');
+                $('.promo-apply-content').removeClass('promo-apply2-content');
             }
         }
     };
@@ -217,7 +225,7 @@ function applyProfit(obj, options) {
  */
 function successShow(msg) {
     var t = 3, timer1 = null;
-    mui.alert('<i class="icon-sus"></i><div class="tips">您已申请成功！</div><div class="p_tim">(<span class="tim"></span>s)</div>',' ',null);
+    mui.alert('<i class="icon-sus"></i><div class="tips">您已申请成功！</div><div class="p_tim">(<span class="tim"></span>s)</div>', ' ', null);
     $('.mui-popup').addClass('app_suc');
     $('.tim').html(t)
     timer1 = setInterval(function () {
@@ -242,4 +250,16 @@ function defailShow(msg) {
     setTimeout(function () {
         mask.close();//关闭遮罩
     }, 2000);
+}
+
+/**
+ * 参与人数
+ * @param num
+ */
+function addApplyNum(num) {
+    if (typeof num == "undefined") {
+        num = 0;
+    }
+    num = num + 1000;
+    return num;
 }
