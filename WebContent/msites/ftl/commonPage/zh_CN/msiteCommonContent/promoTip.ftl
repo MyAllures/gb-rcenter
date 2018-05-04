@@ -36,7 +36,7 @@
     <div class="failure-reason">
         <div class="effective_transaction"></div>
         <div class="profit_loss wrap1 profit"></div>
-        <div class="profit_loss wrap1 loss item-success-without-bar"></div>
+        <div class="profit_loss wrap1 loss"></div>
     </div>
 </div>
 
