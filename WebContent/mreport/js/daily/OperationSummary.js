@@ -174,6 +174,7 @@ define(['site/MReport'], function (MReport) {
             //反水金额选择API
             $("#api-choice").click(function() {
 
+
             });
 
             /**
