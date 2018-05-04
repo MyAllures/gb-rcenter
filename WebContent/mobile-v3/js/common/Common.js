@@ -103,6 +103,24 @@ function muiInit(options) {
     bindButtonEvent();
     //键盘适应性
     resizeKeyboard();
+    //重写返回方法，以适应登录后直接跳转页面。
+    muiBack();
+}
+
+/**
+ * 重写返回方法，以适应登录后直接跳转页面。
+ */
+function muiBack() {
+    mui.back = function () {
+        sessionStorage.removeItem(SESSION_API_OBJ);
+        sessionStorage.removeItem(LOGIN_TARGET_URL);
+        if (typeof mui.options.beforeback === 'function') {
+            if (mui.options.beforeback() === false) {
+                return;
+            }
+        }
+        mui.doAction('backs');
+    }
 }
 
 /**
