@@ -128,6 +128,8 @@
 .promo-detail-content .gb-form-foot.new_foo .mui-btn { float: left; width: 50%; border-radius: 0; font-size: 14px; padding: 0; height: 45px; line-height: 45px; }
 .promo-detail-content .gb-form-foot.new_foo .mui-btn.btn-deposit { background: #1766bb; border-color: #1766bb; }
 .promo-detail-content .gb-form-foot.new_foo .mui-btn.btn-apply { background: #0ec392; border-color: #0ec392; }
+.promo-detail-content .table-scroll { padding: 0 10px; }
+.promo-detail-content .table-scroll .mui-scroll { height: auto; }
 
 /* promo-records */
 .mui-bar-nav.promo-record .top-info { float: right; font-size: 10px; line-height: 15px; color: #fff; padding-top: 10px; text-align: right; }

@@ -217,6 +217,10 @@ height: 44px;
          }
         }
     }
+    .table-scroll{
+        padding: 0 10px;
+        .mui-scroll{height: auto;}
+    }
 }
 /* promo-records */
 .mui-bar-nav.promo-record{
