@@ -61,12 +61,12 @@ function promoCheck(obj, options) {
 
     if (nowTime < sTime) {
         //未开始
-        $obj.text(window.top.message.promo_auto['未开始']);
+        $obj.html(window.top.message.promo_auto['未开始']);
     } else if (nowTime > eTime) {
         //已结束
         var oldClass = $obj.data("oldClass");
         var newClass = $obj.data("newClass");
-        $obj.removeClass(typeof oldClass == "undefined" ? "" : oldClass).addClass(typeof newClass == "undefined" ? "" : newClass).attr("onclick", "").text(window.top.message.promo_auto['已结束']);
+        $obj.removeClass(typeof oldClass == "undefined" ? "" : oldClass).addClass(typeof newClass == "undefined" ? "" : newClass).attr("onclick", "").html(window.top.message.promo_auto['已结束']);
     }
 }
 
@@ -112,7 +112,7 @@ function filterActyByPlayer(data) {
         }
     }
     if (isContain == false) {
-        $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").text(window.top.message.promo_auto['未满足条件']);
+        $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").html(window.top.message.promo_auto['未满足条件']);
     } else if (code == "content") {
         $obj.addClass("mui-hidden");
     }
@@ -181,39 +181,6 @@ function applyActivities(aplyObj, type) {
         + '&code=' + options.dataCode
         + '&type=' + type;
     goToUrl(url);
-}
-
-function showWin(data, isRefresh) {
-    if (typeof data.state == "undefined") {
-        return false;
-    }
-    var title;
-    if (!data.msg) {
-        data.msg = '';
-    }
-    if (data.state) {
-        title = window.top.message.promo_auto['申请成功'];
-    } else {
-        title = window.top.message.promo_auto['申请失败'];
-    }
-    if (data.title) {
-        title = data.title;
-    }
-    var options = {
-        btnArray: [window.top.message.promo_auto['查看优惠记录'], window.top.message.promo_auto['好的']],
-        title: title,
-        confirm: data.msg,
-        func: doWin
-    };
-    showConfirmMsg(options);
-}
-
-function doWin() {
-    if (isNative) {
-        nativeGotoPromoRecordPage();
-    } else {
-        goToUrl(root + "/promo/myPromo.html");
-    }
 }
 
 /**

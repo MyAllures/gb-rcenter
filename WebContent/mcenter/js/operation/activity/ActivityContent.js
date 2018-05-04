@@ -455,11 +455,23 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
                     page.showPopover(obj,{},'danger',msg,true);
                     return false;
                 }
-                if(!that.validateAwardRule(e,opt)){
+                var type = $("[name='activityRule.conditionType']:checked").val();
+
+                if(type!='3') {
+                    if (!that.validateCondition(e, opt)) {
+                        var pro_txt = $("#money_condition");
+                        var obj = {currentTarget: pro_txt};
+                        var msg = window.top.message.operation['Activity.money.awardrules.notempty'];
+                        page.showPopover(obj, {}, 'danger', msg, true);
+                        return false;
+                    }
+
+                }
+                if (!that.validateAwardRule(e, opt)) {
                     var pro_txt = $("#awards_rules");
-                    var obj = {currentTarget:pro_txt};
+                    var obj = {currentTarget: pro_txt};
                     var msg = window.top.message.operation['Activity.money.awardrules.notempty'];
-                    page.showPopover(obj,{},'danger',msg,true);
+                    page.showPopover(obj, {}, 'danger', msg, true);
                     return false;
                 }
             }

@@ -115,7 +115,12 @@ define([], function () {
                     if (this.cid != undefined && this.cid != null) {
                         _this.userParam[_this.CONNECTIONID_KEY] = this.cid;
                     }
-                    _this.connection();
+                    if (_this.websocket != null &&　_this.websocket.readyState == _this.websocket.OPEN) {
+                        _this.websocket.send("");
+                        _this.last_active_time=new Date().getTime();
+                    }else {
+                        _this.connection();
+                    }
                 }
             }, 10000);
         },

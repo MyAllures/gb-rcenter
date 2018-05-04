@@ -559,6 +559,18 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                     page.showPopover(obj,{},'danger',msg,true);
                     return false;
                 }
+                var type = $("[name='activityRule.conditionType']:checked").val();
+
+                if(type!='3'){
+                    if(!that.validateCondition(e,opt)){
+                        var pro_txt = $("#money_condition");
+                        var obj = {currentTarget:pro_txt};
+                        var msg = window.top.message.operation['Activity.money.awardrules.notempty'];
+                        page.showPopover(obj,{},'danger',msg,true);
+                        return false;
+                    }
+
+                }
                 if(!that.validateAwardRule(e,opt)){
                     var pro_txt = $("#awards_rules");
                     var obj = {currentTarget:pro_txt};
@@ -566,6 +578,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                     page.showPopover(obj,{},'danger',msg,true);
                     return false;
                 }
+
             }
             that.validatePeriodArea(e,"validRule",opt);
             return false;
@@ -743,7 +756,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                     if (a3 == "") {
                         a3 = "---";
                     }
-                    $("#previewprofit").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
+                    $("#previewprofit").append("<tr><td style='width: 33%'>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td style='width: 33%'>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td style='width: 33%'>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
 
                 });
                 //亏损
@@ -760,7 +773,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                     if (a3 == "") {
                         a3 = "---";
                     }
-                    $("#previewloss").append("<tr><td>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
+                    $("#previewloss").append("<tr><td style='width: 33%'>".concat(window.top.message.operation_auto['满以上'].replace("[0]",a1)).concat("</td><td style='width: 33%'>").concat(window.top.message.operation_auto['送']).concat(a2).concat("</td><td style='width: 33%'>").concat(a3).concat(window.top.message.operation_auto['倍']).concat("</td></tr>"));
                 });
             }
             if(code=="money"){
@@ -1354,11 +1367,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
         changeKey: function () {
             var value = $('[name="activityRule.claimPeriod"]').val();
             if (value == 'NaturalDay') {
-                $(".claimPeriodDetail").text(window.top.views.operation['Activity.step.message14']);
+                $(".claimPeriodDetail").text('以活动开启时间为起点，顺延24小时为1个结算周期，可以多次查询当前投注额，派奖以结算时为准。')
             }else if (value == 'NaturalWeek') {
-                $(".claimPeriodDetail").text(window.top.views.operation['Activity.step.message15']);
+                $(".claimPeriodDetail").text('以活动开启时间为起点，顺延7*24小时为1个结算周期，可以多次查询当前投注额，派奖以结算时为准。');
             }else if (value == 'NaturalMonth') {
-                $(".claimPeriodDetail").text(window.top.views.operation['Activity.step.message16']);
+                $(".claimPeriodDetail").text('以活动开启时间为起点，顺延30*24小时为1个结算周期，可以多次查询当前投注额，派奖以结算时为准。');
             }else {
                 $(".claimPeriodDetail").text('每个周期内，每人默认只能申请一次。');
             }
