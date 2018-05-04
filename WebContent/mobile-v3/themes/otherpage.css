@@ -165,7 +165,7 @@
 .promo-apply-content .top_title .tit { font-size: 15px; color: #317ec2; }
 .promo-apply-content .promo_con_list { font-size: 14px; color: #666; }
 .promo-apply-content .promo_con_list .mui-table-view:before, .promo-apply-content .promo_con_list .mui-table-view:after { content: none; }
-.promo-apply-content .promo_con_list .mui-table-view-cell { padding: 15px; }
+.promo-apply-content .promo_con_list .mui-table-view-cell { padding: 15px 35px 15px 15px; }
 .promo-apply-content .promo_con_list .mui-table-view-cell .icon-pass, .promo-apply-content .promo_con_list .mui-table-view-cell .icon-fail, .promo-apply-content .promo_con_list .mui-table-view-cell .icon-pass-disa { position: absolute; top: 50%; right: 15px; width: 18.5px; height: 18.5px; background-size: 100%; background-repeat: no-repeat; -webkit-transform: translateY(-50%); transform: translateY(-50%); }
 .promo-apply-content .promo_con_list .mui-table-view-cell .icon-pass { background-image: url(images/promo/icon-pass.png); }
 .promo-apply-content .promo_con_list .mui-table-view-cell .icon-fail { background-image: url(images/promo/icon-fail.png); }

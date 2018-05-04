@@ -351,7 +351,7 @@ height: 44px;
         font-size: 14px;
         color: #666;
         .mui-table-view:before,.mui-table-view:after{content: none;}
-        .mui-table-view-cell{padding: 15px;
+        .mui-table-view-cell{padding: 15px 35px 15px 15px;
             .icon-pass,.icon-fail,.icon-pass-disa{    position: absolute;
     top: 50%;
     right: 15px;width: (37px/2);height: (37px/2);background-size: 100%;background-repeat: no-repeat;
