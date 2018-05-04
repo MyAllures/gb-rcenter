@@ -207,19 +207,16 @@ height: 44px;
             }
         }
     }
-    .gb-form-foot {    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;padding: 0; z-index: 10;
-         .mui-btn{float: left;width: 50%;
-    border-radius: 0; font-size: 14px;padding: 0; 
-    height: 45px;
-    line-height: 45px;
+    .gb-form-foot {  padding: 10px;
+        .submit {    border: 1px solid #1766bb;    background-color: #1766bb;    width: 100%;    padding: 10px 12px;    font-size: 13px;}
+        &.new_foo{
+            position: fixed;  bottom: 0;  left: 0; right: 0;padding: 0; z-index: 10; 
+         .mui-btn{float: left;width: 50%;    border-radius: 0; font-size: 14px;padding: 0;    height: 45px;    line-height: 45px;
             &.btn-deposit{background: #1766bb;border-color: #1766bb;}
             &.btn-apply{background: #0ec392;border-color: #0ec392;}
          }
+        }
     }
-    
 }
 /* promo-records */
 .mui-bar-nav.promo-record{
