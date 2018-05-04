@@ -99,6 +99,8 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .range-box .public-range-group .btn { width: 28px; height: 28px; border-radius: 100%; text-align: center; padding: 0; }
 .range-box .date { height: 30px; border: 1px solid #e2e2e2; border-radius: 15px; display: inline-block; vertical-align: middle; overflow: hidden; padding: 0 10px 0 28px; background: url(../images/date.png) 10px center no-repeat; line-height: 30px; color: #999; }
 .range-box .date input { height: 31px; vertical-align: top; border: none; width: 80px; text-align: center; color: #999; cursor: pointer; }
+.range-box .date .btn-group .input-group-addon.glyphicon {display: none;}
+.range-box .date .btn-group .form-control {padding-left: 2px !important;padding-right: 2px !important;}
 
 .page { text-align: center; height: 55px; }
 .page .pageNum { display: inline-block; margin: 20px 50px 0 15px; color: #666; float: left; }
