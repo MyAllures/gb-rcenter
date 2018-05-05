@@ -438,7 +438,7 @@
         var money = " ";
         if (code == 'first_deposit' || code == 'second_deposit' || code =='third_deposit' || code == 'everyday_first_deposit' || code == 'deposit_send') {
             if (data.state) {
-                msg = window.top.message.apply_activity[data.msg];
+                msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + window.top.message.apply_activity[data.msg] + '</span></div></div>';
                 $(".applyResult").append(msg);
             } else {
                 if (data.transactionErrorList) {
@@ -451,12 +451,12 @@
                         $(".applyResult").append(msg);
                     }
                 } else {
-                    msg = window.top.message.apply_activity[data.msg];
+                    msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + window.top.message.apply_activity[data.msg] + '</span></div></div>';
                     $(".applyResult").append(msg);
                 }
             }
         }else {
-            msg = data.msg;
+            msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + data.msg + '</span></div></div>';
             $(".applyResult").append(msg);
         }
         var content;
