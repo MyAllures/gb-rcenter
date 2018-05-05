@@ -4,6 +4,10 @@ var successPageNumber = 1;
 var noPassPageNumber = 1;
 var unAuditPageNumber = 1;
 
+var allTotal;
+var successTotal;
+var noPassTotal;
+var unAuditTotal;
 $(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
@@ -21,15 +25,28 @@ $(function () {
 function pullfresh() {
     var lastPageNumber = parseInt($("#lastPageNumber").val());
     var id = $('.mui-control-content.mui-active').attr("id");
-    if (id == "item1" && allPageNumber < lastPageNumber) {
+    if (id == "item1" && judgeLastPageNumber(allPageNumber,allTotal,lastPageNumber)) {
         getPullInfo(allPageNumber, null, id);
-    } else if (id == "item2" && successPageNumber < lastPageNumber) {
+    } else if (id == "item2" &&judgeLastPageNumber(successPageNumber,successTotal,lastPageNumber)) {
         getPullInfo(successPageNumber, "2", id);
-    } else if (id == "item3" && noPassPageNumber < lastPageNumber) {
+    } else if (id == "item3" && judgeLastPageNumber(noPassPageNumber,noPassTotal,lastPageNumber)) {
         getPullInfo(noPassPageNumber, "4", id);
-    } else if (id == "item4" && unAuditPageNumber < lastPageNumber) {
+    } else if (id == "item4" && judgeLastPageNumber(unAuditPageNumber,unAuditTotal,lastPageNumber)) {
         getPullInfo(unAuditPageNumber, "1", id);
+    } else {
+        mui("#refreshContainer").pullRefresh().endPullupToRefresh(true);
     }
+}
+
+/**
+ *
+ * @param beforePageNumber：当前页面数
+ * @param totalPageNumber：当前页码总数
+ * @param endPageNumber：初始总页码数
+ * @returns {boolean}
+ */
+function judgeLastPageNumber(beforePageNumber,totalPageNumber, endPageNumber) {
+    return !totalPageNumber ? beforePageNumber < endPageNumber : beforePageNumber < totalPageNumber;
 }
 
 /*获取上拉数据*/
@@ -45,6 +62,10 @@ function getPullInfo(pageNumber, state, item) {
             promoInfo(requestData, item);
         }, 3000);
     }
+}
+//切换时打开下拉
+function switchOffers() {
+    mui("#refreshContainer").pullRefresh().endPullupToRefresh(false);
 }
 
 /*获取正在进行中的类型和活动*/
@@ -63,6 +84,16 @@ function promoInfo(requestData, item) {
             if (data != null) {
                 $('#' + item).find('.promo-record-content').append(data);
                 addPageNumber(item);
+                var number = $('#' + item).find("#partialPageNumber").attr("value");
+                if (item == "item1") {
+                    allTotal = number;
+                } else if (item == "item2") {
+                    successTotal = number;
+                } else if (item == "item3") {
+                    noPassTotal = number;
+                } else if (item == "item4") {
+                    unAuditTotal = number;
+                }
             }
         },
         error: function (e) {
