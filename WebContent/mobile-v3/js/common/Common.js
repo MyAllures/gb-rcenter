@@ -105,6 +105,20 @@ function muiInit(options) {
     resizeKeyboard();
     //重写返回方法，以适应登录后直接跳转页面。
     muiBack();
+    //绑定后台设置的相关链接事件
+    bindHrefTarget();
+}
+
+/**
+ * 绑定后台设置的相关链接事件
+ */
+function bindHrefTarget() {
+    $("a[href][target='_blank']").on("tap", function () {
+        var url = $(this).attr("href");
+        if(url) {
+            openWindow(url);
+        }
+    })
 }
 
 /**
