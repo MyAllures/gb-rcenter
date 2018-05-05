@@ -1,0 +1,18 @@
+*{box-sizing:border-box;padding:0;margin:0;font-family:"Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei"}
+html{font-size:14px}
+li{list-style:none}
+a{text-decoration:none}
+.wrap-page{position:absolute;left:0;right:0;top:0;bottom:0}
+.wrap-page .mian-img{width:95%;margin:0 auto;display:block}
+.wrap-page .info{padding:0 15%;letter-spacing:1px}
+.wrap-page .info h1{color:#333;font-size:28px;text-shadow:0 0 5px #fff;margin-bottom:5px}
+.wrap-page .info h2,.wrap-page .info h3{margin-bottom:10px;color:#999;font-weight:400;border-bottom:1px solid #ddd;padding-bottom:10px;white-space:nowrap}
+.wrap-page .info h2{font-size:21px;}
+.wrap-page .info h3{font-size:14px;}
+.wrap-page .info p{color:#333;font-size:1rem;line-height:1.8rem;text-shadow:0 0 2px #fff;text-align:justify}
+.wrap-page .info .btn{display:inline-block;margin:30px 0 0;color:#fff;font-size:1rem;line-height:32px;text-align:center;border-radius:5px;width:120px;height:32px;background:#151515}
+.wrap-page .info .btn:before{content:'';display:inline-block;width:25px;height:24px;vertical-align:middle;margin-right:3px}
+.wrap-page .info .online-ser:before{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAqCAMAAADlP6mgAAAAeFBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////GqOSsAAAAJ3RSTlMA+eHTcEUJ8ughFOw7GqwOiWAsy7mjnXtbMb+Xk3ZnT4wn3IBzsFUOaLLzAAABzklEQVQ4y32T2bqqMAyFU0oLZR4UEBHHvdf7v+ExVEs9uv0vyBfWagNNQytlXQQCQu4VfSSM8KTN3uVkBKLutzFGVTFQvekSoiq9zbb0yojY3/YcYP9aH+n5HlTfFdspvFtNjMH//giK9CHGg/hGmUgTf4OOjITHRld+kRYmD/BCV6bCbaHR0gYOMfGz6dE/DTtUytMHKgBMuZBkyQuEhdNTRaRHQFKA2q6PgTB96sVSWBdAGWA5Lo7oYZGuT704s3AgurFwtb8/08puMUTafn7PcqjpBTZAkeQQRpdZq/GnYaH5GZUz1NQuBu5UBLT22BA5w0A/i+HxYsNxAwReid4ZzOmacEyuJ+MMORlhDe+wobjHOvrTkE7lchvU0HzQz+JI30jk/qteSqm/6UYG+Td9Ti/ms7K77qdkkNgm9JkLtxhj9mntwH8lAfwamosp+09ugZhH53RgXwq8jtZRABBrDqZb80yASegW3Qkpx0Lt5uKChYZutrU7m7vhO8GiqLYLFeAXMQKWgY4cjuxbEPa0Ojw4UMYhowMebFnPxTOtqOHQuJoQ3JAKqz+3t2yLdQ3p1GUb0hy0N+qpphkOSSSW85JwzH4SE8XPp1v0D4tZUavnkqLsAAAAAElFTkSuQmCC) top center no-repeat/16px}
+.wrap-page.color-wrap header .logo{background:#151515;text-align:center}
+.wrap-page.color-wrap header .logo img{height:35px;display:inline-block;margin:10px 0}
+.wrap-page.color-wrap .mian-img{margin-top:10%}
