@@ -50,12 +50,12 @@ function wait(t, obj, interval) {
         }
     }, 1000);
 }
-function updataMobile(){
-    var oldPhone = $("[name='search.oldPhone']");
 
-}
 //绑定手机号提交
 function bindMobile(obj, options) {
+    if ($("[name='oldPhone']").val()){
+        //原手机号跟新手机号比对
+    }
     var $form = $('#regForm');
     if (!$form.valid()) {
         return;
