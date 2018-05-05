@@ -77,7 +77,26 @@
         }
     });
 
-
+    //按活动名称搜索活动
+    function searchActivity(obj) {
+        $('[data-item="_all_"]').trigger('click');
+        var value = $("#search-input").val();
+        if (typeof value != "undefined") {
+            $("._vr_all .promo-item").each(function (j, actObj) {
+                var activityName = $(actObj).data("activityname");
+                if (activityName.indexOf(value) != -1) {
+                    $(actObj).show();
+                    $(actObj).siblings('.list_type2_item_tit').show();
+                } else {
+                    $(actObj).hide();
+                    $(actObj).siblings('.list_type2_item_tit').hide();
+                }
+            });
+        } else {
+            $("._vr_all .promo-item").show();
+            $("._vr_all .list_type2_item_tit").show();
+        }
+    }
     //根据时间来初始化活动的按钮等展现,还没有层级的概念
     function promoCheck() {
         var nowTime = $("._user_time").attr("time");
@@ -162,25 +181,6 @@
         });
     }
 
-    function searchActivity(obj) {
-        $('[data-item="_all_"]').trigger('click');
-        var value = $("#search-input").val();
-        if (typeof value != "undefined") {
-            $("._vr_all .promo-item").each(function (j, actObj) {
-                var activityName = $(actObj).data("activityname");
-                if (activityName.indexOf(value) != -1) {
-                    $(actObj).show();
-                    $(actObj).siblings('.list_type2_item_tit').show();
-                } else {
-                    $(actObj).hide();
-                    $(actObj).siblings('.list_type2_item_tit').hide();
-                }
-            });
-        } else {
-            $("._vr_all .promo-item").show();
-            $("._vr_all .list_type2_item_tit").show();
-        }
-    }
 
     //参加优惠点击事件
     function joinPromo(aplyObj, isRefresh) {
@@ -198,27 +198,7 @@
             return false;
         }
         if (sessionStorage.is_login == "true") {
-            if (code == "back_water") {
-                if (isRefresh) {
-                    layer.open({
-                        content:'参与中',
-                        title:'提示',
-                        skin:'layui-layer-brand',
-                        btn:["确定"],
-                        success: function(layer){
-                            // 重写关闭按钮
-                            $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
-                            // 提示框类型
-                            $(layer).addClass("normal-dialog");
-                        },
-                        yes: function () {
-                            window.location.href = "/promo.html";
-                        }
-                    });
-                }
-                return false;
-
-            }else if (code == 'effective_transaction' || code == 'profit_loss' || code == 'deposit_send') {
+            if (code == 'effective_transaction' || code == 'profit_loss' || code == 'deposit_send') {
                 fetchActivityProcess(aplyObj, isRefresh);
             } else {
                 if (isRefresh&&code!='money') {
@@ -287,7 +267,7 @@
             } else {
                 $(".tip_noTransaction").show();
                 $(".tab_wrap").hide();
-                btn = ["申请奖励"];
+                btn = ["联系客服"];
             }
             content = $(".deposit_send").html();
             addClass = 'promo_CJS';
@@ -298,20 +278,25 @@
                 var width = (data.effectivetransaction/preferentialRelations[j].preferentialValue)*100;
                 if (data.effectivetransaction >= preferentialRelations[j].preferentialValue){
                     item = '<div class="item-success-with-bar process">'+ '<i class="icon-pass"></i>' + '<div class="txt"><span>有效投注额' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' +
-                            data.effectivetransaction + '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
+                            data.effectivetransaction + '</span>/' + preferentialRelations[j].preferentialValueString + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
                 } else {
                     item = '<div class="item-failure-with-bar process">'+ '<i class="icon-fail"></i>' + '<div class="txt"><span>有效投注额' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' +
-                            data.effectivetransaction + '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner" style="' + 'width:'+ width + '%' + '"></div></div></div>';
+                            data.effectivetransaction + '</span>/' + preferentialRelations[j].preferentialValueString + '</div></div>' + '<div class="bar"><div class="bar-inner" style="' + 'width:'+ width + '%' + '"></div></div></div>';
                 }
                 $(".effective_transaction").append(item);
             }
             if (data.hasApply) {
+                item = '<div class="item-success-without-bar process">'+
+                        '<div class="txt"><span class="color-red">派奖时间：' + data.deadLineTime + '</span></div>'+
+                        '</div>';
                 btn = ["联系客服"];
-                $(".deadlineTime").html('派奖时间:' + '<span>' + data.deadLineTime + '</span>');
             } else {
+                item = '<div class="item-success-without-bar process">'+
+                        '<div class="txt"><span class="color-red">当前报名人数：' + data.ApplyNum + '人</span></div>'+
+                        '</div>';
                 btn = ["联系客服","申请奖励"];
-                $(".deadlineTime").html('参加活动人数:' + '<span>' + data.ApplyNum + '</span>');
             }
+            $(".effective_transaction").append(item);
             content = $(".activityProcess").html();
             addClass = 'promo_may_apply';
         } else if (code == 'profit_loss') {
@@ -322,10 +307,10 @@
                     var width = (data.profitloss/preferentialRelations[j].preferentialValue)*100;//计算进度
                     if (data.profitloss >= preferentialRelations[j].preferentialValue){
                         item = '<div class="item-success-with-bar process">'+ '<i class="icon-pass"></i>' + '<div class="txt"><span>盈利' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.profitloss +
-                                '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
+                                '</span>/' + preferentialRelations[j].preferentialValueString + '</div></div>' + '<div class="bar"><div class="bar-inner"></div></div></div>';
                     } else {
                         item = '<div class="item-failure-with-bar process">'+ '<i class="icon-fail"></i>' + '<div class="txt"><span>盈利' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' + data.profitloss +
-                                '</span>/' + preferentialRelations[j].preferentialValue + '</div></div>' + '<div class="bar"><div class="bar-inner" style="' + 'width:'+ width + '%' + '"></div></div></div>';
+                                '</span>/' + preferentialRelations[j].preferentialValueString + '</div></div>' + '<div class="bar"><div class="bar-inner" style="' + 'width:'+ width + '%' + '"></div></div></div>';
                     }
                     $(".profit_loss.profit").append(item);
                 }else if (preferentialRelations[j].preferentialCode == 'loss_ge' && preferentialRelations[j].orderColumn == '1') {//亏损时只展示亏损
@@ -356,12 +341,17 @@
                 }
             }
             if (data.hasApply) {
+                item = '<div class="item-success-without-bar process">'+
+                        '<div class="txt"><span class="color-red">派奖时间：' + data.deadLineTime + '</span></div>'+
+                        '</div>';
                 btn = ["联系客服"];
-                $(".deadlineTime").html('派奖时间:' + '<span>' + data.deadLineTime + '</span>');
             } else {
+                item = '<div class="item-success-without-bar process">'+
+                        '<div class="txt"><span class="color-red">当前报名人数：' + data.ApplyNum + '人</span></div>'+
+                        '</div>';
                 btn = ["联系客服","申请奖励"];
-                $(".deadlineTime").html('当前报名人数:' + '<span>' + data.ApplyNum + '</span>');
             }
+            $(".profit_loss.loss").append(item);
             content = $(".activityProcess").html();
             addClass = 'promo_may_apply';
         } else {
@@ -374,7 +364,7 @@
             content:content,
             title:"提示",
             skin:"layui-layer-warning",
-            area: ['640px', 'auto'],
+            area: ['640px', '397px'],
             btn: btn,
             url: url,
             success: function(layer){
@@ -440,21 +430,39 @@
             return false;
         }
         $(".tip_tit").text('');
-        $(".ext-inf").text('');
+        $(".applyResult").text('');
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
         var title = $(aplyObj).parents("._vr_promo_check").find(".tit").text();
         $(".tip_tit").text('《' + title + '》');
         var msg;
-        if (code == 'first_deposit' || code == 'second_deposit' || code =='third_deposit' || code == 'everyday_first_deposit') {
-           msg = window.top.message.apply_activity[data.msg];
+        var money = " ";
+        if (code == 'first_deposit' || code == 'second_deposit' || code =='third_deposit' || code == 'everyday_first_deposit' || code == 'deposit_send') {
+            if (data.state) {
+                msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + window.top.message.apply_activity[data.msg] + '</span></div></div>';
+                $(".applyResult").append(msg);
+            } else {
+                if (data.transactionErrorList) {
+                    for (j = 0; j<data.transactionErrorList.length; j++) {
+                        if (data.transactionErrorList[j].money) {
+                            money = data.transactionErrorList[j].money;
+                        }
+                        msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>存款订单' + data.transactionErrorList[j].transactionNo + '</span></div></div>' +
+                        '<div class="item-failure-without-bar" style="margin-bottom: 30px"><i class="icon-fail"></i><div class="txt"><span>' + window.top.message.apply_activity[data.transactionErrorList[j].msg] + money + '</span></div></div>';
+                        $(".applyResult").append(msg);
+                    }
+                } else {
+                    msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + window.top.message.apply_activity[data.msg] + '</span></div></div>';
+                    $(".applyResult").append(msg);
+                }
+            }
         }else {
-            msg = data.msg;
+            msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + data.msg + '</span></div></div>';
+            $(".applyResult").append(msg);
         }
-        $(".ext-inf").text(msg);
         var content;
         var title;
         var skin;
-        var area = ['640px', 'auto'];
+        var area = ['640px', '397px'];
         var icon;
         if (data.state) {
             content = $(".promoSuccessTip").html();
@@ -467,12 +475,14 @@
             skin =  "layui-layer-danger";
             icon="promo_failure";
         }
-
+        var url =  $(".openNewWindow").data("url");
         var dialog = layer.open({
             content:content,
             title:title,
             skin:skin,
             area: area,
+            btn: ["联系客服"],
+            url: url,
             success: function(layer){
                 // 重写关闭按钮
                 $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
@@ -481,17 +491,10 @@
                 $(layer).addClass(icon);
             },
             yes: function () {
-                if (isRefresh) {
-                    layer.close(dialog);
-                    window.location.href = "/promo.html";
-                } else {
-                    layer.close(dialog);
-                }
-            },
-            btn2: function () {
                 window.open(
-                        '${data.contextInfo.playerCenterContext}#/preferential/list.html',
-                        '_blank' // <- This is what makes it open in a new window.
+                        url,
+                        'NewWindow',
+                        'width=960,height=600,top=50,left=50'
                 );
             }
         });
