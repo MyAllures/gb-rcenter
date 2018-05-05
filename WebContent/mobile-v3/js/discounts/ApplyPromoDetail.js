@@ -63,6 +63,22 @@ function applyActivity() {
                         '</li>'].join("");
                     $('.promo_con_list .mui-table-view').append(html);
                 }
+                if (data.transactionErrorList) {
+                    for (j = 0; j < data.transactionErrorList.length; j++) {
+                        var iconHtml;
+                        if (data.transactionErrorList[j].state) {
+                            iconHtml = 'icon-pass';
+                        } else {
+                            iconHtml = 'icon-fail';
+                        }
+                        if (data.transactionErrorList[j].msg) {
+                            var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.transactionErrorList[j].msg],
+                                '<span class="' + iconHtml + '"></span>',
+                                '</li>'].join("");
+                            $('.promo_con_list .mui-table-view').append(html);
+                        }
+                    }
+                }
             }
         }
     };
@@ -168,10 +184,10 @@ function fetchActivityProcess() {
                     }
                 }
                 //盈利亏损同时存在 优先取盈利,亏损不展示梯度
-                if(profitHtml && lossHtml){
-                    if(data.profitloss >= 0){
+                if (profitHtml && lossHtml) {
+                    if (data.profitloss >= 0) {
                         proMoneText = '当前盈利';
-                    }else{
+                    } else {
                         $('.promo_con_list .mui-table-view').html('');
                         proMoneText = '当前亏损';
                     }
