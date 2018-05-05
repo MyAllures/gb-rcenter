@@ -1,80 +1,82 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="renderer" content="webkit">
-  <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
-  <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
-  <link rel="stylesheet" href="../../pcenter/themes/default/bootstrap.css">
-  <!-- 提示弹出框 by steven -->
-  <script type="text/javascript">
-var environment = {
-  userVo : '',
-  role : '',
-  userId : '',
-  basePath : '',
-  userCash : '',
-  globalPath : '/',
-  userActiveTime : '',
-  yoolibaoWhiteListStatus : '',
-  yoolibaoOpenStatus : '',
-  cerrencyOpenTime : "2015/9/10"//new Date()
-};
-</script>
 
-  <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
-  <!-- 进度百分比 -->
-  <script src="../../common/js/jquery/plugins/jquery.chosen/jquery.chosen.js"></script>
-  <script src="../../common/js/jquery/plugins/jquery.knob/jquery.knob.js"></script>
-  <script src="../../common/js/pcenterJS/ion.js"></script>
-  <!--项部下拉弹出 -->
-  <script type="text/javascript" src="../../common/js/pcenterJS/head.js"></script>
-  <!--tooltips -->
-  <script type="text/javascript" src="../../common/js/pcenterJS/tooltips.js"></script>
-  <script src="../../common/js/bootstrap/bootstrap.min.js"></script>
-  <script src="../../common/js/jquery/plugins/poster/poster.js"></script>
-  <!--banner-背景模糊-->
-  <script src="../../common/js/jquery/plugins/velocity/background-blur.min.js"></script>
-  <!--<script src="../../common/js/jquery/plugins/velocity/velocity.min.js"></script>-->
-  <!--弹窗 -->
-  <script>
-jQuery(document).ready(function($) {
-  $('.theme-login').click(function(){
-    $('.theme-pop-mask').fadeIn(100);
-    $('.theme-pop').slideDown(200);
-  })
-  $('.theme-poptitle .close').click(function(){
-    $('.theme-pop-mask').fadeOut(100);
-    $('.theme-pop').slideUp(200);
-  })
-    onInitScrollPic();
-});
-function onInitScrollPic(){
-    //图片列表切换 #poster
-    var promotions = $(".poster-wrap");
-    if(!promotions||promotions.length==0){
-        return;
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../pcenter/themes/default/common.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/pcenter-style.css">
+    <link rel="stylesheet" href="../../pcenter/themes/default/bootstrap.css">
+    <!-- 提示弹出框 by steven -->
+    <script type="text/javascript">
+    var environment = {
+        userVo: '',
+        role: '',
+        userId: '',
+        basePath: '',
+        userCash: '',
+        globalPath: '/',
+        userActiveTime: '',
+        yoolibaoWhiteListStatus: '',
+        yoolibaoOpenStatus: '',
+        cerrencyOpenTime: "2015/9/10" //new Date()
+    };
+    </script>
+    <script src="../../common/js/jquery/jquery-2.1.1.js" type="text/javascript"></script>
+    <!-- 进度百分比 -->
+    <script src="../../common/js/jquery/plugins/jquery.chosen/jquery.chosen.js"></script>
+    <script src="../../common/js/jquery/plugins/jquery.knob/jquery.knob.js"></script>
+    <script src="../../common/js/pcenterJS/ion.js"></script>
+    <!--项部下拉弹出 -->
+    <script type="text/javascript" src="../../common/js/pcenterJS/head.js"></script>
+    <!--tooltips -->
+    <script type="text/javascript" src="../../common/js/pcenterJS/tooltips.js"></script>
+    <script src="../../common/js/bootstrap/bootstrap.min.js"></script>
+    <script src="../../common/js/jquery/plugins/poster/poster.js"></script>
+    <!--banner-背景模糊-->
+    <script src="../../common/js/jquery/plugins/velocity/background-blur.min.js"></script>
+    <!--<script src="../../common/js/jquery/plugins/velocity/velocity.min.js"></script>-->
+    <!--弹窗 -->
+    <script>
+    jQuery(document).ready(function($) {
+        $('.theme-login').click(function() {
+            $('.theme-pop-mask').fadeIn(100);
+            $('.theme-pop').slideDown(200);
+        })
+        $('.theme-poptitle .close').click(function() {
+            $('.theme-pop-mask').fadeOut(100);
+            $('.theme-pop').slideUp(200);
+        })
+        onInitScrollPic();
+    });
+
+    function onInitScrollPic() {
+        //图片列表切换 #poster
+        var promotions = $(".poster-wrap");
+        if (!promotions || promotions.length == 0) {
+            return;
+        }
+        var scrollPic_01 = new ScrollPic();
+        scrollPic_01.scrollContId = "poster"; //内容容器ID
+        scrollPic_01.arrLeftId = "prev"; //左箭头ID
+        scrollPic_01.arrRightId = "next"; //右箭头ID
+        scrollPic_01.frameWidth = 882; //显示框宽度
+        scrollPic_01.pageWidth = 294; //翻页宽度
+        scrollPic_01.speed = 20; //移动速度(单位毫秒，越小越快)
+        scrollPic_01.space = 20; //每次移动像素(单位px，越大越快)
+        scrollPic_01.autoPlay = true; //自动播放
+        scrollPic_01.autoPlayTime = 2; //自动播放间隔时间(秒)
+        scrollPic_01.initialize(); //初始化
     }
-    var scrollPic_01 = new ScrollPic();
-    scrollPic_01.scrollContId = "poster"; //内容容器ID
-    scrollPic_01.arrLeftId = "prev"; //左箭头ID
-    scrollPic_01.arrRightId = "next"; //右箭头ID
-    scrollPic_01.frameWidth = 882; //显示框宽度
-    scrollPic_01.pageWidth = 294; //翻页宽度
-    scrollPic_01.speed = 20; //移动速度(单位毫秒，越小越快)
-    scrollPic_01.space = 20; //每次移动像素(单位px，越大越快)
-    scrollPic_01.autoPlay = true; //自动播放
-    scrollPic_01.autoPlayTime = 2; //自动播放间隔时间(秒)
-    scrollPic_01.initialize(); //初始化
-}
-</script>
-  <title>玩家中心首页</title>
+    </script>
+    <title>玩家中心首页</title>
 </head>
+
 <body>
-  <!-- //* 弹窗 -->
-  <!--<div class="theme-pop">
+    <!-- //* 弹窗 -->
+    <!--<div class="theme-pop">
     <div class="theme-poptitle">
       <a href="javascript:;" title="关闭" class="close">×</a>
       <h1>消息</h1>
@@ -93,90 +95,85 @@ function onInitScrollPic(){
     </div>
   </div>
   <div class="theme-pop-mask"></div>-->
-
-  <!-- //* Top -->
-
-  <div class="top-wrap">
-    <div class="top-top">
-      <!--顶部右边-->
-      <div class="top-right">
-        <div class="member">
-          您好，
-          <div id="site-nav">
-            <ul>
-              <li>
-                <div class="menu">
-                  <a class="menu-hd" href="#">
-                    <span class="orange">PCKmenr</span> <b></b>
-                  </a>
-                  <div class="menu-bd box">
-                    <div class="global-account-head">
-                      <a href="#" class="global-account-img">
-                        <img src="../../pcenter/images/default_portrait.png" width="39" height="39"  alt="我的头像" />
-                      </a>
-                      <p class="global-account-name" title="name"><span class="_hours"></span></p>
-                      <a href="account.html">账户设置</a>
-                      <span class="global-top-seperator">|</span>
-                      <a href="gamerecord.html">交易记录</a>
-                    </div>
-
-                    <div class="global-account-money">
-                      钱包余额：
-                      <a href="#" class="show-remaining btn btn-filter btn-xs real-time-btn show-remaining">显示余额</a>
-                      <span class="hide-astrict"> <em class="total-money astrict">92,879,000.00</em> <i class="ico-ask refresh"></i> <i class="ico-ask showsmall refresh"></i>
+    <!-- //* Top -->
+    <div class="top-wrap">
+        <div class="top-top">
+            <!--顶部右边-->
+            <div class="top-right">
+                <div class="member">
+                    您好，
+                    <div id="site-nav">
+                        <ul>
+                            <li>
+                                <div class="menu">
+                                    <a class="menu-hd" href="#">
+                                        <span class="orange">PCKmenr</span> <b></b>
+                                    </a>
+                                    <div class="menu-bd box">
+                                        <div class="global-account-head">
+                                            <a href="#" class="global-account-img">
+                                                <img src="../../pcenter/images/default_portrait.png" width="39" height="39" alt="我的头像" />
+                                            </a>
+                                            <p class="global-account-name" title="name"><span class="_hours"></span></p>
+                                            <a href="account.html">账户设置</a>
+                                            <span class="global-top-seperator">|</span>
+                                            <a href="gamerecord.html">交易记录</a>
+                                        </div>
+                                        <div class="global-account-money">
+                                            钱包余额：
+                                            <a href="#" class="show-remaining btn btn-filter btn-xs real-time-btn show-remaining">显示余额</a>
+                                            <span class="hide-astrict"> <em class="total-money astrict">92,879,000.00</em> <i class="ico-ask refresh"></i> <i class="ico-ask showsmall refresh"></i>
                       </span>
-
-                      <p class="dottline space"></p>
-                      <div class="total">
-                        <a href="asset-transfer.html">转帐</a>
-                        <span class="global-top-seperator">|</span>
-                        <a href="asset-deposit.html">存款</a>
-                        <span class="global-top-seperator">|</span>
-                        <a href="asset-withdraw.html">取款</a>
-                      </div>
+                                            <p class="dottline space"></p>
+                                            <div class="total">
+                                                <a href="asset-transfer.html">转帐</a>
+                                                <span class="global-top-seperator">|</span>
+                                                <a href="asset-deposit.html">存款</a>
+                                                <span class="global-top-seperator">|</span>
+                                                <a href="asset-withdraw.html">取款</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          [退出]
-          <label class="line-after info-down-btn">
-            <span class="new">
+                    [退出]
+                    <label class="line-after info-down-btn">
+                        <span class="new">
               <i class="new-ico select"></i>
               <a href="#">新消息</a>
               <i class="ci-count menutwo" style="
 "><a href="#">2</a></i> 
             </span>
-
-            <div class="info-pull-down">
-              <ul>
-                <li>
-                  <dl class="info-down-title">
-                    <dd class="title">系统信息</dd>
-                  </dl>
-                  <dl class="info-down-content">
-                    <dd>尊敬的用户，您好！因国泰安康（000367）基金于2015年3月20、23日定期支付，期间暂停该基金赎回交易，请知晓。</dd>
-                  </dl>
-                </li>
-                <li>
-                  <dl class="info-down-title">
-                    <dd class="title">系统信息</dd>
-                  </dl>
-                  <dl class="info-down-content">
-                    <dd>尊敬的用户，您好！因国泰安康（000367）基金于2015年3月20、23日定期支付，期间暂停该基金赎回交易，请知晓。</dd>
-                    <dd class="time">2015-03-24 15:02:57</dd>
-                  </dl>
-                </li>
-                <li>
-                  <dl class="info-down-title">
-                    <dd class="title">存款成功</dd>
-                    <dd>中国农行-尾号0065</dd>
-                    <dd>金额500.00元</dd>
-                  </dl>
-                  <dl class="info-down-content">
-                    <dd class="progress-top">
-                      <span class="p-left">
+                        <div class="info-pull-down">
+                            <ul>
+                                <li>
+                                    <dl class="info-down-title">
+                                        <dd class="title">系统信息</dd>
+                                    </dl>
+                                    <dl class="info-down-content">
+                                        <dd>尊敬的用户，您好！因国泰安康（000367）基金于2015年3月20、23日定期支付，期间暂停该基金赎回交易，请知晓。</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="info-down-title">
+                                        <dd class="title">系统信息</dd>
+                                    </dl>
+                                    <dl class="info-down-content">
+                                        <dd>尊敬的用户，您好！因国泰安康（000367）基金于2015年3月20、23日定期支付，期间暂停该基金赎回交易，请知晓。</dd>
+                                        <dd class="time">2015-03-24 15:02:57</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="info-down-title">
+                                        <dd class="title">存款成功</dd>
+                                        <dd>中国农行-尾号0065</dd>
+                                        <dd>金额500.00元</dd>
+                                    </dl>
+                                    <dl class="info-down-content">
+                                        <dd class="progress-top">
+                                            <span class="p-left">
                         <div class="progress-sub active">
                           <div class="progress-sub-left active">
                             <ul>
@@ -192,21 +189,21 @@ function onInitScrollPic(){
                           </div>
                         </div>
                       </span>
-                      <span class="p-right">
+                                            <span class="p-right">
                         <span>如未到账 请联系客服</span>
-                      </span>
-                    </dd>
-                  </dl>
-                </li>
-                <li>
-                  <dl class="info-down-title">
-                    <dd class="title">取款失败</dd>
-                    <dd>中国农行-尾号0065</dd>
-                    <dd>金额500.00元</dd>
-                  </dl>
-                  <dl class="info-down-content">
-                    <dd class="progress-top">
-                      <span class="p-left">
+                                            </span>
+                                        </dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="info-down-title">
+                                        <dd class="title">取款失败</dd>
+                                        <dd>中国农行-尾号0065</dd>
+                                        <dd>金额500.00元</dd>
+                                    </dl>
+                                    <dl class="info-down-content">
+                                        <dd class="progress-top">
+                                            <span class="p-left">
                         <div class="progress-sub">
                           <div class="progress-sub-left active">
                             <ul>
@@ -222,169 +219,151 @@ function onInitScrollPic(){
                           </div>
                         </div>
                       </span>
-
-                    </dd>
-                  </dl>
-                </li>
-                <li>
-                  <dl class="info-down-title">
-                    <dd class="title">优惠申请成功</dd>
-                  </dl>
-                  <dl class="info-down-content">
-                    <dd>
-                      恭喜您！您申请的
-                      <a href="#">老虎机超级救援金</a>
-                      （活动名称）优惠活动，管理员已于2015-03-24 15:02:57手动操作审核成功！优惠金额
-                      <a href="#">123.00</a>
-                      ，已发放至您的账户，请注意查收！
-                    </dd>
-                    <dd class="time">2015-03-24 15:02:57</dd>
-                  </dl>
-                </li>
-              </ul>
-              <div class="clearfix">
-                <a href="javascript:void(0)" class="pull-right">查看更多消息&gt;&gt;</a>
-              </div>
-
-              <ul>
-                <li>
-                  <dl class="info-down-title info-down-none">
-                    <dd class="title">暂无消息</dd>
-                  </dl>
-
-                </li>
-              </ul>
-              <div class="clearfix">
-                <a href="javascript:void(0)" class="pull-right">查看历史消息&gt;&gt;</a>
-              </div>
-
+                                        </dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="info-down-title">
+                                        <dd class="title">优惠申请成功</dd>
+                                    </dl>
+                                    <dl class="info-down-content">
+                                        <dd>
+                                            恭喜您！您申请的
+                                            <a href="#">老虎机超级救援金</a> （活动名称）优惠活动，管理员已于2015-03-24 15:02:57手动操作审核成功！优惠金额
+                                            <a href="#">123.00</a> ，已发放至您的账户，请注意查收！
+                                        </dd>
+                                        <dd class="time">2015-03-24 15:02:57</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <div class="clearfix">
+                                <a href="javascript:void(0)" class="pull-right">查看更多消息&gt;&gt;</a>
+                            </div>
+                            <ul>
+                                <li>
+                                    <dl class="info-down-title info-down-none">
+                                        <dd class="title">暂无消息</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <div class="clearfix">
+                                <a href="javascript:void(0)" class="pull-right">查看历史消息&gt;&gt;</a>
+                            </div>
+                        </div>
+                    </label>
+                </div>
             </div>
-
-          </label>
-
+            <!--顶部左边-->
+            <div class="top-left">
+                <div class="select-lang">
+                    <p>
+                        <span class="flag cn"></span> 简体中文
+                    </p>
+                    <ul>
+                        <li>
+                            <a href="#" rel="cn">
+                                <span class="flag cn"></span> 简体中文
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="hk">
+                                <span class="flag hk"></span> 繁体中文
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="en">
+                                <span class="flag en"></span> English
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="th">
+                                <span class="flag th"></span> ไทย
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="vn">
+                                <span class="flag vn"></span> Tiếng Việt
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="kr">
+                                <span class="flag kr"></span> 한국어
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="jp">
+                                <span class="flag jp"></span> 日本語
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="id">
+                                <span class="flag id"></span> Indonesia
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" rel="kh">
+                                <span class="flag kh"></span> Khmer
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <label class="time line-after">GMT +8 2015-03-24 15:02:57</label>
+            </div>
         </div>
-      </div>
-      <!--顶部左边-->
-      <div class="top-left">
-        <div class="select-lang">
-          <p>
-            <span class="flag cn"></span>
-            简体中文
-          </p>
-          <ul>
-            <li>
-              <a href="#" rel="cn">
-                <span class="flag cn"></span>
-                简体中文
-              </a>
-            </li>
-            <li>
-              <a href="#" rel="hk">
-                <span class="flag hk"></span>
-                繁体中文
-              </a>
-            </li>
-            <li>
-              <a href="#" rel="en">
-                <span class="flag en"></span>
-                English
-              </a>
-            </li>
-            <li>
-              <a href="#" rel="th">
-                <span class="flag th"></span>
-                ไทย
-              </a>
-            </li>
-            <li>
-              <a href="#" rel="vn">
-                <span class="flag vn"></span>
-                Tiếng Việt
-              </a>
-            </li>
-            <li>
-              <a href="#" rel="kr">
-                <span class="flag kr"></span>
-                한국어
-              </a>
-            </li>
-            <li>
-              <a href="#" rel="jp">
-                <span class="flag jp"></span>
-                日本語
-              </a>
-            </li>
-            <li>
-              <a href="#" rel="id">
-                <span class="flag id"></span>
-                Indonesia
-              </a>
-            </li>
-            <li>
-              <a href="#" rel="kh">
-                <span class="flag kh"></span>
-                Khmer
-              </a>
-            </li>
-          </ul>
+    </div>
+    <!--banner-->
+    <div class="banner">
+        <a href="/">
+            <div class="logo"><img src="https://gb-static.com:9443/fserver/files/gb/65/Logo/1/1508396838858.png"></div>
+        </a>
+        <div class="right">
+            <ul class="nav-menu">
+                <li>
+                    <a class="nav-menu-ico aip-type-home-ico" href="www.baidu.com">
+                        <span>网站首页</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-menu-ico aip-type-1-ico" href="#">
+                        <span>真人视讯</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-menu-ico aip-type-2-ico" href="#">
+                        <span>电子游艺</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-menu-ico aip-type-3-ico" href="#">
+                        <span>体育竞技</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-menu-ico aip-type-4-ico" href="#">
+                        <span>彩票游戏</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-menu-ico aip-type-5-ico" href="#">
+                        <span>棋牌游戏</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-menu-ico aip-type-promo-ico" href="#">
+                        <span>优惠活动</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <label class="time line-after">GMT +8 2015-03-24  15:02:57</label>
-      </div>
-
+        <div class="banner-bg-t"></div>
+        <div class="banner-bg" style="background: url(../../pcenter/images/banner-bg.png);">
+            <img src="../../pcenter/images/banner-bg.png">
+        </div>
     </div>
-  </div>
-
-  <!--banner-->
-  <div class="banner">
-    <div class="logo"></div>
-    <div class="right">
-    	  <ul class="nav-menu">
-    	  	  <li>
-    	  	  	  <a class="nav-menu-ico aip-type-home-ico" href="www.baidu.com">
-    	  	  	   	  <span>网站首页</span>
-    	  	  	  </a>
-    	  	  </li>
-    	  	  <li>
-    	  	  	  <a class="nav-menu-ico aip-type-1-ico" href="#">
-    	  	  	  	<span>真人视讯</span>
-    	  	  	  </a>
-    	  	  </li>
-    	  	  <li>
-    	  	  	  <a class="nav-menu-ico aip-type-2-ico" href="#">
-    	  	  	   	  <span>电子游艺</span>
-    	  	  	  </a>
-    	  	  </li>
-    	  	  <li>
-    	  	  	  <a class="nav-menu-ico aip-type-3-ico" href="#">
-    	  	  	   	  <span>体育竞技</span>
-    	  	  	  </a>
-    	  	  </li>
-    	  	  <li>
-    	  	  	  <a class="nav-menu-ico aip-type-4-ico" href="#">
-    	  	  	   	  <span>彩票游戏</span>
-    	  	  	  </a>
-    	  	  </li>
-    	  	  <li>
-    	  	  	  <a class="nav-menu-ico aip-type-5-ico" href="#">
-    	  	  	   	  <span>棋牌游戏</span>
-    	  	  	  </a>
-    	  	  </li>
-    	  	  <li>
-    	  	  	  <a class="nav-menu-ico aip-type-promo-ico" href="#">
-    	  	  	   	  <span>优惠活动</span>
-    	  	  	  </a>
-    	  	  </li>
-    	  </ul>
-    </div>
-    <div class="banner-bg-t"></div>
-    <div class="banner-bg" style="background: url(../../pcenter/images/banner-bg.png);">
-    	  <img src="../../pcenter/images/banner-bg.png">
-    </div>
-  </div>
-  <div class="wrapper">
-    <!--left-->
-    <div class="sidebar">
-      <!-- <div class="sidebar-item">
+    <div class="wrapper">
+        <!--left-->
+        <div class="sidebar">
+            <!-- <div class="sidebar-item">
       <h2>
         下午好，
         <span class="orange name">PCKmenr</span>
@@ -425,1046 +404,1039 @@ function onInitScrollPic(){
       </div>
     </div>
     -->
-    <!--左边菜单栏-->
-    <div class="sidebar-nav">
-    	<div class="left-nav-title">财务中心</div>
-    	<dl>
-        <dt class="select">
-          <a href="index.html">
-            <i class="navico home select"></i>
-            额度转换
-          </a>
-        </dt>
-      </dl>
-      <dl>
-        <dt>
-          <a href="deposit-region.html">
-            <i class="navico deposit"></i>
-            存款专区
-          </a>
-        </dt>
-      </dl>
-      <dl>
-        <dt>
-          <a href="withdraw.html">
-            <i class="navico withdraw"></i>
-            取款专区
-          </a>
-        </dt>
-      </dl>
-      <dl>
-        <dt>
-          <a href="asset-history.html">
-            <i class="navico capital"></i>
-            资金记录
-          </a>
-        </dt>
-      </dl>
-      <dl>
-        <dt>
-          <a href="gamerecord.html">
-            <i class="navico gamerecord"></i>
-            投注记录
-          </a>
-        </dt>
-      </dl><dl><dt><a href="sale1.html"><i class="navico sale"></i> 优惠记录</a></dt></dl>
-      
-      <div class="left-nav-title">个人中心</div>
-      <dl>
-        <dt>
-          <a href="account.html">
-            <i class="navico accout"></i>
-            个人资料
-          </a>
-        </dt>
-      </dl>
-      <dl>
-        <dt>
-          <a href="infonotice.html">
-            <i class="navico info"></i>
-            消息公告
-          </a>
-        </dt>
-      </dl>
-      <dl>
-        <dt>
-          <a href="recommended.html">
-            <i class="navico recommend"></i>
-            推荐好友
-          </a>
-        </dt>
-      </dl>
-      <dl>
-        <dt>
-          <a href="change-password-1.html">
-            <i class="navico recommend"></i>
-            修改密码
-          </a>
-        </dt>
-      </dl>
-    </div>
-  </div>
-  <!--right-->
-  <div id="mainFrame" class="main-wrap"><form name="transferForm">
-<input type="hidden" value="" name="isRefresh">
-<div class="notice">
-<div class="notice-left"><em class="path"></em></div>
-<div class="path-right">
-<a class="cursor">额度转换</a>
-</div>
-</div>
-<div class="account s2">
-<div class="loading-a">
-<div class="spiner-example">
-<img src="/010819/rcenter/pcenter/images/022b.gif">
-</div>
-</div>
-<div class="property">
-<div class="property-left">
-总资产<em class="total-money">0.00</em>
-<div class="m-loading-icon-x" style="display: none"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-<a title="刷新总资产" class="ico-ask refresh" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;getAllApiBalance&quot;,confirm:&quot;&quot;,text:&quot;&quot;,size:&quot;&quot; }">
-</a>
-</div>
-<button title="切换至手动额度转换" class="btn btn-gray btn-big btn-edzh" type="button" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;changeAutoPayCallback&quot;,post:&quot;&quot;,opType:&quot;ajax&quot;,dataType:&quot;&quot;,target:&quot;/pcenter/transfer/auto/changeAutoPay.html&quot;,confirm:&quot;&quot;,text:&quot;切换至手动额度转换&quot;,size:&quot;&quot; }">
-切换至手动额度转换
-</button>
-<button title="" class="btn btn-blue btn-big btn-money-back" type="button" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;recoveryApi&quot;,confirm:&quot;&quot;,text:&quot;&quot;,size:&quot;&quot; }">
-<i class="btn-money-back-white"></i>
-资金回收
-</button>
-</div>
-<div>
-<div class="balance">
-<div class="wallet">
-<dl>
-<dt>
-钱包余额</dt>
-<dd class="orange wallet-money">
-0.00</dd>
-<div class="m-loading-icon-x" style="display: none"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</dl>
-</div>
-<div class="balance-right pull-left">
-<div class="game onmouse api-info api-22" type="button" data-toggle="tooltip" data-placement="bottom">
-<a title="回收" class="title-ref" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;recoveryApi&quot;,confirm:&quot;&quot;,text:&quot;&quot;,size:&quot;&quot;,&quot;api&quot;:&quot;22&quot; }">
-<i class="btn-money-back-blue"></i>
-</a>
-<p class="game-left api-logo-box active">
-<i class="api-logo-22"></i>
-</p>
-<p class="game-right">
-<span class="title">一指通</span>
-<span class="blue api-money" id="api-money-22">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-22" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-15" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-15"></i>
-</p>
-<p class="game-right">
-<span class="title">HABA电子</span>
-<span class="blue api-money" id="api-money-15">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-15" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-9" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-9"></i>
-</p>
-<p class="game-right">
-<span class="title">AG大厅</span>
-<span class="blue api-money" id="api-money-9">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-9" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-4" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-4"></i>
-</p>
-<p class="game-right">
-<span class="title">IM体育</span>
-<span class="blue api-money" id="api-money-4">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-4" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-19" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-19"></i>
-</p>
-<p class="game-right">
-<span class="title">沙巴体育</span>
-<span class="blue api-money" id="api-money-19">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-19" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-25" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-25"></i>
-</p>
-<p class="game-right">
-<span class="title">SG电子</span>
-<span class="blue api-money" id="api-money-25">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-25" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-16" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-16"></i>
-</p>
-<p class="game-right">
-<span class="title">Ebet如意厅</span>
-<span class="blue api-money" id="api-money-16">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-16" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-3" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-3"></i>
-</p>
-<p class="game-right">
-<span class="title">MG电子</span>
-<span class="blue api-money" id="api-money-3">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-3" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-6" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-6"></i>
-</p>
-<p class="game-right">
-<span class="title">PT电子</span>
-<span class="blue api-money" id="api-money-6">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-6" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-1" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-1"></i>
-</p>
-<p class="game-right">
-<span class="title">DS贵宾厅</span>
-<span class="blue api-money" id="api-money-1">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-1" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-12" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-12"></i>
-</p>
-<p class="game-right">
-<span class="title">皇冠体育</span>
-<span class="blue api-money" id="api-money-12">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-12" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-7" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-7"></i>
-</p>
-<p class="game-right">
-<span class="title">OG东方厅</span>
-<span class="blue api-money" id="api-money-7">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-7" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-24" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-24"></i>
-</p>
-<p class="game-right">
-<span class="title">OPUS幸运厅</span>
-<span class="blue api-money" id="api-money-24">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-24" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-5" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-5"></i>
-</p>
-<p class="game-right">
-<span class="title">GD锦绣厅</span>
-<span class="blue api-money" id="api-money-5">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-5" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-17" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-17"></i>
-</p>
-<p class="game-right">
-<span class="title">SA澳门厅</span>
-<span class="blue api-money" id="api-money-17">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-17" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-10" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-10"></i>
-</p>
-<p class="game-right">
-<span class="title">BBIN大厅</span>
-<span class="blue api-money" id="api-money-10">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-10" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-2" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-2"></i>
-</p>
-<p class="game-right">
-<span class="title">KG彩票</span>
-<span class="blue api-money" id="api-money-2">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-2" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-28" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-28"></i>
-</p>
-<p class="game-right">
-<span class="title">GG捕鱼</span>
-<span class="blue api-money" id="api-money-28">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-28" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-27" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-27"></i>
-</p>
-<p class="game-right">
-<span class="title">DT电子</span>
-<span class="blue api-money" id="api-money-27">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-27" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-21" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-21"></i>
-</p>
-<p class="game-right">
-<span class="title">新皇冠</span>
-<span class="blue api-money" id="api-money-21">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-21" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-20" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-20"></i>
-</p>
-<p class="game-right">
-<span class="title">BSG电子</span>
-<span class="blue api-money" id="api-money-20">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-20" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-26" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-26"></i>
-</p>
-<p class="game-right">
-<span class="title">PNG电子</span>
-<span class="blue api-money" id="api-money-26">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-26" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-31" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-31"></i>
-</p>
-<p class="game-right">
-<span class="title">GNS电子</span>
-<span class="blue api-money" id="api-money-31">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-31" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-32" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-32"></i>
-</p>
-<p class="game-right">
-<span class="title">PP电子</span>
-<span class="blue api-money" id="api-money-32">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-32" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-<div class="game onmouse api-info api-33" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-33"></i>
-</p>
-<p class="game-right">
-<span class="title">申博</span>
-<span class="blue api-money" id="api-money-33">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-33" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-
-<div class="game onmouse api-info api-35" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-35"></i>
-</p>
-<p class="game-right">
-<span class="title">MW电子</span>
-<span class="blue api-money" id="api-money-35">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-35" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-
-<div class="game onmouse api-info api-38" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-38"></i>
-</p>
-<p class="game-right">
-<span class="title">新PP电子</span>
-<span class="blue api-money" id="api-money-38">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-38" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-
-<div class="game onmouse api-info api-37" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-37 site119"></i>
-</p>
-<p class="game-right">
-<span class="title">UED体育</span>
-<span class="blue api-money" id="api-money-37">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-37" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-
-<div class="game onmouse api-info api-37" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-37 site270"></i>
-</p>
-<p class="game-right">
-<span class="title">LOVEBET体育</span>
-<span class="blue api-money" id="api-money-37">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-37" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-
-<div class="game onmouse api-info api-37" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-37 site209"></i>
-</p>
-<p class="game-right">
-<span class="title">LOVEBET体育</span>
-<span class="blue api-money" id="api-money-37">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-37" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-
-<div class="game onmouse api-info api-40" type="button" data-toggle="tooltip" data-placement="bottom">
-<p class="game-left api-logo-box ">
-<i class="api-logo-40 site322"></i>
-</p>
-<p class="game-right">
-<span class="title">TVS体育</span>
-<span class="blue api-money" id="api-money-40">0.00</span>
-</p>
-</div>
-<div class="game onmouse loading-api loading-40" style="display: none;">
-<div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-<div class="gameAnnouncement"><div class="gamenotice">
-<div class="gamenotice-title">
-<h1>游戏公告</h1>
-<span class="more gameMore" style="width: 60px">
+            <!--左边菜单栏-->
+            <div class="sidebar-nav">
+                <div class="left-nav-title">财务中心</div>
+                <dl>
+                    <dt class="select">
+                        <a href="index.html">
+                            <i class="navico home select"></i> 额度转换
+                        </a>
+                    </dt>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="deposit-region.html">
+                            <i class="navico deposit"></i> 存款专区
+                        </a>
+                    </dt>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="withdraw.html">
+                            <i class="navico withdraw"></i> 取款专区
+                        </a>
+                    </dt>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="asset-history.html">
+                            <i class="navico capital"></i> 资金记录
+                        </a>
+                    </dt>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="gamerecord.html">
+                            <i class="navico gamerecord"></i> 投注记录
+                        </a>
+                    </dt>
+                </dl>
+                <dl>
+                    <dt><a href="sale1.html"><i class="navico sale"></i> 优惠记录</a></dt>
+                </dl>
+                <div class="left-nav-title">个人中心</div>
+                <dl>
+                    <dt>
+                        <a href="account.html">
+                            <i class="navico accout"></i> 个人资料
+                        </a>
+                    </dt>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="infonotice.html">
+                            <i class="navico info"></i> 消息公告
+                        </a>
+                    </dt>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="recommended.html">
+                            <i class="navico recommend"></i> 推荐好友
+                        </a>
+                    </dt>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="change-password-1.html">
+                            <i class="navico recommend"></i> 修改密码
+                        </a>
+                    </dt>
+                </dl>
+            </div>
+        </div>
+        <!--right-->
+        <div id="mainFrame" class="main-wrap">
+            <form name="transferForm">
+                <input type="hidden" value="" name="isRefresh">
+                <div class="notice">
+                    <div class="notice-left"><em class="path"></em></div>
+                    <div class="path-right">
+                        <a class="cursor">额度转换</a>
+                    </div>
+                </div>
+                <div class="account s2">
+                    <div class="loading-a">
+                        <div class="spiner-example">
+                            <img src="/010819/rcenter/pcenter/images/022b.gif">
+                        </div>
+                    </div>
+                    <div class="property">
+                        <div class="property-left">
+                            总资产<em class="total-money">0.00</em>
+                            <div class="m-loading-icon-x" style="display: none"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                            <a title="刷新总资产" class="ico-ask refresh" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;getAllApiBalance&quot;,confirm:&quot;&quot;,text:&quot;&quot;,size:&quot;&quot; }">
+                            </a>
+                        </div>
+                        <button title="切换至手动额度转换" class="btn btn-gray btn-big btn-edzh" type="button" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;changeAutoPayCallback&quot;,post:&quot;&quot;,opType:&quot;ajax&quot;,dataType:&quot;&quot;,target:&quot;/pcenter/transfer/auto/changeAutoPay.html&quot;,confirm:&quot;&quot;,text:&quot;切换至手动额度转换&quot;,size:&quot;&quot; }">
+                            切换至手动额度转换
+                        </button>
+                        <button title="" class="btn btn-blue btn-big btn-money-back" type="button" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;recoveryApi&quot;,confirm:&quot;&quot;,text:&quot;&quot;,size:&quot;&quot; }">
+                            <i class="btn-money-back-white"></i> 资金回收
+                        </button>
+                    </div>
+                    <div>
+                        <div class="balance">
+                            <div class="wallet">
+                                <dl>
+                                    <dt>
+                                        钱包余额</dt>
+                                    <dd class="orange wallet-money">
+                                        0.00</dd>
+                                    <div class="m-loading-icon-x" style="display: none"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </dl>
+                            </div>
+                            <div class="balance-right pull-left">
+                                <div class="game onmouse api-info api-22" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <a title="回收" class="title-ref" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;recoveryApi&quot;,confirm:&quot;&quot;,text:&quot;&quot;,size:&quot;&quot;,&quot;api&quot;:&quot;22&quot; }">
+                                        <i class="btn-money-back-blue"></i>
+                                    </a>
+                                    <p class="game-left api-logo-box active">
+                                        <i class="api-logo-22"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">一指通</span>
+                                        <span class="blue api-money" id="api-money-22">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-22" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-15" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-15"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">HABA电子</span>
+                                        <span class="blue api-money" id="api-money-15">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-15" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-9" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-9"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">AG大厅</span>
+                                        <span class="blue api-money" id="api-money-9">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-9" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-4" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-4"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">IM体育</span>
+                                        <span class="blue api-money" id="api-money-4">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-4" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-19" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-19"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">沙巴体育</span>
+                                        <span class="blue api-money" id="api-money-19">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-19" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-25" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-25"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">SG电子</span>
+                                        <span class="blue api-money" id="api-money-25">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-25" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-16" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-16"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">Ebet如意厅</span>
+                                        <span class="blue api-money" id="api-money-16">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-16" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-3" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-3"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">MG电子</span>
+                                        <span class="blue api-money" id="api-money-3">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-3" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-6" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-6"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">PT电子</span>
+                                        <span class="blue api-money" id="api-money-6">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-6" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-1" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-1"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">DS贵宾厅</span>
+                                        <span class="blue api-money" id="api-money-1">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-1" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-12" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-12"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">皇冠体育</span>
+                                        <span class="blue api-money" id="api-money-12">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-12" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-7" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-7"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">OG东方厅</span>
+                                        <span class="blue api-money" id="api-money-7">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-7" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-24" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-24"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">OPUS幸运厅</span>
+                                        <span class="blue api-money" id="api-money-24">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-24" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-5" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-5"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">GD锦绣厅</span>
+                                        <span class="blue api-money" id="api-money-5">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-5" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-17" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-17"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">SA澳门厅</span>
+                                        <span class="blue api-money" id="api-money-17">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-17" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-10" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-10"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">BBIN大厅</span>
+                                        <span class="blue api-money" id="api-money-10">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-10" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-2" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-2"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">KG彩票</span>
+                                        <span class="blue api-money" id="api-money-2">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-2" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-28" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-28"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">GG捕鱼</span>
+                                        <span class="blue api-money" id="api-money-28">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-28" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-27" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-27"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">DT电子</span>
+                                        <span class="blue api-money" id="api-money-27">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-27" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-21" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-21"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">新皇冠</span>
+                                        <span class="blue api-money" id="api-money-21">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-21" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-20" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-20"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">BSG电子</span>
+                                        <span class="blue api-money" id="api-money-20">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-20" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-26" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-26"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">PNG电子</span>
+                                        <span class="blue api-money" id="api-money-26">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-26" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-31" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-31"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">GNS电子</span>
+                                        <span class="blue api-money" id="api-money-31">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-31" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-32" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-32"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">PP电子</span>
+                                        <span class="blue api-money" id="api-money-32">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-32" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-33" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-33"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">申博</span>
+                                        <span class="blue api-money" id="api-money-33">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-33" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-35" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-35"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">MW电子</span>
+                                        <span class="blue api-money" id="api-money-35">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-35" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-38" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-38"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">新PP电子</span>
+                                        <span class="blue api-money" id="api-money-38">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-38" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-37" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-37 site119"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">UED体育</span>
+                                        <span class="blue api-money" id="api-money-37">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-37" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-37" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-37 site270"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">LOVEBET体育</span>
+                                        <span class="blue api-money" id="api-money-37">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-37" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-37" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-37 site209"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">LOVEBET体育</span>
+                                        <span class="blue api-money" id="api-money-37">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-37" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                                <div class="game onmouse api-info api-40" type="button" data-toggle="tooltip" data-placement="bottom">
+                                    <p class="game-left api-logo-box ">
+                                        <i class="api-logo-40 site322"></i>
+                                    </p>
+                                    <p class="game-right">
+                                        <span class="title">TVS体育</span>
+                                        <span class="blue api-money" id="api-money-40">0.00</span>
+                                    </p>
+                                </div>
+                                <div class="game onmouse loading-api loading-40" style="display: none;">
+                                    <div class="g-loading-icon"><img src="/010819/rcenter/pcenter/images/022b.gif"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gameAnnouncement">
+                    <div class="gamenotice">
+                        <div class="gamenotice-title">
+                            <h1>游戏公告</h1>
+                            <span class="more gameMore" style="width: 60px">
 <a title="更多>" class="btn" data-rel="{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;moreGameAnnouncement&quot;,confirm:&quot;&quot;,text:&quot;更多>&quot;,size:&quot;&quot; }">
 更多&gt;
 </a>
-</span><sapn style=" margin-left:23.5cm"></sapn>
-<a href="javascript:;"></a>
-</div>
-<div class="gamenotice-box">
-<dl>
-<dd class="clearfix">
-<div class="item">
-<h2 class="orange">IM体育</h2>
-<p>
-<a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=a94477c640c5a7bec8a86866fa19af8b" nav-target="mainFrame">【IM体育】[足球][英格兰预备队中部联赛] "格连森林预备队 -vs- 布里斯托流浪预备队" - 09/01。赛事延迟，所有赌注将被退款。..."</a>
-<i class="date clock"></i>
-<span class="date">2018-01-10 15:19:13</span>
-</p>
-</div>
-</dd>
-<dd class="clearfix">
-<div class="item">
-<h2 class="orange">IM体育</h2>
-<p>
-<a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=cf12d187bf6dde930058ee635677063d" nav-target="mainFrame">【IM体育】[篮球] [NBA] "洛杉矶湖人&nbsp; -vs- 萨克拉门托国王" - 09/01*直播。由于直播中断，这场赛事将从客服..."</a>
-<i class="date clock"></i>
-<span class="date">2018-01-10 15:17:51</span>
-</p>
-</div>
-</dd>
-<dd class="clearfix">
-<div class="item">
-<h2 class="orange">沙巴体育</h2>
-<p>
-<a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=50bda1c504e92a1247ca85cf4ed685cc" nav-target="mainFrame">请注意:[足球] 由于赛事细节在调查当中, 赛事 "曼斯奎拉SP U20 -vs- 巴海尔 U20" [巴西圣保罗青年盃 - 9/1] 有关..."</a>
-<i class="date clock"></i>
-<span class="date">2018-01-10 13:18:59</span>
-</p>
-</div>
-</dd>
-<dd class="clearfix">
-<div class="item">
-<h2 class="orange">沙巴体育</h2>
-<p>
-<a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=6ff4d72a97d43d04df898361f8da348d" nav-target="mainFrame">【沙巴体育】[电子竞技] 由于官方宣佈该赛事 "compLexity Gaming -vs- 5 Turtles" [Dota 2 - SL..."</a>
-<i class="date clock"></i>
-<span class="date">2018-01-10 11:30:55</span>
-</p>
-</div>
-</dd>
-<dd class="clearfix">
-<div class="item">
-<h2 class="orange">AG大厅——捕鱼王</h2>
-<p>
-<a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=18d529152584a58f7c95cde1b4582ebb" nav-target="mainFrame">【AG捕鱼王临时维护通知】
+</span>
+                            <sapn style=" margin-left:23.5cm"></sapn>
+                            <a href="javascript:;"></a>
+                        </div>
+                        <div class="gamenotice-box">
+                            <dl>
+                                <dd class="clearfix">
+                                    <div class="item">
+                                        <h2 class="orange">IM体育</h2>
+                                        <p>
+                                            <a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=a94477c640c5a7bec8a86866fa19af8b" nav-target="mainFrame">【IM体育】[足球][英格兰预备队中部联赛] "格连森林预备队 -vs- 布里斯托流浪预备队" - 09/01。赛事延迟，所有赌注将被退款。..."</a>
+                                            <i class="date clock"></i>
+                                            <span class="date">2018-01-10 15:19:13</span>
+                                        </p>
+                                    </div>
+                                </dd>
+                                <dd class="clearfix">
+                                    <div class="item">
+                                        <h2 class="orange">IM体育</h2>
+                                        <p>
+                                            <a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=cf12d187bf6dde930058ee635677063d" nav-target="mainFrame">【IM体育】[篮球] [NBA] "洛杉矶湖人&nbsp; -vs- 萨克拉门托国王" - 09/01*直播。由于直播中断，这场赛事将从客服..."</a>
+                                            <i class="date clock"></i>
+                                            <span class="date">2018-01-10 15:17:51</span>
+                                        </p>
+                                    </div>
+                                </dd>
+                                <dd class="clearfix">
+                                    <div class="item">
+                                        <h2 class="orange">沙巴体育</h2>
+                                        <p>
+                                            <a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=50bda1c504e92a1247ca85cf4ed685cc" nav-target="mainFrame">请注意:[足球] 由于赛事细节在调查当中, 赛事 "曼斯奎拉SP U20 -vs- 巴海尔 U20" [巴西圣保罗青年盃 - 9/1] 有关..."</a>
+                                            <i class="date clock"></i>
+                                            <span class="date">2018-01-10 13:18:59</span>
+                                        </p>
+                                    </div>
+                                </dd>
+                                <dd class="clearfix">
+                                    <div class="item">
+                                        <h2 class="orange">沙巴体育</h2>
+                                        <p>
+                                            <a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=6ff4d72a97d43d04df898361f8da348d" nav-target="mainFrame">【沙巴体育】[电子竞技] 由于官方宣佈该赛事 "compLexity Gaming -vs- 5 Turtles" [Dota 2 - SL..."</a>
+                                            <i class="date clock"></i>
+                                            <span class="date">2018-01-10 11:30:55</span>
+                                        </p>
+                                    </div>
+                                </dd>
+                                <dd class="clearfix">
+                                    <div class="item">
+                                        <h2 class="orange">AG大厅——捕鱼王</h2>
+                                        <p>
+                                            <a href="/operation/pAnnouncementMessage/gameNoticeDetail.html?searchId=18d529152584a58f7c95cde1b4582ebb" nav-target="mainFrame">【AG捕鱼王临时维护通知】
 AG捕鱼王于北京时间2018年01月09日11:00—12:00（美东时间2018年01月08日23:00—00:00）进行维..."</a>
-<i class="date clock"></i>
-<span class="date">2018-01-09 09:48:47</span>
-</p>
-</div>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-</form>
-<script type="text/javascript">curl(['site/fund/transfers/auto/Index'],function(Page) {page =new Page();page.bindButtonEvents();});</script>
-</div>
-
-</div>
-<!-- 右边客服服务-->
-<div id="moquu_wxin" class="moquu_wxin">
-<a href="javascript:void(0)">
+                                            <i class="date clock"></i>
+                                            <span class="date">2018-01-09 09:48:47</span>
+                                        </p>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <script type="text/javascript">
+            curl(['site/fund/transfers/auto/Index'], function(Page) {
+                page = new Page();
+                page.bindButtonEvents();
+            });
+            </script>
+        </div>
+    </div>
+    <!-- 右边客服服务-->
+    <div id="moquu_wxin" class="moquu_wxin">
+        <a href="javascript:void(0)">
 玩家游戏
 <div class="moquu_wxinh"></div>
 </a>
-</div>
-<div id="moquu_wshare" class="moquu_wshare">
-<a href="javascript:void(0)">
+    </div>
+    <div id="moquu_wshare" class="moquu_wshare">
+        <a href="javascript:void(0)">
 玩家游戏
 <div class="moquu_wshareh"></div>
 </a>
-</div>
-<div id="moquu_wmaps">
-<a href="#">玩家游戏</a>
-</div>
+    </div>
+    <div id="moquu_wmaps">
+        <a href="#">玩家游戏</a>
+    </div>
+    <div class="modal inmodal in" id="notice-list-1" tabindex="-1" role="dialog" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight family">
+                <div class="modal-header">
+                    <span class="filter">账户验证</span>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                        <span class="sr-only">关闭</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="m-sm al-center">请设置您的时区！</h3>
+                    <div class="form-group clearfix line-hi34 m-b-xxs">
+                        <label class="col-xs-3 al-right">您的时区：</label>
+                        <div class="col-xs-8 p-x">
+                            <select class="selectwidth m-bigr">
+                                <option>东八区</option>
+                                <option>东九区</option>
+                            </select>
+                            <div class="co-grayc2">GMT +8 2015-03-24 15:02:57</div>
+                        </div>
+                    </div>
+                    <div class="clearfix m-b bg-gray p-t-xs">
+                        <div class="line-hi25 p-sm">
+                            您的系统信息将以该时区显示！
+                            <span class="co-orange">一旦设置，不可修改！</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-filter">使用该时区</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal inmodal in" id="xitgg" tabindex="-1" role="dialog" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight family">
+                <div class="modal-header">
+                    <span class="filter">公告</span>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                        <span class="sr-only">关闭</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <dl class="popup-notice-list">
+                        <dd class="pnl-title">
+                            <span class="title">公告标题</span>
+                            <span class="time">2016-03-13</span>
+                        </dd>
+                        <dd class="pnl-content">
+                            <p>尊敬的E路发会员：</p>
+                            <p>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好，为了400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！
+                            </p>
+                        </dd>
+                    </dl>
+                    <dl class="popup-notice-list">
+                        <dd class="pnl-title">
+                            <span class="title">公告标题</span>
+                            <span class="time">2016-03-13</span>
+                        </dd>
+                        <dd class="pnl-content">
+                            <p>尊敬的E路发会员：</p>
+                            <p>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好，为了400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！
+                            </p>
+                        </dd>
+                    </dl>
+                    <dl class="popup-notice-list">
+                        <dd class="pnl-title">
+                            <span class="title">公告标题</span>
+                            <span class="time">2016-03-13</span>
+                        </dd>
+                        <dd class="pnl-content">
+                            <p>尊敬的E路发会员：</p>
+                            <p>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好，为了400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！
+                            </p>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="modal-footer">
+                    <div class="row ">
+                        <ul class="pagination pull-right">
+                            <li aria-controls="editable" class="paginate_button previous disabled">
+                                <a name="paging.firstPageNumber" href="javascript:void(0);">首页</a>
+                            </li>
+                            <li aria-controls="editable" class="paginate_button previous disabled">
+                                <a name="paging.prePage" href="javascript:void(0);">上一页</a>
+                            </li>
+                            <li class="paginate_button disabled">
+                                <a name="paging.Page" href="javascript:void(0)" data-page="0">1</a>
+                            </li>
+                            <li class="paginate_button disabled">
+                                <a name="paging.Page" href="javascript:void(0)" data-page="0">2</a>
+                            </li>
+                            <li class="paginate_button disabled">
+                                <a name="paging.Page" href="javascript:void(0)" data-page="0">3</a>
+                            </li>
+                            <li aria-controls="editable" class="paginate_button next disabled">
+                                <a name="paging.nextPage" href="javascript:void(0);">下一页</a>
+                            </li>
+                            <li aria-controls="editable" class="paginate_button next disabled">
+                                <a name="paging.lastPageNumber" href="javascript:void(0);">尾页</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    // Scripts for demo page
+    $(document).ready(function() {
+        var $avatarEl = $('.banner');
+        var $avatarHolderEl = $('.banner-bg');
+        var images = [];
+        var avatars = [];
 
-<div class="modal inmodal in" id="notice-list-1" tabindex="-1" role="dialog" aria-hidden="false">
-<div class="modal-dialog">
-<div class="modal-content animated bounceInRight family">
-<div class="modal-header">
-<span class="filter">账户验证</span>
-<button type="button" class="close" data-dismiss="modal">
-  <span aria-hidden="true">×</span>
-  <span class="sr-only">关闭</span>
-</button>
-</div>
-<div class="modal-body">
-<h3 class="m-sm al-center">请设置您的时区！</h3>
-
-<div class="form-group clearfix line-hi34 m-b-xxs">
-  <label class="col-xs-3 al-right">您的时区：</label>
-  <div class="col-xs-8 p-x">
-    <select class="selectwidth m-bigr">
-      <option>东八区</option>
-      <option>东九区</option>
-    </select>
-
-    <div class="co-grayc2">GMT +8 2015-03-24  15:02:57</div>
-  </div>
-</div>
-<div class="clearfix m-b bg-gray p-t-xs">
-  <div class="line-hi25 p-sm">
-    您的系统信息将以该时区显示！
-    <span class="co-orange">一旦设置，不可修改！</span>
-  </div>
-</div>
-
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-filter">使用该时区</button>
-</div>
-</div>
-</div>
-</div>
-
-<div class="modal inmodal in" id="xitgg" tabindex="-1" role="dialog" aria-hidden="false">
-<div class="modal-dialog">
-<div class="modal-content animated bounceInRight family">
-<div class="modal-header">
-<span class="filter">公告</span>
-<button type="button" class="close" data-dismiss="modal">
-  <span aria-hidden="true">×</span>
-  <span class="sr-only">关闭</span>
-</button>
-</div>
-<div class="modal-body">
-<dl class="popup-notice-list">
-  <dd class="pnl-title">
-    <span class="title">公告标题</span>
-    <span class="time">2016-03-13</span>
-  </dd>
-  <dd class="pnl-content">
-    <p>尊敬的E路发会员：</p>
-    <p>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好，为了400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！
-    </p>
-  </dd>
-</dl>
-<dl class="popup-notice-list">
-  <dd class="pnl-title">
-    <span class="title">公告标题</span>
-    <span class="time">2016-03-13</span>
-  </dd>
-  <dd class="pnl-content">
-    <p>尊敬的E路发会员：</p>
-    <p>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好，为了400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！
-    </p>
-  </dd>
-</dl>
-<dl class="popup-notice-list">
-  <dd class="pnl-title">
-    <span class="title">公告标题</span>
-    <span class="time">2016-03-13</span>
-  </dd>
-  <dd class="pnl-content">
-    <p>尊敬的E路发会员：</p>
-    <p>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好，为了400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！400元阿里云代金券等你来拿，快来参与管控中心改版问卷调研吧！
-    </p>
-  </dd>
-</dl>
-</div>
-<div class="modal-footer">
-<div class="row ">
-
-  <ul class="pagination pull-right">
-
-    <li aria-controls="editable" class="paginate_button previous disabled">
-      <a name="paging.firstPageNumber" href="javascript:void(0);">首页</a>
-    </li>
-    <li aria-controls="editable" class="paginate_button previous disabled">
-      <a name="paging.prePage" href="javascript:void(0);">上一页</a>
-    </li>
-    <li class="paginate_button disabled">
-      <a name="paging.Page" href="javascript:void(0)" data-page="0">1</a>
-    </li>
-    <li class="paginate_button disabled">
-      <a name="paging.Page" href="javascript:void(0)" data-page="0">2</a>
-    </li>
-    <li class="paginate_button disabled">
-      <a name="paging.Page" href="javascript:void(0)" data-page="0">3</a>
-    </li>
-    <li aria-controls="editable" class="paginate_button next disabled">
-      <a name="paging.nextPage" href="javascript:void(0);">下一页</a>
-    </li>
-    <li aria-controls="editable" class="paginate_button next disabled">
-      <a name="paging.lastPageNumber" href="javascript:void(0);">尾页</a>
-    </li>
-  </ul>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-<script>
-	    // Scripts for demo page
-	    $( document ).ready(function() {
-	        var $avatarEl = $('.banner');
-	        var $avatarHolderEl = $('.banner-bg');
-	        var images = [];
-	        var avatars = [];
-	       
-	        // Avatar - based backgrounds
-	        $avatarEl.each(function(){
-	            var $avatar = $(this);
-	            var avatarImage = $avatar.find('img').first().attr('src');
-	            avatars.push(avatarImage);
-//	            $avatar.click(function(e){
-//	                e.preventDefault();
-//
-//	                $avatarHolderEl.backgroundBlur(avatarImage);
-//	            });
-	        });
-
-	        $avatarHolderEl.backgroundBlur({
-	            imageURL : avatars[0], // URL to the image that will be used for blurring
-	            blurAmount : 10, // Amount of blur (higher amount degrades browser performance)
-	            imageClass : 'avatar-blur' // CSS class that will be applied to the image and to the SVG element,
-	        });
+        // Avatar - based backgrounds
+        $avatarEl.each(function() {
+            var $avatar = $(this);
+            var avatarImage = $avatar.find('img').first().attr('src');
+            avatars.push(avatarImage);
+            //              $avatar.click(function(e){
+            //                  e.preventDefault();
+            //
+            //                  $avatarHolderEl.backgroundBlur(avatarImage);
+            //              });
         });
-</script>
-<!-- //* 公告滚动* -->
-<script>
-var oMarquee = document.getElementById("notice-con"); //滚动对象
-var iLineHeight = 43; //单行高度，像素
-var iLineCount = 6; //实际行数
-var iScrollAmount =2; //每次滚动高度，像素
-function run() {
-oMarquee.scrollTop += iScrollAmount;
-if ( oMarquee.scrollTop == iLineCount * iLineHeight )
-oMarquee.scrollTop = 0;
-if ( oMarquee.scrollTop % iLineHeight == 0 ) {
-window.setTimeout( "run()", 3000 );
-} else {
-window.setTimeout( "run()", 50 );
-}
-}
-oMarquee.innerHTML += oMarquee.innerHTML;
-window.setTimeout( "run()",3000 );
-$('.help-popover').popover()
-</script>
-<!-- //* 语言版本切换 #select-lang* -->
-<script type="text/javascript">
-        $(function() {
-         
-            $(".select-lang p").click(function() {
-                var ul = $(".select-lang ul");
-                if (ul.css("display") == "none") {
-                    ul.slideDown("fast");
-                } else {
-                    ul.slideUp("fast");
-                }
-            });
 
-            $(".select-lang ul li a").click(function() {
-                var txt = $(this).text();
-                var value = $(this).attr("rel");
-                $(".select-lang p").html("<span class='flag " + value + "'></span>" + txt);
-                $(".select-lang ul").hide();
-            });
-         
+        $avatarHolderEl.backgroundBlur({
+            imageURL: avatars[0], // URL to the image that will be used for blurring
+            blurAmount: 10, // Amount of blur (higher amount degrades browser performance)
+            imageClass: 'avatar-blur' // CSS class that will be applied to the image and to the SVG element,
         });
-      
+    });
     </script>
+    <!-- //* 公告滚动* -->
+    <script>
+    var oMarquee = document.getElementById("notice-con"); //滚动对象
+    var iLineHeight = 43; //单行高度，像素
+    var iLineCount = 6; //实际行数
+    var iScrollAmount = 2; //每次滚动高度，像素
+    function run() {
+        oMarquee.scrollTop += iScrollAmount;
+        if (oMarquee.scrollTop == iLineCount * iLineHeight)
+            oMarquee.scrollTop = 0;
+        if (oMarquee.scrollTop % iLineHeight == 0) {
+            window.setTimeout("run()", 3000);
+        } else {
+            window.setTimeout("run()", 50);
+        }
+    }
+    oMarquee.innerHTML += oMarquee.innerHTML;
+    window.setTimeout("run()", 3000);
+    $('.help-popover').popover()
+    </script>
+    <!-- //* 语言版本切换 #select-lang* -->
+    <script type="text/javascript">
+    $(function() {
 
-<!--进度百分比-->
-<script>
-        $(document).ready(function(){
-            var $image = $(".image-crop > img")
-            $($image).cropper({
-                aspectRatio: 1.618,
-                preview: ".img-preview",
-                done: function(data) {
-                    // Output the result data for cropping image.
-                }
-            });
-
-            var $inputImage = $("#inputImage");
-            if (window.FileReader) {
-                $inputImage.change(function() {
-                    var fileReader = new FileReader(),
-                            files = this.files,
-                            file;
-
-                    if (!files.length) {
-                        return;
-                    }
-
-                    file = files[0];
-
-                    if (/^image\/\w+$/.test(file.type)) {
-                        fileReader.readAsDataURL(file);
-                        fileReader.onload = function () {
-                            $inputImage.val("");
-                            $image.cropper("reset", true).cropper("replace", this.result);
-                        };
-                    } else {
-                        showMessage("Please choose an image file.");
-                    }
-                });
+        $(".select-lang p").click(function() {
+            var ul = $(".select-lang ul");
+            if (ul.css("display") == "none") {
+                ul.slideDown("fast");
             } else {
-                $inputImage.addClass("hide");
-            }
-
-            $("#download").click(function() {
-                window.open($image.cropper("getDataURL"));
-            });
-
-            $("#zoomIn").click(function() {
-                $image.cropper("zoom", 0.1);
-            });
-
-            $("#zoomOut").click(function() {
-                $image.cropper("zoom", -0.1);
-            });
-
-            $("#rotateLeft").click(function() {
-                $image.cropper("rotate", 45);
-            });
-
-            $("#rotateRight").click(function() {
-                $image.cropper("rotate", -45);
-            });
-
-            $("#setDrag").click(function() {
-                $image.cropper("setDragMode", "crop");
-            });
-
-            $('#data_1 .input-group.date').datepicker({
-                todayBtn: "linked",
-                keyboardNavigation: false,
-                forceParse: false,
-                calendarWeeks: true,
-                autoclose: true
-            });
-
-            $('#data_2 .input-group.date').datepicker({
-                startView: 1,
-                todayBtn: "linked",
-                keyboardNavigation: false,
-                forceParse: false,
-                autoclose: true
-            });
-
-            $('#data_3 .input-group.date').datepicker({
-                startView: 2,
-                todayBtn: "linked",
-                keyboardNavigation: false,
-                forceParse: false,
-                autoclose: true
-            });
-
-            $('#data_4 .input-group.date').datepicker({
-                minViewMode: 1,
-                keyboardNavigation: false,
-                forceParse: false,
-                autoclose: true,
-                todayHighlight: true
-            });
-
-            $('#data_5 .input-daterange').datepicker({
-                keyboardNavigation: false,
-                forceParse: false,
-                autoclose: true
-            });
-
-            var elem = document.querySelector('.js-switch');
-            var switchery = new Switchery(elem, { color: '#1AB394' });
-
-            var elem_2 = document.querySelector('.js-switch_2');
-            var switchery_2 = new Switchery(elem_2, { color: '#ED5565' });
-
-            var elem_3 = document.querySelector('.js-switch_3');
-            var switchery_3 = new Switchery(elem_3, { color: '#1AB394' });
-
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
-
-            $('.demo1').colorpicker();
-
-            var divStyle = $('.back-change')[0].style;
-            $('#demo_apidemo').colorpicker({
-                color: divStyle.backgroundColor
-            }).on('changeColor', function(ev) {
-                        divStyle.backgroundColor = ev.color.toHex();
-                    });
-
-
-        });
-        var config = {
-                '.chosen-select'           : {},
-                '.chosen-select-deselect'  : {allow_single_deselect:true},
-                '.chosen-select-no-single' : {disable_search_threshold:10},
-                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-                '.chosen-select-width'     : {width:"95%"}
-            }
-            for (var selector in config) {
-                $(selector).chosen(config[selector]);
-            }
-
-        $("#ionrange_1").ionRangeSlider({
-            min: 0,
-            max: 5000,
-            type: 'double',
-            prefix: "&yen;",
-            maxPostfix: "+",
-            prettify: false,
-            hasGrid: true
-        });
-
-        $("#ionrange_2").ionRangeSlider({
-            min: 0,
-            max: 10,
-            type: 'single',
-            step: 0.1,
-            postfix: " 克",
-            prettify: false,
-            hasGrid: true
-        });
-
-        $("#ionrange_3").ionRangeSlider({
-            min: -50,
-            max: 50,
-            from: 0,
-            postfix: "°",
-            prettify: false,
-            hasGrid: true
-        });
-
-        $("#ionrange_4").ionRangeSlider({
-            values: [
-                "1月", "2月", "3月",
-                "4月", "5月", "6月",
-                "7月", "8月", "9月",
-                "10月", "11月", "12月"
-            ],
-            type: 'single',
-            hasGrid: true
-        });
-
-        $("#ionrange_5").ionRangeSlider({
-            min: 10000,
-            max: 100000,
-            step: 100,
-            postfix: " km",
-            from: 55000,
-            hideMinMax: true,
-            hideFromTo: false
-        });
-
-        $(".dial").knob();
-
-        $("#basic_slider").noUiSlider({
-            start: 40,
-            behaviour: 'tap',
-            connect: 'upper',
-            range: {
-                'min':  20,
-                'max':  80
+                ul.slideUp("fast");
             }
         });
 
-        $("#range_slider").noUiSlider({
-            start: [ 40, 60 ],
-            behaviour: 'drag',
-            connect: true,
-            range: {
-                'min':  20,
-                'max':  80
-            }
+        $(".select-lang ul li a").click(function() {
+            var txt = $(this).text();
+            var value = $(this).attr("rel");
+            $(".select-lang p").html("<span class='flag " + value + "'></span>" + txt);
+            $(".select-lang ul").hide();
         });
 
-        $("#drag-fixed").noUiSlider({
-            start: [ 40, 60 ],
-            behaviour: 'drag-fixed',
-            connect: true,
-            range: {
-                'min':  20,
-                'max':  80
-            }
-        });
-      
-      
-            
+    });
     </script>
-<script>
-        //显示隐藏模块--更多数据
-        $(".info-down-btn").click(function (event) {
-            $(this).find(".info-pull-down").slideToggle(200);
-            $(document).one("click", function (event) {
-                $(".info-pull-down").slideUp(200); 
-       });
-            event.stopPropagation();
+    <!--进度百分比-->
+    <script>
+    $(document).ready(function() {
+        var $image = $(".image-crop > img")
+        $($image).cropper({
+            aspectRatio: 1.618,
+            preview: ".img-preview",
+            done: function(data) {
+                // Output the result data for cropping image.
+            }
         });
-        //显示隐藏刷新按钮
-       $(".game").mouseenter(function() {
-          $(this).find(".ico-ask").show()
-       });
-        $(".game").mouseleave(function() {
-          $(this).find(".ico-ask").hide()
-       });
-        //tooltip 提示弹窗
-        $('[data-toggle="tooltip"]').tooltip();
-          
-          
-          
-          $(".show-remaining").click(function (){
-            $(this).parent(".global-account-money").addClass("open")
-          });  
-            $(".hide-astrict>.showsmall").click(function (){
-            $(this).parents(".global-account-money").removeClass("open")
-          }); 
-          $(".loading-btn").click(function (){
-            $(".loading-a").fadeToggle(200);
-          });
+
+        var $inputImage = $("#inputImage");
+        if (window.FileReader) {
+            $inputImage.change(function() {
+                var fileReader = new FileReader(),
+                    files = this.files,
+                    file;
+
+                if (!files.length) {
+                    return;
+                }
+
+                file = files[0];
+
+                if (/^image\/\w+$/.test(file.type)) {
+                    fileReader.readAsDataURL(file);
+                    fileReader.onload = function() {
+                        $inputImage.val("");
+                        $image.cropper("reset", true).cropper("replace", this.result);
+                    };
+                } else {
+                    showMessage("Please choose an image file.");
+                }
+            });
+        } else {
+            $inputImage.addClass("hide");
+        }
+
+        $("#download").click(function() {
+            window.open($image.cropper("getDataURL"));
+        });
+
+        $("#zoomIn").click(function() {
+            $image.cropper("zoom", 0.1);
+        });
+
+        $("#zoomOut").click(function() {
+            $image.cropper("zoom", -0.1);
+        });
+
+        $("#rotateLeft").click(function() {
+            $image.cropper("rotate", 45);
+        });
+
+        $("#rotateRight").click(function() {
+            $image.cropper("rotate", -45);
+        });
+
+        $("#setDrag").click(function() {
+            $image.cropper("setDragMode", "crop");
+        });
+
+        $('#data_1 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
+        });
+
+        $('#data_2 .input-group.date').datepicker({
+            startView: 1,
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true
+        });
+
+        $('#data_3 .input-group.date').datepicker({
+            startView: 2,
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true
+        });
+
+        $('#data_4 .input-group.date').datepicker({
+            minViewMode: 1,
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        $('#data_5 .input-daterange').datepicker({
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true
+        });
+
+        var elem = document.querySelector('.js-switch');
+        var switchery = new Switchery(elem, {
+            color: '#1AB394'
+        });
+
+        var elem_2 = document.querySelector('.js-switch_2');
+        var switchery_2 = new Switchery(elem_2, {
+            color: '#ED5565'
+        });
+
+        var elem_3 = document.querySelector('.js-switch_3');
+        var switchery_3 = new Switchery(elem_3, {
+            color: '#1AB394'
+        });
+
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+
+        $('.demo1').colorpicker();
+
+        var divStyle = $('.back-change')[0].style;
+        $('#demo_apidemo').colorpicker({
+            color: divStyle.backgroundColor
+        }).on('changeColor', function(ev) {
+            divStyle.backgroundColor = ev.color.toHex();
+        });
+
+
+    });
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': {
+            allow_single_deselect: true
+        },
+        '.chosen-select-no-single': {
+            disable_search_threshold: 10
+        },
+        '.chosen-select-no-results': {
+            no_results_text: 'Oops, nothing found!'
+        },
+        '.chosen-select-width': {
+            width: "95%"
+        }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+
+    $("#ionrange_1").ionRangeSlider({
+        min: 0,
+        max: 5000,
+        type: 'double',
+        prefix: "&yen;",
+        maxPostfix: "+",
+        prettify: false,
+        hasGrid: true
+    });
+
+    $("#ionrange_2").ionRangeSlider({
+        min: 0,
+        max: 10,
+        type: 'single',
+        step: 0.1,
+        postfix: " 克",
+        prettify: false,
+        hasGrid: true
+    });
+
+    $("#ionrange_3").ionRangeSlider({
+        min: -50,
+        max: 50,
+        from: 0,
+        postfix: "°",
+        prettify: false,
+        hasGrid: true
+    });
+
+    $("#ionrange_4").ionRangeSlider({
+        values: [
+            "1月", "2月", "3月",
+            "4月", "5月", "6月",
+            "7月", "8月", "9月",
+            "10月", "11月", "12月"
+        ],
+        type: 'single',
+        hasGrid: true
+    });
+
+    $("#ionrange_5").ionRangeSlider({
+        min: 10000,
+        max: 100000,
+        step: 100,
+        postfix: " km",
+        from: 55000,
+        hideMinMax: true,
+        hideFromTo: false
+    });
+
+    $(".dial").knob();
+
+    $("#basic_slider").noUiSlider({
+        start: 40,
+        behaviour: 'tap',
+        connect: 'upper',
+        range: {
+            'min': 20,
+            'max': 80
+        }
+    });
+
+    $("#range_slider").noUiSlider({
+        start: [40, 60],
+        behaviour: 'drag',
+        connect: true,
+        range: {
+            'min': 20,
+            'max': 80
+        }
+    });
+
+    $("#drag-fixed").noUiSlider({
+        start: [40, 60],
+        behaviour: 'drag-fixed',
+        connect: true,
+        range: {
+            'min': 20,
+            'max': 80
+        }
+    });
     </script>
-    
+    <script>
+    //显示隐藏模块--更多数据
+    $(".info-down-btn").click(function(event) {
+        $(this).find(".info-pull-down").slideToggle(200);
+        $(document).one("click", function(event) {
+            $(".info-pull-down").slideUp(200);
+        });
+        event.stopPropagation();
+    });
+    //显示隐藏刷新按钮
+    $(".game").mouseenter(function() {
+        $(this).find(".ico-ask").show()
+    });
+    $(".game").mouseleave(function() {
+        $(this).find(".ico-ask").hide()
+    });
+    //tooltip 提示弹窗
+    $('[data-toggle="tooltip"]').tooltip();
+
+
+
+    $(".show-remaining").click(function() {
+        $(this).parent(".global-account-money").addClass("open")
+    });
+    $(".hide-astrict>.showsmall").click(function() {
+        $(this).parents(".global-account-money").removeClass("open")
+    });
+    $(".loading-btn").click(function() {
+        $(".loading-a").fadeToggle(200);
+    });
+    </script>
 </body>
+
 </html>
