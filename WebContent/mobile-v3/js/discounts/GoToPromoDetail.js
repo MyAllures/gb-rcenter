@@ -112,7 +112,9 @@ function filterActyByPlayer(data) {
         }
     }
     if (isContain == false) {
-        $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").html(window.top.message.promo_auto['未满足条件']);
+        //$obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").html(window.top.message.promo_auto['未满足条件']);
+        $('.fit').addClass("mui-hidden");
+        $('.notfit').removeClass("mui-hidden");
     } else if (code == "content") {
         $obj.addClass("mui-hidden");
     }
