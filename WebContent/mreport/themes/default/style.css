@@ -286,7 +286,7 @@ input:checked{background-color: #FFFFFF;}
 .check_api input{
   position: relative;
   top: 2px;left: -2px;
-  background-color: #fffff;
+  background-color: #ffffff;
   width: 16px;height: 16px;
   border-radius: 5px;
   display: inline-block;

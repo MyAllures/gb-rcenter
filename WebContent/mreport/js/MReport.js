@@ -5,6 +5,28 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
     return BasePage.extend({
 
         /**
+         * 金额格式化
+         * @param num
+         * @returns {string}
+         */
+        formatCurrency: function(num) {
+            if(!num) return num;
+            num = num.toString().replace(/\$|\,/g,'');
+            if(isNaN(num))
+                num = "0";
+            sign = (num == (num = Math.abs(num)));
+            num = Math.floor(num*100+0.50000000001);
+            cents = num%100;
+            num = Math.floor(num/100).toString();
+            if(cents<10)
+                cents = "0" + cents;
+            for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)
+                num = num.substring(0,num.length-(4*i+3))+','+
+                    num.substring(num.length-(4*i+3));
+            return (((sign)?'':'-') + num + '.' + cents);
+        },
+
+        /**
          * 画玉珏图
          * @author martin
          * @param containerName
@@ -67,7 +89,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * @param fieldSet
          * @param width
          */
-        drawGroupColumnChart: function(containerName, data, fieldSet, width) {
+        drawGroupColumnChart: function(containerName, data, fieldSet) {
             if(data == null || data.length < 1) return;
             $("#"+containerName).html(null);
             const ds = new DataSet();
@@ -78,17 +100,10 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 key: 'time', // key字段
                 value: 'sum' // value字段
             });
-            const chart = width ? new G2.Chart({
-                container: containerName,
-                height: 400,
-                width:width,
-                padding: [20, 12, 95, 50]
-            })
-                :
-                new G2.Chart({
+            const chart = new G2.Chart({
                     container: containerName,
                     forceFit: true,
-                    height: 300,
+                    height: 401,
                     padding: [20, 12, 95, 50]
                 });
             chart.source(dv);
@@ -133,7 +148,100 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
         },
 
         /**
-         * 折线图
+         *基础面积图
+         * @param data
+         * @param containerName
+         * @param keys
+         * @param height
+         */
+        acreageChart:function(data,containerName,attribute,height){
+            const ds = new DataSet();
+            const chart = new G2.Chart({
+                container: containerName,
+                forceFit: true,
+                // width: 500,
+                height:height,
+                padding: [38, 36, 88, 78]
+            });
+            chart.source(data);
+            chart.scale({
+                time: {
+                    range: [ 0 , 1 ]
+                }
+            });
+            chart.axis(attribute, {
+                label: {
+                    formatter: function(val) {
+                        return val;
+                    }
+                }
+            });
+            chart.area().position('time*'+ attribute).shape('smooth');
+            chart.line().position('time*'+ attribute).size(2).shape('smooth');
+
+            chart.tooltip({
+                crosshairs: {
+                    type: 'line'
+                }
+            });
+            chart.render();
+        },
+
+        /**
+         * 多条曲线图
+         * @param data
+         * @param containerName
+         * @param keys
+         * @param height
+         */
+        curveChart:function(data,containerName,keys,height){
+            const ds = new DataSet();
+            const chart = new G2.Chart({
+                container: containerName,
+                forceFit: true,
+                // width: 500,
+                height:height,
+                padding: [38, 36, 88, 78]
+            });
+            const dv = ds.createView().source(data);
+            dv.transform({
+                type: 'fold',
+                fields: keys, // 展开字段集
+                key: 'name', // key字段
+                value: 'sum', // value字段
+            });
+            chart.axis('sum', {
+                label: {
+                    formatter: function(val) {
+                        return val;
+                    }
+                }
+            });
+            /*,[ '#0072ff', '#02c16e', '#ff5050' ]*/
+            /*,[ '#0072ff', '#02c16e', '#ff5050' ]*/
+            chart.line().position('time*sum').color('name').shape('smooth');
+            chart.point().position('time*sum').color('name').size(4).shape('circle').style({
+                stroke: '#fff',
+                lineWidth: 1
+            });
+
+            chart.source(dv,{
+                time: {
+                    range: [ 0, 1 ]
+                }
+            });
+
+            chart.tooltip({
+                crosshairs: {
+                    type: 'line'
+                }
+            });
+            chart.render();
+        },
+
+
+        /**
+         * 多条折线图
          * @author gavin
          * @param containerName
          * @param data
@@ -146,9 +254,9 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             keys.splice(0,1);
             const chart = new G2.Chart({
                 container: containerName,
-                // forceFit: true,
+                forceFit: true,
                 height: 400,
-                width:476,
+                // width:476,
                 padding: [20, 30, 105, 50]
             });
             const dv = ds.createView().source(data);
