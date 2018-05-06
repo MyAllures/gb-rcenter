@@ -154,9 +154,9 @@ function fetchActivityProcess() {
                 $('#join .app_num').html('派奖时间：<span class="color-blue">' + data.deadLineTime + '</span>');
                 $('#unCommit .app_num').html('已有 <span class="color-blue">' + data.ApplyNum + '</span>人，报名成功');
                 if (data.hasApply) {
-                    $('#join').removeClass('mui-hidden');
-                } else {
                     $('#unCommit').removeClass('mui-hidden');
+                } else {
+                    $('#join').removeClass('mui-hidden');
                 }
             } else if (code == 'profit_loss' && data.preferentialRelations) { //盈亏返利
                 var preferentialRelations = data.preferentialRelations;
@@ -196,9 +196,9 @@ function fetchActivityProcess() {
                 $('#join .app_num').html('派奖时间：<span class="color-blue">' + data.deadLineTime + '</span>');
                 $('#unCommit .app_num').html('已有 <span class="color-blue">' + data.ApplyNum + '</span>人，报名成功');
                 if (data.hasApply) {
-                    $('#join').removeClass('mui-hidden');
-                } else {
                     $('#unCommit').removeClass('mui-hidden');
+                } else {
+                    $('#join').removeClass('mui-hidden');
                 }
             } else {
                 $('.status_failure').removeClass('mui-hidden');
