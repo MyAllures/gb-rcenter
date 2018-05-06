@@ -20,7 +20,7 @@ function onPageLoad() {
     tableScroll(this);
     var isLogin = sessionStorage.getItem("isLogin");
     if (isLogin && isLogin == "true") {
-        var $submit = $(".submit");
+        var $submit = $(".fit.submit");
         var options = eval("(" + $submit.attr("data-rel") + ")");
         changeApplyStatus();
         promoCheck($submit, options);
@@ -53,7 +53,7 @@ function tableScroll(value) {
  */
 function promoCheck(obj, options) {
     var nowTime = new Date($("._now_time").attr("value")).getTime();
-    var $obj = $(".submit");
+    var $obj = $(".fit.submit");
     var st = $("._vr_promo_ostart").attr("value");
     var et = $("._vr_promo_oend").attr("value");
     var sTime = new Date(st).getTime();
@@ -89,7 +89,7 @@ function changeApplyStatus() {
  * @param data
  */
 function filterActyByPlayer(data) {
-    var $obj = $(".submit");
+    var $obj = $(".fit.submit");
     var startTimeObj = $('._vr_promo_ostart');
     var flag = new Date(startTimeObj.attr("value")) < new Date();
     var oldClass = $obj.data("oldClass");

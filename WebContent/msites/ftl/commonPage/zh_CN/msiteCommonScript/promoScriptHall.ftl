@@ -430,17 +430,35 @@
             return false;
         }
         $(".tip_tit").text('');
-        $(".ext-inf").text('');
+        $(".applyResult").text('');
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
         var title = $(aplyObj).parents("._vr_promo_check").find(".tit").text();
         $(".tip_tit").text('《' + title + '》');
         var msg;
-        if (code == 'first_deposit' || code == 'second_deposit' || code =='third_deposit' || code == 'everyday_first_deposit') {
-           msg = window.top.message.apply_activity[data.msg];
+        var money = " ";
+        if (code == 'first_deposit' || code == 'second_deposit' || code =='third_deposit' || code == 'everyday_first_deposit' || code == 'deposit_send') {
+            if (data.state) {
+                msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + window.top.message.apply_activity[data.msg] + '</span></div></div>';
+                $(".applyResult").append(msg);
+            } else {
+                if (data.transactionErrorList) {
+                    for (j = 0; j<data.transactionErrorList.length; j++) {
+                        if (data.transactionErrorList[j].money) {
+                            money = data.transactionErrorList[j].money;
+                        }
+                        msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>存款订单' + data.transactionErrorList[j].transactionNo + '</span></div></div>' +
+                        '<div class="item-failure-without-bar" style="margin-bottom: 30px"><i class="icon-fail"></i><div class="txt"><span>' + window.top.message.apply_activity[data.transactionErrorList[j].msg] + money + '</span></div></div>';
+                        $(".applyResult").append(msg);
+                    }
+                } else {
+                    msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + window.top.message.apply_activity[data.msg] + '</span></div></div>';
+                    $(".applyResult").append(msg);
+                }
+            }
         }else {
-            msg = data.msg;
+            msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + data.msg + '</span></div></div>';
+            $(".applyResult").append(msg);
         }
-        $(".ext-inf").text(msg);
         var content;
         var title;
         var skin;
@@ -457,12 +475,14 @@
             skin =  "layui-layer-danger";
             icon="promo_failure";
         }
-
+        var url =  $(".openNewWindow").data("url");
         var dialog = layer.open({
             content:content,
             title:title,
             skin:skin,
             area: area,
+            btn: ["联系客服"],
+            url: url,
             success: function(layer){
                 // 重写关闭按钮
                 $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
@@ -471,17 +491,10 @@
                 $(layer).addClass(icon);
             },
             yes: function () {
-                if (isRefresh) {
-                    layer.close(dialog);
-                    window.location.href = "/promo.html";
-                } else {
-                    layer.close(dialog);
-                }
-            },
-            btn2: function () {
                 window.open(
-                        '${data.contextInfo.playerCenterContext}#/preferential/list.html',
-                        '_blank' // <- This is what makes it open in a new window.
+                        url,
+                        'NewWindow',
+                        'width=960,height=600,top=50,left=50'
                 );
             }
         });

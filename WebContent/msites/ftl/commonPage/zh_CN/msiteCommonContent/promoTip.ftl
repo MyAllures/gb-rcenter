@@ -16,7 +16,7 @@
     <i class="icon-success"></i>
     <div class="tip_tit tit"></div>
     <div class="subs-txt">您所提交的申请失败！如有问题，请与客服人员联系。</div>
-    <div class="ext-inf"></div>
+    <div class="failure-reason applyResult"></div>
 </div>
 
 <#--成功提示-->
@@ -24,7 +24,7 @@
     <i class="icon-success"></i>
     <div class="tip_tit tit"></div>
     <div class="subs-txt">您所提交的申请已成功，请及时跟进申请状况。如有问题，请与客服人员联系。</div>
-    <div class="ext-inf"></div>
+    <div class="ext-inf applyResult"></div>
 </div>
 
 <#--有效投注额和盈亏送提示-->
