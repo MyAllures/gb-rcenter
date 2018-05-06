@@ -10,17 +10,28 @@ define(['site/swiper.min','site/MReport'], function (Swiper,MReport) {
             'use strict';
             this._super();
 
-            //初始化Swiper
-            this.initSwiper(null);
-
             //初始化G2
             this.initG2('visitor');//默认展示实时访客
 
         },
 
         onPageLoad: function () {
+            //初始化Swiper
+            this.initSwiper(document.getElementById("dataBox").offsetWidth * 0.8);
         },
 
+        initSwiper:function(width){
+            var swiper = new Swiper('.swiper-info', {
+                slidesPerView: 6,
+                spaceBetween: 15,
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                // width : $("#dataBox").offsetWidth
+                width:width
+                //direction: 'vertical',
+                //loop: true
+            });
+        },
         /**
          * 当前对象事件初始化
          */
@@ -32,37 +43,10 @@ define(['site/swiper.min','site/MReport'], function (Swiper,MReport) {
                 _this.changeCartogram(this);
             });
 
+            //调节页面宽度
             $(window).resize(function() {
-                var viewWidth = document.body.clientWidth;
-                var scale = window.screen.height / window.screen.width;
-                // var swiper = window.top.topPage.swiper;
-                var oldWidth = window.top.topPage.viewWidth ? window.top.topPage.viewWidth : 0;
-                $(".swiper-info").attr("style","width:"+viewWidth);
-                var newWidth = viewWidth * scale + (viewWidth * scale - oldWidth);
-                _this.initSwiper(newWidth < window.screen.width * 0.5 ? window.screen.width * 0.5 : newWidth);
-                window.top.topPage.viewWidth = viewWidth * scale;
+                _this.initSwiper(document.getElementById("dataBox").offsetWidth * 0.8);
             });
-
-            // $('#Searchresult tr').click(function(){
-            //     rundomData()
-            // })
-        },
-
-        initSwiper:function(width){
-            var scale = window.screen.height / window.screen.width;
-            var swiper = new Swiper('.swiper-info', {
-                slidesPerView: 6,
-                spaceBetween: 15,
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
-                width : width ? width : document.body.clientWidth * scale,
-                // onTransitionStart: function(swiper){
-                //     swiper.width = document.body.clientWidth * scale
-                // }
-                //direction: 'vertical',
-                //loop: true
-            });
-            window.top.topPage.swiper = swiper;
         },
 
         initG2:function(realtimeType){

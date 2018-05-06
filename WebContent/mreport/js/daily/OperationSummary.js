@@ -309,7 +309,7 @@ define(['site/MReport'], function (MReport) {
             var StartDate = $chartName.find("input[name='"+targetId+"-beginTime']").val();
             var EndDate = $chartName.find("input[name='"+targetId+"-endTime']").val();
             var rakebackType = $("._addPrimary.rakeback-trend .btn.btn-primary").attr("value");
-            if('rakebackTrend' == targetId && rakebackType == 'rakeback-cash'){
+            if('rakebackTrend' == targetId && rakebackType == 'rakeback-cash' && !window.top.topPage.apiAllCheck){
                 this.queryRakebackcashOfApi(window.top.topPage.apiIdArray, window.top.topPage.gameTypes,'D',StartDate,EndDate);
                 return ;
             }
