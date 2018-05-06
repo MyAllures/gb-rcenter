@@ -83,10 +83,10 @@ define(['common/BasePage'], function (BasePage) {
                     _this.addUserWin(options.data.imMessage);
                 }
                 //发送获取离线消息通知
-                if (options.btnClk) {
+                //if (options.btnClk) {
                     _this.sendOffineMessage(true); //获取客服留言
                     _this.sendOffineMessage(false); //获取用户留言
-                }
+                //}
             });
             $('.mymodal').unbind('hidden.bs.modal').on('hidden.bs.modal', function (e) {
                 var _iframes = _this.els.$userChatDivUl.find('iframe');
@@ -312,7 +312,7 @@ define(['common/BasePage'], function (BasePage) {
          * @private
          */
         _addOffineWin: function (isClient, messages) {
-            var _this = this;
+            var _this = this,lazyMessages = [];
             $.each(messages, function (i, msg) {
                 var userId = msg.sendUserId;
                 if (!_this._constainsUserId(userId)) {
@@ -326,7 +326,28 @@ define(['common/BasePage'], function (BasePage) {
                         }
                     });
                 } else {
-                    this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]').appendOffline(msg);
+                    lazyMessages.push({
+                        userId : userId,
+                        msg : msg
+                    });
+                    //延迟1秒后执行
+                    setTimeout(function(){
+                        _this._lazyAddOffineWin(lazyMessages)
+                    },1000)
+                }
+            });
+        },
+        /**
+         * Iframe加载完成后再执行加载离线消息操作
+         * @param msgs
+         * @private
+         */
+        _lazyAddOffineWin:function(msgs){
+            var _this = this;
+            $.each(msgs,function(i,m){
+                var iframe = _this.els.$userChatDivUl.find('iframe[id="' + m.userId + _this._sep_Iframe + '"]');
+                if(iframe[0].contentWindow.page){
+                    iframe[0].contentWindow.page.appendOffline(m.msg);
                 }
             });
         },
