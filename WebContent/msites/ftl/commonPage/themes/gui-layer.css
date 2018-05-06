@@ -160,7 +160,7 @@
 .layui-layer.promo_failure .layui-layer-content .failure-reason .item-success-without-bar .icon-pass { bottom: 3px; }
 .layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-without-bar { padding-left: 30px; position: relative; width: 390px; margin-bottom: 10px; }
 .layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-without-bar .txt { color: #f44236; }
-.layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-without-bar .icon-fail { bottom: 3px; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-without-bar .icon-fail { top: 3px; }
 .layui-layer.promo_failure .layui-layer-content .failure-reason .icon-pass { background: url(images/promo/icon-pass.png); width: 18px; height: 18px; position: absolute; left: 0; bottom: -4px; }
 .layui-layer.promo_failure .layui-layer-content .failure-reason .icon-fail { background: url(images/promo/icon-fail.png); width: 18px; height: 18px; position: absolute; left: 0; bottom: -4px; }
 .layui-layer.promo_may_apply { background-color: #fff !important; }
@@ -288,4 +288,3 @@
 
 .game-detail-open .casino-detail-iframe .layui-layer-close2 { display: block !important; }
 
-/*# sourceMappingURL=gui-layer.css.map */
