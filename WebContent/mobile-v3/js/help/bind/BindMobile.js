@@ -17,9 +17,9 @@ function sendPhoneCode() {
     var obj = $("#sendPhoneCode");
     if ($phone.valid()) {
         var options = {
-            type: "POST",
+
             url: root + "/verificationCode/getPhoneVerificationCode.html",
-            dataType: "json",
+
             data: {"phone": $phone.val()},
             success: function (data) {
                 if (data) {
@@ -27,9 +27,7 @@ function sendPhoneCode() {
                     wait(90, obj, phoneInterval);
                 }//不到90如果再次点击
             },
-            error: function () {
-                toast(window.top.message.passport_auto['服务忙']);
-            }
+
         };
         muiAjax(options);
     }
@@ -53,8 +51,13 @@ function wait(t, obj, interval) {
 
 //绑定手机号提交
 function bindMobile(obj, options) {
-    if ($("[name='oldPhone']").val()){
-        //原手机号跟新手机号比对
+    var $oldPhone = $("[name='oldPhone']");
+    if ($oldPhone.length > 0){
+        if($oldPhone.val() == ""){
+            return toast("旧手机号码不能为空");
+        }else if ($oldPhone.val() == $("[name='search.contactValue']").val()){
+            return toast("旧手机号码不能与新手机号码一致");
+        }
     }
     var $form = $('#regForm');
     if (!$form.valid()) {
@@ -70,11 +73,11 @@ function bindMobile(obj, options) {
                 $(obj).text(window.top.message.passport_auto['提交中']).attr("disabled", "disabled");
             },
             success: function (data) {
-                if (data == false) {
-                    toast("验证码错误");
+                if (data.state == false) {
+                    toast(data.msg);
                 } else {
-                    toast("绑定成功");
-                    goToUrl(root + 'help/phoneNumber.html');
+                    toast(data.msg);
+                    goToUrl(root + '/help/phoneNumber.html');
                 }
             },
             complete: function () {
