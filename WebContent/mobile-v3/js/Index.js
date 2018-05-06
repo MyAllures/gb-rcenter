@@ -23,6 +23,8 @@ $(function () {
     swiper();
     //判断desk是否需要隐藏
     hideDesk();
+    //判断浮动图是否隐藏
+    hideEffect();
 });
 
 /**
@@ -190,5 +192,13 @@ function closeDesk(obj, options) {
 function hideDesk(){
     if(os != 'app_ios' || localStorage.getItem("destHide")){
         $("#deskTip").hide();
+    }
+}
+
+//浮动图是否隐藏
+function hideEffect(){
+    var showEffect = localStorage.getItem("showEffect");
+    if(showEffect == 'true' || showEffect == true){
+        $(".ads-slider").hide();
     }
 }

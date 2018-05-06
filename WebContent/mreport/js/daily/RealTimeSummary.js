@@ -1,8 +1,8 @@
 /**
  * 数据中心首页-首页js
  */
-define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], function (BasePage,Swiper,G2,DataSet) {
-    return BasePage.extend({
+define(['site/swiper.min','site/MReport'], function (Swiper,MReport) {
+    return MReport.extend({
         /**
          * 初使化
          */
@@ -11,16 +11,14 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
             this._super();
 
             //初始化Swiper
-            this.initSwiper();
+            this.initSwiper(null);
 
             //初始化G2
             this.initG2('visitor');//默认展示实时访客
 
         },
 
-
         onPageLoad: function () {
-
         },
 
         /**
@@ -34,20 +32,37 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
                 _this.changeCartogram(this);
             });
 
+            $(window).resize(function() {
+                var viewWidth = document.body.clientWidth;
+                var scale = window.screen.height / window.screen.width;
+                // var swiper = window.top.topPage.swiper;
+                var oldWidth = window.top.topPage.viewWidth ? window.top.topPage.viewWidth : 0;
+                $(".swiper-info").attr("style","width:"+viewWidth);
+                var newWidth = viewWidth * scale + (viewWidth * scale - oldWidth);
+                _this.initSwiper(newWidth < window.screen.width * 0.5 ? window.screen.width * 0.5 : newWidth);
+                window.top.topPage.viewWidth = viewWidth * scale;
+            });
+
             // $('#Searchresult tr').click(function(){
             //     rundomData()
             // })
         },
 
-        initSwiper:function(){
+        initSwiper:function(width){
+            var scale = window.screen.height / window.screen.width;
             var swiper = new Swiper('.swiper-info', {
                 slidesPerView: 6,
                 spaceBetween: 15,
                 nextButton: '.swiper-button-next',
                 prevButton: '.swiper-button-prev',
+                width : width ? width : document.body.clientWidth * scale,
+                // onTransitionStart: function(swiper){
+                //     swiper.width = document.body.clientWidth * scale
+                // }
                 //direction: 'vertical',
                 //loop: true
             });
+            window.top.topPage.swiper = swiper;
         },
 
         initG2:function(realtimeType){
@@ -61,65 +76,12 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
             if(data.length < 1) return;
             var keys = Object.keys(data[0]);
             keys.splice(0,1);
-            if(keys == null || keys.length < 1) return;
-            const ds = new DataSet();
-            const chart = new G2.Chart({
-                container: 'mountNode',
-                forceFit: true,
-                width: 500,
-                padding: [38, 36, 88, 78]
-            });
+            if(keys == null || keys.length < 1 || !$("#mountNode").length) return;
             if('realtimeProfitLoss' == realtimeType){
-                chart.source(data);
-                chart.scale({
-                    time: {
-                        range: [ 0 , 1 ]
-                    }
-                });
-                chart.axis(keys[0], {
-                    label: {
-                        formatter: function(val) {
-                            return val;
-                        }
-                    }
-                });
-                chart.area().position('time*'+keys[0]).shape('smooth');
-                chart.line().position('time*'+keys[0]).size(2).shape('smooth');
+                this.acreageChart(data,'mountNode',keys[0],500);
             }else{
-                const dv = ds.createView().source(data);
-                dv.transform({
-                    type: 'fold',
-                    fields: keys, // 展开字段集
-                    key: 'name', // key字段
-                    value: 'sum', // value字段
-                });
-                chart.axis('sum', {
-                    label: {
-                        formatter: function(val) {
-                            return val;
-                        }
-                    }
-                });
-				/*,[ '#0072ff', '#02c16e', '#ff5050' ]*/
-				/*,[ '#0072ff', '#02c16e', '#ff5050' ]*/
-                chart.line().position('time*sum').color('name').shape('smooth');
-                chart.point().position('time*sum').color('name').size(4).shape('circle').style({
-                    stroke: '#fff',
-                    lineWidth: 1
-                });
-
-                chart.source(dv,{
-                    time: {
-                        range: [ 0, 1 ]
-                    }
-                });
+                this.curveChart(data,'mountNode',keys,500);
             }
-            chart.tooltip({
-                crosshairs: {
-                    type: 'line'
-                }
-            });
-            chart.render();
         },
 
         /**
@@ -140,7 +102,7 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
                 if(i > 23)continue;
                 var data = {};
                 var profile = profilesJson[i];
-                data['time'] = i = 23 ? '23:59' : profile.realTime;
+                data['time'] = i > 22 ? '23:59' : profile.realTime;
                 if ('visitor' == realtimeType) {
                     data['访客量(全部)'] = profile.countVisitor;
                     data['访客量(PC端)'] = profile.visitorPc;

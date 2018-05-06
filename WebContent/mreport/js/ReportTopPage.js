@@ -21,10 +21,12 @@ define(['gb/home/TopPage'], function (TopPage) {
             $("a[nav-top]").click(function (e) {
                 e.preventDefault();
                 _this._doNavigate(e);
+                e.stopPropagation();    //  阻止事件冒泡
             });
             $("a[nav-target]").click(function (e) {
                 e.preventDefault();
                 _this._doNavigate(e);
+                e.stopPropagation();    //  阻止事件冒泡
             });
         },
     });

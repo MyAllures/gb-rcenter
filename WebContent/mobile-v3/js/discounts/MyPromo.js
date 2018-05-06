@@ -1,75 +1,80 @@
 /*界面初始化*/
+var allPageNumber = 1;
+var successPageNumber = 1;
+var noPassPageNumber = 1;
+var unAuditPageNumber = 1;
+
+var allTotal;
+var successTotal;
+var noPassTotal;
+var unAuditTotal;
 $(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
-        /*containerScroll: '.mui-content.mui-scroll-wrapper',
-         /!*右侧菜单上下滚动，可自行指定范围*!/
-         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
-         /!*禁用侧滑手势指定样式*!/
-         disabledHandSlip: ['mui-off-canvas-left'],*/
+        containerScroll: '.mui-content.mui-scroll-wrapper',
+        /*右侧菜单上下滚动，可自行指定范围*/
+        rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
+        /*禁用侧滑手势指定样式*/
+        disabledHandSlip: ['mui-off-canvas-left'],
         init: pullUpRefreshOption('#refreshContainer', pullfresh, false)
     };
     muiInit(options);
-    promoInfo(1);
-
-    //android隐藏头部
-    // hideHeader();
 });
-
-function promotionCategory(obj, options) {
-    var name = options.code;
-    if (name){
-        var _this = $(".promo-records-warp[name="+name+"]");
-    }
-    $(".promo-records-warp").css("display","none");
-    if (name == "awarded"){//已派奖
-        // $(".promo-records-warp[name=awarded]").css("display","");
-        _this.css("display","");
-    }else if (name == "didNotPass"){//未通过
-        // $(".promo-records-warp[name=didNotPass]").css("display","");
-        _this.css("display","");
-    }else if(name == "unaudited"){//未审核
-        // $(".promo-records-warp[name=unaudited]").css("display","");
-        _this.css("display","");
-    }else{//全部
-        $(".promo-records-warp").css("display","");
-    }
-    /*$(".promo-records-warp .mui-row").each(function () {
-        var apiName = $(this).attr("name");
-        if (apiName) {
-            if (apiName.indexOf(name) != -1) {
-                $(this).css("display", "")
-            } else {
-                $(this).css("display", "none")
-            }
-        }
-    });*/
-
-}
 
 /*上拉请求数据*/
 function pullfresh() {
-    setTimeout(function () {
-        mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
-        var pageNumber = parseInt($("#pageNumber").val());
-        var lastPageNumber = parseInt($("#lastPageNumber").val());
-        if (pageNumber == lastPageNumber) {
-            mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
-        } else {
-            promoInfo(pageNumber + 1);
-        }
-    }, 0);
+    var lastPageNumber = parseInt($("#lastPageNumber").val());
+    var id = $('.mui-control-content.mui-active').attr("id");
+    if (id == "item1" && judgeLastPageNumber(allPageNumber,allTotal,lastPageNumber)) {
+        getPullInfo(allPageNumber, null, id);
+    } else if (id == "item2" &&judgeLastPageNumber(successPageNumber,successTotal,lastPageNumber)) {
+        getPullInfo(successPageNumber, "2", id);
+    } else if (id == "item3" && judgeLastPageNumber(noPassPageNumber,noPassTotal,lastPageNumber)) {
+        getPullInfo(noPassPageNumber, "4", id);
+    } else if (id == "item4" && judgeLastPageNumber(unAuditPageNumber,unAuditTotal,lastPageNumber)) {
+        getPullInfo(unAuditPageNumber, "1", id);
+    } else {
+        mui("#refreshContainer").pullRefresh().endPullupToRefresh(true);
+    }
+}
+
+/**
+ *
+ * @param beforePageNumber：当前页面数
+ * @param totalPageNumber：当前页码总数
+ * @param endPageNumber：初始总页码数
+ * @returns {boolean}
+ */
+function judgeLastPageNumber(beforePageNumber,totalPageNumber, endPageNumber) {
+    return !totalPageNumber ? beforePageNumber < endPageNumber : beforePageNumber < totalPageNumber;
+}
+
+/*获取上拉数据*/
+function getPullInfo(pageNumber, state, item) {
+    if (state != null) {
+        setTimeout(function () {
+            var requestData = {"paging.pageNumber": pageNumber + 1, "search.checkState": state};
+            promoInfo(requestData, item);
+        }, 3000);
+    } else {
+        setTimeout(function () {
+            var requestData = {"paging.pageNumber": pageNumber + 1};
+            promoInfo(requestData, item);
+        }, 3000);
+    }
+}
+//切换时打开下拉
+function switchOffers() {
+    mui("#refreshContainer").pullRefresh().endPullupToRefresh(false);
 }
 
 /*获取正在进行中的类型和活动*/
-function promoInfo(pageNumber) {
-    var url = root + "/promo/myPromo.html";
-    var data = {"paging.pageNumber": pageNumber};
+function promoInfo(requestData, item) {
     var options = {
-        url: url,
+        url: root + "/promo/myPromo.html",
         type: 'post',
         timeout: 10000,
-        data: data,
+        data: requestData,
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Soul-Requested-With': 'XMLHttpRequest'
@@ -77,8 +82,18 @@ function promoInfo(pageNumber) {
         dataType: 'html',
         success: function (data) {
             if (data != null) {
-                $("#content").append(data);
-                $("#pageNumber").val(pageNumber);
+                $('#' + item).find('.promo-record-content').append(data);
+                addPageNumber(item);
+                var number = $('#' + item).find("#partialPageNumber").attr("value");
+                if (item == "item1") {
+                    allTotal = number;
+                } else if (item == "item2") {
+                    successTotal = number;
+                } else if (item == "item3") {
+                    noPassTotal = number;
+                } else if (item == "item4") {
+                    unAuditTotal = number;
+                }
             }
         },
         error: function (e) {
@@ -88,12 +103,14 @@ function promoInfo(pageNumber) {
     muiAjax(options);
 }
 
-/**
- * android隐藏头部
- */
-function hideHeader() {
-    if (os == 'app_android') {
-        $('header.mui-bar-nav').remove();
-        $(".mui-content").attr("style", "margin-top: -44px!important;");
+function addPageNumber(item) {
+    if (item == 'item1') {
+        allPageNumber = allPageNumber + 1;
+    } else if (item == 'item2') {
+        successPageNumber = successPageNumber + 1;
+    } else if (item == 'item3') {
+        noPassPageNumber = noPassPageNumber + 1;
+    } else if (item == 'item4') {
+        unAuditPageNumber = unAuditPageNumber + 1;
     }
 }

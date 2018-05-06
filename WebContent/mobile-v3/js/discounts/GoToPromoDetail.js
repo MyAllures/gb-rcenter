@@ -20,7 +20,7 @@ function onPageLoad() {
     tableScroll(this);
     var isLogin = sessionStorage.getItem("isLogin");
     if (isLogin && isLogin == "true") {
-        var $submit = $(".submit");
+        var $submit = $("#submit");
         var options = eval("(" + $submit.attr("data-rel") + ")");
         changeApplyStatus();
         promoCheck($submit, options);
@@ -53,7 +53,7 @@ function tableScroll(value) {
  */
 function promoCheck(obj, options) {
     var nowTime = new Date($("._now_time").attr("value")).getTime();
-    var $obj = $(".submit");
+    var $obj = $("#submit");
     var st = $("._vr_promo_ostart").attr("value");
     var et = $("._vr_promo_oend").attr("value");
     var sTime = new Date(st).getTime();
@@ -61,12 +61,12 @@ function promoCheck(obj, options) {
 
     if (nowTime < sTime) {
         //未开始
-        $obj.text(window.top.message.promo_auto['未开始']);
+        $obj.html(window.top.message.promo_auto['未开始']);
     } else if (nowTime > eTime) {
         //已结束
         var oldClass = $obj.data("oldClass");
         var newClass = $obj.data("newClass");
-        $obj.removeClass(typeof oldClass == "undefined" ? "" : oldClass).addClass(typeof newClass == "undefined" ? "" : newClass).attr("onclick", "").text(window.top.message.promo_auto['已结束']);
+        $obj.removeClass(typeof oldClass == "undefined" ? "" : oldClass).addClass(typeof newClass == "undefined" ? "" : newClass).attr("onclick", "").html(window.top.message.promo_auto['已结束']);
     }
 }
 
@@ -89,7 +89,7 @@ function changeApplyStatus() {
  * @param data
  */
 function filterActyByPlayer(data) {
-    var $obj = $(".submit");
+    var $obj = $("#submit");
     var startTimeObj = $('._vr_promo_ostart');
     var flag = new Date(startTimeObj.attr("value")) < new Date();
     var oldClass = $obj.data("oldClass");
@@ -112,7 +112,9 @@ function filterActyByPlayer(data) {
         }
     }
     if (isContain == false) {
-        $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").text(window.top.message.promo_auto['未满足条件']);
+        //$obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").html(window.top.message.promo_auto['未满足条件']);
+        $('#submit').addClass("mui-hidden");
+        $('#notFit').removeClass("mui-hidden");
     } else if (code == "content") {
         $obj.addClass("mui-hidden");
     }
