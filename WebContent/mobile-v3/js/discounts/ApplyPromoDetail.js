@@ -58,7 +58,11 @@ function applyActivity() {
                 $('.status_failure').removeClass('mui-hidden');
                 $('.btn_cust_serv').removeClass('mui-hidden');
                 if (data.msg && typeof data.msg != 'undefined') {
-                    var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.msg],
+                    var message = window.top.message.apply_activity[data.msg];
+                    if(typeof message == 'undefined'){
+                        message = data.msg;
+                    }
+                    var html = ['<li class="mui-table-view-cell">' + message,
                         '<span class="icon-fail"></span>',
                         '</li>'].join("");
                     $('.promo_con_list .mui-table-view').append(html);
