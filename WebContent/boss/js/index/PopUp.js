@@ -23,7 +23,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var _this = this;
             //console.info("订阅类型为IM的订阅点收到消息，成功调用回调函数，参数值为" + data);
             data = JSON.parse(data);
-            if (data.imMessage.status == 'connect') {
+            if (data.imMessage.status === 'connect') {
                 var $textAndPic = $('<div style="margin: 5px 10px 30px;"></div>');
                 var $personMessage = $('<div class="service-person"></div>');
                 $personMessage.append('<p>' + data.imMessage.sendUserName + '<span>' + window.top.topPage.formatDateTime(new Date(), "yyyy-MM-dd HH:mm") + '</span></p>');
