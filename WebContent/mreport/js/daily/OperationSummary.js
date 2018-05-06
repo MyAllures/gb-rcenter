@@ -285,16 +285,17 @@ define(['site/MReport'], function (MReport) {
             /**
              * 图表与报表的切换
              */
-            $("._addPrimary .btn").click(function() {
+            $("._toggleBtn .btn").click(function(e) {
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary");
                 if($(this).val()==='report') {
                     $("#operationChart").hide();
                     $("#operationReport").show();
-                    _this.asnycOperationSummaryOfDays(null, 'initReportList');
+                    _this.asnycOperationSummaryOfDays('', 'initReportList');
                 } else {
                     $("#operationChart").show();
                     $("#operationReport").hide();
                 }
+                e.stopPropagation();    // 阻止事件冒泡
             });
         },
 
@@ -697,14 +698,13 @@ define(['site/MReport'], function (MReport) {
                 timeout: 60000,
                 dataType : 'json',
                 success: function (data) {
-                    var jsonData = $.parseJSON(data);
                     if (tag==='playerHowPage') {
-                        _this.iterationPlayerList(jsonData.entities);
+                        _this.iterationPlayerList(data.entities);
                     } else if(tag==='depositHowPage') {
-                        _this.iterationDepositList(jsonData.entities);
+                        _this.iterationDepositList(data.entities);
                     } else {
-                        _this.initPlayerList(jsonData);
-                        _this.initDepositList(jsonData);
+                        _this.initPlayerList(data);
+                        _this.initDepositList(data);
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {}

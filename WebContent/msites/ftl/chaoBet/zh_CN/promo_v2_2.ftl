@@ -37,7 +37,7 @@
             </ul>
             <div class="search-bar">
                 <form>
-                    <div class="input-wrap"><input type="text" id="search-input"/><i class="icon-search"></i></div>
+                    <div class="input-wrap"><input type="text" id="search-input" placeholder="按活动名称搜索"/><i class="icon-search"></i></div>
                     <a onclick="searchActivity(this)" href="javascript:" class="btn-search">搜索</a>
                 </form>
             </div>

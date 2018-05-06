@@ -1,0 +1,290 @@
+<div class="row">
+    <div class="position-wrap clearfix">
+        <h2><a class="navbar-minimalize" href="javascript:void(0)"><i class="icon iconfont">&#xe610;</i> </a></h2>
+        <span>运营管理</span><span>/</span><span>域名检测</span>
+        <a href="javascript:void(0)" class="pull-right siteMap"><i class="fa fa-sitemap"></i></a>
+    </div>
+    <div class="col-lg-12">
+        <div class="wrapper white-bg shadow clearfix">
+            <ul class="clearfix sys_tab_wrap">
+                <li class="active"><a href="statistics/recommend1.html" nav-target="mainFrame">域名状态</a></li>
+                <li><a href="statistics/recommend1.html" nav-target="mainFrame">检测结果</a></li>
+
+            </ul>
+
+            <div class="m-t-md">
+                <div class="m-b-xs clearfix">
+                    <div class=" clearfix col-sm-12">
+                        <div class="form-group clearfix gray-bg">
+                            <div class="ym_jcd">检测点：<i><em>38</em>个</i></div>
+                            <div class="ym_jcqk">检测情况：
+                                <i class="ym_jcqk1"><em class="ym_jcqk_sz">20</em>个域名 <em class="ym_jcqk_zt">正常</em></i>
+                                <i class="ym_jcqk2"><em class="ym_jcqk_sz">1</em>个域名 <em class="ym_jcqk_zt">被墙</em></i>
+                                <i class="ym_jcqk3"><em class="ym_jcqk_sz">3</em>个域名 <em class="ym_jcqk_zt">被劫持</em></i>
+                                <i class="ym_jcqk4"><em class="ym_jcqk_sz">2</em>个域名 <em class="ym_jcqk_zt">未解析</em></i>
+                                <i class="ym_jcqk5"><em class="ym_jcqk_sz">2</em>个域名出现 <em class="ym_jcqk_zt">未知错误</em></i>
+                                <i class="ym_jcqk6"><em class="ym_jcqk_sz">11</em>个域名出现 <em class="ym_jcqk_zt">服务器不通</em></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-11 clearfix" style="padding-left: 0;">
+
+                        <div class="form-group clearfix pull-left col-md-4 col-sm-12 m-b-sm padding-r-none-sm">
+                            <div class="input-group date">
+                                <span class="input-group-addon bg-gray">域名</span>
+                                <input type="text" class="form-control" placeholder="多个账号，用半角逗号隔开">
+                            </div>
+
+
+
+                        </div>
+                        <div class="form-group clearfix pull-left col-md-3 col-sm-6 m-b-sm padding-r-none-sm">
+                            <div class="input-group">
+                                <span class="input-group-addon bg-gray">类型</span>
+                                <span class="">
+                                    <select class="form-control" data-placeholder="玩家">
+                                        <option value="">全部</option>
+                                        <option value="">玩家</option>
+                                        <option value="">代理</option>
+                                        <option value="">总代</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group clearfix pull-left col-md-3 col-sm-6 m-b-sm padding-r-none-sm">
+                            <div class="input-group">
+                                <span class="input-group-addon bg-gray">状态</span>
+                                <span class="">
+                                    <select class="form-control" data-placeholder="玩家">
+                                        <option value="">全部</option>
+                                        <option value="">玩家</option>
+                                        <option value="">代理</option>
+                                        <option value="">总代</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group clearfix pull-left col-md-2 col-sm-12 m-b-sm padding-r-none-sm">
+                            <button type="button" class="btn btn-filter mediate-search-btn"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button>
+                        </div>
+
+
+
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="ym_jcd ym_jcsj">检测时间：<em>2018-01-22</em>&nbsp <em>00:33</em></div>
+                        <a href="javascript:;" class="ym-jc-btn active">120分钟后可再次检测</a>
+                        <div class="m-sm ym_jcd"><span class="co-yellow m-l-md"><i class="fa fa-exclamation-circle"></i></span>
+                            所有域名监测结果仅供参考，不完全代表整个区域的实际解析情况，不具备故障证据之作用！如有需要请自行核实域名情况！</div>
+
+                    </div>
+                    <div id="editable_wrapper" class="dataTables_wrapper" role="grid"  style="padding: 0 15px">
+
+                        <!-- 表格 开始 -->
+                        <div class="table-responsive" style="border-left: 1px solid #e7e7e7;border-right: 1px solid #e7e7e7;">
+                            <table class="table table-striped table-hover dataTable m-b-none" id="editable" aria-describedby="editable_info">
+                                <thead>
+                                <tr role="row" class="bg-gray">
+                                    <th>序号</th>
+                                    <th>域名类型</th>
+                                    <th>域名</th>
+                                    <th>被墙</th>
+                                    <th>被劫持</th>
+                                    <th>未解析</th>
+                                    <th>未知错误</th>
+                                    <th>服务器不通</th>
+                                    <th>操作</th>
+                                </tr>
+
+                                </thead>
+                                <tbody hidden>
+                                <tr>
+
+                                    <td>01</td>
+                                    <td>代理后台</td>
+                                    <td>ceshi01.com</td>
+                                    <td class="color-green1 cur">2</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td>
+                                        <a href="javascript:;" nav-target="mainFrame">详细</a>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>01</td>
+                                    <td>代理后台</td>
+                                    <td>ceshi01.com</td>
+                                    <td class="color-green1">2</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1 cur">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td>
+                                        <a href="javascript:;" nav-target="mainFrame">详细</a>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>01</td>
+                                    <td>代理后台</td>
+                                    <td>ceshi01.com</td>
+                                    <td class="color-green1">2</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1 cur">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td>
+                                        <a href="javascript:;" nav-target="mainFrame">详细</a>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>01</td>
+                                    <td>代理后台</td>
+                                    <td>ceshi01.com</td>
+                                    <td class="color-green1">2</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td>
+                                        <a href="javascript:;" nav-target="mainFrame">详细</a>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>01</td>
+                                    <td>代理后台</td>
+                                    <td>ceshi01.com</td>
+                                    <td class="color-green1">2</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td>
+                                        <a href="javascript:;" nav-target="mainFrame">详细</a>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>01</td>
+                                    <td>代理后台</td>
+                                    <td>ceshi01.com</td>
+                                    <td class="color-green1">2</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td>
+                                        <a href="javascript:;" nav-target="mainFrame">详细</a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+
+                                    <td>01</td>
+                                    <td>代理后台</td>
+                                    <td>ceshi01.com</td>
+                                    <td class="color-green1">2</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td>
+                                        <a href="javascript:;" nav-target="mainFrame">详细</a>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>01</td>
+                                    <td>代理后台</td>
+                                    <td>ceshi01.com</td>
+                                    <td class="color-green1">2</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td class="color-green1">0</td>
+                                    <td>
+                                        <a href="javascript:;" nav-target="mainFrame">详细</a>
+                                    </td>
+                                </tr></tbody>
+                            </table>
+                        </div>
+                        <!-- 表格 结束 -->
+                        <!-- 分页 开始 -->
+                        <div class="row bdtop3 hidden">
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="pull-left">
+                                    <select data-placeholder="每页10条" class="chosen-select-no-single" tabindex="-1" style="display: none;">
+                                        <option value=""></option>
+                                        <option>每页20条</option>
+                                        <option>每页30条</option>
+                                        <option>每页40条</option>
+                                    </select><div class="chosen-container chosen-container-single chosen-container-single-nosearch" style="width: 100%;" title=""><a class="chosen-single chosen-default" tabindex="-1"><span>每页10条</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" readonly="" tabindex="9"></div><ul class="chosen-results"></ul></div></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-9 col-xs-6">
+                                <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate">
+                                    <div class="pull-right pages show-hide-1095 page-skip">
+                                        <form class="form-inline">
+                                            <label class="m-l-sm">共10页</label>
+                                            <label class="m-l">第<input type="text" class="m-l-xs m-r-xs min form-control input-sm">页</label>
+                                            <button class="btn btn-sm m-l-sm">跳转</button>
+                                        </form>
+                                    </div>
+                                    <ul class="pagination pull-right">
+                                        <li class="paginate_button previous disabled show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">首页</a></li>
+                                        <li class="paginate_button previous disabled" aria-controls="editable" tabindex="0" id="editable_previous"><a href="javascript:void(0)">上一页</a></li>
+                                        <li class="paginate_button active show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">1</a></li>
+                                        <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">2</a></li>
+                                        <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">3</a></li>
+                                        <li class="paginate_button show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">4</a></li>
+                                        <li class="paginate_button next" aria-controls="editable" tabindex="0" id="editable_next"><a href="javascript:void(0)">下一页</a></li>
+                                        <li class="paginate_button next show-hide-768" aria-controls="editable" tabindex="0"><a href="javascript:void(0)">尾页</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 分页 结束 -->
+                        <!--域名监测扫描-->
+                        <div class="ym-search-box row">
+                            <div class="col-sm-2"></div>
+                            <div class="ym-search-content col-sm-8 row">
+                                <div class="col-sm-3">
+                                    <img src="../../mcenter/images/detection-ico-img-b.png" alt="" class="pull-right">
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="color-blue1">系统正在进行域名监测扫描，请耐心等待...</div>
+                                    <div class="ym-search-jd"><span></span><em>0%</em></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                        <!--域名监测扫描 end-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $("[name='my-checkbox']").bootstrapSwitch();//switch
+</script>
+<script src="../../../common/js/flot/jquery.flot.tooltip.min.js"></script>
+<script>
+    $('.help-popover').popover()
+</script>
+<script>
+    $("#file-0").fileinput({
+        'allowedFileExtensions' : ['jpg', 'png','gif'],
+    });
+</script>
