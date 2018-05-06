@@ -57,7 +57,7 @@ function applyActivity() {
                 $('.promo_con_list').removeClass('mui-hidden');
                 $('.status_failure').removeClass('mui-hidden');
                 $('.btn_cust_serv').removeClass('mui-hidden');
-                if (data.msg) {
+                if (data.msg && typeof data.msg != 'undefined') {
                     var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.msg],
                         '<span class="icon-fail"></span>',
                         '</li>'].join("");
