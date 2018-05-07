@@ -438,7 +438,7 @@
         var money = " ";
         if (code == 'first_deposit' || code == 'second_deposit' || code =='third_deposit' || code == 'everyday_first_deposit' || code == 'deposit_send') {
             if (data.state) {
-                msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + window.top.message.apply_activity[data.msg] + '</span></div></div>';
+                msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + '操作成功,审核通过后彩金将直接发放到您的账户,请注意查收!' + '</span></div></div>';
                 $(".applyResult").append(msg);
             } else {
                 if (data.transactionErrorList) {

@@ -18,15 +18,22 @@ define(['gb/home/TopPage'], function (TopPage) {
          */
         bindNavigation: function () {
             var _this = this;
+            //为防止重复绑定事件，绑定前先解除绑定
+            $("a[nav-top]").off("click");
             $("a[nav-top]").click(function (e) {
                 e.preventDefault();
                 _this._doNavigate(e);
-                e.stopPropagation();    //  阻止事件冒泡
+                e.stopPropagation();//阻止事件冒泡
             });
+            //为防止重复绑定事件，绑定前先解除绑定
+            $("a[nav-target]").off("click");
             $("a[nav-target]").click(function (e) {
+                if ($(this).attr("href")==='#') {
+                    return;
+                }
                 e.preventDefault();
                 _this._doNavigate(e);
-                e.stopPropagation();    //  阻止事件冒泡
+                e.stopPropagation();//阻止事件冒泡
             });
         },
     });

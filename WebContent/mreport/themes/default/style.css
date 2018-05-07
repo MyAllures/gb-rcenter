@@ -30,10 +30,10 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .menu .list-group .list-group-item .tit:hover { background: #1c89f3; }
 .menu .list-group .list-group-item a { font-size: 1.1rem; color: #b5d9fe; }
 .menu .list-group .list-group-item i { width: 24px; height: 22px; float: left; margin-top: 7px; }
-.menu .list-group .list-group-item i.gaikuang { background: url(../images/menu-left-1.png) center no-repeat; }
-.menu .list-group .list-group-item i.player { background: url(../images/menu-left-2.png) center no-repeat; }
-.menu .list-group .list-group-item i.deposit { background: url(../images/menu-left-3.png) center no-repeat; }
-.menu .list-group .list-group-item i.game { background: url(../images/menu-left-4.png) center no-repeat; }
+.menu .list-group .list-group-item i.icon_gaikuang { background: url(../images/menu-left-1.png) center no-repeat; }
+.menu .list-group .list-group-item i.icon_player { background: url(../images/menu-left-2.png) center no-repeat; }
+.menu .list-group .list-group-item i.icon_deposit { background: url(../images/menu-left-3.png) center no-repeat; }
+.menu .list-group .list-group-item i.icon_game { background: url(../images/menu-left-4.png) center no-repeat; }
 .menu .list-group .list-group-item:after { content: ""; display: block; width: 17px; height: 17px; background: url(../images/menu-right-2.png) center no-repeat; position: absolute; right: 10px; top: 8px; }
 .menu .list-group .active:after { background: url(../images/menu-right-1.png); }
 .menu .list-group .active .tit { background: rgba(255, 255, 255, 0.3); }
@@ -286,7 +286,7 @@ input:checked{background-color: #FFFFFF;}
 .check_api input{
   position: relative;
   top: 2px;left: -2px;
-  background-color: #fffff;
+  background-color: #ffffff;
   width: 16px;height: 16px;
   border-radius: 5px;
   display: inline-block;

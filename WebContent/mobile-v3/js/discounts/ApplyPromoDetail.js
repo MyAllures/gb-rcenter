@@ -57,8 +57,12 @@ function applyActivity() {
                 $('.promo_con_list').removeClass('mui-hidden');
                 $('.status_failure').removeClass('mui-hidden');
                 $('.btn_cust_serv').removeClass('mui-hidden');
-                if (data.msg) {
-                    var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.msg],
+                if (data.msg && typeof data.msg != 'undefined') {
+                    var message = window.top.message.apply_activity[data.msg];
+                    if(typeof message == 'undefined'){
+                        message = data.msg;
+                    }
+                    var html = ['<li class="mui-table-view-cell">' + message,
                         '<span class="icon-fail"></span>',
                         '</li>'].join("");
                     $('.promo_con_list .mui-table-view').append(html);
@@ -228,10 +232,20 @@ function applyDepositSend(obj, options) {
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
             if (data.state) {
+                var successIsAudit = "申请成功";
+                var successState = "suc";
                 $(obj).removeAttr('data-rel');
                 $(obj).find('.promo_item_sta').removeClass('awa');
-                $(obj).find('.promo_item_sta').addClass('suc');
-                $(obj).find('.promo_item_sta').html("申请成功");
+                if(data.transactionErrorList){
+                    for (var j = 0; j < data.transactionErrorList.length; j++) {
+                        if(data.transactionErrorList[j].state && data.transactionErrorList[j].isAudit){
+                            successIsAudit = "申请中...";
+                            successState = "proc";
+                        }
+                    }
+                }
+                $(obj).find('.promo_item_sta').html(successIsAudit);
+                $(obj).find('.promo_item_sta').addClass(successState);
             } else {
                 toast(window.top.message.apply_activity[data.msg]);
             }
