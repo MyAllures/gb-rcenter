@@ -116,6 +116,7 @@
     $(function () {
         $.ajax({
             url: "/passport/displayCaptcha.html",
+            async:false,
             dataType: 'json',
             type: 'POST',
             success: function (data) {

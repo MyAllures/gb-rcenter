@@ -191,28 +191,22 @@ li{
 }
 /* mui-bar-tab */
 .mui-bar-tab{
-    height: 51px;
+    height: 51px;box-shadow: none;-webkit-box-shadow:none;
     .mui-tab-label{
         font-size: 13px !important;
     }
 }
 /* ui-bar-tab */
 .mui-bar-tab{
-    .mui-icon,.mui-icon:active{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;
-        &.icon-deposit{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -9px -4px;}
-        &.icon-promo{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -49px -5px;}
-        &.icon-home{      width: 46px;    height: 46px;    position: absolute;    left: 50%;    margin-left: -23px;    top: -13px;    background: #c2c2c2;    border-radius: 23px;
-            &+.mui-tab-label{margin-top: 31px;}
-            &:after{    content: '';    width: 36px;    height: 36px;    background: url(images/footer-nav-icon.png) no-repeat -83px -2px/auto 80px;    position: absolute;    left: 5px;    top: 5px;}
-        }
-        &.icon-service{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -129px -5px;}
-        &.icon-mine{background: url(images/footer-nav-icon.png) no-repeat center/auto 80px;background-position: -168px -5px;}        
+    .mui-icon,.mui-icon:active{background-image: url(images/footer-nav-icon.png);background-repeat: no-repeat;background-size: auto 48px;background-position-y: 0;
+        &.icon-deposit{background-position-x: -24px;}
+        &.icon-promo{background-position-x: -48px;}
+        &.icon-home{background-position-x: 0;}
+        &.icon-service{background-position-x: -72px;}
+        &.icon-mine{background-position-x: -96px;}        
     }
     .mui-active{
-        .mui-icon{background-position-y: -45px;
-            &.icon-home{
-                &:after{    background: url(images/footer-nav-icon.png) no-repeat -83px -43px/auto 80px;}
-            }
+        .mui-icon{background-position-y: -24px;
         }            
     }
 }
@@ -510,7 +504,7 @@ li{
 }
 /* 资金记录样式  */
 .mine-cash-record-body{
-    background: #f2f2f2;font-size: 12px;color: #333;
+    background: #fff;font-size: 12px;color: #333;
     header.mui-bar{background-color: #1b75d9;}
     footer{padding:13px 10px;background: #e3ecf7;height: 64px;border-top: 1px solid #e1e1e1;position: fixed;left: 0;bottom: 0;right: 0;z-index: 10;
         .flex{display: flex;
@@ -534,7 +528,7 @@ li{
         &:after{content: '';height: 1px;background: #f2f2f2;left: 10px;right: 10px;bottom: 0;}
     }
     .mine-cash-record-content{
-        padding-bottom: 64 !important;background: #f2f2f2;
+        padding-bottom: 64px !important;background: #fff;
     }  
     p.qkclz{padding: 8px 10px;margin-bottom: 11px !important;}
     .cash-type-row{border-bottom: 1px solid #e2e2e2;}
@@ -611,6 +605,7 @@ li{
     .mine-table table{
         background-color: #fff;
         width: 100%;
+        th{text-align: center;font-weight:normal;background: #eee;border: 1px solid #fff;}
     }
     .mine-table table tr{
         border-bottom: 0;
@@ -1380,6 +1375,159 @@ body.deposit{
         color: #999;
     }
 } // 存款样式结束标签
+// 新存款样式
+.deposit_2{
+    background: #f2f2f2;
+    .deposit-2-content{padding-bottom: 51px;background: #f2f2f2;}
+    .list_pay{// 支付列表
+        padding: 12px 10px 8px;overflow: hidden;
+        margin-left: -4px;margin-right: -4px;
+        .list_pay_item_w{width: 20%;float: left;padding: 0 4px;margin-bottom: 8px;
+            .list_pay_item{background: #fff;border-radius: 2px;text-align: center;padding-top: 5px;padding-bottom: 8px;border: 1px solid #fff;
+                &.cur{border-color: #1766bb;}
+                .icon-pay{width:38px;height: 38px;display: block;margin:0 auto 6px;background-image: url(images/pay-icon.png);background-repeat: no-repeat;background-size: 38px;background-position-x: center;
+                    &.online-pay{background-position-y: 0;}// 在线支付
+                    &.wangyin{background-position-y:-38px ;}// 网银支付
+                    &.weichat-pay{background-position-y: -76px;}// 微信支付
+                    &.alipay{background-position-y: -114px;}// 支付宝支付
+                    &.qq-wallet{background-position-y:-152px ;}// QQ钱包
+                    &.jingdong-wallet{background-position-y:-190px ;}// 京东钱包
+                    &.baidu-wallet{background-position-y: -228px;}// 百度钱包
+                    &.bitcoin-pay{background-position-y: -266px;} // 比特币
+                    &.yima-pay{background-position-y: -304px;}// 一码付
+                    &.union-pay{background-position-y: -342px;}// 银联扫码
+                    &.kuaichong{background-position-y: -380px; }// 快充中心
+                    &.wangyin-dep{background-position-y: -418px;} // 网银存款
+                    &.yishou-pay{background-position-y: -456px;}// 易收付
+                    &.other-pay{background-position-y: -494px;}// 其它
+                }
+                .pay_nam{font-size: 10px;color: #333;line-height: 1;}
+            }
+        }
+    }
+    .pay_mone{// 选择支付金额
+        background: #fff;
+        .tit{font-size: 14px;color: #333;padding: 10px 24px;position: relative;
+            &:before{content: '';width: 3px;height: 17px;background: #1766bb;position: absolute;left: 11px;top: 11px;}
+        }
+        .conv_mone{
+            overflow: hidden;padding-bottom: 15px;
+            .conv_mone_i{width: 20%;float: left;
+                .icon_mone{width: 58px;height: 58px;display: block;margin: 0 auto;background-image: url(images/conv_mone.png); background-repeat: no-repeat;background-size: 100%;background-position-x: center;
+                    &.mone_100{background-position-y: 0;}
+                    &.mone_200{background-position-y: -58px;}
+                    &.mone_500{background-position-y: -116px;}
+                    &.mone_1000{background-position-y: -174px;}
+                    &.mone_5000{background-position-y: -232px;}
+                }
+            }
+        }
+        .bank_list{// 选择银行
+            overflow: hidden;padding: 0 10px;margin-bottom: -20px;
+            margin-left: -6px;margin-right: -6px;
+            .bank_list_i_w{float: left;width: 50%;padding: 0 6px;font-size: 14px;color: #333;margin-bottom: 20px;
+                .bank_list_i{background: #f2f2f2;height: 35px;line-height: 35px;border-radius: 2px;padding-left: 10px;border: 1px solid #f2f2f2;
+                    &.cur{border-color: #1766bb;}
+                    .bank_n{background: url(images/pay_bank_b.png) no-repeat;    background-size: 25px;    display: inline-block;    width: 26px;    height: 20px;    vertical-align: top;    margin-top: 8px;margin-right: 8;
+                        &.unionpay{background-position: 0 -3px;} 
+                        &.onlinepay{background-position: 0 -3px;}
+                        &.wechatpay{background-position: 0px -26px;}
+                        &.alipay{background-position: 0px -48px;}
+                        &.cmb{background-position: 0px -71px;}
+                        &.ccb{background-position: 0px -94px;}
+                        &.ks{background-position: 0 -116px;}
+                        &.jdwallet{background-position: -1px -138px;}
+                        &.bdwallet{background-position: 0px -161px;}
+                        &.ymf{background-position: 0px -183px;}
+                        &.qqwallet{background-position: 0px -206px;}
+                        &.icbc{background-position: 0px -228px;}
+                        &.boc{background-position: 0px -250px;}
+                        &.abc{background-position: 0px -273px;}
+                        &.hxbank{background-position: 0px -295px;}
+                        &.psbc{background-position: 0px -319px;}
+                        &.spdb{background-position: 0px -340px;}  /* 浦发银行*/
+                        &.bitcoin{background-position: 0px -364px;}
+                        &.qrcodepay{background-position: 0px -386px;}
+                        &.cmbc{background-position: 0px -405px;}   /* 民生*/
+                        &.comm{background-position: 0px -435px;} /*  交通银行 */
+                        &.ceb{background-position: -3px -857px;}  /*光大*/
+                        &.spabank{background-position:0px -455px;}/* 10 平安银行 */ 
+                        &.cib{background-position:0px -473px;}/* 11 兴业银行 */
+                        &.bjbank{background-position:-2px -495px;}/* 12 北京银行 */
+                        &.citic{background-position:0px -519px;}/* 13 中信银行 */
+                        &.gdb{background-position:-2px -542px;}/* 14 广发银行 */
+                        &.jsbank{background-position:-3px -567px;}/* 16 江苏银行 */ 
+                        &.shbank{background-position:-3px -594px;}/* 18 上海银行 */
+                        &.bohaib{background-position:-3px -617px;}/* 19 渤海银行 */
+                        &.hkbea{background-position:2px -639px;}/* 20 东亚银行 */
+                        &.nbbank{background-position:-3px -664px;}/* 21 宁波银行 */
+                        &.czbank{background-position:-3px -694px;}/* 22 浙商银行 */
+                        &.hzcb{background-position:-3px -721px;}/* 23 杭州银行 */
+                        &.gcb{background-position:-3px -750px;}/* 24 广州银行 */
+                        &.fjnx{background-position:-3px -779px;}/* 25 福建农商银行 */
+                        &.hangseng{background-position:-3px -806px;}/* 26 恒生银行 */
+                        &.tzb{background-position:-2px -835px;}/* 27 台州银行 */
+                        &.ysf{background-position:-2px -904px;} /* 易支付 */
+                    }
+                    .bank_n_txt{display: inline-block;}
+                }
+            }
+        }
+    }
+    .depo_row{// 存款项
+        border-top: 1px solid #f3f3f3;display: flex;height: 50px;font-size: 14px;
+        .label{width: 100px;line-height: 49px;padding-left: 10px;color: #666;
+            &.w_120{width: 120px;}
+        }
+        .input{flex: 1;
+            input[type='text']{border: 0;margin: 0;height: 49px;line-height: 49px;padding: 0 10px;font-size: 14px;color: #333;
+                &.text-right{text-align: right;}
+            }
+        }
+        .ext{width: 50px;height: 49px;text-align: center;line-height: 49px;color: #333;
+            .cha{background: #e2e2e2;}
+        }
+    }
+    .btn_wrap{
+        padding: 20px 10px;
+        .btn_submit{height: 40px;line-height: 40px;padding: 0;text-align: center;font-size: 14px;color: #fff;background: #1766bb;border-color: #1766bb;}
+    }
+    .deposit_help{padding: 0 20px 40px;font-size: 12px;color: #666;
+        p{margin-bottom: 0;}
+    }
+    .bank_car_item{//银行卡样式
+        width: (535px/2);background: #f7f7f7;border-radius: 4px;margin:0 auto 10px;padding: 5px 14px 12px;
+        .top{
+            overflow: hidden;
+            .car_type{float: right;font-size: 12px;color: #333;height: 30px; line-height: 30px;}
+        }
+        .bank_car_txt_info{
+            background: #fff;font-size: 14px;color: #333;padding: 20px 5px;border-radius: 3px;
+            .btn_copy{float: right;width: 35px;height: 22px;line-height: 22px;text-align: center;background: #c4defa;border-radius: 2px;}
+            .b_c_t_i_row{margin-bottom: 6px;
+                &:last-child{margin-bottom: 0;}
+            }
+        }
+        &.bit_coin_card{
+            .bank_car_txt_info{padding: 10px 5px;
+                .b_c_t_i_row{position: relative;}
+                .b_c_t_i_row+.b_c_t_i_row:before{content: '';position: absolute;top: -4px;left: 0;right: 0;background: #f2f2f2;height: 1px;}
+            }
+        }
+    }
+     .wechat-code{text-align:center;border-top:1px solid #f3f3f3;padding:10px;
+        .cod-img-wrap{border: 1px solid #f3f3f3;border-radius: 2px;padding: 10px 0;width: 224px;margin: 0 auto 10px;}
+        .cod-btn-wrap{
+            .mui-btn{background: #1b75d9;width: 110px;height: 25px;line-height: 25px;padding: 0;font-size: 12px;color: #fff;border-color: #1b75d9;}
+        }
+        &.bit_coin_c{
+            .cod-img-wrap{border-color: transparent;    padding: 0;    margin: 0 auto;}
+            .cod-btn-wrap .mui-btn{width: 116px;}
+        }
+     }
+    .wechat-code img{width:116px;height:116px;display:inline-block;    border-top: 1px solid #f3f3f3;}
+    .wechat-code .tit{margin:0 auto;width:130px;height:30px;line-height:30px;border-top-left-radius:0;border-top-right-radius:0;}
+}
 /*弹窗*/
 .masker{
     position: fixed;
@@ -3811,4 +3959,36 @@ body.mine-user{color: #000;
 
 .tipbig.cry {
     background-position: -146px -8px
+}
+// 新存款优惠弹窗
+.deposit_promo_dialog{
+    &.mui-popup{
+        .mui-popup-inner{padding: 0;border-radius: 13px;}
+        .mui-popup-title{height: 37px;line-height: 37px;background:#f2f2f2 ;}
+        .mui-popup-text{margin-top: 0;padding: 15px 22px;text-align: left;font-size: 12px;
+            .pro_ite{color: #999;
+                span{color: #333;}
+            }
+            .pro_lis{height: 121px;position: relative;background: #f2f2f2;border-radius: 5px;margin-top: 5px;
+                .mui-scroll{padding: 0 10px;}
+                .pro_list_item{height: 32px;line-height: 32px;border-bottom: 1px dashed #dedede;position:relative; 
+                    &:last-child{border-bottom: 0;}
+                    input[type="radio"]{-webkit-appearance:none;appearance: none;width: 8px;height: 8px;border: 1px solid #9b9b9b;border-radius: 50%;position: absolute;right: 10px;top: 10px;
+                        &:checked{border-color: #1b75d9;background: #1b75d9;}
+                    }
+                }
+            }
+            .btn_wrap{    padding: 24px 0 9px;
+                .btn_dep{height: 35px;line-height: 35px;padding: 0;background: #1b75d9;border-color: #1b75d9;font-size: 14px;color: #fff;margin: 0;}
+            }
+        }
+        .mui-popup-buttons{
+            height: 80px;line-height: 80px;
+        }
+        .mui-popup-button{background: transparent;height: 80px;line-height: 80px;
+            .mui-icon{    background: #fff;  border-radius: 50%;  width: 50px;  height: 50px;  vertical-align: top;   margin-top: 24px;    font-size: 63px;
+                &:before{    position: absolute;    left: 50%;    margin-left: -31px;    top: 17px;}
+            }
+        }
+    }
 }

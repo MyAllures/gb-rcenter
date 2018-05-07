@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* style of other pages */
 /* mui-content-without-footer-address */
 .mui-content-without-footer-address { padding: 44px 0 0 0 !important; }
@@ -73,7 +74,7 @@
 .download-content .btn-wrap .btn-download.android { background: url(images/icon-android.png) no-repeat 40px/24px; }
 .download-content .btn-wrap .btn-download.ios { background: url(images/icon-ios.png) no-repeat 40px/24px; }
 
-.download-content-ios { background: #fff !important; }
+.download-content-ios { background: #fff !important; position: relative; margin-top: 44px; }
 .download-content-ios .h-bg { width: 100%; }
 .download-content-ios .app-logo { width: 100px; height: 100px; position: absolute; top: 40px; left: 50%; margin-left: -50px; }
 .download-content-ios .btn-install { display: block; margin: 20px auto 0; width: 165px; height: 40px; text-align: center; line-height: 40px; color: #eb0002; font-size: 15px; border: 1px solid #eb0002; border-radius: 6px; }
@@ -121,10 +122,14 @@
 .promo-detail-content .gb-imgs > .ct ul li > .ct h5 > i { display: block; border-bottom: 1px dashed #e2e2e2; position: absolute; top: 50%; left: 0; right: 0; }
 .promo-detail-content .gb-imgs > .ct ul li > .ct h5 span { display: inline-block; height: 23px; padding: 0 7px; border-radius: 3px; line-height: 23px; color: #fff; background-color: #1766bb; font-size: 12px; position: relative; z-index: 1; }
 .promo-detail-content .gb-imgs > .ct ul li > .ct p { padding: 5px 0; line-height: 18px; color: #999; font-size: 12px; margin-bottom: 0; }
-.promo-detail-content .gb-form-foot { position: fixed; bottom: 0; left: 0; right: 0; padding: 0; z-index: 10; }
-.promo-detail-content .gb-form-foot .mui-btn { float: left; width: 50%; border-radius: 0; font-size: 14px; padding: 0; height: 45px; line-height: 45px; }
-.promo-detail-content .gb-form-foot .mui-btn.btn-deposit { background: #1766bb; border-color: #1766bb; }
-.promo-detail-content .gb-form-foot .mui-btn.btn-apply { background: #0ec392; border-color: #0ec392; }
+.promo-detail-content .gb-form-foot { padding: 10px; }
+.promo-detail-content .gb-form-foot .submit { border: 1px solid #1766bb; background-color: #1766bb; width: 100%; padding: 10px 12px; font-size: 13px; }
+.promo-detail-content .gb-form-foot.new_foo { position: absolute; bottom: 0; left: 0; right: 0; padding: 0; z-index: 10; }
+.promo-detail-content .gb-form-foot.new_foo .mui-btn { float: left; width: 50%; border-radius: 0; font-size: 14px; padding: 0; height: 45px; line-height: 45px; }
+.promo-detail-content .gb-form-foot.new_foo .mui-btn.btn-deposit { background: #1766bb; border-color: #1766bb; }
+.promo-detail-content .gb-form-foot.new_foo .mui-btn.btn-apply { background: #0ec392; border-color: #0ec392; }
+.promo-detail-content .table-scroll { padding: 0 10px; }
+.promo-detail-content .table-scroll .mui-scroll { height: auto; }
 
 /* promo-records */
 .mui-bar-nav.promo-record .top-info { float: right; font-size: 10px; line-height: 15px; color: #fff; padding-top: 10px; text-align: right; }
@@ -162,7 +167,7 @@
 .promo-apply-content .top_title .tit { font-size: 15px; color: #317ec2; }
 .promo-apply-content .promo_con_list { font-size: 14px; color: #666; }
 .promo-apply-content .promo_con_list .mui-table-view:before, .promo-apply-content .promo_con_list .mui-table-view:after { content: none; }
-.promo-apply-content .promo_con_list .mui-table-view-cell { padding: 15px; }
+.promo-apply-content .promo_con_list .mui-table-view-cell { padding: 15px 35px 15px 15px; }
 .promo-apply-content .promo_con_list .mui-table-view-cell .icon-pass, .promo-apply-content .promo_con_list .mui-table-view-cell .icon-fail, .promo-apply-content .promo_con_list .mui-table-view-cell .icon-pass-disa { position: absolute; top: 50%; right: 15px; width: 18.5px; height: 18.5px; background-size: 100%; background-repeat: no-repeat; -webkit-transform: translateY(-50%); transform: translateY(-50%); }
 .promo-apply-content .promo_con_list .mui-table-view-cell .icon-pass { background-image: url(images/promo/icon-pass.png); }
 .promo-apply-content .promo_con_list .mui-table-view-cell .icon-fail { background-image: url(images/promo/icon-fail.png); }
@@ -264,5 +269,70 @@
 
 .mui-toast-container.app_fai { top: 50%; bottom: auto; transform: translateY(-50%); }
 .mui-toast-container.app_fai .mui-toast-message { background: #fff; color: #333; font-size: 13px; padding: 11px 5px; }
+
+/* 忘记密码样式  */
+body.forget-password .mui-content { background: #efefef; }
+body.forget-password .a-block { display: block; }
+body.forget-password .diy-list { font-size: 14px; color: #666; display: flex; height: 55px; line-height: 54px; border-top: 1px solid #f2f2f2; background: #fff; }
+body.forget-password .diy-list .label { width: 46px; text-align: center; }
+body.forget-password .diy-list .label.label_txt { width: 100px; text-align: left; padding-left: 10px; }
+body.forget-password .diy-list .input { flex: 1; }
+body.forget-password .diy-list .input .txt { padding: 0 10px; }
+body.forget-password .diy-list .input input[type="text"], body.forget-password .diy-list .input input[type="password"] { border: 0; margin: 0; height: 54px; line-height: 54px; padding: 0 10px; font-size: 12px; color: #333; vertical-align: top; }
+body.forget-password .diy-list .input input[type="text"].text-right, body.forget-password .diy-list .input input[type="password"].text-right { text-align: right; }
+body.forget-password .diy-list .ext { padding-right: 10px; }
+body.forget-password .diy-list .ext .txt { font-size: 12px; color: #666; }
+body.forget-password .btn-wrap { margin: 40px 10px 10px; }
+body.forget-password .btn-wrap .btn-blo { padding: 0; line-height: 40px; height: 40px; background: #1766bb; color: #fff; border-radius: 5px; font-size: 14px; border-color: #1766bb; }
+body.forget-password .account_input { background: #fff; padding: 30px 0; }
+body.forget-password .account_input input { margin: 0 auto; display: block; width: 250px; height: 50px; line-height: 50px; outline: 0; border-radius: 5px; background: #f2f2f2; border: 1px solid #e2e2e2; padding: 0 10px; font-size: 14px; color: #333; }
+body.forget-password .code-txt { text-align: center; background: #fff; font-size: 14px; color: #333; padding: 30px 0; }
+body.forget-password .code-txt span { display: block; color: #1766bb; }
+
+.not_bind_phone_dialog.mui-popup .mui-popup-inner { padding: 0; }
+.not_bind_phone_dialog.mui-popup .mui-popup-inner .mui-popup-title { font-size: 14px; color: #333; padding: 15px 0; }
+.not_bind_phone_dialog.mui-popup .mui-popup-inner .mui-popup-text { margin: 0; }
+.not_bind_phone_dialog.mui-popup .mui-popup-inner .mui-popup-text .cont { font-size: 12px; color: #333; }
+.not_bind_phone_dialog.mui-popup .mui-popup-inner .btn_wra { height: 41px; line-height: 40px; border-top: 1px solid #e2e2e2; margin-top: 15px; }
+.not_bind_phone_dialog.mui-popup .mui-popup-inner .btn_wra a { display: block; font-size: 14px; color: #1766bb; width: 50%; float: left; }
+.not_bind_phone_dialog.mui-popup .mui-popup-inner .btn_wra a + a { border-left: 1px solid #e2e2e2; }
+.not_bind_phone_dialog.mui-popup .mui-popup-buttons { display: none; }
+
+.password_set_success_dialog.mui-popup .mui-popup-inner { padding: 0; border-radius: 13px; background: #fff; }
+.password_set_success_dialog.mui-popup .mui-popup-text { margin-top: 0; overflow: hidden; }
+.password_set_success_dialog.mui-popup .mui-popup-text .icon-gongxi { background: url(./images/icon-gongxi.png) no-repeat center/100%; width: 116px; height: 106px; margin: 55px auto 35px; }
+.password_set_success_dialog.mui-popup .mui-popup-text .txt { font-size: 14px; color: #333; margin-bottom: 70px; }
+.password_set_success_dialog.mui-popup .mui-popup-buttons { height: 80px; line-height: 80px; }
+.password_set_success_dialog.mui-popup .mui-popup-button { background: transparent; height: 80px; line-height: 80px; }
+.password_set_success_dialog.mui-popup .mui-popup-button .mui-icon { background: #fff; border-radius: 50%; width: 50px; height: 50px; vertical-align: top; margin-top: 24px; font-size: 63px; }
+.password_set_success_dialog.mui-popup .mui-popup-button .mui-icon:before { position: absolute; left: 50%; margin-left: -31px; top: 17px; }
+
+body.bind-mobile { font-size: 14px; }
+body.bind-mobile .mui-content { background: #efefef; }
+body.bind-mobile .input { background: #fff; font-size: 14px; padding: 10px; }
+body.bind-mobile .input input { border: none; font-size: 14px; display: inline-block; margin-bottom: 5px; color: #666; padding: 0 5px; }
+body.bind-mobile .input .mobile, body.bind-mobile .input .yzm { display: flex; }
+body.bind-mobile .input .yzm input { margin-bottom: 0; }
+body.bind-mobile .input .yzm a { white-space: nowrap; line-height: 40px; display: inline-block; }
+body.bind-mobile .input i.icon-mobile { width: 37px; display: inline-block; height: 40px; background: url(../images/phone.png) center no-repeat/12px; }
+body.bind-mobile .input i.icon-yzm { width: 45px; display: inline-block; height: 40px; background: url(../images/safe.png) center no-repeat/16px; }
+body.bind-mobile .btn-wrap { margin: 40px 10px 10px; }
+body.bind-mobile .btn-wrap .btn-blo { padding: 0; line-height: 40px; height: 40px; background: #1766bb; color: #fff; border-radius: 5px; font-size: 14px; border-color: #1766bb; }
+body.bind-mobile .cue { font-size: 12px; color: #666; padding: 20px 10px 0; line-height: 22px; }
+body.bind-mobile .bind-success { text-align: center; color: #444; line-height: 26px; padding: 25px 0; background: #fff; font-size: 14px; }
+
+.login .mui-content { background: #f2f2f2; }
+.login .user-img { background: url(../images/login-user.png) center no-repeat/100px, linear-gradient(#1767bd, #1767bd); width: 100px; height: 100px; border-radius: 100%; box-shadow: 3px 5px 15px 6px rgba(23, 103, 189, 0.25); margin: 50px auto; }
+.login .login-form { padding: 0 35px; color: #666; }
+.login .login-form .password, .login .login-form .username { position: relative; }
+.login .login-form .password label, .login .login-form .username label { line-height: 30px; }
+.login .login-form .password input, .login .login-form .username input { font-size: 14px; border-color: #ddd; }
+.login .login-form .warn { color: #333; font-size: 12px; position: absolute; right: 0; top: 5px; }
+.login .login-form .warn .icon-warn { width: 14px; height: 14px; display: inline-block; border-radius: 100%; background: #f65d5d; color: #fff; text-align: center; line-height: 14px; font-style: normal; margin-right: 3px; }
+.login .login-form .forget-pas { text-align: right; }
+.login .login-form .forget-pas a { color: #666; }
+.login .login-form a.btn { display: block; text-align: center; height: 40px; line-height: 40px; border-radius: 2px; }
+.login .login-form .btn-login { background: #1766bb; color: #fff; margin-bottom: 15px; }
+.login .login-form .btn-regist { color: #445dc2; border: 1px solid #445dc2; }
 
 /*# sourceMappingURL=otherpage.css.map */

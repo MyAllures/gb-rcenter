@@ -9,10 +9,15 @@ function floatList(obj, options) {
 /* 关闭浮窗广告 */
 function closeAds(obj, options) {
     $(".ads-slider").hide();
+    //关闭后是否展示浮动图
+    var showEffect = $("#showEffect").val();
+    if (showEffect == 'true' || showEffect == true) {
+        localStorage.setItem("showEffect", true);
+    }
 }
 
 /*规则活动滚动*/
-function scrollRule(){
+function scrollRule() {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
         containerScroll: '.hongbao-rule .txt',

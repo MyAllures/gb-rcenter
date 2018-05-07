@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+    <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+</head>
+
+<body class="deposit_2">
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">微信电子支付</h1>
+    <div class="login-info" id="login-info">
+        <div class="money-shadow"></div>
+        <div class="user_name">a*1</div>
+        <div class="money">￥0.00</div>
+        <div class="ex">
+            <table>
+                <tr>
+                    <td><span class="zzc">总资产</span></td>
+                    <td><span class="bar-asset" >￥0</span></td>
+                </tr>
+            </table>
+            <hr>
+            <table>
+                <tr>
+                    <td><span class="qb">钱包</span></td>
+                    <td class="bar-wallet" >￥0</td>
+                </tr>
+            </table>
+            <hr>
+            <div class="mui-scroll-wrapper mui-assets">
+                <div class="mui-scroll">
+                    <table id="api-balance">
+                        <tbody>
+                        <tr>
+                            <td>DS 贵宾厅</td>
+                            <td class="_money" id="_api_1">
+                                <div class="loader api-loader">
+                                    <div class="loader-inner ball-pulse api-div">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr><td>KG彩票</td><td class="_money" id="_api_2">￥0</td></tr>
+                        <tr><td>MG电子</td><td class="_money" id="_api_3">￥0</td></tr>
+                        <tr><td>IM体育</td><td class="_money" id="_api_4">￥0</td></tr>
+                        <tr><td>GD 锦绣厅</td><td class="_money" id="_api_5">￥0</td></tr>
+                        <tr><td> PT电子</td><td class="_money" id="_api_6">￥0</td></tr>
+                        <tr><td>OG 东方厅</td><td class="_money" id="_api_7">￥0</td></tr>
+                        <tr><td>AG大厅</td><td class="_money" id="_api_9">￥0</td></tr>
+                        <tr><td>BBIN大厅</td><td class="_money" id="_api_10">￥0</td></tr>
+                        <tr><td>皇冠体育</td><td class="_money" id="_api_12">￥0</td></tr>
+                        <tr><td>HB电子</td><td class="_money" id="_api_15">￥0</td></tr>
+                        <tr><td>Ebet如意厅</td><td class="_money" id="_api_16">￥0</td></tr>
+                        <tr><td>SA澳门厅</td><td class="_money" id="_api_17">￥0</td></tr>
+                        <tr><td>沙巴体育</td><td class="_money" id="_api_19">￥0</td></tr>
+                        <tr><td>BSG电子</td><td class="_money" id="_api_20">￥0</td></tr>
+                        <tr><td>LT彩票</td><td class="_money" id="_api_22">￥0</td></tr>
+                        <tr><td>OPUS体育</td><td class="_money" id="_api_23">￥0</td></tr>
+                        <tr><td>OPUS幸运厅</td><td class="_money" id="_api_24">￥0</td></tr>
+                        <tr><td>SG电子</td><td class="_money" id="_api_25">￥0</td></tr>
+                        <tr><td>PNG电子</td><td class="_money" id="_api_26">￥0</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="ct">
+                <p><a class="go btn-refresh">刷新额度</a></p>
+                <p><a class="go btn-deposit">存款</a></p>
+            </div>
+        </div>
+    </div><!--login-info end-->
+</header>
+<div class="mui-content mui-scroll-wrapper deposit-2-content">
+    <div class="mui-scroll">
+        <div class="list_pay">
+            <div class="list_pay_item_w">
+                <div class="list_pay_item">
+                    <i class="icon-pay online-pay"></i>
+                    <div class="pay_nam">在线支付</div>
+                </div>
+            </div>
+            <div class="list_pay_item_w">
+                <div class="list_pay_item">
+                    <i class="icon-pay wangyin"></i>
+                    <div class="pay_nam">网银支付</div>
+                </div>
+            </div>
+            <div class="list_pay_item_w">
+                <div class="list_pay_item cur">
+                    <i class="icon-pay weichat-pay"></i>
+                    <div class="pay_nam">微信支付</div>
+                </div>
+            </div>
+            <div class="list_pay_item_w">
+                <div class="list_pay_item">
+                    <i class="icon-pay alipay"></i>
+                    <div class="pay_nam">支付宝支付</div>
+                </div>
+            </div>
+            <div class="list_pay_item_w">
+                <div class="list_pay_item">
+                    <i class="icon-pay qq-wallet"></i>
+                    <div class="pay_nam">QQ钱包</div>
+                </div>
+            </div>
+            <div class="list_pay_item_w">
+                <div class="list_pay_item">
+                    <i class="icon-pay jingdong-wallet"></i>
+                    <div class="pay_nam">京东钱包</div>
+                </div>
+            </div>
+            <div class="list_pay_item_w">
+                <div class="list_pay_item">
+                    <i class="icon-pay baidu-wallet"></i>
+                    <div class="pay_nam">百度钱包</div>
+                </div>
+            </div>
+            <div class="list_pay_item_w">
+                <div class="list_pay_item">
+                    <i class="icon-pay bitcoin-pay"></i>
+                    <div class="pay_nam">比特币</div>
+                </div>
+            </div>
+            <div class="list_pay_item_w">
+                <div class="list_pay_item">
+                    <i class="icon-pay yima-pay"></i>
+                    <div class="pay_nam">一码付</div>
+                </div>
+            </div>
+            <div class="list_pay_item_w">
+                <div class="list_pay_item">
+                    <i class="icon-pay union-pay"></i>
+                    <div class="pay_nam">银联扫码</div>
+                </div>
+            </div>
+            <div class="list_pay_item_w">
+                <div class="list_pay_item">
+                    <i class="icon-pay kuaichong"></i>
+                    <div class="pay_nam">快充中心</div>
+                </div>
+            </div>
+            <div class="list_pay_item_w">
+                <div class="list_pay_item">
+                    <i class="icon-pay wangyin-dep"></i>
+                    <div class="pay_nam">网银存款</div>
+                </div>
+            </div>
+            <div class="list_pay_item_w">
+                <div class="list_pay_item">
+                    <i class="icon-pay yishou-pay"></i>
+                    <div class="pay_nam">易收付</div>
+                </div>
+            </div>
+            <div class="list_pay_item_w">
+                <div class="list_pay_item">
+                    <i class="icon-pay other-pay"></i>
+                    <div class="pay_nam">其它</div>
+                </div>
+            </div>
+        </div>
+        <div class="pay_mone">
+            <div class="tit">选择银行</div>
+            <div class="bank_list">
+                <div class="bank_list_i_w">
+                    <div class="bank_list_i cur">
+                        <i class="bank_n wechatpay"></i>
+                        <div class="bank_n_txt">微信电子支付</div>
+                    </div>
+                </div>
+                <div class="bank_list_i_w">
+                    <div class="bank_list_i">
+                        <i class="bank_n wechatpay"></i>
+                        <div class="bank_n_txt">微信电子支付</div>
+                    </div>
+                </div>
+                <div class="bank_list_i_w">
+                    <div class="bank_list_i">
+                        <i class="bank_n wechatpay"></i>
+                        <div class="bank_n_txt">微信电子支付</div>
+                    </div>
+                </div>
+                <div class="bank_list_i_w">
+                    <div class="bank_list_i">
+                        <i class="bank_n wechatpay"></i>
+                        <div class="bank_n_txt">微信电子支付</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tit">选择金额</div>
+            <div class="conv_mone">
+                <div class="conv_mone_i">
+                    <i class="icon_mone mone_100"></i>
+                </div>
+                <div class="conv_mone_i">
+                    <i class="icon_mone mone_200"></i>
+                </div>
+                <div class="conv_mone_i">
+                    <i class="icon_mone mone_500"></i>
+                </div>
+                <div class="conv_mone_i">
+                    <i class="icon_mone mone_1000"></i>
+                </div>
+                <div class="conv_mone_i">
+                    <i class="icon_mone mone_5000"></i>
+                </div>
+            </div>
+            <div class="depo_row">
+                <div class="label">存款金额</div>
+                <div class="input"><input type="text" placeholder="10.00~50,000.00"></div>
+            </div>
+        </div>
+        <div class="btn_wrap">
+            <a href="javascript:" class="mui-btn btn_submit mui-btn-block">提交</a>
+        </div>
+        <div class="deposit_help">
+            <p>温馨提示</p>
+            <p>*为了提高对账速度及成功率，当前支付方式已开随机额度，请
+                输入整数存款金额，将随机增加0.11~0.99元！</p>
+            <p>*请保留好转账单据作为核对证明。</p>
+            <p>*如出现充值失败或充值后未到账等情况，请联系在线客服获取
+                帮助。<a href="javascript:">点击联系在线客服</a></p>
+        </div>
+    </div>
+</div>
+<footer class="mui-bar mui-bar-tab">
+    <a class="mui-tab-item" href="index.html">
+        <span class="mui-icon icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+    </a>
+    <a class="mui-tab-item mui-active" href="mine-deposit.html">
+        <span class="mui-icon icon-deposit"></span>
+        <span class="mui-tab-label">存款</span>
+    </a>
+    <a class="mui-tab-item" href="promo.html">
+        <span class="mui-icon icon-promo"></span>
+        <span class="mui-tab-label">优惠</span>
+    </a>
+    <a class="mui-tab-item">
+        <span class="mui-icon icon-service"></span>
+        <span class="mui-tab-label">客服</span>
+    </a>
+    <a class="mui-tab-item" href="mine.html">
+        <span class="mui-icon icon-mine"></span>
+        <span class="mui-tab-label">我的</span>
+    </a>
+</footer>
+</body>
+<script src="../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../mobile-v3/js/common.js"></script>
+<script>
+    $(function () {
+    });
+</script>
+</html>
