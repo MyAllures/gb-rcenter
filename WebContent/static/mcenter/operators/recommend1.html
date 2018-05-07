@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="form-group clearfix pull-left col-md-2 col-sm-12 m-b-sm padding-r-none-sm">
-                            <button type="button" class="btn btn-filter mediate-search-btn"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button>
+                            <button type="button" class="btn btn-filter mediate-search-btn" style="position: static"><i class="fa fa-search"></i><span class="hd">&nbsp;搜索</span></button>
                         </div>
 
 
@@ -262,7 +262,13 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <div class="color-blue1">系统正在进行域名监测扫描，请耐心等待...</div>
-                                    <div class="ym-search-jd"><span></span><em>0%</em></div>
+                                    <!--<div class="ym-search-jd"><span></span><em>0%</em></div>-->
+                                    <div class="bs-component" style="margin-top: 15px;">
+                                        <div class="progress progress-striped active">
+                                            <div class="progress-bar" style="width: 45%">45%</div>
+                                        </div>
+                                        <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-2"></div>
