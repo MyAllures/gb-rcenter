@@ -789,8 +789,8 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 .main-promo.theme-black .promo-top-bar .search-bar .btn-search { background: #1ac07e; border: 1px solid #12ad63; }
 .main-promo.theme-black .list-type1 .promo-item { background: #1f1f1f; border: 1px solid #313131; }
 .main-promo.theme-black .list-type1 .promo-item .shadow { background: rgba(255, 255, 255, 0.8); }
-.main-promo.theme-black .list-type1 .promo-item .shadow .btn-detail { color: #333; border-color: #8d8c8d; }
 .main-promo.theme-black .list-type1 .promo-item .shadow .btn-txt { color: #333; }
+.main-promo.theme-black .list-type1 .promo-item .btn-detail { color: #333; border-color: #8d8c8d; }
 .main-promo.theme-black .list-type2 .list_type2_item_tit { color: #fff; }
 .main-promo.theme-black .list-type2 .promo-item { background: #1f1f1f; border: 1px solid #313131; }
 .main-promo.theme-black .list-type2 .promo-item .shadow { background: url(images/black/shadow-bg.png); }
@@ -809,13 +809,13 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 .main-promo.theme-white .promo-top-bar > ul li.active a { color: #fff; }
 .main-promo.theme-white .promo-top-bar > ul li.active:after { border-top: 5px solid #1e9fff; }
 .main-promo.theme-white .promo-top-bar .search-bar .input-wrap { background: #fff; border: 1px solid #c7c7c7; }
-/*.main-promo.theme-white .promo-top-bar .search-bar .input-wrap input { color: #fff; }*/
+.main-promo.theme-white .promo-top-bar .search-bar .input-wrap input { color: #fff; }
 .main-promo.theme-white .promo-top-bar .search-bar .input-wrap .icon-search { background: url(images/black/icon-search.png) no-repeat; }
 .main-promo.theme-white .promo-top-bar .search-bar .btn-search { background: #1ac07e; border: 1px solid #12ad63; }
 .main-promo.theme-white .list-type1 .promo-item { background: #fff; border: 1px solid #ddd; }
 .main-promo.theme-white .list-type1 .promo-item .shadow { background: rgba(0, 0, 0, 0.85); }
-.main-promo.theme-white .list-type1 .promo-item .shadow .btn-detail { color: #fff; }
 .main-promo.theme-white .list-type1 .promo-item .shadow .btn-txt { color: #1e9fff; }
+.main-promo.theme-white .list-type1 .promo-item .btn-detail { color: #fff; }
 .main-promo.theme-white .list-type2 .list_type2_item_tit { color: #333; }
 .main-promo.theme-white .list-type2 .promo-item { background: #fff; border: 1px solid #ddd; }
 .main-promo.theme-white .list-type2 .promo-item .shadow { background: url(images/black/shadow-bg.png); }
@@ -847,8 +847,8 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 .main-promo .list-type1 .promo-item .promo-status.noyet { background: #f4c22b; }
 .main-promo .list-type1 .promo-item .shadow { height: 262px; position: absolute; bottom: 3px; left: 3px; right: 3px; transition: all 0.3s; cursor: pointer; opacity: 0; }
 .main-promo .list-type1 .promo-item .shadow .btn-apply { width: 99px; height: 34px; text-align: center; line-height: 34px; background: #1e9fff; color: #fff; font-size: 14px; position: absolute; bottom: 15px; left: 50%; margin-left: -50px; border-radius: 6px; cursor: pointer; }
-.main-promo .list-type1 .promo-item .shadow .btn-detail { display: none; height: 38px; position: absolute; top: 50%; margin-top: -18px; font-size: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; line-height: 36px; border-top: 1px solid #3e3e3e; border-bottom: 1px solid #3e3e3e; left: 30px; right: 30px; }
 .main-promo .list-type1 .promo-item .shadow .btn-txt { position: absolute; left: 0; right: 0; text-align: center; bottom: 22px; }
+.main-promo .list-type1 .promo-item .btn-detail { display: none; height: 38px; position: absolute; top: 50%; margin-top: -18px; font-size: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; line-height: 36px; border-top: 1px solid #3e3e3e; border-bottom: 1px solid #3e3e3e; left: 30px; right: 30px; }
 .main-promo .list-type1 .promo-item .promo-detail { display: none; }
 .main-promo .list-type1 .promo-item:hover .btn-detail { display: block; }
 .main-promo .list-type1 .promo-item:hover .shadow { opacity: 1; }
@@ -873,6 +873,9 @@ footer .footer-link-copyright .footer-copyright p { margin-bottom: 0; color: #66
 .main-promo .list-type2 .promo-item .promo-detail .content { font-size: 14px; }
 .main-promo .list-type2 .promo-item .promo-detail .content p { margin-bottom: 22px; text-indent: 2em; }
 .main-promo .list-type2 .promo-item .promo-detail .content p:last-child { margin-bottom: 0; }
+
+/*# sourceMappingURL=promo.css.map */
+
 
 /*# sourceMappingURL=promo.css.map */
 
