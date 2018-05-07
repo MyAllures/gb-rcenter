@@ -9,7 +9,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <gamebox.version>2.0.2.1-SNAPSHOT</gamebox.version>
+        <gamebox.version>2.0.1.9-SNAPSHOT</gamebox.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
         <timestamp>${maven.build.timestamp}</timestamp>
@@ -17,7 +17,7 @@
         <repository.nexus.url>http://${nexus.ip}:8081/nexus/content/groups/public</repository.nexus.url>
         <repository.nexus.distribution.url>http://${nexus.ip}:8081/nexus/content/repositories/thirdparty</repository.nexus.distribution.url>
 
-        <gamebox.version>2.0.2.1-SNAPSHOT</gamebox.version>
+        <gamebox.version>2.0.1.9-SNAPSHOT</gamebox.version>
         <mockito.version>2.0.2-beta</mockito.version>
         <junit.version>4.8.2</junit.version>
         <jstl.version>1.2</jstl.version>
