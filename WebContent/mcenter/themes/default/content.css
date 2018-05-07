@@ -1037,7 +1037,7 @@ a.ym-jc-btn:hover {background: #1e7b05; }
 a.ym-jc-btn em {width: 20px; height: 14px; }
 .color-green1{    color: #2abf01;font-weight: bold;}
 .color-green1.cur{    color: #f00;}
-a.ym-jc-btn.active {background: #d4d4d4;color: #444;width: 80px;line-height: 16px;text-align: center;vertical-align:  middle;font-size: 12px;font-weight: bold;}
+a.ym-jc-btn.active {background: #d4d4d4;color: #444;width: auto;line-height: 16px;text-align: center;vertical-align:  middle;font-size: 12px;font-weight: bold;}
 .ym-search-box {padding: 100px 0;  }
 ym-search-content .color-blue1 {display: inline-block;}
 .color-blue1 { text-indent: 80px;padding-top:  5px;color: #2095f2;}
