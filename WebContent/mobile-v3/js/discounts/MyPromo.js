@@ -25,13 +25,13 @@ $(function () {
 function pullfresh() {
     var lastPageNumber = parseInt($("#lastPageNumber").val());
     var id = $('.mui-control-content.mui-active').attr("id");
-    if (id == "item1" && judgeLastPageNumber(allPageNumber,allTotal,lastPageNumber)) {
+    if (id == "item1" && allPageNumber < lastPageNumber) {
         getPullInfo(allPageNumber, null, id);
-    } else if (id == "item2" &&judgeLastPageNumber(successPageNumber,successTotal,lastPageNumber)) {
+    } else if (id == "item2" && judgeLastPageNumber(successPageNumber, successTotal, lastPageNumber)) {
         getPullInfo(successPageNumber, "2", id);
-    } else if (id == "item3" && judgeLastPageNumber(noPassPageNumber,noPassTotal,lastPageNumber)) {
+    } else if (id == "item3" && judgeLastPageNumber(noPassPageNumber, noPassTotal, lastPageNumber)) {
         getPullInfo(noPassPageNumber, "4", id);
-    } else if (id == "item4" && judgeLastPageNumber(unAuditPageNumber,unAuditTotal,lastPageNumber)) {
+    } else if (id == "item4" && judgeLastPageNumber(unAuditPageNumber, unAuditTotal, lastPageNumber)) {
         getPullInfo(unAuditPageNumber, "1", id);
     } else {
         mui("#refreshContainer").pullRefresh().endPullupToRefresh(true);
@@ -45,7 +45,7 @@ function pullfresh() {
  * @param endPageNumber：初始总页码数
  * @returns {boolean}
  */
-function judgeLastPageNumber(beforePageNumber,totalPageNumber, endPageNumber) {
+function judgeLastPageNumber(beforePageNumber, totalPageNumber, endPageNumber) {
     return !totalPageNumber ? beforePageNumber < endPageNumber : beforePageNumber < totalPageNumber;
 }
 
@@ -65,7 +65,10 @@ function getPullInfo(pageNumber, state, item) {
 }
 //切换时打开下拉
 function switchOffers() {
-    mui("#refreshContainer").pullRefresh().endPullupToRefresh(false);
+    var scrollView = mui('#refreshContainer');
+    scrollView.scroll().scrollTo(0, 0);//重置高度
+    scrollView.pullRefresh().enablePullupToRefresh();
+    scrollView.pullRefresh().endPullupToRefresh(false);
 }
 
 /*获取正在进行中的类型和活动*/
@@ -85,15 +88,33 @@ function promoInfo(requestData, item) {
                 $('#' + item).find('.promo-record-content').append(data);
                 addPageNumber(item);
                 var number = $('#' + item).find("#partialPageNumber").attr("value");
+                if (number == "1") {
+                    mui("#refreshContainer").pullRefresh().endPullupToRefresh(true);
+                    return;
+                }
+                var isRefresh = true;
                 if (item == "item1") {
                     allTotal = number;
+                    if (allPageNumber < allTotal) {
+                        isRefresh = false;
+                    }
                 } else if (item == "item2") {
                     successTotal = number;
+                    if (successPageNumber < successTotal) {
+                        isRefresh = false;
+                    }
                 } else if (item == "item3") {
                     noPassTotal = number;
+                    if (noPassPageNumber < noPassTotal) {
+                        isRefresh = false;
+                    }
                 } else if (item == "item4") {
                     unAuditTotal = number;
+                    if (unAuditPageNumber < unAuditTotal) {
+                        isRefresh = false;
+                    }
                 }
+                mui("#refreshContainer").pullRefresh().endPullupToRefresh(isRefresh);
             }
         },
         error: function (e) {
