@@ -108,13 +108,6 @@
             var et = $this.find("._vr_promo_oend").val();
             var sTime = moment(Number(st)).utcOffset(sessionStorage.getItem("timezone"));
             var eTime = moment(Number(et)).utcOffset(sessionStorage.getItem("timezone"));
-            //填充小标题那里的开始时间和结束时间--暂时没用
-            $this.find("._vr_promo_start").each(function () {
-                $(this).text(sTime.format($(this).data("format")));
-            });
-            $this.find("._vr_promo_end").each(function () {
-                $(this).text(eTime.format($(this).data("format")));
-            });
             if (nowTime < sTime) {//未开始
                 $this.find(".noyet").show();
                 $this.find(".processing").hide();
@@ -124,7 +117,7 @@
                 $this.find(".noyet").hide();
                 $this.find(".processing").show();
                 $this.find(".over").hide();
-                $this.find(".shadow").html('<div class="btn-apply _vr_promo_join" onclick="joinPromo(this)">' + '立即加入' + '</div>');
+                $this.find(".shadow").html('<div class="btn-apply _vr_promo_join" onclick="joinPromo(this, event)">' + '立即加入' + '</div>');
                 //根据活动内容处理申请按钮
                 if (code == 'back_water' || code == 'content') {
                     $this.find('.shadow').html('<div class="btn-txt">该活动无需申请</div>');
@@ -183,7 +176,8 @@
 
 
     //参加优惠点击事件
-    function joinPromo(aplyObj, isRefresh) {
+    function joinPromo(aplyObj,event,isRefresh) {
+        event.stopPropagation();
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
         /*$(aplyObj).attr("onclick","");*/
         /*if(ctime > 0){
@@ -207,7 +201,7 @@
                     if(code=='money'){
                         var searchId = $(aplyObj).parents("._vr_promo_check").data("searchid");
                         canShowLottery(searchId);
-                        $(aplyObj).attr("onclick","joinPromo(this)");
+                        $(aplyObj).attr("onclick","joinPromo(this, event)");
                     }else{
                         applyActivities(aplyObj);
                     }
@@ -217,7 +211,7 @@
         } else {
             loginObj.getLoginPopup(function (bol) {
                 if (sessionStorage.is_login == "true") {
-                    joinPromo(aplyObj, true);
+                    joinPromo(aplyObj,event,true);
                 }
             });
         }
@@ -237,7 +231,7 @@
             },
             success: function (data) {
                 showActivityProcessDialog(data, aplyObj, isRefresh);
-                $(aplyObj).attr("onclick","joinPromo(this)");
+                $(aplyObj).attr("onclick","joinPromo(this,event)");
             }
         });
 
@@ -273,6 +267,7 @@
             addClass = 'promo_CJS';
         } else if (code == 'effective_transaction') {
             $(".process").remove();
+            $(".activityProcess .subs-txt").text('');
             var preferentialRelations = data.preferentialRelations;
             for (j = 0; j<preferentialRelations.length; j++) {
                 var width = (data.effectivetransaction/preferentialRelations[j].preferentialValue)*100;
@@ -290,17 +285,20 @@
                         '<div class="txt"><span class="color-red">派奖时间：' + data.deadLineTime + '</span></div>'+
                         '</div>';
                 btn = ["联系客服"];
+                $(".activityProcess .subs-txt").text('以下是您当前投注额,统计周期请查看活动细则,加油吧!');
             } else {
                 item = '<div class="item-success-without-bar process">'+
                         '<div class="txt"><span class="color-red">当前报名人数：' + data.ApplyNum + '人</span></div>'+
                         '</div>';
                 btn = ["联系客服","申请奖励"];
+                $(".activityProcess .subs-txt").text('以下是您当前投注额,统计周期请查看活动细则,申请报名活动后显示派奖时间');
             }
             $(".effective_transaction").append(item);
             content = $(".activityProcess").html();
             addClass = 'promo_may_apply';
         } else if (code == 'profit_loss') {
             $(".process").remove();
+            $(".activityProcess .subs-txt").text('');
             var preferentialRelations = data.preferentialRelations;
             for (j = 0; j<preferentialRelations.length; j++) {
                 if (preferentialRelations[j].preferentialCode == 'profit_ge') {//盈利时只展示盈利
@@ -345,11 +343,13 @@
                         '<div class="txt"><span class="color-red">派奖时间：' + data.deadLineTime + '</span></div>'+
                         '</div>';
                 btn = ["联系客服"];
+                $(".activityProcess .subs-txt").text('以下是您当前盈亏,统计周期请查看活动细则,加油吧!');
             } else {
                 item = '<div class="item-success-without-bar process">'+
                         '<div class="txt"><span class="color-red">当前报名人数：' + data.ApplyNum + '人</span></div>'+
                         '</div>';
                 btn = ["联系客服","申请奖励"];
+                $(".activityProcess .subs-txt").text('以下是您当前盈亏,统计周期请查看活动细则,申请报名活动后显示派奖时间.');
             }
             $(".profit_loss.loss").append(item);
             content = $(".activityProcess").html();
@@ -416,7 +416,7 @@
             data: JSON.stringify(dataParam),
             success: function (data) {
                 showApplyActivityResult(data, isRefresh, aplyObj);
-                $(aplyObj).attr("onclick","joinPromo(this)");
+                $(aplyObj).attr("onclick","joinPromo(this,event)");
 
             },
             error: function () {
@@ -446,8 +446,12 @@
                         if (data.transactionErrorList[j].money) {
                             money = data.transactionErrorList[j].money;
                         }
-                        msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>存款订单' + data.transactionErrorList[j].transactionNo + '</span></div></div>' +
-                        '<div class="item-failure-without-bar" style="margin-bottom: 30px"><i class="icon-fail"></i><div class="txt"><span>' + window.top.message.apply_activity[data.transactionErrorList[j].msg] + money + '</span></div></div>';
+                        if (data.status) {
+                            continue;
+                        } else {
+                            msg = '<div class="item-success-without-bar"><i class="icon-pass"></i><div class="txt"><span>存款订单' + data.transactionErrorList[j].transactionNo + '</span></div></div>' +
+                                    '<div class="item-failure-without-bar" style="margin-bottom: 30px"><i class="icon-fail"></i><div class="txt"><span>' + window.top.message.apply_activity[data.transactionErrorList[j].msg] + money + '</span></div></div>';
+                        }
                         $(".applyResult").append(msg);
                     }
                 } else {
