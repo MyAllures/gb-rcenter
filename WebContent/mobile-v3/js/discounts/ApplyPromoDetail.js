@@ -114,8 +114,7 @@ function applyActivity() {
                                     '<span class="' + iconHtml + '"></span>',
                                     '</li>'].join("");
                                 $('.promo_con_list .mui-table-view').append(html);
-                            }
-                            if ((addOrder == null || addOrder == '') && (addAmount == null || addAmount == '')) {
+                            } else {
                                 var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.transactionErrorList[j].msg],
                                     '<span class="' + iconHtml + '"></span>',
                                     '</li>'].join("");
