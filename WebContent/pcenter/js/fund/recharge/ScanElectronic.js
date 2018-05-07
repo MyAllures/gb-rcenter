@@ -425,30 +425,33 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
          * 更换优惠
          */
         changeSale: function () {
-            var amount = $("input[name='result.rechargeAmount']").val();
-            var rechargeType = $("[name='result.rechargeType']").val();
-            var url = root + "/fund/recharge/online/changeScanType.html?rechargeType=" + rechargeType;
-            if (amount) {
-                url = url + "&amount=" + amount;
-            }
-            window.top.topPage.ajax({
-                url: url,
-                dataType: 'json',
-                success: function (data) {
-                    if (data && data.length > 0) {
-                        var len = data.length;
-                        var html = $("#rechargeSale").render({
-                            sales: data,
-                            len: len,
-                            isChecked: data[0].preferential
-                        });
-                        $("div#applysale").html(html);
-                    } else {
-                        $("div#applysale").find("input[type=radio]").attr("disabled", true);
-                        $("input[name=activityId]:eq('')").attr("checked", 'checked');
-                    }
+            var isOpenActivityHall = $("input[name='isOpenActivityHall']").val();
+            if(isOpenActivityHall == 'false') {
+                var amount = $("input[name='result.rechargeAmount']").val();
+                var rechargeType = $("[name='result.rechargeType']").val();
+                var url = root + "/fund/recharge/online/changeScanType.html?rechargeType=" + rechargeType;
+                if (amount) {
+                    url = url + "&amount=" + amount;
                 }
-            })
+                window.top.topPage.ajax({
+                    url: url,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data && data.length > 0) {
+                            var len = data.length;
+                            var html = $("#rechargeSale").render({
+                                sales: data,
+                                len: len,
+                                isChecked: data[0].preferential
+                            });
+                            $("div#applysale").html(html);
+                        } else {
+                            $("div#applysale").find("input[type=radio]").attr("disabled", true);
+                            $("input[name=activityId]:eq('')").attr("checked", 'checked');
+                        }
+                    }
+                })
+            }
         }
     });
 });

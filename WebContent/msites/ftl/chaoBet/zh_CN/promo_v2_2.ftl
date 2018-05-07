@@ -33,7 +33,6 @@
                         </li>
                     </#list>
                 </#if>
-                <li class="hisActivityButton hide"><a href="javascript:void(0)" data-item="historyActivitys">历史优惠</a></li>
             </ul>
             <div class="search-bar">
                 <form>
@@ -58,11 +57,9 @@
                             <input class="_vr_promo_ostart" type="hidden" value="${am.startTime?long?string.computer}">
                             <input class="_vr_promo_oend" type="hidden" value="${am.endTime?long?string.computer}">
                             <div class="shadow">
-
-                                <div class="btn-apply _vr_promo_join" onclick="joinPromo(this)">
+                                <div class="btn-apply _vr_promo_join" onclick="joinPromo(this,event)">
                                     立即加入
                                 </div>
-
                             </div>
                             <div class="promo-detail">
                                 <div class="tit">${am.activityName}</div>
@@ -87,11 +84,9 @@
                             <input class="_vr_promo_ostart" type="hidden" value="${am.startTime?long?string.computer}">
                             <input class="_vr_promo_oend" type="hidden" value="${am.endTime?long?string.computer}">
                             <div class="shadow">
-
-                                <div class="btn-apply _vr_promo_join" onclick="joinPromo(this)">
+                                <div class="btn-apply _vr_promo_join" onclick="joinPromo(this,event)">
                                     立即加入
                                 </div>
-
                             </div>
                             <div class="promo-detail">
                                 <div class="tit">${am.activityName}</div>
