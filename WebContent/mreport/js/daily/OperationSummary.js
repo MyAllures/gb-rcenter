@@ -176,15 +176,18 @@ define(['site/MReport'], function (MReport) {
                 $(this).addClass("btn-success").siblings().removeClass("btn-success");
                 var chart = $(this).attr("statisticsDataType");
                 var rangeType = $(this).attr('value');
+                // var yesterDay = new Date(new Date().setDate(new Date().getDate() - 1 ));
+                // var lastdate = new Date(new Date().setDate(new Date().getDate() - 8 ));
                 if('D' === rangeType){
-                    /* var loadDatePick =
+                     /*var loadDatePick =
                      '<div class="input-group daterangepickers" >'+
-                     ' <gb:dateRange format="${DateFormat.DAY}" style="width:80px;" inputStyle="width:80px" useToday="true" useRange="true"'+
-                     ' position="down" lastMonth="false" hideQuick="true" opens="true" callback="End"  id="'+chart+'"'+
-                     ' startDate="${lastdate}" endDate="${yesterDay}"  maxDate="${yesterDay}"'+
-                     'startName="'+chart+'-beginTime" endName="'+chart+'-endTime" thisMonth="true"/>'+
+                     '  <gb:dateRange format="yyyy-MM-dd" style="width:80px;" inputStyle="width:80px" useToday="true" useRange="true"'+
+                     '  position="down" lastMonth="false" hideQuick="true" opens="true" callback="End"  id="'+chart+'"'+
+                     '  startDate="'+lastdate+'" endDate="'+yesterDay+'"  maxDate="'+yesterDay+'"'+
+                     '  startName="'+chart+'-beginTime" endName="'+chart+'-endTime" thisMonth="true"/>'+
                      ' </div>';
-                     $(".date."+chart).html(loadDatePick);*/
+                     $(".date."+chart).html(loadDatePick);
+                    _this.initDatePick($(".daterangepickers"));*/
                     $(".date."+chart).show();
 
                 }else{
@@ -303,17 +306,48 @@ define(['site/MReport'], function (MReport) {
          *自选时间段查询
          */
         End:function(obj,option){
+            var dayOf14 = 14*24*60*60*1000;
             var $current = $(obj.currentTarget.outerHTML);
             var targetId = $current.attr("id");
             var $chartName = $("#"+targetId).parent().parent();
             var StartDate = $chartName.find("input[name='"+targetId+"-beginTime']").val();
             var EndDate = $chartName.find("input[name='"+targetId+"-endTime']").val();
+            var maxDate = new Date(new Date(StartDate).setDate(new Date(StartDate).getDate() + 14 ));
+            var _endDate = new Date(EndDate) - new Date(StartDate) > dayOf14 ? this.getFormatDate(maxDate) : EndDate;
             var rakebackType = $("._addPrimary.rakeback-trend .btn.btn-primary").attr("value");
             if('rakebackTrend' == targetId && rakebackType == 'rakeback-cash' && !window.top.topPage.apiAllCheck){
-                this.queryRakebackcashOfApi(window.top.topPage.apiIdArray, window.top.topPage.gameTypes,'D',StartDate,EndDate);
+                this.queryRakebackcashOfApi(window.top.topPage.apiIdArray, window.top.topPage.gameTypes,'D',StartDate,_endDate);
                 return ;
             }
-            this.asnycLoadOfDays(targetId,StartDate,EndDate);
+
+            // $chartName.find("input[name='"+targetId+"-endTime']").daterangepicker({
+            //     format: 'YYYY-MM-DD',
+            //     endDate: _endDate,
+            //     maxDate:maxDate,
+            //     autoApply:true,
+            // });
+            //
+            // $chartName.find("input[name='"+targetId+"-beginTime']").daterangepicker({
+            //     format: 'YYYY-MM-DD',
+            //     startDate: StartDate,
+            //     min: this.getFormatDate(new Date(StartDate)),
+            //     autoApply:true
+            // });
+            this.asnycLoadOfDays(targetId,StartDate, _endDate );
+
+             /*var loadDatePick =
+             '<div class="input-group daterangepickers" >'+
+             ' <gb:dateRange format="${DateFormat.DAY}" style="width:80px;" inputStyle="width:80px" useToday="true" useRange="true"'+
+             ' position="down" lastMonth="false" hideQuick="true" opens="true" callback="End"  id="'+chart+'"'+
+             ' startDate="${lastdate}" endDate="${yesterDay}"  maxDate="${yesterDay}"'+
+             'startName="'+chart+'-beginTime" endName="'+chart+'-endTime" thisMonth="true"/>'+
+             ' </div>';
+             $(".date."+chart).html(loadDatePick);
+            this.initDatePick($(".daterangepickers"));*/
+        },
+
+        getFormatDate:function(date){
+            return !date ? date : date.getFullYear()+"-"+((date.getMonth()+1).length > 1 ? (date.getMonth()+1) : "0"+(date.getMonth()+1))+"-"+((''+ date.getDate()).length > 1 ?  date.getDate() : '0' + date.getDate());
         },
 
         /**

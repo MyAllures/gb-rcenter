@@ -47,6 +47,11 @@ define(['site/swiper.min','site/MReport'], function (Swiper,MReport) {
             $(window).resize(function() {
                 _this.initSwiper(document.getElementById("dataBox").offsetWidth * 0.8);
             });
+
+            //Sweiper滑动
+            $('.swiper-info div .swiper-slide').mousedown(function(){
+                $(this).addClass('btn-primary').removeClass('swp').siblings().addClass('swp').removeClass('btn-primary');
+            })
         },
 
         initG2:function(realtimeType){
