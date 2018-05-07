@@ -103,14 +103,19 @@ function applyActivity() {
                         if (data.transactionErrorList[j].msg) {
                             if (data.transactionErrorList[j].transactionNo) {
                                 addOrder = ",订单号：" + data.transactionErrorList[j].transactionNo;
+                                var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.transactionErrorList[j].msg] + addOrder,
+                                    '<span class="' + iconHtml + '"></span>',
+                                    '</li>'].join("");
+                                $('.promo_con_list .mui-table-view').append(html);
                             }
-                            if (data.transactionErrorList[j].amount) {
-                                addAmount = ",金额：￥" + data.transactionErrorList[j].amount;
+                            if (data.transactionErrorList[j].money) {
+                                addAmount = ",金额：￥" + data.transactionErrorList[j].money;
+                                var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.transactionErrorList[j].msg] + addAmount,
+                                    '<span class="' + iconHtml + '"></span>',
+                                    '</li>'].join("");
+                                $('.promo_con_list .mui-table-view').append(html);
                             }
-                            var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.transactionErrorList[j].msg] + addOrder + addAmount,
-                                '<span class="' + iconHtml + '"></span>',
-                                '</li>'].join("");
-                            $('.promo_con_list .mui-table-view').append(html);
+
                         }
                     }
                 }
