@@ -235,7 +235,7 @@ li { list-style: none; }
 #transactionType .mui-table-view-cell:after { right: 15px; }
 
 /* 资金记录样式  */
-.mine-cash-record-body { background: #f2f2f2; font-size: 12px; color: #333; }
+.mine-cash-record-body { background: #fff; font-size: 12px; color: #333; }
 .mine-cash-record-body header.mui-bar { background-color: #1b75d9; }
 .mine-cash-record-body footer { padding: 13px 10px; background: #e3ecf7; height: 64px; border-top: 1px solid #e1e1e1; position: fixed; left: 0; bottom: 0; right: 0; z-index: 10; }
 .mine-cash-record-body footer .flex { display: flex; }
@@ -247,7 +247,7 @@ li { list-style: none; }
 .mine-cash-record-body .mui-input-group:before, .mine-cash-record-body .mui-input-group:after { height: 0; }
 .mine-cash-record-body .data-filter .gb-datafilter { padding: 13px 10px; }
 .mine-cash-record-body .data-filter:after { content: ''; height: 1px; background: #f2f2f2; left: 10px; right: 10px; bottom: 0; }
-.mine-cash-record-body .mine-cash-record-content { padding-bottom: 64 !important; background: #f2f2f2; }
+.mine-cash-record-body .mine-cash-record-content { padding-bottom: 64px !important; background: #fff; }
 .mine-cash-record-body p.qkclz { padding: 8px 10px; margin-bottom: 11px !important; }
 .mine-cash-record-body .cash-type-row { border-bottom: 1px solid #e2e2e2; }
 .mine-cash-record-body .gb-datafilter { padding: 10px; }
@@ -264,6 +264,7 @@ li { list-style: none; }
 .mine-cash-record-body .text-green2 { color: #51d683; }
 .mine-cash-record-body .mine-table-wrapper .mine-table { width: 150%; }
 .mine-cash-record-body .mine-table table { background-color: #fff; width: 100%; }
+.mine-cash-record-body .mine-table table th { text-align: center; font-weight: normal; background: #eee; border: 1px solid #fff; }
 .mine-cash-record-body .mine-table table tr { border-bottom: 0; }
 .mine-cash-record-body .mine-table table tr.head { border-bottom: none; }
 .mine-cash-record-body .mine-table table tr td { padding: 5px; color: #333333; font-size: 10px; line-height: 16px; text-align: center; }

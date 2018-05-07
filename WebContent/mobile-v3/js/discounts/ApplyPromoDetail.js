@@ -49,9 +49,32 @@ function applyActivity() {
             }
             if (data.state) {
                 $('.status_success').removeClass('mui-hidden');
-                $('.promo_con_list').addClass('mui-hidden');
                 $('.status_failure').addClass('mui-hidden');
                 $('.btn_cust_serv').addClass('mui-hidden');
+                if (data.transactionErrorList) {
+                    for (j = 0; j < data.transactionErrorList.length; j++) {
+                        var iconHtml;
+                        if (data.transactionErrorList[j].state) {
+                            iconHtml = 'icon-pass';
+                        } else {
+                            iconHtml = 'icon-fail';
+                        }
+                        if (data.transactionErrorList[j].transactionNo) {
+                            var html = ['<li class="mui-table-view-cell">订单号：' + data.transactionErrorList[j].transactionNo,
+                                '<span class="' + iconHtml + '"></span>',
+                                '</li>'].join("");
+                            $('.promo_con_list .mui-table-view').append(html);
+                        }
+                        if (data.transactionErrorList[j].amount) {
+                            var html = ['<li class="mui-table-view-cell">金额：￥' + data.transactionErrorList[j].amount,
+                                '<span class="' + iconHtml + '"></span>',
+                                '</li>'].join("");
+                            $('.promo_con_list .mui-table-view').append(html);
+                        }
+                    }
+                } else {
+                    $('.promo_con_list').addClass('mui-hidden');
+                }
             } else {
                 $('.status_success').addClass('mui-hidden');
                 $('.promo_con_list').removeClass('mui-hidden');
@@ -59,7 +82,7 @@ function applyActivity() {
                 $('.btn_cust_serv').removeClass('mui-hidden');
                 if (data.msg && typeof data.msg != 'undefined') {
                     var message = window.top.message.apply_activity[data.msg];
-                    if(typeof message == 'undefined'){
+                    if (typeof message == 'undefined') {
                         message = data.msg;
                     }
                     var html = ['<li class="mui-table-view-cell">' + message,
@@ -70,16 +93,33 @@ function applyActivity() {
                 if (data.transactionErrorList) {
                     for (j = 0; j < data.transactionErrorList.length; j++) {
                         var iconHtml;
+                        var addOrder;
+                        var addAmount;
                         if (data.transactionErrorList[j].state) {
                             iconHtml = 'icon-pass';
                         } else {
                             iconHtml = 'icon-fail';
                         }
                         if (data.transactionErrorList[j].msg) {
-                            var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.transactionErrorList[j].msg],
-                                '<span class="' + iconHtml + '"></span>',
-                                '</li>'].join("");
-                            $('.promo_con_list .mui-table-view').append(html);
+                            if (data.transactionErrorList[j].transactionNo) {
+                                addOrder = "存款订单号：" + data.transactionErrorList[j].transactionNo;
+                                var html = ['<li class="mui-table-view-cell">' + addOrder,
+                                    '<span class="icon-pass"></span>',
+                                    '</li>'].join("");
+                                $('.promo_con_list .mui-table-view').append(html);
+                            }
+                            if (data.transactionErrorList[j].money) {
+                                addAmount = data.transactionErrorList[j].money;
+                                var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.transactionErrorList[j].msg] + addAmount,
+                                    '<span class="' + iconHtml + '"></span>',
+                                    '</li>'].join("");
+                                $('.promo_con_list .mui-table-view').append(html);
+                            } else {
+                                var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.transactionErrorList[j].msg],
+                                    '<span class="' + iconHtml + '"></span>',
+                                    '</li>'].join("");
+                                $('.promo_con_list .mui-table-view').append(html);
+                            }
                         }
                     }
                 }
@@ -236,9 +276,9 @@ function applyDepositSend(obj, options) {
                 var successState = "suc";
                 $(obj).removeAttr('data-rel');
                 $(obj).find('.promo_item_sta').removeClass('awa');
-                if(data.transactionErrorList){
+                if (data.transactionErrorList) {
                     for (var j = 0; j < data.transactionErrorList.length; j++) {
-                        if(data.transactionErrorList[j].state && data.transactionErrorList[j].isAudit){
+                        if (data.transactionErrorList[j].state && data.transactionErrorList[j].isAudit) {
                             successIsAudit = "申请中...";
                             successState = "proc";
                         }
