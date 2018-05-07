@@ -102,20 +102,24 @@ function applyActivity() {
                         }
                         if (data.transactionErrorList[j].msg) {
                             if (data.transactionErrorList[j].transactionNo) {
-                                addOrder = ",订单号：" + data.transactionErrorList[j].transactionNo;
-                                var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.transactionErrorList[j].msg] + addOrder,
-                                    '<span class="' + iconHtml + '"></span>',
+                                addOrder = "存款订单号：" + data.transactionErrorList[j].transactionNo;
+                                var html = ['<li class="mui-table-view-cell">' + addOrder,
+                                    '<span class="icon-pass"></span>',
                                     '</li>'].join("");
                                 $('.promo_con_list .mui-table-view').append(html);
                             }
                             if (data.transactionErrorList[j].money) {
-                                addAmount = ",金额：￥" + data.transactionErrorList[j].money;
+                                addAmount = data.transactionErrorList[j].money;
                                 var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.transactionErrorList[j].msg] + addAmount,
                                     '<span class="' + iconHtml + '"></span>',
                                     '</li>'].join("");
                                 $('.promo_con_list .mui-table-view').append(html);
+                            } else {
+                                var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.transactionErrorList[j].msg],
+                                    '<span class="' + iconHtml + '"></span>',
+                                    '</li>'].join("");
+                                $('.promo_con_list .mui-table-view').append(html);
                             }
-
                         }
                     }
                 }
