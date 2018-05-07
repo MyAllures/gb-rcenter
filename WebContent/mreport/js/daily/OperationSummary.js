@@ -191,6 +191,11 @@ define(['site/MReport'], function (MReport) {
                     /* $(".date."+chart).empty();*/
                     $(".date."+chart).hide();
                 }
+                var rakebackType = $("._addPrimary.rakeback-trend .btn.btn-primary").attr("value");
+                if(chart === 'rakebackTrend' && 'rakeback-cash' === rakebackType && !window.top.topPage.apiAllCheck) {
+                    _this.rakebackTrend(rangeType,null);
+                    return ;
+                }
 
                 _this.asnycLoadOperationData(chart,rangeType);
             });
@@ -304,7 +309,7 @@ define(['site/MReport'], function (MReport) {
             var StartDate = $chartName.find("input[name='"+targetId+"-beginTime']").val();
             var EndDate = $chartName.find("input[name='"+targetId+"-endTime']").val();
             var rakebackType = $("._addPrimary.rakeback-trend .btn.btn-primary").attr("value");
-            if('rakebackTrend' == targetId && rakebackType == 'rakeback-cash'){
+            if('rakebackTrend' == targetId && rakebackType == 'rakeback-cash' && !window.top.topPage.apiAllCheck){
                 this.queryRakebackcashOfApi(window.top.topPage.apiIdArray, window.top.topPage.gameTypes,'D',StartDate,EndDate);
                 return ;
             }
@@ -442,7 +447,7 @@ define(['site/MReport'], function (MReport) {
             array.push(all);
             var keys = Object.keys(array[0]);
             keys.splice(0,1);
-            this.drawGroupColumnChart('f4', array, keys,476);
+            this.drawGroupColumnChart('f4', array, keys);
         },
 
         /**
