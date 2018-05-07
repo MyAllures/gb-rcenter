@@ -154,21 +154,22 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                                         $(_this.formSelector + " span.fee").html(msg);
                                         $(_this.formSelector + " span.fee").show();
                                     }
-
-                                    var sales = data.sales;
-                                    if (sales && sales.length > 0) {
-                                        var len = sales.length;
-                                        var html = $("#rechargeSale").render({
-                                            sales: sales,
-                                            len: len
-                                        });
-                                        $("div#applysale").html(html);
-                                        if (sales[0].preferential != true) {
+                                    if(data.isOpenActivityHall != true) {
+                                        var sales = data.sales;
+                                        if (sales && sales.length > 0) {
+                                            var len = sales.length;
+                                            var html = $("#rechargeSale").render({
+                                                sales: sales,
+                                                len: len
+                                            });
+                                            $("div#applysale").html(html);
+                                            if (sales[0].preferential != true) {
+                                                $("input[name=activityId]:eq('')").prop("checked", 'checked');
+                                            }
+                                        } else {
+                                            $("div#applysale").find("input[type=radio]").attr("disabled", true);
                                             $("input[name=activityId]:eq('')").prop("checked", 'checked');
                                         }
-                                    } else {
-                                        $("div#applysale").find("input[type=radio]").attr("disabled", true);
-                                        $("input[name=activityId]:eq('')").prop("checked", 'checked');
                                     }
                                     $("._submit").removeClass("disabled");
                                 },
