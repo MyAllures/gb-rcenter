@@ -19,7 +19,7 @@ define(['common/BasePage'], function (BasePage) {
             countTextNumEL: $('#countText')
         },
         status: 'connect',
-        messageType: null, //目前只用于关闭工单操作
+        messageType: null,
         data: {
             sendMessageData: {
                 sendMessageText: '',
@@ -382,8 +382,8 @@ define(['common/BasePage'], function (BasePage) {
             var _this = this;
             var text = _this.els.$textEl.val();
             if ($.trim(text) !== '') {
-                var createO = _this._createSendVo('text', text);
-                _this.comet.websocket.send(JSON.stringify(createO));
+                var createO = JSON.stringify(_this._createSendVo('text', text));
+                _this.comet.websocket.send(createO);
                 var message = {
                     type: 2,
                     time: new Date(),
@@ -407,9 +407,17 @@ define(['common/BasePage'], function (BasePage) {
                 if (file) {
                     reader.readAsDataURL(file);
                 }
+                //大于300k
+                if(file.size > (480 * 1024)){
+                    alert('文件大小超过限制');
+                    return;
+                }
                 //TODO 需校验文件大小
                 reader && reader.addEventListener("load", function () {
-                    _this.comet.websocket.send(JSON.stringify(_this._createSendVo('picture', reader.result)));
+                    var createVo = JSON.stringify(_this._createSendVo('picture', reader.result));
+                    console.log(file.size)
+                    console.log(createVo.length)
+                    _this.comet.websocket.send(createVo);
                     var message = {
                         type: 2,
                         time: new Date(),

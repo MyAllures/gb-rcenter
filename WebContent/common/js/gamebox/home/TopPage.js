@@ -1328,37 +1328,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
          * @param imMessage  监听服务返回的消息体
          * @param btnClk  是否是由按钮触发
          */
-        showCustomerWin: function (imMessage, btnClk) {
-            var btnOption = {};
-            btnOption.target = root + "/customer/view.html";
-            btnOption.text = '在线客服';
-            btnOption.data = {sendUserId: imMessage ? imMessage.sendUserId : 'btn'};
-            btnOption.callback = function (e, opt) {
-                var page = $('iframe', opt.dialogRef.$modalContent)[0].contentWindow.page;
-                if (page.status != 'closed')
-                    page.disConnect();
-                if (e.page.isButtonClick) {
-                    $(".customer-button").attr('disabled', false);
-                }
-            };
-            if (btnClk) {
-                $(".customer-button").attr('disabled', true);
-            }
-            this.doDialog({
-                page: {
-                    imMessage: imMessage,
-                    isButtonClick: btnClk
-                }
-            }, btnOption);
-        },
-
-        /**
-         * 显示客服弹窗
-         * @param imMessage  监听服务返回的消息体
-         * @param btnClk  是否是由按钮触发
-         */
         showCustomerGroupWin: function (data, btnClk) {
-            var _this = this;
             if (window.top.customerGroupView == null) {
                 if(data && (data.imMessage.status == 'close' || data.imMessage.status == 'closed')) return;
                 var modal = $('#customerGroupModal');
