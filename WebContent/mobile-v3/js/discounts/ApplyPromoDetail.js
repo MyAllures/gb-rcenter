@@ -109,7 +109,7 @@ function applyActivity() {
                                 $('.promo_con_list .mui-table-view').append(html);
                             }
                             if (data.transactionErrorList[j].money) {
-                                addAmount = ",金额：￥" + data.transactionErrorList[j].money;
+                                addAmount = "￥" + data.transactionErrorList[j].money;
                                 var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.transactionErrorList[j].msg] + addAmount,
                                     '<span class="' + iconHtml + '"></span>',
                                     '</li>'].join("");
