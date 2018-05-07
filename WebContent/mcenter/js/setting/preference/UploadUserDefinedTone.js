@@ -99,6 +99,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
             }
             var paramValue = $("[name='result.paramValue']").val();
             if (!paramValue){
+                page.showPopover(e,{},"warning","请选择上传文件",true);
                 return false;
             }
             return flag;
