@@ -33,6 +33,7 @@ define(['common/BasePage'], function (BasePage) {
         timeout: 30,//超时时间,单位：秒
         timer: null,//计时器
         maxTextLength: 300,
+        reader : new FileReader(),
         comet: window.top.comet,
         init: function () {
             var _this = this;
@@ -65,6 +66,30 @@ define(['common/BasePage'], function (BasePage) {
                     count = 300;
                 }
                 _this.els.$countTextNumEL.html(count);
+            });
+            _this.reader.addEventListener("load", function(){
+                var createVo = JSON.stringify(_this._createSendVo('picture', _this.reader.result));
+                _this.comet.websocket.send(createVo);
+                var message = {
+                    type: 2,
+                    time: new Date(),
+                    message: _this.reader.result,
+                    messageBodyType: 'picture'
+                }
+                _this.appendMessage(message);
+                _this.els.$textEl.val('');
+            }, false);
+            _this.els.$imgFileInputEl.change(function () {
+                //转Base64编码
+                var file = this.files[0];
+                if (file) {
+                    //大于300k
+                    if (file.size > (400 * 1024)) {
+                        alert('文件大小超过限制');
+                        return;
+                    }
+                    _this.reader.readAsDataURL(file);
+                }
             });
 
         },
@@ -227,7 +252,7 @@ define(['common/BasePage'], function (BasePage) {
         /**
          * 生成聊天html
          * @param data :
-         *       {
+            *       {
                     type: ,   //1:对方 2：自己
                     name: ,   //称谓
                     time: ,   //发送时间
@@ -239,11 +264,11 @@ define(['common/BasePage'], function (BasePage) {
         getHtmlString: function (data) {
             var html = data.type === 1 ?
                 '<div class="service-person" ><p>' + data.name + '<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
-                '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message.replace(/\n/gi,'</br>') : '<img src="' + data.message + '"/>') + '</div>' +
+                '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message.replace(/\n/gi, '</br>') : '<img style="max-width:200px;" src="' + data.message + '"/>') + '</div>' +
                 '</div>'
                 :
                 '<div class="guest-person" ><p>我<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
-                '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message.replace(/\n/gi,'</br>') : '<img src="' + data.message + '"/>') + '</div>' +
+                '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message.replace(/\n/gi, '</br>') : '<img  style="max-width:200px;" src="' + data.message + '"/>') + '</div>' +
                 '</div>';
             return html;
         },
@@ -401,34 +426,6 @@ define(['common/BasePage'], function (BasePage) {
         sendImg: function () {
             var _this = this;
             _this.els.$imgFileInputEl.click();
-            _this.els.$imgFileInputEl.change(function () {
-                //转Base64编码
-                var reader = new FileReader();
-                var file = this.files[0];
-                if (file) {
-                    reader.readAsDataURL(file);
-                }
-                //大于300k
-                if(file.size > (480 * 1024)){
-                    alert('文件大小超过限制');
-                    return;
-                }
-                //TODO 需校验文件大小
-                reader && reader.addEventListener("load", function () {
-                    var createVo = JSON.stringify(_this._createSendVo('picture', reader.result));
-                    console.log(file.size)
-                    console.log(createVo.length)
-                    _this.comet.websocket.send(createVo);
-                    var message = {
-                        type: 2,
-                        time: new Date(),
-                        message: reader.result,
-                        messageBodyType: 'picture'
-                    }
-                    _this.appendMessage(message);
-                    _this.els.$textEl.val('');
-                }, false);
-            });
         },
         _createSendVo: function (type, body) {
             type = type ? type : 'text';
