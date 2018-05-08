@@ -44,13 +44,13 @@ define(['common/BaseListPage'], function (BaseListPage) {
             });
         },
         showChecking: function () {
-            $('#editable').find("tbody").find("tr").empty();
+            $('#editable').find("tbody").empty();
             $('.bdtop3').hide();
-            var htmlStr = "<td colspan='11' style='text-align: center;height: 350px;' valign='center'>" +
+            var htmlStr = "<tr><td colspan='11' style='text-align: center;height: 350px;' valign='center'>" +
                 "<h3 style='color: #0a6aa1'>系统正在进行域名检测扫描，请耐心等待。。。</h3></br>" +
                 "<img src='"+resRoot+"/images/loading-1.gif'/>"+
-                "</td>";
-            $('#editable').find("tbody").find("tr").append(htmlStr);
+                "</td></tr>";
+            $('#editable').find("tbody").append(htmlStr);
             $('._enter_submit').addClass('disabled').lock();
             $('#detection_show').html("<h4 style='color: #0b0b0b'>检测中</br>请耐心等待</h4>");
         }
