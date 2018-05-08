@@ -365,7 +365,7 @@ define(['site/MReport'], function (MReport) {
         },
 
         /**
-         * 存取差额分组柱状图展示
+         * 存取差额柱状图展示
          * 展示最近七个周期的存取差额
          * @param rangeType
          */
@@ -374,7 +374,7 @@ define(['site/MReport'], function (MReport) {
             var jsonStr = $(dataKey).html();
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z1', data, 'staticDay', 'balanceAmount',　'存取差额', 300);
+            this.drawBasicColumnChart('z1', data, 'staticDay', 'balanceAmount',　'存取差额', 300, true);
         },
 
         /**
@@ -407,11 +407,11 @@ define(['site/MReport'], function (MReport) {
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
             if('phone'===terminal) {
-                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionPhone',　'有效投注', 300);
+                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionPhone',　'有效投注', 300, true);
             } else if('pc'===terminal) {
-                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionPc',　'有效投注', 300);
+                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionPc',　'有效投注', 300, true);
             } else {
-                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionAll',　'有效投注', 300);
+                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionAll',　'有效投注', 300, true);
             }
 
         },
@@ -437,7 +437,7 @@ define(['site/MReport'], function (MReport) {
             var jsonStr = $(dataKey).html();
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z3', data, 'staticDay', 'transactionProfitLoss', '损益', 300);
+            this.drawBasicColumnChart('z3', data, 'staticDay', 'transactionProfitLoss', '损益', 300, true);
         },
 
         /**
@@ -581,9 +581,9 @@ define(['site/MReport'], function (MReport) {
 
             }
             if('rakeback-men' == rakebackType) {
-                this.drawBasicColumnChart('b7', operationSummarys, 'staticDay', 'rakebackPlayer', '返水人数', 379);
+                this.drawBasicColumnChart('b7', operationSummarys, 'staticDay', 'rakebackPlayer', '返水人数', 379, false);
             } else if('rakeback-cash' == rakebackType) {
-                this.drawBasicColumnChart('b7', operationSummarys, 'staticDay', 'rakebackAmount', '返水金额', 356);
+                this.drawBasicColumnChart('b7', operationSummarys, 'staticDay', 'rakebackAmount', '返水金额', 356, true);
             }
         },
 
@@ -803,21 +803,6 @@ define(['site/MReport'], function (MReport) {
             _this = this;
             _this.iterationPlayerList(data.entities);
 
-            /*$('#dropdownMenuBtnA').click(function(e) {
-                $(this).next('.dropdown-menu').stop().slideToggle();
-                $(this).focus();
-                $(this).blur(function() {
-                    $(this).next('.dropdown-menu').stop().slideUp();
-                });
-            });
-
-            //选择一页显示多少
-            $('#choseNum .dropdown-item').click(function() {
-                var pageSize = parseInt(this.text)//取值，该页面显示多少条
-                _this.playerListHowPage(pageSize, 1);
-                //$("#dropdownMenuBtnA").html(this.text);
-            });*/
-
             //分页
             $.jqPaginator('#playerListPagination', {
                 totalPages: data.totalPages,//总共多少页
@@ -841,21 +826,6 @@ define(['site/MReport'], function (MReport) {
         initDepositList: function(data) {
             _this = this;
             _this.iterationDepositList(data.entities);
-
-            /*$('#dropdownMenuBtnB').click(function(e) {
-                $(this).next('.dropdown-menu').stop().slideToggle();
-                $(this).focus();
-                $(this).blur(function() {
-                    $(this).next('.dropdown-menu').stop().slideUp();
-                });
-            });
-
-            // 选择一页显示多少
-            $('#choseNum .dropdown-item').click(function() {
-                var pageSize = parseInt(this.text)//取值，该页面显示多少条
-                _this.depositListHowPage(pageSize, 1);
-                //$("#dropdownMenuBtnB").html(this.text);
-            });*/
 
             //分页
             $.jqPaginator('#depositWithdrawPagination', {

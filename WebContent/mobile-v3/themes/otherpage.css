@@ -108,7 +108,7 @@
 .content-without-footer { padding-bottom: 0 !important; }
 
 /* promo-detail */
-.promo-detail-content.mui-content { padding-bottom: 45px; background: #f2f2f2; }
+.promo-detail-content.mui-content { padding-bottom: 0; background: #f2f2f2; }
 .promo-detail-content table { color: #333; border: 1px solid #666; }
 .promo-detail-content table td { border: 1px solid #666; }
 .promo-detail-content .gb-select { display: block; }
@@ -124,7 +124,7 @@
 .promo-detail-content .gb-imgs > .ct ul li > .ct p { padding: 5px 0; line-height: 18px; color: #999; font-size: 12px; margin-bottom: 0; }
 .promo-detail-content .gb-form-foot { padding: 10px; }
 .promo-detail-content .gb-form-foot .submit { border: 1px solid #1766bb; background-color: #1766bb; width: 100%; padding: 10px 12px; font-size: 13px; }
-.promo-detail-content .gb-form-foot.new_foo { position: absolute; bottom: 0; left: 0; right: 0; padding: 0; z-index: 10; }
+.promo-detail-content .gb-form-foot.new_foo { overflow: hidden; margin: 10px -10px 40px; padding: 0; }
 .promo-detail-content .gb-form-foot.new_foo .mui-btn { float: left; width: 50%; border-radius: 0; font-size: 14px; padding: 0; height: 45px; line-height: 45px; }
 .promo-detail-content .gb-form-foot.new_foo .mui-btn.btn-deposit { background: #1766bb; border-color: #1766bb; }
 .promo-detail-content .gb-form-foot.new_foo .mui-btn.btn-apply { background: #0ec392; border-color: #0ec392; }
@@ -334,5 +334,7 @@ body.bind-mobile .bind-success { text-align: center; color: #444; line-height: 2
 .login .login-form a.btn { display: block; text-align: center; height: 40px; line-height: 40px; border-radius: 2px; }
 .login .login-form .btn-login { background: #1766bb; color: #fff; margin-bottom: 15px; }
 .login .login-form .btn-regist { color: #445dc2; border: 1px solid #445dc2; }
+
+.deposit_tips { color: #a52a2a; text-align: center; background: #ffd940; font-size: 12px; line-height: 24px; }
 
 /*# sourceMappingURL=otherpage.css.map */
