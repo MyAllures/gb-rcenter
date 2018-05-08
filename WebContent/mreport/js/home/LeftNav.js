@@ -57,6 +57,8 @@ define(['bootstrap-dialog','jsrender'], function (BootstrapDialog, jsrender) {
 
             $('.dropdown-toggle').click(function(e) {
                 $(this).next('.dropdown-menu').stop().slideToggle();
+                $(this).next(".dropdown-menu").css("left", $(".main-content").innerWidth()-130);
+                $(this).next(".dropdown-menu").css("right", $(".main-content").innerWidth()-60);
                 $(this).focus();
                 $(this).blur(function() {
                     $(this).next('.dropdown-menu').stop().slideUp();
