@@ -462,7 +462,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * @returns {string}
          */
         getGaugePercent: function(numerical0, numerical1) {
-            // 当往期值为0时，计算增长累率是没有意义的
+            // 当往期值为0时，计算增长率是没有意义的
             if(numerical1===0) {
                 return '<font color="#d2b0ff" size="30"></font>';
             }
