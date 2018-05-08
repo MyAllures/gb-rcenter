@@ -298,6 +298,20 @@ define(['site/MReport'], function (MReport) {
                 }
                 e.stopPropagation();    // 阻止事件冒泡
             });
+
+            $(".depositTrendBtn").click(function(e) {
+                var beginTime = $("input[name='deposit-beginTime']").val();
+                var endTime = $("input[name='deposit-endTime']").val();
+                var condition = "beginTime="+beginTime+"&endTime="+endTime;
+                _this.asnycOperationSummaryOfDays(condition, 'depositHowPage');
+            });
+
+            $(".playerTrendBtn").click(function(e) {
+                var beginTime = $("input[name='deposit-beginTime']").val();
+                var endTime = $("input[name='deposit-endTime']").val();
+                var condition = "beginTime="+beginTime+"&endTime="+endTime;
+                _this.asnycOperationSummaryOfDays(condition, 'playerHowPage');
+            });
         },
 
         /**

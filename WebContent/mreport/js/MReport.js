@@ -174,7 +174,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * @param keys
          * @param height
          */
-        curveChart:function(data,containerName,keys,height){
+        curveChart: function (data, containerName, keys, height) {
             const ds = new DataSet();
             const chart = new G2.Chart({
                 container: containerName,
