@@ -5,7 +5,12 @@ function userInfo() {
         success: function (data) {
             if (data != null) {
                 var currency = data.currency;
-
+                //手机绑定
+                if (data.phone){
+                    $("#phone").removeClass("mui-hidden");
+                }else{
+                    $("#phone").addClass("mui-hidden");
+                }
                 if (data.username) {
                     $(".ct p").text(data.username);
                 }
