@@ -335,4 +335,6 @@ body.bind-mobile .bind-success { text-align: center; color: #444; line-height: 2
 .login .login-form .btn-login { background: #1766bb; color: #fff; margin-bottom: 15px; }
 .login .login-form .btn-regist { color: #445dc2; border: 1px solid #445dc2; }
 
+.deposit_tips { color: #a52a2a; text-align: center; background: #ffd940; font-size: 12px; line-height: 24px; }
+
 /*# sourceMappingURL=otherpage.css.map */
