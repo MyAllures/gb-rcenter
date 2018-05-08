@@ -16,7 +16,7 @@ define(['common/BasePage'], function (BasePage) {
             $imgFileInputEl: $('#imgFileInput'),
             $closeOrderBtnEl: $('#closeOrderBtn'),
             $historyImMessageBtnEl: $('#historyImMessageBtn'),
-            countTextNumEL: $('#countText')
+            $countTextNumEL: $('#countText')
         },
         status: 'connect',
         messageType: null,
@@ -64,7 +64,7 @@ define(['common/BasePage'], function (BasePage) {
                     _this.els.$textEl.val(text.substring(0, 300));
                     count = 300;
                 }
-                _this.els.countTextNumEL.html(count);
+                _this.els.$countTextNumEL.html(count);
             });
 
         },
@@ -239,11 +239,11 @@ define(['common/BasePage'], function (BasePage) {
         getHtmlString: function (data) {
             var html = data.type === 1 ?
                 '<div class="service-person" ><p>' + data.name + '<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
-                '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message : '<img src="' + data.message + '"/>') + '</div>' +
+                '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message.replace(/\n/gi,'</br>') : '<img src="' + data.message + '"/>') + '</div>' +
                 '</div>'
                 :
                 '<div class="guest-person" ><p>我<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
-                '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message : '<img src="' + data.message + '"/>') + '</div>' +
+                '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message.replace(/\n/gi,'</br>') : '<img src="' + data.message + '"/>') + '</div>' +
                 '</div>';
             return html;
         },
@@ -392,6 +392,7 @@ define(['common/BasePage'], function (BasePage) {
                 }
                 _this.appendMessage(message);
                 _this.els.$textEl.val('');
+                _this.els.$countTextNumEL.html(0);
             }
         },
         /**

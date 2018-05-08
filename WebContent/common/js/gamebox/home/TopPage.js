@@ -1329,8 +1329,14 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
          * @param btnClk  是否是由按钮触发
          */
         showCustomerGroupWin: function (data, btnClk) {
+            /**其他窗口已打开客服界面**/
+            if (data && data.imMessage.status === 'connectFailed') {
+                $(".minmaxCon").hide();
+                $('#customerGroupModal').modal('hide');
+                return;
+            }
             if (window.top.customerGroupView == null) {
-                if(data && (data.imMessage.status == 'close' || data.imMessage.status == 'closed')) return;
+                if (data && (data.imMessage.status == 'close' || data.imMessage.status == 'closed' || data.imMessage.status == 'normal')) return;
                 var modal = $('#customerGroupModal');
                 var modalContent = modal.find('.modal-content');
                 modalContent.load(root + '/customer/groupView.html', function () {
@@ -1341,7 +1347,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                         btnClk: btnClk
                     });
                 });
-            }else{
+            } else {
                 data ? window.top.customerGroupView.setData(data) : window.top.customerGroupView.addDefaultWin();
             }
         }
