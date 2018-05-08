@@ -62,6 +62,16 @@ define(['bootstrap-dialog','jsrender'], function (BootstrapDialog, jsrender) {
                     $(this).next('.dropdown-menu').stop().slideUp();
                 });
             });
+
+            //数据类型切换
+            $(".top-info li span").click(function(){
+                var windowWidth = $(window).width();
+                if(windowWidth > 768){
+                    $(this).parent('li').toggleClass('active');
+                }else{
+                    $(this).parent('li').toggleClass('active').siblings('li').removeClass('active');
+                }
+            });
         },
 
         /**

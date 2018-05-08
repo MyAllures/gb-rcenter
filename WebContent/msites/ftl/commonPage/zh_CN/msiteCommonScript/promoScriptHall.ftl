@@ -446,7 +446,7 @@
                         if (data.transactionErrorList[j].money) {
                             money = data.transactionErrorList[j].money;
                         }
-                        if (data.status) {
+                        if (data.transactionErrorList[j].state) {
                             continue;
                         } else {
                             msg = '<div class="item-success-without-bar"><i class="icon-pass"></i><div class="txt"><span>存款订单' + data.transactionErrorList[j].transactionNo + '</span></div></div>' +
