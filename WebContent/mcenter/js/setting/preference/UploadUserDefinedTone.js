@@ -38,12 +38,12 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
                     browseLabel: window.top.message.content['floatPic.file.upload.browse'] + '&hellip;',
                     allowedFileExtensions: ['mp3','wav'],
                     msgInvalidFileExtension: window.top.message.content['floatPic.file.upload.msgInvalidFileExtension'],
-                    msgValidationError: window.top.message.content['floatPic.file.upload.msgValidationError'],
-                    msgSizeTooLarge: window.top.message.content['floatPic.file.upload.msgSizeTooLarge'],
-                    msgImageWidthSmall: window.top.message.content['logo.file.size.widthError'],
+                    msgValidationError: window.top.message.setting_auto['文件上传失败'],
+                    msgSizeTooLarge: window.top.message.setting_auto['您上传的文件大于5M'],
+                    /*msgImageWidthSmall: window.top.message.content['logo.file.size.widthError'],
                     msgImageHeightSmall: window.top.message.content['logo.file.size.heightError'],
                     msgImageWidthLarge: window.top.message.content['logo.file.size.widthError'],
-                    msgImageHeightLarge: window.top.message.content['logo.file.size.heightError']
+                    msgImageHeightLarge: window.top.message.content['logo.file.size.heightError']*/
                 }).bind("filecleared", function (e) {
                     e.fileInput.$container.prev().show();
                     page.resizeDialog();
@@ -97,10 +97,16 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
             if ($('.file-error-message:visible').length > 0) {
                 return false;
             }
-            var paramValue = $("[name='result.paramValue']").val();
-            if (!paramValue){
-                page.showPopover(e,{},"warning","请选择上传文件",true);
+            var fileName = $('.file-caption-name').attr("title");
+            if (!fileName){
+                page.showPopover(e,{},"warning",window.top.message.setting_auto['请选择上传文件'],true);
                 return false;
+            }else {
+                var paramValue = $("[name='result.paramValue']").val();
+                if (!paramValue){
+                    page.showPopover(e,{},"warning",window.top.message.setting_auto['上传失败，请重选选择'],true);
+                    return false;
+                }
             }
             return flag;
         },
@@ -142,7 +148,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
                 data:_this.getCurrentFormData(e),
                 success: function (data) {
                     if (data){
-                        page.showPopover(e,{},"success","保存成功",true);
+                        page.showPopover(e,{},"success",window.top.message.common['save.success'],true);
                         window.top.topPage.showConfirmMessage("上传成功，是否立即使用此声音?", function (state) {
                             if (state) {
                                 _this.saveUploadTone(e,opt);
@@ -151,7 +157,7 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
                             }
                         });
                     }else {
-                        page.showPopover(e,{},"warning","保存失败",true);
+                        page.showPopover(e,{},"warning",window.top.message.common['save.failed'],true);
                     }
                     $(e.currentTarget).unlock();
                 }
@@ -176,9 +182,9 @@ define(['common/BaseEditPage','jqFileInput','css!themesCss/fileinput/fileinput']
                 },
                 success: function (data) {
                     if (data.state){
-                        page.showPopover(e,{},"success","设置成功",true);
+                        page.showPopover(e,{},"success",window.top.message.setting_auto['设置成功'],true);
                     }else {
-                        page.showPopover(e,{},"warning","设置失败",true);
+                        page.showPopover(e,{},"warning",window.top.message.setting_auto['设置失败'],true);
                     }
                     $(e.currentTarget).unlock();
                     _this.saveCallbak(e,opt);
