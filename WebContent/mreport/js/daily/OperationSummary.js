@@ -176,20 +176,18 @@ define(['site/MReport'], function (MReport) {
                 $(this).addClass("btn-success").siblings().removeClass("btn-success");
                 var chart = $(this).attr("statisticsDataType");
                 var rangeType = $(this).attr('value');
-                // var yesterDay = new Date(new Date().setDate(new Date().getDate() - 1 ));
-                // var lastdate = new Date(new Date().setDate(new Date().getDate() - 8 ));
+                var yesterDay = new Date(new Date().setDate(new Date().getDate() - 1 ));
+                var lastdate = new Date(new Date().setDate(new Date().getDate() - 7 ));
                 if('D' === rangeType){
-                     /*var loadDatePick =
-                     '<div class="input-group daterangepickers" >'+
-                     '  <gb:dateRange format="yyyy-MM-dd" style="width:80px;" inputStyle="width:80px" useToday="true" useRange="true"'+
-                     '  position="down" lastMonth="false" hideQuick="true" opens="true" callback="End"  id="'+chart+'"'+
-                     '  startDate="'+lastdate+'" endDate="'+yesterDay+'"  maxDate="'+yesterDay+'"'+
-                     '  startName="'+chart+'-beginTime" endName="'+chart+'-endTime" thisMonth="true"/>'+
-                     ' </div>';
-                     $(".date."+chart).html(loadDatePick);
-                    _this.initDatePick($(".daterangepickers"));*/
+                    $("input[name='"+chart+"-endTime']").val(_this.getFormatDate(yesterDay));
+                    $("input[name='"+chart+"-beginTime']").val(_this.getFormatDate(lastdate));
+                    var $endTime = $("input[name='"+chart+"-endTime']").attr("data-rel");
+                    var data = eval("(" + $endTime + ")");
+                    data.maxDate = _this.getFormatDate(yesterDay);
+                    data.endDate = _this.getFormatDate(yesterDay);
+                    $("input[name='"+chart+"-endTime']").attr("data-rel",JSON.stringify(data));
+                    _this.initDatePick($(".daterangepickers"));
                     $(".date."+chart).show();
-
                 }else{
                     /* $(".date."+chart).empty();*/
                     $(".date."+chart).hide();
@@ -306,6 +304,8 @@ define(['site/MReport'], function (MReport) {
          *自选时间段查询
          */
         End:function(obj,option){
+            var date = new Date();
+            var yesterDay = new Date(date.setDate(date.getDate() - 1 ));
             var dayOf14 = 14*24*60*60*1000;
             var $current = $(obj.currentTarget.outerHTML);
             var targetId = $current.attr("id");
@@ -320,30 +320,14 @@ define(['site/MReport'], function (MReport) {
                 return ;
             }
 
-            // $chartName.find("input[name='"+targetId+"-endTime']").daterangepicker({
-            //     format: 'YYYY-MM-DD',
-            //     endDate: _endDate,
-            //     maxDate:maxDate,
-            //     autoApply:true,
-            // });
-            //
-            // $chartName.find("input[name='"+targetId+"-beginTime']").daterangepicker({
-            //     format: 'YYYY-MM-DD',
-            //     startDate: StartDate,
-            //     min: this.getFormatDate(new Date(StartDate)),
-            //     autoApply:true
-            // });
+            $("input[name='"+targetId+"-endTime']").val(_endDate);
+            var $data = $("input[name='"+targetId+"-endTime']").attr("data-rel");
+            var data = eval("(" + $data + ")");
+            data.maxDate = maxDate < yesterDay ? this.getFormatDate(maxDate) : this.getFormatDate(yesterDay);
+            data.endDate = _endDate;
+            $("input[name='"+targetId+"-endTime']").attr("data-rel",JSON.stringify(data));
+            this.initDatePick($(".daterangepickers"));
             this.asnycLoadOfDays(targetId,StartDate, _endDate );
-
-             /*var loadDatePick =
-             '<div class="input-group daterangepickers" >'+
-             ' <gb:dateRange format="${DateFormat.DAY}" style="width:80px;" inputStyle="width:80px" useToday="true" useRange="true"'+
-             ' position="down" lastMonth="false" hideQuick="true" opens="true" callback="End"  id="'+chart+'"'+
-             ' startDate="${lastdate}" endDate="${yesterDay}"  maxDate="${yesterDay}"'+
-             'startName="'+chart+'-beginTime" endName="'+chart+'-endTime" thisMonth="true"/>'+
-             ' </div>';
-             $(".date."+chart).html(loadDatePick);
-            this.initDatePick($(".daterangepickers"));*/
         },
 
         getFormatDate:function(date){
@@ -381,7 +365,7 @@ define(['site/MReport'], function (MReport) {
         },
 
         /**
-         * 存取差额分组柱状图展示
+         * 存取差额柱状图展示
          * 展示最近七个周期的存取差额
          * @param rangeType
          */
@@ -390,7 +374,7 @@ define(['site/MReport'], function (MReport) {
             var jsonStr = $(dataKey).html();
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z1', data, 'staticDay', 'balanceAmount',　'存取差额', 300);
+            this.drawBasicColumnChart('z1', data, 'staticDay', 'balanceAmount',　'存取差额', 300, true);
         },
 
         /**
@@ -423,11 +407,11 @@ define(['site/MReport'], function (MReport) {
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
             if('phone'===terminal) {
-                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionPhone',　'有效投注', 300);
+                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionPhone',　'有效投注', 300, true);
             } else if('pc'===terminal) {
-                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionPc',　'有效投注', 300);
+                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionPc',　'有效投注', 300, true);
             } else {
-                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionAll',　'有效投注', 300);
+                this.drawBasicColumnChart('z2', data, 'staticDay', 'effectiveTransactionAll',　'有效投注', 300, true);
             }
 
         },
@@ -453,7 +437,7 @@ define(['site/MReport'], function (MReport) {
             var jsonStr = $(dataKey).html();
             if(!jsonStr) return;
             const data = $.parseJSON(jsonStr);
-            this.drawBasicColumnChart('z3', data, 'staticDay', 'transactionProfitLoss', '损益', 300);
+            this.drawBasicColumnChart('z3', data, 'staticDay', 'transactionProfitLoss', '损益', 300, true);
         },
 
         /**
@@ -597,9 +581,9 @@ define(['site/MReport'], function (MReport) {
 
             }
             if('rakeback-men' == rakebackType) {
-                this.drawBasicColumnChart('b7', operationSummarys, 'staticDay', 'rakebackPlayer', '返水人数', 379);
+                this.drawBasicColumnChart('b7', operationSummarys, 'staticDay', 'rakebackPlayer', '返水人数', 379, false);
             } else if('rakeback-cash' == rakebackType) {
-                this.drawBasicColumnChart('b7', operationSummarys, 'staticDay', 'rakebackAmount', '返水金额', 356);
+                this.drawBasicColumnChart('b7', operationSummarys, 'staticDay', 'rakebackAmount', '返水金额', 356, true);
             }
         },
 
@@ -819,21 +803,6 @@ define(['site/MReport'], function (MReport) {
             _this = this;
             _this.iterationPlayerList(data.entities);
 
-            /*$('#dropdownMenuBtnA').click(function(e) {
-                $(this).next('.dropdown-menu').stop().slideToggle();
-                $(this).focus();
-                $(this).blur(function() {
-                    $(this).next('.dropdown-menu').stop().slideUp();
-                });
-            });
-
-            //选择一页显示多少
-            $('#choseNum .dropdown-item').click(function() {
-                var pageSize = parseInt(this.text)//取值，该页面显示多少条
-                _this.playerListHowPage(pageSize, 1);
-                //$("#dropdownMenuBtnA").html(this.text);
-            });*/
-
             //分页
             $.jqPaginator('#playerListPagination', {
                 totalPages: data.totalPages,//总共多少页
@@ -857,21 +826,6 @@ define(['site/MReport'], function (MReport) {
         initDepositList: function(data) {
             _this = this;
             _this.iterationDepositList(data.entities);
-
-            /*$('#dropdownMenuBtnB').click(function(e) {
-                $(this).next('.dropdown-menu').stop().slideToggle();
-                $(this).focus();
-                $(this).blur(function() {
-                    $(this).next('.dropdown-menu').stop().slideUp();
-                });
-            });
-
-            // 选择一页显示多少
-            $('#choseNum .dropdown-item').click(function() {
-                var pageSize = parseInt(this.text)//取值，该页面显示多少条
-                _this.depositListHowPage(pageSize, 1);
-                //$("#dropdownMenuBtnB").html(this.text);
-            });*/
 
             //分页
             $.jqPaginator('#depositWithdrawPagination', {
