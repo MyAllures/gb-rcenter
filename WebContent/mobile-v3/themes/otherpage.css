@@ -326,9 +326,9 @@ body.bind-mobile .bind-success { text-align: center; color: #444; line-height: 2
 .login .mui-content { background: #f2f2f2; }
 .login .user-img { background: url(../images/login-user.png) center no-repeat/100px, linear-gradient(#1767bd, #1767bd); width: 100px; height: 100px; border-radius: 100%; box-shadow: 3px 5px 15px 6px rgba(23, 103, 189, 0.25); margin: 50px auto; }
 .login .login-form { padding: 0 35px; color: #666; }
-.login .login-form .password, .login .login-form .username { position: relative; }
-.login .login-form .password label, .login .login-form .username label { line-height: 30px; }
-.login .login-form .password input, .login .login-form .username input { font-size: 14px; border-color: #ddd; }
+.login .login-form .password, .login .login-form .username, .login .login-form .code { position: relative; }
+.login .login-form .password label, .login .login-form .username label, .login .login-form .code label { line-height: 30px; }
+.login .login-form .password input, .login .login-form .username input, .login .login-form .code input { font-size: 14px; border-color: #ddd; }
 .login .login-form .warn { color: #333; font-size: 12px; position: absolute; right: 0; top: 5px; }
 .login .login-form .warn .icon-warn { width: 14px; height: 14px; display: inline-block; border-radius: 100%; background: #f65d5d; color: #fff; text-align: center; line-height: 14px; font-style: normal; margin-right: 3px; }
 .login .login-form .forget-pas { text-align: right; }

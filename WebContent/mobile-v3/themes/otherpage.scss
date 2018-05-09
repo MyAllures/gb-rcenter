@@ -652,7 +652,7 @@ body.bind-mobile{font-size:14px;
     .user-img{background:url(../images/login-user.png) center no-repeat/100px,linear-gradient(#1767bd,#1767bd);width:100px;height:100px;
         border-radius: 100%; box-shadow:  3px 5px 15px 6px rgba(#1767bd,0.25); margin: 50px auto;}
     .login-form{padding:0 35px;color:#666;
-        .password,.username{position:relative;
+        .password,.username,.code{position:relative;
             label{line-height:30px;}
             input{font-size:14px;border-color:#ddd;}
         }
