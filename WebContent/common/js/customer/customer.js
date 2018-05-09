@@ -163,9 +163,9 @@ define(['common/BasePage'], function (BasePage) {
                     break;
                 /**对方已关闭**/
                 case 'close' :
-                    _this.els.$sendTextBtnEL.attr('disabled', true);
-                    _this.els.$sendImgBtnEL.attr('disabled', true);
-                    _this.status = status;
+                    //_this.els.$sendTextBtnEL.attr('disabled', true);
+                    //_this.els.$sendImgBtnEL.attr('disabled', true);
+                    _this.status = 'normal';//允许发离线
                     _this.els.$connectionStateEl.html('对方已离线');
                     _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
                     if (window.top.customerGroupView) window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
