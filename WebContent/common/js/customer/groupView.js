@@ -473,7 +473,7 @@ define(['common/BasePage'], function (BasePage) {
             }
             return null;
 
-            //update gupiao_all set all_code = (case when code like '6%' then cast('sh',code) else end);
+            //
         },
         /**
          * socket连接状态通知
