@@ -136,7 +136,13 @@ height: 44px;
     margin-top: 44px;
     .h-bg{width: 100%;}
     .app-logo{width: 100px;height: 100px;position: absolute;top: 40px;left: 50%;margin-left: -50px;}
-    .btn-install{display:block;margin:20px auto 0;width: 165px;height: 40px;text-align: center;line-height: 40px;color: #eb0002;font-size: 15px;border: 1px solid #eb0002;border-radius: 6px;}
+    .btn-install{display:block;margin:20px auto 0;width: 165px;height: 40px;text-align: center;line-height: 40px;color: #eb0002;font-size: 15px;border: 1px solid #eb0002;border-radius: 6px;
+        &.loading{
+            .spinner{animation:spin 1s linear infinite;display: inline-block;width: 18px;height: 18px;border: 3px solid #eb0002;border-radius: 50%;    vertical-align: top;    margin-top: 10px;    margin-right: 5px;position: relative;            
+                &:before{content: '';    position: absolute;    width: 7px;    height: 4px;    background: #fff;    top: -3px;    left: 3px;}
+            }
+        }
+    }    
     .down-step{width: 100%;}
 }
 
@@ -646,7 +652,7 @@ body.bind-mobile{font-size:14px;
     .user-img{background:url(../images/login-user.png) center no-repeat/100px,linear-gradient(#1767bd,#1767bd);width:100px;height:100px;
         border-radius: 100%; box-shadow:  3px 5px 15px 6px rgba(#1767bd,0.25); margin: 50px auto;}
     .login-form{padding:0 35px;color:#666;
-        .password,.username{position:relative;
+        .password,.username,.code{position:relative;
             label{line-height:30px;}
             input{font-size:14px;border-color:#ddd;}
         }
@@ -659,9 +665,18 @@ body.bind-mobile{font-size:14px;
         a.btn{display:block;text-align: center;height:40px;line-height: 40px;border-radius:2px;}
         .btn-login{background:#1766bb;color:#fff;margin-bottom:15px;}
         .btn-regist{color:#445dc2;border:1px solid #445dc2;}
-        
+        .code{
+            .div_flex{display: flex;
+                input{flex: 1;}
+                img{    width: 100px;    height: 40px;    margin-left: 10px;}
+            }
+        }
     }
     
 }
 // 存款页面提示
 .deposit_tips{    color: #a52a2a;    text-align: center;    background: #ffd940;    font-size: 12px;    line-height: 24px;}
+@keyframes spin{
+    from{transform: rotateZ(0);}
+    to{transform: rotateZ(360deg);}
+} 
