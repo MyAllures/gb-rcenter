@@ -659,7 +659,12 @@ body.bind-mobile{font-size:14px;
         a.btn{display:block;text-align: center;height:40px;line-height: 40px;border-radius:2px;}
         .btn-login{background:#1766bb;color:#fff;margin-bottom:15px;}
         .btn-regist{color:#445dc2;border:1px solid #445dc2;}
-        
+        .code{
+            .div_flex{display: flex;
+                input{flex: 1;}
+                img{    width: 100px;    height: 40px;    margin-left: 10px;}
+            }
+        }
     }
     
 }
