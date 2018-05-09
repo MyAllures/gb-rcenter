@@ -176,20 +176,18 @@ define(['site/MReport'], function (MReport) {
                 $(this).addClass("btn-success").siblings().removeClass("btn-success");
                 var chart = $(this).attr("statisticsDataType");
                 var rangeType = $(this).attr('value');
-                // var yesterDay = new Date(new Date().setDate(new Date().getDate() - 1 ));
-                // var lastdate = new Date(new Date().setDate(new Date().getDate() - 8 ));
+                var yesterDay = new Date(new Date().setDate(new Date().getDate() - 1 ));
+                var lastdate = new Date(new Date().setDate(new Date().getDate() - 7 ));
                 if('D' === rangeType){
-                     /*var loadDatePick =
-                     '<div class="input-group daterangepickers" >'+
-                     '  <gb:dateRange format="yyyy-MM-dd" style="width:80px;" inputStyle="width:80px" useToday="true" useRange="true"'+
-                     '  position="down" lastMonth="false" hideQuick="true" opens="true" callback="End"  id="'+chart+'"'+
-                     '  startDate="'+lastdate+'" endDate="'+yesterDay+'"  maxDate="'+yesterDay+'"'+
-                     '  startName="'+chart+'-beginTime" endName="'+chart+'-endTime" thisMonth="true"/>'+
-                     ' </div>';
-                     $(".date."+chart).html(loadDatePick);
-                    _this.initDatePick($(".daterangepickers"));*/
+                    $("input[name='"+chart+"-endTime']").val(_this.getFormatDate(yesterDay));
+                    $("input[name='"+chart+"-beginTime']").val(_this.getFormatDate(lastdate));
+                    var $endTime = $("input[name='"+chart+"-endTime']").attr("data-rel");
+                    var data = eval("(" + $endTime + ")");
+                    data.maxDate = _this.getFormatDate(yesterDay);
+                    data.endDate = _this.getFormatDate(yesterDay);
+                    $("input[name='"+chart+"-endTime']").attr("data-rel",JSON.stringify(data));
+                    _this.initDatePick($(".daterangepickers"));
                     $(".date."+chart).show();
-
                 }else{
                     /* $(".date."+chart).empty();*/
                     $(".date."+chart).hide();
@@ -293,12 +291,26 @@ define(['site/MReport'], function (MReport) {
                 if($(this).val()==='report') {
                     $("#operationChart").hide();
                     $("#operationReport").show();
-                    _this.asnycOperationSummaryOfDays('', 'initReportList');
+                    _this.asnycOperationSummaryOfDays('', 'initReportList', true);
                 } else {
                     $("#operationChart").show();
                     $("#operationReport").hide();
                 }
                 e.stopPropagation();    // 阻止事件冒泡
+            });
+
+            $(".depositTrendBtn").click(function(e) {
+                var beginTime = $("input[name='deposit-beginTime']").val();
+                var endTime = $("input[name='deposit-endTime']").val();
+                var condition = "beginTime="+beginTime+"&endTime="+endTime;
+                _this.asnycOperationSummaryOfDays(condition, 'depositHowPage', true);
+            });
+
+            $(".playerTrendBtn").click(function(e) {
+                var beginTime = $("input[name='player-beginTime']").val();
+                var endTime = $("input[name='player-endTime']").val();
+                var condition = "beginTime="+beginTime+"&endTime="+endTime;
+                _this.asnycOperationSummaryOfDays(condition, 'playerHowPage', true);
             });
         },
 
@@ -306,6 +318,8 @@ define(['site/MReport'], function (MReport) {
          *自选时间段查询
          */
         End:function(obj,option){
+            var date = new Date();
+            var yesterDay = new Date(date.setDate(date.getDate() - 1 ));
             var dayOf14 = 14*24*60*60*1000;
             var $current = $(obj.currentTarget.outerHTML);
             var targetId = $current.attr("id");
@@ -320,30 +334,14 @@ define(['site/MReport'], function (MReport) {
                 return ;
             }
 
-            // $chartName.find("input[name='"+targetId+"-endTime']").daterangepicker({
-            //     format: 'YYYY-MM-DD',
-            //     endDate: _endDate,
-            //     maxDate:maxDate,
-            //     autoApply:true,
-            // });
-            //
-            // $chartName.find("input[name='"+targetId+"-beginTime']").daterangepicker({
-            //     format: 'YYYY-MM-DD',
-            //     startDate: StartDate,
-            //     min: this.getFormatDate(new Date(StartDate)),
-            //     autoApply:true
-            // });
+            $("input[name='"+targetId+"-endTime']").val(_endDate);
+            var $data = $("input[name='"+targetId+"-endTime']").attr("data-rel");
+            var data = eval("(" + $data + ")");
+            data.maxDate = maxDate < yesterDay ? this.getFormatDate(maxDate) : this.getFormatDate(yesterDay);
+            data.endDate = _endDate;
+            $("input[name='"+targetId+"-endTime']").attr("data-rel",JSON.stringify(data));
+            this.initDatePick($(".daterangepickers"));
             this.asnycLoadOfDays(targetId,StartDate, _endDate );
-
-             /*var loadDatePick =
-             '<div class="input-group daterangepickers" >'+
-             ' <gb:dateRange format="${DateFormat.DAY}" style="width:80px;" inputStyle="width:80px" useToday="true" useRange="true"'+
-             ' position="down" lastMonth="false" hideQuick="true" opens="true" callback="End"  id="'+chart+'"'+
-             ' startDate="${lastdate}" endDate="${yesterDay}"  maxDate="${yesterDay}"'+
-             'startName="'+chart+'-beginTime" endName="'+chart+'-endTime" thisMonth="true"/>'+
-             ' </div>';
-             $(".date."+chart).html(loadDatePick);
-            this.initDatePick($(".daterangepickers"));*/
         },
 
         getFormatDate:function(date){
@@ -723,7 +721,7 @@ define(['site/MReport'], function (MReport) {
          * @param beginTime
          * @param endTime
          */
-        asnycOperationSummaryOfDays: function(condition, tag) {
+        asnycOperationSummaryOfDays: function(condition, tag, isInitPage) {
             var _this = this;
             var url = root + '/daily/searchOperationSummaryByDays.html?'+condition;
             $.ajax({
@@ -734,8 +732,14 @@ define(['site/MReport'], function (MReport) {
                 success: function (data) {
                     if (tag==='playerHowPage') {
                         _this.iterationPlayerList(data.entities);
+                        if (isInitPage) {
+                            _this.initPlayerPagination(data);
+                        }
                     } else if(tag==='depositHowPage') {
                         _this.iterationDepositList(data.entities);
+                        if (isInitPage) {
+                            _this.initDepositPagination(data);
+                        }
                     } else {
                         _this.initPlayerList(data);
                         _this.initDepositList(data);
@@ -750,8 +754,10 @@ define(['site/MReport'], function (MReport) {
          * @param pageNo
          */
         playerListHowPage: function(pageSize, pageNo) {
-            var condition = "pageSize="+pageSize+"&pageNo="+pageNo;
-            _this.asnycOperationSummaryOfDays(condition, 'playerHowPage');
+            var beginTime = $("input[name='player-beginTime']").val();
+            var endTime = $("input[name='player-endTime']").val();
+            var condition = "beginTime="+beginTime+"&endTime="+endTime+"&pageSize="+pageSize+"&pageNo="+pageNo;
+            _this.asnycOperationSummaryOfDays(condition, 'playerHowPage', false);
         },
 
         /**
@@ -759,8 +765,10 @@ define(['site/MReport'], function (MReport) {
          * @param pageNo
          */
         depositListHowPage: function(pageSize, pageNo) {
-            var condition = "pageSize="+pageSize+"&pageNo="+pageNo;
-            _this.asnycOperationSummaryOfDays(condition, 'depositHowPage');
+            var beginTime = $("input[name='deposit-beginTime']").val();
+            var endTime = $("input[name='deposit-endTime']").val();
+            var condition = "beginTime="+beginTime+"&endTime="+endTime+"&pageSize="+pageSize+"&pageNo="+pageNo;
+            _this.asnycOperationSummaryOfDays(condition, 'depositHowPage', false);
         },
 
         /**
@@ -813,27 +821,51 @@ define(['site/MReport'], function (MReport) {
         },
 
         /**
+         * 初使化分页按钮
+         * @param data
+         */
+        initPlayerPagination: function(data) {
+            //分页
+            $.jqPaginator('#playerListPagination', {
+                totalPages: data.totalPages,//总共多少页
+                pageSize: data.pageSize,//分页条目
+                visiblePages: 5,//显示多少分页按钮
+                currentPage: data.pageNo,//当前在第几页
+                first:'<li class="page-item"><a class="page-link first-page" href="javascript:_this.playerListHowPage(15, {{page}});"></a></li>',
+                prev: '<li class="page-item"><a class="page-link previous" href="javascript:_this.playerListHowPage(15, {{page}});" aria-label="Previous"></a></li>',
+                next: '<li class="page-item"><a class="page-link next" href="javascript:_this.playerListHowPage(15, {{page}});" aria-label="Next"></a></li>',
+                last: '<li class="page-item"><a class="page-link last-page" href="javascript:_this.playerListHowPage(15, {{page}});"></a></li>',
+                page: '<li class="page page-item"><a class="page-link" href="javascript:_this.playerListHowPage(15, {{page}});">{{page}}</a></li>'
+            });
+        },
+
+        /**
+         * 初使化分页按钮
+         * @param data
+         */
+        initDepositPagination: function(data) {
+            //分页
+            $.jqPaginator('#depositWithdrawPagination', {
+                totalPages: data.totalPages,//总共多少页
+                pageSize: data.pageSize,//分页条目
+                visiblePages: 5,//显示多少分页按钮
+                currentPage: data.pageNo,//当前在第几页
+                first:'<li class="page-item"><a class="page-link first-page" href="javascript:_this.depositListHowPage(15, {{page}});"></a></li>',
+                prev: '<li class="page-item"><a class="page-link previous" href="javascript:_this.depositListHowPage(15, {{page}});" aria-label="Previous"></a></li>',
+                next: '<li class="page-item"><a class="page-link next" href="javascript:_this.depositListHowPage(15, {{page}});" aria-label="Next"></a></li>',
+                last: '<li class="page-item"><a class="page-link last-page" href="javascript:_this.depositListHowPage(15, {{page}});"></a></li>',
+                page: '<li class="page page-item"><a class="page-link" href="javascript:_this.depositListHowPage(15, {{page}});">{{page}}</a></li>'
+
+            });
+        },
+
+        /**
          * 用户走势数据加载
          */
         initPlayerList: function(data) {
             _this = this;
             _this.iterationPlayerList(data.entities);
-
-            //分页
-            $.jqPaginator('#playerListPagination', {
-                totalPages: data.totalPages,//总共多少页
-                pageSize: data.pageSize,//分页条目
-                visiblePages: 3,//显示多少分页按钮
-                currentPage: data.pageNo,//当前在第几页
-                first:'<li class="page-item"><a class="page-link first-page" href="javascript:;"></a></li>',
-                prev: '<li class="page-item"><a class="page-link previous" href="javascript:;" aria-label="Previous"></a></li>',
-                next: '<li class="page-item"><a class="page-link next" href="javascript:;" aria-label="Next"></a></li>',
-                last: '<li class="page-item"><a class="page-link last-page" href="javascript:;"></a></li>',
-                page: '<li class="page page-item"><a class="page-link" href="javascript:;">{{page}}</a></li>',
-                onPageChange: function (num) {
-                    _this.playerListHowPage(data.pageSize, num);
-                }
-            });
+            _this.initPlayerPagination(data);
         },
 
         /**
@@ -842,22 +874,7 @@ define(['site/MReport'], function (MReport) {
         initDepositList: function(data) {
             _this = this;
             _this.iterationDepositList(data.entities);
-
-            //分页
-            $.jqPaginator('#depositWithdrawPagination', {
-                totalPages: data.totalPages,//总共多少页
-                pageSize: data.pageSize,//分页条目
-                visiblePages: 3,//显示多少分页按钮
-                currentPage: data.pageNo,//当前在第几页
-                first:'<li class="page-item"><a class="page-link first-page" href="javascript:;"></a></li>',
-                prev: '<li class="page-item"><a class="page-link previous" href="javascript:;" aria-label="Previous"></a></li>',
-                next: '<li class="page-item"><a class="page-link next" href="javascript:;" aria-label="Next"></a></li>',
-                last: '<li class="page-item"><a class="page-link last-page" href="javascript:;"></a></li>',
-                page: '<li class="page page-item"><a class="page-link" href="javascript:;">{{page}}</a></li>',
-                onPageChange: function (num) {
-                    _this.depositListHowPage(data.pageSize, num);
-                }
-            });
+            _this.initDepositPagination(data);
         }
     });
 });

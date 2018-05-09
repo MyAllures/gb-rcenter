@@ -97,6 +97,11 @@
                 </#list>
             </#if>
             </div>
+            <div class="row">
+                <div class="no-result" style="display: none">
+                    搜索内容暂无符合条件的活动
+                </div>
+            </div>
         </div>
     </section>
 
