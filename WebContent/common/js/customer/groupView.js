@@ -240,6 +240,8 @@ define(['common/BasePage'], function (BasePage) {
                 data.imMessage.isCustomer = true;
                 //如果 li 已存在，则关掉customer窗口
                 li ? _this.closeUserWin(_this.hasUserWin('customer'), true) : _this._updateUserIdByEls('customer', userId, data.imMessage.sendUserName);
+                _this._showGroupWin();
+                _this.showUserWin(userId);
             }
             li = _this.hasUserWin(userId);//重新获取li标签
             if (li) _this._removeCloseButton(li), this.els.$userChatDivUl.find('iframe[id="' + userId + this._sep_Iframe + '"]')[0].contentWindow.page.socketCallBack(data);

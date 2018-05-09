@@ -50,7 +50,7 @@ define(['common/BasePage'], function (BasePage) {
                 _this.sendText();
             });
             _this.els.$sendImgBtnEL.on("click", function () {
-                _this.sendImg();
+                _this.els.$imgFileInputEl.click();
             });
             _this.els.$historyImMessageBtnEl.on("click", function () {
                 _this.sendHistoryMessage();
@@ -67,18 +67,6 @@ define(['common/BasePage'], function (BasePage) {
                 }
                 _this.els.$countTextNumEL.html(count);
             });
-            _this.reader.addEventListener("load", function(){
-                var createVo = JSON.stringify(_this._createSendVo('picture', _this.reader.result));
-                _this.comet.websocket.send(createVo);
-                var message = {
-                    type: 2,
-                    time: new Date(),
-                    message: _this.reader.result,
-                    messageBodyType: 'picture'
-                }
-                _this.appendMessage(message);
-                _this.els.$textEl.val('');
-            }, false);
             _this.els.$imgFileInputEl.change(function () {
                 //转Base64编码
                 var file = this.files[0];
@@ -91,6 +79,9 @@ define(['common/BasePage'], function (BasePage) {
                     _this.reader.readAsDataURL(file);
                 }
             });
+            _this.reader.addEventListener("load", function(){
+                _this.sendImg();
+            }, false);
 
         },
         onPageLoad: function () {
@@ -123,8 +114,8 @@ define(['common/BasePage'], function (BasePage) {
                     window.top.customerGroupView && window.top.customerGroupView.updateStatus(userId, 'timeout');
                     break;
                 /**已连通**/
-                case 'reconnected' :
                 case 'accepted' :
+                case 'reconnected' :
                 case 'connected' :
                     if (imMessage.workOrderId) _this.data.workerOrderId = imMessage.workOrderId;
                     _this.stopTimer();
@@ -264,11 +255,11 @@ define(['common/BasePage'], function (BasePage) {
         getHtmlString: function (data) {
             var html = data.type === 1 ?
                 '<div class="service-person" ><p>' + data.name + '<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
-                '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message.replace(/\n/gi, '</br>') : '<img style="max-width:200px;" src="' + data.message + '"/>') + '</div>' +
+                '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message.replace(/\n/gi, '</br>') : '<img style="max-width:500px;" src="' + data.message + '" onload="$(\'.ivu-scroll-container\').scrollTop($(\'.ivu-scroll-content\').height() + 10);"/>') + '</div>' +
                 '</div>'
                 :
                 '<div class="guest-person" ><p>我<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
-                '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message.replace(/\n/gi, '</br>') : '<img  style="max-width:200px;" src="' + data.message + '"/>') + '</div>' +
+                '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message.replace(/\n/gi, '</br>') : '<img  style="max-width:500px;" src="' + data.message + '" onload="$(\'.ivu-scroll-container\').scrollTop($(\'.ivu-scroll-content\').height() + 10);"/>') + '</div>' +
                 '</div>';
             return html;
         },
@@ -425,7 +416,16 @@ define(['common/BasePage'], function (BasePage) {
          */
         sendImg: function () {
             var _this = this;
-            _this.els.$imgFileInputEl.click();
+            var createVo = JSON.stringify(_this._createSendVo('picture', _this.reader.result));
+            _this.comet.websocket.send(createVo);
+            var message = {
+                type: 2,
+                time: new Date(),
+                message: _this.reader.result,
+                messageBodyType: 'picture'
+            }
+            _this.appendMessage(message);
+            _this.els.$textEl.val('');
         },
         _createSendVo: function (type, body) {
             type = type ? type : 'text';
