@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dawoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="bookmark" href="../../mobile-v3/favicon.ico">
+    <link rel="shortcut icon" href="../../mobile-v3/favicon.ico">
+    <link rel="stylesheet" href="../../mobile-v3/themes/mui.min.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/common.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/otherpage.css" />
+    <link rel="stylesheet" href="../../mobile-v3/themes/default/style.css" />
+</head>
+
+<body>
+<!-- 侧滑导航根容器 -->
+<div class="mui-off-canvas-wrap mui-draggable">
+    <!-- 主页面容器 -->
+    <div class="mui-inner-wrap">
+        <!-- 主页面标题 -->
+        <header class="mui-bar mui-bar-nav mui-bar-blue">
+            <a class="mui-action-back mui-icon mui-icon mui-icon-left-nav mui-pull-left"></a>
+            <h1 class="mui-title">活动申请</h1>
+        </header>
+        <div class="mui-content mui-scroll-wrapper promo-apply-content promo-apply2-content content-without-notice">
+            <div class="mui-scroll">
+                <!-- 主界面具体展示内容 -->
+                <div class="top_title">
+                    <div class="sub_tit">活动初审</div>
+                    <div class="tit">笔笔存送优笔笔存送优惠惠</div>
+                </div>
+                <div class="promo_item_list">
+                    <div class="promo_item">
+                        <div class="ite">
+                            <span class="ti">存款订单号：</span> CBSISJDHSIDHUIHAD
+                        </div>
+                        <div class="ite">
+                            <span class="ti">交易时间：</span> 2018-4-20 15:31:37
+                        </div>
+                        <div class="ite">
+                            <span class="ti">存款金额：</span> ¥ 1000
+                        </div>
+                        <div class="ite">
+                            <span class="ti">公司入款：</span> 公司入款
+                        </div>
+                        <div class="promo_item_sta suc">
+                            申请成功
+                        </div>
+                    </div>
+                    <div class="promo_item">
+                        <div class="ite">
+                            <span class="ti">存款订单号：</span> CBSISJDHSIDHUIHAD
+                        </div>
+                        <div class="ite">
+                            <span class="ti">交易时间：</span> 2018-4-20 15:31:37
+                        </div>
+                        <div class="ite">
+                            <span class="ti">存款金额：</span> ¥ 1000
+                        </div>
+                        <div class="ite">
+                            <span class="ti">公司入款：</span> 公司入款
+                        </div>
+                        <div class="promo_item_sta awa">
+                            申请奖励
+                        </div>
+                    </div>
+                    <div class="promo_item">
+                        <div class="ite">
+                            <span class="ti">存款订单号：</span> CBSISJDHSIDHUIHAD
+                        </div>
+                        <div class="ite">
+                            <span class="ti">交易时间：</span> 2018-4-20 15:31:37
+                        </div>
+                        <div class="ite">
+                            <span class="ti">存款金额：</span> ¥ 1000
+                        </div>
+                        <div class="ite">
+                            <span class="ti">公司入款：</span> 公司入款
+                        </div>
+                        <div class="promo_item_sta fai" id="test">
+                            申请失败
+                            <span>（-404）</span>
+                        </div>
+                    </div>
+                    <div class="promo_item">
+                        <div class="ite">
+                            <span class="ti">存款订单号：</span> CBSISJDHSIDHUIHAD
+                        </div>
+                        <div class="ite">
+                            <span class="ti">交易时间：</span> 2018-4-20 15:31:37
+                        </div>
+                        <div class="ite">
+                            <span class="ti">存款金额：</span> ¥ 1000
+                        </div>
+                        <div class="ite">
+                            <span class="ti">公司入款：</span> 公司入款
+                        </div>
+                        <div class="promo_item_sta proc">
+                            申请中...
+                        </div>
+                    </div>
+                </div>
+            </div> <!--mui-scroll 闭合标签-->
+            <a href="javascript:" class="mui-btn mui-btn-block btn_cust_serv">联系客服</a>
+        </div>  <!--mui-content 闭合标签-->
+    </div>
+</div>
+<!--申请成功弹窗-->
+<div class="mask"></div>
+<script src="../../mobile-v3/js/mui/mui.min.js"></script>
+<script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
+<script src="../../mobile-v3/js/common.js"></script>
+<script>
+    $(function () {// 申请成功弹窗
+            var t = 3,timer1 = null;
+            mui.alert('<i class="icon-sus"></i><div class="tips">您已申请成功！</div><div class="p_tim">(<span class="tim"></span>s)</div>',' ',null);
+            $('.mui-popup').addClass('app_suc');
+            $('.tim').html(t)
+            timer1 = setInterval(function () {
+                t--;
+                $('.tim').html(t)
+                if(t === 0){
+                    mui.closePopup();
+                    clearInterval(timer1);
+                }
+            },1000);
+    });
+    $(function () {// 申请失败
+        $('#test').on('tap',function () {
+            mui.toast('网络异常，请稍后重试',{ duration:2000});
+            $('.mui-toast-container').addClass('app_fai');
+            var mask = mui.createMask();//callback为用户点击蒙版时自动执行的回调；
+            mask.show();//显示遮罩
+            setTimeout(function () {
+                mask.close();//关闭遮罩
+            },2000)
+        });
+    })
+</script>
+</html>

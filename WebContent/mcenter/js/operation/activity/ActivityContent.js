@@ -30,7 +30,27 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
             that.awardAmountEvent();
             that.awardCountEvent();
             that.buildOtherEvent();
-
+            /**
+             * kobe----却换pc和手机终端
+             */
+            $(this.formSelector).on("click", "#pc-terminal", function(e) {
+                $(".pc").show();
+                $(".mb").hide();
+                $("#pc-terminal").removeClass("btn-default");
+                $("#mb-terminal").addClass("btn-default");
+                $(".mb .tab-pane").removeClass('active');
+                var tab = $(".pc li.active a").attr('href');
+                $(tab).addClass('active');
+            });
+            $(this.formSelector).on("click", "#mb-terminal", function(e){
+                $(".pc").hide();
+                $(".mb").show();
+                $("#mb-terminal").removeClass("btn-default");
+                $("#pc-terminal").addClass("btn-default");
+                $(".pc .tab-pane").removeClass('active');
+                var tab = $(".mb li.active a").attr('href');
+                $(tab).addClass('active');
+            });
 
         },
 
@@ -42,7 +62,12 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
             $(that.formSelector).on("validate", ".title,.activityContentFile,.activityAffiliated,.contents", function (e, message) {
                 if (message) {
                     if (!$(this).parents('.tab-pane').hasClass('active')) {
-                        $("#a_" + $(this).attr("bbb")).formtip(message);
+                        if ($(this).parents('.terminal').hasClass('pc')){
+                            $("#pc-terminal").formtip(message);
+                        }else {
+                            $("#mb-terminal").formtip(message);
+                        }
+                        /*$("#a_" + $(this).attr("bbb")).formtip(message);*/
                         e.result = true;
                     }
                 }
@@ -396,28 +421,6 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
          * @param e
          */
         activityRulePre: function (e) {
-
-            for (i = 0; i < languageCounts; i++) {
-                /*if ($("#previewImg" + i).html() != "") {
-                    if ($("#previewImg" + i + ' ' + "img").attr("src").indexOf("http") != -1) {
-                        $("#activityContentImage" + i).append(($("#previewImg" + i + ' ' + "img")));
-                    } else {
-                        $("#activityContentImg" + i).append(($("#previewImg" + i + ' ' + "img")));
-                        $("#aa_" + i).css("display", "none");
-                    }
-                }*/
-
-                if ($("#previewActivityAffiliateImg" + i).html() != "") {
-                    if ($("#previewActivityAffiliateImg" + i + ' ' + "img").attr("src").indexOf("http") != -1) {
-                        $("#activityAffiliatedImage" + i).append(($("#previewActivityAffiliateImg" + i + ' ' + "img")));
-                    } else {
-                        $("#activityAffiliatedImg" + i).append(($("#previewActivityAffiliateImg" + i + ' ' + "img")));
-                        $("#dd_" + i).css("display", "none");
-                    }
-                }
-
-            }
-
             var code = $("#code").val();
             window.top.topPage.ajax({
                 type: "Get",
@@ -452,11 +455,23 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
                     page.showPopover(obj,{},'danger',msg,true);
                     return false;
                 }
-                if(!that.validateAwardRule(e,opt)){
+                var type = $("[name='activityRule.conditionType']:checked").val();
+
+                if(type!='3') {
+                    if (!that.validateCondition(e, opt)) {
+                        var pro_txt = $("#money_condition");
+                        var obj = {currentTarget: pro_txt};
+                        var msg = window.top.message.operation['Activity.money.awardrules.notempty'];
+                        page.showPopover(obj, {}, 'danger', msg, true);
+                        return false;
+                    }
+
+                }
+                if (!that.validateAwardRule(e, opt)) {
                     var pro_txt = $("#awards_rules");
-                    var obj = {currentTarget:pro_txt};
+                    var obj = {currentTarget: pro_txt};
                     var msg = window.top.message.operation['Activity.money.awardrules.notempty'];
-                    page.showPopover(obj,{},'danger',msg,true);
+                    page.showPopover(obj, {}, 'danger', msg, true);
                     return false;
                 }
             }
@@ -499,11 +514,11 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
 
             var claimPeriod = $("[name='activityRule.claimPeriod']").val();
             if (claimPeriod == 'NaturalDay') {
-                $("#previewClaimPeriod").text(window.top.message.operation_auto['自然日']);//申领周期
+                $("#previewClaimPeriod").text(window.top.message.operation_auto['一日']);//申领周期
             } else if (claimPeriod == 'NaturalWeek') {
-                $("#previewClaimPeriod").text(window.top.message.operation_auto['自然周']);
+                $("#previewClaimPeriod").text(window.top.message.operation_auto['一周']);
             } else if (claimPeriod == 'NaturalMonth') {
-                $("#previewClaimPeriod").text(window.top.message.operation_auto['自然月']);
+                $("#previewClaimPeriod").text(window.top.message.operation_auto['一月']);
             } else if (claimPeriod == 'ActivityCycle') {
                 $("#previewClaimPeriod").text(window.top.message.operation_auto['活动周期']);
             }
@@ -658,31 +673,14 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
             // 活动名称，图片，内容
             for (i = 0; i < languageCounts; i++) {
                 $("#previewActivityName" + i).text($("[name='activityMessageI18ns[" + i + "].activityName']").val());
-
-                /*附图*/
-                /*if ($("#activityContentImg" + i + ' ' + "img").attr("src") == "") {
-                    $("#previewImg" + i).append(($("#main" + i + ' ' + "img")[0]));
-                } else {
-                    if ($("#activityContentImage" + i).html().trim() == "") {
-                        $("#previewImg" + i).append(($("#main" + i + ' ' + "img")[1]));
-                    } else {
-                        $("#previewImg" + i).append(($("#main" + i + ' ' + "img")[2]));
-                    }
-                    $("#aa_" + i).css("display", "block");
-                }
-*/
                 /*主图*/
                 if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
-                    $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[0]));
+                    var src1 = $("#activityAffiliatedImage" + i + ' ' + "img").attr('src');
+                    $("#previewActivityAffiliateImg" + i + ' ' + "img").attr('src', src1);
                 } else {
-                    if ($("#activityAffiliatedImage" + i).html().trim() == "") {
-                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[1]));
-                    } else {
-                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[2]));
-                    }
-                    $("#dd_" + i).css("display", "block");
+                    var src2 = $("#activityAffiliatedImg" + i + ' ' + "img").attr('src');
+                    $("#previewActivityAffiliateImg" + i + ' ' + "img").attr('src', src2);
                 }
-
                 $("#previewActivityDesc" + i).html($("[name='activityMessageI18ns[" + i + "].activityDescription']").val());
             }
             $(e.currentTarget).unlock();
@@ -934,18 +932,14 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
             // 活动名称，图片，内容
             for (i = 0; i < languageCounts; i++) {
                 $("#previewActivityName" + i).text($("[name='activityMessageI18ns[" + i + "].activityName']").val());
-
+                /*主图*/
                 if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
-                    $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[0]));
+                    var src1 = $("#activityAffiliatedImage" + i + ' ' + "img").attr('src');
+                    $("#previewActivityAffiliateImg" + i + ' ' + "img").attr('src', src1);
                 } else {
-                    if ($("#activityAffiliatedImage" + i).html().trim() == "") {
-                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[1]));
-                    } else {
-                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[2]));
-                    }
-                    $("#dd_" + i).css("display", "block");
+                    var src2 = $("#activityAffiliatedImg" + i + ' ' + "img").attr('src');
+                    $("#previewActivityAffiliateImg" + i + ' ' + "img").attr('src', src2);
                 }
-
                 $("#previewActivityDesc" + i).html($("[name='activityMessageI18ns[" + i + "].activityDescription']").val());
             }
             $(e.currentTarget).unlock();
@@ -956,22 +950,6 @@ define(['site/operation/activity/ActivityMoneyContent', 'jqFileInput', 'UE.I18N.
          * @param e
          */
         activityContentTypePreviewPre: function (e) {
-
-            for (i = 0; i < languageCounts; i++) {
-
-                //附图
-                if ($("#activityAffiliatedImg" + i + ' ' + "img").attr("src") == "") {
-                    $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[0]));
-                } else {
-                    if ($("#activityAffiliatedImage" + i).html().trim() == "") {
-                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[1]));
-                    } else {
-                        $("#previewActivityAffiliateImg" + i).append(($("#secondary" + i + ' ' + "img")[2]));
-                    }
-                    $("#dd_" + i).css("display", "block");
-                }
-            }
-
             var code = $("#code").val();
             window.top.topPage.ajax({
                 type: "Get",

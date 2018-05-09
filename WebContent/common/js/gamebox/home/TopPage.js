@@ -72,6 +72,17 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                 else if (state == 606 || state == 607) {//踢出
                     window.top.location.href = window.top.root + "/errors/" + state + ".html";
                 } else if (state == 608) {
+                    var token = xhr.getResponseHeader("gb.token");
+                    if(token) {
+                        var select;
+                        if(window.page) {
+                            select = $(window.page.formSelector);
+                        }
+                        if(!select) {
+                            select = $(document);
+                        }
+                        $(select).find("input[name='gb.token']").val(token);
+                    }
                     _this.showErrorMessage(window.top.message.common["repeat.request.error"], undefined, true);
                 }
                 else if (_this.errorPages.indexOf(state) >= 0 && settings.comet != true) {//服务器忙

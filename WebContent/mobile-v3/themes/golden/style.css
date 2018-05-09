@@ -4,7 +4,7 @@ body { color: #333; background: url(images/content-bg.png) no-repeat center 44px
 
 .mui-inner-wrap { background: url(images/content-bg.png) no-repeat center 44px; background-attachment: fixed; }
 
-header.mui-bar-nav a.mui-icon-bars { color: #666; }
+header.mui-bar-nav a.mui-icon-bars { color: #fff; }
 header.mui-bar-nav .btn-login { background-color: #1dc28e; border: 1px solid #1dc28e; }
 header.mui-bar-nav .btn-demo { background-color: #1279d9; border: 1px solid #1279d9; }
 header.mui-bar-nav .btn-register { background-color: #f0af01; border: 1px solid #f0af01; }
@@ -62,10 +62,8 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 
 /* page promo */
 .promo .p-t-slide-content { color: #333; }
-.promo .p-t-slide-content .swiper-slide { background: #fff; }
 
-.btn-promo-sort span { background: #e3e2e2; border: 1px solid #e3e2e2; }
-.btn-promo-sort.swiper-slide-active span { background: #e8c464; border: 1px solid #e8c96d; color: #fff; }
+.promo-head.mui-bar-blue { background-image: none; }
 
 .promo-header { border-bottom: 1px solid #ccc; }
 
@@ -131,8 +129,6 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 
 .banner-loading .ball-pulse.api-div div, .api-loading .ball-pulse.api-div div { background-color: #fff; }
 
-.mui-bar-tab .mui-icon.icon-home, .mui-bar-tab .mui-icon:active.icon-home { background: #252525; }
-
 .mui-content-casino-list .casino-list .img-wrap { background: transparent; }
 
 .mui-title { color: #fff; }
@@ -141,5 +137,7 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .login-info { background: url(images/icon-open-offcanvas.png) no-repeat right center/5px; color: #fff; }
 
 .load-body { background: url(./images/content-bg.png) no-repeat center 0; }
+
+.btn-promo-sort.swiper-slide-active span { color: #e7bf5c; border-bottom: 2px solid #e7bf5c; }
 
 /*# sourceMappingURL=style.css.map */

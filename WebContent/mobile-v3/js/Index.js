@@ -1,4 +1,8 @@
 var lazyLoadApi;
+//api滑动
+var apiSlideContent;
+//api分类滑动
+var apiTypeSlideIndicators;
 $(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
@@ -19,6 +23,8 @@ $(function () {
     swiper();
     //判断desk是否需要隐藏
     hideDesk();
+    //判断浮动图是否隐藏
+    hideEffect();
 });
 
 /**
@@ -57,7 +63,7 @@ function swiper() {
     if(siledSize >1){
         var apiTypeLength = $("#apiTypeLength").val();
         // api滑动
-        var slideContent = new Swiper('.nav-slide-content', {
+        apiSlideContent = new Swiper('.nav-slide-content', {
             loop: true,
             loopedSlides: siledSize,
             autoHeight: true,
@@ -67,7 +73,7 @@ function swiper() {
                 }
             }
         });
-        var slideIndicators = new Swiper('.nav-slide-indicators', {
+        apiTypeSlideIndicators = new Swiper('.nav-slide-indicators', {
             loop: true,
             loopedSlides: siledSize,
             slidesPerView: apiTypeLength,
@@ -86,8 +92,8 @@ function swiper() {
                 }
             }
         });
-        slideContent.controller.control = slideIndicators;
-        slideIndicators.controller.control = slideContent;
+        apiSlideContent.controller.control = apiTypeSlideIndicators;
+        apiTypeSlideIndicators.controller.control = apiSlideContent;
     }
 }
 
@@ -186,5 +192,13 @@ function closeDesk(obj, options) {
 function hideDesk(){
     if(os != 'app_ios' || localStorage.getItem("destHide")){
         $("#deskTip").hide();
+    }
+}
+
+//浮动图是否隐藏
+function hideEffect(){
+    var showEffect = localStorage.getItem("showEffect");
+    if(showEffect == 'true' || showEffect == true){
+        $(".ads-slider").hide();
     }
 }

@@ -2,23 +2,19 @@
 <#assign searchId></#assign>
 <#if data.activityMessage??>
     <#list data.activityMessage as am>
-        <#if am.code=='money'&& am.states=='processing' &&am.isDisplay>
+        <#if am.code?? && am.code=='money'&& am.states=='processing' &&am.isDisplay>
             <#assign searchId=am.searchId>
         </#if>
     </#list>
 </#if>
+
 <#--红包Id为空，不展示红包-->
 <#if searchId?? && searchId?has_content>
     <#if data.floatPicsInIndex??>
         <#list data.floatPicsInIndex as pic>
             <#if pic.singleMode && pic.picType=='2'>
                 <#if pic.location == "left" && pic.displayInPages?contains("3")>
-                    <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>
-                        <#assign updateTime = pic.id?string.computer/>
-                    <#else >
-                        <#assign updateTime = .now?date/>
-                    </#if>
-                <div data-fp="effect_${updateTime}" style="display:none;" class="show-effect-left hongbao-slide-wrap hongbao-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if>" id="hongbao">
+                <div data-fp="effect_${pic.id}" style="display:none;" class="show-effect-left hongbao-slide-wrap hongbao-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if>" id="hongbao">
                     <div class="<#if pic.hideCloseButton?? && pic.hideCloseButton>icon-close _close</#if>"></div>
                     <div class="slide-inner">
                         <ul>
@@ -46,12 +42,7 @@
         <#list data.floatPicsInIndex as pic>
             <#if pic.singleMode && pic.picType=='2'>
                 <#if pic.location == "right" && pic.displayInPages?contains("3")>
-                    <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>
-                        <#assign updateTime = pic.id?string.computer/>
-                    <#else >
-                        <#assign updateTime = .now?date/>
-                    </#if>
-                <div data-fp="effect_${updateTime}" style="display:none;" class="show-effect-right hongbao-slide-wrap hongbao-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if>" id="hongbao" >
+                <div data-fp="effect_${pic.id}" style="display:none;" class="show-effect-right hongbao-slide-wrap hongbao-wrap <#if pic.showEffect?? && pic.showEffect?string('true','false')=='true'>show_effect </#if>" id="hongbao" >
                     <div class="<#if pic.hideCloseButton?? && pic.hideCloseButton>icon-close _close</#if>"></div>
                     <div class="slide-inner">
                         <ul>

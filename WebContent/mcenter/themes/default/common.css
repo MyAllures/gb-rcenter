@@ -9,3 +9,5 @@
 @import "../../../mcenter/themes/default/login.css";
 @import "../../../common/themes/default/iCheck/custom.css";
 @import "../../../common/themes/public-mod.css";
+
+.index_tips{padding: 10px 15px;}

@@ -2,6 +2,11 @@
 var os = whatOs();
 /*是否原生*/
 var isNative = isNative();
+/*登录跳转后地址*/
+var LOGIN_TARGET_URL = "loginTargetUrl";
+//sessionStorage存放api相关对象 用来登录后直接进入游戏
+var SESSION_API_OBJ = "api_object";
+
 /*mui 初始化配置选项*/
 var muiDefaultOptions = {
     /*主页面滚动指定容器，可自行指定范围*/
@@ -98,6 +103,38 @@ function muiInit(options) {
     bindButtonEvent();
     //键盘适应性
     resizeKeyboard();
+    //重写返回方法，以适应登录后直接跳转页面。
+    muiBack();
+    //绑定后台设置的相关链接事件
+    bindHrefTarget();
+}
+
+/**
+ * 绑定后台设置的相关链接事件
+ */
+function bindHrefTarget() {
+    $("a[href][target='_blank']").on("tap", function () {
+        var url = $(this).attr("href");
+        if(url) {
+            openWindow(url);
+        }
+    })
+}
+
+/**
+ * 重写返回方法，以适应登录后直接跳转页面。
+ */
+function muiBack() {
+    mui.back = function () {
+        sessionStorage.removeItem(SESSION_API_OBJ);
+        sessionStorage.removeItem(LOGIN_TARGET_URL);
+        if (typeof mui.options.beforeback === 'function') {
+            if (mui.options.beforeback() === false) {
+                return;
+            }
+        }
+        mui.doAction('backs');
+    }
 }
 
 /**
@@ -128,7 +165,7 @@ function muiScrollY(obj, options) {
             startY: 0, //初始化时滚动至y
             indicators: false, //是否显示滚动条
             deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
-            bounce: false //是否启用回弹
+            bounce: true //是否启用回弹
         };
     }
     mui(obj).scroll(options)
@@ -179,10 +216,20 @@ function muiAjaxError() {
     mui.ajaxSettings.complete = function (error, type, xhr, settings) {
         var status = error.getResponseHeader("headerStatus") || error.status;
         if (status == 600) {//Session过期 跳转登录页面
-            goToUrl(root + "/login/commonLogin.html");
+            var targetUrl = window.location.href;
+            var index = targetUrl.indexOf("&v=");
+            if (index <= 0) {
+                index = targetUrl.indexOf("?v=");
+            }
+            targetUrl = targetUrl.substr(0, index);
+            login(targetUrl);
         } else if (status == 606) {// 踢出
             goToUrl(root + "/errors/" + status + ".html");
         } else if (status == 608) {
+            var token = error.getResponseHeader("gb.token");
+            if (token) {
+                $("[name='gb.token']").val(token);
+            }
             toast(window.top.message.common["repeat.request.error"]);
         } else if (status >= 0 && settings && settings.comet != true) { //606、403、404、605等状态码跳转页面
             window.top.location.href = window.top.root + "/errors/" + status + ".html";
@@ -236,7 +283,8 @@ function muiAjax(options) {
         error: options.error,
         complete: options.complete,
         beforeSend: options.beforeSend,
-        async:options.async
+        async: options.async,
+        contentType: options.contentType,
     };
     mui.ajax(options.url, settings);
 }
@@ -311,6 +359,7 @@ function goToUrl(url, isExternalLink, targetUrl) {
         return;
     } else if (url.indexOf(root + "/mainIndex.html") > 0) { //首页
         goToHome(url);
+        return;
     }
     openWindow(url);
 }
@@ -509,7 +558,7 @@ function login(targetUrl) {
         var url = '/login/commonLogin.html?v=' + rcVersion;
         if (targetUrl && targetUrl != '/') {
             //登录成功后跳转页面
-            sessionStorage.loginTargetUrl = targetUrl;
+            sessionStorage.setItem("loginTargetUrl", targetUrl);
         }
         openWindow(url);
     }
@@ -543,7 +592,7 @@ function deposit(url) {
 function logout(e, options) {
     sessionStorage.is_login = false;
     isLogin = false;
-    sessionStorage.setItem("isLogin", isLogin);
+    sessionStorage.setItem("isLogin", false);
     goToUrl("/passport/logout.html");
 }
 
@@ -625,4 +674,14 @@ function lazyLoadImg(self, placeholder) {
         placeholder: placeholder
     });
     return lazyLoadApi;
+}
+
+/**
+ * 只是跳转到首页，不进行游戏跳转，
+ * 为了处理跳转登录后返回之前一个页面点击首页，就一直跳回到登录页面
+ */
+function goToHomePageOnly() {
+    sessionStorage.removeItem(SESSION_API_OBJ);
+    sessionStorage.removeItem(LOGIN_TARGET_URL);
+    goToHome(root + "/mainIndex.html");
 }

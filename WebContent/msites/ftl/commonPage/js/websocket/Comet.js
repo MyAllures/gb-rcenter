@@ -88,7 +88,6 @@ MSiteComet.prototype = {
                 {subscribeType: "SYS_ANN", callBack: popUp.callBack},
                 {subscribeType: "SITE_ANN", callBack: popUp.callBack},
                 {subscribeType: "PCENTER-dialog-Notice", callBack: popUp.callBack},
-                {subscribeType: "MSITE-Player-Withdraw-Notice", callBack: popUp.callBack},
                 {subscribeType: "MSITE-Player-Announcement-Notice", callBack: popUp.callBack},
                 {subscribeType: "MCENTER_READ_COUNT", callBack: popUp.callBack},
                 {subscribeType: "MSITE-ONLINERECHARGE", callBack: popUp.callBack},
@@ -158,8 +157,12 @@ MSiteComet.prototype = {
                 if (this.cid != undefined && this.cid != null) {
                     _this.userParam[_this.CONNECTIONID_KEY] = this.cid;
                 }
-                _this.connection();
-                console.info("try to connecting..")
+                if (_this.websocket != null &&　_this.websocket.readyState == _this.websocket.OPEN) {
+                    _this.websocket.send("");
+                    _this.last_active_time=new Date().getTime();
+                }else {
+                    _this.connection();
+                }
             }
         }, 10000);
     },

@@ -14,40 +14,42 @@
 <#--失败提示-->
 <div class="promoFailureTip" style="display: none">
     <i class="icon-success"></i>
-    <div class="tip_tit"></div>
+    <div class="tip_tit tit"></div>
     <div class="subs-txt">您所提交的申请失败！如有问题，请与客服人员联系。</div>
-    <div class="ext-inf"></div>
+    <div class="failure-reason applyResult"></div>
 </div>
 
 <#--成功提示-->
 <div class="promoSuccessTip" style="display: none">
     <i class="icon-success"></i>
-    <div class="tip_tit"></div>
+    <div class="tip_tit tit"></div>
     <div class="subs-txt">您所提交的申请已成功，请及时跟进申请状况。如有问题，请与客服人员联系。</div>
-    <div class="ext-inf"></div>
+    <div class="ext-inf applyResult"></div>
 </div>
 
 <#--有效投注额和盈亏送提示-->
 <div class="activityProcess" style="display: none;">
     <i class="icon-danger"></i>
-    <div class="tip_tit"></div>
-    <div class="subs-txt">进度进度进度进度进度进度进度进度进度进度进度进度进度进度进度</div>
+    <div class="tip_tit tit"></div>
+    <div class="subs-txt">以下是您当前投注额,统计周期请查看活动细则,加油吧</div>
     <div class="failure-reason">
         <div class="effective_transaction"></div>
-        <div class="profit_loss wrap1"></div>
+        <div class="profit_loss wrap1 profit"></div>
+        <div class="profit_loss wrap1 loss"></div>
     </div>
 </div>
 
 <#--存就送提示-->
 <div class="deposit_send" style="display: none;">
     <i class="icon-danger"></i>
-    <div class="tip_tit"></div>
+    <div class="tip_tit tit"></div>
     <div class="subs-txt">您可以选择申请已满足要求的订单，建议您查看活动细则后，再决定是否立即申请。</div>
     <div class="tab_wrap">
         <table>
             <tr class="deposit_sent_transactionNo"><th>选择</th><th>存款订单号</th><th>订单成功时间</th><th>订单金额</th></tr>
         </table>
     </div>
+    <div class="tip_noTransaction" style="text-align: center;">无订单可申请存就送</div>
 </div>
 
 

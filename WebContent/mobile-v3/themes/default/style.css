@@ -62,9 +62,6 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 
 /* page promo */
 .promo .p-t-slide-content { color: #333; }
-.promo .p-t-slide-content .swiper-slide { background: #fff; }
-
-.btn-promo-sort.swiper-slide-active span { color: #327fc3; border-bottom: 2px solid #327fc3; }
 
 .promo-header { border-bottom: 1px solid #ccc; }
 
@@ -127,8 +124,6 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 
 .copy-right { border-top: 1px solid #333; }
 
-.mui-bar-tab .mui-icon.icon-home, .mui-bar-tab .mui-icon:active.icon-home { background: #252525; }
-
 .mui-title { color: #fff; }
 
 .mui-bar .mui-icon-back { color: #fff; }
@@ -152,5 +147,7 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .content-casino-transfer .game-item .game-detail h1 { color: #fff; }
 
 .content-casino-transfer .game-item .game-detail .g-money { color: #fff; }
+
+.deposit_2 .btn_wrap .btn_submit { background: #151515; border-color: #151515; }
 
 /*# sourceMappingURL=style.css.map */

@@ -20,9 +20,12 @@ ${views.sportsbook[key]}
 <c:if test="${36==apiId}">
     <c:set var="key" value="oddsType.36.${oddsType}"/>
 </c:if>
+<c:if test="${40==apiId}">
+    <c:set var="key" value="oddsType.40.${oddsType}"/>
+</c:if>
 <c:if test="${!empty oddsType}">
     (
-    <if test="${views.sportsbook[key]}">${oddsType}</if>
+    <c:if test="${empty views.sportsbook[key]}">${oddsType}</c:if>
     ${views.sportsbook[key]}
     )
 </c:if>

@@ -2,7 +2,7 @@
 <#assign searchId></#assign>
 <#if data.activityMessage??>
     <#list data.activityMessage as am>
-        <#if am.code=='money'&& am.states=='processing' &&am.isDisplay>
+        <#if am.code?? && am.code=='money'&& am.states=='processing' &&am.isDisplay>
             <#assign searchId=am.searchId>
         </#if>
     </#list>
@@ -243,11 +243,11 @@
                 <div class="bootstrap-dialog-body">
                     <div class="bootstrap-dialog-message">
                         <div style="text-indent: 30px;">
-                            <#if data.registerAnnouncement?has_content>
+                        <#if data.registerAnnouncement?has_content>
                                 <#list data.registerAnnouncement as msg >
                                     ${msg.content}
                                 </#list>
-                            </#if>
+                        </#if>
                         </div>
                     </div>
                 </div>
@@ -274,11 +274,11 @@
                 <div class="bootstrap-dialog-body">
                     <div class="bootstrap-dialog-message">
                         <div style="text-indent: 30px;">
-                            <#if data.loginAnnouncement?has_content>
+                        <#if data.loginAnnouncement?has_content>
                                 <#list data.loginAnnouncement as msg >
                                     ${msg.content}
                                 </#list>
-                            </#if>
+                        </#if>
                         </div>
                     </div>
                 </div>

@@ -1,8 +1,8 @@
 /**
  * 数据中心首页-首页js
  */
-define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], function (BasePage,Swiper,G2,DataSet) {
-    return BasePage.extend({
+define(['site/swiper.min','site/MReport'], function (Swiper,MReport) {
+    return MReport.extend({
         /**
          * 初使化
          */
@@ -10,19 +10,28 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
             'use strict';
             this._super();
 
-            //初始化Swiper
-            this.initSwiper();
-
             //初始化G2
             this.initG2('visitor');//默认展示实时访客
 
         },
 
-
         onPageLoad: function () {
-
+            //初始化Swiper
+            this.initSwiper(document.getElementById("dataBox").offsetWidth * 0.8);
         },
 
+        initSwiper:function(width){
+            var swiper = new Swiper('.swiper-info', {
+                slidesPerView: 6,
+                spaceBetween: 15,
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                // width : $("#dataBox").offsetWidth
+                width:width
+                //direction: 'vertical',
+                //loop: true
+            });
+        },
         /**
          * 当前对象事件初始化
          */
@@ -34,86 +43,36 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
                 _this.changeCartogram(this);
             });
 
-            // $('#Searchresult tr').click(function(){
-            //     rundomData()
-            // })
-        },
-
-        initSwiper:function(){
-            var swiper = new Swiper('.swiper-info', {
-                slidesPerView: 6,
-                spaceBetween: 15,
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
-                //direction: 'vertical',
-                //loop: true
+            //调节页面宽度
+            $(window).resize(function() {
+                if(document.getElementById("dataBox")){
+                    _this.initSwiper(document.getElementById("dataBox").offsetWidth * 0.8);
+                }
             });
+
+            //Sweiper滑动
+            $('.swiper-info div .swiper-slide').mousedown(function(){
+                $(this).addClass('btn-primary').removeClass('swp').siblings().addClass('swp').removeClass('btn-primary');
+            })
         },
 
         initG2:function(realtimeType){
             $("#mountNode").html(null);
+            if( 'deposit' == realtimeType || 'effcTransaction' == realtimeType || 'realtimeProfitLoss' == realtimeType){
+                $("#explainText").html("以日合计 单位(￥)");
+            }else{
+                $("#explainText").html("以日合计 单位(个)");
+            }
             const data = this.setData(realtimeType);
-            if(data == null || data.length < 1) return;
-
-            const ds = new DataSet();
+            if(data.length < 1) return;
             var keys = Object.keys(data[0]);
             keys.splice(0,1);
-            const chart = new G2.Chart({
-                container: 'mountNode',
-                forceFit: true,
-                width: 500
-            });
+            if(keys == null || keys.length < 1 || !$("#mountNode").length) return;
             if('realtimeProfitLoss' == realtimeType){
-                chart.source(data);
-                chart.scale({
-                    time: {
-                        range: [ 0 , 1 ]
-                    }
-                });
-                chart.axis(keys[0], {
-                    label: {
-                        formatter: function(val) {
-                            return val;
-                        }
-                    }
-                });
-                chart.area().position('time*'+keys[0]).shape('smooth');
-                chart.line().position('time*'+keys[0]).size(2).shape('smooth');
+                this.acreageChart(data,'mountNode',keys[0],500);
             }else{
-                const dv = ds.createView().source(data);
-                dv.transform({
-                    type: 'fold',
-                    fields: keys, // 展开字段集
-                    key: 'name', // key字段
-                    value: 'sum', // value字段
-                });
-                chart.axis('sum', {
-                    label: {
-                        formatter: function(val) {
-                            return val;
-                        }
-                    }
-                });
-				/*,[ '#0072ff', '#02c16e', '#ff5050' ]*/
-				/*,[ '#0072ff', '#02c16e', '#ff5050' ]*/
-                chart.line().position('time*sum').color('name').shape('smooth');
-                chart.point().position('time*sum').color('name').size(4).shape('circle').style({
-                    stroke: '#fff',
-                    lineWidth: 1
-                });
-
-                chart.source(dv,{
-                    time: {
-                        range: [ 0, 1 ]
-                    }
-                });
+                this.curveChart(data,'mountNode',keys,500);
             }
-            chart.tooltip({
-                crosshairs: {
-                    type: 'line'
-                }
-            });
-            chart.render();
         },
 
         /**
@@ -126,20 +85,15 @@ define(['common/BasePage','site/swiper.min','g2/g2.min','g2/data-set.min'], func
 
         /**组装统计图数据*/
         setData: function(realtimeType){
-            var profilesJson = $.parseJSON($("#profilesJson").val());
             var array = [];
-            if(profilesJson == null && profilesJson.length < 1){
-                return array;
-            }
-            for(var i = 1; i<=24; i++) {
+            var profilesStr = $("#profilesJson").val();
+            if(!profilesStr) return array;
+            var profilesJson = $.parseJSON(profilesStr);
+            for(var i = 0; i<profilesJson.length; i++) {
+                if(i > 23)continue;
                 var data = {};
-                if( i > profilesJson.length){
-                    data['time'] = i < 10 ? '0'+i+':00': (i > 23 ? '23:59' : i + ':00');
-                    array.push(data);
-                    continue;
-                }
-                var profile = profilesJson[i-1];
-                data['time'] = i < 10 ? '0'+i+':00': (i > 23 ? '23:59' : i + ':00');
+                var profile = profilesJson[i];
+                data['time'] = i > 22 ? '23:59' : profile.realTime;
                 if ('visitor' == realtimeType) {
                     data['访客量(全部)'] = profile.countVisitor;
                     data['访客量(PC端)'] = profile.visitorPc;

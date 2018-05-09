@@ -62,10 +62,6 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 
 /* page promo */
 .promo .p-t-slide-content { color: #333; }
-.promo .p-t-slide-content .swiper-slide { background: #fff; }
-
-.btn-promo-sort span { background: #e3e2e2; border: 1px solid #e3e2e2; }
-.btn-promo-sort.swiper-slide-active span { background: #ff7700; border: 1px solid #ff7700; color: #fff; }
 
 .promo-header { border-bottom: 1px solid #ccc; }
 
@@ -128,8 +124,6 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 
 .copy-right { border-top: 1px solid #333; }
 
-.mui-bar-tab .mui-icon.icon-home, .mui-bar-tab .mui-icon:active.icon-home { background: #252525; }
-
 .mui-title { color: #fff; }
 
 .mui-bar .mui-icon-back { color: #fff; }
@@ -157,18 +151,13 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .notice-alert .mui-popup-button { color: #ff7700; }
 
 /* ui-bar-tab */
-.mui-bar-tab .mui-icon, .mui-bar-tab .mui-icon:active { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; }
-.mui-bar-tab .mui-icon.icon-deposit, .mui-bar-tab .mui-icon:active.icon-deposit { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; background-position: -9px -4px; }
-.mui-bar-tab .mui-icon.icon-promo, .mui-bar-tab .mui-icon:active.icon-promo { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; background-position: -49px -5px; }
-.mui-bar-tab .mui-icon.icon-home, .mui-bar-tab .mui-icon:active.icon-home { width: 46px; height: 46px; position: absolute; left: 50%; margin-left: -23px; top: -13px; background: #252525; border-radius: 23px; }
-.mui-bar-tab .mui-icon.icon-home + .mui-tab-label, .mui-bar-tab .mui-icon:active.icon-home + .mui-tab-label { margin-top: 31px; }
-.mui-bar-tab .mui-icon.icon-home:after, .mui-bar-tab .mui-icon:active.icon-home:after { content: ''; width: 36px; height: 36px; background: url(images/footer-nav-icon.png) no-repeat -83px -2px/auto 80px; position: absolute; left: 5px; top: 5px; }
-.mui-bar-tab .mui-icon.icon-service, .mui-bar-tab .mui-icon:active.icon-service { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; background-position: -129px -5px; }
-.mui-bar-tab .mui-icon.icon-mine, .mui-bar-tab .mui-icon:active.icon-mine { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; background-position: -168px -5px; }
-.mui-bar-tab .mui-active .mui-icon { background-position-y: -45px; }
-.mui-bar-tab .mui-active .mui-icon.icon-home:after { background: url(images/footer-nav-icon.png) no-repeat -83px -43px/auto 80px; }
+.mui-bar-tab .mui-icon, .mui-bar-tab .mui-icon:active { background-image: url(./images/footer-nav-icon.png); background-repeat: no-repeat; background-size: auto 48px; background-position-y: 0; }
 
 .load-body { background: #ff7700; }
 .load-body .mui-progressbar.mui-progressbar-infinite:before { background: #ff7700; }
+
+.btn-promo-sort.swiper-slide-active span { color: #ff7700; border-bottom: 2px solid #ff7700; }
+
+.deposit_2 .btn_wrap .btn_submit { background: #f70; border-color: #f70; }
 
 /*# sourceMappingURL=style.css.map */

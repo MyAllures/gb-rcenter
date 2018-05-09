@@ -2,7 +2,7 @@
 <#assign searchId></#assign>
 <#if data.activityMessage??>
     <#list data.activityMessage as am>
-        <#if am.code=='money'&& am.states=='processing' &&am.isDisplay>
+        <#if am.code?? && am.code=='money'&& am.states=='processing' &&am.isDisplay>
             <#assign searchId=am.searchId>
         </#if>
     </#list>

@@ -35,6 +35,7 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             this.type = $(this.formSelector + " input[name=type]").val();
             this.muiInit();
             this.iosGoBack();
+            this.setLtToken();
         },
         /**
          * 绑定事件
@@ -261,8 +262,9 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
             _this.saveBetOrderAll(betForm);
         },
         setLtToken : function(){
-            mui.ajax(root + "/commonLottery/getLtToken.html", {
+            mui.ajax(root + "/commonLottery/getLtToken.html?t=" + new Date().getTime(), {
                 async:false,
+                type:"post",
                 dataType:"text",
                 success: function (data) {
                     if(data){
@@ -779,8 +781,8 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                         var state = xhr.getResponseHeader("headerStatus") || xhr.status;
                         if (state != 608) {//重复请求不显示消息
                             $("font#pl").text("");
-                            _this.hideLoading();
                         }
+                        _this.hideLoading();
                     }, error: function (xhr, type, errorThrown) {
                         var state = xhr.getResponseHeader("headerStatus") || xhr.status;
                         if (state == 600) {

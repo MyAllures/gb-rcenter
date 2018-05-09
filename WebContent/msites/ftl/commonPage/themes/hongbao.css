@@ -348,8 +348,19 @@
     width: 32px;
     height: 32px;
     left: 0;
-    top: 0;transition: all 0.3s;
-    cursor: pointer;}
+    top: -0;
+    transition: all 0.3s;
+    cursor: pointer;
+}
 .hongbao-wrap .icon-close:hover{
 	transform: rotateZ(90deg);
-}    
+}
+.hongbao-custom-wrap .icon-close{    background: url(images/hongbao/icon-close-1.png);
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  left: -32px;
+  top: -32px;
+  transition: all 0.3s;
+  cursor: pointer;
+}

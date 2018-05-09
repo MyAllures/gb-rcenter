@@ -477,7 +477,10 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 if (!!window.ActiveXObject || "ActiveXObject" in window) {// IE
                     var embed = document.embedPlay;
                 } else {
-                    audioplayer.play();
+                    setTimeout(function () {
+                        audioplayer.play();
+                    }, 1000);
+
                     if (callback != undefined) {
                         //如何判断声音播放结束
                         //update by jerry
@@ -486,9 +489,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         }, 3000);
                     }
                 }
-
                 return;
-                //document.body.removeChild(audioplayer);
             }
 
             if (typeof(file) != 'undefined') {
@@ -497,7 +498,11 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     var player = document.createElement('embed');
                     $(player).addClass("hide");
                     player.id = id;
-                    player.src = resRoot + '/' + file;
+                    if(file.indexOf("files/gb")==0){
+                        player.src = imgRoot + '/' + file;
+                    }else {
+                        player.src = resRoot + '/' + file;
+                    }
                     //player.setAttribute('autostart', 'true');
                     if (loop) {
                         player.setAttribute('loop', 'infinite');
@@ -523,10 +528,16 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     $("#auto_alert").append(player);
 
                     var mp3 = document.createElement('source');
-                    mp3.src = resRoot + '/' + file;
-                    mp3.type = 'audio/mpeg';
+                    if(file.indexOf("files/gb")==0){
+                        mp3.src = imgRoot + '/' + file;
+                    }else {
+                        mp3.src = resRoot + '/' + file;
+                    }                    mp3.type = 'audio/mpeg';
                     player.appendChild(mp3);
-                    player.play();
+                    setTimeout(function () {
+                        player.play();
+                    }, 1000);
+
                     if (callback != undefined) {
                         var is_playFinish = setInterval(function () {
                             if (player.ended) {

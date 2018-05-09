@@ -109,7 +109,7 @@
                                            startTime="<#if data.gameMapById[game.gameId?string.computer].maintainStartTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainStartTime?long?string.computer}</#if>"
                                            endTime="<#if data.gameMapById[game.gameId?string.computer].maintainEndTime?has_content>${data.gameMapById[game.gameId?string.computer].maintainEndTime?long?string.computer}</#if>">开始游戏</a>
 
-                                        <#if game.canTry?has_content>
+                                        <#if game.canTry?? && game.canTry?string("true","false")=="true">
                                             <a href="javascript:void(0);"
                                                data-game-img="${game.cover?default('')}" <#if game.gameLine?c?number &gt; 0>data-game-line="${game.gameLine?string.computer}"</#if> data-game-score="${game.gameScore?string.computer}"
                                                class="_game_open game-demo btn-try" data-api="${game.apiId?string.computer}" data-game-name="${data.siteGameI18ns[game.gameId?string.computer].name}"

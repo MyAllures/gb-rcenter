@@ -12,8 +12,14 @@ function download(obj, options) {
         toast("暂无设置下载地址，请联系客服！");
         return;
     }
+    //谷歌浏览器不支持新开跳转打开下载
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf('chrome') !== -1) {
+        goToUrl(url);
+        return;
+    }
     var win = window.open(url);
-    if(!win) {
+    if (!win) {
         window.location.href = url;
     }
 }

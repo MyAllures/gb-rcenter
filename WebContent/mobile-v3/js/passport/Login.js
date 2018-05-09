@@ -12,33 +12,33 @@ $(function () {
  * @param obj
  * @param options
  */
-function captchaChange(obj,options){
+function captchaChange(obj, options) {
     obj.src = obj.src;
 }
 
 /**
  * 立即登录
  */
-function loginOk(obj,options){
+function loginOk(obj, options) {
     var _username = $("#username").val();
     var _password = $("#password").val();
     var _captcha = $("#captcha").val();
-    if(_username==""){
+    if (_username == "") {
         $("#username-error-msg").html('<i class="mui-icon mui-icon-info"></i>' + window.top.message.passport_auto['用户名不能为空']);
         $("[name='username']").focus();
         return;
-    }else{
+    } else {
         $("#username-error-msg").html("");
     }
-    if(_password==""){
+    if (_password == "") {
         $("#password-error-msg").html('<i class="mui-icon mui-icon-info"></i>' + window.top.message.passport_auto['密码不能为空']);
         $("[name='password']").focus();
         return;
-    }else if(_password.length<6){
+    } else if (_password.length < 6) {
         $("#password-error-msg").html('<i class="mui-icon mui-icon-info"></i>' + window.top.message.passport_auto['密码不能少于６位']);
         $("[name='password']").focus();
         return;
-    }else{
+    } else {
         $("#password-error-msg").text("");
     }
     $("#loginForm").submit();
@@ -60,11 +60,12 @@ function loginOk(obj,options){
                 if (data.success) {
                     sessionStorage.is_login = true;
                     sessionStorage.isDemo = false;
-                    if(os == 'app_ios'){
-                        loginSucc(_username,_password,1);
-                    }else{
-                        window.location.replace('/mainIndex.html');
+                    var url = sessionStorage.getItem(LOGIN_TARGET_URL);
+                    if (!url || url == 'null' || url.indexOf("mine/index.html") > 0) {
+                        url = root + '/mainIndex.html';
                     }
+                    sessionStorage.removeItem(LOGIN_TARGET_URL);
+                    goToUrl(url);
                 } else {
                     if (data.isOpenCaptcha) {
                         mui("#captcha_div")[0].style.display = "block";
@@ -79,7 +80,7 @@ function loginOk(obj,options){
                             $('._pass').removeClass('final');
                             $('._captcha').addClass('final');
                             $("#captcha-error-msg").html('<i class="mui-icon mui-icon-info"></i>' + data.propMessages["captcha"]);
-                        }else{
+                        } else {
                             $("#captcha-error-msg").html("");
                         }
                     }
@@ -90,9 +91,9 @@ function loginOk(obj,options){
             },
             error: function (error) {
                 var data = eval('(' + error.response + ')');
-                if(data.propMessages){
+                if (data.propMessages) {
                     $("#middlePopover").addClass("mui-active");
-                }else{
+                } else {
                     toast(window.top.message.passport_auto['服务忙']);
                     setTimeout(function () {
                         $this.text(window.top.message.passport_auto['登录']).removeAttr("disabled");
