@@ -29,6 +29,7 @@ define(['common/BasePage'], function (BasePage) {
             messages: [],
             historyLastTime: null
         },
+        isClient : !!openPage.isCustomer,
         defaultMessage: '您好，请问有什么可以帮您？',
         timeout: 30,//超时时间,单位：秒
         timer: null,//计时器
@@ -165,7 +166,7 @@ define(['common/BasePage'], function (BasePage) {
                 case 'close' :
                     //_this.els.$sendTextBtnEL.attr('disabled', true);
                     //_this.els.$sendImgBtnEL.attr('disabled', true);
-                    _this.status = 'normal';//允许发离线
+                    _this.status = 'close';
                     _this.els.$connectionStateEl.html('对方已离线');
                     _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
                     if (window.top.customerGroupView) window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
@@ -253,12 +254,13 @@ define(['common/BasePage'], function (BasePage) {
          * @returns {string}
          */
         getHtmlString: function (data) {
+            var _this = this;
             var html = data.type === 1 ?
-                '<div class="service-person" ><p>' + data.name + '<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
+                '<div class="service-person" ><p>' + data.name + '<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span>'+ (_this.status === 'offlineMessage' ? '<span>(离线消息)</span>' : '') + '</p>' +
                 '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message.replace(/\n/gi, '</br>') : '<img style="max-width:500px;" src="' + data.message + '" onload="$(\'.ivu-scroll-container\').scrollTop($(\'.ivu-scroll-content\').height() + 10);"/>') + '</div>' +
                 '</div>'
                 :
-                '<div class="guest-person" ><p>我<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span></p>' +
+                '<div class="guest-person" ><p>我<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span>'+ (_this.status === 'close' ? '<span>(离线消息)</span>' : '') + '</p>' +
                 '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message.replace(/\n/gi, '</br>') : '<img  style="max-width:500px;" src="' + data.message + '" onload="$(\'.ivu-scroll-container\').scrollTop($(\'.ivu-scroll-content\').height() + 10);"/>') + '</div>' +
                 '</div>';
             return html;
@@ -381,6 +383,7 @@ define(['common/BasePage'], function (BasePage) {
                 _S_COMET: 'IM',
                 message: JSON.stringify({
                     status: 'command',
+                    client: _this.isClient,
                     workOrderId: _this.data.workerOrderId,
                     messageType: 'historyMessage',
                     messageBody: {
@@ -404,7 +407,8 @@ define(['common/BasePage'], function (BasePage) {
                     type: 2,
                     time: new Date(),
                     message: text,
-                    messageBodyType: 'text'
+                    messageBodyType: 'text',
+
                 }
                 _this.appendMessage(message);
                 _this.els.$textEl.val('');
@@ -434,11 +438,12 @@ define(['common/BasePage'], function (BasePage) {
             return {
                 _S_COMET: 'IM',
                 message: JSON.stringify({
-                    status: _this.status,
+                    status: _this.status != 'close' ? _this.status : 'normal', //断开后发送离线消息
                     workOrderId: _this.data.workerOrderId,
                     receiveUserId: imMessage ? imMessage.sendUserId : null,
                     receiveUserName: imMessage ? imMessage.sendUserName : null,
                     receiveUserSiteId: imMessage ? imMessage.sendUserSiteId : null,
+                    client: _this.isClient,
                     messageType: _this.messageType,
                     messageBody: {
                         messageBodyType: type,

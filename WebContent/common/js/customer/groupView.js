@@ -94,6 +94,7 @@ define(['common/BasePage'], function (BasePage) {
                 //if (options.btnClk) {
                     _this.sendOffineMessage(true); //获取客服留言
                     _this.sendOffineMessage(false); //获取用户留言
+                _this.sendCsLogin();
                 //}
             });
             $('.mymodal').unbind('hidden.bs.modal').on('hidden.bs.modal', function (e) {
@@ -323,7 +324,7 @@ define(['common/BasePage'], function (BasePage) {
          * @param isClient
          */
         sendOffineMessage: function (isClient) {
-            window.top.comet.websocket.send(JSON.stringify({
+            this.comet.websocket.send(JSON.stringify({
                 _S_COMET: 'IM',
                 message: JSON.stringify({
                     status: 'command',
@@ -471,6 +472,8 @@ define(['common/BasePage'], function (BasePage) {
                 return 'customer';
             }
             return null;
+
+            //update gupiao_all set all_code = (case when code like '6%' then cast('sh',code) else end);
         },
         /**
          * socket连接状态通知
@@ -491,6 +494,20 @@ define(['common/BasePage'], function (BasePage) {
                     }
                 }
             });
+        },
+        /**
+         * 客服已登客服系统
+         * 客服人员打开客服窗口时调用
+         */
+        sendCsLogin : function(){
+            //if(root.indexOf(
+            this.comet.websocket.send(JSON.stringify({
+                _S_COMET: 'IM',
+                message: JSON.stringify({
+                    status: 'command',
+                    messageType: 'cslogin'
+                })
+            }));
         },
         destory: function () {
             //delete this.data;
