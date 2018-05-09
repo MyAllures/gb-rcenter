@@ -472,8 +472,6 @@ define(['common/BasePage'], function (BasePage) {
                 return 'customer';
             }
             return null;
-
-            //
         },
         /**
          * socket连接状态通知
