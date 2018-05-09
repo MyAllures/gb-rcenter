@@ -78,6 +78,8 @@
 .download-content-ios .h-bg { width: 100%; }
 .download-content-ios .app-logo { width: 100px; height: 100px; position: absolute; top: 40px; left: 50%; margin-left: -50px; }
 .download-content-ios .btn-install { display: block; margin: 20px auto 0; width: 165px; height: 40px; text-align: center; line-height: 40px; color: #eb0002; font-size: 15px; border: 1px solid #eb0002; border-radius: 6px; }
+.download-content-ios .btn-install.loading .spinner { animation: spin 1s linear infinite; display: inline-block; width: 18px; height: 18px; border: 3px solid #eb0002; border-radius: 50%; vertical-align: top; margin-top: 10px; margin-right: 5px; position: relative; }
+.download-content-ios .btn-install.loading .spinner:before { content: ''; position: absolute; width: 7px; height: 4px; background: #fff; top: -3px; left: 3px; }
 .download-content-ios .down-step { width: 100%; }
 
 /* casino-list */
@@ -339,5 +341,8 @@ body.bind-mobile .bind-success { text-align: center; color: #444; line-height: 2
 .login .login-form .code .div_flex img { width: 100px; height: 40px; margin-left: 10px; }
 
 .deposit_tips { color: #a52a2a; text-align: center; background: #ffd940; font-size: 12px; line-height: 24px; }
+
+@keyframes spin { from { transform: rotateZ(0); }
+  to { transform: rotateZ(360deg); } }
 
 /*# sourceMappingURL=otherpage.css.map */
