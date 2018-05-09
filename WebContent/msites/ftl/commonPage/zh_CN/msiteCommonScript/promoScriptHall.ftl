@@ -388,7 +388,7 @@
             },
             yes: function () {
                 window.open(
-                         url,
+                        url,
                         'NewWindow',
                         'width=960,height=600,top=50,left=50'
                 );
