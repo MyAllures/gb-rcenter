@@ -334,6 +334,9 @@ body.bind-mobile .bind-success { text-align: center; color: #444; line-height: 2
 .login .login-form a.btn { display: block; text-align: center; height: 40px; line-height: 40px; border-radius: 2px; }
 .login .login-form .btn-login { background: #1766bb; color: #fff; margin-bottom: 15px; }
 .login .login-form .btn-regist { color: #445dc2; border: 1px solid #445dc2; }
+.login .login-form .code .div_flex { display: flex; }
+.login .login-form .code .div_flex input { flex: 1; }
+.login .login-form .code .div_flex img { width: 100px; height: 40px; margin-left: 10px; }
 
 .deposit_tips { color: #a52a2a; text-align: center; background: #ffd940; font-size: 12px; line-height: 24px; }
 
