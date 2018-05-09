@@ -45,7 +45,9 @@ define(['site/swiper.min','site/MReport'], function (Swiper,MReport) {
 
             //调节页面宽度
             $(window).resize(function() {
-                _this.initSwiper(document.getElementById("dataBox").offsetWidth * 0.8);
+                if(document.getElementById("dataBox")){
+                    _this.initSwiper(document.getElementById("dataBox").offsetWidth * 0.8);
+                }
             });
 
             //Sweiper滑动

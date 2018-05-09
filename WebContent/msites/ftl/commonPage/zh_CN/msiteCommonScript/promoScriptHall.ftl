@@ -52,12 +52,14 @@
                         $("._vr_all").removeClass("hide");
                         $("._vr_process").addClass("hide");
                     }else {
+                        $("#search-input").val('');
                         $("._vr_all").addClass("hide");
                         $("._vr_process").removeClass("hide");
                         $("._vr_actContain").parent().addClass("hide");
                         $("."+val).parent().removeClass("hide");
                     }
                 }
+                $(".no-result").hide();
             })
         });
 
@@ -85,16 +87,20 @@
             $("._vr_all .promo-item").each(function (j, actObj) {
                 var activityName = $(actObj).data("activityname");
                 if (activityName.indexOf(value) != -1) {
-                    $(actObj).show();
-                    $(actObj).siblings('.list_type2_item_tit').show();
+                    $(actObj).parent().removeClass("hide");
                 } else {
-                    $(actObj).hide();
-                    $(actObj).siblings('.list_type2_item_tit').hide();
+                    $(actObj).parent().addClass("hide");
                 }
             });
         } else {
-            $("._vr_all .promo-item").show();
-            $("._vr_all .list_type2_item_tit").show();
+            $(actObj).parent().removeClass("hide");
+        }
+        var long1 = $("._vr_all").length;
+        var long2 = $("._vr_all.hide").length;
+        if (long1 == long2) {
+            $(".no-result").show();
+        }else {
+            $(".no-result").hide();
         }
     }
     //根据时间来初始化活动的按钮等展现,还没有层级的概念

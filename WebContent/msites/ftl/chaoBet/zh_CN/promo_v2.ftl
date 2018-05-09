@@ -49,7 +49,7 @@
                 <#list data.activityMessage as am>
                     <div class="col-3-1 _vr_all">
                         <div id="cos_${am.id}" class="_vr_promo_check _vr_actContain promo-item"
-                             data-type="processing" data-code="${am.code}" data-searchid="${am.searchId}"
+                             data-type="processing" data-code="${am.code}" data-searchid="${am.searchId}" data-activityName="${am.activityName}"
                              data-rank-id="<#if am.allRank?? && am.allRank>all<#elseif am.code=="back_water">backwater<#else >${am.rankid}</#if>">
                             <img src="${imgPath(data.configInfo.domain,am.activityAffiliated)}"/>
                             <img class="promo-img" style="display: none;" src="${imgPath(data.configInfo.domain,am.activityCover)}"/>
@@ -105,6 +105,11 @@
                     </div>
                 </#list>
             </#if>
+            </div>
+            <div class="row">
+                <div class="no-result" style="display: none">
+                    搜索内容暂无符合条件的活动
+                </div>
             </div>
         </div>
     </section>
