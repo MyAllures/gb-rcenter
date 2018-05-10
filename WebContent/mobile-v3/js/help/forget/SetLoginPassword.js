@@ -18,7 +18,7 @@ function setLoginPassword() {
         toast("密码不能为空");
         return;
     }
-    var regexp = /^[A-Za-z0-9~!@#$%^&*()_+{}[]|:;'"<>,.?]{6,20}$/;
+    var regexp = /^[A-Za-z0-9~!@#$%^&*()_+\{\}\[\]|\:;'"<>,./?]{6,20}$/;
     if (!regexp.test(password)) {
         toast("请输入6-20个字符，英文字母、数字或特殊符号");
         return;
