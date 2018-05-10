@@ -118,9 +118,11 @@ define(['common/BasePage'], function (BasePage) {
                     var userId = imMessage ? imMessage.sendUserId : 'customer';
                     window.top.customerGroupView && window.top.customerGroupView.updateStatus(userId, 'timeout');
                     break;
-                /**已连通**/
+                /**客服已接受**/
                 case 'accepted' :
+                /**已重新连接**/
                 case 'reconnected' :
+                /**已建立连接**/
                 case 'connected' :
                     if (imMessage.workOrderId) _this.data.workerOrderId = imMessage.workOrderId;
                     _this.stopTimer();
@@ -141,6 +143,7 @@ define(['common/BasePage'], function (BasePage) {
                         });
                     }
                     break;
+                /**已被其他客服接入**/
                 case 'acceptFailed' :
                     _this.status = 'offLine';
                     _this.els.$connectionStateEl.html('已被其他客服接入');
@@ -154,6 +157,7 @@ define(['common/BasePage'], function (BasePage) {
                     _this.status = status;
                     var messageType = imMessage.messageType;
                     switch (messageType) {
+                        /**关闭工单**/
                         case 'workorderClose' :
                             //alert('弹出评价窗口demo');
                             window.top.topPage.openDialog({
@@ -180,6 +184,7 @@ define(['common/BasePage'], function (BasePage) {
                     //_this.els.$sendTextBtnEL.attr('disabled', true);
                     //_this.els.$sendImgBtnEL.attr('disabled', true);
                     _this.status = 'close';
+                    _this.messageType = 'offlineMessage';
                     _this.els.$connectionStateEl.html('对方已离线');
                     _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
                     if (window.top.customerGroupView) window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
