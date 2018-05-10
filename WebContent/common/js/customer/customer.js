@@ -145,7 +145,10 @@ define(['common/BasePage'], function (BasePage) {
                     var messageType = imMessage.messageType;
                     switch (messageType) {
                         case 'workorderClose' :
-                            alert('弹出评价窗口demo');
+                            //alert('弹出评价窗口demo');
+                            window.top.topPage.openDialog({
+                                message : '弹出评价窗口'
+                            })
                             _this.els.$connectionStateEl.html('工单已完结');
                             _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
                             window.top.customerGroupView && window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
@@ -188,6 +191,7 @@ define(['common/BasePage'], function (BasePage) {
                     if (_this.status === 'normal') {
                         _this.comet.websocket.send(JSON.stringify(_this._createSendVo()));
                     }
+                    _this.messageType = null;
                     if (window.top.customerGroupView) window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'closeOrder');
                     break;
                 /**加载离线消息**/
