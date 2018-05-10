@@ -454,6 +454,7 @@ define(['common/BasePage'], function (BasePage) {
                     receiveUserId: imMessage ? imMessage.sendUserId : null,
                     receiveUserName: imMessage ? imMessage.sendUserName : null,
                     receiveUserSiteId: imMessage ? imMessage.sendUserSiteId : null,
+                    receiveSocketId: imMessage ? imMessage.sendSocketId : null,
                     client: _this.isClient,
                     messageType: _this.messageType,
                     messageBody: {
