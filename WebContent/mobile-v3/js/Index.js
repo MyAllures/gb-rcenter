@@ -99,8 +99,8 @@ function swiper() {
 
 /*轮播图*/
 function initBanner() {
-    if ($(".mui-banner .mui-slider-item").length > 1) {
-        mui('.mui-banner').slider({
+    if ($(".banner-slide .mui-slider-item").length > 1) {
+        mui('.banner-slide').slider({
             interval: 5000 // 自动轮播时长（毫秒），为0不自动播放，默认为0；
         });
     }
