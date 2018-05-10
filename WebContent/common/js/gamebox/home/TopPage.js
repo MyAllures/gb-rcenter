@@ -1328,7 +1328,7 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
          * @param imMessage  监听服务返回的消息体
          * @param btnClk  是否是由按钮触发
          */
-        showCustomerGroupWin: function (data, btnClk) {
+        showCustomerGroupWin: function (data, btnClk,isCustomerPlatform) {
             /**其他窗口已打开客服界面**/
             if (data && data.imMessage.status === 'connectFailed') {
                 $(".minmaxCon").hide();
@@ -1344,7 +1344,8 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                         keyboard: false,
                         backdrop: false,
                         data: data,
-                        btnClk: btnClk
+                        btnClk: btnClk,
+                        isCustomerPlatform : isCustomerPlatform
                     });
                 });
             } else {

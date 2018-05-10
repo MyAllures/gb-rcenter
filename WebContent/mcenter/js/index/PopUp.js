@@ -35,8 +35,12 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         id: 'accept_ok',
                         action: function (dialogRef) {
                             clearInterval(dialogRef.imTimer);
-                            data.imMessage.status = 'accepted';
-                            popUp._validAccepted(data);
+                            //data.imMessage.status = 'accepted';
+                            //popUp._validAccepted(data);
+                            /**
+                             * 先打开窗口登录客服系统，再进行流程
+                             */
+                            window.top.topPage.showCustomerGroupWin(data, false,true);
                             dialogRef.close();
                         }
                     }, {
@@ -59,12 +63,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         },1000);
                     }
                 });
-            } else if (data.imMessage.status === 'acceptFailed') {
-                BootstrapDialog.show({
-                    message: '已被其他客服接入'
-                });
             } else {
-                window.top.topPage.showCustomerGroupWin(data, false);
+                window.top.topPage.showCustomerGroupWin(data, false,true);
             }
         },
         _validAccepted: function (data) {

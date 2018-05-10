@@ -29,12 +29,12 @@ define(['common/BasePage'], function (BasePage) {
             messages: [],
             historyLastTime: null
         },
-        isClient : !!openPage.isCustomer,
+        isClient: !!openPage.isCustomer,
         defaultMessage: '您好，请问有什么可以帮您？',
         timeout: 30,//超时时间,单位：秒
         timer: null,//计时器
         maxTextLength: 300,
-        reader : new FileReader(),
+        reader: new FileReader(),
         comet: window.top.comet,
         init: function () {
             var _this = this;
@@ -80,7 +80,7 @@ define(['common/BasePage'], function (BasePage) {
                     _this.reader.readAsDataURL(file);
                 }
             });
-            _this.reader.addEventListener("load", function(){
+            _this.reader.addEventListener("load", function () {
                 _this.sendImg();
             }, false);
 
@@ -100,11 +100,15 @@ define(['common/BasePage'], function (BasePage) {
             switch (status) {
                 /**发起连接请求**/
                 case 'connect' :
-                    _this.status = 'connect';
+                    if (openPage.isButtonClick) {
+                        _this.status = 'connect';
+                        _this.createTimer();
+                    } else {
+                        _this.status = 'accepted';
+                    }
                     _this.els.$connectionStateEl.html('等待连接...');
                     _this.comet.websocket.send(JSON.stringify(_this._createSendVo()));
                     _this.els.$connectionStateEl.removeClass('unConnected');
-                    _this.createTimer();
                     break;
                 /**超时**/
                 case 'timeout' :
@@ -121,9 +125,7 @@ define(['common/BasePage'], function (BasePage) {
                     if (imMessage.workOrderId) _this.data.workerOrderId = imMessage.workOrderId;
                     _this.stopTimer();
                     _this.status = 'normal';
-                    _this.els.$sendTextBtnEL.attr('disabled', false);
-                    _this.els.$sendImgBtnEL.attr('disabled', false); //$historyImMessageBtnEl
-                    _this.els.$historyImMessageBtnEl.attr('disabled', false);
+                    _this._disableButtons(false,'history');
                     _this.els.$connectionStateEl.html('连接成功');
                     _this.els.$connectionStateEl.removeClass('unConnected').addClass('connected');
                     if (window.top.customerGroupView)
@@ -139,6 +141,14 @@ define(['common/BasePage'], function (BasePage) {
                         });
                     }
                     break;
+                case 'acceptFailed' :
+                    _this.status = 'offLine';
+                    _this.els.$connectionStateEl.html('已被其他客服接入');
+                    _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
+                    var userId = imMessage ? imMessage.sendUserId : 'customer';
+                    _this._disableButtons(true,'all');
+                    window.top.customerGroupView && window.top.customerGroupView.updateStatus(userId, 'offLine');
+                    break;
                 /**聊天中**/
                 case 'normal' :
                     _this.status = status;
@@ -147,7 +157,7 @@ define(['common/BasePage'], function (BasePage) {
                         case 'workorderClose' :
                             //alert('弹出评价窗口demo');
                             window.top.topPage.openDialog({
-                                message : '弹出评价窗口'
+                                message: '弹出评价窗口'
                             })
                             _this.els.$connectionStateEl.html('工单已完结');
                             _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
@@ -179,8 +189,7 @@ define(['common/BasePage'], function (BasePage) {
                     _this.status = status;
                     _this.els.$connectionStateEl.html('连接中断');
                     _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
-                    _this.els.$sendTextBtnEL.attr('disabled', true);
-                    _this.els.$sendImgBtnEL.attr('disabled', true);
+                    _this._disableButtons(true);
                     if (window.top.customerGroupView) window.top.customerGroupView.updateStatus(imMessage.sendUserId, 'offLine');
                     break;
                 /**工单完结**/
@@ -196,9 +205,7 @@ define(['common/BasePage'], function (BasePage) {
                     break;
                 /**加载离线消息**/
                 case 'offlineMessage' :
-                    _this.els.$sendTextBtnEL.attr('disabled', true);
-                    _this.els.$sendImgBtnEL.attr('disabled', true);
-                    _this.els.$closeOrderBtnEl.attr('disabled', true);
+                    _this._disableButtons(true,'all');
                     _this.status = status;
                     _this.els.$connectionStateEl.html('离线消息');
                     _this.els.$connectionStateEl.removeClass('connected').addClass('unConnected');
@@ -260,11 +267,11 @@ define(['common/BasePage'], function (BasePage) {
         getHtmlString: function (data) {
             var _this = this;
             var html = data.type === 1 ?
-                '<div class="service-person" ><p>' + data.name + '<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span>'+ (_this.status === 'offlineMessage' ? '<span>(离线消息)</span>' : '') + '</p>' +
+                '<div class="service-person" ><p>' + data.name + '<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span>' + (_this.status === 'offlineMessage' ? '<span>(离线消息)</span>' : '') + '</p>' +
                 '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message.replace(/\n/gi, '</br>') : '<img style="max-width:500px;" src="' + data.message + '" onload="$(\'.ivu-scroll-container\').scrollTop($(\'.ivu-scroll-content\').height() + 10);"/>') + '</div>' +
                 '</div>'
                 :
-                '<div class="guest-person" ><p>我<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span>'+ (_this.status === 'close' ? '<span>(离线消息)</span>' : '') + '</p>' +
+                '<div class="guest-person" ><p>我<span>' + window.top.topPage.formatDateTime(data.time, "yyyy-MM-dd HH:mm") + '</span>' + (_this.status === 'close' ? '<span>(离线消息)</span>' : '') + '</p>' +
                 '<div class="customer_message">' + (data.messageBodyType === 'text' ? data.message.replace(/\n/gi, '</br>') : '<img  style="max-width:500px;" src="' + data.message + '" onload="$(\'.ivu-scroll-container\').scrollTop($(\'.ivu-scroll-content\').height() + 10);"/>') + '</div>' +
                 '</div>';
             return html;
@@ -442,7 +449,7 @@ define(['common/BasePage'], function (BasePage) {
             return {
                 _S_COMET: 'IM',
                 message: JSON.stringify({
-                    status: _this.status != 'close' ? _this.status : 'normal', //断开后发送离线消息
+                    status: _this.messageType ? 'normal' : _this.status, //断开后发送离线消息
                     workOrderId: _this.data.workerOrderId,
                     receiveUserId: imMessage ? imMessage.sendUserId : null,
                     receiveUserName: imMessage ? imMessage.sendUserName : null,
@@ -455,6 +462,13 @@ define(['common/BasePage'], function (BasePage) {
                     }
                 })
             }
+        },
+        _disableButtons(disable,type) {
+            var _this = this;
+            _this.els.$sendTextBtnEL.attr('disabled', disable);
+            _this.els.$sendImgBtnEL.attr('disabled', disable);
+            if (type && type === 'all') _this.els.$closeOrderBtnEl.attr('disabled', disable);
+            if (type && type === 'history') _this.els.$historyImMessageBtnEl.attr('disabled', disable);
         }
     });
 });

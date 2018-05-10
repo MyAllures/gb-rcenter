@@ -39,8 +39,9 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         label: '接收<span id="'+accept_id+'" style="padding-left:3px;">30</span>',
                         action: function (dialogRef) {
                             clearInterval(dialogRef.imTimer);
-                            data.imMessage.status = 'accepted';
-                            popUp._validAccepted(data);
+                            //data.imMessage.status = 'accepted';
+                            //popUp._validAccepted(data);
+                            window.top.topPage.showCustomerGroupWin(data, false,true);
                             dialogRef.close();
                         }
                     }, {
@@ -63,12 +64,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         }, 1000);
                     }
                 });
-            } else if (data.imMessage.status === 'acceptFailed') {
-                BootstrapDialog.show({
-                    message: '已被其他客服接入'
-                });
-            } else {
-                window.top.topPage.showCustomerGroupWin(data, false);
+            }else {
+                window.top.topPage.showCustomerGroupWin(data, false,true);
             }
         },
         _validAccepted: function (data) {

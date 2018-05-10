@@ -84,6 +84,9 @@ define(['common/BasePage'], function (BasePage) {
                 if (options.data != null) {
                     _this.openRef = 'user';
                 }
+                if (options.btnClk != null) {
+                    _this.btnClk = options.btnClk;
+                }
                 _this.height = _this.els.$userChatDivUl.height();
                 if (_this.openRef === 'btn') {
                     _this.addDefaultWin();
@@ -94,7 +97,12 @@ define(['common/BasePage'], function (BasePage) {
                 //if (options.btnClk) {
                     _this.sendOffineMessage(true); //获取客服留言
                     _this.sendOffineMessage(false); //获取用户留言
-                _this.sendCsLogin();
+                /**
+                 * 如果是客服平台，则发送客服登录请求
+                 */
+                if (options.isCustomerPlatform) {
+                    _this.sendCsLogin();
+                }
                 //}
             });
             $('.mymodal').unbind('hidden.bs.modal').on('hidden.bs.modal', function (e) {
@@ -205,12 +213,11 @@ define(['common/BasePage'], function (BasePage) {
                 case 'timeout':
                     $li.find('span').html('');
                     break;
-                case 'offLine':
-                    _this._addCloseButton($li);
-                    break;
                 case 'online':
                     break;
+                case 'offLine':
                 case 'closeOrder':
+                    _this._addCloseButton($li);
                     break;
                 default:
                     break;
