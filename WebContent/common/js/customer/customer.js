@@ -29,7 +29,7 @@ define(['common/BasePage'], function (BasePage) {
             messages: [],
             historyLastTime: null
         },
-        isClient: !!openPage.isCustomer,
+        isClient: !!openPage.isCustomerWin,
         defaultMessage: '您好，请问有什么可以帮您？',
         timeout: 30,//超时时间,单位：秒
         timer: null,//计时器
@@ -40,7 +40,7 @@ define(['common/BasePage'], function (BasePage) {
             var _this = this;
             _this._super();
             _this.setStatus();
-            if (!openPage.isCustomer) {
+            if (!openPage.isCustomerWin) {
                 _this.els.$closeOrderBtnEl.css('display', 'inline-block');
             }
         },
@@ -100,6 +100,7 @@ define(['common/BasePage'], function (BasePage) {
             switch (status) {
                 /**发起连接请求**/
                 case 'connect' :
+                    _this.messageType = null;
                     if (openPage.isButtonClick) {
                         _this.status = 'connect';
                         _this.createTimer();
@@ -124,6 +125,7 @@ define(['common/BasePage'], function (BasePage) {
                 case 'reconnected' :
                 /**已建立连接**/
                 case 'connected' :
+                    _this.messageType = null;
                     if (imMessage.workOrderId) _this.data.workerOrderId = imMessage.workOrderId;
                     _this.stopTimer();
                     _this.status = 'normal';
@@ -344,7 +346,7 @@ define(['common/BasePage'], function (BasePage) {
          * @private
          */
         socketOpened: function () {
-            if (openPage.imMessage && openPage.imMessage.status === 'closeSocket' && openPage.isCustomer)
+            if (openPage.imMessage && openPage.imMessage.status === 'closeSocket' && openPage.isCustomerWin)
                 openPage.imMessage.status = 'connect',
                     this.setStatus();
         },
@@ -451,7 +453,7 @@ define(['common/BasePage'], function (BasePage) {
             type = type ? type : 'text';
             var _this = this;
             var imMessage = openPage.imMessage;
-            return {
+            var vo = {
                 _S_COMET: 'IM',
                 message: JSON.stringify({
                     status: _this.messageType ? 'normal' : _this.status, //断开后发送离线消息
@@ -468,6 +470,8 @@ define(['common/BasePage'], function (BasePage) {
                     }
                 })
             }
+            //console.log("send:"+ JSON.stringify(vo));
+            return vo;
         },
         _disableButtons(disable,type) {
             var _this = this;

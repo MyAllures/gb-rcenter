@@ -136,7 +136,7 @@ define(['common/BasePage'], function (BasePage) {
                     page: {
                         imMessage: null,
                         isButtonClick: true,
-                        isCustomer: true
+                        isCustomerWin: true
                     }
                 });
                 r = 'customer';
@@ -155,7 +155,7 @@ define(['common/BasePage'], function (BasePage) {
                     page: {
                         imMessage: imMessage,
                         isButtonClick: false,
-                        isCustomer: imMessage.isCustomer
+                        isCustomerWin: imMessage.isCustomer
                     }
                 });
             }
@@ -357,7 +357,7 @@ define(['common/BasePage'], function (BasePage) {
                     _this._andUserIframe(userId, {
                         page: {
                             imMessage: msg,
-                            isCustomer: !!isClient
+                            isCustomerWin: !!isClient
                         }
                     });
                 } else {
