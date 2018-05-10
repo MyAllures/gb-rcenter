@@ -79,7 +79,7 @@ function loginOk(obj, options) {
                         if (data.propMessages["captcha"]) {
                             $('._pass').removeClass('final');
                             $('._captcha').addClass('final');
-                            $("#captcha-error-msg").html('<i class="icon-warn"></i>' + data.propMessages["captcha"]);
+                            $("#captcha-error-msg").html('<i class="icon-warn">!</i>' + data.propMessages["captcha"]);
                         } else {
                             $("#captcha-error-msg").html("");
                         }

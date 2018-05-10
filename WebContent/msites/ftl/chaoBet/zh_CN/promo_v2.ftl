@@ -15,8 +15,6 @@
 
 <body>
 <#include "top.ftl">
-<#assign status ={"apply":"立即加入","participation":"参与中","applyDeposit":"存款时申请","notStarted":"未开始"}>
-<#assign statusKeys = status?keys>
 <main class="main-promo">
     <div style="height: 410px;background: url(${data.configInfo.sitePath}/images/promo-banner.jpg) no-repeat center bottom;"></div>
     <!-- notice -->
@@ -60,7 +58,7 @@
                             <input class="_vr_promo_oend" type="hidden" value="${am.endTime?long?string.computer}">
                             <div class="shadow">
                                 <div class="btn-apply _vr_promo_join" onclick="joinPromo(this, event)">
-                                    立即加入
+                                    我要申请
                                 </div>
                             </div>
                             <a href="javascript:void(0);" class="btn-detail">
@@ -92,7 +90,7 @@
                             <input class="_vr_promo_oend" type="hidden" value="${am.endTime?long?string.computer}">
                             <div class="shadow">
                                 <div class="btn-apply _vr_promo_join" onclick="joinPromo(this,event)">
-                                    立即加入
+                                    我要申请
                                 </div>
                             </div>
                             <div class="promo-detail">
@@ -120,62 +118,6 @@
 <#include "script.ftl">
 <#include "../../commonPage/zh_CN/msiteCommonScript/promoScriptHall.ftl">
 
-<script>
-    $(function(){
-        $(".list-type1 .shadow").on("click",function(){
-            var $detail  = $(this).parents('.promo-item').find('.promo-detail');
-            var img = $(this).parents('.promo-item').find('.promo-img').attr('src');
-            var cont = $detail.html();
-            var content;
-            if (img == "") {
-                content = '<div class="promo-content" id="promo-content">' + cont + '<i class="icon-goUp"></i></div>';
-            }else {
-                content = '<img class="promo-img" src=' + img + '>' + '<div class="promo-content" id="promo-content">' + cont + '<i class="icon-goUp"></i></div>';
-            }
-            dialogPromoDetail(content,'活动详细','layui-layer-info',['640px','530px'],false,true)
-        });
-    });
-
-    function dialogPromoDetail(content,title,skin,area,btnRound,btnBorder){ // 优惠详细弹窗
-        /*
-         * content:弹窗的提示内容
-         * skin:主题颜色
-         * area:宽高
-         */
-        layer.open({
-            content:content,
-            title:title,
-            skin:skin,
-            area:area,
-            btn:["申请活动"],
-            success: function(layer){
-                // 重写关闭按钮
-                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
-                // 提示框类型
-                $(layer).addClass("normal-dialog");
-                $(layer).addClass("promo_detail");
-                // 内容启用滚动条
-                var nice1 = $(layer).find(".layui-layer-content .promo-content").niceScroll({
-                    cursorcolor:"#999",
-                    cursorwidth:"8px"
-                });
-                $("#promo-content").on('scroll',function(){
-                    if(nice1.newscrolly > 10){
-                        $('.icon-goUp').fadeIn('slow');
-                    }else{
-                        $('.icon-goUp').fadeOut('slow');
-                    }
-                });
-                $('.icon-goUp').on('click',function(){
-                    nice1.doScrollTop(0,'300')
-                });
-            },
-            yes:function(index){
-                layer.close(index);
-            }
-        });
-    }
-</script>
 </body>
 
 </html>
