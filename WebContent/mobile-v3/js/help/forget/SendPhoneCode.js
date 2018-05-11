@@ -87,6 +87,7 @@ function checkPhoneCode() {
     var phoneCode = $("#phoneCode").val();
     if (phoneCode == null || phoneCode == '') {
         toast("手机验证码不能为空");
+        return;
     }
     var encryptedId = $("#encryptedId").val();
     var ajaxOptions = {
