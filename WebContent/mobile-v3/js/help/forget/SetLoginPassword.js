@@ -74,5 +74,12 @@ function isWeak(encryptedId, password) {
 function showDialog() {
     mui.alert('<div class="icon-gongxi"></div><div class="txt">新密码设置成功，请牢记！</div>', ' ');
     $('.mui-popup').addClass('password_set_success_dialog');
-    $('.mui-popup').find(".mui-popup-button").html('').append(['<i class="mui-icon mui-icon-close" data-rel=\'{"target":"login","opType":"function"}\'></i>'].join(""));
+    $('.mui-popup').find(".mui-popup-button").html('').append(['<i class="mui-icon mui-icon-close" data-rel=\'{"target":"goLogin","opType":"function"}\'></i>'].join(""));
+}
+
+/**
+ * 修改成功后跳转到登录页面
+ */
+function goLogin(){
+    login("/mainIndex.html");
 }
