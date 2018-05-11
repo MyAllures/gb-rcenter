@@ -24,15 +24,23 @@
       <div class="user-img"></div>
       <div class="login-form">
         <div class="username">
-          <label for="">输入用户名</label>
-          <input type="text" name="username" id="" value="" />
+          <label>输入用户名</label>
+          <input type="text" name="username" value="" />
           <p class='warn'><i class='icon-warn'>!</i>输入用户名不存在</p>  
         </div>
         <div class="password">
-          <label for="">输入密码</label>
-          <input type="password" name="password" id="" value="" />
+          <label>输入密码</label>
+          <input type="password" name="password" value="" />
           <p class='warn'><i class='icon-warn'>!</i>输入密码错误</p>  
-        </div> 
+        </div>
+          <div class="code">
+              <label>验证码</label>
+              <div class="div_flex">
+                  <input type="text" name="code" value="" />
+                  <img src="../../mobile-v3/images/code.png">
+              </div>
+              <p class='warn'><i class='icon-warn'>!</i>验证码错误</p>
+          </div>
         <p class='forget-pas'><a href="javascript:;">忘记密码？</a></p>  
         
         <a href="javascript:;" class="btn btn-login">立即登录</a>   

@@ -15,24 +15,28 @@
             resize: false
         });
 
-        ctime = 0;
 
-        //活动类型为content的不显示申请按钮
-        $("div [data-code=content] ._vr_promo_join").remove();
-
-        // 优惠手风琴
+        //平铺点击展示活动详情
         $(".list-type2 .promo-item>img").on('click',function(){
             $(this).toggleClass('open');
             $(this).parents(".promo-item").find(".promo-detail").stop().slideToggle();
         });
 
-        /*$("#search-input").keydown(function(e) {
-            if (e.which == 13) {
-                $(".btn-search").trigger("click");
+        //九宫格点击图片展示详情
+        $(".list-type1 .shadow").on("click",function(){
+            var $detail  = $(this).parents('.promo-item').find('.promo-detail');
+            var img = $(this).parents('.promo-item').find('.promo-img').attr('src');
+            var cont = $detail.html();
+            var content;
+            if (img == "") {
+                content = '<div class="promo-content" id="promo-content">' + cont + '<i class="icon-goUp"></i></div>';
+            }else {
+                content = '<img class="promo-img" src=' + img + '>' + '<div class="promo-content" id="promo-content">' + cont + '<i class="icon-goUp"></i></div>';
             }
-        });*/
+            dialogPromoDetail(content,'活动详细','layui-layer-info',['640px','530px'],false,true)
+        });
 
-        //切换主题
+        //切换主题/
         $("#toggleThemes").on('click', function () {
             if ($('.main-promo').hasClass("theme-white")) {
                 $('.main-promo').removeClass("theme-white").addClass('theme-black');
@@ -59,13 +63,13 @@
                         $("."+val).parent().removeClass("hide");
                     }
                 }
-                $(".no-result").hide();
+                $(".no-result").hide();//隐藏搜索为空时展示的提示
             })
         });
 
-        //进入对应的活动
+        //进入对应的活动------九宫格的需要优化,因为暂时不清楚俩种模式存在方式TODO by kobe
         var hash = window.location.hash;
-        if(hash!=undefined){
+        if(hash != undefined){
             var id = hash.substr(1);
             $("#"+id).find("img").trigger("click");
         };
@@ -103,13 +107,13 @@
             $(".no-result").hide();
         }
     }
-    //根据时间来初始化活动的按钮等展现,还没有层级的概念
+
+    //根据时间来初始化活动的按钮，小标题展现,还没有层级的概念
     function promoCheck() {
         var nowTime = $("._user_time").attr("time");
         $("._vr_promo_check").each(function () {
             var $this = $(this);
             var code = $this.data('code');
-            //根据时间处理小标题和申请按钮
             var st = $this.find("._vr_promo_ostart").val();
             var et = $this.find("._vr_promo_oend").val();
             var sTime = moment(Number(st)).utcOffset(sessionStorage.getItem("timezone"));
@@ -123,9 +127,8 @@
                 $this.find(".noyet").hide();
                 $this.find(".processing").show();
                 $this.find(".over").hide();
-                $this.find(".shadow").html('<div class="btn-apply _vr_promo_join" onclick="joinPromo(this, event)">' + '立即加入' + '</div>');
-                //根据活动内容处理申请按钮
-                if (code == 'back_water' || code == 'content') {
+                $this.find(".shadow").html('<div class="btn-apply _vr_promo_join" onclick="joinPromo(this, event)">' + '我要申请' + '</div>');
+                if (code == 'back_water' || code == 'content') {//根据活动类型处理申请按钮
                     $this.find('.shadow').html('<div class="btn-txt">该活动无需申请</div>');
                 } else if (code == 'money') {
                     $this.find('._vr_promo_join').text('试试手气');
@@ -141,10 +144,6 @@
 
 
     function changeApplyStatus() {
-        var backwaterObj = $("._vr_promo_join").parents("._vr_promo_check[data-code^='back_water'][data-type='processing']");
-        backwaterObj.each(function (i, obj) {
-            $(obj).find("._vr_promo_join").text("参与中");
-        });
         $.ajax({
             url: "/ntl/activityHall/getPlayerActivityIds.html",
             type: "POST",
@@ -155,7 +154,7 @@
         });
     }
 
-    //根据该层级不能参加的活动添加disable属性和改变按钮提示
+    //根据该层级不能参加的活动移除onclick和改变按钮提示
     function filterActyByPlayer(data) {
         promoCheck();
         var ActvyObj = $("._vr_promo_join");
@@ -185,18 +184,25 @@
     function joinPromo(aplyObj,event,isRefresh) {
         event.stopPropagation();
         var code = $(aplyObj).parents("._vr_promo_check").data("code");
-        /*$(aplyObj).attr("onclick","");*/
-        /*if(ctime > 0){
-            return false;
-        }*/
         if(code!='money'){
-            ctime++;
+            $(aplyObj).attr("onclick","");
         }
         var nowTime = $("._user_time").attr("time");
+
         if ($(aplyObj).parents("._vr_promo_check").find("._vr_promo_ostart").val() > nowTime
-                || $(aplyObj).parents("._vr_promo_check").find("._vr_promo_oend").val() < nowTime) {
-            return false;
+                || $(aplyObj).parents("._vr_promo_check").find("._vr_promo_oend").val() < nowTime) {//还未开始或者结束时提示
+            $(aplyObj).attr("onclick","joinPromo(this,event)");
+            $(".applyResult").html('很抱歉!当前时间不在活动期间.具体时间请查看活动详情');
+            var content = $(".promoFailureTip").html();
+            var title = "申请失败";
+            var skin =  "layui-layer-danger";
+            var addClass ="promo_failure";
+            var btn = ["联系客服"];
+            var url =  $(".openNewWindow").data("url");
+            _layerDialog(content,title,skin,addClass,btn,url);
+            return;
         }
+
         if (sessionStorage.is_login == "true") {
             if (code == 'effective_transaction' || code == 'profit_loss' || code == 'deposit_send') {
                 fetchActivityProcess(aplyObj, isRefresh);
@@ -218,6 +224,8 @@
             loginObj.getLoginPopup(function (bol) {
                 if (sessionStorage.is_login == "true") {
                     joinPromo(aplyObj,event,true);
+                } else {
+                    $(aplyObj).attr("onclick","joinPromo(this, event)");
                 }
             });
         }
@@ -237,6 +245,18 @@
             },
             success: function (data) {
                 showActivityProcessDialog(data, aplyObj, isRefresh);
+            },
+            error: function (data) {
+                $(".errorCode .tit.tip_tit").text('无响应！（错误码：' + data.status + '）');
+                var content = $(".errorCode").html();
+                var title = "申请失败";
+                var skin =  "layui-layer-danger";
+                var addClass="promo_failure";
+                var btn = ["联系客服"];
+                var url =  $(".openNewWindow").data("url");
+                _layerDialog(content,title,skin,addClass,btn,url);
+            },
+            complete: function () {
                 $(aplyObj).attr("onclick","joinPromo(this,event)");
             }
         });
@@ -249,14 +269,14 @@
         $(".tip_tit").text('《' + title + '》');
         var content;
         var addClass;
-        var item;
         var icon;
         var btn;
+        var item;
         if (code == 'deposit_send') {
             $(".deposit_send_transaction").remove();
             var transactions = data.transactions;
             if (transactions) {
-                for (j = 0; j<transactions.length; j++) {
+                for (var j = 0; j<transactions.length; j++) {
                     item = '<tr class="deposit_send_transaction"><td><label class="checkbox_wrap"><input type="checkbox" name="transactionNos" value=' + transactions[j].transactionNo + '><span class="checkbox_icon"></span></label></td><td>' + transactions[j].transactionNo + '</td><td>' +
                             transactions[j].checkTime + '</td><td>' + transactions[j].rechargeAmount + '</td></tr>';
                     $(".deposit_sent_transactionNo").append(item);
@@ -275,7 +295,7 @@
             $(".process").remove();
             $(".activityProcess .subs-txt").text('');
             var preferentialRelations = data.preferentialRelations;
-            for (j = 0; j<preferentialRelations.length; j++) {
+            for (var j = 0; j< preferentialRelations.length; j++) {
                 var width = (data.effectivetransaction/preferentialRelations[j].preferentialValue)*100;
                 if (data.effectivetransaction >= preferentialRelations[j].preferentialValue){
                     item = '<div class="item-success-with-bar process">'+ '<i class="icon-pass"></i>' + '<div class="txt"><span>有效投注额' + preferentialRelations[j].orderColumn + '</span><div class="pull-right"><span class="color-green">' +
@@ -291,13 +311,13 @@
                         '<div class="txt"><span class="color-red">派奖时间：' + data.deadLineTime + '</span></div>'+
                         '</div>';
                 btn = ["联系客服"];
-                $(".activityProcess .subs-txt").text('以下是您当前投注额,统计周期请查看活动细则,加油吧!');
+                $(".activityProcess .subs-txt").text('以下是您当前有效投注额,统计周期请查看活动细则,加油吧!');
             } else {
                 item = '<div class="item-success-without-bar process">'+
                         '<div class="txt"><span class="color-red">当前报名人数：' + data.ApplyNum + '人</span></div>'+
                         '</div>';
-                btn = ["联系客服","申请奖励"];
-                $(".activityProcess .subs-txt").text('以下是您当前投注额,统计周期请查看活动细则,申请报名活动后显示派奖时间');
+                btn = ["联系客服","立即报名"];
+                $(".activityProcess .subs-txt").text('以下是您当前有效投注额,统计周期请查看活动细则,申请报名活动后显示派奖时间');
             }
             $(".effective_transaction").append(item);
             content = $(".activityProcess").html();
@@ -306,7 +326,7 @@
             $(".process").remove();
             $(".activityProcess .subs-txt").text('');
             var preferentialRelations = data.preferentialRelations;
-            for (j = 0; j<preferentialRelations.length; j++) {
+            for (var j = 0; j<preferentialRelations.length; j++) {
                 if (preferentialRelations[j].preferentialCode == 'profit_ge') {//盈利时只展示盈利
                     var width = (data.profitloss/preferentialRelations[j].preferentialValue)*100;//计算进度
                     if (data.profitloss >= preferentialRelations[j].preferentialValue){
@@ -317,7 +337,7 @@
                                 '</span>/' + preferentialRelations[j].preferentialValueString + '</div></div>' + '<div class="bar"><div class="bar-inner" style="' + 'width:'+ width + '%' + '"></div></div></div>';
                     }
                     $(".profit_loss.profit").append(item);
-                }else if (preferentialRelations[j].preferentialCode == 'loss_ge' && preferentialRelations[j].orderColumn == '1') {//亏损时只展示亏损
+                }else if (preferentialRelations[j].preferentialCode == 'loss_ge' && preferentialRelations[j].orderColumn == '1') {//亏损时只对比第一梯度
                     if (Math.abs(data.profitloss) >= preferentialRelations[j].preferentialValue && data.profitloss < 0){
                         icon = '<i class="icon-pass"></i>';
                     } else {
@@ -354,7 +374,7 @@
                 item = '<div class="item-success-without-bar process">'+
                         '<div class="txt"><span class="color-red">当前报名人数：' + data.ApplyNum + '人</span></div>'+
                         '</div>';
-                btn = ["联系客服","申请奖励"];
+                btn = ["联系客服","立即报名"];
                 $(".activityProcess .subs-txt").text('以下是您当前盈亏,统计周期请查看活动细则,申请报名活动后显示派奖时间.');
             }
             $(".profit_loss.loss").append(item);
@@ -366,37 +386,9 @@
             btn = ["联系客服"];
         }
         var url =  $(".openNewWindow").data("url");
-        var dialog = layer.open({
-            content:content,
-            title:"提示",
-            skin:"layui-layer-warning",
-            area: ['640px', '397px'],
-            btn: btn,
-            url: url,
-            success: function(layer){
-                // 重写关闭按钮
-                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
-                // 提示框类型
-                $(layer).addClass("normal-dialog");
-                $(layer).addClass(addClass);
-                // 内容启用滚动条
-                $(layer).find(".layui-layer-content .tab_wrap").niceScroll({
-                    cursorcolor:"#999",
-                    cursorwidth:"8px"
-                });
-                $(layer).find(".layui-layer-content .tab_wrap tr:even").addClass('even')
-            },
-            yes: function () {
-                window.open(
-                        url,
-                        'NewWindow',
-                        'width=960,height=600,top=50,left=50'
-                );
-            },
-            btn2: function () {
-                applyActivities(aplyObj, isRefresh);
-            }
-        });
+        var title = "提示";
+        var skin = "layui-layer-warning";
+        _layerDialogProcess(content,title,skin,addClass,btn,url,aplyObj,isRefresh)
     }
 
     function applyActivities(aplyObj, isRefresh) {
@@ -406,8 +398,10 @@
         var tansactionObj = [];
         if (code == 'deposit_send') {//存就送时需要组装订单号.
             transactionNos = $("input[name='transactionNos']:checked");
-            for (j = 0; j<transactionNos.length; j++) {
-                tansactionObj.push($(transactionNos[j]).val());
+            if (transactionNos.length > 0) {
+                for (j = 0; j<transactionNos.length; j++) {
+                    tansactionObj.push($(transactionNos[j]).val());
+                }
             }
         }
         var dataParam = {};
@@ -422,11 +416,19 @@
             data: JSON.stringify(dataParam),
             success: function (data) {
                 showApplyActivityResult(data, isRefresh, aplyObj);
-                $(aplyObj).attr("onclick","joinPromo(this,event)");
-
             },
-            error: function () {
-                ctime--;
+            error: function (data) {
+                $(".errorCode .tit.tip_tit").text('无响应！（错误码：' + data.status + '）');
+                var content = $(".errorCode").html();
+                var title = "申请失败";
+                var skin =  "layui-layer-danger";
+                var addClass="promo_failure";
+                var btn = ["联系客服"];
+                var url =  $(".openNewWindow").data("url");
+                _layerDialog(content,title,skin,addClass,btn,url);
+            },
+            complete: function () {
+                $(aplyObj).attr("onclick","joinPromo(this,event)");
             }
         })
     }
@@ -472,33 +474,73 @@
         var content;
         var title;
         var skin;
-        var area = ['640px', '397px'];
-        var icon;
+        var addClass;
         if (data.state) {
             content = $(".promoSuccessTip").html();
             title = "申请成功";
             skin = "layui-layer-success";
-            icon = "promo_success";
+            addClass = "promo_success";
         } else {
             content = $(".promoFailureTip").html();
             title = "申请失败";
             skin =  "layui-layer-danger";
-            icon="promo_failure";
+            addClass="promo_failure";
         }
+        var btn = ["联系客服"];
         var url =  $(".openNewWindow").data("url");
-        var dialog = layer.open({
+        _layerDialog(content,title,skin,addClass,btn,url);
+    }
+
+    /*九宫格活动详情弹窗*/
+    function dialogPromoDetail(content,title,skin,area,btnRound,btnBorder){ // 优惠详细弹窗
+        layer.open({
             content:content,
             title:title,
             skin:skin,
-            area: area,
-            btn: ["联系客服"],
-            url: url,
+            area:area,
             success: function(layer){
                 // 重写关闭按钮
                 $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
                 // 提示框类型
                 $(layer).addClass("normal-dialog");
-                $(layer).addClass(icon);
+                $(layer).addClass("promo_detail");
+                // 内容启用滚动条
+                var nice1 = $(layer).find(".layui-layer-content .promo-content").niceScroll({
+                    cursorcolor:"#999",
+                    cursorwidth:"8px"
+                });
+                $("#promo-content").on('scroll',function(){
+                    if(nice1.newscrolly > 10){
+                        $('.icon-goUp').fadeIn('slow');
+                    }else{
+                        $('.icon-goUp').fadeOut('slow');
+                    }
+                });
+                $('.icon-goUp').on('click',function(){
+                    nice1.doScrollTop(0,'300')
+                });
+            },
+            yes:function(index){
+                layer.close(index);
+            }
+        });
+    }
+
+    /*抽取的公共弹窗*/
+    function _layerDialog(content,title,skin,addClass,btn,url){
+        layer.open({
+            content:content,
+            title:title,
+            skin:skin,
+            area: ['640px', '397px'],
+            btn: btn,
+            url:url,
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("normal-dialog");
+                $(layer).addClass(addClass);
             },
             yes: function () {
                 window.open(
@@ -506,6 +548,41 @@
                         'NewWindow',
                         'width=960,height=600,top=50,left=50'
                 );
+            }
+        });
+    }
+
+    /*抽取的进度弹窗*/
+    function _layerDialogProcess(content,title,skin,addClass,btn,url,aplyObj,isRefresh) {
+        layer.open({
+            content:content,
+            title:title,
+            skin:skin,
+            area: ['640px', '397px'],
+            btn: btn,
+            url: url,
+            success: function(layer){
+                // 重写关闭按钮
+                $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
+                // 提示框类型
+                $(layer).addClass("normal-dialog");
+                $(layer).addClass(addClass);
+                // 内容启用滚动条
+                $(layer).find(".layui-layer-content .tab_wrap").niceScroll({
+                    cursorcolor:"#999",
+                    cursorwidth:"8px"
+                });
+                $(layer).find(".layui-layer-content .tab_wrap tr:even").addClass('even')
+            },
+            yes: function () {
+                window.open(
+                        url,
+                        'NewWindow',
+                        'width=960,height=600,top=50,left=50'
+                );
+            },
+            btn2: function () {
+                applyActivities(aplyObj, isRefresh);
             }
         });
     }

@@ -78,6 +78,8 @@
 .download-content-ios .h-bg { width: 100%; }
 .download-content-ios .app-logo { width: 100px; height: 100px; position: absolute; top: 40px; left: 50%; margin-left: -50px; }
 .download-content-ios .btn-install { display: block; margin: 20px auto 0; width: 165px; height: 40px; text-align: center; line-height: 40px; color: #eb0002; font-size: 15px; border: 1px solid #eb0002; border-radius: 6px; }
+.download-content-ios .btn-install.loading .spinner { animation: spin 1s linear infinite; display: inline-block; width: 18px; height: 18px; border: 3px solid #eb0002; border-radius: 50%; vertical-align: top; margin-top: 10px; margin-right: 5px; position: relative; }
+.download-content-ios .btn-install.loading .spinner:before { content: ''; position: absolute; width: 7px; height: 4px; background: #fff; top: -3px; left: 3px; }
 .download-content-ios .down-step { width: 100%; }
 
 /* casino-list */
@@ -324,9 +326,9 @@ body.bind-mobile .bind-success { text-align: center; color: #444; line-height: 2
 .login .mui-content { background: #f2f2f2; }
 .login .user-img { background: url(../images/login-user.png) center no-repeat/100px, linear-gradient(#1767bd, #1767bd); width: 100px; height: 100px; border-radius: 100%; box-shadow: 3px 5px 15px 6px rgba(23, 103, 189, 0.25); margin: 50px auto; }
 .login .login-form { padding: 0 35px; color: #666; }
-.login .login-form .password, .login .login-form .username { position: relative; }
-.login .login-form .password label, .login .login-form .username label { line-height: 30px; }
-.login .login-form .password input, .login .login-form .username input { font-size: 14px; border-color: #ddd; }
+.login .login-form .password, .login .login-form .username, .login .login-form .code { position: relative; }
+.login .login-form .password label, .login .login-form .username label, .login .login-form .code label { line-height: 30px; }
+.login .login-form .password input, .login .login-form .username input, .login .login-form .code input { font-size: 14px; border-color: #ddd; }
 .login .login-form .warn { color: #333; font-size: 12px; position: absolute; right: 0; top: 5px; }
 .login .login-form .warn .icon-warn { width: 14px; height: 14px; display: inline-block; border-radius: 100%; background: #f65d5d; color: #fff; text-align: center; line-height: 14px; font-style: normal; margin-right: 3px; }
 .login .login-form .forget-pas { text-align: right; }
@@ -334,7 +336,13 @@ body.bind-mobile .bind-success { text-align: center; color: #444; line-height: 2
 .login .login-form a.btn { display: block; text-align: center; height: 40px; line-height: 40px; border-radius: 2px; }
 .login .login-form .btn-login { background: #1766bb; color: #fff; margin-bottom: 15px; }
 .login .login-form .btn-regist { color: #445dc2; border: 1px solid #445dc2; }
+.login .login-form .code .div_flex { display: flex; }
+.login .login-form .code .div_flex input { flex: 1; }
+.login .login-form .code .div_flex img { width: 100px; height: 40px; margin-left: 10px; }
 
 .deposit_tips { color: #a52a2a; text-align: center; background: #ffd940; font-size: 12px; line-height: 24px; }
+
+@keyframes spin { from { transform: rotateZ(0); }
+  to { transform: rotateZ(360deg); } }
 
 /*# sourceMappingURL=otherpage.css.map */

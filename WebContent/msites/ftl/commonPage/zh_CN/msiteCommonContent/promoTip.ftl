@@ -49,7 +49,14 @@
             <tr class="deposit_sent_transactionNo"><th>选择</th><th>存款订单号</th><th>订单成功时间</th><th>订单金额</th></tr>
         </table>
     </div>
-    <div class="tip_noTransaction" style="text-align: center;">无订单可申请存就送</div>
+    <div class="tip_noTransaction subs-txt" style="text-align: center;">无订单可申请存就送</div>
+</div>
+
+<#--错误码提示-->
+<div class="errorCode" style="display: none">
+    <i class="icon-success"></i>
+    <div class="tit tip_tit"></div>
+    <div class="subs-txt">很抱歉！当前网络不稳定，无法连接到服务器，请检查本地网络设备是否已断开链接！</div>
 </div>
 
 
