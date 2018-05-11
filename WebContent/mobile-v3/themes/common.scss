@@ -146,7 +146,7 @@ li{
         }
     }
 }
-.notice-slider{padding-bottom: 21px;height: 320px;
+.notice-slider{padding-bottom: 21px;height: 375px !important;
     .mui-slider-group{height: 100%;}
     .mui-slider-item{
         a{    line-height: 18px !important;
@@ -160,7 +160,7 @@ li{
 }
 .notice-alert{      
      border-radius: 8px; 
-     &.mui-popup-in{    transform: translate3d(-50%,0,0) scale(1);top: 10px;}
+     &.mui-popup-in{    transform: translate3d(-50%,0,0) scale(1);top: 30px;}
     .mui-popup-inner{border-radius: 0;    padding: 15px 5px 15px 15px;
         .mui-popup-text{    margin: 12px 0 0;}
     }
