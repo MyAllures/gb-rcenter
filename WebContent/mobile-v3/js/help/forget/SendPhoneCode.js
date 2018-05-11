@@ -28,6 +28,9 @@ function sendPhoneCode() {
             if (data) {
                 var interval;
                 wait(90, obj, interval);
+            }else{
+                toast("发送失败");
+                $('#sendPhone').text(window.top.message.passport_auto['重新发送']);
             }
         }
     };
