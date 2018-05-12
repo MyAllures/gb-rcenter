@@ -277,6 +277,7 @@ body.forget-password .mui-content { background: #efefef; }
 body.forget-password .a-block { display: block; }
 body.forget-password .diy-list { font-size: 14px; color: #666; display: flex; height: 55px; line-height: 54px; border-top: 1px solid #f2f2f2; background: #fff; }
 body.forget-password .diy-list .label { width: 46px; text-align: center; }
+body.forget-password .diy-list .label .mui-icon { line-height: 54px; }
 body.forget-password .diy-list .label.label_txt { width: 100px; text-align: left; padding-left: 10px; }
 body.forget-password .diy-list .input { flex: 1; }
 body.forget-password .diy-list .input .txt { padding: 0 10px; }
