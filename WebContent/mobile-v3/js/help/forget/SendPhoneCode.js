@@ -7,7 +7,28 @@ $(function () {
     };
     muiInit(options);
     sendPhoneCode();
+    initSendPhoneCode();
 });
+
+/*
+ 初始化获取验证码按钮
+ */
+function initSendPhoneCode() {
+    var obj = $("#sendPhone");
+    var phoneInterval;
+    var sendTime = sessionStorage.getItem("phoneCountdown");
+    if (typeof sendTime != 'undefined' && sendTime != 'null') {
+        var nowDate = new Date();
+        var newDate = Date.parse(nowDate) - Date.parse(sendTime);
+        if (newDate < 90000) {
+            var seconds = newDate / 1000;
+            seconds = 90 - seconds;
+            if (0 < seconds < 90) {
+                wait(seconds, obj, phoneInterval);
+            }
+        }
+    }
+}
 
 /**
  * 找回密码发送手机短信
@@ -27,7 +48,11 @@ function sendPhoneCode() {
         success: function (data) {
             if (data) {
                 var interval;
+                sessionStorage.setItem("phoneCountdown", new Date());
                 wait(90, obj, interval);
+            }else{
+                toast("发送失败");
+                $('#sendPhone').text(window.top.message.passport_auto['重新发送']);
             }
         }
     };
@@ -62,6 +87,7 @@ function checkPhoneCode() {
     var phoneCode = $("#phoneCode").val();
     if (phoneCode == null || phoneCode == '') {
         toast("手机验证码不能为空");
+        return;
     }
     var encryptedId = $("#encryptedId").val();
     var ajaxOptions = {

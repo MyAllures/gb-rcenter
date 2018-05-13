@@ -251,6 +251,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
          */
         profit: function (data) {
             var msgBody = $.parseJSON($.parseJSON(data).msgBody);
+            var maxProfitLimit = msgBody.maxProfitLimit;
             var level = msgBody.level;
             var rate = msgBody.rate;
             var siteName = msgBody.siteName;
@@ -260,7 +261,9 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var countDown = window.top.message.setting_auto['倒计时'];
             var tips = window.top.message.setting_auto['tips'];
             var times = window.top.message.setting_auto['times'];
+            var tip = window.top.message.setting_auto['tip'];
             if (msg) {
+                tip = tip.replace("{0}", maxProfitLimit);
                 msg = msg.replace("${siteName}", siteName);
                 msg = msg.replace("${rate}", rate);
                 var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), window.top.dateFormat.daySecond);
@@ -292,8 +295,9 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                             '<div class="clearfix m-md al-center"><div  id=' + id + '><font class="fs20">' + countDown + '</font>' +
                             '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">' + hour + '</span>' + ":" + '' +
                             '<span id="minutes">' + minute + '</span>' + ":" + '<span id="seconds">' + second + '</span></span></div>' +
-                            '<div class="al-center co-grayc2">' + times + '</div></div>'
-                            + '<div class="clearfix m-md">' + tips + '</div>';
+                            '<div class="al-center co-grayc2">' + times + '</div></div>' +
+                            /*'<div class="clearfix m-md">' + tips + '</div>' +*/
+                            '<div class="clearfix m-md">' + tip + '</div>';
                     } else if (level == 'stop') {
                         var html = '<div class="line-hi34 m-sm">' + msg + '</div>';
                     }
