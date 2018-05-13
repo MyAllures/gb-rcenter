@@ -251,9 +251,9 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
          */
         profit: function (data) {
             var msgBody = $.parseJSON($.parseJSON(data).msgBody);
-            var maxProfitLimit = msgBody.maxProfitLimit;
             var level = msgBody.level;
             var rate = msgBody.rate;
+            var maxProfitLimit = msgBody.maxProfitLimit;
             var siteName = msgBody.siteName;
             var id = new Date().getTime();
             var key = 'profit.' + level + '.warning';
@@ -263,7 +263,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var times = window.top.message.setting_auto['times'];
             var tip = window.top.message.setting_auto['tip'];
             if (msg) {
-                tip = tip.replace("{0}", maxProfitLimit);
+                tip = tip.replace("${maxProfitLimit}", maxProfitLimit);
                 msg = msg.replace("${siteName}", siteName);
                 msg = msg.replace("${rate}", rate);
                 var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), window.top.dateFormat.daySecond);
