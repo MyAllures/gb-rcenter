@@ -278,7 +278,7 @@
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
                                 layer.close(layer.index);
-                                if (result.defaultLink.indexOf("https:") > -1) {
+                                if (result.defaultLink.indexOf("https:") > -1 && apiId!="39") {
                                     document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
                                     $("html").addClass("game-detail-open");
                                 } else {
@@ -712,7 +712,7 @@
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
                                 layer.close(layer.index);
-                                if (result.defaultLink.indexOf("https:") > -1) {
+                                if (result.defaultLink.indexOf("https:") > -1 && apiId!="39") {
                                     document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
                                     $("html").addClass("game-detail-open");
                                 } else {
@@ -817,7 +817,7 @@
                                     localStorage.re_url_casino = result.defaultLink;
                                 }
                                 layer.close(layer.index);
-                                if (result.defaultLink.indexOf("https:") > -1) {
+                                if (result.defaultLink.indexOf("https:") > -1 && apiId!="39") {
                                     document.getElementById('box_playGameDemo_iframe').setAttribute('src', localStorage.re_url_casino);
                                     $("html").addClass("game-detail-open");
                                 } else {

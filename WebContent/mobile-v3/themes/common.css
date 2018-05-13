@@ -60,12 +60,12 @@ li { list-style: none; }
 .notice .notice-list .marquee { width: 100%; overflow: hidden; }
 .notice .notice-list .marquee a { font-size: 13px; color: #333; }
 
-.notice-slider { padding-bottom: 21px; height: 320px; }
+.notice-slider { padding-bottom: 21px; height: 375px !important; }
 .notice-slider .mui-slider-group { height: 100%; }
 .notice-slider .mui-slider-item a { line-height: 18px !important; font-size: 13px; color: #666; display: block; border-bottom: 1px dashed #666; margin-bottom: 10px; padding-bottom: 10px; }
 
 .notice-alert { border-radius: 8px; }
-.notice-alert.mui-popup-in { transform: translate3d(-50%, 0, 0) scale(1); top: 10px; }
+.notice-alert.mui-popup-in { transform: translate3d(-50%, 0, 0) scale(1); top: 30px; }
 .notice-alert .mui-popup-inner { border-radius: 0; padding: 15px 5px 15px 15px; }
 .notice-alert .mui-popup-inner .mui-popup-text { margin: 12px 0 0; }
 .notice-alert .mui-popup-button { border-radius: 0 !important; font-size: 15px; }

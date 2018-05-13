@@ -1136,8 +1136,9 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $("[selectdiv='activityRule.effectiveTime']").find("span[prompt='prompt']").html(effective_time_text);//设置显示
             //有效条件全勾选
             $("input[name$='preferentialCode']").filter("[name^='effectiveCondition']").each(function () {
-                $(this).attr("checked",'checked');
-            })
+                $(this).prop("checked",true);
+            });
+            $(e.currentTarget).unlock();
         },
 
         /**
@@ -1153,6 +1154,11 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 that.addActivityRule(e, option);
                 line_number = $("#first_deposit").find("tr").length - 1
             }
+            //删除多余的表格
+            $("#first_deposit").find("tr:eq(6)").remove();
+            that.resetIndex();
+
+
 
             //活动类型
             var activityType = $("input[name='result.code']").val();
@@ -1179,6 +1185,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
             $("[selectdiv='activityRule.effectiveTime']").find("span[prompt='prompt']").html(effective_time_text);//设置显示
             //最高彩金
             $("input[name='activityRule.preferentialAmountLimit']").val(deposit_data.preferentialAmountLimit);
+            $(e.currentTarget).unlock();
         },
         /**
          * 系统推荐方案数据初始化
@@ -1242,7 +1249,7 @@ define(['site/operation/activityHall/ActivityMoneyContent', 'jqFileInput', 'UE.I
                 depositAmountGe: 200,
                 percentageHandsel: 5,
                 regularHandsel: 10,
-                preferentialAudits: 155
+                preferentialAudits: 15
             }, {
                 depositAmountGe: 800,
                 percentageHandsel: 15,
