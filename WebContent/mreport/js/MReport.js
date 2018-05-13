@@ -5,28 +5,6 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
     return BasePage.extend({
 
         /**
-         * 金额格式化
-         * @param num
-         * @returns {string}
-         */
-        formatCurrency: function(num) {
-            if(!num) return num;
-            num = num.toString().replace(/\$|\,/g,'');
-            if(isNaN(num))
-                num = "0";
-            sign = (num == (num = Math.abs(num)));
-            num = Math.floor(num*100+0.50000000001);
-            cents = num%100;
-            num = Math.floor(num/100).toString();
-            if(cents<10)
-                cents = "0" + cents;
-            for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)
-                num = num.substring(0,num.length-(4*i+3))+','+
-                    num.substring(num.length-(4*i+3));
-            return (((sign)?'':'-') + num + '.' + cents);
-        },
-
-        /**
          * 画玉珏图
          * @author martin
          * @param containerName
@@ -124,8 +102,10 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * @param position
          * @param tips
          * @param height
+         * @param isFormat
          */
-        drawBasicColumnChart: function(containerName, data, xField, yField, tips, height) {
+        drawBasicColumnChart: function(containerName, data, xField, yField, tips, height, isFormat) {
+            var _this = this;
             //清空原有内容
             $("#"+containerName).empty();
 
@@ -141,7 +121,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 .tooltip(yField, function(val) {
                     return {
                         name: tips,
-                        value: val
+                        value: isFormat ? _this.formatMoney(val) : val
                     };
                 });
             chart.render();
@@ -194,7 +174,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * @param keys
          * @param height
          */
-        curveChart:function(data,containerName,keys,height){
+        curveChart: function (data, containerName, keys, height) {
             const ds = new DataSet();
             const chart = new G2.Chart({
                 container: containerName,
@@ -317,7 +297,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             var numerical1 = $(data[data.length-2]).attr(column);
             var staticDay0 = $(data[data.length-1]).attr('staticDay');
             var staticDay1 = $(data[data.length-2]).attr('staticDay');
-            $("#"+containerName+"_title").html(staticDay0+": "+numerical0);
+            $("#"+containerName+"_title").html(staticDay0+": "+this.formatMoney(numerical0));
 
             var startNum, endNum;
             if(numerical0>=0 && numerical1>=0) {
@@ -438,7 +418,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 html: '<div style="width: 300px;text-align: center; border:0px solid red;">'
                 + '<p style="margin: 0; font-weight:bold;">' + this.getGaugePercent(numerical0, numerical1) + '</p>'
                 + '<p style="font-size:15px; color: #545454;margin: 0;">' + staticDay1 + '</p>'
-                + '<p style="font-size:14px; font-weight:bold; color:#d2b0ff;margin: 0;">' + numerical1 + '</p>'
+                + '<p style="font-size:14px; font-weight:bold; color:#d2b0ff;margin: 0;">' + this.formatMoney(numerical1, 2) + '</p>'
                 + '</div>'
             });
 
@@ -477,6 +457,49 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             } else {
                 return '<font color="#d2b0ff" size="30">'+percent+'%</font>';
             }
+        },
+
+        /**
+         * 数字千分位格式化
+         * @public
+         * @param mixed mVal 数值
+         * @param int iAccuracy 小数位精度(默认为2)
+         * @return string
+         */
+        formatMoney: function (mVal, iAccuracy) {
+            var fTmp = 0.00;//临时变量
+            var iFra = 0;//小数部分
+            var iInt = 0;//整数部分
+            var aBuf = new Array(); //输出缓存
+            var bPositive = true; //保存正负值标记(true:正数)
+            /**
+             * 输出定长字符串，不够补0
+             * <li>闭包函数</li>
+             * @param int iVal 值
+             * @param int iLen 输出的长度
+             */
+            function funZero(iVal, iLen) {
+                var sTmp = iVal.toString();
+                var sBuf = new Array();
+                for (var i = 0, iLoop = iLen - sTmp.length; i < iLoop; i++)
+                    sBuf.push('0');
+                sBuf.push(sTmp);
+                return sBuf.join('');
+            };
+
+            if (typeof(iAccuracy) === 'undefined')
+                iAccuracy = 2;
+            bPositive = (mVal >= 0);//取出正负号
+            fTmp = (isNaN(fTmp = parseFloat(mVal))) ? 0 : Math.abs(fTmp);//强制转换为绝对值数浮点
+            //所有内容用正数规则处理
+            iInt = parseInt(fTmp); //分离整数部分
+            iFra = parseInt((fTmp - iInt) * Math.pow(10, iAccuracy) + 0.5); //分离小数部分(四舍五入)
+
+            do {
+                aBuf.unshift(funZero(iInt % 1000, 3));
+            } while ((iInt = parseInt(iInt / 1000)));
+            aBuf[0] = parseInt(aBuf[0]).toString();//最高段区去掉前导0
+            return ((bPositive) ? '' : '-') + aBuf.join(',') + '.' + ((0 === iFra) ? '00' : funZero(iFra, iAccuracy));
         }
     });
 });

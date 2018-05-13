@@ -88,10 +88,7 @@ function promoInfo(requestData, item) {
                 $('#' + item).find('.promo-record-content').append(data);
                 addPageNumber(item);
                 var number = $('#' + item).find("#partialPageNumber").attr("value");
-                if (number == "1") {
-                    mui("#refreshContainer").pullRefresh().endPullupToRefresh(true);
-                    return;
-                }
+                $('#'+item).find('.no-promo').addClass("mui-hidden");
                 var isRefresh = true;
                 if (item == "item1") {
                     allTotal = number;

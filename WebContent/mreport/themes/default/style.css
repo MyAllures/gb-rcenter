@@ -101,6 +101,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .range-box .date input { height: 31px; vertical-align: top; border: none; width: 80px; text-align: center; color: #999; cursor: pointer; }
 .range-box .date .btn-group .input-group-addon.glyphicon {display: none;}
 .range-box .date .btn-group .form-control {padding-left: 2px !important;padding-right: 2px !important;}
+.top .date input {padding-left:30px !important;}
 
 .page { text-align: center; height: 55px; }
 .page .pageNum { display: inline-block; margin: 20px 50px 0 15px; color: #666; float: left; }
@@ -153,7 +154,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
   .menu { width: 180px; }
   .main-content.drawer-body { transform: translateX(180px); }
   .container .content { margin: 0 10px; }
-  .run-title { height: 50px; line-height: 50px; border:1px solid red !important; border: 1px solid red;}
+  .run-title { height: 50px; line-height: 50px;}
   .gaikuang-page .dataBox1, .gaikuang-page .dataBox2 { margin: 0; }
   .gaikuang-page .dataBox1 .list, .gaikuang-page .dataBox2 .list { margin-bottom: 10px; }
   .gaikuang-page .dataBox1 .list h2, .gaikuang-page .dataBox2 .list h2 { line-height: 45px; }
@@ -215,7 +216,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .xinzengwanjia-page .tableBox .top h3, .activePlayer-page .tableBox .top h3, .effectPlayer-page .tableBox .top h3, .remain-page .tableBox .top h3 { flex: 1; }
 .xinzengwanjia-page .tableBox table tr th:first-child, .activePlayer-page .tableBox table tr th:first-child, .effectPlayer-page .tableBox table tr th:first-child, .remain-page .tableBox table tr th:first-child { width: auto; }
 
-.remain-page .tableBox .time-tr { background: #dbe2e9; color: #4c789f; font-weight: bold; }
+.remain-page .tableBox .time-tr { background: #dbe2e9; color: #4c789f; font-weight: bold;}
 
 .btn-filter {
     background-color: #2095f2;
@@ -232,6 +233,21 @@ em {
     text-align: center;
     color: #515d6e;
     /* line-height: 30px; */
+}
+.top .form-group {
+    margin-bottom: 1rem;
+    margin-left: 32%;
+}
+.top .input-group {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
 }
 /*# sourceMappingURL=style.css.map */
 

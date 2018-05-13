@@ -15,8 +15,6 @@
 
 <body>
 <#include "top.ftl">
-<#assign status ={"apply":"立即加入","participation":"参与中","applyDeposit":"存款时申请","notStarted":"未开始"}>
-<#assign statusKeys = status?keys>
 <main class="main-promo">
     <div style="height: 410px;background: url(${data.configInfo.sitePath}/images/promo-banner.jpg) no-repeat center bottom;"></div>
     <!-- notice -->
@@ -58,7 +56,7 @@
                             <input class="_vr_promo_oend" type="hidden" value="${am.endTime?long?string.computer}">
                             <div class="shadow">
                                 <div class="btn-apply _vr_promo_join" onclick="joinPromo(this,event)">
-                                    立即加入
+                                    我要申请
                                 </div>
                             </div>
                             <div class="promo-detail">
@@ -85,7 +83,7 @@
                             <input class="_vr_promo_oend" type="hidden" value="${am.endTime?long?string.computer}">
                             <div class="shadow">
                                 <div class="btn-apply _vr_promo_join" onclick="joinPromo(this,event)">
-                                    立即加入
+                                    我要申请
                                 </div>
                             </div>
                             <div class="promo-detail">
@@ -96,6 +94,11 @@
                     </div>
                 </#list>
             </#if>
+            </div>
+            <div class="row">
+                <div class="no-result" style="display: none">
+                    搜索内容暂无符合条件的活动
+                </div>
             </div>
         </div>
     </section>

@@ -76,7 +76,7 @@ function promoCheck(obj, options) {
         //已结束
         var oldClass = $obj.data("oldClass");
         var newClass = $obj.data("newClass");
-        $obj.removeClass(typeof oldClass == "undefined" ? "" : oldClass).addClass(typeof newClass == "undefined" ? "" : newClass).attr("onclick", "").html(window.top.message.promo_auto['已结束']);
+        $obj.removeClass(typeof oldClass == "undefined" ? "" : oldClass).addClass(typeof newClass == "undefined" ? "" : newClass).attr("data-rel", "").html(window.top.message.promo_auto['已结束']);
     }
 
 }
