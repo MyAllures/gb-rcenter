@@ -93,10 +93,8 @@ function depositDiscount(obj, options) {
                         '<span>' + window.top.message.deposit_auto['不参与优惠'] + '</span><input name="activityId" type="radio" value="" checked="checked/"></div></li>';
                     for (var i = 0; i < data.length; i++) {
                         var sale = data[i];
-                        if(sale.preferential){
-                            html = html + '<li><div class="text-warp"><span>' + sale.activityName + '</span>' +
-                                '<input name="activityId" type="radio" value="' + sale.id + '"></div></li>';
-                        }
+                        html = html + '<li><div class="text-warp"><span>' + sale.activityName + '</span>' +
+                            '<input name="activityId" type="radio" value="' + sale.id + '"></div></li>';
                     }
                     html = html + '</ul></div><div class="pro-btn"><a class="next-btn" data-rel={"opType":"function","target":"submitDeposit"}>' + window.top.message.deposit_auto['已存款'] + '</a>' +
                         '<a class="agin-btn" data-rel={"opType":"function","target":"closeProWindow"}>' + window.top.message.deposit_auto['重新填写'] + '</a></div>' +
