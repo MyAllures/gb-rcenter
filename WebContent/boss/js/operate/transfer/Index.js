@@ -97,7 +97,6 @@ define(['common/BaseListPage'], function (BaseListPage) {
          */
         resend: function (e, option) {
             var _this = this;
-            $(e.currentTarget).attr('disabled', true);
             var _time = 10;
             var interval = setInterval(function () {
                 _time = _time - 1;
@@ -106,26 +105,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     $(e.currentTarget).unlock();
                 }
             }, 1000);
-            _this._checkResend(e, option);
-        },
-        _checkResend: function (e, option) {
-            var _this = this;
-            var apiId = option.apiId;
-            window.top.topPage.ajax({
-                url: root + "/operation/exceptionTransfer/checkIsResend.html",
-                dataType: 'json',
-                data: {"search.id": apiId},
-                beforeSend: function () {
-                    $(e.currentTarget).lock();
-                },
-                success: function (data) {
-                    if (data.isResend) {
-                        _this._confirmResend(e, option);
-                    } else {
-                        window.top.topPage.showInfoMessage("该API不支持重发！");
-                    }
-                }
-            })
+            _this._confirmResend(e, option);
         },
         _confirmResend: function (e, option) {
             var _this = this;
@@ -146,10 +126,10 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 },
                 success: function (data) {
                     if (data.state) {
-                        window.top.topPage.showSuccessMessage("重发成功！(注：重发成功并不代表状态置为成功。)");
+                        window.top.topPage.showSuccessMessage(data.msg);
                         _this.query(e);
                     } else {
-                        window.top.topPage.showErrorMessage("重发失败！");
+                        window.top.topPage.showErrorMessage(data.msg);
                     }
                 },
                 error: function (data) {
