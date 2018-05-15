@@ -20,7 +20,7 @@ function selectionDate() {
 }
 
 /**公司入款提交存款后跳转至确认账号页面*/
-function confirmationAccount(obj, payType, key) {
+function confirmationAccount(obj, payType,key) {
     if (document.activeElement) {
         document.activeElement.blur();
     }
@@ -28,10 +28,10 @@ function confirmationAccount(obj, payType, key) {
     var href = "";
     if (payType == "company") {
         $form = $("#companyCashForm");
-        href = "/wallet/deposit/company/index.html?searchId=" + key;
+        href = "/wallet/v3/deposit/company/index.html?search.id=" + key;
     } else if (payType == "electronicPay") {
-        $form = $("#electronicCashForm");
-        href = "/wallet/deposit/company/electronic/index.html?searchId=" + key;
+        $form = $("#scanForm");
+        href = "/wallet/v3/deposit/online/scan/index.html?searchId=" + key;
     }
 
     bindFormValidation($form);
@@ -126,11 +126,11 @@ function seachDiscount(obj, options) {
     var url = "";
     var $form;
     if (depositChannel == "company") {
-        url = "/wallet/deposit/company/submit.html";
+        url = "/wallet/v3/deposit/company/submit.html";
         $form = $("#confirmCompanyForm");
     } else if (depositChannel == "electronic") {
-        url = "/wallet/deposit/company/electronic/submit.html";
-        $form = $("#electronicForm");
+        url = "/wallet/v3/deposit/online/scan/electronicSubmit.html";
+        $form = $("#scanForm");
     }
     if (options.statusNum) {
         $form = options.form;
@@ -206,10 +206,10 @@ function companyDepositSubmit(depositChannel) {
     var url = "";
     var $form;
     if (depositChannel == "electronic") {
-        url = "/wallet/deposit/company/electronic/deposit.html";
-        $form = $("#electronicForm");
+        url = "/wallet/v3/deposit/company/deposit.html";
+        $form = $("#scanForm");
     } else if (depositChannel == "company") {
-        url = "/wallet/deposit/company/deposit.html";
+        url = "/wallet/v3/deposit/company/deposit.html";
         $form = $("#confirmCompanyForm");
     } else if (depositChannel == "bitcoin") {
         url = "/wallet/deposit/company/bitcoin/deposit.html";

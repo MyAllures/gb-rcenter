@@ -4,6 +4,7 @@ $(function () {
 });
 /*线上支付银行下拉*/
 var bankPick = null;
+
 /**
  * 初始化银行列表
  */
@@ -34,7 +35,8 @@ function initMySwiper() {
 
 var ajaxData = null ;
 /**线上支付确认存款，查询是否有优惠*/
-function confirmDeposit(obj, payType) {
+function confirmDeposit(obj, options) {
+    var payType = options.payType;
     //验证存款金额
     var rechargeAmount = $("input[name='result.rechargeAmount']");
     if (rechargeAmount && payType == "online" && $("input[name='result.randomCash']").val()) {
@@ -145,27 +147,28 @@ function showBankList() {
         var min = isNaN(item.min) ? 0.01 : item.min;
         var max = isNaN(item.max) ? 99999999 : item.max;
         document.getElementById('result.payerBank').value = item.value;
-        document.getElementById('selectText').innerHTML = item.text;
+        document.getElementById('selectBank').value = item.text;
         document.getElementById('onlinePayMin').value = min;
         document.getElementById('onlinePayMax').value = max;
         document.getElementsByName('account').value = item.account;
         document.getElementById('result.rechargeAmount').setAttribute("placeholder", "" + siteCurrencySign + Number(min).toFixed(2) + "~" + siteCurrencySign + Number(max).toFixed(2));
     });
 }
+
 /**线上支付提交存款*/
 function onlinePaySubmit(depositChannel) {
     var $form;
     var url = "";  //本地提交存款订单路径，
     var href = ""; //第三方支付页面路径
     if (depositChannel == "online") {
-        url = "/wallet/deposit/online/deposit.html";
+        url = "/wallet/v3/deposit/online/deposit.html";
         $form = $("#onlineForm");
     } else {
         $form = $("#scanForm");
         if ($("input[name='result.randomCash']").val()) {
-            url = "/wallet/deposit/online/scan/scanRandomCodeSubmit.html"
+            url = "/wallet/v3/deposit/online/scan/scanRandomCodeSubmit.html"
         } else {
-            url = "/wallet/deposit/online/scan/scanCodeSubmit.html";
+            url = "/wallet/v3/deposit/online/scan/scanCodeSubmit.html";
         }
     }
     bindFormValidation($form);
@@ -273,7 +276,7 @@ function linkResult(data) {
         if (e.index == 0) {
             goToFundRecord();
         } else {
-            goToUrl(root + "/wallet/deposit/index.html");
+            goToUrl(root + "/wallet/v3/deposit/index.html");
         }
     });
 }
@@ -304,7 +307,7 @@ function sendComm(transactionNo) {
 
 /**展示反扫教程*/
 function reScanCourse(obj, opotions) {
-    var accountType = opotions.accountType;
+    var accountType = $("#accountType").val();
     var depositHelpBox = $("div#depositHelpBox" + accountType);
     depositHelpBox.show();
 }

@@ -5,7 +5,7 @@ $(function () {
     copy();
     muiInit(muiDefaultOptions);
     //原生返回按钮不展示
-    if(!isNative) {
+    if (!isNative) {
         $("#depositBack").show();
     }
     //如果第一个元素不是比特币支付或数字货币支付则默认选中
@@ -17,6 +17,7 @@ $(function () {
         }
     }
 });
+
 /**
  * 跳转快充
  * @param obj
@@ -33,15 +34,14 @@ function fastRecharge(obj, options) {
 
 /**加载存款金额输入框*/
 function amountInput(obj, options) {
-    $("#payList li>a").removeClass("active");
+    $("#list_pay").find(".list_pay_item").removeClass("cur");
+    $(obj).find(".list_pay_item").addClass("cur");
     $("#depositInput").html("");
     //存款渠道类型
     var payType = options.payType;
     //跳转路径
     var _url = options.url;
-    $(obj).addClass("active");
-    var key = $(obj).parent().attr("key");
-    if (_url && _url != "undefined" && !depositMap[key]) {
+    if (_url && _url != "undefined" && !depositMap[payType]) {
         var ajaxOptions = {
             url: root + _url,
             headers: {'Soul-Requested-With': 'XMLHttpRequest'},
@@ -50,7 +50,7 @@ function amountInput(obj, options) {
             async: true,
             success: function (data) {
                 $("#depositInput").html(data);
-                depositMap[key] = data;
+                depositMap[payType] = data;
             },
             error: function () {
                 toast(window.top.message.deposit_auto['网络繁忙']);
@@ -58,29 +58,36 @@ function amountInput(obj, options) {
         };
         muiAjax(ajaxOptions);
     } else {
-        $("#depositInput").html(depositMap[key]);
+        $("#depositInput").html(depositMap[payType]);
     }
+}
+
+/**
+ * 快速选择
+ * @param obj
+ * @param options
+ */
+function quickCheckMoney(obj, options) {
+    document.getElementById("result.rechargeAmount").value = options.mone;
 }
 
 /**输入存款金额后点击下一步*/
-function nextStep(obj) {
-    var aTag = $("#payList li>a.active");
-    if (aTag) {
-        var payType = JSON.parse(aTag.attr("data-rel")).payType;
-        var key = aTag.parent().attr("key");
-        if (payType == "online" || payType == "scan") {
-            confirmDeposit(obj, payType);
-        } else if (payType == "company" || payType == "electronicPay") {
-            confirmationAccount(obj, payType, key);
-        }
+function nextStep(obj, options) {
+    var account = $('#accountId').val();
+    if (account == '' || account == null) {
+        toast("请选择中一个银行");
+        return;
     }
-}
-
-/**快选金额*/
-function quickSelection(obj, options) {
-    $("#selectMoney").find("a").removeClass("active");
-    $(obj).addClass("active");
-    $("input[name='result.rechargeAmount']").val(options.money);
+    var rechargeAmount = $("input[name='result.rechargeAmount']");
+    if (!verificationAmount(rechargeAmount)) {
+        return;
+    }
+    var payType = options.payType;
+    if (payType == "online" || payType == "scan") {
+        confirmDeposit(obj, payType);
+    } else if (payType == "company" || payType == "electronicPay") {
+        confirmationAccount(obj, payType, account);
+    }
 }
 
 /**
@@ -120,6 +127,8 @@ function closeProWindow(obj, options) {
         $("#applySale").removeClass("mui-active");
         $("#applySale").html("");
     }
+
+
 }
 
 /**保存图片*/
@@ -149,25 +158,69 @@ function goToHome() {
 }
 
 /**跳转到存款页面*/
-function goToDepositPage(){
+function goToDepositPage() {
     if (isNative) {
         nativeGotoDepositPage();
     } else {
-        goToUrl(root + '/wallet/deposit/index.html?v=' + Math.random());
+        goToUrl(root + '/wallet/v3/deposit/index.html?v=' + Math.random());
     }
 }
 
 /**
  * 连续失败后仍继续选择该渠道
  */
-function continueDeposit(e,option){
+function continueDeposit(e, option) {
     $("#failureHints").hide();
     $("#failureHintsMasker").hide();
     var channel = $("#channel").val();
-    if(channel == "online" || channel == "scan"){
+    if (channel == "online" || channel == "scan") {
         onlineContinueDeposit(channel);
-    }else if(channel == "company" || channel == "electronic"){
+    } else if (channel == "company" || channel == "electronic") {
         companyContinueDeposit(channel);
     }
 
+}
+
+function selectCompanyBank(obj, options) {
+    $("#company_bank_list").find(".bank_list_i").removeClass("cur");
+    $(obj).find(".bank_list_i").addClass("cur");
+    $('#bankCode').val(options.bankCode);
+    $('#accountId').val(options.accountId);
+}
+
+function selectScanCode(obj, options) {
+    $('#scan_Bank_List').find(".bank_list_i").removeClass("cur");
+    $(obj).find(".bank_list_i").addClass("cur");
+    var account = $(obj).find("input")[0];
+    var min = $(account).attr("onlinePayMin") == "" ? "0.01" : $(account).attr("onlinePayMin");
+    var max = $(account).attr("onlinePayMax") == "" ? "99999999" : $(account).attr("onlinePayMax");
+    var siteCurrencySign = document.getElementById('siteCurrencySign').value;
+    //根据所选账号设置隐藏元素
+    document.getElementById('result.rechargeAmount').value = "";
+    document.getElementById("onlinePayMax").value = $(account).attr("onlinePayMax");
+    document.getElementById("onlinePayMin").value = $(account).attr("onlinePayMin");
+    document.getElementById("account").value = $(account).attr("account");
+    document.getElementById("accountId").value = $(account).attr("account");
+    document.getElementById("result.payerBank").value = $(account).attr("payerBank");
+    document.getElementById("depositChannel").value = $(account).attr("depositChannel");
+    document.getElementById('result.rechargeAmount').setAttribute("placeholder", "" + siteCurrencySign + Number(min).toFixed(2) + "~" + siteCurrencySign + Number(max).toFixed(2));
+    //处理随机金额
+    var randomAmount = $(account).attr("randomAmount");
+    if (randomAmount == "true") {
+        $("input[name='result.randomCash']").val($('#randomValue').val());
+        $("#random_amount").show();
+    } else {
+        $("input[name='result.randomCash']").val("");
+        $("#random_amount").hide();
+    }
+    //设置按钮显示
+    if ($("#depositChannel").val() == 'electronic') {
+        $("#btn_electronicPay").show();
+        $("#btn_scan").hide();
+        $("#statuNum").val("1");
+    } else {
+        $("#btn_scan").show();
+        $("#btn_electronicPay").hide();
+        $("#statuNum").val("");
+    }
 }
