@@ -30,7 +30,7 @@ function judgeUserExist(obj, options) {
                 return;
             }
             if (data.encryptedId) {
-                goToUrl(root + "/help/sendPhoneCode.html?encryptedId=" + data.encryptedId + "&phone=" + data.phone);
+                goToUrl(root + "/help/sendPhoneCode.html?encryptedId=" + data.encryptedId + "&phone=" + data.phone+"&forgetType="+options.forgetType);
             } else {
                 toast("发送失败");
             }
