@@ -20,6 +20,7 @@ var muiDefaultOptions = {
     /**支持横向纵向样式*/
     horizontalVerticalScroll: ['']
 };
+
 /**
  * mui 向下拉默认参数配置
  * @param container
@@ -115,7 +116,7 @@ function muiInit(options) {
 function bindHrefTarget() {
     $("a[href][target='_blank']").on("tap", function () {
         var url = $(this).attr("href");
-        if(url) {
+        if (url) {
             openWindow(url);
         }
     })
@@ -170,6 +171,7 @@ function muiScrollY(obj, options) {
     }
     mui(obj).scroll(options)
 }
+
 /**
  * 默认横向滚动配置
  * @param obj
@@ -445,6 +447,10 @@ function doEvent(obj, options) {
  */
 function doFunction(obj, options) {
     var func = this[options.target];
+    if (func == null && options.target && options.target.indexOf(".") != -1) {
+        var args = options.target.split('.');
+        func = this[args[0]][args[1]];
+    }
     var returnVal = applyFunction(func, options, obj);
     $(obj).unlock();
     return returnVal;
@@ -502,6 +508,7 @@ function doAjax(obj, options) {
     }
     muiAjax(ajaxOption);
 }
+
 /**
  * 消息提示
  *
