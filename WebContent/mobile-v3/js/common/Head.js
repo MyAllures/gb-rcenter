@@ -1,6 +1,7 @@
 /**是否登录标识*/
 var isLogin = false;
-
+/*一键回收时间间隔*/
+var RECOVER_TIME_INTERVAL = 10;
 $(function () {
     headInfo();
     //左侧菜单滚动
@@ -27,6 +28,13 @@ function closeLeftMenu() {
  */
 function userAssert(obj, options) {
     $("#login-info .money-shadow").toggle();
+    if ($(obj).find(".ex").attr("class") === "ex") {
+        if (sessionStorage.getItem("isAutoPay") === "true") {//是否免转
+            $("#recovery").removeClass("mui-hidden");
+        } else {
+            $("#refresh").removeClass("mui-hidden");
+        }
+    }
     var $siteApi = $('table#api-balance tbody tr');
     if (!$siteApi || $siteApi.length <= 0) {
         getSiteApi();
@@ -137,4 +145,62 @@ function refreshApi() {
         }
     };
     muiAjax(options);
+}
+
+function recovery(obj) {
+    if (!isAllowRecovery(obj)) {
+        toast(window.top.message.transfer_auto["太频繁"]);
+        return;
+    }
+    var title = $(obj).text();
+    $(obj).attr("disabled", true);
+    $(obj).text(window.top.message.transfer_auto["回收中"]);
+    var url = root + "/transfer/auto/recovery.html";
+    var options = {
+        url: url,
+        success: function (data) {
+            if (data) {
+                if (data.msg) {
+                    toast(data.msg);
+                } else {
+                    toast(window.top.message.transfer_auto["正在回收"]);
+                    reload()
+                }
+            } else {
+                toast(window.top.message.transfer_auto["系统繁忙"]);
+            }
+        },
+        complete: function () {
+            $(obj).attr("disabled", false);
+            $(obj).text(title);
+            $(obj).attr('lastTime', new Date().getTime());
+        }
+    };
+    muiAjax(options);
+}
+
+/**
+ * 是否允许回收
+ */
+function isAllowRecovery(obj) {
+    var lastTime = $(obj).attr("lastTime");
+    if (!lastTime) {
+        return true;
+    }
+    var timeInterval = parseInt((new Date().getTime() - lastTime) / 1000);
+    if (timeInterval >= RECOVER_TIME_INTERVAL) {
+        return true;
+    }
+    return false;
+}
+
+/**
+ * 一键刷新
+ */
+function reload() {
+    if (isNative) {
+        nativeRefreshPage();
+    } else {
+        window.location.reload();
+    }
 }

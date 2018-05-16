@@ -551,7 +551,7 @@
             }
         });
     }
-    
+
     /*抽取的进度弹窗*/
     function _layerDialogProcess(content,title,skin,addClass,btn,url,aplyObj,isRefresh) {
         layer.open({

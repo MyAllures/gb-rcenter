@@ -357,78 +357,24 @@
 
     //首页弹窗
     function homeDialog(){
-    <#assign flag = true>
-    <#if data.carousels??>
-        <#list data.carousels as carousel>
-            <#if flag && carousel["type"]="carousel_type_ad_dialog">
-                <#if .now?date gt carousel["start_time"]?date && .now?date lt carousel["end_time"]?date>
-                    <#if carousel["cover"]??><#assign imgSrc=imgPath(data.configInfo.domain,carousel["cover"])></#if>
-                    <#if carousel["name"]??><#assign imgTitl=carousel["name"]></#if>
-                    <#if carousel["link"]??><#assign link=carousel["link"]></#if>
-                    <#if carousel["content_type"]??><#assign contentType=carousel["content_type"]></#if>
-                    <#if carousel["content"]??><#assign content=carousel["content"]></#if>
-                    <#if carousel["update_time"]??>
-                        <#assign updateTime=carousel["update_time"]?long?string.computer>
-                    <#else >
-                        <#assign updateTime=carousel["id"]?string.computer>
-                    </#if>
-                    <#assign flag = false >
-                </#if>
-            </#if>
-        </#list>
-    </#if>
     <#if imgSrc??>
-        if(!localStorage.getItem("${updateTime}"+"-close-home-dialog")){// 判读缓存里是否关闭了首页弹窗
-            BootstrapDialog.show({
-                type: BootstrapDialog.TYPE_WARNING,
-                draggable: true,
-                title: "${imgTitl}",
-                size: 'index-modal',
-                message: function(dialog) {
-                    var $message = null;
-                    <#if imgSrc?has_content>
-                        var _href = "${link}";
-                        if(_href!=undefined && _href!=""){
-                            if(_href.indexOf("http")>-1){
-                                _href = _href;
-                            }else{
-                                _href = "http://"+_href;
-                            }
-                            if(_href.indexOf("\$\{website\}")>-1){
-                                _href = _href.replace("\$\{website\}",window.location.host);
-                            }
-                        }else{
-                            _href = "javascript:void(0)";
-                        }
-                        $message = $('<a href="'+_href+'"><img  src="${imgSrc}"/></a><div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">閉じられると、このポップアップ広告は表示されなくなります</div>');
-                    <#elseif content?has_content>
-                        $message='<div style="padding:10px;width:500px;">${content}</div>'+'<div class="home-dialog-checkbox"><input type="checkbox" id="home-dialog-checkbox">閉じられると、このポップアップ広告は表示されなくなります</div>';
-                    </#if>
-                    return $message;
-                },
-                buttons:[
-                    {
-                        id:'btn-close',
-                        label:'关闭',
-                        cssClass:'btn-close-home-dialog',
-                        action:function(dia){
-                            dia.close();
-                        }
-                    }
-                ],
-                onhidden:function(dia){
-                    if($("#home-dialog-checkbox").is(":checked")){
-                        localStorage.setItem("${updateTime}"+"-close-home-dialog",true);
-                    }
-                }
-            });
-            // 定时关闭
-            setTimeout(function () {
-                $(".index-modal").modal("hide")
-            }, 60000);
+        if(!localStorage.getItem("${updateTime}-close-home-dialog")){// 判读缓存里是否关闭了首页弹窗
+            <#if imgSrc?has_content>
+                <#if showModel?has_content&&showModel=='1'>
+                    layerDialogIndex('${imgSrc}',false,'',[],true,'c');
+                <#else >
+                    layerDialogIndex('${imgSrc}','${imgTitl}','layui-layer-brand',[],'','r')
+                </#if>
+            <#elseif content?has_content>
+                layerDialogIndex('<div style="padding:10px;">${content?replace('\n','')?replace('\r','')}</div><div class="checkbox-wrap"><input type="checkbox" id="home-dialog-checkbox" />閉じると、このポップアップウィンドウの広告は表示されなくなります</div>','${imgTitl}','layui-layer-brand',['600px'],'','r',true);
+            </#if>
+            setTimeout(function(){
+                layer.closeAll();
+            },60000);
         }// if判断结束
     </#if>
     }
+    // 首页弹窗结束
 
     /*公共维护状态检测设置 By Faker*/
     function maintainCheck(){
@@ -465,7 +411,7 @@
                             var protocol = window.location.protocol;
                             if(protocol.indexOf("https:")>-1){
                                 //https协议支持体育嵌套
-                                if(apiId=="4" || apiId=="19" || apiId=="12" || apiId=="21" || apiId=="37"){
+                                if(apiId=="4" || apiId=="19" || apiId=="12" || apiId=="21" || apiId=="37" || apiId=="40"){
                                     $(this).attr("href",$(this).data("href"));
                                 }else{
                                     $(this).attr("href","javascript:");
@@ -996,20 +942,51 @@
         });
     }
 
-    function currentPage(apiId){
-        if (apiId == "4"){
-            document.getElementById('sportFrame').contentWindow.location.replace("https://im.ampinplayopt0matrix.com");
-        }else if (apiId=="12"){
-            document.getElementById('sportFrame').contentWindow.location.replace("https://hyxu36.uv178.com/whb/view.php");
-        }else if(apiId=="19"){
-            document.getElementById('sportFrame').contentWindow.location.replace("https://mkt.ampinplayopt0matrix.com?lang=cs");
-        }else if(apiId=="21"){
-            document.getElementById('sportFrame').contentWindow.location.replace("https://pocdesignother0.com");
-        }else if(apiId=="37"){
-            document.getElementById('sportFrame').contentWindow.location.replace("https://bc.ampinplayopt0matrix.com/#/sport/?lang=zhh");
-        }/*else if(apiId=="23"){
-            document.getElementById('sportFrame').contentWindow.location.replace("http://opussport.ampinplayopt0matrix.com/sports.aspx");
-        }*/
+    function currentPage(apiId) {
+        var url = "";
+        switch (apiId) {
+            case '${data.apiProviders["IM"].code}':
+                url = "https://im.ampinplayopt0matrix.com";
+                break;
+            case '${data.apiProviders["SS"].code}':
+                url = "https://hyxu36.uv178.com/whb/view.php";
+                break;
+            case '${data.apiProviders["SB"].code}':
+                url = "https://mkt.ampinplayopt0matrix.com?lang=cs";
+                break;
+            case '${data.apiProviders["DWT"].code}':
+                url = "https://pocdesignother0.com";
+                break;
+            case '${data.apiProviders["BC"].code}':
+                url = "https://bc.ampinplayopt0matrix.com/#/sport/?lang=zhh";
+                break;
+            case '${data.apiProviders["XJSPORTS"].code}':
+                url = getBcPage(apiId);
+                break;
+        }
+        if(url!=undefined && url!=""){
+            document.getElementById('sportFrame').contentWindow.location.replace(url);
+        }
+    }
+
+    function getBcPage(apiId) {
+        $.ajax({
+            type: "post",
+            url: "/demo.html?apiId=" + apiId + "&apiTypeId=3&language=zh_CN",
+            dataType: 'json',
+            async:false,
+            success: function (data) {
+                if (data.isSuccess == true) {
+                    var result = data.gameApiResult;
+                    if (result.defaultLink) {
+                        return result.defaultLink;
+                    }
+                }else{}
+            },
+            error: function (e) {
+                console.log('188体育error');
+            }
+        });
     }
 
     function apiLoginReal(apiId, gameCode, apiTypeId) {
@@ -1201,14 +1178,20 @@
     var loginObj  = {
         loginDialog:null,
         getLoginPopup:function (callback){
+            var area = [];
             if(sessionStorage.is_login=="true"){
                 return;
+            }
+            if(isOpenCaptcha){
+                area = ["400px","540px"]
+            }else{
+                area = ["400px","460px"]
             }
             loginObj.loginDialog = layer.open({
                 content:$("#login-dialog").html(),
                 title:"メンバーログイン",
                 btn:"ログイン",
-                area:["400px","540px"],
+                area: area,
                 success: function(layer){
                     // 重写关闭按钮
                     $(layer).find('.layui-layer-setwin').html('<a class="layui-layer-close" href="javascript:;">	&times;</a>');
@@ -2283,10 +2266,10 @@
             area: ['640px','380px'],
             move:".layui-layer-title",
             tab: [{
-                title: '<div class="tit-wrap"><div class="tit">手机APP下载</div><div class="sub-tit">安卓苹果通用</div></div>',
+                title: '<div class="tit-wrap"><div class="tit">モバイルアプリのダウンロード</div><div class="sub-tit">Android iOSデュアルネイティブAPP</div></div>',
                 content: $("#download-mobile").html()
             }, {
-                title: '<div class="tit-wrap"><div class="tit">API客户端下载</div><div class="sub-tit">桌面安装版，APP版齐全</div></div>',
+                title: '<div class="tit-wrap"><div class="tit">APIクライアントのダウンロード</div><div class="sub-tit">デスクトップインストールバージョン、APPバージョンが完成しました</div></div>',
                 content: $("#download-pc").html()
             }],
             success:function(layer){
@@ -2424,7 +2407,8 @@
     // layer弹窗函数结束
 
     function qrcode(){
-        //手机下载二维码
+        //android二维码
+        var android_download = "";
         var android_url = "";
         $.ajax({
             url:"/index/getAppsUrl.html",
@@ -2433,13 +2417,33 @@
             async:false,
             success:function (data) {
                 var data = eval('('+data+')');
-                var android_download=data.app;
+                android_download=data.app;
                 android_url = "data:image/png;base64,"+android_download;
-                $("#download-mobile-qrcode").append("<img src="+android_url+">");
             }
         })
+        $("#code_ios").html("<img src="+android_url+">");
 
+        //ios二维码
+        var ios_download = "";
+        var ios_url = "";
+        $.ajax({
+            url:"/index/getAppsUrl.html",
+            type:"get",
+            data:{"device":"ios"},
+            async:false,
+            success:function (data) {
+                var data = eval('('+data+')');
+                ios_download=data.app;
+                ios_url = "data:image/png;base64,"+ios_download;
+            }
+        })
+        $("#code_android").html("<img src="+ios_url+">");
     }
+
+    // 解决二级导航轮播点击会收回的问题
+    $('.navbar-sub .sub-content .api-btn-prev,.navbar-sub .sub-content .api-btn-next').on('mouseleave',function (e) {
+        e.stopPropagation();
+    })
 </script>
 
 <#--流量统计代码-->
@@ -2471,11 +2475,18 @@
 
 <!--下载弹窗内容-->
 <div id="download-mobile" style="display:none;">
-    <div class="qrcode" id="download-mobile-qrcode">
+    <div class="code_item ios">
+        <div class="qrcode" id="code_ios">
+        </div>
+        <div class="tit_d">iOS APP Download</div>
+        <p>iPhoneブラウザを使用してQRコードをスキャンし、 <br />APPをダウンロードできます</p>
     </div>
-    <p>Androidを使用すると、Apple Mobile BrowserはQRコードをスキャンします，<br />
-        APPをダウンロードできます（WeChatスキャンでは使用できません）
-    </p>
+    <div class="code_item android">
+        <div class="qrcode qr2" id="code_android">
+        </div>
+        <div class="tit_d">安卓APP下载</div>
+        <p>Androidの電話ブラウザを使用してQRコードをスキャンし、 <br />APPをダウンロードできます</p>
+    </div>
 </div>
 <div id="download-pc" style="display: none;">
     <div style="padding: 60px;font-size: 24px;">お待ちください！</div>
