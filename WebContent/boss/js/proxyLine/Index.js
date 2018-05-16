@@ -47,11 +47,8 @@ define(['common/BaseListPage', 'bootstrapswitch'], function (BaseListPage) {
                                             $("#status").removeClass("label-success");
                                             $("#status").addClass("label-danger");
                                         } else {
-                                            page.showPopover(e, {
-                                                "callback": function () {
-                                                    _this.query(e);
-                                                }
-                                            }, "danger", "操作失败", true);
+                                            _this.query(e);
+                                            window.top.topPage.showErrorMessage(data.msg);
                                         }
                                     }
                                 });
