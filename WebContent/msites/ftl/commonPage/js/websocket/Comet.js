@@ -1,10 +1,7 @@
 /**
  *
  */
-
-function MSiteComet() {
-
-}
+function MSiteComet() {}
 
 MSiteComet.prototype = {
 
@@ -76,22 +73,23 @@ MSiteComet.prototype = {
      */
     initParameter: function () {
         var param = {
-            url: null,
-            localeType: language.replace("-", "_"), isImmediatelyConnect: true
+            url: mdRoot,
+            localeType: language.replace("-", "_"),
+            isImmediatelyConnect: true
         };
         var _this = this;
         var popUp = new MSitePopUp();
         param.success = function () {
             console.info("connect success..");
             subscribes = [
-                {subscribeType: "PCENTER-popUp-Notice", callBack: popUp.callBack},
-                {subscribeType: "SYS_ANN", callBack: popUp.callBack},
-                {subscribeType: "SITE_ANN", callBack: popUp.callBack},
-                {subscribeType: "PCENTER-dialog-Notice", callBack: popUp.callBack},
-                {subscribeType: "MSITE-Player-Announcement-Notice", callBack: popUp.callBack},
-                {subscribeType: "MCENTER_READ_COUNT", callBack: popUp.callBack},
-                {subscribeType: "MSITE-ONLINERECHARGE", callBack: popUp.callBack},
-                {subscribeType: "MSITE_DIGICCY_REFRESH_BALANCE", callBack: popUp.callBack}
+                {subscribeType: "PCENTER-popUp-Notice", callBack: popUp.dialogCallBack},
+                {subscribeType: "SYS_ANN", callBack: popUp.dialogCallBack},
+                {subscribeType: "SITE_ANN", callBack: popUp.dialogCallBack},
+                {subscribeType: "PCENTER-dialog-Notice", callBack: popUp.dialogCallBack},
+                {subscribeType: "MSITE-Player-Announcement-Notice", callBack: popUp.dialogCallBack},
+                {subscribeType: "MCENTER_READ_COUNT", callBack: popUp.dialogCallBack},
+                {subscribeType: "MSITE-ONLINERECHARGE", callBack: popUp.dialogCallBack},
+                {subscribeType: "MSITE_DIGICCY_REFRESH_BALANCE", callBack: popUp.dialogCallBack}
             ];
             _this.subscribeMsgs(subscribes);
         };
@@ -144,6 +142,7 @@ MSiteComet.prototype = {
         }
         _this.userParam[_this.SYNCHRONIZE_KEY] = _this.CONNECTION_VALUE;
         if (_this.isImmediatelyConnect) {
+            console.info("begin connect..");
             _this.connection();
         }
 
