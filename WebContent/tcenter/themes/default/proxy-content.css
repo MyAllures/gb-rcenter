@@ -310,3 +310,13 @@ tr.tab-title th{background-color:#f3f3f3;}
 
 td > .input-group.date.content-width-limit-200 input{min-width:120px;}
 .content-width-limit-8{width:120px;}
+/*多行表头标题*/
+.table-multiple-header-row th,.table-multiple-header-row td{text-align: center;}
+.table-multiple-header-row .two-col{width: 50%;float: left;margin-bottom: 5px;}
+.table-multiple-header-row .two-col+.two-col{border-left: 1px solid #e7e7e7;}
+.table-multiple-header-row th.multiple-row{padding:0 !important;min-width: 180px;}
+.table-multiple-header-row th.multiple-row .title{border-bottom:1px solid #e7e7e7 ;}
+.table-multiple-header-row td.multiple-row-td{padding: 0 !important;}
+.table-multiple-header-row td.multiple-row-td div{float: left;width: 50%;    height: 29px; line-height: 29px;}
+.table-multiple-header-row td.multiple-row-td div+div{border-left: 1px solid #e7e7e7;}
+.table tr.tab-detail td{max-width: 260px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}

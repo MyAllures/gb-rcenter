@@ -126,7 +126,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 },
                 success: function (data) {
                     if (data.state) {
-                        window.top.topPage.showSuccessMessage(data.msg);
+                        window.top.topPage.showSuccessMessage("重发完成，结果：" + data.msg);
                         _this.query(e);
                     } else {
                         window.top.topPage.showErrorMessage(data.msg);
