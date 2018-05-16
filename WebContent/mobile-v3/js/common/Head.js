@@ -1,6 +1,7 @@
 /**是否登录标识*/
 var isLogin = false;
-
+/*一键回收时间间隔*/
+var RECOVER_TIME_INTERVAL = 10;
 $(function () {
     headInfo();
     //左侧菜单滚动
@@ -162,7 +163,8 @@ function recovery(obj) {
                 if (data.msg) {
                     toast(data.msg);
                 } else {
-                    toast(window.top.message.transfer_auto["没有可回收"]);
+                    toast(window.top.message.transfer_auto["正在回收"]);
+                    reload()
                 }
             } else {
                 toast(window.top.message.transfer_auto["系统繁忙"]);
@@ -190,4 +192,15 @@ function isAllowRecovery(obj) {
         return true;
     }
     return false;
+}
+
+/**
+ * 一键刷新
+ */
+function reload() {
+    if (isNative) {
+        nativeRefreshPage();
+    } else {
+        window.location.reload();
+    }
 }
