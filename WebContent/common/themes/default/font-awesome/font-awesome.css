@@ -921,6 +921,18 @@
 .fa-mobile:before {
   content: "\f10b";
 }
+.fa-mobile:before {
+  content: "\f10b";
+}
+.gui-html5:before{
+  content:"\f13b";
+}
+.gui-android:before {
+  content: "\f17b";
+}
+.gui-apple:before {
+  content: "\f179";
+}
 .fa-circle-o:before {
   content: "\f10c";
 }

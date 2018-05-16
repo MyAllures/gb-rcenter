@@ -245,9 +245,9 @@
                         <div style="text-indent: 30px;">
                         <#if data.registerAnnouncement?has_content>
                                 <#list data.registerAnnouncement as msg >
-                                    ${msg.content}
-                                </#list>
-                        </#if>
+                        ${msg.content}
+                        </#list>
+                            </#if>
                         </div>
                     </div>
                 </div>
@@ -276,9 +276,9 @@
                         <div style="text-indent: 30px;">
                         <#if data.loginAnnouncement?has_content>
                                 <#list data.loginAnnouncement as msg >
-                                    ${msg.content}
-                                </#list>
-                        </#if>
+                        ${msg.content}
+                        </#list>
+                            </#if>
                         </div>
                     </div>
                 </div>

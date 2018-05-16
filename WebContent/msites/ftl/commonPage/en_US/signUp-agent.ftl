@@ -532,7 +532,7 @@
                    }
                });*/
         var loAgree = layer.open({
-            content:<#if data.agentValidateRegisterMap.regProtocol??> ${data.agentValidateRegisterMap.regProtocol.value} </#if>,
+            content:<#if data.agentValidateRegisterMap.regProtocol??> ${data.agentValidateRegisterMap.regProtocol.value?replace('\n','')?replace('\r','')} </#if>,
             title:'Proxy registration agreement',
             area: ['640px','500px'],
             skin:'layui-layer-brand',

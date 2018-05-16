@@ -164,7 +164,8 @@
                     $("._vr_itemCasino").html(data);
                     maintainCheck();
                     gameJackPot();
-                    apiJackpot(apiId)
+                    apiJackpot(apiId);
+                    game_demo();//试玩按钮是否显示
                 }
             });
         }
@@ -199,6 +200,7 @@
                 if(noData > 0){
                     $('.g_all_game_loaded').attr('style','none');
                 }
+                game_demo();//试玩按钮是否显示
             }
         });
     });
@@ -231,6 +233,7 @@
                         maintainCheck();//添加onclick事件
                         // 单个游戏的彩池
                         gameJackPot();
+                        game_demo();//试玩按钮是否显示
                     }
                 })
                 isLoading = 1; // 发起一次请求后把变量设为请求状态，禁止多次请求。
