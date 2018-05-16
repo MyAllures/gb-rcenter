@@ -166,6 +166,34 @@ height: 44px;
         }
         
     }
+
+    //新版电子顶部api切换：
+    .api-scroll{height:105px;background:#000;
+        &:before{position:absolute;top:0;width:170px;content:'';background:radial-gradient(#460119,#000);height:80px;left:0;right:0;margin:-20px auto;}
+        .swiper-slide{text-align:center;opacity: 0.5;
+            .img-wrap{width:55px;height:55px;background:url(images/api-index-bg.png) center bottom no-repeat/90%;margin:15px auto 0;}
+            .title{color:#fff;font-size:10px;}
+            &.api-index{opacity: 1;position:relative;
+                .img-wrap{width:55px;height:55px;background:url(images/api-index-bg.png) center no-repeat/100%;margin:15px auto 0;}
+                .title{font-size:14px;}
+                &:after{position:absolute;bottom:0;left:0;right:0;margin:auto ;content:'';border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:8px solid #fff;width:0;height:0;}
+            }
+        } 
+    }
+    #apiScroll-wrap{position: absolute; z-index: 8;top: 0; bottom: 0; left: 0; width: 100%;}
+    #apiScroll-wrap.active{ top: 70px; }
+            .pull_apiScroll {
+            text-align: center;
+            color: #00a9f2;
+            position: absolute;
+            z-index: 10;
+            top: -70px;
+            background: #f2f2f2;
+            height: 70px;
+            width: 100%;
+        }
+        .pull_apiScroll.active{top: 0;}
+
 }
 .casino-game-type{
     .g-t-slide-indicators{

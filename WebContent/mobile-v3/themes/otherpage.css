@@ -97,6 +97,19 @@
 .mui-content-casino-list .casino-list a p { height: 24px; line-height: 24px; margin-bottom: 5px; color: #333; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mui-content-casino-list .casino-list .img-wrap { background: #fff; padding: 8px 0; }
 .mui-content-casino-list .casino-list .img-wrap img { width: 70px; height: 70px; vertical-align: middle; }
+.mui-content-casino-list .api-scroll { height: 105px; background: #000; }
+.mui-content-casino-list .api-scroll:before { position: absolute; top: 0; width: 170px; content: ''; background: radial-gradient(#460119, #000); height: 80px; left: 0; right: 0; margin: -20px auto; }
+.mui-content-casino-list .api-scroll .swiper-slide { text-align: center; opacity: 0.5; }
+.mui-content-casino-list .api-scroll .swiper-slide .img-wrap { width: 55px; height: 55px; background: url(images/api-index-bg.png) center bottom no-repeat/90%; margin: 15px auto 0; }
+.mui-content-casino-list .api-scroll .swiper-slide .title { color: #fff; font-size: 10px; }
+.mui-content-casino-list .api-scroll .swiper-slide.api-index { opacity: 1; position: relative; }
+.mui-content-casino-list .api-scroll .swiper-slide.api-index .img-wrap { width: 55px; height: 55px; background: url(images/api-index-bg.png) center no-repeat/100%; margin: 15px auto 0; }
+.mui-content-casino-list .api-scroll .swiper-slide.api-index .title { font-size: 14px; }
+.mui-content-casino-list .api-scroll .swiper-slide.api-index:after { position: absolute; bottom: 0; left: 0; right: 0; margin: auto; content: ''; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 8px solid #fff; width: 0; height: 0; }
+.mui-content-casino-list #apiScroll-wrap { position: absolute; z-index: 8; top: 0; bottom: 0; left: 0; width: 100%; }
+.mui-content-casino-list #apiScroll-wrap.active { top: 70px; }
+.mui-content-casino-list .pull_apiScroll { text-align: center; color: #00a9f2; position: absolute; z-index: 10; top: -70px; background: #f2f2f2; height: 70px; width: 100%; }
+.mui-content-casino-list .pull_apiScroll.active { top: 0; }
 
 .casino-game-type .g-t-slide-indicators .swiper-slide { width: 80px; height: 34px; line-height: 34px; text-align: center; }
 
