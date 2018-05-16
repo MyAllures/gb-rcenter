@@ -146,7 +146,7 @@ li{
         }
     }
 }
-.notice-slider{padding-bottom: 21px;height: 320px;
+.notice-slider{padding-bottom: 21px;height: 375px !important;
     .mui-slider-group{height: 100%;}
     .mui-slider-item{
         a{    line-height: 18px !important;
@@ -160,7 +160,7 @@ li{
 }
 .notice-alert{      
      border-radius: 8px; 
-     &.mui-popup-in{    transform: translate3d(-50%,0,0) scale(1);top: 10px;}
+     &.mui-popup-in{    transform: translate3d(-50%,0,0) scale(1);top: 30px;}
     .mui-popup-inner{border-radius: 0;    padding: 15px 5px 15px 15px;
         .mui-popup-text{    margin: 12px 0 0;}
     }
@@ -504,7 +504,7 @@ li{
 }
 /* 资金记录样式  */
 .mine-cash-record-body{
-    background: #f2f2f2;font-size: 12px;color: #333;
+    background: #fff;font-size: 12px;color: #333;
     header.mui-bar{background-color: #1b75d9;}
     footer{padding:13px 10px;background: #e3ecf7;height: 64px;border-top: 1px solid #e1e1e1;position: fixed;left: 0;bottom: 0;right: 0;z-index: 10;
         .flex{display: flex;
@@ -528,7 +528,7 @@ li{
         &:after{content: '';height: 1px;background: #f2f2f2;left: 10px;right: 10px;bottom: 0;}
     }
     .mine-cash-record-content{
-        padding-bottom: 64 !important;background: #f2f2f2;
+        padding-bottom: 64px !important;background: #fff;
     }  
     p.qkclz{padding: 8px 10px;margin-bottom: 11px !important;}
     .cash-type-row{border-bottom: 1px solid #e2e2e2;}
@@ -605,6 +605,7 @@ li{
     .mine-table table{
         background-color: #fff;
         width: 100%;
+        th{text-align: center;font-weight:normal;background: #eee;border: 1px solid #fff;}
     }
     .mine-table table tr{
         border-bottom: 0;

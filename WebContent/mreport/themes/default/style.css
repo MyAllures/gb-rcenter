@@ -13,16 +13,16 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 
 .hide-y { overflow-y: hidden; }
 
-.row { margin: 0; }
+.row { margin: 0;}
 
 .swp .info-1, .swp .info-3 { color: #000000; }
 
 .swp .info-2, .swp .info-4 { color: #007bff; }
 
-.container { max-width: 1355px; display: flex; padding: 0; }
+.container { max-width: 100%; display: flex; padding: 0; }
 .container .content { padding: 0 20px; box-shadow: inset 0 4px 10px #dae3ec; }
 
-.menu { width: 230px; padding: 0 10px; background: url("../images/nav-bg.png") top no-repeat; min-height: 800px; float: left; }
+.menu { min-width: 230px; padding: 0 10px; background: url("../images/nav-bg.png") top no-repeat; min-height: 800px; float: left; }
 .menu .name { font-size: 1.5rem; color: #dbf8fd; text-align: center; padding: 70px 0 25px 0; }
 .menu .name font { font-size: 11px; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
 .menu .list-group .list-group-item { background: none; border: none; text-align: center; padding: 0; margin: 0 0 5px; position: relative; }
@@ -30,10 +30,10 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .menu .list-group .list-group-item .tit:hover { background: #1c89f3; }
 .menu .list-group .list-group-item a { font-size: 1.1rem; color: #b5d9fe; }
 .menu .list-group .list-group-item i { width: 24px; height: 22px; float: left; margin-top: 7px; }
-.menu .list-group .list-group-item i.gaikuang { background: url(../images/menu-left-1.png) center no-repeat; }
-.menu .list-group .list-group-item i.player { background: url(../images/menu-left-2.png) center no-repeat; }
-.menu .list-group .list-group-item i.deposit { background: url(../images/menu-left-3.png) center no-repeat; }
-.menu .list-group .list-group-item i.game { background: url(../images/menu-left-4.png) center no-repeat; }
+.menu .list-group .list-group-item i.icon_gaikuang { background: url(../images/menu-left-1.png) center no-repeat; }
+.menu .list-group .list-group-item i.icon_player { background: url(../images/menu-left-2.png) center no-repeat; }
+.menu .list-group .list-group-item i.icon_deposit { background: url(../images/menu-left-3.png) center no-repeat; }
+.menu .list-group .list-group-item i.icon_game { background: url(../images/menu-left-4.png) center no-repeat; }
 .menu .list-group .list-group-item:after { content: ""; display: block; width: 17px; height: 17px; background: url(../images/menu-right-2.png) center no-repeat; position: absolute; right: 10px; top: 8px; }
 .menu .list-group .active:after { background: url(../images/menu-right-1.png); }
 .menu .list-group .active .tit { background: rgba(255, 255, 255, 0.3); }
@@ -65,16 +65,18 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .top-info .chooseSite .dropdown-toggle, .top-info .chooseAdmin .dropdown-toggle { cursor: pointer; position: relative; padding: 0; }
 .top-info .chooseSite .dropdown-toggle:after, .top-info .chooseAdmin .dropdown-toggle:after { display: none; }
 .top-info .chooseSite .dropdown-toggle:before, .top-info .chooseAdmin .dropdown-toggle:before { display: inline-block; content: ""; width: 7px; height: 7px; border-left: 1px solid #666; border-bottom: 1px solid #666; transform: rotate(-45deg); position: absolute; right: -15px; top: 5px; }
-.top-info .chooseSite .dropdown-menu, .top-info .chooseAdmin .dropdown-menu { min-width: 8rem; }
-.top-info .chooseSite .dropdown-menu.show, .top-info .chooseAdmin .dropdown-menu.show { margin: 10px 0 0 -40px; }
+
+.dropdown-menu { min-width: 8rem; position:absolute;}
+.top-info .chooseSite .dropdown-menu {top: 48px; left: 865px;}
+.top-info .chooseAdmin .dropdown-menu {top: 48px; right: 0;}
 .top-info .chooseSite .dropdown-menu .dropdown-item, .top-info .chooseAdmin .dropdown-menu .dropdown-item { text-align: center; padding: 0; width: 85%; margin: 0 auto; border-radius: 1.5rem; color: #999; }
 .top-info .chooseSite .dropdown-menu .dropdown-item:hover, .top-info .chooseAdmin .dropdown-menu .dropdown-item:hover { background: #e4edf7; color: #666; }
-.top-info .chooseAdmin .dropdown-menu.show { margin-left: -35px; }
+#playerPagination .dropdown-menu, #depositPagination .dropdown-menu{left: 75px; margin-top: -140px;}
 
 ._drawer-mask { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transition: opacity .38s ease-in-out,visibility .38s ease-in-out; background: rgba(0, 0, 0, 0.4); visibility: hidden; z-index: 999; opacity: 0; }
 ._drawer-mask.active { visibility: visible; opacity: 1; }
 
-.main-content { background: #e4edf7; padding: 0; flex: 1; max-width: 1125px; transition: transform .38s ease-in-out,visibility .38s; transform: translateX(0px); }
+.main-content {background: #e4edf7; padding: 0; flex: 1; transition: transform .38s ease-in-out,visibility .38s; transform: translateX(0px); position:relative; }
 .main-content.drawer-body { transform: translateX(230px); visibility: visible; }
 
 .run-title { height: 55px; line-height: 55px; overflow: hidden; }
@@ -88,9 +90,18 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .public-btn-group .btn { height: 30px; border-radius: 15px; flex: 1; background: transparent; color: #999999; }
 .public-btn-group .btn-primary { background: linear-gradient(to right, #00c6ff, #0072ff); color: #fff; }
 
-.terminal-btn-group { margin-top: 5px !important; position: fixed; z-index: 5;}
+.terminal-btn-group {margin-top: 5px !important; position: fixed; z-index: 5;}
 .terminal-btn-group .btn { height: 22px; margin-right: 15px; font-size:12px; border-radius: 15px; background-color: #989898 !important; color:#fff; line-height:10px;}
 .terminal-btn-group .btn-primary { background: linear-gradient(to right, #FF9900, #FF9900); }
+
+.range-box { margin: 12px 0 0 145px !important; position: fixed;}
+.range-box .public-range-group { display: inline !important; }
+.range-box .public-range-group .btn { width: 28px; height: 28px; border-radius: 100%; text-align: center; padding: 0; }
+.range-box .date { height: 30px; border: 1px solid #e2e2e2; border-radius: 15px; display: inline-block; vertical-align: middle; overflow: hidden; padding: 0 10px 0 28px; background: url(../images/date.png) 10px center no-repeat; line-height: 30px; color: #999; }
+.range-box .date input { height: 31px; vertical-align: top; border: none; width: 80px; text-align: center; color: #999; cursor: pointer; }
+.range-box .date .btn-group .input-group-addon.glyphicon {display: none;}
+.range-box .date .btn-group .form-control {padding-left: 2px !important;padding-right: 2px !important;}
+.top .date input {padding-left:30px !important;}
 
 .page { text-align: center; height: 55px; }
 .page .pageNum { display: inline-block; margin: 20px 50px 0 15px; color: #666; float: left; }
@@ -113,7 +124,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .page .jump:before { display: inline-block; content: ''; width: 8px; height: 5px; border-left: 2px solid #727c87; border-bottom: 2px solid #727c87; position: absolute; top: 50%; margin-top: -4px; }
 .page .jump:after { display: inline-block; content: ''; width: 0; height: 0; border-top: 5px solid transparent; border-left: 8px solid #727c87; border-bottom: 5px solid transparent; margin: 1px 0 0 7px; }
 
-.tableBox { background: #fff; border-radius: 8px; margin-bottom: 15px; }
+.tableBox { background: #fff; border-radius: 8px; margin-bottom: 15px;}
 .tableBox .top { border-bottom: 1px solid #eee; padding: 0 15px; display: flex; align-items: center; height: 50px; line-height: 50px; }
 .tableBox .top h3 { font-size: 1.15rem; color: #4c789f; font-weight: bold; }
 .tableBox table { table-layout: fixed; width: 100%; text-align: center; color: #666666; }
@@ -143,7 +154,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
   .menu { width: 180px; }
   .main-content.drawer-body { transform: translateX(180px); }
   .container .content { margin: 0 10px; }
-  .run-title { height: 50px; line-height: 50px; border:1px solid red !important; border: 1px solid red;}
+  .run-title { height: 50px; line-height: 50px;}
   .gaikuang-page .dataBox1, .gaikuang-page .dataBox2 { margin: 0; }
   .gaikuang-page .dataBox1 .list, .gaikuang-page .dataBox2 .list { margin-bottom: 10px; }
   .gaikuang-page .dataBox1 .list h2, .gaikuang-page .dataBox2 .list h2 { line-height: 45px; }
@@ -205,6 +216,125 @@ h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
 .xinzengwanjia-page .tableBox .top h3, .activePlayer-page .tableBox .top h3, .effectPlayer-page .tableBox .top h3, .remain-page .tableBox .top h3 { flex: 1; }
 .xinzengwanjia-page .tableBox table tr th:first-child, .activePlayer-page .tableBox table tr th:first-child, .effectPlayer-page .tableBox table tr th:first-child, .remain-page .tableBox table tr th:first-child { width: auto; }
 
-.remain-page .tableBox .time-tr { background: #dbe2e9; color: #4c789f; font-weight: bold; }
+.remain-page .tableBox .time-tr { background: #dbe2e9; color: #4c789f; font-weight: bold;}
 
+.btn-filter {
+    background-color: #2095f2;
+    color: #FFFFFF;
+}
+.btn-filter {
+    font-family: 'Microsoft YaHei';
+}
+em {
+    font-size: 14px;
+    width: 30px;
+    margin: 0;
+    display: inline-block;
+    text-align: center;
+    color: #515d6e;
+    /* line-height: 30px; */
+}
+.top .form-group {
+    margin-bottom: 1rem;
+    margin-left: 32%;
+}
+.top .input-group {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
 /*# sourceMappingURL=style.css.map */
+
+
+
+
+/*新添加*/
+.apiBut{margin: 10px 0;}
+.termina{
+  margin: 10px 0 0 10px ;
+  display: inline-block;
+  height: 30px;
+  width: 80px;
+  border-radius: 15px;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 0.3s ease-in-out;
+  border:solid 1px #e2e2e2;
+}
+.termina .dropdown-toggle{line-height: 18px;}
+input:checked{background-color: #FFFFFF;}
+@media (max-width: 767px) {
+  /*在小于768像素的屏幕里,这里的样式才生效*/
+  .api_chose{width: 300px;}
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  /*在768和991像素之间的屏幕里,这里的样式才生效*/
+  .api_chose{width: 500px;}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .api_chose{width: 650px;}
+  /*在992和1199像素之间的屏幕里,这里的样式才生效*/
+}
+@media (min-width: 1200px) {
+  .api_chose{width: 800px;}
+  /*在大于1200像素的屏幕里,这里的样式才生效*/
+}
+.api_chose{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  min-height: 400px;
+  margin-top: -200px;
+  background: #FFFFFF;
+  display: block;
+  box-shadow: 0px 0px 12px rgba(0,0,0,0.5);
+}
+.api_chose .close{
+  width: 32px;
+  height: 32px;
+  border: solid 2px #0078ff;
+  border-radius: 50%;
+  position: absolute;
+  right: -16px;top: -16px;
+  outline: none;
+}
+.api_chose .close span{font-size: 32px;line-height: 20px;color:#0078ff ;}
+.api_chose h5{background: #1291fa; color:#fff; height: 42px;line-height: 42px;border-bottom: solid 1px #c8d9ec;}
+.api_chose .check_api{
+  height: 303px;
+  padding: 20px 0 20px 15px;
+}
+
+.check_api{overflow-y: scroll;}
+.check_api .allCheck{padding-left: 10px;}
+.check_api .api_box>div{padding-left: 10px;margin-right: 10px;}
+.check_api input{
+  position: relative;
+  top: 2px;left: -2px;
+  background-color: #ffffff;
+  width: 16px;height: 16px;
+  border-radius: 5px;
+  display: inline-block;
+}
+.check_api .api_box span{vertical-align: baseline;display: inline-block;}
+.check_api .api_tlt{height: 32px;line-height: 32px;background: #f2f2f2;}
+.check_api .classification div{min-width: 145px;float: left;}
+
+.sub{height: 50px;border-top: solid 1px #c8d9ec;position: relative;background: #FFFFFF;}
+.sub button{
+  float: right;
+  width: 90px;
+  height: 30px;
+  line-height: 15px;
+  text-align: center;
+  margin: 10px 20px 0 0;
+  outline: none;
+  border-radius: 8px;
+}

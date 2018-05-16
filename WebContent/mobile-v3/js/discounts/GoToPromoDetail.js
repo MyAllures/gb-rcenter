@@ -20,7 +20,7 @@ function onPageLoad() {
     tableScroll(this);
     var isLogin = sessionStorage.getItem("isLogin");
     if (isLogin && isLogin == "true") {
-        var $submit = $(".submit");
+        var $submit = $("#submit");
         var options = eval("(" + $submit.attr("data-rel") + ")");
         changeApplyStatus();
         promoCheck($submit, options);
@@ -53,7 +53,7 @@ function tableScroll(value) {
  */
 function promoCheck(obj, options) {
     var nowTime = new Date($("._now_time").attr("value")).getTime();
-    var $obj = $(".submit");
+    var $obj = $("#submit");
     var st = $("._vr_promo_ostart").attr("value");
     var et = $("._vr_promo_oend").attr("value");
     var sTime = new Date(st).getTime();
@@ -61,12 +61,12 @@ function promoCheck(obj, options) {
 
     if (nowTime < sTime) {
         //未开始
-        $obj.text(window.top.message.promo_auto['未开始']);
+        $obj.html(window.top.message.promo_auto['未开始']);
     } else if (nowTime > eTime) {
         //已结束
         var oldClass = $obj.data("oldClass");
         var newClass = $obj.data("newClass");
-        $obj.removeClass(typeof oldClass == "undefined" ? "" : oldClass).addClass(typeof newClass == "undefined" ? "" : newClass).attr("onclick", "").text(window.top.message.promo_auto['已结束']);
+        $obj.removeClass(typeof oldClass == "undefined" ? "" : oldClass).addClass(typeof newClass == "undefined" ? "" : newClass).attr("data-rel", "").html(window.top.message.promo_auto['已结束']);
     }
 }
 
@@ -89,7 +89,7 @@ function changeApplyStatus() {
  * @param data
  */
 function filterActyByPlayer(data) {
-    var $obj = $(".submit");
+    var $obj = $("#submit");
     var startTimeObj = $('._vr_promo_ostart');
     var flag = new Date(startTimeObj.attr("value")) < new Date();
     var oldClass = $obj.data("oldClass");
@@ -112,7 +112,9 @@ function filterActyByPlayer(data) {
         }
     }
     if (isContain == false) {
-        $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").text(window.top.message.promo_auto['未满足条件']);
+        //$obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").html(window.top.message.promo_auto['未满足条件']);
+        $('#submit').addClass("mui-hidden");
+        $('#notFit').removeClass("mui-hidden");
     } else if (code == "content") {
         $obj.addClass("mui-hidden");
     }
@@ -149,7 +151,7 @@ function submitPromo(obj, options) {
  * @param aplyObj
  * @param isRefresh
  */
-function joinPromo(aplyObj, isRefresh) {
+function joinPromo(aplyObj) {
     $(aplyObj).attr("disabled", "disabled");
     var nowTime = new Date($("._now_time").attr("value")).getTime();
     var st = new Date($('._vr_promo_ostart').attr('value')).getTime();
@@ -163,111 +165,24 @@ function joinPromo(aplyObj, isRefresh) {
     var code = options.dataCode;
     if (code == "back_water") {
         showWarningMsg(window.top.message.promo_auto['提示'], window.top.message.promo_auto['参与中']);
-    } else if (isRefresh) {
-        applyActivities(aplyObj, true);
     } else if (code == 'money') {
         var searchId = options.dataSearchId;
         canShowLottery(searchId);
         $(aplyObj).removeAttr("disabled");
-    } else if(code == 'deposit_send' || code == 'effective_transaction' || code == 'profit_loss'){
-        fetchActivityProcess(aplyObj);
+    } else if (code == 'deposit_send' || code == 'effective_transaction' || code == 'profit_loss') {//存就送,有效投注额,盈亏送fetchActivityProcess
+        applyActivities(aplyObj, 'fetch');
     } else {// applyActivities
-        applyActivities(aplyObj);
+        applyActivities(aplyObj, 'apply');
     }
 }
 
-//存就送,有效投注额,盈亏送fetchActivityProcess
-function fetchActivityProcess(aplyObj){
+function applyActivities(aplyObj, type) {
     var options = eval("(" + $(aplyObj).attr("data-rel") + ")");
-    var ajaxOption = {
-        url: root + "/ntl/activityHall/fetchActivityProcess.html",
-        type: "POST",
-        dataType: "json",
-        data: {
-            code: options.dataCode,
-            resultId: options.dataSearchId
-        },
-        success: function (data) {
-            if (data == null) {
-                toast(window.top.message.promo_auto['用户活动申请还在处理中']);
-                return;
-            }
-            var url = root + '/promo/applyPromoDetail.html?msg=' + encodeURI(encodeURI(data.msg))
-                + '&state=' + data.state
-                + '&error=' + data.error
-                + '&activityName=' + encodeURI(encodeURI(options.activityName));
-            goToUrl(url);
-        },
-        complete: function () {
-            $(aplyObj).removeAttr("disabled");
-        }
-    };
-    muiAjax(ajaxOption);
-}
-
-function applyActivities(aplyObj, isRefresh) {
-    var options = eval("(" + $(aplyObj).attr("data-rel") + ")");
-    var dataParam = {};
-    dataParam.code = options.dataCode;
-    dataParam.resultId = options.dataSearchId;
-    //dataParam.transactionNos = tansactionObj;
-    var ajaxOption = {
-        url: root + "/ntl/activityHall/applyActivities.html",
-        data: JSON.stringify(dataParam),
-        dataType: 'json',
-        type: 'POST',
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-            if (data == null) {
-                toast(window.top.message.promo_auto['用户活动申请还在处理中']);
-                return;
-            }
-            /*showWin(data, isRefresh);
-             $(aplyObj).removeAttr("disabled");*/
-            var url = root + '/promo/applyPromoDetail.html?msg=' + encodeURI(encodeURI(data.msg))
-                    + '&state=' + data.state
-                    + '&error=' + data.error
-                    + '&activityName=' + encodeURI(encodeURI(options.activityName));
-            goToUrl(url);
-        },
-        complete: function () {
-            $(aplyObj).removeAttr("disabled");
-        }
-    };
-    muiAjax(ajaxOption);
-}
-
-function showWin(data, isRefresh) {
-    if (typeof data.state == "undefined") {
-        return false;
-    }
-    var title;
-    if (!data.msg) {
-        data.msg = '';
-    }
-    if (data.state) {
-        title = window.top.message.promo_auto['申请成功'];
-    } else {
-        title = window.top.message.promo_auto['申请失败'];
-    }
-    if (data.title) {
-        title = data.title;
-    }
-    var options = {
-        btnArray: [window.top.message.promo_auto['查看优惠记录'], window.top.message.promo_auto['好的']],
-        title: title,
-        confirm: data.msg,
-        func: doWin
-    };
-    showConfirmMsg(options);
-}
-
-function doWin() {
-    if (isNative) {
-        nativeGotoPromoRecordPage();
-    } else {
-        goToUrl(root + "/promo/myPromo.html");
-    }
+    var url = root + '/promo/applyPromoDetail.html?resultId=' + options.dataSearchId
+        + '&activityName=' + encodeURI(encodeURI(options.activityName))
+        + '&code=' + options.dataCode
+        + '&type=' + type;
+    goToUrl(url);
 }
 
 /**
