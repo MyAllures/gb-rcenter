@@ -36,14 +36,19 @@
     border-bottom: 2px solid transparent;
     }
     margin-bottom: 10px;
-    margin-top: 10px;}
+    margin-top: 10px;        
+    }
+    .btn-promo-sort.swiper-slide-active span {
+        color: #327fc3;
+        border-bottom: 2px solid #327fc3;
+    }
 
 .promo{height: 100%;
     .swiper-container{height: 100%;
         .swiper-slide .mui-scroll{padding: 10px;}
     }
 }
-.promo-content{    padding-top: 86px !important;
+.promo-content{    padding-top: 86px !important;background: #fff !important;
     position: absolute;padding-bottom: 53px !important;
     top: 0;width: 100%;
     bottom: 0;}
@@ -67,7 +72,18 @@ height: 44px;
 .icon-gift{   background: url(./images/icon-gift.png) no-repeat center;
 background-size: 20px auto;
 width: 44px;margin-right: -10px !important;margin-left: 0 !important;
-height: 44px;}
+height: 44px;
+    i {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: url(./images/ico-gift.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+}
 .mine-content{padding-bottom: 63px !important;
     .user-info-wrap{height: 60px;position: relative;    margin-bottom: 50px;
         .gb-userinfo{position: absolute;height: 100px;left: 10px;right: 10px;    -webkit-box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);border-radius: 5px;
@@ -116,7 +132,8 @@ height: 44px;}
         }
     }
 }
-.download-content-ios{background: #fff !important;
+.download-content-ios{background: #fff !important;position: relative;
+    margin-top: 44px;
     .h-bg{width: 100%;}
     .app-logo{width: 100px;height: 100px;position: absolute;top: 40px;left: 50%;margin-left: -50px;}
     .btn-install{display:block;margin:20px auto 0;width: 165px;height: 40px;text-align: center;line-height: 40px;color: #eb0002;font-size: 15px;border: 1px solid #eb0002;border-radius: 6px;}
@@ -162,6 +179,7 @@ height: 44px;}
 
 /* promo-detail */
 .promo-detail-content{
+    &.mui-content{padding-bottom: 45px;    background: #f2f2f2;}
     table{    color: #333;
     border: 1px solid #666;
         td{    border: 1px solid #666;}
@@ -189,12 +207,40 @@ height: 44px;}
             }
         }
     }
-    .gb-form-foot {  padding: 10px;
-        .submit {    border: 1px solid #1766bb;    background-color: #1766bb;    width: 100%;    padding: 10px 12px;    font-size: 13px;}
+    .gb-form-foot {    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;padding: 0; z-index: 10;
+         .mui-btn{float: left;width: 50%;
+    border-radius: 0; font-size: 14px;padding: 0; 
+    height: 45px;
+    line-height: 45px;
+            &.btn-deposit{background: #1766bb;border-color: #1766bb;}
+            &.btn-apply{background: #0ec392;border-color: #0ec392;}
+         }
     }
+    
 }
 /* promo-records */
+.mui-bar-nav.promo-record{
+    .top-info{float: right;font-size: 10px;
+    line-height: 15px;color: #fff;
+    padding-top: 10px;text-align: right;
+        .mone{display: inline-block;padding-left: 18px;background: url(images/promo/icon-money.png) no-repeat 0/12px;}
+    }
+}
 .promo-record-content{
+    .promo-nav{
+        height: 42px;background: #fff;padding: 0 10px;line-height: 42px;
+        .mui-segmented-control{border: 0;    border-radius: 0;
+            .mui-control-item{font-size: 14px;color: #333;border: 0;border-bottom: 2px solid transparent;border-radius: 0;
+                &.mui-active{color: #317ec2;border-color: #317ec2;background-color: transparent;}
+            }
+        }
+    }
+    .promo-cont.mui-scroll-wrapper{top: 87px;
+        .mui-control-content{padding-bottom: 10px;}
+    }
     .promo-records-warp {
         padding: 0 10px;
         margin-top: 10px;
@@ -224,33 +270,9 @@ height: 44px;}
         width: 68%;
         float: left;
         position: relative;
-        h5 {
-            font-size: 12px;
-            color: #333;
-            line-height: 15px;
-            text-overflow: -o-ellipsis-lastline;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            margin-top: 0;
-            margin-bottom: 7px;
-            min-height: 45px;
-        }    
-        .text {
-            font-size: 10px!important;
-            color: #999;
-            line-height: 16px;
-            .sum {
-                float: left;
-            }
-            .time {
-                display: inline-block;
-                float: right;
-                margin-right: 20px;
-            }
-        }    
+        font-size: 12px;
+        color: #333;  line-height: 17px;
+        .tit{color: #666;}
     }
     .promo-box-right {
         border-radius: 4px;
@@ -285,7 +307,7 @@ height: 44px;}
         .annotation {
             line-height: 16px;
             margin-top: 10px;
-            font-size: 10px;
+            font-size: 14px;
         }
         .round {
             position: absolute;
@@ -306,6 +328,79 @@ height: 44px;}
     }
     .org {
         color: #f1aa4d;
+    }
+    .no-promo {
+        display: block;
+        text-align: center;
+        padding: 50px 0;
+        border: 1px solid #e2e2e2;
+        background: #fff;
+        border-radius: 3px;
+        font-size: 14px;
+        color: #979797;
+        margin: 10px;
+    }
+}
+// 活动申请页面
+.promo-apply-content{
+    &.mui-content{
+        background: #f2f2f2;font-size: 12px;color: #666;
+    }
+    .top_title{padding: 10px;background: #fff;margin-bottom: 10px;
+        .sub_tit{font-size: 10px;color: #999;}
+        .tit{font-size: 15px;color: #317ec2;}
+    }
+    .promo_con_list{
+        font-size: 14px;
+        color: #666;
+        .mui-table-view:before,.mui-table-view:after{content: none;}
+        .mui-table-view-cell{padding: 15px;
+            .icon-pass,.icon-fail,.icon-pass-disa{    position: absolute;
+    top: 50%;
+    right: 15px;width: (37px/2);height: (37px/2);background-size: 100%;background-repeat: no-repeat;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);}            
+            .icon-pass{background-image: url(images/promo/icon-pass.png);}
+            .icon-fail{background-image: url(images/promo/icon-fail.png);}
+            .icon-pass-disa{background-image: url(images/promo/icon-pass-disa.png);}
+            &:after{left: 0;}
+        }
+    }
+    .promo_status{padding: 45px 10px 10px;text-align: center;
+        .icon-success{display: block;width: (139px/2);height: (139px/2);margin:0 auto 10px;background: url(images/promo/icon-success.png) no-repeat center /100%;}
+        .suc_tip{font-size: 15px;color: #317ec2;margin-bottom: 15px;}
+        p{font-size: 12px;color: #666;margin-bottom: 0;}
+        .btn_cust_serv{margin-top: 50px; margin-bottom: 0;  padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #317ec2;    border-color: #317ec2;}
+        .fai_tip{font-size: 15px;color: #333;line-height: 22px;}
+        .icon-failure{display: block;width: (114px/2);height: (131px/2);margin: 0 auto 10px;background: url(images/promo/icon-failure.png) no-repeat center /100%;}
+    }
+    // 申请活动2的页面样式
+    &.promo-apply2-content{
+        padding-bottom: 40px;
+        .promo_item_list{
+            .promo_item{padding: 10px;position: relative;font-size: 12px;color: #333;background: #fff;margin-bottom: 10px;
+                .ti{color: #666;}
+                .promo_item_sta{width: 100px;position: absolute;right: 0;top: 0;bottom: 0;color: #fff;text-align: center;line-height: 104px;font-size: 14px;
+                    &.suc{background: #1fbd66;}
+                    &.awa{background: #f07e11;}
+                    &.fai{background: #999;    line-height: 24px;padding-top: 25px;}
+                    &.proc{background: #317ec2;}
+                }
+            }
+        }
+        .btn_cust_serv{position: fixed;z-index: 10; bottom: 0;    left: 0;    right: 0;border-radius: 0;    margin: 0;padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #317ec2;    border-color: #317ec2;}
+    }
+    // 申请活动3的页面样式
+    &.promo-apply3-content{
+        .promo_con_list{margin-bottom: 10px;}
+        .pro_mone{padding: 10px;overflow: hidden;background: #fff;font-size: 14px;color: #333;}
+        .btn_apply{margin: 32px 10px 12px;  width: auto;padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #317ec2;    border-color: #317ec2;
+            &.disabled{background: #e2e2e2;color: #999;border-color: #e2e2e2;}
+        }
+        .color-green{color: #1f9316;}
+        .color-gray{color: #666;}
+        .color-blue{color: #317ec2;}
+        .app_num{font-size: 12px;color: #999;text-align: center;}
     }
 }
 /* casino-transfer */
@@ -438,3 +533,132 @@ height: 44px;}
     }
 }
 .allgame-scroll{height: 300px;margin: 0 !important;    background: #fff;}
+
+.mui-popup{
+    &.app_suc{
+        .mui-popup-buttons{display: none;}
+        .mui-popup-inner{width: (434px/2);height: (382px/2);padding: 0;border-radius: 10px;    margin: 0 auto;padding-top: 24px;}
+        .icon-sus{display:block;background: url(images/promo/icon-suc1.png) no-repeat center / 100%;width: (195px/2);height: (195px/2);margin: 0 auto;}
+        .tips{    font-size: 15px;    color: #333;    margin-top: 5px;}
+        .p_tim{    font-size: 15px;    color: #666;    margin-top: 5px;}
+    }
+}
+.mui-toast-container{
+    &.app_fai{top: 50%;    bottom: auto;    transform: translateY(-50%);
+        .mui-toast-message{background: #fff;color: #333;font-size: 13px;padding: 11px 5px;}
+    }
+}
+/* 忘记密码样式  */
+body.forget-password{
+    .mui-content{background: #efefef;}
+    .a-block{display: block;}
+    .diy-list{
+        font-size: 14px;color: #666;display: flex;height: 55px;line-height: 54px;border-top: 1px solid #f2f2f2;background: #fff;
+        .label{width: 46px;text-align: center;
+            &.label_txt{    width: 100px;    text-align: left;    padding-left: 10px;}
+        }
+        .input{flex: 1;
+            .txt{padding: 0 10px;}
+            input[type="text"],input[type="password"]{border: 0;margin: 0;height: 54px;line-height: 54px;padding: 0 10px;font-size: 12px;color: #333;vertical-align: top;
+                &.text-right{text-align: right;}
+            }
+        }
+        .ext{
+            padding-right: 10px;
+            .txt{font-size: 12px;color: #666;}
+        }
+    }
+    .btn-wrap{margin: 40px 10px 10px;
+        .btn-blo{padding: 0;line-height: 40px;height: 40px;background: #1766bb;color: #fff;border-radius: 5px;font-size: 14px;border-color: #1766bb;}
+    }
+    .account_input{
+        background: #fff;padding: 30px 0;
+        input{margin:0 auto;display:block;width: 250px;height: 50px;line-height: 50px;outline: 0;border-radius: 5px;background: #f2f2f2;border: 1px solid #e2e2e2;padding: 0 10px;font-size: 14px;color: #333;}
+    }
+    .code-txt{text-align: center;background: #fff;font-size: 14px;color: #333;padding: 30px 0;
+        span{display: block;color: #1766bb;}
+    }
+}
+.not_bind_phone_dialog{// 未绑定手机弹窗
+    &.mui-popup{
+        .mui-popup-inner{padding: 0;
+            .mui-popup-title{font-size: 14px;color: #333;padding: 15px 0;}
+            .mui-popup-text{margin: 0;
+                .cont{font-size: 12px;color: #333;}
+            }
+            .btn_wra{height: 41px;line-height: 40px;border-top: 1px solid #e2e2e2;margin-top: 15px;
+                a{display: block;font-size: 14px;color: #1766bb;width: 50%;float: left;
+                    &+a{border-left: 1px solid #e2e2e2;}
+                }
+            }
+        }
+        .mui-popup-buttons{display: none;}
+    }
+}
+.password_set_success_dialog{// 密码设置成功弹窗
+    &.mui-popup{
+        .mui-popup-inner{padding: 0;border-radius: 13px;background: #fff;}
+        .mui-popup-text{margin-top: 0;overflow: hidden;
+            .icon-gongxi{background: url(./images/icon-gongxi.png) no-repeat center /100%;width: (232px/2);height: (212px/2);margin: 55px auto 35px;}   
+            .txt{font-size: 14px;color: #333;margin-bottom: 70px;}
+        }
+        .mui-popup-buttons{
+            height: 80px;line-height: 80px;
+        }
+        .mui-popup-button{background: transparent;height: 80px;line-height: 80px;
+            .mui-icon{    background: #fff;  border-radius: 50%;  width: 50px;  height: 50px;  vertical-align: top;   margin-top: 24px;    font-size: 63px;
+                &:before{    position: absolute;    left: 50%;    margin-left: -31px;    top: 17px;}
+            }
+        }
+    }
+}
+
+
+//绑定手机号码：
+body.bind-mobile{font-size:14px;
+    //  绑定手机号码， step-1
+    .mui-content{background: #efefef;}
+    .input{background:#fff;font-size:14px;padding:10px;  
+        input{border:none; font-size:14px;display:inline-block;margin-bottom:5px;color:#666;padding:0 5px;}
+        .mobile,.yzm{display:flex;}
+        .yzm{
+          input{margin-bottom:0;}
+          a{white-space: nowrap;line-height: 40px;display:inline-block;}  
+        }
+        i.icon-mobile{width:37px;display:inline-block;height:40px;background:url(../images/phone.png) center no-repeat/ 12px;}
+        i.icon-yzm{width:45px;display:inline-block;height:40px;background:url(../images/safe.png) center no-repeat/ 16px;}
+    }
+    .btn-wrap{margin: 40px 10px 10px;
+        .btn-blo{padding: 0;line-height: 40px;height: 40px;background: #1766bb;color: #fff;border-radius: 5px;font-size: 14px;border-color: #1766bb;}
+    }
+    .cue{font-size:12px;color:#666;padding:20px 10px 0;line-height: 22px;}
+    
+    //  绑定成功：
+    .bind-success{text-align:center;color:#444;line-height:26px;padding:25px 0;background:#fff;font-size:14px; }
+    
+}
+
+
+//登录页面：
+.login{
+    .mui-content{background: #f2f2f2;}
+    .user-img{background:url(../images/login-user.png) center no-repeat/100px,linear-gradient(#1767bd,#1767bd);width:100px;height:100px;
+        border-radius: 100%; box-shadow:  3px 5px 15px 6px rgba(#1767bd,0.25); margin: 50px auto;}
+    .login-form{padding:0 35px;color:#666;
+        .password,.username{position:relative;
+            label{line-height:30px;}
+            input{font-size:14px;border-color:#ddd;}
+        }
+        .warn{color:#333;font-size:12px;position:absolute;right:0;top:5px;
+            .icon-warn{width:14px;height:14px;display:inline-block;border-radius: 100%;background:#f65d5d;color:#fff;text-align:center;line-height:14px;font-style:normal;margin-right:3px;}
+        }
+        .forget-pas{text-align:right;
+            a{color:#666;}
+        }
+        a.btn{display:block;text-align: center;height:40px;line-height: 40px;border-radius:2px;}
+        .btn-login{background:#1766bb;color:#fff;margin-bottom:15px;}
+        .btn-regist{color:#445dc2;border:1px solid #445dc2;}
+        
+    }
+    
+}

@@ -781,8 +781,8 @@ define(['site/common/BasePage', 'site/plugin/template','RangeSlider'], function 
                         var state = xhr.getResponseHeader("headerStatus") || xhr.status;
                         if (state != 608) {//重复请求不显示消息
                             $("font#pl").text("");
-                            _this.hideLoading();
                         }
+                        _this.hideLoading();
                     }, error: function (xhr, type, errorThrown) {
                         var state = xhr.getResponseHeader("headerStatus") || xhr.status;
                         if (state == 600) {

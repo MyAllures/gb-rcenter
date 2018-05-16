@@ -36,7 +36,10 @@ define(['common/BasePage'], function (BasePage) {
                     if (!ie678) {
                         $('#newMessageDIV').html("<embed src='" + resRoot + '/' + tone.paramValue + "'/>");
                     } else {
-                        $('#newMessageDIV').html("<audio autoplay='autoplay'><source src='" + resRoot + '/' + tone.paramValue + "' type='audio/wav'/></audio>");
+                        $('#newMessageDIV').html("<audio><source src='" + resRoot + '/' + tone.paramValue + "' type='audio/wav'/></audio>");
+                        setTimeout(function () {
+                            $('#newMessageDIV audio')[0].play();
+                        }, 1000);
                     }
                     setTimeout(function () {
                         $('#newMessageDIV').html("")

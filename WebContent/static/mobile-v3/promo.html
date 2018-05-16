@@ -106,7 +106,43 @@
 			            <div class="swiper-slide">
 			            	<div class="mui-scroll-wrapper">
 			            		<div class="mui-scroll">
-					            	<div href="javascript:void(0);" class="promo-item">
+									<div href="javascript:void(0);" class="promo-item">
+										<div class="img-wrap">
+											<img src="../../mobile-v3/images/promo/promo01.png">
+										</div>
+										<div class="pro-txt">
+											<div class="mui-pull-left">电子签到送现金</div>
+											<a href="mine-promo-detail.html" class="mui-pull-right">查看详情</a>
+										</div>
+									</div>
+									<div href="javascript:void(0);" class="promo-item">
+										<div class="img-wrap">
+											<img src="../../mobile-v3/images/promo/promo01.png">
+										</div>
+										<div class="pro-txt">
+											<div class="mui-pull-left">电子签到送现金</div>
+											<a href="mine-promo-detail.html" class="mui-pull-right">查看详情</a>
+										</div>
+									</div>
+									<div href="javascript:void(0);" class="promo-item">
+										<div class="img-wrap">
+											<img src="../../mobile-v3/images/promo/promo01.png">
+										</div>
+										<div class="pro-txt">
+											<div class="mui-pull-left">电子签到送现金</div>
+											<a href="mine-promo-detail.html" class="mui-pull-right">查看详情</a>
+										</div>
+									</div>
+									<div href="javascript:void(0);" class="promo-item">
+										<div class="img-wrap">
+											<img src="../../mobile-v3/images/promo/promo01.png">
+										</div>
+										<div class="pro-txt">
+											<div class="mui-pull-left">电子签到送现金</div>
+											<a href="mine-promo-detail.html" class="mui-pull-right">查看详情</a>
+										</div>
+									</div>
+									<div href="javascript:void(0);" class="promo-item">
 										<div class="img-wrap">
 											<img src="../../mobile-v3/images/promo/promo01.png">
 										</div>
@@ -260,7 +296,7 @@
 		  </div>
     </div>  <!--mui-content 闭合标签-->
 	<!--footer-->
-	<footer class="mui-bar mui-bar-tab">
+	<footer class="mui-bar promo-bar mui-bar-tab">
 	    <a class="mui-tab-item">
 	        <span class="mui-icon icon-deposit"></span>
 	        <span class="mui-tab-label">存款</span>
@@ -354,9 +390,9 @@
 	      autoHeight: false,
 	      on:{
 			  slideChangeTransitionEnd: function(){
-				  mui('.p-t-slide-content .swiper-slide.swiper-slide-active').scroll({
-					  indicators: false
-				  }).scrollTo(0,0,1000);
+					  mui('.p-t-slide-content .mui-scroll-wrapper').scroll({
+						  indicators: false
+					  });
 			  }
 		  }
 	    });

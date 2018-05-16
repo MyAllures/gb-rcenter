@@ -748,6 +748,17 @@ ul.options-list li.current{color:#fff;background-color:#2095f2;}
 .game-announcement-list li .con.warningRecord-square{padding:5px 10px 0;}
 a.co-red3.red:hover{color:#f34235;}
 
+.activity-new-title{position: relative;}
+.activity-new-title:before{
+   display: block;
+   width: 45px;
+   height: 76px;
+   background: url(../../images/hd-new.png) no-repeat top left;
+   position: absolute;
+   top: -14px;
+   left: -10px;
+}
+
 /*统计报表*/
 .advanced-options{display:none;}
 .advanced-options.show{display:block;}

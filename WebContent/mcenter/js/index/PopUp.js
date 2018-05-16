@@ -541,7 +541,10 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 if (!!window.ActiveXObject || "ActiveXObject" in window) {// IE
                     var embed = document.embedPlay;
                 } else {
-                    audioplayer.play();
+                    setTimeout(function () {
+                        audioplayer.play();
+                    }, 1000);
+
                     if (callback != undefined) {
                         //如何判断声音播放结束
                         //update by jerry
@@ -550,9 +553,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         }, 3000);
                     }
                 }
-
                 return;
-                //document.body.removeChild(audioplayer);
             }
 
             if (typeof(file) != 'undefined') {
@@ -590,7 +591,10 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     mp3.src = resRoot + '/' + file;
                     mp3.type = 'audio/mpeg';
                     player.appendChild(mp3);
-                    player.play();
+                    setTimeout(function () {
+                        player.play();
+                    }, 1000);
+
                     if (callback != undefined) {
                         var is_playFinish = setInterval(function () {
                             if (player.ended) {

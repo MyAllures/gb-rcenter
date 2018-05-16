@@ -98,18 +98,8 @@
 /* page promo */
 .promo{
     .p-t-slide-content{color: #333;
-        .swiper-slide{background: #fff;}
     }
 }
-    .btn-promo-sort{
-        span{background: #e3e2e2;border: 1px solid #e3e2e2;}
-        
-        &.swiper-slide-active{
-            span{     background: #1766bb;
-    border: 1px solid #1766bb;
-    color: #fff;}
-            }
-    }
 .promo-header{border-bottom: 1px solid #ccc;}    
 /* login and register page */
 .type-header{
@@ -206,7 +196,6 @@
 .api-grid .mui-grid-view.mui-grid-9 .mui-table-view-cell{background: #151515;}
 .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{color: #fff;}
 .copy-right {    border-top: 1px solid #333;}
-.mui-bar-tab .mui-icon.icon-home, .mui-bar-tab .mui-icon:active.icon-home {  background: #252525;}
 .mui-title{color: #fff;}
 .mui-bar .mui-icon-back{color: #fff;}
 .mui-content-casino-list .casino-list a p{color: #fff;}

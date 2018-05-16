@@ -15,7 +15,6 @@ define(['gb/components/Comet','site/index/PopUp','cookie'], function(Comet,PopUp
                     {subscribeType:"SYS_ANN",callBack:popUp.dialogCallBack},
                     {subscribeType:"SITE_ANN",callBack:popUp.dialogCallBack},
                     {subscribeType:"PCENTER-dialog-Notice",callBack:popUp.dialogCallBack},
-                    {subscribeType:"MSITE-Player-Withdraw-Notice",callBack:popUp.playerWithdrawDialogCallBack},
                     {subscribeType:"MSITE-Player-Announcement-Notice",callBack:popUp.playerAnnouncementDialogCallBack},
                     {subscribeType:"MCENTER_READ_COUNT",callBack:popUp.unReadNotice},
                     {subscribeType:"MSITE-ONLINERECHARGE",callBack:popUp.onlineRecharge},

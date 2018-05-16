@@ -86,20 +86,17 @@ li { list-style: none; }
 .nav .swiper-slide.item-chess-and-card:before { content: ''; position: absolute; left: 0; top: 0; z-index: 2; width: 100%; height: 100%; background: url(images/icon-chess-and-card.png) no-repeat center 6px/16px !important; }
 
 /* mui-bar-tab */
-.mui-bar-tab { height: 51px; }
+.mui-bar-tab { height: 51px; box-shadow: none; -webkit-box-shadow: none; }
 .mui-bar-tab .mui-tab-label { font-size: 13px !important; }
 
 /* ui-bar-tab */
-.mui-bar-tab .mui-icon, .mui-bar-tab .mui-icon:active { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; }
-.mui-bar-tab .mui-icon.icon-deposit, .mui-bar-tab .mui-icon:active.icon-deposit { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; background-position: -9px -4px; }
-.mui-bar-tab .mui-icon.icon-promo, .mui-bar-tab .mui-icon:active.icon-promo { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; background-position: -49px -5px; }
-.mui-bar-tab .mui-icon.icon-home, .mui-bar-tab .mui-icon:active.icon-home { width: 46px; height: 46px; position: absolute; left: 50%; margin-left: -23px; top: -13px; background: #c2c2c2; border-radius: 23px; }
-.mui-bar-tab .mui-icon.icon-home + .mui-tab-label, .mui-bar-tab .mui-icon:active.icon-home + .mui-tab-label { margin-top: 31px; }
-.mui-bar-tab .mui-icon.icon-home:after, .mui-bar-tab .mui-icon:active.icon-home:after { content: ''; width: 36px; height: 36px; background: url(images/footer-nav-icon.png) no-repeat -83px -2px/auto 80px; position: absolute; left: 5px; top: 5px; }
-.mui-bar-tab .mui-icon.icon-service, .mui-bar-tab .mui-icon:active.icon-service { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; background-position: -129px -5px; }
-.mui-bar-tab .mui-icon.icon-mine, .mui-bar-tab .mui-icon:active.icon-mine { background: url(images/footer-nav-icon.png) no-repeat center/auto 80px; background-position: -168px -5px; }
-.mui-bar-tab .mui-active .mui-icon { background-position-y: -45px; }
-.mui-bar-tab .mui-active .mui-icon.icon-home:after { background: url(images/footer-nav-icon.png) no-repeat -83px -43px/auto 80px; }
+.mui-bar-tab .mui-icon, .mui-bar-tab .mui-icon:active { background-image: url(images/footer-nav-icon.png); background-repeat: no-repeat; background-size: auto 48px; background-position-y: 0; }
+.mui-bar-tab .mui-icon.icon-deposit, .mui-bar-tab .mui-icon:active.icon-deposit { background-position-x: -24px; }
+.mui-bar-tab .mui-icon.icon-promo, .mui-bar-tab .mui-icon:active.icon-promo { background-position-x: -48px; }
+.mui-bar-tab .mui-icon.icon-home, .mui-bar-tab .mui-icon:active.icon-home { background-position-x: 0; }
+.mui-bar-tab .mui-icon.icon-service, .mui-bar-tab .mui-icon:active.icon-service { background-position-x: -72px; }
+.mui-bar-tab .mui-icon.icon-mine, .mui-bar-tab .mui-icon:active.icon-mine { background-position-x: -96px; }
+.mui-bar-tab .mui-active .mui-icon { background-position-y: -24px; }
 
 /* mui-off-canvas-left */
 .mui-off-canvas-left { width: 60%; }
@@ -191,7 +188,7 @@ li { list-style: none; }
 .type-header .mui-btn:last-child { border-top-left-radius: 0; border-bottom-left-radius: 0; }
 .type-header .mui-btn.mui-active { background: #1766bb; }
 
-.mui-bar.mui-bar-blue { background-color: #1766bb; }
+.mui-bar.mui-bar-blue { background-color: #1766bb; background-image: none; }
 
 .login-wrap, .register-wrap { position: fixed; height: 0; bottom: 0; left: 0; right: 0; z-index: 9999; overflow: hidden; transition: all 0.3s ease-in-out; }
 .login-wrap .mui-bar-nav, .register-wrap .mui-bar-nav { position: relative; }
@@ -278,8 +275,6 @@ li { list-style: none; }
 .mine-cash-record-body .mine-table .text-green { color: #4ec545; }
 
 .money-shadow { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0, 0, 0, 0.3); z-index: 111; display: none; }
-
-.mui-bar.promo-record { background-color: #1b75d9; }
 
 /* 投注记录 */
 .mine-bet-record-body { background: #f2f2f2; font-size: 12px; color: #333; }
@@ -494,6 +489,114 @@ body.deposit .mui-btn-blue { color: #fff; border: 1px solid #1766bb; background-
 body.deposit .mui-slider-indicator.mui-segmented-control table tr td { border: 1px solid #dedede !important; }
 body.deposit .agent-text p span { color: #dedede !important; }
 body.deposit .gb-select > a { color: #999; }
+
+.deposit_2 { background: #f2f2f2; }
+.deposit_2 .deposit-2-content { padding-bottom: 51px; background: #f2f2f2; }
+.deposit_2 .list_pay { padding: 12px 10px 8px; overflow: hidden; margin-left: -4px; margin-right: -4px; }
+.deposit_2 .list_pay .list_pay_item_w { width: 20%; float: left; padding: 0 4px; margin-bottom: 8px; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item { background: #fff; border-radius: 2px; text-align: center; padding-top: 5px; padding-bottom: 8px; border: 1px solid #fff; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item.cur { border-color: #1766bb; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay { width: 38px; height: 38px; display: block; margin: 0 auto 6px; background-image: url(images/pay-icon.png); background-repeat: no-repeat; background-size: 38px; background-position-x: center; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.online-pay { background-position-y: 0; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.wangyin { background-position-y: -38px; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.weichat-pay { background-position-y: -76px; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.alipay { background-position-y: -114px; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.qq-wallet { background-position-y: -152px; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.jingdong-wallet { background-position-y: -190px; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.baidu-wallet { background-position-y: -228px; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.bitcoin-pay { background-position-y: -266px; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.yima-pay { background-position-y: -304px; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.union-pay { background-position-y: -342px; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.kuaichong { background-position-y: -380px; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.wangyin-dep { background-position-y: -418px; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.yishou-pay { background-position-y: -456px; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.other-pay { background-position-y: -494px; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item .pay_nam { font-size: 10px; color: #333; line-height: 1; }
+.deposit_2 .pay_mone { background: #fff; }
+.deposit_2 .pay_mone .tit { font-size: 14px; color: #333; padding: 10px 24px; position: relative; }
+.deposit_2 .pay_mone .tit:before { content: ''; width: 3px; height: 17px; background: #1766bb; position: absolute; left: 11px; top: 11px; }
+.deposit_2 .pay_mone .conv_mone { overflow: hidden; padding-bottom: 15px; }
+.deposit_2 .pay_mone .conv_mone .conv_mone_i { width: 20%; float: left; }
+.deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone { width: 58px; height: 58px; display: block; margin: 0 auto; background-image: url(images/conv_mone.png); background-repeat: no-repeat; background-size: 100%; background-position-x: center; }
+.deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_100 { background-position-y: 0; }
+.deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_200 { background-position-y: -58px; }
+.deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_500 { background-position-y: -116px; }
+.deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_1000 { background-position-y: -174px; }
+.deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_5000 { background-position-y: -232px; }
+.deposit_2 .pay_mone .bank_list { overflow: hidden; padding: 0 10px; margin-bottom: -20px; margin-left: -6px; margin-right: -6px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w { float: left; width: 50%; padding: 0 6px; font-size: 14px; color: #333; margin-bottom: 20px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i { background: #f2f2f2; height: 35px; line-height: 35px; border-radius: 2px; padding-left: 10px; border: 1px solid #f2f2f2; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i.cur { border-color: #1766bb; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n { background: url(images/pay_bank_b.png) no-repeat; background-size: 25px; display: inline-block; width: 26px; height: 20px; vertical-align: top; margin-top: 8px; margin-right: 8; /* 浦发银行*/ /* 民生*/ /*  交通银行 */ /*光大*/ /* 10 平安银行 */ /* 11 兴业银行 */ /* 12 北京银行 */ /* 13 中信银行 */ /* 14 广发银行 */ /* 16 江苏银行 */ /* 18 上海银行 */ /* 19 渤海银行 */ /* 20 东亚银行 */ /* 21 宁波银行 */ /* 22 浙商银行 */ /* 23 杭州银行 */ /* 24 广州银行 */ /* 25 福建农商银行 */ /* 26 恒生银行 */ /* 27 台州银行 */ /* 易支付 */ }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.unionpay { background-position: 0 -3px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.onlinepay { background-position: 0 -3px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.wechatpay { background-position: 0px -26px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.alipay { background-position: 0px -48px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.cmb { background-position: 0px -71px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.ccb { background-position: 0px -94px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.ks { background-position: 0 -116px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.jdwallet { background-position: -1px -138px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.bdwallet { background-position: 0px -161px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.ymf { background-position: 0px -183px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.qqwallet { background-position: 0px -206px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.icbc { background-position: 0px -228px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.boc { background-position: 0px -250px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.abc { background-position: 0px -273px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.hxbank { background-position: 0px -295px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.psbc { background-position: 0px -319px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.spdb { background-position: 0px -340px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.bitcoin { background-position: 0px -364px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.qrcodepay { background-position: 0px -386px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.cmbc { background-position: 0px -405px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.comm { background-position: 0px -435px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.ceb { background-position: -3px -857px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.spabank { background-position: 0px -455px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.cib { background-position: 0px -473px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.bjbank { background-position: -2px -495px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.citic { background-position: 0px -519px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.gdb { background-position: -2px -542px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.jsbank { background-position: -3px -567px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.shbank { background-position: -3px -594px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.bohaib { background-position: -3px -617px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.hkbea { background-position: 2px -639px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.nbbank { background-position: -3px -664px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.czbank { background-position: -3px -694px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.hzcb { background-position: -3px -721px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.gcb { background-position: -3px -750px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.fjnx { background-position: -3px -779px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.hangseng { background-position: -3px -806px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.tzb { background-position: -2px -835px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.ysf { background-position: -2px -904px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n_txt { display: inline-block; }
+.deposit_2 .depo_row { border-top: 1px solid #f3f3f3; display: flex; height: 50px; font-size: 14px; }
+.deposit_2 .depo_row .label { width: 100px; line-height: 49px; padding-left: 10px; color: #666; }
+.deposit_2 .depo_row .label.w_120 { width: 120px; }
+.deposit_2 .depo_row .input { flex: 1; }
+.deposit_2 .depo_row .input input[type='text'] { border: 0; margin: 0; height: 49px; line-height: 49px; padding: 0 10px; font-size: 14px; color: #333; }
+.deposit_2 .depo_row .input input[type='text'].text-right { text-align: right; }
+.deposit_2 .depo_row .ext { width: 50px; height: 49px; text-align: center; line-height: 49px; color: #333; }
+.deposit_2 .depo_row .ext .cha { background: #e2e2e2; }
+.deposit_2 .btn_wrap { padding: 20px 10px; }
+.deposit_2 .btn_wrap .btn_submit { height: 40px; line-height: 40px; padding: 0; text-align: center; font-size: 14px; color: #fff; background: #1766bb; border-color: #1766bb; }
+.deposit_2 .deposit_help { padding: 0 20px 40px; font-size: 12px; color: #666; }
+.deposit_2 .deposit_help p { margin-bottom: 0; }
+.deposit_2 .bank_car_item { width: 267.5px; background: #f7f7f7; border-radius: 4px; margin: 0 auto 10px; padding: 5px 14px 12px; }
+.deposit_2 .bank_car_item .top { overflow: hidden; }
+.deposit_2 .bank_car_item .top .car_type { float: right; font-size: 12px; color: #333; height: 30px; line-height: 30px; }
+.deposit_2 .bank_car_item .bank_car_txt_info { background: #fff; font-size: 14px; color: #333; padding: 20px 5px; border-radius: 3px; }
+.deposit_2 .bank_car_item .bank_car_txt_info .btn_copy { float: right; width: 35px; height: 22px; line-height: 22px; text-align: center; background: #c4defa; border-radius: 2px; }
+.deposit_2 .bank_car_item .bank_car_txt_info .b_c_t_i_row { margin-bottom: 6px; }
+.deposit_2 .bank_car_item .bank_car_txt_info .b_c_t_i_row:last-child { margin-bottom: 0; }
+.deposit_2 .bank_car_item.bit_coin_card .bank_car_txt_info { padding: 10px 5px; }
+.deposit_2 .bank_car_item.bit_coin_card .bank_car_txt_info .b_c_t_i_row { position: relative; }
+.deposit_2 .bank_car_item.bit_coin_card .bank_car_txt_info .b_c_t_i_row + .b_c_t_i_row:before { content: ''; position: absolute; top: -4px; left: 0; right: 0; background: #f2f2f2; height: 1px; }
+.deposit_2 .wechat-code { text-align: center; border-top: 1px solid #f3f3f3; padding: 10px; }
+.deposit_2 .wechat-code .cod-img-wrap { border: 1px solid #f3f3f3; border-radius: 2px; padding: 10px 0; width: 224px; margin: 0 auto 10px; }
+.deposit_2 .wechat-code .cod-btn-wrap .mui-btn { background: #1b75d9; width: 110px; height: 25px; line-height: 25px; padding: 0; font-size: 12px; color: #fff; border-color: #1b75d9; }
+.deposit_2 .wechat-code.bit_coin_c .cod-img-wrap { border-color: transparent; padding: 0; margin: 0 auto; }
+.deposit_2 .wechat-code.bit_coin_c .cod-btn-wrap .mui-btn { width: 116px; }
+.deposit_2 .wechat-code img { width: 116px; height: 116px; display: inline-block; border-top: 1px solid #f3f3f3; }
+.deposit_2 .wechat-code .tit { margin: 0 auto; width: 130px; height: 30px; line-height: 30px; border-top-left-radius: 0; border-top-right-radius: 0; }
 
 /*弹窗*/
 .masker { position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); display: none; }
@@ -1567,5 +1670,23 @@ body.mine-user .gb-select > a { color: #999; }
 .tipbig.fail { background-position: -80px -8px; }
 
 .tipbig.cry { background-position: -146px -8px; }
+
+.deposit_promo_dialog.mui-popup .mui-popup-inner { padding: 0; border-radius: 13px; }
+.deposit_promo_dialog.mui-popup .mui-popup-title { height: 37px; line-height: 37px; background: #f2f2f2; }
+.deposit_promo_dialog.mui-popup .mui-popup-text { margin-top: 0; padding: 15px 22px; text-align: left; font-size: 12px; }
+.deposit_promo_dialog.mui-popup .mui-popup-text .pro_ite { color: #999; }
+.deposit_promo_dialog.mui-popup .mui-popup-text .pro_ite span { color: #333; }
+.deposit_promo_dialog.mui-popup .mui-popup-text .pro_lis { height: 121px; position: relative; background: #f2f2f2; border-radius: 5px; margin-top: 5px; }
+.deposit_promo_dialog.mui-popup .mui-popup-text .pro_lis .mui-scroll { padding: 0 10px; }
+.deposit_promo_dialog.mui-popup .mui-popup-text .pro_lis .pro_list_item { height: 32px; line-height: 32px; border-bottom: 1px dashed #dedede; position: relative; }
+.deposit_promo_dialog.mui-popup .mui-popup-text .pro_lis .pro_list_item:last-child { border-bottom: 0; }
+.deposit_promo_dialog.mui-popup .mui-popup-text .pro_lis .pro_list_item input[type="radio"] { -webkit-appearance: none; appearance: none; width: 8px; height: 8px; border: 1px solid #9b9b9b; border-radius: 50%; position: absolute; right: 10px; top: 10px; }
+.deposit_promo_dialog.mui-popup .mui-popup-text .pro_lis .pro_list_item input[type="radio"]:checked { border-color: #1b75d9; background: #1b75d9; }
+.deposit_promo_dialog.mui-popup .mui-popup-text .btn_wrap { padding: 24px 0 9px; }
+.deposit_promo_dialog.mui-popup .mui-popup-text .btn_wrap .btn_dep { height: 35px; line-height: 35px; padding: 0; background: #1b75d9; border-color: #1b75d9; font-size: 14px; color: #fff; margin: 0; }
+.deposit_promo_dialog.mui-popup .mui-popup-buttons { height: 80px; line-height: 80px; }
+.deposit_promo_dialog.mui-popup .mui-popup-button { background: transparent; height: 80px; line-height: 80px; }
+.deposit_promo_dialog.mui-popup .mui-popup-button .mui-icon { background: #fff; border-radius: 50%; width: 50px; height: 50px; vertical-align: top; margin-top: 24px; font-size: 63px; }
+.deposit_promo_dialog.mui-popup .mui-popup-button .mui-icon:before { position: absolute; left: 50%; margin-left: -31px; top: 17px; }
 
 /*# sourceMappingURL=common.css.map */

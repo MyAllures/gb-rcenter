@@ -856,7 +856,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                            }else{
                                $(".downloadUrl").css('display','none');
                                $("#appDomain").css("display","");
-                               $('[name=downloadAddress]').val('');
+                               $('[name=iosDownloadAddress]').val('');
+                               $('[name=androidDownloadAddress]').val('');
                            }
                             $this.bootstrapSwitch('indeterminate', false);
                         } else {

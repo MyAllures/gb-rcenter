@@ -62,7 +62,12 @@ function bindBtc() {
             if (data.state) {
                 toast(data.msg);
                 setTimeout(function () {
-                    mui.back();
+                    if (data.action == 'withdraw') {
+                        var _href = root + '/wallet/withdraw/index.html';
+                        goToUrl(_href);
+                    } else {
+                        goToLastPage();
+                    }
 
                 }, 1000);
             } else {
@@ -72,7 +77,7 @@ function bindBtc() {
         },
         error: function (xhr, type, errorThrown) {
             if (xhr.status == 608) {
-                mui.alert(window.top.message.my_auto['请勿重复提交']);
+                toast(window.top.message.my_auto['请勿重复提交']);
             }
             $submit.attr("disabled", false);
         },

@@ -34,7 +34,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 placement: 'top'
             });
             this.querySingleAndEffective();
-
+            this.toRecovery();
         },
         querySingleAndEffective: function () {
             var _this = this;
@@ -730,8 +730,25 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
                 }
             })
         },
-
-
+        /**
+         * 判断是否回收api余额
+         */
+        toRecovery:function () {
+            var _this = this;
+            var toRecovery = $("#toRecovery").val();
+            var id = $("[name='result.id']").val();
+            if (toRecovery){
+                window.top.topPage.ajax({
+                    url: root + "/playerFunds/recovery.html?search.playerId="+id,
+                    dataType: "JSON",
+                    success: function (data) {
+                        if (data.state) {
+                            _this.getUserPlayer();
+                        }
+                    }
+                });
+            }
+        }
 
     });
 });
