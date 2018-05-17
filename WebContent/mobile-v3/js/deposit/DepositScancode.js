@@ -14,6 +14,7 @@ var DepositScanCode = function () {
         document.getElementById("account").value = $(account).attr("account");
         document.getElementById("result.payerBank").value = $(account).attr("payerBank");
         document.getElementById("depositChannel").value = $(account).attr("depositChannel");
+        document.getElementById("accountType").value = $(account).attr("accounttype");
         document.getElementById("rechargeType").value = $(account).attr("rechargeType");
         document.getElementById('result.rechargeAmount').setAttribute("placeholder", "" + siteCurrencySign + Number(min).toFixed(2) + "~" + siteCurrencySign + Number(max).toFixed(2));
         //处理随机金额
@@ -33,6 +34,24 @@ var DepositScanCode = function () {
             $("#btn_scan").show();
             $("#btn_electronicPay").hide();
         }
+        //是否显示反扫
+        var player_bank = document.getElementById("result.payerBank").value;
+        if (player_bank == 'wechat_micropay' || player_bank == 'alipay_micropay' || player_bank == 'qq_micropay') {
+            baseDeposit.initSwip();
+            $("#reverseSacn_div").show();
+        } else {
+            $("#reverseSacn_div").hide();
+        }
     };
+    //显示反扫教程
+    this.showReScanCourse = function (obj, options) {
+        var accountType = $("#accountType").val();
+        var depositHelpBox = $("div#depositHelpBox" + accountType);
+        depositHelpBox.show();
+    };
+    //关闭反扫教程
+    this.closeReScanCourse = function (obj, options) {
+        $(obj).parent().parent().hide();
+    }
 }
 var depositScanCode = new DepositScanCode();
