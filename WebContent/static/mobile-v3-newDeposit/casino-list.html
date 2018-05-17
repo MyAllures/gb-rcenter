@@ -35,7 +35,7 @@
         <div class="mui-content  mui-content-casino-page">
 
           <!-- 主界面具体展示内容 -->
-          <div class="electronic-search" style='display:none;'>
+          <div class="electronic-search" >
             <a id="search-game" class="btn-search">搜索</a>
             <input type="text" id="game-name" class="mui-input-clear" placeholder="输入游戏名称" data-input-clear="3"><span class="mui-icon mui-icon-clear mui-hidden"></span>
           </div>
@@ -469,6 +469,10 @@
         $('.casino-page-bar .icon-list2').click(function(){
           $(' .casino-wrap .mui-row .mui-col-xs-12').addClass('mui-col-xs-4').removeClass('mui-col-xs-12 item');
         });
+        $('.casino-page-bar .mui-icon-search').click(function(){
+          $('.electronic-search').toggle();
+        });
+        
         //下拉显示顶部api滚动区域.
         function pull_apiScroll() {
           var scroller = document.querySelector("#apiScroll-cont"),
@@ -499,7 +503,7 @@
 
             },
             touchMove: function(evt, value) {
-
+                $('.electronic-search').hide();
             },
             touchEnd: function(evt, value) {
               if(value >= 105) {

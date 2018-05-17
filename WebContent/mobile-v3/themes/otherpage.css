@@ -88,7 +88,7 @@
 
 .mui-content-casino-list { padding-top: 44px !important; background: #fff; height: 100%; }
 .mui-content-casino-list .casino-wrap { padding: 10px; }
-.mui-content-casino-list .electronic-search { position: relative; margin: 10px; }
+.mui-content-casino-list .electronic-search { position: relative; margin: 10px; z-index: 999; display: none; }
 .mui-content-casino-list .electronic-search input { margin: 0; height: 35px; font-size: 14px; border: 1px solid #ccc; padding-right: 100px; color: #333; }
 .mui-content-casino-list .electronic-search .btn-search { position: absolute; right: 0; top: 0; font-size: 14px; color: #333; height: 35px; line-height: 35px; text-align: center; width: 84px; background: #ccc; border-top-right-radius: 3px; border-bottom-right-radius: 3px; }
 .mui-content-casino-list .electronic-search .mui-icon-clear { right: 80px; top: 8px; }
@@ -102,8 +102,8 @@
 .casino-page-bar .icon-list2 { background: url(images/icon-casino-list2.png) center no-repeat/100%; width: 22px; height: 22px; margin: 12px 5px 0; }
 .casino-page-bar .mui-icon.mui-icon-search { margin-right: 0; padding-right: 0; }
 
-.mui-content-casino-page { padding-top: 44px !important; background: #fff; height: 100%; }
-.mui-content-casino-page .electronic-search { position: relative; margin: 10px; }
+.mui-content-casino-page { padding-top: 44px !important; background: #fff; height: 100%; padding-bottom: 0 !important; }
+.mui-content-casino-page .electronic-search { position: relative; margin: 10px; z-index: 999; display: none; }
 .mui-content-casino-page .electronic-search input { margin: 0; height: 35px; font-size: 14px; border: 1px solid #ccc; padding-right: 100px; color: #333; }
 .mui-content-casino-page .electronic-search .btn-search { position: absolute; right: 0; top: 0; font-size: 14px; color: #333; height: 35px; line-height: 35px; text-align: center; width: 84px; background: #ccc; border-top-right-radius: 3px; border-bottom-right-radius: 3px; }
 .mui-content-casino-page .electronic-search .mui-icon-clear { right: 80px; top: 8px; }
