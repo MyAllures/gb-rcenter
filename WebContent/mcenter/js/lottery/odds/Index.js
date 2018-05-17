@@ -263,6 +263,12 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                     }
                 })
             }else {
+                var lhca = $("input#lhca");
+                var islhca = false;
+                if (lhca && lhca.length>0) { // 六合彩ａ盘
+                    group = $form.find("td div.input-group:even");
+                    islhca = true
+                }
                 for (var i = 0; i < group.length; i++) {
                     oddObj = group[i];
                     $input = $(oddObj).find("input.form-control");
@@ -276,7 +282,7 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                         $target.unlock();
                         return;
                     }
-                    if (odd != ori) {
+                    if (!islhca && odd != ori) {
                         limit = $input.attr("data-limit");
                         //超过赔率定义上限需提示
                         if (odd > limit) {
@@ -295,6 +301,40 @@ define(['common/BaseListPage', 'WanSpinner'], function (BaseListPage) {
                             'oldOdd':ori
                         };
                         array.push(obj);
+                    }else if (islhca) {
+                        var $rinput = $(oddObj).parent("td").next().find("input.form-control");
+                        rebate = Number($rinput.val());
+                        rori = Number($rinput.attr("data-value"));
+
+                        if (odd != ori || rebate !=rori) {
+                            limit = $input.attr("data-limit");
+                            rlimit = Number($rinput.attr("data-limit"));
+                            if (odd > limit) {
+                                validate.settings.highlight.call(validate, $input, validate.settings.errorClass, validate.settings.validClass);
+                                validate.showLabel($input, '赔率不能超过上限' + limit);
+                                $target.unlock();
+                                return;
+                            }
+                            if (rebate > rlimit) {
+                                validate.settings.highlight.call(validate, $rinput, validate.settings.errorClass, validate.settings.validClass);
+                                validate.showLabel($rinput, '返点不能超过上限' + rlimit);
+                                $target.unlock();
+                                return;
+                            }
+                            obj = {
+                                'id': $(oddObj).find("input[name$=id]").val(),
+                                'odd': odd,
+                                'betCode': betCode,
+                                'betNum': betNum,
+                                'siteId': null,
+                                'rebate':rebate,
+                                'code': code,
+                                'oldOdd':ori,
+                                'oldRebate': rori
+                            };
+                            array.push(obj);
+                        }
+
                     }
                 }
                 if (array.length <= 0) {
