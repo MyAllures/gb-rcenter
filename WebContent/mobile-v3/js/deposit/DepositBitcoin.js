@@ -13,7 +13,7 @@ var DepositBitCoin = function () {
             toast("请选择一个账号.");
             return false;
         }
-        var url = "/wallet/v3/deposit/nextStep.html?channel=" + $("#channel").val() + "&search.id=" + key + "&v=" + Math.random();
+        var url = "/wallet/v3/deposit/nextStep.html?channel=" + $("#channel").val() + "&searchId=" + key + "&v=" + Math.random();
         goToUrl(url);
     };
     this.selectionDate= function (obj,options) {
