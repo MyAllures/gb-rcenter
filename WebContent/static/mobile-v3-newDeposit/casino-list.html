@@ -159,6 +159,24 @@
                               <p>冰球突破</p>
                             </a>
                           </div>
+                          <div class="mui-col-xs-4">
+                            <a href="#">
+                              <div class="img-wrap"><i class="icon-api icon-api-ag"></i><img src="../../mobile-v3/images/casino-game-1.png" /></div>
+                              <p>冰球突破</p>
+                            </a>
+                          </div>
+                          <div class="mui-col-xs-4">
+                            <a href="#">
+                              <div class="img-wrap"><i class="icon-api icon-api-ag"></i><img src="../../mobile-v3/images/casino-game-1.png" /></div>
+                              <p>冰球突破</p>
+                            </a>
+                          </div>
+                          <div class="mui-col-xs-4">
+                            <a href="#">
+                              <div class="img-wrap"><i class="icon-api icon-api-ag"></i><img src="../../mobile-v3/images/casino-game-1.png" /></div>
+                              <p>冰球突破</p>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -459,16 +477,21 @@
     <script src="../../mobile-v3/js/casino/transform.js"></script>
     <script type="text/javascript">
       $(function() {
-        
+        function resetMin(){
+          $('.g-t-slide-content').height($('.g-t-slide-content .swiper-slide.swiper-slide-active').height());// 左右滑动内容区域时，动态设定swiper的高度
+          var min_h = $('#apiScroll-cont').height() > $('.casino-game-type').height() ? $('#apiScroll-cont').height() : $('.casino-game-type').height(); // 滑动内容区域的高度
+          alloyT.min = window.innerHeight - 44 - min_h;
+        }
 //      顶部切换电子排列:
         $('.casino-page-bar .icon-list1').click(function(){
           $(' .casino-wrap .mui-row .mui-col-xs-4').addClass('mui-col-xs-12 item').removeClass('mui-col-xs-4');
-        pull_apiScroll();
-          
+          resetMin();
         });
         $('.casino-page-bar .icon-list2').click(function(){
           $(' .casino-wrap .mui-row .mui-col-xs-12').addClass('mui-col-xs-4').removeClass('mui-col-xs-12 item');
+          resetMin();
         });
+        var alloyT = null;
         //下拉显示顶部api滚动区域.
         function pull_apiScroll() {
           var scroller = document.querySelector("#apiScroll-cont"),
@@ -478,15 +501,15 @@
 
           Transform(pull_refresh, true);
           Transform(scroller, true);
-
-          new AlloyTouch({
+          var min_h = $('#apiScroll-cont').height() > $('.casino-game-type').height() ? $('#apiScroll-cont').height() : $('.casino-game-type').height();
+          alloyT = new AlloyTouch({
             touch: "#apiScroll-wrap", //反馈触摸的dom
             vertical: true, //不必需，默认是true代表监听竖直方向touch
             target: scroller, //运动的对象
             property: "translateY", //被滚动的属性
             sensitivity: 1, //不必需,触摸区域的灵敏度，默认值为1，可以为负数
             factor: 1, //不必需,默认值是1代表touch区域的1px的对应target.y的1
-            min: 0, //不必需,滚动属性的最小值
+            min: window.innerHeight - 44 - min_h, //不必需,滚动属性的最小值
             max: 0, //不必需,滚动属性的最大值
             change: function(value) {
               if(value < 105) {
@@ -531,7 +554,10 @@
           loopedSlides: 5,
           autoHeight: true,
           on: {
-            slideChange: function() {}
+            slideChangeTransitionEnd: function() {
+              $('.g-t-slide-content').height($('.g-t-slide-content .swiper-slide.swiper-slide-active').height());
+              resetMin();
+            }
           }
         });
         var slideIndicators = new Swiper('.g-t-slide-indicators', {
