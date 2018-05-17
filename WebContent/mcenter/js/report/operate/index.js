@@ -32,6 +32,7 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
                 $('div.filter').addClass('hide');
                 $('span.choose').text(window.top.message.report['operate.list.all']);
             }
+            _this.changeAction();
         },
         /** 当前对象事件初始化函数 */
         bindEvent: function () {
@@ -115,6 +116,12 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
             }else {
                 $subSysCode.val($('[name="role.player"]').val());
             }
+            //搜索输入框的name属性随着角色修改
+            //selectdiv中的value就是当前输入框的name值
+            var searchInputName = $("div[selectdiv='roleName']").attr('value');
+            $('input.role').attr('name',searchInputName);
+
+
             /*var roleName = $('input.role').val();
             if (roleName) {
                 var role = $('[name="roleName"]').val();

@@ -83,7 +83,7 @@ function wait(t, obj, interval) {
 /**
  * 验证手机短信
  */
-function checkPhoneCode() {
+function checkPhoneCode(obj,options) {
     var phoneCode = $("#phoneCode").val();
     if (phoneCode == null || phoneCode == '') {
         toast("手机验证码不能为空");
@@ -97,7 +97,7 @@ function checkPhoneCode() {
         dataType: "json",
         success: function (data) {
             if (data) {
-                goToUrl(root + "/help/setLoginPassword.html?encryptedId=" + encryptedId);
+                goToUrl(root + "/help/setLoginPassword.html?encryptedId=" + encryptedId+"&forgetType="+options.forgetType);
             } else {
                 toast("验证手机验证码错误");
                 return;

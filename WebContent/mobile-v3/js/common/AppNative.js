@@ -108,3 +108,12 @@ function nativeGoToApplyPromoPage(){
 function nativeGoToRegisterPage(){
     window.gamebox.gotoRegisterPage();
 }
+
+/**
+ * 关闭页面
+ * 主要应用场景：(1)支付页面完成后关闭当前页面;(2)游戏页面登出,关闭游戏页面 返回app
+ *
+ */
+function nativeCloseCurrentPage(){
+    window.gamebox.closeCurrentPage();
+}
