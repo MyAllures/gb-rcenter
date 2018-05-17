@@ -568,6 +568,7 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.hangseng { background-position: -3px -806px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.tzb { background-position: -2px -835px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.ysf { background-position: -2px -904px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.yima-pay { background-position: -2px -927px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n_txt { display: inline-block; }
 .deposit_2 .depo_row { border-top: 1px solid #f3f3f3; display: flex; height: 50px; font-size: 14px; }
 .deposit_2 .depo_row .label { width: 100px; line-height: 49px; padding-left: 10px; color: #666; }
@@ -598,6 +599,28 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .wechat-code.bit_coin_c .cod-btn-wrap .mui-btn { width: 116px; }
 .deposit_2 .wechat-code img { width: 116px; height: 116px; display: inline-block; border-top: 1px solid #f3f3f3; }
 .deposit_2 .wechat-code .tit { margin: 0 auto; width: 130px; height: 30px; line-height: 30px; border-top-left-radius: 0; border-top-right-radius: 0; }
+.deposit_2 .depositHelp { color: #1766bb; padding: 0 10px 0; margin: 0; }
+.deposit_2 .depositHelp span { width: 15px; height: 15px; display: inline-block; border-radius: 100%; background: #999; color: #fff; line-height: 15px; text-align: center; margin-top: 7px; }
+.deposit_2 .depositHelpBox { position: absolute; bottom: 0; top: 0; left: 0; right: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 999; }
+.deposit_2 .depositHelpBox .swiper-container { height: 100%; width: 100%; margin: auto; }
+.deposit_2 .depositHelpBox .swiper-slide { padding: 16%; position: relative; }
+.deposit_2 .depositHelpBox .swiper-slide img { width: 100%; }
+.deposit_2 .depositHelpBox .swiper-pagination-bullet { width: 18px; height: 18px; background: #fff; opacity: 1; }
+.deposit_2 .depositHelpBox .swiper-pagination-bullet-active { background: #fdbe00; }
+.deposit_2 .depositHelpBox .swiper-pagination { bottom: 20px; }
+.deposit_2 .depositHelpBox .closeHelpBox { width: 30px; height: 30px; font-size: 50px; z-index: 1100; transform: rotate(45deg); position: absolute; right: 25px; top: 25px; color: rgba(225, 225, 225, 0.8); }
+.deposit_2 .depositHelpBox .circle { padding: 15px; background: rgba(253, 0, 0, 0.8); border-radius: 100%; position: absolute; animation: changeSize 0.5s infinite; }
+@keyframes changeSize { 0% { transform: scale(0.9); }
+  60% { transform: scale(1.2); }
+  100% { transform: scale(0.9); } }
+.deposit_2 .depositHelpBox .qq-fansao .step-1 .circle { top: 42.5%; left: 28.5%; }
+.deposit_2 .depositHelpBox .qq-fansao .step-2 .circle { bottom: 27%; left: 47%; }
+.deposit_2 .depositHelpBox .qq-fansao .step-3 .circle { top: 32.5%; left: 44%; }
+.deposit_2 .depositHelpBox .wechat-fansao .step-1 .circle { top: 34.5%; left: 31%; }
+.deposit_2 .depositHelpBox .wechat-fansao .step-2 .circle { bottom: 67%; left: 28%; }
+.deposit_2 .depositHelpBox .wechat-fansao .step-3 .circle { top: 34%; left: 45%; }
+.deposit_2 .depositHelpBox .alipay-fansao .step-1 .circle { top: 25%; left: 39%; }
+.deposit_2 .depositHelpBox .alipay-fansao .step-2 .circle { bottom: 62%; left: 44%; }
 
 /*弹窗*/
 .masker { position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); display: none; }
