@@ -1,6 +1,22 @@
 var BaseDeposit = function () {
     var _this = this;
     var active_dialog = null;
+    var mySwiper = null;
+    var activityData = null;
+    this.initSwip = function () {
+        if (!_this.mySwiper) {
+            _this.mySwiper = new Swiper('.swiper-container', {
+                observer: true,
+                observeParents: true,
+                pagination: {
+                    el: '.swiper-pagination'
+                }
+            });
+            for (var i = 0; i < _this.mySwiper.length; i++) {
+                _this.mySwiper[i].init();
+            }
+        }
+    };
     this.quickCheckMoney = function (obj, options) {
         document.getElementById("result.rechargeAmount").value = options.mone;
     };
@@ -48,11 +64,16 @@ var BaseDeposit = function () {
             async: false,
             dataType: 'text/html',
             success: function (data) {
-                _this.active_dialog  = mui.alert(data, '消息');
-                $('.mui-popup').addClass('deposit_promo_dialog');
-                mui('.pro_lis .mui-scroll-wrapper').scroll();
-                $('.mui-popup').find(".mui-popup-button").html('').append("<i class='mui-icon mui-icon-close'></i>");
-                $('.mui-popup-inner').find('br').remove();
+                _this.activityData = data;
+                var failureCount = $(data).find("#failureCount").attr('failureCount');
+                if (failureCount >= 3) {
+                    //失败次数大于三次则提示
+                    $("#failureHints").show();
+                    $("#failureHintsMasker").show();
+                } else {
+                    //显示活动信息
+                    _this.showActivity();
+                }
             },
             error: function (xhr) {
                 toast(window.top.message.deposit_auto['提交失败请刷新']);
@@ -60,6 +81,15 @@ var BaseDeposit = function () {
             }
         };
         muiAjax(options);
+    };
+    this.showActivity = function () {
+        $("#failureHints").hide();
+        $("#failureHintsMasker").hide();
+        _this.active_dialog = mui.alert(_this.activityData, '消息');
+        $('.mui-popup').addClass('deposit_promo_dialog');
+        mui('.pro_lis .mui-scroll-wrapper').scroll();
+        $('.mui-popup').find(".mui-popup-button").html('').append("<i class='mui-icon mui-icon-close'></i>");
+        $('.mui-popup-inner').find('br').remove();
     };
     //提交充值信息
     this.submitDeposit = function (obj, options) {
@@ -71,7 +101,7 @@ var BaseDeposit = function () {
             $form.find("input[name=activityId]").val(activityId);
         }
         //将提示层删除...
-        if(_this.active_dialog){
+        if (_this.active_dialog) {
             _this.active_dialog.close();
         }
         var options = {
@@ -102,7 +132,7 @@ var BaseDeposit = function () {
                         toast(data.msg);
                         if (data.accountNotUsing) {
                             setTimeout(function () {
-                                this.goToDepositPage();
+                                goToDepositPage();
                             }, 2000);
                         }
                     }
@@ -149,8 +179,6 @@ var BaseDeposit = function () {
             console.info('连接失败');
         };
     };
-
-
     //存款完成后调用:在线支付
     this.success = function () {
         /**存款成功后弹窗提示*/
