@@ -150,7 +150,7 @@ height: 44px;
 .casino-list-bar{    background-color: #efefef;border-bottom: 1px solid #ccc;
     .mui-icon-back{color: #666;}
 }
-.mui-content-casino-list{padding-top: 44px !important;background: #fff;
+.mui-content-casino-list{padding-top: 44px !important;background: #fff;height:100%;
     .casino-wrap{padding:10px;}
     .electronic-search{position: relative;margin: 10px;
         input{margin: 0;height: 35px;font-size: 14px;border: 1px solid #ccc;padding-right: 100px;color: #333;}
@@ -164,9 +164,47 @@ height: 44px;
         .img-wrap{background: #fff;padding: 8px 0;
             img{width: 70px;height:70px;vertical-align: middle;}
         }
-        
     }
-
+}
+    //顶部带api滑动的最新版电子：
+    
+.casino-page-bar{
+    .icon-list1{background:url(images/icon-casino-list1.png) center no-repeat/100%;width:24px;height:24px;margin:10px 5px 0;}
+    .icon-list2{background:url(images/icon-casino-list2.png) center no-repeat/100%;width:22px;height:22px;margin:12px 5px 0;}
+    .mui-icon.mui-icon-search{margin-right:0;padding-right:0;}
+}
+.mui-content-casino-page{padding-top: 44px !important;background: #fff;height:100%;
+    .electronic-search{position: relative;margin: 10px;
+        input{margin: 0;height: 35px;font-size: 14px;border: 1px solid #ccc;padding-right: 100px;color: #333;}
+        .btn-search{position: absolute;right: 0;top: 0;font-size: 14px;color: #333;height: 35px;line-height: 35px;text-align: center;width: 84px;background: #ccc;border-top-right-radius: 3px;    border-bottom-right-radius: 3px;}
+        .mui-icon-clear{right: 80px;    top: 8px;}
+    }
+    .casino-list{position:relative;
+//          宫格状排列：
+        a{text-align: center;display: block;    margin: 10px auto 0;width:100px;border-radius:5px;box-shadow: 0 2px 4px #bbb;
+            p{height: 30px;line-height: 24px;margin-bottom:5px;color: #333;font-size: 12px;white-space: nowrap;    overflow: hidden;    text-overflow: ellipsis;}
+        }
+        .img-wrap{background: #fff;position:relative;
+            img{width: 100px;vertical-align: middle;border-top-left-radius: 6px;border-top-right-radius: 6px;}
+        }
+        .icon-api{position:absolute;width:22px;height:22px;display:block;right:-5px;top:-5px;}
+        .icon-api-ag{background: url(images/casino-game-ag.png) center no-repeat/100%;}
+        .hot{color:#fe0000;display:none;}
+        .name{display:none;}
+//      整排状排列：
+        .item{
+            a{width:100%;padding:10px;box-shadow: none;margin:0;
+                &:after{content:'';clear:both;display:block;}
+                p{font-size:14px;height:auto;margin:8px 0 0 0;text-align: left;padding-left:15px;line-height:14px;}
+            }
+            .icon-play{display:block;float:right;width:28px;height:28px;background:url(images/icon-casino-play.png) center/100%;margin-top:-20px;}
+            .hot{display:block;}
+            .name{float: left;padding-left: 15px;font-size: 12px; color: #999; margin-top: 19px; line-height: 12px;display:block;}
+            .img-wrap{background: #fff;position:relative;float:left;
+                img{width: 100px;vertical-align: middle;border-radius: 6px;height:75px;}
+            }
+        }    
+    }
     //新版电子顶部api切换：
     .api-scroll{height:105px;background:#000;
         &:before{position:absolute;top:0;width:170px;content:'';background:radial-gradient(#460119,#000);height:80px;left:0;right:0;margin:-20px auto;}
@@ -180,21 +218,19 @@ height: 44px;
             }
         } 
     }
-    #apiScroll-wrap{position: absolute; z-index: 8;top: 44px; bottom: 0; left: 0; width: 100%;}
+    #pull_apiScroll { text-align: center;  color: #00a9f2; position: absolute;z-index: 10;
+            top: -62px; background: #f2f2f2; height: 105px; width: 100%;  }
+    #pull_apiScroll.active{top: 0;}
     #apiScroll-wrap.active{ top: 70px; }
-            #pull_apiScroll {
-            text-align: center;
-            color: #00a9f2;
-            position: absolute;
-            z-index: 10;
-            top: -62px;
-            background: #f2f2f2;
-            height: 105px;
-            width: 100%;
+    #apiScroll-wrap{position: absolute; z-index: 8;top: 44px; bottom: 0; left: 0; width: 100%;color:#333;background:#fff;
+        .g-t-slide-indicators{border-bottom:1px solid #ddd;
+            .swiper-slide-active{color:#1766bb;border-color:#1766bb;}
         }
-        #pull_apiScroll.active{top: 0;}
+    }
 
 }
+
+
 .casino-game-type{
     .g-t-slide-indicators{
         .swiper-slide{width: 80px;    height: 34px;
