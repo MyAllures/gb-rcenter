@@ -88,7 +88,7 @@ MSiteComet.prototype = {
                 {subscribeType: "PCENTER-dialog-Notice", callBack: popUp.dialogCallBack},
                 {subscribeType: "MSITE-Player-Announcement-Notice", callBack: popUp.dialogCallBack},
                 {subscribeType: "MCENTER_READ_COUNT", callBack: popUp.dialogCallBack},
-                {subscribeType: "MSITE-ONLINERECHARGE", callBack: popUp.dialogCallBack},
+                {subscribeType: "MSITE-ONLINERECHARGE", callBack: popUp.depositResultCallBack},
                 {subscribeType: "MSITE_DIGICCY_REFRESH_BALANCE", callBack: popUp.dialogCallBack}
             ];
             _this.subscribeMsgs(subscribes);
