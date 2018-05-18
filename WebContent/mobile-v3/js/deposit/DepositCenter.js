@@ -8,6 +8,7 @@ $(function () {
     if (!isNative) {
         $("#depositBack").show();
     }
+
 });
 
 /**

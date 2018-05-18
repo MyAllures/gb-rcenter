@@ -117,13 +117,11 @@ var BaseDeposit = function () {
                     var state = data.state;
                     $("input[name='gb.token']").val(data.token);
                     if (state == true) {
-                        var orderNo = data.orderNo;
                         var payUrl = data.payUrl;
                         if (payUrl) {
                             var newWindow = window.open("about:blank", '_blank');
                             newWindow.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/oval.svg'></div>");
                             newWindow.location = payUrl;
-                            _this.sendComm(orderNo);
                             _this.success();
                         } else {
                             $("#successMasker , .window-ok").attr("style", "display: block;");
@@ -157,27 +155,6 @@ var BaseDeposit = function () {
         }
         var url = "/wallet/v3/deposit/nextStep.html?rechargeType=" + $("input[name='result.rechargeType']").val() + "&depositCash=" + rechargeAmount.val() + "&channel=" + $("#channel").val() + "&searchId=" + key + "&v=" + Math.random();
         goToUrl(url);
-    };
-
-    //等待通知信息
-    this.sendComm = function (transactionNo) {
-        var param = {
-            url: mdRoot,
-            localeType: language.replace("-", "_"), isImmediatelyConnect: true
-        };
-        param.success = function () {
-            console.info(window.top.message.deposit_auto['连接成功']);
-            subscribeMsg("MSITE-ONLINERECHARGE", function (data) {
-                var result = eval("(" + eval("(" + data + ")").msgBody + ")");
-                var orderId = result.orderId;
-                if (orderId == transactionNo) {
-                    linkResult(orderId);
-                }
-            });
-        };
-        param.failure = function () {
-            console.info('连接失败');
-        };
     };
     //存款完成后调用:在线支付
     this.success = function () {
