@@ -3,13 +3,19 @@ var depositMap = {};
 
 $(function () {
     copy();
-    muiInit(muiDefaultOptions);
+    var depositOptions = $.extend({}, muiDefaultOptions);
+    muiInit(depositOptions);
+    removeBodyFocus();
     //原生返回按钮不展示
-    if (!isNative) {
-        $("#depositBack").show();
-    }
-
+    $("#depositBack").show();
 });
+
+function removeBodyFocus() {
+    var focusElement = document.getElementsByTagName("body")[0];
+    $(focusElement).bind('cssClassChanged',function(){
+
+    });
+}
 
 /**
  * 跳转快充
