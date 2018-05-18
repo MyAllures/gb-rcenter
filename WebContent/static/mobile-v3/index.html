@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../../mobile-v3/themes/hongbao.css" />  
 </head>
 <body>
+<style> body.hidden{overflow:hidden;}</style>
 <!-- 主页面标题 -->
 <header class="mui-bar mui-bar-nav">
 	<a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
@@ -93,7 +94,7 @@
 			</div>
 		</div>
 	</div>
-  <a href="javascript:;" class='mui-icon mui-icon-search mui-pull-right'></a>
+  <a href="javascript:;" class='mui-icon mui-icon-search mui-pull-right home-bar-search'></a>
 </header>
 <div class="mui-content home-content">
 		<!-- 主界面具体展示内容 -->
@@ -853,6 +854,75 @@
     	<span class="loading-img loading-entirety"><img src="../../mobile-v3/images/oval.svg" alt></span>
     </div>-->
     <!--红包html结束-->	
+  
+  <!--首页收藏弹框：-->
+  <div class="home-collect-dialog">
+    <div class="inputBox">
+      <label for="" class='mui-icon mui-icon-search'></label>
+      <input type="text" placeholder="搜索游戏"/>
+    </div>
+    <p class='star'><i class='icon-star'></i>我的收藏夹</p>
+    <!--登陆前：-->
+    <div class="wraning">
+      <p>您需要登录才可以收藏游戏哦~</p>
+      <a href="login.html" class='mui-btn mui-btn-blue'>登录</a>
+    </div>   
+    <!--登陆后：-->
+    <div class="mui-scroll-wrapper collect-list" style='display:none;'>
+      <div class="mui-scroll">
+        <div class="item">
+          <a href="#">
+            <div class="img-wrap"><img src="../../mobile-v3/images/casino-game-1.png" /></div>
+            <p>所有游戏</p>
+            <i class='icon-play'></i>
+          </a>
+        </div>
+        
+        <div class="item">
+          <a href="#">
+            <div class="img-wrap"><img src="../../mobile-v3/images/casino-game-1.png" /></div>
+            <p>所有游戏</p>
+            <i class='icon-play'></i>
+          </a>
+        </div>
+        <div class="item">
+          <a href="#">
+            <div class="img-wrap"><img src="../../mobile-v3/images/casino-game-1.png" /></div>
+            <p>所有游戏</p>
+            <i class='icon-play'></i>
+          </a>
+        </div>
+        <div class="item">
+          <a href="#">
+            <div class="img-wrap"><img src="../../mobile-v3/images/casino-game-1.png" /></div>
+            <p>所有游戏</p>
+            <i class='icon-play'></i>
+          </a>
+        </div>
+        <div class="item">
+          <a href="#">
+            <div class="img-wrap"><img src="../../mobile-v3/images/casino-game-1.png" /></div>
+            <p>所有游戏</p>
+            <i class='icon-play'></i>
+          </a>
+        </div>
+        <div class="item">
+          <a href="#">
+            <div class="img-wrap"><img src="../../mobile-v3/images/casino-game-1.png" /></div>
+            <p>所有游戏</p>
+            <i class='icon-play'></i>
+          </a>
+        </div>
+        <div class="item">
+          <a href="#">
+            <div class="img-wrap"><img src="../../mobile-v3/images/casino-game-1.png" /></div>
+            <p>所有游戏</p>
+            <i class='icon-play'></i>
+          </a>
+        </div>
+      </div>
+    </div>  
+  </div>
 
 <script src="../../mobile-v3/js/mui/mui.min.js"></script>
 <script src="../../mobile-v3/js/jquery/jquery-2.1.1.js"></script>
@@ -863,6 +933,18 @@
 <script type="text/javascript">	
 	//首页脚本
 	$(function(){
+    
+//  首页收藏弹框:
+
+    $('.home-bar-search').click(function(){
+      $('.home-collect-dialog').toggle();
+      $('body').toggleClass('hidden');
+    });
+
+    mui('.mui-scroll-wrapper').scroll({
+      deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+    });
+
 	/*侧滑菜单脚本*/
 	$(".index-canvas-wrap").on("tap",".mui-icon-closeempty",function(e){
 		//e.preventDefault();

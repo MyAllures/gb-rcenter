@@ -263,7 +263,9 @@ li{
     }
 }
 
-.mui-bar-nav{z-index: 997;}
+.mui-bar-nav{z-index: 997;
+    &>.mui-icon.home-bar-search{margin-right: 0;color:#fff;}
+}
 
 /* index-canvas-show 首页的侧滑菜单 */
 .index-canvas-wrap{    position: absolute;    top: 0;    bottom: 0;    z-index: 9999;left: -100%;-webkit-transition: all 0.5s  ease-in-out;transition: all 0.5s  ease-in-out;
@@ -4019,5 +4021,35 @@ body.mine-user{color: #000;
                 &:before{    position: absolute;    left: 50%;    margin-left: -31px;    top: 17px;}
             }
         }
+    }
+}
+
+//新版首页收藏弹框：
+.home-collect-dialog{position:absolute;top:45px;bottom:0;left:0;right:0;display:none;  z-index:999;background:rgba(0,0,0,0.7);
+    .inputBox{width:75%;margin:25px auto;display:flex;align-items: center;background:#cfcfcf;height:35px;line-height:35px;border-radius:17px;padding-left:10px;
+        label{color:#666;}
+        input{margin:0;background:none;height:35px;line-height:35px;border:none;color:#999;font-size:14px;}
+    }  
+    .star{text-align:center;color:#fff;
+        .icon-star{margin-right:3px;width:20px;height:20px;background:url(images/star.png) center no-repeat/100%;display:inline-block;vertical-align: middle;}
+    }
+    //登陆前
+    .wraning{
+        p{text-align:center;color:#fff;font-size:14px;margin-top:50px;}
+        .mui-btn{width:75%;margin:20px auto;display:block;}    
+    }
+    //  登陆后：
+    .collect-list{top:140px;bottom:30px;
+        .item{height:75px;margin:0 15px;
+            a{width:100%;padding:15px 12px 0;border-top: 1px solid #525252;display:block;
+                &:after{content:'';clear:both;display:block;}
+                p{font-size:14px;height:auto;margin:8px 0 0 0;float: left;padding-left:15px;line-height:28px;color:#fff;}
+            }
+            .icon-play{display:block;float:right;width:28px;height:28px;background:url(images/icon-casino-play.png) center/100%;margin-top:8px;}
+            .img-wrap{background: #fff;position:relative;float:left;width:45px;height: 45px;border-radius: 4px;overflow:hidden;
+                img{width:45px;height: 45px;vertical-align: middle;}
+            }
+        }    
+        
     }
 }
