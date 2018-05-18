@@ -1515,7 +1515,7 @@ body.deposit{
         }
         &.bit_coin_card{
             .bank_car_txt_info{padding: 10px 5px;
-                .b_c_t_i_row{position: relative;}
+                .b_c_t_i_row{position: relative;width:100%;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
                 .b_c_t_i_row+.b_c_t_i_row:before{content: '';position: absolute;top: -4px;left: 0;right: 0;background: #f2f2f2;height: 1px;}
             }
         }

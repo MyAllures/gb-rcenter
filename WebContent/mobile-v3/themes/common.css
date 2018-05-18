@@ -593,7 +593,7 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .bank_car_item .bank_car_txt_info .b_c_t_i_row { margin-bottom: 6px; }
 .deposit_2 .bank_car_item .bank_car_txt_info .b_c_t_i_row:last-child { margin-bottom: 0; }
 .deposit_2 .bank_car_item.bit_coin_card .bank_car_txt_info { padding: 10px 5px; }
-.deposit_2 .bank_car_item.bit_coin_card .bank_car_txt_info .b_c_t_i_row { position: relative; }
+.deposit_2 .bank_car_item.bit_coin_card .bank_car_txt_info .b_c_t_i_row { position: relative; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .deposit_2 .bank_car_item.bit_coin_card .bank_car_txt_info .b_c_t_i_row + .b_c_t_i_row:before { content: ''; position: absolute; top: -4px; left: 0; right: 0; background: #f2f2f2; height: 1px; }
 .deposit_2 .wechat-code { text-align: center; border-top: 1px solid #f3f3f3; padding: 10px; }
 .deposit_2 .wechat-code .cod-img-wrap { border: 1px solid #f3f3f3; border-radius: 2px; padding: 10px 0; width: 224px; margin: 0 auto 10px; }
