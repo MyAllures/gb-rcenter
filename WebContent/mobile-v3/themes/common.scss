@@ -1471,6 +1471,7 @@ body.deposit{
                         &.tzb{background-position:-2px -835px;}/* 27 台州银行 */
                         &.ysf{background-position:-2px -904px;} /* 易支付 */
                         &.yima-pay{background-position:-2px -927px;}
+                        &.yishou-pay{background-position:-2px -904px;} /* 易支付 */ 
                     }
                     .bank_n_txt{display: inline-block;}
                 }
@@ -1500,6 +1501,7 @@ body.deposit{
     }
     .bank_car_item{//银行卡样式
         width: (535px/2);background: #f7f7f7;border-radius: 4px;margin:0 auto 10px;padding: 5px 14px 12px;
+        .pay-txt{vertical-align: middle;color:#666;}
         .top{
             overflow: hidden;
             .car_type{float: right;font-size: 12px;color: #333;height: 30px; line-height: 30px;}

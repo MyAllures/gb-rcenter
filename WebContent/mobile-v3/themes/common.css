@@ -529,7 +529,7 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w { float: left; width: 50%; padding: 0 6px; font-size: 14px; color: #333; margin-bottom: 20px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i { background: #f2f2f2; height: 35px; line-height: 35px; border-radius: 2px; padding-left: 10px; border: 1px solid #f2f2f2; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i.cur { border-color: #1766bb; }
-.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n { background: url(images/pay_bank_b.png) no-repeat; background-size: 25px; display: inline-block; width: 26px; height: 20px; vertical-align: top; margin-top: 8px; margin-right: 8; /* 浦发银行*/ /* 民生*/ /*  交通银行 */ /*光大*/ /* 10 平安银行 */ /* 11 兴业银行 */ /* 12 北京银行 */ /* 13 中信银行 */ /* 14 广发银行 */ /* 16 江苏银行 */ /* 18 上海银行 */ /* 19 渤海银行 */ /* 20 东亚银行 */ /* 21 宁波银行 */ /* 22 浙商银行 */ /* 23 杭州银行 */ /* 24 广州银行 */ /* 25 福建农商银行 */ /* 26 恒生银行 */ /* 27 台州银行 */ /* 易支付 */ }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n { background: url(images/pay_bank_b.png) no-repeat; background-size: 25px; display: inline-block; width: 26px; height: 20px; vertical-align: top; margin-top: 8px; margin-right: 8; /* 浦发银行*/ /* 民生*/ /*  交通银行 */ /*光大*/ /* 10 平安银行 */ /* 11 兴业银行 */ /* 12 北京银行 */ /* 13 中信银行 */ /* 14 广发银行 */ /* 16 江苏银行 */ /* 18 上海银行 */ /* 19 渤海银行 */ /* 20 东亚银行 */ /* 21 宁波银行 */ /* 22 浙商银行 */ /* 23 杭州银行 */ /* 24 广州银行 */ /* 25 福建农商银行 */ /* 26 恒生银行 */ /* 27 台州银行 */ /* 易支付 */ /* 易支付 */ }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.unionpay { background-position: 0 -3px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.onlinepay { background-position: 0 -3px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.wechatpay { background-position: 0px -26px; }
@@ -570,6 +570,7 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.tzb { background-position: -2px -835px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.ysf { background-position: -2px -904px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.yima-pay { background-position: -2px -927px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.yishou-pay { background-position: -2px -904px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n_txt { display: inline-block; }
 .deposit_2 .depo_row { border-top: 1px solid #f3f3f3; display: flex; height: 50px; font-size: 14px; }
 .deposit_2 .depo_row .label { width: 100px; line-height: 49px; padding-left: 10px; color: #666; }
@@ -584,6 +585,7 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .deposit_help { padding: 0 20px 40px; font-size: 12px; color: #666; }
 .deposit_2 .deposit_help p { margin-bottom: 0; }
 .deposit_2 .bank_car_item { width: 267.5px; background: #f7f7f7; border-radius: 4px; margin: 0 auto 10px; padding: 5px 14px 12px; }
+.deposit_2 .bank_car_item .pay-txt { vertical-align: middle; color: #666; }
 .deposit_2 .bank_car_item .top { overflow: hidden; }
 .deposit_2 .bank_car_item .top .car_type { float: right; font-size: 12px; color: #333; height: 30px; line-height: 30px; }
 .deposit_2 .bank_car_item .bank_car_txt_info { background: #fff; font-size: 14px; color: #333; padding: 20px 5px; border-radius: 3px; }
