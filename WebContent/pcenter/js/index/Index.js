@@ -51,7 +51,7 @@ define([], function () {
         },
 
         initBackgroundBlur:function () {
-            var $avatarEl = $('.banner');
+            var $avatarEl = $('.banner-bg');
             var $avatarHolderEl = $('.banner-bg');
             var images = [];
             var avatars = [];
@@ -69,7 +69,7 @@ define([], function () {
 
             $avatarHolderEl.backgroundBlur({
                 imageURL : avatars[0], // URL to the image that will be used for blurring
-                blurAmount : 4, // Amount of blur (higher amount degrades browser performance)
+                blurAmount : 10, // Amount of blur (higher amount degrades browser performance)
                 imageClass : 'avatar-blur' // CSS class that will be applied to the image and to the SVG element,
             });
         },
