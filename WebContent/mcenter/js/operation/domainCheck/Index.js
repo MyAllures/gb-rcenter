@@ -25,9 +25,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
             window.top.topPage.ajax({
                 url: root + "/operation/domainCheckData/manualcheck.html",
                 type: "post",
-                dataType: "json",
                 cache: false,
-                async: false,
                 success: function (data) {
                     if(data=='0'){
                         window.top.topPage.showErrorMessage("域名检测资源繁忙，请2分钟后重试.");

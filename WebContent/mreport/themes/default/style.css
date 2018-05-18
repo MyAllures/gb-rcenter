@@ -234,11 +234,11 @@ em {
     color: #515d6e;
     /* line-height: 30px; */
 }
-.form-group {
+.top .form-group {
     margin-bottom: 1rem;
     margin-left: 32%;
 }
-.input-group {
+.top .input-group {
     position: relative;
     display: -webkit-box;
     display: -ms-flexbox;

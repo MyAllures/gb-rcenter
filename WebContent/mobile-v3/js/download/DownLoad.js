@@ -12,6 +12,7 @@ function download(obj, options) {
         toast("暂无设置下载地址，请联系客服！");
         return;
     }
+    complete(obj);
     //谷歌浏览器不支持新开跳转打开下载
     var ua = navigator.userAgent.toLowerCase();
     if (ua.indexOf('chrome') !== -1) {
@@ -22,4 +23,8 @@ function download(obj, options) {
     if (!win) {
         window.location.href = url;
     }
+}
+function complete(obj){
+    $(obj).addClass("loading");
+    $(obj).html('<i class="spinner"></i>请到桌面查看进度');
 }

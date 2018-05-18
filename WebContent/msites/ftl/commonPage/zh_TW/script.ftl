@@ -1988,8 +1988,8 @@
                             $(".fav_a").addClass("fav_ed")
                             $(".fav_a").attr("data-game-collect","false");
                         }
+                        alert(data.msg);
                     }
-                    alert(data.msg);
                 },
                 error:function (data) {
                     alert(data.msg);

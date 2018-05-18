@@ -35,6 +35,16 @@ function initSendPhoneCode() {
 //发送手机验证码
 function sendPhoneCode() {
     var $phone = $("[name='search.contactValue']");
+    /*var reg = '/^\d{7,20}$/';
+    if (!reg.text($phone.val())){
+        toast("手机号码格式不正确，请输入7-20位纯数字");
+        return;
+    }*/
+    var phone = $phone.val();
+    if (!phone){
+        toast("请输入7-20位纯数字");
+        return;
+    }
     var obj = $("#sendPhoneCode");
     if ($phone.valid()) {
         var options = {
@@ -75,9 +85,10 @@ function wait(t, obj, interval) {
 function bindMobile(obj, options) {
     var $oldPhone = $("[name='oldPhone']");
     if ($oldPhone.length > 0) {
-        if ($oldPhone.val() == "") {
+        var oldPhone = $oldPhone.val();
+        if (oldPhone) {
             return toast("旧手机号码不能为空");
-        } else if ($oldPhone.val() == $("[name='search.contactValue']").val()) {
+        } else if (oldPhone == $("[name='search.contactValue']").val()) {
             return toast("旧手机号码不能与新手机号码一致");
         }
     }
