@@ -1,6 +1,7 @@
 var DepositScanCode = function () {
     var _this = this;
     this.checkAccount = function (obj, options) {//选择银行后触发
+        $("#btn_default").hide();
         $('#scan_Bank_List').find(".bank_list_i").removeClass("cur");
         $(obj).find(".bank_list_i").addClass("cur");
         var account = $(obj).find("input")[0];
@@ -42,6 +43,9 @@ var DepositScanCode = function () {
         } else {
             $("#reverseSacn_div").hide();
         }
+    };
+    this.defBtnTap = function (obj, options) {
+        toast("请选择一个存款方式.");
     };
     //显示反扫教程
     this.showReScanCourse = function (obj, options) {
