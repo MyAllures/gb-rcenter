@@ -140,6 +140,7 @@ li { list-style: none; }
 .lang-menu li a { display: block; width: 100%; height: 100%; font-size: 0; }
 
 .mui-bar-nav { z-index: 997; }
+.mui-bar-nav > .mui-icon.home-bar-search { margin-right: 0; color: #fff; }
 
 /* index-canvas-show 首页的侧滑菜单 */
 .index-canvas-wrap { position: absolute; top: 0; bottom: 0; z-index: 9999; left: -100%; -webkit-transition: all 0.5s  ease-in-out; transition: all 0.5s  ease-in-out; }
@@ -528,7 +529,7 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w { float: left; width: 50%; padding: 0 6px; font-size: 14px; color: #333; margin-bottom: 20px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i { background: #f2f2f2; height: 35px; line-height: 35px; border-radius: 2px; padding-left: 10px; border: 1px solid #f2f2f2; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i.cur { border-color: #1766bb; }
-.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n { background: url(images/pay_bank_b.png) no-repeat; background-size: 25px; display: inline-block; width: 26px; height: 20px; vertical-align: top; margin-top: 8px; margin-right: 8; /* 浦发银行*/ /* 民生*/ /*  交通银行 */ /*光大*/ /* 10 平安银行 */ /* 11 兴业银行 */ /* 12 北京银行 */ /* 13 中信银行 */ /* 14 广发银行 */ /* 16 江苏银行 */ /* 18 上海银行 */ /* 19 渤海银行 */ /* 20 东亚银行 */ /* 21 宁波银行 */ /* 22 浙商银行 */ /* 23 杭州银行 */ /* 24 广州银行 */ /* 25 福建农商银行 */ /* 26 恒生银行 */ /* 27 台州银行 */ /* 易支付 */ }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n { background: url(images/pay_bank_b.png) no-repeat; background-size: 25px; display: inline-block; width: 26px; height: 20px; vertical-align: top; margin-top: 8px; margin-right: 8; /* 浦发银行*/ /* 民生*/ /*  交通银行 */ /*光大*/ /* 10 平安银行 */ /* 11 兴业银行 */ /* 12 北京银行 */ /* 13 中信银行 */ /* 14 广发银行 */ /* 16 江苏银行 */ /* 18 上海银行 */ /* 19 渤海银行 */ /* 20 东亚银行 */ /* 21 宁波银行 */ /* 22 浙商银行 */ /* 23 杭州银行 */ /* 24 广州银行 */ /* 25 福建农商银行 */ /* 26 恒生银行 */ /* 27 台州银行 */ /* 易支付 */ /* 易支付 */ }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.unionpay { background-position: 0 -3px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.onlinepay { background-position: 0 -3px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.wechatpay { background-position: 0px -26px; }
@@ -568,6 +569,8 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.hangseng { background-position: -3px -806px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.tzb { background-position: -2px -835px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.ysf { background-position: -2px -904px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.yima-pay { background-position: -2px -927px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.yishou-pay { background-position: -2px -904px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n_txt { display: inline-block; }
 .deposit_2 .depo_row { border-top: 1px solid #f3f3f3; display: flex; height: 50px; font-size: 14px; }
 .deposit_2 .depo_row .label { width: 100px; line-height: 49px; padding-left: 10px; color: #666; }
@@ -582,6 +585,7 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .deposit_help { padding: 0 20px 40px; font-size: 12px; color: #666; }
 .deposit_2 .deposit_help p { margin-bottom: 0; }
 .deposit_2 .bank_car_item { width: 267.5px; background: #f7f7f7; border-radius: 4px; margin: 0 auto 10px; padding: 5px 14px 12px; }
+.deposit_2 .bank_car_item .pay-txt { vertical-align: middle; color: #666; }
 .deposit_2 .bank_car_item .top { overflow: hidden; }
 .deposit_2 .bank_car_item .top .car_type { float: right; font-size: 12px; color: #333; height: 30px; line-height: 30px; }
 .deposit_2 .bank_car_item .bank_car_txt_info { background: #fff; font-size: 14px; color: #333; padding: 20px 5px; border-radius: 3px; }
@@ -589,7 +593,7 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .bank_car_item .bank_car_txt_info .b_c_t_i_row { margin-bottom: 6px; }
 .deposit_2 .bank_car_item .bank_car_txt_info .b_c_t_i_row:last-child { margin-bottom: 0; }
 .deposit_2 .bank_car_item.bit_coin_card .bank_car_txt_info { padding: 10px 5px; }
-.deposit_2 .bank_car_item.bit_coin_card .bank_car_txt_info .b_c_t_i_row { position: relative; }
+.deposit_2 .bank_car_item.bit_coin_card .bank_car_txt_info .b_c_t_i_row { position: relative; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .deposit_2 .bank_car_item.bit_coin_card .bank_car_txt_info .b_c_t_i_row + .b_c_t_i_row:before { content: ''; position: absolute; top: -4px; left: 0; right: 0; background: #f2f2f2; height: 1px; }
 .deposit_2 .wechat-code { text-align: center; border-top: 1px solid #f3f3f3; padding: 10px; }
 .deposit_2 .wechat-code .cod-img-wrap { border: 1px solid #f3f3f3; border-radius: 2px; padding: 10px 0; width: 224px; margin: 0 auto 10px; }
@@ -598,6 +602,28 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .wechat-code.bit_coin_c .cod-btn-wrap .mui-btn { width: 116px; }
 .deposit_2 .wechat-code img { width: 116px; height: 116px; display: inline-block; border-top: 1px solid #f3f3f3; }
 .deposit_2 .wechat-code .tit { margin: 0 auto; width: 130px; height: 30px; line-height: 30px; border-top-left-radius: 0; border-top-right-radius: 0; }
+.deposit_2 .depositHelp { color: #1766bb; padding: 0 10px 0; margin: 0; }
+.deposit_2 .depositHelp span { width: 15px; height: 15px; display: inline-block; border-radius: 100%; background: #999; color: #fff; line-height: 15px; text-align: center; margin-top: 7px; }
+.deposit_2 .depositHelpBox { position: absolute; bottom: 0; top: 0; left: 0; right: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 999; }
+.deposit_2 .depositHelpBox .swiper-container { height: 100%; width: 100%; margin: auto; }
+.deposit_2 .depositHelpBox .swiper-slide { padding: 16%; position: relative; }
+.deposit_2 .depositHelpBox .swiper-slide img { width: 100%; }
+.deposit_2 .depositHelpBox .swiper-pagination-bullet { width: 18px; height: 18px; background: #fff; opacity: 1; }
+.deposit_2 .depositHelpBox .swiper-pagination-bullet-active { background: #fdbe00; }
+.deposit_2 .depositHelpBox .swiper-pagination { bottom: 20px; }
+.deposit_2 .depositHelpBox .closeHelpBox { width: 30px; height: 30px; font-size: 50px; z-index: 1100; transform: rotate(45deg); position: absolute; right: 25px; top: 25px; color: rgba(225, 225, 225, 0.8); }
+.deposit_2 .depositHelpBox .circle { padding: 15px; background: rgba(253, 0, 0, 0.8); border-radius: 100%; position: absolute; animation: changeSize 0.5s infinite; }
+@keyframes changeSize { 0% { transform: scale(0.9); }
+  60% { transform: scale(1.2); }
+  100% { transform: scale(0.9); } }
+.deposit_2 .depositHelpBox .qq-fansao .step-1 .circle { top: 42.5%; left: 28.5%; }
+.deposit_2 .depositHelpBox .qq-fansao .step-2 .circle { bottom: 27%; left: 47%; }
+.deposit_2 .depositHelpBox .qq-fansao .step-3 .circle { top: 32.5%; left: 44%; }
+.deposit_2 .depositHelpBox .wechat-fansao .step-1 .circle { top: 34.5%; left: 31%; }
+.deposit_2 .depositHelpBox .wechat-fansao .step-2 .circle { bottom: 67%; left: 28%; }
+.deposit_2 .depositHelpBox .wechat-fansao .step-3 .circle { top: 34%; left: 45%; }
+.deposit_2 .depositHelpBox .alipay-fansao .step-1 .circle { top: 25%; left: 39%; }
+.deposit_2 .depositHelpBox .alipay-fansao .step-2 .circle { bottom: 62%; left: 44%; }
 
 /*弹窗*/
 .masker { position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); display: none; }
@@ -1689,5 +1715,22 @@ body.mine-user .gb-select > a { color: #999; }
 .deposit_promo_dialog.mui-popup .mui-popup-button { background: transparent; height: 80px; line-height: 80px; }
 .deposit_promo_dialog.mui-popup .mui-popup-button .mui-icon { background: #fff; border-radius: 50%; width: 50px; height: 50px; vertical-align: top; margin-top: 24px; font-size: 63px; }
 .deposit_promo_dialog.mui-popup .mui-popup-button .mui-icon:before { position: absolute; left: 50%; margin-left: -31px; top: 17px; }
+
+.home-collect-dialog { position: absolute; top: 45px; bottom: 0; left: 0; right: 0; display: none; z-index: 999; background: rgba(0, 0, 0, 0.7); }
+.home-collect-dialog .inputBox { width: 75%; margin: 25px auto; display: flex; align-items: center; background: #cfcfcf; height: 35px; line-height: 35px; border-radius: 17px; padding-left: 10px; }
+.home-collect-dialog .inputBox label { color: #666; }
+.home-collect-dialog .inputBox input { margin: 0; background: none; height: 35px; line-height: 35px; border: none; color: #999; font-size: 14px; }
+.home-collect-dialog .star { text-align: center; color: #fff; }
+.home-collect-dialog .star .icon-star { margin-right: 3px; width: 20px; height: 20px; background: url(images/star.png) center no-repeat/100%; display: inline-block; vertical-align: middle; }
+.home-collect-dialog .wraning p { text-align: center; color: #fff; font-size: 14px; margin-top: 50px; }
+.home-collect-dialog .wraning .mui-btn { width: 75%; margin: 20px auto; display: block; }
+.home-collect-dialog .collect-list { top: 140px; bottom: 30px; }
+.home-collect-dialog .collect-list .item { height: 75px; margin: 0 15px; }
+.home-collect-dialog .collect-list .item a { width: 100%; padding: 15px 12px 0; border-top: 1px solid #525252; display: block; }
+.home-collect-dialog .collect-list .item a:after { content: ''; clear: both; display: block; }
+.home-collect-dialog .collect-list .item a p { font-size: 14px; height: auto; margin: 8px 0 0 0; float: left; padding-left: 15px; line-height: 28px; color: #fff; }
+.home-collect-dialog .collect-list .item .icon-play { display: block; float: right; width: 28px; height: 28px; background: url(images/icon-casino-play.png) center/100%; margin-top: 8px; }
+.home-collect-dialog .collect-list .item .img-wrap { background: #fff; position: relative; float: left; width: 45px; height: 45px; border-radius: 4px; overflow: hidden; }
+.home-collect-dialog .collect-list .item .img-wrap img { width: 45px; height: 45px; vertical-align: middle; }
 
 /*# sourceMappingURL=common.css.map */
