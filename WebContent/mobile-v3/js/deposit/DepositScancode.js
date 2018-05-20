@@ -26,7 +26,7 @@ var DepositScanCode = function () {
             $(".scan_code_random").show();
         } else {
             $(".scan_code_random").hide();
-            $("input[name='result.randomCash']").val("");
+            $("input[name='result.randomCash']").val(0);
             $("#random_amount").hide();
         }
         //设置按钮显示
@@ -45,8 +45,10 @@ var DepositScanCode = function () {
         var player_bank = document.getElementById("result.payerBank").value;
         if (player_bank == 'wechat_micropay' || player_bank == 'alipay_micropay' || player_bank == 'qq_micropay') {
             baseDeposit.initSwip();
+            $("#isAuthCode").val(true);
             $("#reverseSacn_div").show();
         } else {
+            $("#isAuthCode").val("");
             $("#reverseSacn_div").hide();
         }
     };

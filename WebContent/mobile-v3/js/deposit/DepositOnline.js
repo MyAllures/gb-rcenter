@@ -26,7 +26,7 @@ var DepositOnline = function () {
         document.getElementById('onlinePayMin').value = min;
         document.getElementById('onlinePayMax').value = max;
         document.getElementById('account').value = item.account;
-        document.getElementById('result.rechargeAmount').setAttribute("placeholder", "" + siteCurrencySign + Number(min).toFixed(2) + "~" + siteCurrencySign + Number(max).toFixed(2));
+        document.getElementById('result.rechargeAmount').setAttribute("placeholder", "" + siteCurrencySign + item.minStr + "~" + siteCurrencySign + item.maxStr);
 
         //随机额度显示
         if(item.random==true){
