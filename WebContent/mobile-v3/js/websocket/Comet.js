@@ -87,7 +87,7 @@ MSiteComet.prototype = {
                 {subscribeType: "SITE_ANN", callBack: popUp.dialogCallBack},
                 {subscribeType: "PCENTER-dialog-Notice", callBack: popUp.dialogCallBack},
                 {subscribeType: "MSITE-Player-Announcement-Notice", callBack: popUp.dialogCallBack},
-                {subscribeType: "MCENTER_READ_COUNT", callBack: popUp.dialogCallBack},
+                {subscribeType: "MCENTER_READ_COUNT", callBack: popUp.messageCallBack}, //仅消息不弹窗
                 {subscribeType: "MSITE-ONLINERECHARGE", callBack: popUp.depositResultCallBack},
                 {subscribeType: "MSITE_DIGICCY_REFRESH_BALANCE", callBack: popUp.dialogCallBack}
             ];
