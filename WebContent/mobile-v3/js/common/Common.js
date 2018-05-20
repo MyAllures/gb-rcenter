@@ -78,8 +78,8 @@ function muiInit(options) {
         }
     }
     //禁用侧滑手势
-    if (options.disabledClass) {
-        var disableClass = options.disabledClass;
+    if (options.disabledHandSlip) {
+        var disableClass = options.disabledHandSlip;
         for (var i = 0; i < disableClass.length; i++) {
             if (document.querySelector(disableClass[i])) {
                 document.querySelector(disableClass[i]).addEventListener('drag', function (e) {
