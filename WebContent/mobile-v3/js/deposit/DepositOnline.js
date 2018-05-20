@@ -31,10 +31,11 @@ var DepositOnline = function () {
         //随机额度显示
         if(item.random==true){
             $("#random_area").show();
+            $(".scan_code_random").show();
         }else{
             $("#random_area").hide();
+            $(".scan_code_random").hide();
         }
-
     };
     this.nextStep = function (obj, options) {
         baseDeposit.activity();

@@ -23,7 +23,9 @@ var DepositScanCode = function () {
         if (randomAmount == "true") {
             $("input[name='result.randomCash']").val($('#randomValue').val());
             $("#random_amount").show();
+            $(".scan_code_random").show();
         } else {
+            $(".scan_code_random").hide();
             $("input[name='result.randomCash']").val("");
             $("#random_amount").hide();
         }
@@ -31,9 +33,13 @@ var DepositScanCode = function () {
         if ($("#depositChannel").val() == 'electronic') {
             $("#btn_electronicPay").show();
             $("#btn_scan").hide();
+            $(".scan_code").hide();
+            $(".electronic").show();
         } else {
             $("#btn_scan").show();
             $("#btn_electronicPay").hide();
+            $(".scan_code").show();
+            $(".electronic").hide();
         }
         //是否显示反扫
         var player_bank = document.getElementById("result.payerBank").value;
