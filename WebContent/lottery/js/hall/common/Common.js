@@ -233,14 +233,13 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
             }
             var clearBet_template = '\
         <div class="clearBet_template">\
-            <div class="l">\
+            <div class="l" style="height: 50px">\
                 <span>\
-                <i></i>\
+                <i style="bottom: 0"></i>\
                 </span>\
             </div>\
-            <div class="r">\
-                <p>' + this.curExpect + '期已结束，是否要清空已投注内容？</p>\
-                <p>要清空已投注内容请单击"确定",不刷新页面请点击"取消"</p>\
+            <div class="r" style="height: 50px">\
+                <p style="line-height: 50px">' + this.curExpect + '期已结束，是否要清空已投注内容？</p>\
             </div>\
             <div style="clear:both"></div>\
             <div class="btns" style="text-align:center">\
