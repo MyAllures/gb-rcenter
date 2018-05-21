@@ -49,19 +49,79 @@ function applyActivity() {
             }
             if (data.state) {
                 $('.status_success').removeClass('mui-hidden');
-                $('.promo_con_list').addClass('mui-hidden');
                 $('.status_failure').addClass('mui-hidden');
                 $('.btn_cust_serv').addClass('mui-hidden');
+                if (data.transactionErrorList) {
+                    for (j = 0; j < data.transactionErrorList.length; j++) {
+                        var iconHtml;
+                        if (data.transactionErrorList[j].state) {
+                            iconHtml = 'icon-pass';
+                        } else {
+                            iconHtml = 'icon-fail';
+                        }
+                        if (data.transactionErrorList[j].transactionNo) {
+                            var html = ['<li class="mui-table-view-cell">订单号：' + data.transactionErrorList[j].transactionNo,
+                                '<span class="' + iconHtml + '"></span>',
+                                '</li>'].join("");
+                            $('.promo_con_list .mui-table-view').append(html);
+                        }
+                        if (data.transactionErrorList[j].amount) {
+                            var html = ['<li class="mui-table-view-cell">金额：￥' + data.transactionErrorList[j].amount,
+                                '<span class="' + iconHtml + '"></span>',
+                                '</li>'].join("");
+                            $('.promo_con_list .mui-table-view').append(html);
+                        }
+                    }
+                } else {
+                    $('.promo_con_list').addClass('mui-hidden');
+                }
             } else {
                 $('.status_success').addClass('mui-hidden');
                 $('.promo_con_list').removeClass('mui-hidden');
                 $('.status_failure').removeClass('mui-hidden');
                 $('.btn_cust_serv').removeClass('mui-hidden');
-                if (data.msg) {
-                    var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.msg],
+                if (data.msg && typeof data.msg != 'undefined') {
+                    var message = window.top.message.apply_activity[data.msg];
+                    if (typeof message == 'undefined') {
+                        message = data.msg;
+                    }
+                    var html = ['<li class="mui-table-view-cell">' + message,
                         '<span class="icon-fail"></span>',
                         '</li>'].join("");
                     $('.promo_con_list .mui-table-view').append(html);
+                }
+                if (data.transactionErrorList) {
+                    for (j = 0; j < data.transactionErrorList.length; j++) {
+                        var iconHtml;
+                        var addOrder;
+                        var addAmount;
+                        if (data.transactionErrorList[j].state) {
+                            iconHtml = 'icon-pass';
+                        } else {
+                            iconHtml = 'icon-fail';
+                        }
+                        if (data.transactionErrorList[j].msg) {
+                            if (data.transactionErrorList[j].transactionNo) {
+                                addOrder = "存款订单号：" + data.transactionErrorList[j].transactionNo;
+                                var html = ['<li class="mui-table-view-cell">' + addOrder,
+                                    '<span class="icon-pass"></span>',
+                                    '</li>'].join("");
+                                $('.promo_con_list .mui-table-view').append(html);
+                            }
+                            if (data.transactionErrorList[j].money) {
+                                addAmount = data.transactionErrorList[j].money;
+                                var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.transactionErrorList[j].msg] + addAmount,
+                                    '<span class="' + iconHtml + '"></span>',
+                                    '</li>'].join("");
+                                $('.promo_con_list .mui-table-view').append(html);
+                            } else {
+                                var html = ['<li class="mui-table-view-cell">' + window.top.message.apply_activity[data.transactionErrorList[j].msg],
+                                    '<span class="' + iconHtml + '"></span>',
+                                    '</li>'].join("");
+                                $('.promo_con_list .mui-table-view').append(html);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -89,7 +149,7 @@ function fetchActivityProcess() {
                 $('.btn_cust_serv').addClass('mui-hidden');
                 return;
             }
-            if (code == 'deposit_send' && data.transactions) {
+            if (code == 'deposit_send' && data.transactions) {//存就送
                 var transactions = data.transactions;
                 var text;
                 for (var j = 0; j < transactions.length; j++) {
@@ -119,44 +179,75 @@ function fetchActivityProcess() {
                     $('.promo_item_list').append(html);
                     html = '';
                 }
-            } else if (data.preferentialRelations) {
+            } else if (code == 'effective_transaction' && data.preferentialRelations) {//有效投注额
                 var preferentialRelations = data.preferentialRelations;
                 var icon;
-                var text;
-                var proMoneText;
                 for (var j = 0; j < preferentialRelations.length; j++) {
                     if (data.effectivetransaction >= preferentialRelations[j].preferentialValue) {
                         icon = 'icon-pass';
                     } else {
                         icon = 'icon-fail';
                     }
-
-                    if (preferentialRelations[j].preferentialCode == 'total_transaction_ge') {
-                        text = '有效投注额满';
-                        proMoneText = '有效投注额';
-                    } else if (preferentialRelations[j].preferentialCode == 'profit_ge') {
-                        text = '盈利';
-                        proMoneText = '当前盈活亏损';
-                    }
-
-                    var html = ['<li class="mui-table-view-cell">条件' + preferentialRelations[j].orderColumn + ":" + text + preferentialRelations[j].preferentialValue + '元',
+                    var html = ['<li class="mui-table-view-cell">条件' + preferentialRelations[j].orderColumn + ":有效投注额满" + preferentialRelations[j].preferentialValue + '元',
                         '<span class="' + icon + '"></span>',
                         '</li>'].join("");
                     $('.promo_con_list .mui-table-view').append(html);
                     html = '';
                 }
-                $('.pro_mone .mui-pull-left').html(proMoneText + '：<span class="color-gray">¥ ' + data.effectivetransaction + '</span>');
-                $('#join .app_num').html('派奖时间：<span class="color-blue">' + formatDate(data.deadLineTime) + '</span>');
-                $('#unCommit .app_num').html('已有 <span class="color-blue">' + addApplyNum(data.ApplyNum) + '</span>人，报名成功');
+                $('.pro_mone .mui-pull-left').html('有效投注额：<span class="color-gray">¥ ' + data.effectivetransaction + '</span>');
+                $('#join .app_num').html('派奖时间：<span class="color-blue">' + data.deadLineTime + '</span>');
+                $('#unCommit .app_num').html('已有 <span class="color-blue">' + data.ApplyNum + '</span>人，报名成功');
                 if (data.hasApply) {
-                    $('#unCommit').removeClass('mui-hidden');
-                } else {
                     $('#join').removeClass('mui-hidden');
+                } else {
+                    $('#unCommit').removeClass('mui-hidden');
                 }
-
+            } else if (code == 'profit_loss' && data.preferentialRelations) { //盈亏返利
+                var preferentialRelations = data.preferentialRelations;
+                var proMoneText;
+                var profitHtml = false;
+                var lossHtml = false;
+                for (var j = 0; j < preferentialRelations.length; j++) {
+                    if (preferentialRelations[j].preferentialCode == 'profit_ge') {//盈利时只展示盈利
+                        proMoneText = '当前盈利';
+                        profitHtml = true;
+                        var icon;
+                        if (data.profitloss >= preferentialRelations[j].preferentialValue) {
+                            icon = 'icon-pass';
+                        } else {
+                            icon = 'icon-fail';
+                        }
+                        var html = ['<li class="mui-table-view-cell">条件' + preferentialRelations[j].orderColumn + ":盈利" + preferentialRelations[j].preferentialValue + '元',
+                            '<span class="' + icon + '"></span>',
+                            '</li>'].join("");
+                        $('.promo_con_list .mui-table-view').append(html);
+                        html = '';
+                    } else if (preferentialRelations[j].preferentialCode == 'loss_ge' && preferentialRelations[j].orderColumn == '1') {//亏损时只展示亏损
+                        proMoneText = '当前亏损';
+                        lossHtml = true;
+                    }
+                }
+                //盈利亏损同时存在 优先取盈利,亏损不展示梯度
+                if (profitHtml && lossHtml) {
+                    if (data.profitloss >= 0) {
+                        proMoneText = '当前盈利';
+                    } else {
+                        $('.promo_con_list .mui-table-view').html('');
+                        proMoneText = '当前亏损';
+                    }
+                }
+                $('.pro_mone .mui-pull-left').html(proMoneText + '：<span class="color-gray">¥ ' + data.profitloss + '</span>');
+                $('#join .app_num').html('派奖时间：<span class="color-blue">' + data.deadLineTime + '</span>');
+                $('#unCommit .app_num').html('已有 <span class="color-blue">' + data.ApplyNum + '</span>人，报名成功');
+                if (data.hasApply) {
+                    $('#join').removeClass('mui-hidden');
+                } else {
+                    $('#unCommit').removeClass('mui-hidden');
+                }
             } else {
                 $('.status_failure').removeClass('mui-hidden');
                 $('.btn_cust_serv').removeClass('mui-hidden');
+                $('.promo-apply-content').removeClass('promo-apply2-content');
             }
         }
     };
@@ -181,10 +272,20 @@ function applyDepositSend(obj, options) {
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
             if (data.state) {
+                var successIsAudit = "申请成功";
+                var successState = "suc";
                 $(obj).removeAttr('data-rel');
                 $(obj).find('.promo_item_sta').removeClass('awa');
-                $(obj).find('.promo_item_sta').addClass('suc');
-                $(obj).find('.promo_item_sta').html("申请成功");
+                if (data.transactionErrorList) {
+                    for (var j = 0; j < data.transactionErrorList.length; j++) {
+                        if (data.transactionErrorList[j].state && data.transactionErrorList[j].isAudit) {
+                            successIsAudit = "申请中...";
+                            successState = "proc";
+                        }
+                    }
+                }
+                $(obj).find('.promo_item_sta').html(successIsAudit);
+                $(obj).find('.promo_item_sta').addClass(successState);
             } else {
                 toast(window.top.message.apply_activity[data.msg]);
             }
@@ -249,28 +350,4 @@ function defailShow(msg) {
     setTimeout(function () {
         mask.close();//关闭遮罩
     }, 2000);
-}
-
-//格式化时间
-function formatDate(time) {
-    var date = new Date(time);
-    var str = date.getFullYear() + "年";
-    str += ((date.getMonth() + 1) < 10 ? ("0" + (date.getMonth() + 1)) : (date.getMonth() + 1)) + "月";
-    str += (date.getDate() < 10 ? ("0" + date.getDate()) : date.getDate()) + "日 ";
-    str += (date.getHours() < 10 ? ("0" + date.getHours()) : date.getHours()) + "时";
-    str += (date.getMinutes() < 10 ? ("0" + date.getMinutes()) : date.getMinutes()) + "分";
-    str += (date.getSeconds() < 10 ? ("0" + date.getSeconds()) : date.getSeconds()) + "秒";
-    return str;
-}
-
-/**
- * 参与人数
- * @param num
- */
-function addApplyNum(num) {
-    if (typeof num == "undefined") {
-        num = 0;
-    }
-    num = num + 1000;
-    return num;
 }

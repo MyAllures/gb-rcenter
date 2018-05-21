@@ -69,7 +69,7 @@ define([], function () {
 
             $avatarHolderEl.backgroundBlur({
                 imageURL : avatars[0], // URL to the image that will be used for blurring
-                blurAmount : 10, // Amount of blur (higher amount degrades browser performance)
+                blurAmount : 4, // Amount of blur (higher amount degrades browser performance)
                 imageClass : 'avatar-blur' // CSS class that will be applied to the image and to the SVG element,
             });
         },

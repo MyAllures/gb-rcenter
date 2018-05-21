@@ -148,7 +148,13 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
             }
             return true;
         },
-
+        validateCondition:function (e, opt) {
+            var c_count = $("#money_condition").find("tr:gt(0)").length;
+            if(c_count==0){
+                return false;
+            }
+            return true;
+        },
 
         addOpenPeriod:function (e, opt) {
             var tr = $("#hidden_open_period").find("tr:eq(0)").clone();

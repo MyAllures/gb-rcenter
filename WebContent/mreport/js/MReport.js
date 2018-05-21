@@ -67,7 +67,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * @param fieldSet
          * @param width
          */
-        drawGroupColumnChart: function(containerName, data, fieldSet, width) {
+        drawGroupColumnChart: function(containerName, data, fieldSet) {
             if(data == null || data.length < 1) return;
             $("#"+containerName).html(null);
             const ds = new DataSet();
@@ -78,17 +78,10 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 key: 'time', // key字段
                 value: 'sum' // value字段
             });
-            const chart = width ? new G2.Chart({
-                container: containerName,
-                height: 400,
-                width:width,
-                padding: [20, 12, 95, 50]
-            })
-                :
-                new G2.Chart({
+            const chart = new G2.Chart({
                     container: containerName,
                     forceFit: true,
-                    height: 300,
+                    height: 401,
                     padding: [20, 12, 95, 50]
                 });
             chart.source(dv);
@@ -104,15 +97,19 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * @author martin
          * @param containerName
          * @param data
-         * @param scale
+         * @param xField
+         * @param yField
          * @param position
          * @param tips
          * @param height
+         * @param isFormat
          */
-        drawBasicColumnChart: function(containerName, data, scale, position, tips, height) {
+        drawBasicColumnChart: function(containerName, data, xField, yField, tips, height, isFormat) {
+            var _this = this;
             //清空原有内容
             $("#"+containerName).empty();
 
+            const position = xField + '*' + yField;
             const chart =  new G2.Chart({
                 container: containerName,
                 forceFit: true,
@@ -121,17 +118,110 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             });
             chart.source(data);
             chart.interval().position(position)
-                .tooltip(scale, function(val) {
+                .tooltip(yField, function(val) {
                     return {
                         name: tips,
-                        value: val
+                        value: isFormat ? _this.formatMoney(val) : val
                     };
                 });
             chart.render();
         },
 
         /**
-         * 折线图
+         *基础面积图
+         * @param data
+         * @param containerName
+         * @param keys
+         * @param height
+         */
+        acreageChart:function(data,containerName,attribute,height){
+            const ds = new DataSet();
+            const chart = new G2.Chart({
+                container: containerName,
+                forceFit: true,
+                // width: 500,
+                height:height,
+                padding: [38, 36, 88, 78]
+            });
+            chart.source(data);
+            chart.scale({
+                time: {
+                    range: [ 0 , 1 ]
+                }
+            });
+            chart.axis(attribute, {
+                label: {
+                    formatter: function(val) {
+                        return val;
+                    }
+                }
+            });
+            chart.area().position('time*'+ attribute).shape('smooth');
+            chart.line().position('time*'+ attribute).size(2).shape('smooth');
+
+            chart.tooltip({
+                crosshairs: {
+                    type: 'line'
+                }
+            });
+            chart.render();
+        },
+
+        /**
+         * 多条曲线图
+         * @param data
+         * @param containerName
+         * @param keys
+         * @param height
+         */
+        curveChart: function (data, containerName, keys, height) {
+            const ds = new DataSet();
+            const chart = new G2.Chart({
+                container: containerName,
+                forceFit: true,
+                // width: 500,
+                height:height,
+                padding: [38, 36, 88, 78]
+            });
+            const dv = ds.createView().source(data);
+            dv.transform({
+                type: 'fold',
+                fields: keys, // 展开字段集
+                key: 'name', // key字段
+                value: 'sum', // value字段
+            });
+            chart.axis('sum', {
+                label: {
+                    formatter: function(val) {
+                        return val;
+                    }
+                }
+            });
+            /*,[ '#0072ff', '#02c16e', '#ff5050' ]*/
+            /*,[ '#0072ff', '#02c16e', '#ff5050' ]*/
+            chart.line().position('time*sum').color('name').shape('smooth');
+            chart.point().position('time*sum').color('name').size(4).shape('circle').style({
+                stroke: '#fff',
+                lineWidth: 1
+            });
+
+            chart.source(dv,{
+                time: {
+                    range: [ 0, 1 ]
+                }
+            });
+
+            chart.tooltip({
+                crosshairs: {
+                    type: 'line'
+                }
+            });
+            chart.render();
+        },
+
+
+        /**
+         * 多条折线图
          * @author gavin
          * @param containerName
          * @param data
@@ -144,9 +234,9 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             keys.splice(0,1);
             const chart = new G2.Chart({
                 container: containerName,
-                // forceFit: true,
+                forceFit: true,
                 height: 400,
-                width:476,
+                // width:476,
                 padding: [20, 30, 105, 50]
             });
             const dv = ds.createView().source(data);
@@ -207,7 +297,7 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             var numerical1 = $(data[data.length-2]).attr(column);
             var staticDay0 = $(data[data.length-1]).attr('staticDay');
             var staticDay1 = $(data[data.length-2]).attr('staticDay');
-            $("#"+containerName+"_title").html(staticDay0+": "+numerical0);
+            $("#"+containerName+"_title").html(staticDay0+": "+this.formatMoney(numerical0));
 
             var startNum, endNum;
             if(numerical0>=0 && numerical1>=0) {
@@ -239,8 +329,8 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             const chart = new G2.Chart({
                 container: containerName,
                 forceFit: true,
-                height: 320,
-                padding: [ 0, 10, 30, 10 ]
+                height: 300,
+                padding: [ 40, 10, 50, 10 ]
             });
             chart.source(data);
 
@@ -328,13 +418,13 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
                 html: '<div style="width: 300px;text-align: center; border:0px solid red;">'
                 + '<p style="margin: 0; font-weight:bold;">' + this.getGaugePercent(numerical0, numerical1) + '</p>'
                 + '<p style="font-size:15px; color: #545454;margin: 0;">' + staticDay1 + '</p>'
-                + '<p style="font-size:14px; font-weight:bold; color:#d2b0ff;margin: 0;">' + numerical1 + '</p>'
+                + '<p style="font-size:14px; font-weight:bold; color:#d2b0ff;margin: 0;">' + this.formatMoney(numerical1, 2) + '</p>'
                 + '</div>'
             });
 
             // 自定义标题
             chart.guide().html({
-                position: [ '50%', '95%' ],
+                position: [ '50%', '110%' ],
                 html: '<div style="width: 300px;text-align: center; border:0px solid red;">'
                 + '<span style="background-color: '+colorm+'; width: 15px; height: 15px; display: inline-block; margin-right: 8px;"></span>' + staticDay0
                 + '<span style="background-color: '+colorn+'; width: 15px; height: 15px; display: inline-block; margin: 0px 8px 0px 20px;"></span>' + staticDay1
@@ -352,6 +442,10 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
          * @returns {string}
          */
         getGaugePercent: function(numerical0, numerical1) {
+            // 当往期值为0时，计算增长率是没有意义的
+            if(numerical1===0) {
+                return '<font color="#d2b0ff" size="30"></font>';
+            }
             if(numerical0===0) {
                 numerical0 = 0.0;
             }
@@ -363,6 +457,49 @@ define(['common/BasePage', 'g2/g2.min', 'g2/data-set.min'], function (BasePage, 
             } else {
                 return '<font color="#d2b0ff" size="30">'+percent+'%</font>';
             }
+        },
+
+        /**
+         * 数字千分位格式化
+         * @public
+         * @param mixed mVal 数值
+         * @param int iAccuracy 小数位精度(默认为2)
+         * @return string
+         */
+        formatMoney: function (mVal, iAccuracy) {
+            var fTmp = 0.00;//临时变量
+            var iFra = 0;//小数部分
+            var iInt = 0;//整数部分
+            var aBuf = new Array(); //输出缓存
+            var bPositive = true; //保存正负值标记(true:正数)
+            /**
+             * 输出定长字符串，不够补0
+             * <li>闭包函数</li>
+             * @param int iVal 值
+             * @param int iLen 输出的长度
+             */
+            function funZero(iVal, iLen) {
+                var sTmp = iVal.toString();
+                var sBuf = new Array();
+                for (var i = 0, iLoop = iLen - sTmp.length; i < iLoop; i++)
+                    sBuf.push('0');
+                sBuf.push(sTmp);
+                return sBuf.join('');
+            };
+
+            if (typeof(iAccuracy) === 'undefined')
+                iAccuracy = 2;
+            bPositive = (mVal >= 0);//取出正负号
+            fTmp = (isNaN(fTmp = parseFloat(mVal))) ? 0 : Math.abs(fTmp);//强制转换为绝对值数浮点
+            //所有内容用正数规则处理
+            iInt = parseInt(fTmp); //分离整数部分
+            iFra = parseInt((fTmp - iInt) * Math.pow(10, iAccuracy) + 0.5); //分离小数部分(四舍五入)
+
+            do {
+                aBuf.unshift(funZero(iInt % 1000, 3));
+            } while ((iInt = parseInt(iInt / 1000)));
+            aBuf[0] = parseInt(aBuf[0]).toString();//最高段区去掉前导0
+            return ((bPositive) ? '' : '-') + aBuf.join(',') + '.' + ((0 === iFra) ? '00' : funZero(iFra, iAccuracy));
         }
     });
 });

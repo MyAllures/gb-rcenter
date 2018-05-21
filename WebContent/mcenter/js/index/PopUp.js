@@ -498,7 +498,11 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     var player = document.createElement('embed');
                     $(player).addClass("hide");
                     player.id = id;
-                    player.src = resRoot + '/' + file;
+                    if(file.indexOf("files/gb")==0){
+                        player.src = imgRoot + '/' + file;
+                    }else {
+                        player.src = resRoot + '/' + file;
+                    }
                     //player.setAttribute('autostart', 'true');
                     if (loop) {
                         player.setAttribute('loop', 'infinite');
@@ -524,8 +528,11 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     $("#auto_alert").append(player);
 
                     var mp3 = document.createElement('source');
-                    mp3.src = resRoot + '/' + file;
-                    mp3.type = 'audio/mpeg';
+                    if(file.indexOf("files/gb")==0){
+                        mp3.src = imgRoot + '/' + file;
+                    }else {
+                        mp3.src = resRoot + '/' + file;
+                    }                    mp3.type = 'audio/mpeg';
                     player.appendChild(mp3);
                     setTimeout(function () {
                         player.play();

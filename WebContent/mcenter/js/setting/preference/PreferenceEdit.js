@@ -157,6 +157,8 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             window.top.topPage.ajax({
                 url: root + '/setting/preference/index.html',
                 success: function (data) {
+                    window.top.tones = null;
+                    $("#auto_alert").html("");
                     $("#mainFrame").html(data);
                 }
             });
@@ -196,6 +198,5 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                 return true;
             }
         }
-
     });
 });

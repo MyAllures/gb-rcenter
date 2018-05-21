@@ -24,18 +24,18 @@ function loginOk(obj, options) {
     var _password = $("#password").val();
     var _captcha = $("#captcha").val();
     if (_username == "") {
-        $("#username-error-msg").html('<i class="mui-icon mui-icon-info"></i>' + window.top.message.passport_auto['用户名不能为空']);
+        $("#username-error-msg").html('<i class="icon-warn">!</i>' + window.top.message.passport_auto['用户名不能为空']);
         $("[name='username']").focus();
         return;
     } else {
         $("#username-error-msg").html("");
     }
     if (_password == "") {
-        $("#password-error-msg").html('<i class="mui-icon mui-icon-info"></i>' + window.top.message.passport_auto['密码不能为空']);
+        $("#password-error-msg").html('<i class="icon-warn">!</i>' + window.top.message.passport_auto['密码不能为空']);
         $("[name='password']").focus();
         return;
     } else if (_password.length < 6) {
-        $("#password-error-msg").html('<i class="mui-icon mui-icon-info"></i>' + window.top.message.passport_auto['密码不能少于６位']);
+        $("#password-error-msg").html('<i class="icon-warn">!</i>' + window.top.message.passport_auto['密码不能少于６位']);
         $("[name='password']").focus();
         return;
     } else {
@@ -60,11 +60,11 @@ function loginOk(obj, options) {
                 if (data.success) {
                     sessionStorage.is_login = true;
                     sessionStorage.isDemo = false;
-                    var url = sessionStorage.getItem("loginTargetUrl");
+                    var url = sessionStorage.getItem(LOGIN_TARGET_URL);
                     if (!url || url == 'null' || url.indexOf("mine/index.html") > 0) {
                         url = root + '/mainIndex.html';
                     }
-                    sessionStorage.removeItem("loginTargetUrl");
+                    sessionStorage.removeItem(LOGIN_TARGET_URL);
                     goToUrl(url);
                 } else {
                     if (data.isOpenCaptcha) {
@@ -79,7 +79,7 @@ function loginOk(obj, options) {
                         if (data.propMessages["captcha"]) {
                             $('._pass').removeClass('final');
                             $('._captcha').addClass('final');
-                            $("#captcha-error-msg").html('<i class="mui-icon mui-icon-info"></i>' + data.propMessages["captcha"]);
+                            $("#captcha-error-msg").html('<i class="icon-warn">!</i>' + data.propMessages["captcha"]);
                         } else {
                             $("#captcha-error-msg").html("");
                         }

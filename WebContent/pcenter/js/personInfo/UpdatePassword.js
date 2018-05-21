@@ -54,7 +54,10 @@ define(['common/BaseEditPage','common/PasswordLevel'], function(BaseEditPage,Pas
         saveCallbak:function (e,options) {
 
             $("#editForm").find(".successsmall").remove();
-            var _this=this;
+
+            window.location.reload();
+
+            /*var _this=this;
             var result = options.data;
             var PrivilegeStatusEnum = {ALLOW_ACCESS:100,LOCKED:99};
             if (result.stateCode == PrivilegeStatusEnum.ALLOW_ACCESS || result.stateCode == PrivilegeStatusEnum.LOCKED) {
@@ -71,7 +74,7 @@ define(['common/BaseEditPage','common/PasswordLevel'], function(BaseEditPage,Pas
                 }
             }
             $(e.currentTarget).unlock();
-            return false;
+            return false;*/
         },
 
 

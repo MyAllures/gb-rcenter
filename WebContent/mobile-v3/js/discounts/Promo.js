@@ -1,9 +1,10 @@
 /*界面初始化*/
 var lazyLoadApi;
+var scrollMap = new Array();
 $(function () {
     var options = {
         /*主页面滚动指定容器，可自行指定范围*/
-        containerScroll: '.swiper-slide .mui-scroll-wrapper',
+        //containerScroll: '.swiper-slide .mui-scroll-wrapper',
         /*右侧菜单上下滚动，可自行指定范围*/
         rightMenuScroll: '.mui-scroll-wrapper.mui-assets',
         /*禁用侧滑手势指定样式*/
@@ -21,7 +22,19 @@ function initSwiper() {
         loopedSlides: siledSize,
         autoHeight: false,
         on: {
-            slideChange: function () {
+            slideChangeTransitionEnd: function (swiper) {
+                var slides = $(".p-t-slide-content .swiper-slide");
+                for (var i = 0; i < slides.length; i++) {
+                    var $slide = $(slides[i]);
+                    if($slide.hasClass("swiper-slide-active")) {
+                        var scroll = scrollMap[i];
+                        if (!scroll) {
+                            muiScrollY(mui(".p-t-slide-content .swiper-slide-active .mui-scroll-wrapper"));
+                            scrollMap[i] = 'true';
+                            break;
+                        }
+                    }
+                }
             }
         }
     });
@@ -42,6 +55,7 @@ function initSwiper() {
                     }
                     lazyLoadApi.refresh(true);
                 }
+                mui(".p-t-slide-content .swiper-slide-active .mui-scroll-wrapper").scroll().scrollTo(0, 0);
             }
         }
     });

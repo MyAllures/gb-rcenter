@@ -98,7 +98,11 @@ function exchange(obj , options){
                 }, 1000);
             } else if (state == true) {
                 //展示选择优惠内容
-                sale(data.transactionNo);
+                if(data.isOpenActivityHall != true) {
+                    sale(data.transactionNo);
+                } else {
+                    toast(window.top.message.deposit_auto['提交成功']);
+                }
                 back(currency);
             } else {
                 toast(window.top.message.deposit_auto['兑换金额失败']);

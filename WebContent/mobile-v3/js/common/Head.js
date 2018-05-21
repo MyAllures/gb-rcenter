@@ -26,6 +26,7 @@ function closeLeftMenu() {
  * 点击右侧玩家信息展示玩家api金额
  */
 function userAssert(obj, options) {
+    $("#login-info .money-shadow").toggle();
     var $siteApi = $('table#api-balance tbody tr');
     if (!$siteApi || $siteApi.length <= 0) {
         getSiteApi();

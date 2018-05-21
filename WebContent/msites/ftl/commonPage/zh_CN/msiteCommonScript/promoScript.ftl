@@ -90,6 +90,7 @@
                 $this.find("._vr_promo_join").text("立即申请");
                 var endTimeVal = new Date(parseInt(et));
                 $this.find("._vr_promo_countdown").ccountdown(endTimeVal.getFullYear(), endTimeVal.getMonth() + 1, endTimeVal.getDate(), endTimeVal.getHours() + ':' + endTimeVal.getSeconds());
+                $("._vr_promo_join").attr('onclick','joinPromo(this)');
             } else if (nowTime > eTime) {
                 //已结束
                 $this.attr("data-type", "over");

@@ -21,12 +21,44 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
             this._super();
         },
 
+        /**
+         * 查看活动详情点击时间
+         * @param e
+         * @param opt
+         */
+        showMonitorDetail: function (e, obj) {
+            _this = this;
+            if ($(obj).attr("data-content") != '') {
+                return;
+            }
+
+            var detailId = $(obj).attr("detailId");
+            var activityType = $(obj).attr("activityType");
+            //异步取监控详情;
+            window.top.topPage.ajax({
+                url: root + '/activityHall/vActivityMonitor/showMonitorDetail.html',
+                dataType: "json",
+                data: {"search.id": detailId},
+                success: function (data) {
+                    if (data != null) {
+                        $(obj).attr("data-content", data.msg);
+                        $(obj).trigger("mouseover");
+                        $(obj).attr("data-content", "");
+                    }
+                }
+            });
+        },
+
         onPageLoad:function () {
             this._super();
             var _this=this;
             $('[data-toggle="popover"]',_this.formSelector).popover({
-                trigger: 'hover',
+                trigger: 'click',
                 html: true
+            });
+            var _this=this;
+            $(".showMonitorDetail").click(function (e,opt) {
+                _this.showMonitorDetail(e,this);
             });
         },
 
