@@ -33,51 +33,50 @@
           
         </header>
         <div class="mui-content  mui-content-casino-page">
-
+          <div class="electronic-search" >
+            <a id="search-game" class="btn-search">搜索</a>
+            <input type="text" id="game-name" class="mui-input-clear" placeholder="输入游戏名称" data-input-clear="3"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+          </div>
+          <div class="search-shadow"></div>
           <!-- 主界面具体展示内容 -->
 
           <div id="pull_apiScroll">
-            <div class="api-scroll swiper-container">
-              <div class="electronic-search" >
-                <a id="search-game" class="btn-search">搜索</a>
-                <input type="text" id="game-name" class="mui-input-clear" placeholder="输入游戏名称" data-input-clear="3"><span class="mui-icon mui-icon-clear mui-hidden"></span>
-              </div>
+            <div class="api-scroll ">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <div class="img-wrap"><i class='icon-ag'>ddd</i></div>
+                  <div class="img-wrap"><i class='api-item api-icon-2-3'></i></div>
                   <span class='title'>AG电子</span>
                 </div>
                 <div class="swiper-slide">
-                  <div class="img-wrap"><i class='icon-ag'></i></div>
+                  <div class="img-wrap"><i class='api-item api-icon-1-9'></i></div>
                   <span class='title'>AG电子</span>
                 </div>
                 <div class="swiper-slide api-index">
-                  <div class="img-wrap"><i class='icon-ag'></i></div>
+                  <div class="img-wrap"><i class='api-item api-icon-2-25'></i></div>
                   <span class='title'>AG电子</span>
                 </div>
                 <div class="swiper-slide">
-                  <div class="img-wrap"><i class='icon-ag'></i></div>
+                  <div class="img-wrap"><i class='api-item api-icon-3-21'></i></div>
                   <span class='title'>AG电子</span>
                 </div>
                 <div class="swiper-slide">
-                  <div class="img-wrap"><i class='icon-ag'></i></div>
-                  <span class='title'>AG电子</span>
-                </div>
-
-                <div class="swiper-slide">
-                  <div class="img-wrap"><i class='icon-ag'></i></div>
+                  <div class="img-wrap"><i class='api-item api-icon-3-40'></i></div>
                   <span class='title'>AG电子</span>
                 </div>
                 <div class="swiper-slide">
-                  <div class="img-wrap"><i class='icon-ag'></i></div>
+                  <div class="img-wrap"><i class='api-item'></i></div>
                   <span class='title'>AG电子</span>
                 </div>
                 <div class="swiper-slide">
-                  <div class="img-wrap"><i class='icon-ag'></i></div>
+                  <div class="img-wrap"><i class='api-item'></i></div>
                   <span class='title'>AG电子</span>
                 </div>
                 <div class="swiper-slide">
-                  <div class="img-wrap"><i class='icon-ag'></i></div>
+                  <div class="img-wrap"><i class='api-item'></i></div>
+                  <span class='title'>AG电子</span>
+                </div>
+                <div class="swiper-slide">
+                  <div class="img-wrap"><i class='api-item'></i></div>
                   <span class='title'>AG电子</span>
                 </div>
               </div>
@@ -492,8 +491,14 @@
           $(' .casino-wrap .mui-row .mui-col-xs-12').addClass('mui-col-xs-4').removeClass('mui-col-xs-12 item');
           resetMin();
         });
+//      搜索框:
+        $('.search-shadow').click(function(){
+          $('.electronic-search').hide();
+          $(this).hide();
+        });
         $('.casino-page-bar .mui-icon-search').click(function(){
           $('.electronic-search').toggle();
+          $('.search-shadow').show()
         });
 
         var alloyT = null;
@@ -527,7 +532,6 @@
 
             },
             touchMove: function(evt, value) {
-                $('.electronic-search').hide();
             },
             touchEnd: function(evt, value) {
               if(value >= 105) {
@@ -540,18 +544,18 @@
         pull_apiScroll();
 
         //	  api滚动区域:
-        var swiper = new Swiper('.api-scroll', {
-          slidesPerView: 5,
-          spaceBetween: 0,
-          loop: true,
-          //    slideToClickedSlide: true,
-          watchSlidesProgress: true,
-          on: {
-            slideChangeTransitionEnd: function() {
-              $('.swiper-slide-next').next('.swiper-slide').addClass('api-index').siblings().removeClass('api-index');
-            },
-          },
-        });
+//      var swiper = new Swiper('.api-scroll', {
+//        slidesPerView: 5,
+//        spaceBetween: 0,
+//        loop: true,
+//        //    slideToClickedSlide: true,
+//        watchSlidesProgress: true,
+//        on: {
+//          slideChangeTransitionEnd: function() {
+//            $('.swiper-slide-next').next('.swiper-slide').addClass('api-index').siblings().removeClass('api-index');
+//          },
+//        },
+//      });
 
         // api滑动
         var slideContent = new Swiper('.g-t-slide-content', {

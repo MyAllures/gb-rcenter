@@ -23,24 +23,32 @@ var DepositScanCode = function () {
         if (randomAmount == "true") {
             $("input[name='result.randomCash']").val($('#randomValue').val());
             $("#random_amount").show();
+            $(".scan_code_random").show();
         } else {
-            $("input[name='result.randomCash']").val("");
+            $(".scan_code_random").hide();
+            $("input[name='result.randomCash']").val(0);
             $("#random_amount").hide();
         }
         //设置按钮显示
         if ($("#depositChannel").val() == 'electronic') {
             $("#btn_electronicPay").show();
             $("#btn_scan").hide();
+            $(".scan_code").hide();
+            $(".electronic").show();
         } else {
             $("#btn_scan").show();
             $("#btn_electronicPay").hide();
+            $(".scan_code").show();
+            $(".electronic").hide();
         }
         //是否显示反扫
         var player_bank = document.getElementById("result.payerBank").value;
         if (player_bank == 'wechat_micropay' || player_bank == 'alipay_micropay' || player_bank == 'qq_micropay') {
             baseDeposit.initSwip();
+            $("#isAuthCode").val(true);
             $("#reverseSacn_div").show();
         } else {
+            $("#isAuthCode").val("");
             $("#reverseSacn_div").hide();
         }
     };
