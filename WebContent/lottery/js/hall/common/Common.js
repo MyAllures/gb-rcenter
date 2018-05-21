@@ -239,7 +239,7 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                 </span>\
             </div>\
             <div class="r" style="height: 50px">\
-                <p style="line-height: 50px">' + this.curExpect + '期已结束，是否要清空已投注内容？</p>\
+                <p style="line-height: 50px;text-align: left">您好,当前期' + this.curExpect + '已结束，是否要刷新当前页面?</p>\
             </div>\
             <div style="clear:both"></div>\
             <div class="btns" style="text-align:center">\
