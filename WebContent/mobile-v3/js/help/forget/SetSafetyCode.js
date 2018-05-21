@@ -11,13 +11,13 @@ $(function () {
 });
 
 function initInput() {
-    window.inputNumber.init($('#pwd1'), {negative: false, decimal: false, initSize: 6});
-    window.inputNumber.init($('#pwd2'), {negative: false, decimal: false, initSize: 6});
+    window.inputNumber.init($('[name=pwd1]'), {negative: false, decimal: false, initSize: 6});
+    window.inputNumber.init($('[name=pwd2]'), {negative: false, decimal: false, initSize: 6});
 }
 
 function setSafetyCode() {
-    var pwd1 = $('#pwd1').val();
-    var pwd2 = $('#pwd2').val();
+    var pwd1 = $('[name=pwd1]').val();
+    var pwd2 = $('[name=pwd2]').val();
     if (checkSecurityPasswordForm(pwd1, pwd2)) {
         saveSecurityPassword(pwd1);
     }
@@ -25,18 +25,14 @@ function setSafetyCode() {
 /*效验提交安全码*/
 function checkSecurityPasswordForm(pwd1, pwd2) {
     var reg = /^[0-9]{6}$/;
-    var $pwd1 = $('#pwd1');
-    var $pwd2 = $('#pwd2');
+    var $pwd1 = $('[name=pwd1]');
+    var $pwd2 = $('[name=pwd2]');
     if (pwd1 == null || pwd1.trim().length == 0) {
         toast(window.top.message.passport_auto['请输入安全密码']);
         $pwd1.focus();
         return false;
     } else if (!reg.test(pwd1)) {
         toast(window.top.message.passport_auto['安全密码长度2']);
-        $pwd1.focus();
-        return false;
-    } else if (checkPasswordStrength(pwd1) == false) {
-        toast(window.top.message.passport_auto['安全密码过于简单']);
         $pwd1.focus();
         return false;
     }
@@ -52,31 +48,12 @@ function checkSecurityPasswordForm(pwd1, pwd2) {
     return true;
 
 }
-/**
- * 判断安全密码复杂度
- * @param pwd1
- * @returns {boolean}
- */
-function checkPasswordStrength(pwd1) {
-    var isOk = false;
-    var options = {
-        url: root + '/passport/securityPassword/checkPwdStrength.html',
-        type: 'POST',
-        data: {'pwd': pwd1},
-        async: false,
-        success: function (data) {
-            isOk = data;
-        }
-    };
-    muiAjax(options);
-    return isOk;
-}
 
 /*设置安全码，并返回到个人页面*/
 function saveSecurityPassword(pwd) {
     var options = {
         url: root + '/passport/securityPassword/saveSecurityPassword.html',
-        type: 'POST',
+        type: 'post',
         data: {'pwd': pwd},
         success: function (data) {
             if (data) {
@@ -103,6 +80,6 @@ function showDialog() {
  * 修改成功后跳转到登录页面
  */
 function goLogin(){
-    // login("/mainIndex.html");
-    login("/mine/index.html");
+    login("/mainIndex.html");
+    // login("/mine/index.html");
 }

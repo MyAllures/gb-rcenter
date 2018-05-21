@@ -1354,6 +1354,9 @@
                     isOpenCaptcha = false;
                     //登录后隐藏试玩按钮
                     game_demo();
+                    /*登录后初始化站点推送消息*/
+                    var comet = new MSiteComet();
+                    comet.init();
                 }else{
                     var dataPage = window.location.pathname.split("/")[3];
                     if(dataPage=='loading.html'){

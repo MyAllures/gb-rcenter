@@ -1,5 +1,22 @@
 var BaseDeposit = function () {
     var _this = this;
+    var active_dialog = null;
+    var mySwiper = null;
+    var activityData = null;
+    this.initSwip = function () {
+        if (!_this.mySwiper) {
+            _this.mySwiper = new Swiper('.swiper-container', {
+                observer: true,
+                observeParents: true,
+                pagination: {
+                    el: '.swiper-pagination'
+                }
+            });
+            for (var i = 0; i < _this.mySwiper.length; i++) {
+                _this.mySwiper[i].init();
+            }
+        }
+    };
     this.quickCheckMoney = function (obj, options) {
         document.getElementById("result.rechargeAmount").value = options.mone;
     };
@@ -47,11 +64,16 @@ var BaseDeposit = function () {
             async: false,
             dataType: 'text/html',
             success: function (data) {
-                mui.alert(data, '消息');
-                $('.mui-popup').addClass('deposit_promo_dialog');
-                mui('.pro_lis .mui-scroll-wrapper').scroll();
-                $('.mui-popup').find(".mui-popup-button").html('').append("<i class='mui-icon mui-icon-close'></i>");
-                $('.mui-popup-inner').find('br').remove();
+                _this.activityData = data;
+                var failureCount = $(data).find("#failureCount").attr('failureCount');
+                if (failureCount >= 3) {
+                    //失败次数大于三次则提示
+                    $("#failureHints").show();
+                    $("#failureHintsMasker").show();
+                } else {
+                    //显示活动信息
+                    _this.showActivity();
+                }
             },
             error: function (xhr) {
                 toast(window.top.message.deposit_auto['提交失败请刷新']);
@@ -59,6 +81,15 @@ var BaseDeposit = function () {
             }
         };
         muiAjax(options);
+    };
+    this.showActivity = function () {
+        $("#failureHints").hide();
+        $("#failureHintsMasker").hide();
+        _this.active_dialog = mui.alert(_this.activityData, '消息');
+        $('.mui-popup').addClass('deposit_promo_dialog');
+        mui('.pro_lis .mui-scroll-wrapper').scroll();
+        $('.mui-popup').find(".mui-popup-button").html('').append("<i class='mui-icon mui-icon-close'></i>");
+        $('.mui-popup-inner').find('br').remove();
     };
     //提交充值信息
     this.submitDeposit = function (obj, options) {
@@ -68,6 +99,10 @@ var BaseDeposit = function () {
         var activityId = $("input[name=activityId][type=radio]:checked").val();
         if (activityId) {
             $form.find("input[name=activityId]").val(activityId);
+        }
+        //将提示层删除...
+        if (_this.active_dialog) {
+            _this.active_dialog.close();
         }
         var options = {
             url: url,
@@ -82,18 +117,20 @@ var BaseDeposit = function () {
                     var state = data.state;
                     $("input[name='gb.token']").val(data.token);
                     if (state == true) {
-                        var orderNo = data.orderNo;
                         var payUrl = data.payUrl;
-                        goToUrl(payUrl)
-                        sendComm(orderNo);
-                        if (newWindow) {
-                            success();
+                        if (payUrl) {
+                            var newWindow = window.open("about:blank", '_blank');
+                            newWindow.document.write("<div style='text-align:center;'><img style='margin-top:" + document.body.clientHeight / 2 + "px;' src='" + resRoot + "/images/oval.svg'></div>");
+                            newWindow.location = payUrl;
+                            _this.success();
+                        } else {
+                            $("#successMasker , .window-ok").attr("style", "display: block;");
                         }
                     } else {
                         toast(data.msg);
                         if (data.accountNotUsing) {
                             setTimeout(function () {
-                                this.goToDepositPage();
+                                goToDepositPage();
                             }, 2000);
                         }
                     }
@@ -105,26 +142,6 @@ var BaseDeposit = function () {
         };
         muiAjax(options);
     };
-    //等待通知信息
-    this.sendComm = function (transactionNo) {
-        var param = {
-            url: mdRoot,
-            localeType: language.replace("-", "_"), isImmediatelyConnect: true
-        };
-        param.success = function () {
-            console.info(window.top.message.deposit_auto['连接成功']);
-            subscribeMsg("MSITE-ONLINERECHARGE", function (data) {
-                var result = eval("(" + eval("(" + data + ")").msgBody + ")");
-                var orderId = result.orderId;
-                if (orderId == transactionNo) {
-                    linkResult(orderId);
-                }
-            });
-        };
-        param.failure = function () {
-            console.info('连接失败');
-        };
-    };
     //下一步，一般为公司入款才用到
     this.nextStep = function (obj, options) {
         var rechargeAmount = $("input[name='result.rechargeAmount']");
@@ -132,12 +149,28 @@ var BaseDeposit = function () {
             return false;
         }
         var key = $("#account").val();
-        if(key==''||key==null){
+        if (key == '' || key == null) {
             toast("请选择一个银行或账号.");
             return false;
         }
-        var url = "/wallet/v3/deposit/nextStep.html?payType="+$("input[name='result.rechargeType']").val()+"&depositCash="+rechargeAmount.val()+"&channel=" + $("#channel").val() + "&search.id=" + key + "&v=" + Math.random();
+        var url = "/wallet/v3/deposit/nextStep.html?rechargeType=" + $("input[name='result.rechargeType']").val() + "&depositCash=" + rechargeAmount.val() + "&channel=" + $("#channel").val() + "&searchId=" + key + "&v=" + Math.random();
         goToUrl(url);
-    }
+    };
+    //存款完成后调用:在线支付
+    this.success = function () {
+        /**存款成功后弹窗提示*/
+        var btnArray = [window.top.message.deposit_auto["完成付款"], window.top.message.deposit_auto["重新存款"]];
+        var options = {
+            title: window.top.message.deposit_auto["提交订单"],
+            confirm: window.top.message.deposit_auto["第三方对接"]
+        };
+        mui.confirm(options.confirm, options.title, btnArray, function (e) {
+            if (e.index == 0) {
+                goToUrl(root + "/fund/record/index.html?search.transactionType=deposit");
+            } else {
+                goToUrl(root + "/wallet/v3/deposit/index.html");
+            }
+        });
+    };
 }
 var baseDeposit = new BaseDeposit();

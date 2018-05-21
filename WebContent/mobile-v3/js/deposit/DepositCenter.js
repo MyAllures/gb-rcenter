@@ -3,11 +3,10 @@ var depositMap = {};
 
 $(function () {
     copy();
-    muiInit(muiDefaultOptions);
+    var depositOptions = $.extend({}, muiDefaultOptions);
+    muiInit(depositOptions);
     //原生返回按钮不展示
-    if (!isNative) {
-        $("#depositBack").show();
-    }
+    $("#depositBack").show();
 });
 
 /**
