@@ -179,13 +179,14 @@ height: 44px;
         .btn-search{position: absolute;right: 0;top: 0;font-size: 14px;color: #333;height: 35px;line-height: 35px;text-align: center;width: 84px;background: #ccc;border-top-right-radius: 3px;    border-bottom-right-radius: 3px;}
         .mui-icon-clear{right: 80px;    top: 8px;}
     }
+    .search-shadow{position:absolute;left:0;top:0;background:rgba(0,0,0,0.4);z-index: 998;right:0;height:100%;display:none;}
     .casino-list{position:relative;
 //          宫格状排列：
         a{text-align: center;display: block;    margin: 10px auto 0;width:100px;border-radius:5px;box-shadow: 0 2px 4px #bbb;
             p{height: 30px;line-height: 24px;margin-bottom:5px;color: #333;font-size: 12px;white-space: nowrap;    overflow: hidden;    text-overflow: ellipsis;}
         }
         .img-wrap{background: #fff;position:relative;
-            img{width: 100px;vertical-align: middle;border-top-left-radius: 6px;border-top-right-radius: 6px;}
+            img{width: 100px;height:70px ;vertical-align: middle;border-top-left-radius: 6px;border-top-right-radius: 6px;}
         }
         .icon-api{position:absolute;width:22px;height:22px;display:block;right:-5px;top:-5px;}
         .icon-api-ag{background: url(images/casino-game-ag.png) center no-repeat/100%;}
@@ -208,7 +209,7 @@ height: 44px;
     //新版电子顶部api切换：
     .api-scroll{height:105px;background:#000;
         &:before{position:absolute;top:0;width:170px;content:'';background:radial-gradient(#460119,#000);height:80px;left:0;right:0;margin:-20px auto;}
-        .swiper-slide{text-align:center;opacity: 0.5;
+        .swiper-slide{text-align:center;opacity: 0.5;width:20%;
             .img-wrap{width:55px;height:55px;background:url(images/api-index-bg.png) center bottom no-repeat/90%;margin:15px auto 0;
                 
                    .api-item{height:55px;width:55px;display:block;position:relative; 
