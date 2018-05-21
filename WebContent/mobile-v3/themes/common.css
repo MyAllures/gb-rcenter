@@ -492,7 +492,7 @@ body.deposit .mui-slider-indicator.mui-segmented-control table tr td { border: 1
 body.deposit .agent-text p span { color: #dedede !important; }
 body.deposit .gb-select > a { color: #999; }
 
-.deposit_2 { background: #f2f2f2; }
+.deposit_2 { overflow-x: hidden; background: #f2f2f2; }
 .deposit_2 .deposit-2-content { padding-bottom: 51px; background: #f2f2f2; }
 .deposit_2 .list_pay { padding: 12px 10px 8px; overflow: hidden; margin-left: -4px; margin-right: -4px; }
 .deposit_2 .list_pay .list_pay_item_w { width: 20%; float: left; padding: 0 4px; margin-bottom: 8px; }
