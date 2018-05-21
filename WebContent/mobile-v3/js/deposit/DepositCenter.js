@@ -5,17 +5,9 @@ $(function () {
     copy();
     var depositOptions = $.extend({}, muiDefaultOptions);
     muiInit(depositOptions);
-    removeBodyFocus();
     //原生返回按钮不展示
     $("#depositBack").show();
 });
-
-function removeBodyFocus() {
-    var focusElement = document.getElementsByTagName("body")[0];
-    $(focusElement).bind('cssClassChanged',function(){
-
-    });
-}
 
 /**
  * 跳转快充

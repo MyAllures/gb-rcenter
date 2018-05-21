@@ -30,6 +30,11 @@ MSitePopUp.prototype = {
                 goToUrl(root + "/mine/index.html?channel=mine&skip=4");
             }
         });
+    },
+
+    messageCallBack: function (data) {
+        var dataObj = $.parseJSON(data);
+        console.info("订阅类型为" + dataObj.subscribeType + "的订阅点收到消息，成功调用回调函数，参数值为" + data);
     }
 
 };
