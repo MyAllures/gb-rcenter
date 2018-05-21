@@ -243,7 +243,6 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 var sourceContent=$(".siteDescription"+sourceLocal).val();
                 var targetLocal=$(".current").attr("local");
                 $(".siteDescription"+targetLocal).val(sourceContent);
-                $("#option" + targetLocal).css("display", "");
             });
             //下拉框不显示选中的语言，自己不能复制自己
             $(this.formSelector).on("click", ".showDropDown", function () {
