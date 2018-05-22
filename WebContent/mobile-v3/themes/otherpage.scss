@@ -9,9 +9,11 @@
         position: relative;
     z-index: 1;    border-radius: 4px;
     .promo-list{
-        .swiper-slide .promo-item{margin-bottom: 10px;display: block;border-radius: 8px;border: 1px solid #e3e2e2;
+        .swiper-slide .promo-item{margin-bottom: 10px;display: block;border-radius: 8px;border: 1px solid #e3e2e2;overflow:hidden;
             .img-wrap{padding: 12px;background: #fff;border-top-left-radius: 8px;border-top-right-radius: 8px;}
-            .pro-txt{height: 30px;line-height: 30px;background: #f2f2f2;border-bottom-left-radius: 8px;border-bottom-right-radius: 8px;padding: 0 12px;}
+            .pro-txt{min-height: 30px;line-height: 30px;background: #f2f2f2;border-bottom-left-radius: 8px;border-bottom-right-radius: 8px;padding: 0 12px;display:flex;
+                &>div{flex:1;line-height:20px;padding:5px 20px 5px 0;}
+            }
         }
         img{width: 100%;vertical-align: middle;}
     }

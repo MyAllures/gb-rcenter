@@ -8,9 +8,10 @@
 .banner img { width: 100%; }
 
 .promo { position: relative; z-index: 1; border-radius: 4px; }
-.promo .promo-list .swiper-slide .promo-item { margin-bottom: 10px; display: block; border-radius: 8px; border: 1px solid #e3e2e2; }
+.promo .promo-list .swiper-slide .promo-item { margin-bottom: 10px; display: block; border-radius: 8px; border: 1px solid #e3e2e2; overflow: hidden; }
 .promo .promo-list .swiper-slide .promo-item .img-wrap { padding: 12px; background: #fff; border-top-left-radius: 8px; border-top-right-radius: 8px; }
-.promo .promo-list .swiper-slide .promo-item .pro-txt { height: 30px; line-height: 30px; background: #f2f2f2; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding: 0 12px; }
+.promo .promo-list .swiper-slide .promo-item .pro-txt { min-height: 30px; line-height: 30px; background: #f2f2f2; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding: 0 12px; display: flex; }
+.promo .promo-list .swiper-slide .promo-item .pro-txt > div { flex: 1; line-height: 20px; padding: 5px 20px 5px 0; }
 .promo .promo-list img { width: 100%; vertical-align: middle; }
 
 .promo-head { height: 86px; }
