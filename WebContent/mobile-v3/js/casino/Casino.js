@@ -6,6 +6,7 @@ var alloyT = null;
 $(function () {
     pullApiScroll();
     initApiSwiper();
+    //muiScrollX(".api-scroll");
     if (!lazyLoadApi) {
         //图片懒加载
         lazyLoadApi = lazyLoadImg("body");
@@ -18,15 +19,10 @@ function initApiSwiper() {
     var swiper = new Swiper('.api-scroll', {
         slidesPerView: 5,
         spaceBetween: 0,
-        loop: true,
-        //    slideToClickedSlide: true,
-        watchSlidesProgress: true,
-        on: {
-            slideChangeTransitionEnd: function() {
-                $('.swiper-slide-next').next('.swiper-slide').addClass('api-index').siblings().removeClass('api-index');
-            }
-        }
+        loop: false,
+        watchSlidesProgress: true
     });
+
     var siledSize = $(".g-t-slide-indicators div.swiper-slide").length;
     if (siledSize > 1) {
         // api滑动
@@ -125,6 +121,19 @@ function resizeSlideHeight() {
  */
 function toggleSearch() {
     $("div[name=searchDiv]").toggle();
+    if($("div[name=searchDiv]").is(":hidden")) {
+        $('.search-shadow').hide();
+    } else {
+        $('.search-shadow').show();
+    }
+}
+
+/**
+ * 隐藏遮罩层
+ */
+function hideShadow() {
+    $('.search-shadow').hide();
+    $("div[name=searchDiv]").hide();
 }
 
 /**
