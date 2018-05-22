@@ -60,7 +60,11 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 $("#electronicDocument").hide();
                 $("#scanDocument").hide();
                 $("#easyPayDocument").show();
-            } else {
+            } else if ("onecodepay" == bankCode){
+                $("#electronicDocument").hide();
+                $("#scanDocument").hide();
+                $("#oneCodePayDocument").show();
+            }else {
                 var depositType = $account.attr("depositType");
                 if (depositType == "scan") {
                     $("#electronicDocument").hide();
