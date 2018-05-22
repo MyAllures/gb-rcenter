@@ -1,4 +1,4 @@
-define(['common/BaseListPage', 'jsrender'], function (BaseListPage) {
+define(['common/BaseListPage', 'jsrender', 'bootstrapswitch'], function (BaseListPage) {
     var _this;
 
     return BaseListPage.extend({
@@ -20,6 +20,61 @@ define(['common/BaseListPage', 'jsrender'], function (BaseListPage) {
             this._super();
             var _this = this;
             selectIds = null;
+
+            var $bootstrapSwitchs = $('input[type=checkbox][name=my-checkboxstatus]');
+            this.unInitSwitch($bootstrapSwitchs)
+                .bootstrapSwitch({
+                    onText: window.top.message.content['floatPic.dislpay.on'],
+                    offText: window.top.message.content['floatPic.display.off'],
+                    onSwitchChange: function (e, state) {
+                        var $this = $(this);
+                        $this.bootstrapSwitch('indeterminate', true);
+                        var _target = e.currentTarget;
+                        var id = $(_target).attr("Id");
+                        var domain = $(_target).attr("domain");
+                        var siteId = $(_target).attr("siteId");
+                        var _msg = "";
+                        if (state) {
+                            _msg = "确认设置为例外域名";
+                        } else {
+                            _msg = "确认取消例外域名设置";
+                        }
+                        if (state == true) {
+                            var isException = 'Y';
+                        } else if (state == false) {
+                            var isException = 'N';
+                        }
+                        window.top.topPage.showConfirmMessage(_msg, function (confirm) {
+                            if (confirm) {
+                                window.top.topPage.ajax({
+                                    url: root + '/vDomainCheck/setExceptionDomain.html',
+                                    dataType: "json",
+                                    data: {
+                                        "result.id": id,
+                                        "result.isException": isException,
+                                        "result.domain": domain,
+                                        "result.siteId": siteId
+                                    },
+                                    success: function (data) {
+                                        if (data) {
+                                            _this.query(e);
+                                        } else {
+                                            page.showPopover(e, {
+                                                "callback": function () {
+                                                    _this.query(e);
+                                                }
+                                            }, "danger", "操作失败", true);
+                                        }
+                                    }
+                                });
+                                $this.bootstrapSwitch('indeterminate', false);
+                            } else {
+                                $this.bootstrapSwitch('indeterminate', false);
+                                $this.bootstrapSwitch('state', !state, true);
+                            }
+                        })
+                    }
+                })
         },
 
         bindEvent: function () {

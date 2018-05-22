@@ -8,9 +8,10 @@
 .banner img { width: 100%; }
 
 .promo { position: relative; z-index: 1; border-radius: 4px; }
-.promo .promo-list .swiper-slide .promo-item { margin-bottom: 10px; display: block; border-radius: 8px; border: 1px solid #e3e2e2; }
+.promo .promo-list .swiper-slide .promo-item { margin-bottom: 10px; display: block; border-radius: 8px; border: 1px solid #e3e2e2; overflow: hidden; }
 .promo .promo-list .swiper-slide .promo-item .img-wrap { padding: 12px; background: #fff; border-top-left-radius: 8px; border-top-right-radius: 8px; }
-.promo .promo-list .swiper-slide .promo-item .pro-txt { height: 30px; line-height: 30px; background: #f2f2f2; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding: 0 12px; }
+.promo .promo-list .swiper-slide .promo-item .pro-txt { min-height: 30px; line-height: 30px; background: #f2f2f2; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding: 0 12px; display: flex; }
+.promo .promo-list .swiper-slide .promo-item .pro-txt > div { flex: 1; line-height: 20px; padding: 5px 20px 5px 0; }
 .promo .promo-list img { width: 100%; vertical-align: middle; }
 
 .promo-head { height: 86px; }
@@ -107,11 +108,12 @@
 .mui-content-casino-page .electronic-search input { margin: 0; height: 35px; font-size: 14px; border: 1px solid #ccc; padding-right: 100px; color: #333; }
 .mui-content-casino-page .electronic-search .btn-search { position: absolute; right: 0; top: 0; font-size: 14px; color: #333; height: 35px; line-height: 35px; text-align: center; width: 84px; background: #ccc; border-top-right-radius: 3px; border-bottom-right-radius: 3px; }
 .mui-content-casino-page .electronic-search .mui-icon-clear { right: 80px; top: 8px; }
+.mui-content-casino-page .search-shadow { position: absolute; left: 0; top: 0; background: rgba(0, 0, 0, 0.4); z-index: 998; right: 0; height: 100%; display: none; }
 .mui-content-casino-page .casino-list { position: relative; }
 .mui-content-casino-page .casino-list a { text-align: center; display: block; margin: 10px auto 0; width: 100px; border-radius: 5px; box-shadow: 0 2px 4px #bbb; }
 .mui-content-casino-page .casino-list a p { height: 30px; line-height: 24px; margin-bottom: 5px; color: #333; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mui-content-casino-page .casino-list .img-wrap { background: #fff; position: relative; }
-.mui-content-casino-page .casino-list .img-wrap img { width: 100px; vertical-align: middle; border-top-left-radius: 6px; border-top-right-radius: 6px; }
+.mui-content-casino-page .casino-list .img-wrap img { width: 100px; height: 70px; vertical-align: middle; border-top-left-radius: 6px; border-top-right-radius: 6px; }
 .mui-content-casino-page .casino-list .icon-api { position: absolute; width: 22px; height: 22px; display: block; right: -5px; top: -5px; }
 .mui-content-casino-page .casino-list .icon-api-ag { background: url(images/casino-game-ag.png) center no-repeat/100%; }
 .mui-content-casino-page .casino-list .hot { color: #fe0000; display: none; }
@@ -126,8 +128,48 @@
 .mui-content-casino-page .casino-list .item .img-wrap img { width: 100px; vertical-align: middle; border-radius: 6px; height: 75px; }
 .mui-content-casino-page .api-scroll { height: 105px; background: #000; }
 .mui-content-casino-page .api-scroll:before { position: absolute; top: 0; width: 170px; content: ''; background: radial-gradient(#460119, #000); height: 80px; left: 0; right: 0; margin: -20px auto; }
-.mui-content-casino-page .api-scroll .swiper-slide { text-align: center; opacity: 0.5; }
+.mui-content-casino-page .api-scroll .swiper-slide { text-align: center; opacity: 0.5; width: 20%; }
 .mui-content-casino-page .api-scroll .swiper-slide .img-wrap { width: 55px; height: 55px; background: url(images/api-index-bg.png) center bottom no-repeat/90%; margin: 15px auto 0; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item { height: 55px; width: 55px; display: block; position: relative; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item:before { content: ''; display: block; width: 55px; height: 55px; background: url(default/images/api-sprite-black.png) 0 0/70px no-repeat; background-size: 100%; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-2-3:before { background-position: 0 0; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-1-16:before { background-position: 0 -55px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-1-7:before { background-position: 0 -110px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-1-17:before { background-position: 0 -165px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-1-9:before, .mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-2-9:before { background-position: 0 -215px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-1-10:before, .mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-2-10:before, .mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-3-10:before { background-position: 0 -272px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-1-5:before { background-position: 0 -327px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-1-1:before { background-position: 0 -380px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-1-33:before, .mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-3-33:before { background-position: 0 -1375px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-2-15:before { background-position: 0 -605px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-2-6:before { background-position: 0 -493px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-3-12:before { background-position: 0 -440px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-3-19:before { background-position: 0 -547px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-2-26:before { background-position: 0 -660px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-2-20:before { background-position: 0 -714px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-1-24:before, .mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-3-23:before { background-position: 0 -770px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-2-25:before { background-position: 0 -827px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-2-31:before { background-position: 0 -1320px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-2-32:before { background-position: 0 -1265px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-2-38:before { background-position: 0 -930px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-3-4:before { background-position: 0 -878px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-2-27:before { background-position: 0 -930px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-1-2:before { background-position: 0 -1260px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-2-28:before { background-position: 0 -1330px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-5-1:before { background-position: 0 -1541.25px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-2-35:before { background-position: 0 -1432px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-3-21:before { background-position: 0 -1890px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-3-36:before { background-position: 0 -1540px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.lt:before { background-position: 0 -1400px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.yzt:before { background-position: 0 -1470px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.gns:before { background-position: 0 -1541.25px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.prg:before { background-position: 0 -1615px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-3-37:before { background-position: 0 -2030px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-3-40:before { background-position: 0 -2100px; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-3-37.site119:before { background: url(images/api-icon-3-37-site119.png) 0 0/70px no-repeat; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-3-37.site270:before { background: url(images/api-icon-3-37-site270.png) 0 0/70px no-repeat; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-3-37.site209:before { background: url(images/api-icon-3-37-site209.png) 0 0/70px no-repeat; }
+.mui-content-casino-page .api-scroll .swiper-slide .img-wrap .api-item.api-icon-3-40.site322:before { background: url(images/api-icon-3-40-site322.png) 0 0/70px no-repeat; }
 .mui-content-casino-page .api-scroll .swiper-slide .title { color: #fff; font-size: 10px; }
 .mui-content-casino-page .api-scroll .swiper-slide.api-index { opacity: 1; position: relative; }
 .mui-content-casino-page .api-scroll .swiper-slide.api-index .img-wrap { width: 55px; height: 55px; background: url(images/api-index-bg.png) center no-repeat/100%; margin: 15px auto 0; }
