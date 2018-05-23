@@ -57,7 +57,7 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
             //cashOrder.takeTurns= $("input:radio[name='takeTurns']:checked").val();
             var siteId = $("input[name='siteId']").val();
             var orderObj = [];
-            $("tbody tr").each(function(index,obj){
+            $("#editable_wrapper tbody tr").each(function(index,obj){
                 orderObj.push({"order":index+1,"objectId":$(obj).children("[name='gameId']").val()});
                 apiTypeOrder.orderList = orderObj;
             });
