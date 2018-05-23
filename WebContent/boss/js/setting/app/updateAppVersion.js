@@ -8,9 +8,7 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         init: function () {
             this._super();
             this.initVersionOption();
-            if(this.selOptMap[$("#result_version").val()]){
-                $("#cur_version").html(this.selOptMap[$("#result_version").val()].text);
-            }
+            if(this.selOptMap[$("#result_version").val()]){$("#cur_version").html(this.selOptMap[$("#result_version").val()].text);}
         },
         bindEvent: function () {
             this._super();
