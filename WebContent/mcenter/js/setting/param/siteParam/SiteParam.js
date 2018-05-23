@@ -228,7 +228,6 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
 
                     }
                 }
-
             });
             //复制语系
             $(this.formSelector).on("click",".copy", function () {
@@ -244,6 +243,17 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 var sourceContent=$(".siteDescription"+sourceLocal).val();
                 var targetLocal=$(".current").attr("local");
                 $(".siteDescription"+targetLocal).val(sourceContent);
+            });
+            //下拉框不显示选中的语言，自己不能复制自己
+            $(this.formSelector).on("click", ".showDropDown", function () {
+                var targetLocal = $(".current").attr("local");
+                $('li[id^="option"]').each(function () {
+                    if($(this).attr("id").indexOf(targetLocal) != -1){
+                        $(this).addClass("hide");
+                    }else{
+                        $(this).removeClass("hide");
+                    }
+                })
             });
         },
 

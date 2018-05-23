@@ -215,10 +215,10 @@ define(['common/BasePage', 'highcharts'], function (BasePage) {
                     name: '<span tabindex="0" class=" help-popover m-r-xs" role="button" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom"'+
                     'data-html="true" data-content="'+window.top.message.home_auto['含人工存入的']+'"> <i class="fa fa-question-circle"></i> </span>'+window.top.message.home_auto['人工存入']+'',
                     data: json.manualDeposit
-                }, {
+                }/*, {
                     name: '<span tabindex="0" data-content="'+window.top.message.home_auto['来自手机提交的所有存款总额']+'" data-placement="bottom" data-trigger="focus" data-toggle="popover" data-container="body" role="button"><i class="fa fa-question-circle"></i></span>'+window.top.message.home_auto['手机支付']+'',
                     data: json.mobile
-                }]
+                }*/]
             });
         },
 

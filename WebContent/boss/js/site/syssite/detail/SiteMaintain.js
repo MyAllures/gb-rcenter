@@ -7,7 +7,6 @@ define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage) {
         },
 
         onPageLoad: function () {
-
             this._super();
             var _this = this;
             /*var $status = $("#status");
@@ -24,42 +23,13 @@ define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage) {
                 trigger: 'hover',
                 placement: 'top'
             });
-            /*var $status = $("[name='result.status']",this.formSelector);
-            _this.unInitSwitch($status)
-                .bootstrapSwitch()
-                .on('switchChange.bootstrapSwitch', function(event, state) {
-                    if (state) {
-                        $(event.target).val("3");
-                    } else {
-                        $(event.target).val("1");
-                    }
-                });*/
-            //切换语言
-            $(this.formSelector).on("click","a[name='tag']", function () {
-                $("a[name='tag']").removeClass("current");
-                $(this).addClass("current");
-                var local=$(this).attr('local');
-                $(".ann").hide();
-                $(".content"+local).show();
-            });
+
             $(this.formSelector).on("click","a[name='pretag']", function () {
                 $("a[name='pretag']").removeClass("current");
                 $(this).addClass("current");
                 var local=$(this).attr('local');
                 $(".preann").hide();
                 $(".precontent"+local).show();
-            });
-            //复制语系
-            $(this.formSelector).on("click",".copy", function () {
-                var sourceLocal=$(this).attr("local");
-                var targetLocal=$(".current").attr("local");
-
-
-                /*var sourceContent=$("#title"+sourceLocal).val();
-                $("#title"+targetLocal).val(sourceContent);*/
-
-                sourceContent=$("#content"+sourceLocal).val();
-                $("#content"+targetLocal).val(sourceContent);
             });
 
             /**
@@ -108,36 +78,10 @@ define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage) {
                 var local=$(this).attr("local");
                 $("#precurLanguage").val($(this).attr("tagIndex"));
             });
-
-            //显示隐藏定时发布时间
-            $("[name='time']").click(function(){
-                if($(this).prop("checked")){
-                    $("#publishDiv").removeClass("hide");
-                    $("[name='announcement.timingSend']").val("true");
-                }else{
-                    $("#publishDiv").addClass("hide");
-                    $("[name='announcement.timingSend']").val("false");
-                }
-            });
-            $(".form-textarea").each(function(idx,item){
-                $(item).change(function () {
-                    var flag = false;
-                    $(".form-textarea").each(function(idx,content){
-                        if($(content).val()!=''){
-                            flag = true;
-                        }
-                    });
-                    if(flag){
-                        $("[name='hasContent']").val("true");
-                    }else{
-                        $("[name='hasContent']").val("");
-                    }
-                });
-            })
         },
 
         /**
-         * 预览账号维护
+         * 预览站点维护信息
          * @param e
          * @param option
          */
@@ -235,7 +179,7 @@ define(['common/BaseEditPage','bootstrapswitch'], function(BaseEditPage) {
             $(event.currentTarget).unlock();
         },
 
-        changeCurrentLang:function(e,p){
+        changeCurrentLang:function(e,p)　{
             try{
                 var curIndex = $("#curLanguage").val();
                 var allTags = $(".tabLanguage").length;
