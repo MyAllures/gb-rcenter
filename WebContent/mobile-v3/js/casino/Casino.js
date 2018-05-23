@@ -107,9 +107,9 @@ function pullApiScroll() {
  * 滑动后重设高度
  */
 function resizeSlideHeight() {
-    var $slide = $('.g-t-slide-content .swiper-slide.swiper-slide-active');
+    var $slide = $('.g-t-slide-content .swiper-slide.swiper-slide-active .mui-row');
     if($slide.length == 0) {
-        $slide = $('.g-t-slide-content .swiper-slide');
+        $slide = $('.g-t-slide-content .swiper-slide .mui-row');
     }
     $('.g-t-slide-content').height($slide.height());// 左右滑动内容区域时，动态设定swiper的高度
     var min_h = $('#apiScroll-cont').height() > $('.casino-game-type').height() ? $('#apiScroll-cont').height() : $('.casino-game-type').height(); // 滑动内容区域的高度
