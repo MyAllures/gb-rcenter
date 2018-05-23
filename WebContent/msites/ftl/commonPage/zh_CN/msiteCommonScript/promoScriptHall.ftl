@@ -272,7 +272,11 @@
         var icon;
         var btn;
         var item;
-        if (code == 'deposit_send') {
+        if (!data.state && data.error == '活动大厅关闭') {
+            $(".applyResult").html("");
+            msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + data.error + '</span></div></div>';
+            $(".applyResult").append(msg);
+        } else if (code == 'deposit_send') {
             $(".deposit_send_transaction").remove();
             var transactions = data.transactions;
             if (transactions) {
@@ -385,10 +389,20 @@
             addClass = 'promo_may_apply';
             btn = ["联系客服"];
         }
-        var url =  $(".openNewWindow").data("url");
-        var title = "提示";
-        var skin = "layui-layer-warning";
-        _layerDialogProcess(content,title,skin,addClass,btn,url,aplyObj,isRefresh)
+        if (data.state) {
+            var url =  $(".openNewWindow").data("url");
+            var title = "提示";
+            var skin = "layui-layer-warning";
+            _layerDialogProcess(content,title,skin,addClass,btn,url,aplyObj,isRefresh)
+        } else {
+            content = $(".promoFailureTip").html();
+            title = "申请失败";
+            skin =  "layui-layer-danger";
+            addClass="promo_failure";
+            var btn = ["联系客服"];
+            var url =  $(".openNewWindow").data("url");
+            _layerDialog(content,title,skin,addClass,btn,url);
+        }
     }
 
     function applyActivities(aplyObj, isRefresh) {
@@ -445,6 +459,7 @@
         var msg;
         var money = " ";
         if (!data.state && data.error == '活动大厅关闭') {
+            $(".applyResult").html("");
             msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + data.error + '</span></div></div>';
             $(".applyResult").append(msg);
         } else if (code == 'first_deposit' || code == 'second_deposit' || code =='third_deposit' || code == 'everyday_first_deposit' || code == 'deposit_send') {
