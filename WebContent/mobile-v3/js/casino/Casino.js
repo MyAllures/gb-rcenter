@@ -155,6 +155,7 @@ function searchGame(){
             }
         });
     }
+    resizeSlideHeight();
 }
 
 /**
