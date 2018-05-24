@@ -19,7 +19,6 @@ var sysStartTime = "";//系统公告开始时间
 var sysEndTime = "";//系统公告结束时间
 
 var popoverType = "noticeGame";
-var messageType = "sysMessage";
 var gameType = "";
 var t;
 $(function () {
@@ -92,7 +91,7 @@ function segmentedControl2(obj, options) {
         if (!eitem1) {
             site1Notice();
         }
-        messageType="sysMessage";
+        messageType = "sysMessage";
         eitem1 = true;
     }
 }
@@ -358,6 +357,7 @@ function setEndTime() {
 
 /*上拉请求数据*/
 function pullfresh() {
+    var popoverType = $("a.mui-active").attr('data-href');
     if (popoverType == 'noticeGame') {
         gameStartTime = $("#" + popoverType).find(".date[name=beginTime]").val();
         gameEndTime = $("#" + popoverType).find(".date[name=endTime]").val();
@@ -367,9 +367,10 @@ function pullfresh() {
         sysEndTime = $("#" + popoverType).find(".date[name=endTime]").val();
         sysNotice(false);
     } else if (popoverType == 'noticeSite') {
-        if (messageType == 'sysMessage') {
+        var messageType = $('.gb-noticetabs a.mui-active').attr('data-href');
+        if (messageType == 'noticeSite1') {
             site1Notice();
-        } else if (messageType == 'myMessage') {
+        } else if (messageType == 'noticeSite2') {
             site2Notice(false);
         }
     }
