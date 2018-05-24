@@ -58,12 +58,25 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                             console.log(type + "的声音偏好设置被关闭")
                         } else {
                             window.top.popUp.audioplayer(type, tone.paramValue);
+                            _this.printPlayLog(data);
                         }
 
                     }
 
                 }
             }, 1000);
+        },
+        //用来记录是否播放声音LOG 暂未用
+        printPlayLog:function (data) {
+            window.top.topPage.ajax({
+                url: root + "/printPlayLog.html",
+                type: "post",
+                data:data,
+                dataType: "JSON",
+                success: function (data) {
+                    console.log("已经记录日志:"+data.msgBody);
+                }
+            });
         },
         /**
          * 存款提醒弹窗
