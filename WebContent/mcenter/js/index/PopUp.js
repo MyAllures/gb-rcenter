@@ -114,20 +114,17 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var _this = this;
             window.top.popUp.queryTones();
             var tones = window.top.tones;
-            setTimeout(function () {
-                for (var index = 0; index < tones.length; index++) {
-                    var tone = tones[index];
-                    if (type == tone.paramCode) {
-                        if (!tone.active) {
-                            console.log(type + "的声音偏好设置被关闭")
-                        } else {
-                            window.top.popUp.audioplayer(type, tone.paramValue);
-                        }
-
+            for (var index = 0; index < tones.length; index++) {
+                var tone = tones[index];
+                if (type == tone.paramCode) {
+                    if (!tone.active) {
+                        console.log(type + "的声音偏好设置被关闭")
+                    } else {
+                        window.top.popUp.audioplayer(type, tone.paramValue);
                     }
-
                 }
-            }, 1000);
+            }
+
         },
         /**
          * 存款提醒弹窗
@@ -600,7 +597,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         mp3.src = imgRoot + '/' + file;
                     }else {
                         mp3.src = resRoot + '/' + file;
-                    }                    mp3.type = 'audio/mpeg';
+                    }
+                    mp3.type = 'audio/mpeg';
                     player.appendChild(mp3);
                     setTimeout(function () {
                         player.play();
