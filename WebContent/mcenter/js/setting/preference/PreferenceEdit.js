@@ -25,7 +25,7 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
                     if (state) {
                         _msg = window.top.message.setting['confirm.open'];
                     } else {
-                        _msg =  window.top.message.setting['confirm.close'];
+                        _msg = window.top.message.setting['confirm.close'];
                     }
                     $this.bootstrapSwitch('indeterminate', true);
                     var _target = e.currentTarget;//showConfirmMessage
@@ -157,8 +157,45 @@ define(['common/BaseEditPage', 'bootstrapswitch', 'jqFileInput', 'css!themesCss/
             window.top.topPage.ajax({
                 url: root + '/setting/preference/index.html',
                 success: function (data) {
-                    window.top.tones = null;
-                    $("#auto_alert").html("");
+                    window.top.popUp.queryTones(true);
+                    if ($("#auto_alert").children().length > 0) {
+                        var tones = window.top.tones;
+                        var toneData = {};
+                        for (var i = 0; i < tones.length; i++) {
+                            var tone = tones[i];
+                            toneData[tone.paramCode] = tone.paramValue;
+                        }
+                        if (window.ActiveXObject || "ActiveXObject" in window) { //IE
+                            $("#auto_alert").find("embed").each(function () {
+                                var file = toneData[id];
+                                if(file) {
+                                    var src;
+                                    if (file.indexOf("files/gb") == 0) {
+                                        src = imgRoot + '/' + file;
+                                    } else {
+                                        src = resRoot + '/' + file;
+                                    }
+                                    $(this).attr("src", src);
+                                }
+                            });
+                        } else {
+                            $("#auto_alert").find("audio").each(function () {
+                                var id = $(this).attr("id");
+                                var file = toneData[id];
+                                if(file) {
+                                    var src;
+                                    if (file.indexOf("files/gb") == 0) {
+                                        src = imgRoot + '/' + file;
+                                    } else {
+                                        src = resRoot + '/' + file;
+                                    }
+                                    $(this).children("source").attr("src", src);
+                                    $(this).load();
+                                }
+                            });
+                        }
+                    }
+
                     $("#mainFrame").html(data);
                 }
             });
