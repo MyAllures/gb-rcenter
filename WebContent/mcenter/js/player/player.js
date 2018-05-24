@@ -695,6 +695,12 @@ define(['common/BaseListPage', 'site/player/player/tag/PlayerTag', 'moment', 'jq
             $("#txCountBegin").val('');
             $("#txCountEnd").val('');
 
+            //终端，风控清空
+            $("input[name='search.createChannel']").siblings("button").find("span[prompt='prompt']").text(window.top.message.player_auto['全部']);
+            $("input[name='search.createChannel']").val('');
+            $("input[name='search.riskDataType']").siblings("button").find("span[prompt='prompt']").text(window.top.message.player_auto['全部']);
+            $("input[name='search.riskDataType']").val('');
+
             $(event.currentTarget).unlock();
         },
         getSelectIdsArray: function (e, option) {

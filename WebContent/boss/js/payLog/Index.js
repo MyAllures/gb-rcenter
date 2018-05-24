@@ -113,6 +113,7 @@ define(['common/BaseListPage', 'autocompleter'], function (BaseListPage) {
             $("[name='search.OrderId']").val('')
             $("[name='search.objectParams']").val('')
             $("input[name='search.description']").siblings("button").find("span[prompt='prompt']").text("请选择");
+            $("input[name='search.description']").val('');
             $("input[name='search.startTime']").val('');
             $("input[name='search.endTime']").val('');
             $(event.currentTarget).unlock();
