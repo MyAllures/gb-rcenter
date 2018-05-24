@@ -444,9 +444,9 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 $(e.currentTarget).parent().parent().parent().remove();
             });
         },
-        queryTones: function () {
+        queryTones: function (isReload) {
             var _this = this;
-            if (!window.top.tones) {
+            if (!window.top.tones || isReload == true) {
                 window.top.topPage.ajax({
                     url: root + '/index/queryTones.html',
                     dataType: "json",

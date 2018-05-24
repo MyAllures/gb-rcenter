@@ -28,7 +28,7 @@ function initApiSwiper() {
         // api滑动
         var slideContent = new Swiper('.g-t-slide-content', {
             loop: true,
-            loopedSlides: 5,
+            loopedSlides: siledSize,
             autoHeight: true,
             on: {
                 slideChangeTransitionEnd: function() {
@@ -38,8 +38,8 @@ function initApiSwiper() {
         });
         var slideIndicators = new Swiper('.g-t-slide-indicators', {
             loop: true,
-            loopedSlides: 5,
-            slidesPerView: 'auto',
+            loopedSlides: siledSize,
+            slidesPerView: siledSize,
             touchRatio: 0.2,
             slideToClickedSlide: true,
             on: {
@@ -155,6 +155,7 @@ function searchGame(){
             }
         });
     }
+    resizeSlideHeight();
 }
 
 /**
