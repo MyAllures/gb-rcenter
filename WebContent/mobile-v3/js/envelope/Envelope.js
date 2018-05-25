@@ -12,7 +12,7 @@ function closeAds(obj, options) {
     //关闭后是否展示浮动图
     var showEffect = $("#showEffect").val();
     if (showEffect == 'true' || showEffect == true) {
-        localStorage.setItem("showEffect", true);
+        setCookie("showEffect",true);
     }
 }
 
