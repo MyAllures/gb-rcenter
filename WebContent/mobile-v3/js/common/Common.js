@@ -623,7 +623,7 @@ function goToLastPage() {
 function setCookie(name, value, time) {
     if (value == null) {
         document.cookie = name + "=" + escape(value) + ";expires=-1";
-    } else if (time == 0) {
+    } else if (!time || time == 0) {
         document.cookie = name + "=" + escape(value) + ";expires=0";
     } else {
         var strsec = getSecond(time);
@@ -634,7 +634,7 @@ function setCookie(name, value, time) {
 }
 
 function getSecond(str) {
-    if (str == 0) return 0;
+    if (!str || str == 0) return 0;
     var str1=str.substring(1,str.length)*1;
     var str2=str.substring(0,1);
     if (str2=="s")

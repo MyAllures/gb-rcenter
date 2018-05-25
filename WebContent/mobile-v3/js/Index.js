@@ -15,16 +15,16 @@ $(function () {
         disabledHandSlip: ['mui-off-canvas-left']
     };
     muiInit(options);
-    initBanner();
-    initNotice();
-    //初始化api nav滑动
-    swiper();
-    //判断desk是否需要隐藏
-    hideDesk();
     //加载弹窗
     loadDialog();
     //加载浮动图
     loadFloatPic();
+    initBanner();
+    initNotice();
+    //判断desk是否需要隐藏
+    hideDesk();
+    //初始化api nav滑动
+    swiper();
 });
 
 /**
