@@ -600,6 +600,15 @@ bindPreferenceEvent:function () {
             return {"result.trafficStatistics":$("[name='result.trafficStatistics']").val()};
         },
         /**
+         * 获取站点维护公告表单
+         * @param e
+         * @param opt
+         * @returns {*|jQuery}
+         */
+        getSiteMaintainTipFormData: function (e, opt) {
+            return $("input,textarea", "#siteMaintainTipsDiv").serialize();
+        },
+        /**
          * 验证统计代码
          * @param event
          * @returns {boolean}
