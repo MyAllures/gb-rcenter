@@ -94,6 +94,7 @@ function pullApiScroll() {
             } else {
                 pull_refresh.translateY = 105;
             }
+            refreshLoadImg();
         },
         touchMove: function (evt, value) {
             $('.electronic-search').hide();
