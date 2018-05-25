@@ -272,11 +272,7 @@
         var icon;
         var btn;
         var item;
-        if (!data.state && data.error == '活动大厅关闭') {
-            $(".applyResult").html("");
-            msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + data.error + '</span></div></div>';
-            $(".applyResult").append(msg);
-        } else if (code == 'deposit_send') {
+        if (code == 'deposit_send') {
             $(".deposit_send_transaction").remove();
             var transactions = data.transactions;
             if (transactions) {
@@ -296,6 +292,19 @@
             content = $(".deposit_send").html();
             addClass = 'promo_CJS';
         } else if (code == 'effective_transaction') {
+            if (!data.state && data.error == '活动大厅关闭') {
+                $(".applyResult").html("");
+                msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + data.error + '</span></div></div>';
+                $(".applyResult").append(msg);
+                content = $(".promoFailureTip").html();
+                title = "申请失败";
+                skin =  "layui-layer-danger";
+                addClass="promo_failure";
+                var btn = ["联系客服"];
+                var url =  $(".openNewWindow").data("url");
+                _layerDialog(content,title,skin,addClass,btn,url);
+                return;
+            }
             $(".process").remove();
             $(".activityProcess .subs-txt").text('');
             var preferentialRelations = data.preferentialRelations;
@@ -389,20 +398,10 @@
             addClass = 'promo_may_apply';
             btn = ["联系客服"];
         }
-        if (data.state) {
-            var url =  $(".openNewWindow").data("url");
-            var title = "提示";
-            var skin = "layui-layer-warning";
-            _layerDialogProcess(content,title,skin,addClass,btn,url,aplyObj,isRefresh)
-        } else {
-            content = $(".promoFailureTip").html();
-            title = "申请失败";
-            skin =  "layui-layer-danger";
-            addClass="promo_failure";
-            var btn = ["联系客服"];
-            var url =  $(".openNewWindow").data("url");
-            _layerDialog(content,title,skin,addClass,btn,url);
-        }
+        var url =  $(".openNewWindow").data("url");
+        var title = "提示";
+        var skin = "layui-layer-warning";
+        _layerDialogProcess(content,title,skin,addClass,btn,url,aplyObj,isRefresh)
     }
 
     function applyActivities(aplyObj, isRefresh) {
