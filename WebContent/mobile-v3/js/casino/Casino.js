@@ -56,7 +56,7 @@ function initApiSwiper() {
             on: {
                 slideChangeTransitionEnd: function () {
                     resizeSlideHeight();
-                    alloyT.to(0);
+                    scrollToTop();
                     //处理图片延迟加载
                     window.setTimeout(function () {
                         refreshLoadImg();
@@ -165,10 +165,18 @@ function searchGame() {
         });
     }
     resizeSlideHeight();
-    alloyT.to(0);
+    scrollToTop();
     //处理图片延迟加载
     refreshLoadImg();
     hideShadow();
+}
+
+function scrollToTop() {
+    if($("#pull_apiScroll").offset().top<0) {
+        alloyT.to(0);
+    } else {
+        alloyT.to(105);
+    }
 }
 
 /**
