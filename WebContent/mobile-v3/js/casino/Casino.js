@@ -101,12 +101,13 @@ function pullApiScroll() {
             $('.electronic-search').hide();
         },
         touchEnd: function (evt, value) {
-            if (value >= 105) {
-                this.to(105);
-            }
             window.setTimeout(function () {
                 refreshLoadImg();
             }, 500);
+            if (value >= 105) {
+                this.to(105);
+                return false;
+            }
         }
     })
 }
