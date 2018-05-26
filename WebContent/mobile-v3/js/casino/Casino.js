@@ -19,7 +19,7 @@ function refreshLoadImg() {
         $slide = $('.g-t-slide-content .swiper-slide');
     }
     var $gtSlide = $(".g-t-slide-content .swiper-slide-active");
-    if($gtSlide.length == 0) {
+    if ($gtSlide.length == 0) {
         $gtSlide = $('.g-t-slide-content .swiper-slide');
     }
     if ($slide.find("img[data-lazyload]").length > 0 || $gtSlide.find("img[data-lazyload-id]").length > 0) {
@@ -55,10 +55,12 @@ function initApiSwiper() {
             slideToClickedSlide: true,
             on: {
                 slideChangeTransitionEnd: function () {
+                    resizeSlideHeight();
                     alloyT.to(0);
                     //处理图片延迟加载
-                    refreshLoadImg();
-                    resizeSlideHeight();
+                    window.setTimeout(function () {
+                        refreshLoadImg();
+                    }, 600);
                 }
             }
         });
@@ -94,7 +96,6 @@ function pullApiScroll() {
             } else {
                 pull_refresh.translateY = 105;
             }
-            refreshLoadImg();
         },
         touchMove: function (evt, value) {
             $('.electronic-search').hide();
@@ -102,8 +103,10 @@ function pullApiScroll() {
         touchEnd: function (evt, value) {
             if (value >= 105) {
                 this.to(105);
-                return false;
             }
+            window.setTimeout(function () {
+                refreshLoadImg();
+            }, 500);
         }
     })
 }
@@ -160,10 +163,10 @@ function searchGame() {
             }
         });
     }
+    resizeSlideHeight();
     alloyT.to(0);
     //处理图片延迟加载
     refreshLoadImg();
-    resizeSlideHeight();
     hideShadow();
 }
 
