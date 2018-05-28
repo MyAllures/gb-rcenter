@@ -26,9 +26,6 @@ define(['common/BaseEditPage','bootstrapswitch', 'UE.I18N.' + window.top.languag
             $(".contents_textarea", _this.formSelector).each(function (idx, item) {
                 _this.initUEditor(idx);
             });
-            setTimeout(function () {
-                $("#oldContent").val(_this.getCurrentContent());
-            },1000)
             $(":radio[name='result.contentType']").on('change', function (e) {
                 _this._switchDisplay();
             });
@@ -96,22 +93,6 @@ define(['common/BaseEditPage','bootstrapswitch', 'UE.I18N.' + window.top.languag
                 var targetId = $(tips[0]).attr("id");
                 return UE.getEditor(targetId).getContent();
             }
-        },
-
-        getCurrentContent: function () {
-            var contents= "";
-            $(":input").each(function(index,obj){
-                if($(obj).attr("name")!="oldContent"){
-                    var string = $(obj).attr("name")+":"+$(obj).val().trim()+",";
-                    contents += string;
-                }
-
-            });
-            $(":file").each(function(index,obj){
-                var string = $(obj).attr("name")+":"+$(obj).val().trim()+",";
-                contents += string;
-            });
-            return contents;
         },
 
         checkForNext: function () {
