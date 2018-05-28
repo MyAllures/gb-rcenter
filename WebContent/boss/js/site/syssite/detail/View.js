@@ -142,6 +142,16 @@ define(['common/BasePage'], function(BasePage) {
                 return false;
         },
 
+        /**
+         * 站点维护公告表单序列化
+         * @param e
+         * @param opt
+         * @returns {*|jQuery}
+         */
+        getSiteMaintainTipFormData: function (e, opt) {
+            return $("input,textarea", "#siteMaintainTipsDiv").serialize();
+        },
+
         _validateForm:function(e,option) {
             var paramValue = $("[name='mstSites.mainLanguage']").val();
             if (paramValue)
