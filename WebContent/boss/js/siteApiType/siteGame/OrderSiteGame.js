@@ -62,6 +62,7 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
                 apiTypeOrder.orderList = orderObj;
             });
             apiTypeOrder.siteId = siteId;
+            apiTypeOrder.apiTypeId = $("input[name=apiTypeId]").val();
             window.top.topPage.ajax({
                 contentType: 'application/json; charset=utf-8',
                 dataType:'json',

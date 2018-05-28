@@ -6,13 +6,29 @@ var alloyT = null;
 $(function () {
     pullApiScroll();
     initApiSwiper();
-    //muiScrollX(".api-scroll");
     if (!lazyLoadApi) {
         //图片懒加载
         lazyLoadApi = lazyLoadImg("body");
     }
     lazyLoadApi.refresh(true);
 });
+
+function refreshLoadImg() {
+    var $slide = $(".swiper-slide-active");
+    if ($slide.length == 0) {
+        $slide = $('.g-t-slide-content .swiper-slide');
+    }
+    var $gtSlide = $(".g-t-slide-content .swiper-slide-active");
+    if ($gtSlide.length == 0) {
+        $gtSlide = $('.g-t-slide-content .swiper-slide');
+    }
+    if ($slide.find("img[data-lazyload]").length > 0 || $gtSlide.find("img[data-lazyload-id]").length > 0) {
+        if (!lazyLoadApi) {
+            lazyLoadApi = lazyLoadImg("body");
+        }
+        lazyLoadApi.refresh(true);
+    }
+}
 
 function initApiSwiper() {
     //	  api滚动区域:
@@ -28,30 +44,23 @@ function initApiSwiper() {
         // api滑动
         var slideContent = new Swiper('.g-t-slide-content', {
             loop: true,
-            loopedSlides: 5,
-            autoHeight: true,
-            on: {
-                slideChangeTransitionEnd: function() {
-                    resizeSlideHeight();
-                }
-            }
+            loopedSlides: siledSize,
+            autoHeight: true
         });
         var slideIndicators = new Swiper('.g-t-slide-indicators', {
             loop: true,
-            loopedSlides: 5,
-            slidesPerView: 'auto',
+            loopedSlides: siledSize,
+            slidesPerView: siledSize,
             touchRatio: 0.2,
             slideToClickedSlide: true,
             on: {
                 slideChangeTransitionEnd: function () {
-                    //处理图片延迟加载
-                    if ($(".swiper-slide-active").find("img[data-lazyload]").length > 0 || $(".g-t-slide-content .swiper-slide-active").find("img[data-lazyload-id]").length > 0) {
-                        if (!lazyLoadApi) {
-                            lazyLoadApi = lazyLoadImg("body");
-                        }
-                        lazyLoadApi.refresh(true);
-                    }
                     resizeSlideHeight();
+                    scrollToTop();
+                    //处理图片延迟加载
+                    window.setTimeout(function () {
+                        refreshLoadImg();
+                    }, 600);
                 }
             }
         });
@@ -81,21 +90,21 @@ function pullApiScroll() {
         factor: 1, //不必需,默认值是1代表touch区域的1px的对应target.y的1
         min: window.innerHeight - 44 - min_h, //不必需,滚动属性的最小值
         max: 0, //不必需,滚动属性的最大值
-        change: function(value) {
-            if(value < 105) {
-                pull_refresh.translateY = value;
-                // scroller.translateY = value;
+        change: function (value) {
+            if (value < 105) {
+                pull_refresh.translateY = window.innerHeight - 44 - min_h;
             } else {
                 pull_refresh.translateY = 105;
-                // scroller.translateY = 70;
             }
-
         },
-        touchMove: function(evt, value) {
+        touchMove: function (evt, value) {
             $('.electronic-search').hide();
         },
-        touchEnd: function(evt, value) {
-            if(value >= 105) {
+        touchEnd: function (evt, value) {
+            window.setTimeout(function () {
+                refreshLoadImg();
+            }, 500);
+            if (value >= 105) {
                 this.to(105);
                 return false;
             }
@@ -108,7 +117,7 @@ function pullApiScroll() {
  */
 function resizeSlideHeight() {
     var $slide = $('.g-t-slide-content .swiper-slide.swiper-slide-active .mui-row');
-    if($slide.length == 0) {
+    if ($slide.length == 0) {
         $slide = $('.g-t-slide-content .swiper-slide .mui-row');
     }
     $('.g-t-slide-content').height($slide.height());// 左右滑动内容区域时，动态设定swiper的高度
@@ -121,7 +130,7 @@ function resizeSlideHeight() {
  */
 function toggleSearch() {
     $("div[name=searchDiv]").toggle();
-    if($("div[name=searchDiv]").is(":hidden")) {
+    if ($("div[name=searchDiv]").is(":hidden")) {
         $('.search-shadow').hide();
     } else {
         $('.search-shadow').show();
@@ -139,21 +148,34 @@ function hideShadow() {
 /**
  * 名称搜索
  */
-function searchGame(){
+function searchGame() {
     var name = $("input[name=gameName]").val();
-    if(!name || name == '') {
+    if (!name || name == '') {
         $("div[name=game]").show();
     } else {
-        $("div[name=game]").each(function(){
+        $("div[name=game]").each(function () {
             var gameName = $(this).attr("gameName");
-            if(gameName){
-                if(gameName.indexOf(name) != -1){
+            if (gameName) {
+                if (gameName.indexOf(name) != -1) {
                     $(this).show();
-                }else{
+                } else {
                     $(this).hide();
                 }
             }
         });
+    }
+    resizeSlideHeight();
+    scrollToTop();
+    //处理图片延迟加载
+    refreshLoadImg();
+    hideShadow();
+}
+
+function scrollToTop() {
+    if($("#pull_apiScroll").offset().top<0) {
+        alloyT.to(0);
+    } else {
+        alloyT.to(105);
     }
 }
 
