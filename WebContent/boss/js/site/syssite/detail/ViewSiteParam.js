@@ -83,6 +83,21 @@ define(['common/BaseEditPage','bootstrapswitch', 'UE.I18N.' + window.top.languag
             });
         },
 
+        /**
+         * 站点维护文案预览
+         */
+        previewSiteMaintainTipData: function (e, opt) {
+            var tips = $("textarea", "#siteMaintainTipsDiv");
+            var lan  = $("input[name='mainLanguage']", "#siteMaintainTipsDiv").val();
+            if ($(".siteMaintain" + lan)) {
+                var targetId = $(".siteMaintain" + lan).attr("id");
+                return UE.getEditor(targetId).getContent();
+            } else {
+                var targetId = $(tips[0]).attr("id");
+                return UE.getEditor(targetId).getContent();
+            }
+        },
+
         getCurrentContent: function () {
             var contents= "";
             $(":input").each(function(index,obj){
