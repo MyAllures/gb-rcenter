@@ -17,7 +17,7 @@ $(function () {
  */
 function closeLeftMenu() {
     $(".index-canvas-wrap").on("tap", function (e) {// 点击侧边空白隐藏侧边栏
-        if (!$(e.detail.target).parents(".mui-off-canvas-left")[0]) {
+        if (e.detail && e.detail.target && !$(e.detail.target).parents(".mui-off-canvas-left")[0]) {
             $("html").toggleClass("index-canvas-show");
         }
     });

@@ -72,7 +72,9 @@ CACHE MANIFEST
 ../js/passport/Login.js
 ../js/passport/SignUp.js
 ../js/password/UpdatePassword.js
-../js/password/UpdateSafePassword.js
+../js/password/UpdateSecurityPassword.js
+../js/password/SafePasswordCommon.js
+../js/password/SetSecurityPassword.js
 ../js/recommend/Recommend.js
 ../js/registe/RegisteRules.js
 ../js/transfer/auto/Index.js
