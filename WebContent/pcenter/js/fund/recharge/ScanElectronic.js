@@ -117,7 +117,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 $("#accountCode").text(accountCode);
                 $("#bankNum").text(bankNum);
                 $("#bankName").text(bankName);
-                $("#bankName").parent("span").attr("data-clipboard-text", bankName);
+                $("#bankName").parent("span.paidname").attr("data-clipboard-text", bankName);
                 $("[name=electronicElement]").show();
                 $("#step").text(3);
                 $("[name=scanElement]").hide();
