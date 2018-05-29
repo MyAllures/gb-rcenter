@@ -77,10 +77,10 @@ define(['common/BaseListPage', 'bootstrapswitch'], function (BaseListPage) {
                         data: {"search.id": id, "proxyLine": proxyLine},
                         success: function (data) {
                             if (data.state) {
-                                alert("切换成功！");
-                            } else {
-                                alert("切换失败！");
+                                window.top.topPage.showSuccessMessage("切换成功！");
                                 _this.query(e);
+                            } else {
+                                window.top.topPage.showErrorMessage("切换失败！");
                             }
                         }
                     })
