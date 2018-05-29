@@ -26,9 +26,6 @@ define(['common/BaseEditPage','bootstrapswitch', 'UE.I18N.' + window.top.languag
             $(".contents_textarea", _this.formSelector).each(function (idx, item) {
                 _this.initUEditor(idx);
             });
-            setTimeout(function () {
-                $("#oldContent").val(_this.getCurrentContent());
-            },1000)
             $(":radio[name='result.contentType']").on('change', function (e) {
                 _this._switchDisplay();
             });
@@ -83,20 +80,19 @@ define(['common/BaseEditPage','bootstrapswitch', 'UE.I18N.' + window.top.languag
             });
         },
 
-        getCurrentContent: function () {
-            var contents= "";
-            $(":input").each(function(index,obj){
-                if($(obj).attr("name")!="oldContent"){
-                    var string = $(obj).attr("name")+":"+$(obj).val().trim()+",";
-                    contents += string;
-                }
-
-            });
-            $(":file").each(function(index,obj){
-                var string = $(obj).attr("name")+":"+$(obj).val().trim()+",";
-                contents += string;
-            });
-            return contents;
+        /**
+         * 站点维护文案预览
+         */
+        previewSiteMaintainTipData: function (e, opt) {
+            var tips = $("textarea", "#siteMaintainTipsDiv");
+            var lan  = $("input[name='mainLanguage']", "#siteMaintainTipsDiv").val();
+            if ($(".siteMaintain" + lan)) {
+                var targetId = $(".siteMaintain" + lan).attr("id");
+                return UE.getEditor(targetId).getContent();
+            } else {
+                var targetId = $(tips[0]).attr("id");
+                return UE.getEditor(targetId).getContent();
+            }
         },
 
         checkForNext: function () {

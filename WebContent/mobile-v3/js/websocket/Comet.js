@@ -81,7 +81,8 @@ MSiteComet.prototype = {
         var popUp = new MSitePopUp();
         param.success = function () {
             console.info("connect success..");
-            subscribes = [
+            //弹窗功能暂时关闭
+            /*subscribes = [
                 {subscribeType: "PCENTER-popUp-Notice", callBack: popUp.dialogCallBack},
                 {subscribeType: "SYS_ANN", callBack: popUp.dialogCallBack},
                 {subscribeType: "SITE_ANN", callBack: popUp.dialogCallBack},
@@ -90,6 +91,17 @@ MSiteComet.prototype = {
                 {subscribeType: "MCENTER_READ_COUNT", callBack: popUp.messageCallBack}, //仅消息不弹窗
                 {subscribeType: "MSITE-ONLINERECHARGE", callBack: popUp.depositResultCallBack},
                 {subscribeType: "MSITE_DIGICCY_REFRESH_BALANCE", callBack: popUp.dialogCallBack}
+            ];*/
+
+            subscribes = [
+                {subscribeType: "PCENTER-popUp-Notice", callBack: popUp.messageCallBack},
+                {subscribeType: "SYS_ANN", callBack: popUp.messageCallBack},
+                {subscribeType: "SITE_ANN", callBack: popUp.messageCallBack},
+                {subscribeType: "PCENTER-dialog-Notice", callBack: popUp.messageCallBack},
+                {subscribeType: "MSITE-Player-Announcement-Notice", callBack: popUp.messageCallBack},
+                {subscribeType: "MCENTER_READ_COUNT", callBack: popUp.messageCallBack}, //仅消息不弹窗
+                {subscribeType: "MSITE-ONLINERECHARGE", callBack: popUp.messageCallBack},
+                {subscribeType: "MSITE_DIGICCY_REFRESH_BALANCE", callBack: popUp.messageCallBack}
             ];
             _this.subscribeMsgs(subscribes);
         };
