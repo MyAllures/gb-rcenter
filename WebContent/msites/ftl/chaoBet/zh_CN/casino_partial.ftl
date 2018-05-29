@@ -54,7 +54,7 @@
 
     <div class="pull-right">
         <div class="all_g_txt pull-left">总共<span>${data.gameCount}</span>个电子游戏</div>
-        <ul class="sort2 list-inline pull-left ">
+        <ul class="sort2 list-inline pull-left _vr_gameTag">
             <li <#if data.gameSearch.maxTag?default('')=="maxView">class="active"</#if>><a href="javascript:" data-href="casino_partial.html?apiType=2&apiId=${data.gameSearch.apiId}&maxTag=maxView" onclick="maxGameTag(this);">最受欢迎</a></li>
             <#--<li <#if data.gameSearch.maxTag?default('')=="maxLine">class="active"</#if>><a href="javascript:" data-href="casino_partial.html?apiType=2&apiId=${data.gameSearch.apiId}&maxTag=maxLine" onclick="maxGameTag(this);">最多游戏线</a></li>-->
             <li <#if data.gameSearch.maxTag?default('')=="maxCollect">class="active"</#if>><a href="javascript:" data-href="casino_partial.html?apiType=2&apiId=${data.gameSearch.apiId}&maxTag=maxCollect" onclick="maxGameTag(this);">最多收藏</a></li>
