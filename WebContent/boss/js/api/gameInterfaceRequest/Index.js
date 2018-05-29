@@ -6,7 +6,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
 
         init: function () {
             this._super();
-            this._querySearchCondition()
+            /*this._querySearchCondition()*/
         },
 
         bindEvent: function () {

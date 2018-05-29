@@ -28,8 +28,8 @@ define(['common/BaseListPage'], function (BaseListPage) {
          */
         bindEvent: function () {
             this._super();
-
-            $("ul li a", "#mainFrame div.panel").on("click", function () {
+            var _this = this;
+            $("ul li a", "#mainFrame div.panel-options").on("click", function () {
                 var $href = $(this).attr("data-href");
                 $(".tab-content").addClass("hide");
                 $("#tab-content" + $(this).attr("index")).load(root + $href);
