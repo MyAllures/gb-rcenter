@@ -292,6 +292,19 @@
             content = $(".deposit_send").html();
             addClass = 'promo_CJS';
         } else if (code == 'effective_transaction') {
+            if (!data.state && data.error == '活动大厅关闭') {
+                $(".applyResult").html("");
+                msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + data.error + '</span></div></div>';
+                $(".applyResult").append(msg);
+                content = $(".promoFailureTip").html();
+                title = "申请失败";
+                skin =  "layui-layer-danger";
+                addClass="promo_failure";
+                var btn = ["联系客服"];
+                var url =  $(".openNewWindow").data("url");
+                _layerDialog(content,title,skin,addClass,btn,url);
+                return;
+            }
             $(".process").remove();
             $(".activityProcess .subs-txt").text('');
             var preferentialRelations = data.preferentialRelations;
@@ -445,6 +458,7 @@
         var msg;
         var money = " ";
         if (!data.state && data.error == '活动大厅关闭') {
+            $(".applyResult").html("");
             msg = '<div class="item-failure-without-bar"><i class="icon-fail"></i><div class="txt"><span>' + data.error + '</span></div></div>';
             $(".applyResult").append(msg);
         } else if (code == 'first_deposit' || code == 'second_deposit' || code =='third_deposit' || code == 'everyday_first_deposit' || code == 'deposit_send') {

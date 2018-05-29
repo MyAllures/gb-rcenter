@@ -21,7 +21,7 @@ define(['common/BaseListPage', 'jsrender', 'bootstrapswitch'], function (BaseLis
             var _this = this;
             selectIds = null;
 
-            var $bootstrapSwitchs = $('input[type=checkbox][name=my-checkboxstatus]');
+            var $bootstrapSwitchs = $('input[type=checkbox][name=my-checkbox]');
             this.unInitSwitch($bootstrapSwitchs)
                 .bootstrapSwitch({
                     onText: window.top.message.content['floatPic.dislpay.on'],

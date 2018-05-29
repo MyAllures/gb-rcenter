@@ -15,16 +15,16 @@ $(function () {
         disabledHandSlip: ['mui-off-canvas-left']
     };
     muiInit(options);
+    //加载弹窗
+    loadDialog();
+    //加载浮动图
+    loadFloatPic();
     initBanner();
-    //默认打开弹窗消息
-    initDialog();
     initNotice();
-    //初始化api nav滑动
-    swiper();
     //判断desk是否需要隐藏
     hideDesk();
-    //判断浮动图是否隐藏
-    hideEffect();
+    //初始化api nav滑动
+    swiper();
 });
 
 /**
@@ -60,7 +60,7 @@ function closeDownLoad() {
  */
 function swiper() {
     var siledSize = $(".nav .swiper-container a.swiper-slide").length;
-    if(siledSize >1){
+    if (siledSize > 1) {
         var apiTypeLength = $("#apiTypeLength").val();
         // api滑动
         apiSlideContent = new Swiper('.nav-slide-content', {
@@ -144,28 +144,9 @@ function closeBanner(obj, options) {
 
 /*公告弹窗*/
 function showNotice(obj, options) {
-    /*var noticeA = noticeIndicator = "";
-    $(".notice .notice-list a").each(function () {//生成公告html和indicator
-        noticeA += "<div class='mui-slider-item'><a href='javascript:'>" + $(this).html() + "</a></div>";
-        noticeIndicator += "<div class='mui-indicator'></div>"
-    });
-    var noticeHtml = $('<div><div class="mui-slider notice-slider"><div class="mui-slider-group">' + noticeA + '</div><div class="mui-slider-indicator">' + noticeIndicator + '</div></div></div></div>');
-    var alertNotice = mui.alert(noticeHtml.html(), "公告", "关闭");
-    $(alertNotice.element).addClass('notice-alert');// 定义弹窗的class,方便修改样式
-    var index = options.idx;//当前点击的公告index
-    //初始化notice-slider
-    var notice = mui('.mui-slider');
-    notice.slider({
-        //interval: 3000//自动轮播周期，若为0则不自动播放，默认为0；
-    });
-    //点击公告，轮播跳转到对应的位置
-    $(".notice-slider .mui-indicator").removeClass("mui-active");
-    $(".notice-slider .mui-indicator:eq(" + index + ")").addClass("mui-active");
-    notice.slider().gotoItem(index);*/
-
-    var noticeA =noticeIndicator="";
-    $(".notice .notice-list .marquee a").each(function(){//生成公告html和indicator
-        noticeA+="<a href='javascript:'>"+$(this).html()+"</a>";
+    var noticeA = noticeIndicator = "";
+    $(".notice .notice-list .marquee a").each(function () {//生成公告html和indicator
+        noticeA += "<a href='javascript:'>" + $(this).html() + "</a>";
     });
     var noticeHtml = $('<div>' +
         '<div class="mui-slider notice-slider">' +
@@ -173,16 +154,16 @@ function showNotice(obj, options) {
         '<div class="mui-slider-item">' +
         '<div class="mui-scroll-wrapper">' +
         '<div class="mui-scroll">' +
-        '<div style="padding-right: 10px;">'+noticeA+'</div>' +
+        '<div style="padding-right: 10px;">' + noticeA + '</div>' +
         '</div>' +
         '</div>' +
         '</div>' +
         '</div>' +
         '</div>' +
         '</div>');
-    var alertNotice = mui.alert(noticeHtml.html(),"公告","关闭");
+    var alertNotice = mui.alert(noticeHtml.html(), "公告", "关闭");
     $(alertNotice.element).addClass('notice-alert');// 定义弹窗的class,方便修改样式
-    $(".notice-slider").css({height:$(window).height()*5})
+    $(".notice-slider").css({height: $(window).height() * 5})
     mui(".notice-slider .mui-scroll-wrapper").scroll();
 }
 
@@ -210,20 +191,59 @@ function changeNavGame(obj, options) {
 //添加到桌面图标
 function closeDesk(obj, options) {
     $("#deskTip").hide();
-    localStorage.setItem("destHide", true);
+    setCookie("destHide", true);
 }
 
 //判断desk是否需要隐藏
-function hideDesk(){
-    if(os != 'app_ios' || localStorage.getItem("destHide")){
+function hideDesk() {
+    var destHide = getCookie("destHide");
+    if (os != 'app_ios' || destHide) {
         $("#deskTip").hide();
     }
 }
 
 //浮动图是否隐藏
-function hideEffect(){
-    var showEffect = localStorage.getItem("showEffect");
-    if(showEffect == 'true' || showEffect == true){
+function hideEffect() {
+    var showEffect = getCookie("showEffect");
+    if (showEffect == 'true' || showEffect == true) {
         $(".ads-slider").hide();
     }
+}
+
+/**
+ * 加载消息弹窗
+ */
+function loadDialog() {
+    var options = {
+        url: root + "/index/dialog.html",
+        dataType: 'html',
+        success: function (data) {
+            $("body").append(data);
+            //默认打开弹窗消息
+            initDialog();
+        }
+    };
+    muiAjax(options);
+}
+
+
+/**
+ * 加载红包浮动图
+ */
+function loadFloatPic() {
+    var showEffect = getCookie("showEffect");
+    //如果用户已经设置了隐藏红包，不展示红包浮动图
+    if (showEffect == 'true' || showEffect == true) {
+        return;
+    }
+    var options = {
+        url: root + "/index/floatPic.html",
+        dataType: 'html',
+        success: function (data) {
+            $("body").append(data);
+            //判断浮动图是否隐藏
+            hideEffect();
+        }
+    };
+    muiAjax(options);
 }

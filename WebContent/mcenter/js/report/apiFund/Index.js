@@ -112,6 +112,11 @@ define(['common/BaseListPage', 'autocompleter'], function (BaseListPage) {
             this._super();
             var e = {currentTarget: $(".mediate-search-btn")};
             this.totalMoney(e);
+            var _this=this;
+            $('[data-toggle="popover"]',_this.formSelector).popover({
+                trigger: 'hover',
+                html: true
+            });
         },
 
         changeKey: function (e) {
