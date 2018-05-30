@@ -73,14 +73,15 @@
         .mui-scroll-wrapper{height: 40px;}
         .mui-scroll{width: 100%;}
         ul{height: 40px;   display: block;       border: 0;white-space: nowrap;text-align: center;}
-            li{    display: inline-block;font-size: 12px;    width: 33.3333%;
-                .mui-tab-item{padding: 0;   height: 40px;   display: block;    width: 100%;    line-height: 39px;   padding-left: 40px;background-position: 4px center;
+            li{    display: inline-block;font-size: 12px;    width: 25%;
+                .mui-tab-item{padding: 0;   height: 40px;   display: block;    width: 100%;    line-height: 39px;   padding-left: 36px;background-position: 2px center;
     background-size: 30px;
     background-repeat: no-repeat;    text-align: left;
                     &.api-icon-4-22-2{background-image: url(images/icon-yzt.png);}  
                     &.api-icon-4-22-1{background-image: url(images/icon-lt.png);} 
                     &.api-icon-4-2{background-image: url(images/icon-kg.png);} 
-                    &.api-icon-4-10{background-image: url(images/icon-bb.png);}                   
+                    &.api-icon-4-10{background-image: url(images/icon-bb.png);} 
+                    &.api-icon-4-41{background-image: url(images/icon-vr.png);}                  
                 }
             }
         }        
