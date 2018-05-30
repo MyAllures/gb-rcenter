@@ -113,7 +113,7 @@
 .mui-content-casino-page .casino-list a { text-align: center; display: block; margin: 10px auto 0; width: 100px; border-radius: 5px; box-shadow: 0 2px 4px #bbb; }
 .mui-content-casino-page .casino-list a p { height: 30px; line-height: 24px; margin-bottom: 5px; color: #333; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mui-content-casino-page .casino-list .img-wrap { background: #fff; position: relative; }
-.mui-content-casino-page .casino-list .img-wrap img { width: 100px; height: 70px; vertical-align: middle; border-top-left-radius: 6px; border-top-right-radius: 6px; }
+.mui-content-casino-page .casino-list .img-wrap img { width: 100px; height: 100px; vertical-align: middle; border-top-left-radius: 6px; border-top-right-radius: 6px; }
 .mui-content-casino-page .casino-list .icon-api { position: absolute; width: 22px; height: 22px; display: block; right: -5px; top: -5px; }
 .mui-content-casino-page .casino-list .icon-api-ag { background: url(images/casino-game-ag.png) center no-repeat/100%; }
 .mui-content-casino-page .casino-list .hot { color: #fe0000; display: none; }
