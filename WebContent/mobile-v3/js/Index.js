@@ -191,7 +191,7 @@ function changeNavGame(obj, options) {
 //添加到桌面图标
 function closeDesk(obj, options) {
     $("#deskTip").hide();
-    setCookie("destHide",true);
+    setCookie("destHide", true);
 }
 
 //判断desk是否需要隐藏
@@ -231,6 +231,11 @@ function loadDialog() {
  * 加载红包浮动图
  */
 function loadFloatPic() {
+    var showEffect = getCookie("showEffect");
+    //如果用户已经设置了隐藏红包，不展示红包浮动图
+    if (showEffect == 'true' || showEffect == true) {
+        return;
+    }
     var options = {
         url: root + "/index/floatPic.html",
         dataType: 'html',

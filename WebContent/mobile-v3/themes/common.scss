@@ -1379,8 +1379,8 @@ body.deposit{
 } // 存款样式结束标签
 // 新存款样式
 .deposit_2{overflow-x:hidden;
-    background: #f2f2f2;
-    .deposit-2-content{background: #f2f2f2;bottom:51px;padding-bottom:0;}
+    background: #f2f2f2;position: relative;
+    .deposit-2-content{background: #f2f2f2;bottom:51px;padding-bottom:0;height: 100vh;}
     .list_pay{// 支付列表
         padding: 12px 10px 8px;overflow: hidden;
         margin-left: -4px;margin-right: -4px;

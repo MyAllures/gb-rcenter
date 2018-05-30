@@ -477,6 +477,11 @@
     <script src="../../mobile-v3/js/casino/transform.js"></script>
     <script type="text/javascript">
       $(function() {
+          //屏蔽部浏览器下拉刷新
+          $('body').on('touchmove', function (event) {
+              event.preventDefault();
+          });
+
         function resetMin(){
           $('.g-t-slide-content').height($('.g-t-slide-content .swiper-slide.swiper-slide-active').height());// 左右滑动内容区域时，动态设定swiper的高度
           var min_h = $('#apiScroll-cont').height() > $('.casino-game-type').height() ? $('#apiScroll-cont').height() : $('.casino-game-type').height(); // 滑动内容区域的高度

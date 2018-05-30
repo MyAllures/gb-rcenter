@@ -211,7 +211,14 @@
         if($(window).scrollTop()+$(window).height() > $("footer").offset().top){
             if(isLoading==0){
                 var firstPage = Number($('#game-page').attr('data-firstpageNumber')),lastPage = Number($('#game-page').attr('data-lastPageNumber')); // 定义起始页和结束页变量
-                var moreUrl = $("._vr_itemCasino ._vr_tabs").find("li.active a").data("href");
+                var moreUrl = null;
+                var gameMaxTagUrl = $("._vr_itemCasino ._vr_gameTag").find("li.active a").data("href");//最受欢迎等的标签
+                var gameTagUrl = $("._vr_itemCasino ._vr_tabs").find("li.active a").data("href");//游戏当前标签
+                if(gameMaxTagUrl!=undefined ){
+                    moreUrl = gameMaxTagUrl;
+                }else{
+                    moreUrl = gameTagUrl;
+                }
                 if(firstPage < lastPage){ // 如果还有数据没显示，第一页变量加1
                     $(".g_loading").show(); // 加载时的加载层
                     firstPage += 1;
