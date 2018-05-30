@@ -26,7 +26,7 @@ var BaseDeposit = function () {
             toast(window.top.message.deposit_auto['请输入金额']);
             return false;
         } else if (!/^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/.test(rechargeAmount.val())) {
-            toast(window.top.message.deposit_auto['请输入正确的金额']);
+            toast(window.top.message.deposit_auto['金额格式不对']);
             return false;
         } else {
             var min = Number($("#onlinePayMin").val());
