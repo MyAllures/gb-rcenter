@@ -32,7 +32,7 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
                 $('div.filter').addClass('hide');
                 $('span.choose').text(window.top.message.report['operate.list.all']);
             }
-            _this.changeAction();
+            // _this.changeAction();
         },
         /** 当前对象事件初始化函数 */
         bindEvent: function () {
