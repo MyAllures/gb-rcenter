@@ -690,15 +690,5 @@ define(['common/BaseListPage'], function (BaseListPage) {
 
             $(e.currentTarget).unlock();
         },
-        /**
-         * 自定义查询,在returnValue为true的情况下才刷新dialog,为了让取消按钮不刷新页面
-         * @param e
-         * @param opt
-         */
-        custQuery:function(e,opt){
-            if(e.returnValue == true){
-                this.query(e,opt);
-            }
-        },
     });
 });
