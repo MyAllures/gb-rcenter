@@ -368,21 +368,8 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
             var _this = this;
             for (var i = 0; i < payBanks.length; i++) {
                 var payUrl = $(payBanks[i]).attr("payUrl");
-                if (i % 3 == 1) {
-                    payUrl = 'msite.me.so';
-                } else if (i % 3 == 2) {
-                    payUrl = 'pay1.ampinplayopt0matrix.com';
-                }
                 if (urls.indexOf(payUrl) < 0) {
-                    console.log(1);
                     urls = urls + "," + payUrl;
-                   /* if (count > 0) {
-                        window.setTimeout(function () {
-                            _this.checkPayUrlResult(payUrl)
-                        }, 1000);
-                    } else {
-                        this.checkPayUrlResult(payUrl);
-                    }*/
                     this.checkPayUrlResult(payUrl);
                     count++;
                 }

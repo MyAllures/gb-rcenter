@@ -188,7 +188,7 @@ height: 44px;
             p{height: 30px;line-height: 24px;margin-bottom:5px;color: #333;font-size: 12px;white-space: nowrap;    overflow: hidden;    text-overflow: ellipsis;}
         }
         .img-wrap{background: #fff;position:relative;
-            img{width: 100px;height:70px ;vertical-align: middle;border-top-left-radius: 6px;border-top-right-radius: 6px;}
+            img{width: 100px;height:100px ;vertical-align: middle;border-top-left-radius: 6px;border-top-right-radius: 6px;}
         }
         .icon-api{position:absolute;width:22px;height:22px;display:block;right:-5px;top:-5px;}
         .icon-api-ag{background: url(images/casino-game-ag.png) center no-repeat/100%;}
@@ -233,13 +233,13 @@ height: 44px;
                         &.api-icon-2-20:before{background-position: 0 -714px;}   
                         &.api-icon-1-24:before,&.api-icon-3-23:before{background-position: 0 -770px;}   
                         &.api-icon-2-25:before{background-position: 0 -827px;}    
-                        &.api-icon-2-31:before{background-position: 0 -1320px;}    
+                        &.api-icon-2-31:before{background-position: -2px -1318px;}    
                         &.api-icon-2-32:before{background-position: 0 -1265px;}
-                        &.api-icon-2-38:before{background-position: 0 -930px;}
+                        &.api-icon-2-38:before{background-position: 0 -1265px;}
                         &.api-icon-3-4:before{background-position: 0 -878px;}  
                         &.api-icon-2-27:before{background-position: 0 -930px;}  
                         &.api-icon-1-2:before{background-position: 0 (-1008px/0.8);}  
-                        &.api-icon-2-28:before{background-position: 0 (-1070px/0.8);} 
+                        &.api-icon-2-28:before{background-position: 0 (-832px/0.8);} 
                         &.api-icon-5-1:before{background-position: 0 (-1233px/0.8);} 
                         &.api-icon-2-35:before{background-position: 0 -1432px;}
                         &.api-icon-3-21:before{background-position: 0 -1890px;}
