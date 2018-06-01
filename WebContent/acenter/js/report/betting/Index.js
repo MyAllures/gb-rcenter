@@ -606,6 +606,6 @@ define(['common/BaseListPage'], function (BaseListPage) {
         validateForm: function (e) {
             var $form = $(window.top.topPage.getCurrentForm(e));
             return !$form.valid || $form.valid();
-        }
+        },
     });
 });
