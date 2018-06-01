@@ -7,11 +7,11 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
         },
 
         getSecondText:function () {
-            return $("div#temaab a.mui-active span").text()==""?"特码A":$("div#temaab a.mui-active span").text();
+            return $("div#temaab a.mui-active span").text()==""?"特码B":$("div#temaab a.mui-active span").text();
         },
 
         getSecondCode:function(){
-            return $("#gfwfBetCode").val()=="special"?"特码A":$("#gfwfBetCode").val();
+            return $("#gfwfBetCode").val()=="special"?"特码B":$("#gfwfBetCode").val();
         },
 
 
