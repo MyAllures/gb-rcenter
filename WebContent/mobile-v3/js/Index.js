@@ -25,6 +25,10 @@ $(function () {
     hideDesk();
     //初始化api nav滑动
     swiper();
+    if (!lazyLoadApi) {
+        lazyLoadApi = lazyLoadImg("body");
+        lazyLoadApi.refresh(true);
+    }
 });
 
 /**
@@ -103,9 +107,6 @@ function initBanner() {
         mui('.banner-slide').slider({
             interval: 5000 // 自动轮播时长（毫秒），为0不自动播放，默认为0；
         });
-        if (!lazyLoadApi) {
-            lazyLoadApi = lazyLoadImg("body");
-        }
     }
 }
 
