@@ -13,7 +13,12 @@ $(function () {
  * @param options
  */
 function captchaChange(obj, options) {
-    obj.src = obj.src;
+    var timestamp = (new Date()).valueOf();
+    var src = $("img.captcha_img").attr("data-src");
+    if(!src){
+        src =  $("img.captcha_img").attr("src");
+    }
+    $("img.captcha_img").attr("src", src+"?t=" + timestamp);
 }
 
 /**
@@ -84,6 +89,7 @@ function loginOk(obj, options) {
                             $("#captcha-error-msg").html("");
                         }
                     }
+                    captchaChange();
                     setTimeout(function () {
                         $this.text(window.top.message.passport_auto['登录']).removeAttr("disabled");
                     }, 1000);
