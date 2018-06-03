@@ -9,9 +9,11 @@
         position: relative;
     z-index: 1;    border-radius: 4px;
     .promo-list{
-        .swiper-slide .promo-item{margin-bottom: 10px;display: block;border-radius: 8px;border: 1px solid #e3e2e2;
+        .swiper-slide .promo-item{margin-bottom: 10px;display: block;border-radius: 8px;border: 1px solid #e3e2e2;overflow:hidden;
             .img-wrap{padding: 12px;background: #fff;border-top-left-radius: 8px;border-top-right-radius: 8px;}
-            .pro-txt{height: 30px;line-height: 30px;background: #f2f2f2;border-bottom-left-radius: 8px;border-bottom-right-radius: 8px;padding: 0 12px;}
+            .pro-txt{min-height: 30px;line-height: 30px;background: #f2f2f2;border-bottom-left-radius: 8px;border-bottom-right-radius: 8px;padding: 0 12px;display:flex;
+                &>div{flex:1;line-height:20px;padding:5px 20px 5px 0;}
+            }
         }
         img{width: 100%;vertical-align: middle;}
     }
@@ -152,7 +154,7 @@ height: 44px;
 }
 .mui-content-casino-list{padding-top: 44px !important;background: #fff;height:100%;
     .casino-wrap{padding:10px;}
-    .electronic-search{position: relative;margin: 10px;
+    .electronic-search{position: relative;margin: 10px;z-index:999;display:none;
         input{margin: 0;height: 35px;font-size: 14px;border: 1px solid #ccc;padding-right: 100px;color: #333;}
         .btn-search{position: absolute;right: 0;top: 0;font-size: 14px;color: #333;height: 35px;line-height: 35px;text-align: center;width: 84px;background: #ccc;border-top-right-radius: 3px;    border-bottom-right-radius: 3px;}
         .mui-icon-clear{right: 80px;    top: 8px;}
@@ -173,19 +175,20 @@ height: 44px;
     .icon-list2{background:url(images/icon-casino-list2.png) center no-repeat/100%;width:22px;height:22px;margin:12px 5px 0;}
     .mui-icon.mui-icon-search{margin-right:0;padding-right:0;}
 }
-.mui-content-casino-page{padding-top: 44px !important;background: #fff;height:100%;
-    .electronic-search{position: relative;margin: 10px;
+.mui-content-casino-page{padding-top: 44px !important;background: #fff;height:100%;padding-bottom:0 !important;
+    .electronic-search{position: absolute;margin: 10px;z-index:999;display:none;left:0;right:0;
         input{margin: 0;height: 35px;font-size: 14px;border: 1px solid #ccc;padding-right: 100px;color: #333;}
         .btn-search{position: absolute;right: 0;top: 0;font-size: 14px;color: #333;height: 35px;line-height: 35px;text-align: center;width: 84px;background: #ccc;border-top-right-radius: 3px;    border-bottom-right-radius: 3px;}
         .mui-icon-clear{right: 80px;    top: 8px;}
     }
+    .search-shadow{position:absolute;left:0;top:0;background:rgba(0,0,0,0.4);z-index: 998;right:0;height:100%;display:none;}
     .casino-list{position:relative;
 //          宫格状排列：
         a{text-align: center;display: block;    margin: 10px auto 0;width:100px;border-radius:5px;box-shadow: 0 2px 4px #bbb;
             p{height: 30px;line-height: 24px;margin-bottom:5px;color: #333;font-size: 12px;white-space: nowrap;    overflow: hidden;    text-overflow: ellipsis;}
         }
         .img-wrap{background: #fff;position:relative;
-            img{width: 100px;vertical-align: middle;border-top-left-radius: 6px;border-top-right-radius: 6px;}
+            img{width: 100px;height:100px ;vertical-align: middle;border-top-left-radius: 6px;border-top-right-radius: 6px;}
         }
         .icon-api{position:absolute;width:22px;height:22px;display:block;right:-5px;top:-5px;}
         .icon-api-ag{background: url(images/casino-game-ag.png) center no-repeat/100%;}
@@ -208,11 +211,55 @@ height: 44px;
     //新版电子顶部api切换：
     .api-scroll{height:105px;background:#000;
         &:before{position:absolute;top:0;width:170px;content:'';background:radial-gradient(#460119,#000);height:80px;left:0;right:0;margin:-20px auto;}
-        .swiper-slide{text-align:center;opacity: 0.5;
-            .img-wrap{width:55px;height:55px;background:url(images/api-index-bg.png) center bottom no-repeat/90%;margin:15px auto 0;}
+        .swiper-slide{text-align:center;opacity: 0.5;width:20%;
+            .img-wrap{width:55px;height:55px;background:url(images/api-index-bg.png) center bottom no-repeat/90%;margin:15px auto 0;
+                
+                   .api-item{height:55px;width:55px;display:block;position:relative; 
+                        &:before{content: '';display:block;width: 55px;height: 55px;background: url(default/images/api-sprite-black.png) 0 0/70px no-repeat;background-size:100%;}
+                        &.api-icon-2-3:before{background-position: 0 0;}        
+                        &.api-icon-1-16:before{background-position: 0 -55px;}     
+                        &.api-icon-1-7:before{background-position: 0 -110px;}    
+                        &.api-icon-1-17:before{background-position: 0 -165px;}    
+                        &.api-icon-1-9:before,&.api-icon-2-9:before{background-position: 0 -215px;}     
+                        &.api-icon-1-10:before,&.api-icon-2-10:before,&.api-icon-3-10:before{background-position: 0 -272px;}   
+                        &.api-icon-1-5:before{background-position: 0 -327px;}   
+                        &.api-icon-1-1:before{background-position: 0 -380px;}   
+                        &.api-icon-1-33:before,&.api-icon-3-33:before{    background-position: 0 -1375px;}
+                        &.api-icon-2-15:before{background-position: 0 -605px;}   
+                        &.api-icon-2-6:before{background-position: 0 -493px;}  
+                        &.api-icon-3-12:before{background-position: 0 -440px;}   
+                        &.api-icon-3-19:before{background-position: 0 -547px;}   
+                        &.api-icon-2-26:before{background-position: 0 -660px;}   
+                        &.api-icon-2-20:before{background-position: 0 -714px;}   
+                        &.api-icon-1-24:before,&.api-icon-3-23:before{background-position: 0 -770px;}   
+                        &.api-icon-2-25:before{background-position: 0 -827px;}    
+                        &.api-icon-2-31:before{background-position: -2px -1318px;}    
+                        &.api-icon-2-32:before{background-position: 0 -1265px;}
+                        &.api-icon-2-38:before{background-position: 0 -1265px;}
+                        &.api-icon-3-4:before{background-position: 0 -878px;}  
+                        &.api-icon-2-27:before{background-position: 0 -930px;}  
+                        &.api-icon-1-2:before{background-position: 0 (-1008px/0.8);}  
+                        &.api-icon-2-28:before{background-position: 0 (-832px/0.8);} 
+                        &.api-icon-5-1:before{background-position: 0 (-1233px/0.8);} 
+                        &.api-icon-2-35:before{background-position: 0 -1432px;}
+                        &.api-icon-3-21:before{background-position: 0 -1890px;}
+                        &.api-icon-3-36:before{background-position: 0 -1540px;}
+                        &.lt:before{background-position: 0 (-1120px/0.8);}
+                        &.yzt:before{background-position: 0 (-1176px/0.8);}
+                        &.gns:before{background-position: 0 (-1233px/0.8);}
+                        &.prg:before{background-position: 0 (-1292px/0.8);}
+                        &.api-icon-3-37:before{background-position: 0 -2030px;}
+                        &.api-icon-3-40:before{background-position: 0 -2100px;}
+                        &.api-icon-3-37.site119:before {background: url(images/api-icon-3-37-site119.png) 0 0/70px no-repeat;}
+                        &.api-icon-3-37.site270:before {background: url(images/api-icon-3-37-site270.png) 0 0/70px no-repeat;}
+                        &.api-icon-3-37.site209:before {background: url(images/api-icon-3-37-site209.png) 0 0/70px no-repeat;}
+                        &.api-icon-3-40.site322:before {background: url(images/api-icon-3-40-site322.png) 0 0/70px no-repeat;}
+                    }
+                
+            }
             .title{color:#fff;font-size:10px;}
             &.api-index{opacity: 1;position:relative;
-                .img-wrap{width:55px;height:55px;background:url(images/api-index-bg.png) center no-repeat/100%;margin:15px auto 0;}
+                .img-wrap{width:55px;height:55px;background:url(images/api-index-bg.png) center no-repeat/100%;margin:15px auto 0; }
                 .title{font-size:14px;}
                 &:after{position:absolute;bottom:0;left:0;right:0;margin:auto ;content:'';border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:8px solid #fff;width:0;height:0;}
             }
@@ -712,8 +759,8 @@ body.bind-mobile{font-size:14px;
 
 
 //登录页面：
-.login{
-    .mui-content{background: #f2f2f2;}
+.login{position:relative;
+    .mui-content{background: #f2f2f2;height: 100vh;}
     .user-img{background:url(../images/login-user.png) center no-repeat/100px,linear-gradient(#1767bd,#1767bd);width:100px;height:100px;
         border-radius: 100%; box-shadow:  3px 5px 15px 6px rgba(#1767bd,0.25); margin: 50px auto;}
     .login-form{padding:0 35px;color:#666;
@@ -745,3 +792,5 @@ body.bind-mobile{font-size:14px;
     from{transform: rotateZ(0);}
     to{transform: rotateZ(360deg);}
 } 
+
+

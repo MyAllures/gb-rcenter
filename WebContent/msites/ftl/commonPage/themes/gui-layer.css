@@ -53,17 +53,22 @@
 .layui-layer.download-dialog .layui-layer-title > span .tit-wrap { display: inline-block; height: 99px; padding-left: 78px; text-align: left; }
 .layui-layer.download-dialog .layui-layer-title > span .tit-wrap .tit { padding-top: 36px; font-size: 16px; margin-bottom: 5px; }
 .layui-layer.download-dialog .layui-layer-title > span .tit-wrap .sub-tit { color: #dfeeff; }
-.layui-layer.download-dialog .layui-layer-title > span:first-child { margin-right: 144px; margin-left: 60px; }
+.layui-layer.download-dialog .layui-layer-title > span:first-child { margin-right: 84px; margin-left: 60px; }
 .layui-layer.download-dialog .layui-layer-title > span:first-child .tit-wrap { background: url(images/layer-dialog/icon-android-normal.png) no-repeat 0; }
 .layui-layer.download-dialog .layui-layer-title > span:first-child.layui-this .tit-wrap { background: url(images/layer-dialog/icon-android-active.png) no-repeat 0; }
-.layui-layer.download-dialog .layui-layer-title > span:first-child:after { content: ''; position: absolute; right: -83px; height: 70px; width: 1px; background: rgba(255, 255, 255, 0.5); top: 50%; margin-top: -35px; }
+.layui-layer.download-dialog .layui-layer-title > span:first-child:after { content: ''; position: absolute; right: -43px; height: 70px; width: 1px; background: rgba(255, 255, 255, 0.5); top: 50%; margin-top: -35px; }
 .layui-layer.download-dialog .layui-layer-title > span:first-child + span .tit-wrap { background: url(images/layer-dialog/icon-windows-normal.png) no-repeat 0; }
 .layui-layer.download-dialog .layui-layer-title > span:first-child + span.layui-this .tit-wrap { background: url(images/layer-dialog/icon-windows-active.png) no-repeat 0; }
 .layui-layer.download-dialog .layui-layer-tabmain { padding: 0; margin: 0; text-align: center; background: #fff; }
+.layui-layer.download-dialog .layui-layer-tabmain .code_item { float: left; width: 50%; margin-top: 24px; }
+.layui-layer.download-dialog .layui-layer-tabmain .code_item .tit_d { font-size: 16px; line-height: 1.5; }
+.layui-layer.download-dialog .layui-layer-tabmain .code_item.ios .tit_d { color: #1e9fff; }
+.layui-layer.download-dialog .layui-layer-tabmain .code_item.android .tit_d { color: #00beaa; }
 .layui-layer.download-dialog .layui-layer-tabmain .qrcode { display: inline-block; width: 158px; height: 158px; background: url(images/layer-dialog/qrcode-bg.png); text-align: center; line-height: 158px; margin: 24px 0 20px; }
+.layui-layer.download-dialog .layui-layer-tabmain .qrcode.qr2 { background: url(images/layer-dialog/qrcode-bg-2.png); }
 .layui-layer.download-dialog .layui-layer-tabmain .qrcode img { width: 120px; height: 120px; }
-.layui-layer.download-dialog .layui-layer-tabmain p { line-height: 20px; padding-bottom: 40px; }
-.layui-layer.download-dialog .layui-layer-tabli { line-height: 0; }
+.layui-layer.download-dialog .layui-layer-tabmain p { line-height: 20px; padding-bottom: 40px; margin-bottom: 0; }
+.layui-layer.download-dialog .layui-layer-tabli { line-height: 0; overflow: hidden; }
 .layui-layer.download-dialog .layui-layer-tabli .tit { height: 51px; line-height: 51px; background: #fcfcfc; border-top: 1px solid #eee; border-bottom: 1px solid #eee; margin-top: 18px; margin-bottom: 10px; }
 .layui-layer.download-dialog .layui-layer-tabli .tit span { float: left; width: 50%; text-align: center; }
 .layui-layer.download-dialog .layui-layer-tabli .api-list { list-style: none; padding: 0; border-top: 1px solid #eee; }
@@ -160,7 +165,7 @@
 .layui-layer.promo_failure .layui-layer-content .failure-reason .item-success-without-bar .icon-pass { bottom: 3px; }
 .layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-without-bar { padding-left: 30px; position: relative; width: 390px; margin-bottom: 10px; }
 .layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-without-bar .txt { color: #f44236; }
-.layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-without-bar .icon-fail { top: 3px; }
+.layui-layer.promo_failure .layui-layer-content .failure-reason .item-failure-without-bar .icon-fail { bottom: 3px; }
 .layui-layer.promo_failure .layui-layer-content .failure-reason .icon-pass { background: url(images/promo/icon-pass.png); width: 18px; height: 18px; position: absolute; left: 0; bottom: -4px; }
 .layui-layer.promo_failure .layui-layer-content .failure-reason .icon-fail { background: url(images/promo/icon-fail.png); width: 18px; height: 18px; position: absolute; left: 0; bottom: -4px; }
 .layui-layer.promo_may_apply { background-color: #fff !important; }
@@ -288,3 +293,4 @@
 
 .game-detail-open .casino-detail-iframe .layui-layer-close2 { display: block !important; }
 
+/*# sourceMappingURL=gui-layer.css.map */

@@ -28,24 +28,6 @@ function pullfresh() {
     }, 0);
 }
 
-/**
- * 名称搜索
- */
-function searchGame(){
-    var name = $("#game-name").val();
-    $(".swiper-slide .mui-col-xs-3").each(function(){
-        var apiName = $(this).attr("apiName");
-        if(apiName){
-            if(apiName.indexOf(name) != -1){
-                $(this).css("display","");
-            }else{
-                $(this).css("display","none");
-            }
-        }
-    });
-
-    resizeSlideHeight();
-}
 
 /**
  * 滑动后重设高度

@@ -44,6 +44,7 @@ define(['site/hall/Common'], function (Common) {
                 && dataCode !="linkZodiac"
                 && dataCode !="mantissaLink"
                 && dataCode !="allNoIn"
+                && dataCode !="special"
                 ){
                     _this.closeTop();
                 }
@@ -66,6 +67,9 @@ define(['site/hall/Common'], function (Common) {
                 }else if(betCode =="allNoIn" && jspName==undefined){
                     jspName="AllNoIn";
                     dataCode="五不中";
+                }else if(betCode =="special" || betCode =="special_b"){
+                    jspName="Special";
+                    dataCode=betCode;
                 }
 
                 _this.getBetTable(dataCode,jspName);

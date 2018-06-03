@@ -21,11 +21,11 @@ define(['common/BaseListPage'], function (BaseListPage) {
             this._super();
         },
 
-        bindEvent:function () {
+        bindEvent: function () {
             this._super();
             var _this = this;
         },
-        
+
         /**
          * 检测转账状态
          * @param e
@@ -50,7 +50,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     } else {
                         window.top.topPage.showErrorMessage("非法请求：无订单或者订单已处理，可刷新页面重新尝试！");
                     }
-                     _this.query(e);
+                    _this.query(e);
                     $(e.currentTarget).unlock();
                 },
                 error: function (data) {
@@ -80,6 +80,52 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 }
             })
         },
-
+        /**
+         * 重发
+         * @param e
+         * @param option
+         */
+        resend: function (e, option) {
+            var _this = this;
+            var _time = 10;
+            var interval = setInterval(function () {
+                _time = _time - 1;
+                if (_time == 0) {
+                    window.clearInterval(interval);
+                    $(e.currentTarget).unlock();
+                }
+            }, 1000);
+            _this._confirmResend(e, option);
+        },
+        _confirmResend: function (e, option) {
+            var _this = this;
+            var siteId = option.siteId;
+            var apiId = option.apiId;
+            var orderNo = option.orderNo;
+            var userId = option.userId;
+            var exceptionTransferId = option.exceptionTransferId;
+            window.top.topPage.ajax({
+                url: root + "/operation/exceptionTransfer/resend.html",
+                dataType: 'json',
+                data: {
+                    "search.apiId": apiId,
+                    "search.userId": userId,
+                    "search.transactionNo": orderNo,
+                    "siteId": siteId,
+                    "exceptionTransferId": exceptionTransferId
+                },
+                success: function (data) {
+                    if (data.state) {
+                        window.top.topPage.showSuccessMessage("重发完成，结果：" + data.msg);
+                        _this.query(e);
+                    } else {
+                        window.top.topPage.showErrorMessage(data.msg);
+                    }
+                },
+                error: function (data) {
+                    window.top.topPage.showInfoMessage("服务忙，请稍后再试！");
+                }
+            })
+        }
     });
 });

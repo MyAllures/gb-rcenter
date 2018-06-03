@@ -286,7 +286,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 $(".siteDescription"+targetLocal).val(sourceContent);
             });
         },
-bindPreferenceEvent:function () {
+
+        bindPreferenceEvent:function () {
             var $bootstrapSwitch = $("[name$='active'][type='checkbox']");
             this.unInitSwitch($bootstrapSwitch)
                 .bootstrapSwitch({

@@ -497,7 +497,7 @@
             }
         });*/
         var loAgree = layer.open({
-            content:<#if data.agentValidateRegisterMap.regProtocol??> ${data.agentValidateRegisterMap.regProtocol.value} </#if>,
+            content:<#if data.agentValidateRegisterMap.regProtocol??> ${data.agentValidateRegisterMap.regProtocol.value?replace('\n','')?replace('\r','')} </#if>,
             title:'エージェント登録プロトコル',
             area: ['640px','500px'],
             skin:'layui-layer-brand',

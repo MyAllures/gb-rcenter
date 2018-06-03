@@ -31,19 +31,19 @@ function userInfo() {
                 }
                 //正在处理中取款金额
                 if (data.withdrawAmount != null && data.withdrawAmount != 0) {
-                    $(".withdrawAmount").text(window.top.message.my_auto['处理中'] + ":" + currency + data.withdrawAmount);
+                    $(".withdrawAmount").text(window.top.message.my_auto['处理中']+ currency + data.withdrawAmount);
                 } else {
                     $(".withdrawAmount").text("");
                 }
                 //计算近7日收益（优惠金额）
                 if (data.preferentialAmount != null && data.preferentialAmount != 0) {
-                    $(".preferentialAmount").text(window.top.message.my_auto['近7日收益'] + ":" + currency + data.preferentialAmount);
+                    $(".preferentialAmount").text(window.top.message.my_auto['近7日收益']+ currency + data.preferentialAmount);
                 } else {
                     $(".preferentialAmount").text("");
                 }
                 //推荐好友,昨日收益
                 if (data.recomdAmount != null && data.recomdAmount != 0) {
-                    $(".recomdAmount").text(window.top.message.my_auto['昨日收益'] + ":" + currency + data.recomdAmount);
+                    $(".recomdAmount").text(window.top.message.my_auto['昨日收益']+ currency + data.recomdAmount);
                 } else {
                     $(".recomdAmount").text("");
                 }
@@ -64,7 +64,7 @@ function userInfo() {
                 }
                 //正在处理中转账金额,额度转换
                 if (data.transferAmount != null && data.transferAmount != 0) {
-                    $("#transferAmount").html(window.top.message.my_auto['处理中'] + ":" + currency + data.transferAmount);
+                    $("#transferAmount").html(window.top.message.my_auto['处理中'] + currency + data.transferAmount);
                 } else {
                     $("#transferAmount").html("");
                 }

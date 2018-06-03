@@ -632,6 +632,63 @@ define(['common/BaseListPage'], function (BaseListPage) {
         validateForm: function (e) {
             var $form = $(window.top.topPage.getCurrentForm(e));
             return !$form.valid || $form.valid();
-        }
+        },
+        //API报表查询
+        reportData: function (e) {
+            var apiTypeId = $("#apitypeList", parent.document).val();
+            if(apiTypeId=="" || apiTypeId==undefined){
+                $("._game_tips").formtip("请选择一个API");
+                $(e.currentTarget).unlock();
+                return;
+            }else{
+                var num = JSON.parse(apiTypeId).length;
+                if (num!=1) {
+                    $("._game_tips").formtip("只能选择一个API");
+                    $(e.currentTarget).unlock();
+                    return;
+                }
+            }
+
+            var $form = $(window.top.topPage.getCurrentForm(e));
+            if (!$form.valid || $form.valid()) {
+                window.top.topPage.ajax({
+                    loading: true,
+                    url: root+"/report/gameTransaction/reportQueryData.html",
+                    type: "post",
+                    data: this.getCurrentFormData(e),
+                    success: function (data) {
+                        var data = JSON.parse(JSON.parse(data).reportResult);
+                        if(data.status=="SUCCESS" && data.httpStateCode=="200"){
+                            //报表投注额
+                            if (data.details[0].betAmounts) {
+                                $("#re_singleSpan").text(data.details[0].betAmounts);
+                            } else {
+                                $("#re_singleSpan").text(0);
+                            }
+                            //报表支出
+                            if (data.details[0].payOuts) {
+                                $("#re_payOuts").text(data.details[0].payOuts);
+                            } else {
+                                $("#re_payOuts").text(0);
+                            }
+
+                            /*if (data.details[0].betAmounts) {
+                                $("#re_effectSpan").text(data.details[0].betAmounts);
+                            } else {
+                                $("#re_effectSpan").text(0);
+                            }*/
+                        }
+                        $(e.currentTarget).unlock()
+                    },
+                    error: function (data, state, msg) {
+                        $(e.currentTarget).unlock();
+                    }
+                });
+            } else {
+                $(e.currentTarget).unlock();
+            }
+
+            $(e.currentTarget).unlock();
+        },
     });
 });

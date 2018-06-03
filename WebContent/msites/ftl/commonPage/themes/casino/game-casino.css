@@ -116,20 +116,20 @@
 .main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui { display: inline-block; height: 54px; background: url(./images/api-tabs-sprite.png) center 0 no-repeat; }
 .main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui:before { content: none; }
 .main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-mg { background-position-x: 0 !important; width: 44px; }
-.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-pt { background-position-x: -44px !important; width: 50px; }
-.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-bb { background-position-x: -94px !important; width: 70px; }
-.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-ag { background-position-x: -164px !important; width: 60px; }
-.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-hb { background-position-x: -224px !important; width: 40px; }
-.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-bsg { background-position-x: -262px !important; width: 90px; }
-.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-sg { background-position-x: -354px !important; width: 40px; }
-.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-png { background-position-x: -394px !important; width: 90px; }
-.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-gns { background-position-x: -482px !important; width: 40px; }
-.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-prg, .main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-pp { background-position-x: -524px !important; width: 90px; }
-.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-dt { background-position-x: -614px !important; width: 50px; }
-.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-gg { background-position-x: -664px !important; width: 50px; }
-.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-chess { background-position-x: -714px !important; width: 90px; }
-.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-fish { background-position-x: -802px !important; width: 90px; }
-.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-mw { background-position-x: -892px !important; width: 80px; }
+.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-pt { background-position-x: -100px !important; width: 50px; }
+.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-bb { background-position-x: -200px !important; width: 70px; }
+.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-ag { background-position-x: -300px !important; width: 60px; }
+.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-hb { background-position-x: -400px !important; width: 40px; }
+.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-bsg { background-position-x: -500px !important; width: 90px; }
+.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-sg { background-position-x: -600px !important; width: 40px; }
+.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-png { background-position-x: -700px !important; width: 90px; }
+.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-gns { background-position-x: -800px !important; width: 40px; }
+.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-prg, .main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-pp { background-position-x: -900px !important; width: 90px; }
+.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-dt { background-position-x: -1000px !important; width: 50px; }
+.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-gg { background-position-x: -1100px !important; width: 50px; }
+.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-chess { background-position-x: -1200px !important; width: 90px; }
+.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-fish { background-position-x: -1300px !important; width: 90px; }
+.main-casino .casino > .container .api-nav .swiper-container .swiper-slide a .gui.gui-logo-mw { background-position-x: -1400px !important; width: 80px; }
 .main-casino .casino > .container .api-nav .swiper-container .swiper-slide a em { display: inline-block; line-height: 57px; font-style: normal; font-size: 14px; vertical-align: top; }
 .main-casino .casino > .container .api-nav.api-nav-slide { display: none; }
 .main-casino .casino > .container .api-nav .api-tabs { min-height: 81px; border: 0; }
@@ -163,6 +163,8 @@
 .main-casino .casino > .container .game-list-header .sort2 li.active:after { background-position: 0 bottom; }
 .main-casino .casino > .container .game-list-header .sort2 li.active a { color: #fff; }
 .main-casino .casino > .container .casino-game-list .col-5-1 .s_border figure > img { width: 210px; height: 147px; }
+.main-casino .casino > .container .casino-game-list .col-5-1 .s_padding figure > img { width: 208px; height: 147px; }
+.main-casino .casino > .container .casino-game-list .col-5-1 .s_radius figure > img, .main-casino .casino > .container .casino-game-list .col-5-1 .s_default figure > img { width: 216px; height: 147px; }
 .main-casino .casino > .container .casino-game-list .game-item { margin-bottom: 20px; position: relative; display: block; width: auto; height: auto; margin: 0 0 20px; border-radius: 0; }
 .main-casino .casino > .container .casino-game-list .game-item figure { vertical-align: top; }
 .main-casino .casino > .container .casino-game-list .game-item figure:hover .jiangchi { display: none; }
@@ -394,5 +396,7 @@ html.fullscreen .layui-layer .layui-layer-content { background-color: transparen
 .header-panel.game-panel .dropdown { vertical-align: top; }
 .header-panel.game-panel .dropdown:hover .dropdown-menu { display: block; }
 .header-panel.game-panel .dropdown-menu { background: rgba(0, 0, 0, 0.6); margin-top: 0; border-color: transparent; }
+
+@media screen and (max-height: 826px) { .game-detail .wrapper { max-height: 690px; } }
 
 /*# sourceMappingURL=game-casino.css.map */

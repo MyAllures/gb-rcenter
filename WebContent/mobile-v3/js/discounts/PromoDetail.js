@@ -16,7 +16,6 @@ $(function () {
 });
 
 function onPageLoad() {
-    $(".gb-select *").css({"background": "", "margin": "", "padding": ""});
     tableScroll(this);
     var isLogin = sessionStorage.getItem("isLogin");
     if (isLogin && isLogin == "true") {
@@ -47,9 +46,9 @@ function submitPromo(obj, options) {
     }
     var code = options.dataCode;
     if (code == 'content') {
-        if(isNative){
+        if (isNative) {
             nativeGoToApplyPromoPage();
-        }else{
+        } else {
             goToUrl(root + "/message/gameNotice.html?isSendMessage=true");
         }
     } else if (code == 'back_water') {
@@ -143,7 +142,7 @@ function applyActivities(aplyObj, isRefresh) {
         url: root + "/promo/applyActivities.html",
         data: {code: code, resultId: searchId},
         success: function (data) {
-            if(data == null){
+            if (data == null) {
                 toast(window.top.message.promo_auto['用户活动申请还在处理中']);
                 return;
             }
@@ -183,7 +182,7 @@ function showWin(data, isRefresh) {
 }
 
 function doWin() {
-    if(isNative) {
+    if (isNative) {
         nativeGotoPromoRecordPage();
     } else {
         goToUrl(root + "/promo/myPromo.html");
@@ -217,7 +216,7 @@ function filterActyByPlayer(data) {
         $obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").html(window.top.message.promo_auto['未满足条件']);
     } else if (code == "first_deposit" || code == "deposit_send") {
         $obj.removeClass(oldClass).addClass(newClass + " mui-disabled").html(window.top.message.promo_auto['存款时申请']);
-    } else if(code == "content"){
+    } else if (code == "content") {
         $obj.addClass("mui-hidden");
     }
 }
@@ -225,10 +224,10 @@ function filterActyByPlayer(data) {
 /**
  * 跳到优惠记录
  */
-function goPromoDetail(obj,options){
-    if(isNative){
+function goPromoDetail(obj, options) {
+    if (isNative) {
         nativeGotoPromoRecordPage();
-    }else{
+    } else {
         goToUrl(options.src);
     }
 }

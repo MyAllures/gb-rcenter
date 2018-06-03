@@ -263,7 +263,9 @@ li{
     }
 }
 
-.mui-bar-nav{z-index: 997;}
+.mui-bar-nav{z-index: 997;
+    &>.mui-icon.home-bar-search{margin-right: 0;color:#fff;}
+}
 
 /* index-canvas-show 首页的侧滑菜单 */
 .index-canvas-wrap{    position: absolute;    top: 0;    bottom: 0;    z-index: 9999;left: -100%;-webkit-transition: all 0.5s  ease-in-out;transition: all 0.5s  ease-in-out;
@@ -1376,9 +1378,9 @@ body.deposit{
     }
 } // 存款样式结束标签
 // 新存款样式
-.deposit_2{
-    background: #f2f2f2;
-    .deposit-2-content{padding-bottom: 51px;background: #f2f2f2;}
+.deposit_2{overflow-x:hidden;
+    background: #f2f2f2;position: relative;
+    .deposit-2-content{background: #f2f2f2;bottom:51px;padding-bottom:0;height: 100vh;}
     .list_pay{// 支付列表
         padding: 12px 10px 8px;overflow: hidden;
         margin-left: -4px;margin-right: -4px;
@@ -1468,6 +1470,8 @@ body.deposit{
                         &.hangseng{background-position:-3px -806px;}/* 26 恒生银行 */
                         &.tzb{background-position:-2px -835px;}/* 27 台州银行 */
                         &.ysf{background-position:-2px -904px;} /* 易支付 */
+                        &.yima-pay{background-position:-2px -927px;}
+                        &.yishou-pay{background-position:-2px -904px;} /* 易支付 */ 
                     }
                     .bank_n_txt{display: inline-block;}
                 }
@@ -1497,6 +1501,7 @@ body.deposit{
     }
     .bank_car_item{//银行卡样式
         width: (535px/2);background: #f7f7f7;border-radius: 4px;margin:0 auto 10px;padding: 5px 14px 12px;
+        .pay-txt{vertical-align: middle;color:#666;}
         .top{
             overflow: hidden;
             .car_type{float: right;font-size: 12px;color: #333;height: 30px; line-height: 30px;}
@@ -1510,7 +1515,7 @@ body.deposit{
         }
         &.bit_coin_card{
             .bank_car_txt_info{padding: 10px 5px;
-                .b_c_t_i_row{position: relative;}
+                .b_c_t_i_row{position: relative;width:100%;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
                 .b_c_t_i_row+.b_c_t_i_row:before{content: '';position: absolute;top: -4px;left: 0;right: 0;background: #f2f2f2;height: 1px;}
             }
         }
@@ -1527,7 +1532,35 @@ body.deposit{
      }
     .wechat-code img{width:116px;height:116px;display:inline-block;    border-top: 1px solid #f3f3f3;}
     .wechat-code .tit{margin:0 auto;width:130px;height:30px;line-height:30px;border-top-left-radius:0;border-top-right-radius:0;}
+
+    //存款页面 反扫教程：
+    .depositHelp {color: #1766bb; padding: 0 10px 0; margin:0; }
+    .depositHelp span { width: 15px; height: 15px; display: inline-block; border-radius: 100%; background: #999; color: #fff; line-height: 15px; text-align: center; margin-top: 7px; }
+    .depositHelpBox { position: absolute; bottom: 0; top: 0; left: 0; right: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 999; }
+    .depositHelpBox .swiper-container { height: 100%; width: 100%; margin: auto; }
+    .depositHelpBox .swiper-slide { padding: 16%; position: relative; }
+    .depositHelpBox .swiper-slide img { width: 100%; }
+    .depositHelpBox .swiper-pagination-bullet { width: 18px; height: 18px; background: #fff; opacity: 1; }
+    .depositHelpBox .swiper-pagination-bullet-active { background: #fdbe00; }
+    .depositHelpBox .swiper-pagination { bottom: 20px; }
+    .depositHelpBox .closeHelpBox { width: 30px; height: 30px; font-size: 50px; z-index: 1100; transform: rotate(45deg); position: absolute; right: 25px; top: 25px; color: rgba(225, 225, 225, 0.8); }
+    .depositHelpBox .circle { padding: 15px; background: rgba(253, 0, 0, 0.8); border-radius: 100%; position: absolute; animation: changeSize 0.5s infinite; }
+    @keyframes changeSize { 0% { transform: scale(0.9); }
+      60% { transform: scale(1.2); }
+      100% { transform: scale(0.9); } }
+    .depositHelpBox .qq-fansao .step-1 .circle { top: 42.5%; left: 28.5%; }
+    .depositHelpBox .qq-fansao .step-2 .circle { bottom: 27%; left: 47%; }
+    .depositHelpBox .qq-fansao .step-3 .circle { top: 32.5%; left: 44%; }
+    .depositHelpBox .wechat-fansao .step-1 .circle { top: 34.5%; left: 31%; }
+    .depositHelpBox .wechat-fansao .step-2 .circle { bottom: 67%; left: 28%; }
+    .depositHelpBox .wechat-fansao .step-3 .circle { top: 34%; left: 45%; }
+    .depositHelpBox .alipay-fansao .step-1 .circle { top: 25%; left: 39%; }
+    .depositHelpBox .alipay-fansao .step-2 .circle { bottom: 62%; left: 44%; }
+    
+
 }
+
+
 /*弹窗*/
 .masker{
     position: fixed;
@@ -3990,5 +4023,35 @@ body.mine-user{color: #000;
                 &:before{    position: absolute;    left: 50%;    margin-left: -31px;    top: 17px;}
             }
         }
+    }
+}
+
+//新版首页收藏弹框：
+.home-collect-dialog{position:absolute;top:45px;bottom:0;left:0;right:0;display:none;  z-index:999;background:rgba(0,0,0,0.7);
+    .inputBox{width:75%;margin:25px auto;display:flex;align-items: center;background:#cfcfcf;height:35px;line-height:35px;border-radius:17px;padding-left:10px;
+        label{color:#666;}
+        input{margin:0;background:none;height:35px;line-height:35px;border:none;color:#999;font-size:14px;}
+    }  
+    .star{text-align:center;color:#fff;
+        .icon-star{margin-right:3px;width:20px;height:20px;background:url(images/star.png) center no-repeat/100%;display:inline-block;vertical-align: middle;}
+    }
+    //登陆前
+    .wraning{
+        p{text-align:center;color:#fff;font-size:14px;margin-top:50px;}
+        .mui-btn{width:75%;margin:20px auto;display:block;}    
+    }
+    //  登陆后：
+    .collect-list{top:140px;bottom:30px;
+        .item{height:75px;margin:0 15px;
+            a{width:100%;padding:15px 12px 0;border-top: 1px solid #525252;display:block;
+                &:after{content:'';clear:both;display:block;}
+                p{font-size:14px;height:auto;margin:8px 0 0 0;float: left;padding-left:15px;line-height:28px;color:#fff;}
+            }
+            .icon-play{display:block;float:right;width:28px;height:28px;background:url(images/icon-casino-play.png) center/100%;margin-top:8px;}
+            .img-wrap{background: #fff;position:relative;float:left;width:45px;height: 45px;border-radius: 4px;overflow:hidden;
+                img{width:45px;height: 45px;vertical-align: middle;}
+            }
+        }    
+        
     }
 }

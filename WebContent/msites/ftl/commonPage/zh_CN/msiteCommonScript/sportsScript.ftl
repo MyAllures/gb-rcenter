@@ -12,7 +12,7 @@
             var protocol = window.location.protocol;
             if(protocol.indexOf("https:")>-1){
                 //https协议支持体育嵌套
-                if (apiId=="4" || apiId=="19" || apiId=="12" || apiId=="21" || apiId=="37") {
+                if (sportsNest(apiId)) {
                     if(bool){
                         $(".bulk-frame").find("span").val("维护中");
                     }else {
@@ -46,20 +46,51 @@
         }
     }
 
-    function beforeSendPage(apiId){
-        if (apiId == "4"){
-            document.getElementById('sportFrame').contentWindow.location.replace("https://im.ampinplayopt0matrix.com");
-        }else if (apiId=="12"){
-            document.getElementById('sportFrame').contentWindow.location.replace("https://hyxu36.uv178.com/whb/view.php");
-        }else if(apiId=="19"){
-            document.getElementById('sportFrame').contentWindow.location.replace("https://mkt.ampinplayopt0matrix.com?lang=cs");
-        }else if(apiId=="21"){
-            document.getElementById('sportFrame').contentWindow.location.replace("https://pocdesignother0.com");
-        }else if(apiId=="37"){
-            document.getElementById('sportFrame').contentWindow.location.replace("https://bc.ampinplayopt0matrix.com/#/sport/?lang=zhh");
-        }/*else if(apiId=="23"){
-            document.getElementById('sportFrame').contentWindow.location.replace("http://opussport.ampinplayopt0matrix.com/sports.aspx");
-        }*/
+    function beforeSendPage(apiId) {
+        var url = "";
+        switch (apiId) {
+            case '${data.apiProviders["IM"].code}':
+                url = "https://im.ampinplayopt0matrix.com";
+                break;
+            case '${data.apiProviders["SS"].code}':
+                url = "https://hyxu36.uv178.com/whb/view.php";
+                break;
+            case '${data.apiProviders["SB"].code}':
+                url = "https://mkt.ampinplayopt0matrix.com?lang=cs";
+                break;
+            case '${data.apiProviders["DWT"].code}':
+                url = "https://pocdesignother0.com";
+                break;
+            case '${data.apiProviders["BC"].code}':
+                url = "https://bc.ampinplayopt0matrix.com/#/sport/?lang=zhh";
+                break;
+            case '${data.apiProviders["XJSPORTS"].code}':
+                url = getBcPage(apiId);
+                break;
+        }
+        if(url!=undefined && url!=""){
+            document.getElementById('sportFrame').contentWindow.location.replace(url);
+        }
+    }
+
+    function getBcPage(apiId) {
+        $.ajax({
+            type: "post",
+            url: "/demo.html?apiId=" + apiId + "&apiTypeId=3&language=zh_CN",
+            dataType: 'json',
+            async:false,
+            success: function (data) {
+                if (data.isSuccess == true) {
+                    var result = data.gameApiResult;
+                    if (result.defaultLink) {
+                        return result.defaultLink;
+                    }
+                }else{}
+            },
+            error: function (e) {
+                console.log('188体育error');
+            }
+        });
     }
 
     function getApiUrl(apiId,gameCode,apiTypeId,bool){
@@ -76,44 +107,48 @@
             }
         }
         if(!bool){
-            var isAutoPay = getCookie("isAutoPay");
-            if(isAutoPay == 'true') {
-                getAutoApiUrl(apiId,gameCode,apiTypeId);
-            } else {
-                getNotAutoApiUrl(apiId, gameCode, apiTypeId);
-            }
+            getGameApiUrl(apiId,gameCode,apiTypeId);
         }
     }
 
-    function getAutoApiUrl(apiId,gameCode,apiTypeId) {
+    function getGameApiUrl(apiId,gameCode,apiTypeId) {
+        var url = "";
+        var data ={};
+        var isAutoPay = getCookie("isAutoPay");
+        if(isAutoPay == 'true') {
+            url = "transfer/auto/loginAndAutoTransfer.html?t=" + new Date().getTime().toString(36);
+            data = {apiId: apiId,gameCode: gameCode,apiTypeId: apiTypeId,lobbyUrl:window.location.href}
+        } else {
+            url = "api/login.html?t=" + new Date().getTime().toString(36);
+            data = {apiId: apiId,gameCode: gameCode,apiTypeId: apiTypeId,gamesHall:window.location.href}
+        }
+
         $.ajax({
             type: "POST",
-            url: "transfer/auto/loginAndAutoTransfer.html?t=" + new Date().getTime().toString(36),
+            url: url,
             dataType: "JSON",
-            data: {
-                apiId: apiId,
-                gameCode: gameCode,
-                apiTypeId: apiTypeId,
-                lobbyUrl: window.location.href
-            },
-            beforeSend:function(){
-                beforeSendPage(apiId);
-            },
+            data: data,
             success: function(data) {
-                if (data.isSuccess == true) {
+                var success = null;
+                if(isAutoPay=="true"){
+                    success = data.isSuccess;
+                }else{
+                    success = data.loginSuccess;
+                }
+
+                if (success) {
                     var result = data.gameApiResult;
                     if (result.defaultLink) {
                         var protocol = window.location.protocol;
                         if(protocol.indexOf("https:")>-1){
                             //https协议支持体育嵌套
-                            if (apiTypeId == "3" && apiId=="4" || apiId=="19" || apiId=="12" || apiId=="21" || apiId=="37") {
+                            if (sportsNest(apiId)) {
                                 if (window.localStorage) {
                                     localStorage.re_url = result.defaultLink;
                                 }
                             }else{
                                 if (apiId) {
-                                    var newWindow = window.open();
-                                    newWindow.location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
+                                    window.open().location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
                                 }
                                 return;
                             }
@@ -129,16 +164,12 @@
                     }
                     document.getElementById('sportFrame').contentWindow.location.replace(localStorage.re_url);
                 } else {
-                    if (!data.loginSuccess &&( data.errMsg =='' || data.errMsg == null)){
-
-                    }else {
-                        alert(data.errMsg);
-                    }
+                    beforeSendPage(apiId);
                 }
             },
             error: function(error) {
                 if (error.status === 600) {
-                    // loginObj.getLoginPopup();
+
                 }else {
 
                 }
@@ -146,64 +177,12 @@
         })
     }
 
-    function getNotAutoApiUrl(apiId,gameCode,apiTypeId) {
-        $.ajax({
-            type: "POST",
-            url: "api/login.html?t=" + new Date().getTime().toString(36),
-            dataType: "JSON",
-            data: {
-                apiId: apiId,
-                gameCode: gameCode,
-                apiTypeId: apiTypeId,
-                gamesHall: window.location.href
-            },
-            beforeSend:function(){
-                beforeSendPage(apiId);
-            },
-            success: function(data) {
-                if (data.loginSuccess) {
-                    var result = data.gameApiResult;
-                    if (result.defaultLink) {
-                        var protocol = window.location.protocol;
-                        if(protocol.indexOf("https:")>-1){
-                            //https协议支持体育嵌套
-                            if (apiTypeId == "3" && apiId=="4" || apiId=="19" || apiId=="12" || apiId=="21" || apiId=="37") {
-                                if (window.localStorage) {
-                                    localStorage.re_url = result.defaultLink;
-                                }
-                            }else{
-                                if (apiId) {
-                                    var newWindow = window.open();
-                                    newWindow.location ="/commonPage/gamePage/loading.html?apiId="+apiId+"&apiTypeId="+apiTypeId+"&gameCode="+gameCode;
-                                }
-                                return;
-                            }
-                        }else{
-                            if (window.localStorage) {
-                                localStorage.re_url = result.defaultLink;
-                            }
-                        }
-                    } else {
-                        if (window.localStorage) {
-                            localStorage.re_url = result.links[apiTypeId];
-                        }
-                    }
-                    document.getElementById('sportFrame').contentWindow.location.replace(localStorage.re_url);
-                } else {
-                    if (!data.loginSuccess &&( data.errMsg =='' || data.errMsg == null)){
-
-                    }else {
-                        alert(data.errMsg);
-                    }
-                }
-            },
-            error: function(error) {
-                if (error.status === 600) {
-                    // loginObj.getLoginPopup();
-                }else {
-
-                }
-            }
-        })
+    //是否支持体育嵌套显示
+    function sportsNest(apiId) {
+        if(apiId=="4" || apiId=="19" || apiId=="12" || apiId=="21" || apiId=="37" || apiId=="40"){
+            return true;
+        }else{
+            return false;
+        }
     }
 </script>

@@ -45,7 +45,7 @@ CACHE MANIFEST
 ../js/mui/mui.pullToRefresh.material.js
 ../js/mui/webviewGroup.js
 ../../common/js/jquery/plugins/jquery-eventlock/jquery-eventlock-1.0.0.js
-../js/casino/CasinoTemp.js
+../js/casino/Casino.js
 ../js/common/AppNative.js
 ../js/common/Common.js
 ../js/common/Head.js
@@ -72,7 +72,9 @@ CACHE MANIFEST
 ../js/passport/Login.js
 ../js/passport/SignUp.js
 ../js/password/UpdatePassword.js
-../js/password/UpdateSafePassword.js
+../js/password/UpdateSecurityPassword.js
+../js/password/SafePasswordCommon.js
+../js/password/SetSecurityPassword.js
 ../js/recommend/Recommend.js
 ../js/registe/RegisteRules.js
 ../js/transfer/auto/Index.js

@@ -279,7 +279,7 @@ function applyDepositSend(obj, options) {
                 if (data.transactionErrorList) {
                     for (var j = 0; j < data.transactionErrorList.length; j++) {
                         if (data.transactionErrorList[j].state && data.transactionErrorList[j].isAudit) {
-                            successIsAudit = "申请中...";
+                            successIsAudit = "已申请";
                             successState = "proc";
                         }
                     }

@@ -91,6 +91,7 @@
                 $this.find("._vr_promo_join").text("立即申请");
                 var endTimeVal = new Date(parseInt(et));
                 $this.find("._vr_promo_countdown").ccountdown(endTimeVal.getFullYear(), endTimeVal.getMonth() + 1, endTimeVal.getDate(), endTimeVal.getHours() + ':' + endTimeVal.getSeconds());
+                $("._vr_promo_join").attr('onclick','joinPromo(this)');
             } else if (nowTime > eTime) {
                 //已结束
                 $this.attr("data-type", "over");
@@ -209,14 +210,14 @@
         if (sessionStorage.is_login == "true") {
             if (code == "back_water" || code == "first_deposit" || code == "deposit_send") {
                 if (isRefresh) {
-                    /*BootstrapDialog.alert({
-                        title: "提示",
-                        type: BootstrapDialog.TYPE_WARNING,
-                        message: "参与中",
-                        callback: function () {
-                            window.location.href = "/promo.html";
-                        }
-                    });*/
+                    /* BootstrapDialog.alert({
+                         title: "提示",
+                         type: BootstrapDialog.TYPE_WARNING,
+                         message: "参与中",
+                         callback: function () {
+                             window.location.href = "/promo.html";
+                         }
+                     });*/
                     layer.open({
                         content:'参与中',
                         title:'提示',
@@ -297,31 +298,31 @@
 
         $("._msg").html('<p class="text-center">' + data.msg + '</p>');
 
-        /*var dialog = BootstrapDialog.show({
-            type: BootstrapDialog.TYPE_WARNING,
-            message: function (dialog) {
-                var $content = $(".promoTip").html();
-                return $content;
-            },
-            title: "消息",
-            closable: 'true',
-            buttons: [{
-                label: '好的',
-                cssClass: 'btn btn-info',
-                action: function (dialogItself) {
-                    if (isRefresh) {
-                        dialogItself.close();
-                        window.location.href = "/promo.html";
-                    } else {
-                        dialogItself.close();
-                    }
-                }
-            }, {
-                label: '查看优惠记录',
-                cssClass: 'btn btn-default',
-                action: function () {
-                    window.open(
-                            '${data.contextInfo.playerCenterContext}#/preferential/list.html',
+        /* var dialog = BootstrapDialog.show({
+             type: BootstrapDialog.TYPE_WARNING,
+             message: function (dialog) {
+                 var $content = $(".promoTip").html();
+                 return $content;
+             },
+             title: "消息",
+             closable: 'true',
+             buttons: [{
+                 label: '好的',
+                 cssClass: 'btn btn-info',
+                 action: function (dialogItself) {
+                     if (isRefresh) {
+                         dialogItself.close();
+                         window.location.href = "/promo.html";
+                     } else {
+                         dialogItself.close();
+                     }
+                 }
+             }, {
+                 label: '查看优惠记录',
+                 cssClass: 'btn btn-default',
+                 action: function () {
+                     window.open(
+                             '${data.contextInfo.playerCenterContext}#/preferential/list.html',
                             '_blank' // <- This is what makes it open in a new window.
                     );
                 }
@@ -358,8 +359,8 @@
     $(function(){
         var hash = window.location.hash;
         if(hash!=undefined){
-        var id = hash.substr(1);
-        $("#"+id).find("img").trigger("click");
+            var id = hash.substr(1);
+            $("#"+id).find("img").trigger("click");
         }
     })
 </script>

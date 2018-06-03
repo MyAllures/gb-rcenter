@@ -25,6 +25,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
             this._super();
             this.showRandomAmountMsg();
             window.top.onlineTransactionNo = null;
+            this.checkPayUrl();
         },
         /**
          * 当前对象事件初始化函数
@@ -79,8 +80,8 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
             var _this = this;
             var _window = this.createWin();
             window.top.topPage.newWindow = _window;
-            window.top.topPage.onlneSubmitOption = option ;
-            window.top.topPage.onlneSubmitE = e ;
+            window.top.topPage.onlneSubmitOption = option;
+            window.top.topPage.onlneSubmitE = e;
             window.top.topPage.ajax({
                 url: root + "/fund/recharge/online/sumFailureCount.html",
                 loading: true,
@@ -95,7 +96,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                             _window.close();
                             window.top.topPage.newWindow = null;
                         }
-                    }else{
+                    } else {
                         _this.submit(e, option);
                     }
                     $(e.currentTarget).unlock();
@@ -116,18 +117,22 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
          */
         submit: function (e, option) {
             var _this = this;
-            if(!option){
+            if (!option) {
                 option = window.top.topPage.onlneSubmitOption;
-                window.top.topPage.onlneSubmitOption = null ;
+                window.top.topPage.onlneSubmitOption = null;
             }
-            if(!e){
+            if (!e) {
                 e = window.top.topPage.onlneSubmitE;
-                window.top.topPage.onlneSubmitE = null ;
+                window.top.topPage.onlneSubmitE = null;
             }
-            var _window = window.top.topPage.newWindow ;
+            var _window = window.top.topPage.newWindow;
             window.top.topPage.newWindow = null;
             if (!_window) {
                 _window = _this.createWin();
+            }
+            var payUrl = $("input[name='result.payerBank']:checked").attr("payUrl");
+            if (payUrl && window.top.topPage.onlineCheckUrlJson) {
+                $("input[name='result.rechargeRemark']").val(JSON.stringify(window.top.topPage.onlineCheckUrlJson[payUrl]));
             }
             window.top.topPage.ajax({
                 url: option.url,
@@ -243,7 +248,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                                         $(_this.formSelector + " span.fee").show();
                                     }
                                     //判断是否展示新活动大厅
-                                    if(data.isOpenActivityHall != true) {
+                                    if (data.isOpenActivityHall != true) {
                                         var sales = data.sales;
                                         if (sales && sales.length > 0) {
                                             var len = sales.length;
@@ -349,6 +354,54 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                 $(text).text(window.top.message.fund['Recharge.onlinePay.showMoreBank']);
             }
             $target.unlock();
+        },
+        /**
+         * 验证支付域名访问情况
+         * @param e
+         * @param option
+         */
+        checkPayUrl: function (e, option) {
+            var payBanks = $("input[name='result.payerBank']");
+            var urls = '';
+            window.top.topPage.onlineCheckUrlJson = {};
+            var count = 0;
+            var _this = this;
+            for (var i = 0; i < payBanks.length; i++) {
+                var payUrl = $(payBanks[i]).attr("payUrl");
+                if (urls.indexOf(payUrl) < 0) {
+                    urls = urls + "," + payUrl;
+                    this.checkPayUrlResult(payUrl);
+                    count++;
+                }
+            }
+        },
+        checkPayUrlResult: function (payUrl) {
+            window.top.topPage.ajax({
+                url: 'http://' + payUrl + "/onlinePay/t.html",
+                timeout: 1000,
+                beforeSend: function () {
+                    var info = {};
+                    info.url = payUrl;
+                    info.startTime = new Date().getTime();
+                    window.top.topPage.onlineCheckUrlJson[payUrl] = info;
+                },
+                success: function (data) {
+                    var info = window.top.topPage.onlineCheckUrlJson[payUrl];
+                    info.status = "200";
+                    window.top.topPage.onlineCheckUrlJson[payUrl] = info;
+                },
+                error: function (event, xhr, settings) {
+                    var status = event.status;
+                    var info = window.top.topPage.onlineCheckUrlJson[payUrl];
+                    info.status = status;
+                    window.top.topPage.onlineCheckUrlJson[payUrl] = info;
+                },
+                complete: function () {
+                    var info = window.top.topPage.onlineCheckUrlJson[payUrl];
+                    info.responseTime = new Date().getTime() - info.startTime;
+                    window.top.topPage.onlineCheckUrlJson[payUrl] = info;
+                }
+            })
         }
     });
 });

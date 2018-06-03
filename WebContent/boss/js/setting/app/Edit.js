@@ -6,7 +6,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
     return BaseEditPage.extend({
         init: function () {
             this._super();
-
         },
         bindEvent: function () {
             this._super();

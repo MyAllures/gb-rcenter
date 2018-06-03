@@ -2,7 +2,7 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
     return BaseEditPage.extend({
         init: function () {
             this.formSelector = "form[name=creditPayForm]";
-            if(window.top.interval){
+            if (window.top.interval) {
                 window.clearInterval(window.top.interval);
             }
             this._super(this.formSelector);
@@ -47,11 +47,11 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
                 window.clearInterval(interval);
                 window.top.topPage.ajax({
                     url: root + '/credit/pay/disableTransfer.html',
-                    dataType:'json',
+                    dataType: 'json',
                     success: function (data) {
-                        if (data.state!=true){
+                        if (data.state != true) {
                             console.log("开启禁用转账功能异常");
-                        }else {
+                        } else {
                             console.log("开启禁用转账功能正常");
                         }
                     }
@@ -61,7 +61,7 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
             var tmpTime = Number(time);
             var hour = Math.floor(tmpTime / 3600);
             tmpTime = tmpTime - hour * 3600;
-            var minute = Math.floor(tmpTime/60);
+            var minute = Math.floor(tmpTime / 60);
             var second = tmpTime - minute * 60;
             if (minute < 10) {
                 minute = '0' + minute;
@@ -83,7 +83,7 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
             var max = $target.find("input[name=max]").val();
 
             var payAmount = $(this.formSelector + " input[name='result.payAmount']").val();
-            if(min && max){
+            if (min && max) {
                 var msg = "请输入" + min + "-" + max + "之间的整数";
                 this.extendValidateMessage({"result.payAmount": {remote: msg}});
             }
@@ -119,8 +119,8 @@ define(['common/BaseEditPage', 'bootstrap-dialog'], function (BaseEditPage, Boot
                 type: 'post',
                 success: function (data) {
                     if (data && data.transactionNo) {
-                        _window.location = root + "/credit/pay/callOnline.html?search.transactionNo=" + data.transactionNo;
-                        var html =  window.top.message.setting_auto['正在与第三方对接'];
+                        _window.location = data.payUrl;
+                        var html = window.top.message.setting_auto['正在与第三方对接'];
                         var dialog = BootstrapDialog.show({
                             title: window.top.message.setting_auto['消息'],
                             message: html,

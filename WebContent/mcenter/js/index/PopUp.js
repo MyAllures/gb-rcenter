@@ -50,20 +50,17 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var _this = this;
             window.top.popUp.queryTones();
             var tones = window.top.tones;
-            setTimeout(function () {
-                for (var index = 0; index < tones.length; index++) {
-                    var tone = tones[index];
-                    if (type == tone.paramCode) {
-                        if (!tone.active) {
-                            console.log(type + "的声音偏好设置被关闭")
-                        } else {
-                            window.top.popUp.audioplayer(type, tone.paramValue);
-                        }
-
+            for (var index = 0; index < tones.length; index++) {
+                var tone = tones[index];
+                if (type == tone.paramCode) {
+                    if (!tone.active) {
+                        console.log(type + "的声音偏好设置被关闭")
+                    } else {
+                        window.top.popUp.audioplayer(type, tone.paramValue);
                     }
-
                 }
-            }, 1000);
+            }
+
         },
         /**
          * 存款提醒弹窗
@@ -253,6 +250,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var msgBody = $.parseJSON($.parseJSON(data).msgBody);
             var level = msgBody.level;
             var rate = msgBody.rate;
+            var maxProfitLimit = msgBody.maxProfitLimit;
             var siteName = msgBody.siteName;
             var id = new Date().getTime();
             var key = 'profit.' + level + '.warning';
@@ -260,7 +258,9 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var countDown = window.top.message.setting_auto['倒计时'];
             var tips = window.top.message.setting_auto['tips'];
             var times = window.top.message.setting_auto['times'];
+            var tip = window.top.message.setting_auto['tip'];
             if (msg) {
+                tip = tip.replace("${maxProfitLimit}", maxProfitLimit);
                 msg = msg.replace("${siteName}", siteName);
                 msg = msg.replace("${rate}", rate);
                 var date = window.top.topPage.formatToMyDateTime(new Date(msgBody.leftTime), window.top.dateFormat.daySecond);
@@ -292,8 +292,9 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                             '<div class="clearfix m-md al-center"><div  id=' + id + '><font class="fs20">' + countDown + '</font>' +
                             '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">' + hour + '</span>' + ":" + '' +
                             '<span id="minutes">' + minute + '</span>' + ":" + '<span id="seconds">' + second + '</span></span></div>' +
-                            '<div class="al-center co-grayc2">' + times + '</div></div>'
-                            + '<div class="clearfix m-md">' + tips + '</div>';
+                            '<div class="al-center co-grayc2">' + times + '</div></div>' +
+                            /*'<div class="clearfix m-md">' + tips + '</div>' +*/
+                            '<div class="clearfix m-md">' + tip + '</div>';
                     } else if (level == 'stop') {
                         var html = '<div class="line-hi34 m-sm">' + msg + '</div>';
                     }
@@ -443,9 +444,9 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 $(e.currentTarget).parent().parent().parent().remove();
             });
         },
-        queryTones: function () {
+        queryTones: function (isReload) {
             var _this = this;
-            if (!window.top.tones) {
+            if (!window.top.tones || isReload == true) {
                 window.top.topPage.ajax({
                     url: root + '/index/queryTones.html',
                     dataType: "json",
@@ -532,7 +533,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                         mp3.src = imgRoot + '/' + file;
                     }else {
                         mp3.src = resRoot + '/' + file;
-                    }                    mp3.type = 'audio/mpeg';
+                    }
+                    mp3.type = 'audio/mpeg';
                     player.appendChild(mp3);
                     setTimeout(function () {
                         player.play();
