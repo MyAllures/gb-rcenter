@@ -66,49 +66,6 @@ function pickerBlur(){
         inputs[i].blur();
     }
 }
-
-/*
-//当手机先触发软键盘，input未失去焦点，再点击picker控件，---此时呈现的BUG为软键盘和picker控件同时呈现，理想解决结果，先让软键盘消失，再呈现picker控件。/
-//初始化获取当前手机可视高度
-var windewHeight = document.body.clientHeight ;
-
-//获取当前页面全部pickerBox
-var poppicker = document.getElementsByClassName('mui-poppicker');
-
-//获取其他类型pickerBox --- 作者在二级联动城市的时候使用的
-var dtpicker = document.getElementsByClassName('mui-dtpicker');
-
-//作者在网上查询到最神奇的软键盘监控方法！---软键盘打开的时候，会让浏览器的可视高度发生改变。
-window.onresize = function(){ //window.onresize为浏览器宽度发生变化时触发的事件
-
-// 那么，如果页面当前高度不等于初始化的高度时,意味着软键盘正在打开。
-    if(windewHeight !=document.body.clientHeight ) {
-// 当软键盘打开的时候将mui-poppicker隐藏
-        if (!poppicker.length) return
-        for (var i = 0; i < poppicker.length; i++) {
-            poppicker[i].style.display = "none";
-        }
-        if (!dtpicker.length) return
-        for (var i = 0; i < dtpicker.length; i) {
-            dtpicker[i].style.display = "none";
-        }
-    }
-// 相反的，当初始化的屏幕高度等于当前屏幕高度时，意味着软键盘完全收起。
-    else{
-// 当软键盘收起0.15s后，再将mui-poppicker显示
-            setTimeout(function(){
-                if(!poppicker.length) return
-                for (var i=0;i<poppicker.length;i ) {
-                    poppicker[i].style.display="inline";
-                }
-                if(!dtpicker.length) return
-                for (var i=0;i<dtpicker.length;i ) {
-                    dtpicker[i].style.display="inline";
-                }
-            },150)
-        }
-    }*/
-
 /**
  * 主货币
  */
@@ -276,7 +233,11 @@ function autoLogin() {
                 if (data != null) {
                     if (data.success) {
                         sessionStorage.setItem("isLogin", true);
-                        goToUrl(root + "/mainIndex.html");
+                        var url = sessionStorage.getItem(LOGIN_TARGET_URL);
+                        if(!url) {
+                            url = root + "/mainIndex.html";
+                        }
+                        goToUrl(url);
                     } else if (data.message) {
                         toast(message.passport[data.message] || data.message)
                     }
