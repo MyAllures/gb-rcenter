@@ -206,7 +206,7 @@
 .promo-detail-content .gb-imgs > .ct ul li > .ct { background-color: #fff; padding: 5px 15px; border-radius: 5px; margin-top: 5px; }
 .promo-detail-content .gb-imgs > .ct ul li > .ct h5 { font-size: 14px; font-weight: normal; color: #8f8f94; position: relative; text-align: center; }
 .promo-detail-content .gb-imgs > .ct ul li > .ct h5 > i { display: block; border-bottom: 1px dashed #e2e2e2; position: absolute; top: 50%; left: 0; right: 0; }
-.promo-detail-content .gb-imgs > .ct ul li > .ct h5 span { display: inline-block; height: 23px; padding: 0 7px; border-radius: 3px; line-height: 23px; color: #fff; background-color: #1766bb; font-size: 12px; position: relative; z-index: 1; }
+.promo-detail-content .gb-imgs > .ct ul li > .ct h5 span { display: inline-block; height: 23px; padding: 0 7px; border-radius: 3px; line-height: 23px; color: #fff; background-color: #151515; font-size: 12px; position: relative; z-index: 1; }
 .promo-detail-content .gb-imgs > .ct ul li > .ct p { padding: 5px 0; line-height: 18px; color: #999; font-size: 12px; margin-bottom: 0; }
 .promo-detail-content .gb-form-foot { padding: 10px; }
 .promo-detail-content .gb-form-foot .submit { border: 1px solid #1766bb; background-color: #1766bb; width: 100%; padding: 10px 12px; font-size: 13px; }
@@ -250,7 +250,7 @@
 .promo-apply-content.mui-content { background: #f2f2f2; font-size: 12px; color: #666; }
 .promo-apply-content .top_title { padding: 10px; background: #fff; margin-bottom: 10px; }
 .promo-apply-content .top_title .sub_tit { font-size: 10px; color: #999; }
-.promo-apply-content .top_title .tit { font-size: 15px; color: #317ec2; }
+.promo-apply-content .top_title .tit { font-size: 15px; color: #151515; }
 .promo-apply-content .promo_con_list { font-size: 14px; color: #666; }
 .promo-apply-content .promo_con_list .mui-table-view:before, .promo-apply-content .promo_con_list .mui-table-view:after { content: none; }
 .promo-apply-content .promo_con_list .mui-table-view-cell { padding: 15px 35px 15px 15px; }
@@ -263,7 +263,7 @@
 .promo-apply-content .promo_status .icon-success { display: block; width: 69.5px; height: 69.5px; margin: 0 auto 10px; background: url(images/promo/icon-success.png) no-repeat center/100%; }
 .promo-apply-content .promo_status .suc_tip { font-size: 15px; color: #317ec2; margin-bottom: 15px; }
 .promo-apply-content .promo_status p { font-size: 12px; color: #666; margin-bottom: 0; }
-.promo-apply-content .promo_status .btn_cust_serv { margin-top: 50px; margin-bottom: 0; padding: 0; height: 40px; line-height: 40px; font-size: 15px; color: #fff; background: #317ec2; border-color: #317ec2; }
+.promo-apply-content .promo_status .btn_cust_serv { margin-top: 50px; margin-bottom: 0; padding: 0; height: 40px; line-height: 40px; font-size: 15px; color: #fff; background: #151515; border-color: #151515; }
 .promo-apply-content .promo_status .fai_tip { font-size: 15px; color: #333; line-height: 22px; }
 .promo-apply-content .promo_status .icon-failure { display: block; width: 57px; height: 65.5px; margin: 0 auto 10px; background: url(images/promo/icon-failure.png) no-repeat center/100%; }
 .promo-apply-content.promo-apply2-content { padding-bottom: 40px; }
@@ -274,10 +274,10 @@
 .promo-apply-content.promo-apply2-content .promo_item_list .promo_item .promo_item_sta.awa { background: #f07e11; }
 .promo-apply-content.promo-apply2-content .promo_item_list .promo_item .promo_item_sta.fai { background: #999; line-height: 24px; padding-top: 25px; }
 .promo-apply-content.promo-apply2-content .promo_item_list .promo_item .promo_item_sta.proc { background: #317ec2; }
-.promo-apply-content.promo-apply2-content .btn_cust_serv { position: fixed; z-index: 10; bottom: 0; left: 0; right: 0; border-radius: 0; margin: 0; padding: 0; height: 40px; line-height: 40px; font-size: 15px; color: #fff; background: #317ec2; border-color: #317ec2; }
+.promo-apply-content.promo-apply2-content .btn_cust_serv { position: fixed; z-index: 10; bottom: 0; left: 0; right: 0; border-radius: 0; margin: 0; padding: 0; height: 40px; line-height: 40px; font-size: 15px; color: #fff; background: #151515; border-color: #151515; }
 .promo-apply-content.promo-apply3-content .promo_con_list { margin-bottom: 10px; }
 .promo-apply-content.promo-apply3-content .pro_mone { padding: 10px; overflow: hidden; background: #fff; font-size: 14px; color: #333; }
-.promo-apply-content.promo-apply3-content .btn_apply { margin: 32px 10px 12px; width: auto; padding: 0; height: 40px; line-height: 40px; font-size: 15px; color: #fff; background: #317ec2; border-color: #317ec2; }
+.promo-apply-content.promo-apply3-content .btn_apply { margin: 32px 10px 12px; width: auto; padding: 0; height: 40px; line-height: 40px; font-size: 15px; color: #fff; background: #151515; border-color: #151515; }
 .promo-apply-content.promo-apply3-content .btn_apply.disabled { background: #e2e2e2; color: #999; border-color: #e2e2e2; }
 .promo-apply-content.promo-apply3-content .color-green { color: #1f9316; }
 .promo-apply-content.promo-apply3-content .color-gray { color: #666; }
@@ -408,7 +408,8 @@ body.bind-mobile .btn-wrap .btn-blo { padding: 0; line-height: 40px; height: 40p
 body.bind-mobile .cue { font-size: 12px; color: #666; padding: 20px 10px 0; line-height: 22px; }
 body.bind-mobile .bind-success { text-align: center; color: #444; line-height: 26px; padding: 25px 0; background: #fff; font-size: 14px; }
 
-.login .mui-content { background: #f2f2f2; }
+.login { position: relative; }
+.login .mui-content { background: #f2f2f2; height: 100vh; }
 .login .user-img { background: url(../images/login-user.png) center no-repeat/100px, linear-gradient(#1767bd, #1767bd); width: 100px; height: 100px; border-radius: 100%; box-shadow: 3px 5px 15px 6px rgba(23, 103, 189, 0.25); margin: 50px auto; }
 .login .login-form { padding: 0 35px; color: #666; }
 .login .login-form .password, .login .login-form .username, .login .login-form .code { position: relative; }

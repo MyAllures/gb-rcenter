@@ -53,6 +53,10 @@ define(['common/BaseListPage'], function(BaseListPage) {
             $("input[name='search.registerIpv4']").val('');
             $("input[name='search.registerSite']").val('');
             $("input[name='search.createChannel'][value='']").prop("checked", true);
+            //终端重置
+            $("input[name='search.createChannel']").siblings("button").find("span[prompt='prompt']").text(window.top.message.report_auto['全部']);
+            $("input[name='search.createChannel']").val('');
+
             $(event.currentTarget).unlock();
         },
         canAddNewPlayer:function (e, opt) {
