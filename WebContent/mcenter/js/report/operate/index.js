@@ -196,7 +196,7 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
                             apiTypeId = 2;
                         } else if (gameType =='Sportsbook') {
                             apiTypeId = 3;
-                        } else if (gameType =='Lottery'){
+                        } else if (gameType =='Lottery'|| gameType == 'SixLottery'){
                             apiTypeId = 4;
                         }
                         var text = ktem.name;
