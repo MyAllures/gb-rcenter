@@ -410,7 +410,7 @@ li{
     }
 }
 // 注册登录样式
-.mui-bar.mui-bar-blue{    background-color: #1766bb;    background-image: none;}
+.mui-bar.mui-bar-blue{    background-color: #151515;    background-image: none;}
 .login-wrap,.register-wrap{
         position: fixed;
     height: 0;
@@ -507,7 +507,7 @@ li{
 /* 资金记录样式  */
 .mine-cash-record-body{
     background: #fff;font-size: 12px;color: #333;
-    header.mui-bar{background-color: #1b75d9;}
+    header.mui-bar{background-color: #151515;}
     footer{padding:13px 10px;background: #e3ecf7;height: 64px;border-top: 1px solid #e1e1e1;position: fixed;left: 0;bottom: 0;right: 0;z-index: 10;
         .flex{display: flex;
             span{width: 60px;font-size: 14px;}
@@ -565,8 +565,10 @@ li{
         }
         .btn {
             padding: 4px 8px;
+            background: #151515;
+            border-color:#151515 ;
         }
-        .btn-kx{background: #1bd986;border-color: #1bd986;width: 43px;height: 28px;line-height: 28px;padding: 0;text-align: center;}
+        .btn-kx{background: #151515;border-color: #151515;width: 43px;height: 28px;line-height: 28px;padding: 0;text-align: center;}
         .input-drop {
             display: inline-block;
     border: 1px solid #e2e2e2;
@@ -651,7 +653,7 @@ li{
 .mine-bet-record-body{
     
     background: #f2f2f2;font-size: 12px;color: #333;
-    header.mui-bar{background-color: #1b75d9;}
+    header.mui-bar{background-color: #151515;}
     footer{padding:13px 10px;background: #e3ecf7;height: 64px;border-top: 1px solid #e1e1e1;position: fixed;left: 0;bottom: 0;right: 0;z-index: 10;
         .flex{display: flex;
             span{width: 60px;font-size: 14px;}
@@ -702,7 +704,7 @@ li{
         .btn {
             padding: 4px 8px;
         }
-        .btn-ss{background: #1766bb;border-color: #1766bb;width: 43px;height: 28px;line-height: 28px;padding: 0;text-align: center;}
+        .btn-ss{background: #151515;border-color: #151515;width: 43px;height: 28px;line-height: 28px;padding: 0;text-align: center;}
         .input-drop {
             display: inline-block;
     border: 1px solid #e2e2e2;
@@ -824,7 +826,7 @@ body.deposit{
         
     }
     
-    header{background: #1766bb;}
+    header{background: #151515;}
     .mui-content{background: #f2f2f2;bottom: 0;padding-bottom: 40px;}
     .m-t-sm {
         margin-top: 10px!important;
@@ -920,8 +922,8 @@ body.deposit{
         margin: 5px;
     }   
     .bank-selector >p{
-        border-left: 5px solid #1766bb;
-        color: #1766bb !important;
+        border-left: 5px solid #151515;
+        color: #151515 !important;
     }
     .bank-selector >.ct a.active{
         border-color: #1766bb;
@@ -1324,8 +1326,8 @@ body.deposit{
     .modes-payment>.ct .active>a{background:url(./images/pay-active.png) right top no-repeat;background-size:18px;border:1px solid #00a8ff;}
     .c-bank-se>a {margin:0;}
     .gb-form-foot .submit {
-        border: 1px solid #1766bb;
-        background-color: #1766bb !important;
+        border: 1px solid #151515;
+        background-color: #151515 !important;
     }
     .gb-form-foot .submit{
         width: 100%;
@@ -1853,7 +1855,7 @@ body.no-backdrop .mui-backdrop{
     font-size: 12px;
 }
 .gb-noticetabs .mui-segmented-control .mui-control-item.mui-active{
-    background-color: #1766bb;
+    background-color: #151515;
     color: #fff;
 }
 .gb-checkbox2{
@@ -2182,8 +2184,8 @@ body.no-backdrop .mui-backdrop{
     padding: 10px;
 }
 .gb-form-foot .submit {
-    border: 1px solid #1766bb;
-    background-color: #1766bb !important;
+    border: 1px solid #151515;
+    background-color: #151515 !important;
 }
 .gb-form-foot .submit {
     width: 100%;
@@ -2192,14 +2194,14 @@ body.no-backdrop .mui-backdrop{
 }
 /* 取款样式  */
 body.withdraw{
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;}
     .account_tab{width: 162px;margin: 10px auto;}
     .account_tab .mui-segmented-control{font-size: 12px;}
-    .account_tab .mui-segmented-control .mui-control-item{border-color: #1766bb; border-left: 1px solid #1766bb;}
-    .account_tab .mui-segmented-control .mui-control-item.mui-active {background-color: #1766bb;color: #fff;}
-    .account_tab .mui-segmented-control { border: 1px solid #1766bb;}
-    .account_tab .mui-segmented-control .mui-control-item {color: #1766bb;}
+    .account_tab .mui-segmented-control .mui-control-item{border-color: #151515; border-left: 1px solid #151515;}
+    .account_tab .mui-segmented-control .mui-control-item.mui-active {background-color: #151515;color: #fff;}
+    .account_tab .mui-segmented-control { border: 1px solid #151515;}
+    .account_tab .mui-segmented-control .mui-control-item {color: #151515;}
     .account_tab .mui-segmented-control .mui-control-item:first-child{    border-left-width: 0;}
     .pay-bank.bitcoin{background: url(./images/bit_pay.png) no-repeat 4px 5px/26px;   height: 40px;width: 40px;}
     .gb-bindcard-box.bit-pay .mine-form .mui-input-row >label small{}
@@ -2291,8 +2293,8 @@ body.withdraw{
         font-size: 13px;
     }
     .gb-form-foot .submit {
-        border: 1px solid #1766bb;
-        background-color: #1766bb !important;
+        border: 1px solid #151515;
+        background-color: #151515 !important;
     }
     .gb-theme .mui-input-row label {
         white-space: nowrap;
@@ -2353,18 +2355,18 @@ html.new-invite{height: 100%;
         background: #f2f2f2;
         .input-wrap{display: flex;margin-top: 13px;
             input{flex: 1;height: 35px;line-height: 30px;padding: 0 10px;font-size: 12px;color: #333;border-radius: 5px;border: 1px solid #ccc;margin: 0;}
-            .btn-copy{background:#1b75d9;margin-left:10px;display: block;width: 76px;height: 35px;line-height: 35px;text-align: center;font-size: 12px;color: #fff;border-radius: 5px;}
+            .btn-copy{background:#151515;margin-left:10px;display: block;width: 76px;height: 35px;line-height: 35px;text-align: center;font-size: 12px;color: #fff;border-radius: 5px;}
         }
     }
     .panel3{margin: 0 10px 10px;border-radius: 5px;border: 1px solid #ddd;font-size: 12px;color: #333;padding: 15px;background: #f2f2f2;
-        .mui-segmented-control{width: 153px;height: 30px;line-height: 30px;margin: 0 auto 10px;font-size: 14px;color: #333;
+        .mui-segmented-control{width: 153px;height: 30px;line-height: 30px;margin: 0 auto 10px;font-size: 14px;color: #333;border-color: #151515;
             .mui-control-item{line-height: 30px;color: #333;
-                &.mui-active{color: #fff;}
+                &.mui-active{color: #fff;background: #151515;}
             }
         }
         .mui-control-content{height: 320px;
             .pan{margin: 15px 0;border: 1px solid #ccc;border-radius: 5px;position: relative;font-size: 14px;color: #333;line-height: 20px;text-align: center;padding: 15px;
-                .tit{color: #1b75d9;font-weight: bold;    position: absolute;    top: -15px;    left: 50%;    transform: translateX(-50%);    padding: 5px 10px;    background: #f2f2f2;}
+                .tit{color: #151515;font-weight: bold;    position: absolute;    top: -15px;    left: 50%;    transform: translateX(-50%);    padding: 5px 10px;    background: #f2f2f2;}
                 .table1{width: 100%;border: 1px solid #fff;margin-top: 12px;line-height: 38px;
                     td, th {
                         border: 1px solid #fff;
@@ -2498,7 +2500,7 @@ html.new-invite{height: 100%;
 }
 /* 推荐记录样式 */
 body.invite{
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;}
     .mui-bar-nav .button {
         padding: 2px 8px;
@@ -2629,13 +2631,13 @@ body.invite{
 }
 /* 帮助中心样式 */
 .help-center{
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;}
     .mui-content{font-size: 12px;color: #333;}
 }
 .help-center{background-color: #f2f2f2;}
 .help-center .mui-content{background-color: #f2f2f2;font-size: 12px;color: #333;}
-.help-center .mui-bar-nav{    background-color: #1766bb;color: #fff;}
+.help-center .mui-bar-nav{    background-color: #151515;color: #fff;}
 .help-center .mui-title{color: #fff;}
 .help-center .mui-action-back{color: #fff;}
 .help-center .mui-content > .mui-table-view:first-child{margin-top: 0;}
@@ -2648,7 +2650,7 @@ body.invite{
 
 /* 银行卡 */
 body.bankcard{
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;}
     .mine-form .mui-input-row >label {
         color: #333;
@@ -2685,8 +2687,8 @@ body.bankcard{
         padding: 10px;
     }
     .gb-form-foot .submit {
-        border: 1px solid #1766bb;
-        background-color: #1766bb !important;
+        border: 1px solid #151515;
+        background-color: #151515 !important;
     }
     .gb-form-foot .submit {
         width: 100%;
@@ -2759,7 +2761,7 @@ body.bankcard{
 }
 /* 数字货币存款 */
 body.online-pay-sz{
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;}
     .bank-selector {
         padding: 10px 0;
@@ -2831,8 +2833,8 @@ body.online-pay-sz{
         color: #333;
     }
     .gb-form-foot .submit {
-        border: 1px solid #1766bb;
-        background-color: #1766bb !important;
+        border: 1px solid #151515;
+        background-color: #151515 !important;
     }
     .gb-form-foot .submit {
         width: 100%;
@@ -2846,7 +2848,7 @@ body.online-pay-sz{
 }
 /* 404,605,606,607 */
 body.p404,body.p605,body.p606,body.p607{ 
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #32374f;padding-bottom: 0 !important;}
     .gb-error, .gb-error p {
         color: #fff;
@@ -2874,7 +2876,7 @@ body.p607{
 
 /* forget */
 body.forget{color: #000;
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;}
     .mine-form input {
         width: 100%;
@@ -2901,7 +2903,7 @@ body.forget{color: #000;
 }
 /* audit */
 body.audit{color: #000;
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;}
     .mine-table-wrapper .mine-table {
         width: auto;margin-top: 10px;
@@ -2945,7 +2947,7 @@ body.audit{color: #000;
 }
 /* bit-wallet */
 .bit-wallet{color: #000;
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;}
     .bit_bind_wrap{margin: 10px 0;padding: 0 10px;background: #fff;}
     .bit_bind_wrap .tit{padding-top: 25px;font-size: 14px;padding-bottom: 5px;}
@@ -2955,7 +2957,7 @@ body.audit{color: #000;
     .bit_bind_wrap .btn_wrap .mui-col-xs-6{padding: 0 5px;}
     .bit_bind_wrap .btn_wrap .btn_reset,.bit_bind_wrap .btn_wrap .btn_bind{width: 100%;    height: 40px;  line-height: 40px;  padding: 0;}
     .bit_bind_wrap .btn_wrap .btn_reset{    background: #e2e2e2;border-color: #e2e2e2;}
-    .bit_bind_wrap .btn_wrap .btn_bind{background: #1766bb;border-color: #1766bb;color: #fff;    }
+    .bit_bind_wrap .btn_wrap .btn_bind{background: #151515;border-color: #151515;color: #fff;    }
     .gb-bindcard-box.bit_addr .cont{background: #fff;margin: 0 30px;border: 1px solid #e2e2e2;}
     .gb-bindcard-box.bit_addr .close{    color: #fff;  position: absolute;  right: 0;  top: -70px;}
     .gb-bindcard-box.bit_addr{    top: 90px;}
@@ -2986,7 +2988,7 @@ body.audit{color: #000;
 }
 /* changing-loginpassword */
 body.change-loginpassword{color: #000;
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;}
     .mine-form .mui-input-row >label {
         color: #333;
@@ -3040,7 +3042,7 @@ body.change-loginpassword{color: #000;
 }
 /* mine-bet-detail */
 .mine-bet-detail{color: #000;
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;padding-bottom: 0 !important;}
     .mine-form .mui-input-row >label {
         color: #333;
@@ -3085,7 +3087,7 @@ body.change-loginpassword{color: #000;
 }
 /* cash-detail */
 body.cash-detail{color: #000;
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;padding-bottom: 0 !important;}
     .mine-form .mui-input-row >label {
         color: #333;
@@ -3182,7 +3184,7 @@ body.cash-detail{color: #000;
 }
 /* exchange */
 body.exchange{color: #000;
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;padding-bottom: 0 !important;}
     .mine-form p {
         font-size: 12px;
@@ -3237,7 +3239,7 @@ body.exchange{color: #000;
 }
 /* exchange-account */
 body.exchange-account{color: #000;
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;padding-bottom: 0 !important;}
     .gb-panel{
         background-color: #ffffff;
@@ -3254,6 +3256,7 @@ body.exchange-account{color: #000;
     }
     .gb-headtabs .mui-segmented-control{
         overflow: visible;
+        border-color:#151515 ;
     }   
     .gb-headtabs .mui-segmented-control .mui-control-item {
         line-height: 28px;
@@ -3261,8 +3264,9 @@ body.exchange-account{color: #000;
         font-size: 12px;
         overflow: visible;
         position: relative;
+        border-left: #151515;
         &.mui-active{
-            background: #1766bb;color: #fff;
+            background: #151515;color: #fff;
         }
     }   
     .gb-bankcard{
@@ -3359,7 +3363,7 @@ body.exchange-account{color: #000;
 }
 /* exchange-bank,exchange-wechat */
 body.exchange-bank,body.exchange-wechat{color: #000;
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;padding-bottom: 60px !important;}
     .gb-panel{
         background-color: #ffffff;
@@ -3466,7 +3470,7 @@ body.exchange-bank,body.exchange-wechat{color: #000;
         color: #fff;
         text-align: center;
         height: 35px;
-        background: #1766bb;
+        background: #151515;
     }    
     .wechat-code{text-align:center;border-top:1px solid #ddd;padding:20px 0 15px;}
     .wechat-code img{width:130px;height:130px;display:inline-block;border:1px solid #eee;}
@@ -3495,7 +3499,7 @@ body.exchange-bank,body.exchange-wechat{color: #000;
     }
 }
 body.exchange-bitcoin{color: #000;
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;padding-bottom: 60px !important;}
     .gb-panel{
         background-color: #ffffff;
@@ -3641,7 +3645,7 @@ body.exchange-bitcoin{color: #000;
         color: #fff;
         text-align: center;
         height: 35px;
-        background: #1766bb;
+        background: #151515;
     }    
     .wechat-code{text-align:center;border-top:1px solid #ddd;padding:20px 0 15px;}
     .wechat-code img{width:130px;height:130px;display:inline-block;border:1px solid #eee;}
@@ -3657,7 +3661,7 @@ body.exchange-bitcoin{color: #000;
 }
 /* mine-notice */
 .mine-notice{color: #000;
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #fff;padding-bottom: 0 !important;} 
     .gb-panel {
         background-color: #fff;
@@ -3672,15 +3676,16 @@ body.exchange-bitcoin{color: #000;
             width: 240px;
         }
         .mui-segmented-control {
-            border: 1px solid #1766bb;
+            border: 1px solid #151515;
             .mui-control-item {
                 line-height: 28px;
                 color: #333;
                 font-size: 12px;
                 overflow: visible;
                 position: relative;
+                border-color: #151515;
                 &.mui-active {
-                    background: #1766bb;color: #fff;
+                    background: #151515;color: #fff;
                 }
             }
         }
@@ -3741,8 +3746,8 @@ body.exchange-bitcoin{color: #000;
         }
     }
     .gb-datafilter .btn {
-        padding: 2px 8px;    background-color: #1766bb;
-    border-color: #1766bb;
+        padding: 2px 8px;    background-color: #151515;
+    border-color: #151515;
         &.btn-sec{    color: #fff; margin-right: 5px;}
     } 
     .gb-checkbox2 {
@@ -3835,7 +3840,7 @@ body.exchange-bitcoin{color: #000;
 }
 /* mine-user */
 body.mine-user{color: #000;
-     header{background: #1766bb;}
+     header{background: #151515;}
     .mui-content{background: #f2f2f2;padding-bottom: 0 !important;} 
     .gb-form-notice p {
         margin: 0 10px;
@@ -3922,7 +3927,7 @@ body.mine-user{color: #000;
 }
 /*存款页面优惠弹窗*/
 .pro-window{width:320px !important; margin-top:-165px;margin-left:-160px;padding:15px;}
-.pro-window h3{color:#1766bb;margin-bottom:30px;line-height: 16px;}
+.pro-window h3{color:#151515;margin-bottom:30px;line-height: 16px;}
 .pro-window .cont-text{line-height:20px;font-size: 12px;color:#666;}
 .pro-window .cont-text p,.pro-window .text-pro p{color:#666;}
 .pro-window .org{color:#f49e2e;font-size: 14px;}
@@ -3933,7 +3938,7 @@ body.mine-user{color: #000;
 .pro-window .text-pro li input{width: 16px;height: 16px;position:absolute;top:20%;right:15px;}
 .pro-btn{margin: 20px 0 0 10px;width:280px;}
 .pro-btn a{font-size: 14px; margin: 0 5px; color: #fff; width:120px;height: 32px;border-radius: 4px;line-height: 32px;text-align: center;display: inline-block}
-.pro-btn .next-btn{background:#1766bb;}
+.pro-btn .next-btn{background:#151515;}
 .pro-btn .agin-btn{background:#e2e2e2;color: #666;}
 .pro-window .close{position:absolute;top:5px;right:5px;background:url(./images/close.png)no-repeat center center;width: 48px;height:48px;zoom:0.7;}
 
@@ -3966,6 +3971,10 @@ body.mine-user{color: #000;
 .withdraw-not .tiptext {
     margin: 10px 0;
     line-height: 25px
+}
+.withdraw-not .mui-btn-blue{
+    background: #151515;
+    border-color: #151515;
 }
 
 .withdraw-not .tiptext p {
