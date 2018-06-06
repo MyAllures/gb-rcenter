@@ -104,21 +104,13 @@
     border-bottom: 1px solid #fff;
 }
 .login-content{background: #f2f2f2;}
-.type-content{
-    .mui-control-content{
-            .mui-input-group{
-                .mui-button-row{    
-                    .mui-btn-block{  
-                        &.btn-ok{background: #1766bb;border: 1px solid #1766bb;color: #fff;
-                            &:active{background: darken(#1766bb,10%);}
-                        }                   
-                        &.btn-cancel{
-                            background: #f2f2f2;border: 1px solid #1766bb;color: #1766bb;
-                            &:active{background: darken(#f2f2f2,10%);}
-                        }
-                    }                
-                }
-        }
+.login{
+    .user-img{background:url(../../images/login-user.png) center no-repeat/100px,linear-gradient(#f2205f,#f2205f);width:100px;height:100px;;
+        border-radius: 100%; box-shadow:  3px 5px 15px 6px rgba(#f2205f,0.25); margin: 50px auto;}
+    .login-form{
+        a.btn{display:block;text-align: center;height:40px;line-height: 40px;border-radius:2px;}
+        .btn-login{background:#f2205f;color:#fff;margin-bottom:15px;}
+        .btn-regist{color:#f2205f;border:1px solid #f2205f;}
     }
 }
 /* mine page */
@@ -203,3 +195,71 @@
     background: #ff3d77;
     border-color: #ff3d77;
 }
+//取款
+body.withdraw{
+    .gb-form-foot .submit {border: 1px solid #f2205f;background-color: #f2205f !important;}
+    .account_tab .mui-segmented-control {border: 1px solid #f2205f;
+    .mui-control-item {border-color: #f2205f !important;border-left: 1px solid #f2205f !important;color:#f2205f ;}
+    .mui-active{background-color: #f2205f !important;color: #fff !important;}
+    }
+} 
+.mui-btn-blue, .mui-btn-primary, input[type=submit] {
+    color: #fff;
+    border: 1px solid #f2205f;
+    background-color: #f2205f;
+}
+//投注
+.mine-bet-record-body .gb-datafilter .btn-ss {
+    background: #f2205f;
+    border-color: #f2205f;
+}
+.mui-bar-nav{
+    .mui-pull-left{color:#fff;
+    &:before{color: #fff;}
+    }
+}
+//资金记录
+.mine-cash-record-body .gb-datafilter .btn-kx {
+    background: #f2205f;
+    border-color: #f2205f;
+}
+//优惠详情
+.promo-detail-content .gb-imgs > .ct ul li > .ct h5 span{
+    background-color: #f2205f;
+}
+//转账页面
+body.exchange-account{
+    .gb-headtabs {
+        .mui-segmented-control{border-color: #f2205f;
+            .mui-control-item{border-color:#f2205f;border-left: #f2205f;}
+            .mui-active{background:#f2205f !important;}
+        }
+    }
+} 
+//银行存款页面
+.pro-btn .next-btn {
+    background: #f2205f;
+}
+.pro-window h3{
+    color: #f2205f;
+}
+//比特币存款
+body.exchange-bitcoin .tit{
+    background-color:#f2205f ;
+}
+body.exchange-wechat .tit{background-color:#f2205f ;}
+//活动申请
+.promo-apply-content .promo_status .btn_cust_serv{
+    background: #f2205f;
+    border-color: #f2205f;
+} 
+//忘记密码
+.btn-wrap .btn-blo{
+    background: #f2205f;
+    border-color: #f2205f;
+} 
+.cod-btn-wrap{
+            .mui-btn{background: #f2205f;border-color: #f2205f;}
+}
+//bit-wallet    
+.bit-wallet .bit_bind_wrap .btn_wrap .btn_bind{background: #f2205f;border-color: #f2205f;color: #fff;}  
