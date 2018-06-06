@@ -197,13 +197,13 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
                             apiTypeId = 2;
                         } else if (gameType =='Sportsbook') {
                             apiTypeId = 3;
-                        } else if (gameType =='Lottery'|| gameType == 'SixLottery'){
+                        } else if (gameType =='Lottery'|| gameType == 'SixLottery') {
                             apiTypeId = 4;
                         }
                         var text = ktem.name;
                         htm += '<label class="fwn m-r-sm">' +
                             '<input type="checkbox" name="box.gameTypes" onclick="page.fBox.clickPopGameType(this)" class="i-checks" data-id="' + idx + '" data-text="'
-                            + text + '" value="' + text + '"' + 'title="' + ktem.apiName + '-' + text + '" data-title="' + ktem.apiName + '" data-gameType="'
+                            + text + '" data-code="' + gameType + '" value="' + text + '" title="' + ktem.apiName + '-' + text + '" data-title="' + ktem.apiName + '" data-gameType="'
                             + apiTypeId + '">' + text + '</label>';
                         if (ktem.idx==0) {
                             $.each(data.apiTypes, function(m, mtem) {
