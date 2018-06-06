@@ -168,6 +168,12 @@ body.exchange-account .gb-headtabs .mui-segmented-control { border-color: #15151
 body.exchange-account .gb-headtabs .mui-segmented-control .mui-control-item { border-color: #151515; border-left: #151515; }
 body.exchange-account .gb-headtabs .mui-segmented-control .mui-active { background: #151515 !important; }
 
+body.mine-notice .gb-headtabs .mui-segmented-control { border-color: #151515; }
+body.mine-notice .gb-headtabs .mui-segmented-control .mui-control-item { border-color: #151515; }
+body.mine-notice .gb-headtabs .mui-segmented-control .mui-active { background: #151515 !important; }
+body.mine-notice .gb-datafilter .btn { background-color: #151515; border-color: #151515; }
+body.mine-notice .gb-noticetabs .mui-segmented-control .mui-control-item.mui-active { background-color: #151515; }
+
 .pro-btn .next-btn { background: #151515; }
 
 .pro-window h3 { color: #151515; }
@@ -183,5 +189,7 @@ body.exchange-wechat .tit { background-color: #151515; }
 .cod-btn-wrap .mui-btn { background: #151515; border-color: #151515; }
 
 .bit-wallet .bit_bind_wrap .btn_wrap .btn_bind { background: #151515; border-color: #151515; color: #fff; }
+
+.promo-apply-content.promo-apply3-content .btn_apply { background: #151515; border-color: #151515; color: #fff; }
 
 /*# sourceMappingURL=style.css.map */

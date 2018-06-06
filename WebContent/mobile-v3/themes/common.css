@@ -1556,7 +1556,6 @@ body.exchange-bitcoin .mui-input-row.bitcoin-addr-row > .ct textarea { font-size
 
 /* mine-notice */
 .mine-notice { color: #000; }
-.mine-notice header { background: #1766bb; }
 .mine-notice .mui-content { background: #fff; padding-bottom: 0 !important; }
 .mine-notice .gb-panel { background-color: #fff; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; }
 .mine-notice .gb-headtabs { margin: 11px auto; width: 60%; background-color: #fff; }
