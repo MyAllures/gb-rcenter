@@ -16,7 +16,6 @@ $(function () {
 });
 
 function onPageLoad() {
-    $(".gb-select *").css({"background": "", "margin": "", "padding": ""});
     tableScroll(this);
     var isLogin = sessionStorage.getItem("isLogin");
     if (isLogin && isLogin == "true") {
