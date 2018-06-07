@@ -58,7 +58,11 @@ function downLoadApp(obj, options) {
  */
 function lang(obj, options) {
     $(obj).parent().addClass("active");
-    $(".lang-menu").toggle();
+    if ( $(".lang-menu").is(":hidden")) {
+        $(".lang-menu").show();
+    } else {
+        $(".lang-menu").hide();
+    }
     $(obj).unlock();
 }
 

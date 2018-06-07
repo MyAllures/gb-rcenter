@@ -286,7 +286,8 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                 $(".siteDescription"+targetLocal).val(sourceContent);
             });
         },
-bindPreferenceEvent:function () {
+
+        bindPreferenceEvent:function () {
             var $bootstrapSwitch = $("[name$='active'][type='checkbox']");
             this.unInitSwitch($bootstrapSwitch)
                 .bootstrapSwitch({
@@ -598,15 +599,6 @@ bindPreferenceEvent:function () {
         },
         getPhoneValidateForm:function (e,opt) {
             return {"result.trafficStatistics":$("[name='result.trafficStatistics']").val()};
-        },
-        /**
-         * 获取站点维护公告表单
-         * @param e
-         * @param opt
-         * @returns {*|jQuery}
-         */
-        getSiteMaintainTipFormData: function (e, opt) {
-            return $("input,textarea", "#siteMaintainTipsDiv").serialize();
         },
         /**
          * 验证统计代码

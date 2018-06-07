@@ -77,10 +77,10 @@ define(['common/BaseListPage', 'bootstrapswitch'], function (BaseListPage) {
                         data: {"search.id": id, "proxyLine": proxyLine},
                         success: function (data) {
                             if (data.state) {
-                                alert("切换成功！");
-                            } else {
-                                alert("切换失败！");
+                                window.top.topPage.showSuccessMessage("切换成功！");
                                 _this.query(e);
+                            } else {
+                                window.top.topPage.showErrorMessage("切换失败！");
                             }
                         }
                     })
@@ -91,6 +91,13 @@ define(['common/BaseListPage', 'bootstrapswitch'], function (BaseListPage) {
         },
         switchProxy: function (e, option) {
             var _this = this;
+            var _target = e.currentTarget;
+            var hostName=e.key;
+            var id = $("td .i-checks", $(_target).parents("tr")).val()
+            if (hostName==""||id=="") {
+                window.top.topPage.showErrorMessage("请选择正确的hostName");
+                return;
+            }
             _this.showConfirm(e, option, '确定切换代理线吗？')
         }
     });

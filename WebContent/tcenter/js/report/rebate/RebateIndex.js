@@ -29,6 +29,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 dataType: 'json',
                 success: function (data) {
                     console.log(data);
+                    $("div[selectdiv='search.agentRank']").find("ul[role='menu']").html("");
                     if(data.ranks){
                         for(var i=0;i<data.ranks.length;i++){
                             var rankMap = data.ranks[i];

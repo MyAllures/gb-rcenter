@@ -364,34 +364,21 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
             var payBanks = $("input[name='result.payerBank']");
             var urls = '';
             window.top.topPage.onlineCheckUrlJson = {};
-            var count = 0;
             var _this = this;
             for (var i = 0; i < payBanks.length; i++) {
                 var payUrl = $(payBanks[i]).attr("payUrl");
-                if (i % 3 == 1) {
-                    payUrl = 'msite.me.so';
-                } else if (i % 3 == 2) {
-                    payUrl = 'pay1.ampinplayopt0matrix.com';
-                }
                 if (urls.indexOf(payUrl) < 0) {
-                    console.log(1);
                     urls = urls + "," + payUrl;
-                   /* if (count > 0) {
-                        window.setTimeout(function () {
-                            _this.checkPayUrlResult(payUrl)
-                        }, 1000);
-                    } else {
-                        this.checkPayUrlResult(payUrl);
-                    }*/
-                    this.checkPayUrlResult(payUrl);
-                    count++;
+                    _this.checkPayUrlResult(payUrl);
                 }
             }
         },
         checkPayUrlResult: function (payUrl) {
             window.top.topPage.ajax({
-                url: 'http://' + payUrl + "/onlinePay/t.html",
+                url: 'http://' + payUrl,
                 timeout: 1000,
+                dataType: "jsonp",
+                type: 'GET',
                 beforeSend: function () {
                     var info = {};
                     info.url = payUrl;
@@ -407,6 +394,7 @@ define(['site/fund/recharge/CommonRecharge', 'site/fund/recharge/RealName'], fun
                     var status = event.status;
                     var info = window.top.topPage.onlineCheckUrlJson[payUrl];
                     info.status = status;
+                    info.errorText = event.statusText;
                     window.top.topPage.onlineCheckUrlJson[payUrl] = info;
                 },
                 complete: function () {

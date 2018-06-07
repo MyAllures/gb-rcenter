@@ -60,11 +60,11 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 $("#electronicDocument").hide();
                 $("#scanDocument").hide();
                 $("#easyPayDocument").show();
-            } else if ("onecodepay" == bankCode){
+            } else if ("onecodepay" == bankCode) {
                 $("#electronicDocument").hide();
                 $("#scanDocument").hide();
                 $("#oneCodePayDocument").show();
-            }else {
+            } else {
                 var depositType = $account.attr("depositType");
                 if (depositType == "scan") {
                     $("#electronicDocument").hide();
@@ -117,6 +117,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 $("#accountCode").text(accountCode);
                 $("#bankNum").text(bankNum);
                 $("#bankName").text(bankName);
+                $("#bankName").parent("span.paidname").attr("data-clipboard-text", bankName);
                 $("[name=electronicElement]").show();
                 $("#step").text(3);
                 $("[name=scanElement]").hide();
@@ -250,6 +251,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                                     }
                                     var sales = data.sales;
                                     if (sales && sales.length > 0) {
+                                        $("div#applysale").show();
                                         var len = sales.length;
                                         var html = $("#rechargeSale").render({
                                             sales: sales,
@@ -262,6 +264,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                                     } else {
                                         $("div#applysale").find("input[type=radio]").attr("disabled", true);
                                         $("input[name=activityId]:eq('')").prop("checked", 'checked');
+                                        $("div#applysale").hide();
                                     }
                                     $("._submit").removeClass("disabled");
                                 },
@@ -283,7 +286,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
          * @param e
          * @param option
          */
-        sumFailureCount : function(e, option){
+        sumFailureCount: function (e, option) {
             var _this = this;
             var _window = this.createWin();
             window.top.topPage.newWindow = _window;
@@ -307,7 +310,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                             _window.close();
                             window.top.topPage.newWindow = null;
                         }
-                    }else{
+                    } else {
                         _this.submit(e, option);
                     }
                     $(e.currentTarget).unlock();
@@ -315,11 +318,11 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
             });
         },
 
-        closingFailurePrompt:function(e, option){
+        closingFailurePrompt: function (e, option) {
             var _this = this;
             $("#manyFailures").hide();
             $("#backdrop").hide();
-            var _window = window.top.topPage.newWindow ;
+            var _window = window.top.topPage.newWindow;
             if (_window) {
                 _window.close();
                 window.top.topPage.newWindow = null;
@@ -333,8 +336,8 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
          * @param option
          */
         submit: function (e, option) {
-            var _this = this ;
-            var _window = window.top.topPage.newWindow ;
+            var _this = this;
+            var _window = window.top.topPage.newWindow;
             window.top.topPage.newWindow = null;
             if (!_window) {
                 _window = _this.createWin();
@@ -430,7 +433,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
          */
         changeSale: function () {
             var isOpenActivityHall = $("input[name='isOpenActivityHall']").val();
-            if(isOpenActivityHall == 'false') {
+            if (isOpenActivityHall == 'false') {
                 var amount = $("input[name='result.rechargeAmount']").val();
                 var rechargeType = $("[name='result.rechargeType']").val();
                 var url = root + "/fund/recharge/online/changeScanType.html?rechargeType=" + rechargeType;
