@@ -23,6 +23,8 @@ function onPageLoad() {
         var $submit = $("#submit");
         var options = eval("(" + $submit.attr("data-rel") + ")");
         changeApplyStatus();
+        $("div[name=unLoginPromoDiv]").hide();
+        $("div[name=loginPromoDiv]").show();
         promoCheck($submit, options);
     }
 }
@@ -112,7 +114,6 @@ function filterActyByPlayer(data) {
         }
     }
     if (isContain == false) {
-        //$obj.removeClass(oldClass).addClass(newClass + " mui-disabled notfit").html(window.top.message.promo_auto['未满足条件']);
         $('#submit').addClass("mui-hidden");
         $('#notFit').removeClass("mui-hidden");
     } else if (code == "content") {
@@ -205,6 +206,16 @@ function goRegister(obj, options) {
     if (isNative) {
         nativeGoToRegisterPage();
     } else {
+        sessionStorage.setItem(LOGIN_TARGET_URL, getCurrentUrl());
         goToUrl(options.src);
     }
+}
+
+/**
+ * 跳转到登录
+ * @param obj
+ * @param options
+ */
+function goLogin(obj, options) {
+    login(getCurrentUrl());
 }

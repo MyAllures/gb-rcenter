@@ -165,6 +165,9 @@ define(['common/BaseListPage', 'autocompleter'], function (BaseListPage) {
             $("input[name='search.startTime']").val('');
             $("input[name='search.endTime']").val('');
             $(".allOrigin").prop("checked", true);
+            //终端重置
+            $("input[name='search.origin']").siblings("button").find("span[prompt='prompt']").text(window.top.message.report_auto['全部']);
+            $("input[name='search.origin']").val('');
             $(event.currentTarget).unlock();
         },
         /**
