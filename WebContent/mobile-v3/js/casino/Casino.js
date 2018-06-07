@@ -169,11 +169,12 @@ function resizeSlideHeight() {
  * 显示或隐藏搜索框
  */
 function toggleSearch() {
-    $("div[name=searchDiv]").toggle();
     if ($("div[name=searchDiv]").is(":hidden")) {
-        $('.search-shadow').hide();
-    } else {
+        $("div[name=searchDiv]").show();
         $('.search-shadow').show();
+    } else {
+        $("div[name=searchDiv]").hide();
+        $('.search-shadow').hide();
     }
 }
 

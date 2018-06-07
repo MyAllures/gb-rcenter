@@ -111,11 +111,11 @@
             .mui-input-group{
                 .mui-button-row{    
                     .mui-btn-block{  
-                        &.btn-ok{background: #1766bb;border: 1px solid #1766bb;color: #fff;
-                            &:active{background: darken(#1766bb,10%);}
+                        &.btn-ok{background: #151515;border: 1px solid #151515;color: #fff;
+                            &:active{background: darken(#151515,10%);}
                         }                   
                         &.btn-cancel{
-                            background: #f2f2f2;border: 1px solid #1766bb;color: #1766bb;
+                            background: #f2f2f2;border: 1px solid #151515;color: #151515;
                             &:active{background: darken(#f2f2f2,10%);}
                         }
                     }                

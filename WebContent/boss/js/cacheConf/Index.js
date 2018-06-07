@@ -22,7 +22,6 @@ define(['common/BaseListPage'], function (BaseListPage) {
             var t1 = new Date();
             window.top.topPage.ajax({
                 dataType:'json',
-                async:false,
                 type:"post",
                 url:root+'/cacheItem/refreshCache.html?cacheKey='+cacheKey,
                 beforeSend:function () {
@@ -33,6 +32,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     $(e.currentTarget).removeAttr("disabled")
                     $(e.currentTarget).removeClass("co-gray");
                     $(e.currentTarget).unlock();
+                    page.showPopover(e,{},"success","刷新完成",true);
                 },
                 error:function(data) {
                     console.log("error");

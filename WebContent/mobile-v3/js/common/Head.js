@@ -29,7 +29,11 @@ function closeLeftMenu() {
  * 点击右侧玩家信息展示玩家api金额
  */
 function userAssert(obj, options) {
-    $("#login-info .money-shadow").toggle();
+    if ( $("#login-info .money-shadow").is(":hidden")) {
+        $("#login-info .money-shadow").show();
+    } else {
+        $("#login-info .money-shadow").hide();
+    }
     if ($(obj).find(".ex").attr("class") === "ex") {
         if (sessionStorage.getItem("isAutoPay") === "true") {//是否免转
             $("#recovery").removeClass("mui-hidden");
