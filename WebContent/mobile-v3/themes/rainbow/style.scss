@@ -279,3 +279,16 @@ body.exchange-wechat .tit{background:url(images/header-bg.png) 0 0/100% 44px !im
 }
 //bit-wallet    
 .bit-wallet .bit_bind_wrap .btn_wrap .btn_bind{background: url(images/header-bg.png) 0 0/100% 44px !important;border-color: #c8c9e7;color: #fff;}  
+//promo-apply
+.promo-apply-content.promo-apply3-content .btn_apply{background: url(images/header-bg.png) 0 0/100% 44px !important;border-color: #c8c9e7;color: #fff;} 
+//mine-notice
+body.mine-notice {
+    .gb-headtabs {
+        .mui-segmented-control{border-color: #c8c9e7;
+            .mui-control-item{border-color:#c8c9e7;}
+            .mui-active{background:url(images/header-bg.png) 0 0/100% 44px !important;}
+        }
+    }
+    .gb-datafilter .btn{background: url(images/header-bg.png) 0 0/100% 44px !important;border-color: #c8c9e7;}
+    .gb-noticetabs .mui-segmented-control .mui-control-item.mui-active{background: url(images/header-bg.png) 0 0/100% 44px !important;}
+}        

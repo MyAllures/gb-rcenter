@@ -268,3 +268,16 @@ body.exchange-wechat .tit{background-color:#ccc ;}
 }
 //bit-wallet    
 .bit-wallet .bit_bind_wrap .btn_wrap .btn_bind{background: #ccc;border-color: #ccc;color: #fff;}
+//promo-apply
+.promo-apply-content.promo-apply3-content .btn_apply{background: #ccc;border-color: #ccc;color: #fff;} 
+//mine-notice
+body.mine-notice {
+    .gb-headtabs {
+        .mui-segmented-control{border-color: #ccc;
+            .mui-control-item{border-color:#ccc;}
+            .mui-active{background:#ccc !important;}
+        }
+    }
+    .gb-datafilter .btn{background-color: #ccc;border-color: #ccc;}
+    .gb-noticetabs .mui-segmented-control .mui-control-item.mui-active{background-color: #ccc;}
+} 

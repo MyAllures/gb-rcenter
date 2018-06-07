@@ -181,4 +181,12 @@ body.exchange-wechat .tit { background-color: #1766bb; }
 
 .bit-wallet .bit_bind_wrap .btn_wrap .btn_bind { background: #1766bb; border-color: #1766bb; color: #fff; }
 
+.promo-apply-content.promo-apply3-content .btn_apply { background: #1766bb; border-color: #1766bb; color: #fff; }
+
+body.mine-notice .gb-headtabs .mui-segmented-control { border-color: #1766bb; }
+body.mine-notice .gb-headtabs .mui-segmented-control .mui-control-item { border-color: #1766bb; }
+body.mine-notice .gb-headtabs .mui-segmented-control .mui-active { background: #1766bb !important; }
+body.mine-notice .gb-datafilter .btn { background-color: #1766bb; border-color: #1766bb; }
+body.mine-notice .gb-noticetabs .mui-segmented-control .mui-control-item.mui-active { background-color: #1766bb; }
+
 /*# sourceMappingURL=style.css.map */

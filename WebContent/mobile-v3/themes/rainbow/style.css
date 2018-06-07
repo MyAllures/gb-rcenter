@@ -180,4 +180,12 @@ body.exchange-wechat .tit { background: url(images/header-bg.png) 0 0/100% 44px 
 
 .bit-wallet .bit_bind_wrap .btn_wrap .btn_bind { background: url(images/header-bg.png) 0 0/100% 44px !important; border-color: #c8c9e7; color: #fff; }
 
+.promo-apply-content.promo-apply3-content .btn_apply { background: url(images/header-bg.png) 0 0/100% 44px !important; border-color: #c8c9e7; color: #fff; }
+
+body.mine-notice .gb-headtabs .mui-segmented-control { border-color: #c8c9e7; }
+body.mine-notice .gb-headtabs .mui-segmented-control .mui-control-item { border-color: #c8c9e7; }
+body.mine-notice .gb-headtabs .mui-segmented-control .mui-active { background: url(images/header-bg.png) 0 0/100% 44px !important; }
+body.mine-notice .gb-datafilter .btn { background: url(images/header-bg.png) 0 0/100% 44px !important; border-color: #c8c9e7; }
+body.mine-notice .gb-noticetabs .mui-segmented-control .mui-control-item.mui-active { background: url(images/header-bg.png) 0 0/100% 44px !important; }
+
 /*# sourceMappingURL=style.css.map */
