@@ -448,11 +448,6 @@ CACHE MANIFEST
 ../fonts/iconfont.woff
 ../fonts/mui-icon-extra.ttf
 
-#mobile-v2原有的缓存
-#html
-/wallet/deposit/loadBankNotice.html
-
-
 #js
 ../../common/js/jquery/jquery-2.1.1.js
 ../../mobile-v2/js/common/ProgressDialog.js
