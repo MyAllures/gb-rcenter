@@ -46,7 +46,8 @@ define(['common/BaseEditPage','jqFileInput','UE.I18N.' + window.top.language,'cs
              * 重写验证
              */
             $(this.formSelector).on("validate", "input", function (e,message) {
-                if(message && $(this).is(":hidden")){
+                var target = $(this).parents(".content_div");
+                if(message && $(target).css("display")=="none"){
                     var attr = $(this).attr("tt");
                     if(attr){
                         $(".a_"+attr).click();
