@@ -18,8 +18,32 @@ define(['common/BaseListPage'], function (BaseListPage) {
             }
             if ($('#checkTaskStatus').val() == '0') {
                 //2、判断任务状态是否已成功，如果为0则显示检测中?上次未结束是否可以再发起？
-                _this.showChecking();
+                //同时检查GB,OP的任务情况，如果都为进行中，则提示进行中; 状态不一致，提示异常，重新检测
+                window.top.topPage.ajax({
+                    url: root + "/operation/domainCheckData/checkTaskStatus.html",
+                    type: "post",
+                    cache: false,
+                    data:{'taskId':$('#checkTaskId').val()},
+                    success: function (data) {
+                        if(data=='0'){
+                            _this.showChecking();
+                        }else{
+                            window.top.topPage.showErrorMessage("域名检测任务异常，请重新检测");
+                            $('#detection_show').html("<h4 style='color: #0b0b0b'>重新检测</h4>");
+                            $('#taskStateSpan').html("异常");
+                        }
+                    },
+                    error: function (err) {
+                        window.top.topPage.showErrorMessage("域名检测任务失败，请稍后再试.");
+                        $('#detection_show').html("<h4 style='color: #0b0b0b'>检测失败</br>稍后再试</h4>");
+                        $(event.currentTarget).unlock();
+                    }
+                });
+
+
+
             }
+
         },
         detectionall: function (event) {
             window.top.topPage.ajax({
@@ -51,6 +75,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $('#editable').find("tbody").append(htmlStr);
             $('._enter_submit').addClass('disabled').lock();
             $('#detection_show').html("<h4 style='color: #0b0b0b'>检测中</br>请耐心等待</h4>");
+            $('#taskStateSpan').html("检测中");
         }
     });
 
