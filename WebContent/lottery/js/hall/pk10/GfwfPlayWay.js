@@ -76,12 +76,17 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                         newArr.push(arr_new[i]);
                     }
                 }
-                repeatArr = newArr.duplicateNewPk10().uniqueArr();
-                tempArr = newArr.uniqueArr();
-                if (repeatArr.length > 0) {
-                    _this.alertContext = "已删除掉重复号: " + repeatArr.join(" ");
-                    $(".content_jiang .content_tex").val(tempArr.join(","));
+                // repeatArr = newArr.duplicateNewPk10().uniqueArr();
+                // tempArr = newArr.uniqueArr();
+                tempArr = newArr.arrayUnique();
+                // if (repeatArr.length > 0) {
+                //     _this.alertContext = "已删除掉重复号: " + repeatArr.join(" ");
+                //     $(".content_jiang .content_tex").val(tempArr.join(","));
+                // }
+                if (tempArr[1].length > 0) {
+                    _this.alertContext = "已删除掉重复号: " + tempArr[1].join(" ")
                 }
+                $(".content_jiang .content_tex").val(tempArr[0].join(","));
             }
 
         },
