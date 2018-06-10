@@ -433,6 +433,9 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $("[name='search.comp']").val('');
             $("#fundTypeMemory").val('');
             $("#originMemory").val('');
+            //终端重置
+            $("input[name='search.origin']").siblings("button").find("span[prompt='prompt']").text(window.top.message.report_auto['全部']);
+            $("input[name='search.origin']").val('');
             $(e.currentTarget).unlock();
         },
         /**

@@ -116,10 +116,7 @@ function startGame(obj,options){
         if (apiId == "10" || (apiTypeId != "" && (apiTypeId == "1" || apiTypeId == "3" || apiTypeId == "4"))) {
             apiLogin(data);
         } else if (apiTypeId != "" && (apiTypeId == "2" || apiTypeId == "5")) {
-            /*if (os == 'app_ios')
-                gotoPay(root + "/game/getGameByApiId.html?search.apiId=" + apiId + "&search.apiTypeId=" + apiTypeId);
-            else*/
-                goToUrl(root + "/game/getGameByApiId.html?search.apiId=" + apiId + "&search.apiTypeId=" + apiTypeId);
+            goToUrl(root + "/game/getCasinoByApiId.html?search.apiId=" + apiId + "&search.apiTypeId=" + apiTypeId);
         }
     }
 }

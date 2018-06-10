@@ -209,7 +209,7 @@
 .promo-detail-content .gb-imgs > .ct ul li > .ct h5 span { display: inline-block; height: 23px; padding: 0 7px; border-radius: 3px; line-height: 23px; color: #fff; background-color: #1766bb; font-size: 12px; position: relative; z-index: 1; }
 .promo-detail-content .gb-imgs > .ct ul li > .ct p { padding: 5px 0; line-height: 18px; color: #999; font-size: 12px; margin-bottom: 0; }
 .promo-detail-content .gb-form-foot { padding: 10px; }
-.promo-detail-content .gb-form-foot .submit { border: 1px solid #1766bb; background-color: #1766bb; width: 100%; padding: 10px 12px; font-size: 13px; }
+.promo-detail-content .gb-form-foot .submit { width: 100%; padding: 10px 12px; font-size: 13px; }
 .promo-detail-content .gb-form-foot.new_foo { overflow: hidden; margin: 10px -10px 40px; padding: 0; }
 .promo-detail-content .gb-form-foot.new_foo .mui-btn { float: left; width: 50%; border-radius: 0; font-size: 14px; padding: 0; height: 45px; line-height: 45px; }
 .promo-detail-content .gb-form-foot.new_foo .mui-btn.btn-deposit { background: #1766bb; border-color: #1766bb; }
@@ -370,7 +370,7 @@ body.forget-password .diy-list .input input[type="text"].text-right, body.forget
 body.forget-password .diy-list .ext { padding-right: 10px; }
 body.forget-password .diy-list .ext .txt { font-size: 12px; color: #666; }
 body.forget-password .btn-wrap { margin: 40px 10px 10px; }
-body.forget-password .btn-wrap .btn-blo { padding: 0; line-height: 40px; height: 40px; background: #1766bb; color: #fff; border-radius: 5px; font-size: 14px; border-color: #1766bb; }
+body.forget-password .btn-wrap .btn-blo { padding: 0; line-height: 40px; height: 40px; color: #fff; border-radius: 5px; font-size: 14px; }
 body.forget-password .account_input { background: #fff; padding: 30px 0; }
 body.forget-password .account_input input { margin: 0 auto; display: block; width: 250px; height: 50px; line-height: 50px; outline: 0; border-radius: 5px; background: #f2f2f2; border: 1px solid #e2e2e2; padding: 0 10px; font-size: 14px; color: #333; }
 body.forget-password .code-txt { text-align: center; background: #fff; font-size: 14px; color: #333; padding: 30px 0; }
@@ -404,12 +404,13 @@ body.bind-mobile .input .yzm a { white-space: nowrap; line-height: 40px; display
 body.bind-mobile .input i.icon-mobile { width: 37px; display: inline-block; height: 40px; background: url(../images/phone.png) center no-repeat/12px; }
 body.bind-mobile .input i.icon-yzm { width: 45px; display: inline-block; height: 40px; background: url(../images/safe.png) center no-repeat/16px; }
 body.bind-mobile .btn-wrap { margin: 40px 10px 10px; }
-body.bind-mobile .btn-wrap .btn-blo { padding: 0; line-height: 40px; height: 40px; background: #1766bb; color: #fff; border-radius: 5px; font-size: 14px; border-color: #1766bb; }
+body.bind-mobile .btn-wrap .btn-blo { padding: 0; line-height: 40px; height: 40px; color: #fff; border-radius: 5px; font-size: 14px; }
 body.bind-mobile .cue { font-size: 12px; color: #666; padding: 20px 10px 0; line-height: 22px; }
 body.bind-mobile .bind-success { text-align: center; color: #444; line-height: 26px; padding: 25px 0; background: #fff; font-size: 14px; }
 
-.login .mui-content { background: #f2f2f2; }
-.login .user-img { background: url(../images/login-user.png) center no-repeat/100px, linear-gradient(#1767bd, #1767bd); width: 100px; height: 100px; border-radius: 100%; box-shadow: 3px 5px 15px 6px rgba(23, 103, 189, 0.25); margin: 50px auto; }
+.login { position: relative; }
+.login .mui-content { background: #f2f2f2; height: 100vh; }
+.login .user-img { border-radius: 100%; box-shadow: 3px 5px 15px 6px rgba(23, 103, 189, 0.25); margin: 50px auto; }
 .login .login-form { padding: 0 35px; color: #666; }
 .login .login-form .password, .login .login-form .username, .login .login-form .code { position: relative; }
 .login .login-form .password label, .login .login-form .username label, .login .login-form .code label { line-height: 30px; }

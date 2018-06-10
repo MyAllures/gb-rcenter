@@ -42,6 +42,7 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
         /** 重写query方法 */
         query: function(event, option) {
             var _this=this;
+            _this.choosedApi();
             var $form = $(window.top.topPage.getCurrentForm(event));
             if(!$form.valid || $form.valid()) {
                 window.top.topPage.ajax({
@@ -166,7 +167,7 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
                     var text = item.name;
                     var rel = '{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;fBox.selectApi&quot;,confirm:&quot;&quot;,text:&quot;'
                         + text + '&quot;,size:&quot;&quot;,&quot;data&quot;:&quot;' + i + '&quot; }';
-                    $btnApi.append('<a title="' + text + '" class="btn btn-outline btn-filter btn_api_' + i + ' all" data-rel="' + rel + '" href="javascript:void(0);">' + text + '</a> ');
+                    $btnApi.append('<a name="' + text + '" title="' + text + '" class="btn btn-outline btn-filter btn_api_' + i + ' all" data-rel="' + rel + '" href="javascript:void(0);">' + text + '</a> ');
                     $hide.append('<input type="checkbox" name="search.apiIds" value="' + i + '" title="' + text + '" />');
 
                     $boxApi.append('<button onclick="page.fBox.selectPopApi(this, ' + i + ')" data-id="' + i + '" data-text="api' + i + '" class="btn btn-outline btn-filter btn-xs btn_api_'+ i +' all">' + text + '</button> ');
@@ -175,7 +176,7 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
                     var text = item.name;
                     var rel = '{&quot;precall&quot;:&quot;&quot;,&quot;callback&quot;:&quot;&quot;,post:&quot;&quot;,opType:&quot;function&quot;,dataType:&quot;&quot;,target:&quot;fBox.selectApiType&quot;,confirm:&quot;&quot;,text:&quot;'
                         + text + '&quot;,size:&quot;&quot;,&quot;data&quot;:&quot;' + i + '&quot; }';
-                    $btnApiType.append('<a title="' + text + '" class="btn btn-outline btn-filter btn_api_type_' + i + ' all" data-rel="' + rel + '" href="javascript:void(0);">' + text + '</a> ');
+                    $btnApiType.append('<a name="' + text + '" title="' + text + '" class="btn btn-outline btn-filter btn_api_type_' + i + ' all" data-rel="' + rel + '" href="javascript:void(0);">' + text + '</a> ');
                     $hide.append('<input type="checkbox" name="search.apiTypeIds" value="' + i + '" title="' + text + '" />');
 
                     $boxApiType.append('<button onclick="page.fBox.selectPopApiType(this, ' + i + ')" data-text="apiType' + i + '" class="btn btn-outline btn-filter btn-xs btn_api_type_' + i + ' all">' + text + '</button> ');
@@ -196,13 +197,13 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
                             apiTypeId = 2;
                         } else if (gameType =='Sportsbook') {
                             apiTypeId = 3;
-                        } else if (gameType =='Lottery'){
+                        } else if (gameType =='Lottery'|| gameType == 'SixLottery') {
                             apiTypeId = 4;
                         }
                         var text = ktem.name;
                         htm += '<label class="fwn m-r-sm">' +
                             '<input type="checkbox" name="box.gameTypes" onclick="page.fBox.clickPopGameType(this)" class="i-checks" data-id="' + idx + '" data-text="'
-                            + text + '" value="' + text + '"' + 'title="' + ktem.apiName + '-' + text + '" data-title="' + ktem.apiName + '" data-gameType="'
+                            + text + '" data-code="' + gameType + '" value="' + text + '" title="' + ktem.apiName + '-' + text + '" data-title="' + ktem.apiName + '" data-gameType="'
                             + apiTypeId + '">' + text + '</label>';
                         if (ktem.idx==0) {
                             $.each(data.apiTypes, function(m, mtem) {
@@ -304,6 +305,21 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
             $("input.role").attr("name","search.playerName");
             $('[name=subSysCode]').val($('[name="role.player"]').val());
             $("a.btn-search-css").click();
+        },
+        choosedApi:function () {
+            if ($('span.choose').html()!=window.top.message.report['operate.list.all']){
+                $('span.choose  a', this.formSelector).each(function (index,e) {
+                    var text = $(this).html();
+                    var data = $(this).attr('data');
+                    var dataText = $(this).attr('data-text');
+                    $('[name="'+text+'"]').removeClass('btn-outline');
+                    if (dataText){
+                        $('[name="search.apiIds"][value=' + data + ']').prop('checked', true);
+                    }else {
+                        $('[name="search.apiTypeIds"][value=' + data + ']').prop('checked', true);
+                    }
+                });
+            }
         }
     });
 });

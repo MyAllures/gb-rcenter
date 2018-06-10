@@ -94,6 +94,8 @@ function goApiGame(obj, options) {
             } else if ((isAutoPay == 'true')) {
                 //判断是否免转，如果免转,则直接登陆游戏，不跳到游戏中转页面
                 autoLoginAndTransfer();
+            } else if (gameCode) {
+                fishGameLogin(obj, options);
             } else {
                 goToUrl(root + "/api/detail.html?apiId=" + apiId + "&apiTypeId=" + apiTypeId);
             }
