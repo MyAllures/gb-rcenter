@@ -23,12 +23,14 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     url: root + "/operation/domainCheckData/checkTaskStatus.html",
                     type: "post",
                     cache: false,
+                    data:{'taskId':$('#checkTaskId').val()},
                     success: function (data) {
                         if(data=='0'){
                             _this.showChecking();
                         }else{
-                            window.top.topPage.showErrorMessage("域名检测任务异常，请重新检测，或者联系......");
-                            $('#detection_show').html("<h4 style='color: #0b0b0b'>域名检测任务正在进行中</br>请稍等......</h4>");
+                            window.top.topPage.showErrorMessage("域名检测任务异常，请重新检测");
+                            $('#detection_show').html("<h4 style='color: #0b0b0b'>重新检测</h4>");
+                            $('#taskStateSpan').html("异常");
                         }
                     },
                     error: function (err) {
@@ -73,6 +75,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $('#editable').find("tbody").append(htmlStr);
             $('._enter_submit').addClass('disabled').lock();
             $('#detection_show').html("<h4 style='color: #0b0b0b'>检测中</br>请耐心等待</h4>");
+            $('#taskStateSpan').html("检测中");
         }
     });
 
