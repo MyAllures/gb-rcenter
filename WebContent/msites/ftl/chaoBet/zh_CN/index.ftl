@@ -223,6 +223,7 @@
 </main>
 <#include "footer.ftl">
 <#include "../../commonPage/commonFloat/indexAds.ftl">
+<#include "../../commonPage/commonFloat/gameAds.ftl">
 <#include "script.ftl">
 <script src="${data.configInfo.sitePath}/js/typed.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="${data.configInfo.ftlRootPath}commonPage/js/countUp/countUp.js"></script>
