@@ -74,7 +74,7 @@ define(['common/BaseListPage'], function (BaseListPage) {
                 "</td></tr>";
             $('#editable').find("tbody").append(htmlStr);
             $('._enter_submit').addClass('disabled').lock();
-            $('#detection_show').html("<h4 style='color: #0b0b0b'>检测中</br>请耐心等待</h4>");
+            $('#detection_show').html("<h4 style='color: #0b0b0b'>检测中</h4>");
             $('#taskStateSpan').html("检测中");
         }
     });
