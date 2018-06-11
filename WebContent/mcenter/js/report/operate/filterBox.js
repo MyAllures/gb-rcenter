@@ -49,8 +49,9 @@ define(['common/BaseListPage', 'bootstrap-dialog'], function(BaseListPage, Boots
         /** 快速筛选-api选择 */
         selectApi: function(e, o) {
             var $choose = $('span.choose');
-            this.setSelTip($choose.text());
-
+            if (e.currentTarget.className.indexOf('btn-outline')>-1) {
+                this.setSelTip($choose.text());
+            }
             var apiId = o.data;
             if ($('[name="selAll"]').val()==0 && !($('[name="search.apiIds"][value="' + apiId + '"]').prop('checked'))) {
                 $(e.currentTarget).removeClass('btn-outline');
@@ -75,8 +76,9 @@ define(['common/BaseListPage', 'bootstrap-dialog'], function(BaseListPage, Boots
         /** 快速筛选-API类型选择 */
         selectApiType: function (e, o) {
             var $choose = $('span.choose');
-            this.setSelTip($choose.text());
-
+            if (e.currentTarget.className.indexOf('btn-outline')>-1) {
+                this.setSelTip($choose.text());
+            }
             this.setAll(0);
             var apiTypeId = o.data;
             if ($('[name="selAll"]').val()==0 && !($('[name="search.apiTypeIds"][value="' + apiTypeId + '"]').prop('checked'))) {
