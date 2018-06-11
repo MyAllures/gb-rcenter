@@ -49,8 +49,9 @@ define(['common/BaseListPage', 'bootstrap-dialog'], function(BaseListPage, Boots
         /** 快速筛选-api选择 */
         selectApi: function(e, o) {
             var $choose = $('span.choose');
-            this.setSelTip($choose.text());
-
+            if (e.currentTarget.className.indexOf('btn-outline')>-1) {
+                this.setSelTip($choose.text());
+            }
             var apiId = o.data;
             if ($('[name="selAll"]').val()==0 && !($('[name="search.apiIds"][value="' + apiId + '"]').prop('checked'))) {
                 $(e.currentTarget).removeClass('btn-outline');
@@ -75,8 +76,9 @@ define(['common/BaseListPage', 'bootstrap-dialog'], function(BaseListPage, Boots
         /** 快速筛选-API类型选择 */
         selectApiType: function (e, o) {
             var $choose = $('span.choose');
-            this.setSelTip($choose.text());
-
+            if (e.currentTarget.className.indexOf('btn-outline')>-1) {
+                this.setSelTip($choose.text());
+            }
             this.setAll(0);
             var apiTypeId = o.data;
             if ($('[name="selAll"]').val()==0 && !($('[name="search.apiTypeIds"][value="' + apiTypeId + '"]').prop('checked'))) {
@@ -123,14 +125,22 @@ define(['common/BaseListPage', 'bootstrap-dialog'], function(BaseListPage, Boots
                 buttons: [{
                     label: window.top.message.common['OK'],
                     cssClass: 'btn btn-filter',
-                    action: function(dialogItself){
+                    action: function(dialogItself) {
+                        var $searchGameType = $('[name="search.apiTypeList"]');
+                        var $gameTypeList = $(".apiTypeListHide");
+                            $gameTypeList.empty();
+                        var isFirst = true;
+                        var gameTypeStr = "";
+                        var lastApiId = "";
                         $("td[name='api_td']", '[role="dialog"]').each(function () {
-                            $(this).next().children().children('input[type=checkbox]').each(function (index, ele){
+                            $(this).next().children().children('input[type=checkbox]').each(function (index, ele) {
                                 if ($(ele).attr('name') == 'box.apiTypeIds') return;
                                 var $choose = $('span.choose');
                                 var apiId = $(ele).attr('data-id');
+                                lastApiId = apiId;
                                 var apiTypeId = $(ele).attr('data-id');
                                 var gameType = $(ele).val();
+                                var gTypeCode = $(ele).attr('data-code').trim();
                                 var text = $(ele).attr('data-title');
                                 var $apiId = $('[name="search.apiIds"][value=' + apiId + ']');
                                 var $apiTypeId = $('[name="search.apiTypeIds"][value=' + apiId + ']');
@@ -157,6 +167,10 @@ define(['common/BaseListPage', 'bootstrap-dialog'], function(BaseListPage, Boots
                                 }
                                 if (ele.checked) {
                                     if ($('[name="box.apiIds"][data-id=' + apiId + ']').prop('checked')) {
+                                        $('[name="box.gameTypes"][data-id=' + apiId + ']').each(function (i, g) {
+                                            var gtCode = $(g).attr('data-code').trim();
+                                            gameTypeStr = (gameTypeStr === "") ? '"' + gtCode + '"' : gameTypeStr + ',"' + gtCode + '"';
+                                        });
                                         if (!$apiId.prop('checked')) {
                                             $apiId.prop('checked', true);
                                             $('a.btn_api_' + apiId).removeClass('btn-outline');
@@ -166,16 +180,11 @@ define(['common/BaseListPage', 'bootstrap-dialog'], function(BaseListPage, Boots
                                                 $('span.choose a[data-id=' + apiId + '].gtype').remove();
                                                 $('input[data-id=' + apiId + '].gtype').prop('checked', false);
                                             }
-                                            return false;
                                         }
-                                    } else if ($('[name="box.apiTypeIds"][data-id=' + apiTypeId + ']').prop('checked')) {
-                                        if (!$apiTypeId.prop('checked')) {
-                                            $apiTypeId.prop('checked', true);
-                                            $('a.btn_api_type_' + apiTypeId).removeClass('btn-outline');
-                                            rel = rel + ',target:&quot;fBox.cancelApiType&quot;,text:&quot;' + text + '&quot;,size:&quot;&quot;,&quot;data&quot;:&quot;' + apiTypeId + '&quot; }';
-                                            $choose.append('<a class="btn btn-filter btn-outline" data=' + apiTypeId + ' data-text="api_type_' + apiTypeId + '" data-rel="' + rel + '">' + text + '</a> ');
-                                        }
+                                        return false;
+
                                     } else if ($boxAll.val() == 0) {
+                                        gameTypeStr = (gameTypeStr === "") ? '"' + gTypeCode + '"' : gameTypeStr + ',"' + gTypeCode + '"';
                                         text = $(ele).attr('title');
                                         if (!($hideGt.prop('checked'))) {
                                             rel = rel + ',target:&quot;fBox.cancelGameType&quot;,text:&quot;' + text + '&quot;,size:&quot;&quot;,&quot;data&quot;:&quot;' + gameType + '&quot; }';
@@ -209,14 +218,32 @@ define(['common/BaseListPage', 'bootstrap-dialog'], function(BaseListPage, Boots
                                     }
                                 }
                             });
+
+                            // 将用户选择的api和gameType条件封装成JSON格式，以便后面跳转到投注记录时作为参数传递
+                            if (gameTypeStr !== "") {
+                                if (isFirst) {
+                                    isFirst = false;
+                                    $gameTypeList.append('[{"apiId":"' + lastApiId + '","gameType":[' + gameTypeStr + ']}');
+                                } else {
+                                    $gameTypeList.append(',{"apiId":"' + lastApiId + '","gameType":[' + gameTypeStr + ']}');
+                                }
+                                gameTypeStr = "";
+                            }
                         });
+
+                        // 将用户选择的api和gameType条件封装成JSON格式，以便后面跳转到投注记录时作为参数传递
+                        if ($gameTypeList.html()!=""){
+                            $gameTypeList.append(']');
+                        }
+                        $searchGameType.val(encodeURI($gameTypeList.html()));
+
                         dialogItself.close();
                         $this.setSelTip($('span.choose').text());
                     }
                 }, {
                     label: window.top.message.common['cancel'],
                     cssClass: 'btn btn-outline btn-filter',
-                    action: function(dialogItself){
+                    action: function (dialogItself) {
                         dialogItself.close();
                     }
                 }]

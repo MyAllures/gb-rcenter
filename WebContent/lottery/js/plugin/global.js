@@ -348,6 +348,40 @@ Array.prototype.duplicateNewa = function () {
     }
     return tempArr;
 };
+//删除无序数组的重复值，并返回删除的重复数组和新数组
+Array.prototype.sortArrayUnique = function () {
+    var res = [];
+    var json = {};
+    var tempAr = [];
+    for(var i = 0; i < this.length; i++){
+        this[i].split('').sort()
+        this[i] = this[i].split('').sort().join('')
+    }
+    for(var i = 0; i < this.length; i++){
+        if(!json[this[i]]){
+            tempAr.push(this[i]);
+            json[this[i]] = 1;
+        } else {
+            res.push(this[i]);
+        }
+    }
+    return [tempAr, res];
+}
+// 删除有序数组的重复值，并返回删除的重复数组和新数组
+Array.prototype.arrayUnique = function () {
+    var res = [];
+    var json = {};
+    var tempAr = [];
+    for(var i = 0; i < this.length; i++){
+        if(!json[this[i]]){
+            tempAr.push(this[i]);
+            json[this[i]] = 1;
+        } else {
+            res.push(this[i]);
+        }
+    }
+    return [tempAr, res];
+}
 /*function containtArr(newArr,item){
     for(var j=0;j<newArr.length;j++){
         var a=[];

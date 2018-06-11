@@ -317,7 +317,7 @@ height: 44px;
     margin-top: 5px;
                     h5{    font-size: 14px;    font-weight: normal;    color: #8f8f94;    position: relative;    text-align: center;
                         &>i{    display: block;    border-bottom: 1px dashed #e2e2e2;    position: absolute;    top: 50%;    left: 0;    right: 0;}
-                        span{    display: inline-block;    height: 23px;    padding: 0 7px;    border-radius: 3px;    line-height: 23px;   color: #fff;    background-color: #151515;    font-size: 12px;    position: relative;    z-index: 1;}
+                        span{    display: inline-block;    height: 23px;    padding: 0 7px;    border-radius: 3px;    line-height: 23px;   color: #fff;    background-color: #1766bb;    font-size: 12px;    position: relative;    z-index: 1;}
                     }
                     p{    padding: 5px 0;    line-height: 18px;   color: #999;    font-size: 12px;    margin-bottom: 0;}
                 }
@@ -325,7 +325,7 @@ height: 44px;
         }
     }
     .gb-form-foot {  padding: 10px;
-        .submit {    border: 1px solid #1766bb;    background-color: #1766bb;    width: 100%;    padding: 10px 12px;    font-size: 13px;}
+        .submit {    width: 100%;    padding: 10px 12px;    font-size: 13px;}
         &.new_foo{
             overflow: hidden;margin: 10px -10px 40px;padding: 0;
          .mui-btn{float: left;width: 50%;    border-radius: 0; font-size: 14px;padding: 0;    height: 45px;    line-height: 45px;
@@ -466,7 +466,7 @@ height: 44px;
     }
     .top_title{padding: 10px;background: #fff;margin-bottom: 10px;
         .sub_tit{font-size: 10px;color: #999;}
-        .tit{font-size: 15px;color: #151515;}
+        .tit{font-size: 15px;color: #317ec2;}
     }
     .promo_con_list{
         font-size: 14px;
@@ -488,7 +488,7 @@ height: 44px;
         .icon-success{display: block;width: (139px/2);height: (139px/2);margin:0 auto 10px;background: url(images/promo/icon-success.png) no-repeat center /100%;}
         .suc_tip{font-size: 15px;color: #317ec2;margin-bottom: 15px;}
         p{font-size: 12px;color: #666;margin-bottom: 0;}
-        .btn_cust_serv{margin-top: 50px; margin-bottom: 0;  padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #151515;    border-color: #151515;}
+        .btn_cust_serv{margin-top: 50px; margin-bottom: 0;  padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #317ec2;    border-color: #317ec2;}
         .fai_tip{font-size: 15px;color: #333;line-height: 22px;}
         .icon-failure{display: block;width: (114px/2);height: (131px/2);margin: 0 auto 10px;background: url(images/promo/icon-failure.png) no-repeat center /100%;}
     }
@@ -506,13 +506,13 @@ height: 44px;
                 }
             }
         }
-        .btn_cust_serv{position: fixed;z-index: 10; bottom: 0;    left: 0;    right: 0;border-radius: 0;    margin: 0;padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #151515;    border-color: #151515;}
+        .btn_cust_serv{position: fixed;z-index: 10; bottom: 0;    left: 0;    right: 0;border-radius: 0;    margin: 0;padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #317ec2;    border-color: #317ec2;}
     }
     // 申请活动3的页面样式
     &.promo-apply3-content{
         .promo_con_list{margin-bottom: 10px;}
         .pro_mone{padding: 10px;overflow: hidden;background: #fff;font-size: 14px;color: #333;}
-        .btn_apply{margin: 32px 10px 12px;  width: auto;padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #151515;    border-color: #151515;
+        .btn_apply{margin: 32px 10px 12px;  width: auto;padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #317ec2;    border-color: #317ec2;
             &.disabled{background: #e2e2e2;color: #999;border-color: #e2e2e2;}
         }
         .color-green{color: #1f9316;}
@@ -688,7 +688,7 @@ body.forget-password{
         }
     }
     .btn-wrap{margin: 40px 10px 10px;
-        .btn-blo{padding: 0;line-height: 40px;height: 40px;background: #1766bb;color: #fff;border-radius: 5px;font-size: 14px;border-color: #1766bb;}
+        .btn-blo{padding: 0;line-height: 40px;height: 40px;color: #fff;border-radius: 5px;font-size: 14px;}
     }
     .account_input{
         background: #fff;padding: 30px 0;
@@ -748,7 +748,7 @@ body.bind-mobile{font-size:14px;
         i.icon-yzm{width:45px;display:inline-block;height:40px;background:url(../images/safe.png) center no-repeat/ 16px;}
     }
     .btn-wrap{margin: 40px 10px 10px;
-        .btn-blo{padding: 0;line-height: 40px;height: 40px;background: #1766bb;color: #fff;border-radius: 5px;font-size: 14px;border-color: #1766bb;}
+        .btn-blo{padding: 0;line-height: 40px;height: 40px;color: #fff;border-radius: 5px;font-size: 14px;}
     }
     .cue{font-size:12px;color:#666;padding:20px 10px 0;line-height: 22px;}
     
@@ -761,8 +761,7 @@ body.bind-mobile{font-size:14px;
 //登录页面：
 .login{position:relative;
     .mui-content{background: #f2f2f2;height: 100vh;}
-    .user-img{background:url(../images/login-user.png) center no-repeat/100px,linear-gradient(#1767bd,#1767bd);width:100px;height:100px;
-        border-radius: 100%; box-shadow:  3px 5px 15px 6px rgba(#1767bd,0.25); margin: 50px auto;}
+    .user-img{border-radius: 100%; box-shadow:  3px 5px 15px 6px rgba(#1767bd,0.25); margin: 50px auto;}
     .login-form{padding:0 35px;color:#666;
         .password,.username,.code{position:relative;
             label{line-height:30px;}
@@ -784,7 +783,7 @@ body.bind-mobile{font-size:14px;
             }
         }
     }
-    
+   
 }
 // 存款页面提示
 .deposit_tips{    color: #a52a2a;    text-align: center;    background: #ffd940;    font-size: 12px;    line-height: 24px;}

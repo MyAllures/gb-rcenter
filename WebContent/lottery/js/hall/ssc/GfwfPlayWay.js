@@ -292,16 +292,18 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
                 }
                 var playcode = _this.getPlayCode();
                 if (playcode == 'ssc_sanxing_zuxuan' || playcode == 'ssc_erxing_zuxuan') {//一些需要无序去重的玩法
-                    repeatArr = newArr.duplicateNewa();
-                    tempArr = newArr.uniqueArra();
+                    // repeatArr = newArr.duplicateNewa();
+                    // tempArr = newArr.uniqueArra();
+                    tempArr = newArr.sortArrayUnique();
                 } else {
-                    repeatArr = newArr.duplicateNew();
-                    tempArr = newArr.uniqueArrByzx();
+                    // repeatArr = newArr.duplicateNew();
+                    // tempArr = newArr.uniqueArrByzx();
+                    tempArr = newArr.arrayUnique();
                 }
-                if (repeatArr.length > 0) {
-                    _this.alertContext = "已删除掉重复号: " + repeatArr.join(" ");
-                    $(".content_jiang .content_tex").val(tempArr.join(" "));
+                if (tempArr[1].length > 0) {
+                    _this.alertContext = "已删除掉重复号: " + tempArr[1].join(" ")
                 }
+                $(".content_jiang .content_tex").val(tempArr[0].join(" "));
             }
         },
 
