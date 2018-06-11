@@ -230,7 +230,9 @@ define(['common/BaseListPage', 'bootstrap-dialog'], function(BaseListPage, Boots
                         });
 
                         // 将用户选择的api和gameType条件封装成JSON格式，以便后面跳转到投注记录时作为参数传递
-                        $gameTypeList.append(']');
+                        if ($gameTypeList.html()!=""){
+                            $gameTypeList.append(']');
+                        }
                         $searchGameType.val(encodeURI($gameTypeList.html()));
 
                         dialogItself.close();
