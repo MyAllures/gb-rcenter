@@ -111,7 +111,7 @@ define([], function () {
             }
             //增加守护线程,防止异常终止
             window.setInterval(function () {
-                if (new Date().getTime() - _this.last_active_time > 80000) {
+                if (new Date().getTime() - _this.last_active_time > 120000) {
                     if (this.cid != undefined && this.cid != null) {
                         _this.userParam[_this.CONNECTIONID_KEY] = this.cid;
                     }
@@ -444,17 +444,19 @@ define([], function () {
 
 
         },
-        onWebsocketClose: function () {
+        onWebsocketClose: function (event) {
             console.log("socket close");
             var outThis = this.outThis;
-            setTimeout(function () {
-                outThis.connection();
-            }, 2000);
+            if (event.code != 1006) {
+                setTimeout(function () {
+                    outThis.connection();
+                }, 2000);
+            }
         },
-        onWebsocketError: function () {
+        onWebsocketError: function (event) {
             console.log("socket error");
         },
-        onWebsocketBeforeUnload: function () {
+        onWebsocketBeforeUnload: function (event) {
             console.log("socket before unload");
         }
 
