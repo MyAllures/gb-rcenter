@@ -147,9 +147,10 @@ MSiteComet.prototype = {
 
         //增加守护线程,防止异常终止
         window.setInterval(function () {
-            var intervalTime = 80000;
-            if (sessionStorage.is_login == "false" || _this.websocket == null)
-                intervalTime = 8000;
+            var intervalTime = 120000;
+            if (sessionStorage.is_login == "false" || _this.websocket == null) {
+                return;
+            }
 
             if (new Date().getTime() - _this.last_active_time > intervalTime) {
                 if (this.cid != undefined && this.cid != null) {
@@ -463,7 +464,7 @@ MSiteComet.prototype = {
             }
         });
     },
-    onWebsocketOpen: function () {
+    onWebsocketOpen: function (event) {
         // current postion "this" = websocket
         var outThis = this.outThis;
         if (outThis.successCallBack) {
@@ -498,17 +499,19 @@ MSiteComet.prototype = {
 
 
     },
-    onWebsocketClose: function () {
+    onWebsocketClose: function (event) {
         console.log("socket close");
         var outThis = this.outThis;
-        setTimeout(function () {
-            outThis.connection();
-        }, 2000);
+        if (event.code != 1006) {
+            setTimeout(function () {
+                outThis.connection();
+            }, 2000);
+        }
     },
-    onWebsocketError: function () {
+    onWebsocketError: function (event) {
         console.log("socket error");
     },
-    onWebsocketBeforeUnload: function () {
+    onWebsocketBeforeUnload: function (event) {
         console.log("socket before unload");
     }
 
