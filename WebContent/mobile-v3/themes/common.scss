@@ -1430,9 +1430,9 @@ body.deposit{
             overflow: hidden;padding: 0 10px;margin-bottom: -20px;
             margin-left: -6px;margin-right: -6px;
             .bank_list_i_w{float: left;width: 50%;padding: 0 6px;font-size: 14px;color: #333;margin-bottom: 20px;
-                .bank_list_i{background: #f2f2f2;height: 35px;line-height: 35px;border-radius: 2px;padding-left: 10px;border: 1px solid #f2f2f2;
+                .bank_list_i{background: #f2f2f2;height: 35px;line-height: 35px;border-radius: 2px;padding-left: 2%;border: 1px solid #f2f2f2;
                     &.cur{border-color: #1766bb;}
-                    .bank_n{background: url(images/pay_bank_b.png) no-repeat;    background-size: 25px;    display: inline-block;    width: 26px;    height: 20px;    vertical-align: top;    margin-top: 8px;margin-right: 8;
+                    .bank_n{background: url(images/pay_bank_b.png) no-repeat;    background-size: 25px;    display: inline-block;    width: 18px;    height: 20px;    vertical-align: top;    margin-top: 8px;margin-right: 8;
                         &.unionpay{background-position: 0 -3px;} 
                         &.onlinepay{background-position: 0 -3px;}
                         &.wechatpay{background-position: 0px -26px;}
