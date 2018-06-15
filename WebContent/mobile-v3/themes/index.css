@@ -60,6 +60,9 @@
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.api-icon-4-2 { background-image: url(images/icon-kg.png); }
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.api-icon-4-10 { background-image: url(images/icon-bb.png); }
 .api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.api-icon-4-41 { background-image: url(images/icon-vr.png); }
+.api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.api-icon-5-34 { background-image: url(images/icon-ky.png); }
+.api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.api-icon-5-42 { background-image: url(images/icon-vg.png); }
+.api-grid ul[data-list="lottery"] .lottery-nav li .mui-tab-item.api-icon-5-43 { background-image: url(images/icon-qly.png); }
 
 .api-grid .lottery-content li { font-size: 12px; }
 .api-grid .lottery-content li .lottery-img { width: 70px; height: 70px; display: inline-block; }
