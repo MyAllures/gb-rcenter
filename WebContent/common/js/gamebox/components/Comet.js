@@ -462,7 +462,6 @@ define([], function () {
             }
         },
         onWebsocketError: function (event) {
-        onWebsocketError: function () {
             this.isConnect = false;
             console.log("socket error");
         },
