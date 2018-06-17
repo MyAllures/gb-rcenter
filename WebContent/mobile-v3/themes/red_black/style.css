@@ -70,10 +70,10 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 
 .login-content { background: #f2f2f2; }
 
-.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block.btn-ok { background: #1766bb; border: 1px solid #1766bb; color: #fff; }
-.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block.btn-ok:active { background: #114d8e; }
-.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block.btn-cancel { background: #f2f2f2; border: 1px solid #1766bb; color: #1766bb; }
-.type-content .mui-control-content .mui-input-group .mui-button-row .mui-btn-block.btn-cancel:active { background: #d9d9d9; }
+.login .user-img { background: url(../../images/login-user.png) center no-repeat/100px, linear-gradient(#C82721, #C82721); width: 100px; height: 100px; border-radius: 100%; box-shadow: 3px 5px 15px 6px rgba(200, 39, 33, 0.25); margin: 50px auto; }
+.login .login-form a.btn { display: block; text-align: center; height: 40px; line-height: 40px; border-radius: 2px; }
+.login .login-form .btn-login { background: #C82721; color: #fff; margin-bottom: 15px; }
+.login .login-form .btn-regist { color: #C82721; border: 1px solid #C82721; }
 
 /* mine page */
 .mine-content { background: #efefef; }
@@ -157,5 +157,45 @@ header.mui-bar-nav .mui-action-back { color: #fff; }
 .load-body .mui-progressbar.mui-progressbar-infinite:before { background: #C82721; }
 
 .deposit_2 .btn_wrap .btn_submit { background: #c82721; border-color: #c82721; }
+
+body.withdraw .gb-form-foot .submit { border: 1px solid #C82721; background-color: #C82721 !important; }
+body.withdraw .account_tab .mui-segmented-control { border: 1px solid #C82721; }
+body.withdraw .account_tab .mui-segmented-control .mui-control-item { border-color: #C82721 !important; border-left: 1px solid #C82721 !important; color: #C82721; }
+body.withdraw .account_tab .mui-segmented-control .mui-active { background-color: #C82721 !important; color: #fff !important; }
+
+.mui-btn-blue, .mui-btn-primary, input[type=submit] { color: #fff; border: 1px solid #C82721; background-color: #C82721; }
+
+.mine-bet-record-body .gb-datafilter .btn-ss { background: #C82721; border-color: #C82721; }
+
+.mui-bar-nav .mui-pull-left { color: #fff; }
+.mui-bar-nav .mui-pull-left:before { color: #fff; }
+
+.mine-cash-record-body .gb-datafilter .btn-kx { background: #C82721; border-color: #C82721; }
+
+.promo-detail-content .gb-imgs > .ct ul li > .ct h5 span { background-color: #C82721; }
+
+body.exchange-account .gb-headtabs .mui-segmented-control { border-color: #C82721; }
+body.exchange-account .gb-headtabs .mui-segmented-control .mui-control-item { border-color: #C82721; border-left: #C82721; }
+body.exchange-account .gb-headtabs .mui-segmented-control .mui-active { background: #C82721 !important; }
+
+body.exchange-bitcoin .tit { background-color: #C82721; }
+
+body.exchange-wechat .tit { background-color: #C82721; }
+
+.promo-apply-content .promo_status .btn_cust_serv { background: #C82721; border-color: #C82721; }
+
+.btn-wrap .btn-blo { background: #C82721; border-color: #C82721; }
+
+.cod-btn-wrap .mui-btn { background: #C82721; border-color: #C82721; }
+
+.bit-wallet .bit_bind_wrap .btn_wrap .btn_bind { background: #C82721; border-color: #C82721; color: #fff; }
+
+.promo-apply-content.promo-apply3-content .btn_apply { background: #C82721; border-color: #C82721; color: #fff; }
+
+body.mine-notice .gb-headtabs .mui-segmented-control { border-color: #C82721; }
+body.mine-notice .gb-headtabs .mui-segmented-control .mui-control-item { border-color: #C82721; }
+body.mine-notice .gb-headtabs .mui-segmented-control .mui-active { background: #C82721 !important; }
+body.mine-notice .gb-datafilter .btn { background-color: #C82721; border-color: #C82721; }
+body.mine-notice .gb-noticetabs .mui-segmented-control .mui-control-item.mui-active { background-color: #C82721; }
 
 /*# sourceMappingURL=style.css.map */

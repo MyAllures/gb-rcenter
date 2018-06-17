@@ -13,9 +13,9 @@ function download(obj, options) {
         return;
     }
     complete(obj);
-    //谷歌浏览器不支持新开跳转打开下载
+    //谷歌浏览器不支持新开跳转打开下载 、safari在设置为弹窗阻止时也是无法新开下载
     var ua = navigator.userAgent.toLowerCase();
-    if (ua.indexOf('chrome') !== -1) {
+    if (ua.indexOf('chrome') >= 0 || ua.indexOf("safari") >= 0) {
         goToUrl(url);
         return;
     }

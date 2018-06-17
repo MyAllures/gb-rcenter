@@ -565,7 +565,7 @@ function login(targetUrl) {
         var url = '/login/commonLogin.html?v=' + rcVersion;
         if (targetUrl && targetUrl != '/') {
             //登录成功后跳转页面
-            sessionStorage.setItem("loginTargetUrl", targetUrl);
+            sessionStorage.setItem(LOGIN_TARGET_URL, targetUrl);
         }
         openWindow(url);
     }
@@ -635,14 +635,14 @@ function setCookie(name, value, time) {
 
 function getSecond(str) {
     if (!str || str == 0) return 0;
-    var str1=str.substring(1,str.length)*1;
-    var str2=str.substring(0,1);
-    if (str2=="s")
-        return str1*1000;
-    else if (str2=="h")
-        return str1*60*60*1000;
-    else if (str2=="d")
-        return str1*24*60*60*1000;
+    var str1 = str.substring(1, str.length) * 1;
+    var str2 = str.substring(0, 1);
+    if (str2 == "s")
+        return str1 * 1000;
+    else if (str2 == "h")
+        return str1 * 60 * 60 * 1000;
+    else if (str2 == "d")
+        return str1 * 24 * 60 * 60 * 1000;
 }
 
 
@@ -704,4 +704,18 @@ function goToHomePageOnly() {
     sessionStorage.removeItem(SESSION_API_OBJ);
     sessionStorage.removeItem(LOGIN_TARGET_URL);
     goToHome(root + "/mainIndex.html");
+}
+
+/**
+ * 获取当前url
+ * @returns {string}
+ */
+function getCurrentUrl() {
+    var targetUrl = window.location.href;
+    var index = targetUrl.indexOf("&v=");
+    if (index <= 0) {
+        index = targetUrl.indexOf("?v=");
+    }
+    targetUrl = targetUrl.substr(0, index);
+    return targetUrl;
 }

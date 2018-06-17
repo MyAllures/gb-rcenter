@@ -10,7 +10,7 @@ define(['site/fund/recharge/BaseOnlinePay'], function (BaseOnlinePay) {
          * 调用
          */
         init: function () {
-            this.formSelector = "form/fund/recharge/OnlinePay[name=onlineForm]";
+            this.formSelector = "form[name=onlineForm]";
             this._super(this.formSelector);
         },
         /**

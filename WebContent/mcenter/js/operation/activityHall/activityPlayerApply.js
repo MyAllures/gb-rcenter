@@ -92,7 +92,17 @@ define(['common/BaseListPage','gb/share/ListFiltersPage'], function (BaseListPag
          * @param e
          */
         failDialog: function (e,opt) {
-            var ids = this.getSelectIdsArray(e).join(",");
+            var ids = {};
+            var activityId = opt.applyId;//页面控件自定义属性，用户存放单个审核的申请id，点击单个审核按钮时才会有自定义的申请id
+            //单个审核
+            if (activityId){
+                ids = activityId;
+            }
+            //批量审核
+            else{
+                ids = this.getSelectIdsArray(e).join(",");
+            }
+
             if (ids != "") {
                 var activityName = $('.textVal').text();
                 var activityTypeCode = $('.h3').attr("data-code");

@@ -251,6 +251,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                                     }
                                     var sales = data.sales;
                                     if (sales && sales.length > 0) {
+                                        $("div#applysale").show();
                                         var len = sales.length;
                                         var html = $("#rechargeSale").render({
                                             sales: sales,
@@ -263,6 +264,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                                     } else {
                                         $("div#applysale").find("input[type=radio]").attr("disabled", true);
                                         $("input[name=activityId]:eq('')").prop("checked", 'checked');
+                                        $("div#applysale").hide();
                                     }
                                     $("._submit").removeClass("disabled");
                                 },

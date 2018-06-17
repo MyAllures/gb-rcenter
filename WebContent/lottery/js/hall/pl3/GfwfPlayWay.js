@@ -54,6 +54,36 @@ define(['site/hall/common/PlayWay'], function (PlayWay) {
             }
         },
 
+        //删除重复号码
+        delRrepet: function() {
+            var _this = this;
+            var textStr = $("div.content_jiang").find(".content_tex").val();
+            if (typeof (textStr)!= "undefined") {
+                var newArr = [], repeatArr = [], tempArr = [];
+                textStr = $.trim(textStr.replace(/[^0-9]/g, ','));
+                var arr_new = textStr.split(",");
+                for (var i = 0; i < arr_new.length; i++) {
+                    if (arr_new[i].toString().length > 0) {
+                        newArr.push(arr_new[i]);
+                    }
+                }
+                var playcode = _this.getPlayCode();
+                if (playcode == 'pl3_sanxing_zuxuan' || playcode == 'pl3_erxing_zuxuan') {//一些需要无序去重的玩法
+                    // repeatArr = newArr.duplicateNewa();
+                    // tempArr = newArr.uniqueArra();
+                    tempArr = newArr.sortArrayUnique();
+                } else {
+                    // repeatArr = newArr.duplicateNew();
+                    // tempArr = newArr.uniqueArrByzx();
+                    tempArr = newArr.arrayUnique();
+                }
+                if (tempArr[1].length > 0) {
+                    _this.alertContext = "已删除掉重复号: " + tempArr[1].join(" ")
+                }
+                $(".content_jiang .content_tex").val(tempArr[0].join(" "));
+            }
+        },
+
 
         //封盘
         closePl3GfwfHandicap: function () {
