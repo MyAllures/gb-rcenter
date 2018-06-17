@@ -2,6 +2,7 @@
 /* commonstyle all the pages need to include */
 body { font-size: 13px; }
 
+
 header.mui-bar-nav .logo { height: 28px; position: absolute; left: 44px; top: 0; bottom: 0; margin: auto; }
 header.mui-bar-nav .btn-login, header.mui-bar-nav .btn-demo, header.mui-bar-nav .btn-register { margin-left: 5px !important; padding: 4px 5px; font-size: 12px; top: 10px; }
 header.mui-bar-nav .btn-download { display: inline-block; width: 24px; height: 24px; background: url(images/icon-download.png) center/24px no-repeat; margin: 10px; float: left; }
@@ -523,9 +524,9 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_5000 { background-position-y: -232px; }
 .deposit_2 .pay_mone .bank_list { overflow: hidden; padding: 0 10px; margin-bottom: -20px; margin-left: -6px; margin-right: -6px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w { float: left; width: 50%; padding: 0 6px; font-size: 14px; color: #333; margin-bottom: 20px; }
-.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i { background: #f2f2f2; height: 35px; line-height: 35px; border-radius: 2px; padding-left: 10px; border: 1px solid #f2f2f2; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i { background: #f2f2f2; height: 35px; line-height: 35px; border-radius: 2px; padding-left: 2%; border: 1px solid #f2f2f2; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i.cur { border-color: #1766bb; }
-.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n { background: url(images/pay_bank_b.png) no-repeat; background-size: 25px; display: inline-block; width: 26px; height: 20px; vertical-align: top; margin-top: 8px; margin-right: 8; /* 浦发银行*/ /* 民生*/ /*  交通银行 */ /*光大*/ /* 10 平安银行 */ /* 11 兴业银行 */ /* 12 北京银行 */ /* 13 中信银行 */ /* 14 广发银行 */ /* 16 江苏银行 */ /* 18 上海银行 */ /* 19 渤海银行 */ /* 20 东亚银行 */ /* 21 宁波银行 */ /* 22 浙商银行 */ /* 23 杭州银行 */ /* 24 广州银行 */ /* 25 福建农商银行 */ /* 26 恒生银行 */ /* 27 台州银行 */ /* 易支付 */ /* 易支付 */ }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n { background: url(images/pay_bank_b.png) no-repeat; background-size: 25px; display: inline-block; width: 18px; height: 20px; vertical-align: top; margin-top: 8px; margin-right: 8; /* 浦发银行*/ /* 民生*/ /*  交通银行 */ /*光大*/ /* 10 平安银行 */ /* 11 兴业银行 */ /* 12 北京银行 */ /* 13 中信银行 */ /* 14 广发银行 */ /* 16 江苏银行 */ /* 18 上海银行 */ /* 19 渤海银行 */ /* 20 东亚银行 */ /* 21 宁波银行 */ /* 22 浙商银行 */ /* 23 杭州银行 */ /* 24 广州银行 */ /* 25 福建农商银行 */ /* 26 恒生银行 */ /* 27 台州银行 */ /* 易支付 */ /* 易支付 */ }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.unionpay { background-position: 0 -3px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.onlinepay { background-position: 0 -3px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.wechatpay { background-position: 0px -26px; }
