@@ -103,8 +103,8 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
             }
         },
         saveValid: function (e) {
-            var _this=this;
-            var value = false;
+            var _this = this;
+            var result;
             var startIpStr=$.trim($("[name='result.startIpStr']").val());
             var endIpStr=$.trim($("[name='result.endIpStr']").val());
             if(endIpStr.length<1){
@@ -128,13 +128,17 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                 dataType:'json',
                 data:_this.getCurrentFormData(e),
                 success: function (data) {
-                        value = data;
+                    result = data;
                 },
                 error: function (e) {
                 }
             });
-            if(value == true){
+            if (result.isExistIp) {
                 window.top.topPage.showErrorMessage(window.top.message.setting_auto['该已在限制列表中']);
+                return false;
+            }
+            if (result.isContainsCnIp) {
+                window.top.topPage.showErrorMessage(window.top.message.setting_auto['该IP段包含中国大陆的IP地址']);
                 return false;
             }
             e.returnValue=true;
