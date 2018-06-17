@@ -115,7 +115,7 @@ define([], function () {
             }
             //增加守护线程,防止异常终止
             window.setInterval(function () {
-                if (new Date().getTime() - _this.last_active_time > 80000) {
+                if (new Date().getTime() - _this.last_active_time > 120000) {
                     if (this.cid != undefined && this.cid != null) {
                         _this.userParam[_this.CONNECTIONID_KEY] = this.cid;
                     }
@@ -195,7 +195,6 @@ define([], function () {
             });
             _this._subscribeMsg();
         },
-
         _subscribeMsg: function () {
             var subscribeTypes = this.getSubscribeTypes();
             var userParam = {};
@@ -253,8 +252,8 @@ define([], function () {
                 ) {
                     return;
                 }
+
                 _this.websocket = new WebSocket(_this.url_websocket);
-                //_this.websocket.id = id;
                 _this.websocket.onopen = _this.onWebsocketOpen;
                 _this.websocket.onclose = _this.onWebsocketClose;
                 _this.websocket.onmessage = _this.onWebsocketMessage;
@@ -450,21 +449,24 @@ define([], function () {
 
 
         },
-        onWebsocketClose: function () {
-            //this.isConnect = false;
+        onWebsocketClose: function (event) {
+            console.log("socket close");
             var outThis = this.outThis;
+            if (event.code != 1006) {
+                setTimeout(function () {
+                    outThis.connection();
+                }, 2000);
+            }
             if (outThis.imSocketCloseCallBack) {
                 outThis.imSocketCloseCallBack.call();
             }
-            setTimeout(function () {
-                outThis.connection();
-            }, 2000);
         },
+        onWebsocketError: function (event) {
         onWebsocketError: function () {
             this.isConnect = false;
             console.log("socket error");
         },
-        onWebsocketBeforeUnload: function () {
+        onWebsocketBeforeUnload: function (event) {
             console.log("socket before unload");
         }
 

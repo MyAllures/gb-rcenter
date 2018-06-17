@@ -127,10 +127,14 @@ define(['common/BaseEditPage','bootstrapswitch', 'UE.I18N.' + window.top.languag
                     onSwitchChange: function (e, state) {
                         var $this = $(this);
                         var _target = e.currentTarget;
-                        // $this.bootstrapSwitch('indeterminate', true);
                         if (!$(_target).attr("isChanged")) {
-                            $("#cdnSwitchState").val(state);
-                        }else {
+                            if ($(_target).attr("id")==="exportPlayerContact") {
+                                $("#exportPlayerContactState").val(state);
+                            } else {
+                                $("#cdnSwitchState").val(state);
+                            }
+
+                        } else {
                             $(_target).removeAttr("isChanged");
                             return false;
                         }
@@ -188,6 +192,45 @@ define(['common/BaseEditPage','bootstrapswitch', 'UE.I18N.' + window.top.languag
                     "result.module": url_module,
                     "result.paramType": url_paramType,
                     "result.paramValue": url_paramValue
+                },
+                success: function (data) {
+                    if (data.state) {
+                        page.showPopover(e,{},"success","保存成功",true);
+                    } else {
+                        page.showPopover(e,{},"warning","保存失败",true);
+                    }
+                    $(e.currentTarget).unlock();
+                },error:function () {
+                    $(e.currentTarget).unlock();
+                }
+
+            });
+            $(e.currentTarget).unlock();
+        },
+
+        /**
+         * 更新导出玩家联系方式配置
+         */
+        updateExportPlayerParam:function (e) {
+            var _this = this;
+            //导出玩家联系方式参数
+            var id = $("#exportPlayerContact").attr("sysParamId");
+            var module = $("#exportPlayerContact").attr("module");
+            var paramType = $("#exportPlayerContact").attr("paramType");
+            var siteId = $("#siteId").val();
+            var paramCode=$("#exportPlayerContact").attr("paramCode");
+            var paramValue = $("#exportPlayerContactState").val();
+
+            window.top.topPage.ajax({
+                url: root + '/site/detail/updateExportParamValue.html',
+                dataType: "json",
+                data: {
+                    "result.siteId": siteId,
+                    "result.id": id,
+                    "result.paramCode": paramCode,
+                    "result.module": module,
+                    "result.paramType": paramType,
+                    "result.paramValue": paramValue
                 },
                 success: function (data) {
                     if (data.state) {

@@ -49,8 +49,9 @@ define(['common/BaseListPage', 'bootstrap-dialog'], function(BaseListPage, Boots
         /** 快速筛选-api选择 */
         selectApi: function(e, o) {
             var $choose = $('span.choose');
-            this.setSelTip($choose.text());
-
+            if (e.currentTarget.className.indexOf('btn-outline')>-1) {
+                this.setSelTip($choose.text());
+            }
             var apiId = o.data;
             if ($('[name="selAll"]').val()==0 && !($('[name="search.apiIds"][value="' + apiId + '"]').prop('checked'))) {
                 $(e.currentTarget).removeClass('btn-outline');
@@ -75,8 +76,9 @@ define(['common/BaseListPage', 'bootstrap-dialog'], function(BaseListPage, Boots
         /** 快速筛选-API类型选择 */
         selectApiType: function (e, o) {
             var $choose = $('span.choose');
-            this.setSelTip($choose.text());
-
+            if (e.currentTarget.className.indexOf('btn-outline')>-1) {
+                this.setSelTip($choose.text());
+            }
             this.setAll(0);
             var apiTypeId = o.data;
             if ($('[name="selAll"]').val()==0 && !($('[name="search.apiTypeIds"][value="' + apiTypeId + '"]').prop('checked'))) {
@@ -230,7 +232,9 @@ define(['common/BaseListPage', 'bootstrap-dialog'], function(BaseListPage, Boots
                         });
 
                         // 将用户选择的api和gameType条件封装成JSON格式，以便后面跳转到投注记录时作为参数传递
-                        $gameTypeList.append(']');
+                        if ($gameTypeList.html()!=""){
+                            $gameTypeList.append(']');
+                        }
                         $searchGameType.val(encodeURI($gameTypeList.html()));
 
                         dialogItself.close();

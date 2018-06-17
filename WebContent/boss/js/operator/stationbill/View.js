@@ -62,11 +62,11 @@ define(['common/BaseListPage'], function(BaseListPage) {
                                 if(dataVal){
                                     dataVal = parseFloat(dataVal);
                                 }
-                                $("#API_"+data.apiTypeId+data.apiId).html("<b>-["+data.profitLoss.toFixed(2)+"]</b>");
-                                var orgin_val = $("#ORGIN_"+data.apiTypeId+data.apiId).text();
+                                $("#API_"+data.apiTypeId+data.apiId+data.gameType).html("<b>-["+data.profitLoss.toFixed(2)+"]</b>");
+                                var orgin_val = $("#ORGIN_"+data.apiTypeId+data.apiId+data.gameType).text();
                                 var orginVal = parseFloat(orgin_val.replace(/,/g,""));
                                 var diff  = dataVal - orginVal;
-                                $("#DIFF_"+data.apiTypeId+data.apiId).html("<b>="+diff.toFixed(2)+"</b>");
+                                $("#DIFF_"+data.apiTypeId+data.apiId+data.gameType).html("<b>="+diff.toFixed(2)+"</b>");
                             }else{
                                 hasBbin = true;
                                 bbin += data.profitLoss;
