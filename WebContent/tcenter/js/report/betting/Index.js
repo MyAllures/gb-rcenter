@@ -554,6 +554,10 @@ define(['common/BaseListPage'], function (BaseListPage) {
             $("input[name='search.profitAmount'][value='']").prop("checked", true);
             $("input[name='search.terminal'][value='']").prop("checked", true);
             $("input[name='search.orderState'][value='']").prop("checked", true);
+
+            $("input[name='search.terminal']").siblings("button").find("span[prompt='prompt']").text(window.top.message.report_auto['全部']);
+            $("input[name='search.terminal']").val('');
+
             this.apiInit(e, false);
             this.gameTypeInit(e, false);
         },
