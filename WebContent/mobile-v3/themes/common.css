@@ -602,7 +602,7 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .depositHelp { color: #1766bb; padding: 0 10px 0; margin: 0; }
 .deposit_2 .depositHelp span { width: 15px; height: 15px; display: inline-block; border-radius: 100%; background: #999; color: #fff; line-height: 15px; text-align: center; margin-top: 7px; }
 .deposit_2 .depositHelpBox { position: absolute; bottom: 0; top: 0; left: 0; right: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 999; }
-.deposit_2 .depositHelpBox .swiper-container { height: 100%; width: 100%; margin: auto; }
+.deposit_2 .depositHelpBox .swiper-container {  width: 100%; margin: auto; }
 .deposit_2 .depositHelpBox .swiper-slide { padding: 16%; position: relative; }
 .deposit_2 .depositHelpBox .swiper-slide img { width: 100%; }
 .deposit_2 .depositHelpBox .swiper-pagination-bullet { width: 18px; height: 18px; background: #fff; opacity: 1; }
