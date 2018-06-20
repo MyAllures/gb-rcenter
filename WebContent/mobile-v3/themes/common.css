@@ -725,6 +725,7 @@ body.no-backdrop .mui-backdrop { background-color: transparent !important; }
 .gb-checkbox2.on { background-image: url(../images/default/checkbox-on.png); }
 
 .gb-radio { display: inline-block; width: 30px; height: 30px; background: url(../images/radio.png); background-size: 100% 100%; vertical-align: text-top; margin-right: 5px; }
+.gb-unread-radio { display: inline-block; width: 15px; height: 15px; background: url(../images/unread-radio.png); background-size: 100% 100%; vertical-align: text-top; margin-right: 5px; }
 
 .gb-radio.on { background-image: url(../images/radio-on.png); }
 
