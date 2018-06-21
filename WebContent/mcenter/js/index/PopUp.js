@@ -2,6 +2,8 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
 
     return PopUp.extend({
         tones: null,
+        lastRefreshTime: null,
+
         init: function () {
             this._super();
             this.queryTones();
@@ -40,10 +42,35 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             popUp.pop(content, date, "success");
             window.top.popUp.playVoice(data, "draw");
             if ($("#timer .hd").attr("data-value") == 'refresh') {
-                $(".playerWithdrawSearch").click();
-                $(".agentWithdrawSearch").click();
+                window.top.popUp.refreshSearch("withdrawSearch");
             }
             $("#unReadTaskCount").text(parseInt($("#unReadTaskCount").text()) + 1);
+        },
+
+        /**
+         * 取款、入款审核列表刷新
+         */
+        refreshSearch: function (opType) {
+            var lastTime = window.top.popUp.lastRefreshTime;
+            // 上一次刷新时间为空, 或者距离上一次刷新时间超过10s，则刷新
+            if (lastTime === null || (parseInt(new Date() - lastTime)) > 10000) {
+                if (opType === 'withdrawSearch') {
+                    $(".playerWithdrawSearch").click();
+                    $(".agentWithdrawSearch").click();
+                } else if (opType === 'companySearcnSpan') {
+                    $(".companySearcnSpan").click();
+                } else if (opType === 'onlineSearchSpan') {
+                    $(".onlineSearchSpan").click();
+                } else if (opType === 'playerWithdrawSearch') {
+                    $(".playerWithdrawSearch").click();
+                } else if (opType === 'agentWithdrawSearch') {
+                    $(".agentWithdrawSearch").click();
+                }
+                window.top.popUp.lastRefreshTime = new Date();
+
+            } else {
+                window.setTimeout('window.top.popUp.refreshSearch("' + opType + '")', 10000 - parseInt(new Date() - lastTime));
+            }
         },
 
         playVoice: function (data, type) {
@@ -60,7 +87,6 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     }
                 }
             }
-
         },
         /**
          * 存款提醒弹窗
@@ -77,7 +103,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 $(e.currentTarget).parent().parent().parent().remove();
             });
             if ($("#timer .hd").attr("data-value") == 'refresh') {
-                $(".companySearcnSpan").click();
+                window.top.popUp.refreshSearch("companySearcnSpan");
             }
             // popUp.unReadNotice(data);
             window.top.popUp.playVoice(data, "deposit");
@@ -92,13 +118,13 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var value = $.parseJSON(data).msgBody;
             if ($("#timer .hd").attr("data-value") == 'refresh') {
                 if (value == 'company_deposit') {
-                    $(".companySearcnSpan").click();
+                    window.top.popUp.refreshSearch("companySearcnSpan");
                 } else if (value == 'online_deposit') {
-                    $(".onlineSearchSpan").click();
+                    window.top.popUp.refreshSearch("onlineSearchSpan");
                 } else if (value == 'player_withdraw') {
-                    $(".playerWithdrawSearch").click();
+                    window.top.popUp.refreshSearch("playerWithdrawSearch");
                 } else if (value == 'agent_withdraw') {
-                    $(".agentWithdrawSearch").click();
+                    window.top.popUp.refreshSearch("agentWithdrawSearch");
                 }
             }
         },
@@ -110,7 +136,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
         OnlineRechargeReminderCallBack: function (data) {
             window.top.popUp.playVoice(data, "onlinePay");
             if ($("#timer .hd").attr("data-value") == 'refresh') {
-                $(".onlineSearchSpan").click();
+                window.top.popUp.refreshSearch("onlineSearchSpan");
             }
         },
         /**
@@ -601,81 +627,81 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     }],
                 });
             }/*else if (rate >= warnRate) {
-                var msg = window.top.message.setting_auto['您站点的额度已用'];
-                msg = msg.replace("${rate}", rate);
-                msg = msg.replace("${leftTime}", date);
-                var tmpTime = time;
-                if (tmpTime >= 0) {
-                    var hour = Math.floor(tmpTime / 3600);
-                    tmpTime = tmpTime - hour * 3600;
-                    var minute = Math.floor(tmpTime / 60);
-                    if (minute < 10) {
-                        minute = '0' + minute;
-                    }
-                    var second = tmpTime - minute * 60;
-                    if (second < 10) {
-                        second = '0' + second;
-                    }
-                } else {
-                    var hour = 0;
-                    var minute = '0' + 0;
-                    var second = '0' + 0;
-                }
-                var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">' + msg + '</div></div>' +
-                    '<div class="clearfix m-md al-center"><div id=' + id + '><font class="fs20">' + countDown + '</font>' +
-                    '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">' + hour + '</span>' + ":" + '' +
-                    '<span id="minutes">' + minute + '</span>' + ":" + '<span id="seconds">' + second + '</span></span></div>' +
-                    '<div class="al-center co-grayc2">' + times + '</div></div>'
-                    + '<div class="clearfix m-md">' + tips + '</div>';
-                var dialog = BootstrapDialog.show({
-                    title: window.top.message.setting_auto['消息'],
-                    message: html,
-                    buttons: [{
-                        label: window.top.message.setting_auto['去充值'],
-                        action: function (dialog) {
-                            dialog.close();
-                            $("#mainFrame").load(root + "/credit/pay/pay.html");
-                        }
-                    }, {
-                        label: window.top.message.setting_auto['取消'],
-                        cssClass: 'btn-primary',
-                        action: function (dialog) {
-                            dialog.close();
-                        }
-                    }],
-                    onhidden: function (dialog) {
-                        dialog.close();
-                    }
-                });
-                if (date && date.length > 0 && time >= 0) {
-                    window.top.popUp.showLeftTime();
-                    var interval = setInterval(function () {
-                        window.top.popUp.showLeftTime(interval, id)
-                    }, 1000);
-                } else {
-                    var sites = window.top.message.setting_auto['sites'];
-                    var quota = window.top.message.setting_auto['quota'];
-                    var html = '<div class="msg msg-warning al-center"><div class="msg-description">' + sites + '</div></div>' +
-                        '<div class="clearfix m-md">' + quota + '</div>';
-                    var dialog = BootstrapDialog.show({
-                        title: window.top.message.setting_auto['消息'],
-                        message: html,
-                        buttons: [{
-                            label: window.top.message.setting_auto['去充值'],
-                            action: function (dialog) {
-                                dialog.close();
-                                $("#mainFrame").load(root + "/credit/pay/pay.html");
-                            }
-                        }, {
-                            label: window.top.message.setting_auto['取消'],
-                            cssClass: 'btn-primary',
-                            action: function (dialog) {
-                                dialog.close();
-                            }
-                        }]
-                    })
-                }
-            }*/
+             var msg = window.top.message.setting_auto['您站点的额度已用'];
+             msg = msg.replace("${rate}", rate);
+             msg = msg.replace("${leftTime}", date);
+             var tmpTime = time;
+             if (tmpTime >= 0) {
+             var hour = Math.floor(tmpTime / 3600);
+             tmpTime = tmpTime - hour * 3600;
+             var minute = Math.floor(tmpTime / 60);
+             if (minute < 10) {
+             minute = '0' + minute;
+             }
+             var second = tmpTime - minute * 60;
+             if (second < 10) {
+             second = '0' + second;
+             }
+             } else {
+             var hour = 0;
+             var minute = '0' + 0;
+             var second = '0' + 0;
+             }
+             var html = '<div class="msg msg-warning al-center"><div class="msg-description ft-bold">' + msg + '</div></div>' +
+             '<div class="clearfix m-md al-center"><div id=' + id + '><font class="fs20">' + countDown + '</font>' +
+             '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">' + hour + '</span>' + ":" + '' +
+             '<span id="minutes">' + minute + '</span>' + ":" + '<span id="seconds">' + second + '</span></span></div>' +
+             '<div class="al-center co-grayc2">' + times + '</div></div>'
+             + '<div class="clearfix m-md">' + tips + '</div>';
+             var dialog = BootstrapDialog.show({
+             title: window.top.message.setting_auto['消息'],
+             message: html,
+             buttons: [{
+             label: window.top.message.setting_auto['去充值'],
+             action: function (dialog) {
+             dialog.close();
+             $("#mainFrame").load(root + "/credit/pay/pay.html");
+             }
+             }, {
+             label: window.top.message.setting_auto['取消'],
+             cssClass: 'btn-primary',
+             action: function (dialog) {
+             dialog.close();
+             }
+             }],
+             onhidden: function (dialog) {
+             dialog.close();
+             }
+             });
+             if (date && date.length > 0 && time >= 0) {
+             window.top.popUp.showLeftTime();
+             var interval = setInterval(function () {
+             window.top.popUp.showLeftTime(interval, id)
+             }, 1000);
+             } else {
+             var sites = window.top.message.setting_auto['sites'];
+             var quota = window.top.message.setting_auto['quota'];
+             var html = '<div class="msg msg-warning al-center"><div class="msg-description">' + sites + '</div></div>' +
+             '<div class="clearfix m-md">' + quota + '</div>';
+             var dialog = BootstrapDialog.show({
+             title: window.top.message.setting_auto['消息'],
+             message: html,
+             buttons: [{
+             label: window.top.message.setting_auto['去充值'],
+             action: function (dialog) {
+             dialog.close();
+             $("#mainFrame").load(root + "/credit/pay/pay.html");
+             }
+             }, {
+             label: window.top.message.setting_auto['取消'],
+             cssClass: 'btn-primary',
+             action: function (dialog) {
+             dialog.close();
+             }
+             }]
+             })
+             }
+             }*/
             else {
                 var msg = window.top.message.setting_auto['您站点的转账上限使用提醒'];
                 msg = msg.replace("${rate}", rate);
@@ -699,6 +725,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                 });
             }
         },
+
         /**
          * 彩票开奖结果提醒
          * @param data
@@ -710,11 +737,11 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             popUp.pop(content, date, "warning");
             window.top.popUp.playVoice(data, "warm");
             if ($("#timer .hd").attr("data-value") == 'refresh') {
-                $(".playerWithdrawSearch").click();
-                $(".agentWithdrawSearch").click();
+                window.top.popUp.refreshSearch("withdrawSearch");
             }
             $("#unReadTaskCount").text(parseInt($("#unReadTaskCount").text()) + 1);
         },
+
         /**
          * 导入域名检测结果成功后提示
          * @param data
