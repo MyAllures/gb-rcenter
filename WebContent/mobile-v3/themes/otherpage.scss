@@ -188,7 +188,7 @@ height: 44px;
             p{height: 30px;line-height: 24px;margin-bottom:5px;color: #333;font-size: 12px;white-space: nowrap;    overflow: hidden;    text-overflow: ellipsis;}
         }
         .img-wrap{background: #fff;position:relative;
-            img{width: 100px;height:70px ;vertical-align: middle;border-top-left-radius: 6px;border-top-right-radius: 6px;}
+            img{width: 100px;height:100px ;vertical-align: middle;border-top-left-radius: 6px;border-top-right-radius: 6px;}
         }
         .icon-api{position:absolute;width:22px;height:22px;display:block;right:-5px;top:-5px;}
         .icon-api-ag{background: url(images/casino-game-ag.png) center no-repeat/100%;}
@@ -233,13 +233,13 @@ height: 44px;
                         &.api-icon-2-20:before{background-position: 0 -714px;}   
                         &.api-icon-1-24:before,&.api-icon-3-23:before{background-position: 0 -770px;}   
                         &.api-icon-2-25:before{background-position: 0 -827px;}    
-                        &.api-icon-2-31:before{background-position: 0 -1320px;}    
+                        &.api-icon-2-31:before{background-position: -2px -1318px;}    
                         &.api-icon-2-32:before{background-position: 0 -1265px;}
-                        &.api-icon-2-38:before{background-position: 0 -930px;}
+                        &.api-icon-2-38:before{background-position: 0 -1265px;}
                         &.api-icon-3-4:before{background-position: 0 -878px;}  
                         &.api-icon-2-27:before{background-position: 0 -930px;}  
                         &.api-icon-1-2:before{background-position: 0 (-1008px/0.8);}  
-                        &.api-icon-2-28:before{background-position: 0 (-1064px/0.8);} 
+                        &.api-icon-2-28:before{background-position: 0 (-832px/0.8);} 
                         &.api-icon-5-1:before{background-position: 0 (-1233px/0.8);} 
                         &.api-icon-2-35:before{background-position: 0 -1432px;}
                         &.api-icon-3-21:before{background-position: 0 -1890px;}
@@ -317,7 +317,7 @@ height: 44px;
     margin-top: 5px;
                     h5{    font-size: 14px;    font-weight: normal;    color: #8f8f94;    position: relative;    text-align: center;
                         &>i{    display: block;    border-bottom: 1px dashed #e2e2e2;    position: absolute;    top: 50%;    left: 0;    right: 0;}
-                        span{    display: inline-block;    height: 23px;    padding: 0 7px;    border-radius: 3px;    line-height: 23px;   color: #fff;    background-color: #1766bb;    font-size: 12px;    position: relative;    z-index: 1;}
+                        span{    display: inline-block;    height: 23px;    padding: 0 7px;    border-radius: 3px;    line-height: 23px;   color: #fff;    background-color: #151515;    font-size: 12px;    position: relative;    z-index: 1;}
                     }
                     p{    padding: 5px 0;    line-height: 18px;   color: #999;    font-size: 12px;    margin-bottom: 0;}
                 }
@@ -466,7 +466,7 @@ height: 44px;
     }
     .top_title{padding: 10px;background: #fff;margin-bottom: 10px;
         .sub_tit{font-size: 10px;color: #999;}
-        .tit{font-size: 15px;color: #317ec2;}
+        .tit{font-size: 15px;color: #151515;}
     }
     .promo_con_list{
         font-size: 14px;
@@ -488,7 +488,7 @@ height: 44px;
         .icon-success{display: block;width: (139px/2);height: (139px/2);margin:0 auto 10px;background: url(images/promo/icon-success.png) no-repeat center /100%;}
         .suc_tip{font-size: 15px;color: #317ec2;margin-bottom: 15px;}
         p{font-size: 12px;color: #666;margin-bottom: 0;}
-        .btn_cust_serv{margin-top: 50px; margin-bottom: 0;  padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #317ec2;    border-color: #317ec2;}
+        .btn_cust_serv{margin-top: 50px; margin-bottom: 0;  padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #151515;    border-color: #151515;}
         .fai_tip{font-size: 15px;color: #333;line-height: 22px;}
         .icon-failure{display: block;width: (114px/2);height: (131px/2);margin: 0 auto 10px;background: url(images/promo/icon-failure.png) no-repeat center /100%;}
     }
@@ -506,13 +506,13 @@ height: 44px;
                 }
             }
         }
-        .btn_cust_serv{position: fixed;z-index: 10; bottom: 0;    left: 0;    right: 0;border-radius: 0;    margin: 0;padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #317ec2;    border-color: #317ec2;}
+        .btn_cust_serv{position: fixed;z-index: 10; bottom: 0;    left: 0;    right: 0;border-radius: 0;    margin: 0;padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #151515;    border-color: #151515;}
     }
     // 申请活动3的页面样式
     &.promo-apply3-content{
         .promo_con_list{margin-bottom: 10px;}
         .pro_mone{padding: 10px;overflow: hidden;background: #fff;font-size: 14px;color: #333;}
-        .btn_apply{margin: 32px 10px 12px;  width: auto;padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #317ec2;    border-color: #317ec2;
+        .btn_apply{margin: 32px 10px 12px;  width: auto;padding: 0;  height: 40px;  line-height: 40px;  font-size: 15px;  color: #fff;  background: #151515;    border-color: #151515;
             &.disabled{background: #e2e2e2;color: #999;border-color: #e2e2e2;}
         }
         .color-green{color: #1f9316;}

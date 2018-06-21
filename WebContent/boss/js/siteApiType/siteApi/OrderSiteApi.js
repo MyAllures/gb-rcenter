@@ -62,7 +62,7 @@ define(['common/BaseEditPage','bootstrapswitch','nestable','css!themesCss/jquery
             }else {
                 url='/vSiteApiTypeRelation/saveSiteApiOrder.html';
             }
-            $("tbody tr").each(function(index,obj){
+            $("tbody tr.tab-detail").each(function(index,obj){
                 orderObj.push({"order":index+1,"objectId":$(obj).children("[name='apiTypeId']").val(),"siteId":siteId});
                 apiTypeOrder.orderList = orderObj;
             });
