@@ -25,6 +25,8 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
         lastIntervalTime: null,
         //是否开盘
         isOpen:true,
+        //是否获取最新期数
+        isGetCurExpect: null,
         init: function (formSelector) {
             this._super(formSelector || ".mui-off-canvas-wrap");
         },
@@ -178,8 +180,13 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                         var expect = $("#expect").text();
                         $("#expect").html(data.expect);
                         $("#leftTime").attr("data-time", data.leftTime);
-                        if (expect && expect == data.expect) { //重新获取盘口数据以防因为封盘时间比实际早，导致通过接口查询的期数值不对，要加１
-                            $("#expect").html(Number(expect) + 1);
+                        if (expect && expect == data.expect) { //重新获取盘口数据以防因为封盘时间比实际早，导致通过接口查询的期数值不对
+                            // $("#expect").html(Number(expect) + 1);
+                            if (!_this.isGetCurExpect){
+                                _this.isGetCurExpect = setInterval(function () {
+                                    _this.getHandicap();
+                                }, 500);
+                            }
                         }
                         if (typeof callback == 'function') {
                             callback();
