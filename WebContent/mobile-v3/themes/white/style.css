@@ -163,4 +163,8 @@ body.mine-notice .gb-headtabs .mui-segmented-control .mui-active { background: #
 body.mine-notice .gb-datafilter .btn { background-color: #ccc; border-color: #ccc; }
 body.mine-notice .gb-noticetabs .mui-segmented-control .mui-control-item.mui-active { background-color: #ccc; }
 
+.mui-bar.mui-bar-blue { background: #f7f7f7 !important; }
+
+.mui-title { color: black !important; }
+
 /*# sourceMappingURL=style.css.map */
