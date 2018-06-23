@@ -45,6 +45,7 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
             _this.choosedApi();
             var $form = $(window.top.topPage.getCurrentForm(event));
             if(!$form.valid || $form.valid()) {
+                _this.linkPopupSearchCondition(event);
                 window.top.topPage.ajax({
                     loading:true,
                     url:window.top.topPage.getCurrentFormAction(event),
@@ -320,6 +321,15 @@ define(['common/BaseListPage', 'bootstrap-dialog', 'site/report/operate/filterBo
                     }
                 });
             }
+        },
+        /**
+         * 获取API的搜索条件
+         * @param event
+         */
+        linkPopupSearchCondition:function (event) {
+            var _this = this;
+            var data = $(_this.getFirstParentByTag(event, 'form')).find('input[name="search.apiIds"],input[name="search.apiTypeIds"],input[name="search.hideGameTypes"]').serialize();
+            $('input[name="searchApiCondition"]').val(data);
         }
     });
 });
