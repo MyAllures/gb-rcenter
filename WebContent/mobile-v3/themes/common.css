@@ -1,7 +1,11 @@
 @charset "UTF-8";
 /* commonstyle all the pages need to include */
 body { font-size: 13px; }
-
+@media screen和（max-width：370px） {
+  .bank_list_i_w {
+    font-size: 11px !important;
+  }
+}
 
 header.mui-bar-nav .logo { height: 28px; position: absolute; left: 44px; top: 0; bottom: 0; margin: auto; }
 header.mui-bar-nav .btn-login, header.mui-bar-nav .btn-demo, header.mui-bar-nav .btn-register { margin-left: 5px !important; padding: 4px 5px; font-size: 12px; top: 10px; }
