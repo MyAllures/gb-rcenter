@@ -155,8 +155,13 @@ define(['site/common/BasePage', 'site/plugin/template'], function (BasePage, Tem
                             }
                         }
                         $('i.expect').text(data.expect);
-                        if (expect && expect == data.expect) { //重新获取盘口数据以防因为封盘时间比实际早，导致通过接口查询的期数值不对，要加１
-                            $('i.expect').text(Number(expect) + 1);
+                        if (expect && expect == data.expect) { //重新获取盘口数据以防因为封盘时间比实际早，导致通过接口查询的期数值不对
+                            // $('i.expect').text(Number(expect) + 1);
+                            if (!_this.isGetCurExpect){
+                                _this.isGetCurExpect = setInterval(function () {
+                                    _this.getHandicap();
+                                }, 500);
+                            }
                         }
                         if (typeof callback == 'function') {
                             callback();

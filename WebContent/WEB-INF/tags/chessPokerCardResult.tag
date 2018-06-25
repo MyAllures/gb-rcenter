@@ -54,6 +54,26 @@
         </c:forEach>
     </c:if>
 </c:if>
+<%-- 棋乐游无庄牛牛 --%>
+<c:if test="${betType eq 'NO_DEALER_BULL_BULL'}">
+    <c:forEach items="${porkerListSet}" var="pokerList" varStatus="pokerIndex">
+            <span style="vertical-align: 10px">
+            闲${pokerIndex.index+1}：&nbsp;&nbsp;&nbsp;(
+            </span>
+        <c:forEach items="${pokerList}" var="poker">
+            <c:if test="${poker==0}">--</c:if>
+            <c:if test="${poker!=0}">
+                <gb:poker poker="${poker}"/>
+            </c:if>
+        </c:forEach>
+        <span style="vertical-align: 10px">
+              )
+            </span>
+        <c:if test="${pokerIndex.index!=fn:length(porkerListSet)-1}">
+            <br/>
+        </c:if>
+    </c:forEach>
+</c:if>
 <%--牛牛--%>
 <c:if test="${betType eq 'BULL_BULL'}">
     <c:if test="${!empty commonPorker}">
