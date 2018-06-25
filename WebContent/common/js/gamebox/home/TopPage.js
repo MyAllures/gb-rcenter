@@ -1333,35 +1333,6 @@ define(['bootstrap-dialog', 'eventlock', 'moment', 'poshytip'], function (Bootst
                     document.title = _this.currentMenuTitle();
                 }
             });
-        },
-        /**
-         * 显示客服弹窗
-         * @param imMessage  监听服务返回的消息体
-         * @param btnClk  是否是由按钮触发
-         */
-        showCustomerGroupWin: function (data, btnClk,isCustomerPlatform) {
-            /**其他窗口已打开客服界面**/
-            if (data && data.imMessage.status === 'connectFailed') {
-                $(".minmaxCon").hide();
-                $('#customerGroupModal').modal('hide');
-                return;
-            }
-            if (window.top.customerGroupView == null) {
-                if (data && (data.imMessage.status == 'close' || data.imMessage.status == 'closed' || data.imMessage.status == 'normal')) return;
-                var modal = $('#customerGroupModal');
-                var modalContent = modal.find('.modal-content');
-                modalContent.load(root + '/customer/groupView.html', function () {
-                    modal.modal({
-                        keyboard: false,
-                        backdrop: false,
-                        data: data,
-                        btnClk: btnClk,
-                        isCustomerPlatform : isCustomerPlatform
-                    });
-                });
-            } else {
-                data ? window.top.customerGroupView.setData(data) : window.top.customerGroupView.addDefaultWin();
-            }
         }
     });
 

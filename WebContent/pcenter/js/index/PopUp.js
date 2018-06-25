@@ -1,4 +1,4 @@
-define(['gb/components/PopUp','bootstrap-dialog'], function (PopUp,BootstrapDialog) {
+define(['gb/components/PopUp'], function (PopUp) {
 
     return PopUp.extend({
         init: function () {
@@ -12,9 +12,6 @@ define(['gb/components/PopUp','bootstrap-dialog'], function (PopUp,BootstrapDial
             var content = "<a herf='#' onclick='alert(\"你点到人家啦\")'>" + msgBody.content + "</a>"
             var date = msgBody.title;
             popUp.pop(content, date, "success");
-        },
-        imCallBack : function(data){
-            window.top.topPage.showCustomerGroupWin(JSON.parse(data),false);
         },
         dialogCallBack: function (data) {
             var dataObj = $.parseJSON(data);

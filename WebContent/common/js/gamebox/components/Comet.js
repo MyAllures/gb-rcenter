@@ -57,15 +57,11 @@ define([], function () {
         /** 连接所需要传递的参数 **/
         userParam: {},
         /**连接成功后的回调函数**/
-        successCallBack: function () {
+        successCallBack: function (event) {
         },
         /**连接失败后的回调函数**/
-        failureCallBack: function () {
+        failureCallBack: function (event) {
         },
-        /**客服模块上线后回调**/
-        imSocketSuccessCallBack: null,
-        /**客服模块断线后的回调**/
-        imsocketCloseCallBack: null,
         /**实例化后是否立即执行连接操作**/
         isImmediatelyConnect: false,
         /**是否使用websocket**/
@@ -421,13 +417,10 @@ define([], function () {
                 }
             });
         },
-        onWebsocketOpen: function () {
+        onWebsocketOpen: function (event) {
             var outThis = this.outThis;
             if (outThis.successCallBack) {
-                outThis.successCallBack.call();
-            }
-            if (outThis.imSocketSuccessCallBack) {
-                outThis.imSocketSuccessCallBack.call();
+                outThis.successCallBack.call(event);
             }
             outThis.isConnect = true;
 
@@ -457,8 +450,8 @@ define([], function () {
                     outThis.connection();
                 }, 2000);
             }
-            if (outThis.imSocketCloseCallBack) {
-                outThis.imSocketCloseCallBack.call();
+            if (outThis.failureCallBack) {
+                outThis.failureCallBack.call(event);
             }
         },
         onWebsocketError: function (event) {
