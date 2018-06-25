@@ -45,53 +45,6 @@ define(['common/BaseEditPage'], function (BaseEditPage) {
         onPageLoad: function () {
             this._super();
         },
-        confirm: function (e, option) {
-            var btnOption = {};
-            btnOption.text = window.top.message.fund_auto['完成存款'];
-            var payAccountId = $("input[name='result.payAccountId']").val();
-            var rechargeAmount = $("input[name='result.rechargeAmount']").val();
-            var activityId = $("input[name=activityId]").val();
-            if (!activityId) {
-                activityId = $("input[name=activityId]:checked").val();
-            }
-            var payerBankcard = $("input[name='result.payerBankcard']").val();
-            var bankOrder = $("input[name='result.bankOrder']").val();
-            var type = $("input[name='result.rechargeType']").val();
-            var code = $("input[name='code']").val();
-            var url = root + "/fund/recharge/company/confirmRecharge.html?result.rechargeType=" + type;
-            if (payAccountId) {
-                url = url + "&result.payAccountId=" + payAccountId;
-            }
-            if (activityId) {
-                url = url + "&activityId=" + activityId;
-            }
-            if (rechargeAmount) {
-                url = url + "&result.rechargeAmount=" + rechargeAmount;
-            }
-            var bitAmount = $("input[name='result.bitAmount']").val();
-            if (bitAmount) {
-                url = url + "&result.bitAmount=" + bitAmount;
-            }
-            var returnTime = $("input[name='result.returnTime']").val();
-            if (returnTime) {
-                url = url + "&result.returnTime=" + returnTime;
-            }
-            /* if (payerBankcard) {
-             url = url + "&result.payerBankcard=" + payerBankcard;
-             }*/
-            if (bankOrder) {
-                url = url + "&result.bankOrder=" + bankOrder;
-            }
-            if (code) {
-                url = url + "&code=" + code;
-            }
-            btnOption.target = url;
-            btnOption.callback = "back";
-            window.top.topPage.doDialog(e, btnOption);
-            window.top.topPage.payerName = $("input[name='result.payerName']").val();
-            window.top.topPage.payerBankcard = payerBankcard;
-            window.top.topPage.rechargeAddress = $("input[name='result.rechargeAddress']").val();
-        },
         back: function (e, option) {
             if (e.returnValue == true) {
                 var $select = $(".sidebar-nav .select", window.top.document);
