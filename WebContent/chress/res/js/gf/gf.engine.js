@@ -21,7 +21,7 @@ GfEngine.prototype = {
         if (ftlArea == null || ftlArea == undefined) {
             console.error("未找到id=ftl的引入模板");
         }
-        var tmp = ftlArea.import.getElementById(renderId);
+        var tmp = ftlArea["import"].getElementById(renderId);
         if (tmp == null || tmp == undefined) {
             console.error("模板中未找到" + renderId + "的内容");
         }
@@ -103,9 +103,9 @@ GfEngine.prototype = {
         });
         return result;
     },
-    doPostAsync: function (apikey, data, callback) {
+    doPostAsync: function (url, data, callback) {
         $.ajax({
-            url: _apiConfig[apikey],
+            url: url,
             async: true,
             type: "POST",
             data: data,

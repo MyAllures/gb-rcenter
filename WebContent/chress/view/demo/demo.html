@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="import" href="ftl/demo_ftl.html" id="ftl">
+    <script type="text/javascript" src="../../res/js/thirds/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../../res/js/thirds/jsrender.min.js"></script>
+    <script type="text/javascript" src="../../res/js/gf/gf.Base.js"></script>
+    <script type="text/javascript" src="../../res/js/gf/gf.engine.js"></script>
+    <script type="text/javascript" src="../../res/js/gf/gf.Page.js"></script>
+    <script type="text/javascript" src="js/demo-api.js"></script>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript">
+        var Demo = new Demo();
+    </script>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body onload="Demo.init();">
+<div id="user_show" ftl-bind="{'ftlId':'user_table','url':'DemoApiUrl.getUserMsg','data':{id:'id',name:'name'}}">
+</div>
+<input type="button" value="加载用户1" onclick="Demo.showUser1()"/>
+</body>
+</html>
