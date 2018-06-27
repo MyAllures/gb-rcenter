@@ -88,8 +88,10 @@ define(['common/BaseEditPage', 'bootstrapswitch'], function (BaseEditPage) {
                     $(".smsTips2").addClass("hidden");
                     //短信开关关闭，默认关闭下面的所有短信验证
                     $("#playerPhoneParam").val(false);
-                    $("#agentPhoneParam").val(false);
+                    // $("#agentPhoneParam").val(false);
                     $("#recoverPasswordParam").val(false);
+                    $("input[name='sms-checkbox']").bootstrapSwitch("state",false);//玩家手机验证状态显示
+                    $(".recoverPasswordParam").bootstrapSwitch("state",false);//手机找回密码状态显示
                     $("._smsSwitchIsShow").addClass("hidden");
                 }
             });
