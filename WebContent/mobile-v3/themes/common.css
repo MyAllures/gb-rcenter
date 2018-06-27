@@ -1,7 +1,11 @@
 @charset "UTF-8";
 /* commonstyle all the pages need to include */
 body { font-size: 13px; }
-
+@media screen和（max-width：370px） {
+  .bank_list_i_w {
+    font-size: 11px !important;
+  }
+}
 
 header.mui-bar-nav .logo { height: 28px; position: absolute; left: 44px; top: 0; bottom: 0; margin: auto; }
 header.mui-bar-nav .btn-login, header.mui-bar-nav .btn-demo, header.mui-bar-nav .btn-register { margin-left: 5px !important; padding: 4px 5px; font-size: 12px; top: 10px; }
@@ -516,7 +520,7 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .pay_mone .tit:before { content: ''; width: 3px; height: 17px; background: #1766bb; position: absolute; left: 11px; top: 11px; }
 .deposit_2 .pay_mone .conv_mone { overflow: hidden; padding-bottom: 15px; }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i { width: 20%; float: left; }
-.deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone { width: 58px; height: 58px; display: block; margin: 0 auto; background-image: url(images/conv_mone.png); background-repeat: no-repeat; background-size: 100%; background-position-x: center; }
+.deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone { width: 58px; height: 58px; display: block; margin: 0 auto; background-image: url(images/conv_mone1.png); background-repeat: no-repeat; background-size: 100%; background-position-x: center; }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_100 { background-position-y: 0; }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_200 { background-position-y: -58px; }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_500 { background-position-y: -116px; }
@@ -602,7 +606,7 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .depositHelp { color: #1766bb; padding: 0 10px 0; margin: 0; }
 .deposit_2 .depositHelp span { width: 15px; height: 15px; display: inline-block; border-radius: 100%; background: #999; color: #fff; line-height: 15px; text-align: center; margin-top: 7px; }
 .deposit_2 .depositHelpBox { position: absolute; bottom: 0; top: 0; left: 0; right: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 999; }
-.deposit_2 .depositHelpBox .swiper-container { height: 100%; width: 100%; margin: auto; }
+.deposit_2 .depositHelpBox .swiper-container {  width: 100%; margin: auto; }
 .deposit_2 .depositHelpBox .swiper-slide { padding: 16%; position: relative; }
 .deposit_2 .depositHelpBox .swiper-slide img { width: 100%; }
 .deposit_2 .depositHelpBox .swiper-pagination-bullet { width: 18px; height: 18px; background: #fff; opacity: 1; }
@@ -725,6 +729,7 @@ body.no-backdrop .mui-backdrop { background-color: transparent !important; }
 .gb-checkbox2.on { background-image: url(../images/default/checkbox-on.png); }
 
 .gb-radio { display: inline-block; width: 30px; height: 30px; background: url(../images/radio.png); background-size: 100% 100%; vertical-align: text-top; margin-right: 5px; }
+.gb-unread-radio { display: inline-block; width: 15px; height: 15px; background: url(../images/unread-radio.png); background-size: 100% 100%; vertical-align: text-top; margin-right: 5px; }
 
 .gb-radio.on { background-image: url(../images/radio-on.png); }
 

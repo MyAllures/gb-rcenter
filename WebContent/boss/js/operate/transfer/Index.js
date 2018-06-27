@@ -136,6 +136,36 @@ define(['common/BaseListPage'], function (BaseListPage) {
                     window.top.topPage.showInfoMessage("服务忙，请稍后再试！");
                 }
             })
+        },
+        /**
+         * 修复订单
+         */
+        repairOrder: function(e, option){
+            var _this = this;
+            window.top.topPage.ajax({
+                url: root + "/operate/transferBySite/repairOrder.html",
+                dataType: 'json',
+                data: {
+                    "search.apiId": option.apiId,
+                    "search.userId": option.userId,
+                    "search.transactionNo": option.orderNo,
+                    "siteId": option.siteId,
+                    "exceptionTransferId": option.exceptionTransferId
+                },
+                success: function (data) {
+                    alert(JSON.stringify(data));
+                    if (data.state) {
+                        window.top.topPage.showSuccessMessage(data.msg);
+                        _this.query(e);
+                    } else {
+                        window.top.topPage.showErrorMessage(data.msg);
+                    }
+                },
+                error: function () {
+                    window.top.topPage.showInfoMessage("服务忙，请稍后再试！");
+                }
+            })
+            $(e.currentTarget).unlock();
         }
     });
 });
