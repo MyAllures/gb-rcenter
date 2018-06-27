@@ -7,9 +7,9 @@
             所在地：
                 <select name="city">
                     <option value="">请选择</option>
-                    <option value="Manila">Manila</option>
-                    <option value="Beijing">Beijing</option>
-                    <option value="Xianggang">Xianggang</option>
+                    <option value="Manila" {{if city==='Manila'}} selected {{/if}}>Manila</option>
+                    <option value="BeiJing" {{if city==='BeiJing'}} selected {{/if}}>Beijing</option>
+                    <option value="XiangGang" {{if city==='XiangGang'}} selected {{/if}}>Xianggang</option>
                 </select>
         </li>
         <li>
