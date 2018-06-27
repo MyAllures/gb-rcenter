@@ -15,10 +15,10 @@ function userInfo() {
                 //登录时间
                 if (data.loginTime){
                     $("._user-login-time .mt10").html(window.top.message.my_auto['上次登录时间']);
-                    $("._user-login-time small").html(data.loginTime);
+                    $("._user-login-time small").html(data.loginTime.substring(0,10));
                 }else{
                     $("._user-login-time .mt10").html(window.top.message.my_auto['本次登录时间']);
-                    $("._user-login-time small").html(data.lastLoginTime);
+                    $("._user-login-time small").html(data.lastLoginTime.substring(0,10));
                 }
                 if (data.username) {
                     $(".login-name span").text(data.username);
