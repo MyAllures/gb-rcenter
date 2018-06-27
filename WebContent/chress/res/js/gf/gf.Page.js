@@ -21,6 +21,7 @@ var BasePage = Base.extend({
                 $(item).html(htmlStr);
             }
         });
+        //增加绑定事件。。。todo
     },
     pullValue: function (formId) {
         //从区域中获取json
@@ -53,7 +54,9 @@ var BasePage = Base.extend({
         if (dataCfg) {
             for (var i in dataCfg) {
                 if (the.initParam[dataCfg[i]]) {
-                    dataCfg[i] = the.initParam[dataCfg[i]];
+                    if(the.initParam[dataCfg[i]]){
+                        dataCfg[i] = the.initParam[dataCfg[i]];
+                    }
                 }
             }
         }
