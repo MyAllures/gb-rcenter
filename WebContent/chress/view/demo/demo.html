@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <link rel="import" href="ftl/demo_ftl.html" id="ftl">
+    <link rel="stylesheet" href="../../res/js/thirds/swipe/css/swiper.min.css">
+    <link rel="stylesheet" href="css/main.css">
     <script type="text/javascript" src="../../res/js/thirds/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../../res/js/thirds/jsrender.min.js"></script>
+    <script type="text/javascript" src="../../res/js/thirds/swipe/js/swiper.min.js"></script>
     <script type="text/javascript" src="../../res/js/gf/gf.Base.js"></script>
     <script type="text/javascript" src="../../res/js/gf/gf.engine.js"></script>
     <script type="text/javascript" src="../../res/js/gf/gf.Page.js"></script>
@@ -16,8 +19,9 @@
     <title>首页</title>
 </head>
 <body onload="Demo.init();">
-<div id="user_show" ftl-bind="{'ftlId':'user_table','url':'DemoApiUrl.getUserMsg','data':{id:'id',name:'name'}}">
-</div>
+<div id="ftl1div" ftl-bind="{'ftlId':'user_table','url':'DemoApiUrl.getUserMsg','data':{id:'id',name:'name'}}"></div>
+<div id="ftl2div"></div>
+<div id="poll-div" style="float: left;width: 32%;margin-left: 10px;margin-top: 10px;" class="swiper-container swiper-container-horizontal" ftl-bind="{'ftlId':'poll_msg','url':'DemoApiUrl.getPoolMsg'}"></div>
 <input type="button" value="加载用户1" onclick="Demo.showUser1()"/>
 <input type="button" value="提交" onclick="Demo.submit()"/>
 </body>

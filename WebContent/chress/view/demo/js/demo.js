@@ -1,17 +1,22 @@
 var Demo = BasePage.extend({
     init: function () {
         this.base();
+        var swiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.swiper-pagination',
+            }
+        });
     },
     showUser1: function () {
-        var the = this;
-        var data = the.doPostSync(DemoApiUrl.getUserMsg1, null);
-        $("#user_show").empty();
-        var htmlStr = the.formatFtl("user_table", data);
-        $("#user_show").html(htmlStr);
+        $("#ftl2div").attr("ftl-bind","{'ftlId':'user_table','url':'DemoApiUrl.getUserMsg1'}");
+        this.initFtl($("#ftl2div"));
+
+        $("#ftl1div").attr("ftl-bind","{'ftlId':'user_msg','url':'DemoApiUrl.getUserMsg'}");
+        this.initFtl($("#ftl1div"));
     },
     submit:function () {
         var the = this;
-        var data = the.pullValue("user_show");
+        var data = the.pullValue("ftl1div");
         console.log(data);
     }
 });
