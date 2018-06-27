@@ -1,9 +1,11 @@
 var BasePage = Base.extend({
     engine: null,
     initParam: null,
-    constructor: function () {
+    apiMap: null,
+    constructor: function (apiMap) {
         this.engine = new GfEngine();
         this.initParam = this.engine.getUrlParam();
+        this.apiMap = apiMap;
     },
     init: function () {
         var the = this;
@@ -12,8 +14,10 @@ var BasePage = Base.extend({
             if (ftlBind) {
                 var cfg = eval("(" + ftlBind + ")");
                 $(item).empty();
-                var data = the.doPostSync(DemoApiUrl.getUserMsg);
-                var htmlStr =the.formatFtl(cfg.ftlId,data);
+                var dataCfg = the.convertData(cfg);
+                var url = the.convertUrl(cfg);
+                var data = the.doPostSync(url, dataCfg);
+                var htmlStr = the.formatFtl(cfg.ftlId, data);
                 $(item).html(htmlStr);
             }
         });
@@ -33,5 +37,26 @@ var BasePage = Base.extend({
     doPostAsync: function (apiKey, data, callBack) {
         //post异步调用api
         this.engine.doPostAsync(apiKey, data, callBack);
+    },
+    convertUrl: function (cfg) {
+        var urlKey = cfg.url;
+        var keys = urlKey.split(".");
+        var url = window;
+        for (var k = 0; k < keys.length; k++) {
+            url = url[keys[k]];
+        }
+        return url;
+    },
+    convertData: function (cfg) {
+        var the = this;
+        var dataCfg = cfg.data;
+        if (dataCfg) {
+            for (var i in dataCfg) {
+                if (the.initParam[dataCfg[i]]) {
+                    dataCfg[i] = the.initParam[dataCfg[i]];
+                }
+            }
+        }
+        return dataCfg;
     }
 });

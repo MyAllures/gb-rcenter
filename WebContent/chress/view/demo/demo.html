@@ -16,9 +16,8 @@
     <title>首页</title>
 </head>
 <body onload="Demo.init();">
-    <div id="user_show" ftl-bind="{'ftlId':'user_table','url':'DemoApiUrl.getUserMsg','data':'id'}">
-    </div>
-    <input type="button" value="加载用户1" onclick="Demo.showUser1()"/>
-    <input type="button" value="提交" onclick="Demo.submit()"/>
+<div id="user_show" ftl-bind="{'ftlId':'user_table','url':'DemoApiUrl.getUserMsg','data':{id:'id',name:'name'}}">
+</div>
+<input type="button" value="加载用户1" onclick="Demo.showUser1()"/>
 </body>
 </html>
