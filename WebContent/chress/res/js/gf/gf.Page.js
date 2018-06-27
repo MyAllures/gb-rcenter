@@ -10,18 +10,21 @@ var BasePage = Base.extend({
     init: function () {
         var the = this;
         $("[ftl-bind]").each(function (i, item) {
-            var ftlBind = $(item).attr("ftl-bind");
-            if (ftlBind) {
-                var cfg = eval("(" + ftlBind + ")");
-                $(item).empty();
-                var dataCfg = the.convertData(cfg);
-                var url = the.convertUrl(cfg);
-                var data = the.doPostSync(url, dataCfg);
-                var htmlStr = the.formatFtl(cfg.ftlId, data);
-                $(item).html(htmlStr);
-            }
+            the.initFtl(item, the.initParam);
         });
-        //增加绑定事件。。。todo
+    },
+    initFtl: function (item, paramData) {
+        var the = this;
+        var ftlBind = $(item).attr("ftl-bind");
+        if (ftlBind) {
+            var cfg = eval("(" + ftlBind + ")");
+            $(item).empty();
+            var dataCfg = the.convertData(cfg, paramData);
+            var url = the.convertUrl(cfg);
+            var data = the.doPostSync(url, dataCfg);
+            var htmlStr = the.formatFtl(cfg.ftlId, data);
+            $(item).html(htmlStr);
+        }
     },
     pullValue: function (formId) {
         //从区域中获取json
@@ -48,14 +51,13 @@ var BasePage = Base.extend({
         }
         return url;
     },
-    convertData: function (cfg) {
-        var the = this;
+    convertData: function (cfg, paramData) {
         var dataCfg = cfg.data;
         if (dataCfg) {
             for (var i in dataCfg) {
-                if (the.initParam[dataCfg[i]]) {
-                    if(the.initParam[dataCfg[i]]){
-                        dataCfg[i] = the.initParam[dataCfg[i]];
+                if (paramData[dataCfg[i]]) {
+                    if (paramData[dataCfg[i]]) {
+                        dataCfg[i] = paramData[dataCfg[i]];
                     }
                 }
             }
