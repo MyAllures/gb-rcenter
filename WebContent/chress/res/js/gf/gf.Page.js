@@ -6,7 +6,17 @@ var BasePage = Base.extend({
         this.initParam = this.engine.getUrlParam();
     },
     init: function () {
-
+        var the = this;
+        $("[ftl-bind]").each(function (i, item) {
+            var ftlBind = $(item).attr("ftl-bind");
+            if (ftlBind) {
+                var cfg = eval("(" + ftlBind + ")");
+                $(item).empty();
+                var data = the.doPostSync(DemoApiUrl.getUserMsg);
+                var htmlStr =the.formatFtl(cfg.ftlId,data);
+                $(item).html(htmlStr);
+            }
+        });
     },
     pullValue: function (formId) {
         //从区域中获取json

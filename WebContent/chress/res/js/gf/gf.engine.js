@@ -103,9 +103,9 @@ GfEngine.prototype = {
         });
         return result;
     },
-    doPostAsync: function (apikey, data, callback) {
+    doPostAsync: function (url, data, callback) {
         $.ajax({
-            url: _apiConfig[apikey],
+            url: url,
             async: true,
             type: "POST",
             data: data,
