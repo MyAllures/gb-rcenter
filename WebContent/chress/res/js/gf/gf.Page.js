@@ -43,7 +43,7 @@ var BasePage = Base.extend({
         this.engine.doPostAsync(apiKey, data, callBack);
     },
     convertUrl: function (cfg) {
-        var urlKey = cfg.url;
+        var urlKey = cfg.urlKey;
         var keys = urlKey.split(".");
         var url = window;
         for (var k = 0; k < keys.length; k++) {
