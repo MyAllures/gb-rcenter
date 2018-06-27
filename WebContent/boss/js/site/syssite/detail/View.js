@@ -123,11 +123,24 @@ define(['common/BasePage'], function(BasePage) {
             }
             return true;
         },
-        getPCFormData:function (e,opt) {
-             return {"pc.id":$("[name='pc.id']").val(),"pc.name":$("[name='pc.name']").val(),"pc.parameter":$("[name='pc.parameter']").val(),"result.id":$("[name='result.id']").val()};
+        getPCFormData: function (e, opt) {
+            return {
+                "pc.id": $("[name='pc.id']").val(),
+                "pc.name": $("[name='pc.name']").val(),
+                "pc.parameter": $("[name='pc.parameter']").val(),
+                "result.id": $("[name='result.id']").val()
+            };
         },
-        getMobileFormData:function (e,opt) {
-            return {"mobile.id":$("[name='mobile.id']").val(),"mobile.name":$("[name='mobile.name']").val(),"mobile.parameter":$("[name='mobile.parameter']").val(),"result.id":$("[name='result.id']").val()};
+        getMobileFormData: function (e, opt) {
+            return {
+                "mobile.id": $("[name='mobile.id']").val(),
+                "mobile.name": $("[name='mobile.name']").val(),
+                "mobile.parameter": $("[name='mobile.parameter']").val(),
+                "result.id": $("[name='result.id']").val()
+            };
+        },
+        getBgColorFormData: function (e, opt) {
+            return $("input,select", "#mobileBackgroundColor").serialize();
         },
         /**
          * 验证统计代码
