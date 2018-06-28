@@ -96,7 +96,7 @@
     function getApiUrl(apiId,gameCode,apiTypeId,bool){
         var demoModel = sessionStorage.demoModel;
         if(demoModel){
-            if(demoModel == "MODEL_4_PLATFORM"){
+            if(demoModel == "MODEL_4_PLATFORM"&&apiId!=21){
                 alert("请使用正式账号登录");
                 return;
             }else if(demoModel == "MODEL_4_MOCK_ACCOUNT"){
