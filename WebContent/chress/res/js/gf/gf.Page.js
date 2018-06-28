@@ -21,9 +21,11 @@ var BasePage = Base.extend({
             $(item).empty();
             var dataCfg = the.convertData(cfg, paramData);
             var url = the.convertUrl(cfg);
-            var data = the.doPostSync(url, dataCfg);
-            var htmlStr = the.formatFtl(cfg.ftlId, data);
-            $(item).html(htmlStr);
+            if(url!=null){
+                var data = the.doPostSync(url, dataCfg);
+                var htmlStr = the.formatFtl(cfg.ftlId, data);
+                $(item).html(htmlStr);
+            }
         }
     },
     pullValue: function (formId) {
@@ -44,12 +46,15 @@ var BasePage = Base.extend({
     },
     convertUrl: function (cfg) {
         var urlKey = cfg.urlKey;
-        var keys = urlKey.split(".");
-        var url = window;
-        for (var k = 0; k < keys.length; k++) {
-            url = url[keys[k]];
+        if (urlKey && urlKey.length > 0) {
+            var keys = urlKey.split(".");
+            var url = window;
+            for (var k = 0; k < keys.length; k++) {
+                url = url[keys[k]];
+            }
+            return url;
         }
-        return url;
+        return null;
     },
     convertData: function (cfg, paramData) {
         var dataCfg = cfg.data;
