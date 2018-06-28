@@ -8,10 +8,10 @@ var Demo = BasePage.extend({
         });
     },
     showUser1: function () {
-        $("#ftl2div").attr("ftl-bind","{'ftlId':'user_table','url':'DemoApiUrl.getUserMsg1'}");
+        $("#ftl2div").attr("ftl-bind","{'ftlId':'user_table','urlKey':'DemoApiUrl.getUserMsg1'}");
         this.initFtl($("#ftl2div"));
 
-        $("#ftl1div").attr("ftl-bind","{'ftlId':'user_msg','url':'DemoApiUrl.getUserMsg'}");
+        $("#ftl1div").attr("ftl-bind","{'ftlId':'user_msg','urlKey':'DemoApiUrl.getUserMsg'}");
         this.initFtl($("#ftl1div"));
     },
     submit:function () {
