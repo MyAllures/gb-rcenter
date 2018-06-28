@@ -6,144 +6,10 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <title>宏图娱乐棋牌主页</title>
     <link rel="stylesheet" href="../../chress/res/css/common.css" />
+    <link rel="stylesheet" href="../../chress/res/css/index.css">
 </head>
 
 <style>
-    .pack {
-        width: 100%;
-        font-size: .13rem;
-        padding-top: .5rem;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-    }
-
-    header {
-        width: 100%;
-        height: .5rem;
-        background: url(../../chress/res/image/index/bg_top.png) 0 0/100% 100% no-repeat;
-        position: fixed;
-        top: 0;
-        left: 0;
-        text-align: center;
-        z-index: 100;
-    }
-
-    footer {
-        width: 100%;
-        height: .36rem;
-        background: url(../../chress/res/image/index/bg_bottom.png) 0 0/100% 100% no-repeat;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        text-align: center;
-        z-index: 100;
-    }
-
-    iframe {
-        width: 100%;
-        height: 100%;
-    }
-
-    .shade-across {
-        background: black;
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        left: 0;
-        top: 0;
-        z-index: 10000;
-        display: none;
-    }
-
-    .shade-across p {
-        width: 100%;
-        height: 100px;
-        margin: auto;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        text-align: center;
-        font-size: 16px;
-        color: red;
-    }
-
-    .notice {
-        width: 4rem;
-        height: 40px;
-        color: white;
-        padding-left: 10px;
-        position: fixed;
-        top: .6rem;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        z-index: 20;
-    }
-
-    .header_via {
-        border: 1px solid #f7e698;
-        width: .3rem;
-        height: .3rem;
-        border-radius: 100%;
-        position: absolute;
-        left: .2rem;
-        margin: auto 0;
-        top: 0;
-        bottom: 0;
-        z-index: 2
-    }
-
-    .header_name {
-        border: 1px solid #f7e698;
-        width: 1rem;
-        height: .20rem;
-        border-radius: 24px;
-        position: absolute;
-        left: .4rem;
-        margin: auto 0;
-        top: 0;
-        bottom: 0;
-        background: #0068B7;
-        box-shadow: 10px 10px 5px #00468A inset;
-        color: #FFD94E;
-        font-size: .11rem;
-        line-height: .20rem;
-        overflow: hidden;
-    }
-
-    .header_center {
-        width: 2.2rem;
-        height: .38rem;
-        background: #4356B0;
-        border-radius: 24px;
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        margin: auto;
-    }
-
-    .header_center_leftBtn {
-        width: .4rem;
-        height: .4rem;
-        border-radius: 100%;
-        background: url(../../chress/res/image/index/header_center_left.png) 0 0/100% 100% no-repeat;
-        position: absolute;
-        top: .0rem;
-        left: .01rem;
-    }
-
-    .header_center_rightBtn {
-        width: .4rem;
-        height: .4rem;
-        border-radius: 100%;
-        background: url(../../chress/res/image/index/heider_center_right.png) 0 0/100% 100% no-repeat;
-        position: absolute;
-        top: .0rem;
-        right: .01rem;
-    }
 </style>
 
 
@@ -153,28 +19,56 @@
         <!-- 公告走马灯 -->
         <div class="notice">
             <marquee behavior="scroll" direction="left">
-                <span>测试文字</span>
-                <span>测试文字3</span>
-                <span>测试文字4</span>
-                <span>测试文字5</span>
+                <span>恭喜玩家
+                    <span class="notice_name">宏图娱乐</span>在KY龙争虎斗游戏里获得
+                    <span class="notice_price">200元</span>!!</span>
+                <span>恭喜玩家
+                    <span class="notice_name">宏图娱乐</span>在KY龙争虎斗游戏里获得
+                    <span class="notice_price">200元</span>!!</span>
+                <span>恭喜玩家
+                    <span class="notice_name">宏图娱乐</span>在KY龙争虎斗游戏里获得
+                    <span class="notice_price">200元</span>!!</span>
             </marquee>
         </div>
         <!-- 头部、整体布局上中下 -->
         <header>
-            <div class="header_via"></div>
+            <div class="header_via">
+                <img src="../../chress/res/image/index/header_left_icon.png" alt="">
+            </div>
             <div class="header_name">
                 大赢家desio
             </div>
             <div class="header_center">
                 <a class="header_center_leftBtn"></a>
-                <div class="header_center_ctop"></div>
-                <div class="header_center_cbottom"></div>
+                <div class="header_center_ctop">
+                    <span>随身福利</span>
+                    <span>200,000</span>
+                </div>
+                <div class="header_center_cbottom">
+                    <span>仓库福利</span>
+                    <span>1,000</span>
+                </div>
                 <a class="header_center_rightBtn"></a>
             </div>
+            <div class="header_right">
+                <a></a>
+                <a></a>
+            </div>
+
         </header>
         <iframe src="home.html"></iframe>
 
-        <footer></footer>
+        <footer>
+            <div class="footer_left">
+                <div class="footer_left_val"></div>
+                <div class="footer_left_bg"></div>
+            </div>
+            <div class="footer_right">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </footer>
 
 
 
