@@ -1,0 +1,12 @@
+.swiper-container {width: 100%;height: 78%;border: 1px solid red;margin-top: 5%}
+.swiper-slide {text-align: center;height: 100%;color: white;}
+body{background: url(../image/index/bg_center.png) 0 0/100% 100% no-repeat;font-size: .13rem;}
+.carousel-box{width: 2.5rem;overflow: hidden;}
+.game-box{width: 1.2rem;display:flex;flex-direction:column}
+.game-box>div{height: 50%;width: 100%}
+.swiper-nextBtn{position: fixed;right: .1rem;top:0;bottom:0;margin:auto 0;width: .3rem;height: .3rem;background: red;z-index: 1000;}
+.swiper-prevBtn{position: fixed;left: .1rem;top:0;bottom:0;margin:auto 0;width: .3rem;height: .3rem;background: red;z-index: 1000;display: none;}
+.slide-carousel{height: 100%;}
+.carousel-swiper-container{height: 100%;}
+.swiper-pagination-bullet-active{background: #fdeb6e!important}
+.swiper-pagination-bullet{background: #3060dc;border: 1px solid #8390c3!important}
