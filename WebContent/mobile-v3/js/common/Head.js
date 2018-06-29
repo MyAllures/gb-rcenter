@@ -170,7 +170,7 @@ function recovery(obj) {
                     toast(data.msg);
                 } else {
                     toast(window.top.message.transfer_auto["正在回收"]);
-                    reload()
+                    refreshApi();
                 }
             } else {
                 toast(window.top.message.transfer_auto["系统繁忙"]);
