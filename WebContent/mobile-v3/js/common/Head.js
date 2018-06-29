@@ -29,7 +29,7 @@ function closeLeftMenu() {
  * 点击右侧玩家信息展示玩家api金额
  */
 function userAssert(obj, options) {
-    if ( $("#login-info .money-shadow").is(":hidden")) {
+    if ($("#login-info .money-shadow").is(":hidden")) {
         $("#login-info .money-shadow").show();
     } else {
         $("#login-info .money-shadow").hide();
@@ -170,7 +170,9 @@ function recovery(obj) {
                     toast(data.msg);
                 } else {
                     toast(window.top.message.transfer_auto["正在回收"]);
-                    refreshApi();
+                    window.setTimeout(function () {
+                        refreshApi();
+                    }, 1500);
                 }
             } else {
                 toast(window.top.message.transfer_auto["系统繁忙"]);
