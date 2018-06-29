@@ -36,7 +36,7 @@ iframe {
 }
 
 .shade-across {
-    background: black;
+    background: black url(../image/index/shade_across.png) 0 0/100% 100% no-repeat;
     width: 100%;
     height: 100%;
     position: fixed;
@@ -45,6 +45,7 @@ iframe {
     z-index: 10000;
     display: none;
 }
+
 
 .shade-across p {
     width: 100%;
@@ -59,9 +60,9 @@ iframe {
 }
 
 .notice {
-    width: 3.5rem;
+    width: 3rem;
     color: white;
-    padding: .02rem .1rem;
+    padding: .0rem .1rem;
     position: fixed;
     top: .6rem;
     left: 0;
@@ -71,9 +72,12 @@ iframe {
     border: 1px solid rgb(109, 112, 122);
     border-radius: 20px;
     background: #17204A;
-    font-size: .11rem;
+    font-size: .10rem;
     box-shadow: 0px 0px 5px white;
+    height: 0.15rem;
+    overflow:hidden;
 }
+.notice ul li{float:left; padding:0 10px; line-height:.15rem;}
 
 .notice_name,
 notice_price {
@@ -103,7 +107,8 @@ marquee>span{
     margin: auto 0;
     top: 0;
     bottom: 0;
-    z-index: 2
+    z-index: 2;
+    background: url(../image/index/header_left_icon.png) -.01rem -.01rem/108% 108% no-repeat
 }
 
 .header_via img{
@@ -142,7 +147,7 @@ marquee>span{
     margin: auto;
 }
 .header_center a:active{
-    transform: scale(.9)
+    transform: scale(.96)
 }
 
 .header_center_leftBtn {
@@ -229,7 +234,7 @@ marquee>span{
     height: 100%;
 }
 .header_right a:active{
-    transform: scale(.9)
+    transform: scale(.96)
 }
 
 .header_right a:nth-of-type(1) {
@@ -254,12 +259,12 @@ marquee>span{
     background: url(../image/index/footer_left_val.png) 0 0/100% 100% no-repeat;
 }
 .footer_left_val:active{
-    transform: scale(.9)
+    transform: scale(.96)
 }
 .footer_left_bg{
     width: 100%;
     height: 100%;
-    background: url(../image/index/footer_left_bg.png) 30px -32px/100px 100px no-repeat;
+    background: url(../image/index/footer_left_bg.png) .32rem -.1rem/.9rem .7rem no-repeat;
     position: absolute;
     top: 0;
     left: 0;
@@ -288,7 +293,7 @@ marquee>span{
     float: left;
     margin-right: .12rem
 }
-.footer_right>div:active{transform: scale(.9)}
+.footer_right>div:active{transform: scale(.96)}
 .footer_right>div:nth-of-type(1){
     background: url(../image/index/footer_right1.png) 0 0/100% 100% no-repeat;
     width: 1.35rem;

@@ -147,18 +147,18 @@
             }
           }
           
-          flake.size = (Math.random() * 3) + settings.size;
-          flake.speed = (Math.random() * 1) + settings.speed;
+          flake.size = (Math.random() * 1) + settings.size;  //雪花大小
+          flake.speed = (Math.random() * .1) + settings.speed; //雪花速度1
           flake.velY = flake.speed;
-          flake.velX = 0;
+          flake.velX = 1;
           flake.opacity = (Math.random() * 0.5) + settings.opacity;
       }
        function init() {
         for (var i = 0; i < flakeCount; i++) {
             var x = Math.floor(Math.random() * canvas.width),
                 y = Math.floor(Math.random() * canvas.height),
-                size = (Math.random() * 3)  + settings.size,
-                speed = (Math.random() * 1) + settings.speed,
+                size = (Math.random() * 1)  + settings.size,  //第一批雪花大小
+                speed = (Math.random() * 1) + settings.speed, //雪花速度2
                 opacity = (Math.random() * 0.5) + settings.opacity;
         
             flakes.push({

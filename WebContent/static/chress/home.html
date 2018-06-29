@@ -79,6 +79,7 @@
 <script type="text/javascript" src="../../chress/res/js/thirds/swipe/js/jquery.let_it_snow.js"></script>
 <script>
     $(function () {
+        $('body,html').css('width', window.screen.height)//初始化品目宽度配合swiper插件
         var swiper = new Swiper('.swiper-container', {//Swiper实例化
             slidesPerView: "auto",
             freeMode: true,
@@ -99,7 +100,6 @@
                 },
             },
         });
-
         nextBtn = () => {//滚动到最右边
             console.log("assd")
             swiper.slideTo(150, 700, true);
@@ -124,7 +124,7 @@
                 prevEl: '.swiper-button-prev',
             },
         });
-        
+
         $("canvas.snow").let_it_snow({
             windPower: 3,
             speed: 1,
@@ -133,7 +133,13 @@
         });
 
 
+        document.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+        }, { passive: false });
+
+
     })
+
 
 
 </script>
