@@ -12,9 +12,16 @@ $(function(){
     };
     muiInit(options);
     $('.fqa dt:first-child+.mui-content').show();
-
+    initStyle();
 });
 
+/**
+ * 页面初始化
+ */
+function initStyle() {
+    //图片设置宽度，免得手机打开展示图片过大，无法展示图片全面
+    $(".mui-content img").width("100%");
+}
 
 function chooseQuestion(obj,options) {
     var $next = $(obj).next("dd");

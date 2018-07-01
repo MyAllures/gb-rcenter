@@ -36,53 +36,22 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
             })
         },
         /**
-         * 投注
+         * 验证是否符合下注条件
+         * @returns {boolean}
          */
-        betOrder: function () {
-            if (!this.checkBetOrder()) {
-                return;
+        checkBetOrder: function () {
+            var result = this._super();
+            if(!result){
+                return false;
             }
             var activeTds = $("div.bet-table-list .mui-active");
             var minNum = $("#minNum").text();
             if (activeTds.length < minNum) {
                 this.toast("请至少选择"+minNum+"个号码");
-                return;
+                return false;
             }
-            var betForm = this.getBetOrder();
-            if(betForm == undefined){
-                return;
-            }
-            this.betForm = betForm;
-            var _this = this;
-            sessionStorage.betForm = JSON.stringify(betForm);
-            this.placeOrder(betForm);
-            $("#dingdan").addClass('mui-active');
-            //重新操作表单
-            mui("body").off('tap','a.mui-btn.mui-btn-red').on('tap', 'a.mui-btn.mui-btn-red', function () {
-                if($("div.mui-input-row.zd-wrap").size()>1){
-                    $("#zhushu_new").text($("#zhushu_new").text()-1);
-                    $("#zongjine_new").text($("#zongjine_new").text()-$(this).parents("li.mui-table-view-cell").find("input").val());
-                    var len=$(this).parent().parent().index()-1;
-                    _this.betForm.betOrders.splice(len,1);
-                    $(this).parent().parent().remove();
-                    _this.betForm.totalMoney=$("#zongjine_new").text();
-                    _this.betForm.quantity=_this.betForm.quantity-1;
-                }else{
-                    $("#dingdan").html('');
-                    $("#dingdan").removeClass('mui-active');
-                }
-            });
-            $(".mui-input-numbox.jinge").keyup(function() {
-                var sum = 0;
-                $(".mui-input-numbox.jinge").each(function(index,value){
-                    _this.betForm.betOrders[index].betAmount = Number($(this).val());
-                    sum += Number($(this).val());
-                })
-                $("#zongjine_new").text(sum);
-                _this.betForm.totalMoney=sum;
-            });
+            return true;
         },
-
         /**
          * 获取注单
          * @returns {{code: *, expect: (*|jQuery), type: *, betOrders: Array}}
