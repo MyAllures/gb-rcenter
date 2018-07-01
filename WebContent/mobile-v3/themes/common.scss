@@ -1387,7 +1387,7 @@ body.deposit{
         padding: 12px 10px 8px;overflow: hidden;
         margin-left: -4px;margin-right: -4px;
         .list_pay_item_w{width: 20%;float: left;padding: 0 4px;margin-bottom: 8px;
-            .list_pay_item{background: #fff;border-radius: 2px;text-align: center;padding-top: 5px;padding-bottom: 8px;border: 1px solid #fff;
+            .list_pay_item{height: 76px;background: #fff;border-radius: 2px;text-align: center;padding-top: 5px;padding-bottom: 8px;border: 1px solid #fff;
                 &.cur{border-color: #1766bb;}
                 .icon-pay{width:38px;height: 38px;display: block;margin:0 auto 6px;background-image: url(images/pay-icon.png);background-repeat: no-repeat;background-size: 38px;background-position-x: center;
                     &.online-pay{background-position-y: 0;}// 在线支付
@@ -1429,15 +1429,15 @@ body.deposit{
         .bank_list{// 选择银行
             overflow: hidden;padding: 0 10px;margin-bottom: -20px;
             margin-left: -6px;margin-right: -6px;
-            .bank_list_i_w{float: left;width: 50%;padding: 0 6px;font-size: 14px;color: #333;margin-bottom: 20px;
+            .bank_list_i_w{float: left;width: 50%;padding: 0 6px;font-size: 13px;color: #333;margin-bottom: 20px;
                 @media screen和（max-width：300px） {
                     .bank_list_i_w {
                         font-size: 11px;
                     }
                 }
-                .bank_list_i{background: #f2f2f2;height: 35px;line-height: 35px;border-radius: 2px;padding-left: 2%;border: 1px solid #f2f2f2;
+                .bank_list_i{background: #f2f2f2;height: 35px;line-height: 35px;border-radius: 2px;padding-left: 8px;border: 1px solid #f2f2f2;
                     &.cur{border-color: #1766bb;}
-                    .bank_n{background: url(images/pay_bank_b.png) no-repeat;    background-size: 25px;    display: inline-block;    width: 18px;    height: 20px;    vertical-align: top;    margin-top: 8px;margin-right: 8;
+                    .bank_n{background: url(images/pay_bank_b.png) no-repeat;    background-size: 25px;    display: inline-block;    width: 20px;    height: 20px;    vertical-align: top;    margin-top: 8px;margin-right: 8;
                         &.unionpay{background-position: 0 -3px;} 
                         &.onlinepay{background-position: 0 -3px;}
                         &.wechatpay{background-position: 0px -26px;}
