@@ -10,18 +10,23 @@ var BasePage = Base.extend({
     init: function () {
         var the = this;
         $("[ftl-bind]").each(function (i, item) {
-            var ftlBind = $(item).attr("ftl-bind");
-            if (ftlBind) {
-                var cfg = eval("(" + ftlBind + ")");
-                $(item).empty();
-                var dataCfg = the.convertData(cfg);
-                var url = the.convertUrl(cfg);
+            the.initFtl(item, the.initParam);
+        });
+    },
+    initFtl: function (item, paramData) {
+        var the = this;
+        var ftlBind = $(item).attr("ftl-bind");
+        if (ftlBind) {
+            var cfg = eval("(" + ftlBind + ")");
+            $(item).empty();
+            var dataCfg = the.convertData(cfg, paramData);
+            var url = the.convertUrl(cfg);
+            if(url!=null){
                 var data = the.doPostSync(url, dataCfg);
                 var htmlStr = the.formatFtl(cfg.ftlId, data);
                 $(item).html(htmlStr);
             }
-        });
-        //增加绑定事件。。。todo
+        }
     },
     pullValue: function (formId) {
         //从区域中获取json
@@ -40,22 +45,24 @@ var BasePage = Base.extend({
         this.engine.doPostAsync(apiKey, data, callBack);
     },
     convertUrl: function (cfg) {
-        var urlKey = cfg.url;
-        var keys = urlKey.split(".");
-        var url = window;
-        for (var k = 0; k < keys.length; k++) {
-            url = url[keys[k]];
+        var urlKey = cfg.urlKey;
+        if (urlKey && urlKey.length > 0) {
+            var keys = urlKey.split(".");
+            var url = window;
+            for (var k = 0; k < keys.length; k++) {
+                url = url[keys[k]];
+            }
+            return url;
         }
-        return url;
+        return null;
     },
-    convertData: function (cfg) {
-        var the = this;
+    convertData: function (cfg, paramData) {
         var dataCfg = cfg.data;
         if (dataCfg) {
             for (var i in dataCfg) {
-                if (the.initParam[dataCfg[i]]) {
-                    if(the.initParam[dataCfg[i]]){
-                        dataCfg[i] = the.initParam[dataCfg[i]];
+                if (paramData[dataCfg[i]]) {
+                    if (paramData[dataCfg[i]]) {
+                        dataCfg[i] = paramData[dataCfg[i]];
                     }
                 }
             }

@@ -1,0 +1,308 @@
+.pack {
+    width: 100%;
+    font-size: .13rem;
+    padding-top: .5rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+header {
+    width: 100%;
+    height: .5rem;
+    background: url(../image/index/bg_top.png) 0 0/100% 100% no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    z-index: 100;
+}
+
+footer {
+    width: 100%;
+    height: .36rem;
+    background: url(../image/index/bg_bottom.png) 0 0/100% 100% no-repeat;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    z-index: 100;
+    overflow: visible;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.shade-across {
+    background: black url(../image/index/shade_across.png) 0 0/100% 100% no-repeat;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10000;
+    display: none;
+}
+
+
+.shade-across p {
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    font-size: 16px;
+    color: red;
+}
+
+.notice {
+    width: 3rem;
+    color: white;
+    padding: .0rem .1rem;
+    position: fixed;
+    top: .6rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 20;
+    border: 1px solid rgb(109, 112, 122);
+    border-radius: 20px;
+    background: #17204A;
+    font-size: .10rem;
+    box-shadow: 0px 0px 5px white;
+    height: 0.15rem;
+    overflow:hidden;
+}
+.notice ul li{float:left; padding:0 10px; line-height:.15rem;}
+
+.notice_name,
+notice_price {
+    display: inline-block;
+    margin: 0 .03rem;
+
+}
+
+.notice_name {
+    color: #FFD800;
+}
+
+.notice_price {
+    color: #76FFF4;
+}
+marquee>span{
+    margin-right: .30rem;
+}
+
+.header_via {
+    border: 1px solid #f7e698;
+    width: .3rem;
+    height: .3rem;
+    border-radius: 100%;
+    position: absolute;
+    left: .2rem;
+    margin: auto 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    background: url(../image/index/header_left_icon.png) -.01rem -.01rem/108% 108% no-repeat
+}
+
+.header_via img{
+    width: 100%;
+    height: 100%;
+}
+
+.header_name {
+    border: 1px solid #f7e698;
+    width: 1rem;
+    height: .20rem;
+    border-radius: 24px;
+    position: absolute;
+    left: .4rem;
+    margin: auto 0;
+    top: 0;
+    bottom: 0;
+    background: #0068B7;
+    box-shadow: 10px 10px 5px #00468A inset;
+    color: #FFD94E;
+    font-size: .11rem;
+    line-height: .20rem;
+    overflow: hidden;
+}
+
+.header_center {
+    width: 2.2rem;
+    height: .38rem;
+    background: #3B4BA3;
+    border-radius: 24px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+.header_center a:active{
+    transform: scale(.96)
+}
+
+.header_center_leftBtn {
+    width: .37rem;
+    height: .37rem;
+    border-radius: 100%;
+    background: url(../image/index/header_center_left.png) 0 0/100% 100% no-repeat;
+    position: absolute;
+    top: .0145rem;
+    left: .02rem;
+}
+
+.header_center_rightBtn {
+    width: .37rem;
+    height: .37rem;
+    border-radius: 100%;
+    background: url(../image/index/heider_center_right.png) 0 0/100% 100% no-repeat;
+    position: absolute;
+    top: .0145rem;
+    right: .02rem;
+}
+
+.header_center_ctop {
+    width: 1.39rem;
+    height: .15rem;
+    border: 1px solid rgba(255, 217, 78, 0.801);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: .01rem;
+    margin: auto;
+    border-radius: 20px;
+    background: #253880;
+    line-height: .14rem;
+}
+
+.header_center_cbottom {
+    width: 1.39rem;
+    height: .15rem;
+    border: 1px solid rgba(255, 217, 78, 0.801);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: .01rem;
+    margin: auto;
+    border-radius: 20px;
+    background: #253880;
+    line-height: .14rem;
+}
+
+.header_center_ctop span,
+.header_center_cbottom span {
+    font-size: .12rem;
+    font-weight: bold;
+}
+
+.header_center_ctop span:nth-of-type(1),
+.header_center_cbottom span:nth-of-type(1) {
+    float: left;
+    margin-left: .05rem;
+    color: #FFD800;
+}
+
+.header_center_ctop span:nth-of-type(2),
+.header_center_cbottom span:nth-of-type(2) {
+    float: right;
+    margin-right: .05rem;
+    color: #FFF32D;
+}
+
+.header_right {
+    width: 1.2rem;
+    height: .4rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: .1rem;
+    display: flex;
+}
+
+.header_right a {
+    width: 50%;
+    height: 100%;
+}
+.header_right a:active{
+    transform: scale(.96)
+}
+
+.header_right a:nth-of-type(1) {
+    background: url(../image/index/header_right_offe.png) 0 0/100% 100% no-repeat;
+}
+
+.header_right a:nth-of-type(2) {
+    background: url(../image/index/header_right_gamer.png) 0 0/100% 100% no-repeat;
+}
+
+.footer_left{
+    width: 1.3rem;
+    height: .45rem;
+    position: absolute;
+    left: .17rem;
+    bottom: .03rem;
+    overflow: visible
+}
+.footer_left_val{
+    width: 100%;
+    height: 100%;
+    background: url(../image/index/footer_left_val.png) 0 0/100% 100% no-repeat;
+}
+.footer_left_val:active{
+    transform: scale(.96)
+}
+.footer_left_bg{
+    width: 100%;
+    height: 100%;
+    background: url(../image/index/footer_left_bg.png) .32rem -.1rem/.9rem .7rem no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    animation: footer_left_bg 2s infinite linear;
+}
+@keyframes footer_left_bg{
+    /* 0%{transform: rotate(0deg)}
+    50%{transform: rotate(180deg)}
+    100%{transform: rotate(360deg)} */
+    0%{transform: scale(1)}
+    50%{transform: scale(1.2)}
+    100%{transform: scale(1)}
+}
+
+.footer_right{
+    height: .5rem;
+    width: 68%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.footer_right>div{
+    height: 100%;
+    float: left;
+    margin-right: .12rem
+}
+.footer_right>div:active{transform: scale(.96)}
+.footer_right>div:nth-of-type(1){
+    background: url(../image/index/footer_right1.png) 0 0/100% 100% no-repeat;
+    width: 1.35rem;
+}
+.footer_right>div:nth-of-type(2){
+    background: url(../image/index/footer_right2.png) 0 0/100% 100% no-repeat;
+    width: 1rem;
+}
+.footer_right>div:nth-of-type(3){
+    background: url(../image/index/footer_right3.png) 0 0/100% 100% no-repeat;
+    width: 1rem;
+}
