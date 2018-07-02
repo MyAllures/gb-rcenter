@@ -585,6 +585,7 @@ a{color:#2772ee}
 .control-group .control-left{float:left;width:85px;text-align:right;vertical-align:top}
 .control-group{margin-bottom:15px;display:block;}
 .control-group > span.tips{line-height:44px;}
+.control-group .merchant-number-prompt{visibility:hidden;}
 .control-group img{vertical-align:middle}
 .control-group .controls{vertical-align:middle;padding-top:5px;position:relative;float:left;max-width:800px;}
 .control-group .controls-text{vertical-align:middle;padding-top:10px}
