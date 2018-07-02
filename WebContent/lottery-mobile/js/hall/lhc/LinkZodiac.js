@@ -57,36 +57,13 @@ define(['site/hall/lhc/PlayWay-xywf'], function (PlayWay) {
             }
             var betForm = this.getBetOrder();
             this.betForm = betForm;
-            var _this = this;
             sessionStorage.betForm = JSON.stringify(betForm);
 
             this.placeOrder(betForm);
             $("#dingdan").addClass('mui-active');
 
             //重新操作表单
-            mui("body").off('tap','a.mui-btn.mui-btn-red').on('tap', 'a.mui-btn.mui-btn-red', function () {
-                if($("div.mui-input-row.zd-wrap").size()>1){
-                    $("#zhushu_new").text($("#zhushu_new").text()-1);
-                    $("#zongjine_new").text($("#zongjine_new").text()-$(this).parents("li.mui-table-view-cell").find("input").val());
-                    var len=$(this).parent().parent().index()-1;
-                    _this.betForm.betOrders.splice(len,1);
-                    $(this).parent().parent().remove();
-                    _this.betForm.totalMoney=$("#zongjine_new").text();
-                    _this.betForm.quantity=_this.betForm.quantity-1;
-                }else{
-                    $("#dingdan").html('');
-                    $("#dingdan").removeClass('mui-active');
-                }
-            });
-            $(".mui-input-numbox.jinge").keyup(function() {
-                var sum = 0;
-                $(".mui-input-numbox.jinge").each(function(index,value){
-                    _this.betForm.betOrders[index].betAmount = Number($(this).val());
-                    sum += Number($(this).val());
-                })
-                $("#zongjine_new").text(sum);
-                _this.betForm.totalMoney=sum;
-            });
+            this.initBetFormBtn();
         },
 
         /**
