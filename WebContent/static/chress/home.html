@@ -21,38 +21,65 @@
             <div class="swiper-slide carousel-box">
                 <div class="carousel-swiper-container">
                     <div class="swiper-wrapper carousel">
-                        <div class="swiper-slide slide-carousel">AA 1</div>
-                        <div class="swiper-slide slide-carousel">AA 1</div>
-                        <div class="swiper-slide slide-carousel">AA 1</div>
+                        <div class="swiper-slide slide-carousel">
+                            <img src="../../chress/res/image/home/carousel_img.png" alt="">
+                        </div>
+                        <div class="swiper-slide slide-carousel">
+                            <img src="../../chress/res/image/home/carousel_img.png" alt="">
+                        </div>
+                        <div class="swiper-slide slide-carousel">
+                            <img src="../../chress/res/image/home/carousel_img.png" alt="">
+                        </div>
                     </div>
                     <!-- Add Pagination -->
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
             <div class="swiper-slide game-box">
-                <div>up</div>
-                <div>down</div>
+                <div class="game1"></div>
+                <div class="game2"></div>
             </div>
-            <div class="swiper-slide game-box">Slide 3</div>
-            <div class="swiper-slide game-box">Slide 4</div>
-            <div class="swiper-slide game-box">Slide 5</div>
-            <div class="swiper-slide game-box">Slide 6</div>
-            <div class="swiper-slide game-box">Slide 7</div>
-            <div class="swiper-slide game-box">Slide 8</div>
-            <div class="swiper-slide game-box">Slide 9</div>
-            <div class="swiper-slide game-box">Slide 10</div>
-
-
+            <div class="swiper-slide game-box">
+                <div class="game3"></div>
+                <div class="game4"></div>
+            </div>
+            <div class="swiper-slide game-box">
+                <div class="game5"></div>
+                <div class="game6"></div>
+            </div>
+            <div class="swiper-slide game-box">
+                <div class="game7"></div>
+                <div class="game8"></div>
+            </div>
+            <div class="swiper-slide game-box">
+                <div class="game9"></div>
+                <div class="game10"></div>
+            </div>
+            <div class="swiper-slide game-box">
+                <div class="game11"></div>
+                <div class="game12"></div>
+            </div>
+            <div class="swiper-slide game-box">
+                <div class="game13"></div>
+                <div class="game14"></div>
+            </div>
+            <div class="swiper-slide game-box">
+                <div class="game15"></div>
+                <div class="game16"></div>
+            </div>
         </div>
     </div>
-    <div class="swiper-nextBtn" onclick="nextBtn()">右边</div>
-    <div class="swiper-prevBtn" onclick="prevBtn()">左边</div>
+    <div class="swiper-nextBtn" onclick="nextBtn()"></div>
+    <div class="swiper-prevBtn" onclick="prevBtn()"></div>
+    <canvas width="100%" height="100%" class="snow"></canvas>
 </body>
 
 <script src="../../chress/res/js/thirds/jquery-2.1.1.min.js"></script>
 <script src="../../chress/res/js/thirds/swipe/js/swiper.min.js"></script>
+<script type="text/javascript" src="../../chress/res/js/thirds/swipe/js/jquery.let_it_snow.js"></script>
 <script>
     $(function () {
+        $('body,html').css('width', window.screen.height)//初始化品目宽度配合swiper插件
         var swiper = new Swiper('.swiper-container', {//Swiper实例化
             slidesPerView: "auto",
             freeMode: true,
@@ -73,7 +100,6 @@
                 },
             },
         });
-
         nextBtn = () => {//滚动到最右边
             console.log("assd")
             swiper.slideTo(150, 700, true);
@@ -97,11 +123,23 @@
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-        }); 
+        });
 
-        
+        $("canvas.snow").let_it_snow({
+            windPower: 3,
+            speed: 1,
+            count: 250,
+            size: 0
+        });
+
+
+        document.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+        }, { passive: false });
+
 
     })
+
 
 
 </script>
