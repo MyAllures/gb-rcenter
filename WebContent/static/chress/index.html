@@ -52,10 +52,10 @@
             </div>
             <div class="header_right">
                 <a></a>
-                <a></a>
+                <a onclick="header_right_userBtn()"></a>
             </div>
-
         </header>
+
         <iframe name="core_content" src="home.html"></iframe>
 
         <footer>
@@ -67,10 +67,28 @@
                 <div></div>
                 <div></div>
                 <div></div>
+                <div id="footer_backBtn" onclick="footer_backBtn(this)"></div>
             </div>
         </footer>
 
-
+        <div class="comm_shad" id="right_pop_box" onclick="pop_backBtn()">
+            <div class="right_pop_box">
+                <div class="right_pop_box_top">
+                    <div class="right_pop_box_top_ing"></div>
+                    <span class="right_pop_box_top_id">ID : 921118501</span>
+                    <p class="right_pop_box_top_name">当前福利:
+                        <span>200,333,22 G</span>
+                    </p>
+                </div>
+                <div class="right_pop_box_bottom">
+                    <a></a>
+                    <a></a>
+                    <a></a>
+                    <a></a>
+                    <a></a>
+                </div>
+            </div>
+        </div>
 
         <!-- 强制横屏遮罩 -->
         <div class="shade-across">
@@ -101,12 +119,49 @@
     document.addEventListener('touchmove', function (event) {
         event.preventDefault();
     }, { passive: false });
+
+    function openGame() {
+        window.location.href = 'loading.html'
+    }
+
+    function pop_backBtn() {
+        $('.right_pop_box').css('right', "-2rem")
+        setTimeout(() => {
+            $('#right_pop_box').css('top','-1000px');
+        }, 500)
+    }
+
+    function header_right_userBtn() {
+        $('#right_pop_box').css('top','0px');
+        setTimeout(() => {
+            $('.right_pop_box').css('right', "0")
+        }, 101);
+
+    }
+
+    function footer_backBtn(that){
+        $(that).css('right','11rem');
+        window.history.go(-1);
+    }
+
+    function footer_backBtn_show(){
+        $('#footer_backBtn').css('right','.05rem');
+    }
+
+
+
+
+
+
+
+
+
+
     $(function () {
         $("#marquee").kxbdMarquee({ isEqual: false });//走马灯初始化
-
+        $('.right_pop_box_bottom a').click(pop_backBtn())
     })
 
 
 </script>
-
 </html>
