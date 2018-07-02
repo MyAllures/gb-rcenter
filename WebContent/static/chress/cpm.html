@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹窗</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="../../chress/res/css/common.css" />
+    <style>
+
+        img{margin: 0 auto;padding: 0;}
+        .mr10{margin-right: 0.1rem;}
+        .cpm{width: 100%;height: 100%;position: fixed;left: 0;top: 0;z-index: 1000; color: #fff;   background-color: rgba(17, 16, 16, 0.4); overflow: hidden; }
+        .cpm_box{width: 3.17rem;height: 2.53rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .img_top{width: 3.17rem;  background: url("../../chress/res/image/cpm/cpm_top.png") no-repeat 0 0;background-size:100%;height: 0.51rem}
+        .cpm_content{width: 3.17rem;height: 2.02rem;  background-color: rgba(42, 53, 138, 0.47);padding: 0.1rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .cpm_content>.ctt{width: 100%;border: 1px solid #6F7AC1;     border-radius: 5px; background-color: rgba(66, 80, 174, 0.51);}
+        .dis-in{display: inline-block;}
+        .img_via{width: 0.8rem;  height: 0.8rem;  margin-left: 0.1rem;  background: url("../../chress/res/image/cpm/via.png") no-repeat 0 0;background-size:100%; border-radius: 0.1rem;overflow: hidden; }
+        .via_box{font-size: 0.14rem;width: 58%;margin-left: -0.3rem;padding: 0.1rem;}
+        .via_box h4{border: 1px solid #C68F37;  background-color: #263981;  border-radius: 10px;  padding: 0 0.05rem;  width: 1.4rem;}
+        .via_box h4 span{color: #FFD800;font-size: 0.14rem;}
+        .via_box h4 small{color: #FFF32D;font-size: 0.14rem;float:right;}
+        .dis-in input{  background-color: #232B6A;border: none;color: #fff;width: 92%;border-radius: 0.05rem;padding: 0.05rem 0.1rem;}
+        .btn-t{width: 1.4rem;  background: url("../../chress/res/image/cpm/button_t.png") no-repeat 0 0;background-size:100%;height: 0.46rem;display: inline-block;    margin-top: 0.08rem;  float: left;}
+        .btn-s{width: 1.4rem;  background: url("../../chress/res/image/cpm/button_s.png") no-repeat 0 0;background-size:100%;height: 0.46rem;display: inline-block; margin-top: 0.08rem;  float: right;}
+        .img-btn{width: 0.32rem;position: absolute;top: 0;right: -0.1rem; }
+        @keyframes cpm {
+            0%{transform:scale(1,1);}
+            50%{transform:scale(1.1,1.1);}
+            100%{transform:scale(0,0);opacity: 0;}
+        }
+
+
+        /*设置*/
+        .set{width: 100%;height: 100%;position: fixed;left: 0;top: 0;z-index: 1010; color: #fff;   background-color: rgba(17, 16, 16, 0.3); overflow: hidden;}
+        .set-cpm{width: 2.88rem;height: 1.8rem;position:absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+        .set-top{width: 2.88rem;  background: url("../../chress/res/image/cpm/set_top.png") no-repeat 0 0;background-size:100%;height: 0.48rem}
+        .set_content{width: 2.88rem;height: 1.4rem; margin-top: -0.03rem; background-color: rgba(42, 53, 138, 0.6);padding: 0.1rem;box-sizing: border-box;border-bottom-left-radius: 0.1rem;  border-bottom-right-radius: 0.1rem;}
+        .set_content>.ctt{width: 100%;border: 1px solid #6F7AC1;     border-radius: 5px; background-color: rgba(66, 80, 174, 0.6);}
+        .pmgressbar{font-size: 0.14rem;  padding: 0.32rem 0.24rem;position: relative;height: 1.14rem;box-sizing: border-box;}
+        /*.r-bar1{border: 1px solid #0BB0A8; border-radius:7px; background-color: #116D6B;width: 1.8rem;height: 0.14rem;}*/
+        /*.r-bar{vertical-align: top;}*/
+        /*.img-an{   width: 0.3rem;border-radius: 50%;overflow: hidden; position: absolute;  left: 0.55rem;  top: 0.26rem;}*/
+        /*.r-bar-b{height: 100%;width: 0;  background-color: #89CE2E;}*/
+
+        /*.loati{*/
+            /*width: 100%;position: absolute;bottom: 0;height: .9rem;font-size: .13rem;text-align: center;color: white;letter-spacing:2px*/
+        /*}*/
+        .r-bar{width: 1.82rem;height: 0.14rem;border: 1px solid #0BB0A8;position: absolute;margin-right: 0.24rem;right: 0;bottom: .37rem;background: #116D6B;border-radius: 0.07rem;}
+        .r-bar1{width: 1.82rem;height: 0.14rem;border: 1px solid #0BB0A8;position: absolute;margin-right: 0.24rem;right: 0;bottom: .37rem;background: #116D6B;border-radius: 0.07rem;}
+        .r-bar-b{width: 60%;border-radius: 0.07rem;height: 100%;background: #89CE2E;overflow: visible;position: relative;transition: .1s linear}
+        .r-bar-b1{width: 60%;border-radius: 0.07rem;height: 100%;background: #89CE2E;overflow: visible;position: relative;transition: .1s linear}
+        .r-bar-img{background: url(../../chress/res/image/cpm/yuan.png) 0 0/100% 100% no-repeat;width: .3rem;height: .3rem;
+            position: absolute;right: -0.22rem;top: -.07rem;}
+        .r-bar-img1{background: url(../../chress/res/image/cpm/yuan.png) 0 0/100% 100% no-repeat;width: .3rem;height: .3rem;
+            position: absolute;right: -0.22rem;top: -.07rem;}
+        .r-bar-font{    position: absolute;  left: -0.42rem;  top: -0.06rem;  font-size: 0.17rem;}
+        .r-bar-font1{    position: absolute;  left: -0.42rem;  top: -0.06rem;  font-size: 0.17rem;}
+
+
+
+
+    </style>
+</head>
+<body>
+    <!--个人信息-->
+    <div class="cpm">
+        <div class="cpm_box">
+            <div class="img_top"></div>
+            <div class="cpm_content">
+                <div class="ctt">
+                    <div class="dis-in img_via"></div>
+                    <div class="dis-in via_box">
+                        <input type="text"value="9856656635" class="">
+                        <p style="font-size: 0.08rem;">上次登录时间 2018-06-16 15:30:20</p>
+                        <h4 style="margin-bottom: 0.02rem;"><span>随身福利</span><small>200,000</small></h4>
+                        <h4><span>仓库福利</span><small>1,000</small></h4>
+                    </div>
+                </div>
+                <div class="btn-t"></div>
+                <div class="btn-s"></div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn" alt="">
+            </div>
+        </div>
+    </div>
+    <!--设置-->
+    <div class="set">
+        <div class="set-cpm">
+            <div class="set-top"></div>
+            <div class="set_content">
+                <div class="ctt">
+                    <div  class="pmgressbar">
+                        <!--<span class="dis-in r-bar">音乐</span>-->
+                        <!--<div class="dis-in r-bar1" style="">-->
+                            <!--<div class="r-bar-b"></div>-->
+                            <!--<img src="../../chress/res/image/cpm/yuan.png"class="img-an" style="" alt="">-->
+                        <!--</div>-->
+
+
+                        <div class="r-bar"style="top:0.3rem;">
+                            <div class="r-bar-font">音乐</div>
+                            <div class="r-bar-b">
+                                <div class="r-bar-img" ></div>
+                            </div>
+                        </div>
+                        <div class="r-bar1"style="top:0.7rem;">
+                            <div class="r-bar-font1">音效</div>
+                            <div class="r-bar-b1">
+                                <div class="r-bar-img1" touchstart ="test(false)"></div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <img src="../../chress/res/image/cpm/cpm_btn.png" class="img-btn" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../chress/res/js/thirds/jquery-2.1.1.min.js"></script>
+<script>
+    var aac=false;
+    $('.img-btn').click(function () {
+        $('.cpm').css("animation","cpm 0.35s");
+        $('.cpm').fadeOut(400);
+    });
+
+
+    $('.r-bar-img').on('touchstart',function() {
+        aac = true;
+        isscroll = true;
+    })
+    $('.r-bar-img1').on('touchstart',function() {
+        aac = false;
+        isscroll = true;
+    })
+    $(window).on('touchend',function() {
+//        console.log("asd")
+            isscroll = false;
+        })
+
+    var startPosition = {}, deltaY, endPosition = {};
+    document.addEventListener('touchstart', touch, false);
+    document.addEventListener('touchmove', touch, false);
+    document.addEventListener('touchend', touch, false);
+
+    function touch(event) {
+        var event = event || window.event;
+        switch (event.type) {
+            case "touchstart":
+                var touch = event.touches[0];
+                startPosition = {
+                    x: touch.pageX,
+                    y: touch.pageY
+                }
+                break;
+            case "touchend":
+                break;
+            case "touchmove":
+                var touch = event.touches[0];
+                endPosition = {
+                    x: touch.pageX,
+                    y: touch.pageY
+                }
+                deltaY = endPosition.y - startPosition.y;
+                break;
+        }
+//        console.log(endPosition.x);
+        let boxLeft = $(".r-bar").offset().left;
+        let boxWidth = $(".r-bar").width();
+        let allWidth = boxLeft - boxWidth;
+        if(isscroll){
+        if(aac){
+            if (endPosition.x <= boxLeft) {
+                $('.r-bar-b').css('width', '0%');
+            } else if (endPosition.x >= boxLeft + boxWidth) {
+                $('.r-bar-b').css('width', '91%');
+            } else {
+                let a = endPosition.x - boxLeft;
+                let b = parseFloat(a/boxWidth,4)*100;
+                $('.r-bar-b').css('width', b + '%');
+            }
+        }else{
+            if (endPosition.x <= boxLeft) {
+                $('.r-bar-b1').css('width', '0%');
+            } else if (endPosition.x >= boxLeft + boxWidth) {
+                $('.r-bar-b1').css('width', '91%');
+            } else {
+                let a = endPosition.x - boxLeft;
+                let b = parseFloat(a/boxWidth,4)*100;
+                $('.r-bar-b1').css('width', b + '%');
+            }
+        }
+        }
+
+
+    }
+</script>
+</html>
