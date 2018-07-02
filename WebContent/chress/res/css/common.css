@@ -1,5 +1,5 @@
 body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0;user-select: none;}    
-html,body{font-size: 100px;;width: 100%;height: 100%;overflow: hidden;}    
+html,body{font-size: 100px;;width: 100%;height: 100%;overflow: hidden;width: 100%;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}    
 /* html,body{font-family: 'HansHandItalic';font-size: 100px;;width: 100%;height: 100%;overflow: hidden;}     */
 a{text-decoration:none}    
 em{font-style:normal}    
@@ -10,3 +10,4 @@ p{word-wrap:break-word}
 iframe{border: none}
 
 /* @font-face {font-family: 'HansHandItalic';src: url('fonts/mui1.ttf') ;font-weight: normal;font-style: normal;} */
+.comm_shad{position: fixed;left: 0;top: 0;width: 100%;height: 100%;background: rgba(5, 5, 5, 0.675);z-index: 10000;}

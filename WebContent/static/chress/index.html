@@ -17,23 +17,23 @@
 <body>
     <div class="pack">
         <!-- 公告走马灯 -->
-        <div class="notice">
-            <marquee behavior="scroll" direction="left">
-                <span>恭喜玩家
-                    <span class="notice_name">宏图娱乐</span>在KY龙争虎斗游戏里获得
-                    <span class="notice_price">200元</span>!!</span>
-                <span>恭喜玩家
-                    <span class="notice_name">宏图娱乐</span>在KY龙争虎斗游戏里获得
-                    <span class="notice_price">200元</span>!!</span>
-                <span>恭喜玩家
-                    <span class="notice_name">宏图娱乐</span>在KY龙争虎斗游戏里获得
-                    <span class="notice_price">200元</span>!!</span>
-            </marquee>
+        <div id="marquee" class="notice">
+            <ul>
+                <li>
+                    <span>恭喜玩家
+                        <span class="notice_name">宏图娱乐</span>在KY龙争虎斗游戏里获得
+                        <span class="notice_price">200元</span>!!</span>
+                </li>
+                <li>
+                    <span>恭喜玩家
+                        <span class="notice_name">宏图娱乐</span>在KY龙争虎斗游戏里获得
+                        <span class="notice_price">200元</span>!!</span>
+                </li>
+            </ul>
         </div>
         <!-- 头部、整体布局上中下 -->
         <header>
             <div class="header_via">
-                <img src="../../chress/res/image/index/header_left_icon.png" alt="">
             </div>
             <div class="header_name">
                 大赢家desio
@@ -52,11 +52,11 @@
             </div>
             <div class="header_right">
                 <a></a>
-                <a></a>
+                <a onclick="header_right_userBtn()"></a>
             </div>
-
         </header>
-        <iframe src="home.html"></iframe>
+
+        <iframe name="core_content" src="home.html"></iframe>
 
         <footer>
             <div class="footer_left">
@@ -67,19 +67,37 @@
                 <div></div>
                 <div></div>
                 <div></div>
+                <div id="footer_backBtn" onclick="footer_backBtn(this)"></div>
             </div>
         </footer>
 
-
+        <div class="comm_shad" id="right_pop_box" onclick="pop_backBtn()">
+            <div class="right_pop_box">
+                <div class="right_pop_box_top">
+                    <div class="right_pop_box_top_ing"></div>
+                    <span class="right_pop_box_top_id">ID : 921118501</span>
+                    <p class="right_pop_box_top_name">当前福利:
+                        <span>200,333,22 G</span>
+                    </p>
+                </div>
+                <div class="right_pop_box_bottom">
+                    <a></a>
+                    <a></a>
+                    <a></a>
+                    <a></a>
+                    <a></a>
+                </div>
+            </div>
+        </div>
 
         <!-- 强制横屏遮罩 -->
         <div class="shade-across">
-            <p>请在横屏模式下使用</p>
         </div>
     </div>
 </body>
 
 <script src="../../chress/res/js/thirds/jquery-2.1.1.min.js"></script>
+<script src="../../chress/res/js/thirds/swipe/js/jquery.kxbdmarquee.js"></script>
 <script>
     /* 强制横屏 */
     var width = document.documentElement.clientWidth;
@@ -98,7 +116,52 @@
             $(".shade-across").hide();
         }
     }, false);
+    document.addEventListener('touchmove', function (event) {
+        event.preventDefault();
+    }, { passive: false });
+
+    function openGame() {
+        window.location.href = 'loading.html'
+    }
+
+    function pop_backBtn() {
+        $('.right_pop_box').css('right', "-2rem")
+        setTimeout(() => {
+            $('#right_pop_box').css('top','-1000px');
+        }, 500)
+    }
+
+    function header_right_userBtn() {
+        $('#right_pop_box').css('top','0px');
+        setTimeout(() => {
+            $('.right_pop_box').css('right', "0")
+        }, 101);
+
+    }
+
+    function footer_backBtn(that){
+        $(that).css('right','11rem');
+        window.history.go(-1);
+    }
+
+    function footer_backBtn_show(){
+        $('#footer_backBtn').css('right','.05rem');
+    }
+
+
+
+
+
+
+
+
+
+
+    $(function () {
+        $("#marquee").kxbdMarquee({ isEqual: false });//走马灯初始化
+        $('.right_pop_box_bottom a').click(pop_backBtn())
+    })
+
 
 </script>
-
 </html>
