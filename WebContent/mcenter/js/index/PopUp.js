@@ -770,7 +770,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var content;
             var msg = window.top.message.content['payAccount.disable.master.log'];
             msg = msg.replace("{date}", date);
-            content = "<a href='javascript:;'>" + popUp.formatStr(msg, msgBody) + "</a>";
+            content = '<a nav-target="mainFrame" name="tellerReminder" href="/vPayAccount/list.html?search.type=2">' + popUp.formatStr(msg, msgBody) + '</a>';
             popUp.pop(content, date, "warning");
         }
     });
