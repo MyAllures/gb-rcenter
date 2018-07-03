@@ -71,10 +71,10 @@
 <span class="co-blue">${handicap}</span>
 </c:if>
 <c:if test="${!empty odds}">
-    &nbsp;@&nbsp;<span class="co-red">${odds}</span>
+    &nbsp;@&nbsp;<span class="co-red" title="赔率">${odds}</span>
 </c:if>
 <c:if test="${!empty betScore}">
-    &nbsp;@&nbsp;<span class="co-red">${betScore}</span>
+    &nbsp;@&nbsp;<span class="co-red" title="玩家投注时的比分">${betScore}</span>
 </c:if>
 <c:if test="${!empty matchTime}">
     <br>
