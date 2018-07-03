@@ -137,7 +137,32 @@
             event.preventDefault();
         }, { passive: false });
 
+        $('.game-box').click(function(){
+            // 点击两边跑效果
+            // $('.game-box').css('right','-700px');
+            // $('.carousel-box').css('left','-500px')
+            
+            // setTimeout(() => {
+                // window.top.openGame();//加载页效果
+            // }, 1000);
+            
+        })
+      
 
+        $('.game16').click(()=>{
+            window.top.footer_backBtn_show();
+            window.location.href = 'home_people.html';
+        })
+        $('.game15').click(()=>{
+            window.top.footer_backBtn_show();
+            window.location.href = 'home_game.html';
+        })
+        $('.game14').click(()=>{
+            window.top.footer_backBtn_show();
+            window.location.href = 'home_fish.html';
+        })
+        
+         
     })
 
 
