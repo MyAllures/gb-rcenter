@@ -319,7 +319,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                             '<span class="fs30 co-red" id="leftTime" data-time="${leftTime}"><span id="hours">' + hour + '</span>' + ":" + '' +
                             '<span id="minutes">' + minute + '</span>' + ":" + '<span id="seconds">' + second + '</span></span></div>' +
                             '<div class="al-center co-grayc2">' + times + '</div></div>' +
-                            /*'<div class="clearfix m-md">' + tips + '</div>' +*/
+                                /*'<div class="clearfix m-md">' + tips + '</div>' +*/
                             '<div class="clearfix m-md">' + tip + '</div>';
                     } else if (level == 'stop') {
                         var html = '<div class="line-hi34 m-sm">' + msg + '</div>';
@@ -525,9 +525,9 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     var player = document.createElement('embed');
                     $(player).addClass("hide");
                     player.id = id;
-                    if(file.indexOf("files/gb")==0){
+                    if (file.indexOf("files/gb") == 0) {
                         player.src = imgRoot + '/' + file;
-                    }else {
+                    } else {
                         player.src = resRoot + '/' + file;
                     }
                     //player.setAttribute('autostart', 'true');
@@ -555,9 +555,9 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
                     $("#auto_alert").append(player);
 
                     var mp3 = document.createElement('source');
-                    if(file.indexOf("files/gb")==0){
+                    if (file.indexOf("files/gb") == 0) {
                         mp3.src = imgRoot + '/' + file;
-                    }else {
+                    } else {
                         mp3.src = resRoot + '/' + file;
                     }
                     mp3.type = 'audio/mpeg';
@@ -770,7 +770,7 @@ define(['gb/components/PopUp', 'bootstrap-dialog'], function (PopUp, BootstrapDi
             var content;
             var msg = window.top.message.content['payAccount.disable.master.log'];
             msg = msg.replace("{date}", date);
-            content = "<a href='javascript:;'>" + popUp.formatStr(msg, msgBody) + "</a>";
+            content = '<a nav-target="mainFrame" name="tellerReminder" href="/vPayAccount/detail.html?result.id='+msgBody.payAccountId+'&search.type=2">' + popUp.formatStr(msg, msgBody) + '</a>';
             popUp.pop(content, date, "warning");
         }
     });
