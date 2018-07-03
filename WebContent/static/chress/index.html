@@ -65,8 +65,8 @@
             </div>
             <div class="footer_right">
                 <div></div>
-                <div></div>
-                <div></div>
+                <div onclick="t1()"></div>
+                <div onclick="t2()"></div>
                 <div id="footer_backBtn" onclick="footer_backBtn(this)"></div>
             </div>
         </footer>
@@ -150,7 +150,12 @@
 
 
 
-
+    function t1(){
+            window.location.href = 'login.html';
+    }
+    function t2(){
+        window.location.href = 'loading.html';
+    }
 
 
 
@@ -160,6 +165,13 @@
     $(function () {
         $("#marquee").kxbdMarquee({ isEqual: false });//走马灯初始化
         $('.right_pop_box_bottom a').click(pop_backBtn())
+
+        $('.right_pop_box_bottom a').click(function(){
+            $(this).addClass('clickhover');
+            setTimeout(() => {
+                $(this).removeClass('clickhover');
+            }, 100);
+        })
     })
 
 
