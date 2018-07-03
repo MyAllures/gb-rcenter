@@ -51,6 +51,16 @@ var BaseDeposit = function () {
                 return false;
             }
         }
+        if($("#merchantNumberPrompt").length){
+            if(!$("#requiredBankOrder").val()){
+                toast(window.top.message.deposit_auto['商户号为空']);
+                return false;
+            }else if($("#requiredBankOrder").val().length < 5){
+                toast(window.top.message.deposit_auto['商户号为5位']);
+                return false;
+            }
+        }
+
         var $form = $("#rechargeForm");
         bindFormValidation($form);
         if (!$form || !$form.valid()) {
