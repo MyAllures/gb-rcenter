@@ -299,7 +299,7 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
          */
         sumFailureCount: function (e, option) {
             var merchantNumber = $("#merchantNumber");
-            if($(merchantNumber).is(":hidden") == false && merchantNumber.length && !merchantNumber.val()){
+            if(merchantNumber.length && $(merchantNumber).is(":hidden") != true &&  !merchantNumber.val()){
                 merchantNumber.addClass("error");
                 $("#merchantNumberPrompt").removeClass("merchant-number-prompt");
                 $(e.currentTarget).unlock();
