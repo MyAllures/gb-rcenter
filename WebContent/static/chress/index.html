@@ -56,7 +56,7 @@
             </div>
         </header>
 
-        <iframe name="core_content" src="home.html"></iframe>
+        <iframe id="core_content" name="core_content" src="home.html"></iframe>
 
         <footer>
             <div class="footer_left">
@@ -91,8 +91,7 @@
         </div>
 
         <!-- 强制横屏遮罩 -->
-        <div class="shade-across">
-        </div>
+        <div class="shade-across"></div>
     </div>
 </body>
 
@@ -127,33 +126,33 @@
     function pop_backBtn() {
         $('.right_pop_box').css('right', "-2rem")
         setTimeout(() => {
-            $('#right_pop_box').css('top','-1000px');
+            $('#right_pop_box').css('top', '-1000px');
         }, 500)
     }
 
     function header_right_userBtn() {
-        $('#right_pop_box').css('top','0px');
+        $('#right_pop_box').css('top', '0px');
         setTimeout(() => {
             $('.right_pop_box').css('right', "0")
         }, 101);
 
     }
 
-    function footer_backBtn(that){
-        $(that).css('right','11rem');
+    function footer_backBtn(that) {
+        $(that).css('right', '11rem');
         window.history.go(-1);
     }
 
-    function footer_backBtn_show(){
-        $('#footer_backBtn').css('right','.05rem');
+    function footer_backBtn_show() {
+        $('#footer_backBtn').css('right', '.05rem');
     }
 
 
 
-    function t1(){
-            window.location.href = 'login.html';
+    function t1() {
+        window.location.href = 'login.html';
     }
-    function t2(){
+    function t2() {
         window.location.href = 'loading.html';
     }
 
@@ -166,7 +165,7 @@
         $("#marquee").kxbdMarquee({ isEqual: false });//走马灯初始化
         $('.right_pop_box_bottom a').click(pop_backBtn())
 
-        $('.right_pop_box_bottom a').click(function(){
+        $('.right_pop_box_bottom a').click(function () {
             $(this).addClass('clickhover');
             setTimeout(() => {
                 $(this).removeClass('clickhover');
@@ -176,4 +175,5 @@
 
 
 </script>
+
 </html>

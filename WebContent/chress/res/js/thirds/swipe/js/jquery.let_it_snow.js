@@ -14,8 +14,8 @@
     var defaults = {
       speed: 0,
       interaction: true,
-      size: 1,
-      count: 100,
+      size: 2,
+      count: 200,
       opacity: 0,
       color: "#ffffff",
       windPower: 0,
@@ -72,7 +72,7 @@
                   flake.velX *= .98;
                   if (flake.velY <= flake.speed) {
                       flake.velY = flake.speed
-                  } 
+                  }
                   
                   switch (settings.windPower) { 
                     case false:
@@ -84,7 +84,7 @@
                     break;
                     
                     default: 
-                      flake.velX += 0.01 + (settings.windPower/1110);
+                      flake.velX += 0.01 + (settings.windPower/100);
                   }
               }
   
@@ -147,18 +147,18 @@
             }
           }
           
-          flake.size = (Math.random() * 1) + settings.size;  //雪花大小
-          flake.speed = (Math.random() * .1) + settings.speed; //雪花速度1
+          flake.size = (Math.random() * 3) + settings.size;
+          flake.speed = (Math.random() * 1) + settings.speed;
           flake.velY = flake.speed;
-          flake.velX = 1;
+          flake.velX = 0;
           flake.opacity = (Math.random() * 0.5) + settings.opacity;
       }
        function init() {
         for (var i = 0; i < flakeCount; i++) {
             var x = Math.floor(Math.random() * canvas.width),
                 y = Math.floor(Math.random() * canvas.height),
-                size = (Math.random() * 1)  + settings.size,  //第一批雪花大小
-                speed = (Math.random() * 1) + settings.speed, //雪花速度2
+                size = (Math.random() * 3)  + settings.size,
+                speed = (Math.random() * 1) + settings.speed,
                 opacity = (Math.random() * 0.5) + settings.opacity;
         
             flakes.push({
@@ -194,6 +194,7 @@
           el2.let_it_snow(settings);
         }, 200);
       });
+      
       if (settings.interaction == true) {
         canvas.addEventListener("mousemove", function(e) {
             mX = e.clientX,

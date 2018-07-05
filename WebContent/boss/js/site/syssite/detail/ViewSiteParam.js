@@ -130,7 +130,12 @@ define(['common/BaseEditPage','bootstrapswitch', 'UE.I18N.' + window.top.languag
                         if (!$(_target).attr("isChanged")) {
                             if ($(_target).attr("id")==="exportPlayerContact") {
                                 $("#exportPlayerContactState").val(state);
-                            } else {
+                                _this.updateExportPlayerParam();
+                            } else if ($(_target).attr("id")==="startPage") {
+                                $("#startPageState").val(state);
+                                _this.updateStartPage();
+                            }
+                            else {
                                 $("#cdnSwitchState").val(state);
                             }
 
@@ -211,9 +216,7 @@ define(['common/BaseEditPage','bootstrapswitch', 'UE.I18N.' + window.top.languag
         /**
          * 更新导出玩家联系方式配置
          */
-        updateExportPlayerParam:function (e) {
-            var _this = this;
-            //导出玩家联系方式参数
+        updateExportPlayerParam:function () {
             var id = $("#exportPlayerContact").attr("sysParamId");
             var module = $("#exportPlayerContact").attr("module");
             var paramType = $("#exportPlayerContact").attr("paramType");
@@ -233,18 +236,34 @@ define(['common/BaseEditPage','bootstrapswitch', 'UE.I18N.' + window.top.languag
                     "result.paramValue": paramValue
                 },
                 success: function (data) {
-                    if (data.state) {
-                        page.showPopover(e,{},"success","保存成功",true);
-                    } else {
-                        page.showPopover(e,{},"warning","保存失败",true);
-                    }
-                    $(e.currentTarget).unlock();
+
                 },error:function () {
-                    $(e.currentTarget).unlock();
+
                 }
 
             });
-            $(e.currentTarget).unlock();
+        },
+
+        updateStartPage:function () {
+            var id = $("#startPage").attr("sysParamId");
+            var siteId = $("#siteId").val();
+            var paramValue = $("#startPageState").val();
+
+            window.top.topPage.ajax({
+                url: root + '/site/detail/updateStartPage.html',
+                dataType: "json",
+                data: {
+                    "result.siteId": siteId,
+                    "result.id": id,
+                    "result.paramValue": paramValue
+                },
+                success: function (data) {
+
+                },error:function () {
+
+                }
+
+            });
         },
 
         /**
