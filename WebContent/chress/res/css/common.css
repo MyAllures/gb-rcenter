@@ -10,3 +10,4 @@ p{word-wrap:break-word}
 iframe{border: none}
 
 /* @font-face {font-family: 'HansHandItalic';src: url('fonts/mui1.ttf') ;font-weight: normal;font-style: normal;} */
+.comm_shad{position: fixed;left: 0;top: 0;width: 100%;height: 100%;background: rgba(5, 5, 5, 0.675);z-index: 10000;}

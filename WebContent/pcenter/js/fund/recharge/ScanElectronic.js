@@ -52,6 +52,17 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
                 $(_this.formSelector + " span.fee").hide();
                 _this.changeAmountMsg();
             });
+
+            //商户号input值改变事件
+            $(".control-group").on("input", "input[name='result.bankOrder']", function () {
+                if($("#merchantNumber").val()){
+                    $("#merchantNumber").removeClass("error");
+                    $("#merchantNumberPrompt").addClass("merchant-number-prompt");
+                }else{
+                    $("#merchantNumber").addClass("error");
+                    $("#merchantNumberPrompt").removeClass("merchant-number-prompt");
+                }
+            });
         },
         rechargeAmountMsg: function () {
             var $account = $("input[name=account]:checked");
@@ -287,6 +298,15 @@ define(['site/fund/recharge/CommonRecharge'], function (BaseEditPage) {
          * @param option
          */
         sumFailureCount: function (e, option) {
+            var merchantNumber = $("#merchantNumber");
+            if(merchantNumber.length && $(merchantNumber).is(":hidden") != true &&  !merchantNumber.val()){
+                merchantNumber.addClass("error");
+                $("#merchantNumberPrompt").removeClass("merchant-number-prompt");
+                $(e.currentTarget).unlock();
+                return;
+            }
+            merchantNumber.removeClass("error");
+            $("#merchantNumberPrompt").addClass("merchant-number-prompt");
             var _this = this;
             var _window = this.createWin();
             window.top.topPage.newWindow = _window;

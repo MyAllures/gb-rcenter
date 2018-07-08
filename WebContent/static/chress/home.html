@@ -72,6 +72,9 @@
     <div class="swiper-nextBtn" onclick="nextBtn()"></div>
     <div class="swiper-prevBtn" onclick="prevBtn()"></div>
     <canvas width="100%" height="100%" class="snow"></canvas>
+    <!-- <canvas id="canvas">你的浏览器不支持canvas</canvas>
+    <img src="../../chress/res/image/index/bg_center.png" id="scream"> -->
+   
 </body>
 
 <script src="../../chress/res/js/thirds/jquery-2.1.1.min.js"></script>
@@ -79,6 +82,10 @@
 <script type="text/javascript" src="../../chress/res/js/thirds/swipe/js/jquery.let_it_snow.js"></script>
 <script>
     $(function () {
+        document.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+        }, { passive: false });
+
         $('body,html').css('width', window.screen.height)//初始化品目宽度配合swiper插件
         var swiper = new Swiper('.swiper-container', {//Swiper实例化
             slidesPerView: "auto",
@@ -133,11 +140,35 @@
         });
 
 
-        document.addEventListener('touchmove', function (event) {
-            event.preventDefault();
-        }, { passive: false });
+      
+        
 
+        $('.game-box').click(function(){
+            // 点击两边跑效果
+            // $('.game-box').css('right','-700px');
+            // $('.carousel-box').css('left','-500px')
+            
+            // setTimeout(() => {
+                // window.top.openGame();//加载页效果
+            // }, 1000);
+            
+        })
+      
 
+        $('.game16').click(()=>{
+            window.top.footer_backBtn_show();
+            window.location.href = 'home_people.html';
+        })
+        $('.game15').click(()=>{
+            window.top.footer_backBtn_show();
+            window.location.href = 'home_game.html';
+        })
+        $('.game14').click(()=>{
+            window.top.footer_backBtn_show();
+            window.location.href = 'home_fish.html';
+        })
+        
+         
     })
 
 

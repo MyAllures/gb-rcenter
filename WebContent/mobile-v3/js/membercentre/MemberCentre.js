@@ -48,13 +48,13 @@ function userInfo() {
                 if (data.preferentialAmount != null && data.preferentialAmount != 0) {
                     $(".preferentialAmount").text(window.top.message.my_auto['近7日收益']+ currency + data.preferentialAmount);
                 } else {
-                    $(".preferentialAmount").text("");
+                    $(".preferentialAmount").text(window.top.message.my_auto['查看所参与的优惠纪录']);
                 }
                 //推荐好友,昨日收益
                 if (data.recomdAmount != null && data.recomdAmount != 0) {
                     $(".recomdAmount").text(window.top.message.my_auto['昨日收益']+ currency + data.recomdAmount);
                 } else {
-                    $(".recomdAmount").text("");
+                    $(".recomdAmount").text(window.top.message.my_auto['查看分享奖励']);
                 }
                 //系统消息-未读数量
                 if (data.unReadCount != null && data.unReadCount != 0) {
@@ -75,7 +75,7 @@ function userInfo() {
                 if (data.transferAmount != null && data.transferAmount != 0) {
                     $("#transferAmount").html(window.top.message.my_auto['处理中'] + currency + data.transferAmount);
                 } else {
-                    $("#transferAmount").html("");
+                    $("#transferAmount").html(window.top.message.my_auto['查看所参与的游戏记录']);
                 }
             }
         }
