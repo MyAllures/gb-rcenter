@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>宏图娱乐加载界面</title>
+    <link rel="stylesheet" href="../../chress/res/css/common.css" />
+    <link rel="stylesheet" href="../../chress/res/css/loading.css" />
+</head>
+
+
+<body>
+    <div class="logo">
+        <div class="shin"></div>
+    </div>
+
+    <div class="loati">
+        <p>正在匹配服务器 , 请稍后...</p>
+        <div class="load_box">
+            <div class="load_body"></div>
+        </div>
+    </div>
+</body>
+
+<script src="../../chress/res/js/thirds/jquery-2.1.1.min.js"></script>
+<script>
+    document.addEventListener('touchmove', function (event) {
+        event.preventDefault();
+    }, { passive: false });
+    $(function () {
+        let x = 0;
+        let thisid = setInterval(function () {
+            if (x > 99) {
+                // window.clearInterval(thisid);
+                x=0;
+            }else{
+                x++;
+                $('.load_body').css('width',x+'%')
+            }
+        }, 200)
+
+    })
+
+
+</script>
+
+</html>
