@@ -11,41 +11,50 @@ function userInfo() {
                 }else{
                     $("#phone").addClass("mui-hidden");
                 }
+
+                //登录时间
+                if (data.loginTime){
+                    $("._user-login-time .mt10").html(window.top.message.my_auto['上次登录时间']);
+                    $("._user-login-time small").html(data.loginTime.substring(0,10));
+                }else{
+                    $("._user-login-time .mt10").html(window.top.message.my_auto['本次登录时间']);
+                    $("._user-login-time small").html(data.lastLoginTime.substring(0,10));
+                }
                 if (data.username) {
-                    $(".ct p").text(data.username);
+                    $(".login-name span").text(data.username);
                 }
                 if (data.avatarUrl) {
-                    $(".ct img.avatar").attr("src", data.avatarUrl);
+                    $(".login-name img.avatar").attr("src", data.avatarUrl);
                 }
                 //钱包余额
                 if (data.walletBalance != null && data.walletBalance != 0) {
-                    $(".span .green").text(currency + data.walletBalance.toFixed(2));
+                    $("._purse-balance>span").text(currency + data.walletBalance.toFixed(2));
                 } else {
-                    $(".span .green").text(currency + "0.00");
+                    $("._purse-balance>span").text(currency + "0.00");
                 }
                 //总资产
                 if (data.totalAssets != null && data.totalAssets != 0) {
-                    $(".span .orange").text(currency + data.totalAssets.toFixed(2));
+                    $("._total-assets>span").text(currency + data.totalAssets.toFixed(2));
                 } else {
-                    $(".span .orange").text(currency + "0.00");
+                    $("._total-assets>span").text(currency + "0.00");
                 }
                 //正在处理中取款金额
                 if (data.withdrawAmount != null && data.withdrawAmount != 0) {
-                    $(".withdrawAmount").text(window.top.message.my_auto['处理中']+ currency + data.withdrawAmount);
+                    $("._withdraw-amount").text(window.top.message.my_auto['处理中']+ currency + data.withdrawAmount);
                 } else {
-                    $(".withdrawAmount").text("");
+                    $("._withdraw-amount").text("");
                 }
                 //计算近7日收益（优惠金额）
                 if (data.preferentialAmount != null && data.preferentialAmount != 0) {
                     $(".preferentialAmount").text(window.top.message.my_auto['近7日收益']+ currency + data.preferentialAmount);
                 } else {
-                    $(".preferentialAmount").text("");
+                    $(".preferentialAmount").text(window.top.message.my_auto['查看所参与的优惠纪录']);
                 }
                 //推荐好友,昨日收益
                 if (data.recomdAmount != null && data.recomdAmount != 0) {
                     $(".recomdAmount").text(window.top.message.my_auto['昨日收益']+ currency + data.recomdAmount);
                 } else {
-                    $(".recomdAmount").text("");
+                    $(".recomdAmount").text(window.top.message.my_auto['查看分享奖励']);
                 }
                 //系统消息-未读数量
                 if (data.unReadCount != null && data.unReadCount != 0) {
@@ -66,7 +75,7 @@ function userInfo() {
                 if (data.transferAmount != null && data.transferAmount != 0) {
                     $("#transferAmount").html(window.top.message.my_auto['处理中'] + currency + data.transferAmount);
                 } else {
-                    $("#transferAmount").html("");
+                    $("#transferAmount").html(window.top.message.my_auto['查看所参与的游戏记录']);
                 }
             }
         }

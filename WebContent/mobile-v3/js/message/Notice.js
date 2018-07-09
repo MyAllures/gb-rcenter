@@ -288,14 +288,14 @@ function siteCheck(obj, options) {
     var name = obj.name;
     if ("site2_check" == name) {//单选
         $(obj).removeClass("ui-button-disable");
-        if (obj.className == "gb-radio") {
+        if (obj.className == "gb-radio" || obj.className == 'gb-unread-radio') {
             $(obj).addClass("on");
         } else {
             $(obj).removeClass("on");
         }
     } else if ("site1_check" == name) {
         $(obj).removeClass("ui-button-disable");
-        if (obj.className == "gb-radio") {
+        if (obj.className == "gb-radio" || obj.className == 'gb-unread-radio') {
             $(obj).addClass("on");
         } else {
             $(obj).removeClass("on");
@@ -601,16 +601,14 @@ function unReadMessage() {
 
 
 function changeStatus(name, isChecked) {
-    var site_check = document.getElementsByName(name);
+    var site_check = $("[name="+name+"]")
     for (var i = 0; i < site_check.length; i++) {
         if (isChecked) {
-            if (site_check[i].className == "gb-radio") {
-                site_check[i].classList.add("on")
+            if (!site_check.hasClass("on")) {
+                site_check.addClass("on");
             }
         } else {
-            if (site_check[i].className == "gb-radio on") {
-                site_check[i].classList.remove("on")
-            }
+            site_check.removeClass("on");
         }
     }
 }
@@ -660,10 +658,11 @@ function formReset() {
 
 function getSelectIdsArray(name) {
     var checkedItems = [], counter = 0;
-    var site_check = document.getElementsByName(name);
+    var site_check = $("[name="+name+"]");
     for (var i = 0; i < site_check.length; i++) {
-        if (site_check[i].className == "gb-radio on") {
-            checkedItems[counter] = site_check[i].getAttribute("value");
+        var _this = $(site_check[i]);
+        if (_this.hasClass("on")) {
+            checkedItems[counter] = _this.attr("value");
             counter++;
         }
     }

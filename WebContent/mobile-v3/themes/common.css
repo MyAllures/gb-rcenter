@@ -497,7 +497,7 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .deposit-2-content { background: #f2f2f2; bottom: 51px; padding-bottom: 0; height: 100vh; }
 .deposit_2 .list_pay { padding: 12px 10px 8px; overflow: hidden; margin-left: -4px; margin-right: -4px; }
 .deposit_2 .list_pay .list_pay_item_w { width: 20%; float: left; padding: 0 4px; margin-bottom: 8px; }
-.deposit_2 .list_pay .list_pay_item_w .list_pay_item { background: #fff; border-radius: 2px; text-align: center; padding-top: 5px; padding-bottom: 8px; border: 1px solid #fff; }
+.deposit_2 .list_pay .list_pay_item_w .list_pay_item {height: 76px;background: #fff; border-radius: 2px; text-align: center; padding-top: 5px; padding-bottom: 8px; border: 1px solid #fff; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item.cur { border-color: #1766bb; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay { width: 38px; height: 38px; display: block; margin: 0 auto 6px; background-image: url(images/pay-icon.png); background-repeat: no-repeat; background-size: 38px; background-position-x: center; }
 .deposit_2 .list_pay .list_pay_item_w .list_pay_item .icon-pay.online-pay { background-position-y: 0; }
@@ -527,10 +527,10 @@ body.deposit .gb-select > a { color: #999; }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_1000 { background-position-y: -174px; }
 .deposit_2 .pay_mone .conv_mone .conv_mone_i .icon_mone.mone_5000 { background-position-y: -232px; }
 .deposit_2 .pay_mone .bank_list { overflow: hidden; padding: 0 10px; margin-bottom: -20px; margin-left: -6px; margin-right: -6px; }
-.deposit_2 .pay_mone .bank_list .bank_list_i_w { float: left; width: 50%; padding: 0 6px; font-size: 14px; color: #333; margin-bottom: 20px; }
-.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i { background: #f2f2f2; height: 35px; line-height: 35px; border-radius: 2px; padding-left: 2%; border: 1px solid #f2f2f2; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w { float: left; width: 50%; padding: 0 6px; font-size: 13px; color: #333; margin-bottom: 20px; }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i { background: #f2f2f2; height: 35px; line-height: 35px; border-radius: 2px; padding-left: 8px; border: 1px solid #f2f2f2; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i.cur { border-color: #1766bb; }
-.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n { background: url(images/pay_bank_b.png) no-repeat; background-size: 25px; display: inline-block; width: 18px; height: 20px; vertical-align: top; margin-top: 8px; margin-right: 8; /* 浦发银行*/ /* 民生*/ /*  交通银行 */ /*光大*/ /* 10 平安银行 */ /* 11 兴业银行 */ /* 12 北京银行 */ /* 13 中信银行 */ /* 14 广发银行 */ /* 16 江苏银行 */ /* 18 上海银行 */ /* 19 渤海银行 */ /* 20 东亚银行 */ /* 21 宁波银行 */ /* 22 浙商银行 */ /* 23 杭州银行 */ /* 24 广州银行 */ /* 25 福建农商银行 */ /* 26 恒生银行 */ /* 27 台州银行 */ /* 易支付 */ /* 易支付 */ }
+.deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n { background: url(images/pay_bank_b.png) no-repeat; background-size: 25px; display: inline-block; width: 20px; height: 20px; vertical-align: top; margin-top: 8px; margin-right: 8; /* 浦发银行*/ /* 民生*/ /*  交通银行 */ /*光大*/ /* 10 平安银行 */ /* 11 兴业银行 */ /* 12 北京银行 */ /* 13 中信银行 */ /* 14 广发银行 */ /* 16 江苏银行 */ /* 18 上海银行 */ /* 19 渤海银行 */ /* 20 东亚银行 */ /* 21 宁波银行 */ /* 22 浙商银行 */ /* 23 杭州银行 */ /* 24 广州银行 */ /* 25 福建农商银行 */ /* 26 恒生银行 */ /* 27 台州银行 */ /* 易支付 */ /* 易支付 */ }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.unionpay { background-position: 0 -3px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.onlinepay { background-position: 0 -3px; }
 .deposit_2 .pay_mone .bank_list .bank_list_i_w .bank_list_i .bank_n.wechatpay { background-position: 0px -26px; }
@@ -707,6 +707,7 @@ body.no-backdrop .mui-backdrop { background-color: transparent !important; }
 .notice-list .i { border: 1px solid #e2e2e2; background-color: #f2f2f2; padding: 10px; position: relative; }
 
 .notice-list .i .gb-radio { position: absolute; top: -1px; left: 0px; }
+.notice-list .i .gb-unread-radio { position: absolute; top: 8px; left: 8px; }
 
 .notice-list .i > .ct p { line-height: 20px; color: #333333; text-indent: 2em; margin-bottom: 5px; }
 
@@ -730,6 +731,7 @@ body.no-backdrop .mui-backdrop { background-color: transparent !important; }
 
 .gb-radio { display: inline-block; width: 30px; height: 30px; background: url(../images/radio.png); background-size: 100% 100%; vertical-align: text-top; margin-right: 5px; }
 .gb-unread-radio { display: inline-block; width: 15px; height: 15px; background: url(../images/unread-radio.png); background-size: 100% 100%; vertical-align: text-top; margin-right: 5px; }
+.gb-unread-radio.on { display: inline-block; width: 30px; height: 30px; background: url(../images/radio-on.png); background-size: 100% 100%; vertical-align: text-top; top: -1px!important; left: 0px!important; }
 
 .gb-radio.on { background-image: url(../images/radio-on.png); }
 
