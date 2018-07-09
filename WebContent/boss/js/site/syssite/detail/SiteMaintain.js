@@ -136,8 +136,7 @@ define(['common/BaseEditPage','bootstrapswitch','UE.I18N.' + window.top.language
                 var targetId = $(".siteMaintain" + lan).attr("id");
                 content = UE.getEditor(targetId).getContent();
             } else {
-                var targetId = $(tips[0]).attr("id");
-                content = UE.getEditor(targetId).getContent();
+                content = UE.getEditor("editContent0").getContent();//默认读取第一个语言的内容显示
             }
             option.target = root + "/site/detail/siteMaintainTipPreview.html?content="+content;
             window.top.topPage.doDialog(e, option);
