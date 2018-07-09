@@ -104,6 +104,7 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
         },
         saveValid: function (e) {
             var _this = this;
+            var resultType = $("input[name='result.type']").val();
             var result;
             var startIpStr=$.trim($("[name='result.startIpStr']").val());
             var endIpStr=$.trim($("[name='result.endIpStr']").val());
@@ -137,9 +138,11 @@ define(['common/BaseEditPage'], function(BaseEditPage) {
                 window.top.topPage.showErrorMessage(window.top.message.setting_auto['该已在限制列表中']);
                 return false;
             }
-            if (result.isContainsCnIp) {
-                window.top.topPage.showErrorMessage(window.top.message.setting_auto['该IP段包含中国大陆的IP地址']);
-                return false;
+            if (resultType =='3') {
+                if (result.isContainsCnIp) {
+                    window.top.topPage.showErrorMessage(window.top.message.setting_auto['该IP段包含中国大陆的IP地址']);
+                    return false;
+                }
             }
             e.returnValue=true;
             return true;
