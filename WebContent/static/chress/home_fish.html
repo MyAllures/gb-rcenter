@@ -19,26 +19,27 @@
         <div class="swiper-wrapper">
            
             <div class="swiper-slide game-box">
-                <div class="game1"></div>
-                <div class="game2"></div>
+                <div class="game1 clicksound"></div>
+                <div class="game2 clicksound"></div>
             </div>
             <div class="swiper-slide game-box">
-                <div class="game3"></div>
-                <div class="game4"></div>
+                <div class="game3 clicksound"></div>
+                <div class="game4 clicksound"></div>
             </div>
             <div class="swiper-slide game-box">
-                <div class="game5"></div>
-                <div class="game6"></div>
+                <div class="game5 clicksound"></div>
+                <div class="game6 clicksound"></div>
             </div>
             <div class="swiper-slide game-box">
-                <div class="game7"></div>
-                <div class="game8"></div>
+                <div class="game7 clicksound"></div>
+                <div class="game8 clicksound"></div>
             </div>
         </div>
     </div>
     <!-- <div class="swiper-nextBtn" onclick="nextBtn()"></div>
     <div class="swiper-prevBtn" onclick="prevBtn()"></div> -->
     <canvas width="100%" height="100%" class="snow"></canvas>
+    <audio src="../../chress/res/sounds/clicksound.mp3" preload="preload" id="clicksound"></audio>
 </body>
 
 <script src="../../chress/res/js/thirds/jquery-2.1.1.min.js"></script>
@@ -92,6 +93,9 @@
                 window.top.openGame();//加载页效果
         })
 
+        $('.clicksound').click(() => {
+            document.getElementById('clicksound').play();
+        })
          
     })
 
