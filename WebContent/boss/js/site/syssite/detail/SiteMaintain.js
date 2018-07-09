@@ -132,7 +132,7 @@ define(['common/BaseEditPage','bootstrapswitch','UE.I18N.' + window.top.language
             var content = null;
             var tips = $("textarea", "#siteMaintainTipsDiv");
             var lan  = $("input[name='mainLanguage']", "#siteMaintainTipsDiv").val();
-            if ($(".siteMaintain" + lan)) {
+            if (lan) {
                 var targetId = $(".siteMaintain" + lan).attr("id");
                 content = UE.getEditor(targetId).getContent();
             } else {
